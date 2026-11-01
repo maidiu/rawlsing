@@ -1,0 +1,42 @@
+{
+  "coordinated_selfhash": {
+    "c12_selfhash_ok": true,
+    "external_anchor": "ABSENT_OWNER_ANCHOR_REQUIRED",
+    "production_accept": false,
+    "restore_after_coordinated": {
+      "ok": true
+    },
+    "verdict": "TRUST_CUSTODY_HOLD"
+  },
+  "exact_restore": {
+    "ok": true
+  },
+  "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "holds": [
+    "C12_SELFHASH_IS_NOT_SEPARATE_CUSTODY",
+    "EXTERNAL_OWNER_ANCHOR_REQUIRED",
+    "C9_ACTOR_NATIVE_ANCHOR_ABSENT",
+    "CP_A5_SEPARATE_ROOT_HOLD"
+  ],
+  "native": false,
+  "schema": "SOROK_P1_HOSTILE_RECEIPT@1",
+  "simple_c12_tamper": {
+    "error": "SessionRefusal:ROOT_C12_VERIFY_FAILED: [\"episode:0:body_hash_mismatch\"]",
+    "rejected": true
+  },
+  "source_preimage_forgeries": {
+    "attempted": 9,
+    "codes": [
+      "wrong_owner:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_event_ref:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_event_hash:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_clock:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_operation:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_quantity:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_e1_ref:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_e1_hash:MATERIAL_SOURCE_PREIMAGE_MISMATCH",
+      "wrong_e1_clock:MATERIAL_SOURCE_PREIMAGE_MISMATCH"
+    ],
+    "rejected": 9
+  }
+}

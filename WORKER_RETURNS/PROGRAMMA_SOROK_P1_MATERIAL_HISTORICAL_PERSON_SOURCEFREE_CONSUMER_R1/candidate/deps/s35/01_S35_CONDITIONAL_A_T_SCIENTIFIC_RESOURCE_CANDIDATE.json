@@ -1,0 +1,360 @@
+{
+  "schema": "S35_SITUATED_COUPLING_AND_CONTEXTUAL_PRACTICE_RESOURCE_CANDIDATE@1",
+  "resource_id": "SOROK_S35_GM01_SITUATED_OBJECT_ORIENTATION",
+  "resource_version": "1.0.0-CANDIDATE",
+  "grade": "NONISSUING_SCIENTIFIC_CANDIDATE__DOCUMENTARY_CONCEPTUAL__TEST_ONLY_VECTORS_NOT_RUN",
+  "science_status": "BOUNDED_POSITIVE_OBSERVED_ACTOR_ORIENTATION__NO_IDENTIFIED_ACQUISITION_LAW",
+  "domain": {
+    "scene": "material inspection in a finite-resource task",
+    "task": "actor A may inspect a material object/tool while B may independently share/refuse a tool",
+    "identity": "new synthetic A and independently constituted synthetic B, never real-world named individuals",
+    "claim_ceiling": "sourcewitnessed present A response operation; NEVER psychological propensity, trait, relationship, memory, preexisting ability inference or learned transferable practice"
+  },
+  "adopted_authority": {
+    "CAN008_R2_body_blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+    "CAN008_R2_adoption_blob": "a6bc1555489271e1adb2271ed02d46bb7f888170",
+    "CAN011_canonical_blob": "1ed04e62a363493bc7032a99139454a3126e6ea0",
+    "CAN008_native_rule_id": null,
+    "CAN011_native_rule_id": null,
+    "CAN011_target_grant": null,
+    "ADP_actor_or_event_grants": null,
+    "C8_native_protected_witness": null,
+    "original_Pyat_N11_N12_grants": null,
+    "C11_native_weld": null
+  },
+  "source_and_qualification": [
+    {
+      "key": "LEONTIEV_1978",
+      "source": "A. N. Leontiev, Activity, Consciousness, and Personality, chapter 3 section 3.5 and chapter 5 (accessible English text via UCSD); Portuguese attached 1978 version reviewed for provenance",
+      "passage": "activity object/motive differs from action goal; operation conditioned by material/task circumstances; social distribution of tasks; personality development distinct from one performed operation",
+      "status": "ACTUALLY_READ_CONCEPTUAL",
+      "grant": "BIBLIOGRAPHIC_AND_RESEARCH_ONLY",
+      "effect_size": null
+    },
+    {
+      "key": "LAHIRE_2011",
+      "source": "Bernard Lahire, The Plural Actor, English translation David Fernbach, Polity English edition 2011; attached PDF SHA256 03fefe3982d4f1e07b003b5f44c7b6f17ac5407707a4338c58ed5f98936ad0bb",
+      "passage": "English preface p xi; Act I Scene 2 pp 50–52 conditional dispositions/disposition needs independently characterized practices+contexts+histories; pp 56–57 inhibition and latency",
+      "status": "ACTUALLY_READ_CONCEPTUAL_AND_METHODOLOGICAL",
+      "grant": "PRIVATE_UPLOADED_TEXT_READ_ONLY_NOT_NATIVE_DATA",
+      "effect_size": null
+    },
+    {
+      "key": "KOHN_SCHOOLER_1983",
+      "source": "Melvin L. Kohn and Carmi Schooler, Work and Personality (Norwood, 1983); attached PDF SHA256 4bb05c2205242150f03c38ab3f6f5ed87dfeedcd71be1702fb24cffb2fa07cab; Preface pp ix–xi",
+      "passage": "1964 cross-section versus follow-up longitudinal identification; separate occupational selection and job causal influence; measure work conditions not merely occupation labels",
+      "status": "ACTUALLY_READ_EMPIRICAL_METHOD_DESIGN_NOT_GM01_ESTIMATE",
+      "grant": "PRIVATE_UPLOADED_TEXT_READ_ONLY_NOT_RAW_DATA",
+      "effect_size": null
+    },
+    {
+      "key": "KOHN_SCHOOLER_1982",
+      "source": "M. L. Kohn and C. Schooler, Job Conditions and Personality: A Longitudinal Assessment of Their Reciprocal Effects, American Journal of Sociology 87(6), 1257–1286, DOI 10.1086/227593",
+      "passage": "public abstract documents reciprocal job conditions, orientations and selection, not individual material-tool training",
+      "status": "ACTUALLY_READ_PUBLIC_ABSTRACT_NOT_FULL_ARTICLE",
+      "grant": "BIBLIOGRAPHIC_PUBLIC_ABSTRACT_ONLY",
+      "effect_size": null
+    }
+  ],
+  "evidence_types_and_owners": [
+    {
+      "field": "world_option",
+      "source_owner": "qualified material/selected-world owner (original Pyat if native)",
+      "minimum": "timestamp, tool count, scarcity, material feasibility as-of E1; no actor knowledge implied",
+      "native_required": true
+    },
+    {
+      "field": "b_independent_material_act",
+      "source_owner": "ADP015/actor B independent performer and C8 original event custodian",
+      "minimum": "B performed SHARE_TOOL or REFUSE_TOOL, own source, material conservation, B time before E1",
+      "native_required": true
+    },
+    {
+      "field": "e1_admitted",
+      "source_owner": "ADP010/019 and C8 original occurrence",
+      "minimum": "exact event_ref, scene/time, actual encounter or admitted exposure, not raw narrator assertion",
+      "native_required": true
+    },
+    {
+      "field": "a_actor_access",
+      "source_owner": "ADP016/017 actor-local perception and access issuer",
+      "minimum": "witness A could access specific part of E1, its limits, as-of time and source; UNSEEN and UNKNOWN distinct",
+      "native_required": true
+    },
+    {
+      "field": "a_response_event",
+      "source_owner": "A distinct performed response/action owner with admitted local time/clock",
+      "minimum": "A own event-specific immediate ATTEND_OBJECT / REQUEST_TOOL / EXPLICIT_REFUSAL receipt after accessible E1 and before later E2; causal event_ref attributed, no inferred action",
+      "native_required": true
+    },
+    {
+      "field": "a_conditioning_context",
+      "source_owner": "CAN008 authorized read-only person/history/project owner",
+      "minimum": "A current project, prior enacted source and contrary project facts, readset; role/class alone forbidden",
+      "native_required": true
+    },
+    {
+      "field": "a_later_practice_warrant",
+      "source_owner": "distinct CAN011 empirical scientific issuer",
+      "minimum": "independently measured pre-competence, multiple matched opportunities/nonaction denominators, cross-task/context transfer, owner-granted actual longitudinal/intervention source",
+      "native_required": true
+    }
+  ],
+  "no_new_state_required": true,
+  "CAN008_RULE_A_CANDIDATE": {
+    "candidate_rule_id": "S35_CAN008_OBJECT_DIRECTED_PRESENT_ORIENTATION_A@1",
+    "owner_jurisdiction": "V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE__CONCRETE_ISSUER_NOT_VERIFIED",
+    "effective_from": "ONLY_AFTER_COMPETENT_ISSUE",
+    "expires_at": null,
+    "revoked": false,
+    "input_groups": {
+      "precipitating_event": [
+        "e1_admitted.event_ref",
+        "e1_admitted.time"
+      ],
+      "read_only_conditioning": [
+        "world_option",
+        "b_independent_material_act",
+        "a_conditioning_context"
+      ],
+      "actor_local_modality": [
+        "a_actor_access",
+        "a_response_event"
+      ],
+      "authority": [
+        "source_rights_host_purpose",
+        "issuer_signature",
+        "actor_scope",
+        "clock_scope"
+      ]
+    },
+    "conditional_algorithm": [
+      "IF rule not original-issued OR native source/rights missing THEN NATIVE=HELD; keep all possible candidate decisions explicitly TEST_ONLY and uncommitted.",
+      "IF E1 not admitted, actor/source identity mismatched, future/revoked evidence, or forged A/B event THEN DENY (not a psychological negative).",
+      "IF objective B share/refusal or tool availability exists but actor access to THIS E1 is not established THEN A status UNKNOWN_RECEIVABILITY; response_effects VALID_EMPTY; no assertion A perceived B, A learned or A preferred an outcome.",
+      "IF A saw E1 but no A-owned immediate response is witnessed THEN status RECEIVABLE_NO_OBSERVED_UPTAKE; effect VALID_EMPTY; observation cannot decide A's private appraisal.",
+      "IF A's independently performed, time-ordered event-specific ATTEND_OBJECT, REQUEST_TOOL or EXPLICIT_REFUSAL is witnessed and actor access verified THEN candidate status OBSERVED_IMMEDIATE_OBJECT_ORIENTATION or OBSERVED_CURRENT_REFUSAL accordingly, with actor-owned source ref. Positive is observed present action, NOT inferred motive/disposition.",
+      "IF incompatible current project is witnessed AND no observed A response THEN AMBIGUOUS_CONTRADICTORY; effect VALID_EMPTY; if A response is independently witnessed preserve both contrary and response refs without synthesizing them.",
+      "NEVER infer response from task/role/class/Enneagram, B-only world event, two historical acts, a later synthetic E2, or external narrator. NEVER emit V3MS on CAN008."
+    ],
+    "outcomes": [
+      "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "OBSERVED_CURRENT_REFUSAL",
+      "RECEIVABLE_NO_OBSERVED_UPTAKE",
+      "UNKNOWN_RECEIVABILITY",
+      "AMBIGUOUS_CONTRADICTORY",
+      "COUPLING_VALID_EMPTY",
+      "DENY",
+      "HELD_UNISSUED"
+    ],
+    "output_shape": {
+      "immediate_response_receipt": {
+        "event_ref": "E1 exact",
+        "actor_id": "A exact",
+        "observed_response_ref": "A performed or null",
+        "recruited_refs": "only source-qualified read-only context refs; not psyche",
+        "uptake_refs": "only actor-owned witnessed orientation; otherwise empty",
+        "candidate_route": "S35_OBSERVED_PRESENT_ORIENTATION_OR_VALID_EMPTY",
+        "readset_refs": "exact E1, B, actor-access, A response, context, world",
+        "target_proposals": [],
+        "reason": "qualified outcome code",
+        "grade": "DOCUMENTARY_CANDIDATE_NOT_NATIVE"
+      },
+      "belief_update": null,
+      "emotion_update": null,
+      "durable_update": null
+    }
+  },
+  "CAN011_RULE_T_CANDIDATE": {
+    "candidate_rule_id": "S35_CAN011_PRACTICE_LEARNING_T_NO_CHANGE@1",
+    "target_kind": "V3MS_PRACTICE",
+    "target_semantic_object": "c9p:coordinated_material_inspection",
+    "distinct_scientific_issuer": "CAN011_CONCRETE_TARGET_ISSUER_UNVERIFIED",
+    "operation": "NO_CHANGE",
+    "grant": null,
+    "permission": null,
+    "target_proposal": null,
+    "create_allowed": false,
+    "prestate_mutation": false,
+    "conditional_algorithm": [
+      "IF no actor-linked, independently supported longitudinal acquisition plus role/selection/competence alternatives => NO_CHANGE; no target proposal; C9R evaluate_target(proposal=None) returns NO_CHANGE/NO_PROPOSAL.",
+      "IF A enacted episode occurred, preserve objective action/world history through its own owner; DO NOT treat it as proof of durable V3MS.",
+      "IF multiple enacted episodes exist but independent before/after transfer and matched opportunities absent, still NO_CHANGE.",
+      "IF contradictory projects, denied opportunity, refused material offer or actor did not enact, preserve contradiction and NO_CHANGE.",
+      "IF fraudulent source/forbidden original grant => DENY not NO_CHANGE; if needed histories cannot be observed => epistemic UNKNOWN/HOLD with no target.",
+      "Any later CREATE/REVISE requires a NEW independently issued rule and grant, test negative prior-history cut at same later E2/C12 actor effect."
+    ],
+    "out": {
+      "branch": "NO_CHANGE",
+      "reason": "NO_PROPOSAL_OR_ACQUISITION_WARRANT",
+      "state_kind_id": "V3MS_PRACTICE",
+      "target_id": "",
+      "permission_ref": "",
+      "native_issued": false
+    }
+  },
+  "C9R_ACTUAL_CONSUMER": {
+    "code_cut": "6fa2939972ce5a2c0cc4f2b033946b276f1c2934",
+    "response_rules_blob": "a5c30af336116863e2e6805299b772c89a2ad841",
+    "target_rules_blob": "c33fc2a6a58efd422cb5289c080205b9e0183102",
+    "pipeline_blob": "cb0350909dedd9f7159dce145ba216b211a8185c",
+    "entry": "candidate.pipeline.run_candidate_path",
+    "lookup": "candidate.response_rules.lookup_rule",
+    "response": "candidate.response_rules.evaluate_response",
+    "target": "candidate.target_rules.evaluate_target",
+    "transaction": "candidate.transaction.CandidateStore.commit",
+    "later": "candidate.later_action.read_target_for_later_action",
+    "performed": "candidate.action_admission.admit_performed_action",
+    "exact_existing_fields": [
+      "actor_raw",
+      "event_raw",
+      "conditioning_sources",
+      "response_registry",
+      "target_registry",
+      "authority_id",
+      "rule_version",
+      "rule_content_hash",
+      "as_of",
+      "permitted_issuer_refs",
+      "other_person_offer_ref",
+      "material_opportunity_ref",
+      "enacted_history_refs",
+      "target_permission",
+      "action_owner_receipt",
+      "later_consumer",
+      "later_as_of"
+    ],
+    "target_no_change_interface": "candidate.target_rules.evaluate_target(registry=..., proposal=None, permission=None, actor_id=..., before_target_hash=..., existing_target_ids=..., prior_event_hash=..., as_of=..., enacted_history_refs=..., permitted_issuer_refs=...) yields TargetBranch.NO_CHANGE, TargetReason.NO_PROPOSAL",
+    "critical_gap": "Current response evaluate_response LACKS a_actor_access and a_response_event, constructs declared_uptake from conditioning refs and CREATE proposal if >=2 distinct TEST_ONLY enacted refs+offer+material. That threshold is adapter verification, NOT learning science. S35 MUST NOT be registered or auto-run using this unchanged function for psychological claims. A lawful source-neutral adapter/owner patch must pass actor-access/current-response and permit response with zero target proposals; production code remains untouched by S35.",
+    "current_native_registries": {
+      "CAN008_RULES": 0,
+      "CAN011_RULES": 0
+    },
+    "native_installable_now": false,
+    "next_engineering_consumer": "M35 separate BP2 source-intake engineer, not S35; exact currently callable target NO_PROPOSAL port, with source-qualified A rule implementation only after competent science issuer and independent engineering court"
+  },
+  "scientific_alternatives": {
+    "H1": "Acquired context-dependent inspection practice rather than ability previously present; requires independent pre/post practices under matched material opportunities across contexts, no-change countercases, transfer corroboration.",
+    "H0": "role/task selection and preexisting knowledge with identical observed inspections; default live. Sever earlier practice history while controlling baseline ability and opportunities in held-out later E2; acquisition difference must disappear.",
+    "H2": "independent B share alters feasible tools, not A's access or internal response; B refusal/share should change material capability even when both produce same outward HELP_REFUSE.",
+    "H3": "incompatible projects, latency, refusals, institutional obligations make A response varied or no-change; no priority coefficient or forced integration."
+  },
+  "hypothetical_test_vectors": [
+    {
+      "id": "P1_OBSERVED_IMMEDIATE_POSITIVE_TEST_ONLY",
+      "status": "SPECIFICATION_ONLY_NOT_RUN",
+      "world": {
+        "a_tools_before": 0,
+        "b_act": "SHARE_TOOL",
+        "b_performed": true,
+        "a_tools_after": 1
+      },
+      "E1": {
+        "admitted": true,
+        "actor_access": "ADMITTED_A_LOCAL_VISUAL",
+        "source": "TEST_ONLY_E1_P1"
+      },
+      "A": {
+        "response_ref": "TEST_ONLY_A_PERFORMED_REQUEST_TOOL_P1",
+        "response_kind": "REQUEST_TOOL",
+        "directed_to_E1": true,
+        "contradictory_project": false
+      },
+      "expected_A": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "expected_T": "NO_CHANGE",
+      "expected_v3ms_created": 0,
+      "expected_knowledge": "ONLY_EXACT_OBSERVED_ACCESS_NOT_B_PRIVATE_MOTIVE"
+    },
+    {
+      "id": "N1_B_SHARE_BUT_A_UNAWARE",
+      "status": "SPECIFICATION_ONLY_NOT_RUN",
+      "world": {
+        "a_tools_before": 0,
+        "b_act": "SHARE_TOOL",
+        "b_performed": true,
+        "a_tools_after": 1
+      },
+      "E1": {
+        "admitted": true,
+        "actor_access": "NOT_WITNESSED",
+        "source": "TEST_ONLY_E1_N1"
+      },
+      "A": {
+        "response_ref": null,
+        "contradictory_project": false
+      },
+      "expected_A": "UNKNOWN_RECEIVABILITY",
+      "expected_T": "NO_CHANGE",
+      "expected_v3ms_created": 0
+    },
+    {
+      "id": "N2_CONTRARY_PROJECT_NO_RESPONSE",
+      "status": "SPECIFICATION_ONLY_NOT_RUN",
+      "world": {
+        "a_tools_before": 1,
+        "b_act": "REFUSE_TOOL",
+        "b_performed": true,
+        "a_tools_after": 1
+      },
+      "E1": {
+        "admitted": true,
+        "actor_access": "ADMITTED_A_LOCAL_VISUAL",
+        "source": "TEST_ONLY_E1_N2"
+      },
+      "A": {
+        "response_ref": null,
+        "contradictory_project": true
+      },
+      "expected_A": "AMBIGUOUS_CONTRADICTORY",
+      "expected_T": "NO_CHANGE",
+      "expected_v3ms_created": 0
+    },
+    {
+      "id": "N3_DIFFERENT_B_CAUSE_SAME_PUBLIC_EXPRESSION",
+      "status": "SPECIFICATION_ONLY_NOT_RUN",
+      "world": {
+        "a_tools_before": 0,
+        "alternatives": [
+          "B_REFUSE; A tools=0",
+          "B_SHARE; A independently INSPECTED and consumed tool; A tools=0"
+        ]
+      },
+      "A": {
+        "public_surface": "HELP_REFUSE_DUE_TO_CURRENT_TOOL_SHORTAGE",
+        "actor_knows_B_motive": false
+      },
+      "expected": "SAME_VISIBLE_MESSAGE_PERMITTED__DIFFERENT_ORIGINAL_CAUSAL_SOURCE__NO_AUTOMATIC_A_APPRAISAL",
+      "expected_T": "NO_CHANGE"
+    },
+    {
+      "id": "N4_LABEL_ONLY_PERTURBATION",
+      "status": "SPECIFICATION_ONLY_NOT_RUN",
+      "change_only": [
+        "class_label",
+        "demographic_label",
+        "Enneagram_label"
+      ],
+      "expected": "A and T decisions IDENTICAL when actor E1/access/action/world/readsets remain fixed"
+    },
+    {
+      "id": "N5_PRIOR_ACTS_WITHOUT_BEFORE_AFTER_TRANSFER",
+      "status": "SPECIFICATION_ONLY_NOT_RUN",
+      "actor_history": [
+        "TEST_ONLY_ENACT_1",
+        "TEST_ONLY_ENACT_2"
+      ],
+      "external_science": "NO_DOMAIN_ACQUISITION_VALIDATION",
+      "expected_A": "DEPEND_ON_PRESENT_ACTOR_ACCESS_AND_WITNESSED_RESPONSE_ONLY",
+      "expected_T": "NO_CHANGE"
+    }
+  ],
+  "execution_passport": {
+    "execution_class": "S0_DOCUMENTARY_GITHUB",
+    "python_or_pytest": "NOT_RUN",
+    "actual_c9r_invocation": "NOT_RUN",
+    "private_source_data": "NOT_READ",
+    "scholarly_books": "SELECTED_PASSAGES_READ",
+    "no_self_issuance": true,
+    "source_authority_grants_added": 0
+  }
+}

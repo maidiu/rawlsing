@@ -1,0 +1,28 @@
+{
+  "claims": [
+    {
+      "actual_consumer": "JoinedSession.do_help -> R31E expression admission on the persisted C12/M6 branch",
+      "claim_id": "SOROK_JOIN_E_MATERIAL_STATE_TO_EXPRESSION",
+      "claimed_dependency": "J E2/omission material action changes the persisted actor tool state, which changes the E help admission from HELP_ACCEPT to HELP_REFUSE",
+      "fault": {
+        "new": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.material_inspect()",
+        "old": "            if perform == 'e2':\n                product.material_inspect()\n            else:\n                product.record_omission()",
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_material_omission_vs_e2_changes_help_without_patch"
+    },
+    {
+      "actual_consumer": "RefusalSession source-derived tools_remaining -> R31E help admission",
+      "claim_id": "SOROK_JOIN_E_B_SOURCE_TOOL_READ_RECEIVING_EDGE",
+      "claimed_dependency": "Within the derived targetless adapter, B REFUSE_TOOL material_feasible_after=False drives tools_remaining=0, which drives E HELP_REFUSE; B SHARE_TOOL drives tools=1 and HELP_ACCEPT. This is a bounded receiving-edge tool-read proof, NOT original upstream B pre-C8 event replacement through C8/C9.",
+      "fault": {
+        "new": "        self.world.actor_state['A']['tools_remaining'] = (\n            1 if source.get('material_feasible_after') else 1)\n",
+        "old": "        self.world.actor_state['A']['tools_remaining'] = (\n            1 if source.get('material_feasible_after') else 0)\n",
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/refusal.py"
+      },
+      "positive_node": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_b_source_edge_help_observable_and_targetless_no_target",
+      "scope": "BOUNDED_RECEIVING_EDGE_ONLY__UPSTREAM_B_PREC8_SEVERANCE_NOT_PROVED"
+    }
+  ],
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1"
+}

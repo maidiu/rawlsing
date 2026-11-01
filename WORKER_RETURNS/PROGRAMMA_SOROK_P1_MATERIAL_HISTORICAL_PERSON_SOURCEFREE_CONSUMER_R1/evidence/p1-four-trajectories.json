@@ -1,0 +1,2043 @@
+{
+  "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "invariants": {
+    "A_B_same_b_event_hash": true,
+    "B_has_no_a_response": true,
+    "B_has_no_target": true,
+    "C_never_help_accept": true,
+    "C_targetless": true,
+    "D_help_differs": true,
+    "D_tools_differ": true
+  },
+  "native": false,
+  "schema": "SOROK_P1_FOUR_MATERIAL_TRAJECTORIES@1",
+  "trajectories": {
+    "A": {
+      "a_access_admitted": true,
+      "a_action": "REQUEST_TOOL",
+      "a_help": {
+        "accepted": true,
+        "admission": {
+          "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
+          "admission_id": "b56419f4436500405bdaaad29b752debe35e8d48895c5c3d7bc10f57a9ed98be",
+          "attention_excluded": true,
+          "clock": 10,
+          "consumed_state_hash": "471e56488c65eea02a5ed39fc8894af0147656f0850f994038119a3772b6d3b6",
+          "contact_outcome": "",
+          "contract_hash": "fc9ddfec1a7f61ee3ac28bb5a3bd68bf1048b3b6ebdfe1cb15151459dea3161d",
+          "fact_count": 1,
+          "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+          "knowledge_ref_count": 0,
+          "message_episode_id": "",
+          "motive_status": "MOTIVE_UNDERDETERMINED",
+          "native": false,
+          "schema": "R31E_EXPRESSION_ADMISSION@1",
+          "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+          "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_d5e01cb8b7fd9af0d1bf2569f916adcbab1813bade9b8b17f83fef5340773466",
+          "strategy": "HELP_ACCEPT",
+          "target_id": "96d03ced284a9735bf71c8a98067f1cde3ee4a04c6b8413ab9367fd19fd2b84e",
+          "template_id": "help_accept_2",
+          "validation": {
+            "checks": {
+              "a_at_workshop": true,
+              "action_allowed": true,
+              "actor_present_or_message": true,
+              "contract_hash_current": true,
+              "facts_supported": true,
+              "knowledge_refs": true,
+              "no_private_tokens": true,
+              "no_private_values": true,
+              "not_stale_clock": true,
+              "repair_capacity": true,
+              "scene_open_or_message": true,
+              "speech_length": true,
+              "speech_nonempty": true,
+              "speech_single_line": true,
+              "template_known": true,
+              "template_rerender_exact": true
+            },
+            "ok": true
+          }
+        },
+        "candidate": {
+          "action": "REPAIR",
+          "contact": "",
+          "facts": [
+            {
+              "field": "tools_remaining",
+              "kind": "ACTOR_FIELD",
+              "value": 1
+            }
+          ],
+          "gesture": "A clears a space at the bench.",
+          "knowledge_refs": [],
+          "schema": "R31E_EXPRESSION_CANDIDATE@1",
+          "slots": {},
+          "speech": "Put your hand on the near edge. I'll take the slack.",
+          "strategy": "HELP_ACCEPT",
+          "template_id": "help_accept_2",
+          "tone": "practical",
+          "variant": 1
+        },
+        "contract_hash": "fc9ddfec1a7f61ee3ac28bb5a3bd68bf1048b3b6ebdfe1cb15151459dea3161d",
+        "status": "OK",
+        "strategy": "HELP_ACCEPT",
+        "surface": [
+          "A material repair is performed in the workshop.",
+          "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+        ]
+      },
+      "a_tools_remaining": 1,
+      "b_operation": "SHARE_TOOL",
+      "branch": "first_session",
+      "c12": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 8,
+          "episode": 7,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+      "cold": {
+        "branch": "first_session",
+        "ok": true,
+        "process": {
+          "executable": "/usr/local/bin/python3",
+          "pid": 18692
+        },
+        "returncode": 0,
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        },
+        "state_root": "/private/tmp/p1-run-final/A_share_access_request",
+        "status": {
+          "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+          "attention": "focused",
+          "branch_id": "first_session",
+          "branch_lineage": null,
+          "clock": 10,
+          "contact": false,
+          "e_source_ref": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+          "expression_port": "R31E_EXPRESSION_PORT@1",
+          "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+          "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+          "j_target_id": "96d03ced284a9735bf71c8a98067f1cde3ee4a04c6b8413ab9367fd19fd2b84e",
+          "location": "workshop",
+          "material_performance": "omit",
+          "messages": 0,
+          "native": false,
+          "present": [
+            {
+              "actor": "A",
+              "public_role": "repair"
+            },
+            {
+              "actor": "B",
+              "public_role": "finishing"
+            }
+          ],
+          "root_branch_id": "root",
+          "scenario": "available",
+          "scene_open": true,
+          "schema": "R31E_FIRST_NEIGHBOR_SESSION@1"
+        },
+        "verify": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 8,
+            "episode": 7,
+            "perception": 12,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "lineage": {
+            "checks": {
+              "no_lineage_is_root_session": true,
+              "parent_is_c12_root": true
+            },
+            "observed": {
+              "branch": {
+                "actor_ids": [
+                  "A",
+                  "B",
+                  "U"
+                ],
+                "branch_id": "first_session",
+                "created_clock": 10,
+                "fork_clock": 10,
+                "parent_branch_id": "root",
+                "root_counts": {
+                  "checkpoint": 4,
+                  "episode": 2,
+                  "perception": 2,
+                  "world_event": 1
+                },
+                "root_hash": "445b5be98bb1e84f6acabc439df5d41e2bc2676469ab15e1650b641e7cd2b809"
+              },
+              "branch_id": "first_session"
+            },
+            "ok": true
+          },
+          "ok": true,
+          "root": {
+            "branch_id": "root",
+            "counts": {
+              "checkpoint": 4,
+              "episode": 2,
+              "perception": 2,
+              "world_event": 1
+            },
+            "errors": [],
+            "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+            "ok": true,
+            "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+          },
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        }
+      },
+      "e1_event_hash": "5a674ae417ce80b92c969beb084dc7b7521efcb8105c99747da25eee1a8fbbd8",
+      "id": "A_SHARE_ACCESS_A_REQUEST",
+      "meta_schema": "SOROK_SAME_PERSON_JOIN@1",
+      "native": false,
+      "root_branch": "root",
+      "root_c12": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 4,
+          "episode": 2,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "s35": {
+        "a_access": "ADMITTED",
+        "a_actions": [
+          "REQUEST_TOOL"
+        ],
+        "a_response": "REQUEST_TOOL",
+        "b_operation": "SHARE_TOOL",
+        "b_refusal_implies_a_help_accept": false,
+        "grade": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+        "labels_ignored": [],
+        "native": false,
+        "prior_acts_ignored": [],
+        "schema": "S35_CONDITIONAL_A_T_ADAPTER@1",
+        "status": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "t": {
+          "beforestate_mutation": false,
+          "grant": null,
+          "native": false,
+          "operation": "NO_CHANGE",
+          "state_kind": "V3MS_PRACTICE",
+          "target_proposal": null
+        }
+      },
+      "source": {
+        "a_e1_clock": 6,
+        "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+        "a_e1_ref": "TEST_ONLY_EVENT_e1",
+        "b_actor": "TEST_ONLY_R31J_B",
+        "b_clock": 5,
+        "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "b_event_ref": "TEST_ONLY_EVENT_share",
+        "b_operation": "SHARE_TOOL",
+        "b_owner": "TEST_ONLY_OWNER_share",
+        "b_performed": true,
+        "b_quantity": 1,
+        "b_to_actor": "TEST_ONLY_R31J_A",
+        "native": false,
+        "psychology_claim": false,
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        "source_grade": "TEST_ONLY_SOURCEFREE"
+      },
+      "state_root": "/private/tmp/p1-run-final/A_share_access_request",
+      "target_id": "96d03ced284a9735bf71c8a98067f1cde3ee4a04c6b8413ab9367fd19fd2b84e",
+      "world_clock": 10
+    },
+    "B": {
+      "a_access_admitted": false,
+      "a_response": null,
+      "body": {
+        "a_access_admitted": false,
+        "a_response": null,
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "c9": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_readset": [
+            "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+          ],
+          "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+          "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+          "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+          "c8_occurrence_id": "OCC-0001",
+          "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+          "committed": true,
+          "conditioning_readset": [
+            "TEST_ONLY_BP2_MATERIAL_A"
+          ],
+          "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+          "e1_adp019": {
+            "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+            "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+            "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+            "event_time": 242,
+            "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
+            "native_grant": "NOT_GRANTED",
+            "occurrence_id": "OCC-0001",
+            "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+            "writer_version": 1
+          },
+          "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+          "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+          "event_reason": "OK",
+          "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+          "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+          "later_read_state_hash": "",
+          "later_read_status": "STATE_ABSENT",
+          "material_eligible": false,
+          "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+          "no_ghost": true,
+          "proposal_hash": "",
+          "record_hash": "",
+          "response_hash": "",
+          "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+          "response_receipt_hash": "",
+          "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+          "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+          "rule_lookup": "FOUND",
+          "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+          "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+          "stages": [
+            {
+              "ok": true,
+              "reason": "OK",
+              "stage": "actor_ingress"
+            },
+            {
+              "ok": true,
+              "reason": "OK",
+              "stage": "event_witness_ingress"
+            },
+            {
+              "ok": true,
+              "reason": "OK",
+              "stage": "conditioning_read_only"
+            },
+            {
+              "ok": false,
+              "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+              "stage": "material_eligibility"
+            },
+            {
+              "ok": true,
+              "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+              "stage": "can008_response_rule_lookup"
+            },
+            {
+              "ok": true,
+              "reason": "OK",
+              "stage": "occurrence_admission"
+            },
+            {
+              "ok": true,
+              "reason": "NO_PROPOSAL",
+              "stage": "can011_target_evaluation"
+            },
+            {
+              "ok": true,
+              "reason": "COMMITTED",
+              "stage": "atomic_commit"
+            },
+            {
+              "ok": false,
+              "reason": "COMMITTED_TARGET_STATE_ABSENT",
+              "stage": "later_action_target_read"
+            },
+            {
+              "ok": false,
+              "reason": "OWNER_RECEIPT_MISSING",
+              "stage": "performed_action_admission"
+            }
+          ],
+          "target_branch": "NO_CHANGE",
+          "target_id": "",
+          "target_reason": "NO_PROPOSAL"
+        },
+        "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+        "gm01_source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        },
+        "native": false,
+        "s35_status": "UNKNOWN_RECEIVABILITY",
+        "s35_t": "NO_CHANGE",
+        "target_id": ""
+      },
+      "c8": {
+        "anchor_log": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/rows.json",
+        "anchor_watermark": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/watermark.json",
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+        "journal_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/journal/journal.json",
+        "key_id": "BP2-TEST-KEY",
+        "key_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/keys/writer_keys.json",
+        "occurrence_id": "OCC-0001"
+      },
+      "c9": {
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_readset": [
+          "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+        ],
+        "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "committed": true,
+        "conditioning_readset": [
+          "TEST_ONLY_BP2_MATERIAL_A"
+        ],
+        "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+        "e1_adp019": {
+          "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+          "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+          "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+          "event_time": 242,
+          "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
+          "native_grant": "NOT_GRANTED",
+          "occurrence_id": "OCC-0001",
+          "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+          "writer_version": 1
+        },
+        "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_reason": "OK",
+        "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+        "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+        "later_read_state_hash": "",
+        "later_read_status": "STATE_ABSENT",
+        "material_eligible": false,
+        "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+        "no_ghost": true,
+        "proposal_hash": "",
+        "record_hash": "",
+        "response_hash": "",
+        "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+        "response_receipt_hash": "",
+        "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_lookup": "FOUND",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "stages": [
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "actor_ingress"
+          },
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "event_witness_ingress"
+          },
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "conditioning_read_only"
+          },
+          {
+            "ok": false,
+            "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "stage": "material_eligibility"
+          },
+          {
+            "ok": true,
+            "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "stage": "can008_response_rule_lookup"
+          },
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "occurrence_admission"
+          },
+          {
+            "ok": true,
+            "reason": "NO_PROPOSAL",
+            "stage": "can011_target_evaluation"
+          },
+          {
+            "ok": true,
+            "reason": "COMMITTED",
+            "stage": "atomic_commit"
+          },
+          {
+            "ok": false,
+            "reason": "COMMITTED_TARGET_STATE_ABSENT",
+            "stage": "later_action_target_read"
+          },
+          {
+            "ok": false,
+            "reason": "OWNER_RECEIPT_MISSING",
+            "stage": "performed_action_admission"
+          }
+        ],
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_reason": "NO_PROPOSAL"
+      },
+      "cold": {
+        "c12": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 2,
+            "episode": 1,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "ok": true,
+        "process": {
+          "executable": "/usr/local/bin/python3",
+          "pid": 18701
+        },
+        "returncode": 0,
+        "sidecar": {
+          "a_access_admitted": false,
+          "a_response": null,
+          "c8": {
+            "anchor_log": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/rows.json",
+            "anchor_watermark": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/anchor/watermark.json",
+            "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+            "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+            "journal_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/journal/journal.json",
+            "key_id": "BP2-TEST-KEY",
+            "key_path": "/private/tmp/p1-run-final/B_share_no_access/bp2/bp2/keys/writer_keys.json",
+            "occurrence_id": "OCC-0001"
+          },
+          "c9": {
+            "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+            "actor_readset": [
+              "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+            ],
+            "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+            "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+            "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+            "c8_occurrence_id": "OCC-0001",
+            "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+            "committed": true,
+            "conditioning_readset": [
+              "TEST_ONLY_BP2_MATERIAL_A"
+            ],
+            "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+            "e1_adp019": {
+              "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+              "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+              "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+              "event_time": 242,
+              "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
+              "native_grant": "NOT_GRANTED",
+              "occurrence_id": "OCC-0001",
+              "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+              "writer_version": 1
+            },
+            "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+            "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+            "event_reason": "OK",
+            "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+            "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+            "later_read_state_hash": "",
+            "later_read_status": "STATE_ABSENT",
+            "material_eligible": false,
+            "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "no_ghost": true,
+            "proposal_hash": "",
+            "record_hash": "",
+            "response_hash": "",
+            "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "response_receipt_hash": "",
+            "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+            "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+            "rule_lookup": "FOUND",
+            "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+            "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+            "stages": [
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "actor_ingress"
+              },
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "event_witness_ingress"
+              },
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "conditioning_read_only"
+              },
+              {
+                "ok": false,
+                "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                "stage": "material_eligibility"
+              },
+              {
+                "ok": true,
+                "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                "stage": "can008_response_rule_lookup"
+              },
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "occurrence_admission"
+              },
+              {
+                "ok": true,
+                "reason": "NO_PROPOSAL",
+                "stage": "can011_target_evaluation"
+              },
+              {
+                "ok": true,
+                "reason": "COMMITTED",
+                "stage": "atomic_commit"
+              },
+              {
+                "ok": false,
+                "reason": "COMMITTED_TARGET_STATE_ABSENT",
+                "stage": "later_action_target_read"
+              },
+              {
+                "ok": false,
+                "reason": "OWNER_RECEIPT_MISSING",
+                "stage": "performed_action_admission"
+              }
+            ],
+            "target_branch": "NO_CHANGE",
+            "target_id": "",
+            "target_reason": "NO_PROPOSAL"
+          },
+          "native": false,
+          "schema": "SOROK_P1_NO_ACCESS@1",
+          "source": {
+            "a_e1_clock": 6,
+            "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+            "a_e1_ref": "TEST_ONLY_EVENT_e1",
+            "b_actor": "TEST_ONLY_R31J_B",
+            "b_clock": 5,
+            "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+            "b_event_ref": "TEST_ONLY_EVENT_share",
+            "b_operation": "SHARE_TOOL",
+            "b_owner": "TEST_ONLY_OWNER_share",
+            "b_performed": true,
+            "b_quantity": 1,
+            "b_to_actor": "TEST_ONLY_R31J_A",
+            "native": false,
+            "psychology_claim": false,
+            "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+            "source_grade": "TEST_ONLY_SOURCEFREE"
+          },
+          "target_id": "",
+          "variant": "A_REPAIR_LONG"
+        },
+        "state_root": "/private/tmp/p1-run-final/B_share_no_access/product",
+        "view": {
+          "a_access_admitted": false,
+          "a_response": null,
+          "a_tools": 0,
+          "c12": {
+            "branch_id": "root",
+            "counts": {
+              "checkpoint": 2,
+              "episode": 1,
+              "perception": 2,
+              "world_event": 1
+            },
+            "errors": [],
+            "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+            "ok": true,
+            "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+          },
+          "episodes": [
+            {
+              "actor_id": "A",
+              "body": {
+                "a_access_admitted": false,
+                "a_response": null,
+                "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+                "c9": {
+                  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                  "actor_readset": [
+                    "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+                  ],
+                  "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+                  "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+                  "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                  "c8_occurrence_id": "OCC-0001",
+                  "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+                  "committed": true,
+                  "conditioning_readset": [
+                    "TEST_ONLY_BP2_MATERIAL_A"
+                  ],
+                  "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+                  "e1_adp019": {
+                    "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+                    "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+                    "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                    "event_time": 242,
+                    "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
+                    "native_grant": "NOT_GRANTED",
+                    "occurrence_id": "OCC-0001",
+                    "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+                    "writer_version": 1
+                  },
+                  "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+                  "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+                  "event_reason": "OK",
+                  "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+                  "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+                  "later_read_state_hash": "",
+                  "later_read_status": "STATE_ABSENT",
+                  "material_eligible": false,
+                  "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                  "no_ghost": true,
+                  "proposal_hash": "",
+                  "record_hash": "",
+                  "response_hash": "",
+                  "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                  "response_receipt_hash": "",
+                  "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+                  "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+                  "rule_lookup": "FOUND",
+                  "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+                  "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+                  "stages": [
+                    {
+                      "ok": true,
+                      "reason": "OK",
+                      "stage": "actor_ingress"
+                    },
+                    {
+                      "ok": true,
+                      "reason": "OK",
+                      "stage": "event_witness_ingress"
+                    },
+                    {
+                      "ok": true,
+                      "reason": "OK",
+                      "stage": "conditioning_read_only"
+                    },
+                    {
+                      "ok": false,
+                      "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                      "stage": "material_eligibility"
+                    },
+                    {
+                      "ok": true,
+                      "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                      "stage": "can008_response_rule_lookup"
+                    },
+                    {
+                      "ok": true,
+                      "reason": "OK",
+                      "stage": "occurrence_admission"
+                    },
+                    {
+                      "ok": true,
+                      "reason": "NO_PROPOSAL",
+                      "stage": "can011_target_evaluation"
+                    },
+                    {
+                      "ok": true,
+                      "reason": "COMMITTED",
+                      "stage": "atomic_commit"
+                    },
+                    {
+                      "ok": false,
+                      "reason": "COMMITTED_TARGET_STATE_ABSENT",
+                      "stage": "later_action_target_read"
+                    },
+                    {
+                      "ok": false,
+                      "reason": "OWNER_RECEIPT_MISSING",
+                      "stage": "performed_action_admission"
+                    }
+                  ],
+                  "target_branch": "NO_CHANGE",
+                  "target_id": "",
+                  "target_reason": "NO_PROPOSAL"
+                },
+                "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+                "gm01_source": {
+                  "a_e1_clock": 6,
+                  "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+                  "a_e1_ref": "TEST_ONLY_EVENT_e1",
+                  "b_actor": "TEST_ONLY_R31J_B",
+                  "b_clock": 5,
+                  "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+                  "b_event_ref": "TEST_ONLY_EVENT_share",
+                  "b_operation": "SHARE_TOOL",
+                  "b_owner": "TEST_ONLY_OWNER_share",
+                  "b_performed": true,
+                  "b_quantity": 1,
+                  "b_to_actor": "TEST_ONLY_R31J_A",
+                  "native": false,
+                  "psychology_claim": false,
+                  "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+                  "source_grade": "TEST_ONLY_SOURCEFREE"
+                },
+                "native": false,
+                "s35_status": "UNKNOWN_RECEIVABILITY",
+                "s35_t": "NO_CHANGE",
+                "target_id": ""
+              },
+              "branch_id": "root",
+              "clock": 10,
+              "episode_id": "TEST_ONLY_BP4_EP_a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+              "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+              "hash": "a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+              "kind": "GM01_NO_ACCESS",
+              "native": false,
+              "schema": "BP4_C12_EPISODE@1"
+            }
+          ],
+          "native": false,
+          "s35_status": "UNKNOWN_RECEIVABILITY",
+          "s35_t": "NO_CHANGE",
+          "schema": "SOROK_P1_NO_ACCESS_VIEW@1",
+          "source": {
+            "a_e1_clock": 6,
+            "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+            "a_e1_ref": "TEST_ONLY_EVENT_e1",
+            "b_actor": "TEST_ONLY_R31J_B",
+            "b_clock": 5,
+            "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+            "b_event_ref": "TEST_ONLY_EVENT_share",
+            "b_operation": "SHARE_TOOL",
+            "b_owner": "TEST_ONLY_OWNER_share",
+            "b_performed": true,
+            "b_quantity": 1,
+            "b_to_actor": "TEST_ONLY_R31J_A",
+            "native": false,
+            "psychology_claim": false,
+            "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+            "source_grade": "TEST_ONLY_SOURCEFREE"
+          },
+          "target_id": ""
+        }
+      },
+      "id": "B_SHARE_NO_ACCESS",
+      "native": false,
+      "s35": {
+        "a_access": "NOT_ADMITTED",
+        "a_actions": [],
+        "a_response": null,
+        "b_operation": "SHARE_TOOL",
+        "b_refusal_implies_a_help_accept": false,
+        "grade": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+        "labels_ignored": [],
+        "native": false,
+        "prior_acts_ignored": [],
+        "schema": "S35_CONDITIONAL_A_T_ADAPTER@1",
+        "status": "UNKNOWN_RECEIVABILITY",
+        "t": {
+          "beforestate_mutation": false,
+          "grant": null,
+          "native": false,
+          "operation": "NO_CHANGE",
+          "state_kind": "V3MS_PRACTICE",
+          "target_proposal": null
+        }
+      },
+      "source": {
+        "a_e1_clock": 6,
+        "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+        "a_e1_ref": "TEST_ONLY_EVENT_e1",
+        "b_actor": "TEST_ONLY_R31J_B",
+        "b_clock": 5,
+        "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "b_event_ref": "TEST_ONLY_EVENT_share",
+        "b_operation": "SHARE_TOOL",
+        "b_owner": "TEST_ONLY_OWNER_share",
+        "b_performed": true,
+        "b_quantity": 1,
+        "b_to_actor": "TEST_ONLY_R31J_A",
+        "native": false,
+        "psychology_claim": false,
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        "source_grade": "TEST_ONLY_SOURCEFREE"
+      },
+      "target_id": "",
+      "view": {
+        "a_access_admitted": false,
+        "a_response": null,
+        "a_tools": 0,
+        "c12": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 2,
+            "episode": 1,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "episodes": [
+          {
+            "actor_id": "A",
+            "body": {
+              "a_access_admitted": false,
+              "a_response": null,
+              "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+              "c9": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "actor_readset": [
+                  "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+                ],
+                "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+                "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+                "c8_commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                "c8_occurrence_id": "OCC-0001",
+                "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+                "committed": true,
+                "conditioning_readset": [
+                  "TEST_ONLY_BP2_MATERIAL_A"
+                ],
+                "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+                "e1_adp019": {
+                  "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+                  "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+                  "commit_receipt_id": "45953f2f140cfefe7769974cf965dc1c00d9b100e700277bcb446c972eb67a2a",
+                  "event_time": 242,
+                  "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
+                  "native_grant": "NOT_GRANTED",
+                  "occurrence_id": "OCC-0001",
+                  "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+                  "writer_version": 1
+                },
+                "event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+                "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+                "event_reason": "OK",
+                "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+                "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+                "later_read_state_hash": "",
+                "later_read_status": "STATE_ABSENT",
+                "material_eligible": false,
+                "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                "no_ghost": true,
+                "proposal_hash": "",
+                "record_hash": "",
+                "response_hash": "",
+                "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                "response_receipt_hash": "",
+                "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+                "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+                "rule_lookup": "FOUND",
+                "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+                "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+                "stages": [
+                  {
+                    "ok": true,
+                    "reason": "OK",
+                    "stage": "actor_ingress"
+                  },
+                  {
+                    "ok": true,
+                    "reason": "OK",
+                    "stage": "event_witness_ingress"
+                  },
+                  {
+                    "ok": true,
+                    "reason": "OK",
+                    "stage": "conditioning_read_only"
+                  },
+                  {
+                    "ok": false,
+                    "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                    "stage": "material_eligibility"
+                  },
+                  {
+                    "ok": true,
+                    "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                    "stage": "can008_response_rule_lookup"
+                  },
+                  {
+                    "ok": true,
+                    "reason": "OK",
+                    "stage": "occurrence_admission"
+                  },
+                  {
+                    "ok": true,
+                    "reason": "NO_PROPOSAL",
+                    "stage": "can011_target_evaluation"
+                  },
+                  {
+                    "ok": true,
+                    "reason": "COMMITTED",
+                    "stage": "atomic_commit"
+                  },
+                  {
+                    "ok": false,
+                    "reason": "COMMITTED_TARGET_STATE_ABSENT",
+                    "stage": "later_action_target_read"
+                  },
+                  {
+                    "ok": false,
+                    "reason": "OWNER_RECEIPT_MISSING",
+                    "stage": "performed_action_admission"
+                  }
+                ],
+                "target_branch": "NO_CHANGE",
+                "target_id": "",
+                "target_reason": "NO_PROPOSAL"
+              },
+              "e1_event_hash": "e7a6f645f6197dd7d5036319db8b2ea9dae4bf355f51ebb815aa818bd0f26946",
+              "gm01_source": {
+                "a_e1_clock": 6,
+                "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+                "a_e1_ref": "TEST_ONLY_EVENT_e1",
+                "b_actor": "TEST_ONLY_R31J_B",
+                "b_clock": 5,
+                "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+                "b_event_ref": "TEST_ONLY_EVENT_share",
+                "b_operation": "SHARE_TOOL",
+                "b_owner": "TEST_ONLY_OWNER_share",
+                "b_performed": true,
+                "b_quantity": 1,
+                "b_to_actor": "TEST_ONLY_R31J_A",
+                "native": false,
+                "psychology_claim": false,
+                "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+                "source_grade": "TEST_ONLY_SOURCEFREE"
+              },
+              "native": false,
+              "s35_status": "UNKNOWN_RECEIVABILITY",
+              "s35_t": "NO_CHANGE",
+              "target_id": ""
+            },
+            "branch_id": "root",
+            "clock": 10,
+            "episode_id": "TEST_ONLY_BP4_EP_a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+            "grade": "TEST_ONLY_SOURCEFREE_C12_TECHNICAL_NOT_NATIVE",
+            "hash": "a09e0e92f2c556079ffe4efc2906d341dd3f333f8c4a712109ff09516bc04ff8",
+            "kind": "GM01_NO_ACCESS",
+            "native": false,
+            "schema": "BP4_C12_EPISODE@1"
+          }
+        ],
+        "native": false,
+        "s35_status": "UNKNOWN_RECEIVABILITY",
+        "s35_t": "NO_CHANGE",
+        "schema": "SOROK_P1_NO_ACCESS_VIEW@1",
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        },
+        "target_id": ""
+      }
+    },
+    "C": {
+      "a_access_admitted": true,
+      "a_action": "EXPLICIT_REFUSAL",
+      "a_help": {
+        "accepted": false,
+        "admission": {
+          "action_event_id": "",
+          "admission_id": "0966f91dfa092a4f5a6cecabf03504e43a0aed318f660a977ed0e0f8155c68e9",
+          "attention_excluded": true,
+          "clock": 10,
+          "consumed_state_hash": "",
+          "contact_outcome": "",
+          "contract_hash": "77eba50c036cb026343e568447031a6abbe610957e8126251a6f32a1576da33a",
+          "fact_count": 1,
+          "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+          "knowledge_ref_count": 0,
+          "message_episode_id": "",
+          "motive_status": "MATERIAL_TIME_CONSTRAINT_ONLY",
+          "native": false,
+          "schema": "R31E_EXPRESSION_ADMISSION@1",
+          "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+          "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_9be9e10769eb6c77f031d572e30456e0e2d28ac1c5a13b2f4575d09f6acd7842",
+          "strategy": "HELP_REFUSE",
+          "target_id": "",
+          "template_id": "help_refuse_material_1",
+          "validation": {
+            "checks": {
+              "action_allowed": true,
+              "actor_present_or_message": true,
+              "contract_hash_current": true,
+              "facts_supported": true,
+              "knowledge_refs": true,
+              "no_private_tokens": true,
+              "no_private_values": true,
+              "not_stale_clock": true,
+              "scene_open_or_message": true,
+              "speech_length": true,
+              "speech_nonempty": true,
+              "speech_single_line": true,
+              "template_known": true,
+              "template_rerender_exact": true
+            },
+            "ok": true
+          }
+        },
+        "candidate": {
+          "action": "NONE",
+          "contact": "",
+          "facts": [
+            {
+              "kind": "MATERIAL_PRESSURE"
+            }
+          ],
+          "gesture": "A turns the empty bench over.",
+          "knowledge_refs": [],
+          "schema": "R31E_EXPRESSION_CANDIDATE@1",
+          "slots": {},
+          "speech": "I'm out of material. I can't start that now.",
+          "strategy": "HELP_REFUSE",
+          "template_id": "help_refuse_material_1",
+          "tone": "flat",
+          "variant": 0
+        },
+        "contract_hash": "77eba50c036cb026343e568447031a6abbe610957e8126251a6f32a1576da33a",
+        "status": "OK",
+        "strategy": "HELP_REFUSE",
+        "surface": [
+          "the repair worker says: \"I'm out of material. I can't start that now.\" A turns the empty bench over."
+        ]
+      },
+      "a_tools_remaining": 0,
+      "b_operation": "REFUSE_TOOL",
+      "branch": "first_session",
+      "c12": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 5,
+          "perception": 9,
+          "world_event": 3
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
+      "cold": {
+        "branch": "first_session",
+        "ok": true,
+        "process": {
+          "executable": "/usr/local/bin/python3",
+          "pid": 18703
+        },
+        "returncode": 0,
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421",
+          "b_event_ref": "TEST_ONLY_EVENT_refuse",
+          "b_operation": "REFUSE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_refuse",
+          "b_performed": true,
+          "b_quantity": 0,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        },
+        "state_root": "/private/tmp/p1-run-final/C_refuse_targetless",
+        "status": {
+          "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+          "attention": "focused",
+          "branch_id": "first_session",
+          "branch_lineage": null,
+          "c9": {
+            "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+            "actor_readset": [
+              "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+            ],
+            "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+            "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+            "c8_commit_receipt_id": "7b9ce85b2555846adddd6387b47d653dc40f299f22d80507b61d54b9a8dd7966",
+            "c8_occurrence_id": "OCC-0001",
+            "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
+            "committed": true,
+            "conditioning_readset": [
+              "TEST_ONLY_BP2_MATERIAL_A"
+            ],
+            "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+            "e1_adp019": {
+              "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+              "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+              "commit_receipt_id": "7b9ce85b2555846adddd6387b47d653dc40f299f22d80507b61d54b9a8dd7966",
+              "event_time": 242,
+              "identity_digest": "22f4219094b0c17fa7a54d87d651f61f123162ff6567365658ceb4e240a3906a",
+              "native_grant": "NOT_GRANTED",
+              "occurrence_id": "OCC-0001",
+              "state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
+              "writer_version": 1
+            },
+            "event_hash": "4ecd216ba02c86e474f65c93dfb8c3dc45bbe005becc6783fdab563a1bd6b0ef",
+            "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+            "event_reason": "OK",
+            "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+            "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+            "later_read_state_hash": "",
+            "later_read_status": "STATE_ABSENT",
+            "material_eligible": false,
+            "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "no_ghost": true,
+            "proposal_hash": "",
+            "record_hash": "",
+            "response_hash": "",
+            "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "response_receipt_hash": "",
+            "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+            "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+            "rule_lookup": "FOUND",
+            "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+            "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+            "stages": [
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "actor_ingress"
+              },
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "event_witness_ingress"
+              },
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "conditioning_read_only"
+              },
+              {
+                "ok": false,
+                "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                "stage": "material_eligibility"
+              },
+              {
+                "ok": true,
+                "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+                "stage": "can008_response_rule_lookup"
+              },
+              {
+                "ok": true,
+                "reason": "OK",
+                "stage": "occurrence_admission"
+              },
+              {
+                "ok": true,
+                "reason": "NO_PROPOSAL",
+                "stage": "can011_target_evaluation"
+              },
+              {
+                "ok": true,
+                "reason": "COMMITTED",
+                "stage": "atomic_commit"
+              },
+              {
+                "ok": false,
+                "reason": "COMMITTED_TARGET_STATE_ABSENT",
+                "stage": "later_action_target_read"
+              },
+              {
+                "ok": false,
+                "reason": "OWNER_RECEIPT_MISSING",
+                "stage": "performed_action_admission"
+              }
+            ],
+            "target_branch": "NO_CHANGE",
+            "target_id": "",
+            "target_reason": "NO_PROPOSAL"
+          },
+          "clock": 10,
+          "contact": false,
+          "expression_port": "R31E_EXPRESSION_PORT@1",
+          "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+          "location": "workshop",
+          "messages": 0,
+          "native": false,
+          "present": [
+            {
+              "actor": "A",
+              "public_role": "repair"
+            },
+            {
+              "actor": "B",
+              "public_role": "finishing"
+            }
+          ],
+          "scenario": "available",
+          "scene_open": true,
+          "schema": "R31E_FIRST_NEIGHBOR_SESSION@1",
+          "target_id": "",
+          "targetless": true
+        },
+        "verify": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 6,
+            "episode": 5,
+            "perception": 9,
+            "world_event": 3
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "lineage": {
+            "checks": {
+              "no_lineage_is_root_session": true,
+              "parent_is_c12_root": true
+            },
+            "observed": {
+              "branch": {
+                "actor_ids": [
+                  "A",
+                  "B",
+                  "U"
+                ],
+                "branch_id": "first_session",
+                "created_clock": 10,
+                "fork_clock": 10,
+                "parent_branch_id": "root",
+                "root_counts": {
+                  "checkpoint": 2,
+                  "episode": 1,
+                  "perception": 2,
+                  "world_event": 1
+                },
+                "root_hash": "f12de9a45e5f68a310b8bc5f3254dfee1a4a2bf38c165e5704b790f4c5ce7ba0"
+              },
+              "branch_id": "first_session"
+            },
+            "ok": true
+          },
+          "ok": true,
+          "provenance": {
+            "checks": {
+              "c12_c8_matches_sidecar": true,
+              "c12_e1_matches_sidecar": true,
+              "c8_actor_is_seed_a": true,
+              "c8_other_is_seed_b": true,
+              "meta_c8_matches_sidecar": true,
+              "meta_e1_matches_sidecar": true,
+              "meta_matches_c12": true,
+              "meta_matches_c8": true,
+              "native_grants_false": true,
+              "no_native_sidecar": true,
+              "provenance_readable": true,
+              "sidecar_matches_c12": true,
+              "sidecar_matches_c8": true,
+              "sidecar_matches_meta": true,
+              "source_actor_map": true,
+              "source_b_is_seed_b": true,
+              "source_b_to_is_seed_a": true,
+              "target_is_absent": true
+            },
+            "observed": {
+              "b_actor": "TEST_ONLY_R31J_B",
+              "b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421",
+              "b_operation": "REFUSE_TOOL",
+              "b_to_actor": "TEST_ONLY_R31J_A",
+              "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
+              "e1_event_hash": "4ecd216ba02c86e474f65c93dfb8c3dc45bbe005becc6783fdab563a1bd6b0ef",
+              "seed_actors": {
+                "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
+              },
+              "source_actor_map": {
+                "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+              }
+            },
+            "ok": true
+          },
+          "root": {
+            "branch_id": "root",
+            "counts": {
+              "checkpoint": 2,
+              "episode": 1,
+              "perception": 2,
+              "world_event": 1
+            },
+            "errors": [],
+            "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+            "ok": true,
+            "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+          },
+          "targetless": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        }
+      },
+      "e1_event_hash": "4ecd216ba02c86e474f65c93dfb8c3dc45bbe005becc6783fdab563a1bd6b0ef",
+      "id": "C_B_REFUSE_A_REFUSAL",
+      "meta_schema": "SOROK_SAME_PERSON_REFUSAL@1",
+      "native": false,
+      "root_branch": "root",
+      "root_c12": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 2,
+          "episode": 1,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "s35": {
+        "a_access": "ADMITTED",
+        "a_actions": [
+          "EXPLICIT_REFUSAL"
+        ],
+        "a_response": "EXPLICIT_REFUSAL",
+        "b_operation": "REFUSE_TOOL",
+        "b_refusal_implies_a_help_accept": false,
+        "grade": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+        "labels_ignored": [],
+        "native": false,
+        "prior_acts_ignored": [],
+        "schema": "S35_CONDITIONAL_A_T_ADAPTER@1",
+        "status": "OBSERVED_CURRENT_REFUSAL",
+        "t": {
+          "beforestate_mutation": false,
+          "grant": null,
+          "native": false,
+          "operation": "NO_CHANGE",
+          "state_kind": "V3MS_PRACTICE",
+          "target_proposal": null
+        }
+      },
+      "source": {
+        "a_e1_clock": 6,
+        "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+        "a_e1_ref": "TEST_ONLY_EVENT_e1",
+        "b_actor": "TEST_ONLY_R31J_B",
+        "b_clock": 5,
+        "b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421",
+        "b_event_ref": "TEST_ONLY_EVENT_refuse",
+        "b_operation": "REFUSE_TOOL",
+        "b_owner": "TEST_ONLY_OWNER_refuse",
+        "b_performed": true,
+        "b_quantity": 0,
+        "b_to_actor": "TEST_ONLY_R31J_A",
+        "native": false,
+        "psychology_claim": false,
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        "source_grade": "TEST_ONLY_SOURCEFREE"
+      },
+      "state_root": "/private/tmp/p1-run-final/C_refuse_targetless",
+      "target_id": "",
+      "world_clock": 10
+    },
+    "D": {
+      "difference": {
+        "a_action": [
+          "OMIT",
+          "ATTEND_OBJECT"
+        ],
+        "help_strategy": [
+          "HELP_ACCEPT",
+          "HELP_REFUSE"
+        ],
+        "material_tools": [
+          1,
+          0
+        ]
+      },
+      "id": "D_SHARE_E2_VS_OMIT",
+      "native": false,
+      "omitted": {
+        "a_action": "OMIT",
+        "a_help": {
+          "accepted": true,
+          "admission": {
+            "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
+            "admission_id": "2f72d563799fbbbf2ad8314afe56b691cb7b24982728c7741f8ed1816089d5c1",
+            "attention_excluded": true,
+            "clock": 10,
+            "consumed_state_hash": "4fab8dff49fae6964c9eecffb182399ae4964d182a97f9ac5a95af32f4e16e2a",
+            "contact_outcome": "",
+            "contract_hash": "2d0a6bb5761be52092e941625e7454302ba66b3b4520f0196982a60fe21fe6f5",
+            "fact_count": 1,
+            "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+            "knowledge_ref_count": 0,
+            "message_episode_id": "",
+            "motive_status": "MOTIVE_UNDERDETERMINED",
+            "native": false,
+            "schema": "R31E_EXPRESSION_ADMISSION@1",
+            "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_0f0f58cd07b4fca96db5abb323eee206fa9fa8b6a92016f73527f89e6e936e95",
+            "strategy": "HELP_ACCEPT",
+            "target_id": "a5e2b2ed8cbacffdd01c9e3638f53209d6e805bb59ff1e57ff4f0e9d6eddbcd8",
+            "template_id": "help_accept_2",
+            "validation": {
+              "checks": {
+                "a_at_workshop": true,
+                "action_allowed": true,
+                "actor_present_or_message": true,
+                "contract_hash_current": true,
+                "facts_supported": true,
+                "knowledge_refs": true,
+                "no_private_tokens": true,
+                "no_private_values": true,
+                "not_stale_clock": true,
+                "repair_capacity": true,
+                "scene_open_or_message": true,
+                "speech_length": true,
+                "speech_nonempty": true,
+                "speech_single_line": true,
+                "template_known": true,
+                "template_rerender_exact": true
+              },
+              "ok": true
+            }
+          },
+          "candidate": {
+            "action": "REPAIR",
+            "contact": "",
+            "facts": [
+              {
+                "field": "tools_remaining",
+                "kind": "ACTOR_FIELD",
+                "value": 1
+              }
+            ],
+            "gesture": "A clears a space at the bench.",
+            "knowledge_refs": [],
+            "schema": "R31E_EXPRESSION_CANDIDATE@1",
+            "slots": {},
+            "speech": "Put your hand on the near edge. I'll take the slack.",
+            "strategy": "HELP_ACCEPT",
+            "template_id": "help_accept_2",
+            "tone": "practical",
+            "variant": 1
+          },
+          "contract_hash": "2d0a6bb5761be52092e941625e7454302ba66b3b4520f0196982a60fe21fe6f5",
+          "status": "OK",
+          "strategy": "HELP_ACCEPT",
+          "surface": [
+            "A material repair is performed in the workshop.",
+            "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+          ]
+        },
+        "a_tools_remaining": 1,
+        "branch": "first_session",
+        "c12": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 8,
+            "episode": 7,
+            "perception": 12,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "cold": {
+          "branch": "first_session",
+          "ok": true,
+          "process": {
+            "executable": "/usr/local/bin/python3",
+            "pid": 18708
+          },
+          "returncode": 0,
+          "source": {
+            "a_e1_clock": 6,
+            "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+            "a_e1_ref": "TEST_ONLY_EVENT_e1",
+            "b_actor": "TEST_ONLY_R31J_B",
+            "b_clock": 5,
+            "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+            "b_event_ref": "TEST_ONLY_EVENT_share",
+            "b_operation": "SHARE_TOOL",
+            "b_owner": "TEST_ONLY_OWNER_share",
+            "b_performed": true,
+            "b_quantity": 1,
+            "b_to_actor": "TEST_ONLY_R31J_A",
+            "native": false,
+            "psychology_claim": false,
+            "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+            "source_grade": "TEST_ONLY_SOURCEFREE"
+          },
+          "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/omit",
+          "status": {
+            "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+            "attention": "focused",
+            "branch_id": "first_session",
+            "branch_lineage": null,
+            "clock": 10,
+            "contact": false,
+            "e_source_ref": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+            "expression_port": "R31E_EXPRESSION_PORT@1",
+            "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+            "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+            "j_target_id": "a5e2b2ed8cbacffdd01c9e3638f53209d6e805bb59ff1e57ff4f0e9d6eddbcd8",
+            "location": "workshop",
+            "material_performance": "omit",
+            "messages": 0,
+            "native": false,
+            "present": [
+              {
+                "actor": "A",
+                "public_role": "repair"
+              },
+              {
+                "actor": "B",
+                "public_role": "finishing"
+              }
+            ],
+            "root_branch_id": "root",
+            "scenario": "available",
+            "scene_open": true,
+            "schema": "R31E_FIRST_NEIGHBOR_SESSION@1"
+          },
+          "verify": {
+            "branch_id": "first_session",
+            "counts": {
+              "checkpoint": 8,
+              "episode": 7,
+              "perception": 12,
+              "world_event": 4
+            },
+            "errors": [],
+            "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+            "lineage": {
+              "checks": {
+                "no_lineage_is_root_session": true,
+                "parent_is_c12_root": true
+              },
+              "observed": {
+                "branch": {
+                  "actor_ids": [
+                    "A",
+                    "B",
+                    "U"
+                  ],
+                  "branch_id": "first_session",
+                  "created_clock": 10,
+                  "fork_clock": 10,
+                  "parent_branch_id": "root",
+                  "root_counts": {
+                    "checkpoint": 4,
+                    "episode": 2,
+                    "perception": 2,
+                    "world_event": 1
+                  },
+                  "root_hash": "4e7a8c11d91f7169fcd7e0fd8f084efbb4944a518702e39ef52cde977f11f11a"
+                },
+                "branch_id": "first_session"
+              },
+              "ok": true
+            },
+            "ok": true,
+            "root": {
+              "branch_id": "root",
+              "counts": {
+                "checkpoint": 4,
+                "episode": 2,
+                "perception": 2,
+                "world_event": 1
+              },
+              "errors": [],
+              "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+              "ok": true,
+              "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+            },
+            "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+          }
+        },
+        "e1_event_hash": "ecf55046500c361518825ee1460ae17744845580a618e743cb711451e6dcf2d0",
+        "meta_schema": "SOROK_SAME_PERSON_JOIN@1",
+        "native": false,
+        "root_branch": "root",
+        "root_c12": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 4,
+            "episode": 2,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "s35": {
+          "a_access": "ADMITTED",
+          "a_actions": [],
+          "a_response": null,
+          "b_operation": "SHARE_TOOL",
+          "b_refusal_implies_a_help_accept": false,
+          "grade": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+          "labels_ignored": [],
+          "native": false,
+          "prior_acts_ignored": [],
+          "schema": "S35_CONDITIONAL_A_T_ADAPTER@1",
+          "status": "RECEIVABLE_NO_OBSERVED_UPTAKE",
+          "t": {
+            "beforestate_mutation": false,
+            "grant": null,
+            "native": false,
+            "operation": "NO_CHANGE",
+            "state_kind": "V3MS_PRACTICE",
+            "target_proposal": null
+          }
+        },
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        },
+        "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/omit",
+        "target_id": "a5e2b2ed8cbacffdd01c9e3638f53209d6e805bb59ff1e57ff4f0e9d6eddbcd8",
+        "world_clock": 10
+      },
+      "performed": {
+        "a_action": "ATTEND_OBJECT",
+        "a_help": {
+          "accepted": false,
+          "admission": {
+            "action_event_id": "",
+            "admission_id": "39901d7bd7187cb24ea07ba72300730b7e5003e7096d6193fae56168d9b9eaa8",
+            "attention_excluded": true,
+            "clock": 10,
+            "consumed_state_hash": "609d24f1b7cb244d7273b967d3fced243b0dac57cc8f55f4568ca38798c4e9f4",
+            "contact_outcome": "",
+            "contract_hash": "75f9040ca0f2f8a96afa9020f869efb5f11a9e455c5b66b89fce4220c66f2911",
+            "fact_count": 1,
+            "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+            "knowledge_ref_count": 0,
+            "message_episode_id": "",
+            "motive_status": "MATERIAL_TIME_CONSTRAINT_ONLY",
+            "native": false,
+            "schema": "R31E_EXPRESSION_ADMISSION@1",
+            "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_32a84d8bb8177b285e84a535d18e7e007fe7d629cae2c930571dce9465461647",
+            "strategy": "HELP_REFUSE",
+            "target_id": "856d44b2da7be8e0ccefdf47132f83f045fc2f90c64d3c978f18eda4e6ab2ad9",
+            "template_id": "help_refuse_material_2",
+            "validation": {
+              "checks": {
+                "action_allowed": true,
+                "actor_present_or_message": true,
+                "contract_hash_current": true,
+                "facts_supported": true,
+                "knowledge_refs": true,
+                "no_private_tokens": true,
+                "no_private_values": true,
+                "not_stale_clock": true,
+                "scene_open_or_message": true,
+                "speech_length": true,
+                "speech_nonempty": true,
+                "speech_single_line": true,
+                "template_known": true,
+                "template_rerender_exact": true
+              },
+              "ok": true
+            }
+          },
+          "candidate": {
+            "action": "NONE",
+            "contact": "",
+            "facts": [
+              {
+                "kind": "MATERIAL_PRESSURE"
+              }
+            ],
+            "gesture": "A looks at the empty tool space.",
+            "knowledge_refs": [],
+            "schema": "R31E_EXPRESSION_CANDIDATE@1",
+            "slots": {},
+            "speech": "The tool's gone. I can't do it today.",
+            "strategy": "HELP_REFUSE",
+            "template_id": "help_refuse_material_2",
+            "tone": "flat",
+            "variant": 1
+          },
+          "contract_hash": "75f9040ca0f2f8a96afa9020f869efb5f11a9e455c5b66b89fce4220c66f2911",
+          "status": "OK",
+          "strategy": "HELP_REFUSE",
+          "surface": [
+            "the repair worker says: \"The tool's gone. I can't do it today.\" A looks at the empty tool space."
+          ]
+        },
+        "a_tools_remaining": 0,
+        "branch": "first_session",
+        "c12": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 8,
+            "episode": 6,
+            "perception": 10,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "cold": {
+          "branch": "first_session",
+          "ok": true,
+          "process": {
+            "executable": "/usr/local/bin/python3",
+            "pid": 18709
+          },
+          "returncode": 0,
+          "source": {
+            "a_e1_clock": 6,
+            "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+            "a_e1_ref": "TEST_ONLY_EVENT_e1",
+            "b_actor": "TEST_ONLY_R31J_B",
+            "b_clock": 5,
+            "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+            "b_event_ref": "TEST_ONLY_EVENT_share",
+            "b_operation": "SHARE_TOOL",
+            "b_owner": "TEST_ONLY_OWNER_share",
+            "b_performed": true,
+            "b_quantity": 1,
+            "b_to_actor": "TEST_ONLY_R31J_A",
+            "native": false,
+            "psychology_claim": false,
+            "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+            "source_grade": "TEST_ONLY_SOURCEFREE"
+          },
+          "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/e2",
+          "status": {
+            "actor_model": "LIVE_ACTOR_MODEL_NOT_RUN",
+            "attention": "focused",
+            "branch_id": "first_session",
+            "branch_lineage": null,
+            "clock": 10,
+            "contact": false,
+            "e_source_ref": "a2760d3687b063513fe0a5b9589c56c998d4ccb5",
+            "expression_port": "R31E_EXPRESSION_PORT@1",
+            "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+            "j_source_ref": "64fec28c374d8f77fb0b412d0c934d798ede03e8",
+            "j_target_id": "856d44b2da7be8e0ccefdf47132f83f045fc2f90c64d3c978f18eda4e6ab2ad9",
+            "location": "workshop",
+            "material_performance": "e2",
+            "messages": 0,
+            "native": false,
+            "present": [
+              {
+                "actor": "A",
+                "public_role": "repair"
+              },
+              {
+                "actor": "B",
+                "public_role": "finishing"
+              }
+            ],
+            "root_branch_id": "root",
+            "scenario": "available",
+            "scene_open": true,
+            "schema": "R31E_FIRST_NEIGHBOR_SESSION@1"
+          },
+          "verify": {
+            "branch_id": "first_session",
+            "counts": {
+              "checkpoint": 8,
+              "episode": 6,
+              "perception": 10,
+              "world_event": 4
+            },
+            "errors": [],
+            "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+            "lineage": {
+              "checks": {
+                "no_lineage_is_root_session": true,
+                "parent_is_c12_root": true
+              },
+              "observed": {
+                "branch": {
+                  "actor_ids": [
+                    "A",
+                    "B",
+                    "U"
+                  ],
+                  "branch_id": "first_session",
+                  "created_clock": 10,
+                  "fork_clock": 10,
+                  "parent_branch_id": "root",
+                  "root_counts": {
+                    "checkpoint": 4,
+                    "episode": 2,
+                    "perception": 3,
+                    "world_event": 2
+                  },
+                  "root_hash": "be89f9647ec75ddf87ddb54b8d19044b4e22cd15817b6d5d1169e1a0ee587177"
+                },
+                "branch_id": "first_session"
+              },
+              "ok": true
+            },
+            "ok": true,
+            "root": {
+              "branch_id": "root",
+              "counts": {
+                "checkpoint": 4,
+                "episode": 2,
+                "perception": 3,
+                "world_event": 2
+              },
+              "errors": [],
+              "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+              "ok": true,
+              "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+            },
+            "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+          }
+        },
+        "e1_event_hash": "4100b4ee9d11a0acf2c32e2cdf1c37b6286596caf6fc09efaacbe4b5623e7d89",
+        "meta_schema": "SOROK_SAME_PERSON_JOIN@1",
+        "native": false,
+        "root_branch": "root",
+        "root_c12": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 4,
+            "episode": 2,
+            "perception": 3,
+            "world_event": 2
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "s35": {
+          "a_access": "ADMITTED",
+          "a_actions": [
+            "ATTEND_OBJECT"
+          ],
+          "a_response": "ATTEND_OBJECT",
+          "b_operation": "SHARE_TOOL",
+          "b_refusal_implies_a_help_accept": false,
+          "grade": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+          "labels_ignored": [],
+          "native": false,
+          "prior_acts_ignored": [],
+          "schema": "S35_CONDITIONAL_A_T_ADAPTER@1",
+          "status": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+          "t": {
+            "beforestate_mutation": false,
+            "grant": null,
+            "native": false,
+            "operation": "NO_CHANGE",
+            "state_kind": "V3MS_PRACTICE",
+            "target_proposal": null
+          }
+        },
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        },
+        "state_root": "/private/tmp/p1-run-final/D_share_e2_vs_omit/e2",
+        "target_id": "856d44b2da7be8e0ccefdf47132f83f045fc2f90c64d3c978f18eda4e6ab2ad9",
+        "world_clock": 10
+      }
+    }
+  }
+}

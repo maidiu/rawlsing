@@ -1,0 +1,860 @@
+{
+  "actual_edges": [
+    {
+      "consumer": "P1",
+      "edge": "p1_consumer.run_trajectories -> install.install",
+      "import_path": "candidate/p1_consumer.py -> candidate/deps/m35/install.py",
+      "native": false,
+      "observed": "bp2_joined loaded before JOIN-E",
+      "producer": "M35",
+      "provenance": "TEST_ONLY_SOURCEFREE",
+      "time": "boot"
+    },
+    {
+      "consumer": "P1",
+      "edge": "p1_consumer -> JoinedSession.start/open/do_help/fork_alt",
+      "import_path": "joined.session.JoinedSession",
+      "native": false,
+      "observed": "same-root B source -> C8/C9 -> C12 -> first-neighbor do_help",
+      "producer": "JOIN-E/R31E",
+      "provenance": "TEST_ONLY_SOURCEFREE",
+      "time": "world clock 10; B clock 5; A E1 clock 6"
+    },
+    {
+      "consumer": "P1",
+      "edge": "p1_consumer -> evaluate (p1_s35)",
+      "import_path": "candidate/p1_s35.py",
+      "native": false,
+      "observed": "six conditional states; T=NO_CHANGE every path",
+      "producer": "S35 test-only adapter",
+      "provenance": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+      "time": "A/E1 current"
+    },
+    {
+      "consumer": "P1",
+      "edge": "p1_consumer -> build_no_access/open_no_access",
+      "import_path": "candidate/p1_no_access.py -> joined.refusal.RefusalProduct",
+      "native": false,
+      "observed": "B SHARE -> C8 -> C9 denied -> targetless GM01_NO_ACCESS C12",
+      "producer": "P1 + JOIN-E RefusalProduct",
+      "provenance": "TEST_ONLY_SOURCEFREE",
+      "time": "B clock 5; denied C9"
+    },
+    {
+      "consumer": "P1 cold interpreter",
+      "edge": "p1_consumer -> p1_cold.py (subprocess)",
+      "import_path": "sys.executable candidate/p1_cold.py",
+      "native": false,
+      "observed": "separate PID reopen and C12 verify for A/B/C/D",
+      "producer": "P1 + JOIN-E",
+      "provenance": "TEST_ONLY_SOURCEFREE",
+      "time": "cold after first history"
+    },
+    {
+      "consumer": "P1 hostile receipt",
+      "edge": "p1_hostile -> JoinedSession.open / firstclass.c9_only",
+      "import_path": "candidate/p1_hostile.py",
+      "native": false,
+      "observed": "simple tamper rejected; coordinated selfhash passes only C12 selfhash and is custody HOLD; nine source forgeries rejected pre-C8",
+      "producer": "JOIN-E/M35",
+      "provenance": "TEST_ONLY_SOURCEFREE",
+      "time": "hostile pass"
+    }
+  ],
+  "actual_first_consumer": {
+    "A": {
+      "a_tools_remaining": 1,
+      "branch": "first_session",
+      "c12": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 8,
+          "episode": 7,
+          "perception": 12,
+          "world_event": 4
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+      "c9_target_id": "ea7396134f707ab791aecfd5846f665231808e4a701a0e542532f45dc1334534",
+      "cold_ok": true,
+      "cold_process": {
+        "executable": "/usr/local/bin/python3",
+        "pid": 18692
+      },
+      "cold_returncode": 0,
+      "e1_event_hash": "76f2a8664ddec157944cf6d7a120140e361747c992be17188112ba8142e7da58",
+      "later_a0_a2": {
+        "accepted": true,
+        "admission": {
+          "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
+          "admission_id": "c297765ea9239dfb0b45896162259cfc814a45e3ee17093d72dab0eea8249d38",
+          "attention_excluded": true,
+          "clock": 10,
+          "consumed_state_hash": "ad64356e3e642c2966a8168f1268d9d55bde9d946ab22406a70bce5476dedda8",
+          "contact_outcome": "",
+          "contract_hash": "370dcf13a8387830e579f35ec0c5dbc9199ec611f26e1e19ac727afabce6221f",
+          "fact_count": 2,
+          "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+          "knowledge_ref_count": 0,
+          "message_episode_id": "",
+          "motive_status": "MOTIVE_UNDERDETERMINED",
+          "native": false,
+          "schema": "R31E_EXPRESSION_ADMISSION@1",
+          "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+          "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_8ea0068e82e9fb3aacfce48e81c71ebdb598fe5b437afcf2d23452ee28eb273a",
+          "strategy": "HELP_ACCEPT",
+          "target_id": "ea7396134f707ab791aecfd5846f665231808e4a701a0e542532f45dc1334534",
+          "template_id": "help_accept_1",
+          "validation": {
+            "checks": {
+              "a_at_workshop": true,
+              "action_allowed": true,
+              "actor_present_or_message": true,
+              "contract_hash_current": true,
+              "facts_supported": true,
+              "knowledge_refs": true,
+              "no_private_tokens": true,
+              "no_private_values": true,
+              "not_stale_clock": true,
+              "repair_capacity": true,
+              "scene_open_or_message": true,
+              "speech_length": true,
+              "speech_nonempty": true,
+              "speech_single_line": true,
+              "template_known": true,
+              "template_rerender_exact": true
+            },
+            "ok": true
+          }
+        },
+        "candidate": {
+          "action": "REPAIR",
+          "contact": "",
+          "facts": [
+            {
+              "field": "tools_remaining",
+              "kind": "ACTOR_FIELD",
+              "value": 1
+            },
+            {
+              "field": "tool_available",
+              "kind": "WORLD_RESOURCE",
+              "scope": "workshop",
+              "value": true
+            }
+          ],
+          "gesture": "A sets the tool beside your hand.",
+          "knowledge_refs": [],
+          "schema": "R31E_EXPRESSION_CANDIDATE@1",
+          "slots": {},
+          "speech": "Hold the near edge. I'll check the seam.",
+          "strategy": "HELP_ACCEPT",
+          "template_id": "help_accept_1",
+          "tone": "practical",
+          "variant": 0
+        },
+        "contract_hash": "370dcf13a8387830e579f35ec0c5dbc9199ec611f26e1e19ac727afabce6221f",
+        "status": "OK",
+        "strategy": "HELP_ACCEPT",
+        "surface": [
+          "A material repair is performed in the workshop.",
+          "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
+        ]
+      },
+      "source": {
+        "a_e1_clock": 6,
+        "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+        "a_e1_ref": "TEST_ONLY_EVENT_e1",
+        "b_actor": "TEST_ONLY_R31J_B",
+        "b_clock": 5,
+        "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "b_event_ref": "TEST_ONLY_EVENT_share",
+        "b_operation": "SHARE_TOOL",
+        "b_owner": "TEST_ONLY_OWNER_share",
+        "b_performed": true,
+        "b_quantity": 1,
+        "b_to_actor": "TEST_ONLY_R31J_A",
+        "native": false,
+        "psychology_claim": false,
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        "source_grade": "TEST_ONLY_SOURCEFREE"
+      }
+    },
+    "B": {
+      "a_access_admitted": false,
+      "a_response": null,
+      "branch": "root",
+      "c12": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 2,
+          "episode": 1,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "c8": {
+        "anchor_log": "/private/tmp/p1-run/B_share_no_access/bp2/bp2/anchor/rows.json",
+        "anchor_watermark": "/private/tmp/p1-run/B_share_no_access/bp2/bp2/anchor/watermark.json",
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "e1_event_hash": "e3bc0164fba5d2fa93e766df7e927186b17b65d433984d82bdd6ed04feced79f",
+        "journal_path": "/private/tmp/p1-run/B_share_no_access/bp2/bp2/journal/journal.json",
+        "key_id": "BP2-TEST-KEY",
+        "key_path": "/private/tmp/p1-run/B_share_no_access/bp2/bp2/keys/writer_keys.json",
+        "occurrence_id": "OCC-0001"
+      },
+      "c9": {
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_readset": [
+          "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+        ],
+        "actor_source_grade": "TEST_ONLY_SOURCEFREE_TECHNICAL",
+        "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+        "c8_commit_receipt_id": "8d245ecd20ea31bb63e2347f209fa33f63a96389e2e43feffe88d41122f73ea4",
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "committed": true,
+        "conditioning_readset": [
+          "TEST_ONLY_BP2_MATERIAL_A"
+        ],
+        "declared_offer_ref": "TEST_ONLY_BP1_EVT_cbf3eb19d9adcf7ffafa3b6622be51565002179060f3f2f6cd09095d9e8534f6",
+        "e1_adp019": {
+          "admission_status": "TEST_ONLY_E1_BOUND_ADP019_NOT_ISSUED",
+          "adp019_admission_receipt": "ADP019_ADMISSION_RECEIPT_ABSENT",
+          "commit_receipt_id": "8d245ecd20ea31bb63e2347f209fa33f63a96389e2e43feffe88d41122f73ea4",
+          "event_time": 242,
+          "identity_digest": "32f9f2b5d784507a88c5e8c1881d2469501af3ecf1657b034fcbbcfab1e3cd9d",
+          "native_grant": "NOT_GRANTED",
+          "occurrence_id": "OCC-0001",
+          "state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+          "writer_version": 1
+        },
+        "event_hash": "e3bc0164fba5d2fa93e766df7e927186b17b65d433984d82bdd6ed04feced79f",
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_reason": "OK",
+        "grant_hash": "b257beddde3a91f8595b0aa40043fda942e72e8f62fa635f0e51cceee6b8dffe",
+        "grant_id": "TEST_ONLY_BP2_TARGET_GRANT",
+        "later_read_state_hash": "",
+        "later_read_status": "STATE_ABSENT",
+        "material_eligible": false,
+        "material_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+        "no_ghost": true,
+        "proposal_hash": "",
+        "record_hash": "",
+        "response_hash": "",
+        "response_reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+        "response_receipt_hash": "",
+        "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+        "rule_a_content_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "rule_lookup": "FOUND",
+        "rule_t_content_hash": "ab8afe1ae0229b2d6143c84f58cc4f2f1b0942d9f680cd14477602143991ec97",
+        "rule_t_dependency_hash": "9e4872abaeedc346fa3ea06575bb6fb5daa324a47d1d00d6015f7b660ea9cf5d",
+        "stages": [
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "actor_ingress"
+          },
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "event_witness_ingress"
+          },
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "conditioning_read_only"
+          },
+          {
+            "ok": false,
+            "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "stage": "material_eligibility"
+          },
+          {
+            "ok": true,
+            "reason": "NO_ELIGIBLE_MATERIAL_SOURCE",
+            "stage": "can008_response_rule_lookup"
+          },
+          {
+            "ok": true,
+            "reason": "OK",
+            "stage": "occurrence_admission"
+          },
+          {
+            "ok": true,
+            "reason": "NO_PROPOSAL",
+            "stage": "can011_target_evaluation"
+          },
+          {
+            "ok": true,
+            "reason": "COMMITTED",
+            "stage": "atomic_commit"
+          },
+          {
+            "ok": false,
+            "reason": "COMMITTED_TARGET_STATE_ABSENT",
+            "stage": "later_action_target_read"
+          },
+          {
+            "ok": false,
+            "reason": "OWNER_RECEIPT_MISSING",
+            "stage": "performed_action_admission"
+          }
+        ],
+        "target_branch": "NO_CHANGE",
+        "target_id": "",
+        "target_reason": "NO_PROPOSAL"
+      },
+      "c9_target_id": "",
+      "cold_ok": true,
+      "cold_process": {
+        "executable": "/usr/local/bin/python3",
+        "pid": 18701
+      },
+      "cold_view_c12": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 2,
+          "episode": 1,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "source": {
+        "a_e1_clock": 6,
+        "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+        "a_e1_ref": "TEST_ONLY_EVENT_e1",
+        "b_actor": "TEST_ONLY_R31J_B",
+        "b_clock": 5,
+        "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "b_event_ref": "TEST_ONLY_EVENT_share",
+        "b_operation": "SHARE_TOOL",
+        "b_owner": "TEST_ONLY_OWNER_share",
+        "b_performed": true,
+        "b_quantity": 1,
+        "b_to_actor": "TEST_ONLY_R31J_A",
+        "native": false,
+        "psychology_claim": false,
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        "source_grade": "TEST_ONLY_SOURCEFREE"
+      }
+    },
+    "C": {
+      "a_tools_remaining": 0,
+      "branch": "first_session",
+      "c12": {
+        "branch_id": "first_session",
+        "counts": {
+          "checkpoint": 6,
+          "episode": 5,
+          "perception": 9,
+          "world_event": 3
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "c8_state_digest": "5e92ae09f1e97fe5d3c94234d9ce228011bf08e21bf022804ee34369e0e453c4",
+      "c9_target_id": "",
+      "cold_ok": true,
+      "cold_process": {
+        "executable": "/usr/local/bin/python3",
+        "pid": 18703
+      },
+      "cold_returncode": 0,
+      "e1_event_hash": "26be6d0a7fce10c328a653a95eebc2f4484a0f0bec09db13179f378bdcd4b97a",
+      "later_a0_a2": {
+        "accepted": false,
+        "admission": {
+          "action_event_id": "",
+          "admission_id": "0966f91dfa092a4f5a6cecabf03504e43a0aed318f660a977ed0e0f8155c68e9",
+          "attention_excluded": true,
+          "clock": 10,
+          "consumed_state_hash": "",
+          "contact_outcome": "",
+          "contract_hash": "77eba50c036cb026343e568447031a6abbe610957e8126251a6f32a1576da33a",
+          "fact_count": 1,
+          "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+          "knowledge_ref_count": 0,
+          "message_episode_id": "",
+          "motive_status": "MATERIAL_TIME_CONSTRAINT_ONLY",
+          "native": false,
+          "schema": "R31E_EXPRESSION_ADMISSION@1",
+          "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+          "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_9be9e10769eb6c77f031d572e30456e0e2d28ac1c5a13b2f4575d09f6acd7842",
+          "strategy": "HELP_REFUSE",
+          "target_id": "",
+          "template_id": "help_refuse_material_1",
+          "validation": {
+            "checks": {
+              "action_allowed": true,
+              "actor_present_or_message": true,
+              "contract_hash_current": true,
+              "facts_supported": true,
+              "knowledge_refs": true,
+              "no_private_tokens": true,
+              "no_private_values": true,
+              "not_stale_clock": true,
+              "scene_open_or_message": true,
+              "speech_length": true,
+              "speech_nonempty": true,
+              "speech_single_line": true,
+              "template_known": true,
+              "template_rerender_exact": true
+            },
+            "ok": true
+          }
+        },
+        "candidate": {
+          "action": "NONE",
+          "contact": "",
+          "facts": [
+            {
+              "kind": "MATERIAL_PRESSURE"
+            }
+          ],
+          "gesture": "A turns the empty bench over.",
+          "knowledge_refs": [],
+          "schema": "R31E_EXPRESSION_CANDIDATE@1",
+          "slots": {},
+          "speech": "I'm out of material. I can't start that now.",
+          "strategy": "HELP_REFUSE",
+          "template_id": "help_refuse_material_1",
+          "tone": "flat",
+          "variant": 0
+        },
+        "contract_hash": "77eba50c036cb026343e568447031a6abbe610957e8126251a6f32a1576da33a",
+        "status": "OK",
+        "strategy": "HELP_REFUSE",
+        "surface": [
+          "the repair worker says: \"I'm out of material. I can't start that now.\" A turns the empty bench over."
+        ]
+      },
+      "source": {
+        "a_e1_clock": 6,
+        "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+        "a_e1_ref": "TEST_ONLY_EVENT_e1",
+        "b_actor": "TEST_ONLY_R31J_B",
+        "b_clock": 5,
+        "b_event_hash": "3e00199d533b793897cd8b9bdc0639830252c60588de732b46dfcec3cc3b9421",
+        "b_event_ref": "TEST_ONLY_EVENT_refuse",
+        "b_operation": "REFUSE_TOOL",
+        "b_owner": "TEST_ONLY_OWNER_refuse",
+        "b_performed": true,
+        "b_quantity": 0,
+        "b_to_actor": "TEST_ONLY_R31J_A",
+        "native": false,
+        "psychology_claim": false,
+        "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+        "source_grade": "TEST_ONLY_SOURCEFREE"
+      }
+    },
+    "D": {
+      "omitted": {
+        "a_tools_remaining": 1,
+        "branch": "first_session",
+        "c12": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 8,
+            "episode": 7,
+            "perception": 12,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "c9_target_id": "b35af87f956531934906181440a5bbc6f5a81d68e58711bd8203028b10c028e9",
+        "cold_ok": true,
+        "cold_process": {
+          "executable": "/usr/local/bin/python3",
+          "pid": 18708
+        },
+        "cold_returncode": 0,
+        "e1_event_hash": "3a0c2b79e64e00682e16baa609a7a19194acbced06e21d9e49558cc5e0cbff34",
+        "later_a0_a2": {
+          "accepted": true,
+          "admission": {
+            "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
+            "admission_id": "c24452bfc9b89cfa73969601cce8f4149e9814fe8513e03a96b8bc94d4580d53",
+            "attention_excluded": true,
+            "clock": 10,
+            "consumed_state_hash": "0bc7e02643670379990ead4393fe07604a0c3baac77220297ce6a3101fcf9d9c",
+            "contact_outcome": "",
+            "contract_hash": "39034b7153c5c7077b462add83cf9dd9137ee07727bda8ce89fc015eb37d72a7",
+            "fact_count": 1,
+            "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+            "knowledge_ref_count": 0,
+            "message_episode_id": "",
+            "motive_status": "MOTIVE_UNDERDETERMINED",
+            "native": false,
+            "schema": "R31E_EXPRESSION_ADMISSION@1",
+            "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_6dd04bce4d8a65b4776fefce83b7d8b9daa22eb1da050af7a746cb700ec8311f",
+            "strategy": "HELP_ACCEPT",
+            "target_id": "b35af87f956531934906181440a5bbc6f5a81d68e58711bd8203028b10c028e9",
+            "template_id": "help_accept_2",
+            "validation": {
+              "checks": {
+                "a_at_workshop": true,
+                "action_allowed": true,
+                "actor_present_or_message": true,
+                "contract_hash_current": true,
+                "facts_supported": true,
+                "knowledge_refs": true,
+                "no_private_tokens": true,
+                "no_private_values": true,
+                "not_stale_clock": true,
+                "repair_capacity": true,
+                "scene_open_or_message": true,
+                "speech_length": true,
+                "speech_nonempty": true,
+                "speech_single_line": true,
+                "template_known": true,
+                "template_rerender_exact": true
+              },
+              "ok": true
+            }
+          },
+          "candidate": {
+            "action": "REPAIR",
+            "contact": "",
+            "facts": [
+              {
+                "field": "tools_remaining",
+                "kind": "ACTOR_FIELD",
+                "value": 1
+              }
+            ],
+            "gesture": "A clears a space at the bench.",
+            "knowledge_refs": [],
+            "schema": "R31E_EXPRESSION_CANDIDATE@1",
+            "slots": {},
+            "speech": "Put your hand on the near edge. I'll take the slack.",
+            "strategy": "HELP_ACCEPT",
+            "template_id": "help_accept_2",
+            "tone": "practical",
+            "variant": 1
+          },
+          "contract_hash": "39034b7153c5c7077b462add83cf9dd9137ee07727bda8ce89fc015eb37d72a7",
+          "status": "OK",
+          "strategy": "HELP_ACCEPT",
+          "surface": [
+            "A material repair is performed in the workshop.",
+            "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+          ]
+        },
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        }
+      },
+      "performed": {
+        "a_tools_remaining": 0,
+        "branch": "first_session",
+        "c12": {
+          "branch_id": "first_session",
+          "counts": {
+            "checkpoint": 8,
+            "episode": 6,
+            "perception": 10,
+            "world_event": 4
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "c8_state_digest": "e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb",
+        "c9_target_id": "7c5fc2d7bc32a1867cc170bdf4c855cffdc647dd79d1b7bd634db61738da676b",
+        "cold_ok": true,
+        "cold_process": {
+          "executable": "/usr/local/bin/python3",
+          "pid": 18709
+        },
+        "cold_returncode": 0,
+        "e1_event_hash": "ed4378a2c86bc7274e8ecd4e63abbb82b6ff768badd3226bc580da496deb233c",
+        "later_a0_a2": {
+          "accepted": false,
+          "admission": {
+            "action_event_id": "",
+            "admission_id": "e7faa622b08b185b0f5e59d83feb25ad831560204add9b029082ef5afd67b7da",
+            "attention_excluded": true,
+            "clock": 10,
+            "consumed_state_hash": "9c3f67f784fac0893d9ed734ede7fdd7076fbafefaacd8df6d40a55baa21bcf1",
+            "contact_outcome": "",
+            "contract_hash": "d84f5fafd62e275c8872f39a990bd5cdaa36f08d361ee6b68002ad6c938983b1",
+            "fact_count": 1,
+            "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
+            "knowledge_ref_count": 0,
+            "message_episode_id": "",
+            "motive_status": "MATERIAL_TIME_CONSTRAINT_ONLY",
+            "native": false,
+            "schema": "R31E_EXPRESSION_ADMISSION@1",
+            "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_1dc81b521b4cb0e5431c7ec0b085f31f48b8a6c584e6ed625ca8b16cc6f175b7",
+            "strategy": "HELP_REFUSE",
+            "target_id": "7c5fc2d7bc32a1867cc170bdf4c855cffdc647dd79d1b7bd634db61738da676b",
+            "template_id": "help_refuse_material_2",
+            "validation": {
+              "checks": {
+                "action_allowed": true,
+                "actor_present_or_message": true,
+                "contract_hash_current": true,
+                "facts_supported": true,
+                "knowledge_refs": true,
+                "no_private_tokens": true,
+                "no_private_values": true,
+                "not_stale_clock": true,
+                "scene_open_or_message": true,
+                "speech_length": true,
+                "speech_nonempty": true,
+                "speech_single_line": true,
+                "template_known": true,
+                "template_rerender_exact": true
+              },
+              "ok": true
+            }
+          },
+          "candidate": {
+            "action": "NONE",
+            "contact": "",
+            "facts": [
+              {
+                "kind": "MATERIAL_PRESSURE"
+              }
+            ],
+            "gesture": "A looks at the empty tool space.",
+            "knowledge_refs": [],
+            "schema": "R31E_EXPRESSION_CANDIDATE@1",
+            "slots": {},
+            "speech": "The tool's gone. I can't do it today.",
+            "strategy": "HELP_REFUSE",
+            "template_id": "help_refuse_material_2",
+            "tone": "flat",
+            "variant": 1
+          },
+          "contract_hash": "d84f5fafd62e275c8872f39a990bd5cdaa36f08d361ee6b68002ad6c938983b1",
+          "status": "OK",
+          "strategy": "HELP_REFUSE",
+          "surface": [
+            "the repair worker says: \"The tool's gone. I can't do it today.\" A looks at the empty tool space."
+          ]
+        },
+        "source": {
+          "a_e1_clock": 6,
+          "a_e1_hash": "dac4aeb08c26ab86abda560435c41a6f2ecf58b1d589c72ff1c1bd629d5c6a79",
+          "a_e1_ref": "TEST_ONLY_EVENT_e1",
+          "b_actor": "TEST_ONLY_R31J_B",
+          "b_clock": 5,
+          "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+          "b_event_ref": "TEST_ONLY_EVENT_share",
+          "b_operation": "SHARE_TOOL",
+          "b_owner": "TEST_ONLY_OWNER_share",
+          "b_performed": true,
+          "b_quantity": 1,
+          "b_to_actor": "TEST_ONLY_R31J_A",
+          "native": false,
+          "psychology_claim": false,
+          "schema": "BP2_FIRSTCLASS_B_MATERIAL_SOURCE@1",
+          "source_grade": "TEST_ONLY_SOURCEFREE"
+        }
+      }
+    }
+  },
+  "authority_holds": [
+    "CAN008/CAN011 native science",
+    "ADP/SCI05",
+    "native C8/C9/C12",
+    "external owner anchor",
+    "C10/C11",
+    "Pyat N11/N12",
+    "human A5"
+  ],
+  "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "launch": {
+    "model": "OpenCode/DeepSeek V4.1-Flash MAX requested; actual metered variant/provider unknown",
+    "note": "No separate 40-hex launch SHA in verbatim commission; branch head above verified as dispatch cut.",
+    "premain_recheck": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "programma_branch": "agent/sorok-programma-p1-material-person-first-consumer-20261101-r1",
+    "programma_head_verified": "23b1856f35137d9a8905abecc636698138cb2b4c",
+    "runtime": "macOS; Python 3.11.3; pytest 9.1.1; SQLite; cold subprocess",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-programma-p1-material-person-first-consumer-20261101-r1"
+  },
+  "native": false,
+  "provenance_notes": [
+    "M35 source is copied exactly under candidate/deps/m35; oracle cut metadata is frozen at 55377b/2d11e32 but the accepted P1 cut is 4170fbf.",
+    "JOIN-E is copied from 7bf2da30; no JOIN-E file edited.",
+    "S35 is a resource, not a native rule; P1 adapter is TEST_ONLY and does not install C9R two-act auto-route.",
+    "F1 @1973/8d958 not imported; verdict pending and not used as authority."
+  ],
+  "schema": "SOROK_P1_ACTUAL_CALL_GRAPH_SOURCE_AND_CAUSAL_INVARIANTS@1",
+  "source_files": {
+    "join_e": [
+      {
+        "blob_sha1": "dc0894289e8b6a5e66148189e41d7efb563f25af",
+        "native": false,
+        "owner": "JOIN-E",
+        "path": "candidate/deps/join_e/joined/session.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "ea820ec3e30a2825c3d0d8c5dc66e812afdda40b08f9cc0a8c868c8b3e0dd0da",
+        "source_commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+        "time": "start/open/do_help"
+      },
+      {
+        "blob_sha1": "9a8726fe26486a2beb2af8216910737bf1fc323a",
+        "native": false,
+        "owner": "JOIN-E",
+        "path": "candidate/deps/join_e/joined/refusal.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "ca491610a62eda46159f006e7591872e6b31c55f287c4fe6162dbf061ddd984a",
+        "source_commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+        "time": "targetless C12"
+      },
+      {
+        "blob_sha1": "6d819b8a314a4cd8ed5836014a18b9f41c02d5d2",
+        "native": false,
+        "owner": "R31E/JOIN-E",
+        "path": "candidate/deps/join_e/vendor/e/r31e/session.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "c671e309cd494a11c3724df8e42fe1c3ed35ae4f081cace625576863a867c464",
+        "source_commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+        "time": "first-neighbor later encounter"
+      }
+    ],
+    "m35": [
+      {
+        "blob_sha1": "d71cffd0eb6f1a511693cfa26c6dc97ccdefac00",
+        "native": false,
+        "owner": "M35 engineering",
+        "path": "candidate/deps/m35/firstclass.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "acfdc42daec3e701e017664caef370780db47c72ed1bc85fcc26999f8a38a3db",
+        "source_commit": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+        "time": "B clock 5; A E1 clock 6"
+      },
+      {
+        "blob_sha1": "ff40b8922494920596795edab48f298ca1ddadb9",
+        "native": false,
+        "owner": "M35 engineering",
+        "path": "candidate/deps/m35/install.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "359491275da6452b392fdec7b7dfcf5a39c618d9ca2b6447150b946feb7fab88",
+        "source_commit": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+        "time": "boot"
+      },
+      {
+        "blob_sha1": "679941f0c88dc5881d464a877b1ac23a7b31d2f6",
+        "native": false,
+        "owner": "M35/BP2 source bind",
+        "path": "candidate/deps/m35/candidate/vendor/bp2/bp2_joined/material_source.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "8101eb3529989ddad9b9a18a5c2149b34b921a816997d1093d3d14041e8e10ba",
+        "source_commit": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+        "time": "pre-C8"
+      },
+      {
+        "blob_sha1": "c3abe1f57d799b789250490925903a026145fc5d",
+        "native": false,
+        "owner": "M35/BP2 producer",
+        "path": "candidate/deps/m35/candidate/vendor/bp2/bp2_joined/producer.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "38a492e96eecbbeb06de7b352d7bd138a84cb3388c8441437127e6c348875970",
+        "source_commit": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
+        "time": "pre-C8/C8"
+      }
+    ],
+    "s35": [
+      {
+        "blob_sha1": "f1109c000aae7a55cb80198ab4ce77fd41a5f56b",
+        "native": false,
+        "owner": "S35 scientific candidate",
+        "path": "candidate/deps/s35/01_S35_CONDITIONAL_A_T_SCIENTIFIC_RESOURCE_CANDIDATE.json",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "331db984f51102eebbd1341f228e256405bc2d81f3a0cd95df1261f80471fc81",
+        "source_commit": "888ccae53ec02ca572cbb7ba208956e2c99170b9",
+        "time": "A/T specification"
+      },
+      {
+        "blob_sha1": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+        "native": false,
+        "owner": "P1 sourcefree integration",
+        "path": "candidate/p1_s35.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_ISSUED",
+        "sha256": "6210e59519462ba9988942be989c93667f87a408abc0df15264140096528e343",
+        "source_commit": "THIS_RETURN",
+        "time": "A/T classification"
+      },
+      {
+        "blob_sha1": "a573bd28f11031b0f5aa91c1ccd34c96315f9fe3",
+        "native": false,
+        "owner": "P1 sourcefree integration",
+        "path": "candidate/p1_no_access.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "a4660be7e41c61d344661fa83b66c216c54d848033ac3c3147b0d1123272c395",
+        "source_commit": "THIS_RETURN",
+        "time": "B share/no A access"
+      },
+      {
+        "blob_sha1": "13de26da30429f5fbcc345e9bb5186318d44538d",
+        "native": false,
+        "owner": "P1 sourcefree integration",
+        "path": "candidate/p1_consumer.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "97e1d99b46495ff42726b1431ec377c79bb9443010203077817260d5db0ba77f",
+        "source_commit": "THIS_RETURN",
+        "time": "four trajectories"
+      },
+      {
+        "blob_sha1": "55ba815feae58841c6256dc06a3eec3e77724ab5",
+        "native": false,
+        "owner": "P1 sourcefree integration",
+        "path": "candidate/p1_cold.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "9b6bd69aa3c8258a478535742fc797a6c1c9f855ec49677be4d86b5818a7bf20",
+        "source_commit": "THIS_RETURN",
+        "time": "cold interpreter"
+      },
+      {
+        "blob_sha1": "60a10bb831e862b3646815b9335b43b8ce68484d",
+        "native": false,
+        "owner": "P1 sourcefree integration",
+        "path": "candidate/p1_hostile.py",
+        "provenance": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+        "sha256": "105ebb26aeb095257bc83b153eb4113c6da5d0c08d3198591f0f5af9202fc963",
+        "source_commit": "THIS_RETURN",
+        "time": "hostile C12/source"
+      }
+    ]
+  }
+}
