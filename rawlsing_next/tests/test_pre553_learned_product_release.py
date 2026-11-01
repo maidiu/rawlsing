@@ -376,22 +376,33 @@ def test_16_direct_producer_dereference_preserves_owner():
 def test_17_binding_cannot_resolve_different_release():
     repo1, release1, _, _, _, _ = build_fixture(subject_label="release-one")
     repo2, release2, subject2, producer2, _, _ = build_fixture(subject_label="release-two")
-    # Recreate release-two representation inside repo1 only as a foreign exact record.
-    # First copy its producer subject/closures is intentionally avoided; a foreign
-    # representation exact-ref is enough to test release mismatch at publication.
     locator = ref("foreign:locator", "RepresentationLocator")
     integrity = ref("foreign:integrity", "RepresentationIntegrity")
     from rawlsing_next.pre553_learned_product_release import RepresentationRecord
-    repo1.register_representation(
-        RepresentationRecord(
-            release_ref=release2.ref,
-            resolved_subject_ref=subject2,
-            producer_contract_ref=producer2,
-            resolution_mode="CONTENT_ADDRESSED_MATERIALIZATION",
-            resolver_or_locator_ref=locator,
-            representation_integrity_ref=integrity,
-        )
+    record = RepresentationRecord(
+        release_ref=release2.ref,
+        resolved_subject_ref=subject2,
+        producer_contract_ref=producer2,
+        resolution_mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        resolver_or_locator_ref=locator,
+        representation_integrity_ref=integrity,
     )
+    # v1.1: reject invalid direct writer setup atomically.
+    before = {name: dict(getattr(repo1, name)) for name in repo1._store_names}
+    with pytest.raises(M2ReleaseError) as early:
+        repo1.register_representation(record)
+    assert_code(early, "RELEASE_UNAVAILABLE")
+    assert {name: dict(getattr(repo1, name)) for name in repo1._store_names} == before
+
+    # Import the exact foreign release lawfully, then test the original oracle.
+    repo1.register_subject(repo2.subject_exact(release2.release_subject_ref))
+    for field in (
+        "authority_closure_ref", "dependency_closure_ref", "determinant_closure_ref",
+        "replay_reconstruction_ref", "explanation_lineage_ref",
+    ):
+        repo1.register_closure(repo2.closure_exact(getattr(release2, field)))
+    repo1.register_release(release2)
+    repo1.register_representation(record)
     with pytest.raises(M2ReleaseError) as exc:
         publish_binding(
             repo1,
@@ -414,25 +425,40 @@ def test_18_endpoint_failover_only_among_same_release():
         label="failover-b", mode="CONTENT_ADDRESSED_MATERIALIZATION",
     )
     result = resolve_release_exact(
-        repo,
-        release.ref,
+        repo, release.ref,
         publication_binding_refs=(b1.ref, b2.ref),
         unavailable_binding_refs=(b1.ref,),
     )
     assert result.receipt.used_publication_binding_ref == b2.ref
 
-    repo_other, release_other, subject_other, producer_other, _, _ = build_fixture(
+    repo_other, release_other, _, _, _, _ = build_fixture(
         subject_label="failover-other"
     )
     other_binding, _, _ = bind_representation(
-        repo_other,
-        release_other,
-        subject_other,
-        producer_other,
+        repo_other, release_other,
+        repo_other.subject_exact(release_other.release_subject_ref).ref,
+        repo_other.subject_exact(release_other.release_subject_ref).producer_contract_ref,
         label="other-endpoint",
         mode="CONTENT_ADDRESSED_MATERIALIZATION",
     )
-    # Register exact foreign binding into repo solely to attack the failover list.
+    # v1.1: invalid direct foreign binding must not write any of the stores.
+    before = {name: dict(getattr(repo, name)) for name in repo._store_names}
+    with pytest.raises(M2ReleaseError) as early:
+        repo.register_binding(other_binding)
+    assert_code(early, "RELEASE_UNAVAILABLE")
+    assert {name: dict(getattr(repo, name)) for name in repo._store_names} == before
+
+    # Lawfully import foreign subject/closures/release/representation/binding.
+    repo.register_subject(repo_other.subject_exact(release_other.release_subject_ref))
+    for field in (
+        "authority_closure_ref", "dependency_closure_ref", "determinant_closure_ref",
+        "replay_reconstruction_ref", "explanation_lineage_ref",
+    ):
+        repo.register_closure(repo_other.closure_exact(getattr(release_other, field)))
+    repo.register_release(release_other)
+    repo.register_representation(
+        repo_other.representation_exact(other_binding.resolver_or_locator_ref)
+    )
     repo.register_binding(other_binding)
     with pytest.raises(M2ReleaseError) as exc:
         resolve_release_exact(

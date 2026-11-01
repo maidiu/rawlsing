@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "RRIF_HQ118_M2_V1_1_EXACT_RELEASE_BINDING_REJECTS_FOREIGN_REPRESENTATION",
+      "actual_consumer": "rawlsing_next.pre553_learned_product_release.publish_binding, actual M2 publication binding operation",
+      "claimed_dependency": "even after lawful foreign release/representation registration, publishing a binding against a DIFFERENT exact release must reject with PUBLICATION_BINDING_MISMATCH",
+      "positive_node": "rawlsing_next/tests/test_pre553_learned_product_release.py::test_17_binding_cannot_resolve_different_release",
+      "fault": {
+        "path": "rawlsing_next/pre553_learned_product_release.py",
+        "old": "_fail(\"PUBLICATION_BINDING_MISMATCH\", \"representation belongs to a different release\")",
+        "new": "_fail(\"RELEASE_UNAVAILABLE\", \"representation belongs to a different release\")"
+      }
+    }
+  ]
+}

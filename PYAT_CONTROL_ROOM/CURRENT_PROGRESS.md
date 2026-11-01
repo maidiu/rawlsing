@@ -1,3 +1,13 @@
+# PYAT RRIF M2 VERSIONED SOURCEFREE RECEIVING — 2026-11-01
+
+User authorized completion of the exact HQ118 M2 v1.1 accepted-fixture decision after recommendation. This branch contains byte-identical E6-reviewed B5/M2 production blobs (E5 `96e6d49ac18274332751c5fbb87c6ed370e8fd9c`); 28-case original M2 accepted test blob `d45b54190815b4c6af506579962a9aac8a7074c2` preserved verbatim as non-discovered historical archive; only active test cases 17/18 are versioned to first assert atomic `RELEASE_UNAVAILABLE`, then lawfully register exact foreign subject + five closures + release, and preserve original downstream `PUBLICATION_BINDING_MISMATCH`. E6's independent 11-case adversarial suite is included byte-exact. No new scientific or original source rights.
+
+M2 focused modern CI `41347958905` **175 PASS / 0 FAIL, unfiltered** across B5, active M2 v1.1, S06G, E2, exact E6 independent, EE14 and composition. Proof-integrity gate check on PR #605 passed its changed-test executable M2 mutation witness. Broader historical Rabochii FIABC court continues to report three unchanged pre-existing hash-pin failures; it is **not** being declared full green, nor equated with the new M2 court. E5 old unfiltered `179 PASS /14 FAIL` remains historic and must not be relabeled: 12 old S06FR defect-PRESENCE cases and two original M2 v1.0 unsupported fixture setups. Protected PRE-MAIN integration is **NOT yet claimed by this pre-merge update**.
+
+C3 D01/D02 sourcefree repair was already independently approved and merged in PR #602 at `0075c15fdfb1ca7dea3c5cb54ace3652e0201441`; canonical paired-update PRE-MAIN `9626974ad3de9e67baa37cc56b7f4ba600aebcd6`. Other 34 RRIF historical lineage entries retain exact negative/source/owner/restart conditions, not universal scientific retirement. **ALL PROGRAMMA ACTIVITY IS USER-STOPPED** until RRIF finite terminal closeout and fresh explicit release.
+
+---
+
 # RRIF C3 — VERIFIED MERGED SOURCEFREE RECEIVING — 2026-11-01
 
 Owner-CAS PRE-MAIN merge commit: `0075c15fdfb1ca7dea3c5cb54ace3652e0201441` from PR #602. E4F corrected D01/D02 real SAV/DTA Timestamp and aware subclass handling independently accepted by E4FR. Original E1 33 + E4F 12 PASS, selected 194 PASS/1 SKIP; mandatory executable proof-integrity witnesses 2 PASS, independent sourcefree receiving exact six blobs PASS. Broader historical governed court remains **144 PASS/3 FAIL** on Git blobs unchanged between PRE-MAIN before PR and PR head; its old fiabc pin mismatches are retained, not called green or silently waived as new C3 changes. G01 two original hostile RED and source/native science/actor/right HOLD untouched.
