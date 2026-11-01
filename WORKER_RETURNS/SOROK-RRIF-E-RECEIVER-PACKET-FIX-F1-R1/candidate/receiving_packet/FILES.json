@@ -1,0 +1,68 @@
+{
+  "schema": "RRIF_E_RECEIVER_PACKET_FILES@2",
+  "packet_root": "candidate/receiving_packet",
+  "files": {
+    "receiving_packet/APPLY.md": {
+      "sha256": "c0ec2e793db6044d1ee6cef254f083401d99eb30db0d02021c439a33ba203941",
+      "size": 2826
+    },
+    "receiving_packet/DEPENDENCIES.json": {
+      "sha256": "63dc026752f4ec63cfdadf24260bb24d44eb96a195184b332d8eaf5f3adf9bcb",
+      "size": 1629
+    },
+    "receiving_packet/FULL_CANDIDATE_REF.json": {
+      "sha256": "8f7c7375e1970547e3b1d7c922bc5baf71e0a033b6008fd5b0e0bd8bf223dab0",
+      "size": 685
+    },
+    "receiving_packet/RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json": {
+      "sha256": "886f56b7788258fcbb3b9be665770c5af3fc7fdd13537a26227cc351c5bad092",
+      "size": 125197
+    },
+    "receiving_packet/apply.sh": {
+      "sha256": "d9c71d715c11df4385472a0964ac4d9a181a64bd3197fe93ccb4115990924f1b",
+      "size": 1538
+    },
+    "receiving_packet/overlay/joined/__pycache__/source_identity.cpython-311.pyc": {
+      "sha256": "ee7f0dfc27471f03099a577c3dcf492ad2720cba46568201451a29c258efb20c",
+      "size": 6155
+    },
+    "receiving_packet/overlay/joined/source_identity.py": {
+      "sha256": "cb45f7a93e96053447eda6992290c15cfdfcd64af06bbe7561642a08c8a12054",
+      "size": 3380
+    },
+    "receiving_packet/overlay/tests/__pycache__/test_rrif_e_repair.cpython-311.pyc": {
+      "sha256": "fab2ae02632c9377e1ca5dd94c30fbb5b861e9b0cc4f11eaf57e6bdad12d9d14",
+      "size": 16375
+    },
+    "receiving_packet/overlay/tests/test_rrif_e_repair.py": {
+      "sha256": "b79801e4b05dac8fdebd8de749627e3a29f9f056e441ae4cf41aad6b7f4a21c0",
+      "size": 8355
+    },
+    "receiving_packet/rollback.sh": {
+      "sha256": "504e72dfbccb8235aafaab5cdc946e438f5c035baa09e165acfe4eaf90f81638",
+      "size": 651
+    },
+    "receiving_packet/verify_packet.py": {
+      "sha256": "4d9630ad40e663552cdb9bb76395fe8b6a240c9618e4d1dbe52c1e7c513b4a27",
+      "size": 3428
+    },
+    "receiving_packet/verify_r2_base.py": {
+      "sha256": "18dbd92fcd4289ba01e59a337ada86cbc84ef2f7b021a5d1dfec2da2bb9a0fba",
+      "size": 2440
+    }
+  },
+  "full_candidate": {
+    "schema": "RRIF_E_FULL_CANDIDATE_REF@1",
+    "commit": "8d9585296ff264b947559f4a78f49f73ca45e53a",
+    "path": "WORKER_RETURNS/SOROK-RRIF-FINAL-E-REPAIR-AND-FIRST-CONSUMER-R1/candidate/rrif_r2",
+    "tree_sha": "5394e33ec81766a4ee891b0d58007f24ac1d1303",
+    "files": 640,
+    "r3_extension_files": 174,
+    "first_consumer_cli": "first_consumer_cli.py",
+    "source_preimage": "RRIF_R2_CANDIDATE_SOURCE_PREIMAGE.json",
+    "source_preimage_files": 639,
+    "source_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+    "note": "The packet installs the exact immutable candidate tree from this commit; it does not duplicate the 640 code files in the new return."
+  },
+  "note": "The 640-file candidate is referenced by exact Git commit/tree; this list covers packet tooling and overlay only."
+}

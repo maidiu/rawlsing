@@ -1,0 +1,258 @@
+{
+  "authority": {
+    "external_anchor": "OWNER_ANCHOR_REQUIRED",
+    "native_c8_c9_c12": false,
+    "native_cp_a5": false,
+    "native_person": false,
+    "owner_adoption": false
+  },
+  "cp_a5": {
+    "ask_status": "UNKNOWN",
+    "assertion_status": "PASS",
+    "decision": "RETAIN_TOOL",
+    "market_status": "UNKNOWN",
+    "read_only": true,
+    "same_root_with_r2": false
+  },
+  "same_root": {
+    "c12": {
+      "alt_verify": {
+        "branch_id": "alt",
+        "counts": {
+          "checkpoint": 15,
+          "episode": 17,
+          "perception": 22,
+          "world_event": 9
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "custody": {
+        "authenticity_claimed": false,
+        "classification": "BOTH_GREEN__SELF_HASH_PLUS_GUARDED_ROWS__NO_OWNER_ANCHOR",
+        "external_owner_anchor": "OWNER_ANCHOR_REQUIRED",
+        "guarded": {
+          "authenticity": {
+            "code": "OWNER_ANCHOR_REQUIRED",
+            "state": "UNVERIFIED"
+          },
+          "branch_id": "root",
+          "completeness": {
+            "code": "OWNER_ANCHOR_REQUIRED",
+            "state": "UNVERIFIED"
+          },
+          "content_ok": true,
+          "counts": {
+            "checkpoint": 4,
+            "episode": 2,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "fork": {
+            "branch_id": "root",
+            "errors": [],
+            "ok": true,
+            "status": "VERIFIED"
+          },
+          "fork_ok": true,
+          "ok": true,
+          "reader_version": "C12_GUARD_READER@1",
+          "schema_ok": true
+        },
+        "qualified": {
+          "branch_id": "root",
+          "counts": {
+            "checkpoint": 4,
+            "episode": 2,
+            "perception": 2,
+            "world_event": 1
+          },
+          "errors": [],
+          "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+          "ok": true,
+          "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+        },
+        "schema": "RRIF_E_C12_CUSTODY_REPORT@1",
+        "security_boundary": false,
+        "trust_custody_hold": false
+      },
+      "qualified_root": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 4,
+          "episode": 2,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "repaired_alt": {
+        "branch_id": "alt",
+        "counts": {
+          "checkpoint": 19,
+          "episode": 21,
+          "perception": 24,
+          "world_event": 10
+        },
+        "errors": [],
+        "external_owner_anchor": "OWNER_ANCHOR_REQUIRED",
+        "ok": true,
+        "self_hash_only": true,
+        "verifier": "RRIF_E_REPAIRED_C12_PREIMAGE@1"
+      },
+      "repaired_root": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 4,
+          "episode": 2,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "external_owner_anchor": "OWNER_ANCHOR_REQUIRED",
+        "ok": true,
+        "self_hash_only": true,
+        "verifier": "RRIF_E_REPAIRED_C12_PREIMAGE@1"
+      },
+      "root_verify": {
+        "branch_id": "root",
+        "counts": {
+          "checkpoint": 4,
+          "episode": 2,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+        "ok": true,
+        "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+      },
+      "upstream_defect_reproduced": {
+        "repaired_errors": [],
+        "repaired_ok": true,
+        "upstream_errors": [
+          "episode:0:body_hash_mismatch",
+          "episode:1:body_hash_mismatch"
+        ],
+        "upstream_known_defect": "episode_id was added after the hashed preimage",
+        "upstream_ok": false
+      }
+    },
+    "c12_path": "/private/tmp/rrif-e-consumer-f1b/same-root/product/c12.sqlite",
+    "c9c12_compatibility": {
+      "c12_root": {
+        "anchor_status": {
+          "code": "OWNER_ANCHOR_REQUIRED",
+          "ok": false,
+          "security_boundary": false,
+          "state": "HOLD"
+        },
+        "consumer": "C9C12_R2_GUARDED_C12_COLD_READ_ON_RRIF_R2",
+        "content_ok": true,
+        "counts": {
+          "checkpoint": 4,
+          "episode": 2,
+          "perception": 2,
+          "world_event": 1
+        },
+        "errors": [],
+        "external_custody": "OWNER_ANCHOR_REQUIRED",
+        "fork_ok": true,
+        "fork_status": "VERIFIED",
+        "grade": "SOURCEFREE_CANDIDATE_READER_NOT_OWNER_ADOPTED",
+        "ok": true,
+        "r2_root": "/private/tmp/rrif-e-consumer-f1b/same-root/product",
+        "schema_ok": true,
+        "status": "C12_COLD_READ_OK"
+      },
+      "c9_actor": {
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "consumer": "C9C12_R2_ACTOR_SNAPSHOT",
+        "reason": "OperationalError:no such table: actor_meta",
+        "sourcefree": true,
+        "status": "C9_SOURCE_MISSING"
+      },
+      "cp_a5_same_root": {
+        "actual_actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "code": "BP2_ORIGIN_INVARIANT_MISMATCH",
+        "expected_actor": "TEST_ONLY_BP1_ACTOR_A",
+        "status": "INCOMPATIBLE_EXACT_SOURCECUT"
+      },
+      "external_owner_anchor": "OWNER_ANCHOR_REQUIRED",
+      "fabricated_actor": false,
+      "legacy_first_session": {
+        "anchor_status": {
+          "code": "OWNER_ANCHOR_REQUIRED",
+          "ok": false,
+          "security_boundary": false,
+          "state": "HOLD"
+        },
+        "consumer": "C9C12_R2_GUARDED_C12_COLD_READ_ON_RRIF_R2",
+        "content_ok": false,
+        "counts": {
+          "checkpoint": 15,
+          "episode": 17,
+          "perception": 22,
+          "world_event": 9
+        },
+        "errors": [
+          "world_event:4:sequence_body_mismatch",
+          "world_event:5:sequence_body_mismatch",
+          "world_event:6:sequence_body_mismatch",
+          "world_event:7:sequence_body_mismatch",
+          "world_event:8:sequence_body_mismatch",
+          "fork:first_session:legacy_root_unverified"
+        ],
+        "external_custody": "OWNER_ANCHOR_REQUIRED",
+        "fork_ok": false,
+        "fork_status": "LEGACY_HELD",
+        "grade": "SOURCEFREE_CANDIDATE_READER_NOT_OWNER_ADOPTED",
+        "ok": false,
+        "r2_root": "/private/tmp/rrif-e-consumer-f1b/same-root/product",
+        "schema_ok": true,
+        "status": "C12_HELD"
+      },
+      "native_person": false,
+      "owner_migration_required": true,
+      "schema": "RRIF_E_C9C12_COMPATIBILITY@1",
+      "status": "INCOMPATIBLE_WITHOUT_OWNER_MIGRATION__ROOT_COLD_READ_ONLY_UNDER_OWNER_ANCHOR_HOLD__FORK_LEGACY_ROOT_UNVERIFIED"
+    },
+    "cold_verify_ok": true,
+    "encounter": {
+      "attend_status": "NO_CHANGE",
+      "help_accepted": true,
+      "help_strategy": "HELP_ACCEPT",
+      "return_scene_open": true,
+      "say_strategy": "RECIPROCATE",
+      "scene_open_after_wait": false,
+      "wait_clock": 40
+    },
+    "fork": {
+      "cold_branch": "alt",
+      "created_branch": "alt",
+      "receipt": "alt"
+    },
+    "material_event": {
+      "b_performed": true,
+      "c8_state_digest": "b33f575956a180874af7e0b02bc29b6210f45eac95bf1aba3720998d515555c8",
+      "source_operation": "SHARE_TOOL",
+      "target_id": "bcd5413f0a7a5c9dc556127b338594c4c3e41933229166d566422d06e5732a72"
+    },
+    "product_root": "/private/tmp/rrif-e-consumer-f1b/same-root/product",
+    "same_root_c9_c12": {
+      "c9_actor_projection": "HELD_NOT_PRESENT",
+      "native": false,
+      "status": "SAME_ROOT_C9_C12_SOURCEFREE_GREEN",
+      "target_id": "bcd5413f0a7a5c9dc556127b338594c4c3e41933229166d566422d06e5732a72"
+    },
+    "state_root": "/tmp/rrif-e-consumer-f1b/same-root"
+  },
+  "schema": "RRIF_E_FIRST_CONSUMER_RECEIPT@1",
+  "status": "PASS_PARTIAL_SAME_ROOT_C9_C12__C9_ACTOR_OWNER_HELD__CP_A5_SEPARATE_ROOT"
+}

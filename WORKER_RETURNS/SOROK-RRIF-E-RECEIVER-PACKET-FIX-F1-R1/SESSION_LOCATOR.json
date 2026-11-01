@@ -1,0 +1,26 @@
+{
+  "schema": "SOROK_RRIF_E_F1_SESSION_LOCATOR@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/sorok-rrif-e-exact-receiver-packet-fix-20261031-r1",
+  "dispatch_sha": "d7df4da4f159313b31981796b9f1ebcd91bfd8be",
+  "premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-rrif-e-exact-receiver-packet-fix-20261031-r1",
+  "clean_stage": "/tmp/rrif-e-clean-f1",
+  "host": "local macOS S2",
+  "editor_model": "local OpenCode / DeepSeek V4.1-Flash; MAX requested",
+  "actual_variant": "UNKNOWN__not independently instrumented",
+  "active_other_worktrees_modified": false,
+  "commands": [
+    "old additive-only apply STOP",
+    "R2 archive install",
+    "new apply.sh",
+    "20 R2 + 9 R3 + 6 E pytest",
+    "first_consumer_cli.py",
+    "bad-base STOP",
+    "missing-extension verify",
+    "extra-unlisted verify",
+    "rollback"
+  ],
+  "tested_cut": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "final_remote_sha": "PENDING_TERMINAL_PUSH_READBACK"
+}
