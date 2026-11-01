@@ -75,3 +75,7 @@ C9/C12/CP-A5 incompatibilities are typed, and native/owner holds are explicit.
 That is **not** permission to call the current receiving packet ready. Final
 recommendation: **close RRIF only as a sourcefree/owner-held historical packet
 after recording this REVISE; do not transfer the current patch to PRE-MAIN.**
+
+## Review commit
+
+Review content commit: `39da4426c10e5cca4916c0af5d23718fa941dc73`. Final remote tip is reported after the follow-up readback commit.

@@ -70,5 +70,4 @@ not. This is the independent receiver finding.
 ## Final remote SHA
 
 The final review branch tip is recorded after ordinary non-force push and
-`git ls-remote` readback in the terminal response. The content commit is
-recorded separately from the follow-up readback commit.
+`git ls-remote` readback in the terminal response. Content commit: `39da4426c10e5cca4916c0af5d23718fa941dc73`. The final remote tip is read back after the follow-up readback commit.
