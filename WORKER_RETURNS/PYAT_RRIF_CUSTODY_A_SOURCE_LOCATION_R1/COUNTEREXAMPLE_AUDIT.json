@@ -1,0 +1,208 @@
+{
+  "schema": "RRIF_CUSTODY_COUNTEREXAMPLE_AUDIT@1",
+  "premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "PR_525": {
+    "head": "a0a4e6b0184b5c5de1f723913103bc34a833b9f6",
+    "premain_ancestor": true,
+    "changed_files": 0,
+    "verdict": "MERGED_ANCESTOR_OR_NO_DELTA; proof-only commit already in PREMAIN"
+  },
+  "PR_526": {
+    "head": "6a38ef25057e577b7b546449844a8b33fc647a82",
+    "premain_ancestor": true,
+    "changed_files": 0,
+    "verdict": "MERGED_ANCESTOR_OR_NO_DELTA; workflow-only commit already in PREMAIN"
+  },
+  "PR_563": {
+    "head": "91a854a9123ad33e84e5b847d8f4aecd60508046",
+    "premain_ancestor": true,
+    "changed_files": 0,
+    "verdict": "PR HEAD IS ANCESTOR OF PREMAIN MERGE 8e44"
+  },
+  "J2I": {
+    "branches": [
+      {
+        "branch": "agent/rabochii-pyat-hq122-j2i-role-certification-implementation-r1",
+        "tip": "bbcec05d022fe5437d139c8e982a0d59fd936a45",
+        "premain_ancestor": true,
+        "delta": 0
+      },
+      {
+        "branch": "agent/vozhd-pyat-hq123-j2i-fanin-r1",
+        "tip": "35aac47fd009d06e1a4b71676737be1faca7a882",
+        "premain_ancestor": true,
+        "delta": 0
+      }
+    ],
+    "verdict": "BOTH ANCESTORS OF PREMAIN; no new code delta"
+  },
+  "C3_R5": {
+    "return_commit": "24847592f6a40fde3c4932d0f26173012c037078",
+    "exact_historical_assets": {
+      "G01": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "decoder": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "R5_codec": "6000a1704d713f65e07610d81e9b3fd8bdd515ca"
+    },
+    "current_paths_absent": [
+      "rawlsing_next/pre553_source_access_broker.py",
+      "rawlsing_next/pre553_source_session.py",
+      "rawlsing_next/pre553_execution_binding.py",
+      "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py"
+    ],
+    "verdict": "HISTORICAL C3/R9 ASSETS LOCATED IN RETURN; CURRENT D01/D02/R9 PRODUCTION PATHS ABSENT; G01 behavior may be rebuilt but authority wrapper absent"
+  },
+  "R157": {
+    "branch": "agent/pyat-pre553-r157-final-review",
+    "tip": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+    "source_row": {
+      "schema": "RRIF_CUSTODY_BRANCH_LOCATION@1",
+      "branch": "agent/pyat-pre553-r157-final-review",
+      "frozen_tip": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "frozen_tree": "9c7113bf7156540cbee9c6663ce44d0839ebcd1a",
+      "frozen_parent_shas": [
+        "1384612bfed8d801140e00ace353779338599da3"
+      ],
+      "frozen_tip_author_time": "2026-10-27T16:24:46+00:00",
+      "frozen_tip_committer_time": "2026-10-27T16:24:46+00:00",
+      "cohort": "POST_CUTOFF_TIP_DATE",
+      "kind": "PYAT_OR_SHARED",
+      "current_remote_tip": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "current_ref_status": "SAME_AS_FROZEN_TIP",
+      "merge_base": "fcbb2ee1d7a6eae040e0964bb8474e8d04d47989",
+      "premain_ancestor": false,
+      "premain_ahead": 181,
+      "premain_behind": 479,
+      "changed_files": 1530,
+      "code_delta_count": 34,
+      "test_delta_count": 38,
+      "config_delta_count": 0,
+      "evidence_or_doc_delta_count": 1039,
+      "other_delta_count": 419,
+      "code_exact_in_premain": 4,
+      "code_modified_in_premain": 6,
+      "code_absent_from_premain": 24,
+      "code_exact_paths_sample": [
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/universal_grammar/enumerate.py",
+        "rawlsing_next/universal_grammar/native_map.py",
+        "rawlsing_next/universal_grammar/types.py"
+      ],
+      "code_modified_paths_sample": [
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/pre553_issued_workload.py",
+        "rawlsing_next/pre553_learned_world_composition.py",
+        "rawlsing_next/pre553_native_workload_binding.py",
+        "rawlsing_next/pre553_source_native_preimage_adapter.py",
+        "rawlsing_next/pre553_universal_workload.py"
+      ],
+      "code_absent_paths_sample": [
+        "rawlsing_next/pre553_production_binding.py",
+        "rawlsing_next/pre553_source_read_admission.py",
+        "rawlsing_next/pre553_universal_empirical_extension.py",
+        "rawlsing_next/pre553_universal_evidence_binding.py",
+        "rawlsing_next/pre553_universal_world_binding.py",
+        "rawlsing_next/pre553_world_conditioned_progressive_service.py",
+        "rawlsing_next/source_configuration/__init__.py",
+        "rawlsing_next/source_configuration/cli.py"
+      ],
+      "disposition": "CODE_STRANDED_OR_DIVERGED",
+      "location_status": "CODE_STRANDED_OR_DIVERGED"
+    },
+    "verdict": "FROZEN BRANCH CODE DELTA; only 4/61 code paths exact in PREMAIN; 24 absent; R157 remains config/stranded implementation, not native U/E"
+  },
+  "HQ282_P01": {
+    "branch": "agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1",
+    "tip": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+    "source_row": {
+      "schema": "RRIF_CUSTODY_BRANCH_LOCATION@1",
+      "branch": "agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1",
+      "frozen_tip": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+      "frozen_tree": "9c1bd365e96cfd07cda846803969404cba350313",
+      "frozen_parent_shas": [
+        "73d45f3ac6a50fbee6666ad3a5023840f01ef196"
+      ],
+      "frozen_tip_author_time": "2026-10-12T20:12:58+00:00",
+      "frozen_tip_committer_time": "2026-10-12T20:12:58+00:00",
+      "cohort": "POST_CUTOFF_TIP_DATE",
+      "kind": "PYAT_OR_SHARED",
+      "current_remote_tip": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+      "current_ref_status": "SAME_AS_FROZEN_TIP",
+      "merge_base": "a70a069fa948e0f3c041b389edcc732b6b948a4f",
+      "premain_ancestor": false,
+      "premain_ahead": 40,
+      "premain_behind": 855,
+      "changed_files": 86,
+      "code_delta_count": 6,
+      "test_delta_count": 8,
+      "config_delta_count": 0,
+      "evidence_or_doc_delta_count": 72,
+      "other_delta_count": 0,
+      "code_exact_in_premain": 0,
+      "code_modified_in_premain": 0,
+      "code_absent_from_premain": 6,
+      "code_exact_paths_sample": [],
+      "code_modified_paths_sample": [],
+      "code_absent_paths_sample": [
+        "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+        "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+        "rawlsing_next/pre553_original_workload_binder_candidate.py",
+        "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+        "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py",
+        "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py"
+      ],
+      "disposition": "CODE_STRANDED_OR_DIVERGED",
+      "location_status": "CODE_STRANDED_OR_DIVERGED"
+    },
+    "absent_from_premain": [
+      "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+      "rawlsing_next/pre553_v2_durable_consumer_integration_candidate.py",
+      "rawlsing_next/pre553_original_workload_binder_candidate.py",
+      "rawlsing_next/pre553_original_workload_contract_v2_candidate.py",
+      "rawlsing_next/pre553_original_workload_v2_verifier_candidate.py"
+    ],
+    "verdict": "SOURCE BRANCH IMPLEMENTATION ABSENT FROM CANONICAL PREMAIN"
+  },
+  "P07": {
+    "branch": "agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1",
+    "tip": "d6ce7101c76c85bd358b7c59568935ec69dfa912",
+    "source_row": {
+      "schema": "RRIF_CUSTODY_BRANCH_LOCATION@1",
+      "branch": "agent/space-bunny-pyat-hq242-f7-t1-native-p07-owner-implementation-r1",
+      "frozen_tip": "d6ce7101c76c85bd358b7c59568935ec69dfa912",
+      "frozen_tree": "07e6e192d30ded0e6fc9669282638ea849c053e8",
+      "frozen_parent_shas": [
+        "c4d46de7535359f0ebddc50ae5cad109124a4300"
+      ],
+      "frozen_tip_author_time": "2026-10-08T01:08:47+00:00",
+      "frozen_tip_committer_time": "2026-10-08T01:08:47+00:00",
+      "cohort": "POST_CUTOFF_TIP_DATE",
+      "kind": "PYAT_OR_SHARED",
+      "current_remote_tip": "d6ce7101c76c85bd358b7c59568935ec69dfa912",
+      "current_ref_status": "SAME_AS_FROZEN_TIP",
+      "merge_base": "b722f2e7373ad833d5f63833b1d6fe426d3dc55d",
+      "premain_ancestor": false,
+      "premain_ahead": 83,
+      "premain_behind": 1443,
+      "changed_files": 120,
+      "code_delta_count": 3,
+      "test_delta_count": 1,
+      "config_delta_count": 0,
+      "evidence_or_doc_delta_count": 116,
+      "other_delta_count": 0,
+      "code_exact_in_premain": 0,
+      "code_modified_in_premain": 2,
+      "code_absent_from_premain": 1,
+      "code_exact_paths_sample": [],
+      "code_modified_paths_sample": [
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_source_relations.py"
+      ],
+      "code_absent_paths_sample": [
+        "rawlsing_next/pre553_temporal_comparability.py"
+      ],
+      "disposition": "CODE_STRANDED_OR_DIVERGED",
+      "location_status": "CODE_STRANDED_OR_DIVERGED"
+    },
+    "verdict": "P07 SOURCE BRANCH NOT MERGED; 1 code path absent and 2 modified; science/authority hold"
+  }
+}

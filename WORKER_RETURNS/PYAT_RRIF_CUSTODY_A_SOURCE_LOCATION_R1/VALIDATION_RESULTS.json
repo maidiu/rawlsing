@@ -1,0 +1,34 @@
+{
+  "schema": "RRIF_CUSTODY_VALIDATION@1",
+  "result": "PASS",
+  "premain": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "counts": {
+    "branch_names": 845,
+    "distinct_tips": 838,
+    "functions": 3135,
+    "families_with_variants": 1883,
+    "location_counts": {
+      "BRANCH_TIP_EXACT": 1717,
+      "PREMAIN_EXACT_OTHER_PATH": 291,
+      "PREMAIN_EXACT_SAME_PATH": 199,
+      "PREMAIN_MODIFIED_SAME_PATH": 928
+    },
+    "exact_current_subtraction": 2269,
+    "uncertain": 866,
+    "integration_branches": 27,
+    "branch_dispositions": {
+      "CODE_EXACT_PRESENT_IN_PREMAIN__TRANSFER_METHOD_UNVERIFIED": 45,
+      "CODE_STRANDED_OR_DIVERGED": 276,
+      "EVIDENCE_OR_ADMIN_ONLY_DELTA": 458,
+      "NO_DELTA_VS_MERGE_BASE": 66
+    }
+  },
+  "checks": [
+    "845 names / 838 tips / custody digests",
+    "3135 function rows / 1883 variant-bearing families + 2 external zero-member families / exact-once",
+    "2269 exact-current-or-branch-source subtraction; 866 current-modified uncertainties",
+    "current path blobs match PREMAIN 8e44ca9c",
+    "27 accepted/staging branches audited; PR525/526/563, J2I, C3 R5, R157, HQ282 P01, P07 counterexamples",
+    "no semantic-equivalence or lost-capability claim"
+  ]
+}
