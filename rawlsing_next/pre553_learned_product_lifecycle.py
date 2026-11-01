@@ -14,6 +14,10 @@ Field Forge admission, or physical architecture selection.
 """
 from __future__ import annotations
 
+from contextlib import contextmanager
+from functools import wraps
+from threading import RLock, local
+from types import MappingProxyType
 from dataclasses import dataclass
 from typing import Any, Iterable, Mapping, Protocol, runtime_checkable
 
@@ -25,6 +29,43 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref,
     semantic_hash,
 )
+
+def _freeze_payload(value: Any) -> Any:
+    """Detach and recursively freeze canonical payload descendants."""
+    if isinstance(value, Mapping):
+        return MappingProxyType({key: _freeze_payload(item) for key, item in value.items()})
+    if isinstance(value, (list, tuple)):
+        return tuple(_freeze_payload(item) for item in value)
+    return value
+
+
+def _copy_state_containers(value: Any) -> Any:
+    # Records are immutable; copy only owner projection containers, including
+    # nested release-event lists. Do not deepcopy locks or mapping proxies.
+    if isinstance(value, dict):
+        return {key: _copy_state_containers(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return list(value)
+    if isinstance(value, set):
+        return set(value)
+    return value
+
+
+def _atomic_mutation(method):
+    @wraps(method)
+    def guarded(self, *args, **kwargs):
+        with self._mutation_transaction():
+            return method(self, *args, **kwargs)
+    return guarded
+
+
+def _locked_read(method):
+    @wraps(method)
+    def guarded(self, *args, **kwargs):
+        with self._lock:
+            return method(self, *args, **kwargs)
+    return guarded
+
 
 LIFECYCLE_CONTRACT_ID = "PRE553_LEARNED_PRODUCT_LIFECYCLE_CANDIDATE@1.0.0"
 LIFECYCLE_RUNTIME_SCHEMA = "PRE553_B5_LEARNED_PRODUCT_LIFECYCLE_RUNTIME@1.0.0"
@@ -576,7 +617,7 @@ class LearnedProductLifecycleEvent:
         normalized = canonicalize(dict(self.payload or {}))
         if not isinstance(normalized, dict):
             raise LearnedProductLifecycleError("event payload must canonicalize to a mapping")
-        object.__setattr__(self, "payload", normalized)
+        object.__setattr__(self, "payload", _freeze_payload(normalized))
         if self.event_state != "COMMITTED":
             raise LearnedProductLifecycleError("lifecycle event_state must be COMMITTED")
 
@@ -593,7 +634,7 @@ class LearnedProductLifecycleEvent:
             "event_rule_ref": self.event_rule_ref.as_dict(),
             "parent_lifecycle_event_ref": _ref_dict(self.parent_lifecycle_event_ref),
             "evidence_refs": [ref.as_dict() for ref in self.evidence_refs],
-            "payload": dict(self.payload or {}),
+            "payload": canonicalize(self.payload or {}),
             "event_state": self.event_state,
         }
 
@@ -1417,6 +1458,11 @@ class LearnedProductLifecycleExecutor:
     """Append-only B5 lifecycle owner over opaque exact learned-product releases."""
 
     def __init__(self) -> None:
+        # This is a source-free local owner, not an independently issued trust root.
+        # No caller boolean/token/reference may elevate the instance into custody.
+        self._lock = RLock()
+        self._mutation_context = local()
+        self._native_security_mode = "LOCAL_UNAUTHENTICATED"
         self._repository_subjects: dict[str, LearnedProductLifecycleSubject] = {}
         self._registered: set[str] = set()
         self._events: list[LearnedProductLifecycleEvent] = []
@@ -1442,17 +1488,381 @@ class LearnedProductLifecycleExecutor:
         self._gc_eligibility: dict[str, GCElegibilityReceipt] = {}
         self._gc_recorded: set[str] = set()
 
+    @contextmanager
+    def _mutation_transaction(self):
+        """Serialize in-memory validation/ledger/projections and rollback exceptions.
+
+        This is local exception atomicity, not durable storage or Python principal
+        isolation. A reader uses the same lock and cannot see partial commits.
+        """
+        with self._lock:
+            depth = getattr(self._mutation_context, "depth", 0)
+            before = {
+                name: _copy_state_containers(value)
+                for name, value in self.__dict__.items()
+                if isinstance(value, (dict, list, set))
+            } if depth == 0 else None
+            self._mutation_context.depth = depth + 1
+            try:
+                yield
+            except BaseException:
+                if before is not None:
+                    for name, value in before.items():
+                        setattr(self, name, value)
+                raise
+            finally:
+                self._mutation_context.depth = depth
+
+    def _require_mutation_transaction(self, operation: str) -> None:
+        self._native_mutation_preflight(operation)
+        if not getattr(self._mutation_context, "depth", 0):
+            raise LearnedProductLifecycleConflict(
+                f"internal {operation} requires an owner mutation transaction"
+            )
+
     @property
+    def native_security_mode(self) -> str:
+        """A local runtime cannot attest PROTECTED_CURRENT or EXTERNAL_CUSTODY."""
+        return "LOCAL_UNAUTHENTICATED"
+
+    def require_external_issuer(self, operation: str) -> None:
+        """Fail closed until a competent external issuer/root exists and is bound."""
+        raise LearnedProductLifecycleError(
+            "EXTERNAL_ISSUER_HOLD: no independently anchored B5 issuer, "
+            f"revocation/as-of source or custody root for {operation}"
+        )
+
+    def _native_mutation_preflight(self, operation: str) -> None:
+        """Native owner entry point; NEVER interpret exact refs as issuer grants.
+
+        Locally exercised mutations retain only SOURCE_FREE_LOCAL status. A
+        different mode cannot be elected by setting a flag or passing tokens.
+        Python same-process access is not a principal isolation mechanism.
+        """
+        if self._native_security_mode != "LOCAL_UNAUTHENTICATED":
+            self.require_external_issuer(operation)
+        if not getattr(self._mutation_context, "depth", 0):
+            raise LearnedProductLifecycleConflict(
+                f"{operation} requires an owner mutation transaction"
+            )
+
+    def _verify_native_checkpoint_history(self) -> None:
+        """Compare native projections to the typed event chain, not saved maps.
+
+        This proves LOCAL consistency only. A coherent replacement history still
+        requires an independently witnessed ordinal/root to prove completeness.
+        """
+        registered: set[str] = set()
+        publication: dict[str, str] = {}
+        validity: dict[str, str] = {}
+        replay: dict[str, str] = {}
+        rebuild: dict[str, str] = {}
+        materialization: dict[str, str] = {}
+        payload_materialized: dict[str, bool] = {}
+        selection_index: dict[str, ExactRef] = {}
+        selection_kind: dict[str, str] = {}
+        seen_selection_events: set[str] = set()
+        selection_events = {
+            receipt.current_select_event_ref.key: receipt
+            for receipt in self._selection_receipts.values()
+        }
+        no_current_events = {
+            receipt.no_current_event_ref.key: receipt
+            for receipt in self._no_current_receipts.values()
+        }
+        if len(selection_events) != len(self._selection_receipts):
+            raise LearnedProductLifecycleConflict("multiple selection receipts for one event")
+        if len(no_current_events) != len(self._no_current_receipts):
+            raise LearnedProductLifecycleConflict("multiple NO_CURRENT receipts for one event")
+        previous_ref: ExactRef | None = None
+        for ordinal, event in enumerate(self._events, 1):
+            if event.ordinal != ordinal or event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict("checkpoint event sequence/parent mismatch")
+            previous_ref = event.ref
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (
+                subject is None
+                or subject.product_ref != event.product_ref
+                or subject.selection_scope_ref != event.selection_scope_ref
+            ):
+                raise LearnedProductLifecycleConflict("checkpoint event subject/scope mismatch")
+            release_key = event.release_ref.key
+            kind = event.event_kind
+            if kind == "PRODUCT_REGISTERED":
+                if release_key in registered:
+                    raise LearnedProductLifecycleConflict("duplicate registration event")
+                registered.add(release_key)
+                publication[release_key] = "UNPUBLISHED"
+                validity[release_key] = "VALID"
+                replay[release_key] = subject.replay_state
+                rebuild[release_key] = subject.rebuild_state
+                materialization[release_key] = subject.materialization_class
+                payload_materialized[release_key] = True
+            elif release_key not in registered:
+                raise LearnedProductLifecycleConflict("unregistered release has lifecycle event")
+            elif kind == "PRODUCT_PUBLISHED":
+                if publication[release_key] == "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("duplicate publication event")
+                publication[release_key] = "PUBLISHED"
+            elif kind == "PRODUCT_WITHDRAWN":
+                validity[release_key] = "WITHDRAWN"
+            elif kind == "PRODUCT_INVALIDATED":
+                validity[release_key] = "INVALIDATED_REBUILD_REQUIRED"
+                rebuild[release_key] = "REBUILD_NOT_REQUESTED"
+            elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                state = event.payload.get("rebuild_state")
+                if state not in REBUILD_STATES:
+                    raise LearnedProductLifecycleConflict("invalid event-derived rebuild state")
+                rebuild[release_key] = state
+            elif kind == "CACHE_MATERIALIZED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache materialization event")
+                payload_materialized[release_key] = True
+            elif kind == "CACHE_DROPPED":
+                if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
+                    raise LearnedProductLifecycleConflict("invalid cache drop event")
+                payload_materialized[release_key] = False
+            elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
+                    raise LearnedProductLifecycleConflict("invalid payload GC event")
+                payload_materialized[release_key] = False
+            if kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                raw_key = event.payload.get("selection_key_ref")
+                if raw_key is None:
+                    raise LearnedProductLifecycleConflict("selection event lacks exact key")
+                key_ref = _exact(raw_key)
+                key = self._selection_keys.get(key_ref.key)
+                if (
+                    key is None
+                    or key.product_family_ref != subject.product_family_ref
+                    or key.selection_scope_ref != subject.selection_scope_ref
+                ):
+                    raise LearnedProductLifecycleConflict("selection event family/scope mismatch")
+                previous = selection_index.get(key_ref.key)
+                if kind == "CURRENT_CLEARED":
+                    receipt = no_current_events.get(event.ref.key)
+                    if receipt is None:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT event lacks receipt")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("NO_CURRENT predecessor mismatch")
+                    selection_kind[key_ref.key] = "NO_CURRENT"
+                else:
+                    receipt = selection_events.get(event.ref.key)
+                    if receipt is None or receipt.selected_release_ref != event.release_ref:
+                        raise LearnedProductLifecycleConflict("selected event/release mismatch")
+                    if receipt.previous_selection_receipt_ref != previous:
+                        raise LearnedProductLifecycleConflict("current predecessor mismatch")
+                    if publication[release_key] != "PUBLISHED" or validity[release_key] != "VALID":
+                        raise LearnedProductLifecycleConflict("unpublished/invalid selected release")
+                    if kind == "CURRENT_SUPERSEDED" and previous is None:
+                        raise LearnedProductLifecycleConflict("supersession lacks predecessor")
+                    selection_kind[key_ref.key] = "CURRENT_SELECTED"
+                selection_index[key_ref.key] = receipt.ref
+                seen_selection_events.add(event.ref.key)
+        if registered != self._registered:
+            raise LearnedProductLifecycleConflict("checkpoint registration differs from events")
+        for name, actual, expected in (
+            ("publication", self._publication, publication),
+            ("validity", self._validity, validity),
+            ("replay", self._replay, replay),
+            ("rebuild", self._rebuild, rebuild),
+            ("materialization", self._materialization, materialization),
+            ("payload_materialized", self._payload_materialized, payload_materialized),
+            ("selection_index", self._selection_index, selection_index),
+            ("selection_state_kind", self._selection_state_kind, selection_kind),
+        ):
+            if actual != expected:
+                raise LearnedProductLifecycleConflict(
+                    f"checkpoint {name} differs from native event replay"
+                )
+        if seen_selection_events != (set(selection_events) | set(no_current_events)):
+            raise LearnedProductLifecycleConflict("orphan selection receipt")
+        for key, receipt_ref in selection_index.items():
+            if selection_kind[key] == "CURRENT_SELECTED":
+                selected = self._selection_receipts[receipt_ref.key].selected_release_ref
+                if validity[selected.key] != "VALID" or publication[selected.key] != "PUBLISHED":
+                    raise LearnedProductLifecycleConflict("checkpoint has invalid live selection")
+        event_refs = {event.ref.key for event in self._events}
+        for receipt in self._invalidations.values():
+            if any(ref.key not in event_refs or self._events_by_ref[ref.key].event_kind != "PRODUCT_INVALIDATED"
+                   for ref in receipt.invalidation_event_refs):
+                raise LearnedProductLifecycleConflict("invalidation receipt references invalid event")
+        for receipts, field, kind in (
+            (self._rebuild_eligibility.values(), "event_ref", "REBUILD_ELIGIBILITY_RECORDED"),
+            (self._rebuild_links.values(), "event_ref", "PRODUCT_REBUILT"),
+            (self._gc_eligibility.values(), "event_ref", "GC_ELIGIBILITY_ATTESTED"),
+        ):
+            for receipt in receipts:
+                linked = getattr(receipt, field)
+                if linked.key not in event_refs or self._events_by_ref[linked.key].event_kind != kind:
+                    raise LearnedProductLifecycleConflict("native receipt/event link mismatch")
+        gc_events = {
+            event.release_ref.key for event in self._events
+            if event.event_kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED"
+        }
+        if gc_events != self._gc_recorded:
+            raise LearnedProductLifecycleConflict("checkpoint GC ledger differs from events")
+
+    def _verify_native_checkpoint_semantics(self) -> None:
+        """Re-execute owner operations; compare entire events, receipts and state.
+
+        Payload arguments remain unauthenticated local claims. Re-execution binds
+        their internal relationships, not issuer entitlement or history custody.
+        """
+        replay = LearnedProductLifecycleExecutor()
+        for subject in self._repository_subjects.values():
+            replay.stage_release(subject)
+        replay._selection_keys = dict(self._selection_keys)
+        graphs = [replay.determinant_graph]
+        index = 0
+
+        def transitions(start, keys):
+            rows = self._events[start:start + len(keys)]
+            if len(rows) != len(keys):
+                raise LearnedProductLifecycleConflict("missing explicit transition events")
+            result = {}
+            for row in rows:
+                if row.event_kind not in {"CURRENT_CLEARED", "CURRENT_SELECTED"}:
+                    raise LearnedProductLifecycleConflict("invalid explicit transition event")
+                key = _exact(row.payload["selection_key_ref"])
+                if key.key in result:
+                    raise LearnedProductLifecycleConflict("duplicate transition key")
+                result[key.key] = None if row.event_kind == "CURRENT_CLEARED" else row.release_ref
+            if set(result) != {key.ref.key for key in keys}:
+                raise LearnedProductLifecycleConflict("transition key set mismatch")
+            attestation = _exact(rows[0].payload["selection_attestation_ref"]) if rows else self._events[index].event_authority_ref
+            return result, attestation
+
+        try:
+            while index < len(self._events):
+                event = self._events[index]
+                payload = event.payload
+                common = dict(event_authority_ref=event.event_authority_ref,
+                              event_rule_ref=event.event_rule_ref, evidence_refs=event.evidence_refs)
+                basic = {name: value for name, value in common.items() if name != "evidence_refs"}
+                before = len(replay._events)
+                kind = event.event_kind
+                if kind == "PRODUCT_REGISTERED":
+                    replay.register_product(event.release_ref, **common)
+                    graphs.append(replay.determinant_graph)
+                elif kind == "PRODUCT_PUBLISHED":
+                    replay.publish_product(event.release_ref, **common)
+                elif kind == "RECERTIFIES":
+                    replay.record_recertification(event.release_ref,
+                        attestation_ref=_exact(payload["attestation_ref"]), **common)
+                elif kind in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED", "CURRENT_CLEARED"}:
+                    key = _exact(payload["selection_key_ref"])
+                    previous = replay._selection_index.get(key.key)
+                    selection = dict(expected_previous_receipt_ref=previous,
+                        selection_attestation_ref=_exact(payload["selection_attestation_ref"]), **common)
+                    if kind == "CURRENT_SELECTED":
+                        replay.select_current(key, event.release_ref, **selection)
+                    elif kind == "CURRENT_SUPERSEDED":
+                        replay.supersede_current(key,
+                            predecessor_release_ref=_exact(payload["predecessor_release_ref"]),
+                            successor_release_ref=event.release_ref,
+                            supersession_basis_ref=_exact(payload["supersession_basis_ref"]), **selection)
+                    else:
+                        replay.declare_no_current(key, reason_ref=_exact(payload["reason_ref"]),
+                            subject_release_ref=event.release_ref, **selection)
+                elif kind == "PRODUCT_WITHDRAWN":
+                    keys = replay._current_keys_for_release(event.release_ref)
+                    targets, attestation = transitions(index + 1, keys)
+                    replay.withdraw_product(event.release_ref,
+                        withdrawal_reason_ref=_exact(payload["withdrawal_reason_ref"]),
+                        withdrawal_scope_ref=_exact(payload["withdrawal_scope_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "PRODUCT_INVALIDATED":
+                    changed = _determinant_refs(payload["changed_determinant_refs"])
+                    direct, transitive = replay.determinant_graph.affected(changed)
+                    affected = _exact_refs(direct + transitive)
+                    keys = {key.ref.key: key for release in affected
+                            for key in replay._current_keys_for_release(release)}
+                    targets, attestation = transitions(index + len(affected), tuple(keys.values()))
+                    replay.declare_invalidation(changed,
+                        dependency_closure_receipt_ref=_exact_any(payload["dependency_closure_receipt_ref"]),
+                        selection_attestation_ref=attestation, current_transitions=targets, **common)
+                elif kind == "REBUILD_ELIGIBILITY_RECORDED":
+                    mechanism = _optional_exact(payload["execution_mechanism_ref"], allow_authority_kind=True)
+                    inputs = tuple(_exact_any(row) for row in payload["reconstruction_input_refs"])
+                    # With no dependencies, a live mechanism plus REBUILD_NOT_PROVED
+                    # is evidence of absent explicit inputs. Otherwise using the
+                    # canonical input set regenerates exactly the same receipt.
+                    if (mechanism is not None and "REBUILD_NOT_PROVED" in payload["blocker_states"]
+                            and not replay._subject(event.release_ref).direct_dependency_refs):
+                        inputs = ()
+                    replay.record_rebuild_eligibility(event.release_ref,
+                        execution_mechanism_ref=mechanism, source_or_upstream_refs=inputs,
+                        historical=payload["rebuild_state"] == "HISTORICAL_REPLAY_ELIGIBLE", **common)
+                elif kind == "PRODUCT_REBUILT":
+                    replay.link_rebuild(event.release_ref,
+                        new_release_ref=_optional_exact(payload["new_release_ref"]),
+                        rebuild_state=payload["rebuild_state"],
+                        rebuild_determinant_set_hash=payload["rebuild_determinant_set_hash"],
+                        replay_or_execution_receipt_ref=_exact(payload["replay_or_execution_receipt_ref"]), **common)
+                elif kind in {"CACHE_MATERIALIZED", "CACHE_DROPPED"}:
+                    operation = replay.record_cache_materialized if kind == "CACHE_MATERIALIZED" else replay.record_cache_dropped
+                    operation(event.release_ref, cache_ref=_exact(payload["cache_ref"]), **basic)
+                elif kind == "GC_ELIGIBILITY_ATTESTED":
+                    proofs = {name: _exact(payload[name]) for name in (
+                        "reconstruction_proof_ref", "historical_retention_proof_ref",
+                        "serving_reconstruction_proof_ref", "downstream_byte_dependency_absence_proof_ref",
+                        "source_carrier_retention_proof_ref")}
+                    replay.attest_gc_eligibility(event.release_ref, **proofs, **common)
+                elif kind == "RECOMPUTABLE_PAYLOAD_GC_RECORDED":
+                    replay.record_payload_gc(_exact_any(payload["gc_eligibility_receipt_ref"]), **basic)
+                else:
+                    raise LearnedProductLifecycleConflict("checkpoint event has no native operation")
+                generated = replay._events[before:]
+                expected = self._events[index:index + len(generated)]
+                if not generated or generated != expected:
+                    raise LearnedProductLifecycleConflict("checkpoint event semantics differ from native operation")
+                index += len(generated)
+
+            # Legacy no-op receipts lack a history anchor. They must match an
+            # actual registration prefix graph; they cannot affect any release.
+            # This preserves lawful no-op history without inventing an ordinal.
+            for receipt in self._invalidations.values():
+                if receipt.invalidation_event_refs:
+                    continue
+                valid = False
+                for graph in graphs:
+                    direct, transitive = graph.affected(receipt.changed_determinant_refs)
+                    if direct or transitive:
+                        continue
+                    unaffected = graph.unaffected(())
+                    expected = InvalidationReceipt(
+                        changed_determinant_refs=receipt.changed_determinant_refs,
+                        directly_affected_release_refs=(), transitively_affected_release_refs=(),
+                        affected_product_refs=(),
+                        unaffected_product_refs=tuple(replay._subject(ref).product_ref for ref in unaffected),
+                        dependency_closure_receipt_ref=receipt.dependency_closure_receipt_ref,
+                        invalidation_event_refs=())
+                    if receipt == expected:
+                        valid = True
+                        break
+                if not valid:
+                    raise LearnedProductLifecycleConflict("invalid no-op invalidation receipt")
+                replay._invalidations[receipt.ref.key] = receipt
+            if replay._checkpoint_payload() != self._checkpoint_payload():
+                raise LearnedProductLifecycleConflict("checkpoint receipts/state differ from native operations")
+        except (KeyError, TypeError, ValueError, IndexError, LearnedProductLifecycleError) as exc:
+            raise LearnedProductLifecycleConflict(f"checkpoint semantic replay rejected: {exc}") from exc
+
+    @property
+    @_locked_read
     def events(self) -> tuple[LearnedProductLifecycleEvent, ...]:
         return tuple(self._events)
 
     @property
+    @_locked_read
     def registered_release_refs(self) -> tuple[ExactRef, ...]:
         return tuple(
             self._repository_subjects[key].release_ref for key in sorted(self._registered)
         )
 
     @property
+    @_locked_read
     def staged_release_refs(self) -> tuple[ExactRef, ...]:
         return tuple(
             self._repository_subjects[key].release_ref
@@ -1460,14 +1870,17 @@ class LearnedProductLifecycleExecutor:
         )
 
     @property
+    @_locked_read
     def determinant_graph(self) -> LearnedProductDeterminantGraph:
         return LearnedProductDeterminantGraph.from_subjects(
             self._repository_subjects[key] for key in sorted(self._registered)
         )
 
+    @_atomic_mutation
     def stage_release(
         self, subject: LearnedProductLifecycleSubject
     ) -> LearnedProductLifecycleSubject:
+        self._native_mutation_preflight("stage_release")
         if not isinstance(subject, LearnedProductLifecycleSubject):
             raise LearnedProductLifecycleError(
                 "stage_release requires LearnedProductLifecycleSubject"
@@ -1493,12 +1906,44 @@ class LearnedProductLifecycleExecutor:
         self._repository_subjects[subject.release_ref.key] = subject
         return subject
 
+    @_atomic_mutation
     def stage_protocol(
         self, value: LearnedProductReleaseProtocol, **overrides: Any
     ) -> LearnedProductLifecycleSubject:
+        self._native_mutation_preflight("stage_protocol")
         return self.stage_release(
             LearnedProductLifecycleSubject.from_protocol(value, **overrides)
         )
+
+    @_locked_read
+    def verify_m2_release_subject_exact(
+        self, repository: Any, release_ref: ExactRef | Mapping[str, Any]
+    ) -> LearnedProductLifecycleSubject:
+        """Source-free native M2 identity cross-check, never custody issuance.
+
+        N04/R correction: resolve_subject_exact takes the RELEASE ref, whereas
+        repository.subject_exact takes the producer SUBJECT ref. The latter
+        must never be called with release_ref. Any missing or mismatched M2
+        material fails; this does not itself authenticate an external producer.
+        """
+        from rawlsing_next.pre553_learned_product_release import (
+            M2Repository, resolve_subject_exact,
+        )
+
+        if not isinstance(repository, M2Repository):
+            raise LearnedProductLifecycleError("native M2Repository required")
+        subject = self._subject(release_ref, require_registered=False)
+        release = repository.release_exact(subject.release_ref)
+        producer_subject = resolve_subject_exact(repository, release.ref)
+        if (
+            release.ref != subject.release_ref
+            or release.semantic_producer_contract_ref != subject.producer_contract_ref
+            or producer_subject.producer_contract_ref != subject.producer_contract_ref
+        ):
+            raise LearnedProductLifecycleConflict(
+                "native B5/M2 release/producer subject identity mismatch"
+            )
+        return subject
 
     def _subject(
         self, release_ref: ExactRef | Mapping[str, Any], *, require_registered: bool = True
@@ -1542,10 +1987,22 @@ class LearnedProductLifecycleExecutor:
         )
 
     def _append_events(self, events: Iterable[LearnedProductLifecycleEvent]) -> None:
+        self._require_mutation_transaction("_append_events")
         planned = tuple(events)
         expected_ordinal = len(self._events) + 1
         known_refs = set(self._events_by_ref)
+        previous_ref = self._events[-1].ref if self._events else None
         for event in planned:
+            if not isinstance(event, LearnedProductLifecycleEvent):
+                raise LearnedProductLifecycleConflict("append requires typed lifecycle event")
+            subject = self._repository_subjects.get(event.release_ref.key)
+            if (subject is None or event.product_ref != subject.product_ref
+                    or event.selection_scope_ref != subject.selection_scope_ref):
+                raise LearnedProductLifecycleConflict("append event subject/scope mismatch")
+            if event.parent_lifecycle_event_ref != previous_ref:
+                raise LearnedProductLifecycleConflict(
+                    "lifecycle event must name immediately preceding event"
+                )
             if event.ordinal != expected_ordinal:
                 raise LearnedProductLifecycleConflict("lifecycle event ordinal is not append-only")
             if event.parent_lifecycle_event_ref is not None:
@@ -1561,12 +2018,14 @@ class LearnedProductLifecycleExecutor:
             if event.ref.key in known_refs:
                 raise LearnedProductLifecycleConflict("lifecycle event ref collision")
             known_refs.add(event.ref.key)
+            previous_ref = event.ref
             expected_ordinal += 1
         for event in planned:
             self._events.append(event)
             self._events_by_ref[event.ref.key] = event
             self._release_event_refs.setdefault(event.release_ref.key, []).append(event.ref)
 
+    @_atomic_mutation
     def register_product(
         self,
         release_ref: ExactRef,
@@ -1575,6 +2034,7 @@ class LearnedProductLifecycleExecutor:
         event_rule_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("register_product")
         subject = self._subject(release_ref, require_registered=False)
         if subject.release_ref.key in self._registered:
             raise LearnedProductLifecycleError("learned product is already lifecycle-registered")
@@ -1613,6 +2073,7 @@ class LearnedProductLifecycleExecutor:
         self._payload_materialized[key] = True
         return event
 
+    @_locked_read
     def lifecycle_state(
         self, release_ref: ExactRef | Mapping[str, Any]
     ) -> LifecycleState:
@@ -1629,6 +2090,7 @@ class LearnedProductLifecycleExecutor:
             registered=True,
         )
 
+    @_atomic_mutation
     def publish_product(
         self,
         release_ref: ExactRef,
@@ -1637,6 +2099,7 @@ class LearnedProductLifecycleExecutor:
         event_rule_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("publish_product")
         subject = self._subject(release_ref)
         key = subject.release_ref.key
         if self._publication[key] == "PUBLISHED":
@@ -1668,6 +2131,7 @@ class LearnedProductLifecycleExecutor:
         self._publication[key] = "PUBLISHED"
         return event
 
+    @_atomic_mutation
     def record_recertification(
         self,
         release_ref: ExactRef,
@@ -1677,7 +2141,12 @@ class LearnedProductLifecycleExecutor:
         attestation_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("record_recertification")
         subject = self._subject(release_ref)
+        if self._validity[subject.release_ref.key] != "VALID":
+            raise LearnedProductLifecycleError(
+                "recertification of withdrawn/invalidated release requires new qualified authority"
+            )
         event = self._event(
             event_kind="RECERTIFIES",
             subject=subject,
@@ -1689,6 +2158,7 @@ class LearnedProductLifecycleExecutor:
         self._append_events((event,))
         return event
 
+    @_atomic_mutation
     def selection_key(
         self,
         *,
@@ -1697,6 +2167,7 @@ class LearnedProductLifecycleExecutor:
         selection_purpose_ref: ExactRef,
         consumer_context_partition_ref: ExactRef | None = None,
     ) -> SelectionKey:
+        self._native_mutation_preflight("selection_key")
         key = SelectionKey(
             product_family_ref=product_family_ref,
             selection_scope_ref=selection_scope_ref,
@@ -1757,6 +2228,7 @@ class LearnedProductLifecycleExecutor:
     def _determinant_snapshot_ref(self) -> ExactRef:
         return self.determinant_graph.ref
 
+    @_atomic_mutation
     def select_current(
         self,
         selection_key_ref: ExactRef,
@@ -1768,6 +2240,7 @@ class LearnedProductLifecycleExecutor:
         selection_attestation_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> CurrentSelectionReceipt:
+        self._native_mutation_preflight("select_current")
         key = self._selection_key(selection_key_ref)
         subject = self._subject(release_ref)
         self._selection_subject_ok(key, subject)
@@ -1819,6 +2292,7 @@ class LearnedProductLifecycleExecutor:
             )
         raise LearnedProductLifecycleError("exact selection receipt is unavailable")
 
+    @_atomic_mutation
     def declare_no_current(
         self,
         selection_key_ref: ExactRef,
@@ -1831,6 +2305,7 @@ class LearnedProductLifecycleExecutor:
         evidence_refs: Iterable[ExactRef] = (),
         subject_release_ref: ExactRef | None = None,
     ) -> NoCurrentReceipt:
+        self._native_mutation_preflight("declare_no_current")
         key = self._selection_key(selection_key_ref)
         previous = self._assert_expected_previous(
             key.ref, expected_previous_receipt_ref
@@ -1854,6 +2329,13 @@ class LearnedProductLifecycleExecutor:
                     "NO_CURRENT requires an exact subject release when no prior selection exists"
                 )
             subject = sorted(candidates, key=lambda x: x.release_ref.key)[0]
+        if (
+            subject.product_family_ref != key.product_family_ref
+            or subject.selection_scope_ref != key.selection_scope_ref
+        ):
+            raise LearnedProductLifecycleError(
+                "NO_CURRENT subject family/scope mismatch"
+            )
         event = self._event(
             event_kind="CURRENT_CLEARED",
             subject=subject,
@@ -1882,6 +2364,7 @@ class LearnedProductLifecycleExecutor:
         self._selection_state_kind[key.ref.key] = "NO_CURRENT"
         return receipt
 
+    @_locked_read
     def resolve_selection_exact(
         self,
         selection_key_ref: ExactRef,
@@ -1911,6 +2394,7 @@ class LearnedProductLifecycleExecutor:
             raise LearnedProductLifecycleConflict("CONFLICTING_CURRENT_SELECTION")
         raise LearnedProductLifecycleError("UNKNOWN_CURRENTNESS")
 
+    @_locked_read
     def current_selection_receipt_ref(self, selection_key_ref: ExactRef) -> ExactRef:
         key = self._selection_key(selection_key_ref)
         ref = self._selection_index.get(key.ref.key)
@@ -1920,6 +2404,7 @@ class LearnedProductLifecycleExecutor:
             raise LearnedProductLifecycleConflict("CONFLICTING_CURRENT_SELECTION")
         return ref
 
+    @_atomic_mutation
     def supersede_current(
         self,
         selection_key_ref: ExactRef,
@@ -1933,6 +2418,7 @@ class LearnedProductLifecycleExecutor:
         supersession_basis_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> CurrentSelectionReceipt:
+        self._native_mutation_preflight("supersede_current")
         key = self._selection_key(selection_key_ref)
         predecessor = self._subject(predecessor_release_ref)
         successor = self._subject(successor_release_ref)
@@ -2101,7 +2587,23 @@ class LearnedProductLifecycleExecutor:
     def _commit_selection_transition_receipts(
         self, receipts: Iterable[CurrentSelectionReceipt | NoCurrentReceipt]
     ) -> None:
+        self._require_mutation_transaction("_commit_selection_transition_receipts")
         for receipt in receipts:
+            if not isinstance(receipt, (CurrentSelectionReceipt, NoCurrentReceipt)):
+                raise LearnedProductLifecycleConflict("transition requires typed receipt")
+            event_ref = (receipt.current_select_event_ref if isinstance(receipt, CurrentSelectionReceipt)
+                         else receipt.no_current_event_ref)
+            event = self._events_by_ref.get(event_ref.key)
+            if (event is None or event.payload.get("selection_key_ref") is None
+                    or _exact(event.payload["selection_key_ref"]) != receipt.selection_key_ref
+                    or receipt.selection_key_ref.key not in self._selection_keys):
+                raise LearnedProductLifecycleConflict("transition receipt/event key mismatch")
+            if isinstance(receipt, CurrentSelectionReceipt):
+                if (event.event_kind not in {"CURRENT_SELECTED", "CURRENT_SUPERSEDED"}
+                        or event.release_ref != receipt.selected_release_ref):
+                    raise LearnedProductLifecycleConflict("transition selected event/release mismatch")
+            elif event.event_kind != "CURRENT_CLEARED":
+                raise LearnedProductLifecycleConflict("NO_CURRENT transition event mismatch")
             key = receipt.selection_key_ref.key
             if isinstance(receipt, CurrentSelectionReceipt):
                 self._selection_receipts[receipt.ref.key] = receipt
@@ -2112,6 +2614,7 @@ class LearnedProductLifecycleExecutor:
                 self._selection_index[key] = receipt.ref
                 self._selection_state_kind[key] = "NO_CURRENT"
 
+    @_atomic_mutation
     def withdraw_product(
         self,
         release_ref: ExactRef,
@@ -2124,6 +2627,7 @@ class LearnedProductLifecycleExecutor:
         current_transitions: Mapping[str, ExactRef | None] | None = None,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("withdraw_product")
         subject = self._subject(release_ref)
         if self._validity[subject.release_ref.key] == "WITHDRAWN":
             raise LearnedProductLifecycleError("product is already withdrawn")
@@ -2167,6 +2671,7 @@ class LearnedProductLifecycleExecutor:
         self._commit_selection_transition_receipts(follow_receipts)
         return withdrawal
 
+    @_atomic_mutation
     def declare_invalidation(
         self,
         changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
@@ -2178,6 +2683,7 @@ class LearnedProductLifecycleExecutor:
         current_transitions: Mapping[str, ExactRef | None] | None = None,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> InvalidationReceipt:
+        self._native_mutation_preflight("declare_invalidation")
         changed = _determinant_refs(changed_determinant_refs)
         if not changed:
             raise LearnedProductLifecycleError(
@@ -2279,6 +2785,7 @@ class LearnedProductLifecycleExecutor:
         self._invalidations[receipt.ref.key] = receipt
         return receipt
 
+    @_atomic_mutation
     def record_rebuild_eligibility(
         self,
         release_ref: ExactRef,
@@ -2290,6 +2797,7 @@ class LearnedProductLifecycleExecutor:
         historical: bool = False,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> RebuildEligibilityReceipt:
+        self._native_mutation_preflight("record_rebuild_eligibility")
         subject = self._subject(release_ref)
         blockers: list[str] = []
         source_inputs = tuple(source_or_upstream_refs)
@@ -2351,6 +2859,7 @@ class LearnedProductLifecycleExecutor:
         self._rebuild_eligibility[receipt.ref.key] = receipt
         return receipt
 
+    @_atomic_mutation
     def link_rebuild(
         self,
         old_release_ref: ExactRef,
@@ -2363,6 +2872,7 @@ class LearnedProductLifecycleExecutor:
         event_rule_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> RebuildLinkReceipt:
+        self._native_mutation_preflight("link_rebuild")
         old = self._subject(old_release_ref)
         new = None if new_release_ref is None else self._subject(new_release_ref)
         if rebuild_state == "REBUILT":
@@ -2410,6 +2920,7 @@ class LearnedProductLifecycleExecutor:
         self._rebuild_links[receipt.ref.key] = receipt
         return receipt
 
+    @_atomic_mutation
     def record_cache_materialized(
         self,
         release_ref: ExactRef,
@@ -2418,6 +2929,7 @@ class LearnedProductLifecycleExecutor:
         event_authority_ref: ExactRef,
         event_rule_ref: ExactRef,
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("record_cache_materialized")
         subject = self._subject(release_ref)
         if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
             raise LearnedProductLifecycleError(
@@ -2434,6 +2946,7 @@ class LearnedProductLifecycleExecutor:
         self._payload_materialized[subject.release_ref.key] = True
         return event
 
+    @_atomic_mutation
     def record_cache_dropped(
         self,
         release_ref: ExactRef,
@@ -2442,6 +2955,7 @@ class LearnedProductLifecycleExecutor:
         event_authority_ref: ExactRef,
         event_rule_ref: ExactRef,
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("record_cache_dropped")
         subject = self._subject(release_ref)
         if subject.materialization_class != "OPTIONAL_CACHE_ACCELERATOR":
             raise LearnedProductLifecycleError(
@@ -2464,6 +2978,7 @@ class LearnedProductLifecycleExecutor:
             )
         return event
 
+    @_atomic_mutation
     def attest_gc_eligibility(
         self,
         release_ref: ExactRef,
@@ -2477,6 +2992,7 @@ class LearnedProductLifecycleExecutor:
         event_rule_ref: ExactRef,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> GCElegibilityReceipt:
+        self._native_mutation_preflight("attest_gc_eligibility")
         subject = self._subject(release_ref)
         if subject.materialization_class != "RECOMPUTABLE_PRODUCT_PAYLOAD":
             raise LearnedProductLifecycleError("GC_NOT_AUTHORIZED")
@@ -2534,6 +3050,7 @@ class LearnedProductLifecycleExecutor:
         self._gc_eligibility[receipt.ref.key] = receipt
         return receipt
 
+    @_atomic_mutation
     def record_payload_gc(
         self,
         eligibility_receipt_ref: ExactRef,
@@ -2541,6 +3058,7 @@ class LearnedProductLifecycleExecutor:
         event_authority_ref: ExactRef,
         event_rule_ref: ExactRef,
     ) -> LearnedProductLifecycleEvent:
+        self._native_mutation_preflight("record_payload_gc")
         exact = _exact_any(eligibility_receipt_ref)
         eligibility = self._gc_eligibility.get(exact.key)
         if eligibility is None:
@@ -2562,6 +3080,7 @@ class LearnedProductLifecycleExecutor:
         self._gc_recorded.add(subject.release_ref.key)
         return event
 
+    @_locked_read
     def release_history(
         self, release_ref: ExactRef | Mapping[str, Any]
     ) -> tuple[LearnedProductLifecycleEvent, ...]:
@@ -2571,6 +3090,7 @@ class LearnedProductLifecycleExecutor:
             for ref in self._release_event_refs.get(subject.release_ref.key, ())
         )
 
+    @_locked_read
     def resolve_current_as_of(
         self,
         selection_key_ref: ExactRef,
@@ -2625,6 +3145,7 @@ class LearnedProductLifecycleExecutor:
                     receipt_ref = receipt.ref
         return SelectionResolution(key.ref, state, selected, receipt_ref)
 
+    @_locked_read
     def _checkpoint_payload(self) -> dict[str, Any]:
         return {
             "schema": LIFECYCLE_CHECKPOINT_SCHEMA,
@@ -2688,6 +3209,7 @@ class LearnedProductLifecycleExecutor:
             "determinant_graph": self.determinant_graph.as_dict(),
         }
 
+    @_locked_read
     def export_checkpoint(self) -> dict[str, Any]:
         payload = self._checkpoint_payload()
         return {
@@ -2701,6 +3223,8 @@ class LearnedProductLifecycleExecutor:
     ) -> "LearnedProductLifecycleExecutor":
         if not isinstance(checkpoint, Mapping):
             raise LearnedProductLifecycleError("lifecycle checkpoint must be a mapping")
+        # Detach caller containers once; subsequent parsing/replay uses this view.
+        checkpoint = canonicalize(checkpoint)
         payload = checkpoint.get("checkpoint_payload")
         if not isinstance(payload, Mapping):
             raise LearnedProductLifecycleError("checkpoint payload is missing")
@@ -2711,6 +3235,8 @@ class LearnedProductLifecycleExecutor:
             raise LearnedProductLifecycleError("lifecycle checkpoint schema mismatch")
         if payload.get("contract_id") != LIFECYCLE_CONTRACT_ID:
             raise LearnedProductLifecycleError("lifecycle contract id mismatch")
+        if payload.get("runtime_schema") != LIFECYCLE_RUNTIME_SCHEMA:
+            raise LearnedProductLifecycleError("lifecycle runtime schema mismatch")
 
         executor = cls()
         for row in payload.get("repository_subjects", ()):
@@ -2729,7 +3255,8 @@ class LearnedProductLifecycleExecutor:
             LearnedProductLifecycleEvent.from_dict(row)
             for row in payload.get("events", ())
         ]
-        executor._append_events(events)
+        with executor._mutation_transaction():
+            executor._append_events(events)
 
         executor._selection_keys = {}
         for row in payload.get("selection_keys", ()):
@@ -2774,7 +3301,18 @@ class LearnedProductLifecycleExecutor:
                 raise LearnedProductLifecycleConflict(
                     f"checkpoint {name} must be canonical pair list"
                 )
-            return {row[0]: row[1] for row in raw}
+            result: dict[str, Any] = {}
+            for row in raw:
+                if not isinstance(row, (list, tuple)) or len(row) != 2:
+                    raise LearnedProductLifecycleConflict(
+                        f"checkpoint {name} contains invalid pair"
+                    )
+                if row[0] in result:
+                    raise LearnedProductLifecycleConflict(
+                        f"checkpoint {name} repeats key"
+                    )
+                result[row[0]] = row[1]
+            return result
 
         executor._publication = _pairs("publication")
         executor._validity = _pairs("validity")
@@ -2821,6 +3359,8 @@ class LearnedProductLifecycleExecutor:
                 "checkpoint determinant graph differs from exact registered subjects"
             )
 
+        executor._verify_native_checkpoint_history()
+        executor._verify_native_checkpoint_semantics()
         replayed = executor.export_checkpoint()
         if replayed["checkpoint_hash"] != supplied_hash:
             raise LearnedProductLifecycleConflict(
@@ -2828,6 +3368,7 @@ class LearnedProductLifecycleExecutor:
             )
         return executor
 
+    @_locked_read
     def audit_replay(self) -> LifecycleReplayReceipt:
         original = self.export_checkpoint()
         replayed = self.from_checkpoint(original)
