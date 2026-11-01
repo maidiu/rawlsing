@@ -1,0 +1,158 @@
+{
+ "acceptance_inference_controls": {
+  "author_return_is_not_acceptance": true,
+  "b3as_c9r_joine_joinv_devr_protected": true,
+  "draft_pr_or_branch_is_not_merge": true,
+  "eight_accepted_cases_not_reopened": true,
+  "no_exact_premain_blob_or_caller_claimed_as_acceptance": true,
+  "r26e_r29p_r30a_r30g_sourcefree_only": true,
+  "reviewer_accept_scoped_is_not_hq_adoption": true,
+  "reviewer_red_is_not_owner_rejection": true,
+  "terminal_status_is_not_acceptance": true
+ },
+ "eight_gate01_accepted_scoped_guard": {
+  "branches": [
+   "agent/rabochii-sorok-20261018-b3a-schema-readset-repair-r1",
+   "agent/rabochii-sorok-20261019-c9r-whole-actor-boundary-consumer-repair-r1",
+   "agent/rabochii-sorok-20261020-r26e-c12-integrity-science-live-product-r1",
+   "agent/rabochii-sorok-20261021-r29p-actor-history-cold-c12-user-product-r1",
+   "agent/rabochii-sorok-20261021-r30a-first-neighbor-binding-first-session-r1",
+   "agent/rabochii-sorok-20261021-r30g-gm01-material-life-real-product-r1",
+   "codex/sorok-join-e-20261022",
+   "codex/sorok-same-person-join-20261022"
+  ],
+  "count": 8,
+  "disjoint_from_97": true,
+  "ids": [
+   "SOROK294-002",
+   "SOROK294-011",
+   "SOROK294-021",
+   "SOROK294-024",
+   "SOROK294-025",
+   "SOROK294-026",
+   "SOROK294-273",
+   "SOROK294-294"
+  ],
+  "re_adjudicated_here": [],
+  "rule": "These eight remain integration/owner actions only. They are not eligible for historical rehabilitation or duplicate review. A later adverse ruling would have to name an exact accepted scope; none is used here."
+ },
+ "fail_closed": true,
+ "frozen_source": {
+  "gate01_content": "dfb161655ffc4e90eea6a79db69a73f5664a295d",
+  "gate01_return": "bbc65ea28dcebdd38507ca270c0a642a7c0290bd",
+  "premain_observed": "8e44ca9c751049d65e6def47600b5c073ee04b29"
+ },
+ "gate01_protection_checks": {
+  "B3AS": "not in 97; not re-adjudicated",
+  "C9R/C9RI": "not in 97; not re-adjudicated",
+  "DEV-R": "finite docket closed; not reopened",
+  "JOIN-E/JOIN-V": "not in 97; JOIN-E scoped acceptance used only as successor context for R31E/R31J",
+  "R26E/R29P/R30A/R30G": "accepted sourcefree claims only; not native and not in 97",
+  "same_person_older_defective_join": "distinguished from final JOIN-E; HR1 defect preserved"
+ },
+ "input_file": {
+  "bytes": 123631,
+  "path": "WORKER_RETURNS/RRIF-SOROK-GATE01-HQ-DECISION-SUBTRACTION-R1/05_TRUE_UNDECIDED_SOROK_RECOVERY_SURVIVORS.jsonl",
+  "sha256": "f48d20555839871b9912d7da1f493bf51fb1cb7dc87c19f45bf9bc2dde3ebc47"
+ },
+ "join_checks": {
+  "duplicate_bridge_ids_in_output": [],
+  "every_input_id_has_exactly_one_output_row": true,
+  "extra_bridge_ids": [],
+  "missing_bridge_ids": [],
+  "new_decision_targets_are_input_ids": true,
+  "pin_mismatch": []
+ },
+ "known_limitations": [
+  "A reviewer verdict is not an HQ adoption; 47 rows are reviewer-level only.",
+  "A reviewer REVISE is not a final owner rejection; 19 plain REVIEW_REVISE rows plus mixed/held rows remain open unless a named successor repair was accepted.",
+  "The full HQ_MOTIONS directory is absent from PRE-MAIN 8e44; decisions were read from Sorok working-HQ 865b5b01.",
+  "M35/S36/S37-S52 and userdirect C0 direct chat sources are not present in the local session stores searched; marked UNKNOWN_SOURCE where relevant.",
+  "The Gate01 MD rev36 vs JSON rev35 inconsistency is preserved; it is not treated as a missing science function."
+ ],
+ "new_decision_coverage": {
+  "baseline_covered_rows": [
+   "SOROK294-022"
+  ],
+  "new_hq_decisions": 11,
+  "new_independent_reviewer_decisions": 45,
+  "reason_for_not_in_02": "35 author-only/no-decision + 1 Pyat out-of-scope + SOROK294-022 R26V whose REVISE is already Gate01 HDE-008 (not newly found).",
+  "rows_not_in_02": 37,
+  "rows_with_new_decision_in_02": 60
+ },
+ "population": {
+  "expected": 97,
+  "priority_counts": {
+   "HIGH": 45,
+   "LOW_ENTRYPOINT_ONLY": 20,
+   "MEDIUM": 32
+  },
+  "returned": 97,
+  "returned_rows": 97,
+  "status_counts": {
+   "AUTHOR_ONLY_HOLD": 3,
+   "AUTHOR_ONLY_NOT_ACCEPTED_PENDING_REVIEW": 1,
+   "AUTHOR_ONLY_PENDING_REVIEW": 23,
+   "COMMISSION_ONLY_NO_RETURN": 1,
+   "HQ_AUTHOR_ONLY_NOT_ACCEPTED_SUPERSEDED_BY_C0R3": 1,
+   "HQ_AUTHOR_SCOPED_FOR_JOIN": 2,
+   "HQ_AUTHOR_SCOPED_FOR_REUSE": 1,
+   "HQ_AUTHOR_SCOPED_TECHNICAL_ALPHA_FOR_REUSE": 1,
+   "HQ_INTEGRATION_DIRECTED_NO_STANDALONE_ACCEPTANCE": 1,
+   "HQ_RECOGNIZED_SCOPED_ACCEPT_ENGINEERING_SCIENCE": 1,
+   "HQ_REVISE": 2,
+   "HQ_REVISE_WITH_SUCCESSOR_SCOPED_ACCEPT": 1,
+   "HQ_SCOPED_ACCEPT": 1,
+   "HQ_SCOPED_ACCEPT_CANDIDATE": 1,
+   "HQ_SCOPED_ACCEPT_EXISTENCE_ATLAS": 1,
+   "HQ_SCOPED_ACCEPT_TEST_ONLY": 1,
+   "INDEPENDENT_VERDICT_BOUNDED_POSITIVE_NO_ISSUANCE": 1,
+   "NO_CONTROLLING_DECISION_HANDOFF_ONLY": 1,
+   "NO_DIRECT_DECISION": 6,
+   "OUT_OF_SOROK_SCOPE_NO_SOROK_DECISION": 1,
+   "REVIEW_MIXED_SCOPED_ACCEPT_REVISE": 1,
+   "REVIEW_NO_ADOPTION_POSITIVE_ABSENCE": 1,
+   "REVIEW_NO_ADOPTION_REVISE": 1,
+   "REVIEW_REVISE": 19,
+   "REVIEW_REVISE_AUTHOR_CANDIDATE": 1,
+   "REVIEW_REVISE_BEFORE_CAUSAL_INTEGRATION": 1,
+   "REVIEW_REVISE_BEFORE_NATIVE_INTEGRATION": 2,
+   "REVIEW_REVISE_HOLD": 2,
+   "REVIEW_REVISE_SUPERSEDED_BY_ACCEPTED_REPAIR": 1,
+   "REVIEW_REVISE_SUPERSEDED_BY_C0R3": 1,
+   "REVIEW_REVISE_WITH_LATER_SCOPED_REPAIR": 1,
+   "REVIEW_REVISE_WITH_M04_SUCCESSOR": 1,
+   "REVIEW_REVISE_WITH_SCOPED_VERIFIER_REPAIR": 1,
+   "REVIEW_REVISE_WITH_SOURCEEVIDENCE_ACCEPT": 1,
+   "REVIEW_SCIENTIFICALLY_REVIEWABLE_CANDIDATE_NO_ADOPTION": 1,
+   "REVIEW_SCOPED_ACCEPT_AS_PART_OF_C8O": 1,
+   "REVIEW_SCOPED_ACCEPT_CROSSPROCESS": 1,
+   "REVIEW_SCOPED_ACCEPT_FINITE_HISTORY": 1,
+   "REVIEW_SCOPED_ACCEPT_FINITE_NATIVE_ANCESTRY": 1,
+   "REVIEW_SCOPED_ACCEPT_TESTONLY": 2,
+   "REVIEW_SCOPED_BOUNDARY_WITH_CONDITIONS": 2,
+   "REVIEW_SCOPED_TEST_ACCEPT_STRONGER_HOLD": 1,
+   "REVIEW_VERDICT_MIXED_SOURCEFREE_POSITIVE_BOUNDARY_RED": 1,
+   "REVIEW_VERDICT_REVISE_HOLD": 1
+  },
+  "tier_counts": {
+   "AUTHOR_ONLY": 35,
+   "HQ": 14,
+   "INDEPENDENT_REVIEW": 47,
+   "OUT_OF_SCOPE": 1
+  },
+  "unique_branches": 97,
+  "unique_bridge_ids": 97,
+  "unique_pins": 97
+ },
+ "repository": "maidiu/rawlsing",
+ "row_controls": {
+  "all_hq_rows_have_hq_source": true,
+  "all_review_rows_have_review_source": true,
+  "all_rows_have_source": true,
+  "all_rows_have_status": true,
+  "all_rows_have_tier": true,
+  "no_row_claims_current_premain_integration": true
+ },
+ "schema": "SOROK_RRIF_RESIDUAL_B_COVERAGE_AND_CONTROL_TESTS@1"
+}

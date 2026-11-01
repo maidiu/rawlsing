@@ -1,0 +1,65 @@
+{
+  "schema": "SOROK_RRIF_RESIDUAL_B_SESSION_LOCATOR@1",
+  "repository": "maidiu/rawlsing",
+  "private": true,
+  "branch": "research/sorok-rrif-residual-b-decision-whereabouts-20261031-r1",
+  "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-rrif-residual-b-20261031-r1",
+  "host": {
+    "computer_name": "mainMac",
+    "os": "macOS 13.2.1 (22D68)",
+    "arch": "x86_64",
+    "cpu": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz"
+  },
+  "harness": {
+    "name": "OpenCode",
+    "version": "1.18.34"
+  },
+  "model": {
+    "provider": "opencode-go",
+    "id": "deepseek-v4.1-flash",
+    "local_session_variant": "max",
+    "attestation": "LOCAL_SESSION_METADATA_ONLY__NO_PROVIDER_SIDE_ATTESTATION",
+    "agent": "build"
+  },
+  "session": {
+    "id": "ses_e6b412564ffeeBfEjjDzcgYT2f",
+    "title": "SOROK RRIF-RESIDUAL-B — WHERE WERE DECISIONS ON THE 97 UNRESOLVED RECENT SOROK BRANCHES ACTUALLY MADE?"
+  },
+  "frozen_source": {
+    "gate01_return": "bbc65ea28dcebdd38507ca270c0a642a7c0290bd",
+    "gate01_content": "dfb161655ffc4e90eea6a79db69a73f5664a295d",
+    "premain_observed": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "premain_live_readback": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "gate01_live_readback": "bbc65ea28dcebdd38507ca270c0a642a7c0290bd"
+  },
+  "branch_state": {
+    "remote_at_start": "42ad21a53cc82e3c17445b099903c12d927b2f12",
+    "content_commit": "TO_BE_RECORDED_AFTER_COMMIT",
+    "final_returned_sha": "TO_BE_RECORDED_AFTER_PUSH",
+    "remote_readback": "TO_BE_RECORDED_AFTER_PUSH"
+  },
+  "source_reads": {
+    "gate01_97": "WORKER_RETURNS/RRIF-SOROK-GATE01-HQ-DECISION-SUBTRACTION-R1/05_TRUE_UNDECIDED_SOROK_RECOVERY_SURVIVORS.jsonl",
+    "gate01_19": "WORKER_RETURNS/RRIF-SOROK-GATE01-HQ-DECISION-SUBTRACTION-R1/01_HQ_CHRONOLOGICAL_DECISION_EVENTS.jsonl",
+    "hq_motions": "SOROK_PRODUCT_CONTROL_ROOM/HQ_MOTIONS/* at 865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+    "current_progress": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md at 8e44ca9c751049d65e6def47600b5c073ee04b29",
+    "reviewer_returns": "WORKER_RETURNS/**/00_RETURN.md, 00_*VERDICT*.md, 00_REVIEW.md at exact reviewer commits",
+    "later_294": "WORKER_RETURNS/SOROK-294-R2-RC1/00_RETURN.md and WORKER_RETURNS/SOROK-294-R2-HR1/00_HOSTILE_VERDICT.md",
+    "rrif": "WORKER_RETURNS/SOROK_RRIF_R1_SOURCE_DISPOSITION_CLOSEOUT/* and SOROK_PRODUCT_CONTROL_ROOM/RRIF/*"
+  },
+  "unaccessed": [
+    "Exhaustive PR review comment bodies for every Sorok/RRIF PR; only #517 had a decision-bearing comment (HR1).",
+    "Original M35/S36/S37-S52 and userdirect one-call C0 direct chat/session orders; UNKNOWN_SOURCE in local stores.",
+    "Provider-side MAX attestation.",
+    "Pyat scope and all PROGRAMMA SOROK work."
+  ],
+  "execution": {
+    "branch_code_executed": false,
+    "source_native_executed": false,
+    "actor_science_executed": false,
+    "premain_mutated": false,
+    "accepted_artifacts_modified": false,
+    "other_worktrees_modified": false,
+    "force_reset_or_branch_deletion": false
+  }
+}
