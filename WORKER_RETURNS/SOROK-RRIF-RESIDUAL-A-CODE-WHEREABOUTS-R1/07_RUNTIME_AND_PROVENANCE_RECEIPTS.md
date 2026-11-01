@@ -66,9 +66,9 @@ PREMAIN read use `integration/pre-main-reconciliation-r1` exactly as commissione
 
 ## Final publication
 
-- Output content commit: created on the assigned branch; exact SHA reported in the terminal
-  response.
+- Output content commit: `30e6f3553e9dc4b6fab33b5c978a01e0bce760eb` (9 files, 1465 insertions).
 - Push: normal non-force push to `origin/research/sorok-rrif-residual-a-code-whereabouts-20261031-r1`.
-- Final remote 40-hex SHA: read back after push and reported in the terminal response. It is not
-  embedded in this file to avoid a self-referential commit hash.
+- First remote readback: `30e6f3553e9dc4b6fab33b5c978a01e0bce760eb` (matches content commit).
+- A readback-only follow-up commit records this receipt. The final remote tip is reported in the
+  terminal response; it is not embedded in this file to avoid a self-referential commit hash.
 - No PR, merge, self-adoption, self-dispatch, or future work was performed.
