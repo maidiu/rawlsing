@@ -11,7 +11,8 @@ AMEND SOROK HISTORICAL-FATE COMMISSION 2 — GATE01 REDUCTION
 
 Source return:
 WORKER_RETURNS/RRIF-SOROK-GATE01-HQ-DECISION-SUBTRACTION-R1/
-at exact final remote SHA: <fill from final push readback>
+at exact content commit SHA: dfb161655ffc4e90eea6a79db69a73f5664a295d
+(final remote tip is reported in the terminal readback; this file is committed in a follow-up readback commit)
 
 PRE-MAIN read cut: 8e44ca9c751049d65e6def47600b5c073ee04b29
 Branch head at return: 3162a4af6b0d543b8da1fb2f5e84c3537ad12716

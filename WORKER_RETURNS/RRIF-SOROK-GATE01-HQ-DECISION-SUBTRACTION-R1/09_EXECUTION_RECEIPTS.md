@@ -63,4 +63,4 @@ not in the survivor file. Accepted-scoped records remain
   service was used.
 - No PRE-MAIN, other HQ, Programma, O-LIVE or active worker was modified.
 
-The final remote SHA and content commit are recorded after push readback.
+Content commit: dfb161655ffc4e90eea6a79db69a73f5664a295d. Final remote tip is read back after this follow-up readback commit.
