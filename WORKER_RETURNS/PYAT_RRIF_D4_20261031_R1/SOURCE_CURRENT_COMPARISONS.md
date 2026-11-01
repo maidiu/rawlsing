@@ -82,7 +82,7 @@ Stage B has byte-exact parity on the exercised corpus and stronger in-method che
 ### Current ownership
 
 - `rawlsing_next/pre553_source_relations.py` current blob `5b67e3f98a5faf95a6c82700af2346fef6e306a5`.
-- Current code is the base Python P07 owner, not the HQ235 hardened variant: current-to-HQ235 diff is 240 insertions / 799 deletions (i.e. HQ235 adds the custody anchoring and authenticated entrypoint).
+- Current code is the base Python P07 owner, not the HQ235 hardened variant: HQ235-to-current diff is 240 insertions / 799 deletions. Current is the shorter base and lacks the HQ235 custody anchoring and authenticated entrypoint.
 - `rawlsing_next/fiabc_succession_producer.py:59` maps `F008` to the path as a **string only**; it does not import or call the module.
 - Only `rawlsing_next/tests/test_pre553_source_relations.py` imports and executes it. No production caller was found.
 
@@ -178,7 +178,7 @@ The current blob is byte-identical to the independently reviewed candidate and t
 - `rawlsing_next/pre553_learned_product_release.py` current blob `f76c390665f06ef126968ccf1a6b2d816f43ae92` (HQ118).
 - `rawlsing_next/pre553_learned_world_composition.py:33` and `:40` import both owners.
 - The composition module has **no production caller**; only its tests import it. Actual consumer: **UNKNOWN**.
-- Current blobs are 549 and 165 changed lines smaller than S06G; the current code is the pre-hardening base, not S06G.
+- S06G-to-current diff: lifecycle 4 insertions / 545 deletions; release 10 insertions / 155 deletions. Current is the pre-hardening base, not S06G.
 
 ### Original negative cases
 
