@@ -1,0 +1,577 @@
+[
+  {
+    "id": "W1-E-01",
+    "claim": "PROGRAMMA's whole object is the complete original and prospective Sorok undertaking; RRIF and R3/O-LIVE counts cannot be the whole-program denominator.",
+    "kind": "PURPOSE_AND_SCOPE",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "cee8a09b33ccfb08e5db7e0bc3be45fda8938766",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00A_NONNEGOTIABLE_FULL_ESTATE_AND_ANTI_DRIFT_GATE_R1.md",
+        "section_or_locator": "objective; primary inheritance; hard fail",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "f8b7a6af792e2d65b0616fbb5272d1ce9c500c62",
+        "path_or_title": "WORKER_COMMISSIONS/PROGRAMMA_SOROK_W1_COMMON/00_SHARED_VISION_AND_RESEARCH_CONTRACT.md",
+        "section_or_locator": "goal and required capabilities",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "USER_DIRECTED_PROPOSED_OPERATING_SCOPE",
+    "relation_candidates": [
+      {
+        "type": "CONSTRAINS",
+        "target": "W1-E-02",
+        "grounding": "O-LIVE must be subordinate to whole estate"
+      }
+    ],
+    "first_consumer_or_none": "O-LIVE whole-scope check must fail until full estate connected",
+    "why_it_matters_for_programma": "Not all historic Sorok files read at semantic depth in W1-E"
+  },
+  {
+    "id": "W1-E-02",
+    "claim": "Existing O-LIVE builds one JSON graph and persists state.json and SNAPSHOT.json with history, derived gaps, status axes, source snapshot and version vector.",
+    "kind": "SOURCE_CODE_FUNCTION",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "_base_state lines 417-494, refresh_state 545-582, _save 597-615",
+        "read_depth": "FUNCTION_CODE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/00_START_HERE.md",
+        "section_or_locator": "R2 current candidate cut and CLI",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "SCOPED_EXISTING_CODE_NOT_QUALIFIED_BY_THIS_AGENT",
+    "relation_candidates": [
+      {
+        "type": "IMPLEMENTS_CANDIDATE",
+        "target": "W1-E-01",
+        "grounding": "Current scoped substrate only"
+      },
+      {
+        "type": "DEPENDS_ON",
+        "target": "W1-E-08",
+        "grounding": "Source manifest identity"
+      }
+    ],
+    "first_consumer_or_none": "CLI overview/export/zoom; no demonstrated whole live UI",
+    "why_it_matters_for_programma": "No local cold reopen by W1-E; pairwise snapshot atomicity not established"
+  },
+  {
+    "id": "W1-E-03",
+    "claim": "Typed edge direction/required/causal flags are inferred from relation-name substring heuristics, not a qualified predicate policy.",
+    "kind": "ENGINEERING_LIMIT",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "_classify_edge lines 239-300; _required_outgoing 637-642",
+        "read_depth": "FUNCTION_CODE_READ"
+      }
+    ],
+    "status": "SOURCE_CONFIRMED_STATIC_LIMIT",
+    "relation_candidates": [
+      {
+        "type": "REQUIRES_REPAIR",
+        "target": "W1-E-06",
+        "grounding": "Inferences drive propagation and invalidation"
+      }
+    ],
+    "first_consumer_or_none": "blocked-chain uses required causal inferred edges",
+    "why_it_matters_for_programma": "Which old relations have semantically wrong inferred flags needs audit against underlying sources"
+  },
+  {
+    "id": "W1-E-04",
+    "claim": "R2 demonstration script self-constructs SOURCEFREE_REVIEW with reviewer_role INDEPENDENT_I3_ENGINEER/PASS, accepts scoped review/engineering and synthetic SOROK_R2_NEW_REQUIREMENT, then saves real STATE/SNAPSHOT.",
+    "kind": "EVIDENCE_CONTAMINATION_DEFECT",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/r2_live_transaction.py",
+        "section_or_locator": "_review; main review_gate, new_requirement, final _save",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/r2_live_transaction.json",
+        "section_or_locator": "scoped_sourcefree_review, new_requirement, final_state and 23 author tests",
+        "read_depth": "TARGETED_JSON_READ"
+      }
+    ],
+    "status": "SOURCE_CONFIRMED_DEMO_LEAK__ACTUAL_STATE_BYTES_NOT_FULLY_READ",
+    "relation_candidates": [
+      {
+        "type": "COMPROMISES",
+        "target": "W1-E-02",
+        "grounding": "Demo contaminates persisted candidate's current status and work gaps"
+      },
+      {
+        "type": "REQUIRES_GATE",
+        "target": "W1-E-05",
+        "grounding": "Review self-attestation accepted"
+      }
+    ],
+    "first_consumer_or_none": "R2 demo claimed current state.json/SNAPSHOT.json on saved path",
+    "why_it_matters_for_programma": "Full state JSON returned empty via GitHub connector; exact polluted records inferred from code and transaction receipt"
+  },
+  {
+    "id": "W1-E-05",
+    "claim": "SOURCEFREE_REVIEW checks existing Git reviewed_sha/object/preimage, but not independent reviewer identity, reviewer ownership, target assertion or competent approval. It can set REVIEW_PASSED_SCOPED and INDEPENDENT_ACCEPT_SCOPED from submitted text.",
+    "kind": "AUTHORITY_PROOF_DEFECT",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "_require_evidence 1099-1107, _authority_request 1108-1135, _apply_transition 1195-1250",
+        "read_depth": "FUNCTION_CODE_READ"
+      }
+    ],
+    "status": "SOURCE_CONFIRMED_INSUFFICIENT_QUALIFICATION",
+    "relation_candidates": [
+      {
+        "type": "PROPOSED_REPAIR_FOR",
+        "target": "W1-E-04",
+        "grounding": "Separate author-return evidence from external reviewer and owner decision"
+      }
+    ],
+    "first_consumer_or_none": "No real reviewer/owner qualification in this interface",
+    "why_it_matters_for_programma": "Existing incumbent HQ role/lease proof binding format needs owner selection"
+  },
+  {
+    "id": "W1-E-06",
+    "claim": "Negative source/review transitions propagate by required edges; restoration changes invalidated dependents to CANDIDATE_READY without proving all prerequisites; derived readiness may therefore overstate recovery.",
+    "kind": "CAUSAL_REGRADING_DEFECT",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "_invalidate_required_dependents 1176-1194, _apply_transition 1251-1340",
+        "read_depth": "FUNCTION_CODE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/test_living_reference_r2.py",
+        "section_or_locator": "test_source_withdrawal_invalidates_only_required_dependent_then_repair_restores",
+        "read_depth": "TEST_NAME_AND_FUNCTION_SIGNATURE_READ"
+      }
+    ],
+    "status": "SOURCE_CONFIRMED_STATIC_RISK__NO_INDEPENDENT_TEST",
+    "relation_candidates": [
+      {
+        "type": "REQUIRES",
+        "target": "W1-E-03",
+        "grounding": "Only qualified required edges may propagate"
+      },
+      {
+        "type": "REGRADES",
+        "target": "W1-E-16",
+        "grounding": "Dependency-sensitive current work"
+      }
+    ],
+    "first_consumer_or_none": "S5-dependent consumer chain on synthetic source withdrawal",
+    "why_it_matters_for_programma": "No S2 adversarial second-blocker replay in this flight"
+  },
+  {
+    "id": "W1-E-07",
+    "claim": "O-SCIENCE R2 import adds 17 workstream candidate upserts, 14 new missing-function nodes and 226 typed edges plus 102 legacy definitions; these are hypothesis/candidate evidence, not scientific issuance.",
+    "kind": "SOURCE_GRADED_IMPORT",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "ingest_oscience lines 1358-1555",
+        "read_depth": "FUNCTION_CODE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/00_START_HERE.md",
+        "section_or_locator": "counts and authority limits",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "CANDIDATE_UNREVIEWED",
+    "relation_candidates": [
+      {
+        "type": "SUPPLEMENTS",
+        "target": "W1-E-01",
+        "grounding": "Adds partial scientific links, not whole taxonomy"
+      }
+    ],
+    "first_consumer_or_none": "The same graph and workstream views",
+    "why_it_matters_for_programma": "Original O-SCIENCE scientific alternatives and specific 226 edges were not all semantically reviewed here"
+  },
+  {
+    "id": "W1-E-08",
+    "claim": "Source manifest verifier checks exact commit:path Git type/id/time and row identity for 144 Sorok/three reference rows; correctness of source object is not semantic truth, reviewer competence or native author permission.",
+    "kind": "PROVENANCE_VERIFIER",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/verify_source_manifest.py",
+        "section_or_locator": "verify lines 38-81",
+        "read_depth": "FULL_SOURCE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/source_manifest.json",
+        "section_or_locator": "schema and first C0/C1 source entries",
+        "read_depth": "JSON_HEADER_AND_SELECTED_ROWS_READ"
+      }
+    ],
+    "status": "CODE_PRESENT__23_AUTHOR_TESTS_REPORTED_NOT_REEXECUTED",
+    "relation_candidates": [
+      {
+        "type": "PROVIDES_IDENTITY_FOR",
+        "target": "W1-E-02",
+        "grounding": "Source exactness stays separate from content grade"
+      }
+    ],
+    "first_consumer_or_none": "R2 manifest verifier (author receipt says PASS)",
+    "why_it_matters_for_programma": "Manifest source row coverage not whole estate; S2 reread not executed"
+  },
+  {
+    "id": "W1-E-09",
+    "claim": "Current work-now is groups sorted by a required-descendant count; legacy critical-path is illustrative only, and typed blocked-chain does not compute durations, owner capacity or AND/OR intervention alternatives.",
+    "kind": "SCHEDULING_LIMIT",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "_impact 695-713; compute_work_now 881-921; blocked_chain 922-953; _critical_path 965-985",
+        "read_depth": "FUNCTION_CODE_READ"
+      }
+    ],
+    "status": "SOURCE_CONFIRMED_NO_TRUE_CRITICAL_PATH",
+    "relation_candidates": [
+      {
+        "type": "DERIVED_FROM",
+        "target": "W1-E-06",
+        "grounding": "Only qualified blocked dependencies may enter frontier"
+      },
+      {
+        "type": "REQUIRES_OWNER",
+        "target": "W1-E-15",
+        "grounding": "Work status must use fresh HQ/controller state"
+      }
+    ],
+    "first_consumer_or_none": "CLI work-now and blocked-chain; no committed schedule optimizer",
+    "why_it_matters_for_programma": "Real durations/cost/lease resource availability unknown"
+  },
+  {
+    "id": "W1-E-10",
+    "claim": "Original Q-HEALTH-001 is historically OPEN_DISCOVERY, depends on Q-ONTO-001, while SPD-0003 distinguishes dependency and flourishing dimensions and Court 24 rejects a one-score measure.",
+    "kind": "SCIENTIFIC_ALTERNATIVE_AND_PRODUCT_OBLIGATION",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/registers/QUESTIONS.jsonl",
+        "section_or_locator": "Q-HEALTH-001 / Q-ONTO-001",
+        "read_depth": "ROW_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/registers/DECISIONS.jsonl",
+        "section_or_locator": "SPD-0003",
+        "read_depth": "ROW_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md",
+        "section_or_locator": "sections 0-14",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "ORIGINAL_PRODUCT_SCIENCE_UNSETTLED",
+    "relation_candidates": [
+      {
+        "type": "REQUIRES",
+        "target": "Q-ONTO-001",
+        "grounding": "Historical depends_on"
+      },
+      {
+        "type": "CONTESTS",
+        "target": "SCALAR_ATTACHMENT_AS_HEALTH",
+        "grounding": "Source 24 noncollapse"
+      },
+      {
+        "type": "CONNECTS_TO",
+        "target": "S13,S14,S15,A5",
+        "grounding": "Product ethical and alpha consequences"
+      }
+    ],
+    "first_consumer_or_none": "No native scientific issuer or human outcome proven",
+    "why_it_matters_for_programma": "Exact current owner decision and study protocol unissued; cannot infer current status from historic register"
+  },
+  {
+    "id": "W1-E-11",
+    "claim": "Astra A-H timescales are independent lenses (turn through social/ecology) and do not impose quest milestones; D/E can be meaningful without increased attachment or even continued relation.",
+    "kind": "GAMEPLAY_AND_EXPERIENCE_ALTERNATIVE",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/ASTRA_NATIVE_GAMEPLAY_NECESSITY_SYNTHESIS_R1/STRATA_MAP.md",
+        "section_or_locator": "A-H; especially B, D, E, G",
+        "read_depth": "PRIMARY_TEXT_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "4f8ba029922cc59f4b45541b8ae028e4ba913c6a",
+        "path_or_title": "WORKER_RETURNS/SOROK_PROGRAMMA_VISION_ASTRA_WHOLE_ARCHITECTURE_R1/02_ASTRA_VS_OTHER_SPINES_ARCHITECTURE_AND_KERNEl_ALTERNATIVES.md",
+        "section_or_locator": "seven rival spines",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "PROPOSED_NOT_PLAYTESTED",
+    "relation_candidates": [
+      {
+        "type": "INFORMS",
+        "target": "W1-E-01",
+        "grounding": "Whole purpose; rivals to quest/instrumentalist UI"
+      },
+      {
+        "type": "CHALLENGES",
+        "target": "W1-E-10",
+        "grounding": "Flourishing not equivalent to engagement"
+      }
+    ],
+    "first_consumer_or_none": "Proposed P1/P2/P3 human/product experiments, not run here",
+    "why_it_matters_for_programma": "Full Astra primary nine files not fully re-read, human engagingness untested"
+  },
+  {
+    "id": "W1-E-12",
+    "claim": "Original V3 external application has a real historical call path from simulation/yearly_step/persona_sheet to V2 chat; current PRE-MAIN has no proven native V3 actor runtime; old numeric defaults and parent Enneagram inference are scientifically contested.",
+    "kind": "HISTORICAL_CODE_FIRST_CONSUMER",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc",
+        "path_or_title": "WORKER_RETURNS/SOROK_PROGRAMMA_ORIGINAL_NEO_V3_ACTUAL_ENGINEERING_ESTATE_R1/00_RETURN.md",
+        "section_or_locator": "sections 2-4 first consumer",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc",
+        "path_or_title": "WORKER_RETURNS/SOROK_PROGRAMMA_ORIGINAL_NEO_V3_ACTUAL_ENGINEERING_ESTATE_R1/03_OLD_V3_NEO_V3_ASTRA_AND_USER_PRODUCT_ARCHITECTURE_CONTRADICTIONS.md",
+        "section_or_locator": "sections 1-5, function lines",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "HISTORICAL_STAGING_NOT_CURRENT_NATIVE",
+    "relation_candidates": [
+      {
+        "type": "CONTRADICTS",
+        "target": "DETERMINISTIC_DRIVER_TO_PSYCHIC_STATE",
+        "grounding": "CAN009/010/008 and ADP017 authority"
+      },
+      {
+        "type": "HISTORICAL_RENDER_ALTERNATIVE",
+        "target": "W1-E-13",
+        "grounding": "Persona sheet vs actor-access bounded projection"
+      }
+    ],
+    "first_consumer_or_none": "external server/generation/simulation.py → v3/engine/yearly_step.py → v3/io/persona_sheet.py → v2/run_conversation_chat.py",
+    "why_it_matters_for_programma": "Local original V3 archive/source not directly available; prior W1-C source trace, not W1-E code execution"
+  },
+  {
+    "id": "W1-E-13",
+    "claim": "Sorok 100 scopes a minimal independently caused, partially observable person and immutable history; 101 separates actor-world outward occurrence from user-specific phenomenal projection.",
+    "kind": "PRODUCT_EPISTEMIC_OBLIGATION",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md",
+        "section_or_locator": "0-3 baseline/fidelity",
+        "read_depth": "PRIMARY_SECTION_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+        "section_or_locator": "0-3 actor→observable→user access",
+        "read_depth": "PRIMARY_SECTION_READ"
+      }
+    ],
+    "status": "PROVISIONAL_PRODUCT_DIRECTION__NO_NATIVE_IMPLEMENTATION",
+    "relation_candidates": [
+      {
+        "type": "CONSTRAINS",
+        "target": "W1-E-12",
+        "grounding": "Legacy persona-sheet does not satisfy user-access guard"
+      },
+      {
+        "type": "REQUIRES",
+        "target": "A5",
+        "grounding": "Human-visible fidelity and no leakage"
+      }
+    ],
+    "first_consumer_or_none": "No W1-E-verified native two-call product consumer",
+    "why_it_matters_for_programma": "Exact current renderer implementation, latency and human trial missing"
+  },
+  {
+    "id": "W1-E-14",
+    "claim": "BP2P4J shows test-only actual E2 changing downstream A2; independent BP2P4JI finds valid SAY episode verifier hash preimage excludes post-hash episode_id, uncorrected original verifier returns mismatch.",
+    "kind": "ENGINEERING_POSITIVE_AND_NEGATIVE",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+        "path_or_title": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/00_RETURN.md",
+        "section_or_locator": "sections 2 and 6",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "3212d716ce66586527c258632ef10c3ff4489803",
+        "path_or_title": "WORKER_RETURNS/SOROK-20261020-BP2P4JI-WHOLE-PRODUCT-INDEPENDENT-R1/00_RETURN.md",
+        "section_or_locator": "section 3 C12 discrepancy",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "SOURCEFREE_E2_POSITIVE__C12_VERIFIER_REVISE__NATIVE_HELD",
+    "relation_candidates": [
+      {
+        "type": "AFFECTS",
+        "target": "C12",
+        "grounding": "Episode custody/reopen claim"
+      },
+      {
+        "type": "DOES_NOT_ERASE",
+        "target": "BP2P4J_TEST_ONLY_E2",
+        "grounding": "Independent review preserves performed sourcefree conditional effect"
+      }
+    ],
+    "first_consumer_or_none": "bp2p4.product.JoinedProduct → BP4 A0/A2 conditional afterstate",
+    "why_it_matters_for_programma": "Repaired tested owner-selected SHA and independent reviewer pending; external SQLite/anchor held"
+  },
+  {
+    "id": "W1-E-15",
+    "claim": "Library LATEST.json currently points to 2026.10.31.17.40 with a nine-file manifest and source PRE-MAIN 8e44ca9; full state/delta show RRIF as then primary, Programma parallel, old worker/cut statuses not a current process lease.",
+    "kind": "CONTINUITY_CUT",
+    "source_refs": [
+      {
+        "repository_or_library": "ChatGPT Library /Rawlsing/SOROK HQ",
+        "ref": "2026.10.31.17.40",
+        "path_or_title": "/Rawlsing/SOROK HQ/LATEST.json",
+        "section_or_locator": "latest_snapshot_id, source_premain_at_snapshot",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "ChatGPT Library /Rawlsing/SOROK HQ",
+        "ref": "2026.10.31.17.40",
+        "path_or_title": "/Rawlsing/SOROK HQ/2026.10.31.17.40/MANIFEST.json",
+        "section_or_locator": "file inventory and previous snapshot",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "ChatGPT Library /Rawlsing/SOROK HQ",
+        "ref": "2026.10.31.17.40",
+        "path_or_title": "/Rawlsing/SOROK HQ/2026.10.31.17.40/00_HQ_FULL_STATE.md",
+        "section_or_locator": "RRIF R2/R3/R4 and Programma split",
+        "read_depth": "FULL_FILE_READ"
+      },
+      {
+        "repository_or_library": "ChatGPT Library /Rawlsing/SOROK HQ",
+        "ref": "2026.10.31.17.40",
+        "path_or_title": "/Rawlsing/SOROK HQ/2026.10.31.17.40/01_DELTA_FROM_PREVIOUS.md",
+        "section_or_locator": "sections 1-7",
+        "read_depth": "FULL_FILE_READ"
+      }
+    ],
+    "status": "HISTORICAL_VERIFIED_POINTER_NOT_LIVE_AUTHORITY",
+    "relation_candidates": [
+      {
+        "type": "CONTEXT_FOR",
+        "target": "W1-E-09",
+        "grounding": "Work-now must reconcile live Git and actual worker status"
+      }
+    ],
+    "first_consumer_or_none": "HQ handoff context, not code/current test authority",
+    "why_it_matters_for_programma": "No source-backed live Mac leases, later snapshot since 2026.10.31.17.40 not established"
+  },
+  {
+    "id": "W1-E-16",
+    "claim": "Pyat original source, N11/N12 world and C11 transfer are held at an external boundary; Sorok may model precise receiving requirements but not mutate Pyat-owned upstream work.",
+    "kind": "EXTERNAL_OWNER_BOUNDARY",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+        "section_or_locator": "PYAT_BOUNDARY; _apply_transition external guard; blocked_chain exclusion",
+        "read_depth": "FUNCTION_CODE_READ"
+      },
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+        "path_or_title": "SOROK_PRODUCT_CONTROL_ROOM/registers/DECISIONS.jsonl",
+        "section_or_locator": "SPD-0008",
+        "read_depth": "ROW_READ"
+      }
+    ],
+    "status": "EXTERNAL_OWNER_HELD",
+    "relation_candidates": [
+      {
+        "type": "BLOCKS",
+        "target": "C11,A5",
+        "grounding": "Without permitted world/actor evidence native person is not qualified"
+      },
+      {
+        "type": "OWNED_BY",
+        "target": "PYAT_HQ",
+        "grounding": "External source issuer only"
+      }
+    ],
+    "first_consumer_or_none": "Sorok C0/C11 receiving edge is an obligation, not an issued native import",
+    "why_it_matters_for_programma": "Exact authorized N11/N12 field contract and first Sorok consumer absent"
+  },
+  {
+    "id": "W1-E-17",
+    "claim": "Archive source identity must distinguish overall V3 ZIP digest mismatch from independently byte-matched individual V3 members (114/114 claimed by W1-C S2).",
+    "kind": "SOURCE_CUSTODY_DISTINCTION",
+    "source_refs": [
+      {
+        "repository_or_library": "maidiu/rawlsing",
+        "ref": "10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc",
+        "path_or_title": "WORKER_RETURNS/SOROK_PROGRAMMA_ORIGINAL_NEO_V3_ACTUAL_ENGINEERING_ESTATE_R1/03_OLD_V3_NEO_V3_ASTRA_AND_USER_PRODUCT_ARCHITECTURE_CONTRADICTIONS.md",
+        "section_or_locator": "section 1 archive 3f2c5ed vs 953c9149",
+        "read_depth": "FULL_SECTION_READ"
+      }
+    ],
+    "status": "CONTAINER_MISMATCH_MEMBER_MATCH_REPORTED",
+    "relation_candidates": [
+      {
+        "type": "DOES_NOT_IMPLY",
+        "target": "W1-E-12",
+        "grounding": "Module members may have real historical consumers without proving container identity"
+      }
+    ],
+    "first_consumer_or_none": "Original V3 external app source consumer (separately evidenced)",
+    "why_it_matters_for_programma": "Which exact expected archive container/custodian controls reuse requires original owner"
+  }
+]
