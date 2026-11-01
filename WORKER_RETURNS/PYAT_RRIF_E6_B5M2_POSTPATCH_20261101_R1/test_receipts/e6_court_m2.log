@@ -1,0 +1,106 @@
+.......................FF...                                             [100%]
+=================================== FAILURES ===================================
+_______________ test_17_binding_cannot_resolve_different_release _______________
+
+    def test_17_binding_cannot_resolve_different_release():
+        repo1, release1, _, _, _, _ = build_fixture(subject_label="release-one")
+        repo2, release2, subject2, producer2, _, _ = build_fixture(subject_label="release-two")
+        # Recreate release-two representation inside repo1 only as a foreign exact record.
+        # First copy its producer subject/closures is intentionally avoided; a foreign
+        # representation exact-ref is enough to test release mismatch at publication.
+        locator = ref("foreign:locator", "RepresentationLocator")
+        integrity = ref("foreign:integrity", "RepresentationIntegrity")
+        from rawlsing_next.pre553_learned_product_release import RepresentationRecord
+>       repo1.register_representation(
+            RepresentationRecord(
+                release_ref=release2.ref,
+                resolved_subject_ref=subject2,
+                producer_contract_ref=producer2,
+                resolution_mode="CONTENT_ADDRESSED_MATERIALIZATION",
+                resolver_or_locator_ref=locator,
+                representation_integrity_ref=integrity,
+            )
+        )
+
+rawlsing_next/tests/test_pre553_learned_product_release.py:385:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/pre553_learned_product_release.py:476: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:606: in register_representation
+    release = self.release_exact(representation.release_ref)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:493: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:667: in release_exact
+    _fail("RELEASE_UNAVAILABLE", "requested exact release is unavailable")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'RELEASE_UNAVAILABLE', message = 'requested exact release is unavailable'
+
+    def _fail(code: str, message: str) -> None:
+>       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError
+______________ test_18_endpoint_failover_only_among_same_release _______________
+
+    def test_18_endpoint_failover_only_among_same_release():
+        repo, release, subject, producer, _, _ = build_fixture(subject_label="failover-one")
+        b1, _, _ = bind_representation(
+            repo, release, subject, producer,
+            label="failover-a", mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        b2, _, _ = bind_representation(
+            repo, release, subject, producer,
+            label="failover-b", mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        result = resolve_release_exact(
+            repo,
+            release.ref,
+            publication_binding_refs=(b1.ref, b2.ref),
+            unavailable_binding_refs=(b1.ref,),
+        )
+        assert result.receipt.used_publication_binding_ref == b2.ref
+
+        repo_other, release_other, subject_other, producer_other, _, _ = build_fixture(
+            subject_label="failover-other"
+        )
+        other_binding, _, _ = bind_representation(
+            repo_other,
+            release_other,
+            subject_other,
+            producer_other,
+            label="other-endpoint",
+            mode="CONTENT_ADDRESSED_MATERIALIZATION",
+        )
+        # Register exact foreign binding into repo solely to attack the failover list.
+>       repo.register_binding(other_binding)
+
+rawlsing_next/tests/test_pre553_learned_product_release.py:436:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+rawlsing_next/pre553_learned_product_release.py:476: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:632: in register_binding
+    release = self.release_exact(binding.release_ref)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:493: in guarded
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/pre553_learned_product_release.py:667: in release_exact
+    _fail("RELEASE_UNAVAILABLE", "requested exact release is unavailable")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+code = 'RELEASE_UNAVAILABLE', message = 'requested exact release is unavailable'
+
+    def _fail(code: str, message: str) -> None:
+>       raise M2ReleaseError(code, message)
+E       rawlsing_next.pre553_learned_product_release.M2ReleaseError: RELEASE_UNAVAILABLE: requested exact release is unavailable
+
+rawlsing_next/pre553_learned_product_release.py:74: M2ReleaseError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_learned_product_release.py::test_17_binding_cannot_resolve_different_release
+FAILED rawlsing_next/tests/test_pre553_learned_product_release.py::test_18_endpoint_failover_only_among_same_release
+2 failed, 26 passed in 0.40s
