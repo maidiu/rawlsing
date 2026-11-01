@@ -37,13 +37,7 @@ class R5OpaqueValue:
 
 
 def opaque_decoder_value(value: Any) -> R5OpaqueValue:
-    """Explicitly preserve supported decoder date/time objects as opaque bytes.
-
-    This is representation-only. It does not infer survey date/time semantics,
-    timezone meaning, display-format meaning, or canonical calendar values.
-    Callers must opt into this seam explicitly; R5TypedValueCodec.encode
-    continues to reject bare date/time objects.
-    """
+    """Preserve exact built-in naive decoder date/time objects as opaque bytes only."""
     if type(value) is _dt.datetime:
         if value.tzinfo is not None:
             raise R5CodecError("timezone-aware datetime requires a separate explicit decoder carrier authority")
