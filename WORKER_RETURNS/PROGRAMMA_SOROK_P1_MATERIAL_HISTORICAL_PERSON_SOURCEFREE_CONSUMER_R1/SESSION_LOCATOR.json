@@ -25,12 +25,17 @@
   "native": false,
   "programma": "PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1",
   "publication": {
-    "final_source_sha": "a71e4d58392ef946034b6e26795865f890e2efd3",
+    "final_source_sha": "51c8dfcb1256d0ebe19e9b60872759626bbbeaf3",
     "metadata_note": "This locator is published in a metadata follow-up commit after the source receipt was read. The exact product/source SHA is final_source_sha; the follow-up branch head is reported separately in the worker response. No self-referential SHA claim is made.",
-    "source_commit_message": "Programma Sorok P1: execute four material person histories and cold encounter",
+    "source_archive_checkout": {
+      "method": "git archive HEAD plus .git sentinel",
+      "runner": "PASS",
+      "tests": "8 passed"
+    },
+    "source_commit_message": "Programma Sorok P1: bundle the exact BP2 vendor closure for cold reuse",
     "source_remote_command": "git ls-remote origin refs/heads/agent/sorok-programma-p1-material-person-first-consumer-20261101-r1",
-    "source_remote_readback": "a71e4d58392ef946034b6e26795865f890e2efd3",
-    "source_remote_readback_time": "2026-11-01T05:21:17Z"
+    "source_remote_readback": "51c8dfcb1256d0ebe19e9b60872759626bbbeaf3",
+    "source_remote_readback_time": "2026-11-01T05:24:38Z"
   },
   "receipts": {
     "hostile": "evidence/p1-hostile.json",
