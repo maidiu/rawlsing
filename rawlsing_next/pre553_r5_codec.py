@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
+import datetime as _dt
 import base64
 import json
 import math
@@ -33,6 +34,54 @@ class R5OpaqueValue:
             raise R5CodecError("opaque type_id must be a non-empty string")
         if not isinstance(self.payload, bytes):
             raise R5CodecError("opaque payload must be bytes")
+
+
+def opaque_decoder_value(value: Any) -> R5OpaqueValue:
+    """Explicitly preserve supported decoder date/time objects as opaque bytes.
+
+    This is representation-only. It does not infer survey date/time semantics,
+    timezone meaning, display-format meaning, or canonical calendar values.
+    Callers must opt into this seam explicitly; R5TypedValueCodec.encode
+    continues to reject bare date/time objects.
+    """
+    if type(value) is _dt.datetime:
+        if value.tzinfo is not None:
+            raise R5CodecError("timezone-aware datetime requires a separate explicit decoder carrier authority")
+        payload = struct.pack(
+            ">HBBBBBIB",
+            value.year, value.month, value.day, value.hour, value.minute,
+            value.second, value.microsecond, value.fold,
+        )
+        return R5OpaqueValue("python.datetime.datetime@1", payload)
+    if type(value) is _dt.date:
+        return R5OpaqueValue(
+            "python.datetime.date@1",
+            struct.pack(">HBB", value.year, value.month, value.day),
+        )
+    if type(value) is _dt.time:
+        if value.tzinfo is not None:
+            raise R5CodecError("timezone-aware time requires a separate explicit decoder carrier authority")
+        payload = struct.pack(
+            ">BBBIB", value.hour, value.minute, value.second, value.microsecond, value.fold
+        )
+        return R5OpaqueValue("python.datetime.time@1", payload)
+    raise R5CodecError(f"unsupported opaque decoder value type {type(value).__name__}")
+
+
+def normalize_decoder_physical_value(value: Any) -> Any:
+    """Recursively replace supported decoder date/time objects with opaque carriers."""
+    if type(value) in {_dt.datetime, _dt.date, _dt.time}:
+        return opaque_decoder_value(value)
+    if isinstance(value, tuple):
+        return tuple(normalize_decoder_physical_value(v) for v in value)
+    if isinstance(value, list):
+        return [normalize_decoder_physical_value(v) for v in value]
+    if isinstance(value, Mapping):
+        return {
+            normalize_decoder_physical_value(k): normalize_decoder_physical_value(v)
+            for k, v in value.items()
+        }
+    return value
 
 
 def canonical_json(value: Any) -> str:
@@ -226,5 +275,6 @@ class R5TypedValueCodec:
 
 __all__ = [
     "CODEC_VERSION", "R5CodecError", "R5OpaqueValue", "R5TypedValueCodec",
+    "opaque_decoder_value", "normalize_decoder_physical_value",
     "canonical_json", "canonical_bytes",
 ]
