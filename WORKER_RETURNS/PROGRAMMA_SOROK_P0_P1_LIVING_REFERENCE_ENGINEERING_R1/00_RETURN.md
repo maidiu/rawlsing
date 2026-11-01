@@ -12,6 +12,7 @@
 | Verified initial HEAD | `a89e5ccbe67400168aaea8367f7aa00ca0de7625` |
 | Verified remote initial HEAD | same; branch was not advanced |
 | Implementation commit | `93945e4b4539fd5d5e39805d7d1f35d2325a2cbd` |
+| Return evidence commit | `b26ec67da8aef15198e895f8d6ebd64e96c3dc60` |
 | Final remote SHA | reported by terminal push readback; a file cannot contain the SHA of the commit that contains it |
 
 No force-push, reset of another checkout or PRE-MAIN mutation occurred. Other
@@ -48,7 +49,7 @@ Under `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/
   baseline counts.
 - `test_living_reference_r2.py` — baseline counts, restoration expectation,
   current-ref check correction.
-- `test_p0_trust_repair.py` — 16 focused P0 tests.
+- `test_p0_trust_repair.py` — 17 focused P0 tests.
 - `test_p1_whole_program.py` — 12 P1 traversal/maturity/gap tests.
 - `00_START_HERE.md` — R3 status, commands, trust boundary and limits.
 - `HISTORICAL_DEMO_QUARANTINE.md` — quarantine pointer.
@@ -139,7 +140,7 @@ python3 -m pytest -o addopts= -q -p no:cacheprovider \
   test_p0_trust_repair.py test_p1_whole_program.py
 ```
 
-Observed: `51 passed in 70.80s` (exit 0). Inherited 23 cases remain included;
+Observed: `52 passed in 70.94s` (exit 0). Inherited 23 cases remain included;
 the corrected cases are explained below.
 
 ```sh

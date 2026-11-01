@@ -311,3 +311,20 @@ def test_self_authored_or_selfhashed_acceptance_record_is_refused():
     evidence = {"kind": "ACCEPTANCE_RECORD", "reviewed_sha": selfhash["subject_sha"], "acceptance": selfhash}
     ok, reason, _ = lr._verify_acceptance_record(state, "JOIN_E_7BF", "engineering", evidence)
     assert not ok and "REVIEW_RECORD_OBJECT_INVALID" in reason
+
+
+def test_withdrawal_event_supersedes_prior_evidence(tmp_path: Path):
+    journal = tmp_path / "journal.jsonl"
+    genesis = lr._event("GENESIS", {"baseline_sha": lr.STARTUP_SHA}, created_at="2026-11-01T00:00:00+00:00")
+    evidence_store.append_event(journal, genesis)
+    quarantine = lr._event("QUARANTINE", {"excluded_history_ids": ["R2_DEMO_H0003"]}, created_at="2026-11-01T00:00:01+00:00")
+    appended = evidence_store.append_event(journal, quarantine)
+    withdrawal = lr._event("EVIDENCE_WITHDRAWAL", {"withdraws_event_id": appended["event"]["event_id"], "reason": "SUPERSEDED_FOR_TEST"}, created_at="2026-11-01T00:00:02+00:00")
+    first = evidence_store.append_event(journal, withdrawal)
+    duplicate = evidence_store.append_event(journal, withdrawal)
+    assert first["status"] == "EVENT_APPENDED"
+    assert duplicate["status"] == "DUPLICATE_EVENT_IDEMPOTENT"
+    state = lr.rebuild_from_journal(journal, operating=True)
+    assert state.get("quarantine") == {}
+    assert state["withdrawals"][0]["withdraws_event_id"] == appended["event"]["event_id"]
+    assert state["withdrawals"][0]["reason"] == "SUPERSEDED_FOR_TEST"
