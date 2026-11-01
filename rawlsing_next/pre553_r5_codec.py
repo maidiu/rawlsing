@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
+import datetime as _dt
 import base64
 import json
 import math
@@ -33,6 +34,106 @@ class R5OpaqueValue:
             raise R5CodecError("opaque type_id must be a non-empty string")
         if not isinstance(self.payload, bytes):
             raise R5CodecError("opaque payload must be bytes")
+
+
+def _canonical_naive_date_time(value: Any) -> _dt.datetime | _dt.date | _dt.time:
+    """Project a supported naive date/time object onto exact built-in civil fields.
+
+    Subclasses (notably pandas.Timestamp) are accepted only when their civil
+    fields and fold are exactly representable by a built-in naive value.  An
+    aware value, an out-of-range civil field, or sub-microsecond precision
+    refuses explicitly rather than falling through to a string.
+    """
+    if isinstance(value, _dt.datetime):
+        try:
+            tzinfo = value.tzinfo
+        except Exception as exc:
+            raise R5CodecError(
+                f"date-like subclass {type(value).__name__} cannot expose tzinfo safely"
+            ) from exc
+        if tzinfo is not None:
+            raise R5CodecError("timezone-aware datetime requires a separate explicit decoder carrier authority")
+        try:
+            nanosecond = getattr(value, "nanosecond", 0)
+            if isinstance(nanosecond, int) and not isinstance(nanosecond, bool) and nanosecond != 0:
+                raise R5CodecError(
+                    "date/time subclass with sub-microsecond precision cannot be preserved by the versioned opaque carrier"
+                )
+            return _dt.datetime(
+                value.year, value.month, value.day, value.hour, value.minute,
+                value.second, value.microsecond, fold=value.fold,
+            )
+        except R5CodecError:
+            raise
+        except Exception as exc:
+            raise R5CodecError(
+                f"date-like subclass {type(value).__name__} cannot be safely canonicalized to a naive datetime carrier"
+            ) from exc
+    if isinstance(value, _dt.date):
+        try:
+            return _dt.date(value.year, value.month, value.day)
+        except Exception as exc:
+            raise R5CodecError(
+                f"date-like subclass {type(value).__name__} cannot be safely canonicalized to a date carrier"
+            ) from exc
+    if isinstance(value, _dt.time):
+        try:
+            tzinfo = value.tzinfo
+        except Exception as exc:
+            raise R5CodecError(
+                f"date-like subclass {type(value).__name__} cannot expose tzinfo safely"
+            ) from exc
+        if tzinfo is not None:
+            raise R5CodecError("timezone-aware time requires a separate explicit decoder carrier authority")
+        try:
+            return _dt.time(
+                value.hour, value.minute, value.second, value.microsecond, fold=value.fold
+            )
+        except Exception as exc:
+            raise R5CodecError(
+                f"date-like subclass {type(value).__name__} cannot be safely canonicalized to a time carrier"
+            ) from exc
+    raise R5CodecError(f"unsupported opaque decoder value type {type(value).__name__}")
+
+
+def opaque_decoder_value(value: Any) -> R5OpaqueValue:
+    """Preserve exact naive decoder date/time civil fields as opaque bytes only."""
+    canonical = _canonical_naive_date_time(value)
+    if type(canonical) is _dt.datetime:
+        payload = struct.pack(
+            ">HBBBBBIB",
+            canonical.year, canonical.month, canonical.day, canonical.hour, canonical.minute,
+            canonical.second, canonical.microsecond, canonical.fold,
+        )
+        return R5OpaqueValue("python.datetime.datetime@1", payload)
+    if type(canonical) is _dt.date:
+        return R5OpaqueValue(
+            "python.datetime.date@1",
+            struct.pack(">HBB", canonical.year, canonical.month, canonical.day),
+        )
+    if type(canonical) is _dt.time:
+        payload = struct.pack(
+            ">BBBIB", canonical.hour, canonical.minute, canonical.second,
+            canonical.microsecond, canonical.fold
+        )
+        return R5OpaqueValue("python.datetime.time@1", payload)
+    raise R5CodecError(f"unsupported opaque decoder value type {type(value).__name__}")
+
+
+def normalize_decoder_physical_value(value: Any) -> Any:
+    """Recursively replace supported decoder date/time objects with opaque carriers."""
+    if isinstance(value, (_dt.datetime, _dt.date, _dt.time)):
+        return opaque_decoder_value(value)
+    if isinstance(value, tuple):
+        return tuple(normalize_decoder_physical_value(v) for v in value)
+    if isinstance(value, list):
+        return [normalize_decoder_physical_value(v) for v in value]
+    if isinstance(value, Mapping):
+        return {
+            normalize_decoder_physical_value(k): normalize_decoder_physical_value(v)
+            for k, v in value.items()
+        }
+    return value
 
 
 def canonical_json(value: Any) -> str:
@@ -226,5 +327,6 @@ class R5TypedValueCodec:
 
 __all__ = [
     "CODEC_VERSION", "R5CodecError", "R5OpaqueValue", "R5TypedValueCodec",
+    "opaque_decoder_value", "normalize_decoder_physical_value",
     "canonical_json", "canonical_bytes",
 ]

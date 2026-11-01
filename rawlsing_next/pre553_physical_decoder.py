@@ -25,8 +25,11 @@ import stat
 import tempfile
 from typing import Any, Iterator, Mapping
 
+from rawlsing_next.pre553_r5_codec import normalize_decoder_physical_value
+
 
 COMPATIBILITY_ONLY = "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+SOURCE_DECLARED_ENCODING_ONLY = "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
 PHYSICAL_METADATA_CONTRACT = "PRE553_PHYSICAL_METADATA@1.0.0"
 SOURCE_CUSTODY_CONTRACT = "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0"
 DECODER_IMPLEMENTATION_ID = "rawlsing_next/pre553_physical_decoder.py"
@@ -37,6 +40,12 @@ COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
     "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9": "latin1",
     "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8": "latin1",
     "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c": "latin1",
+}
+
+DECLARED_ENCODING_ALLOWLIST: Mapping[str, str] = {
+    "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": "BIG5",
+    "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": "WINDOWS-1252",
+    "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec": "WINDOWS-1252",
 }
 
 
@@ -160,7 +169,7 @@ class PhysicalSourceIncidence:
             batch: list[PhysicalCell] = []
             for local_row, row in enumerate(frame.itertuples(index=False, name=None), 1):
                 for variable, value in zip(variables, row):
-                    raw = _jsonable(value)
+                    raw = _physical_value(value)
                     state, declaration = classify_physical_value(raw, declarations[variable.name])
                     batch.append(PhysicalCell(row_offset + local_row, variable.ordinal, variable.name, raw, state,
                                               declaration, variable.value_labels.get(str(raw))))
@@ -416,6 +425,29 @@ def _jsonable(value: Any) -> Any:
     return str(value)
 
 
+def _physical_value(value: Any) -> Any:
+    """Preserve supported decoder-native naive date/time through the opaque R5 seam.
+
+    Exact built-ins and naive subclasses (for example pandas.Timestamp) are
+    canonicalized by the codec.  Timezone-aware values and date-like subclasses
+    that cannot preserve civil-field identity refuse explicitly; they never
+    fall through to the string lane.  A single item wrapper is unwrapped, but
+    recursive item chasing is deliberately not performed here.
+    """
+    import datetime as _dt
+    if isinstance(value, (_dt.datetime, _dt.date, _dt.time)):
+        return normalize_decoder_physical_value(value)
+    if hasattr(value, "item"):
+        try:
+            item = value.item()
+        except Exception:
+            pass
+        else:
+            if isinstance(item, (_dt.datetime, _dt.date, _dt.time)):
+                return normalize_decoder_physical_value(item)
+    return _jsonable(value)
+
+
 def _sha(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -506,9 +538,12 @@ def _compatibility_config(source_sha: str, encoding: str | None) -> dict[str, An
     if encoding is None:
         return {"encoding": None, "authority_status": None}
     expected = COMPATIBILITY_ALLOWLIST.get(source_sha)
-    if expected != encoding:
-        raise DecoderError("encoding override is not in the frozen exact SHA/config allowlist")
-    return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
+    if expected == encoding:
+        return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
+    declared = DECLARED_ENCODING_ALLOWLIST.get(source_sha)
+    if declared == encoding:
+        return {"encoding": encoding, "authority_status": SOURCE_DECLARED_ENCODING_ONLY}
+    raise DecoderError("encoding override is not in an exact SHA/config representation allowlist")
 
 
 def _missing_declarations(metadata: Any, name: str, source_format: str) -> tuple[Mapping[str, Any], ...]:
@@ -539,8 +574,18 @@ def classify_physical_value(value: Any, declarations: tuple[Mapping[str, Any], .
             return PhysicalMissingState.FORMAT_EXTENDED_MISSING, declaration
         if declaration["kind"] == "discrete" and value == declaration.get("value"):
             return PhysicalMissingState.FORMAT_USER_MISSING_VALUE, declaration
-        if declaration["kind"] == "range" and declaration.get("lo") <= value <= declaration.get("hi"):
-            return PhysicalMissingState.FORMAT_USER_MISSING_RANGE, declaration
+        if declaration["kind"] == "range":
+            lo = declaration.get("lo")
+            hi = declaration.get("hi")
+            try:
+                in_range = lo <= value <= hi
+            except TypeError as exc:
+                raise DecoderError(
+                    "physical value cannot be compared with a declared missing range "
+                    f"(value_type={type(value).__name__})"
+                ) from exc
+            if in_range:
+                return PhysicalMissingState.FORMAT_USER_MISSING_RANGE, declaration
     return PhysicalMissingState.OBSERVED_STORAGE_VALUE, None
 
 
@@ -808,6 +853,8 @@ def decode_dta(
 __all__ = [
     "COMPATIBILITY_ALLOWLIST",
     "COMPATIBILITY_ONLY",
+    "DECLARED_ENCODING_ALLOWLIST",
+    "SOURCE_DECLARED_ENCODING_ONLY",
     "DECODER_IMPLEMENTATION_ID",
     "PHYSICAL_METADATA_CONTRACT",
     "SOURCE_CUSTODY_CONTRACT",
