@@ -42,10 +42,6 @@ COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
     "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c": "latin1",
 }
 
-# CLOSED35 D01: exact source-declared encoding admission is a separate physical
-# decoder lane from compatibility-only fallback. The map binds only exact source
-# SHA -> declared decoder encoding; it authorizes no text semantics and no family-
-# or wave-level inheritance.
 DECLARED_ENCODING_ALLOWLIST: Mapping[str, str] = {
     "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": "BIG5",
     "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": "WINDOWS-1252",
