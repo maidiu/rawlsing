@@ -1,0 +1,279 @@
+{
+  "schema": "PYAT_RRIF_F0_RECEIVING_ALLOWLIST@1.0.0",
+  "generated_utc": "2026-11-01",
+  "repository": "maidiu/rawlsing",
+  "premain_ref": "refs/remotes/origin/integration/pre-main-reconciliation-r1",
+  "premain_pin": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+  "live_premain_recheck": "REQUIRED_IMMEDIATELY_BEFORE_ANY_OWNER_CAS",
+  "receiving_order": [
+    "g1_e4f_d02",
+    "g2_e5_s06g"
+  ],
+  "collision_rule": {
+    "rule": "gate payload path sets MUST be disjoint; evidence prefixes do not count as receiving payload",
+    "observed_e4f_vs_e5_payload_intersection": [],
+    "observed_e4f_vs_e5_merge_tree_exit": 0
+  },
+  "gates": {
+    "g1_e4f_d02": {
+      "title": "E4F corrected D01/D02 current-decoder datetime carriage",
+      "candidate_branch": "agent/pyat-rrif-e4f-d02-real-datetime-fix-20261101-r1",
+      "candidate_sha": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
+      "candidate_parent": "ffd03934d0a86c98ed095d973e45587bd5751013",
+      "status_at_preflight": "BLOCKED_PENDING_INDEPENDENT_E4FR_REVIEW",
+      "review_branch": "review/pyat-rrif-e4fr-d02-corrected-consumer-hostile-20261101-r1",
+      "review_branch_sha_at_preflight": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+      "review_sha_pin": null,
+      "review_verdict_required": "ACCEPT",
+      "review_must_be_distinct_from_author": true,
+      "review_must_adjudicate_exact_candidate_sha": true,
+      "review_must_cover": [
+        "D01 exact three declared SHA/encoding pairs unchanged",
+        "D02 real SAV/DTA DATETIME reaches iter_cells and first R5 seam as opaque, never str",
+        "aware Timestamp/datetime subclasses and one-level item wrappers explicit-refuse",
+        "nested two-or-more-level item chains are adjudicated, not assumed safe",
+        "G01 two pre-existing failures remain unchanged and out of D02 scope"
+      ],
+      "prior_reviews": {
+        "e4_c3_uncorrected": {
+          "sha": "5dc00a1eb0d2881a9d74661b7a94d436cc7b7c60",
+          "verdict": "REJECT_E1_FULL_FANIN__D02_REAL_DATETIME_AND_AWARE_SUBCLASS_RED",
+          "selection_allowed": false
+        },
+        "e4f_engineer_return": {
+          "sha": "f2c0af3273d612bff0a7bd2407532b52caf4348b",
+          "verdict": "ENGINEERING_PASS_CANDIDATE_PENDING_INDEPENDENT_REVIEW",
+          "selection_allowed": false
+        }
+      },
+      "payload": [
+        {
+          "path": "rawlsing_next/pre553_physical_decoder.py",
+          "before_blob": "8732e34d0ea3f4cfffd7d33ee00f258dbc2d65dd",
+          "after_blob": "4b89c4598f324834de064c1200c63698a20e3c5c"
+        },
+        {
+          "path": "rawlsing_next/pre553_r5_codec.py",
+          "before_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+          "after_blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7"
+        },
+        {
+          "path": "rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py",
+          "before_blob": null,
+          "after_blob": "bfa20f7a35ef9a399bec5380b6c3e6f9caad0115"
+        },
+        {
+          "path": "rawlsing_next/tests/test_rrif_e1_c3_d01_declared_encoding_admission.py",
+          "before_blob": null,
+          "after_blob": "625f1d8b1f3fa8c24501addcaff7d70209598596"
+        },
+        {
+          "path": "rawlsing_next/tests/test_rrif_e1_c3_d02_opaque_datetime_carrier.py",
+          "before_blob": null,
+          "after_blob": "ac5f331322a69dab224eeeda14b05681918b432e"
+        },
+        {
+          "path": "rawlsing_next/tests/test_rrif_e4f_d02_real_datetime_subclass.py",
+          "before_blob": null,
+          "after_blob": "c07c2019455e6264b4297c1c1d782bd887b96bdd"
+        }
+      ],
+      "branch_evidence_prefixes": [
+        "WORKER_RETURNS/PYAT_RRIF_E1_C3_20261031_R1/",
+        "WORKER_RETURNS/PYAT_RRIF_E4F_D02_20261101_R1/"
+      ],
+      "required_test_receipts": {
+        "e1_c3_33": {
+          "passed": 33,
+          "failed": 0,
+          "skipped": 0,
+          "status": "PASS"
+        },
+        "e4f_d02_12": {
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "status": "PASS"
+        },
+        "selected_regressions": {
+          "passed": 194,
+          "failed": 0,
+          "skipped": 1,
+          "status": "PASS"
+        },
+        "real_sav_dta_first_seam": {
+          "status": "PASS"
+        },
+        "g01_hostile": {
+          "expected_failures": 2,
+          "baseline_identical": true,
+          "status": "KNOWN_PREEXISTING_RED"
+        }
+      },
+      "notes": [
+        "Do not receive E1 ffd03934 alone; E4 REJECT is preserved and E4F is the corrected successor candidate.",
+        "E4F test-only historical seam loading is a review point; no production seam file is added."
+      ]
+    },
+    "g2_e5_s06g": {
+      "title": "E5 S06G B5/M2 local unauthenticated integrity hardening",
+      "candidate_branch": "agent/pyat-rrif-e5-s06g-b5m2-compatible-hardening-20261101-r1",
+      "candidate_sha": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+      "candidate_parent": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+      "status_at_preflight": "BLOCKED_PENDING_E6_REVIEW_AND_M2_OWNER_COMPATIBILITY_DECISION",
+      "review_branch": "review/pyat-rrif-e6-b5m2-postpatch-hostile-20261101-r1",
+      "review_branch_sha_at_preflight": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+      "review_sha_pin": null,
+      "review_verdict_required": "ACCEPT",
+      "review_must_be_distinct_from_author": true,
+      "review_must_adjudicate_exact_candidate_sha": true,
+      "review_must_cover": [
+        "sourcefree engineering merits of exact B5/M2 blobs",
+        "compatibility with original accepted M2 owner contract",
+        "two unchanged accepted M2 foreign-release fixture conflicts",
+        "twelve S06FR OBSERVED defect-presence failures are historical RED, not modern acceptance"
+      ],
+      "owner_decision_required": {
+        "decision_values_allowing_accept": [
+          "ACCEPT_FIXTURE_AMENDMENT"
+        ],
+        "exact_conflict_tests": [
+          "test_17_binding_cannot_resolve_different_release",
+          "test_18_endpoint_failover_only_among_same_release"
+        ],
+        "must_bind_candidate_sha": true,
+        "must_name_owner_and_decision_ref": true,
+        "must_not_weaken_release_exact": true
+      },
+      "payload": [
+        {
+          "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+          "before_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+          "after_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3"
+        },
+        {
+          "path": "rawlsing_next/pre553_learned_product_release.py",
+          "before_blob": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
+          "after_blob": "1cb7692399aad8fb272c8c9ce956719527829007"
+        },
+        {
+          "path": "rawlsing_next/tests/s06g_fixtures.py",
+          "before_blob": null,
+          "after_blob": "f3040bb40a246e7b0bdea243060458d2045ab43b"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_e5_s06g_independent_hostile.py",
+          "before_blob": null,
+          "after_blob": "9a469ad0940216e02967c94159db943d2979154a"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_s06f_native_owner_security.py",
+          "before_blob": null,
+          "after_blob": "6974f7d5e2f4ed66bb36b6160ce2ced08574d5b5"
+        },
+        {
+          "path": "rawlsing_next/tests/test_pre553_s06g_atomic_integrity.py",
+          "before_blob": null,
+          "after_blob": "9964464cd86c077ff5b9a99cea6fb0a41e516c80"
+        }
+      ],
+      "branch_evidence_prefixes": [
+        "WORKER_RETURNS/PYAT_RRIF_E5_S06G_20261101_R1/"
+      ],
+      "required_test_receipts": {
+        "unfiltered": {
+          "passed": 179,
+          "failed": 14,
+          "accepted_conflicts": 2,
+          "historical_defect_presence": 12,
+          "status": "PASS_WITH_OWNER_APPROVED_CONFLICTS"
+        },
+        "filtered_selection": {
+          "passed": 179,
+          "deselected": 14,
+          "status": "SELECTION_NOT_GREEN"
+        },
+        "accepted_b5": {
+          "passed": 39,
+          "failed": 0,
+          "status": "PASS"
+        },
+        "s06g_repair": {
+          "passed": 42,
+          "failed": 0,
+          "status": "PASS"
+        },
+        "e2_independent": {
+          "passed": 10,
+          "failed": 0,
+          "status": "PASS"
+        },
+        "adjacent": {
+          "passed": 45,
+          "failed": 0,
+          "status": "PASS"
+        }
+      },
+      "notes": [
+        "Do not select E5 on the filtered 179/14-deselected run as a green full suite.",
+        "Do not weaken release_exact or edit accepted tests in place.",
+        "LOCAL_UNAUTHENTICATED only; external issuer, durable custody, multiprocess and actor authority remain held."
+      ]
+    }
+  },
+  "disabled_approvals": [
+    "E1 ffd03934 alone (E4 REJECT preserved; D02 real Timestamp RED)",
+    "E4 5dc00a1e as acceptance (it is a rejection receipt)",
+    "E4F before independent E4FR positive exact-SHA review",
+    "E5 before independent E6 positive exact-SHA review",
+    "E5 without a versioned M2 owner fixture-amendment decision on both named conflicts",
+    "E5 filtered 179-pass/14-deselected selection as a green full suite",
+    "wholesale branch cherry-pick or merge of E4F or E5",
+    "any old S06F owner branch, R9 broker, or G01 authority import",
+    "G01 repair or G01 authority inference",
+    "source-native survey/source/U-E_pre/actor/N11/N12/Sorok/PROGRAMMA execution",
+    "protected PRE-MAIN write, merge, force-push, branch deletion, or self-adoption",
+    "scientific meaning, source-rights, licence, issuer/use, or external release authority"
+  ],
+  "receipts_template": {
+    "schema": "PYAT_RRIF_F0_RECEIPTS@1.0.0",
+    "receipts": {
+      "g1_e4f_d02": {
+        "review": {
+          "verdict": "PENDING",
+          "reviewed_sha": null,
+          "reviewer_branch": null,
+          "reviewer_sha": null,
+          "receipt_path": null,
+          "reviewer_distinct_from_author": null
+        },
+        "tests": {}
+      },
+      "g2_e5_s06g": {
+        "review": {
+          "verdict": "PENDING",
+          "reviewed_sha": null,
+          "reviewer_branch": null,
+          "reviewer_sha": null,
+          "receipt_path": null,
+          "reviewer_distinct_from_author": null
+        },
+        "owner_decision": {
+          "decision": "PENDING",
+          "reviewed_sha": null,
+          "conflict_tests": [],
+          "owner": null,
+          "decision_ref": null
+        },
+        "tests": {}
+      }
+    }
+  },
+  "terminal_ledger": {
+    "commissioned_branch": "research/pyat-rrif-hq-d1d5-intake-20261031-r1",
+    "commissioned_sha": "d80901e9de78803c031fa9d25146f7d8b6aeba2c",
+    "live_head_observed_at_preflight": "75eb695ad27652020f9ffc0363f846a7c85ca758",
+    "live_head_note": "75eb695 adds only 06_E4F_RETURN_AND_FINAL_REVIEW_GATE.md above d80901e9; it is HQ intake, not independent E4FR acceptance.",
+    "terminal_decision": "PENDING_REVIEW_CAS"
+  }
+}
