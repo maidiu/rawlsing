@@ -1,39 +1,68 @@
-# USER CORRECTION — PROGRAMMA SOROK IS A FINITE MASTER GUIDE, NOT A SOFTWARE PRODUCT
-**Direct user clarification, 2026-11-02. THIS SECTION OVERRIDES conflicting ambitions, project phases, implementation dependencies and acceptance thresholds later in this older mission. Preserve previous material as historical source, not standing instructions to extend the build.**
+# USER CLARIFICATION R2 — THE LEAN, FINITE SOROK COMPLETION GUIDE: DEPENDENCIES, SEAMS, STAGES AND UNLOCKS
+**Direct user clarification 2026-11-02, superseding the prior artificial maximum of exactly three cycles, any app/person-generator interpretation, and platform-creep obligations in older plans. Keep prior work as sourced inheritance, not justification for expanding the scope.**
 
-### What is being built
+## The actual goal
 
-PROGRAMMA SOROK is the **practical, comprehensive master guide and roadmap for FINISHING the Sorok side of Rawlsing**. It organizes, labels, cross-references and reconciles what already exists. The original Sorok person/product is what the guide is ABOUT; it is emphatically **not what PROGRAMMA itself produces**. Neither a simulated person nor a ChatGPT app nor a continuously operating graph platform is a deliverable of this effort.
+Make the full Sorok development project comprehensible and actionable at a glance to the user or any authorized agent entering PROGRAMMA SOROK. PROGRAMMA is the **master guide / project roadmap / recursive dependency and seam-health map for FINISHING Sorok**. It is not the person, the app, a chatbot, an ongoing AI manager, or a new software product. It principally ORGANIZES, LABELS, CROSS-REFERENCES and RECONCILES the large body of visions, roadmaps, research, code, tests, histories, decisions and work records ALREADY PRODUCED.
 
-PROGRAMMA'S concrete job:
-- Start with the original vision, S0–S16, C/A/Neo requirements, Astra and existing product/experience constraints; crosswalk every substantive requirement to inherited research, decisions/WHY_NOT, original V3 and modern code/functions, first actual consumers, evidence and current owner.
-- Reuse the complete prior W1 A–E investigations, already existing Sorok and Astra roadmaps, CMD/PROGRAMMA, engineering source audits, historic Q/D/R, RRIF's final archive and active HQ records. Link to their actual cuts; do not independently re-do the exhaustive surveys.
-- Label what is ONLY an idea, what needs theoretical specification, architecture, code, integration, source/owner authority, validation or actual human-product work. Surface important requirements implied by the existing visions even when no code or task exists; label inference vs source proof.
-- Provide one coherent overall trajectory, an honest present-status/gaps crosswalk, dependencies and **the next practical Sorok development roadmap**, with owner, exact currently usable capital and specific next action.
-- Make this findable, easy to read and usable by an incoming HQ and ordinary agents. GitHub Markdown and compact source-backed tables/links are sufficient; sourcebook/CSV/JSON can support it where helpful. One document/section need not be replicated across multiple platforms.
+This is a finite assembling/reconciling effort. The user's expectation of a few substantial work cycles describes the intended SCALE, not an arbitrary hard cap or a fixed sequence. Stop once the guide reliably performs its purpose. No perpetual platform-build or endless review program.
 
-### Finite execution, not indefinite platform construction
+## The two highest-value features
 
-The whole effort must now be closed in **at most THREE coherent, substantial cycles** (these are guide-assembly cycles, NOT new permanent development phases):
-1. **ASSEMBLE / LABEL:** Fan in the existing visions/roadmaps, W1 returns, program registers, existing code/function audit, branch-review histories and current worker snapshots into one navigable master guide and source→requirement→function→first-consumer crosswalk. Begin with actual inherited material, not a new general research wave. Note genuine holes with SOURCE_NOT_READ / UNRESOLVED rather than investigating indefinitely.
-2. **RECONCILE / MAKE ACTIONABLE:** Against the terminal Sorok vision, classify real ideation/theory/architecture/engineering/integration/validation gaps, preserve alternative accounts and historical negative results, identify actual dependencies/owners, and write the next realistically actionable integrated Sorok development roadmap. Ask what can be achieved with existing code before suggesting new building.
-3. **CHECK / HAND OFF / STOP:** One focused contradiction/completeness pass across the original key sources and actual current code/consumers; correct material mislabeling; give a clean HQ quick-start and update instructions; declare PROGRAMMA GUIDE ASSEMBLY DONE with honestly marked unresolved Sorok work. Do not require missing original science to be solved for the *guide* to be complete.
+**1. Recursive dependency map:** For any feature/component/requirement X, answer "to build X, A and B must exist" (or "one of C or D" for genuine alternative solutions); then recurse through what A/B themselves require, down to genuinely existing functions, ready-to-do work, unresolved theory/design, or owner-held restrictions. Cite the exact source of each dependency. Unknown/proposed relationships must not be converted to established obligations. Show the inverse as well: "finishing X unlocks Y, Z and a specified terminal Sorok capability." Include AND/OR, alternative designs, circular dependencies, and independencies without forcing false linearity. The map must be usable from the big Sorok goal DOWN to leaf work and from leaf code/work BACK UP to product value.
 
-STOP RULE: The guide is done once an HQ can find (a) what Sorok is supposed to become, (b) all major existing relevant plans/capabilities and what they actually establish, (c) all major known or source-inferred remaining theory/design/code/integration/validation obligations, (d) which existing resources and owners answer each, and (e) a coherent next Sorok completion roadmap. Exhaustive reading of every archived page, automated state ingestion, a production web UI, and demonstrating a native person are NOT guide completion requirements.
+**2. Seam / interface health map:** Actual work has pieces that MUST connect. A component is not integrated because an isolated test passed. For each material seam, show source/producer -> artifact or fields and interface contract -> real downstream consumer; exact current branches and evidence; and the state of THAT connection, scoped honestly. Suggested pragmatic labels:
+- GREEN_VERIFIED — current exact seam demonstrated end-to-end at the stated sourcefree/native/review grade.
+- PARTIAL_OR_FRAGILE — connected incompletely, conditionally or with material limitations.
+- BROKEN_RED — known failing test, incompatible interface or broken connection.
+- UNBUILT — specification exists but no connection implementation.
+- UNKNOWN_OR_UNTESTED — missing evidence/source unavailable, without imaginary failure.
+- OWNER_HELD — qualified source/science/native/actor/merge decision needed, NOT an engineering failure.
+- SUPERSEDED / NOT_APPLICABLE where supported.
+The seam state is distinct from each component's individual maturity. Label separate green code and red/missing integration accurately. Evidence/acceptance must NOT migrate from one scope into another.
 
-### Freeze platform creep immediately
+## What the guide must answer immediately
 
-The current O-LIVE/P0/P1 implementation and repair at codex/programma-sorok-p0-p1-repair1-20261102@fa8a2b1f75cd2ee2153a813215f51dea88e16a4b are **OPTIONAL SOURCE/INDEX AIDS ONLY**, not the defining PROGRAMMA artifact. Keep that work as candidate evidence; it has 62 author-pass tests but no independent adoption. There is no reason to commission further runtime integrity engineering, HTML/UI, database, event sourcing, API, agent controller, automated scheduler, self-updating reference or standalone ChatGPT connection just to finish the guide. If a small existing script makes crosswalk assembly faster, use it; otherwise use source-linked Markdown/tables. Do not make the code a blocker.
+- WHAT IS THIS? Its role within the original purpose/product, links to real specification and original source.
+- WHAT EXISTS? Original roadmaps and Astra, historical V3 and modern Neo code, scientific work, Q/D/R, tests/negative decisions and actual first consumers, including reused vs superseded assets. Give direct exact references.
+- WHAT STAGE? Ideated, theory specified/contested, architecture specified/contested, implementation, integration/seam, test, source-science-authority, product validation. These are independent axes, not a falsely linear completion percent.
+- WHAT DOES IT REQUIRE? Recursive prerequisite walk with evidence, AND/OR and blocked/unresolved leaves.
+- WHAT DOES IT CONNECT TO? Real producer/consumer and seam health, not only nearby documents.
+- WHAT DOES IT UNLOCK? Reverse dependencies and contribution to terminal product.
+- WHAT IS PRESSING? Explainable highest-leverage next project work, parallel independent jobs, significant blockers, owners and actual ready actions. No naive descendant-count popularity contest.
+- WHAT IS STRANDED? Prior valuable research/code/attempts/tests that do not map to an actual present requirement/consumer; classify reuse, missing connector, supersession and legitimate rejection. Do NOT claim every archived line was reread if it was not: link unexamined corpus and flag important unknowns.
 
-There is no need for another broad independent W1 investigative wave or repeated reviewer court. Basic spot-checking of important source cuts, major contradictions and first-consumer claims is enough for labeling the guide; clearly mark uncertainty rather than expanding another verification industry. Preserve science/source/native/human distinctions because they matter to the SOROK ROADMAP, not because PROGRAMMA itself needs production acceptance.
+Any authorized agent entering the PROGRAMMA SOROK room must find ONE obvious start page, the coherent whole-goal map, source-backed crosswalk and real next development work without several days of re-archaeology.
 
-Do not treat node/edge/gap/test counts as progress. Progress is the number of major originally required domains correctly reconciled and made actionable in the guide, with visible remaining source gaps. Reconcile existing active work before commissioning: no overlapping branch/worktree or duplicate worker.
+## Minimal possible representation, NOT a platform-building project
 
-### Immediate HQ next action
+At minimum one navigable source-linked master guide and two compact linked maps:
+(1) components/requirements: stable ID, plain-English purpose, stage/grade, actual referenced source/code and current consumer or NONE, owner, next action;
+(2) dependencies/seams: from, to, relationship type, AND/OR and requirement status, producer/contract/consumer, interface status and scoped evidence.
 
-Stop issuing new O-LIVE platform-engineering or research commissions. Use the existing five W1 returns, 2026-11-01 joint synthesis, Sorok original 00–103/source registers, Astra and complete-code audit; make a practical **outline of the final MASTER GUIDE and two/three-cycle fan-in** based on source material already read. Then execute substantial assembly and reconciliation work in the fewest non-overlapping long flights the actual selected authorized host permits. Small tests/reviews only when required to avoid materially false claims. **Finish the guide, mark it DONE, and return attention to building Sorok itself.**
+Optionally use a tiny script to derive recursive prerequisites, reverse unlocks and filtered statuses from those same tables. If existing O-LIVE (P0/P1 repair candidate fa8a2b1f75cd2ee2153a813215f51dea88e16a4b, 288 nodes/741 edges/56 gaps at its selected source depth, 62 author tests, no independent acceptance) makes this FAST, reuse it as a tool. **Do NOT make platform integrity engineering, event journal, new GUI, new database, automation service, ChatGPT connection or code acceptance a blocker to finishing the guide.** Source-linked Markdown/TSV/JSON with appropriate indexes can accomplish the intended project. No second data authority.
 
-Older instructions below that say "build comprehensive operating intelligence", "P0/P1", "expand semantic source coverage indefinitely", "append-only journal", "independent reviewer after each pass" or "full operational ingestion" must be interpreted under this narrower FINITE MASTER-GUIDE charter. This user correction is a direct override of the previous assistant's overengineered plan, not an invitation to create another meta-plan.
+## Source and coverage discipline
+
+Start from existing S0–S16 and whole Sorok charter/100/101, C/A/Neo obligations, original V3, Astra, scientific decision histories and alternatives, Q/D/R, current PRE-MAIN/consumer code, whole-code reconciliation, five completed W1 A–E reports and synthesis, Sorok RRIF archival research and actual HQ progress/worker status. REUSE existing detailed analysis rather than re-running five independent general research fleets or recensus. Preserve source-read depth and evidence grades.
+
+Explicitly represent important IDEATED/UNSPECIFIED work implied by original product requirements but not yet named in code/tickets. A major unused existing capability is more interesting than another roadmap summary. Expose exact open source/owner needs as gaps; do not silently omit material families or demand every old branch's contents be read to call guide complete.
+
+## Check representative traversals, not a giant certification apparatus
+
+A: From original neighbor/product S0–S16/A0–A5 -> actual necessary subsystems -> recursive science/design/code/source/owner leaves, and back to terminal user-facing capability.
+B: From an original V3 function -> accepted current implementation or disconnected/superseded status -> exact first consumer or NONE -> seam health and downstream product requirement.
+C: CAN011/C9 durable acquired practice -> current sourcefree producer -> cold persistent receipt -> later E2 consumer, with sourcefree GREEN scope distinct from native science/actor HELD.
+D: S5 flourishing, S13 economics and S14 safety/privacy -> what has only ideation/theory/design and has no code or even named issue; where would missing work block downstream development?
+E: At least one actual scoped GREEN, one RED/BROKEN, one UNKNOWN/UNREAD and one OWNER_HELD seam, each with evidence and independently appropriate next action.
+
+## Finishing, not indefinite development
+
+Use a few substantial non-overlapping source fan-in/reconciliation/guide-check cycles, in whatever number turns out necessary; number of cycles is not an acceptance condition. Stop when the major original and modern functional families are findable, substantive dependencies recurse to practical work or honest unknowns, important seams have scoped condition/evidence, past valuable assets are not invisibly stranded, and the final guide provides intelligible high-impact next Sorok work with owners and references. The unfinished Sorok project remains unfinished IN THE GUIDE; that does not make PROGRAMMA assembly unfinished. Minimal update conventions during later Sorok work are ordinary guide maintenance, not a new development program.
+
+**Current next action for HQ:** Do not launch another general platform engineering or W1 investigation. Using the completed W1 material and existing actual code and plans, assemble the first master guide and dependency/seam crosswalk, identify major missing edges, and do substantial precise reconciliation. No fixed three-cycle promise, no infinite software project. Correct the prior categorical opposition between Markdown guide and graph: the desired dependency/seam graph can be represented minimally in simple referenced tables, with optional tiny derived views. Deliver the GUIDE, not another meta-roadmap about building the guide.
+
+This correction overrides all incompatible language later in the older mission.
 
 ---
 
