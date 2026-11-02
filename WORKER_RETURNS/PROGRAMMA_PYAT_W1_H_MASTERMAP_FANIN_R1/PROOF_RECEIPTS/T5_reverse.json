@@ -1,0 +1,206 @@
+{
+  "actual_route": {
+    "hops": [
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+            "id": "EDGE:e2185d11e13632b80e0e1740",
+            "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+            "to": "CODE:d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1:rawlsing_next/pre553_temporal_comparability.py::",
+            "type": "HISTORICAL_VARIANT"
+          }
+        ],
+        "from": "CODE:d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1:rawlsing_next/pre553_temporal_comparability.py::",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:FUNCTION:F7",
+            "id": "EDGE:569f67c91d0a2bec99baa4d4",
+            "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+            "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:FUNCTION:F7"
+      }
+    ],
+    "ids": [
+      "CODE:d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1:rawlsing_next/pre553_temporal_comparability.py::",
+      "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+      "PYAT:FUNCTION:F7"
+    ],
+    "reverse_uses_same_edge_ids": true
+  },
+  "boundary": {
+    "adoption": "RETURNED_UNADOPTED",
+    "authority": "NO_SOURCE_N11_N12_ACTOR_OR_CANONICAL_WRITE_GRANT",
+    "navigation": "ASSOCIATION_IS_NOT_PROOF_OR_UNCONDITIONAL_DEPENDENCY",
+    "scope": "SOURCEFREE_DERIVED_REFERENCE_ONLY",
+    "source_native_empirical_pilot": "HOLD"
+  },
+  "command": "reverse",
+  "cut": "9809203fd915a84bae056a67210e9213879840db",
+  "edges": [
+    {
+      "condition": null,
+      "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+      "id": "EDGE:e2185d11e13632b80e0e1740",
+      "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+      "to": "CODE:d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1:rawlsing_next/pre553_temporal_comparability.py::",
+      "type": "HISTORICAL_VARIANT"
+    }
+  ],
+  "ids": [
+    "CODE:d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1:rawlsing_next/pre553_temporal_comparability.py::"
+  ],
+  "read_cut_comparison": {
+    "PIN:007c41ac5607c5ff26cbb8b2": {
+      "declared_blob": "1f0939411a517711d927dd78ef9df81bb22a3176",
+      "declared_cut": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:7b3e1ebe2ab0b126a6496b01": {
+      "declared_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "declared_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "selected_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:86ec35709802b483fabca540": {
+      "declared_blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "declared_cut": "d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:fe85b6ef70a53156d94d1c21": {
+      "declared_blob": "ba0fc3898207d18e177dc33bf929d68739f864f2",
+      "declared_cut": "9ae87f2227384e0567190c6a2d5f3a33a60d4b4c",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/s04_temporal_policy.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    }
+  },
+  "records": [
+    {
+      "currentness": "ABSENT_AT_ee31e3ed",
+      "evidence": {
+        "blob": "e67d86551c74175e0791279ba321186b3fc79068",
+        "cut": "9bec60dc8223e6f969a67a264bc45f82600a4a5a",
+        "line": 17,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_G_20261101_R1/HISTORICAL_REALIZATIONS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:G:HISTORICAL_REALIZATIONS:HR-F7-TEMP",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "F7 temporal owner plus source/cohort/weight authority.",
+        "code_location": {
+          "paths": [
+            {
+              "blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+              "path": "rawlsing_next/pre553_temporal_comparability.py"
+            }
+          ],
+          "ref": "agent/rabochii-pyat-hq227-f7-full-owner-path-authenticity-r1",
+          "ref_type": "branch tip",
+          "tip": "d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1"
+        },
+        "engineering_state": {
+          "limit": "No population/cohort/weight science; S04 drift uncalibrated.",
+          "supported_returned_behavior": "HQ227 exact authority resolution, nine negative/refusal states, COMPARABLE only for three lawful states; S04 nearest-anchor/interpolation with gap_years*0.05 drift and polarity/3x-jump break heuristic."
+        },
+        "first_consumer_state": {
+          "local": "Not rerun.",
+          "returned": "D4: HQ219 141/141; HQ222 135; S04 17/17 technical only; no independent runnable S04 court; no consumer.",
+          "status": "HOLD__EXACT_CHAIN_STRONGER__S04_NOT_SCIENCE"
+        },
+        "integration_state": {
+          "current_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+          "difference": "Historical exact module and S04 policy absent; current has TEMPORAL_EVIDENCE exact time binding, not comparability/trend owner.",
+          "paths": [
+            {
+              "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+              "path": "rawlsing_next/pre553_empirical_authority.py"
+            }
+          ]
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No population/cohort/weight science; S04 drift uncalibrated.",
+      "support_pins": [
+        "PIN:007c41ac5607c5ff26cbb8b2",
+        "PIN:7b3e1ebe2ab0b126a6496b01",
+        "PIN:86ec35709802b483fabca540",
+        "PIN:fe85b6ef70a53156d94d1c21"
+      ]
+    }
+  ],
+  "snapshot_hash": "042ec18fe573a2aacd8a4afff8d3750ec102ba696a93e97015ba858e6c45aa65",
+  "source_pins": {
+    "PIN:007c41ac5607c5ff26cbb8b2": {
+      "content_sha256": "48099042517939b0d1b5b10347e50ea916cc58b556a503620b659df61c6a1389",
+      "cut": "c3db090ff0503963e7914fee740c4b1d17e66cde",
+      "expected_blob": "1f0939411a517711d927dd78ef9df81bb22a3176",
+      "id": "PIN:007c41ac5607c5ff26cbb8b2",
+      "observed_blob": "1f0939411a517711d927dd78ef9df81bb22a3176",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "role": "historical_alternative",
+      "status": "VERIFIED"
+    },
+    "PIN:7b3e1ebe2ab0b126a6496b01": {
+      "content_sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "expected_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "id": "PIN:7b3e1ebe2ab0b126a6496b01",
+      "observed_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "role": "current_comparison",
+      "status": "VERIFIED"
+    },
+    "PIN:86ec35709802b483fabca540": {
+      "content_sha256": "efe3c119595c04c065956a01a22c63fb67c985c3a5762699919feee92e946244",
+      "cut": "d8a03fcdf77ca791d7f66ce58e2ed3b3d894bbb1",
+      "expected_blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "id": "PIN:86ec35709802b483fabca540",
+      "observed_blob": "6f6b462b1cdef54d7989f15452473383c1661594",
+      "path": "rawlsing_next/pre553_temporal_comparability.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:fe85b6ef70a53156d94d1c21": {
+      "content_sha256": "1cc29b555b608f1c33614172506c783a54e7e04e2838d1ca193a59064107ed37",
+      "cut": "9ae87f2227384e0567190c6a2d5f3a33a60d4b4c",
+      "expected_blob": "ba0fc3898207d18e177dc33bf929d68739f864f2",
+      "id": "PIN:fe85b6ef70a53156d94d1c21",
+      "observed_blob": "ba0fc3898207d18e177dc33bf929d68739f864f2",
+      "path": "rawlsing_next/s04_temporal_policy.py",
+      "role": "historical_alternative",
+      "status": "VERIFIED"
+    }
+  },
+  "status": "OK"
+}

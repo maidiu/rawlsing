@@ -1,0 +1,1665 @@
+{
+  "schema": "PROGRAMMA_PYAT_GRAPH_REFERENCE_CONTRACT@0.1.0",
+  "status": "PROPOSED_REFERENCE_ONLY__S1_DOCUMENTARY__NO_RUNNING_GRAPH",
+  "jurisdiction": "PYAT",
+  "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+  "prepared_branch_head_at_start": "ee1ea6d9595f1f098382239985a42b3102cc5387",
+  "immutable_original_startup": "acbe2326c8f52dfe8bfa200e87c5c07a62a5c93a",
+  "original_prepared": "5b73f85e4f8ac0dd365bb5f6c8a7a2f023e9b275",
+  "architecture_decision": "One read-only logical evidence graph federated over existing Pyat authorities; no new source database, controller, authoritative progress or Sorok actor state. Reuse shared source-backed reference methods but do not copy Sorok state.",
+  "dimensions": [
+    "plan",
+    "historical_recovery",
+    "science",
+    "engineering",
+    "integration",
+    "first_consumer",
+    "review",
+    "authority",
+    "operational",
+    "source_read_depth",
+    "human_product_boundary"
+  ],
+  "identity": {
+    "node_id": "<jurisdiction>:<canonical family>:<original stable ID> (for code: CODE:<repository path>::<qualified symbol>); family collisions never merged",
+    "revision": "Same logical ID plus source_cut+blob_sha+assertion/evidence-event ID; no destructive overwrite",
+    "source_pointer_required": [
+      "repo",
+      "commit_40hex",
+      "path",
+      "blob_sha_if_verified",
+      "line_or_json_pointer",
+      "scope",
+      "observed_at"
+    ],
+    "many_to_many_membership": "plan_memberships[] is non-exclusive; N4 can serve G/S/P and multiple F gates without cloning",
+    "aliases": "Only exact evidence-backed aliases; candidate identities flagged PROVISIONAL",
+    "ambiguous_id": "Hold UNKNOWN, do not join by matching display string"
+  },
+  "object_types": [
+    "purpose",
+    "phenomenon",
+    "plan_family",
+    "plan_node",
+    "requirement",
+    "source_instance",
+    "source_native_item",
+    "source_authority",
+    "scientific_method",
+    "alternative",
+    "code_symbol",
+    "repository_variant",
+    "typed_seam",
+    "product_artifact",
+    "first_consumer",
+    "test_case",
+    "negative",
+    "review_receipt",
+    "owner_role",
+    "worker_return",
+    "flight",
+    "gap",
+    "evidence_event"
+  ],
+  "relation_types": [
+    "DECOMPOSES_TO",
+    "MEMBER_OF",
+    "CROSS_CUTS",
+    "PREREQUISITE",
+    "CONDITIONAL_PREREQUISITE",
+    "REQUIRED_INPUT_TYPE",
+    "ACTUALLY_CALLS",
+    "SCOPED_ACTUAL_CONSUMER",
+    "PRODUCES",
+    "BLOCKS_IF",
+    "AUTHORIZES_FOR_SCOPE",
+    "HAS_NEGATIVE",
+    "REVIEWED_BY",
+    "CONTRADICTS",
+    "ALTERNATIVE_TO",
+    "SUPERSEDES_AT_GRAIN",
+    "MISSING_RECEIVER",
+    "RECORDED_IN",
+    "DERIVED_VIEW_OF"
+  ],
+  "evidence_event_schema": {
+    "required": [
+      "event_id",
+      "target_id",
+      "assertion",
+      "assertion_scope",
+      "evidence_grade",
+      "source_path",
+      "source_cut",
+      "source_locator",
+      "counterevidence_or_limit",
+      "authority_actor_if_applicable",
+      "reviewer_actor_if_applicable",
+      "effective_at",
+      "observed_at",
+      "supersedes_event_id"
+    ],
+    "grades": [
+      "DIRECT_SOURCE_READ",
+      "OWNER_RECORD",
+      "ENGINEER_RETURN",
+      "REVIEWED",
+      "TEST_EXECUTED_EXTERNAL_RECEIPT",
+      "PROPOSAL",
+      "UNKNOWN"
+    ],
+    "immutability": "Append new event, never update or erase historical RED/held events. Snapshot deterministic projection of selected immutable cut.",
+    "promotion": "Review requires verified reviewer appointment/principal distinct from author, exact subject SHA and assertion/scope; synthetic and test-only proofs cannot promote source-native claims."
+  },
+  "relation_schema": {
+    "required": [
+      "id",
+      "from",
+      "to",
+      "type",
+      "source",
+      "assertion",
+      "negative",
+      "condition",
+      "epistemic_status"
+    ],
+    "condition_modes": [
+      "AND",
+      "OR",
+      "IF",
+      "SCOPE",
+      "ALTERNATIVE_ONLY"
+    ],
+    "inverse": "Derived query over same edge identity; no second reversed authority edge"
+  },
+  "maturity_rollup": {
+    "method": "Per dimension return supported highest scope and independent blocked/unknown evidence; never compute percent nodes or matrix cells. AND gates require all relevant qualified source-scoped proofs; OR accepts documented alternatives; IF requires actual scope predicate and may remain undecidable.",
+    "hold_vs_absent": "UNKNOWN/UNREAD/MISSING/HELD/NEGATIVE/NOT_APPLICABLE_WITH_PROOF are distinct",
+    "sourcefree_vs_native": "Non-interchangeable",
+    "current_vs_historical": "Do not transfer a historical proof to live PRE-MAIN absent same object and owner CAS"
+  },
+  "source_registry": {
+    "constitution": {
+      "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "shared": {
+      "path": "WORKER_COMMISSIONS/PROGRAMMA_PYAT_PREP_W1_COMMON/00_SHARED_MASTER_MAP_CONTRACT.md",
+      "sha": "ee1ea6d9595f1f098382239985a42b3102cc5387"
+    },
+    "parent": {
+      "path": "CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "astra": {
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "atlasProgram": {
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/PROGRAM.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "codeMap": {
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/IMPLEMENTATION_MAP.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "register": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_WORK_REGISTER.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "ledger": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/TASK_LEDGER_101_MACHINE.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "matrix": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "relations": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "waves": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE35_COMMON_EDGE_ACTION_QUEUE.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "wg": {
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "progress": {
+      "path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "progressMd": {
+      "path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "flight": {
+      "path": "PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/FLIGHT_BOARD.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "handoff": {
+      "path": "HQ_HANDOFF/LATEST.json",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "rrif": {
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_FINITE_TERMINAL_CLOSEOUT_20261101.md",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "rrifLedger": {
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_THIRTY_FOUR_LINEAGE_TERMINAL_20261101.jsonl",
+      "sha": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "route": {
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3"
+    },
+    "i03": {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "03facecf70890bfd13b80418620d274cbcd69d02"
+    },
+    "i05": {
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af"
+    },
+    "batch": {
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829"
+    },
+    "c11": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+    },
+    "universal": {
+      "path": "rawlsing_next/pre553_universal_workload.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e"
+    },
+    "nativeBinding": {
+      "path": "rawlsing_next/pre553_native_workload_binding.py",
+      "sha": "9809203fd915a84bae056a67210e9213879840db",
+      "blob": "dac73e484f8619088f5c6701b2b6991c07540f3b"
+    },
+    "p1": {
+      "path": "rawlsing_next/programma_pyat_original35_constructor.py",
+      "sha": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "blob": "c8352c5ab0fbc1a817c38d8ef99d64beef628230"
+    },
+    "p1ret": {
+      "path": "WORKER_RETURNS/PROGRAMMA_PYAT_P1_20261101_R1/00_RETURN.md",
+      "sha": "d1278613e9e1a5d986ccce15782a697f19cbd722"
+    },
+    "p1nega": {
+      "path": "WORKER_RETURNS/PROGRAMMA_PYAT_P1_20261101_R1/NO_DROP_ABSTAIN_AND_NEGATIVE_EXECUTION.md",
+      "sha": "d1278613e9e1a5d986ccce15782a697f19cbd722"
+    },
+    "sorok": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/20261101_W1_JOINT_ARCHITECTURE_SYNTHESIS_AND_MINIMAL_BUILD_DECISION.md",
+      "sha": "e5a25cbc4f2b9d7476a72637d3e371ee3254742e"
+    },
+    "sorokReturn": {
+      "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P0_P1_LIVING_REFERENCE_ENGINEERING_R1/00_RETURN.md",
+      "sha": "b26ec67da8aef15198e895f8d6ebd64e96c3dc60"
+    },
+    "chat": {
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CHATGPT_SURFACE_R1/02_ACCEPTANCE_AND_GAPS.md",
+      "sha": "fcd4583d9553b6fc018f317de1b6034caf1d6c0a"
+    }
+  },
+  "representative_objects": [
+    {
+      "id": "PYAT:L0:WORLD",
+      "kind": "terminal_obligation",
+      "title": "Source-qualified objective and selected possible world",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "35-wave empirical/learned/structural/temporal world, N11 acceptance and separately governed N12 seam",
+      "limit_or_counterevidence": "Not an individual psychology, not already achieved",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N0",
+      "kind": "architecture_node",
+      "title": "Current authority and source estate",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N0 is the scoped source/authority prerequisite",
+      "limit_or_counterevidence": "Presence of N0 does not itself confer authority",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N2",
+      "kind": "architecture_node",
+      "title": "Composed empirical analysis",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N2 analytical and discovery composition",
+      "limit_or_counterevidence": "Not proof full 35 source execution",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N4",
+      "kind": "architecture_node",
+      "title": "Current scoped empirical production",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N4 has conditionally triggered N0,N1,N2,N3 prerequisites",
+      "limit_or_counterevidence": "Do not treat conditional prerequisites as blanket blockers",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N7",
+      "kind": "architecture_node",
+      "title": "Multi-field nonpooling objective composition",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N7 required under selected field conditions",
+      "limit_or_counterevidence": "No original F6 composite proved for full estate",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N8E",
+      "kind": "architecture_node",
+      "title": "Native comparable-wave empirical temporal",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N8E has conditionally competent retained inputs",
+      "limit_or_counterevidence": "63 pair candidates are not 63 authorized temporal findings",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N9",
+      "kind": "architecture_node",
+      "title": "Objective world service",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N9 requires scoped inputs, no universal all-predecessor wait",
+      "limit_or_counterevidence": "No current complete source-qualified service receipt",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N10E",
+      "kind": "architecture_node",
+      "title": "Computed empirical possibility",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N10E has conditional N2,N4,N3",
+      "limit_or_counterevidence": "Synthetic provider not complete source/native world",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N10W",
+      "kind": "architecture_node",
+      "title": "World-conditioned possibility",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N10W has unconditional N9 and N10E",
+      "limit_or_counterevidence": "No native selected-world output established",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N11",
+      "kind": "architecture_node",
+      "title": "Whole estate F1–F8 acceptance",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N11 requires N0,N10W and scoped F gates",
+      "limit_or_counterevidence": "Compilation and checklists do not equal terminal acceptance",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:ASTRA:N12",
+      "kind": "architecture_node",
+      "title": "Separate actor seam decision",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "N12 depends on N11",
+      "limit_or_counterevidence": "No Sorok actor rights inferred",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:WHOLE:WG0",
+      "kind": "critical_gate",
+      "title": "Source-competent original35 workload generator locate/prove",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "WG0 backwards-checks actual constructors from I03/I05/Batch prepared inputs",
+      "limit_or_counterevidence": "Source-qualified all35 frontier remains unproved",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "HELD",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:WHOLE:WG1_WG4",
+      "kind": "critical_gate",
+      "title": "Inventory, bounded frontier, live generic execution, final artifacts",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "WG1–WG4 are separate future proof levels",
+      "limit_or_counterevidence": "Sourcefree construction cannot close WG3–WG4",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:WHOLE:F1_F4",
+      "kind": "gate_family",
+      "title": "Empirical F1–F4 measured artifacts",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/PROGRAM.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Exact distributions, conditional/forks, joint clouds required",
+      "limit_or_counterevidence": "No blanket original35 measured proof",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:WHOLE:F6_F7",
+      "kind": "gate_family",
+      "title": "Nonpooled F6 and temporal F7",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Cross-family and temporal candidate relation scopes are declared",
+      "limit_or_counterevidence": "Relation candidate does not authorize fabricated join/bridge",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:SOURCE:SRC35",
+      "kind": "source_instance",
+      "title": "WVS Wave 7 source member",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "SRC35 governed member with historical physical PASS",
+      "limit_or_counterevidence": "Not full current native semantic/source/empirical qualification",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CODE:ROUTEB",
+      "kind": "code_function",
+      "title": "execute_route_b_production",
+      "source": {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Current source-backed Route B accepts already constructed i03_requests/discovery authority",
+      "limit_or_counterevidence": "No proof of automatic original35 source-wide producer",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "SOURCE_PRESENT",
+        "integration": "CURRENT_FILE",
+        "first_consumer": "SCOPED_INTERNAL",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CODE:I03",
+      "kind": "code_function",
+      "title": "execute_empirical_query",
+      "source": {
+        "source_path": "rawlsing_next/pre553_empirical_query.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "03facecf70890bfd13b80418620d274cbcd69d02",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Current exact query function exists",
+      "limit_or_counterevidence": "Requires exact authorized query/release; not a workload constructor",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "SOURCE_PRESENT",
+        "integration": "CURRENT_FILE",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CODE:I05",
+      "kind": "code_function",
+      "title": "execute_exact_bounded_discovery",
+      "source": {
+        "source_path": "rawlsing_next/pre553_discovery_exact.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Finite authority-bounded discovery exists",
+      "limit_or_counterevidence": "Caller-supplied predicates/templates do not certify complete original universe",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "SOURCE_PRESENT",
+        "integration": "CURRENT_FILE",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CODE:BATCH",
+      "kind": "code_function",
+      "title": "BatchExecutionRunner / BatchManifest",
+      "source": {
+        "source_path": "rawlsing_next/pre553_batch_runner.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Immutable manifest and deterministic receipts execution owner exists",
+      "limit_or_counterevidence": "Executor not automatically supplied with original wave source rights",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "SOURCE_PRESENT",
+        "integration": "CURRENT_FILE",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CODE:C11",
+      "kind": "code_function",
+      "title": "GovernedC11Projection",
+      "source": {
+        "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "C11 projection enforces semantic authority and exact physical bindings",
+      "limit_or_counterevidence": "Physical format proof alone not semantic issuer",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "SOURCE_PRESENT",
+        "integration": "CURRENT_FILE",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CODE:UNIVERSAL",
+      "kind": "code_function",
+      "title": "compile_governed_frontier / execute_governed_frontier",
+      "source": {
+        "source_path": "rawlsing_next/pre553_universal_workload.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Current workload and lowering code exists",
+      "limit_or_counterevidence": "Named test-only receiver, not full native original35 population",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "TEST_ONLY",
+        "engineering": "SOURCE_PRESENT",
+        "integration": "CURRENT_FILE",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:CAND:P1_CONSTRUCTOR",
+      "kind": "candidate_code",
+      "title": "construct_original35_epre",
+      "source": {
+        "source_path": "rawlsing_next/programma_pyat_original35_constructor.py",
+        "source_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+        "blob_sha": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Candidate constructor emits U_item/U_unit/U_app/E_pre and BatchManifest",
+      "limit_or_counterevidence": "840 operations use 35 synthetic waves; not independently adopted, no C11/I03/I05 run",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "TEST_ONLY",
+        "engineering": "CANDIDATE_SOURCEFREE",
+        "integration": "UNINTEGRATED",
+        "first_consumer": "BATCH_MANIFEST_ADMISSION_ONLY",
+        "review": "PENDING",
+        "authority": "NONE",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:RRIF:34",
+      "kind": "historical_recovery",
+      "title": "Finite 34-lineage terminal accounting",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_THIRTY_FOUR_LINEAGE_TERMINAL_20261101.jsonl",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "34 JSONL lineages accounted with scoped fates",
+      "limit_or_counterevidence": "Not 845 functions or full source recovery",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "SCOPED_RECEIVING",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "NO_NEW_GRANT",
+        "operational": "NOT_OBSERVED"
+      }
+    },
+    {
+      "id": "PYAT:STATUS:CURRENT",
+      "kind": "currentness",
+      "title": "Pyat paired progress at PRE-MAIN cut",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "RRIF closed at finite scope; PROGRAMMA user-stop noted",
+      "limit_or_counterevidence": "Date-stamped branch/flight information not running worker telemetry",
+      "grades": {
+        "plan": "SOURCE_PRESENT",
+        "science": "UNKNOWN",
+        "engineering": "UNKNOWN",
+        "integration": "UNKNOWN",
+        "first_consumer": "UNKNOWN",
+        "review": "UNKNOWN",
+        "authority": "UNKNOWN",
+        "operational": "USER_STOP_RECORDED"
+      }
+    },
+    {
+      "id": "PYAT:GAP:ORIGINAL35_MEASURED",
+      "kind": "gap",
+      "title": "Native complete original35 operation-to-F1–F4 consumer",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "supported_assertion": "Required by WG3/WG4, F1–F4 and source-original use",
+      "limit_or_counterevidence": "Qualified source pack, code bindings and actual measured consumer unresolved",
+      "grades": {
+        "plan": "DEFINED",
+        "science": "HELD",
+        "engineering": "PARTIAL",
+        "integration": "MISSING",
+        "first_consumer": "MISSING",
+        "review": "UNKNOWN",
+        "authority": "HELD",
+        "operational": "NOT_OBSERVED"
+      }
+    }
+  ],
+  "representative_relations": [
+    {
+      "id": "E01",
+      "from": "PYAT:L0:WORLD",
+      "to": "PYAT:ASTRA:N11",
+      "type": "DECOMPOSES_TO",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "N11 whole-estate acceptance serves objective world",
+      "negative": "No completed product",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E02",
+      "from": "PYAT:ASTRA:N11",
+      "to": "PYAT:ASTRA:N12",
+      "type": "PREREQUISITE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "N12 requires N11",
+      "negative": "No actor issue from link",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E03",
+      "from": "PYAT:ASTRA:N10W",
+      "to": "PYAT:ASTRA:N11",
+      "type": "PREREQUISITE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "N11 requires N10W",
+      "negative": "No full acceptance inferred",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E04",
+      "from": "PYAT:ASTRA:N9",
+      "to": "PYAT:ASTRA:N10W",
+      "type": "PREREQUISITE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "N10W requires N9",
+      "negative": "No live world asserted",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E05",
+      "from": "PYAT:ASTRA:N10E",
+      "to": "PYAT:ASTRA:N10W",
+      "type": "PREREQUISITE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "N10W requires N10E",
+      "negative": "No real-source provider asserted",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E06",
+      "from": "PYAT:ASTRA:N4",
+      "to": "PYAT:ASTRA:N9",
+      "type": "CONDITIONAL_INPUT",
+      "condition": {
+        "mode": "IF",
+        "predicate": "scope.requires_N4_product_and_no_competent_retained_input"
+      },
+      "assertion": "N4 input only if product family demanded",
+      "negative": "Not universally blocking",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E07",
+      "from": "PYAT:ASTRA:N4",
+      "to": "PYAT:ASTRA:N10E",
+      "type": "CONDITIONAL_INPUT",
+      "condition": {
+        "mode": "IF",
+        "predicate": "scope.requires_N4_empirical_input"
+      },
+      "assertion": "N10E uses N4 if empirical inputs absent",
+      "negative": "No sourcefree-as-native promotion",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E08",
+      "from": "PYAT:ASTRA:N2",
+      "to": "PYAT:ASTRA:N4",
+      "type": "CONDITIONAL_PREREQUISITE",
+      "condition": {
+        "mode": "IF",
+        "predicate": "claim.requires_composed_analytics"
+      },
+      "assertion": "N2 required for composed functionality",
+      "negative": "Not for unrelated physical cases",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E09",
+      "from": "PYAT:ASTRA:N0",
+      "to": "PYAT:ASTRA:N4",
+      "type": "CONDITIONAL_AUTHORITY",
+      "condition": {
+        "mode": "IF",
+        "predicate": "scope.authority_not_bound"
+      },
+      "assertion": "Bind N0 if scoped authority not already competent",
+      "negative": "Not global perpetual freeze",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E10",
+      "from": "PYAT:WHOLE:WG0",
+      "to": "PYAT:CODE:ROUTEB",
+      "type": "PRODUCER_GAP_FOR",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "WG0 searches authoritative producer of i03_requests",
+      "negative": "No verified source-complete generator",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "MISSING_EDGE"
+    },
+    {
+      "id": "E11",
+      "from": "PYAT:CODE:ROUTEB",
+      "to": "PYAT:CODE:I03",
+      "type": "CALLS_OR_DELEGATES",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Route B executes prepared exact request inputs",
+      "negative": "No full survey-auto invocation",
+      "source": {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E12",
+      "from": "PYAT:CODE:ROUTEB",
+      "to": "PYAT:CODE:I05",
+      "type": "CALLS_OR_DELEGATES",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Route B composes scoped I05 result",
+      "negative": "Exact complete authority catalog not established",
+      "source": {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E13",
+      "from": "PYAT:CAND:P1_CONSTRUCTOR",
+      "to": "PYAT:CODE:BATCH",
+      "type": "SCOPED_ACTUAL_CONSUMER",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "P1 constructs BatchUnitSpec and BatchManifest current owner",
+      "negative": "Admission only, not BatchExecutionRunner.run",
+      "source": {
+        "source_path": "rawlsing_next/programma_pyat_original35_constructor.py",
+        "source_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+        "blob_sha": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ_CURRENT_CANDIDATE",
+      "role": "SCOPED_CALL",
+      "grade": "DIRECT_SOURCE_READ_CURRENT_CANDIDATE"
+    },
+    {
+      "id": "E14",
+      "from": "PYAT:CAND:P1_CONSTRUCTOR",
+      "to": "PYAT:CODE:ROUTEB",
+      "type": "MISSING_RECEIVER",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Next execution should bind P1 output to qualified real C11/Route B",
+      "negative": "Not currently executed",
+      "source": {
+        "source_path": "WORKER_RETURNS/PROGRAMMA_PYAT_P1_20261101_R1/00_RETURN.md",
+        "source_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "MISSING_EDGE"
+    },
+    {
+      "id": "E15",
+      "from": "PYAT:CODE:I03",
+      "to": "PYAT:WHOLE:F1_F4",
+      "type": "REQUIRED_ARTIFACT_LINEAGE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Measured F1/F2 requires qualified exact I03 result",
+      "negative": "No end-to-end original35 receipt",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_ONLY"
+    },
+    {
+      "id": "E16",
+      "from": "PYAT:CODE:I05",
+      "to": "PYAT:WHOLE:F1_F4",
+      "type": "REQUIRED_ARTIFACT_LINEAGE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "F3/F4 bounded discovery and joint need competent scoped products",
+      "negative": "No nonmodal result claimed",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_ONLY"
+    },
+    {
+      "id": "E17",
+      "from": "PYAT:WHOLE:F1_F4",
+      "to": "PYAT:GAP:ORIGINAL35_MEASURED",
+      "type": "UNMET_TERMINAL_PROOF",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Whole source-native measured F1-F4 chain remains unproved",
+      "negative": "Missing != code entirely absent",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "GAP"
+    },
+    {
+      "id": "E18",
+      "from": "PYAT:SOURCE:SRC35",
+      "to": "PYAT:WHOLE:WG0",
+      "type": "MUST_ACCOUNT",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "All 35 source members require no-drop accounting",
+      "negative": "Historical physical PASS is insufficient",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/WAVE35_COMMON_EDGE_ACTION_QUEUE.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_ONLY"
+    },
+    {
+      "id": "E19",
+      "from": "PYAT:ASTRA:N7",
+      "to": "PYAT:ASTRA:N9",
+      "type": "CONDITIONAL_INPUT",
+      "condition": {
+        "mode": "IF",
+        "predicate": "scope.demands_multi_field_world"
+      },
+      "assertion": "F6 field composition only under selected served-world scope",
+      "negative": "No unconditional F6 blocker",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E20",
+      "from": "PYAT:ASTRA:N8E",
+      "to": "PYAT:ASTRA:N9",
+      "type": "CONDITIONAL_INPUT",
+      "condition": {
+        "mode": "IF",
+        "predicate": "scope.demands_temporal_input"
+      },
+      "assertion": "Comparable-wave products only if scope demands them",
+      "negative": "No auto temporal comparability",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E21",
+      "from": "PYAT:RRIF:34",
+      "to": "PYAT:STATUS:CURRENT",
+      "type": "REPORTED_IN",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Finite RRIF closeout reflected in paired progress",
+      "negative": "Historical non-current branches not promoted",
+      "source": {
+        "source_path": "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E22",
+      "from": "PYAT:CODE:UNIVERSAL",
+      "to": "PYAT:WHOLE:WG0",
+      "type": "PARTIAL_INHERITANCE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Current sourcefree grammar/lowering should be inspected first",
+      "negative": "No completed authorized original35 frontier",
+      "source": {
+        "source_path": "rawlsing_next/pre553_universal_workload.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    },
+    {
+      "id": "E23",
+      "from": "PYAT:CODE:C11",
+      "to": "PYAT:CODE:ROUTEB",
+      "type": "REQUIRED_INPUT_TYPE",
+      "condition": {
+        "mode": "SCOPE",
+        "predicate": "always"
+      },
+      "assertion": "Route B source and GovernedC11Projection typed boundary",
+      "negative": "Original source grants absent in this lane",
+      "source": {
+        "source_path": "rawlsing_next/pre553_route_b_production.py",
+        "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "blob_sha": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+        "locator": "whole file",
+        "observed_at": "2026-11-01 S1",
+        "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+        "evidence_grade": "DIRECT_SOURCE_READ"
+      },
+      "epistemic_status": "DIRECT_SOURCE_READ",
+      "role": "REQUIREMENT_OR_DOCUMENTARY_LINK"
+    }
+  ],
+  "evidence_event_examples": [
+    {
+      "event_id": "EVENT:RRIF:TERMINAL",
+      "target_id": "PYAT:RRIF:34",
+      "assertion": "Finite 34-lineage closeout, two selective sourcefree receipts",
+      "assertion_scope": "history/recovery only",
+      "source_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_FINITE_TERMINAL_CLOSEOUT_20261101.md",
+      "source_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "blob_sha": "UNVERIFIED_IN_THIS_LANE",
+      "locator": "whole file",
+      "observed_at": "2026-11-01 S1",
+      "epistemic_scope": "documentary/current code at pinned cut, not runtime",
+      "evidence_grade": "DIRECT_SOURCE_READ",
+      "counterevidence_or_limit": "845 names not all merged; original source/actor held",
+      "authority_actor_if_applicable": "PRE-MAIN paired progress",
+      "reviewer_actor_if_applicable": "separate E4FR/E6 scoped in report",
+      "effective_at": "2026-11-01",
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "EVENT:P1:840",
+      "target_id": "PYAT:CAND:P1_CONSTRUCTOR",
+      "assertion": "Candidate sourcefree 35 synthetic waves/840 operation BatchManifest admission",
+      "assertion_scope": "sourcefree constructor & first receiver",
+      "evidence_grade": "ENGINEER_RETURN",
+      "source_path": "WORKER_RETURNS/PROGRAMMA_PYAT_P1_20261101_R1/00_RETURN.md",
+      "source_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "source_locator": "FINDING / VERDICTS",
+      "counterevidence_or_limit": "No native C11/I03/I05, no independent review at checked cut",
+      "authority_actor_if_applicable": "NONE",
+      "reviewer_actor_if_applicable": "UNKNOWN",
+      "effective_at": "2026-11-01",
+      "observed_at": "2026-11-01",
+      "supersedes_event_id": null
+    },
+    {
+      "event_id": "EVENT:O-LIVE:CONTAMINATION",
+      "target_id": "PYAT:WHOLE:WG0",
+      "assertion": "Cross-lane warning: fixture-origin self-attestation cannot update acceptance",
+      "assertion_scope": "Transferable trust design only, not a Pyat rule issuance",
+      "evidence_grade": "DIRECT_SOURCE_READ",
+      "source_path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/20261101_W1_JOINT_ARCHITECTURE_SYNTHESIS_AND_MINIMAL_BUILD_DECISION.md",
+      "source_cut": "e5a25cbc4f2b9d7476a72637d3e371ee3254742e",
+      "source_locator": "One necessary TRUST repair",
+      "counterevidence_or_limit": "Sorok P0/P1 author tested and not adopted; do not import its state",
+      "authority_actor_if_applicable": "NONE",
+      "reviewer_actor_if_applicable": "NONE",
+      "effective_at": "2026-11-01",
+      "observed_at": "2026-11-01",
+      "supersedes_event_id": null
+    }
+  ],
+  "views": [
+    {
+      "id": "whole",
+      "question": "What is the complete Pyat world/source/selected-possibility mission and exactly what is known or missing?",
+      "query": "L0->L1 organs->G/S/P/Q/L/F/T/W/A and Astra N0–N13->F1–F8->science/implementation/owner/consumer; provide held and negative branches",
+      "output": "claims plus evidence links, no percent"
+    },
+    {
+      "id": "focus",
+      "question": "What does original ID X mean across all plans?",
+      "query": "Exact ID plus typed membership; first authoritative definition, variants, owner, contrary reviews, current code",
+      "output": "focused node, lateral alternatives, reverse and forward"
+    },
+    {
+      "id": "code",
+      "question": "Which function consumes/provides X at exact SHA?",
+      "query": "code symbol->real imports/calls->first receiver->tests->source authority->purpose; missing edges explicit",
+      "output": "source path/blob/member and acceptance ceiling"
+    },
+    {
+      "id": "source",
+      "question": "Where is source/wave/item/operation X in original35?",
+      "query": "SRC identity->native manifest/rights->U_item/U_unit/U_app/E_pre->C11/I03/I05/Batch->F receipt",
+      "output": "no-drop anti-join and refusals"
+    },
+    {
+      "id": "critical",
+      "question": "What unblocks the most lawful whole-machine work now?",
+      "query": "derive connected missing producer/consumer paths from qualified AND/OR/IF graph; exclude user-stop, protected authority, collision",
+      "output": "conditional readiness, exact owner and smallest falsifier"
+    },
+    {
+      "id": "reverse",
+      "question": "From receipt/operation/line of code, why is it needed?",
+      "query": "reverse traversal on same relation IDs to L0 or UNCONNECTED_GAP",
+      "output": "exact reverse links"
+    },
+    {
+      "id": "changes",
+      "question": "What changed since immutable cut Y?",
+      "query": "compare stable objects+event revisions/source SHA; re-evaluate affected dependents and retain unaffected negatives",
+      "output": "new, displaced, held, unaffected"
+    },
+    {
+      "id": "organization",
+      "question": "What is genuinely active or merely returned?",
+      "query": "paired progress + HQ handoff + dated flight board + branch/PR/CI, process_live ONLY from bounded runtime telemetry",
+      "output": "owner, host, role, reviewer, UNKNOWN local execution"
+    },
+    {
+      "id": "conflicts",
+      "question": "Which authorities/plans disagree?",
+      "query": "same claim/grain divergent source events; show both and refusing status",
+      "output": "no implicit reconciliation"
+    },
+    {
+      "id": "chat",
+      "question": "Can ChatGPT navigate the approved evidence?",
+      "query": "read-only query using current authenticated connector/current derived graph; no synthetic state promotion, no mutation",
+      "output": "citations/ref links and freshness, fallback to direct GitHub evidence"
+    }
+  ],
+  "validation_invariants": [
+    {
+      "id": "INV01",
+      "rule": "Every factual node/edge links immutable path + 40-hex cut + supported scope and explicit limit; scoped blob existence checked when available."
+    },
+    {
+      "id": "INV02",
+      "rule": "Unique stable IDs within namespace; code symbol ID is not an original science or source owner ID."
+    },
+    {
+      "id": "INV03",
+      "rule": "Plan membership many-to-many, preserve both original and present definitions, changes do not overwrite history."
+    },
+    {
+      "id": "INV04",
+      "rule": "Use Astra requires[] as AND and conditional[] as IF; no `conditional` dependency becomes unconditional block."
+    },
+    {
+      "id": "INV05",
+      "rule": "All source-permission, original semantic, weight/design, scientific-method authority are separately issued and verified; do not infer from test/schema."
+    },
+    {
+      "id": "INV06",
+      "rule": "Engineered code, author tests, independent review, protected CAS and real first consumer are separate evidence axes."
+    },
+    {
+      "id": "INV07",
+      "rule": "Fixture-origin synthetic review and own asserted reviewer role cannot promote status; verify distinct independent reviewer, appointed scope and exact target."
+    },
+    {
+      "id": "INV08",
+      "rule": "Source withdrawal invalidates only actually dependent claims; restoring one does not erase another independent RED."
+    },
+    {
+      "id": "INV09",
+      "rule": "35 governed sources conserved; 1,890 documentary matrix cells are not authorized job denominator; no-drop also for HOLD/ABSTAIN."
+    },
+    {
+      "id": "INV10",
+      "rule": "Candidate P1 BatchManifest admission does not imply C11/I03/I05 executed; fail if represented as measured F1–F4."
+    },
+    {
+      "id": "INV11",
+      "rule": "RRIF terminal is finite historical accounting, not source or machine completion; retain FIABC/G01 REDs."
+    },
+    {
+      "id": "INV12",
+      "rule": "No output percentile, task done percentage, fabricated current worker process, no native actor/producer claim."
+    },
+    {
+      "id": "INV13",
+      "rule": "Cold deterministic replay and CAS/trust validation occur only in a later authorized S2 implementation; an S1 map never asserts pass."
+    },
+    {
+      "id": "INV14",
+      "rule": "Native ChatGPT surface optional; API/port only read-only and exact scoped. No ChatGPT UI considered terminal PROGRAMMA acceptance."
+    }
+  ],
+  "incomplete_by_design": [
+    "All 151 register obligations not imported as nodes in this proposal",
+    "All 101 tasks not exhaustively reconciled against code",
+    "35 × original item/question native roster not accessed",
+    "Source-owner permissions and science claims not issued",
+    "Lanes A/B/C/D/E/G and qualified mainMac required for exhaustive crosswalk",
+    "No runtime or browser/UI implementation performed"
+  ]
+}

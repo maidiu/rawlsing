@@ -1,0 +1,525 @@
+{
+  "actual_route": {
+    "hops": [
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:PLAN:M2_LOCAL_RELEASE",
+            "id": "EDGE:3f65116e2143ddb048f3a3f9",
+            "record": "ROW:H:ADJUDICATION:H05-I01",
+            "to": "ROW:H:ADJUDICATION:H05-I01",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "PYAT:PLAN:M2_LOCAL_RELEASE",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:H:ADJUDICATION:H05-I01"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:ASTRA:N9",
+            "id": "EDGE:1cf7575775fc53c8c10ddea7",
+            "record": "ROW:H:ADJUDICATION:H05-I01",
+            "to": "ROW:H:ADJUDICATION:H05-I01",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "ROW:H:ADJUDICATION:H05-I01",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:ASTRA:N9"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:ASTRA:N9",
+            "id": "EDGE:39479d163cb856aa166fb7b7",
+            "record": "ROW:H:ADJUDICATION:H06-E03",
+            "to": "ROW:H:ADJUDICATION:H06-E03",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "PYAT:ASTRA:N9",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:H:ADJUDICATION:H06-E03"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:H:ADJUDICATION:H06-E03",
+            "id": "EDGE:fa2ebdb17453d310128affd1",
+            "record": "ROW:H:ADJUDICATION:H06-E03",
+            "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+            "type": "RECONCILES_WITHOUT_PROMOTION"
+          }
+        ],
+        "from": "ROW:H:ADJUDICATION:H06-E03",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+            "id": "EDGE:2af2c1b241455dfb6b03be0b",
+            "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+            "to": "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::",
+            "type": "CURRENT_COMPARISON"
+          }
+        ],
+        "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::"
+      }
+    ],
+    "ids": [
+      "PYAT:PLAN:M2_LOCAL_RELEASE",
+      "ROW:H:ADJUDICATION:H05-I01",
+      "PYAT:ASTRA:N9",
+      "ROW:H:ADJUDICATION:H06-E03",
+      "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+      "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::"
+    ],
+    "reverse_uses_same_edge_ids": true
+  },
+  "boundary": {
+    "adoption": "RETURNED_UNADOPTED",
+    "authority": "NO_SOURCE_N11_N12_ACTOR_OR_CANONICAL_WRITE_GRANT",
+    "navigation": "ASSOCIATION_IS_NOT_PROOF_OR_UNCONDITIONAL_DEPENDENCY",
+    "scope": "SOURCEFREE_DERIVED_REFERENCE_ONLY",
+    "source_native_empirical_pilot": "HOLD"
+  },
+  "command": "focus",
+  "cut": "9809203fd915a84bae056a67210e9213879840db",
+  "edges": [
+    {
+      "condition": null,
+      "from": "PYAT:PLAN:M2_LOCAL_RELEASE",
+      "id": "EDGE:3f65116e2143ddb048f3a3f9",
+      "record": "ROW:H:ADJUDICATION:H05-I01",
+      "to": "ROW:H:ADJUDICATION:H05-I01",
+      "type": "HAS_ASSERTION"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:PLAN:M2_LOCAL_RELEASE",
+      "id": "EDGE:90b0ee6703a5fb67d6d7ac2e",
+      "record": "ROW:H:ADJUDICATION:H11-M2",
+      "to": "ROW:H:ADJUDICATION:H11-M2",
+      "type": "HAS_ASSERTION"
+    }
+  ],
+  "ids": [
+    "PYAT:PLAN:M2_LOCAL_RELEASE"
+  ],
+  "read_cut_comparison": {
+    "PIN:15514626c729f1440fb4b9c2": {
+      "declared_blob": "e9caea543bcc4e1418905f1442d2c7c97eef04b2",
+      "declared_cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_selected_world_progressive_contract.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:1ba0df0da12245ebaa611691": {
+      "declared_blob": "7899846394f079c14eae4864c8200697bd9dee4a",
+      "declared_cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:22d101e8bb179f5f35945602": {
+      "declared_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "selected_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:36891f1ed49c18a6450c59b9": {
+      "declared_blob": "739c70d6802baf5f6d6498b3daa39d0688a41840",
+      "declared_cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/r3_s02_seam_witness.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:3930ea5410e66c5daf8fb7b3": {
+      "declared_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "declared_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "selected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:4de1d2a073f7fec4fd66704b": {
+      "declared_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "declared_cut": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "selected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:57545ae4f6246e074181f3c7": {
+      "declared_blob": "44807c6a287145507d7332138c944cd61da363bf",
+      "declared_cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:57783e48fccb08dfc0939dca": {
+      "declared_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "selected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:6f1f1a741ace04f2a9308616": {
+      "declared_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "declared_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "selected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:796154713644d03b5b2ad643": {
+      "declared_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "selected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:82d83951d991f04009c692af": {
+      "declared_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/m2_v555_atomic_route.py",
+      "selected_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:a8708715d300ab06310e0cfa": {
+      "declared_blob": "7899846394f079c14eae4864c8200697bd9dee4a",
+      "declared_cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:be48e8d9ee9604d1d48fb7be": {
+      "declared_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "selected_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:c9865b1671d8e5c5f6b0428a": {
+      "declared_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "selected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:ccc54036477134f2fd74bd36": {
+      "declared_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "declared_cut": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "selected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:e4fa0931a135322a3959d49f": {
+      "declared_blob": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+      "declared_cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:fee100abdd1c2667871377da": {
+      "declared_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "selected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    }
+  },
+  "records": [
+    {
+      "currentness": "FROZEN_SEVEN_LANE_CUT",
+      "evidence": {
+        "derived_from": [
+          "ROW:C:SEAMS:W1C-S30",
+          "ROW:G:HISTORICAL_REALIZATIONS:HR-I01",
+          "ROW:G:HISTORICAL_REALIZATIONS:HR-B5-M2"
+        ]
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:H:ADJUDICATION:H05-I01",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_NEW_GRANT",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "AUTHOR_RETURN_REQUIRES_DISTINCT_REVIEW",
+        "science_state": "NO_NEW_ISSUANCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Five modules still absent current; LOCAL_UNAUTHENTICATED ceiling, real receiver/source/owner grants absent. No newest-wins adoption.",
+      "support_pins": [
+        "PIN:15514626c729f1440fb4b9c2",
+        "PIN:1ba0df0da12245ebaa611691",
+        "PIN:36891f1ed49c18a6450c59b9",
+        "PIN:3930ea5410e66c5daf8fb7b3",
+        "PIN:4de1d2a073f7fec4fd66704b",
+        "PIN:57545ae4f6246e074181f3c7",
+        "PIN:6f1f1a741ace04f2a9308616",
+        "PIN:796154713644d03b5b2ad643",
+        "PIN:a8708715d300ab06310e0cfa",
+        "PIN:ccc54036477134f2fd74bd36",
+        "PIN:e4fa0931a135322a3959d49f",
+        "PIN:fee100abdd1c2667871377da"
+      ]
+    },
+    {
+      "currentness": "FROZEN_SEVEN_LANE_CUT",
+      "evidence": {
+        "derived_from": [
+          "ROW:C:SEAMS:W1C-S20",
+          "ROW:C:SEAMS:W1C-S23"
+        ]
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:H:ADJUDICATION:H11-M2",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_NEW_GRANT",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "AUTHOR_RETURN_REQUIRES_DISTINCT_REVIEW",
+        "science_state": "NO_NEW_ISSUANCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Matching display label never aliases source grants, N/Sorok nodes or unrelated G/S/F numbering.",
+      "support_pins": [
+        "PIN:22d101e8bb179f5f35945602",
+        "PIN:57783e48fccb08dfc0939dca",
+        "PIN:82d83951d991f04009c692af",
+        "PIN:be48e8d9ee9604d1d48fb7be",
+        "PIN:c9865b1671d8e5c5f6b0428a"
+      ]
+    }
+  ],
+  "snapshot_hash": "042ec18fe573a2aacd8a4afff8d3750ec102ba696a93e97015ba858e6c45aa65",
+  "source_pins": {
+    "PIN:15514626c729f1440fb4b9c2": {
+      "content_sha256": "6608ffe1c19e7ec889541cfe4f6f50fda7ab21a1871d42b19b92e1742875a0e3",
+      "cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "expected_blob": "e9caea543bcc4e1418905f1442d2c7c97eef04b2",
+      "id": "PIN:15514626c729f1440fb4b9c2",
+      "observed_blob": "e9caea543bcc4e1418905f1442d2c7c97eef04b2",
+      "path": "rawlsing_next/pre553_selected_world_progressive_contract.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:1ba0df0da12245ebaa611691": {
+      "content_sha256": "cbfd95a9eb7ce4fae79113cad1429ccf316cfeb6c09dabe6f0b3c389726e9562",
+      "cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "expected_blob": "7899846394f079c14eae4864c8200697bd9dee4a",
+      "id": "PIN:1ba0df0da12245ebaa611691",
+      "observed_blob": "7899846394f079c14eae4864c8200697bd9dee4a",
+      "path": "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:22d101e8bb179f5f35945602": {
+      "content_sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:22d101e8bb179f5f35945602",
+      "observed_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:36891f1ed49c18a6450c59b9": {
+      "content_sha256": "61f3ff039f18e9890c0ea7dd56215afcbfe22aa597e5d485c31077797380f0bd",
+      "cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "expected_blob": "739c70d6802baf5f6d6498b3daa39d0688a41840",
+      "id": "PIN:36891f1ed49c18a6450c59b9",
+      "observed_blob": "739c70d6802baf5f6d6498b3daa39d0688a41840",
+      "path": "rawlsing_next/r3_s02_seam_witness.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:3930ea5410e66c5daf8fb7b3": {
+      "content_sha256": "5c00270a15fc8fa11fa71902951fd18c3ffd1337c9426145d95ea8629050c04e",
+      "cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "expected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "id": "PIN:3930ea5410e66c5daf8fb7b3",
+      "observed_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "role": "current_comparison",
+      "status": "VERIFIED"
+    },
+    "PIN:4de1d2a073f7fec4fd66704b": {
+      "content_sha256": "5c00270a15fc8fa11fa71902951fd18c3ffd1337c9426145d95ea8629050c04e",
+      "cut": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+      "expected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "id": "PIN:4de1d2a073f7fec4fd66704b",
+      "observed_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:57545ae4f6246e074181f3c7": {
+      "content_sha256": "049bf788c28775ccd4d6787fd1ae8cf2e77c7dda715ab8861036a01c47f8f555",
+      "cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "expected_blob": "44807c6a287145507d7332138c944cd61da363bf",
+      "id": "PIN:57545ae4f6246e074181f3c7",
+      "observed_blob": "44807c6a287145507d7332138c944cd61da363bf",
+      "path": "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:57783e48fccb08dfc0939dca": {
+      "content_sha256": "5a14fc6ad0fe3970ad70f88147fa683e71d53a54dfc63608be1b089a3ad4bea7",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "id": "PIN:57783e48fccb08dfc0939dca",
+      "observed_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:6f1f1a741ace04f2a9308616": {
+      "content_sha256": "5a14fc6ad0fe3970ad70f88147fa683e71d53a54dfc63608be1b089a3ad4bea7",
+      "cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "expected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "id": "PIN:6f1f1a741ace04f2a9308616",
+      "observed_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "role": "current_comparison",
+      "status": "VERIFIED"
+    },
+    "PIN:796154713644d03b5b2ad643": {
+      "content_sha256": "5c00270a15fc8fa11fa71902951fd18c3ffd1337c9426145d95ea8629050c04e",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:796154713644d03b5b2ad643",
+      "observed_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:82d83951d991f04009c692af": {
+      "content_sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "id": "PIN:82d83951d991f04009c692af",
+      "observed_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "path": "rawlsing_next/m2_v555_atomic_route.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:a8708715d300ab06310e0cfa": {
+      "content_sha256": "cbfd95a9eb7ce4fae79113cad1429ccf316cfeb6c09dabe6f0b3c389726e9562",
+      "cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "expected_blob": "7899846394f079c14eae4864c8200697bd9dee4a",
+      "id": "PIN:a8708715d300ab06310e0cfa",
+      "observed_blob": "7899846394f079c14eae4864c8200697bd9dee4a",
+      "path": "rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:be48e8d9ee9604d1d48fb7be": {
+      "content_sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "id": "PIN:be48e8d9ee9604d1d48fb7be",
+      "observed_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:c9865b1671d8e5c5f6b0428a": {
+      "content_sha256": "5a14fc6ad0fe3970ad70f88147fa683e71d53a54dfc63608be1b089a3ad4bea7",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:c9865b1671d8e5c5f6b0428a",
+      "observed_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:ccc54036477134f2fd74bd36": {
+      "content_sha256": "5a14fc6ad0fe3970ad70f88147fa683e71d53a54dfc63608be1b089a3ad4bea7",
+      "cut": "96e6d49ac18274332751c5fbb87c6ed370e8fd9c",
+      "expected_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "id": "PIN:ccc54036477134f2fd74bd36",
+      "observed_blob": "1cb7692399aad8fb272c8c9ce956719527829007",
+      "path": "rawlsing_next/pre553_learned_product_release.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:e4fa0931a135322a3959d49f": {
+      "content_sha256": "349d9b2bcc8b35a8fd24eeb3300ac7d93a2d22a9334c1ca47e50895bb84cf2ce",
+      "cut": "a1dc59411faaee01b3acb1c4f08b2e6f09d56028",
+      "expected_blob": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+      "id": "PIN:e4fa0931a135322a3959d49f",
+      "observed_blob": "719c8d878bcfb3b6c61c844c9bf974ada8365929",
+      "path": "rawlsing_next/pre553_batch_durable_checkpoint_candidate.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:fee100abdd1c2667871377da": {
+      "content_sha256": "5c00270a15fc8fa11fa71902951fd18c3ffd1337c9426145d95ea8629050c04e",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "id": "PIN:fee100abdd1c2667871377da",
+      "observed_blob": "dadf2362f3195c28ebaf97655e28cdba72c04fb3",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    }
+  },
+  "status": "OK"
+}

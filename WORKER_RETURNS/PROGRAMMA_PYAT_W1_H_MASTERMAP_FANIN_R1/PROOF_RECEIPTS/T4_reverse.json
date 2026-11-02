@@ -1,0 +1,205 @@
+{
+  "actual_route": {
+    "hops": [
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+            "id": "EDGE:a5340902d23707be9359db96",
+            "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+            "to": "CODE:1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa:WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py::",
+            "type": "HISTORICAL_VARIANT"
+          }
+        ],
+        "from": "CODE:1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa:WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py::",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:FUNCTION:F6",
+            "id": "EDGE:a5c58cffe6047067854f09f1",
+            "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+            "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:FUNCTION:F6"
+      }
+    ],
+    "ids": [
+      "CODE:1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa:WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py::",
+      "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+      "PYAT:FUNCTION:F6"
+    ],
+    "reverse_uses_same_edge_ids": true
+  },
+  "boundary": {
+    "adoption": "RETURNED_UNADOPTED",
+    "authority": "NO_SOURCE_N11_N12_ACTOR_OR_CANONICAL_WRITE_GRANT",
+    "navigation": "ASSOCIATION_IS_NOT_PROOF_OR_UNCONDITIONAL_DEPENDENCY",
+    "scope": "SOURCEFREE_DERIVED_REFERENCE_ONLY",
+    "source_native_empirical_pilot": "HOLD"
+  },
+  "command": "reverse",
+  "cut": "9809203fd915a84bae056a67210e9213879840db",
+  "edges": [
+    {
+      "condition": null,
+      "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+      "id": "EDGE:a5340902d23707be9359db96",
+      "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+      "to": "CODE:1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa:WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py::",
+      "type": "HISTORICAL_VARIANT"
+    }
+  ],
+  "ids": [
+    "CODE:1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa:WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py::"
+  ],
+  "read_cut_comparison": {
+    "PIN:16ac380ddec3411e93bb74c2": {
+      "declared_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "declared_cut": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:a290d25d2d5cf2eca2999206": {
+      "declared_blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+      "declared_cut": "016870e86913e6f7a811a51db6aba2d741bcfe58",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:ac2c2082bfbfd30997f21edf": {
+      "declared_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "declared_cut": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    }
+  },
+  "records": [
+    {
+      "currentness": "ABSENT_AT_ee31e3ed",
+      "evidence": {
+        "blob": "e67d86551c74175e0791279ba321186b3fc79068",
+        "cut": "9bec60dc8223e6f969a67a264bc45f82600a4a5a",
+        "line": 14,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_G_20261101_R1/HISTORICAL_REALIZATIONS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:G:HISTORICAL_REALIZATIONS:HR-F6",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "F6 method/source owner plus real target/consumer.",
+        "code_location": {
+          "paths": [
+            {
+              "blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+              "path": "WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py"
+            }
+          ],
+          "ref": "agent/rabochii-pyat-r29-f6m-native-decision-admission-executable-repair-r1",
+          "ref_type": "branch tip",
+          "related_refs": [
+            {
+              "label": "A defective S03FO",
+              "paths": [
+                {
+                  "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+                  "path": "rawlsing_next/pre553_heterogeneous_synthesis.py"
+                }
+              ],
+              "ref": "agent/rabochii-pyat-r3-hq287-s03fo-f6-canonical-order-repair-r1",
+              "tip": "1428c2e92bce1a49efd87378cb23df936d646dc5"
+            },
+            {
+              "label": "F6P consumer",
+              "paths": [
+                {
+                  "blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+                  "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py"
+                }
+              ],
+              "ref": "agent/rabochii-pyat-r39-f6p-partial-bound-evidence-consumer-r1",
+              "tip": "016870e86913e6f7a811a51db6aba2d741bcfe58"
+            }
+          ],
+          "tip": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa"
+        },
+        "engineering_state": {
+          "limit": "Sourcefree synthetic only; no real source pair or target.",
+          "supported_returned_behavior": "F6M does not renormalize a source stratum excluded by the aggregate support gate; exposes uncovered target mass, covered subprobability, PARTIAL_IDENTIFICATION_ONLY and no point when incomplete. F6P consumes the actual F6M bundle and refuses partial-as-point/model-use."
+        },
+        "first_consumer_state": {
+          "local": "Historical tests not rerun; current F6 absent.",
+          "returned": "D4/R35: A defect reproduced twice; F6M blob 2df811d; F6N independent PASS; F6P 32 native tests, 37-case A/F6M experiment, R40 TEST_ONLY.",
+          "status": "ADAPT_CANDIDATE__F6M_BETTER_THAN_A"
+        },
+        "integration_state": {
+          "current_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+          "difference": "F6 module absent current; no current F6 owner or production consumer. A S03FO blob fc5e37fa renormalizes excluded strata and reports uncovered 0/full coverage.",
+          "paths": []
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Sourcefree synthetic only; no real source pair or target.",
+      "support_pins": [
+        "PIN:16ac380ddec3411e93bb74c2",
+        "PIN:a290d25d2d5cf2eca2999206",
+        "PIN:ac2c2082bfbfd30997f21edf"
+      ]
+    }
+  ],
+  "snapshot_hash": "042ec18fe573a2aacd8a4afff8d3750ec102ba696a93e97015ba858e6c45aa65",
+  "source_pins": {
+    "PIN:16ac380ddec3411e93bb74c2": {
+      "content_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871",
+      "cut": "1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa",
+      "expected_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "id": "PIN:16ac380ddec3411e93bb74c2",
+      "observed_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "path": "WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:a290d25d2d5cf2eca2999206": {
+      "content_sha256": "0bf56dd2f073691575a03f57b02c4a3784400174ace72bddfdfb92b883b82c87",
+      "cut": "016870e86913e6f7a811a51db6aba2d741bcfe58",
+      "expected_blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+      "id": "PIN:a290d25d2d5cf2eca2999206",
+      "observed_blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+      "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+      "role": "historical_alternative",
+      "status": "VERIFIED"
+    },
+    "PIN:ac2c2082bfbfd30997f21edf": {
+      "content_sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+      "cut": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+      "expected_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "id": "PIN:ac2c2082bfbfd30997f21edf",
+      "observed_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "path": "rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "role": "historical_alternative",
+      "status": "VERIFIED"
+    }
+  },
+  "status": "OK"
+}

@@ -1,0 +1,253 @@
+{
+  "actual_route": {
+    "hops": [
+      {
+        "edges": [
+          {
+            "condition": "SOURCEFREE_CURRENT_CONSUMER",
+            "from": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py::execute_source_backed_empirical_query",
+            "id": "EDGE:6747b25d9285885ee75672f1",
+            "record": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+            "to": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_empirical_query.py::execute_empirical_query",
+            "type": "AUTHOR_REPORTED_STATIC_CALL_NOT_RUNTIME"
+          }
+        ],
+        "from": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py::execute_source_backed_empirical_query",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_empirical_query.py::execute_empirical_query"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+            "id": "EDGE:44e0eee8d0a5c9ace7a7e885",
+            "record": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+            "to": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_empirical_query.py::execute_empirical_query",
+            "type": "REALIZATION_LOCATION"
+          }
+        ],
+        "from": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_empirical_query.py::execute_empirical_query",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY"
+      },
+      {
+        "edges": [
+          {
+            "condition": {
+              "negative": "Not whole-task completion or source-native denominator issuance",
+              "scope": "Only at the named typed function and selected source scope"
+            },
+            "from": "PYAT:WHOLE101:Q02",
+            "id": "EDGE:d2d14419027f32f42b26808a",
+            "record": "ROW:H:ADJUDICATION:H12-NESTED-QUERY",
+            "to": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+            "type": "PARTIAL_SOURCEFREE_FUNCTION_MATCH"
+          }
+        ],
+        "from": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:WHOLE101:Q02"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:WHOLE101:Q02",
+            "id": "EDGE:71c73dbfafdc6352e5cc1eff",
+            "record": "ROW:A:PLAN_CROSSWALK:XW0245",
+            "to": "PYAT:WHOLE151:Q002",
+            "type": "ALTERNATIVE_DECOMPOSITION_NOT_EQUIVALENCE"
+          },
+          {
+            "condition": null,
+            "from": "PYAT:WHOLE151:Q002",
+            "id": "EDGE:99a1a0caf29343f4d363bf08",
+            "record": "ROW:A:PLAN_CROSSWALK:XW0109",
+            "to": "PYAT:WHOLE101:Q02",
+            "type": "ALTERNATIVE_DECOMPOSITION_NOT_EQUIVALENCE"
+          }
+        ],
+        "from": "PYAT:WHOLE101:Q02",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:WHOLE151:Q002"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:WHOLE151:Q002",
+            "id": "EDGE:42178f64e2d4384bb3c7f4fe",
+            "record": "ROW:A:PLAN_CROSSWALK:XW0004",
+            "to": "PYAT:ASTRA:N2",
+            "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+          },
+          {
+            "condition": null,
+            "from": "PYAT:ASTRA:N2",
+            "id": "EDGE:5be92f1fe0bb71faff8f8984",
+            "record": "ROW:A:PLAN_CROSSWALK:XW0109",
+            "to": "PYAT:WHOLE151:Q002",
+            "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+          }
+        ],
+        "from": "PYAT:WHOLE151:Q002",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:ASTRA:N2"
+      }
+    ],
+    "ids": [
+      "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py::execute_source_backed_empirical_query",
+      "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_empirical_query.py::execute_empirical_query",
+      "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+      "PYAT:WHOLE101:Q02",
+      "PYAT:WHOLE151:Q002",
+      "PYAT:ASTRA:N2"
+    ],
+    "reverse_uses_same_edge_ids": true
+  },
+  "boundary": {
+    "adoption": "RETURNED_UNADOPTED",
+    "authority": "NO_SOURCE_N11_N12_ACTOR_OR_CANONICAL_WRITE_GRANT",
+    "navigation": "ASSOCIATION_IS_NOT_PROOF_OR_UNCONDITIONAL_DEPENDENCY",
+    "scope": "SOURCEFREE_DERIVED_REFERENCE_ONLY",
+    "source_native_empirical_pilot": "HOLD"
+  },
+  "command": "reverse",
+  "cut": "9809203fd915a84bae056a67210e9213879840db",
+  "edges": [
+    {
+      "condition": null,
+      "from": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+      "id": "EDGE:d4a93e550cc531fa25453638",
+      "record": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+      "to": "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py::execute_source_backed_empirical_query",
+      "type": "LOCATED_STATIC_CONSUMER"
+    }
+  ],
+  "ids": [
+    "CODE:9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py::execute_source_backed_empirical_query"
+  ],
+  "read_cut_comparison": {
+    "PIN:48162b8843d21e08ecbfa13c": {
+      "declared_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "selected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:4c67fe55a714e58576d95bfd": {
+      "declared_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "selected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:fb0a37610b4336533d0a3f95": {
+      "declared_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "selected_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    }
+  },
+  "records": [
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 4,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_empirical_query.py",
+          "symbol": "execute_empirical_query"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "execute_empirical_query",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 659,
+            "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+            "symbol": "execute_source_backed_empirical_query"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "CURRENT_PREMAIN_CODE__AUTHOR_TESTS_OBSERVED__H125_ATLAS_N2_REFERENCE",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "real source release",
+        "actual analytical service consumer",
+        "selected empirical product"
+      ],
+      "support_pins": [
+        "PIN:48162b8843d21e08ecbfa13c",
+        "PIN:4c67fe55a714e58576d95bfd",
+        "PIN:fb0a37610b4336533d0a3f95"
+      ]
+    }
+  ],
+  "snapshot_hash": "042ec18fe573a2aacd8a4afff8d3750ec102ba696a93e97015ba858e6c45aa65",
+  "source_pins": {
+    "PIN:48162b8843d21e08ecbfa13c": {
+      "content_sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:48162b8843d21e08ecbfa13c",
+      "observed_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "role": "static_consumer",
+      "status": "VERIFIED"
+    },
+    "PIN:4c67fe55a714e58576d95bfd": {
+      "content_sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "id": "PIN:4c67fe55a714e58576d95bfd",
+      "observed_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:fb0a37610b4336533d0a3f95": {
+      "content_sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:fb0a37610b4336533d0a3f95",
+      "observed_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    }
+  },
+  "status": "OK"
+}
