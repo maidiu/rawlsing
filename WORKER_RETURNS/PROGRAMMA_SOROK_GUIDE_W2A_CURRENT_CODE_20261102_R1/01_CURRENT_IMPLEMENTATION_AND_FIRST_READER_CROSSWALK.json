@@ -1,0 +1,1395 @@
+{
+  "schema": "PROGRAMMA_SOROK_GUIDE_W2A_CURRENT_IMPLEMENTATION_FIRST_READER_CROSSWALK_R1",
+  "date": "2026-11-02",
+  "source_guide_commit": "ce5e2dfe3b410657b1c5f646b725424995cdcb07",
+  "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+  "scope": "All 25 inherited named/modern consumer edges and all 15 code assets; source/consumer evidence separately graded. No native execution or adoption.",
+  "row_count": 40,
+  "checks": {
+    "named_edges": 15,
+    "modern_edges": 10,
+    "code_assets": 15,
+    "ids_unique": true
+  },
+  "global_negatives": [
+    "PRE-MAIN pre553 C11 is an empirical data release, NOT Sorok C11 weld.",
+    "R31E is deterministic sourcefree expression; RFA R2 is prepared but not provider-executed or human-tested.",
+    "RRIF-R2 20-test fanin uses JOIN-E 7bf only; did not import CP-A5/C9C12/B-F1CR/V3CORE.",
+    "No named REQUIRED consumer in E01-E15 was established as a current PRE-MAIN native importer."
+  ],
+  "records": [
+    {
+      "id": "E01",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Rule A response",
+      "guide_sections": [
+        "SP-70"
+      ],
+      "expected_or_historical_consumer": "C9 E2 CAN008 actor-relative source read",
+      "actual_first_reader_or_none": "BP2 JoinedProducer.stage_c9 TEST_ONLY Rule A; required CAN008→native C9 E2 absent",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+      "emitted_or_read_fields": "C8 occurrence/out9, actor-relative source; no issued CAN008 readset",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E01",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/producer.py",
+          "symbol": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+          "proof_type": "DIRECT_CODE_INSPECTION_IN_SOURCEFREE_CANDIDATE"
+        }
+      ],
+      "proof_and_limit": "Direct candidate code + C9RI scoped author/reviewer receipt, not original law",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E01 as HELD at the exact consumer/owner/scope; BP2 JoinedProducer.stage_c9 TEST_ONLY Rule A; required CAN008→native C9 E2 absent.",
+      "smallest_credible_task": "CAN008 owner supplies admitted response receipt and exact actor-read binding; receiver proves later E2."
+    },
+    {
+      "id": "E02",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Acquired practice and qualified nochange",
+      "guide_sections": [
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "C9 Rule T receipt→later E2 earned-operation selector",
+      "actual_first_reader_or_none": "BP2 stage_c9→stage_e2 TEST_ONLY target; RRIF-R2 sourcefree NO_CHANGE; native selector absent",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+      "emitted_or_read_fields": "target_semantics; target/grant; E2 performed vs offered",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E02",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/producer.py",
+          "symbol": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+          "proof_type": "DIRECT_CODE_INSPECTION_IN_SOURCEFREE_CANDIDATE"
+        }
+      ],
+      "proof_and_limit": "Sourcefree candidate+RRIF-R2 author 20/20; Rule T unissued",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E02 as HELD at the exact consumer/owner/scope; BP2 stage_c9→stage_e2 TEST_ONLY target; RRIF-R2 sourcefree NO_CHANGE; native selector absent.",
+      "smallest_credible_task": "CAN011 owner specifies acquired practice vs qualified NO_CHANGE and later semantic selection."
+    },
+    {
+      "id": "E03",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Needs/material motive and activity",
+      "guide_sections": [
+        "SP-30",
+        "SP-40"
+      ],
+      "expected_or_historical_consumer": "C6/C8 reality constraints→C9 actor feasible action",
+      "actual_first_reader_or_none": "BP1 material life and BP4 methods branch-local; no native C6/C8→C9 import",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+      "emitted_or_read_fields": "world snapshot/tool availability vs actor action",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E03",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/product.py",
+          "symbol": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct BP4 product code; fixture semantics",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E03 as HELD at the exact consumer/owner/scope; BP1 material life and BP4 methods branch-local; no native C6/C8→C9 import.",
+      "smallest_credible_task": "Select competent needs/material source and prove consumed constraint in native C9."
+    },
+    {
+      "id": "E04",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Independent B real encounter",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "B owner→C8 world occurrence→actor access",
+      "actual_first_reader_or_none": "R31J/BP2 B occurrence sourcefree; B-F1CR targetless I1 separate",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "build_world_occurrence; commit_world_occurrence; read_out9",
+      "emitted_or_read_fields": "B action, observed/access flags, WorldOccurrence/C8Commit/out9",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E04",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/binding.py",
+          "symbol": "build_world_occurrence; commit_world_occurrence; read_out9",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Sourcefree direct code and reconstructed B adapter; no original B owner grant",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E04 as HELD at the exact consumer/owner/scope; R31J/BP2 B occurrence sourcefree; B-F1CR targetless I1 separate.",
+      "smallest_credible_task": "B owner binds event and actor-access fields, cross-check source identity."
+    },
+    {
+      "id": "E05",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Canonical actor writer to reader",
+      "guide_sections": [
+        "SP-70",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "C9 actor version+receipt+outbox→C9_READER E2 snapshot",
+      "actual_first_reader_or_none": "C9C12-R2 read_actor_snapshot reads own SQLite; no PRE-MAIN canonical writer→reader",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "read_actor_snapshot; guarded_c12_cold_read; read_composite",
+      "emitted_or_read_fields": "actor_meta schema, actor_branch epoch, actor_head version, outbox; mirror optional",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E05",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9c12_reader.py",
+          "symbol": "read_actor_snapshot; guarded_c12_cold_read; read_composite",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code, author 6/6; held mirror ACK/anchor",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E05 as HELD at the exact consumer/owner/scope; C9C12-R2 read_actor_snapshot reads own SQLite; no PRE-MAIN canonical writer→reader.",
+      "smallest_credible_task": "C9R selects schema, outbox ACK and cold read at exact writer cut."
+    },
+    {
+      "id": "E06",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Perception-preserving C12 fork",
+      "guide_sections": [
+        "SP-50",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "JOIN-E C12 fork→C9 inherited history reader",
+      "actual_first_reader_or_none": "JOIN-E sourcefree same-root fork/cold at 7bf; C9C12-R2 separate reader",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "JoinedSession.start/open/fork_alt; R31J build_product; R31E session",
+      "emitted_or_read_fields": "root/branch, C12 episode and lineage; C9 history not natively unified",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E06",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+          "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+          "symbol": "JoinedSession.start/open/fork_alt; R31J build_product; R31E session",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "JOIN-V independent ACCEPT_SCOPED exact 7bf; no changed-cut adoption",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E06 as PARTIAL at the exact consumer/owner/scope; JOIN-E sourcefree same-root fork/cold at 7bf; C9C12-R2 separate reader.",
+      "smallest_credible_task": "Pin writer/C12 pair and independently fault/restore any migration."
+    },
+    {
+      "id": "E07",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "F0 transport/source custody",
+      "guide_sections": [
+        "SP-140",
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "F0 verified source import→future canonical runtime",
+      "actual_first_reader_or_none": "F0 typed source/transport exists, future canonical actor runtime absent",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "run_gt0_end_to_end; _assert_conservation terminal BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "emitted_or_read_fields": "stage receipts, no permission widening; terminal BLOCKED",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E07",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/wsc_gt0_end_to_end.py",
+          "symbol": "run_gt0_end_to_end; _assert_conservation terminal BLOCKED_NAMED_AUTHORITY_REQUIRED",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct PRE-MAIN negative GT0 code, not source-native import",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E07 as HELD at the exact consumer/owner/scope; F0 typed source/transport exists, future canonical actor runtime absent.",
+      "smallest_credible_task": "Owner-approved canonical runtime reader with unchanged source custody."
+    },
+    {
+      "id": "E08",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Actor-safe memory and SCI05",
+      "guide_sections": [
+        "SP-50",
+        "SP-70"
+      ],
+      "expected_or_historical_consumer": "C9 actor access→ADP016/017→postcall SCI05→N+1",
+      "actual_first_reader_or_none": "M6 guard is actor ceiling; ADP016/017 and SCI05 N+1 actual actor consumption unverified",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "evaluate_actor_safe_ingress; require_situated_expression_owner raises M6NamedAuthorityRequired",
+      "emitted_or_read_fields": "actor-accessible envelope/claim refs, no private-memory widening",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E08",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/m6_actor_safe_expression.py",
+          "symbol": "evaluate_actor_safe_ingress; require_situated_expression_owner raises M6NamedAuthorityRequired",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct PRE-MAIN code; positive named authority raises",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E08 as HELD at the exact consumer/owner/scope; M6 guard is actor ceiling; ADP016/017 and SCI05 N+1 actual actor consumption unverified.",
+      "smallest_credible_task": "ADP/SCI05 owners specify actor-access receipts and later performed read."
+    },
+    {
+      "id": "E09",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Irreversible 3–5 world event batch",
+      "guide_sections": [
+        "SP-40",
+        "SP-60",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "F3 conditional proposals→real C8/B execution→C9 durable state",
+      "actual_first_reader_or_none": "No native F3→B/C8→C9 irreversible batch reader; synthetic B branch-local",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "BWorld/BAction/TargetlessC10Ledger/ContinuingPerson",
+      "emitted_or_read_fields": "B material action/tick; targetless C10 record only",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E09",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/targetless_c10_consumer.py",
+          "symbol": "BWorld/BAction/TargetlessC10Ledger/ContinuingPerson",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct candidate; native Pyat/C8 grant held",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E09 as HELD at the exact consumer/owner/scope; No native F3→B/C8→C9 irreversible batch reader; synthetic B branch-local.",
+      "smallest_credible_task": "Qualify F3 world receipts then replay actual C8/B/C9 sequence under rights."
+    },
+    {
+      "id": "E10",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Mother-first genealogy",
+      "guide_sections": [
+        "SP-30",
+        "SP-40"
+      ],
+      "expected_or_historical_consumer": "C4 antecedent life and material world→C8 child life",
+      "actual_first_reader_or_none": "Historical genealogy requirements; none verified current",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "freeze/intervene/Receiver.stage_world/stage_c9/same_receiver_assertion",
+      "emitted_or_read_fields": "original parent-child/backbone historical member only",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E10",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+          "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_original_104f5bd.py",
+          "symbol": "freeze/intervene/Receiver.stage_world/stage_c9/same_receiver_assertion",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "W1-C external static analysis, not current bytes",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E10 as HELD at the exact consumer/owner/scope; Historical genealogy requirements; none verified current.",
+      "smallest_credible_task": "Competent C4 owner issues life/genealogy input; test first real child-event consumer."
+    },
+    {
+      "id": "E11",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Pyat original world weld",
+      "guide_sections": [
+        "SP-20",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "Pyat N11/N12 world service→C11 actual C12 person",
+      "actual_first_reader_or_none": "PRE-MAIN empirical pre553 C11 is a different namespace; no Sorok C11 weld",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "build_validated_source_backed_c11_release/from_stream — empirical source release, NOT Sorok C11 weld",
+      "emitted_or_read_fields": "physical survey cells→C11 logical release, NOT N11/N12 objective person ingress",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E11",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+          "symbol": "build_validated_source_backed_c11_release/from_stream — empirical source release, NOT Sorok C11 weld",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code namespace collision",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E11 as HELD at the exact consumer/owner/scope; PRE-MAIN empirical pre553 C11 is a different namespace; no Sorok C11 weld.",
+      "smallest_credible_task": "Separate Pyat N11/N12 and Sorok owner source grant; inspect actual C0/C11 receiving adapter."
+    },
+    {
+      "id": "E12",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Complete person living/reentry/alpha",
+      "guide_sections": [
+        "SP-90",
+        "SP-120"
+      ],
+      "expected_or_historical_consumer": "C12 same actual person→A0–A5",
+      "actual_first_reader_or_none": "BP4/CP-A5 sourcefree methods and encounters only; no human A0–A5",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "UNBUILT",
+      "producer_and_artifact": "EncounterReader.ask; perceived-event filtering; UNKNOWN for unperceived B activity",
+      "emitted_or_read_fields": "C12 events/perceptions; A5 unperceived B event UNKNOWN",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E12",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "913765328e4fab12b150ea01421ed6b445158184",
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/candidate/cp_a5/encounter.py",
+          "symbol": "EncounterReader.ask; perceived-event filtering; UNKNOWN for unperceived B activity",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code + 59 author tests; no human trial",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E12 as UNBUILT at the exact consumer/owner/scope; BP4/CP-A5 sourcefree methods and encounters only; no human A0–A5.",
+      "smallest_credible_task": "Define consented real A5 assessment and authorized continuing-person source first."
+    },
+    {
+      "id": "E13",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Scoped care and challenge expectations",
+      "guide_sections": [
+        "SP-50",
+        "SP-70"
+      ],
+      "expected_or_historical_consumer": "C9 received care/challenge→later scoped response",
+      "actual_first_reader_or_none": "BP4 sourcefree care/help gestures; no owned care/challenge generalizing E2 reader",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+      "emitted_or_read_fields": "help/repair and scoped state, not positive durable care disposition",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E13",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/product.py",
+          "symbol": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct candidate, conditional toy semantics",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E13 as HELD at the exact consumer/owner/scope; BP4 sourcefree care/help gestures; no owned care/challenge generalizing E2 reader.",
+      "smallest_credible_task": "Owner qualify care/challenge expectations and prove a later unprompted action."
+    },
+    {
+      "id": "E14",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Causally necessary interfunctional relation",
+      "guide_sections": [
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "CAN011 qualified composed operation/relation→E2 semantic selector",
+      "actual_first_reader_or_none": "Test-only target_semantics not an issued CAN011 composed relation",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+      "emitted_or_read_fields": "Rule T target, source-provenance link, later E2",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E14",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/producer.py",
+          "symbol": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct sourcefree code; no native semantic selector",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E14 as HELD at the exact consumer/owner/scope; Test-only target_semantics not an issued CAN011 composed relation.",
+      "smallest_credible_task": "CAN011 owner issue composed relation/readset and target-to-action severance."
+    },
+    {
+      "id": "E15",
+      "kind": "NAMED_FIRST_CONSUMER_EDGE",
+      "title": "Socially learned conceptual life",
+      "guide_sections": [
+        "SP-30",
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "Qualified educational/institutional history→actor interpretation/action",
+      "actual_first_reader_or_none": "Historical learning obligations; no current imported education-to-action pathway",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "UNBUILT",
+      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "emitted_or_read_fields": "No exact native interpreted educational history receipt",
+      "evidence": [
+        {
+          "commit": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/02_CAPABILITY_REGISTER.json",
+          "symbol_or_section": "E15",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        }
+      ],
+      "proof_and_limit": "Documentary source obligation only",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain E15 as UNBUILT at the exact consumer/owner/scope; Historical learning obligations; no current imported education-to-action pathway.",
+      "smallest_credible_task": "Bound one source-qualified learning occurrence and later actor interpretation."
+    },
+    {
+      "id": "RCFB_E1",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "R31J/F1CR B material owner + fixed A/B/shared history -> B event",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "R31JProduct / r31j.assertion.p01 (attributed); targetless JOIN refusal read-only",
+      "actual_first_reader_or_none": "Original F1C same_receiver_assertion; B-F1CR-R2 targetless C10/I1 adapter separate",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "TargetlessGuardedJoinedProduct(GuardedJoinedProduct)",
+      "emitted_or_read_fields": "BAction and TargetlessC10Ledger; A perception/access differ",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E1",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/targetless_i1_bridge.py",
+          "symbol": "TargetlessGuardedJoinedProduct(GuardedJoinedProduct)",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code on R2, sourcefree author receipts; patched original F1CR missing",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E1 as PARTIAL at the exact consumer/owner/scope; Original F1C same_receiver_assertion; B-F1CR-R2 targetless C10/I1 adapter separate.",
+      "smallest_credible_task": "Select original B source/reconstruction disposition; independently test same-root field severance."
+    },
+    {
+      "id": "RCFB_E2",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "A/B shared history -> C8 event owner/receipt/access",
+      "guide_sections": [
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "bp2p4.reunion / candidate CandidateStore / bp4.c10.receive",
+      "actual_first_reader_or_none": "BP2 build_world_occurrence→commit_world_occurrence→read_out9; BP4 C10 receive downstream",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "build_world_occurrence; commit_world_occurrence; read_out9",
+      "emitted_or_read_fields": "A/B snapshot, B SHARE/REFUSE/access, C8Commit, Out9Binding",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E2",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/binding.py",
+          "symbol": "build_world_occurrence; commit_world_occurrence; read_out9",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct sourcefree code, BP2P4J tests/independent defects preserved",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E2 as PARTIAL at the exact consumer/owner/scope; BP2 build_world_occurrence→commit_world_occurrence→read_out9; BP4 C10 receive downstream.",
+      "smallest_credible_task": "C8/ADP owner-qualified event/readset to actual C9 writer."
+    },
+    {
+      "id": "RCFB_E3",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C8 -> CAN008 test-only A -> CAN011 test-only T/no-change",
+      "guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "JoinedProducer.stage_c9 / CandidateStore",
+      "actual_first_reader_or_none": "BP2 stage_c8/out9/stage_c9 sourcefree; later RRIF-R2 preserved closure",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+      "emitted_or_read_fields": "occurrence→Rule A response→Rule T target or NO_CHANGE",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E3",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/producer.py",
+          "symbol": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct test-only code; native A/T unissued",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E3 as PARTIAL at the exact consumer/owner/scope; BP2 stage_c8/out9/stage_c9 sourcefree; later RRIF-R2 preserved closure.",
+      "smallest_credible_task": "Introduce issued CAN008/011 receipts to exact writer after owner decision."
+    },
+    {
+      "id": "RCFB_E4",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "CAN011/T -> C9 selected writer -> performed E2 (not offered)",
+      "guide_sections": [
+        "SP-80",
+        "SP-70"
+      ],
+      "expected_or_historical_consumer": "BP2P4J seed/product for E2; C9 R3B reader only for its own actor DB",
+      "actual_first_reader_or_none": "BP2 stage_e2 and JoinedProduct A2; newer C9 R3B SQLite reader stays separate",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+      "emitted_or_read_fields": "E2 actuator/resource, consumed state hash, performed vs offered",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E4",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/producer.py",
+          "symbol": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct candidate, C9RI independent scoped E2 but store not welded",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E4 as PARTIAL at the exact consumer/owner/scope; BP2 stage_e2 and JoinedProduct A2; newer C9 R3B SQLite reader stays separate.",
+      "smallest_credible_task": "Version-select C9 writer and run cold independently performed E2 reader."
+    },
+    {
+      "id": "RCFB_E5",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C9 -> C10 timeline",
+      "guide_sections": [
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "bp4.c10.receive / JoinedProduct inherited A0-A3",
+      "actual_first_reader_or_none": "BP4Product C10 receive on same candidate; BF1CR adds separate targetless ledger",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+      "emitted_or_read_fields": "C9 target/source state→timeline and material world episode",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E5",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/product.py",
+          "symbol": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code/author sourcefree tests",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E5 as PARTIAL at the exact consumer/owner/scope; BP4Product C10 receive on same candidate; BF1CR adds separate targetless ledger.",
+      "smallest_credible_task": "Choose integration cut, preserve refusal/silence without forged target."
+    },
+    {
+      "id": "RCFB_E6",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C10 -> C12 append/fork/cold",
+      "guide_sections": [
+        "SP-90",
+        "SP-50"
+      ],
+      "expected_or_historical_consumer": "GuardedC12Store.verify_store/fork; JoinedProduct",
+      "actual_first_reader_or_none": "JOIN-E exact same-root fork/cold; C9C12-R2 C12 guard separate",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "verify_store; anchor_payload; GuardedC12Store; OWNER_ANCHOR_REQUIRED",
+      "emitted_or_read_fields": "episode origin, append clock, fork and anchor_payload",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E6",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c12_guard.py",
+          "symbol": "verify_store; anchor_payload; GuardedC12Store; OWNER_ANCHOR_REQUIRED",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "JOIN-V independent exact 7bf; C9C12-R2 6 author pass, owner anchor missing",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E6 as PARTIAL at the exact consumer/owner/scope; JOIN-E exact same-root fork/cold; C9C12-R2 C12 guard separate.",
+      "smallest_credible_task": "Anchor custody and exact writer/reader fork contract, review changed cut."
+    },
+    {
+      "id": "RCFB_E7",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "C12 -> actual A0-A3 product method/renderer",
+      "guide_sections": [
+        "SP-90",
+        "SP-120"
+      ],
+      "expected_or_historical_consumer": "BP4Product/JoinedProduct methods; CLI/run_joined only",
+      "actual_first_reader_or_none": "BP4 observe/other/say/repair/reenter; CP-A5 EncounterReader.ask separate",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+      "emitted_or_read_fields": "C12 event/perception views exposed by CLI/method; no human users",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E7",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/product.py",
+          "symbol": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct sourcefree code + CP author 59 tests; A5 live unproven",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E7 as PARTIAL at the exact consumer/owner/scope; BP4 observe/other/say/repair/reenter; CP-A5 EncounterReader.ask separate.",
+      "smallest_credible_task": "Owner-approved user surface and human encounter validation."
+    },
+    {
+      "id": "RCFB_E8",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "G17 material/C9 handoff component",
+      "guide_sections": [
+        "SP-60",
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "continue_person / c9_handoff_consumer.receive_handoff (component)",
+      "actual_first_reader_or_none": "G17 continue_person→c9_handoff_consumer.receive_handoff only historical/component",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
+      "emitted_or_read_fields": "G17 candidate metadata; no actual BP2/C9 selected import",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E8",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+          "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md",
+          "symbol": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "RCF-B ledger and prior 14/14 review; current source not imported here",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E8 as HELD at the exact consumer/owner/scope; G17 continue_person→c9_handoff_consumer.receive_handoff only historical/component.",
+      "smallest_credible_task": "Source-read G17 code and target C9 R3B same-root adapter after version selection."
+    },
+    {
+      "id": "RCFB_E9",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "M04R journaled claim provenance component",
+      "guide_sections": [
+        "SP-50",
+        "SP-140"
+      ],
+      "expected_or_historical_consumer": "cell.Cell.read_owner (component)",
+      "actual_first_reader_or_none": "M04R cell.Cell.read_owner component, no current actor reader",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "HELD",
+      "producer_and_artifact": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
+      "emitted_or_read_fields": "journaled claim provenance, not native CAN3 read",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E9",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+          "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md",
+          "symbol": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "RCF-B ledger; M04R 51/51 cited, CAN3 9 RED",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E9 as HELD at the exact consumer/owner/scope; M04R cell.Cell.read_owner component, no current actor reader.",
+      "smallest_credible_task": "Find permitted CAN3/Sorok caller, preserve negative court."
+    },
+    {
+      "id": "RCFB_E10",
+      "kind": "MODERN_CROSS_COMPONENT_EDGE",
+      "title": "OC5/C8 provenance and capsule trust",
+      "guide_sections": [
+        "SP-60",
+        "SP-140"
+      ],
+      "expected_or_historical_consumer": "none adopted",
+      "actual_first_reader_or_none": "No adopted OC5/C8 capsule trust consumer",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "RED",
+      "producer_and_artifact": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
+      "emitted_or_read_fields": "Provenance capsule authority unissued",
+      "evidence": [
+        {
+          "commit": "397c6d61d73825d83e1282753e254c39f4b5a80e",
+          "path": "WORKER_RETURNS/SOROK-RCF-B-MODERN-ACTOR-PERSON-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+          "symbol_or_section": "RCFB_E10",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+          "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md",
+          "symbol": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "RCF-B ledger, OC5E 49 RED preserved",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain RCFB_E10 as RED at the exact consumer/owner/scope; No adopted OC5/C8 capsule trust consumer.",
+      "smallest_credible_task": "Original OC5/C8 owner resolves custody policy; no patch until issuer."
+    },
+    {
+      "id": "F1C_ORIGINAL",
+      "kind": "RECOVERED_ORIGINAL_CODE",
+      "title": "Original F1C executable exact loose Git blob 104f5bd7826c8676192eac96753d980e35d8a80a",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "R31JProduct/r31j.assertion.p01; F1C same_receiver_assertion",
+      "actual_first_reader_or_none": "R31JProduct/r31j.assertion.p01 sourcefree attributed; B-F1CR replay exact F1C",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "freeze/intervene/Receiver.stage_world/stage_c9/same_receiver_assertion",
+      "emitted_or_read_fields": "freeze/intervene; B action and observed flags; same_receiver_assertion",
+      "evidence": [
+        {
+          "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+          "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_original_104f5bd.py",
+          "symbol_or_section": "F1C_ORIGINAL",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+          "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_original_104f5bd.py",
+          "symbol": "freeze/intervene/Receiver.stage_world/stage_c9/same_receiver_assertion",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct Python code; original 13 cases but mutations fail; no current import",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain F1C_ORIGINAL as PARTIAL at the exact consumer/owner/scope; R31JProduct/r31j.assertion.p01 sourcefree attributed; B-F1CR replay exact F1C.",
+      "smallest_credible_task": "Keep exact original source, do not substitute for reconstructed live-history binding."
+    },
+    {
+      "id": "F1CR_CLAIMED_PATCH",
+      "kind": "HISTORIC_PATCH",
+      "title": "Claimed historical F1CR patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "NONE_VERIFIABLE",
+      "actual_first_reader_or_none": "NONE_VERIFIED — patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae unlocated",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "UNKNOWN",
+      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "emitted_or_read_fields": "No bytes to inspect or execute",
+      "evidence": [
+        {
+          "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+          "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/02_ORIGINAL_ARCHIVE_MEMBER_AND_HASH_RECONCILIATION.json",
+          "symbol_or_section": "F1CR_CLAIMED_PATCH",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        }
+      ],
+      "proof_and_limit": "R5 provenance JSON documentary source-absent; original SHA claim retained",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain F1CR_CLAIMED_PATCH as UNKNOWN at the exact consumer/owner/scope; NONE_VERIFIED — patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae unlocated.",
+      "smallest_credible_task": "Original custodian finds exact patch bytes/hash or records permanent unavailable."
+    },
+    {
+      "id": "F1CR_R5_RECONSTRUCTION",
+      "kind": "RECONSTRUCTED_CODE",
+      "title": "R5 reconstructed F1CR live history verifier",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "expected_or_historical_consumer": "BF1 targetless_c10_consumer.BWorld → TargetlessGuardedJoinedProduct",
+      "actual_first_reader_or_none": "B-F1CR-R2 test root uses reconstruction, not original F1CR",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "live_prior; same_receiver_assertion — reconstruction, not patched original",
+      "emitted_or_read_fields": "live_prior, A/B/shared history mutation binding",
+      "evidence": [
+        {
+          "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+          "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_reconstructed_candidate.py",
+          "symbol_or_section": "F1CR_R5_RECONSTRUCTION",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+          "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_reconstructed_candidate.py",
+          "symbol": "live_prior; same_receiver_assertion — reconstruction, not patched original",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code; 3/3 mutation checks R2 sourcefree; owner unadopted",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain F1CR_R5_RECONSTRUCTION as PARTIAL at the exact consumer/owner/scope; B-F1CR-R2 test root uses reconstruction, not original F1CR.",
+      "smallest_credible_task": "Owner decide warranted reconstruction vs original-only; independent test."
+    },
+    {
+      "id": "B1",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B1 test-only E1→mediator→later E2",
+      "guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "Store.commit → execute second event",
+      "actual_first_reader_or_none": "Store.commit→execute second event in bfirst.py only",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "emitted_or_read_fields": "E1 mediator, later E2 fixture record",
+      "evidence": [
+        {
+          "commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+          "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+          "symbol_or_section": "B1",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        }
+      ],
+      "proof_and_limit": "Direct code 21193 bytes at source row SHA; sourcefree author tests",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain B1 as PARTIAL at the exact consumer/owner/scope; Store.commit→execute second event in bfirst.py only.",
+      "smallest_credible_task": "Retain test harness as historical function; no native adoption without owner."
+    },
+    {
+      "id": "B2",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B2 four-return physical developmental bridge",
+      "guide_sections": [
+        "SP-60",
+        "SP-80",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "Bridge.advance → d1_gate",
+      "actual_first_reader_or_none": "Bridge.advance→d1_gate in bridge.py only",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "emitted_or_read_fields": "capability_fixture, occurrence_witness, D1 packet",
+      "evidence": [
+        {
+          "commit": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+          "path": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
+          "symbol_or_section": "B2",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        }
+      ],
+      "proof_and_limit": "Direct code 19228 bytes; separate four-return candidate",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain B2 as PARTIAL at the exact consumer/owner/scope; Bridge.advance→d1_gate in bridge.py only.",
+      "smallest_credible_task": "Link exact B2 accepted source to receiving BP2 only after owner contract."
+    },
+    {
+      "id": "B3",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B3 coupled synthetic event/meaning",
+      "guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "expected_or_historical_consumer": "World.execute and later T9 CHECK_LOCK eligibility only",
+      "actual_first_reader_or_none": "World.execute and T9 CHECK_LOCK sourcefree E3 reader only",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "emitted_or_read_fields": "OtherActor action, world event, later CHECK_LOCK",
+      "evidence": [
+        {
+          "commit": "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+          "path": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py",
+          "symbol_or_section": "B3",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        }
+      ],
+      "proof_and_limit": "Direct code 6698 bytes; historical B3 and X3 faults",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain B3 as PARTIAL at the exact consumer/owner/scope; World.execute and T9 CHECK_LOCK sourcefree E3 reader only.",
+      "smallest_credible_task": "Retain as historical negative/base, use B3AS for schema/readset scope."
+    },
+    {
+      "id": "B3A",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B3A X3 atomic repair",
+      "guide_sections": [
+        "SP-60",
+        "SP-70"
+      ],
+      "expected_or_historical_consumer": "later E3 sourcefree integration",
+      "actual_first_reader_or_none": "candidate/Integration.run X3 SQLite atomic attempt, later E3 sourcefree",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+      "emitted_or_read_fields": "admit_projection and response/target effect; pre-schema repair",
+      "evidence": [
+        {
+          "commit": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+          "path": "WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate/integration.py",
+          "symbol_or_section": "B3A",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+          "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
+          "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct old candidate code, prior I2 schema/readset RED",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain B3A as PARTIAL at the exact consumer/owner/scope; candidate/Integration.run X3 SQLite atomic attempt, later E3 sourcefree.",
+      "smallest_credible_task": "Do not reopen accepted B3AS scope; retain B3A only as predecessor."
+    },
+    {
+      "id": "B3AS",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "B3AS schema/readset corrected",
+      "guide_sections": [
+        "SP-60",
+        "SP-70"
+      ],
+      "expected_or_historical_consumer": "historical same sourcefree E3 readset and later consumer",
+      "actual_first_reader_or_none": "candidate Integration.snapshot/_database_snapshot/run; same sourcefree B3 tests",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+      "emitted_or_read_fields": "SQLite schema/indices/triggers/views/user_version/application_version and tables",
+      "evidence": [
+        {
+          "commit": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+          "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
+          "symbol_or_section": "B3AS",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+          "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
+          "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        },
+        {
+          "commit": "1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+          "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-INDEPENDENT-I2-R1/00_RETURN.md",
+          "symbol_or_section": "ACCEPT_SCOPED",
+          "proof_type": "INDEPENDENT_REVIEW_RECORDED__NOT_W2A_RUN"
+        }
+      ],
+      "proof_and_limit": "Direct code; independent B3AS-I2 ACCEPT_SCOPED @1a25b19dd01e8e7954e38c59ffc7e52c50739c9f",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain B3AS as PARTIAL at the exact consumer/owner/scope; candidate Integration.snapshot/_database_snapshot/run; same sourcefree B3 tests.",
+      "smallest_credible_task": "Preserve accepted scoped court, only seek current importer/native owner separately."
+    },
+    {
+      "id": "BP2P4J",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "BP2P4J JoinedProduct sourcefree actual consumer",
+      "guide_sections": [
+        "SP-90",
+        "SP-120"
+      ],
+      "expected_or_historical_consumer": "JoinedProduct → joined_downstream_a0_a2_assertion and C12 episode store",
+      "actual_first_reader_or_none": "JoinedProduct(BP4Product) reads bp2p4 seed/reunion then C12; same root JOIN later",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+      "emitted_or_read_fields": "material occurrence/out9/target/E2→A0/A2+episode",
+      "evidence": [
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+          "symbol_or_section": "BP2P4J",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/product.py",
+          "symbol": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code, 33 author; BP2P4JI independent fault, HR1 F2 candidate repair",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain BP2P4J as PARTIAL at the exact consumer/owner/scope; JoinedProduct(BP4Product) reads bp2p4 seed/reunion then C12; same root JOIN later.",
+      "smallest_credible_task": "Keep exact episode verifier cut and anchor holds; no blanket green."
+    },
+    {
+      "id": "S39_S52",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "modern Codex S39–S52 series",
+      "guide_sections": [
+        "SP-40",
+        "SP-90",
+        "SP-120"
+      ],
+      "expected_or_historical_consumer": "compile_candidate → produce_b_turn → perform_paid_participation",
+      "actual_first_reader_or_none": "S52Session→S51Session→produce_b_turn/perform_paid_participation branch-local",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "S52Session.compile_candidate/produce_b_turn/perform_paid_participation",
+      "emitted_or_read_fields": "candidate/repertoire/source_records and paid participation",
+      "evidence": [
+        {
+          "commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+          "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+          "symbol_or_section": "S39_S52",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+          "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+          "symbol": "S52Session.compile_candidate/produce_b_turn/perform_paid_participation",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code, modern S39–S52 experiments, no PRE-MAIN import seen",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain S39_S52 as PARTIAL at the exact consumer/owner/scope; S52Session→S51Session→produce_b_turn/perform_paid_participation branch-local.",
+      "smallest_credible_task": "Identify current owner B activity consumer or retain as separate test lineage."
+    },
+    {
+      "id": "R15_V2",
+      "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
+      "title": "R15 RFA model-renderer feasibility",
+      "guide_sections": [
+        "SP-110"
+      ],
+      "expected_or_historical_consumer": "RFA renderer lab / Nadia inputs",
+      "actual_first_reader_or_none": "RFA R2 static renderer experiment, no valid R2 model output/real user",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "UNKNOWN",
+      "producer_and_artifact": "R2 static preflight; 0 provider calls; unrun smoke/60 primary",
+      "emitted_or_read_fields": "Nadia RFA WP/N packet schema and identity envelope",
+      "evidence": [
+        {
+          "commit": "4ce795413c2e77be04657a260cbda586610f4756",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1",
+          "symbol_or_section": "R15_V2",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "4ce795413c2e77be04657a260cbda586610f4756",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_court_r2/STATIC_VERIFICATION_RECEIPT_R2.md",
+          "symbol": "R2 static preflight; 0 provider calls; unrun smoke/60 primary",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct static receipt: 0 provider calls, R1 3 invalid diagnostics, no valid blind scoring",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain R15_V2 as UNKNOWN at the exact consumer/owner/scope; RFA R2 static renderer experiment, no valid R2 model output/real user.",
+      "smallest_credible_task": "Owner may run named RFA R2 smoke→60 only under separate approved experiment; not W2-A."
+    },
+    {
+      "id": "CP-A5-R2",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "cp_a5.encounter.EncounterReader.ask; cp_a5.assertion.multicontext_encounter_assertion",
+      "guide_sections": [
+        "SP-120"
+      ],
+      "expected_or_historical_consumer": "I1 GuardedJoinedProduct C12 same root → A sees tool-return but not B unperceived market commission",
+      "actual_first_reader_or_none": "cp_a5 EncounterReader.ask reads same I1 C12 candidate root; not RRIF-R2 imported",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "EncounterReader.ask; perceived-event filtering; UNKNOWN for unperceived B activity",
+      "emitted_or_read_fields": "actor perception IDs, events and UNKNOWN B market action",
+      "evidence": [
+        {
+          "commit": "913765328e4fab12b150ea01421ed6b445158184",
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json",
+          "symbol_or_section": "CP-A5-R2",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "913765328e4fab12b150ea01421ed6b445158184",
+          "path": "WORKER_RETURNS/SOROK-CP-A5-R2/candidate/cp_a5/encounter.py",
+          "symbol": "EncounterReader.ask; perceived-event filtering; UNKNOWN for unperceived B activity",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code; 59 author tests; separate root from C9R",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain CP-A5-R2 as PARTIAL at the exact consumer/owner/scope; cp_a5 EncounterReader.ask reads same I1 C12 candidate root; not RRIF-R2 imported.",
+      "smallest_credible_task": "Independent review/owner decide CP-A5 root before any C9 weld or human A5."
+    },
+    {
+      "id": "C9C12-R2",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "c9c12_reader.read_composite -> read_actor_snapshot + guarded_c12_cold_read",
+      "guide_sections": [
+        "SP-50",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "C9 actor R3B SQLite snapshot/outbox + BP4R C12 verified content under I1-compatible read-only composite",
+      "actual_first_reader_or_none": "read_composite→read_actor_snapshot + guarded_c12_cold_read; not RRIF-R2 selected",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "read_actor_snapshot; guarded_c12_cold_read; read_composite",
+      "emitted_or_read_fields": "C9 schema/head/version/outbox optional mirror, C12 verify/fork, external custody HELD",
+      "evidence": [
+        {
+          "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/01_VERSIONED_WRITER_READER_AND_CLOCK_CONTRACT.json",
+          "symbol_or_section": "C9C12-R2",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9c12_reader.py",
+          "symbol": "read_actor_snapshot; guarded_c12_cold_read; read_composite",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        },
+        {
+          "commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+          "path": "WORKER_RETURNS/SOROK-C9C12-R2/candidate/c12_guard.py",
+          "symbol_or_section": "verify_store; anchor_payload",
+          "proof_type": "DIRECT_CODE_INSPECTION"
+        }
+      ],
+      "proof_and_limit": "Direct code and 6 author tests; historical 14/1, 7/2 negatives retained",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain C9C12-R2 as PARTIAL at the exact consumer/owner/scope; read_composite→read_actor_snapshot + guarded_c12_cold_read; not RRIF-R2 selected.",
+      "smallest_credible_task": "Owner choose C9 writer/C12 read version, external anchor and mirror ACK; independent reviewer."
+    },
+    {
+      "id": "B-F1CR-R2",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger → targetless_i1_bridge.TargetlessGuardedJoinedProduct",
+      "guide_sections": [
+        "SP-40",
+        "SP-90"
+      ],
+      "expected_or_historical_consumer": "Same I1 root/store/branch; targetless REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED are consumed with A access and B material ledgers",
+      "actual_first_reader_or_none": "TargetlessGuardedJoinedProduct(I1) consumes TargetlessC10Ledger",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "TargetlessGuardedJoinedProduct(GuardedJoinedProduct)",
+      "emitted_or_read_fields": "REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED, B material ledger, A access",
+      "evidence": [
+        {
+          "commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/01_LIVE_B_AND_TARGETLESS_C10_CONSUMER_MAP.json",
+          "symbol_or_section": "B-F1CR-R2",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+          "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/targetless_i1_bridge.py",
+          "symbol": "TargetlessGuardedJoinedProduct(GuardedJoinedProduct)",
+          "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        }
+      ],
+      "proof_and_limit": "Direct code, local author 13/13 and 3/3; not RRIF-R2 imported",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain B-F1CR-R2 as PARTIAL at the exact consumer/owner/scope; TargetlessGuardedJoinedProduct(I1) consumes TargetlessC10Ledger.",
+      "smallest_credible_task": "Original F1CR patch source choice and independent same-root review."
+    },
+    {
+      "id": "V3CORE-R1",
+      "kind": "NEW_FOUR_RETURN_CODE_ASSET",
+      "title": "v3core_adapter.i1_consumer.project_actual_market_event → I1 GuardedJoinedProduct",
+      "guide_sections": [
+        "SP-30",
+        "SP-40",
+        "SP-140"
+      ],
+      "expected_or_historical_consumer": "Actual I1 market event 54→56 cash / workshop→market projected to restricted old V3 capacity; source clock domain verified",
+      "actual_first_reader_or_none": "v3core_adapter.i1_consumer.project_actual_market_event→I1 candidate",
+      "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
+      "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
+      "proposed_status": "PARTIAL",
+      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "emitted_or_read_fields": "cash 54→56, workshop→market and capacity projection; 16/19 annual steps held",
+      "evidence": [
+        {
+          "commit": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+          "path": "WORKER_RETURNS/SOROK-V3CORE-R1/01_HISTORICAL_FUNCTION_TO_CURRENT_CONSUMER_CONTRACT.json",
+          "symbol_or_section": "V3CORE-R1",
+          "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        }
+      ],
+      "proof_and_limit": "Return JSON/source contract, author tests only; no native modern import",
+      "native_execution": "NOT_RUN_BY_W2A_BROWSER",
+      "review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
+      "guide_correction": "Retain V3CORE-R1 as PARTIAL at the exact consumer/owner/scope; v3core_adapter.i1_consumer.project_actual_market_event→I1 candidate.",
+      "smallest_credible_task": "Competent owner selects old functions without 0–100/Enneagram psychology; exact import test."
+    }
+  ]
+}
