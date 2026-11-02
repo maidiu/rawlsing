@@ -995,7 +995,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "producer_and_artifact": "Store.commit; execute second event",
       "emitted_or_read_fields": "E1 mediator, later E2 fixture record",
       "evidence": [
         {
@@ -1003,6 +1003,12 @@
           "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
           "symbol_or_section": "B1",
           "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+          "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+          "symbol_or_section": "Store.commit; execute second event",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Direct code 21193 bytes at source row SHA; sourcefree author tests",
@@ -1025,7 +1031,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "producer_and_artifact": "Bridge.advance; d1_gate; occurrence_witness",
       "emitted_or_read_fields": "capability_fixture, occurrence_witness, D1 packet",
       "evidence": [
         {
@@ -1033,6 +1039,12 @@
           "path": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
           "symbol_or_section": "B2",
           "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+          "path": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
+          "symbol_or_section": "Bridge.advance; d1_gate; occurrence_witness",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Direct code 19228 bytes; separate four-return candidate",
@@ -1054,7 +1066,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "producer_and_artifact": "World.execute; replay; sourcefree test-only E3",
       "emitted_or_read_fields": "OtherActor action, world event, later CHECK_LOCK",
       "evidence": [
         {
@@ -1062,6 +1074,12 @@
           "path": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py",
           "symbol_or_section": "B3",
           "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+          "path": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py",
+          "symbol_or_section": "World.execute; replay; sourcefree test-only E3",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Direct code 6698 bytes; historical B3 and X3 faults",
@@ -1083,7 +1101,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+      "producer_and_artifact": "Integration.run/_run; historical schema RED before B3AS",
       "emitted_or_read_fields": "admit_projection and response/target effect; pre-schema repair",
       "evidence": [
         {
@@ -1097,6 +1115,12 @@
           "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
           "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
           "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        },
+        {
+          "commit": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+          "path": "WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate/integration.py",
+          "symbol_or_section": "Integration.run/_run; historical schema RED before B3AS",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Direct old candidate code, prior I2 schema/readset RED",
@@ -1159,7 +1183,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
+      "producer_and_artifact": "JoinedProduct(BP4Product); _check_binding_source; verify_join",
       "emitted_or_read_fields": "material occurrence/out9/target/E2→A0/A2+episode",
       "evidence": [
         {
@@ -1173,6 +1197,12 @@
           "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp4/bp4/product.py",
           "symbol": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
           "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        },
+        {
+          "commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+          "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+          "symbol_or_section": "JoinedProduct(BP4Product); _check_binding_source; verify_join",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Direct code, 33 author; BP2P4JI independent fault, HR1 F2 candidate repair",
@@ -1195,7 +1225,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "S52Session.compile_candidate/produce_b_turn/perform_paid_participation",
+      "producer_and_artifact": "S52Session(S51Session); compile_candidate; produce_b_turn; perform_paid_participation",
       "emitted_or_read_fields": "candidate/repertoire/source_records and paid participation",
       "evidence": [
         {
@@ -1209,6 +1239,12 @@
           "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
           "symbol": "S52Session.compile_candidate/produce_b_turn/perform_paid_participation",
           "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        },
+        {
+          "commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+          "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+          "symbol_or_section": "S52Session(S51Session); compile_candidate; produce_b_turn; perform_paid_participation",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Direct code, modern S39–S52 experiments, no PRE-MAIN import seen",
@@ -1229,7 +1265,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "UNKNOWN",
-      "producer_and_artifact": "R2 static preflight; 0 provider calls; unrun smoke/60 primary",
+      "producer_and_artifact": "prepared RFA R2 provider runner, not W2-A run",
       "emitted_or_read_fields": "Nadia RFA WP/N packet schema and identity envelope",
       "evidence": [
         {
@@ -1243,6 +1279,12 @@
           "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_court_r2/STATIC_VERIFICATION_RECEIPT_R2.md",
           "symbol": "R2 static preflight; 0 provider calls; unrun smoke/60 primary",
           "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
+        },
+        {
+          "commit": "4ce795413c2e77be04657a260cbda586610f4756",
+          "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1/anthropic_court_r2/run_anthropic_renderer_court_r2.py",
+          "symbol_or_section": "prepared RFA R2 provider runner, not W2-A run",
+          "proof_type": "CODE_LOCATED_RUNNER__NO_PROVIDER_EXECUTION"
         }
       ],
       "proof_and_limit": "Direct static receipt: 0 provider calls, R1 3 invalid diagnostics, no valid blind scoring",
@@ -1375,7 +1417,7 @@
       "current_premain_commit": "9809203fd915a84bae056a67210e9213879840db",
       "pre_main_import_state": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
       "proposed_status": "PARTIAL",
-      "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
+      "producer_and_artifact": "project_actual_market_event; I1 sourcefree consumer",
       "emitted_or_read_fields": "cash 54→56, workshop→market and capacity projection; 16/19 annual steps held",
       "evidence": [
         {
@@ -1383,6 +1425,12 @@
           "path": "WORKER_RETURNS/SOROK-V3CORE-R1/01_HISTORICAL_FUNCTION_TO_CURRENT_CONSUMER_CONTRACT.json",
           "symbol_or_section": "V3CORE-R1",
           "proof_type": "INHERITED_DOCUMENTARY_ROW_READ_AT_FROZEN_GUIDE_CUT"
+        },
+        {
+          "commit": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+          "path": "WORKER_RETURNS/SOROK-V3CORE-R1/candidate/v3core_adapter/i1_consumer.py",
+          "symbol_or_section": "project_actual_market_event; I1 sourcefree consumer",
+          "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
         }
       ],
       "proof_and_limit": "Return JSON/source contract, author tests only; no native modern import",
