@@ -1,0 +1,238 @@
+{
+  "actual_route": {
+    "hops": [
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+            "id": "EDGE:2af2c1b241455dfb6b03be0b",
+            "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+            "to": "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::",
+            "type": "CURRENT_COMPARISON"
+          }
+        ],
+        "from": "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "ROW:H:ADJUDICATION:H06-E03",
+            "id": "EDGE:fa2ebdb17453d310128affd1",
+            "record": "ROW:H:ADJUDICATION:H06-E03",
+            "to": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+            "type": "RECONCILES_WITHOUT_PROMOTION"
+          }
+        ],
+        "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:H:ADJUDICATION:H06-E03"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:ASTRA:N9",
+            "id": "EDGE:39479d163cb856aa166fb7b7",
+            "record": "ROW:H:ADJUDICATION:H06-E03",
+            "to": "ROW:H:ADJUDICATION:H06-E03",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "ROW:H:ADJUDICATION:H06-E03",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:ASTRA:N9"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:ASTRA:N9",
+            "id": "EDGE:1cf7575775fc53c8c10ddea7",
+            "record": "ROW:H:ADJUDICATION:H05-I01",
+            "to": "ROW:H:ADJUDICATION:H05-I01",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "PYAT:ASTRA:N9",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "ROW:H:ADJUDICATION:H05-I01"
+      },
+      {
+        "edges": [
+          {
+            "condition": null,
+            "from": "PYAT:PLAN:M2_LOCAL_RELEASE",
+            "id": "EDGE:3f65116e2143ddb048f3a3f9",
+            "record": "ROW:H:ADJUDICATION:H05-I01",
+            "to": "ROW:H:ADJUDICATION:H05-I01",
+            "type": "HAS_ASSERTION"
+          }
+        ],
+        "from": "ROW:H:ADJUDICATION:H05-I01",
+        "proof_scope": "NAVIGATION_ONLY; read each edge type/condition, including missing edges",
+        "to": "PYAT:PLAN:M2_LOCAL_RELEASE"
+      }
+    ],
+    "ids": [
+      "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::",
+      "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+      "ROW:H:ADJUDICATION:H06-E03",
+      "PYAT:ASTRA:N9",
+      "ROW:H:ADJUDICATION:H05-I01",
+      "PYAT:PLAN:M2_LOCAL_RELEASE"
+    ],
+    "reverse_uses_same_edge_ids": true
+  },
+  "boundary": {
+    "adoption": "RETURNED_UNADOPTED",
+    "authority": "NO_SOURCE_N11_N12_ACTOR_OR_CANONICAL_WRITE_GRANT",
+    "navigation": "ASSOCIATION_IS_NOT_PROOF_OR_UNCONDITIONAL_DEPENDENCY",
+    "scope": "SOURCEFREE_DERIVED_REFERENCE_ONLY",
+    "source_native_empirical_pilot": "HOLD"
+  },
+  "command": "reverse",
+  "cut": "9809203fd915a84bae056a67210e9213879840db",
+  "edges": [
+    {
+      "condition": null,
+      "from": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+      "id": "EDGE:2af2c1b241455dfb6b03be0b",
+      "record": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+      "to": "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::",
+      "type": "CURRENT_COMPARISON"
+    }
+  ],
+  "ids": [
+    "CODE:ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7:rawlsing_next/pre553_n9_n10w_progressive_candidate.py::"
+  ],
+  "read_cut_comparison": {
+    "PIN:1b760cb865c4224b35675f8e": {
+      "declared_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "declared_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "selected_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:4f95300909df5b0baa44f408": {
+      "declared_blob": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
+      "declared_cut": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_universal_world_binding.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:ef2fb7e3f9eece5f16dab45a": {
+      "declared_blob": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+      "declared_cut": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_world_conditioned_progressive_service.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    }
+  },
+  "records": [
+    {
+      "currentness": "E03_CURRENT_TEST_ONLY__R117_ABSENT",
+      "evidence": {
+        "blob": "e67d86551c74175e0791279ba321186b3fc79068",
+        "cut": "9bec60dc8223e6f969a67a264bc45f82600a4a5a",
+        "line": 24,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_G_20261101_R1/HISTORICAL_REALIZATIONS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9-N10W",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Pyat HQ/P41/R05/R06/B5 owners plus real world receiver.",
+        "code_location": {
+          "paths": [
+            {
+              "blob": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+              "path": "rawlsing_next/pre553_world_conditioned_progressive_service.py"
+            },
+            {
+              "blob": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
+              "path": "rawlsing_next/pre553_universal_world_binding.py"
+            }
+          ],
+          "ref": "R117 agent/opencode-pyat-r112-r06-world-consuming-successor-r1; E03 current",
+          "ref_type": "branch tip",
+          "tip": "849a76de18ef627c3c403b426ebe70f0951a7e7b"
+        },
+        "engineering_state": {
+          "limit": "No world-conditioned probability or real source.",
+          "supported_returned_behavior": "R117 consumes actual pinned P41 nonparent prefixes and world structural values; route_probability null; foreign world/source/release/revocation and step severance refused; R119 scoped software acceptance."
+        },
+        "first_consumer_state": {
+          "local": "Not rerun.",
+          "returned": "D5: E03 18 passed; R117 30 passed/4 J42 fixture errors, 7 targeted severance; R118/R119 scoped.",
+          "status": "CURRENT_FIXTURE__R117_BRANCH_ONLY"
+        },
+        "integration_state": {
+          "current_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+          "difference": "Current E03 is a synthetic 58-row fixture with test/CI only; N9/N10W owners absent; R117 branch-only, P41 runtime packet f27d1101 absent, no real receiver.",
+          "paths": [
+            {
+              "blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+              "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py"
+            }
+          ]
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No world-conditioned probability or real source.",
+      "support_pins": [
+        "PIN:1b760cb865c4224b35675f8e",
+        "PIN:4f95300909df5b0baa44f408",
+        "PIN:ef2fb7e3f9eece5f16dab45a"
+      ]
+    }
+  ],
+  "snapshot_hash": "042ec18fe573a2aacd8a4afff8d3750ec102ba696a93e97015ba858e6c45aa65",
+  "source_pins": {
+    "PIN:1b760cb865c4224b35675f8e": {
+      "content_sha256": "78f85aea938e9a087167af2938ab11aabbf5a731e852194f021918cf21044c8d",
+      "cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "expected_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "id": "PIN:1b760cb865c4224b35675f8e",
+      "observed_blob": "84d404147547767be8ecd4b6e1541f5fa3a8c8a2",
+      "path": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+      "role": "current_comparison",
+      "status": "VERIFIED"
+    },
+    "PIN:4f95300909df5b0baa44f408": {
+      "content_sha256": "ae4f57583ebb92e2764daf393a0494f9683a6b6e188d78ea31faa42273de357e",
+      "cut": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "expected_blob": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
+      "id": "PIN:4f95300909df5b0baa44f408",
+      "observed_blob": "dfb1e9fb72f1ee4b50fd7138fe978ce50db49f37",
+      "path": "rawlsing_next/pre553_universal_world_binding.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:ef2fb7e3f9eece5f16dab45a": {
+      "content_sha256": "54c17f93d0aac966015127892c4d3a8889c8994c5bb04f2ce4c99baa642f1601",
+      "cut": "849a76de18ef627c3c403b426ebe70f0951a7e7b",
+      "expected_blob": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+      "id": "PIN:ef2fb7e3f9eece5f16dab45a",
+      "observed_blob": "db573027a2416f1b43f2bc47d6f2e3b9d5cd3b31",
+      "path": "rawlsing_next/pre553_world_conditioned_progressive_service.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    }
+  },
+  "status": "OK"
+}

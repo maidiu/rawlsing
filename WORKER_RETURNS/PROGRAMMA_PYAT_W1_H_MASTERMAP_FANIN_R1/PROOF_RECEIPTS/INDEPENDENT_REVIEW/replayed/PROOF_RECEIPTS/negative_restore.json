@@ -1,0 +1,206 @@
+{
+  "before": {
+    "ROW:A:ATOMIC_FINDINGS:AF-CODE-I03": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:A:PLAN_CROSSWALK:XW0651": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF13": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF16": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF21": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:SEAMS:W1C-S13": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:SEAMS:W1C-S16": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:SEAMS:W1C-S21": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:F:ATOMIC_FINDINGS:F08": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:F:INGEST_SOURCE_MAP:I18": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:H:ADJUDICATION:H12-NESTED-QUERY": "PINNED_RETURN_AND_SOURCE_CHECKED"
+  },
+  "changed_claims": [
+    "ROW:A:ATOMIC_FINDINGS:AF-CODE-I03",
+    "ROW:A:PLAN_CROSSWALK:XW0651",
+    "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF13",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF16",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF21",
+    "ROW:C:SEAMS:W1C-S13",
+    "ROW:C:SEAMS:W1C-S16",
+    "ROW:C:SEAMS:W1C-S21",
+    "ROW:F:ATOMIC_FINDINGS:F08",
+    "ROW:F:INGEST_SOURCE_MAP:I18",
+    "ROW:H:ADJUDICATION:H12-NESTED-QUERY"
+  ],
+  "expected_exact_dependents": [
+    "ROW:A:ATOMIC_FINDINGS:AF-CODE-I03",
+    "ROW:A:PLAN_CROSSWALK:XW0651",
+    "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF13",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF16",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF21",
+    "ROW:C:SEAMS:W1C-S13",
+    "ROW:C:SEAMS:W1C-S16",
+    "ROW:C:SEAMS:W1C-S21",
+    "ROW:F:ATOMIC_FINDINGS:F08",
+    "ROW:F:INGEST_SOURCE_MAP:I18",
+    "ROW:H:ADJUDICATION:H12-NESTED-QUERY"
+  ],
+  "independent_red": {
+    "currentness": "ABSENT_AT_ee31e3ed",
+    "evidence": {
+      "blob": "e67d86551c74175e0791279ba321186b3fc79068",
+      "cut": "9bec60dc8223e6f969a67a264bc45f82600a4a5a",
+      "line": 25,
+      "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_G_20261101_R1/HISTORICAL_REALIZATIONS.jsonl"
+    },
+    "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "id": "ROW:G:HISTORICAL_REALIZATIONS:HR-N9C",
+    "lane": "G",
+    "maturity": {
+      "architecture_state": "UNKNOWN_NOT_ASSERTED",
+      "authority_state": "N9/OC05 owner plus producer registry owner.",
+      "code_location": {
+        "paths": [
+          {
+            "blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+            "path": "rawlsing_next/pre553_hq297_n9c_two_field_reader.py"
+          },
+          {
+            "blob": "e4fc9dd0317541e714ed8d0750c6dec12145daea",
+            "path": "tests/test_hq297_n9c_two_field_reader.py"
+          }
+        ],
+        "ref": "agent/rabochii-pyat-r3-hq297-n9-two-field-values-reader-r1",
+        "ref_type": "branch tip",
+        "tip": "9ab4a0192b7c951bb0b387637e6c74333246766c"
+      },
+      "engineering_state": {
+        "limit": "No publisher bytes or N5/N6/EE13 issuance.",
+        "supported_returned_behavior": "47 local tests; targeted as-of/backdate/revocation/clock/nonpooling/partial 11 passed; test-only numeric reader."
+      },
+      "first_consumer_state": {
+        "local": "Not rerun.",
+        "returned": "D5: 47 passed; D2R/D2P2 seven mandatory REDs, repair not implemented.",
+        "status": "HOLD_UNPROVED__PRODUCER_REF_RED"
+      },
+      "integration_state": {
+        "current_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+        "difference": "Module absent current; no N9/OC05 owner. Producer D2P emits D2P_TESTONLY_FIELD refs while reader expects TESTONLY_FIELD; zero intersection and 7 mandatory REDs.",
+        "paths": []
+      },
+      "native_source_state": "UNKNOWN_NOT_ASSERTED",
+      "plan_state": "UNKNOWN_NOT_ASSERTED",
+      "review_state": "UNKNOWN_NOT_ASSERTED",
+      "science_state": "UNKNOWN_NOT_ASSERTED",
+      "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+      "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+    },
+    "negative": "No publisher bytes or N5/N6/EE13 issuance.",
+    "original_id": "HR-N9C",
+    "raw": {
+      "completeness": "PARTIAL_SELECTED_REALIZATION__NOT_FULL_CENSUS",
+      "cross_lane_dependencies": [
+        "N9",
+        "N9C",
+        "OC05",
+        "EE13"
+      ],
+      "currentness": "ABSENT_AT_ee31e3ed",
+      "epistemic_scope": "sourcefree historical code identity and S2 comparison; not scientific or owner adoption",
+      "evidence_grade": "DIRECT_SOURCE_READ",
+      "exact_source": {
+        "paths": [
+          {
+            "blob": "03eb46efccadd6880cb34b2e2ac609ffc9b16c59",
+            "path": "rawlsing_next/pre553_hq297_n9c_two_field_reader.py"
+          },
+          {
+            "blob": "e4fc9dd0317541e714ed8d0750c6dec12145daea",
+            "path": "tests/test_hq297_n9c_two_field_reader.py"
+          }
+        ],
+        "ref": "agent/rabochii-pyat-r3-hq297-n9-two-field-values-reader-r1",
+        "ref_type": "branch tip",
+        "tip": "9ab4a0192b7c951bb0b387637e6c74333246766c"
+      },
+      "functional_requirement": "Publication-aware two-field N9 value reader with as-of, revocation, nonpooling and exact field-ref lineage.",
+      "id": "HR-N9C",
+      "legacy_symbol": "pre553_hq297_n9c_two_field_reader",
+      "limits": "No publisher bytes or N5/N6/EE13 issuance.",
+      "modern_equivalent": {
+        "current_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+        "difference": "Module absent current; no N9/OC05 owner. Producer D2P emits D2P_TESTONLY_FIELD refs while reader expects TESTONLY_FIELD; zero intersection and 7 mandatory REDs.",
+        "paths": []
+      },
+      "negative_owner": "N9/OC05 owner plus producer registry owner.",
+      "repo": "maidiu/rawlsing",
+      "reuse_condition": "Execute D2P2/R6 one-registry repair and rerun seven REDs before any N9/OC05 issuance.",
+      "schema": "PROGRAMMA_PYAT_W1_G_HISTORICAL_REALIZATION@1",
+      "search_scope": "finite RRIF 34-lineage index + D1-D5 detailed dispositions + selected exact historical/current refs; not an 845/321 full recount",
+      "stable_ids": [
+        "N9",
+        "N9C",
+        "OC05",
+        "EE13"
+      ],
+      "stronger_vs_current_dimension": "Useful publication-aware as-of/refusal logic, but producer-to-reader identity is RED; no current N9.",
+      "supported_behavior": "47 local tests; targeted as-of/backdate/revocation/clock/nonpooling/partial 11 passed; test-only numeric reader.",
+      "test_consumer_evidence": {
+        "local": "Not rerun.",
+        "returned": "D5: 47 passed; D2R/D2P2 seven mandatory REDs, repair not implemented.",
+        "status": "HOLD_UNPROVED__PRODUCER_REF_RED"
+      }
+    },
+    "scope": "ENGINEER_RETURN_NOT_H_INDEPENDENT_ACCEPTANCE",
+    "support_pins": [
+      "PIN:043c3600a2f50286859f14df",
+      "PIN:c2edc87a1b618fd7de3579d8"
+    ],
+    "table": "HISTORICAL_REALIZATIONS"
+  },
+  "independent_red_unchanged": true,
+  "negative": {
+    "ROW:A:ATOMIC_FINDINGS:AF-CODE-I03": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:A:PLAN_CROSSWALK:XW0651": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF13": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF16": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF21": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:C:SEAMS:W1C-S13": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:C:SEAMS:W1C-S16": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:C:SEAMS:W1C-S21": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:F:ATOMIC_FINDINGS:F08": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:F:INGEST_SOURCE_MAP:I18": "HELD_EVIDENCE_UNAVAILABLE",
+    "ROW:H:ADJUDICATION:H12-NESTED-QUERY": "HELD_EVIDENCE_UNAVAILABLE"
+  },
+  "restore": {
+    "ROW:A:ATOMIC_FINDINGS:AF-CODE-I03": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:A:PLAN_CROSSWALK:XW0651": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF13": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF16": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:ATOMIC_FINDINGS:W1C-AF21": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:SEAMS:W1C-S13": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:SEAMS:W1C-S16": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:C:SEAMS:W1C-S21": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:F:ATOMIC_FINDINGS:F08": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:F:INGEST_SOURCE_MAP:I18": "PINNED_RETURN_AND_SOURCE_CHECKED",
+    "ROW:H:ADJUDICATION:H12-NESTED-QUERY": "PINNED_RETURN_AND_SOURCE_CHECKED"
+  },
+  "restored_equals_original": true,
+  "same_pointer_roles_withdrawn": [
+    "PIN:1ac603849515e5d25e9181bd",
+    "PIN:4c67fe55a714e58576d95bfd",
+    "PIN:6c4a95352ebc70471bd9b33c",
+    "PIN:94678cfc3cf68241a20d05dc",
+    "PIN:9c14fd49e40d5413b06051d0"
+  ],
+  "scope": "SOURCEFREE_EVIDENCE_AVAILABILITY_WITHDRAWAL_ONLY; no survey grant revoked/restored",
+  "unchanged_claim_count": 1048,
+  "withdrawn_exact_pin": {
+    "content_sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+    "cut": "9809203fd915a84bae056a67210e9213879840db",
+    "expected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "id": "PIN:4c67fe55a714e58576d95bfd",
+    "observed_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+    "path": "rawlsing_next/pre553_empirical_query.py",
+    "role": "implementation",
+    "status": "VERIFIED"
+  }
+}

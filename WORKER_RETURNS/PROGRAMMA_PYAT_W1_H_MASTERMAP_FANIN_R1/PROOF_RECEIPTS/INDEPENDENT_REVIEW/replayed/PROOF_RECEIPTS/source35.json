@@ -1,0 +1,3915 @@
+{
+  "boundary": {
+    "adoption": "RETURNED_UNADOPTED",
+    "authority": "NO_SOURCE_N11_N12_ACTOR_OR_CANONICAL_WRITE_GRANT",
+    "navigation": "ASSOCIATION_IS_NOT_PROOF_OR_UNCONDITIONAL_DEPENDENCY",
+    "scope": "SOURCEFREE_DERIVED_REFERENCE_ONLY",
+    "source_native_empirical_pilot": "HOLD"
+  },
+  "command": "source",
+  "cut": "9809203fd915a84bae056a67210e9213879840db",
+  "edges": [
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:0a063d72abc17a017de0e5ac",
+      "record": "ROW:A:ATOMIC_FINDINGS:AF-SOURCES",
+      "to": "ROW:A:ATOMIC_FINDINGS:AF-SOURCES",
+      "type": "HAS_ASSERTION"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:WG2",
+      "id": "EDGE:1068f2f8427e21d84c83ca10",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:124cabcb24e09d011fbda347",
+      "record": "ROW:H:ADJUDICATION:H08-R157",
+      "to": "ROW:H:ADJUDICATION:H08-R157",
+      "type": "HAS_ASSERTION"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:ASTRA:N0",
+      "id": "EDGE:5212696b1e060fbf4c79bf96",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:PLAN:WVS",
+      "id": "EDGE:597dc6ca3f6715734ffd35a2",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "DECOMPOSES_TO"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:5d45b95cde510ff5afb125b1",
+      "record": "ROW:D:SOURCE35_COVERAGE:SRC35",
+      "to": "ROW:D:SOURCE35_COVERAGE:SRC35",
+      "type": "HAS_ASSERTION"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:6ca71551b65e3f77d15cd614",
+      "record": "ROW:D:ATOMIC_FINDINGS:D-006",
+      "to": "ROW:D:ATOMIC_FINDINGS:D-006",
+      "type": "HAS_ASSERTION"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:WG1",
+      "id": "EDGE:87128a949583810b01f2b135",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:PLAN:WVS",
+      "id": "EDGE:8b836740c5dac5f60f49d0c7",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0543",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "DECOMPOSES_TO"
+    },
+    {
+      "condition": {
+        "negative": "Configuration is not source-use authority or original measured output",
+        "scope": null
+      },
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:bed8bbcc1345ae6065239266",
+      "record": "ROW:D:SOURCE35_COVERAGE:SRC35",
+      "to": "PYAT:PLAN:R157_CONFIGURATION",
+      "type": "HISTORICAL_CONFIG_FOR_SOURCE"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:cfb7e5e97cd0a7d646dbea78",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0606",
+      "to": "PYAT:PLAN:TEMP_SRC34_SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:FUNCTION:F1",
+      "id": "EDGE:e264c5c9fb949a39afd97804",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:ea1427c025cbde7bc59a992b",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "type": "HAS_ASSERTION"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:SOURCE:SRC35",
+      "id": "EDGE:fd5f262ef70b013cf8ae932b",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0605",
+      "to": "PYAT:PLAN:TEMP_SRC33_SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    },
+    {
+      "condition": null,
+      "from": "PYAT:ASTRA:N4",
+      "id": "EDGE:fed9199d1e9fccda95c2849e",
+      "record": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "to": "PYAT:SOURCE:SRC35",
+      "type": "CROSS_MEMBERSHIP_NOT_IDENTITY"
+    }
+  ],
+  "ids": [
+    "PYAT:SOURCE:SRC35"
+  ],
+  "read_cut_comparison": {
+    "PIN:00207381d3f0506ea12e53cc": {
+      "declared_blob": "6bd1cc470941969d060eaff98bedea4bcc6259fe",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/data/SRC35/SRC35.source.config.json",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:00f172acc3fbb8b7bfe2a7ab": {
+      "declared_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "declared_cut": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "selected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "DIFFERENT_BYTES"
+    },
+    "PIN:056e01df902e3aa4fad5d362": {
+      "declared_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "selected_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:18a85d0c23c325bbf93bc2eb": {
+      "declared_blob": "31f731093aaafff7ecd4ca5a8c2c9a8e05a46936",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+      "selected_blob": "31f731093aaafff7ecd4ca5a8c2c9a8e05a46936",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:1969fb04e08345e59fafbe96": {
+      "declared_blob": "1c65289847e95dd987b3ba8e39a266081ad963e4",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:1f654c5baec267c839e3b81c": {
+      "declared_blob": "332d3d0907a2de9a34cf828299f6125a1d2ddac5",
+      "declared_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "selected_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "DIFFERENT_BYTES"
+    },
+    "PIN:2ab92a9affa4e1a6c26bf17c": {
+      "declared_blob": "03e609b5e30864ec4bc1a93406ce639f7ab40fa6",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_FINITE_TERMINAL_CLOSEOUT_20261101.md",
+      "selected_blob": "03e609b5e30864ec4bc1a93406ce639f7ab40fa6",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:2b3030a3ab4aa2bc6769eee2": {
+      "declared_blob": "ac5f331322a69dab224eeeda14b05681918b432e",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_rrif_e1_c3_d02_opaque_datetime_carrier.py",
+      "selected_blob": "ac5f331322a69dab224eeeda14b05681918b432e",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:2d2642c6c05bf25813cb9270": {
+      "declared_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "selected_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:3307001f5836f4d435aa2f71": {
+      "declared_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "selected_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:38b6f48f0b95cdb272ee303d": {
+      "declared_blob": "3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/factory.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:395e5f1379b3548e2cc16955": {
+      "declared_blob": "da7427ce29294b454c82c26db660c93935da6da0",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:44f08bd7eff797f0c37f09bd": {
+      "declared_blob": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+      "declared_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/programma_pyat_original35_constructor.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:46d1ffc2fd70e3cfb50d0cc4": {
+      "declared_blob": "cb6408bd7270f3552d3ebacbc76504100457baeb",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/K_CLOSED35_HORIZONTAL_MATRIX.md",
+      "selected_blob": "cb6408bd7270f3552d3ebacbc76504100457baeb",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:46fb5748527a988208666383": {
+      "declared_blob": "636d934d6a5ae86bbe2e1894dbd7dbf9efde0053",
+      "declared_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/OPENING_20261101/01_R157_TREE_BLOB_INVENTORY.jsonl",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:48162b8843d21e08ecbfa13c": {
+      "declared_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "selected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:48b4b1b608fd6b585bada57e": {
+      "declared_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_universal_workload.py",
+      "selected_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:4b3e1e7cb4725e75771b753f": {
+      "declared_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "selected_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:4bee8ad7e392b141e839a321": {
+      "declared_blob": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+      "declared_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/programma_pyat_original35_constructor.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:4c2d7554f26227127e8a9fd0": {
+      "declared_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ACCEPTANCE.md",
+      "selected_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:4c67fe55a714e58576d95bfd": {
+      "declared_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "selected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:533271a9b9819285beb9b6a2": {
+      "declared_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "selected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:53e3a82b380c8d22f965c090": {
+      "declared_blob": "7d032f1378701784ba2889bb758e4ce779268ee0",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/closed35.json",
+      "selected_blob": "7d032f1378701784ba2889bb758e4ce779268ee0",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:54e3c12a741fd316b61c6ecb": {
+      "declared_blob": "c07c2019455e6264b4297c1c1d782bd887b96bdd",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_rrif_e4f_d02_real_datetime_subclass.py",
+      "selected_blob": "c07c2019455e6264b4297c1c1d782bd887b96bdd",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:5a450284d5da84426c044da4": {
+      "declared_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "selected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:5d0e6cb51fe4acf800406b2d": {
+      "declared_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "declared_cut": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:6b1f606175557f75c903a081": {
+      "declared_blob": "625f1d8b1f3fa8c24501addcaff7d70209598596",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_rrif_e1_c3_d01_declared_encoding_admission.py",
+      "selected_blob": "625f1d8b1f3fa8c24501addcaff7d70209598596",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:6c1c87476421f3158fcc0ba4": {
+      "declared_blob": "fe4147853f9a42bd36dc2b5017ed05d7bc9ebf1b",
+      "declared_cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "selected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "DIFFERENT_BYTES"
+    },
+    "PIN:6d0b9296f43ab3aee1e76155": {
+      "declared_blob": "2623246ce107db5598174e49bb9785d6a96f2b93",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/__init__.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:6d5a94f33dd2a94b844c9998": {
+      "declared_blob": "26f737c8df7056ad6159e28b599371f04b85861e",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/FLIGHT_BOARD.json",
+      "selected_blob": "26f737c8df7056ad6159e28b599371f04b85861e",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:6f5de5358920d0677dc4263a": {
+      "declared_blob": "f9c1ba6159e5c309ebfcdb635825ef7d535cfb0e",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/data/SRC35/SRC35.evidence-accounting.json",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:7040e1c107f56ba07f8571ab": {
+      "declared_blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_native_workload_binding.py",
+      "selected_blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:7d3f8d42e1cf1bd9a273e6d1": {
+      "declared_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "selected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:7eac74b08ddd84a9bcbc2cfd": {
+      "declared_blob": "c2631604f73fd19ecce3cd04fa12f3e135190e1a",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+      "selected_blob": "c2631604f73fd19ecce3cd04fa12f3e135190e1a",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:807ffd0dbae7cf9e58722190": {
+      "declared_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "selected_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:87c56755962d4b0e6f0550eb": {
+      "declared_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "selected_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:8c082bc20735e80d4b2e0783": {
+      "declared_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ACCEPTANCE.md",
+      "selected_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:94589b5ce23ea7abdab5d320": {
+      "declared_blob": "5b971d1afa32d2574ae2921e692450ac4c812814",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/SOURCES.md",
+      "selected_blob": "5b971d1afa32d2574ae2921e692450ac4c812814",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:95591133f724e6841eebb45b": {
+      "declared_blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7",
+      "declared_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "selected_blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:9a2fd64e7011cc7af563f82d": {
+      "declared_blob": "41e5afbf191f2b3905c9cda85691f6b8b2ac2c28",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_read_admission.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:9c14fd49e40d5413b06051d0": {
+      "declared_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "selected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:9e007c672bdf68347f81115f": {
+      "declared_blob": "bfa20f7a35ef9a399bec5380b6c3e6f9caad0115",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py",
+      "selected_blob": "bfa20f7a35ef9a399bec5380b6c3e6f9caad0115",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:9e7f2ce24bcb02207e85ec78": {
+      "declared_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "declared_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "selected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:a27accbb4bb9bd93c7cfb30f": {
+      "declared_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "selected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:a3f46c18919053aba0743784": {
+      "declared_blob": "8870545724d2b3353e4cb4125bc06c041d463954",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json",
+      "selected_blob": "8870545724d2b3353e4cb4125bc06c041d463954",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:a5179d1df2a7522dbabc00ed": {
+      "declared_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "selected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:a80a01b016a6cd7d43934fde": {
+      "declared_blob": "856bc9ae3f40d10c5305202a28afe32a13455490",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:a8d8ab2e3f340191201525e3": {
+      "declared_blob": "b53039aeb95e012993c5233a7575c1dad5a14929",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "selected_blob": "b53039aeb95e012993c5233a7575c1dad5a14929",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:aa7d9652597b6dc0520ac420": {
+      "declared_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "selected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:aad346b49bff5b3d0b8d000e": {
+      "declared_blob": "fd0d5dd19496feb156f6df7aa81ba251acc3cab7",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/FUNCTIONS.md",
+      "selected_blob": "fd0d5dd19496feb156f6df7aa81ba251acc3cab7",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:b2acbfd2c65f09f6f431b2ce": {
+      "declared_blob": "8efe6a0c2b21fffbdd3ba2767b9b64c8e4ab25ab",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/README.md",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:b2d75323a4c9e95fce048cfd": {
+      "declared_blob": "eecbab07c9440c8edfc754eb812f5bf171356878",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+      "selected_blob": "eecbab07c9440c8edfc754eb812f5bf171356878",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:b32b00995e96516b16d226b5": {
+      "declared_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "declared_cut": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "selected_blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "DIFFERENT_BYTES"
+    },
+    "PIN:b7c3089340944aafe142af3c": {
+      "declared_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_universal_workload.py",
+      "selected_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:be18bb46da447b7684377cde": {
+      "declared_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "selected_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:c0f278406ba3d960d806d986": {
+      "declared_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "selected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:c582e3d94397275dd5b98c33": {
+      "declared_blob": "1c8301d0f4126edfa3d77cedf0235ad2632e44e3",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+      "selected_blob": "1c8301d0f4126edfa3d77cedf0235ad2632e44e3",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:c5ca5db5d8aa8f442bb5d120": {
+      "declared_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "selected_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:ca687cd92db40865e614ba31": {
+      "declared_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "selected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:d2b6f156525e942e5d520dd3": {
+      "declared_blob": "085a19b2a6fe740be6280bf4d3ef1ed41353ff4b",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "HQ_HANDOFF/LATEST.json",
+      "selected_blob": "085a19b2a6fe740be6280bf4d3ef1ed41353ff4b",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:d3aa03aa15746be3aa91040f": {
+      "declared_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "selected_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:d4f08efd409a558ac0869281": {
+      "declared_blob": null,
+      "declared_cut": null,
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "/Rawlsing/PYAT HQ/LATEST.json",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:d7f3086a9ad1d9fa339b06b2": {
+      "declared_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "selected_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:d86d4a4f3368160e588cb4c1": {
+      "declared_blob": null,
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "refs/heads/integration/pre-main-reconciliation-r1",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:da286f5bd9eae1910bb71ebd": {
+      "declared_blob": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_route_b_production.py",
+      "selected_blob": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:dc96079db31547145991a71b": {
+      "declared_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "selected_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:df64e611c812579296355ff7": {
+      "declared_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "selected_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:e14a67fbb0b2a1d5064234be": {
+      "declared_blob": "34ab1f6af51a79e5862896a622304b0fe485c15b",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/sources/SRC35.md",
+      "selected_blob": "34ab1f6af51a79e5862896a622304b0fe485c15b",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:ea74121b2381f4fd54456f18": {
+      "declared_blob": "f4f600a97d6ca92fe17b3426c1acb5fe3b201b6a",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N11.md",
+      "selected_blob": "f4f600a97d6ca92fe17b3426c1acb5fe3b201b6a",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:f27e7eadebd53470fccfd004": {
+      "declared_blob": "e67401c9936173286f55f790f6f68b8a55d2e72f",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md",
+      "selected_blob": "e67401c9936173286f55f790f6f68b8a55d2e72f",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:f39d0573562d583e6d677641": {
+      "declared_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "selected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:f93c0f9ac51e3147039c83cf": {
+      "declared_blob": "3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a",
+      "declared_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/source_configuration/factory.py",
+      "selected_blob": null,
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "ABSENT_AT_SELECTED_CUT"
+    },
+    "PIN:fb0a37610b4336533d0a3f95": {
+      "declared_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "selected_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    },
+    "PIN:ff5982a31895684d7a688567": {
+      "declared_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "declared_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "limit": "Byte comparison only; no adoption, authority or behavior equivalence inferred.",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "selected_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "selected_cut": "9809203fd915a84bae056a67210e9213879840db",
+      "state": "SAME_BYTES"
+    }
+  },
+  "records": [
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 1,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-ASTRA-N0",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No global original item/source-use grant certified",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 5,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-ASTRA-N4",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No universal original35 processed item/operation occupancy",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 31,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-CODE-I03",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Single query function is not a measured all35 N10E consumer",
+      "support_pins": [
+        "PIN:9c14fd49e40d5413b06051d0"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 29,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-CODE-I05",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Compiling a finite already authorized frontier does not authorize full original questionnaire frontier",
+      "support_pins": [
+        "PIN:df64e611c812579296355ff7"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 34,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-CODE-PHYSICAL",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Astra old H125 implementation table is not present code truth; no native run executed",
+      "support_pins": [
+        "PIN:c0f278406ba3d960d806d986"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 28,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-CODE-ROUTEB",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Does not discover all source-native scientifically eligible original items by itself",
+      "support_pins": [
+        "PIN:a5179d1df2a7522dbabc00ed"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 17,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-DAG",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Dependency arrows are not material composition/producer acceptance",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 26,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-HQD216",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Cannot discharge a mandatory scope by treating machinery refusal as source-intrinsic inapplicability",
+      "support_pins": [
+        "PIN:f27e7eadebd53470fccfd004"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 39,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-N11-N12",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "N11 F1–F8 original-source acceptance and N12 separate authority decision remain unproved",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 36,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-R157",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No automatic old code transplant, complete original semantics, or current U/E_pre",
+      "support_pins": [
+        "PIN:2ab92a9affa4e1a6c26bf17c"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 22,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-SOURCES",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "P/B is historical physical representation grain; original item/response/sampling/permission still individual",
+      "support_pins": [
+        "PIN:53e3a82b380c8d22f965c090"
+      ]
+    },
+    {
+      "currentness": "AT_CANONICAL_2026_11_01_PINNED_CUT",
+      "evidence": {
+        "blob": "77985cd3b4b13a9713d79e9a19e539fa16b5fcb2",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 27,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:ATOMIC_FINDINGS:AF-WG0",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "THIS_WORKER_NOT_OWN_REVIEW",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Search exact existing owner before claiming absent; no original source-native workload/execution assumed",
+      "support_pins": [
+        "PIN:c582e3d94397275dd5b98c33"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 2,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0002",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "ATLAS_HISTORIC_CAPACITY_ONLY",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "PROPOSED_NOT_COMMISSIONED",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 7,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0007",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "ATLAS_HISTORIC_CAPACITY_ONLY",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "PROPOSED_NOT_COMMISSIONED",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 8,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0008",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 9,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0009",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 10,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0010",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 11,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0011",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:b2d75323a4c9e95fce048cfd"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 303,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0303",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:aad346b49bff5b3d0b8d000e"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 504,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0504",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "HISTORICAL_PHYSICAL_P",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:e14a67fbb0b2a1d5064234be"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 543,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0543",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:a3f46c18919053aba0743784"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 605,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0605",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:a3f46c18919053aba0743784"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 606,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0606",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:a3f46c18919053aba0743784"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 644,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0644",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:c582e3d94397275dd5b98c33"
+      ]
+    },
+    {
+      "currentness": "PREMAIN_PINNED_20261101",
+      "evidence": {
+        "blob": "6c986569bda1521b0303880f3196ba92984ba0e9",
+        "cut": "f2e043d61a34b20b0867adf7c725e3351d381620",
+        "line": 645,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_A_20261101_R1/PLAN_CROSSWALK.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:A:PLAN_CROSSWALK:XW0645",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_GRANT",
+        "code_location": null,
+        "engineering_state": "S1_UNVERIFIED",
+        "first_consumer_state": "UNKNOWN",
+        "integration_state": "UNKNOWN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "DOCUMENTED_ONLY",
+        "review_state": "UNREVIEWED",
+        "science_state": "NOT_ISSUED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No terminal grade inferred",
+      "support_pins": [
+        "PIN:c582e3d94397275dd5b98c33"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 2,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:F1.C11.FACADE",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+          "symbol": "build_source_backed_c11_repository"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "C11LogicalRelease / facade output",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 494,
+            "path": "rawlsing_next/pre553_route_b_production.py",
+            "symbol": "execute_route_b_production"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "CURRENT_PREMAIN_CODE__AUTHOR_TESTS_OBSERVED__C3_D01_D02_SEPARATELY_REVIEWED",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "native source incidence",
+        "real original35 source pack",
+        "production application consumer"
+      ],
+      "support_pins": [
+        "PIN:056e01df902e3aa4fad5d362",
+        "PIN:5a450284d5da84426c044da4",
+        "PIN:f39d0573562d583e6d677641"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 1,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:F1.C11.INGEST",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_c11_ingest.py",
+          "symbol": "validate_c11_source_release"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "validate_c11_source_release(candidate)",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 603,
+            "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+            "symbol": "build_validated_source_backed_c11_release"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "CURRENT_PREMAIN_CODE__AUTHOR_TESTS_OBSERVED__NO_DISTINCT_REVIEW_AT_THIS_CUT",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "real original source pack",
+        "source-use authority",
+        "native production caller"
+      ],
+      "support_pins": [
+        "PIN:18a85d0c23c325bbf93bc2eb",
+        "PIN:48162b8843d21e08ecbfa13c",
+        "PIN:807ffd0dbae7cf9e58722190"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 4,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:F1.I03.QUERY",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_empirical_query.py",
+          "symbol": "execute_empirical_query"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "execute_empirical_query",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 659,
+            "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+            "symbol": "execute_source_backed_empirical_query"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "CURRENT_PREMAIN_CODE__AUTHOR_TESTS_OBSERVED__H125_ATLAS_N2_REFERENCE",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "real source release",
+        "actual analytical service consumer",
+        "selected empirical product"
+      ],
+      "support_pins": [
+        "PIN:48162b8843d21e08ecbfa13c",
+        "PIN:4c67fe55a714e58576d95bfd",
+        "PIN:fb0a37610b4336533d0a3f95"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 5,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:F1.I05.DISCOVERY",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_discovery_exact.py",
+          "symbol": "execute_exact_bounded_discovery"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "execute_exact_bounded_discovery",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 456,
+            "path": "rawlsing_next/pre553_carrier_execution.py",
+            "symbol": "execute_exact_bounded_discovery"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "CURRENT_PREMAIN_CODE__AUTHOR_TESTS_OBSERVED__I05_PARITY_ORACLE_20_PASS",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "actual declared I05 original frontier",
+        "real source observations",
+        "production consumer"
+      ],
+      "support_pins": [
+        "PIN:2d2642c6c05bf25813cb9270",
+        "PIN:4b3e1e7cb4725e75771b753f",
+        "PIN:7eac74b08ddd84a9bcbc2cfd",
+        "PIN:a8d8ab2e3f340191201525e3"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 3,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:F1.PHYSICAL.D01_D02",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_physical_decoder.py",
+          "symbol": "decode_sav / decode_dta"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "physical decoder -> governed C11 projection",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 642,
+            "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+            "symbol": "build_source_backed_c11_repository"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "E4FR_ACCEPTED_SCOPED_7CD2206__PR602_MERGED_0075C15__45_PASS_SELECTED_194_PASS_1_SKIP",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "real SAV/DTA source execution",
+        "source-use authority",
+        "full source-native physical edge certificate"
+      ],
+      "support_pins": [
+        "PIN:2b3030a3ab4aa2bc6769eee2",
+        "PIN:48162b8843d21e08ecbfa13c",
+        "PIN:54e3c12a741fd316b61c6ecb",
+        "PIN:6b1f606175557f75c903a081",
+        "PIN:9e007c672bdf68347f81115f",
+        "PIN:aa7d9652597b6dc0520ac420"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 25,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:MAIN.BASELINE.C11_I03",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "332d3d0907a2de9a34cf828299f6125a1d2ddac5",
+          "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+          "path": "rawlsing_next/pre553_c11_ingest.py",
+          "symbol": "validate_c11_source_release; execute_empirical_query"
+        },
+        "engineering_state": "MAIN_OLDER_BASELINE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "grade": "MAIN_SOURCEFREE_CONSUMER",
+            "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+            "symbol": "build_source_backed_c11_repository"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "main"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "MAIN_BASELINE_ONLY__OLDER_BLOBS__NO_ROUTE_B",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "NOT_RUN_AT_MAIN"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "Route B compositor",
+        "M1/M2/B5/I4/N10E",
+        "current PREMAIN repairs"
+      ],
+      "support_pins": [
+        "PIN:1f654c5baec267c839e3b81c",
+        "PIN:6c1c87476421f3158fcc0ba4"
+      ]
+    },
+    {
+      "currentness": "UNKNOWN",
+      "evidence": {
+        "blob": "ebf4f17bb914ffac1fe62973f4f928d6e0d68395",
+        "cut": "b90f1a0322bf8c7995b0d89ce22e3478c6ce723e",
+        "line": 7,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_B_20261101_R1/CURRENT_REALIZATION.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:B:CURRENT_REALIZATION:P06.ROUTE_B",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "SOURCEFREE_CODE_IS_NOT_NATIVE_GRANT",
+        "code_location": {
+          "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+          "cut": "9809203fd915a84bae056a67210e9213879840db",
+          "path": "rawlsing_next/pre553_route_b_production.py",
+          "symbol": "execute_route_b_production"
+        },
+        "engineering_state": "CURRENT_INTEGRATED_SOURCEFREE",
+        "first_consumer_state": {
+          "limit": "Returned static/caller claim; no H native invocation",
+          "located": {
+            "actual": true,
+            "call": "execute_route_b_production(...)",
+            "grade": "SOURCEFREE_CURRENT_CONSUMER",
+            "line": 300,
+            "path": "rawlsing_next/pre553_issued_workload.py",
+            "symbol": "execute_issued_workload"
+          }
+        },
+        "integration_state": {
+          "limit": "Code presence at that cut; no receiver/adoption scope inferred",
+          "location": "premain"
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": {
+          "returned_grade": "CURRENT_PREMAIN_CODE__AUTHOR_TESTS_OBSERVED__NO_DISTINCT_REVIEW_AT_THIS_CUT",
+          "scope": "Inherited receipt, not H independent runtime acceptance",
+          "tests": "PASS"
+        },
+        "science_state": "NO_SOURCE_SCIENCE_ISSUED_BY_THIS_REFERENCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": [
+        "real selected source pack",
+        "actual original35 workload",
+        "native production consumer"
+      ],
+      "support_pins": [
+        "PIN:533271a9b9819285beb9b6a2",
+        "PIN:87c56755962d4b0e6f0550eb",
+        "PIN:da286f5bd9eae1910bb71ebd"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+        "receiver_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 2,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF02",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "P1 is prospective, nonissuing, sourcefree; source grant labels are not a grant from W1-C.",
+        "code_location": [
+          "rawlsing_next/programma_pyat_original35_constructor.py::Original35Input",
+          "rawlsing_next/programma_pyat_original35_constructor.py::construct_original35_epre"
+        ],
+        "engineering_state": "CANDIDATE_INPUT_ADAPTER_MISSING",
+        "first_consumer_state": "HISTORICAL_STATIC_RECEIVER",
+        "integration_state": "HISTORICAL_OR_CANDIDATE_NOT_CURRENT",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "P1 no_drop_ok reconciles caller-supplied items, not an independent original administered-item census.",
+      "support_pins": [
+        "PIN:44f08bd7eff797f0c37f09bd",
+        "PIN:4bee8ad7e392b141e839a321"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 5,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF05",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Existing code path is test-only; not all35 original execution.",
+        "code_location": [
+          "rawlsing_next/pre553_source_native_preimage_adapter.py::NativePreimageBundle",
+          "rawlsing_next/pre553_universal_workload.py::compile_universal_workload"
+        ],
+        "engineering_state": "CURRENT_SOURCEFREE_LOWERER",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Unary compiler is not a full conditional/joint/recursive scientific frontier; supplied bundle can be incomplete.",
+      "support_pins": [
+        "PIN:3307001f5836f4d435aa2f71",
+        "PIN:b7c3089340944aafe142af3c",
+        "PIN:be18bb46da447b7684377cde"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 6,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF06",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Caller supplies frontier; function creates no original scientific authority.",
+        "code_location": [
+          "rawlsing_next/pre553_universal_workload.py::compile_governed_frontier",
+          "rawlsing_next/pre553_native_workload_binding.py::build_frontier_native_catalog"
+        ],
+        "engineering_state": "CURRENT_SOURCEFREE_RECONNECTOR",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Inventory/policy hash mismatch refused; pending operations excluded from active lowering but retained in compilation accounting.",
+      "support_pins": [
+        "PIN:48b4b1b608fd6b585bada57e",
+        "PIN:7040e1c107f56ba07f8571ab",
+        "PIN:b7c3089340944aafe142af3c"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 7,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF07",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Protocol/record existence does not authenticate the external issuer.",
+        "code_location": [
+          "rawlsing_next/pre553_issued_workload.py::NativeWorkload",
+          "rawlsing_next/pre553_issued_workload.py::admit"
+        ],
+        "engineering_state": "CURRENT_OWNER_NO_ISSUER_VERIFIED",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "TEST_ONLY_SOURCEFREE admitted only with explicit allow_test_only; wrong host/purpose or expected jobs refused before source_factory.",
+      "support_pins": [
+        "PIN:c5ca5db5d8aa8f442bb5d120",
+        "PIN:d3aa03aa15746be3aa91040f"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 9,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF09",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "PR602 physical D01/D02 repair is engineering only.",
+        "code_location": [
+          "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+          "rawlsing_next/pre553_source_backed_c11_facade.py::build_source_backed_c11_repository"
+        ],
+        "engineering_state": "CURRENT_STATIC_COMPOSITION",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Source/projection mismatch and missing projection authority refused; cache is not semantic authority.",
+      "support_pins": [
+        "PIN:7d3f8d42e1cf1bd9a273e6d1",
+        "PIN:a27accbb4bb9bd93c7cfb30f",
+        "PIN:ca687cd92db40865e614ba31"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 10,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF10",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Prepared requests are not a questionnaire-wide issued workload.",
+        "code_location": [
+          "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+          "rawlsing_next/pre553_carrier_execution.py::execute_i03"
+        ],
+        "engineering_state": "CURRENT_STATIC_CALL",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Exact catalog query/predicate substitution rejected; typed empty/weight/routing states remain distinct.",
+      "support_pins": [
+        "PIN:7d3f8d42e1cf1bd9a273e6d1",
+        "PIN:a27accbb4bb9bd93c7cfb30f",
+        "PIN:dc96079db31547145991a71b"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 11,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF11",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Finite candidate coverage does not issue original operation completeness.",
+        "code_location": [
+          "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+          "rawlsing_next/pre553_discovery_exact.py::execute_exact_bounded_discovery"
+        ],
+        "engineering_state": "CURRENT_STATIC_CALL",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Missing/substituted discovery authority fails; fully evaluated supplied frontier can still omit scientifically needed items.",
+      "support_pins": [
+        "PIN:7d3f8d42e1cf1bd9a273e6d1",
+        "PIN:a27accbb4bb9bd93c7cfb30f",
+        "PIN:ff5982a31895684d7a688567"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "c73e910ffb5644f8a540b60675d883ef64568000",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 35,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:ATOMIC_FINDINGS:W1C-AF35",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "W1-C cannot issue N11 or adopt its own map.",
+        "code_location": [
+          "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ACCEPTANCE.md",
+          "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N11.md"
+        ],
+        "engineering_state": "PLANNED_OWNER_ADJUDICATION",
+        "first_consumer_state": "PLANNED_RECEIVER_ONLY",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "35 configured identities, 1890 requirement axes, 101/151 work classes or green fixtures do not discharge estate products.",
+      "support_pins": [
+        "PIN:4c2d7554f26227127e8a9fd0",
+        "PIN:8c082bc20735e80d4b2e0783",
+        "PIN:ea74121b2381f4fd54456f18"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+        "receiver_cut": "d1278613e9e1a5d986ccce15782a697f19cbd722"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 2,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S02",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "P1 is prospective, nonissuing, sourcefree; source grant labels are not a grant from W1-C.",
+        "code_location": [
+          "rawlsing_next/programma_pyat_original35_constructor.py::Original35Input",
+          "rawlsing_next/programma_pyat_original35_constructor.py::construct_original35_epre"
+        ],
+        "engineering_state": "CANDIDATE_INPUT_ADAPTER_MISSING",
+        "first_consumer_state": "HISTORICAL_STATIC_RECEIVER",
+        "integration_state": "HISTORICAL_OR_CANDIDATE_NOT_CURRENT",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "P1 no_drop_ok reconciles caller-supplied items, not an independent original administered-item census.",
+      "support_pins": [
+        "PIN:44f08bd7eff797f0c37f09bd",
+        "PIN:4bee8ad7e392b141e839a321"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 5,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S05",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Existing code path is test-only; not all35 original execution.",
+        "code_location": [
+          "rawlsing_next/pre553_source_native_preimage_adapter.py::NativePreimageBundle",
+          "rawlsing_next/pre553_universal_workload.py::compile_universal_workload"
+        ],
+        "engineering_state": "CURRENT_SOURCEFREE_LOWERER",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Unary compiler is not a full conditional/joint/recursive scientific frontier; supplied bundle can be incomplete.",
+      "support_pins": [
+        "PIN:3307001f5836f4d435aa2f71",
+        "PIN:b7c3089340944aafe142af3c",
+        "PIN:be18bb46da447b7684377cde"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 6,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S06",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Caller supplies frontier; function creates no original scientific authority.",
+        "code_location": [
+          "rawlsing_next/pre553_universal_workload.py::compile_governed_frontier",
+          "rawlsing_next/pre553_native_workload_binding.py::build_frontier_native_catalog"
+        ],
+        "engineering_state": "CURRENT_SOURCEFREE_RECONNECTOR",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Inventory/policy hash mismatch refused; pending operations excluded from active lowering but retained in compilation accounting.",
+      "support_pins": [
+        "PIN:48b4b1b608fd6b585bada57e",
+        "PIN:7040e1c107f56ba07f8571ab",
+        "PIN:b7c3089340944aafe142af3c"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 7,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S07",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Protocol/record existence does not authenticate the external issuer.",
+        "code_location": [
+          "rawlsing_next/pre553_issued_workload.py::NativeWorkload",
+          "rawlsing_next/pre553_issued_workload.py::admit"
+        ],
+        "engineering_state": "CURRENT_OWNER_NO_ISSUER_VERIFIED",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "TEST_ONLY_SOURCEFREE admitted only with explicit allow_test_only; wrong host/purpose or expected jobs refused before source_factory.",
+      "support_pins": [
+        "PIN:c5ca5db5d8aa8f442bb5d120",
+        "PIN:d3aa03aa15746be3aa91040f"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 9,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S09",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "PR602 physical D01/D02 repair is engineering only.",
+        "code_location": [
+          "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+          "rawlsing_next/pre553_source_backed_c11_facade.py::build_source_backed_c11_repository"
+        ],
+        "engineering_state": "CURRENT_STATIC_COMPOSITION",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Source/projection mismatch and missing projection authority refused; cache is not semantic authority.",
+      "support_pins": [
+        "PIN:7d3f8d42e1cf1bd9a273e6d1",
+        "PIN:a27accbb4bb9bd93c7cfb30f",
+        "PIN:ca687cd92db40865e614ba31"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 10,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S10",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Prepared requests are not a questionnaire-wide issued workload.",
+        "code_location": [
+          "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+          "rawlsing_next/pre553_carrier_execution.py::execute_i03"
+        ],
+        "engineering_state": "CURRENT_STATIC_CALL",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Exact catalog query/predicate substitution rejected; typed empty/weight/routing states remain distinct.",
+      "support_pins": [
+        "PIN:7d3f8d42e1cf1bd9a273e6d1",
+        "PIN:a27accbb4bb9bd93c7cfb30f",
+        "PIN:dc96079db31547145991a71b"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 11,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S11",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Finite candidate coverage does not issue original operation completeness.",
+        "code_location": [
+          "rawlsing_next/pre553_route_b_production.py::execute_route_b_production",
+          "rawlsing_next/pre553_discovery_exact.py::execute_exact_bounded_discovery"
+        ],
+        "engineering_state": "CURRENT_STATIC_CALL",
+        "first_consumer_state": "CURRENT_STATIC_RECEIVER_IMPLEMENTATION",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Missing/substituted discovery authority fails; fully evaluated supplied frontier can still omit scientifically needed items.",
+      "support_pins": [
+        "PIN:7d3f8d42e1cf1bd9a273e6d1",
+        "PIN:a27accbb4bb9bd93c7cfb30f",
+        "PIN:ff5982a31895684d7a688567"
+      ]
+    },
+    {
+      "currentness": {
+        "canonical_read_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "observed_date": "2026-11-01",
+        "producer_cut": "9809203fd915a84bae056a67210e9213879840db",
+        "receiver_cut": "9809203fd915a84bae056a67210e9213879840db"
+      },
+      "evidence": {
+        "blob": "08f3104ac4bf83d9ad344476c96bcce410d91e9d",
+        "cut": "b240d00f0cb3b962868d75a9d202cd2117952d87",
+        "line": 35,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_C_20261101_R1/SEAMS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:C:SEAMS:W1C-S35",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "W1-C cannot issue N11 or adopt its own map.",
+        "code_location": [
+          "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ACCEPTANCE.md",
+          "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N11.md"
+        ],
+        "engineering_state": "PLANNED_OWNER_ADJUDICATION",
+        "first_consumer_state": "PLANNED_RECEIVER_ONLY",
+        "integration_state": "CURRENT_PREMAIN",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "CURRENT_CONSTITUTION_WITH_SCOPE_CONDITIONED_EDGES",
+        "review_state": "INVESTIGATOR_RETURN_NOT_INDEPENDENTLY_ADOPTED",
+        "science_state": "NOT_ISSUED_BY_W1_C",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "35 configured identities, 1890 requirement axes, 101/151 work classes or green fixtures do not discharge estate products.",
+      "support_pins": [
+        "PIN:4c2d7554f26227127e8a9fd0",
+        "PIN:8c082bc20735e80d4b2e0783",
+        "PIN:ea74121b2381f4fd54456f18"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 1,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-001",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "D01/D02 subsequent scoped repairs do not rewrite historical census or give source rights.",
+      "support_pins": [
+        "PIN:46d1ffc2fd70e3cfb50d0cc4"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 3,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-003",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "A metadata/index join is not issued original item meaning, an operation, or respondent execution.",
+      "support_pins": [
+        "PIN:1969fb04e08345e59fafbe96"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 5,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-005",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "This was not executed in S1 and current PRE-MAIN lacks same-path R157 package.",
+      "support_pins": [
+        "PIN:b2acbfd2c65f09f6f431b2ce"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 6,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-006",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Named route is not itself current native proof or scientific permission.",
+      "support_pins": [
+        "PIN:46d1ffc2fd70e3cfb50d0cc4"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 7,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-007",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Executable runtime or native 35-wave case not performed by this S1 lane.",
+      "support_pins": [
+        "PIN:a27accbb4bb9bd93c7cfb30f"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 8,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-008",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Current valid resolver/host/source permits and original C11 release not supplied.",
+      "support_pins": [
+        "PIN:d3aa03aa15746be3aa91040f"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 9,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-009",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Do not label generator missing: prove producer-to-source oracle, item authority and real first consumer before absence/acceptance verdict.",
+      "support_pins": [
+        "PIN:48b4b1b608fd6b585bada57e"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 10,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-010",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Not adopted to PRE-MAIN, not original science issuance and not complete M48 class inventory.",
+      "support_pins": [
+        "PIN:4bee8ad7e392b141e839a321"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 12,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-012",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "This is a scope/coverage limit, not a demonstrated error against P1's declared input-only contract; missing absent-item inventory must be independently qualified.",
+      "support_pins": [
+        "PIN:4bee8ad7e392b141e839a321"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 13,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-013",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "The symbolic label does not confer genuine original grant or measured execution.",
+      "support_pins": [
+        "PIN:4bee8ad7e392b141e839a321"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 14,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-014",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "The first actual current reader is BatchManifest at admission grain only.",
+      "support_pins": [
+        "PIN:4bee8ad7e392b141e839a321"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 16,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-016",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Prepared metadata or P1 self-audit insufficient for wave-specific eligible operations.",
+      "support_pins": [
+        "PIN:c582e3d94397275dd5b98c33"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 17,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-017",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No original source execution in this lane, no blanket all35 operations generated.",
+      "support_pins": [
+        "PIN:c582e3d94397275dd5b98c33"
+      ]
+    },
+    {
+      "currentness": "PINNED_AS_OF_2026_11_01__NOT_LIVE_RUNTIME_TELEMETRY",
+      "evidence": {
+        "blob": "6b2255f18edcf0d870868a4dabfcaca2d89bf9b5",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 19,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/ATOMIC_FINDINGS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:ATOMIC_FINDINGS:D-019",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "UNKNOWN_NOT_ASSERTED",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "A source SHA and item count are not rights, an issued Epre or real C11 release.",
+      "support_pins": [
+        "PIN:395e5f1379b3548e2cc16955"
+      ]
+    },
+    {
+      "currentness": "R157_HISTORICAL_UNINTEGRATED_TO_PREMAIN_AT_CANONICAL_CUT",
+      "evidence": {
+        "blob": "d13a9c85298297271d73f3a6ff3958d0c92ac48b",
+        "cut": "0a339445f80a78275e3dd63208de7d28e28ce419",
+        "line": 35,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_D_20261101_R1/SOURCE35_COVERAGE.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:D:SOURCE35_COVERAGE:SRC35",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "ORIGINAL_WAVE_SOURCE_GRANT_ITEM_REGISTRY_ROUTE_UNIT_WEIGHT_ELIGIBILITY_AND_METHOD_ISSUANCE_NOT_JOINED_TO_REAL_C11_I03_I05_EXECUTION",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "NOT_EVIDENCED_AT_ALL_WAVE_SCOPE",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_PROVED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "NOT_EVIDENCED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Astra B/P is representation only; R157 item/codebook row count is NOT scientifically eligible operation count; P1 840 units are wholly synthetic; original respondent and scientific permissions unverified.",
+      "support_pins": [
+        "PIN:00207381d3f0506ea12e53cc",
+        "PIN:395e5f1379b3548e2cc16955",
+        "PIN:46fb5748527a988208666383",
+        "PIN:6f5de5358920d0677dc4263a",
+        "PIN:94589b5ce23ea7abdab5d320",
+        "PIN:e14a67fbb0b2a1d5064234be"
+      ]
+    },
+    {
+      "currentness": "CURRENT_D01_D02_AT_ee31e3ed__G01_ABSENT",
+      "evidence": {
+        "blob": "e67d86551c74175e0791279ba321186b3fc79068",
+        "cut": "9bec60dc8223e6f969a67a264bc45f82600a4a5a",
+        "line": 1,
+        "path": "WORKER_RETURNS/PROGRAMMA_PYAT_PREP_W1_G_20261101_R1/HISTORICAL_REALIZATIONS.jsonl"
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:G:HISTORICAL_REALIZATIONS:HR-C3-D01-D02-G01",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "Physical decoder/R5/G01 owner plus source authority; no raw source or G01 numeric bridge issued here.",
+        "code_location": {
+          "paths": [
+            {
+              "blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+              "path": "rawlsing_next/pre553_physical_decoder.py"
+            },
+            {
+              "blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+              "path": "rawlsing_next/pre553_r5_codec.py"
+            },
+            {
+              "blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+              "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py"
+            }
+          ],
+          "ref": "integration/pyat-hq130-c3-source-free-accepted-r1",
+          "ref_type": "branch tip",
+          "tip": "30686b185d4ceb2c94f61815ef70d8c8e76255d6"
+        },
+        "engineering_state": {
+          "limit": "No raw source SHA verification or source-native date meaning was executed in W1-G.",
+          "supported_returned_behavior": "Accepted D01 declared-encoding allowlist; D02 opaque naive datetime/date/time carriage with fold and microseconds; timezone-aware refusal; G01 SAV numeric binding."
+        },
+        "first_consumer_state": {
+          "local": "Current 245-test receipt in this return does not include the absent historical D01/D02 test paths.",
+          "returned": "RRIF finite closeout: PR #602 merged 0075c15f; 45 PASS + selected 194 PASS/1 SKIP; G01 two baseline RED preserved.",
+          "status": "CURRENT_MERGED_D01_D02__G01_ABSENT"
+        },
+        "integration_state": {
+          "current_cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+          "difference": "D01/D02 repair is now present in current decoder/codec after PR #602 and preserves PR526 snapshot custody; the historical accepted D01/D02 test files and G01 authority module remain absent.",
+          "paths": [
+            {
+              "blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+              "path": "rawlsing_next/pre553_physical_decoder.py"
+            },
+            {
+              "blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7",
+              "path": "rawlsing_next/pre553_r5_codec.py"
+            }
+          ]
+        },
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "UNKNOWN_NOT_ASSERTED",
+        "science_state": "UNKNOWN_NOT_ASSERTED",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No raw source SHA verification or source-native date meaning was executed in W1-G.",
+      "support_pins": [
+        "PIN:00f172acc3fbb8b7bfe2a7ab",
+        "PIN:5d0e6cb51fe4acf800406b2d",
+        "PIN:95591133f724e6841eebb45b",
+        "PIN:9e7f2ce24bcb02207e85ec78",
+        "PIN:b32b00995e96516b16d226b5"
+      ]
+    },
+    {
+      "currentness": "FROZEN_SEVEN_LANE_CUT",
+      "evidence": {
+        "derived_from": [
+          "ROW:C:SEAMS:W1C-S02",
+          "ROW:C:SEAMS:W1C-S03",
+          "ROW:C:SEAMS:W1C-S04"
+        ]
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:H:ADJUDICATION:H02-P1",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_NEW_GRANT",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "AUTHOR_RETURN_REQUIRES_DISTINCT_REVIEW",
+        "science_state": "NO_NEW_ISSUANCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "Original inventory/grants/grammar and native first receiver absent; no measured output inferred.",
+      "support_pins": [
+        "PIN:44f08bd7eff797f0c37f09bd",
+        "PIN:4bee8ad7e392b141e839a321",
+        "PIN:c5ca5db5d8aa8f442bb5d120",
+        "PIN:d7f3086a9ad1d9fa339b06b2"
+      ]
+    },
+    {
+      "currentness": "FROZEN_SEVEN_LANE_CUT",
+      "evidence": {
+        "derived_from": [
+          "ROW:D:SOURCE35_COVERAGE:SRC35",
+          "ROW:C:SEAMS:W1C-S01",
+          "ROW:G:HISTORICAL_REALIZATIONS:HR-R157"
+        ]
+      },
+      "evidence_state": "PINNED_RETURN_AND_SOURCE_CHECKED",
+      "id": "ROW:H:ADJUDICATION:H08-R157",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_NEW_GRANT",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "AUTHOR_RETURN_REQUIRES_DISTINCT_REVIEW",
+        "science_state": "NO_NEW_ISSUANCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No original source-use, item/route/weight issuance, automatic original U/Epre or current consumer.",
+      "support_pins": [
+        "PIN:00207381d3f0506ea12e53cc",
+        "PIN:38b6f48f0b95cdb272ee303d",
+        "PIN:395e5f1379b3548e2cc16955",
+        "PIN:46fb5748527a988208666383",
+        "PIN:6d0b9296f43ab3aee1e76155",
+        "PIN:6f5de5358920d0677dc4263a",
+        "PIN:94589b5ce23ea7abdab5d320",
+        "PIN:9a2fd64e7011cc7af563f82d",
+        "PIN:a80a01b016a6cd7d43934fde",
+        "PIN:ca687cd92db40865e614ba31",
+        "PIN:e14a67fbb0b2a1d5064234be",
+        "PIN:f93c0f9ac51e3147039c83cf"
+      ]
+    },
+    {
+      "currentness": "FROZEN_SEVEN_LANE_CUT",
+      "evidence": {
+        "derived_from": [
+          "ROW:E:WORK_AND_AUTHORITY_STATE:PREMAIN",
+          "ROW:E:WORK_AND_AUTHORITY_STATE:HQ_SEALED_R157",
+          "ROW:E:WORK_AND_AUTHORITY_STATE:LIB_PYAT_2003",
+          "ROW:E:WORK_AND_AUTHORITY_STATE:FLIGHT_OLD"
+        ]
+      },
+      "evidence_state": "RETURN_PINNED__SOURCE_PARTIAL_OR_UNKNOWN",
+      "id": "ROW:H:ADJUDICATION:H09-STALE",
+      "maturity": {
+        "architecture_state": "UNKNOWN_NOT_ASSERTED",
+        "authority_state": "NO_NEW_GRANT",
+        "code_location": "UNKNOWN_NOT_ASSERTED",
+        "engineering_state": "UNKNOWN_NOT_ASSERTED",
+        "first_consumer_state": "UNKNOWN_NOT_ASSERTED",
+        "integration_state": "UNKNOWN_NOT_ASSERTED",
+        "native_source_state": "UNKNOWN_NOT_ASSERTED",
+        "plan_state": "UNKNOWN_NOT_ASSERTED",
+        "review_state": "AUTHOR_RETURN_REQUIRES_DISTINCT_REVIEW",
+        "science_state": "NO_NEW_ISSUANCE",
+        "terminal_receiving_state": "UNKNOWN_NOT_ASSERTED",
+        "theory_ontology_state": "UNKNOWN_NOT_ASSERTED"
+      },
+      "negative": "No branch/issue/pointer proves a local live worker; native Library current contents and owner appointment remain UNKNOWN.",
+      "support_pins": [
+        "PIN:6d5a94f33dd2a94b844c9998",
+        "PIN:d2b6f156525e942e5d520dd3",
+        "PIN:d4f08efd409a558ac0869281",
+        "PIN:d86d4a4f3368160e588cb4c1"
+      ]
+    }
+  ],
+  "snapshot_hash": "042ec18fe573a2aacd8a4afff8d3750ec102ba696a93e97015ba858e6c45aa65",
+  "source_pins": {
+    "PIN:00207381d3f0506ea12e53cc": {
+      "content_sha256": "00ad786a351a0a2987b442489e1ca91154a8be32954cddd6f1eeb69e2196dbf9",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": "6bd1cc470941969d060eaff98bedea4bcc6259fe",
+      "id": "PIN:00207381d3f0506ea12e53cc",
+      "observed_blob": "6bd1cc470941969d060eaff98bedea4bcc6259fe",
+      "path": "rawlsing_next/source_configuration/data/SRC35/SRC35.source.config.json",
+      "role": "historical_configuration",
+      "status": "VERIFIED"
+    },
+    "PIN:00f172acc3fbb8b7bfe2a7ab": {
+      "content_sha256": "ee79b8aacfa05be05820705320c2444e3e3f440ef48edecc1cc2aab92f3a9690",
+      "cut": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "expected_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "id": "PIN:00f172acc3fbb8b7bfe2a7ab",
+      "observed_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:056e01df902e3aa4fad5d362": {
+      "content_sha256": "3a6537d6b5de4a00363c025220c03e24ebd3f6483573d0d949ce456b254cb25a",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:056e01df902e3aa4fad5d362",
+      "observed_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:18a85d0c23c325bbf93bc2eb": {
+      "content_sha256": "2977b7d5298b5cfeb701fb9d84f07383abdcb87ea73001ad80fa2ee1fddf1715",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:18a85d0c23c325bbf93bc2eb",
+      "observed_blob": "31f731093aaafff7ecd4ca5a8c2c9a8e05a46936",
+      "path": "rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:1969fb04e08345e59fafbe96": {
+      "content_sha256": "ef04e215b6d669123f355082bd15e0f4a3b38ed045a0e3e38cc2b5432727911a",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": null,
+      "id": "PIN:1969fb04e08345e59fafbe96",
+      "observed_blob": "1c65289847e95dd987b3ba8e39a266081ad963e4",
+      "path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:1f654c5baec267c839e3b81c": {
+      "content_sha256": "541129f66de4cea068b4c6541d78e803e07125bfdcfbffa74a4185c3aec05ac2",
+      "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+      "expected_blob": "332d3d0907a2de9a34cf828299f6125a1d2ddac5",
+      "id": "PIN:1f654c5baec267c839e3b81c",
+      "observed_blob": "332d3d0907a2de9a34cf828299f6125a1d2ddac5",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:2ab92a9affa4e1a6c26bf17c": {
+      "content_sha256": "5177a5288b9414dedfa19bba31a2c0c9b1c1cff8ee328ff6307b87b8ebbfb5f9",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:2ab92a9affa4e1a6c26bf17c",
+      "observed_blob": "03e609b5e30864ec4bc1a93406ce639f7ab40fa6",
+      "path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_FINITE_TERMINAL_CLOSEOUT_20261101.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:2b3030a3ab4aa2bc6769eee2": {
+      "content_sha256": "18465ff974d8767fa2ed23197084ff787d2b3bdc19e88201d1fdd84b83121d0f",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:2b3030a3ab4aa2bc6769eee2",
+      "observed_blob": "ac5f331322a69dab224eeeda14b05681918b432e",
+      "path": "rawlsing_next/tests/test_rrif_e1_c3_d02_opaque_datetime_carrier.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:2d2642c6c05bf25813cb9270": {
+      "content_sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "id": "PIN:2d2642c6c05bf25813cb9270",
+      "observed_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:3307001f5836f4d435aa2f71": {
+      "content_sha256": "c9ea22ada390babf7b3a977352b784bcfeb498e738dcb0024fc7f4d793b90b95",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:3307001f5836f4d435aa2f71",
+      "observed_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:38b6f48f0b95cdb272ee303d": {
+      "content_sha256": "3848b5ee7c0c1674518ef21b55553b3e646119332415ffc824394438aaa59c33",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": null,
+      "id": "PIN:38b6f48f0b95cdb272ee303d",
+      "observed_blob": "3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a",
+      "path": "rawlsing_next/source_configuration/factory.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:395e5f1379b3548e2cc16955": {
+      "content_sha256": "a0201dbd229c8fc6fddc95b5acbe289d05706eff718d5dfc34329ecdb1bf087d",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": null,
+      "id": "PIN:395e5f1379b3548e2cc16955",
+      "observed_blob": "da7427ce29294b454c82c26db660c93935da6da0",
+      "path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:44f08bd7eff797f0c37f09bd": {
+      "content_sha256": "1b0c7d4f0220cbcb9385e89b9774ba4fa1d6f094ddcb14aabe51ea2bd4407f1b",
+      "cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "expected_blob": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+      "id": "PIN:44f08bd7eff797f0c37f09bd",
+      "observed_blob": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+      "path": "rawlsing_next/programma_pyat_original35_constructor.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:46d1ffc2fd70e3cfb50d0cc4": {
+      "content_sha256": "122ee197e3f532f0503cd120f6af30136bf234fbb5d117f68722fb5c2dc8a337",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:46d1ffc2fd70e3cfb50d0cc4",
+      "observed_blob": "cb6408bd7270f3552d3ebacbc76504100457baeb",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/K_CLOSED35_HORIZONTAL_MATRIX.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:46fb5748527a988208666383": {
+      "content_sha256": "11dfb9f5cea11a6327eeb811f323dd7fe034fb5c4689df4cdd01f3a648e4215d",
+      "cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "expected_blob": null,
+      "id": "PIN:46fb5748527a988208666383",
+      "observed_blob": "636d934d6a5ae86bbe2e1894dbd7dbf9efde0053",
+      "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/OPENING_20261101/01_R157_TREE_BLOB_INVENTORY.jsonl",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:48162b8843d21e08ecbfa13c": {
+      "content_sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:48162b8843d21e08ecbfa13c",
+      "observed_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "role": "static_consumer",
+      "status": "VERIFIED"
+    },
+    "PIN:48b4b1b608fd6b585bada57e": {
+      "content_sha256": "d5f429408451d60d43f5ed2238bb1bf0762c9c966e02bce208157d3b5ee20121",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:48b4b1b608fd6b585bada57e",
+      "observed_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "path": "rawlsing_next/pre553_universal_workload.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:4b3e1e7cb4725e75771b753f": {
+      "content_sha256": "e4f0413c1ca4717993f6a40e0b42e8b23ae3f50b0d11eeb860625e9cc0ec6261",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:4b3e1e7cb4725e75771b753f",
+      "observed_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "role": "static_consumer",
+      "status": "VERIFIED"
+    },
+    "PIN:4bee8ad7e392b141e839a321": {
+      "content_sha256": "1b0c7d4f0220cbcb9385e89b9774ba4fa1d6f094ddcb14aabe51ea2bd4407f1b",
+      "cut": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+      "expected_blob": null,
+      "id": "PIN:4bee8ad7e392b141e839a321",
+      "observed_blob": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+      "path": "rawlsing_next/programma_pyat_original35_constructor.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:4c2d7554f26227127e8a9fd0": {
+      "content_sha256": "cfcd618c2063731963c986c334a87df764cd3fc565aa03a39de31a90cbda6f36",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "id": "PIN:4c2d7554f26227127e8a9fd0",
+      "observed_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ACCEPTANCE.md",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:4c67fe55a714e58576d95bfd": {
+      "content_sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "id": "PIN:4c67fe55a714e58576d95bfd",
+      "observed_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:533271a9b9819285beb9b6a2": {
+      "content_sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "id": "PIN:533271a9b9819285beb9b6a2",
+      "observed_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:53e3a82b380c8d22f965c090": {
+      "content_sha256": "34b66df9f3cd38a107fac2504bfedf58da6bc41291b8b35a235ee7e682989203",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "7d032f1378701784ba2889bb758e4ce779268ee0",
+      "id": "PIN:53e3a82b380c8d22f965c090",
+      "observed_blob": "7d032f1378701784ba2889bb758e4ce779268ee0",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/closed35.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:54e3c12a741fd316b61c6ecb": {
+      "content_sha256": "1042789d92c94dd5ef983299f4cbc46b40bc55e2d556f055f6777ada11254737",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:54e3c12a741fd316b61c6ecb",
+      "observed_blob": "c07c2019455e6264b4297c1c1d782bd887b96bdd",
+      "path": "rawlsing_next/tests/test_rrif_e4f_d02_real_datetime_subclass.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:5a450284d5da84426c044da4": {
+      "content_sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:5a450284d5da84426c044da4",
+      "observed_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "role": "static_consumer",
+      "status": "VERIFIED"
+    },
+    "PIN:5d0e6cb51fe4acf800406b2d": {
+      "content_sha256": "5e006009b0c22b159d8930127228fdabfc73f03739a974d45afbfa01123088a4",
+      "cut": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "expected_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "id": "PIN:5d0e6cb51fe4acf800406b2d",
+      "observed_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:6b1f606175557f75c903a081": {
+      "content_sha256": "54195599ba4428db26b41f49bb486588502115bd119c7dc6bdee6fe1b65873da",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:6b1f606175557f75c903a081",
+      "observed_blob": "625f1d8b1f3fa8c24501addcaff7d70209598596",
+      "path": "rawlsing_next/tests/test_rrif_e1_c3_d01_declared_encoding_admission.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:6c1c87476421f3158fcc0ba4": {
+      "content_sha256": "79b8ad92d7f60cab35a18df876c2967a9f5d54e82ca80e8e15a1e1e3d6ee4df4",
+      "cut": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+      "expected_blob": null,
+      "id": "PIN:6c1c87476421f3158fcc0ba4",
+      "observed_blob": "fe4147853f9a42bd36dc2b5017ed05d7bc9ebf1b",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "role": "static_consumer",
+      "status": "VERIFIED"
+    },
+    "PIN:6d0b9296f43ab3aee1e76155": {
+      "content_sha256": "ae5d8150b5888d2ff9280aa49255de84f0221a3deb923ccefa3e8ea28f54996e",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": "2623246ce107db5598174e49bb9785d6a96f2b93",
+      "id": "PIN:6d0b9296f43ab3aee1e76155",
+      "observed_blob": "2623246ce107db5598174e49bb9785d6a96f2b93",
+      "path": "rawlsing_next/source_configuration/__init__.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:6d5a94f33dd2a94b844c9998": {
+      "content_sha256": "02ced09b2c4ac540abbb72329b2c81bda2d48cfee7db578e30f5d6bc2d77f726",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:6d5a94f33dd2a94b844c9998",
+      "observed_blob": "26f737c8df7056ad6159e28b599371f04b85861e",
+      "path": "PYAT_CONTROL_ROOM/CONTINUOUS_DEVELOPMENT/FLIGHT_BOARD.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:6f5de5358920d0677dc4263a": {
+      "content_sha256": "ad65369acddb35364904c6717f5fc650768539bab7cc52912883556da78e3ffb",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": "f9c1ba6159e5c309ebfcdb635825ef7d535cfb0e",
+      "id": "PIN:6f5de5358920d0677dc4263a",
+      "observed_blob": "f9c1ba6159e5c309ebfcdb635825ef7d535cfb0e",
+      "path": "rawlsing_next/source_configuration/data/SRC35/SRC35.evidence-accounting.json",
+      "role": "historical_configuration",
+      "status": "VERIFIED"
+    },
+    "PIN:7040e1c107f56ba07f8571ab": {
+      "content_sha256": "b330a58f5ac2646469d99f58518aceef44780fa4700f088652224fbd771fde4d",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+      "id": "PIN:7040e1c107f56ba07f8571ab",
+      "observed_blob": "dac73e484f8619088f5c6701b2b6991c07540f3b",
+      "path": "rawlsing_next/pre553_native_workload_binding.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:7d3f8d42e1cf1bd9a273e6d1": {
+      "content_sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "id": "PIN:7d3f8d42e1cf1bd9a273e6d1",
+      "observed_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:7eac74b08ddd84a9bcbc2cfd": {
+      "content_sha256": "2523c7bc0aafc71a6ed5e1994cca28938f776bdbfbfb22d0cb4b05ce85bf92f4",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:7eac74b08ddd84a9bcbc2cfd",
+      "observed_blob": "c2631604f73fd19ecce3cd04fa12f3e135190e1a",
+      "path": "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:807ffd0dbae7cf9e58722190": {
+      "content_sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "id": "PIN:807ffd0dbae7cf9e58722190",
+      "observed_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:87c56755962d4b0e6f0550eb": {
+      "content_sha256": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:87c56755962d4b0e6f0550eb",
+      "observed_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "role": "static_consumer",
+      "status": "VERIFIED"
+    },
+    "PIN:8c082bc20735e80d4b2e0783": {
+      "content_sha256": "cfcd618c2063731963c986c334a87df764cd3fc565aa03a39de31a90cbda6f36",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:8c082bc20735e80d4b2e0783",
+      "observed_blob": "49f8a266d5330bab6010f35be4e5b0210d326917",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/ACCEPTANCE.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:94589b5ce23ea7abdab5d320": {
+      "content_sha256": "b5f01c8e920aca2d3d5892311f7f37112529628aad6207d0a2546ba1adc31734",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:94589b5ce23ea7abdab5d320",
+      "observed_blob": "5b971d1afa32d2574ae2921e692450ac4c812814",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/SOURCES.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:95591133f724e6841eebb45b": {
+      "content_sha256": "fc3aaec95d1ea6b396afb7484e5b58a242a878f9a003b47a30d7f35d48eaa9ae",
+      "cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "expected_blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7",
+      "id": "PIN:95591133f724e6841eebb45b",
+      "observed_blob": "f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7",
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "role": "current_comparison",
+      "status": "VERIFIED"
+    },
+    "PIN:9a2fd64e7011cc7af563f82d": {
+      "content_sha256": "ad32573851a6219747fa0d5b8ad113bb70c32b4b5b886370312b7c8d93d8295b",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": "41e5afbf191f2b3905c9cda85691f6b8b2ac2c28",
+      "id": "PIN:9a2fd64e7011cc7af563f82d",
+      "observed_blob": "41e5afbf191f2b3905c9cda85691f6b8b2ac2c28",
+      "path": "rawlsing_next/pre553_source_read_admission.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:9c14fd49e40d5413b06051d0": {
+      "content_sha256": "d45ad313bc57e94c8c3652b4123c7cb03b0fc18d38d577aaaae94435664ef4cb",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "id": "PIN:9c14fd49e40d5413b06051d0",
+      "observed_blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:9e007c672bdf68347f81115f": {
+      "content_sha256": "487e9c3aabd73ae24cbdfe11b9563ea77344e06ee0c2241df7049df15620df12",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:9e007c672bdf68347f81115f",
+      "observed_blob": "bfa20f7a35ef9a399bec5380b6c3e6f9caad0115",
+      "path": "rawlsing_next/tests/test_rrif_e1_c3_current_integration_regressions.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:9e7f2ce24bcb02207e85ec78": {
+      "content_sha256": "f9794976aef51c418e8152850a7b0143df6790d0596549ea7f0991fc1f4501e9",
+      "cut": "ee31e3edfb1b5a26aa945a55ededbf0b7ff2a7a7",
+      "expected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "id": "PIN:9e7f2ce24bcb02207e85ec78",
+      "observed_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "role": "current_comparison",
+      "status": "VERIFIED"
+    },
+    "PIN:a27accbb4bb9bd93c7cfb30f": {
+      "content_sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:a27accbb4bb9bd93c7cfb30f",
+      "observed_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:a3f46c18919053aba0743784": {
+      "content_sha256": "f6548baa3a38fee711b2363747e02b61760814d36b63eb7434eab13f2dc47fb7",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "8870545724d2b3353e4cb4125bc06c041d463954",
+      "id": "PIN:a3f46c18919053aba0743784",
+      "observed_blob": "8870545724d2b3353e4cb4125bc06c041d463954",
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_F6_F7_F8_RELATION_SCOPE_MATRIX.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:a5179d1df2a7522dbabc00ed": {
+      "content_sha256": "3a677b4d7a9083ce627f9c773d8a1697f949deebc550bc8f072cff011589f18b",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "id": "PIN:a5179d1df2a7522dbabc00ed",
+      "observed_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:a80a01b016a6cd7d43934fde": {
+      "content_sha256": "5c8e5e889ce9367f0aeb0f0c2401c3aaedaa1c0424ce6c8eab59df887c903284",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": null,
+      "id": "PIN:a80a01b016a6cd7d43934fde",
+      "observed_blob": "856bc9ae3f40d10c5305202a28afe32a13455490",
+      "path": "rawlsing_next/source_configuration/",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:a8d8ab2e3f340191201525e3": {
+      "content_sha256": "bb3a403ab1f34e0b9e678d97aac2984d63e872022c4a3c669af58283a45a03db",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:a8d8ab2e3f340191201525e3",
+      "observed_blob": "b53039aeb95e012993c5233a7575c1dad5a14929",
+      "path": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:aa7d9652597b6dc0520ac420": {
+      "content_sha256": "f9794976aef51c418e8152850a7b0143df6790d0596549ea7f0991fc1f4501e9",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "id": "PIN:aa7d9652597b6dc0520ac420",
+      "observed_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:aad346b49bff5b3d0b8d000e": {
+      "content_sha256": "50f8433fef9d0ade7b40bbdc3203912e1d9cf3251425f8b800c435fb1bb98274",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:aad346b49bff5b3d0b8d000e",
+      "observed_blob": "fd0d5dd19496feb156f6df7aa81ba251acc3cab7",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/FUNCTIONS.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:b2acbfd2c65f09f6f431b2ce": {
+      "content_sha256": "f9284e846901a06ff561af8c3c1596a2f5774d06615a2daa25c9431f68cd6ea7",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": null,
+      "id": "PIN:b2acbfd2c65f09f6f431b2ce",
+      "observed_blob": "8efe6a0c2b21fffbdd3ba2767b9b64c8e4ab25ab",
+      "path": "rawlsing_next/source_configuration/README.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:b2d75323a4c9e95fce048cfd": {
+      "content_sha256": "654ccb027fa801ad3a88613d783ebb54ed9bd6c574e55d4970fafe5e8958b413",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "eecbab07c9440c8edfc754eb812f5bf171356878",
+      "id": "PIN:b2d75323a4c9e95fce048cfd",
+      "observed_blob": "eecbab07c9440c8edfc754eb812f5bf171356878",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:b32b00995e96516b16d226b5": {
+      "content_sha256": "3ecaadb5b4e9100229e674967c6df3422145e860cbc4ff4acff264742d0be358",
+      "cut": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "expected_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "id": "PIN:b32b00995e96516b16d226b5",
+      "observed_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "role": "historical_variant",
+      "status": "VERIFIED"
+    },
+    "PIN:b7c3089340944aafe142af3c": {
+      "content_sha256": "d5f429408451d60d43f5ed2238bb1bf0762c9c966e02bce208157d3b5ee20121",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "id": "PIN:b7c3089340944aafe142af3c",
+      "observed_blob": "8e7fe00a3ed008361d9f3c501e7782b2de3a636e",
+      "path": "rawlsing_next/pre553_universal_workload.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:be18bb46da447b7684377cde": {
+      "content_sha256": "c9ea22ada390babf7b3a977352b784bcfeb498e738dcb0024fc7f4d793b90b95",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "id": "PIN:be18bb46da447b7684377cde",
+      "observed_blob": "a6299c1a6e8b26bd055ced1f49e5b757f20ccd8c",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:c0f278406ba3d960d806d986": {
+      "content_sha256": "f9794976aef51c418e8152850a7b0143df6790d0596549ea7f0991fc1f4501e9",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "id": "PIN:c0f278406ba3d960d806d986",
+      "observed_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:c582e3d94397275dd5b98c33": {
+      "content_sha256": "0aed99e0f468249d170055c0630f5341a9132d9d39caea30a2e91d004062dd89",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:c582e3d94397275dd5b98c33",
+      "observed_blob": "1c8301d0f4126edfa3d77cedf0235ad2632e44e3",
+      "path": "PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/AUTOMATED_WORKLOAD_CONSTRUCTION_CRITICAL_GATE.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:c5ca5db5d8aa8f442bb5d120": {
+      "content_sha256": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "id": "PIN:c5ca5db5d8aa8f442bb5d120",
+      "observed_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:ca687cd92db40865e614ba31": {
+      "content_sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "id": "PIN:ca687cd92db40865e614ba31",
+      "observed_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:d2b6f156525e942e5d520dd3": {
+      "content_sha256": "98cc4a4a670ff8d73f58c888b824124d5c8e3370264866db08e9a18f84220a1a",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:d2b6f156525e942e5d520dd3",
+      "observed_blob": "085a19b2a6fe740be6280bf4d3ef1ed41353ff4b",
+      "path": "HQ_HANDOFF/LATEST.json",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:d3aa03aa15746be3aa91040f": {
+      "content_sha256": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:d3aa03aa15746be3aa91040f",
+      "observed_blob": "31e84f49d624f5524906e9e7839d2873106f8249",
+      "path": "rawlsing_next/pre553_issued_workload.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:d4f08efd409a558ac0869281": {
+      "cut": null,
+      "expected_blob": null,
+      "id": "PIN:d4f08efd409a558ac0869281",
+      "observed_blob": null,
+      "path": "/Rawlsing/PYAT HQ/LATEST.json",
+      "role": "source",
+      "status": "UNRESOLVED_NONIMMUTABLE_REFERENCE"
+    },
+    "PIN:d7f3086a9ad1d9fa339b06b2": {
+      "content_sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "id": "PIN:d7f3086a9ad1d9fa339b06b2",
+      "observed_blob": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:d86d4a4f3368160e588cb4c1": {
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:d86d4a4f3368160e588cb4c1",
+      "observed_blob": null,
+      "path": "refs/heads/integration/pre-main-reconciliation-r1",
+      "role": "source",
+      "status": "UNAVAILABLE_AT_DECLARED_CUT"
+    },
+    "PIN:da286f5bd9eae1910bb71ebd": {
+      "content_sha256": "19940300b016c2d0c92d6b8281f0a39c2aa396fa18e6388deba3103d033c2439",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:da286f5bd9eae1910bb71ebd",
+      "observed_blob": "d244eaaa48f878f83d77a305b54e6dcde37244c5",
+      "path": "rawlsing_next/tests/test_pre553_route_b_production.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:dc96079db31547145991a71b": {
+      "content_sha256": "e4f0413c1ca4717993f6a40e0b42e8b23ae3f50b0d11eeb860625e9cc0ec6261",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "id": "PIN:dc96079db31547145991a71b",
+      "observed_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:df64e611c812579296355ff7": {
+      "content_sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "id": "PIN:df64e611c812579296355ff7",
+      "observed_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:e14a67fbb0b2a1d5064234be": {
+      "content_sha256": "028aa1366b006729979f921ecda542cef9e937e34f8d7c09689fdff609b1c54c",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:e14a67fbb0b2a1d5064234be",
+      "observed_blob": "34ab1f6af51a79e5862896a622304b0fe485c15b",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/sources/SRC35.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:ea74121b2381f4fd54456f18": {
+      "content_sha256": "e0eb896c10e46fbb054080bf15c29ba7574b4a11c107bae06f2cf5356b3da18b",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "f4f600a97d6ca92fe17b3426c1acb5fe3b201b6a",
+      "id": "PIN:ea74121b2381f4fd54456f18",
+      "observed_blob": "f4f600a97d6ca92fe17b3426c1acb5fe3b201b6a",
+      "path": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N11.md",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:f27e7eadebd53470fccfd004": {
+      "content_sha256": "ba9d42f45771aa0986a217dffce672f551b2f12996b420e5a92c286c12d067bc",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:f27e7eadebd53470fccfd004",
+      "observed_blob": "e67401c9936173286f55f790f6f68b8a55d2e72f",
+      "path": "PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md",
+      "role": "source",
+      "status": "VERIFIED"
+    },
+    "PIN:f39d0573562d583e6d677641": {
+      "content_sha256": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "id": "PIN:f39d0573562d583e6d677641",
+      "observed_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "role": "implementation",
+      "status": "VERIFIED"
+    },
+    "PIN:f93c0f9ac51e3147039c83cf": {
+      "content_sha256": "3848b5ee7c0c1674518ef21b55553b3e646119332415ffc824394438aaa59c33",
+      "cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+      "expected_blob": "3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a",
+      "id": "PIN:f93c0f9ac51e3147039c83cf",
+      "observed_blob": "3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a",
+      "path": "rawlsing_next/source_configuration/factory.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    },
+    "PIN:fb0a37610b4336533d0a3f95": {
+      "content_sha256": "eacc63ca9a067ebde53005fec9c859ce304cbedcf42b1b338b4fece49158b720",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": null,
+      "id": "PIN:fb0a37610b4336533d0a3f95",
+      "observed_blob": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "role": "reported_test",
+      "status": "VERIFIED"
+    },
+    "PIN:ff5982a31895684d7a688567": {
+      "content_sha256": "808fd0bd8e2423c047268285c00ca43f0f4cdbff80ed1ad286e3c6c56b8f7217",
+      "cut": "9809203fd915a84bae056a67210e9213879840db",
+      "expected_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "id": "PIN:ff5982a31895684d7a688567",
+      "observed_blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "role": "exact_seam_source",
+      "status": "VERIFIED"
+    }
+  },
+  "status": "OK"
+}
