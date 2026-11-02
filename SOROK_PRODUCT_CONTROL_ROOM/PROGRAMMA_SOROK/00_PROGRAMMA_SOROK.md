@@ -1,6 +1,18 @@
 # PROGRAMMA SOROK
 ## Complete psychological-developmental and human-product science, historical inheritance and source-qualified lived person
 
+### 2026-11-02 USER CLARIFICATION — READ THIS FOR THE INTENDED FINITE PROGRAMMA DELIVERABLE
+
+The whole Sorok development undertaking (historically constituted person, world, actor, experience and product) is the **SUBJECT being mapped**, NOT what the PROGRAMMA guide-building project itself implements. The current explicit user aim is a **lean, comprehensive, source-referenced MASTER GUIDE for finishing Sorok**: findable existing assets, best-current architecture and historical variants, exact maturity and first consumers, recursive prerequisites, actual seam/connection health, reverse unlocks, preserved completed work and source-linked next actions. It is a finite consolidation/reconciliation exercise, not an app, interactive ChatGPT surface, extra controller, independent scientific method, or forever-growing platform.
+
+Read these three **proposed / isolated-branch user clarification anchors** in order (not yet adopted into protected PRE-MAIN):
+1. [03 — END PRODUCT / SPECIFICATION](03_USER_DEFINED_MASTER_GUIDE_TARGET_AND_SPECIFICATION_20261102_R1.md): what a fresh HQ/agent must be able to find, the source/reference/component/seam conventions, priorities and stop condition.
+2. [04 — GITHUB-FIRST ASSEMBLY COURSE](04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md): inventory accessible sources and most recent qualified Sorok vision, sketch best architectural spine, attach all available/historical assets, sweep dependencies/seams, seek Library/mainMac only for *exact* remaining source gaps, unfamiliar-agent use-test and finish.
+3. [05 — VERIFIED STARTING ASSETS](05_INHERITED_WORK_AND_INITIAL_GITHUB_ANCHORS_20261102_R1.md): existing O-INDEX, O-LIVE, W1 A–E, Sorok primary vision/architecture, original/Neo engineering and GitHub coverage, plus limitations and bounded external leads.
+
+**Interpretation boundary:** Older sections below describe the substantive Sorok product and earlier *proposed* always-running Programma machinery. Do not treat those runtime ambitions, giant independent review cycles or person-production terminal tests as mandatory for *building this guide*. They remain historical design inputs unless separately authorized by the user. The guide can be complete while Sorok development remains open. Reuse prior O-INDEX/O-LIVE work instead of reconstructing it. A branch commit does not authorize source/science/actor rights or protected merge.
+
+
 **Full name:** **Programma Sorok — Objective World → Historical Development → Continuing Person**.
 **Parent constitution:** `../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`. **Twin:** `../../PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md`.
 **Status:** User-approved Programma Sorok scope/naming, canonically referenced when this document is merged into PRE-MAIN. Not a new Sorok leader, Native CAN008/011/ADP/SCI05 issuer, Pyat source gate, production/actor activation, worker launch, C11 weld or merge right.
