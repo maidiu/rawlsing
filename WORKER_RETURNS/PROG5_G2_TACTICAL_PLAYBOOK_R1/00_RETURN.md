@@ -1,0 +1,45 @@
+# PROG5-G2-T — independent finite tactical playbook return
+
+**ROLE:** independent I3+ strategic-method adviser only; not Pyat HQ, G1/G2, original science/source issuer, engineering adopter, reviewer or authority. **SURFACE:** S0–S1 authenticated private GitHub, static source/commission reading and assigned-branch documentation only; **no S2/S3**, no production code, original respondents, PRE-MAIN writes, Library/mainMac, new agents or launch of G2. **User-selected model/effort:** Browser GPT-6 High proposed; actual host setting/quota/cost unverified.
+
+**ASSIGNED BRANCH:** `agent/prog5-g2-tactical-playbook-20261102-r1`. Source startup `95c508426d3379c985565b15fda86d0fa1d6bc59`; current prepared branch before this worker's writing `41393bc5d459b30712fcc3a7762e75e810723569` (one commission file added to startup). **Source cuts pinned:** PRE-MAIN `9809203fd915a84bae056a67210e9213879840db`, main `25830fe7462bb9e29bc4087e6ae14f3f84cec377` for inherited evidence; no implied future live state.
+
+## FINDING / single builder versus split
+
+**ONE G2 Browser principal is the correct first rough-map builder.** The source estate already contains Astra's 16-node DAG, Whole-Machine 101/151 separate obligation registers, the full 35-source identity ledger, a rough eleven-organ spine, W1-A–H cross-index/proof-limited references, and three new G1 source-territory returns. The challenge is disciplined indexing, section breadth, source chronology and browser context recovery, not a lack of strategic committees.
+
+**All three G1 terminal returns were observed complete on the second check:** A `3ac2bfeca4c79ae794bb896483d79ab195307e92`, B `7ee67766503a13d2eae6441afda1a869b83a40e6`, C `5f46bbe3e9176724f79c85d9951cb864621706cd`. B `00_RETURN.md` was initially missing at `632d8b9…` but subsequently present at `7ee6776…` (blob `deec7f7790a9917a8c64a53d50f507d4255eaaa7`). **G2 must still lock live final heads and promised file inventories at its own start**, respecting the unchanged commission DEPENDENCY STOP; tactical inspection does not start G2.
+
+**Supporting agents:** not justified now. Only suggest 1–2 independently bounded *fact* investigators if after two source-lookups ≥15 consequential unplaced function/consumer rows span ≥2 organs, or ≥2 important conflicting same-grain owner/receiver claims remain unresolved; report IDs and attempted sources, and obtain user authorization. No additional roadmap authors or automatic G1 reissue.
+
+## Five tactical decisions
+
+1. **Whole-map-first 11-organ spine.** Publish S01 source/authority, S02 U/Epre, S03 Route B/C11/I03/I05/Batch, S04 F1–4, S05 learned, S06 Field Forge/F5, S07 F6, S08 F7, S09 N9, S10 N10E/N10W/F8, S11 N11/N12; all outline pages before deep currentness/polish. Dva/Trii/Chetiri/LM as cross-reference overlays.
+2. **Two-pass pages.** Pass 1 purpose/children/original IDs/expected interfaces with `UNKNOWN`; Pass 2 small current-source and strongest old/pending references, exact grades and first reader/UNKNOWN. No scientific/source-native acceptance or completion adjudication by the doc builder.
+3. **Compact no-drop accounting, not hundreds of essays.** 656 W1-A rows encode 623 unique identities; 35×54=1,890 cells are document accounting not original operations. Retain separate 101 and 151 class IDs, and W1-H's 164 unresolved joins. One input-row disposition per relevant G1 row: linked to section(s) or expressly UNPLACED/REFERENCE_ONLY with reason and source; balance counts by file and test top-down/bottom-up.
+4. **Small commits + tiny checkpoint.** Batch 0 input locks; 1 all-organ TOC/coarse pages; 2 three bounded page groups; 3 prerequisite links; 4 source-row accounting; 5 forward/reverse practical navigation and return. An eight-line `ASSEMBLY_CHECKPOINT.md` makes later context compression recoverable without rereading bulk W1-H/G1 data.
+5. **Reuse read-only; do not program a roadmap platform.** W1-H independently reviewed sourcefree graph and the frozen Astra `index.html` are navigation/citation aids; simple Markdown pages with `INDEX.jsonl`, `PLANNED_INTERFACES.jsonl`, and one G1 disposition file suffice. No auto-ingest, graph UI, daemon, database, new CI or wholesale PR #615 import.
+
+## Direct source anchors actually read
+
+**Product/courses (exact startup):**
+- [PROG5 product specification](https://github.com/maidiu/rawlsing/blob/95c508426d3379c985565b15fda86d0fa1d6bc59/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/01_PROG5_PRODUCT_SPEC.md), [finite construction course](https://github.com/maidiu/rawlsing/blob/95c508426d3379c985565b15fda86d0fa1d6bc59/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/02_PROG5_FINITE_BUILD_COURSE.md), [source queue](https://github.com/maidiu/rawlsing/blob/95c508426d3379c985565b15fda86d0fa1d6bc59/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/03_PROG5_EXISTING_WORK_AND_SOURCE_QUEUE.md), [rough spine](https://github.com/maidiu/rawlsing/blob/95c508426d3379c985565b15fda86d0fa1d6bc59/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/04_PROG5_ROUGH_SPINE.md) and `00_PROGRAMMA_PYAT.md`.
+- [G2 prepared commission](https://github.com/maidiu/rawlsing/blob/5a5925b771dee0facf2fb28f53e15554b6670224/WORKER_COMMISSIONS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_COPY_PASTE_LAUNCH.md), plus G1-A/B/C commissions at `afa9c1eefe45e463da4eeb05a1a74243edf399de` / `7852f95b911676901f59db1e1661e65c53bbbe43` / `71e8fc1b097701da56ec97ba611f9052ba7dfabc`.
+- [G1-A final return](https://github.com/maidiu/rawlsing/blob/3ac2bfeca4c79ae794bb896483d79ab195307e92/WORKER_RETURNS/PROG5_G1_A_MAIN_HERITAGE_R1/00_RETURN.md), [G1-B final return](https://github.com/maidiu/rawlsing/blob/7ee67766503a13d2eae6441afda1a869b83a40e6/WORKER_RETURNS/PROG5_G1_B_CURRENT_OWNERS_R1/00_RETURN.md), [G1-C final return](https://github.com/maidiu/rawlsing/blob/5f46bbe3e9176724f79c85d9951cb864621706cd/WORKER_RETURNS/PROG5_G1_C_ARCHITECTURE_PLANS_R1/00_RETURN.md); A historical capability report, B current/code-coverage and pending comparisons, C `PROPOSED_WHOLE_SPINE.json` and coverage inspected at those same cuts.
+- [Astra PROGRAM](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/PROGRAM.md), `DEPENDENCY_DAG.md`, `report/D_CANONICAL_ARCHITECTURE_SPINE.md`, `report/Y_FINAL_ORDERED_PROGRAM.md` and `data/nodes.json`; Whole `GLOBAL_WORK_REGISTER.md` and `TASK_LEDGER_101_MACHINE.json` at the same canonical PRE-MAIN cut.
+- [W1-H independently reviewed sourcefree return](https://github.com/maidiu/rawlsing/blob/dbd79795b99b2ac7abca47feba454be82b385e30/WORKER_RETURNS/PROGRAMMA_PYAT_W1_H_MASTERMAP_FANIN_R1/00_RETURN.md), `INDEPENDENT_REVIEW.md`, `rawlsing_next/programma_pyat_reference/reference.py` and `input_lock.json`. Its real return root is `PROGRAMMA_PYAT_W1_H_MASTERMAP_FANIN_R1` (earlier guessed `PROGRAMMA_PYAT_PREP_W1_H…` is wrong).
+- Static direct code checks at pinned PRE-MAIN: `rawlsing_next/pre553_universal_workload.py::compile_governed_frontier` line 473 (caller-frozen `ScientificFrontier`), and `rawlsing_next/pre553_route_b_production.py::execute_route_b_production` line 494 (caller `i03_requests`/`discovery_authority_ref`). The unresolved seam is original-issued source→native executable preimages, **not absent generic compiler**.
+
+## Return and uncertainty
+
+**Files:** `G2_OPERATOR_PLAYBOOK.md` (run order, sections, rows, example, no-drop, 0–5 batch exits and narrow-help threshold); `G2_PROMPT_DELTA.md` (four precise insertion/replacement locations, not full commission rewrite); this `00_RETURN.md`.
+
+**Engineering:** `S1_TACTICAL_PLAYBOOK_DELIVERED__NO_G2_EXECUTION_OR_NATIVE_TEST`. **Scientific:** `ORIGINAL35_ELIGIBILITY_FIELD_F6_F7_WORLD_N9_N10W_UNISSUED_HERE`. **Authority:** `NO_BRANCH_MERGE_OR_OWNER_REVIEW_SOURCE_ACTOR_GRANT`. The 20 hostile W1-H tests are independent **sourcefree map proof**, not tests this tactician ran.
+
+**Known limits:** this is an operational **method**, not a completed whole-Pyat guide or a re-audit of every GitHub file. Source snippets, selected current symbols and G1 returned counts are checked at named cuts; no local execution, in-process Mac state, survey data, full Library inventory, fresh native permission or actual N11/N12 acceptance. The exact main/PRE-MAIN current branch heads may advance; G2 locks observed exact source cuts afresh. The principal G2 is not launched by this return.
+
+**Five hazards preserved:** omitted major organ, wrong plan chronology, false same-name aliases, promotion of historical/sourcefree/fixture to functioning native receiving, browser context or uncommitted-document loss. The guide's explicit checks defend each cheaply.
+
+**Next action:** receiving prog5 principal reads the concise operator playbook and optional target-specific prompt delta, then—if authorized—has G2 follow its own existing return/dependency contract with the now-visible A/B/C terminal inputs. No new independent commission, platform, or review court is created here.
+
+**Final Git SHA:** supplied by authenticated terminal branch readback, not embedded recursively in the committed file.
