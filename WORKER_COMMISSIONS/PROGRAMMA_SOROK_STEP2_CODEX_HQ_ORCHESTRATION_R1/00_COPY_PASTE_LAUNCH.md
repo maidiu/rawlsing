@@ -1,3 +1,42 @@
+# USER CORRECTION — PROGRAMMA SOROK IS A FINITE MASTER GUIDE, NOT A SOFTWARE PRODUCT
+**Direct user clarification, 2026-11-02. THIS SECTION OVERRIDES conflicting ambitions, project phases, implementation dependencies and acceptance thresholds later in this older mission. Preserve previous material as historical source, not standing instructions to extend the build.**
+
+### What is being built
+
+PROGRAMMA SOROK is the **practical, comprehensive master guide and roadmap for FINISHING the Sorok side of Rawlsing**. It organizes, labels, cross-references and reconciles what already exists. The original Sorok person/product is what the guide is ABOUT; it is emphatically **not what PROGRAMMA itself produces**. Neither a simulated person nor a ChatGPT app nor a continuously operating graph platform is a deliverable of this effort.
+
+PROGRAMMA'S concrete job:
+- Start with the original vision, S0–S16, C/A/Neo requirements, Astra and existing product/experience constraints; crosswalk every substantive requirement to inherited research, decisions/WHY_NOT, original V3 and modern code/functions, first actual consumers, evidence and current owner.
+- Reuse the complete prior W1 A–E investigations, already existing Sorok and Astra roadmaps, CMD/PROGRAMMA, engineering source audits, historic Q/D/R, RRIF's final archive and active HQ records. Link to their actual cuts; do not independently re-do the exhaustive surveys.
+- Label what is ONLY an idea, what needs theoretical specification, architecture, code, integration, source/owner authority, validation or actual human-product work. Surface important requirements implied by the existing visions even when no code or task exists; label inference vs source proof.
+- Provide one coherent overall trajectory, an honest present-status/gaps crosswalk, dependencies and **the next practical Sorok development roadmap**, with owner, exact currently usable capital and specific next action.
+- Make this findable, easy to read and usable by an incoming HQ and ordinary agents. GitHub Markdown and compact source-backed tables/links are sufficient; sourcebook/CSV/JSON can support it where helpful. One document/section need not be replicated across multiple platforms.
+
+### Finite execution, not indefinite platform construction
+
+The whole effort must now be closed in **at most THREE coherent, substantial cycles** (these are guide-assembly cycles, NOT new permanent development phases):
+1. **ASSEMBLE / LABEL:** Fan in the existing visions/roadmaps, W1 returns, program registers, existing code/function audit, branch-review histories and current worker snapshots into one navigable master guide and source→requirement→function→first-consumer crosswalk. Begin with actual inherited material, not a new general research wave. Note genuine holes with SOURCE_NOT_READ / UNRESOLVED rather than investigating indefinitely.
+2. **RECONCILE / MAKE ACTIONABLE:** Against the terminal Sorok vision, classify real ideation/theory/architecture/engineering/integration/validation gaps, preserve alternative accounts and historical negative results, identify actual dependencies/owners, and write the next realistically actionable integrated Sorok development roadmap. Ask what can be achieved with existing code before suggesting new building.
+3. **CHECK / HAND OFF / STOP:** One focused contradiction/completeness pass across the original key sources and actual current code/consumers; correct material mislabeling; give a clean HQ quick-start and update instructions; declare PROGRAMMA GUIDE ASSEMBLY DONE with honestly marked unresolved Sorok work. Do not require missing original science to be solved for the *guide* to be complete.
+
+STOP RULE: The guide is done once an HQ can find (a) what Sorok is supposed to become, (b) all major existing relevant plans/capabilities and what they actually establish, (c) all major known or source-inferred remaining theory/design/code/integration/validation obligations, (d) which existing resources and owners answer each, and (e) a coherent next Sorok completion roadmap. Exhaustive reading of every archived page, automated state ingestion, a production web UI, and demonstrating a native person are NOT guide completion requirements.
+
+### Freeze platform creep immediately
+
+The current O-LIVE/P0/P1 implementation and repair at codex/programma-sorok-p0-p1-repair1-20261102@fa8a2b1f75cd2ee2153a813215f51dea88e16a4b are **OPTIONAL SOURCE/INDEX AIDS ONLY**, not the defining PROGRAMMA artifact. Keep that work as candidate evidence; it has 62 author-pass tests but no independent adoption. There is no reason to commission further runtime integrity engineering, HTML/UI, database, event sourcing, API, agent controller, automated scheduler, self-updating reference or standalone ChatGPT connection just to finish the guide. If a small existing script makes crosswalk assembly faster, use it; otherwise use source-linked Markdown/tables. Do not make the code a blocker.
+
+There is no need for another broad independent W1 investigative wave or repeated reviewer court. Basic spot-checking of important source cuts, major contradictions and first-consumer claims is enough for labeling the guide; clearly mark uncertainty rather than expanding another verification industry. Preserve science/source/native/human distinctions because they matter to the SOROK ROADMAP, not because PROGRAMMA itself needs production acceptance.
+
+Do not treat node/edge/gap/test counts as progress. Progress is the number of major originally required domains correctly reconciled and made actionable in the guide, with visible remaining source gaps. Reconcile existing active work before commissioning: no overlapping branch/worktree or duplicate worker.
+
+### Immediate HQ next action
+
+Stop issuing new O-LIVE platform-engineering or research commissions. Use the existing five W1 returns, 2026-11-01 joint synthesis, Sorok original 00–103/source registers, Astra and complete-code audit; make a practical **outline of the final MASTER GUIDE and two/three-cycle fan-in** based on source material already read. Then execute substantial assembly and reconciliation work in the fewest non-overlapping long flights the actual selected authorized host permits. Small tests/reviews only when required to avoid materially false claims. **Finish the guide, mark it DONE, and return attention to building Sorok itself.**
+
+Older instructions below that say "build comprehensive operating intelligence", "P0/P1", "expand semantic source coverage indefinitely", "append-only journal", "independent reviewer after each pass" or "full operational ingestion" must be interpreted under this narrower FINITE MASTER-GUIDE charter. This user correction is a direct override of the previous assistant's overengineered plan, not an invitation to create another meta-plan.
+
+---
+
 # LAUNCH — PROGRAMMA SOROK STEP 2 — CODEX HQ BUILD COMMAND
 REPOSITORY: maidiu/rawlsing PRIVATE. Model/editor: current user-selected continuing Codex Sorok HQ session; no silent model/host/effort switch.
 ROLE: Continuing already appointed Codex Sorok HQ ONLY if same incumbent/session/actual authority verified. Otherwise read-only future mission. HQ-only: strategic direction, commissions, verified return/reviewer intake and coherent program organization. No direct product code. User manual worker launches until verified named controller automatic lane separately authorized.
