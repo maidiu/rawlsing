@@ -10,6 +10,15 @@ Read these three **proposed / isolated-branch user clarification anchors** in or
 2. [04 — GITHUB-FIRST ASSEMBLY COURSE](04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md): inventory accessible sources and most recent qualified Sorok vision, sketch best architectural spine, attach all available/historical assets, sweep dependencies/seams, seek Library/mainMac only for *exact* remaining source gaps, unfamiliar-agent use-test and finish.
 3. [05 — VERIFIED STARTING ASSETS](05_INHERITED_WORK_AND_INITIAL_GITHUB_ANCHORS_20261102_R1.md): existing O-INDEX, O-LIVE, W1 A–E, Sorok primary vision/architecture, original/Neo engineering and GitHub coverage, plus limitations and bounded external leads.
 
+**Actual first assembly from GitHub, 2026-11-02 (source-backed, guide candidate; not canon):**
+- [06 — WORKING WHOLE ARCHITECTURE SPINE](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md): actual Sorok whole goal and mid-level S0–S16 organization, source/proof ceilings and named sections SP-00–SP-140.
+- [07 — EXACT GITHUB ASSET LOCATOR](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json): 262 commit/blob/path-addressed available files from original Sorok, dockets, Q/D/R, W1, current code, Astra and reference candidates. Path-level inventory, not 262 source-content readings.
+- [08 — FIRST SEAM/DEPENDENCY RECEIPTS](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json): 22 exact source-cited, cut-scoped relations and provisional interface statuses, preserving historical/test-only/native boundaries.
+- [09 — ALL 144 INHERITED SOURCE/FUNCTION ROWS ANCHORED](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json): all previously recovered rows, 17 original S questions/outputs, 64 named functional organizational placements; 80 historical/edge/candidate rows retained at broad category awaiting real function/consumer reconciliation.
+- [10 — ACTUAL REMAINING RECONCILIATIONS / SOURCE NEEDS](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md): specifically bounded unmatched historical implementation, consumer, current-cut and mainMac questions plus unfamiliar-agent finish test.
+
+The JSON source locator/row/seam files were fetched and parsed again at current branch, counts/IDs/Git hex identities and every seam evidence array checked: zero structural failures found. These readbacks are not content-completeness proof, independent code execution or original science/owner acceptance.
+
 **Interpretation boundary:** Older sections below describe the substantive Sorok product and earlier *proposed* always-running Programma machinery. Do not treat those runtime ambitions, giant independent review cycles or person-production terminal tests as mandatory for *building this guide*. They remain historical design inputs unless separately authorized by the user. The guide can be complete while Sorok development remains open. Reuse prior O-INDEX/O-LIVE work instead of reconstructing it. A branch commit does not authorize source/science/actor rights or protected merge.
 
 
