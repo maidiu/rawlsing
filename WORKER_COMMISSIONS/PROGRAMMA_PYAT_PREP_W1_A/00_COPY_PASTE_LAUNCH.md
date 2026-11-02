@@ -4,22 +4,26 @@ INTELLIGENCE_LEVEL: I3+
 REPOSITORY: maidiu/rawlsing (PRIVATE)
 ROLE_AND_INDEPENDENCE: Independent whole-Pyat architecture and decomposed-plan reconciler; not HQ, prior Astra author, integrator or own reviewer; independent S0–S1 evidence investigator, no authority to adopt or review own work
 SINGLE_AGENT_FULL_DELIVERABLE: YES
-EXECUTION_SURFACE: S0–S1 authenticated private GitHub and available native ChatGPT Library; source/code reading and Git API only; no local S2 tests or S3 native source execution
-USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High PROPOSED; user must select and verify in actual harness; no autonomous model/editor/host change
-MODEL: GPT-6 proposed
-REASONING: HIGH proposed; verify actual effort
+EXECUTION_SURFACE: S0–S1 Browser authenticated private GitHub and native ChatGPT Library documentary/source inspection ONLY; no local S2 or source-native S3; declare exact local evidence needs to integrator
+USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High PROPOSED and recommended; explicitly selected by user; no automatic editor/model/harness change
+MODEL: GPT-6 proposed (ChatGPT Browser)
+REASONING: HIGH selected recommendation; verify actual user-selected effort
 MODEL_MAX_AVAILABILITY: UNKNOWN until user-selected harness confirmed
 HOST_ACCOUNT_QUOTA_COST: UNKNOWN; do not invent tokens/limits or worker execution
 BRANCH: research/programma-pyat-w1-a-architecture-crosswalk-20261101-r1
 EXACT_STARTUP_SHA: acbe2326c8f52dfe8bfa200e87c5c07a62a5c93a
 CANONICAL_READ_CUT: integration/pre-main-reconciliation-r1@9809203fd915a84bae056a67210e9213879840db; recheck LIVE, report changed head
 FIRST_ACTION: Read full shared WORKER_COMMISSIONS/PROGRAMMA_PYAT_PREP_W1_COMMON/00_SHARED_MASTER_MAP_CONTRACT.md at EXACT_STARTUP_SHA, plus PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md, Astra and Whole-Machine references as applicable
+ORIGINAL_W1_PREPARED_SHA: 013702f61ea26ad54de9be4a7ee8b3f81b31467d
+ROUTING_REVISION: R2 explicit Browser choice (original immutably pinned SHA retained)
+HOST_SELECTION_REASON: Requires I3+ high-level reconciliation across Astra, global requirements and nested plans; primary evidence is source documentation and GitHub code pointers. Local compilation/testing is not an accepted proof need for this lane.
+LOCAL_FALLBACK: If essential source is not readable from GitHub/Library, record exact path/blob and justified S2 work needed; no automatic OpenCode/Codex switch.
 ACTIVE_WORKER_NO_DISTURBANCE: YES; no inference that a remote branch is a running local process; do not mutate other worker branches
-BROWSER_SUFFICIENCY: FULL for documentary source/code/plan mapping at exact Git cuts; runtime validation specifically UNPROVED and separately identified
-WHY_NOT_BROWSER: Browser IS the selected surface for this S1 reconnaissance; do not fabricate S2
-WHY_NOT_FLASH: Local DeepSeek MAX not needed for this GitHub/Library documentary evidence task; actual local tests later
-WHY_NOT_CODEX_HIGH: No demonstrated need for expensive protected code changes or local execution
-WHY_NOT_MIDDLE: User-selected HIGH required for I3 source synthesis; no automatic lowering
+BROWSER_SUFFICIENCY: FULL for the specified documentary and source/static-code mapping, but NOT proof of local executable/runtime or native source claims
+WHY_NOT_BROWSER: Browser is the correct selected S1 surface. Requires I3+ high-level reconciliation across Astra, global requirements and nested plans; primary evidence is source documentation and GitHub code pointers. Local compilation/testing is not an accepted proof need for this lane.
+WHY_NOT_FLASH: OpenCode/DeepSeek MAX unnecessary at this phase because no local full-tree execution or safe sourcefree regression is required to answer the lane's documentary mandate
+WHY_NOT_CODEX_HIGH: Codex High unnecessary for this S1 architecture/authority reconciliation; later actual implementation goes to separate qualified code owner
+WHY_NOT_MIDDLE: GPT-6 High selected for deep multi-document synthesis; no automatic lower effort; current token or quota economics unverified
 SCIENCE_SOURCE_ACTOR_AUTHORITY: NONE; no original source rights, scientific meaning issuance, production/N11/N12, actor/Sorok, protected CAS or reviewer-adoption grant
 POST_RETURN_INDEPENDENT_REVIEW: separate integrator and independent hostile whole-map reviewer after return; do not self-adopt
 REQUIRED_PRIMARY_SOURCES: Shared contract, Astra PYAT atlas, Whole-Machine Completion G/S/P/Q/L/F/T/W/A and 101/matrices, current code, RRIF finite closeout, source/owner proofs as actually relevant
