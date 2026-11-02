@@ -72,7 +72,8 @@ def initialize() -> dict:
         patch = lr._load(lr.OSCIENCE_PATCH)
         events = [
             lr._event("GENESIS", {
-                "baseline_sha": lr.STARTUP_SHA,
+                "baseline_sha": lr.ENGINEERING_BASELINE,
+                "olive_source_sha": lr.OLIVE_SOURCE_SHA,
                 "seed_build_premain": lr.SEED_BUILD_PREMAIN,
                 "seed_schema": lr.SCHEMA,
                 "p1_seed_schema": "SOROK_PROGRAMMA_P1_SEED@1",
@@ -111,6 +112,10 @@ def initialize() -> dict:
                     "status": "UNREVIEWED_CANDIDATE_EVIDENCE",
                     "missing_stages": ["T", "A", "E", "C", "V"],
                     "existing_evidence": ["W1-A return at e7787d7f"],
+                    "locator": {
+                        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+                        "quote": "No single technical milestone or personality description can certify it.",
+                    },
                     "alternatives": ["treat selected reads as complete", "continue breadth ingest with visible limits"],
                     "dependencies": ["SOROK_HQ intake"],
                     "affected_consumer": "SOROK_HQ operator",
@@ -123,6 +128,10 @@ def initialize() -> dict:
                 "node_updates": [{
                     "id": "W1_A_RETURN",
                     "evidence": {"return_sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7", "grade": "CANDIDATE_NOT_PROMOTED"},
+                    "locator": {
+                        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+                        "quote": "No single technical milestone or personality description can certify it.",
+                    },
                 }],
             }, created_at="2026-11-01T18:00:03+00:00", source={
                 "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",

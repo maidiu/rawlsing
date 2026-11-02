@@ -1,0 +1,1810 @@
+{
+  "checked_local": 80,
+  "external_not_reverified_locally": 3,
+  "failures": [
+    {
+      "node": "V3_RUN_ONE_YEAR",
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+      "ref": {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 60,
+        "line_start": 12,
+        "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+        "symbol": "run_one_year"
+      },
+      "status": "UNREAD"
+    },
+    {
+      "node": "V3_PERSONA_SHEET",
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+      "ref": {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 490,
+        "line_start": 446,
+        "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash 4a000953; do not conflate.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/io/persona_sheet.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "b90fe456b010cb7f8f8d09275c77be7a205a0b7748140dec4c4c103fa0b9c74a",
+        "symbol": "build_persona_sheet"
+      },
+      "status": "UNREAD"
+    },
+    {
+      "node": "V3_EXTERNAL_SIMULATION",
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+      "ref": {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 170,
+        "line_start": 160,
+        "note": "Imports run_one_year and build_persona_sheet; calls at lines 563 and 749.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/server/generation/simulation.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "ac0ce203becfbb3d3a7ac942014d8eb2257bfd1fb450ddc2536a98d97058cd6b",
+        "symbol": "run_simulation_for_session"
+      },
+      "status": "UNREAD"
+    },
+    {
+      "node": "V3_SERVER_TURN",
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+      "ref": {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 160,
+        "line_start": 110,
+        "note": "Imports load_persona_sheet_with_integrity at line 127 and calls it at line 157.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/server/chat/turn.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "10e7f02333dac36b4baddd455b3655685413ed41a88d12a375b1cee9be9394b3",
+        "symbol": "chat_turn"
+      },
+      "status": "UNREAD"
+    },
+    {
+      "node": "V3_V2_LOADER",
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+      "ref": {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 175,
+        "line_start": 37,
+        "note": "Historical V2 persona-sheet loader; not a current PRE-MAIN importer.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/v2/run_conversation_chat.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "4d8b5772a8291d0c12e29c8809a2edfdb13d3942141edbc124aa036abeb41f91",
+        "symbol": "load_persona_sheet_with_integrity"
+      },
+      "status": "UNREAD"
+    },
+    {
+      "node": "V3_EXTERNAL_MEMBER_HASH_MISMATCH",
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+      "ref": {
+        "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+        "line_end": 60,
+        "line_start": 12,
+        "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+        "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+        "reader": "PROGRAMMA_ENGINEER_R1",
+        "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+        "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+        "symbol": "run_one_year"
+      },
+      "status": "UNREAD"
+    }
+  ],
+  "node_status": {
+    "PURPOSE_UNCHOSEN_NEIGHBOR": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "b715c67766073ee363720020466ea979ac29653a",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 43,
+            "line_start": 7,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/01_PRODUCT_CHARTER.md",
+            "quote": "Rawlsing presents a neighbor. Attachment, trust, health, pleasure, compliance, intimacy, benefit, dependency and access must remain distinct.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_100_ALPHA": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "bd08a138ebf82522d7c90bb7e702d79697b3c240",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 35,
+            "line_start": 9,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md",
+            "quote": "What is the cheapest bounded product in which the user still encounters an unchosen, independently caused person through partial perception, actual user-owned action, irreversible history and non-player-centric consequence? CORE INVARIANT MAY NOT BE BRACKETED. FIDELITY MAY BE BRACKETED.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_101_BINDING": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 90,
+            "line_start": 18,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "CAUSAL NADIA != OBSERVABLE NADIA != USER-EXPERIENCED NADIA != USER-INTERPRETED NADIA. Actor/world realization must occur before user-phenomenal personalization.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 659,
+            "line_start": 637,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "NORMAL LIVE TURN = DEEPSEEK-CLASS TRANSDUCTION CALL x1 + CLAUDE-CLASS ACTOR REALIZATION CALL x1. NORMAL_LIVE_MODEL_CALL_TARGET = TWO.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "Q_KERNEL_001": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "ae4c120b4e15bd9e5088cacc9c4d1fa5257d1770",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 34,
+            "line_start": 19,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/03_REAL_ALPHA_SPINE.md",
+            "quote": "KERNEL = UNRESOLVED. None is yet adjudicated as the unique or sufficient generative kernel of Rawlsing.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "W1_JOINT_SYNTHESIS": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fa329d1c4c95114ab7d92b6e0265ace5fe6cfae4",
+            "commit": "e5a25cbc4f2b9d7476a72637d3e371ee3254742e",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 80,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/20261101_W1_JOINT_ARCHITECTURE_SYNTHESIS_AND_MINIMAL_BUILD_DECISION.md",
+            "quote": "One linked logical state, multiple views, original purpose first, exact source/function/consumer/reviewer/owner connections.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "ASTRA_B_SCENE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "12c5be617bff53162c88bd78d76af4eecd0545e2",
+            "commit": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 97,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/ASTRA_NATIVE_GAMEPLAY_NECESSITY_SYNTHESIS_R1/STRATA_MAP.md",
+            "quote": "Scales A-H are scales of possible experience, not stages through which a person should progress. A quiet scene need not be packed with competing demands. A narrowing relation is not automatically evidence of bad play.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "ASTRA_D_LONGITUDINAL": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "12c5be617bff53162c88bd78d76af4eecd0545e2",
+            "commit": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 97,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/ASTRA_NATIVE_GAMEPLAY_NECESSITY_SYNTHESIS_R1/STRATA_MAP.md",
+            "quote": "Scales A-H are scales of possible experience, not stages through which a person should progress. A quiet scene need not be packed with competing demands. A narrowing relation is not automatically evidence of bad play.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "ASTRA_NEGATIVE_CONTROLS": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "1e3d1084d3e15a9b6f3ba3aef568c8e9efe4a951",
+            "commit": "4f2ce6f9bdfdd2232a23d839905cb386cde96dcd",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/ASTRA_NATIVE_GAMEPLAY_NECESSITY_SYNTHESIS_R1/NEGATIVE_CONTROLS.md",
+            "quote": "Reject persona-as-puzzle/reward, savior destiny, content vending, engagement-triggered crisis, disclosure ladders, universal timed quests and moral scores.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "Q_GAME_001": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "1d099797cd3e43f574efe394e91f8aebae07ebb7",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "EXACT_ROW_READ",
+            "line_end": 1,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/registers/QUESTIONS.jsonl",
+            "quote": "Q-GAME-001 and Q-ACTION-001: status OPEN and closure_state CLOSED_FOR_ALPHA. Q-HEALTH-001: OPEN_DISCOVERY, post-alpha.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "Q_ACTION_001": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "1d099797cd3e43f574efe394e91f8aebae07ebb7",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "EXACT_ROW_READ",
+            "line_end": 1,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/registers/QUESTIONS.jsonl",
+            "quote": "Q-GAME-001 and Q-ACTION-001: status OPEN and closure_state CLOSED_FOR_ALPHA. Q-HEALTH-001: OPEN_DISCOVERY, post-alpha.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fdd35b39f1eb569eb635e5cfddd71ac078cc4f9f",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 123,
+            "line_start": 58,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/12_SMALLEST_LAWFUL_PLAYABLE_MOMENT_ADJUDICATION_R1.md",
+            "quote": "Actual contribution is morally neutral: objection, refusal, silence, inaction and moral neutrality count. No register promotion or playtest claim.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "D002_SMALLEST_MOMENT": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fdd35b39f1eb569eb635e5cfddd71ac078cc4f9f",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 123,
+            "line_start": 58,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/12_SMALLEST_LAWFUL_PLAYABLE_MOMENT_ADJUDICATION_R1.md",
+            "quote": "Actual contribution is morally neutral: objection, refusal, silence, inaction and moral neutrality count. No register promotion or playtest claim.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "Q_HEALTH_001": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "1d099797cd3e43f574efe394e91f8aebae07ebb7",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "EXACT_ROW_READ",
+            "line_end": 1,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/registers/QUESTIONS.jsonl",
+            "quote": "Q-GAME-001 and Q-ACTION-001: status OPEN and closure_state CLOSED_FOR_ALPHA. Q-HEALTH-001: OPEN_DISCOVERY, post-alpha.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "Q_ONTO_001": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "72a1a5838ec66de6edbe77a064ba2e9a80d4407e",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "RETURN_REPORT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/02_PROVISIONAL_RELATIONAL_ONTOLOGY.md",
+            "quote": "person != dyad != network; relationally constituted personhood is a hypothesis, not governed V3 law.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SPD_0003": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "52eb00706787b8be4193a02feca420ccac50cd72",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "EXACT_ROW_READ",
+            "line_end": 3,
+            "line_start": 3,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/registers/DECISIONS.jsonl",
+            "quote": "SPD-0003: Attachment, trust, health, pleasure, compliance, intimacy, benefit and dependency must remain distinguishable system variables or concepts.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "COURT10_FLOURISHING": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "9871b31ebf2697fde7d72dccd2b7f41a26cf6a43",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 132,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md",
+            "quote": "Do not collapse affection, attachment, dependence, gratitude, compliance, conflict reduction, relationship persistence, subjective happiness, user approval, flourishing. Care can become domination. Refusal can be care.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "FLOURISHING_ALT_ATTACHMENT": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "9871b31ebf2697fde7d72dccd2b7f41a26cf6a43",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 132,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md",
+            "quote": "Do not collapse affection, attachment, dependence, gratitude, compliance, conflict reduction, relationship persistence, subjective happiness, user approval, flourishing. Care can become domination. Refusal can be care.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "FLOURISHING_ALT_RETENTION": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "2a0a3a42d66f566f92d5c333fbbea4a5adb383b2",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 149,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
+            "quote": "S5 flourishing; S13 monetization; S14 safety/privacy; S15 alpha/evaluation are constitutive constraints, not optional administration.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "FLOURISHING_ALT_PLURAL": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "9871b31ebf2697fde7d72dccd2b7f41a26cf6a43",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 132,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md",
+            "quote": "Do not collapse affection, attachment, dependence, gratitude, compliance, conflict reduction, relationship persistence, subjective happiness, user approval, flourishing. Care can become domination. Refusal can be care.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SCIENCE_LEONTIEV": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "21c018830bb64ba5eb4d4545fd6017869a20bc68",
+            "commit": "5ab447a447620e65d441d2d2cfd745cb3d354a7c",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "SOURCE_GROUNDED_SCIENTIFIC_ARCHITECTURE_RESEARCH__ALTERNATIVES_OPEN__NO_NATIVE_ISSUANCE.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SCIENCE_LAHIRE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "21c018830bb64ba5eb4d4545fd6017869a20bc68",
+            "commit": "5ab447a447620e65d441d2d2cfd745cb3d354a7c",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "SOURCE_GROUNDED_SCIENTIFIC_ARCHITECTURE_RESEARCH__ALTERNATIVES_OPEN__NO_NATIVE_ISSUANCE.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SCIENCE_ARCHER": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "21c018830bb64ba5eb4d4545fd6017869a20bc68",
+            "commit": "5ab447a447620e65d441d2d2cfd745cb3d354a7c",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "SOURCE_GROUNDED_SCIENTIFIC_ARCHITECTURE_RESEARCH__ALTERNATIVES_OPEN__NO_NATIVE_ISSUANCE.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SCIENCE_SEVE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "21c018830bb64ba5eb4d4545fd6017869a20bc68",
+            "commit": "5ab447a447620e65d441d2d2cfd745cb3d354a7c",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "SOURCE_GROUNDED_SCIENTIFIC_ARCHITECTURE_RESEARCH__ALTERNATIVES_OPEN__NO_NATIVE_ISSUANCE.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "CAN011_AUTHORITY": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "1ed04e62a363493bc7032a99139454a3126e6ea0",
+            "commit": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 276,
+            "line_start": 238,
+            "object_type": "blob",
+            "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_011_V3_MIDDLE_STATE/AUTHORITY.md",
+            "quote": "Permitted generic operations: CREATE, REINFORCE, WEAKEN, TRANSFORM, SET_DORMANT, REACTIVATE, END, NO_CHANGE. Operation names supply no content; the accepted update rule defines qualification and effect. MIDDLE_STATE_UPDATE_RULE_MISSING: no exact accepted update rule; mutation blocked.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "CAN008_AUTHORITY": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "976c59086b938992114f68621f149687670e306d",
+            "commit": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+            "depth": "RETURN_REPORT_READ",
+            "line_end": 80,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_008_V3_PRESSURE_FLOW_RESPONSE/AUTHORITY.md",
+            "quote": "External event may have happened without the actor receiving it; response rule and effect legality are separate.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "CAN011_RULE_T_MISSING": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "1ed04e62a363493bc7032a99139454a3126e6ea0",
+            "commit": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 276,
+            "line_start": 238,
+            "object_type": "blob",
+            "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/CAN_011_V3_MIDDLE_STATE/AUTHORITY.md",
+            "quote": "Permitted generic operations: CREATE, REINFORCE, WEAKEN, TRANSFORM, SET_DORMANT, REACTIVATE, END, NO_CHANGE. Operation names supply no content; the accepted update rule defines qualification and effect. MIDDLE_STATE_UPDATE_RULE_MISSING: no exact accepted update rule; mutation blocked.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 80,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py",
+            "quote": "p1_s35.evaluate always returns T_NO_CHANGE; it is an isolated TEST_ONLY adapter and never installs a C9R automatic route.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "FLOURISHING_EVALUATOR_MISSING": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "9871b31ebf2697fde7d72dccd2b7f41a26cf6a43",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 132,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md",
+            "quote": "Do not collapse affection, attachment, dependence, gratitude, compliance, conflict reduction, relationship persistence, subjective happiness, user approval, flourishing. Care can become domination. Refusal can be care.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "52eb00706787b8be4193a02feca420ccac50cd72",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "EXACT_ROW_READ",
+            "line_end": 3,
+            "line_start": 3,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/registers/DECISIONS.jsonl",
+            "quote": "SPD-0003: Attachment, trust, health, pleasure, compliance, intimacy, benefit and dependency must remain distinguishable system variables or concepts.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "V3_RUN_ONE_YEAR": {
+      "status": "UNREAD",
+      "refs": [
+        {
+          "status": "UNREAD",
+          "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+          "ref": {
+            "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+            "line_end": 60,
+            "line_start": 12,
+            "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+            "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+            "symbol": "run_one_year"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+            "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT"
+    },
+    "V3_PERSONA_SHEET": {
+      "status": "UNREAD",
+      "refs": [
+        {
+          "status": "UNREAD",
+          "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+          "ref": {
+            "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+            "line_end": 490,
+            "line_start": 446,
+            "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash 4a000953; do not conflate.",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/io/persona_sheet.py",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+            "sha256": "b90fe456b010cb7f8f8d09275c77be7a205a0b7748140dec4c4c103fa0b9c74a",
+            "symbol": "build_persona_sheet"
+          }
+        }
+      ],
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT"
+    },
+    "V3_EXTERNAL_SIMULATION": {
+      "status": "UNREAD",
+      "refs": [
+        {
+          "status": "UNREAD",
+          "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+          "ref": {
+            "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+            "line_end": 170,
+            "line_start": 160,
+            "note": "Imports run_one_year and build_persona_sheet; calls at lines 563 and 749.",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/server/generation/simulation.py",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+            "sha256": "ac0ce203becfbb3d3a7ac942014d8eb2257bfd1fb450ddc2536a98d97058cd6b",
+            "symbol": "run_simulation_for_session"
+          }
+        }
+      ],
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT"
+    },
+    "V3_SERVER_TURN": {
+      "status": "UNREAD",
+      "refs": [
+        {
+          "status": "UNREAD",
+          "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+          "ref": {
+            "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+            "line_end": 160,
+            "line_start": 110,
+            "note": "Imports load_persona_sheet_with_integrity at line 127 and calls it at line 157.",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/server/chat/turn.py",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+            "sha256": "10e7f02333dac36b4baddd455b3655685413ed41a88d12a375b1cee9be9394b3",
+            "symbol": "chat_turn"
+          }
+        }
+      ],
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT"
+    },
+    "V3_V2_LOADER": {
+      "status": "UNREAD",
+      "refs": [
+        {
+          "status": "UNREAD",
+          "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+          "ref": {
+            "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+            "line_end": 175,
+            "line_start": 37,
+            "note": "Historical V2 persona-sheet loader; not a current PRE-MAIN importer.",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/v2/run_conversation_chat.py",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+            "sha256": "4d8b5772a8291d0c12e29c8809a2edfdb13d3942141edbc124aa036abeb41f91",
+            "symbol": "load_persona_sheet_with_integrity"
+          }
+        }
+      ],
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT"
+    },
+    "V3_EXTERNAL_MEMBER_HASH_MISMATCH": {
+      "status": "UNREAD",
+      "refs": [
+        {
+          "status": "UNREAD",
+          "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT",
+          "ref": {
+            "depth": "LOCAL_EXTERNAL_DIRECT_READ",
+            "line_end": 60,
+            "line_start": 12,
+            "note": "Direct local external copy. SHA-256 differs from W1-C prior member hash da3147c3; do not conflate.",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/v3/engine/yearly_step.py",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP",
+            "sha256": "47c97bfae08134f14fbd38b0cc997823a047474e0fbf7da6ddff9f1412a5235d",
+            "symbol": "run_one_year"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+            "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT"
+    },
+    "M6_ACTOR_SAFE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 924,
+            "line_start": 915,
+            "object_type": "blob",
+            "path": "rawlsing_next/m6_actor_safe_expression.py",
+            "quote": "situated phenomenology/disclosure/salience/inhibition/affect/interlocutor/register behavior requires a separately accepted named authority; M6 is only the semantic ceiling.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "GT0_END_TO_END": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "62b6ea39c605874af6d7aef85693472f88087f57",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 60,
+            "line_start": 11,
+            "object_type": "blob",
+            "path": "rawlsing_next/wsc_gt0_end_to_end.py",
+            "quote": "TERMINAL = BLOCKED_POSITIVE_ACTOR_PATH__SEMANTIC_CONSERVATION_PASS",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "CURRENT_V3_IMPORTER_MISSING": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+            "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        },
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "74d9701cdc7dabccf61eb5089498db290c1efd9c",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 924,
+            "line_start": 915,
+            "object_type": "blob",
+            "path": "rawlsing_next/m6_actor_safe_expression.py",
+            "quote": "situated phenomenology/disclosure/salience/inhibition/affect/interlocutor/register behavior requires a separately accepted named authority; M6 is only the semantic ceiling.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_RETURN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_CONSUMER_CODE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "6b8b9a38b7deaf1b43100b5662d34d03f67ec5e4",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 120,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_consumer.py",
+            "quote": "run_trajectories constructs share/access/request, share/no-access, refusal and share/perform-versus-omit lives.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_LIFE_A_SHARE_ACCESS": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_LIFE_B_SHARE_NO_ACCESS": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_LIFE_C_REFUSE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_LIFE_D_OMIT": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_LIFE_D_PERFORM": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_SAME_SPEECH_DIFFERENT_CAUSE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_A_ACCESS_PATH": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_B_MATERIAL_SOURCE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_LATER_HELP_CONSUMER": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_NO_ACCESS_CONSUMER": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "P1_TEST_ONLY_GRADE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 85,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md",
+            "quote": "Grade: TEST_ONLY_SOURCEFREE_NOT_NATIVE. A speech label is not the causal source.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "JOIN_E_7BF": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "52dfc715bed3ef14cc3dc4639132c409c4e99712",
+            "commit": "4387dc818a96fda2d5271672505fbd9da1059703",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 60,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md",
+            "quote": "REVIEWED FORK-ATOMICITY CUT 7bf2da302996491ddf34b9a039fea47ac982d135... Exact-cut engineering verdict: ACCEPT_SCOPED. Science remains TEST_ONLY/H0; authority remains none.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "JOIN_V_SCOPE_ACCEPTANCE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "52dfc715bed3ef14cc3dc4639132c409c4e99712",
+            "commit": "4387dc818a96fda2d5271672505fbd9da1059703",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 60,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md",
+            "quote": "REVIEWED FORK-ATOMICITY CUT 7bf2da302996491ddf34b9a039fea47ac982d135... Exact-cut engineering verdict: ACCEPT_SCOPED. Science remains TEST_ONLY/H0; authority remains none.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "JOIN_C9_HOLD": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "536f243bee3fc258d3170b9f08acf0bde73f9e77",
+            "commit": "cf578514434532b48e86c76c1d38d6250323a1ce",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 70,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-RRIF-E-F2-FULL-R2-BLOB-GATE-R1/00_RETURN.md",
+            "quote": "F1 checked 444 vendor blobs and 459 path names but not 15 nonvendor bytes. F2 checks all 459. First consumer PARTIAL. C9_SOURCE_MISSING and OWNER_ANCHOR_REQUIRED remain.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "JOIN_C12_HOLD": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "536f243bee3fc258d3170b9f08acf0bde73f9e77",
+            "commit": "cf578514434532b48e86c76c1d38d6250323a1ce",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 70,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-RRIF-E-F2-FULL-R2-BLOB-GATE-R1/00_RETURN.md",
+            "quote": "F1 checked 444 vendor blobs and 459 path names but not 15 nonvendor bytes. F2 checks all 459. First consumer PARTIAL. C9_SOURCE_MISSING and OWNER_ANCHOR_REQUIRED remain.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "RRIF_F1_DEFECT": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "536f243bee3fc258d3170b9f08acf0bde73f9e77",
+            "commit": "cf578514434532b48e86c76c1d38d6250323a1ce",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 70,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-RRIF-E-F2-FULL-R2-BLOB-GATE-R1/00_RETURN.md",
+            "quote": "F1 checked 444 vendor blobs and 459 path names but not 15 nonvendor bytes. F2 checks all 459. First consumer PARTIAL. C9_SOURCE_MISSING and OWNER_ANCHOR_REQUIRED remain.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "RRIF_F2_REPAIR": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "536f243bee3fc258d3170b9f08acf0bde73f9e77",
+            "commit": "cf578514434532b48e86c76c1d38d6250323a1ce",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 70,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-RRIF-E-F2-FULL-R2-BLOB-GATE-R1/00_RETURN.md",
+            "quote": "F1 checked 444 vendor blobs and 459 path names but not 15 nonvendor bytes. F2 checks all 459. First consumer PARTIAL. C9_SOURCE_MISSING and OWNER_ANCHOR_REQUIRED remain.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "RRIF_F2_FIRST_CONSUMER": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "536f243bee3fc258d3170b9f08acf0bde73f9e77",
+            "commit": "cf578514434532b48e86c76c1d38d6250323a1ce",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 70,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-RRIF-E-F2-FULL-R2-BLOB-GATE-R1/00_RETURN.md",
+            "quote": "F1 checked 444 vendor blobs and 459 path names but not 15 nonvendor bytes. F2 checks all 459. First consumer PARTIAL. C9_SOURCE_MISSING and OWNER_ANCHOR_REQUIRED remain.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "RRIF_NATIVE_HOLD": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "536f243bee3fc258d3170b9f08acf0bde73f9e77",
+            "commit": "cf578514434532b48e86c76c1d38d6250323a1ce",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 70,
+            "line_start": 15,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-RRIF-E-F2-FULL-R2-BLOB-GATE-R1/00_RETURN.md",
+            "quote": "F1 checked 444 vendor blobs and 459 path names but not 15 nonvendor bytes. F2 checks all 459. First consumer PARTIAL. C9_SOURCE_MISSING and OWNER_ANCHOR_REQUIRED remain.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "W1_A_RETURN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+            "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "SOURCE_GROUNDED__PARTIAL_WHOLE_ESTATE_COVERAGE__NO_SCIENCE_OR_PRODUCT_ADOPTION.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "W1_B_RETURN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "21c018830bb64ba5eb4d4545fd6017869a20bc68",
+            "commit": "5ab447a447620e65d441d2d2cfd745cb3d354a7c",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_B_DEVELOPMENTAL_SCIENCE_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "SOURCE_GROUNDED_SCIENTIFIC_ARCHITECTURE_RESEARCH__ALTERNATIVES_OPEN__NO_NATIVE_ISSUANCE.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "W1_C_RETURN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "992fa1e23ada3d34d8ee1931d375375694882f7d",
+            "commit": "12433b89e100d2c4b9b20a94c4ccca7d2af7529a",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_C_ORIGINAL_NEO_ENGINEERING_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "RESEARCH_RETURN; independent I3 documentary investigation, not scientific issuance, native integration, independent self-review or HQ adoption.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "W1_D_RETURN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "05204c9c6a18fb8c1e7e599f09cee767aea54ffc",
+            "commit": "950ace6fe8a63c225134ada0c79e97bb57d296a0",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_D_HISTORY_WORK_CONTROL_R1/00_HISTORICAL_ORGANIZATIONAL_FINDINGS_AND_MINIMUM_AGENT_PROTOCOL.md",
+            "quote": "SOURCE-GROUNDED PARTIAL WHOLE-ESTATE INVESTIGATION; FINITE DESIGN RETURN; NOT owner adoption.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "W1_E_RETURN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "b0413cdfccbb45d62df682786a5543e117d6a174",
+            "commit": "a64ff782ad2dd8f8f6617564655d09f6c3349ffb",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_E_LIVING_REFERENCE_ARCHITECTURE_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "Provisional choice: evolve the one O-LIVE persistent reference, not replace it.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_101_OUTWARD_OCCURRENCE": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 90,
+            "line_start": 18,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "CAUSAL NADIA != OBSERVABLE NADIA != USER-EXPERIENCED NADIA != USER-INTERPRETED NADIA. Actor/world realization must occur before user-phenomenal personalization.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_101_USER_PHENOMENAL": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 90,
+            "line_start": 18,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "CAUSAL NADIA != OBSERVABLE NADIA != USER-EXPERIENCED NADIA != USER-INTERPRETED NADIA. Actor/world realization must occur before user-phenomenal personalization.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_101_HIDDEN_INTERIORITY": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 90,
+            "line_start": 18,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "CAUSAL NADIA != OBSERVABLE NADIA != USER-EXPERIENCED NADIA != USER-INTERPRETED NADIA. Actor/world realization must occur before user-phenomenal personalization.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_101_TWO_CALL_PROPOSAL": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 659,
+            "line_start": 637,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "NORMAL LIVE TURN = DEEPSEEK-CLASS TRANSDUCTION CALL x1 + CLAUDE-CLASS ACTOR REALIZATION CALL x1. NORMAL_LIVE_MODEL_CALL_TARGET = TWO.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "SOROK_101_BATCHING_ALT": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "51f0fd1fa95da641d40ec5fb94e879fcbf0ae7a1",
+            "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 659,
+            "line_start": 637,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md",
+            "quote": "NORMAL LIVE TURN = DEEPSEEK-CLASS TRANSDUCTION CALL x1 + CLAUDE-CLASS ACTOR REALIZATION CALL x1. NORMAL_LIVE_MODEL_CALL_TARGET = TWO.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "CONTROLLER_R63_QUEUE": {
+      "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+      "refs": [
+        {
+          "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+          "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY",
+          "ref": {
+            "blob": "070e239e6717d5d93f0aad39f5043bb04a8f2999",
+            "commit": "409f6c78e9d9ed77377c778476b2c23e9eb15e8a",
+            "depth": "VERIFIED_GITHUB_API_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "INTEGRATION/INTELLIGENCE_ROUTING/ROUTING_HOLD.json",
+            "quote": "queue.requested_setting effort=high; queue.message_id 01a16c7d-af19-7061-bd63-ea0fd139fb27",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "maidiu/rawlsing-controller"
+          }
+        }
+      ],
+      "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY"
+    },
+    "CONTROLLER_R63_OBSERVED": {
+      "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+      "refs": [
+        {
+          "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+          "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY",
+          "ref": {
+            "blob": "070e239e6717d5d93f0aad39f5043bb04a8f2999",
+            "commit": "409f6c78e9d9ed77377c778476b2c23e9eb15e8a",
+            "depth": "VERIFIED_GITHUB_API_READ",
+            "line_end": 80,
+            "line_start": 20,
+            "object_type": "blob",
+            "path": "INTEGRATION/INTELLIGENCE_ROUTING/ROUTING_HOLD.json",
+            "quote": "observed.effort=low; observation.code INTELLIGENCE_SETTING_NOT_APPLIED; no_further_queue=true",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "maidiu/rawlsing-controller"
+          }
+        }
+      ],
+      "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY"
+    },
+    "CONTROLLER_R63_HOLD": {
+      "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+      "refs": [
+        {
+          "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+          "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY",
+          "ref": {
+            "blob": "07c01868b7ff786b9df1853d777603ef2d1eb4fe",
+            "commit": "409f6c78e9d9ed77377c778476b2c23e9eb15e8a",
+            "depth": "VERIFIED_GITHUB_API_READ",
+            "line_end": 20,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "INTEGRATION/INTELLIGENCE_ROUTING/RETURN.md",
+            "quote": "Result: BLOCKED / HOLD at the effective-settings transport boundary. No automatic capability is claimed.",
+            "reader": "PROGRAMMA_ENGINEER_R1",
+            "repository": "maidiu/rawlsing-controller"
+          }
+        }
+      ],
+      "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY"
+    },
+    "LIBRARY_LATEST_20261031": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "05204c9c6a18fb8c1e7e599f09cee767aea54ffc",
+            "commit": "950ace6fe8a63c225134ada0c79e97bb57d296a0",
+            "depth": "RETURN_REPORT_FULL_READ",
+            "line_end": 120,
+            "line_start": 90,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_D_HISTORY_WORK_CONTROL_R1/00_HISTORICAL_ORGANIZATIONAL_FINDINGS_AND_MINIMUM_AGENT_PROTOCOL.md",
+            "quote": "Native Library /Rawlsing/SOROK HQ/LATEST.json points to verified immutable 2026.10.31.17.40 snapshot; prior 2026.10.30.17.49.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "PREMAIN_PROGRESS_MD": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 12,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+            "quote": "revision36; two productive work orders STATUS=PUBLISHED_NOT_LAUNCHED (no session/process inferred).",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "PREMAIN_PROGRESS_JSON": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "c7fb05d8e5d0240959191041a73e76e2f14cb436",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 8,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+            "quote": "RAWLSING_CROSS_HQ_PROGRESS@1 revision 35.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "WORKER_BRANCH_READY": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 12,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+            "quote": "revision36; two productive work orders STATUS=PUBLISHED_NOT_LAUNCHED (no session/process inferred).",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "WORKER_RUNNING_UNKNOWN": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe",
+            "commit": "8e44ca9c751049d65e6def47600b5c073ee04b29",
+            "depth": "SELECTED_TEXT_READ",
+            "line_end": 12,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md",
+            "quote": "revision36; two productive work orders STATUS=PUBLISHED_NOT_LAUNCHED (no session/process inferred).",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "NO_AUTO_REDISPATCH": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "05204c9c6a18fb8c1e7e599f09cee767aea54ffc",
+            "commit": "950ace6fe8a63c225134ada0c79e97bb57d296a0",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 40,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_D_HISTORY_WORK_CONTROL_R1/00_HISTORICAL_ORGANIZATIONAL_FINDINGS_AND_MINIMUM_AGENT_PROTOCOL.md",
+            "quote": "SOURCE-GROUNDED PARTIAL WHOLE-ESTATE INVESTIGATION; FINITE DESIGN RETURN; NOT owner adoption.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    },
+    "JOIN_V_4387": {
+      "status": "SOURCE_EXACT",
+      "refs": [
+        {
+          "status": "SOURCE_EXACT",
+          "reason": "GIT_SOURCE_REF_VERIFIED",
+          "ref": {
+            "blob": "52dfc715bed3ef14cc3dc4639132c409c4e99712",
+            "commit": "4387dc818a96fda2d5271672505fbd9da1059703",
+            "depth": "FULL_TEXT_READ",
+            "line_end": 45,
+            "line_start": 1,
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md",
+            "quote": "ROLE: independent hostile engineering reviewer; not JOIN-E. REVIEWED FORK-ATOMICITY CUT 7bf2da30. EXACT COMMISSION SEAL 2b8d3067. independent accession 3de08102. HQ appointment; effective owner 6456fc57. ACCEPT_SCOPED.",
+            "reader": "PROGRAMMA_ENGINEER_R1"
+          }
+        }
+      ],
+      "reason": "GIT_SOURCE_REF_VERIFIED"
+    }
+  },
+  "result": "FAIL",
+  "note": "Git identity and local external bytes are verified; controller/Library/other repositories are not re-read offline. Missing witnesses are reported as UNREAD, not SOURCE_EXACT."
+}

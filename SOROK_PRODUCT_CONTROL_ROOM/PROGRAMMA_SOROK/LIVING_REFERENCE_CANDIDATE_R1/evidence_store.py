@@ -23,6 +23,10 @@ class JournalError(ValueError):
     """The journal is missing, truncated, tampered or append-conflicted."""
 
 
+class JournalRegression(JournalError):
+    """A valid journal prefix is older than the known derived-state marker."""
+
+
 def canonical_json(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 

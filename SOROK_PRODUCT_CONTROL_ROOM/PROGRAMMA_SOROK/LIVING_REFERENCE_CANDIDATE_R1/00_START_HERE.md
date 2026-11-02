@@ -12,6 +12,7 @@ developmental person. No native, human A5, PRE-MAIN or owner adoption is issued.
 | Item | Exact value |
 |---|---|
 | Engineering base | `a89e5ccbe67400168aaea8367f7aa00ca0de7625` |
+| Inherited O-LIVE source cut | `67f667421fc90b22aad95cfc253a16feabc92348` |
 | Governing W1 synthesis | `e5a25cbc4f2b9d7476a72637d3e371ee3254742e` |
 | Sorok product cut | `865b5b01e1a27e99020cf2bb389af8cd4c874b57` |
 | Original/Astra cut | `4f2ce6f9bdfdd2232a23d839905cb386cde96dcd` |
@@ -29,7 +30,7 @@ developmental person. No native, human A5, PRE-MAIN or owner adoption is issued.
 | Edges | 741 |
 | Sorok source rows | 144 + 3 references |
 | Workstreams S0–S16 | 17 |
-| Whole-Program Gaps | 50 |
+| Whole-Program Gaps | 56 (50 program gaps + 6 current source-witness gaps) |
 | Journal events | 4 (GENESIS, O-SCIENCE candidate, quarantine, W1-A real return) |
 | External boundary | 1 Pyat contract node only |
 
@@ -47,15 +48,30 @@ denominator.
   they are not replayed or relabelled as acceptance.
 - Canonical change evidence is the append-only `evidence/journal.jsonl` hash
   chain. `state.json` and `SNAPSHOT.json` are derived by deterministic replay.
-- Promotion of review/engineering/consumer requires an independently verifiable
-  reviewer principal, distinct author, exact subject SHA, assertion, scope,
-  appointment/intake record and immutable review record. Self-written
-  `reviewer_role`/`PASS`, genuine unrelated SHAs, stale subjects and local
-  selfhashes do not qualify.
-- Source withdrawal invalidates only explicit required-causal dependents.
-  Restoration recomputes every active prerequisite; a second independent RED
-  remains. Mention, hypothesis, association, alternative and source-location
-  edges are not blockers.
+  A valid journal prefix shorter than the known state/snapshot head is refused;
+  `recover` is the explicit, recorded recovery path.
+- O-SCIENCE replay recomputes the actual patch digest and fails closed on a
+  mismatch, including duplicate-import paths.
+- Promotion of review/engineering/consumer requires an existing competent
+  immutable review record that is one of the node's own source refs. The
+  reviewer, subject, assertion, verdict and appointment seal are parsed from
+  that record; the node must carry the exact reviewed subject. Caller-written
+  principals, wildcard scopes, unrelated genuine commits/documents and the
+  JOIN-V record applied to another node do not qualify. JOIN-V remains at its
+  exact historical `7bf2da3` subject/scope and does not certify this repair.
+- Source withdrawal requires qualified absence/withdrawal evidence or an
+  explicit authorized exclusion. A present source record cannot prove absence.
+  Restoration recomputes source, review, engineering, science and authority
+  negatives for the exact required causal predecessors; a second independent
+  RED remains. Unrelated holds, mention, hypothesis, association, alternative
+  and source-location edges are not blockers.
+- Returned-artifact intake requires a real exact return SHA bound to the source
+  commit. Requirements/gaps/node updates are source-backed only with a verified
+  locator/quote inside the return; otherwise they remain visible as
+  `CALLER_CLAIM_UNVERIFIED` or explicitly labelled `HQ_INFERENCE`.
+- Source-read depth is derived per node from current witness verification. A
+  local external ref with no present bytes is `UNREAD`, not `SOURCE_EXACT`, and
+  the exact missing-witness negative reaches home, focus, maturity and gaps.
 
 ## Main commands
 
@@ -76,12 +92,16 @@ python3 living_reference.py verify-journal
 python3 living_reference.py verify-sources
 python3 verify_source_manifest.py
 python3 r2_live_transaction.py
+python3 probe_faults.py
+python3 repair_probes.py
 ```
 
 Existing `overview`, `zoom`, `gaps`, `blocked-chain`, `source`, `consumer`,
 `alternatives`, `history`, `workers`, `coverage`, `export`, `intake-return` and
 `apply-authorized-transition` remain available. `critical-path` remains only a
-legacy DAG illustration.
+legacy DAG illustration. Home begins with source-qualified unchosen-neighbor
+purpose, intended Astra B/D experience and 100/101 constraints before terminal
+obligations or implementation status.
 
 ## Scope limits
 

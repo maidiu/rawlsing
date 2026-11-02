@@ -1,0 +1,45 @@
+{
+  "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+  "count": 4,
+  "head": "22565fd2a79b1d40cb0d67a546edd4cd417b10ee33d8af366f0de1b147be8d84",
+  "kinds": [
+    "GENESIS",
+    "CANDIDATE_EVIDENCE",
+    "QUARANTINE",
+    "RETURN_INTAKE"
+  ],
+  "events": [
+    {
+      "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+      "event_id": "272dc8aad97fbeede70db6dba59091f8486fe440a4b2d833a2ff558b6f62c6f5",
+      "sequence": 1,
+      "prev_event_hash": "GENESIS",
+      "kind": "GENESIS",
+      "created_at": "2026-11-01T18:00:00+00:00"
+    },
+    {
+      "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+      "event_id": "5e3e270cfe8328c93dc8ad18df1c4853f7795d9b01db5b62c837a769c9363ef6",
+      "sequence": 2,
+      "prev_event_hash": "272dc8aad97fbeede70db6dba59091f8486fe440a4b2d833a2ff558b6f62c6f5",
+      "kind": "CANDIDATE_EVIDENCE",
+      "created_at": "2026-11-01T18:00:01+00:00"
+    },
+    {
+      "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+      "event_id": "cc42c1af09bb4828514aea40480dfe4cc6af5c421c0c0d09ccef18990a1184a3",
+      "sequence": 3,
+      "prev_event_hash": "5e3e270cfe8328c93dc8ad18df1c4853f7795d9b01db5b62c837a769c9363ef6",
+      "kind": "QUARANTINE",
+      "created_at": "2026-11-01T18:00:02+00:00"
+    },
+    {
+      "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+      "event_id": "22565fd2a79b1d40cb0d67a546edd4cd417b10ee33d8af366f0de1b147be8d84",
+      "sequence": 4,
+      "prev_event_hash": "cc42c1af09bb4828514aea40480dfe4cc6af5c421c0c0d09ccef18990a1184a3",
+      "kind": "RETURN_INTAKE",
+      "created_at": "2026-11-01T18:00:03+00:00"
+    }
+  ]
+}

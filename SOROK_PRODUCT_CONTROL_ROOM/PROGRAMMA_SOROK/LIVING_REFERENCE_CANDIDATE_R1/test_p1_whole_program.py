@@ -119,20 +119,40 @@ def test_demo7_rrif_f1_to_f2_repair_to_partial_consumer():
     assert any(e["from"] == "RRIF_F2_FIRST_CONSUMER" and e["to"] == "JOIN_C9_HOLD" for e in state["edges"])
 
 
-def test_demo8_withdrawal_restoration_live_and_cold(tmp_path: Path):
+def test_demo8_qualified_withdrawal_restoration_live_and_cold(tmp_path: Path):
     journal = tmp_path / "evidence" / "journal.jsonl"
+    state_path = tmp_path / "state.json"
     state = lr.build_state(OBSERVED)
     b = _record(lr._node_map(state)["P1_B_MATERIAL_SOURCE"])
     a = _record(lr._node_map(state)["P1_A_ACCESS_PATH"])
-    events = [
-        lr._event("GENESIS", {"baseline_sha": lr.STARTUP_SHA}, created_at="2026-11-01T00:00:00+00:00"),
-        lr._event("CANDIDATE_EVIDENCE", {"importer": "OSCIENCE", "patch_file": lr.OSCIENCE_PATCH.name, "patch_digest": lr._digest(lr._load(lr.OSCIENCE_PATCH)), "source_commit": lr.OSCIENCE_CUT}, created_at="2026-11-01T00:00:01+00:00"),
-        lr._event("TRANSITION_REQUEST", {"fixture": {"node_id": "P1_B_MATERIAL_SOURCE", "dimension": "source_recovery", "to": "SOURCE_NOT_FOUND", "evidence": b}}, created_at="2026-11-01T00:00:02+00:00"),
-        lr._event("TRANSITION_REQUEST", {"fixture": {"node_id": "P1_A_ACCESS_PATH", "dimension": "source_recovery", "to": "SOURCE_NOT_FOUND", "evidence": a}}, created_at="2026-11-01T00:00:03+00:00"),
-        lr._event("TRANSITION_REQUEST", {"fixture": {"node_id": "P1_B_MATERIAL_SOURCE", "dimension": "source_recovery", "to": "SOURCE_VERIFIED", "evidence": b}}, created_at="2026-11-01T00:00:04+00:00"),
-    ]
-    for event in events:
-        evidence_store.append_event(journal, event)
+
+    def commit(body: dict) -> dict:
+        return lr.commit_event(body, journal_path=journal, state_path=state_path)
+
+    commit(lr._event("GENESIS", {"baseline_sha": lr.ENGINEERING_BASELINE}, created_at="2026-11-01T00:00:00+00:00"))
+    commit(lr._event("CANDIDATE_EVIDENCE", {"importer": "OSCIENCE", "patch_file": lr.OSCIENCE_PATCH.name, "patch_digest": lr._digest(lr._load(lr.OSCIENCE_PATCH)), "source_commit": lr.OSCIENCE_CUT}, created_at="2026-11-01T00:00:01+00:00"))
+    for node_id, second in (("P1_B_MATERIAL_SOURCE", 2), ("P1_A_ACCESS_PATH", 4)):
+        withdrawal = commit(lr._event("EVIDENCE_WITHDRAWAL", {
+            "node_id": node_id,
+            "basis": "QUALIFIED_ABSENCE_VERIFICATION",
+            "authority": "SOROK_HQ",
+            "scope": [node_id],
+            "reason": "qualified absence witness",
+        }, created_at=f"2026-11-01T00:00:0{second}+00:00"))
+        commit(lr._event("TRANSITION_REQUEST", {"fixture": {
+            "node_id": node_id, "dimension": "source_recovery", "to": "SOURCE_NOT_FOUND",
+            "evidence": {
+                "kind": "SOURCE_WITHDRAWAL",
+                "basis": "QUALIFIED_ABSENCE_VERIFICATION",
+                "authority": "SOROK_HQ",
+                "scope": [node_id],
+                "withdrawal_event_id": withdrawal["event"]["event_id"],
+            },
+        }}, created_at=f"2026-11-01T00:00:0{second + 1}+00:00"))
+    commit(lr._event("TRANSITION_REQUEST", {"fixture": {"node_id": "P1_B_MATERIAL_SOURCE", "dimension": "source_recovery", "to": "SOURCE_VERIFIED", "evidence": b}}, created_at="2026-11-01T00:00:06+00:00"))
+    live = lr._load_state(state_path)
+    assert live["axes"]["P1_LATER_HELP_CONSUMER"]["consumer"].startswith("INVALIDATED")
+    assert live["axes"]["Q_GAME_001"]["consumer"] == "NONE_PROVEN_AT_PREMAIN"
     cold = lr.rebuild_from_journal(journal, operating=True)
     assert cold["axes"]["P1_LATER_HELP_CONSUMER"]["consumer"].startswith("INVALIDATED")
     assert cold["axes"]["Q_GAME_001"]["consumer"] == "NONE_PROVEN_AT_PREMAIN"

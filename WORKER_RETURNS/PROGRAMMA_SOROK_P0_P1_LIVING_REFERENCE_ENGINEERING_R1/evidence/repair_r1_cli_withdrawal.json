@@ -1,0 +1,256 @@
+{
+  "consumer_after_restore": "INVALIDATED_BY_UPSTREAM",
+  "gt0_after_restore": {
+    "authority": "NOT_ADOPTED",
+    "consumer": "NONE_PROVEN_AT_PREMAIN",
+    "engineering": "SOURCE_DEFINITION_ONLY",
+    "human": "NOT_PROVEN",
+    "operational": "CANDIDATE_ONLY",
+    "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+    "science": "NOT_ISSUED",
+    "source_recovery": "SOURCE_EXACT"
+  },
+  "restore": {
+    "exit": 0,
+    "result": {
+      "applied": {
+        "event_id": "fda68ceacfcdc20f8e1cdb99c584a56f5ac95aa51dd53547231fc48146fc3e75",
+        "kind": "TRANSITION_REQUEST",
+        "status": "APPLIED_CANDIDATE_ONLY"
+      },
+      "axes": {
+        "P1_B_MATERIAL_SOURCE": {
+          "authority": "NOT_ADOPTED",
+          "consumer": "INVALIDATED_BY_UPSTREAM",
+          "engineering": "SOURCE_DEFINITION_ONLY",
+          "human": "NOT_PROVEN",
+          "operational": "CANDIDATE_ONLY",
+          "review": "REVIEW_FAILED",
+          "science": "NOT_ISSUED",
+          "source_recovery": "SOURCE_VERIFIED"
+        }
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:02:40.133533+00:00",
+        "event_id": "fda68ceacfcdc20f8e1cdb99c584a56f5ac95aa51dd53547231fc48146fc3e75",
+        "kind": "TRANSITION_REQUEST",
+        "payload": {
+          "fixture": {
+            "dimension": "source_recovery",
+            "evidence": {
+              "kind": "SOURCE_RECORD",
+              "source": {
+                "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+                "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+                "object_type": "blob",
+                "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md"
+              }
+            },
+            "node_id": "P1_B_MATERIAL_SOURCE",
+            "to": "SOURCE_VERIFIED"
+          }
+        },
+        "prev_event_hash": "52012747f9a8e23a843a82aa03de607f22bf1491bb81f1afaa5e95d08aa73851",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 4,
+        "source": {
+          "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+          "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md"
+        }
+      },
+      "expected_head": null,
+      "head": "fda68ceacfcdc20f8e1cdb99c584a56f5ac95aa51dd53547231fc48146fc3e75",
+      "journal_head": "fda68ceacfcdc20f8e1cdb99c584a56f5ac95aa51dd53547231fc48146fc3e75",
+      "revision": 4,
+      "stale_expected_head": false,
+      "state_digest": "ee6c414a0ce11e5c3058ac7a8be03466531117e2481e8ee8378f48298e1b2490",
+      "status": "EVENT_APPENDED"
+    }
+  },
+  "review_after_restore": "REVIEW_FAILED",
+  "review_negative": {
+    "exit": 0,
+    "result": {
+      "applied": {
+        "event_id": "52012747f9a8e23a843a82aa03de607f22bf1491bb81f1afaa5e95d08aa73851",
+        "kind": "TRANSITION_REQUEST",
+        "status": "APPLIED_CANDIDATE_ONLY"
+      },
+      "axes": {
+        "P1_B_MATERIAL_SOURCE": {
+          "authority": "NOT_ADOPTED",
+          "consumer": "INVALIDATED_BY_UPSTREAM",
+          "engineering": "SOURCE_DEFINITION_ONLY",
+          "human": "NOT_PROVEN",
+          "operational": "CANDIDATE_ONLY",
+          "review": "REVIEW_FAILED",
+          "science": "NOT_ISSUED",
+          "source_recovery": "SOURCE_NOT_FOUND"
+        }
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:02:38.124373+00:00",
+        "event_id": "52012747f9a8e23a843a82aa03de607f22bf1491bb81f1afaa5e95d08aa73851",
+        "kind": "TRANSITION_REQUEST",
+        "payload": {
+          "fixture": {
+            "dimension": "review",
+            "evidence": {
+              "kind": "SOURCEFREE_REVIEW",
+              "review_status": "FAIL",
+              "reviewed_sha": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+              "reviewer_role": "INDEPENDENT",
+              "source": {
+                "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+                "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+                "object_type": "blob",
+                "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md"
+              }
+            },
+            "node_id": "P1_B_MATERIAL_SOURCE",
+            "to": "REVIEW_FAILED"
+          }
+        },
+        "prev_event_hash": "d0f1d3ed7b5e71cf22a00214dccd1d2e2358ed333108258c1f9f670f6debed41",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 3,
+        "source": {
+          "blob": "fecd5dbcfdc3733ce6ec2ad345e7d3e7eb3931f6",
+          "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/00_PLAIN_ENGLISH_PRODUCT.md"
+        }
+      },
+      "expected_head": null,
+      "head": "52012747f9a8e23a843a82aa03de607f22bf1491bb81f1afaa5e95d08aa73851",
+      "journal_head": "52012747f9a8e23a843a82aa03de607f22bf1491bb81f1afaa5e95d08aa73851",
+      "revision": 3,
+      "stale_expected_head": false,
+      "state_digest": "0b137f16005907b893a60020d8aa8b53098f1b07621d4196696f4ad8362e3b75",
+      "status": "EVENT_APPENDED"
+    }
+  },
+  "source_transition": {
+    "exit": 0,
+    "result": {
+      "applied": {
+        "event_id": "d0f1d3ed7b5e71cf22a00214dccd1d2e2358ed333108258c1f9f670f6debed41",
+        "kind": "TRANSITION_REQUEST",
+        "status": "APPLIED_CANDIDATE_ONLY"
+      },
+      "axes": {
+        "P1_B_MATERIAL_SOURCE": {
+          "authority": "NOT_ADOPTED",
+          "consumer": "INVALIDATED_BY_UPSTREAM",
+          "engineering": "SOURCE_DEFINITION_ONLY",
+          "human": "NOT_PROVEN",
+          "operational": "CANDIDATE_ONLY",
+          "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+          "science": "NOT_ISSUED",
+          "source_recovery": "SOURCE_NOT_FOUND"
+        }
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:02:36.186759+00:00",
+        "event_id": "d0f1d3ed7b5e71cf22a00214dccd1d2e2358ed333108258c1f9f670f6debed41",
+        "kind": "TRANSITION_REQUEST",
+        "payload": {
+          "fixture": {
+            "dimension": "source_recovery",
+            "evidence": {
+              "authority": "SOROK_HQ",
+              "basis": "QUALIFIED_ABSENCE_VERIFICATION",
+              "kind": "SOURCE_WITHDRAWAL",
+              "scope": [
+                "P1_B_MATERIAL_SOURCE"
+              ],
+              "withdrawal_event_id": "3ddb8c014241599127f329bd4537b8ded2795468f5b458853a10d75920bd4770"
+            },
+            "node_id": "P1_B_MATERIAL_SOURCE",
+            "to": "SOURCE_NOT_FOUND"
+          }
+        },
+        "prev_event_hash": "3ddb8c014241599127f329bd4537b8ded2795468f5b458853a10d75920bd4770",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 2,
+        "source": {}
+      },
+      "expected_head": null,
+      "head": "d0f1d3ed7b5e71cf22a00214dccd1d2e2358ed333108258c1f9f670f6debed41",
+      "journal_head": "d0f1d3ed7b5e71cf22a00214dccd1d2e2358ed333108258c1f9f670f6debed41",
+      "revision": 2,
+      "stale_expected_head": false,
+      "state_digest": "afc21ae6f699a08ce408c8b574f3e97364ec7f248b788b10f1039badec2ab983",
+      "status": "EVENT_APPENDED"
+    }
+  },
+  "withdrawal": {
+    "exit": 0,
+    "result": {
+      "applied": {
+        "event_id": "3ddb8c014241599127f329bd4537b8ded2795468f5b458853a10d75920bd4770",
+        "kind": "EVIDENCE_WITHDRAWAL",
+        "status": "WITHDRAWAL_RECORDED"
+      },
+      "axes": {
+        "P1_B_MATERIAL_SOURCE": {
+          "authority": "NOT_ADOPTED",
+          "consumer": "NONE_PROVEN_AT_PREMAIN",
+          "engineering": "SOURCE_DEFINITION_ONLY",
+          "human": "NOT_PROVEN",
+          "operational": "CANDIDATE_ONLY",
+          "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+          "science": "NOT_ISSUED",
+          "source_recovery": "SOURCE_EXACT"
+        }
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:02:34.274886+00:00",
+        "event_id": "3ddb8c014241599127f329bd4537b8ded2795468f5b458853a10d75920bd4770",
+        "kind": "EVIDENCE_WITHDRAWAL",
+        "payload": {
+          "authority": "SOROK_HQ",
+          "basis": "QUALIFIED_ABSENCE_VERIFICATION",
+          "node_id": "P1_B_MATERIAL_SOURCE",
+          "reason": "CLI qualified absence",
+          "scope": [
+            "P1_B_MATERIAL_SOURCE"
+          ]
+        },
+        "prev_event_hash": "GENESIS",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 1,
+        "source": {}
+      },
+      "expected_head": null,
+      "head": "3ddb8c014241599127f329bd4537b8ded2795468f5b458853a10d75920bd4770",
+      "journal_head": "3ddb8c014241599127f329bd4537b8ded2795468f5b458853a10d75920bd4770",
+      "revision": 1,
+      "stale_expected_head": false,
+      "state_digest": "4b81e3597f376bf8a4d27ea2212d67d4107c1fc176d33375852268090326746e",
+      "status": "EVENT_APPENDED"
+    }
+  }
+}

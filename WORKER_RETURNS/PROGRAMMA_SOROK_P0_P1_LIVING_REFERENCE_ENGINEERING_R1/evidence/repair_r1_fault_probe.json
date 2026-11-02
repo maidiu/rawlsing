@@ -1,0 +1,54 @@
+{
+  "cold_reload": {
+    "exit_code": 0,
+    "state_digest_equal": true
+  },
+  "complete_tail_loss": {
+    "commit_event_refused": "JOURNAL_PREFIX_OLDER_THAN_KNOWN_STATE:2<3",
+    "explicit_recovery": "EXPLICIT_RECOVERY_FROM_SHORTER_JOURNAL",
+    "journal_unchanged": true,
+    "newer_state_unchanged": true,
+    "recovery_revision": 2,
+    "refused": "JOURNAL_PREFIX_OLDER_THAN_KNOWN_STATE:2<3"
+  },
+  "concurrent_commit_event": {
+    "events": 3,
+    "exit_codes": [
+      0,
+      0
+    ],
+    "head_matches": true,
+    "revision": 3,
+    "state_digest_equal": true,
+    "stderr": [
+      "",
+      ""
+    ]
+  },
+  "concurrent_stale_cas": {
+    "events_after": 3,
+    "exit_codes": [
+      0,
+      0
+    ],
+    "markers": [
+      1,
+      2
+    ],
+    "stale_flags": [
+      false,
+      true
+    ],
+    "stderr": [
+      "",
+      ""
+    ]
+  },
+  "interrupted_state_write": {
+    "journal_head": "3b30abadc90f89f59563e20800f205bed0e17ca9259bb69de4933fde6537c350",
+    "recovered": true,
+    "revision": 3
+  },
+  "patch_tamper": "OSCIENCE_PATCH_DIGEST_MISMATCH:e3c0a928e158618ed60842255c0246ab0845eabfb7ab1ea8a69be173fc48c813!=be429bc1faf783a8ffd5aa1c01bee4d0d59e02da9f9fd091da09b9e9a108177b",
+  "schema": "SOROK_PROGRAMMA_FAULT_PROBE@1"
+}

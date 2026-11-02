@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import fcntl
 import hashlib
 import json
 import os
@@ -49,7 +50,9 @@ IMPORTED_EDGE_COUNT = BASE_EDGE_COUNT + 226
 
 SCHEMA = "SOROK_PROGRAMMA_LIVING_REFERENCE_STATE@3"
 VERSION = "R3"
-STARTUP_SHA = "67f667421fc90b22aad95cfc253a16feabc92348"
+ENGINEERING_BASELINE = "a89e5ccbe67400168aaea8367f7aa00ca0de7625"
+OLIVE_SOURCE_SHA = "67f667421fc90b22aad95cfc253a16feabc92348"
+STARTUP_SHA = ENGINEERING_BASELINE
 SEED_BUILD_PREMAIN = "f40c26301d7d5b811c1bb92efa4934ad564ce5b3"
 R3_CUT = "e50d32eb6816578145d17dcd637a0b90b3a1ef40"
 R3_REVIEW_OLD_NEGATIVE = "3f3d9ec2fddc36bd4047bc6c730382c65a5e692a"
@@ -102,7 +105,10 @@ PYAT_BOUNDARY = {
     "status": "EXTERNAL_OWNER_HELD",
 }
 
-NEGATIVE_SOURCE = {"SOURCE_NOT_FOUND", "SOURCE_WITHDRAWN", "MISSING", "SOURCE_INVALID"}
+NEGATIVE_SOURCE = {
+    "SOURCE_NOT_FOUND", "SOURCE_WITHDRAWN", "MISSING", "SOURCE_INVALID",
+    "AUTHORIZED_EXCLUSION", "UNREAD", "WITNESS_MISMATCH", "SOURCE_REF_INVALID",
+}
 NEGATIVE_REVIEW = {"REVIEW_FAILED", "SEALED_NEGATIVE"}
 NEGATIVE_ENGINEERING = {"FAILED", "REGRESSED"}
 NEGATIVE_SCIENCE = {"REFUSED", "NATIVE_ISSUED_REVOKED"}
@@ -110,7 +116,7 @@ NEGATIVE_AUTHORITY = {"REVOKED"}
 NEGATIVE_ALL = NEGATIVE_SOURCE | NEGATIVE_REVIEW | NEGATIVE_ENGINEERING | NEGATIVE_SCIENCE | NEGATIVE_AUTHORITY
 
 ALLOWED_TRANSITIONS = {
-    "source_recovery": {"SOURCE_VERIFIED", "SOURCE_NOT_FOUND", "SOURCE_WITHDRAWN", "MISSING", "CANDIDATE_EVIDENCE", "SOURCE_INVALID"},
+    "source_recovery": {"SOURCE_VERIFIED", "SOURCE_NOT_FOUND", "SOURCE_WITHDRAWN", "MISSING", "CANDIDATE_EVIDENCE", "SOURCE_INVALID", "AUTHORIZED_EXCLUSION"},
     "engineering": {"CANDIDATE_UPGRADED", "INDEPENDENT_ACCEPT_SCOPED", "REGRESSED", "FAILED", "AUTHOR_PASS_VERIFIED", "UNCHANGED", "MISSING_FUNCTION", "CANDIDATE_ONLY"},
     "science": {"CANDIDATE_EVIDENCE", "HYPOTHESIS", "HOLD_MANUAL_VERIFICATION", "REFUSED", "NOT_ISSUED", "CANDIDATE_EVIDENCE_NOT_ISSUED"},
     "authority": {"NOT_ADOPTED", "UNADOPTED", "CANDIDATE_ONLY", "OWNER_EVIDENCE_PENDING_MANUAL_VERIFICATION", "REVOKED"},
@@ -148,6 +154,8 @@ EVIDENCE_KINDS = {
     "SYNTHETIC_DEMO",
     "UNSTRUCTURED_STRING",
     "ACCEPTANCE_RECORD",
+    "SOURCE_WITHDRAWAL",
+    "AUTHORIZED_EXCLUSION",
 }
 
 PROMOTION_TARGETS = {
@@ -222,7 +230,7 @@ def observe_source_cut(git_enabled: bool = True) -> dict[str, Any]:
             "status": "GIT_DISABLED",
             "heads": {
                 "premain": {"ref": "origin/integration/pre-main-reconciliation-r1", "sha": "UNKNOWN", "committed_at": "UNKNOWN"},
-                "olive": {"ref": "origin/agent/sorok-programma-living-reference-s2-sourcegraded-operating-map-r1-20261031", "sha": STARTUP_SHA, "committed_at": "UNKNOWN"},
+                "olive": {"ref": "origin/agent/sorok-programma-living-reference-s2-sourcegraded-operating-map-r1-20261031", "sha": OLIVE_SOURCE_SHA, "committed_at": "UNKNOWN"},
                 "r3": {"ref": "origin/agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1", "sha": R3_CUT, "committed_at": "UNKNOWN"},
                 "r3_review": {"ref": "origin/review/sorok-oindex-r3-independent-source-and-map-acceptance-20261031", "sha": R3_REVIEW_CURRENT, "committed_at": "UNKNOWN"},
                 "o_science": {"ref": "OSCIENCE_CUT", "sha": OSCIENCE_CUT, "committed_at": "UNKNOWN"},
@@ -467,7 +475,7 @@ def _initial_workers() -> list[dict]:
     return [
         {"id": "R3_INDEX", "branch": "agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1", "sha": R3_CUT, "status": "RETURNED_UNADOPTED", "editor_model": "OpenCode/DeepSeek V4.1-Flash MAX", "reviewer": "separate R3-IR required", "cost": "UNKNOWN"},
         {"id": "R3_IR_REVIEW", "branch": "review/sorok-oindex-r3-independent-source-and-map-acceptance-20261031", "sha": R3_REVIEW_CURRENT, "status": "SEALED_NOT_ASSUMED_RUNNING", "editor_model": "UNKNOWN", "reviewer": "independent", "cost": "UNKNOWN"},
-        {"id": "O_LIVE_R1", "branch": "agent/sorok-programma-living-reference-s2-sourcegraded-operating-map-r1-20261031", "sha": STARTUP_SHA, "status": "SEALED_RETURNED_UNADOPTED", "editor_model": "UNKNOWN", "reviewer": "NOT_ESTABLISHED", "cost": "UNKNOWN"},
+        {"id": "O_LIVE_R1", "branch": "agent/sorok-programma-living-reference-s2-sourcegraded-operating-map-r1-20261031", "sha": OLIVE_SOURCE_SHA, "status": "SEALED_RETURNED_UNADOPTED", "editor_model": "UNKNOWN", "reviewer": "NOT_ESTABLISHED", "cost": "UNKNOWN"},
         {"id": "O_SCIENCE_R1", "branch": "research/sorok-programma-o-science-product-requisite-coverage-r1-20261031", "sha": OSCIENCE_CUT, "status": "RETURNED_CANDIDATE_EVIDENCE", "editor_model": "UNKNOWN", "reviewer": "NOT_ESTABLISHED", "cost": "UNKNOWN"},
         {"id": "CP-A5-R2", "branch": "agent/sorok-cp-a5-r2-multicontext-encounter-20261030", "sha": "913765328e4fab12b150ea01421ed6b445158184", "status": "RETURNED_SHA__AUTHOR_TESTED_UNADOPTED", "editor_model": "OpenCode/DeepSeek V4.1-Flash MAX", "reviewer": "NOT_ESTABLISHED", "cost": "UNKNOWN"},
         {"id": "C9C12-R2", "branch": "agent/sorok-c9c12-r2-versioned-writer-reader-clock-20261030", "sha": "c78404724052496fdec8608c8b0e833c0f7c4ecc", "status": "RETURNED_SHA__AUTHOR_TESTED_UNADOPTED", "editor_model": "UNKNOWN", "reviewer": "NOT_ESTABLISHED", "cost": "UNKNOWN"},
@@ -505,6 +513,13 @@ def _base_state(observed_source: dict[str, Any] | None = None) -> dict:
     rows = _source_rows(registry)
     nodes, edges = _base_nodes_and_edges(graph)
     nodes, edges = _merge_p1_seed(nodes, edges)
+    source_verification = {
+        node["id"]: _classify_source_refs(node)
+        for node in nodes if node.get("programma_p1")
+    }
+    for node in nodes:
+        if node["id"] in source_verification:
+            node["source_verification"] = copy.deepcopy(source_verification[node["id"]])
     axes = {}
     for node in nodes:
         if node["id"] == "PYAT_EXTERNAL_BOUNDARY":
@@ -521,8 +536,11 @@ def _base_state(observed_source: dict[str, Any] | None = None) -> dict:
         elif node["id"] in {"R6", "R7"}:
             axes[node["id"]] = _axes(None, node)
         elif node.get("programma_p1"):
+            witness = source_verification.get(node["id"], {}).get("status", "INDEX_ONLY")
+            if witness == "EXTERNAL_REPORTED_NOT_REVERIFIED":
+                witness = "EXTERNAL_REPORTED"
             axes[node["id"]] = {
-                "source_recovery": "SOURCE_EXACT" if node.get("source_refs") else "INDEX_ONLY",
+                "source_recovery": witness if node.get("source_refs") else "INDEX_ONLY",
                 "science": "CANDIDATE_EVIDENCE_NOT_ISSUED" if node.get("kind") in {"SCIENTIFIC_ALTERNATIVE", "SCIENCE_AUTHORITY", "OPEN_COURT", "HISTORICAL_QUESTION"} else "NOT_ISSUED",
                 "engineering": "SOURCE_DEFINITION_ONLY",
                 "authority": "NOT_ADOPTED",
@@ -537,12 +555,21 @@ def _base_state(observed_source: dict[str, Any] | None = None) -> dict:
     state = {
         "schema": SCHEMA,
         "version": VERSION,
-        "build_startup": STARTUP_SHA,
+        "build_startup": ENGINEERING_BASELINE,
         "seed_build_premain": SEED_BUILD_PREMAIN,
+        "baseline_identity": {
+            "engineering_baseline": ENGINEERING_BASELINE,
+            "olive_source_cut": OLIVE_SOURCE_SHA,
+            "genesis_claim": None,
+            "genesis_claim_interpretation": "NO_GENESIS_EVENT_REPLAYED_YET",
+        },
         "source_snapshot": observed,
+        "source_verification": source_verification,
         "source_cut_stale": False,
         "version_vector": {
-            "sorok_startup": STARTUP_SHA,
+            "sorok_startup": ENGINEERING_BASELINE,
+            "engineering_baseline": ENGINEERING_BASELINE,
+            "olive_source": OLIVE_SOURCE_SHA,
             "seed_build_premain": SEED_BUILD_PREMAIN,
             "r3_index": R3_CUT,
             "r3_review_old_negative": R3_REVIEW_OLD_NEGATIVE,
@@ -582,12 +609,19 @@ def _base_state(observed_source: dict[str, Any] | None = None) -> dict:
             "history_id": "H0001",
             "kind": "GENESIS",
             "state": "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED",
-            "source_vector": {"startup": STARTUP_SHA, "seed_build_premain": SEED_BUILD_PREMAIN, "r3": R3_CUT},
+            "source_vector": {
+                "startup": ENGINEERING_BASELINE,
+                "engineering_baseline": ENGINEERING_BASELINE,
+                "olive_source": OLIVE_SOURCE_SHA,
+                "seed_build_premain": SEED_BUILD_PREMAIN,
+                "r3": R3_CUT,
+            },
             "read_at": observed.get("read_at", "UNKNOWN"),
         }],
         "freshness": {"generated_at": observed.get("read_at", _utc_now()), "refresh_command": "python3 living_reference.py refresh"},
         "seed_slots": slots,
     }
+    _verify_seed_acceptance_records(state)
     _recompute(state)
     return state
 
@@ -658,6 +692,15 @@ def refresh_state(existing: dict | None, observed_source: dict[str, Any] | None 
     state["source_cut_stale"] = bool(delta["changed"])
     state["version"] = VERSION
     state["schema"] = SCHEMA
+    state["build_startup"] = ENGINEERING_BASELINE
+    state.setdefault("version_vector", {}).update(seed.get("version_vector", {}))
+    identity = dict(seed.get("baseline_identity", {}))
+    identity.update({k: v for k, v in state.get("baseline_identity", {}).items() if k in {"genesis_claim", "genesis_claim_interpretation"}})
+    state["baseline_identity"] = identity
+    state["source_verification"] = copy.deepcopy(seed.get("source_verification", {}))
+    for node in state["nodes"]:
+        if node["id"] in state["source_verification"]:
+            node["source_verification"] = copy.deepcopy(state["source_verification"][node["id"]])
     state["freshness"] = {"generated_at": observed.get("read_at", _utc_now()), "refresh_command": "python3 living_reference.py refresh"}
     state["history"].append({
         "history_id": "H%04d" % (len(state["history"]) + 1),
@@ -716,14 +759,28 @@ def _apply_event(state: dict, event: dict) -> dict:
     state["logical_time"] = event.get("created_at")
     if kind == "GENESIS":
         state["genesis_event"] = event.get("event_id")
+        claim = str(payload.get("baseline_sha") or "")
+        identity = state.setdefault("baseline_identity", {})
+        identity["genesis_claim"] = claim or None
+        identity["genesis_claim_interpretation"] = (
+            "INHERITED_OLIVE_SOURCE_IDENTITY_NOT_ENGINEERING_BASELINE"
+            if claim and claim != ENGINEERING_BASELINE
+            else "ENGINEERING_BASELINE"
+        )
         return {"kind": kind, "status": "GENESIS"}
     if kind == "CANDIDATE_EVIDENCE":
         importer = payload.get("importer")
         if importer == "OSCIENCE":
+            patch = _load(ROOT / payload.get("patch_file", OSCIENCE_PATCH.name))
+            actual_digest = _digest(patch)
+            asserted_digest = payload.get("patch_digest")
+            if asserted_digest and asserted_digest != actual_digest:
+                raise ValueError(
+                    f"OSCIENCE_PATCH_DIGEST_MISMATCH:{actual_digest}!={asserted_digest}")
             result = ingest_oscience(
                 state,
-                _load(ROOT / payload.get("patch_file", OSCIENCE_PATCH.name)),
-                patch_digest=payload.get("patch_digest"),
+                patch,
+                patch_digest=actual_digest,
                 source_commit=payload.get("source_commit", OSCIENCE_CUT),
             )
             return {"kind": kind, "status": result.get("status"), "event": event.get("event_id")}
@@ -758,6 +815,11 @@ def _apply_event(state: dict, event: dict) -> dict:
             "event_id": event.get("event_id"),
             "withdraws_event_id": payload.get("withdraws_event_id"),
             "reason": payload.get("reason", "WITHDRAWN"),
+            "node_id": payload.get("node_id"),
+            "scope": payload.get("scope"),
+            "basis": payload.get("basis"),
+            "authority": payload.get("authority"),
+            "qualified": bool(payload.get("basis") and payload.get("authority")),
         })
         return {"kind": kind, "status": "WITHDRAWAL_RECORDED", "event": event.get("event_id")}
     state.setdefault("unknown_events", []).append(event.get("event_id"))
@@ -797,10 +859,29 @@ def rebuild_from_journal(journal_path: Path | None = None, observed_source: dict
 
 def commit_event(body: dict, *, journal_path: Path | None = None, state_path: Path | None = None, snapshot_path: Path | None = None, expected_head: str | None = None) -> dict:
     target = Path(journal_path or JOURNAL)
-    appended = evidence_store.append_event(target, body, expected_head=expected_head)
-    state = rebuild_from_journal(target, operating=True)
-    state["revision"] = appended["event"]["sequence"]
-    _save(state, state_path or STATE, snapshot_path, revision=state["revision"])
+    commit_lock_path = target.with_name(target.name + ".commit.lock")
+    commit_lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with commit_lock_path.open("a+") as commit_lock:
+        fcntl.flock(commit_lock.fileno(), fcntl.LOCK_EX)
+        try:
+            existing_events = evidence_store.read_journal(target)
+            _check_journal_regression(existing_events, Path(state_path or STATE))
+            appended = evidence_store.append_event(target, body, expected_head=expected_head)
+            last_error = None
+            for _ in range(3):
+                state = rebuild_from_journal(target, operating=True)
+                state["revision"] = appended["event"]["sequence"]
+                try:
+                    _save(state, state_path or STATE, snapshot_path, revision=state["revision"])
+                    last_error = None
+                    break
+                except StaleStateRevision as error:
+                    last_error = error
+                    continue
+            if last_error is not None:
+                raise last_error
+        finally:
+            fcntl.flock(commit_lock.fileno(), fcntl.LOCK_UN)
     applied = state.get("journal_applied", [])
     payload = (appended.get("event") or {}).get("payload") or {}
     subject = payload.get("fixture") or payload
@@ -819,15 +900,63 @@ def journal_summary(path: Path | None = None) -> dict:
     return evidence_store.event_summary(evidence_store.read_journal(Path(path or JOURNAL)))
 
 
+def _state_marker(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    try:
+        data = _load(path)
+    except (json.JSONDecodeError, OSError, ValueError):
+        return None
+    expected = _digest({k: v for k, v in data.items() if k != "state_digest"})
+    if data.get("state_digest") != expected:
+        return None
+    revision = data.get("revision")
+    head = data.get("journal_head")
+    if not isinstance(revision, int) or not head:
+        return None
+    return {"revision": revision, "head": str(head), "path": str(path)}
+
+
+def _known_journal_marker(target: Path) -> dict | None:
+    markers = [m for m in (_state_marker(target), _state_marker(target.parent / SNAPSHOT.name)) if m]
+    if not markers:
+        return None
+    highest = max(markers, key=lambda m: m["revision"])
+    same_revision = [m for m in markers if m["revision"] == highest["revision"]]
+    if len({m["head"] for m in same_revision}) > 1:
+        raise evidence_store.JournalRegression("STATE_SNAPSHOT_HEAD_DIVERGENCE")
+    return highest
+
+
+def _check_journal_regression(events: list[dict], target: Path, *, recover: bool = False) -> dict | None:
+    known = _known_journal_marker(target)
+    if known is None:
+        return None
+    head = events[-1]["event_id"] if events else evidence_store.GENESIS
+    ids = {e["event_id"] for e in events}
+    if len(events) < known["revision"]:
+        if not recover:
+            raise evidence_store.JournalRegression(
+                f"JOURNAL_PREFIX_OLDER_THAN_KNOWN_STATE:{len(events)}<{known['revision']}")
+        return known
+    if len(events) == known["revision"] and head != known["head"]:
+        if not recover:
+            raise evidence_store.JournalRegression("JOURNAL_HEAD_DIVERGES_FROM_KNOWN_STATE")
+        return known
+    if len(events) > known["revision"] and known["head"] not in ids:
+        if not recover:
+            raise evidence_store.JournalRegression("JOURNAL_DOES_NOT_CONTAIN_KNOWN_STATE_HEAD")
+        return known
+    return known
+
+
 def _load_state(path: Path | None = None, *, recover: bool = False) -> dict:
     target = Path(path or STATE)
     journal = _journal_path(target)
     if journal.exists():
-        try:
-            events = evidence_store.read_journal(journal)
-            head = events[-1]["event_id"] if events else evidence_store.GENESIS
-        except evidence_store.JournalError:
-            raise
+        events = evidence_store.read_journal(journal)
+        head = events[-1]["event_id"] if events else evidence_store.GENESIS
+        known = _check_journal_regression(events, target, recover=recover)
         if target.exists():
             try:
                 disk = _load(target)
@@ -844,7 +973,22 @@ def _load_state(path: Path | None = None, *, recover: bool = False) -> dict:
                     disk["operating"] = True
                     return disk
         state = rebuild_from_journal(journal, operating=True)
-        _save(state, target, revision=int(state.get("revision") or 0))
+        if known and len(events) < known["revision"]:
+            state["journal_regression_recovery"] = {
+                "known": known,
+                "journal_events": len(events),
+                "status": "EXPLICIT_RECOVERY_FROM_SHORTER_JOURNAL",
+                "accepted_events_preserved": False,
+            }
+            state["history"].append({
+                "history_id": "H%04d" % (len(state["history"]) + 1),
+                "kind": "JOURNAL_REGRESSION_RECOVERED",
+                "known": known,
+                "journal_events": len(events),
+                "read_at": _utc_now(),
+            })
+            _recompute(state)
+        _save(state, target, revision=int(state.get("revision") or 0), allow_regression=recover)
         return state
     if not target.exists():
         state = build_state()
@@ -862,32 +1006,42 @@ def _load_state(path: Path | None = None, *, recover: bool = False) -> dict:
     return state
 
 
-def _save(state: dict, path: Path | None = None, snapshot: Path | None = None, *, expected_revision: int | None = None, revision: int | None = None) -> None:
+def _save(state: dict, path: Path | None = None, snapshot: Path | None = None, *, expected_revision: int | None = None, revision: int | None = None, allow_regression: bool = False) -> None:
     target = Path(path or STATE)
     snap = Path(snapshot) if snapshot else (target.parent / SNAPSHOT.name)
-    current_revision = 0
-    if target.exists():
+    lock_path = target.with_name(target.name + ".lock")
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with lock_path.open("a+") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
         try:
-            current_revision = int(_load(target).get("revision") or 0)
-        except (json.JSONDecodeError, OSError):
             current_revision = 0
-    if expected_revision is not None and current_revision != expected_revision:
-        raise StaleStateRevision(f"STALE_REVISION expected={expected_revision} observed={current_revision}")
-    state["revision"] = int(revision) if revision is not None else current_revision + 1
-    state["state_digest"] = _digest({k: v for k, v in state.items() if k != "state_digest"})
-    payload = json.dumps(state, indent=2, sort_keys=True) + "\n"
-    for destination in (target, snap):
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        fd, temporary = tempfile.mkstemp(prefix=destination.name + ".", dir=str(destination.parent))
-        try:
-            with os.fdopen(fd, "w", encoding="utf-8") as handle:
-                handle.write(payload)
-                handle.flush()
-                os.fsync(handle.fileno())
-            os.replace(temporary, destination)
+            if target.exists():
+                try:
+                    current_revision = int(_load(target).get("revision") or 0)
+                except (json.JSONDecodeError, OSError):
+                    current_revision = 0
+            if expected_revision is not None and current_revision != expected_revision:
+                raise StaleStateRevision(f"STALE_REVISION expected={expected_revision} observed={current_revision}")
+            new_revision = int(revision) if revision is not None else current_revision + 1
+            if new_revision < current_revision and not allow_regression:
+                raise StaleStateRevision(f"STALE_REVISION_NEWER_STATE_EXISTS current={current_revision} attempted={new_revision}")
+            state["revision"] = new_revision
+            state["state_digest"] = _digest({k: v for k, v in state.items() if k != "state_digest"})
+            payload = json.dumps(state, indent=2, sort_keys=True) + "\n"
+            for destination in dict.fromkeys((target, snap)):
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                fd, temporary = tempfile.mkstemp(prefix=destination.name + ".", dir=str(destination.parent))
+                try:
+                    with os.fdopen(fd, "w", encoding="utf-8") as handle:
+                        handle.write(payload)
+                        handle.flush()
+                        os.fsync(handle.fileno())
+                    os.replace(temporary, destination)
+                finally:
+                    if os.path.exists(temporary):
+                        os.unlink(temporary)
         finally:
-            if os.path.exists(temporary):
-                os.unlink(temporary)
+            fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
 
 
 def _neighbors(state: dict, node_id: str, depth: int) -> tuple[list[dict], list[dict]]:
@@ -937,6 +1091,18 @@ def _reachable_required(state: dict, node_id: str) -> list[str]:
     return sorted(out)
 
 
+SOURCE_BLOCK_REASONS = {
+    "SOURCE_WITHDRAWN": "source withdrawn by qualified owner",
+    "SOURCE_NOT_FOUND": "source absence qualified",
+    "AUTHORIZED_EXCLUSION": "source path excluded by authorized scope",
+    "UNREAD": "source witness not available now",
+    "WITNESS_MISMATCH": "source witness bytes mismatch",
+    "SOURCE_REF_INVALID": "source reference invalid",
+    "MISSING": "source missing",
+    "SOURCE_INVALID": "source invalid",
+}
+
+
 def _axis_blockers(state: dict, node_id: str) -> list[dict]:
     axis = state["axes"].get(node_id, {})
     blockers = []
@@ -945,13 +1111,15 @@ def _axis_blockers(state: dict, node_id: str) -> list[dict]:
         ("science", {"NOT_ISSUED", "REFUSED", "CANDIDATE_EVIDENCE_NOT_ISSUED", "HOLD_MANUAL_VERIFICATION"}, "science not issued"),
         ("authority", {"NOT_ADOPTED", "UNADOPTED", "REVOKED", "OWNER_EVIDENCE_PENDING_MANUAL_VERIFICATION"}, "owner authority held"),
         ("review", NEGATIVE_REVIEW, "review failed"),
+        ("engineering", NEGATIVE_ENGINEERING, "engineering failed"),
         ("professional", set(), ""),
     ):
         if key == "professional":
             continue
         value = str(axis.get(key, ""))
         if value in values:
-            blockers.append({"node": node_id, "axis": key, "status": value, "reason": label})
+            reason = SOURCE_BLOCK_REASONS.get(value, label) if key == "source_recovery" else label
+            blockers.append({"node": node_id, "axis": key, "status": value, "reason": reason})
     if str(axis.get("consumer", "")).startswith("INVALIDATED"):
         blockers.append({"node": node_id, "axis": "consumer", "status": axis["consumer"], "reason": "consumer invalidated"})
     if node_id == "A5" and axis.get("human") != "PROVEN":
@@ -1150,6 +1318,26 @@ def compute_gaps(state: dict) -> list[dict]:
             "impact": {"downstream_required_count": 17, "affected_l0": [], "affected_sectors": ["S0_S16", "OSCIENCE_MISSING_FUNCTIONS"]},
             "parallel_group": "REVIEW",
         })
+    for node_id, report in state.get("source_verification", {}).items():
+        status = report.get("status")
+        if status not in {"UNREAD", "WITNESS_MISMATCH", "SOURCE_REF_INVALID"}:
+            continue
+        node = nodes.get(node_id, {})
+        _add_gap(gaps, {
+            "id": "GAP_WITNESS_" + node_id,
+            "domain": "SOURCE_WITNESS",
+            "node": node_id,
+            "class": "SOURCE_WITNESS_NOT_CURRENT",
+            "status": status,
+            "owner": node.get("owner", "UNKNOWN"),
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "blockers": _axis_blockers(state, node_id),
+            "impact": _impact(state, node_id),
+            "parallel_group": "SOURCE_WITNESS",
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "source_backed": False,
+        })
     for gap in state.get("intake_gaps", []):
         _add_gap(gaps, gap)
     return sorted(gaps.values(), key=lambda item: item["id"])
@@ -1164,7 +1352,7 @@ def compute_work_now(state: dict) -> dict:
     candidates = []
     parallel_groups = []
     for group, items in sorted(groups.items()):
-        items = sorted(items, key=lambda g: (-g.get("impact", {}).get("downstream_required_count", 0), g["id"]))
+        items = sorted(items, key=lambda g: (str(g.get("domain", "")), str(g.get("id", ""))))
         parallel_groups.append({
             "group": group,
             "candidate_count": len(items),
@@ -1183,6 +1371,15 @@ def compute_work_now(state: dict) -> dict:
                 "blockers": gap.get("blockers", []),
                 "impact": gap.get("impact", {}),
                 "parallel_group": group,
+                "evidence_status": gap.get("evidence_status", "SOURCE_DEFINED"),
+                "source_backed": gap.get("source_backed", True),
+                "terminal_contribution": gap.get("parent_obligation") or gap.get("consequence") or "UNSPECIFIED",
+                "uncertainty": {
+                    "status": gap.get("status", "UNKNOWN"),
+                    "blocker_count": len(gap.get("blockers", [])),
+                    "source_backed": gap.get("source_backed", True),
+                    "evidence_status": gap.get("evidence_status", "SOURCE_DEFINED"),
+                },
                 "hq_judgment_required": True,
             })
     return {
@@ -1320,6 +1517,7 @@ def maturity_view(state: dict, node_id: str) -> dict:
         "owner": node.get("owner"),
         "stages": stages,
         "source_refs": node.get("source_refs", []),
+        "source_verification": node.get("source_verification") or state.get("source_verification", {}).get(node_id, {}),
         "rule": "Stages are independent evidence axes; code does not prove theory and native validation is not inferred from a fixture.",
     }
 
@@ -1341,6 +1539,8 @@ def _gap_record(rec: dict) -> dict:
     out.setdefault("blockers", [])
     out.setdefault("impact", {"downstream_required_count": 0, "affected_l0": [], "affected_sectors": []})
     out.setdefault("parallel_group", "WHOLE_PROGRAM_GAP")
+    out.setdefault("evidence_status", "SOURCE_DEFINED")
+    out.setdefault("source_backed", True)
     return out
 
 
@@ -1366,6 +1566,12 @@ def whole_program_gaps(state: dict, stage: str = "", domain: str = "") -> dict:
             "blocked_by": [b.get("reason", "blocked") for b in gap.get("blockers", [])],
             "independently_actionable": not gap.get("blockers"),
             "derived_gap": True,
+            "evidence_status": gap.get("evidence_status", "SOURCE_DEFINED"),
+            "source_backed": gap.get("source_backed", True),
+            "evidence_locator": gap.get("evidence_locator"),
+            "return_sha": gap.get("return_sha"),
+            "locator_reason": gap.get("locator_reason"),
+            "inference_rationale": gap.get("inference_rationale"),
         })
     selected = []
     for rec in records.values():
@@ -1393,6 +1599,28 @@ def whole_program_gaps(state: dict, stage: str = "", domain: str = "") -> dict:
     }
 
 
+def _node_brief(state: dict, node_id: str) -> dict:
+    node = _node_map(state).get(node_id, {})
+    refs = node.get("source_refs") or []
+    ref = refs[0] if refs else {}
+    return {
+        "id": node_id,
+        "title": node.get("title"),
+        "summary": node.get("summary"),
+        "status": node.get("status"),
+        "owner": node.get("owner"),
+        "source": {
+            "commit": ref.get("commit"),
+            "path": ref.get("path"),
+            "blob": ref.get("blob") or ref.get("object_id"),
+            "quote": ref.get("quote"),
+            "depth": ref.get("depth"),
+        } if ref else {},
+        "source_verification": node.get("source_verification", {}),
+        "maturity": maturity_view(state, node_id)["stages"] if node_id in _node_map(state) else {},
+    }
+
+
 def home_view(state: dict) -> dict:
     nodes = _node_map(state)
     terminal = []
@@ -1416,18 +1644,47 @@ def home_view(state: dict) -> dict:
                 "independently_actionable": rec.get("independently_actionable", True),
             })
     recent = list(state.get("history", []))[-5:]
+    witness = [
+        {"id": node_id, "title": nodes.get(node_id, {}).get("title"), "status": report.get("status"), "reason": report.get("reason")}
+        for node_id, report in state.get("source_verification", {}).items()
+        if report.get("status") in {"UNREAD", "WITNESS_MISMATCH", "SOURCE_REF_INVALID"}
+    ]
+    blocked = [
+        {"id": n["id"], "title": n.get("title"), "status": n.get("status")}
+        for n in state["nodes"]
+        if n.get("programma_p1") and str(n.get("status", "")).lower() in {"held", "missing", "missing_rule", "blocked_named_authority_required", "reported_not_accessed_now", "unknown", "evidence_mismatch_unresolved"}
+    ]
     return {
         "schema": "SOROK_PROGRAMMA_HOME@1",
+        "purpose": {
+            "kind": "UNCHOSEN_NEIGHBOR",
+            "id": "PURPOSE_UNCHOSEN_NEIGHBOR",
+            "title": nodes.get("PURPOSE_UNCHOSEN_NEIGHBOR", {}).get("title"),
+            "purpose": nodes.get("PURPOSE_UNCHOSEN_NEIGHBOR", {}).get("summary"),
+            "summary": nodes.get("PURPOSE_UNCHOSEN_NEIGHBOR", {}).get("summary"),
+            "status": nodes.get("PURPOSE_UNCHOSEN_NEIGHBOR", {}).get("status"),
+            "owner": nodes.get("PURPOSE_UNCHOSEN_NEIGHBOR", {}).get("owner"),
+            "source": _node_brief(state, "PURPOSE_UNCHOSEN_NEIGHBOR")["source"],
+            "maturity": _node_brief(state, "PURPOSE_UNCHOSEN_NEIGHBOR")["maturity"],
+        },
+        "intended_human_experience": {
+            "astra_b_scene": _node_brief(state, "ASTRA_B_SCENE"),
+            "astra_d_longitudinal": _node_brief(state, "ASTRA_D_LONGITUDINAL"),
+            "negative_controls": _node_brief(state, "ASTRA_NEGATIVE_CONTROLS"),
+        },
+        "constraints_100_101": {
+            "alpha_100": _node_brief(state, "SOROK_100_ALPHA"),
+            "binding_101": _node_brief(state, "SOROK_101_BINDING"),
+            "two_call_proposal": _node_brief(state, "SOROK_101_TWO_CALL_PROPOSAL"),
+            "hidden_interiority": _node_brief(state, "SOROK_101_HIDDEN_INTERIORITY"),
+        },
         "status": "WORKING_CANDIDATE_NOT_HQ_ADJUDICATED",
         "whole_scope": "WHOLE_SCOPE_NOT_YET_PROVEN",
         "one_paragraph": "PROGRAMMA is the living operating reference for the whole Sorok undertaking. It preserves original purposes, rival explanations, exact source and code cuts, actual consumers, negative evidence, maturity gaps, owners and next lawful work. It is not the developmental person and no native/human/PRE-MAIN adoption is issued here.",
         "kernel": "KERNEL_UNRESOLVED",
         "terminal_obligations": terminal,
-        "blocked_or_held": [
-            {"id": n["id"], "title": n.get("title"), "status": n.get("status")}
-            for n in state["nodes"]
-            if n.get("programma_p1") and str(n.get("status", "")).lower() in {"held", "missing", "missing_rule", "blocked_named_authority_required", "reported_not_accessed_now", "unknown", "evidence_mismatch_unresolved"}
-        ],
+        "blocked_or_held": blocked,
+        "source_witness": witness,
         "recent_change": recent,
         "source_freshness": state.get("source_snapshot"),
         "counts": {
@@ -1452,6 +1709,7 @@ def focus_view(state: dict, node_id: str, depth: int = 1) -> dict:
         "node": _node_map(state)[node_id],
         "axes": state["axes"].get(node_id),
         "maturity": maturity_view(state, node_id),
+        "source_verification": state.get("source_verification", {}).get(node_id),
         "outgoing": outgoing,
         "incoming": incoming,
         "missing_or_unproven": missing,
@@ -1488,6 +1746,7 @@ def code_consumer_view(state: dict, node_id: str) -> dict:
         "title": node.get("title"),
         "status": node.get("status"),
         "source_refs": node.get("source_refs", []),
+        "source_verification": state.get("source_verification", {}).get(node_id),
         "code_and_consumer_edges": code_edges,
         "current_importer": "NONE_VERIFIED" if node_id in {"V3_RUN_ONE_YEAR", "V3_PERSONA_SHEET", "CURRENT_V3_IMPORTER_MISSING"} else "SEE_EDGES",
         "rule": "HISTORICALLY_CALLED_BY is not CURRENTLY_IMPORTED_BY.",
@@ -1504,7 +1763,9 @@ def evidence_view(state: dict, node_id: str) -> dict:
         "node_evidence": state.get("node_evidence", {}).get(node_id, []),
         "axes": state["axes"].get(node_id),
         "maturity": maturity_view(state, node_id),
+        "source_verification": state.get("source_verification", {}).get(node_id),
         "acceptance_record": node.get("acceptance_record"),
+        "acceptance_verification": node.get("acceptance_verification"),
         "local_hash_custody": "LOCAL_INTEGRITY_ONLY_NOT_EXTERNAL_CUSTODY",
     }
 
@@ -1525,11 +1786,29 @@ def owners_view(state: dict) -> dict:
     }
 
 
+def _negative_axes(axis: dict, *, include_consumer: bool = True) -> list[tuple[str, str]]:
+    out = []
+    for key, values in (
+        ("source_recovery", NEGATIVE_SOURCE),
+        ("review", NEGATIVE_REVIEW),
+        ("engineering", NEGATIVE_ENGINEERING),
+        ("science", NEGATIVE_SCIENCE),
+        ("authority", NEGATIVE_AUTHORITY),
+    ):
+        value = str(axis.get(key, ""))
+        if value in values:
+            out.append((key, value))
+    if include_consumer and str(axis.get("consumer", "")).startswith("INVALIDATED"):
+        out.append(("consumer", str(axis.get("consumer", ""))))
+    return out
+
+
 def _recompute_consumer_grades(state: dict) -> None:
     """Restore only when every active required prerequisite is non-negative.
 
     A second independent RED remains a blocker.  Mention, hypothesis,
     association and source-location edges never enter this calculation.
+    Unrelated holds elsewhere are not global prerequisites.
     """
     baseline = state.setdefault("consumer_baseline", {})
     for node_id, axis in state["axes"].items():
@@ -1538,16 +1817,14 @@ def _recompute_consumer_grades(state: dict) -> None:
             if current and current not in {"EXTERNAL_BOUNDARY"}:
                 baseline.setdefault(node_id, current)
             continue
-        if str(axis.get("source_recovery", "")) in NEGATIVE_SOURCE:
+        if _negative_axes(axis, include_consumer=False):
             continue
         blockers = []
         for edge in _required_incoming(state, node_id):
             source = edge["from"]
             source_axis = state["axes"].get(source, {})
-            if str(source_axis.get("source_recovery", "")) in NEGATIVE_SOURCE:
-                blockers.append((source, "source_recovery"))
-            if str(source_axis.get("consumer", "")).startswith("INVALIDATED"):
-                blockers.append((source, "consumer"))
+            for key, value in _negative_axes(source_axis):
+                blockers.append((source, key, value))
         if blockers:
             continue
         restore = baseline.get(node_id) or "CANDIDATE_READY"
@@ -1668,99 +1945,281 @@ def _verify_source_ref(ref: dict) -> tuple[bool, str]:
     return True, "GIT_SOURCE_REF_VERIFIED"
 
 
+def _classify_source_refs(node: dict) -> dict:
+    refs = node.get("source_refs") or []
+    if not refs:
+        return {"status": "INDEX_ONLY", "refs": [], "reason": "NO_SOURCE_REFS"}
+    results = []
+    for ref in refs:
+        repository = ref.get("repository")
+        if repository not in {None, "maidiu/rawlsing", "LOCAL_EXTERNAL_RAWLSING_DESKTOP"}:
+            results.append({
+                "status": "EXTERNAL_REPORTED_NOT_REVERIFIED",
+                "reason": "EXTERNAL_REPOSITORY_NOT_REVERIFIED_LOCALLY",
+                "ref": ref,
+            })
+            continue
+        ok, reason = _verify_source_ref(ref)
+        if ok:
+            status = "SOURCE_EXACT"
+        elif reason == "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT":
+            status = "UNREAD"
+        elif reason.startswith("LOCAL_EXTERNAL_SHA256_MISMATCH"):
+            status = "WITNESS_MISMATCH"
+        else:
+            status = "SOURCE_REF_INVALID"
+        results.append({"status": status, "reason": reason, "ref": ref})
+    statuses = {item["status"] for item in results}
+    for status in ("WITNESS_MISMATCH", "UNREAD", "SOURCE_REF_INVALID", "EXTERNAL_REPORTED_NOT_REVERIFIED", "SOURCE_EXACT"):
+        if status in statuses:
+            return {"status": status, "refs": results, "reason": next(i["reason"] for i in results if i["status"] == status)}
+    return {"status": "INDEX_ONLY", "refs": results, "reason": "NO_SOURCE_REFS"}
+
+
 def verify_source_refs(state: dict) -> dict:
     checked = 0
     failures = []
     external = 0
+    node_status = {}
     for node in state["nodes"]:
         if not node.get("programma_p1"):
             continue
-        for ref in node.get("source_refs", []):
+        report = _classify_source_refs(node)
+        node_status[node["id"]] = report
+        for item in report["refs"]:
             checked += 1
+            ref = item["ref"]
             if ref.get("repository") not in {None, "maidiu/rawlsing", "LOCAL_EXTERNAL_RAWLSING_DESKTOP"}:
                 external += 1
                 continue
-            ok, reason = _verify_source_ref(ref)
-            if not ok:
-                failures.append({"node": node["id"], "reason": reason, "ref": ref})
+            if item["status"] != "SOURCE_EXACT":
+                failures.append({"node": node["id"], "reason": item["reason"], "ref": ref, "status": item["status"]})
     return {
         "checked_local": checked - external,
         "external_not_reverified_locally": external,
         "failures": failures,
+        "node_status": node_status,
         "result": "PASS" if not failures else "FAIL",
-        "note": "Git identity and local external bytes are verified; controller/Library/other repositories are not re-read offline.",
+        "note": "Git identity and local external bytes are verified; controller/Library/other repositories are not re-read offline. Missing witnesses are reported as UNREAD, not SOURCE_EXACT.",
     }
 
 
-def _verify_acceptance_record(state: dict, node_id: str, dimension: str, evidence: dict) -> tuple[bool, str, dict]:
-    """Bind a promotion to a distinct principal, exact subject and appointment.
+ACCEPTANCE_VERDICTS = {"ACCEPT_SCOPED", "REVIEW_PASSED_SCOPED", "PASS", "ACCEPT"}
 
-    A local Git object identity is necessary but not sufficient.  The record must
-    name an independently established reviewer principal, a distinct author,
-    the exact subject SHA, assertion, scope and an appointment/intake object.
+
+def _record_ref_for_source(ref: dict) -> str:
+    commit = str(ref.get("commit") or "")
+    path = str(ref.get("path") or "")
+    return f"{commit}:{path}" if commit and path else ""
+
+
+def _node_record_source(node: dict, record_ref: str) -> dict | None:
+    for ref in node.get("source_refs") or []:
+        if _record_ref_for_source(ref) == record_ref:
+            return ref
+    return None
+
+
+def _parse_acceptance_record(state: dict, node_id: str, record_ref: str, *, require_node_subject: bool = True, expected_subject: str | None = None) -> tuple[bool, str, dict]:
+    node = _node_map(state).get(node_id)
+    if not node:
+        return False, "UNKNOWN_NODE", {}
+    if not record_ref or ":" not in record_ref:
+        return False, "REVIEW_RECORD_REF_MALFORMED", {}
+    commit, path = record_ref.split(":", 1)
+    if not _sha40(commit) or not path:
+        return False, "REVIEW_RECORD_REF_MALFORMED", {}
+    ref = _node_record_source(node, record_ref)
+    if ref is None:
+        return False, "REVIEW_RECORD_NOT_A_NODE_SOURCE", {}
+    ok, reason = _verify_git_object({
+        "commit": commit, "path": path, "object_type": "blob",
+        "blob": ref.get("blob") or ref.get("object_id"),
+    })
+    if not ok:
+        return False, "REVIEW_RECORD_OBJECT_INVALID:" + reason, {}
+    blob = _git(["rev-parse", f"{commit}:{path}"]) or ""
+    body = _git(["show", f"{commit}:{path}"]) or ""
+    if not body.strip():
+        return False, "REVIEW_RECORD_EMPTY", {}
+    principal_match = re.search(r"^#\s*SOROK\s+([A-Za-z0-9][A-Za-z0-9_-]*)\b", body, re.M)
+    principal = principal_match.group(1) if principal_match else ""
+    role_match = re.search(r"^\*\*ROLE:\*\*\s*(.+)$", body, re.M)
+    role = role_match.group(1).strip() if role_match else ""
+    if not principal or not role:
+        return False, "REVIEW_RECORD_LACKS_REVIEWER_IDENTITY", {}
+    if "independent" not in role.lower():
+        return False, "REVIEW_RECORD_ROLE_NOT_INDEPENDENT", {}
+    reviewed: list[tuple[str, str]] = []
+    for line in body.splitlines():
+        if "REVIEWED" in line.upper() and "CUT" in line.upper():
+            shas = re.findall(r"\b[0-9a-f]{40}\b", line)
+            if len(shas) == 1:
+                label = re.sub(r"[`*_]", "", line.split(":", 1)[0]).strip()
+                reviewed.append((label, shas[0]))
+    if not reviewed:
+        return False, "REVIEW_RECORD_LACKS_EXACT_REVIEWED_CUT", {}
+    assertion_match = re.search(
+        r"ACCEPT_SCOPED[`*_]*\s+for\s+exact\s+([0-9a-f]{3,40})\s+([^.;\n]+)", body, re.I)
+    if not assertion_match:
+        return False, "REVIEW_RECORD_LACKS_EXACT_ACCEPTING_ASSERTION", {}
+    assertion_prefix = assertion_match.group(1).lower()
+    assertion = assertion_match.group(2).strip()
+    assertion_subjects = [sha for _, sha in reviewed if sha.startswith(assertion_prefix)]
+    if len(assertion_subjects) != 1:
+        return False, "REVIEW_RECORD_ASSERTION_SUBJECT_AMBIGUOUS", {}
+    accepted_subject = assertion_subjects[0]
+    subject = ""
+    node_subject = str(node.get("subject_sha") or "")
+    if require_node_subject:
+        if not _sha40(node_subject):
+            return False, "NODE_SUBJECT_SHA_REQUIRED", {}
+        if node_subject not in {sha for _, sha in reviewed}:
+            return False, "NODE_SUBJECT_NOT_IN_REVIEW_RECORD", {}
+        if node_subject != accepted_subject:
+            return False, "NODE_SUBJECT_DOES_NOT_MATCH_ACCEPTING_ASSERTION", {}
+        subject = node_subject
+    else:
+        if expected_subject and expected_subject != accepted_subject:
+            return False, "EXPECTED_SUBJECT_DOES_NOT_MATCH_ACCEPTING_ASSERTION", {}
+        subject = accepted_subject
+    verdict_match = re.search(r"verdict[^\n]*?\b(ACCEPT_SCOPED|REVIEW_PASSED_SCOPED|PASS|ACCEPT)\b", body, re.I)
+    if not verdict_match:
+        return False, "REVIEW_RECORD_LACKS_EXPLICIT_VERDICT", {}
+    verdict = verdict_match.group(1).upper()
+    appointment_match = re.search(
+        r"(?:EXACT\s+COMMISSION\s+SEAL|APPOINTMENT(?:[_ ]REF)?)\s*:?\s*\**\s*`?([0-9a-f]{40})",
+        body, re.I)
+    appointment = appointment_match.group(1) if appointment_match else ""
+    if not appointment:
+        return False, "REVIEW_RECORD_LACKS_APPOINTMENT_SEAL", {}
+    if "appoint" not in body.lower() and "commission" not in body.lower():
+        return False, "REVIEW_RECORD_LACKS_APPOINTMENT_OR_INTAKE_EVIDENCE", {}
+    if _git(["cat-file", "-t", appointment]) != "commit":
+        return False, "APPOINTMENT_REF_NOT_A_REAL_COMMIT", {}
+    appointment_message = _git(["show", "-s", "--format=%B", appointment]) or ""
+    if subject not in body:
+        return False, "REVIEW_RECORD_DOES_NOT_BIND_EXACT_SUBJECT", {}
+    if subject[:7] not in appointment_message and subject[:3] not in appointment_message:
+        return False, "APPOINTMENT_DOES_NOT_BIND_SUBJECT", {}
+    author = _git(["show", "-s", "--format=%ae", subject]) or ""
+    if not author:
+        return False, "SUBJECT_AUTHOR_UNRESOLVED", {}
+    if principal.lower() == author.lower():
+        return False, "SELF_REVIEW_PRINCIPAL_NOT_DISTINCT", {}
+    details = {
+        "reviewer_principal": principal,
+        "reviewer_role": role,
+        "author_principal": author,
+        "author_basis": "SUBJECT_COMMIT_AUTHOR_EMAIL",
+        "subject_sha": subject,
+        "assertion": assertion,
+        "scope": [node_id],
+        "verdict": verdict,
+        "record_ref": record_ref,
+        "record_blob": blob,
+        "record_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
+        "appointment_ref": appointment,
+        "appointment_message": appointment_message.splitlines()[0] if appointment_message else "",
+        "node_subject_sha": node_subject or None,
+        "binding": "NODE_SOURCE_REF_EXACT_RECORD_BYTES",
+    }
+    return True, "INDEPENDENT_ACCEPTANCE_VERIFIED", details
+
+
+def _verify_acceptance_record(state: dict, node_id: str, dimension: str, evidence: dict) -> tuple[bool, str, dict]:
+    """Bind a promotion to an existing competent immutable review record.
+
+    Caller-written principals, subjects, assertions and scopes are never
+    evidence.  The node must already carry the exact reviewed subject, and the
+    referenced record must be one of that node's own immutable source refs.
     """
     if evidence.get("fixture_origin") or evidence.get("kind") == "SYNTHETIC_DEMO":
         return False, "FIXTURE_ORIGIN_CANNOT_PROMOTE", {}
     record = evidence.get("acceptance") or evidence.get("acceptance_record")
     if not isinstance(record, dict):
         return False, "INDEPENDENT_ACCEPTANCE_RECORD_REQUIRED", {}
-    required = ("reviewer_principal", "reviewer_role", "author_principal", "subject_sha", "assertion", "scope", "appointment_ref", "record_ref", "verdict")
-    for key in required:
-        if not str(record.get(key) or "").strip():
-            return False, "ACCEPTANCE_FIELD_MISSING:" + key, {}
-    if record["reviewer_principal"] == record["author_principal"]:
-        return False, "SELF_REVIEW_PRINCIPAL_NOT_DISTINCT", {}
-    if not _sha40(str(record["subject_sha"])):
-        return False, "SUBJECT_SHA_INVALID", {}
-    if _git(["cat-file", "-t", str(record["subject_sha"])]) != "commit":
-        return False, "SUBJECT_SHA_NOT_A_REAL_COMMIT", {}
+    record_ref = str(record.get("record_ref") or "").strip()
+    ok, reason, details = _parse_acceptance_record(state, node_id, record_ref, require_node_subject=True)
+    if not ok:
+        return False, reason, {}
+    caller_subject = str(record.get("subject_sha") or "")
+    if caller_subject and caller_subject != details["subject_sha"]:
+        return False, "CALLER_SUBJECT_DOES_NOT_MATCH_RECORD", {}
+    caller_reviewer = str(record.get("reviewer_principal") or "")
+    if caller_reviewer and caller_reviewer != details["reviewer_principal"]:
+        return False, "CALLER_REVIEWER_DOES_NOT_MATCH_RECORD", {}
+    caller_verdict = str(record.get("verdict") or "").upper()
+    if caller_verdict and caller_verdict != details["verdict"]:
+        return False, "CALLER_VERDICT_DOES_NOT_MATCH_RECORD", {}
+    caller_appointment = str(record.get("appointment_ref") or "")
+    if caller_appointment and caller_appointment != details["appointment_ref"]:
+        return False, "CALLER_APPOINTMENT_DOES_NOT_MATCH_RECORD", {}
+    if record.get("record_blob") and str(record["record_blob"]) != details["record_blob"]:
+        return False, "REVIEW_RECORD_BLOB_MISMATCH", {}
     scope = record.get("scope") or []
     if isinstance(scope, str):
         scope = [scope]
-    if "*" not in scope and node_id not in scope:
+    if "*" in scope:
+        return False, "WILDCARD_SCOPE_NOT_ACCEPTED", {}
+    if scope and node_id not in scope:
         return False, "ACCEPTANCE_SCOPE_MISMATCH", {}
-    verdict = str(record.get("verdict") or "").upper()
-    if verdict not in {"ACCEPT_SCOPED", "REVIEW_PASSED_SCOPED", "PASS", "ACCEPT"}:
-        return False, "NON_ACCEPTING_VERDICT:" + verdict, {}
-    record_ref = str(record["record_ref"])
-    if ":" not in record_ref:
-        return False, "REVIEW_RECORD_REF_MALFORMED", {}
-    commit, path = record_ref.split(":", 1)
-    ok, reason = _verify_git_object({"commit": commit, "path": path, "object_type": "blob"})
-    if not ok:
-        return False, "REVIEW_RECORD_OBJECT_INVALID:" + reason, {}
-    blob = _git(["rev-parse", f"{commit}:{path}"])
-    body = _git(["show", f"{commit}:{path}"]) or ""
-    body_low = body.lower()
-    principal_low = str(record["reviewer_principal"]).lower()
-    role_low = str(record.get("reviewer_role") or "").lower().replace("_", " ")
-    if principal_low not in body_low and role_low not in body_low:
-        return False, "REVIEW_RECORD_DOES_NOT_NAME_REVIEWER", {}
-    if "appoint" not in body_low and "commission" not in body_low:
-        return False, "REVIEW_RECORD_LACKS_APPOINTMENT_OR_INTAKE_EVIDENCE", {}
-    if record.get("record_blob") and str(record["record_blob"]) != blob:
-        return False, "REVIEW_RECORD_BLOB_MISMATCH", {}
-    appointment = str(record["appointment_ref"])
-    if _git(["cat-file", "-t", appointment]) != "commit":
-        return False, "APPOINTMENT_REF_NOT_A_REAL_COMMIT", {}
-    if evidence.get("reviewed_sha") and str(evidence["reviewed_sha"]) != str(record["subject_sha"]):
+    if evidence.get("reviewed_sha") and str(evidence["reviewed_sha"]) != details["subject_sha"]:
         return False, "REVIEWED_SHA_DOES_NOT_MATCH_SUBJECT", {}
-    node = _node_map(state).get(node_id, {})
-    node_subject = str(node.get("subject_sha") or "")
-    if node_subject and node_subject != str(record["subject_sha"]):
-        return False, "STALE_SUBJECT_SHA", {}
-    return True, "INDEPENDENT_ACCEPTANCE_VERIFIED", {
-        "reviewer_principal": record["reviewer_principal"],
-        "reviewer_role": record["reviewer_role"],
-        "author_principal": record["author_principal"],
-        "subject_sha": record["subject_sha"],
-        "scope": scope,
-        "assertion": record["assertion"],
-        "verdict": verdict,
-        "record_blob": blob,
-        "appointment_ref": appointment,
-        "dimension": dimension,
+    details["dimension"] = dimension
+    return True, "INDEPENDENT_ACCEPTANCE_VERIFIED", details
+
+
+def _verify_seed_acceptance_records(state: dict) -> None:
+    for node in state["nodes"]:
+        record = node.get("acceptance_record")
+        if not isinstance(record, dict):
+            continue
+        record_ref = str(record.get("record_ref") or "")
+        ok, reason, details = _parse_acceptance_record(
+            state, node["id"], record_ref, require_node_subject=False,
+            expected_subject=str(record.get("subject_sha") or "") or None)
+        if not ok:
+            node["acceptance_verification"] = {
+                "status": "REPORTED_ACCEPTANCE_NOT_VERIFIED",
+                "reason": reason,
+                "record_ref": record_ref,
+            }
+            if str(node.get("status", "")).upper() in {"ACCEPT_SCOPED", "INDEPENDENT_ACCEPT_SCOPED"}:
+                node["status"] = "REPORTED_ACCEPTANCE_NOT_VERIFIED"
+            continue
+        node["acceptance_verification"] = {
+            "status": "VERIFIED_EXISTING_RECORD",
+            "reason": reason,
+            "subject_sha": details["subject_sha"],
+            "reviewer_principal": details["reviewer_principal"],
+            "record_blob": details["record_blob"],
+            "record_sha256": details["record_sha256"],
+            "appointment_ref": details["appointment_ref"],
+        }
+    verified_subjects = {
+        node.get("acceptance_verification", {}).get("subject_sha")
+        for node in state["nodes"]
+        if node.get("acceptance_verification", {}).get("status") == "VERIFIED_EXISTING_RECORD"
     }
+    for node in state["nodes"]:
+        if node.get("acceptance_record") or not node.get("acceptance_binding"):
+            continue
+        subject = str(node.get("subject_sha") or "")
+        if subject and subject in verified_subjects:
+            node["acceptance_verification"] = {
+                "status": "VERIFIED_EXISTING_RECORD",
+                "reason": "BOUND_TO_EXACT_EXISTING_ACCEPTANCE_RECORD",
+                "subject_sha": subject,
+            }
+        else:
+            node["acceptance_verification"] = {
+                "status": "REPORTED_ACCEPTANCE_NOT_VERIFIED",
+                "reason": "NO_EXACT_EXISTING_ACCEPTANCE_RECORD",
+                "subject_sha": subject or None,
+            }
+            if str(node.get("status", "")).upper() in {"ACCEPT_SCOPED", "INDEPENDENT_ACCEPT_SCOPED"}:
+                node["status"] = "REPORTED_ACCEPTANCE_NOT_VERIFIED"
 
 
 def _acceptance_request(state: dict, node_id: str, dimension: str, evidence: dict) -> dict:
@@ -1849,6 +2308,72 @@ def _is_negative(dimension: str, to: str) -> bool:
     )
 
 
+WITHDRAWAL_BASES = {
+    "SOURCE_OWNER_WITHDRAWAL",
+    "QUALIFIED_ABSENCE_VERIFICATION",
+    "SOURCE_INTEGRITY_LOSS",
+    "AUTHORIZED_SCOPED_EXCLUSION",
+}
+
+WITHDRAWAL_TARGET_BASIS = {
+    "SOURCE_WITHDRAWN": {"SOURCE_OWNER_WITHDRAWAL"},
+    "SOURCE_NOT_FOUND": {"QUALIFIED_ABSENCE_VERIFICATION"},
+    "MISSING": {"QUALIFIED_ABSENCE_VERIFICATION", "SOURCE_INTEGRITY_LOSS"},
+    "SOURCE_INVALID": {"SOURCE_INTEGRITY_LOSS"},
+    "AUTHORIZED_EXCLUSION": {"AUTHORIZED_SCOPED_EXCLUSION"},
+}
+
+
+def _validate_withdrawal_evidence(state: dict, node_id: str, requested_to: str, evidence: dict) -> dict:
+    if evidence.get("kind") == "SYNTHETIC_DEMO" or evidence.get("fixture_origin"):
+        if state.get("operating"):
+            raise ValueError("FIXTURE_ORIGIN_CANNOT_MUTATE_OPERATING_STATE")
+        return {"qualified": False, "basis": "SYNTHETIC_DEMO", "status": "SIMULATED_NOT_QUALIFIED"}
+    expected_kind = "AUTHORIZED_EXCLUSION" if requested_to == "AUTHORIZED_EXCLUSION" else "SOURCE_WITHDRAWAL"
+    if evidence.get("kind") != expected_kind:
+        raise ValueError("QUALIFIED_WITHDRAWAL_EVIDENCE_REQUIRED")
+    basis = str(evidence.get("basis") or "")
+    if basis not in WITHDRAWAL_BASES:
+        raise ValueError("WITHDRAWAL_BASIS_INVALID")
+    if basis not in WITHDRAWAL_TARGET_BASIS.get(requested_to, set()):
+        raise ValueError("WITHDRAWAL_BASIS_TARGET_MISMATCH")
+    scope = evidence.get("scope") or [node_id]
+    if isinstance(scope, str):
+        scope = [scope]
+    if node_id not in scope and "*" not in scope:
+        raise ValueError("WITHDRAWAL_SCOPE_MISMATCH")
+    authority = str(evidence.get("authority") or "")
+    if authority not in AUTHORITY_OWNER_SLOTS and authority not in {"SOROK_HQ", "SOROK_ORIGINAL_PRODUCT_OWNER"}:
+        raise ValueError("WITHDRAWAL_AUTHORITY_INVALID")
+    event_id = str(evidence.get("withdrawal_event_id") or "")
+    if state.get("operating"):
+        record = next((
+            item for item in state.get("withdrawals", [])
+            if item.get("event_id") == event_id
+            and item.get("node_id") == node_id
+            and item.get("basis") == basis
+            and item.get("qualified")
+        ), None)
+        if not record:
+            raise ValueError("QUALIFIED_WITHDRAWAL_EVENT_REQUIRED")
+        return {
+            "qualified": True,
+            "basis": basis,
+            "authority": authority,
+            "scope": scope,
+            "withdrawal_event_id": event_id,
+            "status": "QUALIFIED_WITHDRAWAL_OR_EXCLUSION",
+        }
+    return {
+        "qualified": True,
+        "basis": basis,
+        "authority": authority,
+        "scope": scope,
+        "withdrawal_event_id": event_id or None,
+        "status": "QUALIFIED_NONOPERATING_DECLARATION",
+    }
+
+
 def _invalidate_required_dependents(state: dict, node_id: str) -> list[str]:
     invalidated = []
     seen = {node_id}
@@ -1885,6 +2410,9 @@ def _apply_transition(state: dict, fixture: dict) -> dict:
     if evidence is None:
         evidence = {"owner_evidence": fixture.get("owner_evidence"), "reviewer_evidence": fixture.get("reviewer_evidence")}
     evidence = _require_evidence(evidence)
+    withdrawal = None
+    if requested_to in {"SOURCE_NOT_FOUND", "SOURCE_WITHDRAWN", "MISSING", "SOURCE_INVALID", "AUTHORIZED_EXCLUSION"}:
+        withdrawal = _validate_withdrawal_evidence(state, node_id, requested_to, evidence)
     synthetic = evidence["kind"] == "SYNTHETIC_DEMO" or bool(evidence.get("fixture_origin"))
     if synthetic and state.get("operating"):
         raise ValueError("FIXTURE_ORIGIN_CANNOT_MUTATE_OPERATING_STATE")
@@ -2005,6 +2533,7 @@ def _apply_transition(state: dict, fixture: dict) -> dict:
         "authority_hold": hold if not (hold and hold.get("accepted")) else None,
         "acceptance": hold.get("acceptance") if hold and hold.get("accepted") else None,
         "source_cut": state.get("source_snapshot", {}).get("read_at", "UNKNOWN"),
+        "withdrawal": withdrawal,
     }
     state["history"].append(record)
     if hold and not hold.get("accepted"):
@@ -2033,6 +2562,7 @@ def _apply_transition(state: dict, fixture: dict) -> dict:
         "restored": restored,
         "authority_hold": hold if not (hold and hold.get("accepted")) else None,
         "acceptance": hold.get("acceptance") if hold and hold.get("accepted") else None,
+        "withdrawal": withdrawal,
         "pyat_boundary_touched": False,
     }
 
@@ -2069,7 +2599,10 @@ def ingest_oscience(
     registry = r3_registry or _load(SEED_REGISTRY)
     legacy = legacy_source or _load(OSCIENCE_102)
     backward = backward or _load(OSCIENCE_BACKWARD)
-    digest = patch_digest or _digest(patch)
+    actual_digest = _digest(patch)
+    if patch_digest and patch_digest != actual_digest:
+        raise ValueError(f"OSCIENCE_PATCH_DIGEST_MISMATCH:{actual_digest}!={patch_digest}")
+    digest = actual_digest
     if digest in state.get("evidence_imports", {}):
         state["history"].append({
             "history_id": "H%04d" % (len(state["history"]) + 1),
@@ -2252,11 +2785,56 @@ def ingest_oscience(
     }
 
 
+def _verify_return_locator(source: dict, locator: Any) -> tuple[bool, str, dict]:
+    if not isinstance(locator, dict):
+        return False, "NO_LOCATOR", {}
+    commit = str(source.get("commit") or "")
+    path = str(locator.get("path") or source.get("path") or "")
+    quote = str(locator.get("quote") or "").strip()
+    if not commit or not path or not quote:
+        return False, "LOCATOR_INCOMPLETE", {}
+    ok, reason = _verify_git_object({"commit": commit, "path": path, "object_type": "blob"})
+    if not ok:
+        return False, "LOCATOR_OBJECT_INVALID:" + reason, {}
+    body = _git(["show", f"{commit}:{path}"]) or ""
+    if quote not in body:
+        return False, "LOCATOR_QUOTE_NOT_FOUND", {}
+    line_start = locator.get("line_start")
+    line_end = locator.get("line_end")
+    if line_start is not None:
+        start_line = max(1, int(line_start))
+        end_line = int(line_end) if line_end is not None else start_line
+        selected = "\n".join(body.splitlines()[start_line - 1:end_line])
+        if quote not in selected:
+            return False, "LOCATOR_LINE_RANGE_MISMATCH", {}
+    blob = _git(["rev-parse", f"{commit}:{path}"]) or ""
+    return True, "LOCATOR_VERIFIED", {
+        "commit": commit,
+        "path": path,
+        "blob": blob,
+        "quote": quote,
+        "line_start": line_start,
+        "line_end": line_end,
+    }
+
+
+def _claim_evidence_status(source: dict, spec: dict, fixture: dict) -> tuple[str, bool, dict, str]:
+    locator = spec.get("locator") or spec.get("evidence_locator") or fixture.get("locator")
+    ok, reason, verified = _verify_return_locator(source, locator)
+    if ok:
+        return "SOURCE_LOCATED", True, verified, reason
+    if fixture.get("hq_inference") and str(fixture.get("inference_rationale") or "").strip():
+        return "HQ_INFERENCE", False, {}, reason
+    return "CALLER_CLAIM_UNVERIFIED", False, {}, reason
+
+
 def intake_candidate(state: dict, fixture: dict) -> dict:
     """Ingest a real returned artifact as candidate evidence; never auto-promote.
 
-    Synthetic, fixture-origin or unverifiable returns are quarantined outside the
-    operating graph.  They cannot create gaps, nodes, edges or work-now.
+    A real exact return SHA is required and must be the source commit.  Caller
+    requirements, gaps and node updates are source-backed only when an exact
+    locator/quote inside that return verifies.  Otherwise they remain visible as
+    caller-claimed or HQ-inferred, never as verified source work.
     """
     if fixture.get("schema", "").startswith("SOROK_PROGRAMMA_O_SCIENCE") or fixture.get("kind") == "OSCIENCE_PATCH":
         return ingest_oscience(state, fixture)
@@ -2265,11 +2843,19 @@ def intake_candidate(state: dict, fixture: dict) -> dict:
     synthetic = bool(fixture.get("fixture_origin")) or not _sha40(sha)
     source_ok = False
     source_reason = "NO_SOURCE"
-    if not synthetic and source:
-        source_ok, source_reason = _verify_git_object(source)
-    elif not synthetic:
-        source_ok = _git(["cat-file", "-t", sha]) == "commit"
-        source_reason = "RETURN_COMMIT_VERIFIED" if source_ok else "RETURN_SHA_NOT_A_COMMIT"
+    if not synthetic:
+        if _git(["cat-file", "-t", sha]) != "commit":
+            source_ok = False
+            source_reason = "RETURN_SHA_NOT_A_REAL_COMMIT"
+        elif source:
+            source_ok, source_reason = _verify_git_object(source)
+            if source_ok and str(source.get("commit") or "") != sha:
+                source_ok = False
+                source_reason = "RETURN_SHA_SOURCE_COMMIT_MISMATCH"
+        else:
+            source_ok = True
+            source_reason = "RETURN_COMMIT_VERIFIED_NO_PAYLOAD_PATH"
+            source = {"commit": sha, "object_type": "commit"}
     if synthetic or not source_ok:
         item = {
             "kind": "QUARANTINED_INTAKE_ATTACK",
@@ -2294,20 +2880,33 @@ def intake_candidate(state: dict, fixture: dict) -> dict:
         "status": "CANDIDATE_NOT_PROMOTED",
         "claimed_tests": fixture.get("tests", {}),
         "evidence": fixture.get("evidence", {}),
+        "source_backed_claims": [],
+        "unverified_claims": [],
         "read_at": state.get("logical_time") or _utc_now(),
     }
     state["history"].append(item)
     gap_spec = fixture.get("gap")
     if gap_spec:
         gap = _gap_record(dict(gap_spec))
+        status, backed, locator, reason = _claim_evidence_status(source, gap_spec, fixture)
         gap.setdefault("class", "UNREPRESENTED_REQUIREMENT")
         gap.setdefault("blockers", [])
         gap.setdefault("impact", {"downstream_required_count": 0, "affected_l0": [], "affected_sectors": []})
         gap.setdefault("parallel_group", "DISCOVERED_REQUISITE")
+        gap.update({
+            "evidence_status": status,
+            "source_backed": backed,
+            "evidence_locator": locator,
+            "locator_reason": reason,
+            "return_sha": sha,
+            "inference_rationale": fixture.get("inference_rationale") if status == "HQ_INFERENCE" else "",
+        })
         state.setdefault("intake_gaps", []).append(gap)
         item["new_gap"] = gap["id"]
+        (item["source_backed_claims"] if backed else item["unverified_claims"]).append(gap["id"])
     elif fixture.get("new_requirement"):
         rid = fixture["new_requirement"]
+        status, backed, locator, reason = _claim_evidence_status(source, fixture, fixture)
         gap = {
             "id": "GAP_" + rid,
             "new_gap": "GAP_" + rid,
@@ -2326,38 +2925,66 @@ def intake_candidate(state: dict, fixture: dict) -> dict:
             "impact": {"downstream_required_count": 0, "affected_l0": [], "affected_sectors": []},
             "parallel_group": "DISCOVERED_REQUISITE",
             "hq_judgment_required": True,
+            "evidence_status": status,
+            "source_backed": backed,
+            "evidence_locator": locator,
+            "locator_reason": reason,
+            "return_sha": sha,
+            "inference_rationale": fixture.get("inference_rationale") if status == "HQ_INFERENCE" else "",
         }
         state.setdefault("intake_gaps", []).append(gap)
         item["new_gap"] = gap["id"]
+        (item["source_backed_claims"] if backed else item["unverified_claims"]).append(gap["id"])
     for update in fixture.get("node_updates", []):
         nid = update.get("id")
         if not nid:
             continue
+        status, backed, locator, reason = _claim_evidence_status(source, update, fixture)
         if nid not in _node_map(state):
+            if not backed:
+                item["unverified_claims"].append("NODE:" + nid)
+                continue
             state["nodes"].append({
                 "id": nid,
                 "layer": update.get("layer", "L2"),
                 "kind": update.get("kind", "DISCOVERED_REQUIREMENT"),
                 "title": update.get("title", nid),
                 "status": "CANDIDATE_EVIDENCE",
-                "source": update.get("source"),
+                "source": update.get("source") or source,
                 "source_refs": [source] if source else [],
                 "hq_judgment_required": True,
             })
             state["axes"][nid] = _empty_axes_for_node({"id": nid})
-        state["axes"][nid].update({"operational": "CANDIDATE_EVIDENCE"})
+        if backed:
+            state["axes"][nid].update({"operational": "CANDIDATE_EVIDENCE"})
+            item["source_backed_claims"].append("NODE:" + nid)
+        else:
+            item["unverified_claims"].append("NODE:" + nid)
         state.setdefault("node_evidence", {}).setdefault(nid, []).append({
             "kind": "RETURN_CANDIDATE_EVIDENCE",
             "evidence": update.get("evidence"),
+            "evidence_status": status,
+            "source_backed": backed,
+            "evidence_locator": locator,
+            "locator_reason": reason,
             "return_sha": sha,
             "history_id": item["history_id"],
         })
     for edge in fixture.get("edges", []):
         if edge.get("from") not in _node_map(state) or edge.get("to") not in _node_map(state):
             raise ValueError("INTAKE_EDGE_ENDPOINT_UNKNOWN")
+        status, backed, locator, reason = _claim_evidence_status(source, edge, fixture)
+        if not backed:
+            item["unverified_claims"].append("EDGE:" + str(edge.get("from")) + "->" + str(edge.get("to")))
+            continue
         candidate = _classify_edge(edge)
+        candidate["evidence_status"] = status
+        candidate["source_backed"] = True
+        candidate["evidence_locator"] = locator
+        candidate["return_sha"] = sha
         if candidate["edge_id"] not in {e["edge_id"] for e in state["edges"]}:
             state["edges"].append(candidate)
+            item["source_backed_claims"].append("EDGE:" + candidate["edge_id"])
     _recompute(state)
     return item
 
@@ -2388,15 +3015,46 @@ def generate_html(state: dict, output: Path) -> Path:
                 f"<td>{escape(str(gap.get('owner', '')))}</td><td>{escape(str(gap.get('smallest_useful_next_action', '')))}</td>"
                 f"<td>{escape(str(gap.get('falsifier', '')))}</td></tr>"
             )
+    purpose = home["purpose"]
+    experience = home["intended_human_experience"]
+    constraints = home["constraints_100_101"]
+    def brief(item: dict) -> str:
+        source = item.get("source") or {}
+        quote = source.get("quote") or ""
+        return (
+            f"<h3>{escape(str(item.get('title') or item.get('id')))}</h3>"
+            f"<p>{escape(str(item.get('summary') or ''))}</p>"
+            f"<p><b>Status:</b> {escape(str(item.get('status') or 'UNKNOWN'))}; "
+            f"<b>Source:</b> <code>{escape(str(source.get('commit') or 'UNKNOWN'))}</code> "
+            f"<code>{escape(str(source.get('path') or ''))}</code></p>"
+            + (f"<blockquote>{escape(str(quote))}</blockquote>" if quote else "")
+        )
+    witness_rows = ''.join(
+        f"<tr><td><code>{escape(x['id'])}</code></td><td>{escape(str(x.get('title') or ''))}</td>"
+        f"<td>{escape(str(x.get('status') or ''))}</td><td>{escape(str(x.get('reason') or ''))}</td></tr>"
+        for x in home.get("source_witness", [])
+    )
     html = f"""<!doctype html><html><head><meta charset="utf-8"><title>PROGRAMMA SOROK living reference</title>
-<style>body{{font:14px/1.45 -apple-system,system-ui,sans-serif;margin:24px;max-width:1400px}}table{{border-collapse:collapse;width:100%;margin:12px 0}}td,th{{border:1px solid #ccc;padding:4px;vertical-align:top}}code{{font-size:12px}}.notice{{background:#fff3cd;padding:8px;border:1px solid #d39e00}}</style></head><body>
+<style>body{{font:14px/1.45 -apple-system,system-ui,sans-serif;margin:24px;max-width:1400px}}table{{border-collapse:collapse;width:100%;margin:12px 0}}td,th{{border:1px solid #ccc;padding:4px;vertical-align:top}}code{{font-size:12px}}.notice{{background:#fff3cd;padding:8px;border:1px solid #d39e00}}blockquote{{border-left:3px solid #999;margin:8px 0;padding-left:12px;color:#333}}</style></head><body>
 <h1>PROGRAMMA SOROK — living reference</h1>
+<h2>Purpose: meet an unchosen neighbor</h2>
+{brief(purpose)}
+<h2>Intended human experience</h2>
+{brief(experience['astra_b_scene'])}
+{brief(experience['astra_d_longitudinal'])}
+{brief(experience['negative_controls'])}
+<h2>100/101 product constraints</h2>
+{brief(constraints['alpha_100'])}
+{brief(constraints['binding_101'])}
+{brief(constraints['two_call_proposal'])}
+{brief(constraints['hidden_interiority'])}
 <p class="notice">{escape(home['status'])} — {escape(home['whole_scope'])}. {escape(home['notice'])}</p>
 <p>{escape(home['one_paragraph'])}</p>
 <p><b>Kernel:</b> {escape(home['kernel'])}</p>
 <h2>Terminal obligations</h2><table><tr><th>ID</th><th>Obligation</th><th>Status</th><th>Missing</th><th>Owner</th></tr>
 {''.join(f"<tr><td><code>{escape(x['id'])}</code></td><td>{escape(x['obligation'])}</td><td>{escape(x['status'])}</td><td>{escape(','.join(x['missing_stages']))}</td><td>{escape(x['owner'])}</td></tr>" for x in home['terminal_obligations'])}
 </table>
+<h2>Source witness status</h2><table><tr><th>ID</th><th>Title</th><th>Status</th><th>Reason</th></tr>{witness_rows}</table>
 <h2>Whole-Program Gaps</h2><p>Count {gaps['count']}; independently actionable {gaps['independently_actionable']}; blocked {gaps['blocked']}. No completeness denominator.</p>
 <table><tr><th>ID</th><th>Domain</th><th>Status</th><th>Missing</th><th>Owner</th><th>Next action</th><th>Falsifier</th></tr>{''.join(gap_rows)}</table>
 <h2>Objects and maturity</h2><table><tr><th>ID</th><th>Title</th><th>Owner</th><th>I/T/A/E/C/V</th><th>Status</th></tr>{''.join(rows)}</table>
@@ -2436,7 +3094,7 @@ def _overview(state: dict) -> dict:
 
 
 def _print(value: Any) -> None:
-    print(json.dumps(value, indent=2, sort_keys=True))
+    print(json.dumps(value, indent=2, sort_keys=False))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -2454,6 +3112,7 @@ def main(argv: list[str] | None = None) -> int:
     wg = sub.add_parser("whole-gaps"); wg.add_argument("--stage", default=""); wg.add_argument("--domain", default="")
     h = sub.add_parser("html"); h.add_argument("--output", type=Path, default=ROOT / "programma_home.html")
     i = sub.add_parser("intake-return"); i.add_argument("file", type=Path)
+    wd = sub.add_parser("withdrawal"); wd.add_argument("file", type=Path)
     o = sub.add_parser("ingest-oscience"); o.add_argument("file", type=Path, nargs="?")
     for name in ("apply-authorized-transition", "commit-transition"):
         a = sub.add_parser(name); a.add_argument("file", type=Path)
@@ -2476,17 +3135,24 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "verify-journal":
         try:
             events = evidence_store.read_journal(_journal_path(state_path))
+            _check_journal_regression(events, state_path)
             state = rebuild_from_journal(_journal_path(state_path), operating=True)
             _print({"result": "PASS", "events": len(events), "head": state.get("journal_head"), "state_digest": state.get("state_digest")})
             return 0
-        except evidence_store.JournalError as error:
+        except (evidence_store.JournalError, ValueError) as error:
             _print({"result": "FAIL", "reason": str(error)})
             return 1
     if args.command == "rebuild":
-        state = rebuild_from_journal(_journal_path(state_path), operating=True)
-        _save(state, state_path, snapshot_path, revision=int(state.get("revision") or 0))
-        _print({"result": "REBUILT", "revision": state.get("revision"), "journal_head": state.get("journal_head"), "state_digest": state.get("state_digest")})
-        return 0
+        try:
+            events = evidence_store.read_journal(_journal_path(state_path))
+            _check_journal_regression(events, state_path)
+            state = rebuild_from_journal(_journal_path(state_path), operating=True)
+            _save(state, state_path, snapshot_path, revision=int(state.get("revision") or 0))
+            _print({"result": "REBUILT", "revision": state.get("revision"), "journal_head": state.get("journal_head"), "state_digest": state.get("state_digest")})
+            return 0
+        except (evidence_store.JournalError, ValueError) as error:
+            _print({"result": "FAIL", "reason": str(error)})
+            return 1
     if args.command == "recover":
         state = _load_state(state_path, recover=True)
         _save(state, state_path, snapshot_path)
@@ -2564,6 +3230,10 @@ def main(argv: list[str] | None = None) -> int:
         else:
             body = _event("RETURN_INTAKE", fixture, source=fixture.get("source") or {})
             _print(commit_event(body, journal_path=_journal_path(state_path), state_path=state_path, snapshot_path=snapshot_path))
+    elif args.command == "withdrawal":
+        fixture = _load(args.file)
+        body = _event("EVIDENCE_WITHDRAWAL", fixture, source=fixture.get("source") or {})
+        _print(commit_event(body, journal_path=_journal_path(state_path), state_path=state_path, snapshot_path=snapshot_path))
     elif args.command == "ingest-oscience":
         patch = _load(args.file or OSCIENCE_PATCH)
         body = _event("CANDIDATE_EVIDENCE", {

@@ -1,0 +1,196 @@
+{
+  "fake": {
+    "W1_A_RETURN_operational": "CANDIDATE_ONLY",
+    "command": "python3 living_reference.py --state /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-intake3-r4hqxsib/fake/state.json intake-return /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-intake3-r4hqxsib/fake/fixture.json",
+    "exit": 0,
+    "gap_evidence": {},
+    "result": {
+      "applied": {
+        "event_id": "fd98ad6974c15a0fd0dbea4127fd6cac8e3c595bf5e35c228e2fa1dd162292b1",
+        "kind": "RETURN_INTAKE",
+        "status": "QUARANTINED_SYNTHETIC_OR_UNVERIFIABLE"
+      },
+      "axes": {
+        "CLI-FAKE": null
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:05:46.646123+00:00",
+        "event_id": "fd98ad6974c15a0fd0dbea4127fd6cac8e3c595bf5e35c228e2fa1dd162292b1",
+        "kind": "RETURN_INTAKE",
+        "payload": {
+          "id": "CLI-FAKE",
+          "sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "source": {
+            "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+            "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+          }
+        },
+        "prev_event_hash": "GENESIS",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 1,
+        "source": {
+          "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+          "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+        }
+      },
+      "expected_head": null,
+      "head": "fd98ad6974c15a0fd0dbea4127fd6cac8e3c595bf5e35c228e2fa1dd162292b1",
+      "journal_head": "fd98ad6974c15a0fd0dbea4127fd6cac8e3c595bf5e35c228e2fa1dd162292b1",
+      "revision": 1,
+      "stale_expected_head": false,
+      "state_digest": "aece6aa39d1ae01f9a43402b8d8a5e531581c14bfe815529b2fb026c13893225",
+      "status": "EVENT_APPENDED"
+    },
+    "stderr": "",
+    "work_now_source_backed": {}
+  },
+  "located": {
+    "W1_A_RETURN_operational": "CANDIDATE_EVIDENCE",
+    "command": "python3 living_reference.py --state /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-intake3-r4hqxsib/located/state.json intake-return /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-intake3-r4hqxsib/located/fixture.json",
+    "exit": 0,
+    "gap_evidence": {
+      "CLI_W1A_LOCATED_REQUIREMENT": {
+        "source_backed": true,
+        "status": "SOURCE_LOCATED"
+      }
+    },
+    "result": {
+      "applied": {
+        "event_id": "b494d9be7bd0a8808b23797d2c19794fafd16b3eb302d30d23141d330e2c00af",
+        "kind": "RETURN_INTAKE",
+        "status": "CANDIDATE_NOT_PROMOTED"
+      },
+      "axes": {
+        "CLI-LOCATED-W1A": null
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:05:38.737777+00:00",
+        "event_id": "b494d9be7bd0a8808b23797d2c19794fafd16b3eb302d30d23141d330e2c00af",
+        "kind": "RETURN_INTAKE",
+        "payload": {
+          "id": "CLI-LOCATED-W1A",
+          "locator": {
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+            "quote": "No single technical milestone or personality description can certify it."
+          },
+          "new_requirement": "CLI_W1A_LOCATED_REQUIREMENT",
+          "node_updates": [
+            {
+              "evidence": {
+                "return_sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7"
+              },
+              "id": "W1_A_RETURN",
+              "locator": {
+                "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md",
+                "quote": "No single technical milestone or personality description can certify it."
+              }
+            }
+          ],
+          "sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+          "source": {
+            "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+            "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+          }
+        },
+        "prev_event_hash": "GENESIS",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 1,
+        "source": {
+          "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+          "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+        }
+      },
+      "expected_head": null,
+      "head": "b494d9be7bd0a8808b23797d2c19794fafd16b3eb302d30d23141d330e2c00af",
+      "journal_head": "b494d9be7bd0a8808b23797d2c19794fafd16b3eb302d30d23141d330e2c00af",
+      "revision": 1,
+      "stale_expected_head": false,
+      "state_digest": "2b26bb05df97049f65079db8667c3add30b7ea89891821b651e5d7b72973852e",
+      "status": "EVENT_APPENDED"
+    },
+    "stderr": "",
+    "work_now_source_backed": {
+      "GAP_CLI_W1A_LOCATED_REQUIREMENT": true
+    }
+  },
+  "unlocated": {
+    "W1_A_RETURN_operational": "CANDIDATE_ONLY",
+    "command": "python3 living_reference.py --state /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-intake3-r4hqxsib/unlocated/state.json intake-return /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-intake3-r4hqxsib/unlocated/fixture.json",
+    "exit": 0,
+    "gap_evidence": {
+      "CLI_W1A_UNLOCATED_REQUIREMENT": {
+        "source_backed": false,
+        "status": "CALLER_CLAIM_UNVERIFIED"
+      }
+    },
+    "result": {
+      "applied": {
+        "event_id": "2ba5ee715e96c851635542206bbef8c5f18f4138e914bc267d78613be162e660",
+        "kind": "RETURN_INTAKE",
+        "status": "CANDIDATE_NOT_PROMOTED"
+      },
+      "axes": {
+        "CLI-UNLOCATED-W1A": null
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:05:42.724032+00:00",
+        "event_id": "2ba5ee715e96c851635542206bbef8c5f18f4138e914bc267d78613be162e660",
+        "kind": "RETURN_INTAKE",
+        "payload": {
+          "id": "CLI-UNLOCATED-W1A",
+          "new_requirement": "CLI_W1A_UNLOCATED_REQUIREMENT",
+          "sha": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+          "source": {
+            "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+            "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+          }
+        },
+        "prev_event_hash": "GENESIS",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 1,
+        "source": {
+          "blob": "b457bebf63d4ae12d01b8481481368bcd082e269",
+          "commit": "e7787d7f22dfcc9dd1ad786d953755b4f4d410c7",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W1_A_VISION_ASTRA_R1/00_FINDINGS_AND_RECOMMENDATIONS.md"
+        }
+      },
+      "expected_head": null,
+      "head": "2ba5ee715e96c851635542206bbef8c5f18f4138e914bc267d78613be162e660",
+      "journal_head": "2ba5ee715e96c851635542206bbef8c5f18f4138e914bc267d78613be162e660",
+      "revision": 1,
+      "stale_expected_head": false,
+      "state_digest": "205c37613561d41dc5d0d0a37be062187caf385835e633df0d6ea31ed0c9fbce",
+      "status": "EVENT_APPENDED"
+    },
+    "stderr": "",
+    "work_now_source_backed": {
+      "GAP_CLI_W1A_UNLOCATED_REQUIREMENT": false
+    }
+  }
+}

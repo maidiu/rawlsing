@@ -161,8 +161,10 @@ def test_real_return_is_candidate_only_and_survives_cold_rebuild(tmp_path: Path)
     state = lr.build_state(OBSERVED)
     result = lr.intake_candidate(state, fixture)
     assert result["status"] == "CANDIDATE_NOT_PROMOTED"
-    assert any(g["node"] == "W1_A_VISIBLE_REQUIREMENT" for g in state["gaps"])
-    assert state["axes"]["W1_A_RETURN"]["operational"] == "CANDIDATE_EVIDENCE"
+    gap = next(g for g in state["gaps"] if g["node"] == "W1_A_VISIBLE_REQUIREMENT")
+    assert gap["evidence_status"] == "CALLER_CLAIM_UNVERIFIED"
+    assert gap["source_backed"] is False
+    assert state["axes"]["W1_A_RETURN"]["operational"] == "CANDIDATE_ONLY"
     lr._save(state, state_path)
     reloaded = lr._load_state(state_path)
     assert any(g["node"] == "W1_A_VISIBLE_REQUIREMENT" for g in reloaded["gaps"])
@@ -258,11 +260,27 @@ def test_hypothesis_and_mention_edges_do_not_block():
     )
 
 
-def test_source_refs_verify_against_git_and_local_external_bytes():
+def test_source_refs_report_missing_external_witness_honestly(tmp_path: Path):
     state = lr.build_state(OBSERVED)
     report = lr.verify_source_refs(state)
-    assert report["result"] == "PASS", report["failures"][:3]
     assert report["checked_local"] > 50
+    v3 = report["node_status"]["V3_RUN_ONE_YEAR"]
+    external = Path(lr._node_map(state)["V3_RUN_ONE_YEAR"]["source_refs"][0]["path"])
+    if external.exists():
+        assert v3["status"] == "SOURCE_EXACT"
+    else:
+        assert report["result"] == "FAIL"
+        assert v3["status"] == "UNREAD"
+        assert any(f["node"] == "V3_RUN_ONE_YEAR" and f["reason"] == "LOCAL_EXTERNAL_SOURCE_NOT_PRESENT" for f in report["failures"])
+        assert state["axes"]["V3_RUN_ONE_YEAR"]["source_recovery"] == "UNREAD"
+        assert any(g["id"] == "GAP_WITNESS_V3_RUN_ONE_YEAR" for g in state["gaps"])
+    matching = tmp_path / "matching.py"
+    matching.write_bytes(b"exact witness bytes\n")
+    ref = {"repository": "LOCAL_EXTERNAL_RAWLSING_DESKTOP", "path": str(matching), "sha256": __import__("hashlib").sha256(matching.read_bytes()).hexdigest()}
+    assert lr._verify_source_ref(ref)[0] is True
+    ref["sha256"] = "0" * 64
+    ok, reason = lr._verify_source_ref(ref)
+    assert ok is False and reason.startswith("LOCAL_EXTERNAL_SHA256_MISMATCH")
 
 
 def test_self_review_event_stays_pending_after_restart(tmp_path: Path):
@@ -298,19 +316,19 @@ def test_fixture_promotion_event_is_refused_on_operating_replay(tmp_path: Path):
     assert any(item.get("status") == "REFUSED" for item in state.get("journal_applied", []))
 
 
-def test_self_authored_or_selfhashed_acceptance_record_is_refused():
+def test_caller_written_acceptance_fields_cannot_establish_review():
     state = lr.build_state(OBSERVED)
     node = lr._node_map(state)["JOIN_V_4387"]
     same_principal = copy.deepcopy(node["acceptance_record"])
     same_principal["reviewer_principal"] = same_principal["author_principal"]
     evidence = {"kind": "ACCEPTANCE_RECORD", "reviewed_sha": same_principal["subject_sha"], "acceptance": same_principal}
     ok, reason, _ = lr._verify_acceptance_record(state, "JOIN_E_7BF", "engineering", evidence)
-    assert not ok and reason == "SELF_REVIEW_PRINCIPAL_NOT_DISTINCT"
+    assert not ok and reason == "CALLER_REVIEWER_DOES_NOT_MATCH_RECORD"
     selfhash = copy.deepcopy(node["acceptance_record"])
     selfhash["record_ref"] = "0" * 40 + ":WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md"
     evidence = {"kind": "ACCEPTANCE_RECORD", "reviewed_sha": selfhash["subject_sha"], "acceptance": selfhash}
     ok, reason, _ = lr._verify_acceptance_record(state, "JOIN_E_7BF", "engineering", evidence)
-    assert not ok and "REVIEW_RECORD_OBJECT_INVALID" in reason
+    assert not ok and "REVIEW_RECORD_NOT_A_NODE_SOURCE" in reason
 
 
 def test_withdrawal_event_supersedes_prior_evidence(tmp_path: Path):

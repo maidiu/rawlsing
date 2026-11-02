@@ -1,0 +1,142 @@
+{
+  "arbitrary": {
+    "command": "python3 living_reference.py --state /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-accept-final-3drdmx2y/arbitrary/state.json apply-authorized-transition /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-accept-final-3drdmx2y/arbitrary/fixture.json",
+    "exit": 0,
+    "exported_engineering_axis": "SOURCE_DEFINITION_ONLY",
+    "result": {
+      "applied": {
+        "event_id": "3876ff0504f8ec05fe2c1858bfdfb7a29c0ee72ceec34aa4d229a5ab78388bee",
+        "kind": "TRANSITION_REQUEST",
+        "status": "PENDING_INDEPENDENT_ACCEPTANCE"
+      },
+      "axes": {
+        "JOIN_E_7BF": {
+          "authority": "NOT_ADOPTED",
+          "consumer": "NONE_PROVEN_AT_PREMAIN",
+          "engineering": "SOURCE_DEFINITION_ONLY",
+          "human": "NOT_PROVEN",
+          "operational": "CANDIDATE_ONLY",
+          "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+          "science": "NOT_ISSUED",
+          "source_recovery": "SOURCE_EXACT"
+        }
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:31:57.698461+00:00",
+        "event_id": "3876ff0504f8ec05fe2c1858bfdfb7a29c0ee72ceec34aa4d229a5ab78388bee",
+        "kind": "TRANSITION_REQUEST",
+        "payload": {
+          "fixture": {
+            "dimension": "engineering",
+            "evidence": {
+              "acceptance": {
+                "appointment_ref": "2b8d3067d894941c21ec7fd23d1f883f51b15026",
+                "assertion": "fork atomicity/shared lineage exact scope",
+                "author_principal": "JOIN_E_OWNER",
+                "record_ref": "54013d1907e5ea55b0d1f54ea9afe07ef6388b11:WORKER_RETURNS/PROGRAMMA_SOROK_P0_P1_LIVING_REFERENCE_ENGINEERING_R1/00_RETURN.md",
+                "reviewer_principal": "JOIN-V",
+                "reviewer_role": "INDEPENDENT_HOSTILE_ENGINEERING_REVIEWER",
+                "scope": [
+                  "*"
+                ],
+                "subject_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+                "verdict": "ACCEPT_SCOPED"
+              },
+              "kind": "ACCEPTANCE_RECORD",
+              "reviewed_sha": "7bf2da302996491ddf34b9a039fea47ac982d135"
+            },
+            "node_id": "JOIN_E_7BF",
+            "to": "INDEPENDENT_ACCEPT_SCOPED"
+          }
+        },
+        "prev_event_hash": "GENESIS",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 1,
+        "source": {}
+      },
+      "expected_head": null,
+      "head": "3876ff0504f8ec05fe2c1858bfdfb7a29c0ee72ceec34aa4d229a5ab78388bee",
+      "journal_head": "3876ff0504f8ec05fe2c1858bfdfb7a29c0ee72ceec34aa4d229a5ab78388bee",
+      "revision": 1,
+      "stale_expected_head": false,
+      "state_digest": "d72b55c2bba670e9863811f0fd6d72433764d0492ad6c099662a4a419a56ed49",
+      "status": "EVENT_APPENDED"
+    },
+    "stderr": ""
+  },
+  "valid": {
+    "command": "python3 living_reference.py --state /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-accept-final-3drdmx2y/valid/state.json apply-authorized-transition /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-cli-accept-final-3drdmx2y/valid/fixture.json",
+    "exit": 0,
+    "exported_engineering_axis": "INDEPENDENT_ACCEPT_SCOPED",
+    "result": {
+      "applied": {
+        "event_id": "a115dffd69c904a6ec61dd3a2f7185bb8936370e180d0a016433f91bce38f215",
+        "kind": "TRANSITION_REQUEST",
+        "status": "APPLIED_INDEPENDENT_SCOPED"
+      },
+      "axes": {
+        "JOIN_E_7BF": {
+          "authority": "NOT_ADOPTED",
+          "consumer": "NONE_PROVEN_AT_PREMAIN",
+          "engineering": "INDEPENDENT_ACCEPT_SCOPED",
+          "human": "NOT_PROVEN",
+          "operational": "CANDIDATE_ONLY",
+          "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+          "science": "NOT_ISSUED",
+          "source_recovery": "SOURCE_EXACT"
+        }
+      },
+      "event": {
+        "actor": {
+          "principal": "PROGRAMMA_ENGINEER_R1",
+          "role": "IMPLEMENTER",
+          "verified": false
+        },
+        "created_at": "2026-11-02T07:31:54.234342+00:00",
+        "event_id": "a115dffd69c904a6ec61dd3a2f7185bb8936370e180d0a016433f91bce38f215",
+        "kind": "TRANSITION_REQUEST",
+        "payload": {
+          "fixture": {
+            "dimension": "engineering",
+            "evidence": {
+              "acceptance": {
+                "appointment_ref": "2b8d3067d894941c21ec7fd23d1f883f51b15026",
+                "assertion": "fork atomicity/shared lineage exact scope",
+                "author_principal": "JOIN_E_OWNER",
+                "record_ref": "4387dc818a96fda2d5271672505fbd9da1059703:WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md",
+                "reviewer_principal": "JOIN-V",
+                "reviewer_role": "INDEPENDENT_HOSTILE_ENGINEERING_REVIEWER",
+                "scope": [
+                  "JOIN_E_7BF"
+                ],
+                "subject_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+                "verdict": "ACCEPT_SCOPED"
+              },
+              "kind": "ACCEPTANCE_RECORD",
+              "reviewed_sha": "7bf2da302996491ddf34b9a039fea47ac982d135"
+            },
+            "node_id": "JOIN_E_7BF",
+            "to": "INDEPENDENT_ACCEPT_SCOPED"
+          }
+        },
+        "prev_event_hash": "GENESIS",
+        "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+        "sequence": 1,
+        "source": {}
+      },
+      "expected_head": null,
+      "head": "a115dffd69c904a6ec61dd3a2f7185bb8936370e180d0a016433f91bce38f215",
+      "journal_head": "a115dffd69c904a6ec61dd3a2f7185bb8936370e180d0a016433f91bce38f215",
+      "revision": 1,
+      "stale_expected_head": false,
+      "state_digest": "7985238a57f46a198797fd80980b20e459460f7e009ac568110f0811fe326cfd",
+      "status": "EVENT_APPENDED"
+    },
+    "stderr": ""
+  }
+}
