@@ -1,0 +1,133 @@
+{
+  "job_id": "programma-p0p1-independent-review-c45312416341",
+  "exact_target": {
+    "candidate": "54013d1907e5ea55b0d1f54ea9afe07ef6388b11",
+    "implementation": "93945e4b4539fd5d5e39805d7d1f35d2325a2cbd",
+    "baseline": "a89e5ccbe67400168aaea8367f7aa00ca0de7625",
+    "review_mode": "READ_ONLY_CODE_INSPECTION; REVIEWER_CODE_EXECUTION_NOT_RUN"
+  },
+  "engineering_verdict": "REVISE",
+  "findings": [
+    {
+      "severity": "high",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "1695-1763, especially 1720, 1737-1745, 1748-1751",
+      "trigger": "Promote with ACCEPTANCE_RECORD whose record_ref points to any existing non-review document containing the claimed reviewer string and 'appoint'/'commission'; appointment_ref any real commit; subject_sha any real unrelated commit; scope node or '*'.",
+      "observed": "Code-inspected: caller-supplied reviewer/author/subject/assertion fields are trusted. record_ref only needs an existing blob containing the claimed principal or role plus 'appoint'/'commission'; appointment_ref only needs to be a commit; scope '*' bypasses node scope; node.subject_sha is optional. JOIN_E_7BF has no subject_sha (programma_p1_seed.py:172), so any real subject passes. The implementation return itself contains 'JOIN-V' and 'appointment' and can serve as the record.",
+      "requirement": "Acceptance must bind an independently established reviewer principal/role, distinct author, exact subject, assertion, scope and competent appointment/intake record; caller-written claims and unrelated genuine commits cannot supply it.",
+      "smallest_fix": "Parse acceptance from the referenced immutable record; require a registered independent review/appointment (for example the JOIN-V blob and appointment seal); require exact subject/scope and a node subject_sha; reject '*' and unregistered record_refs. Apply the gate at build or downgrade seed acceptance claims to reported/unverified."
+    },
+    {
+      "severity": "high",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "720-728, 2068-2072",
+      "trigger": "Modify seed_oscience_patch.json after GENESIS while keeping its declared count structure, then run rebuild or verify-journal.",
+      "observed": "Code-inspected: _apply_event passes the event's patch_digest to ingest_oscience; ingest_oscience uses 'patch_digest or _digest(patch)' but never recomputes and compares the actual file digest. A changed patch is imported under the old digest; verify-journal still passes because it checks only the journal chain.",
+      "requirement": "Cold replay must detect tampered inputs and reconstruct the same semantic state.",
+      "smallest_fix": "Always recompute _digest(patch); fail closed when it differs from payload.patch_digest, or embed the full patch in the event."
+    },
+    {
+      "severity": "high",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "822-848; evidence_store.py:53-82",
+      "trigger": "Remove the last complete journal line, leaving a valid hash-chained prefix, then run a normal read or verify-journal.",
+      "observed": "Code-inspected: read_journal accepts any valid prefix; _load_state sees disk journal_head/revision differ from the shorter journal and silently rebuilds and saves the shorter state. Accepted events are lost without an error. The existing test only removes the final newline.",
+      "requirement": "Cold replay must detect truncated inputs and not lose accepted events.",
+      "smallest_fix": "Persist a monotonic expected journal head/revision separately and fail closed on regression, or require explicit recover intent; add a test dropping a complete final event."
+    },
+    {
+      "severity": "high",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "1541-1556",
+      "trigger": "Mark P1_B_MATERIAL_SOURCE review FAILED, withdraw and restore that source, then inspect P1_LATER_HELP_CONSUMER.",
+      "observed": "Code-inspected: _recompute_consumer_grades checks only predecessor source_recovery and consumer invalidation. A negative review, engineering, science, authority or human prerequisite is ignored, so the dependent consumer can be restored despite an active negative.",
+      "requirement": "Restoration must recompute from all qualified active prerequisites and negatives, not only source recovery.",
+      "smallest_fix": "Include every negative axis of required predecessors and of the node itself in the restoration blocker calculation; add a review-negative restoration test."
+    },
+    {
+      "severity": "medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "1904-1913, 1965-1969; test_p1_whole_program.py:122-140",
+      "trigger": "Apply a source_recovery transition to SOURCE_NOT_FOUND using a SOURCE_RECORD that proves the source is present.",
+      "observed": "Code-inspected: a valid present-source record is accepted as the evidence for declaring the source not found; the test and demo use exactly this shape. No evidence kind establishes absence or authorized withdrawal, and no live commit_event withdrawal/restore test exists.",
+      "requirement": "Only a qualified source withdrawal may invalidate evidence-dependent paths; live operation and cold replay must both be exercised.",
+      "smallest_fix": "Require a verified absence/withdrawal record or authorized loss event, not a present SOURCE_RECORD; add a live commit_event withdrawal/restore test including GT0 unchanged."
+    },
+    {
+      "severity": "medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "2263-2273, 2300-2360",
+      "trigger": "Intake a real source blob with sha='a'*40 or with source.commit different from sha, plus arbitrary new_requirement/gap/node_updates.",
+      "observed": "Code-inspected: when source is supplied, sha is not checked as a real commit and is not bound to source.commit; a fake 40-hex return SHA or unrelated source commit is accepted as CANDIDATE_NOT_PROMOTED. Arbitrary caller-written requirements become candidate gaps and work-now entries without a locator in the return. The focused test uses an invented W1_A_VISIBLE_REQUIREMENT.",
+      "requirement": "Intake an honest exact-SHA real returned artifact and do not fabricate connections or missing work.",
+      "smallest_fix": "Require sha to be a real commit and equal source.commit; require each gap/node claim to carry a verified locator/quote inside the return, or keep it out of work-now as caller-claimed."
+    },
+    {
+      "severity": "medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/programma_p1_seed.py",
+      "line": "113-117, 150-155; living_reference.py:523-533, 1645-1692",
+      "trigger": "Run verify-sources or the source-ref test in a checkout without /Users/matthewsmith/Desktop/Rawlsing/v3 files.",
+      "observed": "HQ-executed: 51 passed, 1 failed; test_source_refs_verify_against_git_and_local_external_bytes reports LOCAL_EXTERNAL_SOURCE_NOT_PRESENT for V3_RUN_ONE_YEAR and related refs. Code-inspected: verify_source_refs reports FAIL, but V3 nodes still get source_recovery SOURCE_EXACT because any source_refs exist, and the seed says the local external files 'exist'. The failure is isolated to source verification, but node truthfulness is not downgraded.",
+      "requirement": "Represent source-read depth honestly and distinguish a missing witness from an invented positive.",
+      "smallest_fix": "Derive per-node source_recovery from actual ref verification; mark absent external refs UNREAD/NOT_ACCESSED_NOW, update summaries, and make the test assert the expected absence rather than PASS."
+    },
+    {
+      "severity": "medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "1396-1440",
+      "trigger": "Run home; inspect the returned home.json.",
+      "observed": "Artifact-read/code-inspected: home starts with status, generic paragraph, KERNEL_UNRESOLVED and terminal gaps. It has no PURPOSE_UNCHOSEN_NEIGHBOR, Astra B/D experience, 100/101 constraints or intended human-experience field; those are only reachable by focus. The author claim that home begins with the unchosen-neighbor purpose is not true of the actual output.",
+      "requirement": "Home must begin with the independent historically constituted neighbor and intended human experience.",
+      "smallest_fix": "Add purpose and experience fields sourced from PURPOSE_UNCHOSEN_NEIGHBOR, ASTRA_B_SCENE and ASTRA_D_LONGITUDINAL, with source/status/maturity, before terminal obligations in home and HTML."
+    },
+    {
+      "severity": "low-medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "1167",
+      "trigger": "Run work-now and inspect candidate ordering.",
+      "observed": "Code-inspected: candidates are sorted by -impact.downstream_required_count then id, which is descendant-count priority despite the no-scalar-priority claim.",
+      "requirement": "Work-now must explain terminal contribution and uncertainty, not use descendant-count priority or a fictional scheduler.",
+      "smallest_fix": "Remove the downstream-count sort; use a stable purpose/domain order and expose impact as information only."
+    },
+    {
+      "severity": "low-medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "52, 540; initialize_r3.py:75",
+      "trigger": "Compare state build_startup/GENESIS baseline with the returned baseline table.",
+      "observed": "Code-inspected: internal STARTUP_SHA and GENESIS baseline are 67f667421fc90b22aad95cfc253a16feabc92348, while the engineering baseline reported in 00_START_HERE.md and 00_RETURN.md is a89e5ccbe67400168aaea8367f7aa00ca0de7625. The persisted reference records the wrong baseline identity.",
+      "requirement": "Persist and report the exact implementation baseline and provenance.",
+      "smallest_fix": "Separate the O-LIVE source SHA from the engineering baseline and record a89e5cc as build_startup/version_vector baseline."
+    },
+    {
+      "severity": "medium",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/living_reference.py",
+      "line": "798-804, 865-890",
+      "trigger": "Two concurrent commit_event writers rebuild and save the derived state.",
+      "observed": "Code-inspected: commit_event saves without expected_revision; _save's optional CAS is a non-atomic read-check-write. A stale writer can overwrite a newer derived state. probe_faults exercises concurrent journal appends only, not concurrent state saves.",
+      "requirement": "Use revision/CAS and recoverable writes so stale concurrent updates do not lose accepted state.",
+      "smallest_fix": "Pass expected_revision through commit_event and retry on StaleStateRevision, or serialize the state CAS with the journal lock; add a concurrent state-write probe."
+    }
+  ],
+  "unexecuted_checks": [
+    "Reviewer executed no code, tests, Git, network, controller, Library or external-source reads.",
+    "HQ-executed only: four pytest files 51 passed, 1 failed in 29.56s; failure test_source_refs_verify_against_git_and_local_external_bytes with LOCAL_EXTERNAL_SOURCE_NOT_PRESENT; manifest verifier exit 0; tree clean. Author 52-pass claim not replicated or accepted.",
+    "Reviewer did not run pytest, verify_source_manifest.py, verify-journal, verify-sources, CLI/HTML, r2_live_transaction, probe_faults, cold replay, CAS or concurrency probes.",
+    "No independent live operating withdrawal/restore/GT0 test was found; the author's withdrawal demonstration is disposable or cold and uses present-source evidence."
+  ],
+  "accepted_scope": [
+    "Read-only review of the two permitted directories and the author return only.",
+    "Author-tested candidate evidence only: disposable demo isolation, quarantine preservation, hash-chained journal append/idempotency, state digest/tamper detection, and P1 seed traversal/maturity display.",
+    "The P0 trust boundary and P1 home as delivered are not accepted; the findings above require repair.",
+    "Whole-estate scope remains unpopulated and unproven; this is first-tranche scope only."
+  ],
+  "scientific_limits": [
+    "No independent native, scientific or human acceptance; no new psychological rule or truth claim.",
+    "P1 remains TEST_ONLY_SOURCEFREE_NOT_NATIVE; JOIN-V acceptance is scoped only to 7bf2da302996491ddf34b9a039fea47ac982d135; C9/C12/C11, native science, Pyat, ethics and human A5 remain held or missing.",
+    "V3 local external bytes are absent in this checkout; those claims remain author/W1-C reported, not re-read. Library continuity is dated 2026.10.31.17.40 REPORTED_NOT_ACCESSED_NOW; no source recensus."
+  ],
+  "authority_limits": [
+    "Candidate reference only; no owner, native, human or PRE-MAIN adoption, no controller activation, no production deployment and no external custody.",
+    "No reviewer identity provider or verified appointment registry is implemented; the acceptance gate is code-local and currently bypassable, so no actual verified grant beyond the scoped JOIN-V record is accepted.",
+    "No claim of full Programma completion or an actual developmental person."
+  ]
+}
