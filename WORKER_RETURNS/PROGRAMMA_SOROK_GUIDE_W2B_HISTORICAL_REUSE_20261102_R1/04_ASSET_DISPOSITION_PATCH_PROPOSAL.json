@@ -1,0 +1,1484 @@
+{
+  "schema": "PROGRAMMA_SOROK_W2B_ASSET_DISPOSITION_PATCH_PROPOSAL@1",
+  "proposal_only": true,
+  "will_not_mutate_frozen_guide": true,
+  "target_existing_frozen": "ce5e2dfe3b410657b1c5f646b725424995cdcb07:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json",
+  "current_source_cut": "9809203fd915a84bae056a67210e9213879840db",
+  "rule": "AMEND existing IDs/sections, attach exact paths and status axes, never turn historical test/owner source into native rule or a second graph.",
+  "m01_m40": [
+    {
+      "existing_id": "M01",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-50"
+      ],
+      "disposition": "PARTIAL_SOURCEFREE_ANALOG",
+      "closest_current": "BP4/C12 state and cold-root storage; no BackboneState import",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a",
+      "historical_review_sha": "481a5c62b6697e5df0e930a5dc615a8994aacddc",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "BackboneState",
+        "line": 501,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M02",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40",
+        "SP-30"
+      ],
+      "disposition": "PARTIAL_SOURCEFREE_ANALOG",
+      "closest_current": "BP2P4J/R31J performed B material ledger",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "Capacity",
+        "line": 18,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M03",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-70"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN008 actor conditioning; no proven scalar-regulatory implementation",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "PsychologicalCapacity",
+        "line": 41,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M04",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40"
+      ],
+      "disposition": "PARTIAL_SOURCEFREE_ANALOG",
+      "closest_current": "R31J/BP2 material possibility/access",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "ReproductionConstraints",
+        "line": 58,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M05",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN008/CAN011 defined owners; M6 claim ceiling is not domain metabolism",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "DomainState",
+        "line": 72,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M06",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "No current alienation updater; old delta path has stale fields",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "AlienationVector",
+        "line": 95,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M07",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-50",
+        "SP-100"
+      ],
+      "disposition": "PARTIAL_CURRENT_GUARD_ANALOG",
+      "closest_current": "rawlsing_next/m6_actor_safe_expression.py::evaluate_actor_safe_ingress and render_bounded_expression.py",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "Registers",
+        "line": 114,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M08",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "ADP016/017 ownership defined; no direct wound engine",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "WoundVector",
+        "line": 130,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M09",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-80",
+        "SP-30"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "C9 contradiction cases, not Crack mechanism",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "Crack",
+        "line": 151,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M10",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "C9 sourcefree tests track some consequences, not buffer cost mechanics",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "Buffer",
+        "line": 176,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M11",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN011 mediators/practices are owners, not a weight engine",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "Framework",
+        "line": 187,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M12",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40",
+        "SP-130"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "Pyat world/Field Forge structural contexts",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "CollectiveInfrastructure",
+        "line": 218,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M13",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-80",
+        "SP-40"
+      ],
+      "disposition": "PARTIAL_SOURCEFREE_ANALOG",
+      "closest_current": "C9RI TEST_ONLY target store → later performed E2; P1 S35 NO_CHANGE",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "PracticeStack",
+        "line": 231,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M14",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-80",
+        "SP-50"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN008 response/relationship owners only",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "PeakRouting",
+        "line": 257,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M15",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-50"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN010 expectations owner, no source-backed parent baseline implementation",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a",
+      "historical_review_sha": "481a5c62b6697e5df0e930a5dc615a8994aacddc",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "NEED_AXES",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M16",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN010 strivings owner defined",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "StrivingObject",
+        "line": 313,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M17",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-50",
+        "SP-70"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN010/ADP016 historical event surfaces, not matching shard compiler",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a",
+      "historical_review_sha": "481a5c62b6697e5df0e930a5dc615a8994aacddc",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "GiftShard",
+        "line": 339,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M18",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN012 rupture and ADP016 memory owners defined",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "RuptureShard",
+        "line": 369,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M19",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-80",
+        "SP-90"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "C12 cold continuity, not same metabolization process",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "e81dd633b419d35619014bdf99f894ad4f98c5a5",
+      "historical_review_sha": "10807fd633daab347a762727a4d837d54601d655",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "MetabolizationProcess",
+        "line": 392,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M20",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-50",
+        "SP-40"
+      ],
+      "disposition": "PARTIAL_MATERIAL_RELATION_ANALOG",
+      "closest_current": "R31J/BP2 B material relation; Pyat GT12 conditional relation",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "Magnet",
+        "line": 205,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M21",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "disposition": "PARTIAL_MEMORY_ONLY",
+      "closest_current": "C12/JOIN persistent provenance and cold read; no pressure-flow model",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/psyche/flow.py",
+        "symbol": "run_pressure_flow_cycle",
+        "line": 753,
+        "signature": "def run_pressure_flow_cycle(state: BackboneState, *, assign_channels: bool=True, compute_pressure: bool=True, apply_gating: bool=True, route_internal_charge: bool=True) -> dict[str, Any]:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M22",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-50"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "C4/C5/CAN010 science obligations",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a",
+      "historical_review_sha": "481a5c62b6697e5df0e930a5dc615a8994aacddc",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "BackboneState.child_model",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M23",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-70"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "CAN008 actor condition category only",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "autonomy_drive/safety_drive",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M24",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-80"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "C12 lasting state is not this inertia algorithm",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b8ccf53f591a9b067a029e3c64ecad2874794d03",
+      "historical_review_sha": "69ddef93bfb1148f4d8868d5de2a5751a4674552",
+      "historical_source": {
+        "path": "v3/core/state.py",
+        "symbol": "stability_threshold_inertia",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M25",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40",
+        "SP-90"
+      ],
+      "disposition": "PARTIAL_SCHEDULING_PRINCIPLE_ONLY",
+      "closest_current": "P1 sourcefree event/later E2 chronology; no native 19-step annual runner",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/engine/yearly_step.py",
+        "symbol": "run_one_year",
+        "line": 12,
+        "signature": "def run_one_year(state: BackboneState, derived: DerivedIndices, v3config: dict[str, Any], step_order: dict[str, Any]) -> None:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M26",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-90"
+      ],
+      "disposition": "PARTIAL_CURRENT_INVARIANT_ANALOG",
+      "closest_current": "BP4/C12 state/cold integrity; rawlsing_next/m4_v557_v558_publication_repository.py source/derived structural refs",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/derived.py",
+        "symbol": "DerivedIndices",
+        "line": 14,
+        "signature": "@dataclass",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M27",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-60",
+        "SP-110"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "M6 bounded expression is downstream rendering, not a causal Pass1 generator",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/engine/llm_contract.py",
+        "symbol": "parse_candidate_packet",
+        "line": 87,
+        "signature": "def parse_candidate_packet(raw: str | dict[str, Any]) -> dict[str, Any]:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M28",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-60",
+        "SP-110"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "BP2 test-only rule_a/target; ADP019 occurrence owner",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/engine/scoring.py",
+        "symbol": "score_event_candidate",
+        "line": 32,
+        "signature": "def score_event_candidate(event: dict[str, Any], state_summary: dict[str, Any]) -> float:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M29",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-110",
+        "SP-100"
+      ],
+      "disposition": "PARTIAL_CURRENT_GUARD_ANALOG",
+      "closest_current": "rawlsing_next/m6_actor_safe_expression.py → render_bounded_expression.py",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/engine/llm_contract.py",
+        "symbol": "build_render_packet",
+        "line": 791,
+        "signature": "def build_render_packet(year: int, age: int, selected_events: list[dict[str, Any]], selected_magnets: list[dict[str, Any]], state_deltas_applied: dict[str, Any], constraints: dict[str, Any], identity_override: dict[str, Any] | None=None, pe",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M30",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-110",
+        "SP-30"
+      ],
+      "disposition": "PARTIAL_ARCHITECTURAL_ANALOG",
+      "closest_current": "M6 actor-safe ingress → render_bounded_expression; GT0 no V3→V2 fabrication",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/V3_UNDERLIES_V2_ARTICULATION.md",
+        "symbol": "design articulation",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M31",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-140"
+      ],
+      "disposition": "REJECTED_HISTORICAL_ONLY",
+      "closest_current": "NONE; current Sorok 74 revokes v3.4 typology as authority",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v2/enneagram_wisdom.py",
+        "symbol": "match_life_course_to_type",
+        "line": 615,
+        "signature": "def match_life_course_to_type(states_over_time: List, type_wisdom: EnneagramTypeWisdom, context: Optional[Dict[str, Any]]=None) -> float:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M32",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-20",
+        "SP-140"
+      ],
+      "disposition": "PARTIAL_CURRENT_BOUNDARY_ANALOG",
+      "closest_current": "rawlsing_next/wsc_gt0_prev3_bridge.py → wsc_gt0_v3_runtime.py",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/io/v5_bridge.py",
+        "symbol": "normalize_v5_runtime_input_bundle",
+        "line": 40,
+        "signature": "def normalize_v5_runtime_input_bundle(bundle: Mapping[str, Any] | None, *, status: str | None=None, refs: Sequence[Any] | None=None, notes: Sequence[Any] | None=None) -> dict[str, Any]:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M33",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "disposition": "REJECTED_HISTORICAL_ONLY",
+      "closest_current": "NONE; ADP019 requires admitted occurrence",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/engine/event_engine.py",
+        "symbol": "_pseudo_seed",
+        "line": 22,
+        "signature": "def _pseudo_seed(state: BackboneState, year: int, slot: int) -> int:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M34",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-60",
+        "SP-110"
+      ],
+      "disposition": "REJECTED_HISTORICAL_ONLY",
+      "closest_current": "NONE; current guarded pathways must allow no-event/hold",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/engine/llm_contract.py",
+        "symbol": "parse_candidate_packet_with_fallback",
+        "line": 159,
+        "signature": "def parse_candidate_packet_with_fallback(raw: str | dict[str, Any], year: int | None=None, age: int | None=None) -> dict[str, Any]:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M35",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-70"
+      ],
+      "disposition": "REJECTED_HISTORICAL_ONLY",
+      "closest_current": "NONE; current no-fabrication boundaries",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "v3/core/invariants.py",
+        "symbol": "ensure_min_cracks",
+        "line": 253,
+        "signature": "def ensure_min_cracks(state: BackboneState, config: dict[str, Any] | None=None) -> None:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M36",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-140"
+      ],
+      "disposition": "REJECTED_HISTORICAL_ONLY",
+      "closest_current": "NONE; source-qualified history or unknown",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "2e1853dd535bb2b4e9d0bd8a8e31ab561aa75c2a",
+      "historical_review_sha": "481a5c62b6697e5df0e930a5dc615a8994aacddc",
+      "historical_source": {
+        "path": "v3/io/parent_baseline_from_behavior.py",
+        "symbol": "infer_parent_baseline_and_regime",
+        "line": 25,
+        "signature": "def infer_parent_baseline_and_regime(parent_identity: dict[str, Any]) -> tuple[dict[str, str], dict[str, float]]:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M37",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-40",
+        "SP-110"
+      ],
+      "disposition": "PARTIAL_QUARANTINE_PRINCIPLE_ONLY",
+      "closest_current": "GT0 BLOCKED/V3 zero-positive and C12 sourcefree partial roots",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "server/generation/simulation.py",
+        "symbol": "run_simulation_for_session",
+        "line": 71,
+        "signature": "def run_simulation_for_session(session_id: str, country: str | None=None, birth_year: int | None=None, identity_override: dict | None=None) -> None:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M38",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-30",
+        "SP-90"
+      ],
+      "disposition": "NONE_VERIFIED",
+      "closest_current": "Modern temporal M1 route is a different subsystem",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "v3/v3_yearly_step_order.yaml",
+        "symbol": "derived_indices_schedule",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M39",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-60",
+        "SP-40"
+      ],
+      "disposition": "REJECTED_HISTORICAL_ONLY",
+      "closest_current": "NONE; ADP019 event owner boundary",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "b609986a3f635de7b7581e763e76d3496ed9ad7e",
+      "historical_review_sha": "c5db118c70057d3a276d1cacca20843cf01544ae",
+      "historical_source": {
+        "path": "server/generation/simulation.py",
+        "symbol": "_maybe_inject_rupture_at_band_age",
+        "line": null,
+        "signature": null,
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    },
+    {
+      "existing_id": "M40",
+      "operation": "ADD_W2B_PARITY_AND_HISTORICAL_FUNCTION_WITNESS",
+      "keep_guide_sections": [
+        "SP-90",
+        "SP-140"
+      ],
+      "disposition": "PARTIAL_CURRENT_READINESS_ANALOG",
+      "closest_current": "M6 named-authority BLOCKED, BP4/JOIN readiness/cold checks",
+      "actual_importer": "NONE_PROVEN",
+      "historical_return_sha": "4877afed497ccaa974ee092a0db7d6178ecac2a2",
+      "historical_review_sha": "fa2a98d61bd5919140c8cb426d14fb3351adc561",
+      "historical_source": {
+        "path": "server/generation/store.py",
+        "symbol": "_validate_persona_for_store_write",
+        "line": 245,
+        "signature": "def _validate_persona_for_store_write(identity_dict: dict, sheet: dict, accumulator_verdict: dict | None) -> dict[str, object]:",
+        "prior_verified": true
+      },
+      "evidence_file": "01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "code_maturity": "HISTORICAL_SELECTED_S2_SOURCE_AND_REVIEW_ONLY",
+      "native_issuer": "HELD_OR_NOT_PROVEN",
+      "avoid_duplicate_tickets": true
+    }
+  ],
+  "nine_unwired": [
+    {
+      "proposed_reference_id": "R6:EE-R5B",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "02d32036db49c70ff137f1730d0ff95b571040d3",
+      "path": "WORKER_RETURNS/EE-R5B/05_BOUNDED_W4_ADAPTER.py",
+      "blob": "d169be112f454732df161620743ea6332866255e",
+      "symbols": [
+        "validate_w4_request",
+        "normalize_owner_receipt",
+        "adapt_step"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20",
+        "SP-140"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py (9 selected tests); branch-local only",
+      "sourcefree_test": "9 passed in temp copy; no PRE-MAIN importer",
+      "scientific_owner": "EE-R5B / EE-W4 sourcefree owner",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "HISTORICAL_REUSABLE__UNWIRED",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:EE-R10L",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+      "path": "WORKER_RETURNS/EE-R10L/07_construct_candidate_a_r5_carrier.py",
+      "blob": "004874f371a8ed13070dfa6598cfc85b08d9cdc9",
+      "symbols": [
+        "Monitor",
+        "load_builder",
+        "main"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "EE-R10L return/evidence; branch-local only",
+      "sourcefree_test": "Source read; no standalone selected test run; no PRE-MAIN importer",
+      "scientific_owner": "EE-R10L / Pyat R5 source owner",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "HISTORICAL_REUSABLE__UNWIRED",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:R38",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "aeefaf7e7f32f094b72fbee1e62e98508a304482",
+      "path": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/scientific_crosswalk.py",
+      "blob": "e786eb1bd06628bef3a9322235c285a1fbec5e8e",
+      "symbols": [
+        "load",
+        "lines",
+        "digest",
+        "build",
+        "matches"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-130",
+        "SP-140"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/test_wg0x.py; branch-local only",
+      "sourcefree_test": "Source read; no selected R38 test run; no PRE-MAIN importer",
+      "scientific_owner": "Pyat WG0X/WG0R; R61 current owner for successor workload compiler",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "HISTORICAL_REUSABLE__UNWIRED",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:GF1H",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "cc41ad4553d189a3c4c8152179b3d1977327c07f",
+      "path": "WORKER_RETURNS/PYAT-R32-GF1H-PAIR-CONSUMER-INTEGRITY-REPAIR-R1/gf1_pair_support_consumer.py",
+      "blob": "66658149fd7362e17c064a3fc1f9029d638f9ed9",
+      "symbols": [
+        "compute_pair_support_signature",
+        "_verify_identity",
+        "_decode_profile"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "GF1H adversarial test; branch-local only",
+      "sourcefree_test": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "scientific_owner": "Field Forge/GF1; test-only candidate",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "SUPERSEDED_BY_GF1K_WITH_NEGATIVE_HISTORY",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:GF1K",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "1399a475e54ea33355cf641979829424625c511d",
+      "path": "WORKER_RETURNS/PYAT-R33-GF1K-CATEGORY-IDENTITY-REPAIR-R1/gf1_pair_support_consumer.py",
+      "blob": "bbbda32facce0a3324498b88f4ba4bf0f79f18d2",
+      "symbols": [
+        "compute_pair_support_signature",
+        "_same_native",
+        "_distinct_native_pair"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "GF1K native identity tests; branch-local only",
+      "sourcefree_test": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "scientific_owner": "Field Forge/GF1; test-only candidate",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "SUPERSEDED_AS_BEST_CANDIDATE_BY_GF1M_REPAIR_PENDING_INDEPENDENT",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:GF1M",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "a8fcb6953f2795b7bc698f9f019f4782f80026c9",
+      "path": "WORKER_RETURNS/PYAT-R34-GF1M-INDEPENDENT-CURRENT-GF1-R1/author_followup_nonfinite/gf1_pair_support_consumer.py",
+      "blob": "c5dfb119ee730e968c54be9f085fd3a6d78fa787",
+      "symbols": [
+        "compute_pair_support_signature",
+        "_require_lossless_mapping_keys",
+        "_same_native"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "R34 GF1M nonfinite/key-identity tests; branch-local only",
+      "sourcefree_test": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "scientific_owner": "Field Forge/GF1; test-only candidate",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "AUTHOR_REPAIRED_PENDING_NEW_INDEPENDENT_REVIEW",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:GF1-GENERIC",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "48d1c144ff4a8c503908d6b95b9e35374d4584e5",
+      "path": "WORKER_RETURNS/PYAT-HQ-R18-GF1-REVERSE-SCIENCE-REPAIR-R1/generic_native_pair_relation.py",
+      "blob": "29ec2f96f148b5f371783f4f3abd34b78bc7a708",
+      "symbols": [
+        "produce_generic_native_pair_relation",
+        "replay_generic_native_pair_relation",
+        "GenericNativePairRelation"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "GF1 pair-support consumer/tests; branch-local only",
+      "sourcefree_test": "Source read; no selected GF1 test run; no PRE-MAIN importer",
+      "scientific_owner": "Field Forge/GF1; test-only candidate",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "HISTORICAL_REUSABLE__UNWIRED",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:PHASE-D",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "350986521ebbc13b552d4b6542423a65c267041a",
+      "path": "phase_d/code/compile_positioned_relational_evidence.py",
+      "blob": "e8ab4192c9d6717091e880a296f1e51913b6c3b2",
+      "symbols": [
+        "scan_scope",
+        "compile_scope",
+        "compile positioned relational evidence"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-130",
+        "SP-140"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "phase_d/successor_archetype_conformance/repro_capsule/.../validate_capsule.py; branch-local only",
+      "sourcefree_test": "Source read; no selected Phase-D test run; no PRE-MAIN importer",
+      "scientific_owner": "Phase-D / DDM source owner",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "HISTORICAL_REUSABLE__UNWIRED",
+      "no_auto_rebuild": true
+    },
+    {
+      "proposed_reference_id": "R6:R41-W41",
+      "existing_id": null,
+      "operation": "LINK_TO_EXISTING_GUIDE_SECTION_AS_SOURCE_PRESENT_UNWIRED__NOT_NEW_CONTROLLER_NODE",
+      "keep_source_cut": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py",
+      "blob": "79a91fc027d4be5428e19ef7a14cac0c19e96e4d",
+      "symbols": [
+        "ObjectiveWorld.read",
+        "retained_context",
+        "position_context",
+        "independent_fields",
+        "f6_evidence",
+        "temporal_methods",
+        "purpose_refusals",
+        "product"
+      ],
+      "guide_sections": [
+        "SP-10",
+        "SP-20"
+      ],
+      "source_read": "DIRECT_GITHUB_CODE_READ_CURRENT_FLIGHT",
+      "actual_current_importer": "NONE_PROVEN_AT_9809203",
+      "historical_first_consumer": "capture_products.py (branch-local), tests/test_native_world.py; future P41 handback; no PRE-MAIN importer",
+      "sourcefree_test": "reconstruct_owners --verify 133; selected test_native_world.py 26 passed; prior 94 core/33 EE1 not rerun",
+      "scientific_owner": "R41/W41 objective-world owner",
+      "authority": "OWNER_HELD_OR_UNISSUED",
+      "proposed_disposition": "READONLY_EXTERNAL_WORLD_CLIENT__NO_NATIVE_WELD",
+      "no_auto_rebuild": true
+    }
+  ],
+  "preserved_implementation_assets": [
+    {
+      "existing_id": "F1C_ORIGINAL",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "source_commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+      "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_original_104f5bd.py",
+      "source_grade": "EXACT_SOURCE_AUTHOR_TESTED",
+      "prior_status": "EXACT_SOURCE_FOUND_AND_READ__13_HISTORICAL_TEST_CASES_AUTHOR_EXECUTED",
+      "prior_acceptance_limit": "SOURCE_PRESENT",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "R31JProduct/r31j.assertion.p01; F1C same_receiver_assertion",
+      "proposed_disposition": "DONE_AT_HISTORICAL_SOURCE_AND_13_TEST_SCOPE"
+    },
+    {
+      "existing_id": "F1CR_CLAIMED_PATCH",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "source_commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+      "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/02_ORIGINAL_ARCHIVE_MEMBER_AND_HASH_RECONCILIATION.json",
+      "source_grade": "EXACT_PATCH_MISSING",
+      "prior_status": "EXACT_PATCH_MISSING__SOURCE_NOT_FOUND",
+      "prior_acceptance_limit": "UNKNOWN",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "NONE_VERIFIABLE",
+      "proposed_disposition": "EXACT_SOURCE_ABSENT__NOT_EQUIVALENT_TO_RECONSTRUCTION"
+    },
+    {
+      "existing_id": "F1CR_R5_RECONSTRUCTION",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-40",
+        "SP-60"
+      ],
+      "source_commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
+      "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_reconstructed_candidate.py",
+      "source_grade": "RECONSTRUCTION_AUTHOR_TESTED",
+      "prior_status": "RECONSTRUCTED_CANDIDATE__AUTHOR_TESTED_NOT_ORIGINAL_PATCH",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "BF1 targetless_c10_consumer.BWorld → TargetlessGuardedJoinedProduct",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "B1",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "source_commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "AUTHOR_39_PASS__I2_PENDING__NO_NATIVE",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "Store.commit → execute second event",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "B2",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-60",
+        "SP-80",
+        "SP-90"
+      ],
+      "source_commit": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "AUTHOR_81_CONNECTED__249_INHERITED__INDEPENDENT_S2_SCOPED",
+      "prior_acceptance_limit": "INDEPENDENT_ACCEPT_SCOPED",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "Bridge.advance → d1_gate",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "B3",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-70",
+        "SP-80"
+      ],
+      "source_commit": "47b46a85b9ebb633754866f1e6f1b12db3bd2012",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ329-B3-COUPLED-INTERPRETATION-R1/developmental_loop.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "AUTHOR_71__42_F2__S3_REVISE__X3_PARTIAL_WRITE_RED",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "World.execute and later T9 CHECK_LOCK eligibility only",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "B3A",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-60",
+        "SP-70"
+      ],
+      "source_commit": "8bd4d6b01fd402e7e6a8d07903f2c3cada837f55",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3-X3-ATOMIC-ADMISSION-REPAIR-R1/candidate/integration.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "SCOPED_ATOMIC_REPAIR__FOLLOWUP_SCHEMA_RED",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "later E3 sourcefree integration",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "B3AS",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-60",
+        "SP-70"
+      ],
+      "source_commit": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "INDEPENDENT_I2_ACCEPT_SCOPED_SQL_READSET__NO_NATIVE",
+      "prior_acceptance_limit": "INDEPENDENT_ACCEPT_SCOPED",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "historical same sourcefree E3 readset and later consumer",
+      "proposed_disposition": "DONE_AT_SCOPED_INDEPENDENT_READSET_REPAIR"
+    },
+    {
+      "existing_id": "BP2P4J",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-90",
+        "SP-120"
+      ],
+      "source_commit": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "AUTHOR_98__10_SEVERANCES__INDEPENDENT_FULL_RELEASE_NOT_PROVEN",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "JoinedProduct → joined_downstream_a0_a2_assertion and C12 episode store",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "S39_S52",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-40",
+        "SP-90",
+        "SP-120"
+      ],
+      "source_commit": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "path": "WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/s52/session.py",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "SOURCEFREE__S39_PREMISES_CALLER_SUPPLIED__S49_NATURAL_B_EMPTY",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "compile_candidate → produce_b_turn → perform_paid_participation",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "R15_V2",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-110"
+      ],
+      "source_commit": "4ce795413c2e77be04657a260cbda586610f4756",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/experiments/RENDERER_FEASIBILITY_R1",
+      "source_grade": "SOURCEFREE_OR_TEST_ONLY",
+      "prior_status": "R2_PREPARED_NOT_PROVIDER_SCORED",
+      "prior_acceptance_limit": "SOURCE_PRESENT",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "RFA renderer lab / Nadia inputs",
+      "proposed_disposition": "RENDERER_FEASIBILITY_ONLY_NOT_PROVIDER_SCORED"
+    },
+    {
+      "existing_id": "CP-A5-R2",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-120"
+      ],
+      "source_commit": "913765328e4fab12b150ea01421ed6b445158184",
+      "path": "WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json",
+      "source_grade": "AUTHOR_TESTED_UNADOPTED",
+      "prior_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "I1 GuardedJoinedProduct C12 same root → A sees tool-return but not B unperceived market commission",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "C9C12-R2",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-50",
+        "SP-90"
+      ],
+      "source_commit": "c78404724052496fdec8608c8b0e833c0f7c4ecc",
+      "path": "WORKER_RETURNS/SOROK-C9C12-R2/01_VERSIONED_WRITER_READER_AND_CLOCK_CONTRACT.json",
+      "source_grade": "AUTHOR_TESTED_UNADOPTED",
+      "prior_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "C9 actor R3B SQLite snapshot/outbox + BP4R C12 verified content under I1-compatible read-only composite",
+      "proposed_disposition": "AUTHOR_TESTED_UNADOPTED__VERSION_HELD"
+    },
+    {
+      "existing_id": "B-F1CR-R2",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-40",
+        "SP-90"
+      ],
+      "source_commit": "bf3273c294c704ad7c631559b9866d351bb4f103",
+      "path": "WORKER_RETURNS/SOROK-B-F1CR-R2/01_LIVE_B_AND_TARGETLESS_C10_CONSUMER_MAP.json",
+      "source_grade": "AUTHOR_TESTED_UNADOPTED",
+      "prior_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "Same I1 root/store/branch; targetless REFUSE/SILENCE/NO_PROPOSAL/UNOBSERVED are consumed with A access and B material ledgers",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    },
+    {
+      "existing_id": "V3CORE-R1",
+      "operation": "PRESERVE_RECHECK_VERSION_SPECIFIC_CONSUMER_AND_REVIEW",
+      "guide_sections": [
+        "SP-30",
+        "SP-40",
+        "SP-140"
+      ],
+      "source_commit": "b5cb3f917402b992d7cbe933af0b378d2b37cbfd",
+      "path": "WORKER_RETURNS/SOROK-V3CORE-R1/01_HISTORICAL_FUNCTION_TO_CURRENT_CONSUMER_CONTRACT.json",
+      "source_grade": "AUTHOR_TESTED_UNADOPTED",
+      "prior_status": "SOURCE_FOUND_ADAPTER_AUTHOR_TESTED__UNADOPTED",
+      "prior_acceptance_limit": "CANDIDATE_ONLY",
+      "current_importer_at_9809203": "NOT_ESTABLISHED_FROM_THIS_ID",
+      "actual_branch_local_consumer": "Actual I1 market event 54→56 cash / workshop→market projected to restricted old V3 capacity; source clock domain verified",
+      "proposed_disposition": "PRESERVE_SPECIFIC_SCOPE__NATIVE_NOT_CLAIMED"
+    }
+  ],
+  "duplicated_or_superseded": [
+    {
+      "source": "aeefaf7e7f32f094b72fbee1e62e98508a304482:WORKER_RETURNS/PYAT-R38-WG0X-SCIENTIFIC-CROSSWALK-R1/sources/WG0P10_repaired_workload.py",
+      "disposition": "SUPERSEDED",
+      "successor": "9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_universal_workload.py",
+      "section": "SP-10"
+    },
+    {
+      "source": "5e11d186a5ccd74faa13687adafda3942834a475:WORKER_RETURNS/PYAT-USERDIRECT-20261014-WG0-ORIGINAL-ITEM-WORKLOAD-R1/wg0_workload_builder.py",
+      "disposition": "SUPERSEDED",
+      "successor": "9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_universal_workload.py",
+      "section": "SP-10"
+    },
+    {
+      "source": "868b3ab0fedf19f100dddc535a221972a564b37c:85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/code/run_section85_diagnostic_smoke_matrix.py",
+      "disposition": "SUPERSEDED",
+      "successor": "9809203fd915a84bae056a67210e9213879840db:section85/code/run_section85_diagnostic_smoke_matrix.py",
+      "section": "SP-140"
+    },
+    {
+      "source": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md",
+      "disposition": "REJECT_PREPROGRAMMING_V3_4_AS_CURRENT_AUTHORITY",
+      "affected": [
+        "M31",
+        "M33",
+        "M34",
+        "M35",
+        "M36",
+        "M39"
+      ],
+      "section": "SP-140"
+    }
+  ],
+  "source_needs_file": "03_TARGETED_LIBRARY_OR_MAINMAC_SOURCE_NEEDS.md",
+  "no_test_claim": "W2-B documentary GitHub-only; no source-native or local Python tests",
+  "no_integration_claim": "Only isolated branch proposal; no PRE-MAIN merge, owner CAS or review."
+}
