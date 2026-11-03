@@ -1,0 +1,21 @@
+# REISSUED W6 R2 — START HERE: DEPENDENCY-DRIVEN WORK PRIORITIZATION
+**User clarification 2026-11-02.** This **supersedes** the prior W6 R1 launch at `75d7bd93ff624a8d0add0f43e391b87d71296b24`. It is an explicit substantive requirement change, not merely a wording update. Do not use old R1 SHA as the operative commission. W5 remains source/evidence baseline `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`. Prior W4/W5 are good in their limited scopes; maximal prerequisite/readiness coverage was not established.
+
+## READ 05 first
+`05_EXECUTABLE_DEPENDENCY_READINESS_AND_PRIORITY_CONTRACT_R2.md` defines common stable-record semantics and the target user outcome: for **KNOW/SPECIFY/BUILD/INTEGRATE/VERIFY/ACCEPT X**, exactly which Y/Z conditions must be satisfied; recursively what must precede them; reverse unlocks; true alternatives; READY/NOW vs HELD; coherent joint packages for evidence-backed mutual dependence; and a **reproducible, explained "what should we work on?" priority view** for a stated Sorok objective. No user-visible visualization or graph application is required. Do not assume an unreviewed edge is science or live execution.
+
+## RUN IN PARALLEL — three Browser/GPT-6 High investigations
+- `01_W6A_GITHUB_ASSET_SEMANTIC_COVERAGE_BROWSER.md` — exhaust useful GitHub source asset accounting, older implementation functions and accepted/held decisions, *plus* say which exact target@phase prerequisite is already fulfilled or can be resolved from existing evidence. Own source and reuse census.
+- `02_W6B_DEEP_COMPONENT_AND_RECURSIVE_PREREQUISITE_BROWSER.md` — own **executable prerequisite hierarchy**: nested stable IDs, knowing/building/integrating/testing/accepting gates, AND/IF/OR, backwards unsatisfied work leaves, reverse unlocks, readiness, warranted joint-work/cycle handling and reasoned work-now ordering. Own dependency logic.
+- `03_W6C_REAL_CODE_FIRST_READERS_AND_SEAMS_BROWSER.md` — actual producer/typed output/consumer/currentness/test/owner, more material interfaces than original 22 if needed, *plus* what gate each seam blocks/unlocks and what exact initial action is runnable. Own seam and code reality.
+All workers read same W5 exact source and this R2 common document, write to isolated branches and non-overlapping return files. A source-stable original identifier + target phase joins later findings. No separate registry or software platform. Neither worker commands another or assumes other returns.
+
+`04_PARALLEL_SOROK_ENGINEERING_AND_GUIDE_DELTA_CONTRACT.md` preserves a **non-blocking** Codex HQ engineering lane; workers' actual returns should contain stage/owner/proof and prerequisite/unlock effects. The guide does not automatically manage or dispatch code workers.
+
+## AFTER RETURNS (not another launched fleet today)
+One guide integrator reconciles A/B/C into existing `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/06–13` (not a second system), derives a clear source-backed READY / READY_TO_SPECIFY / OWNER_ACTION / BLOCKED / JOINT view for whole Sorok and selected goals, spot-checks new/untested dependency chains and priority re-evaluation, and preserves unknowns and historical negatives. A fresh independent reader then tests **new** paths, actual no-rebuild asset reuse and the work-now calculation; do not merely repeat W4's original questions. Finite substantive iteration only if evidence demonstrates actual missing material.
+
+**Do not promise a mathematically measured "critical path" without duration/capacity data.** Distinguish logical dependencies and impact leverage from measured project schedules. Prioritize high-impact *feasible* bottlenecks with justification, including science/owner decisions as their own work packages and parallel independent work; groups of genuinely interdependent technical decisions may require a joint contract package. Absolute completion of Sorok product is not a guide requirement.
+
+## Frozen truth and source access
+W5 `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`; source cuts/return provenance as written in 00 and worker commissions. No direct mainMac/Library trawl; a named external source is requested only when an actual prerequisite readiness/equivalence decision depends on it. Do not infer code/owner adoption from GitHub path or sourcefree tests.
