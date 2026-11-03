@@ -1,5 +1,10 @@
 # ROADMAP:S04 — Measured F1–F4: distributions, conditionals, recursive alternatives and same-person configurations
 
+## NEXT R F-01 recovered live F018 exact implementation — 2026-11-03
+
+**S04.1/S04.5; GAP-016–020 and existing G1 row 186.** Protected `773bb412a820949f13a7178b6671327cd56a3bf1` directly contains [`rawlsing_next/pre553_effective_n.py::compute_effective_n@454`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_effective_n.py#L454), blob `76bbddb0fddc91d64c83f5d6164a63cb4e2a3ff5`. It takes I03-owned empirical fact/query risk-set, authorized `weight_facts`, `AuthorityRegistry` and source/reference inputs, and emits a typed `EffectiveNProduct` with sum(weights) squared / sum(weight-squares) or a typed refusal; RAW is **NOT_APPLICABLE**, unpermitted weight scope **NOT_AUTHORIZED**. This current **sourcefree computation is present**; it is not original35 source-issued weights/design/estimand or a verified non-test first reader. Never reimplement effective-N merely because the first locator missed its name. F1–F4 native scientific/issuance gate is still **OWNER_HELD**, including source-specific weighted risk set and joint F4 conditions. [E3 direct source receipt](https://github.com/maidiu/rawlsing/blob/66a6f18541c95b28490775c97a9615cb58769509/WORKER_RETURNS/PROG5_NEXT_E3_CURRENTNESS_AUTHORITY_R1/CURRENT_CODE_REVIEW_AUTHORITY_CUT.jsonl) and [49 current gaps](../NEXT_R_GAP49_NEXT_DECISIONS.md).
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
