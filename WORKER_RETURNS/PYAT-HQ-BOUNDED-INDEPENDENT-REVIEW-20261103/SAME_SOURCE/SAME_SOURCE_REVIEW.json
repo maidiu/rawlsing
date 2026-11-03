@@ -1,0 +1,224 @@
+{
+  "candidate_identity": {
+    "all_code_pins_ok": true,
+    "changed_paths": [
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/COMMISSION.md",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/RETURN.json",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/TRACE.json",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/junit.xml",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/pytest.log",
+      "M\trawlsing_next/pre553_issued_workload.py",
+      "M\trawlsing_next/pre553_universal_world_binding.py",
+      "M\trawlsing_next/tests/test_universal_world_binding.py"
+    ],
+    "code_changes": [
+      {
+        "path": "rawlsing_next/pre553_issued_workload.py",
+        "sha256": "0e3e38233e142214e0ce4e733f6eb252b95136a21d837426ae67361ba172e121"
+      },
+      {
+        "path": "rawlsing_next/pre553_universal_world_binding.py",
+        "sha256": "59f97493d9ce786d1d97837bed9ff1432d9a8beebd83e938a47fba993fdbcfac"
+      },
+      {
+        "path": "rawlsing_next/tests/test_universal_world_binding.py",
+        "sha256": "793d11066b2d8e20e3770cfc1bfe45a4ec20d0eee42155410ffb2f8d5e19a6ab"
+      }
+    ],
+    "head_source_bytecode_present": false,
+    "return_sha256": "6dcc49800e54fd33a1b153b9fcb3af4b870dc613cef9cd5873ebb4c7119eb96f",
+    "trace_sha256": "e53906f58c3cf9c75ef9be6294ba43b03dd5b15ded7f5b533de89326cdcec690"
+  },
+  "fresh_process_witness": {
+    "all_measured_identities_stable": true,
+    "child_view_hash": "bda813abd7cef5582ae6a44a947b4eac68dcf9c474166234bd2298054407e0fa",
+    "child_view_state": "R05_WORLD_SELECTED_VIEW",
+    "note": "Author disclosed possible downstream ordering instability; this independent run under PYTHONHASHSEED=0 reproduced all selected identities. No universal byte-identity claim.",
+    "parent_view_hash": "bda813abd7cef5582ae6a44a947b4eac68dcf9c474166234bd2298054407e0fa",
+    "parent_view_state": "R05_WORLD_SELECTED_VIEW",
+    "path": "SAME_SOURCE/FRESH_PROCESS_WITNESS.json",
+    "sha256": "ff1b04599626c004ac4472bebf1d800096270f8fa68ccfb3fe4b32620f6d5f05",
+    "stable": {
+      "consumer_result_hash": true,
+      "evidence_ref": true,
+      "learned_receipt_ref": true,
+      "m1_disposition_ref": true,
+      "m2_release_ref": true,
+      "producer_predicate_ref": true,
+      "producer_query_ref": true,
+      "receipt_ref": true,
+      "route_graph_fact_refs": true,
+      "route_replay_identity": true,
+      "source_sha256": true,
+      "view_hash": true,
+      "view_state": true
+    }
+  },
+  "limits": [
+    "TEST_ONLY synthetic nonrespondent source and modeled temporal pair; not original respondents/science/F5/F6/F7.",
+    "The same-source fixture is synthetic; no original-source or production adoption.",
+    "Fresh-process identity stability measured here; no universal byte-stability guarantee across all environments.",
+    "No new workers, model/provider, source, host, CI, R00/R09 reopening, N11/N12, Sorok, or J52/W52."
+  ],
+  "lineage_witness": {
+    "common_release_lineage": true,
+    "consumer_result_hash": "fefd3b8891463b33928703493379a063870b03cb4b814966304ce6d328156700",
+    "evidence_ref": {
+      "content_hash": "b773b86791d93999f84f4a934887f71912aac37c80a51152fd012be7762ad361",
+      "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+      "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b773b86791d93999f84f4a934887f71912aac37c80a51152fd012be7762ad361"
+    },
+    "learned_receipt_ref": {
+      "content_hash": "9c45050bcfea1e480e0c4a34626faaf7bdc7c2fe996eedecc7301945c12fe671",
+      "kind": "LearnedWorldCompositionReceipt@1.0.0",
+      "object_id": "urn:rawlsing:pre553:i4:composition-receipt:sha256:9c45050bcfea1e480e0c4a34626faaf7bdc7c2fe996eedecc7301945c12fe671"
+    },
+    "m1_disposition_ref": {
+      "content_hash": "2dca454db9af477facbf856e7e769886f921351ede039bb9d936fa9b7fb09a39",
+      "kind": "LearnedEmpiricalDisposition@1.0.0",
+      "object_id": "urn:rawlsing:pre553:m1:LearnedEmpiricalDisposition:sha256:2dca454db9af477facbf856e7e769886f921351ede039bb9d936fa9b7fb09a39"
+    },
+    "m2_release_ref": {
+      "content_hash": "dc007e1690b6faa7deb43b6c9a56d09fc9aabd1ab03204fbed52595d181846ac",
+      "kind": "LearnedProductReleaseCore",
+      "object_id": "urn:rawlsing:pre553:m2:release:sha256:dc007e1690b6faa7deb43b6c9a56d09fc9aabd1ab03204fbed52595d181846ac"
+    },
+    "path": "SAME_SOURCE/LINEAGE_WITNESS.json",
+    "r04_route_replay_identity": "f3a2d7e452c404bbcd069afdd05ca69b58d8debc07d814ad51a89d9f31b120bf",
+    "r04_selected_receipt_ref": {
+      "content_hash": "02d5f0f38c4e1df1dc4035b0a7a80a03708f0c0422720e7b49bf2adad3cc6f6d",
+      "kind": "DiscoveryResultReceipt@1.0.0",
+      "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:02d5f0f38c4e1df1dc4035b0a7a80a03708f0c0422720e7b49bf2adad3cc6f6d"
+    },
+    "refusal_reason": "R05_N10E_EVIDENCE_BINDING_MISMATCH",
+    "release_ref": {
+      "content_hash": "a8ba3347db6a1d327554f4bb9d4f7398125fbd69f38791942aca4349065b8aba",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "revoked_code": "WorkloadAdmissionError",
+    "sha256": "eb75ccd7d9abad4b965928997d694ecfa7f485ffec8cc25c9edf97cfd3aa9c0e",
+    "source_sha256": "927ea5873281f71ea0d11c5ddda9206fcedafd2c2967739fc2923b4f35cc1528",
+    "source_universe_ref": {
+      "content_hash": "485887b9af50b75f56effd70ae3ccd6664138abb2bab42c175d664b658df10c4",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:485887b9af50b75f56effd70ae3ccd6664138abb2bab42c175d664b658df10c4"
+    },
+    "temporal_changed": true,
+    "view_hash": "7ee6cfb07c7233da39ffdc6e0428ef850187dad971f9dc69ae297212f347921c",
+    "view_state": "R05_WORLD_SELECTED_VIEW",
+    "wrong_source_code": "WorkloadAdmissionError"
+  },
+  "negative_evidence": {
+    "checkpoint_source_mismatch": "WorkloadAdmissionError",
+    "restored_same_consumer": "test asserts restored view_hash == positive view_hash",
+    "revocation": "WorkloadAdmissionError",
+    "upstream_evidence_severance": "R05_N10E_EVIDENCE_BINDING_MISMATCH"
+  },
+  "preserved": {
+    "R00_R09_behavior": "not reopened",
+    "central_R09_host_hold": "held",
+    "prior_A_B_C_acceptance": "e24b70eac51d0894c7e5af7604ab7afc2376dbe6",
+    "uncompleted_source_authority_failures": "preserved"
+  },
+  "returnroot_commit": "commit containing this file; direct remote readback in final response",
+  "reviewer_role": "SAME_DISTINCT_NATIVE_REVIEWER_NOT_AUTHOR_OR_HQ",
+  "schema": "PYAT_SAME_SOURCE_RESUME_CONSUMER_REVIEW@1.0.0",
+  "scope": {
+    "base": "8779504a638ff39d6904ed2faf5a718242084c4e",
+    "candidate": "agent/pyat-same-source-resume-consumer-20261103-r1",
+    "candidate_head": "ea503425a6f3de29649b78587c7bcb0c2051b7ee",
+    "not_claimed": [
+      "original source/science",
+      "protected integration/CI",
+      "universal byte identity",
+      "R00/R09 reopening"
+    ],
+    "prior_review": "e24b70eac51d0894c7e5af7604ab7afc2376dbe6",
+    "qualification": "single synthetic source/release/universe through R04 mixed query+discovery partial capture/restore/resume, actual R05/M1/M2 learned path, and unchanged actual P41 consumer"
+  },
+  "session_verification": {
+    "model": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "session_id": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "source": "read-only opencode sqlite session metadata",
+    "variant": "max",
+    "verified_before_work": true
+  },
+  "source_io": {
+    "ci_prod": false,
+    "original_survey_read": false,
+    "source_access": false
+  },
+  "source_pins": {
+    "all_code_pins_ok": true,
+    "base": "8779504a638ff39d6904ed2faf5a718242084c4e",
+    "candidate_head": "ea503425a6f3de29649b78587c7bcb0c2051b7ee",
+    "changed_paths": [
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/COMMISSION.md",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/RETURN.json",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/TRACE.json",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/junit.xml",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/pytest.log",
+      "M\trawlsing_next/pre553_issued_workload.py",
+      "M\trawlsing_next/pre553_universal_world_binding.py",
+      "M\trawlsing_next/tests/test_universal_world_binding.py"
+    ],
+    "code_changes": [
+      {
+        "actual": "0e3e38233e142214e0ce4e733f6eb252b95136a21d837426ae67361ba172e121",
+        "path": "rawlsing_next/pre553_issued_workload.py",
+        "pin": "0e3e38233e142214e0ce4e733f6eb252b95136a21d837426ae67361ba172e121",
+        "pin_ok": true
+      },
+      {
+        "actual": "59f97493d9ce786d1d97837bed9ff1432d9a8beebd83e938a47fba993fdbcfac",
+        "path": "rawlsing_next/pre553_universal_world_binding.py",
+        "pin": "59f97493d9ce786d1d97837bed9ff1432d9a8beebd83e938a47fba993fdbcfac",
+        "pin_ok": true
+      },
+      {
+        "actual": "793d11066b2d8e20e3770cfc1bfe45a4ec20d0eee42155410ffb2f8d5e19a6ab",
+        "path": "rawlsing_next/tests/test_universal_world_binding.py",
+        "pin": "793d11066b2d8e20e3770cfc1bfe45a4ec20d0eee42155410ffb2f8d5e19a6ab",
+        "pin_ok": true
+      }
+    ],
+    "head_source_bytecode_present": false,
+    "receipt_paths": [
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/COMMISSION.md",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/RETURN.json",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/TRACE.json",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/junit.xml",
+      "A\tWORKER_RETURNS/PYAT-SAME-SOURCE-RESUME-CONSUMER-20261103/pytest.log"
+    ],
+    "schema": "PYAT_SAME_SOURCE_CODE_PINS@1.0.0",
+    "source_test_change_count": 3,
+    "test_file_sha256": "793d11066b2d8e20e3770cfc1bfe45a4ec20d0eee42155410ffb2f8d5e19a6ab"
+  },
+  "supporting_artifacts": {
+    "FOCUSED_EIGHT.log": "8d1d6a119fad6c1350e49c94f8f389d7d121731324a6c593963ef3c3ed551f5b",
+    "FRESH_PROCESS_WITNESS.json": "ff1b04599626c004ac4472bebf1d800096270f8fa68ccfb3fe4b32620f6d5f05",
+    "LINEAGE_WITNESS.json": "eb75ccd7d9abad4b965928997d694ecfa7f485ffec8cc25c9edf97cfd3aa9c0e",
+    "SAME_SOURCE_REVIEW.md": "53288b6f9d55f84ba66b34b1498c4bc7889ea0cff01e4dbb4d90ea4b8972a550",
+    "SOURCE_PINS.json": "70540654762009c4b04db056b6a1027558118b186da58c78fc266c7e7e32a437",
+    "pytest.log": "dc5ac4b65b59be374000e7db96ade58e62bd4d820b512e38b35315c9c9db3e06"
+  },
+  "tests": {
+    "focused_eight": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_workload_custody.py rawlsing_next/tests/test_universal_world_binding.py::test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair rawlsing_next/tests/test_universal_world_binding.py::test_r06r3_actual_step_severance_refuses_restore -q -p no:cacheprovider -o addopts=''",
+      "exit": 0,
+      "log_path": "SAME_SOURCE/FOCUSED_EIGHT.log",
+      "log_sha256": "8d1d6a119fad6c1350e49c94f8f389d7d121731324a6c593963ef3c3ed551f5b",
+      "result": "8 passed in 21.86s"
+    },
+    "new_connected": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41 -q -p no:cacheprovider -o addopts=''",
+      "exit": 0,
+      "log_path": "SAME_SOURCE/pytest.log",
+      "log_sha256": "dc5ac4b65b59be374000e7db96ade58e62bd4d820b512e38b35315c9c9db3e06",
+      "result": "1 passed in 54.92s"
+    }
+  },
+  "verdict": "PASS_SCOPED_SAME_SOURCE_RESUME_CONSUMER"
+}
