@@ -1,5 +1,18 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+## Post-G4 late returned-source intake — 2026-11-03
+
+**L1/L2/L3 are received as documented candidate evidence; no science or protected production grant.** Exact final worker commits: [L1 R40–R49](https://github.com/maidiu/rawlsing/commit/e7ead127edbe83385e1a04e6e874de8a66fc5b39), [L2 R50–R95](https://github.com/maidiu/rawlsing/commit/2f91ef644871ab3de35cdc1ca8a92af18a4310d4), [L3 four source requests](https://github.com/maidiu/rawlsing/commit/a73bc57e12949f27867abde7fe9f33fea3a58052). G4 remains eleven organs/51 child functions. Its **782 typed IDs, 892 G1 dispositions, 150 historical/current parity, 82 source-cut seam states, 62 component grades and 49 material GAP IDs** are preserved unchanged; never re-date their grades to a later returned branch.
+
+**Read these before treating an earlier G4 unknown as current:** [POST_G4_DELTA_INTAKE.md](POST_G4_DELTA_INTAKE.md) (what changed, exact cuts, effective authority chronology, proof ceilings); [LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md](LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) (37 L1 source identities +21 L2 authority/return fates and direct L3 56-row reference); [NAMED_OUTSTANDING_PHYSICAL_SOURCES.md](NAMED_OUTSTANDING_PHYSICAL_SOURCES.md) (NONE required for guide review; four owner-conditional *derived* V548/V549 outputs only). Updated individual [S01–S11](#eleven-real-section-pages) carry child-linked substantive overlays. Historical [G4 source requests](G4_UNRESOLVED_SOURCE_REQUESTS.md) and [real work ledger](REMAINING_REAL_PYAT_WORK.md) now distinguish later partial supersession while retaining earlier cut claims.
+
+**Material upgrades without native promotion:** A42's three N11 physical artifacts exist but declare **N11_NOT_READY** (0 original measured of 1,890); J42 truly joins 84 same-source E04 TEST_ONLY world/empirical views; R06V-R4 accepts a separately isolated **local sourcefree pinned P41 N9/N10W first reader**, absent from both control and semantic PRE-MAIN. Original source-qualified N9/N10W, original35 F1–F8, competent N11/N12 and Sorok actor authority remain HELD. R09V-R2 is **REVISE/HOLD** for child-forged observation despite local positives. R00E 41/41 behavior still has **REVISE** custody. V548/V549 original source was located, K04 materializer is **unmerged candidate**, and 44 Long Memory/8 W1-H identities are resolved at archival-document scope, not made executable.
+
+**Time/cut discipline:** GitHub receiving-control 9809203fd915a84bae056a67210e9213879840db ≠ advertised protected semantic PRE-MAIN 1f47063c3205a45888b3c55e81e7485943ed1390 ≠ R05/R06/other candidate cuts. A reviewer may use a later local accepted result as a *scoped engineering subproof*, never as a quiet GREEN flip of the original 82 statuses. No further material physical-file hunt is needed **before one independent unfamiliar-agent source-accuracy/cold-use review**, if authorized; this receiving worker performs no such review.
+
+---
+
+
 > **G4 assembled at GitHub S0–S1 documentary scope; not independently reviewed or accepted, and not a running Pyat.** All five isolated G4-P1–P5 workers' exact committed section/index/return blobs have been received onto the G4 branch. No new test, source-native original35 operation, source/science permission, PRE-MAIN mutation, or N11/N12 acceptance was performed. **Build/exhaust material work first; decide later whether named source recovery is needed; only then commission an independent unfamiliar-agent usability check.**
 
 ## Start here — what an engineer gets from G4
