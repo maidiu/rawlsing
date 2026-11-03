@@ -51,12 +51,12 @@ Each `HQ_DEVELOPMENT_TRANSITIONS.jsonl` line may use this stable small JSON obje
   "authority_and_source_scope": "NO_ORIGINAL35_NATIVE_CLAIM; NO_PROTECTED_ADOPTION",
   "first_consumer": "<specific importing/calling function or NONE VERIFIED>",
   "remaining_dependency": "<exact smallest next missing piece and owner>",
-  "guide_update_ref": "<Git commit carrying current-state changes or PENDING>",
+  "guide_update": "SAME_COMMIT_FILE_CHANGE_OR_PENDING_AUTHORIZED_MERGE",
   "evidence_level": "DIRECT_CODE_AND_SCOPED_INDEPENDENT_REVIEW"
 }
 ```
 
-Use **actual** IDs and fields; this placeholder is not a claim that such an event occurred. A transition with no materially changed behavior, reader, authority, adoption, source fact, or prerequisites needs no new row. No per-test/per-file/progress-tick spam.
+Use **actual** IDs and fields; this placeholder is not a claim that such an event occurred. Do not attempt to record the SHA of the commit currently being created inside that same commit; the SHA is subsequently available from Git history and can be cited by the next authorized HQ checkpoint. A transition with no materially changed behavior, reader, authority, adoption, source fact, or prerequisites needs no new row. No per-test/per-file/progress-tick spam.
 
 ## 4. Update the existing source-cut assessments without falsifying history
 
