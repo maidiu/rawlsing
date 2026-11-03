@@ -780,5 +780,120 @@
       "W6B": "3cec9b96a605b018be7d266585f37a96bf636f84",
       "W6C": "ae82321ab8a028811bd7ce3e9c442beb5020c66c"
     }
+  },
+  "w8f_corrected_readback": {
+    "grade": "S0_S1_STATIC_HYPOTHETICAL_RECOMPUTE_NOT_NATIVE_OR_HUMAN_EXECUTION",
+    "date": "2026-11-03",
+    "source_cuts": {
+      "W7I": "db134dc7c705bff62e0570b30ce24052cf06308d",
+      "W7D": "f1742490b01b8eab2ab1629565fb33bdee6bb396",
+      "W7C": "40ca52e141bedcb8ab1de6acce7e51d81a2341f3",
+      "W7S": "b7d583a01d5f0e92ae1da861ca1d3a4170184a28",
+      "W7P": "c145ee3db2344dc75eeb1b343c1b608fd9a66e47",
+      "original": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+      "pre_main": "9809203fd915a84bae056a67210e9213879840db"
+    },
+    "tests": [
+      {
+        "test": "absent A5 mode",
+        "expected": "MODE_UNSELECTED_OWNER_HELD",
+        "gate_ids": [
+          "G-A5-RUN-COMMON",
+          "G-A5-HUMAN-RECEIPT-VERIFY"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "curated Gates0–3 only",
+        "expected": "FORMATIVE_CURATED_TECHNICAL; ORIGINAL_GATE5_HELD",
+        "gate_ids": [
+          "G-A5-EARLY-IF",
+          "G-A5-NATIVE-IF"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "generated Gate4, S14 unoperated",
+        "expected": "HUMAN_GATE5_NOT_READY",
+        "gate_ids": [
+          "G-A5-RUN-COMMON",
+          "G-S14-CONTROLS-VERIFY"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "native C9 without selected T",
+        "expected": "C9_NOT_READY__MISSING_RULE_NOT_NOCHANGE",
+        "gate_ids": [
+          "G-C9-NATIVE-INTEGRATE",
+          "G-C9-T-ANY"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "O07 true evaluated nochange, O05 absent",
+        "expected": "NOCHANGE_BRANCH_ONLY__ACQUISITION_NOT_GRANTED",
+        "gate_ids": [
+          "G-C9-T-ANY",
+          "G-C9-NATIVE-ACCEPT-ALL"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "JOIN-V 7bf old on c784/598d",
+        "expected": "REJECT_CROSS_VERSION_VERIFY",
+        "gate_ids": [
+          "G-C12-SF-VERIFY",
+          "G-E008-JOINT-BUILD"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "S10 original source without E021",
+        "expected": "READY_TO_SPECIFY__NO_E021_HARD_DEPENDENCY",
+        "gate_ids": [
+          "G-S10-SPECIFY"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "hypothetical joint owner C9C12C10 contract",
+        "expected": "CO_SPEC_ONLY__NEW_TUPLE_IMPLEMENT_AND_VERIFY_HELD",
+        "gate_ids": [
+          "G-E008-JOINT-OWNER-CONTRACT",
+          "G-E008-C9-COSPEC"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "S14 policy but no operations",
+        "expected": "OPERATED_S14_VERIFY_HELD",
+        "gate_ids": [
+          "G-S14-CONTROLS-VERIFY"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      },
+      {
+        "test": "S5 S13 S15 design parallel",
+        "expected": "READY_TO_REFINE_SPEC_ONLY__NO_ACCEPT",
+        "gate_ids": [
+          "G-S5-SPECIFY",
+          "G-S13-SPECIFY",
+          "G-S15-SPECIFY"
+        ],
+        "mode": "HYPOTHETICAL_ONLY_NO_PERFORMED_RESULT"
+      }
+    ],
+    "structural_counts": {
+      "original_290": true,
+      "original_144": true,
+      "original_parent_D22": true,
+      "original_parent_E22": true,
+      "W1_100": true,
+      "W6B_119_97_77_230_39": true,
+      "W6C_seams_38": true
+    },
+    "preserve_seam_joins": "JOIN_PENDING_WITH_16_TARGET_COMPATIBLE_AND_22_NO_MATCH__NOT_JOINED",
+    "independent_acceptance": "NOT_RUN"
   }
 }
