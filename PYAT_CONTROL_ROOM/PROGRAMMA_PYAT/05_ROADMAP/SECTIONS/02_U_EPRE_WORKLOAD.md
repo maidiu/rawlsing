@@ -219,3 +219,8 @@ Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receivin
 ### HQ same-source sourcefree acceptance, 2026-11-03
 
 `ea503425a6f3de29649b78587c7bcb0c2051b7ee`, independently accepted against review `771bc4ebd49759479d76386ba986e9a69146c607`: governed mixed workload/checkpoint/resume actual graph reaches M1/M2/R05 and unchanged P41. Cold fixed-seed identities match at measured scope. Branch capability only, not protected adoption or original-source issuance. Draft PR #646 and `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/CAMPAIGN_OUTCOME.md` contain exact scope, negatives, reuse and remaining authority dependencies.
+
+
+### PR646 sourcefree adoption — 2026-11-03
+
+User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c9817ea43d22b4e45ff`, remote verified. Reviewed production blobs unchanged. Actual single synthetic source checkpoint/resume -> M1/M2/R05 -> unchanged P41 chain is now PRE-MAIN sourcefree engineering capability. Sourcefree CI and both executable proof witnesses pass. Broad court retains 144 PASS/3 historical hash-pin FAIL on unchanged inputs; not full green. R09 D1/D4 host trust, original-source/science and higher-stage holds remain. Own PROGRAMMA branch records adoption; no implicit guide branch merge. Exact receipt: `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/RECEIVING_646/ADOPTION.json`.

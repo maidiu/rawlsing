@@ -149,11 +149,20 @@
       "remaining": "Qualified receiving procedure; R09 D1/D4 host/admin trust boundary held; F5/F6/F7, original35, N11/N12 and J52/W52 unchanged"
     },
     "receiving_pr": {
-      "state": "DRAFT_PR_OPEN_NOT_ADOPTED",
-      "url": "https://github.com/maidiu/rawlsing/pull/646",
-      "candidate": "ea503425a6f3de29649b78587c7bcb0c2051b7ee",
-      "base": "9809203fd915a84bae056a67210e9213879840db",
-      "authority": "Owner/CAS protected receiving remains separately required; no merge performed"
+      "transition_id": "PYAT-HQ-PR646-QUALIFIED-RECEIVING-20261103",
+      "observed_at_utc": "2026-11-03T15:27:06.768936+00:00",
+      "kind": "USER_AUTHORIZED_SOURCEFREE_ADOPTION",
+      "pr": "https://github.com/maidiu/rawlsing/pull/646",
+      "merge": "079e819f81d77857d6c39c9817ea43d22b4e45ff",
+      "candidate": "15c885eced6aca7b51277955c204c79dbb7dfbf8",
+      "reviewed_production": "ea503425a6f3de29649b78587c7bcb0c2051b7ee",
+      "independent_review": "771bc4ebd49759479d76386ba986e9a69146c607",
+      "adoption": "MERGED_PREMAIN_SOURCEFREE_ENGINEERING_ONLY",
+      "verified": "Direct remote HEAD and PR merge state; three relevant merged production blobs equal reviewed candidate",
+      "tests": "universal-sourcefree SUCCESS 41663325617; proof gate two executable witnesses PASS 41663325524; broader historical court144PASS/3unchanged hash-pinFAIL",
+      "packaging": "Two proof sidecars; test fixture fetches exact pinned P41 object if absent in shallow clone; production unchanged",
+      "native": "NO_ORIGINAL_SOURCE_SCIENCE_OR_N11_N12_ACCEPTANCE",
+      "remaining": "R09 D1/D4 host boundary still held; source/science/CONTEXT/cross-unit/temporal authority and Sorok/J52W52 holds unchanged; own PROGRAMMA branch publication does not imply guide-branch merge"
     }
   }
 }

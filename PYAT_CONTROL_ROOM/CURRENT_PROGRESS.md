@@ -1,3 +1,12 @@
+# Current HQ state — PR646 sourcefree receiving complete
+
+
+### PR646 sourcefree adoption — 2026-11-03
+
+User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c9817ea43d22b4e45ff`, remote verified. Reviewed production blobs unchanged. Actual single synthetic source checkpoint/resume -> M1/M2/R05 -> unchanged P41 chain is now PRE-MAIN sourcefree engineering capability. Sourcefree CI and both executable proof witnesses pass. Broad court retains 144 PASS/3 historical hash-pin FAIL on unchanged inputs; not full green. R09 D1/D4 host trust, original-source/science and higher-stage holds remain. Own PROGRAMMA branch records adoption; no implicit guide branch merge. Exact receipt: `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/RECEIVING_646/ADOPTION.json`.
+
+Earlier dated pending-adoption observations below are historical.
+
 # Current bounded campaign outcome
 
 Independently accepted sourcefree same-source chain; draft PR #646 awaits separately authorized protected receiving. R00 packaging and R09 D7 accepted locally; R09 D1/D4 host boundary remains held. Full exact outcome: `HQ_SOURCEFREE_ENGINEERING_20261103/CAMPAIGN_OUTCOME.md`. This is not original-source completion.

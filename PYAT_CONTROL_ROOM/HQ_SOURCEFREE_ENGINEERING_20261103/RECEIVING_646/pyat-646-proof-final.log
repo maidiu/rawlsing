@@ -1,0 +1,39 @@
+{
+  "examined_tests": [
+    "rawlsing_next/tests/test_universal_learned_consumer.py",
+    "rawlsing_next/tests/test_universal_workload_custody.py",
+    "rawlsing_next/tests/test_universal_world_binding.py"
+  ],
+  "witness_contracts_run": 2,
+  "receipts": [
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "R05_ACTUAL_E41_ROUTE_REACHES_SAME_LEARNED_CONSUMER",
+          "positive_node": "rawlsing_next/tests/test_universal_learned_consumer.py::test_product_graph_and_e41_extension_reach_same_consumer",
+          "fault_path": "rawlsing_next/pre553_learned_world_composition.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    },
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "ACTUAL_P41_DISTINCT_MODELED_TEMPORAL_PAIR_IS_CONSUMED",
+          "positive_node": "rawlsing_next/tests/test_universal_world_binding.py::test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair",
+          "fault_path": "rawlsing_next/pre553_universal_world_binding.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    }
+  ],
+  "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+}
