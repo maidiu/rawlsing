@@ -1,0 +1,207 @@
+{
+  "candidate_commit": "c8e0215f6f222eb7b09ef0a8d198b23f0780dac2",
+  "crosswalk": {
+    "codebook_names_exact": true,
+    "codebook_rows": 181,
+    "codebook_sha256": "8ad1af17b782d1ff3beb84c2d2331977195ac3bb48dbcc94a94a08ca725b288f",
+    "config_canonical": "R157-ARAB-SRC04-FULL-SOURCE-PREPARATION",
+    "config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+    "config_items": 181,
+    "config_physical_slots": 181,
+    "crosswalk_sha256": "034d626365249941618d66f6103a557209fce5d95362e3ddf77e29f2fe7fba23",
+    "directionality_rows": 181,
+    "directionality_sha256": "a071c8896a63a8fe7109a33159ba38dd870324169a1915331b45464cb152c039",
+    "directionality_status_counts": {
+      "CERTIFIED": 122,
+      "NOT_CERTIFIED": 59
+    },
+    "entries": 181,
+    "items_exact": true,
+    "items_order_exact": false,
+    "method": "EXACT_NAMES",
+    "names_exact": true,
+    "option_rows": 12160,
+    "option_sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15",
+    "ordinals_exact": true,
+    "unique_physical_names": true
+  },
+  "findings": {
+    "crosswalk_exact_181": true,
+    "downstream_missing_input": "R03 GrammarPolicy/authorized direction grant",
+    "first_genuinely_unresolved_input": "exact routing/eligibility and denominator/risk-set handoff for the bounded SRC04 slice (178 routing entries ROUTING_UNKNOWN; 178 unresolved risk-set refs)",
+    "form_repeat_estate_wide_absence": false,
+    "form_repeat_prior_bounded_resolution": "single SAV / no form or repeat variable; form_id=None, repeat_id=None is the exact bounded-slice shape",
+    "metadata_return_first_missing_classification": "REVISE: the return should not call form/repeat the first missing artifact for the prior bounded single-SAV slice; routing/risk-set is the first genuinely unresolved source input.",
+    "real_metadata_projection_distinct_from_fixture_release": true,
+    "routing_risk_exact": false
+  },
+  "prior_accepted_src04": {
+    "config_risk_set_unresolved": 178,
+    "config_routing_entries": 178,
+    "config_routing_unknown": 178,
+    "form_repeat_resolution": "single SAV/source-interview-row; no form or repeat variable; R03 form_id=None, repeat_id=None for the accepted bounded slice",
+    "release_ref": {
+      "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+    },
+    "routing_risk_resolution": "not resolved; accepted release keeps ROUTING_UNKNOWN and unresolved risk-set refs",
+    "routing_state": "ROUTING_UNKNOWN",
+    "selected_coordinate_slots": [
+      1,
+      2
+    ],
+    "selected_response_slots": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "slice_selected_response_slots": 42,
+    "slice_selection_path": "campaign_a_src04/evidence/SLICE_SELECTION.json",
+    "source_columns": 181,
+    "source_rows": 7337,
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "supported_form_slice": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE",
+    "supported_unit_slice": "SOURCE_INTERVIEW_ROW"
+  },
+  "replayed_receipt": {
+    "c11": {
+      "caller": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+      "coordinate_slots": 3,
+      "fixture_release": {
+        "caller": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+        "expected_validation_release_matches": true,
+        "fixture_config_id": "R157-ARAB-SRC04-NONRESPONDENT-FIXTURE",
+        "fixture_rows": 8,
+        "fixture_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+        "public_objects": 2880,
+        "release_ref": {
+          "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_FIXTURE_RELEASE/SRC04"
+        }
+      },
+      "original_source_read_performed": false,
+      "projection_ref": {
+        "content_hash": "60206b998f89711801fa689283c20a6589281b77575a5ab002ad7c8cf23a51a8",
+        "kind": "C11_SEMANTIC_PROJECTION",
+        "object_id": "urn:rawlsing:r157:original:SRC04:projection"
+      },
+      "projection_source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "questions": 178,
+      "respondents": 7337,
+      "response_slots": 178,
+      "routing_facts": 1305986
+    },
+    "path": "WORKER_RETURNS/PYAT-REAL-METADATA-INDEPENDENT-REVIEW/evidence/REPLAYED_RECEIPT.json",
+    "r03": {
+      "candidate_count": 178,
+      "candidate_scope": "item-only candidate keys; not accepted as exact occurrences",
+      "entrypoint": "rawlsing_next.universal_grammar.types.OccurrenceKey",
+      "execution_performed": false,
+      "form_exact": false,
+      "form_slice": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE",
+      "inventory_constructed": false,
+      "item_identity_available": true,
+      "policy_exact": false,
+      "repeat_exact": false,
+      "risk_set_unresolved_count": 178,
+      "route_exact": false,
+      "routing_unknown_count": 178,
+      "unique_candidate_count": 178
+    },
+    "sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283",
+    "source": {
+      "codebook": {
+        "columns": 15,
+        "rows": 181,
+        "sha256": "8ad1af17b782d1ff3beb84c2d2331977195ac3bb48dbcc94a94a08ca725b288f"
+      },
+      "column_count": 181,
+      "config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+      "config_id": "R157-ARAB-SRC04-FULL-SOURCE-PREPARATION",
+      "crosswalk_sha256": "034d626365249941618d66f6103a557209fce5d95362e3ddf77e29f2fe7fba23",
+      "directionality": {
+        "certification_status_counts": {
+          "CERTIFIED": 122,
+          "NOT_CERTIFIED": 59
+        },
+        "columns": 23,
+        "rows": 181,
+        "sha256": "a071c8896a63a8fe7109a33159ba38dd870324169a1915331b45464cb152c039"
+      },
+      "edition_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "family": "Arab Barometer",
+      "fixture_config_sha256": "7f69af5cfafe07123c211707df353b37da4e9375adfa6e55c5df42a930cfebaa",
+      "fixture_nonrespondent": true,
+      "fixture_sha256": "e02e85388de86aa0ce66fa37ac59a6d3071537ea514788a54baf3964cbb44353",
+      "option_authority": {
+        "columns": 71,
+        "rows": 12160,
+        "sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15"
+      },
+      "row_count": 7337,
+      "source_bytes": 1531099,
+      "source_config_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+      "source_id": "SRC04",
+      "validation_results_sha256": "c008704857b415e1a4515e55ae417097836fa37d628a0e521e9715d839fe5ee7",
+      "validation_status": "PASS",
+      "wave": "I"
+    }
+  },
+  "review_start_head": "3aa57b99a2cbef3ab9f55acc92b73670757a3028",
+  "schema": "PYAT_REAL_METADATA_INDEPENDENT_CHECKS@1.0.0",
+  "scope": {
+    "ci": false,
+    "fixture_only": true,
+    "merge": false,
+    "metadata_only": true,
+    "original_data": false,
+    "production_edit": false,
+    "sourcefree": true
+  },
+  "tests": {
+    "candidate_receipt_sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283",
+    "receipts_equal": true,
+    "replay_receipt_sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283"
+  }
+}

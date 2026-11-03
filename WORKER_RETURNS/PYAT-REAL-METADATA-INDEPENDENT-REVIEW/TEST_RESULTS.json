@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_REAL_METADATA_INDEPENDENT_TEST_RESULTS@1.0.0",
+  "candidate_commit": "c8e0215f6f222eb7b09ef0a8d198b23f0780dac2",
+  "review_start_head": "3aa57b99a2cbef3ab9f55acc92b73670757a3028",
+  "commands": [
+    "git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 archive c8e0215f6 rawlsing_next WORKER_RETURNS/PYAT-REAL-METADATA-BINDING | tar -x -C <snapshot>",
+    "git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 archive 056849e23 rawlsing_next/source_configuration rawlsing_next/pre553_source_read_admission.py source_pre553_validation/SRC04 | tar -x -C <snapshot>",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<snapshot> python3 <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/bind_real_metadata.py --package-root <snapshot> ...",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<snapshot> python3 -m pytest <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/test_metadata_binding.py -q -o addopts=''",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-REAL-METADATA-INDEPENDENT-REVIEW/check_metadata.py"
+  ],
+  "results": [
+    {
+      "command": "replay real metadata factory calls",
+      "status": "PASS",
+      "exit": 0,
+      "detail": "Replayed receipt is byte-identical to candidate receipt f2f30d55…; C11 metadata projection 60206b99…; fixture release 9026fa33… distinct."
+    },
+    {
+      "command": "replayed focused metadata tests",
+      "status": "PASS",
+      "passed": 4,
+      "failed": 0,
+      "detail": "4 passed in 0.03s."
+    },
+    {
+      "command": "exact crosswalk verification",
+      "status": "PASS",
+      "detail": "181 config/physical entries and 181 crosswalk entries share exact ordinals and names; crosswalk method EXACT_NAMES; codebook 181 rows; option authority 12,160 rows."
+    },
+    {
+      "command": "prior accepted SRC04 form/route check",
+      "status": "REVISE_RETURN_CLASSIFICATION",
+      "detail": "Accepted bounded single-SAV slice resolves form/repeat as null/not-applicable; routing remains ROUTING_UNKNOWN with 178 unresolved risk-set refs. Form/repeat is not an estate-wide absence."
+    }
+  ],
+  "positive": {
+    "replayed_receipt_sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283",
+    "candidate_receipt_sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283",
+    "receipts_equal": true,
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+    "config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+    "crosswalk_sha256": "034d626365249941618d66f6103a557209fce5d95362e3ddf77e29f2fe7fba23",
+    "codebook_sha256": "8ad1af17b782d1ff3beb84c2d2331977195ac3bb48dbcc94a94a08ca725b288f",
+    "directionality_sha256": "a071c8896a63a8fe7109a33159ba38dd870324169a1915331b45464cb152c039",
+    "option_authority_sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15",
+    "validation_results_sha256": "c008704857b415e1a4515e55ae417097836fa37d628a0e521e9715d839fe5ee7",
+    "c11_metadata_projection_ref": "60206b998f89711801fa689283c20a6589281b77575a5ab002ad7c8cf23a51a8",
+    "fixture_release_ref": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+    "fixture_source_sha256": "506d92179dcb76a3b1d5e0710d95472fa20313fcaf8b77cb6f548924c6e5d51b",
+    "fixture_rows": 8,
+    "original_source_read_performed": false
+  },
+  "prior_accepted_src04": {
+    "release_ref": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+    "selected_response_slots": 42,
+    "selected_coordinate_slots": [1, 2],
+    "supported_unit_slice": "SOURCE_INTERVIEW_ROW",
+    "supported_form_slice": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE",
+    "form_repeat_classification": "single-SAV/null form and repeat for bounded slice",
+    "routing_state": "ROUTING_UNKNOWN",
+    "routing_entries": 178,
+    "routing_unknown": 178,
+    "risk_set_unresolved": 178,
+    "first_genuinely_unresolved": "exact routing/eligibility and denominator/risk-set handoff",
+    "downstream_missing": "R03 GrammarPolicy/authorized direction grant"
+  },
+  "verdict": "REVISE",
+  "sourcefree": true,
+  "metadata_only": true,
+  "fixture_only": true,
+  "original_data": false,
+  "production_edit": false,
+  "merge": false,
+  "ci": false,
+  "adoption": false,
+  "limits": [
+    "Positive C11 metadata projection is source-metadata grade, not original empirical execution.",
+    "Fixture release is nonrespondent engineering evidence and is distinct from the metadata projection.",
+    "Form/repeat null resolution is scoped to the prior accepted single-SAV bounded slice.",
+    "Routing/risk-set and R03 policy remain unresolved."
+  ]
+}
