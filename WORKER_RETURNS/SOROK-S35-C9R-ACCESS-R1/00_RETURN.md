@@ -246,4 +246,13 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 ## 8. Publication
 
-Prior published base `67d5363870bf180515f59ced341b8cdffb0c755a` and repair commit `146f738ed5c087c8eac3ff17c7af93f375a98898` remain recorded. The new repair commit SHA and direct remote readback are recorded in `PUBLICATION_RECEIPT.json` after publication and returned in the final worker handback.
+Prior published base `67d5363870bf180515f59ced341b8cdffb0c755a` and prior repair commit `146f738ed5c087c8eac3ff17c7af93f375a98898` remain recorded. New repair commit `08569b7481aec4f81b83b35f0099c1f5e9bb012a` was pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
+
+```text
+git rev-parse HEAD
+08569b7481aec4f81b83b35f0099c1f5e9bb012a
+git ls-remote origin refs/heads/codex/sorok-s35-c9r-access-r1
+08569b7481aec4f81b83b35f0099c1f5e9bb012a  refs/heads/codex/sorok-s35-c9r-access-r1
+```
+
+`PUBLICATION_RECEIPT.json` records that repair push and readback. The staged `.s35-sources` input was not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
