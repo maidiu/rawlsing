@@ -1,6 +1,6 @@
 # SOROK S35 — sourcefree actor-access bridge into the pinned C9R consumer
 
-**RESULT:** `S35_REVISE_REPAIRED__A_LOCAL_PERCEPTION_AND_A_OWNED_ACTION_RECEIPTS_EXPLICIT__NO_B_OPERATION_DEFAULT__TYPED_HOLDS_FOR_UNAVAILABLE_ACTUAL_A_INPUT__CONTROLLED_EVIDENCE_SEPARATELY_GRADED__CONSUMER_INPUTS_VALIDATED__PUBLIC_RECEIPT_PRIVACY__51_OF_51_TESTS__ZERO_TARGET_PROPOSALS__NATIVE_HOLD`.
+**RESULT:** `S35_REVISE_REPAIRED_AGAIN__PUBLIC_SOURCE_PROJECTION__PRIVATE_WORLD_CUSTODY__NO_ACTION_CLOCK_VALIDATED__UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL__FRESH_PROCESS_COLD_REPLAY__55_OF_55_TESTS__ZERO_TARGET_PROPOSALS__NATIVE_HOLD`.
 
 This is one isolated TEST_ONLY engineering bridge. It is not a native CAN008/CAN011 rule, not an issued target grant, not ADP/C8/C12 authority, not acquired-practice science and not a new engine. It writes only inside `WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/**`.
 
@@ -10,9 +10,10 @@ This is one isolated TEST_ONLY engineering bridge. It is not a native CAN008/CAN
 - Base commit: `4170fbf19a9d5a64bc728f5b22156bbffcec51e5`.
 - Branch: `codex/sorok-s35-c9r-access-r1`.
 - Exclusive worktree: `/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1`.
-- Repair scope: only the S35 REVISE findings at prior evidence commit `e1cea3f03555dd96d5b78dd0d8833e993e87ae5a`; no unrelated changes.
+- Prior publication base: `67d5363870bf180515f59ced341b8cdffb0c755a`.
+- Repair scope: only the S35 REVISE findings; no unrelated changes.
 - Role: one bounded sourcefree implementation engineer; not HQ, original CAN/ADP/science issuer, protected C8/C11/C12/native owner, or independent reviewer.
-- Host: macOS, Python 3.11.3, pytest 9.1.1, SQLite local. No Codex, no subagent, no external provider/browser/model call.
+- Host: macOS, Python 3.11.3, pytest 9.1.1, SQLite local. No Codex, no subagent, no external provider/browser/model call, no outside checkout or extra worktree.
 - `.s35-sources/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1` is a read-only staged input. It is not staged in this commit.
 
 Pinned sources actually used:
@@ -41,46 +42,38 @@ native zero-positive guard   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac48
 
 The C9R files are used from the pinned staged cut. `candidate.pipeline.evaluate_response` is replaced in-process by the S35 selector adapter; the pinned pipeline source itself is not edited. The selector is bypassed when no S35 context is present, so the legacy path remains the pinned one.
 
-## 2. Repair of the scoped REVISE findings
+## 2. Repair of this scoped REVISE
 
-### 2.1 Explicit A-local perception and A-owned action receipts
+### 2.1 Public projection; private world custody
 
-- `bridge/access.py` now accepts two sealed TEST_ONLY receipts, not inferred witnesses:
-  - `S35_A_LOCAL_PERCEPTION_RECEIPT@1`: `perception_ref`, A actor, exact E1 event id/hash, C12 root/branch/clock binding, `perceived_at`, `access_status`, owner, grade and revocation.
-  - `S35_A_OWNED_ACTION_OCCURRENCE@1`: `action_ref`, A actor, exact E1 event id/hash, C12 root/branch/clock binding, `action_kind`, explicit `performed`, `action_time`, owner, grade and revocation.
-- Neither receipt is generated from B's operation. The bridge does not use `SHARE_TOOL`/`REFUSE_TOOL` to choose access status, action kind or `performed`.
-- Missing actual A input is a typed hold:
-  - no perception receipt -> `A_LOCAL_PERCEPTION_HOLD` / `ACTUAL_A_LOCAL_PERCEPTION_UNAVAILABLE`;
-  - access receipt present but no action receipt -> `A_OWNED_ACTION_HOLD` / `ACTUAL_A_OWNED_ACTION_UNAVAILABLE`.
-- A `QUALIFIED_ACTUAL_A_INPUT` claim without an owner resolver is also a typed hold; a resolver rejection is `A_LOCAL_PERCEPTION_UNVERIFIED` or `A_OWNED_ACTION_UNVERIFIED`.
-- Explicit controlled evidence is accepted only as `evidence_grade=TEST_ONLY_CONTROLLED_FIXTURE`, `actual_actor_input=false`, `qualification=CONTROLLED_ENGINEERING_EVIDENCE_NOT_ACTUAL_A_INPUT`. The positive P1 is controlled evidence, not actual A input.
+- Added `S35_PUBLIC_B_SOURCE_PROJECTION@1` and `public_source_projection(source)`.
+- Public projection contains only `source_commitment`, `b_actor`, `b_to_actor`, `b_clock`, `operation_disclosed=false`, `native=false`. It contains no `b_owner`, no `b_event_ref`, no `b_event_hash` and no `b_operation`.
+- `world.json` is explicitly private custody: `custody.grade=PRIVATE_TEST_ONLY_WORLD_INPUT`, with the full source and case preimage inside `custody`.
+- The public run manifest and C12 episode carry `source_binding` equal to the public projection and `private_custody_ref=world.json`.
+- Public-value privacy is recursively checked over S35 receipts, run manifests and C12 episode bodies. Tokens checked include `SHARE_TOOL`, `REFUSE_TOOL`, `TEST_ONLY_OWNER_share`, `TEST_ONLY_OWNER_refuse`, `TEST_ONLY_EVENT_share` and `TEST_ONLY_EVENT_refuse`.
+- The only later source distinction retained publicly is the opaque `source_commitment`, not B's owner or event identifier value.
 
-### 2.2 Public-value privacy
+### 2.2 No-action clock validation
 
-- The S35 receipt no longer contains B's operation in any key or value. Public source refs are A-local/A-owned names only.
-- The C12 episode and run summary were sanitized to carry `source_binding` (`b_actor`, `b_owner`, `b_event_ref`, `b_event_hash`, `b_to_actor`, `b_clock`) and no `b_operation` value.
-- `public_privacy_error` recursively scans S35 receipts, run manifests and C12 episode bodies for `SHARE_TOOL`/`REFUSE_TOOL`; the evidence generator and cold replay both assert this.
-- The only later source difference retained in C12 is the opaque B event ref/hash, not B's private operation.
+- `ACTION_TIME_INVALID` now applies to every action receipt, including `performed=false` / `NO_OBSERVED_ACTION`.
+- A no-action receipt with `action_time=-1` or `action_time > clock` refuses before any C9 database exists.
+- Performed actions additionally require `action_time >= perceived_at` and `action_time >= event_time`.
 
-### 2.3 Actual consumer argument validation
+### 2.3 Unresolved owner evidence
 
-`pipeline_selector` now compares the actual consumer call against the preflight causal readset before returning the prepared response:
+- Qualified actual-grade evidence without an owner resolver remains a typed hold.
+- The hold receipt is `evidence_grade=ACTUAL_A_INPUT_UNAVAILABLE`, `actual_actor_input=false`, `qualification=UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL`. It is never represented as qualified or actual.
+- Resolver rejection paths are tested:
+  - perception resolver false -> `A_LOCAL_PERCEPTION_UNVERIFIED`, no commit;
+  - perception resolves but action resolver false -> `A_OWNED_ACTION_UNVERIFIED`, no commit.
+- No actual A producer is claimed; no actual positive is asserted from a resolver test double.
 
-- `rule_lookup` status/id/version/content hash/authority/issuer/grade/reason;
-- `event_ref`, `subject`, `event_time`;
-- `conditioning_readset`, `material_eligible`, `eligible_material_refs`;
-- `actor_history_refs`, `other_person_offer_ref`, `material_opportunity_ref`;
-- `prior_response_count`.
+### 2.4 Fresh-process cold replay and non-mutating verification
 
-Any mismatch raises `S35_CONSUMER_INPUT_MISMATCH:<field>` and the prepared response is not used. With no S35 context, the selector delegates to the pinned `evaluate_response`; the legacy delegation is executed and compared in evidence.
-
-### 2.4 Causal cuts, forgeries and cold replay
-
-- Same-world perception cut: controlled `NOT_WITNESSED` -> `UNKNOWN_RECEIVABILITY`; restore `ACCESSIBLE` -> positive.
-- Same-world action cut: missing A action receipt -> `A_OWNED_ACTION_HOLD`; explicit `NO_OBSERVED_ACTION` -> `RECEIVABLE_NO_OBSERVED_UPTAKE`; restore performed `REQUEST_TOOL` -> positive.
-- Forged A receipts: wrong actor/event/root/branch/clock, invalid status/kind, missing ref, foreign owner, broken seal/source hash, revocation, controlled-grade actual-claim and native claim all refuse before any C9 database is created.
-- Consumer-argument negatives: all nine mutated inputs reject with `S35_CONSUMER_INPUT_MISMATCH:<field>`.
-- Cold replay: C9 response/receipt rows, zero target tables, C12 root/branch/clock and the S35 receipt episode all revalidate after close.
+- `bridge/readback.py` now reads both C9 and C12 through read-only SQLite URIs; no `C12Store` write-capable object is opened during verification.
+- `tools/cold_replay.py` runs cold verification in a fresh Python process, hashes `world.json`, `c12.sqlite`, `c9.sqlite`, `run.json` and `s35_receipt.json` before and after, and reports `store_mutated`.
+- Evidence records a fresh process (`fresh_process=true`) with `store_mutated=false` and identical before/after hashes.
+- The in-process cold test also asserts byte-identical store files before and after `cold_verify`.
 
 ## 3. Exact execution evidence
 
@@ -90,20 +83,21 @@ Commands actually run:
 PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider \
   WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/tests \
   --junitxml=WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/s35_full.xml
-# 51 passed, exit 0
+# 55 passed, exit 0
 
 PYTHONDONTWRITEBYTECODE=1 python3 -B \
   WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/tools/capture_evidence.py
 # vectors=12, foreign perception refusals=19, foreign action refusals=16,
-# cold_all_ok=true, consumer_all_negative=true, legacy delegation all equal,
-# fault trials perception PASS/RED/PASS and action PASS/RED/PASS
+# cold_all_ok=true, consumer_all_negative=true,
+# fresh_process_cold_replay_ok=true, store_mutated=false,
+# legacy delegation all equal, fault trials PASS/RED/PASS for both gates
 ```
 
 Evidence files:
 
 - `evidence/test_run.txt` — exact pytest transcript.
-- `evidence/s35_full.xml` — JUnit, 51 tests, 0 failures/errors/skips.
-- `evidence/s35_evidence.json` — vectors, same-world bindings, fault trials, foreign/forged refusals, consumer binding, public privacy, cold replay, source manifest and file hashes.
+- `evidence/s35_full.xml` — JUnit, 55 tests, 0 failures/errors/skips.
+- `evidence/s35_evidence.json` — vectors, same-world bindings, fault trials, foreign/forged refusals, consumer binding, public projection, no-action clock, qualified-owner paths, fresh-process cold replay, public privacy and source manifest.
 
 ### P1 controlled positive
 
@@ -111,23 +105,24 @@ Evidence files:
 B source event hash (M35 share)  16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486
 C8 state digest                  e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb
 E1 event                         TEST_ONLY_BP2_E1_OCC-0001
-E1 hash                          442c6222dd8fbd7202707cea6767f4bbeae0c56a426c66d60a7bb4e2974dcf48
+E1 hash                          65f90f6dea1789666932550c7190efb6899c9fc1c79e3004a576ae755621949a
 C12 root / branch                root / s35
 root branch hash                 602e191a79c713d4dd3ec7ba93caf7d7b6ee7db0fb17e2b673b23ca40abb0dc6
 root state hash                  406a019d868884a1797c44e59b3bf9a2bb3547afc0b46fe0695e3938ef78573d
 branch hash                      2f7016268ff5ed9a73075ed0c25c0d5bd5ac072a2356f68980633ae266f35523
 branch fork / frame clock        242 / 244
 actor                            TEST_ONLY_BP1_R26V_ACTOR_A
-perception ref / hash            TEST_ONLY_A_PERCEPTION_P1 / 21d96f0b2c99f060bfbe433cae821ea2a845b71fc5ead5d77dc6121aae281681
-action ref / hash                TEST_ONLY_A_ACTION_P1 / a48372518b36176b1b5cc0353b71108372db806f3dfa23cbdb8e8f46e3c5d313
+perception ref / hash            TEST_ONLY_A_PERCEPTION_P1 / 7d1416525aab3ddba7d8e74c52cace6c31c247fa0bbff745b31acfc99bcf0b84
+action ref / hash                TEST_ONLY_A_ACTION_P1 / 1c7ee9be0eb8a7926be254deb24668eec24e298c6bf8552b0f5c0a246ea0cefa
 action kind / performed          REQUEST_TOOL / true (explicit controlled receipt)
 evidence grade                   TEST_ONLY_CONTROLLED_FIXTURE
 actual actor input               false
 qualification                    CONTROLLED_ENGINEERING_EVIDENCE_NOT_ACTUAL_A_INPUT
+public source projection         source_commitment 7f5a08b2e7f0d482092a92a66261aaa560959fd169188408fa35ffe434561eec
 S35 outcome                      OBSERVED_IMMEDIATE_OBJECT_ORIENTATION
-S35 receipt hash                 bc8c24f00b615d34bf309a1385f998d1e04b7159d072ac7f6aea141c821fcf17
-C9 response row hash             586095c0d7757e5ad6218cfa6fa47d65ad21b3fa4ab1e51dcf49173071e1348b
-C9 commit receipt hash           142847d46ddfe0d9b0f4eb524008dfebd664a2634158f87b1003d0d601801f67
+S35 receipt hash                 95fc2fd9e014a2ac8493c2d118de220049a55d50f9a9727cf6b0af539775dea2
+C9 response row hash             e69df052504c9e30654c8bbe17023ff4b3f3ba5f5f7714db963039b70e5202be
+C9 commit receipt hash           84eef548f708e0746c6aca858565d6706f11f962be8ccc1ab03963422be675cd
 CAN011                           NO_CHANGE / NO_PROPOSAL, target id ""
 target rows                      0
 objective material eligible      true
@@ -148,46 +143,52 @@ objective implies uptake         false
 | `action-restored` | controlled ACCESSIBLE + performed action | `OBSERVED_IMMEDIATE_OBJECT_ORIENTATION` | controlled | `RESPONSE_COMMITTED` | `NO_CHANGE/NO_PROPOSAL` | 0 |
 | `contradictory` | controlled ACCESSIBLE + bound contradictory project | `AMBIGUOUS_CONTRADICTORY` | controlled | `RESPONSE_EFFECTS_VALID_EMPTY` | `NO_CHANGE/NO_PROPOSAL` | 0 |
 
-Access fault kept objective material `eligible=true`; the positive response disappeared anyway. The action fault kept access `ACCESSIBLE`; the positive response disappeared anyway. Fault trials on the same assertion:
+Fault trials on the same assertion:
 
 ```text
 a-local perception gate  PASS -> RED -> PASS
 a-owned action gate      PASS -> RED -> PASS
 ```
 
-### REFUSE_TOOL and public surface
+### No-action clock and qualified-owner paths
 
-| Run | B source | A action kind | S35 outcome | CAN011 | Target rows |
-|---|---|---|---|---|---|
-| `refuse` | M35 `REFUSE_TOOL` | `EXPLICIT_REFUSAL` | `OBSERVED_CURRENT_REFUSAL` | `NO_CHANGE/NO_PROPOSAL` | 0 |
-| `share-explicit-refusal` | M35 `SHARE_TOOL` | `EXPLICIT_REFUSAL` | `OBSERVED_CURRENT_REFUSAL` | `NO_CHANGE/NO_PROPOSAL` | 0 |
+```text
+no-action action_time=-1  -> REFUSED / ACTION_TIME_INVALID, no C9 database
+no-action action_time>clock -> REFUSED / ACTION_TIME_INVALID, no C9 database
+qualified owner unresolved hold -> ACTUAL_A_INPUT_UNAVAILABLE,
+  actual_actor_input=false, qualification=UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL
+qualified perception resolver false -> A_LOCAL_PERCEPTION_UNVERIFIED, no commit
+qualified action resolver false -> A_OWNED_ACTION_UNVERIFIED, no commit
+no actual A producer or actual positive is claimed
+```
 
-The public S35 receipt has no B operation in any value. B's operation is retained only in the internal M35 world input; C12 carries the opaque B event ref/hash and no `b_operation`.
+### Public projection, privacy and cold replay
+
+- `world.json` private custody: `PRIVATE_TEST_ONLY_WORLD_INPUT`; full source operation is present only there.
+- `public_projection` has no `b_owner`, `b_event_ref`, `b_event_hash` or `b_operation`; `operation_disclosed=false`.
+- Public privacy is true for every S35 receipt, run manifest and C12 episode; no owner/event share/refuse tokens are present in public values.
+- Fresh-process cold replay: `fresh_process=true`, `store_mutated=false`, before/after hashes identical for `world.json`, `c12.sqlite`, `c9.sqlite`, `run.json` and `s35_receipt.json`.
+- In-process cold verification also leaves the same files byte-identical.
 
 ### Forged/foreign refusals and consumer negatives
 
-- 19 perception mutations and 16 action mutations refuse before any C9 database exists: root/branch/actor/event/clock binding, owner, status/kind, time, revocation, grade, actual-claim, native-claim and broken seal/source hash.
-- Qualified actual-grade input without an owner resolver is a typed hold; resolver rejection is `A_LOCAL_PERCEPTION_UNVERIFIED`.
+- 19 perception mutations and 16 action mutations refuse before any C9 database exists.
+- Source-hash mismatches refuse `PERCEPTION_SOURCE_HASH_MISMATCH` / `ACTION_SOURCE_HASH_MISMATCH`.
 - All nine consumer-argument mutations reject with `S35_CONSUMER_INPUT_MISMATCH:<field>`: rule_lookup, event_time, conditioning_readset, material_eligible, eligible_material_refs, actor_history_refs, other_person_offer_ref, material_opportunity_ref, prior_response_count.
 - Legacy no-context delegation is exercised: `candidate.pipeline.evaluate_response` matches `candidate.evaluate_response` on status, reason, proposals, receipt hash and route.
-
-### Public privacy and cold replay
-
-- `public_value_privacy` is true for all share vectors, the refuse vector, all run manifests and all C12 episodes.
-- Cold replay is green for positive, holds, access/action faults, restoration, contradictory, history, refusal, qualified hold/refusal and source-hash mismatch runs.
-- The C9 `target_state` and `target_journal` tables are empty in every committed run.
 
 ### Source/custody hashes
 
 ```text
 install.py                         8e194dcf2de4049bf074c5457800db65d4193b34e8e89a763ef0231c377fb5dd
-bridge/access.py                   1040ae13cb5942bdf54cb2e62fda30cfb84bf4e1a35debb277df42fa9b37ab77
-bridge/world.py                    0a13fae99239fbe57783752972c11a51e5867fdd50c5ab4192b62028f312a63f
-bridge/readback.py                 81d12609c1ada8058a24d3d0eafc9b98d71bd766305808a5832650f9387e4719
-tests/test_s35_access_bridge.py    a808dd34ff24173a312cb014e19f1e6a817c748c36c019617a28f427c8498296
-tools/capture_evidence.py          8eeca8645cf06ae9e1bbade507a82c8cf4457a602b2aac41d989d10530318825
-evidence/test_run.txt              99fee59f52769f019fce9631a3326579bac4c7cce0746ad02a0ab2c4eb7465ae
-evidence/s35_full.xml              9c83f4979462ed69455d58f5f4701cb3c1517c6e40a6dac4cbfb3e81eaafd8f4
+bridge/access.py                   3febc8d7861dc5e3a2e1350ba4438a8a357bb175bc78e57cf389da466df0db2b
+bridge/world.py                    7077ee3105d8c6488b619bfc2f60c39d2490da7166b254350e8dfad845f8746f
+bridge/readback.py                 e291ca5bd200ba582f357766b4f290be5c852b37f4cc16a855fc84e8e8f5175f
+tests/test_s35_access_bridge.py    9cbb93221d4c8e13472eb9d10eab233cae531ed1031891647d9c40fe046b2179
+tools/capture_evidence.py          104376ad40bf43a22879e1fd2da791061e0772ed5ba7ae058d11ea523307f3d1
+tools/cold_replay.py               a374e53d8926757959f0ab8da92a2f3ead55f73cf3a24b26dcc5dfc3c4f0ad59
+evidence/test_run.txt              6fcfa26022199a744ad0f6fecf403673396a5a5772458b65fa9734d0bb908650
+evidence/s35_full.xml              ace2c42b58271ad3dcf618714c4ffe842ac8f71f657d964e83630e9e4594c238
 ```
 
 Install-verified pinned SHA-256:
@@ -205,21 +206,21 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 | FINDING | INTERPRETATION AND RIVAL | HQ ACTION | COMPETENT OWNER |
 |---|---|---|---|
-| **F1 — The repair removes invented A input.** A positive now requires an explicit sealed A-local perception receipt and an explicit sealed A-owned action occurrence receipt; `performed` is a receipt field, not a constructor constant. Missing actual input is a typed hold. | Rival: a controlled fixture is close enough to actual actor input. The bridge marks it `TEST_ONLY_CONTROLLED_FIXTURE`, `actual_actor_input=false`, and the default path holds. | Keep controlled evidence separately graded; do not call it actual A input. | S35 engineering + ADP017/ADP019 owner |
-| **F2 — Public receipts no longer carry B's private operation.** Source refs, action refs and C12/run public values are clean; only the opaque B event ref/hash remains. | Rival: removing keys but leaving operation-bearing values is enough. The recursive privacy scan rejects the old value leak. | Preserve public-value privacy on any later consumer. | S35 engineering + C12 owner |
-| **F3 — The selector now validates the actual consumer readset.** A prepared response cannot be used if rule lookup, event time, conditioning, material, history or offer inputs differ from the qualified preflight. Legacy no-context delegation is preserved. | Rival: matching output shape proves consumer correctness. The consumer-argument negatives and legacy delegation falsify that. | Keep the validation at the actual consumer call site. | C9R consumer owner + S35 engineering |
-| **F4 — Objective availability, A perception and A action remain distinct.** Access fault with eligible material becomes `UNKNOWN_RECEIVABILITY`; action fault with accessible material becomes `A_OWNED_ACTION_HOLD`; restore returns the positive. | Rival: material eligibility or B's operation determines A's response. The same-world cuts and restore falsify that. | Do not infer psychology, motive or learned practice. | S35 science owner + CAN008 issuer |
-| **F5 — Targetless commit remains real.** The pinned `evaluate_target(proposal=None)` route stays `NO_CHANGE/NO_PROPOSAL`; target tables and cold replay confirm no ghost target. | Rival: the hold/valid-empty path is only a shape test. The named C9 response/receipt assertions and zero target rows are the behavioral evidence. | Preserve; native CAN011 remains unissued. | C9/CAN011 owner + C12 consumer owner |
+| **F1 — Public owner/event identifiers are projected away.** Private custody remains in `world.json`; public run/C12 values carry only an opaque source commitment plus neutral actor/clock fields. | Rival: removing the literal operation token is sufficient. The old `TEST_ONLY_OWNER_share` / `TEST_ONLY_EVENT_refuse` identifier values falsify that. | Keep the public projection for any later consumer. | S35 engineering + C12 owner |
+| **F2 — No-action clocks are validated.** A no-action receipt with `action_time=-1` or beyond the frame refuses before C9, not commits. | Rival: performed-only time validation is enough. The no-action negative-clock test falsifies that. | Preserve the all-branches clock check. | S35 engineering + C12 clock owner |
+| **F3 — Unresolved owner evidence is not actual/qualified.** Holds are `ACTUAL_A_INPUT_UNAVAILABLE` with `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL`; resolver false paths refuse. | Rival: a qualified receipt remains qualified while held. The hold receipt grading falsifies that. | Do not promote unresolved owner evidence. | ADP017/ADP019 owner + S35 engineering |
+| **F4 — Verification is non-mutating and fresh-process replayable.** C9/C12 are opened read-only; fresh process hashes before/after and reports no mutation. | Rival: in-process replay could reuse warm state. The fresh PID/process and identical hashes falsify that. | Preserve read-only verification and cold replay evidence. | S35 engineering + C12 custody owner |
+| **F5 — Controlled positives, targetless outcomes and prior negatives remain.** P1 is controlled evidence, CAN011 stays `NO_CHANGE/NO_PROPOSAL`, target tables stay empty, and all prior foreign/consumer/legacy negatives stay green. | Rival: the privacy/clock repair loosened the prior bridge. The 55-test and evidence reproduction falsify that. | Keep native authority held. | C9/CAN011 owner + C12 consumer owner |
 
 ## 5. Courts and disposition
 
 | Court | Grade |
 |---|---|
-| **ENGINEERING** | `ACCEPT_SCOPED_SOURCEFREE_ACTOR_ACCESS_BRIDGE_REPAIR__EXPLICIT_PERCEPTION_ACTION_RECEIPTS__CONSUMER_INPUT_VALIDATION__PUBLIC_PRIVACY__51_OF_51_TESTS__ZERO_TARGETS__COLD_REPLAY` — author evidence only, not independent adoption. |
+| **ENGINEERING** | `ACCEPT_SCOPED_SOURCEFREE_ACTOR_ACCESS_REPAIR__PUBLIC_PROJECTION__NO_ACTION_CLOCK__UNRESOLVED_OWNER_HOLD__FRESH_PROCESS_COLD_REPLAY__55_OF_55_TESTS__ZERO_TARGETS` — author evidence only, not independent adoption. |
 | **SCIENTIFIC** | `TEST_ONLY_CONTROLLED_FIXTURE_ORIENTATION_ONLY__ACTUAL_A_INPUT_UNAVAILABLE__NO_ACQUIRED_PRACTICE__H0_LIVE`. |
 | **AUTHORITY** | `HOLD` — no native CAN008/CAN011 rule, no grant, no ADP017/ADP019 owner receipt, no C8 native custody, no C11/C12 native consumer, no Pyat N11/N12, no human A5. |
 
-**DONE:** REVISE findings repaired; explicit sealed A-local perception and A-owned action receipts; no B-operation defaults; typed holds for unavailable actual A input; controlled evidence separately graded; public-value privacy; actual consumer rule_lookup/event/conditioning/material/history/offer validation; legacy no-context delegation; causal cuts/restoration; forged A receipt and consumer-argument negatives; public privacy; cold replay; zero target proposals; empty production registries.
+**DONE:** public projection and private world custody; no owner/event identifier leak; no-action clock validation; unresolved owner evidence held as unavailable/not actual; resolver false paths; fresh-process cold replay; non-mutating verification; controlled positives; zero target proposals; prior foreign/consumer/legacy negatives preserved.
 
 **REMAINING:** independent reverify of this exact repair; actual qualified A-local perception and A-owned action owner receipts; native CAN008/CAN011 issuer and grant; native C8/C11/C12 custody; H1 empirical acquisition study; human A5.
 
@@ -231,8 +232,8 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 ## 6. Limits / NOT_RUN
 
-- Only this return's 51 focused tests and the evidence generator were run. No 444-file corpus rebuild, no M35/DEV-R/JOIN-E/staged-input edits.
-- The positive P1 is explicitly controlled TEST_ONLY evidence, not actual A input. Actual qualified A-local perception and A-owned action occurrence/receipt are NOT_RUN; default/absent actual input is a typed hold.
+- Only this return's 55 focused tests and the evidence generator were run. No corpus rebuild, no M35/DEV-R/JOIN-E/staged-input edits.
+- The positive P1 is explicitly controlled TEST_ONLY evidence, not actual A input. Actual qualified A-local perception and A-owned action occurrence/receipt are NOT_RUN; absent actual input is a typed hold.
 - The C9R consumer is the pinned code; only its in-process `evaluate_response` name is pointed at the S35 selector. `candidate.pipeline.py` bytes are unchanged and hash-verified.
 - All witnesses, C8/E1/C12 records, response receipts and target decisions are TEST_ONLY sourcefree. A sealed TEST_ONLY receipt proves local integrity, not issuer authenticity.
 - No native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, original source rights, human A5, production activation or external model/browser call.
@@ -241,17 +242,8 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 ## 7. PROGRAMMA_DELTA
 
-`PROGRAMMA_DELTA:` S35 now has a repaired TEST_ONLY sourcefree actor-access bridge that requires explicit sealed A-local perception and A-owned action occurrence receipts (never B-operation defaults or constructor `performed=True`), returns exact typed holds when actual A input is unavailable, keeps controlled fixture positives separately graded, validates the actual C9R consumer rule/time/conditioning/material/history/offer inputs, removes B's private operation from public receipt values and C12/run public values, and still commits `NO_CHANGE/NO_PROPOSAL` with zero target proposals; exact limits: actual qualified A input, native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, H1 acquired practice and human A5 remain NOT_RUN/HOLD.
+`PROGRAMMA_DELTA:` S35 now keeps B owner/event identifiers and operation in private `world.json` custody and publishes only an opaque source commitment; validates no-action clocks as strictly as performed-action clocks; holds unresolved owner evidence as `ACTUAL_A_INPUT_UNAVAILABLE` / `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL` rather than actual or qualified; demonstrates fresh-process cold replay with byte-identical, non-mutating read-only verification; and preserves controlled positives, zero target proposals and all prior negatives, with exact limits: actual qualified A input, native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, H1 acquired practice and human A5 remain NOT_RUN/HOLD.
 
 ## 8. Publication
 
-The prior evidence commit `e1cea3f03555dd96d5b78dd0d8833e993e87ae5a` and its ordinary-push readback remain recorded. Repair commit `146f738ed5c087c8eac3ff17c7af93f375a98898` was pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
-
-```text
-git rev-parse HEAD
-146f738ed5c087c8eac3ff17c7af93f375a98898
-git ls-remote origin refs/heads/codex/sorok-s35-c9r-access-r1
-146f738ed5c087c8eac3ff17c7af93f375a98898  refs/heads/codex/sorok-s35-c9r-access-r1
-```
-
-`PUBLICATION_RECEIPT.json` records that repair push and readback. The staged `.s35-sources` input was not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
+Prior published base `67d5363870bf180515f59ced341b8cdffb0c755a` and repair commit `146f738ed5c087c8eac3ff17c7af93f375a98898` remain recorded. The new repair commit SHA and direct remote readback are recorded in `PUBLICATION_RECEIPT.json` after publication and returned in the final worker handback.

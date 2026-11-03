@@ -10,7 +10,6 @@ from install import install
 
 install()
 
-from bp4.store import C12Store
 from candidate import digest, valid
 
 from .access import public_privacy_error
@@ -60,6 +59,51 @@ def read_c9(path: str | Path) -> dict:
         "target_state": target_state,
         "target_journal": target_journal,
         "clocks": clocks,
+    }
+
+
+def read_c12(path: str | Path) -> dict:
+    path = Path(path)
+    connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    try:
+        branches = {}
+        for row in connection.execute(
+            "SELECT branch_id,parent_branch_id,fork_clock,root_hash,root_counts,"
+            "created_clock,actor_ids FROM branch ORDER BY branch_id"
+        ):
+            branches[str(row[0])] = {
+                "branch_id": row[0],
+                "parent_branch_id": row[1],
+                "fork_clock": row[2],
+                "root_hash": row[3],
+                "root_counts": json.loads(row[4] or "{}"),
+                "created_clock": row[5],
+                "actor_ids": json.loads(row[6]),
+            }
+        checkpoints = {}
+        for row in connection.execute(
+            "SELECT branch_id,state FROM checkpoint ORDER BY branch_id,seq"
+        ):
+            checkpoints.setdefault(str(row[0]), []).append(json.loads(row[1]))
+        episodes = {}
+        for row in connection.execute(
+            "SELECT branch_id,body FROM episode ORDER BY branch_id,seq"
+        ):
+            episodes.setdefault(str(row[0]), []).append(json.loads(row[1]))
+        last_clock = {}
+        for table in ("episode", "world_event", "checkpoint"):
+            for row in connection.execute(
+                f'SELECT branch_id, max(clock) FROM "{table}" GROUP BY branch_id'
+            ):
+                key = str(row[0])
+                last_clock[key] = max(last_clock.get(key, 0), int(row[1] or 0))
+    finally:
+        connection.close()
+    return {
+        "branches": branches,
+        "checkpoints": checkpoints,
+        "episodes": episodes,
+        "last_clock": last_clock,
     }
 
 
@@ -153,6 +197,14 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
     )
     checks["receipt_public_privacy"] = not public_privacy_error(s35_receipt)
     checks["run_public_privacy"] = not public_privacy_error(run)
+    checks["run_private_custody_ref"] = run.get("private_custody_ref") == "world.json"
+    checks["world_private_custody_grade"] = (
+        (world.get("custody") or {}).get("grade")
+        == "PRIVATE_TEST_ONLY_WORLD_INPUT"
+    )
+    checks["world_public_projection_privacy"] = not public_privacy_error(
+        world.get("public_projection") or {}
+    )
     checks["response_row_public_privacy"] = not public_privacy_error(response_body)
     checks["c9_receipt_public_privacy"] = not public_privacy_error(receipt_body)
     grade = s35_receipt.get("evidence_grade")
@@ -173,6 +225,13 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
         (outcome in {"A_LOCAL_PERCEPTION_HOLD", "A_OWNED_ACTION_HOLD"})
         == bool(hold_reason)
     )
+    if hold_reason.startswith("QUALIFIED_"):
+        checks["unresolved_hold_not_actual"] = (
+            grade == "ACTUAL_A_INPUT_UNAVAILABLE"
+            and actual is False
+            and s35_receipt.get("qualification")
+            == "UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL"
+        )
     if outcome not in {"A_LOCAL_PERCEPTION_HOLD", "A_OWNED_ACTION_HOLD"}:
         checks["perception_ref_present"] = bool(s35_receipt.get("perception_ref"))
     if outcome in {
@@ -182,75 +241,75 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
     }:
         checks["action_ref_present"] = bool(s35_receipt.get("action_ref"))
 
-    c12 = C12Store(world_root / "c12.sqlite")
-    try:
-        root_branch = c12.branch("root")
-        branch = c12.branch("s35")
-        root_state = c12.checkpoints("root")[-1]
-        checks["c12_root_hash_matches"] = (
-            digest(root_branch) == world["context"]["root_branch_hash"]
-        )
-        checks["c12_branch_hash_matches"] = (
-            digest(branch) == world["context"]["branch_hash"]
-        )
-        checks["c12_root_state_matches"] = (
-            root_state.get("hash") == world["context"]["root_state_hash"]
-        )
-        checks["c12_branch_parent_matches"] = (
-            branch.get("parent_branch_id") == world["context"]["branch_parent_id"]
-        )
-        checks["c12_branch_fork_clock_matches"] = (
-            branch.get("fork_clock") == world["context"]["branch_fork_clock"]
-        )
-        checks["c12_clock_matches"] = (
-            c12.last_clock("s35") == world["context"]["clock"]
-        )
-        episodes = c12.episodes("s35")
-        matching = [
-            episode
-            for episode in episodes
-            if (episode.get("body") or {}).get("s35_receipt_hash")
-            == s35_receipt.get("hash")
-            and (episode.get("body") or {}).get("label") == str(label)
-        ]
-        observed_episode = matching[0] if matching else {}
-        observed_body = observed_episode.get("body") or {}
-        checks["c12_episode_present"] = len(matching) == 1
-        checks["c12_episode_sealed"] = bool(matching) and _valid_episode(
-            matching[0]
-        )
-        checks["c12_episode_receipt_matches"] = (
-            bool(matching) and observed_body.get("s35_receipt") == s35_receipt
-        )
-        checks["c12_episode_targetless"] = (
-            bool(matching)
-            and observed_body.get("target_id") == ""
-            and observed_body.get("target_branch") == "NO_CHANGE"
-            and observed_body.get("target_reason") == "NO_PROPOSAL"
-        )
-        checks["c12_episode_public_privacy"] = not public_privacy_error(
-            observed_body
-        )
-        observed.update(
-            {
-                "outcome": s35_receipt.get("outcome"),
-                "response_status": response_body.get("status"),
-                "response_row_hash": response_key,
-                "c9_receipt_hash": receipt_key,
-                "s35_receipt_hash": s35_receipt.get("hash"),
-                "evidence_grade": s35_receipt.get("evidence_grade"),
-                "actual_actor_input": s35_receipt.get("actual_actor_input"),
-                "qualification": s35_receipt.get("qualification"),
-                "hold_reason": s35_receipt.get("hold_reason"),
-                "target_branch": receipt_body.get("target_branch"),
-                "target_reason": receipt_body.get("target_reason"),
-                "target_state_rows": len(c9["target_state"]),
-                "c12_episode_hash": observed_episode.get("hash", ""),
-            }
-        )
-    finally:
-        c12.close()
+    c12 = read_c12(world_root / "c12.sqlite")
+    root_branch = c12["branches"]["root"]
+    branch = c12["branches"]["s35"]
+    root_state = c12["checkpoints"]["root"][-1]
+    checks["c12_root_hash_matches"] = (
+        digest(root_branch) == world["context"]["root_branch_hash"]
+    )
+    checks["c12_branch_hash_matches"] = (
+        digest(branch) == world["context"]["branch_hash"]
+    )
+    checks["c12_root_state_matches"] = (
+        root_state.get("hash") == world["context"]["root_state_hash"]
+    )
+    checks["c12_branch_parent_matches"] = (
+        branch.get("parent_branch_id") == world["context"]["branch_parent_id"]
+    )
+    checks["c12_branch_fork_clock_matches"] = (
+        branch.get("fork_clock") == world["context"]["branch_fork_clock"]
+    )
+    checks["c12_clock_matches"] = (
+        c12["last_clock"].get("s35", 0) == world["context"]["clock"]
+    )
+    episodes = c12["episodes"].get("s35", [])
+    matching = [
+        episode
+        for episode in episodes
+        if (episode.get("body") or {}).get("s35_receipt_hash")
+        == s35_receipt.get("hash")
+        and (episode.get("body") or {}).get("label") == str(label)
+    ]
+    observed_episode = matching[0] if matching else {}
+    observed_body = observed_episode.get("body") or {}
+    checks["c12_episode_present"] = len(matching) == 1
+    checks["c12_episode_sealed"] = bool(matching) and _valid_episode(
+        matching[0]
+    )
+    checks["c12_episode_receipt_matches"] = (
+        bool(matching) and observed_body.get("s35_receipt") == s35_receipt
+    )
+    checks["c12_episode_targetless"] = (
+        bool(matching)
+        and observed_body.get("target_id") == ""
+        and observed_body.get("target_branch") == "NO_CHANGE"
+        and observed_body.get("target_reason") == "NO_PROPOSAL"
+    )
+    checks["c12_episode_public_privacy"] = not public_privacy_error(
+        observed_body
+    )
+    checks["c12_episode_private_custody_ref"] = (
+        observed_body.get("private_custody_ref") == "world.json"
+    )
+    observed.update(
+        {
+            "outcome": s35_receipt.get("outcome"),
+            "response_status": response_body.get("status"),
+            "response_row_hash": response_key,
+            "c9_receipt_hash": receipt_key,
+            "s35_receipt_hash": s35_receipt.get("hash"),
+            "evidence_grade": s35_receipt.get("evidence_grade"),
+            "actual_actor_input": s35_receipt.get("actual_actor_input"),
+            "qualification": s35_receipt.get("qualification"),
+            "hold_reason": s35_receipt.get("hold_reason"),
+            "target_branch": receipt_body.get("target_branch"),
+            "target_reason": receipt_body.get("target_reason"),
+            "target_state_rows": len(c9["target_state"]),
+            "c12_episode_hash": observed_episode.get("hash", ""),
+        }
+    )
     return {"ok": all(checks.values()), "checks": checks, "observed": observed}
 
 
-__all__ = ["cold_verify", "read_c9"]
+__all__ = ["cold_verify", "read_c12", "read_c9"]

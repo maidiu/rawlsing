@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import subprocess
 import sys
 import tempfile
 from copy import deepcopy
@@ -564,6 +566,37 @@ def main() -> int:
             _foreign_action(share, field, value, perception_ok)
             for field, value in action_mutations
         ]
+        no_action_clock = []
+        for label, action_time in (
+            ("no-action-negative-clock", -1),
+            ("no-action-future-clock", share.context.clock + 1),
+        ):
+            action = _action(
+                share,
+                kind="NO_OBSERVED_ACTION",
+                performed=False,
+                ref="TEST_ONLY_A_ACTION_NO_OBSERVED_" + label,
+                action_time=action_time,
+            )
+            run = share.evaluate(
+                label,
+                perception_receipt=perception_ok,
+                action_receipt=action,
+            )
+            assert run.refused is True
+            assert run.refusal_reason == "ACTION_TIME_INVALID"
+            no_action_clock.append(
+                {
+                    "label": label,
+                    "action_time": action_time,
+                    "refused": run.refused,
+                    "committed": run.committed,
+                    "reason": run.refusal_reason,
+                    "c9_exists": (run.run_dir / "c9.sqlite").exists(),
+                    "cold_ok": cold_verify(share.root, label)["ok"],
+                }
+            )
+
         source_hash_mismatch = {}
         for kind in ("perception", "action"):
             if kind == "perception":
@@ -613,13 +646,63 @@ def main() -> int:
             action_receipt=qualified_action,
         )
         _assert_valid_empty(qualified_hold, access.A_LOCAL_PERCEPTION_HOLD)
-        qualified_refused = share.evaluate(
-            "qualified-refused",
+        assert qualified_hold.receipt["evidence_grade"] == access.S35_GRADE_UNAVAILABLE
+        assert qualified_hold.receipt["actual_actor_input"] is False
+        assert (
+            qualified_hold.receipt["qualification"]
+            == access.S35_QUALIFICATION_UNRESOLVED
+        )
+        qualified_perception_refused = share.evaluate(
+            "qualified-perception-refused",
             perception_receipt=qualified_perception,
             action_receipt=qualified_action,
             qualified_owner_resolver=lambda **kwargs: False,
         )
-        assert qualified_refused.refused is True
+        assert qualified_perception_refused.refused is True
+        assert (
+            qualified_perception_refused.refusal_reason
+            == "A_LOCAL_PERCEPTION_UNVERIFIED"
+        )
+        qualified_action_refused = share.evaluate(
+            "qualified-action-refused",
+            perception_receipt=qualified_perception,
+            action_receipt=qualified_action,
+            qualified_owner_resolver=lambda **kwargs: kwargs.get("kind")
+            == "perception",
+        )
+        assert qualified_action_refused.refused is True
+        assert qualified_action_refused.refusal_reason == "A_OWNED_ACTION_UNVERIFIED"
+        assert qualified_action_refused.committed is False
+        assert not (qualified_action_refused.run_dir / "c9.sqlite").exists()
+        qualified_input = {
+            "hold_outcome": qualified_hold.response.reason,
+            "hold_reason": qualified_hold.receipt.get("hold_reason"),
+            "hold_evidence_grade": qualified_hold.receipt.get("evidence_grade"),
+            "hold_actual_actor_input": qualified_hold.receipt.get(
+                "actual_actor_input"
+            ),
+            "hold_qualification": qualified_hold.receipt.get("qualification"),
+            "perception_resolver_refused": qualified_perception_refused.refusal_reason,
+            "action_resolver_refused": qualified_action_refused.refusal_reason,
+            "actual_positive_claimed": False,
+        }
+
+        custody_manifest = json.loads(
+            (share.root / "world.json").read_text(encoding="utf8")
+        )
+        public_projection = access.public_source_projection(share.source)
+        public_projection_info = {
+            "custody_grade": (custody_manifest.get("custody") or {}).get("grade"),
+            "private_custody_has_operation": "b_operation"
+            in ((custody_manifest.get("custody") or {}).get("source") or {}),
+            "public_projection": public_projection,
+            "public_projection_privacy": not access.public_privacy_error(
+                public_projection
+            ),
+            "public_projection_has_owner": "b_owner" in public_projection,
+            "public_projection_has_event_ref": "b_event_ref" in public_projection,
+            "public_projection_has_operation": "b_operation" in public_projection,
+        }
 
         consumer = _consumer_probe(share, perception_ok, action_ok)
         cold_labels = (
@@ -635,7 +718,10 @@ def main() -> int:
             "history-refs",
             "share-explicit-refusal",
             "qualified-hold",
-            "qualified-refused",
+            "qualified-perception-refused",
+            "qualified-action-refused",
+            "no-action-negative-clock",
+            "no-action-future-clock",
             "perception-source-hash",
             "action-source-hash",
         )
@@ -644,6 +730,38 @@ def main() -> int:
         }
     finally:
         share.close()
+
+    fresh_env = dict(os.environ)
+    fresh_env["PYTHONDONTWRITEBYTECODE"] = "1"
+    fresh_completed = subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            str(RETURN / "tools" / "cold_replay.py"),
+            "--world-root",
+            str(share.root),
+            "--label",
+            "p1",
+        ],
+        cwd=str(RETURN),
+        env=fresh_env,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    fresh_payload = (
+        json.loads(fresh_completed.stdout) if fresh_completed.stdout else {}
+    )
+    fresh_process = {
+        "returncode": fresh_completed.returncode,
+        "stderr": fresh_completed.stderr,
+        "ok": fresh_payload.get("ok"),
+        "fresh_process": fresh_payload.get("fresh_process"),
+        "store_mutated": fresh_payload.get("store_mutated"),
+        "store_hashes_before": fresh_payload.get("store_hashes_before"),
+        "store_hashes_after": fresh_payload.get("store_hashes_after"),
+        "checks_ok": all((fresh_payload.get("checks") or {}).values()),
+    }
 
     refuse_case = evaluated(share=False, e2=False)["case"]
     refuse = S35World.build(root / "refuse", case=refuse_case)
@@ -734,11 +852,10 @@ def main() -> int:
             "action": foreign_action,
         },
         "source_hash_mismatch": source_hash_mismatch,
-        "qualified_input": {
-            "hold_outcome": qualified_hold.response.reason,
-            "hold_reason": qualified_hold.receipt.get("hold_reason"),
-            "refused_reason": qualified_refused.refusal_reason,
-        },
+        "qualified_input": qualified_input,
+        "no_action_clock": no_action_clock,
+        "public_projection": public_projection_info,
+        "fresh_process_cold_replay": fresh_process,
         "consumer_binding": consumer,
         "public_value_privacy": {
             "share": public_privacy,
@@ -786,6 +903,8 @@ def main() -> int:
             item["rejected"] for item in consumer["mutations"]
         ),
         "legacy_delegation": consumer["legacy_delegation"],
+        "fresh_process_cold_replay_ok": fresh_process["ok"] is True
+        and fresh_process["store_mutated"] is False,
         "fault_trials": fault_trials,
     }
     print(json.dumps(summary, indent=2, sort_keys=True))

@@ -42,6 +42,8 @@ S35_QUALIFICATION_CONTROLLED = (
 )
 S35_QUALIFICATION_QUALIFIED = "QUALIFIED_OWNER_RECEIPT"
 S35_QUALIFICATION_UNAVAILABLE = "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE"
+S35_QUALIFICATION_UNRESOLVED = "UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL"
+PUBLIC_SOURCE_PROJECTION_SCHEMA = "S35_PUBLIC_B_SOURCE_PROJECTION@1"
 
 OBSERVED_IMMEDIATE_OBJECT_ORIENTATION = "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION"
 OBSERVED_CURRENT_REFUSAL = "OBSERVED_CURRENT_REFUSAL"
@@ -60,7 +62,14 @@ ROUTE_ACTION_HOLD = "S35_TYPED_HOLD_NO_A_OWNED_ACTION"
 ROUTE_REFUSED = "S35_REFUSED"
 
 CLAIM_CEILING = "OBSERVED_PRESENT_ACTION_ONLY_NOT_PSYCHOLOGICAL_RULE_A"
-PUBLIC_B_OPERATION_TOKENS = ("SHARE_TOOL", "REFUSE_TOOL")
+PUBLIC_B_OPERATION_TOKENS = (
+    "SHARE_TOOL",
+    "REFUSE_TOOL",
+    "TEST_ONLY_OWNER_share",
+    "TEST_ONLY_OWNER_refuse",
+    "TEST_ONLY_EVENT_share",
+    "TEST_ONLY_EVENT_refuse",
+)
 
 _CONTEXT_BINDING = (
     "actor_id",
@@ -149,6 +158,20 @@ def _value(context: Any, key: str) -> Any:
 
 def _is_int(value: Any) -> bool:
     return isinstance(value, int) and not isinstance(value, bool)
+
+
+def public_source_projection(source: Mapping[str, Any]) -> dict:
+    body = dict(source)
+    return {
+        "schema": PUBLIC_SOURCE_PROJECTION_SCHEMA,
+        "grade": "TEST_ONLY_PUBLIC_SOURCE_PROJECTION_NOT_NATIVE",
+        "native": False,
+        "operation_disclosed": False,
+        "source_commitment": digest({"source": body}),
+        "b_actor": body.get("b_actor"),
+        "b_to_actor": body.get("b_to_actor"),
+        "b_clock": body.get("b_clock"),
+    }
 
 
 def _seal_receipt(body: dict) -> dict:
@@ -464,9 +487,9 @@ def _action_error(
     action_time = receipt.get("action_time")
     if not _is_int(action_time):
         return "ACTION_TIME_INVALID"
-    if action_time > context.clock:
+    if action_time < context.event_time or action_time > context.clock:
         return "ACTION_TIME_INVALID"
-    if performed and action_time < max(context.event_time, perceived_at):
+    if performed and action_time < perceived_at:
         return "ACTION_TIME_INVALID"
     return ""
 
@@ -550,6 +573,7 @@ def _receipt(
     reason: str,
     hold_reason: str = "",
     force_unavailable_grade: bool = False,
+    force_qualification: str = "",
 ) -> dict:
     perception_map = perception if isinstance(perception, Mapping) else None
     action_map = action if isinstance(action, Mapping) else None
@@ -557,7 +581,7 @@ def _receipt(
         grade, actual, qualification = (
             S35_GRADE_UNAVAILABLE,
             False,
-            S35_QUALIFICATION_UNAVAILABLE,
+            force_qualification or S35_QUALIFICATION_UNAVAILABLE,
         )
     else:
         grade, actual, qualification = _grade_pair(perception_map, action_map)
@@ -689,6 +713,7 @@ def _hold(
     material_eligible: bool | None,
     eligible_material_refs: tuple[str, ...],
     force_unavailable_grade: bool = False,
+    force_qualification: str = "",
 ) -> S35Evaluation:
     receipt = _receipt(
         context=context,
@@ -708,6 +733,7 @@ def _hold(
         reason=reason,
         hold_reason=hold_reason,
         force_unavailable_grade=force_unavailable_grade,
+        force_qualification=force_qualification,
     )
     return _result(
         status=ResponseStatus.RESPONSE_EFFECTS_VALID_EMPTY,
@@ -811,6 +837,8 @@ def evaluate_actor_access_response(
                 contradictory_refs=tuple(request.contradictory_refs),
                 material_eligible=material_eligible,
                 eligible_material_refs=eligible_material_refs,
+                force_unavailable_grade=True,
+                force_qualification=S35_QUALIFICATION_UNRESOLVED,
             )
         if not resolved:
             return _refused(
@@ -976,6 +1004,8 @@ def evaluate_actor_access_response(
                 contradictory_refs=contradictory_refs,
                 material_eligible=material_eligible,
                 eligible_material_refs=eligible_material_refs,
+                force_unavailable_grade=True,
+                force_qualification=S35_QUALIFICATION_UNRESOLVED,
             )
         if not resolved:
             return _refused(
@@ -1177,6 +1207,8 @@ __all__ = [
     "S35_QUALIFICATION_CONTROLLED",
     "S35_QUALIFICATION_QUALIFIED",
     "S35_QUALIFICATION_UNAVAILABLE",
+    "S35_QUALIFICATION_UNRESOLVED",
+    "PUBLIC_SOURCE_PROJECTION_SCHEMA",
     "S35_RECEIPT_SCHEMA",
     "UNKNOWN_RECEIVABILITY",
     "current_context",
@@ -1185,6 +1217,7 @@ __all__ = [
     "make_a_owned_action_receipt",
     "pipeline_selector",
     "public_privacy_error",
+    "public_source_projection",
     "reseal_action_receipt",
     "reseal_perception_receipt",
     "reset_current_context",

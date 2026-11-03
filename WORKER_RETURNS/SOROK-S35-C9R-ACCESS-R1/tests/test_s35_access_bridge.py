@@ -2,7 +2,12 @@ from __future__ import annotations
 
 from copy import deepcopy
 from dataclasses import replace
+import hashlib
 import json
+import os
+from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -17,6 +22,8 @@ from r31j.scenarios import evaluated
 from bridge import access
 from bridge.readback import cold_verify
 from bridge.world import S35World
+
+RETURN = Path(__file__).resolve().parents[1]
 
 
 def _case(share: bool) -> dict:
@@ -264,6 +271,35 @@ def test_action_severance_same_world_and_restoration(share_world):
     assert cold_verify(world.root, "action-restored")["ok"]
 
 
+def test_no_action_receipt_clock_is_validated(share_world):
+    world, _ = share_world
+    perception = _perception(
+        world, perception_ref="TEST_ONLY_A_PERCEPTION_NO_ACTION_CLOCK"
+    )
+    for label, action_time in (
+        ("no-action-negative-clock", -1),
+        ("no-action-future-clock", world.context.clock + 1),
+    ):
+        action = _action(
+            world,
+            kind="NO_OBSERVED_ACTION",
+            performed=False,
+            action_ref="TEST_ONLY_A_ACTION_NO_OBSERVED_" + label,
+            action_time=action_time,
+        )
+        run = world.evaluate(
+            label,
+            perception_receipt=perception,
+            action_receipt=action,
+        )
+        assert run.refused is True
+        assert run.committed is False
+        assert run.response.status is ResponseStatus.REFUSED
+        assert run.refusal_reason == "ACTION_TIME_INVALID"
+        assert not (run.run_dir / "c9.sqlite").exists()
+        assert cold_verify(world.root, label)["ok"]
+
+
 def test_contradictory_context_valid_empty_and_unbound_refusal(share_world):
     world, _ = share_world
     contradictory = world.evaluate(
@@ -428,7 +464,7 @@ def test_broken_receipt_seals_and_source_hashes_are_refused(share_world):
     assert run.refusal_reason == "ACTION_SOURCE_HASH_MISMATCH"
 
 
-def test_qualified_actual_grade_holds_without_owner_resolver(share_world):
+def test_qualified_owner_paths_hold_or_refuse_without_actual_claim(share_world):
     world, _ = share_world
     perception = world.perception_receipt(
         access_status="ACCESSIBLE",
@@ -445,27 +481,39 @@ def test_qualified_actual_grade_holds_without_owner_resolver(share_world):
         actual_actor_input=True,
         qualification=access.S35_QUALIFICATION_QUALIFIED,
     )
-    run = world.evaluate(
+    hold = world.evaluate(
         "qualified-hold",
         perception_receipt=perception,
         action_receipt=action,
     )
-    _assert_valid_empty(run, access.A_LOCAL_PERCEPTION_HOLD)
-    assert run.receipt["hold_reason"] == (
+    _assert_valid_empty(hold, access.A_LOCAL_PERCEPTION_HOLD)
+    assert hold.receipt["hold_reason"] == (
         "QUALIFIED_A_LOCAL_PERCEPTION_RESOLVER_UNAVAILABLE"
     )
-    assert run.receipt["evidence_grade"] == access.S35_GRADE_QUALIFIED
-    assert run.receipt["actual_actor_input"] is True
-    refused = world.evaluate(
-        "qualified-refused",
+    assert hold.receipt["evidence_grade"] == access.S35_GRADE_UNAVAILABLE
+    assert hold.receipt["actual_actor_input"] is False
+    assert hold.receipt["qualification"] == access.S35_QUALIFICATION_UNRESOLVED
+    perception_refused = world.evaluate(
+        "qualified-perception-refused",
         perception_receipt=perception,
         action_receipt=action,
         qualified_owner_resolver=lambda **kwargs: False,
     )
-    assert refused.refused is True
-    assert refused.refusal_reason == "A_LOCAL_PERCEPTION_UNVERIFIED"
+    assert perception_refused.refused is True
+    assert perception_refused.refusal_reason == "A_LOCAL_PERCEPTION_UNVERIFIED"
+    action_refused = world.evaluate(
+        "qualified-action-refused",
+        perception_receipt=perception,
+        action_receipt=action,
+        qualified_owner_resolver=lambda **kwargs: kwargs.get("kind") == "perception",
+    )
+    assert action_refused.refused is True
+    assert action_refused.refusal_reason == "A_OWNED_ACTION_UNVERIFIED"
+    assert action_refused.committed is False
+    assert not (action_refused.run_dir / "c9.sqlite").exists()
     assert cold_verify(world.root, "qualified-hold")["ok"]
-    assert cold_verify(world.root, "qualified-refused")["ok"]
+    assert cold_verify(world.root, "qualified-perception-refused")["ok"]
+    assert cold_verify(world.root, "qualified-action-refused")["ok"]
 
 
 def test_refuse_tool_is_observed_current_refusal_without_target(refuse_world):
@@ -692,6 +740,104 @@ def test_production_registries_remain_empty_and_no_native_issuance(share_world):
     assert run.receipt["native"] is False
     assert run.receipt["target_proposals"] == []
     assert run.target_state_rows == 0
+
+
+def test_public_projection_and_private_custody(share_world):
+    world, _ = share_world
+    run = world.evaluate("public-projection", **_positive_args(world))
+    _assert_positive(run)
+    projection = access.public_source_projection(world.source)
+    assert "b_owner" not in projection
+    assert "b_event_ref" not in projection
+    assert "b_operation" not in projection
+    assert projection["operation_disclosed"] is False
+    assert access.public_privacy_error(projection) == ""
+    world_json = json.loads((world.root / "world.json").read_text(encoding="utf8"))
+    assert world_json["custody"]["grade"] == "PRIVATE_TEST_ONLY_WORLD_INPUT"
+    assert "b_operation" in world_json["custody"]["source"]
+    assert access.public_privacy_error(world_json["public_projection"]) == ""
+    run_json = json.loads((run.run_dir / "run.json").read_text(encoding="utf8"))
+    assert run_json["source_binding"] == projection
+    assert run_json["private_custody_ref"] == "world.json"
+    episodes = [
+        episode
+        for episode in world.c12.episodes("s35")
+        if (episode.get("body") or {}).get("label") == "public-projection"
+    ]
+    assert len(episodes) == 1
+    episode_body = episodes[0]["body"]
+    assert episode_body["source_binding"] == projection
+    assert episode_body["private_custody_ref"] == "world.json"
+    for public_value in (run.receipt, run_json, episode_body):
+        text = json.dumps(public_value, sort_keys=True)
+        assert "TEST_ONLY_OWNER_share" not in text
+        assert "TEST_ONLY_OWNER_refuse" not in text
+        assert "TEST_ONLY_EVENT_share" not in text
+        assert "TEST_ONLY_EVENT_refuse" not in text
+    assert cold_verify(world.root, "public-projection")["ok"]
+
+
+def test_cold_verify_does_not_mutate_store(tmp_path):
+    case = _case(True)
+    world = S35World.build(tmp_path / "nomutation-world", case=case)
+    try:
+        run = world.evaluate("nomutation", **_positive_args(world))
+        _assert_positive(run)
+        run_dir = run.run_dir
+        paths = {
+            "world.json": world.root / "world.json",
+            "c12.sqlite": world.root / "c12.sqlite",
+            "c9.sqlite": run_dir / "c9.sqlite",
+            "run.json": run_dir / "run.json",
+            "s35_receipt.json": run_dir / "s35_receipt.json",
+        }
+        before = {
+            name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for name, path in paths.items()
+        }
+        result = cold_verify(world.root, "nomutation")
+        assert result["ok"], result["checks"]
+        after = {
+            name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for name, path in paths.items()
+        }
+        assert after == before
+    finally:
+        world.close()
+
+
+def test_fresh_process_cold_replay(tmp_path):
+    case = _case(True)
+    world = S35World.build(tmp_path / "fresh-world", case=case)
+    try:
+        run = world.evaluate("fresh-cold", **_positive_args(world))
+        _assert_positive(run)
+        world.close()
+        env = dict(os.environ)
+        env["PYTHONDONTWRITEBYTECODE"] = "1"
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                str(RETURN / "tools" / "cold_replay.py"),
+                "--world-root",
+                str(world.root),
+                "--label",
+                "fresh-cold",
+            ],
+            cwd=str(RETURN),
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        assert completed.returncode == 0, completed.stderr
+        payload = json.loads(completed.stdout)
+        assert payload["fresh_process"] is True
+        assert payload["store_mutated"] is False
+        assert payload["ok"] is True
+    finally:
+        world.close()
 
 
 def test_cold_readback_after_world_close(tmp_path):

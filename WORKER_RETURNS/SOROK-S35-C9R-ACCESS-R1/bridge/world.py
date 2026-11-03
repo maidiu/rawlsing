@@ -305,8 +305,13 @@ class S35World:
                 "grade": GRADE,
                 "native": False,
                 "variant": variant,
-                "source": typed,
-                "case_preimage": firstclass.case_preimage(dict(case)),
+                "custody": {
+                    "grade": "PRIVATE_TEST_ONLY_WORLD_INPUT",
+                    "native": False,
+                    "source": typed,
+                    "case_preimage": firstclass.case_preimage(dict(case)),
+                },
+                "public_projection": access.public_source_projection(typed),
                 "source_actor_map": world.source_actor_map,
                 "material_access": material_access,
                 "material_eligible": material_ok,
@@ -393,14 +398,7 @@ class S35World:
         )
 
     def _public_source_binding(self) -> dict:
-        return {
-            "b_actor": self.source.get("b_actor"),
-            "b_owner": self.source.get("b_owner"),
-            "b_event_ref": self.source.get("b_event_ref"),
-            "b_event_hash": self.source.get("b_event_hash"),
-            "b_to_actor": self.source.get("b_to_actor"),
-            "b_clock": self.source.get("b_clock"),
-        }
+        return access.public_source_projection(self.source)
 
     def evaluate(
         self,
@@ -469,6 +467,7 @@ class S35World:
                 "target_state_rows": 0,
                 "context": self.context.as_dict(),
                 "source_binding": self._public_source_binding(),
+                "private_custody_ref": "world.json",
                 "c8": self.c8_binding,
                 "request": {
                     "perception_receipt": dict(perception_receipt)
@@ -596,6 +595,7 @@ class S35World:
             "native": False,
             "label": label,
             "source_binding": self._public_source_binding(),
+            "private_custody_ref": "world.json",
             "c8": self.c8_binding,
             "context": self.context.as_dict(),
             "s35_receipt": dict(receipt),
@@ -634,6 +634,7 @@ class S35World:
             "target_state_rows": len(target_ids),
             "context": self.context.as_dict(),
             "source_binding": self._public_source_binding(),
+            "private_custody_ref": "world.json",
             "c8": self.c8_binding,
             "s35_receipt": dict(receipt),
             "s35_receipt_hash": receipt["hash"],
