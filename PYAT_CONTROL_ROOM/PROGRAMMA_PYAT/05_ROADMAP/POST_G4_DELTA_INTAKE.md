@@ -1,5 +1,15 @@
 # POST-G4 late source/currentness delta — finite receiving decision
 
+
+## SAT-R later independent five-route integration — read after L1/L2/L3
+
+This completed earlier *late source intake* remains a pinned predecessor, not overwritten. M1–M5 are later five **independent source-discovery routes** with terminal commits [M1](https://github.com/maidiu/rawlsing/commit/aebb265af79d09c81800129403d914d50fa6e2bd) · [M2](https://github.com/maidiu/rawlsing/commit/f24f446eefdaa86e493153eb00b77e1bc2bd087d) · [M3](https://github.com/maidiu/rawlsing/commit/a21b46ee2920c2ac1699b38cc11ea4e6771fa46d) · [M4](https://github.com/maidiu/rawlsing/commit/14a6c6490a64c327f178f10cbba6274d22eaa4e5) · [M5](https://github.com/maidiu/rawlsing/commit/d74d65562942254a4162bd6ad83c6d72ad698b1c).
+
+[Source adjudication/confidence](SATURATION_SOURCE_INTAKE_AND_CONFIDENCE.md) explains new historic 12-group executable surplus, three B49/G50/I51 sourcefree producer families, R157/P07 unmerged pointers, N9C 7 REDs, two R06 call-scope corrections, M2's 227 owner-link fixes and seven overlapping J references. [Exact source/body ledger](SATURATION_MATERIAL_DISCOVERIES.jsonl) and [Codex safe reuse handback](SATURATION_CODEX_REUSE_HANDOFF.md) govern later code decisions. **No R03 rebuild, no R09 HOLD erasure, no original35/N11/N12 promotion, no change of L1/L2/L3's original source cuts.**
+
+---
+
+
 **Status:** source-grounded **documentary reception into G4**; not source-science issuance, original35 respondent operation, protected code adoption, independent review or terminal N11 acceptance. The guide retains **eleven organs / fifty-one children**, no new controller, platform or architecture. This was a single S0–S1 authenticated GitHub receiving reconciliation, without new native tests or CI.
 
 ## Cut lock and exact late returns

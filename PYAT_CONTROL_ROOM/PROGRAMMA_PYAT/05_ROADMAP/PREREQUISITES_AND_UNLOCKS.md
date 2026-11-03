@@ -1,5 +1,20 @@
 # G4-P5 — Prerequisites, AND/IF/ALTERNATE and reverse unlocks
 
+
+## SAT-R scoped new-capital prerequisite overlay — no edge change
+
+The same 82 original edge IDs and predicates retain their G4 source-cut grades. [SATURATION_SEAM_SCOPE_OVERLAY.jsonl](SATURATION_SEAM_SCOPE_OVERLAY.jsonl) ties **14** affected original edge IDs to precisely scoped code, without replacing `CURRENT_SEAM_STATES.jsonl`.
+
+- **Original issuer → sourcefree reuse (S-WORKLIST, S-C11, S-I03, S-I05, S-BATCH):** B49 candidate source rule selects a limited attitude U and synthesizes two fields; G50 builds a bounded frontier from externally supplied policy; I51 lowers one-target/no-condition to B49 U43/C11/I03/Batch. Frozen R03 compiler and Route B already exist. **Do not switch** from externally *issued* original U/Epre to candidate sourcefree eligibility. Confirm `SelectedSourceRulePackage` versus `NativeSourcePackage` exact ABI at selected current tip before any permitted port.
+- **Empirical/FF/temporal (S-F1F4, S-F5, S-F7, S-F7S):** historic V549B/V550J/V551J/V552/V553 bodies are source-capital only. V552 contradiction tensor stub remains empty; F7 P07 author-local compare/as-of needs independent review, original comparable pair and N9 receiver, not a new MUST.
+- **Objective/possibility (S-SERVE, S-POSS, OBSV:G1B-S27/S28):** HQ297 N9C seven integration REDs; R06 `select_joined_world_view` validates caller-received J42 receipts, not executes them; retained R05-backed R06 P41 is one Y|X step, separate from J42/P41's actual three-condition fixture. Source-native N9 **AND** N10E remains held.
+- **Terminal N11/N12:** original `N0 AND N10W` plus demanded F1–F8, then qualified N11, then separate N12 decision unchanged. No 1,890 acceptance cells acquired from I51 synthetic first receiver.
+
+No change to owner/science-held, incompatibility, missing-reader, partial, sourcefree or unknown original edge totals.
+
+---
+
+
 ## Post-G4 branch-scoped unlock overlay — no new edge or false green
 
 The same **82** original typed edge IDs and AND/IF/ALTERNATE predicates below remain unchanged. Later sourcefree local *subproofs* are attached by existing IDs in [L2 82-edge map](https://github.com/maidiu/rawlsing/blob/2f91ef644871ab3de35cdc1ca8a92af18a4310d4/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R50_R95/COVERAGE_AND_UNRESOLVED.md) and [post-G4 intake](POST_G4_DELTA_INTAKE.md).

@@ -1,5 +1,15 @@
 # G4-P5 — Narrow unresolved GitHub source requests (no new search authorization)
 
+
+## SAT-R five-route source request delta — no new physical-file demand
+
+M1 found historical original function *code* by exact main paths, not lawful original respondent executions or missing derived V548/V549 native receipts. M5 found B49/G50/I51 code and one-target sourcefree first reader, **no** newly identified exact original35 questionnaire/routing/edition file whose absence requires mainMac/Library search. M3 found R157/P07 and N9C review negatives, not new physically missing original survey files. M2's 227 link corrections are navigation, not missing source. M4's corrected R06/J42 consumer scopes are version/call boundaries. [Exact unresolved list](SATURATION_EXACT_UNRESOLVED.md) separates each owner decision from file existence.
+
+The existing SR-01…SR-08 historical dispositions are preserved. **New source requests: zero.** If a competent original35 owner later names one exact questionnaire/routing/design/edition artifact necessary for an authorized operation, first require precise Git-negative evidence and owner custodial permission; do not initiate a general search. Four already identified optional V548/V549 derived-output artifacts remain owner-conditional, not final guide review blockers.
+
+---
+
+
 ## POST-G4 source-fate corrections — this supersession table governs *later cuts only*
 
 The original SR-01…SR-08 paragraphs below are retained as the historical G4 bounded-query record, **not** current instructions to search. [L3 exact 56-row proof](https://github.com/maidiu/rawlsing/blob/a73bc57e12949f27867abde7fe9f33fea3a58052/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/EXACT_SOURCE_GAPS/EXACT_SOURCE_EVIDENCE.jsonl) and [L1 A42 proof](https://github.com/maidiu/rawlsing/blob/e7ead127edbe83385e1a04e6e874de8a66fc5b39/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R40_R49/N11_JOINED_WORLD_CUT_CORRECTIONS.md) resolve the exact physical states; see [named outstanding physical sources](NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).

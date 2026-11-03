@@ -1,5 +1,15 @@
 # ROADMAP:S10 — N10E empirical possibility plus N10W progressive world-conditioned possibility (F8)
 
+## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
+
+**SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
+
+- **Separate producer shapes:** actual sourcefree J42/P41 can evaluate three fixed conditions; M4's direct R06 [`R05Provider.progressive`](https://github.com/maidiu/rawlsing/blob/b2cfe93cee854b7aff2081a7a223ada75295332a/rawlsing_next/pre553_universal_world_binding.py#L761) restricts retained provider to **single Y|X**. R06 [joined selector](https://github.com/maidiu/rawlsing/blob/b2cfe93cee854b7aff2081a7a223ada75295332a/rawlsing_next/pre553_universal_world_binding.py#L403) only validates separately supplied receipts. Do not attribute J42's three-step production to R06's provider.
+- I51's B49/G50 one-target synthetic code reaches I03/Batch, **not** E04/P41/N10W. Exact native N9 **AND** computed N10E same selected version/authority plus F8 science remains GAP-042–045; R06V sourcefree reviewed subproof not original35 acceptance.
+
+---
+
+
 ## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
 
 **Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).

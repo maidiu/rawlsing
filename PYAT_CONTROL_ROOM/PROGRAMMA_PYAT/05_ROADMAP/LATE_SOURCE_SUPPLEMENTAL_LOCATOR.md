@@ -1,5 +1,15 @@
 # Post-G4 late-source supplemental locator — bounded nonadopted overlay
 
+
+## SAT-R distinct further saturation layer — not part of L1 37 / L2 21 denominators
+
+This existing L1/L2/L3 locator is unchanged below. Additional M1–M5 returns are received in [SATURATION_MATERIAL_DISCOVERIES.jsonl](SATURATION_MATERIAL_DISCOVERIES.jsonl), whose 34 typed rows include **12 historical code-surplus symbols**, **three B49/G50/I51 family-level sourcefree code additions**, **two M3 unmerged pointers**, **two M4 proof-scope corrections**, original-function regrades, negatives and duplicates. M2 original named requirement owner links are a distinct [345-row supplemental navigation view](SATURATION_REQUIREMENT_OWNER_LINKS.jsonl) with 133 primary/94 secondary omissions and seven J overlap annotations. These must not be added to G1 892, G3 150, L1 37 or L2 21 identities.
+
+[Receiver source-specific confidence](SATURATION_SOURCE_INTAKE_AND_CONFIDENCE.md) and [first safe code reuse](SATURATION_CODEX_REUSE_HANDOFF.md) preserve missing native permissions and the original protected control/semantic PRE-MAIN cuts.
+
+---
+
+
 **Purpose:** New **source-identity links** into the existing S01–S11/51-child guide. This supplement does not renumber or rewrite the G2 782 IDs, G1 892 rows, G3/G4 150 parity rows, 82 typed seams, 62 capsules or 49 historical GAP IDs. A record below is **not necessarily an additional algorithm**; source-path existence, direct code-read, reported test/reviewer status, scientific issuance and protected adoption are separate grades. See [delta intake](POST_G4_DELTA_INTAKE.md) and the [guide](README.md).
 
 **Frozen receiving baseline:** 812bc7d0bc2d02942f883262a241ce72b064a728. **Terminal candidate return cuts:** [L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39](https://github.com/maidiu/rawlsing/commit/e7ead127edbe83385e1a04e6e874de8a66fc5b39), [L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4](https://github.com/maidiu/rawlsing/commit/2f91ef644871ab3de35cdc1ca8a92af18a4310d4), [L3 a73bc57e12949f27867abde7fe9f33fea3a58052](https://github.com/maidiu/rawlsing/commit/a73bc57e12949f27867abde7fe9f33fea3a58052). Receiving-control PRE-MAIN 9809203fd915a84bae056a67210e9213879840db; separate protected semantic PRE-MAIN 1f47063c3205a45888b3c55e81e7485943ed1390. **Not a scientific or native source-grade ledger.**

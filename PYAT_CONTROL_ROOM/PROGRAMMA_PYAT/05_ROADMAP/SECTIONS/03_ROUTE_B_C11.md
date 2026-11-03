@@ -1,5 +1,15 @@
 # ROADMAP:S03 — Physical and logical source carrier: Route B, C11, I03, I05 and Batch
 
+## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
+
+**SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
+
+- **New indexed source/candidate functions:** historic [V542 manifest→DuckDB facts](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/populate_fact_store_v542.py#L408) is actual CLI code but no verified downstream table reader; its `--replace` is destructive, not authorized for use. Historic V550 readiness/question-use/relation and [V550J respondent eligibility](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550j_joint_patterns.py#L2367) are candidate reusable source-stage contracts, not current native execution. V550J substrate validator refines already-indexed family, not new engine.
+- **Branch-only executable location:** [R157 config factory](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/source_configuration/factory.py#L516), [B49 synthetic preimage](https://github.com/maidiu/rawlsing/blob/b5600da96358f8526471d635a1befa8daa3f098b/rawlsing_next/pre553_source_native_preimage_adapter.py#L280), and [I51 real sourcefree I03+Batch first reader](https://github.com/maidiu/rawlsing/blob/9bbf9e0509411beb210331d28160324b005a784e/WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py#L201) are all concrete, **not merged into frozen control by this receiving**. R03, C11/Route B and partial resume already exist; no source-native all35 campaign nor R09 parent trust acceptance. [R09V-R2 RED](https://github.com/maidiu/rawlsing/blob/25510c8d84f0ae5e452b301b017bdedf46f40b5c/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/00_RETURN.md) remains HOLD.
+
+---
+
+
 ## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
 
 **Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).

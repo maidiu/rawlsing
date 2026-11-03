@@ -1,3 +1,24 @@
+
+## SAT-R work-classification corrections — existing 49 GAPs unchanged
+
+Source-grounded [34-row dedup ledger](SATURATION_MATERIAL_DISCOVERIES.jsonl) and [Codex reuse handoff](SATURATION_CODEX_REUSE_HANDOFF.md) improve engineering classification, not task count or protected readiness:
+
+| Original GAP family | Formerly tempting interpretation | Receiving classification / actual next safe work |
+| --- | --- | --- |
+| GAP-001–010 original35/worklist | Rebuild unspecified operation compiler | **R03 compiler already exists** (control blob 8e7fe00a...); B49/G50/I51 *additional* unmerged sourcefree pieces. **REUSE/ADAPT / CONNECT** exact ABI, then **SCIENCE_OWNER_DECIDE / NATIVE_SOURCE_GRANT** administered U/Epre/risk/weights; no 35-source issuance. |
+| GAP-011–015 C11/Batch | All transport missing vs all source-native ready | R157 config factory 35 exact-case sourcefree candidate, B49 synthetic preimage, I51 actual limited I03+Batch reader. **REUSE/ADAPT + TEST/QUALIFY** only in approved scope; R00E REVISE and R09 parent trust **HOLD**. |
+| GAP-016–020 F1–F4 | Build all historic empirical helpers from zero | Twelve newly indexed historical symbols include V542, V549B, V550J, V551J, V552. **REUSE/ADAPT** only after input/output/weights/receipts; original native design/first reader still **OWNER_DECIDE**. V548 weighted_n is count, V552 tensor empty. |
+| GAP-021–029 learned/FF | Historic name means current learned/FF execution | V551J review shadow import-only; V550 relation/directionality helpers real; V552 tensor stub. **REUSE with refusal**, then separate learned/FF science and N9 consumer. |
+| GAP-030–037 F6/F7 | No temporal comparison code | P07 pure eight-surface temporal comparator/as-of on unmerged candidate, historic V553 pressure deltas. **REUSE/ADAPT / independent TEST/QUALIFY** with original comparable-wave owner; F6 still source-indexed/nonpooled and native science held. |
+| GAP-038–045 N9/N10 | No usable consumers or native joint solved | Actual J42 and R06 scoped sourcefree readers retained; R06 receipt validator not producer, R05-backed P41 single Y|X step; N9C seven integrated REDs. **CONNECT / REPAIR / TEST-QUALIFY**, then original **N9 AND N10E** source owner. |
+| GAP-046–049 N11/N12 | Physical N11 files absent or synthetic acceptance suffices | A42 files exist but `N11_NOT_READY`; **SCIENCE_OWNER_DECIDE / NATIVE_SOURCE_GRANT / independent acceptance** 0/1,890 original measured; N12 separate. |
+
+**M2 adds navigation, not new tasks:** [345 original-owner crosslinks](SATURATION_REQUIREMENT_OWNER_LINKS.jsonl) mark 133 missing primary and 94 secondary section links and seven already-covered J overlaps. Neither this nor M1 original-body discovery creates a twelfth organ or raises the original 49-GAP denominator.
+
+**Prioritization decision:** a *single* user-approved exact I51/B49/G50 ↔ actual HQ selected R03/C11/I03/I05 compatibility read may matter before an implementation/adoption choice. No automatic new agent fleet; no broad Library/mainMac search; no original-world test until source permission. The separately reviewed eventual guide cold-use can follow material work without calling this receiving self-acceptance.
+
+---
+
 **Receiving custody:** [G3-B original 49-gap register](https://github.com/maidiu/rawlsing/blob/b2641c1944b247d5a510f0b4eae6421db077decd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/SEAMS_MATURITY/NEXT_REAL_PYAT_WORK.md) at exact G3-B cut; source relations/negative retained intact. G4-P5 is documentary construction, **not** a task fleet or implementation authorization. G2 architecture 6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d, PRE-MAIN 9809203fd915a84bae056a67210e9213879840db. The 49 numbered tasks and their original evidence/owner/smallest witness appear below with no truncation.
 
 ## Post-G4 finite material-work delta — original 49 GAP IDs preserved

@@ -1,5 +1,15 @@
 # ROADMAP:S01 — The governed original35 source estate and original scientific meaning
 
+## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
+
+**SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
+
+- **Original source code found without native permission:** historic [V550 classifier](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_source_structure.py#L322), [readiness](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_readiness.py#L330), [question-use contract](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_question_use.py#L2160), [question-relation authority](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_question_relation_authority.py#L727) and [V551 directionality audit](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_directionality_expectation.py#L35) have exact source bodies; historical source permissions may be encoded, but none grants current original35 U/Epre.
+- **Current candidate capital:** B49's selected source-rule code [@b5600d](https://github.com/maidiu/rawlsing/blob/b5600da96358f8526471d635a1befa8daa3f098b/rawlsing_next/pre553_inherited_source_rules.py#L409), and R157 actual [config→C11/reader/library](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/source_configuration/factory.py#L516). R157 was P5 author-local with P6 still outstanding at M3 cut; B49's 50/7/1141 selection counts are for a limited attitude U purpose, not original35 native issuance. Do not infer 119 paths or 18,413 physical variables are administered/permitted U.
+
+---
+
+
 ## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
 
 **Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).

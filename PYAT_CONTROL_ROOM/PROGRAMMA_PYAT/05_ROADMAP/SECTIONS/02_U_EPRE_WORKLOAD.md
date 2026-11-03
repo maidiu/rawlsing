@@ -1,5 +1,15 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
+## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
+
+**SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
+
+- **Reuse, not compiler invention:** R03 `compile_governed_frontier` and `execute_governed_frontier` exist at frozen control; G50 [typed policy/finite enumerator](https://github.com/maidiu/rawlsing/blob/d379bafe36b8d89da27ea5bf33614d33aca7f2d2/WORKER_RETURNS/PYAT-R50-G50-GOVERNED-OPERATION-GRAMMAR-R1/g50/enumerate.py#L92) and I51 [one-target adapter](https://github.com/maidiu/rawlsing/blob/9bbf9e0509411beb210331d28160324b005a784e/WORKER_RETURNS/PYAT-R51-I51-B49-G50-JOINED-PRODUCER-R1/candidate/r51_joined_source_producer.py#L186) are *additional, unmerged sourcefree* capital. I51 refuses conditions and multi-target; G50 toy I05 is distinct from a B49-derived I05 execution. B49 synthetically materializes only two fields.
+- **Engineering boundary:** reconcile B49's `SelectedSourceRulePackage` with the frozen control `NativeSourcePackage`, then connect an externally issued operation to R03→I03/I05/Batch only with selected source/host rights. No original35 authorized `U_item/U_unit/U_app/Epre`, actual denominator, no-drop or true first native consumer is issued by these findings. Original GAP-006–010 and S-WORKLIST/S-I05 requiredness persist.
+
+---
+
+
 ## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
 
 **Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).

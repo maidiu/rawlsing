@@ -1,5 +1,15 @@
 # ROADMAP:S08 — F7 original comparable-wave evidence and independent structural time
 
+## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
+
+**SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
+
+- **Candidate code absent from former guide function pointer:** [P07 temporal comparator](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py#L642) supports caller-provided eight-surface comparability and typed refusal, plus [exact as-of selection](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py#L839), **branch-only** at source cut, author 24/24+2/2 with independent #571 only dispatched. Historical [V551J semantic diff](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_semantic_diff.py#L444) and [V553 wave-pressure delta](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v553_temporal_pressure.py#L2596) have static code/caller but are not original F7 native estimand approvals.
+- Preserve older HQ235 and strict F7 comparator distinctions; 24/24 author-local, 163/163 historical scope and native comparable original-wave acceptance are separate. N8E→N8S stays IF, not a global mandatory edge.
+
+---
+
+
 ## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
 
 **Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).

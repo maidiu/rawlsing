@@ -1,5 +1,19 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+
+## PROG5-SAT-R five-route receiving — additive code capital and confidence (2026-11-03)
+
+**Documentary integration candidate; not self-reviewed, native-executed or protected-adopted.** Five required independent returns are verified at exact terminal cuts: [M1 aebb265](https://github.com/maidiu/rawlsing/commit/aebb265af79d09c81800129403d914d50fa6e2bd), [M2 f24f446](https://github.com/maidiu/rawlsing/commit/f24f446eefdaa86e493153eb00b77e1bc2bd087d), [M3 a21b46e](https://github.com/maidiu/rawlsing/commit/a21b46ee2920c2ac1699b38cc11ea4e6771fa46d), [M4 14a6c64](https://github.com/maidiu/rawlsing/commit/14a6c6490a64c327f178f10cbba6274d22eaa4e5), [M5 d74d655](https://github.com/maidiu/rawlsing/commit/d74d65562942254a4162bd6ad83c6d72ad698b1c). Earlier prepared SHAs were not counted.
+
+**Start with:** [SATURATION_SOURCE_INTAKE_AND_CONFIDENCE.md](SATURATION_SOURCE_INTAKE_AND_CONFIDENCE.md) for exact corroboration, contradictions and bounded confidence; [34-row material/dedup ledger](SATURATION_MATERIAL_DISCOVERIES.jsonl) for cut/blob/path/symbol/first reader and authority; [Codex HQ reuse handback](SATURATION_CODEX_REUSE_HANDOFF.md) for BUILD_FROM_NOTHING vs REUSE/ADAPT vs CONNECT vs TEST/QUALIFY vs owner decisions; [exact unresolved](SATURATION_EXACT_UNRESOLVED.md). Additive [345 original requirement owner links](SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [25 parity deltas](SATURATION_PARITY_OVERLAY.jsonl), [14 same-ID seam observations](SATURATION_SEAM_SCOPE_OVERLAY.jsonl) and [35 child status notes](SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl) are **new evidence grains, not recensed historical rows**.
+
+**Actual capital:** twelve *historical original* source-body function groups recovered by M1; three **unmerged sourcefree** B49/G50/I51 function families (eight function-stage rows) recovered by M5; two stronger **unmerged** R157 config→C11 and F7/P07 temporal code pointers by M3; two M4 proof-scope corrections; M2 found **zero new organ/function requirement** but 133 primary + 94 secondary missing navigation links and seven overlapping J references. These are not all independent current working engines. Existing R03 compiler/anti-join, selected sourcefree R06/J42 consumers, R09V-R2 **REVISE/HOLD**, and A42 **N11_NOT_READY** remain as before. R06's joined selector validates caller receipts, and its retained R05-backed P41 is one Y|X step, distinct from J42 three-step. Historical V552 contradiction tensor remains an empty schema, despite a separate real V552 distribution recomputation body.
+
+**Finite judgment:** no broad next mining fleet auto-authorized. If actual Codex HQ chooses B49/G50/I51 port, one named exact ABI/source-to-first-reader comparison against its selected R03/C11/I03/I05 tip has high value; source permission and independent review remain separate. Original **11 Sxx / 51 children / 782 INDEX / 892 G1 / 150 parity / 82 seams / 62 capsules / 49 GAPs** are preserved. A different cold-use reviewer, only after material source work chosen by user, decides guide usability; this receiving agent does not self-accept.
+
+---
+
+
 ## Post-G4 late returned-source intake — 2026-11-03
 
 **L1/L2/L3 are received as documented candidate evidence; no science or protected production grant.** Exact final worker commits: [L1 R40–R49](https://github.com/maidiu/rawlsing/commit/e7ead127edbe83385e1a04e6e874de8a66fc5b39), [L2 R50–R95](https://github.com/maidiu/rawlsing/commit/2f91ef644871ab3de35cdc1ca8a92af18a4310d4), [L3 four source requests](https://github.com/maidiu/rawlsing/commit/a73bc57e12949f27867abde7fe9f33fea3a58052). G4 remains eleven organs/51 child functions. Its **782 typed IDs, 892 G1 dispositions, 150 historical/current parity, 82 source-cut seam states, 62 component grades and 49 material GAP IDs** are preserved unchanged; never re-date their grades to a later returned branch.
