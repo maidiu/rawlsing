@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "SAME_SOURCE_ACTUAL_STEP_CONDITIONER_REACHES_P41",
+      "actual_consumer": "actual unchanged P41 through select_r05_world_view",
+      "claimed_dependency": "P41 actual selected view consumes the real STEP conditioner identity, not the historical hard-coded X=1",
+      "positive_node": "rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41",
+      "fault": {
+        "path": "rawlsing_next/pre553_universal_world_binding.py",
+        "old": "tuple(item) for item in step.get(\"conditioners\", ((\"X\", 1),))",
+        "new": "tuple(item) for item in ((\"X\", 1),)"
+      }
+    }
+  ]
+}
