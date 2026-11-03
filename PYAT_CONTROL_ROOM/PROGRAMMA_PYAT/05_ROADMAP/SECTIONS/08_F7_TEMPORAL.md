@@ -1,5 +1,16 @@
 # ROADMAP:S08 — F7 original comparable-wave evidence and independent structural time
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S08.1–S08.4; GAP-034–037.** L1 W41 clock/budget views and F43 strict_temporal_gate distinguish **modeled world clocks** from actual original comparable waves. Later R06 [P41 T0/T1 route and refusal](https://github.com/maidiu/rawlsing/blob/b2cfe93cee854b7aff2081a7a223ada75295332a/rawlsing_next/pre553_universal_world_binding.py#L913) requires changed payloads; equal-payload refuses **R05_TEMPORAL_PAIR_NOT_CONSUMED**. Synthetic scenario changes E04 route to blocked resource condition, a real bounded local first-consumer observation, **not** F7 original measured comparable-wave change or N8S structurally authorized time.
+
+**Seams:** ASTRA:IF:N8E:N8S is IF only for selected structural clock using empirical change; N8E/N8S→N9 families remain IF demanded. Historical strict comparator/63 potential within-family pairs and RED old cuts remain dated. **Next owner:** original comparable-wave/risk-set/weight authority with temporal uncertainty and actual world as-of N9 read.
+
+---
+
+
 [Roadmap](../README.md) · [S01 source authority](01_SOURCE_GOVERNANCE.md) · [S04 empirical](04_F1_F4_EMPIRICAL.md) · [S06 structural](06_FIELD_FORGE_F5.md) · [S07 F6 parallel branch](07_F6_FIELDS.md) · [S09 served world](09_N9_WORLD.md) · [original interfaces](../PLANNED_INTERFACES.jsonl)
 
 **Guide status at pinned PRE-MAIN: N8E original comparable-wave source/science HELD; N8E measured producer MISSING; N8S structural-clock product and its IF dependency UNKNOWN; no selected N9 as-of receiver proved.** The modern V554 ingress/dedup implementation exists and is not an F7 estimator. Historical HQ211/HQ227 strict functions remain historically bounded; S04 nearest-anchor backoff is not an alternative source-comparability right. No S2/S3 tests or original survey execution occurred during this guide edit.
