@@ -24,8 +24,13 @@ GUIDE_ROOT = "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK"
 GATES_FILE = GUIDE_ROOT + "/14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl"
 SEAMS_FILE = GUIDE_ROOT + "/15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl"
 JOIN_E_SUBJECT = "7bf2da302996491ddf34b9a039fea47ac982d135"
+JOIN_E_SOURCE_PATH = "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
 JOIN_V_REVIEW = "4387dc818a96fda2d5271672505fbd9da1059703"
+JOIN_V_REVIEW_PATH = "WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md"
 REVIEW_RRIF_SUBJECT = "598d9e9eaba5143950c63317705fd09104fbf463"
+REVIEW_RRIF_NODE = "JOIN_C12_HOLD"
+REVIEW_RRIF_SOURCE_PATH = "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+REVIEW_RRIF_REVIEW_PATH = "WORKER_RETURNS/SOROK_RRIF_R2_INDEPENDENT_HOSTILE_FIRST_CONSUMER_REVIEW_R1/00_RETURN.md"
 VALID_KINDS = {"RETURN_CANDIDATE", "SCOPED_REVIEW", "REVIEW_REVISE"}
 HIGHER_GRADES = {"NATIVE", "OWNER_ADOPTED", "HUMAN_A5", "ORIGINAL_SCIENCE_ISSUED", "FULL_GATE_ACCEPT"}
 VALID_SOURCEFREE_GRADES = {"TEST_ONLY_SOURCEFREE", "SOURCEFREE_SCOPED", "DOCUMENTARY_SOURCE", "INDEPENDENT_NEGATIVE_SOURCE"}
@@ -122,9 +127,12 @@ def _positive_join_e(state: dict, payload: dict) -> dict:
     _must(payload.get("node_id") == "JOIN_E_7BF", "SCOPED_ACCEPTANCE_NODE_NOT_JOIN_E")
     _must(payload.get("guide_ref") == "E021@VERIFY", "SCOPED_ACCEPTANCE_WRONG_GUIDE_MEMBER")
     _must(payload.get("subject_sha") == JOIN_E_SUBJECT, "SCOPED_ACCEPTANCE_CROSS_SUBJECT")
+    _must((payload.get("source") or {}).get("path") == JOIN_E_SOURCE_PATH,
+          "SCOPED_ACCEPTANCE_SOURCE_PATH_MISMATCH")
     _must(payload.get("coordinate", {}).get("root") == "JOIN_E_7BF_SOURCEFREE", "SCOPED_ACCEPTANCE_CROSS_ROOT")
     record = payload.get("review") or {}
     _must(record.get("commit") == JOIN_V_REVIEW, "SCOPED_ACCEPTANCE_CROSS_REVIEW")
+    _must(record.get("path") == JOIN_V_REVIEW_PATH, "SCOPED_ACCEPTANCE_REVIEW_PATH_MISMATCH")
     _verify_object(record)
     evid = {"kind": "ACCEPTANCE_RECORD", "reviewed_sha": JOIN_E_SUBJECT,
             "acceptance": {"record_ref": record["commit"] + ":" + record["path"],
@@ -138,12 +146,16 @@ def _positive_join_e(state: dict, payload: dict) -> dict:
 
 
 def _negative_review(payload: dict) -> dict:
+    _must(payload.get("node_id") == REVIEW_RRIF_NODE, "REVISE_NODE_NOT_JOIN_C12_HOLD")
     _must(payload.get("subject_sha") == REVIEW_RRIF_SUBJECT, "REVISE_SUBJECT_NOT_RRIF_R2")
     _must(payload.get("guide_ref") in {"C12@VERIFY", "C9@INTEGRATE", "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY"},
           "REVISE_UNMAPPED_SCOPE")
+    _must((payload.get("source") or {}).get("path") == REVIEW_RRIF_SOURCE_PATH,
+          "REVISE_SOURCE_PATH_MISMATCH")
     record = payload.get("review") or {}
     _must(record.get("commit") == "8090a1ea308ab17f302f55bb2639c3e4cd774c7a",
           "REVISE_REVIEW_CUT_MISMATCH")
+    _must(record.get("path") == REVIEW_RRIF_REVIEW_PATH, "REVISE_REVIEW_PATH_MISMATCH")
     ref, body = _verify_object(record)
     _must("REVISE_MATERIAL_DEFECTS" in body and REVIEW_RRIF_SUBJECT in body,
           "REVIEW_DOES_NOT_BIND_NEGATIVE_AND_SUBJECT")
@@ -181,6 +193,9 @@ def validate_delta(state: dict, payload: Any) -> dict:
     _must(bool(str(payload.get("next_evidence") or "").strip()), "NEXT_EVIDENCE_REQUIRED")
     source, _ = _verify_object(payload.get("source"))
     _must(str(payload.get("return_sha") or "") == source["commit"], "RETURN_SHA_SOURCE_COMMIT_MISMATCH")
+    # A valid object at another cut is not a receipt for the claimed subject.
+    _must(source["commit"] == str(payload.get("subject_sha") or source["commit"]),
+          "SOURCE_COMMIT_SUBJECT_MISMATCH")
     if kind == "RETURN_CANDIDATE":
         # A genuine but unrelated Git blob is not a receipt for this node.
         inherited = lr._node_map(state)[payload["node_id"]].get("source_refs") or []
@@ -453,7 +468,9 @@ def query(state: dict, command: str, target: str | None = None) -> dict:
     if command == "work-now":
         return {"existing_P0_P1": state["work_now"].get("candidates", []),
                 "existing_parallel_groups": state["work_now"].get("parallel_groups", []),
-                "live_phase_changes": live["pending"], "source_cut": GUIDE_SHA,
+                "live_phase_changes": live["pending"],
+                "programma_live": state["work_now"].get("programma_live"),
+                "source_cut": GUIDE_SHA,
                 "no_agent_dispatch": True}
     if command == "changes-since":
         events = state.get("programma_deltas", [])

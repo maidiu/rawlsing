@@ -66,6 +66,8 @@ def test_real_join_e_then_s35_cold_replay_and_one_entry_work_now(tmp_path):
     assert any(x["ref"] == "O05@ACCEPT" for x in now["live_phase_changes"])
     s35 = next(x for x in now["live_phase_changes"] if x["ref"] == "O05@ACCEPT")
     assert s35["receipts"][0]["code_reader"] == "NONE"
+    assert now["programma_live"]["changed_refs"] == ["E021@VERIFY", "O05@ACCEPT"]
+    assert now["programma_live"] == loaded["work_now"]["programma_live"]
     assert loaded["programma_live"]["native_person_human_claims"] == "NONE_ISSUED"
     assert not any(r["target_stage_issued"] for r in loaded["programma_live"]["gates"].values())
     assert loaded["programma_live"]["gates"]["G-C9-T-ANY"]["decision"] == "MODE_UNSELECTED_HOLD"
@@ -337,3 +339,190 @@ def test_qualified_join_source_withdrawal_and_restoration_regrades_exact_delta(t
             if member["ref"] == "E021@VERIFY":
                 assert member["qualifies_now"] is matched[[x[0] for x in matched].index(gate["gate_id"])][2]
     assert lr.rebuild_from_journal(journal, operating=True)["state_digest"] == restored["state_digest"]
+
+
+def test_scoped_review_source_cut_must_equal_reviewed_subject(tmp_path):
+    journal, st = state_env(tmp_path)
+    source = packet("join_e_scoped_review.json")
+    foreign = packet("s35_authored_sourcefree.json")
+    source["source"] = copy.deepcopy(foreign["source"])
+    source["return_sha"] = foreign["source"]["commit"]
+    source["locator"] = copy.deepcopy(foreign["locator"])
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="SOURCE_COMMIT_SUBJECT_MISMATCH"):
+        append_fixture(st, source)
+    assert journal.read_bytes() == before
+
+
+def test_scoped_review_source_path_must_be_exact_join_e_return(tmp_path):
+    journal, st = state_env(tmp_path)
+    source = packet("join_e_scoped_review.json")
+    code = source["coordinate"]["code"]
+    source["source"] = copy.deepcopy(code)
+    source["locator"] = {"path": code["path"], "quote": "class JoinedSession"}
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="SCOPED_ACCEPTANCE_SOURCE_PATH_MISMATCH"):
+        append_fixture(st, source)
+    assert journal.read_bytes() == before
+
+
+def test_real_foreign_reviewer_commit_is_not_transferable(tmp_path):
+    journal, st = state_env(tmp_path)
+    source = packet("join_e_scoped_review.json")
+    source["review"]["commit"] = "b65c75a9e62618690f7d02265bc9e850af549161"
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="SCOPED_ACCEPTANCE_CROSS_REVIEW"):
+        append_fixture(st, source)
+    assert journal.read_bytes() == before
+
+
+def test_forged_source_commit_and_quote_are_refused_before_append(tmp_path):
+    journal, st = state_env(tmp_path)
+    missing = packet("join_e_scoped_review.json")
+    missing["source"]["commit"] = "0" * 40
+    missing["return_sha"] = "0" * 40
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="FORGED_OR_MISSING_GIT_SOURCE"):
+        append_fixture(st, missing)
+    assert journal.read_bytes() == before
+    quote = packet("join_e_scoped_review.json")
+    quote["locator"]["quote"] = "THIS EXACT QUOTE DOES NOT EXIST IN THE SOURCE CUT"
+    with pytest.raises(ad.DeltaRefused, match="SOURCE_LOCATOR_UNVERIFIED"):
+        append_fixture(st, quote)
+    assert journal.read_bytes() == before
+
+
+def test_negative_review_source_cut_and_node_are_exact(tmp_path):
+    journal, st = state_env(tmp_path)
+    foreign_source = packet("rrif_r2_negative.json")
+    join = packet("join_e_scoped_review.json")
+    foreign_source["source"] = copy.deepcopy(join["source"])
+    foreign_source["return_sha"] = join["source"]["commit"]
+    foreign_source["locator"] = copy.deepcopy(join["locator"])
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="SOURCE_COMMIT_SUBJECT_MISMATCH"):
+        append_fixture(st, foreign_source)
+    assert journal.read_bytes() == before
+    wrong_node = packet("rrif_r2_negative.json")
+    wrong_node["node_id"] = "JOIN_E_7BF"
+    wrong_node["owner_slot"] = "JOIN_E_OWNER"
+    with pytest.raises(ad.DeltaRefused, match="REVISE_NODE_NOT_JOIN_C12_HOLD"):
+        append_fixture(st, wrong_node)
+    assert journal.read_bytes() == before
+
+
+def test_seven_views_share_one_cold_reconstructed_state(tmp_path):
+    journal, st = state_env(tmp_path)
+    append_fixture(st, packet("join_e_scoped_review.json"))
+    append_fixture(st, packet("s35_authored_sourcefree.json"))
+    append_fixture(st, packet("rrif_r2_negative.json"))
+    expected_head = es.journal_head(journal)
+    st.unlink()
+    snapshot = st.parent / "SNAPSHOT.json"
+    if snapshot.exists():
+        snapshot.unlink()
+    cold = lr._load_state(st)
+    assert cold["journal_head"] == expected_head
+    assert cold["revision"] == 4
+    digest = cold["state_digest"]
+    assert len(cold["programma_deltas"]) == 3
+
+    freshness = ad.query(cold, "freshness")
+    assert freshness["journal_head"] == expected_head
+    assert freshness["revision"] == 4
+    assert freshness["changes"] == 3
+    assert freshness["pending_qualification"] == "SOURCE_GRADED_UPDATES__HQ_ADOPTION_PENDING"
+
+    changes = ad.query(cold, "changes-since", ad.GUIDE_SHA)
+    assert changes["count"] == 3
+    assert [c["id"] for c in changes["changes"]] == [
+        "JOIN_E_7BF_SCOPED_REVIEW", "S35_P1_SOURCEFREE_RETURN_ONLY",
+        "RRIF_R2_598D_8090_INDEPENDENT_REVISE"]
+
+    whole = ad.query(cold, "whole")
+    assert [p["ref"] for p in whole["candidate_live_updates"]] == [
+        "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+    assert whole["source_cut"] == ad.GUIDE_SHA
+
+    focus = ad.query(cold, "focus", "C12@INTEGRATE")
+    assert [g["gate_id"] for g in focus["guide_phase_gates"]] == ["G-C12-NATIVE-INTEGRATE"]
+    assert focus["guide_phase_gates"][0]["decision"] == "BLOCKED_MEMBERS_UNISSUED"
+    assert focus["guide_phase_gates"][0]["target_stage_issued"] is False
+
+    goal = ad.query(cold, "goal", "C9@INTEGRATE")
+    gates = {g["gate_id"]: g for g in goal["guide_phase_gates"]}
+    assert gates["G-C9-NATIVE-INTEGRATE"]["decision"] == "BLOCKED_MEMBERS_UNISSUED"
+    assert gates["G-C9-T-ANY"]["decision"] == "MODE_UNSELECTED_HOLD"
+    assert not any(g["target_stage_issued"] for g in gates.values())
+
+    source_to_product = ad.query(cold, "source-to-product", "E021@VERIFY")
+    assert source_to_product["no_transitive_acceptance"] is True
+    receipt = source_to_product["phase"]["receipts"][0]["receipts"][0]
+    assert receipt["source_cut"] == ad.JOIN_E_SUBJECT
+    assert receipt["code_reader"] == "class JoinedSession"
+
+    work_now = ad.query(cold, "work-now")
+    assert [p["ref"] for p in work_now["live_phase_changes"]] == [
+        "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+    assert work_now["programma_live"]["changed_refs"] == [
+        "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+    assert work_now["no_agent_dispatch"] is True
+
+    assert lr._load_state(st)["state_digest"] == digest
+
+
+def test_three_event_order_permutation_preserves_scoped_semantics(tmp_path):
+    names = ("join_e_scoped_review.json", "s35_authored_sourcefree.json",
+             "rrif_r2_negative.json")
+
+    def project_order(root, order):
+        _, state_path = state_env(root)
+        for index in order:
+            append_fixture(state_path, packet(names[index]))
+        return lr._load_state(state_path)["programma_live"]
+
+    first = project_order(tmp_path / "forward", (0, 1, 2))
+    second = project_order(tmp_path / "reverse", (2, 1, 0))
+    assert first["changed_refs"] == second["changed_refs"] == [
+        "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+    assert first["active_receipts"] == second["active_receipts"] == 3
+    assert {k: v["decision"] for k, v in first["gates"].items()} == {
+        k: v["decision"] for k, v in second["gates"].items()}
+    assert not any(g["target_stage_issued"] for g in first["gates"].values())
+    assert not any(g["target_stage_issued"] for g in second["gates"].values())
+    for view in (first, second):
+        assert view["scoped_transition_states"]["JOIN_E_7BF"][ad.JOIN_E_SUBJECT][
+            "E021@VERIFY"]["review"] == "INDEPENDENT_SCOPED_7BF_REVIEWED_SOURCEFREE_ONLY"
+        assert view["scoped_transition_states"]["JOIN_C12_HOLD"][ad.REVIEW_RRIF_SUBJECT][
+            "C12@VERIFY"]["review"] == "REVIEW_REVISE_MATERIAL_AT_EXACT_CUT"
+    assert [p["receipts"][0]["status"] for p in first["pending"]] == [
+        p["receipts"][0]["status"] for p in second["pending"]]
+
+
+def test_unsupported_negative_review_cut_is_refused(tmp_path):
+    journal, st = state_env(tmp_path)
+    source = packet("rrif_r2_negative.json")
+    source["review"]["commit"] = ad.JOIN_V_REVIEW
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="REVISE_REVIEW_CUT_MISMATCH"):
+        append_fixture(st, source)
+    assert journal.read_bytes() == before
+
+
+def test_direct_forged_delta_event_fails_closed_on_replay(tmp_path):
+    journal, _ = state_env(tmp_path)
+    forged = packet("join_e_scoped_review.json")
+    forged["grade"] = "NATIVE"
+    es.append_event(journal, lr._event("PROGRAMMA_DELTA", forged, source=forged["source"]))
+    with pytest.raises(ad.DeltaRefused, match="UNISSUED_NATIVE_OWNER_OR_HUMAN_GRADE"):
+        lr.rebuild_from_journal(journal, operating=True)
+
+
+def test_direct_duplicate_transition_with_changed_payload_fails_closed(tmp_path):
+    journal, st = state_env(tmp_path)
+    append_fixture(st, packet("join_e_scoped_review.json"))
+    changed = packet("join_e_scoped_review.json")
+    changed["next_evidence"] = "SWAPPED DIRECTLY UNDER THE SAME TRANSITION ID"
+    es.append_event(journal, lr._event("PROGRAMMA_DELTA", changed, source=changed["source"]))
+    with pytest.raises(ad.DeltaRefused, match="DELTA_ID_COLLISION"):
+        lr.rebuild_from_journal(journal, operating=True)
