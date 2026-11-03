@@ -339,6 +339,16 @@ P41_PACKET = ("WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-"
 
 
 def _materialize_p41_runtime():
+    # CI may have a shallow checkout: recover only the exact pinned runtime object.
+    present = subprocess.run(
+        ["git", "cat-file", "-e", P41_COMMIT + "^{commit}"],
+        cwd=str(REPO_ROOT), capture_output=True,
+    )
+    if present.returncode:
+        subprocess.run(
+            ["git", "fetch", "--no-tags", "--depth=1", "origin", P41_COMMIT],
+            cwd=str(REPO_ROOT), check=True, capture_output=True, timeout=180,
+        )
     base = Path(tempfile.mkdtemp(prefix=".r06r2-p41-", dir=REPO_ROOT))
     archive = base / "p41.tar"
     subprocess.run(
