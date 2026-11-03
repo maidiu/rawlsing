@@ -1,5 +1,10 @@
 # Mandatory mutual HQ grounding and progress publication
 
+## CURRENT CROSS-HQ PROGRAMMA LIVING-STATE OPERATING SPINE — CANDIDATE PATCH, NOT YET ADOPTED (2026-11-03)
+
+Before grok, material intake, prioritization or HQ resumption, inspect the proposed [one-page operating spine](PROGRAMMA/02_HQ_OPERATING_SPINE_LIVE_UPDATE_AND_CONSOLIDATION_CANDIDATE_R1.md). It consolidates **existing** terminal-product, full-source inheritance, current first-consumer evidence, non-fabricated authority and **direct incumbent HQ→PROGRAMMA current-map write-through** obligations; the latest verified current guide cut and pending deltas must be explicitly distinguished. A `PROGRAMMA_DELTA` filed only in a worker return is not the current guide. The compact read order is a **proposed consolidation**, not a supersession of adopted PRE-MAIN/source/owner/commission law, an HQ appointment, a new approval court or protected merge. If a guide change cannot yet be integrated, pin its actual isolated branch/commit as `PENDING_GUIDE_INTEGRATION` and preserve the older guide's truthful scope.
+
+
 ## PRIORITY ZERO — EVERY RABOCHII COMMISSION IS A STANDALONE COPY-PASTE LAUNCH WITH VISIBLE AGENT TYPE AND INTELLIGENCE (USER DIRECTIVE 2026-10-30)
 
 **Constitutive pre-dispatch rule, binding on every future fresh/resumed HQ grok, commission, return-driven dispatch and user-visible launch message in both Pyat and Sorok:** A worker/agent commission is **INVALID FOR DISPATCH** unless the user can copy **one complete, executable natural-language prompt for that one agent**, without reconstructing it from a link, summary, external issue, multiple replies or missing parameters. Put each commission in its own clearly delimited fenced plain-text block in the user-visible answer AND store the same full copy-paste text in any corresponding GitHub issue/commission artifact. **Never provide only issue links or a roster of prompts as the user-visible handoff.** If multiple agents are proposed, supply one *independent complete* copy-paste block per agent. A separate issue or generic role description is insufficient.
