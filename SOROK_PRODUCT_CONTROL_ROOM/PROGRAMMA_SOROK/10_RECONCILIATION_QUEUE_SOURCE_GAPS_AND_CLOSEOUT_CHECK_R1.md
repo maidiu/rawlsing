@@ -232,4 +232,4 @@ S11 WP-37 specification returned at faec7ce909c54664e85320534bdf744b9bc47d37. WP
 
 ### WP-19 runtime return
 
-WP-19 author-tested runtime at 3c4df43f813cd0727feff04f620aa0bbd9a63026. wp19.cli consumes CP-A5 EncounterReader.view/ask and JOIN-E C12 and do_help. Seven author tests; local exit only. World actions, delivery, time advance and human validation remain held or unrun. Next: verify privacy and actual reader behavior at this cut.
+WP-19 author-tested runtime at 3c4df43f813cd0727feff04f620aa0bbd9a63026. wp19.cli consumes CP-A5 EncounterReader.view/ask and JOIN-E C12 and do_help. Seven author tests and HQ replay (7 passed in 10.10s at the same cut): pinned readers, unperceived event filtering, UNKNOWN and help accept/refuse. Local exit only. World actions, delivery, time advance and human validation remain held or unrun. Next: verify privacy and actual reader behavior at this cut.
