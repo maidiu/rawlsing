@@ -38,19 +38,17 @@ from candidate.pipeline import run_candidate_path
 from . import access
 from .access import S35ActorAccessRequest, S35Context, S35Evaluation
 
-WORLD_SCHEMA = "SOROK_S35_ACCESS_WORLD@1"
-RUN_SCHEMA = "SOROK_S35_ACCESS_RUN@1"
+WORLD_SCHEMA = "SOROK_S35_ACCESS_WORLD@2"
+RUN_SCHEMA = "SOROK_S35_ACCESS_RUN@2"
 GRADE = "TEST_ONLY_SOURCEFREE_NOT_NATIVE"
 RULE_ID = "TEST_ONLY_S35_CAN008_A"
 RULE_AUTHORITY = "TEST_ONLY_S35_CAN008_A_AUTHORITY"
 RULE_VERSION = "1"
 RULE_CONTENT_HASH = digest(
-    {"schema": "S35_ACTOR_ACCESS_RESPONSE_RULE@1", "test_only": True}
+    {"schema": "S35_ACTOR_ACCESS_RESPONSE_RULE@2", "test_only": True}
 )
 RULE_ISSUER = "TEST_ONLY_S35_RESPONSE_OWNER"
 READER_ID = "TEST_ONLY_S35_TARGETLESS_READER"
-
-_AUTO = object()
 
 
 class S35Refusal(ValueError):
@@ -100,11 +98,12 @@ def _response_rule(actor_id: str) -> ResponseRule:
         RULE_ISSUER,
         True,
         (actor_id,),
-        (access.S35_ACCESS_SOURCE_CLASS, access.S35_RESPONSE_SOURCE_CLASS),
+        (access.S35_ACCESS_SOURCE_CLASS, access.S35_ACTION_SOURCE_CLASS),
         "TEST_ONLY_SOURCEFREE_TECHNICAL",
         (
-            "source_bound_actor_local_e1_access",
-            "separately_witnessed_actor_owned_timely_request",
+            "a_local_perception_receipt",
+            "a_owned_action_occurrence_receipt",
+            "root_branch_clock_binding",
             "zero_target_proposals",
         ),
     )
@@ -325,79 +324,94 @@ class S35World:
             producer.close()
             raise
 
-    def make_access(
+    def perception_receipt(
         self,
         *,
-        source_ref: str | None = None,
-        access_status: str = "ACCESSIBLE",
-        access_time: int | None = None,
+        source_ref: str = "TEST_ONLY_ADP017_ACCESS_S35_A_LOCAL_PERCEPTION",
+        perception_ref: str | None = None,
+        access_status: str,
+        perceived_at: int | None = None,
         scene: str | None = None,
         content: Mapping[str, Any] | None = None,
         revoked: bool = False,
+        evidence_grade: str = access.S35_GRADE_CONTROLLED,
+        actual_actor_input: bool = False,
+        native: bool = False,
+        qualification: str = access.S35_QUALIFICATION_CONTROLLED,
     ) -> dict:
-        if source_ref is None:
-            source_ref = (
-                "TEST_ONLY_ADP017_ACCESS_S35_" + str(self.source["b_operation"])
-            )
-        return access.make_actor_local_access_witness(
+        if perception_ref is None:
+            perception_ref = "TEST_ONLY_A_PERCEPTION_" + str(access_status)
+        return access.make_a_local_perception_receipt(
             context=self.context,
             source_ref=source_ref,
+            perception_ref=perception_ref,
             access_status=access_status,
-            access_time=access_time,
+            perceived_at=(
+                self.context.event_time if perceived_at is None else perceived_at
+            ),
             scene=scene,
             content=content,
             revoked=revoked,
+            evidence_grade=evidence_grade,
+            actual_actor_input=actual_actor_input,
+            native=native,
+            qualification=qualification,
         )
 
-    def make_response(
+    def action_receipt(
         self,
         *,
-        source_ref: str | None = None,
-        response_ref: str | None = None,
-        response_kind: str | None = None,
-        response_time: int | None = None,
+        source_ref: str = "TEST_ONLY_A_ACTION_S35_A_OWNED",
+        action_ref: str | None = None,
+        action_kind: str,
+        performed: bool,
+        action_time: int | None = None,
         content: Mapping[str, Any] | None = None,
         revoked: bool = False,
+        evidence_grade: str = access.S35_GRADE_CONTROLLED,
+        actual_actor_input: bool = False,
+        native: bool = False,
+        qualification: str = access.S35_QUALIFICATION_CONTROLLED,
     ) -> dict:
-        if response_kind is None:
-            response_kind = (
-                "REQUEST_TOOL"
-                if self.source["b_operation"] == "SHARE_TOOL"
-                else "EXPLICIT_REFUSAL"
-            )
-        if source_ref is None:
-            source_ref = (
-                "TEST_ONLY_A_RESPONSE_S35_"
-                + str(self.source["b_operation"])
-                + "_"
-                + response_kind
-            )
-        if response_ref is None:
-            response_ref = (
-                "TEST_ONLY_S35_A_"
-                + str(self.source["b_operation"])
-                + "_"
-                + response_kind
-            )
-        return access.make_actor_owned_response_witness(
+        if action_ref is None:
+            action_ref = "TEST_ONLY_A_ACTION_" + str(action_kind)
+        return access.make_a_owned_action_receipt(
             context=self.context,
             source_ref=source_ref,
-            response_ref=response_ref,
-            response_kind=response_kind,
-            response_time=response_time,
+            action_ref=action_ref,
+            action_kind=action_kind,
+            performed=performed,
+            action_time=(
+                self.context.event_time + 1 if action_time is None else action_time
+            ),
             content=content,
             revoked=revoked,
+            evidence_grade=evidence_grade,
+            actual_actor_input=actual_actor_input,
+            native=native,
+            qualification=qualification,
         )
+
+    def _public_source_binding(self) -> dict:
+        return {
+            "b_actor": self.source.get("b_actor"),
+            "b_owner": self.source.get("b_owner"),
+            "b_event_ref": self.source.get("b_event_ref"),
+            "b_event_hash": self.source.get("b_event_hash"),
+            "b_to_actor": self.source.get("b_to_actor"),
+            "b_clock": self.source.get("b_clock"),
+        }
 
     def evaluate(
         self,
         label: str,
         *,
-        access_witness: Any = _AUTO,
-        response_witness: Any = _AUTO,
+        perception_receipt: Mapping[str, Any] | None = None,
+        action_receipt: Mapping[str, Any] | None = None,
         contradictory_context: bool = False,
         contradictory_refs: tuple[str, ...] = (),
         revoked_source_refs: frozenset[str] = frozenset(),
+        qualified_owner_resolver: Any = None,
         enacted_history_refs: tuple[str, ...] = (),
         other_person_offer_ref: str = "",
         material_opportunity_ref: str = "",
@@ -410,16 +424,13 @@ class S35World:
         if run_dir.exists():
             raise S35Refusal("S35_RUN_EXISTS", str(run_dir))
         run_dir.mkdir(parents=True)
-        if access_witness is _AUTO:
-            access_witness = self.make_access()
-        if response_witness is _AUTO:
-            response_witness = self.make_response()
         request = S35ActorAccessRequest(
-            access_witness=access_witness,
-            response_witness=response_witness,
+            perception_receipt=perception_receipt,
+            action_receipt=action_receipt,
             contradictory_context=bool(contradictory_context),
             contradictory_refs=tuple(contradictory_refs),
             revoked_source_refs=frozenset(revoked_source_refs),
+            qualified_owner_resolver=qualified_owner_resolver,
         )
         evaluated_as_of = self.context.as_of if as_of is None else int(as_of)
         lookup = lookup_rule(
@@ -457,14 +468,14 @@ class S35World:
                 "target_proposals": 0,
                 "target_state_rows": 0,
                 "context": self.context.as_dict(),
-                "source": self.source,
+                "source_binding": self._public_source_binding(),
                 "c8": self.c8_binding,
                 "request": {
-                    "access_witness": dict(access_witness)
-                    if isinstance(access_witness, Mapping)
+                    "perception_receipt": dict(perception_receipt)
+                    if isinstance(perception_receipt, Mapping)
                     else None,
-                    "response_witness": dict(response_witness)
-                    if isinstance(response_witness, Mapping)
+                    "action_receipt": dict(action_receipt)
+                    if isinstance(action_receipt, Mapping)
                     else None,
                     "contradictory_context": bool(contradictory_context),
                     "contradictory_refs": list(contradictory_refs),
@@ -492,13 +503,22 @@ class S35World:
 
         store_path = run_dir / "c9.sqlite"
         store = CandidateStore(store_path)
+        expected = {
+            "event_time": self.context.event_time,
+            "conditioning_readset": self.conditioning.readset_refs,
+            "material_eligible": self.material_eligible,
+            "eligible_material_refs": self.eligible_material_refs,
+            "actor_history_refs": tuple(enacted_history_refs),
+            "other_person_offer_ref": other_person_offer_ref,
+            "material_opportunity_ref": material_opportunity_ref,
+            "prior_response_count": 0,
+            "rule_lookup": lookup,
+        }
         current = {
             "context": self.context,
             "request": request,
             "evaluation": evaluation,
-            "conditioning_readset": self.conditioning.readset_refs,
-            "material_eligible": self.material_eligible,
-            "eligible_material_refs": self.eligible_material_refs,
+            "expected": expected,
         }
         token = access.set_current_context(current)
         try:
@@ -571,11 +591,11 @@ class S35World:
             context=self.context,
         )
         episode_body = {
-            "schema": "SOROK_S35_C12_ACCESS_BINDING@1",
+            "schema": "SOROK_S35_C12_ACCESS_BINDING@2",
             "grade": GRADE,
             "native": False,
             "label": label,
-            "source": self.source,
+            "source_binding": self._public_source_binding(),
             "c8": self.c8_binding,
             "context": self.context.as_dict(),
             "s35_receipt": dict(receipt),
@@ -613,18 +633,22 @@ class S35World:
             "target_proposals": 0,
             "target_state_rows": len(target_ids),
             "context": self.context.as_dict(),
-            "source": self.source,
+            "source_binding": self._public_source_binding(),
             "c8": self.c8_binding,
             "s35_receipt": dict(receipt),
             "s35_receipt_hash": receipt["hash"],
+            "evidence_grade": receipt.get("evidence_grade"),
+            "actual_actor_input": receipt.get("actual_actor_input"),
+            "qualification": receipt.get("qualification"),
+            "hold_reason": receipt.get("hold_reason"),
             "c12_episode": episode,
             "c12_episode_hash": episode["hash"],
             "request": {
-                "access_witness": dict(access_witness)
-                if isinstance(access_witness, Mapping)
+                "perception_receipt": dict(perception_receipt)
+                if isinstance(perception_receipt, Mapping)
                 else None,
-                "response_witness": dict(response_witness)
-                if isinstance(response_witness, Mapping)
+                "action_receipt": dict(action_receipt)
+                if isinstance(action_receipt, Mapping)
                 else None,
                 "contradictory_context": bool(contradictory_context),
                 "contradictory_refs": list(contradictory_refs),

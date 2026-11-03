@@ -13,6 +13,8 @@ install()
 from bp4.store import C12Store
 from candidate import digest, valid
 
+from .access import public_privacy_error
+
 
 def _load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf8"))
@@ -95,6 +97,7 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
             "REFUSED",
             "HELD",
         }
+        checks["refusal_public_privacy"] = not public_privacy_error(run)
         return {"ok": all(checks.values()), "checks": checks, "observed": observed}
 
     receipt_path = run_dir / "s35_receipt.json"
@@ -148,6 +151,36 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
         s35_receipt.get("claim_ceiling")
         == "OBSERVED_PRESENT_ACTION_ONLY_NOT_PSYCHOLOGICAL_RULE_A"
     )
+    checks["receipt_public_privacy"] = not public_privacy_error(s35_receipt)
+    checks["run_public_privacy"] = not public_privacy_error(run)
+    checks["response_row_public_privacy"] = not public_privacy_error(response_body)
+    checks["c9_receipt_public_privacy"] = not public_privacy_error(receipt_body)
+    grade = s35_receipt.get("evidence_grade")
+    actual = s35_receipt.get("actual_actor_input")
+    checks["evidence_grade_typed"] = grade in {
+        "TEST_ONLY_CONTROLLED_FIXTURE",
+        "QUALIFIED_ACTUAL_A_INPUT",
+        "ACTUAL_A_INPUT_UNAVAILABLE",
+    }
+    checks["actual_input_graded"] = (
+        (grade == "TEST_ONLY_CONTROLLED_FIXTURE" and actual is False)
+        or (grade == "QUALIFIED_ACTUAL_A_INPUT" and actual is True)
+        or (grade == "ACTUAL_A_INPUT_UNAVAILABLE" and actual is False)
+    )
+    outcome = str(s35_receipt.get("outcome", ""))
+    hold_reason = str(s35_receipt.get("hold_reason", ""))
+    checks["hold_reason_consistent"] = (
+        (outcome in {"A_LOCAL_PERCEPTION_HOLD", "A_OWNED_ACTION_HOLD"})
+        == bool(hold_reason)
+    )
+    if outcome not in {"A_LOCAL_PERCEPTION_HOLD", "A_OWNED_ACTION_HOLD"}:
+        checks["perception_ref_present"] = bool(s35_receipt.get("perception_ref"))
+    if outcome in {
+        "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "OBSERVED_CURRENT_REFUSAL",
+        "RECEIVABLE_NO_OBSERVED_UPTAKE",
+    }:
+        checks["action_ref_present"] = bool(s35_receipt.get("action_ref"))
 
     c12 = C12Store(world_root / "c12.sqlite")
     try:
@@ -195,6 +228,9 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
             and observed_body.get("target_branch") == "NO_CHANGE"
             and observed_body.get("target_reason") == "NO_PROPOSAL"
         )
+        checks["c12_episode_public_privacy"] = not public_privacy_error(
+            observed_body
+        )
         observed.update(
             {
                 "outcome": s35_receipt.get("outcome"),
@@ -202,6 +238,10 @@ def cold_verify(world_root: str | Path, label: str) -> dict:
                 "response_row_hash": response_key,
                 "c9_receipt_hash": receipt_key,
                 "s35_receipt_hash": s35_receipt.get("hash"),
+                "evidence_grade": s35_receipt.get("evidence_grade"),
+                "actual_actor_input": s35_receipt.get("actual_actor_input"),
+                "qualification": s35_receipt.get("qualification"),
+                "hold_reason": s35_receipt.get("hold_reason"),
                 "target_branch": receipt_body.get("target_branch"),
                 "target_reason": receipt_body.get("target_reason"),
                 "target_state_rows": len(c9["target_state"]),

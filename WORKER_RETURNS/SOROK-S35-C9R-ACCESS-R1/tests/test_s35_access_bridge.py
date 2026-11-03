@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from dataclasses import replace
+import json
 
 import pytest
 
+import candidate
+import candidate.pipeline as pipeline_module
 import firstclass
-from candidate import ResponseStatus, TargetBranch, TargetReason
+from candidate import ResponseStatus, TargetBranch, TargetReason, lookup_rule, seal
 from candidate.response_rules import DEFAULT_ISSUED_RESPONSE_RULES
 from candidate.target_rules import DEFAULT_ISSUED_TARGET_RULES
 from r31j.scenarios import evaluated
@@ -39,6 +43,29 @@ def refuse_world(tmp_path):
         world.close()
 
 
+def _perception(world, *, status="ACCESSIBLE", **kwargs):
+    return world.perception_receipt(access_status=status, **kwargs)
+
+
+def _action(world, *, kind="REQUEST_TOOL", performed=True, **kwargs):
+    return world.action_receipt(
+        action_kind=kind, performed=performed, **kwargs
+    )
+
+
+def _positive_args(world):
+    return {
+        "perception_receipt": _perception(
+            world,
+            perception_ref="TEST_ONLY_A_PERCEPTION",
+        ),
+        "action_receipt": _action(
+            world,
+            action_ref="TEST_ONLY_A_ACTION_REQUEST",
+        ),
+    }
+
+
 def _assert_positive(run):
     assert run.committed is True
     assert run.refused is False
@@ -54,6 +81,12 @@ def _assert_positive(run):
     assert run.receipt["target_proposals"] == []
     assert run.receipt["objective_material_implies_uptake"] is False
     assert run.receipt["native"] is False
+    assert run.receipt["evidence_grade"] == access.S35_GRADE_CONTROLLED
+    assert run.receipt["actual_actor_input"] is False
+    assert (
+        run.receipt["qualification"]
+        == access.S35_QUALIFICATION_CONTROLLED
+    )
 
 
 def _assert_valid_empty(run, outcome: str):
@@ -73,14 +106,26 @@ def _assert_valid_empty(run, outcome: str):
 def _same_world(world, run):
     context = world.context
     assert run.context == context
-    assert run.receipt["root_id"] == context.root_id
-    assert run.receipt["root_branch_hash"] == context.root_branch_hash
-    assert run.receipt["root_state_hash"] == context.root_state_hash
-    assert run.receipt["branch_id"] == context.branch_id
-    assert run.receipt["branch_hash"] == context.branch_hash
-    assert run.receipt["branch_parent_id"] == context.branch_parent_id
-    assert run.receipt["branch_fork_clock"] == context.branch_fork_clock
-    assert run.receipt["clock"] == context.clock
+    for field in (
+        "root_id",
+        "root_branch_hash",
+        "root_state_hash",
+        "branch_id",
+        "branch_hash",
+        "branch_parent_id",
+        "branch_fork_clock",
+        "clock",
+    ):
+        assert run.receipt[field] == getattr(context, field)
+    assert run.receipt["event_ref"] == context.event_ref
+    assert run.receipt["event_id"] == context.event_id
+    assert run.receipt["actor_id"] == context.actor_id
+
+
+def _assert_no_b_private_operation(value):
+    text = json.dumps(value, sort_keys=True)
+    assert "SHARE_TOOL" not in text
+    assert "REFUSE_TOOL" not in text
 
 
 def test_m35_exact_source_validation_and_lawful_change():
@@ -117,62 +162,115 @@ def test_m35_exact_source_validation_and_lawful_change():
     )
 
 
-def test_p1_positive_zero_target_and_cold_readback(share_world):
+def test_missing_actual_a_inputs_are_typed_holds(share_world):
     world, _ = share_world
-    run = world.evaluate("p1")
+    run = world.evaluate("actual-a-hold")
+    _assert_valid_empty(run, access.A_LOCAL_PERCEPTION_HOLD)
+    assert run.receipt["hold_reason"] == "ACTUAL_A_LOCAL_PERCEPTION_UNAVAILABLE"
+    assert run.receipt["evidence_grade"] == access.S35_GRADE_UNAVAILABLE
+    assert run.receipt["actual_actor_input"] is False
+    assert run.receipt["perception_ref"] == ""
+    assert run.receipt["action_ref"] == ""
+    assert cold_verify(world.root, "actual-a-hold")["ok"]
+
+
+def test_p1_controlled_positive_zero_target_and_cold_readback(share_world):
+    world, _ = share_world
+    run = world.evaluate("p1", **_positive_args(world))
     _assert_positive(run)
     _same_world(world, run)
-    assert run.receipt["response_kind"] == "REQUEST_TOOL"
-    assert run.receipt["response_performed"] is True
-    assert run.receipt["access_status"] == "ACCESSIBLE"
-    assert run.receipt["access_time"] == world.context.event_time
-    assert run.receipt["response_time"] == world.context.event_time + 1
+    assert run.receipt["perception_ref"] == "TEST_ONLY_A_PERCEPTION"
+    assert run.receipt["action_ref"] == "TEST_ONLY_A_ACTION_REQUEST"
+    assert run.receipt["action_kind"] == "REQUEST_TOOL"
+    assert run.receipt["action_performed"] is True
+    assert run.receipt["perceived_at"] == world.context.event_time
+    assert run.receipt["action_time"] == world.context.event_time + 1
     assert run.receipt["objective_material_eligible"] is True
     assert run.receipt["objective_material_refs"]
-    assert run.response.eligible_material_refs == world.eligible_material_refs
+    _assert_no_b_private_operation(run.receipt)
+    run_json = json.loads((run.run_dir / "run.json").read_text(encoding="utf8"))
+    _assert_no_b_private_operation(run_json)
+    episodes = world.c12.episodes("s35")
+    matching = [
+        episode
+        for episode in episodes
+        if (episode.get("body") or {}).get("label") == "p1"
+    ]
+    assert len(matching) == 1
+    _assert_no_b_private_operation(matching[0]["body"])
     cold = cold_verify(world.root, "p1")
     assert cold["ok"], cold["checks"]
     assert cold["observed"]["target_state_rows"] == 0
+    assert cold["observed"]["evidence_grade"] == access.S35_GRADE_CONTROLLED
 
 
 def test_access_severance_same_world_and_restoration(share_world):
     world, _ = share_world
-    baseline = world.evaluate("access-baseline")
-    fault = world.evaluate("access-fault", access_witness=None)
-    restored = world.evaluate("access-restored")
+    baseline = world.evaluate("access-baseline", **_positive_args(world))
+    fault = world.evaluate(
+        "access-fault",
+        perception_receipt=_perception(
+            world,
+            status="NOT_WITNESSED",
+            perception_ref="TEST_ONLY_A_PERCEPTION_NOT_WITNESSED",
+        ),
+        action_receipt=_action(world, action_ref="TEST_ONLY_A_ACTION_ACCESS_FAULT"),
+    )
+    restored = world.evaluate("access-restored", **_positive_args(world))
     _assert_positive(baseline)
     _assert_valid_empty(fault, access.UNKNOWN_RECEIVABILITY)
     _assert_positive(restored)
     for run in (baseline, fault, restored):
         _same_world(world, run)
     assert fault.receipt["objective_material_eligible"] is True
-    assert fault.receipt["access_source_ref"] == ""
-    assert fault.receipt["objective_material_implies_uptake"] is False
+    assert fault.receipt["perception_ref"] == (
+        "TEST_ONLY_A_PERCEPTION_NOT_WITNESSED"
+    )
     assert cold_verify(world.root, "access-fault")["ok"]
     assert cold_verify(world.root, "access-restored")["ok"]
 
 
-def test_request_severance_same_world_and_restoration(share_world):
+def test_action_severance_same_world_and_restoration(share_world):
     world, _ = share_world
-    baseline = world.evaluate("request-baseline")
-    fault = world.evaluate("request-fault", response_witness=None)
-    restored = world.evaluate("request-restored")
+    baseline = world.evaluate("action-baseline", **_positive_args(world))
+    missing = world.evaluate(
+        "action-missing",
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_ACTION_MISSING"
+        ),
+    )
+    not_performed = world.evaluate(
+        "action-not-performed",
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_NOT_PERFORMED"
+        ),
+        action_receipt=_action(
+            world,
+            kind="NO_OBSERVED_ACTION",
+            performed=False,
+            action_ref="TEST_ONLY_A_ACTION_NONE",
+        ),
+    )
+    restored = world.evaluate("action-restored", **_positive_args(world))
     _assert_positive(baseline)
-    _assert_valid_empty(fault, access.RECEIVABLE_NO_OBSERVED_UPTAKE)
+    _assert_valid_empty(missing, access.A_OWNED_ACTION_HOLD)
+    assert missing.receipt["hold_reason"] == "ACTUAL_A_OWNED_ACTION_UNAVAILABLE"
+    _assert_valid_empty(not_performed, access.RECEIVABLE_NO_OBSERVED_UPTAKE)
     _assert_positive(restored)
-    for run in (baseline, fault, restored):
+    for run in (baseline, missing, not_performed, restored):
         _same_world(world, run)
-    assert fault.receipt["access_status"] == "ACCESSIBLE"
-    assert fault.receipt["response_ref"] == ""
-    assert cold_verify(world.root, "request-fault")["ok"]
-    assert cold_verify(world.root, "request-restored")["ok"]
+    assert cold_verify(world.root, "action-missing")["ok"]
+    assert cold_verify(world.root, "action-not-performed")["ok"]
+    assert cold_verify(world.root, "action-restored")["ok"]
 
 
 def test_contradictory_context_valid_empty_and_unbound_refusal(share_world):
     world, _ = share_world
     contradictory = world.evaluate(
         "contradictory",
-        response_witness=None,
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_CONTRADICTORY"
+        ),
         contradictory_context=True,
         contradictory_refs=("TEST_ONLY_S35_CONTRADICTION_A",),
     )
@@ -183,7 +281,9 @@ def test_contradictory_context_valid_empty_and_unbound_refusal(share_world):
     ]
     unbound = world.evaluate(
         "contradictory-unbound",
-        response_witness=None,
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_CONTRADICTORY_UNBOUND"
+        ),
         contradictory_context=True,
     )
     assert unbound.refused is True
@@ -209,14 +309,31 @@ def test_contradictory_context_valid_empty_and_unbound_refusal(share_world):
         ("actor_id", "TEST_ONLY_FOREIGN_ACTOR"),
         ("event_ref", "0" * 64),
         ("event_id", "TEST_ONLY_FOREIGN_EVENT"),
-        ("source_ref", "NOT_TEST_ONLY_ACCESS"),
+        ("perceived_at", -1),
+        ("access_status", "INVALID_STATUS"),
+        ("source_ref", "NOT_TEST_ONLY_PERCEPTION"),
+        ("owner_ref", "TEST_ONLY_FOREIGN_OWNER"),
         ("revoked", True),
+        ("evidence_grade", "UNKNOWN_GRADE"),
+        ("actual_actor_input", True),
+        ("native", True),
     ),
 )
-def test_foreign_access_witness_refused_without_commit(share_world, field, value):
+def test_foreign_perception_receipt_refused_without_commit(
+    share_world, field, value
+):
     world, _ = share_world
-    witness = access.reseal_access_witness(world.make_access(), **{field: value})
-    run = world.evaluate(f"foreign-access-{field}", access_witness=witness)
+    receipt = access.reseal_perception_receipt(
+        _perception(world, perception_ref="TEST_ONLY_A_PERCEPTION_FOREIGN"),
+        **{field: value},
+    )
+    run = world.evaluate(
+        f"foreign-perception-{field}",
+        perception_receipt=receipt,
+        action_receipt=_action(
+            world, action_ref="TEST_ONLY_A_ACTION_FOREIGN_PERCEPTION"
+        ),
+    )
     assert run.refused is True
     assert run.committed is False
     assert run.store_path is None
@@ -224,7 +341,7 @@ def test_foreign_access_witness_refused_without_commit(share_world, field, value
     assert run.response.target_proposals == ()
     assert run.refusal_reason
     assert not (run.run_dir / "c9.sqlite").exists()
-    assert cold_verify(world.root, f"foreign-access-{field}")["ok"]
+    assert cold_verify(world.root, f"foreign-perception-{field}")["ok"]
 
 
 @pytest.mark.parametrize(
@@ -232,20 +349,37 @@ def test_foreign_access_witness_refused_without_commit(share_world, field, value
     (
         ("root_id", "TEST_ONLY_FOREIGN_ROOT"),
         ("branch_id", "TEST_ONLY_FOREIGN_BRANCH"),
+        ("branch_hash", "d" * 64),
         ("clock", 999999),
         ("actor_id", "TEST_ONLY_FOREIGN_ACTOR"),
         ("event_ref", "0" * 64),
-        ("response_kind", "UNKNOWN_KIND"),
+        ("event_id", "TEST_ONLY_FOREIGN_EVENT"),
+        ("action_kind", "UNKNOWN_KIND"),
         ("performed", False),
+        ("action_ref", ""),
+        ("owner_ref", "TEST_ONLY_FOREIGN_OWNER"),
+        ("action_time", -1),
         ("revoked", True),
+        ("evidence_grade", "UNKNOWN_GRADE"),
+        ("actual_actor_input", True),
+        ("native", True),
     ),
 )
-def test_foreign_response_witness_refused_without_commit(share_world, field, value):
+def test_foreign_action_receipt_refused_without_commit(
+    share_world, field, value
+):
     world, _ = share_world
-    witness = access.reseal_response_witness(
-        world.make_response(), **{field: value}
+    receipt = access.reseal_action_receipt(
+        _action(world, action_ref="TEST_ONLY_A_ACTION_FOREIGN"),
+        **{field: value},
     )
-    run = world.evaluate(f"foreign-response-{field}", response_witness=witness)
+    run = world.evaluate(
+        f"foreign-action-{field}",
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_FOREIGN_ACTION"
+        ),
+        action_receipt=receipt,
+    )
     assert run.refused is True
     assert run.committed is False
     assert run.store_path is None
@@ -253,12 +387,100 @@ def test_foreign_response_witness_refused_without_commit(share_world, field, val
     assert run.response.target_proposals == ()
     assert run.refusal_reason
     assert not (run.run_dir / "c9.sqlite").exists()
-    assert cold_verify(world.root, f"foreign-response-{field}")["ok"]
+    assert cold_verify(world.root, f"foreign-action-{field}")["ok"]
+
+
+def test_broken_receipt_seals_and_source_hashes_are_refused(share_world):
+    world, _ = share_world
+    perception = _perception(
+        world, perception_ref="TEST_ONLY_A_PERCEPTION_BROKEN_SEAL"
+    )
+    action = _action(world, action_ref="TEST_ONLY_A_ACTION_BROKEN_SEAL")
+    broken_perception = {
+        key: value
+        for key, value in perception.items()
+        if key not in {"hash", "source_hash"}
+    }
+    broken_perception["source_hash"] = "0" * 64
+    broken_perception = seal(broken_perception)
+    run = world.evaluate(
+        "perception-source-hash",
+        perception_receipt=broken_perception,
+        action_receipt=action,
+    )
+    assert run.refused is True
+    assert run.refusal_reason == "PERCEPTION_SOURCE_HASH_MISMATCH"
+    broken_action = {
+        key: value
+        for key, value in action.items()
+        if key not in {"hash", "source_hash"}
+    }
+    broken_action["source_hash"] = "0" * 64
+    broken_action = seal(broken_action)
+    run = world.evaluate(
+        "action-source-hash",
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_FOR_BROKEN_ACTION"
+        ),
+        action_receipt=broken_action,
+    )
+    assert run.refused is True
+    assert run.refusal_reason == "ACTION_SOURCE_HASH_MISMATCH"
+
+
+def test_qualified_actual_grade_holds_without_owner_resolver(share_world):
+    world, _ = share_world
+    perception = world.perception_receipt(
+        access_status="ACCESSIBLE",
+        perception_ref="TEST_ONLY_A_PERCEPTION_QUALIFIED",
+        evidence_grade=access.S35_GRADE_QUALIFIED,
+        actual_actor_input=True,
+        qualification=access.S35_QUALIFICATION_QUALIFIED,
+    )
+    action = world.action_receipt(
+        action_kind="REQUEST_TOOL",
+        performed=True,
+        action_ref="TEST_ONLY_A_ACTION_QUALIFIED",
+        evidence_grade=access.S35_GRADE_QUALIFIED,
+        actual_actor_input=True,
+        qualification=access.S35_QUALIFICATION_QUALIFIED,
+    )
+    run = world.evaluate(
+        "qualified-hold",
+        perception_receipt=perception,
+        action_receipt=action,
+    )
+    _assert_valid_empty(run, access.A_LOCAL_PERCEPTION_HOLD)
+    assert run.receipt["hold_reason"] == (
+        "QUALIFIED_A_LOCAL_PERCEPTION_RESOLVER_UNAVAILABLE"
+    )
+    assert run.receipt["evidence_grade"] == access.S35_GRADE_QUALIFIED
+    assert run.receipt["actual_actor_input"] is True
+    refused = world.evaluate(
+        "qualified-refused",
+        perception_receipt=perception,
+        action_receipt=action,
+        qualified_owner_resolver=lambda **kwargs: False,
+    )
+    assert refused.refused is True
+    assert refused.refusal_reason == "A_LOCAL_PERCEPTION_UNVERIFIED"
+    assert cold_verify(world.root, "qualified-hold")["ok"]
+    assert cold_verify(world.root, "qualified-refused")["ok"]
 
 
 def test_refuse_tool_is_observed_current_refusal_without_target(refuse_world):
     world, _ = refuse_world
-    run = world.evaluate("refuse")
+    run = world.evaluate(
+        "refuse",
+        perception_receipt=_perception(
+            world, perception_ref="TEST_ONLY_A_PERCEPTION_REFUSE"
+        ),
+        action_receipt=_action(
+            world,
+            kind="EXPLICIT_REFUSAL",
+            action_ref="TEST_ONLY_A_ACTION_REFUSE",
+        ),
+    )
     assert run.committed is True
     assert run.response.status is ResponseStatus.RESPONSE_COMMITTED
     assert run.response.reason == access.OBSERVED_CURRENT_REFUSAL
@@ -266,10 +488,50 @@ def test_refuse_tool_is_observed_current_refusal_without_target(refuse_world):
     assert run.decision.branch is TargetBranch.NO_CHANGE
     assert run.decision.reason is TargetReason.NO_PROPOSAL
     assert run.target_state_rows == 0
-    assert run.receipt["response_kind"] == "EXPLICIT_REFUSAL"
+    assert run.receipt["action_kind"] == "EXPLICIT_REFUSAL"
     assert run.receipt["objective_material_eligible"] is False
     assert run.receipt["target_proposals"] == []
+    _assert_no_b_private_operation(run.receipt)
     assert cold_verify(world.root, "refuse")["ok"]
+
+
+def test_share_and_refuse_share_the_same_public_refusal_surface(
+    share_world, refuse_world
+):
+    share, _ = share_world
+    refuse, _ = refuse_world
+    share_refusal = share.evaluate(
+        "share-explicit-refusal",
+        perception_receipt=_perception(
+            share, perception_ref="TEST_ONLY_A_PERCEPTION_SHARE_REFUSAL"
+        ),
+        action_receipt=_action(
+            share,
+            kind="EXPLICIT_REFUSAL",
+            action_ref="TEST_ONLY_A_ACTION_SHARE_REFUSAL",
+        ),
+    )
+    refuse_refusal = refuse.evaluate(
+        "refuse-explicit-refusal",
+        perception_receipt=_perception(
+            refuse, perception_ref="TEST_ONLY_A_PERCEPTION_REFUSE_REFUSAL"
+        ),
+        action_receipt=_action(
+            refuse,
+            kind="EXPLICIT_REFUSAL",
+            action_ref="TEST_ONLY_A_ACTION_REFUSE_REFUSAL",
+        ),
+    )
+    assert share_refusal.response.reason == access.OBSERVED_CURRENT_REFUSAL
+    assert refuse_refusal.response.reason == access.OBSERVED_CURRENT_REFUSAL
+    assert share_refusal.response.target_proposals == ()
+    assert refuse_refusal.response.target_proposals == ()
+    assert share_refusal.receipt["action_kind"] == "EXPLICIT_REFUSAL"
+    assert refuse_refusal.receipt["action_kind"] == "EXPLICIT_REFUSAL"
+    _assert_no_b_private_operation(share_refusal.receipt)
+    _assert_no_b_private_operation(refuse_refusal.receipt)
+    assert share_refusal.target_state_rows == 0
+    assert refuse_refusal.target_state_rows == 0
 
 
 def test_labels_do_not_enter_the_m35_source_preimage():
@@ -284,9 +546,10 @@ def test_labels_do_not_enter_the_m35_source_preimage():
 
 def test_history_refs_do_not_create_practice_or_target(share_world):
     world, _ = share_world
-    baseline = world.evaluate("history-baseline")
+    baseline = world.evaluate("history-baseline", **_positive_args(world))
     history = world.evaluate(
         "history-refs",
+        **_positive_args(world),
         enacted_history_refs=(
             "TEST_ONLY_HISTORY_ACT_ONE",
             "TEST_ONLY_HISTORY_ACT_TWO",
@@ -300,23 +563,120 @@ def test_history_refs_do_not_create_practice_or_target(share_world):
     assert history.target_state_rows == 0
 
 
-def test_share_and_refuse_share_the_same_public_refusal_surface(share_world, refuse_world):
-    share, _ = share_world
-    refuse, _ = refuse_world
-    share_refusal = share.evaluate(
-        "share-explicit-refusal",
-        response_witness=share.make_response(response_kind="EXPLICIT_REFUSAL"),
+def test_pipeline_selector_validates_consumer_inputs(share_world):
+    world, _ = share_world
+    perception = _perception(
+        world, perception_ref="TEST_ONLY_A_PERCEPTION_CONSUMER"
     )
-    refuse_refusal = refuse.evaluate("refuse-explicit-refusal")
-    assert share_refusal.response.reason == access.OBSERVED_CURRENT_REFUSAL
-    assert refuse_refusal.response.reason == access.OBSERVED_CURRENT_REFUSAL
-    assert share_refusal.response.target_proposals == ()
-    assert refuse_refusal.response.target_proposals == ()
-    assert share_refusal.receipt["response_kind"] == "EXPLICIT_REFUSAL"
-    assert refuse_refusal.receipt["response_kind"] == "EXPLICIT_REFUSAL"
-    assert "b_operation" not in share_refusal.receipt
-    assert share_refusal.target_state_rows == 0
-    assert refuse_refusal.target_state_rows == 0
+    action = _action(world, action_ref="TEST_ONLY_A_ACTION_CONSUMER")
+    lookup = lookup_rule(
+        world.response_registry,
+        authority_id=world.rule.authority_id,
+        rule_version=world.rule.rule_version,
+        rule_content_hash=world.rule.rule_content_hash,
+        subject=world.context.actor_id,
+    )
+    evaluation = access.evaluate_actor_access_response(
+        rule_lookup=lookup,
+        event_ref=world.context.event_ref,
+        event_time=world.context.event_time,
+        subject=world.context.actor_id,
+        request=access.S35ActorAccessRequest(
+            perception_receipt=perception,
+            action_receipt=action,
+        ),
+        conditioning_readset=world.conditioning.readset_refs,
+        context=world.context,
+        as_of=world.context.as_of,
+        material_eligible=world.material_eligible,
+        eligible_material_refs=world.eligible_material_refs,
+    )
+    expected = {
+        "event_time": world.context.event_time,
+        "conditioning_readset": world.conditioning.readset_refs,
+        "material_eligible": world.material_eligible,
+        "eligible_material_refs": world.eligible_material_refs,
+        "actor_history_refs": (),
+        "other_person_offer_ref": "",
+        "material_opportunity_ref": "",
+        "prior_response_count": 0,
+        "rule_lookup": lookup,
+    }
+    current = {
+        "context": world.context,
+        "evaluation": evaluation,
+        "expected": expected,
+    }
+    kwargs = {
+        "rule_lookup": lookup,
+        "event_ref": world.context.event_ref,
+        "event_time": world.context.event_time,
+        "subject": world.context.actor_id,
+        "conditioning_readset": world.conditioning.readset_refs,
+        "actor_history_refs": (),
+        "other_person_offer_ref": "",
+        "material_opportunity_ref": "",
+        "prior_response_count": 0,
+        "material_eligible": world.material_eligible,
+        "eligible_material_refs": world.eligible_material_refs,
+    }
+    token = access.set_current_context(current)
+    try:
+        assert access.pipeline_selector(**kwargs) is evaluation.response
+    finally:
+        access.reset_current_context(token)
+    mutations = (
+        ("rule_lookup", replace(lookup, rule_content_hash="0" * 64)),
+        ("event_time", world.context.event_time + 1),
+        ("conditioning_readset", world.conditioning.readset_refs + ("TEST_ONLY_EXTRA",)),
+        ("material_eligible", not world.material_eligible),
+        ("eligible_material_refs", ("TEST_ONLY_OTHER_MATERIAL",)),
+        ("actor_history_refs", ("TEST_ONLY_HISTORY_EXTRA",)),
+        ("other_person_offer_ref", "TEST_ONLY_OTHER_OFFER"),
+        ("material_opportunity_ref", "TEST_ONLY_OTHER_OPPORTUNITY"),
+        ("prior_response_count", 1),
+    )
+    for field, value in mutations:
+        changed = dict(kwargs)
+        changed[field] = value
+        token = access.set_current_context(current)
+        try:
+            with pytest.raises(RuntimeError) as caught:
+                access.pipeline_selector(**changed)
+            assert str(caught.value) == "S35_CONSUMER_INPUT_MISMATCH:" + field
+        finally:
+            access.reset_current_context(token)
+
+
+def test_pipeline_selector_legacy_no_context_delegation(share_world):
+    world, _ = share_world
+    lookup = lookup_rule(
+        world.response_registry,
+        authority_id=world.rule.authority_id,
+        rule_version=world.rule.rule_version,
+        rule_content_hash=world.rule.rule_content_hash,
+        subject=world.context.actor_id,
+    )
+    kwargs = {
+        "rule_lookup": lookup,
+        "event_ref": world.context.event_ref,
+        "event_time": world.context.event_time,
+        "subject": world.context.actor_id,
+        "conditioning_readset": world.conditioning.readset_refs,
+        "actor_history_refs": (),
+        "other_person_offer_ref": "",
+        "material_opportunity_ref": "",
+        "prior_response_count": 0,
+        "material_eligible": True,
+        "eligible_material_refs": (),
+    }
+    legacy = candidate.evaluate_response(**kwargs)
+    delegated = pipeline_module.evaluate_response(**kwargs)
+    assert delegated.status == legacy.status
+    assert delegated.reason == legacy.reason
+    assert delegated.target_proposals == legacy.target_proposals
+    assert delegated.receipt_hash == legacy.receipt_hash
+    assert delegated.candidate_route == legacy.candidate_route
 
 
 def test_production_registries_remain_empty_and_no_native_issuance(share_world):
@@ -328,7 +688,7 @@ def test_production_registries_remain_empty_and_no_native_issuance(share_world):
 
     assert dict(TargetRuleRegistry.production().rules) == {}
     assert world.rule.grade == "TEST_ONLY_SOURCEFREE_TECHNICAL"
-    run = world.evaluate("native-check")
+    run = world.evaluate("native-check", **_positive_args(world))
     assert run.receipt["native"] is False
     assert run.receipt["target_proposals"] == []
     assert run.target_state_rows == 0
@@ -337,7 +697,7 @@ def test_production_registries_remain_empty_and_no_native_issuance(share_world):
 def test_cold_readback_after_world_close(tmp_path):
     case = _case(True)
     world = S35World.build(tmp_path / "cold-world", case=case)
-    run = world.evaluate("cold")
+    run = world.evaluate("cold", **_positive_args(world))
     _assert_positive(run)
     world.close()
     cold = cold_verify(world.root, "cold")
