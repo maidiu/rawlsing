@@ -1,6 +1,15 @@
 # PROGRAMMA SOROK
 ## Complete psychological-developmental and human-product science, historical inheritance and source-qualified lived person
 
+### CURRENT W3 MASTER GUIDE — RECONCILED CANDIDATE, READY FOR INDEPENDENT USE TEST
+
+**Read [06 — reconciled whole-scope guide](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md) first.** The W3 source fan-in reconciles the exact W2-A/B/C immutable GitHub returns into the existing records: [07 — 290 exact source locators](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json) (only selected records semantically read); [08 — 22 requalified seams and 22 claim-scoped AND/OR/reverse prerequisite links](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json); [09 — existing 144 IDs with 40 historical V3 function parity, 25 producer/reader edges, 15 code assets, S0–S16 and nine unwired source references](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json); [10 — source-specific owner actions and exact open limits](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md); [11 — 12 static checks and five desk trace examples](11_CROSS_REFERENCE_STRUCTURAL_AND_NAVIGATION_SMOKE_READBACK_R1.json).
+
+All three W2 research branches were confirmed on immutable cuts: W2-A 7a5a77843300e1a59b9a16677f963fb6176b00af; W2-B 8b0edbcc6bc456e1f92ac7bc11faf0e4f903401b; W2-C d802989671ed9ddd2886d45c4f8f1d825611ce5a. Frozen guide parent ce5e2dfe3b410657b1c5f646b725424995cdcb07. Guide build evidence is GitHub S0–S1 documentary/static code plus in-memory structure, not native/LLM/Pyat/human execution, owner science issuance or acceptance of the W3 candidate.
+
+**Disposition: GUIDE ASSEMBLY READY FOR AN INDEPENDENT UNFAMILIAR-READER USE TEST; WHOLE SOROK SCIENCE/NATIVE/HUMAN PRODUCT NOT PROVEN.** A separate cold reader must answer the user's seven practical questions across five representative items; only an incumbent qualified owner can adopt a guide version. The W3 source return is under WORKER_RETURNS/PROGRAMMA_SOROK_GUIDE_W3_FANIN_20261102_R1/ on its isolated branch. No new app/controller, protected merge or worker dispatch.
+
+---
 ### 2026-11-02 USER CLARIFICATION — READ THIS FOR THE INTENDED FINITE PROGRAMMA DELIVERABLE
 
 The whole Sorok development undertaking (historically constituted person, world, actor, experience and product) is the **SUBJECT being mapped**, NOT what the PROGRAMMA guide-building project itself implements. The current explicit user aim is a **lean, comprehensive, source-referenced MASTER GUIDE for finishing Sorok**: findable existing assets, best-current architecture and historical variants, exact maturity and first consumers, recursive prerequisites, actual seam/connection health, reverse unlocks, preserved completed work and source-linked next actions. It is a finite consolidation/reconciliation exercise, not an app, interactive ChatGPT surface, extra controller, independent scientific method, or forever-growing platform.
@@ -10,7 +19,7 @@ Read these three **proposed / isolated-branch user clarification anchors** in or
 2. [04 — GITHUB-FIRST ASSEMBLY COURSE](04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md): inventory accessible sources and most recent qualified Sorok vision, sketch best architectural spine, attach all available/historical assets, sweep dependencies/seams, seek Library/mainMac only for *exact* remaining source gaps, unfamiliar-agent use-test and finish.
 3. [05 — VERIFIED STARTING ASSETS](05_INHERITED_WORK_AND_INITIAL_GITHUB_ANCHORS_20261102_R1.md): existing O-INDEX, O-LIVE, W1 A–E, Sorok primary vision/architecture, original/Neo engineering and GitHub coverage, plus limitations and bounded external leads.
 
-**Actual first assembly from GitHub, 2026-11-02 (source-backed, guide candidate; not canon):**
+**Historical first assembly from GitHub, 2026-11-02 (superseded for current counts and mapping by W3 section above; source-backed first guide candidate, not canon):**
 - [06 — WORKING WHOLE ARCHITECTURE SPINE](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md): actual Sorok whole goal and mid-level S0–S16 organization, source/proof ceilings and named sections SP-00–SP-140.
 - [07 — EXACT GITHUB ASSET LOCATOR](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json): 262 commit/blob/path-addressed available files from original Sorok, dockets, Q/D/R, W1, current code, Astra and reference candidates. Path-level inventory, not 262 source-content readings.
 - [08 — FIRST SEAM/DEPENDENCY RECEIPTS](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json): 22 exact source-cited, cut-scoped relations and provisional interface statuses, preserving historical/test-only/native boundaries.

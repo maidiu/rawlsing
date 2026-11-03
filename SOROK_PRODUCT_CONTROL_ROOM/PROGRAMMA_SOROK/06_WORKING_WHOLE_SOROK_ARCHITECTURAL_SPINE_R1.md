@@ -1,5 +1,5 @@
-# PROGRAMMA SOROK — FIRST SOURCE-GROUNDED WHOLE-ARCHITECTURE SPINE (ACTUAL MAP, NOT A PLAN TO MAKE ONE)
-**Date:** 2026-11-02. **Status:** WORKING ORGANIZATIONAL SPINE / SOURCE-GROUNDED SYNTHESIS / NOT NEW SCIENTIFIC LAW OR RUNTIME ARCHITECTURE ADOPTION. Exact inherited source files are linked below; code tests not reexecuted by this Browser pass. Guide target [03](03_USER_DEFINED_MASTER_GUIDE_TARGET_AND_SPECIFICATION_20261102_R1.md), course [04](04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md), actual Git-tree locator [07](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json).
+# PROGRAMMA SOROK — RECONCILED WHOLE-SCOPE SOURCE AND DEVELOPMENT GUIDE (W3 CANDIDATE)
+**Date:** 2026-11-02 source cut; W3 fan-in following three completed W2 returns. **Status:** GUIDE ASSEMBLY READY FOR INDEPENDENT USE TEST; NOT SOROK SCIENCE/PRODUCT ADOPTION. WORKING ORGANIZATIONAL SPINE / SOURCE-GROUNDED SYNTHESIS / NOT NEW SCIENTIFIC LAW OR RUNTIME ARCHITECTURE ADOPTION. Exact inherited source files are linked below; code tests not reexecuted by this Browser pass. Guide target [03](03_USER_DEFINED_MASTER_GUIDE_TARGET_AND_SPECIFICATION_20261102_R1.md), course [04](04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md), actual Git-tree locator [07](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json).
 **Current source cuts:** Sorok original/product @865b5b01e1a27e99020cf2bb389af8cd4c874b57; current PRE-MAIN observed @9809203fd915a84bae056a67210e9213879840db; W1-C functional court @12433b89e100d2c4b9b20a94c4ccca7d2af7529a; other W1 A/B/D/E at their separate frozen SHAs; O-INDEX R3 @e50d32eb6816578145d17dcd637a0b90b3a1ef40 and O-LIVE repair @fa8a2b1f75cd2ee2153a813215f51dea88e16a4b.
 **Reading discipline:** IDs here are LOCAL GUIDE SECTION labels SP-* only; do NOT re-ID original S0–S16, C/A/M/N/O/E, CAN/ADP, Pyat N, or issue an actor law. A section contains multiple crosscutting materials; it is not a claim of one serial executable function.
 
@@ -89,7 +89,7 @@ The 19 C/A, 40 original M, 12 Sorok Neo N, 16 O and 15 E names remain distinct o
 5. **Whole human/person goal vs alpha envelope:** Sorok 100 makes alpha reductions conditional on preserving constitutive invariants, not proof all maximal requirements can be ignored; Sorok 101 refines "LLM flesh" to actor/objective occurrence/user limited experience with proposal/admission.
 6. **Scientific rivals:** W1-B preserves materially distinct Leontiev, Sève, Holzkamp, Lahire, Archer, life-course, work-structure and feminist social-reproduction accounts. Source texts are disciplinary resources; they are not already reconciled or automatically deployed as native psychological rules.
 
-## 4. Guide status by source/implementation evidence, not one traffic-light for a component
+## 4. Original frozen-guide status at W1 assembly (see W3 §6 for current reconciliation)
 
 CURRENT SUMMARY (not a live test):
 - **Purpose/original S0–S16:** primary definitions PRESENT; exact adoption/output completion varies by workstream.
@@ -102,6 +102,170 @@ CURRENT SUMMARY (not a live test):
 - **Source/consumer relationship grades:** O-INDEX `function_has_named_first_consumer` = requirement/named edge, NOT evidence of a current call; exact actual import/read is separately necessary.
 - **Whole PROGRAMMA guide:** this is an ORGANIZATIONAL SPINE, not the final source-to-component matched and tested guide. See source locator and forthcoming seam records for what has actually been anchored.
 
-## 5. Immediate continuation against THIS spine (not a commission)
+## 5. Original W1 continuation text, superseded for priorities by W3 §6 and 10 closeout
 
 Follow [07 GitHub locator](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json) and existing O-INDEX/O-LIVE. Attach current original code/source documents to these SP-* sections; for paths indexed by name only, mark CONTENT_UNREAD and keep links. Then write exact consumer/dependency seam evidence and unresolved asset dispositions, rather than rearranging the spine. Use a revised SP-* label only when actual source shows a material architectural requirement no current section can represent. Each later Sorok change updates the relevant SP-* and source relations, not a second state machine.
+
+## 6. W3 reconciled source-to-function guide — finite assembly ready for independent use test
+
+**Guide candidate, not Sorok adoption.** W3 combines W2-A [current source and first readers](https://github.com/maidiu/rawlsing/blob/7a5a77843300e1a59b9a16677f963fb6176b00af/WORKER_RETURNS/PROGRAMMA_SOROK_GUIDE_W2A_CURRENT_CODE_20261102_R1/01_CURRENT_IMPLEMENTATION_AND_FIRST_READER_CROSSWALK.json), W2-B [40 historical functions](https://github.com/maidiu/rawlsing/blob/8b0edbcc6bc456e1f92ac7bc11faf0e4f903401b/WORKER_RETURNS/PROGRAMMA_SOROK_GUIDE_W2B_HISTORICAL_REUSE_20261102_R1/01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json), W2-C [whole-product prerequisites](https://github.com/maidiu/rawlsing/blob/d802989671ed9ddd2886d45c4f8f1d825611ce5a/WORKER_RETURNS/PROGRAMMA_SOROK_GUIDE_W2C_WHOLE_PRODUCT_20261102_R1/02_RECURSIVE_PREREQUISITES_AND_DOWNSTREAM_UNLOCKS.json). All three originate at frozen guide ce5e2dfe3b410657b1c5f646b725424995cdcb07; assessed PRE-MAIN is 9809203fd915a84bae056a67210e9213879840db. Source/static-read and prior receipts only; **W3 executed no local/native/Python/human/provider tests.**
+
+**Entrypoints.** Start here for the whole/middle view; [07 exact source locator](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json) for immutable paths/blobs and true read grade; [08 22 seam records + 22 linked claim-scoped prerequisite paths](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json) for producer→reader→owner/AND/conditional OR/reverse unlocks; [09 all 144 existing IDs](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json) for 40 M/25 edge/15 code source-and-consumer dispositions and nine unwired source references; [10 current priorities and exact external holds](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md); [11 structural and desk-navigation checks](11_CROSS_REFERENCE_STRUCTURAL_AND_NAVIGATION_SMOKE_READBACK_R1.json). User intent [03](03_USER_DEFINED_MASTER_GUIDE_TARGET_AND_SPECIFICATION_20261102_R1.md), assembly method [04](04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md), inherited first estate [05](05_INHERITED_WORK_AND_INITIAL_GITHUB_ANCHORS_20261102_R1.md) remain historical intent/method/source, not execution acceptance.
+
+### 6.1 Best present location by actual function, with correct ceiling
+
+| Functional question | Best code/source witness at exact cut | Real first reader and limit |
+|---|---|---|
+| **Current structural intake and bounded expression** | 9809203fd915a84bae056a67210e9213879840db : rawlsing_next/m1_temporal_v554_admission_dedup.py → m2_v555_atomic_route.py → m3_v556_higher_order_structural.py → m4_v557_v558_publication_repository.py → m5_runtime_rsc_peer_prior.py → m6_actor_safe_expression.py → render_bounded_expression.py | Current static imports; M6NamedAuthorityRequired and BLOCKED_NAMED_AUTHORITY_REQUIRED are deliberate terminal hold, not native V3→A5. |
+| **B action, C8 test occurrence and later E2** | 5b3e6577400ea1d88971ae6b48e41a118b8059ae : WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/vendor/bp2/bp2_joined/producer.py :: JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2 | BP2/JOIN candidate sourcefree artifact; exact A-access/B-action and later performed E2, not original CAN008/011 rule issuance. |
+| **Scoped accepted persistence and fork** | 7bf2da302996491ddf34b9a039fea47ac982d135 : WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py; independent court 4387dc818a96fda2d5271672505fbd9da1059703 | JOIN-V ACCEPT_SCOPED at exact 7bf sourcefree fork/cold cut only; earlier RED retained per cut. Not native C9/C12. |
+| **Later candidate 20-test consumer fan-in** | 598d9e9eaba5143950c63317705fd09104fbf463 : WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md | Reported 20/20 author local tests on selected JOIN-E sourcefree route; independent review pending; explicitly excludes C9C12, CP-A5, B-F1CR and V3CORE variants. |
+| **C9/C12 composite reader** | c78404724052496fdec8608c8b0e833c0f7c4ecc : WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9c12_reader.py :: read_composite | Reads C9 snapshot/outbox plus guarded C12 cold, but owner anchor required and writer/reader version conflict; not RRIF imported. |
+| **Actor/user encounter with access** | 913765328e4fab12b150ea01421ed6b445158184 : WORKER_RETURNS/SOROK-CP-A5-R2/candidate/cp_a5/encounter.py :: EncounterReader.ask | Sourcefree scoped perception filter; user/actor privacy and A5 participant-native proof absent. |
+| **B targetless coactor bridge** | bf3273c294c704ad7c631559b9866d351bb4f103 : WORKER_RETURNS/SOROK-B-F1CR-R2/candidate/targetless_i1_bridge.py | Targetless C10/I1 branch-local; distinct root, no current importer. |
+| **Schema/readset security correction** | 16f15a125ba54cdf17f5d41be2d851bbcd2240d7 : WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py | B3AS sourcefree ACCEPT_SCOPED at independent 1a25b19dd01e8e7954e38c59ffc7e52c50739c9f; does not erase prior B3 X3 RED or imply native. |
+| **Historical V3 yearly/persona/V2** | 10c4b25f2b7f421ef476610c4dd0e3c674e8f3bc historical source/function registry; W1-C 12433b89e100d2c4b9b20a94c4ccca7d2af7529a | Prior S2 selected member hashes and static route, no W3 original archive read, no PRESENT PRE-MAIN importer; ZIP container hash differs. |
+| **Recovered R6 source families** | e50d32eb6816578145d17dcd637a0b90b3a1ef40 : SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/WORKING_O_INDEX_CANDIDATE_R1/03_RECOVERY_AND_FOUR_RETURN_ASSET_INDEX.md | Nine Git source-present but no verified PRE-MAIN consumer at observed cut; specific source symbols/blobs linked in 09 and 07; R41 is read-only client not Pyat native issuer. |
+
+### 6.2 Whole-product original S0–S16: separate science, architecture, engineering and human grades
+
+Original [05 Program Map](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md) defines all seventeen. No 17/17 implementation claim follows. The distinct open product outputs below are not optional last-mile tickets and cannot be made green by C9/C12 code.
+
+| Original | Maturity at cited cut | Nearest required output / missing proof |
+|---|---|---|
+| S0 | THEORY_SPECIFIED | Integrity/anti-goals exists; user outcome and invariant test unverified |
+| S1 | THEORY_HYPOTHESIS | Person/relation/network ontology provisional; accepted native owner unverified |
+| S2 | CROSS_HQ_HELD | PRE-V3/V3 source rights and actual native importer unverified |
+| S3 | SCIENCE_CONTESTED | Old V3 code real at historical scope, original psychology superseded; current native port unverified |
+| S4 | THEORY_OPEN | Trust/repair/access/dependency causal laws unresolved beyond scoped sourcefree |
+| S5 | COURT10_OPEN_NOT_ADOPTED | Plural flourishing/harms/uncertainty and counterexample test; no scalar or human validation |
+| S6 | ARCHITECTED_TEST_ONLY | Offscreen life/time B sourcefree tests; native independent actor unknown |
+| S7 | COURT11_OPEN_NOT_ADOPTED | Exposure-aware longitudinal non-diagnostic player praxis, privacy and real usage unresolved |
+| S8 | ARCHITECTED_TEST_ONLY | SAY/DO/ATTEND bounded inputs, no native full open-action loop |
+| S9 | GUARDED_BLOCKED | M6 blocked named authority; no native positive expression/LLM release |
+| S10 | SCOPED_SOURCEFREE_TESTS | Exact-cut JOIN fork/cold accepted; compatible native writer/reader, cost unproved |
+| S11 | UX_DESIGN_UNVALIDATED | Scene/exit/message/succession/accessibility flows specified, no usability evidence |
+| S12 | IDEATED_DEFERRED | Safe social option matrix; no current cross-user native operation |
+| S13 | PROHIBITIONS_SPECIFIED_MODEL_MISSING | 44 invitation is delivery not revenue; 62 forbids attachment monetization; cost/pricing unvalidated |
+| S14 | ALPHA_PRIVACY_SPEC_ONLY | 58/59 separate state/deletion/export/research but operational/legal/security red team absent |
+| S15 | HUMAN_ALPHA_NOT_PROVEN | 100 gates and falsifiers specified; participant protocol, outcomes, independent review absent |
+| S16 | HANDOFF_FORMAT_ONLY | Owner rationale/alternatives/version/consumer/reopen packet required; no whole-program issued packet |
+
+A0–A5 are product maturity gates, not alternate names for S0–S16. A0 native individual, A1 meaningful later life, A2 earned later act, A3 independent offscreen life, A4 broader ecology, and **A5 real human recognition** each require their own evidence. A bounded curated sourcefree seed is permissible for early 100 Gates 0–3 experiments, **not** for claiming Gate 4 native person substitution or Gate 5 human validation. Original [100](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md) and [101](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/101_BINDING_SURFACE_ACTOR_PHENOMENOLOGY_SEGREGATION_AND_TWO_CALL_RENDERING_R1.md) distinguish objective actor occurrence, actor access, user observable receipt, and user phenomenal selection.
+
+### 6.3 Exact 40 historical V3 mechanisms: parity is mostly absent, not source lost
+
+Each original M ID below has historical member SHA256, function/line, owner return, independent review, input/output, original consumer and current nearest match in 09.w3_historic_to_current. **These are original V3 M01–M40, not current lowercase PRE-MAIN m1–m6 nor Astra M01–M17.** Fourteen partial analog/principle families, twenty NONE_VERIFIED and six rejected/superseded are different from native port completion.
+
+| M ID | Historical function | Current equivalence (not native port) | Nearest present / reason |
+|---|---|---|---|
+| M01 | persistent BackboneState pattern | PARTIAL_SOURCEFREE_ANALOG | BP4/C12 state and cold-root storage; no BackboneState import |
+| M02 | material capacity | PARTIAL_SOURCEFREE_ANALOG | BP2P4J/R31J performed B material ledger |
+| M03 | psychological/regulatory capacity vector | NONE_VERIFIED | CAN008 actor conditioning; no proven scalar-regulatory implementation |
+| M04 | reproduction constraints | PARTIAL_SOURCEFREE_ANALOG | R31J/BP2 material possibility/access |
+| M05 | A/S/V/Aim domains and latent/expressed Aim | NONE_VERIFIED | CAN008/CAN011 defined owners; M6 claim ceiling is not domain metabolism |
+| M06 | multidimensional alienation | NONE_VERIFIED | No current alienation updater; old delta path has stale fields |
+| M07 | public/private/inner registers | PARTIAL_CURRENT_GUARD_ANALOG | rawlsing_next/m6_actor_safe_expression.py::evaluate_actor_safe_ingress and render_bounded_expression.py |
+| M08 | wound/sensitivity state | NONE_VERIFIED | ADP016/017 ownership defined; no direct wound engine |
+| M09 | cracks | NONE_VERIFIED | C9 contradiction cases, not Crack mechanism |
+| M10 | buffers and costs | NONE_VERIFIED | C9 sourcefree tests track some consequences, not buffer cost mechanics |
+| M11 | frameworks as metabolic operators | NONE_VERIFIED | CAN011 mediators/practices are owners, not a weight engine |
+| M12 | collective infrastructure | NONE_VERIFIED | Pyat world/Field Forge structural contexts |
+| M13 | practice stack | PARTIAL_SOURCEFREE_ANALOG | C9RI TEST_ONLY target store → later performed E2; P1 S35 NO_CHANGE |
+| M14 | PeakRouting / loop topology / solidarity boundary | NONE_VERIFIED | CAN008 response/relationship owners only |
+| M15 | need axes / expectation baseline | NONE_VERIFIED | CAN010 expectations owner, no source-backed parent baseline implementation |
+| M16 | StrivingObject | NONE_VERIFIED | CAN010 strivings owner defined |
+| M17 | Gift/Disruption shards / expectation events | NONE_VERIFIED | CAN010/ADP016 historical event surfaces, not matching shard compiler |
+| M18 | RuptureShard | NONE_VERIFIED | CAN012 rupture and ADP016 memory owners defined |
+| M19 | multi-year MetabolizationProcess | NONE_VERIFIED | C12 cold continuity, not same metabolization process |
+| M20 | magnets / relational field | PARTIAL_MATERIAL_RELATION_ANALOG | R31J/BP2 B material relation; Pyat GT12 conditional relation |
+| M21 | pressure-flow history / memory / grooves / conductance | PARTIAL_MEMORY_ONLY | C12/JOIN persistent provenance and cold read; no pressure-flow model |
+| M22 | child model / assumed rules / taboos / possible-world boundary | NONE_VERIFIED | C4/C5/CAN010 science obligations |
+| M23 | autonomy/safety drives and conditions | NONE_VERIFIED | CAN008 actor condition category only |
+| M24 | stability-threshold inertia | NONE_VERIFIED | C12 lasting state is not this inertia algorithm |
+| M25 | yearly ordered causal spine | PARTIAL_SCHEDULING_PRINCIPLE_ONLY | P1 sourcefree event/later E2 chronology; no native 19-step annual runner |
+| M26 | stored-versus-derived separation | PARTIAL_CURRENT_INVARIANT_ANALOG | BP4/C12 state/cold integrity; rawlsing_next/m4_v557_v558_publication_repository.py source/derived structural … |
+| M27 | Pass 1 LLM proposal | NONE_VERIFIED | M6 bounded expression is downstream rendering, not a causal Pass1 generator |
+| M28 | score/select/apply boundary | NONE_VERIFIED | BP2 test-only rule_a/target; ADP019 occurrence owner |
+| M29 | Pass 2 render-only role | PARTIAL_CURRENT_GUARD_ANALOG | rawlsing_next/m6_actor_safe_expression.py → render_bounded_expression.py |
+| M30 | V3-under-V2 nonmutation architecture | PARTIAL_ARCHITECTURAL_ANALOG | M6 actor-safe ingress → render_bounded_expression; GT0 no V3→V2 fabrication |
+| M31 | life-course Enneagram emergence / end matcher | REJECTED_HISTORICAL_ONLY | NONE; current Sorok 74 revokes v3.4 typology as authority |
+| M32 | old V5 runtime-input / field-injection bridge | PARTIAL_CURRENT_BOUNDARY_ANALOG | rawlsing_next/wsc_gt0_prev3_bridge.py → wsc_gt0_v3_runtime.py |
+| M33 | generic pseudo-random mechanical event sampler | REJECTED_HISTORICAL_ONLY | NONE; ADP019 requires admitted occurrence |
+| M34 | fallback concretization when Pass 1/selection yields nothing | REJECTED_HISTORICAL_ONLY | NONE; current guarded pathways must allow no-event/hold |
+| M35 | placeholder crack/framework invariant repair | REJECTED_HISTORICAL_ONLY | NONE; current no-fabrication boundaries |
+| M36 | hopeful/medium parent defaults | REJECTED_HISTORICAL_ONLY | NONE; source-qualified history or unknown |
+| M37 | structural placeholder scene / annotation for non-LLM years | PARTIAL_QUARANTINE_PRINCIPLE_ONLY | GT0 BLOCKED/V3 zero-positive and C12 sourcefree partial roots |
+| M38 | dual derived-schedule declaration | NONE_VERIFIED | Modern temporal M1 route is a different subsystem |
+| M39 | server-side/manual rupture injection | REJECTED_HISTORICAL_ONLY | NONE; ADP019 event owner boundary |
+| M40 | generation readiness / global ready surface | PARTIAL_CURRENT_READINESS_ANALOG | M6 named-authority BLOCKED, BP4/JOIN readiness/cold checks |
+
+### 6.4 Exactly 25 named/modern edges and 15 preserved code candidates
+
+The original 09 IDs remain unchanged. This compact view is searchable by ID in 09.w3_current_producer_reader, which contains precise producer/artifact fields, expected vs actual first reader, import state, proof type, current owner gap and closest action. A required first consumer is not a real importing consumer.
+
+| Existing edge ID | Attributed source/candidate status | Actual first reader (or missing) |
+|---|---|---|
+| E01 | HELD | BP2 JoinedProducer.stage_c9 TEST_ONLY Rule A; required CAN008→native C9 E2 absent |
+| E02 | HELD | BP2 stage_c9→stage_e2 TEST_ONLY target; RRIF-R2 sourcefree NO_CHANGE; native selector absent |
+| E03 | HELD | BP1 material life and BP4 methods branch-local; no native C6/C8→C9 import |
+| E04 | HELD | R31J/BP2 B occurrence sourcefree; B-F1CR targetless I1 separate |
+| E05 | HELD | C9C12-R2 read_actor_snapshot reads own SQLite; no PRE-MAIN canonical writer→reader |
+| E06 | PARTIAL | JOIN-E sourcefree same-root fork/cold at 7bf; C9C12-R2 separate reader |
+| E07 | HELD | F0 typed source/transport exists, future canonical actor runtime absent |
+| E08 | HELD | M6 guard is actor ceiling; ADP016/017 and SCI05 N+1 actual actor consumption unverified |
+| E09 | HELD | No native F3→B/C8→C9 irreversible batch reader; synthetic B branch-local |
+| E10 | HELD | Historical genealogy requirements; none verified current |
+| E11 | HELD | PRE-MAIN empirical pre553 C11 is a different namespace; no Sorok C11 weld |
+| E12 | UNBUILT | BP4/CP-A5 sourcefree methods and encounters only; no human A0–A5 |
+| E13 | HELD | BP4 sourcefree care/help gestures; no owned care/challenge generalizing E2 reader |
+| E14 | HELD | Test-only target_semantics not an issued CAN011 composed relation |
+| E15 | UNBUILT | Historical learning obligations; no current imported education-to-action pathway |
+| RCFB_E1 | PARTIAL | Original F1C same_receiver_assertion; B-F1CR-R2 targetless C10/I1 adapter separate |
+| RCFB_E2 | PARTIAL | BP2 build_world_occurrence→commit_world_occurrence→read_out9; BP4 C10 receive downstream |
+| RCFB_E3 | PARTIAL | BP2 stage_c8/out9/stage_c9 sourcefree; later RRIF-R2 preserved closure |
+| RCFB_E4 | PARTIAL | BP2 stage_e2 and JoinedProduct A2; newer C9 R3B SQLite reader stays separate |
+| RCFB_E5 | PARTIAL | BP4Product C10 receive on same candidate; BF1CR adds separate targetless ledger |
+| RCFB_E6 | PARTIAL | JOIN-E exact same-root fork/cold; C9C12-R2 C12 guard separate |
+| RCFB_E7 | PARTIAL | BP4 observe/other/say/repair/reenter; CP-A5 EncounterReader.ask separate |
+| RCFB_E8 | HELD | G17 continue_person→c9_handoff_consumer.receive_handoff only historical/component |
+| RCFB_E9 | HELD | M04R cell.Cell.read_owner component, no current actor reader |
+| RCFB_E10 | RED | No adopted OC5/C8 capsule trust consumer |
+
+| Existing code asset ID | Scope status | Current verified importer / first reader |
+|---|---|---|
+| F1C_ORIGINAL | PARTIAL | R31JProduct/r31j.assertion.p01 sourcefree attributed; B-F1CR replay exact F1C |
+| F1CR_CLAIMED_PATCH | UNKNOWN | NONE_VERIFIED — patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae unlocated |
+| F1CR_R5_RECONSTRUCTION | PARTIAL | B-F1CR-R2 test root uses reconstruction, not original F1CR |
+| B1 | PARTIAL | Store.commit→execute second event in bfirst.py only |
+| B2 | PARTIAL | Bridge.advance→d1_gate in bridge.py only |
+| B3 | PARTIAL | World.execute and T9 CHECK_LOCK sourcefree E3 reader only |
+| B3A | PARTIAL | candidate/Integration.run X3 SQLite atomic attempt, later E3 sourcefree |
+| B3AS | PARTIAL | candidate Integration.snapshot/_database_snapshot/run; same sourcefree B3 tests |
+| BP2P4J | PARTIAL | JoinedProduct(BP4Product) reads bp2p4 seed/reunion then C12; same root JOIN later |
+| S39_S52 | PARTIAL | S52Session→S51Session→produce_b_turn/perform_paid_participation branch-local |
+| R15_V2 | UNKNOWN | RFA R2 static renderer experiment, no valid R2 model output/real user |
+| CP-A5-R2 | PARTIAL | cp_a5 EncounterReader.ask reads same I1 C12 candidate root; not RRIF-R2 imported |
+| C9C12-R2 | PARTIAL | read_composite→read_actor_snapshot + guarded_c12_cold_read; not RRIF-R2 selected |
+| B-F1CR-R2 | PARTIAL | TargetlessGuardedJoinedProduct(I1) consumes TargetlessC10Ledger |
+| V3CORE-R1 | PARTIAL | v3core_adapter.i1_consumer.project_actual_market_event→I1 candidate |
+
+The fifteen are **alternatives and inherited specimens**, not fifteen current PRE-MAIN production modules. Original F1CR patched bf7e625e1f208908e583ea72ebb73992ad7d19ae remains UNLOCATED; R5 reconstruction is different. B3AS's accepted exact schema/readset subedge and JOIN-V 7bf exact fork/cold subedge remain independently scoped. GF1M's earlier nonfinite RED is not cleared solely by a later author test report. The nine R6 source-present/unwired families are attached as exact source references to 09; none is given a new Sorok controller ID.
+
+### 6.5 Claim-scoped prerequisite examples and backward unlocks
+
+The 08.w3_claim_scoped_dependency_view records 22 D-* claims with AND prerequisites, conditional OR variants, qualified owners, satisfied/blocked/unknown leaves, actual next proof and reverse unlocks. These are **not** a single all-Sorok critical path. Examples:
+
+- **Native generated C12:** D-C12 requires **AND** qualified C4/world weld, recursive C9/C10 history, exact compatible writer→reader/root, durable access-aware cold/fork. JOIN-V 7bf supplies only a previously accepted sourcefree fork/cold leaf. Native D-C12 would unlock A0/A1/A2/A3 and observable/user claims only at its declared grade.
+- **Positive practice acquisition:** D-C9 requires **AND** actual receivable E1, C4 state, original Rule A, original Rule T or explicitly evaluated NO_CHANGE, and an actually performed/read E2. Sourcefree NO_CHANGE and a test-only target do **not** imply positive Rule T, nor automatically unlock flourishing.
+- **A5 human alpha:** D-A5 requires **AND** genuine interface/observable exposure, sufficient person-other life at alpha fidelity, S14 consent/privacy, S5 benefit/harm falsifiers, protocol and participant evidence; a **conditional OR** permits curated early tests or later expanded fidelity, not exemption from safety/native-claim gates.
+- **S13 economics:** D-S13 requires **AND** costs/revenue hypothesis, prohibition of paid attachment/crisis manipulation, incentive review, viability evidence; an **OR** allows competing aligned revenue experiments. Invitation mechanics alone do not prove revenue.
+- **S16 handoff:** D-S16 is downstream of *particular* owner decisions, named actual consumer, rationale/alternatives, evidence, falsifier and reopen conditions. This guide issues no such owner adoption packet.
+
+Astra A–H and gameplay M01–M17 are independent temporal/experience falsifiers, not prerequisites that issue CAN008/011. The named PRE-MAIN pre553_source_backed_c11_facade.py is an empirical-data C11 release **not** Sorok C11 person weld. R41 is a sourcefree world client **not** Pyat N11/N12.
+
+### 6.6 Proof and update rule
+
+For a changed claim, alter its existing ID in 07/08/09 and only the affected section here: (1) exact 40-hex commit and path/blob, symbol/meaningful section; (2) code import or observed field read vs document/author claim; (3) actual producer→typed fields→first importing reader, version/root; (4) separately report science owner, evidence custody, independent review, protected adoption and native/human status; (5) blocked/negative predecessor and reverse unlock; (6) specific next missing witness. Never upgrade all axes from one passing test, claimed launch or branch name. Read grade PATH_ONLY remains path only; W2 direct inspection is attributed W2, not silently W3 execution.
+
+**GUIDE ASSEMBLY READY FOR INDEPENDENT USE TEST. WHOLE_SCOPE_NATIVE_OR_HUMAN_PRODUCT_NOT_PROVEN.** The only remaining GUIDE closure check is an unfamiliar agent's cold five-question navigation test against 03; product/science/owner/engineering work continues separately. Read [10 W3 closeout](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md) for finite next actions.

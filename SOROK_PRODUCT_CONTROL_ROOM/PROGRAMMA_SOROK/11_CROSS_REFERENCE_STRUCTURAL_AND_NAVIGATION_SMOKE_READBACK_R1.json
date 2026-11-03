@@ -443,5 +443,150 @@
       ],
       "disclaimer": "This is section-neighborhood traversal, NOT proven component-to-component runtime graph. Refer to exact seam source before work."
     }
-  ]
+  ],
+  "w3_source_heads": {
+    "frozen_base": "ce5e2dfe3b410657b1c5f646b725424995cdcb07",
+    "W2_A": "7a5a77843300e1a59b9a16677f963fb6176b00af",
+    "W2_B": "8b0edbcc6bc456e1f92ac7bc11faf0e4f903401b",
+    "W2_C": "d802989671ed9ddd2886d45c4f8f1d825611ce5a",
+    "observed_premain": "9809203fd915a84bae056a67210e9213879840db"
+  },
+  "w3_in_memory_structural_checks": [
+    {
+      "check": "frozen source 144 row ids",
+      "result": "PASS",
+      "observed": "144 rows",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "W2A 25 edges and 15 code mapped to same IDs",
+      "result": "PASS",
+      "observed": "40 mapped",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "W2B 40 M row parity mapped",
+      "result": "PASS",
+      "observed": "40 mapped",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "S0-S16 intact and covered",
+      "result": "PASS",
+      "observed": "17/17 S rows",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "22 requalified guide seams",
+      "result": "PASS",
+      "observed": "22/22 E001-E022",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "22 claim-scoped dependency records",
+      "result": "PASS",
+      "observed": "22/22 D-*",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "dependency SP sections link to spine",
+      "result": "PASS",
+      "observed": "all D-* guide SP links found",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "290 exact Git locator unique ids+identities",
+      "result": "PASS",
+      "observed": "290/290 path+cut unique",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "Git locator sha/blob complete",
+      "result": "PASS",
+      "observed": "all source_cut and blob_sha 40-hex",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "nine R6 source references present and not native",
+      "result": "PASS",
+      "observed": "9/9 scoped unwired",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "scoped greens not native whole-program",
+      "result": "PASS",
+      "observed": "E020 recovery, E021 exact JOIN cut only",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    },
+    {
+      "check": "no evidence W3 local/native tests claimed",
+      "result": "PASS",
+      "observed": "explicit NOT_RUN",
+      "method": "W3 JS in-memory JSON/text referential validation, not runtime/native test"
+    }
+  ],
+  "w3_executed_status": "STATIC_GUIDE_JSON_AND_LINKED_SECTION_CHECKS_PASS__NOT_INDEPENDENT_COLD_USER_TEST",
+  "w3_reader_navigation_desk_trials": [
+    {
+      "question": "What best current C11/Pyat world→person implementation exists?",
+      "path": [
+        "06 SP-10/20",
+        "08 E001/D-C0/D-C11",
+        "09 C11/RCFB edges",
+        "07 pre553 current code"
+      ],
+      "answer": "Pyat native weld no verified importing Sorok C11; pre553_source_backed_c11_facade is empirical C11 logical release only; owner release/readset needed.",
+      "source": "9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py",
+      "grade": "W2A direct code; W3 desk trace, no native execution"
+    },
+    {
+      "question": "Does S35 NO_CHANGE prove acquired Rule T practice?",
+      "path": [
+        "06 SP-70/80",
+        "08 E006/D-C9",
+        "09 E02",
+        "10 P1 original science"
+      ],
+      "answer": "No. Candidate NO_CHANGE and sourcefree later E2 exist; CAN011 positive practice discriminator/owner decision and actual native reader are held.",
+      "source": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md",
+      "grade": "W2-A/C documentary and candidate code attribution"
+    },
+    {
+      "question": "Is old M25 yearly step already in modern native PRE-MAIN?",
+      "path": [
+        "06 §6.3 M25",
+        "09 M25 historic_source_members/current_equivalence",
+        "10 conditional mainMac source"
+      ],
+      "answer": "Historical run_one_year source/function and prior S2 receipt exist, native exact port/import not proved; only partial scheduling principles.",
+      "source": "8b0edbcc6bc456e1f92ac7bc11faf0e4f903401b:WORKER_RETURNS/PROGRAMMA_SOROK_GUIDE_W2B_HISTORICAL_REUSE_20261102_R1/01_M01_M40_HISTORICAL_TO_CURRENT_FUNCTION_PARITY.json",
+      "grade": "Attributed W2B parity; W3 no archive read"
+    },
+    {
+      "question": "What blocks S14 privacy/abuse release beyond C12 tests?",
+      "path": [
+        "06 §6.2 S14",
+        "08 D-S14/D-A5",
+        "09 S14",
+        "10 P1 human release"
+      ],
+      "answer": "58/59 are privacy and research alpha-spec design only; operational deletion/export, consent, abuse/security and legal/human review missing; not gated on coding all Pyat.",
+      "source": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/58_Q_PRIV_001_USER_DATA_PRAXIS_DELETION_EXPORT_CONSTITUTION_R1.md",
+      "grade": "W3 direct primary documentary read, no operational test"
+    },
+    {
+      "question": "Can accepted JOIN-V sourcefree fork/cold be called human A5?",
+      "path": [
+        "06 §6.1 and §6.5",
+        "08 E021/D-C12/D-A5",
+        "09 relevant assets",
+        "10 P0/P1"
+      ],
+      "answer": "No. Exact independent 7bf sourcefree acceptance does not confer native C9/C12, new RRIF-R2, M6 render or participant evidence; A5 requires safety, user interface and human protocol.",
+      "source": "4387dc818a96fda2d5271672505fbd9da1059703:WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md",
+      "grade": "W3 direct court document read; no own independent review"
+    }
+  ],
+  "w3_cold_use_test": "NOT_RUN_DIFFERENT_AGENT_REQUIRED",
+  "w3_outcome": "GUIDE_ASSEMBLY_READY_FOR_INDEPENDENT_USE_TEST__WHOLE_PRODUCT_NOT_PROVEN"
 }

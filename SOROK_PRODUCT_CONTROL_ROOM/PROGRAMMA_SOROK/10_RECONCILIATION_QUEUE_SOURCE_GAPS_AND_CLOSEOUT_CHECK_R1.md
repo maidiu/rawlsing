@@ -1,7 +1,46 @@
-# PROGRAMMA SOROK — ACTUAL NEXT RECONCILIATIONS, PRESERVED UNMATCHED ASSETS AND TARGETED SOURCE NEEDS
+# PROGRAMMA SOROK — W3 GUIDE CLOSEOUT, LIVE OPEN LIMITS AND OWNER-SCOPED NEXT WORK
 **Date:** 2026-11-02. **Status:** working guide continuation, not an agent commission, source/native issuance, or claim that any Sorok person development was completed. Companion [06 working spine](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md), [07 GitHub locator](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json), [08 22 evidence-scoped seams](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json), [09 inherited source/function crosswalk](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json).
 
-## 1. What this guide pass actually did
+## 0. W3 construction-finishing result and finite practical next work
+
+**Status: GUIDE ASSEMBLY READY FOR INDEPENDENT USE TEST; not accepted native, science, product, or human alpha.** W2-A 7a5a77843300e1a59b9a16677f963fb6176b00af, W2-B 8b0edbcc6bc456e1f92ac7bc11faf0e4f903401b and W2-C d802989671ed9ddd2886d45c4f8f1d825611ce5a all returned from frozen ce5e2dfe3b410657b1c5f646b725424995cdcb07. The W3 [06 §6](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md) is the front door. [09](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json) now holds 40 by-function historical source/member hashes and parity, 25 producer/reader edges, 15 candidate assets and nine existing unwired source references. [08](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json) holds regraded 22 seams and linked 22 claim-scoped recursive dependencies. [07](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json) adds 28 exact Git source references (290 total), without pretending all 290 were semantically read.
+
+### The pressing next decisions (separate scopes, not one serial implementation sprint)
+
+| Priority / product contribution | Existing best source/function | Smallest unresolved owner/test act and reverse unlock | Keep separate |
+|---|---|---|---|
+| **P0 Guide itself** — trusted handoff to any future worker | 03 user seven questions; W3 06/07/08/09/11 | A **different, unfamiliar reader** receives only guide entrypoint and traces 5 varied X cases from whole purpose to exact source, first real reader, AND/OR ancestor, owner, negative, and next action. Fix only material navigation misses; independent owner may then adopt guide. | This is guide utility, not acceptance of whole Sorok product or W3 own review. |
+| **P1 Selected sourcefree implementation tuple** — usable existing engineering without duplicate rebuilding | JOIN-V 7bf accepted sourcefree by 4387dc818a96fda2d5271672505fbd9da1059703; RRIF-R2 598d9e9eaba5143950c63317705fd09104fbf463 reports author 20/20; C9C12-R2 c78404724052496fdec8608c8b0e833c0f7c4ecc::read_composite | If owner selects RRIF-R2, independent reviewer first verifies exact new cut; C9/C12 owner then chooses writer/root/schema, mirror ACK and external anchor before cold/severance tests. Unlocks scoped C9→C12 sourcefree consumer selection. | 7bf acceptance does not transfer to 598d or c784; CP-A5, B-F1CR and V3CORE are separate roots. |
+| **P1 Original scientific/native C8/C9** — credible acquired practice instead of magical target | Sorok 74 at 865b5b01e1a27e99020cf2bb389af8cd4c874b57; W2-A 02 E005–E007; W1-B competing explanations | Competent CAN008/CAN011 and ADP original owners name actual E1/readset, Rule A, positive Rule T versus evidence-qualified NO_CHANGE and performed E2 selector; receiving C9 then tests typed input→actual later reader. Unlocks lawful native D-C9/C10/C12. | A sourcefree NO_CHANGE, a generic operation vocabulary or a test-only grant is not positive Rule T science. |
+| **P1 External world/actor weld** — Pyat→Sorok native source identity | Sorok 00E/74 and 9809203fd915a84bae056a67210e9213879840db::rawlsing_next/pre553_source_backed_c11_facade.py | Pyat own N11/N12/world/source release owner and Sorok native C0/C11 receiver select exact approved artifact, field/readset, actor access and first importing adapter; run qualified source tests under those owners. Unlocks D-C0/C4/C11, not an assumed PRE-MAIN port. | pre553 C11 is empirical logical release, not Sorok C11; R41 is sourcefree client. |
+| **P1 Product integrity, S5/S7** — prevent harm/diagnostic overclaim | Original [24 Court 10](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md) OPEN, [25 Court 11](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md) OPEN, 58 privacy alpha-spec | S5 and S7 original product/science owners decide plural harm/benefit tests, care-vs-coercion counterexamples, exposure-aware non-diagnostic longitudinal praxis and uncertainty. Unlocks evaluation design D-S5/D-S7, not native C9 rule issuance. | No invented scalar health_score or engagement/attachment proxy. |
+| **P1 Human medium and release safety, S11/S14/S15** | Sorok 31/32/35 first-session UX, 58 deletion/export, 59 research firewall, 100 Gates 0–5, 101 surface boundaries | S11 UX owner supplies usable scene/exit/messaging/accessibility prototype and real exposure/test; S14 security/privacy owner operational consent, deletion, abuse, audit and legal checks; S15 human owner preregisters falsifiers/participant protocol for actual Gate5. Unlocks lawful A5 **only when conjunctive**. | Sourcefree CP-A5 ask filter and M6 blocked guard do not equal real participant A5. |
+| **P2 Non-extractive economics, S13, and handoff S16** | Original 44 invite-delivery proposal, 62 anti-commodification constitution, 05 S13/S16 | S13 owner supplies cost/revenue hypothesis, prohibited-incentive falsifiers and validation; separate S16 owner packet identifies exact consumer, alternatives, proof, reopener and rights. Unlocks viable ethical release and bounded engineering. | Invite distribution is not an earning model; guide cannot appoint owners. |
+
+### Explicit preserved negatives, alternatives and unmatched items
+
+- **JOIN-V** at exact 7bf2da302996491ddf34b9a039fea47ac982d135 independently ACCEPT_SCOPED sourcefree fork/cold. Old RED records remain true of their prior cuts; later RRIF-R2 author 20/20 is not independently accepted at this guide pass.
+- **B3AS** exact 16f15a125ba54cdf17f5d41be2d851bbcd2240d7 accepted independently at 1a25b19dd01e8e7954e38c59ffc7e52c50739c9f for sourcefree schema/readset; prior B3 X3 failures are retained.
+- **GF1M** independent nonfinite serialization RED at d97a5df8... and later a8fcb695... author 330 green are different cuts; require fresh independent review only if this branch is selected.
+- **Original F1CR_PATCH** claimed executable bf7e625e1f208908e583ea72ebb73992ad7d19ae remains unlocated. R5 reconstructed F1CR is an alternative, not the original. Original custodian can locate/hash exact named patch or explicitly record unavailable; do not manufacture old bytes.
+- **Nine R6 families** EE-R5B, EE-R10L, R38, GF1H/K/M, generic pair, Phase-D compiler and R41 are linked by exact Git member/blob in 09; current PRE-MAIN importer NONE_VERIFIED at 9809203. GF1H may be superseded by GF1K; do not relaunch all nine. Any use is a specific owner-selected consumer path.
+- **Old V3** historical persistence/yearly/persona/V2 code is present by prior S2 source/member receipts, but not current PRE-MAIN native. Its ZIP container digest mismatch is not evidence of 114/114 selected member failure. M31/M33/M34/M35/M36/M39 negative/superseded behaviors are not port tickets. All 40 individual source, call, review and current-equivalence rows remain searchable in 09.
+- **Original science and product** S0–S16 includes S5 flourishing, S7 praxis, S11 UX/accessibility, S13 economics, S14 safety/abuse, S15 human evaluation, S16 handoff independently from C9–C12. Astra A–H and gameplay M01–M17 are experience falsifiers, not V3 M01–M40 or native Rule A/T.
+
+### Exact conditional external source needs (no standing archive hunt)
+
+1. **No immediate Library/mainMac request** for guide assembly. Prior original V3 staging: /Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging/; named members and SHA256 in W2-B 03. If a concrete port claim requires original byte reproof, a qualified read-only custodian checks v3/core/state.py (19e968d45e9d81eb7629f1c237dbc55119fec8fc7db0b29e2b39b2476d12ada2), v3/engine/yearly_step.py (da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb), v3/io/persona_sheet.py (4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e), or the other seven **only for the exact disputed function**, without repacking or running native.
+2. If an original ZIP container identity claim matters, prior path /Users/matthewsmith/Desktop/Rawlsing/Rawlsing_code_bundle_staging.zip had observed SHA256 3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289 vs earlier expected 953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086. Resolve at named archive/custodian only; selected 114/114 member receipt is separate.
+3. Missing original F1CR patch, selected native Pyat world grant, positive Rule A/T discriminators and compatible C9/C12 version/anchor are **named owner/source evidence gaps**, not an instruction to search every branch or start external execution.
+
+### Finite guide closeout and stable updating
+
+Give a fresh qualified reader the [03 user specification](03_USER_DEFINED_MASTER_GUIDE_TARGET_AND_SPECIFICATION_20261102_R1.md) and 06 entrypoint. Ask X=C11/Pyat boundary, X=Rule T, X=M25 yearly code, X=S14 privacy, X=A5 human alpha. In each, require: plain meaning and SP home; best exact historical and current proof; actual producing function, artifact and consuming reader or explicit NONE; independent accepted/negative/candidate status by cut; recursive AND/conditional OR leaves/owner/reverse unlocks; finite next action. This W3 self-checked structure and desk traversal but did **not** conduct an independent unfamiliar-agent test. The finite guide may be declared ready for that test without calling the Sorok product complete.
+
+After a real owner/independent decision changes a fact, update **only** that existing row ID and its linked source, seam, SP summary, readback; preserve old negative/source cut, don't issue scientific/owner authority in Programma and don't create a new controller. No automatic work launch, protected merge or person runtime.
+
+---
+## 1. Original frozen guide assembly record (historical; W3 adds reconciliation above)
 
 - Pinned an actual working whole Sorok architecture to original Sorok charter, 03, 04, 05, 00E, 74, 100/101, W1 A/B/C/D/E and current PRE-MAIN sources, with exact epistemic limitations. Primary S0–S16 responsibilities appear at middle zoom, including S5/S7/S11/S13/S14/S15.
 - Created a **262-record exact GitHub tree locator** spanning 118 root Sorok primary docs, 32 dockets, 3 Q/D/R registers, 19 Astra/Pyat boundary sources, 32 selected present PRE-MAIN code files, 10 O-LIVE candidate files, 6 O-INDEX reused files, 30 W1/engineering study files, 12 upstream Dva/Trii/Chetiri/Long Memory campaign handoff refs. Every entry has source commit, Git blob, path and URL; filename sections are *proposals only* with READ_GRADE=PATH_AND_BLOB identified, not source semantic verification.
@@ -11,7 +50,7 @@
 
 These are first reconciled artifacts to use, not a new state-management platform or evidence of total work completion.
 
-## 2. Highest-value bounded next reconciliations (in order of guide usefulness)
+## 2. Historical initial W1 reconciliation queue (40/25/15 now linked by W3; see §0)
 
 | Focus | Already available evidence | Exact remaining guide work | Do not confuse with |
 |---|---|---|---|
@@ -28,7 +67,7 @@ These are first reconciled artifacts to use, not a new state-management platform
 
 These are **guide reconciliation targets**, not a ten-agent mission or necessarily ten sequential phases. Many can be handled in a small number of substantial passes, often by one well-equipped agent with adequate GitHub access and an existing source index.
 
-## 3. Current unresolved asset buckets — explicit, not lost
+## 3. Original W1 unresolved asset inventory (W3 exact status in §0 and 09)
 
 - **262 Git-tree locator entries:** exact Git commit/path/blob found. These are raw references, not 262 semantically reviewed or determined to be reusable. File names sometimes propose S-section candidate anchors; those remain UNADJUDICATED.
 - **40 historical V3 M records:** historically source-identified, category mapped in 09 but no automatic Neo one-to-one equivalent. Their source rows contain symbols/path/selected SHA and recognized historical/consumer caveats.
@@ -51,7 +90,7 @@ At the prior investigator's cut, the original runtime chain and AST inventory we
 
 **Other likely Library/hard-drive candidates:** exact historical V3.4 framework and vector pipeline (already user-provided to this project), older PFF/SDTF source artifacts named by Sorok 74 but not in immediate GitHub local source selection. Search GitHub by exact historical commit/path first. Do not assume their absence because no short top-level directory exists.
 
-## 5. Ready-to-finish guide definition
+## 5. Independent cold-use closeout definition (still required after W3)
 
 Before marking PROGRAMMA guide DONE, at least one unfamiliar agent should find without an exhaustive grok:
 - exact historical and best current version of a mechanism plus whether anything remains unported;
