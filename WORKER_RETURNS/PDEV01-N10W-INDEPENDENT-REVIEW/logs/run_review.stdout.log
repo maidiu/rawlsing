@@ -1,0 +1,107 @@
+{
+  "j42_views": 84,
+  "positive": 84,
+  "cold_equal": true,
+  "five_mutations_refused": true,
+  "simultaneous_clock": {
+    "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+    "reason_code": "WORLD_SELECTED_VIEW",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "42885d9d078a4a8341d42f404ff0a37b5f43b86748314091e155931fab19490c",
+    "families": {
+      "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1",
+      "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1"
+    },
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "n9_clock": {
+      "mode": "AS_OF",
+      "published_asof": "2099-01-01",
+      "valid_at": "2099-01-01",
+      "test_now": null
+    }
+  },
+  "selection_only": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+    "families": null,
+    "n9_currentness": null,
+    "n9_clock": null
+  },
+  "stale": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "ca37ac8e26ceba7d22a182c3ec752cbf24bfa077150f55e9868b36956739c120",
+    "families": null,
+    "n9_currentness": null,
+    "n9_clock": null
+  },
+  "missing": {
+    "missing_n9_provider": {
+      "state": "REFUSED",
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    },
+    "missing_n10e_steps": {
+      "state": "REFUSED",
+      "reason_code": "JOINED_CONSUMER_NOT_PRODUCTIVE",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "0432710c387cd2051c44806114baf884af9f64b2d7d4a6ebe02f116319e66ca4",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    },
+    "missing_p41_receipt": {
+      "state": "REFUSED",
+      "reason_code": "JOINED_VIEW_NOT_FOUND",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    },
+    "missing_joined_receipt": {
+      "state": "REFUSED",
+      "reason_code": "JOINED_VIEW_NOT_FOUND",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    },
+    "missing_required_field": {
+      "state": "REFUSED",
+      "reason_code": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "b3b77c906426d7bdb4b9bc514c8c633df78ba27d9712612ef6d5ce1d19c3926e",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    },
+    "wrong_source_rows": {
+      "state": "REFUSED",
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "0ee2070f03ba078e7b93aaff628dd8cb1dbf63173329e12cb94d0c47273b705b",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    },
+    "wrong_as_of": {
+      "state": "REFUSED",
+      "reason_code": "JOINED_AS_OF_MISMATCH",
+      "view_key": "base/TEST_CURRENT/budget5",
+      "view_hash": "857f5f90ec9371a5ebd790048c79cf4448ea879725b9c142c2ede5c95454b6ce",
+      "families": null,
+      "n9_currentness": null,
+      "n9_clock": null
+    }
+  }
+}

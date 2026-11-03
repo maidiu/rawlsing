@@ -1,0 +1,252 @@
+{
+  "candidate": "877f974a0e70ea591118fd94f558d73f426202dc",
+  "clock_trust": {
+    "baseline_j42_clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    },
+    "guard_accepts_simultaneous_clock_rehash": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "n9_clock": {
+        "mode": "AS_OF",
+        "published_asof": "2099-01-01",
+        "test_now": null,
+        "valid_at": "2099-01-01"
+      },
+      "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "42885d9d078a4a8341d42f404ff0a37b5f43b86748314091e155931fab19490c",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "guard_refuses_selection_only_rehash": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "simultaneous_clock": {
+      "mode": "AS_OF",
+      "published_asof": "2099-01-01",
+      "valid_at": "2099-01-01"
+    },
+    "trusted_input_compared_by_guard": false,
+    "trusted_w41_clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    }
+  },
+  "five_rehashed_mutations": {
+    "mutated_n9_selection": {
+      "base": {
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+        "view_hash": "92249d2cb20ce211e1e342c2dfeba4fbb457297514027b4363352b06c0fc2640"
+      },
+      "guard": {
+        "families": null,
+        "n9_clock": null,
+        "n9_currentness": null,
+        "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
+    "revoked_n9_currentness": {
+      "base": {
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+        "view_hash": "5d1b03866261d2b0ef8822b361690a86acb0ef73e49621df8be95aef0cbd2285"
+      },
+      "guard": {
+        "families": null,
+        "n9_clock": null,
+        "n9_currentness": null,
+        "reason_code": "JOINED_N9_CURRENTNESS_INVALID",
+        "state": "REFUSED",
+        "view_hash": "58801094752287a73aa7db048baf3b65d8d4b24b59b77c0a68577ee3355548a3",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
+    "wrong_n10e_provider_version": {
+      "base": {
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+        "view_hash": "23379de837d528650b51139818ebf6861458d445a5226b2f1bf7a076b701abe6"
+      },
+      "guard": {
+        "families": null,
+        "n9_clock": null,
+        "n9_currentness": null,
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
+    "wrong_n10w_provider_version": {
+      "base": {
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+        "view_hash": "2a7b3bb14c4054c6a780c15cc55e599285d3259d3a98ddc75bb792b650a34e1e"
+      },
+      "guard": {
+        "families": null,
+        "n9_clock": null,
+        "n9_currentness": null,
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
+    "wrong_n9_provider_version": {
+      "base": {
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+        "view_hash": "63b5d2e86f71a6def289acc9faab647b45b30d8120ece331d077ed8e54ee0fd4"
+      },
+      "guard": {
+        "families": null,
+        "n9_clock": null,
+        "n9_currentness": null,
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    }
+  },
+  "j42": {
+    "base": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "n9_clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "build_stdout_sha256": "2ccdeac00a06e09f410b180637b3dc1662ea7a71008967441c3e27adb1b5a796",
+    "cold_all_view_hashes_equal": true,
+    "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "packet": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1",
+    "positive": 84,
+    "positive_first_refusals": {},
+    "receipt_2_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "receipt_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "receipts_byte_equal": true,
+    "views": 84
+  },
+  "limits": [
+    "TEST_ONLY sourcefree actual J42/J41/P41; no original data",
+    "candidate production receiver unchanged; guard is isolated overlay",
+    "no authority/science/adoption"
+  ],
+  "missing_parents": {
+    "missing_joined_receipt": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_VIEW_NOT_FOUND",
+      "state": "REFUSED",
+      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_n10e_steps": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_CONSUMER_NOT_PRODUCTIVE",
+      "state": "REFUSED",
+      "view_hash": "0432710c387cd2051c44806114baf884af9f64b2d7d4a6ebe02f116319e66ca4",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_n9_provider": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_p41_receipt": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_VIEW_NOT_FOUND",
+      "state": "REFUSED",
+      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_required_field": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS",
+      "state": "REFUSED",
+      "view_hash": "b3b77c906426d7bdb4b9bc514c8c633df78ba27d9712612ef6d5ce1d19c3926e",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_as_of": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_AS_OF_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "857f5f90ec9371a5ebd790048c79cf4448ea879725b9c142c2ede5c95454b6ce",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_source_rows": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "0ee2070f03ba078e7b93aaff628dd8cb1dbf63173329e12cb94d0c47273b705b",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "r05_substitution": {
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null,
+    "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+    "state": "REFUSED",
+    "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+    "view_key": "base/TEST_CURRENT/budget5"
+  },
+  "review_branch": "review/pyat-pdev01-n10w-identity-r1",
+  "schema": "PDEV01_N10W_INDEPENDENT_REVIEW_EVIDENCE@1.0.0",
+  "stale_hash": {
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null,
+    "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
+    "state": "REFUSED",
+    "view_hash": "ca37ac8e26ceba7d22a182c3ec752cbf24bfa077150f55e9868b36956739c120",
+    "view_key": "base/TEST_CURRENT/budget5"
+  }
+}
