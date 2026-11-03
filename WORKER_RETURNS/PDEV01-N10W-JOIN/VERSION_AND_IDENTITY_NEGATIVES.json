@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "p41_content_hash": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+    "p41_hash_valid": true,
+    "reason_code": "WORLD_SELECTED_VIEW",
+    "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+    "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287"
+  },
+  "defects": {
+    "mutated_n9_selection": {
+      "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+      "mutated_value": {
+        "mode": "AS_OF",
+        "published_asof": "2099-01-01",
+        "valid_at": "2099-01-01"
+      },
+      "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+      "p41_hash_valid_after_mutation": false,
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    },
+    "revoked_n9_currentness": {
+      "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+      "mutated_value": "REVOKED",
+      "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+      "p41_hash_valid_after_mutation": false,
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    },
+    "wrong_n10e_provider_version": {
+      "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+      "mutated_value": "E41_WRONG_VERSION@1",
+      "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+      "p41_hash_valid_after_mutation": false,
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    },
+    "wrong_n10w_provider_version": {
+      "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+      "mutated_value": "P41_WRONG_VERSION@1",
+      "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+      "p41_hash_valid_after_mutation": false,
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    },
+    "wrong_n9_provider_version": {
+      "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+      "mutated_value": "W41_WRONG_VERSION@1",
+      "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+      "p41_hash_valid_after_mutation": false,
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+    }
+  },
+  "schema": "PDEV01_N10W_VERSION_AND_IDENTITY_NEGATIVES@1",
+  "summary": {
+    "all_mutations_accepted_positive": true,
+    "impact": "The actual J42 positive receipt is real, but the public receiver cannot qualify version/currentness compatibility; therefore the two-input qualification is REVISE, not PASS.",
+    "n9_currentness_enforced": false,
+    "n9_selection_binding_enforced_by_n9_object": false,
+    "p41_content_hash_checked": false,
+    "version_strings_enforced": false
+  }
+}

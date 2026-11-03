@@ -1,0 +1,10 @@
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 - <<PY
+from copy import deepcopy
+import json
+from rawlsing_next.tests.test_universal_world_binding import _joined_request
+from rawlsing_next.pre553_universal_world_binding import select_joined_world_view
+r=json.load(open("WORKER_RETURNS/PDEV01-N10W-JOIN/J42_RECEIPTS.json"))
+key="base/TEST_CURRENT/budget5"
+v=select_joined_world_view(_joined_request(r,key))
+print(json.dumps({"state":v.state,"reason":v.reason_code,"view_hash":v.view_hash,"values":v.consumer_values_read},indent=2,sort_keys=True,default=str))
+PY

@@ -1,0 +1,72 @@
+{
+  "negatives": {
+    "missing_n10e": {
+      "reason_code": "JOINED_CONSUMER_NOT_PRODUCTIVE",
+      "state": "REFUSED"
+    },
+    "missing_n9": {
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED"
+    },
+    "one_field": {
+      "reason_code": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS",
+      "state": "REFUSED"
+    },
+    "wrong_as_of": {
+      "reason_code": "JOINED_AS_OF_MISMATCH",
+      "state": "REFUSED"
+    },
+    "wrong_source_rows": {
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "state": "REFUSED"
+    }
+  },
+  "positive": {
+    "families": {
+      "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+    },
+    "n10e_steps": 3,
+    "n10w": {
+      "positioned_consumptions": [
+        {
+          "consumer_result_hash": "825a1270493656077bdeac5e3694974b53393c533d62e6ae51187cfd785dc9be",
+          "result_state": "EXACT_SUPPORTED",
+          "same_evidence_object": true,
+          "source": "LIVE_TRACE"
+        },
+        {
+          "consumer_result_hash": "defd03f6c7da86ab8c7703b353d480839e8ffc511df1303c424429adc0b8e350",
+          "result_state": "EXACT_SUPPORTED",
+          "same_evidence_object": true,
+          "source": "LIVE_TRACE"
+        },
+        {
+          "consumer_result_hash": "bc9910395782ac6ddf3198c04e6e08ae69c97ec7a6bb3d56221f2b33169d4d69",
+          "result_state": "EXACT_SUPPORTED",
+          "same_evidence_object": true,
+          "source": "LIVE_TRACE"
+        }
+      ],
+      "progressive_chain_state": "EXACT_PROGRESSIVE_CHAIN",
+      "progressive_update_identity": [
+        "c7442995fc5a6361e9a7a6e5f1248af6327f0cec3d1442e8dedff9eee61229d6",
+        "985ce09886d07c69c7d0388c098851507d4d30cdad0d273d7422bcc705ef07c4",
+        "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2"
+      ]
+    },
+    "n9_clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    },
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "reason_code": "WORLD_SELECTED_VIEW",
+    "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+    "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287"
+  },
+  "schema": "PDEV01_N10W_REPLAY_WITNESS@1"
+}
+replay complete: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-n10w-join/WORKER_RETURNS/PDEV01-N10W-JOIN/replay

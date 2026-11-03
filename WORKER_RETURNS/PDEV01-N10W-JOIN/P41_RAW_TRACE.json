@@ -1,0 +1,383 @@
+{
+  "consumer": {
+    "name": "GENERIC_POSITIONED_SUBJECT",
+    "permission_state": "ADMITTED_TEST_ONLY",
+    "values_read": "consumer material produced by the admitted nonparent consumer"
+  },
+  "firewall": {
+    "actor_state_present": false,
+    "encounter_probability_present": false,
+    "personhood_present": false,
+    "sampling_unit": "INDIVIDUAL_SOURCE_RISK_SET_TEST_ONLY",
+    "text": "distributions describe TEST_ONLY source risk sets; they are not a person, not an encounter, not a partner choice and not a route probability"
+  },
+  "n10e_steps": [
+    {
+      "cells": [
+        {
+          "cell": "0",
+          "raw_numerator_support": 14
+        },
+        {
+          "cell": "1",
+          "raw_numerator_support": 18
+        }
+      ],
+      "condition_witness_ref": {
+        "content_hash": "914546dad07e52e352892f567d75cb3cfd95a3f4faa510e8225981768b06679e",
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:e03:c7442995fc5a6361:witness"
+      },
+      "conditioners": [
+        [
+          "A",
+          1
+        ]
+      ],
+      "content_hash": "72a6265ba13fbab68bdfd5cc9d64bfd5651fb85e90d8fac82c6e78671fe9e514",
+      "denominator": 32,
+      "evidence_ref": {
+        "content_hash": "65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39",
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:65d1ea06184dcbf33579165cdf4d4228719844989ebd05efdc6fa6ce9cc7cc39"
+      },
+      "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde",
+      "producer_fact_ref": {
+        "content_hash": "d77501441c6c140eca39c064eadb40544268b492e18ebc9d78d1273f7faa7502",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d77501441c6c140eca39c064eadb40544268b492e18ebc9d78d1273f7faa7502"
+      },
+      "producer_query_ref": {
+        "content_hash": "639407e6dd446b7a5accc6b7789db34c2f2b1de183e5556ed13e43c3b26d726c",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:639407e6dd446b7a5accc6b7789db34c2f2b1de183e5556ed13e43c3b26d726c"
+      },
+      "release_ref": {
+        "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-e04-base-r1"
+      },
+      "risk_set_ref": {
+        "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+      },
+      "route": "N10E_PUBLIC_SINGLE",
+      "state": "EXACT_SUPPORTED",
+      "target": "Y",
+      "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+    },
+    {
+      "cells": [
+        {
+          "cell": "0",
+          "raw_numerator_support": 6
+        },
+        {
+          "cell": "1",
+          "raw_numerator_support": 10
+        }
+      ],
+      "condition_witness_ref": {
+        "content_hash": "7bae190f907d52c70c04562bdec8fa1f5b72e3bd9523b651003716629d942d24",
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:e03:985ce09886d07c69:witness"
+      },
+      "conditioners": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ]
+      ],
+      "content_hash": "dfedf5994e369f3aa200fd82285e8482d2b50359947d9c08a252536bc516aaae",
+      "denominator": 16,
+      "evidence_ref": {
+        "content_hash": "860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf",
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:860e86c1e1264a8a7efaccd904a95b297e44514e37b90ae8ae4d148c13c8dacf"
+      },
+      "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde",
+      "producer_fact_ref": {
+        "content_hash": "23bdc1df448d092e5a1539599e3eb4a16bc5050492d455ed6614112a182d0bd5",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:23bdc1df448d092e5a1539599e3eb4a16bc5050492d455ed6614112a182d0bd5"
+      },
+      "producer_query_ref": {
+        "content_hash": "13904da2c25c9f742ca33825d300d3fbca784b64a1d7106bf31d7ce5f1791f9f",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:13904da2c25c9f742ca33825d300d3fbca784b64a1d7106bf31d7ce5f1791f9f"
+      },
+      "release_ref": {
+        "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-e04-base-r1"
+      },
+      "risk_set_ref": {
+        "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+      },
+      "route": "C1_PUBLIC_MULTI_BINDING",
+      "state": "EXACT_SUPPORTED",
+      "target": "Y",
+      "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+    },
+    {
+      "cells": [
+        {
+          "cell": "0",
+          "raw_numerator_support": 2
+        },
+        {
+          "cell": "1",
+          "raw_numerator_support": 6
+        }
+      ],
+      "condition_witness_ref": {
+        "content_hash": "04c814ddafd8d7740d094094c06f9e77d0cfa7b32d71481f84dfad4089af4c57",
+        "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+        "object_id": "urn:test:e03:8fce7d0b5482a506:witness"
+      },
+      "conditioners": [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          1
+        ]
+      ],
+      "content_hash": "3c1d2b6f9eb940d97a21520216199aa6c9607df3ac9f7484c43e25c3b149cc18",
+      "denominator": 8,
+      "evidence_ref": {
+        "content_hash": "f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd",
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:f94ac5deadc6375daa5d0f253bf6b5e9da52a0589c2f2e95e2c213f4a8d1f1dd"
+      },
+      "model_rule_hash": "b09145e0067d42c7f02e16277d614888db0fafec00c4362215ae884beaa2dbde",
+      "producer_fact_ref": {
+        "content_hash": "5cc84da43e95c84489ac80d0d34f73f0945fa72074408605a7ab0b4cd0a7b980",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:5cc84da43e95c84489ac80d0d34f73f0945fa72074408605a7ab0b4cd0a7b980"
+      },
+      "producer_query_ref": {
+        "content_hash": "2ccb337a894b76474855d615c3c14c7d74ec217f61ad4f345d2f25efe32448a3",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2ccb337a894b76474855d615c3c14c7d74ec217f61ad4f345d2f25efe32448a3"
+      },
+      "release_ref": {
+        "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-e04-base-r1"
+      },
+      "risk_set_ref": {
+        "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+      },
+      "route": "C1_PUBLIC_MULTI_BINDING",
+      "state": "EXACT_SUPPORTED",
+      "target": "Y",
+      "uncertainty": "UNCERTAINTY_UNQUANTIFIED"
+    }
+  ],
+  "n10w": {
+    "positioned_consumptions": [
+      {
+        "consumer_result_hash": null,
+        "result_state": "EXACT_SUPPORTED",
+        "same_evidence_object": true,
+        "source": "CACHED_PRODUCTION_CONSUMPTION"
+      },
+      {
+        "consumer_result_hash": null,
+        "result_state": "EXACT_SUPPORTED",
+        "same_evidence_object": true,
+        "source": "CACHED_PRODUCTION_CONSUMPTION"
+      },
+      {
+        "consumer_result_hash": null,
+        "result_state": "EXACT_SUPPORTED",
+        "same_evidence_object": true,
+        "source": "CACHED_PRODUCTION_CONSUMPTION"
+      }
+    ],
+    "progressive_chain_state": "EXACT_PROGRESSIVE_CHAIN",
+    "progressive_update_identity": [
+      "c7442995fc5a6361e9a7a6e5f1248af6327f0cec3d1442e8dedff9eee61229d6",
+      "985ce09886d07c69c7d0388c098851507d4d30cdad0d273d7422bcc705ef07c4",
+      "8fce7d0b5482a50683a5435fdee097753e17fb84639c9ae81990863e12722cd2"
+    ]
+  },
+  "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+  "n9_rules": {
+    "civil_open": {
+      "effective_from": "2026-01-01",
+      "publication": "2026-03-01",
+      "revision": 1,
+      "value": true
+    },
+    "civil_sanction": {
+      "effective_from": "2026-01-01",
+      "publication": "2026-03-01",
+      "revision": 1,
+      "value": false
+    },
+    "exit_cost": {
+      "effective_from": "2026-01-01",
+      "publication": "2026-03-01",
+      "revision": 1,
+      "value": 2
+    },
+    "training_access": {
+      "effective_from": "2026-01-01",
+      "publication": "2026-03-01",
+      "revision": 1,
+      "value": true
+    },
+    "training_fee": {
+      "effective_from": "2026-01-01",
+      "publication": "2026-03-01",
+      "revision": 1,
+      "value": 2
+    }
+  },
+  "n9_selection": {
+    "mode": "AS_OF",
+    "published_asof": "2027-09-01",
+    "valid_at": "2027-09-01"
+  },
+  "n9_world": {
+    "currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "permission_root": "TEST_ONLY_E04_SOURCE_ROOT",
+    "rules": {
+      "civil_open": {
+        "effective_from": "2026-01-01",
+        "publication": "2026-03-01",
+        "revision": 1,
+        "value": true
+      },
+      "civil_sanction": {
+        "effective_from": "2026-01-01",
+        "publication": "2026-03-01",
+        "revision": 1,
+        "value": false
+      },
+      "exit_cost": {
+        "effective_from": "2026-01-01",
+        "publication": "2026-03-01",
+        "revision": 1,
+        "value": 2
+      },
+      "training_access": {
+        "effective_from": "2026-01-01",
+        "publication": "2026-03-01",
+        "revision": 1,
+        "value": true
+      },
+      "training_fee": {
+        "effective_from": "2026-01-01",
+        "publication": "2026-03-01",
+        "revision": 1,
+        "value": 2
+      }
+    },
+    "selection": {
+      "mode": "AS_OF",
+      "published_asof": "2027-09-01",
+      "valid_at": "2027-09-01"
+    }
+  },
+  "providers": {
+    "learned_release": "E04L_M1_M2_B5_READTHROUGH@1",
+    "n10e_empirical": "N10E_PUBLIC_SINGLE|C1_PUBLIC_MULTI_BINDING",
+    "n10w_progressive": "E03_PROGRESSIVE_CHAIN@1",
+    "n9_structural_consumer": "NONPARENT_OPTIONS@1",
+    "n9_world": "E04_TEST_ONLY_SELECTED_WORLD_M4_M5@1"
+  },
+  "receipt_content_hash": "b1359b060a453d9f82734a91905e3530f6cc45689ecc8b604b126bac4168c5c3",
+  "receipt_has_release_ref_in_n9": false,
+  "receipt_has_source_universe_ref": false,
+  "receipt_hash_recomputed": "b1359b060a453d9f82734a91905e3530f6cc45689ecc8b604b126bac4168c5c3",
+  "receipt_n10e_release_refs": [
+    {
+      "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-e04-base-r1"
+    },
+    {
+      "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-e04-base-r1"
+    },
+    {
+      "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-e04-base-r1"
+    }
+  ],
+  "receipt_n10e_risk_set_refs": [
+    {
+      "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+      "kind": "RISK_SET",
+      "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+    },
+    {
+      "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+      "kind": "RISK_SET",
+      "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+    },
+    {
+      "content_hash": "92b5d73b5deb258ac67123c878d965ad07a7b3694a6830c7a010f6c0582d9fe0",
+      "kind": "RISK_SET",
+      "object_id": "urn:test:i03:risk_set:e04-base-r1-R_ALL"
+    }
+  ],
+  "receipt_n10e_source_universe_ref": [
+    null,
+    null,
+    null
+  ],
+  "receipt_n9_currentness_is_operative_n9": false,
+  "schema": "PDEV01_N10W_RAW_P41_TRACE@1",
+  "service": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+  "source_identity_from_prepared": {
+    "grade": "SYNTHETIC_NOT_OBSERVED",
+    "publication": "2026-03-01",
+    "release_ref": {
+      "content_hash": "5e795c3fd62b89aa00ca133777ff31df3cb42501d25a9b431fe0de03c54d161f",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-e04-base-r1"
+    },
+    "rows_hash": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02",
+    "source_universe_ref": {
+      "content_hash": "f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:f677fb8b8478ba78b9b526d5dcd7b3aa54070d4a4b90a1d2de6dc219ec177cda"
+    },
+    "state": "SUPPORTED_TEST_ONLY"
+  },
+  "structural": {
+    "actor_executions": 0,
+    "consumer": "NONPARENT_OPTIONS",
+    "model_calls": 0,
+    "route_probability": null,
+    "route_probability_reason": "NO_JOINT_EMPIRICAL_STRUCTURAL_ROUTE_MODEL",
+    "routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "snapshot_ref": "faf846a0ff926c42fb9360f322c344c1e57793214ab07d57bf2d41aa430bab5c",
+    "state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED"
+  }
+}

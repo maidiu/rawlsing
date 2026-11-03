@@ -1,0 +1,287 @@
+{
+  "actual_j42_two_input": {
+    "families": {
+      "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+    },
+    "joined_receipt_hash": "bbe107189fd8be9c805668a4beb9263b7182ecd4c2d18ced9f6de02da3519825",
+    "n10e_states": [
+      "EXACT_SUPPORTED",
+      "EXACT_SUPPORTED",
+      "EXACT_SUPPORTED"
+    ],
+    "n10e_step_count": 3,
+    "n10w_consumptions": [
+      {
+        "consumer_result_hash": "825a1270493656077bdeac5e3694974b53393c533d62e6ae51187cfd785dc9be",
+        "result_state": "EXACT_SUPPORTED",
+        "same_evidence_object": true,
+        "source": "LIVE_TRACE"
+      },
+      {
+        "consumer_result_hash": "defd03f6c7da86ab8c7703b353d480839e8ffc511df1303c424429adc0b8e350",
+        "result_state": "EXACT_SUPPORTED",
+        "same_evidence_object": true,
+        "source": "LIVE_TRACE"
+      },
+      {
+        "consumer_result_hash": "bc9910395782ac6ddf3198c04e6e08ae69c97ec7a6bb3d56221f2b33169d4d69",
+        "result_state": "EXACT_SUPPORTED",
+        "same_evidence_object": true,
+        "source": "LIVE_TRACE"
+      }
+    ],
+    "n10w_state": "EXACT_PROGRESSIVE_CHAIN",
+    "n9_clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    },
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "n9_routes": {
+      "civil": "ELIGIBLE",
+      "exit_constraint": "WITHIN_MODELED_BUDGET",
+      "training": "ELIGIBLE"
+    },
+    "p41_receipt_hash": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+    "provider_identity": {
+      "learned_release": "E04L_M1_M2_B5_READTHROUGH@1",
+      "n10e_empirical": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w_progressive": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "n9_world": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+    },
+    "reason_code": "WORLD_SELECTED_VIEW",
+    "receipt_hash_valid": true,
+    "source_binding": {
+      "e41_composed_hashes": [
+        "825a1270493656077bdeac5e3694974b53393c533d62e6ae51187cfd785dc9be",
+        "defd03f6c7da86ab8c7703b353d480839e8ffc511df1303c424429adc0b8e350",
+        "bc9910395782ac6ddf3198c04e6e08ae69c97ec7a6bb3d56221f2b33169d4d69"
+      ],
+      "e41_evidence_refs": [
+        {
+          "content_hash": "baac0dc16275d12fd68c3767eb21d24527fc710eb006ba62001969cf74a00c8f",
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:baac0dc16275d12fd68c3767eb21d24527fc710eb006ba62001969cf74a00c8f"
+        },
+        {
+          "content_hash": "0c583843022cdb192b0ac49b7a89eede6f129a9d1a097fe3fc0e549c0555a204",
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:0c583843022cdb192b0ac49b7a89eede6f129a9d1a097fe3fc0e549c0555a204"
+        },
+        {
+          "content_hash": "1d53bd0ca4ec28aa06f2c91046a55e081c185471085cf1464160a2ad08b81fa5",
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:1d53bd0ca4ec28aa06f2c91046a55e081c185471085cf1464160a2ad08b81fa5"
+        }
+      ],
+      "e41_rows_hash": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02",
+      "w41_budget": 5,
+      "w41_clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "w41_family": "base",
+      "w41_snapshot_hash": "239d6828e3470a34bef9127da69d39f188397fe05540211faef6a31de68f6ff9",
+      "w41_view_hash": "5fe218c6df01cf25cf6d32a26c3e9cadab01aaa977e50db6d56c66d811ca6386"
+    },
+    "source_rows_hash": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02",
+    "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+    "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287"
+  },
+  "allowlist": {
+    "candidate_or_production_mutation": false,
+    "only_owned_returnroot": [
+      "?? WORKER_RETURNS/PDEV01-N10W-JOIN/"
+    ],
+    "status_note": "Only the owned PDEV01-N10W-JOIN returnroot is untracked; no production or other worktree change."
+  },
+  "branch": "agent/pyat-pdev01-n10w-join-r1",
+  "cold_replay": {
+    "build1_sha256": "17cdd887a90bb612900f050c9197fd534263fd7a4424fb79f45cd4bf8df63ced",
+    "build2_sha256": "17cdd887a90bb612900f050c9197fd534263fd7a4424fb79f45cd4bf8df63ced",
+    "receipt_files_byte_equal": true,
+    "same_n10e_steps": true,
+    "same_n10w": true,
+    "same_routes": true,
+    "same_view_hash": true
+  },
+  "commands": {
+    "details": "COMMANDS.md",
+    "replay": "bash WORKER_RETURNS/PDEV01-N10W-JOIN/replay.sh"
+  },
+  "d2p3": {
+    "candidate": "cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584",
+    "independent_review": "830a9656cb65f00337d5bcd0f7373dbef11d50df",
+    "review_authority": "HOLD",
+    "review_engineering": "PASS_SCOPED_ENGINEERING",
+    "review_source_science": "HOLD",
+    "use_in_this_join": "NONE; D2P3 is a GSS/NCA sourcefree field reader, not an N9 world artifact."
+  },
+  "defects": {
+    "summary": {
+      "all_mutations_accepted_positive": true,
+      "impact": "The actual J42 positive receipt is real, but the public receiver cannot qualify version/currentness compatibility; therefore the two-input qualification is REVISE, not PASS.",
+      "n9_currentness_enforced": false,
+      "n9_selection_binding_enforced_by_n9_object": false,
+      "p41_content_hash_checked": false,
+      "version_strings_enforced": false
+    },
+    "version_and_currentness": {
+      "mutated_n9_selection": {
+        "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+        "mutated_value": {
+          "mode": "AS_OF",
+          "published_asof": "2099-01-01",
+          "valid_at": "2099-01-01"
+        },
+        "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+        "p41_hash_valid_after_mutation": false,
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+      },
+      "revoked_n9_currentness": {
+        "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+        "mutated_value": "REVOKED",
+        "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+        "p41_hash_valid_after_mutation": false,
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+      },
+      "wrong_n10e_provider_version": {
+        "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+        "mutated_value": "E41_WRONG_VERSION@1",
+        "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+        "p41_hash_valid_after_mutation": false,
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+      },
+      "wrong_n10w_provider_version": {
+        "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+        "mutated_value": "P41_WRONG_VERSION@1",
+        "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+        "p41_hash_valid_after_mutation": false,
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+      },
+      "wrong_n9_provider_version": {
+        "expected_if_enforced": "REFUSED with provider/currentness identity mismatch",
+        "mutated_value": "W41_WRONG_VERSION@1",
+        "p41_content_hash_after_mutation": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+        "p41_hash_valid_after_mutation": false,
+        "reason_code": "WORLD_SELECTED_VIEW",
+        "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER"
+      }
+    }
+  },
+  "hashes": {
+    "COMMANDS.md": "9c4e98175bc21942ae5744c5dc5ff163eebf4cf3bf5b43ee5cef86d0053528e4",
+    "J42_JOIN_WITNESS.json": "b7af3c380d4b756996588eac5ae4a1462c3596512e5c94a46446db40cafd1fa1",
+    "J42_RECEIPTS.json": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "J42_RECEIPTS_2.json": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "P41_RAW_TRACE.json": "6e2b7c2ecd9a2b03e7b7cd7433bca64585d2d33a523bcdaa76ff3d653db583ee",
+    "R05_P41_TRACE.json": "090027bd85e2a61f7874d509af48316eb401b02ceedb3001cf5d3e69a652897e",
+    "RETURN.md": "d3d2399ae2e19ef40e01aee3cd7f7cc17c6aa5e6fb6f4f45a34a7fab29ce7232",
+    "VERSION_AND_IDENTITY_NEGATIVES.json": "a5676873d15c6e6778b09d66e75b5a9d27c08ce8e25129e2e7849fb99c692c7a",
+    "replay.sh": "5e76a78884d9eb9bf8bee22978729c7348c924a77cce4dee3b5b1c70cde71308",
+    "replay/REPLAY_WITNESS.json": "a981fa90c50a9eb55836e9937e904ce57445d8f0b03498942f05cf545872cc35"
+  },
+  "holds": {
+    "CI_prod": "HOLD",
+    "N10W_global_installation": "HOLD",
+    "N11": "HOLD",
+    "N12": "HOLD",
+    "N5_N6_EE13": "HOLD",
+    "N9_OC05": "HOLD",
+    "actor_Sorok": "HOLD",
+    "operative_N9": "HOLD",
+    "original_source_bytes": "HOLD",
+    "original_source_science": "HOLD",
+    "protected_merge": "HOLD"
+  },
+  "limits": [
+    "TEST_ONLY sourcefree W41/E41/P41 service and synthetic E04 rows only.",
+    "N9 currentness is CURRENT_TEST_ONLY_SELECTION, not operative N9 or CURRENT.",
+    "No original source/respondent read, original science, N5/N6/EE13, N9/OC05, N11/N12, actor/Sorok, CI/prod, protected merge, new worker/model/provider, or production adoption.",
+    "The actual J42 values are positive, but the public receiver accepted wrong provider versions, REVOKED N9 currentness, a mutated N9 selection, and stale P41 content hashes; this blocks scoped acceptance."
+  ],
+  "negative_controls": {
+    "mismatched_as_of": {
+      "reason_code": "JOINED_AS_OF_MISMATCH",
+      "state": "REFUSED"
+    },
+    "mismatched_source_rows": {
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "state": "REFUSED"
+    },
+    "missing_n10e": {
+      "reason_code": "JOINED_CONSUMER_NOT_PRODUCTIVE",
+      "state": "REFUSED"
+    },
+    "missing_n9": {
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED"
+    },
+    "missing_required_field": {
+      "reason_code": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS",
+      "state": "REFUSED"
+    },
+    "r05_rows_mismatch": {
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "source_rows_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+      "state": "REFUSED"
+    }
+  },
+  "r05_boundary": {
+    "boundary": "R05/P41 actually executed but its N9-labelled parent is E04_TEST_ONLY_SELECTED_WORLD_M4_M5@1 with CURRENT_TEST_ONLY_SELECTION, not W41 N9; its source rows are not the J42 W41/E41 rows. It is not relabelled as N9.",
+    "p41_n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "p41_n9_has_release_ref": true,
+    "p41_n9_has_source_universe_ref": true,
+    "p41_n9_provider": "E04_TEST_ONLY_SELECTED_WORLD_M4_M5@1",
+    "p41_view_hash": "6de22e2f06be9504318ad088329c24f5a2baa4ffee78b32938cc2d2cffa7191d",
+    "p41_view_reason_code": "ACTUAL_R05_TO_P41_VIEW",
+    "p41_view_state": "R05_WORLD_SELECTED_VIEW",
+    "r05_rows_against_j42_receiver": {
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "state": "REFUSED"
+    },
+    "r05_rows_equal_j42_rows": false,
+    "release_ref": {
+      "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-m01"
+    },
+    "source_rows_hash": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+    "source_universe_ref": {
+      "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+    }
+  },
+  "schema": "PDEV01_N10W_TWO_INPUT_QUALIFICATION@1.0.0",
+  "session": {
+    "id": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "model": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "variant": "max",
+    "verified": true
+  },
+  "smallest_next_dependency": [
+    "Enforce exact W41/E41/P41 provider versions and P41 content-hash integrity in the existing public receiver before any positive view.",
+    "Require exact N9 currentness/selection identity, including CURRENT_TEST_ONLY_SELECTION for this scope and the exact W41 clock, rather than accepting a mutated n9_world object.",
+    "For any R05-specific claim, bind a W41-style N9 selected world to the R05 source/release/rows or explicitly switch scope to the already compatible J42 E41 N10E/W41 N9 pair. No new scientific rule is needed."
+  ],
+  "startup_sha": "773bb412a820949f13a7178b6671327cd56a3bf1",
+  "status": "CANDIDATE__TEST_ONLY__INDEPENDENT_REVIEW_REQUIRED",
+  "verdicts": {
+    "acceptance": "PENDING_DISTINCT_NONAUTHOR_REVIEW",
+    "authority": "HOLD",
+    "engineering": "REVISE__ACTUAL_VALUES_POSITIVE__PROVIDER_VERSION_AND_N9_CURRENTNESS_NOT_ENFORCED",
+    "r05_p41_substitution": "HOLD__NO_COMMON_N9_SCOPE",
+    "source_science": "HOLD"
+  }
+}
