@@ -1,0 +1,218 @@
+{
+  "artifact_commit": "PENDING_ARTIFACT_COMMIT",
+  "branch": "review/pyat-pdev01-gap007-r1",
+  "candidate_commit": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "candidate_readonly": true,
+  "candidate_test_result": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py -q -o addopts=''",
+    "failed": 0,
+    "limitation": "Reads committed actual_trace.json; does not execute a cold replay and cannot catch source-header nondeterminism.",
+    "passed": 5,
+    "status": "PASS"
+  },
+  "core_checks": {
+    "actual_i03_batch": {
+      "batch": {
+        "completed": 210,
+        "fact_state_counts": {
+          "SUPPORTED": 210
+        },
+        "receipt_count": 210,
+        "result_ref_count": 210,
+        "states": {
+          "COMPLETED": 210
+        }
+      },
+      "note": "210/210 COMPLETED and 210 SUPPORTED facts observed in both independent runs; exact query refs differ.",
+      "status": "PASS_COUNTS_AND_STATES_STABLE"
+    },
+    "disjoint_accounting_840": {
+      "accounting_status_counts": {
+        "BOUND_I03_QUERY": 210,
+        "TYPED_REFUSAL": 630
+      },
+      "bound_210_plus_typed_refusals_630": true,
+      "distinct_original_operation_refs": 840,
+      "operation_count": 840,
+      "status": "PASS",
+      "unsupported_typed_refusals": {
+        "CONDITIONAL": 210,
+        "HETEROGENEITY": 105,
+        "JOINT": 210,
+        "RECURSIVE_BRANCH": 105
+      }
+    },
+    "i05_separate_from_p1": {
+      "i05": {
+        "candidate_count": 16,
+        "compilation_ref": "bbb9d7a4d880e5f3b564ac1f74175ff9d00c84f1916cf605dd88d60ca8f6b782",
+        "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+        "fact_count": 30,
+        "native_result_type": "ExactBoundedDiscoveryResult",
+        "receipt_count": 16,
+        "receiver": "execute_governed_frontier/I05",
+        "status": "EXECUTED"
+      },
+      "i05_in_p1_accounting": false,
+      "note": "I05 is executed as a separate sourcefree capability call over its own Q00A/Q00B inventory; no P1 operation is bound to I05 and no I05 result is counted in the 840 P1 accounting.",
+      "status": "PASS"
+    },
+    "one_to_one_p1_binding": {
+      "bound_i03_distribution_operations": 210,
+      "distinct_bound_query_refs": 210,
+      "distinct_bound_units": 210,
+      "distinct_original_operation_refs": 840,
+      "note": "Counts and within-run uniqueness hold, but exact query refs differ across cold runs.",
+      "operation_count": 840,
+      "status": "PASS_WITHIN_RUN"
+    },
+    "refusals": {
+      "status": "PASS_IN_BOTH_RUNS",
+      "wrong_authority_query": {
+        "code": "CarrierExecutionBindingError",
+        "detail": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+        "status": "TYPED_REFUSAL"
+      },
+      "wrong_release": {
+        "code": "BatchIntegrityError",
+        "detail": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+        "status": "TYPED_REFUSAL"
+      }
+    },
+    "single_synthetic_carrier_reuse": {
+      "evidence": "repair/replay_repair.py: bound_input waves replace release_ref=release.release_ref for all 35 waves; one release object is used for all 210 bound units.",
+      "note": "All 35 roster/wave entries receive the same one synthetic C11LogicalRelease; all 210 bound units use that release. This is a TEST_ONLY synthetic carrier reuse, not per-wave source independence.",
+      "reused": true,
+      "status": "OBSERVED_AND_SCOPE_LIMITED"
+    }
+  },
+  "distinct_nonauthor_review": true,
+  "exact_commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py > WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed.json 2> ...stderr",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py > WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed_2.json 2> ...stderr",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py -q -o addopts=''"
+  ],
+  "failure": {
+    "bound_job_refs_equal_committed_run1": false,
+    "bound_job_refs_equal_committed_run2": false,
+    "bound_job_refs_equal_run1_run2": false,
+    "cause": "Each execution writes a fresh synthetic SAV through pyreadstat.write_sav. The SAV header timestamp changes with time; a two-write control with byte-identical rows/columns, two seconds apart, differed in 1 byte at offset 108.",
+    "committed_equals_run1": false,
+    "committed_equals_run2": false,
+    "committed_trace": {
+      "i05_compilation_ref": "4d9dc83db7b5dbe781003d726d8b5aa5841c892a5b0e82f6e1af8dda88d0d204",
+      "manifest_ref": {
+        "content_hash": "d48c70f13e9bf66659dfece4e503473bbd2b7d24ea73ef8c8533ecb93fdb639b",
+        "kind": "PRE553BatchManifest@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d48c70f13e9bf66659dfece4e503473bbd2b7d24ea73ef8c8533ecb93fdb639b"
+      },
+      "release_ref": {
+        "content_hash": "383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1",
+        "kind": "C11LogicalRelease",
+        "object_id": "R56-SYNTHETIC-RELEASE"
+      },
+      "source_sha256": "443ebf5c74ad119fed2f79e148146e8772ad6f12317dcfcfcbe014136bf27eb4"
+    },
+    "id": "GAP007_COLD_REPLAY_SOURCE_IDENTITY_NONDETERMINISTIC",
+    "observed_runs": [
+      {
+        "i05_compilation_ref": "bbb9d7a4d880e5f3b564ac1f74175ff9d00c84f1916cf605dd88d60ca8f6b782",
+        "manifest_ref": {
+          "content_hash": "2844168dfc2eb8177c0774dd6f0ad71b91e8bcec88b2707ab7041f960a3838eb",
+          "kind": "PRE553BatchManifest@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:2844168dfc2eb8177c0774dd6f0ad71b91e8bcec88b2707ab7041f960a3838eb"
+        },
+        "path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed.json",
+        "release_ref": {
+          "content_hash": "fc90ac68930a1713cc195809a55804ce6ad635a0922f0d7334700c6f01b2d7bd",
+          "kind": "C11LogicalRelease",
+          "object_id": "R56-SYNTHETIC-RELEASE"
+        },
+        "sha256": "20909ae8ef3969f48563e98394b2e184739b3f9d08430b5b7ca9e6e8c4d322f2",
+        "source_sha256": "bb1311528841379cbb26d5bb8dec766c6a5e7efd9533a01d51bf4e1449fea082"
+      },
+      {
+        "i05_compilation_ref": "1d4a24d85c323e681c59327b893a22f78e20a8f51907a4c6a1fb96e540253e97",
+        "manifest_ref": {
+          "content_hash": "c8846c5afa5f32f926dfa9b0682eb0d27d65b078287f12238215f4dd9b622542",
+          "kind": "PRE553BatchManifest@1.0.0",
+          "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:c8846c5afa5f32f926dfa9b0682eb0d27d65b078287f12238215f4dd9b622542"
+        },
+        "path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed_2.json",
+        "release_ref": {
+          "content_hash": "d7839194595075c2a83b0e8c2c1287f649515b62e4dcee7109d8e4cc20bd6fa5",
+          "kind": "C11LogicalRelease",
+          "object_id": "R56-SYNTHETIC-RELEASE"
+        },
+        "sha256": "3487e3e80eaec81fada7a9998e2183a23049271e3f5e6809260cc27d60835bd7",
+        "source_sha256": "c940318ed53daf89beb4037bd28d07403f615c54a3133173d32360a57633223a"
+      }
+    ],
+    "owner": [
+      "WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py:61-63",
+      "rawlsing_next/tests/test_universal_source_projection.py::write_rows"
+    ],
+    "run1_equals_run2": false,
+    "scope": "The exact candidate's source/release/query/manifest/I05 identities are not reproducible between cold executions.",
+    "smallest_repair": [
+      "Freeze the synthetic source bytes (or a deterministic SAV header) at a pinned source SHA and use that exact fixture for the run.",
+      "Regenerate actual_trace.json from the frozen source and add a two-run cold replay assertion over source/release/query/manifest/I05 identities.",
+      "Do not alter P1 operation identities, the one-to-one 210 bindings, the 630 typed refusals, or production owners; rerun I03/Batch/refusal checks."
+    ],
+    "source_header_probe": {
+      "differing_bytes": 1,
+      "equal": false,
+      "first_differing_offset": 108,
+      "identical_columns": 2,
+      "identical_rows": 12,
+      "sha1": "e9f12f87e46c2dda27cffdb0bbcbe271984787cefa0130279afb7e5c564e0795",
+      "sha2": "b5f229b5cc3eee4b20015fc1fefde32b5edf802a299ba9798ced4bd8e7975cd9",
+      "sleep_seconds": 2
+    },
+    "test_gap": "Candidate test_repair.py reads the committed actual_trace.json and therefore passes 5/5 without exercising a cold replay."
+  },
+  "intelligence_level": "I2",
+  "limits": [
+    "Verdict is REVISE for exact cold replay/source identity, not for the 210/630/840 core accounting counts.",
+    "The synthetic source is TEST_ONLY; no original data, source rights, scientific result, N5/N6, N9/N11/N12, actor, CI or wake is claimed.",
+    "I05 is a separate sourcefree capability call and is not a P1 unit binding.",
+    "One synthetic C11 carrier is reused across all 35 roster/wave entries; this is not per-wave source independence.",
+    "Candidate files were read/executed only; no candidate or production code was edited."
+  ],
+  "manifest_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/MANIFEST.json",
+  "no_production_repair": true,
+  "observed_evidence": {
+    "candidate_file_hashes": {
+      "p1/programma_pyat_original35_constructor.py": "1b0c7d4f0220cbcb9385e89b9774ba4fa1d6f094ddcb14aabe51ea2bd4407f1b",
+      "repair/actual_trace.json": "b4d777d1ae67ae66d5978357015a6df14f9b60ea246d377127d3bef674b7a655",
+      "repair/replay_repair.py": "5525d4f9d78e57249fd19febca0a5b8ce46a14f589b9a4d75d8bd32b5eae8da9",
+      "repair/test_repair.py": "12c7529f5b2b815217b858c54a20bca1e457e1ba743dcd60ff71f342162d3438"
+    },
+    "candidate_test_log": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/candidate_test_repair.log",
+    "candidate_test_log_sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d",
+    "path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/REPLAY_EVIDENCE.json",
+    "run1_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed.json",
+    "run1_sha256": "20909ae8ef3969f48563e98394b2e184739b3f9d08430b5b7ca9e6e8c4d322f2",
+    "run2_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed_2.json",
+    "run2_sha256": "3487e3e80eaec81fada7a9998e2183a23049271e3f5e6809260cc27d60835bd7",
+    "sha256": "251b6f5dbdbda1ceafc5248b00710967ae2d994c4d1628b7019c813f4079180a"
+  },
+  "review_id": "PDEV01-GAP007-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_NONAUTHOR_INTEGRATION_REVIEWER",
+  "schema": "PDEV01_GAP007_INDEPENDENT_REVIEW@1.0.0",
+  "scope": {
+    "authority": "ISOLATED_REVIEW",
+    "ci": false,
+    "engineering": true,
+    "merge": false,
+    "original_data": false,
+    "original_respondents": false,
+    "science": "TEST_ONLY",
+    "sourcefree": true,
+    "wake": false
+  },
+  "startup_sha": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "status": "REVISE__CORE_BINDING_PASSES__EXACT_COLD_REPLAY_IDENTITY_FAILS",
+  "verdict": "REVISE",
+  "write_scope": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/**"
+}

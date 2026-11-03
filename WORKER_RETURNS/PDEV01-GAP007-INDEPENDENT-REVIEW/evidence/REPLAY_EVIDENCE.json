@@ -1,0 +1,146 @@
+{
+  "candidate_branch": "review/pyat-pdev01-gap007-r1",
+  "candidate_commit": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "candidate_file_sha256": {
+    "p1/programma_pyat_original35_constructor.py": "1b0c7d4f0220cbcb9385e89b9774ba4fa1d6f094ddcb14aabe51ea2bd4407f1b",
+    "repair/actual_trace.json": "b4d777d1ae67ae66d5978357015a6df14f9b60ea246d377127d3bef674b7a655",
+    "repair/replay_repair.py": "5525d4f9d78e57249fd19febca0a5b8ce46a14f589b9a4d75d8bd32b5eae8da9",
+    "repair/test_repair.py": "12c7529f5b2b815217b858c54a20bca1e457e1ba743dcd60ff71f342162d3438"
+  },
+  "cold_replay": {
+    "bound_job_refs_equal_committed_run1": false,
+    "bound_job_refs_equal_committed_run2": false,
+    "bound_job_refs_equal_run1_run2": false,
+    "bound_plan_ref_equal_committed_run1": true,
+    "bound_plan_ref_equal_run1_run2": true,
+    "committed_bound_job_refs": 210,
+    "committed_equals_run1": false,
+    "committed_equals_run2": false,
+    "committed_vs_run1_differing_top_level_sections": [
+      "source",
+      "p1",
+      "i05"
+    ],
+    "run1_bound_job_refs": 210,
+    "run1_equals_run2": false,
+    "run2_bound_job_refs": 210
+  },
+  "committed_trace": {
+    "i05_compilation_ref": "4d9dc83db7b5dbe781003d726d8b5aa5841c892a5b0e82f6e1af8dda88d0d204",
+    "manifest_ref": {
+      "content_hash": "d48c70f13e9bf66659dfece4e503473bbd2b7d24ea73ef8c8533ecb93fdb639b",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d48c70f13e9bf66659dfece4e503473bbd2b7d24ea73ef8c8533ecb93fdb639b"
+    },
+    "path": "WORKER_RETURNS/PDEV01-GAP007/repair/actual_trace.json",
+    "release_ref": {
+      "content_hash": "383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "sha256": "b4d777d1ae67ae66d5978357015a6df14f9b60ea246d377127d3bef674b7a655",
+    "source_sha256": "443ebf5c74ad119fed2f79e148146e8772ad6f12317dcfcfcbe014136bf27eb4"
+  },
+  "core_observed": {
+    "accounting_entries": 840,
+    "accounting_status_counts": {
+      "BOUND_I03_QUERY": 210,
+      "TYPED_REFUSAL": 630
+    },
+    "batch": {
+      "completed": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      },
+      "receipt_count": 210,
+      "result_ref_count": 210,
+      "states": {
+        "COMPLETED": 210
+      }
+    },
+    "carrier_reuse_code": "repair/replay_repair.py: bound_input waves replace release_ref=release.release_ref for all 35 waves; one release object is used for all 210 bound units.",
+    "distinct_bound_query_refs": 210,
+    "distinct_bound_units": true,
+    "distinct_original_operation_refs": 840,
+    "i05": {
+      "candidate_count": 16,
+      "compilation_ref": "bbb9d7a4d880e5f3b564ac1f74175ff9d00c84f1916cf605dd88d60ca8f6b782",
+      "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+      "fact_count": 30,
+      "native_result_type": "ExactBoundedDiscoveryResult",
+      "receipt_count": 16,
+      "receiver": "execute_governed_frontier/I05",
+      "status": "EXECUTED"
+    },
+    "i05_in_p1_accounting": false,
+    "operation_count": 840,
+    "single_carrier_reused": true,
+    "unsupported_typed_refusals": {
+      "CONDITIONAL": 210,
+      "HETEROGENEITY": 105,
+      "JOINT": 210,
+      "RECURSIVE_BRANCH": 105
+    },
+    "wrong_authority_refusal": {
+      "code": "CarrierExecutionBindingError",
+      "detail": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+      "status": "TYPED_REFUSAL"
+    },
+    "wrong_release_refusal": {
+      "code": "BatchIntegrityError",
+      "detail": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+      "status": "TYPED_REFUSAL"
+    }
+  },
+  "failure": "COLD_REPLAY_SOURCE_AND_DOWNSTREAM_IDENTITY_MISMATCH",
+  "limits": [
+    "sourcefree TEST_ONLY synthetic data only",
+    "no original data/source rights/merge/CI/wake"
+  ],
+  "observed_runs": [
+    {
+      "i05_compilation_ref": "bbb9d7a4d880e5f3b564ac1f74175ff9d00c84f1916cf605dd88d60ca8f6b782",
+      "manifest_ref": {
+        "content_hash": "2844168dfc2eb8177c0774dd6f0ad71b91e8bcec88b2707ab7041f960a3838eb",
+        "kind": "PRE553BatchManifest@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:2844168dfc2eb8177c0774dd6f0ad71b91e8bcec88b2707ab7041f960a3838eb"
+      },
+      "path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed.json",
+      "release_ref": {
+        "content_hash": "fc90ac68930a1713cc195809a55804ce6ad635a0922f0d7334700c6f01b2d7bd",
+        "kind": "C11LogicalRelease",
+        "object_id": "R56-SYNTHETIC-RELEASE"
+      },
+      "sha256": "20909ae8ef3969f48563e98394b2e184739b3f9d08430b5b7ca9e6e8c4d322f2",
+      "source_sha256": "bb1311528841379cbb26d5bb8dec766c6a5e7efd9533a01d51bf4e1449fea082"
+    },
+    {
+      "i05_compilation_ref": "1d4a24d85c323e681c59327b893a22f78e20a8f51907a4c6a1fb96e540253e97",
+      "manifest_ref": {
+        "content_hash": "c8846c5afa5f32f926dfa9b0682eb0d27d65b078287f12238215f4dd9b622542",
+        "kind": "PRE553BatchManifest@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:c8846c5afa5f32f926dfa9b0682eb0d27d65b078287f12238215f4dd9b622542"
+      },
+      "path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed_2.json",
+      "release_ref": {
+        "content_hash": "d7839194595075c2a83b0e8c2c1287f649515b62e4dcee7109d8e4cc20bd6fa5",
+        "kind": "C11LogicalRelease",
+        "object_id": "R56-SYNTHETIC-RELEASE"
+      },
+      "sha256": "3487e3e80eaec81fada7a9998e2183a23049271e3f5e6809260cc27d60835bd7",
+      "source_sha256": "c940318ed53daf89beb4037bd28d07403f615c54a3133173d32360a57633223a"
+    }
+  ],
+  "schema": "PDEV01_GAP007_INDEPENDENT_REPLAY_EVIDENCE@1.0.0",
+  "source_header_probe": {
+    "differing_bytes": 1,
+    "equal": false,
+    "first_differing_offset": 108,
+    "identical_columns": 2,
+    "identical_rows": 12,
+    "sha1": "e9f12f87e46c2dda27cffdb0bbcbe271984787cefa0130279afb7e5c564e0795",
+    "sha2": "b5f229b5cc3eee4b20015fc1fefde32b5edf802a299ba9798ced4bd8e7975cd9",
+    "sleep_seconds": 2
+  },
+  "verdict": "REVISE"
+}

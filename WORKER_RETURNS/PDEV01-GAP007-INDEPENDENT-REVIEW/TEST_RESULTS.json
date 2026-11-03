@@ -1,0 +1,86 @@
+{
+  "schema": "PDEV01_GAP007_INDEPENDENT_TEST_RESULTS@1.0.0",
+  "candidate_commit": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py > WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed.json 2> WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed.stderr",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py > WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed_2.json 2> WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/evidence/replay_repair_observed_2.stderr",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py -q -o addopts=''"
+  ],
+  "results": [
+    {
+      "command": "independent replay run 1",
+      "status": "PASS_CORE_WITH_IDENTITY_DEFECT",
+      "exit": 0,
+      "detail": "210/210 Batch COMPLETED, 210 SUPPORTED facts, 840 accounted, 630 typed refusals; source SHA bb131152…."
+    },
+    {
+      "command": "independent replay run 2",
+      "status": "PASS_CORE_WITH_IDENTITY_DEFECT",
+      "exit": 0,
+      "detail": "210/210 Batch COMPLETED, 210 SUPPORTED facts, 840 accounted, 630 typed refusals; source SHA c940318e…."
+    },
+    {
+      "command": "cold replay equality",
+      "status": "FAIL",
+      "detail": "Run 1 != run 2; neither equals committed actual_trace.json. Source, release, all 210 bound query refs, BatchManifest refs and I05 compilation refs differ."
+    },
+    {
+      "command": "candidate test_repair.py",
+      "status": "PASS_LIMITED",
+      "passed": 5,
+      "failed": 0,
+      "detail": "5 passed in 0.03s, but the test reads committed actual_trace.json and does not execute a cold replay."
+    }
+  ],
+  "core_observed": {
+    "operation_count": 840,
+    "bound_i03_distribution_operations": 210,
+    "typed_refusals": 630,
+    "unsupported_counts": {
+      "CONDITIONAL": 210,
+      "JOINT": 210,
+      "HETEROGENEITY": 105,
+      "RECURSIVE_BRANCH": 105
+    },
+    "batch": {
+      "receipt_count": 210,
+      "completed": 210,
+      "result_ref_count": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      }
+    },
+    "wrong_release_refusal": "exact C11 release unavailable",
+    "wrong_authority_refusal": "query_ref exact preimage unavailable",
+    "i05_separate": true,
+    "single_synthetic_carrier_reused": true
+  },
+  "cold_replay_failure": {
+    "source_sha_committed": "443ebf5c74ad119fed2f79e148146e8772ad6f12317dcfcfcbe014136bf27eb4",
+    "source_sha_run1": "bb1311528841379cbb26d5bb8dec766c6a5e7efd9533a01d51bf4e1449fea082",
+    "source_sha_run2": "c940318ed53daf89beb4037bd28d07403f615c54a3133173d32360a57633223a",
+    "bound_job_refs_equal_run1_run2": false,
+    "bound_job_refs_equal_committed_run1": false,
+    "bound_job_refs_equal_committed_run2": false,
+    "sav_header_control": {
+      "rows": 12,
+      "columns": 2,
+      "sleep_seconds": 2,
+      "differing_bytes": 1,
+      "first_differing_offset": 108
+    }
+  },
+  "verdict": "REVISE",
+  "sourcefree": true,
+  "science": "TEST_ONLY",
+  "original_data": false,
+  "merge": false,
+  "ci": false,
+  "wake": false,
+  "no_candidate_write": true,
+  "limits": [
+    "Core within-run counts pass; exact cold replay identity fails.",
+    "No original data or source rights.",
+    "No production repair or merge."
+  ]
+}
