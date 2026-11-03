@@ -906,5 +906,78 @@
     "independent_acceptance": "NOT_RUN",
     "reverse_unlocks": "DIRECT_REFERENCER_ONLY unless all active gates same target@phase/cut/owner; no current changed-stage unlock asserted",
     "s11": "Lowfi sourcefree and consented human distinct and NOT_RUN"
+  },
+  "w8r_final_receiving_static": {
+    "date": "2026-11-03",
+    "scope": "S0_S1_AUTHENTICATED_GITHUB_JSON_JSONL_STATIC_CHECK__NOT_INDEPENDENT_W8V_OR_NATIVE_S2_S3",
+    "status": "PASS_STATIC_SOURCE_AND_GATE_CONSERVATION__W8V_HELD_UNTIL_RETURN",
+    "prepared_source": "d67a33b5c734a57eea1647bd25902bf7ba4acb01",
+    "frozen_w7i": "db134dc7c705bff62e0570b30ce24052cf06308d",
+    "actual_base_w8f": "097d46c47b6e41ff93a427e54646195892644cde",
+    "w8j": "b78528a314aa26f6167d34e3e6a8bb045ae6ebdc",
+    "w8n": "9b0b5f3aae6cb8fd77d257170c31be77511ca52e",
+    "file_records": {
+      "original_source_ids": 290,
+      "all_assets": 304,
+      "original_functions_09": 144,
+      "original_W1_rows_12": 100,
+      "original_E_parents": 22,
+      "original_D_parents": 22,
+      "original_W6B_nested": 119,
+      "original_W6B_leaves": 97,
+      "original_W6B_gates": 77,
+      "original_W6B_relations": 230,
+      "original_W6B_work_packages": 39,
+      "w8f_leaves": 127,
+      "w8f_gates": 83,
+      "w8f_relations": 268,
+      "w8f_owner_actions": 11,
+      "w8r_non_gating_N_stage_candidates": 8,
+      "w8r_work_package_additions": 0,
+      "w8r_active_gate_additions": 0,
+      "w8n_orphan_annotations": 12,
+      "w8j_seam_annotations": 38,
+      "full_equivalent_joins": 0,
+      "w8n_direct_selected_original_reads": 16,
+      "indexed_unknown_depth_remaining": 48
+    },
+    "disposition_counts": {
+      "W8F_68": {
+        "ACCEPT_CORRECTION": 34,
+        "REVISE": 1,
+        "HOLD": 10,
+        "REFERENCE_ONLY": 23
+      },
+      "W8J_38": {
+        "ACCEPT_AT_SCOPE": 9,
+        "REFERENCE_ONLY": 14,
+        "REVISE": 7,
+        "HOLD": 8
+      },
+      "W8N_12_orphans": "ALL_REMAIN_HELD",
+      "W8N_8_stage_candidates": "SIX_ACCEPT_AT_SPEC_OR_TEST_DESIGN_SCOPE_TWO_CONDITIONAL_REFERENCE_ONLY",
+      "W8N_16_source_reads": "READ_GRADE_ONLY",
+      "W8R_total_142": {
+        "ACCEPT_AT_SCOPE": 49,
+        "REVISE": 8,
+        "HOLD": 30,
+        "REFERENCE_ONLY": 55
+      }
+    },
+    "tested_properties": [
+      "All 660 inherited W8F 14 records identical when stripping only W8R manifest and twelve orphan annotations",
+      "All 39 inherited 15 records identical when stripping W8R typed-intake annotations",
+      "07 original 304 asset entries deep-identical; 290 exact GIT-IDs conserved",
+      "08 original 22 E seam objects deep-identical",
+      "09 original 144 function registry same Git blob",
+      "12 original 100 W1 source dispositions same Git blob",
+      "14 new stage candidates uniquely W8N-RQ-01 through W8N-RQ-08 and none is a GATE/WORK_PACKAGE",
+      "38 VERSIONED_SEAM IDs preserved, each JOIN_PENDING and full_gate_equivalent false",
+      "Original 83 GATE records unchanged; G-S10-SPECIFY requires only documentary S10@KNOW/C12@KNOW and remains READY_TO_SPECIFY",
+      "G-C9-T-ANY stays mode unselected with O05 vs evaluated O07; A5 human gate retains generated Gate4",
+      "142 W8R receiving rows parse as JSONL with 142 unique IDs; twelve numbered work-now cases present",
+      "All underlying file parsing succeeded in connected GitHub documentary read"
+    ],
+    "no_runtime_claim": "No source-native execution, actual tests run on mainMac, original scientific issuance, Pyat grant, operated human rights, user experiment, independent reviewer acceptance or protected adoption."
   }
 }
