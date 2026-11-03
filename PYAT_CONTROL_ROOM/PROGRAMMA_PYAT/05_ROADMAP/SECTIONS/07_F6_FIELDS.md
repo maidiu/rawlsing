@@ -1,5 +1,10 @@
 # ROADMAP:S07 — F6 lawful multi-field, independent-survey composition
 
+## NEXT R F6 independent-source transport remains source-owner gated — 2026-11-03
+
+**S07.1–S07.4; GAP-030–033.** Historical F6M partial nonpooled relations and W41 read-only adjacent evidence display **do not establish** original independent-survey composition or transport into a served N9. A two-source estimand/target/overlap/permissions and actual receiver are an **AND** gate when F6 is demanded, not automatic work for every F family. E1's F6 tree/older witness is current-path **UNKNOWN for native consumer**, not globally absent sourcefree code. Compare inherited candidates only by exact ABI/first reader/owner and five-test gain; see [82 edge evidence grades](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) and [49 current GAP dispositions](../NEXT_R_GAP49_NEXT_DECISIONS.md).
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
