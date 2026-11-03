@@ -41,7 +41,7 @@ Third optional fixture: `fixtures/rrif_r2_negative.json`.
 
 Source/subject `598d9e9eaba5143950c63317705fd09104fbf463`; independent review `8090a1ea308ab17f302f55bb2639c3e4cd774c7a`, report exact `REVISE_MATERIAL_DEFECTS` (T1/M1/C1/D1). Review is at the `SOURCEFREE_RRIF_R2_NEGATIVE` cut, not an abstract C12 root/global veto.
 
-Expected `scoped_transition_states.JOIN_C12_HOLD[598d][C12@VERIFY].review=REVIEW_REVISE_MATERIAL_AT_EXACT_CUT`; `programme_live.pending` for `C12@VERIFY` carries that RED, its true code/first-reader ceiling is `NONE`, and the matching gate/reverse edges are not promoted. Crucially the distinct `JOIN_E_7BF[7bf][E021@VERIFY]` scoped positive record remains and its reviewed status is **not** rewritten by RRIF-R2. Exact new-tuples remain under `G-C12-SF-VERIFY` plus native `G-C12-NATIVE-INTEGRATE` and their source/owner/anchor gates.
+Expected `scoped_transition_states.JOIN_C12_HOLD[598d][C12@VERIFY].review=REVIEW_REVISE_MATERIAL_AT_EXACT_CUT`; `programma_live.pending` for `C12@VERIFY` carries that RED, its true code/first-reader ceiling is `NONE`, and the matching gate/reverse edges are not promoted. Crucially the distinct `JOIN_E_7BF[7bf][E021@VERIFY]` scoped positive record remains and its reviewed status is **not** rewritten by RRIF-R2. Exact new-tuples remain under `G-C12-SF-VERIFY` plus native `G-C12-NATIVE-INTEGRATE` and their source/owner/anchor gates.
 
 ## 4. Work-now under hostile queries
 
