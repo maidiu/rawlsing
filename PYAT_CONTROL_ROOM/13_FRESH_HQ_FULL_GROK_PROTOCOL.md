@@ -1,5 +1,10 @@
 # MANDATORY PYAT HQ VALIDITY CHANGE — PERSONA END-PRODUCT + CRITICAL METHOD GROK
 
+## SHORT CURRENT-STATE PROGRAMMA PASS — DOCUMENTARY CANDIDATE (2026-11-03)
+
+For each material Pyat HQ return/grok, consult the [proposed cross-HQ living-update operating spine](../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_HQ_OPERATING_SPINE_LIVE_UPDATE_AND_CONSOLIDATION_CANDIDATE_R1.md). The existing HQ progress/checkpoint and **actually integrated** PROGRAMMA PYAT component/seam/gap/work-now state must be reconciled at exact source cut, with `PENDING_GUIDE_INTEGRATION` visible until authorized merge. Do not treat a worker note, branch, test PASS or stale frozen baseline as current organism state. This is a short proposed consolidation of existing requirements, not a new science/approval pass or a waiver of adopted gate, prompt, owner, source or CAS laws.
+
+
 ## PRIORITY ZERO — EVERY RABOCHII COMMISSION IS A STANDALONE COPY-PASTE LAUNCH WITH VISIBLE AGENT TYPE AND INTELLIGENCE (USER DIRECTIVE 2026-10-30)
 
 **Constitutive pre-dispatch rule, binding on every future fresh/resumed HQ grok, commission, return-driven dispatch and user-visible launch message in both Pyat and Sorok:** A worker/agent commission is **INVALID FOR DISPATCH** unless the user can copy **one complete, executable natural-language prompt for that one agent**, without reconstructing it from a link, summary, external issue, multiple replies or missing parameters. Put each commission in its own clearly delimited fenced plain-text block in the user-visible answer AND store the same full copy-paste text in any corresponding GitHub issue/commission artifact. **Never provide only issue links or a roster of prompts as the user-visible handoff.** If multiple agents are proposed, supply one *independent complete* copy-paste block per agent. A separate issue or generic role description is insufficient.
