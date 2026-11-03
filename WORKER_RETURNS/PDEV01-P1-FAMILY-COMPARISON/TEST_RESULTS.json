@@ -1,0 +1,61 @@
+{
+  "schema": "PDEV01_P1_FAMILY_COMPARISON_TEST_RESULTS@1.0.0",
+  "candidate_commit": "d3d6e48791623478fd1d838c7e95a72b77b5cd74",
+  "review_head_at_start": "cb5d9b0ddefc10b42a25b168d3fea0e2c09c54ce",
+  "commands": [
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PDEV01-P1-FAMILY-COMPARISON/compare_p1_r03.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_workload.py::test_r03_governed_frontier_joint_conditional_no_drop_and_cold -q -o addopts=''"
+  ],
+  "results": [
+    {
+      "command": "P1 vs R03 comparison",
+      "status": "COMPLETED",
+      "disposition": "HOLD_MISSING_EXACT_P1_HANDOFF",
+      "detail": "P1 has 210 CONDITIONAL and 210 JOINT prospective operations, but no exact R03 OccurrenceKey, risk-set/denominator, inventory/policy, direction/form/scope, or current I03 query/predicate/joint/marginal refs."
+    },
+    {
+      "command": "existing R03 governed frontier test",
+      "status": "PASS",
+      "detail": "1 passed in 13.53s; exact R03 conditional/joint lowerings SUPPORTED, execution 150 receipt refs / 330 facts, no-drop true."
+    }
+  ],
+  "p1": {
+    "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "operations": 840,
+    "conditional": 210,
+    "joint": 210,
+    "source_qualification": "TEST_ONLY_SOURCEFREE",
+    "batch_job_ref_kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+    "operand_ref_kind": "SourceItem",
+    "eligibility_ref_kind": "EligiblePopulation"
+  },
+  "r03": {
+    "conditional_lowering": "SUPPORTED",
+    "joint_lowering": "SUPPORTED",
+    "receipt_refs": 150,
+    "fact_refs": 330,
+    "anti_join_no_drop_ok": true
+  },
+  "classification": {
+    "alias": false,
+    "missing_handoff": true,
+    "unissued_scientific_intent": true,
+    "first_missing_input": "exact R03 OccurrenceKey for target/conditioner operands"
+  },
+  "prior_gap007": {
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+    "release_ref": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+    "executed_210": true,
+    "refused_630": true,
+    "total_840": true
+  },
+  "scope": {
+    "sourcefree": true,
+    "test_only": true,
+    "original_data": false,
+    "production_edit": false,
+    "merge": false,
+    "ci": false,
+    "adoption": false
+  }
+}

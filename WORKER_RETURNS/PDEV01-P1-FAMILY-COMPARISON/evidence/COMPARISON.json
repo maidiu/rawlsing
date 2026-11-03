@@ -1,0 +1,776 @@
+{
+  "candidate_commit": "d3d6e48791623478fd1d838c7e95a72b77b5cd74",
+  "comparison": {
+    "alias": "NO: P1 SourceItem refs and source_variable_code strings do not equal R03 OccurrenceKey identities; P1 has no option/form/repeat occurrence identity.",
+    "first_missing_input": "exact R03 OccurrenceKey for P1 target/conditioner operands (then R03 inventory/policy/risk_set and current NativeCatalog query/predicate refs).",
+    "missing_handoff": "YES: P1 conditional/joint records lack R03 OccurrenceKey, inventory/policy, risk-set/eligibility/denominator, direction/form/scope/administration and current I03 query/predicate/joint/marginal refs.",
+    "unissued_scientific_intent": "YES: P1 conditional/joint are TEST_ONLY prospective operation classes; they have no current issued I03/I05 binding and no sourced scientific result."
+  },
+  "disposition": "HOLD_MISSING_EXACT_P1_HANDOFF",
+  "execution": "R03 existing sourcefree receiver executed with its own exact inventory/frontier; P1 conditional/joint cannot be executed because the exact R03/I03 inputs above are not supplied. No predicates invented.",
+  "p1": {
+    "conditional": {
+      "count": 210,
+      "item": {
+        "conditioner_bindings": [
+          {
+            "conditioner_code": "Q00A",
+            "conditioner_ref": {
+              "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+              "kind": "SourceItem",
+              "object_id": "urn:test:programma:sourceitem:i00a"
+            },
+            "eligibility_ref": {
+              "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+              "kind": "EligiblePopulation",
+              "object_id": "urn:test:programma:eligiblepopulation:g00"
+            },
+            "values": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "disposition": "ELIGIBLE",
+        "eligibility_ref": {
+          "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+          "kind": "EligiblePopulation",
+          "object_id": "urn:test:programma:eligiblepopulation:g00"
+        },
+        "item_ref": {
+          "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+          "kind": "SourceItem",
+          "object_id": "urn:test:programma:sourceitem:i00b"
+        },
+        "joint_bindings": [
+          {
+            "eligibility_ref": {
+              "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+              "kind": "EligiblePopulation",
+              "object_id": "urn:test:programma:eligiblepopulation:g00"
+            },
+            "joint_authority_ref": {
+              "content_hash": "064f3e09339bde6e710738bcc04e457207b4d82ccf3338fba2515475305e58d3",
+              "kind": "JointAuthority",
+              "object_id": "urn:test:programma:jointauthority:ja00"
+            },
+            "other_code": "Q00A",
+            "other_item_ref": {
+              "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+              "kind": "SourceItem",
+              "object_id": "urn:test:programma:sourceitem:i00a"
+            },
+            "values": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "measure_authority_ref": {
+          "content_hash": "60299e937f049ebfa044851e4c29112d5e3f630c68a6930f7b2bf6ba43483bc5",
+          "kind": "MeasureAuthority",
+          "object_id": "urn:test:programma:measureauthority:i00b"
+        },
+        "measure_kind": "DIRECT_MEASURED",
+        "operation_kinds": [
+          "CONDITIONAL",
+          "DISTRIBUTION",
+          "HETEROGENEITY",
+          "JOINT",
+          "RECURSIVE_BRANCH"
+        ],
+        "reason": null,
+        "recursive_authority_ref": {
+          "content_hash": "e55c9f3202983d48b7bc7cca3f07b388d7ed4e78bf034a09023627c8232be2bd",
+          "kind": "RecursiveAuthority",
+          "object_id": "urn:test:programma:recursiveauthority:ra00"
+        },
+        "response_values": [
+          "1",
+          "2",
+          "3"
+        ],
+        "role_ref": {
+          "content_hash": "db46160180f3c7bd43979ed18e0e5a19a6e8759f8de8230127bff575da3bcc5c",
+          "kind": "Role",
+          "object_id": "urn:test:programma:role:ro00"
+        },
+        "route_ref": {
+          "content_hash": "b2af8152592a8b435b8f72fff769eec1695e2d9aa3d9d4faa81df0037618824e",
+          "kind": "Route",
+          "object_id": "urn:test:programma:route:r00"
+        },
+        "semantic_ref": {
+          "content_hash": "0e31bfda0e75de605f18b5ac407fa72296f546218aadbad65dcf18cdd6a68593",
+          "kind": "Semantic",
+          "object_id": "urn:test:programma:semantic:s00"
+        },
+        "source_variable_code": "Q00B",
+        "stratum_refs": [
+          {
+            "content_hash": "ce0db7b1bdc83b210765a18b2219d1c5a53986e0e3c46b4b9c9dba5c65b11841",
+            "kind": "Stratum",
+            "object_id": "urn:test:programma:stratum:st00"
+          }
+        ],
+        "use_permission_ref": {
+          "content_hash": "defb33fb982ab3bcfbaad1b38059f2ced40200118aeb6d36f2b64f58b5741e3a",
+          "kind": "TargetUsePermission",
+          "object_id": "urn:test:programma:targetusepermission:g00"
+        },
+        "weight_ref": {
+          "content_hash": "f6785cb12a67f4a7ea1034ebce98279c4c83a0ed1049c1bf2af07ea7e1c1a969",
+          "kind": "WeightDesign",
+          "object_id": "urn:test:programma:weightdesign:w00"
+        }
+      },
+      "operation": {
+        "batch_job_ref": {
+          "content_hash": "1f17c69cc374cf1db21d3d6defa8eb306557a5188a84e5b9f5cefb979811b46f",
+          "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+          "object_id": "urn:programma:pyat:programma_pyat_epre_operation:1f17c69cc374cf1db21d3d6defa8eb306557a5188a84e5b9f5cefb979811b46f"
+        },
+        "conditioner_ref": {
+          "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+          "kind": "SourceItem",
+          "object_id": "urn:test:programma:sourceitem:i00a"
+        },
+        "conditioner_value": "0",
+        "item_ref": {
+          "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+          "kind": "SourceItem",
+          "object_id": "urn:test:programma:sourceitem:i00b"
+        },
+        "joint_item_ref": null,
+        "joint_value": null,
+        "measure_kind": "DIRECT_MEASURED",
+        "operation_kind": "CONDITIONAL",
+        "operation_ref": {
+          "content_hash": "1f17c69cc374cf1db21d3d6defa8eb306557a5188a84e5b9f5cefb979811b46f",
+          "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+          "object_id": "urn:programma:pyat:programma_pyat_epre_operation:1f17c69cc374cf1db21d3d6defa8eb306557a5188a84e5b9f5cefb979811b46f"
+        },
+        "reason": null,
+        "semantic_input_refs": [
+          {
+            "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+            "kind": "EligiblePopulation",
+            "object_id": "urn:test:programma:eligiblepopulation:g00"
+          },
+          {
+            "content_hash": "60299e937f049ebfa044851e4c29112d5e3f630c68a6930f7b2bf6ba43483bc5",
+            "kind": "MeasureAuthority",
+            "object_id": "urn:test:programma:measureauthority:i00b"
+          },
+          {
+            "content_hash": "e55c9f3202983d48b7bc7cca3f07b388d7ed4e78bf034a09023627c8232be2bd",
+            "kind": "RecursiveAuthority",
+            "object_id": "urn:test:programma:recursiveauthority:ra00"
+          },
+          {
+            "content_hash": "db46160180f3c7bd43979ed18e0e5a19a6e8759f8de8230127bff575da3bcc5c",
+            "kind": "Role",
+            "object_id": "urn:test:programma:role:ro00"
+          },
+          {
+            "content_hash": "b2af8152592a8b435b8f72fff769eec1695e2d9aa3d9d4faa81df0037618824e",
+            "kind": "Route",
+            "object_id": "urn:test:programma:route:r00"
+          },
+          {
+            "content_hash": "0e31bfda0e75de605f18b5ac407fa72296f546218aadbad65dcf18cdd6a68593",
+            "kind": "Semantic",
+            "object_id": "urn:test:programma:semantic:s00"
+          },
+          {
+            "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+            "kind": "SourceItem",
+            "object_id": "urn:test:programma:sourceitem:i00a"
+          },
+          {
+            "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+            "kind": "SourceItem",
+            "object_id": "urn:test:programma:sourceitem:i00b"
+          },
+          {
+            "content_hash": "defb33fb982ab3bcfbaad1b38059f2ced40200118aeb6d36f2b64f58b5741e3a",
+            "kind": "TargetUsePermission",
+            "object_id": "urn:test:programma:targetusepermission:g00"
+          },
+          {
+            "content_hash": "f6785cb12a67f4a7ea1034ebce98279c4c83a0ed1049c1bf2af07ea7e1c1a969",
+            "kind": "WeightDesign",
+            "object_id": "urn:test:programma:weightdesign:w00"
+          }
+        ],
+        "status": "COMPILED",
+        "stratum_ref": null,
+        "target_value": "1",
+        "wave_atlas_id": "ATLAS-00"
+      }
+    },
+    "joint": {
+      "count": 210,
+      "item": {
+        "conditioner_bindings": [
+          {
+            "conditioner_code": "Q00A",
+            "conditioner_ref": {
+              "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+              "kind": "SourceItem",
+              "object_id": "urn:test:programma:sourceitem:i00a"
+            },
+            "eligibility_ref": {
+              "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+              "kind": "EligiblePopulation",
+              "object_id": "urn:test:programma:eligiblepopulation:g00"
+            },
+            "values": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "disposition": "ELIGIBLE",
+        "eligibility_ref": {
+          "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+          "kind": "EligiblePopulation",
+          "object_id": "urn:test:programma:eligiblepopulation:g00"
+        },
+        "item_ref": {
+          "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+          "kind": "SourceItem",
+          "object_id": "urn:test:programma:sourceitem:i00b"
+        },
+        "joint_bindings": [
+          {
+            "eligibility_ref": {
+              "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+              "kind": "EligiblePopulation",
+              "object_id": "urn:test:programma:eligiblepopulation:g00"
+            },
+            "joint_authority_ref": {
+              "content_hash": "064f3e09339bde6e710738bcc04e457207b4d82ccf3338fba2515475305e58d3",
+              "kind": "JointAuthority",
+              "object_id": "urn:test:programma:jointauthority:ja00"
+            },
+            "other_code": "Q00A",
+            "other_item_ref": {
+              "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+              "kind": "SourceItem",
+              "object_id": "urn:test:programma:sourceitem:i00a"
+            },
+            "values": [
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "measure_authority_ref": {
+          "content_hash": "60299e937f049ebfa044851e4c29112d5e3f630c68a6930f7b2bf6ba43483bc5",
+          "kind": "MeasureAuthority",
+          "object_id": "urn:test:programma:measureauthority:i00b"
+        },
+        "measure_kind": "DIRECT_MEASURED",
+        "operation_kinds": [
+          "CONDITIONAL",
+          "DISTRIBUTION",
+          "HETEROGENEITY",
+          "JOINT",
+          "RECURSIVE_BRANCH"
+        ],
+        "reason": null,
+        "recursive_authority_ref": {
+          "content_hash": "e55c9f3202983d48b7bc7cca3f07b388d7ed4e78bf034a09023627c8232be2bd",
+          "kind": "RecursiveAuthority",
+          "object_id": "urn:test:programma:recursiveauthority:ra00"
+        },
+        "response_values": [
+          "1",
+          "2",
+          "3"
+        ],
+        "role_ref": {
+          "content_hash": "db46160180f3c7bd43979ed18e0e5a19a6e8759f8de8230127bff575da3bcc5c",
+          "kind": "Role",
+          "object_id": "urn:test:programma:role:ro00"
+        },
+        "route_ref": {
+          "content_hash": "b2af8152592a8b435b8f72fff769eec1695e2d9aa3d9d4faa81df0037618824e",
+          "kind": "Route",
+          "object_id": "urn:test:programma:route:r00"
+        },
+        "semantic_ref": {
+          "content_hash": "0e31bfda0e75de605f18b5ac407fa72296f546218aadbad65dcf18cdd6a68593",
+          "kind": "Semantic",
+          "object_id": "urn:test:programma:semantic:s00"
+        },
+        "source_variable_code": "Q00B",
+        "stratum_refs": [
+          {
+            "content_hash": "ce0db7b1bdc83b210765a18b2219d1c5a53986e0e3c46b4b9c9dba5c65b11841",
+            "kind": "Stratum",
+            "object_id": "urn:test:programma:stratum:st00"
+          }
+        ],
+        "use_permission_ref": {
+          "content_hash": "defb33fb982ab3bcfbaad1b38059f2ced40200118aeb6d36f2b64f58b5741e3a",
+          "kind": "TargetUsePermission",
+          "object_id": "urn:test:programma:targetusepermission:g00"
+        },
+        "weight_ref": {
+          "content_hash": "f6785cb12a67f4a7ea1034ebce98279c4c83a0ed1049c1bf2af07ea7e1c1a969",
+          "kind": "WeightDesign",
+          "object_id": "urn:test:programma:weightdesign:w00"
+        }
+      },
+      "operation": {
+        "batch_job_ref": {
+          "content_hash": "53ebb2569b2177f09806ef39e485bbe45a479644a80d63aa49adfab523fb9ac6",
+          "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+          "object_id": "urn:programma:pyat:programma_pyat_epre_operation:53ebb2569b2177f09806ef39e485bbe45a479644a80d63aa49adfab523fb9ac6"
+        },
+        "conditioner_ref": null,
+        "conditioner_value": null,
+        "item_ref": {
+          "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+          "kind": "SourceItem",
+          "object_id": "urn:test:programma:sourceitem:i00b"
+        },
+        "joint_item_ref": {
+          "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+          "kind": "SourceItem",
+          "object_id": "urn:test:programma:sourceitem:i00a"
+        },
+        "joint_value": "0",
+        "measure_kind": "DIRECT_MEASURED",
+        "operation_kind": "JOINT",
+        "operation_ref": {
+          "content_hash": "53ebb2569b2177f09806ef39e485bbe45a479644a80d63aa49adfab523fb9ac6",
+          "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+          "object_id": "urn:programma:pyat:programma_pyat_epre_operation:53ebb2569b2177f09806ef39e485bbe45a479644a80d63aa49adfab523fb9ac6"
+        },
+        "reason": null,
+        "semantic_input_refs": [
+          {
+            "content_hash": "0622f0741cd6083d2a869990c0401c5c96eff2f1d6ec40a610ceb32d22b6a778",
+            "kind": "EligiblePopulation",
+            "object_id": "urn:test:programma:eligiblepopulation:g00"
+          },
+          {
+            "content_hash": "064f3e09339bde6e710738bcc04e457207b4d82ccf3338fba2515475305e58d3",
+            "kind": "JointAuthority",
+            "object_id": "urn:test:programma:jointauthority:ja00"
+          },
+          {
+            "content_hash": "60299e937f049ebfa044851e4c29112d5e3f630c68a6930f7b2bf6ba43483bc5",
+            "kind": "MeasureAuthority",
+            "object_id": "urn:test:programma:measureauthority:i00b"
+          },
+          {
+            "content_hash": "e55c9f3202983d48b7bc7cca3f07b388d7ed4e78bf034a09023627c8232be2bd",
+            "kind": "RecursiveAuthority",
+            "object_id": "urn:test:programma:recursiveauthority:ra00"
+          },
+          {
+            "content_hash": "db46160180f3c7bd43979ed18e0e5a19a6e8759f8de8230127bff575da3bcc5c",
+            "kind": "Role",
+            "object_id": "urn:test:programma:role:ro00"
+          },
+          {
+            "content_hash": "b2af8152592a8b435b8f72fff769eec1695e2d9aa3d9d4faa81df0037618824e",
+            "kind": "Route",
+            "object_id": "urn:test:programma:route:r00"
+          },
+          {
+            "content_hash": "0e31bfda0e75de605f18b5ac407fa72296f546218aadbad65dcf18cdd6a68593",
+            "kind": "Semantic",
+            "object_id": "urn:test:programma:semantic:s00"
+          },
+          {
+            "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+            "kind": "SourceItem",
+            "object_id": "urn:test:programma:sourceitem:i00a"
+          },
+          {
+            "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+            "kind": "SourceItem",
+            "object_id": "urn:test:programma:sourceitem:i00b"
+          },
+          {
+            "content_hash": "defb33fb982ab3bcfbaad1b38059f2ced40200118aeb6d36f2b64f58b5741e3a",
+            "kind": "TargetUsePermission",
+            "object_id": "urn:test:programma:targetusepermission:g00"
+          },
+          {
+            "content_hash": "f6785cb12a67f4a7ea1034ebce98279c4c83a0ed1049c1bf2af07ea7e1c1a969",
+            "kind": "WeightDesign",
+            "object_id": "urn:test:programma:weightdesign:w00"
+          }
+        ],
+        "status": "COMPILED",
+        "stratum_ref": null,
+        "target_value": "1",
+        "wave_atlas_id": "ATLAS-00"
+      }
+    }
+  },
+  "p1_plan": {
+    "batch_units": 840,
+    "conditional_count": 210,
+    "joint_count": 210,
+    "operation_count": 840,
+    "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "source_qualification": "TEST_ONLY_SOURCEFREE"
+  },
+  "prior_gap007": {
+    "batch": {
+      "completed": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      },
+      "receipt_count": 210,
+      "result_ref_count": 210,
+      "states": {
+        "COMPLETED": 210
+      }
+    },
+    "no_drop": {
+      "all_840_accounted": true,
+      "bound_210": true,
+      "distinct_bound_operations": true,
+      "distinct_bound_query_refs": true,
+      "distinct_bound_units": true,
+      "distinct_original_operation_refs": true,
+      "no_invented_operations": true,
+      "unsupported_630": true
+    },
+    "operation_count": 840,
+    "release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+    "unsupported_typed_refusals": {
+      "CONDITIONAL": 210,
+      "HETEROGENEITY": 105,
+      "JOINT": 210,
+      "RECURSIVE_BRANCH": 105
+    }
+  },
+  "r03": {
+    "compilation_hash": "1c6c0eb3e83056e6e1497917c87de1f1a7ea52036db55d19d649c0003b4089fd",
+    "conditional": {
+      "administration_states": [
+        "ADMINISTERED"
+      ],
+      "baseline_ref": null,
+      "branch_depth": 0,
+      "claim_class": "CONDITIONAL",
+      "condition_mode": "AND",
+      "conditioner_roles": [
+        "EXPOSURE",
+        "EXPOSURE"
+      ],
+      "conditions": [
+        {
+          "occurrence": {
+            "form_id": null,
+            "item_id": "B",
+            "option_id": null,
+            "repeat_id": null
+          },
+          "value": 0
+        },
+        {
+          "occurrence": {
+            "form_id": null,
+            "item_id": "A",
+            "option_id": null,
+            "repeat_id": null
+          },
+          "value": 1
+        }
+      ],
+      "dataset_id": null,
+      "design_ref": null,
+      "direction_ref": "DIR-COND2",
+      "edition": "EDITION-1",
+      "estimand": "descriptive-sample-proportion",
+      "form_scope": [
+        "ALL_FORM"
+      ],
+      "lowering": {
+        "family": "BRANCH_CONDITIONED_DISTRIBUTION",
+        "form": "AND_CARTESIAN_GROUPS",
+        "predicate_refs": [
+          {
+            "content_hash": "1dcdced4f0f989e3171759fce979bc40c2a942932317de4d1d61de33366772e9",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:1dcdced4f0f989e3171759fce979bc40c2a942932317de4d1d61de33366772e9",
+            "role": "ATOM-1dcdced4f0f989e3171759fce979bc40c2a942932317de4d1d61de33366772e9"
+          },
+          {
+            "content_hash": "35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa",
+            "role": "ATOM-35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa"
+          },
+          {
+            "content_hash": "775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409",
+            "role": "ATOM-775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409"
+          }
+        ],
+        "query_refs": [
+          {
+            "content_hash": "e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14",
+            "role": "QT-e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14"
+          }
+        ],
+        "reason": null,
+        "rule": {
+          "atom_groups": [
+            [
+              "ATOM-35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa"
+            ],
+            [
+              "ATOM-1dcdced4f0f989e3171759fce979bc40c2a942932317de4d1d61de33366772e9"
+            ]
+          ],
+          "baseline_atom_id": "ATOM-775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409",
+          "family": "BRANCH_CONDITIONED_DISTRIBUTION",
+          "form": "AND_CARTESIAN_GROUPS",
+          "query_template_id": "QT-e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14",
+          "rule_id": "R61-04ebebf69d6151d7acdfc7296826bd04078360c81f8d8e83ca85661de1b861fc",
+          "validation": {
+            "kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"
+          }
+        },
+        "rule_id": "R61-04ebebf69d6151d7acdfc7296826bd04078360c81f8d8e83ca85661de1b861fc",
+        "status": "SUPPORTED"
+      },
+      "measure_id": "SAMPLE",
+      "measure_kind": "SAMPLE",
+      "policy_grade": "PROPOSED_TEST_ONLY",
+      "policy_hash": "522f1af29ee1c331ddacdeb39be1d2e3f0dad2f2af742cebf559c90cb10f6a48",
+      "policy_id": "R61-TEST-POLICY",
+      "recursion_depth": 0,
+      "risk_set_ref": "RISK-A",
+      "risk_set_refs": [
+        "RISK-A"
+      ],
+      "scope": "WAVE-A",
+      "source_id": "R61-SYNTH-SOURCE",
+      "source_inventory": "R61-INVENTORY",
+      "source_sha256": "811d7cff18fc419aacc3fd12249b39d76d5d5c7c8a6ccb9277d5f7bc20a44bb6",
+      "state_variant": "COMPLETE_RESPONSE",
+      "target_roles": [
+        "OUTCOME"
+      ],
+      "targets": [
+        {
+          "form_id": null,
+          "item_id": "Y",
+          "option_id": null,
+          "repeat_id": null
+        }
+      ],
+      "topology": "SCALAR_SINGULAR",
+      "unit": "person",
+      "wave": "WAVE-A",
+      "weight_ref": null
+    },
+    "execution": {
+      "anti_join_no_drop_ok": true,
+      "fact_refs": 330,
+      "native_receipts": 1,
+      "native_result_receipts": 150,
+      "operation_no_drop_ok": true,
+      "receipt_refs": 150
+    },
+    "frontier_eligible_counts": {
+      "CONDITIONAL": 36,
+      "CO_TRAVEL": 18,
+      "DIST": 3,
+      "FORK": 24,
+      "INTERACTION": 48,
+      "JOINT": 18
+    },
+    "inventory_hash": "15eed065ee6d37713b357f065b26929e02a12798745aead5aa009cd85848c759",
+    "joint": {
+      "administration_states": [
+        "ADMINISTERED"
+      ],
+      "baseline_ref": null,
+      "branch_depth": 0,
+      "claim_class": "JOINT",
+      "condition_mode": "AND",
+      "conditioner_roles": [
+        "EXPOSURE"
+      ],
+      "conditions": [
+        {
+          "occurrence": {
+            "form_id": null,
+            "item_id": "B",
+            "option_id": null,
+            "repeat_id": null
+          },
+          "value": 0
+        }
+      ],
+      "dataset_id": null,
+      "design_ref": null,
+      "direction_ref": "DIR-JOINT-COND",
+      "edition": "EDITION-1",
+      "estimand": "descriptive-sample-proportion",
+      "form_scope": [
+        "ALL_FORM"
+      ],
+      "lowering": {
+        "family": "PAIR_RESPONSE_COTRAVEL",
+        "form": "JOINT_DEPENDENCE",
+        "predicate_refs": [
+          {
+            "content_hash": "35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa",
+            "role": "ATOM-35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa"
+          },
+          {
+            "content_hash": "775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409",
+            "kind": "EmpiricalPredicate@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409",
+            "role": "ATOM-775d32e8ea2ea9aae9d745d635ce1758b4d4acb1db09624a3437c2b9218a3409"
+          }
+        ],
+        "query_refs": [
+          {
+            "content_hash": "612598faca898adebbd02e76c1c2898c64c95bbf6d263b6d8ce89d8f7f058925",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:612598faca898adebbd02e76c1c2898c64c95bbf6d263b6d8ce89d8f7f058925",
+            "role": "QT-612598faca898adebbd02e76c1c2898c64c95bbf6d263b6d8ce89d8f7f058925"
+          },
+          {
+            "content_hash": "6509717ed1451c0317255fb88395f368d90136de3a957e3a55659f63a5a2bede",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:6509717ed1451c0317255fb88395f368d90136de3a957e3a55659f63a5a2bede",
+            "role": "QT-6509717ed1451c0317255fb88395f368d90136de3a957e3a55659f63a5a2bede"
+          },
+          {
+            "content_hash": "e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14",
+            "kind": "EmpiricalQuerySpec@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14",
+            "role": "QT-e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14"
+          }
+        ],
+        "reason": null,
+        "rule": {
+          "baseline_atom_id": "ATOM-35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa",
+          "condition_atom_ids": [
+            "ATOM-35f3f0fbaa728809903bb17161b1ac3b84fdd802b5959f8a5f16173b8bdf01aa"
+          ],
+          "family": "PAIR_RESPONSE_COTRAVEL",
+          "form": "JOINT_DEPENDENCE",
+          "joint_template_id": "QT-612598faca898adebbd02e76c1c2898c64c95bbf6d263b6d8ce89d8f7f058925",
+          "marginal_template_ids": [
+            "QT-e25afe1b88502357a3f5fefd700e8196092d80160d5f564055e20fc7a6c9ea14",
+            "QT-6509717ed1451c0317255fb88395f368d90136de3a957e3a55659f63a5a2bede"
+          ],
+          "rule_id": "R61-101d8eb132c8b942012e74e7955f9c9dc1d77d1158971b171647ce4daecd6ac4",
+          "validation": {
+            "kind": "JOINT_NOT_PRODUCT_OF_MARGINALS"
+          }
+        },
+        "rule_id": "R61-101d8eb132c8b942012e74e7955f9c9dc1d77d1158971b171647ce4daecd6ac4",
+        "status": "SUPPORTED"
+      },
+      "measure_id": "SAMPLE",
+      "measure_kind": "SAMPLE",
+      "policy_grade": "PROPOSED_TEST_ONLY",
+      "policy_hash": "522f1af29ee1c331ddacdeb39be1d2e3f0dad2f2af742cebf559c90cb10f6a48",
+      "policy_id": "R61-TEST-POLICY",
+      "recursion_depth": 0,
+      "risk_set_ref": "RISK-A",
+      "risk_set_refs": [
+        "RISK-A"
+      ],
+      "scope": "WAVE-A",
+      "source_id": "R61-SYNTH-SOURCE",
+      "source_inventory": "R61-INVENTORY",
+      "source_sha256": "811d7cff18fc419aacc3fd12249b39d76d5d5c7c8a6ccb9277d5f7bc20a44bb6",
+      "state_variant": "COMPLETE_RESPONSE",
+      "target_roles": [
+        "OUTCOME",
+        "OUTCOME"
+      ],
+      "targets": [
+        {
+          "form_id": null,
+          "item_id": "Y",
+          "option_id": null,
+          "repeat_id": null
+        },
+        {
+          "form_id": null,
+          "item_id": "A",
+          "option_id": null,
+          "repeat_id": null
+        }
+      ],
+      "topology": "SCALAR_SINGULAR",
+      "unit": "person",
+      "wave": "WAVE-A",
+      "weight_ref": null
+    },
+    "policy_hash": "522f1af29ee1c331ddacdeb39be1d2e3f0dad2f2af742cebf559c90cb10f6a48",
+    "policy_id": "R61-TEST-POLICY"
+  },
+  "r03_test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_workload.py::test_r03_governed_frontier_joint_conditional_no_drop_and_cold -q -o addopts=''",
+    "log_path": "WORKER_RETURNS/PDEV01-P1-FAMILY-COMPARISON/evidence/r03_test.log",
+    "log_sha256": "7e0ab9deaa77be23c2752e8067a78b71f42c5375f4fb01fe2a3f394d1c3638ae",
+    "result": "1 passed in 13.53s"
+  },
+  "required": {
+    "conditional": {
+      "exact_operand_refs": [
+        "R03 OccurrenceKey for target (item_id/option_id/form_id/repeat_id)",
+        "R03 OccurrenceKey for each conditioner plus typed condition value",
+        "R03 source_inventory and GrammarPolicy identity",
+        "R03 risk_set_ref and risk_set_refs (eligibility/denominator handoff)",
+        "R03 direction_ref / form_scope / scope / administration states",
+        "current NativeCatalog baseline predicate and condition predicate refs",
+        "current EmpiricalQuerySpec and EmpiricalPredicate refs for I03"
+      ],
+      "first_missing": "exact R03 OccurrenceKey for target and conditioner; P1 supplies only SourceItem refs and source_variable_code strings"
+    },
+    "joint": {
+      "exact_operand_refs": [
+        "R03 OccurrenceKey for both targets",
+        "R03 source_inventory and GrammarPolicy identity",
+        "R03 risk_set_ref and risk_set_refs (eligibility/denominator handoff)",
+        "R03 direction_ref / form_scope / scope / administration states",
+        "current NativeCatalog joint and marginal query refs",
+        "current EmpiricalQuerySpec and predicate refs for I03"
+      ],
+      "first_missing": "exact R03 OccurrenceKey for both targets; P1 supplies only SourceItem refs/source codes, and no joint/marginal query refs"
+    }
+  },
+  "review_head": "cb5d9b0ddefc10b42a25b168d3fea0e2c09c54ce",
+  "schema": "PDEV01_P1_R03_FAMILY_COMPARISON@1.0.0",
+  "scope": {
+    "adoption": false,
+    "ci": false,
+    "merge": false,
+    "original_data": false,
+    "production_edit": false,
+    "sourcefree": true,
+    "test_only": true
+  }
+}
