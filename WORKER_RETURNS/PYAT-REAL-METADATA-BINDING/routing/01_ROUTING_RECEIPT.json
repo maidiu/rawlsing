@@ -1,0 +1,1709 @@
+{
+  "accepted_slice": {
+    "form_id": null,
+    "form_repeat_identifiers_fabricated": false,
+    "form_repeat_scope": "accepted single-SAV/source-interview-row bounded slice",
+    "release_receipt_sha256": "0c5306df01a11881db5cd47e68d304e40ff54baf7d69bb96213d009217cd70ce",
+    "release_ref": {
+      "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+    },
+    "repeat_id": null,
+    "selected_coordinate_slots": 2,
+    "selected_question_ids": [
+      "q101",
+      "q102",
+      "q103",
+      "q2011",
+      "q2012",
+      "q2013",
+      "q2014",
+      "q2015",
+      "q202",
+      "q204",
+      "q205",
+      "q206",
+      "q207",
+      "q210",
+      "q211",
+      "q212",
+      "q2131",
+      "q2132",
+      "q2133",
+      "q2134",
+      "q2135",
+      "q214",
+      "q215",
+      "q216",
+      "q219",
+      "q221",
+      "q222",
+      "q224",
+      "q2251",
+      "q2252",
+      "q226",
+      "q227",
+      "q228",
+      "q2301",
+      "q2302",
+      "q2311",
+      "q2312",
+      "q2321",
+      "q2322",
+      "q2323",
+      "q2324",
+      "q234"
+    ],
+    "selected_response_slots": 42,
+    "single_interview_row": true,
+    "slice_selection_sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+  },
+  "consumer_probe": {
+    "accepted_tally_consumer_api": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "c11_caller": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "c11_questions": 178,
+    "c11_respondents": 7337,
+    "c11_response_slots": 178,
+    "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+    "eligible": null,
+    "explicit_nonresponse": 171,
+    "missing_or_unobserved": 4,
+    "question_id": "q101",
+    "r03_occurrence_entrypoint": "rawlsing_next.universal_grammar.types.OccurrenceKey",
+    "routed_out": null,
+    "routing_rule_exact": false,
+    "source_record_denominator": 7337,
+    "valid_answer": 7162
+  },
+  "first_missing": {
+    "artifact": "exact questionnaire routing/skip rule and risk-set/eligibility denominator for the accepted SRC04 42-slot slice",
+    "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+    "current_typed_state": "ROUTING_UNKNOWN",
+    "downstream_missing": {
+      "artifact": "exact R03 GrammarPolicy/authorized direction grant",
+      "owner": "R03 GrammarPolicy/direction owner"
+    },
+    "fields": [
+      "routing[].typed_state",
+      "routing[].routing_rule_ref",
+      "routing[].risk_set_ref",
+      "risk_set_refs"
+    ],
+    "missing_risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "missing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
+    "question_id": "q101"
+  },
+  "limits": {
+    "ci": false,
+    "merge": false,
+    "original_source_read": false,
+    "original_workload_issued": false,
+    "policy_fabricated": false,
+    "production_edit": false,
+    "respondent_rows_read": false,
+    "routing_inferred_from_observed_counts": false
+  },
+  "mode": "TEST_ONLY_SOURCEFREE_METADATA_ROUTING_TRACE",
+  "option_authority": {
+    "rows_selected_42": 367,
+    "rows_total": 12160,
+    "sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15"
+  },
+  "prior_tally_consumer": {
+    "answered_substantive_denominator_total": 277582,
+    "consumer_api": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "event_presence_count": 308154,
+    "focused_recheck_acceptance": "D1_OBSERVED_SAMPLE_DESCRIPTIVE_TALLY_ACCEPTED",
+    "focused_recheck_sha256": "3b2357fc07ee33125a0805dcd10d970493902afebeb8576b70f6059cb416ae79",
+    "focused_recheck_verdict": "PASS",
+    "missing_or_unobserved_total": 9335,
+    "observed_response_denominator_total": 298819,
+    "population_or_eligibility_claims": "NONE",
+    "replay_ref": {
+      "content_hash": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+      "kind": "D1_TALLY_REPLAY",
+      "object_id": "urn:rawlsing:d1:SRC04:observed-sample-replay:8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+    },
+    "routing_state": "ROUTING_UNKNOWN",
+    "tally_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+  },
+  "result": "HOLD_ROUTING_AND_DENOMINATOR_NOT_ACCEPTED",
+  "routing_authority": {
+    "accepted_denominator_binding": false,
+    "accepted_routing_binding": false,
+    "config_routing_entries": 178,
+    "eligibility_denominator_binding": false,
+    "policy_fabricated": false,
+    "routing_inferred_from_observed_counts": false,
+    "selected_exact_skip_rules": 0,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_entries": 42,
+    "selected_routing_unknown": 42,
+    "source_record_denominator_binding": true
+  },
+  "rows": [
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 171,
+        "missing_or_unobserved": 4,
+        "observed_response": 7333,
+        "routed_out": null,
+        "valid_answer": 7162
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q101",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q101",
+      "repeat_id": null,
+      "response_option_authority_rows": 14,
+      "response_slot_ordinal": 3,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 171,
+        "MISSING": 4,
+        "SUBSTANTIVE_RESPONSE": 7162
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 686,
+        "missing_or_unobserved": 0,
+        "observed_response": 7337,
+        "routed_out": null,
+        "valid_answer": 6651
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q102",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q102",
+      "repeat_id": null,
+      "response_option_authority_rows": 15,
+      "response_slot_ordinal": 4,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q102:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q102:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 686,
+        "SUBSTANTIVE_RESPONSE": 6651
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 81,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7255
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q103",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q103",
+      "repeat_id": null,
+      "response_option_authority_rows": 12,
+      "response_slot_ordinal": 5,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q103:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q103:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 81,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7255
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 324,
+        "missing_or_unobserved": 5,
+        "observed_response": 7332,
+        "routed_out": null,
+        "valid_answer": 7008
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2011",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2011",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 6,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2011:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2011:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 324,
+        "MISSING": 5,
+        "SUBSTANTIVE_RESPONSE": 7008
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 399,
+        "missing_or_unobserved": 6,
+        "observed_response": 7331,
+        "routed_out": null,
+        "valid_answer": 6932
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2012",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2012",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 7,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2012:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2012:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 399,
+        "MISSING": 6,
+        "SUBSTANTIVE_RESPONSE": 6932
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 394,
+        "missing_or_unobserved": 6,
+        "observed_response": 7331,
+        "routed_out": null,
+        "valid_answer": 6937
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2013",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2013",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 8,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2013:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2013:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 394,
+        "MISSING": 6,
+        "SUBSTANTIVE_RESPONSE": 6937
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 273,
+        "missing_or_unobserved": 6,
+        "observed_response": 7331,
+        "routed_out": null,
+        "valid_answer": 7058
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2014",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2014",
+      "repeat_id": null,
+      "response_option_authority_rows": 14,
+      "response_slot_ordinal": 9,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2014:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2014:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 273,
+        "MISSING": 6,
+        "SUBSTANTIVE_RESPONSE": 7058
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 617,
+        "missing_or_unobserved": 13,
+        "observed_response": 7324,
+        "routed_out": null,
+        "valid_answer": 6707
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2015",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2015",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 10,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2015:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2015:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 617,
+        "MISSING": 13,
+        "SUBSTANTIVE_RESPONSE": 6707
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 0,
+        "missing_or_unobserved": 0,
+        "observed_response": 7337,
+        "routed_out": null,
+        "valid_answer": 7337
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q202",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q202",
+      "repeat_id": null,
+      "response_option_authority_rows": 10,
+      "response_slot_ordinal": 11,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q202:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q202:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "SUBSTANTIVE_RESPONSE": 7337
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 238,
+        "missing_or_unobserved": 0,
+        "observed_response": 7337,
+        "routed_out": null,
+        "valid_answer": 7099
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q204",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q204",
+      "repeat_id": null,
+      "response_option_authority_rows": 4,
+      "response_slot_ordinal": 12,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q204:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q204:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 238,
+        "SUBSTANTIVE_RESPONSE": 7099
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 63,
+        "missing_or_unobserved": 0,
+        "observed_response": 7337,
+        "routed_out": null,
+        "valid_answer": 7274
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q205",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q205",
+      "repeat_id": null,
+      "response_option_authority_rows": 6,
+      "response_slot_ordinal": 13,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q205:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q205:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 63,
+        "SUBSTANTIVE_RESPONSE": 7274
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 143,
+        "missing_or_unobserved": 3,
+        "observed_response": 7334,
+        "routed_out": null,
+        "valid_answer": 7191
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q206",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q206",
+      "repeat_id": null,
+      "response_option_authority_rows": 6,
+      "response_slot_ordinal": 14,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q206:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q206:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 143,
+        "MISSING": 3,
+        "SUBSTANTIVE_RESPONSE": 7191
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 73,
+        "missing_or_unobserved": 2,
+        "observed_response": 7335,
+        "routed_out": null,
+        "valid_answer": 7262
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q207",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q207",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 15,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q207:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q207:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 73,
+        "MISSING": 2,
+        "SUBSTANTIVE_RESPONSE": 7262
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 122,
+        "missing_or_unobserved": 2,
+        "observed_response": 7335,
+        "routed_out": null,
+        "valid_answer": 7213
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q210",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q210",
+      "repeat_id": null,
+      "response_option_authority_rows": 10,
+      "response_slot_ordinal": 16,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q210:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q210:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 122,
+        "MISSING": 2,
+        "SUBSTANTIVE_RESPONSE": 7213
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 1266,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 6070
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q211",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q211",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 17,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q211:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q211:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 1266,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 6070
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 1587,
+        "missing_or_unobserved": 6,
+        "observed_response": 7331,
+        "routed_out": null,
+        "valid_answer": 5744
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q212",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q212",
+      "repeat_id": null,
+      "response_option_authority_rows": 5,
+      "response_slot_ordinal": 18,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q212:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q212:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 1587,
+        "MISSING": 6,
+        "SUBSTANTIVE_RESPONSE": 5744
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 70,
+        "missing_or_unobserved": 2,
+        "observed_response": 7335,
+        "routed_out": null,
+        "valid_answer": 7265
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2131",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2131",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 19,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2131:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2131:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 70,
+        "MISSING": 2,
+        "SUBSTANTIVE_RESPONSE": 7265
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 185,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7151
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2132",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2132",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 20,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2132:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2132:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 185,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7151
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 85,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7251
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2133",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2133",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 21,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2133:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2133:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 85,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7251
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 190,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7146
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2134",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2134",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 22,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2134:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2134:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 190,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7146
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 278,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7058
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2135",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2135",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 23,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2135:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2135:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 278,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7058
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 576,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 6760
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q214",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q214",
+      "repeat_id": null,
+      "response_option_authority_rows": 11,
+      "response_slot_ordinal": 24,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q214:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q214:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 576,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 6760
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 157,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7179
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q215",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q215",
+      "repeat_id": null,
+      "response_option_authority_rows": 12,
+      "response_slot_ordinal": 25,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q215:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q215:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 157,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7179
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 106,
+        "missing_or_unobserved": 1,
+        "observed_response": 7336,
+        "routed_out": null,
+        "valid_answer": 7230
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q216",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q216",
+      "repeat_id": null,
+      "response_option_authority_rows": 13,
+      "response_slot_ordinal": 26,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q216:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q216:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 106,
+        "MISSING": 1,
+        "SUBSTANTIVE_RESPONSE": 7230
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 628,
+        "missing_or_unobserved": 19,
+        "observed_response": 7318,
+        "routed_out": null,
+        "valid_answer": 6690
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q219",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q219",
+      "repeat_id": null,
+      "response_option_authority_rows": 8,
+      "response_slot_ordinal": 28,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q219:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q219:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 628,
+        "MISSING": 19,
+        "SUBSTANTIVE_RESPONSE": 6690
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 456,
+        "missing_or_unobserved": 7,
+        "observed_response": 7330,
+        "routed_out": null,
+        "valid_answer": 6874
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q221",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q221",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 29,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q221:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q221:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 456,
+        "MISSING": 7,
+        "SUBSTANTIVE_RESPONSE": 6874
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 151,
+        "missing_or_unobserved": 4,
+        "observed_response": 7333,
+        "routed_out": null,
+        "valid_answer": 7182
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q222",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q222",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 30,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q222:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q222:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 151,
+        "MISSING": 4,
+        "SUBSTANTIVE_RESPONSE": 7182
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 6511,
+        "missing_or_unobserved": 13,
+        "observed_response": 7324,
+        "routed_out": null,
+        "valid_answer": 813
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q224",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q224",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 31,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q224:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q224:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 58,
+        "MISSING": 13,
+        "SOURCE_SPECIFIC_SPECIAL": 6453,
+        "SUBSTANTIVE_RESPONSE": 813
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 696,
+        "missing_or_unobserved": 9,
+        "observed_response": 7328,
+        "routed_out": null,
+        "valid_answer": 6632
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2251",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2251",
+      "repeat_id": null,
+      "response_option_authority_rows": 6,
+      "response_slot_ordinal": 32,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2251:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2251:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 696,
+        "MISSING": 9,
+        "SUBSTANTIVE_RESPONSE": 6632
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 524,
+        "missing_or_unobserved": 5,
+        "observed_response": 7332,
+        "routed_out": null,
+        "valid_answer": 6808
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2252",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2252",
+      "repeat_id": null,
+      "response_option_authority_rows": 6,
+      "response_slot_ordinal": 33,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2252:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2252:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 524,
+        "MISSING": 5,
+        "SUBSTANTIVE_RESPONSE": 6808
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 103,
+        "missing_or_unobserved": 5,
+        "observed_response": 7332,
+        "routed_out": null,
+        "valid_answer": 7229
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q226",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q226",
+      "repeat_id": null,
+      "response_option_authority_rows": 4,
+      "response_slot_ordinal": 34,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q226:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q226:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 103,
+        "MISSING": 5,
+        "SUBSTANTIVE_RESPONSE": 7229
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 0,
+        "missing_or_unobserved": 5093,
+        "observed_response": 2244,
+        "routed_out": null,
+        "valid_answer": 2244
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q227",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q227",
+      "repeat_id": null,
+      "response_option_authority_rows": 8,
+      "response_slot_ordinal": 35,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q227:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q227:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "MISSING": 5093,
+        "SUBSTANTIVE_RESPONSE": 2244
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 348,
+        "missing_or_unobserved": 13,
+        "observed_response": 7324,
+        "routed_out": null,
+        "valid_answer": 6976
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q228",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q228",
+      "repeat_id": null,
+      "response_option_authority_rows": 4,
+      "response_slot_ordinal": 36,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q228:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q228:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 348,
+        "MISSING": 13,
+        "SUBSTANTIVE_RESPONSE": 6976
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 113,
+        "missing_or_unobserved": 4,
+        "observed_response": 7333,
+        "routed_out": null,
+        "valid_answer": 7220
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2301",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2301",
+      "repeat_id": null,
+      "response_option_authority_rows": 6,
+      "response_slot_ordinal": 37,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2301:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2301:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 113,
+        "MISSING": 4,
+        "SUBSTANTIVE_RESPONSE": 7220
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 86,
+        "missing_or_unobserved": 7,
+        "observed_response": 7330,
+        "routed_out": null,
+        "valid_answer": 7244
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2302",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2302",
+      "repeat_id": null,
+      "response_option_authority_rows": 6,
+      "response_slot_ordinal": 38,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2302:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2302:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 86,
+        "MISSING": 7,
+        "SUBSTANTIVE_RESPONSE": 7244
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 3,
+        "missing_or_unobserved": 2014,
+        "observed_response": 5323,
+        "routed_out": null,
+        "valid_answer": 5320
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2311",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2311",
+      "repeat_id": null,
+      "response_option_authority_rows": 9,
+      "response_slot_ordinal": 39,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2311:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2311:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 3,
+        "MISSING": 2014,
+        "SUBSTANTIVE_RESPONSE": 5320
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 2,
+        "missing_or_unobserved": 2032,
+        "observed_response": 5305,
+        "routed_out": null,
+        "valid_answer": 5303
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2312",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2312",
+      "repeat_id": null,
+      "response_option_authority_rows": 9,
+      "response_slot_ordinal": 40,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2312:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2312:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 2,
+        "MISSING": 2032,
+        "SUBSTANTIVE_RESPONSE": 5303
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 811,
+        "missing_or_unobserved": 6,
+        "observed_response": 7331,
+        "routed_out": null,
+        "valid_answer": 6520
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2321",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2321",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 41,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2321:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2321:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 811,
+        "MISSING": 6,
+        "SUBSTANTIVE_RESPONSE": 6520
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 824,
+        "missing_or_unobserved": 6,
+        "observed_response": 7331,
+        "routed_out": null,
+        "valid_answer": 6507
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2322",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2322",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 42,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2322:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2322:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 824,
+        "MISSING": 6,
+        "SUBSTANTIVE_RESPONSE": 6507
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 834,
+        "missing_or_unobserved": 7,
+        "observed_response": 7330,
+        "routed_out": null,
+        "valid_answer": 6496
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2323",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2323",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 43,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2323:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2323:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 834,
+        "MISSING": 7,
+        "SUBSTANTIVE_RESPONSE": 6496
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 619,
+        "missing_or_unobserved": 9,
+        "observed_response": 7328,
+        "routed_out": null,
+        "valid_answer": 6709
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q2324",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q2324",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 44,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q2324:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q2324:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 619,
+        "MISSING": 9,
+        "SUBSTANTIVE_RESPONSE": 6709
+      }
+    },
+    {
+      "accepted_slice": true,
+      "classification": {
+        "eligible": null,
+        "eligible_or_routed_out_known": false,
+        "explicit_nonresponse": 444,
+        "missing_or_unobserved": 18,
+        "observed_response": 7319,
+        "routed_out": null,
+        "valid_answer": 6875
+      },
+      "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+      "consumer_rule_status": "ROUTING_UNKNOWN_NO_EXACT_RULE",
+      "event_presence_count": 7337,
+      "form_id": null,
+      "occurrence_candidate": {
+        "form_id": null,
+        "item_id": "q234",
+        "option_id": null,
+        "repeat_id": null
+      },
+      "question_id": "q234",
+      "repeat_id": null,
+      "response_option_authority_rows": 7,
+      "response_slot_ordinal": 45,
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q234:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q234:unresolved",
+      "routing_typed_state": "ROUTING_UNKNOWN",
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 444,
+        "MISSING": 18,
+        "SUBSTANTIVE_RESPONSE": 6875
+      }
+    }
+  ],
+  "schema": "PYAT_SRC04_ROUTING_BINDING_TRACE@1.0.0",
+  "source": {
+    "config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+    "config_id": "R157-ARAB-SRC04-FULL-SOURCE-PREPARATION",
+    "policy_fabricated": false,
+    "source_columns": 181,
+    "source_config_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+    "source_id": "SRC04",
+    "source_rows": 7337,
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+  }
+}

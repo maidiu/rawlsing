@@ -101,6 +101,57 @@
     "routing_unknown_count": 178,
     "unique_candidate_count": 178
   },
+  "review_correction": {
+    "accepted_slice": {
+      "form_id": null,
+      "form_repeat_identifiers_fabricated": false,
+      "repeat_id": null,
+      "scope": "bounded single-SAV/source-interview-row slice only",
+      "selected_coordinate_slots": 2,
+      "selected_response_slots": 42,
+      "supported_unit_slice": "SOURCE_INTERVIEW_ROW"
+    },
+    "candidate_commit": "c8e0215f6f222eb7b09ef0a8d198b23f0780dac2",
+    "corrected_first_missing": {
+      "artifact": "exact questionnaire routing/skip rule and risk-set/eligibility denominator handoff",
+      "downstream_missing": "exact R03 GrammarPolicy/authorized direction grant; owner R03 GrammarPolicy/direction owner",
+      "fields": [
+        "routing[].typed_state",
+        "routing[].routing_rule_ref",
+        "routing[].risk_set_ref",
+        "risk_set_refs"
+      ],
+      "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
+      "question_id": "q101"
+    },
+    "general_metadata_receipt": {
+      "note": "general 178-response-item metadata receipt remains unchanged; its form-first classification is superseded for the accepted 42-slot slice",
+      "path": "01_REDACTED_RECEIPT.json"
+    },
+    "limits": {
+      "ci": false,
+      "merge": false,
+      "original_source_read": false,
+      "original_workload_issued": false,
+      "policy_fabricated": false,
+      "production_edit": false,
+      "respondent_rows_read": false,
+      "routing_inferred_from_observed_counts": false
+    },
+    "review_commit": "bdeace786",
+    "routing": {
+      "accepted_routing_binding": false,
+      "eligibility_denominator_binding": false,
+      "exact_skip_rules": 0,
+      "risk_set_unresolved": 42,
+      "routing_receipt": "routing/01_ROUTING_RECEIPT.json",
+      "routing_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048",
+      "routing_unknown": 42,
+      "selected_entries": 42,
+      "source_record_denominator_binding": true
+    },
+    "schema": "PYAT_REAL_METADATA_ROUTING_CORRECTION@1.0.0"
+  },
   "schema": "PYAT_REAL_METADATA_BINDING_RECEIPT@1.0.0",
   "source": {
     "codebook": {

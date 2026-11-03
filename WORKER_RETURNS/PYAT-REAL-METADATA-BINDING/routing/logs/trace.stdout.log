@@ -1,0 +1,51 @@
+{
+  "accepted_slice": 42,
+  "consumer_probe": {
+    "accepted_tally_consumer_api": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "c11_caller": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "c11_questions": 178,
+    "c11_respondents": 7337,
+    "c11_response_slots": 178,
+    "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+    "eligible": null,
+    "explicit_nonresponse": 171,
+    "missing_or_unobserved": 4,
+    "question_id": "q101",
+    "r03_occurrence_entrypoint": "rawlsing_next.universal_grammar.types.OccurrenceKey",
+    "routed_out": null,
+    "routing_rule_exact": false,
+    "valid_answer": 7162
+  },
+  "first_missing": {
+    "artifact": "exact questionnaire routing/skip rule and risk-set/eligibility denominator for the accepted SRC04 42-slot slice",
+    "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+    "current_typed_state": "ROUTING_UNKNOWN",
+    "downstream_missing": {
+      "artifact": "exact R03 GrammarPolicy/authorized direction grant",
+      "owner": "R03 GrammarPolicy/direction owner"
+    },
+    "fields": [
+      "routing[].typed_state",
+      "routing[].routing_rule_ref",
+      "routing[].risk_set_ref",
+      "risk_set_refs"
+    ],
+    "missing_risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "missing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
+    "question_id": "q101"
+  },
+  "result": "HOLD_ROUTING_AND_DENOMINATOR_NOT_ACCEPTED",
+  "routing": {
+    "accepted_denominator_binding": false,
+    "accepted_routing_binding": false,
+    "config_routing_entries": 178,
+    "policy_fabricated": false,
+    "routing_inferred_from_observed_counts": false,
+    "selected_exact_skip_rules": 0,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_entries": 42,
+    "selected_routing_unknown": 42
+  },
+  "rows": 42
+}

@@ -1,0 +1,179 @@
+{
+  "accepted_slice": {
+    "form_id": null,
+    "form_repeat_identifiers_fabricated": false,
+    "form_repeat_scope": "accepted single-SAV/source-interview-row bounded slice",
+    "release_receipt_sha256": "0c5306df01a11881db5cd47e68d304e40ff54baf7d69bb96213d009217cd70ce",
+    "release_ref": {
+      "content_hash": "fc111cfa78d0fc23b5c72c1dc4b45c39d35c66c394662d7b901f5422df3370ec",
+      "kind": "C11LogicalRelease",
+      "object_id": "SRC04_ARAB_BAROMETER_I_PREPARATION"
+    },
+    "repeat_id": null,
+    "selected_coordinate_slots": 2,
+    "selected_question_ids": [
+      "q101",
+      "q102",
+      "q103",
+      "q2011",
+      "q2012",
+      "q2013",
+      "q2014",
+      "q2015",
+      "q202",
+      "q204",
+      "q205",
+      "q206",
+      "q207",
+      "q210",
+      "q211",
+      "q212",
+      "q2131",
+      "q2132",
+      "q2133",
+      "q2134",
+      "q2135",
+      "q214",
+      "q215",
+      "q216",
+      "q219",
+      "q221",
+      "q222",
+      "q224",
+      "q2251",
+      "q2252",
+      "q226",
+      "q227",
+      "q228",
+      "q2301",
+      "q2302",
+      "q2311",
+      "q2312",
+      "q2321",
+      "q2322",
+      "q2323",
+      "q2324",
+      "q234"
+    ],
+    "selected_response_slots": 42,
+    "single_interview_row": true,
+    "slice_selection_sha256": "aa0d5739b5cd30f7c4d68a01035556c8f69880b5dcace82684fee2851ef35803"
+  },
+  "base_commit": "c8e0215f6f222eb7b09ef0a8d198b23f0780dac2",
+  "consumer_probe": {
+    "accepted_tally_consumer_api": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "c11_caller": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "c11_questions": 178,
+    "c11_respondents": 7337,
+    "c11_response_slots": 178,
+    "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+    "eligible": null,
+    "explicit_nonresponse": 171,
+    "missing_or_unobserved": 4,
+    "question_id": "q101",
+    "r03_occurrence_entrypoint": "rawlsing_next.universal_grammar.types.OccurrenceKey",
+    "routed_out": null,
+    "routing_rule_exact": false,
+    "source_record_denominator": 7337,
+    "valid_answer": 7162
+  },
+  "files": {
+    "00_RETURN.md": {
+      "bytes": 3633,
+      "sha256": "420446aee367672c1549ddac601b9c3c222bdfbff193da7370fbddecadac7401"
+    },
+    "01_ROUTING_RECEIPT.json": {
+      "bytes": 59905,
+      "sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048"
+    },
+    "02_COMMANDS.md": {
+      "bytes": 2114,
+      "sha256": "3710f29d908e5331f62e95c21fcd958182026fc355c79c8aa8686a11919e7950"
+    },
+    "03_OWNER_LIMITS.md": {
+      "bytes": 1791,
+      "sha256": "0bdbfa891fcc3c7edffc5377538a509a58973080a6433991200ebb245031dbcb"
+    },
+    "logs/test_routing.log": {
+      "bytes": 98,
+      "sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+    },
+    "logs/test_routing_junit.xml": {
+      "bytes": 1053,
+      "sha256": "c9c343cc84d2c1d94029e4fae796de91b9f8cfe172518b9487bc6347b8fb759c"
+    },
+    "logs/trace.stdout.log": {
+      "bytes": 2142,
+      "sha256": "68c21111bae4417115f000ffbc031079033026abf436dc644ae5766500f2f2e3"
+    },
+    "test_routing.py": {
+      "bytes": 3866,
+      "sha256": "ce64f6f60f2b7e1843e67d3e196c76f6cce70cb2d0f3322a75174c54b4d9073f"
+    },
+    "trace_routing.py": {
+      "bytes": 13285,
+      "sha256": "8fd3540f3b759e90c7866e2b580c36e5a951606459ce5476be48ae4a9e50efa9"
+    }
+  },
+  "first_missing": {
+    "artifact": "exact questionnaire routing/skip rule and risk-set/eligibility denominator for the accepted SRC04 42-slot slice",
+    "consequence": "source-record/event denominator only; eligibility and routed-out are not distinguishable; no route-conditioned denominator or policy",
+    "current_typed_state": "ROUTING_UNKNOWN",
+    "downstream_missing": {
+      "artifact": "exact R03 GrammarPolicy/authorized direction grant",
+      "owner": "R03 GrammarPolicy/direction owner"
+    },
+    "fields": [
+      "routing[].typed_state",
+      "routing[].routing_rule_ref",
+      "routing[].risk_set_ref",
+      "risk_set_refs"
+    ],
+    "missing_risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "missing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
+    "question_id": "q101"
+  },
+  "option_authority": {
+    "rows_selected_42": 367,
+    "rows_total": 12160,
+    "sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15"
+  },
+  "prior_tally_consumer": {
+    "answered_substantive_denominator_total": 277582,
+    "consumer_api": "rawlsing_next.pre553_carrier_execution.materialize_public_object",
+    "event_presence_count": 308154,
+    "focused_recheck_acceptance": "D1_OBSERVED_SAMPLE_DESCRIPTIVE_TALLY_ACCEPTED",
+    "focused_recheck_sha256": "3b2357fc07ee33125a0805dcd10d970493902afebeb8576b70f6059cb416ae79",
+    "focused_recheck_verdict": "PASS",
+    "missing_or_unobserved_total": 9335,
+    "observed_response_denominator_total": 298819,
+    "population_or_eligibility_claims": "NONE",
+    "replay_ref": {
+      "content_hash": "8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f",
+      "kind": "D1_TALLY_REPLAY",
+      "object_id": "urn:rawlsing:d1:SRC04:observed-sample-replay:8c7205dc775fd9123ab09985e61b91671f38127e0ae22a6ae3d58e39dfd41b4f"
+    },
+    "routing_state": "ROUTING_UNKNOWN",
+    "tally_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "tally_ref": "87e297bb8795ae3628603a730c83ca0b90107556236c9e1cb7dba27858722022"
+  },
+  "review_commit": "bdeace786",
+  "routing_authority": {
+    "accepted_denominator_binding": false,
+    "accepted_routing_binding": false,
+    "config_routing_entries": 178,
+    "eligibility_denominator_binding": false,
+    "policy_fabricated": false,
+    "routing_inferred_from_observed_counts": false,
+    "selected_exact_skip_rules": 0,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_entries": 42,
+    "selected_routing_unknown": 42,
+    "source_record_denominator_binding": true
+  },
+  "schema": "PYAT_SRC04_ROUTING_RECEIPTS@1.0.0",
+  "test_receipts": {
+    "routing": "5 passed"
+  }
+}

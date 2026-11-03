@@ -18,12 +18,12 @@
   "edition_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
   "files": {
     "00_RETURN.md": {
-      "bytes": 4605,
-      "sha256": "3608df462adeff09a1bd767ae195eef349fa1943c5617b1f38056b4bb442d41b"
+      "bytes": 5414,
+      "sha256": "a0bacdf8eafd09a644b4ee3efd6934968ed8fb36993f94bea8efeb667bbe18bd"
     },
     "01_REDACTED_RECEIPT.json": {
-      "bytes": 5696,
-      "sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283"
+      "bytes": 7729,
+      "sha256": "e053ae547126282fa795c0b05b0001969dc53abd3a2959a82e37b0e538580bfd"
     },
     "02_COMMANDS.md": {
       "bytes": 2358,
@@ -33,6 +33,10 @@
       "bytes": 2239,
       "sha256": "888ac8c597eb9b55e87456fadf0f627fcd611be37796e7e15e29d419254f8854"
     },
+    "04_ROUTING_CORRECTION.json": {
+      "bytes": 1909,
+      "sha256": "2b0c83aa2ad58c797e24485156b16293792ae0b74c1d5bcb423239f47d8bbe54"
+    },
     "attempt.stdout.log": {
       "bytes": 2044,
       "sha256": "d2b178a818255b6f018c9e8bdef4020d91569cdb29af32a5c77c2800770708ff"
@@ -40,6 +44,42 @@
     "bind_real_metadata.py": {
       "bytes": 13589,
       "sha256": "9b32e3992241b55e87b3b3a2a4bb634c4be99fba47c24268d2bec02ac984fd4f"
+    },
+    "routing/00_RETURN.md": {
+      "bytes": 3633,
+      "sha256": "420446aee367672c1549ddac601b9c3c222bdfbff193da7370fbddecadac7401"
+    },
+    "routing/01_ROUTING_RECEIPT.json": {
+      "bytes": 59905,
+      "sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048"
+    },
+    "routing/02_COMMANDS.md": {
+      "bytes": 2114,
+      "sha256": "3710f29d908e5331f62e95c21fcd958182026fc355c79c8aa8686a11919e7950"
+    },
+    "routing/03_OWNER_LIMITS.md": {
+      "bytes": 1791,
+      "sha256": "0bdbfa891fcc3c7edffc5377538a509a58973080a6433991200ebb245031dbcb"
+    },
+    "routing/logs/test_routing.log": {
+      "bytes": 98,
+      "sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+    },
+    "routing/logs/test_routing_junit.xml": {
+      "bytes": 1053,
+      "sha256": "c9c343cc84d2c1d94029e4fae796de91b9f8cfe172518b9487bc6347b8fb759c"
+    },
+    "routing/logs/trace.stdout.log": {
+      "bytes": 2142,
+      "sha256": "68c21111bae4417115f000ffbc031079033026abf436dc644ae5766500f2f2e3"
+    },
+    "routing/test_routing.py": {
+      "bytes": 3866,
+      "sha256": "ce64f6f60f2b7e1843e67d3e196c76f6cce70cb2d0f3322a75174c54b4d9073f"
+    },
+    "routing/trace_routing.py": {
+      "bytes": 13285,
+      "sha256": "8fd3540f3b759e90c7866e2b580c36e5a951606459ce5476be48ae4a9e50efa9"
     },
     "test_metadata_binding.log": {
       "bytes": 98,
@@ -51,37 +91,8 @@
     },
     "test_metadata_binding_junit.xml": {
       "bytes": 900,
-      "sha256": "21a47319f450196aba7a8f89290013ce094fc662baa8f8775be15775656fe70a"
+      "sha256": "b66e5340b0e6ceee2aff3b8815c16d588b167cedd13f5edc51404a23c7b2bbfb"
     }
-  },
-  "first_missing": {
-    "artifact": "exact SRC04 source form/repetition identity for configured response operands",
-    "current_value": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE",
-    "downstream_missing": {
-      "artifact": "exact R03 GrammarPolicy/authorized direction grant",
-      "owner": "R03 GrammarPolicy/direction owner; no policy is supplied by the source configuration"
-    },
-    "fields": [
-      "supported_scope.supported_form_slice",
-      "OccurrenceKey.form_id",
-      "OccurrenceKey.repeat_id"
-    ],
-    "next_missing": {
-      "artifact": "exact routing/eligibility and denominator handoff",
-      "counts": {
-        "risk_set_unresolved": 178,
-        "routing_entries": 178,
-        "routing_unknown": 178
-      },
-      "fields": [
-        "routing[].typed_state",
-        "routing[].risk_set_ref",
-        "risk_set_refs"
-      ],
-      "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger"
-    },
-    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
-    "why": "The source configuration records a single-file SAV shape but explicitly lacks form, ballot or administration variable evidence; R03 form/repeat identity is not established."
   },
   "fixture_release_ref": {
     "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
@@ -89,8 +100,7 @@
     "object_id": "R157_FIXTURE_RELEASE/SRC04"
   },
   "fixture_validation_match": true,
-  "metadata_origin": "agent/pyat-pre553-r157-integration@056849e23",
-  "r03": {
+  "general_r03": {
     "candidate_count": 178,
     "candidate_scope": "item-only candidate keys; not accepted as exact occurrences",
     "entrypoint": "rawlsing_next.universal_grammar.types.OccurrenceKey",
@@ -106,9 +116,63 @@
     "routing_unknown_count": 178,
     "unique_candidate_count": 178
   },
-  "schema": "PYAT_REAL_METADATA_BINDING_RECEIPTS@1.0.0",
+  "metadata_origin": "agent/pyat-pre553-r157-integration@056849e23",
+  "review_correction": {
+    "accepted_slice": {
+      "form_id": null,
+      "form_repeat_identifiers_fabricated": false,
+      "repeat_id": null,
+      "scope": "bounded single-SAV/source-interview-row slice only",
+      "selected_coordinate_slots": 2,
+      "selected_response_slots": 42,
+      "supported_unit_slice": "SOURCE_INTERVIEW_ROW"
+    },
+    "candidate_commit": "c8e0215f6f222eb7b09ef0a8d198b23f0780dac2",
+    "corrected_first_missing": {
+      "artifact": "exact questionnaire routing/skip rule and risk-set/eligibility denominator handoff",
+      "downstream_missing": "exact R03 GrammarPolicy/authorized direction grant; owner R03 GrammarPolicy/direction owner",
+      "fields": [
+        "routing[].typed_state",
+        "routing[].routing_rule_ref",
+        "routing[].risk_set_ref",
+        "risk_set_refs"
+      ],
+      "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
+      "question_id": "q101"
+    },
+    "general_metadata_receipt": {
+      "note": "general 178-response-item metadata receipt remains unchanged; its form-first classification is superseded for the accepted 42-slot slice",
+      "path": "01_REDACTED_RECEIPT.json"
+    },
+    "limits": {
+      "ci": false,
+      "merge": false,
+      "original_source_read": false,
+      "original_workload_issued": false,
+      "policy_fabricated": false,
+      "production_edit": false,
+      "respondent_rows_read": false,
+      "routing_inferred_from_observed_counts": false
+    },
+    "review_commit": "bdeace786",
+    "routing": {
+      "accepted_routing_binding": false,
+      "eligibility_denominator_binding": false,
+      "exact_skip_rules": 0,
+      "risk_set_unresolved": 42,
+      "routing_receipt": "routing/01_ROUTING_RECEIPT.json",
+      "routing_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048",
+      "routing_unknown": 42,
+      "selected_entries": 42,
+      "source_record_denominator_binding": true
+    },
+    "schema": "PYAT_REAL_METADATA_ROUTING_CORRECTION@1.0.0"
+  },
+  "routing_receipt": "routing/01_ROUTING_RECEIPT.json",
+  "schema": "PYAT_REAL_METADATA_BINDING_RECEIPTS@1.1.0",
   "source_id": "SRC04",
   "test_receipts": {
-    "focused": "4 passed"
+    "metadata": "4 passed",
+    "routing": "5 passed"
   }
 }

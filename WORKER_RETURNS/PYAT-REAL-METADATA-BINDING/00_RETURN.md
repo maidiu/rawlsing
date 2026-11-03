@@ -54,30 +54,39 @@ matches the prior C11 engineering receipt:
 | Edition | exact source SHA/row/column metadata |
 | Item | 181 configured items; exact config/crosswalk names |
 | Option | 178 configured response slots; 12,160 option-authority rows |
-| Form/repeat | **not exact**; config declares `SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE`; R03 `form_id/repeat_id` not established |
-| Route | **not exact**; 178 routing entries remain `ROUTING_UNKNOWN` |
-| Eligibility/risk set | **not exact**; 178 risk-set refs are unresolved |
+| Form/repeat | accepted 42-slot slice is single interview-row: `form_id=None`, `repeat_id=None`; no fabricated form identifiers; not an estate-wide claim |
+| Route | **not exact**; selected 42 routing entries remain `ROUTING_UNKNOWN` |
+| Eligibility/risk set | **not exact**; selected 42 risk-set refs are unresolved |
 | R03 policy/direction grant | **absent**; no policy supplied or fabricated |
 
 R03 candidate keys were constructed for 178 configured response items through
 the normal `OccurrenceKey` entrypoint, but they are item-only candidates. No R03
 inventory, policy or execution was accepted or created.
 
-## First exact input missing
+## First exact input missing (corrected per review)
 
-**Artifact:** exact SRC04 source form/repetition identity for configured
-response operands.
+**Artifact:** exact questionnaire routing/skip rule and risk-set/eligibility
+denominator handoff for the accepted SRC04 42-slot slice.
 
-**Fields:** `supported_scope.supported_form_slice`, `OccurrenceKey.form_id`,
-`OccurrenceKey.repeat_id`.
+**Question:** `q101` is the first selected field; the same state applies to all
+42 selected fields.
+
+**Fields:** `routing[].typed_state`, `routing[].routing_rule_ref`,
+`routing[].risk_set_ref`, `risk_set_refs`.
 
 **Owner:** ARAB lane / P3 integration owner named in the SRC04 exception ledger.
 
-The immediate next missing artifact is exact routing/eligibility and denominator
-handoff (`routing[].typed_state`, `routing[].risk_set_ref`, `risk_set_refs`),
-owned by the same source lane. The downstream missing artifact is an exact R03
-`GrammarPolicy`/authorized direction grant, owned by the R03 policy/direction
-owner. No policy is inferred from labels or matching names.
+Current evidence: all 42 selected routing entries are `ROUTING_UNKNOWN`, all 42
+risk-set refs are unresolved, and no exact skip rule is present. The accepted D1
+tally provides source-record/event denominators and response-state counts, but
+not an eligibility denominator or a routed-out category. The downstream missing
+artifact is an exact R03 `GrammarPolicy`/authorized direction grant, owned by the
+R03 policy/direction owner. No policy or routing is inferred from observed
+counts or labels.
+
+Correction receipt: `04_ROUTING_CORRECTION.json`. The form/repeat null shape is
+scoped to the accepted single-SAV/source-interview-row 42-slot slice; it is not
+an estate-wide absence claim.
 
 ## Tests
 
@@ -96,3 +105,7 @@ owner. No policy is inferred from labels or matching names.
 
 **Distinct nonauthor review is required for the positive C11 metadata-binding
 claim.**
+
+## Review correction
+
+Independent review `bdeace786` corrected the original form/repeat-first-missing classification. The accepted 42-slot slice has form/repeat null; routing/eligibility/risk-set is the first genuinely unresolved input. See `04_ROUTING_CORRECTION.json` and `routing/`.
