@@ -1,3 +1,7 @@
+# Current PROGRAMMA goal flight
+
+PRE-MAIN adopted the three operating front doors at `ba165a6a073dfdac0cb2e993ab8111ebb5ef404c`. G4 guide integration remains NONE_VERIFIED. The N9 + N10E → N10W same-lineage engineering and SRC04 routing/denominator evidence jobs have verified live local process receipts at this cut. See the paired JSON for exact leases. Earlier progress follows.
+
 # Current HQ state — PR646 sourcefree receiving complete
 
 
