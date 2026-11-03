@@ -1,4 +1,23 @@
 # PROGRAMMA SOROK — W5 IS A VALIDATED FOUNDATION, NOT PROOF OF MAXIMAL COMPLETENESS
+
+## USER PRIORITY CORRECTION R2 — EXECUTABLE PREREQUISITES, NOT ONLY DOCUMENTED RELATIONSHIPS
+
+**GOVERNS ALL THREE W6 COMMISSIONS.** Read the new sibling 05_EXECUTABLE_DEPENDENCY_READINESS_AND_PRIORITY_CONTRACT_R2.md before W6-A/B/C. User explicitly wants for any meaningful feature X: **"in order to KNOW/BUILD X, Y, Z and W must be completed,"** and recursively, so an agent can automatically **discern WHAT SHOULD BE WORKED ON NOW, in what priority, which pieces unblock others, and which mutually dependent parts require joint work**. That was under-specified in W6-R1 and is MATERIAL, not decorative.
+
+The work product must support:
+1. A target@phase and source-evidenced prerequisites@required-phase, with ALL/ANY/IF and scientific/source/owner/test conditions distinguished. KNOW/SPECIFY gates can be ready before BUILD; native INTEGRATE or ACCEPT can remain held after sourcefree BUILD.
+2. Recursive closure to concrete already-proven work, ready actions, owner decisions, exact missing evidence, or actual mutually interdependent components (not generic prose and not an endless reread).
+3. Reverse unlocks with remaining blockers clearly retained.
+4. Evidence-derived work-now and priority view: READY_NOW, READY_TO_SPECIFY, OWNER_ACTION_READY, JOINT_WORK_PACKAGE, BLOCKED_UPSTREAM, SOURCE_EVIDENCE_REQUIRED, including parallel work and alternatives. Rank for chosen terminal Sorok goals with sources, sensible bottleneck/leverage and uncertainty—not a fake single numerical "critical path" derived from descendant counts.
+5. Cycle detection and honest disposition: if genuine mutual design dependencies, a coordinated executable package with owners/interface/acceptance; if an invalid circular prerequisite, specify the exact design/owner decision required to resolve. No invented cycles.
+6. A scenario in which a real component's accepted/held status hypothetically changes and the next ready-work view updates reproducibly. This proves practical usefulness without claiming an actual worker completed something.
+
+**Ownership division:** W6-A supplies which archived/current assets and science/decision receipts ALREADY satisfy or could satisfy identified prerequisites; W6-B owns phase-scoped nested dependency/ready/priority logic; W6-C owns actual producer→typed artifact→consumer seams and their effects on gate readiness. Their separate branches remain parallel and use original IDs / shared join keys, not independent tracking universes. Future fan-in integrates evidence into existing PROGRAMMA 06–13 and tests priority recomputation, not a new manager application.
+
+**Current W5 source baseline is still valid** at e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde, but "W4 7/7 + W5 100/100" does not certify these new operational-depth questions. The prior R1 launch documents are superseded by THIS reissued R2 branch; if an R1 worker has already been launched outside GitHub branch visibility, reconcile its return rather than silently discarding work.
+
+---
+
 **Date:** 2026-11-02. **Purpose:** user-requested evidence-backed correction of premature "construction finished" characterization. This file and commissions are isolated proposals, not HQ adoption, protected integration or author-science grant.
 
 **BASELINE:** W5 `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`; original user specification `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/03_USER_DEFINED_MASTER_GUIDE_TARGET_AND_SPECIFICATION_20261102_R1.md`, course `04_GITHUB_FIRST_ARCHITECTURE_ASSEMBLY_COURSE_20261102_R1.md`; W3 original guide 06–11; W4 independent 7/7 cold-navigation PASS; W5 100/100 W1 atomic no-drop PASS, no material W3 corrections.
