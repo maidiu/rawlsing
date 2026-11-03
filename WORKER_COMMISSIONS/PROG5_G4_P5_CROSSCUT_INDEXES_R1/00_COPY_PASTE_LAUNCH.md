@@ -1,0 +1,32 @@
+**MODEL:** Browser GPT-6 High PROPOSED · **INTELLIGENCE:** I3+
+
+```text
+LAUNCH — PROG5-G4-P5 — global asset locator, 150 parity, 82 seams, 62 statuses and full gaps
+AGENT_TYPE: Independent I3+ documentary guide constructor
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+INTELLIGENCE_LEVEL: I3+
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High PROPOSED; user selects actual model/effort; no silent substitution.
+EXECUTION_SURFACE: S0–S1 authenticated private GitHub source reading and isolated branch documentary writes; no local S2 or native S3.
+ROLE: Independent substantive guide construction worker, NOT Pyat HQ, source/native issuer, code implementer, own reviewer or protected PRE-MAIN integrator.
+STARTUP_SHA: b65d8f0eecb44f0d1b37eed82c913433a4224d1e
+PROVIDER/EDITOR_HARNESS: Browser authenticated private GitHub proposed; account/quota/cost unknown.
+FIRST ACTION: Read 05_ROADMAP/README.md, POST_G2_SOURCE_ATTACHMENT_AND_SEAM_SWEEP.md, INDEX.jsonl (782 IDs), PLANNED_INTERFACES.jsonl (82 edges), G1_ROW_DISPOSITIONS.jsonl (892 rows), the complete G2 guide and relevant G3 source packets. THIS branch already contains the G3-A evidence in G3_CANDIDATES/ASSET_PARITY/ (892 attachments, 150 parity) and G3-B evidence in G3_CANDIDATES/SEAMS_MATURITY/ (82 scoped seam states, 62 capsules, 49 material gaps). Source cuts: G2 6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d; G3-A 93c821e419b42918d98c71f87999735e786c92df; G3-B b2641c1944b247d5a510f0b4eae6421db077decd; main 25830fe7462bb9e29bc4087e6ae14f3f84cec377; PRE-MAIN 9809203fd915a84bae056a67210e9213879840db. GitHub Contents API may return empty for G3-A SOURCE_ASSET_ATTACHMENTS.jsonl >1MB; use immutable git blob API sha da407961255c5ba8670c6fc59d9cb5e46956fc65 instead.
+EVIDENCE RULES: Cited document ≠ verified code, code/import ≠ first operative reader, sourcefree passing test ≠ originally issued native operation, historical positive ≠ adopted current behavior, historical negative stays at its old cut. Preserve architecturally MUST/IF/ALTERNATE separate from actual seam state. Unknown ≠ absent; unadopted older function can preserve still-needed capability. No alias-by-name.
+HARD LIMITS: NO new tests, CI, independent review, cold-use, original respondent/native source runs, Library or mainMac, production code edits, protected PRE-MAIN writes, science/actor authority, graph service, new architecture or new fleet. No editing G4-P1–P4 source pages/branch, G3 candidates or main G4 receiver branch.
+DELIVERY: Real files in EXCLUSIVE assigned locations, committed in source-pinned increments, with own WORKER_RETURNS/.../00_RETURN.md. Supply final full remote SHA, counts, exact evidence/proof grade and named unresolved. G4 receiver imports finished files by exact blobs after all five return. Do not self-merge or self-review.
+BRANCH: agent/prog5-g4-p5-crosscut-indexes-20261102-r1
+
+EXCLUSIVE TASKS AND REQUIRED ACTUAL OUTPUT:
+WRITE ONLY these NEW files in PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/ (none exists at startup), plus your own 00_RETURN: ASSET_LOCATOR.md; FUNCTION_PARITY.jsonl; CURRENT_SEAM_STATES.jsonl; COMPONENT_STATUS.jsonl; PREREQUISITES_AND_UNLOCKS.md; REMAINING_REAL_PYAT_WORK.md; G4_UNRESOLVED_SOURCE_REQUESTS.md. Do not edit shared README, original INDEX.jsonl, PLANNED_INTERFACES.jsonl, G1_ROW_DISPOSITIONS.jsonl or section pages.
+1. ASSET_LOCATOR.md: concise 11-organ developer lookup, direct pinned code/historic/spec links and function IDs; all relevant 892 G3-A source rows accessible through existing big ledger, but do not rewrite them as 892 prose paragraphs. Preserve 846 LINKED / 28 original UNPLACED /18 REFERENCE_ONLY history, distinguish topic-only from exact-function, record the 16 proposed functional homes and unresolved 12 scopes. Dva/Trii/Chetiri/Long Memory and old extra functions crosslinked.
+2. FUNCTION_PARITY.jsonl: one row per original G3-A 150 obligation IDs, preserving 28 historical function comparisons, 57 current contracts, 51 child obligations, 14 conflicts at original source cuts. Exact current/old code link and parity type, evidence/proof scope/negative; do not promote any of 16 partial or 12 no-current-match to full parity without direct same-scope proof. Can reuse original candidate rows with normalized source and status but no invented aliases.
+3. CURRENT_SEAM_STATES.jsonl: one row for each original 82 G2 edge IDs, retaining original architectural MUST (7), conditional IF (26), other functional (14), reported observed (35) in their original lanes, plus G3-B scoped current result: held 19, incompatible 2, missing receiver/producer 19, partial 23, sourcefree-only 14, unknown 5. Do not manufacture native GREEN. Keep actual producer/output, consumer/import, version/permission/proof and precise next action distinct.
+4. COMPONENT_STATUS.jsonl: 62 section/child IDs = 11 + 51, actual sourcefree/current/historical native grade, first reader and missing task. Do not flatten parent or a partial child.
+5. PREREQUISITES_AND_UNLOCKS.md: actual recursive X requires Y needs Z, AND/IF/ALTERNATE, reverse unlock. Explicit two-input N9 + N10E→N10W and N0 + N10W→N11, N11→N12. No global F6→F7 or N13→N5, N8E→N8S where conditional.
+6. REMAINING_REAL_PYAT_WORK.md: ALL 49 existing G3-B grouped concrete tasks with source/section/first missing condition, plus independently evidenced additional material gaps. Optional short priority synopsis, NO truncated top-20 register.
+7. G4_UNRESOLVED_SOURCE_REQUESTS.md: only specific high-value named GitHub gaps that might require a later Library/mainMac search. For each state referring document@SHA, expected asset, direct Git checks, impact, owner/permission vs physical source and narrow proposed query. DO NOT search Library/mainMac now; no speculative disk census.
+Source-exact conflicts G3-A/B may remain unresolved, recorded with both cuts. Authored files must be usable as G4 receiving inputs with simple 1:1 identity accounting; mechanical per-file row checks are allowed as document integrity checks, NOT a test campaign. Return exact changes, counts and proof limitations.
+
+SUCCESS: real document and index contents—not a proposed plan for G4—and a complete pinned-source return. No tests or protected merges.
+```
