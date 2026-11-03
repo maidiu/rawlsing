@@ -20,7 +20,7 @@ Overlay: `WORKER_RETURNS/PDEV01-N10W-JOIN/repair/`
   - `P41_GENERIC_POSSIBILITY_SERVICE@1`
   - `E04L_M1_M2_B5_READTHROUGH@1`
 - exact `CURRENT_TEST_ONLY_SELECTION` N9 currentness;
-- exact selected-clock binding between `n9_world.selection` and `j42_bindings.w41_clock`;
+- exact selected-clock binding of both `n9_world.selection` and `j42_bindings.w41_clock` to the independently pinned W41 artifact world selected by the exact J42 lookup key;
 - recomputed P41 `content_hash` from the existing `semantic_hash` contract;
 - then delegates to the actual existing `select_joined_world_view`.
 
@@ -55,6 +55,7 @@ All five recorded mutations were rejected even after recomputing the P41 hash:
 Additional controls:
 
 - stale P41 hash → `JOINED_RECEIPT_CONTENT_HASH_MISMATCH`
+- both caller clocks forged/rehashed → `JOINED_N9_SELECTION_MISMATCH` (trusted W41 lookup, not caller consensus)
 - missing N9 provider → `JOINED_PROVIDER_IDENTITY_MISMATCH`
 - missing N10E steps → `JOINED_CONSUMER_NOT_PRODUCTIVE`
 - missing P41 or joined receipt → `JOINED_VIEW_NOT_FOUND`
@@ -84,6 +85,7 @@ The replay uses the existing parent `J42_RECEIPTS.json`, `J42_RECEIPTS_2.json`, 
 - P41 runtime: `f27d1101048638bba395143a48efb7ef00bfcda4`
 - W41 returned artifact: `b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2:WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/current_historical_asof_world_consumer_receipts.json`
 - W41 artifact SHA-256: `09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7`
+- Trusted W41 selected clock: `TEST_CURRENT` / valid `2027-09-01` / published `2027-09-01` / test-now `2027-09-01`
 - Parent positive receipt SHA-256: `c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf`
 
 ## Limits

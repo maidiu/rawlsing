@@ -6,6 +6,24 @@
     "cold_views": 84,
     "first_refusals": {}
   },
+  "both_clocks_rehashed": {
+    "forged_clock": {
+      "mode": "AS_OF",
+      "published_asof": "2099-01-01",
+      "valid_at": "2099-01-01"
+    },
+    "result": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
   "cold_replay": {
     "same_families": true,
     "same_state": true,
@@ -39,7 +57,18 @@
       "n10w_progressive": "P41_GENERIC_POSSIBILITY_SERVICE@1",
       "n9_world": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
     },
-    "selected_view_key": "base/TEST_CURRENT/budget5"
+    "selected_view_key": "base/TEST_CURRENT/budget5",
+    "trusted_w41": {
+      "clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/current_historical_asof_world_consumer_receipts.json",
+      "sha256": "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7"
+    }
   },
   "five_recorded_mutations": {
     "mutated_n9_selection": {
@@ -50,7 +79,7 @@
       ],
       "reason_code": "JOINED_N9_SELECTION_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+      "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "revoked_n9_currentness": {
@@ -61,7 +90,7 @@
       ],
       "reason_code": "JOINED_N9_CURRENTNESS_INVALID",
       "state": "REFUSED",
-      "view_hash": "58801094752287a73aa7db048baf3b65d8d4b24b59b77c0a68577ee3355548a3",
+      "view_hash": "df590566915c5057f3f1b1fe966f6b743871b8be71cc2d86990804c5e684db89",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "wrong_n10e_provider_version": {
@@ -72,7 +101,7 @@
       ],
       "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "wrong_n10w_provider_version": {
@@ -83,7 +112,7 @@
       ],
       "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "wrong_n9_provider_version": {
@@ -94,7 +123,7 @@
       ],
       "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
       "view_key": "base/TEST_CURRENT/budget5"
     }
   },
@@ -107,7 +136,7 @@
       ],
       "reason_code": "JOINED_VIEW_NOT_FOUND",
       "state": "REFUSED",
-      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "view_hash": "9783f5b7d23f2e72831b6ca6263ef6e844292be18ca6a246e43fdaae24b09a39",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "missing_n10e_steps": {
@@ -129,7 +158,7 @@
       ],
       "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "missing_p41_receipt": {
@@ -140,7 +169,7 @@
       ],
       "reason_code": "JOINED_VIEW_NOT_FOUND",
       "state": "REFUSED",
-      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "view_hash": "9783f5b7d23f2e72831b6ca6263ef6e844292be18ca6a246e43fdaae24b09a39",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "missing_required_field": {
@@ -195,7 +224,7 @@
     ],
     "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
     "state": "REFUSED",
-    "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+    "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
     "view_key": "base/TEST_CURRENT/budget5"
   },
   "receipt": {
@@ -215,10 +244,11 @@
     ],
     "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
     "state": "REFUSED",
-    "view_hash": "ca37ac8e26ceba7d22a182c3ec752cbf24bfa077150f55e9868b36956739c120",
+    "view_hash": "748e26334adf1f7c3f94329511a9cf98bddeec0f337a97e1f5f641d77d5977ee",
     "view_key": "base/TEST_CURRENT/budget5"
   },
   "summary": {
+    "both_clocks_rehashed_rejected": true,
     "cold_replay_preserved": true,
     "five_mutations_rejected": true,
     "missing_parents_rejected": true,

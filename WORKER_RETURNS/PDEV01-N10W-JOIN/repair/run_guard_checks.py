@@ -15,6 +15,10 @@ from guarded_receiver import (
     J42_PROVIDER_SOURCE,
     N9_CURRENTNESS,
     N9_SELECTION_FIELDS,
+    W41_ARTIFACT_PATH,
+    W41_ARTIFACT_SHA256,
+    W41_COMMIT,
+    _load_w41_worlds,
     guarded_select_joined_world_view,
 )
 
@@ -136,6 +140,20 @@ def main():
     )
     stale_result = _run(stale)
 
+    both_clock_forgery = {
+        "mode": "AS_OF",
+        "published_asof": "2099-01-01",
+        "valid_at": "2099-01-01",
+    }
+    both_clocks = _mutated(
+        receipts,
+        lambda p: (
+            p["n9_world"].__setitem__("selection", dict(both_clock_forgery)),
+            p["j42_bindings"].__setitem__("w41_clock", dict(both_clock_forgery)),
+        ),
+    )
+    both_clocks_result = _run(both_clocks)
+
     r05_changed = _mutated(
         receipts,
         lambda p: p.__setitem__("providers", dict(r05["p41_providers"])),
@@ -156,6 +174,12 @@ def main():
             "n9_currentness": N9_CURRENTNESS,
             "n9_selection_fields": list(N9_SELECTION_FIELDS),
             "selected_view_key": KEY,
+            "trusted_w41": {
+                "commit": W41_COMMIT,
+                "path": W41_ARTIFACT_PATH,
+                "sha256": W41_ARTIFACT_SHA256,
+                "clock": _load_w41_worlds()[KEY]["clock"],
+            },
         },
         "receipt": {
             "p41_content_hash": p41.get("content_hash"),
@@ -185,6 +209,10 @@ def main():
         "five_recorded_mutations": five,
         "missing_parents_and_compatibility": missing,
         "stale_hash": stale_result,
+        "both_clocks_rehashed": {
+            "forged_clock": both_clock_forgery,
+            "result": both_clocks_result,
+        },
         "r05_substitution_refused": r05_result,
         "summary": {
             "positive_preserved": positive["state"] == "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
@@ -195,6 +223,7 @@ def main():
                 if k not in {"wrong_source_rows", "wrong_as_of"}
             ),
             "stale_hash_rejected": stale_result["state"] == "REFUSED",
+            "both_clocks_rehashed_rejected": both_clocks_result["state"] == "REFUSED",
             "r05_substitution_rejected": r05_result["state"] == "REFUSED",
         },
     }

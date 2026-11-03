@@ -41,16 +41,21 @@
     "verified": true
   },
   "no_writes_outside_owned_repair": [
-    "?? WORKER_RETURNS/PDEV01-N10W-JOIN/repair/"
+    "M WORKER_RETURNS/PDEV01-N10W-JOIN/repair/GUARD_RUN.stdout",
+    " M WORKER_RETURNS/PDEV01-N10W-JOIN/repair/GUARD_WITNESS.json",
+    " M WORKER_RETURNS/PDEV01-N10W-JOIN/repair/RETURN.md",
+    " M WORKER_RETURNS/PDEV01-N10W-JOIN/repair/guarded_receiver.py",
+    " M WORKER_RETURNS/PDEV01-N10W-JOIN/repair/run_guard_checks.py",
+    "?? WORKER_RETURNS/PDEV01-N10W-JOIN/repair/__pycache__/"
   ],
   "overlay_artifacts": {
     "GUARD_RUN.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "GUARD_RUN.stdout": "09073c64e3d469d34b1471d4bbd06abeff274badb976882b1df89ff7fc429276",
-    "GUARD_WITNESS.json": "09073c64e3d469d34b1471d4bbd06abeff274badb976882b1df89ff7fc429276",
-    "RETURN.json": "3fb1e979576f2937a7a9298bad56040fff876b3e0e86104c34834bddca451259",
-    "RETURN.md": "1735a2c154fc8bee55e917f472606b99b2a7ee5451e6cebcba2834292231e878",
-    "guarded_receiver.py": "3808788aa921a59deadccdd178accb136bbef34e69957c6f185b586e3bc32d70",
-    "run_guard_checks.py": "98850080e37d4956fef151f1fc8347840a16f6e948a2f943c5fef33dc8a17ffe"
+    "GUARD_RUN.stdout": "ab89bc9791cf3469d8c150817689056731bd18ed85b2e529625dc36f655c3d83",
+    "GUARD_WITNESS.json": "ab89bc9791cf3469d8c150817689056731bd18ed85b2e529625dc36f655c3d83",
+    "RETURN.json": "c0ed6e7ead2998856bc1b3b39a29b2baec01bba3fb6282f8f598ef78f85b8aff",
+    "RETURN.md": "6e38a2d48b4f27c6fc533f8f4721309119d91a026c56e5bf9f5fd76582f33204",
+    "guarded_receiver.py": "72a19b01176a22868b3e6dc05b20b6bc7b87c65ea8803696a7dcbabd9a26c58d",
+    "run_guard_checks.py": "3f3969eb24399b1069a1d504f57662e13d42e8bbfa1baca11c990acfc9b1117d"
   },
   "overlay_root": "WORKER_RETURNS/PDEV01-N10W-JOIN/repair/",
   "p41_runtime_sha256": "03fa97b37661b66728d1c4cbeabc277794dadc8d4511c145acce6e904b6a10d6",
@@ -58,8 +63,7 @@
     "J42_RECEIPTS.json": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
     "J42_RECEIPTS_2.json": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
     "R05_P41_TRACE.json": "090027bd85e2a61f7874d509af48316eb401b02ceedb3001cf5d3e69a652897e",
-    "VERSION_AND_IDENTITY_NEGATIVES.json": "a5676873d15c6e6778b09d66e75b5a9d27c08ce8e25129e2e7849fb99c692c7a",
-    "byte_equal": true
+    "VERSION_AND_IDENTITY_NEGATIVES.json": "a5676873d15c6e6778b09d66e75b5a9d27c08ce8e25129e2e7849fb99c692c7a"
   },
   "provider_source": {
     "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
@@ -73,6 +77,24 @@
     "sha256": "4bab407129b1b385585f287b948bcde4d5ffaa4affe53b78cefdf6c6c981b399"
   },
   "rejections": {
+    "both_clocks_rehashed": {
+      "forged_clock": {
+        "mode": "AS_OF",
+        "published_asof": "2099-01-01",
+        "valid_at": "2099-01-01"
+      },
+      "result": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
     "five_recorded_mutations": {
       "mutated_n9_selection": {
         "families": null,
@@ -82,7 +104,7 @@
         ],
         "reason_code": "JOINED_N9_SELECTION_MISMATCH",
         "state": "REFUSED",
-        "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+        "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "revoked_n9_currentness": {
@@ -93,7 +115,7 @@
         ],
         "reason_code": "JOINED_N9_CURRENTNESS_INVALID",
         "state": "REFUSED",
-        "view_hash": "58801094752287a73aa7db048baf3b65d8d4b24b59b77c0a68577ee3355548a3",
+        "view_hash": "df590566915c5057f3f1b1fe966f6b743871b8be71cc2d86990804c5e684db89",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "wrong_n10e_provider_version": {
@@ -104,7 +126,7 @@
         ],
         "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
         "state": "REFUSED",
-        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "wrong_n10w_provider_version": {
@@ -115,7 +137,7 @@
         ],
         "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
         "state": "REFUSED",
-        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "wrong_n9_provider_version": {
@@ -126,7 +148,7 @@
         ],
         "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
         "state": "REFUSED",
-        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
         "view_key": "base/TEST_CURRENT/budget5"
       }
     },
@@ -139,7 +161,7 @@
         ],
         "reason_code": "JOINED_VIEW_NOT_FOUND",
         "state": "REFUSED",
-        "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+        "view_hash": "9783f5b7d23f2e72831b6ca6263ef6e844292be18ca6a246e43fdaae24b09a39",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "missing_n10e_steps": {
@@ -161,7 +183,7 @@
         ],
         "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
         "state": "REFUSED",
-        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "missing_p41_receipt": {
@@ -172,7 +194,7 @@
         ],
         "reason_code": "JOINED_VIEW_NOT_FOUND",
         "state": "REFUSED",
-        "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+        "view_hash": "9783f5b7d23f2e72831b6ca6263ef6e844292be18ca6a246e43fdaae24b09a39",
         "view_key": "base/TEST_CURRENT/budget5"
       },
       "missing_required_field": {
@@ -210,7 +232,7 @@
       ],
       "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
       "view_key": "base/TEST_CURRENT/budget5"
     },
     "stale_hash": {
@@ -221,14 +243,21 @@
       ],
       "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
       "state": "REFUSED",
-      "view_hash": "ca37ac8e26ceba7d22a182c3ec752cbf24bfa077150f55e9868b36956739c120",
+      "view_hash": "748e26334adf1f7c3f94329511a9cf98bddeec0f337a97e1f5f641d77d5977ee",
       "view_key": "base/TEST_CURRENT/budget5"
     }
   },
   "repair_base": "30b04c762bc4edd5e2e672d8d76b1e6e4ff84190",
-  "schema": "PDEV01_N10W_J42_IDENTITY_REPAIR_PINS@1.0.0",
+  "review": "e79be4a3d",
+  "schema": "PDEV01_N10W_J42_IDENTITY_REPAIR_PINS@1.1.0",
   "status_note": "Only WORKER_RETURNS/PDEV01-N10W-JOIN/repair/ is new; parent return and other worker trees are untouched.",
-  "w41_artifact": {
+  "trusted_w41": {
+    "clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    },
     "commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
     "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/current_historical_asof_world_consumer_receipts.json",
     "sha256": "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7"

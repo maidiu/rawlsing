@@ -1,13 +1,17 @@
-"""Exact J42 provider/version/currentness guard for the existing joined receiver.
+"""Exact J42 provider/version/currentness/clock guard for the joined receiver.
 
-This is an isolated candidate overlay. It does not edit production. The exact
-provider identities are the existing constants in the actual J42 joined service
-(``j42_join.py:J42P41Service.progressive``), not a new trust rule. The N9
-selected clock is the actual ``j42_bindings.w41_clock`` carried by the receipt.
+This is an isolated candidate overlay. It does not edit production. Provider
+identities are the existing constants in the actual J42 joined service
+(``j42_join.py:J42P41Service.progressive``). The selected clock is read from
+the independently pinned W41 returned artifact, never trusted from the caller
+receipt's mutually consistent fields.
 """
 from __future__ import annotations
 
-from copy import deepcopy
+import hashlib
+import json
+from pathlib import Path
+import subprocess
 from typing import Any, Mapping
 
 from rawlsing_next.pre553_empirical_objects import semantic_hash
@@ -36,6 +40,44 @@ J42_PROVIDER_SOURCE = (
     "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-"
     "CONSUMER-R1/runtime/j42_join.py"
 )
+W41_COMMIT = "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2"
+W41_ARTIFACT_PATH = (
+    "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/"
+    "current_historical_asof_world_consumer_receipts.json"
+)
+W41_ARTIFACT_SHA256 = "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7"
+_REPO = Path(__file__).resolve().parents[2]
+_W41_WORLDS: dict[str, Any] | None = None
+
+
+class W41ClockAuthorityError(ValueError):
+    def __init__(self, code: str) -> None:
+        super().__init__(code)
+        self.code = code
+
+
+def _load_w41_worlds() -> dict[str, Any]:
+    """Load the accepted W41 artifact by exact commit/path and verify its SHA."""
+    global _W41_WORLDS
+    if _W41_WORLDS is not None:
+        return _W41_WORLDS
+    try:
+        raw = subprocess.check_output(
+            ["git", "-C", str(_REPO), "show", f"{W41_COMMIT}:{W41_ARTIFACT_PATH}"],
+            stderr=subprocess.DEVNULL,
+        )
+    except Exception as exc:
+        raise W41ClockAuthorityError("W41_CLOCK_ARTIFACT_UNAVAILABLE") from exc
+    if hashlib.sha256(raw).hexdigest() != W41_ARTIFACT_SHA256:
+        raise W41ClockAuthorityError("W41_CLOCK_ARTIFACT_HASH_MISMATCH")
+    try:
+        worlds = json.loads(raw)["worlds"]
+    except Exception as exc:
+        raise W41ClockAuthorityError("W41_CLOCK_ARTIFACT_SHAPE_INVALID") from exc
+    if not isinstance(worlds, dict):
+        raise W41ClockAuthorityError("W41_CLOCK_ARTIFACT_SHAPE_INVALID")
+    _W41_WORLDS = worlds
+    return worlds
 
 
 def _refusal(code: str, request: JoinedWorldSelectionRequest) -> JoinedWorldSelectedView:
@@ -45,8 +87,9 @@ def _refusal(code: str, request: JoinedWorldSelectionRequest) -> JoinedWorldSele
         "reason_code": code,
         "view_key": request.view_key,
         "field_ids": list(field_ids),
-        "guard": "PDEV01_J42_EXACT_IDENTITY_GUARD@1",
+        "guard": "PDEV01_J42_EXACT_IDENTITY_GUARD@2",
         "provider_source": J42_PROVIDER_SOURCE,
+        "w41_artifact_sha256": W41_ARTIFACT_SHA256,
     }
     return JoinedWorldSelectedView(
         state="REFUSED",
@@ -80,13 +123,29 @@ def _identity_error(request: JoinedWorldSelectionRequest) -> str | None:
     n9 = p41.get("n9_world") or {}
     if n9.get("currentness") != N9_CURRENTNESS:
         return "JOINED_N9_CURRENTNESS_INVALID"
-    binding = p41.get("j42_bindings") or {}
-    clock = binding.get("w41_clock") or {}
+
+    # Trusted clock: exact W41 world by the J42 lookup key, not caller fields.
+    try:
+        worlds = _load_w41_worlds()
+    except W41ClockAuthorityError as exc:
+        return exc.code
+    expected_world = worlds.get(request.view_key)
+    if not isinstance(expected_world, Mapping):
+        return "W41_CLOCK_VIEW_ABSENT"
+    trusted_clock = expected_world.get("clock")
+    if not isinstance(trusted_clock, Mapping):
+        return "W41_CLOCK_ABSENT"
+
     selection = n9.get("selection") or {}
-    if any(selection.get(key) != clock.get(key) for key in N9_SELECTION_FIELDS):
+    if any(selection.get(key) != trusted_clock.get(key) for key in N9_SELECTION_FIELDS):
         return "JOINED_N9_SELECTION_MISMATCH"
-    if "test_now" in selection and selection.get("test_now") != clock.get("test_now"):
-        return "JOINED_N9_SELECTION_MISMATCH"
+    binding = p41.get("j42_bindings") or {}
+    binding_clock = binding.get("w41_clock") or {}
+    if binding_clock != trusted_clock:
+        return "JOINED_W41_CLOCK_BINDING_MISMATCH"
+
+    # Preserve the existing P41 receipt-integrity contract; this is not the
+    # authority for the clock.
     expected_hash = p41.get("content_hash")
     if not expected_hash:
         return "JOINED_RECEIPT_CONTENT_HASH_MISMATCH"
@@ -99,7 +158,7 @@ def _identity_error(request: JoinedWorldSelectionRequest) -> str | None:
 def guarded_select_joined_world_view(
     request: JoinedWorldSelectionRequest,
 ) -> JoinedWorldSelectedView:
-    """Reject any J42 identity/currentness/clock/hash bypass, then use the real receiver."""
+    """Reject identity/currentness/trusted-clock/hash bypass, then use the real receiver."""
     problem = _identity_error(request)
     if problem is not None:
         return _refusal(problem, request)
@@ -112,5 +171,7 @@ __all__ = [
     "N9_SELECTION_FIELDS",
     "J42_CONTRACT",
     "J42_PROVIDER_SOURCE",
+    "W41_ARTIFACT_SHA256",
+    "W41ClockAuthorityError",
     "guarded_select_joined_world_view",
 ]
