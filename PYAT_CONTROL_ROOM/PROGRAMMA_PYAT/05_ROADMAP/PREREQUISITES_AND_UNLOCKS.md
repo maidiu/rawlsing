@@ -181,3 +181,6 @@ F6 independent recheck 7f2e71822f360c492e016f46145af5277040468b accepted candida
 
 
 P1 occurrence attempt `6949efbc3`. 420/420 accounted; zero executed. 420 variable-code matches, zero exact occurrence identities. 210 entries request value 0 outside fixture domain 1,2,3. P1 ItemRegistry owner must supply exact SourceItem-to-C11 item/option/form/repeat binding, then R03 policy, risk-set and direction owner inputs. Reuse existing conditional/joint engine.
+
+
+N10W J42 guard accepted at isolated TEST_ONLY scope. Candidate c75b464ab4dbba15c6a89db42aaf5d101ba13d55, independent review 02b98ec3dd88e5e742ce459e54d233f547768145. 84 actual joined views and cold replay preserved; paired rehashed clock forgery refused against pinned W41 artifact. Production receiver still requires separately authorized receiving; R05/W41 common scope and original science remain held.
