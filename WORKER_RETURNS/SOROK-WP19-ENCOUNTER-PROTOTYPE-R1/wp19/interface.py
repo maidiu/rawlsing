@@ -426,6 +426,39 @@ class EncounterInterface:
             note="Absence is not simulated; only actual persisted events are visible.",
         )
 
+    def persona_response(self) -> dict:
+        if self.source != "join-e":
+            return self._result(
+                "HELD",
+                code="PERSONA_RESPONSE_JOIN_E_ONLY",
+                note="The persona input boundary is bound to the JOIN-E E1 occurrence.",
+            )
+        import sys
+        from pathlib import Path as _Path
+
+        persona_root = (
+            _Path(__file__).resolve().parents[2]
+            / "SOROK-PERSONA-PERCEPTION-INPUT-R1"
+        )
+        if str(persona_root) not in sys.path:
+            sys.path.insert(0, str(persona_root))
+        from persona.input import evaluate_persona_response
+
+        boundary = evaluate_persona_response(self._bundle)
+        held = boundary.get("status") == "HELD"
+        return self._result(
+            "HELD" if held else "OK",
+            code=(
+                "PERSONA_INPUT_TYPED_HOLD"
+                if held
+                else "PERSONA_INPUT_BOUNDARY_OK"
+            ),
+            note=(
+                "Persona input boundary remains internal; no actor response "
+                "or world action is invented."
+            ),
+        )
+
     def status(self) -> dict:
         current = self._store_hash()
         return {

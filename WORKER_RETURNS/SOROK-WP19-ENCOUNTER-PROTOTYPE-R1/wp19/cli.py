@@ -31,6 +31,7 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("exit")
     sub.add_parser("return")
     sub.add_parser("absence")
+    sub.add_parser("persona-response")
     say = sub.add_parser("say")
     say.add_argument("text")
     do = sub.add_parser("do")
@@ -94,6 +95,8 @@ def main(argv: list[str] | None = None) -> int:
         _print(interface.return_())
     elif args.command == "absence":
         _print(interface.absence())
+    elif args.command == "persona-response":
+        _print(interface.persona_response())
     return 0
 
 

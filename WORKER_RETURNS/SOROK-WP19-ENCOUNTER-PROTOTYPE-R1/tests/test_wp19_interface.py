@@ -169,3 +169,55 @@ def test_absence_and_status_are_honest(tmp_path):
     assert status["native"] is False
     assert status["store_mutated_since_load"] is False
     assert status["baseline_store_hash"] == status["current_store_hash"]
+
+
+def test_persona_response_is_generic_hold_without_private_payload(tmp_path):
+    interface = EncounterInterface("join-e", tmp_path / "join-e")
+    view_before = json.dumps(interface.view(), sort_keys=True)
+    result = interface.persona_response()
+    view_after = json.dumps(interface.view(), sort_keys=True)
+    assert result["status"] == "HELD"
+    assert result["code"] == "PERSONA_INPUT_TYPED_HOLD"
+    assert result["attempted"] is False
+    assert result["performed"] is False
+    assert result["world_event_created"] is False
+    assert result["clock_changed"] is False
+    assert result["actor_response_generated"] is False
+    assert result["simulated_delivery"] is False
+    assert result["store_hash_before"] == result["store_hash_after"]
+    assert view_before == view_after
+    status = interface.status()
+    assert status["store_mutated_since_load"] is False
+    assert status["last_result"] == result
+    encoded = json.dumps({"result": result, "status": status}, sort_keys=True)
+    for private_key in (
+        "persona_input",
+        "perception",
+        "history_hash",
+        "event_id",
+        "TEST_ONLY_BP2_E1",
+        "s35",
+        "receipt",
+        "audit",
+        "outcome",
+        "missing_inputs",
+        "evidence",
+    ):
+        assert private_key not in encoded
+
+
+def test_persona_response_normal_cli_entrypoint_is_generic(tmp_path, capsys):
+    from wp19 import cli
+
+    root = tmp_path / "join-e-cli"
+    code = cli.main(
+        ["--source", "join-e", "--root", str(root), "persona-response"]
+    )
+    assert code == 0
+    output = capsys.readouterr().out
+    result = json.loads(output)
+    assert result["status"] == "HELD"
+    assert result["code"] == "PERSONA_INPUT_TYPED_HOLD"
+    assert "persona_input" not in output
+    assert "history_hash" not in output
+    assert "TEST_ONLY_BP2_E1" not in output
