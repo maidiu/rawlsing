@@ -1,0 +1,513 @@
+{
+  "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+  "history_severed": {
+    "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+    "history_used_for_choice": false,
+    "native": false,
+    "outcome": "ACTOR_HISTORY_INPUT_MISSING",
+    "persona_input": {
+      "checks": {
+        "event_order_present": true,
+        "history_before_e1": true,
+        "history_domain_distinguished": true,
+        "history_enabled": false,
+        "history_hash_present": true,
+        "history_order_comparable": false,
+        "history_present": true,
+        "history_source_matches_actor": true,
+        "objective_event_present": true,
+        "occurrence_ok": true,
+        "perception_actor_a": true,
+        "perception_clock_matches_event": true,
+        "perception_enabled": true,
+        "perception_event_matches": true,
+        "perception_present": true
+      },
+      "event": {
+        "body_public": {
+          "gesture": "A clears a space at the bench.",
+          "strategy": "HELP_ACCEPT",
+          "text": "Put your hand on the near edge. I'll take the slack."
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "order": 3,
+        "summary": "A says: Put your hand on the near edge. I'll take the slack."
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+      "history": null,
+      "history_used_for_choice": false,
+      "missing_inputs": [
+        "ACTOR_HISTORY_INPUT_MISSING"
+      ],
+      "native": false,
+      "objective_availability_implies_perception": false,
+      "objective_event_present": true,
+      "occurrence": {
+        "branch_clock": 10,
+        "branch_fork_clock": 10,
+        "branch_hash": "11f55ad2c68b211d72c5933ddeae5ed2d24abb7f8cc17d6a87e3bb0ef39b9e80",
+        "branch_id": "first_session",
+        "clock_binding_hash": "e107e8408e39997d9ad09721307656d212379c5dfe8283be3b8a425734152534",
+        "event_clock": 242,
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ref": "4b87becc2a24e2713bceff22359a8a85f30a669ee184a6aaf9e068242ccc2f2c",
+        "root_branch_hash": "01ef88c3d4412449738e7358651b04fed2376324f0d90859f66719ec6e0710e5",
+        "root_id": "root"
+      },
+      "occurrence_ok": true,
+      "perception": {
+        "actor_id": "A",
+        "channel": "co_present",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "source_ref": "TEST_ONLY_R31J_A_PERCEPTION_TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5"
+      },
+      "s39_synthetic_premises_used": false,
+      "schema": "SOROK_PERSONA_INPUT@1",
+      "selected_event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+      "selected_event_order": 3
+    },
+    "s39_synthetic_premises_used": false,
+    "schema": "SOROK_PERSONA_RESPONSE_BOUNDARY@1",
+    "status": "HELD",
+    "store_hash_after": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_hash_before": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_mutated": false,
+    "target_branch": "NO_CHANGE",
+    "target_proposals": 0,
+    "target_reason": "NO_PROPOSAL"
+  },
+  "intact": {
+    "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+    "history_used_for_choice": false,
+    "missing_inputs": [
+      "A_ACTION_RESPONSE_PRODUCER_MISSING",
+      "PERSONA_HISTORY_RESPONSE_RULE_MISSING",
+      "ISSUED_A_RESPONSE_RULE_MISSING"
+    ],
+    "native": false,
+    "outcome": "A_OWNED_ACTION_HOLD",
+    "perception_gate": "OK",
+    "persona_input": {
+      "checks": {
+        "event_order_present": true,
+        "history_before_e1": true,
+        "history_domain_distinguished": true,
+        "history_enabled": true,
+        "history_hash_present": true,
+        "history_order_comparable": false,
+        "history_present": true,
+        "history_source_matches_actor": true,
+        "objective_event_present": true,
+        "occurrence_ok": true,
+        "perception_actor_a": true,
+        "perception_clock_matches_event": true,
+        "perception_enabled": true,
+        "perception_event_matches": true,
+        "perception_present": true
+      },
+      "event": {
+        "body_public": {
+          "gesture": "A clears a space at the bench.",
+          "strategy": "HELP_ACCEPT",
+          "text": "Put your hand on the near edge. I'll take the slack."
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "order": 3,
+        "summary": "A says: Put your hand on the near edge. I'll take the slack."
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+      "history": {
+        "domain": "BP1_ACTOR_HISTORY",
+        "event_count": 6,
+        "event_head": "TEST_ONLY_BP1_EVT_3bbd72822f0895fc0d6b50840a2b96749673bbb4c231374780018533733f88a2",
+        "history_hash": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "last_clock": 241,
+        "objective_refs": [
+          "TEST_ONLY_BP1_EVT_735bfb9686af64f2670baf3b5ee106930be216f11647b61c45cbd9f8dcdf0f69"
+        ],
+        "performed_action_refs": [
+          "TEST_ONLY_BP1_EVT_41c2ff1665bc38b190a70d015016cc9279895e1367bea528f64b98b7f4ba6249"
+        ],
+        "source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "source_ref": "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+      },
+      "history_used_for_choice": false,
+      "missing_inputs": [
+        "A_ACTION_RESPONSE_PRODUCER_MISSING",
+        "PERSONA_HISTORY_RESPONSE_RULE_MISSING",
+        "ISSUED_A_RESPONSE_RULE_MISSING"
+      ],
+      "native": false,
+      "objective_availability_implies_perception": false,
+      "objective_event_present": true,
+      "occurrence": {
+        "branch_clock": 10,
+        "branch_fork_clock": 10,
+        "branch_hash": "11f55ad2c68b211d72c5933ddeae5ed2d24abb7f8cc17d6a87e3bb0ef39b9e80",
+        "branch_id": "first_session",
+        "clock_binding_hash": "e107e8408e39997d9ad09721307656d212379c5dfe8283be3b8a425734152534",
+        "event_clock": 242,
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ref": "4b87becc2a24e2713bceff22359a8a85f30a669ee184a6aaf9e068242ccc2f2c",
+        "root_branch_hash": "01ef88c3d4412449738e7358651b04fed2376324f0d90859f66719ec6e0710e5",
+        "root_id": "root"
+      },
+      "occurrence_ok": true,
+      "perception": {
+        "actor_id": "A",
+        "channel": "co_present",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "source_ref": "TEST_ONLY_R31J_A_PERCEPTION_TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5"
+      },
+      "s39_synthetic_premises_used": false,
+      "schema": "SOROK_PERSONA_INPUT@1",
+      "selected_event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+      "selected_event_order": 3
+    },
+    "response_receipt_hash": "7ce6de14cd51b7e00460dd554ab3b1a08c45ecd6fb02f713b0e516e6e86d5da7",
+    "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+    "s39_audit": {
+      "commit": "6604f2d9",
+      "git_blob": "6d38ca6c53e0555317db29b4811d85a3697fc31d",
+      "operation_only_availability": true,
+      "path": "WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+      "reason": "S39 generates a synthetic attempt from TEST_ONLY source records, derives tool availability from B operation, and fabricates a TEST_ONLY response witness from the generated attempt. It cannot supply actual persona perception/history behavior.",
+      "schema": "SOROK_PERSONA_S39_PRODUCER_AUDIT@1",
+      "sha256": "a85b95a43864cff27d2aee2d39322fe2e5c9b5f52d448cfa1b577abf43044d6d",
+      "used_by_persona_input": false,
+      "uses_synthetic_source_records": true,
+      "uses_test_only_response_witness": true
+    },
+    "s39_synthetic_premises_used": false,
+    "schema": "SOROK_PERSONA_RESPONSE_BOUNDARY@1",
+    "status": "HELD",
+    "store_hash_after": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_hash_before": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_mutated": false,
+    "target_branch": "NO_CHANGE",
+    "target_proposals": 0,
+    "target_reason": "NO_PROPOSAL"
+  },
+  "native": false,
+  "objective_availability_without_perception": {
+    "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+    "history_used_for_choice": false,
+    "native": false,
+    "outcome": "A_LOCAL_PERCEPTION_INPUT_MISSING",
+    "persona_input": {
+      "checks": {
+        "event_order_present": true,
+        "history_before_e1": true,
+        "history_domain_distinguished": true,
+        "history_enabled": true,
+        "history_hash_present": true,
+        "history_order_comparable": false,
+        "history_present": true,
+        "history_source_matches_actor": true,
+        "objective_event_present": true,
+        "occurrence_ok": true,
+        "perception_actor_a": true,
+        "perception_clock_matches_event": true,
+        "perception_enabled": false,
+        "perception_event_matches": true,
+        "perception_present": true
+      },
+      "event": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "objective_present": true
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+      "history": {
+        "domain": "BP1_ACTOR_HISTORY",
+        "event_count": 6,
+        "event_head": "TEST_ONLY_BP1_EVT_3bbd72822f0895fc0d6b50840a2b96749673bbb4c231374780018533733f88a2",
+        "history_hash": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "last_clock": 241,
+        "objective_refs": [
+          "TEST_ONLY_BP1_EVT_735bfb9686af64f2670baf3b5ee106930be216f11647b61c45cbd9f8dcdf0f69"
+        ],
+        "performed_action_refs": [
+          "TEST_ONLY_BP1_EVT_41c2ff1665bc38b190a70d015016cc9279895e1367bea528f64b98b7f4ba6249"
+        ],
+        "source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "source_ref": "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+      },
+      "history_used_for_choice": false,
+      "missing_inputs": [
+        "A_LOCAL_PERCEPTION_INPUT_MISSING"
+      ],
+      "native": false,
+      "objective_availability_implies_perception": false,
+      "objective_event_present": true,
+      "occurrence": {
+        "branch_clock": 10,
+        "branch_fork_clock": 10,
+        "branch_hash": "11f55ad2c68b211d72c5933ddeae5ed2d24abb7f8cc17d6a87e3bb0ef39b9e80",
+        "branch_id": "first_session",
+        "clock_binding_hash": "e107e8408e39997d9ad09721307656d212379c5dfe8283be3b8a425734152534",
+        "event_clock": 242,
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ref": "4b87becc2a24e2713bceff22359a8a85f30a669ee184a6aaf9e068242ccc2f2c",
+        "root_branch_hash": "01ef88c3d4412449738e7358651b04fed2376324f0d90859f66719ec6e0710e5",
+        "root_id": "root"
+      },
+      "occurrence_ok": true,
+      "perception": null,
+      "s39_synthetic_premises_used": false,
+      "schema": "SOROK_PERSONA_INPUT@1",
+      "selected_event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+      "selected_event_order": 3
+    },
+    "s39_synthetic_premises_used": false,
+    "schema": "SOROK_PERSONA_RESPONSE_BOUNDARY@1",
+    "status": "HELD",
+    "store_hash_after": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_hash_before": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_mutated": false,
+    "target_branch": "NO_CHANGE",
+    "target_proposals": 0,
+    "target_reason": "NO_PROPOSAL"
+  },
+  "refused": {
+    "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+    "history_used_for_choice": false,
+    "missing_inputs": [
+      "A_ACTION_RESPONSE_PRODUCER_MISSING",
+      "PERSONA_HISTORY_RESPONSE_RULE_MISSING",
+      "ISSUED_A_RESPONSE_RULE_MISSING"
+    ],
+    "native": false,
+    "outcome": "A_OWNED_ACTION_HOLD",
+    "perception_gate": "OK",
+    "persona_input": {
+      "checks": {
+        "event_order_present": true,
+        "history_before_e1": true,
+        "history_domain_distinguished": true,
+        "history_enabled": true,
+        "history_hash_present": true,
+        "history_order_comparable": false,
+        "history_present": true,
+        "history_source_matches_actor": true,
+        "objective_event_present": true,
+        "occurrence_ok": true,
+        "perception_actor_a": true,
+        "perception_clock_matches_event": true,
+        "perception_enabled": true,
+        "perception_event_matches": true,
+        "perception_present": true
+      },
+      "event": {
+        "body_public": {
+          "gesture": "A looks at the empty tool space.",
+          "strategy": "HELP_REFUSE",
+          "text": "The tool's gone. I can't do it today."
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6c88efe713cfb922698b7b9830a4e84c42a251b56c22f9c8eac1b87acdbeb057",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "order": 2,
+        "summary": "A says: The tool's gone. I can't do it today."
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+      "history": {
+        "domain": "BP1_ACTOR_HISTORY",
+        "event_count": 6,
+        "event_head": "TEST_ONLY_BP1_EVT_3bbd72822f0895fc0d6b50840a2b96749673bbb4c231374780018533733f88a2",
+        "history_hash": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "last_clock": 241,
+        "objective_refs": [
+          "TEST_ONLY_BP1_EVT_735bfb9686af64f2670baf3b5ee106930be216f11647b61c45cbd9f8dcdf0f69"
+        ],
+        "performed_action_refs": [
+          "TEST_ONLY_BP1_EVT_41c2ff1665bc38b190a70d015016cc9279895e1367bea528f64b98b7f4ba6249"
+        ],
+        "source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "source_ref": "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+      },
+      "history_used_for_choice": false,
+      "missing_inputs": [
+        "A_ACTION_RESPONSE_PRODUCER_MISSING",
+        "PERSONA_HISTORY_RESPONSE_RULE_MISSING",
+        "ISSUED_A_RESPONSE_RULE_MISSING"
+      ],
+      "native": false,
+      "objective_availability_implies_perception": false,
+      "objective_event_present": true,
+      "occurrence": {
+        "branch_clock": 10,
+        "branch_fork_clock": 10,
+        "branch_hash": "dd684a1d3275f3013c623166a97d217d9b3e712e73bd9267c0a36b91f54aba13",
+        "branch_id": "first_session",
+        "clock_binding_hash": "e107e8408e39997d9ad09721307656d212379c5dfe8283be3b8a425734152534",
+        "event_clock": 242,
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ref": "6558a522b2f3e0348884f626e9f5af6f48740560127c4a26457b848afca69c1d",
+        "root_branch_hash": "01ef88c3d4412449738e7358651b04fed2376324f0d90859f66719ec6e0710e5",
+        "root_id": "root"
+      },
+      "occurrence_ok": true,
+      "perception": {
+        "actor_id": "A",
+        "channel": "co_present",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6c88efe713cfb922698b7b9830a4e84c42a251b56c22f9c8eac1b87acdbeb057",
+        "source_ref": "TEST_ONLY_R31J_A_PERCEPTION_TEST_ONLY_BP4_WORLD_EVT_6c88efe713cfb922698b7b9830a4e84c42a251b56c22f9c8eac1b87acdbeb057"
+      },
+      "s39_synthetic_premises_used": false,
+      "schema": "SOROK_PERSONA_INPUT@1",
+      "selected_event_id": "TEST_ONLY_BP4_WORLD_EVT_6c88efe713cfb922698b7b9830a4e84c42a251b56c22f9c8eac1b87acdbeb057",
+      "selected_event_order": 2
+    },
+    "response_receipt_hash": "11d011f0ece250df82f669761eb764a7b73890548cfe58dc46d9daba3a0f24d3",
+    "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+    "s39_audit": {
+      "commit": "6604f2d9",
+      "git_blob": "6d38ca6c53e0555317db29b4811d85a3697fc31d",
+      "operation_only_availability": true,
+      "path": "WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+      "reason": "S39 generates a synthetic attempt from TEST_ONLY source records, derives tool availability from B operation, and fabricates a TEST_ONLY response witness from the generated attempt. It cannot supply actual persona perception/history behavior.",
+      "schema": "SOROK_PERSONA_S39_PRODUCER_AUDIT@1",
+      "sha256": "a85b95a43864cff27d2aee2d39322fe2e5c9b5f52d448cfa1b577abf43044d6d",
+      "used_by_persona_input": false,
+      "uses_synthetic_source_records": true,
+      "uses_test_only_response_witness": true
+    },
+    "s39_synthetic_premises_used": false,
+    "schema": "SOROK_PERSONA_RESPONSE_BOUNDARY@1",
+    "status": "HELD",
+    "store_hash_after": "f85ae23c92c762015bdfc8b606a484d31cccdaae035f82e568782bf6f521d8ea",
+    "store_hash_before": "f85ae23c92c762015bdfc8b606a484d31cccdaae035f82e568782bf6f521d8ea",
+    "store_mutated": false,
+    "target_branch": "NO_CHANGE",
+    "target_proposals": 0,
+    "target_reason": "NO_PROPOSAL"
+  },
+  "restored": {
+    "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+    "history_used_for_choice": false,
+    "missing_inputs": [
+      "A_ACTION_RESPONSE_PRODUCER_MISSING",
+      "PERSONA_HISTORY_RESPONSE_RULE_MISSING",
+      "ISSUED_A_RESPONSE_RULE_MISSING"
+    ],
+    "native": false,
+    "outcome": "A_OWNED_ACTION_HOLD",
+    "perception_gate": "OK",
+    "persona_input": {
+      "checks": {
+        "event_order_present": true,
+        "history_before_e1": true,
+        "history_domain_distinguished": true,
+        "history_enabled": true,
+        "history_hash_present": true,
+        "history_order_comparable": false,
+        "history_present": true,
+        "history_source_matches_actor": true,
+        "objective_event_present": true,
+        "occurrence_ok": true,
+        "perception_actor_a": true,
+        "perception_clock_matches_event": true,
+        "perception_enabled": true,
+        "perception_event_matches": true,
+        "perception_present": true
+      },
+      "event": {
+        "body_public": {
+          "gesture": "A clears a space at the bench.",
+          "strategy": "HELP_ACCEPT",
+          "text": "Put your hand on the near edge. I'll take the slack."
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "order": 3,
+        "summary": "A says: Put your hand on the near edge. I'll take the slack."
+      },
+      "grade": "TEST_ONLY_SOURCEFREE_PERSONA_INPUT_NOT_NATIVE",
+      "history": {
+        "domain": "BP1_ACTOR_HISTORY",
+        "event_count": 6,
+        "event_head": "TEST_ONLY_BP1_EVT_3bbd72822f0895fc0d6b50840a2b96749673bbb4c231374780018533733f88a2",
+        "history_hash": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+        "last_clock": 241,
+        "objective_refs": [
+          "TEST_ONLY_BP1_EVT_735bfb9686af64f2670baf3b5ee106930be216f11647b61c45cbd9f8dcdf0f69"
+        ],
+        "performed_action_refs": [
+          "TEST_ONLY_BP1_EVT_41c2ff1665bc38b190a70d015016cc9279895e1367bea528f64b98b7f4ba6249"
+        ],
+        "source_hash": "e80d247b5afd31c2a488fc89013f25fc240f53e42d0a5596aaad6f9796d14bbb",
+        "source_ref": "TEST_ONLY_BP1_SOURCE_R26V_ACTOR_A"
+      },
+      "history_used_for_choice": false,
+      "missing_inputs": [
+        "A_ACTION_RESPONSE_PRODUCER_MISSING",
+        "PERSONA_HISTORY_RESPONSE_RULE_MISSING",
+        "ISSUED_A_RESPONSE_RULE_MISSING"
+      ],
+      "native": false,
+      "objective_availability_implies_perception": false,
+      "objective_event_present": true,
+      "occurrence": {
+        "branch_clock": 10,
+        "branch_fork_clock": 10,
+        "branch_hash": "11f55ad2c68b211d72c5933ddeae5ed2d24abb7f8cc17d6a87e3bb0ef39b9e80",
+        "branch_id": "first_session",
+        "clock_binding_hash": "e107e8408e39997d9ad09721307656d212379c5dfe8283be3b8a425734152534",
+        "event_clock": 242,
+        "event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ref": "4b87becc2a24e2713bceff22359a8a85f30a669ee184a6aaf9e068242ccc2f2c",
+        "root_branch_hash": "01ef88c3d4412449738e7358651b04fed2376324f0d90859f66719ec6e0710e5",
+        "root_id": "root"
+      },
+      "occurrence_ok": true,
+      "perception": {
+        "actor_id": "A",
+        "channel": "co_present",
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+        "source_ref": "TEST_ONLY_R31J_A_PERCEPTION_TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5"
+      },
+      "s39_synthetic_premises_used": false,
+      "schema": "SOROK_PERSONA_INPUT@1",
+      "selected_event_id": "TEST_ONLY_BP4_WORLD_EVT_2d917ed057ba0d4f69e070cf0079ac37c87aab6347d678abb39daf9a178adea5",
+      "selected_event_order": 3
+    },
+    "response_receipt_hash": "7ce6de14cd51b7e00460dd554ab3b1a08c45ecd6fb02f713b0e516e6e86d5da7",
+    "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
+    "s39_audit": {
+      "commit": "6604f2d9",
+      "git_blob": "6d38ca6c53e0555317db29b4811d85a3697fc31d",
+      "operation_only_availability": true,
+      "path": "WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+      "reason": "S39 generates a synthetic attempt from TEST_ONLY source records, derives tool availability from B operation, and fabricates a TEST_ONLY response witness from the generated attempt. It cannot supply actual persona perception/history behavior.",
+      "schema": "SOROK_PERSONA_S39_PRODUCER_AUDIT@1",
+      "sha256": "a85b95a43864cff27d2aee2d39322fe2e5c9b5f52d448cfa1b577abf43044d6d",
+      "used_by_persona_input": false,
+      "uses_synthetic_source_records": true,
+      "uses_test_only_response_witness": true
+    },
+    "s39_synthetic_premises_used": false,
+    "schema": "SOROK_PERSONA_RESPONSE_BOUNDARY@1",
+    "status": "HELD",
+    "store_hash_after": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_hash_before": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "store_mutated": false,
+    "target_branch": "NO_CHANGE",
+    "target_proposals": 0,
+    "target_reason": "NO_PROPOSAL"
+  },
+  "schema": "SOROK_PERSONA_INPUT_EVIDENCE@1",
+  "store_mutated": false
+}

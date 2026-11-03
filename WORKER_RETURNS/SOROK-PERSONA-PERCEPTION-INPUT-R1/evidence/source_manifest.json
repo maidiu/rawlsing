@@ -1,0 +1,49 @@
+{
+  "join_e_commit": "5e63672543973ce2533129e1ca3224d82af0dffc",
+  "join_e_manifest_sha256": "7cfcb4679e36b522e83cc7120dbc166ce61dd220099c2aca8f5c9ddb5252c126",
+  "join_e_return": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+  "performed": {
+    "branch_clock": 10,
+    "branch_id": "first_session",
+    "c12_sha256": "2e4bf4a79f4cfc06b083737b8c94f8e721d99903d0cded1af777053a0d4317fa",
+    "c9_sha256": "372af7afbf814f89a00b0b82ed7b773c3264ee74a116670af21358480b1466e6",
+    "e1_event_hash": "4b87becc2a24e2713bceff22359a8a85f30a669ee184a6aaf9e068242ccc2f2c",
+    "event_clock": 242,
+    "history_event_count": 6,
+    "history_event_head": "TEST_ONLY_BP1_EVT_3bbd72822f0895fc0d6b50840a2b96749673bbb4c231374780018533733f88a2",
+    "history_hash": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+    "history_last_clock": 241,
+    "objective_refs": [
+      "TEST_ONLY_BP1_EVT_735bfb9686af64f2670baf3b5ee106930be216f11647b61c45cbd9f8dcdf0f69"
+    ],
+    "performed_action_refs": [
+      "TEST_ONLY_BP1_EVT_41c2ff1665bc38b190a70d015016cc9279895e1367bea528f64b98b7f4ba6249"
+    ],
+    "state_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-PERSONA-PERCEPTION-INPUT-R1/.runtime/evidence/performed"
+  },
+  "refused": {
+    "branch_id": "first_session",
+    "c12_sha256": "f85ae23c92c762015bdfc8b606a484d31cccdaae035f82e568782bf6f521d8ea",
+    "e1_event_hash": "6558a522b2f3e0348884f626e9f5af6f48740560127c4a26457b848afca69c1d",
+    "event_clock": 242,
+    "history_hash": "f5406fb8ba26473d9ea7fd1fa1c9d805e9e76078a89283a2b6d51c81bf43d053",
+    "state_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-PERSONA-PERCEPTION-INPUT-R1/.runtime/evidence/refused"
+  },
+  "s11_spec": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json",
+  "s11_spec_sha256": "ad4add0d10aadf3ebdb4f30ff36d30da0f0e9356e9c5ca714c6e0e55b3071619",
+  "s35_commit": "ce2478aa38eec7fb021aa95c01464a468a46fbc9",
+  "s35_return": "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1",
+  "s39_audit": {
+    "commit": "6604f2d9",
+    "git_blob": "6d38ca6c53e0555317db29b4811d85a3697fc31d",
+    "operation_only_availability": true,
+    "path": "WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+    "reason": "S39 generates a synthetic attempt from TEST_ONLY source records, derives tool availability from B operation, and fabricates a TEST_ONLY response witness from the generated attempt. It cannot supply actual persona perception/history behavior.",
+    "schema": "SOROK_PERSONA_S39_PRODUCER_AUDIT@1",
+    "sha256": "a85b95a43864cff27d2aee2d39322fe2e5c9b5f52d448cfa1b577abf43044d6d",
+    "used_by_persona_input": false,
+    "uses_synthetic_source_records": true,
+    "uses_test_only_response_witness": true
+  },
+  "schema": "SOROK_PERSONA_INPUT_SOURCE_MANIFEST@1"
+}
