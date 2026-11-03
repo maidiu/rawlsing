@@ -181,6 +181,13 @@ def validate_delta(state: dict, payload: Any) -> dict:
     _must(bool(str(payload.get("next_evidence") or "").strip()), "NEXT_EVIDENCE_REQUIRED")
     source, _ = _verify_object(payload.get("source"))
     _must(str(payload.get("return_sha") or "") == source["commit"], "RETURN_SHA_SOURCE_COMMIT_MISMATCH")
+    if kind == "RETURN_CANDIDATE":
+        # A genuine but unrelated Git blob is not a receipt for this node.
+        inherited = lr._node_map(state)[payload["node_id"]].get("source_refs") or []
+        _must(any(str(x.get("commit")) == source["commit"]
+                  and str(x.get("path")) == source["path"]
+                  and str(x.get("blob") or x.get("object_id")) == source["blob"]
+                  for x in inherited), "RETURN_SOURCE_NOT_A_NODE_ORIGINAL_SOURCE")
     found = _verify_locator(source, payload.get("locator"))
     coord = payload.get("coordinate")
     _must(isinstance(coord, dict) and coord.get("source_cut") == str(payload.get("subject_sha") or source["commit"]),
