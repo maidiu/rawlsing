@@ -1,10 +1,26 @@
 LAUNCH — PROG5 NEXT E2 — AUTONOMOUS HQ WORK SELECTION, SUBLATION AND TERMINAL UNBLOCKS
+PROVIDER/EDITOR_HARNESS: Browser / GPT-6 High proposed; user-controlled
+BRANCH: agent/prog5-next-e2-sublation-priority-gates-20261103-r1
+STARTUP_SHA: ed9c882a0683375bad70ee4abd1d662a61f1756b
+REASONING: HIGH PROPOSED; actual user-selected setting governs.
+MODEL_MAX_AVAILABILITY: UNKNOWN until user verifies selected model in host.
+HOST_ACCOUNT_QUOTA_COST: UNKNOWN; no autonomous paid provider or host switch.
+BROWSER?: YES — appropriate for documentary S0–S1 code/source investigation; user selects actual.
+DEEPSEEK?: Possible economical bounded worker alternative with user-selected V4.1-Flash/MAX; not silently selected.
+CODEX_6_1_HIGH_NECESSARY?: NO for S1 documentary research; Codex/GPT-6.1 High not required.
+OTHERWISE_MIDDLE?: User may choose user-available Middle effort when High is unnecessary; verify selected host.
+WHY_NOT_BROWSER: Browser is suitable; no reason to reject.
+WHY_NOT_FLASH: Higher risk source/scope/consumer and cross-machine decision integrity; user may override for bounded work.
+WHY_NOT_CODEX_HIGH: No native S2 execution is part of this commission.
+WHY_NOT_MIDDLE: High proposed for complex adversarial source judgment; user may select Middle.
+SCIENCE_SOURCE_ACTOR_AUTHORITY: NONE newly granted. Original35 source, science, host, N11/N12, Sorok actor and protected receiving remain with competent owners.
+POST_RETURN_INDEPENDENT_REVIEW: Separate nonauthor reviewer required for actual acceptance; no self-acceptance.
 AGENT_TYPE: Independent I3+ end-product requirements, historical succession and high-leverage work-selection architect; NOT Pyat HQ, source/science issuer, product engineer, E1/E3 author, receiving agent or own reviewer.
 INTELLIGENCE_LEVEL: I3+
 REPOSITORY: maidiu/rawlsing (PRIVATE)
-SINGLE_AGENT_FULL_DELIVERABLE: YES.
+SINGLE_AGENT_FULL_DELIVERABLE: YES
 EXECUTION_SURFACE: S0–S1 authenticated private GitHub source and selected code reading ONLY. No S2 native execution/S3 original source rights.
-EXACT_BRANCH: research/prog5-next-e2-sublation-priority-gates-20261103-r1
+EXACT_BRANCH: agent/prog5-next-e2-sublation-priority-gates-20261103-r1
 EXACT_STARTUP_SHA: ed9c882a0683375bad70ee4abd1d662a61f1756b (SAT-R adopted guide, document source cut)
 PREMAIN_SOURCE_CUT: 773bb412a820949f13a7178b6671327cd56a3bf1; recheck live protected currentness.
 USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High PROPOSED; user selects actual model/reasoning and verifies access.
