@@ -2,6 +2,8 @@
 
 **Candidate documentary guidance only.** No instruction to interrupt active HQ, change protected PRE-MAIN, merge this branch, run native sources, or treat a worker as science issuer or independent reviewer. Start from the exact selected engineering tip and approved owner scope, then compare the pinned code and review cuts below. [Saturation ledger](SATURATION_MATERIAL_DISCOVERIES.jsonl) distinguishes each capability from duplicates, negatives, and unknown readers.
 
+**COMPULSORY BEFORE USING THIS HANDOFF AS A CODE COMMISSION:** Apply [the five-test historical succession gate](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) to every old function or unmerged candidate. An old executable body, index omission, static caller, or topic-similar current function is not a missing present engine. A REUSE/ADAPT, BUILD_NEW or PORT proposal needs explicit necessity, disproven adequate existing successor/composition, named current/planned first consumer, suitability/permissions and comparative gain; otherwise record NO_BUILD, COMPARE_ONLY or OWNER_DECIDE. Before selecting a new sourcefree join, read [current PRE-MAIN #646 and Codex HQ live seam incision](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md) so already-merged sourcefree work is not reinvented.
+
 ## First actionable engineering distinctions
 
 | Pyat scope (original GAP / child) | Best known actual code and first reader | Work classification now | Safe first action / held permission |
