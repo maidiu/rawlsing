@@ -1,0 +1,78 @@
+{
+  "counts": {
+    "conditional_count": 210,
+    "conditional_joint_accounted": 420,
+    "joint_count": 210,
+    "operation_count": 840,
+    "operation_refs_unique": true,
+    "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "source_qualification": "TEST_ONLY_SOURCEFREE"
+  },
+  "executed": 0,
+  "first_missing": {
+    "artifact": "governed P1 SourceItem -> C11/R03 occurrence binding record (item_id/option_id/form_id/repeat_id), addressed by SourceGrant.item_registry_ref",
+    "downstream_missing": "Even after item/occurrence identity: exact R03 GrammarPolicy, authorized direction grants, risk_set_refs/denominator, form_scope/scope/administration and current joint/marginal query refs.",
+    "first_c11_conditioner_question_ref": {
+      "content_hash": "2fc48659dab4ec4e943131c73a9cca0ed9aec272525bfaa68e3e437a4b5b0f9c",
+      "kind": "QUESTION_NATIVE",
+      "object_id": "urn:rawlsing:r56:question_native:R56R02-Q00A"
+    },
+    "first_c11_target_question_ref": {
+      "content_hash": "48522c1a7a0c3a2d6d778fdd3f0e620d828852db88a01af07e06408b4f33014f",
+      "kind": "QUESTION_NATIVE",
+      "object_id": "urn:rawlsing:r56:question_native:R56R02-Q00B"
+    },
+    "first_operation_ref": {
+      "content_hash": "1f17c69cc374cf1db21d3d6defa8eb306557a5188a84e5b9f5cefb979811b46f",
+      "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+      "object_id": "urn:programma:pyat:programma_pyat_epre_operation:1f17c69cc374cf1db21d3d6defa8eb306557a5188a84e5b9f5cefb979811b46f"
+    },
+    "first_p1_conditioner_sourceitem": {
+      "content_hash": "eb36c9c79c138dee1b553a5ce1c26598365469c66aab161a1209884481b956bc",
+      "kind": "SourceItem",
+      "object_id": "urn:test:programma:sourceitem:i00a"
+    },
+    "first_p1_item_registry_content_present": false,
+    "first_p1_item_registry_ref": "urn:test:programma:itemregistry:g00",
+    "first_p1_target_sourceitem": {
+      "content_hash": "138b5df22d8a1cc3cb4ecd4270962da284d0865ba3f6f1ca371324e8b73d5342",
+      "kind": "SourceItem",
+      "object_id": "urn:test:programma:sourceitem:i00b"
+    },
+    "first_r03_candidate_conditioner_key": {
+      "form_id": null,
+      "item_id": "Q00A",
+      "option_id": null,
+      "repeat_id": null
+    },
+    "first_r03_candidate_target_key": {
+      "form_id": null,
+      "item_id": "Q00B",
+      "option_id": null,
+      "repeat_id": null
+    },
+    "owner": "P1 source-grant/ItemRegistry owner named by SourceGrant.item_registry_ref; R03 policy owner is downstream",
+    "owner_of_downstream": "R03 policy/risk-set/direction owner; C11 projection owner for native query objects",
+    "why_not_accepted": "P1 SourceItem refs and source_variable_code strings are not C11 item identities; no ItemRegistry content binds them. Code equality is a name match, not an exact occurrence mapping."
+  },
+  "operation_refs_unique": true,
+  "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+  "reason_counts": {
+    "P1_SOURCEITEM_TO_C11_R03_OCCURRENCE_BINDING_ABSENT": 420
+  },
+  "source": {
+    "columns": 71,
+    "release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "rows": 12,
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+  },
+  "status": "HOLD_FIRST_EXACT_INPUT_MISSING",
+  "value_counts": {
+    "0": 210,
+    "1": 210
+  }
+}
