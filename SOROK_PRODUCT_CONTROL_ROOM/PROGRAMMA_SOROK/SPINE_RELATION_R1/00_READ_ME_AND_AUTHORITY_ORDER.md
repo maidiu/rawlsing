@@ -38,7 +38,7 @@ For `ALL_OF`, all active same-target members must qualify; for `ANY_OF`, an actu
 
 ## 5. Files and lookup example
 
-- `01_SPINE_RELATION_CLASSIFICATION.jsonl`: 1,313 rows: 1,309 immutable source/work-now records plus four explicit target overrides. Each has `source_registry` and its unchanged `source_record_id`, source cut, target, source-specific reading/grade, actual reader (or absence), owner/authority hold, reason and falsifier.
+- `01_SPINE_RELATION_CLASSIFICATION.jsonl`: 1,314 rows: 1,310 immutable source/work-now records plus four explicit target overrides. Each has `source_registry` and its unchanged `source_record_id`, source cut, target, source-specific reading/grade, actual reader (or absence), owner/authority hold, reason and falsifier.
 - `02_SOURCE_COUNTS_AND_NO_DROP.json`: exact original ID census, 48 known index-only historical sources, 38 seam decision counts, independent/S2 limitations and conservation check.
 - `03_FALSE_SPINE_PROMOTION_FALSIFIERS.md`: contested old→modern promotions, 40 M functions, 39 WPs and 38 exact seams.
 - `04_COLD_USE_AND_SOROK_HQ_HANDOFF.md`: twelve modern→source navigations, 20+ historical→modern adversarial decisions, engineering/science/authority/human handoff and reviewer checklist.
@@ -51,3 +51,8 @@ For `ALL_OF`, all active same-target members must qualify; for `ANY_OF`, an actu
 ## 6. No automatic issue or authority
 
 All classification rows have `generates_current_build_obligation=false`. That is deliberate: `SPINE_REQUIRED_UNBUILT` establishes missing present proof or capability, not new dispatch authorization. Only a separate controlling requirement, current owner, prior-code suitability comparison, actual first reader, budget and lawful execution decision can create a real present task. No row grants CAN008/CAN011/ADP, Pyat, actor-privacy or human permissions.
+
+
+## SR-01 bounded documentary correction (post-terminal readback)
+
+A separate source-grade readback of the `50bf48b4` candidate found five `SPINE_REQUIRED_UNBUILT` rows with null `exact_modern_basis_ref` and one omitted JSONL manifest metadata row. The four genuinely modern requirements (`D-OBS`, `D-M6`, `D-ACTION`, versioned seam `E010`) now cite exact preexisting governing product documents; those citations authorize **requirements only**, not an adopted positive implementation. Versioned `E019` (`M25@KNOW → M25@SPECIFY`) is now `HISTORICAL_CANDIDATE`, since the current S6/C10 duty does **not** require restoration of historical M25, and W8-J's original source-specific `HOLD`/full `JOIN_PENDING` remains unchanged. The 14 MANIFEST is included as `REFERENCE_ONLY` metadata for literal identity conservation, **not** as a gate, work package or current function. These are bounded source-graded repairs, not independent formal acceptance or authority issuance.
