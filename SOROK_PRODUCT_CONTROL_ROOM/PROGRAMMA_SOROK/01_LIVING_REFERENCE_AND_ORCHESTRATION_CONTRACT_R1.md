@@ -94,6 +94,8 @@ If an author branch or PR exists but owner has not adopted it, the graph may ref
 
 **Mandatory update triggers:** original primary-source recovery/false-negative correction; source owner/reviewer decision; tests or runtime defects; new code implementation; actual native adoption; ongoing worker return/lease change; changed Pyat interface/proof; changed scientific alternative; new user/product requirement; an actual human alpha result; invalidated prior claim. No "we will update later" if current priorities are being selected from stale state.
 
+Codex HQ directly writes through each coherent material transition to the affected existing PROGRAMMA records and work-now guidance. Publish and verify the isolated Git cut, crosslink the HQ decision, and distinguish pending integration from owner adoption. A worker delta supplies evidence for this transaction. See [commission #647](https://github.com/maidiu/rawlsing/issues/647).
+
 ## 6. Operational source hierarchy, persistence and ownership
 
 `PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md` remains the constitution; this document specifies the required reference contract. **Existing original Sorok S0–S16, C/A/M/N/O/E, HQ source/review, current progress, PRE-MAIN, Pyat world and actor records remain the scientific/source authorities.** Programma is their derived, linked **control/reference plane** and explicitly carries disagreements and provenance. It is not a substitute native source issuer.

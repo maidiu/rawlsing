@@ -10317,5 +10317,40 @@
     "phase_model": "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl",
     "seam_model": "15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl",
     "warning": "119 nested IDs deepen but do not replace 144 W5 original identities; historic M25/M29 are source-member reuse, not native ports; sourcefree/adopted separate; no W7 self-acceptance."
-  }
+  },
+    "hq_647_current_function_disposition": {
+      "original_ids": [
+        "C4",
+        "C8",
+        "C9",
+        "C12",
+        "O15"
+      ],
+      "baseline": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+      "decision": "00_HQ_WRITE_THROUGH_DECISION.md",
+      "sources": [
+        {
+          "commit": "5e63672543973ce2533129e1ca3224d82af0dffc",
+          "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/HQ_INTAKE.md",
+          "blob": "f002ba665a3c070c27f9b8c3d3fd0c027dde2b86"
+        },
+        {
+          "commit": "c5602ec87ba6e951540b89a49404db76c128eb50",
+          "path": "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/join_e_s35_compat.json",
+          "blob": "fdab264ecfef01f393583ac2a51a8795d5916db6"
+        },
+        {
+          "commit": "c5602ec87ba6e951540b89a49404db76c128eb50",
+          "path": "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/bridge/join_e_compat.py",
+          "blob": "829db82f32287c84dcf707808d561ee73a597742"
+        }
+      ],
+      "engineering": "CONTROLLED_SOURCEFREE_AUTHOR_TESTED",
+      "same_target_gate": "HELD",
+      "actual_a_first_consumer": "NONE_VERIFIED",
+      "reason": "E1 already admitted at 242; selected C12 clock 10. Full S35 returns CLOCK_OUTSIDE_FRAME; no second store.",
+      "owner": "JOIN-E/C9R/C12 engineering owners for timeline/read contract; A source owner for actual perception/action",
+      "next_action": "Consume exact admitted occurrence without readmission; qualify A perception and action separately.",
+      "conditional_unlock": "Same-root C9 sourcefree response feeding later E2, subject to proof and review"
+    }
 }

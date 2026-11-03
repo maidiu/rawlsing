@@ -391,3 +391,7 @@ Astra A–H and gameplay M01–M17 are independent temporal/experience falsifier
 For a changed claim, alter its existing ID in 07/08/09 and only the affected section here: (1) exact 40-hex commit and path/blob, symbol/meaningful section; (2) code import or observed field read vs document/author claim; (3) actual producer→typed fields→first importing reader, version/root; (4) separately report science owner, evidence custody, independent review, protected adoption and native/human status; (5) blocked/negative predecessor and reverse unlock; (6) specific next missing witness. Never upgrade all axes from one passing test, claimed launch or branch name. Read grade PATH_ONLY remains path only; W2 direct inspection is attributed W2, not silently W3 execution.
 
 **GUIDE ASSEMBLY READY FOR INDEPENDENT USE TEST. WHOLE_SCOPE_NATIVE_OR_HUMAN_PRODUCT_NOT_PROVEN.** The only remaining GUIDE closure check is an unfamiliar agent's cold five-question navigation test against 03; product/science/owner/engineering work continues separately. Read [10 W3 closeout](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md) for finite next actions.
+
+## B occurrence → material consequence → A access
+
+JOIN-E’s existing E help admission consumes performed-aware material availability. S35’s standalone sourcefree evaluator exists, while actual A evidence on JOIN-E’s root and positive S35 same-root response remain unverified. [Exact cuts and limits](00_HQ_WRITE_THROUGH_DECISION.md).

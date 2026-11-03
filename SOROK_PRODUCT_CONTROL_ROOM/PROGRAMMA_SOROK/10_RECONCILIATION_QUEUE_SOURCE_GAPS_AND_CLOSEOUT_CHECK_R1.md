@@ -217,3 +217,7 @@ A correct UNKNOWN/UNREAD with a specific source locator and reason is a PASS; fa
 ## 6. Authority and interaction with active HQ
 
 This guide branch is documentary/candidate and does not itself integrate PRE-MAIN, appoint HQ, dispatch workers or grant native Sorok/Pyat source/actor rights. Incumbent HQ should check live sources and active workers before committing overlapping work; adoption/merge stays in authorized owner path. No additional roadmap-platform engineering is justified merely because the guide is incomplete.
+
+## Post-cut work now
+
+WP-W6B-02 has returned controlled engineering. Continue with a same-root admitted-occurrence reader and separate qualified A perception/action. Keep G-O15-VERIFY held. Independent scoped repair review and the WP-W6B-01 writer/root/ACK matrix can proceed without waiting on each other. Native and human gates retain their prior status. [Exact cuts and limits](00_HQ_WRITE_THROUGH_DECISION.md).
