@@ -1,6 +1,8 @@
 # G4-P5 — Prerequisites, AND/IF/ALTERNATE and reverse unlocks
 
 
+**Current-version observation table:** [13 edge-specific later PR646 records](POST_SATR_CURRENT_EDGE_DELTA_20261103.jsonl) preserve all G4 IDs, predicates and original statuses, with scoped sourcefree first-reader positives and separately typed native/HQ-owner holds. Use them to subtract present work before generating the next build dependency.
+
 **CURRENTNESS AND NO-FALSE-DEPENDENCY GATE:** This document preserves the original 82 edge IDs with exact MUST/IF/ALTERNATE conditions. Never manufacture another MUST because a legacy symbol is unindexed. Use [the historical-sublation five-test gate](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) before turning recovery into a new prerequisite, and [the dated PRE-MAIN PR646 current-edge incision](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md) before representing an already connected TEST_ONLY edge as still absent. Preserve original35 source/native N9/N11/N12 HOLD even when a later sourcefree first consumer exists.
 
 ## SAT-R scoped new-capital prerequisite overlay — no edge change
