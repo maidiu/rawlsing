@@ -270,3 +270,6 @@ Candidate `ea503425a6f3de29649b78587c7bcb0c2051b7ee`, review `771bc4ebd49759479d
 ### PR646 sourcefree adoption — 2026-11-03
 
 User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c9817ea43d22b4e45ff`, remote verified. Reviewed production blobs unchanged. Actual single synthetic source checkpoint/resume -> M1/M2/R05 -> unchanged P41 chain is now PRE-MAIN sourcefree engineering capability. Sourcefree CI and both executable proof witnesses pass. Broad court retains 144 PASS/3 historical hash-pin FAIL on unchanged inputs; not full green. R09 D1/D4 host trust, original-source/science and higher-stage holds remain. Own PROGRAMMA branch records adoption; no implicit guide branch merge. Exact receipt: `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/RECEIVING_646/ADOPTION.json`.
+
+
+SRC04 certified refusal correction accepted at metadata and retained aggregate scope. Candidate ddc85dd298d36d4825d42cd4931a0cac5d91cb73, independent review 72fbfd15d8c25838c0db406ff4e6e0a9502787f7. 28 certified mappings corrected; 2185 field responses reclassified; 42 per-field totals conserved; five independent tests passed. 14 uncertified mappings need competent certification. Routing and eligible denominator remain unresolved for 42 fields. Production configuration receiving requires separate authority.

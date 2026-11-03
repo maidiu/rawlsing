@@ -1724,3 +1724,6 @@ P1 occurrence attempt `6949efbc3`. 420/420 accounted; zero executed. 420 variabl
 
 
 N10W J42 guard accepted at isolated TEST_ONLY scope. Candidate c75b464ab4dbba15c6a89db42aaf5d101ba13d55, independent review 02b98ec3dd88e5e742ce459e54d233f547768145. 84 actual joined views and cold replay preserved; paired rehashed clock forgery refused against pinned W41 artifact. Production receiver still requires separately authorized receiving; R05/W41 common scope and original science remain held.
+
+
+SRC04 certified refusal correction accepted at metadata and retained aggregate scope. Candidate ddc85dd298d36d4825d42cd4931a0cac5d91cb73, independent review 72fbfd15d8c25838c0db406ff4e6e0a9502787f7. 28 certified mappings corrected; 2185 field responses reclassified; 42 per-field totals conserved; five independent tests passed. 14 uncertified mappings need competent certification. Routing and eligible denominator remain unresolved for 42 fields. Production configuration receiving requires separate authority.
