@@ -1,13 +1,14 @@
 # SOROK S35 — sourcefree actor-access bridge into the pinned C9R consumer
 
-**RESULT:** `S35_REVISE_REPAIRED_AGAIN__PUBLIC_SOURCE_PROJECTION__PRIVATE_WORLD_CUSTODY__NO_ACTION_CLOCK_VALIDATED__UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL__FRESH_PROCESS_COLD_REPLAY__55_OF_55_TESTS__ZERO_TARGET_PROPOSALS__NATIVE_HOLD`.
+**RESULT:** `S35_REVISE_REPAIRED_AGAIN__PUBLIC_SOURCE_PROJECTION__PRIVATE_WORLD_CUSTODY__NO_ACTION_CLOCK_VALIDATED__UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL__FRESH_PROCESS_COLD_REPLAY__56_OF_56_TESTS__ZERO_TARGET_PROPOSALS__NATIVE_HOLD`.
 
 This is one isolated TEST_ONLY engineering bridge. It is not a native CAN008/CAN011 rule, not an issued target grant, not ADP/C8/C12 authority, not acquired-practice science and not a new engine. It writes only inside `WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/**`.
 
 ## 1. Identity, base and read-only inputs
 
 - Repository: private `maidiu/rawlsing`.
-- Base commit: `4170fbf19a9d5a64bc728f5b22156bbffcec51e5`.
+- Original S35 base commit: `4170fbf19a9d5a64bc728f5b22156bbffcec51e5`.
+- JOIN-E x S35 compatibility base: `a6b1f10b37c0748b0b6880e1870a2c4f07844be9`.
 - Branch: `codex/sorok-s35-c9r-access-r1`.
 - Exclusive worktree: `/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1`.
 - Prior publication base: `67d5363870bf180515f59ced341b8cdffb0c755a`.
@@ -83,7 +84,7 @@ Commands actually run:
 PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider \
   WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/tests \
   --junitxml=WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/s35_full.xml
-# 55 passed, exit 0
+# 56 passed, exit 0
 
 PYTHONDONTWRITEBYTECODE=1 python3 -B \
   WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/tools/capture_evidence.py
@@ -96,8 +97,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B \
 Evidence files:
 
 - `evidence/test_run.txt` — exact pytest transcript.
-- `evidence/s35_full.xml` — JUnit, 55 tests, 0 failures/errors/skips.
+- `evidence/s35_full.xml` — JUnit, 56 tests, 0 failures/errors/skips.
 - `evidence/s35_evidence.json` — vectors, same-world bindings, fault trials, foreign/forged refusals, consumer binding, public projection, no-action clock, qualified-owner paths, fresh-process cold replay, public privacy and source manifest.
+- `evidence/join_e_s35_compat.json` — bounded JOIN-E x S35 compatibility proof, exact clock incompatibility, B material/E help contrast, cold replay and no-new-store evidence.
 
 ### P1 controlled positive
 
@@ -105,24 +107,24 @@ Evidence files:
 B source event hash (M35 share)  16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486
 C8 state digest                  e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb
 E1 event                         TEST_ONLY_BP2_E1_OCC-0001
-E1 hash                          65f90f6dea1789666932550c7190efb6899c9fc1c79e3004a576ae755621949a
+E1 hash                          53b513d808380278449ede0263081cb9fa8bc6d2e964822ec2a567d1a2c2f2f3
 C12 root / branch                root / s35
 root branch hash                 602e191a79c713d4dd3ec7ba93caf7d7b6ee7db0fb17e2b673b23ca40abb0dc6
 root state hash                  406a019d868884a1797c44e59b3bf9a2bb3547afc0b46fe0695e3938ef78573d
 branch hash                      2f7016268ff5ed9a73075ed0c25c0d5bd5ac072a2356f68980633ae266f35523
 branch fork / frame clock        242 / 244
 actor                            TEST_ONLY_BP1_R26V_ACTOR_A
-perception ref / hash            TEST_ONLY_A_PERCEPTION_P1 / 7d1416525aab3ddba7d8e74c52cace6c31c247fa0bbff745b31acfc99bcf0b84
-action ref / hash                TEST_ONLY_A_ACTION_P1 / 1c7ee9be0eb8a7926be254deb24668eec24e298c6bf8552b0f5c0a246ea0cefa
+perception ref / hash            TEST_ONLY_A_PERCEPTION_P1 / 0dc4efa398db30989752eaeca8f629958078377e0cb42701ea5798315593c176
+action ref / hash                TEST_ONLY_A_ACTION_P1 / 2310037ecbe739d0af7675ff1e4ef354a104d08c45c40533becb04b877c071a7
 action kind / performed          REQUEST_TOOL / true (explicit controlled receipt)
 evidence grade                   TEST_ONLY_CONTROLLED_FIXTURE
 actual actor input               false
 qualification                    CONTROLLED_ENGINEERING_EVIDENCE_NOT_ACTUAL_A_INPUT
 public source projection         source_commitment 7f5a08b2e7f0d482092a92a66261aaa560959fd169188408fa35ffe434561eec
 S35 outcome                      OBSERVED_IMMEDIATE_OBJECT_ORIENTATION
-S35 receipt hash                 95fc2fd9e014a2ac8493c2d118de220049a55d50f9a9727cf6b0af539775dea2
-C9 response row hash             e69df052504c9e30654c8bbe17023ff4b3f3ba5f5f7714db963039b70e5202be
-C9 commit receipt hash           84eef548f708e0746c6aca858565d6706f11f962be8ccc1ab03963422be675cd
+S35 receipt hash                 d6d9d6b5768bef64dbe9ef7fa2ddf4e6d15cc1b231b12607ec352d9c8f78b598
+C9 response row hash             05676fed822c0216d601fe03453988d12aa9e2cb809ac9cfdc0531823291e9ab
+C9 commit receipt hash           b252162a375d40bb5e8818fdcdb076a21e72cfab0510e86c8af9d959692bbe65
 CAN011                           NO_CHANGE / NO_PROPOSAL, target id ""
 target rows                      0
 objective material eligible      true
@@ -187,8 +189,15 @@ bridge/readback.py                 e291ca5bd200ba582f357766b4f290be5c852b37f4cc1
 tests/test_s35_access_bridge.py    9cbb93221d4c8e13472eb9d10eab233cae531ed1031891647d9c40fe046b2179
 tools/capture_evidence.py          104376ad40bf43a22879e1fd2da791061e0772ed5ba7ae058d11ea523307f3d1
 tools/cold_replay.py               a374e53d8926757959f0ab8da92a2f3ead55f73cf3a24b26dcc5dfc3c4f0ad59
-evidence/test_run.txt              6fcfa26022199a744ad0f6fecf403673396a5a5772458b65fa9734d0bb908650
-evidence/s35_full.xml              ace2c42b58271ad3dcf618714c4ffe842ac8f71f657d964e83630e9e4594c238
+bridge/join_e_source.py            c8a6c05f34d5983045a05c65e5a816cd82149a8af0d7d60ab07195d7ec0ff72e
+bridge/join_e_compat.py            fa81377367e423e1b130dad678f7faa46e6235dcbd4230adefa3177d697d3d56
+tests/test_join_e_s35_compat.py    4d50a4afcd43792e881a2d2c605fd0b4899c4337bb96f53f659a8a8c419ee07c
+tools/join_e_encounter.py          5fa56b8b351ac6d01e26c6b0187cbc9a95494739b8159284cfddf61daf2c461f
+tools/join_e_s35_compat.py         bc6f3ac8b25b48795d84d9d79e6d63ca7512454bf12184902909921cf85f5d5b
+evidence/test_run.txt              b017e1a639d3399999482d55e0d73c61fb35f933de71d3d647f2bcc06d779300
+evidence/s35_full.xml              5e9be749ce3f7094841be48b436b605f2c25fa9510bb6796da011d6cc488caaa
+evidence/s35_evidence.json         56e11806210460253244ca4023b1d25614628df10a58667525a58bfea2a4bec8
+evidence/join_e_s35_compat.json    86a9db44859e1e2f12840921e91a0eb11f83b15e5792427a3365aa879ca5635a
 ```
 
 Install-verified pinned SHA-256:
@@ -202,6 +211,35 @@ C9R conditioning                   edc3a5690c4ed281a41b877119af63397b6348c54a407
 C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177
 ```
 
+## 3A. Bounded JOIN-E x S35 compatibility proof
+
+- JOIN-E source was read from Git commit `5e63672543973ce2533129e1ca3224d82af0dffc` with `git archive` inside this checkout into a gitignored runtime tree. No external checkout was read.
+- Three selected persistent JOIN-E roots were used: `PERFORMED` (B performed `SHARE_TOOL`), `OMITTED` (B sealed `SHARE_TOOL` with `performed=false`), and `REFUSED` (B performed `REFUSE_TOOL`). Source and clock bindings came from the persisted C9 occurrence and C12 branch rows.
+- Evidence: `evidence/join_e_s35_compat.json`.
+
+| Disposition | B source | material_feasible_after | performed-aware access | operation-only would grant | E help | tools |
+|---|---|---|---|---|---|---|
+| `PERFORMED` | `SHARE_TOOL`, performed=true | true | true | true | accept | 1 |
+| `OMITTED` | `SHARE_TOOL`, performed=false | false | false | true | refuse | 0 |
+| `REFUSED` | `REFUSE_TOOL`, performed=true | false | false | false | refuse | 0 |
+
+No operation-only material grant was observed in JOIN-E: the omitted source would grant under a naive operation-only rule, but the actual persisted source has `material_feasible_after=false`, the performed-aware compatibility access is false, and the actual E consumer refuses help with tools 0. The compatibility adapter therefore uses the performed-aware rule, not B's operation alone.
+
+### Exact same-root incompatibility
+
+The JOIN-E E1 event is at time `242`, while the selected C12 branch clock is `10`; the existing C9 last clock is also `242`. The persisted event is already admitted. A second full S35 `run_candidate_path` execution on that same C9 store is refused by the pinned consumer with `CLOCK_OUTSIDE_FRAME`, and the event identity is already occupied. Reusing the existing store cannot lawfully execute the full S35 C9 commit; creating a second C9 store is prohibited by this bounded proof. `same_root_c9_reexecution_lawful=false`.
+
+The lawful S35 result on the JOIN-E root is therefore a typed hold:
+
+- baseline (no actual A producer): `A_LOCAL_PERCEPTION_HOLD` for all three dispositions;
+- controlled A perception/action receipts bound to the actual E1 time/root/clock refuse `PERCEPTION_TIME_INVALID` because `event_time=242 > clock=10`;
+- independent perception/action severance diagnostics remain `PERCEPTION_TIME_INVALID` for the same clock reason and are not admitted as a positive;
+- the later actual E help consequence remains the JOIN-E world consequence: accept for performed share, refuse for omitted and refused;
+- cold reopen verifies each session and repeats the same E help and S35 hold/clock outcomes;
+- S35 creates no store and the JOIN-E C9/C12 files are byte-identical before and after S35 evaluation.
+
+**Exact incompatibility:** `JOIN_E_E1_TIME_242_OUTSIDE_C12_CLOCK_10__C9_EVENT_ALREADY_ADMITTED__FULL_S35_REEXECUTION_CLOCK_OUTSIDE_FRAME`. A same-root full-pipeline weld is not lawful without a new C9 store or an explicitly authorized clock/branch migration; neither is fabricated here.
+
 ## 4. Findings, interpretation and owner
 
 | FINDING | INTERPRETATION AND RIVAL | HQ ACTION | COMPETENT OWNER |
@@ -210,21 +248,22 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 | **F2 — No-action clocks are validated.** A no-action receipt with `action_time=-1` or beyond the frame refuses before C9, not commits. | Rival: performed-only time validation is enough. The no-action negative-clock test falsifies that. | Preserve the all-branches clock check. | S35 engineering + C12 clock owner |
 | **F3 — Unresolved owner evidence is not actual/qualified.** Holds are `ACTUAL_A_INPUT_UNAVAILABLE` with `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL`; resolver false paths refuse. | Rival: a qualified receipt remains qualified while held. The hold receipt grading falsifies that. | Do not promote unresolved owner evidence. | ADP017/ADP019 owner + S35 engineering |
 | **F4 — Verification is non-mutating and fresh-process replayable.** C9/C12 are opened read-only; fresh process hashes before/after and reports no mutation. | Rival: in-process replay could reuse warm state. The fresh PID/process and identical hashes falsify that. | Preserve read-only verification and cold replay evidence. | S35 engineering + C12 custody owner |
-| **F5 — Controlled positives, targetless outcomes and prior negatives remain.** P1 is controlled evidence, CAN011 stays `NO_CHANGE/NO_PROPOSAL`, target tables stay empty, and all prior foreign/consumer/legacy negatives stay green. | Rival: the privacy/clock repair loosened the prior bridge. The 55-test and evidence reproduction falsify that. | Keep native authority held. | C9/CAN011 owner + C12 consumer owner |
+| **F5 — Controlled positives, targetless outcomes and prior negatives remain.** P1 is controlled evidence, CAN011 stays `NO_CHANGE/NO_PROPOSAL`, target tables stay empty, and all prior foreign/consumer/legacy negatives stay green. | Rival: the privacy/clock repair loosened the prior bridge. The 56-test and evidence reproduction falsify that. | Keep native authority held. | C9/CAN011 owner + C12 consumer owner |
+| **F6 — JOIN-E × S35 same-root weld is clock-incompatible.** JOIN-E E1 time `242` exceeds C12 branch clock `10`; the existing C9 event is admitted and re-execution refuses `CLOCK_OUTSIDE_FRAME`. JOIN-E itself is performed-aware: omitted `SHARE_TOOL` has no material grant and E refuses help. | Rival: a selector-only positive can stand in for the unavailable full pipeline. The exact clock refusal and existing admitted event falsify that; no second store is fabricated. | Record the typed incompatibility; require an authorized clock/branch migration or a new store decision from the owner before any full weld. | JOIN-E/C12 owner + S35 engineering |
 
 ## 5. Courts and disposition
 
 | Court | Grade |
 |---|---|
-| **ENGINEERING** | `ACCEPT_SCOPED_SOURCEFREE_ACTOR_ACCESS_REPAIR__PUBLIC_PROJECTION__NO_ACTION_CLOCK__UNRESOLVED_OWNER_HOLD__FRESH_PROCESS_COLD_REPLAY__55_OF_55_TESTS__ZERO_TARGETS` — author evidence only, not independent adoption. |
+| **ENGINEERING** | `ACCEPT_SCOPED_SOURCEFREE_ACTOR_ACCESS_REPAIR__PUBLIC_PROJECTION__NO_ACTION_CLOCK__UNRESOLVED_OWNER_HOLD__FRESH_PROCESS_COLD_REPLAY__56_OF_56_TESTS__ZERO_TARGETS` — author evidence only, not independent adoption. |
 | **SCIENTIFIC** | `TEST_ONLY_CONTROLLED_FIXTURE_ORIENTATION_ONLY__ACTUAL_A_INPUT_UNAVAILABLE__NO_ACQUIRED_PRACTICE__H0_LIVE`. |
 | **AUTHORITY** | `HOLD` — no native CAN008/CAN011 rule, no grant, no ADP017/ADP019 owner receipt, no C8 native custody, no C11/C12 native consumer, no Pyat N11/N12, no human A5. |
 
-**DONE:** public projection and private world custody; no owner/event identifier leak; no-action clock validation; unresolved owner evidence held as unavailable/not actual; resolver false paths; fresh-process cold replay; non-mutating verification; controlled positives; zero target proposals; prior foreign/consumer/legacy negatives preserved.
+**DONE:** public projection and private world custody; no owner/event identifier leak; no-action clock validation; unresolved owner evidence held as unavailable/not actual; resolver false paths; fresh-process cold replay; non-mutating verification; controlled positives; zero target proposals; prior foreign/consumer/legacy negatives preserved; bounded JOIN-E x S35 performed/omitted/refused material/E-help contrast; exact same-root clock incompatibility recorded; no new store.
 
-**REMAINING:** independent reverify of this exact repair; actual qualified A-local perception and A-owned action owner receipts; native CAN008/CAN011 issuer and grant; native C8/C11/C12 custody; H1 empirical acquisition study; human A5.
+**REMAINING:** independent reverify of this exact repair; a lawful same-root clock/branch migration decision for JOIN-E x S35 if the owner wants a full C9 weld; actual qualified A-local perception and A-owned action owner receipts; native CAN008/CAN011 issuer and grant; native C8/C11/C12 custody; H1 empirical acquisition study; human A5.
 
-**CRITICAL BLOCKER:** actual qualified A-local perception and A-owned action receipts are unavailable; native CAN008/CAN011 authority is unissued. Neither is fabricated here.
+**CRITICAL BLOCKER:** the JOIN-E E1 clock is outside the C12 frame (`242 > 10`) and its C9 event is already admitted; actual qualified A-local perception and A-owned action receipts are unavailable; native CAN008/CAN011 authority is unissued. None of these is fabricated here.
 
 **LARGEST MOVE:** one proportionate independent review of this exact sourcefree repair cut while all native/owner lanes stay held.
 
@@ -232,7 +271,7 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 ## 6. Limits / NOT_RUN
 
-- Only this return's 55 focused tests and the evidence generator were run. No corpus rebuild, no M35/DEV-R/JOIN-E/staged-input edits.
+- Only this return's 56 focused tests and the evidence generator were run. No corpus rebuild, no M35/DEV-R/JOIN-E/staged-input edits.
 - The positive P1 is explicitly controlled TEST_ONLY evidence, not actual A input. Actual qualified A-local perception and A-owned action occurrence/receipt are NOT_RUN; absent actual input is a typed hold.
 - The C9R consumer is the pinned code; only its in-process `evaluate_response` name is pointed at the S35 selector. `candidate.pipeline.py` bytes are unchanged and hash-verified.
 - All witnesses, C8/E1/C12 records, response receipts and target decisions are TEST_ONLY sourcefree. A sealed TEST_ONLY receipt proves local integrity, not issuer authenticity.
@@ -242,7 +281,7 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 ## 7. PROGRAMMA_DELTA
 
-`PROGRAMMA_DELTA:` S35 now keeps B owner/event identifiers and operation in private `world.json` custody and publishes only an opaque source commitment; validates no-action clocks as strictly as performed-action clocks; holds unresolved owner evidence as `ACTUAL_A_INPUT_UNAVAILABLE` / `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL` rather than actual or qualified; demonstrates fresh-process cold replay with byte-identical, non-mutating read-only verification; and preserves controlled positives, zero target proposals and all prior negatives, with exact limits: actual qualified A input, native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, H1 acquired practice and human A5 remain NOT_RUN/HOLD.
+`PROGRAMMA_DELTA:` S35 keeps B owner/event identifiers and operation in private `world.json` custody and publishes only an opaque source commitment; validates no-action clocks as strictly as performed-action clocks; holds unresolved owner evidence as `ACTUAL_A_INPUT_UNAVAILABLE` / `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL`; demonstrates fresh-process cold replay with non-mutating read-only verification; and its bounded JOIN-E x S35 proof now records the exact same-root incompatibility `JOIN_E_E1_TIME_242_OUTSIDE_C12_CLOCK_10__C9_EVENT_ALREADY_ADMITTED__FULL_S35_REEXECUTION_CLOCK_OUTSIDE_FRAME`, with no S35 C9 store created. Exact limits: actual qualified A input, a lawful same-root clock/branch weld, native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, H1 acquired practice and human A5 remain NOT_RUN/HOLD; the JOIN-E E-help contrast remains actual TEST_ONLY encounter evidence, while the S35 results on that root are typed hold/clock refusal only.
 
 ## 8. Publication
 
