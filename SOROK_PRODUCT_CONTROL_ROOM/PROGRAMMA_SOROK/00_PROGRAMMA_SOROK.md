@@ -1,3 +1,28 @@
+# CURRENT PROGRAMMA SOROK GUIDE — W7-I FIRST-PASS INTEGRATED W6 SOURCE / DEPENDENCY / SEAM FAN-IN
+
+**Status:** `FIRST_PASS_GUIDE_INTEGRATED__PENDING_INDEPENDENT_W7_D_S_C_P_AUDITS_AND_OWNER_ADOPTION`. **This is the lean finite MASTER GUIDE for finishing Sorok**, not the Sorok person, a scientific owner, a Pyat source issuer, an autonomous worker manager, a new controller or a separate platform. This W7-I update was made on `research/programma-sorok-w7i-w6-canonical-fanin-20261102-r1` **from exact frozen W5** `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`. W6-A `91a18a38c1f72b9d64ddc321e0a20dab5c8a3971`, W6-B `3cec9b96a605b018be7d266585f37a96bf636f84` and W6-C `ae82321ab8a028811bd7ce3e9c442beb5020c66c` are the *immutable source returns*, not self-accepted updates. W4 seven-question navigation PASS is scoped to W3, W5 W1 no-drop 100/100 remains scoped; this newer phase/readiness functionality has **not yet been cold-tested independently**.
+
+**Shortest practical route for an incoming agent:** specify the outcome and source claim (e.g., `C12@INTEGRATE [NATIVE]`, `A5@ACCEPT [HUMAN]`, `S14@SPECIFY`), then:
+- **[10 — CURRENT WORK-NOW by selected goal](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md)**: useful immediate work, real blockers, joint co-spec and avoided rebuilds.
+- **[06 — whole Sorok organism, SP sections and S0–S16 middle zoom](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md)**: original person/world/meaning/action/LLM/user product and source-grade architecture.
+- **[09 — 144 inherited exact component and historical mechanism IDs](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json)**: original M01–M40, C/A/N/O/E, actual version/first reader limits and W6-B local function descendants.
+- **[14 — 119 nested functions, 230 typed relations, 97 evidence leaves, 77 phase gates, 39 work packages](14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl)**: `ALL_OF/ANY_OF/IF`, source-qualified `KNOW/SPECIFY/BUILD/INTEGRATE/VERIFY/ACCEPT`, explicit missing owner/source stage leaves, reverse unlocks and chosen-goal READY status.
+- **[15 — 38 real producer→typed artifact/root/permission→first-consumer seams and W6-C gate effects](15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl)**: original `E001–E022` with 16 child seams; cross-worker W6B/W6C gate IDs remain `JOIN_PENDING`, NOT inferred exact by same target stage.
+- **[07 — source-grade GitHub locator](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json)**: 290 original W5 Git IDs unaltered, 14 extra distinct exact GitHub sources (304 real locator assets), separate W6-A 307 source/exception dispositions (209 heterogeneous semantically anchored, 92 indexed unread, four context/duplicate, two conditional unavailable).
+- **[08 — 22 original E seams, 22 D dependency anchors and linked W7 gate index](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json)**: exact parent statuses, source/candidate/owner native boundaries, independent negative and accepted exact cuts.
+- **[11 — static reference closure and four real target→first-work readbacks](11_CROSS_REFERENCE_STRUCTURAL_AND_NAVIGATION_SMOKE_READBACK_R1.json)**: C12 native, A5 human, S14 operational and C11 Pyat seam, plus a **hypothetical** one-leaf E008 receipt changing only the next joint-spec status; *not* an independent cold test.
+- **[13 — provenance/coverage and adoption limits](13_GUIDE_COVERAGE_AND_FINAL_HANDOFF_R1.md)** and unchanged **[12 — 100 W1 original finding dispositions](12_W1_W2_INPUT_DISPOSITIONS_R1.jsonl)**: preserve historical inputs; no reissued data/science grant.
+
+**Interpretation that prevents wrong assignments:** `READY_TO_SPECIFY` means documents and precedent permit a bounded design/owner-decision packet. `READY_NOW_SOURCEFREE_SCOPED` means a test harness or code action can be attempted only at synthetic/test scope. `OWNER_ACTION_READY_FOR_REQUEST_NOT_GRANT` is a real first work item, **not authority already granted**. `BLOCKED` and `SOURCE_UNKNOWN` are phase-specific, not an excuse to delay independent S5/S13/S14 work. A sourcefree `JOIN-V@7bf` independent acceptance does not accept `RRIF-R2@598d`, which has an **independent `REVISE_MATERIAL_DEFECTS`** review at `8090a1...`. Current PRE-MAIN m6 fail-closed guards and empirical `pre553 C11` do not prove a positive actor-to-live-user path or Sorok C11 weld.
+
+**Work-now directional summary:** To advance native C12, `WP-W6B-01` exact writer/reader matrix and `WP-02` sourcefree access test are feasible alongside Rule A/T science packets (`WP-03/04/05`), Sorok receiver/actor/C8 specs (`WP-08/10/11`), and Pyat owner request (`WP-09`); shared C9/C12 specification `WP-06` is **joint but waits on the completed matrix**, while native `WP-24` is blocked. Humane A5 independently requires `WP-14/17/18/37/34/35` SPECIFY now and actual S14 operated controls/S11 UX/S15 human proof later. S13 `WP-16` does **not** wait for Rule A. No numeric critical path or current working-worker claim is inferred. Incumbent HQ must check currentness and authorize actual work.
+
+**W7-I integrator scope:** edits only this existing guide and append-only W7-I worker-return evidence. The independent W7-D/S/C/P workers, not this integrator, check dependency validity, source omissions, exact currentness and whole human product. A separate later cold reader tests the newer stage/priority capability. This guide candidate **cannot approve itself**.
+
+---
+
+## Preserved W5 / earlier historical entrypoint
+
 # PROGRAMMA SOROK
 ## Complete psychological-developmental and human-product science, historical inheritance and source-qualified lived person
 
