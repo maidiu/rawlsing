@@ -1,5 +1,16 @@
 # ROADMAP:S06 — Field Forge F5 and demanded objective PRE-V3
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S06.1–S06.5; GAP-025–029.** F43 bounded partial F6/F7/field carriers do not constitute source-authorized F5 structural causal meaning. Later R06 [_validate_ff_admission](https://github.com/maidiu/rawlsing/blob/b2cfe93cee854b7aff2081a7a223ada75295332a/rawlsing_next/pre553_universal_world_binding.py#L683) refuses CONTEXT structural on **all three** public wrappers with CONTEXT_STRUCTURAL_AUTHORITY_HELD; even a real-looking admission object cannot grant Field Forge permission. Explicit **synthetic STRUCTURAL** values can enter local P41, not a real measured causal field. Historical FFX/A–B/C negative and owner theory forks remain separate; no Alias-by-name.
+
+**Seams:** ASTRA:IF:N4:N5 and conditional N13/LiTS D2 route where demanded; ASTRA:REQ:N5:N6 and S-F5 remain source/owner held, not green. **Next owner:** original FF F5 meaning/causality and source-right issuer with concrete N6 demanded receiving use; R06 refusals are valuable safety witnesses, not native F5 approvals.
+
+---
+
+
 **G4-P2 current developer view (GitHub S1, 2026-11-02):** Field Forge must preserve the difference between **an exact empirical conditional count**, **an admitted structural relation**, **objective-world function materialization**, and **causal or actor authority**. Present bridge code supports bounded mechanical transport/test only; no original35 source-native structural science, general N6 issuer or real F6/N9 first reader is granted. Original G2 evidence is retained below.
 
 **Navigate:** [five child functions](#s06-five-field-forge-functions) · [real transport](#s06-current-producerconsumer-and-proof-boundaries) · [circularity](#s06-homology-and-measurement-artifact-controls) · [FFX historical](#s06-historical-ffx-abc-vs-current-narrow-profile) · [gaps](#s06-smallest-unfinished-work-and-conditional-requirements) · [inherited G2](#inherited-g2-draft-evidence-retained). Neighbors: [F1–F4](04_F1_F4_EMPIRICAL.md) → [F6 nonpooling](07_F6_FIELDS.md), [F7 structural time](08_F7_TEMPORAL.md), [N9 world](09_N9_WORLD.md).
