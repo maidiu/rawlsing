@@ -7,6 +7,67 @@ purpose, explanations and alternatives, exact source/code cuts, actual consumers
 negative evidence, maturity gaps, owners and next lawful work. It is not the
 developmental person. No native, human A5, PRE-MAIN or owner adoption is issued.
 
+
+## LIVE-02 candidate delta-to-work-now adapter (2026-11-03)
+
+The same P0/P1 journal, state and reference engine now have an opt-in
+PROGRAMMA_DELTA reader in live_update_adapter.py. No second graph, workflow
+scheduler, data platform, native-person issuer or background agent exists.
+The frozen W8-R SOURCE GUIDE is
+a9ebf71e62d84e5dcc599662e976eca7fcd0e623. The adapter requires this
+exact local Git object, not a mutable branch head or copied unreviewed text.
+
+**Runner preflight:** fetch the exact W8-R source commit, 7bf JOIN-E, 4387
+JOIN-V, b65 S35 and 8090 RRIF source cuts to the local repo if absent.
+Run the adversarial Python tests only on a qualified S2 runner; Browser/GitHub
+source checks do not execute them.
+
+Use a TEMPORARY state with its own journal for trials; never mutate the committed
+operating state.json, SNAPSHOT.json, or the original guide during acceptance.
+
+    python3 living_reference.py --state /tmp/live02/state.json refresh
+    python3 live_update_adapter.py --state /tmp/live02/state.json freshness
+
+To admit an actual bounded sourcefree record, obtain the current exact
+journal_head from freshness, then:
+
+    python3 live_update_adapter.py --state /tmp/live02/state.json intake fixtures/join_e_scoped_review.json --expected-head CURRENT_JOURNAL_HEAD
+    python3 live_update_adapter.py --state /tmp/live02/state.json intake fixtures/s35_authored_sourcefree.json --expected-head NEW_CURRENT_JOURNAL_HEAD
+
+The fixture files identify real returned Git blobs. They are examples; neither
+JOIN-E's old scoped review nor S35's authored sourcefree NO_CHANGE candidate
+is an issued original CAN011 Rule T, native C9/C12, positive M6 or human Gate5.
+A caller-written claim of an independent reviewer, owner, selected Rule mode,
+new root or human acceptance is insufficient. An absent actual first consumer
+is displayed as NONE instead of invented.
+
+All entering-agent views use that single source-backed current state:
+
+    python3 live_update_adapter.py --state /tmp/live02/state.json whole
+    python3 live_update_adapter.py --state /tmp/live02/state.json focus C12@INTEGRATE
+    python3 live_update_adapter.py --state /tmp/live02/state.json source-to-product E021@VERIFY
+    python3 live_update_adapter.py --state /tmp/live02/state.json goal C9@INTEGRATE
+    python3 live_update_adapter.py --state /tmp/live02/state.json work-now
+    python3 live_update_adapter.py --state /tmp/live02/state.json changes-since a9ebf71e62d84e5dcc599662e976eca7fcd0e623
+    python3 live_update_adapter.py --state /tmp/live02/state.json freshness
+    python3 live_update_adapter.py --state /tmp/live02/state.json candidate-patch
+
+Also, the preexisting living_reference.py work-now command exposes a
+programma_live section after qualified PROGRAMMA_DELTA ingestion. ALL/ANY/IF
+truth is nonvacuous: prerequisites being eligible to attempt does not certify
+a stage receipt, selected owner law, working importer or downstream readiness.
+An exact reviewed 7bf member does not migrate to 598d/c784/RRIF. A review
+REVISE remains source/cut/claim scoped. Source withdrawal and restoration use
+the existing P0/P1 typed journal path; an unverified caller cannot erase
+a PROGRAMMA_DELTA event by appending a textual withdrawal.
+
+The candidate-patch command emits exact candidate changes FOR HQ REVIEW ONLY.
+The adapter does not silently edit W8-R's 00/06-15 guide. LIVE-02 is a code
+candidate, not operating adoption; runtime tests, security acceptance and
+independent reviewer results require separate receipts.
+
+---
+
 ## Current cut
 
 | Item | Exact value |
