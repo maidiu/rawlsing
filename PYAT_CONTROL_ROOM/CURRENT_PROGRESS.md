@@ -1,6 +1,10 @@
+# Same-source resume-to-consumer candidate — independent review running
+
+Candidate `ea503425a6f3de29649b78587c7bcb0c2051b7ee` has 34 author tests passing; not independently accepted. The existing distinct reviewer is checking the actual common lineage, both narrow repairs, severance/restore and cross-process limits. R09 D1/D4 host trust remains held. No protected adoption or original-source qualification.
+
 # Clean receiving/resume sourcefree candidate — 2026-11-03
 
-`8779504a63`: nine exact lineage files on current980base; currentB5/M2preserved;17+8HQtests pass; focused distinct review pending. See PROGRAMMA transition `PYAT-HQ-CLEAN-RECEIVING-RESUME-ASSEMBLY-20261103` and pairedJSON. Prior acceptances retained below; no protected adoption.
+`8779504a63`: nine exact lineage files on current980base; currentB5/M2preserved;17+8HQtests pass; focused distinct review independently passed at separate-fixture scope (review `e24b70eac51d0894c7e5af7604ab7afc2376dbe6`) and HQ accepted that bounded scope. See PROGRAMMA transition `PYAT-HQ-CLEAN-RECEIVING-RESUME-ASSEMBLY-20261103` and pairedJSON. Prior acceptances retained below; no protected adoption.
 
 # HQ bounded independent disposition — 2026-11-03
 

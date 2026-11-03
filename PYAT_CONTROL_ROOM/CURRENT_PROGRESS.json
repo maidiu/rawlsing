@@ -133,16 +133,17 @@
       "native": "NO_ORIGINAL_SOURCE_OR_SCIENTIFIC_CLAIM"
     },
     "same_source_trace_job": {
-      "state": "LAUNCHED_NOT_COMPLETED",
-      "task": "pyat-same-source-resume-consumer-20261103",
-      "session": "ses_e98c905cbffekusoHURfKyEUKG",
-      "pid": 64157,
-      "branch": "agent/pyat-same-source-resume-consumer-20261103-r1",
-      "commission_commit": "f9d9363162",
+      "transition_id": "PYAT-HQ-SAME-SOURCE-CANDIDATE-REVIEW-20261103",
+      "observed_at_utc": "2026-11-03T14:15:22.598685+00:00",
+      "kind": "AUTHOR_CANDIDATE_INDEPENDENT_REVIEW_RUNNING",
+      "candidate": "ea503425a6f3de29649b78587c7bcb0c2051b7ee",
       "base": "8779504a638ff39d6904ed2faf5a718242084c4e",
-      "scope": "Existing R91/R95 same-source governed partial resume through actual R05/P41 consumer; TEST_ONLY",
-      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-hq-20261103/pyat-same-source-resume-consumer-20261103/completion.json",
-      "notification": "FINITE_EXISTING_CONTROLLER_NO_POLLING"
+      "evidence": "34 author tests pass; actual same-source partial resume to R05/P41 claimed; independent review pending",
+      "review_job": "pyat-same-source-independent-review-20261103",
+      "review_pid": 85565,
+      "adoption": "NONE",
+      "limits": "TEST_ONLY; downstream cross-process byte hashes not asserted identical; no original source/science/protected integration",
+      "remaining": "Independent common-lineage/consumer/repair qualification; then authorized receiving procedure only. R09 D1/D4 host/admin authority remains held."
     }
   }
 }
