@@ -1,4 +1,23 @@
 # LAUNCH — PROGRAMMA SOROK W6-A — MAXIMAL USEFUL GITHUB ASSET COVERAGE / SEMANTIC PLACEMENT
+
+## USER REQUIREMENT R2 — SOURCE COVERAGE MUST REDUCE ACTUAL PREREQUISITE WORK (2026-11-02)
+
+Read sibling 05_EXECUTABLE_DEPENDENCY_READINESS_AND_PRIORITY_CONTRACT_R2.md before investigation. The purpose of inventory coverage is not a prettier archive; it is to ensure we never issue BUILD or KNOW work while the needed source/implementation/decision ALREADY EXISTS unrecognized, and to expose exactly which precursor remains unmet.
+
+**Additional mandatory outputs within the original files and one additional compact JSONL:**
+- Attach every material asset to its relevant original and SP guide identifiers **and when supported** specific target@KNOW/SPECIFY/BUILD/INTEGRATE/VERIFY/ACCEPT phase or precursor gate. If source only provides context, say CONTEXT_ONLY, not automatically SATISFIED.
+- When historical code implements a needed function, identify exact capability/contract and evidence scope; note whether it is reusable as-is, requires adaptation, has no current importer, or was superseded by an accepted alternative. Historic existence is NOT native completion but may meaningfully shorten the next work.
+- When a document already settles a design/science/owner issue, give exact authorized decision and its grade; when only a proposal or negative court exists, mark proposed/unissued or excluded rather than unblock implementation.
+- If a necessary answer depends on a missing asset named in GitHub, give the **specific KNOW prerequisite**, exact Library/mainMac candidate location and question whose resolution would change which work is ready, not a generalized source-hunt ticket.
+- Supply a small `SOURCE_ALREADY_EXISTS__AVOID_REBUILD` sample, and a `SOURCE_MISSING__NEED_TO_KNOW_FIRST` sample with current source cuts. Demonstrate how each changes the candidate work-now view for a real Sorok component.
+- Where another W6 worker proposes a dependency/seam child ID not yet known because of parallel execution, use a stable original component ID and target stage as join key. No separate graph/platform.
+
+**Additional required file:** 05_EXISTING_EVIDENCE_TO_PREREQUISITE_STATUS.jsonl — record with source asset ID, target original component@stage, exact function/decision/evidence, `PROVEN_SCOPED / CANDIDATE_ONLY / HELD / SOURCE_UNKNOWN / HISTORICAL_REUSE` and impact on work-now readiness. It is a proposed crosswalk, NOT proof that every path-only source has been read.
+
+This R2 block materially strengthens but does NOT replace the original GitHub-wide source-family census, no-drop semantic disposition and exact unmatched/targeted external reference requirements below.
+
+---
+
 **ROLE:** Independent deep source-index and original/historical estate reconciliation specialist; NOT Sorok HQ, CODEX native engineer, science issuer or self-reviewer.
 **BRANCH:** `research/programma-sorok-w6a-source-coverage-20261102-r1` (create from W5 cut, isolated).
 **RETURN:** `WORKER_RETURNS/PROGRAMMA_SOROK_W6A_SOURCE_COVERAGE_20261102_R1/`.
