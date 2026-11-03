@@ -1,0 +1,229 @@
+{
+  "actual_view_coverage": {
+    "actual_views": 84,
+    "all_cold_view_hashes_equal": true,
+    "all_positive": true,
+    "cold_views": 84,
+    "first_refusals": {}
+  },
+  "cold_replay": {
+    "same_families": true,
+    "same_state": true,
+    "same_view_hash": true,
+    "second": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "expected": {
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "n9_selection_fields": [
+      "mode",
+      "valid_at",
+      "published_asof"
+    ],
+    "providers": {
+      "learned_release": "E04L_M1_M2_B5_READTHROUGH@1",
+      "n10e_empirical": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w_progressive": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "n9_world": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+    },
+    "selected_view_key": "base/TEST_CURRENT/budget5"
+  },
+  "five_recorded_mutations": {
+    "mutated_n9_selection": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "revoked_n9_currentness": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_N9_CURRENTNESS_INVALID",
+      "state": "REFUSED",
+      "view_hash": "58801094752287a73aa7db048baf3b65d8d4b24b59b77c0a68577ee3355548a3",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_n10e_provider_version": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_n10w_provider_version": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_n9_provider_version": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "missing_parents_and_compatibility": {
+    "missing_joined_receipt": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_VIEW_NOT_FOUND",
+      "state": "REFUSED",
+      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_n10e_steps": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_CONSUMER_NOT_PRODUCTIVE",
+      "state": "REFUSED",
+      "view_hash": "0432710c387cd2051c44806114baf884af9f64b2d7d4a6ebe02f116319e66ca4",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_n9_provider": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_p41_receipt": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_VIEW_NOT_FOUND",
+      "state": "REFUSED",
+      "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "missing_required_field": {
+      "families": null,
+      "field_ids": [
+        "training_access"
+      ],
+      "reason_code": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS",
+      "state": "REFUSED",
+      "view_hash": "b3b77c906426d7bdb4b9bc514c8c633df78ba27d9712612ef6d5ce1d19c3926e",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_as_of": {
+      "families": null,
+      "field_ids": [],
+      "reason_code": "JOINED_AS_OF_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "857f5f90ec9371a5ebd790048c79cf4448ea879725b9c142c2ede5c95454b6ce",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "wrong_source_rows": {
+      "families": null,
+      "field_ids": [],
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "0ee2070f03ba078e7b93aaff628dd8cb1dbf63173329e12cb94d0c47273b705b",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "positive": {
+    "families": {
+      "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+    },
+    "field_ids": [
+      "training_access",
+      "civil_sanction"
+    ],
+    "reason_code": "WORLD_SELECTED_VIEW",
+    "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+    "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+    "view_key": "base/TEST_CURRENT/budget5"
+  },
+  "provider_source": "f53cb0d2bce52640268c844c398bbd8007d28edc:WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+  "provider_source_sha256": "4bab407129b1b385585f287b948bcde4d5ffaa4affe53b78cefdf6c6c981b399",
+  "r05_substitution_refused": {
+    "families": null,
+    "field_ids": [
+      "training_access",
+      "civil_sanction"
+    ],
+    "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+    "state": "REFUSED",
+    "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+    "view_key": "base/TEST_CURRENT/budget5"
+  },
+  "receipt": {
+    "p41_content_hash": "339af8fd45d13f24604a22a579a8920d89ebe185ca7d26be421aa7cb248cdf00",
+    "p41_hash_valid": true,
+    "parent_receipt_2_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "parent_receipt_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "receipts_byte_equal": true,
+    "source_rows_hash": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02"
+  },
+  "schema": "PDEV01_N10W_GUARD_WITNESS@1",
+  "stale_hash": {
+    "families": null,
+    "field_ids": [
+      "training_access",
+      "civil_sanction"
+    ],
+    "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
+    "state": "REFUSED",
+    "view_hash": "ca37ac8e26ceba7d22a182c3ec752cbf24bfa077150f55e9868b36956739c120",
+    "view_key": "base/TEST_CURRENT/budget5"
+  },
+  "summary": {
+    "cold_replay_preserved": true,
+    "five_mutations_rejected": true,
+    "missing_parents_rejected": true,
+    "positive_preserved": true,
+    "r05_substitution_rejected": true,
+    "stale_hash_rejected": true
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "actual_positive": {
+    "families": {
+      "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+      "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+      "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+    },
+    "field_ids": [
+      "training_access",
+      "civil_sanction"
+    ],
+    "reason_code": "WORLD_SELECTED_VIEW",
+    "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+    "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+    "view_key": "base/TEST_CURRENT/budget5"
+  },
+  "author_self_acceptance": false,
+  "branch": "agent/pyat-pdev01-n10w-join-r1",
+  "cold_replay": {
+    "same_families": true,
+    "same_state": true,
+    "same_view_hash": true,
+    "second": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "commands": {
+    "run": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=\"WORKER_RETURNS/PDEV01-N10W-JOIN/repair:$PWD\" python3 WORKER_RETURNS/PDEV01-N10W-JOIN/repair/run_guard_checks.py"
+  },
+  "coverage": {
+    "actual_views": 84,
+    "all_cold_view_hashes_equal": true,
+    "all_positive": true,
+    "cold_views": 84,
+    "first_refusals": {}
+  },
+  "hashes": {
+    "GUARD_WITNESS.json": "09073c64e3d469d34b1471d4bbd06abeff274badb976882b1df89ff7fc429276",
+    "J42_RECEIPTS.json": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "RETURN.md": "1735a2c154fc8bee55e917f472606b99b2a7ee5451e6cebcba2834292231e878",
+    "VERSION_AND_IDENTITY_NEGATIVES.json": "a5676873d15c6e6778b09d66e75b5a9d27c08ce8e25129e2e7849fb99c692c7a",
+    "guarded_receiver.py": "3808788aa921a59deadccdd178accb136bbef34e69957c6f185b586e3bc32d70",
+    "run_guard_checks.py": "98850080e37d4956fef151f1fc8347840a16f6e948a2f943c5fef33dc8a17ffe"
+  },
+  "independent_review_required": true,
+  "limits": [
+    "The overlay fixes the public receiver only in the isolated candidate; production receiver remains unchanged.",
+    "W41 N9 is CURRENT_TEST_ONLY_SELECTION, not operative N9.",
+    "All values are sourcefree TEST_ONLY."
+  ],
+  "model": {
+    "model": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "variant": "max",
+    "verified": true
+  },
+  "overlay_root": "WORKER_RETURNS/PDEV01-N10W-JOIN/repair/",
+  "rejections": {
+    "five_recorded_mutations": {
+      "mutated_n9_selection": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "513c59f8122b3358620df6ee3d98d842c85638774b38487f42ee977c1b51b986",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "revoked_n9_currentness": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_N9_CURRENTNESS_INVALID",
+        "state": "REFUSED",
+        "view_hash": "58801094752287a73aa7db048baf3b65d8d4b24b59b77c0a68577ee3355548a3",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "wrong_n10e_provider_version": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "wrong_n10w_provider_version": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "wrong_n9_provider_version": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
+    "missing_parents_and_compatibility": {
+      "missing_joined_receipt": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_VIEW_NOT_FOUND",
+        "state": "REFUSED",
+        "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "missing_n10e_steps": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_CONSUMER_NOT_PRODUCTIVE",
+        "state": "REFUSED",
+        "view_hash": "0432710c387cd2051c44806114baf884af9f64b2d7d4a6ebe02f116319e66ca4",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "missing_n9_provider": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "missing_p41_receipt": {
+        "families": null,
+        "field_ids": [
+          "training_access",
+          "civil_sanction"
+        ],
+        "reason_code": "JOINED_VIEW_NOT_FOUND",
+        "state": "REFUSED",
+        "view_hash": "d66279f5722e9c25a87096e9eeb12c0653a5a0fb36b00766de36454ce09fea96",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "missing_required_field": {
+        "families": null,
+        "field_ids": [
+          "training_access"
+        ],
+        "reason_code": "WORLD_REQUIRES_AT_LEAST_TWO_FIELDS",
+        "state": "REFUSED",
+        "view_hash": "b3b77c906426d7bdb4b9bc514c8c633df78ba27d9712612ef6d5ce1d19c3926e",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "wrong_as_of": {
+        "families": null,
+        "field_ids": [],
+        "reason_code": "JOINED_AS_OF_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "857f5f90ec9371a5ebd790048c79cf4448ea879725b9c142c2ede5c95454b6ce",
+        "view_key": "base/TEST_CURRENT/budget5"
+      },
+      "wrong_source_rows": {
+        "families": null,
+        "field_ids": [],
+        "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+        "state": "REFUSED",
+        "view_hash": "0ee2070f03ba078e7b93aaff628dd8cb1dbf63173329e12cb94d0c47273b705b",
+        "view_key": "base/TEST_CURRENT/budget5"
+      }
+    },
+    "r05_substitution": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "da5240db6cc412c00c0512218f5162e546b91b065c765c94faa4f1b530dc8519",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "stale_hash": {
+      "families": null,
+      "field_ids": [
+        "training_access",
+        "civil_sanction"
+      ],
+      "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "ca37ac8e26ceba7d22a182c3ec752cbf24bfa077150f55e9868b36956739c120",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "repair": {
+    "existing_receiver": "rawlsing_next.pre553_universal_world_binding.select_joined_world_view",
+    "hash_contract": "existing rawlsing_next.pre553_empirical_objects.semantic_hash",
+    "module": "repair/guarded_receiver.py",
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "production_receiver_changed": false,
+    "provider_constants_source": {
+      "commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+      "expected_providers": {
+        "learned_release": "E04L_M1_M2_B5_READTHROUGH@1",
+        "n10e_empirical": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w_progressive": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9_world": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "path": "WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py",
+      "sha256": "4bab407129b1b385585f287b948bcde4d5ffaa4affe53b78cefdf6c6c981b399"
+    },
+    "r05_substitution": false,
+    "selected_clock_fields": [
+      "mode",
+      "valid_at",
+      "published_asof"
+    ]
+  },
+  "repair_base": "30b04c762bc4edd5e2e672d8d76b1e6e4ff84190",
+  "schema": "PDEV01_N10W_J42_IDENTITY_REPAIR_RETURN@1.0.0",
+  "scope_holds": [
+    "TEST_ONLY",
+    "sourcefree W41/E41/P41 and synthetic E04 only",
+    "no operative N9/CURRENT",
+    "no original data",
+    "no production edits",
+    "no merge",
+    "no CI",
+    "no N11/N12",
+    "no authority expansion"
+  ],
+  "status": "CANDIDATE__TEST_ONLY__INDEPENDENT_REVIEW_REQUIRED",
+  "summary": {
+    "cold_replay_preserved": true,
+    "five_mutations_rejected": true,
+    "missing_parents_rejected": true,
+    "positive_preserved": true,
+    "r05_substitution_rejected": true,
+    "stale_hash_rejected": true
+  },
+  "verdicts": {
+    "acceptance": "PENDING_DISTINCT_NONAUTHOR_REVIEW",
+    "authority": "HOLD",
+    "engineering": "PASS_SCOPED_REPAIR__J42_EXACT_IDENTITY_GUARD",
+    "source_science": "HOLD"
+  }
+}
