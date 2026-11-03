@@ -3,6 +3,8 @@
 
 **Full name:** **Programma Pyat — Source → Objective World → Selected Possibility**.
 **Parent constitution:** `../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`. **Twin:** `../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md`.
+**BINDING FOR ALL PROGRAMMA HISTORICAL-RECOVERY AND WORK SELECTION:** Read [Historical function succession and five-test work-selection law](05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) **before treating an old symbol, missing index crosslink, historical function or returned code asset as a current build requirement**. Every legacy-driven engineering commission must document current necessity, current accepted/composed successor comparison, actual first consumer, scientific/source suitability, and comparative benefit; otherwise status is COMPARE_ONLY/NO_BUILD. Codex HQ must use this law at the point of selecting consequential next work, not merely catalog it. See the current SAT-R source-cut guide separately until authorized receiving; do not infer that unmerged guide is already PRE-MAIN.
+
 **Status:** User-approved Programma Pyat scope/naming, canonically referenced when this document is merged into PRE-MAIN. It does not establish independent scientific/source authority, N11/N12 admission, local execution, new HQ appointment, dispatch or Sorok actor permissions. Current governing files and full epistemic inherited code remain controlling.
 
 ### Terminal demand: NOT a hand-selected analysis service
