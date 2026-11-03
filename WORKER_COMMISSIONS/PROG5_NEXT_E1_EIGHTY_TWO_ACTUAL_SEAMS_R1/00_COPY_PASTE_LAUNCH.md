@@ -15,6 +15,7 @@ WHY_NOT_CODEX_HIGH: No native S2 execution is part of this commission.
 WHY_NOT_MIDDLE: High proposed for complex adversarial source judgment; user may select Middle.
 SCIENCE_SOURCE_ACTOR_AUTHORITY: NONE newly granted. Original35 source, science, host, N11/N12, Sorok actor and protected receiving remain with competent owners.
 POST_RETURN_INDEPENDENT_REVIEW: Separate nonauthor reviewer required for actual acceptance; no self-acceptance.
+RETURN_REQUIREMENT: Complete a final return file with exact commit SHA, source evidence, reviewer limits, and explicit nonadoption status.
 AGENT_TYPE: Independent I3+ Pyat engineering source/consumer/ABI investigator; NOT Pyat HQ, original science issuer, product implementer, receiver or own reviewer.
 INTELLIGENCE_LEVEL: I3+
 REPOSITORY: maidiu/rawlsing (PRIVATE)
