@@ -8,6 +8,8 @@ action separately, and only then calls the normal S35 response selector.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
+from pathlib import Path
 from typing import Any, Mapping
 
 from candidate import (
@@ -160,13 +162,110 @@ def missing_source_owner_contract(
     }
 
 
+JOIN_SCHEMA = "SOROK_SAME_PERSON_JOIN@1"
+REFUSAL_SCHEMA = "SOROK_SAME_PERSON_REFUSAL@1"
+
+
+def _read_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf8"))
+
+
+def _persisted_provenance(state_root: Path) -> dict:
+    state_root = Path(state_root).resolve()
+    session_path = state_root / "session.json"
+    if not session_path.is_file():
+        return {"ok": False, "error": "SESSION_META_MISSING"}
+    session = _read_json(session_path)
+    schema = session.get("schema")
+    if schema == JOIN_SCHEMA:
+        c9_path = state_root / "bp2" / "c9.sqlite"
+        provenance_path = state_root / "product" / "bp2_join.json"
+    elif schema == REFUSAL_SCHEMA:
+        c9_path = state_root / "source" / "bp2" / "c9.sqlite"
+        provenance_path = state_root / "product" / "refusal.json"
+    else:
+        return {"ok": False, "error": "UNKNOWN_SESSION_SCHEMA"}
+    if not provenance_path.is_file():
+        return {"ok": False, "error": "PROVENANCE_MISSING"}
+    provenance = _read_json(provenance_path)
+    if schema == JOIN_SCHEMA:
+        journal_path = Path(provenance["artifacts"]["journal_path"])
+        occurrence_id = provenance["persisted"]["c8_occurrence_id"]
+        provenance_source = provenance.get("r31j_source")
+        c8_digest = provenance.get("persisted", {}).get(
+            "c8_state_digest", provenance.get("r31j_c8_state_digest")
+        )
+        actor_snapshot = provenance.get("r31j_actor_snapshot")
+    else:
+        c8 = provenance.get("c8") or {}
+        journal_path = Path(c8.get("journal_path", ""))
+        occurrence_id = c8.get("occurrence_id")
+        provenance_source = provenance.get("j_source")
+        c8_digest = c8.get("c8_state_digest")
+        actor_snapshot = provenance.get("actor_snapshot")
+    if not journal_path.is_file():
+        return {"ok": False, "error": "C8_JOURNAL_MISSING"}
+    journal = _read_json(journal_path)
+    entries = (journal.get("state") or {}).get("ledger") or []
+    entry = next(
+        (row for row in entries if row.get("occurrence_id") == occurrence_id),
+        None,
+    )
+    if entry is None:
+        return {"ok": False, "error": "C8_OCCURRENCE_MISSING"}
+    payload = (
+        ((entry.get("identity_preimage") or {}).get("payload"))
+        or entry.get("payload")
+        or {}
+    )
+    return {
+        "ok": True,
+        "state_root": state_root,
+        "session": session,
+        "session_schema": schema,
+        "c9_path": c9_path.resolve(),
+        "c12_path": (state_root / "product" / "c12.sqlite").resolve(),
+        "branch_id": session.get("branch_id"),
+        "root_branch_id": session.get("root_branch_id", "root"),
+        "source_actor_map": session.get("source_actor_map") or {},
+        "source": session.get("j_source"),
+        "provenance_source": provenance_source,
+        "journal_source": payload.get("gm01_pre_c9_source"),
+        "journal_clock": entry.get("causal_time"),
+        "journal_state_digest": journal.get("state_digest"),
+        "journal_content_hash": entry.get("content_hash"),
+        "journal_occurrence_id": occurrence_id,
+        "journal_actor": payload.get("actor") or {},
+        "journal_actor_id": (payload.get("actor") or {}).get("actor_id"),
+        "journal_other_actor_id": (payload.get("other_actor") or {}).get(
+            "actor_id"
+        ),
+        "c8_digest": c8_digest,
+        "e1_hash": session.get("j_e1_event_hash"),
+        "actor_snapshot": actor_snapshot,
+        "provenance_path": provenance_path,
+        "journal_path": journal_path,
+    }
+
+
 def read_occurrence(
     bundle: Mapping[str, Any],
     *,
     clock_binding_override: Mapping[str, Any] | None = None,
 ) -> OccurrenceRead:
-    c9 = read_c9_summary(bundle)
-    event_hash = str(bundle["e1_event_hash"])
+    state_root = Path(str(bundle.get("state_root", ""))).resolve()
+    provenance = _persisted_provenance(state_root)
+    if not provenance.get("ok"):
+        return OccurrenceRead(
+            ok=False,
+            checks={str(provenance.get("error", "PROVENANCE_FAILURE")): False},
+            occurrence=None,
+            missing_contract=missing_source_owner_contract(
+                missing_fields=(str(provenance.get("error", "PROVENANCE_FAILURE")),),
+            ),
+        )
+    c9 = read_c9_summary({"c9_path": str(provenance["c9_path"])})
+    event_hash = str(provenance["e1_hash"])
     event_pair = next(
         ((key, body) for key, body in c9["occurrences"] if key == event_hash),
         None,
@@ -174,29 +273,113 @@ def read_occurrence(
     event_body = event_pair[1] if event_pair else {}
     event = dict(event_body, hash=event_hash) if event_pair else {}
     event_clock = int(event.get("time", bundle.get("event_time", 0)))
-    c12 = read_c12(bundle["c12_path"])
-    branch_id = str(bundle["branch_id"])
+    c12 = read_c12(provenance["c12_path"])
+    branch_id = str(provenance["branch_id"])
     root_branch = c12["branches"].get("root")
     branch = c12["branches"].get(branch_id)
-    root_state = (c12["checkpoints"].get("root") or [{}])[-1]
+    root_checkpoints = c12["checkpoints"].get("root") or [{}]
+    root_state = root_checkpoints[-1]
+    initial_root_state = root_checkpoints[0]
     branch_clock = int(c12["last_clock"].get(branch_id, 0))
-    source = dict(bundle["source"])
+    root_actors = ((initial_root_state.get("state") or {}).get("actors") or {})
+    actor_block = root_actors.get("A") or {}
+    actor_state = actor_block.get("state")
+    persisted_actor_snapshot = {
+        "state": actor_state,
+        "state_hash": digest(actor_state) if isinstance(actor_state, Mapping) else "",
+        "hash": actor_block.get("snapshot_hash", ""),
+        "last_clock": actor_block.get("last_clock", 0),
+        "source_ref": actor_block.get("source_ref", ""),
+        "source_hash": actor_block.get("source_hash", ""),
+    }
+    source = dict(provenance["source"] or {})
     binding = (
         dict(clock_binding_override)
         if clock_binding_override is not None
         else _clock_binding(event_clock, branch_clock)
     )
+    bundle_source = (
+        dict(bundle.get("source"))
+        if isinstance(bundle.get("source"), Mapping)
+        else {}
+    )
+    bundle_actor = (
+        dict(bundle.get("actor_snapshot"))
+        if isinstance(bundle.get("actor_snapshot"), Mapping)
+        else {}
+    )
     identity_rows = [
         (event_id, ref) for event_id, ref in c9["event_identity"]
     ]
     checks = {
+        "session_meta_present": True,
+        "state_root_matches_session": Path(
+            str(provenance["session"].get("state_root", ""))
+        ).resolve()
+        == state_root,
+        "product_root_matches_session": Path(
+            str(provenance["session"].get("product_root", ""))
+        ).resolve()
+        == (state_root / "product").resolve(),
+        "c9_path_canonical": Path(str(bundle.get("c9_path", ""))).resolve()
+        == provenance["c9_path"],
+        "c12_path_canonical": Path(str(bundle.get("c12_path", ""))).resolve()
+        == provenance["c12_path"],
+        "branch_id_matches_session": bundle.get("branch_id") == branch_id,
+        "root_branch_id_matches_session": provenance["root_branch_id"] == "root",
+        "source_actor_map_matches_session": bundle.get("source_actor_map")
+        == provenance["source_actor_map"],
+        "bundle_source_matches_session": bundle_source == provenance["source"],
+        "bundle_source_matches_journal": bundle_source
+        == provenance["journal_source"],
+        "session_source_matches_journal": provenance["source"]
+        == provenance["journal_source"],
+        "sidecar_source_matches_session": provenance["provenance_source"]
+        == provenance["source"],
+        "journal_source_present": isinstance(
+            provenance["journal_source"], Mapping
+        ),
+        "c8_digest_matches_session": bundle.get("c8_state_digest")
+        == provenance["c8_digest"],
+        "c8_digest_matches_journal": provenance["c8_digest"]
+        == provenance["journal_state_digest"],
+        "event_hash_matches_session": event_hash == str(provenance["e1_hash"]),
+        "bundle_event_hash_matches": bundle.get("e1_event_hash") == event_hash,
         "event_row_present": bool(event_pair),
-        "event_hash_is_c9_key": bool(event_pair) and event_pair[0] == event_hash,
+        "event_hash_is_c9_key": bool(event_pair)
+        and event_pair[0] == event_hash,
         "event_id_matches_identity": any(
             event_id == event.get("event_id") and ref == event_hash
             for event_id, ref in identity_rows
         ),
-        "event_time_matches_bundle": event_clock == int(bundle["event_time"]),
+        "event_time_matches_journal": event_clock
+        == int(provenance["journal_clock"] or -1),
+        "bundle_event_time_matches": int(bundle.get("event_time", -1))
+        == event_clock,
+        "bundle_event_id_matches": bundle.get("event_id") == event.get("event_id"),
+        "actor_id_matches_session": provenance["source_actor_map"].get(
+            "TEST_ONLY_R31J_A"
+        )
+        == provenance["journal_actor_id"],
+        "other_actor_id_matches_session": provenance["source_actor_map"].get(
+            "TEST_ONLY_R31J_B"
+        )
+        == provenance["journal_other_actor_id"],
+        "actor_snapshot_present": bool(bundle_actor),
+        "actor_snapshot_source_ref_matches_c8": bundle_actor.get("source_ref")
+        == provenance["journal_actor"].get("source_ref"),
+        "actor_snapshot_source_hash_matches_c8": bundle_actor.get("source_hash")
+        == provenance["journal_actor"].get("source_hash"),
+        "actor_snapshot_actor_id_matches_c8": (
+            (bundle_actor.get("state") or {}).get("actor_id")
+            == provenance["journal_actor"].get("actor_id")
+        ),
+        "actor_snapshot_source_ref_matches_c12": bundle_actor.get("source_ref")
+        == actor_block.get("source_ref"),
+        "actor_snapshot_source_hash_matches_c12": bundle_actor.get("source_hash")
+        == actor_block.get("source_hash"),
+        "actor_snapshot_authority_from_persisted_c12": True,
+        "bundle_actor_snapshot_ignored_as_authority": True,
         "event_clock_source": binding.get("event_clock_source")
         == EVENT_CLOCK_SOURCE,
         "event_clock_domain": binding.get("event_clock_domain") == EVENT_DOMAIN,
@@ -236,7 +419,7 @@ def read_occurrence(
             occurrence=None,
             missing_contract=missing_source_owner_contract(
                 event_hash=event_hash,
-                event_id=str(bundle.get("event_id", "")),
+                event_id=str(event.get("event_id", bundle.get("event_id", ""))),
                 event_clock=event_clock,
                 branch_clock=branch_clock,
                 root_id="root",
@@ -265,10 +448,33 @@ def read_occurrence(
         "branch_parent_id": branch.get("parent_branch_id"),
         "branch_fork_clock": branch.get("fork_clock"),
         "source": source,
-        "actor_id": bundle["source_actor_map"]["TEST_ONLY_R31J_A"],
+        "actor_id": provenance["source_actor_map"]["TEST_ONLY_R31J_A"],
+        "actor_snapshot": {
+            "state": actor_state,
+            "state_hash": digest(actor_state)
+            if isinstance(actor_state, Mapping)
+            else "",
+            "hash": actor_block.get("snapshot_hash", ""),
+            "last_clock": provenance["journal_actor"].get("clock", 0),
+            "source_ref": actor_block.get("source_ref", ""),
+            "source_hash": actor_block.get("source_hash", ""),
+        },
         "source_material_access": source_material_access(source),
-        "actor_snapshot": dict(bundle["actor_snapshot"]),
         "c9": c9,
+        "c9_path": str(provenance["c9_path"]),
+        "c12_path": str(provenance["c12_path"]),
+        "provenance": {
+            "session_schema": provenance["session_schema"],
+            "branch_id": provenance["branch_id"],
+            "root_branch_id": provenance["root_branch_id"],
+            "c8_digest": provenance["c8_digest"],
+            "journal_state_digest": provenance["journal_state_digest"],
+            "journal_occurrence_id": provenance["journal_occurrence_id"],
+            "journal_content_hash": provenance["journal_content_hash"],
+            "journal_clock": provenance["journal_clock"],
+            "provenance_path": str(provenance["provenance_path"]),
+            "journal_path": str(provenance["journal_path"]),
+        },
         "duplicate_admission": False,
         "new_store_created": False,
         "c9_read_only": True,

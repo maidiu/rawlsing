@@ -39,6 +39,8 @@ def _actor_record(life) -> tuple[dict, dict]:
         "state_hash": snapshot["state_hash"],
         "last_clock": snapshot["last_clock"],
         "hash": snapshot["hash"],
+        "source_ref": source.source_ref,
+        "source_hash": source.source_hash,
     }
 
 

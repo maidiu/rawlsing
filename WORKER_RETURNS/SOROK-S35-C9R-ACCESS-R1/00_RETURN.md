@@ -107,24 +107,24 @@ Evidence files:
 B source event hash (M35 share)  16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486
 C8 state digest                  e472d9f9331cd827e70902232419eb0cc8dc590c9503e2f3040501eec84bb6fb
 E1 event                         TEST_ONLY_BP2_E1_OCC-0001
-E1 hash                          8d521ad0827e6d7290c92b011fd881f390aef20370e412ff0a950f2f4ff140bf
+E1 hash                          77b8874d68810b835c680f85dbcb4fd3019012ac0ac8d1990a6758967fa10146
 C12 root / branch                root / s35
 root branch hash                 602e191a79c713d4dd3ec7ba93caf7d7b6ee7db0fb17e2b673b23ca40abb0dc6
 root state hash                  406a019d868884a1797c44e59b3bf9a2bb3547afc0b46fe0695e3938ef78573d
 branch hash                      2f7016268ff5ed9a73075ed0c25c0d5bd5ac072a2356f68980633ae266f35523
 branch fork / frame clock        242 / 244
 actor                            TEST_ONLY_BP1_R26V_ACTOR_A
-perception ref / hash            TEST_ONLY_A_PERCEPTION_P1 / d6800b79e52f69831a946a53bdb942eb30b58d82d3efa8b57ad74d2766ef916c
-action ref / hash                TEST_ONLY_A_ACTION_P1 / f84acde30c6e7a90ba83968e5576cbaae502262e5f64f1fd28638ffbdc58b93d
+perception ref / hash            TEST_ONLY_A_PERCEPTION_P1 / c45fba70492aed0b27ee506a3623ba32715c64047b525b1fe2789596a1d96164
+action ref / hash                TEST_ONLY_A_ACTION_P1 / 476c13c80722b134893708dee8a013d2eaa52cebce79d4cd4f568c0109dfbe38
 action kind / performed          REQUEST_TOOL / true (explicit controlled receipt)
 evidence grade                   TEST_ONLY_CONTROLLED_FIXTURE
 actual actor input               false
 qualification                    CONTROLLED_ENGINEERING_EVIDENCE_NOT_ACTUAL_A_INPUT
 public source projection         source_commitment 7f5a08b2e7f0d482092a92a66261aaa560959fd169188408fa35ffe434561eec
 S35 outcome                      OBSERVED_IMMEDIATE_OBJECT_ORIENTATION
-S35 receipt hash                 796c989c3a3295d0696be401bee8ff240442727a71e0721a07510fc45f37b350
-C9 response row hash             e205f806df85dbe09a81a989d62dd9ab052b18784fb6c95353bf56498072c0e5
-C9 commit receipt hash           73d93a743c5987495f62ccd2aae186eecf18111549d6b8a30b8d4eb5ee681e2a
+S35 receipt hash                 c5bc1aa1a89b7852024dde968fea076d306cf2f90f354515e6e1746735f5db5d
+C9 response row hash             404b3389fbdd8dd8e3b8eabfc2fba5c47678ffabdf206ebdc7b7f7305f6a8477
+C9 commit receipt hash           dcd6f7e4b2ec71c511db1e1d6e59f28e441f0f5c9e61da5e86bac1203ddbc258
 CAN011                           NO_CHANGE / NO_PROPOSAL, target id ""
 target rows                      0
 objective material eligible      true
@@ -183,6 +183,7 @@ no actual A producer or actual positive is claimed
 
 ```text
 install.py                         8e194dcf2de4049bf074c5457800db65d4193b34e8e89a763ef0231c377fb5dd
+bridge/__init__.py                 d334157bcff6f84c7609d5f3ccf41aacfca162617e27a808891889ef95b1de44
 bridge/access.py                   5265e5a0fd5b16043f599b6da2ee960cb3faf2c07447858819f853c2ffb02458
 bridge/world.py                    7077ee3105d8c6488b619bfc2f60c39d2490da7166b254350e8dfad845f8746f
 bridge/readback.py                 e291ca5bd200ba582f357766b4f290be5c852b37f4cc16a855fc84e8e8f5175f
@@ -191,17 +192,18 @@ tools/capture_evidence.py          104376ad40bf43a22879e1fd2da791061e0772ed5ba7a
 tools/cold_replay.py               a374e53d8926757959f0ab8da92a2f3ead55f73cf3a24b26dcc5dfc3c4f0ad59
 bridge/join_e_source.py            c8a6c05f34d5983045a05c65e5a816cd82149a8af0d7d60ab07195d7ec0ff72e
 bridge/join_e_compat.py            fa81377367e423e1b130dad678f7faa46e6235dcbd4230adefa3177d697d3d56
-bridge/occurrence_consumer.py      3470f4737d9a1d35a55cabfad25a88f651e6ece1babc44fd2bf4b938653e6213
+bridge/occurrence_consumer.py      619c83e031355076c8d5f8188d39ad69ca0733f72a973dda5414cd1e7c9a7e36
 tests/test_join_e_s35_compat.py    4d50a4afcd43792e881a2d2c605fd0b4899c4337bb96f53f659a8a8c419ee07c
-tests/test_occurrence_consumer.py  18568cce2b9b5bfea1b32200561fe37823f8bf9a28d23b521f3046ce3275c07f
-tools/join_e_encounter.py          5fa56b8b351ac6d01e26c6b0187cbc9a95494739b8159284cfddf61daf2c461f
+tests/conftest.py                  4f90d4bf36fe486ed75dcfdf670e8e2b033b8d77afc70759fedb10c8b112bdc1
+tests/test_occurrence_consumer.py  f4102c10b65e0afc661d341ed77daf7dc3cbe7c8595ceff41e6cc95a301214c0
+tools/join_e_encounter.py          2c04feffe071f26828f915ba94cb95bfa83a5eeed7b941fbee24a59ed88f3998
 tools/join_e_s35_compat.py         bc6f3ac8b25b48795d84d9d79e6d63ca7512454bf12184902909921cf85f5d5b
-tools/occurrence_consumer_proof.py 4db27791d3c53a10544783d5fab3c9e14ac58c0ca97482fe18f11a860290ca3d
-evidence/test_run.txt              7ddfcdc5714c86306395cd4c7d98f7eb097b291f39a865619fbc1300d4a9f59d
-evidence/s35_full.xml              db0565472d25df9fef69674b61d0284069e9dcdb5c628308d8944ea237aa9158
-evidence/s35_evidence.json         191784e8f677086ff5cede2cfe1190399951ef79f1d36f1ecc248614b158f637
-evidence/join_e_s35_compat.json    9c5810d84ae88240d4f3b6f7ba35a0686ae04d5017a30270908372079dadce00
-evidence/occurrence_consumer.json  b592c8604e6cc516d882a8f0b90ec4d062ad27eb95f26840bb1e1be5b4b201c2
+tools/occurrence_consumer_proof.py 70185a7f7ae1ab47c55dfeb7f5dc108eedf903ea4c7245199580826873a11499
+evidence/test_run.txt              23052e9c9f035322c5b3622c9b73c397f03cca312da24f2782a20e78152def34
+evidence/s35_full.xml              f29ec031d1a3c29a59fe5ae0b1c4b93ed03e87eaca67f3b0f20004d7441c1ca9
+evidence/s35_evidence.json         7c882145de70cb21580519d1ccbe9c1f5eda283e6423e8c23f7e65971d19dbe7
+evidence/join_e_s35_compat.json    1d0c97c693a1fd73515833dc21ec4d3613585c96e30348cb1e70754db7af6350
+evidence/occurrence_consumer.json  51bc098e6110ac38021249de4bca0e6bf54a76f65da7ee4e5a0e79ac10a7fc1a
 ```
 
 Install-verified pinned SHA-256:
@@ -271,6 +273,31 @@ The consumer reads the already-admitted JOIN-E C9 occurrence and C12 branch root
 
 The S35 response is evaluated in the E1 actor/event clock frame (`clock=242`); the C12 root/branch identity is validated in its own world clock frame (`branch_clock=10`). No clock is substituted for the other.
 
+### Persisted JOIN-E provenance binding
+
+`read_occurrence` no longer treats caller-supplied path/source/event/actor fields as authority. It reads `state_root/session.json`, the persisted JOIN-E product provenance (`bp2_join.json` or `refusal.json`), the exact C8 journal occurrence and the C12 root/branch rows, then:
+
+- derives the canonical C9 path (`<state_root>/bp2/c9.sqlite` for JOIN, `<state_root>/source/bp2/c9.sqlite` for REFUSAL) and C12 path (`<state_root>/product/c12.sqlite`);
+- requires the C9 occurrence hash/time/id and C8 journal occurrence clock/state digest to equal the persisted session values;
+- requires the bundle source to equal `session.j_source`, the C8 journal `gm01_pre_c9_source` and the product sidecar source;
+- requires the bundle branch id, source actor map, C8 state digest and event identity to equal the persisted session/provenance values;
+- binds the actor snapshot source ref/hash and actor id to the persisted C8 journal and C12 actor block; the caller actor snapshot is not used as authority;
+- uses the persisted C8 journal/C12 actor state to construct the occurrence actor snapshot.
+
+The exact reviewer mix was reproduced: performed C9 path/event/hash/time/id combined with refused `source`, `c12_path`, `branch_id`, `source_actor_map` and `actor_snapshot`. It is refused before response evaluation. Because the branch id and actor source are the same across these sourcefree roots, the discriminating persisted checks are the source and C12/canonical path bindings.
+
+| Substitution test | Result | Missing persisted binding |
+|---|---|---|
+| performed C9 + refused source | refused | `bundle_source_matches_session`, `bundle_source_matches_journal` |
+| performed C9 + refused C12 path | refused | `c12_path_canonical` |
+| performed C9 + refused source/C12/actor fields | refused | `c12_path_canonical`, source bindings |
+| performed C9 + refused C9 path/event | refused | `c9_path_canonical`, `bundle_event_hash_matches` |
+| refused C9 + performed source | refused | source bindings |
+| mutated actor snapshot source/id | refused | actor source/actor-id bindings |
+| cold performed C9 + refused source/C12 | refused | `c12_path_canonical`, source bindings |
+
+The intact read-only path, distinct-clock binding, perception/action severance/restoration and cold replay remain unchanged. No store is written.
+
 ### Intact, severed, restored and cold
 
 | Disposition | Intact outcome | Controlled intact | Perception severed | Action severed | Restored | E help / tools | Cold |
@@ -279,9 +306,9 @@ The S35 response is evaluated in the E1 actor/event clock frame (`clock=242`); t
 | `OMITTED` (`SHARE_TOOL`, performed=false) | `A_LOCAL_PERCEPTION_HOLD` | `A_OWNED_ACTION_HOLD` | `UNKNOWN_RECEIVABILITY` | `A_OWNED_ACTION_HOLD` | intact | refuse / 0 | intact |
 | `REFUSED` | `OBSERVED_CURRENT_REFUSAL` | same | `UNKNOWN_RECEIVABILITY` | `A_OWNED_ACTION_HOLD` | intact | refuse / 0 | intact |
 
-- Performed share controlled S35 receipt: `2019ad0e5e27913f070479442ca4e80b60f816812f6afb7c05488e313e30894b`.
-- Omitted typed hold receipt: `65097a7b262d425ad242b795eda90fadc3eb03d7635b494ba7d57f46375a0a71`; material access false.
-- Refused controlled S35 receipt: `138248fe9b4d8988e887757c1ec263421a649e8a47e13a2c417292140c4b3c9a`.
+- Performed share controlled S35 receipt: `97b471c58fa6c5fe89bd7f47c4d055a17566c44651f3523fb758ba657a9e9423`.
+- Omitted typed hold receipt: `9e3f1877835c0c80318067bca6e6b36e5fe1043e1f2d2bad5ee7d85fb74c02bb`; material access false.
+- Refused controlled S35 receipt: `80f6e36b0ec79a639c69b141c64c44de5c491bcabc0451b29c892cfecc2ff3f9`.
 - All CAN011 decisions are `NO_CHANGE/NO_PROPOSAL` with zero target proposals.
 - A clock-substitution binding (event clock force-equal to branch clock) refuses in all three worlds.
 - Cold reopen verifies each JOIN-E session and reproduces the same S35 outcomes; E help remains accept/refuse/refuse.
@@ -316,6 +343,7 @@ Controlled inputs above are explicitly `TEST_ONLY_CONTROLLED_FIXTURE`, `actual_a
 | **F5 — Controlled positives, targetless outcomes and prior negatives remain.** P1 is controlled evidence, CAN011 stays `NO_CHANGE/NO_PROPOSAL`, target tables stay empty, and all prior foreign/consumer/legacy negatives stay green. | Rival: the privacy/clock repair loosened the prior bridge. The 57-test and evidence reproduction falsify that. | Keep native authority held. | C9/CAN011 owner + C12 consumer owner |
 | **F6 — JOIN-E × S35 same-root weld is clock-incompatible.** JOIN-E E1 time `242` exceeds C12 branch clock `10`; the existing C9 event is admitted and re-execution refuses `CLOCK_OUTSIDE_FRAME`. JOIN-E itself is performed-aware: omitted `SHARE_TOOL` has no material grant and E refuses help. | Rival: a selector-only positive can stand in for the unavailable full pipeline. The exact clock refusal and existing admitted event falsify that; no second store is fabricated. | Record the typed incompatibility; require an authorized clock/branch migration or a new store decision from the owner before any full weld. | JOIN-E/C12 owner + S35 engineering |
 | **F7 — The admitted occurrence is readable when clocks are explicitly distinguished.** `bridge/occurrence_consumer.py` reads the existing C9 occurrence at E1 `242` and C12 branch at `10`, binds both source domains explicitly, validates event/root/branch/source/clock and A perception/action separately, then calls the normal S35 response. No duplicate admission or new store. | Rival: the earlier `PERCEPTION_TIME_INVALID` proves no same-root read is possible. The distinct-clock reader falsifies that for a read; full C9 re-execution remains incompatible. | Preserve the distinct-clock reader as the exact first consumer; keep the full weld owner-held. | JOIN-E/C12 owner + S35 engineering |
+| **F8 — Occurrence authority is persisted JOIN-E provenance, not self-hashed caller input.** `read_occurrence` derives paths/source/event/actor from `session.json`, the JOIN-E product provenance, the C8 journal and C12 rows; cross-root/source substitutions are refused live and cold. | Rival: binding the C9 row to caller-supplied source and paths is sufficient. The reproduced performed-C9/refused-source-and-C12 mix is refused, falsifying that. | Keep provenance binding mandatory for any later reader. | JOIN-E/C8/C12 owner + S35 engineering |
 
 ## 5. Courts and disposition
 
@@ -347,7 +375,7 @@ Controlled inputs above are explicitly `TEST_ONLY_CONTROLLED_FIXTURE`, `actual_a
 
 ## 7. PROGRAMMA_DELTA
 
-`PROGRAMMA_DELTA:` S35 keeps B owner/event identifiers and operation in private `world.json` custody and publishes only an opaque source commitment; validates no-action clocks as strictly as performed-action clocks; holds unresolved owner evidence as `ACTUAL_A_INPUT_UNAVAILABLE` / `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL`; demonstrates fresh-process cold replay with non-mutating read-only verification; and now provides the smallest same-root admitted-occurrence consumer `bridge/occurrence_consumer.py:read_occurrence->evaluate_occurrence`. It reads the already-admitted JOIN-E E1 `242` read-only while binding the C12 branch clock `10` as a distinct source domain, validates event/root/branch/source/clock and A perception/action separately, then calls the normal S35 response; intact/severed/restored/cold preserve performed/omitted/refused and E-help outcomes with no duplicate admission, second store or clock substitution. Full C9 re-execution remains incompatible: `JOIN_E_E1_TIME_242_OUTSIDE_C12_CLOCK_10__C9_EVENT_ALREADY_ADMITTED__FULL_S35_REEXECUTION_CLOCK_OUTSIDE_FRAME`. Actual A inputs remain `NONE_VERIFIED`; the exact missing source-owner contract is returned. Exact limits: actual qualified A input, full same-root C9 weld, native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, H1 acquired practice and human A5 remain NOT_RUN/HOLD.
+`PROGRAMMA_DELTA:` S35 keeps B owner/event identifiers and operation in private `world.json` custody and publishes only an opaque source commitment; validates no-action clocks as strictly as performed-action clocks; holds unresolved owner evidence as `ACTUAL_A_INPUT_UNAVAILABLE` / `UNRESOLVED_OWNER_EVIDENCE_NOT_ACTUAL`; demonstrates fresh-process cold replay with non-mutating read-only verification; and provides the smallest same-root admitted-occurrence consumer `bridge/occurrence_consumer.py:read_occurrence->evaluate_occurrence`. It binds the occurrence to persisted JOIN-E `session.json`, product provenance, the exact C8 journal source/occurrence and C12 root/branch/actor rows, rejects cross-root and source substitution live/cold, reads the already-admitted E1 `242` while keeping the C12 branch clock `10` as a distinct source domain, validates A perception/action separately, then calls the normal S35 response; intact/severed/restored/cold preserve performed/omitted/refused and E-help outcomes with no duplicate admission, second store or clock substitution. Full C9 re-execution remains incompatible: `JOIN_E_E1_TIME_242_OUTSIDE_C12_CLOCK_10__C9_EVENT_ALREADY_ADMITTED__FULL_S35_REEXECUTION_CLOCK_OUTSIDE_FRAME`. Actual A inputs remain `NONE_VERIFIED`; the exact missing source-owner contract is returned. Exact limits: actual qualified A input, full same-root C9 weld, native CAN008/CAN011, ADP017/ADP019, C8/C11/C12, Pyat N11/N12, H1 acquired practice and human A5 remain NOT_RUN/HOLD.
 
 ## 8. Publication
 

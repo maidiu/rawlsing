@@ -66,6 +66,31 @@ def test_occurrence_consumer_intact_severed_restored_cold(tmp_path):
     assert summary["first_consumer"].endswith(
         "read_occurrence->evaluate_occurrence"
     )
+    assert summary["substitution_refused_all"] is True
+    assert summary["cold_substitution_refused_all"] is True
+    live = {row["name"]: row for row in document["substitution_tests"]["live"]}
+    assert live["performed_c9_refused_source"]["refused"] is True
+    assert "bundle_source_matches_session" in live[
+        "performed_c9_refused_source"
+    ]["missing_fields"]
+    assert live["performed_c9_refused_c12"]["refused"] is True
+    assert "c12_path_canonical" in live["performed_c9_refused_c12"][
+        "missing_fields"
+    ]
+    mixed = live["performed_c9_refused_source_and_c12"]
+    assert mixed["refused"] is True
+    assert "c12_path_canonical" in mixed["missing_fields"]
+    assert "bundle_source_matches_session" in mixed["missing_fields"]
+    assert live["performed_c9_refused_c9_path"]["refused"] is True
+    assert "c9_path_canonical" in live["performed_c9_refused_c9_path"][
+        "missing_fields"
+    ]
+    assert live["mutated_actor_snapshot"]["refused"] is True
+    cold = {row["name"]: row for row in document["substitution_tests"]["cold"]}
+    assert cold["cold_performed_c9_refused_source_and_c12"]["refused"] is True
+    assert "bundle_source_matches_session" in cold[
+        "cold_performed_c9_refused_source_and_c12"
+    ]["missing_fields"]
     for world in document["worlds"].values():
         occurrence = world["occurrence"]
         assert occurrence["event_clock"] == 242

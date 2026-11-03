@@ -144,6 +144,8 @@ def main() -> int:
     )
     base.mkdir(parents=True, exist_ok=True)
     worlds = {}
+    start_bundles = {}
+    cold_bundles = {}
     for disposition in ("PERFORMED", "OMITTED", "REFUSED"):
         state = base / disposition.lower()
         start = _run_encounter(
@@ -154,6 +156,7 @@ def main() -> int:
             do_help=True,
             out=base / (disposition.lower() + "-occurrence-start.json"),
         )
+        start_bundles[disposition] = start
         read_start = occurrence_consumer.read_occurrence(start)
         if not read_start.ok:
             raise RuntimeError(
@@ -189,6 +192,7 @@ def main() -> int:
             do_help=True,
             out=base / (disposition.lower() + "-occurrence-cold.json"),
         )
+        cold_bundles[disposition] = cold
         read_cold = occurrence_consumer.read_occurrence(cold)
         if not read_cold.ok:
             raise RuntimeError(
@@ -277,6 +281,92 @@ def main() -> int:
             },
             "missing_source_owner_contract": missing_contract,
         }
+    def _mix(base_bundle: dict, other_bundle: dict, fields: tuple[str, ...]) -> dict:
+        mixed = dict(base_bundle)
+        for field in fields:
+            mixed[field] = other_bundle.get(field)
+        return mixed
+
+    def _substitution(name: str, bundle: dict) -> dict:
+        read = occurrence_consumer.read_occurrence(bundle)
+        return {
+            "name": name,
+            "ok": read.ok,
+            "refused": not read.ok,
+            "missing_fields": list(
+                (read.missing_contract or {}).get("missing_fields", [])
+            ),
+        }
+
+    performed_live = start_bundles["PERFORMED"]
+    refused_live = start_bundles["REFUSED"]
+    performed_cold = cold_bundles["PERFORMED"]
+    refused_cold = cold_bundles["REFUSED"]
+    mutation_bundle = dict(performed_live)
+    mutated_actor = dict(performed_live["actor_snapshot"])
+    mutated_state = dict(mutated_actor.get("state") or {})
+    mutated_state["actor_id"] = "TEST_ONLY_FOREIGN_ACTOR"
+    mutated_actor["state"] = mutated_state
+    mutated_actor["source_ref"] = "TEST_ONLY_FOREIGN_ACTOR_SOURCE"
+    mutation_bundle["actor_snapshot"] = mutated_actor
+    substitution_tests = {
+        "live": [
+            _substitution(
+                "performed_c9_refused_source",
+                _mix(performed_live, refused_live, ("source",)),
+            ),
+            _substitution(
+                "performed_c9_refused_c12",
+                _mix(performed_live, refused_live, ("c12_path",)),
+            ),
+            _substitution(
+                "performed_c9_refused_source_and_c12",
+                _mix(
+                    performed_live,
+                    refused_live,
+                    (
+                        "source",
+                        "c12_path",
+                        "branch_id",
+                        "source_actor_map",
+                        "actor_snapshot",
+                    ),
+                ),
+            ),
+            _substitution(
+                "performed_c9_refused_c9_path",
+                _mix(performed_live, refused_live, ("c9_path", "e1_event_hash")),
+            ),
+            _substitution(
+                "refused_c9_performed_source",
+                _mix(refused_live, performed_live, ("source",)),
+            ),
+            _substitution(
+                "mutated_actor_snapshot",
+                mutation_bundle,
+            ),
+        ],
+        "cold": [
+            _substitution(
+                "cold_performed_c9_refused_source_and_c12",
+                _mix(
+                    performed_cold,
+                    refused_cold,
+                    (
+                        "source",
+                        "c12_path",
+                        "branch_id",
+                        "source_actor_map",
+                        "actor_snapshot",
+                    ),
+                ),
+            ),
+            _substitution(
+                "cold_source_only_substitution",
+                _mix(performed_cold, refused_cold, ("source",)),
+            ),
+        ],
+    }
     summary = {
         "join_e_commit": JOIN_E_COMMIT,
         "source_runtime": source_runtime,
@@ -349,6 +439,12 @@ def main() -> int:
             and worlds[key]["s35"]["intact"]["target_proposals"] == 0
             for key in worlds
         ),
+        "substitution_refused_all": all(
+            row["refused"] for row in substitution_tests["live"]
+        ),
+        "cold_substitution_refused_all": all(
+            row["refused"] for row in substitution_tests["cold"]
+        ),
         "controlled_evidence": "TEST_ONLY",
     }
     evidence = {
@@ -360,6 +456,7 @@ def main() -> int:
         "programma_disposition": "29aa0f9e81fe1f371f2773d4750e1838bdd63daf",
         "source_runtime": source_runtime,
         "worlds": worlds,
+        "substitution_tests": substitution_tests,
         "summary": summary,
         "limits": [
             "no duplicate admission",

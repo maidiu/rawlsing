@@ -98,7 +98,7 @@
           },
           "qualification": "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE",
           "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
-          "s35_receipt_hash": "beefd3af96bcffff87afdf1816ed654d3db6cc2357c711ce54784f602c174be5",
+          "s35_receipt_hash": "914c1044bf06c1664d726bf70c1ecbb6c90c4ba948f476bb4a736513b1ca4283",
           "target_branch": "NO_CHANGE",
           "target_id": "",
           "target_proposals": 0,
@@ -399,7 +399,7 @@
           },
           "qualification": "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE",
           "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
-          "s35_receipt_hash": "beefd3af96bcffff87afdf1816ed654d3db6cc2357c711ce54784f602c174be5",
+          "s35_receipt_hash": "914c1044bf06c1664d726bf70c1ecbb6c90c4ba948f476bb4a736513b1ca4283",
           "target_branch": "NO_CHANGE",
           "target_id": "",
           "target_proposals": 0,
@@ -548,15 +548,15 @@
         "b_quantity": 1,
         "material_feasible_after": false
       },
-      "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s35-joine-compat-i2xlb4sd/omitted",
+      "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s35-joine-compat-8n4mhrr1/omitted",
       "store_mutation": {
         "after_s35": {
-          "c12.sqlite": "1b50216c2e57b7b14266100f835e0ea38b39d71f1fa0399251bd0a0e87620138",
-          "c9.sqlite": "8e6466d756233121321bc82324281a485238b3b78e62f634862af0d1cf54785d"
+          "c12.sqlite": "183b1ec48e44dfdd94efc0314612fb6ed5b8ab274aa17d8fe8cae945784cfd72",
+          "c9.sqlite": "ef4ca664c23ee14ba2e825e8342cceebe69f739466b9d3a8fd826cf47ba56220"
         },
         "before_s35": {
-          "c12.sqlite": "1b50216c2e57b7b14266100f835e0ea38b39d71f1fa0399251bd0a0e87620138",
-          "c9.sqlite": "8e6466d756233121321bc82324281a485238b3b78e62f634862af0d1cf54785d"
+          "c12.sqlite": "183b1ec48e44dfdd94efc0314612fb6ed5b8ab274aa17d8fe8cae945784cfd72",
+          "c9.sqlite": "ef4ca664c23ee14ba2e825e8342cceebe69f739466b9d3a8fd826cf47ba56220"
         },
         "s35_mutated_store": false
       }
@@ -605,7 +605,7 @@
           },
           "qualification": "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE",
           "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
-          "s35_receipt_hash": "115a172fd2bbbb6a4de6c57323c715ada0300f7276769dfc7d05805c1ffdc8f0",
+          "s35_receipt_hash": "b755ae1172e4e23bf29d971c914a91fdddb18c2a2068d27a2ba5d98aa457f898",
           "target_branch": "NO_CHANGE",
           "target_id": "",
           "target_proposals": 0,
@@ -664,13 +664,13 @@
           "accepted": true,
           "admission": {
             "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_8fc00bb01ff48007bfd181440f6c3747c2ec6b1549484d1bc2dc6da2d133b3c6",
-            "admission_id": "1e0073cf1428e06b387114bb99c431d93e24e793d16a47958fc7190cd266b7ee",
+            "admission_id": "d66d3a1db9905b5c559f41ddbfc90bb32bfb4d1f5a6b764a52b52353f71e8918",
             "attention_excluded": true,
             "clock": 10,
-            "consumed_state_hash": "91884245f0eab6def183334b7d0f500b206e11879b7b7bc4b902fe6710117cc9",
+            "consumed_state_hash": "ea3b1e9fe2c7a237280d4bf1a3dfa1c19c75587c38df6f50881fcb5f8ab1f39d",
             "contact_outcome": "",
-            "contract_hash": "8517f9826e1059f9a364ee7dc424e752854ab6f5d9e6d6a3bf80d4fd20854c03",
-            "fact_count": 1,
+            "contract_hash": "bd8323ac941b0d985d37b414635c4dff65a4a85d1bbbab7f996f66226c47610d",
+            "fact_count": 2,
             "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
             "knowledge_ref_count": 0,
             "message_episode_id": "",
@@ -678,10 +678,10 @@
             "native": false,
             "schema": "R31E_EXPRESSION_ADMISSION@1",
             "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_5b38df16defcb80dface3ea0a5730609dcb139457ffd81c5652b286b50987ddb",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_c7381d32f88b9556c117f0d0f4ef19074e3db530010cafe8ebc64256fab953f8",
             "strategy": "HELP_ACCEPT",
-            "target_id": "4ca122fdee36f46edf2eca8ebe844f271602ea028863891bd337df8d7d6fa747",
-            "template_id": "help_accept_2",
+            "target_id": "4f444502cdb8f4fb697a6484d6e1900457a91d20370a61570684e01ab50550b0",
+            "template_id": "help_accept_1",
             "validation": {
               "checks": {
                 "a_at_workshop": true,
@@ -712,24 +712,30 @@
                 "field": "tools_remaining",
                 "kind": "ACTOR_FIELD",
                 "value": 1
+              },
+              {
+                "field": "tool_available",
+                "kind": "WORLD_RESOURCE",
+                "scope": "workshop",
+                "value": true
               }
             ],
-            "gesture": "A clears a space at the bench.",
+            "gesture": "A sets the tool beside your hand.",
             "knowledge_refs": [],
             "schema": "R31E_EXPRESSION_CANDIDATE@1",
             "slots": {},
-            "speech": "Put your hand on the near edge. I'll take the slack.",
+            "speech": "Hold the near edge. I'll check the seam.",
             "strategy": "HELP_ACCEPT",
-            "template_id": "help_accept_2",
+            "template_id": "help_accept_1",
             "tone": "practical",
-            "variant": 1
+            "variant": 0
           },
-          "contract_hash": "8517f9826e1059f9a364ee7dc424e752854ab6f5d9e6d6a3bf80d4fd20854c03",
+          "contract_hash": "bd8323ac941b0d985d37b414635c4dff65a4a85d1bbbab7f996f66226c47610d",
           "status": "OK",
           "strategy": "HELP_ACCEPT",
           "surface": [
             "A material repair is performed in the workshop.",
-            "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+            "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
           ]
         },
         "session_verify_ok": true,
@@ -745,13 +751,13 @@
           "accepted": true,
           "admission": {
             "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_510eef5493c41459b59f4466d75e514c834e97df33f01ed564af2f5cd1d5cbb6",
-            "admission_id": "4c14eaadb0490f1d23ee9b2530de62f23f4df5bdb4bbda7864d89db2439c77e3",
+            "admission_id": "b3690b52cc495a8abb2175df941c80eaec8b8575ae30dac0307c3c2e8a6afd31",
             "attention_excluded": true,
             "clock": 10,
-            "consumed_state_hash": "91884245f0eab6def183334b7d0f500b206e11879b7b7bc4b902fe6710117cc9",
+            "consumed_state_hash": "ea3b1e9fe2c7a237280d4bf1a3dfa1c19c75587c38df6f50881fcb5f8ab1f39d",
             "contact_outcome": "",
-            "contract_hash": "694a3f4005af072cc0165ca4ca0e6502bb65ffa9a7c7470f3bb6bc82445e04ec",
-            "fact_count": 1,
+            "contract_hash": "32bf9a787728071259140221f6f12e9158f0293942e2d5ea9ee4abf8af02cab9",
+            "fact_count": 2,
             "grade": "TEST_ONLY_SOURCEFREE_R31E_ACTOR_EXPRESSION_NOT_NATIVE",
             "knowledge_ref_count": 0,
             "message_episode_id": "",
@@ -759,10 +765,10 @@
             "native": false,
             "schema": "R31E_EXPRESSION_ADMISSION@1",
             "source_ref": "001b506fa26ae879ff5b6e57138fc2696e12b538",
-            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_8955f7f362200149eda3dc7356bc00bbe7ec879ee0e23e36d184fdd22facf5e0",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_845647d9982af360fc2d86c429180996869231c154bbb48ea81079f9245a62bd",
             "strategy": "HELP_ACCEPT",
-            "target_id": "4ca122fdee36f46edf2eca8ebe844f271602ea028863891bd337df8d7d6fa747",
-            "template_id": "help_accept_2",
+            "target_id": "4f444502cdb8f4fb697a6484d6e1900457a91d20370a61570684e01ab50550b0",
+            "template_id": "help_accept_1",
             "validation": {
               "checks": {
                 "a_at_workshop": true,
@@ -793,29 +799,35 @@
                 "field": "tools_remaining",
                 "kind": "ACTOR_FIELD",
                 "value": 1
+              },
+              {
+                "field": "tool_available",
+                "kind": "WORLD_RESOURCE",
+                "scope": "workshop",
+                "value": true
               }
             ],
-            "gesture": "A clears a space at the bench.",
+            "gesture": "A sets the tool beside your hand.",
             "knowledge_refs": [],
             "schema": "R31E_EXPRESSION_CANDIDATE@1",
             "slots": {},
-            "speech": "Put your hand on the near edge. I'll take the slack.",
+            "speech": "Hold the near edge. I'll check the seam.",
             "strategy": "HELP_ACCEPT",
-            "template_id": "help_accept_2",
+            "template_id": "help_accept_1",
             "tone": "practical",
-            "variant": 1
+            "variant": 0
           },
-          "contract_hash": "694a3f4005af072cc0165ca4ca0e6502bb65ffa9a7c7470f3bb6bc82445e04ec",
+          "contract_hash": "32bf9a787728071259140221f6f12e9158f0293942e2d5ea9ee4abf8af02cab9",
           "status": "OK",
           "strategy": "HELP_ACCEPT",
           "surface": [
             "A material repair is performed in the workshop.",
-            "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+            "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
           ]
         },
         "j_b_disposition": "PERFORMED",
         "session_schema": "SOROK_SAME_PERSON_JOIN@1",
-        "target_id": "4ca122fdee36f46edf2eca8ebe844f271602ea028863891bd337df8d7d6fa747",
+        "target_id": "4f444502cdb8f4fb697a6484d6e1900457a91d20370a61570684e01ab50550b0",
         "tools_remaining": 1,
         "verify_ok": true
       },
@@ -916,7 +928,7 @@
           },
           "qualification": "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE",
           "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
-          "s35_receipt_hash": "115a172fd2bbbb6a4de6c57323c715ada0300f7276769dfc7d05805c1ffdc8f0",
+          "s35_receipt_hash": "b755ae1172e4e23bf29d971c914a91fdddb18c2a2068d27a2ba5d98aa457f898",
           "target_branch": "NO_CHANGE",
           "target_id": "",
           "target_proposals": 0,
@@ -1065,15 +1077,15 @@
         "b_quantity": 1,
         "material_feasible_after": true
       },
-      "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s35-joine-compat-i2xlb4sd/performed",
+      "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s35-joine-compat-8n4mhrr1/performed",
       "store_mutation": {
         "after_s35": {
-          "c12.sqlite": "d1f42c163dfc0105b6c5cc0b57d3262070eb2a94f031b8b42a2df2fbe221b398",
-          "c9.sqlite": "99060c6680fddcbd52a82d57d0846d9ad0f532a3657a5a202e324ec78233338e"
+          "c12.sqlite": "13ea1398ff75c72ebc71a13216e705193342e7d8b0114b65ea013f6f57805e6e",
+          "c9.sqlite": "8535819bfe57b200a98bca75bb7b56a74527f71f3aeefe9fd6126c2fde503a03"
         },
         "before_s35": {
-          "c12.sqlite": "d1f42c163dfc0105b6c5cc0b57d3262070eb2a94f031b8b42a2df2fbe221b398",
-          "c9.sqlite": "99060c6680fddcbd52a82d57d0846d9ad0f532a3657a5a202e324ec78233338e"
+          "c12.sqlite": "13ea1398ff75c72ebc71a13216e705193342e7d8b0114b65ea013f6f57805e6e",
+          "c9.sqlite": "8535819bfe57b200a98bca75bb7b56a74527f71f3aeefe9fd6126c2fde503a03"
         },
         "s35_mutated_store": false
       }
@@ -1122,7 +1134,7 @@
           },
           "qualification": "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE",
           "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
-          "s35_receipt_hash": "ee9b6f238308737e00549cd5e79774f5531fd02d566477dde2eda0a550551d40",
+          "s35_receipt_hash": "44cea3d9c0329fa91e06545be195261457c1a03871d52f2b2358cb5f740bbb8a",
           "target_branch": "NO_CHANGE",
           "target_id": "",
           "target_proposals": 0,
@@ -1423,7 +1435,7 @@
           },
           "qualification": "TYPED_HOLD_ACTUAL_A_INPUT_UNAVAILABLE",
           "response_status": "RESPONSE_EFFECTS_VALID_EMPTY",
-          "s35_receipt_hash": "ee9b6f238308737e00549cd5e79774f5531fd02d566477dde2eda0a550551d40",
+          "s35_receipt_hash": "44cea3d9c0329fa91e06545be195261457c1a03871d52f2b2358cb5f740bbb8a",
           "target_branch": "NO_CHANGE",
           "target_id": "",
           "target_proposals": 0,
@@ -1572,15 +1584,15 @@
         "b_quantity": 0,
         "material_feasible_after": false
       },
-      "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s35-joine-compat-i2xlb4sd/refused",
+      "state_root": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-s35-joine-compat-8n4mhrr1/refused",
       "store_mutation": {
         "after_s35": {
-          "c12.sqlite": "e0e1cc8b6d11889a88d3e9b3a07d3a7c8b10287b79b57829af9c7adb5104473a",
-          "c9.sqlite": "4db499682e87e72913c71d5f3900bc735ca1e646b7589330358f7319f2e3923c"
+          "c12.sqlite": "4f962a1a07c988e00ea22a37f9af4f12ae2d2fd10782d7b7d7d35772b3f07d23",
+          "c9.sqlite": "ad86b788801d3dcfae5c673003d8ad992e9a95a2b76159af1ea506742052922b"
         },
         "before_s35": {
-          "c12.sqlite": "e0e1cc8b6d11889a88d3e9b3a07d3a7c8b10287b79b57829af9c7adb5104473a",
-          "c9.sqlite": "4db499682e87e72913c71d5f3900bc735ca1e646b7589330358f7319f2e3923c"
+          "c12.sqlite": "4f962a1a07c988e00ea22a37f9af4f12ae2d2fd10782d7b7d7d35772b3f07d23",
+          "c9.sqlite": "ad86b788801d3dcfae5c673003d8ad992e9a95a2b76159af1ea506742052922b"
         },
         "s35_mutated_store": false
       }
