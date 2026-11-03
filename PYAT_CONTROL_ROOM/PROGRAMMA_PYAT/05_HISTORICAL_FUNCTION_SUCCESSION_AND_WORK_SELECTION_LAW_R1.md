@@ -1,6 +1,6 @@
 # PROGRAMMA PYAT — binding historical succession and next-work selection law (2026-11-03)
 
-**Status:** User-directed decision rule, proposed for competent HQ/PRE-MAIN adoption on this isolated documentation branch. Not new source/science, execution, actor, review, or protected-merge authority. Applies to PROGRAMMA Pyat recoverers, guide editors, Codex HQ work selectors, and implementation commissioners **before** any historical asset is represented as a newly missing current capability or used to justify building/porting code.
+**Status:** ADOPTED_IN_PREMAIN_FOR_HISTORICAL_FUNCTION_SELECTION__PR652_773bb. PR #652 merged 2026-11-03 at exact `773bb412a820949f13a7178b6671327cd56a3bf1`; the prior proposed-status wording remains in Git history at that immutable cut. This adopted rule is for current historical **work selection only**. It issues no original source/science, execution, actor, review, native N11/N12, or protected-merge authority. Applies to PROGRAMMA Pyat recoverers, guide editors, Codex HQ work selectors, and implementation commissioners **before** any historical asset is represented as a newly missing current capability or used to justify building/porting code.
 
 ## Priority zero: historical code discovery is NOT discovery of a missing current function
 
