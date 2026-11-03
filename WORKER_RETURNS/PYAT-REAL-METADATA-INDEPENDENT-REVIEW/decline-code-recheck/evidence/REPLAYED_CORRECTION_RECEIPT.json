@@ -1,0 +1,174 @@
+{
+  "classification_owner": {
+    "authority": "exact q101 response-option authority row",
+    "dedicated_state_classifier_present_in_current_owners": false,
+    "fields_used": [
+      "option_group",
+      "is_substantive",
+      "is_refusal",
+      "is_missing",
+      "response_kind"
+    ],
+    "no_new_policy": true
+  },
+  "corrected_tally": {
+    "dk": 171,
+    "explicit_nonresponse": 204,
+    "identity": {
+      "equals_source_record_denominator": true,
+      "valid_plus_explicit_plus_missing": 7337
+    },
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "question_id": "q101",
+    "refusal": 33,
+    "source_record_denominator": 7337,
+    "valid_answer": 7129
+  },
+  "delta": {
+    "explicit_nonresponse": 33,
+    "missing_or_unobserved": 0,
+    "valid_answer": -33
+  },
+  "historical_supersession": {
+    "accepted_tally_product": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "corrected_q101": {
+      "explicit_nonresponse": 204,
+      "missing_or_unobserved": 4,
+      "valid_answer": 7129
+    },
+    "old_q101": {
+      "explicit_nonresponse": 171,
+      "missing_or_unobserved": 4,
+      "valid_answer": 7162
+    },
+    "preserved_other_fields": true,
+    "superseded_at": [
+      "q101"
+    ]
+  },
+  "limits": {
+    "ci": false,
+    "merge": false,
+    "original_source_read": false,
+    "original_workload_issued": false,
+    "policy_fabricated": false,
+    "production_config_adopted": false,
+    "respondent_rows_read": false,
+    "routing_inferred_from_counts": false
+  },
+  "mode": "TEST_ONLY_SOURCEFREE_AGGREGATE_TALLY_CORRECTION",
+  "old_classification": {
+    "code_99_state": "SUBSTANTIVE_RESPONSE",
+    "explicit_nonresponse": 171,
+    "failure": "code 99 Decline to Answer counted as SUBSTANTIVE_RESPONSE",
+    "misclassified_count": 33,
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "question_id": "q101",
+    "source_record_denominator": 7337,
+    "valid_answer": 7162
+  },
+  "overlay": {
+    "authority": {
+      "is_missing": "True",
+      "is_refusal": "True",
+      "is_substantive": "False",
+      "option_group": "special",
+      "path": "response_option_authority",
+      "response_kind": "special_missing",
+      "sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15"
+    },
+    "from_canonical_value": "99",
+    "from_response_state": "SUBSTANTIVE_RESPONSE",
+    "native_value": 99.0,
+    "only_change": "q101 response value 99 state/canonical classification",
+    "production_config_adopted": false,
+    "question_id": "q101",
+    "schema": "PYAT_SRC04_Q101_CODE99_OVERLAY@1.0.0",
+    "source_id": "SRC04",
+    "to_canonical_value": null,
+    "to_response_state": "REFUSAL"
+  },
+  "overlay_validation": {
+    "coordinate_slots": 3,
+    "only_q101_code99_changed": true,
+    "questions": 178,
+    "response_slots": 178,
+    "routing_entries": 178,
+    "schema_valid": true
+  },
+  "result": "Q101_CODE99_CORRECTED_AGGREGATE_REPLAY__ROUTING_HOLD",
+  "routing": {
+    "accepted_routing_binding": false,
+    "affirmative_evidence": false,
+    "eligibility_denominator_binding": false,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_unknown": 42,
+    "state": "ROUTING_UNKNOWN",
+    "status": "ROUTING_UNKNOWN_HOLD"
+  },
+  "same_mapping_defect_in_selected_metadata": {
+    "correction_applied": [
+      "q101"
+    ],
+    "fields_mapped_code99_to_substantive": 42,
+    "other_fields_changed": false,
+    "question_ids": [
+      "q101",
+      "q102",
+      "q103",
+      "q2011",
+      "q2012",
+      "q2013",
+      "q2014",
+      "q2015",
+      "q202",
+      "q204",
+      "q205",
+      "q206",
+      "q207",
+      "q210",
+      "q211",
+      "q212",
+      "q2131",
+      "q2132",
+      "q2133",
+      "q2134",
+      "q2135",
+      "q214",
+      "q215",
+      "q216",
+      "q219",
+      "q221",
+      "q222",
+      "q224",
+      "q2251",
+      "q2252",
+      "q226",
+      "q227",
+      "q228",
+      "q2301",
+      "q2302",
+      "q2311",
+      "q2312",
+      "q2321",
+      "q2322",
+      "q2323",
+      "q2324",
+      "q234"
+    ],
+    "remaining_uncorrected": 41,
+    "scope": "exact selected-metadata evidence; no speculative corrections",
+    "selected_fields": 42
+  },
+  "schema": "PYAT_SRC04_Q101_CODE99_CORRECTION@1.0.0",
+  "source": {
+    "config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+    "option_authority_sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15",
+    "routing_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048",
+    "source_config_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+    "source_id": "SRC04",
+    "tally_product_sha256": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0"
+  }
+}

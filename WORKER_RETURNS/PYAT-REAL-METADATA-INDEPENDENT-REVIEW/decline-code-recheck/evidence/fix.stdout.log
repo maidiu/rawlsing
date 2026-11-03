@@ -1,0 +1,104 @@
+{
+  "corrected": {
+    "dk": 171,
+    "explicit_nonresponse": 204,
+    "identity": {
+      "equals_source_record_denominator": true,
+      "valid_plus_explicit_plus_missing": 7337
+    },
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "question_id": "q101",
+    "refusal": 33,
+    "source_record_denominator": 7337,
+    "valid_answer": 7129
+  },
+  "delta": {
+    "explicit_nonresponse": 33,
+    "missing_or_unobserved": 0,
+    "valid_answer": -33
+  },
+  "old": {
+    "code_99_state": "SUBSTANTIVE_RESPONSE",
+    "explicit_nonresponse": 171,
+    "failure": "code 99 Decline to Answer counted as SUBSTANTIVE_RESPONSE",
+    "misclassified_count": 33,
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "question_id": "q101",
+    "source_record_denominator": 7337,
+    "valid_answer": 7162
+  },
+  "overlay_validation": {
+    "coordinate_slots": 3,
+    "only_q101_code99_changed": true,
+    "questions": 178,
+    "response_slots": 178,
+    "routing_entries": 178,
+    "schema_valid": true
+  },
+  "result": "Q101_CODE99_CORRECTED_AGGREGATE_REPLAY__ROUTING_HOLD",
+  "routing": {
+    "accepted_routing_binding": false,
+    "affirmative_evidence": false,
+    "eligibility_denominator_binding": false,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_unknown": 42,
+    "state": "ROUTING_UNKNOWN",
+    "status": "ROUTING_UNKNOWN_HOLD"
+  },
+  "same_mapping_defect": {
+    "correction_applied": [
+      "q101"
+    ],
+    "fields_mapped_code99_to_substantive": 42,
+    "other_fields_changed": false,
+    "question_ids": [
+      "q101",
+      "q102",
+      "q103",
+      "q2011",
+      "q2012",
+      "q2013",
+      "q2014",
+      "q2015",
+      "q202",
+      "q204",
+      "q205",
+      "q206",
+      "q207",
+      "q210",
+      "q211",
+      "q212",
+      "q2131",
+      "q2132",
+      "q2133",
+      "q2134",
+      "q2135",
+      "q214",
+      "q215",
+      "q216",
+      "q219",
+      "q221",
+      "q222",
+      "q224",
+      "q2251",
+      "q2252",
+      "q226",
+      "q227",
+      "q228",
+      "q2301",
+      "q2302",
+      "q2311",
+      "q2312",
+      "q2321",
+      "q2322",
+      "q2323",
+      "q2324",
+      "q234"
+    ],
+    "remaining_uncorrected": 41,
+    "scope": "exact selected-metadata evidence; no speculative corrections",
+    "selected_fields": 42
+  }
+}
