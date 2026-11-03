@@ -1,0 +1,226 @@
+{
+  "candidate_commit": "a108e7dc7232b1f3487e71d4607f3e6ca3e9ebdf",
+  "eligibility": {
+    "counts_used_to_infer_routing": false,
+    "no_rule_exists_claim": false,
+    "no_rule_found_in_examined_material": true,
+    "q101_affirmative_eligibility": false,
+    "q101_eligibility_unknown": true,
+    "routing_hold_remains": true
+  },
+  "finding": "Routing HOLD and 42 unknown states stand. q101 tally semantics are not accepted: 33 code-99 refusals are mapped to SUBSTANTIVE_RESPONSE, producing valid=7162 instead of 7129 and explicit nonresponse=171 instead of 204. The exact instrument documents 99 as Decline to Answer but provides no explicit unconditional/skip/routing rule for q101.",
+  "instrument_evidence": {
+    "affirmative_eligibility_evidence": false,
+    "explicit_skip_or_filter_marker": null,
+    "explicit_unconditional_marker": null,
+    "interpretation": "The exact instrument lists q101 as a main questionnaire item without an explicit ask-all/unconditional/skip/filter statement. No rule was found in the examined instrument/metadata; this does not establish that no rule exists elsewhere.",
+    "marker_hits": {
+      "all respondents": [],
+      "ask all": [],
+      "eligib": [],
+      "filter": [],
+      "go to": [],
+      "if no": [],
+      "if yes": [],
+      "routing": [],
+      "skip": [],
+      "unconditional": []
+    },
+    "pages": 30,
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Arabbarometer/ABI_Questionnaire_ENG.pdf",
+    "q101_excerpt": "ountry  country Country 1 = Jordan 2 = Palestine 3 = Algeria 4 = Morocco 5 = Kuwait 6 = Lebanon 7 = Yemen 8 = Bahrain  \n101q How would you rate the current overall economic condition of [respondent\u2019s country] today? 1 = Very Good 2 = Good 3 = Bad 4 = Very Bad  98 = Can\u2019t Choose/Don\u2019t know 99 = Decline to Answer 102q What do you think will be the state of [respondent\u2019s country\u2019s] economic condition a few years (3-5 years) from now? 1 = Much better 2 = A little better 3 = About the same 4 = A little worse 5 = Much worse  98 = Can\u2019t Choose/Don\u2019t know 99 = Decline to Answer 103q How would you rate the economic situation of your family today? 1 = Very Good 2 = Good 3 = Bad 4 = Very Bad  97 = Not clear 98 = Can\u2019t Choose/Don\u2019t know 99 = ",
+    "q101_listed_without_visible_filter": true,
+    "q101_page": 2,
+    "sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118"
+  },
+  "prior_metadata_review": {
+    "checks_json_sha256": "8202036810494b2a632fafb31a0d5d693044d5993e0693d0d5e981fd6f0d9600",
+    "commit": "bdeace7866bcfaf7c94710b976c80b950bfe2968",
+    "reused": true,
+    "review_json_sha256": "f7939d2f9f417348a1b44d1fc3b53164cf63fdf0dd95661c75fee2ed28e61770"
+  },
+  "q101_tally": {
+    "accepted_receipt": {
+      "explicit_nonresponse": 171,
+      "missing_or_unobserved": 4,
+      "observed_response": 7333,
+      "source_record_denominator": 7337,
+      "state_counts": {
+        "DK": 171,
+        "MISSING": 4,
+        "SUBSTANTIVE_RESPONSE": 7162
+      },
+      "valid_answer": 7162
+    },
+    "codebook_q101": {
+      "note": "Compute one distribution over labeled response options; keep don't know and refusal as meaningful categories when present.",
+      "response_options_special": "97 = not clear | 98 = can't choose/don't know | 99 = decline to answer",
+      "response_options_substantive": "1 = very good | 2 = good | 3 = bad | 4 = very bad"
+    },
+    "correct": {
+      "dk": 171,
+      "explicit_nonresponse": 204,
+      "identity": 7337,
+      "missing_or_unobserved": 4,
+      "observed_response": 7333,
+      "refusal": 33,
+      "source_record_denominator": 7337,
+      "valid_answer": 7129
+    },
+    "delta": {
+      "explicit_nonresponse_candidate_minus_correct": -33,
+      "misclassified_refusals": 33,
+      "valid_answer_candidate_minus_correct": 33
+    },
+    "native_counts": [
+      {
+        "count": 257,
+        "native_value": 1.0,
+        "native_value_token": "{\"bits\":\"3ff0000000000000\",\"t\":\"float64_finite\"}"
+      },
+      {
+        "count": 2258,
+        "native_value": 2.0,
+        "native_value_token": "{\"bits\":\"4000000000000000\",\"t\":\"float64_finite\"}"
+      },
+      {
+        "count": 2399,
+        "native_value": 3.0,
+        "native_value_token": "{\"bits\":\"4008000000000000\",\"t\":\"float64_finite\"}"
+      },
+      {
+        "count": 2215,
+        "native_value": 4.0,
+        "native_value_token": "{\"bits\":\"4010000000000000\",\"t\":\"float64_finite\"}"
+      },
+      {
+        "count": 171,
+        "native_value": 98.0,
+        "native_value_token": "{\"bits\":\"4058800000000000\",\"t\":\"float64_finite\"}"
+      },
+      {
+        "count": 33,
+        "native_value": 99.0,
+        "native_value_token": "{\"bits\":\"4058c00000000000\",\"t\":\"float64_finite\"}"
+      },
+      {
+        "count": 4,
+        "native_value": null,
+        "native_value_token": "{\"t\":\"none\"}"
+      }
+    ],
+    "native_state_counts": [
+      {
+        "count": 171,
+        "native_value": 98.0,
+        "native_value_token": "{\"bits\":\"4058800000000000\",\"t\":\"float64_finite\"}",
+        "state": "DK"
+      },
+      {
+        "count": 4,
+        "native_value": null,
+        "native_value_token": "{\"t\":\"none\"}",
+        "state": "MISSING"
+      },
+      {
+        "count": 257,
+        "native_value": 1.0,
+        "native_value_token": "{\"bits\":\"3ff0000000000000\",\"t\":\"float64_finite\"}",
+        "state": "SUBSTANTIVE_RESPONSE"
+      },
+      {
+        "count": 2258,
+        "native_value": 2.0,
+        "native_value_token": "{\"bits\":\"4000000000000000\",\"t\":\"float64_finite\"}",
+        "state": "SUBSTANTIVE_RESPONSE"
+      },
+      {
+        "count": 2399,
+        "native_value": 3.0,
+        "native_value_token": "{\"bits\":\"4008000000000000\",\"t\":\"float64_finite\"}",
+        "state": "SUBSTANTIVE_RESPONSE"
+      },
+      {
+        "count": 2215,
+        "native_value": 4.0,
+        "native_value_token": "{\"bits\":\"4010000000000000\",\"t\":\"float64_finite\"}",
+        "state": "SUBSTANTIVE_RESPONSE"
+      },
+      {
+        "count": 33,
+        "native_value": 99.0,
+        "native_value_token": "{\"bits\":\"4058c00000000000\",\"t\":\"float64_finite\"}",
+        "state": "SUBSTANTIVE_RESPONSE"
+      }
+    ],
+    "option_authority_99": {
+      "is_dk": "False",
+      "is_missing": "True",
+      "is_no_answer": "False",
+      "is_refusal": "True",
+      "is_substantive": "False",
+      "option_group": "special",
+      "response_kind": "special_missing",
+      "value_code_numeric": "99.0",
+      "value_label_raw": "decline to answer"
+    },
+    "semantically_correct": false,
+    "source_config_q101_97": {
+      "canonical_value": null,
+      "response_state": "DK"
+    },
+    "source_config_q101_98": {
+      "canonical_value": null,
+      "response_state": "DK"
+    },
+    "source_config_q101_99": {
+      "canonical_value": "99",
+      "response_state": "SUBSTANTIVE_RESPONSE"
+    }
+  },
+  "replay": {
+    "candidate_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048",
+    "exact": true,
+    "focused_tests": "5 passed in 0.03s",
+    "replayed_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048"
+  },
+  "review_start_head": "bdeace7866bcfaf7c94710b976c80b950bfe2968",
+  "routing": {
+    "accepted_denominator_binding": false,
+    "accepted_routing_binding": false,
+    "all_42_risk_unresolved": true,
+    "all_42_unknown": true,
+    "config_routing_entries": 178,
+    "exact_skip_rules_zero": true,
+    "q101": {
+      "risk_set_exact": false,
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+      "routing_rule_exact": false,
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN"
+    },
+    "selected_exact_skip_rules": 0,
+    "selected_response_slots": 42,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_unknown": 42
+  },
+  "schema": "PYAT_SRC04_ROUTING_RECHECK@1.0.0",
+  "scope": {
+    "ci": false,
+    "merge": false,
+    "metadata_instrument_only": true,
+    "new_authority": false,
+    "original_sav_read": false,
+    "production_edit": false,
+    "respondent_rows_read": false,
+    "source_execution": false
+  },
+  "selected_99_mapping": {
+    "all_42_mapped_substantive": true,
+    "mapped_to_SUBSTANTIVE_RESPONSE": 42,
+    "q101_99_state": "SUBSTANTIVE_RESPONSE",
+    "selected_fields": 42
+  },
+  "verdict": "REVISE"
+}

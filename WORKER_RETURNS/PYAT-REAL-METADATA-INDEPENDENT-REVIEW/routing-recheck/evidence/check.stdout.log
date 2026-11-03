@@ -1,0 +1,59 @@
+{
+  "replay_exact": true,
+  "routing": {
+    "selected_response_slots": 42,
+    "selected_routing_unknown": 42,
+    "selected_risk_set_unresolved": 42,
+    "selected_exact_skip_rules": 0,
+    "config_routing_entries": 178,
+    "accepted_routing_binding": false,
+    "accepted_denominator_binding": false,
+    "q101": {
+      "row_selector": "ALL",
+      "typed_state": "ROUTING_UNKNOWN",
+      "routing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+      "risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+      "routing_rule_exact": false,
+      "risk_set_exact": false
+    },
+    "all_42_unknown": true,
+    "all_42_risk_unresolved": true,
+    "exact_skip_rules_zero": true
+  },
+  "q101_correct": {
+    "valid_answer": 7129,
+    "explicit_nonresponse": 204,
+    "dk": 171,
+    "refusal": 33,
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "source_record_denominator": 7337,
+    "identity": 7337
+  },
+  "q101_candidate": {
+    "valid_answer": 7162,
+    "explicit_nonresponse": 171,
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "source_record_denominator": 7337,
+    "state_counts": {
+      "DK": 171,
+      "MISSING": 4,
+      "SUBSTANTIVE_RESPONSE": 7162
+    }
+  },
+  "q101_semantically_correct": false,
+  "instrument_markers": {
+    "ask all": [],
+    "all respondents": [],
+    "unconditional": [],
+    "skip": [],
+    "filter": [],
+    "if yes": [],
+    "if no": [],
+    "go to": [],
+    "routing": [],
+    "eligib": []
+  },
+  "verdict": "REVISE"
+}

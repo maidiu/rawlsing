@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_SRC04_ROUTING_RECHECK_TEST_RESULTS@1.0.0",
+  "candidate_commit": "a108e7dc7232b1f3487e71d4607f3e6ca3e9ebdf",
+  "review_start_head": "bdeace7866bcfaf7c94710b976c80b950bfe2968",
+  "commands": [
+    "git archive a108e7dc7 rawlsing_next WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/routing | tar -x -C <snapshot>",
+    "git archive 056849e23 rawlsing_next/source_configuration rawlsing_next/pre553_source_read_admission.py source_pre553_validation/SRC04 | tar -x -C <snapshot>",
+    "PYTHONPATH=<snapshot> python3 -B <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/routing/trace_routing.py ... --output <review>/evidence/REPLAYED_ROUTING_RECEIPT.json",
+    "PYTHONPATH=<snapshot> python3 -B -m pytest <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/routing/test_routing.py -q -o addopts='' -p no:cacheprovider",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-REAL-METADATA-INDEPENDENT-REVIEW/routing-recheck/check_routing.py"
+  ],
+  "results": [
+    {
+      "command": "routing replay",
+      "status": "PASS",
+      "exit": 0,
+      "candidate_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048",
+      "replayed_receipt_sha256": "3147604e6e395d0c79e4c10f82f3e10b3823d05f826ba765e9ab201d8a31d048",
+      "byte_identical": true
+    },
+    {
+      "command": "focused routing tests",
+      "status": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "detail": "5 passed in 0.03s"
+    },
+    {
+      "command": "42-state routing verification",
+      "status": "PASS",
+      "selected_response_slots": 42,
+      "selected_routing_unknown": 42,
+      "selected_risk_set_unresolved": 42,
+      "selected_exact_skip_rules": 0,
+      "accepted_routing_binding": false,
+      "accepted_denominator_binding": false
+    },
+    {
+      "command": "q101 tally semantics",
+      "status": "REVISE",
+      "candidate": {
+        "valid_answer": 7162,
+        "explicit_nonresponse": 171,
+        "missing_or_unobserved": 4,
+        "observed_response": 7333,
+        "source_record_denominator": 7337
+      },
+      "correct": {
+        "valid_answer": 7129,
+        "explicit_nonresponse": 204,
+        "dk": 171,
+        "refusal": 33,
+        "missing_or_unobserved": 4,
+        "observed_response": 7333,
+        "source_record_denominator": 7337
+      },
+      "detail": "33 code-99 Decline to Answer responses are misclassified as SUBSTANTIVE_RESPONSE; correct valid 7129 and explicit nonresponse 204."
+    },
+    {
+      "command": "exact instrument eligibility search",
+      "status": "NO_RULE_FOUND_IN_EXAMINED_MATERIAL",
+      "instrument_sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118",
+      "q101_page": 2,
+      "explicit_unconditional_or_ask_all": false,
+      "explicit_skip_filter_or_routing": false,
+      "affirmative_eligibility_evidence": false,
+      "detail": "q101 is listed without a visible filter, but no explicit unconditional/skip/routing statement was found. This does not prove no rule exists elsewhere."
+    }
+  ],
+  "verdict": "REVISE",
+  "sourcefree": true,
+  "metadata_instrument_only": true,
+  "original_sav_read": false,
+  "respondent_rows_read": false,
+  "new_authority": false,
+  "source_execution": false,
+  "production_edit": false,
+  "merge": false,
+  "ci": false,
+  "adoption": false
+}
