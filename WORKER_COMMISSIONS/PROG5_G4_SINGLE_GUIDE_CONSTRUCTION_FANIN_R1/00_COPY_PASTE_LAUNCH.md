@@ -2,6 +2,26 @@
 **INTELLIGENCE LEVEL:** I3+
 
 ```text
+PARALLEL EXECUTION AMENDMENT — 2026-11-02, SUPERSEDES ANY CONFLICTING G4 INSTRUCTIONS BELOW
+DO NOT START G4 RECEIVING UNTIL THE FIVE INDEPENDENT G4-P1–P5 SECTION/INDEX WORKERS HAVE RETURNED COMPLETE FILES WITH VERIFIED FINAL GIT SHAs. If a worker has not returned, report DEPENDENCY_HOLD rather than redoing its assignment. All five workers begin from the prior G4 prepared SHA b65d8f0eecb44f0d1b37eed82c913433a4224d1e, containing both fully staged G3-A/B packets. They only modify disjoint files on separate branches.
+
+EXACT PARALLEL WORKER OWNERSHIP:
+- G4-P1: agent/prog5-g4-p1-sources-workload-c11-20261102-r1; issue #625; ONLY S01–S03 sections and its return.
+- G4-P2: agent/prog5-g4-p2-empirical-learned-ff-20261102-r1; issue #626; ONLY S04–S06 sections and its return.
+- G4-P3: agent/prog5-g4-p3-f6-f7-20261102-r1; issue #627; ONLY S07–S08 sections and its return.
+- G4-P4: agent/prog5-g4-p4-world-possibility-gate-20261102-r1; issue #628; ONLY S09–S11 sections and its return.
+- G4-P5: agent/prog5-g4-p5-crosscut-indexes-20261102-r1; issue #629; ONLY NEW ASSET_LOCATOR.md, FUNCTION_PARITY.jsonl, CURRENT_SEAM_STATES.jsonl, COMPONENT_STATUS.jsonl, PREREQUISITES_AND_UNLOCKS.md, REMAINING_REAL_PYAT_WORK.md, G4_UNRESOLVED_SOURCE_REQUESTS.md, and its return.
+Each worker has read-only access to the other domains but must not edit their pages. None may merge, test, review, work from Library/mainMac or issue source/actor authority.
+
+G4 RECEIVING JOB ONLY:
+1. Lock exact worker final commits and their changed paths; reject file overlap and unauthorized edits. Retrieve the EXACT committed changed Git blobs and receive them into THIS branch in one source-controlled new commit (or small coherent commits), not from branch names alone. Preserve G2, G3 original candidate evidence and the user's no-test-until-construction-exhausted condition. All 11 section edits + 7 global index/work files and five returns should now exist.
+2. Reconcile conflicting SOURCE CLAIMS across P1–P5: same-grain current/historical/accepted code, 82 G2 requiredness/edge identity with G3 scoped conditions, G3-A function parity, native authority/first real reader, current source-cut path error and negative evidence. Amend only concrete contradicting statements; do not reinvent all five workers' assigned pages or a new roadmap ontology. Preserve 892 G1 asset references, 782 typed IDs, 150 parity records, 82 edge states, 62 status capsules, complete 49+ gaps, 28 original unplaced fates. Do not treat cross-organ references as source-native verified connections.
+3. Add/update shared 05_ROADMAP/README.md, G4_SOURCE_INTAKE_AND_CONFLICTS.md, G4_ASSEMBLY_CHECKPOINT.md, final 00_RETURN.md and only source-driven corrections. Follow the original G4 quality/scope contract below as coverage criteria, NOT as instructions to duplicate already finished page/index labor. Do necessary GitHub-only evidence work for specific uncovered material gaps; do not start Library/mainMac or independent cold-use/test.
+4. Report whether the guide is substantially assembled at GitHub scope and exact, cited meaningful external-source needs, if any. User decides on targeted source recovery and final independent usability review ONLY after substantive work is exhausted. Do not self-adopt or merge into PRE-MAIN.
+
+IMPORTANT: The older G4 phrase 'do substantive G4 work NOW' and older direct section-writing batch plan below are replaced by the above five-worker dependency and receiving plan. They remain only as a completeness checklist; DO NOT IGNORE THE PARALLEL DEPENDENCY HOLD.
+
+
 LAUNCH — PROG5-G4 — SINGLE SUBSTANTIVE FAN-IN OF G3-A/B INTO THE EXISTING PYAT GUIDE
 REPOSITORY: maidiu/rawlsing (PRIVATE)
 AGENT_TYPE: Independent I3+ Pyat development-guide construction integrator; not Pyat HQ or PRE-MAIN integrator.
