@@ -1,5 +1,18 @@
 # ROADMAP:S01 — The governed original35 source estate and original scientific meaning
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S01.1–S01.5; historical gaps GAP-001–005, source dependencies GAP-011–012.** L1 directly locates [O35B audit_owner_rows](https://github.com/maidiu/rawlsing/blob/c714af26a5a749706c6da06df40ac0ef026c6296/WORKER_RETURNS/PYAT-R40-O35B-ORIGINAL35-AUTHORITY-OPERATION-BINDING-R1/authority_binding.py#L75) (35 owner/operation binds, permissions/blockers), U43 **175 prospective owner slots / 18,285 research identities** with native U/Epre **NULL** and B43 host/source/purpose refusal; none is a competent original 35-survey issuance. Historical S44 SRC27 LiTS 29,002 respondent / 58,004 event evidence, one native-original historical I03 5,155/5,155 positive and seven nonpositives is an **older source-specific return**, not all35 current admissibility. R42 separately locates governed older C11 successor custody; respondent content is not fetched, and existence does not authorize it. R47 FUNC001 original U/Epre/weight/routing permissions remain source-owner decisions.
+
+**Permission chronology:** [R56 narrow](https://github.com/maidiu/rawlsing/blob/812bc7d0bc2d02942f883262a241ce72b064a728/PYAT_CONTROL_ROOM/R56_USER_EXPLICIT_NARROW_IMPLEMENTATION_STOP_AMENDMENT_AND_CODEX_DIRECTED_FLIGHT_20261021.md) grants local synthetic transport only; R60 appointed Codex HQ, R87 appointed secondary Browser HQ without displacing it, neither science nor actor. R02/R04.byte local reviewers establish physical+sourcefree gates but not original respondent rights. The original ASTRA:IF:N0:N4:0 remains **IF**, not a compulsory full-machine stage; no source-native grading is promoted. L3's 44 historical Long Memory duties have valid owners, not 44 live readers.
+
+**Next owner:** source/science original issuer proves exact U_item/U_unit/U_app/E_pre, licensed physical/material semantics and admissible first consumer; no blanket archive search.
+
+---
+
+
 **PASS 1 complete; PASS 2 source-linked rough evidence added. This is not native acceptance.** [Whole map](../README.md) · [cross-plan index](../CROSS_PLAN_IDS.md) · [typed seams](../PLANNED_INTERFACES.jsonl) · [input cuts](../INPUT_CUTS.md). Every forward link describes an intended function, not necessarily an operational endpoint.
 
 ## Purpose, inherited plan IDs and scope
