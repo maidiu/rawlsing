@@ -139,3 +139,8 @@ A previously **SOURCEFREE_SCOPED_ONLY** edge flips to native only with exact ori
 | `S-WAKE` | `HELD_OWNER_OR_SCIENCE` | S11: independent N11 formal acceptance then lawful N12 decision |
 
 The remaining **35 observed G1-B** seam IDs are typed observations, not 35 additional dependencies; their exact first-reader provenance/status is in `SCOPED_SEAM_STATES.jsonl`. The complete gap register is in `NEXT_REAL_PYAT_WORK.md`.
+
+
+## HQ observation 2026-11-03 — R06 reuse compatibility
+
+Exact branch evidence `07fae0998af11c910589627438a5342ef9c727e4` preserves an existing independently reviewed R06 actual sourcefree R05→P41/N9/N10W/E04 reader. Substitution of the exact receiving issuance/release/lifecycle modules passed all 17 existing R06 cases. This supersedes no original-cut assessment: it is branch-only HQ compatibility evidence, not new independent acceptance, protected adoption or original-source/world science. Reuse this lineage before rebuilding. Receiving-boundary qualification and authorized integration remain; context structural authority, cross-unit pooling and measured temporal science stay held. See `HQ_DEVELOPMENT_TRANSITIONS.jsonl` transition `PYAT-HQ-R06-REUSE-COMPATIBILITY-20261103`.

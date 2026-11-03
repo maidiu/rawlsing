@@ -93,3 +93,8 @@ See [G3-A 12-case source-fate record](https://github.com/maidiu/rawlsing/blob/93
 ## Exact lookup / maturity caution
 
 Use `FUNCTION_PARITY.jsonl.obligation_id` for all 28 old-vs-now, 57 current-with-first-consumer, 51 child, 14 conflict rows; use `CURRENT_SEAM_STATES.jsonl.edge_id` for 7 MUST /26 IF /14 functional /35 observed; use `COMPONENT_STATUS.jsonl.id` for all 11 parents and 51 children. `PREREQUISITES_AND_UNLOCKS.md` keeps AND/IF/ALTERNATE distinct; `REMAINING_REAL_PYAT_WORK.md` contains all 49 finite tasks. The retained gap set is explicitly **not** a source-native pass/fail campaign.
+
+
+## HQ observation 2026-11-03 — R06 reuse compatibility
+
+Exact branch evidence `07fae0998af11c910589627438a5342ef9c727e4` preserves an existing independently reviewed R06 actual sourcefree R05→P41/N9/N10W/E04 reader. Substitution of the exact receiving issuance/release/lifecycle modules passed all 17 existing R06 cases. This supersedes no original-cut assessment: it is branch-only HQ compatibility evidence, not new independent acceptance, protected adoption or original-source/world science. Reuse this lineage before rebuilding. Receiving-boundary qualification and authorized integration remain; context structural authority, cross-unit pooling and measured temporal science stay held. See `HQ_DEVELOPMENT_TRANSITIONS.jsonl` transition `PYAT-HQ-R06-REUSE-COMPATIBILITY-20261103`.
