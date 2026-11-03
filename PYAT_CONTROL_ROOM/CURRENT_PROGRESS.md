@@ -1,3 +1,7 @@
+# N10W same-lineage disposition
+
+**N10W-SAME-LINEAGE-SCOPED-ACCEPTANCE**. Independent replay: 84 W41/E41/P41 views, cold equality, source and provider mismatch refusal, and restored output identity. Review `7559fa795b49d3bace7748066ae7f16d5a6223a5`. D2P3 field reader lacks version-selected N9 and computed N10E on a common source-row/currentness binding. Original science and protected adoption held.
+
 # Current PROGRAMMA return dispositions
 
 - **N10W-SAME-LINEAGE-AUTHOR-RETURN** at `883da8fff2bb10fe2181d0c0a7ddc84d34bb5a8c`. Author reports 84 J42 views, mismatch refusal and restoration. Distinct review launched as pyat-same-lineage-n10w-review. D2P3 lacks W41/E41 binding. Original science and adoption held.
