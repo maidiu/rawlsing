@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R05_ACTUAL_E41_ROUTE_REACHES_SAME_LEARNED_CONSUMER",
+      "actual_consumer": "evaluate_learned_world_consumer consumer_values_read",
+      "claimed_dependency": "Actual E41 extension producer route survives into the learned consumer view",
+      "positive_node": "rawlsing_next/tests/test_universal_learned_consumer.py::test_product_graph_and_e41_extension_reach_same_consumer",
+      "fault": {
+        "path": "rawlsing_next/pre553_learned_world_composition.py",
+        "old": "graph = {**graph, \"extension_route\": ext_route}",
+        "new": "graph = {**graph, \"extension_route\": \"SEVERED_E41_ROUTE\"}"
+      }
+    }
+  ]
+}

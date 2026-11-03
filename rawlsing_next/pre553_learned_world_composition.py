@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Callable, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
@@ -48,6 +48,26 @@ from rawlsing_next.pre553_learned_product_release import (
     register_producer_subject,
 )
 from rawlsing_next.pre553_route_b_production import RouteBProductionResult
+from rawlsing_next.pre553_analytical_composition import (
+    AnalyticalCompositionResult,
+    compose_positioned_subject_possibility,
+    native_composition_original,
+)
+from rawlsing_next.pre553_universal_empirical_extension import (
+    EXT_ROUTE_DIRECT_MULTI_CONDITIONER,
+    EXT_ROUTE_DIRECT_VIA_ACCEPTED_PROVIDER,
+    EXT_ROUTE_DISCOVERY,
+    EXT_ROUTE_RECURSIVE,
+    EmpiricalPossibilitySliceExtensionResult,
+    provide_empirical_possibility_slice_ext,
+)
+from rawlsing_next.source_backed_positioned_subject_possibility import (
+    PositionedSubjectPossibilityModelRule,
+    PositionedSubjectPossibilityQuery,
+    PositionedSubjectPossibilityResult,
+    PossibilitySliceEvidence,
+    evaluate_positioned_subject_possibility,
+)
 
 
 PRODUCT_CONTRACT_SCHEMA = "LearnedWorldProductContractBinding@1.0.0"
@@ -1423,4 +1443,976 @@ __all__ = [
     "adapt_m2_release_to_b5",
     "compose_learned_world",
     "compose_direct_producer",
+    "LEARNED_CONSUMER_CONTRACT_ID",
+    "LEARNED_CONSUMER_SCHEMA",
+    "LearnedWorldConsumerError",
+    "LearnedWorldConsumerResult",
+    "NativeProductGraph",
+    "evaluate_learned_world_consumer",
 ]
+
+
+LEARNED_CONSUMER_CONTRACT_ID = "R91_LEARNED_WORLD_POSSIBILITY_CONSUMER@1.0.0"
+LEARNED_CONSUMER_SCHEMA = "R91_LEARNED_WORLD_CONSUMER_RESULT@1"
+
+
+class LearnedWorldConsumerError(LearnedWorldCompositionError):
+    """Typed learned-product consumer refusal; no new geometry is invented."""
+
+
+@dataclass(frozen=True)
+class NativeProductGraph:
+    """Actual native product/components consumed by the learned consumer."""
+
+    compositions: tuple[AnalyticalCompositionResult, ...]
+    extension_result: Any | None = None
+
+    def __post_init__(self) -> None:
+        comps = tuple(self.compositions)
+        if not comps:
+            raise LearnedWorldConsumerError("native product graph requires a composition")
+        if any(not isinstance(item, AnalyticalCompositionResult) for item in comps):
+            raise LearnedWorldConsumerError("native product graph components must be compositions")
+        object.__setattr__(self, "compositions", comps)
+
+
+@dataclass(frozen=True)
+class LearnedWorldConsumerResult:
+    contract_id: str
+    state: str
+    reason_code: str
+    learned_receipt_ref: ExactRef
+    product_contract_ref: ExactRef
+    m1_disposition_ref: ExactRef | None
+    m2_release_ref: ExactRef | None
+    b5_selection_receipt_ref: ExactRef | None
+    evidence_ref: ExactRef | None
+    producer_query_ref: ExactRef | None
+    producer_predicate_ref: ExactRef | None
+    consumer_query_ref: ExactRef | None
+    consumer_result: PositionedSubjectPossibilityResult | None
+    consumer_values_read: Mapping[str, Any] | None
+    eligibility_state: str = "UNKNOWN"
+    execution_state: str = "NOT_STARTED"
+    result_state: str = "UNKNOWN"
+    denominator: int | None = None
+    cells: tuple[Mapping[str, Any], ...] = ()
+    producer_route: str | None = None
+    joint_component_count: int | None = None
+    joint_order_semantics: str | None = None
+    discovery_receipt_refs: tuple[ExactRef, ...] = ()
+    discovery_frontier_ref: ExactRef | None = None
+    recursive_handoff_refs: tuple[ExactRef, ...] = ()
+    recursive_lineage_refs: tuple[ExactRef, ...] = ()
+    z_unresolved: bool = False
+
+    def material(self) -> Mapping[str, Any]:
+        return {
+            "schema": LEARNED_CONSUMER_SCHEMA,
+            "contract_id": self.contract_id,
+            "state": self.state,
+            "reason_code": self.reason_code,
+            "learned_receipt_ref": self.learned_receipt_ref.as_dict(),
+            "product_contract_ref": self.product_contract_ref.as_dict(),
+            "m1_disposition_ref": None
+            if self.m1_disposition_ref is None
+            else self.m1_disposition_ref.as_dict(),
+            "m2_release_ref": None
+            if self.m2_release_ref is None
+            else self.m2_release_ref.as_dict(),
+            "b5_selection_receipt_ref": None
+            if self.b5_selection_receipt_ref is None
+            else self.b5_selection_receipt_ref.as_dict(),
+            "evidence_ref": None
+            if self.evidence_ref is None
+            else self.evidence_ref.as_dict(),
+            "producer_query_ref": None
+            if self.producer_query_ref is None
+            else self.producer_query_ref.as_dict(),
+            "producer_predicate_ref": None
+            if self.producer_predicate_ref is None
+            else self.producer_predicate_ref.as_dict(),
+            "consumer_query_ref": None
+            if self.consumer_query_ref is None
+            else self.consumer_query_ref.as_dict(),
+            "consumer_result_state": None
+            if self.consumer_result is None
+            else self.consumer_result.result_state,
+            "consumer_result_hash": None
+            if self.consumer_result is None
+            else self.consumer_result.result_hash,
+            "consumer_values_read": self.consumer_values_read,
+            "eligibility_state": self.eligibility_state,
+            "execution_state": self.execution_state,
+            "result_state": self.result_state,
+            "denominator": self.denominator,
+            "cells": [canonicalize(cell) for cell in self.cells],
+            "producer_route": self.producer_route,
+            "joint_component_count": self.joint_component_count,
+            "joint_order_semantics": self.joint_order_semantics,
+            "discovery_receipt_refs": [x.as_dict() for x in self.discovery_receipt_refs],
+            "discovery_frontier_ref": None if self.discovery_frontier_ref is None else self.discovery_frontier_ref.as_dict(),
+            "recursive_handoff_refs": [x.as_dict() for x in self.recursive_handoff_refs],
+            "recursive_lineage_refs": [x.as_dict() for x in self.recursive_lineage_refs],
+            "z_unresolved": self.z_unresolved,
+        }
+
+    @property
+    def result_hash(self) -> str:
+        return semantic_hash(self.material())
+
+
+def _learned_refusal(
+    *,
+    learned: LearnedWorldCompositionResult,
+    reason: str,
+    disposition: LearnedEmpiricalDisposition | None = None,
+    evidence: PossibilitySliceEvidence | None = None,
+    producer_query_ref: ExactRef | None = None,
+    producer_predicate_ref: ExactRef | None = None,
+) -> LearnedWorldConsumerResult:
+    return LearnedWorldConsumerResult(
+        contract_id=LEARNED_CONSUMER_CONTRACT_ID,
+        state="REFUSED",
+        reason_code=reason,
+        learned_receipt_ref=learned.receipt.ref,
+        product_contract_ref=learned.receipt.product_contract_ref,
+        m1_disposition_ref=None if disposition is None else disposition.ref,
+        m2_release_ref=None
+        if learned.m2_artifacts is None
+        else learned.m2_artifacts.release.ref,
+        b5_selection_receipt_ref=None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref,
+        evidence_ref=None if evidence is None else evidence.evidence_ref,
+        producer_query_ref=producer_query_ref,
+        producer_predicate_ref=producer_predicate_ref,
+        consumer_query_ref=None,
+        consumer_result=None,
+        consumer_values_read=None,
+    )
+
+
+
+
+@dataclass(frozen=True)
+class NativeGraphSlot:
+    slot_id: str
+    source_universe_ref: ExactRef
+    release_ref: ExactRef
+    producer_query_ref: ExactRef
+    producer_predicate_ref: ExactRef
+    consumer_query_ref: ExactRef
+    model_rule_hash: str
+    producer_route: str
+    discovery_result: Any | None = None
+    discovery_receipt_ref: ExactRef | None = None
+    discovery_frontier_ref: ExactRef | None = None
+    recursive_handoff: Any | None = None
+    recursive_lineage_refs: tuple[ExactRef, ...] = ()
+    root_parent_ref: ExactRef | None = None
+    condition_value_witness: Any | None = None
+    target_arity: int | None = None
+    joint_order_semantics: str | None = None
+    m1_disposition: Any | None = None
+    m2_release: ExactRef | None = None
+    b5_selection: ExactRef | None = None
+    require_current_selection: bool = False
+    e41_input: Any | None = None
+    repository: Any | None = None
+    empirical_query: Any | None = None
+    predicate: Any | None = None
+    authority_registry: Any | None = None
+    consumer_query: Any | None = None
+    model_rule: Any | None = None
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "slot_id", str(self.slot_id).strip())
+        if not self.slot_id:
+            raise LearnedWorldConsumerError("graph slot id is required")
+        for name in (
+            "source_universe_ref", "release_ref", "producer_query_ref",
+            "producer_predicate_ref", "consumer_query_ref",
+        ):
+            object.__setattr__(self, name, _exact(getattr(self, name), name))
+        if len(str(self.model_rule_hash)) != 64:
+            raise LearnedWorldConsumerError("slot model_rule_hash must be sha256")
+        if not str(self.producer_route).strip():
+            raise LearnedWorldConsumerError("slot producer route is required")
+        for name in ("discovery_receipt_ref", "discovery_frontier_ref", "root_parent_ref", "m2_release", "b5_selection"):
+            value = getattr(self, name)
+            if value is not None:
+                object.__setattr__(self, name, _exact(value, name))
+        object.__setattr__(
+            self,
+            "recursive_lineage_refs",
+            _refs(self.recursive_lineage_refs, "recursive_lineage_refs"),
+        )
+        if self.target_arity is not None and (
+            type(self.target_arity) is not int or self.target_arity < 1
+        ):
+            raise LearnedWorldConsumerError("slot target_arity must be positive int")
+        if self.require_current_selection and self.b5_selection is None:
+            raise LearnedWorldConsumerError("current selection required but absent in admitted slot")
+
+
+@dataclass(frozen=True)
+class NativeGraphExecutionRequest:
+    slots: tuple[NativeGraphSlot, ...]
+
+    def __post_init__(self) -> None:
+        slots = tuple(self.slots)
+        if not slots:
+            raise LearnedWorldConsumerError("graph request requires admitted slots")
+        if len({slot.slot_id for slot in slots}) != len(slots):
+            raise LearnedWorldConsumerError("graph slot ids must be unique")
+        object.__setattr__(self, "slots", slots)
+
+
+@dataclass(frozen=True)
+class BoundNativeProductGraph:
+    original_ref: ExactRef
+    view: NativeProductGraph
+    projection_hash: str
+
+
+class TrustedNativeGraphCoordinator:
+    """Local trusted coordinator holding actual executed originals separately."""
+
+    def __init__(
+        self,
+        executors: Mapping[str, Callable[[NativeGraphSlot], AnalyticalCompositionResult]] | None = None,
+        *,
+        admitted_slots: Mapping[str, NativeGraphSlot] | None = None,
+    ) -> None:
+        self._executors = dict(executors or {})
+        self._admitted_slots = dict(admitted_slots or {})
+        self._originals: dict[str, tuple[Mapping[str, Any], tuple[AnalyticalCompositionResult, ...]]] = {}
+
+    def execute(self, request: NativeGraphExecutionRequest) -> BoundNativeProductGraph:
+        components = []
+        slot_records = []
+        extensions: list[Any] = []
+        for slot in request.slots:
+            admitted = self._admitted_slots.get(slot.slot_id)
+            if admitted is not None:
+                if (
+                    admitted.producer_query_ref != slot.producer_query_ref
+                    or admitted.producer_predicate_ref != slot.producer_predicate_ref
+                    or admitted.consumer_query_ref != slot.consumer_query_ref
+                    or admitted.model_rule_hash != slot.model_rule_hash
+                    or admitted.producer_route != slot.producer_route
+                    or admitted.source_universe_ref != slot.source_universe_ref
+                    or admitted.release_ref != slot.release_ref
+                ):
+                    raise LearnedWorldConsumerError(
+                        "request slot differs from trusted admitted slot"
+                    )
+                # The admitted slot is the sole authority for every retained
+                # actual association. Request-supplied actual values are ignored.
+                slot = admitted
+                if (
+                    admitted.repository is None
+                    or admitted.empirical_query is None
+                    or admitted.predicate is None
+                    or admitted.authority_registry is None
+                    or admitted.consumer_query is None
+                    or admitted.model_rule is None
+                ):
+                    raise LearnedWorldConsumerError(
+                        "admitted slot lacks actual native invocation inputs"
+                    )
+                kwargs = dict(
+                    repository=admitted.repository,
+                    empirical_query=admitted.empirical_query,
+                    predicate=admitted.predicate,
+                    authority_registry=admitted.authority_registry,
+                    release_refs=(admitted.release_ref,),
+                    consumer_query=admitted.consumer_query,
+                    model_rule=admitted.model_rule,
+                    condition_binding_witness=admitted.condition_value_witness,
+                )
+                if slot.require_current_selection and slot.b5_selection is None:
+                    raise LearnedWorldConsumerError(
+                        "admitted currentness requirement lacks B5 selection"
+                    )
+                if admitted.discovery_result is not None:
+                    if admitted.discovery_receipt_ref is None:
+                        raise LearnedWorldConsumerError(
+                            "discovery input requires exact receipt"
+                        )
+                    kwargs["discovery_result"] = admitted.discovery_result
+                    kwargs["discovery_receipt_ref"] = admitted.discovery_receipt_ref
+                if admitted.recursive_handoff is not None:
+                    kwargs["recursive_handoff"] = admitted.recursive_handoff
+                component = compose_positioned_subject_possibility(**kwargs)
+                if admitted.e41_input is not None:
+                    extension = provide_empirical_possibility_slice_ext(
+                        repository=admitted.repository,
+                        empirical_query=admitted.empirical_query,
+                        predicate=admitted.predicate,
+                        authority_registry=admitted.authority_registry,
+                        release_refs=(admitted.release_ref,),
+                        consumer_query=admitted.consumer_query,
+                        model_rule=admitted.model_rule,
+                        condition_binding_witness=admitted.condition_value_witness,
+                        discovery_result=admitted.discovery_result,
+                        discovery_receipt_ref=admitted.discovery_receipt_ref,
+                        recursive_handoff=admitted.recursive_handoff,
+                    )
+                    if (
+                        extension.composition_result.composed_result_identity_hash
+                        != component.composed_result_identity_hash
+                        or extension.producer_route
+                        != extension.extension_receipt.producer_route
+                    ):
+                        raise LearnedWorldConsumerError(
+                            "E41 execution does not reconcile with actual C1 execution"
+                        )
+                    extensions.append(extension)
+            else:
+                executor = self._executors.get(slot.slot_id)
+                if executor is None:
+                    raise LearnedWorldConsumerError(f"no trusted executor for slot {slot.slot_id!r}")
+                component = executor(slot)
+            if not isinstance(component, AnalyticalCompositionResult):
+                raise LearnedWorldConsumerError("trusted execution did not return a native composition")
+            if (
+                component.producer_query_ref != slot.producer_query_ref
+                or component.producer_predicate_ref != slot.producer_predicate_ref
+                or component.consumer_query_ref != slot.consumer_query_ref
+                or component.consumer_model_rule_hash != slot.model_rule_hash
+                or component.producer_route != slot.producer_route
+                or slot.source_universe_ref not in set(component.source_universe_refs)
+                or slot.release_ref not in set(component.release_refs)
+            ):
+                raise LearnedWorldConsumerError("executed slot does not match admitted determinants")
+            if slot.target_arity is not None and component.joint_component_count != slot.target_arity:
+                raise LearnedWorldConsumerError("executed slot joint arity differs from admitted slot")
+            if slot.joint_order_semantics is not None and component.joint_order_semantics != slot.joint_order_semantics:
+                raise LearnedWorldConsumerError("executed slot joint order differs from admitted slot")
+            if admitted is not None:
+                if admitted.discovery_result is not None and (
+                    component.discovery_receipt_refs != (slot.discovery_receipt_ref,)
+                    or component.discovery_frontier_ref != slot.discovery_frontier_ref
+                ):
+                    raise LearnedWorldConsumerError("executed discovery refs differ from admitted slot")
+                if admitted.recursive_handoff is not None and (
+                    component.recursive_handoff_refs != (admitted.recursive_handoff.ref,)
+                    or not set(slot.recursive_lineage_refs).issubset(
+                        set(component.recursive_lineage_refs)
+                    )
+                ):
+                    raise LearnedWorldConsumerError("executed recursive lineage differs from admitted slot")
+            if native_composition_original(component) is None:
+                raise LearnedWorldConsumerError("executed slot lacks retained native original")
+            components.append(component)
+            slot_records.append(
+                {
+                    "slot_id": slot.slot_id,
+                    "source_universe_ref": slot.source_universe_ref.as_dict(),
+                    "release_ref": slot.release_ref.as_dict(),
+                    "producer_query_ref": slot.producer_query_ref.as_dict(),
+                    "producer_predicate_ref": slot.producer_predicate_ref.as_dict(),
+                    "consumer_query_ref": slot.consumer_query_ref.as_dict(),
+                    "model_rule_hash": slot.model_rule_hash,
+                    "producer_route": slot.producer_route,
+                    "target_arity": slot.target_arity,
+                    "joint_order_semantics": slot.joint_order_semantics,
+                    "discovery_receipt_ref": None if slot.discovery_receipt_ref is None else slot.discovery_receipt_ref.as_dict(),
+                    "discovery_frontier_ref": None if slot.discovery_frontier_ref is None else slot.discovery_frontier_ref.as_dict(),
+                    "recursive_handoff_ref": None if admitted is None or admitted.recursive_handoff is None else admitted.recursive_handoff.ref.as_dict(),
+                    "recursive_lineage_refs": [x.as_dict() for x in slot.recursive_lineage_refs],
+                    "root_parent_ref": None if slot.root_parent_ref is None else slot.root_parent_ref.as_dict(),
+                    "m1_disposition_ref": None if slot.m1_disposition is None else _exact_ref_of(slot.m1_disposition).as_dict(),
+                    "m2_release_ref": None if slot.m2_release is None else slot.m2_release.as_dict(),
+                    "b5_selection_ref": None if slot.b5_selection is None else slot.b5_selection.as_dict(),
+                    "require_current_selection": slot.require_current_selection,
+                    "e41_route": None if admitted is None or admitted.e41_input is None else extension.producer_route,
+                    "e41_receipt_hash": None if admitted is None or admitted.e41_input is None else extension.extension_receipt.receipt_hash,
+                    "composition": canonicalize(component.identity_material()),
+                    "composition_hash": component.composed_result_identity_hash,
+                }
+            )
+        material = {
+            "schema": "R91_BOUND_NATIVE_GRAPH_ORIGINAL@2",
+            "slots": slot_records,
+        }
+        digest = semantic_hash(material)
+        ref = ExactRef(
+            "R91_BOUND_NATIVE_GRAPH_ORIGINAL@1",
+            f"urn:rawlsing:r91:bound-native-graph:sha256:{digest}",
+            digest,
+        )
+        if all(slot.slot_id in self._admitted_slots for slot in request.slots):
+            self._originals[digest] = (canonicalize(material), tuple(components))
+        return BoundNativeProductGraph(
+            original_ref=ref,
+            view=NativeProductGraph(tuple(components)),
+            projection_hash=digest,
+        )
+
+    def resolve_original(self, ref: ExactRef) -> Mapping[str, Any] | None:
+        entry = self._originals.get(ref.content_hash)
+        return None if entry is None else entry[0]
+
+    def original_components(self, ref: ExactRef) -> tuple[AnalyticalCompositionResult, ...] | None:
+        entry = self._originals.get(ref.content_hash)
+        return None if entry is None else entry[1]
+
+
+def _consumer_status_axes(state: str) -> tuple[str, str, str]:
+    if state == "SUPPORTED":
+        return ("ELIGIBLE", "COMPLETED", "SUPPORTED")
+    if state == "ZERO_SUPPORT":
+        return ("ELIGIBLE", "COMPLETED", "ZERO_SUPPORT")
+    if state == "VALID_EMPTY":
+        return ("ELIGIBLE", "COMPLETED", "VALID_EMPTY")
+    if state in {"UNRESOLVED", "UNKNOWN"}:
+        return ("ELIGIBLE", "COMPLETED", "UNKNOWN")
+    if state in {"UNAVAILABLE", "HELD"}:
+        return ("HELD", "COMPLETED", "UNSUPPORTED")
+    if state in {"NOT_APPLICABLE", "INAPPLICABLE"}:
+        return ("INAPPLICABLE_PROVED", "COMPLETED", "UNSUPPORTED")
+    return ("ELIGIBLE", "UNSUPPORTED_RUNTIME", "UNSUPPORTED")
+
+
+def _fallback_graph(compositions: Sequence[AnalyticalCompositionResult]) -> Mapping[str, Any]:
+    counts = []
+    routes = set()
+    for component in compositions:
+        topology = canonicalize(component.target_arity_and_topology)
+        arity = topology.get("arity")
+        counts.append(arity if type(arity) is int and arity > 0 else 1)
+        route = component.producer_route
+        routes.add(route if isinstance(route, str) else "UNKNOWN_ROUTE")
+    return {
+        "component_count": len(compositions),
+        "producer_routes": tuple(sorted(routes)),
+        "producer_route": tuple(sorted(routes))[0] if len(routes) == 1 else "MULTI_ROUTE",
+        "joint_component_count": sum(counts),
+        "joint_order_semantics": "SEMANTIC_ORDERED",
+        "discovery_receipt_refs": (),
+        "discovery_frontier_ref": None,
+        "recursive_handoff_refs": (),
+        "recursive_lineage_refs": (),
+        "component_result_hashes": tuple(
+            component.composed_result_identity_hash for component in compositions
+        ),
+    }
+
+
+def _authoritative_graph(
+    compositions: Sequence[AnalyticalCompositionResult],
+) -> tuple[Mapping[str, Any], str | None]:
+    discovery: list[ExactRef] = []
+    recursive: list[ExactRef] = []
+    lineage: list[ExactRef] = []
+    frontiers: list[ExactRef] = []
+    routes: set[str] = set()
+    joint_counts: list[int] = []
+    orders: list[str] = []
+    hashes: list[str] = []
+    valid_routes = {
+        "DIRECT_I03_TO_POSITIONED_SUBJECT",
+        "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT",
+        "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT",
+    }
+    for component in compositions:
+        original = native_composition_original(component)
+        if (
+            original is None
+            or canonicalize(original) != canonicalize(component.identity_material())
+        ):
+            return (_fallback_graph(compositions), "COMPONENT_NOT_RETAINED_NATIVE_ORIGINAL")
+        topology = canonicalize(component.target_arity_and_topology)
+        arity = topology.get("arity")
+        components = topology.get("components", ())
+        if (
+            type(arity) is not int
+            or arity < 1
+            or len(components) != arity
+            or component.joint_component_count != arity
+            or component.joint_order_semantics != topology.get("joint_order_semantics")
+        ):
+            return (_fallback_graph(compositions), "JOINT_COMPONENT_COUNT_OR_ORDER_MISMATCH")
+        route = component.producer_route
+        if route not in valid_routes:
+            return (_fallback_graph(compositions), "UNKNOWN_NATIVE_PRODUCER_ROUTE")
+        if route == "DIRECT_I03_TO_POSITIONED_SUBJECT":
+            if (
+                component.discovery_receipt_refs
+                or component.discovery_frontier_ref is not None
+                or component.recursive_handoff_refs
+                or component.recursive_lineage_refs
+            ):
+                return (_fallback_graph(compositions), "DIRECT_ROUTE_CARRIES_DISCOVERY_OR_RECURSIVE_LABELS")
+        elif route == "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT":
+            if not component.discovery_receipt_refs or component.discovery_frontier_ref is None:
+                return (_fallback_graph(compositions), "DISCOVERY_ROUTE_MISSING_RECEIPT_OR_FRONTIER")
+            if component.recursive_handoff_refs or component.recursive_lineage_refs:
+                return (_fallback_graph(compositions), "DISCOVERY_ROUTE_CARRIES_RECURSIVE_LABELS")
+            discovery.extend(component.discovery_receipt_refs)
+            frontiers.append(component.discovery_frontier_ref)
+        else:
+            if not component.recursive_handoff_refs or not component.recursive_lineage_refs:
+                return (_fallback_graph(compositions), "RECURSIVE_ROUTE_MISSING_HANDOFF_OR_LINEAGE")
+            recursive.extend(component.recursive_handoff_refs)
+            lineage.extend(component.recursive_lineage_refs)
+        routes.add(route)
+        joint_counts.append(arity)
+        orders.append(topology.get("joint_order_semantics", "SEMANTIC_ORDERED"))
+        hashes.append(component.composed_result_identity_hash)
+    if len(set(hashes)) != len(hashes):
+        return (_fallback_graph(compositions), "DUPLICATE_GRAPH_COMPONENT")
+    graph = {
+        "component_count": len(compositions),
+        "producer_routes": tuple(sorted(routes)),
+        "producer_route": tuple(sorted(routes))[0] if len(routes) == 1 else "MULTI_ROUTE",
+        "joint_component_count": sum(joint_counts),
+        "joint_order_semantics": orders[0] if len(set(orders)) == 1 else "MIXED",
+        "discovery_receipt_refs": tuple(discovery),
+        "discovery_frontier_ref": frontiers[0] if frontiers else None,
+        "recursive_handoff_refs": tuple(recursive),
+        "recursive_lineage_refs": tuple(lineage),
+        "component_result_hashes": tuple(hashes),
+    }
+    return (graph, None)
+
+
+def _exact_ref_of(value: Any) -> ExactRef:
+    ref = getattr(value, "ref", None)
+    if isinstance(ref, ExactRef):
+        return ref
+    if isinstance(value, Mapping):
+        return _exact(value, "ref")
+    raise LearnedWorldConsumerError("object does not expose an exact ref")
+
+
+def _graph_refs(compositions: Sequence[AnalyticalCompositionResult]) -> Mapping[str, Any]:
+    graph, problem = _authoritative_graph(compositions)
+    if problem is not None:
+        raise LearnedWorldConsumerError(problem)
+    return graph
+
+
+def _graph_value(value: Any) -> Any:
+    if isinstance(value, ExactRef):
+        return value.as_dict()
+    if isinstance(value, tuple):
+        return [_graph_value(item) for item in value]
+    return value
+
+
+def _typed_graph_result(
+    *,
+    learned: LearnedWorldCompositionResult,
+    disposition: LearnedEmpiricalDisposition,
+    composition: AnalyticalCompositionResult,
+    compositions: Sequence[AnalyticalCompositionResult],
+    graph: Mapping[str, Any],
+    consumer_query: PositionedSubjectPossibilityQuery,
+    producer_query_ref: ExactRef,
+    producer_predicate_ref: ExactRef,
+    reason_code: str,
+) -> LearnedWorldConsumerResult:
+    state = composition.producer_fact_state
+    if state == "SUPPORTED":
+        state = composition.analytical_state if composition.analytical_state != "SUPPORTED" else "UNKNOWN"
+    eligibility, execution, result_state = _consumer_status_axes(state)
+    denominator = composition.raw_denominator_support
+    cells = tuple(canonicalize(cell) for cell in composition.complete_cell_geometry)
+    values = {
+        "schema": "R91_LEARNED_WORLD_CONSUMER_VALUES@2",
+        "learned_receipt_ref": learned.receipt.ref.as_dict(),
+        "product_contract_ref": learned.receipt.product_contract_ref.as_dict(),
+        "m1_disposition_ref": disposition.ref.as_dict(),
+        "m2_release_ref": learned.m2_artifacts.release.ref.as_dict(),
+        "b5_selection_receipt_ref": None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref.as_dict(),
+        "consumer_query_ref": consumer_query.ref.as_dict(),
+        "producer_query_ref": producer_query_ref.as_dict(),
+        "producer_predicate_ref": producer_predicate_ref.as_dict(),
+        "eligibility_state": eligibility,
+        "execution_state": execution,
+        "result_state": result_state,
+        "denominator": denominator,
+        "cells": [canonicalize(cell) for cell in cells],
+        "z_unresolved": result_state == "UNKNOWN" and denominator == 16,
+        **{key: _graph_value(value) for key, value in graph.items()},
+    }
+    return LearnedWorldConsumerResult(
+        contract_id=LEARNED_CONSUMER_CONTRACT_ID,
+        state=f"LEARNED_CONSUMER_{result_state}",
+        reason_code=reason_code,
+        learned_receipt_ref=learned.receipt.ref,
+        product_contract_ref=learned.receipt.product_contract_ref,
+        m1_disposition_ref=disposition.ref,
+        m2_release_ref=learned.m2_artifacts.release.ref,
+        b5_selection_receipt_ref=None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref,
+        evidence_ref=None,
+        producer_query_ref=producer_query_ref,
+        producer_predicate_ref=producer_predicate_ref,
+        consumer_query_ref=consumer_query.ref,
+        consumer_result=None,
+        consumer_values_read=values,
+        eligibility_state=eligibility,
+        execution_state=execution,
+        result_state=result_state,
+        denominator=denominator,
+        cells=cells,
+        producer_route=graph["producer_route"],
+        joint_component_count=graph["joint_component_count"],
+        joint_order_semantics=graph["joint_order_semantics"],
+        discovery_receipt_refs=graph["discovery_receipt_refs"],
+        discovery_frontier_ref=graph["discovery_frontier_ref"],
+        recursive_handoff_refs=graph["recursive_handoff_refs"],
+        recursive_lineage_refs=graph["recursive_lineage_refs"],
+        z_unresolved=result_state == "UNKNOWN" and denominator == 16,
+    )
+
+
+def evaluate_learned_world_consumer(
+    learned: LearnedWorldCompositionResult,
+    *,
+    composition: AnalyticalCompositionResult,
+    consumer_query: PositionedSubjectPossibilityQuery,
+    model_rule: PositionedSubjectPossibilityModelRule,
+    producer_query_ref: ExactRef,
+    producer_predicate_ref: ExactRef,
+    require_current_selection: bool = False,
+    product_graph: NativeProductGraph | None = None,
+    trusted_graph_reader: TrustedNativeGraphCoordinator | None = None,
+) -> LearnedWorldConsumerResult:
+    """Serve unchanged N10E consumer values over the actual native product graph.
+
+    The learned product gates/provenance-binds the result; all geometry and
+    component results come from actual C1/E41/D03/I05 owners. Multiple
+    compositions must share the same consumer query/model and are evaluated
+    independently by the unchanged N10E evaluator. No aggregation is invented.
+    """
+    if not isinstance(learned, LearnedWorldCompositionResult):
+        raise LearnedWorldConsumerError("exact LearnedWorldCompositionResult required")
+    if not isinstance(composition, AnalyticalCompositionResult):
+        raise LearnedWorldConsumerError("exact AnalyticalCompositionResult required")
+    trusted_extension_route = None
+    if trusted_graph_reader is not None:
+        if not isinstance(trusted_graph_reader, TrustedNativeGraphCoordinator):
+            raise LearnedWorldConsumerError("trusted_graph_reader is not a configured coordinator")
+        if not isinstance(product_graph, BoundNativeProductGraph):
+            return _learned_refusal(
+                learned=learned,
+                reason="UNTRUSTED_GRAPH_VIEW",
+                disposition=learned.m1_disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        original = trusted_graph_reader.resolve_original(product_graph.original_ref)
+        original_components = trusted_graph_reader.original_components(
+            product_graph.original_ref
+        )
+        if original is not None and original_components is not None:
+            expected_m1 = learned.m1_disposition.ref.as_dict() if learned.m1_disposition else None
+            expected_m2 = (
+                learned.m2_artifacts.release.ref.as_dict()
+                if learned.m2_artifacts is not None
+                else None
+            )
+            expected_b5 = (
+                learned.b5_selection_receipt.ref.as_dict()
+                if learned.b5_selection_receipt is not None
+                else None
+            )
+            for slot_record in original["slots"]:
+                if (
+                    slot_record["m1_disposition_ref"] != expected_m1
+                    or slot_record["m2_release_ref"] != expected_m2
+                    or slot_record["b5_selection_ref"] != expected_b5
+                ):
+                    return _learned_refusal(
+                        learned=learned,
+                        reason="LEARNED_ASSOCIATION_DOES_NOT_MATCH_RETAINED_ORIGINAL",
+                        disposition=learned.m1_disposition,
+                        evidence=composition.possibility_slice_evidence_or_null,
+                        producer_query_ref=producer_query_ref,
+                        producer_predicate_ref=producer_predicate_ref,
+                    )
+        if (
+            original is None
+            or original_components is None
+            or product_graph.projection_hash != product_graph.original_ref.content_hash
+            or len(product_graph.view.compositions) != len(original["slots"])
+            or [
+                canonicalize(component.identity_material())
+                for component in product_graph.view.compositions
+            ]
+            != [slot["composition"] for slot in original["slots"]]
+        ):
+            return _learned_refusal(
+                learned=learned,
+                reason="GRAPH_VIEW_DOES_NOT_MATCH_RETAINED_ORIGINAL",
+                disposition=learned.m1_disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        graph_model = NativeProductGraph(tuple(original_components))
+        composition = original_components[0]
+        compositions = graph_model.compositions
+        trusted_extension_route = original["slots"][0].get("e41_route")
+    else:
+        graph_model = NativeProductGraph((composition,)) if product_graph is None else product_graph
+        if not isinstance(graph_model, NativeProductGraph):
+            raise LearnedWorldConsumerError("product_graph must be NativeProductGraph")
+        compositions = graph_model.compositions
+        if composition not in compositions:
+            raise LearnedWorldConsumerError("primary composition is not in the product graph")
+    disposition = learned.m1_disposition
+    if learned.receipt.terminal_state != "RULE_SATISFIED" or disposition is None:
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_PRODUCT_NOT_PRODUCTIVE",
+            disposition=disposition,
+            evidence=composition.possibility_slice_evidence_or_null,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if learned.m2_artifacts is None or learned.b5_protocol_view is None:
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_PRODUCT_RELEASE_OR_PROTOCOL_ABSENT",
+            disposition=disposition,
+            evidence=composition.possibility_slice_evidence_or_null,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    if require_current_selection and learned.b5_selection_receipt is None:
+        return _learned_refusal(
+            learned=learned,
+            reason="LEARNED_CURRENT_SELECTION_ABSENT",
+            disposition=disposition,
+            evidence=composition.possibility_slice_evidence_or_null,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    graph, graph_problem = _authoritative_graph(compositions)
+    if trusted_extension_route is not None:
+        graph = {**graph, "extension_route": trusted_extension_route}
+    if graph_problem is not None:
+        return _typed_graph_result(
+            learned=learned,
+            disposition=disposition,
+            composition=composition,
+            compositions=compositions,
+            graph=graph,
+            consumer_query=consumer_query,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+            reason_code=graph_problem,
+        )
+    if graph_model.extension_result is not None:
+        extension = graph_model.extension_result
+        allowed_routes = {
+            EXT_ROUTE_DIRECT_VIA_ACCEPTED_PROVIDER,
+            EXT_ROUTE_DIRECT_MULTI_CONDITIONER,
+            EXT_ROUTE_DISCOVERY,
+            EXT_ROUTE_RECURSIVE,
+        }
+        ext_comp = getattr(extension, "composition_result", None)
+        ext_route = getattr(extension, "producer_route", None)
+        ext_consumer = getattr(extension, "consumer_result_or_null", None)
+        if (
+            not isinstance(extension, EmpiricalPossibilitySliceExtensionResult)
+            or ext_comp is None
+            or ext_route not in allowed_routes
+            or not any(
+                ext_comp.composed_result_identity_hash
+                == component.composed_result_identity_hash
+                for component in compositions
+            )
+            or ext_consumer is None
+            or composition.consumer_result_or_null is None
+            or ext_consumer.result_hash != composition.consumer_result_or_null.result_hash
+            or ext_route != extension.extension_receipt.producer_route
+            or extension.extension_receipt.composed_result_identity_hash
+            != composition.composed_result_identity_hash
+        ):
+            return _learned_refusal(
+                learned=learned,
+                reason="E41_EXTENSION_GRAPH_MISMATCH",
+                disposition=disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        graph = {**graph, "extension_route": ext_route}
+    if (
+        composition.producer_query_ref != producer_query_ref
+        or composition.producer_predicate_ref != producer_predicate_ref
+    ):
+        return _learned_refusal(
+            learned=learned,
+            reason="EMPIRICAL_COMPOSITION_DETERMINANT_MISMATCH",
+            disposition=disposition,
+            evidence=composition.possibility_slice_evidence_or_null,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+        )
+    for component in compositions:
+        if (
+            component.consumer_query_ref != consumer_query.ref
+            or component.consumer_model_rule_hash != model_rule.rule_hash
+        ):
+            return _learned_refusal(
+                learned=learned,
+                reason="PRODUCT_GRAPH_CONSUMER_IDENTITY_MISMATCH",
+                disposition=disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        if producer_predicate_ref not in set(disposition.empirical_predicate_refs):
+            return _learned_refusal(
+                learned=learned,
+                reason="LEARNED_EMPIRICAL_PREDICATE_MISMATCH",
+                disposition=disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        if component.source_universe_refs and not set(component.source_universe_refs) & set(disposition.source_universe_refs):
+            return _learned_refusal(
+                learned=learned,
+                reason="LEARNED_SOURCE_UNIVERSE_MISMATCH",
+                disposition=disposition,
+                evidence=composition.possibility_slice_evidence_or_null,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+    if (
+        composition.producer_fact_state != "SUPPORTED"
+        or composition.analytical_state != "SUPPORTED"
+        or composition.possibility_slice_evidence_or_null is None
+        or composition.raw_denominator_support
+        != composition.possibility_slice_evidence_or_null.raw_support
+    ):
+        return _typed_graph_result(
+            learned=learned,
+            disposition=disposition,
+            composition=composition,
+            compositions=compositions,
+            graph=graph,
+            consumer_query=consumer_query,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+            reason_code=f"TYPED_{composition.producer_fact_state}_PRODUCT",
+        )
+    component_results = []
+    for component in compositions:
+        evidence = component.possibility_slice_evidence_or_null
+        if evidence is None:
+            return _typed_graph_result(
+                learned=learned,
+                disposition=disposition,
+                composition=composition,
+                compositions=compositions,
+                graph=graph,
+                consumer_query=consumer_query,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+                reason_code="PRODUCT_GRAPH_MISSING_COMPONENT_EVIDENCE",
+            )
+        if (
+            evidence.source_universe_ref not in set(disposition.source_universe_refs)
+        ):
+            return _learned_refusal(
+                learned=learned,
+                reason="LEARNED_SOURCE_UNIVERSE_MISMATCH",
+                disposition=disposition,
+                evidence=evidence,
+                producer_query_ref=producer_query_ref,
+                producer_predicate_ref=producer_predicate_ref,
+            )
+        component_results.append(
+            evaluate_positioned_subject_possibility(
+                query=consumer_query,
+                rule=model_rule,
+                evidence=(evidence,),
+            )
+        )
+    if any(item.result_state != "EXACT_SUPPORTED" for item in component_results):
+        return _typed_graph_result(
+            learned=learned,
+            disposition=disposition,
+            composition=composition,
+            compositions=compositions,
+            graph=graph,
+            consumer_query=consumer_query,
+            producer_query_ref=producer_query_ref,
+            producer_predicate_ref=producer_predicate_ref,
+            reason_code="PRODUCT_GRAPH_COMPONENT_NOT_EXACT_SUPPORTED",
+        )
+    producer_result = component_results[0]
+    evidence = composition.possibility_slice_evidence_or_null
+    values = {
+        "schema": "R91_LEARNED_WORLD_CONSUMER_VALUES@2",
+        "learned_receipt_ref": learned.receipt.ref.as_dict(),
+        "product_contract_ref": learned.receipt.product_contract_ref.as_dict(),
+        "m1_disposition_ref": disposition.ref.as_dict(),
+        "m2_release_ref": learned.m2_artifacts.release.ref.as_dict(),
+        "b5_selection_receipt_ref": None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref.as_dict(),
+        "evidence_ref": evidence.evidence_ref.as_dict(),
+        "producer_query_ref": producer_query_ref.as_dict(),
+        "producer_predicate_ref": producer_predicate_ref.as_dict(),
+        "consumer_query_ref": consumer_query.ref.as_dict(),
+        "consumer_result_state": producer_result.result_state,
+        "consumer_result_hash": producer_result.result_hash,
+        "consumer_values_read": canonicalize(producer_result.material()),
+        "eligibility_state": "ELIGIBLE",
+        "execution_state": "COMPLETED",
+        "result_state": "SUPPORTED",
+        "denominator": composition.raw_denominator_support,
+        "cells": [canonicalize(cell) for cell in composition.complete_cell_geometry],
+        "z_unresolved": False,
+        "component_consumer_result_hashes": [
+            item.result_hash for item in component_results
+        ],
+        **{key: _graph_value(value) for key, value in graph.items()},
+    }
+    return LearnedWorldConsumerResult(
+        contract_id=LEARNED_CONSUMER_CONTRACT_ID,
+        state="LEARNED_CONSUMER_EXACT_SUPPORTED",
+        reason_code="PRODUCTIVE_LEARNED_PRODUCT_WITH_ACTUAL_EMPIRICAL_EVIDENCE",
+        learned_receipt_ref=learned.receipt.ref,
+        product_contract_ref=learned.receipt.product_contract_ref,
+        m1_disposition_ref=disposition.ref,
+        m2_release_ref=learned.m2_artifacts.release.ref,
+        b5_selection_receipt_ref=None
+        if learned.b5_selection_receipt is None
+        else learned.b5_selection_receipt.ref,
+        evidence_ref=evidence.evidence_ref,
+        producer_query_ref=producer_query_ref,
+        producer_predicate_ref=producer_predicate_ref,
+        consumer_query_ref=consumer_query.ref,
+        consumer_result=producer_result,
+        consumer_values_read=values,
+        eligibility_state="ELIGIBLE",
+        execution_state="COMPLETED",
+        result_state="SUPPORTED",
+        denominator=composition.raw_denominator_support,
+        cells=tuple(canonicalize(cell) for cell in composition.complete_cell_geometry),
+        producer_route=graph["producer_route"],
+        joint_component_count=graph["joint_component_count"],
+        joint_order_semantics=graph["joint_order_semantics"],
+        discovery_receipt_refs=graph["discovery_receipt_refs"],
+        discovery_frontier_ref=graph["discovery_frontier_ref"],
+        recursive_handoff_refs=graph["recursive_handoff_refs"],
+        recursive_lineage_refs=graph["recursive_lineage_refs"],
+        z_unresolved=False,
+    )
