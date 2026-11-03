@@ -258,3 +258,27 @@ def test_unverified_event_erasure_of_delta_refused_and_replay_fail_closed(tmp_pa
     cold = lr.rebuild_from_journal(journal, operating=True)
     assert cold["programma_live"]["active_receipts"] == 1
     assert any(r["transition_id"] == "JOIN_E_7BF_SCOPED_REVIEW" for r in cold["programma_deltas"])
+
+
+def test_unrelated_real_git_source_cannot_manufacture_node_claim(tmp_path):
+    journal, st = state_env(tmp_path)
+    f = packet("s35_authored_sourcefree.json")
+    wrong = packet("join_e_scoped_review.json")
+    f["source"] = wrong["source"]
+    f["return_sha"] = wrong["return_sha"]
+    f["subject_sha"] = wrong["subject_sha"]
+    f["locator"] = wrong["locator"]
+    f["coordinate"]["source_cut"] = wrong["subject_sha"]
+    before = journal.read_bytes()
+    with pytest.raises(ad.DeltaRefused, match="RETURN_SOURCE_NOT_A_NODE_ORIGINAL_SOURCE"):
+        append_fixture(st, f)
+    assert journal.read_bytes() == before
+
+
+def test_first_entry_without_new_delta_discloses_unprocessed_work(tmp_path):
+    _, st = state_env(tmp_path)
+    state = lr._load_state(st)
+    answer = ad.query(state, "freshness")
+    assert answer["changes_since_guide_cut"] == 0
+    assert answer["pending_qualification"] == "NO_NEW_PROGRAMMA_DELTA_INGESTED__HISTORICAL_BASELINE_ONLY"
+    assert answer["adoption"] == "OWNER_PENDING"
