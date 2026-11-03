@@ -1,0 +1,193 @@
+{
+  "base_commit": "a108e7dc7232b1f3487e71d4607f3e6ca3e9ebdf",
+  "corrected_tally": {
+    "dk": 171,
+    "explicit_nonresponse": 204,
+    "identity": {
+      "equals_source_record_denominator": true,
+      "valid_plus_explicit_plus_missing": 7337
+    },
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "question_id": "q101",
+    "refusal": 33,
+    "source_record_denominator": 7337,
+    "valid_answer": 7129
+  },
+  "delta": {
+    "explicit_nonresponse": 33,
+    "missing_or_unobserved": 0,
+    "valid_answer": -33
+  },
+  "files": {
+    "00_RETURN.md": {
+      "bytes": 2915,
+      "sha256": "d25eb7035c78cca5288b76651c1c5079966dfafce9c08f85e981882497fc23aa"
+    },
+    "01_CORRECTION_RECEIPT.json": {
+      "bytes": 4801,
+      "sha256": "399fa2a71a49cff8ada8cff4f9d1118f2ab2a3edf64b47d23726751014053d86"
+    },
+    "02_COMMANDS.md": {
+      "bytes": 1724,
+      "sha256": "15a320154aacf922f7dc1504c46e4ef0f3a5f821dbd9680bd6df65f5c32c0eee"
+    },
+    "02_Q101_CODE99_OVERLAY.json": {
+      "bytes": 683,
+      "sha256": "df5814340b2c98a8db4340a06a1227ee3fbf1a31594a5f35c6b4b62c0a31dcc8"
+    },
+    "03_SUPERSESSION.md": {
+      "bytes": 1419,
+      "sha256": "2e1a769c43751b1e48aef33b893487d1e9c227b73e53aad086fc05a1a65d3b73"
+    },
+    "04_OWNER_LIMITS.md": {
+      "bytes": 1457,
+      "sha256": "9c1a54fcb0070608de5d2ae312564945cf38357d8358669ad75981b9f5323d98"
+    },
+    "decline_code_fix.py": {
+      "bytes": 11600,
+      "sha256": "fb216fe00b534fc69c07d549a92bd5e23a7fb9c6c17c3d9717e04f73ea96ed2f"
+    },
+    "logs/fix.stdout.log": {
+      "bytes": 2312,
+      "sha256": "3bc56286f5d81a750c20d4f32a2d8dc28ae4a137fded6ca397de840c81fb710d"
+    },
+    "logs/test_decline_fix.log": {
+      "bytes": 98,
+      "sha256": "ad430bcd751b836a91fab4ff65c168e7e4f252c79243c40745308b866b554cb7"
+    },
+    "logs/test_decline_fix_junit.xml": {
+      "bytes": 1133,
+      "sha256": "ba775c8a695af306e8b0caae93ddb9a2b54571cebccdd2265134b2eedee5a810"
+    },
+    "test_decline_fix.py": {
+      "bytes": 3808,
+      "sha256": "984c9c126188c0f4ef11f1523de0050df5f9787c40468f7b3661cf50fd70a065"
+    }
+  },
+  "historical_supersession": {
+    "accepted_tally_product": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "corrected_q101": {
+      "explicit_nonresponse": 204,
+      "missing_or_unobserved": 4,
+      "valid_answer": 7129
+    },
+    "old_q101": {
+      "explicit_nonresponse": 171,
+      "missing_or_unobserved": 4,
+      "valid_answer": 7162
+    },
+    "preserved_other_fields": true,
+    "superseded_at": [
+      "q101"
+    ]
+  },
+  "old_classification": {
+    "code_99_state": "SUBSTANTIVE_RESPONSE",
+    "explicit_nonresponse": 171,
+    "failure": "code 99 Decline to Answer counted as SUBSTANTIVE_RESPONSE",
+    "misclassified_count": 33,
+    "missing_or_unobserved": 4,
+    "observed_response": 7333,
+    "question_id": "q101",
+    "source_record_denominator": 7337,
+    "valid_answer": 7162
+  },
+  "overlay": {
+    "authority": {
+      "is_missing": "True",
+      "is_refusal": "True",
+      "is_substantive": "False",
+      "option_group": "special",
+      "path": "response_option_authority",
+      "response_kind": "special_missing",
+      "sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15"
+    },
+    "from_canonical_value": "99",
+    "from_response_state": "SUBSTANTIVE_RESPONSE",
+    "native_value": 99.0,
+    "only_change": "q101 response value 99 state/canonical classification",
+    "production_config_adopted": false,
+    "question_id": "q101",
+    "schema": "PYAT_SRC04_Q101_CODE99_OVERLAY@1.0.0",
+    "source_id": "SRC04",
+    "to_canonical_value": null,
+    "to_response_state": "REFUSAL"
+  },
+  "overlay_validation": {
+    "coordinate_slots": 3,
+    "only_q101_code99_changed": true,
+    "questions": 178,
+    "response_slots": 178,
+    "routing_entries": 178,
+    "schema_valid": true
+  },
+  "review": "9d3d42984",
+  "routing": {
+    "accepted_routing_binding": false,
+    "affirmative_evidence": false,
+    "eligibility_denominator_binding": false,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_unknown": 42,
+    "state": "ROUTING_UNKNOWN",
+    "status": "ROUTING_UNKNOWN_HOLD"
+  },
+  "same_mapping_defect": {
+    "correction_applied": [
+      "q101"
+    ],
+    "fields_mapped_code99_to_substantive": 42,
+    "other_fields_changed": false,
+    "question_ids": [
+      "q101",
+      "q102",
+      "q103",
+      "q2011",
+      "q2012",
+      "q2013",
+      "q2014",
+      "q2015",
+      "q202",
+      "q204",
+      "q205",
+      "q206",
+      "q207",
+      "q210",
+      "q211",
+      "q212",
+      "q2131",
+      "q2132",
+      "q2133",
+      "q2134",
+      "q2135",
+      "q214",
+      "q215",
+      "q216",
+      "q219",
+      "q221",
+      "q222",
+      "q224",
+      "q2251",
+      "q2252",
+      "q226",
+      "q227",
+      "q228",
+      "q2301",
+      "q2302",
+      "q2311",
+      "q2312",
+      "q2321",
+      "q2322",
+      "q2323",
+      "q2324",
+      "q234"
+    ],
+    "remaining_uncorrected": 41,
+    "scope": "exact selected-metadata evidence; no speculative corrections",
+    "selected_fields": 42
+  },
+  "schema": "PYAT_SRC04_Q101_CODE99_RECEIPTS@1.0.0",
+  "test_receipts": {
+    "focused": "5 passed"
+  }
+}
