@@ -1668,3 +1668,6 @@ R03 author at `2d32d68e2a5acb9cac136c313e82068dfb8e6ba1` claims 120 passing nati
 ### Clean receiving assembly: scoped independent acceptance (2026-11-03)
 
 Candidate `8779504a638ff39d6904ed2faf5a718242084c4e`, review `e24b70eac51d0894c7e5af7604ab7afc2376dbe6`: eight focused tests passed. HQ accepts exact sourcefree compatibility, retained resume, and the actual consumer at their demonstrated separate-fixture scope. A single same-source release/unit joined trace remains unproved. No protected adoption or original science is claimed. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`.
+
+
+Same-source trace task launched under existing R91/R95 grants: `agent/pyat-same-source-resume-consumer-20261103-r1`, commission `f9d9363162`, existing author session `ses_e98c905cbffekusoHURfKyEUKG`, PID 64157 observed live. Completion uses existing finite controller notification. Launch is not completion or acceptance.
