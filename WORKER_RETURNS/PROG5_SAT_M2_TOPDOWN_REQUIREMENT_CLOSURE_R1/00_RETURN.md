@@ -1,0 +1,47 @@
+# PROG5-SAT-M2 — independent top-down requirement falsification return
+
+**Candidate, not adoption.** Repository `maidiu/rawlsing`; independent documentary branch `agent/prog5-sat-m2-topdown-requirement-closure-20261103-r1`; exact completed corrected-guide source cut `378549b450be4825a34d5ec2fa8866877d13f76f`; prepared isolated branch initial `2c330e38fddebacf06076c228265ceabc39870ef` (commission-only descendant of startup). **S0–S1 authenticated private GitHub source/code reading and documentary writes only.** No local S2, native S3, CI/test execution, respondents, Library, actor/source/science grant, independent review, PRE-MAIN or main modification.
+
+## Outcome
+
+The top-down pass independently enumerated **310 original named requirement units** and **35 Astra hostile acceptance cases**, then compared all **345** against current G4's eleven sections, fifty-one children and original index. **Zero newly uncovered development organ / zero newly proved new function requirement** emerged. The important adversarial counterexample is structural **navigation/placement**, not a claim that old engines are missing:
+
+- **133 original identities** have no link from the guide index to their *primary functional owner section* (though they have a guide location, often only acceptance or governance).
+- **94 further identities** point to an adequate primary section but lack relevant secondary owner/consumer sections.
+- **111 identities** already point to at least one matching functional owner section (may lack proof/complete child navigation).
+- **7 J anti-loss protections** have no independent `JLOSS` index records; HQD124 explicitly recertifies them at sourcefree grain and they overlap accepted historical 53. **Not seven net-new functions.**
+
+The strongest clusters: **34/44 LongMemory** rows whose sole S11 landing misses upstream function, **44/53 accepted historical** functions whose sole S01+S03 landings miss F4/learned/FF roles, **28/30 original35 source-axis templates** whose sole S11 landing misses producing child, **20/101 Whole tasks**, and **7/16 EE** primary landing failures. See [detailed material evidence](MISSING_OR_MISCLASSIFIED_OBLIGATIONS.md) for IDs, exact existing target children and smaller correction. A missing link is **not** a failed implementation.
+
+## What was examined, from independent inputs first
+
+1. [Astra N0–N13 JSON](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/nodes.json), exact 16 nodes (7 MUST and 26 scope-qualified IF edges), eight F gates and sixteen EE dossiers, 35 proposed AT acceptance cases.
+2. [Whole-Machine 101 task ledger](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/TASK_LEDGER_101_MACHINE.json): G12/S20/P10/Q16/L7/F9/T7/W8/A12, all 101 traced, without treating owner candidate paths as accepted code.
+3. [Accepted 53](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/accepted53.json) and [seven J protections in HQD124](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/23_HQD124_SIX_STAGE_SOURCE_FREE_ARCHITECTURE_COMPLETION.md). Sourcefree theorem **33/8/5/6/1**, no sourcefree unowned gap; not 35-wave native pass.
+4. [LongMemory44](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/data/longmemory44.json), preserving `LMX` vs `LM` explicit identity mapping.
+5. [Original35 54-axis matrix](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/ESTATE_35X_REQUIREMENTS_MATRIX.json): **1,050** native source axes still scoped-reconciliation required + **560** EE occupancy unverified + **280** F contribution scope uncertified = **1,890** proof cells. They are *grouped here by the thirty source axes, sixteen EE and eight F requirements*, not fabricated into 1,890 executable outputs.
+6. **Only then** consulted the [G4 INDEX](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/INDEX.jsonl), [62 component statuses](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/COMPONENT_STATUS.jsonl), [82 seam states](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/CURRENT_SEAM_STATES.jsonl), [49 existing gaps](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md) and [post-G4 precise L1–L3 intake](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_DELTA_INTAKE.md) as evidence/placement lookups, not as original requirements.
+7. Direct S1 code body inspection at current control `9809203fd915a84bae056a67210e9213879840db` of `pre553_universal_workload.py::compile_governed_frontier`, `pre553_source_relations.py::guard_i03_authorized_composite_query`, and the fixture progressive candidate; separate exact unmerged R05/R06 bodies for local accepted learned/world first-reader qualifications. Rechecked main and control ref HEAD separately, and the semantic pointer in `HQ_HANDOFF/LATEST.json`. Not an all-historical-branch recensus.
+
+## Functional contradictions that remain real, but were already in GAP-001–049
+
+- **S02.2 / GAP-006/007/009:** Current code lowers a *caller-supplied* `ScientificFrontier`; cannot infer original35 U/Epre prospective item/unit/operation enumeration or native denominators.
+- **S04.4 / GAP-019/020:** V550J original shared-respondent morphology exceeds current generic aggregate. E41 sourcefree 31/31 with computed slices is a valid bounded proof, not original all35 F4 science/current recipient.
+- **S06.2 / GAP-025–029:** An observed correlation/attitude is not licensed structural material mechanism; R06 refuses CONTEXT without authority, no FF scientific issuance.
+- **S07.2 / GAP-030–033:** SourceRelation guard is *not* honest nonpooling/partial-ID F6 interval with uncovered mass. Local R06 same-unit joined F6-like scope does not grant cross-population identity.
+- **S08 / GAP-034–037:** No original comparable weighted wave-pair native N8E proof/authorized N8S claim.
+- **S09/S10 / GAP-038–045:** N9 historical/as-of first reader and **N9 AND N10E → N10W** must be distinct; sourcefree R06 first real pinned P41 receiver **does exist at its isolated candidate/review cut**, but is not protected original35 production science. Do not overwrite the old version-specific negative or erase the later local positive.
+- **S11 / GAP-046–049:** 35×54 matrix is not full empirical acceptance. A42 is N11_NOT_READY; N12 and Sorok actor authority remain separate.
+
+Do not compress the 7 MUST + 26 IF edges into universal dependency blockers. `ALTERNATIVE` identities in the existing 82-edge register likewise remain alternatives, not simultaneous build requirements. No existing accepted historical/RED status is reopened.
+
+## Deliverables, classifications and handoff
+
+- [REQUIREMENT_CROSSWALK.jsonl](REQUIREMENT_CROSSWALK.jsonl) — 345 JSONL records with independent source/blob/pointer, exact original ID, intended G4 child(s), old index section(s), deviation classification, nearest *qualified* code/grade/reader statement and explicit no-native-proof ceiling.
+- [MISSING_OR_MISCLASSIFIED_OBLIGATIONS.md](MISSING_OR_MISCLASSIFIED_OBLIGATIONS.md) — concrete nonduplicative primary/secondary link discrepancies and each previously known functional hold at existing Sxx/GAP IDs.
+- [INPUT_DENOMINATORS_AND_EXCEPTIONS.md](INPUT_DENOMINATORS_AND_EXCEPTIONS.md) — 310 core + 35 acceptance, 1,890 cell arithmetic/status, version and alias exceptions, exact input hashes.
+- This `00_RETURN.md` — high-level independent evidence-discovery result.
+
+**Counts:** net-new functional classes **0**; historical/current function proof/status regradings **0** (no sourcefree→native promotion); independent index crosslinks requiring qualified receiving review **133 primary + 94 secondary**; **7 explicitly overlapped J protection references** (not modules), **0 confirmed redundant executable implementations**. Unresolved: native original35 U/denominator, source-authorized k-way joint, FF structural source/science, F6 source-indexed partial-ID, F7 original comparable pairs, current/as-of N9+computed N10E receiver, independent N11 and competent N12. These are already registered gaps. Exact 151 extended work-class register and historical raw code fleet were **not exhaustively recounted**; 151 ≠ 101.
+
+**Next receiver action:** a separate authorized guide receiver should verify proposed child links on the most consequential affected rows, add a versioned navigation/crosswalk correction to existing Sxx child locations while preserving all original namespaces/sourcefree decisions and 82 edge semantics, and keep the missing original-source tests with their named competent owners. Do not merge this evidence packet directly into protected production or use it to issue science. Exact final remote commit SHA is to be reported in terminal handoff after writing/readback; it cannot self-refer inside its own commit.
