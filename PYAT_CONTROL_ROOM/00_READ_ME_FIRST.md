@@ -1,5 +1,10 @@
 # NEW PYAT HQ: INVALID UNTIL FULL PERSONA-FIRST + INHERITED-METHOD ACCESSION
 
+## START HERE — PROGRAMMA CURRENT-ORGANISM DUTY AND SINGLE OPERATING SPINE (PROPOSED 2026-11-03)
+
+This entrypoint now points to the [proposed concise cross-HQ operating spine](../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_HQ_OPERATING_SPINE_LIVE_UPDATE_AND_CONSOLIDATION_CANDIDATE_R1.md) for **direct, permanent incumbent Pyat HQ maintenance of PROGRAMMA PYAT** as the source-to-world organism progresses. On every coherent material source/implementation/review/first-consumer/owner transition, update affected existing Pyat PROGRAMMA component, seam, gap and work-now records through authorized publication, with exact cut and previous negatives retained; a lone return/delta is pending evidence, not a living-map update. Preserve original35→F1–F8→N11/N12 terminal priority, independent lawful parallel work, separated Pyat/Sorok authorities and all adopted owner/CAS gates. This pointer is **staged on an isolated documentation branch; no PRE-MAIN adoption, new HQ, rule or source permission is claimed**.
+
+
 ## PRIORITY ZERO — EVERY RABOCHII COMMISSION IS A STANDALONE COPY-PASTE LAUNCH WITH VISIBLE AGENT TYPE AND INTELLIGENCE (USER DIRECTIVE 2026-10-30)
 
 **Constitutive pre-dispatch rule, binding on every future fresh/resumed HQ grok, commission, return-driven dispatch and user-visible launch message in both Pyat and Sorok:** A worker/agent commission is **INVALID FOR DISPATCH** unless the user can copy **one complete, executable natural-language prompt for that one agent**, without reconstructing it from a link, summary, external issue, multiple replies or missing parameters. Put each commission in its own clearly delimited fenced plain-text block in the user-visible answer AND store the same full copy-paste text in any corresponding GitHub issue/commission artifact. **Never provide only issue links or a roster of prompts as the user-visible handoff.** If multiple agents are proposed, supply one *independent complete* copy-paste block per agent. A separate issue or generic role description is insufficient.
