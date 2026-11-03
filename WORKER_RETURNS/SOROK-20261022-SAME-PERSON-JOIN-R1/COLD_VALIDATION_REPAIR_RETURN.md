@@ -68,7 +68,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q \
 
 ```text
 PROGRAMMA_DELTA — JOIN-E cold validation repair
-- Identity: codex/sorok-join-e-b-event@<scoped-commit>; base b327d1423da1e0f94e1b4846059fa1d7c9423261. SAME-PERSON-JOIN return subtree only.
+- Identity: codex/sorok-join-e-b-event@fe84f403784d3860e38eef9b6687752534fffc9e; base b327d1423da1e0f94e1b4846059fa1d7c9423261. SAME-PERSON-JOIN return subtree only.
 - Function/interface: new B-event sessions append a persisted C12 B_EVENT_BINDING episode binding contract + exact B event ref/hash + performer receipt hash + disposition. JoinedSession.open and validate_join require the metadata contract and receipt whenever that persisted evidence exists. Deletion of marker, receipt, or both is typed J_PROVENANCE_MISMATCH; genuine pre-B-event sessions without the episode still cold-reopen.
 - Evidence: 6 focused cold-validation tests and 12 preserved-path tests pass; evidence/cold_validation_repair.json. New intact and genuine legacy positives, three deletion cuts, receipt tamper, targetless refusal and accepted encounter/cold/fork all executed.
 - PROGRAMMA effect: closes the review-identified optional-metadata bypass at the exact repaired cut; no C8/C9/C12 semantics, targetless path, vendor source or native authority changed.
