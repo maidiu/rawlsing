@@ -1,4 +1,7 @@
 # PROGRAMMA PYAT — Source → Objective World → Selected Possibility
+
+
+> **POST-G2 CONTINUATION (2026-11-02):** The first whole rough map is complete at G2 cut. For the next concrete work—GitHub asset/function anchoring, actual producer→consumer/seam conditions, historical/current parity and later independent cold-use—read **[POST_G2_SOURCE_ATTACHMENT_AND_SEAM_SWEEP.md](POST_G2_SOURCE_ATTACHMENT_AND_SEAM_SWEEP.md)**. Do not restart G2's architectural reconnaissance, invent a new roadmap platform, or search Library/mainMac before this GitHub reconciliation is substantially complete.
 ## First complete GitHub-based *rough* development roadmap
 
 **Status: DOCUMENTARY ROUGH ROADMAP / UNREVIEWED / NO PYAT PRODUCT OR SCIENCE GRANT.** This guide connects original survey/source requirements, overlapping plans, present code and historically important alternatives through the PRE-V3→V3 decision. It is not an adopted engine, live progress board, proof of a real world or Sorok actor authorization.
