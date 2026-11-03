@@ -1,3 +1,10 @@
+# Current PROGRAMMA return dispositions
+
+- **N10W-SAME-LINEAGE-AUTHOR-RETURN** at `883da8fff2bb10fe2181d0c0a7ddc84d34bb5a8c`. Author reports 84 J42 views, mismatch refusal and restoration. Distinct review launched as pyat-same-lineage-n10w-review. D2P3 lacks W41/E41 binding. Original science and adoption held.
+- **SRC04-ROUTING-AUTHORITY-RETURN** at `6d1ddb9844a5117d466bb0c3a8bc5260196c4249`. Examined CSV/config leaves routing and denominators unresolved for 42 fields and 14 refusal mappings uncertified. Original questionnaire excluded from examined inputs. Existing author resumed as pyat-src04-questionnaire-routing. Production and original issuance held.
+
+Earlier observations follow.
+
 # Current PROGRAMMA goal flight
 
 PRE-MAIN adopted the three operating front doors at `ba165a6a073dfdac0cb2e993ab8111ebb5ef404c`. G4 guide integration remains NONE_VERIFIED. The N9 + N10E → N10W same-lineage engineering and SRC04 routing/denominator evidence jobs have verified live local process receipts at this cut. See the paired JSON for exact leases. Earlier progress follows.

@@ -273,3 +273,6 @@ User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c98
 
 
 SRC04 certified refusal correction accepted at metadata and retained aggregate scope. Candidate ddc85dd298d36d4825d42cd4931a0cac5d91cb73, independent review 72fbfd15d8c25838c0db406ff4e6e0a9502787f7. 28 certified mappings corrected; 2185 field responses reclassified; 42 per-field totals conserved; five independent tests passed. 14 uncertified mappings need competent certification. Routing and eligible denominator remain unresolved for 42 fields. Production configuration receiving requires separate authority.
+
+
+- **SRC04-ROUTING-AUTHORITY-RETURN** at `6d1ddb9844a5117d466bb0c3a8bc5260196c4249`. Examined CSV/config leaves routing and denominators unresolved for 42 fields and 14 refusal mappings uncertified. Original questionnaire excluded from examined inputs. Existing author resumed as pyat-src04-questionnaire-routing. Production and original issuance held.

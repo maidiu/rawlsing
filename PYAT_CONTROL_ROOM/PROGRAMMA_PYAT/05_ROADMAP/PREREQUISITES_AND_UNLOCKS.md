@@ -187,3 +187,7 @@ N10W J42 guard accepted at isolated TEST_ONLY scope. Candidate c75b464ab4dbba15c
 
 
 SRC04 certified refusal correction accepted at metadata and retained aggregate scope. Candidate ddc85dd298d36d4825d42cd4931a0cac5d91cb73, independent review 72fbfd15d8c25838c0db406ff4e6e0a9502787f7. 28 certified mappings corrected; 2185 field responses reclassified; 42 per-field totals conserved; five independent tests passed. 14 uncertified mappings need competent certification. Routing and eligible denominator remain unresolved for 42 fields. Production configuration receiving requires separate authority.
+
+
+- **N10W-SAME-LINEAGE-AUTHOR-RETURN** at `883da8fff2bb10fe2181d0c0a7ddc84d34bb5a8c`. Author reports 84 J42 views, mismatch refusal and restoration. Distinct review launched as pyat-same-lineage-n10w-review. D2P3 lacks W41/E41 binding. Original science and adoption held.
+- **SRC04-ROUTING-AUTHORITY-RETURN** at `6d1ddb9844a5117d466bb0c3a8bc5260196c4249`. Examined CSV/config leaves routing and denominators unresolved for 42 fields and 14 refusal mappings uncertified. Original questionnaire excluded from examined inputs. Existing author resumed as pyat-src04-questionnaire-routing. Production and original issuance held.

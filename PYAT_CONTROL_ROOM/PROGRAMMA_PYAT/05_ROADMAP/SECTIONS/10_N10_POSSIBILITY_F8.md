@@ -154,3 +154,6 @@ User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c98
 
 
 N10W J42 guard accepted at isolated TEST_ONLY scope. Candidate c75b464ab4dbba15c6a89db42aaf5d101ba13d55, independent review 02b98ec3dd88e5e742ce459e54d233f547768145. 84 actual joined views and cold replay preserved; paired rehashed clock forgery refused against pinned W41 artifact. Production receiver still requires separately authorized receiving; R05/W41 common scope and original science remain held.
+
+
+- **N10W-SAME-LINEAGE-AUTHOR-RETURN** at `883da8fff2bb10fe2181d0c0a7ddc84d34bb5a8c`. Author reports 84 J42 views, mismatch refusal and restoration. Distinct review launched as pyat-same-lineage-n10w-review. D2P3 lacks W41/E41 binding. Original science and adoption held.
