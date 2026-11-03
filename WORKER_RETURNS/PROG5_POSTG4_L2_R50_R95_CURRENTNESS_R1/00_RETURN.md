@@ -1,0 +1,40 @@
+# PROG5 post-G4 L2 — finite R50–R95 source-delta return
+
+**Disposition:** SUBSTANTIVE S0–S1 RETURN READY FOR SINGLE G4 RECEIVER; **NOT adopted**, not reviewed by this author, not original-source/science/native/CI authority. This lane does not change G4's eleven source sections or canonical indices; all five files are new bounded candidate/return artifacts.
+
+## Exact custody
+
+- Repository: `maidiu/rawlsing` (private).
+- Baseline complete G4: `812bc7d0bc2d02942f883262a241ce72b064a728`; assigned worker `agent/prog5-postg4-l2-r50-r95-currentness-20261102-r1`. Prepared commission-only branch HEAD at entry `8edc1a1cbe0de238b8ddf8dc94cd3cbe2fddb5c4`. No force branch rewrite.
+- Control HEAD directly verified: `integration/pre-main-reconciliation-r1@9809203fd915a84bae056a67210e9213879840db`. `HQ_HANDOFF/LATEST.json` at that cut separately advertises protected semantic PRE-MAIN `1f47063c3205a45888b3c55e81e7485943ed1390`; presence in one is **not** adoption in the other.
+- G4 11 sections, `README.md`, `ASSET_LOCATOR.md`, 150-row `FUNCTION_PARITY.jsonl`, 82-row `CURRENT_SEAM_STATES.jsonl`, 62-row `COMPONENT_STATUS.jsonl`, 82-row `PLANNED_INTERFACES.jsonl`, all 49 gap text, `G4_UNRESOLVED_SOURCE_REQUESTS.md`, `G4_SOURCE_INTAKE_AND_CONFLICTS.md`, G4 terminal return read at precise baseline. No G4 artifact modified.
+- R50–R61 and R87/R91/R95 control-room docs read directly from G4, then exact cited R00/R01/R02/R03/R04.byte/R04.joined/R05/R06/R08/R09 candidate/reviewer GitHub branches and `00_RETURN` files read at their pinned commits. Direct module bodies read for R00 gate, R01 grammar/native map, R02 adapter, R04.byte decoder, R03 compiler/receipts, R04.joined capture/restore/resume, R05 admitted native graph/possibility, R06 actual pinned P41 service, R08 evidence binding, and R09 supervisor. No generic branch recensus.
+
+## Five new deliverables (no new architecture hierarchy)
+
+1. `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R50_R95/RETURN_AND_AUTHORITY_FATE.jsonl` — 21 exact owner/grant/return/review fate rows, direct code path and symbols, SHA/blob, G4 organ/gap alignments, production-adoption `false`.
+2. `.../LATEST_SCOPED_CURRENTNESS.md` — chronological effective R53–R95 acts, actual later author and independent reviewer witnesses, code/current control vs protected semantic PRE-MAIN, first producer→receiver connections and negative proof ceilings.
+3. `.../SECTION_AND_SEAM_PATCHES.md` — concrete additive text for all eleven G4 sections, with child IDs, 82 edge semantics respected, 49 existing gap IDs and smallest missing work, no original page edit.
+4. `.../COVERAGE_AND_UNRESOLVED.md` — 82-row original-edge overlay ledger, 51-row child mapping, 49-row original-gap mapping, 2 historical additive gaps, material unresolved conflicts and bounded next authorities.
+5. `WORKER_RETURNS/PROG5_POSTG4_L2_R50_R95_CURRENTNESS_R1/00_RETURN.md` — this terminal source and scope receipt.
+
+## Substantive changes the G4 receiver must not lose
+
+- **Chronological permissions:** R55 design intake was not a code grant; R56 user narrow R00/R02/R04.byte; R60 direct Codex-HQ appointment with 13 self-PASS/2 PARTIAL debts; R61 user sourcefree R01/R08/local R09, R03 conditional; R87 separate secondary Browser HQ and actual scoped R01/R08 reviewer acceptance; R91 R04.joined/R05 grant; R95 R06 grant. R53 J52/W52 STOP remains. A grant does not imply launch/return, and appointments do not convey source/science/production rights.
+- **R01 and R03:** reviewed local sourcefree native campaigns `R01V-R8 ACCEPT_SCOPED_LOCAL` and `R03V-R5 ACCEPT_SCOPED_LOCAL`; R03 actual `compile_governed_frontier`→`execute_governed_frontier`→test-only issued native receipts, no-drop, validated frozen capture/restore. Their tested module blobs are already **byte-present at receiving-control 980**, but not at separate semantic PRE-MAIN 1f470. Reviewed test existence must not be double-counted as new protected acceptance.
+- **R02/R04.byte/C1:** R02V-R2 and R04.byteV-R3 scoped accepted, R58 HQ accepts one actual local decoder→R02→unchanged C11/I03 constructed-byte compatibility chain. The R04.byte reviewer candidate blob and current 980 decoder blob differ; qualify exact version before using any claim. Source original unissued.
+- **R04.joined:** sourcefree R04V-R3 independently accepts completed QueryExecutionResult/discovery-view identities, real partial checkpoint pending-unit resume, no rerun of completed units. New candidate `pre553_issued_workload.py` blob differs from receiving-control, not promoted to production or global durable exactly-once.
+- **R05:** R05V-R8 independently accepts admitted graph coordinator native AT10/I05/recursive/joint/E41 and M1/M2/B5/currentness association against caller forgery. Its own report explicitly says actual live J42/P41/E04 still NOT_REACHED. Its branch code is newer than control `pre553_learned_world_composition.py`.
+- **R06:** Despite R95 inherited `NOT_COMMISSIONED...` text at *grant time*, a **real later** R06R4 candidate `b2cfe93cee854b7aff2081a7a223ada75295332a` and independent R06V-R4 reviewer `fbe7ffc00a021aeacce3b15a2ef74cd8657d9d56` both exist. Reviewer accepts local sourcefree R05→**pinned actual P41 N9/N10W/E04** selected-world consumer, temporal actual route difference/cold negative/restore. CONTEXT structural FF always HELD; independent cross-unit pooling unavailable; temporal pair synthetic modeled, not F7 measured. Module is absent at receiving-control and semantic PRE-MAIN; cannot call it adopted current protected N9.
+- **R00 and R09 negatives:** R00V-R2 requalifies 41/41 policy gate behavior **but review says REVISE** for two stale manifest entries/two broken SHA sums paths. R09V-R2 says **REVISE/HOLD**: committed C11 test case genuinely executes, but child-forged result and loaded-byte digest can pass parent HMAC; missing parent-owned observation/OS separation. Neither issue can be papered over by green tests or user grants.
+- **Science/terminal holds:** 35 original sources, 1890 accounting cells, original U/Epre, source-native F1–F8, FF structural issuer/F6 estimand/F7 measured pair, N11 independent acceptance, N12/Sorok actor remain distinct and unissued. The 82 edge original full-scope statuses and 49 gap cells remain **open at their original grade**, even where a new local candidate subproof exists.
+
+## Evidence and independence
+
+**Method:** S0–S1 authenticated GitHub file and blob/commit/branch reading; named previous native test/review receipts are *reported by their original authors/reviewers*, not independently reproduced by L2. Direct code inspection establishes implementation/call paths, not execution. The L2 author did not run Python, CI, local native tools, original respondent files, cold-use/independent review, cross-HQ controller, merge or code edits; no Library used. Candidate work is on one own isolated documentation branch, neither G4 original nor an active worker branch.
+
+**No-drop counts:** 11/11 sections, 51/51 child IDs, 82/82 original typed seams, 49/49 numbered material gaps and both additive historical gap names represented. 21 R flight/authority fate records cover all explicitly named R00–R09 (including R04.byte and R04.joined) and relevant main R53/R55/R56/R60/R61/R87/R91/R95 decisions. Old version-specific RED and R09 latest REVISE preserved; no new full-scope aggregate GREEN.
+
+**Remaining named witness:** competent G4 receiver chooses whether/how to overlay these candidate facts; exact source/semantic owner issues original U/Epre, FF/F6/F7 source science, and N11; R00E owner fixes custody manifest; R09 engineering+host administrator supplies parent-owned independent capture; distinct reviewers thereafter act under proper grants. No source-recovery blanket or automatic next-agent/testing launch.
+
+**Final remote SHA:** reported in the terminal user handoff after all five files, including this document, have been committed and read back. This document deliberately does not contain an invalid self-referential SHA.
