@@ -229,3 +229,7 @@ Controlled reader at eb2255231df00393d33cc0223bc5d79320360f88, bridge/occurrence
 ### S11 encounter and exit specification
 
 S11 WP-37 specification returned at faec7ce909c54664e85320534bdf744b9bc47d37. WP-19 input 02_WP19_CONSUMABLE_INTERFACE.json; runtime consumer NONE_VERIFIED. Existing JOIN-E/CP-A5 read-side outputs support a bounded prototype. User action, attendance, wait, exit/return, absence life advance, delivery and accessibility ACK producers remain open. Human and runtime tests NOT_RUN. [Source and acceptance examples](https://github.com/maidiu/rawlsing/tree/faec7ce909c54664e85320534bdf744b9bc47d37/WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1).
+
+### WP-19 runtime return
+
+WP-19 author-tested runtime at 3c4df43f813cd0727feff04f620aa0bbd9a63026. wp19.cli consumes CP-A5 EncounterReader.view/ask and JOIN-E C12 and do_help. Seven author tests; local exit only. World actions, delivery, time advance and human validation remain held or unrun. Next: verify privacy and actual reader behavior at this cut.
