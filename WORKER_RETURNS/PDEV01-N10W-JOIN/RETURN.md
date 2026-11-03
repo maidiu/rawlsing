@@ -97,7 +97,7 @@ The W41 artifact referenced by J42 is the accepted W41 return object, not a new 
 Evidence hashes:
 
 - `J42_RECEIPTS.json` / `J42_RECEIPTS_2.json`: `c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf`
-- `J42_JOIN_WITNESS.json`: `40a33060a7a8a146767c95edfd7342e9e83a913af48e73c9536e059609181798`
+- `J42_JOIN_WITNESS.json`: `b7af3c380d4b756996588eac5ae4a1462c3596512e5c94a46446db40cafd1fa1`
 - `P41_RAW_TRACE.json`: `6e2b7c2ecd9a2b03e7b7cd7433bca64585d2d33a523bcdaa76ff3d653db583ee`
 - `VERSION_AND_IDENTITY_NEGATIVES.json`: recorded in `PINS.json`
 - `J42` build stdout: `2ccdeac00a06e09f410b180637b3dc1662ea7a71008967441c3e27adb1b5a796`
