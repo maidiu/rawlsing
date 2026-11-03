@@ -133,3 +133,8 @@ Identify merged PR605 M2/B5 at its accepted code scope and I01 historical branch
 - **G1B-S34** B5 sourcefree local current → historic I01K full world overlay: **PARTIAL_COMPATIBILITY_NOT_CURRENT**; [source at pinned cut](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py); W1-G return found five historical modules required; current verify_m2_release_subject_exact old blocker corrected but full joined receiver absent.
 
 **Source of status:** [G1-A returned historical inventory](https://github.com/maidiu/rawlsing/blob/3ac2bfeca4c79ae794bb896483d79ab195307e92/WORKER_RETURNS/PROG5_G1_A_MAIN_HERITAGE_R1/00_RETURN.md); [G1-B exact current index](https://github.com/maidiu/rawlsing/blob/7ee67766503a13d2eae6441afda1a869b83a40e6/WORKER_RETURNS/PROG5_G1_B_CURRENT_OWNERS_R1/00_RETURN.md). G2 has not run underlying tests, original surveys or competent science admission; later GitHub asset attachment and actual seam sweep remain distinct.
+
+
+### HQ same-source sourcefree acceptance, 2026-11-03
+
+`ea503425a6f3de29649b78587c7bcb0c2051b7ee`, independently accepted against review `771bc4ebd49759479d76386ba986e9a69146c607`: governed mixed workload/checkpoint/resume actual graph reaches M1/M2/R05 and unchanged P41. Cold fixed-seed identities match at measured scope. Branch capability only, not protected adoption or original-source issuance. Draft PR #646 and `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/CAMPAIGN_OUTCOME.md` contain exact scope, negatives, reuse and remaining authority dependencies.

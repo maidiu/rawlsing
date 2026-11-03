@@ -214,3 +214,8 @@ Exact branch `agent/pyat-r00-custody-repair-20261103-r1` at `4646e2944c` correct
 ## HQ independent review disposition — 2026-11-03
 
 Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receiving compatibility (17tests), R09 D7 only (15tests), and R00 packaging (26manifestentries/29checksums, repeated collector and preserved gate/test/passport/proof). HQ verified9reviewartifacthashes and exact remote ref, then accepts these at local sourcefree candidate scope only. Existing earlier negatives remain historical; R09 D1/D4 host boundary remains held. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`. Protected receiving/guide integration remains pending, not implied.
+
+
+### HQ same-source sourcefree acceptance, 2026-11-03
+
+`ea503425a6f3de29649b78587c7bcb0c2051b7ee`, independently accepted against review `771bc4ebd49759479d76386ba986e9a69146c607`: governed mixed workload/checkpoint/resume actual graph reaches M1/M2/R05 and unchanged P41. Cold fixed-seed identities match at measured scope. Branch capability only, not protected adoption or original-source issuance. Draft PR #646 and `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/CAMPAIGN_OUTCOME.md` contain exact scope, negatives, reuse and remaining authority dependencies.

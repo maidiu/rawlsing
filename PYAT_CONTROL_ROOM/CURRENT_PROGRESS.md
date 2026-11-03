@@ -1,3 +1,7 @@
+# Current bounded campaign outcome
+
+Independently accepted sourcefree same-source chain; draft PR #646 awaits separately authorized protected receiving. R00 packaging and R09 D7 accepted locally; R09 D1/D4 host boundary remains held. Full exact outcome: `HQ_SOURCEFREE_ENGINEERING_20261103/CAMPAIGN_OUTCOME.md`. This is not original-source completion.
+
 # Current HQ disposition — same-source trace independently accepted at sourcefree scope
 
 `ea503425a6` independently reviewed at `771bc4ebd4`: connected trace and eight focused controls pass; cold fixed-seed identities match. Local engineering acceptance only, protected adoption pending. R09 D1/D4 host authority remains held. Earlier dated observations below are historical.
