@@ -1,4 +1,29 @@
 # LAUNCH — PROGRAMMA SOROK W6-B — FULL FUNCTIONAL HIERARCHY AND DEEP RECURSIVE DEPENDENCIES
+
+## USER REQUIREMENT R2 — GOVERNING EXECUTIONAL DEPENDENCY COMMISSION (2026-11-02)
+
+**This is a material strengthening of W6-B, not a restatement.** Read sibling 05_EXECUTABLE_DEPENDENCY_READINESS_AND_PRIORITY_CONTRACT_R2.md FIRST. The user requires: "**In order to KNOW/BUILD X, Y, Z and W must be completed**" recursively, in order that the guide itself determine **WHAT SHOULD WE WORK ON NOW**, what is blocked, what work unlocks the most, and whether actual mutual dependencies require one joint package.
+
+Your OWNED WORK PRODUCT is a **source-backed, operationally useful dependency calculus**, not merely a more detailed graph:
+- For each significant component and subcomponent, distinguish knowledge/specification prerequisites from build, integration, verification, owner adoption and human-validation prerequisites. A useful sourcefree build may be ready even when native science is held; science specification can be ready while implementation is blocked.
+- Represent nested ALL_OF, valid ANY_OF and predicate-controlled IF gates using **stable IDs for both the target and referenced prerequisite** and explicit required stage/evidence grade. Retain original C/A/M/N/O/E/S IDs and existing D-C* parent records, adding only necessary guide-local child items. A free-form phrase is insufficient if a known component/owner decision can be linked.
+- Walk every material terminal target backward to an accepted implemented leaf, an executable ready-next action, a scoped owner decision, or an exact unknown evidence request. Preserve alternatives and independent parallel paths.
+- Follow dependencies forward: enumerate conditional unlocks and ALL OTHER remaining blockers. No "one predecessor finished therefore A5 finished" shortcut.
+- Identify real AND-cycle/strongly connected dependency components. Where co-design is genuinely required, propose a JOINT_WORK_PACKAGE with participating components and owners, provisional interface, coordinated deliverables, acceptance and individual runnable subtasks. Where circularity is an error or lacks evidence, identify owner decision to break it; don't invent a joint project.
+- **Compute a reproducible work-now and priority view** for named actual Sorok terminal goals and for whole-program scope, using first unsatisfied runnable leaves, explicit stage, material bottlenecks/reverse unlocks, evidence gates, parallel opportunities and alternative designs. Include a qualified explanation of importance and feasible action. Do not equate descendant count with priority or manufacture durations/automatic numeric scores.
+- Include a before/after state-change readback: when one known scoped predecessor receives new qualified evidence, which tasks become ready, which remain held, and why? This is a hypothetical derivation TEST using real component IDs, not a fictitious real acceptance.
+- Verify with examples spanning C12/A0–A5, C9/C8, S0–S16 (especially S5/S13/S14), old V3 reuse, M6/V2, and a genuine seam/historical mismatch. Do not stop once the old 22 high-level D-* paths have pretty prose.
+
+**Additional REQUIRED deliverables** beyond those already listed below:
+- 05_EXECUTION_GATES_AND_READY_WORK_PACKAGES.jsonl — source-cited, stable-ID, target-phase, referenced-prerequisite gates and **actual actionable work packages**, with owner/claim/evidence and readiness.
+- 06_WORK_NOW_PRIORITIES_PARALLEL_AND_JOINT_PACKAGES.md — how work ordering is derived for stated terminal Sorok aims, ready/specify-first/held/blocked alternatives, reverse unlocks, joint packages and honest unknowns.
+- 07_READINESS_RECOMPUTATION_AND_CYCLE_CHECK.md — one real sourced recursive path and one hypothetical change in a real predecessor's status; cycle/SCC findings, if any, with NO_VERIFIED_CYCLE permitted.
+You may use one compact common JSONL table rather than duplicate the same component/gate facts; cross-reference the existing 01/02 files. These outputs are **documentation/records**, NOT a requirement to implement a graph engine or autonomous scheduling daemon.
+
+**This R2 block overrides narrower statements later in W6-B. Reissue source cut is the W6 R2 commission branch and the common contract, NOT the older R1 prompt SHA.**
+
+---
+
 **ROLE:** Independent high-rigor architecture/functional-need/dependency investigator; NOT original developmental-science issuer, native implementer, second Sorok HQ or own reviewer.
 **BRANCH:** `research/programma-sorok-w6b-deep-dependencies-20261102-r1` (create from W5 cut, isolated).
 **RETURN:** `WORKER_RETURNS/PROGRAMMA_SOROK_W6B_DEEP_DEPENDENCIES_20261102_R1/`.
