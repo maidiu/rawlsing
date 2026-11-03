@@ -1,0 +1,159 @@
+{
+  "branch": "review/pyat-pdev01-gap007-r1",
+  "candidate_commit": "023534c7f3f7fc5411ed52676490a1a0f70cd864",
+  "candidate_test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 python3 -m pytest .../test_repair.py -q -o addopts=''",
+    "detail": "7 passed in 48.60s",
+    "failed": 0,
+    "log": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/evidence/candidate_test_repair_023534.log",
+    "log_sha256": "16133980bb95714dbe4054cfe4342df336bcc07dcfccea96e2534a9451915a42",
+    "passed": 7,
+    "status": "PASS"
+  },
+  "cold_replay": {
+    "accounting_status_counts": {
+      "BOUND_I03_QUERY": 210,
+      "TYPED_REFUSAL": 630
+    },
+    "actual_trace_equals_run1": true,
+    "actual_trace_equals_run2": true,
+    "batch": {
+      "completed": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      },
+      "receipt_count": 210,
+      "result_ref_count": 210,
+      "states": {
+        "COMPLETED": 210
+      }
+    },
+    "i05": {
+      "candidate_count": 16,
+      "compilation_ref": "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9",
+      "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+      "fact_count": 30,
+      "native_result_type": "ExactBoundedDiscoveryResult",
+      "receipt_count": 16,
+      "receiver": "execute_governed_frontier/I05",
+      "status": "EXECUTED"
+    },
+    "i05_equal": true,
+    "manifest_equal": true,
+    "manifest_ref": {
+      "content_hash": "6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab"
+    },
+    "no_drop": {
+      "all_840_accounted": true,
+      "bound_210": true,
+      "distinct_bound_operations": true,
+      "distinct_bound_query_refs": true,
+      "distinct_bound_units": true,
+      "distinct_original_operation_refs": true,
+      "no_invented_operations": true,
+      "unsupported_630": true
+    },
+    "query_ref_count": 210,
+    "query_refs_equal": true,
+    "release_equal": true,
+    "release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "run1_equals_run2": true,
+    "run1_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/evidence/snapshot_run_1.json",
+    "run1_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "run2_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/evidence/snapshot_run_2.json",
+    "run2_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "source_equal": true,
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+    "unsupported_typed_refusals": {
+      "CONDITIONAL": 210,
+      "HETEROGENEITY": 105,
+      "JOINT": 210,
+      "RECURSIVE_BRANCH": 105
+    },
+    "wrong_authority_refusal": {
+      "code": "CarrierExecutionBindingError",
+      "detail": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+      "status": "TYPED_REFUSAL"
+    },
+    "wrong_release_refusal": {
+      "code": "BatchIntegrityError",
+      "detail": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+      "status": "TYPED_REFUSAL"
+    }
+  },
+  "frozen_sav": {
+    "expected_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+    "matches": true,
+    "path": "WORKER_RETURNS/PDEV01-GAP007/repair/frozen/source.sav",
+    "sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+  },
+  "limits": [
+    "Core 210/630/840 and exact cold replay pass.",
+    "Actual repair return has a stale release ref.",
+    "Tamper refusal is not implemented in the executable replay; test_06 is the checksum guard.",
+    "No original data, source rights, science, merge, CI or wake."
+  ],
+  "preserved_core": {
+    "executed_210": true,
+    "i05_separate": true,
+    "one_to_one_distribution": true,
+    "refused_630": true,
+    "single_synthetic_carrier_reused": true,
+    "total_840": true
+  },
+  "previous_candidate": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "prior_review_commit": "a794ce4fe367ec9bb7ff2a0921494232ecf4808b",
+  "return_consistency": {
+    "actual_cold_release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "actual_trace_release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "return_contains_stale_release_ref": true,
+    "return_text_claims_release_ref": "383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1",
+    "smallest_repair": "Update WORKER_RETURNS/PDEV01-GAP007/repair/00_RETURN.md release ref to the actual frozen-source release 64cf774b…; no code change.",
+    "status": "FAIL"
+  },
+  "review_id": "PDEV01-GAP007-COLD-RECHECK-R1",
+  "reviewer_role": "INDEPENDENT_NONAUTHOR_INTEGRATION_REVIEWER",
+  "schema": "PDEV01_GAP007_COLD_RECHECK@1.0.0",
+  "scope": {
+    "candidate_readonly": true,
+    "ci": false,
+    "engineering": true,
+    "merge": false,
+    "original_data": false,
+    "science": "TEST_ONLY",
+    "sourcefree": true,
+    "wake": false
+  },
+  "snapshot": {
+    "receipt_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/evidence/SNAPSHOT_RECEIPT.json",
+    "receipt_sha256": "f32f92e8c44e24a64e9f67e1cd825dd14b2c95f4da4c2eaf72d4b7d3f4a03ff7",
+    "source": "git archive 023534c7f3f7fc5411ed52676490a1a0f70cd864 WORKER_RETURNS/PDEV01-GAP007"
+  },
+  "status": "REVISE__COLD_REPLAY_AND_CORE_PASS__ACTUAL_RETURN_RELEASE_MISMATCH",
+  "tamper_check": {
+    "note": "Runtime replay only checks file existence; the checksum guard is in test_06, not in the executable replay. This was not treated as a core cold-replay failure because the task conditions tamper refusal on \"if implemented\", but it is recorded.",
+    "runtime_accepted_tampered_fixture": true,
+    "runtime_refusal_implemented": false,
+    "tamper_result_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/evidence/TAMPER_RESULT.json",
+    "tamper_result_sha256": "d92fbe794240726792b8b28e54238366a641ca164e9afcec2101359c8c529b6f",
+    "tamper_test_log": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/evidence/tampered_test06.log",
+    "tamper_test_log_sha256": "3682e8cf3ad8f7e20c69ae4298c261ac336ce198fdf021263c3b000664d177cf",
+    "test_06_checksum_guard": "present and fails on tampered fixture"
+  },
+  "verdict": "REVISE",
+  "write_scope": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/cold-recheck/**"
+}

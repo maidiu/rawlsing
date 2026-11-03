@@ -1,0 +1,81 @@
+{
+  "schema": "PDEV01_GAP007_COLD_RECHECK_TEST_RESULTS@1.0.0",
+  "candidate_commit": "023534c7f3f7fc5411ed52676490a1a0f70cd864",
+  "previous_candidate": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "commands": [
+    "git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 archive 023534c7f3f7fc5411ed52676490a1a0f70cd864 WORKER_RETURNS/PDEV01-GAP007 | tar -x -C <disposable-snapshot>",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=<snapshot>:<sibling> python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=<snapshot>:<sibling> python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<sibling> python3 -m pytest <sibling>/WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py -q -o addopts=''"
+  ],
+  "results": [
+    {
+      "command": "frozen SAV checksum",
+      "status": "PASS",
+      "sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+      "detail": "Committed frozen/source.sav and actual trace source SHA match."
+    },
+    {
+      "command": "cold replay run 1",
+      "status": "PASS",
+      "detail": "Exact stable source/release/210 query refs/manifest/I05; 210 executed, 630 refused, 840 total."
+    },
+    {
+      "command": "cold replay run 2",
+      "status": "PASS",
+      "detail": "Byte-identical JSON output to run 1; exact identities stable."
+    },
+    {
+      "command": "candidate test_repair.py",
+      "status": "PASS",
+      "passed": 7,
+      "failed": 0,
+      "detail": "7 passed in 48.60s including two fresh-process identity comparisons."
+    },
+    {
+      "command": "tampered fixture check",
+      "status": "NOT_IMPLEMENTED_IN_RUNTIME",
+      "detail": "Runtime replay accepted a tampered frozen SAV (new source 1b9f1f05…); test_06 checksum guard fails on the same tampered fixture."
+    },
+    {
+      "command": "actual repair return consistency",
+      "status": "FAIL",
+      "detail": "00_RETURN.md claims release 383716e4…; actual trace and both cold runs use 64cf774b…."
+    }
+  ],
+  "core_observed": {
+    "executed_210": true,
+    "refused_630": true,
+    "total_840": true,
+    "batch": {
+      "receipt_count": 210,
+      "completed": 210,
+      "result_ref_count": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      }
+    },
+    "i05": {
+      "status": "EXECUTED",
+      "receipt_count": 16,
+      "fact_count": 30,
+      "candidate_count": 16,
+      "compilation_ref": "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9"
+    },
+    "i05_separate_from_p1": true,
+    "single_synthetic_carrier_reused": true
+  },
+  "verdict": "REVISE",
+  "reason": "Core and exact cold replay pass; actual repair return contains a stale release ref. Runtime tamper refusal was not implemented and is recorded, not used as the primary verdict basis.",
+  "sourcefree": true,
+  "science": "TEST_ONLY",
+  "original_data": false,
+  "merge": false,
+  "ci": false,
+  "wake": false,
+  "limits": [
+    "Only the exact candidate snapshot was rechecked.",
+    "No original data, source rights, science, merge, CI or wake.",
+    "Core cold replay is stable; return metadata correction is required."
+  ]
+}

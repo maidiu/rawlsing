@@ -1,0 +1,84 @@
+{
+  "accounting_status_counts": {
+    "BOUND_I03_QUERY": 210,
+    "TYPED_REFUSAL": 630
+  },
+  "batch": {
+    "completed": 210,
+    "fact_state_counts": {
+      "SUPPORTED": 210
+    },
+    "receipt_count": 210,
+    "result_ref_count": 210,
+    "states": {
+      "COMPLETED": 210
+    }
+  },
+  "candidate_commit": "023534c7f3f7fc5411ed52676490a1a0f70cd864",
+  "frozen_sav_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+  "i05": {
+    "candidate_count": 16,
+    "compilation_ref": "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9",
+    "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+    "fact_count": 30,
+    "native_result_type": "ExactBoundedDiscoveryResult",
+    "receipt_count": 16,
+    "receiver": "execute_governed_frontier/I05",
+    "status": "EXECUTED"
+  },
+  "i05_equal": true,
+  "manifest_equal": true,
+  "manifest_ref": {
+    "content_hash": "6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab",
+    "kind": "PRE553BatchManifest@1.0.0",
+    "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab"
+  },
+  "no_drop": {
+    "all_840_accounted": true,
+    "bound_210": true,
+    "distinct_bound_operations": true,
+    "distinct_bound_query_refs": true,
+    "distinct_bound_units": true,
+    "distinct_original_operation_refs": true,
+    "no_invented_operations": true,
+    "unsupported_630": true
+  },
+  "previous_candidate": "6a305523074898dda9c75e3e24fb6ea6fa2eeb40",
+  "query_ref_count": 210,
+  "query_refs_equal": true,
+  "release_equal": true,
+  "run1_equals_run2": true,
+  "run1_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+  "run2_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+  "schema": "PDEV01_GAP007_COLD_RECHECK_RUNS@1.0.0",
+  "snapshot_source": "exact git archive from sibling pyat-pdev01-gap007; rawlsing_next imported read-only from exact sibling",
+  "source": {
+    "columns": 71,
+    "release_internal_count": 82,
+    "release_object_count": 1700,
+    "release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "rows": 12,
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+  },
+  "source_equal": true,
+  "unsupported_typed_refusals": {
+    "CONDITIONAL": 210,
+    "HETEROGENEITY": 105,
+    "JOINT": 210,
+    "RECURSIVE_BRANCH": 105
+  },
+  "wrong_authority_refusal": {
+    "code": "CarrierExecutionBindingError",
+    "detail": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+    "status": "TYPED_REFUSAL"
+  },
+  "wrong_release_refusal": {
+    "code": "BatchIntegrityError",
+    "detail": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+    "status": "TYPED_REFUSAL"
+  }
+}

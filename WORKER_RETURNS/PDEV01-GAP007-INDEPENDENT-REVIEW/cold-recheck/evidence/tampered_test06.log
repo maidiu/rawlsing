@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_06_frozen_source_has_exact_committed_sha _________________
+
+    def test_06_frozen_source_has_exact_committed_sha():
+        import hashlib
+        frozen = HERE / "frozen/source.sav"
+>       assert hashlib.sha256(frozen.read_bytes()).hexdigest() == (
+            "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+        )
+E       AssertionError: assert '1b9f1f05d1fc...742ca4c711b53' == '5009f3c9272d...aa07bc6732e4f'
+E         
+E         - 5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f
+E         + 1b9f1f05d1fcbc5aaf73fc6a2e027b0608636231f92e2dd0bed742ca4c711b53
+
+/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gap007-tamper.fqj2IT/snapshot/WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/gap007-tamper.fqj2IT/snapshot/WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py::test_06_frozen_source_has_exact_committed_sha
+1 failed in 0.07s
