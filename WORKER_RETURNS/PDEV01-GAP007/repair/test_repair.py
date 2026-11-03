@@ -45,3 +45,43 @@ def test_05_unsupported_p1_kinds_are_typed_refusals_not_invented_queries():
     assert counts == {"CONDITIONAL": 210, "HETEROGENEITY": 105, "JOINT": 210, "RECURSIVE_BRANCH": 105}
     assert len([x for x in TRACE["p1"]["accounting"] if x["status"] == "TYPED_REFUSAL"]) == 630
     assert all(x.get("reason") == "P1_OPERATION_KIND_HAS_NO_EXACT_CURRENT_I03_BINDING" for x in TRACE["p1"]["accounting"] if x["status"] == "TYPED_REFUSAL")
+
+
+def test_06_frozen_source_has_exact_committed_sha():
+    import hashlib
+    frozen = HERE / "frozen/source.sav"
+    assert hashlib.sha256(frozen.read_bytes()).hexdigest() == (
+        "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+    )
+    assert TRACE["source"]["source_sha256"] == (
+        "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+    )
+
+
+def test_07_two_fresh_processes_match_source_release_queries_manifest_i05():
+    import os
+    import subprocess
+    import sys
+    script = HERE / "replay_repair.py"
+    env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+    outputs = []
+    for index in (1, 2):
+        proc = subprocess.run(
+            [sys.executable, str(script)], cwd=str(HERE.parents[2]),
+            env={**env, "PYTHONPATH": str(HERE.parents[2])},
+            capture_output=True, text=True, timeout=300,
+        )
+        assert proc.returncode == 0, proc.stdout[-2000:] + proc.stderr[-2000:]
+        outputs.append(json.loads(proc.stdout))
+    first, second = outputs
+    assert first["source"]["source_sha256"] == second["source"]["source_sha256"]
+    assert first["source"]["release_ref"] == second["source"]["release_ref"]
+    assert first["p1"]["manifest_ref"] == second["p1"]["manifest_ref"]
+    assert first["i05"]["compilation_ref"] == second["i05"]["compilation_ref"]
+    first_refs = [row["bound_job_ref"] for row in first["p1"]["accounting"] if row["status"] == "BOUND_I03_QUERY"]
+    second_refs = [row["bound_job_ref"] for row in second["p1"]["accounting"] if row["status"] == "BOUND_I03_QUERY"]
+    assert len(first_refs) == len(second_refs) == 210
+    assert first_refs == second_refs
+    assert first["batch"]["receipt_count"] == second["batch"]["receipt_count"] == 210
+    assert first["i05"]["receipt_count"] == second["i05"]["receipt_count"] == 16
+    assert first["i05"]["compilation_ref"] == "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9"

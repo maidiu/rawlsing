@@ -9,7 +9,7 @@
 
 The demonstrated release gap is repaired at the sourcefree receiver edge without production edits.
 
-- Actual synthetic source: 12 rows, 71 columns, source SHA `443ebf5c74ad119fed2f79e148146e8772ad6f12317dcfcfcbe014136bf27eb4`.
+- Actual synthetic source: 12 rows, 71 columns, source SHA `5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f`.
 - Actual C11 release ref: `383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1` (`R56-SYNTHETIC-RELEASE`).
 - Exact P1 plan operation identity preserved: 840 operations; original plan ref `e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea`.
 - 210 P1 DISTRIBUTION units bound one-to-one to 210 current I03 queries/predicates and 210 Batch units.
@@ -24,7 +24,7 @@ All 840 P1 operations are accounted: 210 executed-bound DIST + 630 typed unsuppo
 ## Deliverables
 
 - `replay_repair.py` — executable binding/replay.
-- `test_repair.py` — 5 focused tests, all passed.
+- `test_repair.py` — 7 focused tests, all passed, including two fresh-process identity comparisons.
 - `01_ACTUAL_RECEIPT.json` — exact trace/output.
 - `02_CALLS_AND_ACCOUNTING.md` — receiver calls and accounting.
 - `03_LIMITS_AND_REPAIR.md` — limits and smallest repair.
