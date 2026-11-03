@@ -1,0 +1,127 @@
+{
+  "actual_trace": {
+    "bytes": 461984,
+    "path": "actual_trace.json",
+    "sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab"
+  },
+  "all_machine_receipts_equal_actual_trace": true,
+  "batch": {
+    "completed": 210,
+    "fact_state_counts": {
+      "SUPPORTED": 210
+    },
+    "receipt_count": 210,
+    "result_ref_count": 210,
+    "states": {
+      "COMPLETED": 210
+    }
+  },
+  "candidate_base": "023534c7f3f7fc5411ed52676490a1a0f70cd864",
+  "cold_replay_compare": {
+    "path": "cold_replay_compare.json",
+    "sha256": "11512540e542067f4c8fac661d78d0a589bb27a3de95d714c19cfd66b0cedee7"
+  },
+  "frozen_source_guard": {
+    "canonical_source_unchanged": true,
+    "changed_bytes_committed": false,
+    "changed_fixture_receipt": {
+      "path": "06_CHANGED_FIXTURE_REFUSAL.json",
+      "sha256": "439aa1399fabe7d0b297da3ea407bc2ba0d42308d7a25934bdfb2729e54a3334"
+    },
+    "changed_fixture_refused": true,
+    "changed_fixture_returncode": 2,
+    "changed_fixture_stdout_empty": true,
+    "changed_fixture_test": "test_08_runtime_refuses_changed_frozen_fixture_bytes",
+    "path": "frozen/source.sav",
+    "runtime_code": "FROZEN_SOURCE_SHA256_MISMATCH",
+    "sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+  },
+  "i05": {
+    "candidate_count": 16,
+    "compilation_ref": "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9",
+    "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+    "fact_count": 30,
+    "native_result_type": "ExactBoundedDiscoveryResult",
+    "receipt_count": 16,
+    "receiver": "execute_governed_frontier/I05",
+    "status": "EXECUTED"
+  },
+  "machine_receipts": {
+    "01_ACTUAL_RECEIPT.json": {
+      "bytes": 461984,
+      "sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab"
+    },
+    "actual_trace.json": {
+      "bytes": 461984,
+      "sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab"
+    },
+    "cold_replay_1.json": {
+      "bytes": 461984,
+      "sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab"
+    },
+    "cold_replay_2.json": {
+      "bytes": 461984,
+      "sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab"
+    }
+  },
+  "no_drop": {
+    "all_840_accounted": true,
+    "bound_210": true,
+    "distinct_bound_operations": true,
+    "distinct_bound_query_refs": true,
+    "distinct_bound_units": true,
+    "distinct_original_operation_refs": true,
+    "no_invented_operations": true,
+    "unsupported_630": true
+  },
+  "p1": {
+    "accounting_status_counts": {
+      "BOUND_I03_QUERY": 210,
+      "TYPED_REFUSAL": 630
+    },
+    "bound_plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "manifest_ref": {
+      "content_hash": "6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab"
+    },
+    "operation_count": 840,
+    "original_plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "unsupported_typed_refusals": {
+      "CONDITIONAL": 210,
+      "HETEROGENEITY": 105,
+      "JOINT": 210,
+      "RECURSIVE_BRANCH": 105
+    }
+  },
+  "review_commit": "bff80e2a7",
+  "schema": "PDEV01_GAP007_RECEIPT_RECONCILIATION@1.0.0",
+  "source": {
+    "columns": 71,
+    "release_internal_count": 82,
+    "release_object_count": 1700,
+    "release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "rows": 12,
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+  },
+  "test_receipts": {
+    "passed": 9,
+    "path": "test_repair.log",
+    "sha256": "8c22de7fe26608c57e6fd606d9aaa61bf7c6885381533b6916c5c447686a24d2"
+  },
+  "verdict": "CORE_REPLAY_STABLE__RETURN_RELEASE_RECONCILED__RUNTIME_GUARD_ADDED__INDEPENDENT_REVIEW_REQUIRED",
+  "wrong_authority_refusal": {
+    "code": "CarrierExecutionBindingError",
+    "detail": "query_ref exact preimage unavailable; no latest/default/fuzzy/hash-inversion fallback",
+    "status": "TYPED_REFUSAL"
+  },
+  "wrong_release_refusal": {
+    "code": "BatchIntegrityError",
+    "detail": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+    "status": "TYPED_REFUSAL"
+  }
+}

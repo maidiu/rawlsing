@@ -85,3 +85,40 @@ def test_07_two_fresh_processes_match_source_release_queries_manifest_i05():
     assert first["batch"]["receipt_count"] == second["batch"]["receipt_count"] == 210
     assert first["i05"]["receipt_count"] == second["i05"]["receipt_count"] == 16
     assert first["i05"]["compilation_ref"] == "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9"
+
+
+def test_08_runtime_refuses_changed_frozen_fixture_bytes(tmp_path):
+    import hashlib
+    import os
+    import subprocess
+    import sys
+    original = (HERE / "frozen/source.sav").read_bytes()
+    changed = bytearray(original)
+    changed[-1] ^= 0x01
+    changed_sha = hashlib.sha256(bytes(changed)).hexdigest()
+    assert changed_sha != hashlib.sha256(original).hexdigest()
+    tampered = tmp_path / "source.sav"
+    tampered.write_bytes(bytes(changed))
+    env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+    proc = subprocess.run(
+        [sys.executable, str(HERE / "replay_repair.py"), "--source", str(tampered)],
+        cwd=str(HERE.parents[2]), env={**env, "PYTHONPATH": str(HERE.parents[2])},
+        capture_output=True, text=True, timeout=300,
+    )
+    assert proc.returncode != 0
+    assert proc.stdout == ""
+    assert "FROZEN_SOURCE_SHA256_MISMATCH" in proc.stderr
+    assert changed_sha in proc.stderr
+    assert "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f" in proc.stderr
+
+
+def test_09_machine_receipts_match_actual_trace_exactly():
+    actual = (HERE / "actual_trace.json").read_bytes()
+    for name in ("01_ACTUAL_RECEIPT.json", "cold_replay_1.json", "cold_replay_2.json"):
+        assert (HERE / name).read_bytes() == actual, name
+    assert TRACE["source"]["release_ref"]["content_hash"] == (
+        "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03"
+    )
+    assert TRACE["p1"]["manifest_ref"]["content_hash"] == (
+        "6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab"
+    )

@@ -5,6 +5,8 @@ edit, compiler replacement or downstream adoption.
 """
 from __future__ import annotations
 
+import argparse
+import hashlib
 import importlib.util
 import json
 from dataclasses import replace
@@ -15,6 +17,25 @@ ROOT = Path(__file__).resolve().parents[1]
 P1_ROOT = ROOT / "p1"
 CONSTRUCTOR = P1_ROOT / "programma_pyat_original35_constructor.py"
 TEST_FILE = P1_ROOT / "test_programma_pyat_original35_constructor.py"
+FROZEN_SOURCE = Path(__file__).resolve().parent / "frozen/source.sav"
+FROZEN_SOURCE_SHA256 = "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+
+
+class FrozenSourceIntegrityError(RuntimeError):
+    """The exact committed synthetic SAV bytes are required; no fallback."""
+
+
+def verify_frozen_source(source_path: Path = FROZEN_SOURCE) -> Path:
+    source_path = Path(source_path)
+    if not source_path.is_file():
+        raise FrozenSourceIntegrityError("FROZEN_SOURCE_ABSENT")
+    actual = hashlib.sha256(source_path.read_bytes()).hexdigest()
+    if actual != FROZEN_SOURCE_SHA256:
+        raise FrozenSourceIntegrityError(
+            "FROZEN_SOURCE_SHA256_MISMATCH: "
+            f"expected {FROZEN_SOURCE_SHA256}; actual {actual}"
+        )
+    return source_path
 
 spec = importlib.util.spec_from_file_location("gap007.p1_constructor", CONSTRUCTOR)
 p1 = importlib.util.module_from_spec(spec)
@@ -49,10 +70,8 @@ def _max_one(values):
     return tuple(by_key[key] for key in sorted(by_key))
 
 
-def main() -> int:
-    source_path = Path(__file__).resolve().parent / "frozen/source.sav"
-    if not source_path.is_file():
-        raise RuntimeError("FROZEN_SOURCE_ABSENT")
+def main(source_path: Path = FROZEN_SOURCE) -> int:
+    source_path = verify_frozen_source(source_path)
     codes = [f"Q{i:02d}{side}" for i in range(35) for side in ("A", "B")]
     source_package = package(
         source_path, decode_sav(source_path).row_count,
@@ -282,4 +301,24 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--source", type=Path, default=FROZEN_SOURCE,
+        help="exact frozen synthetic SAV; default is the committed fixture",
+    )
+    args = parser.parse_args()
+    try:
+        raise SystemExit(main(args.source))
+    except FrozenSourceIntegrityError as exc:
+        print(
+            json.dumps(
+                {
+                    "status": "REFUSED",
+                    "code": str(exc).split(":", 1)[0].strip(),
+                    "detail": str(exc),
+                },
+                sort_keys=True,
+            ),
+            file=sys.stderr,
+        )
+        raise SystemExit(2)

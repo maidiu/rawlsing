@@ -8,6 +8,7 @@
 - 630 unsupported P1 operation kinds are explicitly typed refusals, not dropped or invented.
 - Actual I05 discovery execution on the same source.
 - Wrong-release and wrong-authority/query paths refuse before execution.
+- Runtime fixture guard refuses changed frozen SAV bytes before decode; no latest/default/fuzzy fallback.
 
 ## Not proven
 

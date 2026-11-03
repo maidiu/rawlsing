@@ -1,0 +1,25 @@
+{
+  "canonical_source_unchanged": true,
+  "changed": {
+    "bytes": 10985,
+    "one_byte_xor": true,
+    "sha256": "1096d41bc739bb2bc7659d93b4ade1738b27b2c961b8b3070eca84b833fb80fa"
+  },
+  "changed_bytes_committed": false,
+  "command": {
+    "executable": "python3",
+    "script": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "source_argument": "<temporary changed copy>"
+  },
+  "original": {
+    "bytes": 10985,
+    "path": "frozen/source.sav",
+    "sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f"
+  },
+  "refused": true,
+  "returncode": 2,
+  "schema": "PDEV01_GAP007_CHANGED_FIXTURE_REFUSAL@1.0.0",
+  "stderr": "{\"code\": \"FROZEN_SOURCE_SHA256_MISMATCH\", \"detail\": \"FROZEN_SOURCE_SHA256_MISMATCH: expected 5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f; actual 1096d41bc739bb2bc7659d93b4ade1738b27b2c961b8b3070eca84b833fb80fa\", \"status\": \"REFUSED\"}\n",
+  "stdout": "",
+  "test_reference": "test_08_runtime_refuses_changed_frozen_fixture_bytes"
+}

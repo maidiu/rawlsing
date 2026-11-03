@@ -5,7 +5,7 @@
 - Synthetic source SHA-256: `5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f`
 - Source rows: 12; physical columns: 71 (70 P1 item codes + FORM)
 - Actual C11 logical release: `R56-SYNTHETIC-RELEASE`
-- Release ref: `383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1`
+- Release ref: `64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03`
 - Release public objects: 1,700; internal records: 82
 - Built with existing `build_source_backed_c11_repository` from the synthetic source and projection.
 
