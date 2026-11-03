@@ -1,0 +1,60 @@
+# PROG5 NEXT E3 — source currentness, SAT-F four locators and permissioned-state cut
+
+**Disposition: DOCUMENTARY CANDIDATE RETURN — FOUR LOCATORS CONFIRMED; ONE MATERIAL LATE REVIEW-STATUS CORRECTION; NO SELF-ADOPTION.**
+
+The source/currentness court found all four SAT-F locator omissions genuine *navigation* omissions, not missing new product organs. In addition, **R157 P6 independent review actually returned `PASS_SCOPED_SOURCE_PREPARATION_NATIVE_FIXTURE_SCOPE`** at `d81bc2c67baf933461ae6cfca468f24779cc7e44`; the SAT-R sentence saying P6 was outstanding needs a version-qualified correction. PR #646 is merged, and one actual synthetic same-source TEST_ONLY R03/R04/R05→P41 first-consumer chain is already working. Original35 scientific, parent-host R09 D1/D4, native world/N11/N12 and Sorok actor holds are not relaxed.
+
+## Exact custody and source lock
+
+| Role | Exact SHA / state |
+| --- | --- |
+| Private repository / authorized surface | `maidiu/rawlsing`; S0–S1 authenticated GitHub source/blob/PR/review reads and isolated documentary writes ONLY |
+| Exclusive branch | `agent/prog5-next-e3-currentness-authority-20261103-r1` |
+| Commission source | `ed9c882a0683375bad70ee4abd1d662a61f1756b` (SAT-R guide receiving HEAD) |
+| Prepared branch parent at start | `fc27847f46f0035cf77c4b3d7d73fbfeb9c78de2`, two commission-preparation commits ahead of SAT-R; no worker return preexisting |
+| SAT-F final independent source review | `e6326dd2bc17629b240915da250e2cae9415cd43`; [00_RETURN](https://github.com/maidiu/rawlsing/blob/e6326dd2bc17629b240915da250e2cae9415cd43/WORKER_RETURNS/PROG5_SAT_FINAL_UNFAMILIAR_USE_R1/00_RETURN.md) blob `cdeaa2389f2f8979eec1d9a78e3287082f2ab605` |
+| **Live protected receiving-control PRE-MAIN**, refreshed | `integration/pre-main-reconciliation-r1@773bb412a820949f13a7178b6671327cd56a3bf1`; latest merge #652 historical work-selection law (documentary), checked via exact branch commits |
+| Last relevant sourcefree code merge | [#646](https://github.com/maidiu/rawlsing/pull/646) merged `079e819f81d77857d6c39c9817ea43d22b4e45ff`; separate #602 `0075c15fdfb1ca7dea3c5cb54ace3652e0201441`, #605 `fe3f5b4714b11015813537407f7eb4bbb6bc2c10`, #563 `8e44ca9c751049d65e6def47600b5c073ee04b29` |
+| E3 delivery | Exactly five files **only** in `WORKER_RETURNS/PROG5_NEXT_E3_CURRENTNESS_AUTHORITY_R1/`; terminal pushed SHA outside the self-referential return file |
+
+Historical source cuts are evidence snapshots, not synonyms: older control `9809203fd915a84bae056a67210e9213879840db`, semantic PRE-MAIN `1f47063c3205a45888b3c55e81e7485943ed1390`, SAT-R before #653 `8adbdc1b231cd11eac5dc0e99398bd4f658e099b`. The SAT-F correction branch `docs/prog5-satf-four-locator-corrections-20261103-r1` is still at the `8adbdc1...` prepared cut (0 commits ahead; 13 behind current guide), **not an accepted/returned correction**. Open PR #654 is a separate self-described superseded DRAFT, no merge.
+
+## A. Four confirmed SAT-F exact locators (not new science)
+
+| SAT-F | Exact present code and proof | Existing guide ID / conservative receiver action |
+| --- | --- | --- |
+| **F-01** | `rawlsing_next/pre553_effective_n.py#compute_effective_n@454`, current blob **`76bbddb0fddc91d64c83f5d6164a63cb4e2a3ff5`**, consumes governed I03 fact/query and authorized weight/design/estimand to emit F018 typed effective-N; RAW refuses meaningful weighted N. | **S04.1/S04.5; GAP-016–020; G1 row 186**. Add human code+grade link. Do not call original35 weighted risk-set accepted. |
+| **F-02** | `rawlsing_next/objective_non_event_publication_serving_adapter.py#validate@19/#make@47`, blob **`9baa6e73f683cea723de5ac56889ef6e5a7b5dee`**; D05 CURRENT requires actual currentness object, repository/query/resolution, authority and basis; HISTORICAL cannot masquerade as CURRENT. | **S09.2/S09.3; GAP-039/040; G1 rows 168–169**. Add narrow D05 currentness reference; full original-world N9 remains held. |
+| **F-03** | [#563](https://github.com/maidiu/rawlsing/pull/563) independently accepted **3,135 source function IDs conserved into 1,885 corrected historical families**, current verifier blob **`c6e51c5e619f598ad927997bca548af50b506fe6`**. | **CROSS_PLAN_IDS / ASSET_LOCATOR**, non-functional genealogy note; **not 782 guide typed IDs**. Preserved PE overlay RED and V2K scope. |
+| **F-04** | [#602](https://github.com/maidiu/rawlsing/pull/602) merged independently reviewed physical C3 D01/D02 repairs: decoder **`4b89c4598f324834de064c1200c63698a20e3c5c`**, R5 codec **`f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7`** at live 773; E4FR review `7cd2206fd976606d3816589e2fce03c03c827f39`. | **S03.1/S03.2; GAP-011/012; S-C11**. Mark narrow physical repair DONE; G01 historical two REDs, broad 144/3, and nested `.item()` wrapper caveat explicitly retained. |
+
+SAT-F found 4 failures out of 5 blind lookups; its 8 navigation cases, 22/22 sampled direct links and 48/48 sampled saturation blob hashes were separately preserved. E3 did not repeat SAT-F's cold-use tests, alter original guide statuses or infer more comprehensive coverage from those sample counts.
+
+## B. New live reader and exact remaining negatives
+
+**Protected #646 POSITIVE:** at 773, [`pre553_issued_workload.py#capture_joined_checkpoint@L598`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_issued_workload.py#L598) blob `68684d880da472b36e8ccefda20c687479a212ca`, [`pre553_universal_world_binding.py#select_r05_world_view@L853`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_universal_world_binding.py#L853) blob `63bf3725ee645fdbdd00d9291b4041f50c37938d` and [`test_universal_world_binding.py#_same_source_connected@L954`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/tests/test_universal_world_binding.py#L954) blob `b2102146f56f2b5224ca4c5105cf96bc929dc19d` form a real **selected test-only source→partial checkpoint→cold resume→M1/M2/R05→actual pinned P41** call path. [Independent reviewer `771bc4ebd49759479d76386ba986e9a69146c607`](https://github.com/maidiu/rawlsing/blob/771bc4ebd49759479d76386ba986e9a69146c607/WORKER_RETURNS/PYAT-HQ-BOUNDED-INDEPENDENT-REVIEW-20261103/SAME_SOURCE/SAME_SOURCE_REVIEW.json), blob `6156fc88eee34e2ec8c58144feb8c71e365f1870`, found 1 connected + 8 focused PASS, wrong-source/revocation and upstream-severance refusals; fixed-seed child/parent identity only, not universal byte stability. **G4's old `S-SERVE/S-POSS` `MISSING_PRODUCER_OR_READER` remains true at its old cut**, while newer 13-row overlay rightfully reports `MERGED_SOURCEFREE_SELECTED_FIRST_READER` for this one case. Native N9 current/as-of and N10E AND N9→N10W remain HELD.
+
+**R00/R09 versioning:** R00 `4646e2944c1b1266f54415ef8a2f134f1d16ca94` packaging independently **PASS_SCOPED_R00_CUSTODY_PACKAGING**, but branch-only and not new native gate behavior; old R00V-R2 stale manifest RED remains historical. R09 D7 `da101f1a70ed2ec3aaff80c201c007efe518bb1d` typed `EXPECTED_RESULT_NOT_SERIALIZABLE` independently **PASS_SCOPED_R09_D7_EXPECTATION_MALFORMED**, branch-only, not protected verifier. Independent review `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2`. Crucially **R09 D1/D4 parent receives child-authored result and claimed loaded bytes; parent HMAC does not create independent observation**. A host/admin approved isolated process/parent-owned trust root remains required.
+
+**R157 P6 corrected status:** [independent disposition](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/SOURCE_PRE553_PLAN/review/P6_DISPOSITION.json) blob `c18e50110d2c2ccb8d8cae5d00380088743291d7` and review blob `3215684b9a36255522b06fc064a18ad805860a8d`: **35/35 nonrespondent fixture release replay PASS**, 18,413 slots/18,276 items, 26 unmatched preserved, 807 LiTS supported questions and 2,253/1,346 LiTS limitations retained. Original bytes unread, 11 original configurations not declared native supported, no issuer/science grant. Factory package and admission adapter exact paths absent **at live 773**, while present on R157 branch: **P6 review PASSED at fixture scope, production port NOT DONE**. Replace stale guide phrase “P6 still outstanding,” and require a current first consumer before any code adaptation.
+
+**F7 P07, K04, N11:** #571 independent hostile P07 review still an open *issue* with dispatch-only branch `92a86e7f92010efc4b29bbd7dd6829dbba35d9aa`, not returned. F7 author `f8fe03cc6e6a482f428bed9e03c08e50ce1e6479` 24 sourcefree PASS cannot issue temporal comparability. K04 materializer exists at `3d412aae0517b6e168431268b099cd3992a5f043` (blob `3c7527d3129387e8fd010b56dc981cf2e12542f7`), PR #367 closed unmerged, path 404 at live 773. A42 [N11 candidate](https://github.com/maidiu/rawlsing/blob/843175b0587b54db3df1f461ad9f7f1314894372/WORKER_RETURNS/PYAT-R42-A42-WHOLE-ESTATE-RETURN-FANIN-AND-N11-CANDIDATE-R1/final_maturity_adjudication.md) remains `N11_NOT_READY`, **0 original measured / 1,890 acceptance cells**. N12 wake and Sorok actor rights separate.
+
+## C. Five-test work selection against duplication
+
+The [binding five-part historical succession/work-selection law](https://github.com/maidiu/rawlsing/blob/ed9c882a0683375bad70ee4abd1d662a61f1756b/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) requires current necessity, lack of lawful composed successor, real first consumer, suitability/permission, and comparative gain. Two falsifiable examples:
+
+- **Do not commission another effective-N calculator or physical decoder by absence of an old-name locator.** Both are physically present on the protected cut; C3 decoder specifically independently reviewed and merged. If Codex HQ selects original source-weighted empirical functionality, first name the source-issued weight/design/estimand/risk set and actual original35 consumer, then compare current code/ABI. Missing original35 permission is an **OWNER_HELD** science leaf, not a missing Python formula.
+- **Do not receive P07 as native F7 because its author test is green.** Its #571 independent reviewer is not returned, and no original source-authorized comparable wave/design/weight/cohort or chosen N9 as-of importer exists. `COMPARE_ONLY_UNKNOWN` or `OWNER_DECIDE` applies until those exact gates are proved. Similarly R157 P6's nonrespondent fixture PASS cannot authorize an original-source run.
+
+## D. Files and precise receiving decision
+
+1. `00_RETURN.md` — this source/currentness and handback.
+2. `SATF_FOUR_EXACT_LOCATOR_CORRECTIONS.md` — F01–F04 exact current code, review history, residual and four tight guide prose additions.
+3. `CURRENT_CODE_REVIEW_AUTHORITY_CUT.jsonl` — 14 separately graded source/review/authority outcomes, full code/cut/blob/first-reader fields.
+4. `PATCH_MAP_BY_EXISTING_GUIDE_ID.md` — existing file/child/GAP/asset/edge IDs and proposed additive versus narrow replacement wording, including P6 and #646 currentness.
+5. `PROTECTED_VS_BRANCH_ONLY_AND_NEGATIVES.md` — three-court matrix and version-specific protected, unmerged and held contrasts.
+
+**Receiver-only action:** Later E-R independent receiver re-fetches the exact code/review blobs, receives the four finite F01–F04 locator lines plus P6 correction and #646 dated overlay **only if independently supported**. Never modify the 82 old source-cut statuses, 62 capsules, 892/782 original identifiers, science law or protected code under this research grant. Independent E-F cold-use review is separate and deferred to that receiver.
+
+**No authority/tests:** E3 performed authenticated GitHub source and PR/branch-head reads only; no local S2 tests, original S3/source respondents, host tracing, raw original survey read, CI, code edits, actor work, release/merges or review of its own output. Model/high-effort configuration was proposed by the user but not exposed for independent host introspection; no model/provider/editor was switched. File delivery on isolated branch only. Terminal remote commit full SHA to be reported after GitHub commit/ref update and readback.
