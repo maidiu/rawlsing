@@ -379,7 +379,7 @@ Controlled inputs above are explicitly `TEST_ONLY_CONTROLLED_FIXTURE`, `actual_a
 
 ## 8. Publication
 
-Occurrence-consumer base `c5602ec87ba6e951540b89a49404db76c128eb50`, compatibility base `a6b1f10b37c0748b0b6880e1870a2c4c4f07844be9`, PROGRAMMA disposition `29aa0f9e81fe1f371f2773d4750e1838bdd63daf` and JOIN-E source commit `5e63672543973ce2533129e1ca3224d82af0dffc` remain recorded. The provenance repair for REVISE at `eb2255231df00393d33cc0223bc5d79320360f88` was committed as `d504231674fe02fb765502b0cb4e187d4a5e0560` and pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
+Occurrence-consumer base `c5602ec87ba6e951540b89a49404db76c128eb50`, compatibility base `a6b1f10b37c0748b0b6880e1870a2c4f07844be9`, PROGRAMMA disposition `29aa0f9e81fe1f371f2773d4750e1838bdd63daf` and JOIN-E source commit `5e63672543973ce2533129e1ca3224d82af0dffc` remain recorded. The provenance repair for REVISE at `eb2255231df00393d33cc0223bc5d79320360f88` was committed as `d504231674fe02fb765502b0cb4e187d4a5e0560` and pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
 
 ```text
 git rev-parse HEAD
