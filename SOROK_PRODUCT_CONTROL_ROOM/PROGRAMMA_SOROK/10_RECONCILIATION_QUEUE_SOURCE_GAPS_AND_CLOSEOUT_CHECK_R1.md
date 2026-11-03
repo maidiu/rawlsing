@@ -1,4 +1,29 @@
-# W7-I — SOURCE-GROUNDED EXECUTIONAL WORK-NOW (FIRST-PASS INTEGRATED GUIDE; PEER AUDITS PENDING)
+# W8-F CURRENT WORK-NOW — CORRECTED READINESS (SUPERSEDES W7-I PRIORITY LABELS BELOW)
+
+**Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
+
+**No single numeric critical path:** choose outcome and claim, then compute all *active* ALL/ANY/IF gates of the same target@phase and exact version, including independent owner rights; never count `NOT_APPLICABLE` as satisfied. A `RELATION.reverse_unlock_candidates` entry is syntactic unless every other gate also qualifies. No code actor/human receipt was manufactured.
+
+| Goal / inherited package | First lawful next work | Still HELD / does **not** follow |
+|---|---|---|
+| `S10@SPECIFY`; `G-S10-SPECIFY` | Refine Sorok 100 memory/branch/replay architecture now from original sources. Historic E021 is optional reuse for selected implementation | Old 7bf fork review is not a required hard predecessor, nor current selected-tuple VERIFY |
+| `WP-W6B-01` | Consolidate existing W6-C/W7-C matrix: R2 CandidateStore lacks c784 `actor_meta`, fork/root, ACK/anchor mismatches | No rediscovery fleet and no compatible tuple silently chosen |
+| `WP-06` | One joint original C9/C12/**C10** owner specification: writer SHA, reader SHA, schema, actor/branch/epoch, source root, outbox ACK, mirror/watermark, fork/migration, anchor signer/min-sequence | SPECIFY permits conditional parallel adapter work, not actual C12 integration/VERIFY; no proven directed code SCC |
+| `WP-07` and R2 T1/M1/C1/D1 | Repair selected 598d packet from exact independent RED; reuse HR1 scoped verifier fix and later F2 receiver only where cut-compatible; run new root/cold/severance/restore and independent review | JOIN-V 7bf `ACCEPT_SCOPED` and F2 partial do not certify 598d/c784 or native C12 |
+| `WP-02` | Specify sourcefree B.operation/quantity severance/restore with A fixed and actual C9RI/BP2 later E2 reader; minimal missing adapter only if needed | Sourcefree field coupling unproved; Rule A/T, ADP and native actor held |
+| `WP-03/04/05` | Original CAN008 Rule A / CAN011 Rule T positive / *evaluated* NO_CHANGE decision packets with actual causal rivals | MISSING_RULE cannot masquerade as NO_CHANGE, no guide-issued science |
+| `WP-08/09/10/11` | Refine Pyat receiver, original actor-source, C8 readset and explicit owner requests separately | Sourcefree PRE553 C11 facade is not Pyat native N11/N12 grant |
+| `WP-20/34/35/37` | Reuse D002 **50 unexecuted scenario probes**, D008 phenomenal lens and D009 faculty/capability sources; refine SAY/DO/ATTEND and actor→user view | No blank new ontology, no positive M6, no performed native action or human UX claim |
+| `WP-14/16/17/18` and `WP-37` | Refine S5 plural flourishing; S13 business viability; S14 enforceable per-right policy; S15 participant protocol; S11 humane exits/accessibility **in parallel** | No measured cost, policy acceptance, operated controls, consented trial or product acceptance yet |
+| `WP-25` | Prepare matched-scope human protocol/evaluation plan; no Gate5 execution until actual source-generated Gate4 and all safety/product technical receipts | Curated Gates0–3 study may be `FORMATIVE_CURATED`, never `HUMAN_GATE5` |
+
+**Eleven original-stage owner witnesses remain explicitly unresolved in 14:** `C4:ACTOR_SOURCE@ACCEPT`; `C8:ADMITTED_E1@ACCEPT`, `ACTOR_ACCESS@ACCEPT`, `WRITER_CUSTODY@VERIFY`, `ACTION_OMISSION@VERIFY`; `C12:EXTERNAL_ANCHOR@VERIFY`; `O16@ACCEPT`; `S9:POSITIVE_EXPRESSION_PLAN_AUTHORITY@ACCEPT`; `S14:DATA_POLICY@ACCEPT`; `S5:PLURAL_EVALUATION@SPECIFY`; `S16:OWNER_HANDOFF@VERIFY`. Their local `OWNER_ACTION` records include issuer, first consumer and condition, never positive evidence.
+
+**Source epochs:** Sorok original `865b` Q/D/R 130/259/216 versus older 123/248/204. W7-C regraded all 39 inherited packages: no 39 new builds. W7-S 41 direct-selected source reads do not magically become 41 new assets. W8-J joins and W8-N additions remain independent.
+
+---
+
+# HISTORICAL W7-I (SUPERSEDED FOR READINESS): W7-I — SOURCE-GROUNDED EXECUTIONAL WORK-NOW (FIRST-PASS INTEGRATED GUIDE; PEER AUDITS PENDING)
 
 **Current front door to practical work selection.** This section is added to the **existing** W5 guide, not a second PROGRAMMA platform. Immutable cuts: W5 `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`; W6-A `91a18a38c1f72b9d64ddc321e0a20dab5c8a3971`; W6-B `3cec9b96a605b018be7d266585f37a96bf636f84`; W6-C `ae82321ab8a028811bd7ce3e9c442beb5020c66c`. W7-I is **FIRST_PASS_INTEGRATED_CANDIDATE__PENDING_W7D_W7S_W7C_W7P_INDEPENDENT_AUDIT**. No owner adoption, scientific rule, native execution, human acceptance or actual dispatch is implied.
 

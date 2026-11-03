@@ -1,4 +1,23 @@
-# W7-I CURRENT GUIDE FAN-IN HANDOFF — FIRST-PASS, NOT SELF-ACCEPTED
+# W8-F RECEIVING CORRECTION — SOURCE / STAGE / AUTHORITY HANDOFF
+
+**Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
+
+## Source and identifier conservation
+
+Original 290/290 exact GIT source path/blob IDs remain, including 14 additional W6-A GitHub source assets (304). W6-A's 307 disposition rows are different grain. Original 144 function IDs, 22 D, 22 E, 100 W1 dispositions, 119 nested, 77 initial gates, 97 initial leaves, 230 initial relations, 39 WPs and 38 source→first-reader seams remain. New W8-F local children are marked, with before/after JSON/JSONL counts in the W8-F return ledger. All 38 W6-C seams retain their original `JOIN_PENDING_*` values.
+
+## Distinct evidence and decisions
+
+- **ENGINEERING/SOURCE:** original 7bf/ JOIN-V accepts only exact sourcefree fork/cold; reviewed 598d is `REVISE_MATERIAL_DEFECTS` (R2-T1/M1/C1/D1), and later `cf578...` F2 is a separate packet/partial consumer. No S2 on W8-F, no original C9/C12 adoption, no verified Pyat→Sorok native C11 importer.
+- **SCIENCE:** Rule A, Rule T positive acquisition and genuinely evaluated NO_CHANGE require competent original CAN008/CAN011 issuer, actual B/E1/E2 and counterfactual rivals. Missing rule is held; no inferred acquisition or change.
+- **AUTHORITY:** W7-D's 17 findings were considered with *author-proximate* caution, W7-C/S/P are distinct audits. W8-F receiving edits are not an independent review, no owner/PRE-MAIN adoption or dispatch.
+- **HUMAN:** formative curated technical or consented exploratory UX may inform mechanism design but **original Gate5** requires actual generated Gate4, Gates0–4 technical receipts, functioning product, S5/S11/S14/S15 and real approved participants. All are still held at acceptance.
+
+**Closeout condition:** independent cold-use review must source-navigate all ten difficult W8-F before/after cases; review owner-qualified tuples and operated safety using exact S2/S3 evidence; preserve human-study approval. W8-J seam joins and W8-N scoped negative space are outside this worker. Do not merge/adopt W8-F automatically.
+
+---
+
+# HISTORICAL W7-I (SUPERSEDED FOR READINESS): W7-I CURRENT GUIDE FAN-IN HANDOFF — FIRST-PASS, NOT SELF-ACCEPTED
 
 **Scope:** *Actual edits to the preexisting PROGRAMMA SOROK guide*, integrating W6-A/B/C at their immutable cuts; not a new source platform or an original Sorok scientific/product court. W7-I `FIRST_PASS_INTEGRATED_CANDIDATE__PENDING_W7D_W7S_W7C_W7P_INDEPENDENT_AUDIT_AND_LATER_COLD_USE`. The **W5 historical adoption-ready status below remains true only at W5's prior navigation/no-drop scope**, not a verdict for this deeper stage-based guide. No protected branch, current Sorok implementation, PRE-MAIN, owner decision, provider or participant was changed.
 

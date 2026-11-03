@@ -1,4 +1,24 @@
-# W7-I CURRENT WHOLE / SECTION / NESTED GUIDE — FIRST-PASS FAN-IN
+# W8-F CURRENT CORRECTIVE WHOLE→ACTOR→USER SPINE
+
+**Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
+
+## Correct producer-to-person and product causal chain
+
+`Pyat originally permitted world@cut` → `C4 actual source-generated actor and independent B` → `C8 admitted event with actor access, custody and real performed/omitted E2` → `CAN008 Rule A and CAN011 selected original Rule T positive or genuinely evaluated NO_CHANGE` → `C9 actual actor writer/receipt` → `C10 time/irreversibility and C12 exact same-root guarded cold consumer` → `S9 actor objective occurrence vs actor-access limits` → `D008 phenomenal sampling to user` → `S8 SAY/DO/ATTEND attempted/performed/failed/refused` → `S11 humane, opacity-preserving experience` → `A0–A3 curated technical probes → Gate4 generated substitution → Gate5 approved real humans`. None of the arrows follows from matching names, plausible text, test-only B, or a renderer's rescue of inaccessible information.
+
+The real **first-reader test** must hold A's initial tools, history and access fixed while varying B's *performed* operation/quantity before C8; trace actor-visible E1, C9 receipt, performed or omitted E2, and later cold semantic behavior; sever B cause, verify RED, restore exact original input and verify original output. This is a proposed sourcefree S2 experiment, NOT performed here. W6-C E004 notes R31J preassigns `A.tools_remaining`; a B fixture hash alone is insufficient.
+
+## Independent product obligations with source-design reuse
+
+**S8:** D002 SCE-001–050, GIT-0128, delegated task/hinge GIT-0136, source-constituted action grammar; select a minimal actual event first reader instead of writing another 50 fixtures. **S9:** D008 GIT-0145/0146 distinction among objective world, actor accessibility, user perceptual sampling and unreliable social signaling; D009 GIT-0148/0149 capability vs impression. Positive M6 needs distinct named owner authority; GT0 fail-closed is negative only. **S11:** low-fi sourcefree design differs from actual participant usability. **S14:** provisional policy Sorok 58/59 does not implement access, delete/export, consent withdrawal, research isolation or independent abuse controls; each has a typed positive/negative operated receipt and human S15 implications.
+
+**S5** plural flourishing vs attachment/compliance, **S13** anti-extractive business/cost and **S15** consent/falsifier protocol remain independently SPECIFY/refinement-ready. S12 social features are optional, not a hidden A5 default blocker. Historic M25/M29, R6, C9RI, BP2P4J, R31E and PR606 must be compared for actual import and rights before new code.
+
+**Native/human HOLD:** Pyat N11/N12 world grant, actor B/C4 source, ADP event/readset, issued CAN008/CAN011 T, selected C9/C12/C10 exact tuple, external signer/antirollback and positive M6, operated S14, original Gate4 substitution and consented human Gate5 are not inferred from sourcefree success.
+
+---
+
+# HISTORICAL W7-I (SUPERSEDED FOR READINESS): W7-I CURRENT WHOLE / SECTION / NESTED GUIDE — FIRST-PASS FAN-IN
 
 **Status:** `INTEGRATED_CANDIDATE_PENDING_W7D_W7S_W7C_W7P_INDEPENDENT_AUDITS`. This W7 section supersedes *the W3 document's historical guide-readiness framing below*, **not** the underlying original source, evidence grades, identities, scientific authority or W4/W5 scoped independent results. W5 frozen guide `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`; W6 A/B/C immutable source cuts `91a18a38c1f72b9d64ddc321e0a20dab5c8a3971` / `3cec9b96a605b018be7d266585f37a96bf636f84` / `ae82321ab8a028811bd7ce3e9c442beb5020c66c`. This is a **guide to building Sorok**, not a person, native runtime, new controller, scientific issuer or acceptance report.
 

@@ -1,4 +1,23 @@
-# CURRENT PROGRAMMA SOROK GUIDE — W7-I FIRST-PASS INTEGRATED W6 SOURCE / DEPENDENCY / SEAM FAN-IN
+# PROGRAMMA SOROK — W8-F ACTUAL GUIDE CORRECTION (CURRENT READ FIRST)
+
+**Status:** `W8F_MATERIAL_GATE_REPAIR_COMMITTED__INDEPENDENT_REVIEW_AND_OWNER_ADOPTION_PENDING`. This remains the original finite guide, not another graph/controller/product. Existing W7-I first-pass material below is HISTORICAL for readiness wherever contradicted by this W8-F correction.
+
+**Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
+
+## Current entry to a real development decision
+
+**Always select a target@phase, version, actor/root and claim scope before a READY assertion.** Consult [14](14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl) for corrected gates, [08](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json) for its indexed view, [15](15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl) for actual producer/first-reader cuts and still-pending joins, [07](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json) for original source-grade mappings, and [10](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md) for exact first work.
+
+- **A5:** Three distinct claim scopes: `FORMATIVE_CURATED` Gates0–3 mechanism or consented exploratory UX; `GENERATED_GATE4` actual native source-person substitution; `HUMAN_GATE5` real approved study **after technical Gates0–4**, an operating product, S5/S11/S14/S15, actual participant evidence and independent evaluation. Empty selection never passes. Original Sorok 100 §8 prevails over earlier W6-B/W7-I IF text.
+- **C9:** A valid native Rule A, actually performed B/E2/readset, plus `POSITIVE_ACQUISITION` with competent original Rule T **or** genuinely `EVALUATED_NO_CHANGE` under an issued selector. Unknown/missing rule is neither outcome. Both native base ALL and selected T ANY gates must hold on the same target@phase.
+- **C9/C12:** JOIN-V `4387dc8` accepts exact 7bf sourcefree fork/cold only; R2 review `8090a1e` returns `REVISE_MATERIAL_DEFECTS` on 598d (T1/M1/C1/D1); later F2 `cf578` reports a different receiving fix/partial reader. Choose a joint C9/C12/C10 writer-reader/schema/root/epoch/ACK/anchor contract; implement adapters only after selection; independently test new-tuple positive+cold+severance/restore. The inherited design SCC is not a proven runtime cycle.
+- **Parallel now:** Refine actual original S5 benefit/harm, S8 action, S9 actor/world/user phenomena, S11 humane UX, S13 cost/anti-extraction, S14 data/safety operations and S15 study protocol. These are SPECIFY/refine at source grade, **not accepted implementations**. Original D002 has 50 source scenario probes (not executed tests); D008/D009 constitutions have already specified important lens and faculty alternatives.
+
+**Conservation:** 290 original GIT locators, 144 function IDs, 22 D + 22 E parent IDs, 100 W1 dispositions, 119 W6-B nested, 77 inherited gates/97 leaves/230 relations/39 packages and all 38 W6-C seams are retained. W8-F additions are labeled local children, not replacements. All 38 cross-worker seam statuses remain `JOIN_PENDING_*` pending W8-J.
+
+---
+
+# HISTORICAL W7-I (SUPERSEDED FOR READINESS): CURRENT PROGRAMMA SOROK GUIDE — W7-I FIRST-PASS INTEGRATED W6 SOURCE / DEPENDENCY / SEAM FAN-IN
 
 **Status:** `FIRST_PASS_GUIDE_INTEGRATED__PENDING_INDEPENDENT_W7_D_S_C_P_AUDITS_AND_OWNER_ADOPTION`. **This is the lean finite MASTER GUIDE for finishing Sorok**, not the Sorok person, a scientific owner, a Pyat source issuer, an autonomous worker manager, a new controller or a separate platform. This W7-I update was made on `research/programma-sorok-w7i-w6-canonical-fanin-20261102-r1` **from exact frozen W5** `e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde`. W6-A `91a18a38c1f72b9d64ddc321e0a20dab5c8a3971`, W6-B `3cec9b96a605b018be7d266585f37a96bf636f84` and W6-C `ae82321ab8a028811bd7ce3e9c442beb5020c66c` are the *immutable source returns*, not self-accepted updates. W4 seven-question navigation PASS is scoped to W3, W5 W1 no-drop 100/100 remains scoped; this newer phase/readiness functionality has **not yet been cold-tested independently**.
 
