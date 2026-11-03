@@ -1,4 +1,6 @@
 
+**WORK-SELECTION INTEGRITY (2026-11-03):** The 49 GAP identities are original source-cut obligations, not 49 commissions or a current defect count. Historical code or missing index rows do not create BUILD tasks without [five documented no-duplicate/consumer/suitability/value tests](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md). Reconcile current PRE-MAIN #646 sourcefree integration using [the versioned Codex edge/next-work handback](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md) before prioritizing. Do not erase earlier gaps or claim original35 native closure from the synthetic joined chain.
+
 ## SAT-R work-classification corrections — existing 49 GAPs unchanged
 
 Source-grounded [34-row dedup ledger](SATURATION_MATERIAL_DISCOVERIES.jsonl) and [Codex reuse handoff](SATURATION_CODEX_REUSE_HANDOFF.md) improve engineering classification, not task count or protected readiness:
