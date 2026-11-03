@@ -1,0 +1,65 @@
+{
+  "branch": "agent/pyat-pdev01-n10w-join-r1",
+  "d2p3": {
+    "action": "NOT_FED_TO_N10W; not relabeled.",
+    "d2p3_has_w41_e41_source_rows": false,
+    "d2p3_is_n9": false,
+    "d2p3_producer_refs": {
+      "GSS_RURAL_LIGHTING": "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+      "NCA_NATIONAL_MOBILE_DATA": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+    },
+    "d2p3_reader_state": "TWO_VALUES_READ_TEST_ONLY",
+    "d2p3_source_families": [
+      "GH_GSS_PHC_2021",
+      "GH_NCA_LICENSEE_REPORTS_2021Q4"
+    ],
+    "first_missing_binding": "D2P3 output is a GSS/NCA field-reader trace, not a W41 version-selected N9 artifact or E41 N10E receipt; its refs/families do not match the actual J42 W41/E41 source rows."
+  },
+  "evidence": {
+    "RETURN.json": "74bcb2b0b003f38112825da1b2816d8d1cb7a430255fbbdad2d2925bb234de01",
+    "RETURN.md": "b0976b6a87ffa1d15cce56728e9ab8e8a3ccb3dfa0f28fb09dcecc754f624a23",
+    "RUN.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "RUN.stdout": "ccc259cc8e9cdcce12a9d8d53aa394f93e30ffff9dc1ee5c5bd7886f2f641d21",
+    "SAME_LINEAGE_WITNESS.json": "ccc259cc8e9cdcce12a9d8d53aa394f93e30ffff9dc1ee5c5bd7886f2f641d21",
+    "run_same_lineage.py": "2b65c74e59a286a5cdaeeb124dea6a3af909f61dfb11c7a3293f43e239fc8979"
+  },
+  "j42": {
+    "joined_consumer_contract": "J42_JOINED_E41_W41_P41_PREV3_CONSUMER@1",
+    "n10e_provider": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+    "n10w_provider": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+    "n9_clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    },
+    "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "n9_provider": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1",
+    "source_rows_hash": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02"
+  },
+  "model": {
+    "model": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "variant": "max",
+    "verified": true
+  },
+  "no_writes_outside_owned_root": [
+    "?? WORKER_RETURNS/PDEV01-N10W-JOIN/same-lineage/"
+  ],
+  "pins": {
+    "d2p3_candidate": "cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584",
+    "d2p3_review": "830a9656cb65f00337d5bcd0f7373dbef11d50df",
+    "d2p3_trace_sha256": "dfee8bcc7f1f0202e2b9ffee7d3cbe70e1c361d45b4727356393ae14c6c457f3",
+    "guard_sha256": "5f81a3012abf70b6f646b35d1344cf29421a3aa124ab76143f3c46632dc214fc",
+    "j42_commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "j42_receipts_2_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "j42_receipts_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "repair_base": "c75b464ab4dbba15c6a89db42aaf5d101ba13d55",
+    "w41_artifact_sha256": "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7"
+  },
+  "resume_base": "c75b464ab4dbba15c6a89db42aaf5d101ba13d55",
+  "root": "WORKER_RETURNS/PDEV01-N10W-JOIN/same-lineage/",
+  "schema": "PDEV01_N10W_SAME_LINEAGE_PINS@1.0.0",
+  "status_note": "Only WORKER_RETURNS/PDEV01-N10W-JOIN/same-lineage/ is new; repair and other worker trees are untouched."
+}
