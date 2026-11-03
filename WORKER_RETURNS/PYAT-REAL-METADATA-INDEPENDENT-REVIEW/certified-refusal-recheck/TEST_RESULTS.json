@@ -1,0 +1,116 @@
+{
+  "adoption": false,
+  "candidate_commit": "ddc85dd298d36d4825d42cd4931a0cac5d91cb73",
+  "ci": false,
+  "commands": [
+    "git archive ddc85dd29 rawlsing_next WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/certified-refusal-fix WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/routing | tar -x -C <snapshot>",
+    "git archive 056849e23 rawlsing_next/source_configuration rawlsing_next/pre553_source_read_admission.py source_pre553_validation/SRC04 | tar -x -C <snapshot>",
+    "git show ad205744c:WORKER_RETURNS/PYAT-REAL-METADATA-INDEPENDENT-REVIEW/decline-code-recheck/evidence/CORRECTION_ALLOWLIST.csv > <snapshot>/prior/CORRECTION_ALLOWLIST.csv",
+    "git show ad205744c:WORKER_RETURNS/PYAT-REAL-METADATA-INDEPENDENT-REVIEW/decline-code-recheck/evidence/TYPED_UNKNOWN.csv > <snapshot>/prior/TYPED_UNKNOWN.csv",
+    "PYTHONPATH=<snapshot> python3 -B <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/certified-refusal-fix/certified_refusal_fix.py --package-root <snapshot> --source-config <snapshot>/rawlsing_next/source_configuration/data/SRC04/source.config.json --allowlist <snapshot>/prior/CORRECTION_ALLOWLIST.csv --typed-unknown <snapshot>/prior/TYPED_UNKNOWN.csv --option-authority /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_response_option_authority.csv --tally-product <snapshot>/prior/TALLY_PRODUCT.json --routing-receipt <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/routing/01_ROUTING_RECEIPT.json --output <review>/evidence/REPLAYED_CERTIFIED_RECEIPT.json --overlay <review>/evidence/REPLAYED_CERTIFIED_OVERLAY.json",
+    "PYTHONPATH=<snapshot> python3 -B -m pytest <snapshot>/WORKER_RETURNS/PYAT-REAL-METADATA-BINDING/certified-refusal-fix/test_certified_fix.py -q -o addopts='' -p no:cacheprovider",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 WORKER_RETURNS/PYAT-REAL-METADATA-INDEPENDENT-REVIEW/certified-refusal-recheck/check_certified_refusal.py"
+  ],
+  "merge": false,
+  "metadata_only": true,
+  "new_authority": false,
+  "original_sav_read": false,
+  "production_config_adoption": false,
+  "production_edit": false,
+  "respondent_rows_read": false,
+  "results": [
+    {
+      "byte_identical": true,
+      "candidate_overlay_sha256": "997e29662f44beb8f345925b9189a251fa391ccc44bd4fe3045ed4b620eb5eb5",
+      "candidate_receipt_sha256": "cee52e2f9537e6ce0ad3bfe0e331f86c3dffdb0f642f882702a0308a689b162c",
+      "command": "certified overlay replay",
+      "exit": 0,
+      "replayed_overlay_sha256": "997e29662f44beb8f345925b9189a251fa391ccc44bd4fe3045ed4b620eb5eb5",
+      "replayed_receipt_sha256": "cee52e2f9537e6ce0ad3bfe0e331f86c3dffdb0f642f882702a0308a689b162c",
+      "status": "PASS"
+    },
+    {
+      "command": "focused certified-refusal tests",
+      "detail": "5 passed in 0.03s",
+      "failed": 0,
+      "passed": 5,
+      "status": "PASS"
+    },
+    {
+      "certified_entries": 28,
+      "command": "partition and schema",
+      "held_entries": 14,
+      "held_entries_changed": false,
+      "only_certified_entries_changed": true,
+      "schema_valid": true,
+      "selected_fields": 42,
+      "status": "PASS",
+      "universal_code_rule": false
+    },
+    {
+      "command": "q101 exact prior correction",
+      "corrected_explicit": 204,
+      "corrected_valid": 7129,
+      "missing": 4,
+      "old_explicit": 171,
+      "old_valid": 7162,
+      "refusal": 33,
+      "status": "PASS",
+      "total": 7337
+    },
+    {
+      "all_42_per_field_denominators_7337": true,
+      "certified_code99_reclassified": 2185,
+      "certified_per_field_identity_all_conserved": true,
+      "command": "per-field denominators and aggregate",
+      "corrected": {
+        "explicit_nonresponse": 23422,
+        "missing_or_unobserved": 9335,
+        "observed_response": 298819,
+        "refusal": 2185,
+        "source_record_denominator": 308154,
+        "valid_answer": 275397
+      },
+      "held_code99_unchanged": 1645,
+      "held_per_field_identity_all_conserved": true,
+      "old": {
+        "explicit_nonresponse": 21237,
+        "missing_or_unobserved": 9335,
+        "observed_response": 298819,
+        "source_record_denominator": 308154,
+        "valid_answer": 277582
+      },
+      "per_field_denominators_all_7337": true,
+      "per_field_identity_all_conserved": true,
+      "status": "PASS",
+      "total_code99": 3830
+    },
+    {
+      "candidate_unique_person_markers": [],
+      "command": "record-scope uniqueness check",
+      "deduplication_performed": false,
+      "field_response_identity": "42 * 7337 = 308154",
+      "field_response_records_total": 308154,
+      "status": "PASS",
+      "unique_people_claimed": false,
+      "unique_people_count": null,
+      "unit": "field_response_observations"
+    },
+    {
+      "accepted_routing_binding": false,
+      "command": "routing preservation",
+      "eligibility_denominator_binding": false,
+      "routing_corrected": false,
+      "selected_exact_skip_rules": 0,
+      "selected_risk_set_unresolved": 42,
+      "selected_routing_unknown": 42,
+      "status": "PASS"
+    }
+  ],
+  "review_start_head": "ad205744c288acc8b4c0dadb1fb4607c38c74fd0",
+  "schema": "PYAT_SRC04_CERTIFIED_REFUSAL_RECHECK_TEST_RESULTS@1.0.0",
+  "source_execution": false,
+  "sourcefree": true,
+  "status": "PASS_SCOPED__28_CERTIFIED_CORRECTED__14_HELD_UNCHANGED__PER_FIELD_DENOMINATORS_CONSERVED__2185_FIELD_RESPONSES__Q101_EXACT__ROUTING_UNKNOWN",
+  "verdict": "PASS_SCOPED"
+}
