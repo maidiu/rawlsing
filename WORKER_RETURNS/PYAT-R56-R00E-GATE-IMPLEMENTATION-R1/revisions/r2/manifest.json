@@ -1,41 +1,17 @@
 {
-  "branch": "agent/rabochii-pyat-r56-r00e-generic-claim-gate-r1",
+  "branch": "agent/pyat-r00-custody-repair-20261103-r1",
   "excluded_self": [
-    "manifest.json",
+    "evidence/SHA256SUMS.txt",
+    "evidence/manifest_supersession.json",
     "evidence/normalized_manifest.json",
-    "evidence/SHA256SUMS.txt"
+    "manifest.json"
   ],
-  "file_count": 27,
+  "file_count": 26,
   "files": [
     {
       "bytes": 34752,
       "path": "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
       "sha256": "6352975135b99f9135e6ad333c571d6c09e17823a3e4bfc2d0806d1fd935ce4f"
-    },
-    {
-      "bytes": 19,
-      "path": "tests/universal_execution_oracle/.gitignore",
-      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
-    },
-    {
-      "bytes": 144,
-      "path": "tests/universal_execution_oracle/conftest.py",
-      "sha256": "171f754db47d7bca021fb33351e081c03a5bcc7751aca5415cf726c53b43c481"
-    },
-    {
-      "bytes": 1460,
-      "path": "tests/universal_execution_oracle/dependency_probe.py",
-      "sha256": "c7d6404ec3804fcb654fc3d484b05662f2319d1a4a9c337c975427e98525f612"
-    },
-    {
-      "bytes": 18233,
-      "path": "tests/universal_execution_oracle/test_r00e_r2_reviewer_regressions.py",
-      "sha256": "677afd5e91cc9930cd937896edaffc495e8f554230465339d1dccd05b383d449"
-    },
-    {
-      "bytes": 9403,
-      "path": "tests/universal_execution_oracle/test_r56_gate.py",
-      "sha256": "c0f20d6fd631efd799197d2756fef5d6fb8352a98b67b3783e2e139f6ffb7fdb"
     },
     {
       "bytes": 7328,
@@ -98,14 +74,9 @@
       "sha256": "ac85131846a96a51749a84f87e1646036c90d8e0660e4b90c1311b36ba142131"
     },
     {
-      "bytes": 628,
-      "path": "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/evidence/manifest_supersession.json",
-      "sha256": "da2d80724048dcad9f4895930972235fd00f70f2430a01617c7bf2ab66bf87eb"
-    },
-    {
       "bytes": 955,
       "path": "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/evidence/passport.json",
-      "sha256": "e1663d7e4c23c32d5b995ce01bdb0cfb55928c875ca527646b2997eef85da076"
+      "sha256": "fac1dc32f5d4e298494a83914391dc5271f21c2f0530ecf95f2da055055ddb8b"
     },
     {
       "bytes": 3154,
@@ -133,18 +104,43 @@
       "sha256": "4d59cf9d0abe3f233bd4a12457fefb777df573ba4625ba4b6ea8e1eac3842f8a"
     },
     {
-      "bytes": 7258,
+      "bytes": 2557,
       "path": "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/tools/collect_manifest.py",
-      "sha256": "5449c56a565e9f142d73fae5f67058326de2b0600dc67629de9462e8159c36a3"
+      "sha256": "9db03726d5596793596c4c639f72e4f1c7df4135bbb5706ff1906aa981b2893a"
     },
     {
       "bytes": 10316,
       "path": "WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/tools/run_replay.py",
       "sha256": "9ce9949d21af9e75686b67fb9f663c903b7bb5ee859f4d89de79cfea1eaece98"
+    },
+    {
+      "bytes": 19,
+      "path": "tests/universal_execution_oracle/.gitignore",
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    {
+      "bytes": 144,
+      "path": "tests/universal_execution_oracle/conftest.py",
+      "sha256": "171f754db47d7bca021fb33351e081c03a5bcc7751aca5415cf726c53b43c481"
+    },
+    {
+      "bytes": 1460,
+      "path": "tests/universal_execution_oracle/dependency_probe.py",
+      "sha256": "c7d6404ec3804fcb654fc3d484b05662f2319d1a4a9c337c975427e98525f612"
+    },
+    {
+      "bytes": 18233,
+      "path": "tests/universal_execution_oracle/test_r00e_r2_reviewer_regressions.py",
+      "sha256": "677afd5e91cc9930cd937896edaffc495e8f554230465339d1dccd05b383d449"
+    },
+    {
+      "bytes": 9403,
+      "path": "tests/universal_execution_oracle/test_r56_gate.py",
+      "sha256": "c0f20d6fd631efd799197d2756fef5d6fb8352a98b67b3783e2e139f6ffb7fdb"
     }
   ],
   "gate_path": "CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py",
-  "note": "Self-excluded manifest; SHA256SUMS separately references this manifest.",
+  "note": "Finalized evidence only; historical passport and execution witnesses preserved. Supersession receipt and normalized manifest covered by repository-root-relative SHA256SUMS.",
   "parent_candidate": "efd12b1d46f1ccf90de14b292f600078f11ec7e0",
   "policy_commit": "6d95a78bf6b7bcf70022e303a151255e65edc38a",
   "policy_root": "CROSS_HQ_CONTROL_ROOM/universal_execution_policy/r56_sourcefree_v1/revisions/r2",
