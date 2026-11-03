@@ -1,7 +1,15 @@
 # PROGRAMMA SOROK
 ## Complete psychological-developmental and human-product science, historical inheritance and source-qualified lived person
 
-### CURRENT W3 MASTER GUIDE — RECONCILED CANDIDATE, READY FOR INDEPENDENT USE TEST
+### CURRENT FINITE GUIDE STATUS — W5 NO-DROP COVERAGE, W4 COLD-USE PASS, OWNER ADOPTION PENDING
+
+**Start with [13 — final guide coverage and HQ handoff](13_GUIDE_COVERAGE_AND_FINAL_HANDOFF_R1.md)** for the exact W3/W4/W5 cut distinctions, non-additive source coverage, remaining *Sorok product* work and one ordinary updating recipe. [12 — W1 atomic input-disposition ledger](12_W1_W2_INPUT_DISPOSITIONS_R1.jsonl) accounts for all 100 W1 A–E source IDs individually as LINKED / UNPLACED / REFERENCE_ONLY with immutable original source refs and guide witnesses. Then use [06 — whole/section guide](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md), existing [07 source locator](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json), [08 seams/dependencies](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json), [09 component/historical parity](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json), [10 source-qualified priority and open limits](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md), [11 readback](11_CROSS_REFERENCE_STRUCTURAL_AND_NAVIGATION_SMOKE_READBACK_R1.json), and the preserved 03–05 user-target/assembly/source guides.
+
+**Verdicts:** W4 independent seven-question source-checked navigation **PASS** at 4436b3870b6ebb409354f5d6704d07fc71a196ec, no corrections; W5 S0–S1 100-row no-drop input conservation **PASS** on its isolated branch. **ADOPTION_READY_CANDIDATE for incumbent HQ, not owner-adopted, native/person/science/human accepted or protected merged.** No sourcefree acceptance transfers to current native importers; all ordinary Sorok build work remains owner-scoped inside the guide. W3's original pre-W4 status and earlier speculative PROGRAMMA machinery below are historical/proposed context, not the current guide-assembly stop gate.
+
+---
+
+### W3 MASTER GUIDE ASSEMBLY SNAPSHOT — original status before W4/W5
 
 **Read [06 — reconciled whole-scope guide](06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md) first.** The W3 source fan-in reconciles the exact W2-A/B/C immutable GitHub returns into the existing records: [07 — 290 exact source locators](07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json) (only selected records semantically read); [08 — 22 requalified seams and 22 claim-scoped AND/OR/reverse prerequisite links](08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json); [09 — existing 144 IDs with 40 historical V3 function parity, 25 producer/reader edges, 15 code assets, S0–S16 and nine unwired source references](09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json); [10 — source-specific owner actions and exact open limits](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md); [11 — 12 static checks and five desk trace examples](11_CROSS_REFERENCE_STRUCTURAL_AND_NAVIGATION_SMOKE_READBACK_R1.json).
 

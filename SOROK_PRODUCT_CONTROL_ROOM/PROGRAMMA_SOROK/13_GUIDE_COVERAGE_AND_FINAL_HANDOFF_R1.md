@@ -1,0 +1,58 @@
+# PROGRAMMA SOROK — W5 input coverage and final HQ handoff (guide only)
+
+**Status: ADOPTION_READY_CANDIDATE for incumbent Sorok HQ review; NOT SELF-ADOPTED.** W4 independent cold-use result remains **W4_GUIDE_NAVIGATION_PASS** (seven of seven source-checked questions PASS; zero required corrections) at W4 head **4436b3870b6ebb409354f5d6704d07fc71a196ec**. W5 makes the finite **W5_NO_DROP_INPUT_COVERAGE** reconciliation at S0–S1 GitHub documentary/JSON-row depth. **Protected-owner adoption: PENDING.** Neither result says Sorok original science, current native runtime, active first consumer, operational safety, human A5 or protected PRE-MAIN is accepted.
+
+**Custody:** W3 guide 9b5de806ced2d57f0b8f1d1487bea157c9853aaf; W4 isolated review 4436b3870b6ebb409354f5d6704d07fc71a196ec (guide files unchanged between those cuts); W5 isolated branch research/programma-sorok-guide-w5-nodrop-final-handoff-20261102-r1, based exactly on W4 SHA. The final pushed W5 head is reported in the worker completion message, not self-embedded in its own immutable commit.
+
+## 1. Finding conservation, not a product completion percentage
+
+The new [12 atomic source-to-guide ledger](12_W1_W2_INPUT_DISPOSITIONS_R1.jsonl) preserves all original W1 IDs, original source_refs/evidence fields and source read depths. Each source row has an exact frozen commit and JSON pointer, a disposition, existing SP / 09 component / 08 seam and D-dependency / 07 asset witnesses as applicable, and an explicit reason. Witness shorthand is exactly: **06** = 06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md (§1 SP directory and cited section); **07** = 07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json; **08** = 08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json; **09** = 09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json. All paths are relative to this PROGRAMMA_SOROK directory. The ledger's underlying citations retain the original source cut, not an imagined W5 reread of local/archive bytes.
+
+| W1 source/grain | Exact source return commit | Input | LINKED | UNPLACED | REFERENCE_ONLY |
+|---|---|---:|---:|---:|---:|
+| A — vision / Astra | e7787d7f22dfcc9dd1ad786d953755b4f4d410c7 | 18 | 16 | 0 | 2 |
+| B — developmental science | 5ab447a447620e65d441d2d2cfd745cb3d354a7c | 21 | 10 | 0 | 11 |
+| C — original / Neo engineering | 12433b89e100d2c4b9b20a94c4ccca7d2af7529a | 18 | 18 | 0 | 0 |
+| D — history / work control, claims[] | 950ace6fe8a63c225134ada0c79e97bb57d296a0 | 26 | 18 | 0 | 8 |
+| E — reference architecture | a64ff782ad2dd8f8f6617564655d09f6c3349ffb | 17 | 8 | 0 | 9 |
+| **Total W1 atomic rows** | Five non-additive source sets | **100** | **70** | **0** | **30** |
+
+**LINKED** means a substantive guide placement and exact witness, not implementation or independent scientific validation. **REFERENCE_ONLY** retains competing academic theories (B02–B12), historic/non-adopted controller/O-LIVE candidates and hazards, dated Library/HQ succession, or unadopted Astra advice with row-specific reasons. This preserves them without manufacturing canonical functions. **UNPLACED = 0 at this source-to-guide grain**: no demonstrated material W1 finding lacking a defensible guide placement or contextual reference. An unbuilt Sorok feature is a work grade within 06/08/09/10, not automatically an unplaced W1 document row.
+
+## 2. W2/W3 reused crosscheck: keep separate grains
+
+| Source family | Frozen input / non-additive count | Existing guide placement and check |
+|---|---|---|
+| W2-A current consumer/code crosswalk | 7a5a77843300e1a59b9a16677f963fb6176b00af; 40 = 25 named/modern edges + 15 code assets | 09 has all 40 original IDs with w3_current_producer_reader. Five producer/reader/status/import/expected fields matched 40/40; actual importer negatives retained. |
+| W2-B historical parity | 8b0edbcc6bc456e1f92ac7bc11faf0e4f903401b; 40 original M mechanisms | 09 M01–M40 all have historical symbols/lines, prior member hashes, present equivalence/none and actual-import limits; 06 §6.3 summarizes without a new ID set. |
+| W2-B separate inherited candidates | Same W2-B; 9 R6 source-present/unwired references and 15 preserved code candidates | All 9 source_reference keys exist in 09.w3_source_present_unwired_references, 07 preserves their blob/path read grades; all 15 code candidates are the same W2-A/09 IDs, **not 15 more unique products**. |
+| W2-C recursive prerequisites | d802989671ed9ddd2886d45c4f8f1d825611ce5a; 22 D-* records | All 22 IDs exist in 08.w3_claim_scoped_dependency_view; each prerequisite, next_leaf and unlocks copied without loss. 22 conjunctive AND groups and 9 explicit OR_CONDITIONAL alternatives. |
+| W3 inherited working spine | 9b5de806ced2d57f0b8f1d1487bea157c9853aaf; 144 original source rows | 09 has 144 distinct IDs, composed of 64 original named requirements, 40 V3 M, 25 source/modern edge rows, 15 code candidates. This includes 17 S0–S16 rows. |
+| W3 Git locator | Same W3; 290 exact source path/blob rows | 07 covers 14 scope families. Read grades: 256 path-and-blob only, 25 direct W3 content, 9 attributed W2-B direct code. 262 entries have UNADJUDICATED semantic_mapping (a different axis from read grade), not 262 proven omitted features. |
+
+**INDEXED_UNMAPPED leaves worth preserving:** 07 GIT-0075/0077/0078 identify Sorok 53/55/56 (W1-A-07 reports the target-meaning correction) but are only path/blob-identified at W3. GIT-0152 is the Q register, and W1D-003/004/005 describe the precise OPEN versus CLOSED_FOR_ALPHA status split; W5 has not reissued docket decisions. GIT-0209 is the non-adopted O-LIVE reference engine with W1-E-03–06 authority/causal-grade hazards. GIT-0245 is historic V3 member/container custody, not direct current archive bytes. These exact source leaves remain discoverable through 12 and their source refs; a future owner should upgrade read depth only if the particular interpretation changes an actual Sorok decision. No branch-wide semantic reread or mainMac trawl is required for guide closure.
+
+## 3. What the guide can answer now
+
+- **Whole scope:** 06 §0/§6.2 and 09 S0–S16 distinguish original product purpose, generated-person A0–A5, privacy, flourishing, user praxis, economics, UX and human evaluation from engineering readiness. The whole psychological generative kernel is unresolved; sourcefree behavior is not human recognition.
+- **Section / historical zoom:** 06 SP-00–SP-140, W3 09 original C/A/N/O/E/M/S families, 40 historical V3 operations with precise prior S2 symbol/member SHA256 and current nearest analog. The V3 ZIP container mismatch does not erase individually byte-matched members attributed by W1-C; no W5 archive-byte test occurred.
+- **Current code / first-consumer seam:** 06 §6.1/§6.4 and 09 w3_current_producer_reader show producer, fields, actual branch-local reader vs merely REQUIRED native reader. PRE-MAIN cut 9809203fd915a84bae056a67210e9213879840db has lowercase m1–m6 bounded structural/guard behavior, not an adopted original V3 M port or native Sorok person. R6 reusable source-present code has no proven current importer.
+- **Dependencies and reverse unlock:** 08 has 22 D-* source-scoped records, owners, AND/conditional-OR, satisfied/held/unknown leaves, next evidence and unlocks; 10 lists the narrow qualified action. Neither a RELATED source reference nor sourcefree author test is a causal MUST edge.
+
+**Identity/grade hygiene checked, no W3/W4 contradiction found:** Sorok C11 world–person weld is distinct from empirical PRE-MAIN pre553 C11 and Pyat N11/N12; original V3 uppercase M01–M40 from Astra gameplay M01–M17 and PRE-MAIN lowercase m1–m6 (also sourcefree M35 from historical V3 M35). The original E01/E02 REQUIRED consumers are not an observed native importer. 08 E021 is GREEN only for exact 7bf2da302996491ddf34b9a039fea47ac982d135 independently accepted JOIN-V sourcefree fork/cold; B3AS 16f15a... has its own scoped accepted schema/readset; old B3 X3 and prior JOIN RED cuts stay historic negatives. RRIF-R2 598d9e9eaba5143950c63317705fd09104fbf463 has 20 author tests, not an independently accepted new root. 08 E008 retains C9/C12 c784... candidate reader-version/root mismatch and owner HELD, not an observed failing production importer. D-C9 requires an actual Rule T determination **or evaluated NO_CHANGE** inside its AND chain; D-A5's early curated seed versus later full fidelity is conditional claim scope, never a waiver of safety/participant proof. No existing 06–11 file needed a corrective patch: **NO_CHANGE_W4_PASS_RETAINED**.
+
+## 4. Narrow open evidence, outside guide assembly
+
+- **Pyat original world/N11–N12 and Sorok C11 receiver:** original source owner supplies exact permitted world product, schema/grant; Sorok owner identifies native receiving importer. 08 D-C0/D-C11 and E001 remain HELD, not secretly promoted by empirical pre553.
+- **CAN008/CAN011/ADP and native person:** competent owners specify positive Rule A/Rule T (or justified NO_CHANGE), actor readset, performed E2 and C4/C8 input; original science is not manufactured by P1/M35 sourcefree tests. 08 D-C4/C8/C9 and 10.
+- **Selected C9/C12 tuple:** only after an owner chooses precise writer/schema/root may an independent reviewer check the unreviewed 598d RRIF-R2 sourcefree candidate, then owner test fault/restore/ACK/external anchor. Scoped JOIN-V acceptance is not transitive. 08 E008/D-C12 and 10.
+- **Actual S5/S13/S14/S15/A5:** flourishing/harm court, non-extractive revenue and actual cost model, operational privacy/abuse controls, and participant protocol/evidence remain separate competent owner work; no guide-created human or native test exists. W4 Q5 and 08 D-S5/D-S13/D-S14/D-A5.
+- **Only conditionally:** if new historical same-contract port/equivalence is claimed, custodian supplies exact V3 member/path/hash bytes and independent qualifying review. No blanket source extraction is dispatched.
+
+There is **no material UNPLACED W1 row** requiring another W1/W2/W3/W4 guide construction wave. The above are ordinary Sorok product/source/science/native/human work **inside** this finite guide, not a reason to keep PROGRAMMA guide assembly open.
+
+## 5. Ordinary HQ update and adoption handoff
+
+After a real Sorok worker or independent reviewer finishes, incumbent HQ can perform **one existing-record update**: (1) verify exact 40-hex source commit, path/blob, symbol/read depth, source owner and real importing reader; (2) update or add the relevant immutable **07** locator without lifting PATH_ONLY beyond the source read; (3) update the existing **09** component/source row and actual first consumer, retaining older aliases and cuts; (4) change only matching **08** seam E-ID and D-ID proof/AND/IF/OR/owner/unlocks; (5) amend only affected **06** whole/section summary and **10** priority/hold; (6) check only touched **11** cross-reference readbacks and directly navigate the cited evidence. W1 IDs remain in **12** for provenance, not as a second tracker. No new daemon, controller, ingestion service or automatic status promotion.
+
+**For incumbent HQ:** receive this isolated W5 branch as an **ADOPTION_READY_CANDIDATE** for the *guide only*, atop independently sampled W4 navigation PASS and finite W1 no-drop accounting. Inspect exact branch head in the pushed return, decide adoption through existing authority, and if accepted maintain 06–13 in the existing PROGRAMMA location. Do not self-adopt, merge protected PRE-MAIN, appoint an original science issuer, or present the unresolved Sorok human/product pipeline as GREEN. **Guide construction stops here unless a particular new source contradiction materially falsifies a tested answer.**
