@@ -1,0 +1,55 @@
+# M3 — high-value branch-only code/reviewer leads, not an adoption order
+
+Baseline [corrected S01–S11 guide](https://github.com/maidiu/rawlsing/blob/378549b450be4825a34d5ec2fa8866877d13f76f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md). This is a code/functional recovery challenge against the existing guide, not a new architecture. The source cuts are immutable, the two protected PRE-MAIN trees distinct, and a reported test or PR state has no original source/science/actor authority.
+
+## 1. R157 configuration-to-C11 / 35-source registry: material implementation capital (S01.2, S01.3, S03.2; GAP-008; UNFOUND-06)
+
+The guide names **119 historical configuration/read-admission paths** but does not give a developer the actual callable bridge. Source at **d81bc2c67baf933461ae6cfca468f24779cc7e44**:
+
+| Inspected source and symbols | Input → actual output | Blob |
+| --- | --- | --- |
+| [build_governed_c11_projection 425; validated release 516; source-backed repository 551](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/source_configuration/factory.py#L425) | Validated SourceConfig, exact physical row/source identity and permitted stream → existing GovernedC11Projection / C11 release or repository, **not** another engine | 3f31f20e70a1ddd7c3880d21ecfaa6870b0c699a |
+| [reader configuration 47; source request 74; permission/decode 115](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/source_configuration/reader.py#L47) | Original binding, host/purpose/use, qualified reader and current decision → transport-only source read request/decoder | 6615f22faf69abf7fac1ec10baa7827c7206d0bc |
+| [build_index 312; SourceConfigLibrary 443](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/source_configuration/library.py#L312) | 35 exact configuration/evidence identities → portable exact-case index, fixture-native typed calls | 45973a88031117ac366d9d60fd3a159633db1e22 |
+| [decode_with_source_read_permission 220](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/rawlsing_next/pre553_source_read_admission.py#L220) | Authenticated current decision + exact request → physical decode/refusal; no right minted | 41e5afbf191f2b3905c9cda85691f6b8b2ac2c28 |
+
+At R157 and **both** protected cuts, the source-backed C11 facade is the same exact blob 8a761119e4a8d68eb291fc4edfadb52e027f8284 and empirical objects a61365b994e5c3c50de0f598fcf40e90abf757b6. **But the whole source_configuration package AND pre553_source_read_admission.py are absent at control 9809203fd915a84bae056a67210e9213879840db and separate semantic cut 1f47063c3205a45888b3c55e81e7485943ed1390.** Thus a single cherry-picked factory will not import or run as-is. Current selected original35 request/consumer not proved.
+
+[P3 author return](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/source_pre553_validation/integration/P3_RETURN.json) reports 65 scoped tests passing. [P5 return](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/source_pre553_validation/integration/P5_RETURN.json) reports 35 indexed/validated and fixture-native consumed sources with 13 focused tests, **P6 distinct review pending**, no original response reads or original U/Epre. [earlier P5 case-path negative](https://github.com/maidiu/rawlsing/blob/d81bc2c67baf933461ae6cfca468f24779cc7e44/source_pre553_validation/integration/P5_CASE_DEFECT_WITNESS.json) found eight case-sensitive path defects SRC27–30; a later same-owner exact-case repair is reported in P5 but not independently P6-adopted. The [RRIF 34-fate terminal](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_THIRTY_FOUR_LINEAGE_TERMINAL_20261101.jsonl) explicitly marks R157 historical recoverable, **no auto reimport**.
+
+**Reuse condition:** a competent original/source-config owner first names an authorized source and a real present C11 consumer, then selects and reviews exact factory+read admission+registry dependencies with 119-path/19-code-path comparison. If no such consumer, preserve the already built code as historical, without rebuilding or reimporting all 13 lane branches.
+
+## 2. Returned F7/P07 pure temporal and exact as-of (S08.1–S08.4; GAP-034–037)
+
+The corrected S08 guide has historic strict F7 and modern guard pointers, but **not** this returned [sourcefree temporal_method_candidate.py](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py) (blob **f93fc79c182b1962dc3b3a25915b8d93afe7e5c7**). It offers:
+
+- TimeExtent (162) / TemporalAnchor (238): exact point/closed-interval geometry and identity.
+- ComparabilityAttestation (305) / profile (363): eight separately tested meaning/surface/scale/routing/population/estimand/measure/weight/time-grain premises.
+- [compare_temporal_method 642; require_comparable 831](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py#L642): typed noncomparability, cross-source relation guard and permitted exact direction/difference, not guessing from equal values.
+- [select_as_of_version 839](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/candidate/temporal_method_candidate.py#L839): as-of version eligibility without latest/default/fuzzy fallback.
+
+The source consumes existing AuthorityRegistry and SourceRelationResolver. It refuses the *unissued* TEMPORAL_COMPARABILITY kind; present TEMPORAL_EVIDENCE alone is not original EE12 issuance. No current pre553_temporal_comparability.py on either protected cut, and no N9 as-of first reader. The [author return](https://github.com/maidiu/rawlsing/blob/f8fe03cc6e6a482f428bed9e03c08e50ce1e6479/WORKER_RETURNS/PYAT-F7-P07-RECOVERY/00_RETURN.md) reports **24/24 candidate sourcefree tests and 2/2 mutation checks**; historical paired HQ235 reported **163/163** at c86ae335eaf70e82b5764c46754b16ca7e1587ce, while intermediate HQ227 had **134/141 and seven real cross-universe REDs** at another cut. These different-version observations do not yield native parity.
+
+**Independent review NOT returned:** [#571](https://github.com/maidiu/rawlsing/issues/571) dispatched a hostile review; its exact remote head 92a86e7f92010efc4b29bbd7dd6829dbba35d9aa is still a commission. Native P07 sealed owner/TCB/refcount faults stay HELD. **Next:** wait for independent reviewer, then only an owner-issued comparability use and selected N8/N9 consumer could justify partial reuse of the pure temporal method.
+
+## 3. HQ297 N9C two-field reader: integration RED is more important than local PASS (S09.2/S09.3; GAP-039/040)
+
+[HQ297 reader source](https://github.com/maidiu/rawlsing/blob/9ab4a0192b7c951bb0b387637e6c74333246766c/rawlsing_next/pre553_hq297_n9c_two_field_reader.py) blob **03eb46efccadd6880cb34b2e2ac609ffc9b16c59**, with TestOnlyRegistry (104), read_historical_test_only (136) and fixture_invalidation (195), implements useful publication-aware as-of and nonpooling refusal over two test-only fields. No current control or semantic PRE-MAIN copy and no production N9 importer.
+
+The independently returned [RRIF D5 hostile comparison](https://github.com/maidiu/rawlsing/blob/7a241a80ec327c9e49b33659fd3630a27aaf4ede/WORKER_RETURNS/PYAT_RRIF_D5_20261031_R1/SIX_LINEAGE_DISPOSITIONS.jsonl) blob **652b16bfd352b9b370b52619cae6b3e26d884642** preserved **seven mandatory REDs** despite 47 local + 11 targeted fixture positives: producer refs begin D2P_TESTONLY_FIELD while the reader expects TESTONLY_FIELD, so producer/reader exact refs have zero intersection. Stale ref, forged issuer, invented subtype, native unit, spoofed publisher and parallel registry failures also remain. D2P2 returned typed HOLD, repair not implemented. No N5/N6/EE13/OC05 grants.
+
+**Smallest authorized repair, if selected:** one producer-owned content-addressed registry; pass exact producer refs, validate subtype/unit/publisher, test one-field change/invalidation and independently flip all seven REDs. Do not represent this fixture reader as an already working N9 consumer.
+
+## Duplicate/negative assets not warranting another commission
+
+| Already identifiable asset | Exact verdict | Reason no new rescue |
+| --- | --- | --- |
+| [K04 materializer](https://github.com/maidiu/rawlsing/blob/895285f1bff8b5d7c37e52e26e3aed7233097839/rawlsing_next/prev3_objective_position_materializer.py) | PR [#367](https://github.com/maidiu/rawlsing/pull/367) **closed unmerged**; [#369](https://github.com/maidiu/rawlsing/pull/369) qualification trigger **closed unmerged** | Already positively located by L3, J04 static interface not N9 first consumer |
+| [F6M R29](https://github.com/maidiu/rawlsing/blob/1f1c72f883d0d7a6d11d7df8bad75c37d06c3ffa/WORKER_RETURNS/PYAT-R29-F6M-NATIVE-AUTHORITY-REPAIR-R1/candidate/rawlsing_next/pre553_heterogeneous_synthesis.py) | Bounded partial-ID sourcefree, S03FO A negative held | S07 already links synthesize, conditional, bounds |
+| [F6P R39](https://github.com/maidiu/rawlsing/blob/016870e86913e6f7a811a51db6aba2d741bcfe58/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py) | Actual F6M-bundle-only sourcefree consumer | Already S07, not N9 |
+| [C5/GT2 Field Forge](https://github.com/maidiu/rawlsing/blob/3f6fc7b7c7ee49dc502537b2b50314eb18159905/WORKER_RETURNS/PYAT_RRIF_D1_20261031_R1/SOURCE_CURRENT_COMPARISONS.md) | One 19,210 context reconstituted; 19,211 mutation refused; zero-argument wrapper not proved | No whole F5/N6 causal authority or importer |
+| [R00E R2](https://github.com/maidiu/rawlsing/blob/d02ef32214c38af59ffb272a29ff4ffd7b30d394/WORKER_RETURNS/PYAT-R56-R00V-INDEPENDENT-NATIVE-REVIEW-R1/revisions/r2/00_RETURN.md) | Gate logic requalified; two stale manifests, two sums paths; **REVISE** | L2 already records versioned hold |
+| [R09 R2](https://github.com/maidiu/rawlsing/blob/25510c8d84f0ae5e452b301b017bdedf46f40b5c/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/00_RETURN.md) | Child-authored observation/HMAC custody D1/D4; **REVISE / DEPLOYMENT_HOLD** | Keep security boundary RED |
+| [RRIF #602](https://github.com/maidiu/rawlsing/pull/602) and [#605](https://github.com/maidiu/rawlsing/pull/605) | **Both merged** selective sourcefree decoder and B5/M2 fixes at PRE-MAIN | Accepted at stated local scope, G01/FIABC historic REDs retained; no remerge |
+
+**Proposed receiver behavior:** add *two* missing candidate source families and *one* exact negative-review pointer into the existing 51-child guide, preserving 82 edge conditions and 49 GAP IDs. New underlying scientific/product capability issued by this investigation: **zero**. Seven other rows are **duplicate-reference confirmations**, not seven additional features.
