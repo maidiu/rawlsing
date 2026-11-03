@@ -205,3 +205,7 @@ No unique historical function row here; related functions appear in the child an
 
 **Update rule:** promote no `HELD_OWNER_OR_SCIENCE`, `INCOMPATIBLE`, `MISSING_PRODUCER_OR_READER`, `PARTIAL` or `SOURCEFREE_SCOPED_ONLY` status without exact current source cut, same-scope issuer, output artifact, importer, fresh receipt and qualified independent decision. `UNKNOWN` is legitimate until that witness exists.
 **Read next:** [S01](01_SOURCE_GOVERNANCE.md) → [S02](02_U_EPRE_WORKLOAD.md) → [S03](03_ROUTE_B_C11.md) → [S04](04_F1_F4_EMPIRICAL.md); [whole guide](../README.md); [original G2 edges](../PLANNED_INTERFACES.jsonl); [G3-B dependency and reverse unlocks](../G3_CANDIDATES/SEAMS_MATURITY/RECURSIVE_PREREQUISITES.md); [all 49 gaps](../G3_CANDIDATES/SEAMS_MATURITY/NEXT_REAL_PYAT_WORK.md).
+
+## HQ 2026-11-03 — R00 custody packaging candidate
+
+Exact branch `agent/pyat-r00-custody-repair-20261103-r1` at `4646e2944c` corrects only the R00 packaging defects preserved in independent review `d02ef32214c38af59ffb272a29ff4ffd7b30d394`. Finalized retained receipts are collected before manifest/sums; the manifest excludes its supersession back-reference, which outer root-relative checksums cover. HQ verifies26manifestentries/29checksums and byte-identical regeneration. Historical passport/proof witnesses, gate and tests unchanged. No new gate behavior, original measurement, R09 trust or production grant. Independent bounded custody review is running; no acceptance yet.

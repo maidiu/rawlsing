@@ -439,3 +439,8 @@ Exact branch evidence `07fae0998af11c910589627438a5342ef9c727e4` preserves an ex
 ## HQ 2026-11-03 — local evidence-runner D7 candidate
 
 `da101f1a7` on `agent/pyat-r09-expectation-repair-20261103-r1` repairs only the authentic-observation/nonserializable-expectation TypeError, returning `EXPECTED_RESULT_NOT_SERIALIZABLE`. Original RED and 15 author PASS receipts retained under `WORKER_RETURNS/PYAT-R09-D7-REPAIR-20261103`. This affects a local evidence helper; no source-semantic or original-data grant. D1/D4 child result/loaded-byte forgery, external root and host isolation remain unresolved; deployment stays HOLD. Candidate is unmerged, without fresh independent acceptance. It neither closes scientific custody nor the source-to-V3 evidence chain.
+
+
+## HQ 2026-11-03 — R00 custody packaging candidate
+
+Exact branch `agent/pyat-r00-custody-repair-20261103-r1` at `4646e2944c` corrects only the R00 packaging defects preserved in independent review `d02ef32214c38af59ffb272a29ff4ffd7b30d394`. Finalized retained receipts are collected before manifest/sums; the manifest excludes its supersession back-reference, which outer root-relative checksums cover. HQ verifies26manifestentries/29checksums and byte-identical regeneration. Historical passport/proof witnesses, gate and tests unchanged. No new gate behavior, original measurement, R09 trust or production grant. Independent bounded custody review is running; no acceptance yet.
