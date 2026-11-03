@@ -2,10 +2,10 @@
 
 ## Exact source/C11 lineage
 
-- Synthetic source SHA-256: `5920c8b4c91290907c70a9405af83c75edd460cc4eab42e93a2981b4a70f9330`
+- Synthetic source SHA-256: `443ebf5c74ad119fed2f79e148146e8772ad6f12317dcfcfcbe014136bf27eb4`
 - Source rows: 12; physical columns: 71 (70 P1 item codes + FORM)
 - Actual C11 logical release: `R56-SYNTHETIC-RELEASE`
-- Release ref: `f9e01a67e0424af6641c4fa955f7dd1babcae401161b49cefec6f7e3f1fe7026`
+- Release ref: `383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1`
 - Release public objects: 1,700; internal records: 82
 - Built with existing `build_source_backed_c11_repository` from the synthetic source and projection.
 

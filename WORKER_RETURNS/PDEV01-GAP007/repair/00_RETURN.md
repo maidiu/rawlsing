@@ -9,8 +9,8 @@
 
 The demonstrated release gap is repaired at the sourcefree receiver edge without production edits.
 
-- Actual synthetic source: 12 rows, 71 columns, source SHA `5920c8b4c91290907c70a9405af83c75edd460cc4eab42e93a2981b4a70f9330`.
-- Actual C11 release ref: `f9e01a67e0424af6641c4fa955f7dd1babcae401161b49cefec6f7e3f1fe7026` (`R56-SYNTHETIC-RELEASE`).
+- Actual synthetic source: 12 rows, 71 columns, source SHA `443ebf5c74ad119fed2f79e148146e8772ad6f12317dcfcfcbe014136bf27eb4`.
+- Actual C11 release ref: `383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1` (`R56-SYNTHETIC-RELEASE`).
 - Exact P1 plan operation identity preserved: 840 operations; original plan ref `e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea`.
 - 210 P1 DISTRIBUTION units bound one-to-one to 210 current I03 queries/predicates and 210 Batch units.
 - Actual Batch execution: 210/210 COMPLETED; 210 result refs; 210 `SUPPORTED` synthetic facts.
