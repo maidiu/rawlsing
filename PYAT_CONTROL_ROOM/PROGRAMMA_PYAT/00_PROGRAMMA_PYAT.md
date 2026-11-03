@@ -1,4 +1,9 @@
 # PROGRAMMA PYAT
+
+### PENDING DIRECT HQ WRITE-THROUGH — CURRENT-STATE OPERATING ENTRY (2026-11-03)
+
+See the [shared proposed one-page operating spine](../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_HQ_OPERATING_SPINE_LIVE_UPDATE_AND_CONSOLIDATION_CANDIDATE_R1.md). The **incumbent Pyat HQ**, not an invented receiving HQ, is the continuing editor accountable for making each material source/code/reviewer/actual first-consumer/rights transition change **the affected current PROGRAMMA components, seams, dependencies, gaps and next actionable work**, through the existing qualified Git owner/CAS process. Preserve historical source cuts and reviewer RED, show `PENDING_GUIDE_INTEGRATION` when a real patch has not reached this guide's selected current branch, and crosslink HQ current-progress/checkpoint to the actual published guide cut. Sourcefree advancement is not original35 native N11/N12, and reference completion is not machine completion. This wording is **proposed on an isolated documentation branch**, not an adopted new governance grant or a replacement of the Pyat original-source/ASTRA foundation.
+
 ## Complete historical inheritance, source-native empirical world construction, recursively managed whole-machine completion
 
 **Full name:** **Programma Pyat — Source → Objective World → Selected Possibility**.
