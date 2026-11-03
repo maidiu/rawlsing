@@ -1,5 +1,18 @@
 # ROADMAP:S04 — Measured F1–F4: distributions, conditionals, recursive alternatives and same-person configurations
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S04.1–S04.5; GAP-016–020.** L3 directly locates original [V548 build_node_rows:355](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_recursive_breakage_tree_nodes_v548.py#L355) (blob 1fc72071...) and [V549 summarize_branch:560](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/build_branch_co_signature_summary_v549.py#L560) (blob eb143f...) under **ddm_build_copy**, not old ddm_build. V548 weighted_n=float(total_n) is **not** survey design weighting; V550 descendant is not parity by name. Historical G4 GAP-ADD-A01 source-file unknown is now superseded for *code location only*, not original output/receipt.
+
+L1 E41 [run_at11_recursive](https://github.com/maidiu/rawlsing/blob/6e123bafe749d6997c764ae117fb5e68e0139ed7/WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_tranche.py#L402) computes **31/31 sourcefree F1–F4** operations, 14 families/18 N10E slices; J42 consumes real E41 computed inputs in unchanged E04 **58-row TEST_ONLY** client. Later R05 [compose_positioned_subject_possibility](https://github.com/maidiu/rawlsing/blob/bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0/rawlsing_next/pre553_learned_world_composition.py#L1748) actually consumes bounded joint/recursive evidence, R05V-R8 local reviewer acceptance; R08V-R8 retains UNKNOWN for cache-pin mismatch. Do not call arity-2 sourcefree facts the original respondent k-way F4 cloud, source-native risk sets or F1–F4 whole estate.
+
+**Next owner:** eligible original source/item/denominator, scientific conditional/joint comparability and first native consumer; V548/V549 derived-output provenance **only if** original owner requires it for parity.
+
+---
+
+
 **G4-P2 current developer view (GitHub S1, 2026-11-02):** This section distinguishes proven *sourcefree* code paths, historic richer-but-unadopted functions and **unproved original35 native scientific/first-reader completion**. No new tests, source issuance or scientific acceptance. The original G2 specification and source ledger are retained below.
 
 **Navigate:** [F1–F4 function status](#s04-five-required-functions-and-real-receivers) · [producer/consumer contract](#s04-current-producerconsumer-contract) · [historic preservation](#s04-v550v550j-functional-preservation-and-version-conflicts) · [development gaps](#s04-smallest-unfinished-work-and-unlocking) · [inherited G2](#inherited-g2-draft-evidence-retained). Neighbors: [source/grammar](02_U_EPRE_WORKLOAD.md) → [C11/I03/I05/Batch](03_ROUTE_B_C11.md) → [learned](05_LEARNED_LIFECYCLE.md), [Field Forge](06_FIELD_FORGE_F5.md), [N10E/F8](10_N10_POSSIBILITY_F8.md).
