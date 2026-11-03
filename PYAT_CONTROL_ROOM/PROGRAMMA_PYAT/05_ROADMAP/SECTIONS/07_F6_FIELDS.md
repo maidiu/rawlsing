@@ -1,5 +1,14 @@
 # ROADMAP:S07 — F6 lawful multi-field, independent-survey composition
 
+## Receiving R1 — P08/P12/P13 cross-survey and conditional structural use
+
+**Receiving R1 scope:** GitHub S0–S1 code/source reading and documentary guide repair only; no S2/S3, original35 source/actor grants, independent scientific acceptance, or mutation of frozen 82 G4 seam states / 49 gap IDs. [Full per-function keyed receiving records](../RECEIVING_SOURCE_TO_ACTOR_20261103_R1.jsonl); cross-program ownership remains joint-comparative, not transferred.
+
+Actual F6 source-indexed composition, target coverage/uncovered mass and uncertainty is distinct from a selected structural Field Forge output and from the guarded F6M/F6P **sourcefree** candidates. There is **no identified general current F6 composer with a source-qualified N9 first reader** at these inspected cuts. Multiple independent surveys must not be joined as if they contain the same respondents; a conditional effect is not an actor orientation. Test one lawful nonpooled target with distinct source roots and an actual current-as-of N9 reader; refusal is allowed. Reuse historical F6M partial bounds and F6P refusal only at their own sourcefree authority, never convert covered-only mass into total-population probability.
+
+---
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).

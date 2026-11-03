@@ -1,5 +1,18 @@
 # ROADMAP:S09 — N9 current, historical and as-of objective-world serving
 
+## Receiving R1 — P09/P10/P10a/P11: resolved applicability versus generated-position echo
+
+**Receiving R1 scope:** GitHub S0–S1 code/source reading and documentary guide repair only; no S2/S3, original35 source/actor grants, independent scientific acceptance, or mutation of frozen 82 G4 seam states / 49 gap IDs. [Full per-function keyed receiving records](../RECEIVING_SOURCE_TO_ACTOR_20261103_R1.jsonl); cross-program ownership remains joint-comparative, not transferred.
+
+**Verified static contrast.** In [M4 `resolve_v558` L1175–1284](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/rawlsing_next/m4_v557_v558_publication_repository.py#L1175), `query.generated_binding_refs` are validated in query hash and repeated in replay/receipt; candidate selection loops `for item in query.items` at L1201, matching immutable resolution key and use/closure permissions, with no visible generated-binding applicability predicate. **Static code defect candidate only**: query identity can vary without source selection changing. M5 [`materialize_resolved_structural_context`](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/rawlsing_next/m5_runtime_rsc_peer_prior.py#L977) inherits resolved context; it explicitly does not mint actor state.
+
+**Historical architecture already exists.** [CAN-006 `V3_GENERATED_POSITION_BINDING@1.0.0`](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W2_AUTHORITY_CONTRACT_COMPLETION/CAN_006_GENERATED_POSITION_BINDING/AUTHORITY.md#L19) requires Phase A immutable repository → V3-owned exact position fact → Phase B same repository, CAN-001 applicability selection, valid-empty, exact binding echo. [SI-R05 hostile seam ruling](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/seam_integrity/SI_R05_V558_V3/RESULT.md#L13) finds architecture sufficient with H1 dereferenceable V556 F2 participant/prerequisite topology, H2 dual refresh (world scheduled boundary / V3 generated fact changes), H3 caller-owned generated binding echo; ten hostile seam tests require current-code comparison. **Do not demand redesign before field-level producer/consumer and scientific-owner check.**
+
+**First actual consumer:** M5 reads M4 at local structural receipt scope; current native Phase-A→generated-position→Phase-B actor importer **NONE verified**. **Next lawful action:** compare current M4+M5 against CAN-001/005/006/007 and SI-R05 H1–H3, then one same-repository, different authorized binding-set test with changed selected applicability/valid-empty, two refresh channels and exact echo; failed selection or actor-fact promotion returns REVISE. V558 context ≠ BackboneState / CAN-011 practice, M6 refusal and redrive invalidation ≠ positive psychology. No fixed strata or instant conversion of field to psychological trait.
+
+---
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).

@@ -1,5 +1,17 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
+## Receiving R1 — P01/P02/P14: original eligibility, membership, generalization
+
+**Receiving R1 scope:** GitHub S0–S1 code/source reading and documentary guide repair only; no S2/S3, original35 source/actor grants, independent scientific acceptance, or mutation of frozen 82 G4 seam states / 49 gap IDs. [Full per-function keyed receiving records](../RECEIVING_SOURCE_TO_ACTOR_20261103_R1.jsonl); cross-program ownership remains joint-comparative, not transferred.
+
+- **P1 code first:** [`EligibleItem.stratum_refs` at 266](https://github.com/maidiu/rawlsing/blob/d1278613e9e1a5d986ccce15782a697f19cbd722/rawlsing_next/programma_pyat_original35_constructor.py#L266) and [`_operations_for_item` at 745–756](https://github.com/maidiu/rawlsing/blob/d1278613e9e1a5d986ccce15782a697f19cbd722/rawlsing_next/programma_pyat_original35_constructor.py#L745) enumerate **supplied references**, making a heterogeneity operation for each reference/target. No membership/definition producer or survey respondent incidence is visible at this inspected P1 cut. Frozen st01/stxx and 105 expansions therefore show **reference enumeration**, not native stratum membership. Keep RETAIN/COMPARE/retire-legacy conditioned on actual first consumer and owner-approved strata mapping.
+- **R157/R03 distinction:** 18,276 source identities, 18,413 slots, 18,250 joins, 26 unmatched describe preparation; original scientific `U_item/U_unit/U_app/E_pre` issuance remains separate. R03/PR646 sourcefree synthetic compiler→I03/I05→resume→M1/M2/R05→P41 is meaningful first-reader proof **at that scope only**. Original35 U/Epre first downstream native reader = **NONE verified**; owner action: produce actual eligible operation/weight/risk universe, then connect rather than reimplement the lowerer.
+- **S02/W17 P/Q/R historical 20 generic /15 instance-specific:** retain semantic position core separately from occupant-indexed instance and topology. Primary S02/W17 proof requires exact owner confirmation; no automatic shape or hard-coded strata resurrected.
+- **Executable falsifier:** source-granted different member set changes correct native risk/heterogeneity denominator, not merely operation refs; no-drop U/Epre then actually enters I03/I05/Batch. **First failing edge:** source/measurement issuer → real respondent group membership and native eligible-frontier binding.
+
+---
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).

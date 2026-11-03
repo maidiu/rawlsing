@@ -1,5 +1,14 @@
 # ROADMAP:S10 — N10E empirical possibility plus N10W progressive world-conditioned possibility (F8)
 
+## Receiving R1 — P12/S04/S11: real current world AND empirical possibility
+
+**Receiving R1 scope:** GitHub S0–S1 code/source reading and documentary guide repair only; no S2/S3, original35 source/actor grants, independent scientific acceptance, or mutation of frozen 82 G4 seam states / 49 gap IDs. [Full per-function keyed receiving records](../RECEIVING_SOURCE_TO_ACTOR_20261103_R1.jsonl); cross-program ownership remains joint-comparative, not transferred.
+
+N10W is a typed **AND** of selected N9 current/as-of world and measured source-qualified N10E conditional slice under F8 permission, never the OR of two independent fixture positives. Current `run_progressive_chain` uses 58 synthetic rows; R118/R119 and its sourcefree cases remain at exact limited scope. No full-source original native N9 current selection reader or general F6 field composer identified. A real subsequent actor needs separate access/activity/biography: neither a probability slice nor changed position alone determines trust, resistance, expectation, disposition or destiny. Falsifier: independently vary world and computed conditional slice; each causes qualified downstream difference or typed denial, and absence of either fails closed. **First native joint consumer: NONE verified.**
+
+---
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).

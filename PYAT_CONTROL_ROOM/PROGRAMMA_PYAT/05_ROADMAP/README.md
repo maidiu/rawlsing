@@ -1,3 +1,15 @@
+## 2026-11-03 — PYAT × SOROK source-to-actor receiving R1 (bounded overlay)
+
+**Current receiving entry:** [18 source-bounded keyed mechanisms/joins](RECEIVING_SOURCE_TO_ACTOR_20261103_R1.jsonl), covering P01–P14 (including P10a) plus cross-jurisdiction E001/E002 and authority gates. These are additional dated rows that reference `ROADMAP:S02/S04/S06/S07/S09/S10/S11`; they neither renumber the 82 original G4 edges/49 gaps nor change the SAT-R inherited scientific grades.
+
+**Cold readback 1 — generated positions:** [S09](SECTIONS/09_N9_WORLD.md) confirms M4 `ContextQuery.generated_binding_refs` are included in identity/replay yet are not applied as selection predicates in the inspected `resolve_v558` loop. Historical CAN-006 + SI-R05 already settle the Phase-A/Phase-B binding architecture; first lawful next action is an owner-qualified same-immutable-repository changed-binding applicability test and field-by-field current consumer diff, **not** a new ontology/schema.
+
+**Cold readback 2 — Q86:** [S06](SECTIONS/06_FIELD_FORGE_F5.md) retains Q86B→Q86A fixed count/GT12 canary, not a generic Field Forge. First lawful next action is actual source/role-variant F4 + owner-issued F5 admission + permitted general receiver, checked for named literals and circularity. Pending Q86 hostile census is independent and not represented as returned.
+
+**Cold readback 3 — native person:** [S11](SECTIONS/11_N11_N12_GATE.md) cross-references Sorok E001/E002. Native N11/N12→Sorok C0/C11/C4 importer and developmental rule receiver remain **NONE verified**; sourcefree BP2P4J is a separate code/test estate. See P01 for supplied `stratum_refs` vs actual membership and [S10](SECTIONS/10_N10_POSSIBILITY_F8.md) for N9 AND N10E.
+
+---
+
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
 
