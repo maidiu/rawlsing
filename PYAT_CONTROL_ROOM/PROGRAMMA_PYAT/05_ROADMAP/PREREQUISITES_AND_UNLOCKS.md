@@ -172,3 +172,6 @@ User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c98
 
 
 D2P3 author return `cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584`. Author reports seven adapted regressions and 13 total tests passing; exact producer refs resolve in N9C TEST_ONLY reader. Independent replay; then qualify actual versioned N9 and computed N10E together at N10W. Publication custody and issuer rights held.
+
+
+HQ accepted D2P3 at sourcefree producer-to-N9C scope after independent review `830a9656cb65f00337d5bcd0f7373dbef11d50df`. Independent exact snapshot: 13 passed including seven adapted regressions. Producer-owned refs reach N9C readset. N10W requires actual version-selected N9 plus computed N10E. Source science, publication custody and adoption held.
