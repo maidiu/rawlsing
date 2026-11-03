@@ -1,0 +1,48 @@
+{
+  "all_pins_match": true,
+  "authored_label": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
+  "authored_line": 68,
+  "candidate": "aa18b6b8547c954d844bb0dcf94f70e2e14f15b0",
+  "scope_no_rawlsing_next_terms": true,
+  "worlds": {
+    "W1_full_coverage_disjoint": {
+      "bounds": 4,
+      "point": {
+        "formal": "5/8",
+        "informal": "3/8"
+      },
+      "state": "SUPPORTED_SYNTHESIS",
+      "uncovered": "0"
+    },
+    "W2_mixed_eligibility_trap": {
+      "bounds": 4,
+      "point": null,
+      "state": "PARTIAL_IDENTIFICATION",
+      "uncovered": "1/4"
+    },
+    "W3_minority_whole_stratum_absent": {
+      "bounds": 4,
+      "point": null,
+      "state": "PARTIAL_IDENTIFICATION",
+      "uncovered": "1/5"
+    },
+    "W7_source_excluded_all_strata": {
+      "bounds": 4,
+      "point": null,
+      "state": "PARTIAL_IDENTIFICATION",
+      "uncovered": "1/2"
+    }
+  },
+  "wp2_candidate_stage_only": true,
+  "wp2_raw": {
+    "exception_args": [
+      "native_bundle"
+    ],
+    "exception_str": "'native_bundle'",
+    "exception_type": "KeyError",
+    "f6p_supplies_native_bundle": false,
+    "f6p_supplies_native_conditional_consumer": false,
+    "first_missing_field": "native_bundle",
+    "is_key_error_native_bundle": true
+  }
+}

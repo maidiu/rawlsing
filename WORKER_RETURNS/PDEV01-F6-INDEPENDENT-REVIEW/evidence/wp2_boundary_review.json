@@ -1,0 +1,32 @@
+{
+  "authored_diagnostic": {
+    "authored_in_candidate_run_comparison": true,
+    "candidate_line": 68,
+    "classification": "COMPARISON_LOCAL_LABEL_NOT_RECEIVER_TYPED_REFUSAL",
+    "code": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
+    "emitted_by_f6p": false,
+    "emitted_by_wp2": false
+  },
+  "raw_observation": {
+    "exception_args": [
+      "native_bundle"
+    ],
+    "exception_str": "'native_bundle'",
+    "exception_type": "KeyError",
+    "f6p_supplies_native_bundle": false,
+    "f6p_supplies_native_conditional_consumer": false,
+    "first_missing_field": "native_bundle",
+    "is_key_error_native_bundle": true
+  },
+  "read_effect": {
+    "candidate_claim": "NO_NONPARENT_OPTIONS_READ; NO_F6M_E04_JOIN",
+    "classification": "AUTHORED_STRUCTURAL_INFERENCE",
+    "observed": "KeyError raised by applying the pinned WP2 expression to an F6P result; no WP2 product read occurred in this check."
+  },
+  "receiver_pin": {
+    "blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+    "exact_line": " generic=dict(contract='WP2_GENERIC_WORLD_INPUT_UNINSTALLED@1',state='UNINSTALLED_TEST_ONLY_PORT',world_receipt_hash=base['receipt_hash'],nonparent_consumer=base['consumers'][0],f6_sidecars={k:dict(bundle_hash=v['native_bundle']['content_hash'],conditional=v['native_conditional_consumer']) for k,v in f6.items()},join_state='NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN',actor_knowledge_time='NOT_REQUESTED_NO_ACTOR_OWNER',actor_executions=0,model_calls=0,hold=HOLD)",
+    "line": 94,
+    "path": "WORKER_RETURNS/PDEV01-F6-COMPARISON/stage/wp2/wp2.py"
+  }
+}
