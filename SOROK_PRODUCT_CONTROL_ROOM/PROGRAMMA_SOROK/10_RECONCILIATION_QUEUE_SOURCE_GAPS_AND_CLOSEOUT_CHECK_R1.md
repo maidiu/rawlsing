@@ -233,3 +233,7 @@ S11 WP-37 specification returned at faec7ce909c54664e85320534bdf744b9bc47d37. WP
 ### WP-19 runtime return
 
 WP-19 author-tested runtime at 3c4df43f813cd0727feff04f620aa0bbd9a63026. wp19.cli consumes CP-A5 EncounterReader.view/ask and JOIN-E C12 and do_help. Seven author tests and HQ replay (7 passed in 10.10s at the same cut): pinned readers, unperceived event filtering, UNKNOWN and help accept/refuse. Local exit only. World actions, delivery, time advance and human validation remain held or unrun. Next: verify privacy and actual reader behavior at this cut.
+
+### Persona input checkpoint
+
+The [published checkpoint](https://github.com/maidiu/rawlsing/commit/4cfd833c9deb05415e69892723b892af7afdee54) preserves the JOIN-E perception and history input work in `persona/input.py`. HQ ran six focused tests. They cover the input boundary and typed holds. A qualified observation of the exact E1 event and a persona-produced action or omission remain unverified. The checkpoint supplies no new choice rule, and G-O15-VERIFY remains held.
