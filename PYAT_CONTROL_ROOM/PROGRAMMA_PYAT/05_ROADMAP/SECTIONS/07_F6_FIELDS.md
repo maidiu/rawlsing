@@ -1,5 +1,16 @@
 # ROADMAP:S07 — F6 lawful multi-field, independent-survey composition
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S07.1–S07.4; GAP-030–033.** L1 W41 [ObjectiveWorld.read](https://github.com/maidiu/rawlsing/blob/b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2/WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/objective_world.py#L175) returns 84 retained/sourcefree views, seven families × three clocks × four budgets; F43 partial_conditional supplies a bounded multi-field partial relation. Later R06 [select_r05_world_view](https://github.com/maidiu/rawlsing/blob/b2cfe93cee854b7aff2081a7a223ada75295332a/rawlsing_next/pre553_universal_world_binding.py#L849) shows **two same-unit declared synthetic STRUCTURAL fields** changing a real P41 route; mixed units refuse **CROSS_UNIT_LINKED_QUERY_UNAVAILABLE** (line 881). This is first local selected-world multi-field **consumer**, not a source-qualified original35 population/estimand bridge, independent survey no-pool composition or uncovered-mass partial identification.
+
+**Seams:** conditional N5/N6→N7 and N7→N9, S-F6/G1B-S23/S24 retain original native missing proof; older F6M/F6P remain alternative candidates not adopted. **Next owner:** source-indexed populations/estimands, nonpooling/partial-ID and eligible world use under competent F6 science.
+
+---
+
+
 [Roadmap](../README.md) · [S04 empirical](04_F1_F4_EMPIRICAL.md) · [S06 Field Forge](06_FIELD_FORGE_F5.md) · [S08 temporal](08_F7_TEMPORAL.md) · [S09 served world](09_N9_WORLD.md) · [exact planned interfaces](../PLANNED_INTERFACES.jsonl)
 
 **Guide status at the locked cuts: MISSING_PRODUCER_OR_READER for full N7/F6; current relation guards are present, historic partial-ID implementations are preserved but unadopted.** This is development guidance, not a new source/science decision or an acceptance receipt. No local/native tests were run for this page. It retains four G2 child IDs, original ASTRA IF predicates, and the original 892-row asset ledger unchanged.
