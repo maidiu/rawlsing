@@ -556,5 +556,13 @@
     "06_MINIMAL_EXISTING_GUIDE_PATCH_PROPOSALS.md",
     "SOURCE_MANIFEST.json",
     "SESSION_LOCATOR.json"
-  ]
+  ],
+  "verification": {
+    "result": "ALL_59_SOURCE_PATH_COMMIT_AND_BLOB_IDENTITIES_VERIFIED",
+    "count": 59,
+    "method": "For each of 59 manifest references, authenticated GitHub fetch_file at exact ref+path with 1-line content bound to returned git blob sha; compared sha to manifest blob; eight batches (0–7,8–15,16–23,24–31,32–39,40–47,48–55,56–58).",
+    "mismatch_count": 0,
+    "verification_limit": "A matching blob proves source identity/existence, not the full meaning of a claimed consumer or that any S2 test ran; code may have only first lines read.",
+    "current_content_version": "SOURCE_MANIFEST_R1_WITH_FULL_SHA_RECHECK_20261103"
+  }
 }
