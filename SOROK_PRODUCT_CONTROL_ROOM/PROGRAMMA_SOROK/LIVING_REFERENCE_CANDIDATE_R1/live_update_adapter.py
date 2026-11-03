@@ -311,8 +311,23 @@ def project(state: dict) -> dict:
                    any(m["ref"] == ref for m in g["members"])]
         packages = [p for p in idx["packages"] if ref in p.get("affected_targets", [])]
         reverse = sorted({r["target_ref"] for r in idx["relations"] if r.get("required_ref") == ref})
+        related_edges = [
+            {"edge_id": r["edge_id"], "required_ref": ref,
+             "target_ref": r.get("target_ref"),
+             "status": ("REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT"
+                        if not any(d["kind"] == "REVIEW_REVISE" for d in entry)
+                        else "NEGATIVE_AT_EXACT_REVIEW_CUT_KEEP_OTHER_CUTS"),
+             "blocking": r.get("blocks_target", True)}
+            for r in idx["relations"] if r.get("required_ref") == ref
+        ]
+        source_axes = {
+            d["node_id"]: copy.deepcopy(state.get("axes", {}).get(d["node_id"], {}))
+            for d in entry
+        }
         pending.append({
             "ref": ref,
+            "current_node_axes": source_axes,
+            "affected_typed_edges_not_automatically_promoted": related_edges,
             "receipts": [{"id": d["transition_id"], "kind": d["kind"], "grade": d["grade"],
                           "source_cut": d["subject_sha"], "code_reader": d["code"]["symbol"],
                           "source": d["source"], "owner": d["owner_slot"],
@@ -337,6 +352,9 @@ def project(state: dict) -> dict:
         "active_receipts": len(active), "editorially_suppressed": sorted(excluded),
         "gates": status_by_gate, "by_target": idx["targets"], "pending": pending,
         "native_person_human_claims": "NONE_ISSUED",
+        "pending_qualification": ("NO_NEW_PROGRAMMA_DELTA_INGESTED__HISTORICAL_BASELINE_ONLY"
+                                  if not state.get("programma_deltas") else
+                                  "SOURCE_GRADED_UPDATES__HQ_ADOPTION_PENDING"),
         "readiness_warning": "ELIGIBLE_PREREQUISITES_ONLY IS NOT TARGET_DONE; ALL SAME-TARGET GATES AND OWNER NATIVE HUMAN EVIDENCE STILL REQUIRED",
     }
 
@@ -400,8 +418,10 @@ def query(state: dict, command: str, target: str | None = None) -> dict:
         if target in {"", GUIDE_SHA}:
             recent = events
         else:
-            pos = next((i for i, r in enumerate(events)
-                        if r["transition_id"] == target or r.get("event_id") == target), None)
+            positions = [i for i, r in enumerate(events)
+                         if r["transition_id"] == target or r.get("event_id") == target
+                         or r.get("subject_sha") == target or r.get("source", {}).get("commit") == target]
+            pos = positions[-1] if positions else None
             _must(pos is not None, "UNKNOWN_CHANGE_CUT_OR_EVENT")
             recent = events[pos + 1:]
         return {"since": target or GUIDE_SHA, "count": len(recent), "changes": [
@@ -412,7 +432,10 @@ def query(state: dict, command: str, target: str | None = None) -> dict:
         return {"guide_sha": GUIDE_SHA, "journal_head": state.get("journal_head"),
                 "revision": state.get("revision"), "source_snapshot": state.get("source_snapshot"),
                 "changes": live["changes"], "pending": live["pending"],
-                "adoption": "OWNER_PENDING", "runtime": "NO_DAEMON"}
+                "adoption": "OWNER_PENDING", "runtime": "NO_DAEMON",
+                "pending_qualification": live["pending_qualification"],
+                "changes_since_guide_cut": live["changes"],
+                "not_checked_automatically": "No background fetch, process observation or unseen worker import"}
     if command == "candidate-patch":
         return {"status": "HQ_REVIEW_PATCH_CANDIDATE_NOT_APPLIED", "base_guide_sha": GUIDE_SHA,
                 "patches": [{"guide_ref": r["ref"], "source_return_receipts": r["receipts"],
