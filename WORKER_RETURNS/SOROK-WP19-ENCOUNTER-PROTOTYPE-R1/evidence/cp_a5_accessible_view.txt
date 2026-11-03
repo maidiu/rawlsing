@@ -1,0 +1,28 @@
+Mode: PORTAL
+Clock: 100
+Location: workshop
+- ARRIVAL at 10: The finishing worker is already at the workshop bench.
+- INSPECT at 40: The actor inspects the present material but changes nothing.
+- MOVE at 45: A moves to market.
+- INSPECT at 45: The actor inspects the present material but changes nothing.
+- MOVE at 50: A moves to workshop.
+- INSPECT at 50: The actor inspects the present material but changes nothing.
+- C_ARRIVE at 60: A carrier arrives at the workshop with a separate source.
+- C_TOOL_REQUEST at 60: The carrier asks A to borrow the workshop tool.
+- A4_CUSTODY_DECISION at 62: A retains the workshop tool after cross-context inspection.
+- C_WITHDRAW at 65: The carrier withdraws the request and leaves the workshop.
+- C_LEAVE at 66: The carrier leaves for the market.
+- B_RETURN_WORKSHOP at 68: B returns to the workshop before the next market commission.
+- B_TAKE_TOOL at 70: B independently takes the workshop tool for a market commission.
+- A_REPAIR_BLOCKED at 80: A cannot repair while B's commission holds the tool.
+- B_RETURN_TOOL at 90: B returns the tool to the workshop.
+- REPAIR at 100: A material repair is performed in the workshop.
+Announcement: Mode: portal.
+Announcement: Clock: 100.
+Announcement: Location: workshop.
+Announcement: Visible events: 16.
+Announcement: Unperceived events remain unknown: 4.
+Announcement: Exit is always available.
+Announcement: Return requires an actual meeting or channel; typed hold otherwise.
+Exit: Exit portal
+Return: RETURN_UNSUPPORTED_TYPED_HOLD

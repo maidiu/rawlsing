@@ -1,0 +1,25 @@
+{
+  "note": "R31E selection between two deterministic HELP_ACCEPT templates varies across sessions; both are actual JOIN-E read-side outputs. S11 A2 pins one observed variant; WP-19 accepts either exact variant and does not synthesize one.",
+  "schema": "SOROK_WP19_JOIN_E_ACCEPT_VARIANTS@1",
+  "source_commit": "5e63672543973ce2533129e1ca3224d82af0dffc",
+  "variants": [
+    {
+      "gesture": "A clears a space at the bench.",
+      "surface": [
+        "A material repair is performed in the workshop.",
+        "the repair worker says: \"Put your hand on the near edge. I'll take the slack.\" A clears a space at the bench."
+      ],
+      "template_source": "JOIN_E_R31E_EXPRESSION_ADMISSION@5e6367",
+      "text": "Put your hand on the near edge. I'll take the slack."
+    },
+    {
+      "gesture": "A sets the tool beside your hand.",
+      "surface": [
+        "A material repair is performed in the workshop.",
+        "the repair worker says: \"Hold the near edge. I'll check the seam.\" A sets the tool beside your hand."
+      ],
+      "template_source": "JOIN_E_R31E_EXPRESSION_ADMISSION@5e6367",
+      "text": "Hold the near edge. I'll check the seam."
+    }
+  ]
+}
