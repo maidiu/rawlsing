@@ -1,3 +1,38 @@
+# W8-R FINAL WORK-NOW — ONE CHOSEN OUTCOME, ALL ACTIVE MEMBERS, ACTUAL FIRST READER
+
+**Source pins:** W8-F `097d46c47b6e41ff93a427e54646195892644cde` source-qualified repaired guide; W8-J `b78528a314aa26f6167d34e3e6a8bb045ae6ebdc` (38 conditional/source negative joins, prior W7-I author proximity); W8-N `9b0b5f3aae6cb8fd77d257170c31be77511ca52e` (12 terminal source/owner limits, 16 direct reads, 8 non-gating candidate stages, prior W6-B/D author proximity). W8-R conducts S0–S1 documentary integration; no S2/S3 or native/human execution. For concrete full twelve-case readbacks see [W8-R 03](../../WORKER_RETURNS/PROGRAMMA_SOROK_W8R_FINAL_FANIN_20261103_R1/03_TWELVE_REAL_WORK_NOW_READBACKS.md).
+
+## Exact work selection algorithm (not executable Sorok source)
+
+1. **Input:** named terminal `component@phase`, product claim, native/sourcefree/curated/human grade, actor/world/reader version and selected mode. Return distinct `KNOW → SPECIFY → BUILD → INTEGRATE → VERIFY → ACCEPT` assessment; `KNOW` cannot silently satisfy later phases.
+2. Collect **every** `14.record_type=GATE` whose exact `target_ref` matches and whose claim is applicable. For every `ALL_OF` require every member at its *exact* `required_scope`; where `ANY_OF` is selected require at least one actually issued/tested matching member, not an unspecified mode. An `IF` must have a declared **true predicate** to apply; an unselected/unknown IF is `MODE_UNSELECTED`, not a vacuous PASS. If a rule is mandatory by the selected claim, failing to choose a mode is HOLD. An owner/source/permission/refusal member may not be discharged by sourcefree grade.
+3. Inspect the matching `15.VERSIONED_SEAM` for producer symbol/blob, typed input/output/schema/clock/actor/root, **actual first importer**, owner, independent exact-cut negative/review and `w8r_source_qualified_disposition`. The 38 W6-C/W6-B joins have **zero full equivalences**. Subset evidence is useful only at that member/cut. A later F2 receiving implementation and old 7bf accepted fork are separate roots; RRIF-R2 598d material RED and c784 source mismatches persist.
+4. Choose **one smallest lawful now-action** with real owner and current first code reader. Work may be READY to *SPECIFY* while its proposed integration, execution, issuance or human ACCEPT is held. Require real source/owner receipts for native, legal/operational or human claims; never multiply graph edges into inferred effort, costs or completion dates.
+5. **Reverse unlock** after one hypothetical new receipt: change only the exact leaf at exact version/claim; reevaluate *all* active same-target gates, including independent alternative blockers. Output a newly runnable next **work action** only where all other prerequisites are qualified; no automatic acceptance of the target result.
+
+## Twelve direct work-now entrances (detailed source/owner/reader/parallel/hold in W8-R 03)
+
+| Chosen outcome | Best now-action at permitted grade | Unmet later/member condition |
+|---|---|---|
+| `C12@INTEGRATE[NATIVE]` | C11 receive-only world/rights specification and joint C9/C12/C10 tuple; parallel sourcefree B operation severance | N11/N12 grant; issued Rule A/T or evaluated O07; actual later E2; selected-root reader+anchor, C10/clock |
+| `C9R B aid/refusal→A→E2[SOURCEFREE]` | Reuse M35/BP2/P1/C9RI; freeze A pre-state, vary performed B quantity/operation **before** C8, trace E1→C9→later E2 | No native ADP access, source owner and new selected-cut causal field test receipt |
+| `C9/C12 RRIF new chosen tuple` | `WP-01` existing compatibility matrix; `WP-06` selected joint version/actor_meta/root/ACK/mirror/signer contract | 598d T1/M1/C1/D1 RED; c784 actor_meta/legacy root; F2 partial and 7bf scope distinct |
+| `CAN011 acquired` or `NO_CHANGE` | Original issuer adjudicates H0 versus new competence, teacher/tool/opportunity rival, test A and later independent E2 | Missing O05 rule never equals evaluated O07; sourcefree NO_CHANGE not original issuance |
+| `A5@ACCEPT[HUMAN]` | Specify Gate0–3 formative mechanism tests and generated Gate4 protocol; independent S14/S5/S15 owner work | Gate4 actual generated substitution, operated controls, consenting real Gate5 people and review |
+| `S14@VERIFY` | Per-right export/delete/consent/abuse and branch-root leak protocol; `W8N-RQ-03` source | Q-PRIV specification not operated deletion/rights grant/independent audit |
+| `S8@VERIFY` | Bind D002 SCE-034 ambiguity and SCE-047 delegated action to actual code input/output negative fixtures | Original D002 50 cases are unexecuted designs; no generated actor native event or human assessment |
+| `S9@VERIFY` | Separate objective/actor testimony, observer, user inference and limited ATTEND first reader tests, `W8N-RQ-05` | Positive M6 expression plan owner/actual selected reader and no fake private omniscience |
+| `S10@SPECIFY` | **READY NOW** memory architecture for actor/world readset, root/branch, exposure, retention, replay, source custody | E021 old 7bf join **not** an S10 SPECIFY prerequisite; versioned implementation still held |
+| `S5@SPECIFY` | Court10 plural harm/refusal/neighbor/nonattachment criteria and falsifiers | Competent normative owner/human evidence; no universal moral health scalar |
+| `S13@SPECIFY` | Nonextractive revenue/cost scenario and incentive audit in parallel with science; `W8N-RQ-08` | Measured cost, consent/retention and business feasibility, independent human finding |
+| `M25/M29 historical reuse` | Pin original V3 step-year ordering and render-nonmutation symbols; narrow versioned consumer parity design | Old psychometric science superseded; modern first importer/native acceptance absent |
+
+**Hypothetical reverse check:** suppose only `C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE` obtains a new owner-selected C9 writer/c784 reader compatible actor_meta/schema/root/ACK sourcefree receipt and a new independently accepted exact-cut cold severance review. That changes the chosen `G-E008-JOINT-BUILD` member and may permit *selected-root verification planning*. **It does not pass** `G-C12-NATIVE-INTEGRATE`: independently held `C11@INTEGRATE` original Pyat grant, `C10@INTEGRATE` chronology, `C9@INTEGRATE` original Rule A/T or evaluated O07 and later performed E2, and `C12:EXTERNAL_ANCHOR@VERIFY` remain. If 598d-specific RED was not covered by the new-cut proof it also remains. No owner acceptance, native person or Gate5 is inferred.
+
+**Historical-but-unwired:** W7-C regraded 39 existing packages rather than commissioning 39 builds; W7-S 50 D002 scenarios and D008/D009 source constitutions remain available; W8-N's 48 remaining index-only sources are not a standing retrieval fleet. S13, S14 and human responsibilities advance at their own grades without waiting for C12 native closure. Actual owner authority and time/cost evidence cannot be inferred from document count.
+
+---
+
 # W8-F CURRENT WORK-NOW — CORRECTED READINESS (SUPERSEDES W7-I PRIORITY LABELS BELOW)
 
 **Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
