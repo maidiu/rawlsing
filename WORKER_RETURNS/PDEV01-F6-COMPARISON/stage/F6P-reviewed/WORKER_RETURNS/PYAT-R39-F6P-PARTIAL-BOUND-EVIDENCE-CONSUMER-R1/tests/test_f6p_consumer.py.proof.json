@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER_DEPENDS_ON_ACTUAL_F6M_PRODUCT",
+      "actual_consumer": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence",
+      "claimed_dependency": "the consumer reads candidate.uncovered_target_mass from the actual F6M product and exposes PARTIAL_IDENTIFICATION only while that mass is preserved",
+      "positive_node": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/test_f6p_consumer.py::test_w2_partial_preserves_uncovered_mass",
+      "fault": {
+        "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "old": "\"uncovered_target_mass\": str(uncovered),",
+        "new": "\"uncovered_target_mass\": \"0\","
+      }
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "schema": "F6P_F6M_PARTIAL_BOUND_CONSUMER_RECEIPTS@1",
+  "base": "2e6c189fd54b818556a44419b19691938ea76d5a",
+  "f6c_author_return": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+  "custody": {
+    "F6M_B": {
+      "blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871",
+      "bytes": 25763
+    },
+    "A_corrected": {
+      "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+      "bytes": 22257
+    },
+    "A0_control": {
+      "blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+      "sha256": "68aba5645bf0b1fa9c26f5a546b6df29a70a9c13a499fae7768a03b59e1de2e0",
+      "bytes": 20443
+    },
+    "shared": {
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+    },
+    "oracle_worlds": {
+      "blob": "8beb245a9b6261baac5b73bd7c0354c63b00ceed",
+      "sha256": "927e77e70ae1e26dea3830f00f600a90d95323cf72d71b0d6ed00f4036e27ae9"
+    },
+    "method_C": {
+      "blob": "58ef09ea020fed5b8c9bff1b6fc20271526d0abc",
+      "sha256": "a129a27a49e3f35612669bd6b9bd489a461b257031e8d47ab61349cabcf61bf3"
+    },
+    "frozen_oracle": {
+      "sha256": "ef97a4e9c8187343503a49e214a8208906893185c8eb6df0e57314371bee1b23"
+    }
+  },
+  "consumer_outputs": {
+    "W1_full_coverage_disjoint": {
+      "state": "SUPPORTED_SYNTHESIS",
+      "reasons": [
+        "COMPLETE_MEASURED_TARGET_JOINT"
+      ],
+      "uncovered": "0",
+      "covered": {
+        "secure|formal": "5/16",
+        "secure|informal": "3/16",
+        "insecure|formal": "17/80",
+        "insecure|informal": "23/80"
+      },
+      "supported_point": {
+        "formal": "5/8",
+        "informal": "3/8"
+      },
+      "conditional_state": "SUPPORTED_MODEL",
+      "conditional_reason": null,
+      "exclusions": [],
+      "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "bundle_target_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W2_mixed_eligibility_trap": {
+      "state": "PARTIAL_IDENTIFICATION",
+      "reasons": [
+        "INCOMPLETE_TARGET_COVERAGE"
+      ],
+      "uncovered": "1/4",
+      "covered": {
+        "secure|formal": "1/4",
+        "secure|informal": "1/8",
+        "insecure|formal": "3/16",
+        "insecure|informal": "3/16"
+      },
+      "supported_point": null,
+      "conditional_state": "UNAVAILABLE",
+      "conditional_reason": "NO_COMPLETE_TARGET_JOINT",
+      "exclusions": [
+        {
+          "stratum": "minority",
+          "source_id": "S_A",
+          "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+          "uncovered_target_share": "1/4",
+          "planned_source_share_lost": "1/4"
+        }
+      ],
+      "sampling_status": "UNKNOWN_DESIGN",
+      "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "bundle_target_status": "NO_COMPLETE_TARGET_JOINT",
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W7_source_excluded_all_strata": {
+      "state": "PARTIAL_IDENTIFICATION",
+      "reasons": [
+        "INCOMPLETE_TARGET_COVERAGE"
+      ],
+      "uncovered": "1/2",
+      "covered": {
+        "secure|formal": "3/20",
+        "secure|informal": "1/10",
+        "insecure|formal": "1/8",
+        "insecure|informal": "1/8"
+      },
+      "supported_point": null,
+      "conditional_state": "UNAVAILABLE",
+      "conditional_reason": "NO_COMPLETE_TARGET_JOINT",
+      "exclusions": [
+        {
+          "stratum": "majority",
+          "source_id": "S_A",
+          "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+          "uncovered_target_share": "1/4",
+          "planned_source_share_lost": "1/4"
+        },
+        {
+          "stratum": "minority",
+          "source_id": "S_A",
+          "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+          "uncovered_target_share": "1/4",
+          "planned_source_share_lost": "1/4"
+        }
+      ],
+      "sampling_status": "UNKNOWN_DESIGN",
+      "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "bundle_target_status": "NO_COMPLETE_TARGET_JOINT",
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W3_minority_whole_stratum_absent": {
+      "state": "PARTIAL_IDENTIFICATION",
+      "reasons": [
+        "INCOMPLETE_TARGET_COVERAGE"
+      ],
+      "uncovered": "1/5",
+      "covered": {
+        "secure|formal": "6/25",
+        "secure|informal": "4/25",
+        "insecure|formal": "1/5",
+        "insecure|informal": "1/5"
+      },
+      "supported_point": null,
+      "conditional_state": "UNAVAILABLE",
+      "conditional_reason": "NO_COMPLETE_TARGET_JOINT",
+      "exclusions": [
+        {
+          "stratum": "minority",
+          "source_id": "S_A",
+          "reason": "NO_SOURCE_STRATUM",
+          "uncovered_target_share": "1/5",
+          "planned_source_share_lost": "1/5"
+        },
+        {
+          "stratum": "minority",
+          "source_id": "S_B",
+          "reason": "NO_SOURCE_STRATUM",
+          "uncovered_target_share": "1/5",
+          "planned_source_share_lost": "1/5"
+        }
+      ],
+      "sampling_status": "UNKNOWN_DESIGN",
+      "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "bundle_target_status": "NO_COMPLETE_TARGET_JOINT",
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W4_outcome_leakage": {
+      "state": "SELF_CONDITIONING",
+      "reasons": [
+        "OUTCOME_LEAKAGE_TAUTOLOGY"
+      ],
+      "uncovered": "0",
+      "covered": {
+        "secure|formal": "5/16",
+        "secure|informal": "3/16",
+        "insecure|formal": "17/80",
+        "insecure|informal": "23/80"
+      },
+      "supported_point": null,
+      "conditional_state": "DESCRIPTIVE_SELF_CONDITIONING",
+      "conditional_reason": null,
+      "exclusions": [],
+      "sampling_status": null,
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "bundle_target_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W6_overlap_duplicate_sample": {
+      "state": "INCOMPATIBLE_RESPONDENT",
+      "reasons": [
+        "DUPLICATE_OR_FICTITIOUS_COMMON_RESPONDENTS"
+      ],
+      "uncovered": null,
+      "covered": {},
+      "supported_point": null,
+      "conditional_state": null,
+      "conditional_reason": null,
+      "exclusions": [],
+      "sampling_status": null,
+      "bundle_decision": "SOURCE_INDEXED_BACKOFF",
+      "bundle_target_status": null,
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W8_condition_outside_mapped_support": {
+      "state": "CATEGORY_OUTSIDE_SUPPORT",
+      "reasons": [
+        "CATEGORY_OUTSIDE_MAPPED_SUPPORT"
+      ],
+      "uncovered": "0",
+      "covered": {
+        "secure|formal": "5/16",
+        "secure|informal": "3/16",
+        "insecure|formal": "17/80",
+        "insecure|informal": "23/80"
+      },
+      "supported_point": null,
+      "conditional_state": "UNAVAILABLE",
+      "conditional_reason": "CATEGORY_OUTSIDE_MAPPED_SUPPORT",
+      "exclusions": [],
+      "sampling_status": null,
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "bundle_target_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    }
+  },
+  "A_hostile_products": {
+    "W2_mixed_eligibility_trap": {
+      "state": "FALSE_FULL_COVERAGE",
+      "reasons": [
+        "EXCLUDED_SOURCE_WITH_ZERO_UNCOVERED_MASS"
+      ],
+      "uncovered": "0",
+      "covered": {
+        "secure|formal": "7/20",
+        "secure|informal": "3/20",
+        "insecure|formal": "1/4",
+        "insecure|informal": "1/4"
+      },
+      "supported_point": null,
+      "conditional_state": null,
+      "conditional_reason": null,
+      "exclusions": [
+        {
+          "stratum": "minority",
+          "source_id": "S_A",
+          "reason": "UNKNOWN",
+          "uncovered_target_share": null,
+          "planned_source_share_lost": null
+        }
+      ],
+      "sampling_status": null,
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "bundle_target_status": null,
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W7_source_excluded_all_strata": {
+      "state": "FALSE_FULL_COVERAGE",
+      "reasons": [
+        "EXCLUDED_SOURCE_WITH_ZERO_UNCOVERED_MASS"
+      ],
+      "uncovered": "0",
+      "covered": {
+        "secure|formal": "3/10",
+        "secure|informal": "1/5",
+        "insecure|formal": "1/4",
+        "insecure|informal": "1/4"
+      },
+      "supported_point": null,
+      "conditional_state": null,
+      "conditional_reason": null,
+      "exclusions": [
+        {
+          "stratum": "majority",
+          "source_id": "S_A",
+          "reason": "UNKNOWN",
+          "uncovered_target_share": null,
+          "planned_source_share_lost": null
+        },
+        {
+          "stratum": "minority",
+          "source_id": "S_A",
+          "reason": "UNKNOWN",
+          "uncovered_target_share": null,
+          "planned_source_share_lost": null
+        }
+      ],
+      "sampling_status": null,
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "bundle_target_status": null,
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    },
+    "W3_minority_whole_stratum_absent": {
+      "state": "PRODUCT_INCONSISTENT",
+      "reasons": [
+        "DECISION_OR_TARGET_STATUS_DOES_NOT_MATCH_COVERAGE"
+      ],
+      "uncovered": "1/5",
+      "covered": {
+        "secure|formal": "6/25",
+        "secure|informal": "4/25",
+        "insecure|formal": "1/5",
+        "insecure|informal": "1/5"
+      },
+      "supported_point": null,
+      "conditional_state": null,
+      "conditional_reason": null,
+      "exclusions": [
+        {
+          "stratum": "minority",
+          "source_id": "S_A",
+          "reason": "UNKNOWN",
+          "uncovered_target_share": null,
+          "planned_source_share_lost": null
+        },
+        {
+          "stratum": "minority",
+          "source_id": "S_B",
+          "reason": "UNKNOWN",
+          "uncovered_target_share": null,
+          "planned_source_share_lost": null
+        }
+      ],
+      "sampling_status": null,
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "bundle_target_status": null,
+      "route_probability_absent": true,
+      "selection_weight_absent": true
+    }
+  },
+  "abc": {
+    "W1": {
+      "A_conditional": {
+        "formal": "5/8",
+        "informal": "3/8"
+      },
+      "B_conditional": {
+        "formal": "5/8",
+        "informal": "3/8"
+      },
+      "C_total_unknown_mass": "1"
+    },
+    "W2": {
+      "A_uncovered": "0",
+      "B_uncovered": "1/4",
+      "C_total_unknown_mass": "1"
+    },
+    "W7": {
+      "A_uncovered": "0",
+      "B_uncovered": "1/2",
+      "C_total_unknown_mass": "1"
+    }
+  },
+  "courts": {
+    "native": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "cold_0": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "cold_1": {
+      "tests": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "proof_witness": {
+    "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+    "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+    "claims": [
+      {
+        "claim_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER_DEPENDS_ON_ACTUAL_F6M_PRODUCT",
+        "positive_node": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests/test_f6p_consumer.py::test_w2_partial_preserves_uncovered_mass",
+        "fault_path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "baseline": "PASS",
+        "fault_probe": "TARGET_ASSERTION_FAILED",
+        "grade": "BOUNDED_MUTATION_DETECTED"
+      }
+    ]
+  },
+  "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+  "cost": {
+    "billed_api_cash": "UNKNOWN",
+    "included_quota": "UNKNOWN",
+    "execution_surface": "local warm Git/pytest; no paid API call observed"
+  },
+  "non_grants": [
+    "original-source F6 issuance",
+    "installed N9/OC05 world",
+    "joint structural/empirical route model",
+    "behavioral route probability",
+    "Field Forge semantic authority",
+    "Sorok C0/actor execution",
+    "N11/N12",
+    "V3",
+    "production merge/self-acceptance"
+  ]
+}

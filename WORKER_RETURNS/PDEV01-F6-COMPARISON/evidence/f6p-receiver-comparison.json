@@ -1,0 +1,470 @@
+{
+  "actual_first_consumer": {
+    "does_not_receive": "current WP2/N9 selected-world route input",
+    "file": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "line": 189,
+    "receives": "actual repaired F6M bundle plus request",
+    "symbol": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence"
+  },
+  "conclusion": {
+    "distinct_populations_preserved": true,
+    "first_typed_mismatch": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
+    "no_pooling": true,
+    "partial_bounds_reach_current_wp2_receiver": false,
+    "partial_bounds_reach_f6p_consumer": true,
+    "point_refused_when_uncovered": true,
+    "population_claim": false,
+    "reason": "F6P emits F6P_PARTIAL_BOUND_EVIDENCE; WP2 expects F6M native_bundle + native_conditional_consumer sidecar shape and has no F6P branch. The current F6C receipt records no F6M -> E04 join and NONPARENT_OPTIONS invariance across A/A0/B."
+  },
+  "current_receiver": {
+    "blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+    "commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
+    "grade": "UNINSTALLED_TEST_ONLY_PORT",
+    "join_state": "NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN",
+    "line": 94,
+    "named_receiver": "NONPARENT_OPTIONS generic read-only world input port",
+    "symbol": "wp2.product() f6_products -> generic_read_only_input.f6_sidecars"
+  },
+  "receiver_shape_check": {
+    "code": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
+    "exception": "'native_bundle'",
+    "exception_type": "KeyError",
+    "expected_receiver_fields": [
+      "native_bundle",
+      "native_conditional_consumer"
+    ],
+    "first_missing_field": "native_bundle",
+    "read_effect": "NO_NONPARENT_OPTIONS_READ; NO_F6M_E04_JOIN",
+    "receiver_pin": {
+      "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+      "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
+      "wp2_line": 94
+    },
+    "supplied_f6p_fields": [
+      "bias_sensitivity_bounds",
+      "bounds",
+      "conditional",
+      "consumer_id",
+      "covered_subprobability",
+      "evidence_reasons",
+      "evidence_state",
+      "exclusions",
+      "input_bundle",
+      "lost_planned_source_share",
+      "no_common_respondent_inference",
+      "no_route_probability",
+      "no_selection_weight",
+      "output_hash",
+      "overlap",
+      "real_use_authorized",
+      "request",
+      "sampling",
+      "schema",
+      "scientific_ceiling",
+      "source_product",
+      "supported_point",
+      "transport",
+      "uncertainty",
+      "uncovered_target_mass",
+      "values_read"
+    ],
+    "typed_mismatch": true
+  },
+  "refusals": {
+    "ADMISSION": {
+      "evidence_reasons": [
+        "SELF_DECLARED_MODEL_USE_OR_TRANSPORT_ADMISSION"
+      ],
+      "evidence_state": "PROHIBITED_MODEL_USE",
+      "supported_point": null
+    },
+    "REAL_USE": {
+      "evidence_reasons": [
+        "MODEL_USE_NOT_ADMITTED_BY_EXISTING_OWNERS"
+      ],
+      "evidence_state": "PROHIBITED_MODEL_USE",
+      "supported_point": null
+    },
+    "TRANSPORT_PERMISSION": {
+      "evidence_reasons": [
+        "SELF_DECLARED_MODEL_USE_OR_TRANSPORT_ADMISSION"
+      ],
+      "evidence_state": "PROHIBITED_MODEL_USE",
+      "supported_point": null
+    }
+  },
+  "results": {
+    "W1_full_coverage_disjoint": {
+      "bounds": [
+        {
+          "categories": [
+            "secure",
+            "formal"
+          ],
+          "lower": "9/40",
+          "upper": "2/5"
+        },
+        {
+          "categories": [
+            "secure",
+            "informal"
+          ],
+          "lower": "1/10",
+          "upper": "11/40"
+        },
+        {
+          "categories": [
+            "insecure",
+            "formal"
+          ],
+          "lower": "7/40",
+          "upper": "1/4"
+        },
+        {
+          "categories": [
+            "insecure",
+            "informal"
+          ],
+          "lower": "1/4",
+          "upper": "13/40"
+        }
+      ],
+      "bundle_decision": "SYNTHETIC_CANDIDATE",
+      "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+      "covered_subprobability": {
+        "insecure|formal": "17/80",
+        "insecure|informal": "23/80",
+        "secure|formal": "5/16",
+        "secure|informal": "3/16"
+      },
+      "evidence_reasons": [
+        "COMPLETE_MEASURED_TARGET_JOINT"
+      ],
+      "evidence_state": "SUPPORTED_SYNTHESIS",
+      "exclusions": [],
+      "no_route_probability": true,
+      "no_selection_weight": true,
+      "output_hash": "20f1d417843920e7913149db0cd9083dae9cc1db0d5031393a6bb1c297a915f9",
+      "real_use_authorized": false,
+      "sampling": {
+        "design_known": true,
+        "note": "unknown design/weight is exposed as unknown, never set to 1",
+        "population_estimate_permitted": true,
+        "population_estimate_requested": false,
+        "sampling_status": "EXTERNAL_DESIGN_DIAGONAL_ONLY",
+        "sampling_variance_present": true,
+        "weight_defaulted_to_one": false,
+        "weight_imputation": "NONE"
+      },
+      "source_product": {
+        "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-f6/WORKER_RETURNS/PDEV01-F6-COMPARISON/stage/F6P/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+        "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+      },
+      "supported_point": {
+        "formal": "5/8",
+        "informal": "3/8"
+      },
+      "target_joint_status": "COMPLETE_EXPERIMENTAL_TARGET_JOINT",
+      "transport": {
+        "note": "no owner transport/model-use permission is issued by this consumer",
+        "permitted": false,
+        "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+      },
+      "uncovered_target_mass": "0",
+      "world": "W1_full_coverage_disjoint"
+    },
+    "W2_mixed_eligibility_trap": {
+      "bounds": [
+        {
+          "categories": [
+            "secure",
+            "formal"
+          ],
+          "lower": "1/5",
+          "upper": "11/20"
+        },
+        {
+          "categories": [
+            "secure",
+            "informal"
+          ],
+          "lower": "3/40",
+          "upper": "17/40"
+        },
+        {
+          "categories": [
+            "insecure",
+            "formal"
+          ],
+          "lower": "3/16",
+          "upper": "7/16"
+        },
+        {
+          "categories": [
+            "insecure",
+            "informal"
+          ],
+          "lower": "3/16",
+          "upper": "7/16"
+        }
+      ],
+      "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+      "covered_subprobability": {
+        "insecure|formal": "3/16",
+        "insecure|informal": "3/16",
+        "secure|formal": "1/4",
+        "secure|informal": "1/8"
+      },
+      "evidence_reasons": [
+        "INCOMPLETE_TARGET_COVERAGE"
+      ],
+      "evidence_state": "PARTIAL_IDENTIFICATION",
+      "exclusions": [
+        {
+          "planned_source_share_lost": "1/4",
+          "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+          "source_id": "S_A",
+          "stratum": "minority",
+          "uncovered_target_share": "1/4"
+        }
+      ],
+      "no_route_probability": true,
+      "no_selection_weight": true,
+      "output_hash": "362cd898d9a01831973a2c4463f80185fdb352bb0e7bbdcc63cdca45d89a40c3",
+      "real_use_authorized": false,
+      "sampling": {
+        "design_known": false,
+        "note": "unknown design/weight is exposed as unknown, never set to 1",
+        "population_estimate_permitted": false,
+        "population_estimate_requested": false,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance_present": false,
+        "weight_defaulted_to_one": false,
+        "weight_imputation": "NONE"
+      },
+      "source_product": {
+        "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-f6/WORKER_RETURNS/PDEV01-F6-COMPARISON/stage/F6P/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+        "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+      },
+      "supported_point": null,
+      "target_joint_status": "NO_COMPLETE_TARGET_JOINT",
+      "transport": {
+        "note": "no owner transport/model-use permission is issued by this consumer",
+        "permitted": false,
+        "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+      },
+      "uncovered_target_mass": "1/4",
+      "world": "W2_mixed_eligibility_trap"
+    },
+    "W3_minority_whole_stratum_absent": {
+      "bounds": [
+        {
+          "categories": [
+            "secure",
+            "formal"
+          ],
+          "lower": "4/25",
+          "upper": "13/25"
+        },
+        {
+          "categories": [
+            "secure",
+            "informal"
+          ],
+          "lower": "2/25",
+          "upper": "11/25"
+        },
+        {
+          "categories": [
+            "insecure",
+            "formal"
+          ],
+          "lower": "1/5",
+          "upper": "2/5"
+        },
+        {
+          "categories": [
+            "insecure",
+            "informal"
+          ],
+          "lower": "1/5",
+          "upper": "2/5"
+        }
+      ],
+      "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+      "covered_subprobability": {
+        "insecure|formal": "1/5",
+        "insecure|informal": "1/5",
+        "secure|formal": "6/25",
+        "secure|informal": "4/25"
+      },
+      "evidence_reasons": [
+        "INCOMPLETE_TARGET_COVERAGE"
+      ],
+      "evidence_state": "PARTIAL_IDENTIFICATION",
+      "exclusions": [
+        {
+          "planned_source_share_lost": "1/5",
+          "reason": "NO_SOURCE_STRATUM",
+          "source_id": "S_A",
+          "stratum": "minority",
+          "uncovered_target_share": "1/5"
+        },
+        {
+          "planned_source_share_lost": "1/5",
+          "reason": "NO_SOURCE_STRATUM",
+          "source_id": "S_B",
+          "stratum": "minority",
+          "uncovered_target_share": "1/5"
+        }
+      ],
+      "no_route_probability": true,
+      "no_selection_weight": true,
+      "output_hash": "037f9634c59b771439998f4a20eeb455dab762bc640a29d5f59f4fa8abb5573e",
+      "real_use_authorized": false,
+      "sampling": {
+        "design_known": false,
+        "note": "unknown design/weight is exposed as unknown, never set to 1",
+        "population_estimate_permitted": false,
+        "population_estimate_requested": false,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance_present": false,
+        "weight_defaulted_to_one": false,
+        "weight_imputation": "NONE"
+      },
+      "source_product": {
+        "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-f6/WORKER_RETURNS/PDEV01-F6-COMPARISON/stage/F6P/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+        "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+      },
+      "supported_point": null,
+      "target_joint_status": "NO_COMPLETE_TARGET_JOINT",
+      "transport": {
+        "note": "no owner transport/model-use permission is issued by this consumer",
+        "permitted": false,
+        "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+      },
+      "uncovered_target_mass": "1/5",
+      "world": "W3_minority_whole_stratum_absent"
+    },
+    "W7_source_excluded_all_strata": {
+      "bounds": [
+        {
+          "categories": [
+            "secure",
+            "formal"
+          ],
+          "lower": "3/20",
+          "upper": "13/20"
+        },
+        {
+          "categories": [
+            "secure",
+            "informal"
+          ],
+          "lower": "1/10",
+          "upper": "3/5"
+        },
+        {
+          "categories": [
+            "insecure",
+            "formal"
+          ],
+          "lower": "1/8",
+          "upper": "5/8"
+        },
+        {
+          "categories": [
+            "insecure",
+            "informal"
+          ],
+          "lower": "1/8",
+          "upper": "5/8"
+        }
+      ],
+      "bundle_decision": "PARTIAL_IDENTIFICATION_ONLY",
+      "consumer_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER@1",
+      "covered_subprobability": {
+        "insecure|formal": "1/8",
+        "insecure|informal": "1/8",
+        "secure|formal": "3/20",
+        "secure|informal": "1/10"
+      },
+      "evidence_reasons": [
+        "INCOMPLETE_TARGET_COVERAGE"
+      ],
+      "evidence_state": "PARTIAL_IDENTIFICATION",
+      "exclusions": [
+        {
+          "planned_source_share_lost": "1/4",
+          "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+          "source_id": "S_A",
+          "stratum": "majority",
+          "uncovered_target_share": "1/4"
+        },
+        {
+          "planned_source_share_lost": "1/4",
+          "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+          "source_id": "S_A",
+          "stratum": "minority",
+          "uncovered_target_share": "1/4"
+        }
+      ],
+      "no_route_probability": true,
+      "no_selection_weight": true,
+      "output_hash": "b099bd3040fc8edb65fc246f122ffda92bc326074d686868df83a16e0fa304f9",
+      "real_use_authorized": false,
+      "sampling": {
+        "design_known": false,
+        "note": "unknown design/weight is exposed as unknown, never set to 1",
+        "population_estimate_permitted": false,
+        "population_estimate_requested": false,
+        "sampling_status": "UNKNOWN_DESIGN",
+        "sampling_variance_present": false,
+        "weight_defaulted_to_one": false,
+        "weight_imputation": "NONE"
+      },
+      "source_product": {
+        "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-f6/WORKER_RETURNS/PDEV01-F6-COMPARISON/stage/F6P/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+        "module_git_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+        "module_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871"
+      },
+      "supported_point": null,
+      "target_joint_status": "NO_COMPLETE_TARGET_JOINT",
+      "transport": {
+        "note": "no owner transport/model-use permission is issued by this consumer",
+        "permitted": false,
+        "status": "UNVERIFIED_INTEGRATION_BOUNDARY"
+      },
+      "uncovered_target_mass": "1/2",
+      "world": "W7_source_excluded_all_strata"
+    }
+  },
+  "schema": "PDEV01_F6_RECEIVER_COMPARISON@1.0.0",
+  "severance": {
+    "candidate_removed": true,
+    "evidence_reasons": [
+      "NO_CANDIDATE_JOINT"
+    ],
+    "evidence_state": "UNIDENTIFIED_JOINT",
+    "supported_point": null,
+    "uncovered_target_mass": null
+  },
+  "source_pins": {
+    "f6c_commit": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+    "f6m_A0_blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+    "f6m_candidate_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+    "f6m_corrected_A_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "f6m_repair_review": "9b885d80be83c25295b3b43a5ece705c4e5c2fbb",
+    "f6p_commit": "7d7ed1cb01bfd32383ee487996d2595c666a07b2",
+    "f6p_consumer_blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+    "f6p_independent_review": "2e00c8c9e9f2d5f78e40ebfedc2f4468dd97edec",
+    "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+    "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7"
+  }
+}

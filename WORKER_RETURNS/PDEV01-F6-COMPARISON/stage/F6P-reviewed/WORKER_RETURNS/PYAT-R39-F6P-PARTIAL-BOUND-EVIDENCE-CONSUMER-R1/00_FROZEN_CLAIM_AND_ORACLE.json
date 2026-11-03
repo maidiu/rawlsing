@@ -1,0 +1,152 @@
+{
+  "schema": "F6P_FROZEN_CLAIM_AND_ORACLE@1",
+  "frozen_before_consumer_execution": true,
+  "base": "2e6c189fd54b818556a44419b19691938ea76d5a",
+  "f6c_author_return": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+  "sources": {
+    "F6M_B": {
+      "blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871",
+      "bytes": 25763
+    },
+    "A_corrected": {
+      "commit": "1428c2e92bce1a49efd87378cb23df936d646dc5",
+      "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "sha256": "ef76ee4f48cc74cc38e0dcf55a3190362d4b55975d3a367ddb43fbadd43a9869",
+      "bytes": 22257
+    },
+    "A0_superseded": {
+      "blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+      "role": "HISTORICAL_NEGATIVE_CONTROL_NOT_A"
+    },
+    "shared": {
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6"
+    },
+    "f6c_frozen_oracle": {
+      "sha256": "ef97a4e9c8187343503a49e214a8208906893185c8eb6df0e57314371bee1b23",
+      "bytes": 19143
+    }
+  },
+  "claim": {
+    "claim_id": "F6P_F6M_PARTIAL_BOUND_CONSUMER_DEPENDS_ON_ACTUAL_F6M_PRODUCT",
+    "actual_target_consumer": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence",
+    "claimed_dependency": "the consumer reads candidate.covered_subprobability, candidate.uncovered_target_mass, candidate.support, candidate.uncertainty, decision, target_joint_status and the F6M conditional result from the actual F6M bundle",
+    "positive_node": "tests/test_f6p_consumer.py::test_w2_partial_preserves_uncovered_mass",
+    "fault_path": "native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+    "fault_old": "\"uncovered_target_mass\": str(uncovered),",
+    "fault_new": "\"uncovered_target_mass\": \"0\",",
+    "expected_red": "test_w2_partial_preserves_uncovered_mass fails by assertion when the actual F6M product loses its uncovered mass"
+  },
+  "positive_cases": {
+    "W1_full_coverage_disjoint": {
+      "state": "SUPPORTED_SYNTHESIS",
+      "uncovered": "0",
+      "complete": true,
+      "conditional": {
+        "formal": "5/8",
+        "informal": "3/8"
+      },
+      "supported_point": {
+        "formal": "5/8",
+        "informal": "3/8"
+      }
+    },
+    "W2_mixed_eligibility_trap": {
+      "state": "PARTIAL_IDENTIFICATION",
+      "uncovered": "1/4",
+      "covered": {
+        "secure|formal": "1/4",
+        "secure|informal": "1/8",
+        "insecure|formal": "3/16",
+        "insecure|informal": "3/16"
+      },
+      "supported_point": null,
+      "conditional_state": "UNAVAILABLE",
+      "conditional_reason": "NO_COMPLETE_TARGET_JOINT",
+      "exclusion": {
+        "source_id": "S_A",
+        "stratum": "minority",
+        "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT"
+      }
+    },
+    "W7_source_excluded_all_strata": {
+      "state": "PARTIAL_IDENTIFICATION",
+      "uncovered": "1/2",
+      "covered": {
+        "secure|formal": "3/20",
+        "secure|informal": "1/10",
+        "insecure|formal": "1/8",
+        "insecure|informal": "1/8"
+      },
+      "supported_point": null,
+      "exclusion": {
+        "source_id": "S_A",
+        "reason": "AGGREGATE_SUPPORT_OR_MASS_INSUFFICIENT",
+        "strata": [
+          "majority",
+          "minority"
+        ]
+      }
+    },
+    "W3_minority_whole_stratum_absent": {
+      "state": "PARTIAL_IDENTIFICATION",
+      "uncovered": "1/5",
+      "supported_point": null,
+      "exclusion_reason": "NO_SOURCE_STRATUM"
+    },
+    "W4_outcome_leakage": {
+      "state": "SELF_CONDITIONING",
+      "conditional_state": "DESCRIPTIVE_SELF_CONDITIONING",
+      "supported_point": null
+    },
+    "W6_overlap_duplicate_sample": {
+      "state": "INCOMPATIBLE_RESPONDENT",
+      "candidate_is_none": true,
+      "overlap_reason": "DUPLICATE_SAMPLE"
+    },
+    "W8_condition_outside_mapped_support": {
+      "state": "CATEGORY_OUTSIDE_SUPPORT",
+      "supported_point": null
+    }
+  },
+  "abc": {
+    "W1": {
+      "A": "complete/uncovered 0",
+      "B": "complete/uncovered 0",
+      "C": "total_unknown_mass 1, marginal bounds [0,1]",
+      "invariance": "A and B conditional formal 5/8 informal 3/8"
+    },
+    "W2": {
+      "A": "uncovered 0, tidy point formal 7/10 informal 3/10",
+      "B": "uncovered 1/4, no distribution, partial",
+      "C": "no transport permission: total_unknown_mass 1"
+    },
+    "W7": {
+      "A": "uncovered 0, tidy point formal 3/5 informal 2/5",
+      "B": "uncovered 1/2, no distribution, partial",
+      "C": "no transport permission: total_unknown_mass 1"
+    },
+    "A_product_consumer": "FALSE_FULL_COVERAGE (excluded source present while uncovered is 0)",
+    "B_product_consumer": "PARTIAL_IDENTIFICATION (or SUPPORTED on W1)"
+  },
+  "hostiles": {
+    "false_full_coverage": "FALSE_FULL_COVERAGE",
+    "uncovered_converted_to_zero": "FALSE_FULL_COVERAGE or PRODUCT_INCONSISTENT",
+    "incorrect_denominator": "PRODUCT_INCONSISTENT",
+    "incorrect_stratum": "INCOMPATIBLE_POPULATION_OR_STRATUM",
+    "missing_or_substituted_source": "SOURCE_EXCLUDED or REVOKED_EVIDENCE",
+    "unknown_design_weight": "WEIGHT_OR_DESIGN_UNKNOWN",
+    "incomplete_native_joint_domain": "INCOMPLETE_NATIVE_JOINT_DOMAIN",
+    "positivity_violation": "producer refusal",
+    "outcome_as_own_condition": "SELF_CONDITIONING",
+    "duplicate_or_fictitious_respondents": "INCOMPATIBLE_RESPONDENT",
+    "unsupported_transport": "UNVERIFIED_TRANSPORT or PROHIBITED_MODEL_USE",
+    "minority_pruning": "PARTIAL_IDENTIFICATION with no point",
+    "wrong_clock_source_version": "WRONG_SOURCE_VERSION",
+    "revoked_evidence": "REVOKED_EVIDENCE",
+    "partial_bound_as_point": "supported_point null",
+    "forged_model_use_admission": "PROHIBITED_MODEL_USE or FORGED_ADMISSION"
+  },
+  "scientific_ceiling": "SOURCEFREE_TEST_ONLY_NO_ROUTE_PROBABILITY_NO_SELECTION_WEIGHT_NO_MODEL_USE",
+  "authority": "source-free consumer implementation against accepted F6M/F6C custody; not issuer/HQ/acceptance"
+}

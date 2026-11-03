@@ -1,0 +1,230 @@
+{
+  "author_tests": {
+    "hostile_oracle": "test_f6p_abc_oracle.py (included)",
+    "implementation_7d7": {
+      "seed0": "26 passed",
+      "seed1": "26 passed"
+    },
+    "path": "stage/F6P/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests",
+    "publication_912": {
+      "path": "stage/F6P-reviewed/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests",
+      "seed0": "32 passed",
+      "seed1": "32 passed"
+    },
+    "seed0": "32 passed at publication 912; 26 passed at implementation 7d7",
+    "seed1": "32 passed at publication 912; 26 passed at implementation 7d7"
+  },
+  "comparison_evidence": "evidence/f6p-receiver-comparison.json",
+  "current_receiver": {
+    "blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+    "commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
+    "f6m_native_sidecar_expected_fields": [
+      "native_bundle",
+      "native_conditional_consumer"
+    ],
+    "f6m_to_e04_join": false,
+    "f6p_evidence_fields": [
+      "bias_sensitivity_bounds",
+      "bounds",
+      "conditional",
+      "consumer_id",
+      "covered_subprobability",
+      "evidence_reasons",
+      "evidence_state",
+      "exclusions",
+      "input_bundle",
+      "lost_planned_source_share",
+      "no_common_respondent_inference",
+      "no_route_probability",
+      "no_selection_weight",
+      "output_hash",
+      "overlap",
+      "real_use_authorized",
+      "request",
+      "sampling",
+      "schema",
+      "scientific_ceiling",
+      "source_product",
+      "supported_point",
+      "transport",
+      "uncertainty",
+      "uncovered_target_mass",
+      "values_read"
+    ],
+    "first_typed_mismatch": {
+      "code": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
+      "exception": "'native_bundle'",
+      "exception_type": "KeyError",
+      "expected_receiver_fields": [
+        "native_bundle",
+        "native_conditional_consumer"
+      ],
+      "first_missing_field": "native_bundle",
+      "read_effect": "NO_NONPARENT_OPTIONS_READ; NO_F6M_E04_JOIN",
+      "receiver_pin": {
+        "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+        "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
+        "wp2_line": 94
+      },
+      "supplied_f6p_fields": [
+        "bias_sensitivity_bounds",
+        "bounds",
+        "conditional",
+        "consumer_id",
+        "covered_subprobability",
+        "evidence_reasons",
+        "evidence_state",
+        "exclusions",
+        "input_bundle",
+        "lost_planned_source_share",
+        "no_common_respondent_inference",
+        "no_route_probability",
+        "no_selection_weight",
+        "output_hash",
+        "overlap",
+        "real_use_authorized",
+        "request",
+        "sampling",
+        "schema",
+        "scientific_ceiling",
+        "source_product",
+        "supported_point",
+        "transport",
+        "uncertainty",
+        "uncovered_target_mass",
+        "values_read"
+      ],
+      "typed_mismatch": true
+    },
+    "grade": "UNINSTALLED_TEST_ONLY_PORT",
+    "join_state": "NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN",
+    "line": 94,
+    "n9_first_import": false,
+    "named_receiver": "NONPARENT_OPTIONS generic read-only world input port",
+    "partial_bounds_reach": false,
+    "symbol": "wp2.product() f6_products -> generic_read_only_input.f6_sidecars"
+  },
+  "first_consumer": {
+    "actual_product_consumed": "actual repaired F6M bundle (blob 2df811d7...)",
+    "distinct_populations": true,
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "line": 189,
+    "no_common_respondent_inference": true,
+    "no_pooling": true,
+    "partial_bounds_reach": true,
+    "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/f6p_partial_bound_evidence_consumer.py",
+    "point_refused_when_uncovered": true,
+    "symbol": "f6p_partial_bound_evidence_consumer.consume_f6m_evidence",
+    "uncovered_mass": {
+      "W1_full_coverage_disjoint": "0",
+      "W2_mixed_eligibility_trap": "1/4",
+      "W3_minority_whole_stratum_absent": "1/5",
+      "W7_source_excluded_all_strata": "1/2"
+    }
+  },
+  "five_tests": {
+    "01_history": "pinned F6M/F6P/A/A0 reviews and exact tests",
+    "02_current_requirement": "current F6 gap is guard-only, not a replacement composer",
+    "03_first_consumer": "F6P receives partial bounds; WP2/N9 first typed mismatch",
+    "04_authority": "distinct populations, no pooling, point refusal, uncertainty, TEST_ONLY",
+    "05_comparative": "preserve F6M/F6P as test oracle; no production repair or adoption"
+  },
+  "gap031": {
+    "authority": "SOURCEFREE_TEST_ONLY; no original source, population, target-use or science grant",
+    "current_requirement": "current nonpooled F6 field composer that preserves covered subprobability and uncovered target mass",
+    "current_successor": "pre553_source_relations.py::guard_estimand_composition returns OperationGuardReceipt only; no current field bounds composer",
+    "disposition": "TRUE_CURRENT_GAP",
+    "first_consumer": "F6P consume_f6m_evidence (line 189); no current N7/N9 receiver",
+    "history": "F6M synthesize (2df...) emits covered_subprobability and uncovered_target_mass; F6P consumes it; sourcefree/test-only",
+    "id": "GAP-031",
+    "next_work": "OWNER_DECIDE",
+    "no_build": true,
+    "reason": "The current field composer is absent; F6M/F6P are historical sourcefree evidence and do not supply current source-qualified populations/estimands or a current receiver.",
+    "requirement": "ROADMAP:S07.2; S-F6"
+  },
+  "gap032": {
+    "disposition": "HISTORICAL_REJECTED_PRESERVE",
+    "id": "GAP-032",
+    "next_work": "NO_ACTION",
+    "no_build": true,
+    "non_loss_reuse_candidate": "F6M/F6P only at sourcefree TEST_ONLY oracle scope; no production adoption",
+    "requirement": "ROADMAP:S07.3; G1B-S24",
+    "variants": {
+      "A0": {
+        "blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+        "disposition": "HISTORICAL_REJECTED_PRESERVE",
+        "state": "NEGATIVE_CONTROL_NEVER_USE"
+      },
+      "F6M_B": {
+        "blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+        "review": "PASS_SOURCEFREE_METHOD_GRAIN",
+        "state": "PARTIAL_IDENTIFICATION_ONLY_WHEN_UNCOVERED"
+      },
+      "F6P": {
+        "blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+        "review": "ACCEPT_SOURCEFREE_TEST_ONLY",
+        "state": "TYPED_PARTIAL_EVIDENCE_CONSUMER"
+      },
+      "S03FO_A": {
+        "blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+        "disposition": "HISTORICAL_REJECTED_PRESERVE",
+        "state": "FALSE_FULL_COVERAGE_ON_W2_W7"
+      }
+    }
+  },
+  "independent_reviewer_tests": {
+    "blob": "3b42b05e7d1de6a1046c22e532dc77827cb2f9c6",
+    "path": "stage/reviewer_root/evidence/court_b/test_court_b_f6p_independent.py",
+    "seed0": "8 passed",
+    "seed1": "8 passed",
+    "sha256": "ccefcd47412068ff127fbd2820da2e3986864f381508aa0fdbf4cbaf9691e451"
+  },
+  "limits": [
+    "No original source, population, weight, causal, structural, canonical, N9/N11/N12 or adoption claim.",
+    "F6P and F6M remain SOURCEFREE_TEST_ONLY and are not production engines.",
+    "WP2 is UNINSTALLED_TEST_ONLY_PORT; F6C records NONPARENT_OPTIONS invariance across A/A0/B.",
+    "No F6M->E04 join and no F6P->N9 read.",
+    "This comparison does not issue a new scientific/composition estimand."
+  ],
+  "s_f6": {
+    "authority": "SOURCEFREE_TEST_ONLY; no source, target, transport or N9/N11/N12 grant",
+    "current_status": "MISSING_PRODUCER_OR_READER",
+    "current_successor": "none; current WP2 is an UNINSTALLED_TEST_ONLY_PORT; current N9 candidate has no F6 import",
+    "disposition": "NO_JUSTIFIED_CONSUMER",
+    "first_consumer": "no actual current N9/N7 F6 consumer; F6P is evidence consumer only; NONPARENT_OPTIONS does not move",
+    "id": "S-F6",
+    "next_work": "NO_ACTION",
+    "no_build": true,
+    "reason": "Reviewed partial bounds reach F6P, not the current receiver. No selected N9 scope currently demands F6 and no installed F6M->E04 bridge exists.",
+    "requirement": "N5->N7 selected-use nonpooled common-world structural field relation"
+  },
+  "schema": "PDEV01_F6_RECEIVER_COMPARISON_FACTS@1.0.0",
+  "source_pins": {
+    "f6c": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+    "f6m_A0_blob": "182cc7970d7624f6614015f5a51d0602e1630d52",
+    "f6m_candidate_blob": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+    "f6m_candidate_sha256": "2930b5cd15c899146e9552b2e6b0efa3fc5835e57e58a6c16d756093e21d3871",
+    "f6m_corrected_A_blob": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+    "f6m_repair_review": "9b885d80be83c25295b3b43a5ece705c4e5c2fbb",
+    "f6p_author": "7d7ed1cb01bfd32383ee487996d2595c666a07b2",
+    "f6p_consumer_blob": "8fa992899293f454d7abded36831a4b4a362df8e",
+    "f6p_consumer_sha256": "0bf56dd2f073691575a03f57b02c4a3784400174ace72bddfdfb92b883b82c87",
+    "f6p_publication": "912467aaacb715fd6e80ebc8c2bdd7285c26120b",
+    "f6p_review": "2e00c8c9e9f2d5f78e40ebfedc2f4468dd97edec",
+    "n9_current_candidate": "rawlsing_next/pre553_n9_n10w_progressive_candidate.py",
+    "n9_current_candidate_f6_import": false,
+    "startup_sha": "773bb412a820949f13a7178b6671327cd56a3bf1",
+    "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+    "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
+    "wp2_sha256": "185f4b8ae5b5526fefb25d3cbef609b1b3d155561adf0d73655bb7fc46264015"
+  },
+  "test_logs": {
+    "f6p-author-tests-seed0.log": "87bc219ea97c3de799e434556778fe6bf6a016ff19c241e46e38fbae60ab4e97",
+    "f6p-author-tests-seed1.log": "3fcf49d3872f052b607ddbfc35248db9dfd6da920eec332efe87505d4b17ea25",
+    "f6p-authored-912-tests-seed0.log": "3879a684d10fca688824efcc23fcbe600926631a189fc0114b9a23d6ac446849",
+    "f6p-authored-912-tests-seed1.log": "05b891ad8908b64c84757377b23c982de795317d5b19c0e856ed8aed37e3c8bc",
+    "f6p-reviewer-tests-seed0.log": "7d033b6114e3b7e226dd134ddf87559ce2573e4749f27f5567211d071d888ecc",
+    "f6p-reviewer-tests-seed1.log": "2258da9311f6395f328963456cede3d56523ef15c0585df78fd82e95fa259756",
+    "five_tests.log": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+  }
+}

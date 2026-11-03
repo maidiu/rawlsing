@@ -1,0 +1,40 @@
+{
+  "disposition": {
+    "GAP-031": "TRUE_CURRENT_GAP__OWNER_DECIDE_NO_BUILD",
+    "GAP-032": "HISTORICAL_REJECTED_PRESERVE__NO_ACTION",
+    "S-F6": "NO_JUSTIFIED_CONSUMER__NO_ACTION"
+  },
+  "junit": "WORKER_RETURNS/PDEV01-F6-COMPARISON/logs/five_tests_junit.xml",
+  "junit_sha256": "60be2e0a6988ff1a53a945016ea8da6420e86599ce0f86f2aaccd297235ab174",
+  "log": "WORKER_RETURNS/PDEV01-F6-COMPARISON/logs/five_tests.log",
+  "log_sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d",
+  "schema": "PDEV01_F6_FIVE_HISTORICAL_FUNCTION_TESTS@1.0.0",
+  "status": "PASSED_5_TEST_ONLY",
+  "tests": [
+    {
+      "meaning": "F6M/F6P/F6C pins verified; author implementation 7d7 has 26 tests, publication 912 has 32; independent review has 8.",
+      "result": "passed",
+      "test": "test_01_history_pinned_to_actual_f6m_f6p_reviews"
+    },
+    {
+      "meaning": "Current guard-only successor does not satisfy S07.2; no replacement composer is authorized.",
+      "result": "passed",
+      "test": "test_02_current_requirement_is_composer_gap_not_a_new_build"
+    },
+    {
+      "meaning": "F6P receives partial bounds and uncovered mass; WP2 expects native_bundle/native_conditional_consumer and stops at the first typed mismatch.",
+      "result": "passed",
+      "test": "test_03_first_consumer_actual_f6p_and_wp2_typed_mismatch"
+    },
+    {
+      "meaning": "Partial states retain distinct populations, no pooling, no point for uncovered mass, uncertainty, and TEST_ONLY refusal boundaries.",
+      "result": "passed",
+      "test": "test_04_authority_distinct_populations_no_pooling_point_refusal_and_uncertainty"
+    },
+    {
+      "meaning": "F6M/F6P preserved as a test oracle; S03FO A/A0 rejected; no production repair or adoption.",
+      "result": "passed",
+      "test": "test_05_comparative_disposition_preserve_test_oracle_no_production_repair"
+    }
+  ]
+}

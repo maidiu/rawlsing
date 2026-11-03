@@ -1,0 +1,78 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "local-f6p-shared-store-1",
+  "epoch_id": "2026-10-19T03:01:02Z",
+  "surface": "LOCAL_SHARED_STORE",
+  "session_alias": "deepseek-harness-f6p",
+  "machine_alias": "local-macos-shared-store",
+  "status": "LIVE_VERIFIED",
+  "live_probe": {
+    "observed_at_utc": "2026-10-19T03:01:02Z",
+    "marker_checked": "VERIFIED",
+    "marker_digest": "f6p:2df811d7",
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "git": "2.39.1",
+    "filesystem": "VERIFIED",
+    "connector": "UNKNOWN",
+    "notes": "isolated linked worktree in the existing Rawlsing shared object store; local Python/pytest only"
+  },
+  "branch": "agent/rabochii-pyat-r39-f6p-partial-bound-evidence-consumer-r1",
+  "checkout_sha": "e75541d74d0db0ae2a654edb679a5862521521d2",
+  "shared_store_alias": "rawlsing-shared-store",
+  "worktree_alias": "f6p",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "e75541d74d0db0ae2a654edb679a5862521521d2",
+      "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis.py",
+      "blob_sha1": "2df811d76db258d98d89ffb43c830cb221ff9a7d",
+      "module_alias": "F6M_B",
+      "import_verified": true,
+      "relative_stage_path": "native/rawlsing_next/pre553_heterogeneous_synthesis.py"
+    },
+    {
+      "commit": "e75541d74d0db0ae2a654edb679a5862521521d2",
+      "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_empirical_objects.py",
+      "blob_sha1": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "module_alias": "shared",
+      "import_verified": true,
+      "relative_stage_path": "native/rawlsing_next/pre553_empirical_objects.py"
+    },
+    {
+      "commit": "e75541d74d0db0ae2a654edb679a5862521521d2",
+      "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis_A.py",
+      "blob_sha1": "fc5e37fa5b2f0eb689593b42d95479d1327cb94c",
+      "module_alias": "A_corrected",
+      "import_verified": true,
+      "relative_stage_path": "native/rawlsing_next/pre553_heterogeneous_synthesis_A.py"
+    },
+    {
+      "commit": "e75541d74d0db0ae2a654edb679a5862521521d2",
+      "path": "WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/native/rawlsing_next/pre553_heterogeneous_synthesis_A0.py",
+      "blob_sha1": "182cc7970d7624f6614015f5a51d0602e1630d52",
+      "module_alias": "A0_control",
+      "import_verified": true,
+      "relative_stage_path": "native/rawlsing_next/pre553_heterogeneous_synthesis_A0.py"
+    }
+  ],
+  "assignments_completed": 1,
+  "next_affinity_tags": [
+    "f6p",
+    "f6m-consumer",
+    "source-free"
+  ],
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "original_survey_use": "NOT_GRANTED",
+    "external_model_use": "NOT_GRANTED",
+    "actor_execution": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": "DeepSeek V4.1 Flash (commission)",
+    "incremental_cash_usd": null,
+    "quota_state": "UNKNOWN",
+    "usage_observed": "local Git/pytest only; no paid API call observed",
+    "retry_count": 0
+  }
+}
