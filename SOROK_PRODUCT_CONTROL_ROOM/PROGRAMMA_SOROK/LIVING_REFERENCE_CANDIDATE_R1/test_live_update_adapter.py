@@ -285,3 +285,55 @@ def test_first_entry_without_new_delta_discloses_unprocessed_work(tmp_path):
     assert answer["changes_since_guide_cut"] == 0
     assert answer["pending_qualification"] == "NO_NEW_PROGRAMMA_DELTA_INGESTED__HISTORICAL_BASELINE_ONLY"
     assert answer["adoption"] == "OWNER_PENDING"
+
+
+def test_qualified_join_source_withdrawal_and_restoration_regrades_exact_delta(tmp_path):
+    """The original engine's qualified source hold removes only matching
+    scoped eligibility; it does not erase the historical independent review."""
+    journal, st = state_env(tmp_path)
+    append_fixture(st, packet("join_e_scoped_review.json"))
+    baseline = lr._load_state(st)
+    before = baseline["programma_live"]
+    matched = [(g["gate_id"], m["ref"], m["qualifies_now"])
+               for g in before["gates"].values()
+               for m in g["members"] if m["ref"] == "E021@VERIFY"]
+    # If the frozen guide does not use E021 as a direct gate member, its
+    # exact source receipt is still visible in the changed-ref view.
+    assert any(r["ref"] == "E021@VERIFY" for r in before["pending"])
+    node_id = "JOIN_E_7BF"
+    withdrawal = lr.commit_event(lr._event("EVIDENCE_WITHDRAWAL", {
+        "node_id": node_id, "basis": "QUALIFIED_ABSENCE_VERIFICATION",
+        "authority": "SOROK_HQ", "scope": [node_id],
+        "reason": "TEMPORARY_SOURCEFREE_FALSIFIER_NOT_REAL_WORLD_ABSENCE",
+    }), journal_path=journal, state_path=st)
+    lr.commit_event(lr._event("TRANSITION_REQUEST", {"fixture": {
+        "node_id": node_id, "dimension": "source_recovery",
+        "to": "SOURCE_NOT_FOUND",
+        "evidence": {"kind": "SOURCE_WITHDRAWAL", "basis": "QUALIFIED_ABSENCE_VERIFICATION",
+                     "authority": "SOROK_HQ", "scope": [node_id],
+                     "withdrawal_event_id": withdrawal["event"]["event_id"]},
+    }}), journal_path=journal, state_path=st)
+    held = lr._load_state(st)
+    assert held["axes"][node_id]["source_recovery"] == "SOURCE_NOT_FOUND"
+    assert held["programma_live"]["active_receipts"] == 1
+    assert held["scoped_transition_states"][node_id][ad.JOIN_E_SUBJECT]["E021@VERIFY"]["review"] == (
+        "INDEPENDENT_SCOPED_7BF_REVIEWED_SOURCEFREE_ONLY")
+    for gate in held["programma_live"]["gates"].values():
+        for member in gate["members"]:
+            if member["ref"] == "E021@VERIFY":
+                assert member["qualifies_now"] is False
+    # Requalify the same original source on the original engine's typed
+    # restoration path. A source restore is not a new reviewer verdict.
+    original = packet("join_e_scoped_review.json")["review"]
+    lr.commit_event(lr._event("TRANSITION_REQUEST", {"fixture": {
+        "node_id": node_id, "dimension": "source_recovery",
+        "to": "SOURCE_VERIFIED",
+        "evidence": {"kind": "SOURCE_RECORD", "source": original},
+    }}), journal_path=journal, state_path=st)
+    restored = lr._load_state(st)
+    assert restored["axes"][node_id]["source_recovery"] == "SOURCE_VERIFIED"
+    for gate in restored["programma_live"]["gates"].values():
+        for member in gate["members"]:
+            if member["ref"] == "E021@VERIFY":
+                assert member["qualifies_now"] is matched[[x[0] for x in matched].index(gate["gate_id"])][2]
+    assert lr.rebuild_from_journal(journal, operating=True)["state_digest"] == restored["state_digest"]
