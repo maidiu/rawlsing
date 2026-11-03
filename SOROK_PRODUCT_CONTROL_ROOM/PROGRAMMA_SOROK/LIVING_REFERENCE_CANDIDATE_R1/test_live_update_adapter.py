@@ -196,8 +196,65 @@ def test_existing_p0_p1_withdrawal_engine_is_reused_not_replaced(tmp_path):
     lr.commit_event(lr._event("TRANSITION_REQUEST", {"fixture": fixture}),
                     journal_path=journal, state_path=st)
     state = lr._load_state(st)
-    transition = [h for h in state["history"] if h.get("node_id") == "P1_B_MATERIAL_SOURCE" and
-                  h.get("kind") == "TRANSITION_HOLD"]
-    assert transition
-    assert transition[-1]["status"] != "APPLIED_CANDIDATE_ONLY"
+    assert state["journal_applied"][-1]["status"] == "REFUSED"
+    assert state["axes"]["P1_B_MATERIAL_SOURCE"]["source_recovery"] != "SOURCE_WITHDRAWN"
     assert state["readiness"]["science"] == "HOLD_NOT_ISSUED"
+
+
+def test_original_qualified_withdraw_restore_and_negative_independence(tmp_path):
+    journal, st = state_env(tmp_path)
+    append_fixture(st, packet("join_e_scoped_review.json"))
+    baseline = lr._load_state(st)
+    join_before = [x for x in baseline["programma_live"]["pending"]
+                   if x["ref"] == "E021@VERIFY"][0]
+    node_id = "P1_B_MATERIAL_SOURCE"
+    ref = lr._node_map(baseline)[node_id]["source_refs"][0]
+    source = {"commit": ref["commit"], "path": ref["path"],
+              "blob": ref.get("blob") or ref.get("object_id"), "object_type": "blob"}
+    basis = "QUALIFIED_ABSENCE_VERIFICATION"
+    withdrawal = lr.commit_event(lr._event("EVIDENCE_WITHDRAWAL", {
+        "node_id": node_id, "basis": basis, "authority": "SOROK_HQ",
+        "scope": [node_id], "reason": "sourcefree qualified absence challenge",
+    }), journal_path=journal, state_path=st)
+    lr.commit_event(lr._event("TRANSITION_REQUEST", {"fixture": {
+        "node_id": node_id, "dimension": "source_recovery",
+        "to": "SOURCE_NOT_FOUND",
+        "evidence": {"kind": "SOURCE_WITHDRAWAL", "basis": basis,
+                     "authority": "SOROK_HQ", "scope": [node_id],
+                     "withdrawal_event_id": withdrawal["event"]["event_id"]},
+    }}), journal_path=journal, state_path=st)
+    withdrawn = lr._load_state(st)
+    assert withdrawn["axes"][node_id]["source_recovery"] == "SOURCE_NOT_FOUND"
+    assert withdrawn["programma_live"]["native_person_human_claims"] == "NONE_ISSUED"
+    assert next(x for x in withdrawn["programma_live"]["pending"]
+                if x["ref"] == "E021@VERIFY")["receipts"] == join_before["receipts"]
+    lr.commit_event(lr._event("TRANSITION_REQUEST", {"fixture": {
+        "node_id": node_id, "dimension": "source_recovery",
+        "to": "SOURCE_VERIFIED",
+        "evidence": {"kind": "SOURCE_RECORD", "source": source},
+    }}), journal_path=journal, state_path=st)
+    restored = lr._load_state(st)
+    assert restored["axes"][node_id]["source_recovery"] == "SOURCE_VERIFIED"
+    assert restored["programma_live"]["native_person_human_claims"] == "NONE_ISSUED"
+    assert lr.rebuild_from_journal(journal, operating=True)["state_digest"] == restored["state_digest"]
+
+
+def test_unverified_event_erasure_of_delta_refused_and_replay_fail_closed(tmp_path):
+    journal, st = state_env(tmp_path)
+    accepted = append_fixture(st, packet("join_e_scoped_review.json"))
+    eid = accepted["event"]["event_id"]
+    spoof = lr._event("EVIDENCE_WITHDRAWAL", {
+        "withdraws_event_id": eid, "basis": "SOURCE_OWNER_WITHDRAWAL",
+        "authority": "SOROK_HQ", "node_id": "JOIN_E_7BF",
+        "reason": "caller-written claim is not source-owner custody",
+    })
+    before = journal.read_bytes()
+    with pytest.raises(ValueError, match="PROGRAMMA_DELTA_EVENT_ERASURE_REQUIRES_VERIFIED_OWNER_CUSTODY"):
+        lr.commit_event(spoof, journal_path=journal, state_path=st)
+    assert journal.read_bytes() == before
+    # Even if a lower-level actor bypasses the commit API and directly appends,
+    # replay does not let a textual principal silently suppress DELTA evidence.
+    es.append_event(journal, spoof)
+    cold = lr.rebuild_from_journal(journal, operating=True)
+    assert cold["programma_live"]["active_receipts"] == 1
+    assert any(r["transition_id"] == "JOIN_E_7BF_SCOPED_REVIEW" for r in cold["programma_deltas"])
