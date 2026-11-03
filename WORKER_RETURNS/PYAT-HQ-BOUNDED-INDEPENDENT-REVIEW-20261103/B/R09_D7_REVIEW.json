@@ -1,0 +1,46 @@
+{
+  "branch": "agent/pyat-r09-expectation-repair-20261103-r1",
+  "candidate": {
+    "author_after_log_sha256": "0dd402aae8ba82b458a45452721166eb2e60797c507a178f91a30d3b9f9162a1",
+    "base": "4a10c82aa8ba2a31938d3d35e12dc42f4456264c",
+    "before_log_sha256": "2c97cd02bb12e8ad49de54e3c305fcd6fc2343346931ab752d480b9de4133221",
+    "changed_files": [
+      "CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py",
+      "tests/universal_runner/test_universal_runner_verify.py"
+    ],
+    "controller_sha256": "30009c49f583ff435c27828d57629e6b801c91398790bc47d59549dd73f79a99",
+    "head": "da101f1a70ed2ec3aaff80c201c007efe518bb1d",
+    "prior_review": "25510c8d84f0ae5e452b301b017bdedf46f40b5c",
+    "test_sha256": "4ca230b79bc297787e574a8542911c2f58c81437a99f82226156fce8457d76de"
+  },
+  "evidence": {
+    "baseline_good_result": "accepted locally; deployment hold",
+    "before_failure": "TypeError reproduced in retained before.log",
+    "nonserializable_observation": "preserved/refused",
+    "ordinary_mismatch": "preserved/refused",
+    "typed_reason": "EXPECTED_RESULT_NOT_SERIALIZABLE"
+  },
+  "limits": [
+    "D7 only; no host-level security claim.",
+    "No original source or native execution.",
+    "Frozen prior attack evidence preserved, not rewritten."
+  ],
+  "not_fixed": [
+    "D1/D4 child-forgery and loaded bytes",
+    "external trust-root admission",
+    "OS/process isolation",
+    "CI/production adoption"
+  ],
+  "reviewer_role": "DISTINCT_NATIVE_REVIEWER_NOT_AUTHOR_OR_HQ",
+  "schema": "PYAT_BOUNDED_REVIEW_B_R09_D7@1.0.0",
+  "test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest tests/universal_runner/test_universal_runner_verify.py -q -p no:cacheprovider -o addopts=''",
+    "d7_test": "test_authentic_observation_with_nonserializable_expectation_refuses",
+    "exit": 0,
+    "log_path": "B/pytest.log",
+    "log_sha256": "63883b09b7737715c97d815905b9b5c2b007d349e7f8cd55b42bff9ed7097fcf",
+    "path": "tests/universal_runner/test_universal_runner_verify.py",
+    "result": "15 passed in 4.00s"
+  },
+  "verdict": "PASS_SCOPED_R09_D7_EXPECTATION_MALFORMED"
+}

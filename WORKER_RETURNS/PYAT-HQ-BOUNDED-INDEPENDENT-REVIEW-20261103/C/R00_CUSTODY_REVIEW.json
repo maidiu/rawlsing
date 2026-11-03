@@ -1,0 +1,46 @@
+{
+  "branch": "agent/pyat-r00-custody-repair-20261103-r1",
+  "candidate": {
+    "changed_since_parent": [
+      "evidence/SHA256SUMS.txt",
+      "evidence/manifest_supersession.json",
+      "evidence/normalized_manifest.json",
+      "manifest.json",
+      "tools/collect_manifest.py"
+    ],
+    "gate_sha256": "6352975135b99f9135e6ad333c571d6c09e17823a3e4bfc2d0806d1fd935ce4f",
+    "head": "4646e2944c1b1266f54415ef8a2f134f1d16ca94",
+    "manifest_sha256": "9534c8cf3e1394248aadcbfc1c721f140fce2c2ab0cec9b75bf192fe9486e888",
+    "normalized_manifest_sha256": "e7a8c17b8372536b2dde33adc4b8524281888d2f5367f58cb5491c44692ffd01",
+    "prior_behavior": "41/41 behavior qualified; reused, not rerun",
+    "prior_behavior_review": "d02ef32214c38af59ffb272a29ff4ffd7b30d394",
+    "repo_parent": "3d4d77e9b667a1cddac07c3bfdda7d8795de458d",
+    "sha256sums_sha256": "7e0f985929cee0ce20f8dc5710be1c2e1afe2b9631e32bb74380e33e814a3138",
+    "supersession_sha256": "59774efc060989b8500f17c55f4d5f35c368d4f2f8e6677579ed565439c7b55b"
+  },
+  "commands": {
+    "collector": "private scratch Git snapshot -> python3 WORKER_RETURNS/PYAT-R56-R00E-GATE-IMPLEMENTATION-R1/revisions/r2/tools/collect_manifest.py (twice)",
+    "collector_result": "run1 == run2; 26 manifest entries; 29/29 checksums verified",
+    "gate_test_diff": "git diff --quiet 3d4d77e9b6..HEAD -- CROSS_HQ_CONTROL_ROOM/universal_promotion_gate.py tests/universal_execution_oracle ... => PRESERVED_GATE_TEST_PASSPORT_PROOF"
+  },
+  "custody": {
+    "all_29_checksums_verified": true,
+    "collector_idempotent": true,
+    "collector_scope": "private scratch Git snapshot under review returnroot; candidate worktree untouched",
+    "manifest_entries": 26,
+    "manifest_root_relative": true,
+    "normalized_manifest_entries": 26,
+    "preserved_gate_test_passport_proof": true,
+    "sums_entries": 29,
+    "supersession_covered_by_outer_sums": true,
+    "supersession_excluded_from_manifest": true
+  },
+  "limits": [
+    "Packaging/custody only; no new 41-test behavior court.",
+    "No original source, native execution, CI/prod/N11/N12/Sorok/J52W52.",
+    "Historical negative and prior reviewer evidence preserved."
+  ],
+  "reviewer_role": "DISTINCT_NATIVE_REVIEWER_NOT_AUTHOR_OR_HQ",
+  "schema": "PYAT_BOUNDED_REVIEW_C_R00_CUSTODY@1.0.0",
+  "verdict": "PASS_SCOPED_R00_CUSTODY_PACKAGING"
+}

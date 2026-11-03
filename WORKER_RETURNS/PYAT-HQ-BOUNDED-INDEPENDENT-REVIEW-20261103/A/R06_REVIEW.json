@@ -1,0 +1,64 @@
+{
+  "branch": "agent/pyat-hq-sourcefree-r06-reuse-20261103-r1",
+  "candidate": {
+    "assembly": {
+      "rawlsing_next/pre553_issued_workload.py": "8a420647ec32e1e6935e2b359c0c6e3cab1f802be59c3861a8ba2393b3351ac6",
+      "rawlsing_next/pre553_learned_product_lifecycle.py": "5c00270a15fc8fa11fa71902951fd18c3ffd1337c9426145d95ea8629050c04e",
+      "rawlsing_next/pre553_learned_product_release.py": "5a14fc6ad0fe3970ad70f88147fa683e71d53a54dfc63608be1b089a3ad4bea7"
+    },
+    "assembly_source_cut": "9809203fd915a84bae056a67210e9213879840db",
+    "base": "b2cfe93cee854b7aff2081a7a223ada75295332a",
+    "head": "75bc20cdd8f4bf68a4a57b12fbfdbedb43d469f2",
+    "prior_acceptance": "fbe7ffc00a021aeacce3b15a2ef74cd8657d9d56",
+    "return_sha256": "c1d6db004a41d37b6280e88ad3c9ff736a49e98c1c99debdd44211746e3c8f3f"
+  },
+  "holds": [
+    "sourcefree trusted local host",
+    "CONTEXT structural always held",
+    "cross-unit pooling unavailable",
+    "synthetic temporal pair not F7 measured",
+    "no original source/science",
+    "no protected adoption"
+  ],
+  "limits": [
+    "No original survey/source access.",
+    "No blanket R06 security or original native qualification.",
+    "Prior accepted boundaries are reused; only changed receiving compatibility is qualified."
+  ],
+  "reuse": {
+    "independent_fresh_claim": "only changed-boundary effects, not blanket R06 re-audit",
+    "prior_17_cases_and_14_probes_replayed_by_HQ": true
+  },
+  "reviewer_role": "DISTINCT_NATIVE_REVIEWER_NOT_AUTHOR_OR_HQ",
+  "schema": "PYAT_BOUNDED_REVIEW_A_R06_REUSE@1.0.0",
+  "scope": "actual R05->pinned P41 N9/N10W/E04 consumer with newer issuance/B5/M2 owner substitution; exact assembled three modules",
+  "test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py -q -o addopts=''",
+    "exit": 0,
+    "log_path": "A/pytest.log",
+    "log_sha256": "95eeb61429072e85b27fddfbd01d2b211997a010ddb13966bd4310673281cbbe",
+    "path": "rawlsing_next/tests/test_universal_world_binding.py",
+    "result": "17 passed in 202.93s",
+    "sha256": "bfb36cf263e636c17925ce15727b5b1d4715ed7029553a8bddca9d91b3fe3732",
+    "tests": [
+      "test_r06_two_fields_affect_same_actual_consumer_view",
+      "test_r06_world_view_cold_subprocess_replay",
+      "test_r06_world_separation_and_authority_refusals",
+      "test_r06_actual_relation_transport_and_observed_temporal_pair_controls",
+      "test_r06_actual_j42_n9_n10w_e04_two_fields",
+      "test_r06_actual_j42_cold_process_replay",
+      "test_r06_actual_j42_separation_controls_refuse_restore",
+      "test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair",
+      "test_r06r2_actual_r05_world_cold_replay",
+      "test_r06r2_actual_r05_world_separation_refusals_restore",
+      "test_r06r3_actual_wrapper_cold_fresh_process",
+      "test_r06r3_no_actual_temporal_change_refuses",
+      "test_r06r3_actual_transport_and_context_refusals",
+      "test_r06r3_actual_step_severance_refuses_restore",
+      "test_r06r4_forged_p41_runtime_is_refused",
+      "test_r06r4_subject_selected_coordinator_original_is_refused",
+      "test_r06r4_context_authority_is_held_in_all_public_wrappers"
+    ]
+  },
+  "verdict": "PASS_SCOPED_R06_REUSE_COMPATIBILITY"
+}

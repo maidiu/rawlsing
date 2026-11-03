@@ -1,0 +1,45 @@
+{
+  "artifacts": {
+    "A/R06_REVIEW.json": "5e8bbda4c9ef6384bbd8c9c53a6f7af94d789c1302c75b1cf189b710c689f58c",
+    "A/pytest.log": "95eeb61429072e85b27fddfbd01d2b211997a010ddb13966bd4310673281cbbe",
+    "B/R09_D7_REVIEW.json": "8b0a3da6e2bc81f5f38b9131e985d06aedff8809971d1c93d6216543fa4b6abb",
+    "B/pytest.log": "63883b09b7737715c97d815905b9b5c2b007d349e7f8cd55b42bff9ed7097fcf",
+    "C/R00_CUSTODY_REVIEW.json": "438a9a8d73527d491bc37fd7f425fd4c694753313454b32efdf5133a304528fc",
+    "C/SHA256SUMS.run1.txt": "7e0f985929cee0ce20f8dc5710be1c2e1afe2b9631e32bb74380e33e814a3138",
+    "C/manifest.run1.json": "9534c8cf3e1394248aadcbfc1c721f140fce2c2ab0cec9b75bf192fe9486e888",
+    "RETURN.md": "581908de9ad348036a86cf944e19b7fe0b79aae8921ef86db9804f7328ca66ab",
+    "SESSION_VERIFICATION.json": "077ecceb9734e98a1d594783f6d583a9991e88cd36be243ea6c0a2ec4d5d1a1e"
+  },
+  "limits": [
+    "No new workers, model/provider, source, host, or CI authority.",
+    "No original science or protected adoption.",
+    "A/B/C verdicts are scoped; frozen prior evidence and negatives preserved."
+  ],
+  "model_verification": {
+    "model": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "session_id": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "source": "opencode.sqlite session metadata",
+    "variant": "max",
+    "verified_before_work": true
+  },
+  "prior_acceptance_reused": [
+    "R06 fbe7ffc0 no blanket re-audit",
+    "R09 D7 prior 25510c8d only defect check",
+    "R00 41/41 prior d02ef322 packaging-only"
+  ],
+  "returnroot_commit": "commit containing this file; direct remote readback in final response",
+  "reviewer_session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+  "schema": "PYAT_HQ_BOUNDED_INDEPENDENT_REVIEW@1.0.0",
+  "scope": "bounded serial A/B/C review only; candidates read-only; own returnroot writes only",
+  "source_io": {
+    "ci_prod": false,
+    "original_survey_read": false,
+    "source_access": false
+  },
+  "verdicts": {
+    "A_R06": "PASS_SCOPED_R06_REUSE_COMPATIBILITY",
+    "B_R09_D7": "PASS_SCOPED_R09_D7_EXPECTATION_MALFORMED",
+    "C_R00_CUSTODY": "PASS_SCOPED_R00_CUSTODY_PACKAGING"
+  }
+}
