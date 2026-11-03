@@ -29,14 +29,15 @@
       "WORK_PACKAGE": 39,
       "UNRESOLVED_TERMINAL": 12,
       "OWNER_ACTION": 11,
-      "W8R_NON_GATING_STAGE_CANDIDATE": 8
+      "W8R_NON_GATING_STAGE_CANDIDATE": 8,
+      "MANIFEST": 1
     },
     "versioned_seams": 38,
     "W8R_work_now_rows": 12
   },
   "conservation": {
-    "total_rows": 1313,
-    "original_source_rows": 1309,
+    "total_rows": 1314,
+    "original_source_rows": 1310,
     "target_specific_overrides": 4,
     "expected_by_registry": {
       "07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json": 304,
@@ -54,7 +55,8 @@
       "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:WORK_PACKAGE": 39,
       "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:UNRESOLVED_TERMINAL": 12,
       "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:OWNER_ACTION": 11,
-      "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:W8R_NON_GATING_STAGE_CANDIDATE": 8
+      "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:W8R_NON_GATING_STAGE_CANDIDATE": 8,
+      "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:MANIFEST": 1
     },
     "actual_by_registry": {
       "07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json": 304,
@@ -72,16 +74,17 @@
       "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:W8R_NON_GATING_STAGE_CANDIDATE": 8,
       "15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl": 38,
       "10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md:W8R_DIRECT_NOW": 12,
-      "TARGET_OVERRIDE": 4
+      "TARGET_OVERRIDE": 4,
+      "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:MANIFEST": 1
     },
     "duplicate_composite_keys": [],
     "category_counts": {
-      "REFERENCE_ONLY": 948,
+      "REFERENCE_ONLY": 949,
       "UNRESOLVED": 51,
       "SPINE_CURRENT": 47,
-      "HISTORICAL_CANDIDATE": 162,
+      "HISTORICAL_CANDIDATE": 163,
       "HISTORICAL_REJECTED": 8,
-      "SPINE_REQUIRED_UNBUILT": 97
+      "SPINE_REQUIRED_UNBUILT": 96
     }
   },
   "source_depth": {
@@ -160,8 +163,23 @@
     "independent_review": "NOT_PERFORMED",
     "qualified_local_S2": "NOT_RUN",
     "original_science_and_human": "NOT_RUN",
-    "PREMAIN_mutation": "NONE"
+    "PREMAIN_mutation": "NONE",
+    "modern_basis_for_all_required_unbuilt": "PASS_0_NULL_BASIS_AFTER_SOURCE_DOCUMENTARY_REPAIR",
+    "phase_manifest_conserved": "PASS_668_OF_668_INCLUDING_ONE_NONFUNCTIONAL_MANIFEST"
   },
-  "verdict": "IDENTITY_COMPLETE_SOURCE_GRADED_S0_S1_CANDIDATE__48_SOURCE_SEMANTICS_UNRESOLVED__INDEPENDENT_REVIEW_REQUIRED",
-  "note": "All generates_current_build_obligation=false; this is not work issuance. Zero HISTORICAL_SUBLATED can be correct unless present independently accepted identical-scope first-consumer parity is proved."
+  "verdict": "IDENTITY_COMPLETE_WITH_MANIFEST_1314_SOURCE_GRADED_S0_S1_CANDIDATE__48_SOURCE_SEMANTICS_UNRESOLVED__INDEPENDENT_REVIEW_REQUIRED",
+  "note": "All generates_current_build_obligation=false; this is not work issuance. Zero HISTORICAL_SUBLATED can be correct unless present independently accepted identical-scope first-consumer parity is proved.",
+  "post_return_bounded_correction": {
+    "parent_commit": "50bf48b4ec0f944771e8c4e320e82bec3e8ce9b6",
+    "cause": "Independent scoped source-identities/authority-readback found four current-required rows without an exact modern basis, one historical M25 seam promoted as a modern unbuilt requirement, and omission of phase manifest metadata.",
+    "repaired_rows": [
+      "08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json:ORIGINAL_D#D-OBS:BASIS_ADDED",
+      "08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json:ORIGINAL_D#D-M6:BASIS_ADDED",
+      "08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json:ORIGINAL_D#D-ACTION:BASIS_ADDED",
+      "15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl#E010:BASIS_ADDED",
+      "15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl#E019:RECLASSIFIED"
+    ],
+    "phase_metadata_added": "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl:MANIFEST#PROGRAMMA_W7_INTEGRATED_RECURSIVE_GATE_INDEX_R1",
+    "boundary": "W8-J E019 HOLD and all 38 JOIN_PENDING preserved. No S2/S3, native law, owner adoption or human test. Independent formal acceptance still required."
+  }
 }
