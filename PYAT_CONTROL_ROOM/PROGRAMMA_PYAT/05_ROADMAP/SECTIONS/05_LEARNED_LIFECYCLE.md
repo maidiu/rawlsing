@@ -1,5 +1,16 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S05.1–S05.5; GAP-021–024.** G4 PR605 scoped learned release remains the earlier bounded positive, not historical structural V555 M2. L1 R40–R49 did **not** establish new current M1→M2→B5→I4 production dereference; E41/J42 E04 TEST_ONLY and W41 views are separate. Later L2 [R05 TrustedNativeGraphCoordinator.execute](https://github.com/maidiu/rawlsing/blob/bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0/rawlsing_next/pre553_learned_world_composition.py#L1692) selects admitted native slot, actually calls analytical composition at 1748 and [evaluate_learned_world_consumer](https://github.com/maidiu/rawlsing/blob/bc2b5465c8f0ec2ea4657c6206436cdfa9ca58d0/rawlsing_next/pre553_learned_world_composition.py#L2078); [R05V-R8](https://github.com/maidiu/rawlsing/blob/2f7faac6da620b7651c175ec074d7088d5a49343/WORKER_RETURNS/PYAT-R91-R05V-CONSUMER-INDEPENDENT-REVIEW-R1/revisions/r8/00_RETURN.md#L1) accepts **local sourcefree** anti-forgery learned/currentness graph.
+
+**Versioned limit:** R05's own review says live J42/P41/E04 **NOT_REACHED** at its cut. Later R06 adds real local pinned P41 read only in different unadopted candidate; R05 module blob **adbcc3...** differs from receiving-control learned module **4a8e27...**, and protected semantic adoption is unproved. N3→N10E family release is **IF applicable**, not a global blanket blocker. **Next owner:** original empirical learned family science, accepted source version/as-of, first original-world N9/I01 receiver and expiry/negative receipt.
+
+---
+
+
 **G4-P2 current developer view (GitHub S1, 2026-11-02):** The M1→M2→B5 I4 internal path exists; **PR605 merged bounded learned M2/B5 sourcefree repair**, not the original35 empirical family or real N9/I01K first receiver. Learned **M2** and historic V555 structural **M2** are distinct. No new tests, source-owner decision or independent acceptance in G4-P2. Original G2 evidence follows unchanged below.
 
 **Navigate:** [five child functions](#s05-five-required-learned-lifecycle-functions) · [actual call chain](#s05-same-cut-producer-to-receiver-chain) · [versions/negative](#s05-version-parity-and-preserved-decisions) · [next development](#s05-smallest-unfinished-work) · [inherited G2](#inherited-g2-draft-evidence-retained). Neighbors: [empirical F1–F4](04_F1_F4_EMPIRICAL.md) → [Field Forge when selected](06_FIELD_FORGE_F5.md) / [N9 served world](09_N9_WORLD.md) / [N10E](10_N10_POSSIBILITY_F8.md).
