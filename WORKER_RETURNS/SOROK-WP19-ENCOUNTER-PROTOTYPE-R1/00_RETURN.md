@@ -132,4 +132,13 @@ No world event, clock advance, actor response, message delivery or native grant 
 
 ## 9. Publication
 
-Exact scoped commit and ordinary-push readback are recorded in `PUBLICATION_RECEIPT.json` after publication and returned in the final handback.
+Scoped implementation commit `b5d96a1c55bcd68132f3c3b01e908b0e7b994473` was pushed with an ordinary non-force push to `origin/codex/sorok-wp19-encounter-prototype-r1`. Direct remote readback:
+
+```text
+git rev-parse HEAD
+b5d96a1c55bcd68132f3c3b01e908b0e7b994473
+git ls-remote origin refs/heads/codex/sorok-wp19-encounter-prototype-r1
+b5d96a1c55bcd68132f3c3b01e908b0e7b994473  refs/heads/codex/sorok-wp19-encounter-prototype-r1
+```
+
+`PUBLICATION_RECEIPT.json` records the exact branch/base/S11/JOIN-E/CP-A5 references and readback. This metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the handback. The S35 branch and untracked `.s35-sources`/`.runtime` artifacts were not modified.
