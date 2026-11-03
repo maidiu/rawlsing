@@ -1,0 +1,146 @@
+{
+  "artifacts": {
+    "five_tests_json": "WORKER_RETURNS/PDEV01-GAP007/03_FIVE_HISTORICAL_FUNCTION_TESTS.json",
+    "five_tests_json_sha256": "7951bcd8286739e389117e06729470e554752823603301e758140be3e0d8681b",
+    "replay_json": "WORKER_RETURNS/PDEV01-GAP007/evidence/replay_gap.json",
+    "replay_json_sha256": "23e690846f9e56cec2df24fc5713047b82ddf1a7fec660d2aadd6e80554ecdeb"
+  },
+  "branch": "agent/pyat-pdev01-gap007-sourcefree-r1",
+  "code_files": {
+    "historical_tests": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/replay/test_historical_function_tests.py",
+      "sha256": "d564b929abbb74decbb0938b41e4881fd6a331f3bafcd08af7605e8cfb2eb4ec"
+    },
+    "p1_constructor": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/p1/programma_pyat_original35_constructor.py",
+      "sha256": "1b0c7d4f0220cbcb9385e89b9774ba4fa1d6f094ddcb14aabe51ea2bd4407f1b"
+    },
+    "p1_tests": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/p1/test_programma_pyat_original35_constructor.py",
+      "sha256": "5d87d3dc6d3371700ff0af23cbadf477febefd6dc0faf83b75c19ed287eeb1bd"
+    },
+    "replay": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/replay/replay_gap.py",
+      "sha256": "9d99fb1b505211054c65596b6361dea4aa39f9f7db557af7f5482f7bdd5671ff"
+    }
+  },
+  "consumer_calls": {
+    "current_batch_manifest_class": "rawlsing_next.pre553_batch_runner.BatchManifest",
+    "current_batch_runner_class": "rawlsing_next.pre553_batch_runner.BatchExecutionRunner",
+    "execution": "BatchExecutionRunner(manifest=plan.batch_manifest, repository=C11Repository())",
+    "manifest": "BatchManifest(plan.batch_units)"
+  },
+  "first_typed_mismatch": {
+    "code": "BatchIntegrityError",
+    "message": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+    "release_refs": [
+      "urn:test:programma:c11logicalrelease:release00",
+      "urn:test:programma:c11logicalrelease:release01",
+      "urn:test:programma:c11logicalrelease:release02",
+      "urn:test:programma:c11logicalrelease:release03",
+      "urn:test:programma:c11logicalrelease:release04",
+      "urn:test:programma:c11logicalrelease:release05",
+      "urn:test:programma:c11logicalrelease:release06",
+      "urn:test:programma:c11logicalrelease:release07",
+      "urn:test:programma:c11logicalrelease:release08",
+      "urn:test:programma:c11logicalrelease:release09",
+      "urn:test:programma:c11logicalrelease:release10",
+      "urn:test:programma:c11logicalrelease:release11",
+      "urn:test:programma:c11logicalrelease:release12",
+      "urn:test:programma:c11logicalrelease:release13",
+      "urn:test:programma:c11logicalrelease:release14",
+      "urn:test:programma:c11logicalrelease:release15",
+      "urn:test:programma:c11logicalrelease:release16",
+      "urn:test:programma:c11logicalrelease:release17",
+      "urn:test:programma:c11logicalrelease:release18",
+      "urn:test:programma:c11logicalrelease:release19",
+      "urn:test:programma:c11logicalrelease:release20",
+      "urn:test:programma:c11logicalrelease:release21",
+      "urn:test:programma:c11logicalrelease:release22",
+      "urn:test:programma:c11logicalrelease:release23",
+      "urn:test:programma:c11logicalrelease:release24",
+      "urn:test:programma:c11logicalrelease:release25",
+      "urn:test:programma:c11logicalrelease:release26",
+      "urn:test:programma:c11logicalrelease:release27",
+      "urn:test:programma:c11logicalrelease:release28",
+      "urn:test:programma:c11logicalrelease:release29",
+      "urn:test:programma:c11logicalrelease:release30",
+      "urn:test:programma:c11logicalrelease:release31",
+      "urn:test:programma:c11logicalrelease:release32",
+      "urn:test:programma:c11logicalrelease:release33",
+      "urn:test:programma:c11logicalrelease:release34"
+    ],
+    "release_refs_count": 35,
+    "stage": "BatchExecutionRunner construction / exact C11 release resolution"
+  },
+  "inputs": {
+    "abstentions": 0,
+    "batch_manifest_equals_plan_units": true,
+    "batch_manifest_units": 840,
+    "batch_units": 840,
+    "holds": 0,
+    "items": 70,
+    "manifest_ref": {
+      "content_hash": "d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5"
+    },
+    "no_drop_ok": true,
+    "operations": 840,
+    "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "source_qualification": "TEST_ONLY_SOURCEFREE",
+    "waves": 35
+  },
+  "limits": [
+    "No source read, original respondent, new science, CI, merge, downstream wake, or production adoption.",
+    "The 840 operations are prospective synthetic P1 units; no empirical distribution/conditional/joint results were executed.",
+    "The current BatchManifest and BatchExecutionRunner are reused unchanged; P1 code is copied read-only into the owned return directory for exact testing.",
+    "Independent review is required before acceptance."
+  ],
+  "logs": {
+    "batch_consumer": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/logs/batch_consumer.log",
+      "sha256": "a78ca61dfdb9f3a442450088feb624888428e7d9d06cc4c61290fe708f66033c"
+    },
+    "constructor": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/logs/constructor.log",
+      "sha256": "833fa1a5fd11189a1fd50475ccafd5c808b16f293ae6cf04f6c8330487b1a89a"
+    },
+    "historical_function": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/logs/historical_function_tests.log",
+      "sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+    },
+    "replay_stderr": {
+      "path": "WORKER_RETURNS/PDEV01-GAP007/logs/replay_gap.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "no_drop_evidence": {
+    "abstained_operations": 0,
+    "all_compiled_entries_are_batch_units": true,
+    "batch_unit_count": 840,
+    "batch_unit_identity_count": 840,
+    "expected_item_count": 70,
+    "held_operations": 0,
+    "no_invented_metadata": true,
+    "operation_identity_count": 840,
+    "operation_record_count": 840,
+    "processed_item_count": 70
+  },
+  "pinned_p1": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+  "receiver_execution": "NOT_EXECUTED",
+  "role": "bounded sourcefree comparison; TEST_ONLY only",
+  "schema": "PDEV01_GAP007_RETURN@1",
+  "smallest_necessary_repair": {
+    "binding_requirement": "The P1 wave input must carry an exact existing C11LogicalRelease ref that resolves in the receiver, and the execution owner must bind each P1 operation job_ref to its exact C11/I03/I05 semantic query/discovery job. No replacement compiler or production edit is justified by this comparison.",
+    "code_repair": "NONE_IN_THIS_RETURN",
+    "reason": "Current BatchManifest accepts all 840 exact P1 units; current BatchExecutionRunner refuses at construction because the P1 synthetic release refs are absent from the C11 repository. This is a missing binding/input, not a P1 constructor drop or invented operation."
+  },
+  "startup_sha": "773bb412a820949f13a7178b6671327cd56a3bf1",
+  "status": "TYPED_HOLD__P1_MANIFEST_BOUND__EXECUTION_RECEIVER_MISSING_EXACT_C11_RELEASES",
+  "test_counts": {
+    "current_batch_consumer": "16 passed",
+    "five_historical_function_tests": "5 passed",
+    "historical_p1_constructor": "18 passed"
+  }
+}

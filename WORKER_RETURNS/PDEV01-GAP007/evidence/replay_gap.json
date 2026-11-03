@@ -1,0 +1,91 @@
+{
+  "current_receiver": {
+    "batch_manifest_accepted": {
+      "content_hash": "d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5"
+    },
+    "batch_manifest_class": "rawlsing_next.pre553_batch_runner.BatchManifest",
+    "batch_runner_class": "rawlsing_next.pre553_batch_runner.BatchExecutionRunner"
+  },
+  "first_typed_mismatch": {
+    "code": "BatchIntegrityError",
+    "message": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback",
+    "release_refs": [
+      "urn:test:programma:c11logicalrelease:release00",
+      "urn:test:programma:c11logicalrelease:release01",
+      "urn:test:programma:c11logicalrelease:release02",
+      "urn:test:programma:c11logicalrelease:release03",
+      "urn:test:programma:c11logicalrelease:release04",
+      "urn:test:programma:c11logicalrelease:release05",
+      "urn:test:programma:c11logicalrelease:release06",
+      "urn:test:programma:c11logicalrelease:release07",
+      "urn:test:programma:c11logicalrelease:release08",
+      "urn:test:programma:c11logicalrelease:release09",
+      "urn:test:programma:c11logicalrelease:release10",
+      "urn:test:programma:c11logicalrelease:release11",
+      "urn:test:programma:c11logicalrelease:release12",
+      "urn:test:programma:c11logicalrelease:release13",
+      "urn:test:programma:c11logicalrelease:release14",
+      "urn:test:programma:c11logicalrelease:release15",
+      "urn:test:programma:c11logicalrelease:release16",
+      "urn:test:programma:c11logicalrelease:release17",
+      "urn:test:programma:c11logicalrelease:release18",
+      "urn:test:programma:c11logicalrelease:release19",
+      "urn:test:programma:c11logicalrelease:release20",
+      "urn:test:programma:c11logicalrelease:release21",
+      "urn:test:programma:c11logicalrelease:release22",
+      "urn:test:programma:c11logicalrelease:release23",
+      "urn:test:programma:c11logicalrelease:release24",
+      "urn:test:programma:c11logicalrelease:release25",
+      "urn:test:programma:c11logicalrelease:release26",
+      "urn:test:programma:c11logicalrelease:release27",
+      "urn:test:programma:c11logicalrelease:release28",
+      "urn:test:programma:c11logicalrelease:release29",
+      "urn:test:programma:c11logicalrelease:release30",
+      "urn:test:programma:c11logicalrelease:release31",
+      "urn:test:programma:c11logicalrelease:release32",
+      "urn:test:programma:c11logicalrelease:release33",
+      "urn:test:programma:c11logicalrelease:release34"
+    ],
+    "release_refs_count": 35,
+    "stage": "BatchExecutionRunner construction / exact C11 release resolution"
+  },
+  "historical_p1": {
+    "commit": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+    "constructor": "rawlsing_next/programma_pyat_original35_constructor.py",
+    "test_count": 18
+  },
+  "input": {
+    "abstentions": 0,
+    "batch_manifest_equals_plan_units": true,
+    "batch_manifest_units": 840,
+    "batch_units": 840,
+    "holds": 0,
+    "items": 70,
+    "manifest_ref": {
+      "content_hash": "d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5"
+    },
+    "no_drop_ok": true,
+    "operations": 840,
+    "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "source_qualification": "TEST_ONLY_SOURCEFREE",
+    "waves": 35
+  },
+  "no_drop_evidence": {
+    "abstained_operations": 0,
+    "all_compiled_entries_are_batch_units": true,
+    "batch_unit_count": 840,
+    "batch_unit_identity_count": 840,
+    "expected_item_count": 70,
+    "held_operations": 0,
+    "no_invented_metadata": true,
+    "operation_identity_count": 840,
+    "operation_record_count": 840,
+    "processed_item_count": 70
+  },
+  "receiver_execution": "NOT_EXECUTED",
+  "schema": "PDEV01_GAP007_SOURCEFREE_REPLAY@1"
+}

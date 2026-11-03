@@ -1,0 +1,36 @@
+{
+  "disposition": "CURRENT_RECEIVER_BINDING_GAP__NO_PRODUCTION_REPAIR__TEST_ONLY",
+  "junit": "WORKER_RETURNS/PDEV01-GAP007/logs/historical_function_tests_junit.xml",
+  "junit_sha256": "db9ff9fc2fb5d7f6e5d7a7aeec7c4ebd165e853567766bd5e0dd577150b44b6c",
+  "log": "WORKER_RETURNS/PDEV01-GAP007/logs/historical_function_tests.log",
+  "log_sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d",
+  "schema": "PDEV01_GAP007_FIVE_HISTORICAL_FUNCTION_TESTS@1",
+  "status": "PASSED_5_TEST_ONLY",
+  "tests": [
+    {
+      "meaning": "P1 history pinned to d127; 18 exact constructor tests pass on current PRE-MAIN via module shim.",
+      "result": "passed",
+      "test": "test_01_history_pinned_actual_p1_constructor_and_tests"
+    },
+    {
+      "meaning": "Current BatchManifest accepts exact 840 units; requirement is execution receiver, not another manifest constructor.",
+      "result": "passed",
+      "test": "test_02_current_requirement_is_execution_receiver_not_reinvented_manifest"
+    },
+    {
+      "meaning": "Current BatchExecutionRunner is the first execution consumer; first mismatch is absent exact C11 releases.",
+      "result": "passed",
+      "test": "test_03_first_consumer_is_current_batch_runner_and_its_exact_release_mismatch"
+    },
+    {
+      "meaning": "35 waves/70 items/840 units; TEST_ONLY; no invented metadata or source rights.",
+      "result": "passed",
+      "test": "test_04_authority_and_unit_constraints_preserve_test_only_and_no_invention"
+    },
+    {
+      "meaning": "Reuse P1 constructor + current BatchManifest; defer execution until exact C11 release/semantic bindings; no replacement compiler.",
+      "result": "passed",
+      "test": "test_05_comparative_disposition_reuse_manifest_defer_new_compiler"
+    }
+  ]
+}
