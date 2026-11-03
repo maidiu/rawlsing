@@ -213,4 +213,13 @@ C9R native guard                   12b2c49f664662cbfe993fc4817751ed9edfff3ce89c4
 
 ## 8. Publication
 
-The exact commit SHA and ordinary-push readback are recorded after publication in `PUBLICATION_RECEIPT.json` and the final worker handback.
+Evidence commit `e1cea3f03555dd96d5b78dd0d8833e993e87ae5a` was pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
+
+```text
+git rev-parse HEAD
+e1cea3f03555dd96d5b78dd0d8833e993e87ae5a
+git ls-remote origin refs/heads/codex/sorok-s35-c9r-access-r1
+e1cea3f03555dd96d5b78dd0d8833e993e87ae5a  refs/heads/codex/sorok-s35-c9r-access-r1
+```
+
+`PUBLICATION_RECEIPT.json` records that exact push and readback. The staged `.s35-sources` input was not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
