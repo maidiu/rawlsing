@@ -98,3 +98,8 @@ Use `FUNCTION_PARITY.jsonl.obligation_id` for all 28 old-vs-now, 57 current-with
 ## HQ observation 2026-11-03 — R06 reuse compatibility
 
 Exact branch evidence `07fae0998af11c910589627438a5342ef9c727e4` preserves an existing independently reviewed R06 actual sourcefree R05→P41/N9/N10W/E04 reader. Substitution of the exact receiving issuance/release/lifecycle modules passed all 17 existing R06 cases. This supersedes no original-cut assessment: it is branch-only HQ compatibility evidence, not new independent acceptance, protected adoption or original-source/world science. Reuse this lineage before rebuilding. Receiving-boundary qualification and authorized integration remain; context structural authority, cross-unit pooling and measured temporal science stay held. See `HQ_DEVELOPMENT_TRANSITIONS.jsonl` transition `PYAT-HQ-R06-REUSE-COMPATIBILITY-20261103`.
+
+
+## HQ 2026-11-03 — local evidence-runner D7 candidate
+
+`da101f1a7` on `agent/pyat-r09-expectation-repair-20261103-r1` repairs only the authentic-observation/nonserializable-expectation TypeError, returning `EXPECTED_RESULT_NOT_SERIALIZABLE`. Original RED and 15 author PASS receipts retained under `WORKER_RETURNS/PYAT-R09-D7-REPAIR-20261103`. This affects a local evidence helper; no source-semantic or original-data grant. D1/D4 child result/loaded-byte forgery, external root and host isolation remain unresolved; deployment stays HOLD. Candidate is unmerged, without fresh independent acceptance. It neither closes scientific custody nor the source-to-V3 evidence chain.

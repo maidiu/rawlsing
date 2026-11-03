@@ -203,3 +203,7 @@ This scoped G3-A candidate source locator is reproduced as a navigation aid; its
 
 **Update rule:** promote no `HELD_OWNER_OR_SCIENCE`, `INCOMPATIBLE`, `MISSING_PRODUCER_OR_READER`, `PARTIAL` or `SOURCEFREE_SCOPED_ONLY` status without exact current source cut, same-scope issuer, output artifact, importer, fresh receipt and qualified independent decision. `UNKNOWN` is legitimate until that witness exists.
 **Read next:** [S01](01_SOURCE_GOVERNANCE.md) → [S02](02_U_EPRE_WORKLOAD.md) → [S03](03_ROUTE_B_C11.md) → [S04](04_F1_F4_EMPIRICAL.md); [whole guide](../README.md); [original G2 edges](../PLANNED_INTERFACES.jsonl); [G3-B dependency and reverse unlocks](../G3_CANDIDATES/SEAMS_MATURITY/RECURSIVE_PREREQUISITES.md); [all 49 gaps](../G3_CANDIDATES/SEAMS_MATURITY/NEXT_REAL_PYAT_WORK.md).
+
+## HQ 2026-11-03 — local evidence-runner D7 candidate
+
+`da101f1a7` on `agent/pyat-r09-expectation-repair-20261103-r1` repairs only the authentic-observation/nonserializable-expectation TypeError, returning `EXPECTED_RESULT_NOT_SERIALIZABLE`. Original RED and 15 author PASS receipts retained under `WORKER_RETURNS/PYAT-R09-D7-REPAIR-20261103`. This affects a local evidence helper; no source-semantic or original-data grant. D1/D4 child result/loaded-byte forgery, external root and host isolation remain unresolved; deployment stays HOLD. Candidate is unmerged, without fresh independent acceptance. It neither closes scientific custody nor the source-to-V3 evidence chain.
