@@ -3,7 +3,8 @@
 **Candidate:** `877f974a0e70ea591118fd94f558d73f426202dc`  
 **Review branch:** `review/pyat-pdev01-n10w-identity-r1`  
 **Scope:** TEST_ONLY sourcefree W41/E41/P41 J42 and synthetic E04 only.  
-**Write root:** `WORKER_RETURNS/PDEV01-N10W-INDEPENDENT-REVIEW/`
+**Write root:** `WORKER_RETURNS/PDEV01-N10W-INDEPENDENT-REVIEW/`  
+**Model metadata:** `opencode-go/deepseek-v4.1-flash`, variants `low/high/max`, active, current `max`; unchanged.
 
 ## Verdict
 

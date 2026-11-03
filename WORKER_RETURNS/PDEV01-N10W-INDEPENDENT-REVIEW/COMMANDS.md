@@ -4,7 +4,7 @@ Root: `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-n10w-join-revi
 
 ```sh
 cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-n10w-join-review
-PYTHONHASHSEED=0 python3 WORKER_RETURNS/PDEV01-N10W-INDEPENDENT-REVIEW/run_review.py
+PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 python3 WORKER_RETURNS/PDEV01-N10W-INDEPENDENT-REVIEW/run_review.py
 ```
 
 The script performs two independent actual J42 builds from pinned commit
