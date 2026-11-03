@@ -1,0 +1,35 @@
+# LIVE-02 — actual source and reuse ledger
+
+**Status:** EXACT_GIT_PRIMARY_SOURCE_RECONNAISSANCE_AND_CODE_EDIT_APPLIED; NOT S2 EXECUTED; NOT independently accepted/adopted. Repository maidiu/rawlsing private, single worker branch agent/sorok-programma-live-update-adapter-20261103-r1 created from exact repaired P0/P1 head fa8a2b1f75cd2ee2153a813215f51dea88e16a4b. Original guide W8-R frozen a9ebf71e62d84e5dcc599662e976eca7fcd0e623; not edited or silently merged.
+
+## Direct actual Git evidence
+
+| Item | Frozen cut / source | Observed immutable fact | Proper engineering limit |
+|---|---|---|---|
+| Repaired P0/P1 R3 candidate | fa8a2b1f75cd2ee2153a813215f51dea88e16a4b, LIVING_REFERENCE_CANDIDATE_R1/living_reference.py, blob ea45b81b37f2d2a65ab70183a49231726110c64d | 3,255-line engine already implements source lookup, append-only canonical replay, source verification, acceptance, transition/withdrawal, required-edge traversal, gaps, work-now and CLI | 62 author tests reported at this cut, not independently rerun in this flight; code candidate not production |
+| Evidence journal | same cut evidence_store.py blob 581fa517828b58cc124dd8e0d244c9653add0acc; evidence/journal.jsonl | Existing hash-chain, event id, prev hash, locked append, fsync, cold read; CAS in old append reports stale rather than refusing | LIVE-02 adds strictly opt-in CAS only to PROGRAMMA_DELTA, preserves other producers' prior semantics |
+| Clean replay and state | same cut initialize_r3.py blob ecf1b5b3b5860d73dc1b05b5ae747d77b7c6f746; state.json and SNAPSHOT.json original bytes not modified | GENESIS, OSCIENCE candidate, quarantine, W1A real return; state derived from journal/seed, historical synthetic demo quarantined | LIVE-02 does not manufacture new native or original science |
+| P1 seeded existing graph | fa8a... programma_p1_seed.py, 65,127 bytes; original source refs preserved | CAN011_RULE_T_MISSING has exact P1S35 ref; JOIN_E_7BF/JOIN_V_4387 subject/reviewer records; existing sourcefree P1 B, access and later help consumer nodes | Reuse nodes and owner slots; no new separate platform |
+| W8-R finite guide | a9eb... SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl and 15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl | 83 gates, 127 evidence leaves, 38 seams; ALL/ANY/IF, mode unselected hold and same-target scope rules already defined | Read immutable Git objects, not mutable branch HEAD. Missing local cut is a hard preflight, not source acceptance |
+| JOIN-E returned sourcefree subject | 7bf2da302996491ddf34b9a039fea47ac982d135, WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md blob 9a185f7c03ac66056e366a2deecf4ea4dd2da188 | TEST_ONLY_SOURCEFREE returned; joined/session.py blob dc0894289e8b6a5e66148189e41d7efb563f25af has class JoinedSession; fork/lineage/root exact sourcefree | Not C9/C12 native, not a newly selected c784 root |
+| JOIN-V actual scoped review | 4387dc818a96fda2d5271672505fbd9da1059703, WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md blob 52dfc715bed3ef14cc3dc4639132c409c4e99712 | Independent hostile verdict ACCEPT_SCOPED at exact reviewed 7bf fork-atomicity/shared-lineage; reviewed subject and appointment present | Existing lr._verify_acceptance_record parses own source binding, not caller-written role |
+| S35 P1 actual file | b65c75a9e62618690f7d02265bc9e850af549161, WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py blob 02d656868b1963fc6468bab1b25ef98fecdb5141 | evaluate() sourcefree classifier and T_NO_CHANGE candidate; original P1 seed maps exact source to CAN011_RULE_T_MISSING | First actual native consumer NONE; source producer presence is NOT positive acquisition, O05 issuance or independently evaluated O07 |
+| R2 later subject | 598d9e9eaba5143950c63317705fd09104fbf463, WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md blob 9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53 | Author reports 20/20 sourcefree tests; separate newer root/return cut | Old JOIN-V acceptance non-transferable |
+| Independent R2 negative | 8090a1ea308ab17f302f55bb2639c3e4cd774c7a, WORKER_RETURNS/SOROK_RRIF_R2_INDEPENDENT_HOSTILE_FIRST_CONSUMER_REVIEW_R1/00_RETURN.md blob 38c201199c3153ca58926b2f96b3ba0220d2b651 | REVISE_MATERIAL_DEFECTS T1/M1/C1/D1 on 598d notwithstanding independently rerun 20/20 | Source-grade NEGATIVE only for exact RRIF cut, no revocation of unrelated 7bf acceptance |
+| c784 selected reader candidate | c78404724052496fdec8608c8b0e833c0f7c4ecc, WORKER_RETURNS/SOROK-C9C12-R2/candidate/c9c12_reader.py blob db38d05d5edab7ad72cc003807945e056f2b0779 | read_actor_snapshot queries actor_meta, read_composite is a real candidate; 598d CandidateStore has incompatible schema | Do not promote candidate reader by naming a symbol or by copying a review across roots |
+| PRE-MAIN | 9809203fd915a84bae056a67210e9213879840db rawlsing_next/m6_actor_safe_expression.py blob 74d9701cdc7dabccf61eb5089498db290c1efd9c | require_situated_expression_owner explicitly raises; source of original C11 empirical facade is not Sorok world/person C11 | LIVE-02 introduces no positive M6/native/human acceptance |
+
+## Existing engine functions reused
+
+No new source registry, graph query language, scheduler, daemon, runtime builder or dashboard:
+
+- living_reference._verify_git_object / _verify_return_locator / _verify_acceptance_record: cryptographic source object, quote and reviewed-subject scope. Delta-source node mapping is checked against P1 inherited source_refs.
+- living_reference._apply_event / rebuild_from_journal / commit_event plus evidence_store: canonical ingestion, replay, CAS, duplicate identity and cold-state regeneration. The new PROGRAMMA_DELTA case is only one typed event.
+- living_reference._recompute / compute_work_now / compute_gaps / _recompute_consumer_grades / blocked_chain / focus_view / home_view / code_consumer_view / whole_program_gaps: base state and readbacks. A derived programme_live member/edge/phase overlay is attached to existing state/work_now.
+- 14/15 existing immutable guide: parse actual gate members, owner, source grades, typed reverse candidates, 39 packages, first deliverables and seam source references. No new graph schema or second referential authority.
+
+## Actual write scope and missing runtime proof
+
+Allowed changes only LIVING_REFERENCE_CANDIDATE_R1/{living_reference.py, live_update_adapter.py, test_live_update_adapter.py, fixtures/*.json, 00_START_HERE.md} and WORKER_RETURNS/SOROK_PROGRAMMA_LIVE_UPDATE_ADAPTER_20261103_R1/*; no W8-R guide change or protected PRE-MAIN change. No original state.json, SNAPSHOT.json, evidence/journal.jsonl or actual source objects modified.
+
+Source fetch and exact Git blob verification: PERFORMED via authenticated private GitHub. Python import, pytest, cold replay, concurrent file locks, native issuer, human testing: NOT_RUN in this chat because no usable S2/S3 runner was exposed. A code commit and author-provided test are not runnable proof.
