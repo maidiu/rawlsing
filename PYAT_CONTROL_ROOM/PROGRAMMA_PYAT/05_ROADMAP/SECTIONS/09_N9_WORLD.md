@@ -150,3 +150,6 @@ Candidate `ea503425a6f3de29649b78587c7bcb0c2051b7ee`, review `771bc4ebd49759479d
 ### PR646 sourcefree adoption — 2026-11-03
 
 User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c9817ea43d22b4e45ff`, remote verified. Reviewed production blobs unchanged. Actual single synthetic source checkpoint/resume -> M1/M2/R05 -> unchanged P41 chain is now PRE-MAIN sourcefree engineering capability. Sourcefree CI and both executable proof witnesses pass. Broad court retains 144 PASS/3 historical hash-pin FAIL on unchanged inputs; not full green. R09 D1/D4 host trust, original-source/science and higher-stage holds remain. Own PROGRAMMA branch records adoption; no implicit guide branch merge. Exact receipt: `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/RECEIVING_646/ADOPTION.json`.
+
+
+D2P3 author return `cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584`. Author reports seven adapted regressions and 13 total tests passing; exact producer refs resolve in N9C TEST_ONLY reader. Independent replay; then qualify actual versioned N9 and computed N10E together at N10W. Publication custody and issuer rights held.

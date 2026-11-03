@@ -12,3 +12,6 @@ Next lawful options, in order:
 3. Obtain the competent original35 owner disposition on exact eligible workload issuance and its administered items, routing, design, weights and risk sets.
 
 Engineering grade: historical integration RED, scoped successor evidence adopted separately. Science grade: original-source and current-world validity held. Authority grade: no new host, original source or protected receiving grant. R09 D1/D4 remains held. Frozen guide assessments retain their original cuts.
+
+
+D2P3 author return `cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584`. Author reports seven adapted regressions and 13 total tests passing; exact producer refs resolve in N9C TEST_ONLY reader. Independent replay; then qualify actual versioned N9 and computed N10E together at N10W. Publication custody and issuer rights held.

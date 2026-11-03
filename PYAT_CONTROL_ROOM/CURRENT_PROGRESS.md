@@ -1700,3 +1700,6 @@ Same-source trace task launched under existing R91/R95 grants: `agent/pyat-same-
 
 
 Receiving candidate published: draft [PR #646](https://github.com/maidiu/rawlsing/pull/646), exact head `ea503425a6`, base `9809203fd9`. No protected merge/adoption performed; existing owner/CAS authority remains required.
+
+
+D2P3 author return `cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584`. Author reports seven adapted regressions and 13 total tests passing; exact producer refs resolve in N9C TEST_ONLY reader. Independent replay; then qualify actual versioned N9 and computed N10E together at N10W. Publication custody and issuer rights held.
