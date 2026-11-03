@@ -6,4 +6,4 @@
 5. G1 row balances: **892 = 846 LINKED + 28 UNPLACED + 18 REFERENCE_ONLY**; unplaced and W1-H 164 separate joins are retained with exact original references.
 6. Source checks: 136 internal Markdown links previously zero broken; the appended NAVIGATION_CHECKS/README changes link to existing guide paths; 27/28 historical G1-A source paths verified at stated cuts, F6M path corrected to actual pending branch candidate.
 7. Remaining work is *not G2*: independent receiving sample, subsequent full GitHub code/asset attaching and maturity/seam sweep; optional targeted Library/mainMac only after material GitHub completion.
-8. Continue at [`WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md`](../../../../WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md) and `README.md`; do not self-accept, commission further map authors or run source-native work from this guide.
+8. Continue at [`WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md`](../../../WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md) and `README.md`; do not self-accept, commission further map authors or run source-native work from this guide.
