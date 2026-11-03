@@ -838,10 +838,16 @@ def rebuild_from_journal(journal_path: Path | None = None, observed_source: dict
         observed_source = observe_source_cut(git_enabled=False)
     state = _base_state(observed_source)
     state["operating"] = operating
+    event_by_id = {e.get("event_id"): e for e in events}
     withdrawn = {
         e.get("payload", {}).get("withdraws_event_id")
         for e in events
         if e.get("kind") == "EVIDENCE_WITHDRAWAL"
+        # A textual caller-supplied principal cannot erase a qualified
+        # PROGRAMMA_DELTA source/readback. Use existing node-scoped P0/P1
+        # withdrawal + restoration until real source-owner custody is verified.
+        and (event_by_id.get(e.get("payload", {}).get("withdraws_event_id")) or {}).get("kind")
+        != "PROGRAMMA_DELTA"
     }
     applied = []
     for event in events:
@@ -871,6 +877,11 @@ def commit_event(body: dict, *, journal_path: Path | None = None, state_path: Pa
         try:
             existing_events = evidence_store.read_journal(target)
             _check_journal_regression(existing_events, Path(state_path or STATE))
+            if body.get("kind") == "EVIDENCE_WITHDRAWAL":
+                target_event = (body.get("payload") or {}).get("withdraws_event_id")
+                if any(e.get("event_id") == target_event and e.get("kind") == "PROGRAMMA_DELTA"
+                       for e in existing_events):
+                    raise ValueError("PROGRAMMA_DELTA_EVENT_ERASURE_REQUIRES_VERIFIED_OWNER_CUSTODY")
             actual_head = existing_events[-1]["event_id"] if existing_events else evidence_store.GENESIS
             # Opt-in strict CAS for PROGRAMMA_DELTA. Existing journal producers
             # retain their original append-and-report-stale behavior.
