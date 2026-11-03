@@ -1,0 +1,136 @@
+{
+  "artifact_commit": "PENDING_ARTIFACT_COMMIT",
+  "branch": "review/pyat-pdev01-gap007-r1",
+  "candidate_commit": "d3d6e48791623478fd1d838c7e95a72b77b5cd74",
+  "candidate_test": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 python3 -m pytest .../test_repair.py -q -o addopts=''",
+    "detail": "9 passed in 49.60s",
+    "failed": 0,
+    "log": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/final-recheck/evidence/candidate_test.log",
+    "log_sha256": "943011eb90eb48a26ce058eb62e85a71b5400d475f40b98cfc93e2850d39e05a",
+    "passed": 9,
+    "status": "PASS"
+  },
+  "checks": {
+    "executed_210": true,
+    "frozen_fixture_sha_guard": true,
+    "i05_identity_stable": true,
+    "i05_separate_from_p1": true,
+    "manifest_identity_stable": true,
+    "query_identity_stable": true,
+    "refused_630": true,
+    "release_identity_stable": true,
+    "release_reference_corrected": true,
+    "single_synthetic_carrier_reused": true,
+    "source_identity_stable": true,
+    "tamper_refusal": true,
+    "total_840": true,
+    "two_fresh_process_exact_cold_replay": true
+  },
+  "commands": [
+    "git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 archive d3d6e4879 WORKER_RETURNS/PDEV01-GAP007 | tar -x -C <disposable-snapshot>",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=<snapshot>:<sibling> python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=<snapshot>:<sibling> python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py --source <temporary-one-byte-changed-copy>",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<sibling> python3 -m pytest <sibling>/WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py -q -o addopts=''"
+  ],
+  "evidence": {
+    "report_receipt_check": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/final-recheck/evidence/REPORT_AND_RECEIPT_CHECK.json",
+    "report_receipt_check_sha256": "ce2b50275d9f95f8021a96d20e1e7fd44f25c25cd967af49d999c8bf158dbe0a",
+    "runs_results": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/final-recheck/evidence/FINAL_RECHECK_RESULTS.json",
+    "runs_results_sha256": "5d89527e3601423410ff320801ae69592b6a0c3b01ec165f838d540422cc119c",
+    "snapshot_receipt": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/final-recheck/evidence/SNAPSHOT_RECEIPT.json",
+    "snapshot_receipt_sha256": "ac3b3b6b8b0aaa8354c93069f81c2f392642c18852b17992566a3b6ef62e641a"
+  },
+  "limits": [
+    "Scoped to the exact d3d6e4879 candidate and TEST_ONLY synthetic fixture.",
+    "No original data, source rights, scientific adoption, production edit, merge, CI or wake.",
+    "I05 remains separate from P1 binding; one synthetic carrier is reused across all roster/wave entries."
+  ],
+  "observed": {
+    "accounting_status_counts": {
+      "BOUND_I03_QUERY": 210,
+      "TYPED_REFUSAL": 630
+    },
+    "actual_trace_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "batch": {
+      "completed": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      },
+      "receipt_count": 210,
+      "result_ref_count": 210,
+      "states": {
+        "COMPLETED": 210
+      }
+    },
+    "frozen_sav_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+    "i05": {
+      "candidate_count": 16,
+      "compilation_ref": "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9",
+      "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+      "fact_count": 30,
+      "native_result_type": "ExactBoundedDiscoveryResult",
+      "receipt_count": 16,
+      "receiver": "execute_governed_frontier/I05",
+      "status": "EXECUTED"
+    },
+    "manifest_ref": {
+      "content_hash": "6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab"
+    },
+    "no_drop": {
+      "all_840_accounted": true,
+      "bound_210": true,
+      "distinct_bound_operations": true,
+      "distinct_bound_query_refs": true,
+      "distinct_bound_units": true,
+      "distinct_original_operation_refs": true,
+      "no_invented_operations": true,
+      "unsupported_630": true
+    },
+    "query_ref_count": 210,
+    "release_ref": {
+      "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "report_release_ref": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+    "report_sha256": "319a6f167b2c7649cd98e1ffa6e8faaa3b72989aab7dc38b2c9e28cac8cbae13",
+    "run1_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "run2_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+    "stale_release_absent": true,
+    "tamper": {
+      "refusal_code_present": true,
+      "returncode": 2,
+      "stderr_path": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/final-recheck/evidence/tamper.stderr",
+      "stderr_sha256": "16d65e991172e6866685a9bee8fb603ddf894015e1528fb9bda4e37b4355e2d7",
+      "stdout_empty": true
+    },
+    "unsupported_typed_refusals": {
+      "CONDITIONAL": 210,
+      "HETEROGENEITY": 105,
+      "JOINT": 210,
+      "RECURSIVE_BRANCH": 105
+    }
+  },
+  "previous_review_commit": "bff80e2a729fac76d679a3d35d317e3f54631576",
+  "review_id": "PDEV01-GAP007-FINAL-RECHECK-R1",
+  "schema": "PDEV01_GAP007_FINAL_RECHECK@1.0.0",
+  "scope": {
+    "candidate_readonly": true,
+    "ci": false,
+    "engineering": true,
+    "merge": false,
+    "original_data": false,
+    "production_edit": false,
+    "science": "TEST_ONLY",
+    "sourcefree": true,
+    "wake": false
+  },
+  "status": "PASS_SCOPED__RELEASE_REFERENCE_RECONCILED__FROZEN_GUARD_ACTIVE__COLD_REPLAY_AND_ACCOUNTING_PRESERVED",
+  "verdict": "PASS_SCOPED",
+  "write_scope": "WORKER_RETURNS/PDEV01-GAP007-INDEPENDENT-REVIEW/final-recheck/**"
+}

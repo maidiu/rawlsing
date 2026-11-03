@@ -1,0 +1,63 @@
+{
+  "schema": "PDEV01_GAP007_FINAL_RECHECK_TEST_RESULTS@1.0.0",
+  "candidate_commit": "d3d6e48791623478fd1d838c7e95a72b77b5cd74",
+  "previous_review": "bff80e2a7",
+  "commands": [
+    "git -C /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-gap007 archive d3d6e4879 WORKER_RETURNS/PDEV01-GAP007 | tar -x -C <snapshot>",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=<snapshot>:<sibling> python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=<snapshot>:<sibling> python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py",
+    "python3 <snapshot>/WORKER_RETURNS/PDEV01-GAP007/repair/replay_repair.py --source <temporary-one-byte-changed-copy>",
+    "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=<sibling> python3 -m pytest <sibling>/WORKER_RETURNS/PDEV01-GAP007/repair/test_repair.py -q -o addopts=''"
+  ],
+  "results": [
+    {
+      "command": "frozen SHA and release reference",
+      "status": "PASS",
+      "detail": "Frozen SAV 5009f3c9…; report and actual trace both use release 64cf774b…; stale 383716 absent."
+    },
+    {
+      "command": "cold replay runs 1 and 2",
+      "status": "PASS",
+      "detail": "Identical output hashes bba0de82…; source, release, 210 query refs, manifest and I05 stable; committed actual_trace equal."
+    },
+    {
+      "command": "tampered frozen fixture",
+      "status": "PASS_REFUSED",
+      "detail": "One-byte changed SAV exited 2 with empty stdout and FROZEN_SOURCE_SHA256_MISMATCH."
+    },
+    {
+      "command": "candidate test_repair.py",
+      "status": "PASS",
+      "passed": 9,
+      "failed": 0,
+      "detail": "9 passed in 49.60s."
+    }
+  ],
+  "core": {
+    "executed_210": true,
+    "refused_630": true,
+    "total_840": true,
+    "batch": {
+      "receipt_count": 210,
+      "completed": 210,
+      "result_ref_count": 210,
+      "fact_state_counts": {
+        "SUPPORTED": 210
+      }
+    },
+    "i05_separate_from_p1": true,
+    "single_synthetic_carrier_reused": true
+  },
+  "verdict": "PASS_SCOPED",
+  "sourcefree": true,
+  "science": "TEST_ONLY",
+  "original_data": false,
+  "candidate_readonly": true,
+  "merge": false,
+  "ci": false,
+  "wake": false,
+  "limits": [
+    "Scoped to the exact d3d6e4879 candidate.",
+    "No original data, source rights, production edit, merge, CI or wake."
+  ]
+}

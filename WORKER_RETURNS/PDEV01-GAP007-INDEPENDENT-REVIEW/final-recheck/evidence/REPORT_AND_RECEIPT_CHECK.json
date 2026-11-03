@@ -1,0 +1,72 @@
+{
+  "accounting": {
+    "BOUND_I03_QUERY": 210,
+    "TYPED_REFUSAL": 630
+  },
+  "actual_trace_equals_run1": true,
+  "actual_trace_equals_run2": true,
+  "actual_trace_sha256": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+  "batch": {
+    "completed": 210,
+    "fact_state_counts": {
+      "SUPPORTED": 210
+    },
+    "receipt_count": 210,
+    "result_ref_count": 210,
+    "states": {
+      "COMPLETED": 210
+    }
+  },
+  "candidate_commit": "d3d6e48791623478fd1d838c7e95a72b77b5cd74",
+  "i05": {
+    "candidate_count": 16,
+    "compilation_ref": "78568e5e47b086d9f537a6359b8e729ab2d8e42305981075d21aa613e0b31dc9",
+    "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+    "fact_count": 30,
+    "native_result_type": "ExactBoundedDiscoveryResult",
+    "receipt_count": 16,
+    "receiver": "execute_governed_frontier/I05",
+    "status": "EXECUTED"
+  },
+  "machine_receipts": {
+    "01_ACTUAL_RECEIPT.json": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "actual_trace.json": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "cold_replay_1.json": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+    "cold_replay_2.json": "bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab"
+  },
+  "machine_receipts_all_equal_actual": true,
+  "manifest_ref": {
+    "content_hash": "6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab",
+    "kind": "PRE553BatchManifest@1.0.0",
+    "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:6fd0f47cde582407a6afb6f21d3fb5c7d001cc14b03f688f34cce87770eef8ab"
+  },
+  "no_drop": {
+    "all_840_accounted": true,
+    "bound_210": true,
+    "distinct_bound_operations": true,
+    "distinct_bound_query_refs": true,
+    "distinct_bound_units": true,
+    "distinct_original_operation_refs": true,
+    "no_invented_operations": true,
+    "unsupported_630": true
+  },
+  "operation_count": 840,
+  "previous_review": "bff80e2a7",
+  "release_ref": {
+    "content_hash": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+    "kind": "C11LogicalRelease",
+    "object_id": "R56-SYNTHETIC-RELEASE"
+  },
+  "report_release_ref": "64cf774b408686394c8caf9969f442b518e365d04c924bafefb6204239c9bf03",
+  "report_sha256": "319a6f167b2c7649cd98e1ffa6e8faaa3b72989aab7dc38b2c9e28cac8cbae13",
+  "schema": "PDEV01_GAP007_FINAL_REPORT_RECEIPT_CHECK@1.0.0",
+  "source_sha256": "5009f3c9272dcbfb15a48b17cfff51f9afa67e60d6a2c1364c9aa07bc6732e4f",
+  "stale_release_present_in_repair_files": false,
+  "stale_release_ref": "383716e4c9d233df69ef8cd508f7ffa5053d7a7355e7135a170eb1c2b337d9c1",
+  "tamper_guard": {
+    "refusal_code_present": true,
+    "returncode": 2,
+    "stdout_empty": true
+  },
+  "verdict": "PASS_SCOPED"
+}
