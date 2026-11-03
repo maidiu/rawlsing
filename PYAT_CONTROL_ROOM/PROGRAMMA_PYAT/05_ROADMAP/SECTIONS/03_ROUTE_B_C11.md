@@ -1,5 +1,18 @@
 # ROADMAP:S03 — Physical and logical source carrier: Route B, C11, I03, I05 and Batch
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S03.1–S03.5; historical gaps GAP-009, GAP-011–015.** R58 accepted **sourcefree** synthetic bytes → [R04.byte _acquire_source_snapshot](https://github.com/maidiu/rawlsing/blob/31a39c50cb5e8487968ab7b00386912fc5f1d6ca/rawlsing_next/pre553_physical_decoder.py#L308) → [R02 materialize_native_preimages](https://github.com/maidiu/rawlsing/blob/6f4be33854c0437a52e1c49b977104db111ac327/rawlsing_next/pre553_source_native_preimage_adapter.py#L523) → unchanged C11 facade/I03. Reviewed R04.byte candidate blob **8732e3...** differs from control 9809203fd915a84bae056a67210e9213879840db decoder blob **4b89c4...**. R03 actual receipt/anti-join and R04.joined [capture:593](https://github.com/maidiu/rawlsing/blob/e6f7b04c49772e07c20ad36f65b9b270a28a49cf/rawlsing_next/pre553_issued_workload.py#L593)/[restore:665](https://github.com/maidiu/rawlsing/blob/e6f7b04c49772e07c20ad36f65b9b270a28a49cf/rawlsing_next/pre553_issued_workload.py#L665)/[resume:746](https://github.com/maidiu/rawlsing/blob/e6f7b04c49772e07c20ad36f65b9b270a28a49cf/rawlsing_next/pre553_issued_workload.py#L746) have independently reviewed local TEST_ONLY completed/partial replay, not global durable exactly-once.
+
+**Critical negative:** [R09V-R2 reviewer](https://github.com/maidiu/rawlsing/blob/25510c8d84f0ae5e452b301b017bdedf46f40b5c/WORKER_RETURNS/PYAT-R61-R09-INDEPENDENT-REVIEW-R1/revisions/r2/00_RETURN.md#L1) **REVISE/DEPLOYMENT_HOLD**: a child-forged result/loaded-byte digest is parent-HMAC sealed. A real committed local C11 positive does not fix independent observation. Historical R42 full C11 successor is a governed separate branch, and S44 SRC27 historical positive does not generalize all35; J42 same-source E04 does not replace C11 original source permission. Keep S-C11/S-I03/S-I05/S-BATCH native holds.
+
+**Next owner:** original source/admin approves real admissible inputs; host/security engineer supplies independently parent/OS-captured results and bytes, followed by distinct review.
+
+---
+
+
 **PASS 1 complete; PASS 2 source-linked rough evidence added. This is not native acceptance.** [Whole map](../README.md) · [cross-plan index](../CROSS_PLAN_IDS.md) · [typed seams](../PLANNED_INTERFACES.jsonl) · [input cuts](../INPUT_CUTS.md). Every forward link describes an intended function, not necessarily an operational endpoint.
 
 ## Purpose, inherited plan IDs and scope
