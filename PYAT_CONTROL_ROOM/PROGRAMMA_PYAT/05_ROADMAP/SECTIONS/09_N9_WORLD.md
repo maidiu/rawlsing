@@ -8,14 +8,72 @@
 ### S09.1 Actual admitted world content
 Serve only appropriately sourced structural/empirical/field/time products for declared world scope; record exact permissions, uncertainty and negative/partial products. Synthetic fixture snapshots are not present-day source-native world.
 
+
+#### G4-P4 function evidence — S09.1
+
+| Exact current code at PRE-MAIN 9809203fd915a84bae056a67210e9213879840db | Best earlier capability at main 25830fe7462bb9e29bc4087e6ae14f3f84cec377 | Requirement / scoped receiver / disposition |
+| --- | --- | --- |
+| [publish_objective_position_fact:423](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/prev3_objective_position_v557_v558_publication.py#L423) and [resolve_bound_objective_position_context:622](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/prev3_objective_position_v557_v558_publication.py#L622); **source inspection**, narrow J04 PREV3_OBJECTIVE_POSITION_FACT@1.0.0 for Afrobarometer R5 BEN0002/Q73A M4 CONTEXT only. | [build_v554_seed_contract:897](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v554_seed_contract.py#L897): bounded seed readiness/absences, G3-A NO_CURRENT_MATCH_VERIFIED, historical/unadopted. | [Astra N9](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N9.md) requires admitted, permissioned current/historical world families; G3-B **MISSING_PRODUCER_OR_READER**, G1B-S27 and S-SERVE, GAP-039. **No** general original35 N9 world receiver or native source issuance is verified. |
+
+**Prerequisite equation:** selected N9 world = exact scope and demanded F/learned/field/time products **AND** their source/semantic permissions **AND** explicit retained negative/partial states; N4/N5/N6/N7/N8E/N8S are each **IF demanded by this world scope**, never global MUSTs. A source-valid previously retained product is a legitimate alternative to re-producing that same product where owner custody allows it, not an alternative to permission.
+
+**Next accountable leaf:** world/source owners freeze world demand and original-source admissibility by family; engineering assembles qualified content and dependency closure with real selected-world identity. Do not promote J04 item context, field profile, or E03 synthetic world into all-family N9. **Grade:** code read S1; historical function documentary/direct G1-A; neither native acceptance nor whole-world integration.
+
+
 ### S09.2 Version and current/as-of choice
 Release identity, owner-scoped permission, temporal expiry, selection/invalidation, current/historical replay and retained evidence. Source age or newest file name never equals authoritative CURRENT.
+
+
+#### G4-P4 function evidence — S09.2
+
+| Exact current code at PRE-MAIN 9809203fd915a84bae056a67210e9213879840db | Best earlier capability | Requirement / scoped receiver / disposition |
+| --- | --- | --- |
+| [LearnedProductLifecycleExecutor](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py) and [compose_learned_world:1101](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1101): learned M1/M2/B5 scoped PR605 selection/staging; **not** a general N9 as-of resolver. No non-test N9 receiver proved. | [I01K sourcefree world lifecycle candidate](https://github.com/maidiu/rawlsing/blob/a1dc59411faaee01b3acb1c4f08b2e6f09d56028/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py) and [build_v557_renderer_contract:142](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v557_renderer_contract.py#L142); historical candidate/boundary only, not adopted current I01. | [Astra N9](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N9.md) current/historical selection + owner permission/expiry. G3-B **PARTIAL**, G1B-S19/S34, GAP-040. Latest blob/date does not prove CURRENT or correct as-of. |
+
+**Prerequisites:** source-qualified world releases **AND** owner-scoped version/currentness selection **AND** selective invalidation, replay, negative/expired state. Conditional family presence depends on declared served scope. B5 limited learned selection is useful implemented capital but cannot by naming satisfy N9 world version semantics.
+
+**Next leaf:** world/version owner specifies exact as-of selection/invalidation policy; engineer demonstrates selected current, historical replay, stale/expired, permission-revoked and NO_CURRENT outcomes with typed source closure and first downstream result. **Grade:** source code S1; PR605/W1-B sourcefree reported; no original35 native measured world or real served receiver.
+
 
 ### S09.3 Dependency and negative conservations
 Bounded subset of demanded N4/N5/N6/N7/N8E/N8S/learned inputs, with explicit conditional edge per family and a receipt for held or absent world material; cold restore is not native remeasurement.
 
+
+#### G4-P4 function evidence — S09.3
+
+| Exact current code at PRE-MAIN 9809203fd915a84bae056a67210e9213879840db | Earlier related boundary | Requirement / scoped receiver / disposition |
+| --- | --- | --- |
+| [materializer import:22](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/prev3_objective_position_v557_v558_publication.py#L22) imports rawlsing_next.prev3_objective_position_materializer (ObjectivePositionFact, contract/status identifiers); **the target rawlsing_next/prev3_objective_position_materializer.py was 404 at this same immutable PRE-MAIN cut**. Narrow J04 publication code exists but same-cut import closure is not established. | [build_v558_runtime_input_gate:164](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_runtime_input_gate.py) (historical bounded exact-input rule; G3-A PARTIAL_ANALOG only), [build_v556_pressureflow_attractor:124](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v556_pressureflow.py#L124) (structural prerequisites, not generic N9). | [Astra N9](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N9.md) dependency closure/typed negative. G3-B **MISSING_PRODUCER_OR_READER**, G1B-S27/S-SERVE, GAP-038. No assertion that the module is absent on **all** branches or that J04 grants general M4 roots. |
+
+**Prerequisite law:** exact compatible producer and reader versions **AND** retained dependency refs and evidence bodies **AND** per-source permissions **AND** explicit partial, valid empty, withheld, expired and absent distinctions. Each N4/N5/N6/N7/N8E/N8S gate is **IF the selected world demands its family**, not all-at-once global blocker.
+
+**Next leaf:** engineering ABI owner resolves import at a named compatible cut or records a held version; world owners independently decide authoritative missing/negative product treatment and selective invalidation. The broken same-cut import blocks positive callability claims for that publisher, not every historical alternative. **Grade:** direct import read + exact GitHub path nonexistence S1; no execution/test in this task.
+
+
 ### S09.4 Real first reader and old I01
 Find actual N10W world resolver consuming selected N9 content, not static test imports. Historical I01/K lifecycle offers sourcefree functionality, remains nonadopted until independently verified current owner/receiver.
+
+
+#### G4-P4 function evidence — S09.4
+
+| Current observed reader/candidate at PRE-MAIN 9809203fd915a84bae056a67210e9213879840db | Historical alternative | Requirement / scoped receiver / disposition |
+| --- | --- | --- |
+| [synthetic_world_rows:120](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_n9_n10w_progressive_candidate.py#L120) → [run_progressive_chain:466](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_n9_n10w_progressive_candidate.py#L466); source imports test fixtures; its fixture reader is **not** a selected current/as-of N9 first reader. [compose_learned_world:1101](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1101) has no verified non-test N9 importer. | [I01K candidate](https://github.com/maidiu/rawlsing/blob/a1dc59411faaee01b3acb1c4f08b2e6f09d56028/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py) (old sourcefree overlay, G3-A NO_CURRENT_MATCH_VERIFIED). V557/V558 historical renderer/gate handle narrow boundary, not N10W future possibilities. | [Astra N10W](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md) consumes N9 **MUST**, plus separate N10E **MUST**. G3-B **MISSING_PRODUCER_OR_READER**, G1B-S15/S19/S28/S34 and ASTRA:REQ:N9:N10W, GAP-041. Actual source-selected N9→N10W field use **not verified**. |
+
+**Next accountable leaf:** N9 world/consumer engineers supply a same-version selected N9 resolver and a concrete N10W call whose output changes when a legitimately admitted world determinant changes; record as-of identity, exact permission, partial/negative path and first caller. Independent I01K recovery is **OR** a compliant new compatible implementation route after separate adoption review, never automatic proof. S10.2 is the downstream join to check. **Grade:** direct fixture code and G3-B metadata; earlier W1-B fixture tests only; no native run.
+
+
+
+## G4-P4 status at the pinned current/earlier cuts
+
+| Child | Scoped G3-B state | Observed edge(s) | Remaining real gate |
+| --- | --- | --- | --- |
+| S09.1 | MISSING_PRODUCER_OR_READER | S-SERVE; G1B-S27 | GAP-039: multi-family source-qualified N9 content |
+| S09.2 | PARTIAL | G1B-S19, S34 | GAP-040: version, current/as-of selection and invalidation |
+| S09.3 | MISSING_PRODUCER_OR_READER | G1B-S27; six ASTRA:IF:family:N9 edges | GAP-038: same-cut missing import and typed negative closure |
+| S09.4 | MISSING_PRODUCER_OR_READER | ASTRA:REQ:N9:N10W; G1B-S15, S28 | GAP-041: first real N10W world read |
+
+**Evidence ledger:** G2 guide at 6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d; frozen construction input b65d8f0eecb44f0d1b37eed82c913433a4224d1e; G3-A historical/current parity 93c821e419b42918d98c71f87999735e786c92df, G3-B 82-edge/62-capsule assessment b2641c1944b247d5a510f0b4eae6421db077decd, both staged into prepared branch. PRE-MAIN current 9809203fd915a84bae056a67210e9213879840db; main historical 25830fe7462bb9e29bc4087e6ae14f3f84cec377. A read-only comparison of integration/pre-main-reconciliation-r1 to the pinned PRE-MAIN cut returned **identical**; no newer distinct PRE-MAIN cut was established. **Architectural IF is not fulfilled code; PARTIAL is not N9 served/native.** No tests/owner review were run here.
 
 ## Inputs, downstream and proof ceiling
 Input: admitted F5/F6/F7/learned and objective producers as demanded. Output: source-valid permissioned N9 world snapshot to N10W or scoped HOLD. **UNKNOWN:** actual current whole-world occupancy and real receiving. **Mandatory N9→N10W**.
