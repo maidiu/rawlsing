@@ -2,6 +2,8 @@
 
 **Status:** source-graded PROGRAMMA guide *candidate*, not a worker launch, code test, scientific issuance, HQ appointment, protected integration or authority grant. The source-cut G4 82 edges, 62 capsules and 49 GAP IDs are unchanged; this is a **dated later observation** and a proposed decision procedure. Read [binding historical succession/work-selection law](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) first, then original [typed dependencies](PREREQUISITES_AND_UNLOCKS.md), [SAT-R handback](SATURATION_CODEX_REUSE_HANDOFF.md), and current GitHub HEAD.
 
+**Machine-readable paired observation:** [13-row edge-ID-keyed post-SAT-R delta](POST_SATR_CURRENT_EDGE_DELTA_20261103.jsonl) retains the exact original 82-edge G4 blob/predicates and separately records the protected PR #646 sourcefree positive, its original35/native negatives and owner-held next class. This file is a delta, **not** a rewrite of CURRENT_SEAM_STATES.jsonl or an automatic status green.
+
 ## First correct the development state: PR #646 is a merged, positive sourcefree first-consumer path
 
 **Actual protected PRE-MAIN at this observation:** `079e819f81d77857d6c39c9817ea43d22b4e45ff`, [PR #646](https://github.com/maidiu/rawlsing/pull/646) merged. The incumbent HQ's [campaign outcome](https://github.com/maidiu/rawlsing/blob/5f78f3d4516df6c08a399df37c62a2ed8dd13e8b/PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/CAMPAIGN_OUTCOME.md) reports independent candidate review `771bc4ebd49759479d76386ba986e9a69146c607`, connected 1 PASS + 8 focused PASS; author 34 related PASS; unchanged broader 144 PASS / 3 historical hash-pin FAIL.
