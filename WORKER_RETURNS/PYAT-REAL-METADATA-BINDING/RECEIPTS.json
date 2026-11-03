@@ -1,0 +1,114 @@
+{
+  "base_commit": "6949efbc3bb17d1ee2b00c9c0935f921a6a93fd8",
+  "c11_counts": {
+    "coordinate_slots": 3,
+    "questions": 178,
+    "respondents": 7337,
+    "response_slots": 178,
+    "routing_facts": 1305986
+  },
+  "c11_projection_ref": {
+    "content_hash": "60206b998f89711801fa689283c20a6589281b77575a5ab002ad7c8cf23a51a8",
+    "kind": "C11_SEMANTIC_PROJECTION",
+    "object_id": "urn:rawlsing:r157:original:SRC04:projection"
+  },
+  "config_canonical_sha256": "0e86814b62eb51dc9da22793b6de3e3598c3415632accb80f33bac965185f284",
+  "config_file_sha256": "eb4c051ff2845bf3c8c7b5bfee08ea4c9879c7a5264cf1aa6290e3fd457bc900",
+  "crosswalk_sha256": "034d626365249941618d66f6103a557209fce5d95362e3ddf77e29f2fe7fba23",
+  "edition_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+  "files": {
+    "00_RETURN.md": {
+      "bytes": 4605,
+      "sha256": "3608df462adeff09a1bd767ae195eef349fa1943c5617b1f38056b4bb442d41b"
+    },
+    "01_REDACTED_RECEIPT.json": {
+      "bytes": 5696,
+      "sha256": "f2f30d55dd3bfe9d284641db39afc8335d19a94c6b8c5cfa42ac0cb68bc50283"
+    },
+    "02_COMMANDS.md": {
+      "bytes": 2358,
+      "sha256": "4c6ae34033902379ed32c5854c887a6552f51289dd2e4c30ed10b0f76c728654"
+    },
+    "03_OWNER_LIMITS.md": {
+      "bytes": 2239,
+      "sha256": "888ac8c597eb9b55e87456fadf0f627fcd611be37796e7e15e29d419254f8854"
+    },
+    "attempt.stdout.log": {
+      "bytes": 2044,
+      "sha256": "d2b178a818255b6f018c9e8bdef4020d91569cdb29af32a5c77c2800770708ff"
+    },
+    "bind_real_metadata.py": {
+      "bytes": 13589,
+      "sha256": "9b32e3992241b55e87b3b3a2a4bb634c4be99fba47c24268d2bec02ac984fd4f"
+    },
+    "test_metadata_binding.log": {
+      "bytes": 98,
+      "sha256": "988344a7589dd35ded61b8e784dcd5bc43cb64ba0f19a2bda1a7ec44b380abcb"
+    },
+    "test_metadata_binding.py": {
+      "bytes": 3944,
+      "sha256": "f874e6ed2ce231915d6c50c94378cd27f253f34fd4567ea6ab5ecfb67f6f27ca"
+    },
+    "test_metadata_binding_junit.xml": {
+      "bytes": 900,
+      "sha256": "21a47319f450196aba7a8f89290013ce094fc662baa8f8775be15775656fe70a"
+    }
+  },
+  "first_missing": {
+    "artifact": "exact SRC04 source form/repetition identity for configured response operands",
+    "current_value": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE",
+    "downstream_missing": {
+      "artifact": "exact R03 GrammarPolicy/authorized direction grant",
+      "owner": "R03 GrammarPolicy/direction owner; no policy is supplied by the source configuration"
+    },
+    "fields": [
+      "supported_scope.supported_form_slice",
+      "OccurrenceKey.form_id",
+      "OccurrenceKey.repeat_id"
+    ],
+    "next_missing": {
+      "artifact": "exact routing/eligibility and denominator handoff",
+      "counts": {
+        "risk_set_unresolved": 178,
+        "routing_entries": 178,
+        "routing_unknown": 178
+      },
+      "fields": [
+        "routing[].typed_state",
+        "routing[].risk_set_ref",
+        "risk_set_refs"
+      ],
+      "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger"
+    },
+    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger",
+    "why": "The source configuration records a single-file SAV shape but explicitly lacks form, ballot or administration variable evidence; R03 form/repeat identity is not established."
+  },
+  "fixture_release_ref": {
+    "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42",
+    "kind": "C11LogicalRelease",
+    "object_id": "R157_FIXTURE_RELEASE/SRC04"
+  },
+  "fixture_validation_match": true,
+  "metadata_origin": "agent/pyat-pre553-r157-integration@056849e23",
+  "r03": {
+    "candidate_count": 178,
+    "candidate_scope": "item-only candidate keys; not accepted as exact occurrences",
+    "entrypoint": "rawlsing_next.universal_grammar.types.OccurrenceKey",
+    "execution_performed": false,
+    "form_exact": false,
+    "form_slice": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE",
+    "inventory_constructed": false,
+    "item_identity_available": true,
+    "policy_exact": false,
+    "repeat_exact": false,
+    "risk_set_unresolved_count": 178,
+    "route_exact": false,
+    "routing_unknown_count": 178,
+    "unique_candidate_count": 178
+  },
+  "schema": "PYAT_REAL_METADATA_BINDING_RECEIPTS@1.0.0",
+  "source_id": "SRC04",
+  "test_receipts": {
+    "focused": "4 passed"
+  }
+}
