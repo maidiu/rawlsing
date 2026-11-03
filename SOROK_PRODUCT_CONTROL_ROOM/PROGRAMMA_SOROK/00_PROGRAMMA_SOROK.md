@@ -1,4 +1,9 @@
 # PROGRAMMA SOROK
+
+### PENDING DIRECT HQ WRITE-THROUGH — WHOLE-PERSON OPERATING ENTRY (2026-11-03)
+
+See the [shared proposed one-page operating spine](../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_HQ_OPERATING_SPINE_LIVE_UPDATE_AND_CONSOLIDATION_CANDIDATE_R1.md). The **incumbent Sorok HQ** must keep the selected *current* PROGRAMMA state-of-organism model synchronized with actual source-qualified engineering, independent review, first-consumer, original-authority and negative evidence, including status/stage, actual missing function, owner, source/root/clock, ALL/ANY/IF dependencies and smallest work-now. A worker `PROGRAMMA_DELTA` is input; until qualified HQ edit and publication to the current guide, display `PENDING_GUIDE_INTEGRATION` rather than marking the frozen guide current. **Astra, original V3, Neo-V3 and original human vision are already top-level inherited foundations**, not missing architecture to invent anew. This is a **proposed documentation-branch addition**, not PRE-MAIN/guide-owner adoption, new science/native grant, protected merge, competing reference or an instruction to pause useful building.
+
 ## Complete psychological-developmental and human-product science, historical inheritance and source-qualified lived person
 
 **Full name:** **Programma Sorok — Objective World → Historical Development → Continuing Person**.
