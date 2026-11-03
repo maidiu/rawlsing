@@ -1,0 +1,45 @@
+{
+  "schema": "SOROK_PROGRAMMA_DELTA@1",
+  "kind": "SCOPED_REVIEW",
+  "transition_id": "JOIN_E_7BF_SCOPED_REVIEW",
+  "guide_sha": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+  "node_id": "JOIN_E_7BF",
+  "guide_ref": "E021@VERIFY",
+  "owner_slot": "JOIN_E_OWNER",
+  "return_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+  "subject_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+  "grade": "SOURCEFREE_SCOPED",
+  "source": {
+    "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md",
+    "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+    "object_type": "blob"
+  },
+  "locator": {
+    "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md",
+    "quote": "TEST_ONLY_SOURCEFREE"
+  },
+  "review": {
+    "commit": "4387dc818a96fda2d5271672505fbd9da1059703",
+    "path": "WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md",
+    "blob": "52dfc715bed3ef14cc3dc4639132c409c4e99712",
+    "object_type": "blob"
+  },
+  "coordinate": {
+    "source_cut": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "code_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+    "root": "JOIN_E_7BF_SOURCEFREE",
+    "scope": "SOURCEFREE_FORK_COLD_7BF",
+    "code": {
+      "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "blob": "dc0894289e8b6a5e66148189e41d7efb563f25af",
+      "object_type": "blob"
+    },
+    "first_consumer_symbol": "class JoinedSession"
+  },
+  "next_evidence": "Joint C9 writer/C12 reader exact schema/root/ACK/anchor owner selection, separate new-tuple cold/severance and independent review. No native grant.",
+  "prior_negative": [
+    "RRIF_R2_8090_REVISE_PERSISTS_OTHER_CUT"
+  ]
+}
