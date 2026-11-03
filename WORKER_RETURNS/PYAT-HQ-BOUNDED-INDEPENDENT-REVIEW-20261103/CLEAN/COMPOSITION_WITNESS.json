@@ -1,0 +1,61 @@
+{
+  "common_release": false,
+  "common_source_sha256": false,
+  "common_universe": false,
+  "joined_trace_claimed": false,
+  "note": "R04 pending-unit custody and R06 actual consumer are independently qualified on distinct synthetic fixtures; existing tests do not establish a common exact release/unit lineage and this review does not claim one.",
+  "r04_custody_fixture": {
+    "decisions": [
+      {
+        "content_hash": "64dd0600390922b3aa83492ac25597c2425ed810fa8ed3bcec4593b2d5b737ba",
+        "kind": "TEST_ONLY_DECISION",
+        "object_id": "urn:rawlsing:b49:test_only_decision:R03-b6ecc89be5e30429-2026-10-24"
+      },
+      {
+        "content_hash": "95b4fc309c39d675a2312352f1adc7929b8ca118a59ce270ff19eb1ee89f6187",
+        "kind": "TEST_ONLY_DECISION",
+        "object_id": "urn:rawlsing:b49:test_only_decision:R03-e7785f9596853181-2026-10-24"
+      },
+      {
+        "content_hash": "21d57dfc0a44033e37ba8bbcc8498acac1506c6e11331e94ae2b8a6338c0317a",
+        "kind": "TEST_ONLY_DECISION",
+        "object_id": "urn:rawlsing:b49:test_only_decision:R03-ee1d75620c955b24-2026-10-24"
+      }
+    ],
+    "expected_frontier_root": "fe0f81a7f2377aac5455ab0e10597e63fe827a9a89b46f5ee8de40506ba91def",
+    "original_u_root": "d1ec06591f5c997d5d4a8c473a30403bcdf96330d874c8d39bedc54523cae8ad",
+    "release": {
+      "content_hash": "b631bfb66bfcca17880831ba1dd2473e2b7349877310b45b0b3665055bf397d0",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    },
+    "source_sha256": "447f17471d5ebacce57e53d6b4850856310c781679c3c47a83c7299d4883f96a",
+    "source_universe_refs": [
+      {
+        "content_hash": "72718ed284ba5c31814ebff8bce98c4f116918c707eef940f6e7ecce59f71079",
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:72718ed284ba5c31814ebff8bce98c4f116918c707eef940f6e7ecce59f71079"
+      }
+    ]
+  },
+  "r06_consumer_fixture": {
+    "consumer_query": {
+      "content_hash": "7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78",
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:7501928df8d4069934826faf3e69bd60a7bccb3da561141fa892867ca7d08d78"
+    },
+    "consumer_universe": {
+      "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+    },
+    "m01_source_sha256": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+    "release": {
+      "content_hash": "95de34f09fa9ae4aac6c6a3c73ea7ff9dff5ef18189bac940805f30126fce88c",
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-m01"
+    },
+    "source_sha256": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54"
+  },
+  "schema": "PYAT_CLEAN_BASE_COMPOSITION_WITNESS@1.0.0"
+}
