@@ -110,4 +110,13 @@ Exact machine copy: `03_ACCEPTANCE_EXAMPLES.json`.
 
 ## 8. Publication
 
-Exact scoped commit and ordinary-push readback are recorded in `PUBLICATION_RECEIPT.json` after publication and returned in the final handback.
+Scoped specification commit `afa106e20eec3aa946d6b149080e25297cb783b7` was pushed with an ordinary non-force push to `origin/codex/sorok-s11-encounter-exit-spec-r1`. Direct remote readback:
+
+```text
+git rev-parse HEAD
+afa106e20eec3aa946d6b149080e25297cb783b7
+git ls-remote origin refs/heads/codex/sorok-s11-encounter-exit-spec-r1
+afa106e20eec3aa946d6b149080e25297cb783b7  refs/heads/codex/sorok-s11-encounter-exit-spec-r1
+```
+
+`PUBLICATION_RECEIPT.json` records the exact branch/base/guide/original/JOIN-E/CP-A5 references and readback. This metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the handback. The S35 branch and untracked `.s35-sources`/`.runtime` artifacts were not modified.
