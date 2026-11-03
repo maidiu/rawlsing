@@ -1684,3 +1684,6 @@ Candidate `8779504a638ff39d6904ed2faf5a718242084c4e`, review `e24b70eac51d0894c7
 
 
 Same-source trace task launched under existing R91/R95 grants: `agent/pyat-same-source-resume-consumer-20261103-r1`, commission `f9d9363162`, existing author session `ses_e98c905cbffekusoHURfKyEUKG`, PID 64157 observed live. Completion uses existing finite controller notification. Launch is not completion or acceptance.
+
+
+Receiving candidate published: draft [PR #646](https://github.com/maidiu/rawlsing/pull/646), exact head `ea503425a6`, base `9809203fd9`. No protected merge/adoption performed; existing owner/CAS authority remains required.
