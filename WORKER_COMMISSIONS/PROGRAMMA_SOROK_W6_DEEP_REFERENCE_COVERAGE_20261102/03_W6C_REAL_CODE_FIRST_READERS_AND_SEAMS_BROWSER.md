@@ -1,4 +1,25 @@
 # LAUNCH — PROGRAMMA SOROK W6-C — ACTUAL CODE/FIRST CONSUMER/SEAM SATURATION BEYOND E001–E022
+
+## USER REQUIREMENT R2 — THE SEAM MAP MUST DRIVE PRACTICAL WORK ORDER (2026-11-02)
+
+Read 05_EXECUTABLE_DEPENDENCY_READINESS_AND_PRIORITY_CONTRACT_R2.md FIRST. The user's target is "in order to KNOW or BUILD X, Y/Z must already be complete", cascading until actionable leaves, priority and genuinely coupled work can be derived. Your current-code/contract research must **bind every consequential seam to what it actually unlocks or blocks**; a status-only interface catalog is insufficient.
+
+**Mandatory added output discipline:**
+- Every existing E001–E022 parent and every justified newly discovered important seam has from-component@phase and to-component@phase IDs, concrete producer, artifact fields/schema/root/permission and actual consumer or NONE_PROVEN; exact source/test/adoption grades and single smallest qualifying action.
+- Indicate which prerequisite gate from the W6 shared contract this seam satisfies/blocks. Where W6-B's final child ID does not yet exist because workers are parallel, use a **source-stable original IDs + target stage** join key (e.g. source original C9 BUILD to C12 INTEGRATE) and propose the child gate ID for integrator reconciliation; never create independently incompatible canonical IDs.
+- Differentiate (a) source/contract needed to **specify** the connection, (b) code needed to **build** it, (c) actual import/compatibility needed to **integrate** it, (d) test/owner grant needed to **verify/accept** it. A mismatch between two candidate roots is not a demonstrated failed current importer.
+- For each material missing seam, report concrete earliest possible task: source-owner decision, interface co-design, producer adapter, consumer reader, version/root pin, test, review, or actual human/product verification. State what prerequisites allow that task to begin and which work can run concurrently despite other held native gates.
+- Where producer and consumer genuinely depend on each other's interface choices, mark a **joint design / coupled package candidate**, with exact participants, shared typed contract and acceptance interface; distinguish this from an accidental unsupported dependency cycle. The final classification belongs to source-backed fan-in with W6-B.
+- Derive at least a **small candidate READY / SPECIFY_FIRST / OWNER_HELD / BLOCKED / CO_DESIGN** list from your concrete seam findings. This is evidence for the later unified work-now view, not an independent second project backlog.
+
+**Additional required file:** 05_SEAM_GATE_EFFECTS_AND_READY_INTEGRATION_WORK.jsonl — each material connection's effect on specific target@phase gates, qualification and owner, next ready/unready work and conditional unlocks. This file can reference 01_ACTUAL_PRODUCER_CONSUMER_CONTRACTS.jsonl without duplicating full code details.
+
+Preserve original E IDs, detailed source cuts and all current W4/W5 acceptance limitations. Never claim direct live/native execution from Browser.
+
+**This R2 block overrides narrower W6-C instructions below.**
+
+---
+
 **ROLE:** Independent high-rigor Browser source/code/function and producer→consumer interface mapper; not current Sorok HQ, S2/S3 executor, original science authority, native integrator or own reviewer.
 **BRANCH:** `research/programma-sorok-w6c-real-seams-20261102-r1` (create from W5 cut, isolated).
 **RETURN:** `WORKER_RETURNS/PROGRAMMA_SOROK_W6C_REAL_SEAMS_20261102_R1/`.
