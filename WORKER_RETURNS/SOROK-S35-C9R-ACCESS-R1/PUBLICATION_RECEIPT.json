@@ -1,19 +1,26 @@
 {
   "base": "4170fbf19a9d5a64bc728f5b22156bbffcec51e5",
   "branch": "codex/sorok-s35-c9r-access-r1",
+  "compat_base": "a6b1f10b37c0748b0b6880e1870a2c4f07844be9",
   "evidence_commit": "e1cea3f03555dd96d5b78dd0d8833e993e87ae5a",
   "evidence_commit_message": "Sorok S35: sourcefree actor-access bridge into pinned C9R consumer",
   "force_push": false,
   "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "join_e_source_commit": "5e63672543973ce2533129e1ca3224d82af0dffc",
   "native": false,
   "ordinary_push": true,
-  "prior_repair_commit": "146f738ed5c087c8eac3ff17c7af93f375a98898",
+  "prior_repair_commit": "08569b7481aec4f81b83b35f0099c1f5e9bb012a",
   "publication_base": "67d5363870bf180515f59ced341b8cdffb0c755a",
   "remote_ref": "refs/heads/codex/sorok-s35-c9r-access-r1",
-  "remote_sha_readback": "08569b7481aec4f81b83b35f0099c1f5e9bb012a",
-  "repair_commit": "08569b7481aec4f81b83b35f0099c1f5e9bb012a",
-  "repair_commit_message": "Sorok S35: project public source, validate no-action clock, cold replay",
+  "remote_sha_readback": "d065041721171a855cff3076ff77d0190b5baa44",
+  "repair_commit": "d065041721171a855cff3076ff77d0190b5baa44",
+  "repair_commit_message": "Sorok S35: bounded JOIN-E compatibility proof and clock incompatibility",
   "repository": "maidiu/rawlsing",
+  "runtime_inputs_not_committed": [
+    ".s35-sources/WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1",
+    "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/.runtime/"
+  ],
+  "same_root_incompatibility": "JOIN_E_E1_TIME_242_OUTSIDE_C12_CLOCK_10__C9_EVENT_ALREADY_ADMITTED__FULL_S35_REEXECUTION_CLOCK_OUTSIDE_FRAME",
   "schema": "SOROK_S35_C9R_ACCESS_PUBLICATION_RECEIPT@1",
   "scoped_paths": [
     "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1"
