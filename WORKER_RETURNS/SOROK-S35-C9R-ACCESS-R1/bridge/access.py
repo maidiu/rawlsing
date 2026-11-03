@@ -494,6 +494,34 @@ def _action_error(
     return ""
 
 
+def validate_a_local_perception(
+    receipt: Mapping[str, Any],
+    *,
+    context: S35Context,
+    revoked_source_refs: frozenset[str] = frozenset(),
+) -> str:
+    return _perception_error(
+        receipt,
+        context=context,
+        revoked_source_refs=revoked_source_refs,
+    )
+
+
+def validate_a_owned_action(
+    receipt: Mapping[str, Any],
+    *,
+    context: S35Context,
+    perceived_at: int,
+    revoked_source_refs: frozenset[str] = frozenset(),
+) -> str:
+    return _action_error(
+        receipt,
+        context=context,
+        perceived_at=perceived_at,
+        revoked_source_refs=revoked_source_refs,
+    )
+
+
 def _resolve_qualified(
     request: S35ActorAccessRequest, receipt: Mapping[str, Any], kind: str
 ) -> bool | None:
@@ -1218,6 +1246,8 @@ __all__ = [
     "pipeline_selector",
     "public_privacy_error",
     "public_source_projection",
+    "validate_a_local_perception",
+    "validate_a_owned_action",
     "reseal_action_receipt",
     "reseal_perception_receipt",
     "reset_current_context",
