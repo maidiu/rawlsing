@@ -1,0 +1,19 @@
+# Finite campaign completion audit
+
+Goal: referenced user reuse-first sourcefree engineering campaign; no expansion into full Pyat development or universal original-source qualification.
+
+| Requirement | Current authoritative evidence and disposition |
+|---|---|
+| Existing HQ, grants and controller; restore operative state | Retained R60/R87 and R61/R91/R95 scopes; exact source pins/commissions; existing session metadata and durable local completion receipts. Existing finite controller reused, no replacement controller or HQ. Historical L1/L2/L3 and G4 source cuts retained as documentary inputs. |
+| A1–A2 reuse/reconcile existing completion and lineage | R06 b2cfe93/fbe7ffc prior acceptance; clean exact nine-file receiving assembly8779504; reviewe24b70e; source pins retain current receiving B5/M2. No rebuilt compiler/reader/downstream engine. |
+| A3–A5 coherent same-source chain and actual consumer | ea503425 candidate and review771bc4eb; actual graph from governed mixed query/discovery partial checkpoint/resume reaches M1/M2/R05 and unchanged P41. Connected independent1PASS plus focused8PASS; wrong-source/revoked/severed refuse; restoration passes. Fixed-seed parent/child measured identities match. |
+| A6 and science limits | Preserved in disposition/adoption/reviewer witnesses; no CONTEXT structural, cross-unit pooling, measured temporal or original35 authority is issued. |
+| R00 concrete custody defect | Exact packaging repair4646e294 and independent61fd3bb C return.26manifest/29sums, repeat-idempotent; historical records preserved. Local acceptance, no implied production adoption. |
+| R09 authorized defect repair or precise host stop | D7 exact reproducer and repaired15test independent pass; D1/D4 negative and parent-HMAC self-report limitation retained. Exact host dependency and narrow owner/grant request in campaign outcome. Goal explicitly requires STOP of this part if new host capability is needed; it does not require unauthorized isolation implementation. |
+| Work organization and noncollision | Existing author/reviewer sessions reused, isolated checkout/allowlists, no new provider/model/Codex worker, finite completion receipts; independent engineering continued while host boundary held. |
+| Actual bounded HQ disposition and receiving | DISPOSITION and user-authorized PR646 adoption079e819; direct remote and production blob correspondence verified. Sourcefree CI41663325617 success, proof witnesses41663325524 pass.144PASS/3historical hash-pinFAIL preserved with unchanged-input evidence. |
+| End report1–6 | CAMPAIGN_OUTCOME.md covers exact changes, reused lineage, author vs independent tests/commands, holds, next owner decisions and PROGRAMMA references; adoption receipt supersedes pre-merge observations. |
+| Binding PROGRAMMA continuity | Direct own-branch component/seam/sections/remaining-work/prerequisite/asset/transition and paired progress updates throughd023713951. Original G4 source-cut states preserved; current scoped adoption observations added. Guide branch integration remains explicitly pending under the addendum's isolated-branch allowance; no active construction worker branch disturbed. |
+| Checkpoint/proof accounting | RESUME_CHECKPOINT.json links exact adoption, scope, local repairs, hold, report hash and next action; immutable historical semantic checkpoint not overwritten. |
+
+This satisfies the finite authorized campaign's deliverable, including its express stop-and-report disposition for ungranted host work. It does not complete the entire Pyat machine, remove R09 D1/D4, adopt R00/R09 candidates into PRE-MAIN, integrate the isolated guide branch, or authorize any new phase. No additional independently ready defect within this campaign is demonstrated. Permanent PROGRAMMA maintenance remains an ongoing HQ responsibility on subsequent authorized development, not an assertion of all future work being complete.
