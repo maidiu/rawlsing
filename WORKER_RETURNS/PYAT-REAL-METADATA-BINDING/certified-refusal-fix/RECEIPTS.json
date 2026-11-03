@@ -1,0 +1,225 @@
+{
+  "aggregate": {
+    "conserved": true,
+    "corrected": {
+      "explicit_nonresponse": 23422,
+      "missing_or_unobserved": 9335,
+      "observed_response": 298819,
+      "refusal": 2185,
+      "source_record_denominator": 308154,
+      "valid_answer": 275397
+    },
+    "delta": {
+      "explicit_nonresponse": 2185,
+      "missing_or_unobserved": 0,
+      "valid_answer": -2185
+    },
+    "old": {
+      "explicit_nonresponse": 21237,
+      "missing_or_unobserved": 9335,
+      "observed_response": 298819,
+      "source_record_denominator": 308154,
+      "valid_answer": 277582
+    },
+    "refusal_vs_substantive_distinction": true
+  },
+  "base_commit": "1110093f324fe591246c56bf8f2e742a57c9201e",
+  "files": {
+    "00_RETURN.md": {
+      "bytes": 2937,
+      "sha256": "0b17fdb0d325cc0913b4a8bc61abedc14e699b388adef74a3d60b24e80b82a67"
+    },
+    "01_CERTIFIED_RECEIPT.json": {
+      "bytes": 33102,
+      "sha256": "cee52e2f9537e6ce0ad3bfe0e331f86c3dffdb0f642f882702a0308a689b162c"
+    },
+    "02_CERTIFIED_OVERLAY.json": {
+      "bytes": 16962,
+      "sha256": "997e29662f44beb8f345925b9189a251fa391ccc44bd4fe3045ed4b620eb5eb5"
+    },
+    "02_COMMANDS.md": {
+      "bytes": 2301,
+      "sha256": "0d86ee5e3ccbf2f411d76d7ec26982284ebe11123a4594c3be67c49966d02650"
+    },
+    "03_SUPERSESSION.md": {
+      "bytes": 1223,
+      "sha256": "1a084c0a060fa8759efd3256c1b4c7de8fe013da3d5b10d4bfd446001675b23a"
+    },
+    "04_OWNER_LIMITS.md": {
+      "bytes": 1399,
+      "sha256": "351deb6502feb03cc226ca9ed7045abf9e82bc05f6e1a6735807653bfc79b3d2"
+    },
+    "certified_refusal_fix.py": {
+      "bytes": 15608,
+      "sha256": "245be3aee30f24f9c46573ff241fdb4cc85b0ecbaf9c2fbdd0ae9e1ca980112d"
+    },
+    "logs/fix.stdout.log": {
+      "bytes": 5887,
+      "sha256": "926a3de91587f5cb9fa3534e3623ffb075629e398a11c935a45a7396a960eabb"
+    },
+    "logs/test_certified_fix.log": {
+      "bytes": 98,
+      "sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+    },
+    "logs/test_certified_fix_junit.xml": {
+      "bytes": 1115,
+      "sha256": "0721f5b4ce9bffb8f28dfa430ca0f57aab050cf97d74faed504af5e3f10e6fa2"
+    },
+    "test_certified_fix.py": {
+      "bytes": 3555,
+      "sha256": "375c8dc2c17b05dfcb724a7ab4e81cdcd9fa3a42e969df03b244fa42d5a58b1d"
+    }
+  },
+  "held": [
+    {
+      "code_count": 126,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q202",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 120,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q207",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 121,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q210",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 146,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q212",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 47,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q216",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 61,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q222",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 57,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q224",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 154,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q226",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 31,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q227",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 140,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q228",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 67,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q2301",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 70,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q2302",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 264,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q2311",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    },
+    {
+      "code_count": 241,
+      "current_state": "SUBSTANTIVE_RESPONSE",
+      "native_code": "99.0",
+      "question_id": "q2312",
+      "reason": "exact code-99 option fields say special/non-substantive/refusal/missing, but response_semantics_status is not certified",
+      "status": "HELD_UNCERTIFIED"
+    }
+  ],
+  "historical": {
+    "accepted_tally_product": "d9d7f43b090c599d987a3f4957a321d26701b2ee175b8f9cf71ec033588abfc0",
+    "q101_prior_correction": "preserved",
+    "superseded_scope": "28 certified entries in the isolated overlay; 14 held entries unchanged"
+  },
+  "overlay_validation": {
+    "certified_entries": 28,
+    "held_entries": 14,
+    "held_entries_changed": false,
+    "only_certified_entries_changed": true,
+    "schema_valid": true,
+    "selected_fields": 42
+  },
+  "q101": {
+    "code_count": 33,
+    "corrected_explicit": 204,
+    "corrected_valid": 7129,
+    "missing": 4,
+    "native_code": "99.0",
+    "observed": 7333,
+    "old_explicit": 171,
+    "old_valid": 7162,
+    "question_id": "q101",
+    "total": 7337
+  },
+  "review": "ad205744c",
+  "routing": {
+    "accepted_routing_binding": false,
+    "eligibility_denominator_binding": false,
+    "preserved": true,
+    "selected_risk_set_unresolved": 42,
+    "selected_routing_unknown": 42,
+    "state": "ROUTING_UNKNOWN"
+  },
+  "schema": "PYAT_SRC04_CERTIFIED_REFUSAL_RECEIPTS@1.0.0",
+  "test_receipts": {
+    "focused": "5 passed"
+  }
+}
