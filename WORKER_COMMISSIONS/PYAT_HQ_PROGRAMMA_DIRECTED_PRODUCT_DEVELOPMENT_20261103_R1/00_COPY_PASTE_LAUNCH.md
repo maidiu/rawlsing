@@ -16,7 +16,7 @@ WHY_NOT_MIDDLE: High proposed for complex adversarial source judgment; user may 
 SCIENCE_SOURCE_ACTOR_AUTHORITY: NONE newly granted. Original35 source, science, host, N11/N12, Sorok actor and protected receiving remain with competent owners.
 POST_RETURN_INDEPENDENT_REVIEW: Separate nonauthor reviewer required for actual acceptance; no self-acceptance.
 AGENT_TYPE: Existing appointed Codex Pyat HQ — substantial scientific/architecture and engineering work-selector; not a fresh HQ, not independent reviewer, not source/science issuer.
-INTELLIGENCE_LEVEL: I3+ (cross-machine dependency and highest-consequence engineering judgment).
+INTELLIGENCE_LEVEL: I3+
 REPOSITORY: maidiu/rawlsing (PRIVATE)
 SINGLE_AGENT_FULL_DELIVERABLE: YES
 EXECUTION_SURFACE: S0–S1 authenticated GitHub; S2 local Codex/worktree/testing only when user-selected, available and authorized; S3 original respondents/source-native rights NOT granted.
