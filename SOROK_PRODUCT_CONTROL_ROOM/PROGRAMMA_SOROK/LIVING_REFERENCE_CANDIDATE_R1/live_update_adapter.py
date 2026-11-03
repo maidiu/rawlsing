@@ -226,6 +226,30 @@ def apply_delta(state: dict, payload: dict, *, event_id: str | None = None) -> d
                          else "SCOPED_SOURCEFREE_ACCEPTED" if receipt["kind"] == "SCOPED_REVIEW"
                          else "EXACT_NEGATIVE_REVIEWED")
     state.setdefault("programma_deltas", []).append(receipt)
+    # Material source/review-state transition, scoped to the reviewed cut.
+    # Do not overwrite P0/P1's generic node axis, which may represent another
+    # source version and whose original owner/native status cannot be issued here.
+    scoped = state.setdefault("scoped_transition_states", {}).setdefault(
+        receipt["node_id"], {})
+    exact = scoped.setdefault(receipt["subject_sha"], {})
+    exact[receipt["guide_ref"]] = {
+        "source": receipt["source"],
+        "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+        "review": ("INDEPENDENT_SCOPED_7BF_REVIEWED_SOURCEFREE_ONLY"
+                   if receipt["kind"] == "SCOPED_REVIEW"
+                   else "REVIEW_REVISE_MATERIAL_AT_EXACT_CUT"
+                   if receipt["kind"] == "REVIEW_REVISE"
+                   else "UNREVIEWED_RETURN_CANDIDATE"),
+        "engineering": ("SOURCEFREE_REVIEWED_AT_EXACT_7BF_ONLY"
+                        if receipt["kind"] == "SCOPED_REVIEW"
+                        else "REVISE_MATERIAL_DEFECTS_AT_EXACT_CUT"
+                        if receipt["kind"] == "REVIEW_REVISE"
+                        else "SOURCE_PRESENT_AUTHOR_TESTED_NOT_NATIVE"),
+        "owner_authority": "UNISSUED", "native_science": "UNISSUED",
+        "human_evidence": "NOT_PROVEN",
+        "transition_id": receipt["transition_id"],
+        "event_id": event_id,
+    }
     state.setdefault("node_evidence", {}).setdefault(receipt["node_id"], []).append({
         "kind": "PROGRAMMA_DELTA_DOCUMENTARY", "transition_id": receipt["transition_id"],
         "guide_ref": receipt["guide_ref"], "source": receipt["source"], "grade": receipt["grade"],
@@ -328,7 +352,12 @@ def project(state: dict) -> dict:
             for r in idx["relations"] if r.get("required_ref") == ref
         ]
         source_axes = {
-            d["node_id"]: copy.deepcopy(state.get("axes", {}).get(d["node_id"], {}))
+            d["node_id"]: {
+                "base_axis_preserved": copy.deepcopy(state.get("axes", {}).get(d["node_id"], {})),
+                "exact_cut_phase_review": copy.deepcopy(
+                    state.get("scoped_transition_states", {}).get(d["node_id"], {})
+                         .get(d["subject_sha"], {}).get(ref, {})),
+            }
             for d in entry
         }
         pending.append({
@@ -343,7 +372,12 @@ def project(state: dict) -> dict:
             "editorially_suppressed": [x for x in excluded if any(
                 q["transition_id"] == x and q["guide_ref"] == ref for q in state["programma_deltas"])],
             "gate_decisions": [{"id": g["gate_id"], "status": g["decision"],
-                                "remaining": g["remaining"]} for g in related],
+                                "remaining": g["remaining"],
+                                "review_red_at_selected_cut": any(
+                                    d["kind"] == "REVIEW_REVISE" for d in entry),
+                                "review_red_source_cuts": [
+                                    d["subject_sha"] for d in entry if d["kind"] == "REVIEW_REVISE"]}
+                               for g in related],
             "possible_reverse_targets_not_automatically_unlocked": reverse,
             "existing_work_packages": [{"id": p.get("work_package_id"),
                                         "owner": p.get("owner"),
@@ -358,6 +392,7 @@ def project(state: dict) -> dict:
         "changes": len(state.get("programma_deltas", [])), "changed_refs": changed,
         "active_receipts": len(active), "editorially_suppressed": sorted(excluded),
         "gates": status_by_gate, "by_target": idx["targets"], "pending": pending,
+        "scoped_transition_states": copy.deepcopy(state.get("scoped_transition_states", {})),
         "native_person_human_claims": "NONE_ISSUED",
         "pending_qualification": ("NO_NEW_PROGRAMMA_DELTA_INGESTED__HISTORICAL_BASELINE_ONLY"
                                   if not state.get("programma_deltas") else
