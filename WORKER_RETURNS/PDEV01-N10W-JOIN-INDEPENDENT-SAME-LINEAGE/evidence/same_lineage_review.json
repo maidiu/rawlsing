@@ -1,0 +1,135 @@
+{
+  "actual_j42": {
+    "base": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "n9_clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "cold_all_view_hashes_equal": true,
+    "cold_byte_equal": true,
+    "first_refusals": {},
+    "positive": 84,
+    "receipt_2_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "receipt_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "views": 84
+  },
+  "d2p3_boundary": {
+    "candidate": "cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584",
+    "existing_lawful_construction_path": false,
+    "first_missing_binding": "W41 version-selected N9 world + E41 N10E receipt + exact J42 source-row/currentness binding for D2P3 GSS/NCA field refs",
+    "has_e41": false,
+    "has_j42_rows": false,
+    "is_n9": false,
+    "producer_refs": {
+      "GSS_RURAL_LIGHTING": "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+      "NCA_NATIONAL_MOBILE_DATA": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+    },
+    "reader_state": "TWO_VALUES_READ_TEST_ONLY",
+    "refs_in_j42_receipt": false,
+    "smallest_path": "NONE_EXISTING; a new W41-style N9 artifact binding would be required and is outside this authority",
+    "source_families": [
+      "GH_GSS_PHC_2021",
+      "GH_NCA_LICENSEE_REPORTS_2021Q4"
+    ],
+    "trace_path": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/new/producer_reader_trace.json",
+    "trace_sha256": "dfee8bcc7f1f0202e2b9ffee7d3cbe70e1c361d45b4727356393ae14c6c457f3"
+  },
+  "environment_passport": {
+    "browser": "NOT_USED_LOCAL_RUNTIME",
+    "candidate": "883da8fff2bb10fe2181d0c0a7ddc84d34bb5a8c",
+    "cwd_scope": "review worktree outside author worktree",
+    "executable": "/usr/local/bin/python3",
+    "host_marker": "darwin-x86_64-local-s2",
+    "hostname_redacted": true,
+    "imports": {
+      "guarded_receiver_sha256": "5f81a3012abf70b6f646b35d1344cf29421a3aa124ab76143f3c46632dc214fc",
+      "rawlsing_world_binding_sha256": "59f97493d9ce786d1d97837bed9ff1432d9a8beebd83e938a47fba993fdbcfac"
+    },
+    "machine": "x86_64",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3",
+    "quota": "UNKNOWN",
+    "review_base": "02b98ec3dd88e5e742ce459e54d233f547768145",
+    "schema": "PDEV01_N10W_SAME_LINEAGE_ENV_PASSPORT@1.0.0",
+    "source_reads": false,
+    "test_only": true,
+    "variant": "max"
+  },
+  "j42_lineage": {
+    "clock": {
+      "mode": "TEST_CURRENT",
+      "published_asof": "2027-09-01",
+      "test_now": "2027-09-01",
+      "valid_at": "2027-09-01"
+    },
+    "currentness": "CURRENT_TEST_ONLY_SELECTION",
+    "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+    "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+    "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1",
+    "source_rows": "4320b3a505478c274fc756ce0e025e36685e0742e940072aae80ce11286e4c02"
+  },
+  "limits": [
+    "TEST_ONLY sourcefree W41/E41/P41 and synthetic E04 only.",
+    "D2P3 is a field reader, not N9; not fed to N10W.",
+    "No original data/source read, production edit, merge/CI, adoption or new trust authority."
+  ],
+  "mismatch_restore": {
+    "r05_provider_result": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_PROVIDER_IDENTITY_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "309544073b663e822f51b4df7096ed64cc1f91fe3f16ca99d979a45c6d3c73de",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "r05_rows_result": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_SOURCE_ROWS_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "0ee2070f03ba078e7b93aaff628dd8cb1dbf63173329e12cb94d0c47273b705b",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "r05_rows_vs_j42": false,
+    "r05_source_rows": "a585bd130c1a935cdef7723095483ccf228da633f58b9110c8ca21a189595b54",
+    "restore_matches_positive": true,
+    "restored": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "n9_clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "reused_e79": "e79be4a3d8cd2cbe57c4a25361acc5e4dd9a8e1c",
+  "review_base": "02b98ec3dd88e5e742ce459e54d233f547768145",
+  "schema": "PDEV01_N10W_SAME_LINEAGE_INDEPENDENT_REVIEW@1.0.0",
+  "subject": "883da8fff2bb10fe2181d0c0a7ddc84d34bb5a8c"
+}
