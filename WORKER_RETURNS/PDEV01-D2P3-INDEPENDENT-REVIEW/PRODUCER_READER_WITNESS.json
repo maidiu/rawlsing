@@ -1,0 +1,88 @@
+{
+  "as_of": {
+    "cold_replay_equal": true,
+    "early_2022_02_23": "REFUSED_REQUIRED_FIELD_TEST_ONLY",
+    "partial_2022_03_01": "PARTIAL_TEST_ONLY_NOT_POSITIVE",
+    "positive_2022_07_08": "TWO_VALUES_READ_TEST_ONLY",
+    "separate_registry_equal_read": true
+  },
+  "gss_mutation": {
+    "gss_ref_changed": true,
+    "gss_value": 2388191,
+    "nca_ref_unchanged": true,
+    "nca_value_unchanged": true,
+    "snapshot_changed": true
+  },
+  "limits": [
+    "TEST_ONLY synthetic GSS/NCA fixture; no original PDF bytes, source custody, issuer rights, N5/N6/EE13/N9/OC05, or production adoption."
+  ],
+  "native_units": {
+    "GSS_RURAL_LIGHTING": "RURAL_OCCUPIED_HOUSEHOLD_MAIN_LIGHTING",
+    "NCA_NATIONAL_MOBILE_DATA": "ACTIVE_MOBILE_DATA_SUBSCRIPTIONS_NOT_UNIQUE_PERSONS"
+  },
+  "nca_mutation": {
+    "gss_ref_unchanged": true,
+    "gss_value_unchanged": true,
+    "nca_ref_changed": true,
+    "nca_value": 23414528
+  },
+  "negative_codes": {
+    "fake_publisher": "OFFICIAL_PUBLISHER_IDENTITY_MISMATCH",
+    "forged_issuer": "ISSUER_FORGERY",
+    "mutated_field": "FIELD_CONTENT_REF_MISMATCH",
+    "wind_renamed": "GSS_ELECTRICITY_SUBTYPE_IDENTITY_MISMATCH",
+    "wrong_unit": "NATIVE_UNIT_OR_MEASURE_MISMATCH"
+  },
+  "producer_refs": {
+    "GSS_RURAL_LIGHTING": "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+    "NCA_NATIONAL_MOBILE_DATA": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+  },
+  "producer_refs_equal_reader_readset": true,
+  "reader_dependency_readset": [
+    "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+    "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+  ],
+  "reader_selected_refs": [
+    "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+    "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+  ],
+  "reader_state": "TWO_VALUES_READ_TEST_ONLY",
+  "revocation": {
+    "dependency_readset": [
+      "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+      "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+    ],
+    "refusals": [
+      {
+        "field_ref": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587",
+        "reason": "FIELD_REGISTRY_REVOKED",
+        "role": "NCA_NATIONAL_MOBILE_DATA"
+      }
+    ],
+    "state": "PARTIAL_TEST_ONLY_NOT_POSITIVE",
+    "values_roles": [
+      "GSS_RURAL_LIGHTING"
+    ]
+  },
+  "schema": "PDEV01_D2P3_PRODUCER_READER_WITNESS@1.0.0",
+  "snapshot": "D2P3_SNAPSHOT:e306120e8a787980a99790e52cd7964a682874fe22d20726b3964e1487020570",
+  "values": {
+    "GSS_RURAL_LIGHTING": {
+      "denominator": 3288063,
+      "electricity_subtypes": {
+        "community_grid": 74490,
+        "generator": 3640,
+        "mains": 2288193,
+        "solar_inverter": 21512,
+        "wind": 357
+      },
+      "numerator": 2388192,
+      "published_percent": 72.6
+    },
+    "NCA_NATIONAL_MOBILE_DATA": {
+      "active_subscriptions": 23414527,
+      "postpaid": 177189,
+      "prepaid": 23237338
+    }
+  }
+}
