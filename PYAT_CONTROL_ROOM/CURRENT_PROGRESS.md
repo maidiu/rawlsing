@@ -1,3 +1,7 @@
+# HQ bounded independent disposition — 2026-11-03
+
+All three exact candidates independently PASS and locally accepted at sourcefree scope. Review `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2`; disposition `HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`; PROGRAMMA transition `PYAT-HQ-BOUNDED-REVIEW-DISPOSITION-20261103`. No protected adoption, original-source science or host-right expansion. Prior records retained below.
+
 # PYAT HQ — isolated sourcefree reuse/repair, 2026-11-03
 
 This is an isolated HQ branch observation, not protected receiving or a new science grant. R06 exact newer-module assembly `75bc20cdd`:17existing+14retained hostile probes pass byHQ replay. R09 D7-only repair `da101f1a7`:15authorPASS, central D1/D4/host HOLD remains. R00 packaging repair `4646e2944c`:26manifest/29sums verified and repeat-idempotent, gate/tests unchanged. Existing distinct qualified reviewer session `ses_e98c8dfe6ffewNYOqJpvqK21a6` is reviewing these exact three bounded changes; no acceptance yet. PROGRAMMA own patch prior tip `0cc403996b` records corresponding transition IDs and latest observations; receiving integration remains pending. See paired JSON latest_hq_isolated_engineering_observation for exact refs. Historical receiving record retained below, not retroactively edited.

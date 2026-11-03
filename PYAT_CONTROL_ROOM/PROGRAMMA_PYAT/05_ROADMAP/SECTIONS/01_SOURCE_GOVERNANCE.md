@@ -207,3 +207,8 @@ This scoped G3-A candidate source locator is reproduced as a navigation aid; its
 ## HQ 2026-11-03 — local evidence-runner D7 candidate
 
 `da101f1a7` on `agent/pyat-r09-expectation-repair-20261103-r1` repairs only the authentic-observation/nonserializable-expectation TypeError, returning `EXPECTED_RESULT_NOT_SERIALIZABLE`. Original RED and 15 author PASS receipts retained under `WORKER_RETURNS/PYAT-R09-D7-REPAIR-20261103`. This affects a local evidence helper; no source-semantic or original-data grant. D1/D4 child result/loaded-byte forgery, external root and host isolation remain unresolved; deployment stays HOLD. Candidate is unmerged, without fresh independent acceptance. It neither closes scientific custody nor the source-to-V3 evidence chain.
+
+
+## HQ independent review disposition — 2026-11-03
+
+Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receiving compatibility (17tests), R09 D7 only (15tests), and R00 packaging (26manifestentries/29checksums, repeated collector and preserved gate/test/passport/proof). HQ verified9reviewartifacthashes and exact remote ref, then accepts these at local sourcefree candidate scope only. Existing earlier negatives remain historical; R09 D1/D4 host boundary remains held. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`. Protected receiving/guide integration remains pending, not implied.

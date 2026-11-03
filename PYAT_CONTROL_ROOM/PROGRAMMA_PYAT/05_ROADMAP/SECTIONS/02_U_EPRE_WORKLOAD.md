@@ -209,3 +209,8 @@ No unique historical function row here; related functions appear in the child an
 ## HQ 2026-11-03 — R00 custody packaging candidate
 
 Exact branch `agent/pyat-r00-custody-repair-20261103-r1` at `4646e2944c` corrects only the R00 packaging defects preserved in independent review `d02ef32214c38af59ffb272a29ff4ffd7b30d394`. Finalized retained receipts are collected before manifest/sums; the manifest excludes its supersession back-reference, which outer root-relative checksums cover. HQ verifies26manifestentries/29checksums and byte-identical regeneration. Historical passport/proof witnesses, gate and tests unchanged. No new gate behavior, original measurement, R09 trust or production grant. Independent bounded custody review is running; no acceptance yet.
+
+
+## HQ independent review disposition — 2026-11-03
+
+Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receiving compatibility (17tests), R09 D7 only (15tests), and R00 packaging (26manifestentries/29checksums, repeated collector and preserved gate/test/passport/proof). HQ verified9reviewartifacthashes and exact remote ref, then accepts these at local sourcefree candidate scope only. Existing earlier negatives remain historical; R09 D1/D4 host boundary remains held. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`. Protected receiving/guide integration remains pending, not implied.
