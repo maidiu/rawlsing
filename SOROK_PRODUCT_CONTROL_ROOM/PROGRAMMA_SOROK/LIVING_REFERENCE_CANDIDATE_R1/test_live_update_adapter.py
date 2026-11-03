@@ -526,3 +526,45 @@ def test_direct_duplicate_transition_with_changed_payload_fails_closed(tmp_path)
     es.append_event(journal, lr._event("PROGRAMMA_DELTA", changed, source=changed["source"]))
     with pytest.raises(ad.DeltaRefused, match="DELTA_ID_COLLISION"):
         lr.rebuild_from_journal(journal, operating=True)
+
+
+def test_source_to_product_normalizes_local_component_before_p0_p1_lookup(tmp_path):
+    _, state_path = state_env(tmp_path)
+    view = ad.query(lr._load_state(state_path), "source-to-product",
+                    "C9:LOCAL_GUIDE:C9R_ACCESS_BRIDGE@BUILD")
+    assert view["guide_ref"] == "C9:LOCAL_GUIDE:C9R_ACCESS_BRIDGE"
+    assert view["component"] == "C9"
+    # The prior implementation incorrectly tried the non-existent
+    # C9:LOCAL_GUIDE:C9R_ACCESS_BRIDGE node and returned NONE_VERIFIED.
+    assert view["existing_code_consumer"]["id"] == "C9"
+    assert "code_and_consumer_edges" in view["existing_code_consumer"]
+    assert view["scoped_seam_first_reader"] is None
+    assert view["no_transitive_acceptance"] is True
+
+
+def test_source_to_product_e021_exposes_exact_scoped_reader_not_native_claim(tmp_path):
+    _, state_path = state_env(tmp_path)
+    view = ad.query(lr._load_state(state_path), "source-to-product", "E021@VERIFY")
+    expected = ad.guide_index()["seams"]["E021"]["w8r_source_qualified_disposition"]
+    reader = view["scoped_seam_first_reader"]
+    assert reader is not None
+    assert reader["seam_id"] == "E021"
+    assert reader["first_reader"] == expected["first_reader"]
+    assert reader["first_reader"]["commit"] == ad.JOIN_E_SUBJECT
+    assert "JoinedSession" in reader["first_reader"]["symbol"]
+    assert reader["full_join_status"].startswith("JOIN_PENDING")
+    assert "NATIVE" in reader["authority"]
+    assert reader["native_importer"].startswith("NONE_VERIFIED")
+    # A scoped sourcefree reader is evidence of a real historical consumer,
+    # not permission to claim a current native or newly selected root.
+    if "scoped_sourcefree_first_reader" in view["existing_code_consumer"]:
+        assert view["existing_code_consumer"]["scoped_sourcefree_first_reader"] == reader
+        assert view["existing_code_consumer"]["current_importer"] == "NONE_VERIFIED"
+    assert view["no_transitive_acceptance"] is True
+
+
+def test_source_to_product_unknown_guide_edge_is_not_invented(tmp_path):
+    _, state_path = state_env(tmp_path)
+    view = ad.query(lr._load_state(state_path), "source-to-product", "E999@VERIFY")
+    assert view["scoped_seam_first_reader"] is None
+    assert view["no_transitive_acceptance"] is True

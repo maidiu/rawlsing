@@ -452,10 +452,34 @@ def query(state: dict, command: str, target: str | None = None) -> dict:
                 "receipts": [r for r in live["pending"] if r["ref"] == target],
                 "rule": "ALL same-target gates, actual member receipts and scope remain required"}
     if command == "source-to-product":
-        comp = target.split("@", 1)[0]
-        return {"source": GUIDE_SHA, "component": comp,
-                "existing_code_consumer": lr.code_consumer_view(state, comp)
-                if comp in lr._node_map(state) else {"id": comp, "current_importer": "NONE_VERIFIED"},
+        # The guide's phase-qualified local IDs are not P0/P1 node IDs.
+        # Normalize to the actual component before consulting the existing graph.
+        guide_id = target.split("@", 1)[0]
+        comp = guide_id.split(":", 1)[0]
+        seam = guide_index()["seams"].get(guide_id)
+        scoped_reader = None
+        if seam is not None:
+            disposition = seam.get("w8r_source_qualified_disposition") or {}
+            first_reader = disposition.get("first_reader")
+            if isinstance(first_reader, dict) and first_reader.get("path") and first_reader.get("symbol"):
+                scoped_reader = {
+                    "seam_id": seam["seam_id"],
+                    "first_reader": copy.deepcopy(first_reader),
+                    "scope": first_reader.get("scope", "SOURCE_GRADED_ONLY"),
+                    "full_join_status": disposition.get("whole_gate_status", seam.get("join_status")),
+                    "native_importer": (seam.get("actual_consumer_or_none") or {}).get(
+                        "actual_native_importer", "NONE_VERIFIED"),
+                    "authority": "SCOPED_SOURCE_READER_NOT_NATIVE_OR_OWNER_ADOPTION",
+                }
+        if comp in lr._node_map(state):
+            existing = lr.code_consumer_view(state, comp)
+        else:
+            existing = {"id": comp, "current_importer": "NONE_VERIFIED",
+                        "scoped_sourcefree_first_reader": scoped_reader,
+                        "rule": "A qualified historical reader is not a verified native importer."}
+        return {"source": GUIDE_SHA, "component": comp, "guide_ref": guide_id,
+                "existing_code_consumer": existing,
+                "scoped_seam_first_reader": scoped_reader,
                 "phase": query(state, "focus", target),
                 "no_transitive_acceptance": True}
     if command == "goal":
