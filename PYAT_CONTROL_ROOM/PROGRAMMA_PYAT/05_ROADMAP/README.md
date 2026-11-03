@@ -1,4 +1,53 @@
-# PROGRAMMA PYAT — Source → Objective World → Selected Possibility
+# PROGRAMMA PYAT — G4 Source-Grounded Development Guide
+
+> **G4 assembled at GitHub S0–S1 documentary scope; not independently reviewed or accepted, and not a running Pyat.** All five isolated G4-P1–P5 workers' exact committed section/index/return blobs have been received onto the G4 branch. No new test, source-native original35 operation, source/science permission, PRE-MAIN mutation, or N11/N12 acceptance was performed. **Build/exhaust material work first; decide later whether named source recovery is needed; only then commission an independent unfamiliar-agent usability check.**
+
+## Start here — what an engineer gets from G4
+
+This is **one existing eleven-organ guide**, not an alternative architecture or production graph. Start in the appropriate [S01–S11 section](#eleven-real-section-pages), locate the exact function and pinned source/old code in [ASSET_LOCATOR.md](ASSET_LOCATOR.md), check [FUNCTION_PARITY.jsonl](FUNCTION_PARITY.jsonl) for matched or deliberately unmatched historical behavior, consult [CURRENT_SEAM_STATES.jsonl](CURRENT_SEAM_STATES.jsonl) for actual producer/first-reader evidence, and read [PREREQUISITES_AND_UNLOCKS.md](PREREQUISITES_AND_UNLOCKS.md) before implementing a consumer.
+
+| Where to start | What it preserves | Do **not** infer |
+| --- | --- | --- |
+| [ASSET_LOCATOR.md](ASSET_LOCATOR.md), [G3-A full source attachments](G3_CANDIDATES/ASSET_PARITY/SOURCE_ASSET_ATTACHMENTS.jsonl), [G1 original disposition](G1_ROW_DISPOSITIONS.jsonl) | **892 original asset rows:** 846 linked, 28 originally unplaced, 18 reference-only; proposed homes for 16 of 28 unplaced, 12 held | Topic match/asset relocation ≠ exact function parity, native eligibility, or adoption |
+| [INDEX.jsonl](INDEX.jsonl), [11 sections](#eleven-real-section-pages), [COMPONENT_STATUS.jsonl](COMPONENT_STATUS.jsonl) | **782** original typed G2 identity rows, including **11** sections and **51** children; 62 section/child scoped status capsules | A strong child or synthetic result ≠ entire organ complete |
+| [FUNCTION_PARITY.jsonl](FUNCTION_PARITY.jsonl) | **150** distinct obligations: 28 historical, 57 current, 51 child, 14 material source/history conflicts | Same name (M2, C11, F6/F7) ≠ same function or physical output |
+| [PLANNED_INTERFACES.jsonl](PLANNED_INTERFACES.jsonl), [CURRENT_SEAM_STATES.jsonl](CURRENT_SEAM_STATES.jsonl) | **82** unchanged original G2 edges (7 Astra MUST; 26 Astra IF; 14 functional; 35 observed claims), overlaid one-to-one with current scoped evidence | A scoped sourcefree call ≠ source-native first reader; an IF edge ≠ universal prerequisite |
+| [REMAINING_REAL_PYAT_WORK.md](REMAINING_REAL_PYAT_WORK.md), [PREREQUISITES_AND_UNLOCKS.md](PREREQUISITES_AND_UNLOCKS.md), [G4_UNRESOLVED_SOURCE_REQUESTS.md](G4_UNRESOLVED_SOURCE_REQUESTS.md) | **49** named work gaps, two distinct additional retained historical issues, exact reverse-unlock chains and **8** narrow source needs | The presence of a work register does not authorize or finish the work |
+| [G4_SOURCE_INTAKE_AND_CONFLICTS.md](G4_SOURCE_INTAKE_AND_CONFLICTS.md), [INPUT_CUTS.md](INPUT_CUTS.md) | Five exact worker receipts, G1/G2/G3 cuts and competing source/version assertions | Pinned historical source cut ≠ latest merged code or restored old failure |
+
+### Eleven real section pages
+
+| Organ | Current/Historical developer entry point | Present unresolved obligation |
+| --- | --- | --- |
+| [S01 — source governance](SECTIONS/01_SOURCE_GOVERNANCE.md) | All 35 sources; semantic item/option/route/respondent/weights, R157 119 paths | Original holder/source-science eligibility and native releases |
+| [S02 — U/Epre workload](SECTIONS/02_U_EPRE_WORKLOAD.md) | Existing [`compile_governed_frontier`](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_universal_workload.py), P1 synthetic candidate | Original-item and risk-set U/Epre issuer → typed I03/I05/Batch runnable request |
+| [S03 — Dva/Trii/Chetiri, C11, Route B](SECTIONS/03_ROUTE_B_C11.md) | Physical C11 and real sourcefree Route B calls; historical D11/V550J | Original respondent-level joint semantics and qualified first-native consumer |
+| [S04 — empirical F1–F4](SECTIONS/04_F1_F4_EMPIRICAL.md) | Current F1/F2 sourcefree and old respondent distribution/joint/cloud bodies | Native original sample-specific F1–F4 and lawful comparative denominator |
+| [S05 — learned M1/M2/B5](SECTIONS/05_LEARNED_LIFECYCLE.md) | PR605 bounded M2/B5 learned orchestration; V555 structural M2 deliberately distinct | Exact family release/science and first actual world/I01K reader |
+| [S06 — Field Forge F5](SECTIONS/06_FIELD_FORGE_F5.md) | Conditional FF profile/bridges vs historic FFX structural producer | Original causal/structural source rights and admitted N6/N9 relation |
+| [S07 — F6 multi-field](SECTIONS/07_F6_FIELDS.md) | Historical R29 F6M and R39 F6P sourcefree candidates, exact symbol/commit | Scientific composer and actual typed N9 consumer |
+| [S08 — F7 temporal](SECTIONS/08_F7_TEMPORAL.md) | Historical strict comparability vs current narrower guards | Native comparable-wave estimand and as-of N9 read where demanded |
+| [S09 — N9 objective world](SECTIONS/09_N9_WORLD.md) | Narrow J04 publication but same-cut absent imported materializer | Real selected now/history/as-of objective world and first downstream reader |
+| [S10 — N10E/N10W, F8](SECTIONS/10_N10_POSSIBILITY_F8.md) | Computed sourcefree N10E provider; E03 58-row fixture-only chain | **Actual N9 AND N10E → N10W** world-conditioned change |
+| [S11 — N11/N12 gates](SECTIONS/11_N11_N12_GATE.md) | Original35 estate matrix, declared formal gates | **N0 AND N10W** plus demand-specific F1–F8 acceptance; separate N12 wake/defer owner |
+
+### Actual receiving status (not a readiness percentage)
+
+The 82 seam states, at the pinned G3/G4 S1 source cuts, are **19 owner/science-held, 2 incompatible, 19 producer/reader missing, 23 partial, 14 sourcefree-scoped, 5 unknown, zero working-at-full-exact-scope**. This does **not** deny running code or bounded historical tests: grades are scoped to full original expected producer→receiver semantics. [Read each exact edge](CURRENT_SEAM_STATES.jsonl) and [each scoped child](COMPONENT_STATUS.jsonl). Do not flatten a sourcefree positive into native success, nor reinterpret an uncertain conditional predicate as a broken global MUST.
+
+### First useful implementation dependencies (after the relevant owner decisions)
+
+1. Original 35 administered item/route/respondent/weight permissions and U/Epre eligibility → existing compiler → actual I03/I05/Batch physical/empirical output. A P1 **35/70/840** synthetic workload is **not** the original denominator; the compiler already exists.
+2. True respondent-level joint and learned/FF qualified products, plus independently qualified F6 and F7 where selected, → actual as-of N9 first consumer. Retain historic J/F6/F7 code as **unadopted functional evidence**; current same-name analogues need exact comparison.
+3. Qualified N9 world **AND** computed N10E slice → N10W genuinely revised positioning (not E03 fixture), then N0 **AND** N10W plus scoped F1–F8 evidence → owner-reviewed N11; N12 remains a separate later wake/defer decision. Original IF edges apply only on their declared predicates.
+
+**Pinned evidence:** [G2 complete](https://github.com/maidiu/rawlsing/commit/6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d), [G3-A](https://github.com/maidiu/rawlsing/commit/93c821e419b42918d98c71f87999735e786c92df), [G3-B](https://github.com/maidiu/rawlsing/commit/b2641c1944b247d5a510f0b4eae6421db077decd); [pinned PRE-MAIN source snapshot](https://github.com/maidiu/rawlsing/commit/9809203fd915a84bae056a67210e9213879840db) and [historical main](https://github.com/maidiu/rawlsing/commit/25830fe7462bb9e29bc4087e6ae14f3f84cec377) remain **separate**, not merged/adopted conclusions. [G4 source conflict decisions](G4_SOURCE_INTAKE_AND_CONFLICTS.md) name material negatives including same-cut 404 of imported `prev3_objective_position_materializer.py`. [Source requests SR-01–SR-08](G4_UNRESOLVED_SOURCE_REQUESTS.md) are precise future leads, **not** permission to browse Library/mainMac or original respondent data.
+
+**Current construction verdict:** All 11 pages and 51 children are substantively attached at GitHub documentary scope, with machine-readable conservation of all specified evidence grains. Original empirical/native and authority closures remain deliberately unfinished. A future original-world owner decides source recovery and/or engine work; a **different** independent reader later judges guide usability, only when substantive construction/source recovery is exhausted.
+
+---
+
+## Historical G2 rough-guide baseline (retained verbatim below, not current G4 status)
 
 
 > **USER-ORDERED PRIORITY: BUILD TO EXHAUSTION BEFORE TESTING.** No new tests, independent cold-use, or review campaign during asset anchoring, historical/current function comparison, full seam/completion/prerequisite assembly, material GitHub gap resolution and any specifically necessary Library/mainMac recovery. Previous tests are historical evidence only. Final guide verification happens strictly last.
