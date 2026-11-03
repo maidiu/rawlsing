@@ -173,6 +173,51 @@
 <!-- HQ_RULE_END id=HQ-C1-027 -->
 
 
+<!-- HQ_RULE_START id=HQ-C2R-029 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
+### HQ-C2R-029: Mandatory warm-environment and portable-passport law
+**TRIGGER:** Before every new worker dispatch, environment reuse, or continued runtime claim.
+**OPERATIVE ACTION:** Execute adopted shared HQ warm quickstart, both jurisdictional 00D triggers as applicable, source/import/epoch verification, cheapest qualified authorized reuse, bounded early proof, sanitized return passport.
+**COMPETENT OWNER:** Appointed domain HQ and user-selected host; independent reviewer and original issuers remain separate.
+**FAILURE / FALSIFIER:** Missing passport or live marker check, assumed Browser private checkout, duplicate/reset of active worktree, false native science or silent provider rerouting.
+**SOURCE:** CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1 (original mandatory 00D trigger); CROSS_HQ_CONTROL_ROOM/WARM_ENVIRONMENT_QUICKSTART_R1.md at same protected cut.
+**SEVEN-STEP EXECUTABLE DISPENSATION:**
+1. Before reasoning-intensive work, check actual machine/account, existing sanitized environment passport, \`environment_id\`, \`epoch_id\`, current \`runtime_marker\` (marker digest and observation time), Python/pytest/Git/filesystem/connector. Label every unobserved datum UNKNOWN; a tab, subscription window or existing branch is not proof of live runtime.
+2. Local: preserve one shared Git object store and isolated sparse worktree per authorized worker branch; reuse compatible caches only after lease/privacy/source check. Never automatically clone/reset another worker. Browser: connected private GitHub does NOT mean private code is mounted to the Python filesystem, nor that another chat shares the runtime.
+3. Fetch only permitted missing pinned fixtures. Verify exact 40-hex commit, source path, **raw-byte Git blob SHA-1** (blob header + byte length + NUL + bytes), \`module.__file__\` and dependency-import closure; record actual source permissions and \`source_closure\` FULL/BOUNDED/PARTIAL/NONE/UNKNOWN.
+4. On a verified authorized runner, run smallest sourcefree smoke with claim-edge positive, severance RED and restore PASS where appropriate. Preserve stdout, errors, real first consumer and clock/source/root. Without runner/import/permission, write NOT_RUN, never PASS. Distinguish MISSING_RUNNER, MISSING_PRIVATE_CODE_OR_DEPENDENCY, MISSING_PHYSICAL_IMPLEMENTATION, MISSING_ORIGINAL_SCIENTIFIC_SOURCE_AUTHORITY, MISSING_V3_ACTOR_OR_MODEL_USE_AUTHORITY.
+5. For the entire task use Browser if qualified → DeepSeek V4.1-Flash at MAX if qualified → Codex GPT-6.1 High ONLY on affirmative necessity → otherwise user-selected Middle; record WHY_NOT_BROWSER/FLASH/CODEX_HIGH/MIDDLE, actual model/effort/editor/account, cash/quota/retries or UNKNOWN. Money-first within scientific, permission, privacy, independence and capability constraints; no silent host/model switch.
+6. Reuse a truly live warm window only after fresh runtime marker/import and independent-authority checks, with a separately authorized commission. A 3–5 related-task warm trial is optional; changed epoch, privacy, poor cost or reviewer conflict ends eligibility. No automatic new agent launch.
+7. Return a nonsecret portable \`RAWLSING_ENVIRONMENT_PASSPORT@1\` conforming to CROSS_HQ_CONTROL_ROOM/EXECUTION_ENVIRONMENT_PASSPORT_R1.schema.json: environment, epoch, surface, status, live_probe, source blob/import closure, permissions, tests/grade, actual usage, assignments_completed, next_affinity_tags, independence_conflict and next eligible host/task. Never publish credentials, personal paths or respondent data. A passport is documentary, not proof the runtime survives after return.
+<!-- HQ_RULE_END id=HQ-C2R-029 -->
+
+<!-- HQ_RULE_START id=HQ-C2R-030 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
+### HQ-C2R-030: Every commission has a three-court five-field acceptance matrix
+**TRIGGER:** Every complete single-agent commission before dispatch, and judgment-bearing return intake.
+**OPERATIVE ACTION:** Require separate ENGINEERING, SCIENTIFIC, AUTHORITY categories, each with ACCEPT_IF, FAIL_OR_RED_IF, HOLD_IF, EVIDENCE, OWNER_OF_DECISION; populate exact criteria and preserve separate independent review and original authority.
+**COMPETENT OWNER:** Incumbent commissioning HQ; qualified engineering reviewer, original science issuer and rights/adoption owner decide distinct claims.
+**FAILURE / FALSIFIER:** Missing one of fifteen per-court fields, vague acceptance heading, worker self-adoption, or an extra tribunal.
+**SOURCE:** CROSS_HQ_CONTROL_ROOM/HQ_JUDGMENT_BEARING_RETURNS_INTAKE_AND_DUAL_ECONOMY_COMMISSION_LAW_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1 §3. The following is the required concrete commission template; specialize it to the named claim/consumer. Missing category/field invalidates the prompt before dispatch, without a new approval committee.
+#### ENGINEERING COURT
+ACCEPT_IF: Real authorized producer→first imported consumer executes at exact source/root/clock; positive assertion plus same-claim severance RED and restore PASS.
+FAIL_OR_RED_IF: Disconnected first reader, source/root/receipt mismatch, transaction or replay failure, or unresponsive claimed severance.
+HOLD_IF: Qualified runner, import closure, required source or first consumer not accessible; NOT_RUN explicitly.
+EVIDENCE: Exact source commit/blob/import, commands/output, first consumer, positive/fault/restore receipts and independent review cut.
+OWNER_OF_DECISION: Qualified engineering owner and genuinely independent exact-cut implementation reviewer, never author self-acceptance.
+#### SCIENTIFIC COURT
+ACCEPT_IF: Competent original issuer validates precise meaning, causal alternatives, source applicability and discriminating positive/falsifier.
+FAIL_OR_RED_IF: Counterexample, invalid measurement/meaning, synthetic convenience or rival explanation defeats claimed science.
+HOLD_IF: Original source/scientific authority not issued or original evidence unavailable despite sourcefree technical PASS.
+EVIDENCE: Original source identity, measured cases, rival hypotheses, limitations, qualified issuer decision and scientific falsifier.
+OWNER_OF_DECISION: Original Pyat source/measurement or Sorok CAN/ADP/science issuer within its own jurisdiction.
+#### AUTHORITY COURT
+ACCEPT_IF: Source, host/model, actor/user permissions and genuinely independent review verified for precise usage; protected CAS publication only by qualified owner.
+FAIL_OR_RED_IF: Denied grant, wrong root, forged reviewer independence, source breach or unauthorized protected mutation.
+HOLD_IF: User-stopped operation, unmerged/owner-held adoption, unknown license, missing issuer or review cut.
+EVIDENCE: Permission and selected-host records, immutable reviewer/branch SHA, coherent own MD/JSON state and protected owner CAS receipt or NONE_VERIFIED.
+OWNER_OF_DECISION: Competent original rights holder, incumbent domain HQ and protected PRE-MAIN integrator as applicable, not a new court.
+**DISPATCH PREFLIGHT:** Each actual copied commission must instantiate all 3×5 fields rather than merely quoting this template. A sourcefree engineering PASS plus scientific/authority HOLD is valid. A real RED remains RED regardless of favorable author tests.
+<!-- HQ_RULE_END id=HQ-C2R-030 -->
+
 ## Practical operating algorithm — execute these procedures, not merely their headings
 
 ### 1. Verify appointment, live source truth and resumption mode
@@ -252,6 +297,15 @@ Report `DONE / REMAINING / BLOCKERS / LARGEST PRODUCTIVE TRANCHE / PARALLEL FLIG
 **FAILURE / FALSIFIER:** Sourcefree actor cold test used to assert participant flourishing, or paid retention treated as wellbeing.
 **CONTROLLING ORIGINAL AT C1:** `WORKER_RETURNS/PROGRAMMA_SOROK_W8R_FINAL_FANIN_20261103_R1/04_UNRESOLVED_OWNER_AND_CODE_FIRST_CONSUMER_QUEUE.md@a9ebf71e62d84e5dcc599662e976eca7fcd0e623`. C1 original status `ADOPTED_SEPARATION_USER_SOURCE_AND_PRODUCT`. This inclusion in C2 is candidate law text until actual independent C3 and qualified owner/CAS receiving; prior adopted sources remain controlling in the meantime. It grants no additional native, actor, source, scientist or reviewer authority.
 <!-- HQ_RULE_END id=HQ-C1-028 -->
+<!-- HQ_RULE_START id=HQ-C2R-032 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
+### HQ-C2R-032: Sorok mandatory 00D warm work and no self-review
+**TRIGGER:** Every Sorok pre-dispatch, actual warm reuse, proof intake and new commission affinity.
+**OPERATIVE ACTION:** Re-probe actual runtime/marker/import closure; reuse authorized warm worktree/cache only if source privacy and reviewer independence remain qualified; record observed cost/quota, portable passport and no actor/science inference.
+**COMPETENT OWNER:** Incumbent Sorok HQ plus selected host; CAN/ADP/original actor and independent reviewer separately.
+**FAILURE / FALSIFIER:** Same ChatGPT tab or GitHub access counted as live Python, ungranted V3 actor/sources, author self-review or unobserved cost reported as fact.
+**ORIGINAL SOURCE:** SOROK_PRODUCT_CONTROL_ROOM/00D_WARM_ENVIRONMENT_PASSPORT_AND_COST_AWARE_AGENT_DISPENSATION_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1; adopted user-mandatory. Preserve existing nonconflicting warm source cache/object store and isolated worker branch, no per-worker clone or reset. Confirm \`environment_id\`, \`epoch_id\`, \`runtime_marker\`, exact import \`module.__file__\`, source/actor consent/permission, cost/usage/retries and qualification before eligible S2. Browser GitHub read access alone is not an import. Return structured FINDINGS/INTERPRETATION/HQ ACTION/SOURCE, actual sourcefree evidence and nonsecret environment-passport delta with next affinity; no automatic extra worker or native person claim.
+<!-- HQ_RULE_END id=HQ-C2R-032 -->
+
 ## Sorok entire human/product objective and source-native firewall
 The end is **a historically formed and changing person** whose biography, material activity, social reproduction, care/dependency, antagonistic power, need/motive, relationships, independent others, cognitive opacity, refusal, actual action, memory and contradictions yield genuinely individuated later behavior and a meaningful user encounter. Not an Enneagram/persona template, flattering GPT output, synthetic fixture or retention score. Hold together original Sorok vision/Astra/original V3/Neo-V3, 17 S0–S16, C0–C12/A0–A5 (19), M01–M40 (40), Neo N01–N12 (12), O01–O16 (16) and E01–E15 (15), historical 144 function identities and 100 W1 decisions. Original V3 executable developmental machinery and B3A/BP2P4J joined sourcefree implementation are reusable capital; original source science and native person are not already proved.
 **Causal chain:** permitted Pyat world and independent B/coactors → historically formed actor with actual material opportunities, needs/expectations and admissible E1 → competent CAN008 Rule A and independently warranted CAN011 Rule T acquired PRACTICE **OR genuinely evaluated O07 NO_CHANGE** (missing Rule T is not NO_CHANGE) → actual actor-performed independent later E2 which reads the earlier durable semantic history → common root/clock/source/branch/fork/ACK and C9/C12 cold reopen, actual C10 selected seam and legal C11 when separately issued by Pyat and Sorok → C12 generated continuing person → S5/S7/S8/S9/S11/S13/S14/S15 and A0–A5 real relational/product consequences. Preexisting ability, improved tool/opportunity or other person's help remain causal rivals; a narrator can never silently forge the independent coactor.
@@ -268,6 +322,12 @@ For actual incumbent HQ material change, directly update **the existing single q
 Gates0–3 curated experience don't substitute for **Gate4 generated actual person**, and Gate5 requires Gate4 plus actual consented human participation/independent S5 S11 S14 S15 privacy/product evidence. Differentiate objective world event, actor-private accessible information, independent other's act, user's performed action and observer interpretation. Operated S14 export/deletion/privacy require real request→effect→receipt plus branch/root nonleak; S13 pricing and nonextractive ethics do not reduce to engagement/retention. Reviewer of wrong root/author's own candidate: HOLD. `O05` not issued plus no genuine O07 evaluation: **RULE_HOLD, not NO_CHANGE**. No A5 selected mode: not READY. Historical M29 renderer with no current reader: COMPARE_ONLY. A mere declared user action or generated speech is not performed life. Continue authorized parallel S10/renderer/privacy/sourcefree specification where independent of held native C11.
 
 **Baseline currentness alarm:** PRE-MAIN Sorok `CURRENT_PROGRESS.md` revision36 versus Sorok `CURRENT_PROGRESS.json` revision35; its rev36 says M35/S35 prepared rather than active, newer isolated returns require exact readback before promotion. No C2 rewrite of incumbent truth permitted.
+
+## C2R exact guide-currentness handoff using existing HQ checkpoints (candidate contract)
+**MINIMUM CURRENT-STATE LOCATOR:** For each coherent material transition the incumbent domain HQ, not a documentary worker, records in its existing authorized paired \`CURRENT_PROGRESS.md\` / \`CURRENT_PROGRESS.json\` and checkpoint: \`integrated_guide_head\` (40-hex independently verified accepted/integrated HEAD **or NONE_VERIFIED**), \`candidate_guide_branch_sha\` (exact branch@40hex or UNKNOWN), \`PENDING_GUIDE_INTEGRATION\`, affected \`component\`, \`phase\`, \`seam\`, \`selected_dependency\` (actual ALL/ANY/IF mode and permission), \`gap\`, \`owner\`, \`reviewer_cut\`, \`last_coherent_md_readback\`, \`last_coherent_json_readback\`, source-qualified publication and protected \`owner_CAS_disposition\`. Preserve actual REVIEW/RED/HOLD and last coherent same-cut MD/JSON or explicitly reconcile discrepancies. No branch title, section count or worker delta proves an integrated guide.
+**TRANSITION:** exact branch candidate + impacted IDs → PENDING_GUIDE_INTEGRATION in an authorized incumbent status transaction → distinct reviewer/source/science decisions → qualified protected owner/CAS merge → independently read guide HEAD/actual affected files and same-cut status pair → only then claim integrated_guide_head. Owner-held/unmerged candidate remains separate, while unaffected lawful work continues. No new controller, fourth front door, approval tribunal or protected write from C2R.
+**BOUNDED DRY-RUN RECEIPT TEMPLATE (not live status):** \`integrated_guide_head=NONE_VERIFIED; candidate_guide_branch_sha=<actual branch@40hex or UNKNOWN>; guide_state=PENDING_GUIDE_INTEGRATION; affected={component,phase,seam,selected_dependency,gap,owner,reviewer_cut}; last_coherent_md_readback=<path@SHA/revision>; last_coherent_json_readback=<path@SHA/revision>; source_qualified_publication=CANDIDATE_ONLY; owner_CAS_disposition=HELD\`. Placeholders do not assert that an event occurred. Competent source/rights holder, domain HQ and PRE-MAIN CAS remain separate.
+**SOROK SOURCE-CUT READBACK:** W8-R \`a9ebf71e62d84e5dcc599662e976eca7fcd0e623\` remains candidate with 38 versioned seams and zero full equivalent joins; W8-V formal independent acceptance remains NOT_ISSUED. Protected Sorok \`CURRENT_PROGRESS.md\` revision 36 conflicts with \`CURRENT_PROGRESS.json\` revision 35. \`status_pair_same_cut=false\`; \`integrated_guide_head=NONE_VERIFIED\` until a qualified incumbent establishes another actual accepted head. Do not publish or backfill a fictitious current guide.
 
 ## Preserved original Sorok scientific/product scope and inherited source capital
 
