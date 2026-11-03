@@ -58,4 +58,4 @@ This is a consequential *discovery quality* deficit, not proof the guide's nativ
 
 **Independent receiver:** competent user / appointed Pyat HQ decides whether to accept these findings; this SAT-F reviewer cannot grade itself accepted, modify the accepted roadmap or declare the Pyat engine complete.
 
-**Terminal SHA custody:** this file is the last required new review file; its own commit cannot embed its SHA without becoming a different commit. Read the actual GitHub head of review/prog5-sat-final-unfamiliar-use-20261103-r1 after this commit and report that exact branch-final SHA in the external handoff.
+**Terminal SHA custody:** the review branch may include final link corrections after this return file. Its own final Git commit cannot be safely embedded into its content without changing that commit. Read the actual GitHub head of review/prog5-sat-final-unfamiliar-use-20261103-r1 after all five files are verified and report the exact branch-final SHA in the external handoff.
