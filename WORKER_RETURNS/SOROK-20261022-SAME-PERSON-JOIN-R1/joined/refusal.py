@@ -13,6 +13,9 @@ from pathlib import Path
 
 from .imports import install
 install()
+from .b_event import (B_EVENT_CONTRACT, OMITTED, REFUSED, UNAVAILABLE,
+                      disposition_from_source, omitted_scenario,
+                      refused_scenario, unavailable_scenario, validate_receipt)
 from .lineage import ROOT_BRANCH, create_fork, validate as validate_lineage
 from bp4.product import BP4Product
 from bp4.world import initial_world
@@ -20,7 +23,6 @@ from c8_readonly_consumer import C8ReadOnlyConsumer
 from historical_actor_producer import build_life
 from r26e.c12_integrity import QualifiedC12Store
 from r31j.build import c9_only
-from r31j.scenarios import evaluated
 from r31e.session import R31ESession
 from r30a.first_session import SessionRefusal
 
@@ -108,10 +110,15 @@ def validate_targetless(product, meta: dict, sidecar: dict, branch_id: str) -> d
         source = product.source
         c8_binding = sidecar.get('c8') or {}
         c8_source, c8_event = _read_c8_source(c8_binding)
+        disposition = (meta.get('j_b_disposition')
+                       or disposition_from_source(source))
+        episode_kind = ('GM01_OMISSION' if disposition == OMITTED
+                        else 'GM01_REFUSAL')
         rows = [row for row in product.store.episodes(branch_id)
-                if row['kind'] == 'GM01_REFUSAL']
+                if row['kind'] == episode_kind]
         if len(rows) != 1:
-            raise ValueError('C12_GM01_REFUSAL_COUNT:' + str(len(rows)))
+            raise ValueError(
+                'C12_' + episode_kind + '_COUNT:' + str(len(rows)))
         body = rows[0].get('body') or {}
         c12_source = body.get('gm01_source')
         seed = product.seed.public()
@@ -122,6 +129,11 @@ def validate_targetless(product, meta: dict, sidecar: dict, branch_id: str) -> d
         payload = c8_event.get('payload') or {}
         actor = payload.get('actor') or {}
         other = payload.get('other_actor') or {}
+        receipt_binding = {'ok': True, 'checks': {}, 'observed': {}}
+        if (meta.get('b_event_contract') == B_EVENT_CONTRACT
+                or meta.get('b_performer_receipt')):
+            receipt_binding = validate_receipt(
+                meta.get('b_performer_receipt'), source)
         checks.update({
             'sidecar_matches_c8': source == c8_source,
             'sidecar_matches_c12': source == c12_source,
@@ -148,16 +160,24 @@ def validate_targetless(product, meta: dict, sidecar: dict, branch_id: str) -> d
                 value is False
                 for value in product.seed.custody()['native_grants'].values()),
             'no_native_sidecar': sidecar.get('native') is False,
+            'b_disposition_known': disposition in (OMITTED, REFUSED),
+            'b_disposition_matches_source': disposition == disposition_from_source(source),
+            'c12_episode_kind_matches': rows[0]['kind'] == episode_kind,
+            'b_receipt_matches_source': receipt_binding.get('ok') is True,
         })
         observed.update({
             'b_event_hash': source.get('b_event_hash'),
             'b_operation': source.get('b_operation'),
+            'b_performed': source.get('b_performed'),
             'b_actor': source.get('b_actor'),
             'b_to_actor': source.get('b_to_actor'),
+            'j_b_disposition': disposition,
+            'c12_episode_kind': rows[0]['kind'],
             'c8_state_digest': c8_binding.get('c8_state_digest'),
             'e1_event_hash': c8_binding.get('e1_event_hash'),
             'source_actor_map': meta.get('source_actor_map'),
             'seed_actors': {'a': seed.get('actor_a'), 'b': seed.get('actor_b')},
+            'b_receipt': receipt_binding.get('observed', {}),
         })
     except Exception as exc:  # missing/orphan source is a failed provenance check
         checks['provenance_readable'] = False
@@ -209,14 +229,22 @@ class RefusalSession(R31ESession):
     """E admission over the targetless C12 representation; no C9 target."""
 
     @classmethod
-    def start(cls, state_root, *, attention='focused', variant='A_REPAIR_LONG'):
+    def start(cls, state_root, *, attention='focused', variant='A_REPAIR_LONG',
+              b_disposition=REFUSED):
+        if b_disposition not in (REFUSED, OMITTED, UNAVAILABLE):
+            raise SessionRefusal('UNKNOWN_B_DISPOSITION', str(b_disposition))
+        if b_disposition == REFUSED:
+            scenario = refused_scenario(e2=False)
+        elif b_disposition == OMITTED:
+            scenario = omitted_scenario(e2=False)
+        else:
+            scenario = unavailable_scenario(e2=False)
         state_root = Path(state_root).resolve()
         state_root.mkdir(parents=True, exist_ok=True)
         if (state_root / 'session.json').exists():
             raise SessionRefusal('SESSION_EXISTS__NO_AUTOMATIC_REROLL')
         if (state_root / 'product').exists() or (state_root / 'source').exists():
             raise SessionRefusal('ORPHAN_PRODUCT_ROOT')
-        scenario = evaluated(share=False, e2=False)
         partial, producer = c9_only(
             state_root / 'source', gm01=scenario['gm01'],
             case=scenario['case'], variant=variant)
@@ -236,13 +264,17 @@ class RefusalSession(R31ESession):
             state_root / 'product', life=life, source=partial['gm01_source'],
             c8_binding=c8_binding, variant=variant, write_sidecar=True)
         try:
+            episode_kind = ('GM01_REFUSAL' if b_disposition == REFUSED
+                            else 'GM01_OMISSION')
             product._append_episode(
-                'root', 'A', 'GM01_REFUSAL', product._world('root').clock, {
+                'root', 'A', episode_kind, product._world('root').clock, {
                     'gm01_source': partial['gm01_source'],
                     'c8_state_digest': partial['c8_state_digest'],
                     'e1_event_hash': partial['e1_event_hash'],
                     'c9': partial['c9'],
                     'target_id': '',
+                    'j_b_disposition': b_disposition,
+                    'b_performer_receipt': scenario['b_performer_receipt'],
                     'native': False,
                 })
             product._checkpoint('root', product._world('root').clock,
@@ -253,7 +285,8 @@ class RefusalSession(R31ESession):
             session.meta.update(
                 schema='SOROK_SAME_PERSON_REFUSAL@1',
                 grade=GRADE,
-                material_performance='refused',
+                material_performance=('refused' if b_disposition == REFUSED
+                                      else 'omitted'),
                 root_branch_id='root',
                 branch_lineage=None,
                 target_id='',
@@ -270,6 +303,9 @@ class RefusalSession(R31ESession):
                 c8=dict(c8_binding),
                 c9=partial['c9'],
                 variant=variant,
+                b_event_contract=B_EVENT_CONTRACT,
+                j_b_disposition=b_disposition,
+                b_performer_receipt=scenario['b_performer_receipt'],
                 expression_port='R31E_EXPRESSION_PORT@1',
                 actor_model='LIVE_ACTOR_MODEL_NOT_RUN',
             )
@@ -396,21 +432,32 @@ class RefusalSession(R31ESession):
         result['target_id'] = ''
         result['targetless'] = True
         result['c9'] = self.meta.get('c9')
+        result['j_b_disposition'] = self.meta.get('j_b_disposition')
+        result['b_performer_receipt'] = self.meta.get('b_performer_receipt')
         result['branch_lineage'] = self.meta.get('branch_lineage')
         return result
 
 
-def probe_refusal(state_root, *, variant='A_REPAIR_LONG'):
-    """Build the typed refusal receipt and targetless C12 representation."""
+def probe_refusal(state_root, *, variant='A_REPAIR_LONG',
+                  b_disposition=REFUSED):
+    """Build the typed targetless receipt for refusal or omission."""
     state_root = Path(state_root).resolve()
     state_root.mkdir(parents=True, exist_ok=True)
-    scenario = evaluated(share=False, e2=False)
+    if b_disposition == REFUSED:
+        scenario = refused_scenario(e2=False)
+    elif b_disposition == OMITTED:
+        scenario = omitted_scenario(e2=False)
+    else:
+        raise SessionRefusal('UNKNOWN_B_DISPOSITION', str(b_disposition))
     partial, producer = c9_only(
         state_root / 'source', gm01=scenario['gm01'],
         case=scenario['case'], variant=variant)
     producer.close()
-    session = RefusalSession.start(state_root / 'session', variant=variant)
+    session = RefusalSession.start(
+        state_root / 'session', variant=variant,
+        b_disposition=b_disposition)
     try:
+        operation = 'REFUSE/NO_CHANGE' if b_disposition == REFUSED else 'OMIT/NO_CHANGE'
         return {
             'schema': 'SOROK_JOIN_E_REFUSAL_PROBE@1',
             'status': 'HOLD',
@@ -420,16 +467,18 @@ def probe_refusal(state_root, *, variant='A_REPAIR_LONG'):
             'e1_event_hash': partial['e1_event_hash'],
             'c9': partial['c9'],
             'target_id': '',
+            'j_b_disposition': b_disposition,
+            'b_performer_receipt': scenario['b_performer_receipt'],
             'c12': session.verify(),
             'session': session.status(),
             'owner_contract': {
                 'request': ('The original BP2P4 consumer requires a committed C9 '
                             'CREATE target. A targetless C12 representation now '
-                            'carries the real REFUSE/NO_CHANGE source without a '
+                            'carries the real ' + operation + ' source without a '
                             'fabricated target; C10 target semantics remain absent.'),
                 'required_decision': ('Accept the derived targetless C12 for the '
-                                      'refusal path, or provide a native C10/C12 '
-                                      'no-target contract.'),
+                                      'refusal/omission path, or provide a native '
+                                      'C10/C12 no-target contract.'),
                 'owner': 'BP2P4/C9 consumer owner with C12/C10 owner',
                 'unaffected_paths': ('share+E2, share+omit, E expression, '
                                      'attention, privacy, cold positive'),

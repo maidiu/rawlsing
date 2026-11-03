@@ -10,6 +10,7 @@ from pathlib import Path
 
 JOIN_POSITIVE_ASSERTION = "SOROK_JOIN_E_POSITIVE_P01"
 JOIN_REFUSAL_ASSERTION = "SOROK_JOIN_E_REFUSAL_NO_TARGET_P01"
+B_EVENT_ASSERTION = "SOROK_JOIN_E_B_EVENT_UPSTREAM_P01"
 
 
 def positive(session, *, help_result: dict | None = None) -> dict:
@@ -46,6 +47,49 @@ def positive(session, *, help_result: dict | None = None) -> dict:
         observed["help_accepted"] = bool(help_result.get("accepted"))
         observed["help_strategy"] = help_result.get("strategy")
     return {"ok": all(checks.values()), "checks": checks, "observed": observed}
+
+
+def b_event_positive(session, *, help_result: dict | None = None) -> dict:
+    """Same named assertion for B's performed source and its upstream cut.
+
+    The assertion is deliberately unchanged between the cut and restore. On an
+    omitted or unavailable B source the ordinarily performed source, target,
+    tool and E-help checks are false; no build/import exception is counted.
+    """
+    from .b_event import PERFORMED, validate_receipt
+
+    source = session.product.source
+    receipt = session.meta.get("b_performer_receipt")
+    receipt_check = validate_receipt(receipt, source)
+    base = positive(session, help_result=help_result)
+    world = session.product._world(session.branch_id)
+    checks = dict(base["checks"])
+    checks.update({
+        "b_disposition_performed": session.meta.get("j_b_disposition") == PERFORMED,
+        "b_receipt_matches_source": receipt_check.get("ok") is True,
+        "b_source_is_performed_share": (
+            source.get("b_operation") == "SHARE_TOOL"
+            and source.get("b_performed") is True),
+        "b_clock_preserved": source.get("b_clock") == 5,
+        "b_recipient_is_a": source.get("b_to_actor") == "TEST_ONLY_R31J_A",
+        "branch_is_first_session": session.branch_id == "first_session",
+        "canonical_product_root": (
+            Path(session.product.root).resolve()
+            == (Path(session.state_root) / "product").resolve()),
+        "help_tool_available": (
+            world.actor_state.get("A", {}).get("tools_remaining") == 1),
+    })
+    observed = dict(base["observed"])
+    observed.update({
+        "assertion": B_EVENT_ASSERTION,
+        "j_b_disposition": session.meta.get("j_b_disposition"),
+        "b_operation": source.get("b_operation"),
+        "b_performed": source.get("b_performed"),
+        "b_clock": source.get("b_clock"),
+        "b_receipt": receipt_check.get("observed", {}),
+    })
+    return {"ok": all(checks.values()), "assertion": B_EVENT_ASSERTION,
+            "checks": checks, "observed": observed}
 
 
 def cold_positive(state_root) -> dict:

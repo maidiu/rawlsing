@@ -8,9 +8,10 @@ from pathlib import Path
 from .imports import install
 install()
 from r31j.build import c9_only, product as build_product
-from r31j.scenarios import evaluated
 from r31e.session import R31ESession
 from r30a.first_session import SessionRefusal
+from .b_event import (B_EVENT_CONTRACT, PERFORMED, performed_scenario,
+                      refused_scenario, validate_receipt)
 from .closure import audit_loaded, source_manifest_sha256
 from .lineage import ROOT_BRANCH, create_fork, validate as validate_lineage
 from .provenance import validate_join
@@ -55,7 +56,7 @@ class JoinedSession(R31ESession):
 
     @classmethod
     def start(cls, state_root, *, perform='e2', attention='focused',
-              variant='A_REPAIR_LONG'):
+              variant='A_REPAIR_LONG', b_disposition=PERFORMED):
         state_root = Path(state_root).resolve()
         state_root.mkdir(parents=True, exist_ok=True)
         if (state_root/'session.json').exists():
@@ -64,7 +65,11 @@ class JoinedSession(R31ESession):
             raise SessionRefusal('ORPHAN_PRODUCT_ROOT')
         if perform not in ('e2', 'omit'):
             raise SessionRefusal('UNKNOWN_PERFORMANCE')
-        scenario = evaluated(share=True, e2=perform == 'e2')
+        if b_disposition != PERFORMED:
+            raise SessionRefusal(
+                'TARGETLESS_B_EVENT_REQUIRES_REFUSAL_SESSION', str(b_disposition))
+        scenario = performed_scenario(e2=perform == 'e2')
+        receipt = scenario['b_performer_receipt']
         product, built, producer = build_product(
             state_root, gm01=scenario['gm01'], case=scenario['case'],
             variant=variant)
@@ -81,6 +86,11 @@ class JoinedSession(R31ESession):
             source = dict(product.source)
             if source.get('b_operation') != 'SHARE_TOOL' or not source.get('b_performed'):
                 raise SessionRefusal('J_SOURCE_NOT_POSITIVE', json.dumps(source, sort_keys=True))
+            receipt_check = validate_receipt(receipt, source)
+            if not receipt_check.get('ok'):
+                raise SessionRefusal(
+                    'B_SOURCE_RECEIPT_MISMATCH',
+                    json.dumps(receipt_check.get('checks', {}), sort_keys=True))
             session = cls._attach_new(product, state_root, scenario='available',
                                       attention=attention, variant=variant)
             seed = product.seed.public()
@@ -96,6 +106,9 @@ class JoinedSession(R31ESession):
                 j_c8_state_digest=built['c8_state_digest'],
                 j_e1_event_hash=built['e1_event_hash'],
                 j_target_id=built['target_id'],
+                b_event_contract=B_EVENT_CONTRACT,
+                j_b_disposition=PERFORMED,
+                b_performer_receipt=receipt,
                 source_actor_map={
                     'TEST_ONLY_R31J_A': seed['actor_a'],
                     'TEST_ONLY_R31J_B': seed['actor_b'],
@@ -145,6 +158,18 @@ class JoinedSession(R31ESession):
         try:
             if product.source != meta.get('j_source'):
                 raise SessionRefusal('J_SOURCE_IDENTITY_CHANGED')
+            if meta.get('b_event_contract') == B_EVENT_CONTRACT:
+                receipt_check = validate_receipt(
+                    meta.get('b_performer_receipt'), product.source)
+                if not receipt_check.get('ok'):
+                    raise SessionRefusal(
+                        'J_PROVENANCE_MISMATCH',
+                        json.dumps(receipt_check.get('checks', {}),
+                                   sort_keys=True))
+                if meta.get('j_b_disposition') != PERFORMED:
+                    raise SessionRefusal('J_PROVENANCE_MISMATCH')
+                if product.source.get('b_performed') is not True:
+                    raise SessionRefusal('J_PROVENANCE_MISMATCH')
             lineage_result = validate_lineage(meta, branch, product.store)
             if not lineage_result.get('ok'):
                 raise SessionRefusal(
@@ -184,7 +209,7 @@ class JoinedSession(R31ESession):
         state_root = Path(state_root).resolve()
         root = state_root / 'refusal'
         root.mkdir(parents=True, exist_ok=True)
-        scenario = evaluated(share=False, e2=False)
+        scenario = refused_scenario(e2=False)
         partial, producer = c9_only(
             root, gm01=scenario['gm01'], case=scenario['case'], variant=variant)
         producer.close()
@@ -197,6 +222,8 @@ class JoinedSession(R31ESession):
             'e1_event_hash': partial['e1_event_hash'],
             'c9': partial['c9'],
             'target_id': '',
+            'j_b_disposition': 'REFUSED',
+            'b_performer_receipt': scenario['b_performer_receipt'],
             'owner_contract': {
                 'request': ('The original BP2P4 consumer requires a committed C9 '
                             'CREATE target before it can assemble a product; the '
@@ -257,5 +284,7 @@ class JoinedSession(R31ESession):
         result['j_target_id'] = self.meta.get('j_target_id')
         result['root_branch_id'] = self.meta.get('root_branch_id')
         result['material_performance'] = self.meta.get('material_performance')
+        result['j_b_disposition'] = self.meta.get('j_b_disposition')
+        result['b_performer_receipt'] = self.meta.get('b_performer_receipt')
         result['branch_lineage'] = self.meta.get('branch_lineage')
         return result

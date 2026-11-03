@@ -1,7 +1,9 @@
 # SOROK JOIN-E — coherent same-person sourcefree completion
 
-**STATUS:** `REPAIRED_SOURCEFREE_CANDIDATE__SHARED_BRANCH_LINEAGE_AND_FORK_ATOMICITY_BOUND__FINAL_JOIN_V_PENDING__NOT_NATIVE__NOT_SELF_ADOPTED`
-**BRANCH:** `codex/sorok-join-e-20261022`
+**STATUS:** `B_EVENT_UPSTREAM_CONNECTION_BOUND__PERFORMED_OMITTED_REFUSED_UNAVAILABLE_DISTINCT__CUT_RED_RESTORE_GREEN_COLD__NOT_NATIVE__NOT_SELF_ADOPTED`
+**BRANCH:** `codex/sorok-join-e-b-event`
+**BASE:** `7bf2da302996491ddf34b9a039fea47ac982d135`
+**SCOPED RETURN FOR THIS CUT:** `B_EVENT_UPSTREAM_RETURN.md`
 **EXACT STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
 **ROLE:** OpenCode implementation worker; not Sorok HQ, not JOIN-V, not a native CAN/ADP/C8/C12/Pyat/C11 issuer, not a human A5 evaluator.
 **MODEL / HARNESS:** OpenCode, `DeepSeek V4.1-Flash`, `REASONING=MAX` requested; actual metered effort/provider quota `UNKNOWN`; one agent; no subagent, external provider call or model switch.

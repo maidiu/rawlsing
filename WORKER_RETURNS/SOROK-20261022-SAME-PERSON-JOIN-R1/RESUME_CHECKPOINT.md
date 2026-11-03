@@ -1,5 +1,16 @@
 # Same-person join — JOIN-E repair checkpoint
 
+## B-event upstream connection (current cut)
+
+**Branch:** `codex/sorok-join-e-b-event`
+**Base:** `7bf2da302996491ddf34b9a039fea47ac982d135`
+**Status:** `B_EVENT_UPSTREAM_CONNECTION_BOUND__PERFORMED_OMITTED_REFUSED_UNAVAILABLE_DISTINCT__CUT_RED_RESTORE_GREEN_COLD__NOT_NATIVE__NOT_SELF_ADOPTED`
+**Scoped return:** `B_EVENT_UPSTREAM_RETURN.md`
+**Evidence:** `evidence/b_event_contrast.json`
+**Tests:** `7 passed` focused B-event tests; `25 passed` preserved JOIN suite. JOIN-V `4387dc818` replay `NOT_RUN` (operator-denied worktree command). No vendor or reviewer file edited.
+
+---
+
 **Branch:** `codex/sorok-join-e-20261022`
 **Exact startup:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
 **Continuation seal:** `141b5fe1e393621862791281e980c450715bbb9a`
