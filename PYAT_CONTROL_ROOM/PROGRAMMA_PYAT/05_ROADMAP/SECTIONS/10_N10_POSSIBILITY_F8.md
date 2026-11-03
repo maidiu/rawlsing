@@ -1,5 +1,16 @@
 # ROADMAP:S10 — N10E empirical possibility plus N10W progressive world-conditioned possibility (F8)
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S10.1–S10.4; GAP-042–045.** L1 E41 [provide_empirical_possibility_slice_ext](https://github.com/maidiu/rawlsing/blob/6e123bafe749d6997c764ae117fb5e68e0139ed7/WORKER_RETURNS/PYAT-R41-E41-FULL-EMPIRICAL-F1F4-COMPUTED-POSSIBILITY-R1/e41_provider_extension.py#L337) computes 18 sourcefree N10E slices over 14 families. J42 [joined_consumer_receipt](https://github.com/maidiu/rawlsing/blob/f53cb0d2bce52640268c844c398bbd8007d28edc/WORKER_RETURNS/PYAT-R42-J42-COMPLETE-E41-W41-P41-ACTUAL-JOINT-PREV3-CONSUMER-R1/runtime/j42_join.py#L153) provides **84 E04 + 84 P41 joined same-source TEST_ONLY receipts** across 84 views, 252 progressive steps—real narrow reader, not original35 native N9/N10W or G0b use. R05 learned coordinator local review and later R06 [select_r05_world_view](https://github.com/maidiu/rawlsing/blob/b2cfe93cee854b7aff2081a7a223ada75295332a/rawlsing_next/pre553_universal_world_binding.py#L849) prove a **sourcefree** same selected-world pinned P41 N9/N10E/N10W/E04 path with refusal/cold restore, R06V-R4 ACCEPT_SCOPED_LOCAL; not control or semantic PRE-MAIN adoption.
+
+**AND law retained:** ASTRA:REQ:N9:N10W **AND** ASTRA:REQ:N10E:N10W; N2/N4/N3 N10E inputs remain IF applicable, no OR substitution of world for empirical. F8 positions must preserve minority/uncertainty/independent alternatives and no destiny; model/source/use G0b and Sorok actor rights separate. **Next owner:** native source-licensed dual inputs, matched as-of/use/model permissions and valid first operative F8 reader/negative; no new theory/actor grant.
+
+---
+
+
 **First rough hierarchy + source-linked evidence / unreviewed; no source or actor grant.** [Overview](../README.md) · [Cut locks](../INPUT_CUTS.md). This page describes intended functions, not certified execution.
 
 **Plan memberships:** N10E, N10W, F8, EE08/EE14, Whole101 W03–W08; separate G0a and competent G0b use; source [Astra node](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md), [Whole register](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_WORK_REGISTER.md) and [G1-C spine](https://github.com/maidiu/rawlsing/blob/5f46bbe3e9176724f79c85d9951cb864621706cd/WORKER_RETURNS/PROG5_G1_C_ARCHITECTURE_PLANS_R1/PROPOSED_WHOLE_SPINE.json). Membership is not semantic alias or maturity proof.
