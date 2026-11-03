@@ -1,6 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
 
+**READ FIRST — binding before any historical-function-driven BUILD/PORT recommendation:** [Five-test historical succession and work-selection law](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md). Exact old symbol not indexed is not evidence the present pipeline lacks the function. Record the current required behavior, accepted/composed successor, actual first consumer, science/ABI suitability, and comparative advantage—or return COMPARE_ONLY/NO_BUILD. **Current development readback:** [post-PR646 merged sourcefree seam incision and Codex HQ self-directed next-work selection](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md). The 82 G4 edges and 49 gaps remain frozen at their source cuts; this newer sourcefree first-reader positive does not confer native original35/N11/N12 authority.
+
 ## PROG5-SAT-R five-route receiving — additive code capital and confidence (2026-11-03)
 
 **Documentary integration candidate; not self-reviewed, native-executed or protected-adopted.** Five required independent returns are verified at exact terminal cuts: [M1 aebb265](https://github.com/maidiu/rawlsing/commit/aebb265af79d09c81800129403d914d50fa6e2bd), [M2 f24f446](https://github.com/maidiu/rawlsing/commit/f24f446eefdaa86e493153eb00b77e1bc2bd087d), [M3 a21b46e](https://github.com/maidiu/rawlsing/commit/a21b46ee2920c2ac1699b38cc11ea4e6771fa46d), [M4 14a6c64](https://github.com/maidiu/rawlsing/commit/14a6c6490a64c327f178f10cbba6274d22eaa4e5), [M5 d74d655](https://github.com/maidiu/rawlsing/commit/d74d65562942254a4162bd6ad83c6d72ad698b1c). Earlier prepared SHAs were not counted.
