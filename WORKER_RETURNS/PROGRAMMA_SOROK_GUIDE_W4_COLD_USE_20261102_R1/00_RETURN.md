@@ -15,7 +15,7 @@
 
 | Asked | Verdict | Locating evidence and consequence |
 |---|---|---|
-| 1. V3 M to modern successor, lost behavior | PASS | 09 M29 and M25; old Pass-2/nonmutation or 19-step yearly mechanism has only a partial present analog, **no** proven same-contract native port. Direct PRE-MAIN M6/render code blocks unowned positive semantics. Old V3 bytes honestly PRlOR_LOCAL_S2/BROWSER_UNREAD. |
+| 1. V3 M to modern successor, lost behavior | PASS | 09 M29 and M25; old Pass-2/nonmutation or 19-step yearly mechanism has only a partial present analog, **no** proven same-contract native port. Direct PRE-MAIN M6/render code blocks unowned positive semantics. Old V3 bytes honestly PRIOR_LOCAL_S2/BROWSER_UNREAD. |
 | 2. A0–A5/C12 exact prerequisites and ready work | PASS | 08 D-C0/C4/C8/C9/C10/C11/C12/A0–A5 with scoped satisfied/held/unknown AND and conditional OR leaves; 06 §6.2/§6.5 and 10 priorities. Sourcefree JOIN-V accepted at exact 7bf; RRIF-R2 author tests still require independent review and owner pinning. |
 | 3. Owner-held, accepted sourcefree, mismatched seam | PASS | 08 E001 HELD (Pyat→Sorok source grant), E021 GREEN **sourcefree exact 7bf only**, E008 version-pinned C9/C12 candidate mismatch/HELD (not an observed failed active native importer). Direct reader and independent JOIN verdict checked. |
 | 4. R6 reusable source-present/unwired family | PASS | 09 R6:EE-R5B: real request/owner-receipt adapter, branch-local tests; PRE-MAIN importer NONE_PROVEN. Exact source at 02d32036... and owner action in 10. |
