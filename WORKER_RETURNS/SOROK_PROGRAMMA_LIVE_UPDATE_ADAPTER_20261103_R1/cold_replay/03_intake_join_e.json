@@ -1,0 +1,90 @@
+{
+  "applied": {
+    "event_id": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+    "kind": "PROGRAMMA_DELTA",
+    "status": "SCOPED_SOURCEFREE_ACCEPTED"
+  },
+  "axes": {
+    "JOIN_E_7BF": {
+      "authority": "NOT_ADOPTED",
+      "consumer": "NONE_PROVEN_AT_PREMAIN",
+      "engineering": "SOURCE_DEFINITION_ONLY",
+      "human": "NOT_PROVEN",
+      "operational": "CANDIDATE_ONLY",
+      "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+      "science": "NOT_ISSUED",
+      "source_recovery": "SOURCE_EXACT"
+    }
+  },
+  "event": {
+    "actor": {
+      "principal": "SOURCE_DERIVED_NOT_HQ_IDENTITY",
+      "role": "CANDIDATE_INTAKE",
+      "verified": false
+    },
+    "created_at": "2026-11-03T18:50:12.912105+00:00",
+    "event_id": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+    "kind": "PROGRAMMA_DELTA",
+    "payload": {
+      "coordinate": {
+        "code": {
+          "blob": "dc0894289e8b6a5e66148189e41d7efb563f25af",
+          "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py"
+        },
+        "code_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+        "first_consumer_symbol": "class JoinedSession",
+        "root": "JOIN_E_7BF_SOURCEFREE",
+        "scope": "SOURCEFREE_FORK_COLD_7BF",
+        "source_cut": "7bf2da302996491ddf34b9a039fea47ac982d135"
+      },
+      "grade": "SOURCEFREE_SCOPED",
+      "guide_ref": "E021@VERIFY",
+      "guide_sha": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+      "kind": "SCOPED_REVIEW",
+      "locator": {
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md",
+        "quote": "TEST_ONLY_SOURCEFREE"
+      },
+      "next_evidence": "Joint C9 writer/C12 reader exact schema/root/ACK/anchor owner selection, separate new-tuple cold/severance and independent review. No native grant.",
+      "node_id": "JOIN_E_7BF",
+      "owner_slot": "JOIN_E_OWNER",
+      "prior_negative": [
+        "RRIF_R2_8090_REVISE_PERSISTS_OTHER_CUT"
+      ],
+      "return_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "review": {
+        "blob": "52dfc715bed3ef14cc3dc4639132c409c4e99712",
+        "commit": "4387dc818a96fda2d5271672505fbd9da1059703",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/SOROK-20261022-JOIN-HOSTILE-REVIEW-R1/00_RETURN.md"
+      },
+      "schema": "SOROK_PROGRAMMA_DELTA@1",
+      "source": {
+        "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+        "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+      },
+      "subject_sha": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "transition_id": "JOIN_E_7BF_SCOPED_REVIEW"
+    },
+    "prev_event_hash": "21245d2a7f8233a5448cb6b42d2bd1ed26b2eaf017df822680c98e8444b89970",
+    "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+    "sequence": 2,
+    "source": {
+      "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+      "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+    }
+  },
+  "expected_head": "21245d2a7f8233a5448cb6b42d2bd1ed26b2eaf017df822680c98e8444b89970",
+  "head": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+  "journal_head": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+  "revision": 2,
+  "stale_expected_head": false,
+  "state_digest": "465ee8c3d2d693ae80ddc2fccf7c5e1dc83d4c0991fb48a6a21d89ba5c908845",
+  "status": "EVENT_APPENDED"
+}

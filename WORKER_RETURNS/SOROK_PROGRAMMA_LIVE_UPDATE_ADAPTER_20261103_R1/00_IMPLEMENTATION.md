@@ -1,5 +1,7 @@
 # SOROK-LIVE-02 — scoped implementation return
 
+> **Execution update (2026-11-03):** The `S2_NOT_RUN` boundary below records the original authoring session. Execution was later performed at content SHA `bbcc46bf3b7aadfc582e284daea61f99060e0fc3`; see `05_EXECUTED_TEST_RECEIPT.md`, `06_COLD_REPLAY_AND_SEVEN_VIEW_RECEIPT.md`, `07_ADVERSARIAL_FINDINGS_AND_REPAIRS.md`, and `08_FINAL_DISPOSITION_AND_HQ_HANDOFF.md`. Independent review and HQ adoption remain NOT ISSUED.
+
 **Disposition: `IMPLEMENTED_ON_ISOLATED_BRANCH__SOURCE_INSPECTED__S2_NOT_RUN__INDEPENDENT_REVIEW_AND_HQ_ADOPTION_PENDING`.** This is not an execution-pass claim. A working Python runtime, secure Git worktree or authorized S2 runner was not available to this connected GitHub session; consequently code has been authored and committed, source identities have been checked, and adversarial pytest tests have been written, but the tests and cold CLI executions have **not** been performed.
 
 ## Exact boundaries

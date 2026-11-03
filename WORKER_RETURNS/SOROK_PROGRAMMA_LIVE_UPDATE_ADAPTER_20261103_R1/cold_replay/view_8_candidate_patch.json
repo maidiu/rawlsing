@@ -1,0 +1,127 @@
+{
+  "base_guide_sha": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+  "instruction": "Qualified HQ edits existing 00/06-15 after owner decision; adapter never silently rewrites guide.",
+  "patches": [
+    {
+      "guide_ref": "C12@VERIFY",
+      "proposed_current_stage_gates": [
+        {
+          "id": "G-C12-SF-VERIFY",
+          "remaining": [
+            "C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE",
+            "C12:LOCAL_GUIDE:NEW_TUPLE_COLD_SEVERANCE@VERIFY",
+            "C12:LOCAL_GUIDE:ACTUAL_ANCHOR@VERIFY"
+          ],
+          "review_red_at_selected_cut": true,
+          "review_red_source_cuts": [
+            "598d9e9eaba5143950c63317705fd09104fbf463"
+          ],
+          "status": "BLOCKED_MEMBERS_UNISSUED"
+        }
+      ],
+      "reverse_edges": [],
+      "source_return_receipts": [
+        {
+          "code_reader": "NONE",
+          "grade": "INDEPENDENT_NEGATIVE_SOURCE",
+          "id": "RRIF_R2_598D_8090_INDEPENDENT_REVISE",
+          "kind": "REVIEW_REVISE",
+          "next_evidence": "Repair exact R2-T1/M1/C1/D1, choose new C9/C12 tuple and cold verify with fresh independent reader; keep 7bf accepted only at 7bf.",
+          "owner": "C9_C12_OWNER",
+          "source": {
+            "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+            "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+          },
+          "source_cut": "598d9e9eaba5143950c63317705fd09104fbf463",
+          "status": "EXACT_NEGATIVE_REVIEWED"
+        }
+      ]
+    },
+    {
+      "guide_ref": "E021@VERIFY",
+      "proposed_current_stage_gates": [],
+      "reverse_edges": [
+        "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY",
+        "S10@SPECIFY"
+      ],
+      "source_return_receipts": [
+        {
+          "code_reader": "class JoinedSession",
+          "grade": "SOURCEFREE_SCOPED",
+          "id": "JOIN_E_7BF_SCOPED_REVIEW",
+          "kind": "SCOPED_REVIEW",
+          "next_evidence": "Joint C9 writer/C12 reader exact schema/root/ACK/anchor owner selection, separate new-tuple cold/severance and independent review. No native grant.",
+          "owner": "JOIN_E_OWNER",
+          "source": {
+            "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+            "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+          },
+          "source_cut": "7bf2da302996491ddf34b9a039fea47ac982d135",
+          "status": "SCOPED_SOURCEFREE_ACCEPTED"
+        }
+      ]
+    },
+    {
+      "guide_ref": "O05@ACCEPT",
+      "proposed_current_stage_gates": [
+        {
+          "id": "G-O05-POSITIVE-ACCEPT",
+          "remaining": [
+            "O05:LOCAL_GUIDE:RULE_T_DISCRIMINATOR@SPECIFY",
+            "C4:LOCAL_GUIDE:ACTOR_SOURCE@ACCEPT",
+            "C8:LOCAL_GUIDE:ACTION_OMISSION@VERIFY"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "BLOCKED_MEMBERS_UNISSUED"
+        },
+        {
+          "id": "G-C9-T-ANY",
+          "remaining": [
+            "O05@ACCEPT",
+            "O07@ACCEPT"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "MODE_UNSELECTED_HOLD"
+        },
+        {
+          "id": "G-C9-T-IF-ACQUIRED",
+          "remaining": [
+            "O05@ACCEPT"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "MODE_UNSELECTED_HOLD"
+        }
+      ],
+      "reverse_edges": [
+        "C9@ACCEPT",
+        "C9@INTEGRATE"
+      ],
+      "source_return_receipts": [
+        {
+          "code_reader": "NONE",
+          "grade": "TEST_ONLY_SOURCEFREE",
+          "id": "S35_P1_SOURCEFREE_RETURN_ONLY",
+          "kind": "RETURN_CANDIDATE",
+          "next_evidence": "Only a competent CAN011 original Rule T acquired-practice or genuinely evaluated O07 no-change issuance can promote native C9; isolate first-reader access and later performed E2.",
+          "owner": "CAN011_OWNER",
+          "source": {
+            "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+          },
+          "source_cut": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "status": "SOURCE_PRESENT_CANDIDATE"
+        }
+      ]
+    }
+  ],
+  "status": "HQ_REVIEW_PATCH_CANDIDATE_NOT_APPLIED"
+}

@@ -1,0 +1,293 @@
+{
+  "adoption": "OWNER_PENDING",
+  "changes": 3,
+  "changes_since_guide_cut": 3,
+  "guide_sha": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+  "journal_head": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+  "not_checked_automatically": "No background fetch, process observation or unseen worker import",
+  "pending": [
+    {
+      "affected_typed_edges_not_automatically_promoted": [],
+      "current_node_axes": {
+        "JOIN_C12_HOLD": {
+          "base_axis_preserved": {
+            "authority": "NOT_ADOPTED",
+            "consumer": "NONE_PROVEN_AT_PREMAIN",
+            "engineering": "SOURCE_DEFINITION_ONLY",
+            "human": "NOT_PROVEN",
+            "operational": "CANDIDATE_ONLY",
+            "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+            "science": "NOT_ISSUED",
+            "source_recovery": "SOURCE_EXACT"
+          },
+          "exact_cut_phase_review": {
+            "engineering": "REVISE_MATERIAL_DEFECTS_AT_EXACT_CUT",
+            "event_id": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+            "human_evidence": "NOT_PROVEN",
+            "native_science": "UNISSUED",
+            "owner_authority": "UNISSUED",
+            "review": "REVIEW_REVISE_MATERIAL_AT_EXACT_CUT",
+            "source": {
+              "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+              "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+            },
+            "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+            "transition_id": "RRIF_R2_598D_8090_INDEPENDENT_REVISE"
+          }
+        }
+      },
+      "editorially_suppressed": [],
+      "existing_work_packages": [],
+      "gate_decisions": [
+        {
+          "id": "G-C12-SF-VERIFY",
+          "remaining": [
+            "C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE",
+            "C12:LOCAL_GUIDE:NEW_TUPLE_COLD_SEVERANCE@VERIFY",
+            "C12:LOCAL_GUIDE:ACTUAL_ANCHOR@VERIFY"
+          ],
+          "review_red_at_selected_cut": true,
+          "review_red_source_cuts": [
+            "598d9e9eaba5143950c63317705fd09104fbf463"
+          ],
+          "status": "BLOCKED_MEMBERS_UNISSUED"
+        }
+      ],
+      "possible_reverse_targets_not_automatically_unlocked": [],
+      "receipts": [
+        {
+          "code_reader": "NONE",
+          "grade": "INDEPENDENT_NEGATIVE_SOURCE",
+          "id": "RRIF_R2_598D_8090_INDEPENDENT_REVISE",
+          "kind": "REVIEW_REVISE",
+          "next_evidence": "Repair exact R2-T1/M1/C1/D1, choose new C9/C12 tuple and cold verify with fresh independent reader; keep 7bf accepted only at 7bf.",
+          "owner": "C9_C12_OWNER",
+          "source": {
+            "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+            "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+          },
+          "source_cut": "598d9e9eaba5143950c63317705fd09104fbf463",
+          "status": "EXACT_NEGATIVE_REVIEWED"
+        }
+      ],
+      "ref": "C12@VERIFY"
+    },
+    {
+      "affected_typed_edges_not_automatically_promoted": [
+        {
+          "blocking": false,
+          "edge_id": "G-S10-SPECIFY::3",
+          "required_ref": "E021@VERIFY",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "S10@SPECIFY"
+        },
+        {
+          "blocking": false,
+          "edge_id": "G-E008-MATRIX::4",
+          "required_ref": "E021@VERIFY",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY"
+        }
+      ],
+      "current_node_axes": {
+        "JOIN_E_7BF": {
+          "base_axis_preserved": {
+            "authority": "NOT_ADOPTED",
+            "consumer": "NONE_PROVEN_AT_PREMAIN",
+            "engineering": "SOURCE_DEFINITION_ONLY",
+            "human": "NOT_PROVEN",
+            "operational": "CANDIDATE_ONLY",
+            "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+            "science": "NOT_ISSUED",
+            "source_recovery": "SOURCE_EXACT"
+          },
+          "exact_cut_phase_review": {
+            "engineering": "SOURCEFREE_REVIEWED_AT_EXACT_7BF_ONLY",
+            "event_id": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+            "human_evidence": "NOT_PROVEN",
+            "native_science": "UNISSUED",
+            "owner_authority": "UNISSUED",
+            "review": "INDEPENDENT_SCOPED_7BF_REVIEWED_SOURCEFREE_ONLY",
+            "source": {
+              "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+              "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+            },
+            "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+            "transition_id": "JOIN_E_7BF_SCOPED_REVIEW"
+          }
+        }
+      },
+      "editorially_suppressed": [],
+      "existing_work_packages": [],
+      "gate_decisions": [],
+      "possible_reverse_targets_not_automatically_unlocked": [
+        "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY",
+        "S10@SPECIFY"
+      ],
+      "receipts": [
+        {
+          "code_reader": "class JoinedSession",
+          "grade": "SOURCEFREE_SCOPED",
+          "id": "JOIN_E_7BF_SCOPED_REVIEW",
+          "kind": "SCOPED_REVIEW",
+          "next_evidence": "Joint C9 writer/C12 reader exact schema/root/ACK/anchor owner selection, separate new-tuple cold/severance and independent review. No native grant.",
+          "owner": "JOIN_E_OWNER",
+          "source": {
+            "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+            "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+          },
+          "source_cut": "7bf2da302996491ddf34b9a039fea47ac982d135",
+          "status": "SCOPED_SOURCEFREE_ACCEPTED"
+        }
+      ],
+      "ref": "E021@VERIFY"
+    },
+    {
+      "affected_typed_edges_not_automatically_promoted": [
+        {
+          "blocking": true,
+          "edge_id": "G-C9-T-ANY::1",
+          "required_ref": "O05@ACCEPT",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "C9@INTEGRATE"
+        },
+        {
+          "blocking": true,
+          "edge_id": "G-C9-T-IF-ACQUIRED::1",
+          "required_ref": "O05@ACCEPT",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "C9@ACCEPT"
+        }
+      ],
+      "current_node_axes": {
+        "CAN011_RULE_T_MISSING": {
+          "base_axis_preserved": {
+            "authority": "NOT_ADOPTED",
+            "consumer": "NONE_PROVEN_AT_PREMAIN",
+            "engineering": "SOURCE_DEFINITION_ONLY",
+            "human": "NOT_PROVEN",
+            "operational": "CANDIDATE_ONLY",
+            "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+            "science": "NOT_ISSUED",
+            "source_recovery": "SOURCE_EXACT"
+          },
+          "exact_cut_phase_review": {
+            "engineering": "SOURCE_PRESENT_AUTHOR_TESTED_NOT_NATIVE",
+            "event_id": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+            "human_evidence": "NOT_PROVEN",
+            "native_science": "UNISSUED",
+            "owner_authority": "UNISSUED",
+            "review": "UNREVIEWED_RETURN_CANDIDATE",
+            "source": {
+              "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+              "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+            },
+            "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+            "transition_id": "S35_P1_SOURCEFREE_RETURN_ONLY"
+          }
+        }
+      },
+      "editorially_suppressed": [],
+      "existing_work_packages": [],
+      "gate_decisions": [
+        {
+          "id": "G-O05-POSITIVE-ACCEPT",
+          "remaining": [
+            "O05:LOCAL_GUIDE:RULE_T_DISCRIMINATOR@SPECIFY",
+            "C4:LOCAL_GUIDE:ACTOR_SOURCE@ACCEPT",
+            "C8:LOCAL_GUIDE:ACTION_OMISSION@VERIFY"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "BLOCKED_MEMBERS_UNISSUED"
+        },
+        {
+          "id": "G-C9-T-ANY",
+          "remaining": [
+            "O05@ACCEPT",
+            "O07@ACCEPT"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "MODE_UNSELECTED_HOLD"
+        },
+        {
+          "id": "G-C9-T-IF-ACQUIRED",
+          "remaining": [
+            "O05@ACCEPT"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "MODE_UNSELECTED_HOLD"
+        }
+      ],
+      "possible_reverse_targets_not_automatically_unlocked": [
+        "C9@ACCEPT",
+        "C9@INTEGRATE"
+      ],
+      "receipts": [
+        {
+          "code_reader": "NONE",
+          "grade": "TEST_ONLY_SOURCEFREE",
+          "id": "S35_P1_SOURCEFREE_RETURN_ONLY",
+          "kind": "RETURN_CANDIDATE",
+          "next_evidence": "Only a competent CAN011 original Rule T acquired-practice or genuinely evaluated O07 no-change issuance can promote native C9; isolate first-reader access and later performed E2.",
+          "owner": "CAN011_OWNER",
+          "source": {
+            "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+          },
+          "source_cut": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "status": "SOURCE_PRESENT_CANDIDATE"
+        }
+      ],
+      "ref": "O05@ACCEPT"
+    }
+  ],
+  "pending_qualification": "SOURCE_GRADED_UPDATES__HQ_ADOPTION_PENDING",
+  "revision": 4,
+  "runtime": "NO_DAEMON",
+  "source_snapshot": {
+    "heads": {
+      "o_science": {
+        "committed_at": "UNKNOWN",
+        "ref": "OSCIENCE_CUT",
+        "sha": "45efe65f73475e6a815e5fe93c3ee5179de27f67"
+      },
+      "olive": {
+        "committed_at": "UNKNOWN",
+        "ref": "origin/agent/sorok-programma-living-reference-s2-sourcegraded-operating-map-r1-20261031",
+        "sha": "67f667421fc90b22aad95cfc253a16feabc92348"
+      },
+      "premain": {
+        "committed_at": "UNKNOWN",
+        "ref": "origin/integration/pre-main-reconciliation-r1",
+        "sha": "UNKNOWN"
+      },
+      "r3": {
+        "committed_at": "UNKNOWN",
+        "ref": "origin/agent/sorok-oindex-r3-exact-source-integrity-repair-20261031-r1",
+        "sha": "e50d32eb6816578145d17dcd637a0b90b3a1ef40"
+      },
+      "r3_review": {
+        "committed_at": "UNKNOWN",
+        "ref": "origin/review/sorok-oindex-r3-independent-source-and-map-acceptance-20261031",
+        "sha": "06f40a3eabb4acfc57f433144224695c2427c25f"
+      }
+    },
+    "read_at": "STATIC_FALLBACK",
+    "status": "GIT_DISABLED"
+  }
+}

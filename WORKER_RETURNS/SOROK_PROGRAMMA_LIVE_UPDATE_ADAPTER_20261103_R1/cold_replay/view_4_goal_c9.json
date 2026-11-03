@@ -1,0 +1,290 @@
+{
+  "existing_reference": {
+    "axes": {
+      "authority": "NOT_ADOPTED",
+      "consumer": "NONE_PROVEN_AT_PREMAIN",
+      "engineering": "SOURCE_DEFINITION_RECOVERED",
+      "human": "NOT_PROVEN",
+      "operational": "RETURNED_SHA__INDEX_INPUT",
+      "review": "NOT_INDEPENDENTLY_REVIEWED",
+      "science": "NOT_ISSUED",
+      "source_recovery": "SOURCE_PRESENT"
+    },
+    "id": "C9",
+    "incoming": [
+      {
+        "causal": false,
+        "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE",
+        "dependency_type": "INDEX_OR_GOVERNANCE",
+        "edge_id": "EDGE_df3ed217a52ed046",
+        "from": "L1_ACTOR",
+        "grade": "INDEX_LINK",
+        "hq_judgment_required": false,
+        "hypothetical": false,
+        "relation": "organ_contains_registry_item",
+        "required": false,
+        "source": {},
+        "status": "INDEX_LINK",
+        "to": "C9"
+      },
+      {
+        "causal": false,
+        "dependency_type": "INDEX_OR_GOVERNANCE",
+        "edge_id": "EDGE_6c70c9e6dc8a0ec3",
+        "from": "C10",
+        "grade": "INDEX_LINK",
+        "hq_judgment_required": true,
+        "hypothetical": false,
+        "relation": "backward_person_source_path",
+        "required": false,
+        "source": {},
+        "status": "NAVIGATION_ONLY",
+        "to": "C9"
+      }
+    ],
+    "inverse_navigation": "Derived from the same directed edges; no second manual graph.",
+    "maturity": {
+      "id": "C9",
+      "owner": null,
+      "rule": "Stages are independent evidence axes; code does not prove theory and native validation is not inferred from a fixture.",
+      "source_refs": [],
+      "source_verification": {},
+      "stages": {
+        "A": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "C": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "E": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "I": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "T": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "V": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        }
+      },
+      "title": "Canonical actor decision/version and later semantic reader"
+    },
+    "missing_or_unproven": [],
+    "neighbourhood": {
+      "edges": 4,
+      "nodes": [
+        "C9",
+        "C10",
+        "C8",
+        "L1_ACTOR",
+        "L4_NAMED_FIRST_CONSUMER"
+      ]
+    },
+    "node": {
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "first_required_consumer": "E2 actual semantic response, C12 actor mirror",
+      "hq_judgment_required": false,
+      "id": "C9",
+      "kind": "TERMINAL_C_A",
+      "layer": "L3",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "title": "Canonical actor decision/version and later semantic reader"
+    },
+    "outgoing": [
+      {
+        "causal": true,
+        "dependency_type": "CONSUMER_DEPENDENCY",
+        "edge_id": "EDGE_745a8442c99a4c8a",
+        "from": "C9",
+        "grade": "SOURCE_DEFINED_REQUIREMENT",
+        "hq_judgment_required": true,
+        "hypothetical": false,
+        "relation": "function_has_named_first_consumer",
+        "required": true,
+        "source": {},
+        "status": "INDEX_LINK",
+        "to": "L4_NAMED_FIRST_CONSUMER"
+      },
+      {
+        "causal": false,
+        "dependency_type": "INDEX_OR_GOVERNANCE",
+        "edge_id": "EDGE_ad6fbfd83288b5d1",
+        "from": "C9",
+        "grade": "INDEX_LINK",
+        "hq_judgment_required": true,
+        "hypothetical": false,
+        "relation": "backward_person_source_path",
+        "required": false,
+        "source": {},
+        "status": "NAVIGATION_ONLY",
+        "to": "C8"
+      }
+    ],
+    "source_verification": null
+  },
+  "guide_phase_gates": [
+    {
+      "claim_scope": "NATIVE_ACTOR_DECISION",
+      "decision": "BLOCKED_MEMBERS_UNISSUED",
+      "gate_id": "G-C9-NATIVE-INTEGRATE",
+      "logic": "ALL_OF",
+      "members": [
+        {
+          "predecessor_gates": [
+            "G-C4-NATIVE-BUILD"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C4@BUILD",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-C8-NATIVE-INTEGRATE"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C8@INTEGRATE",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-O03-NATIVE-ACCEPT"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "O03@ACCEPT",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-E008-C9-COSPEC"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C9:LOCAL_GUIDE:WRITER_SCHEMA@SPECIFY",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-O15-VERIFY"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "O15:LOCAL_GUIDE:LATER_E2_READER@VERIFY",
+          "required_scope": "NATIVE_E2_ACTUAL_SEMANTIC_READER"
+        },
+        {
+          "predecessor_gates": [],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C9:LOCAL_GUIDE:CLAIM_MODE@SPECIFY",
+          "required_scope": "NONEMPTY_SELECTED_RULE_T_MODE"
+        }
+      ],
+      "owner": "C9/CAN008/CAN011/ADP owners",
+      "remaining": [
+        "C4@BUILD",
+        "C8@INTEGRATE",
+        "O03@ACCEPT",
+        "C9:LOCAL_GUIDE:WRITER_SCHEMA@SPECIFY",
+        "O15:LOCAL_GUIDE:LATER_E2_READER@VERIFY",
+        "C9:LOCAL_GUIDE:CLAIM_MODE@SPECIFY"
+      ],
+      "selected_mode": "UNSELECTED",
+      "target_ref": "C9@INTEGRATE",
+      "target_stage_issued": false
+    },
+    {
+      "claim_scope": "NATIVE_STATE_UPDATE_OR_LAWFUL_NOCHANGE",
+      "decision": "MODE_UNSELECTED_HOLD",
+      "gate_id": "G-C9-T-ANY",
+      "logic": "ANY_OF",
+      "members": [
+        {
+          "predecessor_gates": [
+            "G-O05-POSITIVE-ACCEPT"
+          ],
+          "present_but_not_promoting": [
+            {
+              "grade": "TEST_ONLY_SOURCEFREE",
+              "source_cut": "b65c75a9e62618690f7d02265bc9e850af549161",
+              "transition_id": "S35_P1_SOURCEFREE_RETURN_ONLY"
+            }
+          ],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "O05@ACCEPT",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-O07-NOCHANGE-ACCEPT"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "O07@ACCEPT",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        }
+      ],
+      "owner": "CAN011 scientific issuer",
+      "remaining": [
+        "O05@ACCEPT",
+        "O07@ACCEPT"
+      ],
+      "selected_mode": "UNSELECTED",
+      "target_ref": "C9@INTEGRATE",
+      "target_stage_issued": false
+    }
+  ],
+  "missing_predecessors": [
+    {
+      "gate": "G-C9-NATIVE-INTEGRATE",
+      "logic": "ALL_OF",
+      "missing": [
+        "C4@BUILD",
+        "C8@INTEGRATE",
+        "O03@ACCEPT",
+        "C9:LOCAL_GUIDE:WRITER_SCHEMA@SPECIFY",
+        "O15:LOCAL_GUIDE:LATER_E2_READER@VERIFY",
+        "C9:LOCAL_GUIDE:CLAIM_MODE@SPECIFY"
+      ],
+      "scope": "NATIVE_ACTOR_DECISION"
+    },
+    {
+      "gate": "G-C9-T-ANY",
+      "logic": "ANY_OF",
+      "missing": [
+        "O05@ACCEPT",
+        "O07@ACCEPT"
+      ],
+      "scope": "NATIVE_STATE_UPDATE_OR_LAWFUL_NOCHANGE"
+    }
+  ],
+  "receipts": [],
+  "rule": "ALL same-target gates, actual member receipts and scope remain required",
+  "source_cut": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+  "target": "C9@INTEGRATE"
+}

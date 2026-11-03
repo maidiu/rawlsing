@@ -1,0 +1,86 @@
+{
+  "applied": {
+    "event_id": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+    "kind": "PROGRAMMA_DELTA",
+    "status": "EXACT_NEGATIVE_REVIEWED"
+  },
+  "axes": {
+    "JOIN_C12_HOLD": {
+      "authority": "NOT_ADOPTED",
+      "consumer": "NONE_PROVEN_AT_PREMAIN",
+      "engineering": "SOURCE_DEFINITION_ONLY",
+      "human": "NOT_PROVEN",
+      "operational": "CANDIDATE_ONLY",
+      "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+      "science": "NOT_ISSUED",
+      "source_recovery": "SOURCE_EXACT"
+    }
+  },
+  "event": {
+    "actor": {
+      "principal": "SOURCE_DERIVED_NOT_HQ_IDENTITY",
+      "role": "CANDIDATE_INTAKE",
+      "verified": false
+    },
+    "created_at": "2026-11-03T18:50:35.669332+00:00",
+    "event_id": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+    "kind": "PROGRAMMA_DELTA",
+    "payload": {
+      "coordinate": {
+        "first_consumer_symbol": "NONE",
+        "root": "RRIF_R2_SOURCEFREE_598D",
+        "scope": "SOURCEFREE_RRIF_R2_NEGATIVE",
+        "source_cut": "598d9e9eaba5143950c63317705fd09104fbf463"
+      },
+      "grade": "INDEPENDENT_NEGATIVE_SOURCE",
+      "guide_ref": "C12@VERIFY",
+      "guide_sha": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+      "kind": "REVIEW_REVISE",
+      "locator": {
+        "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md",
+        "quote": "20/20"
+      },
+      "next_evidence": "Repair exact R2-T1/M1/C1/D1, choose new C9/C12 tuple and cold verify with fresh independent reader; keep 7bf accepted only at 7bf.",
+      "node_id": "JOIN_C12_HOLD",
+      "owner_slot": "C9_C12_OWNER",
+      "prior_negative": [
+        "R2_T1",
+        "R2_M1",
+        "R2_C1",
+        "R2_D1"
+      ],
+      "return_sha": "598d9e9eaba5143950c63317705fd09104fbf463",
+      "review": {
+        "blob": "38c201199c3153ca58926b2f96b3ba0220d2b651",
+        "commit": "8090a1ea308ab17f302f55bb2639c3e4cd774c7a",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/SOROK_RRIF_R2_INDEPENDENT_HOSTILE_FIRST_CONSUMER_REVIEW_R1/00_RETURN.md"
+      },
+      "schema": "SOROK_PROGRAMMA_DELTA@1",
+      "source": {
+        "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+        "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+      },
+      "subject_sha": "598d9e9eaba5143950c63317705fd09104fbf463",
+      "transition_id": "RRIF_R2_598D_8090_INDEPENDENT_REVISE"
+    },
+    "prev_event_hash": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+    "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+    "sequence": 4,
+    "source": {
+      "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+      "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+    }
+  },
+  "expected_head": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+  "head": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+  "journal_head": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+  "revision": 4,
+  "stale_expected_head": false,
+  "state_digest": "a3f84a2afb21546e023f30d69bfdd36e44f85395fccf874218de076968c4dba6",
+  "status": "EVENT_APPENDED"
+}

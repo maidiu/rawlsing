@@ -1,5 +1,7 @@
 # LIVE-02 — adversarial test matrix, exact commands and evidence grades
 
+> **Execution update (2026-11-03):** The `NOT_RUN` status below records the original authoring session. Execution was later performed at content SHA `bbcc46bf3b7aadfc582e284daea61f99060e0fc3`; see `05_EXECUTED_TEST_RECEIPT.md`, `06_COLD_REPLAY_AND_SEVEN_VIEW_RECEIPT.md`, `07_ADVERSARIAL_FINDINGS_AND_REPAIRS.md`, and `08_FINAL_DISPOSITION_AND_HQ_HANDOFF.md`. Independent review and HQ adoption remain NOT ISSUED.
+
 ## Test status
 
 **S0–S1 private-GitHub source checks: PERFORMED. Python/pytest/S2: NOT_RUN.** The code and tests are committed for an authorized S2 runner. Nothing here is a pytest result. The commission references 62 original P0/P1 author tests at the repaired base; they were neither performed nor independently certified in this session.

@@ -1,0 +1,2074 @@
+{
+  "candidate_live_updates": [
+    {
+      "affected_typed_edges_not_automatically_promoted": [],
+      "current_node_axes": {
+        "JOIN_C12_HOLD": {
+          "base_axis_preserved": {
+            "authority": "NOT_ADOPTED",
+            "consumer": "NONE_PROVEN_AT_PREMAIN",
+            "engineering": "SOURCE_DEFINITION_ONLY",
+            "human": "NOT_PROVEN",
+            "operational": "CANDIDATE_ONLY",
+            "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+            "science": "NOT_ISSUED",
+            "source_recovery": "SOURCE_EXACT"
+          },
+          "exact_cut_phase_review": {
+            "engineering": "REVISE_MATERIAL_DEFECTS_AT_EXACT_CUT",
+            "event_id": "57a4676794ee031a6b30f5ac8928a0b97af245338ced5aaea8eb60348a380b93",
+            "human_evidence": "NOT_PROVEN",
+            "native_science": "UNISSUED",
+            "owner_authority": "UNISSUED",
+            "review": "REVIEW_REVISE_MATERIAL_AT_EXACT_CUT",
+            "source": {
+              "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+              "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+            },
+            "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+            "transition_id": "RRIF_R2_598D_8090_INDEPENDENT_REVISE"
+          }
+        }
+      },
+      "editorially_suppressed": [],
+      "existing_work_packages": [],
+      "gate_decisions": [
+        {
+          "id": "G-C12-SF-VERIFY",
+          "remaining": [
+            "C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE",
+            "C12:LOCAL_GUIDE:NEW_TUPLE_COLD_SEVERANCE@VERIFY",
+            "C12:LOCAL_GUIDE:ACTUAL_ANCHOR@VERIFY"
+          ],
+          "review_red_at_selected_cut": true,
+          "review_red_source_cuts": [
+            "598d9e9eaba5143950c63317705fd09104fbf463"
+          ],
+          "status": "BLOCKED_MEMBERS_UNISSUED"
+        }
+      ],
+      "possible_reverse_targets_not_automatically_unlocked": [],
+      "receipts": [
+        {
+          "code_reader": "NONE",
+          "grade": "INDEPENDENT_NEGATIVE_SOURCE",
+          "id": "RRIF_R2_598D_8090_INDEPENDENT_REVISE",
+          "kind": "REVIEW_REVISE",
+          "next_evidence": "Repair exact R2-T1/M1/C1/D1, choose new C9/C12 tuple and cold verify with fresh independent reader; keep 7bf accepted only at 7bf.",
+          "owner": "C9_C12_OWNER",
+          "source": {
+            "blob": "9d7eeb0970e90bf0bbef1e912cf0f04e97a7de53",
+            "commit": "598d9e9eaba5143950c63317705fd09104fbf463",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK_RRIF_R2_REAL_SOURCEFREE_CONSUMER_FANIN/00_RETURN.md"
+          },
+          "source_cut": "598d9e9eaba5143950c63317705fd09104fbf463",
+          "status": "EXACT_NEGATIVE_REVIEWED"
+        }
+      ],
+      "ref": "C12@VERIFY"
+    },
+    {
+      "affected_typed_edges_not_automatically_promoted": [
+        {
+          "blocking": false,
+          "edge_id": "G-S10-SPECIFY::3",
+          "required_ref": "E021@VERIFY",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "S10@SPECIFY"
+        },
+        {
+          "blocking": false,
+          "edge_id": "G-E008-MATRIX::4",
+          "required_ref": "E021@VERIFY",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY"
+        }
+      ],
+      "current_node_axes": {
+        "JOIN_E_7BF": {
+          "base_axis_preserved": {
+            "authority": "NOT_ADOPTED",
+            "consumer": "NONE_PROVEN_AT_PREMAIN",
+            "engineering": "SOURCE_DEFINITION_ONLY",
+            "human": "NOT_PROVEN",
+            "operational": "CANDIDATE_ONLY",
+            "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+            "science": "NOT_ISSUED",
+            "source_recovery": "SOURCE_EXACT"
+          },
+          "exact_cut_phase_review": {
+            "engineering": "SOURCEFREE_REVIEWED_AT_EXACT_7BF_ONLY",
+            "event_id": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+            "human_evidence": "NOT_PROVEN",
+            "native_science": "UNISSUED",
+            "owner_authority": "UNISSUED",
+            "review": "INDEPENDENT_SCOPED_7BF_REVIEWED_SOURCEFREE_ONLY",
+            "source": {
+              "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+              "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+            },
+            "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+            "transition_id": "JOIN_E_7BF_SCOPED_REVIEW"
+          }
+        }
+      },
+      "editorially_suppressed": [],
+      "existing_work_packages": [],
+      "gate_decisions": [],
+      "possible_reverse_targets_not_automatically_unlocked": [
+        "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY",
+        "S10@SPECIFY"
+      ],
+      "receipts": [
+        {
+          "code_reader": "class JoinedSession",
+          "grade": "SOURCEFREE_SCOPED",
+          "id": "JOIN_E_7BF_SCOPED_REVIEW",
+          "kind": "SCOPED_REVIEW",
+          "next_evidence": "Joint C9 writer/C12 reader exact schema/root/ACK/anchor owner selection, separate new-tuple cold/severance and independent review. No native grant.",
+          "owner": "JOIN_E_OWNER",
+          "source": {
+            "blob": "9a185f7c03ac66056e366a2deecf4ea4dd2da188",
+            "commit": "7bf2da302996491ddf34b9a039fea47ac982d135",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/00_RETURN.md"
+          },
+          "source_cut": "7bf2da302996491ddf34b9a039fea47ac982d135",
+          "status": "SCOPED_SOURCEFREE_ACCEPTED"
+        }
+      ],
+      "ref": "E021@VERIFY"
+    },
+    {
+      "affected_typed_edges_not_automatically_promoted": [
+        {
+          "blocking": true,
+          "edge_id": "G-C9-T-ANY::1",
+          "required_ref": "O05@ACCEPT",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "C9@INTEGRATE"
+        },
+        {
+          "blocking": true,
+          "edge_id": "G-C9-T-IF-ACQUIRED::1",
+          "required_ref": "O05@ACCEPT",
+          "status": "REVERSE_CANDIDATE_ONLY_NOT_YET_TARGET_RECEIPT",
+          "target_ref": "C9@ACCEPT"
+        }
+      ],
+      "current_node_axes": {
+        "CAN011_RULE_T_MISSING": {
+          "base_axis_preserved": {
+            "authority": "NOT_ADOPTED",
+            "consumer": "NONE_PROVEN_AT_PREMAIN",
+            "engineering": "SOURCE_DEFINITION_ONLY",
+            "human": "NOT_PROVEN",
+            "operational": "CANDIDATE_ONLY",
+            "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+            "science": "NOT_ISSUED",
+            "source_recovery": "SOURCE_EXACT"
+          },
+          "exact_cut_phase_review": {
+            "engineering": "SOURCE_PRESENT_AUTHOR_TESTED_NOT_NATIVE",
+            "event_id": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+            "human_evidence": "NOT_PROVEN",
+            "native_science": "UNISSUED",
+            "owner_authority": "UNISSUED",
+            "review": "UNREVIEWED_RETURN_CANDIDATE",
+            "source": {
+              "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+              "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+              "object_type": "blob",
+              "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+            },
+            "source_verification": "EXACT_GIT_OBJECT_AND_LOCATOR",
+            "transition_id": "S35_P1_SOURCEFREE_RETURN_ONLY"
+          }
+        }
+      },
+      "editorially_suppressed": [],
+      "existing_work_packages": [],
+      "gate_decisions": [
+        {
+          "id": "G-O05-POSITIVE-ACCEPT",
+          "remaining": [
+            "O05:LOCAL_GUIDE:RULE_T_DISCRIMINATOR@SPECIFY",
+            "C4:LOCAL_GUIDE:ACTOR_SOURCE@ACCEPT",
+            "C8:LOCAL_GUIDE:ACTION_OMISSION@VERIFY"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "BLOCKED_MEMBERS_UNISSUED"
+        },
+        {
+          "id": "G-C9-T-ANY",
+          "remaining": [
+            "O05@ACCEPT",
+            "O07@ACCEPT"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "MODE_UNSELECTED_HOLD"
+        },
+        {
+          "id": "G-C9-T-IF-ACQUIRED",
+          "remaining": [
+            "O05@ACCEPT"
+          ],
+          "review_red_at_selected_cut": false,
+          "review_red_source_cuts": [],
+          "status": "MODE_UNSELECTED_HOLD"
+        }
+      ],
+      "possible_reverse_targets_not_automatically_unlocked": [
+        "C9@ACCEPT",
+        "C9@INTEGRATE"
+      ],
+      "receipts": [
+        {
+          "code_reader": "NONE",
+          "grade": "TEST_ONLY_SOURCEFREE",
+          "id": "S35_P1_SOURCEFREE_RETURN_ONLY",
+          "kind": "RETURN_CANDIDATE",
+          "next_evidence": "Only a competent CAN011 original Rule T acquired-practice or genuinely evaluated O07 no-change issuance can promote native C9; isolate first-reader access and later performed E2.",
+          "owner": "CAN011_OWNER",
+          "source": {
+            "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+            "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+            "object_type": "blob",
+            "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+          },
+          "source_cut": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "status": "SOURCE_PRESENT_CANDIDATE"
+        }
+      ],
+      "ref": "O05@ACCEPT"
+    }
+  ],
+  "no_new_native_claim": true,
+  "purpose": {
+    "id": "PURPOSE_UNCHOSEN_NEIGHBOR",
+    "kind": "UNCHOSEN_NEIGHBOR",
+    "maturity": {
+      "A": {
+        "status": "PARTIAL"
+      },
+      "C": {
+        "status": "TEST_ONLY"
+      },
+      "E": {
+        "status": "MISSING"
+      },
+      "I": {
+        "status": "PRESENT"
+      },
+      "T": {
+        "status": "PARTIAL"
+      },
+      "V": {
+        "status": "MISSING"
+      }
+    },
+    "owner": "SOROK_ORIGINAL_PRODUCT_OWNER",
+    "purpose": "The product begins with a neighbor rather than a user-selected attractive, useful or congenial persona. Attachment, trust, health, pleasure, compliance, intimacy, benefit, dependency and access remain distinct.",
+    "source": {
+      "blob": "b715c67766073ee363720020466ea979ac29653a",
+      "commit": "865b5b01e1a27e99020cf2bb389af8cd4c874b57",
+      "depth": "FULL_TEXT_READ",
+      "path": "SOROK_PRODUCT_CONTROL_ROOM/01_PRODUCT_CHARTER.md",
+      "quote": "Rawlsing presents a neighbor. Attachment, trust, health, pleasure, compliance, intimacy, benefit, dependency and access must remain distinct."
+    },
+    "status": "PROVISIONAL_PRODUCT_LAW_R1",
+    "summary": "The product begins with a neighbor rather than a user-selected attractive, useful or congenial persona. Attachment, trust, health, pleasure, compliance, intimacy, benefit, dependency and access remain distinct.",
+    "title": "Meet an unchosen neighbor whose life places a claim on the user"
+  },
+  "source_cut": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+  "unfinished": {
+    "blocked": 11,
+    "count": 40,
+    "counts_by_stage": {
+      "A": 5,
+      "C": 11,
+      "E": 7,
+      "I": 0,
+      "T": 7,
+      "V": 11
+    },
+    "filter": {
+      "domain": "",
+      "stage": ""
+    },
+    "groups": [
+      {
+        "domain": "A5",
+        "gaps": [
+          {
+            "affected_consumer": "A5",
+            "alternatives": [],
+            "blocked_by": [
+              "science not issued",
+              "owner authority held",
+              "no human A5 evidence"
+            ],
+            "blockers": [],
+            "consequence": "No human-product proof.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "A5",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "NOT_PROVEN"
+            ],
+            "falsifier": "No human-product proof.",
+            "hq_judgment_required": true,
+            "id": "GAP_NATIVE_A5",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Human participant trial distinct from sourcefree encounter.",
+            "node": "A5",
+            "owner": "Sorok human A5/research owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "No human-product proof.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Human participant trial distinct from sourcefree encounter.",
+            "source_backed": true,
+            "status": "NOT_PROVEN"
+          }
+        ]
+      },
+      {
+        "domain": "C11",
+        "gaps": [
+          {
+            "affected_consumer": "C11",
+            "alternatives": [],
+            "blocked_by": [
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "No native continuing person exists.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "C11",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCEFREE_OR_SOURCE_ONLY"
+            ],
+            "falsifier": "No native continuing person exists.",
+            "hq_judgment_required": true,
+            "id": "GAP_NATIVE_C4_C11_PERSON",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Separate native world/C11 person authority and actual C12 consumer.",
+            "node": "C11",
+            "owner": "Original Pyat/C11/C12 owners",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "No native continuing person exists.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Separate native world/C11 person authority and actual C12 consumer.",
+            "source_backed": true,
+            "status": "SOURCEFREE_OR_SOURCE_ONLY"
+          }
+        ]
+      },
+      {
+        "domain": "C9C12-R2",
+        "gaps": [
+          {
+            "affected_consumer": "C9C12-R2",
+            "alternatives": [],
+            "blocked_by": [
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "C12 durability remains sourcefree-only.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "C9C12-R2",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "CANDIDATE"
+            ],
+            "falsifier": "C12 durability remains sourcefree-only.",
+            "hq_judgment_required": true,
+            "id": "GAP_C9_C12_ANCHOR",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "External anchor, mirror/outbox and durable actor readset decision.",
+            "node": "C9C12-R2",
+            "owner": "C9R/BP4/C12 owners",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "C12 durability remains sourcefree-only.",
+            "return_sha": null,
+            "smallest_useful_next_action": "External anchor, mirror/outbox and durable actor readset decision.",
+            "source_backed": true,
+            "status": "CANDIDATE"
+          }
+        ]
+      },
+      {
+        "domain": "ECONOMICS",
+        "gaps": [
+          {
+            "affected_consumer": "business + user",
+            "alternatives": [
+              "subscription",
+              "usage-based",
+              "no-charge alpha"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Revenue rises when the actor manufactures distress or the user returns compulsively.",
+            "dependencies": [
+              "S5 flourishing",
+              "S14 privacy/abuse"
+            ],
+            "domain": "ECONOMICS",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "05_PROGRAM_MAP S13",
+              "01_PRODUCT_CHARTER anti-goals"
+            ],
+            "falsifier": "Revenue rises when the actor manufactures distress or the user returns compulsively.",
+            "hq_judgment_required": true,
+            "id": "GAP-S13-NONEXTRACTIVE-REVENUE",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "A",
+              "E",
+              "C",
+              "V"
+            ],
+            "next": "Specify a non-extractive price/notification/retention rule and an adverse-incentive falsifier before any monetization build.",
+            "node": "S13",
+            "owner": "SOROK_BUSINESS_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "S13: sell without making attachment, suffering or compulsive return the revenue engine",
+            "smallest_useful_next_action": "Specify a non-extractive price/notification/retention rule and an adverse-incentive falsifier before any monetization build.",
+            "source_backed": true,
+            "status": "MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "EXPRESSION_BINDING",
+        "gaps": [
+          {
+            "affected_consumer": "alpha user",
+            "alternatives": [
+              "two-call realizer",
+              "batching/appellate alternative",
+              "local phenomenal compositor"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Changing user preferences changes the objective outward occurrence itself, or hidden interiority becomes user-visible without an admissible cue.",
+            "dependencies": [
+              "C11",
+              "V2",
+              "M6"
+            ],
+            "domain": "EXPRESSION_BINDING",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "101 binding surface",
+              "M6 semantic ceiling",
+              "GT0 tested negative"
+            ],
+            "falsifier": "Changing user preferences changes the objective outward occurrence itself, or hidden interiority becomes user-visible without an admissible cue.",
+            "hq_judgment_required": true,
+            "id": "GAP-SOROK101-PHENOMENAL-MEMBRANE",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "E",
+              "C",
+              "V"
+            ],
+            "next": "Prototype the anti-mirror wall with one exact occurrence and a changed user-attention filter; measure whether the occurrence stays fixed.",
+            "node": "SOROK_101_OUTWARD_OCCURRENCE",
+            "owner": "C11_OWNER / V2_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "101: separate objective actor/world occurrence from user-phenomenal access and hidden interiority",
+            "smallest_useful_next_action": "Prototype the anti-mirror wall with one exact occurrence and a changed user-attention filter; measure whether the occurrence stays fixed.",
+            "source_backed": true,
+            "status": "PROPOSED"
+          }
+        ]
+      },
+      {
+        "domain": "HUMAN_ALPHA",
+        "gaps": [
+          {
+            "affected_consumer": "A5",
+            "alternatives": [
+              "lab demo",
+              "sourcefree reader",
+              "actual participant study"
+            ],
+            "blocked_by": [
+              "native C11 source",
+              "C9/C12 actor",
+              "ethics approval"
+            ],
+            "blockers": [],
+            "consequence": "A sourcefree or native code pass is presented as human validation.",
+            "dependencies": [
+              "C11 native source",
+              "C9/C12",
+              "ethics"
+            ],
+            "domain": "HUMAN_ALPHA",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "100/101 alpha constraints",
+              "P1 TEST_ONLY trajectory",
+              "Astra P1-P3 proposals"
+            ],
+            "falsifier": "A sourcefree or native code pass is presented as human validation.",
+            "hq_judgment_required": true,
+            "id": "GAP-A5-HUMAN-ALPHA",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "missing_stages": [
+              "C",
+              "V"
+            ],
+            "next": "Design a bounded consented participant study with actor-independent outcome measures and negative cases; do not infer A5 from code tests.",
+            "node": "A5",
+            "owner": "SOROK_ALPHA_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "S15 / A5: actual human encounter and evaluation distinct from sourcefree and native code",
+            "smallest_useful_next_action": "Design a bounded consented participant study with actor-independent outcome measures and negative cases; do not infer A5 from code tests.",
+            "source_backed": true,
+            "status": "MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "KERNEL",
+        "gaps": [
+          {
+            "affected_consumer": "whole program",
+            "alternatives": [
+              "relational organism",
+              "Astra A-H",
+              "original V3 M40",
+              "Neo CAN/ADP",
+              "S0-S16"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A kernel is declared because it organizes documents but cannot derive or fail against a real consumer.",
+            "dependencies": [
+              "S0-S16",
+              "CAN008/CAN011/ADP"
+            ],
+            "domain": "KERNEL",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "03_REAL_ALPHA_SPINE",
+              "W1-A five rival spines",
+              "W1-B competing science"
+            ],
+            "falsifier": "A kernel is declared because it organizes documents but cannot derive or fail against a real consumer.",
+            "hq_judgment_required": true,
+            "id": "GAP-KERNEL-UNRESOLVED",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "A",
+              "V"
+            ],
+            "next": "Run a hostile derivation comparing candidate kernels against actual consumer faults; do not elect a slogan.",
+            "node": "Q_KERNEL_001",
+            "owner": "SOROK_ORIGINAL_SCIENCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "K0: no adjudicated generative kernel",
+            "smallest_useful_next_action": "Run a hostile derivation comparing candidate kernels against actual consumer faults; do not elect a slogan.",
+            "source_backed": true,
+            "status": "UNKNOWN"
+          }
+        ]
+      },
+      {
+        "domain": "LEARNED_PRACTICE",
+        "gaps": [
+          {
+            "affected_consumer": "native C9 later action",
+            "alternatives": [
+              "Leontiev activity/object",
+              "Lahire context inhibition",
+              "Seve act/capacity use-time",
+              "Archer reflexive project"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A later action after a tool or opportunity change is counted as acquired practice without a positive rule or actor evidence.",
+            "dependencies": [
+              "CAN008 Rule A",
+              "ADP actor access",
+              "C9 actor consumer"
+            ],
+            "domain": "LEARNED_PRACTICE",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "CAN_011 AUTHORITY 1.0.0",
+              "P1 p1_s35.py T=NO_CHANGE",
+              "S35 nonissuing resource"
+            ],
+            "falsifier": "A later action after a tool or opportunity change is counted as acquired practice without a positive rule or actor evidence.",
+            "hq_judgment_required": true,
+            "id": "GAP-CAN011-PRACTICE-ACQUISITION",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "E",
+              "C",
+              "V"
+            ],
+            "next": "Issue an exact positive acquisition rule with rival discriminators, or retain MISSING_RULE and do not score missing T as NO_CHANGE.",
+            "node": "CAN011_RULE_T_MISSING",
+            "owner": "CAN011_OWNER / ADP_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "CAN-011 durable practice: distinguish acquired practice from opportunity, tool change, external scaffolding or evaluated NO_CHANGE",
+            "smallest_useful_next_action": "Issue an exact positive acquisition rule with rival discriminators, or retain MISSING_RULE and do not score missing T as NO_CHANGE.",
+            "source_backed": true,
+            "status": "MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "N10",
+        "gaps": [
+          {
+            "affected_consumer": "N10",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Sourcefree developmental behavior cannot be called native.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "N10",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "NOT_ISSUED"
+            ],
+            "falsifier": "Sourcefree developmental behavior cannot be called native.",
+            "hq_judgment_required": true,
+            "id": "GAP_NATIVE_SCIENCE_CAN_ADP",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Issue finite original rules and actor/event evidence.",
+            "node": "N10",
+            "owner": "CAN/ADP/SCI05 owners",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Sourcefree developmental behavior cannot be called native.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Issue finite original rules and actor/event evidence.",
+            "source_backed": true,
+            "status": "NOT_ISSUED"
+          }
+        ]
+      },
+      {
+        "domain": "NATIVE_PERSON_CUSTODY",
+        "gaps": [
+          {
+            "affected_consumer": "native person",
+            "alternatives": [
+              "compatible migration",
+              "honest unbridged hold"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Acceptance is moved across versions or roots, or used as native C9/C12 evidence.",
+            "dependencies": [
+              "C9/C12 owners",
+              "external anchor"
+            ],
+            "domain": "NATIVE_PERSON_CUSTODY",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "JOIN-V ACCEPT_SCOPED exact 7bf",
+              "C9_SOURCE_MISSING",
+              "OWNER_ANCHOR_REQUIRED"
+            ],
+            "falsifier": "Acceptance is moved across versions or roots, or used as native C9/C12 evidence.",
+            "hq_judgment_required": true,
+            "id": "GAP-JOIN-NATIVE-C9-C12",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "C",
+              "V"
+            ],
+            "next": "Keep the exact scope; open a separate owner decision for compatible writer/reader and external anchor.",
+            "node": "JOIN_E_7BF",
+            "owner": "C9_C12_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "JOIN-V scoped acceptance: preserve exact sourcefree acceptance without migrating native C9/C12",
+            "smallest_useful_next_action": "Keep the exact scope; open a separate owner decision for compatible writer/reader and external anchor.",
+            "source_backed": true,
+            "status": "SCOPED_ACCEPTANCE"
+          }
+        ]
+      },
+      {
+        "domain": "ORIGINAL_V3_ENGINEERING",
+        "gaps": [
+          {
+            "affected_consumer": "current user alpha or NONE",
+            "alternatives": [
+              "port old V3 wholesale",
+              "discard old V3",
+              "source-grade exact sequencing/transaction patterns and require a current consumer"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A current importer or consumer is claimed from the historical external call chain without exact source and test evidence.",
+            "dependencies": [
+              "CAN008/CAN011/ADP",
+              "M6/V2",
+              "original V3 source custodian"
+            ],
+            "domain": "ORIGINAL_V3_ENGINEERING",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "historical external simulation -> persona_sheet -> server turn -> V2 loader",
+              "W1-C prior member hashes",
+              "local external copy hashes differ"
+            ],
+            "falsifier": "A current importer or consumer is claimed from the historical external call chain without exact source and test evidence.",
+            "hq_judgment_required": true,
+            "id": "GAP-V3-YEARLY-PERSONA-MIGRATION",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "A",
+              "C",
+              "V"
+            ],
+            "next": "Resolve the container/member cut and name one exact current-compatible consumer before adapting any old mechanism.",
+            "node": "V3_RUN_ONE_YEAR",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER / C11_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Historical yearly_step/persona_sheet: preserve historical external function while deciding current reuse",
+            "smallest_useful_next_action": "Resolve the container/member cut and name one exact current-compatible consumer before adapting any old mechanism.",
+            "source_backed": true,
+            "status": "UNKNOWN"
+          }
+        ]
+      },
+      {
+        "domain": "PYAT",
+        "gaps": [
+          {
+            "affected_consumer": "PYAT_EXTERNAL_BOUNDARY",
+            "alternatives": [],
+            "blocked_by": [
+              "external owner held"
+            ],
+            "blockers": [],
+            "consequence": "Sorok cannot infer the external world.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "PYAT",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "EXTERNAL_OWNER_HELD"
+            ],
+            "falsifier": "Sorok cannot infer the external world.",
+            "hq_judgment_required": true,
+            "id": "GAP_PYAT_BOUNDARY",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Supply qualified world/N11/N12/C11 grant to Sorok C0.",
+            "node": "PYAT_EXTERNAL_BOUNDARY",
+            "owner": "Pyat HQ/source owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Sorok cannot infer the external world.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Supply qualified world/N11/N12/C11 grant to Sorok C0.",
+            "source_backed": true,
+            "status": "EXTERNAL_OWNER_HELD"
+          }
+        ]
+      },
+      {
+        "domain": "RECEIVING_CUSTODY",
+        "gaps": [
+          {
+            "affected_consumer": "PRE-MAIN receiver / CP-A5",
+            "alternatives": [
+              "separate guarded adapter",
+              "hold until native C9/C12 owner cut"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A packet integrity pass is treated as PRE-MAIN adoption or native person evidence.",
+            "dependencies": [
+              "C9 actor source",
+              "C12 anchor",
+              "PRE-MAIN receiving owner"
+            ],
+            "domain": "RECEIVING_CUSTODY",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "F1 independent defect",
+              "F2 all-459 repair",
+              "PASS_PARTIAL_SAME_ROOT_C9_C12"
+            ],
+            "falsifier": "A packet integrity pass is treated as PRE-MAIN adoption or native person evidence.",
+            "hq_judgment_required": true,
+            "id": "GAP-RRIF-F2-NATIVE-CONSUMER",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "C",
+              "V"
+            ],
+            "next": "Select one compatible C9/C12 cut and external anchor; rerun the exact F2 negative/restore against the chosen cut.",
+            "node": "RRIF_F2_FIRST_CONSUMER",
+            "owner": "C9_C12_OWNER / PREMAIN_RECEIVING_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "RRIF F2: exact packet integrity repaired, but native receiving consumer remains partial",
+            "smallest_useful_next_action": "Select one compatible C9/C12 cut and external anchor; rerun the exact F2 negative/restore against the chosen cut.",
+            "source_backed": true,
+            "status": "PARTIAL"
+          }
+        ]
+      },
+      {
+        "domain": "S0",
+        "gaps": [
+          {
+            "affected_consumer": "S0",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S0",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S0",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: charter, anti-goals, integrity constraints.",
+            "node": "S0",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: charter, anti-goals, integrity constraints.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S1",
+        "gaps": [
+          {
+            "affected_consumer": "S1",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S1",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S1",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: ontology, ownership boundaries, state classes.",
+            "node": "S1",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: ontology, ownership boundaries, state classes.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S10",
+        "gaps": [
+          {
+            "affected_consumer": "S10",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S10",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S10",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: state hierarchy, event log, summaries, retrieval law, checkpointing, simulation budget.",
+            "node": "S10",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: state hierarchy, event log, summaries, retrieval law, checkpointing, simulation budget.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S11",
+        "gaps": [
+          {
+            "affected_consumer": "S11",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "CP-A5 reader alone is not human-usable A5.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S11",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "CP-A5 reader alone is not human-usable A5.",
+            "hq_judgment_required": true,
+            "id": "GAP_S11_HUMAN_UX",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Issue accessible encounter flows and honest opacity behavior.",
+            "node": "S11",
+            "owner": "Product UX owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "CP-A5 reader alone is not human-usable A5.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Issue accessible encounter flows and honest opacity behavior.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S12",
+        "gaps": [
+          {
+            "affected_consumer": "S12",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S12",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S12",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: social options matrix, abuse analysis, minimum safe social architecture.",
+            "node": "S12",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: social options matrix, abuse analysis, minimum safe social architecture.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S13",
+        "gaps": [
+          {
+            "affected_consumer": "S13",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Engagement can be mistaken for human good.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S13",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Engagement can be mistaken for human good.",
+            "hq_judgment_required": true,
+            "id": "GAP_S13_REVENUE_MODEL",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Issue non-extractive pricing, notification and retention constraints.",
+            "node": "S13",
+            "owner": "Accountable business/product owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Engagement can be mistaken for human good.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Issue non-extractive pricing, notification and retention constraints.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S14",
+        "gaps": [
+          {
+            "affected_consumer": "S14",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Storage authenticity does not provide social safety.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S14",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Storage authenticity does not provide social safety.",
+            "hq_judgment_required": true,
+            "id": "GAP_S14_SOCIAL_SAFETY",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Issue abuse, consent, deletion and cross-user boundaries.",
+            "node": "S14",
+            "owner": "Safety/privacy owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Storage authenticity does not provide social safety.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Issue abuse, consent, deletion and cross-user boundaries.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S15",
+        "gaps": [
+          {
+            "affected_consumer": "S15",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Persuasive LLM presentation cannot establish a historically constituted other.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S15",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Persuasive LLM presentation cannot establish a historically constituted other.",
+            "hq_judgment_required": true,
+            "id": "GAP_S15_HUMAN_ALPHA",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Design bounded reference-person trial with ethics and actual participants.",
+            "node": "S15",
+            "owner": "Alpha/participant-research owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Persuasive LLM presentation cannot establish a historically constituted other.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Design bounded reference-person trial with ethics and actual participants.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S16",
+        "gaps": [
+          {
+            "affected_consumer": "S16",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S16",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S16",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: requirement packet with rationale, alternatives, evidence, dependencies, exact affected owners and reopen test.",
+            "node": "S16",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: requirement packet with rationale, alternatives, evidence, dependencies, exact affected owners and reopen test.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S2",
+        "gaps": [
+          {
+            "affected_consumer": "S2",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S2",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S2",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: accepted architecture requirements for eventual Pyat handoff.",
+            "node": "S2",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: accepted architecture requirements for eventual Pyat handoff.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S3",
+        "gaps": [
+          {
+            "affected_consumer": "S3",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S3",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S3",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: candidate V3 relational-prior schema and developmental derivation plan.",
+            "node": "S3",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: candidate V3 relational-prior schema and developmental derivation plan.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S4",
+        "gaps": [
+          {
+            "affected_consumer": "S4",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S4",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S4",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: relationship-state model and consequence laws.",
+            "node": "S4",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: relationship-state model and consequence laws.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S5",
+        "gaps": [
+          {
+            "affected_consumer": "S5",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A5 cannot distinguish flourishing from affection/compliance.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S5",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "A5 cannot distinguish flourishing from affection/compliance.",
+            "hq_judgment_required": true,
+            "id": "GAP_S5_NORMATIVE_OUTPUT",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Issue normative alternatives, uncertainty law and harmful-attachment evaluation.",
+            "node": "S5",
+            "owner": "HQ / qualified product-science owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "A5 cannot distinguish flourishing from affection/compliance.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Issue normative alternatives, uncertainty law and harmful-attachment evaluation.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S5_FLOURISHING",
+        "gaps": [
+          {
+            "affected_consumer": "A5 and any future product benefit metric",
+            "alternatives": [
+              "attachment proxy",
+              "retention/satisfaction proxy",
+              "plural incommensurable dimensions"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A model reports improved welfare because attachment rose while the actor lost agency, exit or outside relations.",
+            "dependencies": [
+              "Q-ONTO-001",
+              "S13",
+              "S14",
+              "S15"
+            ],
+            "domain": "S5_FLOURISHING",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "01_PRODUCT_CHARTER",
+              "SPD-0003",
+              "24_COURT10",
+              "05_PROGRAM_MAP"
+            ],
+            "falsifier": "A model reports improved welfare because attachment rose while the actor lost agency, exit or outside relations.",
+            "hq_judgment_required": true,
+            "id": "GAP-Q-HEALTH-FLOURISHING",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "E",
+              "C",
+              "V"
+            ],
+            "next": "Adjudicate a plural flourishing rule with explicit non-collapse and a falsifiable human evaluation design; do not write a health_score.py stub.",
+            "node": "Q_HEALTH_001",
+            "owner": "SOROK_ORIGINAL_SCIENCE_OWNER / SOROK_ALPHA_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "S5 / Q-HEALTH-001: benefit to the other independent of liking, compliance or dependency",
+            "smallest_useful_next_action": "Adjudicate a plural flourishing rule with explicit non-collapse and a falsifiable human evaluation design; do not write a health_score.py stub.",
+            "source_backed": true,
+            "status": "UNKNOWN"
+          }
+        ]
+      },
+      {
+        "domain": "S6",
+        "gaps": [
+          {
+            "affected_consumer": "S6",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S6",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S6",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: life-advancement and messaging constitution.",
+            "node": "S6",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: life-advancement and messaging constitution.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S7",
+        "gaps": [
+          {
+            "affected_consumer": "S7",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "User reflection can become pseudo-diagnosis or covert scoring.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S7",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "User reflection can become pseudo-diagnosis or covert scoring.",
+            "hq_judgment_required": true,
+            "id": "GAP_S7_PRAXIS_OUTPUT",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Issue evidence threshold, feedback cadence, opt-in and privacy policy.",
+            "node": "S7",
+            "owner": "HQ / user-praxis product owner",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "User reflection can become pseudo-diagnosis or covert scoring.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Issue evidence threshold, feedback cadence, opt-in and privacy policy.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S8",
+        "gaps": [
+          {
+            "affected_consumer": "S8",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S8",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S8",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: action vocabulary / open-action interpreter / consequence contract.",
+            "node": "S8",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: action vocabulary / open-action interpreter / consequence contract.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "S9",
+        "gaps": [
+          {
+            "affected_consumer": "S9",
+            "alternatives": [],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "S9",
+            "evidence_locator": null,
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "SOURCE_DEFINED_CONSUMER_MISSING"
+            ],
+            "falsifier": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "hq_judgment_required": true,
+            "id": "GAP_WORKSTREAM_S9",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Produce or verify the original output and name an actual first consumer: prompt/runtime boundary, expression tests, anti-sycophancy controls.",
+            "node": "S9",
+            "owner": "SOROK_PRODUCT_HQ_ORIGINAL_WORKSTREAM_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Source definition is present but no actual product consumer is proven; source identity alone does not qualify the product.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Produce or verify the original output and name an actual first consumer: prompt/runtime boundary, expression tests, anti-sycophancy controls.",
+            "source_backed": true,
+            "status": "SOURCE_DEFINED_CONSUMER_MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "SAFETY_PRIVACY",
+        "gaps": [
+          {
+            "affected_consumer": "real users and personas",
+            "alternatives": [
+              "per-branch privacy",
+              "abuse simulation law",
+              "consent/deletion receipts"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A user can stalk, coerce or extract another person's history without a boundary the system enforces.",
+            "dependencies": [
+              "S13",
+              "C9/C12",
+              "S15"
+            ],
+            "domain": "SAFETY_PRIVACY",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "05_PROGRAM_MAP S14",
+              "01_PRODUCT_CHARTER anti-goals"
+            ],
+            "falsifier": "A user can stalk, coerce or extract another person's history without a boundary the system enforces.",
+            "hq_judgment_required": true,
+            "id": "GAP-S14-PRIVACY-ABUSE",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "A",
+              "E",
+              "C",
+              "V"
+            ],
+            "next": "Define a minimum abuse/consent/deletion contract with a hostile scenario and actual first consumer; do not treat storage hashes as social safety.",
+            "node": "S14",
+            "owner": "SOROK_SAFETY_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "S14: consent, deletion, coercion, harassment, stalking and cross-branch boundaries",
+            "smallest_useful_next_action": "Define a minimum abuse/consent/deletion contract with a hostile scenario and actual first consumer; do not treat storage hashes as social safety.",
+            "source_backed": true,
+            "status": "MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "SOURCE_WITNESS",
+        "gaps": [
+          {
+            "affected_consumer": "V3_EXTERNAL_MEMBER_HASH_MISMATCH",
+            "alternatives": [],
+            "blocked_by": [
+              "source witness not available now",
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "SOURCE_WITNESS",
+            "evidence_locator": null,
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "existing_evidence": [
+              "UNREAD"
+            ],
+            "falsifier": "The node keeps a historical or reported status but its current witness is not verified.",
+            "hq_judgment_required": true,
+            "id": "GAP_WITNESS_V3_EXTERNAL_MEMBER_HASH_MISMATCH",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "node": "V3_EXTERNAL_MEMBER_HASH_MISMATCH",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "The node keeps a historical or reported status but its current witness is not verified.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "source_backed": false,
+            "status": "UNREAD"
+          },
+          {
+            "affected_consumer": "V3_EXTERNAL_SIMULATION",
+            "alternatives": [],
+            "blocked_by": [
+              "source witness not available now",
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "SOURCE_WITNESS",
+            "evidence_locator": null,
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "existing_evidence": [
+              "UNREAD"
+            ],
+            "falsifier": "The node keeps a historical or reported status but its current witness is not verified.",
+            "hq_judgment_required": true,
+            "id": "GAP_WITNESS_V3_EXTERNAL_SIMULATION",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "node": "V3_EXTERNAL_SIMULATION",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "The node keeps a historical or reported status but its current witness is not verified.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "source_backed": false,
+            "status": "UNREAD"
+          },
+          {
+            "affected_consumer": "V3_PERSONA_SHEET",
+            "alternatives": [],
+            "blocked_by": [
+              "source witness not available now",
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "SOURCE_WITNESS",
+            "evidence_locator": null,
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "existing_evidence": [
+              "UNREAD"
+            ],
+            "falsifier": "The node keeps a historical or reported status but its current witness is not verified.",
+            "hq_judgment_required": true,
+            "id": "GAP_WITNESS_V3_PERSONA_SHEET",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "node": "V3_PERSONA_SHEET",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "The node keeps a historical or reported status but its current witness is not verified.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "source_backed": false,
+            "status": "UNREAD"
+          },
+          {
+            "affected_consumer": "V3_RUN_ONE_YEAR",
+            "alternatives": [],
+            "blocked_by": [
+              "source witness not available now",
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "SOURCE_WITNESS",
+            "evidence_locator": null,
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "existing_evidence": [
+              "UNREAD"
+            ],
+            "falsifier": "The node keeps a historical or reported status but its current witness is not verified.",
+            "hq_judgment_required": true,
+            "id": "GAP_WITNESS_V3_RUN_ONE_YEAR",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "node": "V3_RUN_ONE_YEAR",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "The node keeps a historical or reported status but its current witness is not verified.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "source_backed": false,
+            "status": "UNREAD"
+          },
+          {
+            "affected_consumer": "V3_SERVER_TURN",
+            "alternatives": [],
+            "blocked_by": [
+              "source witness not available now",
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "SOURCE_WITNESS",
+            "evidence_locator": null,
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "existing_evidence": [
+              "UNREAD"
+            ],
+            "falsifier": "The node keeps a historical or reported status but its current witness is not verified.",
+            "hq_judgment_required": true,
+            "id": "GAP_WITNESS_V3_SERVER_TURN",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "node": "V3_SERVER_TURN",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "The node keeps a historical or reported status but its current witness is not verified.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "source_backed": false,
+            "status": "UNREAD"
+          },
+          {
+            "affected_consumer": "V3_V2_LOADER",
+            "alternatives": [],
+            "blocked_by": [
+              "source witness not available now",
+              "science not issued",
+              "owner authority held"
+            ],
+            "blockers": [],
+            "consequence": "The node keeps a historical or reported status but its current witness is not verified.",
+            "dependencies": [],
+            "derived_gap": true,
+            "domain": "SOURCE_WITNESS",
+            "evidence_locator": null,
+            "evidence_status": "WITNESS_STATUS_DERIVED",
+            "existing_evidence": [
+              "UNREAD"
+            ],
+            "falsifier": "The node keeps a historical or reported status but its current witness is not verified.",
+            "hq_judgment_required": true,
+            "id": "GAP_WITNESS_V3_V2_LOADER",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": false,
+            "inference_rationale": null,
+            "locator_reason": null,
+            "missing_stages": [],
+            "next": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "node": "V3_V2_LOADER",
+            "owner": "ORIGINAL_V3_SOURCE_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "The node keeps a historical or reported status but its current witness is not verified.",
+            "return_sha": null,
+            "smallest_useful_next_action": "Re-read the exact witness at its recorded identity; do not claim SOURCE_EXACT from a ref alone.",
+            "source_backed": false,
+            "status": "UNREAD"
+          }
+        ]
+      },
+      {
+        "domain": "UX_ACCESSIBILITY",
+        "gaps": [
+          {
+            "affected_consumer": "alpha user",
+            "alternatives": [
+              "conversational-only",
+              "structured action surface",
+              "local phenomenal compositor"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "The interface needs the user to guess hidden mechanics or rewards disclosure with access.",
+            "dependencies": [
+              "SOROK_101_BINDING",
+              "S15"
+            ],
+            "domain": "UX_ACCESSIBILITY",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "05_PROGRAM_MAP S11",
+              "Astra A-E experience scales"
+            ],
+            "falsifier": "The interface needs the user to guess hidden mechanics or rewards disclosure with access.",
+            "hq_judgment_required": true,
+            "id": "GAP-S11-ACCESSIBLE-ENCOUNTER-UX",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "T",
+              "A",
+              "E",
+              "C",
+              "V"
+            ],
+            "next": "Design and test one accessible ordinary scene with control return and honest opacity; no fabricated connection.",
+            "node": "S11",
+            "owner": "SOROK_PRODUCT_UX_OWNER",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "S11: encounter, opacity, time, commitment and repair without reducing people to stats",
+            "smallest_useful_next_action": "Design and test one accessible ordinary scene with control return and honest opacity; no fabricated connection.",
+            "source_backed": true,
+            "status": "MISSING"
+          }
+        ]
+      },
+      {
+        "domain": "WORK_CONTROL",
+        "gaps": [
+          {
+            "affected_consumer": "HQ operator",
+            "alternatives": [
+              "manual dispatch",
+              "bounded controller activation",
+              "mechanical evidence only"
+            ],
+            "blocked_by": [],
+            "blockers": [],
+            "consequence": "A queue label, branch READY, session title or assistant marker is reported as observed execution.",
+            "dependencies": [
+              "user launch grant",
+              "controller identity/lease"
+            ],
+            "domain": "WORK_CONTROL",
+            "evidence_status": "SOURCE_DEFINED",
+            "existing_evidence": [
+              "R63 ROUTING_HOLD",
+              "observed low vs requested high",
+              "assistant marker not proof"
+            ],
+            "falsifier": "A queue label, branch READY, session title or assistant marker is reported as observed execution.",
+            "hq_judgment_required": true,
+            "id": "GAP-CONTROLLER-OBSERVED-EFFORT",
+            "impact": {
+              "affected_l0": [],
+              "affected_sectors": [],
+              "downstream_required_count": 0
+            },
+            "independently_actionable": true,
+            "missing_stages": [
+              "E",
+              "C"
+            ],
+            "next": "Require an actual turn/process receipt before claiming model/effort or running state; no automatic retry.",
+            "node": "CONTROLLER_R63_OBSERVED",
+            "owner": "CONTROLLER_OWNER / SOROK_HQ",
+            "parallel_group": "WHOLE_PROGRAM_GAP",
+            "parent_obligation": "Controller: queued model/effort is not observed execution",
+            "smallest_useful_next_action": "Require an actual turn/process receipt before claiming model/effort or running state; no automatic retry.",
+            "source_backed": true,
+            "status": "REVIEWED_NEGATIVE"
+          }
+        ]
+      }
+    ],
+    "independently_actionable": 29,
+    "note": "No completeness denominator and no automatic P0. Existing tickets are not the denominator.",
+    "schema": "SOROK_WHOLE_PROGRAM_GAPS@1"
+  }
+}

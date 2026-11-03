@@ -1,0 +1,85 @@
+{
+  "applied": {
+    "event_id": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+    "kind": "PROGRAMMA_DELTA",
+    "status": "SOURCE_PRESENT_CANDIDATE"
+  },
+  "axes": {
+    "CAN011_RULE_T_MISSING": {
+      "authority": "NOT_ADOPTED",
+      "consumer": "NONE_PROVEN_AT_PREMAIN",
+      "engineering": "SOURCE_DEFINITION_ONLY",
+      "human": "NOT_PROVEN",
+      "operational": "CANDIDATE_ONLY",
+      "review": "UNREVIEWED_CANDIDATE_EVIDENCE",
+      "science": "NOT_ISSUED",
+      "source_recovery": "SOURCE_EXACT"
+    }
+  },
+  "event": {
+    "actor": {
+      "principal": "SOURCE_DERIVED_NOT_HQ_IDENTITY",
+      "role": "CANDIDATE_INTAKE",
+      "verified": false
+    },
+    "created_at": "2026-11-03T18:50:22.437934+00:00",
+    "event_id": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+    "kind": "PROGRAMMA_DELTA",
+    "payload": {
+      "coordinate": {
+        "code": {
+          "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+          "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+          "object_type": "blob",
+          "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+        },
+        "code_sha": "b65c75a9e62618690f7d02265bc9e850af549161",
+        "first_consumer_symbol": "NONE",
+        "producer_symbol": "def evaluate(",
+        "root": "P1_S35_TEST_ONLY",
+        "scope": "DOCUMENTARY_RETURN_ONLY",
+        "source_cut": "b65c75a9e62618690f7d02265bc9e850af549161"
+      },
+      "grade": "TEST_ONLY_SOURCEFREE",
+      "guide_ref": "O05@ACCEPT",
+      "guide_sha": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+      "kind": "RETURN_CANDIDATE",
+      "locator": {
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py",
+        "quote": "T_NO_CHANGE = {"
+      },
+      "next_evidence": "Only a competent CAN011 original Rule T acquired-practice or genuinely evaluated O07 no-change issuance can promote native C9; isolate first-reader access and later performed E2.",
+      "node_id": "CAN011_RULE_T_MISSING",
+      "owner_slot": "CAN011_OWNER",
+      "prior_negative": [
+        "CAN011_RULE_T_UNISSUED"
+      ],
+      "return_sha": "b65c75a9e62618690f7d02265bc9e850af549161",
+      "schema": "SOROK_PROGRAMMA_DELTA@1",
+      "source": {
+        "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+        "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+        "object_type": "blob",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+      },
+      "subject_sha": "b65c75a9e62618690f7d02265bc9e850af549161",
+      "transition_id": "S35_P1_SOURCEFREE_RETURN_ONLY"
+    },
+    "prev_event_hash": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+    "schema": "SOROK_PROGRAMMA_EVIDENCE_JOURNAL@1",
+    "sequence": 3,
+    "source": {
+      "blob": "02d656868b1963fc6468bab1b25ef98fecdb5141",
+      "commit": "b65c75a9e62618690f7d02265bc9e850af549161",
+      "object_type": "blob",
+      "path": "WORKER_RETURNS/PROGRAMMA_SOROK_P1_MATERIAL_HISTORICAL_PERSON_SOURCEFREE_CONSUMER_R1/candidate/p1_s35.py"
+    }
+  },
+  "expected_head": "4e60465911c3437250f99655194f2a1410c8369dd2058773ad66522425465bd3",
+  "head": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+  "journal_head": "326272437d126c804eb71f58cf1cebfb39ea16e63df584a506c4db4fa92dee59",
+  "revision": 3,
+  "stale_expected_head": false,
+  "state_digest": "9df4090e4a4a21bd7abdaf6c3fc6775ffa7cb47c42b459994f5956cf8da943a8",
+  "status": "EVENT_APPENDED"
+}

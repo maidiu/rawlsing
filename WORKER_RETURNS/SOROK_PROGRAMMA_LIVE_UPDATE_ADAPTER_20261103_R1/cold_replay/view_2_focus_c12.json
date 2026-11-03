@@ -1,0 +1,214 @@
+{
+  "existing_reference": {
+    "axes": {
+      "authority": "NOT_ADOPTED",
+      "consumer": "NONE_PROVEN_AT_PREMAIN",
+      "engineering": "SOURCE_DEFINITION_RECOVERED",
+      "human": "NOT_PROVEN",
+      "operational": "RETURNED_SHA__INDEX_INPUT",
+      "review": "NOT_INDEPENDENTLY_REVIEWED",
+      "science": "NOT_ISSUED",
+      "source_recovery": "SOURCE_PRESENT"
+    },
+    "id": "C12",
+    "incoming": [
+      {
+        "causal": false,
+        "cycle_class": "INDEX_CONTAINMENT_OR_GOVERNANCE",
+        "dependency_type": "INDEX_OR_GOVERNANCE",
+        "edge_id": "EDGE_55f048bc8d735912",
+        "from": "L1_PERSON",
+        "grade": "INDEX_LINK",
+        "hq_judgment_required": false,
+        "hypothetical": false,
+        "relation": "organ_contains_registry_item",
+        "required": false,
+        "source": {},
+        "status": "INDEX_LINK",
+        "to": "C12"
+      },
+      {
+        "causal": false,
+        "dependency_type": "INDEX_OR_GOVERNANCE",
+        "edge_id": "EDGE_13f972151bf8da59",
+        "from": "A0",
+        "grade": "INDEX_LINK",
+        "hq_judgment_required": true,
+        "hypothetical": false,
+        "relation": "backward_person_source_path",
+        "required": false,
+        "source": {},
+        "status": "NAVIGATION_ONLY",
+        "to": "C12"
+      }
+    ],
+    "inverse_navigation": "Derived from the same directed edges; no second manual graph.",
+    "maturity": {
+      "id": "C12",
+      "owner": null,
+      "rule": "Stages are independent evidence axes; code does not prove theory and native validation is not inferred from a fixture.",
+      "source_refs": [],
+      "source_verification": {},
+      "stages": {
+        "A": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "C": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "E": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "I": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "T": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        },
+        "V": {
+          "note": "No stage-specific evidence in this vertical slice.",
+          "owner": "UNKNOWN",
+          "status": "UNKNOWN"
+        }
+      },
+      "title": "Pipeline-produced continuing person and forks"
+    },
+    "missing_or_unproven": [],
+    "neighbourhood": {
+      "edges": 4,
+      "nodes": [
+        "C12",
+        "A0",
+        "C10",
+        "L1_PERSON",
+        "L4_NAMED_FIRST_CONSUMER"
+      ]
+    },
+    "node": {
+      "actual_current_importer": "NONE_PROVEN_AT_PREMAIN",
+      "first_required_consumer": "A0 person life and reentry",
+      "hq_judgment_required": false,
+      "id": "C12",
+      "kind": "TERMINAL_C_A",
+      "layer": "L3",
+      "registry_status": "HISTORICAL_DEFINITION_EXACT_FOUND__FULL_NATIVE_PRODUCT_NOT_PROVEN",
+      "source_ref": "WORKER_RETURNS/SOROK-RCF-A-HISTORIC-DEV-MACHINE-R1/01_FUNCTION_SOURCE_OWNER_RECEIVER_LEDGER.json",
+      "title": "Pipeline-produced continuing person and forks"
+    },
+    "outgoing": [
+      {
+        "causal": true,
+        "dependency_type": "CONSUMER_DEPENDENCY",
+        "edge_id": "EDGE_4c1f74692d95a510",
+        "from": "C12",
+        "grade": "SOURCE_DEFINED_REQUIREMENT",
+        "hq_judgment_required": true,
+        "hypothetical": false,
+        "relation": "function_has_named_first_consumer",
+        "required": true,
+        "source": {},
+        "status": "INDEX_LINK",
+        "to": "L4_NAMED_FIRST_CONSUMER"
+      },
+      {
+        "causal": false,
+        "dependency_type": "INDEX_OR_GOVERNANCE",
+        "edge_id": "EDGE_f69bcd38efb87e28",
+        "from": "C12",
+        "grade": "INDEX_LINK",
+        "hq_judgment_required": true,
+        "hypothetical": false,
+        "relation": "backward_person_source_path",
+        "required": false,
+        "source": {},
+        "status": "NAVIGATION_ONLY",
+        "to": "C10"
+      }
+    ],
+    "source_verification": null
+  },
+  "guide_phase_gates": [
+    {
+      "claim_scope": "NATIVE_CONTINUING_PERSON",
+      "decision": "BLOCKED_MEMBERS_UNISSUED",
+      "gate_id": "G-C12-NATIVE-INTEGRATE",
+      "logic": "ALL_OF",
+      "members": [
+        {
+          "predecessor_gates": [
+            "G-C11-NATIVE"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C11@INTEGRATE",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-C10-NATIVE"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C10@INTEGRATE",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-C9-NATIVE-INTEGRATE",
+            "G-C9-T-ANY"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C9@INTEGRATE",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [
+            "G-E008-JOINT-BUILD"
+          ],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        },
+        {
+          "predecessor_gates": [],
+          "present_but_not_promoting": [],
+          "qualifies_now": false,
+          "reason": "UNISSUED_OR_UNVERIFIED_TARGET_RECEIPT",
+          "ref": "C12:LOCAL_GUIDE:EXTERNAL_ANCHOR@VERIFY",
+          "required_scope": "DOCUMENTARY_REQUIREMENT"
+        }
+      ],
+      "owner": "C12/C11/C10/C9 and external custody owners",
+      "remaining": [
+        "C11@INTEGRATE",
+        "C10@INTEGRATE",
+        "C9@INTEGRATE",
+        "C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE",
+        "C12:LOCAL_GUIDE:EXTERNAL_ANCHOR@VERIFY"
+      ],
+      "selected_mode": "UNSELECTED",
+      "target_ref": "C12@INTEGRATE",
+      "target_stage_issued": false
+    }
+  ],
+  "receipts": [],
+  "rule": "ALL same-target gates, actual member receipts and scope remain required",
+  "source_cut": "a9ebf71e62d84e5dcc599662e976eca7fcd0e623",
+  "target": "C12@INTEGRATE"
+}

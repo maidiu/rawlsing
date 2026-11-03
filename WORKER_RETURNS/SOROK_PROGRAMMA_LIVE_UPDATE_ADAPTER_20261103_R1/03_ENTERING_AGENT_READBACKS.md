@@ -1,5 +1,7 @@
 # LIVE-02 — entering-agent work-view cold readbacks (source-derived expectations, NOT_EXECUTED)
 
+> **Execution update (2026-11-03):** The `NOT_EXECUTED` boundary below records the original authoring session. The seven views were later executed at content SHA `bbcc46bf3b7aadfc582e284daea61f99060e0fc3`; actual outputs are in `06_COLD_REPLAY_AND_SEVEN_VIEW_RECEIPT.md` and `cold_replay/`. Independent review and HQ adoption remain NOT ISSUED.
+
 These are **adversarial expected readbacks derived from actual inspected Git sources and the authored program logic**, not observed CLI process output. A genuinely unaware arriving engineer must confirm them on an authorized S2 runner. The guide and P0/P1 baseline are pinned at `a9ebf71e...` and `fa8a2b1f...` respectively; no overnight return is inferred from a branch name or an author's claim.
 
 ## 0. What a fresh engineer should see before any new delta

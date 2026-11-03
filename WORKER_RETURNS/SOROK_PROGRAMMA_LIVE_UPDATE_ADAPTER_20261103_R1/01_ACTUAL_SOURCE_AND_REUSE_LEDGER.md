@@ -1,5 +1,7 @@
 # LIVE-02 — actual source and reuse ledger
 
+> **Execution update (2026-11-03):** The `NOT S2 EXECUTED` status below records the original authoring session. Execution was later performed at content SHA `bbcc46bf3b7aadfc582e284daea61f99060e0fc3`; see `05_EXECUTED_TEST_RECEIPT.md`, `06_COLD_REPLAY_AND_SEVEN_VIEW_RECEIPT.md`, `07_ADVERSARIAL_FINDINGS_AND_REPAIRS.md`, and `08_FINAL_DISPOSITION_AND_HQ_HANDOFF.md`. Independent review and HQ adoption remain NOT ISSUED.
+
 **Status:** EXACT_GIT_PRIMARY_SOURCE_RECONNAISSANCE_AND_CODE_EDIT_APPLIED; NOT S2 EXECUTED; NOT independently accepted/adopted. Repository maidiu/rawlsing private, single worker branch agent/sorok-programma-live-update-adapter-20261103-r1 created from exact repaired P0/P1 head fa8a2b1f75cd2ee2153a813215f51dea88e16a4b. Original guide W8-R frozen a9ebf71e62d84e5dcc599662e976eca7fcd0e623; not edited or silently merged.
 
 ## Direct actual Git evidence

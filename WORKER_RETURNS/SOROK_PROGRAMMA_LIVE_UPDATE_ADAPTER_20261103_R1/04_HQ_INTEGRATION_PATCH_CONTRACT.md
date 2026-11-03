@@ -1,5 +1,7 @@
 # LIVE-02 — HQ integration and exact candidate-patch contract
 
+> **Execution update (2026-11-03):** The `tests NOT_RUN` status below records the original authoring session. Execution was later performed at content SHA `bbcc46bf3b7aadfc582e284daea61f99060e0fc3`; see `05_EXECUTED_TEST_RECEIPT.md`, `06_COLD_REPLAY_AND_SEVEN_VIEW_RECEIPT.md`, `07_ADVERSARIAL_FINDINGS_AND_REPAIRS.md`, and `08_FINAL_DISPOSITION_AND_HQ_HANDOFF.md`. Independent review and HQ adoption remain NOT ISSUED.
+
 **Decision requested:** review **one narrowly scoped adapter** to the existing P0/P1 living reference, not a new architectural/platform proposal. **Status:** RETURNED SOURCE/CODE CANDIDATE; tests NOT_RUN; independent acceptance/production adoption NOT_ISSUED.
 
 ## 1. Baseline, exact sources and custody

@@ -1,0 +1,80 @@
+        journal, st = state_env(tmp_path)
+        foreign_source = packet("rrif_r2_negative.json")
+        join = packet("join_e_scoped_review.json")
+        foreign_source["source"] = copy.deepcopy(join["source"])
+        foreign_source["return_sha"] = join["source"]["commit"]
+        foreign_source["locator"] = copy.deepcopy(join["locator"])
+        before = journal.read_bytes()
+>       with pytest.raises(ad.DeltaRefused, match="SOURCE_COMMIT_SUBJECT_MISMATCH"):
+E       Failed: DID NOT RAISE DeltaRefused
+
+test_live_update_adapter.py:403: Failed
+_____________ test_seven_views_share_one_cold_reconstructed_state ______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-355/test_seven_views_share_one_col0')
+
+    def test_seven_views_share_one_cold_reconstructed_state(tmp_path):
+        journal, st = state_env(tmp_path)
+        append_fixture(st, packet("join_e_scoped_review.json"))
+        append_fixture(st, packet("s35_authored_sourcefree.json"))
+        append_fixture(st, packet("rrif_r2_negative.json"))
+        expected_head = es.journal_head(journal)
+        st.unlink()
+        snapshot = st.parent / "SNAPSHOT.json"
+        if snapshot.exists():
+            snapshot.unlink()
+        cold = lr._load_state(st)
+        assert cold["journal_head"] == expected_head
+        assert cold["revision"] == 4
+        digest = cold["state_digest"]
+        assert len(cold["programma_deltas"]) == 3
+    
+        freshness = ad.query(cold, "freshness")
+        assert freshness["journal_head"] == expected_head
+        assert freshness["revision"] == 4
+        assert freshness["changes"] == 3
+        assert freshness["pending_qualification"] == "SOURCE_GRADED_UPDATES__HQ_ADOPTION_PENDING"
+    
+        changes = ad.query(cold, "changes-since", ad.GUIDE_SHA)
+        assert changes["count"] == 3
+        assert [c["id"] for c in changes["changes"]] == [
+            "JOIN_E_7BF_SCOPED_REVIEW", "S35_P1_SOURCEFREE_RETURN_ONLY",
+            "RRIF_R2_598D_8090_INDEPENDENT_REVISE"]
+    
+        whole = ad.query(cold, "whole")
+        assert [p["ref"] for p in whole["candidate_live_updates"]] == [
+            "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+        assert whole["source_cut"] == ad.GUIDE_SHA
+    
+        focus = ad.query(cold, "focus", "C12@INTEGRATE")
+        assert [g["gate_id"] for g in focus["guide_phase_gates"]] == ["G-C12-NATIVE-INTEGRATE"]
+        assert focus["guide_phase_gates"][0]["decision"] == "BLOCKED_MEMBERS_UNISSUED"
+        assert focus["guide_phase_gates"][0]["target_stage_issued"] is False
+    
+        goal = ad.query(cold, "goal", "C9@INTEGRATE")
+        gates = {g["gate_id"]: g for g in goal["guide_phase_gates"]}
+        assert gates["G-C9-NATIVE-INTEGRATE"]["decision"] == "BLOCKED_MEMBERS_UNISSUED"
+        assert gates["G-C9-T-ANY"]["decision"] == "MODE_UNSELECTED_HOLD"
+        assert not any(g["target_stage_issued"] for g in gates.values())
+    
+        source_to_product = ad.query(cold, "source-to-product", "E021@VERIFY")
+        assert source_to_product["no_transitive_acceptance"] is True
+        receipt = source_to_product["phase"]["receipts"][0]["receipts"][0]
+        assert receipt["source_cut"] == ad.JOIN_E_SUBJECT
+        assert receipt["code_reader"] == "class JoinedSession"
+    
+        work_now = ad.query(cold, "work-now")
+        assert [p["ref"] for p in work_now["live_phase_changes"]] == [
+            "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+>       assert work_now["programma_live"]["changed_refs"] == [
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "C12@VERIFY", "E021@VERIFY", "O05@ACCEPT"]
+E       KeyError: 'programma_live'
+
+test_live_update_adapter.py:467: KeyError
+=========================== short test summary info ============================
+FAILED test_live_update_adapter.py::test_scoped_review_source_cut_must_equal_reviewed_subject
+FAILED test_live_update_adapter.py::test_scoped_review_source_path_must_be_exact_join_e_return
+FAILED test_live_update_adapter.py::test_negative_review_source_cut_and_node_are_exact
+FAILED test_live_update_adapter.py::test_seven_views_share_one_cold_reconstructed_state
+4 failed, 2 passed, 25 deselected in 117.65s (0:01:57)
