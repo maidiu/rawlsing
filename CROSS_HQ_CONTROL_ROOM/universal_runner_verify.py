@@ -796,10 +796,13 @@ def verify_observation(
                 if name not in import_events:
                     reasons.append(f"NATIVE_IMPORT_EVENT_MISSING:{name}")
 
-    if safe_typed_digest(observation.get("result")) is None:
+    observed_digest = safe_typed_digest(observation.get("result"))
+    expected_digest = safe_typed_digest(expectation.expected_result)
+    if observed_digest is None:
         reasons.append("OBSERVED_RESULT_NOT_SERIALIZABLE")
-    elif typed_digest(observation.get("result")) != typed_digest(
-            expectation.expected_result):
+    if expected_digest is None:
+        reasons.append("EXPECTED_RESULT_NOT_SERIALIZABLE")
+    elif observed_digest is not None and observed_digest != expected_digest:
         reasons.append("RESULT_MISMATCH")
 
     return _decision(observation, expectation, reasons)

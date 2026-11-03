@@ -497,3 +497,12 @@ def test_cross_process_nonce_claim_is_atomic(tmp_path):
     outcomes = sorted(proc.communicate(timeout=60)[0].strip()
                       for proc in processes)
     assert outcomes == ["CLAIMED", "REPLAYED"]
+
+
+def test_authentic_observation_with_nonserializable_expectation_refuses(tmp_path):
+    fixture = RepoFixture(tmp_path)
+    observation = fixture.observe()
+    malformed = replace(fixture.expectation, expected_result={"not_serializable"})
+    decision = fixture.verify(observation, expectation=malformed)
+    assert_refused(decision, "EXPECTED_RESULT_NOT_SERIALIZABLE")
+    assert decision["production_state"] == "DEPLOYMENT_HOLD"

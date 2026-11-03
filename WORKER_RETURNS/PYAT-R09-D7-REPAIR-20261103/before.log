@@ -1,0 +1,65 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_authentic_observation_with_nonserializable_expectation_refuses ______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-52/test_authentic_observation_wit0')
+
+    def test_authentic_observation_with_nonserializable_expectation_refuses(tmp_path):
+        fixture = RepoFixture(tmp_path)
+        observation = fixture.observe()
+        malformed = replace(fixture.expectation, expected_result={"not_serializable"})
+>       decision = fixture.verify(observation, expectation=malformed)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/universal_runner/test_universal_runner_verify.py:506: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/universal_runner/test_universal_runner_verify.py:122: in verify
+    return verify.verify_observation(
+CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py:801: in verify_observation
+    elif typed_digest(observation.get("result")) != typed_digest(
+CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py:69: in typed_digest
+    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
+                          ^^^^^^^^^^^^^^^^^^^^^
+CROSS_HQ_CONTROL_ROOM/universal_runner_verify.py:64: in canonical_json
+    return json.dumps(value, sort_keys=True, separators=(",", ":"),
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py:238: in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:200: in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:258: in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <json.encoder.JSONEncoder object at 0x10c060510>
+o = {'not_serializable'}
+
+    def default(self, o):
+        """Implement this method in a subclass such that it returns
+        a serializable object for ``o``, or calls the base implementation
+        (to raise a ``TypeError``).
+    
+        For example, to support arbitrary iterators, you could
+        implement default like this::
+    
+            def default(self, o):
+                try:
+                    iterable = iter(o)
+                except TypeError:
+                    pass
+                else:
+                    return list(iterable)
+                # Let the base class default method raise the TypeError
+                return JSONEncoder.default(self, o)
+    
+        """
+>       raise TypeError(f'Object of type {o.__class__.__name__} '
+                        f'is not JSON serializable')
+E       TypeError: Object of type set is not JSON serializable
+
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py:180: TypeError
+=========================== short test summary info ============================
+FAILED tests/universal_runner/test_universal_runner_verify.py::test_authentic_observation_with_nonserializable_expectation_refuses
+1 failed in 0.39s
