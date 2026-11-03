@@ -1,0 +1,44 @@
+# LAUNCH — PROGRAMMA SOROK W8-F — W7 MATERIAL DEFECT REPAIR IN THE EXISTING GUIDE
+
+**AGENT_TYPE:** Independent I3+ source-qualified guide receiving integrator; NOT W7-I author, W7-D author, own reviewer, Sorok/Codex HQ, native science issuer, protected PRE-MAIN owner or product-code implementer.
+**REPOSITORY:** \`maidiu/rawlsing\` (PRIVATE)
+**EXECUTION:** S0–S1 authenticated private GitHub Browser, source and selected code reading, exclusive isolated-branch documentary edits; no S2/S3 claims.
+**MODEL/EDITOR:** Browser / GPT-6 High PROPOSED; actual selected editor and reasoning effort verified by user. No autonomous host/model switch.
+**FULL SINGLE-AGENT DELIVERABLE:** YES.
+**WORKER BRANCH:** \`research/programma-sorok-w8f-w7-actual-guide-correction-20261103-r1\`
+**EXACT FROZEN SOURCE GUIDE:** \`research/programma-sorok-w7i-w6-canonical-fanin-20261102-r1@db134dc7c705bff62e0570b30ce24052cf06308d\`.
+**PREPARED COMMISSION CUT:** Use the exact prepared SHA provided with the corresponding GitHub issue. Verify remote before any write. Preserve the unchanged source guide and all other workers.
+**WRITE ALLOWLIST:** \`SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md\`, existing \`06–15\` guide members ONLY, and \`WORKER_RETURNS/PROGRAMMA_SOROK_W8F_W7_REPAIR_20261103_R1/**\`. Do not create a second guide, database, controller or graph service.
+
+## Authority, fixed inputs and first action
+
+Read this entire commission, then direct-read the actual W7-I integration at \`db134dc7...\`, including 00,06–15 and \`WORKER_RETURNS/PROGRAMMA_SOROK_W7I_CANONICAL_FANIN_20261102_R1/00_RETURN.md\`, 02 and 03. Do not reconstruct W1–W6 or redo W7-I's initial source fan-in. Read the four completed, distinct W7 audit returns at exact commits:
+
+- **W7-D** \`f1742490b01b8eab2ab1629565fb33bdee6bb396\`: \`WORKER_RETURNS/PROGRAMMA_SOROK_W7D_DEPENDENCY_HOSTILE_20261102_R1/{00_VERDICT.md,01_RECORD_LEVEL_FINDINGS.jsonl,02_RECOMPUTED_WORK_NOW_AND_SCC_COURT.md,03_EXACT_GUIDE_PATCH_DELTAS.md}\`. Its 17 findings are serious, **AUTHOR_PROXIMATE, NOT independent acceptance**.
+- **W7-C** \`40ca52e141bedcb8ab1de6acce7e51d81a2341f3\`: \`WORKER_RETURNS/PROGRAMMA_SOROK_W7C_CURRENTNESS_20261102_R1/{00_VERDICT_AND_OBSERVED_GIT_CUTS.md,01_SOURCE_AND_REVIEW_CUSTODY_LEDGER.jsonl,02_SEAM_REGRADES_AND_WORK_NOW_CORRECTIONS.md,03_EXACT_HELD_WITNESSES_AND_SCOPED_TEST_REQUESTS.md}\`.
+- **W7-S** \`b7d583a01d5f0e92ae1da861ca1d3a4170184a28\`: \`WORKER_RETURNS/PROGRAMMA_SOROK_W7S_SOURCE_MATERIALITY_20261102_R1/{00_MATERIALITY_VERDICT_AND_COVERAGE.md,01_DIRECT_READ_SOURCE_SAMPLE_AND_DISPOSITIONS.jsonl,02_EXISTING_FUNCTIONS_AND_MISSING_PREREQUISITE_IMPACTS.md,03_BOUNDED_EXTERNAL_SOURCE_REQUESTS_IF_ANY.md}\`.
+- **W7-P** \`c145ee3db2344dc75eeb1b343c1b608fd9a66e47\`: \`WORKER_RETURNS/PROGRAMMA_SOROK_W7P_WHOLE_PRODUCT_20261102_R1/{00_WHOLE_PRODUCT_VERDICT.md,01_S0_S16_A0_A5_REQUIREMENT_STAGE_COVERAGE.jsonl,02_FIVE_PRODUCT_END_TO_END_WORK_NOW_TRAVERSALS.md,03_CONCRETE_MISSING_GATES_AND_PARALLEL_WORK.md}\`.
+
+Current PRE-MAIN at last read: \`integration/pre-main-reconciliation-r1@9809203fd915a84bae056a67210e9213879840db\`; recheck only the materially implicated source cuts. Original Sorok 05, 58, 74, 100, 101 at \`865b5b01e1a27e99020cf2bb389af8cd4c874b57\`. Preserve JOIN-V \`4387dc818a96fda2d5271672505fbd9da1059703\` **ACCEPT_SCOPED only on 7bf2da...**; RRIF-R2 review \`8090a1ea308ab17f302f55bb2639c3e4cd774c7a\` **REVISE_MATERIAL_DEFECTS on 598d9e...**, later F2 \`cf578514434532b48e86c76c1d38d6250323a1ce\` separate reported sourcefree fix/partial consumer. These three versions are not interchangeable.
+
+## Implement actual surgical guide corrections, not another findings essay
+
+1. **A5 claim-mode failure:** In \`14\` and related 08/10/11, curated Gates0–3 are formative mechanism/UX research ONLY. Original Sorok 100 §8 Gate5 requires preceding Gates0–4 **including generated-person Gate4 substitution**, actual functioning product-scope receipt, S5/S11/S14/S15 and real approved participant evidence. No inactive IF yields READY. Separate \`FORMATIVE_CURATED\`, \`GENERATED_GATE4\`, \`HUMAN_GATE5\` with nonempty selected claim-scope; never manufacture human results.
+2. **C9 Rule-T/NO_CHANGE:** Base native C9 ALL includes valid claim-selected Rule A and actual performed B/E2+readset, PLUS selected Rule T positive acquired-practice OR genuinely evaluated NO_CHANGE. No absence/unknown rule may turn into NO_CHANGE; all active gates for the same target@phase must hold.
+3. **Exact version-aware evidence:** Old 7bf sourcefree accepted fork/cold cannot meet new c784/598d chosen \`C12@VERIFY\`; require tuple-sensitive writer SHA, reader SHA, schema, root, actor/branch/epoch, ACK, actual positive+severance/cold proof, owner anchor/signature and reviewer. R2-T1/M1/C1/D1 remain explicit RED for precise cut. Later F2 packet verifies a different receiving property, not same-root native C9/C12.
+4. **Artificial blockers/cycle:** Remove \`E021@VERIFY\` as an absolute prerequisite for \`S10@SPECIFY\`. Keep as provenance/reuse for a chosen technical design. Replace reciprocal modeled C9↔C12 SPECIFY hard SCC with an explicit bounded **joint owner C9/C12/C10 version/root/ACK/anchor contract**, followed by parallel adapter implementation when selected; do not assert current runtime cycle.
+5. **Real product/ethical obligations:** Add typed operative proof requirements for S14 deletion/export/consent/access/research separation and independent abuse controls; add actual S8→S9→S11 actor-world→user-phenomenology→SAY/DO/ATTEND→performed/failed/refused event path. Make S5 benefit/harm, S13 viability, S15 protocol, S11 humane UX independently SPECIFY-ready, not falsely ACCEPTED.
+6. **Sourced reuse:** W7-S's original D002 50 scenario probes and detailed D008/D009 specifications already exist—regrade source-to-S8/S9/S11/S14 mapping and relevant \`WP-W6B-20/34/35/37\` as **refine/reuse**, not blank new design or 50 executed tests. W7-C regrades all 39 packages; do not call 39 new builds. Preserve original source identities, source-date Q/D/R epoch 130/259/216 vs older 123/248/204.
+7. **Exact owner/source leaves:** Represent W7-D's 11 significant missing \`@phase\` witness/owner actions with scoped IDs, original issuer, first consumer and condition; correct M6 positive-authority stage inversion. HOLD only the truly indispensable owner/native/human work, not independent design.
+
+**Do not** silently replace old identifiers: preserve 290 original source locators, 144 inherited function IDs, original 22 D and 22 E parent IDs, 100 W1 dispositions, 119 W6-B nested/77 gates/97 leaves/230 relations/39 WPs unless the exact necessary correction creates explicitly attributed additional local children. Preserve the 38 W6-C seams and \`JOIN_PENDING\` where W8-J has not established exact semantics; DO NOT preempt W8-J's independent seam join work.
+
+## Proof / output
+
+Produce actual committed correction to SAME guide 00/06–15, not just a proposed patch. Parse/check every changed JSON/JSONL member, no duplicates/dangling refs, source grades and original ID conservation; report before/after records and exact work-now differences for **at least ten** difficult cases:
+(a) absent A5 mode; (b) curated-only vs Gate5; (c) Gate4 with missing S14; (d) native C9 missing selected Rule T; (e) evaluated NO_CHANGE vs missing; (f) old 7bf review on new tuple; (g) S10 spec without E021; (h) hypothetical C9/C12 exact owner matrix unblocks joint spec ONLY; (i) S14 policy vs operated enforcement; (j) genuine S5/S13/S15 parallel. Include a sourcefree actor-limited B perception and source-severance/restore as a **proposed exact test**, not fictitious runtime execution.
+
+Return under \`WORKER_RETURNS/PROGRAMMA_SOROK_W8F_W7_REPAIR_20261103_R1/\`:
+\`00_RETURN.md\` (explicit ENGINEERING/SOURCE, SCIENCE, AUTHORITY, HUMAN verdicts), \`01_W7_AUDIT_ADJUDICATION.jsonl\` (each material W7 finding ACCEPT_CORRECTION/REVISE/HOLD/REFERENCE_ONLY with reason, source and touched guide ID), \`02_BEFORE_AFTER_GATE_READBACK.md\`, \`03_CHANGED_FILE_BLOB_AND_ID_LEDGER.json\`, \`04_OPEN_INDEPENDENT_TEST_AND_OWNER_ACTIONS.md\`. Exact committed branch SHA after push verified. **Do not self-review, dispatch, merge, adopt original science or touch Codex product workers.**
+
+**Success:** the existing guide no longer asserts materially false READY states; it actually gives corrected first work and reverse unlocks without creating another system. This is FIRST receiving correction; independent W8-J joins and W8-N negative-space additions will be reconciled once returned, not stolen or presumed accepted.
