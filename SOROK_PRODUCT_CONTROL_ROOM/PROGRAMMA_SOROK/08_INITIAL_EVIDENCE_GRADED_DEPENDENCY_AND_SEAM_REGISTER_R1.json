@@ -7874,5 +7874,58 @@
     ],
     "authority": "DOCUMENTARY_RECEIVING_CORRECTION_NOT_INDEPENDENT_ACCEPTANCE",
     "s11_scope_split": "S11:LOCAL_GUIDE:LOWFI_NONHUMAN@VERIFY cannot count as PARTICIPANT_USABILITY@VERIFY; independent Gate5 human remains held"
+  },
+  "w8r_final_fanin": {
+    "status": "GUIDE_SOURCE_GROUNDED_RECEIVING_CANDIDATE__NOT_INDEPENDENTLY_ACCEPTED",
+    "frozen_w7i": "db134dc7c705bff62e0570b30ce24052cf06308d",
+    "actual_w8f_base": "097d46c47b6e41ff93a427e54646195892644cde",
+    "worker_sources": {
+      "W8J": {
+        "commit": "b78528a314aa26f6167d34e3e6a8bb045ae6ebdc",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W8J_EXACT_SEAM_JOIN_20261103_R1/01_ALL_38_EXACT_JOIN_DISPOSITIONS.jsonl",
+        "blob": "3be0b7042752697c76038c5cadb2e4a6138008d2",
+        "count": 38
+      },
+      "W8N_orphans": {
+        "commit": "9b0b5f3aae6cb8fd77d257170c31be77511ca52e",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W8N_MATURITY_GAPS_20261103_R1/01_ORPHAN_STAGE_OWNER_EVIDENCE_DISPOSITIONS.jsonl",
+        "blob": "6e5bc439eaa7dc7ccb03d2b6f6da224b74f73065",
+        "count": 12
+      },
+      "W8N_requirements": {
+        "commit": "9b0b5f3aae6cb8fd77d257170c31be77511ca52e",
+        "path": "WORKER_RETURNS/PROGRAMMA_SOROK_W8N_MATURITY_GAPS_20261103_R1/03_NON_DUPLICATE_MISSING_REQUIREMENT_PROPOSALS.jsonl",
+        "blob": "70c21dd5aae9cca0a37ccf1fe4330aafe84fb449",
+        "count": 8
+      }
+    },
+    "crosswalk_file": "15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl",
+    "source_member_file": "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl",
+    "material_join_result": {
+      "full_equivalent_at_exact_cut": 0,
+      "scoped_subset": 9,
+      "separate_phase_or_claim": 14,
+      "negative": 7,
+      "owner_held": 7,
+      "source_unknown": 1,
+      "acceptance_dispositions": {
+        "ACCEPT_AT_SCOPE": 9,
+        "REFERENCE_ONLY": 14,
+        "REVISE": 7,
+        "HOLD": 8
+      },
+      "pending_original_w6c_seams": 38,
+      "caution": "An accepted subset is a reference to a sourcefree/cut-specific member; not all original owner/native/first-reader gates"
+    },
+    "scope_specific_reverse_unlock_law": "A newly qualified exact leaf can change its own member and a dependent next-action only if every other active same-target ALL_OF gate and required selected ANY_OF/IF member qualifies. Other unrelated negatives continue. A target output never gains ACCEPT from prerequisite readiness.",
+    "original_sources_preserved": "22 original E parent IDs and 22 D IDs remain; 144 functions and 290 exact GIT source locators unchanged; no new O-LIVE truth claim.",
+    "source_depth": {
+      "W6A_unread_at_base": 92,
+      "W7S_sampled_from_unread": 28,
+      "W8N_direct_new_reads": 16,
+      "still_indexed_unknown_depth": 48,
+      "arbitrary_tickets_created": 0
+    },
+    "owner_boundary": "No native Pyat grant, C4/Rule A/Rule T issuer or new sourcefree/new root acceptance; human trials and S14 operated rights remain held"
   }
 }
