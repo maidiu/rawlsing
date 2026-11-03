@@ -50,6 +50,7 @@ def main() -> int:
     parser.add_argument("--state", required=True)
     parser.add_argument("--disposition", required=True)
     parser.add_argument("--mode", choices=("start", "open"), default="start")
+    parser.add_argument("--perform", choices=("e2", "omit"), default="omit")
     parser.add_argument("--do-help", action="store_true")
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
@@ -62,7 +63,7 @@ def main() -> int:
     disposition = args.disposition
     if args.mode == "start":
         if disposition == "PERFORMED":
-            session = JoinedSession.start(state, perform="omit")
+            session = JoinedSession.start(state, perform=args.perform)
         else:
             session = RefusalSession.start(state, b_disposition=disposition)
     else:
@@ -92,6 +93,40 @@ def main() -> int:
         root_branch = store.branch("root")
         root_state = store.checkpoints("root")[-1]
         branch_state = store.checkpoints(branch_id)[-1]
+        episodes = [
+            dict(row) for row in session.episodes()
+        ]
+        store = product.store
+        perceptions = [
+            dict(row)
+            for row in store.perceptions(branch_id)
+            if row.get("actor_id") == "A"
+        ]
+        world_events = [
+            dict(row) for row in store.world_events(branch_id)
+        ]
+        a_action_episodes = [
+            row for row in episodes
+            if row.get("kind") == "DO"
+            and (row.get("body") or {}).get("action") == "material_inspect"
+        ]
+        a_evidence = {
+            "perform": args.perform if disposition == "PERFORMED" else None,
+            "a_action_episodes": a_action_episodes,
+            "a_perceptions": perceptions,
+            "world_events": world_events,
+            "gm01_source": {
+                key: source.get(key)
+                for key in (
+                    "a_e1_ref", "a_e1_hash", "a_e1_clock",
+                    "a_e2_ref", "a_e2_hash", "a_e2_performed",
+                    "b_event_ref", "b_event_hash", "b_performed",
+                    "material_feasible_after",
+                )
+            },
+            "event_clock": int(e1_event.get("time", 0)),
+            "branch_clock": store.last_clock(branch_id),
+        }
         bundle = {
             "schema": "SOROK_JOIN_E_S35_ENCOUNTER_BUNDLE@1",
             "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
@@ -108,6 +143,7 @@ def main() -> int:
             "actor_snapshot": actor_snapshot,
             "e1_event": e1_event,
             "e1_event_hash": e1_hash,
+            "a_evidence": a_evidence,
             "c8_state_digest": session.meta.get(
                 "j_c8_state_digest", session.meta.get("c8_state_digest")
             ),

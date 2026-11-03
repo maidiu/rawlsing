@@ -558,6 +558,9 @@ def evaluate_occurrence(
     perception_status: str = "ACCESSIBLE",
     action_kind: str = "REQUEST_TOOL",
     action_present: bool = True,
+    perception_receipt: Mapping[str, Any] | None = None,
+    action_receipt: Mapping[str, Any] | None = None,
+    qualified_owner_resolver: Any = None,
 ) -> dict:
     built = build_context(occurrence)
     context = built["context"]
@@ -570,11 +573,18 @@ def evaluate_occurrence(
         rule_content_hash=rule.rule_content_hash,
         subject=context.actor_id,
     )
-    perception = None
-    action = None
+    perception = (
+        dict(perception_receipt) if perception_receipt is not None else None
+    )
+    action = dict(action_receipt) if action_receipt is not None else None
     perception_gate = "MISSING"
     action_gate = "MISSING"
-    if controlled:
+    if perception is not None:
+        perception_gate = (
+            access.validate_a_local_perception(perception, context=context)
+            or "OK"
+        )
+    elif controlled:
         perception = access.make_a_local_perception_receipt(
             context=context,
             source_ref="TEST_ONLY_ADP017_ACCESS_S35_A_LOCAL_PERCEPTION",
@@ -595,32 +605,40 @@ def evaluate_occurrence(
             access.validate_a_local_perception(perception, context=context)
             or "OK"
         )
-        if action_present:
-            action = access.make_a_owned_action_receipt(
-                context=context,
-                source_ref="TEST_ONLY_A_ACTION_S35_A_OWNED",
-                action_ref="TEST_ONLY_OCCURRENCE_ACTION_" + action_kind,
-                action_kind=action_kind,
-                performed=True,
-                action_time=context.event_time,
-                content={
-                    "occurrence_clock": occurrence["event_clock"],
-                    "branch_clock": occurrence["branch_clock"],
-                    "clock_binding_hash": occurrence["clock_binding_hash"],
-                },
-                evidence_grade=S35_GRADE_CONTROLLED,
-                actual_actor_input=False,
-                qualification=S35_QUALIFICATION_CONTROLLED,
+    if action is not None:
+        action_gate = (
+            access.validate_a_owned_action(
+                action, context=context, perceived_at=context.event_time
             )
-            action_gate = (
-                access.validate_a_owned_action(
-                    action, context=context, perceived_at=context.event_time
-                )
-                or "OK"
+            or "OK"
+        )
+    elif controlled and action_present:
+        action = access.make_a_owned_action_receipt(
+            context=context,
+            source_ref="TEST_ONLY_A_ACTION_S35_A_OWNED",
+            action_ref="TEST_ONLY_OCCURRENCE_ACTION_" + action_kind,
+            action_kind=action_kind,
+            performed=True,
+            action_time=context.event_time,
+            content={
+                "occurrence_clock": occurrence["event_clock"],
+                "branch_clock": occurrence["branch_clock"],
+                "clock_binding_hash": occurrence["clock_binding_hash"],
+            },
+            evidence_grade=S35_GRADE_CONTROLLED,
+            actual_actor_input=False,
+            qualification=S35_QUALIFICATION_CONTROLLED,
+        )
+        action_gate = (
+            access.validate_a_owned_action(
+                action, context=context, perceived_at=context.event_time
             )
+            or "OK"
+        )
     request = S35ActorAccessRequest(
         perception_receipt=perception,
         action_receipt=action,
+        qualified_owner_resolver=qualified_owner_resolver,
     )
     evaluation = access.evaluate_actor_access_response(
         rule_lookup=lookup,
