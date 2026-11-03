@@ -1,5 +1,18 @@
 # G4 source intake, cut conflicts and decisions
 
+## POST-G4 L1/L2/L3 source intake and conflict resolution (2026-11-03)
+
+The original G4 14 staged G3 source-blobs and old source-cut contradictions below remain immutable. The later independent **documentary candidate returns** at [L1 e7ead127](https://github.com/maidiu/rawlsing/commit/e7ead127edbe83385e1a04e6e874de8a66fc5b39), [L2 2f91ef64](https://github.com/maidiu/rawlsing/commit/2f91ef644871ab3de35cdc1ca8a92af18a4310d4), [L3 a73bc57e](https://github.com/maidiu/rawlsing/commit/a73bc57e12949f27867abde7fe9f33fea3a58052) add scoped source identities without rewriting 892/782/150/82/62 or 49 GAP historical records. See [full versioned delta](POST_G4_DELTA_INTAKE.md).
+
+**Resolved physical/source-vs-authority conflicts:** (1) A42's three N11 physical files exist, verdict N11_NOT_READY, not source-native acceptance; (2) J42 84-view E04 same-source joined consumer exists, and later R06V-R4 independently accepts a distinct *sourcefree* R05→pinned P41 reader, not protected original N9/N10W; (3) J04 materializer exists on unmerged K04, but is missing at original PRE-MAIN 9809203 importer cut; (4) V548/V549 builder roots are **ddm_build_copy**, original native run science unknown; (5) 44 Long Memory duties conserved at historical level, not 44 live services; (6) eight W1-H source locks /164 typed unjoins are not file-loss counts; (7) R09V-R2 reviewer is **REVISE/HOLD**, preventing independent parent-observation promotion.
+
+**New cut separation:** receiving-control 9809203fd915a84bae056a67210e9213879840db and advertised protected semantic 1f47063c3205a45888b3c55e81e7485943ed1390 are different. R03 module blob 8e7fe00a3ed008361d9f3c501e7782b2de3a636e is present in control but 404 in semantic; R06 module is 404 in both. An isolated reviewed local TEST_ONLY candidate is neither protected adoption nor original35 science. R00E 41/41 behavioral positive keeps **REVISE** provenance, R09 positive C11 local case keeps forged parent-observation **REVISE/HOLD**. R53 stop, R56/R61/R91/R95 bounded grants, R60 Codex HQ and R87 secondary Browser HQ appointments retain chronological effect; none promotes actor/science/CI authority. Detailed effective states in [L2 R50–R95](https://github.com/maidiu/rawlsing/blob/2f91ef644871ab3de35cdc1ca8a92af18a4310d4/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R50_R95/LATEST_SCOPED_CURRENTNESS.md).
+
+**Receiver outcome:** candidate evidence overlaid in existing S01–S11 guide pages and small locator; earlier negative truth not back-edited; original acceptance and 49 owner leaves remain independent. No new tests, self-review or source/actor grants.
+
+---
+
+
 **Source lock:** prepared G4 branch b65d8f0eecb44f0d1b37eed82c913433a4224d1e; G2 complete 6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d; corrected continuation 18074503754ed30cf3966ae06354282c4425f6dc; G3-A 93c821e419b42918d98c71f87999735e786c92df; G3-B b2641c1944b247d5a510f0b4eae6421db077decd. G1-A 3ac2bfeca4c79ae794bb896483d79ab195307e92; G1-B 7ee67766503a13d2eae6441afda1a869b83a40e6; G1-C 5f46bbe3e9176724f79c85d9951cb864621706cd. Historical main 25830fe7462bb9e29bc4087e6ae14f3f84cec377; pinned current PRE-MAIN 9809203fd915a84bae056a67210e9213879840db. A newer live head is not silently adopted.
 
 ## Staged original identity proofs: 14/14 source files
