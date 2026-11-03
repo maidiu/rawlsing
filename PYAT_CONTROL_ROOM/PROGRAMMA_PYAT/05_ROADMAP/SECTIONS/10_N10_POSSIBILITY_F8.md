@@ -136,3 +136,8 @@ Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receivin
 ## HQ clean receiving/resume assembly — 2026-11-03
 
 Candidate `8779504a63` on `agent/pyat-current-receiving-r06-assembly-20261103-r1` starts from current980receiving rather than the oldR06base. Nine exact existing files preserve R03/R08/R05/R06 and restore independently accepted R04.joined; currentB5/M2lifecycle/release remain unchanged. 17R06cases passed oncleanbase, then8custody/actualconsumer/severancecases passed withresume restored. Focused same-distinct-reviewer composition check is running; oldacceptance reused, newcandidate not yetaccepted. Protected receiving/science/source/host grants unchanged. Exact trace in transition `PYAT-HQ-CLEAN-RECEIVING-RESUME-ASSEMBLY-20261103`.
+
+
+### Clean receiving assembly: scoped independent acceptance (2026-11-03)
+
+Candidate `8779504a638ff39d6904ed2faf5a718242084c4e`, review `e24b70eac51d0894c7e5af7604ab7afc2376dbe6`: eight focused tests passed. HQ accepts exact sourcefree compatibility, retained resume, and the actual consumer at their demonstrated separate-fixture scope. A single same-source release/unit joined trace remains unproved. No protected adoption or original science is claimed. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`.
