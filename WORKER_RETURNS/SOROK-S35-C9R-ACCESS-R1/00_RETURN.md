@@ -431,13 +431,13 @@ QUALIFIED_A_SOURCE_OWNER_RECEIPT
 
 ## 8. Publication
 
-Occurrence-consumer base `c5602ec87ba6e951540b89a49404db76c128eb50`, compatibility base `a6b1f10b37c0748b0b6880e1870a2c4f07844be9`, PROGRAMMA disposition `29aa0f9e81fe1f371f2773d4750e1838bdd63daf` and JOIN-E source commit `5e63672543973ce2533129e1ca3224d82af0dffc` remain recorded. The provenance repair for REVISE at `eb2255231df00393d33cc0223bc5d79320360f88` was committed as `d504231674fe02fb765502b0cb4e187d4a5e0560` and pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
+Actual-A evidence base `eb489dcaac4fb6362b8a3ed1d78d1f1654950563`, PROGRAMMA disposition `6fdebcdae4e524ebda929c613da13ccc0fde097a`, JOIN-E source `5e63672543973ce2533129e1ca3224d82af0dffc` and S39 A performer `6604f2d9` are recorded. The actual-A advance commit `535435006510eea740c21da97031a1b53d68c1fe` was pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
 
 ```text
 git rev-parse HEAD
-d504231674fe02fb765502b0cb4e187d4a5e0560
+535435006510eea740c21da97031a1b53d68c1fe
 git ls-remote origin refs/heads/codex/sorok-s35-c9r-access-r1
-d504231674fe02fb765502b0cb4e187d4a5e0560  refs/heads/codex/sorok-s35-c9r-access-r1
+535435006510eea740c21da97031a1b53d68c1fe  refs/heads/codex/sorok-s35-c9r-access-r1
 ```
 
-`PUBLICATION_RECEIPT.json` records that push, readback, exact first consumer, distinct-clock read, persisted provenance binding and the remaining full-pipeline incompatibility. The staged `.s35-sources` input and the extracted `.runtime` JOIN-E source were not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
+`PUBLICATION_RECEIPT.json` records that push, readback, exact first consumer, distinct-clock read, persisted provenance binding, the remaining full-pipeline incompatibility and the three exact actual-A source dependencies. The staged `.s35-sources` input and the extracted `.runtime` JOIN-E/S39 sources were not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
