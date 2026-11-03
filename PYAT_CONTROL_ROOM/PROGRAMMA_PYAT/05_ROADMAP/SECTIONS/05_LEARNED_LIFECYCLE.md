@@ -1,5 +1,64 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+**G4-P2 current developer view (GitHub S1, 2026-11-02):** The M1→M2→B5 I4 internal path exists; **PR605 merged bounded learned M2/B5 sourcefree repair**, not the original35 empirical family or real N9/I01K first receiver. Learned **M2** and historic V555 structural **M2** are distinct. No new tests, source-owner decision or independent acceptance in G4-P2. Original G2 evidence follows unchanged below.
+
+**Navigate:** [five child functions](#s05-five-required-learned-lifecycle-functions) · [actual call chain](#s05-same-cut-producer-to-receiver-chain) · [versions/negative](#s05-version-parity-and-preserved-decisions) · [next development](#s05-smallest-unfinished-work) · [inherited G2](#inherited-g2-draft-evidence-retained). Neighbors: [empirical F1–F4](04_F1_F4_EMPIRICAL.md) → [Field Forge when selected](06_FIELD_FORGE_F5.md) / [N9 served world](09_N9_WORLD.md) / [N10E](10_N10_POSSIBILITY_F8.md).
+
+## S05 — five required learned lifecycle functions
+
+**Architecture:** [Astra N3](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N3.md#L1) requires N2 when N3 is selected; it calls for actual family disposition, release, dependency registration and consumer dereference. [Whole learned L obligations](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/WHOLE_MACHINE_COMPLETION_R1/GLOBAL_WORK_REGISTER.md#L1). G3-A has **131 S05 asset/section memberships**, many topical/planned, not verified parity: [historical/current S05 ledger](https://github.com/maidiu/rawlsing/blob/93c821e419b42918d98c71f87999735e786c92df/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/ASSET_PARITY/SECTION_ASSET_UPDATES.md#L181). The original five child identities **S05.1–S05.5** are retained.
+
+| G2 child / specified output | Present exact code and historical counterpart | Actual receiving/import, scoped proof | Missing prerequisite / smallest viable development result |
+|---|---|---|---|
+| **`ROADMAP:S05.1` M1 per-family adjudication:** signed supported/rejected/unknown based on measured family evidence and specific rule | [M1AdjudicationInputBundle](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_empirical_adjudication.py#L558) and `adjudicate_learned_empirical`; older [V551 direct signed evidence atoms](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_atoms.py#L157) differ in output grain. | [I4 builds M1 bundle](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1165) then calls `adjudicate_learned_empirical` :1175 under `M01_M1_M2_B5` route; prior W1-B **30 sourcefree I4 tests**, no original35 measured family. | Qualified F1–F4 product, signed source/family rule, validator/negative and exact original issuer. Next: source-valid per-family `LearnedEmpiricalDisposition` actually consumed by M2. |
+| **`ROADMAP:S05.2` M2 immutable learned empirical release:** exact closure and version/currentness | [constitute_release](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_release.py#L791) demands exact `M2Repository`, subject/producer contract and **authority, dependency, determinant, replay, explanation** closures; `resolve_release_exact` :1024. Historical V551J packet certification is not this M2. | [I4 adapt_m1_disposition_to_m2](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1193) consumes M1 disposition internally. PR605 merged v1.1 local sourcefree release repair; actual native issuer/released family **UNVERIFIED**. | Original M1 disposition & five closure objects, owner-authenticated custody/consumer, current/replay scope. No rewrite of accepted PR605 API needed. |
+| **`ROADMAP:S05.3` B5 selection, invalidation and as-of:** deterministic chosen release with no-current, dependency and supersession evidence | [LearnedProductLifecycleExecutor](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py#L1457), a local append-only lifecycle; source says `LOCAL_UNAUTHENTICATED` at :1461–1465. PR605 adopted bounded code/blobs. | [I4 explicit lifecycle actions](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1201) stages/registers **only if actions explicitly requested**. No external issuer, OS-kill durability or actual N9 current/as-of first reader is proven. | Permissioned native selected M2 subject + exact selection/invalidation/refusal and receiving N9/I01 demand. Never use newest timestamp as CURRENT. |
+| **`ROADMAP:S05.4` I4 exact M01→M1→M2→B5 dereference at actual world reader** | [compose_learned_world](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1101) accepts `RouteBProductionResult`, M1 family rule, M2 repository, B5 executor; old [I01K saved-world candidate](https://github.com/maidiu/rawlsing/blob/a1dc59411faaee01b3acb1c4f08b2e6f09d56028/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py#L27). | Direct same-file calls :1165→:1175→:1193→:1198→:1203; W1-B tests import I4, **NO non-test N9/I01 same-version importer verified**. Historic I01K opens a **sourcefree** world session, not accepted present N9. | First real world consumer of exact source-qualified selected learned release, with source/review/currentness/negative/replay witness, not merely an I4 output object. |
+| **`ROADMAP:S05.5` integration/legacy reconciliation:** retain adopted and rejected versions honestly | PR605 merged `pre553_learned_product_release.py` + `pre553_learned_product_lifecycle.py` scoped; current [V555 structural M2](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m2_v555_atomic_route.py#L170) and historic [V555 mediation](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v555_life_course_mediation.py#L250) are different method contracts; older I01K is nonadopted. | **PR605 sourcefree accepted code** remains valid at its narrow ABI; G1-B `G1B-S34` says old `verify_m2_release_subject_exact` blocker fixed, but five-module I01K receiving still absent. | Formal version/payload/authority diff for modern M2/B5 vs old world consumer; add only compatible adapter and real reader. Do not upgrade old historical test negatives or self-accept. |
+
+## S05 — same-cut producer to receiver chain
+
+| Call/edge | Code witness at PRE-MAIN `9809203fd915a84bae056a67210e9213879840db` | Actual grade and boundary |
+|---|---|---|
+| RouteB fact → M1 | `compose_learned_world` requires `m01_result: RouteBProductionResult` and at :1165 calls `build_m1_bundle_from_m01`, at :1175 `adjudicate_learned_empirical`. | **PARTIAL / sourcefree harness**: actual function call, but no original issued source-native family or real external caller. `OBSV:G1B-S16`; `ASTRA:REQ:N2:N3` mandatory only within selected N3. |
+| M1 → M2 | `adapt_m1_disposition_to_m2(disposition, contract, repository)` at :1193; M2 release `constitute_release` checks five closures. | **PARTIAL**, exact internal call but no competent original M1 issuer or native released product. `OBSV:G1B-S17`. |
+| M2 → B5 | `adapt_m2_release_to_b5` at :1198 → `LearnedProductLifecycleSubject` :1199; `stage_release` only when actions selected at :1202. | **SOURCEFREE_SCOPED_ONLY** with PR605 merge, local unauthenticated; no automatic publication/current choice. `OBSV:G1B-S18`. |
+| B5/I4 → selected N9 or I01 | I4 returns `LearnedWorldCompositionResult`; historic I01K `open_world_session` is a separate synthetic/sourcefree branch. | **MISSING_PRODUCER_OR_READER** for real same-cut N9 first importer. Test import and a sourcefree saved world are **not** production use. `OBSV:G1B-S19,S34`. |
+
+Important **route alternate**: `DIRECT_PRODUCER` is a separately declared contract and currently returns blocked `DIRECT_ROUTE_REQUIRES_EXPLICIT_DIRECT_PRODUCER_INGRESS` at I4 :1134–1140; an unrelated lawful direct empirical F1/F2 query does **not** require invented learned family adjudication. `M1_M2_B5` can consume a genuinely preissued M1 disposition; `M01_M1_M2_B5` requires exact M01, registry and rule. No missing input causes automatic route switching.
+
+## S05 — version parity and preserved decisions
+
+- **Accepted scoped code:** [PR605 merged M2](https://github.com/maidiu/rawlsing/blob/fe3f5b4714b11015813537407f7eb4bbb6bc2c10/rawlsing_next/pre553_learned_product_release.py#L791) and [B5](https://github.com/maidiu/rawlsing/blob/fe3f5b4714b11015813537407f7eb4bbb6bc2c10/rawlsing_next/pre553_learned_product_lifecycle.py#L1457) are the same production blobs as pinned PRE-MAIN. [PR605 sourcefree receiving decision](https://github.com/maidiu/rawlsing/pull/605) records E6 independent review and accepted v1.1 fixture update, **not source-native, outside issuer, actor, N11/N12 or Sorok rights**. M2 source blob `1cb7692399aad8fb272c8c9ce956719527829007`; B5 `dadf2362f3195c28ebaf97655e28cdba72c04fb3`. `LearnedProductLifecycleExecutor` itself states local unauthenticated scope.
+- **Historical negatives do not disappear:** PR605 retains old E5 combined **179 PASS/14 FAIL** as a *prior* court (12 defect-presence checks plus 2 old setup fixtures), while separately qualifying modern sourcefree fixed tests; it does not report one universally green Rawlsing. Original historical accepted M2 28-case file preserved; active v1.1 early `RELEASE_UNAVAILABLE` no-mutation and later release behavior changed by accepted revision. No such tests rerun by this worker.
+- **Not equal by label:** [V555 M2 atomic route](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m2_v555_atomic_route.py#L170) / [life-course mediation](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v555_life_course_mediation.py#L250) represent a **structural** V555 stage. Present learned M2 is immutable learned empirical release/closure—not causal mediation. [V551J aggregate packets](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_packets.py#L1289) and [packet certification](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_certification.py#L367) are also narrower/historical, not a modern exact current release.
+- **Historical I01K is sourcefree and nonadopted:** [I01K candidate](https://github.com/maidiu/rawlsing/blob/a1dc59411faaee01b3acb1c4f08b2e6f09d56028/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py#L27) declares `LOCAL_UNAUTHENTICATED`, builds a synthetic selected-world session and uses saved artifacts; its five-module composition path has not been shown operating in pinned PRE-MAIN N9. Preserve the original historical branch for specific reuse, not replacement of PR605.
+
+## S05 — smallest unfinished work
+
+1. **Qualified empirical-family ingress:** original F1–F4 native fact and competent family-specific M1 validator, with explicit reject/unknown, signed permission and risk-set provenance. N2→N3 **MUST within N3**; `ASTRA:IF:N3:N4:3` and `ASTRA:IF:N3:N10E:2` remain conditional when those consumers require learned-family adjudication.
+2. **Bind real disposition to accepted immutable release:** subject-grain M2 with exact five closures, independent owner proof and version compatible with PR605. Failed or absent releases remain negatives, not silent reconstitution.
+3. **Register B5 exact native/current lifecycle:** explicit stage/register/publish/select/invalidate actions with authority/currentness, dependency roots, replay and NO_CURRENT. Sourcefree local atomicity is not external or kill-durable.
+4. **First real selected N9/I01 receiver:** compare current M2/B5 ABI with old I01K payload/version; add only exact compatible typed read, prove source-qualified selected release changes served-world state and carries negative/expiry. **NONE_VERIFIED now**.
+5. **Preserve route scope:** direct empirical facts may go directly to N10E/FF; learned disposition necessary only for selected learned family. Do not impose M1 as global N4 blocker or alias structural M2.
+
+**Proof ceiling:** G3-A 131 asset memberships and historic parity are candidate documentary; G3-B status is S1 + prior W1-B narrow sourcefree runs. No original source-native learned release, live user/product world, independent source science, actual N9 first reader or external issuer is certified. See [G3-B exact IDs](https://github.com/maidiu/rawlsing/blob/b2641c1944b247d5a510f0b4eae6421db077decd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/SEAMS_MATURITY/SCOPED_SEAM_STATES.jsonl#L1), [G3-A function parity](https://github.com/maidiu/rawlsing/blob/93c821e419b42918d98c71f87999735e786c92df/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/ASSET_PARITY/HISTORICAL_CURRENT_FUNCTION_PARITY.jsonl#L1).
+
+### S05 exact code/blob ledger
+
+| Exact cut | Symbol | Blob |
+|---|---|---|
+| PRE-MAIN `9809203fd915a84bae056a67210e9213879840db` | `pre553_learned_world_composition.py::compose_learned_world:1101` | `4a8e27a226a9c06606f5ba493d2cc7356d491a7b` |
+| PRE-MAIN `9809203fd915a84bae056a67210e9213879840db` | `pre553_learned_empirical_adjudication.py::M1AdjudicationInputBundle:558` | `761db5924639eacf1c7c8b78a209326c1c51e2c5` |
+| PRE-MAIN `9809203fd915a84bae056a67210e9213879840db` | `pre553_learned_product_release.py::constitute_release:791` | `1cb7692399aad8fb272c8c9ce956719527829007` |
+| PRE-MAIN `9809203fd915a84bae056a67210e9213879840db` | `pre553_learned_product_lifecycle.py::LearnedProductLifecycleExecutor:1457` | `dadf2362f3195c28ebaf97655e28cdba72c04fb3` |
+| Historic candidate `a1dc59411faaee01b3acb1c4f08b2e6f09d56028` | `pre553_i01_sourcefree_world_lifecycle_candidate.py::open_world_session` | `7899846394f079c14eae4864c8200697bd9dee4a` |
+
+---
+
+## Inherited G2 draft evidence (retained)
+
+
 **PASS 1 — complete rough structure; implementation and scientific maturity not adjudicated.** [Whole map](../README.md) · [cross-plan index](../CROSS_PLAN_IDS.md) · [typed seams](../PLANNED_INTERFACES.jsonl) · [input cuts](../INPUT_CUTS.md). Every forward link describes an intended function, not necessarily an operational endpoint.
 
 ## Purpose, inherited plan IDs and scope
@@ -63,120 +122,3 @@ Identify merged PR605 M2/B5 at its accepted code scope and I01 historical branch
 - **G1B-S34** B5 sourcefree local current → historic I01K full world overlay: **PARTIAL_COMPATIBILITY_NOT_CURRENT**; [source at pinned cut](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py); W1-G return found five historical modules required; current verify_m2_release_subject_exact old blocker corrected but full joined receiver absent.
 
 **Source of status:** [G1-A returned historical inventory](https://github.com/maidiu/rawlsing/blob/3ac2bfeca4c79ae794bb896483d79ab195307e92/WORKER_RETURNS/PROG5_G1_A_MAIN_HERITAGE_R1/00_RETURN.md); [G1-B exact current index](https://github.com/maidiu/rawlsing/blob/7ee67766503a13d2eae6441afda1a869b83a40e6/WORKER_RETURNS/PROG5_G1_B_CURRENT_OWNERS_R1/00_RETURN.md). G2 has not run underlying tests, original surveys or competent science admission; later GitHub asset attachment and actual seam sweep remain distinct.
-
-
-
----
-
-## G4 source-backed construction — frozen current/historical evidence and real unfinished work
-
-**Status:** PARTIAL for ROADMAP:S05; this is documentary assembly, **not original35 native approval, source science or a new test run**. Current source cut `9809203fd915a84bae056a67210e9213879840db`; legacy `25830fe7462bb9e29bc4087e6ae14f3f84cec377`; G3-A `93c821e419b42918d98c71f87999735e786c92df` and G3-B `b2641c1944b247d5a510f0b4eae6421db077decd` (staged with exact blob identity).
-**Evidence grain:** 131 source-row/section memberships (131 distinct assets), 5 individually scoped child functions, 6 primary seam records, 0 cross-cut comparisons. A path/name match is not functional equivalence. [All 892 source rows](../G3_CANDIDATES/ASSET_PARITY/SOURCE_ASSET_ATTACHMENTS.jsonl) · [150 parity records](../FUNCTION_PARITY.jsonl) · [82 seams](../CURRENT_SEAM_STATES.jsonl) · [62 status capsules](../COMPONENT_STATUS.jsonl) · [49 material gaps](../REMAINING_REAL_PYAT_WORK.md).
-
-### Current completion per named child and smallest missing witness
-
-| G2 child | Source-backed current code / candidate | Actual receiver or missing reader | State, proof ceiling and minimum next witness |
-|---|---|---|---|
-| `ROADMAP:S05.1` S05.1 — Per-family M1 substantive adjudication | pre553_learned_empirical_adjudication.py::adjudicate_learned_empirical | pre553_learned_world_composition.py::compose_learned_world:1175 | **PARTIAL**; STATIC_CODE_OR_PRIOR_SOURCEFREE_ONLY. M01→M1 typed test route; signed per-family original empirical science disposition needed |
-| `ROADMAP:S05.2` S05.2 — M2 immutable empirical release | pre553_learned_product_release.py::constitute_release | pre553_learned_world_composition.py::adapt_m1_disposition_to_m2:1193 | **SOURCEFREE_SCOPED_ONLY**; STATIC_CODE_OR_PRIOR_SOURCEFREE_ONLY. PR605 present scoped learned M2; do not alias with V555 structural M2; need native family product |
-| `ROADMAP:S05.3` S05.3 — B5 selection and invalidation | pre553_learned_product_lifecycle.py::LearnedProductLifecycleExecutor | pre553_learned_world_composition.py::stage_release:1203 (explicit actions only) | **SOURCEFREE_SCOPED_ONLY**; STATIC_CODE_OR_PRIOR_SOURCEFREE_ONLY. Sourcefree currentness/invalidations accepted limited PR605; real current/as-of selected world receiver absent |
-| `ROADMAP:S05.4` S05.4 — I4 exact dereference / real consumers | pre553_learned_world_composition.py::compose_learned_world:1101 | tests/test_pre553_learned_world_composition.py; no non-test N9/I01 importer | **MISSING_PRODUCER_OR_READER**; STATIC_CODE_OR_PRIOR_SOURCEFREE_ONLY. Build exact permitted N9/I01 first reader of released B5 selected learned product, preserving source/reviewer restrictions |
-| `ROADMAP:S05.5` S05.5 — Integration and historical candidates | pre553_learned_product_release.py; pre553_learned_product_lifecycle.py [PR605] | historical I01K five modules not adopted at PRE-MAIN | **PARTIAL**; STATIC_CODE_OR_PRIOR_SOURCEFREE_ONLY. Reconcile accepted new M2/B5 ABI and historical I01K overlay; retain old blocker fixed at scoped cut |
-
-### Original G2 interfaces and observed producer → consumer seams at this organ
-
-The original G2 edge kind, condition, direction and required artifact remain requirements; the observed status is separate. `IF` applies only when its predicate is proven true for a selected scope. `OBSV:` records are observations and never implicit Astra requirements.
-
-| Edge ID · original kind/predicate | Required producer → consumer | Actual source/first reader | G3-B scoped state, hold and evidence |
-|---|---|---|---|
-| `ASTRA:IF:N3:N4:3` · **IF** (Selected product family requires learned adjudication/release.) | PYAT:ASTRA:N3 → PYAT:ASTRA:N4; artifact: qualified upstream product only where predicate applies | pre553_learned_world_composition.py::compose_learned_world:1101 → NO_SELECTED_ORIGINAL35_FIRST_RECEIVER_VERIFIED | **PARTIAL** · [pre553_learned_world_composition.py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py); If learned family selected, signed M1/M2/B5 and actual reader |
-| `ASTRA:IF:N3:N10E:2` · **IF** (Family release/adjudication obligations apply.) | PYAT:ASTRA:N3 → PYAT:ASTRA:N10E; artifact: qualified upstream product only where predicate applies | pre553_learned_world_composition.py::compose_learned_world:1101 → NO_SELECTED_ORIGINAL35_FIRST_RECEIVER_VERIFIED | **PARTIAL** · [pre553_learned_world_composition.py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py); Only when learned adjudication applies: signed versioned M2/B5 and reader |
-| `OBSV:G1B-S16` · **OBSERVED_OR_REPORTED_PRODUCER_RECEIVER__DOES_NOT_ADD_ASTRA_REQUIRED_EDGE** (GitHub S1 source/metadata plus prior S2 return at exact cut) | Route B empirical output → M1 scientific family adjudication; artifact: M01 exact fact/discovery/authority bundle | RouteBProductionResult → build_m1_bundle_from_m01:1165 / adjudicate_learned_empirical:1175 | **PARTIAL** · [pre553_learned_world_composition.py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py); Original qualified family rule and independent actual learned consumer |
-| `OBSV:G1B-S17` · **OBSERVED_OR_REPORTED_PRODUCER_RECEIVER__DOES_NOT_ADD_ASTRA_REQUIRED_EDGE** (GitHub S1 source/metadata plus prior S2 return at exact cut) | M1 decision → M2 exact release; artifact: LearnedEmpiricalDisposition | adjudicate_learned_empirical:1175 → adapt_m1_disposition_to_m2:1193 | **PARTIAL** · [pre553_learned_world_composition.py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py); Signed per-family M1 decision and source-valid M2 use |
-| `OBSV:G1B-S18` · **OBSERVED_OR_REPORTED_PRODUCER_RECEIVER__DOES_NOT_ADD_ASTRA_REQUIRED_EDGE** (GitHub S1 source/metadata plus prior S2 return at exact cut) | M2 release → B5 lifecycle; artifact: immutable M2 release product | constitute_release / M2 exact repository → LearnedProductLifecycleExecutor:1201-1205 | **SOURCEFREE_SCOPED_ONLY** · [pre553_learned_product_release.py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_release.py); Native M2/B5 admissible data/owner and separate current/as-of world use |
-| `OBSV:G1B-S19` · **OBSERVED_OR_REPORTED_PRODUCER_RECEIVER__DOES_NOT_ADD_ASTRA_REQUIRED_EDGE** (GitHub S1 source/metadata plus prior S2 return at exact cut) | M1/M2/B5 I4 → actual learned world consumer; artifact: LearnedWorldCompositionResult receipt | compose_learned_world:1101 → NONE_VERIFIED non-test N9/I01 reader | **MISSING_PRODUCER_OR_READER** · [pre553_learned_world_composition.py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py); First real I01/N9 receiver and source-licensed family products |
-
-### Historical/current code attachment and parity, with negative preservation
-
-G3-A source-linked rows follow. These are not a blanket code-adoption or test report. Their 150 machine-readable source records carry the full function contract and negative.
-#### G3-A detailed function-to-source attachments — Learned M1/M2/B5/I4
-
-[G2 section at frozen cut](https://github.com/maidiu/rawlsing/blob/6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md); 131 source row/section memberships (some topical or planned only).
-
-**Meaningful current/historic distinction:** Learned M2/B5 PR605 code is current scoped sourcefree, whereas legacy V555 structural M2 is different. Exact N9 first reader remains open.
-
-**Required exact next bridge:** Obtain adjudicated M1 family methods and signed release/selected B5 state; show I4 actual N9 demand consumer.
-
-##### All 5 child obligations — pinned assets and scoped proof ceiling
-
-| G2 child | Principal code/source at exact cuts | Source meaning and missing same-scope proof |
-|---|---|---|
-| `ROADMAP:S05.1` Per-family M1 substantive adjudication | [G1B-F-D-042](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_empirical_adjudication.py#L558) · [G1B-F-W1B-013](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m1_temporal_v554_admission_dedup.py#L291) · [G1B-CUR-pre553_diagnostics_py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_diagnostics.py#L90) · [G1A-HIST-012](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_atoms.py#L157) | **Not native-proven.** Competent claims about empirical families, exact measured evidence and signed accepted/rejected/unknown; not all q facts require a learned-family product. Released source-indexed claim products a… |
-| `ROADMAP:S05.2` M2 immutable empirical release | [G1B-F-W1B-015](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_release.py) · [G1B-CUR-pre553_j_role_certification_py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_j_role_certification.py#L117) · [G1A-HIST-009](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_packets.py#L1289) · [G1A-HIST-011](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_certification.py#L367) | **Not native-proven.** Released source-indexed claim products and version identity, rejection/pending/alternative, source/authority and denominator preservation; do not alias with original V555 structural mediation M2.… |
-| `ROADMAP:S05.3` B5 selection and invalidation | [G1B-F-W1B-016](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py) · [G1B-CUR-pre553_legacy_compat_py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_legacy_compat.py#L39) · [G1B-F-W1B-014](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m2_v555_atomic_route.py#L170) · [G1A-PLAN-LM39](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/CORPUS/ORIGINAL/9cc69780e8ec__39_LONG_MEMORY_INHERITANCE_AND_CURRENT_MACHINE_ZERO_LOSS_DELTA_RECONCILIATION_AUTHORITY.md) | **Not native-proven.** Permissioned current/historical/as-of binding, dependency roots, correct supersession and negative states; newest file/timestamp does not automatically win. Retrieve M01→M1→M2→B5 at demanded cons… |
-| `ROADMAP:S05.4` I4 exact dereference / real consumers | [G1B-F-W1B-017](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py) · [G1B-CUR-pre553_runtime_composition_py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_runtime_composition.py#L21) · [G1A-VARIANT-I01_WORLD_LIFECYCLE](https://github.com/maidiu/rawlsing/blob/a1dc59411faaee01b3acb1c4f08b2e6f09d56028/rawlsing_next/pre553_i01_sourcefree_world_lifecycle_candidate.py#L27) · [G1B-S19](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py) | **Not native-proven.** Retrieve M01→M1→M2→B5 at demanded consumer with source/reviewer limits, empty/weak evidence and declared replay grade. Sourcefree B5/M2 API compatibility does not prove full original-world I01 cu… |
-| `ROADMAP:S05.5` Integration and historical candidates | [G1A-HIST-023](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v555_life_course_mediation.py#L250) · [G1B-F-W1B-014](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m2_v555_atomic_route.py#L170) · [G1B-F-W1B-016](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py) · [G1B-CUR-pre553_v556_positive_substrate_py](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_v556_positive_substrate.py#L304) | **Not native-proven.** Identify merged PR605 M2/B5 at its accepted code scope and I01 historical branch alternative/partially linked receiver, not a live N9 product or universal validation. Input: Qualified F1–F4 empir… |
-
-##### Historical/current functions at this organ (all historical function ledger IDs)
-
-| Function | Frozen historic code | Current possible successor | Exact parity finding |
-|---|---|---|---|
-| `G1A-FUNC-009` V551J_JOINT_PACKET_COMPONENTS | [build_v551j_joint_component_index](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_packets.py#L1289) | [current candidate](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_component_authority_vector.py) | **PARTIAL_ANALOG:** Current component authority vector controls scientific claim components; old V551J packet component index is an aggregate joint-evidence packet, different payload and prerequisites. |
-| `G1A-FUNC-010` V551J_CERTIFICATION | [build_v551j_certified_packet_index](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551j_certification.py#L367) | [current candidate](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_j_role_certification.py) | **PARTIAL_ANALOG:** Current J-family role certification admits controlled roles; old V551J certification audited packet status and join keys. Role authority is not historic packet equivalence. |
-| `G1A-FUNC-011` V551_DIRECT_SIGNED_ATOMS | [build_v551_relation_evidence_atoms](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v551_atoms.py#L157) | [current candidate](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_empirical_adjudication.py) | **PARTIAL_ANALOG:** Current M1 requires adjudication bundles with governed refs; old V551 signed relation atoms and directional distributions were a distinct emitted evidence grain. |
-
-##### Current concrete G1-B function locators (every B function assigned once)
-
-| G1-B ID | Actual current / pending symbol and source | Previous proof and remaining hold |
-|---|---|---|
-| `G1B-F-W1B-013` | [evaluate_m1_temporal_v554_admission_dedup](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m1_temporal_v554_admission_dedup.py#L291) | **CURRENT_INTEGRATED_TEST_ONLY**; production route consumer; concrete family rule authority; actual analytic product |
-| `G1B-F-W1B-014` | [evaluate_m2_v555_atomic_route](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/m2_v555_atomic_route.py#L170) | **CURRENT_INTEGRATED_TEST_ONLY**; production route consumer; concrete M2 product; real family rule; M2 module types/helpers are imported by M3/M4/V556 but exact eva |
-| `G1B-F-W1B-015` | [constitute_release / resolve_release_exact](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_release.py#L791) | **CURRENT_INTEGRATED_SOURCEFREE**; production consumer; owner-authenticated custody; real accepted M2 artifact |
-| `G1B-F-W1B-016` | [LearnedProductLifecycleExecutor](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_lifecycle.py#L1457) | **CURRENT_INTEGRATED_SOURCEFREE**; production consumer; real current selection; whole-world dependency closure |
-| `G1B-F-W1B-017` | [compose_learned_world](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_world_composition.py#L1101) | **CURRENT_INTEGRATED_TEST_ONLY**; production world consumer; actual M01/M1/M2/B5 chain; real source-derived products |
-| `G1B-F-D-014` | [M1FamilyRuleBinding](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_empirical_adjudication.py#L335) | **CODE_PRESENT_ONLY**; Original35 issuer/native operation/real first consumer not established where not independently evidenced. |
-| `G1B-F-D-017` | [constitute_release](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_release.py#L791) | **CODE_PRESENT_ONLY**; Original35 issuer/native operation/real first consumer not established where not independently evidenced. |
-| `G1B-F-D-018` | [resolve_release_exact](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_product_release.py#L1024) | **CODE_PRESENT_ONLY**; Original35 issuer/native operation/real first consumer not established where not independently evidenced. |
-| `G1B-F-D-042` | [M1AdjudicationInputBundle](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_learned_empirical_adjudication.py#L558) | **CODE_PRESENT_ONLY**; Original35 issuer/native operation/real first consumer not established where not independently evidenced. |
-
-**Do not promote:** prior W1/G1 sourcefree tests/consumer reports are inherited at their original source cuts; no new G3 run, current native issuance, or scientific/human/actor authority.
-
-
-
-### Exact next work for this section (not launched commissions)
-
-#### M1/M2/B5 learned currentness (4 separate tasks)
-
-### GAP-021 — Original M1 family-specific scientific adjudication
-
-- **Evidence / affected function-edge IDs:** `S05.1; G1B-S16`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
-- **Owner/lane:** learned science owner.
-- **Actual missing cell:** Accepted/declined/unknown per actual source native family without forcing all direct facts through M1.
-- **Smallest credible completion witness:** Signed exact M1 disposition with source/reviewer scope.
-
-### GAP-022 — M2 source-valid immutable empirical release
-
-- **Evidence / affected function-edge IDs:** `S05.2; G1B-S17,S18`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
-- **Owner/lane:** M2 product owner.
-- **Actual missing cell:** Populate existing PR605 M2 repository with actual M1 source-qualified products; distinguish V555 structural M2.
-- **Smallest credible completion witness:** Native exact released product and current version provenance, no API rewrite.
-
-### GAP-023 — B5 lifecycle current/as-of native selection
-
-- **Evidence / affected function-edge IDs:** `S05.3; G1B-S18,S34`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
-- **Owner/lane:** B5 owner.
-- **Actual missing cell:** Existing PR605 scoped selector/invalidation needs actual selected source and actor-independent application use.
-- **Smallest credible completion witness:** Current/historical dependency root and authorized exact selection/refusal receipt.
-
-### GAP-024 — I4 world-consuming first reader; old I01K compatibility
-
-- **Evidence / affected function-edge IDs:** `S05.4–S05.5; G1B-S19,S34`. G2 section `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/05_LEARNED_LIFECYCLE.md` at `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; scoped status in this G3-B 82/62 row set.
-- **Owner/lane:** engineering/receiver.
-- **Actual missing cell:** Use I4 typed M1→M2→B5 under explicit actions; locate actual N9/I01 reader; compare historical I01K five-module ABI.
-- **Smallest credible completion witness:** Non-test same-version selected learned product read, historical candidate not auto-adopted.
-
-
-
-### Developer navigation and return to whole plan
-
-Start with the [asset locator](../ASSET_LOCATOR.md), [full gaps](../REMAINING_REAL_PYAT_WORK.md), [recursive prerequisites](../PREREQUISITES_AND_UNLOCKS.md), [source conflicts](../G4_SOURCE_INTAKE_AND_CONFLICTS.md) and [whole roadmap](../README.md). Related Pyat/Sorok boundaries are references, not adoption.

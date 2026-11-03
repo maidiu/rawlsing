@@ -8,14 +8,74 @@
 ### S10.1 N10E genuine computed empirical slices
 Query actual conditional/heterogeneity/minority evidence, not caller-injected fixture arrays. N2/N4/N3 prerequisites apply only where corresponding analytical and learned family outputs demanded.
 
+
+#### G4-P4 function evidence — S10.1
+
+| Exact PRE-MAIN code and first internal receiver at 9809203fd915a84bae056a67210e9213879840db | Earlier alternative at 25830fe7462bb9e29bc4087e6ae14f3f84cec377 | Original requirement, proof and gap |
+| --- | --- | --- |
+| [compose_positioned_subject_possibility:1008](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_analytical_composition.py#L1008) is called by [provide_empirical_possibility_slice:531; call:574](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_empirical_possibility_provider.py#L531) with repository/query/predicate, authority registry, release refs, query, rule and condition witness. Public signature excludes caller-injected handwritten authoritative slices (see line 123). Sourcefree **actual same-cut producer→provider call**. | [V550 shared-respondent substrate](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py) historical joint-person capability; G3-A NO_CURRENT_MATCH_VERIFIED for general same-respondent cloud, not an alias of provider. | [Astra N10E](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10E.md) demands computed governed exact conditional/heterogeneity slices. G3-B **SOURCEFREE_SCOPED_ONLY**, G1B-S13, GAP-042. Original35 source-native eligible measurement/denominators, actual non-test first receiver and selected permission are unproved. |
+
+**Conditional inputs:** ASTRA:IF:N2:N10E **if** analytical composition not otherwise established; ASTRA:IF:N4:N10E **if** competent retained empirical inputs unavailable; ASTRA:IF:N3:N10E **if** family release/adjudication applies. These are conditional alternatives to redundant rebuilding, not license to omit required exact input/permission. Preserve valid empty, unsupported/proxy, minority and negative evidence as typed evidence states.
+
+**Next leaf:** empirical/source owner binds real original-source universe, item universe/routing/weights/denominator and scientific permissions; engineer proves actual computed N10E result from source-authorized product and first downstream use. Existing sourcefree provider remains reusable at its exact contract, not an original issuer. **Grade:** direct current code+call S1, prior W1-B sourcefree reported only, no new tests/native runs.
+
+
 ### S10.2 N9 AND N10E parent gate
 Astra defines N10W requiring BOTH N9 world and N10E computed slice, not OR. Future first real reader must prove source-driven alteration of positioned possibility under actual world conditions.
+
+
+#### G4-P4 function evidence — S10.2
+
+| Exact PRE-MAIN candidate / receiver at 9809203fd915a84bae056a67210e9213879840db | Historical support | MUST gate, current seam and next work |
+| --- | --- | --- |
+| [run_progressive_chain:466](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_n9_n10w_progressive_candidate.py#L466) defaults to build_synthetic_world and [synthetic_world_rows:120](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_n9_n10w_progressive_candidate.py#L120); test fixtures imported at lines 68–69. No non-test receiver independently imports/consumes both a selected authoritative N9 world **and** a source-qualified N10E slice in one operation. | [V554 seed readiness](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v554_seed_contract.py#L897) and [V558 input gate](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_runtime_input_gate.py#L164) are historical boundary supports, not current N9×N10E joined use. | [Astra N10W](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md) **requires ASTRA:REQ:N9:N10W AND ASTRA:REQ:N10E:N10W**, both G3-B **MISSING_PRODUCER_OR_READER**; S-POSS and G1B-S15/S28; GAP-043. |
+
+**True joint receiver contract:** chosen N9 release/current-or-as-of resolver, its source/structural permission and world determinant identity **AND** N10E generated conditioned-slice ref, compatible universe/time/version/subject-position/context, selected F8 rule and lawful use. A fall-back to an earlier source-valid retained product is **OR** a newly computed same-family product only where custody/version permits; neither input can substitute for the other. No actor semantics derive from the join.
+
+**Next leaf:** engineering/consumer owner shows one version-locked real N10W call importing both admitted artifacts, a world determinant mutation changing the positioned possibilities, a negative/refusal and exact first consumer. N9 prerequisite is worked in [S09](09_N9_WORLD.md); first native F slices in [S04](04_F1_F4_EMPIRICAL.md) and source in [S01](01_SOURCE_GOVERNANCE.md). **Grade:** current fixture code direct S1; no real integrated N10W proven, no run in this task.
+
 
 ### S10.3 Progressive alternatives and limits
 Condition on material position/opportunity/relations, preserve minority, contradictions, uncertainty, changed history, provenance; no claim of personal destiny or scripted psychological character.
 
+
+#### G4-P4 function evidence — S10.3
+
+| Exact PRE-MAIN code/read version at 9809203fd915a84bae056a67210e9213879840db | Historical function / spec | Scoped grade and limits |
+| --- | --- | --- |
+| [run_progressive_chain:466](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_n9_n10w_progressive_candidate.py#L466) with run_single_conditioner_step, run_joint_conditioner_step and three evaluations: fixture source has **58 synthetic rows** and denominator progression **32→16→8**; W1-B reported **18 fixture tests**. [evaluate_positioned_subject_possibility:417](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/source_backed_positioned_subject_possibility.py#L417) returns exact/proxy/valid-empty/closed states under rule. | [build_v555_life_course_mediation:250](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v555_life_course_mediation.py#L250) historic household/mediation slots, not a real person's biography; [build_v556_pressureflow_attractor:124](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v556_pressureflow.py#L124) is bounded pressures, not destiny. | [Astra N10W](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md) calls for progressive, position-dependent alternatives and uncertainty. G3-B **PARTIAL**, G1B-S14 **PARTIAL** and G1B-S15 **MISSING**, GAP-044. Prior test report is sourcefree fixture; original native N9/N10W and selected model use held. |
+
+**Functional prerequisites (only when present in the proposed service):** additional lawful condition fields, comparable retained N10E slices, selected N9 context version, contrary/minority mass, uncovered sparse cells, uncertainty, refusal and walkback receipts. Conditioners are explicit additional **AND** requirements for the particular step, not a universal requirement that every world family/parent configuration exists. Preserve independent alternative trajectories and source-supported changes of circumstance; do not collapse an empirical conditional distribution into a single predicted character, scripted parenthood or actor behavior.
+
+**Next leaf:** science owner specifies justified joint/minority and uncertainty interpretation for the exact source; engineer validates condition-by-condition retained alternatives and negative/walkback with admitted source data and a genuine N10W first reader. **Grade:** direct fixture and evaluator code S1, prior W1-B report only; native and human-use validation UNKNOWN.
+
+
 ### S10.4 Actor and fixture firewall
 G0a sourcefree developer candidate is not G0b selected model/use issuer; Sorok dyad/actor rights remain separate. E03 58 synthetic respondent rows and 32→16→8 are bounded fixture evidence, not native live world.
+
+
+#### G4-P4 function evidence — S10.4
+
+| Current scope-bound code at 9809203fd915a84bae056a67210e9213879840db | Earlier supporting boundary | Governance, receiver and gap |
+| --- | --- | --- |
+| [bind_service_applicability_to_f8_scope:644](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_service_f8_source_scope_binding.py#L644) builds an **unranked admitted-source set only**; [evaluate_bound_positioned_subject_possibility:927](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_service_f8_source_scope_binding.py#L927) reauthenticates request/receipt/rule then calls [evaluate_positioned_subject_possibility:417](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/source_backed_positioned_subject_possibility.py#L417) at binder line 994. Real static sourcefree F8 evaluation path, no self-issued model/actor permission. | [V557 renderer boundary](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v557_renderer_contract.py#L142) / [V558+ governance](https://github.com/maidiu/rawlsing/blob/25830fe7462bb9e29bc4087e6ae14f3f84cec377/data/ddm_build_copy/ddm_v558_plus_governance.py#L843) preserve historic forbiddance, but no Sorok actor grant and no direct PRE-MAIN adoption inferred. | [Astra N10W](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10W.md) and F8 selected-use scope require G0b permission; G3-B **HELD_OWNER_OR_SCIENCE**, G1B-S32 **PARTIAL**, GAP-045. G0a sourcefree implementation ≠ competent G0b model/rule/use issuer. |
+
+**HARD firewall:** exact original-source rights, source-binding, model rule, applicability and chosen context **AND** scientific use acceptance precede an authoritative F8 inference. Independently, Sorok owner grants any actor/player/dyad receiving use; Pyat output is external evidence, not person/agent semantics. E03's 58 synthetic rows and a bounded binder do not prove a selected served-world flow or autonomous actor.
+
+**Next leaf:** F8 scientific/model-use owner issues scoped use/limits or holds; Sorok separately decides actor interface; engineer connects the admitted real N9×N10E service with exact refusal, source-coverage and no-destiny semantics. **Grade:** code inspect S1, G3-B assessment candidate, no new review/source native.
+
+
+
+## G4-P4 material maturity, dependency edges and reader law
+
+| Child | G3-B scoped grade | Applicable edge/current receiver | Unresolved leaf |
+| --- | --- | --- | --- |
+| S10.1 | SOURCEFREE_SCOPED_ONLY | G1B-S13 direct composer→provider; N2/N4/N3 conditional | GAP-042 source-native computed N10E |
+| S10.2 | MISSING_PRODUCER_OR_READER | ASTRA:REQ:N9:N10W **AND** ASTRA:REQ:N10E:N10W, G1B-S28 | GAP-043 first genuine joint world-conditioned reader |
+| S10.3 | PARTIAL | G1B-S14 fixture; G1B-S15 absent non-test consumer | GAP-044 future alternatives, uncertainty, walkback |
+| S10.4 | HELD_OWNER_OR_SCIENCE | G1B-S32 partial bounded evaluator | GAP-045 lawful G0b selected use; independent Sorok actor boundary |
+
+**Cuts / proof floor:** G2 guide 6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d, prepared b65d8f0eecb44f0d1b37eed82c913433a4224d1e; historical parity G3-A 93c821e419b42918d98c71f87999735e786c92df; scoped seam/capsules G3-B b2641c1944b247d5a510f0b4eae6421db077decd. Executable PRE-MAIN source **read only** at 9809203fd915a84bae056a67210e9213879840db; historical main 25830fe7462bb9e29bc4087e6ae14f3f84cec377. No tests/CI/new owner or native review. G3-B statuses are source-limited assessments, **not** an N10W adoption or science decision. Previous sourcefree reported tests are not original respondent measurement.
 
 ## Inputs, downstream and proof ceiling
 Inputs: real qualified N9 **AND** computed N10E, competent source/science/model-use. Output: selected F8 material possibility under conditions, or typed refusal. **UNKNOWN:** native N9×N10E real joined receiver, actor authority held.
