@@ -1,3 +1,19 @@
+# W8-R FINAL RECEIVING HANDOFF — GUIDED COLD USE, NOT SELF-ACCEPTANCE
+
+**Receiving source cuts pinned:** W8-F guide `097d46c47b6e41ff93a427e54646195892644cde`; W8-J 38 exact source/join dispositions `b78528a314aa26f6167d34e3e6a8bb045ae6ebdc`; W8-N 12 orphan / 8 non-gating requirements / 16 direct reads `9b0b5f3aae6cb8fd77d257170c31be77511ca52e`; W7-I original frozen `db134dc7c705bff62e0570b30ce24052cf06308d`. W8-J has disclosed prior W7-I authorship in its own conversation; W8-N has disclosed earlier W6-B/D authorship. Their findings are admissible *source-qualified candidates*, not independent approval.
+
+**Conserved:** 290 original `GIT-` source identities (304 total locators), 144 original function rows in unmodified `09`, 100 original W1 rows in unmodified `12`, 22 original E + 22 D anchors, 119 inherited nested functions, 97 original leaves, 77 original gates, 230 original relations, 39 original work packages. W8-F baseline has 127 leaves / 83 gates / 268 relations and eleven owner-action records. W8-R adds **zero** active gates, original functions, native tests or new work packages; its eight `W8N-RQ` stages are explicitly non-gating source-qualified proposals.
+
+**Source-depth change:** 92 originally indexed-unread at W6-A → W7-S direct-sampled 28 → W8-N newly read 16 distinct original IDs → 48 still INDEXED_UNKNOWN_DEPTH. The 16 direct reads and exact original blobs appear in `07.w8r_selected_source_depth`; original source paths and IDs remain immutable. No claim that 48 unseen items lack relevant content or constitute 48 tasks.
+
+**The seam result is not a success percentage:** all 38 W6-C IDs are present in `15`, 0 full stage/member/version/root/reader/owner equivalent joins, 9 selected sourcefree-grade member uses (`ACCEPT_AT_SCOPE`), 14 contextual unrelated phase claims (`REFERENCE_ONLY`), 7 independently evidenced negatives (`REVISE`) and 8 owner/source unknown (`HOLD`). Every full JOIN remains pending; no discovery-by-name or altered original reviewer scope.
+
+**Consequence:** an unfamiliar W8-V reviewer should reproduce the twelve real work-now queries from `10` / receiving `03`, verify each **first action, actual first reader or missing importer, issuer, claim grade, independent parallel and held member**, and check after one hypothetical receipt that only exact downstream stage(s) change. Focus especially sourcefree B→C9→later E2, 598d/c784/F2 against old 7bf, false NO_CHANGE, curated Gate0–3 versus generated Gate4/human Gate5, D002 scenarios not test execution, S10 specification independence, S14 operated rights, and original M25/M29 reuse ceiling. W8-V may return acceptance **only of guide cold use** at selected documentary scope, not original product/science/native/human adoption.
+
+**Stop rule:** this is one finite receiving candidate, not a new scientific/build program. No PRE-MAIN/HQ/controller/O-LIVE or worker dispatch. Existing owner and Code first-consumer queues remain ordinary Sorok/Pyat work. If independent W8-V finds a concrete falsifier, revise only the affected old guide records; otherwise ordinary source-specific maintenance suffices.
+
+---
+
 # W8-F RECEIVING CORRECTION — SOURCE / STAGE / AUTHORITY HANDOFF
 
 **Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
