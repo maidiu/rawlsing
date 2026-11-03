@@ -121,6 +121,9 @@ def test_independent_negative_exact_cut_preserves_unrelated_join_acceptance(tmp_
     assert d["E021@VERIFY"]["receipts"][0]["kind"] == "SCOPED_REVIEW"
     assert d["C12@VERIFY"]["receipts"][0]["kind"] == "REVIEW_REVISE"
     assert d["C12@VERIFY"]["receipts"][0]["source_cut"] == ad.REVIEW_RRIF_SUBJECT
+    assert s["scoped_transition_states"]["JOIN_C12_HOLD"][ad.REVIEW_RRIF_SUBJECT]["C12@VERIFY"]["review"] == "REVIEW_REVISE_MATERIAL_AT_EXACT_CUT"
+    assert s["scoped_transition_states"]["JOIN_E_7BF"][ad.JOIN_E_SUBJECT]["E021@VERIFY"]["review"] == "INDEPENDENT_SCOPED_7BF_REVIEWED_SOURCEFREE_ONLY"
+    assert s["axes"]["JOIN_E_7BF"] == lr._base_state(lr.observe_source_cut(git_enabled=False))["axes"]["JOIN_E_7BF"]
     assert not s["programma_live"]["gates"]["G-C12-SF-VERIFY"]["target_stage_issued"]
     assert not s["programma_live"]["gates"]["G-C12-NATIVE-INTEGRATE"]["target_stage_issued"]
     assert lr.rebuild_from_journal(journal, operating=True)["state_digest"] == s["state_digest"]
