@@ -1,0 +1,97 @@
+{
+  "aggregate": {
+    "conserved": true,
+    "corrected": {
+      "explicit_nonresponse": 23422,
+      "missing_or_unobserved": 9335,
+      "observed_response": 298819,
+      "refusal": 2185,
+      "source_record_denominator": 308154,
+      "valid_answer": 275397
+    },
+    "distinct_ineligible_state": "UNKNOWN_ROUTED_OUT_OR_INELIGIBLE",
+    "distinct_refusal_state": "EXPLICIT_NONRESPONSE",
+    "ineligible_or_routed_out_inferred_from_counts": false,
+    "old": {
+      "explicit_nonresponse": 21237,
+      "missing_or_unobserved": 9335,
+      "observed_response": 298819,
+      "source_record_denominator": 308154,
+      "valid_answer": 277582
+    },
+    "q101": {
+      "code_count": 33,
+      "corrected_explicit": 204,
+      "corrected_valid": 7129,
+      "missing": 4,
+      "native_code": "99.0",
+      "observed": 7333,
+      "old_explicit": 171,
+      "old_valid": 7162,
+      "question_id": "q101",
+      "total": 7337
+    },
+    "refusal_vs_substantive_distinction": true
+  },
+  "authority": {
+    "codebook_route_term_hits": [
+      {
+        "classification": "SUBSTANTIVE_TEXT_NOT_A_ROUTING_RULE",
+        "question_id": "q221",
+        "terms": [
+          "unconditional"
+        ]
+      }
+    ],
+    "codebook_route_terms_are_substantive_text_only": true,
+    "exceptions": {
+      "count": 6,
+      "routing_related": [
+        {
+          "owner_step": "ARAB lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
+          "required_native_field": "routing.typed_state",
+          "status": "UNKNOWN"
+        },
+        {
+          "owner_step": "ARAB lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+          "required_native_field": "supported_scope.supported_form_slice",
+          "status": "UNKNOWN"
+        }
+      ]
+    },
+    "first_missing_premise": "exact item-specific questionnaire skip/routing rule and risk-set/eligibility denominator",
+    "first_missing_question": "q101",
+    "first_missing_risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "first_missing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
+    "no_routing_rule_found_in_codebook": true,
+    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger"
+  },
+  "held_count": 14,
+  "result": "HOLD_ROUTING_ELIGIBILITY_AND_14_HELD__28_CERTIFIED_PRESERVED",
+  "routing_interface": {
+    "configuration_interface": "source_configuration.data.SRC04.source.config.json:routing[]",
+    "exact_eligibility_denominators": 0,
+    "exact_routing_bindings": 0,
+    "fields": [
+      "typed_state",
+      "routing_rule_ref",
+      "risk_set_ref",
+      "row_selector"
+    ],
+    "normal_configuration_schema_valid": true,
+    "route_selector_all_is_not_eligibility_authority": true,
+    "selected_fields": 42,
+    "typed_unknown_or_held": 42,
+    "unresolved_eligibility_denominators": 42
+  },
+  "routing_state": {
+    "ineligible_or_routed_out_known": 0,
+    "known_fields": 0,
+    "unknown_fields": 42,
+    "unresolved_owner_dependencies": [
+      "ARAB lane / P3 integration owner: exact per-item routing/skip rules and risk-set/eligibility denominators for all 42 fields",
+      "Competent source-semantics authority: exact item-specific certification for 14 held code-99 option rows",
+      "R03 GrammarPolicy/direction owner: exact policy/authorized direction grant remains absent"
+    ]
+  }
+}
