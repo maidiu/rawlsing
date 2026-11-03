@@ -1,8 +1,24 @@
 LAUNCH — PYAT HQ / PDEV-01 — PROGRAMMA-DIRECTED TERMINAL-PRODUCT ENGINEERING
+PROVIDER/EDITOR_HARNESS: Codex / GPT-6 High proposed; user-controlled
+BRANCH: agent/pyat-hq-programma-driven-product-development-20261103-r1
+STARTUP_SHA: 773bb412a820949f13a7178b6671327cd56a3bf1
+REASONING: HIGH PROPOSED; actual user-selected setting governs.
+MODEL_MAX_AVAILABILITY: UNKNOWN until user verifies selected model in host.
+HOST_ACCOUNT_QUOTA_COST: UNKNOWN; no autonomous paid provider or host switch.
+BROWSER?: Good for S1 review, insufficient for requested S2 native programming without actual Codex runner.
+DEEPSEEK?: Possible economical bounded worker alternative with user-selected V4.1-Flash/MAX; not silently selected.
+CODEX_6_1_HIGH_NECESSARY?: I3+ integrative HQ task suggests High, not a technical entitlement or forced model; GPT-6 High user-proposed.
+OTHERWISE_MIDDLE?: User may choose user-available Middle effort when High is unnecessary; verify selected host.
+WHY_NOT_BROWSER: Browser can document but cannot honestly claim S2 implementation in an unavailable local worktree.
+WHY_NOT_FLASH: Higher risk source/scope/consumer and cross-machine decision integrity; user may override for bounded work.
+WHY_NOT_CODEX_HIGH: Not rejected for existing HQ mission, but actual selected editor/effort unknown.
+WHY_NOT_MIDDLE: High proposed for complex adversarial source judgment; user may select Middle.
+SCIENCE_SOURCE_ACTOR_AUTHORITY: NONE newly granted. Original35 source, science, host, N11/N12, Sorok actor and protected receiving remain with competent owners.
+POST_RETURN_INDEPENDENT_REVIEW: Separate nonauthor reviewer required for actual acceptance; no self-acceptance.
 AGENT_TYPE: Existing appointed Codex Pyat HQ — substantial scientific/architecture and engineering work-selector; not a fresh HQ, not independent reviewer, not source/science issuer.
 INTELLIGENCE_LEVEL: I3+ (cross-machine dependency and highest-consequence engineering judgment).
 REPOSITORY: maidiu/rawlsing (PRIVATE)
-SINGLE_AGENT_FULL_DELIVERABLE: YES — one self-contained HQ campaign with actual engineering outcome or exact owner-held stop.
+SINGLE_AGENT_FULL_DELIVERABLE: YES
 EXECUTION_SURFACE: S0–S1 authenticated GitHub; S2 local Codex/worktree/testing only when user-selected, available and authorized; S3 original respondents/source-native rights NOT granted.
 EXACT_SOURCE_PREMAIN_SHA: 773bb412a820949f13a7178b6671327cd56a3bf1
 EXACT_GUIDE_SHA: ed9c882a0683375bad70ee4abd1d662a61f1756b (SAT-R adopted guide branch only, not protected PRE-MAIN)
