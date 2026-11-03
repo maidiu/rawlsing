@@ -1,3 +1,37 @@
+# W8-R CURRENT WHOLE / SOURCE / MATURITY / FIRST-READER SPINE
+
+**This is a finite reference for Sorok work, not operational scientific truth.** Pin W8-F actual guide 097d46c47b6e41ff93a427e54646195892644cde; W8-J 38 typed seam ledger b78528a314aa26f6167d34e3e6a8bb045ae6ebdc; W8-N twelve orphan stages, eight candidate requirements and sixteen new direct source reads 9b0b5f3aae6cb8fd77d257170c31be77511ca52e. W7-C/S/P/D source cuts and W8-F's repaired claim gates remain visible below. W8-J's prior W7-I author proximity and W8-N's prior W6-B/D author proximity prohibit treating either as its own independent acceptance.
+
+## L0 through real consumer: the six distinct maturity questions
+
+| Axis | Question | Evidence necessary for promotion |
+|---|---|---|
+| **I — purpose/source** | Did an original idea, duty, model or existing code actually occur? | Exact original commit/path/blob and historical read grade, not later commentary merely naming it |
+| **T — explanatory or normative decision** | Is a discriminating causal Rule A/T, actor access, harm/refusal or other original decision issued? | Competent named issuer, alternatives and falsifier; historical text, metaphor and a test-only fixture cannot issue a rule |
+| **A — architecture** | Is the actual typed input/output, source right, clock, owner and first reader contracted? | Versioned schema/root/actor/branch/epoch/readset; selected owner approval; independent C9/C12/C10 and Pyat/Sorok jurisdictions stay distinct |
+| **E — executable implementation** | Is a function implemented for the selected source cut? | Exact file/blob/symbol, actual call/test receipt at the claimed sourcefree or native grade |
+| **C — consumption** | Does a specific next importer execute and *read* the produced field/receipt? | First-reader code with matching artifact/schema/root and same-run or cold-reopen source trace; named consumer is not enough |
+| **V — qualified validation** | Did an independent reviewer accept that exact cut/claim, did native owner issue it, or did humans actually participate? | Separate scoped external review, original source/rights authority, operated privacy and consent/human protocol as applicable |
+
+**Native continuing person:** objective Pyat world release & grant (`C0/C11`) + original historical actor/coactor (`C4`) + actual admitted E1 and actor-limited access (`C8`) + independent Rule A and positively acquired Rule T **or evaluated** O07 NO_CHANGE (`C9`) + performed later E2 + lawful time/order (`O16/C10`) + chosen writer/c784 reader schema, root, fork, ACK/mirror, external monotone anchor (`C12`) + an actual user phenomenal/action path (`S8/S9/S11/A0–A5`). An existing sourcefree test covers individual edges, not this conjunction. `G-C12-NATIVE-INTEGRATE` and all active same-target companion gates remain held.
+
+**Original inheritance remains useful:** historical original V3 M25 sequential lifespan runtime and M29 render-only behavior are code assets, not adopted current psychogenesis or current native first consumers. `09` preserves 144 original function identities; `07` preserves 290 source identities and attributes the **16** newly read source blobs from W8-N (remaining **48** indexed-unknown-depth, not 48 tasks). The W7-S D002 **50 scenario design probes** (including SCE-034 and SCE-047), and original D008/D009 detailed constitutions, are source assets and test designs, **not 50 executed tests or new issued consciousness science**. `W8N-RQ-01..08` in `14` are non-gating candidate stage notes, **not eight new engineering tickets**.
+
+**Non-equivalence rule:** `15` carries the exact 38 W8-J intake and W6-B candidate members. Nine subset-level `ACCEPT_AT_SCOPE` decisions do not turn a W6-C seam into a full W6-B gate. Fourteen `REFERENCE_ONLY`, seven `REVISE`, eight `HOLD` keep original `JOIN_PENDING` unpromoted; contrary negative evidence persists across hypothetical restoration. No new joined C12 compatibility from the independently scoped **7bf** acceptance, RRIF **598d** independent RED, **c784** actor_meta/root incompatibility or **F2** separate partial receiver.
+
+## Source-known, but unmet product rights and user obligations
+
+- **S7/S8:** Court8's external human ≠ user's subjective life ≠ player representation ≠ local social legibility. `W8N-RQ-01/02` require explicit field transport choice and a falsifier for declared *versus performed* user capacity; no invented native avatar autobiography.
+- **S8/S9/S11:** objective world event, actor-private access, observer testimony, user-visible affordance, user inference and `ATTEND` remain different. R2/R3/R4 sources describe this; actual first reader/negative tests and adopted expression plan are missing. `W8N-RQ-05` is a sourcefree test *design*.
+- **S14/C12:** operated export, deletion, consent, abuse and shared-root/branch version firewall must have real request→effect→receipt and branch nonleak witnesses. Q-PRIV `CLOSED_FOR_ALPHA_SPEC` is not operation. `W8N-RQ-03` is an exact additional source-bound VERIFY candidate, not acceptance.
+- **S5/S15/A5:** no scalar 'health', user retention or warm dialogue substitutes for plural care, refusal, harm, neighbor benefit and a real participant response. Gates0–3 curated formative mechanisms remain separate from **generated-person Gate4** and later approved **human Gate5**; `W8N-RQ-07` retains actual phenomenal exposure/sample limitations.
+- **S13:** real cost and nonextractive business are designable independently of native C12; measured bounded unit economics remain a later verify. Referral-specific `W8N-RQ-06` only if referral mode selected; `W8N-RQ-08` requires genuine cost/retention constraints, no engagement surrogate.
+- **C0/Pyat:** PREV3 D05 objective non-event `CURRENT` reader and pre553 empirical C11 logical-source facade are reusable *only in their own jurisdictions*. They do not grant CAN011 NO_CHANGE, admitted E1, native N11/N12→Sorok world input or an authorized person.
+
+**Work selection:** in [10](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md) start from chosen outcome@phase/claim, classify KNOW/SPECIFY/BUILD/INTEGRATE/VERIFY/ACCEPT separately, inspect *all* active gate groups for that exact target, identify a source-qualified first reader and owner, then choose real independent parallel action versus held owner/native/human step. Nonvacuous IF and exact scope are mandatory. One qualifying new receipt unlocks only the *exact next stage whose other mandatory members already qualify*, never an entire downstream product.
+
+---
+
 # W8-F CURRENT CORRECTIVE WHOLE→ACTOR→USER SPINE
 
 **Claim-grade boundary:** This is an S0–S1 documentary receiving correction, not scientific issuance, source-native testing, production security approval, owner adoption or human acceptance. W7-I `db134dc7`; W7-D `f1742490` (author-proximate, not independent acceptance); W7-C `40ca52e1`; W7-S `b7d583a0`; W7-P `c145ee3d`; original Sorok `865b5b01`; PRE-MAIN observed `9809203`. W8-J's distinct cross-worker seam join remains pending. No W8-N negative-space claim is imported.
