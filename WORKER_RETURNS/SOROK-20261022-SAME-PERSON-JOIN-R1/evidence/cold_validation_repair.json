@@ -1,0 +1,86 @@
+{
+  "schema": "SOROK_JOIN_E_COLD_VALIDATION_REPAIR@1",
+  "branch": "codex/sorok-join-e-b-event",
+  "base": "b327d1423da1e0f94e1b4846059fa1d7c9423261",
+  "grade": "TEST_ONLY_SOURCEFREE_NOT_NATIVE",
+  "status": "PASS__NEW_BINDING_NON_OPTIONAL__LEGACY_COLD_POSITIVE__DELETE_MARKER_RECEIPT_OR_BOTH_TYPED",
+  "persisted_evidence": {
+    "kind": "B_EVENT_BINDING",
+    "schema": "SOROK_JOIN_E_B_EVENT_BINDING@1",
+    "contract": "R31J_B_EVENT_UPSTREAM@1",
+    "b_event_ref": "TEST_ONLY_EVENT_share",
+    "b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+    "b_performer_receipt_hash": "2b2729c9e9fcf067bff1b5416dad3e17f05c2c8ff9f531be78695e95eb49033b",
+    "append_only_c12_episode": true
+  },
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_cold_validation.py -p no:cacheprovider --tb=short",
+      "result": "6 passed in 6.37s"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_b_event.py WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_full_encounter_positive_and_cold_reentry WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_cold_reopen_is_nonmutating_and_fork_diverges WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_b_source_edge_help_observable_and_targetless_no_target WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_targetless_provenance_lineage_and_fork WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/tests/test_join.py::test_foreign_and_r29p_roots_are_refused_without_donor_mutation -p no:cacheprovider --tb=short",
+      "result": "12 passed in 8.64s"
+    }
+  ],
+  "new_session": {
+    "binding_episode_count": 1,
+    "binding_contract": "R31J_B_EVENT_UPSTREAM@1",
+    "binding_receipt_hash_matches_meta": true,
+    "cold_open": true,
+    "cold_verify": true,
+    "cold_help_accepted": true,
+    "fresh_process": {
+      "ok": true,
+      "verify": true,
+      "binding_episodes": ["B_EVENT_BINDING"],
+      "branch_id": "first_session"
+    }
+  },
+  "legacy_session": {
+    "binding_episode_count": 0,
+    "metadata_contract_absent": true,
+    "metadata_receipt_absent": true,
+    "cold_open": true,
+    "cold_verify": true,
+    "cold_help_accepted": true,
+    "fresh_process": {
+      "ok": true,
+      "verify": true,
+      "binding_episodes": [],
+      "branch_id": "first_session"
+    }
+  },
+  "deletion_cuts": [
+    {
+      "deleted": ["b_event_contract"],
+      "in_process": "J_PROVENANCE_MISMATCH",
+      "fresh_process": "J_PROVENANCE_MISMATCH"
+    },
+    {
+      "deleted": ["b_performer_receipt"],
+      "in_process": "J_PROVENANCE_MISMATCH",
+      "fresh_process": "J_PROVENANCE_MISMATCH"
+    },
+    {
+      "deleted": ["b_event_contract", "b_performer_receipt"],
+      "in_process": "J_PROVENANCE_MISMATCH",
+      "fresh_process": "J_PROVENANCE_MISMATCH"
+    }
+  ],
+  "tamper": {
+    "mutated": "b_performer_receipt.receipt_hash",
+    "code": "J_PROVENANCE_MISMATCH"
+  },
+  "preserved_paths": {
+    "accepted_encounter_cold": true,
+    "targetless_refusal_no_target": true,
+    "targetless_refusal_cold_help": "HELP_REFUSE",
+    "targetless_omission_preserved": true,
+    "foreign_root_rejection": true
+  },
+  "reviewer_replay": {
+    "status": "NOT_RUN",
+    "reason": "no external or temporary worktree used on this repair lane"
+  }
+}

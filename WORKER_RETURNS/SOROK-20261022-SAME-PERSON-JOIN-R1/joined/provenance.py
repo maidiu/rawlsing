@@ -7,6 +7,7 @@ C8/E1/target receipt fields.
 """
 from __future__ import annotations
 
+from .b_event import persisted_binding, validate_binding
 
 
 def _c8_source(product) -> tuple[dict, dict]:
@@ -53,7 +54,10 @@ def validate_join(product, meta: dict, branch_id: str) -> dict:
         actor = payload.get("actor") or {}
         other = payload.get("other_actor") or {}
         body = c12_row.get("body") or {}
+        persisted = persisted_binding(product, branch_id)
+        binding_check = validate_binding(meta, persisted, source)
         checks.update({
+            "b_event_binding_ok": binding_check.get("ok") is True,
             "sidecar_matches_c8": source == c8_source,
             "sidecar_matches_c12": source == c12_source,
             "meta_matches_c8": meta.get("j_source") == c8_source,
@@ -79,6 +83,8 @@ def validate_join(product, meta: dict, branch_id: str) -> dict:
         except Exception as exc:  # typed source refusal becomes a failed check
             checks["joined_source_verifies"] = False
             observed["verify_join_error"] = type(exc).__name__ + ":" + str(exc)
+        if binding_check.get("required"):
+            observed["b_event_binding"] = binding_check.get("observed", {})
         observed.update({
             "b_event_hash": source.get("b_event_hash"),
             "b_operation": source.get("b_operation"),

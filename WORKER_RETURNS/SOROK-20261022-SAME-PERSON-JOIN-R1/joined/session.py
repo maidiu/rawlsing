@@ -10,8 +10,10 @@ install()
 from r31j.build import c9_only, product as build_product
 from r31e.session import R31ESession
 from r30a.first_session import SessionRefusal
-from .b_event import (B_EVENT_CONTRACT, PERFORMED, performed_scenario,
-                      refused_scenario, validate_receipt)
+from .b_event import (BINDING_KIND, B_EVENT_CONTRACT, BSourceUnavailable,
+                      PERFORMED, binding_from_receipt, performed_scenario,
+                      persisted_binding, refused_scenario, validate_binding,
+                      validate_receipt)
 from .closure import audit_loaded, source_manifest_sha256
 from .lineage import ROOT_BRANCH, create_fork, validate as validate_lineage
 from .provenance import validate_join
@@ -93,6 +95,10 @@ class JoinedSession(R31ESession):
                     json.dumps(receipt_check.get('checks', {}), sort_keys=True))
             session = cls._attach_new(product, state_root, scenario='available',
                                       attention=attention, variant=variant)
+            binding = binding_from_receipt(receipt, source)
+            product._append_episode(
+                session.branch_id, 'B', BINDING_KIND,
+                product._world(session.branch_id).clock, binding)
             seed = product.seed.public()
             session.meta.update(
                 schema='SOROK_SAME_PERSON_JOIN@1',
@@ -158,18 +164,17 @@ class JoinedSession(R31ESession):
         try:
             if product.source != meta.get('j_source'):
                 raise SessionRefusal('J_SOURCE_IDENTITY_CHANGED')
-            if meta.get('b_event_contract') == B_EVENT_CONTRACT:
-                receipt_check = validate_receipt(
-                    meta.get('b_performer_receipt'), product.source)
-                if not receipt_check.get('ok'):
-                    raise SessionRefusal(
-                        'J_PROVENANCE_MISMATCH',
-                        json.dumps(receipt_check.get('checks', {}),
-                                   sort_keys=True))
-                if meta.get('j_b_disposition') != PERFORMED:
-                    raise SessionRefusal('J_PROVENANCE_MISMATCH')
-                if product.source.get('b_performed') is not True:
-                    raise SessionRefusal('J_PROVENANCE_MISMATCH')
+            try:
+                persisted = persisted_binding(product, branch)
+            except BSourceUnavailable as exc:
+                raise SessionRefusal(
+                    'J_PROVENANCE_MISMATCH',
+                    type(exc).__name__ + ':' + str(exc)) from exc
+            binding_check = validate_binding(meta, persisted, product.source)
+            if not binding_check.get('ok'):
+                raise SessionRefusal(
+                    'J_PROVENANCE_MISMATCH',
+                    json.dumps(binding_check.get('checks', {}), sort_keys=True))
             lineage_result = validate_lineage(meta, branch, product.store)
             if not lineage_result.get('ok'):
                 raise SessionRefusal(

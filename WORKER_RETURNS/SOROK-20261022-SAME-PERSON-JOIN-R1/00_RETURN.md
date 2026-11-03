@@ -4,6 +4,7 @@
 **BRANCH:** `codex/sorok-join-e-b-event`
 **BASE:** `7bf2da302996491ddf34b9a039fea47ac982d135`
 **SCOPED RETURN FOR THIS CUT:** `B_EVENT_UPSTREAM_RETURN.md`
+**COLD VALIDATION REPAIR:** `COLD_VALIDATION_REPAIR_RETURN.md`
 **EXACT STARTUP:** `3fe8444b4a0374d95fa9f7e60dd295049a5d3172`
 **ROLE:** OpenCode implementation worker; not Sorok HQ, not JOIN-V, not a native CAN/ADP/C8/C12/Pyat/C11 issuer, not a human A5 evaluator.
 **MODEL / HARNESS:** OpenCode, `DeepSeek V4.1-Flash`, `REASONING=MAX` requested; actual metered effort/provider quota `UNKNOWN`; one agent; no subagent, external provider call or model switch.

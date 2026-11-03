@@ -22,6 +22,8 @@ from r31j.scenarios import (A, B, RESOURCE, case as r31j_case,
                             evaluated as r31j_evaluated)  # noqa: E402
 
 SCHEMA = "SOROK_JOIN_E_B_PERFORMER_RECEIPT@1"
+BINDING_SCHEMA = "SOROK_JOIN_E_B_EVENT_BINDING@1"
+BINDING_KIND = "B_EVENT_BINDING"
 GRADE = "TEST_ONLY_SOURCEFREE_B_EVENT_NOT_NATIVE"
 B_EVENT_CONTRACT = "R31J_B_EVENT_UPSTREAM@1"
 SHARE_TOOL = "SHARE_TOOL"
@@ -160,6 +162,90 @@ def receipt_for_case(case_obj: Mapping[str, Any],
     return _receipt_body(case_obj, expected)
 
 
+def binding_from_receipt(receipt: Mapping[str, Any],
+                         source: Mapping[str, Any]) -> dict:
+    """Persisted C12 binding that makes the receipt requirement non-optional."""
+    check = validate_receipt(receipt, source)
+    if not check.get("ok"):
+        raise BSourceUnavailable(
+            "B_SOURCE_RECEIPT_MISMATCH",
+            ",".join(name for name, ok in check.get("checks", {}).items()
+                     if not ok))
+    disposition = disposition_from_source(source)
+    if disposition != PERFORMED:
+        raise BSourceUnavailable("B_SOURCE_BINDING_NOT_PERFORMED", disposition)
+    return {
+        "schema": BINDING_SCHEMA,
+        "b_event_contract": B_EVENT_CONTRACT,
+        "b_event_ref": source.get("b_event_ref"),
+        "b_event_hash": source.get("b_event_hash"),
+        "b_performer_receipt_hash": receipt.get("receipt_hash"),
+        "j_b_disposition": disposition,
+        "native": False,
+        "psychology_claim": False,
+    }
+
+
+def persisted_binding(product, branch_id: str) -> dict | None:
+    """Read the append-only C12 binding; absence means genuine legacy session."""
+    rows = [row for row in product.store.episodes(branch_id)
+            if row.get("kind") == BINDING_KIND]
+    if not rows:
+        return None
+    if len(rows) != 1:
+        raise BSourceUnavailable("B_EVENT_BINDING_COUNT", str(len(rows)))
+    body = rows[0].get("body") or {}
+    if (body.get("schema") != BINDING_SCHEMA
+            or body.get("b_event_contract") != B_EVENT_CONTRACT):
+        raise BSourceUnavailable("B_EVENT_BINDING_INVALID")
+    return body
+
+
+def validate_binding(meta: Mapping[str, Any], persisted: Mapping[str, Any] | None,
+                     source: Mapping[str, Any]) -> dict:
+    """Require the receipt whenever persisted C12 evidence marks a new session."""
+    required = bool(
+        persisted is not None
+        or meta.get("b_event_contract") == B_EVENT_CONTRACT
+        or meta.get("b_performer_receipt"))
+    checks: dict[str, bool] = {}
+    observed: dict = {"required": required}
+    if not required:
+        return {"ok": True, "required": False, "checks": checks,
+                "observed": observed}
+    receipt = meta.get("b_performer_receipt")
+    receipt_check = validate_receipt(receipt, source)
+    checks.update({
+        "meta_contract_present": meta.get("b_event_contract") == B_EVENT_CONTRACT,
+        "meta_disposition_performed": meta.get("j_b_disposition") == PERFORMED,
+        "receipt_present": isinstance(receipt, Mapping),
+        "receipt_matches_source": receipt_check.get("ok") is True,
+        "source_is_performed": source.get("b_performed") is True,
+    })
+    if persisted is not None:
+        checks.update({
+            "persisted_contract_present": (
+                persisted.get("b_event_contract") == B_EVENT_CONTRACT),
+            "persisted_event_ref_matches": (
+                persisted.get("b_event_ref") == source.get("b_event_ref")),
+            "persisted_event_hash_matches": (
+                persisted.get("b_event_hash") == source.get("b_event_hash")),
+            "persisted_receipt_hash_matches": (
+                isinstance(receipt, Mapping)
+                and persisted.get("b_performer_receipt_hash")
+                == receipt.get("receipt_hash")),
+            "persisted_disposition_matches": (
+                persisted.get("j_b_disposition") == PERFORMED),
+        })
+        observed.update({
+            "persisted_event_hash": persisted.get("b_event_hash"),
+            "persisted_receipt_hash": persisted.get("b_performer_receipt_hash"),
+        })
+    observed.update(receipt_check.get("observed", {}))
+    return {"ok": all(checks.values()), "required": True, "checks": checks,
+            "observed": observed}
+
+
 def _with_receipt(scenario: Mapping[str, Any], expected: str) -> dict:
     result = dict(scenario)
     result["b_performer_receipt"] = _receipt_body(result["case"], expected)
@@ -273,9 +359,11 @@ def validate_receipt(receipt: Any, source: Mapping[str, Any]) -> dict:
 
 
 __all__ = [
-    "A", "B", "B_EVENT_CONTRACT", "BSourceUnavailable", "DISPOSITIONS",
-    "GRADE", "OMITTED", "PERFORMED", "REFUSED", "SCHEMA", "UNAVAILABLE",
+    "A", "B", "BINDING_KIND", "BINDING_SCHEMA", "B_EVENT_CONTRACT",
+    "BSourceUnavailable", "DISPOSITIONS", "GRADE", "OMITTED", "PERFORMED",
+    "REFUSED", "SCHEMA", "UNAVAILABLE", "binding_from_receipt",
     "disposition_from_source", "omitted_scenario", "performed_scenario",
-    "receipt_for_case", "refused_scenario", "scenario_for",
-    "unavailable_scenario", "validate_receipt",
+    "persisted_binding", "receipt_for_case", "refused_scenario",
+    "scenario_for", "unavailable_scenario", "validate_binding",
+    "validate_receipt",
 ]
