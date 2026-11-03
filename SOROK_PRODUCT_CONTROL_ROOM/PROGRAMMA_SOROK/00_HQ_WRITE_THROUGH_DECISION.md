@@ -18,3 +18,7 @@
 ## S35 repair2 independent closure
 
 Controller job `sorok-s35-c9r-access-review-r1-repair2`, session `ses_e5fa4c825ffeRR7mAT3d2EQuB9`, exited 0 on 2026-11-03 at 16:20:12 UTC. Exact reviewed cut `08569b7481aec4f81b83b35f0099c1f5e9bb012a`. The reviewer ran the S35 suite and observed **55 passed in 48.53s**. Scoped ACCEPT closes the four prior findings: private source projection, no-action clock validation, unresolved-owner refusal, and fresh-process nonmutating cold verification. Actual qualified A receipts were NOT_RUN. This verdict does not apply to the later compatibility cut or the in-flight admitted-occurrence reader. G-O15-VERIFY remains held.
+
+### Admitted occurrence reader return
+
+Controlled reader at eb2255231df00393d33cc0223bc5d79320360f88, bridge/occurrence_consumer.py read_occurrence → evaluate_occurrence. Reads admitted C9 event at 242 independently of C12 branch clock 10. 57 author tests, controlled intact/severed/restored/cold, byte-identical stores. Actual A producer NONE_VERIFIED, independent review pending, full reexecution still incompatible. Next: qualify separate A perception/action and clock-domain receipts. [Executed evidence](https://github.com/maidiu/rawlsing/blob/eb2255231df00393d33cc0223bc5d79320360f88/WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/occurrence_consumer.json). Later E help contrast retained. G-O15-VERIFY remains held.

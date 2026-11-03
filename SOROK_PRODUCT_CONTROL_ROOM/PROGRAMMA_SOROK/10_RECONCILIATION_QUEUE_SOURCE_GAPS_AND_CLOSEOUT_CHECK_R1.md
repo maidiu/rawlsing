@@ -221,3 +221,7 @@ This guide branch is documentary/candidate and does not itself integrate PRE-MAI
 ## Post-cut work now
 
 WP-W6B-02 has returned controlled engineering. Continue with a same-root admitted-occurrence reader and separate qualified A perception/action. Keep G-O15-VERIFY held. Independent scoped repair review and the WP-W6B-01 writer/root/ACK matrix can proceed without waiting on each other. Native and human gates retain their prior status. [Exact cuts and limits](00_HQ_WRITE_THROUGH_DECISION.md).
+
+### Admitted occurrence reader return
+
+Controlled reader at eb2255231df00393d33cc0223bc5d79320360f88, bridge/occurrence_consumer.py read_occurrence → evaluate_occurrence. Reads admitted C9 event at 242 independently of C12 branch clock 10. 57 author tests, controlled intact/severed/restored/cold, byte-identical stores. Actual A producer NONE_VERIFIED, independent review pending, full reexecution still incompatible. Next: qualify separate A perception/action and clock-domain receipts. [Executed evidence](https://github.com/maidiu/rawlsing/blob/eb2255231df00393d33cc0223bc5d79320360f88/WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/occurrence_consumer.json). Later E help contrast retained. G-O15-VERIFY remains held.

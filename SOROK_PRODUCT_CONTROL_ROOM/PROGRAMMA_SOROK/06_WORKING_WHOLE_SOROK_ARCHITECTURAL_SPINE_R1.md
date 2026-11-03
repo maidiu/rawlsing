@@ -395,3 +395,7 @@ For a changed claim, alter its existing ID in 07/08/09 and only the affected sec
 ## B occurrence → material consequence → A access
 
 JOIN-E’s existing E help admission consumes performed-aware material availability. S35’s standalone sourcefree evaluator exists, while actual A evidence on JOIN-E’s root and positive S35 same-root response remain unverified. [Exact cuts and limits](00_HQ_WRITE_THROUGH_DECISION.md).
+
+### Admitted occurrence reader return
+
+Controlled reader at eb2255231df00393d33cc0223bc5d79320360f88, bridge/occurrence_consumer.py read_occurrence → evaluate_occurrence. Reads admitted C9 event at 242 independently of C12 branch clock 10. 57 author tests, controlled intact/severed/restored/cold, byte-identical stores. Actual A producer NONE_VERIFIED, independent review pending, full reexecution still incompatible. Next: qualify separate A perception/action and clock-domain receipts. [Executed evidence](https://github.com/maidiu/rawlsing/blob/eb2255231df00393d33cc0223bc5d79320360f88/WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/occurrence_consumer.json). Later E help contrast retained. G-O15-VERIFY remains held.
