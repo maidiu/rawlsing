@@ -18,3 +18,10 @@ D2P3 author return `cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584`. Author reports se
 
 
 HQ accepted D2P3 at sourcefree producer-to-N9C scope after independent review `830a9656cb65f00337d5bcd0f7373dbef11d50df`. Independent exact snapshot: 13 passed including seven adapted regressions. Producer-owned refs reach N9C readset. N10W requires actual version-selected N9 plus computed N10E. Source science, publication custody and adoption held.
+
+## Final repair flight, 2026-11-03
+
+- GAP-007: bff80e2a7 independently reproduced byte-identical cold traces and 210 executed / 630 refused. REVISE for stale reported release ref and fixture integrity follow-up. Existing author running pdev01-gap007-final-fix.
+- S-F6: 23edffb32 reproduced F6M→F6P and the WP2 expression's raw KeyError. REVISE for authored refusal label and unexecuted effect claim. Existing author running pdev01-f6-evidence-fix. Real receiver contract and scientific scope remain held.
+- N9+N10E→N10W: 30b04c762 demonstrated actual J42 W41/E41/P41 join and cold replay. Five provider/currentness mutations were incorrectly accepted. Existing author running pdev01-n10w-identity-fix under isolated sourcefree scope. R05 and J42 source identities differ.
+- HQD-125 §8 is the adopted nine-strata succession decision. Field Forge and the governed world architecture preserve structural-pressure functions. P1 placeholder stratum refs supply no requirement to rebuild the old ontology.
