@@ -2720,20 +2720,20 @@
         "member_refs": [
           {
             "ref": "S11@KNOW",
-            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "status": "SATISFIED_AT_SCOPED_SOURCE",
+            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "predecessor_gates": []
           },
           {
             "ref": "S11:LOCAL_GUIDE:UX_PROTO@KNOW",
-            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "status": "SATISFIED_AT_SCOPED_SOURCE",
+            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "predecessor_gates": []
           },
           {
             "ref": "S8@KNOW",
-            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "status": "SATISFIED_AT_SCOPED_SOURCE",
+            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "predecessor_gates": []
           }
         ],
@@ -2747,7 +2747,8 @@
         "join_status": "W6B_GATE_ID_NOT_AUTOMATICALLY_W6C_GATE_ID",
         "readiness_to_attempt_target_at_frozen_cut": "PREREQUISITES_MET_AT_SELECTED_SCOPE",
         "w8f_rebased_actual_14": true,
-        "selected_claim_scope_required": null
+        "selected_claim_scope_required": null,
+        "w8f_source_qualified_only": true
       },
       "G-S12-SPECIFY": {
         "target_ref": "S12@SPECIFY",
@@ -4298,22 +4299,22 @@
         "member_refs": [
           {
             "ref": "S11@SPECIFY",
-            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "status": "RECURSE_TO_NAMED_GATE",
+            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "predecessor_gates": [
               "G-S11-SPECIFY"
             ]
           },
           {
             "ref": "S8@KNOW",
-            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "status": "SATISFIED_AT_SCOPED_SOURCE",
+            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "predecessor_gates": []
           },
           {
             "ref": "S15@KNOW",
-            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "status": "SATISFIED_AT_SCOPED_SOURCE",
+            "required_scope": "DOCUMENTARY_REQUIREMENT",
             "predecessor_gates": []
           }
         ],
@@ -4327,7 +4328,8 @@
         "join_status": "W6B_GATE_ID_NOT_AUTOMATICALLY_W6C_GATE_ID",
         "readiness_to_attempt_target_at_frozen_cut": "PARTIAL_PREREQUISITES_ONLY",
         "w8f_rebased_actual_14": true,
-        "selected_claim_scope_required": null
+        "selected_claim_scope_required": null,
+        "w8f_source_qualified_only": true
       },
       "G-S14-CONTROLS-BUILD": {
         "target_ref": "S14:LOCAL_GUIDE:OPERATED_CONTROLS@BUILD",
@@ -5159,34 +5161,42 @@
         "member_refs": [
           {
             "ref": "S11:LOCAL_GUIDE:UX_PROTO@BUILD",
-            "required_scope": "EXACT_STAGE_AND_CLAIM_SCOPE_REQUIRED",
             "status": "RECURSE_TO_NAMED_GATE",
+            "required_scope": "EXACT_STAGE_AND_CLAIM_SCOPE_REQUIRED",
             "predecessor_gates": [
               "G-S11-PROTOTYPE"
             ]
           },
           {
             "ref": "S8:LOCAL_GUIDE:ACTION_CONTRACT@BUILD",
-            "required_scope": "EXACT_STAGE_AND_CLAIM_SCOPE_REQUIRED",
             "status": "RECURSE_TO_NAMED_GATE",
+            "required_scope": "EXACT_STAGE_AND_CLAIM_SCOPE_REQUIRED",
             "predecessor_gates": [
               "G-S8-SF-ACTION"
             ]
           },
           {
             "ref": "S15:LOCAL_GUIDE:HUMAN_PROTOCOL@ACCEPT",
-            "required_scope": "EXACT_STAGE_AND_CLAIM_SCOPE_REQUIRED",
             "status": "RECURSE_TO_NAMED_GATE",
+            "required_scope": "EXACT_STAGE_AND_CLAIM_SCOPE_REQUIRED",
             "predecessor_gates": [
               "G-S15-PROTOCOL-ACCEPT"
             ]
           },
           {
             "ref": "S11:LOCAL_GUIDE:ACTOR_TO_USER_EVENT@VERIFY",
-            "required_scope": "ACTUAL_CAUSAL_USER_EXPERIENCE",
             "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "ACTUAL_CAUSAL_USER_EXPERIENCE",
             "predecessor_gates": [
               "G-S8-S9-S11-EVENT-PATH"
+            ]
+          },
+          {
+            "ref": "S11:LOCAL_GUIDE:PARTICIPANT_USABILITY@VERIFY",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": [
+              "G-S11-HUMAN-USABILITY-VERIFY"
             ]
           }
         ],
@@ -5198,9 +5208,10 @@
           "locator": "Gates / §5 bounded alpha"
         },
         "join_status": "W6B_GATE_ID_NOT_AUTOMATICALLY_W6C_GATE_ID",
-        "readiness_to_attempt_target_at_frozen_cut": "PREREQUISITES_NOT_YET_QUALIFIED",
+        "readiness_to_attempt_target_at_frozen_cut": "HUMAN_USABILITY_NOT_OBSERVED__PROTOTYPE_IS_NOT_PARTICIPANTS",
         "w8f_rebased_actual_14": true,
-        "selected_claim_scope_required": null
+        "selected_claim_scope_required": null,
+        "w8f_source_qualified_only": true
       },
       "G-A1-VERIFY": {
         "target_ref": "A1@VERIFY",
@@ -5542,6 +5553,76 @@
         "readiness_to_attempt_target_at_frozen_cut": "HELD",
         "w8f_rebased_actual_14": true,
         "selected_claim_scope_required": null
+      },
+      "G-S11-LOWFI-VERIFY": {
+        "target_ref": "S11:LOCAL_GUIDE:LOWFI_NONHUMAN@VERIFY",
+        "logic": "ALL_OF",
+        "claim_scope": "SOURCEFREE_NONHUMAN_ONLY",
+        "member_refs": [
+          {
+            "ref": "S11:LOCAL_GUIDE:UX_PROTO@BUILD",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": [
+              "G-S11-PROTOTYPE"
+            ]
+          },
+          {
+            "ref": "S11:LOCAL_GUIDE:LOWFI_NONHUMAN_TEST@VERIFY",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": []
+          }
+        ],
+        "readiness_to_attempt_target_at_frozen_cut": "UNSATISFIED",
+        "w8f_source_qualified_only": true
+      },
+      "G-S11-HUMAN-USABILITY-VERIFY": {
+        "target_ref": "S11:LOCAL_GUIDE:PARTICIPANT_USABILITY@VERIFY",
+        "logic": "ALL_OF",
+        "claim_scope": "APPROVED_CONSENTED_HUMAN_ONLY",
+        "member_refs": [
+          {
+            "ref": "S11:LOCAL_GUIDE:LOWFI_NONHUMAN@VERIFY",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": [
+              "G-S11-LOWFI-VERIFY"
+            ]
+          },
+          {
+            "ref": "S11:LOCAL_GUIDE:CONSENTED_HUMAN_USABILITY@VERIFY",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": []
+          },
+          {
+            "ref": "S14:LOCAL_GUIDE:OPERATED_CONTROLS@VERIFY",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": [
+              "G-S14-CONTROLS-VERIFY"
+            ]
+          },
+          {
+            "ref": "S15:LOCAL_GUIDE:HUMAN_PROTOCOL@ACCEPT",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": [
+              "G-S15-PROTOCOL-ACCEPT"
+            ]
+          },
+          {
+            "ref": "S11:LOCAL_GUIDE:ACTOR_TO_USER_EVENT@VERIFY",
+            "status": "UNRESOLVED_EXACT_OWNER_OR_SOURCE",
+            "required_scope": "PERFORMED_EXACT_SCOPED_EVIDENCE",
+            "predecessor_gates": [
+              "G-S8-S9-S11-EVENT-PATH"
+            ]
+          }
+        ],
+        "readiness_to_attempt_target_at_frozen_cut": "UNSATISFIED",
+        "w8f_source_qualified_only": true
       }
     },
     "evidence_leaves": {
@@ -6919,6 +7000,20 @@
         "first_consumer": "S16",
         "proof": "UNSATISFIED: exact producer, consumer, source rights and reviewed signature",
         "w8f_local": true
+      },
+      "EVIDENCE:S11:LOCAL_GUIDE:LOWFI_NONHUMAN_TEST@VERIFY": {
+        "ref": "S11:LOCAL_GUIDE:LOWFI_NONHUMAN_TEST@VERIFY",
+        "status_at_cut": "NOT_PERFORMED",
+        "original_issuer": "S11 UX sourcefree reviewer",
+        "first_consumer": "S11 scoped prototype reviewer",
+        "proof": "UNOBSERVED: independently reproduced low-fi nonhuman interaction fixture OR actual approved participant usability with refusal, access, consent, exit, opacity and harm reporting as matched to this exact scope"
+      },
+      "EVIDENCE:S11:LOCAL_GUIDE:CONSENTED_HUMAN_USABILITY@VERIFY": {
+        "ref": "S11:LOCAL_GUIDE:CONSENTED_HUMAN_USABILITY@VERIFY",
+        "status_at_cut": "NOT_PERFORMED",
+        "original_issuer": "S15 consented human evaluation owner and independent reviewer",
+        "first_consumer": "G-S11-HUMAN-USABILITY-VERIFY",
+        "proof": "UNOBSERVED: independently reproduced low-fi nonhuman interaction fixture OR actual approved participant usability with refusal, access, consent, exit, opacity and harm reporting as matched to this exact scope"
       }
     },
     "fully_typed_edges_and_work_packages": "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl",
@@ -7756,9 +7851,9 @@
     },
     "new_local_records": {
       "NESTED_FUNCTION": 119,
-      "EVIDENCE_LEAF": 125,
-      "GATE": 81,
-      "RELATION": 260,
+      "EVIDENCE_LEAF": 127,
+      "GATE": 83,
+      "RELATION": 268,
       "WORK_PACKAGE": 39,
       "UNRESOLVED_TERMINAL": 12,
       "OWNER_ACTION": 11
@@ -7777,6 +7872,7 @@
       "D002 action selection",
       "D008/D009 lens/capability refinement"
     ],
-    "authority": "DOCUMENTARY_RECEIVING_CORRECTION_NOT_INDEPENDENT_ACCEPTANCE"
+    "authority": "DOCUMENTARY_RECEIVING_CORRECTION_NOT_INDEPENDENT_ACCEPTANCE",
+    "s11_scope_split": "S11:LOCAL_GUIDE:LOWFI_NONHUMAN@VERIFY cannot count as PARTICIPANT_USABILITY@VERIFY; independent Gate5 human remains held"
   }
 }
