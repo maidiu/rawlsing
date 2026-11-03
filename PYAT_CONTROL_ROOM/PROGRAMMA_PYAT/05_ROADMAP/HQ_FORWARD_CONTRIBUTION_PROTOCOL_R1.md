@@ -1,46 +1,91 @@
-# Pyat HQ → PROGRAMMA PYAT: forward-contribution handback (proposed operational addendum)
+# PYAT HQ — permanent direct maintenance of PROGRAMMA PYAT as the machine develops
 
-**Proposed 2026-11-03; documentary proposal only.** This supplements rather than replaces `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`, `CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md`, `HQ_HANDOFF/PROTOCOL.md`, the paired `PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md/.json`, and the full guide `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/`. No new executive, source/actor/scientific, PRE-MAIN merge, branch-sharing, reviewer or worker-dispatch authority is created.
+**Corrected operational specification, 2026-11-03.** Supersedes the earlier proposal for a standalone “forward note” plus temporary PROGRAMMA receiver. PROGRAMMA is intended to become the live development representation used and **maintained directly by the appointed PYAT HQ**, after its finite construction phase and during all subsequent substantive Pyat work. The G1–G4/post-G4 record is the starting estate; **its component/seam grades are historical source-cut assessments**, not immutable statements about what Pyat will become.
 
-## The operational correction
+This editorial-maintenance duty does not grant new original35 science, native data, N11/N12, Sorok actor rights, privileged code paths or protected merges. It operates under the existing HQ checkpoint/authority/decision protocols, not beside them.
 
-The existing HQ goal includes a final PROGRAMMA handoff, and the shared constitution already requires reciprocal R/O/I updating. The missing operational detail is **an exact, material-transition source record** that PROGRAMMA can receive while HQ keeps working, *without Codex editing the concurrently active PROGRAMMA guide branch*. Restore the loop:
+## 1. The actual permanent responsibility
 
-1. **PROGRAMMA → HQ:** read relevant exact function/section/edge/GAP sources, reusable old/current code and source-graded limits before expensive new development. This is a finding aid, not independently adopted science.
-2. **HQ → PROGRAMMA:** on every **coherent material development transition**—new code/consumer, accepted or rejected independent review, changed grant/hold, actual adoption, important source discovery, irreversible negative/defect finding—publish a short source-exact **forward delta** alongside the normal authorized HQ evidence and decision records.
-3. **PROGRAMMA receiver → guide:** independently locate the published delta, compare its source cuts and review/authority ceilings to the existing page, reconcile into actual Sxx/child/edge/GAP location, preserve old versions and negatives. The PROGRAMMA reading/reconciliation process is not an HQ grant or replacement for existing checkpoint law.
-4. **HQ continues work:** no manual "wait for PROGRAMMA" gate for otherwise independently authorized work. No chronic synchronization chores, new event system, daemon, graph platform, or per-test update.
+In each materially productive HQ cycle, two distinct representations must be advanced **together**:
 
-## Where the record actually lives
+**HQ operative authority and history**: worker return/reviewer/candidate/decision, code branch/commit, paired `PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md/.json`, existing `HQ_HANDOFF` checkpoint when the operative state materially changes, and the existing append-only decision ledger where applicable. These establish what HQ **did, reviewed and lawfully adopted**.
 
-**Authoritative:** existing worker return and independently reviewed code/test receipts; existing HQ decision/motion record; paired CURRENT_PROGRESS where the rightful owner makes an authoritative update; when a material operative HQ state changes, the **existing immutable HQ_HANDOFF checkpoint and LATEST pointer protocol**. Do not mutate checkpoint history or use the PROGRAMMA guide as canonical source of truth.
+**PROGRAMMA PYAT current map**: the existing `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/` sections, `COMPONENT_STATUS.jsonl` (62 guide organs/children), `CURRENT_SEAM_STATES.jsonl` (82 typed initial interfaces), `REMAINING_REAL_PYAT_WORK.md` (original GAP IDs plus additions), `FUNCTION_PARITY.jsonl`, `ASSET_LOCATOR.md`, `PREREQUISITES_AND_UNLOCKS.md` and `README.md`. These must reflect what Pyat **now possesses, actually connects, has accepted at which scope, and still needs**. They are not a second HQ progress board or authorization register.
 
-**Discoverable forward note:** the rightful Codex HQ may emit one short `PROGRAMMA_FORWARD_DELTA.md` in its **own authorized isolated engineering/return branch**, attached to the same coherent HQ motion/return (for example under that motion's existing return directory), with the actual commit link cited in its existing progress report. If the qualified HQ branch/file allowlist does not permit that file, put the exact same fields as a *section of the already permitted HQ motion/return/current progress* instead; do not expand an engineering file allowlist by implication.
+**The same incumbent HQ owns both responsibilities. No separate “PROGRAMMA receiver” is required, permanently or after completion.** HQ may delegate factual source investigation and mechanical documentation edits, but cannot delegate its judgment of actual progress, owner/adoption/science status, cross-organ dependencies or truthful program-wide completion.
 
-**Receiving:** PROGRAMMA's active M1–M5 and later SAT-R branches are read-only evidence readers of the HQ delta until their own receiving authority and exact source checks. **Do not ask Codex to write to their branches, to `PROGRAMMA_PYAT/05_ROADMAP/README.md`, or to any currently active guide/receiver files.** Publish the forward note by actual Git commit, record its immutable ref in existing HQ state, and let SAT-R or its proper successor incorporate it. If no integration receiver is active, it remains safely available as GitHub source.
+## 2. Coherent material transition: required direct write-through
 
-## Minimum material-change record (one compact table/section, not a new bureaucracy)
+On a coherent material change—**new function/code, recovered previous implementation, qualified test/review, genuine first reader/consumer, implementation or source-rights decision, accepted/adopted repair, incompatibility, refusal/negative, changed prerequisite or retired gap**—perform these steps as **part of closing that HQ transition**, not as an overnight-only handback:
 
-- **IDENTITY / CUTS:** unique HQ motion or worker return ID; timestamp; branch+full code commit SHA, exact Git paths/symbols and blobs where relevant; previous/current control and semantic PRE-MAIN cuts; reviewer return SHA (if any).
-- **PROGRAMMA LOCATION:** S01–S11 and named child IDs; matching original edge IDs, GAP IDs and component names if known. Unmatched = `UNPLACED_WITH_REASON`, not fabricated ID.
-- **FUNCTIONAL DELTA:** before→after **behavior**, not just files/titles; reused implementation vs newly built adapter vs changed consumer; input→transformation→output→first actual reader; conditions/version/negative/failure behavior. Say whether a current engine gap is now `BUILD`, `REUSE/ADAPT`, `CONNECT`, `TEST/QUALIFY`, `SCIENCE_OWNER_DECIDE`, `SOURCE_GRANT`, or `UNKNOWN`.
-- **PROOF AND ADOPTION:** author tests/fixtures and counts at exact source cut; independent reviewer decision, scope and negative; `RETURNED_UNADOPTED`, `REVIEWED_SCOPED`, `ADOPTED_CAS_VERIFIED`, `REAL_FIRST_CONSUMER_PROVED`, `AUTHORITY_HELD`, etc. Separate sourcefree from native and receiving-control from protected semantic PRE-MAIN. If review pending, say pending.
-- **CONNECTION / PREREQUISITE CHANGE:** actual producer→consumer link, former and current scoped seam condition, mandatory vs conditional/alternative relation unchanged absent authority, exact remaining gap/unlocker and owner.
-- **NEXT CONSTRUCTIVE EFFECT:** what PROGRAMMA should correct (guide pointers, historical parity, consumer, scoped status, gap classification); what HQ should pursue next; any material conflict with existing guide to resolve, without suppressing the earlier negative.
+1. **Identify affected PROGRAMMA coordinates.** Resolve `ROADMAP:Sxx` and child `ROADMAP:Sxx.y`, exact original `edge_id` and any `GAP-xxx`, historical `obligation_id`. If an actually new function has no existing ID, allocate a new typed identity linked to its parent, without renumbering the 782 original identities or inventing an alias.
+2. **Append the evidence-linked transition** to `05_ROADMAP/HQ_DEVELOPMENT_TRANSITIONS.jsonl` (create on first real transition). This file is a thin append-only history of direct HQ actions **in PROGRAMMA**; it is not an approval ledger, scheduler or independent source authority. See minimum row below.
+3. **Update the current affected representation, not merely the journal**:
+   - **Component development** → affected records in `COMPONENT_STATUS.jsonl` and the relevant Sxx section page.
+   - **Real producer → reader connection** → affected `CURRENT_SEAM_STATES.jsonl` record and neighboring section pages; `PLANNED_INTERFACES.jsonl` original MUST/IF/ALTERNATE requirements retain their intended authority unless competent architecture decision changes them.
+   - **Function reused/new parity** → `FUNCTION_PARITY.jsonl` or a source-linked additive record, and `ASSET_LOCATOR.md`.
+   - **Dependency unblocked or gap truly closed/changed** → `REMAINING_REAL_PYAT_WORK.md`, `PREREQUISITES_AND_UNLOCKS.md`, and affected section. Never simply delete a historical GAP or negative; append a dated later disposition referencing the exact old ID.
+   - **Whole-course effect** → short `README.md` current-state/priority adjustment (not one paragraph for every test). State whether it changes actual source→V3 trajectory, else why the prerequisite matters.
+4. **Publish the documentary changes on the incumbent HQ's authorized Git branch/PR within the same coherent transition.** Use existing owner review/CAS rules for protected destinations. When source-engineering and guide changes require separate branches, HQ carries out the guide update through its **own authorized documentation branch and ordinary Git integration**, preserving both exact commits. The update is not counted as current PROGRAMMA until its actual guide branch/approved target includes it. Keep pending documentation edits explicit instead of falsely claiming synchronization.
+5. **Link both directions.** The ordinary HQ progress/motion/checkpoint cites the PROGRAMMA transition ID and guide commit; that transition cites the exact HQ motion/decision/reviewer/code source. On next HQ grok, reconcile these pointers if a prior guide update remained pending. Then choose the next productive work.
 
-Use `NO_MATERIAL_DELTA` with exact ref/reason only where a coherent work cycle produced no consequential change; don't produce artificial status events. No invented readiness percent, GREEN from an import, or source-native/grant promotion.
+**No intermediary agent performs this transfer. It is the appointed HQ's persistent editorial obligation.**
 
-## Trigger cadence and checkpoint boundary
+## 3. Minimal transition record (example shape, not a new giant schema)
 
-- On **first material discovery that changes reuse/build choice**, record the source location immediately in the next ordinary HQ motion/worker return; do not wait until end of an overnight chat.
-- On **material review/implementation/connection/adoption/hold** use the existing authorized HQ transition workflow. A short forward-delta is prepared as part of that same motion, not as its own mandatory independent review.
-- At coherent **material operative state transitions**, advance the ordinary durable HQ decisions, paired progress and immutable checkpoint according to existing protocol; cite new relevant forward note SHA there.
-- At the end of the overnight session, provide a **consolidated PROGRAMMA handback index** of the material notes and their exact commits. A single final summary without intermediate source-bearing durable records does not satisfy this protocol.
+Each `HQ_DEVELOPMENT_TRANSITIONS.jsonl` line may use this stable small JSON object:
 
-## Why not a permanent new journal or an always-on sync?
+```json
+{
+  "transition_id": "PYAT-HQ-<existing-motion-or-return-id>",
+  "observed_at_utc": "<actual ISO timestamp>",
+  "kind": "IMPLEMENTATION|REVIEW|CONSUMER|ADOPTION|SCIENCE_AUTHORITY|NEGATIVE|RECOVERY|PREREQUISITE",
+  "program_ids": ["ROADMAP:S05.2"],
+  "edge_ids": ["<existing edge_id if applicable>"],
+  "gap_ids": ["GAP-021"],
+  "hq_motion_ref": "<exact existing HQ Git path@SHA>",
+  "code_refs": [{"ref": "<commit>", "path": "<code path>", "symbol": "<actual function>"}],
+  "review_ref": "<review Git ref or null>",
+  "before": {"implementation": "SOURCEFREE_CANDIDATE", "consumer": "UNVERIFIED"},
+  "after": {"implementation": "REVIEWED_SCOPED", "consumer": "REAL_FIRST_READER_AT_SOURCEFREE_SCOPE"},
+  "authority_and_source_scope": "NO_ORIGINAL35_NATIVE_CLAIM; NO_PROTECTED_ADOPTION",
+  "first_consumer": "<specific importing/calling function or NONE VERIFIED>",
+  "remaining_dependency": "<exact smallest next missing piece and owner>",
+  "guide_update_ref": "<Git commit carrying current-state changes or PENDING>",
+  "evidence_level": "DIRECT_CODE_AND_SCOPED_INDEPENDENT_REVIEW"
+}
+```
 
-The existing GitHub repository, canonical HQ state, versioned code/return records and PROGRAMMA guide already provide all needed durable structure. This addendum only ensures *linkage, cadence, evidence grade and non-collision*. It is intended to save development time by continuously feeding PROGRAMMA with what real engineering has learned, while keeping the actual Pyat machine as HQ's primary task.
+Use **actual** IDs and fields; this placeholder is not a claim that such an event occurred. A transition with no materially changed behavior, reader, authority, adoption, source fact, or prerequisites needs no new row. No per-test/per-file/progress-tick spam.
 
-## Add to existing Codex Pyat HQ overnight goal (non-disruptive user instruction)
+## 4. Update the existing source-cut assessments without falsifying history
 
-> **FORWARD CONTRIBUTION TO PROGRAMMA — BINDING OPERATIONAL ADDENDUM:** While you perform authorized Pyat engineering, do not merely read PROGRAMMA or give a closing summary. For each coherent material engineering, review, source-discovery, acceptance, failure or consumer milestone, include a compact source-exact `PROGRAMMA_FORWARD_DELTA` section in the **existing permitted HQ motion, return or progress update**. Record exact code/ref/symbols, the relevant Sxx child/edge/GAP identity (or explicitly unmatched), what changed in actual function and first reader, strongest old/current reusable equivalent, author and independent reviewer scope, actual adoption/authority grade, remaining block and next task. Put stable Git SHA links in your normal HQ current progress/decision/handoff records as permitted; make a supplementary standalone delta file only if your existing branch/file authority allows. Observe the existing HQ immutable checkpoint law for material state changes; don't force a checkpoint per test. **Do not edit active PROGRAMMA M1–M5/SAT-R guide branches** and don't imply that a delta is guide-adopted until PROGRAMMA receiving independently checks it. At session end give an index of all material forward deltas. Continue actual Pyat development without waiting for documentation receiving.
+The G4 `COMPONENT_STATUS.jsonl` and `CURRENT_SEAM_STATES.jsonl` were authored from the G2/G3 historical evidence cuts. Their `source_identity`, `original_G2`, review references, old `current.status` and old negative findings **must stay referentially identifiable as judgments at those cuts**. Do not change 2026-11-02 source grades into retroactive 2026-11-03 successes.
+
+For an affected record, add or advance a `latest_hq_observation` / `latest_scope_state` member containing **actual newer motion/commit, scope-specific implementation/review/adoption/native/first-reader status, remaining gap, and recorded date**. The inherited G4 status becomes `baseline_at_original_cut`, not false current truth. The append-only transition ledger retains the sequence. If no newer observation exists, continue to display the pinned source cut and its limits. An unmerged sourcefree candidate can be a positive **branch-candidate** while still not an adopted PRE-MAIN operation.
+
+The 82 initial edge IDs and 62 initial guide component/child IDs remain stable; add justified new IDs when Pyat develops a real new component rather than concealing it. Preserve conditional and alternate edges and independent science/authority classifications. Recompute any summary from these scoped records; never infer a global readiness percentage from counts of files, tests or current guide pages.
+
+## 5. What “Pyat coming up to completion” looks like in PROGRAMMA
+
+For every function/organ/first-consumer edge, readers should see distinct evidence-backed dimensions:
+- **Required function**: original product goal, scientific meaning and earliest prerequisite.
+- **Existing implementation**: historical, current integrated, active branch-only, partial, absent at specified cut or unknown.
+- **Working functional scope**: sourcefree fixture, selected actual first consumer, original native source-qualified operation, or no proof.
+- **Independent judgment**: author test vs reviewer scoped PASS/REVISE/HOLD vs adoption at exact cut.
+- **Authority/science**: permitted source, current owner and separately held/unissued decisions.
+- **Next action**: the smallest build/reuse/connect/qualify/issuer step, and the downstream work it would unlock.
+
+Thus a real improvement visibly changes `S05 child: reviewer accepted sourcefree M1→M2→B5` or `S10 edge: selected sourcefree first reader now proved` while leaving the original measured N9/N10W/N11 native gates held if not independently established. The guide answers **what is finished at which exact scope, what is still missing, and what advancing it buys**. That, not a decorative percentage bar, is the intended live completion picture.
+
+## 6. Working safely during and after finite PROGRAMMA construction
+
+**While SAT-M1–M5 and SAT-R or any other guide-construction agent is active:** Codex HQ continues its authorized engineering and produces **its own direct PROGRAMMA patch/transition record on a disjoint authorized HQ documentation branch**, not on the active worker's files. The HQ owns that patch; it is not entrusted to a “receiving worker.” At the next authorized guide update/merge, HQ itself reconciles exact commits with any concurrent guide edits and publishes its current state. Mark the guide target as pending until the actual merge. Never interrupt other workers.
+
+**After PROGRAMMA's finite initial construction is done:** the incumbent Pyat HQ becomes the **ordinary, permanent maintainer** of its PROGRAMMA guide through authorized Git writes. There is no special receiving phase and no third management system. The same rules continue for months of work. If HQ succeeds in engineering but leaves the guide stale, that productive HQ cycle is **not fully documented** until the affected PROGRAMMA records are updated (without retroactively denying the engineering achievement). If guide state is pending because of an actual owner/protected merge restriction, state that plainly and reconcile on the next authorized custody opportunity.
+
+**On every HQ resumption:** read authoritative checkpoint, current paired progress, and the guide's latest committed state and newest `HQ_DEVELOPMENT_TRANSITIONS.jsonl` entries; reconcile exact changes not yet reflected on either side. Never default to the original G4 evidence cut as if no later code exists.
+
+## 7. Required correction to the overnight Codex Pyat HQ goal
+
+> **BINDING PROGRAMMA LIVE-MAINTENANCE ADDENDUM.** As the appointed Pyat HQ, you are responsible for keeping PROGRAMMA PYAT **directly up to date** as you build, recover, connect, test, adjudicate and integrate Pyat. After each coherent material development transition, append an exact source-backed row to `PROGRAMMA_PYAT/05_ROADMAP/HQ_DEVELOPMENT_TRANSITIONS.jsonl`, and in the **same authorized documentary commit or associated HQ guide patch** update the affected `COMPONENT_STATUS.jsonl`, `CURRENT_SEAM_STATES.jsonl`, relevant Sxx page, original GAP disposition/dependency, and README where the whole-machine next step changes. Crosslink to the actual code/review/HQ decision cuts and preserve former states and scientific/source ceilings. Make a genuine current developer view, not merely a closing handoff note. Use ordinary protected owner/CAS rules for merges and existing checkpoint maintenance; do not claim the guide current until its update is actually published. You yourself maintain PROGRAMMA: **do not assign this to an imagined PROGRAMMA receiving worker or a new HQ.** When PROGRAMMA's initial construction is done, this becomes your normal continuing operating responsibility. Work productively in parallel with its current isolated workers without editing their active branches; retain any pending guide patch on your own authorized branch and reconcile it on actual authorized publication. No per-test bookkeeping, extra CI/daemon or scientific/actor/source rights implied.
