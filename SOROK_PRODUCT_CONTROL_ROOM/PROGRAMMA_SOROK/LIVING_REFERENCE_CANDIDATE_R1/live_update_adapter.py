@@ -26,7 +26,7 @@ SEAMS_FILE = GUIDE_ROOT + "/15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.js
 JOIN_E_SUBJECT = "7bf2da302996491ddf34b9a039fea47ac982d135"
 JOIN_V_REVIEW = "4387dc818a96fda2d5271672505fbd9da1059703"
 REVIEW_RRIF_SUBJECT = "598d9e9eaba5143950c63317705fd09104fbf463"
-VALID_KINDS = {"RETURN_CANDIDATE", "SCOPED_REVIEW", "REVIEW_REVISE", "EDITORIAL_WITHDRAW", "EDITORIAL_RESTORE"}
+VALID_KINDS = {"RETURN_CANDIDATE", "SCOPED_REVIEW", "REVIEW_REVISE"}
 HIGHER_GRADES = {"NATIVE", "OWNER_ADOPTED", "HUMAN_A5", "ORIGINAL_SCIENCE_ISSUED", "FULL_GATE_ACCEPT"}
 VALID_SOURCEFREE_GRADES = {"TEST_ONLY_SOURCEFREE", "SOURCEFREE_SCOPED", "DOCUMENTARY_SOURCE", "INDEPENDENT_NEGATIVE_SOURCE"}
 SHA40 = re.compile(r"^[0-9a-f]{40}$")
@@ -98,14 +98,22 @@ def _verify_locator(source: dict, locator: Any) -> dict:
 def _verify_code(coord: dict, kind: str) -> dict:
     code = coord.get("code")
     symbol = str(coord.get("first_consumer_symbol") or "")
-    if kind in {"SCOPED_REVIEW", "REVIEW_REVISE"}:
+    if kind == "SCOPED_REVIEW":
         _must(code is not None and symbol and symbol != "NONE", "REVIEW_CONSUMER_CODE_REQUIRED")
     if code is None:
         _must(symbol in {"", "NONE"}, "CONSUMER_ASSERTED_WITHOUT_CODE")
         return {"status": "NONE_VERIFIED", "symbol": "NONE", "code": None}
     source, body = _verify_object(code)
-    _must(symbol not in {"", "NONE"} and symbol in body, "FIRST_CONSUMER_SYMBOL_NOT_IN_CODE")
     _must(str(coord.get("code_sha") or source["commit"]) == source["commit"], "CODE_SHA_CROSS_CUT")
+    if kind == "SCOPED_REVIEW":
+        _must(source["commit"] == JOIN_E_SUBJECT, "POSITIVE_REVIEW_FIRST_READER_CROSS_CUT")
+    if symbol in {"", "NONE"}:
+        _must(kind != "SCOPED_REVIEW", "POSITIVE_REVIEW_WITHOUT_FIRST_CONSUMER")
+        producer = str(coord.get("producer_symbol") or "")
+        _must(bool(producer) and producer in body, "SOURCE_PRODUCER_SYMBOL_NOT_FOUND")
+        return {"status": "EXACT_SOURCE_PRODUCER_FIRST_READER_NONE",
+                "symbol": "NONE", "producer_symbol": producer, "code": source}
+    _must(symbol in body, "FIRST_CONSUMER_SYMBOL_NOT_IN_CODE")
     return {"status": "SOURCE_PRESENT_NOT_NATIVE", "symbol": symbol,
             "code": source, "grade": "EXACT_CODE_SYMBOL_AT_PINNED_CUT"}
 
@@ -189,19 +197,6 @@ def validate_delta(state: dict, payload: Any) -> dict:
         _must(grade == "INDEPENDENT_NEGATIVE_SOURCE" and coord["scope"] == "SOURCEFREE_RRIF_R2_NEGATIVE",
               "REVISE_SCOPE_MISMATCH")
         extra = _negative_review(payload)
-    elif kind in {"EDITORIAL_WITHDRAW", "EDITORIAL_RESTORE"}:
-        prior = str(payload.get("withdraws_transition_id") or "")
-        earlier = next((x for x in state.get("programma_deltas", []) if x["transition_id"] == prior), None)
-        _must(earlier is not None and earlier["guide_ref"] == ref and earlier["node_id"] == payload["node_id"],
-              "UNKNOWN_OR_CROSS_SCOPE_WITHDRAWAL_TARGET")
-        _must(earlier["kind"] not in {"REVIEW_REVISE"}, "INDEPENDENT_NEGATIVE_CANNOT_BE_WITHDRAWN_BY_EDITOR")
-        proof_ref, proof_body = _verify_object(payload.get("editorial_proof"))
-        _must(("EDITORIAL_EXCLUDE:" if kind == "EDITORIAL_WITHDRAW" else "EDITORIAL_RESTORE:") + prior in proof_body,
-              "EDITORIAL_ACTION_NOT_IN_EXACT_SOURCE")
-        _must("SOROK_HQ" in proof_body and "NOT_NATIVE_SOURCE_WITHDRAWAL" in proof_body,
-              "UNVERIFIED_EDITORIAL_ACTOR_OR_SCOPE")
-        extra = {"editorial_action_only": True, "prior": prior, "proof": proof_ref,
-                 "caveat": "SUPPRESSION_OF_CANDIDATE_VIEW_NOT_WITHDRAWAL_OF_ORIGINAL_SOURCE_OR_REVIEW"}
     return {"transition_id": transition_id, "guide_ref": ref, "node_id": payload["node_id"],
             "kind": kind, "owner_slot": owner, "source": source, "source_locator": found,
             "code": verified_code, "grade": grade, "subject_sha": payload.get("subject_sha") or source["commit"],
@@ -222,8 +217,7 @@ def apply_delta(state: dict, payload: dict, *, event_id: str | None = None) -> d
     receipt["event_id"] = event_id
     receipt["status"] = ("SOURCE_PRESENT_CANDIDATE" if receipt["kind"] == "RETURN_CANDIDATE"
                          else "SCOPED_SOURCEFREE_ACCEPTED" if receipt["kind"] == "SCOPED_REVIEW"
-                         else "EXACT_NEGATIVE_REVIEWED" if receipt["kind"] == "REVIEW_REVISE"
-                         else "EDITORIAL_VIEW_CHANGE_ONLY")
+                         else "EXACT_NEGATIVE_REVIEWED")
     state.setdefault("programma_deltas", []).append(receipt)
     state.setdefault("node_evidence", {}).setdefault(receipt["node_id"], []).append({
         "kind": "PROGRAMMA_DELTA_DOCUMENTARY", "transition_id": receipt["transition_id"],
@@ -243,15 +237,9 @@ def apply_delta(state: dict, payload: dict, *, event_id: str | None = None) -> d
 
 
 def _active(state: dict) -> tuple[list[dict], set[str]]:
-    records = state.get("programma_deltas", [])
-    excluded: set[str] = set()
-    for item in records:
-        if item["kind"] == "EDITORIAL_WITHDRAW":
-            excluded.add(item["withdraws_transition_id"])
-        if item["kind"] == "EDITORIAL_RESTORE":
-            excluded.discard(item["withdraws_transition_id"])
-    return [r for r in records if r["kind"] not in {"EDITORIAL_WITHDRAW", "EDITORIAL_RESTORE"}
-            and r["transition_id"] not in excluded], excluded
+    # P0/P1 journal withdrawal is already handled during replay; a caller's
+    # invented SOROK_HQ text signature cannot authorize editorial mutation.
+    return list(state.get("programma_deltas", [])), set()
 
 
 def project(state: dict) -> dict:
@@ -280,6 +268,8 @@ def project(state: dict) -> dict:
                 and d["subject_sha"] == JOIN_E_SUBJECT
                 and d["coordinate"]["root"] == "JOIN_E_7BF_SOURCEFREE"
                 and m.get("required_scope") in {"DOCUMENTARY_REQUIREMENT", "SOURCEFREE_SCOPED_EXACT"}
+                and state.get("axes", {}).get(d["node_id"], {}).get("source_recovery") not in lr.NEGATIVE_SOURCE
+                and state.get("axes", {}).get(d["node_id"], {}).get("review") not in lr.NEGATIVE_REVIEW
                 for d in by_ref.get(member_ref, [])
             )
             negative = [d for d in by_ref.get(member_ref, []) if d["kind"] == "REVIEW_REVISE"]
