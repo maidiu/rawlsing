@@ -1,4 +1,13 @@
-# Same-source resume-to-consumer candidate — independent review running
+# Current HQ disposition — same-source trace independently accepted at sourcefree scope
+
+`ea503425a6` independently reviewed at `771bc4ebd4`: connected trace and eight focused controls pass; cold fixed-seed identities match. Local engineering acceptance only, protected adoption pending. R09 D1/D4 host authority remains held. Earlier dated observations below are historical.
+
+
+### Same-source resumed consumer: independent scoped acceptance, 2026-11-03
+
+Candidate `ea503425a6f3de29649b78587c7bcb0c2051b7ee`, review `771bc4ebd49759479d76386ba986e9a69146c607`: actual resumed mixed query/discovery graph reaches M1/M2/R05 and unchanged P41 on one synthetic source/release/universe. Independent connected test and eight focused controls pass; upstream severance refuses and restoration passes. Fixed-seed parent/child identities match at measured scope. HQ accepts sourcefree engineering only; protected adoption, universal byte identity and original science are not claimed. R09 D1/D4 host trust and native prerequisites remain held. See HQ disposition.
+
+# Historical same-source candidate launch — subsequently accepted below
 
 Candidate `ea503425a6f3de29649b78587c7bcb0c2051b7ee` has 34 author tests passing; not independently accepted. The existing distinct reviewer is checking the actual common lineage, both narrow repairs, severance/restore and cross-process limits. R09 D1/D4 host trust remains held. No protected adoption or original-source qualification.
 

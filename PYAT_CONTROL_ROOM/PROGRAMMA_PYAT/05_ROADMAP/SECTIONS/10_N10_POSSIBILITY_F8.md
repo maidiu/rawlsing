@@ -141,3 +141,8 @@ Candidate `8779504a63` on `agent/pyat-current-receiving-r06-assembly-20261103-r1
 ### Clean receiving assembly: scoped independent acceptance (2026-11-03)
 
 Candidate `8779504a638ff39d6904ed2faf5a718242084c4e`, review `e24b70eac51d0894c7e5af7604ab7afc2376dbe6`: eight focused tests passed. HQ accepts exact sourcefree compatibility, retained resume, and the actual consumer at their demonstrated separate-fixture scope. A single same-source release/unit joined trace remains unproved. No protected adoption or original science is claimed. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`.
+
+
+### Same-source resumed consumer: independent scoped acceptance, 2026-11-03
+
+Candidate `ea503425a6f3de29649b78587c7bcb0c2051b7ee`, review `771bc4ebd49759479d76386ba986e9a69146c607`: actual resumed mixed query/discovery graph reaches M1/M2/R05 and unchanged P41 on one synthetic source/release/universe. Independent connected test and eight focused controls pass; upstream severance refuses and restoration passes. Fixed-seed parent/child identities match at measured scope. HQ accepts sourcefree engineering only; protected adoption, universal byte identity and original science are not claimed. R09 D1/D4 host trust and native prerequisites remain held. See HQ disposition.

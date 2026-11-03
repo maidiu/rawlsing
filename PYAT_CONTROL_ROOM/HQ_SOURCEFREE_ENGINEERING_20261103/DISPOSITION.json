@@ -31,5 +31,21 @@
     "joined_trace_proved": false,
     "remaining": "Same-source release/unit trace from governed execution through checkpoint/resume to unchanged downstream consumer remains unproved; protected integration and R09 host boundary remain held",
     "native": "NO_ORIGINAL_SOURCE_OR_SCIENTIFIC_CLAIM"
+  },
+  "same_source_trace": {
+    "transition_id": "PYAT-HQ-SAME-SOURCE-SCOPED-ACCEPTANCE-20261103",
+    "observed_at_utc": "2026-11-03T14:32:26.996116+00:00",
+    "kind": "SCOPED_HQ_ACCEPTANCE",
+    "candidate": "ea503425a6f3de29649b78587c7bcb0c2051b7ee",
+    "review": "771bc4ebd49759479d76386ba986e9a69146c607",
+    "review_artifact_commit": "4f2b4f8753c537b65b7d807312341e6fa2937b54",
+    "verdict": "ACCEPT_SCOPED_SAME_SOURCE_RESUME_CONSUMER",
+    "evidence": "34 author tests; independent connected path 1 PASS/54.92s and focused custody/consumer 8 PASS/21.86s; six artifact hashes and three candidate pins verified",
+    "actual_chain": "One synthetic source/release/universe: governed query/discovery -> partial mixed checkpoint -> cold resume without rerun -> resumed graph -> M1/M2/R05 -> unchanged P41",
+    "negative_evidence": "Wrong source/revoked refuse; actual evidence severance refuses; restoration returns same positive view",
+    "cold_scope": "Fixed-seed measured parent/child identities match; no universal cross-environment byte identity claim",
+    "adoption": "SCOPED_LOCAL_SOURCEFREE_ACCEPTANCE_UNMERGED",
+    "native": "NO_ORIGINAL_SOURCE_OR_SCIENTIFIC_ACCEPTANCE",
+    "remaining": "Qualified receiving procedure; R09 D1/D4 host/admin trust boundary held; F5/F6/F7, original35, N11/N12 and J52/W52 unchanged"
   }
 }
