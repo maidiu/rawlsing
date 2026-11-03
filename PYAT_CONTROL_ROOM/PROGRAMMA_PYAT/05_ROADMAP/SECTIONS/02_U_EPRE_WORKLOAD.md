@@ -224,3 +224,6 @@ Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receivin
 ### PR646 sourcefree adoption — 2026-11-03
 
 User authorized qualified receiving; PR #646 merged at `079e819f81d77857d6c39c9817ea43d22b4e45ff`, remote verified. Reviewed production blobs unchanged. Actual single synthetic source checkpoint/resume -> M1/M2/R05 -> unchanged P41 chain is now PRE-MAIN sourcefree engineering capability. Sourcefree CI and both executable proof witnesses pass. Broad court retains 144 PASS/3 historical hash-pin FAIL on unchanged inputs; not full green. R09 D1/D4 host trust, original-source/science and higher-stage holds remain. Own PROGRAMMA branch records adoption; no implicit guide branch merge. Exact receipt: `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/RECEIVING_646/ADOPTION.json`.
+
+
+P1 occurrence attempt `6949efbc3`. 420/420 accounted; zero executed. 420 variable-code matches, zero exact occurrence identities. 210 entries request value 0 outside fixture domain 1,2,3. P1 ItemRegistry owner must supply exact SourceItem-to-C11 item/option/form/repeat binding, then R03 policy, risk-set and direction owner inputs. Reuse existing conditional/joint engine.

@@ -178,3 +178,6 @@ HQ accepted D2P3 at sourcefree producer-to-N9C scope after independent review `8
 
 
 F6 independent recheck 7f2e71822f360c492e016f46145af5277040468b accepted candidate 22d6712090970597e0c161b9f12eaece84bda5c5 at sourcefree comparison scope. F6M bounds reach F6P; tested WP2 expression raises raw KeyError(native_bundle). No downstream WP2 effect was executed. Reuse existing producer and evidence consumer. Receiver owner must define how partial bounds and uncovered target mass are consumed. Original population/estimand and transport authority held.
+
+
+P1 occurrence attempt `6949efbc3`. 420/420 accounted; zero executed. 420 variable-code matches, zero exact occurrence identities. 210 entries request value 0 outside fixture domain 1,2,3. P1 ItemRegistry owner must supply exact SourceItem-to-C11 item/option/form/repeat binding, then R03 policy, risk-set and direction owner inputs. Reuse existing conditional/joint engine.
