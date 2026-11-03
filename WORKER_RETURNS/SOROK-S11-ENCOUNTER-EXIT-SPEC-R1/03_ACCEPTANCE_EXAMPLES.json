@@ -1,0 +1,165 @@
+{
+  "base": "ce2478aa38eec7fb021aa95c01464a468a46fbc9",
+  "examples": [
+    {
+      "forbidden": [
+        "B private motive",
+        "hidden A state",
+        "relationship score"
+      ],
+      "id": "A1_SAY_REFUSAL",
+      "source": "5e63672543973ce2533129e1ca3224d82af0dffc:WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/evidence/targetless_refusal.json",
+      "source_blob": "54bd91c655df6f31def194f678a5ac32c026ab46",
+      "visible": {
+        "accepted": false,
+        "gesture": "A looks at the empty tool space.",
+        "speech": "The tool's gone. I can't do it today.",
+        "strategy": "HELP_REFUSE",
+        "surface": [
+          "the repair worker says: \"The tool's gone. I can't do it today.\" A looks at the empty tool space."
+        ],
+        "tools_remaining": 0
+      }
+    },
+    {
+      "forbidden": [
+        "hidden affection",
+        "relationship score"
+      ],
+      "id": "A2_SAY_ACCEPT",
+      "source": "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/actual_a_evidence.json#worlds.performed-omit.join_e.help",
+      "source_blob": "6d0a2978fd2b136132063edca214ae4a2972ce2ca31f710d47bb517659d42237",
+      "visible": {
+        "accepted": true,
+        "gesture": "A clears a space at the bench.",
+        "speech": "Put your hand on the near edge. I'll take the slack.",
+        "strategy": "HELP_ACCEPT",
+        "tools_remaining": 1
+      }
+    },
+    {
+      "forbidden": [
+        "hidden actor motive",
+        "unperceived event detail"
+      ],
+      "id": "A3_DO_VISIBLE",
+      "source": [
+        "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/actual_a_evidence.json#worlds.performed-e2.a_evidence.world_events",
+        "WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/evidence/actual_a_evidence.json#worlds.performed-omit.a_evidence.world_events"
+      ],
+      "source_blob": "6d0a2978fd2b136132063edca214ae4a2972ce2ca31f710d47bb517659d42237",
+      "visible": {
+        "inspect": {
+          "body": {
+            "changed": false
+          },
+          "clock": 10,
+          "kind": "INSPECT"
+        },
+        "repair": {
+          "body": {
+            "cash_delta": 2,
+            "completed_delta": 1,
+            "hours_delta": -1,
+            "material_delta": -1,
+            "source_owned": true
+          },
+          "clock": 10,
+          "kind": "REPAIR"
+        }
+      }
+    },
+    {
+      "forbidden": [
+        "market commission summary",
+        "market event id",
+        "hidden B motive"
+      ],
+      "id": "A4_ATTEND_KNOWN_AND_UNKNOWN",
+      "source": "913765328e4fab12b150ea01421ed6b445158184:WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json",
+      "source_blob": "b52b0c9a9ff6b49acf5b3f648f33cd49ad7cebdb",
+      "visible": {
+        "market_question": {
+          "answer": "UNKNOWN: A did not perceive B's market commission.",
+          "evidence_event_ids": [],
+          "read_only": true,
+          "status": "UNKNOWN"
+        },
+        "tool_question": {
+          "answer": "A perceived B take the workshop tool, could not repair while it was away, and perceived its return.",
+          "evidence_event_ids": [
+            "TEST_ONLY_CP_A5_EVT_4c125f8d9e3c39820e3018bf7a51dd421f0022236c8a1afff0073be36bb643c2",
+            "TEST_ONLY_CP_A5_EVT_0322dfcf4a1013c37297490cf0f2ab31fade8d429102fcac5afc09affa6d19e4",
+            "TEST_ONLY_CP_A5_EVT_1f8a60853959a1c10d5d43d2aed74c0d81de2bfdc878ec67ce1d65455290d6f8"
+          ],
+          "read_only": true,
+          "status": "OK"
+        },
+        "unperceived_event_count": 4
+      }
+    },
+    {
+      "forbidden": [
+        "fabricated time passage",
+        "fabricated event"
+      ],
+      "id": "A5_WAIT_TYPED_HOLD",
+      "source": "missing producer \u2014 no wait/time-advance receipt in JOIN-E 5e6367 or CP-A5 9137653",
+      "visible": {
+        "clock_changed": false,
+        "result": "WAIT_UNSUPPORTED_TYPED_HOLD",
+        "world_event_created": false
+      }
+    },
+    {
+      "forbidden": [
+        "teleport",
+        "fabricated leave event",
+        "fabricated relationship change"
+      ],
+      "id": "A6_EXIT_RETURN_TYPED_HOLD",
+      "source": "missing producer \u2014 no user exit/return/absence receipt in JOIN-E 5e6367 or CP-A5 9137653",
+      "visible": {
+        "exit": "LOCAL_EXIT_ONLY",
+        "return": "RETURN_UNSUPPORTED_TYPED_HOLD"
+      }
+    },
+    {
+      "forbidden": [
+        "B private cause inference",
+        "forced speech contrast"
+      ],
+      "id": "A7_REFUSAL_AND_ABSENCE",
+      "source": "5e63672543973ce2533129e1ca3224d82af0dffc:WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/evidence/b_event_contrast.json",
+      "source_blob": "b2d819aff09f9c20ac1d9ada88a72eb9fb53ba3a",
+      "visible": {
+        "omitted_help": {
+          "accepted": false,
+          "strategy": "HELP_REFUSE"
+        },
+        "performed_help": {
+          "accepted": true,
+          "strategy": "HELP_ACCEPT"
+        },
+        "refused_help": {
+          "accepted": false,
+          "strategy": "HELP_REFUSE"
+        }
+      }
+    },
+    {
+      "forbidden": [
+        "market event summary",
+        "market event id",
+        "hidden cause explanation"
+      ],
+      "id": "A8_HIDDEN_STATE_NON_DISCLOSURE",
+      "source": "913765328e4fab12b150ea01421ed6b445158184:WORKER_RETURNS/SOROK-CP-A5-R2/01_ACTUAL_A3_A5_LIFE_AND_ENCOUNTER_TRACE.json#encounter_market",
+      "source_blob": "b52b0c9a9ff6b49acf5b3f648f33cd49ad7cebdb",
+      "visible": "UNKNOWN only"
+    }
+  ],
+  "grade": "TEST_ONLY_SOURCEFREE_UX_SPEC_NOT_HUMAN_TRIAL",
+  "native": false,
+  "schema": "SOROK_S11_ACCEPTANCE_EXAMPLES@1"
+}
