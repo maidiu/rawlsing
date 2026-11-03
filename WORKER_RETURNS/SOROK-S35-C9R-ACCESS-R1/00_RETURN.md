@@ -351,13 +351,13 @@ Controlled inputs above are explicitly `TEST_ONLY_CONTROLLED_FIXTURE`, `actual_a
 
 ## 8. Publication
 
-Compatibility base `a6b1f10b37c0748b0b6880e1870a2c4f07844be9`, prior repair commit `08569b7481aec4f81b83b35f0099c1f5e9bb012a` and JOIN-E source commit `5e63672543973ce2533129e1ca3224d82af0dffc` remain recorded. The bounded JOIN-E x S35 proof commit `d065041721171a855cff3076ff77d0190b5baa44` was pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
+Occurrence-consumer base `c5602ec87ba6e951540b89a49404db76c128eb50`, compatibility base `a6b1f10b37c0748b0b6880e1870a2c4f07844be9`, PROGRAMMA disposition `29aa0f9e81fe1f371f2773d4750e1838bdd63daf` and JOIN-E source commit `5e63672543973ce2533129e1ca3224d82af0dffc` remain recorded. The same-root admitted-occurrence consumer commit `12d466e8210a331644d9e3b4b26f407743b03f97` was pushed with an ordinary non-force push to `origin/codex/sorok-s35-c9r-access-r1`. Direct remote readback:
 
 ```text
 git rev-parse HEAD
-d065041721171a855cff3076ff77d0190b5baa44
+12d466e8210a331644d9e3b4b26f407743b03f97
 git ls-remote origin refs/heads/codex/sorok-s35-c9r-access-r1
-d065041721171a855cff3076ff77d0190b5baa44  refs/heads/codex/sorok-s35-c9r-access-r1
+12d466e8210a331644d9e3b4b26f407743b03f97  refs/heads/codex/sorok-s35-c9r-access-r1
 ```
 
-`PUBLICATION_RECEIPT.json` records that proof push, readback and the exact same-root incompatibility. The staged `.s35-sources` input and the extracted `.runtime` JOIN-E source were not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
+`PUBLICATION_RECEIPT.json` records that push, readback, exact first consumer, distinct-clock read and the remaining full-pipeline incompatibility. The staged `.s35-sources` input and the extracted `.runtime` JOIN-E source were not committed. This return-metadata update is a follow-up scoped commit; the final branch tip SHA is returned in the worker handback.
