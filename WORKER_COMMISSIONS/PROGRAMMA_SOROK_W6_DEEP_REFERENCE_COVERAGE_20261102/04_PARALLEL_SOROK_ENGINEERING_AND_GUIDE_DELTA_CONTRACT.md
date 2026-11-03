@@ -1,4 +1,22 @@
 # Concurrent Sorok real development and PROGRAMMA deepening — minimal interoperability contract
+
+## USER REQUIREMENT R2 — KEEP THE LIVE ENGINEERING QUEUE IN SYNC WITH REAL PREREQUISITE SATISFACTION
+
+Read 05_EXECUTABLE_DEPENDENCY_READINESS_AND_PRIORITY_CONTRACT_R2.md. When an actual Sorok worker returns, the essential update is NOT merely "we changed component X"; it is **which exact prerequisite gate@phase this work satisfies, fails or leaves unresolved**, which downstream item is newly READY or remains BLOCKED, what evidence proves that status, and whether joint interface work is necessary.
+
+**Ordinary return delta additions (only when applicable, no new bureaucracy):**
+- Exact component target and KNOW/SPECIFY/BUILD/INTEGRATE/VERIFY/ACCEPT claim scope, with old vs new evidence status.
+- The preconditions satisfied at exact source/review/owner cut and all unsatisfied AND gates; actual chosen OR alternative and its valid predicate; no false grant from sourcefree author tests.
+- Exact typed producer→consumer seam, original ID and existing D/E parent; whether it unblocks a separate downstream phase or requires CO_DESIGN owners/contract.
+- Reverse unlocks and ready independent work **computed from remaining unsatisfied prerequisites**, not a new speculative task list.
+- If a genuine dependency cycle is detected during actual work, name the participants and whether it is a combined design package or a missing architecture decision.
+
+W6 workers and guide integrator may compute WORK_NOW from existing records for advisory planning, but **never automatically dispatch or accept science**. Incumbent Codex HQ can continue already properly authorized Sorok work while guide analysis proceeds; any new proposed priority/order is advisory until HQ source/currentness verification.
+
+These R2 directions supersede weaker references below to generic "priority and unlock deltas"; all protections and normal minimal update procedures remain intact.
+
+---
+
 **Date 2026-11-02. Status:** proposed user/HQ-facing handoff note on isolated research branch. No protected branch mutation and no mandate for new controller/monitoring platform.
 
 The active Codex HQ can **continue building Sorok itself** while separate Browser research agents deepen PROGRAMMA SOROK. **W5 e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde is the verified initial guide baseline, not a currentness oracle, and not a scientific/native adopter.** W6's source audit does not place a blanket development hold on separate actionable Sorok work.
