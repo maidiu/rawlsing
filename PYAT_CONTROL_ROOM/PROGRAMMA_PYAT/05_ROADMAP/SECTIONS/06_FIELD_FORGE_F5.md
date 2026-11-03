@@ -1,5 +1,10 @@
 # ROADMAP:S06 — Field Forge F5 and demanded objective PRE-V3
 
+## NEXT R FF/F5 conditional source/science leaf, not a free engineering task — 2026-11-03
+
+**S06 / F5 and N6.** Existing typed FF sourcefree count/profile/GT12 bridges and source-limited F5 receipt/consumer links remain useful, but E1's current `773...` tree-blob status on many FF/IF sources is **not a new direct executed native reader**. Real demanded-objective original35 Field Forge structure and causality require the competent structural/measurement owner; F5 is not an unconditional edge on every empirical F1–F4 route. Preserve IF predicates and OR alternatives in [82 current seam overlay](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) and [E2 49 owner leaves](../NEXT_R_GAP49_NEXT_DECISIONS.md). If no selected terminal demands F5, `STOP_UNLESS_IF` is lawful; don't trigger an autonomous FF implementation.
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
