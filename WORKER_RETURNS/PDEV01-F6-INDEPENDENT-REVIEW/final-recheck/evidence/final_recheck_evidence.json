@@ -1,0 +1,113 @@
+{
+  "candidate_commit": "22d6712090970597e0c161b9f12eaece84bda5c5",
+  "candidate_commit_files_all_in_comparison_root": true,
+  "checkout_root_hash_limit": {
+    "candidate_hashes": {
+      "W1_full_coverage_disjoint": "20f1d417843920e7913149db0cd9083dae9cc1db0d5031393a6bb1c297a915f9",
+      "W2_mixed_eligibility_trap": "362cd898d9a01831973a2c4463f80185fdb352bb0e7bbdcc63cdca45d89a40c3",
+      "W3_minority_whole_stratum_absent": "037f9634c59b771439998f4a20eeb455dab762bc640a29d5f59f4fa8abb5573e",
+      "W7_source_excluded_all_strata": "b099bd3040fc8edb65fc246f122ffda92bc326074d686868df83a16e0fa304f9"
+    },
+    "cause": "F6P output_hash includes absolute source_product.module_file; no cross-checkout-root byte identity is claimed.",
+    "path_only_difference": true,
+    "review_hashes": {
+      "W1_full_coverage_disjoint": "2fbe5cff7445483fc7ad266c0b62599351cad66aae9dbc9c764ad08afa4db1cc",
+      "W2_mixed_eligibility_trap": "a32ddca16debc3e42620e7a086b9c0b30635bfb3b44a7f847ea3021263b608e0",
+      "W3_minority_whole_stratum_absent": "b3820858afeaffaf276555fc6882b768b242facdca0dac3b5fb9b9ac6980344c",
+      "W7_source_excluded_all_strata": "4e83945fdf516a956fa9a64d8a2ba4f24723394cf4e1e905de5b8e1e20fec2c5"
+    },
+    "scope": "same-checkout seed0/seed1 byte identity only; semantic fields portable across checkout roots",
+    "semantic_fields_equal": true,
+    "snapshot_w1_output_hash": "5194fa883b305687e2653ad208798eb8e329bd8ead6a6d5165a653a91de6089a"
+  },
+  "comparison_output": {
+    "same_checkout_scope": true,
+    "seed0_equals_seed1": true,
+    "seed0_sha256": "a7aa424764a7eb8639efaaa1bfe6be34e99e111ac69f11390e77ed23f3654029",
+    "seed1_sha256": "a7aa424764a7eb8639efaaa1bfe6be34e99e111ac69f11390e77ed23f3654029"
+  },
+  "correction_tests": {
+    "seed0": {
+      "sha256": "566b533769efda184c621fadcbb3499a3de7b732897627c27b430e8565082bbb",
+      "tail": "4 passed in 0.14s"
+    },
+    "seed1": {
+      "sha256": "6a145783a5cbfd88733842418703ac7d87dd27ec619e724919231c769528467e",
+      "tail": "4 passed in 0.13s"
+    }
+  },
+  "diagnostic_ownership": {
+    "authored_in_run_comparison": true,
+    "emitted_by_f6p": false,
+    "emitted_by_wp2": false,
+    "label": "COMPARISON_LOCAL_BOUNDARY_SHAPE_DIFFERENCE__NOT_EMITTED_BY_F6P_OR_WP2",
+    "observed_effect": null,
+    "old_effect_claims_absent": true,
+    "wp2_receiver_executed": false
+  },
+  "exact_tree_scope_note": "Candidate correction commit 22d671 changed only WORKER_RETURNS/PDEV01-F6-COMPARISON; production tree content remains the aa18b6b85 content used by the prior exact-tree scan.",
+  "f6c_historical_outputs": {
+    "manifest_sha256": "0f01a0e5c7935adb723375b56395f1d73180abe31b747416273b11f8ae273d9f",
+    "observations": {
+      "actual_C1_returns_invariant": true,
+      "cases_invariant": true,
+      "f6_sidecars_differ": true,
+      "generic_without_f6_sidecars_invariant": true,
+      "nonparent_consumer_invariant": true
+    },
+    "outputs": {
+      "A": {
+        "bytes": 9204043,
+        "exact_historical_bytes": true,
+        "git_blob": "1357a834c5fe56fc53a33e12db84633ed4b68595",
+        "sha256": "3df50e9801326e43925150611de5d6fa2a89f4b7ee38bce093c96139e6a68561"
+      },
+      "A0": {
+        "bytes": 9203068,
+        "exact_historical_bytes": true,
+        "git_blob": "e246e76861e1708615c5eb558abe8e4102ad66e2",
+        "sha256": "0bb40d883c4f0aab1b07218b8cb32e618e7560a57b796e643f3c53060423d110"
+      },
+      "B": {
+        "bytes": 9210880,
+        "exact_historical_bytes": true,
+        "git_blob": "b4d8213650f00a318ec326e0849694512d89abc5",
+        "sha256": "01e0bce46799320da8f9c61f1edae04dc081574542fc0b78ff3d5277a767b720"
+      }
+    },
+    "outputs_present_here": true,
+    "receipt_contains_output_bodies": false
+  },
+  "limits": [
+    "Exact candidate snapshot 22d671 only; no original source or production adoption.",
+    "F6M/F6P remain sourcefree TEST_ONLY artifacts.",
+    "Checkout-root output hashes are path-dependent; only same-checkout seed identity is claimed.",
+    "Historical F6C outputs are embedded separately; receipt bodies are not self-contained."
+  ],
+  "raw_keyerror": {
+    "args": [
+      "native_bundle"
+    ],
+    "f6p_has_native_bundle": false,
+    "f6p_has_native_conditional_consumer": false,
+    "first_missing_field": "native_bundle",
+    "str": "'native_bundle'",
+    "type": "KeyError"
+  },
+  "review_commit": "23edffb32141c133c8b45b723bb23f092928115c",
+  "schema": "PDEV01_F6_FINAL_RECHECK_EVIDENCE@1.0.0",
+  "scoped_verdict": "ACCEPT_ENGINEERING_CORRECTION__SCIENCE_AUTHORITY_HOLD_UNCHANGED",
+  "shape_evidence": {
+    "args": [
+      "native_bundle"
+    ],
+    "partial_bounds_reach_current_wp2_receiver": false,
+    "raw_exception": "KeyError",
+    "wp2_receiver_executed": false
+  },
+  "snapshot": {
+    "files": 82,
+    "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pdev01-f6-final.GTpuuj",
+    "snapshot_receipt_sha256": "e34e7e6e931c1683ffc2b413c129755fab0ec9926e3ae28721af7e62a5aebc9e"
+  }
+}
