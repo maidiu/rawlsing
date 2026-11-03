@@ -1,5 +1,12 @@
 # W8-R FINAL WORK-NOW — ONE CHOSEN OUTCOME, ALL ACTIVE MEMBERS, ACTUAL FIRST READER
 
+## Receiving R1 — cross-jurisdiction work-now precedence and explicit nonclaims
+
+**Use [16 keyed mechanism rows](16_PYAT_SOROK_SOURCE_TO_ACTOR_RECEIVING_20261103_R1.jsonl) and same-row receiving metadata on E001/E002 in 15.** The first lawful engineering unit, once responsible owners select it, is **an exact two-phase position-conditioned M4/M5→C0/C4 readset comparison with simulated authorized inputs**, with tests for valid-empty, changed binding, F2 envelope, two-channel refresh, no actor-fact promotion and permission failure. This is *modeled ABI execution only*, not native original35, no source science, no actor consent or 38-seam JOIN. In parallel, retain Q86 count/GT12 as canary and demand source-owner selected F4→F5/N6 evidence for any general claim. First native Pyat N11/N12 importer to C0/C11 and C4 **NONE**; must not be papered over by identical `C11` names. Under source/model/actor holds, the next scientific question is **which particular activity and history warrant each immediate and durable CAN-008/010/011/ADP update**; stop at NO_CHANGE/HOLD where no issuer. The user-settled 3–5 event prospective/actual/retrospective loop governs batching, not event-by-event LLM inference. W8-R's twelve original blocked stages and W8-V review reservation persist.
+
+---
+
+
 **Source pins:** W8-F `097d46c47b6e41ff93a427e54646195892644cde` source-qualified repaired guide; W8-J `b78528a314aa26f6167d34e3e6a8bb045ae6ebdc` (38 conditional/source negative joins, prior W7-I author proximity); W8-N `9b0b5f3aae6cb8fd77d257170c31be77511ca52e` (12 terminal source/owner limits, 16 direct reads, 8 non-gating candidate stages, prior W6-B/D author proximity). W8-R conducts S0–S1 documentary integration; no S2/S3 or native/human execution. For concrete full twelve-case readbacks see [W8-R 03](../../WORKER_RETURNS/PROGRAMMA_SOROK_W8R_FINAL_FANIN_20261103_R1/03_TWELVE_REAL_WORK_NOW_READBACKS.md).
 
 ## Exact work selection algorithm (not executable Sorok source)
