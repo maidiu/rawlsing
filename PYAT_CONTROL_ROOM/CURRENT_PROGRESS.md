@@ -1,3 +1,9 @@
+# PYAT HQ — isolated sourcefree reuse/repair, 2026-11-03
+
+This is an isolated HQ branch observation, not protected receiving or a new science grant. R06 exact newer-module assembly `75bc20cdd`:17existing+14retained hostile probes pass byHQ replay. R09 D7-only repair `da101f1a7`:15authorPASS, central D1/D4/host HOLD remains. R00 packaging repair `4646e2944c`:26manifest/29sums verified and repeat-idempotent, gate/tests unchanged. Existing distinct qualified reviewer session `ses_e98c8dfe6ffewNYOqJpvqK21a6` is reviewing these exact three bounded changes; no acceptance yet. PROGRAMMA own patch prior tip `0cc403996b` records corresponding transition IDs and latest observations; receiving integration remains pending. See paired JSON latest_hq_isolated_engineering_observation for exact refs. Historical receiving record retained below, not retroactively edited.
+
+---
+
 # PYAT RRIF — FINITE TERMINAL CLOSEOUT — 2026-11-01
 
 The post-gap RRIF branch/function recovery docket is **CLOSED at exact finite historical scope**, not as full original-source science or total Rawlsing production. Current protected receiving has C3 PR #602 MERGED `0075c15fdfb1ca7dea3c5cb54ace3652e0201441` and B5/M2 PR #605 MERGED `fe3f5b4714b11015813537407f7eb4bbb6bc2c10`. M2 modern scoped sourcefree 175 PASS unfiltered, direct proof witness PASS, original M2 v1.0 unchanged archived. Historic G01 2 RED, FIABC 144 PASS/3 RED, S06FR old 12 defect-presence assertion RED retained. 34 lineages/321 code branch identities/155 introducers fully accounted with narrow current, explicitly held and historical non-current fates. All native/source-science/actor/external rights remain held. PROGRAMMA remains stopped by user until fresh explicit release. Canonical terminal detail: `PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/RRIF_FINITE_TERMINAL_CLOSEOUT_20261101.md`; exact row ledger `RRIF_THIRTY_FOUR_LINEAGE_TERMINAL_20261101.jsonl`.
