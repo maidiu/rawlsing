@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="7" time="0.077" timestamp="2026-11-03T13:02:32.685083-05:00" hostname="mainMac.lan"><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED01_exact_D2P_field_refs_must_dereference_in_downstream_registry" time="0.002"><failure message="AssertionError: assert 'REFUSED_REQU...ELD_TEST_ONLY' == 'TWO_VALUES_READ_TEST_ONLY'&#10;  &#10;  - TWO_VALUES_READ_TEST_ONLY&#10;  + REFUSED_REQUIRED_FIELD_TEST_ONLY">def test_RED01_exact_D2P_field_refs_must_dereference_in_downstream_registry():
+        x=rows(); fields=produce_two_fields(x);reg=TestOnlyRegistry(x)
+        # Real result: BOTH UNKNOWN_EXACT_FIELD_REF; test demands successful values-read.
+        got=read_produced_refs(fields,reg)
+&gt;       assert got['state']=='TWO_VALUES_READ_TEST_ONLY'
+E       AssertionError: assert 'REFUSED_REQU...ELD_TEST_ONLY' == 'TWO_VALUES_READ_TEST_ONLY'
+E         
+E         - TWO_VALUES_READ_TEST_ONLY
+E         + REFUSED_REQUIRED_FIELD_TEST_ONLY
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:26: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED02_downstream_dependency_readset_must_bind_original_producer_refs" time="0.001"><failure message="AssertionError: assert ['TESTONLY_FI...7798f527b106'] == ['D2P_TESTONL...dd55cc7cb1ba']&#10;  &#10;  At index 0 diff: 'TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45' != 'D2P_TESTONLY_FIELD:fa60c7bdb3457f3e903c2709c9a271a6311651bc0f2809d84197790a6de645a1'&#10;  Use -v to get more diff">def test_RED02_downstream_dependency_readset_must_bind_original_producer_refs():
+        x=rows();fields=produce_two_fields(x);reg=TestOnlyRegistry(x)
+        selected=reg.refs_by_role()
+        relation={'kind':'TEST_ONLY_NONPOOLED_COPRESENCE','fixture_only':True,'issued_EE13':False,
+                  'ordered_refs':[selected[GSS],selected[NCA]],'population_join':False}
+        got=read_historical_test_only(reg,selected_refs=selected,relation=relation,
+                                     as_of='2022-07-08',clock_mode='HISTORICAL_PUBLICATION_AWARE')
+&gt;       assert got['dependency_readset']==[fields[GSS]['field_ref'],fields[NCA]['field_ref']]
+E       AssertionError: assert ['TESTONLY_FI...7798f527b106'] == ['D2P_TESTONL...dd55cc7cb1ba']
+E         
+E         At index 0 diff: 'TESTONLY_FIELD:83b0b3fdf1fa2a3e346c95211987b32fc5ff646d053a3577d1f695fd62507d45' != 'D2P_TESTONLY_FIELD:fa60c7bdb3457f3e903c2709c9a271a6311651bc0f2809d84197790a6de645a1'
+E         Use -v to get more diff
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:37: AssertionError</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED03_exported_field_content_ref_must_refuse_stale_tampered_payload" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'd2p.external_fields.FieldProducerError'&gt;">def test_RED03_exported_field_content_ref_must_refuse_stale_tampered_payload():
+        x=rows();p=produce_two_fields(x)[GSS];old=p['field_ref']
+        p['values']['numerator'] += 1
+        # Real field_content_ref is merely `return field['field_ref']`.
+&gt;       with pytest.raises(FieldProducerError):
+E       Failed: DID NOT RAISE &lt;class 'd2p.external_fields.FieldProducerError'&gt;
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:44: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED04_reader_must_refuse_forged_issuer_signature" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'd2p.n9c_reader.TestOnlyReadError'&gt;">def test_RED04_reader_must_refuse_forged_issuer_signature():
+        x=rows();x[0]['issuer_signature']='FAKE_REAL_ISSUER'
+        # D2P rejects this, but N9C source registry currently ignores issuer_signature.
+&gt;       with pytest.raises(TestOnlyReadError):
+E       Failed: DID NOT RAISE &lt;class 'd2p.n9c_reader.TestOnlyReadError'&gt;
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:52: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED05_reader_must_refuse_fake_native_electricity_subtype_label" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'd2p.n9c_reader.TestOnlyReadError'&gt;">def test_RED05_reader_must_refuse_fake_native_electricity_subtype_label():
+        x=rows();parts=x[0]['values']['electricity_subtypes']
+        parts['hydro_turbine']=parts.pop('wind')
+        # Same sum and five keys but false native measure label.
+&gt;       with pytest.raises(TestOnlyReadError):
+E       Failed: DID NOT RAISE &lt;class 'd2p.n9c_reader.TestOnlyReadError'&gt;
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:60: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED06_d2p_field_producer_must_check_native_source_unit_before_producing" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'd2p.external_fields.FieldProducerError'&gt;">def test_RED06_d2p_field_producer_must_check_native_source_unit_before_producing():
+        x=rows();x[1]['native_unit']='PERSON_WITH_MOBILE_DATA'
+        # D2P producer check covers authority/clocks only; N9C independent reader refuses.
+&gt;       with pytest.raises(FieldProducerError):
+E       Failed: DID NOT RAISE &lt;class 'd2p.external_fields.FieldProducerError'&gt;
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:67: Failed</failure></testcase><testcase classname="WORKER_RETURNS.PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1.repro.d2r_original.test_d2r_required_integrity_red" name="test_RED07_downstream_reader_must_refuse_fake_source_publisher_identity" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'd2p.n9c_reader.TestOnlyReadError'&gt;">def test_RED07_downstream_reader_must_refuse_fake_source_publisher_identity():
+        x=rows();x[0]['publisher']='Invented Census Foundation'
+&gt;       with pytest.raises(TestOnlyReadError):
+E       Failed: DID NOT RAISE &lt;class 'd2p.n9c_reader.TestOnlyReadError'&gt;
+
+WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py:73: Failed</failure></testcase></testsuite></testsuites>

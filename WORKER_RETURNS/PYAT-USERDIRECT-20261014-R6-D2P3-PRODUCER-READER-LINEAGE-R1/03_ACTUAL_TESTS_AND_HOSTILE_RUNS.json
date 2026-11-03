@@ -1,0 +1,123 @@
+{
+  "counts": {
+    "d2i_40": {
+      "reason": "D2I pinned suite was not staged as a runnable set in this bounded D2P3 write root; no count asserted.",
+      "status": "NOT_EXECUTED"
+    },
+    "n9c_47": {
+      "reason": "N9C pinned suite was not staged as a runnable set in this bounded D2P3 write root; no count asserted.",
+      "status": "NOT_EXECUTED"
+    },
+    "new_adapted_seven": {
+      "failed": 0,
+      "junit_sha256": "203684563c6c11c2878f95add6c804efc6ed95904e3d15fccec8cd046c6308d5",
+      "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/new/tests/d2p3_seven.log",
+      "passed": 7,
+      "sha256": "834279fa16ce941e6d3fed06af7c65465010605e2179251f487deaeed6859b93",
+      "status": "PASSED"
+    },
+    "new_all_13": {
+      "failed": 0,
+      "junit_sha256": "d2f993d874ab7f4ef07360eed4f42757f72c414503884f0bfb323a707e8437b1",
+      "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/new/tests/d2p3_all.log",
+      "passed": 13,
+      "sha256": "2a90d6320f5e5f95c7802671d4db2609c26fc7e489c78e76f20f334d9b4ee1c6",
+      "status": "PASSED"
+    },
+    "original_d2p_29": {
+      "errors": 0,
+      "failed": 0,
+      "junit_sha256": "4803ff8bc5442a6564597a5ef5c11880bb5f076d831a58fd1a809573ef15079c",
+      "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/logs/d2p_original_final.log",
+      "passed": 29,
+      "sha256": "7a2e365317ed679047319a018ac14ede603549e893a79b684e8950fb683168be",
+      "status": "PASSED"
+    },
+    "original_d2r_35_hostiles": {
+      "failed": 0,
+      "junit_sha256": "043bc292b2b2b7428f81bc4fae46313d0ff572278763f155754e0e26219bf28f",
+      "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/logs/d2r_35hostiles_final.log",
+      "passed": 35,
+      "sha256": "c762881eacd41ddfe21ca10b23725772e7378e46a53f5d9473067489a680b1bb",
+      "status": "PASSED"
+    },
+    "original_d2r_seven_red": {
+      "errors": 0,
+      "failed": 7,
+      "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/logs/d2r_7red_final.log",
+      "passed": 0,
+      "sha256": "00668bb13fe8b31a4f33fdc7044d268db3f7bcf33c75606a47ee82a39d0aaa5f",
+      "status": "HISTORICAL_RED"
+    }
+  },
+  "direct_transport": {
+    "determinant_content_hashes_match": true,
+    "determinant_refs": [
+      {
+        "content_hash": "2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+        "kind": "D2P_TESTONLY_FIELD",
+        "object_id": "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40"
+      },
+      {
+        "content_hash": "de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587",
+        "kind": "D2P_TESTONLY_FIELD",
+        "object_id": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+      }
+    ],
+    "issued_EE13": false,
+    "issued_N5N6": false,
+    "operative_OC05": false,
+    "producer_refs": {
+      "GSS_RURAL_LIGHTING": "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+      "NCA_NATIONAL_MOBILE_DATA": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+    },
+    "receipt_reason_code": "DIRECT_PRODUCER_ROUTE_EXACTLY_AUTHORIZED",
+    "receipt_route_taken": "DIRECT_PRODUCER",
+    "receipt_terminal_state": "SOURCEFREE_TEST_ONLY_TWO_FIELDS_BOUND",
+    "schema": "D2P3_DIRECT_TRANSPORT_TRACE@1",
+    "semantic_ceiling": "TEST_ONLY_NO_ISSUANCE",
+    "status": "EXECUTED",
+    "transport_module": "rawlsing_next.pre553_learned_world_composition",
+    "transport_module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-same-source-resume-consumer-20261103/rawlsing_next/pre553_learned_world_composition.py"
+  },
+  "direct_transport_ceiling": {
+    "EE13": false,
+    "N5N6": false,
+    "N9": false,
+    "OC05": false,
+    "V3": false,
+    "determinant_refs_are_exact_field_content_hashes": true,
+    "module_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-same-source-resume-consumer-20261103/rawlsing_next/pre553_learned_world_composition.py",
+    "receipt_reason_code": "DIRECT_PRODUCER_ROUTE_EXACTLY_AUTHORIZED",
+    "receipt_terminal_state": "SOURCEFREE_TEST_ONLY_TWO_FIELDS_BOUND",
+    "status": "EXECUTED"
+  },
+  "logs_root": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/logs",
+  "negative_evidence": {
+    "before_publication": "REFUSED_REQUIRED_FIELD_TEST_ONLY",
+    "fake_publisher": "OFFICIAL_PUBLISHER_IDENTITY_MISMATCH",
+    "forged_issuer_signature": "ISSUER_FORGERY",
+    "partial_at_2022_03_01": "PARTIAL_TEST_ONLY_NOT_POSITIVE",
+    "person_pooling_model_use": "PERSON_POOLING_OR_MODEL_PROMOTION_FORBIDDEN",
+    "revocation": "FIELD_REGISTRY_REVOKED",
+    "stale_mutated_field_ref": "FIELD_CONTENT_REF_MISMATCH",
+    "wind_to_hydro_rename": "GSS_ELECTRICITY_SUBTYPE_IDENTITY_MISMATCH",
+    "wrong_person_mobile_unit": "NATIVE_UNIT_OR_MEASURE_MISMATCH",
+    "wrong_source_family": "SOURCE_FAMILY_IDENTITY_MISMATCH"
+  },
+  "new_root": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/new",
+  "numeric_controls": {
+    "cold_replay": "same as-of read deterministic in 13-case suite",
+    "gss_minus_one": "GSS field ref, reader readset, GSS numeric and snapshot moved; NCA field/ref/value bitwise unchanged",
+    "nca_plus_one": "NCA field ref, reader readset, NCA numeric and snapshot moved; GSS field/ref/value bitwise unchanged"
+  },
+  "reader_dependency_readset": [
+    "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+    "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+  ],
+  "schema": "D2P3_ACTUAL_TESTS_AND_HOSTILE_RUNS@1",
+  "source_producer_refs": {
+    "GSS_RURAL_LIGHTING": "D2P_TESTONLY_FIELD:2b00177b2685b4a2171bfc27ec77a17f7e59b603bf4bd1e0fc10dc8575908f40",
+    "NCA_NATIONAL_MOBILE_DATA": "D2P_TESTONLY_FIELD:de36df435bd086fe265af2c3207e0ce4b4e14b66a2c8a148829bf027567c0587"
+  }
+}

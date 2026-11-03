@@ -1,0 +1,43 @@
+{
+  "closure": "ALL_SEVEN_ADAPTED_CASES_PASS_AGAINST_NEW_OWNER_REGISTRY; ORIGINAL_SEVEN_PRESERVED_AS_HISTORICAL_RED",
+  "historical_original_red": {
+    "command": "PYTHONPATH=WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro python3 -m pytest WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/d2r_original/test_d2r_required_integrity_red.py -q -o addopts=\"\"",
+    "counts": {
+      "errors": 0,
+      "failed": 7,
+      "passed": 0
+    },
+    "junit": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/logs/d2r_7red_junit.xml",
+    "junit_sha256": "a6e683588748b9ec79a2c524352529601d533b59686d4789411fad67e32af26b",
+    "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/repro/logs/d2r_7red_final.log",
+    "log_sha256": "00668bb13fe8b31a4f33fdc7044d268db3f7bcf33c75606a47ee82a39d0aaa5f",
+    "result": "7 failed",
+    "suite": "repro/d2r_original/test_d2r_required_integrity_red.py"
+  },
+  "lineage_repair": "Reader accepts exact D2P_TESTONLY_FIELD refs from the one ProducerRegistry; no parallel TestOnlyRegistry rows and no self-rehash.",
+  "new_adapted_seven": {
+    "junit": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/new/tests/d2p3_seven_junit.xml",
+    "junit_sha256": "203684563c6c11c2878f95add6c804efc6ed95904e3d15fccec8cd046c6308d5",
+    "log": "WORKER_RETURNS/PYAT-USERDIRECT-20261014-R6-D2P3-PRODUCER-READER-LINEAGE-R1/new/tests/d2p3_seven.log",
+    "log_sha256": "834279fa16ce941e6d3fed06af7c65465010605e2179251f487deaeed6859b93",
+    "result": "7 passed, 6 deselected",
+    "suite": "new/tests/test_d2p3_single_registry.py",
+    "tests": [
+      "test_new_01_exact_producer_refs_are_dereferenced_and_native_numbers_read",
+      "test_new_02_reader_dependency_readset_is_exact_produced_refs_only",
+      "test_new_03_mutated_exported_field_ref_is_denied_not_self_rehashed",
+      "test_new_04_forged_issuer_signature_cannot_pass_producer_or_reader",
+      "test_new_05_wind_cannot_be_renamed_hydro_turbine_at_same_totals",
+      "test_new_06_producer_refuses_wrong_person_mobile_unit_before_emission",
+      "test_new_07_publisher_and_source_family_identity_are_verified"
+    ]
+  },
+  "pinned": {
+    "d2p": "af128002ddc334ab5f3494a3b9488fd5b53e90d8",
+    "d2r": "119c25f3f60d46ba752aab3b8623767669a118f3",
+    "direct_blob": "4a8e27a226a9c06606f5ba493d2cc7356d491a7b",
+    "n9c": "9ab4a0192b7c951bb0b387637e6c74333246766c",
+    "oc05": "f30fca20e7b56e00348e82765d95f974b4b6a195"
+  },
+  "schema": "D2P3_SEVEN_RED_CLOSURE@1"
+}
