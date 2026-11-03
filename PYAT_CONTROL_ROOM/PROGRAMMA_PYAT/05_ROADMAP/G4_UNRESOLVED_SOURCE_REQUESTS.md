@@ -1,5 +1,25 @@
 # G4-P5 — Narrow unresolved GitHub source requests (no new search authorization)
 
+## POST-G4 source-fate corrections — this supersession table governs *later cuts only*
+
+The original SR-01…SR-08 paragraphs below are retained as the historical G4 bounded-query record, **not** current instructions to search. [L3 exact 56-row proof](https://github.com/maidiu/rawlsing/blob/a73bc57e12949f27867abde7fe9f33fea3a58052/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/EXACT_SOURCE_GAPS/EXACT_SOURCE_EVIDENCE.jsonl) and [L1 A42 proof](https://github.com/maidiu/rawlsing/blob/e7ead127edbe83385e1a04e6e874de8a66fc5b39/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R40_R49/N11_JOINED_WORLD_CUT_CORRECTIONS.md) resolve the exact physical states; see [named outstanding physical sources](NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+| SR ID | Later cut / verified correction | Remaining distinct source, owner or consumer action |
+| --- | --- | --- |
+| SR-01 | V548/V549 first Python bodies **FOUND** at historical main 25830fe7462bb9e29bc4087e6ae14f3f84cec377 under **data/ddm_build_copy/**, blobs 1fc72071... and eb143ffe... | No original native output/design; four exact derived receipts optional only if owner says material |
+| SR-02 | U43 175 prospective owner slots / 18,285 research identities; native U/Epre **NULL**; R03 compiler built and locally reviewed | Original issuer/permission/risk-set and actual source-native first reader; not physical code absence |
+| SR-03 | K04 source module **FOUND** at unmerged candidate 895285f1bff8b5d7c37e52e26e3aed7233097839 (blob 3c7527...); **still 404** at pinned control PRE-MAIN 9809203... | Version/ABI adoption plus separate general source-valid N9 receiver |
+| SR-04 | No identified missing filename proved; source-authorized Field Forge meaning remains held | Competent structural science and first F5 reader |
+| SR-05 | A42 branch 843175b0587b54db3df1f461ad9f7f1314894372 has **all three** N11 files; actual N11_NOT_READY, original measured 0/1890 | Original35/F1–F8 and independent N11 issuer; no source-file request |
+| SR-06 | N12 document/authority gate, no missing physical file established | Separate N11 then qualified N12 wake/defer and Sorok owner |
+| SR-07 | 44 Long Memory duty IDs mapped to 24 lawful owner families, historical preservation status located | 44 individual current first-reader receipts still not proved |
+| SR-08 | W1-H source lock identifies 8 heterogeneous unavailable pins and 164 typed row-to-component unjoins | Map-specific provenance only; no 164-file or broad Mac request |
+
+**Physical-search verdict:** **NONE required before one independent guide review.** Historical G4 missing-at-path findings remain truthful *at their old exact path/cut*, not evidence of global absence. No respondent corpus or Mac/Library search authorized.
+
+---
+
+
 **Purpose:** follow-up targets only when a competent source custodian/HQ later judges a missing exact physical asset worth looking for outside GitHub. No Library/mainMac search, speculative disk census, source-native run, or owner decision was performed here. A GitHub 404 proves **only same exact path@cut absence**; search 429 proves nothing about nonexistence. `UNKNOWN` is not `ABSENT`. Current exact PRE-MAIN 9809203fd915a84bae056a67210e9213879840db; main history 25830fe7462bb9e29bc4087e6ae14f3f84cec377. These findings inherit G3-A `93c821e419b42918d98c71f87999735e786c92df` and G3-B `b2641c1944b247d5a510f0b4eae6421db077decd` source-cut conflicts, not a merged science adjudication.
 
 ## SR-01 — First original V548 branch-cohort / V549 branch-conditioned cotravel
