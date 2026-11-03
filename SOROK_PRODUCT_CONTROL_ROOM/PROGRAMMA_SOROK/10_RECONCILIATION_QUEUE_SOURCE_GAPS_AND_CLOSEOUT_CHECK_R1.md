@@ -237,3 +237,5 @@ WP-19 author-tested runtime at 3c4df43f813cd0727feff04f620aa0bbd9a63026. wp19.cl
 ### Persona input checkpoint
 
 The [published checkpoint](https://github.com/maidiu/rawlsing/commit/4cfd833c9deb05415e69892723b892af7afdee54) preserves the JOIN-E perception and history input work in `persona/input.py`. HQ ran six focused tests. They cover the input boundary and typed holds. A qualified observation of the exact E1 event and a persona-produced action or omission remain unverified. The checkpoint supplies no new choice rule, and G-O15-VERIFY remains held.
+
+WP-19 persona integration remains held at checkpoint `4cfd833c9deb05415e69892723b892af7afdee54`. Controller job `sorok-persona-input-runtime-r1` ended after OpenCode denied an edit targeting an unbound checkout. The unapplied proposal would also have exposed the private persona input in a public result. Keep perception and history internal. Any public response must be projected through the existing visibility boundary. No runtime consumer or qualified E1 observation was verified.
