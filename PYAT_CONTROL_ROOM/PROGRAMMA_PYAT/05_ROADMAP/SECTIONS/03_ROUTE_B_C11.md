@@ -251,3 +251,7 @@ This scoped G3-A candidate source locator is reproduced as a navigation aid; its
 
 **Update rule:** promote no `HELD_OWNER_OR_SCIENCE`, `INCOMPATIBLE`, `MISSING_PRODUCER_OR_READER`, `PARTIAL` or `SOURCEFREE_SCOPED_ONLY` status without exact current source cut, same-scope issuer, output artifact, importer, fresh receipt and qualified independent decision. `UNKNOWN` is legitimate until that witness exists.
 **Read next:** [S01](01_SOURCE_GOVERNANCE.md) → [S02](02_U_EPRE_WORKLOAD.md) → [S03](03_ROUTE_B_C11.md) → [S04](04_F1_F4_EMPIRICAL.md); [whole guide](../README.md); [original G2 edges](../PLANNED_INTERFACES.jsonl); [G3-B dependency and reverse unlocks](../G3_CANDIDATES/SEAMS_MATURITY/RECURSIVE_PREREQUISITES.md); [all 49 gaps](../G3_CANDIDATES/SEAMS_MATURITY/NEXT_REAL_PYAT_WORK.md).
+
+## HQ clean receiving/resume assembly — 2026-11-03
+
+Candidate `8779504a63` on `agent/pyat-current-receiving-r06-assembly-20261103-r1` starts from current980receiving rather than the oldR06base. Nine exact existing files preserve R03/R08/R05/R06 and restore independently accepted R04.joined; currentB5/M2lifecycle/release remain unchanged. 17R06cases passed oncleanbase, then8custody/actualconsumer/severancecases passed withresume restored. Focused same-distinct-reviewer composition check is running; oldacceptance reused, newcandidate not yetaccepted. Protected receiving/science/source/host grants unchanged. Exact trace in transition `PYAT-HQ-CLEAN-RECEIVING-RESUME-ASSEMBLY-20261103`.

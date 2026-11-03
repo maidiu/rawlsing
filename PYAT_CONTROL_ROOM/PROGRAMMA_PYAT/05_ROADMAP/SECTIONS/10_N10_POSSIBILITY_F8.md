@@ -131,3 +131,8 @@ Exact branch evidence `07fae0998af11c910589627438a5342ef9c727e4` preserves an ex
 ## HQ independent review disposition — 2026-11-03
 
 Distinct reviewer `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2` passed R06 receiving compatibility (17tests), R09 D7 only (15tests), and R00 packaging (26manifestentries/29checksums, repeated collector and preserved gate/test/passport/proof). HQ verified9reviewartifacthashes and exact remote ref, then accepts these at local sourcefree candidate scope only. Existing earlier negatives remain historical; R09 D1/D4 host boundary remains held. See `PYAT_CONTROL_ROOM/HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`. Protected receiving/guide integration remains pending, not implied.
+
+
+## HQ clean receiving/resume assembly — 2026-11-03
+
+Candidate `8779504a63` on `agent/pyat-current-receiving-r06-assembly-20261103-r1` starts from current980receiving rather than the oldR06base. Nine exact existing files preserve R03/R08/R05/R06 and restore independently accepted R04.joined; currentB5/M2lifecycle/release remain unchanged. 17R06cases passed oncleanbase, then8custody/actualconsumer/severancecases passed withresume restored. Focused same-distinct-reviewer composition check is running; oldacceptance reused, newcandidate not yetaccepted. Protected receiving/science/source/host grants unchanged. Exact trace in transition `PYAT-HQ-CLEAN-RECEIVING-RESUME-ASSEMBLY-20261103`.

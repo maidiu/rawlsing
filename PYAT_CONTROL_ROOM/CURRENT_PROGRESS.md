@@ -1,3 +1,7 @@
+# Clean receiving/resume sourcefree candidate — 2026-11-03
+
+`8779504a63`: nine exact lineage files on current980base; currentB5/M2preserved;17+8HQtests pass; focused distinct review pending. See PROGRAMMA transition `PYAT-HQ-CLEAN-RECEIVING-RESUME-ASSEMBLY-20261103` and pairedJSON. Prior acceptances retained below; no protected adoption.
+
 # HQ bounded independent disposition — 2026-11-03
 
 All three exact candidates independently PASS and locally accepted at sourcefree scope. Review `61fd3bb0722b78c141484b2fe2b26fe8cf2b78b2`; disposition `HQ_SOURCEFREE_ENGINEERING_20261103/DISPOSITION.json`; PROGRAMMA transition `PYAT-HQ-BOUNDED-REVIEW-DISPOSITION-20261103`. No protected adoption, original-source science or host-right expansion. Prior records retained below.
