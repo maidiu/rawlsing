@@ -1,0 +1,63 @@
+{
+  "views": 84,
+  "positive": 84,
+  "cold_equal": true,
+  "paired": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null
+  },
+  "selection_only": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null
+  },
+  "binding_only": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_W41_CLOCK_BINDING_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "53073a94391f6c30f7f19bcf5345b0154a9f73d07fdcbc140236f662181c7f07",
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null
+  },
+  "snapshot": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_W41_SNAPSHOT_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "75c58f5991ca6ede58468bc6b93f81d7af446c0ab58b614ced35663ae0b94f7c",
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null
+  },
+  "view": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_W41_VIEW_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "88fd76e334d5b58d1ea6418d21a69ba7fb2186937b3891f6416fe7bea232a409",
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null
+  },
+  "absent": {
+    "exception": "KeyError",
+    "detail": "'base/DOES_NOT_EXIST/budget5'"
+  },
+  "stale": {
+    "state": "REFUSED",
+    "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
+    "view_key": "base/TEST_CURRENT/budget5",
+    "view_hash": "748e26334adf1f7c3f94329511a9cf98bddeec0f337a97e1f5f641d77d5977ee",
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null
+  }
+}

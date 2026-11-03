@@ -1,0 +1,187 @@
+{
+  "actual_j42": {
+    "base": {
+      "families": {
+        "n10e": "E41_N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_EXT@1.1.0",
+        "n10w": "P41_GENERIC_POSSIBILITY_SERVICE@1",
+        "n9": "W41_READONLY_SOURCE_QUALIFIED_WORLD@1"
+      },
+      "n9_clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "n9_currentness": "CURRENT_TEST_ONLY_SELECTION",
+      "reason_code": "WORLD_SELECTED_VIEW",
+      "state": "SELECTED_VIEW_FROM_ACTUAL_JOINED_CONSUMER",
+      "view_hash": "062c4c5fc59c5618582d43f9e4c917ab97a32ecfd7249d5bfba2824fe0767287",
+      "view_key": "base/TEST_CURRENT/budget5"
+    },
+    "cold_all_view_hashes_equal": true,
+    "cold_byte_equal": true,
+    "first_refusals": {},
+    "positive": 84,
+    "receipt_2_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "receipt_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+    "views": 84
+  },
+  "authority_verdict": "HOLD",
+  "binding_only_mutation": {
+    "guard": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_W41_CLOCK_BINDING_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "53073a94391f6c30f7f19bcf5345b0154a9f73d07fdcbc140236f662181c7f07",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "candidate": "c75b464ab4dbba15c6a89db42aaf5d101ba13d55",
+  "evidence": {
+    "path": "evidence/recheck_evidence.json",
+    "sha256": "42267b2c84b2841e6d7b6338cdf8eaddfa899c7ac7c5006296f45706c72fba80"
+  },
+  "independent_review_complete": true,
+  "limits": [
+    "TEST_ONLY sourcefree W41/E41/P41 and synthetic E04 only.",
+    "Candidate readonly; only clock-recheck root written.",
+    "No original data, production/source edit, merge, CI, N9/OC05 installation, N11/N12 or new trust authority."
+  ],
+  "merge_ci": false,
+  "model_metadata": {
+    "changed": false,
+    "current_variant": "max",
+    "model": "deepseek-v4.1-flash",
+    "name": "DeepSeek V4.1 Flash",
+    "providerID": "opencode-go",
+    "status": "active",
+    "variants": [
+      "low",
+      "high",
+      "max"
+    ]
+  },
+  "paired_clock_mutation": {
+    "forged_clock": {
+      "mode": "AS_OF",
+      "published_asof": "2099-01-01",
+      "valid_at": "2099-01-01"
+    },
+    "guard": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "pins": {
+    "actual_j42_receipts": {
+      "path": "WORKER_RETURNS/PDEV01-N10W-INDEPENDENT-REVIEW/evidence/J42_RECEIPTS_actual_1.json",
+      "second_sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf",
+      "sha256": "c54b215bb03bba391571b4c51357831b14f256b7c4c6eec98d85dd9bda30eebf"
+    },
+    "candidate": "c75b464ab4dbba15c6a89db42aaf5d101ba13d55",
+    "candidate_branch": "agent/pyat-pdev01-n10w-join-r1",
+    "candidate_guard_sha256": "5f81a3012abf70b6f646b35d1344cf29421a3aa124ab76143f3c46632dc214fc",
+    "j42_commit": "f53cb0d2bce52640268c844c398bbd8007d28edc",
+    "j42_provider_source_sha256": "4bab407129b1b385585f287b948bcde4d5ffaa4affe53b78cefdf6c6c981b399",
+    "p41_runtime": "f27d1101048638bba395143a48efb7ef00bfcda4",
+    "recheck_evidence_sha256": "42267b2c84b2841e6d7b6338cdf8eaddfa899c7ac7c5006296f45706c72fba80",
+    "recheck_script_sha256": "95595a26ac268090301bc017de74e2aa9030a3ef7c929f29a8a5ced4e5e6c4ce",
+    "reused_e79_review": "e79be4a3d8cd2cbe57c4a25361acc5e4dd9a8e1c",
+    "schema": "PDEV01_N10W_CLOCK_RECHECK_SOURCE_PINS@1.0.0",
+    "w41_artifact": {
+      "commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+      "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/current_historical_asof_world_consumer_receipts.json",
+      "sha256": "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7",
+      "trusted_world": {
+        "clock": {
+          "mode": "TEST_CURRENT",
+          "published_asof": "2027-09-01",
+          "test_now": "2027-09-01",
+          "valid_at": "2027-09-01"
+        },
+        "snapshot_hash": "239d6828e3470a34bef9127da69d39f188397fe05540211faef6a31de68f6ff9",
+        "view_hash": "5fe218c6df01cf25cf6d32a26c3e9cadab01aaa977e50db6d56c66d811ca6386"
+      }
+    }
+  },
+  "production_edit": false,
+  "reused_e79_controls": {
+    "five_rehashed_mutations": "e79 evidence PASS_REJECTED",
+    "missing_parents": "e79 evidence PASS_REJECTED",
+    "public_receiver_unchanged": true
+  },
+  "reused_e79_review": "e79be4a3d8cd2cbe57c4a25361acc5e4dd9a8e1c",
+  "schema": "PDEV01_N10W_CLOCK_RECHECK@1.0.0",
+  "science_verdict": "HOLD",
+  "selection_only_mutation": {
+    "guard": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_N9_SELECTION_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "06c111832b29159f36a410a48836477df5de885dc8cb51da27cf321c88677fff",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "snapshot_mutation": {
+    "guard": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_W41_SNAPSHOT_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "75c58f5991ca6ede58468bc6b93f81d7af446c0ab58b614ced35663ae0b94f7c",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "source_read": false,
+  "stale_hash": {
+    "families": null,
+    "n9_clock": null,
+    "n9_currentness": null,
+    "reason_code": "JOINED_RECEIPT_CONTENT_HASH_MISMATCH",
+    "state": "REFUSED",
+    "view_hash": "748e26334adf1f7c3f94329511a9cf98bddeec0f337a97e1f5f641d77d5977ee",
+    "view_key": "base/TEST_CURRENT/budget5"
+  },
+  "verdict": "PASS",
+  "verdict_detail": "TRUSTED_W41_ARTIFACT_SHA_AND_EXACT_VIEW_LOOKUP; CLOCK_SNAPSHOT_VIEW_BOUND; PAIRED_CALLER_CLOCK_REHASH_REFUSED; 84_POSITIVE_AND_COLD_PRESERVED",
+  "verdict_scope": "SCOPED_TEST_ONLY_ENGINEERING_CLOCK_RECHECK",
+  "view_mutation": {
+    "guard": {
+      "families": null,
+      "n9_clock": null,
+      "n9_currentness": null,
+      "reason_code": "JOINED_W41_VIEW_MISMATCH",
+      "state": "REFUSED",
+      "view_hash": "88fd76e334d5b58d1ea6418d21a69ba7fb2186937b3891f6416fe7bea232a409",
+      "view_key": "base/TEST_CURRENT/budget5"
+    }
+  },
+  "w41_artifact": {
+    "caller_independent": true,
+    "commit": "b0a68e4ff5d5e2ca62b080376fda6b5f5431a6c2",
+    "exact_lookup_key": "base/TEST_CURRENT/budget5",
+    "path": "WORKER_RETURNS/PYAT-R41-W41-OBJECTIVE-WORLD-R1/current_historical_asof_world_consumer_receipts.json",
+    "sha256": "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7",
+    "trusted_world": {
+      "clock": {
+        "mode": "TEST_CURRENT",
+        "published_asof": "2027-09-01",
+        "test_now": "2027-09-01",
+        "valid_at": "2027-09-01"
+      },
+      "snapshot_hash": "239d6828e3470a34bef9127da69d39f188397fe05540211faef6a31de68f6ff9",
+      "view_hash": "5fe218c6df01cf25cf6d32a26c3e9cadab01aaa977e50db6d56c66d811ca6386"
+    },
+    "verified_sha256": "09a92d6c00e867a44712b225cadd352b7d41a2038384de26de34f5c10a9185e7"
+  }
+}
