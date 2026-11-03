@@ -1,6 +1,8 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
 
+**For machine-readable currentness:** [13-row post-SAT-R PR646 scoped seam delta](POST_SATR_CURRENT_EDGE_DELTA_20261103.jsonl) overlays the existing exact 82 edge IDs without changing source-cut status/predicates or implying native original35 acceptance.
+
 **READ FIRST — binding before any historical-function-driven BUILD/PORT recommendation:** [Five-test historical succession and work-selection law](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md). Exact old symbol not indexed is not evidence the present pipeline lacks the function. Record the current required behavior, accepted/composed successor, actual first consumer, science/ABI suitability, and comparative advantage—or return COMPARE_ONLY/NO_BUILD. **Current development readback:** [post-PR646 merged sourcefree seam incision and Codex HQ self-directed next-work selection](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md). The 82 G4 edges and 49 gaps remain frozen at their source cuts; this newer sourcefree first-reader positive does not confer native original35/N11/N12 authority.
 
 ## PROG5-SAT-R five-route receiving — additive code capital and confidence (2026-11-03)
