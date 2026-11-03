@@ -1,5 +1,30 @@
 **Receiving custody:** [G3-B original 49-gap register](https://github.com/maidiu/rawlsing/blob/b2641c1944b247d5a510f0b4eae6421db077decd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/SEAMS_MATURITY/NEXT_REAL_PYAT_WORK.md) at exact G3-B cut; source relations/negative retained intact. G4-P5 is documentary construction, **not** a task fleet or implementation authorization. G2 architecture 6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d, PRE-MAIN 9809203fd915a84bae056a67210e9213879840db. The 49 numbered tasks and their original evidence/owner/smallest witness appear below with no truncation.
 
+## Post-G4 finite material-work delta — original 49 GAP IDs preserved
+
+**This is a versioned supplement, not a new priority queue or 49 new commissions.** Original GAP-001…GAP-049 and GAP-ADD-A01/A02 text below is retained at the G3-B/G4 evidence cut. New returned code, owner decision, historic positive file and reviewed local sourcefree subproof never retroactively turn an original native gap GREEN. [Exact intake](POST_G4_DELTA_INTAKE.md) · [physical source dispositions](NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+| Original G4 task family | Later bounded partial supersession | Still first missing source/owner/engineering action |
+| --- | --- | --- |
+| GAP-001–005 S01 source | O35B 35-wave audit, U43 175 prospective owner slots, S44 historical SRC27 | Original source-permitted wave/item/response/routing/risk-set and scientific issuer; no all35 native |
+| GAP-006–010 S02 worklist | R01 reviewed frontier, R03 executable compiler/anti-join and R00 policy behavior | Native source-issued U/Epre and actual first consumer; R00E provenance REVISE |
+| GAP-011–015 S03 physical/batch | R02/R04.byte synthetic C11→I03, R04.joined completion+partial checkpoint/resume, R03 receiver | Original source use and trusted parent/OS custody; R09V-R2 REVISE/HOLD |
+| GAP-016–020 S04 F1–F4 | V548/V549 *source code found*, E41 31 sourcefree ops/18 N10E, R05 local analytical consumer | Original measured design/risk set/full joint-cloud F4 source and first native reader |
+| GAP-021–024 S05 learned | R05 selected actual local M1/M2/B5/currentness consumer accepted sourcefree | Original model/source issuance and source-qualified N9/I01 as-of first read |
+| GAP-025–029 S06 F5 | R06 held-context structural refusal on all three wrappers | Qualified FF material/causal meaning and N6 operative scoped source read |
+| GAP-030–033 S07 F6 | W41 views, F43 partial, R06 two same-unit synthetic fields vs cross-unit refusal | Independent-population estimand/nonpool partial-ID and permitted world first consumer |
+| GAP-034–037 S08 F7 | Modeled clock views and R06 changed T0/T1 E04 route with equal-pair refusal | Original measured paired-wave design/comparability/uncertainty and N8E/N8S authority |
+| GAP-038–041 S09 N9 | J42 84 TEST_ONLY world views, R06 sourcefree selected P41 reader; K04 materializer found on unmerged candidate | True original N9 world/version/permission/negative, compatible J04 import and protected first read |
+| GAP-042–045 S10 N10 | E41 real sourcefree provider, J42 first same-source E04 join, R06 local N9×N10E P41 receipt | Both native inputs with equal scope/version, G0b F8 use, actor firewall and honest alternative uncertainty |
+| GAP-046–049 S11 N11/N12 | A42 three **physical** N11 files present, I44 J42 bank; verdict N11_NOT_READY | Original 1890-cell estate, F1–F8 source/native rights/consumer, competent N11; separate N12 wake/defer and Sorok |
+| GAP-ADD-A01 historical V548/V549 | Two first builder source bodies located at data/ddm_build_copy, correcting G4 narrow 404 | Derived native receipts optional per owner; original historical function equivalence not asserted |
+| GAP-ADD-A02 W1-H 8/164 | Exact eight W1-H pin identities /164 mapping unjoins located; not 164 files | Only per-ID source-specific provenance where owner actually needs, not broad retrieval |
+
+**No material outstanding physically unidentified Git source requires a further guide-construction/source-hunt cycle.** Four optional V548/V549 derived-output/review files remain conditional on competent owner decision, not a blocker to one independent final cold-use/accuracy review. Original scientific, protected production, R09 security and N11/N12 authorities are still genuinely unresolved.
+
+---
+
+
 # G4-P5 — All 49 material current Pyat tasks, retaining G3-B evidence
 
 **49 finite nonduplicative material tasks, grouped under all 11 roadmap sections. No top-20 truncation.** This is development-guide material, **not** 49 launched commissions. The governing current PRE-MAIN code cut is `9809203fd915a84bae056a67210e9213879840db`; G2 source `6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d`; continuation `18074503754ed30cf3966ae06354282c4425f6dc`. Exact G1-B provenance `7ee67766503a13d2eae6441afda1a869b83a40e6` retained. All same-cut native/source claims here are **unproved** absent separately authorized owner run.
