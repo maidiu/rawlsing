@@ -25,3 +25,12 @@ HQ accepted D2P3 at sourcefree producer-to-N9C scope after independent review `8
 - S-F6: 23edffb32 reproduced F6M→F6P and the WP2 expression's raw KeyError. REVISE for authored refusal label and unexecuted effect claim. Existing author running pdev01-f6-evidence-fix. Real receiver contract and scientific scope remain held.
 - N9+N10E→N10W: 30b04c762 demonstrated actual J42 W41/E41/P41 join and cold replay. Five provider/currentness mutations were incorrectly accepted. Existing author running pdev01-n10w-identity-fix under isolated sourcefree scope. R05 and J42 source identities differ.
 - HQD-125 §8 is the adopted nine-strata succession decision. Field Forge and the governed world architecture preserve structural-pressure functions. P1 placeholder stratum refs supply no requirement to rebuild the old ontology.
+
+
+## PDEV-01 closeout, 2026-11-03
+
+User confirmed D2P3 is the PDEV-01 deliverable; the three parallel PROGRAMMA lanes have separate dispositions. Live PRE-MAIN, D2P3 candidate and distinct review refs verified. See PDEV01_RESUME_CHECKPOINT.json for full pins.
+
+Selection and reuse: R03 and PR #646 retained; B49/G50/I51 not ported. D05 currentness validation retained. D2P2's seven producer/reader failures and existing D2P3 commission supplied the exact repair target. One producer-owned registry now supplies the references actually read by N9C. Independent exact-snapshot replay passed 13 tests including the seven regressions, mutation isolation, revocation and cold replay. Candidate edits are confined to its return root. HQ accepts the sourcefree field handoff. Native science and authority remain held, and PRE-MAIN adoption is separate.
+
+PROGRAMMA's N9 component, affected seam, prerequisites and remaining work carry the scoped observation. Paired HQ progress and checkpoint preserve the exact decision. Next independent work: finish GAP-007 fixture/receipt integrity and focused recheck; finish F6 evidence correction and recheck; finish N10W receiver identity guard and review. None is a PDEV-01 completion dependency.
