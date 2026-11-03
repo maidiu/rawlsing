@@ -588,5 +588,197 @@
     }
   ],
   "w3_cold_use_test": "NOT_RUN_DIFFERENT_AGENT_REQUIRED",
-  "w3_outcome": "GUIDE_ASSEMBLY_READY_FOR_INDEPENDENT_USE_TEST__WHOLE_PRODUCT_NOT_PROVEN"
+  "w3_outcome": "GUIDE_ASSEMBLY_READY_FOR_INDEPENDENT_USE_TEST__WHOLE_PRODUCT_NOT_PROVEN",
+  "w7_executional_readback": {
+    "status": "STATIC_FIRST_PASS_STRUCTURAL_REFERENCES_RESOLVED__PENDING_INDEPENDENT_W7_AUDITS",
+    "source_branch": "research/programma-sorok-w7i-w6-canonical-fanin-20261102-r1",
+    "counts": {
+      "retained_original_07_ids": 290,
+      "total_actual_07_assets": 304,
+      "retained_09_ids": 144,
+      "retained_parent_D": 22,
+      "retained_parent_E": 22,
+      "retained_W1_dispositions": 100,
+      "nested_functions": 119,
+      "typed_edges": 230,
+      "phase_gates": 77,
+      "evidence_leaves": 97,
+      "work_packages": 39,
+      "versioned_seams": 38,
+      "materialized_missing_terminal_refs": 12
+    },
+    "internal_join_validation": {
+      "issues": [],
+      "gate_member_closure": "Each gate member points to an exact evidence leaf, an exact other gate target, or a named explicit unresolved terminal.",
+      "seam_gate_id_rule": "0 automatic exact joins; W6C effect gates link to W6B candidate target@stage but remain JOIN_PENDING when IDs differ.",
+      "peer_grade": "not peer audited"
+    },
+    "chosen_outcome_readbacks": [
+      {
+        "target": "C12@INTEGRATE",
+        "claim_scope": "NATIVE_GENERATED_PERSON",
+        "root_gate": "G-C12-NATIVE-INTEGRATE",
+        "source": "e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json#D-C12/E008",
+        "path_through": [
+          "C11@INTEGRATE",
+          "C10@INTEGRATE",
+          "C9@INTEGRATE",
+          "C12:LOCAL_GUIDE:READER_ROOT@INTEGRATE",
+          "C12:LOCAL_GUIDE:EXTERNAL_ANCHOR@VERIFY"
+        ],
+        "first_feasible_wp": [
+          "WP-W6B-01",
+          "WP-W6B-02",
+          "WP-W6B-03",
+          "WP-W6B-04",
+          "WP-W6B-05",
+          "WP-W6B-08",
+          "WP-W6B-10",
+          "WP-W6B-11"
+        ],
+        "owner_action_wp": [
+          "WP-W6B-09"
+        ],
+        "joint_after_matrix": [
+          "WP-W6B-06"
+        ],
+        "still_blocked_wp": [
+          "WP-W6B-07",
+          "WP-W6B-24"
+        ],
+        "first_real_reader": "NONE_PROVEN current native C9/C12; c784 sourcefree C9R3 actor_meta composite only at its branch",
+        "negative": "RRIF-R2@598d independent review@8090 REVISE_MATERIAL_DEFECTS; exact JOIN-E 7bf at 4387 accepted only scoped sourcefree"
+      },
+      {
+        "target": "A5@ACCEPT",
+        "claim_scope": "REAL_HUMAN_ALPHA",
+        "root_gate": "G-A5-ALL-ACCEPT",
+        "source": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/100_MINIMAL_WHITE_WHALE_ALPHA_AND_FIDELITY_ESCALATION_CONSTITUTION_R1.md#Gates0-5",
+        "path_through": [
+          "S11@VERIFY",
+          "S14:LOCAL_GUIDE:OPERATED_CONTROLS@VERIFY",
+          "S15:LOCAL_GUIDE:HUMAN_PROTOCOL@ACCEPT",
+          "S5:LOCAL_GUIDE:PLURAL_EVALUATION@ACCEPT",
+          "A5:LOCAL_GUIDE:GATE5_HUMAN@VERIFY"
+        ],
+        "first_feasible_wp": [
+          "WP-W6B-14",
+          "WP-W6B-17",
+          "WP-W6B-18",
+          "WP-W6B-37",
+          "WP-W6B-34",
+          "WP-W6B-35",
+          "WP-W6B-16"
+        ],
+        "owner_action_wp": [],
+        "joint_after_matrix": [],
+        "still_blocked_wp": [
+          "WP-W6B-19",
+          "WP-W6B-25"
+        ],
+        "scope_alternatives": [
+          "G-A5-EARLY-IF",
+          "G-A5-NATIVE-IF"
+        ],
+        "first_real_reader": "No verified actual human participant or published positive actor/LLM A5. Early Gate0–3 bounded curated fixture is not native generated person.",
+        "negative": "No liking/engagement scalar can substitute plural wellbeing, consent or human falsification."
+      },
+      {
+        "target": "S14:LOCAL_GUIDE:OPERATED_CONTROLS@VERIFY",
+        "claim_scope": "REAL_PRIVACY_SECURITY_ABUSE_DELETION",
+        "root_gate": "G-S14-CONTROLS-VERIFY",
+        "source": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/58_Q_PRIV_001_USER_DATA_PRAXIS_DELETION_EXPORT_CONSTITUTION_R1.md",
+        "path_through": [
+          "S14:LOCAL_GUIDE:OPERATED_CONTROLS@BUILD",
+          "S14:LOCAL_GUIDE:DATA_POLICY@ACCEPT"
+        ],
+        "first_feasible_wp": [
+          "WP-W6B-17"
+        ],
+        "owner_action_wp": [],
+        "joint_after_matrix": [],
+        "still_blocked_wp": [
+          "WP-W6B-25"
+        ],
+        "first_real_reader": "NONE_VERIFIED operational end-to-end user deletion/export/access enforcement at W5 frozen cut",
+        "negative": "Provisional alpha privacy policy known; legally accepted and executed privacy controls are NOT proven."
+      },
+      {
+        "target": "C11@INTEGRATE",
+        "claim_scope": "NATIVE_PYAT_TO_SOROK_WORLD_PERSON_WELD",
+        "root_gate": "G-C11-NATIVE",
+        "source": "9809203fd915a84bae056a67210e9213879840db:rawlsing_next/pre553_source_backed_c11_facade.py",
+        "path_through": [
+          "C0@ACCEPT",
+          "C4@BUILD",
+          "C11:LOCAL_GUIDE:RECEIVER_CONTRACT@SPECIFY"
+        ],
+        "first_feasible_wp": [
+          "WP-W6B-08",
+          "WP-W6B-10"
+        ],
+        "owner_action_wp": [
+          "WP-W6B-09"
+        ],
+        "joint_after_matrix": [],
+        "still_blocked_wp": [
+          "WP-W6B-24"
+        ],
+        "first_real_reader": "NONE_VERIFIED Sorok native C11; pre553 C11 facade is empirical source logical release",
+        "negative": "R41 objective_world.py sourcefree read-only client does not issue Pyat N11/N12 or native Sorok C11."
+      }
+    ],
+    "hypothetical_one_leaf_change": {
+      "receipt_ref": "E008:LOCAL_GUIDE:TUPLE_MATRIX@SPECIFY",
+      "from": "UNSATISFIED_AT_FROZEN_CUT",
+      "to": "SATISFIED_AT_HYPOTHETICAL_INDEPENDENT_SOURCE_MATRIX_CUT_ONLY",
+      "source": "W5 E008 candidate schema/root/ACK/anchor cross-cut plus independent owner-confirmed matrix (hypothetical, not observed)",
+      "changed": [
+        {
+          "package": "WP-W6B-01",
+          "status": "COMPLETED_AT_HYPOTHETICAL_SCOPED_CUT",
+          "reason": "The one exact target@stage evidence now exists; drop completed matrix from unfulfilled queue."
+        },
+        {
+          "package": "WP-W6B-06",
+          "from": "JOINT_WAITING_ON_MATRIX",
+          "to": "JOINT_READY_AFTER_MATRIX",
+          "reason": "External prerequisite for co-spec SCC acquired; reciprocal writer/reader specification remains to be decided jointly."
+        }
+      ],
+      "unchanged": [
+        {
+          "package": "WP-W6B-07",
+          "status": "BLOCKED_UPSTREAM",
+          "needs": "C9 writer schema AND C12 reader root jointly specified at selected cut"
+        },
+        {
+          "package": "WP-W6B-24",
+          "status": "BLOCKED_UPSTREAM",
+          "needs": "native C0/C4/C8/C9/C10/C11 and anchor/approval"
+        },
+        {
+          "package": "WP-W6B-25",
+          "status": "BLOCKED_UPSTREAM",
+          "needs": "actual S14 S11 S15 S5 and participant evidence"
+        }
+      ],
+      "test_grade": "STATIC_HYPOTHETICAL_RECOMPUTATION__NO_ACTUAL_RECEIPT__NO_NATIVE_RUN"
+    },
+    "safety_negative_assertions": [
+      "Any historical M25/M29 test is not a current native importer",
+      "E021 exact JOIN 7bf sourcefree reviewed green is not RRIF-R2 598d acceptance",
+      "RRIF-R2 20/20 reproduction coexists with independent REVISE_MATERIAL_DEFECTS",
+      "C11 pre553 empirical is not Sorok C11 or Pyat native N11/N12",
+      "S14 privacy source spec is not deletion/export/security operational verification",
+      "Gate prerequisites met does not mark target stage COMPLETED",
+      "No scientific CAN008 Rule A/Rule T or actual human A5 was issued/tested in this browser integration."
+    ],
+    "source_cuts": {
+      "W5": "e3d5c77f455f6d53c8078c1c706c12f9a9ee4bde",
+      "W6A": "91a18a38c1f72b9d64ddc321e0a20dab5c8a3971",
+      "W6B": "3cec9b96a605b018be7d266585f37a96bf636f84",
+      "W6C": "ae82321ab8a028811bd7ce3e9c442beb5020c66c"
+    }
+  }
 }
