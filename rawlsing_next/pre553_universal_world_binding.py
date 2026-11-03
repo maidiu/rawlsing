@@ -758,13 +758,17 @@ def _execute_p41_world(
             mode="AS_OF", valid_at="2027-09-01", published_asof="2027-09-01"
         )
 
+    step_conditions = tuple(
+        tuple(item) for item in step.get("conditioners", (("X", 1),))
+    )
+
     class R05Provider:
         def __init__(self):
             self.world = {"query_permits": {"Y": {}}}
             self.trace = []
 
         def _validate(self, target, ordered):
-            if target != "Y" or tuple(tuple(c) for c in ordered) != (("X", 1),):
+            if target != "Y" or tuple(tuple(c) for c in ordered) != step_conditions:
                 raise ValueError("R06R3_R05_CONDITION_AUTHORITY")
 
         def progressive(self, target, ordered):
@@ -789,7 +793,7 @@ def _execute_p41_world(
             return value
 
         def possibilities(self, snapshot, *, target="Y",
-                          conditions=(("X", 1),), consumer="GENERIC"):
+                          conditions=step_conditions, consumer="GENERIC"):
             self.value_reads.append(dict(
                 consumer=consumer, key="empirical", state="EXACT_SUPPORTED",
                 value=step["cells"], snapshot_ref=snapshot.snapshot_hash,
@@ -841,7 +845,7 @@ def _execute_p41_world(
         structural = R05StructuralService(catalog)
         service = R05P41Service(provider, structural)
         receipts[label] = service.progressive(
-            target="Y", conditions=(("X", 1),), snapshot=snapshot
+            target="Y", conditions=step_conditions, snapshot=snapshot
         )
     return receipts
 

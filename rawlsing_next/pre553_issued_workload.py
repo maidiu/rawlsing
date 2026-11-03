@@ -580,13 +580,18 @@ def _result_output_material(result: Any) -> dict[str, Mapping[str, Any]]:
     outputs = getattr(result, "outputs_by_unit", None) or {}
     mapped = {}
     for unit_hash, output in outputs.items():
-        mapped[unit_hash] = {
-            "kind": "QUERY",
-            "query_ref": output.query_ref.as_dict(),
-            "facts": [fact.as_dict() for fact in output.facts],
-            "source_scope_mode": output.source_scope_mode,
-            "release_refs": [ref.as_dict() for ref in output.release_refs],
-        }
+        if hasattr(output, "query_ref") and hasattr(output, "facts"):
+            mapped[unit_hash] = {
+                "kind": "QUERY",
+                "query_ref": output.query_ref.as_dict(),
+                "facts": [fact.as_dict() for fact in output.facts],
+                "source_scope_mode": output.source_scope_mode,
+                "release_refs": [ref.as_dict() for ref in output.release_refs],
+            }
+        elif hasattr(output, "receipts") and hasattr(output, "executed_queries"):
+            mapped[unit_hash] = _discovery_result_material(output)
+        else:
+            raise WorkloadAdmissionError("UNKNOWN_NATIVE_OUTPUT_KIND")
     return mapped
 
 

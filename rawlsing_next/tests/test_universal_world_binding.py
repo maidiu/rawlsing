@@ -938,3 +938,496 @@ def test_r06r4_context_authority_is_held_in_all_public_wrappers(j42_receipts, p4
         ff_structural_admission=plausible,
     ))
     assert view.reason_code == "CONTEXT_STRUCTURAL_AUTHORITY_HELD"
+
+
+# R96 same-source R04 partial-resume -> actual R05 learned -> unchanged P41 consumer.
+def _same_source_connected(p41_runtime: str, source_path=None):
+    """One TEST_ONLY physical/source lineage across R04, R05 and P41."""
+    from collections.abc import Mapping
+    from rawlsing_next.pre553_issued_workload import (
+        NativeWorkload, IssuedWorkloadRecord, execute_issued_workload,
+        capture_joined_checkpoint, restore_joined_checkpoint,
+        resume_joined_workloads, operation_jobs,
+    )
+    from rawlsing_next.pre553_native_workload_binding import (
+        TestOnlyIssuedWorkload, TestOnlyDecisionResolver,
+    )
+    from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
+    from rawlsing_next.pre553_universal_workload import (
+        compile_governed_frontier, compile_universal_workload,
+    )
+    from rawlsing_next.tests.test_universal_workload import (
+        _frontier_bundle, _frontier_fixture,
+    )
+    from rawlsing_next.tests.test_universal_workload_custody import (
+        AS_OF, HOST, PURPOSE,
+    )
+    import rawlsing_next.pre553_learned_empirical_adjudication as m1
+    import rawlsing_next.pre553_learned_world_composition as i4
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+    from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
+    from rawlsing_next.pre553_learned_product_lifecycle import LearnedProductLifecycleExecutor
+    from rawlsing_next.pre553_learned_product_release import M2Repository
+    from rawlsing_next.pre553_source_backed_c11_facade import build_source_backed_c11_repository
+    from rawlsing_next.tests.test_pre553_learned_empirical_adjudication import (
+        _binding, _m1_authority, _registry, _validator,
+    )
+    from rawlsing_next.tests.test_pre553_learned_world_composition import _contract
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+    from rawlsing_next.tests.test_universal_source_projection import package
+    from rawlsing_next.pre553_physical_decoder import decode_sav
+    from rawlsing_next.pre553_source_native_preimage_adapter import (
+        NativeSourceRule, materialize_native_preimages,
+    )
+
+    def merge(values):
+        by_key = {value.ref.key: value for value in values}
+        return tuple(by_key[key] for key in sorted(by_key))
+
+    def leaves(ast):
+        if isinstance(ast, Mapping) and ast.get("op") == "LEAF":
+            return [ast]
+        if isinstance(ast, Mapping):
+            return [leaf for child in ast.get("children", ()) for leaf in leaves(child)]
+        return []
+
+    def fixed_validator(context):
+        binding = context.family_rule_binding
+        return m1.FamilyValidationResult(
+            claim_family_id=binding.claim_family_id,
+            claim_rule_id=binding.claim_rule_id,
+            family_rule_binding_ref=binding.ref,
+            validator_authority_ref=binding.validator_authority_ref,
+            validator_algorithm_identity=binding.validator_algorithm_identity_if_required,
+            adjudication_outcome="RULE_SATISFIED",
+            reason_code="SYNTHETIC_RULE_DECISION",
+            relation_proposition_identity_ref=None,
+            semantic_claim_identity_ref=None,
+            semantic_assertion_polarity_or_state="NONE",
+            semantic_ceiling=binding.semantic_ceiling,
+            determinant_material={"fixed": True},
+            explanation_material={"fixed": True},
+            effects=dict(m1._FALSE_EFFECTS),
+        )
+
+    with tempfile.TemporaryDirectory(prefix=".r96-same-source-") as directory:
+        path = Path(source_path) if source_path is not None else Path(directory) / "same-source.sav"
+        if path.is_file():
+            incidence = decode_sav(path)
+            pkg = package(
+                path, incidence.row_count,
+                (NativeSourceRule("impl.a", "A"),
+                 NativeSourceRule("impl.b", "B"),
+                 NativeSourceRule("impl.y", "Y")),
+                coordinate="G",
+            )
+            bundle = materialize_native_preimages(package=pkg, incidence=incidence)
+        else:
+            bundle, _ = _frontier_bundle(path)
+        inventory, policy, frontier = _frontier_fixture(bundle)
+        governed = compile_governed_frontier(
+            bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+            as_of=AS_OF, host=HOST, purpose=PURPOSE,
+        )
+        universal = compile_universal_workload(
+            bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE,
+        )
+        query_issued = universal.compiled[0].issued
+        base = query_issued.workload
+        discovery = governed.issued.workload
+        catalog = RuntimeObjectCatalog(
+            authorities=merge(base.catalog.authorities + discovery.catalog.authorities),
+            predicates=merge(base.catalog.predicates + discovery.catalog.predicates),
+            queries=merge(base.catalog.queries + discovery.catalog.queries),
+            discovery_authorities=merge(
+                base.catalog.discovery_authorities + discovery.catalog.discovery_authorities
+            ),
+        )
+        workload = NativeWorkload(
+            decision_ref=ExactRef(
+                "TEST_ONLY_DECISION", "urn:test:r96:same-source", "9" * 64,
+            ),
+            source_factory_ref=base.source_factory_ref,
+            descriptor=base.descriptor, projection=base.projection,
+            catalog=catalog,
+            requests=base.requests, discoveries=discovery.discoveries,
+            original_u_root=base.original_u_root,
+            expected_frontier_root=base.expected_frontier_root,
+        )
+        record = IssuedWorkloadRecord(
+            decision_ref=workload.decision_ref,
+            source_permission_ref=query_issued.record.source_permission_ref,
+            scientific_permission_refs=query_issued.record.scientific_permission_refs,
+            host=HOST, purpose=PURPOSE,
+            source_sha256=query_issued.record.source_sha256,
+            envelope_sha256=semantic_hash(workload.envelope()),
+            original_u_root=workload.original_u_root,
+            expected_frontier_root=workload.expected_frontier_root,
+            expected_jobs=operation_jobs(workload.requests, workload.discoveries),
+            currentness="CURRENT_GRANTED", scope=query_issued.record.scope,
+        )
+        issued = TestOnlyIssuedWorkload(
+            workload=workload, record=record,
+            descriptor=query_issued.descriptor,
+            envelope_sha256=record.envelope_sha256,
+        )
+
+        # Stop at a real partial native prefix and cold-restore the captured checkpoint.
+        partial = execute_issued_workload(
+            workload, TestOnlyDecisionResolver(record),
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=HOST, purpose=PURPOSE, allow_test_only=True, max_units=1,
+        )
+        checkpoint = capture_joined_checkpoint((partial,))
+        restored = restore_joined_checkpoint(
+            checkpoint.material(), expected_checkpoint_ref=checkpoint.checkpoint_hash,
+        )
+        resumed = resume_joined_workloads(
+            workloads=(issued,),
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=HOST, purpose=PURPOSE, checkpoint=restored,
+            expected_checkpoint_ref=checkpoint.checkpoint_hash,
+        )
+        final = resumed.resumed_results[0]
+        full = execute_issued_workload(
+            workload, TestOnlyDecisionResolver(record),
+            source_factory=lambda _ref: bundle.physical_stream,
+            host=HOST, purpose=PURPOSE, allow_test_only=True,
+        )
+        assert len(partial.receipts) == 1
+        assert checkpoint.entries[0].state == "PARTIAL"
+        assert len(resumed.completed_results) == 0
+        assert len(resumed.resumed_results) == 1
+        assert len(final.receipts) == len(full.receipts) == 2
+        assert final.output_refs == full.output_refs
+        resumed_route = final.route_results[0]
+        full_route = full.route_results[0]
+        assert resumed_route.replay_receipt["receipt_identity"] == (
+            full_route.replay_receipt["receipt_identity"]
+        )
+        assert tuple(ref.as_dict() for ref in (
+            *resumed_route.object_graph.empirical_facts,
+        )) == tuple(ref.as_dict() for ref in (
+            *full_route.object_graph.empirical_facts,
+        ))
+
+        # Refuse revoked/wrong-source before native use.
+        revoked = replace(record, currentness="REVOKED")
+        revoked_issued = TestOnlyIssuedWorkload(
+            workload=workload, record=revoked,
+            descriptor=query_issued.descriptor,
+            envelope_sha256=record.envelope_sha256,
+        )
+        try:
+            resume_joined_workloads(
+                workloads=(revoked_issued,),
+                source_factory=lambda _ref: bundle.physical_stream,
+                host=HOST, purpose=PURPOSE, checkpoint=checkpoint,
+                expected_checkpoint_ref=checkpoint.checkpoint_hash,
+            )
+        except Exception as error:
+            revoked_code = type(error).__name__
+        else:
+            raise AssertionError("revoked workload was admitted")
+        bad_stream = replace(bundle.physical_stream, source_sha256="f" * 64)
+        try:
+            execute_issued_workload(
+                workload, TestOnlyDecisionResolver(record),
+                source_factory=lambda _ref: bad_stream,
+                host=HOST, purpose=PURPOSE, allow_test_only=True,
+            )
+        except Exception as error:
+            wrong_source_code = type(error).__name__
+        else:
+            raise AssertionError("wrong source was admitted")
+
+        # Actual resumed R04 graph -> existing M1 -> existing learned product.
+        q_by_key = {query.ref.key: query for query in resumed_route.object_graph.executed_queries}
+        pred_by_key = {pred.ref.key: pred for pred in resumed_route.object_graph.executed_predicates}
+        candidates = []
+        for receipt in sorted(resumed_route.i05_result.receipts, key=lambda item: item.ref.key):
+            roles = receipt.candidate_identity.get("query_roles") if isinstance(
+                receipt.candidate_identity, Mapping
+            ) else None
+            if not roles:
+                continue
+            for role in sorted(roles, key=lambda item: exact_ref(item["query_ref"], "query_ref").key):
+                query = q_by_key.get(exact_ref(role["query_ref"], "query_ref").key)
+                if query is None:
+                    continue
+                if tuple(exact_ref(ref, "target") for ref in query.target_refs) != (
+                    bundle.question_refs["Y"],
+                ):
+                    continue
+                predicate = pred_by_key.get(
+                    exact_ref(query.condition_predicate_ref, "predicate").key
+                )
+                if predicate is not None and any(
+                    leaf.get("leaf_type") == "SURVEY_RESPONSE_EVENT"
+                    for leaf in leaves(predicate.predicate_ast)
+                ):
+                    candidates.append((receipt, query, predicate))
+        assert candidates, "no exact target-Y R04 receipt"
+        receipt, producer_query, predicate = min(
+            candidates, key=lambda item: (item[0].ref.key, item[1].ref.key)
+        )
+        validator_auth = _m1_authority("r96-same-source")
+        binding = _binding(validator_auth)
+        m1_bundle = m1.build_m1_adjudication_input_bundle(
+            requested_claim_family_id="SYNTHETIC_LEARNED_RELATION",
+            requested_claim_rule_id="SYNTHETIC_RULE_R1",
+            selected_discovery_receipts=(receipt,),
+            discovery_authority_catalog=resumed_route.object_graph.discovery_authorities,
+            empirical_fact_catalog=resumed_route.object_graph.empirical_facts,
+            empirical_query_catalog=resumed_route.object_graph.executed_queries,
+            empirical_predicate_catalog=resumed_route.object_graph.executed_predicates,
+            authority_snapshots=(
+                *resumed_route.object_graph.authority_snapshots, validator_auth,
+            ),
+            requested_scope={"bridge": "R04_RESUMED_TO_R05"},
+            additional_dependency_refs=(resumed_route.c11_release.release_ref,),
+        )
+        disposition = m1.adjudicate_learned_empirical(
+            m1_bundle, binding,
+            validator_registry=_registry(binding, fixed_validator),
+        )
+        contract = _contract(route="M1_M2_B5", binding=binding, tag="r96-same-source")
+        learned = i4.compose_learned_world(
+            contract, m2_repository=M2Repository(),
+            lifecycle_executor=LearnedProductLifecycleExecutor(),
+            m1_disposition=disposition,
+        )
+        assert learned.receipt.terminal_state == "RULE_SATISFIED"
+
+        repository, release = build_source_backed_c11_repository(
+            bundle.physical_stream, bundle.projection,
+        )
+        assert release.release_ref == resumed_route.c11_release.release_ref
+        universe = bundle.projection.universes[0]
+        source = {
+            "repo": repository, "release_ref": release.release_ref,
+            "universe": universe, "qrefs": bundle.question_refs,
+            "risk_refs": {"R": bundle.risk_set_ref},
+            "source_auth": bundle.projection.authority_snapshots[0],
+            "authorities": tuple(bundle.projection.authority_snapshots),
+        }
+        pairing = fx.make_pairing_authority("r96-same-source")
+        reverse_q = {ref.key: name for name, ref in bundle.question_refs.items()}
+        bindings = []
+        pairs = []
+        seen = set()
+        for leaf in leaves(predicate.predicate_ast):
+            if leaf.get("leaf_type") != "SURVEY_RESPONSE_EVENT":
+                continue
+            qref = exact_ref(leaf["question_semantic_ref"], "question_ref")
+            name = reverse_q.get(qref.key)
+            if name not in {"A", "B"} or qref.key in seen:
+                continue
+            seen.add(qref.key)
+            value = leaf.get("exact_value")
+            try:
+                value = int(value)
+            except (TypeError, ValueError):
+                pass
+            bindings.append(fx.make_conditioner_binding(
+                binding_id="r96-" + name,
+                subject_fact_ref=ExactRef(**fx.subject_fact_ref(source, name, value)),
+                empirical_coordinate_ref=qref,
+                comparability_authority_ref=pairing,
+                source_universe_ref=universe.ref,
+                release_ref=release.release_ref,
+            ))
+            pairs.append((qref, value))
+        assert bindings
+        consumer_query = fx.make_multi_conditioner_consumer_query(
+            query_id="r96-same-source",
+            subject_ref=ExactRef(
+                "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+                "urn:test:r96:same-source:subject",
+                semantic_hash({"fixture": "R96_SAME_SOURCE"}),
+            ),
+            target_ref=bundle.question_refs["Y"],
+            source_universe_ref=universe.ref,
+            release_ref=release.release_ref,
+            bindings=bindings,
+            projection_kind="R96_SAME_SOURCE_RESUME_CONSUMER",
+        )
+        witness = fx.build_witness_for_binding(
+            witness_object_id="urn:test:r96:same-source:witness",
+            consumer_query=consumer_query,
+            producer_query=producer_query,
+            producer_predicate=predicate,
+            bindings=bindings,
+            coordinate_value_pairs=pairs,
+            pairing_authority=pairing,
+            source_universe_ref=universe.ref,
+            release_ref=release.release_ref,
+        )
+        model_rule = fx.make_model_rule(universe.ref, "r96-same-source")
+        registry = AuthorityRegistry(tuple(resumed_route.object_graph.authority_snapshots))
+        composition = compose_positioned_subject_possibility(
+            repository=repository,
+            empirical_query=producer_query,
+            predicate=predicate,
+            authority_registry=registry,
+            release_refs=(release.release_ref,),
+            consumer_query=consumer_query,
+            model_rule=model_rule,
+            condition_binding_witness=witness,
+        )
+        assert composition.analytical_state == "SUPPORTED"
+        learned_consumer = i4.evaluate_learned_world_consumer(
+            learned, composition=composition,
+            consumer_query=consumer_query, model_rule=model_rule,
+            producer_query_ref=producer_query.ref,
+            producer_predicate_ref=predicate.ref,
+        )
+        assert learned_consumer.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+
+        slot = i4.NativeGraphSlot(
+            "r96-same-source", universe.ref, release.release_ref,
+            producer_query.ref, predicate.ref, consumer_query.ref,
+            model_rule.rule_hash, "DIRECT_I03_TO_POSITIONED_SUBJECT",
+            condition_value_witness=witness, target_arity=1,
+            joint_order_semantics="SEMANTIC_ORDERED",
+            m1_disposition=learned.m1_disposition,
+            m2_release=learned.m2_artifacts.release.ref,
+            e41_input=None, repository=repository,
+            empirical_query=producer_query, predicate=predicate,
+            authority_registry=registry,
+            consumer_query=consumer_query, model_rule=model_rule,
+        )
+        coordinator = i4.TrustedNativeGraphCoordinator(admitted_slots={slot.slot_id: slot})
+        execution_request = i4.NativeGraphExecutionRequest((slot,))
+        bound = coordinator.execute(execution_request)
+        learned_consumer = i4.evaluate_learned_world_consumer(
+            learned, composition=bound.view.compositions[0],
+            consumer_query=consumer_query, model_rule=model_rule,
+            producer_query_ref=producer_query.ref,
+            producer_predicate_ref=predicate.ref,
+            product_graph=bound, trusted_graph_reader=coordinator,
+        )
+        assert learned_consumer.state == "LEARNED_CONSUMER_EXACT_SUPPORTED"
+        source_fact_ref = learned_consumer.consumer_result.exact_geometry["source_fact_ref"]
+        step = {
+            "schema": "R06R2_R05_LEARNED_PROVIDER@1",
+            "state": "EXACT_SUPPORTED",
+            "route": learned_consumer.producer_route,
+            "target": "Y",
+            "conditioners": [
+                [reverse_q[ref.key], value] for ref, value in pairs
+            ],
+            "denominator": learned_consumer.denominator,
+            "cells": [dict(cell) for cell in learned_consumer.cells],
+            "uncertainty": "UNCERTAINTY_UNQUANTIFIED",
+            "evidence_ref": None if learned_consumer.evidence_ref is None
+            else learned_consumer.evidence_ref.as_dict(),
+            "producer_query_ref": producer_query.ref.as_dict(),
+            "producer_fact_ref": source_fact_ref,
+            "producer_predicate_ref": predicate.ref.as_dict(),
+            "condition_witness_ref": witness.witness_ref.as_dict(),
+            "model_rule_hash": model_rule.rule_hash,
+            "risk_set_ref": bundle.risk_set_ref.as_dict(),
+            "release_ref": release.release_ref.as_dict(),
+            "content_hash": learned_consumer.consumer_result.result_hash,
+        }
+        case = {
+            "m01": {
+                "projection": bundle.projection, "risk": bundle.risk_set_ref,
+                "qrefs": bundle.question_refs,
+            },
+            "repository": repository, "release": release.release_ref,
+            "consumer_query": consumer_query, "model_rule": model_rule,
+            "learned": learned, "m01_result": resumed_route,
+        }
+        data = {
+            "case": case, "learned": learned_consumer, "step": step,
+            "source_universe_ref": universe.ref,
+            "release_ref": release.release_ref,
+            "source_rows_hash": bundle.source_sha256,
+            "coordinator_original_ref": bound.original_ref,
+            "coordinator": coordinator, "execution_request": execution_request,
+            "bound": bound, "trace": {
+                "source_sha256": bundle.source_sha256,
+                "route_replay_identity": resumed_route.replay_receipt["receipt_identity"],
+                "route_graph_fact_refs": [fact.ref.as_dict() for fact in resumed_route.object_graph.empirical_facts],
+                "receipt_ref": receipt.ref.as_dict(),
+                "m1_disposition_ref": disposition.ref.as_dict(),
+                "m2_release_ref": learned.m2_artifacts.release.ref.as_dict(),
+                "learned_receipt_ref": learned.receipt.ref.as_dict(),
+                "consumer_result_hash": learned_consumer.consumer_result.result_hash,
+                "producer_query_ref": producer_query.ref.as_dict(),
+                "producer_predicate_ref": predicate.ref.as_dict(),
+                "evidence_ref": None if learned_consumer.evidence_ref is None
+                else learned_consumer.evidence_ref.as_dict(),
+            },
+            "refusals": {
+                "revoked": revoked_code,
+                "wrong_source": wrong_source_code,
+            },
+        }
+        execution = _actual_execution_for(data, p41_runtime)
+        view = select_r05_world_view(_r05_request(data, actual_execution=execution))
+        assert view.state == "R05_WORLD_SELECTED_VIEW", view.reason_code
+        data["trace"]["view_state"] = view.state
+        data["trace"]["view_hash"] = view.view_hash
+        # Sever one actual upstream learned-evidence binding; same consumer must refuse.
+        foreign = ExactRef(
+            "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+            "urn:test:r96:foreign-evidence", "f" * 64,
+        )
+        bad_step = dict(step)
+        bad_step["evidence_ref"] = foreign.as_dict()
+        bad_execution = _actual_execution_for(data, p41_runtime, step=bad_step)
+        refused = select_r05_world_view(_r05_request(data, actual_execution=bad_execution))
+        assert refused.state == "REFUSED"
+        restored_view = select_r05_world_view(
+            _r05_request(data, actual_execution=execution)
+        )
+        assert restored_view.view_hash == view.view_hash
+
+        return {
+            "view": view, "data": data,
+            "hashes": {
+                "trace": data["trace"],
+                "view_hash": view.view_hash,
+                "refused_reason": refused.reason_code,
+                "revoked_code": revoked_code,
+                "wrong_source_code": wrong_source_code,
+            },
+        }
+
+
+def test_same_source_r04_partial_resume_reaches_actual_p41(p41_runtime, tmp_path):
+    source_path = tmp_path / "same-source.sav"
+    result = _same_source_connected(p41_runtime, source_path)
+    view = result["view"]
+    assert view.state == "R05_WORLD_SELECTED_VIEW"
+    assert view.temporal_changed is True
+    assert view.consumer_values_read["t0_routes"]["training"] == "ELIGIBLE"
+    assert view.consumer_values_read["t1_routes"]["training"] == "BLOCKED_BY_MODELED_RULE"
+    assert view.consumer_values_read["t0_n10e_steps"][0]["conditioners"] == [
+        [str(condition[0]), condition[1]]
+        for condition in result["data"]["step"]["conditioners"]
+    ]
+    assert result["hashes"]["wrong_source_code"] == "WorkloadAdmissionError"
+    assert result["hashes"]["revoked_code"] == "WorkloadAdmissionError"
+    assert result["hashes"]["refused_reason"]
+
+    code = (
+        "import json,sys;"
+        "from rawlsing_next.tests.test_universal_world_binding import _same_source_connected;"
+        "print(json.dumps(_same_source_connected(sys.argv[1], sys.argv[2])['hashes'],sort_keys=True))"
+    )
+    env = dict(os.environ, PYTHONHASHSEED="0", PYTHONDONTWRITEBYTECODE="1")
+    env["PYTHONPATH"] = str(REPO_ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    proc = subprocess.run(
+        [sys.executable, "-c", code, p41_runtime, str(source_path)], cwd=str(REPO_ROOT),
+        env=env, capture_output=True, text=True, timeout=900,
+    )
+    assert proc.returncode == 0, proc.stdout[-3000:] + proc.stderr[-3000:]
+    child = json.loads(proc.stdout)
+    assert child["trace"]["view_state"] == "R05_WORLD_SELECTED_VIEW"
+    assert child["trace"]["source_sha256"] == result["hashes"]["trace"]["source_sha256"]
+    assert child["trace"]["route_replay_identity"] == result["hashes"]["trace"]["route_replay_identity"]
+    assert child["trace"]["receipt_ref"] == result["hashes"]["trace"]["receipt_ref"], (child["view_hash"], result["hashes"]["view_hash"])
