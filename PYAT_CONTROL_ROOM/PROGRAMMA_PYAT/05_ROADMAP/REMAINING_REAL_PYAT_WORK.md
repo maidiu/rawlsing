@@ -475,3 +475,6 @@ D2P3 author return `cfe7dc6111afcb8eda26eb9a54f6cad43b6d1584`. Author reports se
 
 
 HQ accepted D2P3 at sourcefree producer-to-N9C scope after independent review `830a9656cb65f00337d5bcd0f7373dbef11d50df`. Independent exact snapshot: 13 passed including seven adapted regressions. Producer-owned refs reach N9C readset. N10W requires actual version-selected N9 plus computed N10E. Source science, publication custody and adoption held.
+
+
+F6 independent recheck 7f2e71822f360c492e016f46145af5277040468b accepted candidate 22d6712090970597e0c161b9f12eaece84bda5c5 at sourcefree comparison scope. F6M bounds reach F6P; tested WP2 expression raises raw KeyError(native_bundle). No downstream WP2 effect was executed. Reuse existing producer and evidence consumer. Receiver owner must define how partial bounds and uncovered target mass are consumed. Original population/estimand and transport authority held.
