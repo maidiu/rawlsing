@@ -797,6 +797,11 @@ def _apply_event(state: dict, event: dict) -> dict:
     if kind == "RETURN_INTAKE":
         result = intake_candidate(state, payload)
         return {"kind": kind, "status": result.get("status"), "result": result, "event": event.get("event_id")}
+    if kind == "PROGRAMMA_DELTA":
+        import live_update_adapter as delta_adapter
+        result = delta_adapter.apply_delta(state, payload, event_id=event.get("event_id"))
+        return {"kind": kind, "status": result.get("status"), "result": result,
+                "event": event.get("event_id")}
     if kind == "SOURCE_CUT_REFRESH":
         observed = payload.get("observed") or observe_source_cut()
         refreshed = refresh_state(state, observed)
@@ -857,7 +862,7 @@ def rebuild_from_journal(journal_path: Path | None = None, observed_source: dict
     return state
 
 
-def commit_event(body: dict, *, journal_path: Path | None = None, state_path: Path | None = None, snapshot_path: Path | None = None, expected_head: str | None = None) -> dict:
+def commit_event(body: dict, *, journal_path: Path | None = None, state_path: Path | None = None, snapshot_path: Path | None = None, expected_head: str | None = None, strict_expected_head: bool = False, idempotency_key: str | None = None) -> dict:
     target = Path(journal_path or JOURNAL)
     commit_lock_path = target.with_name(target.name + ".commit.lock")
     commit_lock_path.parent.mkdir(parents=True, exist_ok=True)
@@ -866,6 +871,33 @@ def commit_event(body: dict, *, journal_path: Path | None = None, state_path: Pa
         try:
             existing_events = evidence_store.read_journal(target)
             _check_journal_regression(existing_events, Path(state_path or STATE))
+            actual_head = existing_events[-1]["event_id"] if existing_events else evidence_store.GENESIS
+            # Opt-in strict CAS for PROGRAMMA_DELTA. Existing journal producers
+            # retain their original append-and-report-stale behavior.
+            if idempotency_key is not None:
+                if body.get("kind") != "PROGRAMMA_DELTA":
+                    raise ValueError("IDEMPOTENCY_KEY_RESERVED_FOR_PROGRAMMA_DELTA")
+                for prior in existing_events:
+                    if prior.get("kind") != "PROGRAMMA_DELTA":
+                        continue
+                    old = prior.get("payload") or {}
+                    if old.get("transition_id") != idempotency_key:
+                        continue
+                    if _digest(old) != _digest(body.get("payload") or {}):
+                        raise ValueError("DUPLICATE_PROGRAMMA_DELTA_ID_DIFFERENT_PAYLOAD")
+                    return {"status": "DUPLICATE_PROGRAMMA_DELTA_IDEMPOTENT",
+                            "event": prior, "head": actual_head,
+                            "revision": len(existing_events), "no_write": True}
+            if strict_expected_head:
+                if expected_head is None or expected_head != actual_head:
+                    raise StaleStateRevision("PROGRAMMA_DELTA_STALE_CAS_HEAD")
+                if body.get("kind") == "PROGRAMMA_DELTA":
+                    # Revalidate under the append lock so a changed predecessor
+                    # or a forged review never enters canonical evidence.
+                    import live_update_adapter as delta_adapter
+                    delta_adapter.validate_delta(
+                        rebuild_from_journal(target, operating=True),
+                        body.get("payload") or {})
             appended = evidence_store.append_event(target, body, expected_head=expected_head)
             last_error = None
             for _ in range(3):
@@ -1839,6 +1871,17 @@ def _recompute(state: dict) -> None:
     _recompute_consumer_grades(state)
     state["whole_program_gaps"] = whole_program_gaps(state)
     state["work_now"] = compute_work_now(state)
+    if state.get("programma_deltas"):
+        # A view onto this same P0/P1 state, not a new graph/database.
+        import live_update_adapter as delta_adapter
+        live_view = delta_adapter.project(state)
+        state["programma_live"] = live_view
+        state["work_now"]["programma_live"] = {
+            "guide_cut": live_view["guide_cut"],
+            "pending": live_view["pending"],
+            "changed_refs": live_view["changed_refs"],
+            "readiness_warning": live_view["readiness_warning"],
+        }
     state["coverage"] = compute_coverage(state)
     state["blocked_views"] = {
         "L0_PERSON": blocked_chain(state, "L0_PERSON"),
