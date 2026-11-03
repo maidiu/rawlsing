@@ -25,7 +25,8 @@ source checks do not execute them.
 Use a TEMPORARY state with its own journal for trials; never mutate the committed
 operating state.json, SNAPSHOT.json, or the original guide during acceptance.
 
-    python3 living_reference.py --state /tmp/live02/state.json refresh
+    mkdir -p /tmp/live02/evidence
+    python3 -c 'import living_reference as lr; from pathlib import Path; lr.commit_event(lr._event("GENESIS", {"baseline_sha": lr.ENGINEERING_BASELINE}), journal_path=Path("/tmp/live02/evidence/journal.jsonl"), state_path=Path("/tmp/live02/state.json"))'
     python3 live_update_adapter.py --state /tmp/live02/state.json freshness
 
 To admit an actual bounded sourcefree record, obtain the current exact
