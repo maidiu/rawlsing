@@ -195,3 +195,8 @@ For every `REVISE`, the rejection attaches to the *selected proposal/claim and s
 - **S14 rights constitution** remains design until operated, tested deletion/export, consent, privacy and abuse handling.
 - All historical and old V3/PFF/Enneagram source patterns remain subject to Sorok 74's explicit authority correction and current owner decisions.
 - A `JOIN_VALID`, `READY`, `REQUIRED`, `WORK_PACKAGE`, reverse-unlock or `@ACCEPT` label without correct exact-cut proof stays a guide proposition, never an executable actor/source/human conclusion.
+
+
+## SR-01 bounded documentary correction (post-terminal readback)
+
+A separate source-grade readback of the `50bf48b4` candidate found five `SPINE_REQUIRED_UNBUILT` rows with null `exact_modern_basis_ref` and one omitted JSONL manifest metadata row. The four genuinely modern requirements (`D-OBS`, `D-M6`, `D-ACTION`, versioned seam `E010`) now cite exact preexisting governing product documents; those citations authorize **requirements only**, not an adopted positive implementation. Versioned `E019` (`M25@KNOW → M25@SPECIFY`) is now `HISTORICAL_CANDIDATE`, since the current S6/C10 duty does **not** require restoration of historical M25, and W8-J's original source-specific `HOLD`/full `JOIN_PENDING` remains unchanged. The 14 MANIFEST is included as `REFERENCE_ONLY` metadata for literal identity conservation, **not** as a gate, work package or current function. These are bounded source-graded repairs, not independent formal acceptance or authority issuance.
