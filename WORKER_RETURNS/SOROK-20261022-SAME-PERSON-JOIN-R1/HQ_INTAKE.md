@@ -15,3 +15,5 @@ The B-specific source checks support the causal claim. Aggregate cut/restore com
 - Evidence: 6 focused cold-validation tests and 12 preserved-path tests passed; `evidence/cold_validation_repair.json`. Intact new + genuine legacy positives, marker/receipt/both deletion cuts including fresh-process reopen, receipt tamper, accepted encounter/cold/fork, foreign-root refusal and targetless refusal were executed.
 - PROGRAMMA effect: closes the review-identified optional-metadata cold bypass at this exact cut without changing C8/C9/C12 semantics, the targetless path, vendor source or native authority.
 - Next: independent exact-cut review of the persisted binding and deletion matrix. Owner adoption, native C10 semantics and custody remain external.
+
+HQ replay at 1cb965ad02c8e6b503f708944f2f8053982a7eff: all 6 focused cold-validation tests passed in 6.51s, covering metadata deletion and genuine legacy reopen. S35 repair review and same-world compatibility remain open.
