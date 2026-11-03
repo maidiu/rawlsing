@@ -47,6 +47,27 @@ PRODUCER_ROUTE_DIRECT = "DIRECT_I03_TO_POSITIONED_SUBJECT"
 PRODUCER_ROUTE_DISCOVERY = "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT"
 PRODUCER_ROUTE_RECURSIVE = "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT"
 
+# Trusted in-process execution custody: populated only by the accepted compose
+# boundary after actual owner validation. A subject view is compared to this
+# retained original; it cannot obtain provenance by rehashing its own fields.
+_NATIVE_COMPOSITION_CUSTODY: dict[str, tuple[Mapping[str, Any], Any]] = {}
+
+
+def native_composition_original(composition_ref_or_hash: Any) -> Mapping[str, Any] | None:
+    """Return the retained canonical original for an actual composed result."""
+    key = (
+        composition_ref_or_hash
+        if isinstance(composition_ref_or_hash, str)
+        else getattr(composition_ref_or_hash, "composed_result_identity_hash", None)
+    )
+    entry = _NATIVE_COMPOSITION_CUSTODY.get(key)
+    return None if entry is None else entry[0]
+
+
+def _retain_native_composition(result: "AnalyticalCompositionResult") -> None:
+    material = canonicalize(result.identity_material())
+    _NATIVE_COMPOSITION_CUSTODY[result.composed_result_identity_hash] = (material, result)
+
 
 class AnalyticalCompositionError(Pre553IntegrityError):
     """Typed C1 composition failure; upstream owner errors are not laundered."""
@@ -1207,10 +1228,12 @@ def compose_positioned_subject_possibility(
     provisional = AnalyticalCompositionResult(
         **kwargs, composed_result_identity_hash="0" * 64
     )
-    return AnalyticalCompositionResult(
+    result = AnalyticalCompositionResult(
         **kwargs,
         composed_result_identity_hash=semantic_hash(provisional.identity_material()),
     )
+    _retain_native_composition(result)
+    return result
 
 
 def _validate_recursive_consumption(
@@ -1243,6 +1266,7 @@ __all__ = [
     "EVIDENCE_PREIMAGE_SCHEMA",
     "EVIDENCE_CONTRACT_ID",
     "compose_positioned_subject_possibility",
+    "native_composition_original",
     "PRODUCER_ROUTE_DIRECT",
     "PRODUCER_ROUTE_DISCOVERY",
     "PRODUCER_ROUTE_RECURSIVE",
