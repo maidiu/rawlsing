@@ -61,13 +61,15 @@ def main():
     f6p_result = C.consume_f6m_evidence(f6p_w2, request("W2_mixed_eligibility_trap"))
     try:
         current_wp2_f6_sidecar(f6p_result)
-        mismatch = {"typed_mismatch": False}
-    except Exception as exc:
+        mismatch = {"raw_exception_observed": False}
+    except KeyError as exc:
+        # The candidate comparison harness, not F6P or WP2, labels this
+        # boundary condition.  Preserve the receiver's raw exception.
         mismatch = {
-            "typed_mismatch": True,
-            "code": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
-            "exception_type": type(exc).__name__,
-            "exception": str(exc),
+            "raw_exception_observed": True,
+            "raw_exception_type": type(exc).__name__,
+            "raw_exception_args": list(exc.args),
+            "raw_exception_str": str(exc),
             "expected_receiver_fields": ["native_bundle", "native_conditional_consumer"],
             "supplied_f6p_fields": sorted(f6p_result.keys()),
             "first_missing_field": "native_bundle",
@@ -76,7 +78,10 @@ def main():
                 "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
                 "wp2_line": 94,
             },
-            "read_effect": "NO_NONPARENT_OPTIONS_READ; NO_F6M_E04_JOIN",
+            "wp2_receiver_executed": False,
+            "observed_effect": None,
+            "authored_diagnostic_label": "COMPARISON_LOCAL_BOUNDARY_SHAPE_DIFFERENCE__NOT_EMITTED_BY_F6P_OR_WP2",
+            "authored_diagnostic_location": "run_comparison.py:current_wp2_f6_sidecar",
         }
     refused = {}
     for key in ("REAL_USE", "TRANSPORT_PERMISSION", "ADMISSION"):
@@ -144,8 +149,14 @@ def main():
                 and results[w]["supported_point"] is None
                 for w in ("W2_mixed_eligibility_trap", "W7_source_excluded_all_strata", "W3_minority_whole_stratum_absent")),
             "partial_bounds_reach_current_wp2_receiver": False,
-            "first_typed_mismatch": mismatch.get("code"),
-            "reason": "F6P emits F6P_PARTIAL_BOUND_EVIDENCE; WP2 expects F6M native_bundle + native_conditional_consumer sidecar shape and has no F6P branch. The current F6C receipt records no F6M -> E04 join and NONPARENT_OPTIONS invariance across A/A0/B.",
+            "wp2_receiver_executed": False,
+            "raw_exception": {
+                "type": mismatch.get("raw_exception_type"),
+                "args": mismatch.get("raw_exception_args"),
+                "str": mismatch.get("raw_exception_str"),
+            },
+            "authored_diagnostic_label": mismatch.get("authored_diagnostic_label"),
+            "reason": "F6P emits F6P_PARTIAL_BOUND_EVIDENCE; the exact WP2 sidecar expression expects F6M native_bundle + native_conditional_consumer. This is a structural shape check only; WP2 product() was not executed and no receiver effect is claimed.",
             "no_pooling": True,
             "point_refused_when_uncovered": all(
                 results[w]["supported_point"] is None

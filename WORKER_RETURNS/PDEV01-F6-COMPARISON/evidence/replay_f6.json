@@ -1,66 +1,55 @@
 {
   "author_tests": {
-    "hostile_oracle": "test_f6p_abc_oracle.py (included)",
     "implementation_7d7": {
       "seed0": "26 passed",
       "seed1": "26 passed"
     },
-    "path": "stage/F6P/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests",
     "publication_912": {
-      "path": "stage/F6P-reviewed/WORKER_RETURNS/PYAT-R39-F6P-PARTIAL-BOUND-EVIDENCE-CONSUMER-R1/tests",
       "seed0": "32 passed",
       "seed1": "32 passed"
     },
-    "seed0": "32 passed at publication 912; 26 passed at implementation 7d7",
-    "seed1": "32 passed at publication 912; 26 passed at implementation 7d7"
+    "seed0": "publication 912 32 passed; implementation 7d7 26 passed",
+    "seed1": "publication 912 32 passed; implementation 7d7 26 passed"
+  },
+  "checkout_root_hash_limit": {
+    "candidate_output_hashes": {
+      "W1_full_coverage_disjoint": "20f1d417843920e7913149db0cd9083dae9cc1db0d5031393a6bb1c297a915f9",
+      "W2_mixed_eligibility_trap": "362cd898d9a01831973a2c4463f80185fdb352bb0e7bbdcc63cdca45d89a40c3",
+      "W3_minority_whole_stratum_absent": "037f9634c59b771439998f4a20eeb455dab762bc640a29d5f59f4fa8abb5573e",
+      "W7_source_excluded_all_strata": "b099bd3040fc8edb65fc246f122ffda92bc326074d686868df83a16e0fa304f9"
+    },
+    "candidate_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-f6",
+    "cause": "F6P output_hash includes absolute source_product.module_file; no cross-checkout-root byte identity is claimed.",
+    "path_only_difference": true,
+    "review_output_hashes": {
+      "W1_full_coverage_disjoint": "2fbe5cff7445483fc7ad266c0b62599351cad66aae9dbc9c764ad08afa4db1cc",
+      "W2_mixed_eligibility_trap": "a32ddca16debc3e42620e7a086b9c0b30635bfb3b44a7f847ea3021263b608e0",
+      "W3_minority_whole_stratum_absent": "b3820858afeaffaf276555fc6882b768b242facdca0dac3b5fb9b9ac6980344c",
+      "W7_source_excluded_all_strata": "4e83945fdf516a956fa9a64d8a2ba4f24723394cf4e1e905de5b8e1e20fec2c5"
+    },
+    "review_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-pdev01-f6-review",
+    "scope": "same-checkout seed0/seed1 byte identity only; semantic fields portable across checkout roots",
+    "semantic_fields_equal": true
   },
   "comparison_evidence": "evidence/f6p-receiver-comparison.json",
+  "comparison_output_sha256": "a7aa424764a7eb8639efaaa1bfe6be34e99e111ac69f11390e77ed23f3654029",
   "current_receiver": {
     "blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
-    "commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
-    "f6m_native_sidecar_expected_fields": [
-      "native_bundle",
-      "native_conditional_consumer"
-    ],
-    "f6m_to_e04_join": false,
-    "f6p_evidence_fields": [
-      "bias_sensitivity_bounds",
-      "bounds",
-      "conditional",
-      "consumer_id",
-      "covered_subprobability",
-      "evidence_reasons",
-      "evidence_state",
-      "exclusions",
-      "input_bundle",
-      "lost_planned_source_share",
-      "no_common_respondent_inference",
-      "no_route_probability",
-      "no_selection_weight",
-      "output_hash",
-      "overlap",
-      "real_use_authorized",
-      "request",
-      "sampling",
-      "schema",
-      "scientific_ceiling",
-      "source_product",
-      "supported_point",
-      "transport",
-      "uncertainty",
-      "uncovered_target_mass",
-      "values_read"
-    ],
-    "first_typed_mismatch": {
-      "code": "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR",
-      "exception": "'native_bundle'",
-      "exception_type": "KeyError",
+    "boundary_check": {
+      "authored_diagnostic_label": "COMPARISON_LOCAL_BOUNDARY_SHAPE_DIFFERENCE__NOT_EMITTED_BY_F6P_OR_WP2",
+      "authored_diagnostic_location": "run_comparison.py:current_wp2_f6_sidecar",
       "expected_receiver_fields": [
         "native_bundle",
         "native_conditional_consumer"
       ],
       "first_missing_field": "native_bundle",
-      "read_effect": "NO_NONPARENT_OPTIONS_READ; NO_F6M_E04_JOIN",
+      "observed_effect": null,
+      "raw_exception_args": [
+        "native_bundle"
+      ],
+      "raw_exception_observed": true,
+      "raw_exception_str": "'native_bundle'",
+      "raw_exception_type": "KeyError",
       "receiver_pin": {
         "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
         "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
@@ -94,15 +83,122 @@
         "uncovered_target_mass",
         "values_read"
       ],
-      "typed_mismatch": true
+      "wp2_receiver_executed": false
     },
+    "commit": "f7824794bc6674c662734c9a8b110dd3df224be7",
+    "f6c_output_manifest": "evidence/f6c/F6C_OUTPUT_MANIFEST.json",
+    "f6c_outputs_present": true,
+    "f6c_receipt_contains_output_bodies": false,
+    "f6c_receipt_path": "evidence/f6c/wp2_consumer_substitution_receipt.json",
+    "f6m_native_sidecar_expected_fields": [
+      "native_bundle",
+      "native_conditional_consumer"
+    ],
+    "f6m_to_e04_join_claimed": false,
+    "f6p_evidence_fields": [
+      "bias_sensitivity_bounds",
+      "bounds",
+      "conditional",
+      "consumer_id",
+      "covered_subprobability",
+      "evidence_reasons",
+      "evidence_state",
+      "exclusions",
+      "input_bundle",
+      "lost_planned_source_share",
+      "no_common_respondent_inference",
+      "no_route_probability",
+      "no_selection_weight",
+      "output_hash",
+      "overlap",
+      "real_use_authorized",
+      "request",
+      "sampling",
+      "schema",
+      "scientific_ceiling",
+      "source_product",
+      "supported_point",
+      "transport",
+      "uncertainty",
+      "uncovered_target_mass",
+      "values_read"
+    ],
     "grade": "UNINSTALLED_TEST_ONLY_PORT",
     "join_state": "NO_AUTHORIZED_COMMON_WORLD_OR_RESPONDENT_JOIN",
     "line": 94,
     "n9_first_import": false,
     "named_receiver": "NONPARENT_OPTIONS generic read-only world input port",
+    "observed_effect": null,
     "partial_bounds_reach": false,
-    "symbol": "wp2.product() f6_products -> generic_read_only_input.f6_sidecars"
+    "path": "WORKER_RETURNS/PYAT-R32-WP2-NATIVE-WORLD-POSSIBILITY-R1/repro/wp2.py",
+    "symbol": "wp2.product() f6_products -> generic_read_only_input.f6_sidecars",
+    "wp2_receiver_executed": false
+  },
+  "f6c_output_manifest": {
+    "invariant": {
+      "A": {
+        "actual_C1_returns_sha256": "93b5aee0cf021f2b9c0ad0a5f99159d31422ddf2067965573d8cdadcf062eade",
+        "cases_sha256": "f77c074ca2dce6120c01ffeaf2cea80200fa3d02478c982357262da3d045abfe",
+        "f6_sidecars_sha256": "fefd297e2ff9f82686d4487a3ee4a5141bfa795300536eb68cf217a026c9d434",
+        "generic_without_f6_sidecars_sha256": "1ed917cad1158e577a05e3aeee59f38049e0d6df18e57fd86c323b9e0b645998",
+        "nonparent_consumer_sha256": "9edc843f65fb3c555a330a6e0476b23f5a8fa599711b814641bb3479e1a3eac9"
+      },
+      "A0": {
+        "actual_C1_returns_sha256": "93b5aee0cf021f2b9c0ad0a5f99159d31422ddf2067965573d8cdadcf062eade",
+        "cases_sha256": "f77c074ca2dce6120c01ffeaf2cea80200fa3d02478c982357262da3d045abfe",
+        "f6_sidecars_sha256": "23199aa3bbe2da98d86b7e2a162cd9fbc53602c793f3231c1fa25cfe3931cf61",
+        "generic_without_f6_sidecars_sha256": "1ed917cad1158e577a05e3aeee59f38049e0d6df18e57fd86c323b9e0b645998",
+        "nonparent_consumer_sha256": "9edc843f65fb3c555a330a6e0476b23f5a8fa599711b814641bb3479e1a3eac9"
+      },
+      "B": {
+        "actual_C1_returns_sha256": "93b5aee0cf021f2b9c0ad0a5f99159d31422ddf2067965573d8cdadcf062eade",
+        "cases_sha256": "f77c074ca2dce6120c01ffeaf2cea80200fa3d02478c982357262da3d045abfe",
+        "f6_sidecars_sha256": "48f5346d279d065a7cf2c7794f36ffb0dd2a54ddbf8c68032ee32c1acd2cfdd2",
+        "generic_without_f6_sidecars_sha256": "1ed917cad1158e577a05e3aeee59f38049e0d6df18e57fd86c323b9e0b645998",
+        "nonparent_consumer_sha256": "9edc843f65fb3c555a330a6e0476b23f5a8fa599711b814641bb3479e1a3eac9"
+      }
+    },
+    "note": "Exact historical F6C outputs are now embedded separately; the copied substitution receipt alone is not self-contained.",
+    "observations": {
+      "actual_C1_returns_invariant": true,
+      "cases_invariant": true,
+      "f6_sidecars_differ": true,
+      "generic_without_f6_sidecars_invariant": true,
+      "nonparent_consumer_invariant": true
+    },
+    "outputs": {
+      "A": {
+        "bytes": 9204043,
+        "git_blob": "1357a834c5fe56fc53a33e12db84633ed4b68595",
+        "installation": false,
+        "path": "WORKER_RETURNS/PDEV01-F6-COMPARISON/evidence/f6c/wp2_sub_A.json",
+        "sha256": "3df50e9801326e43925150611de5d6fa2a89f4b7ee38bce093c96139e6a68561",
+        "terminal": "OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD"
+      },
+      "A0": {
+        "bytes": 9203068,
+        "git_blob": "e246e76861e1708615c5eb558abe8e4102ad66e2",
+        "installation": false,
+        "path": "WORKER_RETURNS/PDEV01-F6-COMPARISON/evidence/f6c/wp2_sub_A0.json",
+        "sha256": "0bb40d883c4f0aab1b07218b8cb32e618e7560a57b796e643f3c53060423d110",
+        "terminal": "OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD"
+      },
+      "B": {
+        "bytes": 9210880,
+        "git_blob": "b4d8213650f00a318ec326e0849694512d89abc5",
+        "installation": false,
+        "path": "WORKER_RETURNS/PDEV01-F6-COMPARISON/evidence/f6c/wp2_sub_B.json",
+        "sha256": "01e0bce46799320da8f9c61f1edae04dc081574542fc0b78ff3d5277a767b720",
+        "terminal": "OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD"
+      }
+    },
+    "outputs_present_here": true,
+    "receipt": "WORKER_RETURNS/PDEV01-F6-COMPARISON/evidence/f6c/wp2_consumer_substitution_receipt.json",
+    "receipt_contains_output_bodies": false,
+    "schema": "PDEV01_F6C_HISTORICAL_OUTPUT_MANIFEST@1.0.0",
+    "source_commit": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+    "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+    "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7"
   },
   "first_consumer": {
     "actual_product_consumed": "actual repaired F6M bundle (blob 2df811d7...)",
@@ -125,7 +221,7 @@
   "five_tests": {
     "01_history": "pinned F6M/F6P/A/A0 reviews and exact tests",
     "02_current_requirement": "current F6 gap is guard-only, not a replacement composer",
-    "03_first_consumer": "F6P receives partial bounds; WP2/N9 first typed mismatch",
+    "03_first_consumer": "F6P receives partial bounds; exact WP2 sidecar expression raises raw KeyError native_bundle; WP2 not executed",
     "04_authority": "distinct populations, no pooling, point refusal, uncertainty, TEST_ONLY",
     "05_comparative": "preserve F6M/F6P as test oracle; no production repair or adoption"
   },
@@ -182,16 +278,24 @@
   "limits": [
     "No original source, population, weight, causal, structural, canonical, N9/N11/N12 or adoption claim.",
     "F6P and F6M remain SOURCEFREE_TEST_ONLY and are not production engines.",
-    "WP2 is UNINSTALLED_TEST_ONLY_PORT; F6C records NONPARENT_OPTIONS invariance across A/A0/B.",
+    "WP2 is UNINSTALLED_TEST_ONLY_PORT; F6C outputs are separated and the copied receipt is not self-contained.",
     "No F6M->E04 join and no F6P->N9 read.",
-    "This comparison does not issue a new scientific/composition estimand."
+    "This comparison does not issue a new scientific/composition estimand.",
+    "Output hashes are checkout-root-sensitive through F6P source_product.module_file."
   ],
+  "review_correction_tests": {
+    "junit": "logs/review_correction_tests_junit.xml",
+    "junit_sha256": "de2015915c543483272807764ad96957b61b5a0b94f4f4adf3326ad454d9c54c",
+    "path": "replay/test_review_corrections.py",
+    "seed0": "4 passed",
+    "seed1": "4 passed"
+  },
   "s_f6": {
     "authority": "SOURCEFREE_TEST_ONLY; no source, target, transport or N9/N11/N12 grant",
     "current_status": "MISSING_PRODUCER_OR_READER",
     "current_successor": "none; current WP2 is an UNINSTALLED_TEST_ONLY_PORT; current N9 candidate has no F6 import",
     "disposition": "NO_JUSTIFIED_CONSUMER",
-    "first_consumer": "no actual current N9/N7 F6 consumer; F6P is evidence consumer only; NONPARENT_OPTIONS does not move",
+    "first_consumer": "no actual current N9/N7 F6 consumer; F6P is evidence consumer only; no WP2 receiver effect is executed",
     "id": "S-F6",
     "next_work": "NO_ACTION",
     "no_build": true,
@@ -225,6 +329,9 @@
     "f6p-authored-912-tests-seed1.log": "05b891ad8908b64c84757377b23c982de795317d5b19c0e856ed8aed37e3c8bc",
     "f6p-reviewer-tests-seed0.log": "7d033b6114e3b7e226dd134ddf87559ce2573e4749f27f5567211d071d888ecc",
     "f6p-reviewer-tests-seed1.log": "2258da9311f6395f328963456cede3d56523ef15c0585df78fd82e95fa259756",
-    "five_tests.log": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+    "five_tests.log": "ad430bcd751b836a91fab4ff65c168e7e4f252c79243c40745308b866b554cb7",
+    "review_correction_and_five_tests.log": "b9e3ed3fbc1aea774b1124381f493c6bf92d988825e0a74ad5098f3203f387ed",
+    "review_correction_tests_seed0.log": "a3743b2a379a4c611aab88f2dd4a717b1f18ae345d3b524353c6daddbbda95ef",
+    "review_correction_tests_seed1.log": "7256316818e0211d1c4dc30d19c5b69dd944b4f7c923e409b47993643d15fb98"
   }
 }

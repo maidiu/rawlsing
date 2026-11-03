@@ -1,0 +1,66 @@
+{
+  "invariant": {
+    "A": {
+      "actual_C1_returns_sha256": "93b5aee0cf021f2b9c0ad0a5f99159d31422ddf2067965573d8cdadcf062eade",
+      "cases_sha256": "f77c074ca2dce6120c01ffeaf2cea80200fa3d02478c982357262da3d045abfe",
+      "f6_sidecars_sha256": "fefd297e2ff9f82686d4487a3ee4a5141bfa795300536eb68cf217a026c9d434",
+      "generic_without_f6_sidecars_sha256": "1ed917cad1158e577a05e3aeee59f38049e0d6df18e57fd86c323b9e0b645998",
+      "nonparent_consumer_sha256": "9edc843f65fb3c555a330a6e0476b23f5a8fa599711b814641bb3479e1a3eac9"
+    },
+    "A0": {
+      "actual_C1_returns_sha256": "93b5aee0cf021f2b9c0ad0a5f99159d31422ddf2067965573d8cdadcf062eade",
+      "cases_sha256": "f77c074ca2dce6120c01ffeaf2cea80200fa3d02478c982357262da3d045abfe",
+      "f6_sidecars_sha256": "23199aa3bbe2da98d86b7e2a162cd9fbc53602c793f3231c1fa25cfe3931cf61",
+      "generic_without_f6_sidecars_sha256": "1ed917cad1158e577a05e3aeee59f38049e0d6df18e57fd86c323b9e0b645998",
+      "nonparent_consumer_sha256": "9edc843f65fb3c555a330a6e0476b23f5a8fa599711b814641bb3479e1a3eac9"
+    },
+    "B": {
+      "actual_C1_returns_sha256": "93b5aee0cf021f2b9c0ad0a5f99159d31422ddf2067965573d8cdadcf062eade",
+      "cases_sha256": "f77c074ca2dce6120c01ffeaf2cea80200fa3d02478c982357262da3d045abfe",
+      "f6_sidecars_sha256": "48f5346d279d065a7cf2c7794f36ffb0dd2a54ddbf8c68032ee32c1acd2cfdd2",
+      "generic_without_f6_sidecars_sha256": "1ed917cad1158e577a05e3aeee59f38049e0d6df18e57fd86c323b9e0b645998",
+      "nonparent_consumer_sha256": "9edc843f65fb3c555a330a6e0476b23f5a8fa599711b814641bb3479e1a3eac9"
+    }
+  },
+  "note": "Exact historical F6C outputs are now embedded separately; the copied substitution receipt alone is not self-contained.",
+  "observations": {
+    "actual_C1_returns_invariant": true,
+    "cases_invariant": true,
+    "f6_sidecars_differ": true,
+    "generic_without_f6_sidecars_invariant": true,
+    "nonparent_consumer_invariant": true
+  },
+  "outputs": {
+    "A": {
+      "bytes": 9204043,
+      "git_blob": "1357a834c5fe56fc53a33e12db84633ed4b68595",
+      "installation": false,
+      "path": "evidence/f6c/wp2_sub_A.json",
+      "sha256": "3df50e9801326e43925150611de5d6fa2a89f4b7ee38bce093c96139e6a68561",
+      "terminal": "OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD"
+    },
+    "A0": {
+      "bytes": 9203068,
+      "git_blob": "e246e76861e1708615c5eb558abe8e4102ad66e2",
+      "installation": false,
+      "path": "evidence/f6c/wp2_sub_A0.json",
+      "sha256": "0bb40d883c4f0aab1b07218b8cb32e618e7560a57b796e643f3c53060423d110",
+      "terminal": "OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD"
+    },
+    "B": {
+      "bytes": 9210880,
+      "git_blob": "b4d8213650f00a318ec326e0849694512d89abc5",
+      "installation": false,
+      "path": "evidence/f6c/wp2_sub_B.json",
+      "sha256": "01e0bce46799320da8f9c61f1edae04dc081574542fc0b78ff3d5277a767b720",
+      "terminal": "OWNER_CHAIN_PARTIAL_WITH_EXACT_HOLD"
+    }
+  },
+  "outputs_present_here": true,
+  "receipt": "WORKER_RETURNS/PDEV01-F6-COMPARISON/evidence/f6c/wp2_consumer_substitution_receipt.json",
+  "receipt_contains_output_bodies": false,
+  "schema": "PDEV01_F6C_HISTORICAL_OUTPUT_MANIFEST@1.0.0",
+  "source_commit": "c1ebe091fa2bd12b254e5599cf37975fe438d462",
+  "wp2_blob": "55e567e4d0780c251bf949268d3d477abdc76a9b",
+  "wp2_commit": "f7824794bc6674c662734c9a8b110dd3df224be7"
+}

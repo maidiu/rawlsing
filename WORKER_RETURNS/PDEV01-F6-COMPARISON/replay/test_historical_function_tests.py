@@ -38,7 +38,7 @@ def test_02_current_requirement_is_composer_gap_not_a_new_build():
     assert F["s_f6"]["no_build"] is True
 
 
-def test_03_first_consumer_actual_f6p_and_wp2_typed_mismatch():
+def test_03_first_consumer_actual_f6p_and_wp2_raw_keyerror():
     first = F["first_consumer"]
     assert first["symbol"].endswith("consume_f6m_evidence")
     assert first["line"] == 189
@@ -51,14 +51,18 @@ def test_03_first_consumer_actual_f6p_and_wp2_typed_mismatch():
     }
     assert C["conclusion"]["partial_bounds_reach_f6p_consumer"] is True
     assert C["conclusion"]["partial_bounds_reach_current_wp2_receiver"] is False
-    assert F["current_receiver"]["first_typed_mismatch"]["code"] == (
-        "F6P_EVIDENCE_NOT_F6M_NATIVE_BUNDLE_SIDECAR")
-    assert F["current_receiver"]["first_typed_mismatch"]["first_missing_field"] == "native_bundle"
+    boundary = F["current_receiver"]["boundary_check"]
+    assert boundary["raw_exception_type"] == "KeyError"
+    assert boundary["raw_exception_args"] == ["native_bundle"]
+    assert boundary["raw_exception_str"] == "'native_bundle'"
+    assert boundary["first_missing_field"] == "native_bundle"
     assert F["current_receiver"]["f6m_native_sidecar_expected_fields"] == [
         "native_bundle", "native_conditional_consumer"]
-    assert F["current_receiver"]["first_typed_mismatch"]["read_effect"] == (
-        "NO_NONPARENT_OPTIONS_READ; NO_F6M_E04_JOIN")
-    assert F["current_receiver"]["f6m_to_e04_join"] is False
+    assert F["current_receiver"]["wp2_receiver_executed"] is False
+    assert boundary["wp2_receiver_executed"] is False
+    assert boundary["observed_effect"] is None
+    assert boundary["authored_diagnostic_label"].startswith("COMPARISON_LOCAL_")
+    assert F["current_receiver"]["f6m_to_e04_join_claimed"] is False
     assert F["current_receiver"]["n9_first_import"] is False
 
 

@@ -5,9 +5,16 @@
     "S-F6": "NO_JUSTIFIED_CONSUMER__NO_ACTION"
   },
   "junit": "WORKER_RETURNS/PDEV01-F6-COMPARISON/logs/five_tests_junit.xml",
-  "junit_sha256": "60be2e0a6988ff1a53a945016ea8da6420e86599ce0f86f2aaccd297235ab174",
+  "junit_sha256": "afa9ef3f000f6dae11956e99b4f94694694e11146afbc43745663fc93ef8985c",
   "log": "WORKER_RETURNS/PDEV01-F6-COMPARISON/logs/five_tests.log",
-  "log_sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d",
+  "log_sha256": "ad430bcd751b836a91fab4ff65c168e7e4f252c79243c40745308b866b554cb7",
+  "review_correction_tests": {
+    "junit": "logs/review_correction_tests_junit.xml",
+    "junit_sha256": "de2015915c543483272807764ad96957b61b5a0b94f4f4adf3326ad454d9c54c",
+    "path": "replay/test_review_corrections.py",
+    "seed0": "4 passed",
+    "seed1": "4 passed"
+  },
   "schema": "PDEV01_F6_FIVE_HISTORICAL_FUNCTION_TESTS@1.0.0",
   "status": "PASSED_5_TEST_ONLY",
   "tests": [
@@ -22,9 +29,9 @@
       "test": "test_02_current_requirement_is_composer_gap_not_a_new_build"
     },
     {
-      "meaning": "F6P receives partial bounds and uncovered mass; WP2 expects native_bundle/native_conditional_consumer and stops at the first typed mismatch.",
+      "meaning": "F6P receives partial bounds and uncovered mass; exact WP2 sidecar expression yields raw KeyError native_bundle; the label is comparison-local and WP2 is not executed.",
       "result": "passed",
-      "test": "test_03_first_consumer_actual_f6p_and_wp2_typed_mismatch"
+      "test": "test_03_first_consumer_actual_f6p_and_wp2_raw_keyerror"
     },
     {
       "meaning": "Partial states retain distinct populations, no pooling, no point for uncovered mass, uncertainty, and TEST_ONLY refusal boundaries.",
