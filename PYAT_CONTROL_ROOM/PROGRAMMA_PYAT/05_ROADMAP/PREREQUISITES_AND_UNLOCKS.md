@@ -1,5 +1,24 @@
 # G4-P5 — Prerequisites, AND/IF/ALTERNATE and reverse unlocks
 
+## Post-G4 branch-scoped unlock overlay — no new edge or false green
+
+The same **82** original typed edge IDs and AND/IF/ALTERNATE predicates below remain unchanged. Later sourcefree local *subproofs* are attached by existing IDs in [L2 82-edge map](https://github.com/maidiu/rawlsing/blob/2f91ef644871ab3de35cdc1ca8a92af18a4310d4/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R50_R95/COVERAGE_AND_UNRESOLVED.md) and [post-G4 intake](POST_G4_DELTA_INTAKE.md).
+
+| Prior edge / downstream unlock | Later qualified partial witness | Still mandatory/conditional missing leaf |
+| --- | --- | --- |
+| S-WORKLIST, S-I05, S-C11, S-I03, S-BATCH | R01/R02/R03, R04.byte + joined locally reviewed; R03 compiled sourcefree receipt, R04 joined partial resume | Competent original U/Epre/permission/first native; R00E manifest REVISE, R09 independent result/loaded-byte capture REVISE/HOLD |
+| S-F1F4; ASTRA:REQ:N2:N3 | E41 31 sourcefree F operations, 18 N10E; R05 learned coordinator actual local first consumer | Original35 measured F1–F4 including valid F4 joint respondent cloud |
+| S-F5, S-F6, S-F7, S-F7S | R06 CONTEXT structural refusal, two synthetic same-unit fields, modeled T0/T1 route difference | Original FF issuer, independent-survey F6 target/estimand, F7 original comparable pairs; N8E→N8S remains IF |
+| S-SERVE, ASTRA:REQ:N9:N10W | J42 84 same-source joined TEST_ONLY E04 views; R06 selected pinned P41 local sourcefree first reader | Valid original N9 as-of content/permissions, matching N10E, protected reader; K04 import remains unmerged |
+| S-POSS, ASTRA:REQ:N10E:N10W | R06 local genuine selected P41 N9/N10E/N10W/E04 receiver with reviewed refuse/restore | N9 **AND** N10E source-native same-version, applicable G0b F8 use/uncertainty, actor firewall |
+| S-ACCEPT; ASTRA:REQ:N0:N11 and N10W:N11 | A42 three physical candidate N11 files, I44 J42 candidate integration | 0 original measured/1890; competent source/science F1–F8 and N11 acceptance |
+| S-WAKE; ASTRA:REQ:N11:N12 | A42 explicit N11_NOT_READY and WSC negative | N11 terminal acceptance **then** separate authorized N12 wake/defer and Sorok source/actor rights |
+
+Original 49 GAP identities continue to describe their **historical cut**; see [REMAINING_REAL_PYAT_WORK.md](REMAINING_REAL_PYAT_WORK.md) for finite later partial supersession. No code review/test run by this receiving guide worker.
+
+---
+
+
 **Retained exact dependency source:** [G2 original 82 edges](https://github.com/maidiu/rawlsing/blob/6a6f10443811c5f1a5c8ffed3f2dab16e0f8054d/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/PLANNED_INTERFACES.jsonl); **scoped observed state:** [G3-B 82 seam candidate](https://github.com/maidiu/rawlsing/blob/b2641c1944b247d5a510f0b4eae6421db077decd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/SEAMS_MATURITY/SCOPED_SEAM_STATES.jsonl); [G3-B source-prerequisite analysis](https://github.com/maidiu/rawlsing/blob/b2641c1944b247d5a510f0b4eae6421db077decd/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/G3_CANDIDATES/SEAMS_MATURITY/RECURSIVE_PREREQUISITES.md). The full G3-B source interpretation is reproduced below as a finite receiving input; no new edge is added, retyped, or shown GREEN.
 
 **Exact gates:** `N9 AND N10E → N10W` (two distinct producers, same selected receiving version); `N0 AND N10W → N11` (plus conditionally applicable F-gate evidence); `N11 → N12` is a prerequisite, **not an automatic wake**. At each gate, resolve `X requires Y`, and *Y itself requires source permission Z* before treating X as native. The reverse-unlock table isolates engineering-ready scoped steps from owner/native holds.
