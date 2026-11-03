@@ -1,0 +1,36 @@
+name: Cross-HQ branch custody structural gate (proposal)
+on:
+  pull_request:
+    paths:
+      - 'CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/**'
+      - 'PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/**'
+      - '.github/workflows/branch-custody-structural-r1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  custody-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail-closed structural tests, source-free only
+        run: python3 -m unittest discover -s CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1 -p 'test_*.py' -v
+      - name: Pyat historical full-branch-delta and 2831-head census gate tests
+        run: python3 -m unittest discover -s PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1 -p 'test_*.py' -v
+      - name: Cross-HQ seed historical comparison (not current authority)
+        run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/01_PRIORITY_RECOVERY_QUEUE.json --json
+      - name: Passive live ref census and unregistered delta (non-promotion)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/scan_unintaken_branch_deltas.py --live > pyat-branch-delta.json
+          python3 -c 'import json; d=json.load(open("pyat-branch-delta.json")); print("REF_CENSUS", d["current_size"], "UNINTAKEN", len(d["findings"]), "STATS", d["stats"])'
+          python3 -c 'import json; d=json.load(open("pyat-branch-delta.json")); [print("UNINTAKEN_REF", x["branch"], x["current_head"], x["kind"]) for x in d["findings"]]'
+      - name: Preserve name/head-delta receipt for qualified HQ intake
+        uses: actions/upload-artifact@v4
+        with:
+          name: pyat-branch-delta-name-head-only
+          path: pyat-branch-delta.json
+          retention-days: 30
+      - name: Active Pyat and predecessor intake seed (no Sorok code triage)
+        run: python3 CROSS_HQ_CONTROL_ROOM/BRANCH_CUSTODY_R1/validate_custody.py PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/01_PYAT_AND_PREDECESSOR_RECOVERY_QUEUE.json --json

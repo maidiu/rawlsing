@@ -1,0 +1,107 @@
+{
+  "schema": "PYAT_POST_INTEGRATION_INDEXING_RABOCHII_ASSIGNMENTS@2",
+  "scope": "POST_REGULAR_PREMAIN_CODING_INTEGRATION_ONLY",
+  "date": "2026-10-28",
+  "status": "PROPOSED_NOT_LAUNCHED",
+  "master_commission": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/07_INDEXING_FIRST_RABOCHII_MASTER_COMMISSION.md",
+  "machine_scope_index": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_00_SCOPED_HEAD_ROSTER_MANIFEST.json",
+  "baseline_sha": "ef46892f8e2752b62eef0778b1bdb53a86d80e70",
+  "cutoff_utc": "2026-09-27T18:56:30Z",
+  "strict_core_sha": "79e0e74e14d8e09cc2f3af061aa178a149cb1674",
+  "strict_cutoff_utc": "2026-10-09T22:31:19Z",
+  "actual_github_actions_run": 40803644398,
+  "scope_proof": {
+    "pinned_relevant_branch_heads": 845,
+    "unique_head_commits": 838,
+    "strict_core": 524,
+    "transition": 321,
+    "unclassified": 30,
+    "sorok_boundary_excluded_from_Pyat_content": 287,
+    "head_date_not_creation_date": true
+  },
+  "roles": [
+    {
+      "id": "S0",
+      "type": "QUALIFIED_GIT_CUT_AND_MECHANICAL_TREE_BLOB_RECONCILIATION",
+      "requires": "ACTUAL_APPOINTED_HQ_HOST_PERMISSION_AND_WIP_LEASE",
+      "no_original_source": true
+    },
+    {
+      "id": "S1",
+      "type": "DISJOINT_CONTENT_AND_RETURN_INDEXER",
+      "input_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S1_HEAD_ONLY_ROSTER.json",
+      "expected_names": 175,
+      "tier": "OCT09_STRICT_CORE",
+      "prerequisite": "S0_INDEXED_HEADS_AND_CHANGED_FILE_TREE_METADATA",
+      "no_code_changes": true
+    },
+    {
+      "id": "S2",
+      "type": "DISJOINT_CONTENT_AND_RETURN_INDEXER",
+      "input_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S2_HEAD_ONLY_ROSTER.json",
+      "expected_names": 175,
+      "tier": "OCT09_STRICT_CORE",
+      "prerequisite": "S0_INDEXED_HEADS_AND_CHANGED_FILE_TREE_METADATA",
+      "no_code_changes": true
+    },
+    {
+      "id": "S3",
+      "type": "DISJOINT_CONTENT_AND_RETURN_INDEXER",
+      "input_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S3_HEAD_ONLY_ROSTER.json",
+      "expected_names": 174,
+      "tier": "OCT09_STRICT_CORE",
+      "prerequisite": "S0_INDEXED_HEADS_AND_CHANGED_FILE_TREE_METADATA",
+      "no_code_changes": true
+    },
+    {
+      "id": "S4",
+      "type": "DISJOINT_CONTENT_AND_RETURN_INDEXER",
+      "input_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S4_HEAD_ONLY_ROSTER.json",
+      "expected_names": 161,
+      "tier": "SEP27_TO_OCT09_TRANSITION",
+      "prerequisite": "S0_INDEXED_HEADS_AND_CHANGED_FILE_TREE_METADATA",
+      "no_code_changes": true
+    },
+    {
+      "id": "S5",
+      "type": "DISJOINT_CONTENT_AND_RETURN_INDEXER",
+      "input_path": "PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/SCOPED_ROSTER/11_S5_HEAD_ONLY_ROSTER.json",
+      "expected_names": 160,
+      "tier": "SEP27_TO_OCT09_TRANSITION",
+      "prerequisite": "S0_INDEXED_HEADS_AND_CHANGED_FILE_TREE_METADATA",
+      "no_code_changes": true
+    },
+    {
+      "id": "S6",
+      "type": "CROSS_SHARD_FUNCTION_LINEAGE_AND_CONSUMER_RECONCILER",
+      "prerequisite": "S0_S1_S2_S3_S4_S5_COMPLETE"
+    },
+    {
+      "id": "S7",
+      "type": "INDEPENDENT_HOSTILE_INDEX_COMPLETENESS_REVIEWER",
+      "prerequisite": "S6_EXACT_FROZEN_RETURN_AND_ALL_SHARDS"
+    }
+  ],
+  "counts": {
+    "shards": 5,
+    "roles": 8,
+    "total_assigned_branch_names": 845,
+    "distinct_heads_dedup_global": 838
+  },
+  "acceptance": {
+    "all_branch_names_with_changed_path_metadata": true,
+    "all_distinct_heads_content_metadata": true,
+    "unknown30_content_triaged": true,
+    "late_created_old_tip_exception_reconciled_or_explicit_unresolved": true,
+    "independent_review_at_exact_sha": true,
+    "first_consumer_evidence_grade_not_raised": true,
+    "actual_original_survey_reads": false,
+    "recovery_courts": "HELD_PENDING_INDEX_ACCEPT"
+  },
+  "historical_scope": {
+    "former_work_queue": 2831,
+    "former_shards": 7,
+    "disposition": "SUPERSEDED_FOR_THIS_TASK__NOT_DISPATCHED",
+    "original_census": "PRESERVED_AS_ANCESTOR_LOOKUP_ONLY"
+  }
+}

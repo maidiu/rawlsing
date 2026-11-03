@@ -1,0 +1,361 @@
+{
+  "schema": "RAWLSING_CROSS_HQ_BRANCH_CUSTODY@1.0.0",
+  "created": "2026-10-28",
+  "origin": "READ_ONLY_CANDIDATE_RECOVERY_QUEUE",
+  "cut": {
+    "pyat_control": "299f41e97a43c67be9cc76a79fa49b48f4e12e54",
+    "pyat_design": "315251451a6d112fb312a6a2e80b096d345c5de6",
+    "sorok_command": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+    "controller": "4535d49af474ac3983d0a79f81df232cef401933"
+  },
+  "census": {
+    "main_name_heads": 2831,
+    "main_unique_heads": 2743,
+    "main_integration_plus_main": 31,
+    "integration_behind": 20,
+    "integration_identical": 1,
+    "integration_diverged": 10,
+    "controller_branches": 27,
+    "controller_unique_heads": 25,
+    "source": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/CROSS_BRANCH_INHERITANCE/",
+    "caveat": "PAGINATED_NONTRANSACTIONAL_NAME_SHA_ONLY"
+  },
+  "obligations": {
+    "all_2831_lineage_functionally_reconciled": false,
+    "current_process_state_verified": false,
+    "repo_mutations": false,
+    "no_autonomous_model_or_worker_launch": true
+  },
+  "entries": [
+    {
+      "custody_id": "PYAT-P05-HQ282",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/rabochii-pyat-hq282-p01-v2-durable-consumer-integration-r1",
+      "observed_head_sha": "3f91dc22d2eb863bc1d2facccfd33e6c05349503",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "REVIEWED_SCOPED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "Existing sourcefree governed checkpoint/resume plus I03/I05->3 Field Forge fixture consumers",
+      "artifact": {
+        "path": "rawlsing_next/pre553_governed_batch_checkpoint_integration_candidate.py",
+        "blob_sha": "44807c6a287145507d7332138c944cd61da363bf",
+        "symbol": "run_to_completion / recover / admit_saved_receipts"
+      },
+      "review": {
+        "commit_sha": "73d45f3ac6a50fbee6666ad3a5023840f01ef196",
+        "scope": "sourcefree; independent in-memory semantic oracle; filesystem recovery not independently re-run",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "SRC04 native_streaming restart -> actual source-local Lane D",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "torn JSONL, wrong run context, refused retry, cells=[] must all fail closed/recover exactly",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Diff existing HQ282 state-machine and receipt APIs vs SRC04 four reproducible faults; qualified sourcefree parity before adapting; retain native source HOLD",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "PYAT-P06-C01R2",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/verkhovod-c01r2-fracturemap-selective-invalidation",
+      "observed_head_sha": "ab287dcb48a3133fd4c79c881996fdd01f778c79",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "RETURNED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "Authority37 Z02 direct J=3 fracture recursion and selective local invalidation repair",
+      "artifact": {
+        "path": "rawlsing_next/pre553_fracture_map_invalidation.py",
+        "blob_sha": "56eb9883cd447fc3cc8431835ca20d23f2fa3712",
+        "symbol": "DependencyAddressedIdentityLedger.compare / identity"
+      },
+      "review": {
+        "commit_sha": null,
+        "scope": "Prior Z02 hosted 157-test success; focused C01R2 six-test author PASS; fresh repaired original admission absent",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "original WaveVIII answer-blind I05-I08 -> reviewed Authority37 receipt",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "R-only mutation must not invalidate unchanged ROOT/P/Q/S/COSIG/J3; original I08 must pass",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Preserve old Z02/C01R2 functions; original owner source custody then independent fresh complete ordered I05-I08 oracle; do not rebuild J3 controller",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "PYAT-SRC04-C11-FULL",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pyat-src04-full-release-20261028",
+      "observed_head_sha": "303a57851785557fff8229e29a5554717168cbd1",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "RETURNED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "Full 7,337-row 181-slot original SRC04 release; 177 admitted response fields, 3 coordinates, q217 held",
+      "artifact": {
+        "path": "campaign_src04_completion/release/full_runner.py",
+        "blob_sha": null,
+        "symbol": "run_with_grant"
+      },
+      "review": {
+        "commit_sha": "751fece9bf86bd3b1da54b2915876d3e73cea682",
+        "scope": "focused carrier recheck; independent complete acceptance and consumer chain must be checked separately",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "native SRC04 original workload C11→I03/I05→Lane D downstream",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "change source-byte identity, q217, routing state, grant or replay -> exact rejection",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Compare accepted original release/author amendment and independent carrier review at exact code; establish original consumer input, no implicit eligibility/weights",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "PYAT-SRC04-CONSUMERS",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pyat-src04-consumers-20261028",
+      "observed_head_sha": "39c713a1396c7184afec5cb81519b151357c4a8e",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "RETURNED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "Sourcefree observed-product/fixture native consumer, value sensitivity and preserved historical RED witness",
+      "artifact": {
+        "path": "campaign_src04_completion/consumers/RETURN.json",
+        "blob_sha": "3e9de8bbc417a67ae7fa6e1be3521a2bcc806fa5",
+        "symbol": "consume_native_producer (documented candidate)"
+      },
+      "review": {
+        "commit_sha": null,
+        "scope": "reported fixture suite; no original SRC04 source read; no native Lane D source-local acceptance",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "real SRC04 source C11/I03 fact + original Lane D accepted value consumer",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "source-local accepted result absent despite fixture positive must remain BLOCKED",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Match actual full release output with consumer contract; reviewer must test actual source-local data and negative provenance",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "PYAT-SRC17-D2",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pyat-d2-src17-original-c11",
+      "observed_head_sha": "5b1b9bd5f04f0456eac319264a6f2b64d4e87038",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "REVIEWED_SCOPED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "Original GSS1973 bounded C11 (1,504x339) negative-held subset, independently reviewed as scoped",
+      "artifact": {
+        "path": null,
+        "blob_sha": null,
+        "symbol": null
+      },
+      "review": {
+        "commit_sha": "24f2f3f22f05ed1f0d71dbdf61dbab62d7269358",
+        "scope": "scoped original C11 source identity; no I03 eligible-risk or general acceptance",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "current source-neutral I03 original exact denominator/eligibility consumer",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "reclassify observed count as weighted population or infer unissued routing -> fail",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Identify current canonical equivalent/source accession; exact first consumer under original I03 scientific owner",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "PYAT-SRC04-A1",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pyat-campaign-a-src04-original-c11",
+      "observed_head_sha": "009a3459b0e2ad392b0ff765be527e10cb8a7ff8",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "REVIEWED_SCOPED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "First original SRC04 42-field C11 and routing-unknown allowance only",
+      "artifact": {
+        "path": null,
+        "blob_sha": null,
+        "symbol": null
+      },
+      "review": {
+        "commit_sha": "d76bc88ef4137592927fe1da4342f599cf63d3e8",
+        "scope": "bounded first C11; not full later 177-response source release",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "full SRC04 corrected C11 producer/review without grading 42-field source as whole",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "collapse first and later source cuts -> forbidden",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Mark as historical earlier positive; compare exact reused rules vs 177-field successor; no source duplicate execution",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "PYAT-P01-COMPACT-DESIGN",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/pyat-final-production-architecture-hq-20261028-r1",
+      "observed_head_sha": "315251451a6d112fb312a6a2e80b096d345c5de6",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "TRIAGED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "PYAT_INCUMBENT",
+      "function_or_claim": "P01-S0..S3 compact C11 source-certified physical view, journal and code-ready tickets: unimplemented new code",
+      "artifact": {
+        "path": "PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/DESIGN/P01_S3_ACCEPTANCE_AND_DIFFERENTIAL_MATRIX_R1.md",
+        "blob_sha": "320172784acf2c88f05312169903a3240c0565b3",
+        "symbol": null
+      },
+      "review": {
+        "commit_sha": null,
+        "scope": "design/sourcefree old-baseline only",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "existing I02 logical release→P03 native I03 and I05 original-grade result",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "source SHA changed after path reopened, topology loss, old/new C11 identity mismatch",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Audit actual R5/V550J/current I02 existing code, then Codex qualified sourcefree implementation with differential tests; no new source grants",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "SOROK-COMMAND-INHERITANCE",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/vozhd-sorok-20261026-v3-courts-foundation-r1",
+      "observed_head_sha": "a47dca7f29196b4da10451ca4f2dd047c99ed56a",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "TRIAGED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "SOROK_INCUMBENT",
+      "function_or_claim": "Existing Sorok unified command / 19 milestone / 12 Neo-V3 / 16 O / 15 E-edge register",
+      "artifact": {
+        "path": "SOROK_PRODUCT_CONTROL_ROOM/COMMAND/00_COMMAND.md",
+        "blob_sha": "8b5ede1787e1cd4ca06768d1a472046da4898ab9",
+        "symbol": null
+      },
+      "review": {
+        "commit_sha": null,
+        "scope": "structural command, not product acceptance",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "appointed Browser and Codex Sorok HQs update the single accepted capability/consumer-edge register",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "separate unacknowledged HQ status changes conflict or lack actual E2 consumer",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Ask each incumbent for exact SHA-based intake acknowledgment; no autonomous accession or rule issuance",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "SOROK-B3A-RECOVERY",
+      "repository": "maidiu/rawlsing",
+      "branch": "agent/rabochii-sorok-20261018-b3a-schema-readset-repair-r1",
+      "observed_head_sha": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "DISCOVERED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "SOROK_INCUMBENT",
+      "function_or_claim": "Sourcefree B3A developmental readset/atomicity repair; prior B3 original review found refused-event persistent DB writes",
+      "artifact": {
+        "path": null,
+        "blob_sha": null,
+        "symbol": null
+      },
+      "review": {
+        "commit_sha": null,
+        "scope": "separate earlier S3/X3 and later B3A scoped acceptances must be looked up at exact SHA",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "actual C9→E2 later semantic reader and compatible BP2P4J continuing-person chain",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "refused event durable writes or later E2 unaffected by claimed acquired practice",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Recover exact B3A repair commit, reviewer and target C9/C12 consumer without rebuilding old B3 experiments",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    },
+    {
+      "custody_id": "CONTROLLER-R63-LEARN",
+      "repository": "maidiu/rawlsing-controller",
+      "branch": "infra/r59-shared-controller-integrated-r2",
+      "observed_head_sha": "4535d49af474ac3983d0a79f81df232cef401933",
+      "assessment": "TRIAGE_SEED_NOT_OWNER_ADMISSION",
+      "state": "DISCOVERED",
+      "disposition": "PENDING",
+      "origin": "GITHUB_RECONNAISSANCE_2026_10_28",
+      "governing_hq": "SHARED_CONTROLLER_OWNERS",
+      "function_or_claim": "Existing controller sourcefree transport/lease/receipt and R62/R63 execution/routing candidate lineage",
+      "artifact": {
+        "path": "CURRENT_STATUS.md",
+        "blob_sha": "49a43cba8ab57384d526c660448dec7f0654b44f",
+        "symbol": null
+      },
+      "review": {
+        "commit_sha": null,
+        "scope": "prior fixture/local PASS; historical reviewer UNKNOWN; no live service proof at this exact default branch",
+        "independently_accepted_for_requested_consumer": false
+      },
+      "first_consumer": {
+        "required": "actual current HQ commission→worker return→review→consumer-delivery with no duplicate/missing return",
+        "qualified_execution_receipt": null,
+        "accepted_target_sha": null
+      },
+      "negative_falsifier": "restart duplicates work; unknown result silently retried; model High requested but actual Low",
+      "source_and_science_authority": "UNVERIFIED_OR_RETAIN_EXACT_HOLDS",
+      "unproved": "Current receiving owner adoption and higher-grade original/native first-consumer admission",
+      "next_qualified_action": "Refresh R62/R63 candidate SHAs and independent reviewer; verify live leases/session before use; never auto-launch model/harness",
+      "owner_intake_receipt": null,
+      "command_edge_ref": null
+    }
+  ]
+}
