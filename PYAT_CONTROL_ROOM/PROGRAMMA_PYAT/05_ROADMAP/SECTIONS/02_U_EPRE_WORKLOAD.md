@@ -1,5 +1,18 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
+## Received post-G4 late-source/currentness overlay — S0–S1, NOT protected adoption
+
+**Receiving cuts:** G4 812bc7d0bc2d02942f883262a241ce72b064a728; L1 e7ead127edbe83385e1a04e6e874de8a66fc5b39; L2 2f91ef644871ab3de35cdc1ca8a92af18a4310d4; L3 a73bc57e12949f27867abde7fe9f33fea3a58052. This section's original G4 paragraphs and negative/proof grades remain historically correct at their stated cuts. New exact branch-local evidence below is a **later candidate overlay**, not a silent amendment to original 82 edge states or an owner grant. [Overall intake](../POST_G4_DELTA_INTAKE.md) · [late asset/authority locator](../LATE_SOURCE_SUPPLEMENTAL_LOCATOR.md) · [bounded outstanding physical sources](../NAMED_OUTSTANDING_PHYSICAL_SOURCES.md).
+
+**Children S02.1–S02.5; historical gaps GAP-006–010.** L1 U43 prospective [35-wave/175 owner slots](https://github.com/maidiu/rawlsing/blob/e7ead127edbe83385e1a04e6e874de8a66fc5b39/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/POST_G4_CANDIDATES/LATE_R40_R49/SECTION_PATCHES.md), B43 sealed source/host/issuer refusals and I44 receiving those prospectives are useful code/return receipts. Native original U/Epre counts are **NULL, not zero**. The existing lowerer was not missing: R03 [compile_governed_frontier:473](https://github.com/maidiu/rawlsing/blob/c912497b25411ebbd3d796db139f32f5bebb6c4c/rawlsing_next/pre553_universal_workload.py#L473) → [execute_governed_frontier:633](https://github.com/maidiu/rawlsing/blob/c912497b25411ebbd3d796db139f32f5bebb6c4c/rawlsing_next/pre553_universal_workload.py#L633) → test-only discovery/receipt anti-join and cold-resume. R01V-R8 and R03V-R5 independently report **ACCEPT_SCOPED_LOCAL**; same compiler blob **8e7fe00a3ed008361d9f3c501e7782b2de3a636e** is at control 9809203fd915a84bae056a67210e9213879840db but **404** at semantic 1f47063c3205a45888b3c55e81e7485943ed1390.
+
+R00P is policy TEST_ONLY. R00E R2 41/41 gate behavior is **R00V REVISE** on two stale manifests/two unusable SHA sums paths, not admitted protected proof. R53 J52/W52 STOP persists; R61 authorizes R03 conditionally, R87 commissioned it but later actual author/reviewer returns are separately read. **GAP-006–010** gain branch-scoped reviewed functionality, not 35 native eligible denominators. S-WORKLIST and S-I05 retain original edge identities and source-native holds.
+
+**Next owner:** R47 FUNC001 original source holder issues actual eligible U and prospective E_pre; engineering proves that exact source product flows unchanged into R03, I03/I05/Batch and independent custody. No reimplementation commission for an already present lowerer.
+
+---
+
+
 **PASS 1 complete; PASS 2 source-linked rough evidence added. This is not native acceptance.** [Whole map](../README.md) · [cross-plan index](../CROSS_PLAN_IDS.md) · [typed seams](../PLANNED_INTERFACES.jsonl) · [input cuts](../INPUT_CUTS.md). Every forward link describes an intended function, not necessarily an operational endpoint.
 
 ## Purpose, inherited plan IDs and scope
