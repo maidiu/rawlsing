@@ -1,0 +1,31 @@
+LAUNCH — PROG5-SAT-M5 — ORIGINAL35 ISSUER-TO-WORKLOAD SOURCE FUNCTION RECOVERY
+AGENT_TYPE: Independent original35 source-to-eligible-operation functional and authority-boundary investigator
+ROLE_AND_INDEPENDENCE: Independent I3+ bounded source/implementation investigator, not HQ or own reviewer.
+BRANCH: agent/prog5-sat-m5-original35-source-issuer-20261103-r1
+STARTUP_SHA: 378549b450be4825a34d5ec2fa8866877d13f76f
+REPOSITORY: maidiu/rawlsing (PRIVATE)
+SINGLE_AGENT_FULL_DELIVERABLE: YES
+INTELLIGENCE_LEVEL: I3+
+EXECUTION_SURFACE: S0–S1 authenticated private GitHub source reading and own isolated documentary branch writes ONLY. No local S2, source-native S3, original respondent data or source execution.
+USER_SELECTED_EDITOR_MODEL_PAIR: Browser / GPT-6 High PROPOSED; user verifies/selects actual model, editor and effort. No automatic switches.
+MODEL: GPT-6 proposed; REASONING: HIGH recommended, verify actual setting.
+MODEL_MAX_AVAILABILITY: UNKNOWN; HOST_ACCOUNT_QUOTA_COST: UNKNOWN.
+BROWSER?: YES, suitable for GitHub S1. DEEPSEEK?: No S3 work; only user-selected alternative. CODEX_6_1_HIGH_NECESSARY?: NO, not a local runnable commission. OTHERWISE_MIDDLE?: User selection only.
+WHY_NOT_BROWSER: Browser authorized private GitHub reading is appropriate. WHY_NOT_FLASH: no code/native runner work. WHY_NOT_CODEX_HIGH: no unapproved implementation work. WHY_NOT_MIDDLE: High is useful for intricate evidence/grant lineage; user may select otherwise.
+SCIENCE_SOURCE_ACTOR_AUTHORITY: NONE. No original35 U/Epre authorization, native original respondents, FF/F5/F6/F7 source science, N11 acceptance, N12 wake, protected PRE-MAIN or Sorok actor grants.
+ACTIVE_WORKER_NO_DISTURBANCE: No interference with Codex Pyat HQ, controller, mainMac, other PROGRAMMA lanes, active production/PR branches. No code edits, tests, CI, source-native operations, Library/mainMac fishing, self-review or independent cold-use now.
+SOURCE LOCK: Corrected full post-G4 guide 378549b450be4825a34d5ec2fa8866877d13f76f under PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/, including S01–S11, 51 children, 782 typed IDs, 892 G1 rows, 150 parity, 82 edges/statuses, 62 capsules, 49 original gaps, source-specific L1/L2/L3 intake. Earlier G4 812bc7d0bc2d02942f883262a241ce72b064a728. Frozen PRE-MAIN control 9809203fd915a84bae056a67210e9213879840db versus separate semantic PRE-MAIN 1f47063c3205a45888b3c55e81e7485943ed1390; original main 25830fe7462bb9e29bc4087e6ae14f3f84cec377. Recheck later tips separately; no promotion by title/date.
+EVIDENCE RULES: Direct source blob/symbol/input/output evidence != author test != independently accepted narrow sourcefree scope != protected adoption != original-source science. Old source-specific RED remains at its old cut. Missing reader may be absent at checked cut rather than globally absent; check exact versions. An actual test suite exists only when evidence names it. No inventing data.
+PURPOSE: Falsify any unsupported completeness assumption using a different source-discovery strategy. No need to manufacture new findings: an exact bounded negative answer is useful. Do not repeat G1/G3/G4/L1–L3 inventories as the deliverable or create another architecture/graph/database/scheduler.
+RETURN: Exact material surplus or corrective regrading rows link to existing Sxx/child/edge/GAP. Own WORKER_RETURNS/… files only; no main guide mutation or receiving. Report inspected universe and exclusions, old already indexed vs newly discovered vs source-specific fix, why it matters for development savings, terminal SHA and any specific owner requests. Reviewer and final cold-use are separate after all evidence workers and reception.
+
+EXCLUSIVE TERRITORY: Original35 scientific issuer, source/measurement/eligibility, R157 configs, source custody, U43/B43/G50/I51/R01/R02/R03 prospective native operation boundaries and the real code/representations they could already support. No original respondent reads or new methodology decisions. Other lanes inspect general original algorithms (M1), plans (M2), PR succession (M3) and downstream world consumers (M4).
+METHOD:
+1. Trace each distinct stage original wave inventory/config/authority→administered original item, options/routing/missing/risk-set/weights/design/permissions→U_item/U_unit/U_app/E_pre eligibility→typed governed frontier→existing compile_governed_frontier/execute_governed_frontier→I03/I05/Batch. Pin real objects/functions, source-specific and authority documents, current control vs reviewer/source candidate versions.
+2. Identify any ALREADY CODED producer or original-science contract overlooked by G4, especially R157 35 source prep and 18,276 IDs/18,413 slots, U43 35-wave/175 owner slots, B43 refusal, L1 original35 O35B, S44 SRC27 native historic slice and R47 FUNC001. Distinguish configuration completeness, a single source-specific historic positive, prospective synthetic operation and actual legal original35 issued sourcework.
+3. For every major missing preimage/owner-grant/manifest shape, say **which already existing function can receive it**, what exact permission/scientific selection remains unissued, what further code would actually have to be written or integrated and what would be a false duplicate build.
+4. Identify high-value source-side missing files only when a concrete Git reference indicates them; no indiscriminate Library/mainMac request. Distinguish original data files from code/derived receipts. V548/V549 optional outputs are not automatic science grants.
+5. Produce a bounded, source-exact handoff a qualified issuer and Codex HQ can use without reducing the problem to 'build new compiler' or allowing programmatic original35 activation.
+OUTPUT ROOT: WORKER_RETURNS/PROG5_SAT_M5_ORIGINAL35_SOURCE_ISSUER_R1/
+REQUIRED: 00_RETURN.md; SOURCE_TO_NATIVE_PREIMAGE_CHAIN.jsonl; EXISTING_ISSUER_AND_CONFIG_FUNCTIONS.md; REAL_UNISSUED_LEAVES.md; OWNER_DECISIONS_VS_ENGINEERING.md.
+SUCCESS: expose overlooked original source-side implementation capital or validate exact source function/rights separation, enabling real development without false science grants.
