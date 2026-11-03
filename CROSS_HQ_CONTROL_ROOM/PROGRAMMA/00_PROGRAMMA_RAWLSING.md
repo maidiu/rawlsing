@@ -1,4 +1,9 @@
 # PROGRAMMA RAWLSING
+
+## CURRENTNESS AND HQ GROK ENTRY — CONSOLIDATION CANDIDATE (2026-11-03)
+
+Read the [short proposed joint operating spine](02_HQ_OPERATING_SPINE_LIVE_UPDATE_AND_CONSOLIDATION_CANDIDATE_R1.md) as a routed *operational checklist*, alongside the existing source/authority constitutions. It requires **both incumbent HQs to incorporate each material, qualified new finding into the actually published current PROGRAMMA map** (Pyat world; Sorok person/product), distinguish pending guide patches from integrated state and show unfinishedness by stage/first consumer/owner/negative evidence. It also proposes a finite audit of duplicated/conflicting priority-zero HQ documents, with one concise read order and retained primary-source precedences. This is an **isolated-branch candidate, not adopted replacement authority**. Ongoing productive building does not wait for this documentation campaign.
+
 ## Two jurisdictions. One complete recoverable, intelligible, and executable undertaking.
 
 **Names (user-selected, 2026-10-30):**
