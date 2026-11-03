@@ -143,6 +143,10 @@ def _identity_error(request: JoinedWorldSelectionRequest) -> str | None:
     binding_clock = binding.get("w41_clock") or {}
     if binding_clock != trusted_clock:
         return "JOINED_W41_CLOCK_BINDING_MISMATCH"
+    if binding.get("w41_snapshot_hash") != expected_world.get("snapshot_hash"):
+        return "JOINED_W41_SNAPSHOT_MISMATCH"
+    if binding.get("w41_view_hash") != expected_world.get("content_hash"):
+        return "JOINED_W41_VIEW_MISMATCH"
 
     # Preserve the existing P41 receipt-integrity contract; this is not the
     # authority for the clock.

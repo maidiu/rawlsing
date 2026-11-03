@@ -21,6 +21,7 @@ Overlay: `WORKER_RETURNS/PDEV01-N10W-JOIN/repair/`
   - `E04L_M1_M2_B5_READTHROUGH@1`
 - exact `CURRENT_TEST_ONLY_SELECTION` N9 currentness;
 - exact selected-clock binding of both `n9_world.selection` and `j42_bindings.w41_clock` to the independently pinned W41 artifact world selected by the exact J42 lookup key;
+- exact W41 snapshot and view identity binding (`w41_snapshot_hash`, `w41_view_hash`) from that same pinned artifact;
 - recomputed P41 `content_hash` from the existing `semantic_hash` contract;
 - then delegates to the actual existing `select_joined_world_view`.
 

@@ -179,6 +179,8 @@ def main():
                 "path": W41_ARTIFACT_PATH,
                 "sha256": W41_ARTIFACT_SHA256,
                 "clock": _load_w41_worlds()[KEY]["clock"],
+                "snapshot_hash": _load_w41_worlds()[KEY].get("snapshot_hash"),
+                "view_hash": _load_w41_worlds()[KEY].get("content_hash"),
             },
         },
         "receipt": {
