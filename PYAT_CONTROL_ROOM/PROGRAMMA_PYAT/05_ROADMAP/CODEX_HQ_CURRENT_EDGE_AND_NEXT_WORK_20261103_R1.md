@@ -1,5 +1,25 @@
 # Codex Pyat HQ — current-edge incision and next-work selection (2026-11-03)
 
+## October 28 physical architecture — explicitly selected destination, scoped work choice (2026-11-04 candidate)
+
+**Not a new HQ priority registry:** Use this already existing Codex current-edge decision as the physical engineering receiving point. [October 28 selected `SOURCE-AUTHORITATIVE, COMPACT, REGENERABLE-HYBRID`](https://github.com/maidiu/rawlsing/blob/315251451a6d112fb312a6a2e80b096d345c5de6/PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/01_EXECUTIVE_ADJUDICATION.md) as the **physical destination over A/B/C alternatives**. Current operative B/C11/I03/I05 governs valid semantics, identity and scientific scope; older A/R5/CACC remain implementation sources, not opposing engineering decisions. This is a candidate guide amendment from [HYB-01 at `df124767...`](https://github.com/maidiu/rawlsing/blob/df12476774a3ce3ea8a26ffcd270f698058b550f/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/HYBRID_EXECUTION_RECONCILIATION_R1/01_WP_FUNCTION_TO_CURRENT_CODE.jsonl), **NOT** an independent HYB review, protected owner adoption, actual S2/S3 code run or user-stop release.
+
+**Existing-seam physical work decisions — subordinate to live HQ/lease/capability receiving:**
+
+| Current IDs and HYB W/P | Present verified capital, bounded grade | Next *physical-engineering* act; required proof |
+| --- | --- | --- |
+| `S-C11`; W02/W03/P01 | source decoding, sealed C11 + full object tuples; exact lazy view not accepted | Measure object construction/release index and first I03 reader; I02 owner chooses minimal compact/lazy ABI; exact ref/closure/tamper/rebuild parity |
+| `S-C11`; W04/P02 | Parquet/Zstd canonical relational carrier + R4 typed event compactor + R5 codec | Test regenerable typed view/cache using existing code; no duplicate persistent authority, Parquet success != compact hot path |
+| `S-I03`; W05/P03/P04 | native per-query exact I03, derived-membership compilation present; repeat index rebuild in current static path | Cheap exact sourcefree index-reuse profiler and strict native fact/replay comparison; grouped kernel only if compatible operation demand and measurable benefit; no silent fact schema change |
+| `S-BATCH`/`S-SERVE`; W01/W06/P05 | merged PR646 sourcefree R03→R04 partial cold resume→R05→P41 | Compare HQ282 before new work; only exact current first-reader repair; **no second scheduler** by default |
+| `S-I05`/`S-F1F4`; W07/P06 | existing recursive C01R2 branch candidate | Separate qualified source/scientific readmission and ABI check, no new controller |
+| P10/P11/P12 | HYB documented 25 obligations; tests NOT_RUN; route owner adoption pending | Host-profile if authorized; independent nonauthor review; owner physical-target accession; select one bounded patch + reviewer/CAS, then update SAME roadmap records |
+
+**Selected destination never silently optional:** The budget/profiler decides *which* physical implementation is needed and which existing code fulfills the target, **not** whether October's selected hybrid is allowed to revert to an A/B/C bakeoff. Similarly an October design choice does not automatically make full lazy C11 rewriting or a second cache mandatory absent a proven first-reader advantage. Scientific original35 production is **not** a HYB implementation ticket. Subsequent currentness/review/CAS must distinguish `USER_SELECTED_TARGET`, `CURRENT_OPERATIVE_B`, `CODE_PRESENT_OR_BRANCH_ONLY`, `TEST_SCOPE`, `REVIEW`, `ADOPTED_PREMAIN`. Respect original 82/49 histories.
+
+---
+
+
 **Status:** source-graded PROGRAMMA guide *candidate*, not a worker launch, code test, scientific issuance, HQ appointment, protected integration or authority grant. The source-cut G4 82 edges, 62 capsules and 49 GAP IDs are unchanged; this is a **dated later observation** and a proposed decision procedure. Read [binding historical succession/work-selection law](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) first, then original [typed dependencies](PREREQUISITES_AND_UNLOCKS.md), [SAT-R handback](SATURATION_CODEX_REUSE_HANDOFF.md), and current GitHub HEAD.
 
 **Machine-readable paired observation:** [13-row edge-ID-keyed post-SAT-R delta](POST_SATR_CURRENT_EDGE_DELTA_20261103.jsonl) retains the exact original 82-edge G4 blob/predicates and separately records the protected PR #646 sourcefree positive, its original35/native negatives and owner-held next class. This file is a delta, **not** a rewrite of CURRENT_SEAM_STATES.jsonl or an automatic status green.
