@@ -1,0 +1,20 @@
+python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py.proof.json --root .
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+  "claims": [
+    {
+      "claim_id": "OCT28_E1_I03_RELEASE_INDEX_REUSE",
+      "positive_node": "rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py::test_repository_index_reuse_keeps_current_authority_risk_and_release_checks",
+      "fault_path": "rawlsing_next/pre553_empirical_query.py",
+      "baseline": "PASS",
+      "fault_probe": "TARGET_ASSERTION_FAILED",
+      "grade": "BOUNDED_MUTATION_DETECTED"
+    }
+  ]
+}
+exit=0
+python3 -m pytest rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py::test_repository_index_reuse_keeps_current_authority_risk_and_release_checks -q -o addopts= -p no:cacheprovider
+.                                                                        [100%]
+1 passed in 0.26s
+exit=0

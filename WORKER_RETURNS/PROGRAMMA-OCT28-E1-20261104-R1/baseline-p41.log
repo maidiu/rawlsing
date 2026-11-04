@@ -1,0 +1,23 @@
+PYTHONPATH=. PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -l python3 -m pytest rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41 -q -o addopts='' -p no:cacheprovider
+.                                                                        [100%]
+1 passed in 57.80s
+       58.76 real        56.40 user         1.44 sys
+           283389952  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              435566  page reclaims
+                8626  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                1959  voluntary context switches
+               39422  involuntary context switches
+        231661365111  instructions retired
+        112158844175  cycles elapsed
+           245706752  peak memory footprint
+
+exit=0

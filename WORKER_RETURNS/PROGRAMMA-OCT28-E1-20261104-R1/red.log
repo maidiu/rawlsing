@@ -1,0 +1,50 @@
+python3 -c
+import pytest
+from rawlsing_next import pre553_empirical_query as i03
+i03._release_index_for = lambda repo, release, universe: i03._build_release_index(release, universe)
+raise SystemExit(pytest.main([
+    "rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py::test_repository_index_reuse_keeps_current_authority_risk_and_release_checks",
+    "-q", "-o", "addopts=", "-p", "no:cacheprovider",
+]))
+
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_repository_index_reuse_keeps_current_authority_risk_and_release_checks __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1047af410>
+
+    def test_repository_index_reuse_keeps_current_authority_risk_and_release_checks(monkeypatch):
+        source, _, _, _ = _joint_fixture("index-cache")
+        authority = _astra_query_authority("index-cache")
+        predicate = _branch_predicate(source, authority, tag="index-cache")
+        query = _query(source, authority, predicate, ("Y",), tag="index-cache")
+        repo = source["repo"]
+        release_ref = source["release_ref"]
+        universe_ref = source["universe"].ref
+        key = (release_ref, universe_ref)
+
+        build_index = i03._build_release_index
+        builds = []
+
+        def counted(release, universe):
+            builds.append((release.release_ref, universe))
+            return build_index(release, universe)
+
+        monkeypatch.setattr(i03, "_build_release_index", counted)
+        before = _run(source, authority, predicate, query)
+        assert before.facts[0].typed_state == "SUPPORTED"
+        compatible = _query(source, authority, predicate, ("X",), tag="index-cache-x")
+        assert _run(source, authority, predicate, compatible).facts[0].typed_state == "SUPPORTED"
+        assert _run(source, authority, predicate, query) == before
+>       assert builds == [key]
+E       AssertionError: assert [(ExactRef(ki...9de8d2f463'))] == [(ExactRef(ki...9de8d2f463'))]
+E
+E         Left contains 2 more items, first extra item: (ExactRef(kind='C11LogicalRelease', object_id='REL-index-cache', content_hash='614898b820a8f2acd002f62fd5d5103a2736538...21f9b9becfb27f3a37f5981299de8d2f463', content_hash='99bbd36b22db35782ab039c68327821f9b9becfb27f3a37f5981299de8d2f463'))
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py:277: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py::test_repository_index_reuse_keeps_current_authority_risk_and_release_checks
+1 failed in 0.22s
+
+exit=1
