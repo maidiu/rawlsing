@@ -1,5 +1,10 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+## Field Forge R2: adopted architecture, recovered functions, GF1 and completion dependencies (2026-11-04)
+
+**Read before inferring a new F5 implementation deficit from Q86-specific GT12 code:** [Field Forge R2 currentness and exact history](FIELD_FORGE_R2_SUCCESSION_CURRENTNESS_20261104_R1.md), [26 source-pinned asset/function records](FIELD_FORGE_R2_FUNCTION_ASSET_REGISTER_20261104_R1.jsonl) and [16 typed dependency/reverse-unlock records](FIELD_FORGE_R2_DEPENDENCY_COURT_20261104_R1.jsonl). **Key correction:** R2 architecture/terminal canary research was adopted/closed at its stated grain; FFX A/B/C had real historical code and canary execution; GT12 Q86 remains a frozen bounded example; GF1 R17+GF1N is a *separate implemented and independently tested bounded generic pair successor* missing from the prior S06/PSR1:P04 work recommendation. It is unselected/TEST_ONLY, not a new source-science grant. Do not commission another generic pair producer without GF1 current ABI/consumer comparison. These are **additive, unreviewed documentary overlays**, not changes to existing 782/892/150/82/62/49 source-cut registers or PROGRAMMA authority.
+
+
 
 **For machine-readable currentness:** [13-row post-SAT-R PR646 scoped seam delta](POST_SATR_CURRENT_EDGE_DELTA_20261103.jsonl) overlays the existing exact 82 edge IDs without changing source-cut status/predicates or implying native original35 acceptance.
 
