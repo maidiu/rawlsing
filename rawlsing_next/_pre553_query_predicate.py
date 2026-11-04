@@ -28,9 +28,6 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             if key in respondents and respondents[key] != record:
                 raise EmpiricalQueryResolutionError("conflicting exact respondent identity")
             respondents[key] = record
-    if not respondents:
-        respondents = {}
-
     events: dict[str, list[RespondentEvent]] = {key: [] for key in respondents}
     coords: dict[str, list[EmpiricalCoordinateFact]] = {key: [] for key in respondents}
     routing: dict[str, list[RoutingEligibilityFact]] = {key: [] for key in respondents}
@@ -58,17 +55,20 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
             routing[respondent_ref.key].append(obj)
         else:
             weights[respondent_ref.key].append(obj)
-    for mapping in (events, coords, routing, weights):
-        for key in mapping:
-            mapping[key].sort(key=lambda obj: obj.ref.key)
+    def freeze_rows(rows):
+        return MappingProxyType({
+            key: tuple(sorted(objects, key=lambda obj: obj.ref.key))
+            for key, objects in rows.items()
+        })
+
     return _ReleaseIndex(
         release=release,
         universe=universe,
-        respondents=respondents,
-        events_by_respondent=events,
-        coordinates_by_respondent=coords,
-        routing_by_respondent=routing,
-        weights_by_respondent=weights,
+        respondents=MappingProxyType(respondents),
+        events_by_respondent=freeze_rows(events),
+        coordinates_by_respondent=freeze_rows(coords),
+        routing_by_respondent=freeze_rows(routing),
+        weights_by_respondent=freeze_rows(weights),
         source_relations=tuple(sorted(relations, key=lambda r: r.ref.key)),
     )
 

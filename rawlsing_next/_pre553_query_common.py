@@ -154,15 +154,15 @@ class _TargetPlan:
         return len(self.components)
 
 
-@dataclass
+@dataclass(frozen=True)
 class _ReleaseIndex:
     release: C11LogicalRelease
     universe: EmpiricalUniverse
-    respondents: dict[str, RespondentIdentity]
-    events_by_respondent: dict[str, list[RespondentEvent]]
-    coordinates_by_respondent: dict[str, list[EmpiricalCoordinateFact]]
-    routing_by_respondent: dict[str, list[RoutingEligibilityFact]]
-    weights_by_respondent: dict[str, list[WeightMeasureFact]]
+    respondents: Mapping[str, RespondentIdentity]
+    events_by_respondent: Mapping[str, tuple[RespondentEvent, ...]]
+    coordinates_by_respondent: Mapping[str, tuple[EmpiricalCoordinateFact, ...]]
+    routing_by_respondent: Mapping[str, tuple[RoutingEligibilityFact, ...]]
+    weights_by_respondent: Mapping[str, tuple[WeightMeasureFact, ...]]
     source_relations: tuple[SourceUniverseRelation, ...]
     runtime_authorities: Any | None = None
     runtime_repository: C11Repository | None = None

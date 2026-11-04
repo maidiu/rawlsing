@@ -1,8 +1,10 @@
-from types import SimpleNamespace
+from dataclasses import replace
+from types import MappingProxyType, SimpleNamespace
 
 import pytest
 
 import rawlsing_next._pre553_query_eval as qeval
+import rawlsing_next.pre553_empirical_query as i03
 from rawlsing_next._pre553_query_predicate import _build_release_index
 from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
 from rawlsing_next.pre553_empirical_query import (
@@ -10,6 +12,7 @@ from rawlsing_next.pre553_empirical_query import (
     replay_empirical_query,
 )
 from rawlsing_next.tests.test_pre553_empirical_query import (
+    _astra_query_authority,
     _branch_predicate,
     _build_source,
     _query,
@@ -116,7 +119,9 @@ def test_conflicting_routing_facts_still_fail_closed():
         parent_predicate_refs=base.parent_predicate_refs,
         member_set_replay_ref=base.member_set_replay_ref,
     )
-    index.routing_by_respondent[respondent.ref.key].append(conflict)
+    routing = dict(index.routing_by_respondent)
+    routing[respondent.ref.key] += (conflict,)
+    index = replace(index, routing_by_respondent=MappingProxyType(routing))
 
     with pytest.raises(
         EmpiricalQueryResolutionError,
@@ -244,3 +249,60 @@ def test_weighted_behavior_and_identity_are_legacy_equivalent(monkeypatch):
         normal_fact.weighted_numerator_support_if_authorized
         == legacy_fact.weighted_numerator_support_if_authorized
     )
+
+
+def test_repository_index_reuse_keeps_current_authority_risk_and_release_checks(monkeypatch):
+    source, _, _, _ = _joint_fixture("index-cache")
+    authority = _astra_query_authority("index-cache")
+    predicate = _branch_predicate(source, authority, tag="index-cache")
+    query = _query(source, authority, predicate, ("Y",), tag="index-cache")
+    repo = source["repo"]
+    release_ref = source["release_ref"]
+    universe_ref = source["universe"].ref
+    key = (release_ref, universe_ref)
+
+    build_index = i03._build_release_index
+    builds = []
+
+    def counted(release, universe):
+        builds.append((release.release_ref, universe))
+        return build_index(release, universe)
+
+    monkeypatch.setattr(i03, "_build_release_index", counted)
+    before = _run(source, authority, predicate, query)
+    assert before.facts[0].typed_state == "SUPPORTED"
+    compatible = _query(source, authority, predicate, ("X",), tag="index-cache-x")
+    assert _run(source, authority, predicate, compatible).facts[0].typed_state == "SUPPORTED"
+    assert _run(source, authority, predicate, query) == before
+    assert builds == [key]
+
+    denied = _astra_query_authority("index-cache", state="DENY")
+    refusal = _run(source, denied, predicate, query)
+    assert refusal.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+
+    wrong_risk = _query(
+        {**source, "risk_refs": {"R": _ref("RISK_SET", "index-cache-foreign-risk")}},
+        authority, predicate, ("Y",), tag="index-cache-wrong-risk",
+    )
+    refusal = _run(source, authority, predicate, wrong_risk)
+    assert refusal.facts[0].p02_failure_state == "RISK_SET_UNAVAILABLE"
+
+    foreign, _, _, _ = _joint_fixture("index-cache-foreign")
+    refusal = i03.execute_empirical_query(
+        repository=foreign["repo"], query=query, predicate=predicate,
+        authority_registry=_registry(source, authority),
+        release_refs=(foreign["release_ref"],),
+    )
+    assert refusal.facts[0].p02_failure_state == "SOURCE_SCOPE_UNAVAILABLE"
+    assert builds == [key]
+
+    # Substitute an index for a foreign sealed release under the warm key.
+    foreign_release = foreign["repo"].resolve_release_exact(foreign["release_ref"])
+    monkeypatch.setitem(repo._i03_release_indices, key, build_index(
+        foreign_release, foreign["universe"].ref,
+    ))
+    restored = _run(source, authority, predicate, query)
+    assert builds == [key, key]
+    assert restored == before
+    assert restored.facts[0].as_dict() == before.facts[0].as_dict()
+    assert restored.facts[0].replay_ref == before.facts[0].replay_ref

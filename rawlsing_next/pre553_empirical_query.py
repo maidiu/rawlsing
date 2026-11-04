@@ -29,6 +29,7 @@ from rawlsing_next._pre553_query_common import (
     _exact,
     _parse_target_plan,
     _profile,
+    _ReleaseIndex,
     _require_mapping,
     semantic_hash,
 )
@@ -62,6 +63,18 @@ def _resolve_release_exact(repository: C11Repository, ref: ExactRef) -> C11Logic
         ) from exc
 
 
+def _release_index_for(
+    repository: C11Repository, release: C11LogicalRelease, universe_ref: ExactRef,
+) -> _ReleaseIndex:
+    key = (release.release_ref, universe_ref)
+    with repository._i03_index_lock:
+        index = repository._i03_release_indices.get(key)
+        if index is None or index.release is not release or index.universe.ref != universe_ref:
+            index = _build_release_index(release, universe_ref)
+            repository._i03_release_indices[key] = index
+        return index
+
+
 def _resolve_release_indices(
     repository: C11Repository,
     *,
@@ -81,7 +94,7 @@ def _resolve_release_indices(
         matches = []
         for release in releases:
             if any(getattr(obj, "ref", None) == universe_ref for obj in release.public_objects):
-                matches.append((release.release_ref, _build_release_index(release, universe_ref)))
+                matches.append((release.release_ref, _release_index_for(repository, release, universe_ref)))
         if len(matches) != 1:
             raise EmpiricalQueryResolutionError(
                 "each exact query universe must resolve in exactly one supplied sealed C11 release"

@@ -6,11 +6,15 @@ I02 atomic ingest validator may be committed here.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from threading import Lock
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping
+from typing import TYPE_CHECKING, Any, Iterable, Mapping
 
 from rawlsing_next.pre553_empirical_objects import CanonicalSemanticObject, ExactRef, canonical_json
 from rawlsing_next.pre553_c11_integrity import C11AtomicityError, C11InternalRecord, ReplayManifest
+
+if TYPE_CHECKING:
+    from rawlsing_next._pre553_query_common import _ReleaseIndex
 
 _C11_VALIDATION_SEAL = object()
 
@@ -56,6 +60,9 @@ class C11Repository:
         self._by_ref: dict[str, C11LogicalRelease] = {}
         self._by_release_id: dict[str, str] = {}
         self._objects: dict[str, CanonicalSemanticObject | C11InternalRecord] = {}
+        # Derived I03 topology only, scoped to this exact append-only repository.
+        self._i03_release_indices: dict[tuple[ExactRef, ExactRef], _ReleaseIndex] = {}
+        self._i03_index_lock = Lock()
         for release in releases:
             self._commit_validated(release)
 
