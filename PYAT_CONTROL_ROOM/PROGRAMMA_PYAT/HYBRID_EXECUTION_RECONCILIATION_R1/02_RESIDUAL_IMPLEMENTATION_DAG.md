@@ -1,0 +1,90 @@
+# HYB-01 / 02 — Finite residual implementation DAG: first receiver, actual files, and stop rules
+
+**Decision:** no new general empirical engine, durable scheduler, recursive controller, canonical cache authority, N9 service, or P01 nine-ticket build tranche is authorized by the mere October design. The immediate native product obstacle is **exact original-source/operation issuance and receiving**; the immediate *tractable* code-economics question is whether repeated C11 release indexing and per-query calculations are worth reusing before an invasive lazy-C11 refactor.
+
+Read alongside 25 record `01` and `03_PROGRAMMA_RECEIVING_PATCH.md`. All code references use protected `ba165a6a073dfdac0cb2e993ab8111ebb5ef404c` unless marked separate. Actual sourcefree code acceptance predates this report; HYB itself ran no tests.
+
+## A. Actual dependency graph (AND / conditional / parallel)
+
+`G0 current live HEAD, owners, grants, no active conflicting writer`
+  → **S native issuer request** (parallel, authority-held): original exact source release + U_item/U_unit/U_app/E_pre + observed/routed/risk/weight/estimand scope, from competent source/science owner
+  → **C first original native receiver** (after S): existing `execute_issued_workload` / source-backed C11 / Batch / native fact, actual named consumer (Lane D or alternative qualified reader); smallest first original product before full all-pairs
+  → **L** source-qualified F1–F4 → learned N10E
+  → **F/N** separately admitted FF → real same-version N9/N10W first receiver → N11 coverage → separate N12/Sorok
+
+`G0` → **R scoped sourcefree retention/ABI** (engineering/evidence lane, independent of S):
+  PR646 selected joined `R03→R04→R05→P41` path + HQ282 existing durable candidate + exact old SRC04 provenance; **NO_BUILD by default** → C's existing custody adapter only on a demonstrated actual first-reader failure
+
+`G0` → **K bounded query/index hot-path instrument** (sourcefree, no scientific change): current `CarrierNeutralResearchExecutor.execute_i03` → `execute_empirical_query` → `_resolve_release_indices` → `_build_release_index` → `_evaluate_index_group` → `_build_fact`; measure at unchanged code and verify real repeated-demand
+  → only on proof of repeated index cost: **K1 existing release-index reuse**; compare exact native fact/replay/negative and source/release/authority invalidation
+  → only on proof of remaining calculation cost/real grouped reader: **K2 grouped count/predicate sharing** behind native I03, not new output family
+
+`G0 + K evidence` → **V I02 lazy exact execution view decision**; private view/journal only if memory/serialization behavior blocks actual consumer and a sealed exact identity path is proven
+  → **A optional regenerable Parquet/Zstd accelerator** after V view identity, with reuse of current R4/R5 and no cache semantic authority
+  → **E evidence ref/cell hash optimization** only if profiler isolates `_make_execution_replay_ref` / `_build_fact` overhead, without versioning Fact or altering its complete closure
+
+`G0` → **D Authority37 candidate qualification** (parallel with S/K): Z02/C01R2 actual code/ABI + fresh independent original source authority **held**, no greenfield
+`G0` → **N9 selected real first-reader ABI/as-of** (parallel noncolliding investigation): J04/K04 importer/identity and seven HQ297 N9C REDs, current P41 sourcefree scope; requires competent FF/N9 and source scope before native acceptance.
+
+**Scheduling rule:** only true AND dependencies serialize. S, R, K, D sourcefree static comparison, and N9 ABI source inspection can proceed in parallel under disjoint readers. A/K/V/E all modify I02/I03 shared files: **one named writer/integrator** and staged tests. Don't execute complete old `15,576` J2 queue as a prerequisite to first native consumed fact.
+
+## B. Exact ranked incisions (first-use contract, minimum diff, stop criteria)
+
+### P0-S — Owner request, not a code build: issue ONE real original eligible workload
+
+- **Exact source need:** original edition SHA + source/retention custody + independently authored projection/routing/topology/weights and sampling design + an *issued* `U_item/U_unit/U_app/E_pre` set with legitimate substantive frontier, host/purpose and scope. R157's 35 prepared source configurations provide documents/fixtures, **not** original empirical issuer authority.
+- **Existing ingest:** `rawlsing_next/pre553_issued_workload.py::admit/execute_issued_workload` (lines ~225–317), `pre553_source_backed_c11_facade.py::build_source_backed_c11_repository` (642), `pre553_batch_runner.py::BatchExecutionRunner` (385), `pre553_carrier_execution.py::CarrierNeutralResearchExecutor.execute_i03` (427), `pre553_discovery_exact.py::execute_exact_bounded_discovery`.
+- **First actual reader:** named source-qualified factual/learned/FieldForge receiving call for a real issued unary + conditional or genuinely needed I05 unit, not speculative all-pairs. Competent original scientific/query owner must choose exact edition and first use. The October SRC04 `Lane D` is a historical candidate receiver; verify its current source/host/permission and code SHA before naming as live.
+- **Success:** actual positive/meaningful negative original-source native `EmpiricalFact` plus governed risk/weight/replay receipt, and identified *actual* consumer changed by its content; separate graded admission of learned/FF only if owner warrants. **Failure:** source not authorized, mismatched source edition, unresolved q217, missing actor-science grant, no real reader. Return typed HELD/REFUSED not scientific null.
+- **Owner:** original source/scientific issuer and Pyat native owner. **Worker's state:** `SCIENCE/SOURCE/HOST_OWNER_HELD`, with no S3 grant. **Parallel:** R and K legitimate sourcefree proof can advance.
+
+### P0-R — NO second scheduler: compare existing PR646 and HQ282 against exact receiving contract
+
+- **Current immutable positive:** merged PR646 sourcefree R03→R04 joined partial cold resume→R05 learned→actual pinned P41; current `pre553_issued_workload.py::restore_joined_checkpoint` (670), `execute_issued_workload` (278), `pre553_batch_runner.py::BatchExecutionRunner.record_receipt` (465) and `pending_units` (457), `pre553_universal_world_binding.py::select_r05_world_view` (853).
+- **Candidate, not adopted:** `73d45f3ac6a50fbee6666ad3a5023840f01ef196:rawlsing_next/pre553_batch_durable_checkpoint_candidate.py::DurableCheckpointStore.save/load, plan_recovery, admit_receipts_for_resume`; `.../pre553_governed_batch_checkpoint_integration_candidate.py::GovernedBatchCheckpointSession.open_session/run_to_completion/recover/admit_saved_receipts`; `.../pre553_v2_durable_consumer_integration_candidate.py::run_integrated`. Sourcefree reviewed, original file cold recovery not independently repeated by reviewer.
+- **Historical conditional evidence:** October `DESIGN/P05_S0_SRC04_CONSUMER_RESUME_FORENSIC_AUDIT_R1.md` reports `native_streaming.py` AST original bugs: resumed `cells=[]`, torn-tail append, foreign same operation ID, reflexive permanent REFUSED. **No proof the old adapter is on current protected runtime path**.
+- **Work unit:** produce a read-only callable ABI table `PR646 consumer function ↔ HQ282 session/ledger ↔ actual named original-source receiver`: exact source-release/authority/run/fact/cells identity, failure/refusal classes, resume idempotence, torn interior/tail, changed source/revocation. Use existing PR646 execution and consumer tests as first acceptance. If a specific current receiving code path demonstrably fails, commission **one adapter/bug repair** inside `pre553_issued_workload.py` or its direct existing owner, with unchanged Batch/learned/P41 APIs. No global journal replacement.
+- **Stop/no-build:** if tested first reader survives resumed supported unary, conditional and discovery and recover failure parity, mark W01/W06 and P05 `PRESENT_COMPOSED_NO_BUILD`; keep original35 grant independently held. No invented 7.91GB storage dependency or full-M2 workflow rebuild.
+- **Owner:** current Batch/issued/learned owner; independent nonauthor reviewer after code change. **Proof ceiling:** TEST_ONLY until actual source issuance and actual consumer.
+
+### P1-K — Smallest independent code-economics probe; conditional implementation
+
+- **Observed exact repeated work:** `rawlsing_next/pre553_empirical_query.py::_resolve_release_indices` (65–96) resolves full release(s), scans every `release.public_objects` to match universe and calls `rawlsing_next/_pre553_query_predicate.py::_build_release_index` (19) for the same universe. `_build_release_index` allocates respondent dictionaries and per-respondent event/coordinate/routing/weight lists. `execute_empirical_query` (373) uses the result; `rawlsing_next/pre553_carrier_execution.py::CarrierNeutralResearchExecutor.execute_i03` (427–440) calls I03 for each issued request. `_compile_derived_branch_memberships` (321) **already** avoids per-respondent recompilation inside one predicate; retain it.
+- **First consuming calls:** existing `pre553_issued_workload.execute_issued_workload` constructs Batch query units, then `CarrierNeutralResearchExecutor.execute_i03`; the same producer runs under the merged synthetic R03/R04/P41 first reader. Benchmark *that exact approved sourcefree workload* with one, repeated and diverse queries over identical exact release/universe; do not assume P41 itself demands a million pairs.
+- **Prototype decision** (sourcefree authorized runner only): measure (i) candidate C11 full release construction, (ii) index construction count/time/memory, (iii) predicate+denominator membership, (iv) numerical count, (v) provenance, native fact material, (vi) actual downstream P41. Compare baseline each-call reconstruction versus a **private immutable release+universe index reuse cache** at one already sealed repository snapshot and complete relevant determinants. Do not add new public semantic API or allow a cache hit to bypass I03 query/authority/risk validation. Test exact full parity, wrong authority/source/release/ref mutation, concurrent queries, negative cells, multi-universe.
+- **If measured index dominates materially:** narrow same-function adaptation in `_pre553_query_predicate.py::_build_release_index` access, `pre553_empirical_query.py::_resolve_release_indices` and internal `_pre553_query_common.py::_ReleaseIndex`, with repository snapshot/version cache owner and explicit lifetime. Instrumented exact identity and red/restore proof. **If no meaningful benefit:** `NO_BUILD` this cache; evaluate actual next consuming bottleneck. No new full grouped kernel until a measured/qualified reader needs it.
+- **If grouped counting is next:** batch only authority-compatible operations and common risk/predicate scopes behind `_evaluate_index_group` in `_pre553_query_eval.py`; expose unchanged individual `EmpiricalFact`/`QueryExecutionResult`, directional conditionals separately, complete zeros and exact provenance. All operation-spec/estimand distinctions matter. Validate J3 true same respondent vs reconstructed J2. Shared immutable input cannot become a new scientific owner.
+- **Risk:** shared I03 core and P04 evidence touch same files; single writer and independent reviewer. **Cost:** small profiling + conditional index reuse first; grouped kernel or journal is higher-risk/not presently compelled.
+
+### P2-V — Conditional source-backed I02-certified exact execution view (not yet a mandated foundation)
+
+- **Current real allocation boundary:** `pre553_source_backed_c11_facade.py::project_c11_candidate_from_physical_cells` (498) constructs native events, `pre553_c11_ingest.py::validate_c11_source_release` (743) builds full public/internal tuples, `pre553_c11_repository.py::C11Repository._commit_validated` (89) makes exact object dict; `pre553_parquet_carrier.py::ParquetC11Carrier.reopen` (279) materializes again. Existing `pre553_r4_compaction.py` streams compressed event physical relations but does **not** give I03 a current sealed lazy index.
+- **Before writing:** obtain a demonstrated downstream first-consumer resource/blocking issue (P1-K benchmark plus qualified source memory) and freeze current I02 compatibility. Compare already accepted physical source snapshot (`pre553_physical_decoder.py::_acquire_source_snapshot`), R4 reader/writer and R5 value codec before new journal.
+- **Conditional owner-owned change:** private journal and view interfaces from October `DESIGN/P01_S3_CODE_OWNER_AND_INTERFACE_SPEC_R1.md`, e.g. `_pre553_c11_journal.py::JournalWriter/PreparedC11Journal`, `_pre553_c11_stream_validation.py::_validate_prepared_journal` and `_pre553_c11_execution_view.py::C11ExecutionView`; exact sealed `C11Repository::verify_release_ref_exact / resolve_execution_view_exact` only after a competent I02 validated issuance path. Legacy `resolve_release_exact` still returns canonical `C11LogicalRelease` when demanded; meter costly compatibility expansion. The original full closure/multiset, event order, replay-ref identity and all existing I02 validation passes must remain. Never accept a bare saved cache manifest as a new seal.
+- **Test:** full semantic release/ref/Facts unchanged vs canonical baseline; metadata, routing, respondent topology, duplicate/conflict, missingness, physical source swapped after initial SHA, corrupt journal, partial write, refused authority, exact object lookup; cold restart. **Failure:** any changed exact native ref/negative or cache-authorized source. **Cost:** high I02 ABI and validation risk; make only if actual first reader payoff outweighs migration.
+
+### P3-A/E — Optional acceleration/provenance optimizations, not new scientific tickets
+
+- **A compact**: reuse existing `ParquetC11Carrier.persist/reopen` for encoded relation patterns (not as hot view), `R4RespondentEventWriter/Reader` for exact occurrence/identity and `R5TypedValueCodec` for reversible typed physical value. Source+decoder+projection+authority+topology+schema version key; atomic publish, SHA audit, forced private deletion/rebuild; local only. Do not transplant frozen LiTS/WVS Candidate-C source IDs as generic cache. Measured output identity and cost (RSS, disk, I/O) before acceptance; cache is always optional. No source access? Cache cannot substitute authority or custody.
+- **E evidence**: profile `_pre553_query_eval.py::_make_execution_replay_ref` (521), `_build_fact` (552), `_cell_projection` (501) and `EmpiricalFact@1.0.0`. October P04's proposed private ref-only used-evidence ledger and reused cell projection only after **all original per-object checks**, with exact old canonical order, authority, zeros, replay and full native digest. Its 64 sourcefree extracted-fixture observations are not native production parity. Changing fact schema to a reference-only projection is a new competent owner decision, NOT implementation optimization.
+- **Stop/no-build:** no actual measured net gain or semantic parity failure. Do not compress the old 7.91-GB pickle and declare the query kernel solved.
+
+### P4-D / P4-N9 — Independently owned real downstream cases
+
+- **D fractal:** start from C01R2 repaired code `ab287dcb48a3133fd4c79c881996fdd01f778c79`, its source-native controller, direct J3, multi-label and repaired selective identity ledger; current `pre553_discovery_exact.py::execute_exact_bounded_discovery` and `pre553_recursive_handoff.py::execute_exact_bounded_discovery_with_handoffs` retain their own scope. Require independent answer-blind full original WaveVIII G0–G8 fresh admission under named issuer and source custody, local sourcefree ABI compatibility with current I03/Batch/learned reader, and independent reviewer. 6 repaired sourcefree AC11/AC12 tests do not replace fresh original admission. **NO_BUILD another recursive controller**.
+- **N9:** P41 sourcefree selected receiver exists (`pre553_universal_world_binding.py::select_r05_world_view`), not general current/as-of source-qualified N9. Compare J04's originally missing materializer import with branch-only K04 six-name ABI and independent HQ297 N9C seven sourcefree REDs; do not import/redrive general world without exact identity/FF permission, currentness policy, invalidation, first actual consuming contract. Competent FF/N9 owners choose candidate or no-build; share no source/actor grant with Pyat physical optimization.
+
+## C. Parallel writer/noncollision map
+
+| Lane | Initial permitted work | Potential writer lock | Gating decision |
+| --- | --- | --- | --- |
+| S original issuance | Exact owner decision + source-bound paperwork only | No original data mutation or source run by HYB | Competent original source/issuer/host |
+| R PR646/HQ282 | Read-only ABI & first-reader differential | `pre553_issued_workload.py` / Batch/learned only **after** proof | Pyat owner and separate review |
+| K computation | Read-only profile and sourcefree parity first | `pre553_empirical_query.py`, `_pre553_query_predicate.py`, `_pre553_query_eval.py` | I03 owner; cannot collide with P01/P04 |
+| V I02 view | Read-only current object/ref census | `pre553_c11_ingest.py` / `pre553_c11_repository.py` / facade; coordinate K | I02 owner and independent validation |
+| A disk cache | Reuse/integrity inspection; no generic new backend | `pre553_parquet_carrier.py` / `pre553_r4_compaction.py` | Only after certified V and cost |
+| D fracture | Candidate read/independent source oracle planning | C01R2 source branch separate | Authority37 source/science issuer |
+| N9 world | Read-only version/ABI/source review | FF/N9 owners separately | FF/world scientific authorizer |
+| P11 | Hostile independent nonauthor acceptance | NO author writes | Pyat HQ may then adopt |
+
+**Reviewer challenge required:** If an engineer cannot point to named actual consumer, exact currently absent behavior after five-test comparison, and distinct sourcefree/native failure test, the proposed build is invalid. An unblocked direct consumer repair outranks generic optimizations. Pyat HQ can pick independently legitimate sourcefree engineering while source owner resolves native authorization.
