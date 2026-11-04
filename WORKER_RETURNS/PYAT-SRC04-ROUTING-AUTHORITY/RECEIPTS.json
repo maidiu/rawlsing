@@ -1,41 +1,407 @@
 {
-  "authority": {
-    "codebook_route_term_hits": [
-      {
-        "classification": "SUBSTANTIVE_TEXT_NOT_A_ROUTING_RULE",
-        "question_id": "q221",
-        "terms": [
-          "unconditional"
-        ]
-      }
-    ],
-    "codebook_route_terms_are_substantive_text_only": true,
-    "exceptions": {
-      "count": 6,
-      "routing_related": [
-        {
-          "owner_step": "ARAB lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
-          "required_native_field": "routing.typed_state",
-          "status": "UNKNOWN"
-        },
-        {
-          "owner_step": "ARAB lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
-          "required_native_field": "supported_scope.supported_form_slice",
-          "status": "UNKNOWN"
-        }
-      ]
-    },
-    "first_missing_premise": "exact item-specific questionnaire skip/routing rule and risk-set/eligibility denominator",
-    "first_missing_question": "q101",
-    "first_missing_risk_set_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
-    "first_missing_rule_ref": "urn:rawlsing:r157:original:SRC04:q101:unresolved",
-    "no_routing_rule_found_in_codebook": true,
-    "owner": "ARAB lane / P3 integration owner named in the SRC04 exception ledger"
+  "authority": "HOLD_PRODUCTION_AND_ISSUANCE_NOT_GRANTED",
+  "base_commit": "6d1ddb9844a5117d466bb0c3a8bc5260196c4249",
+  "config_interface": {
+    "config_changed": false,
+    "exact_eligible_denominators": 0,
+    "exact_route_bindings": 0,
+    "interface": "source_configuration.data.SRC04.source.config.json:routing[]",
+    "normal_schema_valid": true,
+    "route_selector_all_is_not_eligibility_authority": true,
+    "selected_route_entries": 42
   },
-  "base_commit": "ddc85dd298d36d4825d42cd4931a0cac5d91cb73",
-  "certified_and_held": {
-    "certified_count": 28,
-    "held": [
+  "edition_comparison": {
+    "byte_identical": true,
+    "edition_a": {
+      "bytes": 1075090,
+      "pages": 30,
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/data/original codebook pdfs/Arab Bar W1 Questionnaire_ENG.pdf",
+      "sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118",
+      "title": "Arab-Barometer: Public Opinion Survey Conducted in Algeria, Morocco, Jordan, Lebanon, Palestine, and Yemen, 2006-2007 Codebook"
+    },
+    "edition_b": {
+      "bytes": 1075090,
+      "pages": 30,
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/data/Arabbarometer/ABI_Questionnaire_ENG.pdf",
+      "sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118",
+      "title": "Arab-Barometer: Public Opinion Survey Conducted in Algeria, Morocco, Jordan, Lebanon, Palestine, and Yemen, 2006-2007 Codebook"
+    },
+    "edition_delta": "NONE; the two supplied files are byte-identical",
+    "extracted_text_identical": true
+  },
+  "engineering": "HOLD_EXACT_ROUTING_EVIDENCE_MISSING",
+  "files": {
+    "00_RETURN.md": {
+      "bytes": 5869,
+      "sha256": "1fd5e89f16ce66d013d2aaf75688dd8a526621760e01710a2b1ad27bccbc9dd1"
+    },
+    "01_ROUTING_AUTHORITY_RECEIPT.json": {
+      "bytes": 35029,
+      "sha256": "5d0e1accb4886b3f0fc572263c056905304226a33c2f4cc68d6a91e6f05202d8"
+    },
+    "02_COMMANDS.md": {
+      "bytes": 2701,
+      "sha256": "5f7f0a53bd9b24490f8d935b14b9c60d8cfcfdd76fbc696d9236d53821cf65ae"
+    },
+    "03_OWNER_LIMITS.md": {
+      "bytes": 2581,
+      "sha256": "6dfdee527ee5bb052a39028fa34826d0396b71f3074cc6709ec5d47e9507a488"
+    },
+    "04_QUESTIONNAIRE_AUTHORITY_RECEIPT.json": {
+      "bytes": 33280,
+      "sha256": "ab8aa58b0420151c8cdc065e0942f0354382b30c25b7711a8d8a05fddb259edb"
+    },
+    "PASSPORT.json": {
+      "bytes": 389,
+      "sha256": "b5a524f858bef15ea48b1dda203fc5e67ba8bfe269904b20a91885fb677e7f70"
+    },
+    "evidence/CONFIG_VALIDATION.json": {
+      "bytes": 539,
+      "sha256": "27674d9eb5f3d7f19be13c323eabd4e57a78cc9c92b9b260591d0ab709fb3e11"
+    },
+    "evidence/EDITION_COMPARISON.json": {
+      "bytes": 916,
+      "sha256": "b88db77c82961dc7eaf4ed3594e5d0df7a80b499ba321679ea786e7f143ab68d"
+    },
+    "evidence/QUESTIONNAIRE_ITEM_CITATIONS.csv": {
+      "bytes": 4303,
+      "sha256": "2586ee51cb17e58c38baae6994838a233fd2181ad8a2b6b3440a54a2cd4a1ce2"
+    },
+    "evidence/RESPONSE_AUTHORITY_14.csv": {
+      "bytes": 3451,
+      "sha256": "9600f65306340786a24d5d5c1313e8d25b9be86bc75484311853e845ae8699a2"
+    },
+    "evidence/ROUTING_TERM_SCAN.json": {
+      "bytes": 555,
+      "sha256": "3f4b5682c29412a2ecb621f8904fef737a9b83e24f4e527686fad35e361f8e0b"
+    },
+    "logs/authority.stdout.log": {
+      "bytes": 3489,
+      "sha256": "bcc1e47cb19f6b4f736a0d298f4a559ea1755d298f2aa9ca056533b1f80a3e71"
+    },
+    "logs/questionnaire.stdout.log": {
+      "bytes": 1277,
+      "sha256": "85a3a4aefa6106eb45008f9db634637d76b0721f8eae6686005094e9a07f3494"
+    },
+    "logs/test_all.log": {
+      "bytes": 99,
+      "sha256": "8df57c9b381a420da960c470cf26ad622e051d953d79e4b18b5cd1c994502f14"
+    },
+    "logs/test_all_junit.xml": {
+      "bytes": 2281,
+      "sha256": "2aab597dfdb0f3b64b51fc9c20e816e4dd58f49df129a4c2916780e00cdb9deb"
+    },
+    "logs/test_questionnaire_authority.log": {
+      "bytes": 98,
+      "sha256": "c39efe51cd313bd35a816020dcd8c7ac1446c3b68b8b6f37038ffea4140f72bf"
+    },
+    "logs/test_questionnaire_authority_junit.xml": {
+      "bytes": 1459,
+      "sha256": "de56da5de787db07769a92ac04c21029c93d8218f8cd2c687cbac82481778e4f"
+    },
+    "logs/test_routing_authority.log": {
+      "bytes": 98,
+      "sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
+    },
+    "logs/test_routing_authority_junit.xml": {
+      "bytes": 1068,
+      "sha256": "f30d28081d3403786c61004c509a0e0da1f88d9ed31c3f8fce53d5dfaba5131b"
+    },
+    "questionnaire_authority.py": {
+      "bytes": 18734,
+      "sha256": "ff88d98c7af682398013ca589125274616a196aaa757d62c1817420c51a85b43"
+    },
+    "routing_authority.py": {
+      "bytes": 10456,
+      "sha256": "1dfd6302853ea72d00a6e07f0c170268e03cdc8aecb8a1955385ea435a53a0a6"
+    },
+    "state_machine.py": {
+      "bytes": 927,
+      "sha256": "312d5571a0786b7cbfbd7531fc0ccc64fd9919a1252948abadb61f11562a13e6"
+    },
+    "test_questionnaire_authority.py": {
+      "bytes": 5950,
+      "sha256": "4f2270b1bbde29988b6b3affa9998cc6c2ac90b6c816609723abf3ded8c3b6b5"
+    },
+    "test_routing_authority.py": {
+      "bytes": 3844,
+      "sha256": "4f7af7a273ca332b7b441ec16ec7e6ba61120d7398158b415f1a83d891506846"
+    }
+  },
+  "held_14_authority": [
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 126,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 3,
+      "printed_page": 4,
+      "question_id": "q202",
+      "response_99_pdf_page": 3,
+      "response_99_printed_page": 4,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 120,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 4,
+      "printed_page": 5,
+      "question_id": "q207",
+      "response_99_pdf_page": 4,
+      "response_99_printed_page": 5,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 121,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 4,
+      "printed_page": 5,
+      "question_id": "q210",
+      "response_99_pdf_page": 4,
+      "response_99_printed_page": 5,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 146,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 4,
+      "printed_page": 5,
+      "question_id": "q212",
+      "response_99_pdf_page": 4,
+      "response_99_printed_page": 5,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 47,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 5,
+      "printed_page": 6,
+      "question_id": "q216",
+      "response_99_pdf_page": 5,
+      "response_99_printed_page": 6,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 61,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 6,
+      "printed_page": 7,
+      "question_id": "q222",
+      "response_99_pdf_page": 6,
+      "response_99_printed_page": 7,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 57,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 6,
+      "printed_page": 7,
+      "question_id": "q224",
+      "response_99_pdf_page": 6,
+      "response_99_printed_page": 7,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 154,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 6,
+      "printed_page": 7,
+      "question_id": "q226",
+      "response_99_pdf_page": 6,
+      "response_99_printed_page": 7,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 31,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 6,
+      "printed_page": 7,
+      "question_id": "q227",
+      "response_99_pdf_page": 7,
+      "response_99_printed_page": 8,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 140,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 7,
+      "printed_page": 8,
+      "question_id": "q228",
+      "response_99_pdf_page": 7,
+      "response_99_printed_page": 8,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 67,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 7,
+      "printed_page": 8,
+      "question_id": "q2301",
+      "response_99_pdf_page": 7,
+      "response_99_printed_page": 8,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 70,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 7,
+      "printed_page": 8,
+      "question_id": "q2302",
+      "response_99_pdf_page": 7,
+      "response_99_printed_page": 8,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 264,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 7,
+      "printed_page": 8,
+      "question_id": "q2311",
+      "response_99_pdf_page": 7,
+      "response_99_printed_page": 8,
+      "routed_or_ineligible": "UNKNOWN"
+    },
+    {
+      "authority_refusal_flag": "True",
+      "authority_status": "preserved_not_certified",
+      "code_count": 241,
+      "correction_applied": false,
+      "eligible": "UNKNOWN",
+      "item_response_evidence": "99 = Decline to Answer",
+      "missing_premise": "competent item-specific authority certification; exact source evidence exists but response_semantics_status remains preserved_not_certified",
+      "pdf_page": 7,
+      "printed_page": 8,
+      "question_id": "q2312",
+      "response_99_pdf_page": 7,
+      "response_99_printed_page": 8,
+      "routed_or_ineligible": "UNKNOWN"
+    }
+  ],
+  "owner_dependencies": [
+    "ARAB lane / P3 integration owner named in the SRC04 exception ledger: exact per-item routing/skip rule and risk-set/eligibility denominator for all 42 fields",
+    "Competent source-semantics authority: certify or reject the 14 held item-specific code-99 response semantics; the original questionnaire supplies exact item evidence but the option-authority status remains preserved_not_certified",
+    "R03 GrammarPolicy / authorized direction owner: exact policy and authorized direction grant remain absent"
+  ],
+  "primary_receipt": "04_QUESTIONNAIRE_AUTHORITY_RECEIPT.json",
+  "questionnaire": {
+    "certified_28": 28,
+    "eligible_known_fields": 0,
+    "exact_route_instruction_count": 0,
+    "held_14": 14,
+    "items_with_exact_99_decline": 42,
+    "route_terms": {
+      "ask all": [],
+      "eligib": [],
+      "filter": [],
+      "go to": [],
+      "routed": [],
+      "routing": [],
+      "screen": [],
+      "screened": [],
+      "skip": [],
+      "unconditional": []
+    },
+    "routed_out_known_fields": 0,
+    "routing_known_fields": 0,
+    "routing_unknown_fields": 42,
+    "selected_fields": 42
+  },
+  "response_semantics": {
+    "all_42_have_exact_99_decline_item_evidence": true,
+    "certified_28": [
+      "q101",
+      "q102",
+      "q103",
+      "q2011",
+      "q2012",
+      "q2013",
+      "q2014",
+      "q2015",
+      "q204",
+      "q205",
+      "q206",
+      "q211",
+      "q2131",
+      "q2132",
+      "q2133",
+      "q2134",
+      "q2135",
+      "q214",
+      "q215",
+      "q219",
+      "q221",
+      "q2251",
+      "q2252",
+      "q2321",
+      "q2322",
+      "q2323",
+      "q2324",
+      "q234"
+    ],
+    "held_14": [
       "q202",
       "q207",
       "q210",
@@ -51,159 +417,12 @@
       "q2311",
       "q2312"
     ],
-    "held_count": 14,
-    "held_exact_missing_premise": {
-      "q202": {
-        "code_count": 126,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q207": {
-        "code_count": 120,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q210": {
-        "code_count": 121,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q212": {
-        "code_count": 146,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q216": {
-        "code_count": 47,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q222": {
-        "code_count": 61,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q224": {
-        "code_count": 57,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q226": {
-        "code_count": 154,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q227": {
-        "code_count": 31,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q228": {
-        "code_count": 140,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q2301": {
-        "code_count": 67,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q2302": {
-        "code_count": 70,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q2311": {
-        "code_count": 264,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      },
-      "q2312": {
-        "code_count": 241,
-        "owner": "ARAB lane / P3 integration owner; later competent source-semantics authority",
-        "premise": "exact item-specific competent response-semantics certification (current option authority is preserved_not_certified)",
-        "routed_or_ineligible": "UNKNOWN",
-        "status": "HELD_UNCERTIFIED"
-      }
-    }
+    "held_code99_count_not_applied": 1645,
+    "held_correction_not_applied": true
   },
-  "files": {
-    "00_RETURN.md": {
-      "bytes": 3487,
-      "sha256": "28454dc960f8358496d49a75109283eddba7a69a64af234545cd125ad0c21fc0"
-    },
-    "01_ROUTING_AUTHORITY_RECEIPT.json": {
-      "bytes": 35029,
-      "sha256": "5d0e1accb4886b3f0fc572263c056905304226a33c2f4cc68d6a91e6f05202d8"
-    },
-    "02_COMMANDS.md": {
-      "bytes": 1623,
-      "sha256": "ec511ad49c6af9090a86b23a94091c9d0cff707692e1ffdacadedd495bc0d45b"
-    },
-    "03_OWNER_LIMITS.md": {
-      "bytes": 1699,
-      "sha256": "eebc65876b2f873ced38a6d57299c92c76c84538136c44a578635e23104fb900"
-    },
-    "logs/authority.stdout.log": {
-      "bytes": 3489,
-      "sha256": "bcc1e47cb19f6b4f736a0d298f4a559ea1755d298f2aa9ca056533b1f80a3e71"
-    },
-    "logs/test_routing_authority.log": {
-      "bytes": 98,
-      "sha256": "0e96d7ca7406320840ee2e704cbada03e2fe4b6d6aea1d667b4f685b07e7e24d"
-    },
-    "logs/test_routing_authority_junit.xml": {
-      "bytes": 1068,
-      "sha256": "f30d28081d3403786c61004c509a0e0da1f88d9ed31c3f8fce53d5dfaba5131b"
-    },
-    "routing_authority.py": {
-      "bytes": 10456,
-      "sha256": "1dfd6302853ea72d00a6e07f0c170268e03cdc8aecb8a1955385ea435a53a0a6"
-    },
-    "test_routing_authority.py": {
-      "bytes": 3844,
-      "sha256": "4f7af7a273ca332b7b441ec16ec7e6ba61120d7398158b415f1a83d891506846"
-    }
-  },
-  "limits": {
-    "ci": false,
-    "merge": false,
-    "original_source_read": false,
-    "original_workload_issued": false,
-    "policy_fabricated": false,
-    "production_config_adopted": false,
-    "respondent_rows_read": false,
-    "routing_inferred_from_counts": false,
-    "scientific_issuance": false,
-    "universal_code_rule": false
-  },
+  "result": "HOLD_ROUTING_UNKNOWN_AND_14_AUTHORITY__28_CERTIFIED_PRESERVED__PDF_EVIDENCE_EXACT",
   "retained_aggregate_replay": {
+    "certified_refusal_delta": 2185,
     "conserved": true,
     "corrected": {
       "explicit_nonresponse": 23422,
@@ -215,6 +434,7 @@
     },
     "distinct_ineligible_state": "UNKNOWN_ROUTED_OUT_OR_INELIGIBLE",
     "distinct_refusal_state": "EXPLICIT_NONRESPONSE",
+    "held_code99_not_applied": 1645,
     "ineligible_or_routed_out_inferred_from_counts": false,
     "old": {
       "explicit_nonresponse": 21237,
@@ -237,34 +457,26 @@
     },
     "refusal_vs_substantive_distinction": true
   },
-  "routing_interface": {
-    "configuration_interface": "source_configuration.data.SRC04.source.config.json:routing[]",
-    "exact_eligibility_denominators": 0,
-    "exact_routing_bindings": 0,
-    "fields": [
-      "typed_state",
-      "routing_rule_ref",
-      "risk_set_ref",
-      "row_selector"
-    ],
-    "normal_configuration_schema_valid": true,
-    "route_selector_all_is_not_eligibility_authority": true,
-    "selected_fields": 42,
-    "typed_unknown_or_held": 42,
-    "unresolved_eligibility_denominators": 42
+  "runtime": {
+    "config_schema_imported": true,
+    "pypdf_version": "6.4.0",
+    "python_version": "3.11.3",
+    "quota": "UNKNOWN",
+    "source_config_loaded": true
   },
-  "routing_state": {
-    "ineligible_or_routed_out_known": 0,
-    "known_fields": 0,
-    "unknown_fields": 42,
-    "unresolved_owner_dependencies": [
-      "ARAB lane / P3 integration owner: exact per-item routing/skip rules and risk-set/eligibility denominators for all 42 fields",
-      "Competent source-semantics authority: exact item-specific certification for 14 held code-99 option rows",
-      "R03 GrammarPolicy/direction owner: exact policy/authorized direction grant remains absent"
-    ]
+  "schema": "PYAT_SRC04_QUESTIONNAIRE_AUTHORITY_RECEIPTS@1.0.0",
+  "science": "HOLD_ABSENT_ORIGINAL_EXECUTION_GRANT",
+  "state_exercise": {
+    "conflation_guard": "DECLINED, ELIGIBLE and ROUTED_OUT are separate states; unknown routing is not declined or ineligible",
+    "declined_certified_28": 28,
+    "declined_evidenced_42": 42,
+    "declined_held_14": 14,
+    "eligible_known_0": true,
+    "routed_out_known_0": true,
+    "routing_unknown_42": true
   },
-  "schema": "PYAT_SRC04_ROUTING_AUTHORITY_RECEIPTS@1.0.0",
-  "test_receipts": {
-    "focused": "5 passed"
+  "tests": {
+    "combined": "12 passed",
+    "focused_questionnaire": "7 passed"
   }
 }
