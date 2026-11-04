@@ -1,5 +1,5 @@
 # PROGRAMMA PYAT × SOROK — exact three-branch receiving return R1
-**State:** `TWO_NATIVE_GUIDE_EDITS_COMMITTED__RETURN_IN_PROGRESS__INDEPENDENT_REVIEW_PENDING`.
+**State:** `TWO_NATIVE_GUIDE_EDITS_COMMITTED__RETURN_COMMITTED__REVIEW_PENDING__INDEPENDENT_REVIEW_PENDING`.
 **Jurisdiction:** S0–S1 authenticated private GitHub code/document review; no qualified local S2, native S3, original survey/actor rights, acceptance, human alpha, or protected PRE-MAIN merge. Distinct ancestry is invariant.
 
 ## A — Actual PROGRAMMA PYAT guide edit
