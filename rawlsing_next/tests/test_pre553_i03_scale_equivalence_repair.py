@@ -306,3 +306,119 @@ def test_repository_index_reuse_keeps_current_authority_risk_and_release_checks(
     assert restored == before
     assert restored.facts[0].as_dict() == before.facts[0].as_dict()
     assert restored.facts[0].replay_ref == before.facts[0].replay_ref
+
+
+def _same_identity_corruption_case(tag: str):
+    """E2's exact sourcefree case: same exact key, changed cached respondent set."""
+    source, _, _, _ = _joint_fixture(tag)
+    authority = _astra_query_authority(tag)
+    predicate = _branch_predicate(source, authority, tag=tag)
+    query = _query(source, authority, predicate, ("Y",), tag=tag)
+    return source, authority, predicate, query
+
+
+def test_same_identity_changed_payload_rebuilds_exact_fact(monkeypatch):
+    """Regression for E2 probe_same_identity_cache.py (E1 RED at this assertion)."""
+    source, authority, predicate, query = _same_identity_corruption_case(
+        "e2-same-identity-corruption"
+    )
+    repository = source["repo"]
+    key = (source["release_ref"], source["universe"].ref)
+    original = _run(source, authority, predicate, query)
+    assert original.facts[0].typed_state == "SUPPORTED"
+    warm_index = repository._i03_release_indices[key]
+
+    # Preserve the SAME sealed release/universe objects while replacing the
+    # private payload with a read-only but wrong respondent map (omit R1).
+    poisoned = replace(
+        warm_index,
+        respondents=MappingProxyType({
+            respondent_key: respondent
+            for respondent_key, respondent in warm_index.respondents.items()
+            if respondent_key != source["respondents"]["R1"].ref.key
+        }),
+    )
+    assert poisoned.release is warm_index.release
+    assert poisoned.universe is warm_index.universe
+    assert len(poisoned.respondents) + 1 == len(warm_index.respondents)
+    monkeypatch.setitem(repository._i03_release_indices, key, poisoned)
+
+    rebuilt = _run(source, authority, predicate, query)
+    assert rebuilt.facts[0].typed_state == "SUPPORTED"
+    assert rebuilt == original  # E1 emitted a DIFFERENT SUPPORTED fact.
+    assert rebuilt.facts[0].as_dict() == original.facts[0].as_dict()
+    assert rebuilt.facts[0].ref == original.facts[0].ref
+    assert rebuilt.facts[0].replay_ref == original.facts[0].replay_ref
+    assert repository._i03_release_indices[key] is not poisoned
+    assert repository._i03_release_indices[key].respondents == warm_index.respondents
+    # Restoring without cache retains the same exact native result.
+    del repository._i03_release_indices[key]
+    assert _run(source, authority, predicate, query) == original
+
+
+@pytest.mark.parametrize("field", (
+    "respondents", "events_by_respondent", "coordinates_by_respondent",
+    "routing_by_respondent", "weights_by_respondent",
+))
+def test_in_place_index_field_replacement_rebuilds_before_fact(field):
+    """Even object.__setattr__ on a frozen cached index must not launder a slot."""
+    source, authority, predicate, query = _same_identity_corruption_case(
+        "e3-in-place-" + field
+    )
+    repo = source["repo"]
+    key = (source["release_ref"], source["universe"].ref)
+    baseline = _run(source, authority, predicate, query)
+    cached = repo._i03_release_indices[key]
+    previous = getattr(cached, field)
+    new_map = MappingProxyType({
+        k: v for k, v in previous.items()
+        if k != source["respondents"]["R1"].ref.key
+    })
+    assert len(new_map) + 1 == len(previous)
+    # Explicit fault injection, NOT an ordinary mutation API.
+    object.__setattr__(cached, field, new_map)
+    recovered = _run(source, authority, predicate, query)
+    assert recovered == baseline
+    assert repo._i03_release_indices[key] is not cached
+    assert getattr(repo._i03_release_indices[key], field) == previous
+
+
+def test_missing_attestation_cannot_authorize_a_poisoned_index():
+    source, authority, predicate, query = _same_identity_corruption_case(
+        "e3-missing-attestation"
+    )
+    repo = source["repo"]
+    key = (source["release_ref"], source["universe"].ref)
+    before = _run(source, authority, predicate, query)
+    old = repo._i03_release_indices[key]
+    repo._i03_index_attestations.pop(key)
+    assert _run(source, authority, predicate, query) == before
+    assert repo._i03_release_indices[key] is not old
+    assert repo._i03_index_attestations[key][0] is repo._i03_release_indices[key]
+
+
+def test_parallel_same_release_index_creation_is_serialized(monkeypatch):
+    """Concurrent callers share one fresh topology; no partly verified entry."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    source, _, _, _ = _joint_fixture("e3-concurrent")
+    repo = source["repo"]
+    release = repo.resolve_release_exact(source["release_ref"])
+    universe_ref = source["universe"].ref
+    count = 0
+    original_builder = i03._build_release_index
+
+    def counted(r, u):
+        nonlocal count
+        count += 1
+        return original_builder(r, u)
+
+    monkeypatch.setattr(i03, "_build_release_index", counted)
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        indices = list(executor.map(
+            lambda _: i03._release_index_for(repo, release, universe_ref),
+            range(32),
+        ))
+    assert count == 1
+    assert all(item is indices[0] for item in indices)
+    assert repo._i03_index_attestations[(release.release_ref, universe_ref)][0] is indices[0]

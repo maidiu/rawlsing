@@ -63,6 +63,10 @@ class C11Repository:
         # Derived I03 topology only, scoped to this exact append-only repository.
         self._i03_release_indices: dict[tuple[ExactRef, ExactRef], _ReleaseIndex] = {}
         self._i03_index_lock = Lock()
+        # Independent strong references to the index and its immutable payload
+        # fields. An altered cache-slot value must not inherit the original seal.
+        # This is a bounded in-process fault check, not hostile-memory security.
+        self._i03_index_attestations: dict[tuple[ExactRef, ExactRef], tuple[Any, ...]] = {}
         for release in releases:
             self._commit_validated(release)
 

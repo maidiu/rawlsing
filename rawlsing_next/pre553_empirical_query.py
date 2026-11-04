@@ -63,15 +63,63 @@ def _resolve_release_exact(repository: C11Repository, ref: ExactRef) -> C11Logic
         ) from exc
 
 
+# The E1 builder freezes the respondent dictionaries into mapping proxies and
+# values into tuples. Hold their original object identities separately from the
+# mutable cache slot: checking these references is constant-time per cache hit,
+# unlike rehashing or traversing the full respondent graph per query.
+_I03_INDEX_ATTESTED_FIELDS = (
+    "release", "universe", "respondents", "events_by_respondent",
+    "coordinates_by_respondent", "routing_by_respondent",
+    "weights_by_respondent", "source_relations", "runtime_authorities",
+    "runtime_repository", "runtime_predicate_grammar_authority_ref",
+)
+_I03_INDEX_MISSING = object()
+
+
+def _i03_index_attestation(index: _ReleaseIndex) -> tuple[object, ...]:
+    return (index,) + tuple(
+        getattr(index, name) for name in _I03_INDEX_ATTESTED_FIELDS
+    )
+
+
+def _i03_index_attestation_matches(
+    index: object, attestation: object,
+) -> bool:
+    return (
+        isinstance(index, _ReleaseIndex)
+        and isinstance(attestation, tuple)
+        and len(attestation) == len(_I03_INDEX_ATTESTED_FIELDS) + 1
+        and attestation[0] is index
+        and all(
+            getattr(index, name, _I03_INDEX_MISSING) is original
+            for name, original in zip(
+                _I03_INDEX_ATTESTED_FIELDS, attestation[1:]
+            )
+        )
+    )
+
+
 def _release_index_for(
     repository: C11Repository, release: C11LogicalRelease, universe_ref: ExactRef,
 ) -> _ReleaseIndex:
     key = (release.release_ref, universe_ref)
+    # An entry merely claiming the same release/universe is insufficient. E2
+    # demonstrated that a substituted respondent map otherwise changes a
+    # SUPPORTED native fact. Never evaluate an un-attested cache payload.
     with repository._i03_index_lock:
         index = repository._i03_release_indices.get(key)
-        if index is None or index.release is not release or index.universe.ref != universe_ref:
-            index = _build_release_index(release, universe_ref)
-            repository._i03_release_indices[key] = index
+        attestation = repository._i03_index_attestations.get(key)
+        if (
+            not _i03_index_attestation_matches(index, attestation)
+            or index.release is not release
+            or index.universe.ref != universe_ref
+        ):
+            # Recompute ONLY from the sealed I02 release, under the original
+            # per-repository lock. No cache/attestation grants source authority.
+            rebuilt = _build_release_index(release, universe_ref)
+            repository._i03_release_indices[key] = rebuilt
+            repository._i03_index_attestations[key] = _i03_index_attestation(rebuilt)
+            index = rebuilt
         return index
 
 
