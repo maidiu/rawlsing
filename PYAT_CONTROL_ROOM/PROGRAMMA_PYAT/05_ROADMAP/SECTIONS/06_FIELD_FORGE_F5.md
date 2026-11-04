@@ -1,5 +1,10 @@
 # ROADMAP:S06 — Field Forge F5 and demanded objective PRE-V3
 
+## Post-R2 asset-function succession and dependency receiving — 2026-11-04 candidate
+
+The adopted Field Forge R2 architecture and its operational code are **different status dimensions**. The [dedicated receiving guide](../FIELD_FORGE_R2_SUCCESSION_CURRENTNESS_20261104_R1.md), [26 source-exact function/asset rows](../FIELD_FORGE_R2_FUNCTION_ASSET_REGISTER_20261104_R1.jsonl), and [16 conditional prerequisites and reverse unlocks](../FIELD_FORGE_R2_DEPENDENCY_COURT_20261104_R1.jsonl) provide a searchable currentness correction, **without changing this page's original G4 child grades or science grants**. R2 research closed with Global-HQ adopted architecture on Sept 2; historical Core A/B/C and FFP032/036 were actually executed at bounded R5 grain; Q86 is a frozen GT12 canary, and unmerged GF1 R17+GF1N already provides an independently tested **sourcefree TEST_ONLY** generic two-binary-item relation and non-copy first consumer. **S06.1 and PSR1:P04 currently omit GF1**: the next step is source/current ABI, lawful owner and first-consumer comparison, not inventing a new generic pair engine. General F5→N6→N9 original source first-reader and strong structural source-authority remain conditional/unproven. Q86 whole-estate contamination cannot be ruled out by the incomplete 37-blob census. Do not turn optional Field Forge persistence/geometry or unissued strong nouns into compulsory missing development organs.
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
