@@ -1,5 +1,16 @@
 # G4-P5 — Prerequisites, AND/IF/ALTERNATE and reverse unlocks
 
+## October 28 HYB physical-engineering dependencies — staged overlay, not new science edges (2026-11-04)
+
+**Selected physical goal:** [October 28 user decision](https://github.com/maidiu/rawlsing/blob/315251451a6d112fb312a6a2e80b096d345c5de6/PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/04_TARGET_ARCHITECTURE_INTERFACES_AND_INVARIANTS.md) controls the source-authoritative compact regenerable PRE553 *physical-engineering destination*. B/C11/I03/I05 remain exact semantic/operative implementation owners; a qualified physical-policy PRE-MAIN accession is **pending**, and HYB-01 at `df124767...` needs independent review. A/B/C alternative physical designs have no selected-route parity. No extra `MUST`, `IF` or `ANY_OF` is added to the 82 original guide edges.
+
+**Physical delivery sequence at existing IDs**, not a new program: (`S-C11` correct sealed source/replay existing) + (`S-I03` accepted exact query) → inspect repeated release-index/semantic object cost at `CarrierNeutralResearchExecutor.execute_i03` / sourcefree PR646→P41 → reuse/R4/R5/Parquet/Batch comparison → only necessary compact/lazy I02 view, grouped I03 shared work and optional regenerated cache → exact fact/negative/identity, cold-resume and cache-delete equivalence → independent review → existing protected PRE-MAIN owner/CAS → record versioned current component/seam and current-progress status. This is an *engineering proof dependency*, not an original35 all-wave scientific issuance requirement or gate to parallel qualified work. Specific invasive changes to I02 and I03 require coordinated single writers and named rollback. Source/permission and original scientific W00/W07–W12 remain independently owned constraints where actually needed.
+
+**Negative:** do not list HYB W03/W04/W05 as three blank engines or automatically infer 15,576 original pairs; do not re-open A/B/C, assume the historical `native_streaming.py` defect is live protected code, treat canonical C11 Parquet/Zstd as an accepted compact I03 view, or promote the merged sourcefree PR646 P41 to native original35. [Existing S03/S04](SECTIONS/03_ROUTE_B_C11.md) and existing component/seam status rows carry evidence and dated stage with original predicates intact.
+
+---
+
+
 
 **Current-version observation table:** [13 edge-specific later PR646 records](POST_SATR_CURRENT_EDGE_DELTA_20261103.jsonl) preserve all G4 IDs, predicates and original statuses, with scoped sourcefree first-reader positives and separately typed native/HQ-owner holds. Use them to subtract present work before generating the next build dependency.
 
