@@ -309,6 +309,14 @@ The qualified incumbent Pyat HQ edits **the isolated G4 documentary candidate, n
 
 ## Original Pyat R/O/I and inherited whole-machine source hierarchy
 
+### PROG5 — bounded roadmap guide for finishing Pyat (user clarification 2026-11-02)
+
+**PROG5 is the finite construction of this Programma's *development guide*, not a new Pyat engine, implementation stage, HQ, or autonomous roadmap software project.** It lives here in `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/`. Its purpose is to let any future Pyat worker locate the best existing code, original/historical design and unadopted functionality, associated source/authority/reviews, all overlapping plans, actual missing work, conditional dependencies and the state of upstream/downstream interfaces—source through V3 gate. Source assets remain where they are; prog5 gives one connected finding aid.
+
+**Read in order:** [product specification](01_PROG5_PRODUCT_SPEC.md) → [finite build course](02_PROG5_FINITE_BUILD_COURSE.md) → [existing-work and GitHub-first source queue](03_PROG5_EXISTING_WORK_AND_SOURCE_QUEUE.md) → [provisional full source-to-V3 rough spine](04_PROG5_ROUGH_SPINE.md).
+
+**Finite work:** GitHub-first full estate scan and best current Astra/Pyat rough spine → complete whole-map outline → anchor/reconcile GitHub assets → GitHub-based component/dependency/seam-state sweep → only THEN optional specific Library/mainMac missing-material checks where evidence warrants → short practical-use check → **DONE**, then ordinary documentation updates during actual Pyat work. Do not turn this into another census, database, server, CI/agent system or indefinite meta-project. The broader original Programma mandates below describe the *real machine's development*, not what prog5 itself is implementing.
+
 ### Terminal demand: NOT a hand-selected analysis service
 Build and occupy the **generalized, automated, governed, all-35-wave source → full possible scientifically admissible empirical/learned/structural/temporal world → current/historical/as-of selected-world and N10E/N10W/F8 progressive possibility → N11 objectively accepted PRE-V3 product → N12 separately governed Sorok wake/defer** machine. World conditions can open and close historically contingent life possibilities; they do not prescribe an individual worldview, type, memory or action. The current producer-owned semantic DAG must preserve original V550/J and V553–V558, Dva, Trii, Chetiri, Long Memory, Field Forge, and later direct-reuse science without resurrecting serial historical stages.
 
