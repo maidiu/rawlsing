@@ -1,5 +1,28 @@
 # PROGRAMMA PYAT — G4 Source-Grounded Development Guide
 
+## October 28 selected physical architecture — staged receiving, not a second authority (2026-11-04)
+
+**Control of the physical destination:** The user selected `SOURCE-AUTHORITATIVE, COMPACT, REGENERABLE-HYBRID PRE553 PRODUCTION` in [the October 28 executive decision](https://github.com/maidiu/rawlsing/blob/315251451a6d112fb312a6a2e80b096d345c5de6/PYAT_CONTROL_ROOM/FINAL_PRODUCTION_ARCHITECTURE_HQ_20261028_R1/01_EXECUTIVE_ADJUDICATION.md). **Its A/B/C physical-engineering alternatives are not coequal live choices.** Existing Route B/C11/I03/I05 scientific and semantic laws remain controlling for their own jurisdictions, and existing Route B code remains the currently accepted implementation baseline. The selected target has **not** thereby received a qualified operative PRE-MAIN amendment, code implementation, original-source grant, or S2/S3 proof. A qualified Pyat architecture owner must adjudicate that bounded physical-policy accession; protected owner/CAS receives any actual authoritative wording. Neither historical A/R5 materialization nor an older route name can silently overrule this user-selected engineering destination; neither the October packet nor HYB-01 can silently overrule original scientific/source owners.
+
+**Receiving status:** This is a **candidate edit to the existing PROG5 guide only**, from prepared guide `2c4e878e4d8c0371ea0ece58eeb731a384d6c708`; protected PRE-MAIN was inspected at `ba165a6a073dfdac0cb2e993ab8111ebb5ef404c`. The independent [HYB-01 technical return](https://github.com/maidiu/rawlsing/blob/df12476774a3ce3ea8a26ffcd270f698058b550f/WORKER_RETURNS/PROGRAMMA_PYAT_HYBRID_EXECUTION_RECONCILIATION_R1/00_RETURN.md) is **S0–S1, NOT independently reviewed, NOT operative policy, NOT S2/S3 execution**. The 25 W00–W12/P01–P12 observations are attached as *candidate versioned overlays to pre-existing component and seam records*, without changing their original statuses, 62 component IDs, 82 original edge IDs, 49 GAP IDs, or authority rights. HYB's separate dossier remains immutable provenance, not a second live roadmap.
+
+| Existing PROGRAMMA owner | October obligations and controlling engineering question | Current-scope stage, not blanket PASS |
+| --- | --- | --- |
+| [S03 physical/C11](SECTIONS/03_ROUTE_B_C11.md), `S-C11` | W02–W04, P01–P02: existing exact decoder/C11 and R4/R5/Parquet capital vs selected compact/lazy respondent-coherent view and optional regenerable cache | W02 PRESENT_ACCEPTED; W03/P01 ADAPT_REQUIRED; W04/P02 COMPARE_ONLY_UNKNOWN |
+| [S03 I03 / S04 empirical](SECTIONS/04_F1_F4_EMPIRICAL.md), `S-I03` | W05, P03–P04: existing per-query exact evaluator vs sharing release indices, compatible grouped counting, native fact/replay economy | W05/P03 ADAPT_REQUIRED; P04 COMPARE_ONLY_UNKNOWN; exact benefit NOT measured |
+| [S03 Batch/first consumer](SECTIONS/03_ROUTE_B_C11.md), `S-BATCH` | W01/W06/P05: current merged PR646 joined partial sourcefree resume→R05→P41; historic SRC04 defects version-specific; HQ282 candidate separate | PRESENT_SOURCEFREE_ONLY; no second scheduler by default |
+| [S04 recursive](SECTIONS/04_F1_F4_EMPIRICAL.md), `S-I05` | W07/P06: reuse existing Authority37/C01R2 recursive candidate; do not build another controller | BRANCH_CANDIDATE; independent source/science readmission held |
+| [S05 learned](SECTIONS/05_LEARNED_LIFECYCLE.md), `S-SERVE` | W08/P07: selected I03/I05→learned→possibility consumption | SOURCEFREE_ONLY or PRESENT_COMPOSED at exact synthetic scope; original native held |
+| Existing S01, S06–S11 | W00/W09–W12/P08–P09: incoming permission and separately governed downstream dependencies | HELD_AUTHORITY; **not the October physical implementation work** |
+| [Existing current-edge decision](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md) | P10–P12: real host profiling, independent HYB challenge, bounded owner adoption and actionable no-duplicate build incision | COMPARE_ONLY_UNKNOWN / ARCHITECTURE_ADOPTION_PENDING |
+
+**Decision/implementation/status separation:** Selected engineering target ≠ qualified operative physical-policy amendment ≠ code on protected PRE-MAIN ≠ S2/S3 benchmark ≠ original source/scientific acceptance. The [existing component status records](COMPONENT_STATUS.jsonl) and [existing seam states](CURRENT_SEAM_STATES.jsonl) carry the bounded October overlay under their **same IDs**, not under new components or a parallel HYB graph. Its unreviewed `oct28_hybrid_receiving_candidate` key is a proposed optional versioned field: competent guide reviewer/owner must check reader/schema compatibility before adoption. Historical G4 evidence and 13 PR646 deltas are not overwritten.
+
+**Priority law for this physical-engineering domain:** use October 28 as the selected destination; use operative B/C11/I03/I05 as the implementation/semantic constraint; use HYB-01 and earlier A/R4/R5/CACC as source-qualified advice and reusable code, not coequal choices; measure first real accepted sourcefree/authorized consumer and native identity before any invasive physical patch; qualify each changed code path; immediately write its actually received status through the **existing** guide/progress/owner channels. Preserve distinct independent all35, FF, N11/N12 investigations and source permissions. **No separate October/HYB HQ, authority source, worklist or roadmap.**
+
+---
+
+
 
 ## NEXT R received autonomy-ready decision addendum — 2026-11-03, not source/native acceptance
 
