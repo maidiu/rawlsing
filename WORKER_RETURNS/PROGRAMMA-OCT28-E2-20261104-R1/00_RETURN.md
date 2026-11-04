@@ -1,5 +1,7 @@
 # PROGRAMMA OCT28-E2 — independent review custody return
 
+**Superseded by the [independent S2 review](01_INDEPENDENT_REVIEW.md).** The runner hold below is retained as the earlier disposition.
+
 **Verdict: `HOLD_RUNNER_OR_AUTHORITY`**
 
 **No independent acceptance, no protected receiving recommendation, no native source permission, and no merge.** This is a gate-and-evidence return, not a completed implementation review. The candidate may not be represented as accepted or operative in protected PRE-MAIN.
