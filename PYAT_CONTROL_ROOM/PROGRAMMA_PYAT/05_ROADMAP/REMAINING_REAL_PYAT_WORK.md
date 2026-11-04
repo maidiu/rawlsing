@@ -494,3 +494,6 @@ SRC04 certified refusal correction accepted at metadata and retained aggregate s
 
 
 **N10W-SAME-LINEAGE-SCOPED-ACCEPTANCE**. Independent replay: 84 W41/E41/P41 views, cold equality, source and provider mismatch refusal, and restored output identity. Review `7559fa795b49d3bace7748066ae7f16d5a6223a5`. D2P3 field reader lacks version-selected N9 and computed N10E on a common source-row/currentness binding. Original science and protected adoption held.
+
+
+**SRC04-QUESTIONNAIRE-EVIDENCE-INTAKE** at `8677ef2bd6d38641b0a3dd3cd58e961efb6374f6`. Questionnaire citations for all 42 code-99 Decline to Answer labels. Two identical PDF copies. Existing configuration validated unchanged. Author reports 12 focused tests. Competent source-semantics owner must certify the exact 14 held mappings. Administration owner must establish routing and eligible denominators for all 42 from fieldwork instructions or authoritative confirmation. The questionnaire scan alone cannot establish universal eligibility. No production or original workload disposition.

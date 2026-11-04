@@ -276,3 +276,6 @@ SRC04 certified refusal correction accepted at metadata and retained aggregate s
 
 
 - **SRC04-ROUTING-AUTHORITY-RETURN** at `6d1ddb9844a5117d466bb0c3a8bc5260196c4249`. Examined CSV/config leaves routing and denominators unresolved for 42 fields and 14 refusal mappings uncertified. Original questionnaire excluded from examined inputs. Existing author resumed as pyat-src04-questionnaire-routing. Production and original issuance held.
+
+
+**SRC04-QUESTIONNAIRE-EVIDENCE-INTAKE** at `8677ef2bd6d38641b0a3dd3cd58e961efb6374f6`. Questionnaire citations for all 42 code-99 Decline to Answer labels. Two identical PDF copies. Existing configuration validated unchanged. Author reports 12 focused tests. Competent source-semantics owner must certify the exact 14 held mappings. Administration owner must establish routing and eligible denominators for all 42 from fieldwork instructions or authoritative confirmation. The questionnaire scan alone cannot establish universal eligibility. No production or original workload disposition.
