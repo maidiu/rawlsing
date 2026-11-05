@@ -85,3 +85,6 @@ Conserved counts: Sorok 09 `144` functions; 14 `668` rows and `83` gates; 15 `38
 ## 7. Publication
 
 This follow-up currentness commit is pushed normally on `codex/sorok-programma-product-intake-20261105-r1` after prior publication `9c12d25c6b060af32026a5909543e87b36538171`. Only the eight affected PROGRAMMA paths plus this return/readback were staged. No protected branch write, no product edit and no other guide worker branch edit. Exact published 40-hex SHA is returned in the final chat readback and verified by `git ls-remote`.
+
+
+HQ subsequent intake: the final correction-diff Git check is published at `9a33c723f74d2133597740692103eba9e2bc993e`; reused independent runtime evidence is `f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70`. PR697 is open, ready and unmerged. Existing currentness fields now reflect this completed check; protected integration and native/human holds remain.
