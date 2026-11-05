@@ -132,3 +132,12 @@ This engineering rehearsal is **not** independent final acceptance.
 See `PROGRAMMA_DELTA.md` / `PROGRAMMA_DELTA.json`: rehearsal and scoped evidence
 only; no PROGRAMMA canonical product, seam/gate register, native science or
 receiving authority changed.
+
+
+## HQ final correction-diff receiving check
+
+Final candidate `41bf45813fd0adeffd9b54e1306c2022abe96514` remains merge-tree compatible with protected baseline `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`; Git produced tree `29b9e99fea0c70722434d2dce2410e8848c1cf5e` with exit 0. HQ checked the exact diff against previously rehearsed `da97d2624486b783bf5c4f465b17fdcdea3af20a`: source manifest and product/vendor blobs are unchanged. Changes are the public new receipt, focused tests, census helper, harness option refusal and associated evidence/documentation.
+
+Actual final CLI privacy and harness behavior were independently checked at this final SHA and ACCEPTED. The immutable review is `f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70:WORKER_RETURNS/SOROK-S45-S47-INDEPENDENT-REVIEW-20261105-R1/`. It contains two focused CLI tests, explicit unsupported-option refusals and lawful harness PASS22/22. HQ reused this exact final-head runtime evidence and the preceding full receiving rehearsal, rather than claiming another fresh execution.
+
+No protected write or merge occurred. Next action belongs to the competent PRE-MAIN receiving owner: verify moving base and exact PR697 head, then merge only with explicit authority. Original native, B-context, Pyat and human holds remain. The final incremental worker attempts failed on retryable provider overload before executing; these Git checks were performed by HQ.
