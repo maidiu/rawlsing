@@ -1,0 +1,50 @@
+# PROGRAMMA PYAT — E41 / F2–F4 / GF1 / N10W / ACTOR JOINT RECOVERY, EIGHT PREPARED COMMISSIONS — CONTROL DOCKET 2026-11-05 R1
+
+**STATUS: DOCUMENTARY CANDIDATE PREPARED; 0/8 COMMISSIONS DISPATCHED, NO ACTIVE AGENTS CREATED BY THIS DOSSIER. PROGRAMMA remains USER_STOPPED, owner and native rights unissued.** This docket is a versioned work proposal attached to [draft PR #696](https://github.com/maidiu/rawlsing/pull/696) and [critical issue #695](https://github.com/maidiu/rawlsing/issues/695). It is **not** an executable launch order merely by being read. User must explicitly release and select editor/model/effort, and incumbent Pyat/Sorok + authorized source/actor owners must accept scope, check live branches and allocate unique workers. Independent reviewers are separate. Protected PRE-MAIN CAS integration requires its own authorized reviewer/merger.
+
+**Principal no-loss source:** `PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/E41_R41_R53_NO_LOSS_FUNCTION_CENSUS_20261105_R1.md` and original Trii D08/D12, U53A R00–R09 as already drafted **NOT** a duplicate new system. Current protected cut `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`. Prior original35 source rights, 35 U/Epre issuers, Sorok event authority, S2 runner and N11/N12 remain not granted.
+
+## Why eight *distinct* deliverables rather than a mega-commission
+
+| Packet / actual file | Specialized jurisdiction | Planned prerequisite and parallelism | Exact inputs / first useful receiver and reverse unlock | Present grade |
+| --- | --- | --- | --- | --- |
+| **C1** `01_INDEPENDENT_LOSSLESS_SUCCESSION_AND_FIRST_CONSUMER_COURT.md` | independent archive/current code scientific/mechanism comparison, NO code changes | **P0 parallel now** if user STOP lifted; no new source necessary | E41 31 ops ↔ actual protected E41 provider; J42/W41/P41, R53 RED, V550J/C4R2A; unlock C2/C3 exact scope, C5 and C8 no-duplicate acceptance, S04/S10 consumer ID. | Prepared only |
+| **C2** `02_R08_J42_P41_IDENTITY_NEGATIVE_HOSTILE_REPAIR.md` | engineer R08 request identity/value/state and actual E04 reader | **P0 parallel with C1 on pinned currentness if user permits**; C1's exact native reachability may narrow diff | S09.4/S10.2/S10.3, GAP041/043/044, ASTRA:N9/N10E→N10W; unlock honest joined service/N11 test chain. Independent review separate. | Prepared only |
+| **C3** `03_R01_R03_HETEROGENEOUS_SOURCE_TO_KWAY_NATIVE_JOIN.md` | engineer R01–R03: occurrence-aware source grammar, 2+ target I03/I05 actual joined path | **P0 parallel C2**, consume C1 exact reuse where applicable, no original source required for sourcefree proof | Existing B49/G50/I51 plus R53 RED; S02→S03→S04 F2/F3/F4 and full N10E; unlock real original frontier later only after issuers. | Prepared only |
+| **C4** `04_HYB_COMPACT_GROUPED_KWAY_QUERY_BENCHMARK.md` | physical engineering optimization October W03–W05 | **Parallel with C1–C3** if independently authorized S2 runner; sourcefree bench now, native only after source rights | Existing PR684 indexed I03, PR686 Arrow compact C11, ParquetC11Carrier/R5 codec; unlock economical scalable F1–F4 on first consumer without second semantic engine. | Prepared only |
+| **C5** `05_GF1_INDEPENDENT_S1S9_SCIENTIFIC_CONSUMER_ADJUDICATION.md` | **separate** GF1 descriptive pair and Field Forge owner options | **Parallel now**; S1–S9 not automatically signed, PR691 independent new-HEAD rereview distinct | S06.1/2 S-F5 GAP025–027; decide whether a GF1 extra pair relation has named consumer and how to avoid GT2 Q86 shadow, optional to primary F2/F4. | Prepared only |
+| **C6** `06_D1D9_ORIGINAL_SOURCE_EMPIRICAL_JOINT_SCIENCE.md` | competent original source/measurement/estimand/weights and F2/F4/position eligibility | **Parallel source/authority decision mining**; original S3 measurements only if actual positive source/host/purpose owner grant | S01–S04, M48 D1–D5/D9; unlock source-qualified F2/F4, N10E, N11 and potentially GF1 source-native (subject to separate owner). | Prepared only |
+| **C7** `07_SOROK_COPARENT_DYAD_REVERSE_INTERFACE_COURT.md` | independent Pyat→Sorok actor and partner-selection interface | **Parallel documentary** with C5/C6 but *must not* issue Sorok rights; Sorok determines actual actor implementation later | N9 AND N10E → N10W → N11/N12; parent/coparent network, social selection, actor RNG and lifecycle; unlock distinct Sorok C0–C12/A0–A5 design/development. | Prepared only |
+| **C8** `08_INDEPENDENT_PROGRAMMA_INTEGRATION_AND_82_EDGE_COLD_REVIEW.md` | genuinely independent PROGRAMMA guide/graph candidate cold receiving | **Can review current draft PR independently now** after user permission; any C1–C7 later returns separately receive; no self-review or protected edit | All existing 62 component/82 seam/49 GAP IDs, immutable 5-test law, exact first consumer, scoped status overlays; unlock protected CAS *candidate acceptance* only. | Prepared only |
+
+**Distinct roles:** C1, C5, C6, C7, C8 are separate scientific/source/forensic reviews and cannot automatically be authors/acceptors of C2/C3/C4. C2/C3/C4 each require separate *genuinely independent* reviewer for produced code, not C8 as blanket code-grade approver. C5 options return to actual GF1 source/meaning issuer; C6 to actual survey/source statisticians; C7 to Sorok/HQ. No agent is allowed to grant itself S2/S3 rights or accept own product.
+
+## Terminal priority ordering (dependencies, not generic urgency theater)
+
+`P0a` **TRUTH AND GENERALITY**: C1 no-loss source-current first-consumer / C2 R08 wrong-result+typed-negative RED / C3 R01–R03 arbitrary-source and multi-target/I05 joined RED / C8 independently verify first status overlay. These are parallel where their source cuts are genuinely separate and nonconflicting. The old C1 normal-case positive cannot waive R53 execution RED.
+
+`P0b` **MATERIAL SCALE**: C4 benchmark real PR684/PR686 indexed Arrow/Parquet compact path and compatible same-risk grouped queries; independent scientific C6 source/routing/weights decision classes in parallel, not held behind engineering bench. C5 GF1 decision in parallel; GF1 not universal F2/F4 execution prerequisite.
+
+`P1` **QUALIFIED NATIVE FIRST READER**: true authorized original-source U/Epre→C11/I03/I05→F2 inverse/F4 same-person joint→N10E→real N9 AND N10E N10W→N11 independent acceptance. Requires sources/permissions from C6 and code from C2/C3 only where five-test current diff proves necessary; no synthetic 35-source promotion.
+
+`P2` **ACTOR AND HUMAN**: C7 separate Sorok interface, then Sorok actor/dyad/mother/coparent choice and history only after qualified N12 decision and independently issued event/relationship/RNG rules. Does not block sourcefree parallel test engineering.
+
+## Material dependent edge graph, without adding new adopted edges
+
+Use the machine overlays in `05_ROADMAP/TERMINAL_F2F4_GF1_DEPENDENCY_AND_INVERSE_REACHABILITY_20261105_R1.jsonl` and `...STATUS_RECONCILIATION_20261105_R1.jsonl`, **not** this prose as a replacement for existing Astra `MUST/IF` predicates. Relevant existing core names:
+- `S-I03 / S-I05` → `S-F1F4` → `ASTRA:IF:N4:N10E:1` and `S-POSS` (where selected use requests it);
+- `S-F5` / `ASTRA:IF:N4:N5:0` optional Field Forge ingress, with `ASTRA:REQ:N5:N6` when selected N6 exists;
+- `S-SERVE` / `ASTRA:REQ:N9:N10W` **AND** `ASTRA:REQ:N10E:N10W` → `ASTRA:REQ:N10W:N11` → `ASTRA:REQ:N11:N12` → separate Sorok actor;
+- physical W03/P01 and W04/P02 feed exact C11 data read; W05/P03 feeds I03/first consumer; caching optimization is not a scientific query prerequisite.
+
+The graph's newly proposed *component-child adjacency* is an analytical hypothesis and contains source-scope conditional connections; independent C8 must verify it against accepted exact original 82-edge law rather than treating every transitive reachability row as an adopted mandatory DAG.
+
+## Definition of full-dossier completion
+
+1. All eight files and their immutable source references are present; 0 dispatch, no accidental user-stop release; real worker results cannot be inferred.
+2. All 62/82/49 existing identity universes and versioned source-cut grades preserved unchanged; later scoped positives and REDs recorded with branch/consumer/first fail.
+3. User receives finite GF1 S1–S9 and selected October cost/architecture tradeoffs; no implicit adoption.
+4. C8 independent cold reviewer returns per-record validity, repairs where required, current HEAD comparison, sourcefree vs S3 native separation, owner approval needed; only authorized protected CAS receiver can integrate.
+5. Future commissions are **not automatically scheduled**. Before actual launch check existing R00–R09 successors, R61/PR646/PR684/PR686, live #691 and original STOP, avoid duplicates.
+
+**Do not write to protected PRE-MAIN, change source/custody, launch Sorok, infer original35 all-wave readiness, or mark wrong-condition support as success.**
