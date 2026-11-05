@@ -173,3 +173,66 @@ def test_sourcefree_authority_refusal_and_identity_poison():
     assert refusal["decision_state"] == "CONSUMER_RELATION_IDENTITY_MISMATCH"
     assert refusal["downstream_value_produced"] is False
     assert refusal.get("result_hash") is None
+
+
+def test_current_i03_c11_sourcefree_actual_fact_to_gf1_consumer():
+    """Use current accepted C11 ingest/I03 execute, not only constructed native DTOs.
+
+    The inherited test helper creates real governed sourcefree releases and native
+    I03 output; no original35 source/measurement/science permission is asserted.
+    """
+    import importlib.util
+    from pathlib import Path
+    source_path = Path(__file__).with_name("test_pre553_empirical_query.py")
+    spec = importlib.util.spec_from_file_location("_gf1_current_i03_fixture", source_path)
+    assert spec is not None and spec.loader is not None
+    fixture = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fixture)
+
+    observations = []
+    for kind, rows in (
+        ("diagonal", [
+            {"id": "R00", "responses": {"X": 0, "Y": 0}},
+            {"id": "R11", "responses": {"X": 1, "Y": 1}},
+        ]),
+        ("mixed", [
+            {"id": "R00", "responses": {"X": 0, "Y": 0}},
+            {"id": "R01", "responses": {"X": 0, "Y": 1}},
+            {"id": "R10", "responses": {"X": 1, "Y": 0}},
+            {"id": "R11", "responses": {"X": 1, "Y": 1}},
+        ]),
+    ):
+        source = fixture._build_source(
+            "gf1-real-i03-" + kind, rows,
+            question_namespace="gf1-nonq86",
+        )
+        query_authority = fixture._query_authority("gf1-real-i03-" + kind)
+        predicate = fixture._branch_predicate(source, query_authority)
+        query = fixture._query(
+            source, query_authority, predicate, ("X", "Y"), tag="gf1-" + kind
+        )
+        execution = fixture._run(source, query_authority, predicate, query)
+        assert len(execution.facts) == 1
+        fact = execution.facts[0]
+        assert fact.typed_state == "SUPPORTED"
+        relation = produce_generic_native_pair_relation(
+            joint_fact=fact, joint_query=query,
+            conditioner_ref=source["qrefs"]["X"],
+            target_ref=source["qrefs"]["Y"],
+            producer_permission_ceiling=("GF1_SOURCEFREE_TEST",),
+            relation_permission_ceiling=("GF1_SOURCEFREE_TEST",),
+        )
+        observed = compute_pair_support_signature(relation)
+        assert observed["decision_state"] == "PAIR_SUPPORT_SIGNATURE_COMPUTED"
+        assert observed["read_relation_object_id"] == relation.object_id
+        assert observed["production_owner_commit"] is False
+        assert "Q86" not in relation.conditioner_source_native_variable
+        assert "Q86" not in relation.target_source_native_variable
+        observations.append(observed)
+
+    exact, mixed = observations
+    assert exact["separation_class"] == "EXACT_PAIR_SEPARATION"
+    assert exact["joint_support_total"] == 2
+    assert mixed["separation_class"] == "NO_PAIR_SEPARATION"
+    assert mixed["joint_support_total"] == 4
+    assert exact["result_hash"] != mixed["result_hash"]
