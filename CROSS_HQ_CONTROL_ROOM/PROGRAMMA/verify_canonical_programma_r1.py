@@ -135,7 +135,7 @@ for relative, array_name, n in (
 gap_path = required(PYAT + "05_ROADMAP/NEXT_R_GAP49_NEXT_DECISIONS.md")
 if gap_path.is_file():
     import re
-    found = set(re.findall(r"\\bGAP-\\d{3}\\b", gap_path.read_text(encoding="utf-8")))
+    found = set(re.findall(r"\bGAP-\d{3}\b", gap_path.read_text(encoding="utf-8")))
     expected = {f"GAP-{n:03d}" for n in range(1, 50)}
     check(found == expected, f"Pyat GAP01–49 identities changed: absent={sorted(expected - found)} unexpected={sorted(found - expected)}")
 
