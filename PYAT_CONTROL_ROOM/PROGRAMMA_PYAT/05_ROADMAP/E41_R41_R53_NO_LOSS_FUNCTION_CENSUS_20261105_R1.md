@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — E41 AND ENTIRE R41–R53 RELATED CAPABILITY SUCCESSION / CUSTODY CENSUS (2026-11-05, CANDIDATE)
 
+> **2026-11-05 R2 SOURCE-CURRENTNESS CORRECTION — controlling later evidence, not silent source replacement.** The R1 branch directory/asset census remains valuable, but prior statements that R01/R03/R08 source-neutral machinery needs to be built or that P41/J42 never enters the protected executable/test path are **historically too broad**. R01 and R03 accepted scoped sourcefree implementation blobs are on protected PRE-MAIN; the 118KB R08 accepted scoped binder is also present, though no other direct production importer was found in a 154-module lexical audit. Protected `pre553_universal_world_binding.py` dynamically `git archive` retrieves and executes historical P41; protected test retrieves and executes historical J42. Independent R118 repaired sourcefree world-conditioned service is branch-only. The [R2 exact lineage/first-consumer court](E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md) controls all current status interpretation. All prior source-cut REDs and N11 original35 holds remain intact.
+
+
 **Proof grade:** GitHub S0–S1 primary file+branch inspection; prior worker/test reports are cited as *reported* and not rerun in this review. **Source cut:** protected `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`. **Status:** isolated-branch accession candidate, not independent review, protected publication, native science/actor permission or worker launch. This inventory is a *no-loss function and source locator*, not a blanket evidence of all repository branches. R52 J52/W52 USER_STOP preserved.
 
 ## 1. Where E41 actually is, and why that matters
