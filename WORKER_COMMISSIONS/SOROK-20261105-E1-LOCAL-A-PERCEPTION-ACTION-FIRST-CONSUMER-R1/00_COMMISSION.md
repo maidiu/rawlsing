@@ -1,0 +1,55 @@
+# LAUNCH — SOROK E1-A1 — ACTOR-A E1-LOCAL SOURCE → S35 FIRST CONSUMER → LATER CAUSAL CONSEQUENCE
+
+**AGENT_TYPE:** I3+ qualified sourcefree Sorok actor/product integration implementer, distinct from incumbent HQ, original science/actor/source issuer, independent reviewer, and protected PRE-MAIN receiving owner.
+**REPOSITORY:** `maidiu/rawlsing` PRIVATE.
+**SINGLE_AGENT_FULL_DELIVERABLE:** YES.
+**STATUS:** PHYSICALLY PREPARED, **NOT LAUNCHED**. An issue or branch does not start a worker. User selects/verifies existing editor, model, effort, harness and host; do not silently change them.
+**EXECUTION:** S0–S1 authenticated GitHub/source, and S2 *only* in genuinely authorized isolated Python/pytest engineering runtime. No original respondent/person data or S3/native/human execution. If S2 runner unavailable, DO NOT claim implementation passed: return `NOT_RUN` and the exact blocker.
+**PROTECTED START:** `integration/pre-main-reconciliation-r1@8ffec40a6924848a49f95950aa9ce28c27ee3ec1`, following merged #685; verify moving head before work.
+**ISOLATED BRANCH:** `agent/sorok-e1-local-a-perception-action-consumer-20261105-r1`; confirm its current HEAD, writer lease and active sessions before writing. Branch prepared from protected 8ff; worker must not edit protected or another actor's branch.
+**AUTHORIZED NEW WORK AREA:** `WORKER_RETURNS/SOROK-20261105-E1-LOCAL-A-PERCEPTION-ACTION-R1/**`, plus only an explicitly agreed narrowly necessary adapter/test path under an exclusive writer lease. Do not copy the entire actor/runtime history, mutate frozen tests, rewrite original CAN/ADP, or add new authority/guide registries.
+**MODEL/EDITOR:** incumbent/user-selected configuration, actual runtime identity to be recorded, not assumed.
+
+## Immediate product problem (not new architecture)
+
+Read the **already canonically published PROGRAMMA Sorok 06/10/14/15** at current PRE-MAIN before changing code; use exact source locators, not a fresh 144/38/branch census. A sourcefree JOIN-E encounter and a guarded same-root event reader exist. The demonstrated first absent positive is **an event-local, independently produced actor A perception of admitted E1 and separately sourced performed/omitted actor A activity**, actually consumed by S35 C9 response and a later nontrivial actor/world/user result. The existing S35 `evaluate_occurrence(controlled=True)` manufactures controlled input receipts from parameters and its test explicitly says `actual_a_producer = NONE_VERIFIED`. Replacing a controlled fixture with an author-labeled "actual" receipt is FAILURE.
+
+### Immutable sources to inspect / disposition before building
+
+- Protected PROGRAMMA `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md`, `10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md`, `14_...jsonl`, `15_...jsonl` at `8ffec40...`.
+- **JOIN-E qualified sourcefree fork/encounter:** `7bf2da302996491ddf34b9a039fea47ac982d135:WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py` and `joined/refusal.py`; old JOIN-V scoped acceptance `4387dc818a96fda2d5271672505fbd9da1059703`. Later 5e6367/d7bb source cuts have distinct proof limits; never substitute unreviewed head and inherit 7bf verdict.
+- **S35 exact existing first reader:** `eb489dcaac4fb6362b8a3ed1d78d1f1654950563:WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/bridge/occurrence_consumer.py` including `read_occurrence`, `build_context`, `evaluate_occurrence`; `bridge/access.py` including receipt constructors and source/grade/clock validators; `tools/occurrence_consumer_proof.py`, `tests/test_occurrence_consumer.py`. Mixed-root scoped independent review of eb489 exists; do not label full causal actor chain accepted.
+- **Historical A/B/history sources:** `64fec28c374d8f77fb0b412d0c934d798ede03e8:WORKER_RETURNS/SOROK-20261021-R31J-GM01-PREC9-SOURCE-PERSON-R1/r31j/{build,pre_c9,product}.py`, `r29p/{actor_variants,product}.py`; original BP2 `5b3e6577400ea1d88971ae6b48e41a118b8059ae:WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1`; M35 first-class B source and its independently scoped reviewer if identified by existing guide.
+- **Current user-facing reuse:** existing WP-19 code (source cut `3c4df43f813cd0727feff04f620aa0bbd9a63026`) and S11 interface `faec7ce909c54664e85320534bdf744b9bc47d37:WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json`; CP-A5 only at its own sourcefree read boundary.
+- **Adverse predecessor:** RRIF-R2 `598d9e9eaba5143950c63317705fd09104fbf463` independently `REVISE_MATERIAL_DEFECTS` at `8090a1ea308ab17f302f55bb2639c3e4cd774c7a`; c784 actor_meta/ACK/root mismatch; F2 partial separate root. Do not unify by renaming IDs.
+
+## Concrete selected engineering task
+
+1. **Prove/reuse before writing.** Search the *listed* source symbols and actual first call sites for an existing E1-local A producer. Decide for each necessary source `ALREADY_CANONICAL | SELECTIVELY_ADOPT | ADAPT_REPAIR | HISTORICAL_HOLD | REJECTED`, with exact SHA and reason. If a same-scope, executed, independently accepted producer already exists, use it and test it: do not invent one.
+2. **Produce independently conditioned A-local access at E1.** Consume already-committed JOIN-E/BP2 C8/E1 event and A's sourcefree persisted life/knowledge/scene/time. Only report perception if a mechanically traceable actor-access path exists. No actor omniscience, no copy of public user's ATTEND as private A perception, no inference of A knowledge from B's event alone. Reuse S35 receipt schema `S35_A_LOCAL_PERCEPTION_RECEIPT@1`, protected root/branch/actor/source and `JOIN_E_E1_ACTOR_EVENT_CLOCK`.
+3. **Produce separate A activity.** A sourcefree actor policy/available historical producer must decide and *commit* an action or omission after that event, with its own rule/operation, causal order and receipt `S35_A_OWNED_ACTION_OCCURRENCE@1`. Keep the rule `TEST_ONLY_MECHANICAL_SOURCEFREE` unless original competent CAN/ADP issuer separately acts. No user-word-triggered canned A choice, no prewritten response presented as performed action. Do not relabel R31J's C12 `10` clock as E1 `242`; use explicit clock domains and a genuine ordering/conversion receipt or fail-closed.
+4. **Wire actual first consumer.** Add the smallest version-compatible adapter from those two real sourcefree producers into S35 `read_occurrence → build_context → actor access validation → response`. Preserve already-admitted E1; no second journal append, no new C9/C12 owner, no duplicate store or unqualified acquired practice. Existing S35 `S35_GRADE_CONTROLLED`, `actual_actor_input=false` remain honest for sourcefree evidence; `S35_GRADE_QUALIFIED` and actual owner resolver are strictly FORBIDDEN unless competent original owner issues that exact resource.
+5. **Tie to a later user-relevant effect.** Whenever lawful, prove an *independent later action/omission* consumes the A receipt/response and causes an actual later C12/E2 and WP-19/CP-A5 observable to differ, including refused/unknown options and next real user choice. If current original rule or actual later event producer makes this impossible, preserve the earlier positive and identify exactly which writer/consumer/gate remains held; do not splice unrelated old E-help contrast as new A→E2 proof.
+6. **No arbitrary source transplant.** Pin chosen source blobs, adapter import closure, actor/meta/branch/root/source identity, event vs branch clock, ACK/anchor and first actual importer. Existing 7bf acceptance does not certify newer 598d/c784/F2. If no compatible writer-reader tuple is selected, execute the still-useful sourcefree A→S35 slice with truthful C12 integration HOLD.
+
+## Real S2 tests and decisive fault matrix
+
+- Intact independently produced A **perception and action** on the same-root admitted E1 → non-vacuous S35 consumer response. Record source producer symbols, actor history IDs, receipts, exact clock order, actual downstream field assertions.
+- Change only B's **performed** material operation/quantity with A prehistory fixed; independently recompute A access/action and consequential later reader. If A cannot access B's event, it must remain `NOT_WITNESSED/UNKNOWN`, not become guaranteed compliance.
+- Change A history/access with identical E1 and B material source; compare actual behavior or justified no-effect. Include refusal and `NO_OBSERVED_ACTION`, no invented `PRACTICE`.
+- Source-edge severance **RED** using the SAME asserted consumer, restore exact source **PASS**; inject foreign root/branch/actor/source/event, replay/stale time, C9/C12 mixed-cut, invalid actor_meta and double E1. Fail closed with typed results, not an import error or hash-only warning.
+- Cold reopen in a fresh process with bytes-before/after proving read-only; test actor-private input never leaks in public WP-19 projection, and user `ATTEND` cannot rewrite world/actor causality.
+- User-controlled `DO` is recorded as ATTEMPT and admitted effect only when actual world actor code performs it; exit/wait/return remain typed unsupported rather than fabricated.
+- Preserve relevant unchanged predecessor tests, nonvacuous assertions and historical REDs; do not modify frozen expected outputs just to pass. Report wall/RSS where cheaply observable without made-up native scaling.
+
+## Required terminal outputs
+
+One genuinely executable selected-code return at exact 40hex commit, with minimal installation instructions and actual `pytest`/CLI commands, recorded host/version/exit code, positive→severed RED→restored PASS, source manifests, selected first reader and observable product effect. Include independent reviewer request at exact final SHA, not self-acceptance. Separate ENGINEERING, SCIENCE and AUTHORITY verdicts and explicit `DONE / NOT_DONE / NEXT_ENGINEERING / NATIVE_SCIENCE_HOLD / PYAT_CONTRACT / SELECTIVE_PREMAIN_RECEIVING`.
+
+**No S2 = no claimed executable advance.** Return best possible exact bounded code/patch and explicit `NOT_RUN` with required runner, or stop at technical specification if chosen source rights prevent implementation. Do not launch reviewer yourself unless the user independently dispatches it.
+
+## Pyat external interface (do not implement Pyat here)
+
+E001 `C0→Sorok C11` demands qualified original Pyat selected-world release with source/release/version/rights, as-of, actor-relevant feasible situations, contradictory and valid-empty possibilities, reproducible parent source identity and revocation. E002 `C11→C4` demands actor genealogy and qualified material position/event binding through an identified Sorok first importer. The empirical pre553 C11 façade alone is NOT this native weld. Provide precise typed proposed input/output and known unresolved authorizations to Pyat/PRE-MAIN separately, not a new Pyat engine.
+
+**STOP:** after one coherent selected-source, executed sourcefree A→S35→later consequence slice (or the first precisely proven inability and complete executable patch chain), and return. NO new W1–W8 census, no Sorok constitution, no mass history import, no 144/38 task fan-out, no simulated native generated person or human Gate5.
