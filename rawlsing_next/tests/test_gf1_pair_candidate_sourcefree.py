@@ -236,3 +236,101 @@ def test_current_i03_c11_sourcefree_actual_fact_to_gf1_consumer():
     assert mixed["separation_class"] == "NO_PAIR_SEPARATION"
     assert mixed["joint_support_total"] == 4
     assert exact["result_hash"] != mixed["result_hash"]
+
+def _actual_asymmetric_i03_fact():
+    """Build a real C11 release and run actual I03 on asymmetric X/Y rows."""
+    import importlib.util
+    from pathlib import Path
+    source_path = Path(__file__).with_name("test_pre553_empirical_query.py")
+    spec = importlib.util.spec_from_file_location("_gf1_asymmetric_fixture", source_path)
+    assert spec is not None and spec.loader is not None
+    fixture = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fixture)
+    source = fixture._build_source(
+        "gf1-asymmetric-native-i03",
+        [
+            {"id": "R00A", "responses": {"X": 0, "Y": 0}},
+            {"id": "R00B", "responses": {"X": 0, "Y": 0}},
+            {"id": "R10", "responses": {"X": 1, "Y": 0}},
+        ],
+        question_namespace="gf1-nonq86",
+    )
+    authority = fixture._query_authority("gf1-asymmetric-native-i03")
+    predicate = fixture._branch_predicate(source, authority)
+    query = fixture._query(
+        source, authority, predicate, ("X", "Y"), tag="gf1-asymmetric"
+    )
+    execution = fixture._run(source, authority, predicate, query)
+    assert len(execution.facts) == 1
+    fact = execution.facts[0]
+    assert fact.typed_state == "SUPPORTED"
+    assert source["qrefs"]["X"] != source["qrefs"]["Y"]
+    return fact, query, source["qrefs"]["X"], source["qrefs"]["Y"]
+
+
+def test_actual_i03_asymmetric_forward_and_reverse_denial_both_grant_states():
+    """Actual asymmetric X/Y supports forward replay, never a mislabeled reverse."""
+    from rawlsing_next._gf1_candidate.generic_native_pair_relation import REVERSE_PAIR_GRANT_ID
+    fact, query, x_ref, y_ref = _actual_asymmetric_i03_fact()
+    permissions = ("GF1_SOURCEFREE_TEST",)
+    forward = produce_generic_native_pair_relation(
+        joint_fact=fact, joint_query=query,
+        conditioner_ref=x_ref, target_ref=y_ref,
+        producer_permission_ceiling=permissions,
+        relation_permission_ceiling=permissions,
+    )
+    result = compute_pair_support_signature(forward)
+    assert forward.operation_role_order == "FORWARD_NATIVE_ORDER"
+    assert result["decision_state"] == "PAIR_SUPPORT_SIGNATURE_COMPUTED"
+    assert result["support_vectors"] == {
+        "0": {"0": 2, "1": 0}, "1": {"0": 1, "1": 0},
+    }
+    assert result["joint_support_total"] == 3
+    assert result["separation_class"] == "NO_PAIR_SEPARATION"
+    assert replay_generic_native_pair_relation(
+        forward, joint_fact=fact, joint_query=query
+    )["matches_original"]
+    # Both forms of reverse request are typed producer refusals. No relation is
+    # returned for the consumer to hash or misclassify.
+    for grant in (None, REVERSE_PAIR_GRANT_ID):
+        with pytest.raises(GenericNativePairError, match="REVERSE_PAIR_OPERATION_NOT_SUPPORTED"):
+            produce_generic_native_pair_relation(
+                joint_fact=fact, joint_query=query,
+                conditioner_ref=y_ref, target_ref=x_ref,
+                producer_permission_ceiling=permissions,
+                relation_permission_ceiling=permissions,
+                reverse_pair_grant=grant,
+            )
+
+
+def test_actual_i03_empty_permissions_refuse_before_consumer():
+    """None retains default, explicit empty and empty producer never issue values."""
+    from rawlsing_next._gf1_candidate.generic_native_pair_relation import (
+        GenericPermissionWideningError,
+    )
+    fact, query, x_ref, y_ref = _actual_asymmetric_i03_fact()
+    permissions = ("GF1_SOURCEFREE_TEST",)
+
+    def produce(producer=permissions, relation=permissions):
+        return produce_generic_native_pair_relation(
+            joint_fact=fact, joint_query=query,
+            conditioner_ref=x_ref, target_ref=y_ref,
+            producer_permission_ceiling=producer,
+            relation_permission_ceiling=relation,
+        )
+
+    granted, default = produce(), produce(relation=None)
+    assert granted.relation_permission_ceiling == permissions
+    assert default.relation_permission_ceiling == permissions
+    assert default.object_id == granted.object_id
+    assert compute_pair_support_signature(granted)["decision_state"] == (
+        "PAIR_SUPPORT_SIGNATURE_COMPUTED"
+    )
+    for no_grant in ((), []):
+        with pytest.raises(GenericPermissionWideningError, match="GF1_RELATION_PERMISSION_EMPTY"):
+            produce(relation=no_grant)
+    for relation in (None, (), permissions):
+        with pytest.raises(GenericPermissionWideningError, match="GF1_PRODUCER_PERMISSION_EMPTY"):
+            produce(producer=(), relation=relation)
+    with pytest.raises(GenericPermissionWideningError):
+        produce(relation=("GF1_SOURCEFREE_TEST", "UNGRANTED"))

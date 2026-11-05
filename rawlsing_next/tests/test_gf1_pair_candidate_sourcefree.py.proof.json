@@ -22,6 +22,28 @@
         "old": "winners.append([t for t in target_order if counts[c][t] > 0])",
         "new": "winners.append(list(target_order))"
       }
+    },
+    {
+      "claim_id": "PYAT_GF1_R1_ACTUAL_I03_ASYMMETRIC_REVERSE_DENIAL_SEVERANCE",
+      "actual_consumer": "current native C11/I03 asymmetric EmpiricalFact -> GF1 producer and computed forward consumer; reverse requests must stop before consumer",
+      "claimed_dependency": "Reverse request with or without legacy TEST_ONLY grant is refused; deleting reverse-role denial would expose mislabeled forward counts, violating current native asymmetric refusal",
+      "positive_node": "rawlsing_next/tests/test_gf1_pair_candidate_sourcefree.py::test_actual_i03_asymmetric_forward_and_reverse_denial_both_grant_states",
+      "fault": {
+        "path": "rawlsing_next/_gf1_candidate/generic_native_pair_relation.py",
+        "old": "raise GenericNativePairError(\"REVERSE_PAIR_OPERATION_NOT_SUPPORTED\")",
+        "new": "operation_role_order = \"REVERSE_GRANTED\""
+      }
+    },
+    {
+      "claim_id": "PYAT_GF1_R2_ACTUAL_I03_EXPLICIT_EMPTY_CEILING_DENIAL_SEVERANCE",
+      "actual_consumer": "current C11/I03 EmpiricalFact -> GF1 producer permission gate -> no consumer-readable value on explicit no-grant",
+      "claimed_dependency": "An explicitly empty relation permission must be refused rather than filled from the producer permission ceiling; removing its refusal must break the empty-ceiling test",
+      "positive_node": "rawlsing_next/tests/test_gf1_pair_candidate_sourcefree.py::test_actual_i03_empty_permissions_refuse_before_consumer",
+      "fault": {
+        "path": "rawlsing_next/_gf1_candidate/generic_native_pair_relation.py",
+        "old": "raise GenericPermissionWideningError(\n            \"GF1_RELATION_PERMISSION_EMPTY: no relation grant\")",
+        "new": "rel_perm = producer_perm"
+      }
     }
   ]
 }

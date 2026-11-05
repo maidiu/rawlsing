@@ -312,11 +312,9 @@ def produce_generic_native_pair_relation(
     """Produce a NEW generic two-binary-item PAIR relation from REAL native objects.
 
     ROLE BINDING IS OWNER-GATED.
-    The native query fixes a two-component order. By default CONDITIONER is the
-    first native component and TARGET the second. Requesting the REVERSE
-    (target|conditioner swap, i.e. the authorized reverse X|Y operation) is a
-    DIFFERENT operation and is refused unless an exact separate
-    ``reverse_pair_grant`` is presented. A swap without that grant never works.
+    The native query fixes a two-component order. This TEST_ONLY candidate
+    implements CONDITIONER=first and TARGET=second only. Reverse native
+    roles are unimplemented and refused even with the legacy TEST_ONLY grant.
     """
     fs = _semantic_fields(joint_fact)
     qs = _semantic_fields(joint_query)
@@ -383,16 +381,11 @@ def produce_generic_native_pair_relation(
     if want == native_order:
         operation_role_order = "FORWARD_NATIVE_ORDER"
     elif want == (native_order[1], native_order[0]):
-        # the reverse operation: legal ONLY under its own separate grant
-        if not reverse_pair_grant:
-            raise GenericNativePairError(
-                "REVERSE_PAIR_GRANT_REQUIRED: target/conditioner swap refused without own authority")
-        if reverse_pair_grant != REVERSE_PAIR_GRANT_ID:
-            raise GenericNativePairError("REVERSE_PAIR_GRANT_UNKNOWN")
-        operation_role_order = "REVERSE_GRANTED"
+        # GF1-R1: never relabel forward counts as reversed facts.
+        # Legacy TEST_ONLY grant is not authority to invent transpose semantics.
+        raise GenericNativePairError("REVERSE_PAIR_OPERATION_NOT_SUPPORTED")
     else:
         raise GenericNativePairError("query target role/order is not a native component permutation")
-    qt = want
     comps = _sequence(spec.get("components"), "target components")
     if len(comps) != 2:
         raise GenericNativePairError("generic PAIR requires exactly two target components")
@@ -485,7 +478,15 @@ def produce_generic_native_pair_relation(
 
     eligible_total = int(fs.get("raw_denominator_support") or 0)
     producer_perm = tuple(sorted(set(producer_permission_ceiling)))
-    rel_perm = tuple(sorted(set(relation_permission_ceiling or producer_perm)))
+    if not producer_perm:
+        raise GenericPermissionWideningError(
+            "GF1_PRODUCER_PERMISSION_EMPTY: no producer grant")
+    # None alone means the documented default; an explicit empty is no grant.
+    rel_perm = (producer_perm if relation_permission_ceiling is None
+                else tuple(sorted(set(relation_permission_ceiling))))
+    if not rel_perm:
+        raise GenericPermissionWideningError(
+            "GF1_RELATION_PERMISSION_EMPTY: no relation grant")
 
     fields = dict(
         typed_state=typed,
