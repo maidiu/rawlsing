@@ -28,6 +28,12 @@
 - **Q86 GT12**: intentionally fixed source-specific `Q86B→Q86A`; the alternative-pair mislabel risk merits a targeted reachability test before wider production exposure, not a whole-repo census.
 - **Sorok**: LIVE-02, 7bf scoped join, 598d independent RED and later candidate roots are not equivalent; native C9/C12 and developing actor not auto-promoted.
 
+## Exact protected-guide preservation repair and inherited CI boundary
+
+This candidate originally passed the new count-based canonical-tree checker while accidentally dropping the protected November 3 NEXT-R source/consumer/locator sections from 13 Pyat guide files. The correction at [`2dd8308ac3e28ab5e46390b7bf1330f4c3a078b6`](https://github.com/maidiu/rawlsing/commit/2dd8308ac3e28ab5e46390b7bf1330f4c3a078b6) restored nine exact PRE-MAIN blobs and made four additive unions that retain *all* protected text plus new PSR1/Field Forge addenda. The source-preservation anchor checks are now part of `verify_canonical_programma_r1.py`. They prove preservation of selected documentary anchors, not independent correctness or enduring currentness.
+
+The GitHub canonical-tree Action passes on that repair commit. The separate **Rabochii Governed Bounded Court** failed 3/147 tests on that cut: pinned FIABC/LiTS file-identity contracts expected older blobs for `rawlsing_next/_pre553_query_eval.py` and `rawlsing_next/pre553_candidate_c_production_binding.py`; the three failures involved `test_fiabc_w3_i04_runtime_packaging_rebind.py` and `test_fiabc_final_preflight_fanin.py`. Relevant production and test blobs are *identical to protected base `f58c8400`*; this PR introduces no production changes. This does **not** make the failed checks harmless: a qualified existing owner must reconcile them with the actual accepted code/manifest history, not silently repin stale scientific/proof authorities. No code or proof-identity correction is attempted here.
+
 ## The precise closeout gate, with no new administrative theater
 
 1. **One guide convergence decision for each jurisdiction:** confirm protected shared law unchanged in scope; parse original 62 Pyat component IDs, 82 seams, 49 GAP, 144 Sorok functions and 38 seams, verify new source addenda and original negative controls. Confirm actual competing updates (Pyat selected status fields/README; Sorok 06/10/13 now source-merged without native promotion), not all branches again.
