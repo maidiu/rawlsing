@@ -17,7 +17,7 @@
 | Pyat Field Forge R2, GF1, post-FF mechanisms | `a04db861cf263a049c9d82cc7074cba84b5ac998`, parent `dc50d002d4d5f1c748866ee89ac70531f73a3a44` | 19 source/section blobs plus joined README | The protected CAS1 updates to 62/82 are preserved byte-identically; post-FF candidate statements require separate scoped owner/consumer review |
 | Cross-program original Pyat 26-mechanism receive | `f9907c1d5b0eb8053923891397d7d5a173bef005` | Exact source JSONL preserved | No native joined Pyat→Sorok actor consumer claimed |
 | Sorok W8 whole guide and post-FF actor receipt | `93bce9b912b1d26a7d3631519eee01092ed81625` | Whole guide subtree installed as candidate | Native C9/C12/Rule A/T source and actor rights held |
-| Sorok LIVE/COVER, first reader and 38 seams | `9ff187f42d476c6751b4cb14249ab29a7a5ed315` | Select 00_HQ/01/07/08/09/14/15 grafted | **06/10/13 semantic versions not line-reconciled**; compare only these three collisions |
+| Sorok LIVE/COVER, first reader and 38 seams | `9ff187f42d476c6751b4cb14249ab29a7a5ed315` | Select 00_HQ/01/07/08/09/14/15 grafted | 06/10 unique additive blocks mechanically reconciled; 13 PS exact-suffix extension of LIVE; independent product acceptance still held |
 | Sorok original 26-mechanism receive | `93f1997f7cd151f191d5e40e2605920c4e76494b` | Original source JSONL preserved with distinct filename | All full native seam JOINs still held |
 | Pyat and Sorok SR-01 classification overlays | `ee68062789fe55ebac0255060039c756a8d36b30`, `37915a47ed3e33a71ad8334c0aa505f5d65796ca` | Referenced as historical evidence, **not promoted to work queues** | No automatic independent review just to consume navigation evidence |
 
@@ -30,7 +30,7 @@
 
 ## The precise closeout gate, with no new administrative theater
 
-1. **One guide convergence decision for each jurisdiction:** confirm protected shared law unchanged in scope; parse original 62 Pyat component IDs, 82 seams, 49 GAP, 144 Sorok functions and 38 seams, verify new source addenda and original negative controls. Resolve only actual competing updates (Pyat selected status fields/README; Sorok 06/10/13), not all branches again.
+1. **One guide convergence decision for each jurisdiction:** confirm protected shared law unchanged in scope; parse original 62 Pyat component IDs, 82 seams, 49 GAP, 144 Sorok functions and 38 seams, verify new source addenda and original negative controls. Confirm actual competing updates (Pyat selected status fields/README; Sorok 06/10/13 now source-merged without native promotion), not all branches again.
 2. **One current-first-consumer challenge** for any new authoritative status or code selection: controlling requirement, existing real ABI/source, positive/negative, issuer/right and relevant reviewer. Historical classification cannot create a work order. This is existing three-court operation, not a fourth constitution.
 3. **Competent protected owner CAS** against actual latest protected HEAD, with no overwrite of concurrent Pyat/Sorok writers. After receiving, confirm this root README and both full guides open directly on protected PRE-MAIN. Do not claim S2/S3 for a documentary copy.
 4. **Return disposition before retirement:** `RECEIVED_AT_SCOPE`, `HOLD_AS_IMMUTABLE_EVIDENCE`, `REJECT`, or `SUPERSEDED`, with canonical path or exact historical SHA. Worker completion never equals publication. Preserve unique code and negative evidence; branch deletion is optional follow-on after proven reachability and no active PR/lease.

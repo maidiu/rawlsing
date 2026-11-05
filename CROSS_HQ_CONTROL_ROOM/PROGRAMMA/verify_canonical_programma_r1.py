@@ -94,6 +94,18 @@ for label, rel in (
         check("CURRENT PROTECTED STATUS" in p.read_text(encoding="utf-8")[:1600],
               label + " front door retains misleading historical candidate status")
 
+for rel, snippets in (
+    (SOROK + "06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md",
+     ("## Post-W8 source-qualified original-product proof", "## B occurrence", "## PSR1 actual")),
+    (SOROK + "10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md",
+     ("Source-qualified post-W8 work-now", "## Post-cut work now", "## PSR1 bounded work-now additions")),
+):
+    f = ROOT / rel
+    if f.is_file():
+        content = f.read_text(encoding="utf-8")
+        for marker in snippets:
+            check(marker in content, f"{rel}: lost combined LIVE/PS receiving marker {marker}")
+
 if errors:
     for error in errors:
         print("FAIL", error, file=sys.stderr)
