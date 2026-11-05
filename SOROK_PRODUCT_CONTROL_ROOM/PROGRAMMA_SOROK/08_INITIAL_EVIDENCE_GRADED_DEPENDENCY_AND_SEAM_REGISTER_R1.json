@@ -7959,5 +7959,107 @@
       "owner": "JOIN-E/C9R/C12 engineering owners for timeline/read contract; A source owner for actual perception/action",
       "next_action": "Consume exact admitted occurrence without readmission; qualify A perception and action separately.",
       "conditional_unlock": "Same-root C9 sourcefree response feeding later E2, subject to proof and review"
-    }
+    },
+  "hq_647_incremental_20261105": {
+    "baseline": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+    "decision": "00_HQ_WRITE_THROUGH_DECISION.md#s45-s47-incremental-receiving-2026-11-05",
+    "status": "CANDIDATE_PENDING_PROTECTED_INTEGRATION",
+    "relation_preserved": "O15:LOCAL_GUIDE:LATER_E2_READER@VERIFY requires C9:LOCAL_GUIDE:C9R_ACCESS_BRIDGE@BUILD",
+    "sources": [
+      {
+        "commit": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+        "tree": "5679c54c15ab9b976bbc100f223acaee02773731",
+        "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+        "blob": "7f6a23e2f2883b8d7e05947e30cdd36d1a44e272",
+        "role": "historical product import closure; 55 author tests"
+      },
+      {
+        "commit": "fa0a1b14e96c86abe9b764c2f5ee8a484cbe83a5",
+        "harness_commit": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
+        "tree": "a51bfeb2ffccc0439d412d2f4f972a1aa1afdae8",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/00_RETURN.md",
+        "blob": "d65a6a06d2dacfd8e0db3e5762c2e409eaf5ed88",
+        "role": "historical causal harness; 22 checks"
+      },
+      {
+        "commit": "39ff2c2d479d8ad71c156b01c168894527a486e4",
+        "tree": "41d6cc41dcd132998110d7c5f90cb5084e4c14a7",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/00_RETURN.md",
+        "blob": "95b89d8a80c4229c5ac2883d97a952ecc64f66b8",
+        "role": "historical projection/CLI; 11 projection + 21 S45 author tests"
+      }
+    ],
+    "engineering": "AUTHOR_EXECUTED_SOURCEFREE_TEST_ONLY",
+    "independent_review": "ACCEPT_SCOPED_TEST_ONLY@da97d2624486b783bf5c4f465b17fdcdea3af20a by ses_e526dc569ffe67E2MTl0k6Y38V; FOCUSED_CLOSURE_PENDING_FOR_41bf45813fd0adeffd9b54e1306c2022abe96514",
+    "integration": "codex/sorok-s45-s47-closure-20261105-r1@41bf45813fd0adeffd9b54e1306c2022abe96514; PR697_DRAFT_NOT_MERGED",
+    "native_or_human_grant": false,
+    "record_effect": "S45-S47 product/harness and final integration add same-root event-local C9, actual-versus-scheduled, restore and cold evidence; B-source 3aec confirms identity/access only. Original dependency, G-O15 HOLD and prior disposition remain unchanged.",
+    "preserved_holds": [
+      "B current-owned context and independent counterpart NOT_VERIFIED; historical S48-S52 cut grades preserved",
+      "CAN008 Rule A not issued",
+      "CAN011 O05 acquired practice / O07 evaluated NO_CHANGE not issued",
+      "native C8/C9/C12/ADP not issued",
+      "Pyat E001/E002 unchanged",
+      "human S11/A5 Gate4/Gate5 not run",
+      "A producer remains closed duplicate #690; not relaunched"
+    ],
+    "historical_cut_grades_preserved": true,
+    "accepted_integration": "da97d2624486b783bf5c4f465b17fdcdea3af20a; ACCEPT_SCOPED_TEST_ONLY by ses_e526dc569ffe67E2MTl0k6Y38V; 11 projection tests, 22 causal checks, cold/privacy/wrong-root",
+    "focused_fix": "41bf45813fd0adeffd9b54e1306c2022abe96514; two focused privacy tests, 22 causal checks; FOCUSED_INDEPENDENT_CLOSURE_PENDING",
+    "pull_request": {
+      "url": "https://github.com/maidiu/rawlsing/pull/697",
+      "state": "DRAFT_NOT_MERGED"
+    },
+    "b_source_disposition": {
+      "commit": "3aec2a2740f9e6ebebcf1576777aff5aff96c5e1",
+      "identity_access": "PRESENT",
+      "current_b_owned_context": "MISSING",
+      "independent_counterpart": "MISSING",
+      "checks": 20,
+      "focused_hold_tests": 7,
+      "historical_cut_grades_preserved": true
+    },
+    "integration_sources": [
+      {
+        "commit": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+        "tree": "65d7083a774ad4d3415f38382f61871b14369947",
+        "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+        "blob": "24ab1b1de4a34e1b5a84c72f44342da72b3decce",
+        "role": "final integration; independently ACCEPTED scoped TEST_ONLY by ses_e526dc569ffe67E2MTl0k6Y38V; 11 projection tests, 22 causal checks, cold/privacy/wrong-root"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "tree": "29b9e99fea0c70722434d2dce2410e8848c1cf5e",
+        "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+        "blob": "2c8870498b992f1c6d8fc6d283f74b27decfe30f",
+        "role": "review fixes; two focused privacy tests and 22 causal checks; focused independent closure PENDING"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/FOCUSED_FIXES.json",
+        "blob": "fa4669e55bb4579cdf24bda47fe40fde14c7a8e3",
+        "role": "focused privacy tests 2 passed; harness package-none 22/22; accepted review historical for this fix commit"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/00_RETURN.md",
+        "blob": "bf9cf13728dde4e293905d279bd856b16136149f",
+        "role": "package-mode harness 22 checks; focused closure pending"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/00_RETURN.md",
+        "blob": "d6695cefa46b02378ad1423de1f2054b47e917de",
+        "role": "projection package integration; focused closure pending"
+      },
+      {
+        "commit": "3aec2a2740f9e6ebebcf1576777aff5aff96c5e1",
+        "tree": "7fe2a4a01813e91acfe3ba97143097b3e2578a52",
+        "path": "WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/00_RETURN.md",
+        "blob": "ae01fabb5c900dfbe9855eec7f075c0c464a91cf",
+        "role": "B identity/access present; current B-owned context and independent counterpart missing; 20 checks, 7 focused HOLD tests"
+      }
+    ],
+    "newer_facts": "Final integration da97d262 was independently ACCEPTED scoped TEST_ONLY by reviewer session ses_e526dc569ffe67E2MTl0k6Y38V (11 projection tests, 22 causal checks, cold/privacy/wrong-root). Review fixes 41bf4581 add two focused privacy tests and 22 causal checks; focused independent closure is PENDING. Draft PR #697 is NOT merged. B-source disposition 3aec2a27 shows identity/access present but current B-owned context and independent counterpart missing (20 checks, 7 focused HOLD tests); historical cut grades preserved."
+  }
 }

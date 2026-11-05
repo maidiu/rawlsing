@@ -35,6 +35,12 @@
 
 **Historical-but-unwired:** W7-C regraded 39 existing packages rather than commissioning 39 builds; W7-S 50 D002 scenarios and D008/D009 source constitutions remain available; W8-N's 48 remaining index-only sources are not a standing retrieval fleet. S13, S14 and human responsibilities advance at their own grades without waiting for C12 native closure. Actual owner authority and time/cost evidence cannot be inferred from document count.
 
+### S45-S47 incremental receiving 2026-11-05
+
+**Candidate pending protected integration.** Historical returns `e42faf01`/`fa0a1b14`/`39ff2c2d` remain author-executed sourcefree evidence at their cut grades. Final integration `da97d2624486b783bf5c4f465b17fdcdea3af20a` was independently **ACCEPTED scoped TEST_ONLY** by reviewer session `ses_e526dc569ffe67E2MTl0k6Y38V` (11 projection tests, 22 causal checks, cold replay, privacy, wrong-root). Review fixes are published at `41bf45813fd0adeffd9b54e1306c2022abe96514` with two focused privacy tests and 22 causal checks; focused independent closure for that fix commit is **PENDING**. Draft receiving PR [#697](https://github.com/maidiu/rawlsing/pull/697) is **NOT merged**; local and remote `codex/sorok-s45-s47-closure-20261105-r1` equal `41bf4581`. B-source disposition `3aec2a2740f9e6ebebcf1576777aff5aff96c5e1` shows B identity/access present while current B-owned context and independent counterpart are missing (20 checks, 7 focused HOLD tests); historical S48-S52 cut grades are preserved. [HQ receiving entry](00_HQ_WRITE_THROUGH_DECISION.md#s45-s47-incremental-receiving-2026-11-05).
+
+Affected existing records are `08` dependency disposition, `09` C9/C10/C12/O15/S8/S9/S11 and B/C4/C8 functions, `14` existing component and package rows for C9/C10/C12/O15/S8/S9/S11, C4/C8 B-source rows and `WP-W6B-01/02/07/19/20/24/34/35/37`, `15` seams `E004`, `E005`, `E006`, `E008`, `E011`, `E021` and their child rows. **Work now:** focused independent closure of `41bf4581`, then protected integrator decides selective receiving of PR #697; do not relaunch the A producer, which remains closed duplicate #690. **Still held:** current B-owned context/independent counterpart, original CAN008/CAN011 science, native C8/C9/C12/ADP, Pyat E001/E002 and human S11/A5 Gate4/Gate5.
+
 ---
 
 # W8-F CURRENT WORK-NOW — CORRECTED READINESS (SUPERSEDES W7-I PRIORITY LABELS BELOW)
