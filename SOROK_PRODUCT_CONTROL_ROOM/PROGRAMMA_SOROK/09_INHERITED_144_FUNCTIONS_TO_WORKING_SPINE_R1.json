@@ -10568,5 +10568,26 @@
         "role": "machine rehearsal receipt"
       }
     ]
+  },
+  "hq_p2_local_lifecycle_candidate_20261105": {
+    "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+    "branch": "codex/sorok-p2-encounter-lifecycle-20261105-r1",
+    "path": "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1",
+    "grade": "AUTHOR_TESTED_CANDIDATE_REVIEW_RUNNING_NOT_ADOPTED",
+    "producer": "sorok_p2_lifecycle.lifecycle.LifecycleEncounter.exit/return_",
+    "first_consumer": "sorok_p2_lifecycle.cli -> LifecycleEncounter.open -> say/do_help/attend",
+    "interface": "Existing S45Projection + root-bound local mode sidecar -> local projected mode/blocked action/local return; no actor/world/time mutation on local transition",
+    "author_tests": "5 PASS in20.61s; fresh CLI exit/reopen/return; root mismatch; cut/restore",
+    "independent_tests": "NOT_RUN_PENDING sorok-p2-lifecycle-independent-review-20261105-r1",
+    "reviewer": "ses_e526dc569ffe67E2MTl0k6Y38V (not lifecycle author)",
+    "worker": "ses_e52b17161ffe7omlNtc0EddtAB",
+    "holds": [
+      "No native security/actor source authority",
+      "No simulated absence activity",
+      "No elapsed-world-time advance",
+      "No human validation",
+      "No protected integration"
+    ],
+    "next_action": "Receive independent exact-head boundary review; repair observed defects then fan into compatible P2 product; no general readiness promotion"
   }
 }
