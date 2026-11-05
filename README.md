@@ -9,6 +9,14 @@
 - [PROGRAMMA SOROK — complete guide navigation](SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/READ_FIRST.md) — architectural spine, 144 inherited functions, 38 seams, phase gates, source/actor holds
 - [Current receiving and implementation disposition](CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_CANONICAL_RECEIVING_AND_CODE_CAPITAL.md) — exact selected source cuts, **E3 independently accepted and already protected**, remaining finite guide collisions and actual work-selection holds
 
+## Live recorded status — do not confuse guide documentation with admission
+
+- [Pyat current progress and accepted-scoped receipts](PYAT_CONTROL_ROOM/CURRENT_PROGRESS.md) ([machine-readable state](PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json))
+- [Sorok current progress and held/native gates](SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md) ([machine-readable state](SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json))
+- [Latest Pyat sealed HQ handoff](HQ_HANDOFF/LATEST.json) — check its actual checkpoint cut and compare with the current protected branch; a sealed report is not a live-session claim
+
+These are *current-state locators*, not independent scientific or actor issuance. Each must be read at its dated source cut. Proposed guide additions under PR #685 are not protected adoption until the qualified owner receives them.
+
 ## What is current versus historical
 
 Protected PRE-MAIN contains the merged HQ front doors, the Pyat OCT28-R2 full guide and the independently accepted **sourcefree-scoped** seven-file E3 I03 repair. The additional Field Forge and Sorok combined guide material in this receiving PR is **pending qualified incorporation** into protected PRE-MAIN. A worker return, branch name, classification row or sourcefree green result does not independently issue a native scientific, actor or human claim. These distinctions are recorded at the source decision, not hidden in branch naming.
