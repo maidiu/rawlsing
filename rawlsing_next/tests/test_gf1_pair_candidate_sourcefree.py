@@ -164,8 +164,12 @@ def test_sourcefree_authority_refusal_and_identity_poison():
         _produce(relation_permission_ceiling=("GF1_SOURCEFREE_TEST", "UNGRANTED"))
     from dataclasses import replace
     valid, _, _ = _produce()
-    poisoned = replace(valid, content_hash="0" * 64)
-    refusal = compute_pair_support_signature(poisoned)
+    # Immutable construction refuses a wrong committed identity before any reader.
+    with pytest.raises(GenericNativePairError):
+        replace(valid, content_hash="0" * 64)
+    # Simulate a hostile in-memory bypass of the frozen constructor, then read.
+    object.__setattr__(valid, "content_hash", "0" * 64)
+    refusal = compute_pair_support_signature(valid)
     assert refusal["decision_state"] == "CONSUMER_RELATION_IDENTITY_MISMATCH"
     assert refusal["downstream_value_produced"] is False
     assert refusal.get("result_hash") is None
