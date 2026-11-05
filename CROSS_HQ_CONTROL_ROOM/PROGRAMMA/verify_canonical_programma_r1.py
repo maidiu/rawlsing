@@ -107,6 +107,38 @@ for rel, snippets in (
             check(marker in content, f"{rel}: lost combined LIVE/PS receiving marker {marker}")
 
 
+
+# Additional conserved evidence families. Structural checks guard against
+# accidental omission or duplicate identity, not scientific/current acceptance.
+# additional conserved evidence families
+parse_rows(PYAT + "05_ROADMAP/SATURATION_REQUIREMENT_OWNER_LINKS.jsonl", 345, "origin_key")
+parse_rows(SOROK + "12_W1_W2_INPUT_DISPOSITIONS_R1.jsonl", 100, "source_row_id")
+stages = parse_rows(SOROK + "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl", 668)
+if stages:
+    check(stages[0].get("record_type") == "MANIFEST", "Sorok phase manifest missing")
+
+for relative, array_name, n in (
+    (SOROK + "07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json", "assets", 304),
+    (SOROK + "08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json", "seams", 22),
+):
+    p = required(relative)
+    if p.is_file():
+        try:
+            raw = json.loads(p.read_text(encoding="utf-8"))
+            rows = raw[array_name]
+            ids = [entry.get("id") for entry in rows]
+            check(len(rows) == n and len(set(ids)) == n and all(ids),
+                  f"{relative}: expected {n} distinct records")
+        except (ValueError, TypeError, KeyError) as exc:
+            errors.append(f"{relative}: not a valid conserved register: {exc}")
+
+gap_path = required(PYAT + "05_ROADMAP/NEXT_R_GAP49_NEXT_DECISIONS.md")
+if gap_path.is_file():
+    import re
+    found = set(re.findall(r"\\bGAP-\\d{3}\\b", gap_path.read_text(encoding="utf-8")))
+    expected = {f"GAP-{n:03d}" for n in range(1, 50)}
+    check(found == expected, f"Pyat GAP01–49 identities changed: absent={sorted(expected - found)} unexpected={sorted(found - expected)}")
+
 # Selected protected NEXT-R documentary preservation. The first canonical
 # convergence lost source-qualified accepted locator/currentness sections even
 # while all registry counts stayed green. Test the original assertion anchors,
