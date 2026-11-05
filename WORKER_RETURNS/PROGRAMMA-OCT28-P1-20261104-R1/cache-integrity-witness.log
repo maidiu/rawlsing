@@ -1,0 +1,46 @@
+.                                                                        [100%]
+1 passed in 1.41s
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_cache_hit_delete_and_rehashed_same_key_poison_rebuild __________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-35/test_cache_hit_delete_and_reha0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1129e7d10>
+
+    def test_cache_hit_delete_and_rehashed_same_key_poison_rebuild(tmp_path, monkeypatch):
+        fx = _fixture()
+        directory = _cache(monkeypatch, tmp_path)
+        baseline = _material(_execute(fx))
+        path, = directory.glob("c11-events-*.parquet")
+        original_bytes = path.read_bytes()
+        with monkeypatch.context() as patch:
+            def unexpected(_value):
+                pytest.fail("a warm accelerator reserialized current I02 event bodies")
+
+            patch.setattr(compact, "canonical_json", unexpected)
+            assert _material(_execute(fx)) == baseline
+
+        table = pq.read_table(path)
+        bodies = table.column(compact._EVENT_BODY_COLUMN).to_pylist()
+        changed = json.loads(bodies[0])
+        fields = changed["semantic_fields"]
+        fields["raw_response_value"] = "forged-response"
+        fields["canonical_response_value_if_authorized"] = "forged-response"
+        bodies[0] = compact.canonical_json(changed).encode("utf-8")
+        forged = pa.table({compact._EVENT_BODY_COLUMN: pa.array(bodies, type=pa.binary())})
+        pq.write_table(forged.replace_schema_metadata(table.schema.metadata), path, compression="zstd")
+        assert path.read_bytes() != original_bytes
+        assert _material(_execute(fx)) == baseline
+>       assert path.read_bytes() == original_bytes
+E       AssertionError: assert b'PAR1\x15\x0...b\x00\x00PAR1' == b'PAR1\x15\x0...b\x00\x00PAR1'
+E
+E         At index 7 diff: b'\xd8' != b'\xc8'
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_c11_execution_view.py:83: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_c11_execution_view.py::test_cache_hit_delete_and_rehashed_same_key_poison_rebuild
+1 failed in 1.13s
+
+.                                                                        [100%]
+1 passed in 1.13s
