@@ -28,21 +28,45 @@ _EVENT_BODY_COLUMN = "canonical_event_body"
 _CACHE_METADATA_KEY = b"rawlsing.c11.event_accelerator"
 
 
+def _ref_identity(ref: ExactRef) -> tuple[str, str, str]:
+    return ref.kind, ref.object_id, ref.content_hash
+
+
 @dataclass(frozen=True, slots=True)
 class _EventRead:
-    """The source-certified fields I03 reads, without a native event envelope."""
+    """Selector v1 fields; reference exports are detached from immutable backing."""
 
     schema_id: ClassVar[str] = "RespondentEvent"
-    ref: ExactRef
+    _ref_identity: tuple[str, str, str]
     typed_state: str
-    native_question_ref: ExactRef
-    canonical_question_ref_if_authorized: ExactRef | None
-    component_or_subitem_ref: ExactRef | None
-    authority_snapshot_refs: tuple[AuthorityRef, ...]
+    _native_question_identity: tuple[str, str, str]
+    _canonical_question_identity: tuple[str, str, str] | None
+    _component_identity: tuple[str, str, str] | None
+    _authority_identities: tuple[tuple[str, str, str], ...]
     raw_response_value: Any
     canonical_response_value_if_authorized: Any
     multiplicity_order_rank_fields: Any
     response_event_id_or_deterministic_index: Any
+
+    @property
+    def ref(self) -> ExactRef:
+        return ExactRef(*self._ref_identity)
+
+    @property
+    def native_question_ref(self) -> ExactRef:
+        return ExactRef(*self._native_question_identity)
+
+    @property
+    def canonical_question_ref_if_authorized(self) -> ExactRef | None:
+        return ExactRef(*self._canonical_question_identity) if self._canonical_question_identity else None
+
+    @property
+    def component_or_subitem_ref(self) -> ExactRef | None:
+        return ExactRef(*self._component_identity) if self._component_identity else None
+
+    @property
+    def authority_snapshot_refs(self) -> tuple[AuthorityRef, ...]:
+        return tuple(AuthorityRef(*identity) for identity in self._authority_identities)
 
 
 @dataclass(frozen=True, slots=True)
@@ -89,12 +113,13 @@ class _RespondentEvents(Sequence[RespondentEvent]):
         self, target: ExactRef, *, native_only: bool = False,
         include_component: bool = False, states: frozenset[str] | None = None,
     ) -> Iterator[_EventRead]:
+        target_identity = _ref_identity(target)
         for row in self.rows:
             event = self.lane.selectors[row]
-            matches = event.native_question_ref == target or (
+            matches = event._native_question_identity == target_identity or (
                 not native_only and (
-                    event.canonical_question_ref_if_authorized == target
-                    or (include_component and event.component_or_subitem_ref == target)
+                    event._canonical_question_identity == target_identity
+                    or (include_component and event._component_identity == target_identity)
                 )
             )
             if matches and (states is None or event.typed_state in states):
@@ -228,14 +253,14 @@ def _compact_public_objects(
     non_events = []
     selectors = []
     groups: dict[tuple[ExactRef, str], list[int]] = {}
-    dimensions: dict[ExactRef, ExactRef] = {}
+    dimensions: dict[tuple[str, str, str], tuple[str, str, str]] = {}
 
-    def dimension(event: RespondentEvent, field: str) -> ExactRef | None:
+    def dimension(event: RespondentEvent, field: str) -> tuple[str, str, str] | None:
         value = getattr(event, field)
         if value is None:
             return None
-        ref = exact_ref(value, field)
-        return dimensions.setdefault(ref, ref)
+        identity = _ref_identity(exact_ref(value, field))
+        return dimensions.setdefault(identity, identity)
 
     for obj in release.public_objects:
         if not isinstance(obj, RespondentEvent):
@@ -246,15 +271,17 @@ def _compact_public_objects(
         entries.append(row)
         events.append(obj)
         selectors.append(_EventRead(
-            obj.ref, obj.typed_state, dimension(obj, "native_question_ref"),
+            _ref_identity(obj.ref), obj.typed_state, dimension(obj, "native_question_ref"),
             dimension(obj, "canonical_question_ref_if_authorized"),
-            dimension(obj, "component_or_subitem_ref"), obj.authority_snapshot_refs,
+            dimension(obj, "component_or_subitem_ref"),
+            tuple((ref.authority_id, ref.authority_version, ref.authority_content_hash)
+                  for ref in obj.authority_snapshot_refs),
             obj.raw_response_value, obj.canonical_response_value_if_authorized,
             obj.multiplicity_order_rank_fields, obj.response_event_id_or_deterministic_index,
         ))
         universe = dimension(obj, "empirical_universe_ref")
         respondent = dimension(obj, "scoped_respondent_ref")
-        groups.setdefault((universe, respondent.key), []).append(row)
+        groups.setdefault((ExactRef(*universe), ExactRef(*respondent).key), []).append(row)
 
     if not events:
         return None

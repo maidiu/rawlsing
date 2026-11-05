@@ -179,3 +179,105 @@ def test_legacy_in_memory_incidence_does_not_require_file_decoder_receipt(tmp_pa
     assert isinstance(release.public_objects, compact._CompactPublicObjects)
     assert repository.resolve_release_exact(release.release_ref) is release
     assert not tuple(directory.iterdir())
+
+
+def test_selector_reference_exports_cannot_forge_supported_provenance(monkeypatch):
+    from rawlsing_next._pre553_query_predicate import _select_respondent_events
+    from rawlsing_next.pre553_empirical_objects import ExactRef
+
+    monkeypatch.delenv(compact._CACHE_ENV, raising=False)
+    fx = _fixture()
+    route = _execute(fx)
+    executor = route.repository_binding.executor
+    repository = executor.repository
+    index, = repository._i03_release_indices.values()
+    assert len(index.respondents) > 1
+    selectors = [event for key in index.respondents for target in fx["qrefs"].values()
+                 for event in _select_respondent_events(index, key, target, native_only=True)]
+    # The O question has repeated ordered occurrences for each respondent.
+    assert len(selectors) > len(index.respondents) * len(fx["qrefs"])
+    native = {event.ref.key: repository.resolve_object_exact(event.ref).as_dict() for event in selectors}
+    request = fx["requests"][0]
+
+    def facts():
+        return [fact.as_dict() for fact in executor.execute_i03(
+            query_ref=request.query_ref, predicate_ref=request.predicate_ref,
+        ).facts]
+
+    before = facts()
+    for event in selectors:
+        for field in ("ref", "native_question_ref", "authority_snapshot_refs"):
+            exported = getattr(event, field)
+            if field == "authority_snapshot_refs":
+                exported = exported[0]
+            original = exported.as_dict()
+            for name in original:
+                exported.__dict__[name] = "f" * 64 if "hash" in name else "urn:test:forged"
+            assert facts() == before
+            fresh = getattr(event, field)
+            if field == "authority_snapshot_refs":
+                fresh = fresh[0]
+            assert fresh.as_dict() == original
+            assert repository.resolve_object_exact(event.ref).as_dict() == native[event.ref.key]
+            exported.__dict__.update(original)
+            assert facts() == before
+        assert isinstance(event.ref, ExactRef)
+
+
+def test_selector_v1_dimensions_and_occurrences_match_native_after_descendant_faults(monkeypatch):
+    from rawlsing_next._pre553_query_predicate import (
+        _SELECTOR_CONTRACT_VERSION, _build_release_index, _select_respondent_events,
+    )
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent, exact_ref
+    from rawlsing_next.tests.test_pre553_empirical_query import _ref
+
+    monkeypatch.delenv(compact._CACHE_ENV, raising=False)
+    fx = _fixture()
+    mapping_authority = next(authority.authority_ref for authority in fx["projection"].authority_snapshots
+                             if authority.authority_kind == "NATIVE_CANONICAL_MAPPING_HARMONIZATION")
+    questions = tuple(replace(
+        question,
+        semantic_authority_ref=mapping_authority,
+        canonical_question_ref_or_typed_absence=_ref("QUESTION_CANONICAL", question.native_question_ref.key),
+        component_subitem_ref_or_typed_absence=_ref("COMPONENT", question.native_question_ref.key),
+    ) for question in fx["projection"].questions)
+    bindings = {question.native_question_ref: question for question in questions}
+    projection = replace(fx["projection"], questions=questions, response_slots=tuple(
+        replace(slot, question_binding=bindings[slot.question_binding.native_question_ref])
+        for slot in fx["projection"].response_slots
+    ))
+    native = build_validated_source_backed_c11_release_from_stream(fx["stream"], projection)
+    public = compact._compact_public_objects(native, physical_binding=lambda: None, projection_binding="selector-v1-test")
+    universe, = projection.universes
+    eager = _build_release_index(native, universe.ref)
+    selected = _build_release_index(replace(native, public_objects=public), universe.ref)
+    assert _SELECTOR_CONTRACT_VERSION == 1
+    fields = (
+        "ref", "native_question_ref", "canonical_question_ref_if_authorized", "component_or_subitem_ref",
+    )
+    for key in eager.respondents:
+        expected = tuple(eager.events_by_respondent[key])
+        assert all(isinstance(event, RespondentEvent) for event in selected.events_by_respondent[key])
+        targets = {exact_ref(getattr(event, field)) for event in expected for field in fields[1:]}
+        for target in targets:
+            for native_only in (False, True):
+                for include_component in (False, True):
+                    for states in (None, frozenset(), frozenset({"SUBSTANTIVE_RESPONSE"})):
+                        flags = dict(native_only=native_only, include_component=include_component, states=states)
+                        a = tuple(_select_respondent_events(eager, key, target, **flags))
+                        b = tuple(_select_respondent_events(selected, key, target, **flags))
+                        assert [event.ref for event in a] == [event.ref for event in b]
+                        for full, event in zip(a, b):
+                            for field in fields:
+                                exported = getattr(event, field)
+                                original = exact_ref(getattr(full, field)).as_dict()
+                                exported.__dict__.update(object_id="urn:test:forged", content_hash="f" * 64)
+                                assert getattr(event, field).as_dict() == original
+                                exported.__dict__.update(original)
+                            assert event.raw_response_value == full.raw_response_value
+                            assert event.canonical_response_value_if_authorized == full.canonical_response_value_if_authorized
+                            assert event.multiplicity_order_rank_fields == full.multiplicity_order_rank_fields
+                            assert event.response_event_id_or_deterministic_index == full.response_event_id_or_deterministic_index
+                        assert [event.ref for event in _select_respondent_events(selected, key, target, **flags)] == [event.ref for event in a]
+    with pytest.raises(KeyError):
+        tuple(_select_respondent_events(selected, "absent-respondent", next(iter(targets))))

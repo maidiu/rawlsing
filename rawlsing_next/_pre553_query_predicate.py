@@ -5,6 +5,8 @@ from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _Res
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
+_SELECTOR_CONTRACT_VERSION = 1
+
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
     if isinstance(event, RoutingEligibilityFact):
         return _ref_field(event, "question_or_target_ref") == target
@@ -18,6 +20,23 @@ def _select_respondent_events(
     native_only: bool = False, include_component: bool = False,
     states: frozenset[str] | None = None,
 ) -> Iterator[RespondentEvent | _EventRead]:
+    """Internal selector contract v1, consumed by the existing I03 evaluator.
+
+    Native fallback yields RespondentEvent; compact selection yields _EventRead.
+    Both expose schema_id, exact ref, typed_state, native/canonical/component
+    refs, authority_snapshot_refs, raw/canonical values, multiplicity/order/rank
+    and response occurrence identity. Normalize refs with existing exact-ref
+    helpers. Compact refs are detached exports; semantic values are frozen.
+    Full native bodies and source/universe fields require the sealed index and
+    exact resolver. Ordinary events_by_respondent sequence iteration is native.
+
+    Preserve occurrence order and duplicates. native_only overrides component
+    and canonical matching; states=None includes all states, an empty set none.
+    Missing respondent keys raise KeyError. This handoff adds no authority:
+    CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query owns
+    per-call source/authority checks, sealed-index validation and fact/replay
+    semantics, including complete respondent universes and zero domains.
+    """
     events = index.events_by_respondent[respondent_key]
     if isinstance(events, _RespondentEvents):
         yield from events.select(
