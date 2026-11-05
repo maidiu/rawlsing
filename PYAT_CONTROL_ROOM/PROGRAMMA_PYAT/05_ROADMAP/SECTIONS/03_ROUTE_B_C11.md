@@ -1,5 +1,8 @@
 # ROADMAP:S03 — Physical and logical source carrier: Route B, C11, I03, I05 and Batch
 
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 current first-consumer/optimization: protected R03 governed sourcefree compiler is already present and imports current grammar, protected I03 exact index cache and compact C11 selector remain. Check actual current `pre553_issued_workload.py` ABI (protected blob `cfb307...` differs from R03 original `31e84...`) before claiming full R03 end-to-end equivalence. No second engine or speculative unbounded bitmap/graph; W03/W04/W05 benchmark first-consumer cost and valid native fact/replay. [Exact R2 lineage and immutable source crosswalk](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
+
 > **2026-11-05 OCTOBER PHYSICAL / R53 STATUS DELTA — CANDIDATE #696, NOT ADOPTED.** Current protected code already has PR686 `_pre553_c11_execution_view.py` compact Arrow event selectors + authenticated Parquet body cache and PR684 `pre553_empirical_query.py::_release_index_for` attested per-repository release-index reuse; do not propose these as missing engines. W05/P03 compatible grouped operations and W04/P02 economically validated regenerable accelerator remain distinct work. R53 B49/G50/I51 unary sourcefree joins but two-target/I05 same-source missing. Bench exact **first consumer**, zero/missing/weights/clock/replay and memory/cold performance; do not invent speedup. S03→S04 F2/F4→N10E/N11 reverse dependencies recorded in [inverse graph](../TERMINAL_F2F4_GF1_DEPENDENCY_AND_INVERSE_REACHABILITY_20261105_R1.jsonl). [Cost/profiling court](../TERMINAL_F2F4_COMPACT_EXECUTION_DESIGN_AND_COST_COURT_20261105_R1.md).
 
 
