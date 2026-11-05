@@ -112,3 +112,18 @@ See [G3-A 12-case source-fate record](https://github.com/maidiu/rawlsing/blob/93
 ## Exact lookup / maturity caution
 
 Use `FUNCTION_PARITY.jsonl.obligation_id` for all 28 old-vs-now, 57 current-with-first-consumer, 51 child, 14 conflict rows; use `CURRENT_SEAM_STATES.jsonl.edge_id` for 7 MUST /26 IF /14 functional /35 observed; use `COMPONENT_STATUS.jsonl.id` for all 11 parents and 51 children. `PREREQUISITES_AND_UNLOCKS.md` keeps AND/IF/ALTERNATE distinct; `REMAINING_REAL_PYAT_WORK.md` contains all 49 finite tasks. The retained gap set is explicitly **not** a source-native pass/fail campaign.
+
+
+
+## NEXT R — four exact SAT-F missing lookup entries (source visibility, not new apparatus)
+
+All four were **directly fetched by the receiver at protected `773bb412a820949f13a7178b6671327cd56a3bf1` and their Git blob SHA matched E3**; these are supplemental locators to the already-counted 892 G1 rows/782 typed guide IDs, not four additional engines or native-science grants. [E3 exact code/proof](https://github.com/maidiu/rawlsing/blob/66a6f18541c95b28490775c97a9615cb58769509/WORKER_RETURNS/PROG5_NEXT_E3_CURRENTNESS_AUTHORITY_R1/SATF_FOUR_EXACT_LOCATOR_CORRECTIONS.md).
+
+| SAT-F | Real GitHub blob/symbol at live cut | Guide child / prior row and proof limit |
+| --- | --- | --- |
+| **F-01 F018 effective-N** | [`rawlsing_next/pre553_effective_n.py::compute_effective_n@454`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_effective_n.py#L454), blob `76bbddb0fddc91d64c83f5d6164a63cb4e2a3ff5` | [S04.1/S04.5](SECTIONS/04_F1_F4_EMPIRICAL.md); G1 row 186; computed sourcefree weighted effective-N with authority guard, no qualified native original35 risk-set or non-test first consumer. |
+| **F-02 D05 currentness** | [`rawlsing_next/objective_non_event_publication_serving_adapter.py::validate@19 / make@47`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/objective_non_event_publication_serving_adapter.py#L19), blob `9baa6e73f683cea723de5ac56889ef6e5a7b5dee` | [S09.2/S09.3](SECTIONS/09_N9_WORLD.md), G1 rows 168–169; validated current non-event receipt, not native/general N9 or N10W. |
+| **F-03 S7FIX function source genealogy** | [`PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/18_s7fix_independent_group_check.py`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/18_s7fix_independent_group_check.py#L21), blob `c6e51c5e619f598ad927997bca548af50b506fe6`; PR563 merged `8e44ca9c751049d65e6def47600b5c073ee04b29` | [CROSS_PLAN_IDS](CROSS_PLAN_IDS.md); 3,135 source function IDs / 1,885 corrected *historical families*, **not** 782 typed IDs. SOURCE_IDENTITY_ONLY; PE RED / V2K held. |
+| **F-04 C3 physical decoder/codec** | [`rawlsing_next/pre553_physical_decoder.py::_decode@727`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_physical_decoder.py#L727) blob `4b89c4598f324834de064c1200c63698a20e3c5c`; [`pre553_r5_codec.py::_canonical_naive_date_time@39`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_r5_codec.py#L39) blob `f5f64d9b8b6c9af1d1b755f86b44fe43a8e741b7` | [S03.1/S03.2](SECTIONS/03_ROUTE_B_C11.md), GAP-011/012; PR602 merged independently reviewed D01 encoding and direct/one-level D02; original-native and nested wrapper/144/3 coverage held. |
+
+[Original locator and function mapping](README.md) · [345 requirement owner corrections](NEXT_R_REQUIREMENT_OWNER_CROSSLINKS.md).

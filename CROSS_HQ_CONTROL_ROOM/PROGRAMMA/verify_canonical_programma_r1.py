@@ -106,6 +106,39 @@ for rel, snippets in (
         for marker in snippets:
             check(marker in content, f"{rel}: lost combined LIVE/PS receiving marker {marker}")
 
+
+# Selected protected NEXT-R documentary preservation. The first canonical
+# convergence lost source-qualified accepted locator/currentness sections even
+# while all registry counts stayed green. Test the original assertion anchors,
+# not only the file identities. Any later intentional retirement must be
+# independently justified and update this guard in the same qualified change.
+# This is documentary conservation, NOT proof the frozen claims remain current.
+# Historical source-cut statements remain subject to later operative decisions.
+# protected NEXT-R documentary preservation
+protected_next_r = {
+    "ASSET_LOCATOR.md": ("## NEXT R — four exact SAT-F missing lookup entries", "F-01 F018 effective-N", "F-04 C3 physical decoder/codec"),
+    "CROSS_PLAN_IDS.md": ("## NEXT R — source identity, functional owners and distinct J references", "3,135"),
+    "REMAINING_REAL_PYAT_WORK.md": ("## NEXT R — existing GAP-001", "49/49 original GAP"),
+    "SATURATION_CODEX_REUSE_HANDOFF.md": ("## NEXT R current P6 and reuse selection cut",),
+    "SECTIONS/01_SOURCE_GOVERNANCE.md": ("## NEXT R current-source and independent-source-preparation correction",),
+    "SECTIONS/02_U_EPRE_WORKLOAD.md": ("## NEXT R actual worklist compiler / original35 issuer separation", "## PSR1 group-definition/membership"),
+    "SECTIONS/05_LEARNED_LIFECYCLE.md": ("## NEXT R learned producer is already read",),
+    "SECTIONS/06_FIELD_FORGE_F5.md": ("## NEXT R FF/F5 conditional source/science leaf", "## Post-R2 asset-function succession", "## PSR1 post-FF-R2 seam adequacy"),
+    "SECTIONS/07_F6_FIELDS.md": ("## NEXT R F6 independent-source transport",),
+    "SECTIONS/08_F7_TEMPORAL.md": ("## NEXT R F7 accepted clocks",),
+    "SECTIONS/09_N9_WORLD.md": ("## NEXT R actually read D05/P41", "## PSR1 native selected-world boundary"),
+    "SECTIONS/10_N10_POSSIBILITY_F8.md": ("## NEXT R N10E/N10W real consumer ceiling", "## PSR1 post-FF seam applicability"),
+    "SECTIONS/11_N11_N12_GATE.md": ("## NEXT R terminal independent no-drop authority",),
+}
+for rel, markers in protected_next_r.items():
+    path = ROOT / PYAT / "05_ROADMAP" / rel
+    if path.is_file():
+        body = path.read_text(encoding="utf-8")
+        for marker in markers:
+            check(marker in body, f"{rel}: accepted NEXT-R or qualified new receiving evidence disappeared: {marker}")
+    else:
+        check(False, f"{rel}: previously protected guide path missing")
+
 if errors:
     for error in errors:
         print("FAIL", error, file=sys.stderr)

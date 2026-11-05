@@ -1,5 +1,10 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
+## NEXT R actual worklist compiler / original35 issuer separation — 2026-11-03
+
+**S02.2–S02.4; GAP-006–010.** Protected [`compile_governed_frontier`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_universal_workload.py#L473) is a **real** compiled consumer of caller-frozen source-qualified `ScientificFrontier`, and PR646 sourcefree R03→R04 issued checkpoint/cold resume reaches an actual selected P41 reader. The compiler **does not enumerate or issue original35 administered `U_item/U_unit/U_app/E_pre` science**. Exact B49/G50/I51 branch-only selector/finite grammar/one-target joined candidate may be **ABI compared** for an already selected source and first consumer, not automatically restored. E2's five tests permit `NO_ACTION` where current R03 is adequate; do not open three new engine tasks from path-counts. Original source rights/denominator, host R09 and original N11 remain held. [Current 82 first-reader truth](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) · [49 next decisions](../NEXT_R_GAP49_NEXT_DECISIONS.md).
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).

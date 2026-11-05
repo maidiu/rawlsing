@@ -36,3 +36,11 @@
 | [S11 gate](SECTIONS/11_N11_N12_GATE.md) | N11/N12, A, all35 F1–F8 | Independent acceptance + Sorok separate |
 
 **Indexing strategy:** [INDEX.jsonl](INDEX.jsonl) directly retains all **623 W1-A distinct original component labels** from 656 plan rows, along with all **384 G1-C cross-plan rows** after exact-name normalization where demonstrably identical (151, 101, source). Historical W1-A SF-H versus C H53 and LM### versus LMX identities are intentionally not merged by superficial labels. All original full memberships and source citations remain at their pinned JSONL row references. Index rows are finding aids, not 731 new machine tasks.
+
+
+
+## NEXT R — source identity, functional owners and distinct J references
+
+[345 immutable requirement-owner keys](SATURATION_REQUIREMENT_OWNER_LINKS.jsonl) are *not* 345 engines. [234 one-key-each additive crosslinks](NEXT_R_REQUIREMENT_OWNER_CROSSLINKS.md) restore **133** missing primary section placements, **94** missing secondary/AND receiver placements and **seven** J1–J7 individual reference-key locations; **111** original correct primary keys remain untouched. Each points to an *existing* Sxx child; no G2 index row, new component or original status is minted. Applicable `MUST`/`IF`/`ALTERNATIVE` is read from [the original edge/predicate](CURRENT_SEAM_STATES.jsonl) and [82 later exact identities](NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md), not guessed from a topical link.
+
+**F-03 S7FIX source family grain:** [independent historical identity verifier](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/PYAT_CONTROL_ROOM/BRANCH_RECOVERY_R1/18_s7fix_independent_group_check.py#L21), protected blob `c6e51c5e619f598ad927997bca548af50b506fe6`, PR563 checked **3,135** source-function IDs grouped into **1,885** corrected historical families after nested-owner corrections. This is conserved function genealogy, not the present 782 typed Guide ID ledger or 892 G1 asset list, and not native original-science acceptance. Original PE overlay RED and V2K anti-join HOLD survive.

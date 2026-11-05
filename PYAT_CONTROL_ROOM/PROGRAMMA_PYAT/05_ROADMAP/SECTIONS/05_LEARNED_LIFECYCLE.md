@@ -1,5 +1,10 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+## NEXT R learned producer is already read inside one protected sourcefree chain — 2026-11-03
+
+**S05.1–S05.5; M1/M2/B5 and S-F1F4/ASTRA:N2→N3.** At protected `773bb412a820949f13a7178b6671327cd56a3bf1` the [`build_m1_bundle_from_m01`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_learned_world_composition.py#L770) and [`evaluate_learned_world_consumer`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_learned_world_composition.py#L2078) feed a selected PR646 partial-resume→actual P41 first reader. The return is **real and reviewed in one synthetic same-source TEST_ONLY scope**, not unconditionally absent as an operative consumer. The recipient still refuses original native N9/current/as-of and general N10W; source release, learned family science/currentness, source rights and R09 independent parent/host remain separate. Do not restore historical family tools without a *named* first consumer and five-test suitable/authorized gain. [82 exact edge grades](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md), [15 succession cases](https://github.com/maidiu/rawlsing/blob/34f1071496675096ab6c326597752e17b2b96df2/WORKER_RETURNS/PROG5_NEXT_E2_PRIORITY_SUBLATION_R1/HISTORICAL_SUCCESSION_FIVE_TEST_COURT.jsonl).
+
+
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
