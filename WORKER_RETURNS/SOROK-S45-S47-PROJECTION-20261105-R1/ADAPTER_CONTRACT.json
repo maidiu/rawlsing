@@ -1,0 +1,170 @@
+{
+  "schema": "SOROK_S45_WP19_PROJECTION_CONTRACT@1",
+  "status": "SCOPED_PROJECTION_AND_CLI_CONTRACT__NOT_IMPORT_CLOSURE_NOT_CAUSAL_HARNESS",
+  "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+  "native": false,
+  "human_trial": false,
+  "sourcefree": true,
+  "pins": {
+    "base": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
+    "s45_commit": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+    "s45_return": "WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1",
+    "wp19_commit": "3c4df43f813cd0727feff04f620aa0bbd9a63026",
+    "wp19_return": "WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1",
+    "s11_commit": "faec7ce909c54664e85320534bdf744b9bc47d37",
+    "s11_return": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1",
+    "s11_spec": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json"
+  },
+  "consumed_callables": {
+    "session_start": "s45.session.S45Session.start",
+    "session_open": "s45.session.S45Session.open",
+    "session_say": "s45.session.S45Session.say",
+    "session_do_help": "s45.session.S45Session.do_help",
+    "session_attend": "s45.session.S45Session.attend",
+    "session_read_encounters": "s45.session.S45Session.read_encounters",
+    "session_events": "s45.session.S45Session.events",
+    "session_user_perceived_ids": "s45.session.S45Session.user_perceived_ids",
+    "session_world": "s45.session.S45Session.world",
+    "session_clock": "s45.session.S45Session.clock",
+    "session_close": "s45.session.S45Session.close",
+    "wp19_render_text": "wp19.interface.render_text",
+    "s11_consumable_spec": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json"
+  },
+  "entrypoints": {
+    "adapter_class": "s45_projection.adapter.S45Projection",
+    "open": "s45_projection.adapter.S45Projection.open",
+    "start": "s45_projection.adapter.S45Projection.start",
+    "project_result": "s45_projection.projection.project_result",
+    "project_view": "s45_projection.projection.project_view",
+    "cli": "python -m s45_projection.cli"
+  },
+  "surface": {
+    "view_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+    "result_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "status_schema": "SOROK_WP19_STATUS@1",
+    "source": "s45",
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "controls": ["SAY", "DO", "ATTEND", "WAIT", "EXIT"],
+    "visible_event_fields": [
+      "event_id",
+      "kind",
+      "clock",
+      "location",
+      "actor_visible_id",
+      "summary",
+      "body_public",
+      "source_ref",
+      "perceived_by_user"
+    ],
+    "hidden_fields": [
+      "actor_traits",
+      "affinity",
+      "trust",
+      "suspicion",
+      "private_motive",
+      "private_emotion",
+      "private_actor_model",
+      "unperceived_event_content",
+      "relationship_score",
+      "rarity",
+      "completion_percentage",
+      "unlock_level",
+      "hidden_market_commission",
+      "future_outcome"
+    ],
+    "supplied_by_s45": [
+      "USER_SAY_DO_ATTEMPT_ADMISSION",
+      "USER_ATTEND_RECEIPT"
+    ],
+    "remaining_missing_producers": [
+      "WAIT_TIME_ADVANCE_RECEIPT",
+      "PORTAL_EXIT_RETURN_RECEIPT",
+      "USER_ABSENCE_LIFE_ADVANCE",
+      "MESSAGE_CHANNEL_ESTABLISHMENT_AND_DELIVERY",
+      "ACCESSIBILITY_PREFERENCE_ACK"
+    ]
+  },
+  "methods": {
+    "view": {
+      "input": "none",
+      "source_callables": [
+        "s45.session.S45Session.events",
+        "s45.session.S45Session.user_perceived_ids",
+        "s45.session.S45Session.read_encounters",
+        "s45.session.S45Session.world",
+        "s45.session.S45Session.clock"
+      ],
+      "output_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+      "behavior": "Only user-perceived public world events and public encounter admission fields are exposed; unperceived events remain counted but unknown."
+    },
+    "say": {
+      "input": "text",
+      "source_callable": "s45.session.S45Session.say",
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "behavior": "The user utterance is an attempt. attempted=true and performed=false; actor_response carries the actual admitted S45 expression or is null for UNSUPPORTED."
+    },
+    "do_help": {
+      "input": "none",
+      "source_callable": "s45.session.S45Session.do_help",
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "behavior": "The user help request is an attempt. attempted=true and performed=false; actor_response.performed is true only when the actual S45 admission contains an actor REPAIR action event."
+    },
+    "attend": {
+      "input": "none",
+      "source_callable": "s45.session.S45Session.attend",
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "behavior": "Actual S45 ATTEND result is preserved as NO_CHANGE with LOCAL_ATTEND_ONLY and no world event."
+    },
+    "wait": {
+      "input": "none",
+      "source_callable": null,
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "typed_hold": "WAIT_UNSUPPORTED_TYPED_HOLD"
+    },
+    "exit": {
+      "input": "none",
+      "source_callable": null,
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "typed_hold": "LOCAL_EXIT_ONLY"
+    },
+    "return": {
+      "input": "none",
+      "source_callable": null,
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "typed_hold": "RETURN_UNSUPPORTED_TYPED_HOLD"
+    },
+    "absence": {
+      "input": "none",
+      "source_callable": null,
+      "output_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+      "typed_hold": "USER_ABSENCE_LIFE_ADVANCE_MISSING"
+    },
+    "status": {
+      "input": "none",
+      "source_callable": null,
+      "output_schema": "SOROK_WP19_STATUS@1"
+    }
+  },
+  "invariants": [
+    "actual_s45_result_is_consumed_not_reconstructed",
+    "user_attempt_is_not_performance",
+    "actor_performance_is_separate_from_user_attempt",
+    "hidden_actor_history_source_fields_absent",
+    "actual_refusal_preserved_as_refusal",
+    "actual_unsupported_preserved_as_UNKNOWN",
+    "local_exit_creates_no_world_event",
+    "no_fictional_wait_delivery_return",
+    "no_second_ui",
+    "no_generated_psychological_rule",
+    "no_original_product_code_edits"
+  ],
+  "limitations": [
+    "S45 only; S46/S47 material interval, event-local C9 and causal harness are owned by other workers",
+    "No import closure; the caller must provide the pinned S45 chain plus WP19 and S11 sources",
+    "No WAIT/time-advance producer",
+    "No lawful return, absence or life-advance producer",
+    "No message channel, establishment or delivery producer",
+    "No human trial, native grant or production person claim",
+    "The CLI is a thin JSON wrapper over the projected WP19 surface, not a second UI"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD python3 -B -m pytest -q -p no:cacheprovider --junitxml=evidence/junit.xml tests",
+  "cwd": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1",
+  "duration_seconds": 27.59,
+  "errors": 0,
+  "exit_code": 0,
+  "failures": 0,
+  "not_run": [
+    "S46/S47 material interval and C9 causal harness (owned by other worker)",
+    "import closure packaging (owned by other worker)"
+  ],
+  "pinned_s45_author_suite": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD python3 -B -m pytest -q -p no:cacheprovider --junitxml=... tests",
+    "cwd": "WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1 (extracted at pinned f26a138e20d53c809d611cf8d834ec647b0804bf)",
+    "duration_seconds": 118.56,
+    "errors": 0,
+    "failures": 0,
+    "summary": "21 passed",
+    "tests_passed": 21
+  },
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "pytest": "9.1.1",
+  "python": "3.11.3",
+  "schema": "SOROK_S45_PROJECTION_TEST_RUN@1",
+  "skipped": 0,
+  "status": "PASS",
+  "summary": "11 passed",
+  "test_cases": [
+    "test_contract_matches_pinned_wp19_and_s11",
+    "test_pinned_source_files_are_exact",
+    "test_actual_say_is_public_attempt_not_performance",
+    "test_actual_do_help_separates_attempt_from_actor_repair",
+    "test_actual_attend_is_no_change_and_public",
+    "test_view_exposes_only_public_perceived_surface",
+    "test_actual_refusal_is_preserved_without_action",
+    "test_actual_unsupported_is_unknown",
+    "test_attend_local_exit_and_typed_holds",
+    "test_cli_contract_end_to_end",
+    "test_cli_module_runs_on_pinned_source"
+  ],
+  "tested_source": "pinned S45 f26a138e20d53c809d611cf8d834ec647b0804bf extracted from git at runtime",
+  "tested_surface": "WP19 3c4df43f813cd0727feff04f620aa0bbd9a63026 / S11 faec7ce909c54664e85320534bdf744b9bc47d37",
+  "tests_passed": 11
+}
