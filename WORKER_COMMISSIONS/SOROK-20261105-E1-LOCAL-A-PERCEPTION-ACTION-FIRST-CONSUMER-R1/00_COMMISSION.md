@@ -1,3 +1,9 @@
+# SUPERSEDED — DO NOT DISPATCH
+
+The earlier S35-only source cut omitted later sourcefree **S39→S45** actor-action and user encounter code, and later **S46→S52** continued material/independent-B development. Issue #690 was closed as duplicate after that direct source finding. This commission is retained only as historical evidence of the corrected decision; it does NOT authorize implementing a second A producer. Correct successor work must reuse these returned sources and select a genuine current-root/consumer or selective receiving gap instead. No code was run by the commissioning HQ.
+
+---
+
 # LAUNCH — SOROK E1-A1 — ACTOR-A E1-LOCAL SOURCE → S35 FIRST CONSUMER → LATER CAUSAL CONSEQUENCE
 
 **AGENT_TYPE:** I3+ qualified sourcefree Sorok actor/product integration implementer, distinct from incumbent HQ, original science/actor/source issuer, independent reviewer, and protected PRE-MAIN receiving owner.
