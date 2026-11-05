@@ -1,0 +1,339 @@
+{
+  "actual_readback": {
+    "c9_objective_material_eligible": false,
+    "c9_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "c9_source_in_readset": true,
+    "c9_target_branch": "NO_CHANGE",
+    "cold_c9_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "do_help_accepted": false,
+    "do_help_status": "OK",
+    "do_help_strategy": "HELP_REFUSE",
+    "interval_coverage": [
+      [
+        222,
+        223
+      ]
+    ],
+    "interval_status": "PARTIAL",
+    "material_after_interval": 0
+  },
+  "actual_workdir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1",
+  "admission_source_readback": {
+    "admission_access": "denied",
+    "admission_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
+    "c9_source_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
+    "c9_uses_admission_source": true,
+    "interval_end_access": "granted",
+    "interval_end_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665"
+  },
+  "authored_files": [
+    {
+      "bytes": 8344,
+      "path": "00_RETURN.md",
+      "sha256": "3e1a866ec9e42c7d0b3a9e9eecf93871468dfee69b5e9a2cfe10b1f009dafd26"
+    },
+    {
+      "bytes": 1671,
+      "path": "PROGRAMMA_DELTA.json",
+      "sha256": "b9018c4ce3a370307f75b297f137131d965d1a52943743991df65eb6f7c45daf"
+    },
+    {
+      "bytes": 2089,
+      "path": "PROGRAMMA_DELTA.md",
+      "sha256": "b0d59f34137a0d1ed6d384552d1b6be0ea861c734dd8d3880e051fd72850c98c"
+    },
+    {
+      "bytes": 256063,
+      "path": "SOURCE_MANIFEST.json",
+      "sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58"
+    },
+    {
+      "bytes": 995,
+      "path": "product/run_reused_tests.py",
+      "sha256": "cfccce34b5c2db282db8433c71140169f7311ff1c61106a3641e7a29ba7de2be"
+    },
+    {
+      "bytes": 246,
+      "path": "product/run_s45_s47.py",
+      "sha256": "cca2d67ff93a84c4616dd2e82972952dc4a0c6bf1283a57325d4c052255ca33b"
+    },
+    {
+      "bytes": 246,
+      "path": "product/sorok-s45-s47",
+      "sha256": "cca2d67ff93a84c4616dd2e82972952dc4a0c6bf1283a57325d4c052255ca33b"
+    },
+    {
+      "bytes": 291,
+      "path": "product/sorok_s45_s47/__init__.py",
+      "sha256": "bcbc698ed621d7cf6c293755f555eaabee800e40d9a5120f0edb153c75b0fc6d"
+    },
+    {
+      "bytes": 2221,
+      "path": "product/sorok_s45_s47/audit.py",
+      "sha256": "15a213b08d63ef29333eb906de63e7c40ec62f7abf25a5152920337742b31011"
+    },
+    {
+      "bytes": 3694,
+      "path": "product/sorok_s45_s47/bootstrap.py",
+      "sha256": "69e0654ac5587a652ae90fb2547ada31659a0384bc9b4cf283be5f7becda92f2"
+    },
+    {
+      "bytes": 28837,
+      "path": "product/sorok_s45_s47/cli.py",
+      "sha256": "f656edc351a369e99955b780068034bc3c26246857201e0649aa23a4568f7f6c"
+    },
+    {
+      "bytes": 7327,
+      "path": "tools/build_closure.py",
+      "sha256": "97a5b21851c940af6aa90c7b9b8b943022ebc0171e6e0ecd434627090bae4d26"
+    }
+  ],
+  "branch": "codex/sorok-s45-s47-closure-20261105-r1",
+  "cli_smoke": {
+    "actual-do-help": {
+      "accepted": false,
+      "status": "OK",
+      "strategy": "HELP_REFUSE"
+    },
+    "actual-say": {
+      "status": "OK",
+      "strategy": "HELP_REFUSE"
+    },
+    "actual-verify": {
+      "encounters": [
+        "SAY",
+        "DO_HELP"
+      ],
+      "events": 4,
+      "verify_ok": true
+    },
+    "admit": {
+      "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+      "status": "OK"
+    },
+    "attend": {
+      "status": "NO_CHANGE",
+      "strategy": null
+    },
+    "c9": {
+      "objective_material_eligible": false,
+      "s47_source_in_readset": true,
+      "target_branch": "NO_CHANGE"
+    },
+    "do-help": {
+      "accepted": true,
+      "status": "OK",
+      "strategy": "HELP_ACCEPT"
+    },
+    "interval": {
+      "coverage": [
+        [
+          222,
+          223
+        ]
+      ],
+      "material_after_interval": 0,
+      "mode": "ACTUAL",
+      "status": "PARTIAL"
+    },
+    "say": {
+      "status": "OK",
+      "strategy": "HELP_INVITE"
+    },
+    "scheduled-admit": {
+      "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+      "status": "OK"
+    },
+    "scheduled-attend": {
+      "status": "NO_CHANGE",
+      "strategy": null
+    },
+    "scheduled-c9": {
+      "objective_material_eligible": true,
+      "s47_source_in_readset": true,
+      "target_branch": "NO_CHANGE"
+    },
+    "scheduled-do-help": {
+      "accepted": true,
+      "status": "OK",
+      "strategy": "HELP_ACCEPT"
+    },
+    "scheduled-interval": {
+      "coverage": [],
+      "material_after_interval": 1,
+      "mode": "SCHEDULED_ONLY",
+      "status": "NOT_PERFORMED"
+    },
+    "scheduled-verify": {
+      "encounters": [
+        "DO_HELP",
+        "ATTEND"
+      ],
+      "events": 4,
+      "verify_ok": true
+    },
+    "verify": {
+      "encounters": [
+        "SAY",
+        "DO_HELP",
+        "ATTEND"
+      ],
+      "events": 4,
+      "verify_ok": true
+    }
+  },
+  "commands": [
+    "python3 .local-logs/s45-s47-closure/build_closure.py",
+    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py manifest",
+    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py demo --root .local-logs/s45-s47-closure/final --keep",
+    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_reused_tests.py --junitxml .local-logs/s45-s47-closure/run-2/reused-tests.xml",
+    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py new/say/do-help/attend/interval/admit/c9/verify"
+  ],
+  "cut_restore_readback": {
+    "c9_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "cut_code": "S46_INTERVAL_CONDITION_REVOKED",
+    "restored_same_hash": true
+  },
+  "demo": {
+    "checks": {
+      "actual": true,
+      "admission_source": true,
+      "cold_subprocess_ok": true,
+      "cold_subprocess_same_source": true,
+      "cut_restore": true,
+      "event_local": true,
+      "import_closure": true,
+      "s45": true,
+      "scheduled": true,
+      "source_manifest": true
+    },
+    "cold_subprocess_returncode": 0,
+    "cold_subprocess_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "ok": true,
+    "path": "evidence/DEMO.json",
+    "sha256": "60be26dbc270cd6dd28da7d0dff676198b8e2c4ae1a672624d01a404a13199c0",
+    "state_root_retained": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/s45-s47-closure/final/sorok-s45-s47-cli-wxs6wjf6"
+  },
+  "event_local_readback": {
+    "cold_first_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "first_event_current_source_hash": "da322d47c96dcfb49b2b581199621ee5008e410f71057c848d29ac2675f71366",
+    "first_event_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "first_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+    "first_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+    "second_source_hash": "da322d47c96dcfb49b2b581199621ee5008e410f71057c848d29ac2675f71366",
+    "second_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_735BCB2CBB4332C863DD1977"
+  },
+  "git_status_short": [
+    "?? .local-logs/",
+    "?? .s35-sources/",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/",
+    "?? WORKER_RETURNS/SOROK-PERSONA-PERCEPTION-INPUT-R1/",
+    "?? WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/",
+    "?? WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/",
+    "?? rawlsing_next/__pycache__/"
+  ],
+  "head": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
+  "head_subject": "Sorok: make Codex lead and Browser-first/OpenCode delegation explicit; expand whole-person product commission",
+  "import_audit": {
+    "external_modules": [],
+    "local_modules": 170,
+    "modules": 279,
+    "ok": true,
+    "stdlib_modules": 109
+  },
+  "not_run": [
+    "independent scoped review by a different worker",
+    "PRE-MAIN selective merge",
+    "native CAN008/CAN011, C8 security, C11/C12 native grant",
+    "human usability or external message delivery",
+    "S48-S52 B-actor current-root positive"
+  ],
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "publication_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+  "publication_tree": {
+    "excludes": "__pycache__ and .local-logs run state",
+    "file_count": 455,
+    "total_bytes": 5052515
+  },
+  "pytest": "pytest 9.1.1",
+  "python": "3.11.3",
+  "python_executable": "/usr/local/bin/python3",
+  "reused_tests": {
+    "count": 55,
+    "exit": 0,
+    "junit": "evidence/REUSED_TESTS.xml",
+    "junit_sha256": "9b9f3d0fcbdd389086ed1dc10deefdbd9728fa1cb0033c57dd03c447c1dffee4",
+    "log": "evidence/REUSED_TESTS.log",
+    "log_sha256": "312e47b35838f25cf802c39ef085fcfaa179a10f412ab7268024489b094d9a29",
+    "summary": "======================== 55 passed in 260.35s (0:04:20) ========================"
+  },
+  "s45_readback": {
+    "cold_same_counts": true,
+    "cold_same_root": true,
+    "encounters": [
+      {
+        "kind": "SAY",
+        "status": "OK",
+        "strategy": "HELP_INVITE"
+      },
+      {
+        "kind": "DO_HELP",
+        "status": "OK",
+        "strategy": "HELP_ACCEPT"
+      },
+      {
+        "kind": "ATTEND",
+        "status": "NO_CHANGE",
+        "strategy": null
+      }
+    ],
+    "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+  },
+  "scheduled_readback": {
+    "c9_objective_material_eligible": true,
+    "c9_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+    "c9_source_in_readset": true,
+    "c9_target_branch": "NO_CHANGE",
+    "cold_c9_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+    "do_help_accepted": true,
+    "do_help_status": "OK",
+    "do_help_strategy": "HELP_ACCEPT",
+    "interval_coverage": [],
+    "interval_status": "NOT_PERFORMED",
+    "material_after_interval": 1
+  },
+  "schema": "SOROK_S45_S47_PRODUCT_IMPORT_CLOSURE_READBACK@1",
+  "source_audit": {
+    "files": 417,
+    "manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "ok": true,
+    "problems": [],
+    "schema": "SOROK_S45_S47_PRODUCT_SOURCE_AUDIT@1"
+  },
+  "source_manifest": {
+    "file_count": 417,
+    "integration_cut_files": [
+      {
+        "git_blob": "cf6f970ff12faa2003c43b0261fc7d6497efa356",
+        "path": "WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
+        "reason": "required S47 producer/S42 consumer interface bytes at cumulative cut",
+        "source_commit": "765a441f87292aa4c17794745b65cb54e6aaa83f"
+      },
+      {
+        "git_blob": "0aa6c3503e8d520a9bd6af58af4cabf3b7cc2366",
+        "path": "WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/event.py",
+        "reason": "required S47 producer/S42 consumer interface bytes at cumulative cut",
+        "source_commit": "765a441f87292aa4c17794745b65cb54e6aaa83f"
+      },
+      {
+        "git_blob": "073f115b0aa71b9e609cd84a22b79907fe1b724e",
+        "path": "WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py",
+        "reason": "required S47 producer/S42 consumer interface bytes at cumulative cut",
+        "source_commit": "765a441f87292aa4c17794745b65cb54e6aaa83f"
+      }
+    ],
+    "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58",
+    "total_bytes": 4536618
+  }
+}

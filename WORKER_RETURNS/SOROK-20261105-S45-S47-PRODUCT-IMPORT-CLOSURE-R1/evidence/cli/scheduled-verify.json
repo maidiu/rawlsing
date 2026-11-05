@@ -1,0 +1,337 @@
+{
+  "action": "verify",
+  "encounters": [
+    {
+      "accepted": null,
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_367f1c1bf839ef3f06dd838fe81679f34f14f4f7c507dcf5753b23ac3ff20f26",
+      "kind": "DO_HELP",
+      "native_text": "Sostén el borde cercano. Revisaré la costura.",
+      "reason": "",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_c0ff431ee1e6ecb3cc120b5424cd9366b366e81fb79efb994d538e4ca624a91b",
+      "status": "OK",
+      "strategy": "HELP_ACCEPT",
+      "translation_text": "Hold the near edge. I'll check the seam."
+    },
+    {
+      "accepted": null,
+      "action_event_id": "",
+      "kind": "ATTEND",
+      "native_text": "",
+      "reason": "",
+      "speech_event_id": "",
+      "status": "NO_CHANGE",
+      "strategy": null,
+      "translation_text": ""
+    }
+  ],
+  "events": 4,
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "schema": "SOROK_S45_S47_CLI_ACTION@1",
+  "state": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/s45-s47-closure/run-2/cli/scheduled-state",
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 43,
+      "episode": 58,
+      "perception": 51,
+      "world_event": 17
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "lineage": {
+      "checks": {
+        "no_lineage_is_root_session": true,
+        "parent_is_c12_root": true
+      },
+      "observed": {
+        "branch": {
+          "actor_ids": [
+            "A",
+            "B",
+            "U"
+          ],
+          "branch_id": "first_session",
+          "created_clock": 10,
+          "fork_clock": 10,
+          "parent_branch_id": "root",
+          "root_counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "root_hash": "078ecf78604d21563c12d4749dc1254575d4cac93476398bb749f1b1cbb06174"
+        },
+        "branch_id": "first_session"
+      },
+      "ok": true
+    },
+    "ok": true,
+    "provenance": {
+      "checks": {
+        "binding_readable": true,
+        "branch_has_user": true,
+        "c12_branch_ok": true,
+        "c12_c8_matches": true,
+        "c12_root_ok": true,
+        "c12_s36_matches": true,
+        "c12_source_matches": true,
+        "c8_actor_is_seed_a": true,
+        "c8_matches_sidecar": true,
+        "c8_other_is_seed_b": true,
+        "c8_state_digest_matches_seed": true,
+        "e1_hash_matches_seed": true,
+        "material_access_matches_source": true,
+        "meta_c8_matches_sidecar": true,
+        "meta_case_matches_source": true,
+        "meta_e1_matches_sidecar": true,
+        "native_grants_false": true,
+        "no_native_sidecar": true,
+        "root_actors_a_b": true,
+        "s36_matches_sidecar": true,
+        "source_actor_map": true,
+        "source_b_is_seed_b": true,
+        "source_b_to_is_seed_a": true,
+        "source_matches_c8": true,
+        "source_matches_meta": true,
+        "source_matches_sidecar": true,
+        "source_operation_lawful": true,
+        "source_performed": true,
+        "target_branch_no_change": true,
+        "target_id_absent": true,
+        "target_proposals_zero": true,
+        "target_reason_no_proposal": true,
+        "targetless_meta": true,
+        "tool_state_matches_source": true
+      },
+      "observed": {
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "0ffb09d119d2f842042f08ec049db040f9db72469e1c1378929902bd8dfc19ef",
+        "c9_receipt_hash": "cb4fe0194ccbad2d29f45b1f20cfbbb96486bdde1313997653cf11ddc69ca917",
+        "e1_event_hash": "05c9010f72305a939a34acfb462961d2b6ee23445c386900dae586df59166a81",
+        "response_ref": "eb1dbfd8f0861ef4526a514c7a5f14b1323aafd224eda83d3910adb2c85cf4dd",
+        "seed_actors": {
+          "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
+        },
+        "source_actor_map": {
+          "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+        },
+        "source_b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "source_operation": "SHARE_TOOL",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "tools_remaining": 1
+      },
+      "ok": true
+    },
+    "root": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 1,
+        "episode": 0,
+        "perception": 2,
+        "world_event": 1
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "s36": {
+      "c9_receipt_hash": "cb4fe0194ccbad2d29f45b1f20cfbbb96486bdde1313997653cf11ddc69ca917",
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "response_ref": "eb1dbfd8f0861ef4526a514c7a5f14b1323aafd224eda83d3910adb2c85cf4dd",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL"
+    },
+    "s39_generation": {
+      "attempt_hash": "c04a6aec3d5dd382f746e3b4234dd2c670b96b3ff110717dba424acbe668435a",
+      "attempt_status": "ADMITTED",
+      "event_hash": "ebe8ce16244d3895121479e878a5529b1e08d24dfc8f3d76dfb1ed0a66f6c567",
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_b9c97ad1b68fa8946c7f22386ac3717008a2dc4071fe7a69c0bce6e11e57e3d2",
+      "generation_hash": "36b415704a1afe2584022cd6429ea24ba973d76a0d0f427fafb76ad90ae01ab8",
+      "performed": true,
+      "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+      "s36": {
+        "c9_receipt_hash": "cb4fe0194ccbad2d29f45b1f20cfbbb96486bdde1313997653cf11ddc69ca917",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "eb1dbfd8f0861ef4526a514c7a5f14b1323aafd224eda83d3910adb2c85cf4dd",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "selected_option": "REQUEST_TOOL",
+      "status": "OK"
+    },
+    "s40_language": {
+      "attempt_status": "ADMITTED",
+      "equivalence_receipt_hash": "20133545e997135e22d7343c749575124e748f2c0e6ab3075affab10a42e7483",
+      "language_status": "ACCEPTED",
+      "native_text": "¿Puedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "970bc7087e1cdd2ac9f3b7faea7a388d0f904abb5c27e92cd0b36f7f4c75f441",
+      "s36": {
+        "c9_receipt_hash": "cb4fe0194ccbad2d29f45b1f20cfbbb96486bdde1313997653cf11ddc69ca917",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "eb1dbfd8f0861ef4526a514c7a5f14b1323aafd224eda83d3910adb2c85cf4dd",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "selected_option": "REQUEST_TOOL",
+      "speech_event_hash": "ebe8ce16244d3895121479e878a5529b1e08d24dfc8f3d76dfb1ed0a66f6c567",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_b9c97ad1b68fa8946c7f22386ac3717008a2dc4071fe7a69c0bce6e11e57e3d2",
+      "status": "OK",
+      "translation_text": "May I use the tool?"
+    },
+    "s41_events": [
+      {
+        "attempt_status": "ADMITTED",
+        "e1_event_hash": "05c9010f72305a939a34acfb462961d2b6ee23445c386900dae586df59166a81",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ordinal": 1,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "ADMITTED",
+        "e1_event_hash": "764506b7283da49c63a0db37a99951f4f3c75c035064fa420b1f465e39270709",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+        "event_ordinal": 2,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "OK",
+        "e1_event_hash": "19dbb300b9329f34b5e16e3f58020dcf2472102498d148f5ca3f198b5ab5afde",
+        "e1_event_id": "TEST_ONLY_BP4_EP_cf511058dc7cb3768ef23a33f2164306cb74ab02b74df0cdfd1784e6da753b5c",
+        "event_ordinal": 1000001,
+        "selected_option": "HELP_ACCEPT",
+        "source_operation": "USER_DO_HELP",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "NO_CHANGE",
+        "e1_event_hash": "f4cec8c21fc02aece6f62fd921043970939b5fa42a4069e56107678796b355a7",
+        "e1_event_id": "TEST_ONLY_BP4_EP_eefd1ee0f56dd5256cce1afe595a160fe38b92c7d78a03e567ba27c67c0005ff",
+        "event_ordinal": 1000002,
+        "selected_option": null,
+        "source_operation": "USER_ATTEND",
+        "status": "NO_CHANGE",
+        "target_proposals": []
+      }
+    ],
+    "s42_events": [
+      {
+        "attempt_status": "ADMITTED",
+        "e1_event_hash": "05c9010f72305a939a34acfb462961d2b6ee23445c386900dae586df59166a81",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ordinal": 1,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "ADMITTED",
+        "e1_event_hash": "764506b7283da49c63a0db37a99951f4f3c75c035064fa420b1f465e39270709",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+        "event_ordinal": 2,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "OK",
+        "e1_event_hash": "19dbb300b9329f34b5e16e3f58020dcf2472102498d148f5ca3f198b5ab5afde",
+        "e1_event_id": "TEST_ONLY_BP4_EP_cf511058dc7cb3768ef23a33f2164306cb74ab02b74df0cdfd1784e6da753b5c",
+        "event_ordinal": 1000001,
+        "selected_option": "HELP_ACCEPT",
+        "source_operation": "USER_DO_HELP",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "NO_CHANGE",
+        "e1_event_hash": "f4cec8c21fc02aece6f62fd921043970939b5fa42a4069e56107678796b355a7",
+        "e1_event_id": "TEST_ONLY_BP4_EP_eefd1ee0f56dd5256cce1afe595a160fe38b92c7d78a03e567ba27c67c0005ff",
+        "event_ordinal": 1000002,
+        "selected_option": null,
+        "source_operation": "USER_ATTEND",
+        "status": "NO_CHANGE",
+        "target_proposals": []
+      }
+    ],
+    "s43_events": [
+      {
+        "contrary_relation_ids": [
+          "LME_ENC_4df1f4c5b8f5ef3fdcf711b456e9f60aaa385f18d7e3f1e00fe1ee36d9e3c2a8"
+        ],
+        "currently_available": true,
+        "event_ordinal": 2,
+        "repertoire_hash": "e0d29337fe0f3551e71e7d6d944d8e9b6ced2402649b116907069c7a1acb1888",
+        "repertoire_id": "S43_REP_E0D29337FE0F3551E71E7D6D",
+        "selected_relation_ids": [
+          "LME_ENC_9ff37133d9d7114b9b5b67f643497caca31bfbffaf0a36a84da37b7b00e69a9d"
+        ]
+      }
+    ],
+    "s44_root": {
+      "actor_ids": [
+        "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "TEST_ONLY_BP1_R26V_ACTOR_B"
+      ],
+      "event_ref_count": 11,
+      "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "status": "OK"
+    },
+    "s45_encounters": {
+      "count": 2,
+      "current_access": {
+        "TEST_ONLY_BP4_EP_cf511058dc7cb3768ef23a33f2164306cb74ab02b74df0cdfd1784e6da753b5c": {
+          "LME_ACCESS_8e9b749a1b573d679dc20561237d83696d8243f6a0eeb08341cf69ad557ba12f": "GRANTED"
+        },
+        "TEST_ONLY_BP4_EP_eefd1ee0f56dd5256cce1afe595a160fe38b92c7d78a03e567ba27c67c0005ff": {}
+      },
+      "kinds": [
+        "DO_HELP",
+        "ATTEND"
+      ],
+      "status": "OK"
+    },
+    "s46_intervals": {
+      "count": 1,
+      "states": [
+        {
+          "coverage": [],
+          "currentness": "CURRENT",
+          "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+          "state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "status": "NOT_PERFORMED",
+          "superseded_by": ""
+        }
+      ],
+      "status": "OK"
+    },
+    "s47_conditioning": {
+      "source_class": "ResolvedStructuralContext",
+      "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "status": "OK"
+    },
+    "targetless": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}

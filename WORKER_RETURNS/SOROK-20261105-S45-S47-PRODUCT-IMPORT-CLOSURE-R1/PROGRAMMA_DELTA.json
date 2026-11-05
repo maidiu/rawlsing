@@ -1,0 +1,54 @@
+{
+  "schema": "SOROK_S45_S47_PROGRAMMA_DELTA@1",
+  "delta_class": "TEST_ONLY_SOURCEFREE_PRODUCT_CODE_CLOSURE",
+  "branch": "codex/sorok-s45-s47-closure-20261105-r1",
+  "head": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
+  "publication": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+  "source_manifest_sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58",
+  "source_files": 417,
+  "reused_tests": {
+    "count": 55,
+    "result": "55 passed in 260.35s",
+    "s45": 21,
+    "s46": 17,
+    "s47": 17
+  },
+  "causal_checks": {
+    "actual_material_after_interval": 0,
+    "actual_c9_objective_material_eligible": false,
+    "actual_do_help_accepted": false,
+    "actual_do_help_strategy": "HELP_REFUSE",
+    "scheduled_material_after_interval": 1,
+    "scheduled_c9_objective_material_eligible": true,
+    "scheduled_do_help_accepted": true,
+    "scheduled_do_help_strategy": "HELP_ACCEPT",
+    "event_local_source_preserved": true,
+    "cut_refused_then_restored": true,
+    "admission_time_source_used": true,
+    "cold_subprocess_same_source": true
+  },
+  "import_audit": {
+    "modules": 279,
+    "local_modules": 170,
+    "stdlib_modules": 109,
+    "external_modules": 0,
+    "ok": true
+  },
+  "native_grants": {
+    "actor": false,
+    "rule": false,
+    "source": false,
+    "human": false,
+    "c8": false,
+    "c9": false,
+    "c12": false
+  },
+  "holds": [
+    "independent exact-tree review NOT_RUN",
+    "PRE-MAIN selective receiving NOT_PREPARED",
+    "native CAN008/CAN011/C8/C9/C12 not issued",
+    "Pyat E001/E002 unchanged",
+    "B current-root positive not claimed",
+    "human S11/A5 Gate4/Gate5 not run"
+  ]
+}

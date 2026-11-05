@@ -1,0 +1,330 @@
+{
+  "action": "verify",
+  "encounters": [
+    {
+      "accepted": null,
+      "action_event_id": "",
+      "kind": "SAY",
+      "native_text": "Puedes sostener el borde cercano si lo dices en serio.",
+      "reason": "",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_686a36e0f6180de85a7f05eb553cd09f822e99cd581a0dbd97465712fad3a27e",
+      "status": "OK",
+      "strategy": "HELP_INVITE",
+      "translation_text": "You can hold the near edge if you mean it."
+    },
+    {
+      "accepted": null,
+      "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7b8c47084ac8e9ee2f38a374b8c78141c2c7f9b5f20376e0c4e7548723f929e0",
+      "kind": "DO_HELP",
+      "native_text": "Pon la mano en el borde cercano. Yo tomo la holgura.",
+      "reason": "",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_3d1b3979adb673e0be18d08dda50a808f8db6207aa2b3fa6b9cabfa58c33c56d",
+      "status": "OK",
+      "strategy": "HELP_ACCEPT",
+      "translation_text": "Put your hand on the near edge. I'll take the slack."
+    },
+    {
+      "accepted": null,
+      "action_event_id": "",
+      "kind": "ATTEND",
+      "native_text": "",
+      "reason": "",
+      "speech_event_id": "",
+      "status": "NO_CHANGE",
+      "strategy": null,
+      "translation_text": ""
+    }
+  ],
+  "events": 4,
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "schema": "SOROK_S45_S47_CLI_ACTION@1",
+  "state": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/s45-s47-closure/run-2/cli/s45-state",
+  "verify": {
+    "branch_id": "first_session",
+    "counts": {
+      "checkpoint": 39,
+      "episode": 56,
+      "perception": 54,
+      "world_event": 18
+    },
+    "errors": [],
+    "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+    "lineage": {
+      "checks": {
+        "no_lineage_is_root_session": true,
+        "parent_is_c12_root": true
+      },
+      "observed": {
+        "branch": {
+          "actor_ids": [
+            "A",
+            "B",
+            "U"
+          ],
+          "branch_id": "first_session",
+          "created_clock": 10,
+          "fork_clock": 10,
+          "parent_branch_id": "root",
+          "root_counts": {
+            "checkpoint": 1,
+            "episode": 0,
+            "perception": 2,
+            "world_event": 1
+          },
+          "root_hash": "078ecf78604d21563c12d4749dc1254575d4cac93476398bb749f1b1cbb06174"
+        },
+        "branch_id": "first_session"
+      },
+      "ok": true
+    },
+    "ok": true,
+    "provenance": {
+      "checks": {
+        "binding_readable": true,
+        "branch_has_user": true,
+        "c12_branch_ok": true,
+        "c12_c8_matches": true,
+        "c12_root_ok": true,
+        "c12_s36_matches": true,
+        "c12_source_matches": true,
+        "c8_actor_is_seed_a": true,
+        "c8_matches_sidecar": true,
+        "c8_other_is_seed_b": true,
+        "c8_state_digest_matches_seed": true,
+        "e1_hash_matches_seed": true,
+        "material_access_matches_source": true,
+        "meta_c8_matches_sidecar": true,
+        "meta_case_matches_source": true,
+        "meta_e1_matches_sidecar": true,
+        "native_grants_false": true,
+        "no_native_sidecar": true,
+        "root_actors_a_b": true,
+        "s36_matches_sidecar": true,
+        "source_actor_map": true,
+        "source_b_is_seed_b": true,
+        "source_b_to_is_seed_a": true,
+        "source_matches_c8": true,
+        "source_matches_meta": true,
+        "source_matches_sidecar": true,
+        "source_operation_lawful": true,
+        "source_performed": true,
+        "target_branch_no_change": true,
+        "target_id_absent": true,
+        "target_proposals_zero": true,
+        "target_reason_no_proposal": true,
+        "targetless_meta": true,
+        "tool_state_matches_source": true
+      },
+      "observed": {
+        "c8_occurrence_id": "OCC-0001",
+        "c8_state_digest": "0ffb09d119d2f842042f08ec049db040f9db72469e1c1378929902bd8dfc19ef",
+        "c9_receipt_hash": "2e58cf117d319cf7da047037b323ae4b01058fe3a3305ae3ed54aa8a4a5c3754",
+        "e1_event_hash": "906cb4bec5e4a3e59410b5a1671339d4f7cd08c83d67a37bfad40e2b9c67ee69",
+        "response_ref": "538fb9190f90a48cc8722a11dd3d7f620110ed0da9a9db8a4397b032a200e3fa",
+        "seed_actors": {
+          "a": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "b": "TEST_ONLY_BP1_R26V_ACTOR_B"
+        },
+        "source_actor_map": {
+          "TEST_ONLY_R31J_A": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "TEST_ONLY_R31J_B": "TEST_ONLY_BP1_R26V_ACTOR_B"
+        },
+        "source_b_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "source_operation": "SHARE_TOOL",
+        "target_branch": "NO_CHANGE",
+        "target_reason": "NO_PROPOSAL",
+        "tools_remaining": 1
+      },
+      "ok": true
+    },
+    "root": {
+      "branch_id": "root",
+      "counts": {
+        "checkpoint": 1,
+        "episode": 0,
+        "perception": 2,
+        "world_event": 1
+      },
+      "errors": [],
+      "grade": "TEST_ONLY_QUALIFIED_C12_NOT_NATIVE",
+      "ok": true,
+      "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+    },
+    "s36": {
+      "c9_receipt_hash": "2e58cf117d319cf7da047037b323ae4b01058fe3a3305ae3ed54aa8a4a5c3754",
+      "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+      "response_ref": "538fb9190f90a48cc8722a11dd3d7f620110ed0da9a9db8a4397b032a200e3fa",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL"
+    },
+    "s39_generation": {
+      "attempt_hash": "9b4d2cfd40fa3dbcd5dee9b10ab2b2490c1467ece399f56cc52dc9e0112e7cb0",
+      "attempt_status": "ADMITTED",
+      "event_hash": "2451c06b5506478f3303ec99515d9805ef731e645e75e18fea2e13b4a9225aff",
+      "event_id": "TEST_ONLY_BP4_WORLD_EVT_f5a7e72f503483bef599bbda0801cf6b5c977a9158b5571db39f80b25c7bc3c3",
+      "generation_hash": "52e22f7a21c403dae71dc5cef4294fa765d2c9242123d4318bbe7885f0c80b93",
+      "performed": true,
+      "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+      "s36": {
+        "c9_receipt_hash": "2e58cf117d319cf7da047037b323ae4b01058fe3a3305ae3ed54aa8a4a5c3754",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "538fb9190f90a48cc8722a11dd3d7f620110ed0da9a9db8a4397b032a200e3fa",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "selected_option": "REQUEST_TOOL",
+      "status": "OK"
+    },
+    "s40_language": {
+      "attempt_status": "ADMITTED",
+      "equivalence_receipt_hash": "2db46d9cef9fa241f669bee9820e1e528afaa9d9bb9d8fd699c064781135fcb5",
+      "language_status": "ACCEPTED",
+      "native_text": "¿Puedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "5ef6f346e2f58cb30204fc5d4c0ab6ee3157f62ec21f5244bb5d2f642925079c",
+      "s36": {
+        "c9_receipt_hash": "2e58cf117d319cf7da047037b323ae4b01058fe3a3305ae3ed54aa8a4a5c3754",
+        "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+        "response_kind": "REQUEST_TOOL",
+        "response_ref": "538fb9190f90a48cc8722a11dd3d7f620110ed0da9a9db8a4397b032a200e3fa",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL",
+        "target_state_rows": 0
+      },
+      "selected_option": "REQUEST_TOOL",
+      "speech_event_hash": "2451c06b5506478f3303ec99515d9805ef731e645e75e18fea2e13b4a9225aff",
+      "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_f5a7e72f503483bef599bbda0801cf6b5c977a9158b5571db39f80b25c7bc3c3",
+      "status": "OK",
+      "translation_text": "May I use the tool?"
+    },
+    "s41_events": [
+      {
+        "attempt_status": "ADMITTED",
+        "e1_event_hash": "906cb4bec5e4a3e59410b5a1671339d4f7cd08c83d67a37bfad40e2b9c67ee69",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ordinal": 1,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "OK",
+        "e1_event_hash": "f64b9b6e08daac3c78182a8ae3924ab87840e9d2eda83d3cfe379e053b1dda07",
+        "e1_event_id": "TEST_ONLY_BP4_EP_13f083a546aa64856ba47620f7d10f6a6b2d6f6a028de3fd3a96abe84d8a7f0f",
+        "event_ordinal": 1000001,
+        "selected_option": "HELP_INVITE",
+        "source_operation": "USER_SAY",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "OK",
+        "e1_event_hash": "950f3bd6427bb12a90ef0a63d1c707ec2421ef0af187a0e6a8b280eccaa68965",
+        "e1_event_id": "TEST_ONLY_BP4_EP_e5695e9355117cdba8e414b6f383f6a339d266ea9d3908af3dacec28d40b181a",
+        "event_ordinal": 1000002,
+        "selected_option": "HELP_ACCEPT",
+        "source_operation": "USER_DO_HELP",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "NO_CHANGE",
+        "e1_event_hash": "8b1ec056a18e4b3dae3e04680dd963b0df4c7a9e439553477c4e385548919102",
+        "e1_event_id": "TEST_ONLY_BP4_EP_1e481364be13078ac12173c38aa445a23d77d3628101364089a34628377f3df7",
+        "event_ordinal": 1000003,
+        "selected_option": null,
+        "source_operation": "USER_ATTEND",
+        "status": "NO_CHANGE",
+        "target_proposals": []
+      }
+    ],
+    "s42_events": [
+      {
+        "attempt_status": "ADMITTED",
+        "e1_event_hash": "906cb4bec5e4a3e59410b5a1671339d4f7cd08c83d67a37bfad40e2b9c67ee69",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+        "event_ordinal": 1,
+        "selected_option": "REQUEST_TOOL",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "OK",
+        "e1_event_hash": "f64b9b6e08daac3c78182a8ae3924ab87840e9d2eda83d3cfe379e053b1dda07",
+        "e1_event_id": "TEST_ONLY_BP4_EP_13f083a546aa64856ba47620f7d10f6a6b2d6f6a028de3fd3a96abe84d8a7f0f",
+        "event_ordinal": 1000001,
+        "selected_option": "HELP_INVITE",
+        "source_operation": "USER_SAY",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "OK",
+        "e1_event_hash": "950f3bd6427bb12a90ef0a63d1c707ec2421ef0af187a0e6a8b280eccaa68965",
+        "e1_event_id": "TEST_ONLY_BP4_EP_e5695e9355117cdba8e414b6f383f6a339d266ea9d3908af3dacec28d40b181a",
+        "event_ordinal": 1000002,
+        "selected_option": "HELP_ACCEPT",
+        "source_operation": "USER_DO_HELP",
+        "status": "OK",
+        "target_proposals": []
+      },
+      {
+        "attempt_status": "NO_CHANGE",
+        "e1_event_hash": "8b1ec056a18e4b3dae3e04680dd963b0df4c7a9e439553477c4e385548919102",
+        "e1_event_id": "TEST_ONLY_BP4_EP_1e481364be13078ac12173c38aa445a23d77d3628101364089a34628377f3df7",
+        "event_ordinal": 1000003,
+        "selected_option": null,
+        "source_operation": "USER_ATTEND",
+        "status": "NO_CHANGE",
+        "target_proposals": []
+      }
+    ],
+    "s43_events": [],
+    "s44_root": {
+      "actor_ids": [
+        "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "TEST_ONLY_BP1_R26V_ACTOR_B"
+      ],
+      "event_ref_count": 11,
+      "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "status": "OK"
+    },
+    "s45_encounters": {
+      "count": 3,
+      "current_access": {
+        "TEST_ONLY_BP4_EP_13f083a546aa64856ba47620f7d10f6a6b2d6f6a028de3fd3a96abe84d8a7f0f": {
+          "LME_ACCESS_a1b21fe06727f9cdeb1d40ad68df357746d4a65cd5bf20d412bb96017ee0ab37": "GRANTED"
+        },
+        "TEST_ONLY_BP4_EP_1e481364be13078ac12173c38aa445a23d77d3628101364089a34628377f3df7": {},
+        "TEST_ONLY_BP4_EP_e5695e9355117cdba8e414b6f383f6a339d266ea9d3908af3dacec28d40b181a": {
+          "LME_ACCESS_8c743eef129ba885051a9f3b01de02d3648a4f02baf327df93d81cc3d01ff7d9": "GRANTED"
+        }
+      },
+      "kinds": [
+        "SAY",
+        "DO_HELP",
+        "ATTEND"
+      ],
+      "status": "OK"
+    },
+    "s46_intervals": {
+      "count": 0,
+      "states": [],
+      "status": "OK"
+    },
+    "s47_conditioning": {
+      "source_class": "",
+      "source_ref": "",
+      "status": "NO_CURRENT_INTERVAL"
+    },
+    "targetless": true,
+    "verifier": "R26E_QUALIFIED_C12_PREIMAGE"
+  }
+}
