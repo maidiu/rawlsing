@@ -1,0 +1,17 @@
+name: PROGRAMMA canonical tree integrity
+
+on:
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+  push:
+    branches:
+      - integration/pre-main-reconciliation-r1
+
+jobs:
+  canonical-tree:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify canonical PROGRAMMA guide and historical no-drop
+        run: python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
