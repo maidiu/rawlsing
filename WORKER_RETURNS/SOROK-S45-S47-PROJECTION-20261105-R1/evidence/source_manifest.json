@@ -1,0 +1,90 @@
+{
+  "base": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
+  "local_files": [
+    {
+      "path": "ADAPTER_CONTRACT.json",
+      "sha256": "79996c04efed96d3a82c33cf20a3bdf07ed436ac66f5aba340408b77563c46e0"
+    },
+    {
+      "path": "s45_projection/projection.py",
+      "sha256": "6e7771000b0d50abcdc990192a2d834171640371e6e814694a918eb9286386fd"
+    },
+    {
+      "path": "s45_projection/adapter.py",
+      "sha256": "196a3899e1589967123f13e617385ac20d91a4a5f059da24fdac1001db6ce808"
+    },
+    {
+      "path": "s45_projection/cli.py",
+      "sha256": "e86b8b361a52fb4e63ed66da893987b2ada26b0626e90f6fdab44200fdda9103"
+    },
+    {
+      "path": "tests/test_s45_projection.py",
+      "sha256": "3773462f7debb420d5fe79d85e5da0d046949684f097a33c9ce2ac3f2dc0a8a0"
+    }
+  ],
+  "pins": {
+    "s11": "faec7ce909c54664e85320534bdf744b9bc47d37",
+    "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+    "wp19": "3c4df43f813cd0727feff04f620aa0bbd9a63026"
+  },
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3",
+  "schema": "SOROK_S45_PROJECTION_SOURCE_MANIFEST@1",
+  "sources": {
+    "s11": [
+      {
+        "exact": true,
+        "git_blob_sha1": "d3c7e3c62655f0bfe476a7e7409fa6a953142e37",
+        "path": "02_WP19_CONSUMABLE_INTERFACE.json",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json",
+        "sha256": "ad4add0d10aadf3ebdb4f30ff36d30da0f0e9356e9c5ca714c6e0e55b3071619"
+      }
+    ],
+    "s45": [
+      {
+        "exact": true,
+        "git_blob_sha1": "5b5dc0238dcf9fa4e9f2635655d9e8dfdbf6678c",
+        "path": "s45/session.py",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+        "sha256": "fad26a91d4368d8de665b815bc174678bca97ece6a5a78cc131a5ef6e6db7ab9"
+      },
+      {
+        "exact": true,
+        "git_blob_sha1": "d8d57ddf7cc7d984a71f02579cbb43aeb62b6bef",
+        "path": "s45/language.py",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/language.py",
+        "sha256": "bebc7805bc4a300259b5925e74cb99018e98e6f5a4c4f242704d5cadeeea4202"
+      },
+      {
+        "exact": true,
+        "git_blob_sha1": "9444f96f1c914f9a394099d4679e273e24a78480",
+        "path": "s45/fixtures.py",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/fixtures.py",
+        "sha256": "b3544d8763881794676f9f430592d4a36bf944935709a8299577983b6c707cdd"
+      },
+      {
+        "exact": true,
+        "git_blob_sha1": "5c9d26af119d82e3b010db80e5093535f6738b99",
+        "path": "s45/bootstrap.py",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/bootstrap.py",
+        "sha256": "d9bba59e28d2c4d088560c25ea0b79b434b14597bdf62a1488f4d23d9dbde545"
+      }
+    ],
+    "wp19": [
+      {
+        "exact": true,
+        "git_blob_sha1": "0e5c647aa1f97345f2b8de1d73e57311e36ab864",
+        "path": "wp19/interface.py",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/wp19/interface.py",
+        "sha256": "04f9d3ecce90459cf48f864bcbb315eb4314a6b5616d7b9c53b84e4cf532b604"
+      },
+      {
+        "exact": true,
+        "git_blob_sha1": "51c3e5cdb421c8eaeb5f209b5f7282e051e5827c",
+        "path": "wp19/spec.py",
+        "runtime_path": ".local-logs/s45-projection-runtime/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/wp19/spec.py",
+        "sha256": "522cff4b6736e588737f35f5e167e100d4513f0930e83a67163aa63f4c2614cc"
+      }
+    ]
+  }
+}
