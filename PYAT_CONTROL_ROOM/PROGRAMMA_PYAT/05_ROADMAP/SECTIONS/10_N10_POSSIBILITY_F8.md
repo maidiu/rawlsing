@@ -1,5 +1,8 @@
 # ROADMAP:S10 — N10E empirical possibility plus N10W progressive world-conditioned possibility (F8)
 
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 execution/succession currentness: E41 calculated F2/F4 producer is protected and consumed by learned coordinator, R01/R03 governed grammar and native sourcefree operation compiler also protected, R08 exact request/condition+value evidence binder protected but no direct external production importer observed in 154 source files. P41 pinned historical runtime executes in protected R06 TEST_ONLY; J42 full join is test archive and unsafe for arbitrary conditions. R118 independently accepted per-prefix actual world and empirical native consumption is **branch-only**, reviewed but not protected. Qualified original N9 AND N10E→N10W remains HELD. [Exact R2 lineage](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
+
 > **2026-11-05 CANDIDATE #696 N10E/N10W implementation correction:** E41 extension is exactly ported and actually read in protected learned composition. J42/W41/P41 implemented and exercised 84 joined TEST_ONLY worlds / 252 progressive steps, but R53 P53T reproduced wrong conditioned-evidence selection and unsupported state positives in those historical branches. U53A existing R08 is the scoped repair; the source-qualified native N9 AND N10E → N10W and G0b/Sorok use remain held. [Source census](../E41_R41_R53_NO_LOSS_FUNCTION_CENSUS_20261105_R1.md) · [scientific options](../TERMINAL_F2F4_GF1_SCIENTIFIC_DECISION_COURT_20261105_R1.md).
 
 
