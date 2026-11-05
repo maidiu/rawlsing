@@ -1,4 +1,7 @@
 
+
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 five-test work-selection override (not rewriting 49 frozen GAP identities): protect existing R61 R01/R03/R08 exact accepted local sourcefree implementations and E41 port; **NO_NEW_ENGINE** for these. Current actionable sourcefree work: R08 binder first actual P41/N10W importer/condition-value and negative tests, R118 reviewed branch-only world-conditioned service exact receiving, P41 Git-archive runtime cold-install portability, original source U/Epre and k-way F4 native first-read (separate competent scientific grants). Historic I51 single-target/I05 defect was superseded in part by R03 scoped multi-operation native compilation; it must not independently justify new parser/engine. [Exact R2 lineage](E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
 **WORK-SELECTION INTEGRITY (2026-11-03):** The 49 GAP identities are original source-cut obligations, not 49 commissions or a current defect count. Historical code or missing index rows do not create BUILD tasks without [five documented no-duplicate/consumer/suitability/value tests](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md). Reconcile current PRE-MAIN #646 sourcefree integration using [the versioned Codex edge/next-work handback](CODEX_HQ_CURRENT_EDGE_AND_NEXT_WORK_20261103_R1.md) before prioritizing. Do not erase earlier gaps or claim original35 native closure from the synthetic joined chain.
 
 ## SAT-R work-classification corrections — existing 49 GAPs unchanged
