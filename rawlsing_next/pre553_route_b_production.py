@@ -21,6 +21,7 @@ from typing import Any, Iterable, Mapping
 
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from rawlsing_next.pre553_c11_integrity import TypedAbsence
+from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease
 from rawlsing_next.pre553_carrier_execution import (
     CarrierExecutionBindingError,
@@ -332,11 +333,11 @@ def _typed_state_receipt(
     projection: GovernedC11Projection,
     graph: RouteBEmpiricalObjectGraph,
 ) -> Mapping[str, Any]:
-    c11_states = tuple(sorted({
-        obj.typed_state
-        for obj in release.public_objects
-        if hasattr(obj, "typed_state")
-    }))
+    public = release.public_objects
+    states = {obj.typed_state for obj in release._public_non_events}
+    if isinstance(public, _CompactPublicObjects):
+        states.update(public.event_states)
+    c11_states = tuple(sorted(states))
     fact_states = tuple(sorted({obj.typed_state for obj in graph.empirical_facts}))
     discovery_states = tuple(sorted({obj.typed_state for obj in graph.discovery_receipts}))
     coverage_states = tuple(sorted({obj.coverage_state for obj in graph.discovery_receipts}))
@@ -559,6 +560,7 @@ def execute_route_b_production(
                 "projection": projection,
                 "cache": cache,
                 "batch_size": batch_size,
+                "current_authorities": runtime_catalog.authorities,
             },
             builder_identity=builder_identity,
             runtime_catalog=runtime_catalog,

@@ -1,4 +1,7 @@
 """Exact C11 indexing and empirical predicate evaluation for PRE553 I03."""
+from collections.abc import Iterator
+
+from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects, _RespondentEvents
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
@@ -10,6 +13,28 @@ def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: E
     return target == native or (canonical is not None and target == canonical)
 
 
+def _select_respondent_events(
+    index: _ReleaseIndex, respondent_key: str, target: ExactRef, *,
+    native_only: bool = False, include_component: bool = False,
+    states: frozenset[str] | None = None,
+) -> Iterator[RespondentEvent | _EventRead]:
+    events = index.events_by_respondent[respondent_key]
+    if isinstance(events, _RespondentEvents):
+        yield from events.select(
+            target, native_only=native_only, include_component=include_component, states=states,
+        )
+        return
+    for event in events:
+        if native_only:
+            matches = _ref_field(event, "native_question_ref") == target
+        else:
+            matches = _question_matches(event, target) or (
+                include_component and _ref_field(event, "component_or_subitem_ref", allow_none=True) == target
+            )
+        if matches and (states is None or event.typed_state in states):
+            yield event
+
+
 def _coordinate_matches(coordinate: EmpiricalCoordinateFact, ref: ExactRef) -> bool:
     native = _ref_field(coordinate, "native_coordinate_ref")
     canonical = _ref_field(coordinate, "canonical_coordinate_ref_if_authorized", allow_none=True)
@@ -17,7 +42,8 @@ def _coordinate_matches(coordinate: EmpiricalCoordinateFact, ref: ExactRef) -> b
 
 
 def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> _ReleaseIndex:
-    universes = [o for o in release.public_objects if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
+    public = release.public_objects
+    universes = [o for o in release._public_non_events if isinstance(o, EmpiricalUniverse) and o.ref == universe_ref]
     if len(universes) != 1:
         raise EmpiricalQueryResolutionError("exact universe must resolve once inside sealed C11 release")
     universe = universes[0]
@@ -33,7 +59,7 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
     routing: dict[str, list[RoutingEligibilityFact]] = {key: [] for key in respondents}
     weights: dict[str, list[WeightMeasureFact]] = {key: [] for key in respondents}
     relations: list[SourceUniverseRelation] = []
-    for obj in release.public_objects:
+    for obj in release._public_non_events:
         if isinstance(obj, SourceUniverseRelation):
             if universe_ref.as_dict() in tuple(obj.source_universe_refs):
                 relations.append(obj)
@@ -65,7 +91,12 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
         release=release,
         universe=universe,
         respondents=MappingProxyType(respondents),
-        events_by_respondent=freeze_rows(events),
+        events_by_respondent=(
+            MappingProxyType({
+                key: public.by_respondent.get((universe_ref, key), ()) for key in respondents
+            })
+            if isinstance(public, _CompactPublicObjects) else freeze_rows(events)
+        ),
         coordinates_by_respondent=freeze_rows(coords),
         routing_by_respondent=freeze_rows(routing),
         weights_by_respondent=freeze_rows(weights),
@@ -74,7 +105,7 @@ def _build_release_index(release: C11LogicalRelease, universe_ref: ExactRef) -> 
 
 
 def _validate_public_object_authorities(
-    obj: CanonicalSemanticObject,
+    obj: CanonicalSemanticObject | _EventRead,
     registry: AuthorityRegistry,
 ) -> tuple[AuthorityRef, ...]:
     runtime = None
@@ -122,7 +153,7 @@ def _leaf_match(
     respondent: RespondentIdentity,
     index: _ReleaseIndex,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
     predicate_grammar_authority_ref: AuthorityRef | Mapping[str, Any] | None = None,
     runtime_authorities: Pre553RuntimeAuthoritySet | None = None,
@@ -205,9 +236,7 @@ def _leaf_match(
             runtime_release_ref=index.release.release_ref,
         )
         result = False
-        for event in index.events_by_respondent[respondent_key]:
-            if _ref_field(event, "native_question_ref") != question_ref:
-                continue
+        for event in _select_respondent_events(index, respondent_key, question_ref, native_only=True):
             used.append(event)
             used_auth.extend(_validate_public_object_authorities(event, registry))
             if event.typed_state != "SUBSTANTIVE_RESPONSE":
@@ -237,9 +266,8 @@ def _leaf_match(
         if operator not in {"EQ", "IN", "STATE_EQ"}:
             raise EmpiricalQueryResolutionError("response predicate operator must be EQ/IN/STATE_EQ")
         values = _leaf_exact_values(node, exact_ref_field="response_value_or_state_ref") if operator != "STATE_EQ" else ()
-        events = [e for e in index.events_by_respondent[respondent_key] if _question_matches(e, question_ref)]
         result = False
-        for event in events:
+        for event in _select_respondent_events(index, respondent_key, question_ref):
             if response_auth not in event.authority_snapshot_refs or topo_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("predicate response/topology authority does not bind matched C11 event")
             used.append(event)
@@ -281,9 +309,7 @@ def _leaf_match(
         if desired is None:
             raise EmpiricalQueryResolutionError("typed response predicate requires typed_state")
         result = False
-        for event in index.events_by_respondent[respondent_key]:
-            if not _question_matches(event, question_ref):
-                continue
+        for event in _select_respondent_events(index, respondent_key, question_ref):
             if state_auth not in event.authority_snapshot_refs:
                 raise Pre553AuthorityError("typed-state authority does not bind matched C11 event")
             used.append(event)
@@ -369,7 +395,7 @@ def _eval_predicate(
     respondent: RespondentIdentity,
     index: _ReleaseIndex,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
     derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:

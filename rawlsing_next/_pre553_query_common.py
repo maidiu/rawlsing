@@ -23,6 +23,7 @@ from rawlsing_next.pre553_c11_integrity import (
     RespondentIdentity,
     ReplayManifest,
 )
+from rawlsing_next._pre553_c11_execution_view import _EventRead
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
 from rawlsing_next.pre553_empirical_authority import (
     AuthorityRegistry,
@@ -159,7 +160,7 @@ class _ReleaseIndex:
     release: C11LogicalRelease
     universe: EmpiricalUniverse
     respondents: Mapping[str, RespondentIdentity]
-    events_by_respondent: Mapping[str, tuple[RespondentEvent, ...]]
+    events_by_respondent: Mapping[str, Sequence[RespondentEvent]]
     coordinates_by_respondent: Mapping[str, tuple[EmpiricalCoordinateFact, ...]]
     routing_by_respondent: Mapping[str, tuple[RoutingEligibilityFact, ...]]
     weights_by_respondent: Mapping[str, tuple[WeightMeasureFact, ...]]
@@ -181,7 +182,7 @@ class _Evaluation:
     cell_material: Mapping[str, Any]
     weighted_denominator: Fraction | None
     weighted_cells: Mapping[str, Fraction] | None
-    used_objects: tuple[CanonicalSemanticObject | C11InternalRecord, ...]
+    used_objects: tuple[CanonicalSemanticObject | C11InternalRecord | _EventRead, ...]
     used_authority_refs: tuple[AuthorityRef, ...]
 
 
@@ -213,7 +214,7 @@ def _authority(value: Any, name: str) -> AuthorityRef:
         raise EmpiricalQueryResolutionError(str(exc)) from exc
 
 
-def _ref_field(obj: CanonicalSemanticObject, name: str, *, allow_none: bool = False) -> ExactRef | None:
+def _ref_field(obj: CanonicalSemanticObject | _EventRead, name: str, *, allow_none: bool = False) -> ExactRef | None:
     value = getattr(obj, name)
     if value is None and allow_none:
         return None
@@ -245,8 +246,8 @@ def _object_respondent_ref(obj: CanonicalSemanticObject) -> ExactRef:
     return _ref_field(obj, "scoped_respondent_ref")  # type: ignore[return-value]
 
 
-def _semantic_value(obj: RespondentEvent | EmpiricalCoordinateFact) -> Any:
-    if isinstance(obj, RespondentEvent):
+def _semantic_value(obj: RespondentEvent | _EventRead | EmpiricalCoordinateFact) -> Any:
+    if isinstance(obj, (RespondentEvent, _EventRead)):
         canonical = obj.canonical_response_value_if_authorized
         return canonical if canonical is not None else obj.raw_response_value
     canonical = obj.canonical_coordinate_value_if_authorized
