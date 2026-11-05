@@ -1,0 +1,53 @@
+{
+  "schema": "SOROK_PROGRAMMA_DELTA@1",
+  "delta_id": "SOROK-PR697-RECEIVING-REHEARSAL-20261105-R1",
+  "baseline": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+  "candidate_head": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+  "branch": "codex/sorok-pr697-receiving-rehearsal-20261105-r1",
+  "result": "PASS",
+  "grade": "ENGINEERING_RECEIVING_REHEARSAL_NOT_INDEPENDENT_FINAL_ACCEPTANCE",
+  "merge_tree": {
+    "compatible": true,
+    "tree": "65d7083a774ad4d3415f38382f61871b14369947"
+  },
+  "changed_paths": {
+    "total": 497,
+    "additions": 497,
+    "modifications": 0,
+    "deletions": 0,
+    "unrelated_protected_changes": 0
+  },
+  "candidate_materialization": {
+    "files_expected": 497,
+    "files_matched": 497,
+    "missing": 0,
+    "mismatch": 0,
+    "extra": 0
+  },
+  "source_manifest": {
+    "files": 424,
+    "exact": true,
+    "problems": []
+  },
+  "import_closure": {
+    "external_modules": 0,
+    "ok": true
+  },
+  "demo": "PASS",
+  "causal_harness": {
+    "result": "PASS",
+    "checks": 22
+  },
+  "projection_tests": {
+    "passed": 11,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "programma_canonical_change": false,
+  "product_code_change_to_protected_tree": false,
+  "pr_merged": false,
+  "native_or_human_grant": false,
+  "independent_final_review": false,
+  "next_owner_action": "Independent reviewer reviews PR697 head da97d2624486b783bf5c4f465b17fdcdea3af20a and this rehearsal; only after PASS may the receiving lead prepare a selective PRE-MAIN PR."
+}

@@ -1,0 +1,354 @@
+{
+  "all_checks_pass": true,
+  "base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+  "candidate_materialization": {
+    "all_exact": true,
+    "expected_files": 497,
+    "extra": [],
+    "matched_files": 497,
+    "mismatch": [],
+    "missing": []
+  },
+  "causal_harness": {
+    "checks": {
+      "actual_do_help_refused": true,
+      "actual_performed_material_consumed": true,
+      "actual_s47_source_in_c9_readset": true,
+      "both_targetless_no_change": true,
+      "cold_replay_actual": true,
+      "cold_replay_scheduled": true,
+      "other_actor_preserved": true,
+      "package_modules_under_closure": true,
+      "package_source_manifest_exact": true,
+      "restore_dependency_pass": true,
+      "same_root_actual_scheduled": true,
+      "scheduled_do_help_accepted": true,
+      "scheduled_material_retained": true,
+      "scheduled_s47_source_in_c9_readset": true,
+      "sever_dependency_red": true,
+      "sever_preserves_historical_c9_source": true,
+      "sever_restore_cold_replay": true,
+      "wrong_root_c9_uses_own_source": true,
+      "wrong_root_own_source_still_accepted": true,
+      "wrong_root_resealed_refused": true,
+      "wrong_root_roots_differ": true,
+      "wrong_root_unresealed_refused": true
+    },
+    "elapsed_seconds": 64.797,
+    "result": "PASS",
+    "source_manifest": {
+      "all_exact": true,
+      "imports": {
+        "bp1.composer": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "bp4.world": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "candidate": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "firstclass": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/vendor/m35/firstclass.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "joined.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "language_mediation.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/LANGUAGE_MEDIATION_R1/language_mediation/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "r31e.expression": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s37.harness": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/harness.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s37.producer": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s39.producer": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s40.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/s40/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s41.event": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/event.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s42.reader": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s42.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s43.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s44.root": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s44.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s45.fixtures": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/fixtures.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s45.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s46.producer": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s46.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s47.bootstrap": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/bootstrap.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s47.conditioning": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        },
+        "s47.session": {
+          "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/session.py",
+          "status": "IMPORTED",
+          "under_stage": true
+        }
+      },
+      "modules_under_package": true,
+      "product": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+      "return_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+      "runtime_roots": {
+        "join_e": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+        "language": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/LANGUAGE_MEDIATION_R1",
+        "live": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/rawlsing_next",
+        "package": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47",
+        "product": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+        "return_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+        "s11": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1",
+        "s36": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1",
+        "s37": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1",
+        "s39": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1",
+        "s40": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1",
+        "s41": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1",
+        "s42": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1",
+        "s43": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1",
+        "s44": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1",
+        "s45": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1",
+        "s46": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1",
+        "s47": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1",
+        "vendor": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor",
+        "worker_returns": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS",
+        "wp19": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1"
+      },
+      "schema": "SOROK_S45_S47_HARNESS_PACKAGE_CLOSURE@1",
+      "source_audit": {
+        "files": 424,
+        "manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+        "ok": true,
+        "problems": [],
+        "schema": "SOROK_S45_S47_PRODUCT_SOURCE_AUDIT@1"
+      },
+      "source_manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+      "vendor": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor"
+    }
+  },
+  "changed_path_allowlist": {
+    "all_additions_only": true,
+    "second_level_prefixes": {
+      "WORKER_COMMISSIONS/SOROK-20261105-S45-S47-CANONICAL-SOURCEFREE-PRODUCT-RECEIVING-R1": 1,
+      "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1": 458,
+      "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1": 18,
+      "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1": 20
+    },
+    "statuses": {
+      "A": 497
+    },
+    "top_level_prefixes": {
+      "WORKER_COMMISSIONS": 1,
+      "WORKER_RETURNS": 496
+    },
+    "total": 497
+  },
+  "checks": {
+    "all_pr_paths_additions_only": true,
+    "all_pr_paths_within_allowlist": true,
+    "candidate_materialized_exact": true,
+    "causal_harness_pass": true,
+    "cli_sequence_exit_zero": true,
+    "demo_external_modules_none": true,
+    "demo_pass": true,
+    "demo_source_manifest_exact": true,
+    "import_closure_external_none": true,
+    "merge_tree_compatible": true,
+    "projection_tests_pass": true,
+    "source_manifest_424_exact": true
+  },
+  "cli": {
+    "exit_zero": true,
+    "first_actual_consuming_command": "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py new --state <path>",
+    "sequence": [
+      "new",
+      "view --text",
+      "say",
+      "do-help",
+      "attend",
+      "status",
+      "wait"
+    ],
+    "then": "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py view --state <path> --text"
+  },
+  "commands": {
+    "causal_harness": "python3 -I -B <candidate>/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure <candidate>/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none",
+    "cli": "python3 -I -B run_s45_s47.py new/view/say/do-help/attend/status/wait",
+    "demo": "python3 -I -B run_s45_s47.py demo --root .local-logs/pr697-rehearsal/runs --keep",
+    "manifest": "python3 -I -B run_s45_s47.py manifest",
+    "projection_tests": "python3 -B -m pytest -q -p no:cacheprovider <candidate>/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/tests"
+  },
+  "demo": {
+    "checks": {
+      "actual": true,
+      "admission_source": true,
+      "cold_subprocess_ok": true,
+      "cold_subprocess_same_source": true,
+      "cut_restore": true,
+      "event_local": true,
+      "import_closure": true,
+      "s45": true,
+      "scheduled": true,
+      "source_manifest": true
+    },
+    "cold_subprocess_ok": true,
+    "cold_subprocess_same_source": true,
+    "import_audit": {
+      "external_modules": [],
+      "local_modules": 175,
+      "modules": 284,
+      "ok": true,
+      "schema": "SOROK_S45_S47_PRODUCT_IMPORT_AUDIT@1",
+      "stdlib_modules": 109
+    },
+    "ok": true,
+    "source_audit": {
+      "files": 424,
+      "manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+      "ok": true,
+      "problems": [],
+      "schema": "SOROK_S45_S47_PRODUCT_SOURCE_AUDIT@1"
+    }
+  },
+  "grade": "ENGINEERING_RECEIVING_REHEARSAL_NOT_INDEPENDENT_FINAL_ACCEPTANCE",
+  "head": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+  "import_audit": {
+    "external_modules": [],
+    "local_modules": 167,
+    "modules": 251,
+    "ok": true,
+    "stdlib_modules": 84
+  },
+  "import_scan": {
+    "candidate_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate",
+    "external_modules": [],
+    "external_worktree_rows": [],
+    "local_modules": 167,
+    "modules": 251,
+    "non_candidate_non_stdlib_rows": [],
+    "ok": true,
+    "schema": "SOROK_PR697_IMPORT_AUDIT_SCAN@1",
+    "source": "manifest (full module rows)",
+    "stdlib_modules": 84
+  },
+  "limitations": [
+    "Engineering rehearsal only; not independent final acceptance or code verdict.",
+    "Candidate materialized under .local-logs/pr697-rehearsal/candidate at exact PR head bytes; not added to protected baseline.",
+    "Full S45/S46/S47 author suites intentionally not rerun per no-duplicate-full55 instruction.",
+    "No native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority.",
+    "No provider call, external channel, human trial or paid action."
+  ],
+  "merge_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+  "merge_tree": {
+    "compatible": true,
+    "exit": 0,
+    "tree": "65d7083a774ad4d3415f38382f61871b14369947"
+  },
+  "next_receiving_owner_action": "Independent qualified reviewer must review exact PR head da97d262 and this rehearsal; only after a PASS verdict may the receiving lead prepare a selective PRE-MAIN PR. Do not merge PR697 or alter protected PRE-MAIN in this rehearsal.",
+  "projection_tests": {
+    "errors": 0,
+    "failures": 0,
+    "junit": "evidence/projection_tests.xml",
+    "skipped": 0,
+    "tests": 11
+  },
+  "result": "PASS",
+  "schema": "SOROK_PR697_RECEIVING_REHEARSAL@1",
+  "source_exclusions_and_native_holds": {
+    "c8_original_security_and_native_c9_c12": "NOT_ISSUED",
+    "can008_rule_a": "NOT_ISSUED",
+    "can011_o05_o07": "NOT_ISSUED",
+    "external_channel_paid_action": "NOT_RUN",
+    "full_s45_s46_s47_author_suites": "NOT_RUN (prior 21/17/17 retained; no duplication per instruction)",
+    "human_s11_a5_gate4_gate5": "NOT_RUN",
+    "independent_adp_person_sources": "NOT_ISSUED",
+    "independent_final_review": "NOT_RUN",
+    "native_grants": {
+      "actor": false,
+      "c12": false,
+      "c8": false,
+      "c9": false,
+      "human": false,
+      "rule": false,
+      "source": false
+    },
+    "pyat_native_selected_world": "NOT_ISSUED"
+  },
+  "source_manifest": {
+    "files": 424,
+    "ok": true,
+    "problems": []
+  }
+}

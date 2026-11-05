@@ -1,0 +1,1320 @@
+{
+  "all_checks_pass": true,
+  "checks": {
+    "actual_do_help_refused": true,
+    "actual_performed_material_consumed": true,
+    "actual_s47_source_in_c9_readset": true,
+    "both_targetless_no_change": true,
+    "cold_replay_actual": true,
+    "cold_replay_scheduled": true,
+    "other_actor_preserved": true,
+    "package_modules_under_closure": true,
+    "package_source_manifest_exact": true,
+    "restore_dependency_pass": true,
+    "same_root_actual_scheduled": true,
+    "scheduled_do_help_accepted": true,
+    "scheduled_material_retained": true,
+    "scheduled_s47_source_in_c9_readset": true,
+    "sever_dependency_red": true,
+    "sever_preserves_historical_c9_source": true,
+    "sever_restore_cold_replay": true,
+    "wrong_root_c9_uses_own_source": true,
+    "wrong_root_own_source_still_accepted": true,
+    "wrong_root_resealed_refused": true,
+    "wrong_root_roots_differ": true,
+    "wrong_root_unresealed_refused": true
+  },
+  "commands": {
+    "harness": "/usr/local/bin/python3 /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none --stage-dir /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/causal-harness/stage --work-dir /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/causal-harness/work --logs-dir /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/causal-harness/logs --evidence-dir /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/causal-harness/evidence --json-out /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/causal-harness/harness_run.json",
+    "original_tests": []
+  },
+  "commission": {
+    "base": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
+    "independent_final_review": false,
+    "product_code_modified": false,
+    "return": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1"
+  },
+  "elapsed_seconds": 64.797,
+  "environment": {
+    "cwd": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1",
+    "host": "oldMac.lan",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "pytest": "unavailable",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "python_executable": "/usr/local/bin/python3"
+  },
+  "grade": "TEST_ONLY_ENGINEERING_CAUSAL_REGRESSION_NOT_INDEPENDENT_FINAL_REVIEW",
+  "imports": {
+    "bp1.composer": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "bp4.world": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "candidate": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "firstclass": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/vendor/m35/firstclass.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "joined.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "language_mediation.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/LANGUAGE_MEDIATION_R1/language_mediation/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "r31e.expression": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s37.harness": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/harness.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s37.producer": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s39.producer": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s40.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/s40/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s41.event": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/event.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s42.reader": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s42.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s43.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s44.root": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s44.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s45.fixtures": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/fixtures.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s45.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s46.producer": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s46.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s47.bootstrap": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/bootstrap.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s47.conditioning": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    },
+    "s47.session": {
+      "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/session.py",
+      "status": "IMPORTED",
+      "under_stage": true
+    }
+  },
+  "inputs": {
+    "mode": "PACKAGE_CLOSURE",
+    "package_closure": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+    "source_manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "work_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/causal-harness/work"
+  },
+  "limitations": [
+    "TEST_ONLY engineering evidence over sourcefree synthetic roots.",
+    "Not native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human issuance.",
+    "Not an independent final review or acceptance.",
+    "No product code, expected psychology or other worker files changed.",
+    "Supported S47 qualification refuses a foreign-root source; private-hook source injection outside that seam is not exercised.",
+    "No external channel, human trial, provider call or paid action."
+  ],
+  "original_tests": {
+    "all_checks_pass": true,
+    "checks": {},
+    "reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES",
+    "rows": {},
+    "schema": "SOROK_S45_S47_HARNESS_ORIGINAL_TESTS@1",
+    "selection": "none",
+    "status": "NOT_RUN"
+  },
+  "result": "PASS",
+  "runtime_roots": {
+    "join_e": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+    "language": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/LANGUAGE_MEDIATION_R1",
+    "live": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/rawlsing_next",
+    "package": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47",
+    "product": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+    "return_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+    "s11": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1",
+    "s36": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1",
+    "s37": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1",
+    "s39": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1",
+    "s40": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1",
+    "s41": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1",
+    "s42": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1",
+    "s43": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1",
+    "s44": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1",
+    "s45": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1",
+    "s46": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1",
+    "s47": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1",
+    "vendor": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor",
+    "worker_returns": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS",
+    "wp19": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1"
+  },
+  "scenarios": {
+    "actual": {
+      "c9": {
+        "event_ref": "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "1b93ce1a80856b5dc0b9035cf7e517b9205933e3195011aad0b855e8bff407b1",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "bd2f6c381c17020a962ae73cffdc391eb9d6a99fc626d01a50be1d7eaca47aec",
+          "TEST_ONLY_BP4_WORLD_EVT_2a3b130ec0769da46481e817fe3e3ec12475623a29ee7b83b8c8982c5a759fa7"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "cold": {
+        "current_source": {
+          "access": "denied",
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_knowledge_inferred": false,
+          "as_of": 226,
+          "branch_id": "first_session",
+          "coverage": [
+            [
+              222,
+              223
+            ]
+          ],
+          "currentness": "CURRENT",
+          "domain_issuance_id": "TEST_ONLY_BP4_EP_f8dca502008caa3fcbaedbd922353b5422af683d1d1493caa3f39d5da3f04249",
+          "interval_receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+          "interval_state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+          "material_after_interval": false,
+          "mode": "ACTUAL",
+          "native_authority_claimed": false,
+          "private_b_motive_included": false,
+          "scene": "workshop",
+          "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+          "source_class": "ResolvedStructuralContext",
+          "source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+          "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "status": "PARTIAL"
+        },
+        "encounters": [
+          {
+            "action_event_id": "",
+            "current_access": {
+              "LME_ACCESS_328a6035b0149bb25ae701e2ca5181aa35cefc16b6ada07542b20a6ed73b6d10": "GRANTED"
+            },
+            "kind": "SAY",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_33caaa9e3956785f2797aa42dc40168b0c29e83011e58a1c2aee64446b38c4e6",
+            "status": "OK",
+            "strategy": "HELP_REFUSE"
+          },
+          {
+            "action_event_id": "",
+            "current_access": {
+              "LME_ACCESS_4bc7e8e9b5c9a6415e8b3e8df21f7a293c3740fbb2411ee668e17ed7e15a6106": "GRANTED"
+            },
+            "kind": "DO_HELP",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_4b9babe4008ca1959c05f4eb1f18cfa2daf7b82360d89a04a280686e9c560c77",
+            "status": "OK",
+            "strategy": "HELP_REFUSE"
+          },
+          {
+            "action_event_id": "",
+            "current_access": {},
+            "kind": "ATTEND",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "",
+            "status": "NO_CHANGE",
+            "strategy": null
+          }
+        ],
+        "event_c9": {
+          "event_ref": "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+          "historical_condition_revoked": false,
+          "objective_material_eligible": false,
+          "objective_material_refs": [],
+          "present_condition_revoked": false,
+          "readset_refs": [
+            "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "1b93ce1a80856b5dc0b9035cf7e517b9205933e3195011aad0b855e8bff407b1",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "bd2f6c381c17020a962ae73cffdc391eb9d6a99fc626d01a50be1d7eaca47aec",
+            "TEST_ONLY_BP4_WORLD_EVT_2a3b130ec0769da46481e817fe3e3ec12475623a29ee7b83b8c8982c5a759fa7"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [
+            [
+              222,
+              223
+            ]
+          ],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "selected_event_ref": "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "latest_c9": {
+          "event_ref": "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+          "historical_condition_revoked": false,
+          "objective_material_eligible": false,
+          "objective_material_refs": [],
+          "present_condition_revoked": false,
+          "readset_refs": [
+            "ec9b51b545615fcb50181593d4496f4557426be64830ee1e1be4485007d024d8",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "1b93ce1a80856b5dc0b9035cf7e517b9205933e3195011aad0b855e8bff407b1",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "bd2f6c381c17020a962ae73cffdc391eb9d6a99fc626d01a50be1d7eaca47aec",
+            "TEST_ONLY_BP4_WORLD_EVT_2a3b130ec0769da46481e817fe3e3ec12475623a29ee7b83b8c8982c5a759fa7"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [
+            [
+              222,
+              223
+            ]
+          ],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "verify_ok": true
+      },
+      "conditioning_source": {
+        "access": "denied",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "as_of": 226,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_f8dca502008caa3fcbaedbd922353b5422af683d1d1493caa3f39d5da3f04249",
+        "interval_receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+        "interval_state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+        "material_after_interval": false,
+        "mode": "ACTUAL",
+        "native_authority_claimed": false,
+        "private_b_motive_included": false,
+        "scene": "workshop",
+        "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+        "source_class": "ResolvedStructuralContext",
+        "source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "status": "PARTIAL"
+      },
+      "interval": {
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "domains": {
+          "action_span_units": 1,
+          "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+          "actor_owner_version": "1",
+          "branch_id": "first_session",
+          "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+          "domain_hash": "71610513a53a024237de595a69e6f4cf7609a3538357ce6c9194d46b397c7b60",
+          "domain_id": "S46_DOMAIN_ACTUAL",
+          "end": 226,
+          "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+          "hash": "9cfc87361554c1ea92ef70adaafb3ac6291a2e6a46fc0ef3c4b74c5f50a87b30",
+          "mode": "ACTUAL",
+          "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+          "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+          "model_version": "1",
+          "native": false,
+          "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+          "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+          "policy_version": "1",
+          "psychology_claim": false,
+          "resolution": "BOUNDED_PERIOD_STATE",
+          "schema": "S46_INTERVAL_DOMAIN@1",
+          "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+          "segments": [
+            [
+              222,
+              224
+            ],
+            [
+              224,
+              226
+            ]
+          ],
+          "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+          "start": 222,
+          "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+          "world_owner_version": "1"
+        },
+        "segment_statuses": [
+          "REALIZED",
+          "NOT_PERFORMED"
+        ],
+        "state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+        "status": "PARTIAL"
+      },
+      "material_after": 0,
+      "material_after_cold": 0,
+      "material_after_interval": 0,
+      "material_before": 1,
+      "mode": "ACTUAL",
+      "native_grants": {
+        "actor": false,
+        "c12": false,
+        "c8": false,
+        "c9": false,
+        "human": false,
+        "rule": false,
+        "source": false
+      },
+      "other_actor_preserved": true,
+      "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "root_hash_after": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "root_unchanged": true,
+      "s42_admission": {
+        "attempt_status": "ADMITTED",
+        "selected_option": "REQUEST_TOOL",
+        "status": "OK"
+      },
+      "s45": {
+        "attend_status": "NO_CHANGE",
+        "do_help_accepted": false,
+        "do_help_status": "OK",
+        "do_help_strategy": "HELP_REFUSE",
+        "encounters": [
+          {
+            "action_event_id": "",
+            "current_access": {
+              "LME_ACCESS_328a6035b0149bb25ae701e2ca5181aa35cefc16b6ada07542b20a6ed73b6d10": "GRANTED"
+            },
+            "kind": "SAY",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_33caaa9e3956785f2797aa42dc40168b0c29e83011e58a1c2aee64446b38c4e6",
+            "status": "OK",
+            "strategy": "HELP_REFUSE"
+          },
+          {
+            "action_event_id": "",
+            "current_access": {
+              "LME_ACCESS_4bc7e8e9b5c9a6415e8b3e8df21f7a293c3740fbb2411ee668e17ed7e15a6106": "GRANTED"
+            },
+            "kind": "DO_HELP",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_4b9babe4008ca1959c05f4eb1f18cfa2daf7b82360d89a04a280686e9c560c77",
+            "status": "OK",
+            "strategy": "HELP_REFUSE"
+          },
+          {
+            "action_event_id": "",
+            "current_access": {},
+            "kind": "ATTEND",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "",
+            "status": "NO_CHANGE",
+            "strategy": null
+          }
+        ],
+        "say_status": "OK"
+      },
+      "schema": "SOROK_S45_S47_HARNESS_MODE@1",
+      "target_proposals": [],
+      "verify_ok": true
+    },
+    "all_checks_pass": true,
+    "checks": {
+      "actual_do_help_refused": true,
+      "actual_performed_material_consumed": true,
+      "actual_s47_source_in_c9_readset": true,
+      "both_targetless_no_change": true,
+      "cold_replay_actual": true,
+      "cold_replay_scheduled": true,
+      "other_actor_preserved": true,
+      "restore_dependency_pass": true,
+      "same_root_actual_scheduled": true,
+      "scheduled_do_help_accepted": true,
+      "scheduled_material_retained": true,
+      "scheduled_s47_source_in_c9_readset": true,
+      "sever_dependency_red": true,
+      "sever_preserves_historical_c9_source": true,
+      "sever_restore_cold_replay": true,
+      "wrong_root_c9_uses_own_source": true,
+      "wrong_root_own_source_still_accepted": true,
+      "wrong_root_resealed_refused": true,
+      "wrong_root_roots_differ": true,
+      "wrong_root_unresealed_refused": true
+    },
+    "scheduled": {
+      "c9": {
+        "event_ref": "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": true,
+        "objective_material_refs": [
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+        ],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "72f8da1b746478472cb6f5372cc92c748c588596bf1aa5173b32a00ede0433ae",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "570df3577d95de0732b9d0da42abe71075c15c71fa444a1c5abd56c69a0a1668",
+          "TEST_ONLY_BP4_WORLD_EVT_87f9b52b6cd209e7329ff089c9be1958c8c7fb3f79a2b9112a5bd028c1f57068"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "cold": {
+        "current_source": {
+          "access": "denied",
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_knowledge_inferred": false,
+          "as_of": 226,
+          "branch_id": "first_session",
+          "coverage": [],
+          "currentness": "CURRENT",
+          "domain_issuance_id": "TEST_ONLY_BP4_EP_54b226c4d1f74271dd2a9c7c20b3ed24eed2e199e740d1db3f47b4c4ea763c3f",
+          "interval_receipt_hash": "b5d183f68bec1521af1f6dcbcc3e3d23cab9836b55852e8ea177bbc496de0dc1",
+          "interval_state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "material_after_interval": true,
+          "mode": "SCHEDULED_ONLY",
+          "native_authority_claimed": false,
+          "private_b_motive_included": false,
+          "scene": "workshop",
+          "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+          "source_class": "ResolvedStructuralContext",
+          "source_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
+          "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "status": "NOT_PERFORMED"
+        },
+        "encounters": [
+          {
+            "action_event_id": "",
+            "current_access": {
+              "LME_ACCESS_a1b21fe06727f9cdeb1d40ad68df357746d4a65cd5bf20d412bb96017ee0ab37": "GRANTED"
+            },
+            "kind": "SAY",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_33db7440be5d8a1a88b87018e37504433aa5aa054d11d0b4d5b9563b73bef71f",
+            "status": "OK",
+            "strategy": "HELP_INVITE"
+          },
+          {
+            "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_22c9023440ec9b92a3ca73fbca64db1418ad431ef55c4426f66efb1b1323fd19",
+            "current_access": {
+              "LME_ACCESS_8c743eef129ba885051a9f3b01de02d3648a4f02baf327df93d81cc3d01ff7d9": "GRANTED"
+            },
+            "kind": "DO_HELP",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_a59b5f3fc30eb8eb6bdb3ec6a782206b5a45f0ed61dde832f4c73fd97c4182ee",
+            "status": "OK",
+            "strategy": "HELP_ACCEPT"
+          },
+          {
+            "action_event_id": "",
+            "current_access": {},
+            "kind": "ATTEND",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "",
+            "status": "NO_CHANGE",
+            "strategy": null
+          }
+        ],
+        "event_c9": {
+          "event_ref": "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+          "historical_condition_revoked": false,
+          "objective_material_eligible": true,
+          "objective_material_refs": [
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+          ],
+          "present_condition_revoked": false,
+          "readset_refs": [
+            "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "72f8da1b746478472cb6f5372cc92c748c588596bf1aa5173b32a00ede0433ae",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "570df3577d95de0732b9d0da42abe71075c15c71fa444a1c5abd56c69a0a1668",
+            "TEST_ONLY_BP4_WORLD_EVT_87f9b52b6cd209e7329ff089c9be1958c8c7fb3f79a2b9112a5bd028c1f57068"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "selected_event_ref": "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "latest_c9": {
+          "event_ref": "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+          "historical_condition_revoked": false,
+          "objective_material_eligible": true,
+          "objective_material_refs": [
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+          ],
+          "present_condition_revoked": false,
+          "readset_refs": [
+            "66625aad3c6baddf3b1c755a6ba6b06144e4c87fed9c15c385daf1267a23da00",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "72f8da1b746478472cb6f5372cc92c748c588596bf1aa5173b32a00ede0433ae",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "570df3577d95de0732b9d0da42abe71075c15c71fa444a1c5abd56c69a0a1668",
+            "TEST_ONLY_BP4_WORLD_EVT_87f9b52b6cd209e7329ff089c9be1958c8c7fb3f79a2b9112a5bd028c1f57068"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "verify_ok": true
+      },
+      "conditioning_source": {
+        "access": "granted",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "as_of": 226,
+        "branch_id": "first_session",
+        "coverage": [],
+        "currentness": "CURRENT",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_54b226c4d1f74271dd2a9c7c20b3ed24eed2e199e740d1db3f47b4c4ea763c3f",
+        "interval_receipt_hash": "b5d183f68bec1521af1f6dcbcc3e3d23cab9836b55852e8ea177bbc496de0dc1",
+        "interval_state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+        "material_after_interval": true,
+        "mode": "SCHEDULED_ONLY",
+        "native_authority_claimed": false,
+        "private_b_motive_included": false,
+        "scene": "workshop",
+        "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+        "source_class": "ResolvedStructuralContext",
+        "source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+        "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+        "status": "NOT_PERFORMED"
+      },
+      "interval": {
+        "coverage": [],
+        "domains": {
+          "action_span_units": 1,
+          "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+          "actor_owner_version": "1",
+          "branch_id": "first_session",
+          "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+          "domain_hash": "9c8fd5f41def8f18d213f031e38bb574db5d09cbb259e2f7607b799ef5d44045",
+          "domain_id": "S46_DOMAIN_SCHEDULED_ONLY",
+          "end": 226,
+          "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+          "hash": "9e8b4b2b94f56ff3bfaf5da7cecac875af5df6c6f56cdf608383c3990462e325",
+          "mode": "SCHEDULED_ONLY",
+          "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+          "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+          "model_version": "1",
+          "native": false,
+          "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+          "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+          "policy_version": "1",
+          "psychology_claim": false,
+          "resolution": "BOUNDED_PERIOD_STATE",
+          "schema": "S46_INTERVAL_DOMAIN@1",
+          "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+          "segments": [
+            [
+              222,
+              224
+            ],
+            [
+              224,
+              226
+            ]
+          ],
+          "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+          "start": 222,
+          "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+          "world_owner_version": "1"
+        },
+        "segment_statuses": [
+          "NOT_PERFORMED",
+          "NOT_PERFORMED"
+        ],
+        "state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+        "status": "NOT_PERFORMED"
+      },
+      "material_after": 0,
+      "material_after_cold": 0,
+      "material_after_interval": 1,
+      "material_before": 1,
+      "mode": "SCHEDULED_ONLY",
+      "native_grants": {
+        "actor": false,
+        "c12": false,
+        "c8": false,
+        "c9": false,
+        "human": false,
+        "rule": false,
+        "source": false
+      },
+      "other_actor_preserved": true,
+      "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "root_hash_after": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "root_unchanged": true,
+      "s42_admission": {
+        "attempt_status": "ADMITTED",
+        "selected_option": "REQUEST_TOOL",
+        "status": "OK"
+      },
+      "s45": {
+        "attend_status": "NO_CHANGE",
+        "do_help_accepted": true,
+        "do_help_status": "OK",
+        "do_help_strategy": "HELP_ACCEPT",
+        "encounters": [
+          {
+            "action_event_id": "",
+            "current_access": {
+              "LME_ACCESS_a1b21fe06727f9cdeb1d40ad68df357746d4a65cd5bf20d412bb96017ee0ab37": "GRANTED"
+            },
+            "kind": "SAY",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_33db7440be5d8a1a88b87018e37504433aa5aa054d11d0b4d5b9563b73bef71f",
+            "status": "OK",
+            "strategy": "HELP_INVITE"
+          },
+          {
+            "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_22c9023440ec9b92a3ca73fbca64db1418ad431ef55c4426f66efb1b1323fd19",
+            "current_access": {
+              "LME_ACCESS_8c743eef129ba885051a9f3b01de02d3648a4f02baf327df93d81cc3d01ff7d9": "GRANTED"
+            },
+            "kind": "DO_HELP",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "TEST_ONLY_BP4_WORLD_EVT_a59b5f3fc30eb8eb6bdb3ec6a782206b5a45f0ed61dde832f4c73fd97c4182ee",
+            "status": "OK",
+            "strategy": "HELP_ACCEPT"
+          },
+          {
+            "action_event_id": "",
+            "current_access": {},
+            "kind": "ATTEND",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "speech_event_id": "",
+            "status": "NO_CHANGE",
+            "strategy": null
+          }
+        ],
+        "say_status": "OK"
+      },
+      "schema": "SOROK_S45_S47_HARNESS_MODE@1",
+      "target_proposals": [],
+      "verify_ok": true
+    },
+    "schema": "SOROK_S45_S47_CAUSAL_HARNESS_SCENARIOS@1",
+    "sever_restore": {
+      "cold_first_c9": {
+        "event_ref": "eb56690a7e216b13977f92d656fb9bc5a590cff2abaa53b62f2b7f2250e0a8bb",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "eb56690a7e216b13977f92d656fb9bc5a590cff2abaa53b62f2b7f2250e0a8bb",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "64a10b7c3c81a849db21b2befa44816135567e98feecb9a86f064761eb7e79d9",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "05ac50355e9db6223c442e2c3268a09c015b56b032e1222d74d7dca0e7dd3ec2",
+          "TEST_ONLY_BP4_WORLD_EVT_d1dc7e88725ba46b3752c12f4b251d061288a554d003506b9fd76be0d700b5eb"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "cold_second_c9": {
+        "event_ref": "7db0da81b77b6474d1bab60efcd77e2085932999cf4ed8d705a516d2eff93ea2",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "7db0da81b77b6474d1bab60efcd77e2085932999cf4ed8d705a516d2eff93ea2",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "58ac2eee6ea9ec3cb262c6e9fcfe5eaba6613ae7bf4d9d4d41a52f58e7c68c01",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "36ce10c7b35a5ac4a1edafbaaf596f2b374a64e1c524e0ca9a296d98c6c36d87",
+          "TEST_ONLY_BP4_WORLD_EVT_8b95188a57869ca3718baff914fd1dc7dca556c631d013d9f142e443b97b30fb"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0003",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "cold_verify_ok": true,
+      "cut": {
+        "accepted": false,
+        "code": "S46_INTERVAL_CONDITION_REVOKED"
+      },
+      "event_refs": {
+        "first": "TEST_ONLY_BP2_E1_OCC-0002",
+        "second": "TEST_ONLY_BP2_E1_OCC-0003"
+      },
+      "first_c9": {
+        "event_ref": "eb56690a7e216b13977f92d656fb9bc5a590cff2abaa53b62f2b7f2250e0a8bb",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "eb56690a7e216b13977f92d656fb9bc5a590cff2abaa53b62f2b7f2250e0a8bb",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "64a10b7c3c81a849db21b2befa44816135567e98feecb9a86f064761eb7e79d9",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "05ac50355e9db6223c442e2c3268a09c015b56b032e1222d74d7dca0e7dd3ec2",
+          "TEST_ONLY_BP4_WORLD_EVT_d1dc7e88725ba46b3752c12f4b251d061288a554d003506b9fd76be0d700b5eb"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "historical_after_cut": {
+        "event_ref": "eb56690a7e216b13977f92d656fb9bc5a590cff2abaa53b62f2b7f2250e0a8bb",
+        "historical_condition_revoked": true,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": true,
+        "readset_refs": [
+          "eb56690a7e216b13977f92d656fb9bc5a590cff2abaa53b62f2b7f2250e0a8bb",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "64a10b7c3c81a849db21b2befa44816135567e98feecb9a86f064761eb7e79d9",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "05ac50355e9db6223c442e2c3268a09c015b56b032e1222d74d7dca0e7dd3ec2",
+          "TEST_ONLY_BP4_WORLD_EVT_d1dc7e88725ba46b3752c12f4b251d061288a554d003506b9fd76be0d700b5eb"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "restored_source": {
+        "access": "denied",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "as_of": 226,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_f8dca502008caa3fcbaedbd922353b5422af683d1d1493caa3f39d5da3f04249",
+        "interval_receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+        "interval_state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+        "material_after_interval": false,
+        "mode": "ACTUAL",
+        "native_authority_claimed": false,
+        "private_b_motive_included": false,
+        "scene": "workshop",
+        "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+        "source_class": "ResolvedStructuralContext",
+        "source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "status": "PARTIAL"
+      },
+      "restored_source_same": true,
+      "schema": "SOROK_S45_S47_HARNESS_SEVER_RESTORE@1",
+      "second_c9": {
+        "event_ref": "7db0da81b77b6474d1bab60efcd77e2085932999cf4ed8d705a516d2eff93ea2",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "7db0da81b77b6474d1bab60efcd77e2085932999cf4ed8d705a516d2eff93ea2",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "58ac2eee6ea9ec3cb262c6e9fcfe5eaba6613ae7bf4d9d4d41a52f58e7c68c01",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "36ce10c7b35a5ac4a1edafbaaf596f2b374a64e1c524e0ca9a296d98c6c36d87",
+          "TEST_ONLY_BP4_WORLD_EVT_8b95188a57869ca3718baff914fd1dc7dca556c631d013d9f142e443b97b30fb"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0003",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      }
+    },
+    "wrong_root": {
+      "a_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "a_source": {
+        "access": "denied",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "as_of": 226,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_f8dca502008caa3fcbaedbd922353b5422af683d1d1493caa3f39d5da3f04249",
+        "interval_receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+        "interval_state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+        "material_after_interval": false,
+        "mode": "ACTUAL",
+        "native_authority_claimed": false,
+        "private_b_motive_included": false,
+        "scene": "workshop",
+        "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+        "source_class": "ResolvedStructuralContext",
+        "source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "status": "PARTIAL"
+      },
+      "b_admission_status": "OK",
+      "b_c9": {
+        "event_ref": "065896d3c9b3f598f2104e31b0cecba6337614f96bf13af77cd85ded046df1c5",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "065896d3c9b3f598f2104e31b0cecba6337614f96bf13af77cd85ded046df1c5",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E9ED28B66547CBD99764DC96",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "91c64c4e6f5f41a20e650612cdde0be28633de87a76a3ec76894e294bf1ffaf1",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "83bb43fd882c0dae2c0e53989c0acda47951d61d58f2ef08786a9051d26c2274",
+          "TEST_ONLY_BP4_WORLD_EVT_78c63c68fbc84090b81eba34cedcd4c918f6ac9fe489fed40f1e5995da1bcb5c"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            212,
+            213
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "de80ffb1f0bb32dc8320d88d69639f8040a0f914752e3cc4be01e402addc43cf",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E9ED28B66547CBD99764DC96",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "b_root": "b43c92c076ae9670986c31996d921af00bce804c6bb52bdff25890a6ce0d700c",
+      "b_source": {
+        "access": "denied",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "as_of": 216,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            212,
+            213
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_45d8276d302ba0563f62a61e311a8744c2be63f45972d490d0bc7207d4e44896",
+        "interval_receipt_hash": "25c19c37c788cad810c266f47210b89a14ed00d4c1cc8945d7e00a73df795e11",
+        "interval_state_id": "S46_STATE_E9ED28B66547CBD99764DC96",
+        "material_after_interval": false,
+        "mode": "ACTUAL",
+        "native_authority_claimed": false,
+        "private_b_motive_included": false,
+        "scene": "workshop",
+        "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+        "source_class": "ResolvedStructuralContext",
+        "source_hash": "de80ffb1f0bb32dc8320d88d69639f8040a0f914752e3cc4be01e402addc43cf",
+        "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E9ED28B66547CBD99764DC96",
+        "status": "PARTIAL"
+      },
+      "b_source_after": {
+        "access": "denied",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "as_of": 216,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            212,
+            213
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_45d8276d302ba0563f62a61e311a8744c2be63f45972d490d0bc7207d4e44896",
+        "interval_receipt_hash": "25c19c37c788cad810c266f47210b89a14ed00d4c1cc8945d7e00a73df795e11",
+        "interval_state_id": "S46_STATE_E9ED28B66547CBD99764DC96",
+        "material_after_interval": false,
+        "mode": "ACTUAL",
+        "native_authority_claimed": false,
+        "private_b_motive_included": false,
+        "scene": "workshop",
+        "schema": "S47_INTERVAL_MATERIAL_CONDITION@1",
+        "source_class": "ResolvedStructuralContext",
+        "source_hash": "de80ffb1f0bb32dc8320d88d69639f8040a0f914752e3cc4be01e402addc43cf",
+        "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E9ED28B66547CBD99764DC96",
+        "status": "PARTIAL"
+      },
+      "b_used_own_source": true,
+      "own_source": {
+        "accepted": true,
+        "same_as_own": true,
+        "source_hash": "de80ffb1f0bb32dc8320d88d69639f8040a0f914752e3cc4be01e402addc43cf"
+      },
+      "resealed_foreign": {
+        "accepted": false,
+        "code": "S47_SOURCE_INTERVAL_STATE_ID_MISMATCH"
+      },
+      "roots_differ": true,
+      "schema": "SOROK_S45_S47_HARNESS_WRONG_ROOT@1",
+      "unresealed_foreign": {
+        "accepted": false,
+        "code": "S47_SOURCE_AS_OF_MISMATCH"
+      }
+    }
+  },
+  "schema": "SOROK_S45_S47_CAUSAL_HARNESS@1",
+  "source_manifest": {
+    "all_exact": true,
+    "imports": {
+      "bp1.composer": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp2/vendor/bp1/bp1/composer.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "bp4.world": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "candidate": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1/candidate/__init__.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "firstclass": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/vendor/m35/firstclass.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "joined.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/joined/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "language_mediation.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/LANGUAGE_MEDIATION_R1/language_mediation/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "r31e.expression": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/e/r31e/expression.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s37.harness": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/harness.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s37.producer": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s39.producer": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/producer.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s40.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1/s40/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s41.event": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/s41/event.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s42.reader": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/reader.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s42.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s43.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1/s43/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s44.root": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/root.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s44.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s45.fixtures": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/fixtures.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s45.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s46.producer": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/producer.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s46.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1/s46/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s47.bootstrap": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/bootstrap.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s47.conditioning": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/conditioning.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      },
+      "s47.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/session.py",
+        "status": "IMPORTED",
+        "under_stage": true
+      }
+    },
+    "modules_under_package": true,
+    "product": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+    "return_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+    "runtime_roots": {
+      "join_e": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1",
+      "language": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/LANGUAGE_MEDIATION_R1",
+      "live": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/rawlsing_next",
+      "package": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47",
+      "product": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+      "return_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+      "s11": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1",
+      "s36": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S36-ACTOR-ACCESS-RESPONSE-R1",
+      "s37": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1",
+      "s39": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1",
+      "s40": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S40-GENERATED-NATIVE-SPEECH-R1",
+      "s41": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1",
+      "s42": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1",
+      "s43": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S43-HISTORICAL-LANGUAGE-CONSUMER-R1",
+      "s44": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1",
+      "s45": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1",
+      "s46": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S46-INTERVAL-PARTICIPATION-CONSUMER-R1",
+      "s47": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1",
+      "vendor": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor",
+      "worker_returns": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS",
+      "wp19": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1"
+    },
+    "schema": "SOROK_S45_S47_HARNESS_PACKAGE_CLOSURE@1",
+    "source_audit": {
+      "files": 424,
+      "manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+      "ok": true,
+      "problems": [],
+      "schema": "SOROK_S45_S47_PRODUCT_SOURCE_AUDIT@1"
+    },
+    "source_manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "vendor": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/.local-logs/pr697-rehearsal/candidate/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor"
+  }
+}
