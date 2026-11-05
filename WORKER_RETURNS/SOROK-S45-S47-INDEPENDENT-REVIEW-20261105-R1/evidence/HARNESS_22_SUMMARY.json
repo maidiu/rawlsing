@@ -1,0 +1,80 @@
+{
+  "actual": {
+    "c9_material_eligible": false,
+    "do_help_accepted": false,
+    "do_help_strategy": "HELP_REFUSE",
+    "material_after_interval": 0,
+    "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+  },
+  "checks": {
+    "actual_do_help_refused": true,
+    "actual_performed_material_consumed": true,
+    "actual_s47_source_in_c9_readset": true,
+    "both_targetless_no_change": true,
+    "cold_replay_actual": true,
+    "cold_replay_scheduled": true,
+    "other_actor_preserved": true,
+    "package_modules_under_closure": true,
+    "package_source_manifest_exact": true,
+    "restore_dependency_pass": true,
+    "same_root_actual_scheduled": true,
+    "scheduled_do_help_accepted": true,
+    "scheduled_material_retained": true,
+    "scheduled_s47_source_in_c9_readset": true,
+    "sever_dependency_red": true,
+    "sever_preserves_historical_c9_source": true,
+    "sever_restore_cold_replay": true,
+    "wrong_root_c9_uses_own_source": true,
+    "wrong_root_own_source_still_accepted": true,
+    "wrong_root_resealed_refused": true,
+    "wrong_root_roots_differ": true,
+    "wrong_root_unresealed_refused": true
+  },
+  "checks_all_true": true,
+  "checks_total": 22,
+  "cold_replay_actual": true,
+  "cold_replay_scheduled": true,
+  "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "mode": "PACKAGE_CLOSURE",
+  "modules_under_package": true,
+  "original_tests": {
+    "all_checks_pass": true,
+    "reason": "PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE",
+    "selection": "none",
+    "status": "NOT_RUN"
+  },
+  "result": "PASS",
+  "scheduled": {
+    "c9_material_eligible": true,
+    "do_help_accepted": true,
+    "do_help_strategy": "HELP_ACCEPT",
+    "material_after_interval": 1,
+    "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+  },
+  "schema": "SOROK_S45_S47_HARNESS_22_SUMMARY@1",
+  "sever_restore": {
+    "cut": {
+      "accepted": false,
+      "code": "S46_INTERVAL_CONDITION_REVOKED"
+    },
+    "restored_source_same": true
+  },
+  "source_audit": {
+    "files": 424,
+    "manifest": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "ok": true,
+    "problems": [],
+    "schema": "SOROK_S45_S47_PRODUCT_SOURCE_AUDIT@1"
+  },
+  "wrong_root": {
+    "b_used_own_source": true,
+    "resealed": {
+      "accepted": false,
+      "code": "S47_SOURCE_INTERVAL_STATE_ID_MISMATCH"
+    },
+    "unresealed": {
+      "accepted": false,
+      "code": "S47_SOURCE_AS_OF_MISMATCH"
+    }
+  }
+}

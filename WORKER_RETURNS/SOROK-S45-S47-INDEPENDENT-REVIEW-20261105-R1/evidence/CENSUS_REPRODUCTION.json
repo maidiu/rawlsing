@@ -1,0 +1,28 @@
+{
+  "copy_after_added_pycache": {
+    "file_count": 462,
+    "total_bytes": 5201019
+  },
+  "copy_before": {
+    "file_count": 462,
+    "total_bytes": 5201019
+  },
+  "definition": "all regular files under package return root excluding READBACK.json and any __pycache__ component",
+  "matches_readback": true,
+  "readback": {
+    "excluded": [
+      "READBACK.json",
+      "**/__pycache__/**"
+    ],
+    "file_count": 462,
+    "total_bytes": 5201019
+  },
+  "reproduced": {
+    "file_count": 462,
+    "pycache_excluded": true,
+    "self_excluded": true,
+    "total_bytes": 5201019
+  },
+  "schema": "SOROK_S45_S47_CENSUS_REPRODUCTION@1",
+  "tool": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/tools/readback_census.py"
+}

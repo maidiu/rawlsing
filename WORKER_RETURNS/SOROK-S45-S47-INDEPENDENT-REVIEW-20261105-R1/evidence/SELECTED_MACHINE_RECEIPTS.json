@@ -1,0 +1,222 @@
+{
+  "final_integration_da97": {
+    "actual": {
+      "c9_material_eligible": false,
+      "do_help_status": "REFUSED",
+      "do_help_strategy": "HELP_REFUSE",
+      "material_after_interval": 0
+    },
+    "cold_replay": {
+      "actual": true,
+      "nonmutation": true,
+      "scheduled": true
+    },
+    "harness": {
+      "checks": 22,
+      "checks_all_true": true,
+      "mode": "PACKAGE_CLOSURE",
+      "modules_under_package": true,
+      "original_tests": "NOT_RUN",
+      "result": "PASS",
+      "source_audit_files": 424
+    },
+    "manifest_files": 424,
+    "manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
+    "privacy": {
+      "new_root_hash_present": true,
+      "projected_surface_private_key_or_marker_violations": 0,
+      "view_text_markers": 0
+    },
+    "projected_demo": {
+      "checks_all_true": true,
+      "cold_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+      "cold_subprocess_returncode": 0,
+      "import_audit": {
+        "external": 0,
+        "local": 175,
+        "modules": 284,
+        "stdlib": 109
+      },
+      "ok": true
+    },
+    "projection_tests": {
+      "exit": 0,
+      "mode": "PACKAGE_CLOSURE",
+      "result": "11 passed"
+    },
+    "projection_wrong_root": {
+      "foreign_whole_root": "S37_VERIFY_FAILED",
+      "own_restored": true,
+      "tamper": "S44_CANDIDATE_REPLAY_HASH_MISMATCH"
+    },
+    "same_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "scheduled_only": {
+      "c9_material_eligible": true,
+      "do_help_status": "OK",
+      "do_help_strategy": "HELP_ACCEPT",
+      "material_after_interval": 1
+    },
+    "seam": {
+      "external_imports": 0,
+      "other_worker_returns_imports": 0,
+      "package_alone_projected_cli_fails": "ModuleNotFoundError: No module named s45_projection",
+      "projection_plus_package_adjacent_works": true
+    },
+    "stale_forged_wrong_root": {
+      "cold_c9_same": true,
+      "own_source_accepted": true,
+      "resealed": "S47_SOURCE_INTERVAL_STATE_ID_MISMATCH",
+      "unresealed": "S47_SOURCE_AS_OF_MISMATCH"
+    }
+  },
+  "focused_fix_41bf458": {
+    "cli_all_checks_true": true,
+    "cli_checks": {
+      "all_commands_exit_zero": true,
+      "new_is_public_view": true,
+      "no_private_or_forbidden_violations": true,
+      "no_root_hash_or_root_id_in_json": true,
+      "results_are_public_result_schema": true,
+      "status_is_public_status_schema": true,
+      "view_is_public_view": true
+    },
+    "corrections": {
+      "harness_original_tests": {
+        "package_all_error": "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:all:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE",
+        "package_all_exit": 2,
+        "package_all_result": "ERROR",
+        "package_none_checks": 22,
+        "package_none_checks_all_true": true,
+        "package_none_exit": 0,
+        "package_none_modules_under_package": true,
+        "package_none_original_tests": "NOT_RUN",
+        "package_none_reason": "PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE",
+        "package_none_result": "PASS",
+        "package_none_source_audit_files": 424,
+        "package_s47_error": "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:s47:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE",
+        "package_s47_exit": 2,
+        "package_s47_result": "ERROR",
+        "refusal_before_pass": true,
+        "refusal_elapsed_seconds": 0.002
+      },
+      "public_cli": {
+        "commands_checked": [
+          "new",
+          "view",
+          "say",
+          "do-help",
+          "attend",
+          "status",
+          "wait",
+          "exit",
+          "return",
+          "absence",
+          "view --text"
+        ],
+        "focused_product_tests": "2 passed",
+        "new_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+        "private_key_or_marker_violations": 0,
+        "result_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+        "root_hash_present": false,
+        "root_id_present": false,
+        "status_schema": "SOROK_WP19_STATUS@1",
+        "view_schema": "SOROK_WP19_ENCOUNTER_VIEW@1"
+      },
+      "readback_census": {
+        "copy_with_added_pycache_same_count_bytes": true,
+        "definition": "all regular files under package return root excluding READBACK.json and any __pycache__ component",
+        "excludes_pycache": true,
+        "excludes_readback": true,
+        "readback_file_count": 462,
+        "readback_total_bytes": 5201019,
+        "reproduced_file_count": 462,
+        "reproduced_total_bytes": 5201019,
+        "tool": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/tools/readback_census.py"
+      },
+      "source_manifest": {
+        "files": 424,
+        "sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
+        "sha_matches_readback": true,
+        "unchanged_from_parent": true
+      }
+    },
+    "harness_focused_22_checks_all_true": true,
+    "harness_focused_original_tests": {
+      "all_checks_pass": true,
+      "checks": {},
+      "reason": "PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE",
+      "rows": {},
+      "schema": "SOROK_S45_S47_HARNESS_ORIGINAL_TESTS@1",
+      "selection": "none",
+      "status": "NOT_RUN"
+    },
+    "harness_focused_result": "PASS",
+    "harness_focused_source_audit_files": 424,
+    "harness_prior_22_checks_all_true": true,
+    "limitations": [
+      "ACCEPT applies to the adjacent package+projection+harness unit at 41bf458; it does not make the package return alone a projected user shipping unit.",
+      "Prior 55 author tests and 11 projection tests were reused from accepted evidence, not rerun; projection code and product vendor blobs are unchanged between da97d262 and 41bf458.",
+      "Package harness now requires explicit --original-tests none; omitted or explicit all/s47 refuses exit 2 by design.",
+      "status retains local root/store path strings, but no root_hash/root_id or projection private markers.",
+      "No native C8/C9/C12, CAN008/CAN011, ADP, Pyat, human usability/delivery or PRE-MAIN merge is accepted."
+    ],
+    "manifest_all_hashes_match": true,
+    "manifest_unchanged": true,
+    "refusal_all": {
+      "error": "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:all:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE",
+      "exit": 2,
+      "result": "ERROR"
+    },
+    "refusal_s47": {
+      "error": "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:s47:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE",
+      "exit": 2,
+      "result": "ERROR"
+    },
+    "reused_evidence": {
+      "not_rerun_per_instruction": true,
+      "prior_11": "prior-da97d262/projection-package-tests.log (11 passed)",
+      "prior_22": "prior-da97d262/harness-package/harness_run.json (22/22)",
+      "prior_55": "prior-da97d262/prior-package-e42faf01/reused-tests.log (55 passed)"
+    }
+  },
+  "package_e42faf01": {
+    "actual": {
+      "c9_material_eligible": false,
+      "do_help": "HELP_REFUSE",
+      "material": 0
+    },
+    "cold_nonmutation": true,
+    "duplicate_refused": true,
+    "git_blob_matches": 417,
+    "import_audit": {
+      "external": 0,
+      "local": 170,
+      "modules": 279,
+      "stdlib": 109
+    },
+    "independent_probe_checks": "7 passed",
+    "manifest_files": 417,
+    "manifest_sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58",
+    "reused_tests": "55 passed",
+    "same_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "scheduled_only": {
+      "c9_material_eligible": true,
+      "do_help": "HELP_ACCEPT",
+      "material": 1
+    },
+    "sever_restore": true,
+    "sha256_matches": 417,
+    "targeted_dependency_tests": "3 passed",
+    "targeted_duplicate_tests": "2 passed",
+    "wrong_root_refused": true
+  },
+  "residual_limits": [
+    "ACCEPT is scoped to the adjacent package+projection+harness shipping unit; the package return alone does not contain s45_projection.",
+    "The 424-source manifest pins pinned source/test vendor blobs, not the adjacent s45_projection adapter code; projection/harness are separate returns with their own receipts.",
+    "Prior 55 author tests and 11 projection tests were reused from accepted evidence at the same source; they were not rerun for the focused fix commit.",
+    "Package harness mode requires explicit --original-tests none; omitted/default/all/s47 refuses exit 2 by design.",
+    "status retains local root/store path strings but no root_hash/root_id or projection private markers.",
+    "No native C8/C9/C12, CAN008/CAN011, ADP, Pyat, human usability/delivery, PRE-MAIN merge or protected write is accepted."
+  ],
+  "schema": "SOROK_S45_S47_INDEPENDENT_REVIEW_SELECTED_RECEIPTS@1"
+}

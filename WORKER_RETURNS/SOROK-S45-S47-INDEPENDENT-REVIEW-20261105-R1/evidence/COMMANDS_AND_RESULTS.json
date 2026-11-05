@@ -1,0 +1,93 @@
+{
+  "note": "Completed review commands and observed results; no tests were rerun for this publication return.",
+  "schema": "SOROK_S45_S47_INDEPENDENT_REVIEW_COMMANDS@1",
+  "stages": [
+    {
+      "commands": [
+        {
+          "command": "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py manifest",
+          "result": "exit 0; 417/417 source files; import 279 modules / 170 local / 109 stdlib / 0 external"
+        },
+        {
+          "command": "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py demo --root .local-logs/package-review/demo --keep",
+          "result": "exit 0; all ten checks true; ACTUAL refused, SCHEDULED accepted; cold source e196c974..."
+        },
+        {
+          "command": "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_reused_tests.py --junitxml .local-logs/package-review/reused-tests.xml",
+          "result": "55 passed in 217.36s"
+        },
+        {
+          "command": "python3 -m pytest -q WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/tests/test_s42_ongoing.py::test_history_ref_reorder_duplicate_missing_refused WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/tests/test_s42_ongoing.py::test_wrong_branch_history_source_refused WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/tests/test_s44_sampled_root.py::test_changed_root_rule_is_refused_at_actual_reader_then_restored --junitxml=.local-logs/package-review/targeted-dependency-tests.xml",
+          "result": "3 passed in 6.71s"
+        },
+        {
+          "command": "python3 -m pytest -q WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S41-CONTINUING-PERSON-EVENTS-R1/tests/test_s41_continuation.py::test_open_second_event_no_actor_action_and_duplicate_replay WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/tests/test_s42_ongoing.py::test_incoming_source_replay_at_same_clock_refused --junitxml=.local-logs/package-review/targeted-duplicate-tests.xml",
+          "result": "2 passed in 2.97s"
+        },
+        {
+          "command": "python3 .local-logs/package-review/probe_spine.py",
+          "result": "7/7 independent probe checks passed"
+        }
+      ],
+      "stage": "package e42faf01"
+    },
+    {
+      "commands": [
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider --junitxml=.local-logs/final-integration-review/projection-package-tests.xml WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/tests",
+          "result": "11 passed in 18.63s; package closure mode"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none --json-out .local-logs/final-integration-review/harness-package/harness_run.json --logs-dir .local-logs/final-integration-review/harness-package/logs --evidence-dir .local-logs/final-integration-review/harness-package/evidence --work-dir .local-logs/final-integration-review/harness-package/work --stage-dir .local-logs/final-integration-review/harness-package/stage --keep-work",
+          "result": "PASS 22/22; source audit 424/424; modules under package; elapsed 56.159s"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py demo --root .local-logs/final-integration-review/projected-demo --keep",
+          "result": "exit 0; all ten checks true; import 284/175/109/0; cold source e196c974..."
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B .local-logs/final-integration-review/probe_final_integration.py",
+          "result": "5/5 independent integration probe groups passed"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B .local-logs/final-integration-review/probe_projection_wrong_root.py",
+          "result": "tampered/foreign root refused; own root restored"
+        }
+      ],
+      "stage": "final integration da97d262"
+    },
+    {
+      "commands": [
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider --junitxml=.local-logs/focused-fix-review/focused-cli-privacy.xml WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/tests",
+          "result": "2 passed in 7.91s"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B .local-logs/focused-fix-review/probe_public_cli.py",
+          "result": "all commands exit 0; new/view WP19 view; results/status public; no root_hash/root_id/private markers"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests all --json-out .local-logs/focused-fix-review/harness/refuse-all/harness.json --logs-dir .local-logs/focused-fix-review/harness/refuse-all/logs --evidence-dir .local-logs/focused-fix-review/harness/refuse-all/evidence --work-dir .local-logs/focused-fix-review/harness/refuse-all/work --stage-dir .local-logs/focused-fix-review/harness/refuse-all/stage",
+          "result": "exit 2; ERROR PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:all:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE; no PASS report/harness.json"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests s47 --json-out .local-logs/focused-fix-review/harness/refuse-s47/harness.json --logs-dir .local-logs/focused-fix-review/harness/refuse-s47/logs --evidence-dir .local-logs/focused-fix-review/harness/refuse-s47/evidence --work-dir .local-logs/focused-fix-review/harness/refuse-s47/work --stage-dir .local-logs/focused-fix-review/harness/refuse-s47/stage",
+          "result": "exit 2; ERROR PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:s47:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE; no PASS report/harness.json"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none --json-out .local-logs/focused-fix-review/harness/none/harness.json --logs-dir .local-logs/focused-fix-review/harness/none/logs --evidence-dir .local-logs/focused-fix-review/harness/none/evidence --work-dir .local-logs/focused-fix-review/harness/none/work --stage-dir .local-logs/focused-fix-review/harness/none/stage --keep-work",
+          "result": "exit 0; PASS 22/22; source audit 424; modules_under_package true; original_tests NOT_RUN reason PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE"
+        },
+        {
+          "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/tools/readback_census.py",
+          "result": "462 files / 5,201,019 bytes; matches READBACK; excludes READBACK and pycache"
+        },
+        {
+          "command": "manifest byte comparison: git show da97d2624:WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json + sha256 over the current file; receipt evidence/manifest-unchanged-check.json",
+          "result": "424-file manifest byte-identical to da97d262; SHA-256 2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b; all 424 installed file hashes match"
+        }
+      ],
+      "stage": "focused fix 41bf458"
+    }
+  ]
+}

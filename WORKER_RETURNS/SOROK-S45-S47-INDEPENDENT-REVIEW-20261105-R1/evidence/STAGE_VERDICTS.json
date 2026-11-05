@@ -1,0 +1,39 @@
+{
+  "native_human_holds": {
+    "adp_actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "can008": false,
+    "can011": false,
+    "human": false,
+    "native": false,
+    "pre_main": false,
+    "protected_write": false,
+    "pyat_world": false
+  },
+  "schema": "SOROK_S45_S47_INDEPENDENT_REVIEW_STAGE_VERDICTS@1",
+  "verdicts": [
+    {
+      "head": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+      "preserved": true,
+      "scope": "TEST_ONLY sourcefree S45-S47 package import closure and engineering demo; package-only at this cut",
+      "stage": "package closure",
+      "verdict": "ACCEPT"
+    },
+    {
+      "head": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+      "preserved": true,
+      "scope": "adjacent package+projection+harness unit; projected user CLI requires adjacent projection return",
+      "stage": "final integration",
+      "verdict": "ACCEPT"
+    },
+    {
+      "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+      "preserved": true,
+      "scope": "only three focused corrections: reproducible census, public CLI receipts, explicit harness original-tests refusal; adjacent three-return unit",
+      "stage": "focused closure",
+      "verdict": "ACCEPT"
+    }
+  ]
+}
