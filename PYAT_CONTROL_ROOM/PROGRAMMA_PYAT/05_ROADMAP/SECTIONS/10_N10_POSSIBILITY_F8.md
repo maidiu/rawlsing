@@ -1,10 +1,5 @@
 # ROADMAP:S10 — N10E empirical possibility plus N10W progressive world-conditioned possibility (F8)
 
-## NEXT R N10E/N10W real consumer ceiling and AND gate — 2026-11-03
-
-**S10.1–S10.4; GAP-042–045.** Current [N10E empirical possibility provider](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_empirical_possibility_provider.py) and selected PR646 [actual R05→P41 first reader](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_universal_world_binding.py#L690) are bounded sourcefree implementations. In that selected path the R05-backed P41 provider returns a **retained single Y|X step**, not proof of fresh arbitrary-depth N10E; older J42 branch demonstrates a separate three-step test-only joined execution, not current protected native N9. For `N10W` the original demand is **N9 AND N10E** at compatible current/as-of source version, actor/context/subject positioning, rights, counterfactual alternatives and an actual joint reader. Sourcefree P41 does not make that original joint native. Preserve independent possibilities and F8 conditional demand; no N11 implication. [Current 82 edge identities](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md), [backward AND/unlocks](../PREREQUISITES_AND_UNLOCKS.md).
-
-
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
@@ -136,3 +131,6 @@ Inputs: real qualified N9 **AND** computed N10E, competent source/science/model-
 - **G1B-S32** Scope-specific F8 applicability → Positioned possibility evaluation: **PARTIAL_BOUND_GUARD**; [pinned source](https://github.com/maidiu/rawlsing/blob/9809203fd915a84bae056a67210e9213879840db/rawlsing_next/pre553_service_f8_source_scope_binding.py); Current binder/evaluator present; first native selected-world receiver missing.
 
 **Scope:** G1-B direct or W1-B-inherited code/caller receipts at an exact frozen cut, not G2 S2 execution. [G1-A](https://github.com/maidiu/rawlsing/blob/3ac2bfeca4c79ae794bb896483d79ab195307e92/WORKER_RETURNS/PROG5_G1_A_MAIN_HERITAGE_R1/00_RETURN.md) and [G1-B](https://github.com/maidiu/rawlsing/blob/7ee67766503a13d2eae6441afda1a869b83a40e6/WORKER_RETURNS/PROG5_G1_B_CURRENT_OWNERS_R1/00_RETURN.md) retain the complete provenance and negative court. The remaining GitHub first-consumer/adoption/native sweep follows this rough map; no N11/N12 issuance here.
+
+## PSR1 post-FF seam applicability/AND law
+[POST_FF_R2_V558_TO_V3_SEAM_ADEQUACY](../POST_FF_R2_V558_TO_V3_SEAM_ADEQUACY_20261104_R1.md) and [post-R2 11-question matrix](../POST_FF_R2_SEAM_STARVATION_MATRIX_20261104_R1.jsonl) are mandatory navigational links for a selected world-conditioned possibility. `N9 AND N10E -> N10W` (not either/or), real source F8 rights, uncertainty/minority/counterpatterns and Sorok separate actor history remain independently unproven in native use. E03/P41/J42 synthetic join is not this gate.

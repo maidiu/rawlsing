@@ -1,10 +1,5 @@
 # ROADMAP:S08 — F7 original comparable-wave evidence and independent structural time
 
-## NEXT R F7 accepted clocks vs original comparable waves — 2026-11-03
-
-**S08.1–S08.4; GAP-034–037.** Historical typed comparability/temporal candidate P07 has **author-local** sourcefree checks on a distinct unmerged cut; its independent #571 hostile source review was **not returned** at E3's pinned inspection. The current R06 same-source synthetic `T0/T1` rule clock/refusal does not issue original35 comparable-wave estimands, cohort/risk sets, design/weights or independent N8E. The F7 IF edge applies only when a selected terminal/source scope requires original comparable waves. Exact next action is `OWNER_DECIDE` or `COMPARE_ONLY_UNKNOWN`, not an automatically green F7 operation. [Original 82 IF rules](../CURRENT_SEAM_STATES.jsonl), [E3 currentness/negative court](https://github.com/maidiu/rawlsing/blob/66a6f18541c95b28490775c97a9615cb58769509/WORKER_RETURNS/PROG5_NEXT_E3_CURRENTNESS_AUTHORITY_R1/PROTECTED_VS_BRANCH_ONLY_AND_NEGATIVES.md).
-
-
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).

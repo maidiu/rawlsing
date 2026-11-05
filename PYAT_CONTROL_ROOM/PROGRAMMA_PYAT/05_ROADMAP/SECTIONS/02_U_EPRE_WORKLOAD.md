@@ -1,10 +1,5 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
-## NEXT R actual worklist compiler / original35 issuer separation — 2026-11-03
-
-**S02.2–S02.4; GAP-006–010.** Protected [`compile_governed_frontier`](https://github.com/maidiu/rawlsing/blob/773bb412a820949f13a7178b6671327cd56a3bf1/rawlsing_next/pre553_universal_workload.py#L473) is a **real** compiled consumer of caller-frozen source-qualified `ScientificFrontier`, and PR646 sourcefree R03→R04 issued checkpoint/cold resume reaches an actual selected P41 reader. The compiler **does not enumerate or issue original35 administered `U_item/U_unit/U_app/E_pre` science**. Exact B49/G50/I51 branch-only selector/finite grammar/one-target joined candidate may be **ABI compared** for an already selected source and first consumer, not automatically restored. E2's five tests permit `NO_ACTION` where current R03 is adequate; do not open three new engine tasks from path-counts. Original source rights/denominator, host R09 and original N11 remain held. [Current 82 first-reader truth](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) · [49 next decisions](../NEXT_R_GAP49_NEXT_DECISIONS.md).
-
-
 ## Post-M1–M5 saturation receiving delta — candidate code and proof ceilings
 
 **SAT-R receiving scope:** source-exact documentary addition from five independent returns, not original science, protected adoption, native run, independent review or a change to original G4 ID/grade denominators. Read the [34-row deduplicated ledger](../SATURATION_MATERIAL_DISCOVERIES.jsonl), [345-row original requirement owner links](../SATURATION_REQUIREMENT_OWNER_LINKS.jsonl), [supplemental parity](../SATURATION_PARITY_OVERLAY.jsonl), [same-ID seam overlay](../SATURATION_SEAM_SCOPE_OVERLAY.jsonl), and [component overlay](../SATURATION_COMPONENT_SCOPE_OVERLAY.jsonl).
@@ -220,3 +215,6 @@ No unique historical function row here; related functions appear in the child an
 
 **Update rule:** promote no `HELD_OWNER_OR_SCIENCE`, `INCOMPATIBLE`, `MISSING_PRODUCER_OR_READER`, `PARTIAL` or `SOURCEFREE_SCOPED_ONLY` status without exact current source cut, same-scope issuer, output artifact, importer, fresh receipt and qualified independent decision. `UNKNOWN` is legitimate until that witness exists.
 **Read next:** [S01](01_SOURCE_GOVERNANCE.md) → [S02](02_U_EPRE_WORKLOAD.md) → [S03](03_ROUTE_B_C11.md) → [S04](04_F1_F4_EMPIRICAL.md); [whole guide](../README.md); [original G2 edges](../PLANNED_INTERFACES.jsonl); [G3-B dependency and reverse unlocks](../G3_CANDIDATES/SEAMS_MATURITY/RECURSIVE_PREREQUISITES.md); [all 49 gaps](../G3_CANDIDATES/SEAMS_MATURITY/NEXT_REAL_PYAT_WORK.md).
+
+## PSR1 group-definition/membership and P1 import test
+[P01/P02 versioned receiving](../POST_FF_R2_SOURCE_MECHANISM_RECEIVING_20261104_R1.jsonl) separates `EligibleItem.stratum_refs` enumerated references from a genuine, source-qualified group-definition/individual-membership producer. P1 @ d1278613 250–325,659–668,743–754 expands supplied refs with target values; it does NOT recover original group membership. Its real first current receiver is synthetic `original35_roster -> BatchManifest` only. R157's 18,276/18,413/18,250/26 configuration work is preparatory and separate from original U/E_pre issuance. Do not retire legacy groups, require fixed nine, or commission a duplicate producer before direct consumer comparison.
