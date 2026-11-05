@@ -1,0 +1,663 @@
+{
+  "checks": {
+    "all_probes_verify": true,
+    "focused_hold_tests_pass": true,
+    "s49_access_observed": true,
+    "s49_b_context_hold": true,
+    "s49_no_normal_s42_or_c8": true,
+    "s49_no_root_b_sources": true,
+    "s49_no_world_or_clock_change": true,
+    "s49_s48_issue_hold": true,
+    "s49_s48_no_candidates": true,
+    "s50_actual_hold": true,
+    "s50_missing_fields_exact": true,
+    "s50_source_identities_exact": true,
+    "s51_actual_purpose_unproved": true,
+    "s51_open_no_selected_option": true,
+    "s51_s49_actual_hold": true,
+    "s52_conditional_no_counterpart": true,
+    "s52_normal_no_perform": true,
+    "s52_normal_no_world_or_state_change": true,
+    "s52_open_no_selected_option": true,
+    "source_manifest_all_exact": true
+  },
+  "closures": {
+    "s49": {
+      "anchor": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+      "keys": {
+        "s37": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+        "s39": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+        "s42": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+        "s48": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+        "s49": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43"
+      }
+    },
+    "s50": {
+      "anchor": "515b9a8ee45672c97051df4efef679117a679525",
+      "keys": {
+        "s37": "515b9a8ee45672c97051df4efef679117a679525",
+        "s39": "515b9a8ee45672c97051df4efef679117a679525",
+        "s42": "515b9a8ee45672c97051df4efef679117a679525",
+        "s48": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+        "s49": "515b9a8ee45672c97051df4efef679117a679525",
+        "s50": "515b9a8ee45672c97051df4efef679117a679525"
+      }
+    },
+    "s51": {
+      "anchor": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+      "keys": {
+        "s37": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+        "s39": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+        "s42": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+        "s48": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+        "s49": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+        "s51": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65"
+      }
+    },
+    "s52": {
+      "anchor": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+      "keys": {
+        "s37": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+        "s39": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+        "s42": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+        "s48": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+        "s49": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+        "s51": "c821b488b3a9a3f0fa01b1981989cc17af637dc1",
+        "s52": "c821b488b3a9a3f0fa01b1981989cc17af637dc1"
+      }
+    }
+  },
+  "commands": {
+    "harness": "/usr/local/bin/python3 /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/run_current_b_seam.py",
+    "probes": "per-probe subprocess commands recorded in logs/probe_*.log",
+    "tests": {
+      "s48": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s48_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s49/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests/test_s48_one_call.py::test_unsupported_fake_b_operation_is_source_owner_hold_with_no_world_or_c8_effect /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s49/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests/test_s48_one_call.py::test_payload_has_no_qualified_candidates_and_no_foreign_source_json",
+      "s49": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s49_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s49/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/tests/test_s49.py::test_actual_root_without_b_context_holds_without_b_event_or_c8",
+      "s50": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s50_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s50/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/tests/test_s50.py::test_source_identities_all_31_exact /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s50/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/tests/test_s50.py::test_actual_root_missing_state_hold_and_projection_is_isolated",
+      "s51": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s51_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s51/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests/test_s51.py::test_actual_root_object_and_hypothesis_and_offer_relevance",
+      "s52": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s52_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s52/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/tests/test_s52.py::test_paid_candidate_and_conditional_reason_enter_normal_generation"
+    }
+  },
+  "commission_base": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
+  "dispositions": {
+    "s48": {
+      "code": "S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION",
+      "existing_tests": [
+        "test_unsupported_fake_b_operation_is_source_owner_hold_with_no_world_or_c8_effect",
+        "test_payload_has_no_qualified_candidates_and_no_foreign_source_json"
+      ],
+      "first_importer": "s48/sources.py:issue_current_source",
+      "missing": [
+        "independent actor-owner-qualified current B source/provider",
+        "current-root/actor/branch/clock B operation issuance",
+        "normal S42 source/case admission adapter for that owner"
+      ],
+      "missing_function": "S48_MISSING_INDEPENDENT_CURRENT_B_SOURCE_PERFORMER",
+      "original_source_owner": "current Sorok B actor/source owner (not installed)",
+      "status": "SOURCE_OWNER_HOLD"
+    },
+    "s49": {
+      "code": "S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT",
+      "existing_tests": [
+        "test_actual_root_without_b_context_holds_without_b_event_or_c8"
+      ],
+      "first_importer": "s49/actor.py:root_b_sources / s49/session.py:produce_b_turn",
+      "missing": [
+        "B-owned S39 context/history predicate source",
+        "registered source/model/actor/branch/time/custody",
+        "unique actual B option selection"
+      ],
+      "original_source_owner": "Sorok S39 current B actor-context source owner (not installed)",
+      "present": [
+        "actual B actor identity TEST_ONLY_BP1_R26V_ACTOR_B",
+        "actual B perception/ADP017 access witness",
+        "B generation/performer and normal S42 adapter code"
+      ],
+      "status": "B_CONTEXT_HOLD"
+    },
+    "s50": {
+      "code": "S50_ACTUAL_ROOT_MISSING_HISTORICAL_V3_STATE",
+      "existing_tests": [
+        "test_source_identities_all_31_exact",
+        "test_actual_root_missing_state_hold_and_projection_is_isolated"
+      ],
+      "first_importer": "s50/session.py:actual_root_missing",
+      "missing": [
+        "backbone_state",
+        "initial_state_provenance",
+        "expectation_baseline",
+        "striving_objects",
+        "pressure_flow_history",
+        "pressure_flow_memory",
+        "surface_psyche_profile",
+        "analyst_pressure_account",
+        "actor_context_projection",
+        "actor_owned_source"
+      ],
+      "original_source_owner": "historical Rawlsing V3 actor-state/source owner",
+      "source_identity": "31/31 exact, archive identity 953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "status": "SOURCE_OWNER_HOLD"
+    },
+    "s51": {
+      "code": "NO_EXISTING_S49_OPTION_EXPRESSES_PAID_FINISHING_EQUIPMENT_OFFER",
+      "existing_tests": [
+        "test_actual_root_object_and_hypothesis_and_offer_relevance"
+      ],
+      "first_importer": "s51/session.py:consume_generation",
+      "missing": [
+        "actual current B purpose",
+        "native object-formation/relevance law",
+        "option-specific reason that selects a B action"
+      ],
+      "original_source_owner": "Sorok S51 situated-object/relevance source owner (not installed)",
+      "status": "OPEN_CHOICE_SET"
+    },
+    "s52": {
+      "code": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+      "existing_tests": [
+        "test_paid_candidate_and_conditional_reason_enter_normal_generation"
+      ],
+      "first_importer": "s52/session.py:compile_candidate / s52/performer.py",
+      "missing": [
+        "independent counterpart contribution/willingness",
+        "actual paid-history-specific capability source",
+        "selected B attempt or performed paid action in the normal path"
+      ],
+      "original_source_owner": "G18 paid-activity contract owner plus S52 current-state port",
+      "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+    }
+  },
+  "elapsed_seconds": 43.772,
+  "grade": "TEST_ONLY_ENGINEERING_SOURCE_OWNER_HOLD_NOT_NATIVE",
+  "limitations": [
+    "Engineering source/first-importer disposition only.",
+    "No native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority.",
+    "No invented B personality, context, willingness, choice or paid counterpart.",
+    "The S48 entrypoint provider call made during prior exploration is transport/narrative only and not used as B evidence.",
+    "S52 controlled counterpart performance is an existing test-only port and was not executed as actual B evidence here."
+  ],
+  "pins": {
+    "s48": "9fe0d066e4bf61ab6819a1f56e42d6d07956c2f7",
+    "s49": "6604f2d9ebeca47ab58c5e1f5fee1e6a34b1bb43",
+    "s50": "515b9a8ee45672c97051df4efef679117a679525",
+    "s51": "2a4cdd2d6dd26254b0c3a123c94024c0c0a06a65",
+    "s52": "c821b488b3a9a3f0fa01b1981989cc17af637dc1"
+  },
+  "probes": {
+    "s49": {
+      "access": {
+        "access_status": "ACCESSIBLE",
+        "access_time": 222,
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "content": {
+          "observed_event_hash": "e71d486587ebd215e5155df9d96ae65d941147acfff110ede75e2e967c0b41ea",
+          "observed_event_id": "TEST_ONLY_BP4_WORLD_EVT_dfcc3eb42fb483103b97ffe06a1f5daf03c50c180493b06fdbf49d55ef85f913",
+          "observer": "B",
+          "perception_channel": "co_present",
+          "perception_clock": 222
+        },
+        "event_ref": "35545e7bcd2f00194538d41b1a32d8e922de07eae379dc872a73e8c06bae26bb",
+        "hash": "ffed2d5ded519a6516989884fb27d7dd9f7e8fc9343eb14508a5da1219b3655e",
+        "revoked": false,
+        "scene": "workshop",
+        "source_class": "ADP017_ACTOR_LOCAL_ACCESS",
+        "source_hash": "0e1fd7c5aa1638370d15792a832a64cf3fed322e53ba1af66bbda76f5693ff6e",
+        "source_ref": "TEST_ONLY_ADP017_S49_B_TEST_ONLY_BP4_WORLD_EVT_dfcc3eb42fb483103b97ffe06a1f5daf03c50c180493b06fdbf49d55ef85f913"
+      },
+      "actual_source_grade": "UNAVAILABLE_CURRENT_B_ACTOR_OWNED_CONTEXT",
+      "b_turn": {
+        "event_ref": "",
+        "missing_context": null,
+        "reason": "S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT",
+        "stage": "B_CONTEXT_HOLD",
+        "status": "SOURCE_OWNER_HOLD"
+      },
+      "before": {
+        "b_actor": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "b_position": "workshop",
+        "branch_id": "first_session",
+        "clock": 222,
+        "read_events": 1,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "world_events": 13
+      },
+      "c8_created": false,
+      "identity_after_turn": {
+        "b_actor": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "b_position": "workshop",
+        "branch_id": "first_session",
+        "clock": 222,
+        "read_events": 1,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "world_events": 13
+      },
+      "identity_before_turn": {
+        "b_actor": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "b_position": "workshop",
+        "branch_id": "first_session",
+        "clock": 222,
+        "read_events": 1,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "world_events": 13
+      },
+      "missing_context": "S49_MISSING_CURRENT_B_ACTOR_OWNED_CONTEXT",
+      "normal_s42_consumer_rows": 0,
+      "normal_s42_reached": false,
+      "root_b_sources": [],
+      "s48_candidate_specs": [],
+      "s48_eligible_candidate_ids": [],
+      "s48_issue_current_source": {
+        "code": "S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION",
+        "detail": "S48_SOURCE_OWNER_HOLD_NO_CURRENT_OWNER_ADMISSION: S48_MISSING_INDEPENDENT_CURRENT_B_SOURCE_PERFORMER",
+        "raised": true
+      },
+      "schema": "SOROK_CURRENT_B_S49_PROBE@1",
+      "verify_ok": true,
+      "world_or_clock_changed": false
+    },
+    "s50": {
+      "actual_root_missing": {
+        "actual_commit": false,
+        "canonical_parents": {
+          "b_actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "b_position": "workshop",
+          "branch_id": "first_session",
+          "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD"
+        },
+        "missing_fields": [
+          "backbone_state",
+          "initial_state_provenance",
+          "expectation_baseline",
+          "striving_objects",
+          "pressure_flow_history",
+          "pressure_flow_memory",
+          "surface_psyche_profile",
+          "analyst_pressure_account",
+          "actor_context_projection",
+          "actor_owned_source"
+        ],
+        "native": false,
+        "no_default_seed": true,
+        "psychology_claim": false,
+        "reason": "S50_ACTUAL_ROOT_MISSING_HISTORICAL_V3_STATE",
+        "schema": "S50_ACTUAL_ROOT_STATE_COMPARISON@1",
+        "status": "SOURCE_OWNER_HOLD"
+      },
+      "identity": {
+        "b_actor": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "b_position": "workshop",
+        "branch_id": "first_session",
+        "clock": 222,
+        "read_events": 1,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "world_events": 13
+      },
+      "schema": "SOROK_CURRENT_B_S50_PROBE@1",
+      "source_identity": {
+        "all_exact": true,
+        "archive_identity": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+        "count": 31,
+        "fixture_sha256": "ef7008ac0d83e7690bd89e96ec683d25d3b784806857a799da2978ba7aa35673"
+      },
+      "verify_ok": true
+    },
+    "s51": {
+      "actual_root_current_purpose_proved": false,
+      "cold": {
+        "same_relevance_hash": true,
+        "verify_ok": true
+      },
+      "generation": {
+        "missing_option_relation": "NO_EXISTING_S49_OPTION_EXPRESSES_PAID_FINISHING_EQUIPMENT_OFFER",
+        "s49_status": "SOURCE_OWNER_HOLD",
+        "selected_option": "",
+        "selection_status": "OPEN_CHOICE_SET",
+        "source_ref": "S51_SOURCE_198b568bc0747c50",
+        "target_proposals": []
+      },
+      "identity": {
+        "b_actor": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+      },
+      "native": false,
+      "object": {
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+        "effective_index": 13,
+        "object_event_id": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+        "object_hash": "sha256:198b568bc0747c50829b68866009a5c5627cef7dbc4b036cfcc03848386a2c60",
+        "project_parent_event_id": "sha256:bc48470f4a014b074f7bf119e940954edc5d0d1d6526266e59232a16e9d26014",
+        "source_grade": "SOURCEFREE_RESEARCH_INPUT",
+        "striving": "fund_finishing_equipment",
+        "work_parent_event_id": "sha256:4de01226426a427a08df130b563c24e9f8584d52cea6efdf7527f07be3f6e5bc"
+      },
+      "relevance": {
+        "actor_free_hours": 11,
+        "actual_current_purpose_proved": false,
+        "relation": "FACILITATES",
+        "relevance_hash": "3a9fb36772d53ce814d33c56e368d7304441823cdfc2333eda60d910d30eb25c",
+        "status": "RELEVANCE_WARRANTED"
+      },
+      "schema": "SOROK_CURRENT_B_S51_PROBE@1",
+      "verify_ok": true
+    },
+    "s52": {
+      "candidate": {
+        "actual_current_purpose_proved": false,
+        "candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+        "counterpart_status": "INDEPENDENT_PARTICIPATION_NOT_OBSERVED",
+        "earned_payment": 0,
+        "objective_feasibility": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+        "prospective_payment": 2,
+        "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+        "recruited": true,
+        "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION"
+      },
+      "cold": {
+        "candidate_match": true,
+        "verify_ok": true
+      },
+      "controlled_counterpart_not_executed": true,
+      "generation": {
+        "eligible_options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL",
+          "PAID_PARTICIPATION"
+        ],
+        "options": [
+          "ATTEND_OBJECT",
+          "REQUEST_TOOL",
+          "EXPLICIT_REFUSAL",
+          "PAID_PARTICIPATION"
+        ],
+        "paid_reasons": [
+          {
+            "model_premise": true,
+            "option_id": "PAID_PARTICIPATION",
+            "predicate": "S52_PAID_OBJECT_RELEVANCE",
+            "recruitment_mode": "CAUSAL_NOT_CONSCIOUS_RECALL",
+            "relation": "CONDITIONAL_SUPPORTS",
+            "repertoire_candidate_hash": "5efa690a29fa82c8031c2d6bf20b1e143ba27e55bbbb475a2d98c947e1f96db7",
+            "source_class": "HISTORICAL_EPISODE",
+            "source_hash": "4375c7ae77c9c5d74139e5e683553c73182644df23250c67fd1a2113ecaf8bf9",
+            "source_ref": "S51_SOURCE_198b568bc0747c50"
+          }
+        ],
+        "selected_option": "",
+        "selection_status": "OPEN_CHOICE_SET"
+      },
+      "identity_after_normal": {
+        "b_actor": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "b_position": "workshop",
+        "branch_id": "first_session",
+        "clock": 222,
+        "read_events": 1,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "world_events": 14
+      },
+      "identity_before_normal": {
+        "b_actor": {
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+          "attitudes": [
+            "reciprocity_in_work_obligations"
+          ],
+          "availability_status": "available_for_encounter",
+          "cash": 54,
+          "completed_units": 5,
+          "debt_units": 2,
+          "free_hours": 11,
+          "health": "recovered",
+          "material_position": "waged_finishing",
+          "material_remaining": 1,
+          "nonmother_relations": [
+            "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+          ],
+          "place": "INST_WORKSHOP_A",
+          "practices": [
+            "scheduled_finishing_ledger_discipline"
+          ],
+          "projects": [
+            "communal_irrigation_pump_repair"
+          ],
+          "role": "finishing",
+          "skill": 6,
+          "tools_remaining": 1
+        },
+        "b_position": "workshop",
+        "branch_id": "first_session",
+        "clock": 222,
+        "read_events": 1,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "world_events": 14
+      },
+      "native": false,
+      "normal_no_world_or_state_change": true,
+      "normal_paid_perform_without_counterpart": {
+        "payment_earned": null,
+        "performed": false,
+        "reason": "S52_INDEPENDENT_COUNTERPART_NOT_OBSERVED",
+        "status": "CONDITIONAL_ON_INDEPENDENT_PARTICIPATION",
+        "world_event_id": null
+      },
+      "schema": "SOROK_CURRENT_B_S52_PROBE@1",
+      "verify_ok": true
+    }
+  },
+  "result": "PASS",
+  "schema": "SOROK_CURRENT_B_SEAM@1",
+  "source_manifest": "evidence/source_manifest.json",
+  "tests": {
+    "s48": {
+      "all_pass": true,
+      "closure": "s49",
+      "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s48_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s49/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests/test_s48_one_call.py::test_unsupported_fake_b_operation_is_source_owner_hold_with_no_world_or_c8_effect /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s49/WORKER_RETURNS/SOROK-20261025-S48-ONE-CALL-CONTINUING-TURN-R1/tests/test_s48_one_call.py::test_payload_has_no_qualified_candidates_and_no_foreign_source_json",
+      "counts": {
+        "ERROR": 0,
+        "PASS": 2,
+        "RED": 0,
+        "SKIP": 0,
+        "tests": 2
+      },
+      "exit": 0,
+      "junit": "evidence/junit/s48_hold.xml",
+      "log": "logs/s48_hold.log"
+    },
+    "s49": {
+      "all_pass": true,
+      "closure": "s49",
+      "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s49_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s49/WORKER_RETURNS/SOROK-20261025-S49-INDEPENDENT-ACTOR-PRODUCER-R1/tests/test_s49.py::test_actual_root_without_b_context_holds_without_b_event_or_c8",
+      "counts": {
+        "ERROR": 0,
+        "PASS": 1,
+        "RED": 0,
+        "SKIP": 0,
+        "tests": 1
+      },
+      "exit": 0,
+      "junit": "evidence/junit/s49_hold.xml",
+      "log": "logs/s49_hold.log"
+    },
+    "s50": {
+      "all_pass": true,
+      "closure": "s50",
+      "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s50_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s50/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/tests/test_s50.py::test_source_identities_all_31_exact /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s50/WORKER_RETURNS/SOROK-20261025-S50-HISTORICAL-V3-ACTOR-RECOVERY-R1/tests/test_s50.py::test_actual_root_missing_state_hold_and_projection_is_isolated",
+      "counts": {
+        "ERROR": 0,
+        "PASS": 2,
+        "RED": 0,
+        "SKIP": 0,
+        "tests": 2
+      },
+      "exit": 0,
+      "junit": "evidence/junit/s50_hold.xml",
+      "log": "logs/s50_hold.log"
+    },
+    "s51": {
+      "all_pass": true,
+      "closure": "s51",
+      "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s51_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s51/WORKER_RETURNS/SOROK-20261025-S51-SITUATED-OBJECT-RELEVANCE-R1/tests/test_s51.py::test_actual_root_object_and_hypothesis_and_offer_relevance",
+      "counts": {
+        "ERROR": 0,
+        "PASS": 1,
+        "RED": 0,
+        "SKIP": 0,
+        "tests": 1
+      },
+      "exit": 0,
+      "junit": "evidence/junit/s51_hold.xml",
+      "log": "logs/s51_hold.log"
+    },
+    "s52": {
+      "all_pass": true,
+      "closure": "s52",
+      "command": "/usr/local/bin/python3 -B -m pytest -q -p no:cacheprovider --junitxml=/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/evidence/junit/s52_hold.xml /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1/WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/.runtime/closures/s52/WORKER_RETURNS/SOROK-20261025-S52-PAID-ACTIVITY-REPERTOIRE-R1/tests/test_s52.py::test_paid_candidate_and_conditional_reason_enter_normal_generation",
+      "counts": {
+        "ERROR": 0,
+        "PASS": 1,
+        "RED": 0,
+        "SKIP": 0,
+        "tests": 1
+      },
+      "exit": 0,
+      "junit": "evidence/junit/s52_hold.xml",
+      "log": "logs/s52_hold.log"
+    }
+  }
+}
