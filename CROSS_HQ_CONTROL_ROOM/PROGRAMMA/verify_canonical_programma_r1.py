@@ -154,6 +154,71 @@ stages = parse_rows(SOROK + "14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.js
 if stages:
     check(stages[0].get("record_type") == "MANIFEST", "Sorok phase manifest missing")
 
+
+# PR #685 independent F1/F2: prevent a non-gating playable experiment from
+# impersonating separate product / human / scientific authority gates. These
+# assertions check the exact frozen source-register mapping, NOT gate passage.
+if stages:
+    gates = {row.get("gate_id"): row for row in stages if row.get("record_type") == "GATE"}
+    check(len(gates) == 83, "Sorok gate IDs changed/duplicate; review exact gated scope")
+    for gate_id, target, scope, logic in (
+        ("G-S8-SF-ACTION", "S8:LOCAL_GUIDE:ACTION_CONTRACT@BUILD", "SOURCEFREE_ALPHA_ACTION", "ALL_OF"),
+        ("G-S11-LOWFI-VERIFY", "S11:LOCAL_GUIDE:LOWFI_NONHUMAN@VERIFY", "SOURCEFREE_NONHUMAN_ONLY", "ALL_OF"),
+        ("G-S11-VERIFY", "S11@VERIFY", "HUMAN_USABILITY_SCOPED", "ALL_OF"),
+        ("G-A3-VERIFY", "A3@VERIFY", "SOURCEFREE_INDEPENDENT_LIFE", "ALL_OF"),
+        ("G-O05-POSITIVE-ACCEPT", "O05@ACCEPT", "ORIGINAL_POSITIVE_ACQUIRED_PRACTICE", "ALL_OF"),
+        ("G-O07-NOCHANGE-ACCEPT", "O07@ACCEPT", "ORIGINAL_EVALUATED_NOCHANGE", "ALL_OF"),
+        ("G-C9-T-ANY", "C9@INTEGRATE", "NATIVE_STATE_UPDATE_OR_LAWFUL_NOCHANGE", "ANY_OF"),
+    ):
+        row = gates.get(gate_id)
+        check(row is not None and row.get("target_ref") == target and
+              row.get("claim_scope") == scope and row.get("logic") == logic,
+              f"Sorok {gate_id}: incorrect target/claim/logic promotion")
+    targets = {row.get("target_ref") for row in gates.values()}
+    check("S8@VERIFY" not in targets and "CAN011@ACCEPT" not in targets,
+          "Previously unregistered stage newly present: explicitly adjudicate exact source cut before updating guide")
+
+priority_path = ROOT / (PROG + "03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md")
+work_now_path = ROOT / (SOROK + "10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md")
+for path in (priority_path, work_now_path):
+    if path.is_file():
+        body = path.read_text(encoding="utf-8")
+        check("S8/S11/A3@VERIFY" not in body and "CAN011@ACCEPT" not in body,
+              f"{path}: synthetic combined/stage target mistaken for source-register gate")
+        for phrase in (
+            "non-gating D002 MPC-1…7 sourcefree causal-cell experiment",
+            "S8:LOCAL_GUIDE:ACTION_CONTRACT@BUILD",
+            "S11:LOCAL_GUIDE:LOWFI_NONHUMAN@VERIFY",
+            "A3@VERIFY",
+            "S11@VERIFY",
+            "HUMAN_USABILITY_SCOPED",
+            "O05@ACCEPT",
+            "O07@ACCEPT",
+        ):
+            check(phrase.lower() in body.lower(),
+                  f"{path}: missing independent F1 gate/authority distinction: {phrase}")
+
+sorok_json = ROOT / "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json"
+sorok_md = ROOT / "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.md"
+if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
+    try:
+        sorok_state = json.loads(sorok_json.read_text(encoding="utf-8"))
+        md_head = sorok_md.read_text(encoding="utf-8").splitlines()[0]
+        is_split_cut = sorok_state.get("revision") == 35 and "revision36" in md_head
+        # At this exact receiving cut, the discrepancy must remain legible.
+        # If future owners truly synchronize the pair, this test must be updated
+        # with their competent accepted progress receipt, never auto-promoted.
+        check(is_split_cut, "Sorok MD36/JSON35 protected source cut changed: qualified paired receiving needed")
+        for name, path in (
+            ("priority", priority_path),
+            ("Sorok navigation", ROOT / (SOROK + "READ_FIRST.md")),
+        ):
+            body = path.read_text(encoding="utf-8")
+            check("revision 35" in body and "revision 36" in body and "PUBLISHED_NOT_LAUNCHED" in body,
+                  f"{name}: Sorok protected MD36 vs JSON35 and unlaunched orders must remain explicit")
+    except (TypeError, ValueError, IndexError) as exc:
+        errors.append("Sorok protected currentness pair inspection failed: " + str(exc))
+
 for relative, array_name, n in (
     (SOROK + "07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json", "assets", 304),
     (SOROK + "08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json", "seams", 22),
