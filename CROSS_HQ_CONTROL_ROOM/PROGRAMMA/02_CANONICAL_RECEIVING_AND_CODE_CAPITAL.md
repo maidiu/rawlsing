@@ -1,6 +1,6 @@
 # PROGRAMMA — canonical receiving and implementation disposition
 
-**Canonical branch:** `integration/pre-main-reconciliation-r1`. **Observed protected cut:** `f58c8400a024d108a8ab9fa814c87967d336ea47` (after OCT28-CAS1 accepted guide/code write-through). This document belongs to one combined *guide receiving candidate*, not a separate operating constitution. No candidate document changes scientific/actor/source/human authority by being copied.
+**Canonical branch:** `integration/pre-main-reconciliation-r1`. **Latest verified protected cut:** `4edc45f84ecc78ed0317bc8085620614ece60a93` (after OCT28-CAS2 P1R2 code and paired progress revision 6). This document belongs to one combined *guide receiving candidate*, not a separate operating constitution. No candidate document changes scientific/actor/source/human authority by being copied.
 
 ## What is already in protected PRE-MAIN
 
@@ -8,6 +8,14 @@
 - The full Pyat G4/NEXT-R roadmap and OCT28-R2 file-level guide receiving via **merged PR #676**, merge `c37833e5b4c00d04098570ba271ea7e6e68953e7`. Physical target is selected, but scientific issuance and native/original operation are not granted by guide publication; owner policy/guide-grade claims remain scoped.
 - The **seven-file E1+E3 sourcefree I03 index-sharing/corruption repair is independently reviewed and already merged into protected PRE-MAIN** via PR #684, protected `2dcef173...`, E4 independent `7fb9a576fc5bf4d15e6bb91e5640ae50336ddb0c` with scoped S2 acceptance. No second code merge required. W03/W04 compact/C11 and cross-session acceleration, grouped calculation, original35, native science and world-to-actor remain open.
 - Original PR #646 accepted sourcefree R03/R04/R05→P41 first-reader chain; exact original source science and N11/N12 stay separate.
+
+## New protected Pyat receiving after prior candidate preparation
+
+**PR #686 merged** at `b9aa712144155bd0b8d5f45907fdf5f921ac9384`: independently P1R2-accepted (`f8e9e1dea9e07e60dc841001a6878d7620338a42`) 12 compact C11 execution-view / empirical-query production and test files plus one executable changed-test proof sidecar. **PR #689 merged** at `4edc45f84ecc78ed0317bc8085620614ece60a93` and updated *both* Pyat current progress records to revision 6, without touching Sorok or original G4 62/82 source-grain ledgers.
+
+P1 W03/P01 is now **PROTECTED_RECEIVED_ENGINEERING_SOURCEFREE_S2** for its tested compact first slice; P2 selector v1 is **ABI-safe at reviewed sourcefree scope only**. P2 grouped numerical implementation, original35/native respondent source science, wider cold/performance evidence, native N9/N11/N12 and actor rights **remain held**. CI's changed-test executable severance witness and R61 pass; the separate broad FIABC/LiTS historical pinned-blob 144-pass/3-fail remains an unresolved RED. Do not rewrite or waive the exact older pin authorities as part of a guide receiving.
+
+PR #685 was reconciled onto this protected cut via a two-parent commit, retaining the **exact current protected source/proof/progress blobs**; its changed-file delta contains only the combined documentary guide, entrance and CI validation (no production edits). [The maximum visible priority lens](03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md) is a view of the existing source/consumer gates, not a parallel backlog.
 
 ## Selected significant source lines (not a new branch census)
 
