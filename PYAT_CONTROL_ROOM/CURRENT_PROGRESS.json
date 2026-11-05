@@ -1,8 +1,8 @@
 {
   "schema": "RAWLSING_CROSS_HQ_PROGRESS@1",
   "owner": "Pyat",
-  "revision": 4,
-  "revision_note": "First structured JSON initialization from zero-byte PRE-MAIN progress file; no claim prior owner revisions never occurred",
+  "revision": 5,
+  "revision_note": "Rev 5 adds exact OCT28-CAS1 protected guide and sourcefree I03 receipt while preserving RRIF prior progress and global non-receiving user stop; direct scoped user receiving instruction.",
   "report_status": "RRIF_FINITE_TERMINAL_CLOSED__C3_PR602_AND_B5M2_PR605_MERGED_SOURCEFREE__HISTORICAL_HOLDS_PRESERVED",
   "activity_mode": "RRIF_TERMINAL__PROGRAMMA_REMAINS_USER_STOPPED",
   "publication_branch": "integration/pyat-rrif-c3-e4f-selective-receiving-20261101-r1",
@@ -54,5 +54,30 @@
     "merge_commit": "fe3f5b4714b11015813537407f7eb4bbb6bc2c10",
     "modern_unfiltered": "175 PASS, 0 FAIL",
     "baseline_broad": "144 PASS/3 unchanged historical FIABC FAIL"
+  },
+  "oct28_cas1": {
+    "guide": {
+      "pr": 676,
+      "source_sha": "022936209381e84ce452fd7237c42814f5dfa888",
+      "review_sha": "a4ee0f092172416d8a09a528d76e71910e755be8",
+      "merged_at_sha": "c37833e5b4c00d04098570ba271ea7e6e68953e7",
+      "status": "PROTECTED_RECEIVED_DOCUMENTARY_S1"
+    },
+    "code": {
+      "pr": 684,
+      "source_sha": "43d2b70ebae4d183aadbd9694624575857fd100f",
+      "review_sha": "7fb9a576fc5bf4d15e6bb91e5640ae50336ddb0c",
+      "merged_at_sha": "2dcef17355e5a3548452cd9bd9c6b9531cf77e03",
+      "status": "PROTECTED_RECEIVED_ENGINEERING_SOURCEFREE_S2"
+    },
+    "receiving_parent_sha": "ba165a6a073dfdac0cb2e993ab8111ebb5ef404c",
+    "receiving_cut_sha": "2dcef17355e5a3548452cd9bd9c6b9531cf77e03",
+    "scoped_user_receiving_release": "DIRECT_USER_INSTRUCTION_2026_11_04_FOR_PRS_676_AND_684_ONLY",
+    "sourcefree_e4_results": "209 PASS 1 SKIP on E3, unchanged exact P41 checkpoint/fact/replay, paired 6.09-6.54 percent wall benefit, 1328 to 6 index builds, RSS +4-5 MB",
+    "s2_independent_review": "E4 performed at pinned baseline/E1/E3 sourcefree cuts; no new local S2 run by ChatGPT CAS receiver",
+    "actual_first_reader": "CarrierNeutralResearchExecutor.execute_i03 -> rawlsing_next.pre553_empirical_query.execute_empirical_query -> R05/P41 sourcefree",
+    "remaining": "W03/P01 economical compact sealed C11; W04/P02 source/authority/version keyed regenerable Parquet/Zstd cross-session; W05/P03 compatible grouped numerical computation",
+    "untouched_rights": "Original35 respondent/native S3, science, FF, N9/N11/N12, actor, Sorok, external source, no general stop release",
+    "historical_records": "G4 originals 62 components and 82 seams preserved with additive receipt; 49 GAP and 25 Oct W/P IDs remain"
   }
 }
