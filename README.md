@@ -4,6 +4,7 @@
 
 ## Open the project
 
+- **[Maximum visible priority — terminal product and first missing proof](CROSS_HQ_CONTROL_ROOM/PROGRAMMA/03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md)** — choose the next outcome, trace ALL/ANY/IF gates and actual first readers, distinguish SOURCEFREE/NATIVE/HUMAN, and see the present highest-leverage product test and independent owner lanes
 - [Common HQ operating authority](CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md) — adopted documentary front door; owner/science/source/actor rights remain separate
 - [PROGRAMMA PYAT — full development roadmap](PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/README.md) — 782 source-typed guide entries, 892 attached historical assets, 62 scoped component statuses, 82 versioned interfaces, 49 GAPs, actual successors, selected Oct 28 architecture, FF/GF1
 - [PROGRAMMA SOROK — complete guide navigation](SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/READ_FIRST.md) — architectural spine, 144 inherited functions, 38 seams, phase gates, source/actor holds
@@ -19,7 +20,7 @@ These are *current-state locators*, not independent scientific or actor issuance
 
 ## What is current versus historical
 
-Protected PRE-MAIN contains the merged HQ front doors, the Pyat OCT28-R2 full guide and the independently accepted **sourcefree-scoped** seven-file E3 I03 repair. The additional Field Forge and Sorok combined guide material in this receiving PR is **pending qualified incorporation** into protected PRE-MAIN. A worker return, branch name, classification row or sourcefree green result does not independently issue a native scientific, actor or human claim. These distinctions are recorded at the source decision, not hidden in branch naming.
+Protected PRE-MAIN now also contains **OCT28-CAS2 compact C11 P1R2 sourcefree S2 engineering** ([merged #686](https://github.com/maidiu/rawlsing/pull/686)) and paired Pyat progress revision 6 ([merged #689](https://github.com/maidiu/rawlsing/pull/689)), protected cut `4edc45f84ecc78ed0317bc8085620614ece60a93`. P1 has a scoped selector v1 contract; grouped P2, native/original science and actor rights remain unissued. The merged HQ front doors, the Pyat OCT28-R2 full guide and the independently accepted **sourcefree-scoped** seven-file E3 I03 repair are also protected. The additional Field Forge and Sorok combined guide material in this receiving PR is **pending qualified incorporation** into protected PRE-MAIN. A worker return, branch name, classification row or sourcefree green result does not independently issue a native scientific, actor or human claim. These distinctions are recorded at the source decision, not hidden in branch naming.
 
 Implementation lives under `rawlsing_next/`, source history and original materials under `data/`, current jurisdictional status under `PYAT_CONTROL_ROOM/` and `SOROK_PRODUCT_CONTROL_ROOM/`, and immutable return/commission evidence under `WORKER_RETURNS/` and `WORKER_COMMISSIONS/`. Historical evidence stays reconstructible, but is not a competing canonical operational state.
 
