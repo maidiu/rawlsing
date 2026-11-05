@@ -1,5 +1,8 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** Controlling R2 correction to historical G50/I51: R61 R01 R8 grammar `universal_grammar/enumerate.py` (blob `fd9203a0...`) and R03 R5 `pre553_universal_workload.py` (blob `8e7fe00a...`) are **already protected sourcefree code, independently reviewed at bounded TEST_ONLY scope**. Their current governed compiler can issue 150 exact sourcefree native candidates with an explicit unsupported remainder. Therefore the I51 unary limitation is an earlier source-cut observation, NOT a reason to build another grammar/compiler. Original all35 eligible U/Epre/native science remains unissued. [Exact R2 lineage and immutable source crosswalk](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
+
 > **2026-11-05 R53 DIFFERENTIAL EVIDENCE — CANDIDATE #696, NO PROTECTED STATUS CHANGE.** Existing B49/G50/I51 sourcefree code executed a genuine one-target LiTS-I source-bound U43/C11/I03/Batch join; R53 P53T independently reproduced G50 `ID/Y` assumptions, administered=false and duplicate-occurrence defects. U53A's existing R01/R02/R03 plan governs any repair; G50 symbolic 432, I51 sourcefree 17 and **original35 E_pre NULL** are different measurement universes. Do NOT build a second compiler. Downstream: S03.3/.4 → S04.2/.4 → S10.1, and independently original U/Epre → S11. Original source grant not implied. [No-loss source matrix](../E41_R41_R53_NO_LOSS_FUNCTION_CENSUS_20261105_R1.md) · [Inverse graph](../TERMINAL_F2F4_GF1_DEPENDENCY_AND_INVERSE_REACHABILITY_20261105_R1.jsonl).
 
 
