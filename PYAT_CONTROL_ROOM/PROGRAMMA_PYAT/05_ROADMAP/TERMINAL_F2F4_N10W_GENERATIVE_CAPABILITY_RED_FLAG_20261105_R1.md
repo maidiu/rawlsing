@@ -1,5 +1,8 @@
 # PROGRAMMA PYAT — CRITICAL TERMINAL F2/F4 → N10E/N10W → V3 CAPABILITY SUCCESSION SEMAPHORE (CANDIDATE, 2026-11-05 R1)
 
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 controlling protected-source correction: R61-R01/R03/R08 accepted scoped sourcefree code is already copied into PRE-MAIN (exact Git blobs), while R118's independently reviewed world-conditioned progressive service is still branch-only. Protected R06 dynamically `git archive` loads historical P41 for TEST_ONLY execution; J42 old runtime is executed by a protected test, not current full world producer. R08 binder has no direct external production import among 154 current `rawlsing_next` scanned Python modules. Preserve all older R53 REDs at their old branch scope and no source-native/N11/actor promotion. C2/C3 are qualification/connecting work, not new engine builds; C9 is R118/P41 receiving. [Exact R2 lineage](E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
+
 **Severity:** CRITICAL TERMINAL-PRODUCT REACHABILITY; **NOT** a blanket claim of missing code.  
 **Status:** DOCUMENTARY S0–S1 CANDIDATE; NOT INDEPENDENTLY RECEIVED, NOT PROTECTED, NO NATIVE/SOURCE/SCIENTIFIC/ACTOR GRANT, NO WORKER DISPATCH.  
 **Source cut:** integration/pre-main-reconciliation-r1 @ 8ffec40a6924848a49f95950aa9ce28c27ee3ec1; GF1 staged PR #691 latest repaired reviewed-author cut a6b815ecc5531c2598887247c2f9e1f8a3bcf17c (independent new-head re-review outstanding at this investigation).  
