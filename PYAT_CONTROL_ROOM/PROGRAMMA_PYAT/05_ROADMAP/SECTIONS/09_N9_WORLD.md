@@ -1,5 +1,8 @@
 # ROADMAP:S09 — N9 current, historical and as-of objective-world serving
 
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 actual runtime distinction: protected `pre553_universal_world_binding.py` can `git archive` pinned P41 commit `f27d1101...`, imports/executes its historical `p41_service` (sourcefree TEST_ONLY) and separately validates externally generated J42 receipt material; protected test executes J42 from Git history. R118 reviewed per-prefix world consuming successor `ACCEPT_SCOPED_LOCAL` is **branch-only**, not current protected N9. R08 exact evidence binder exists protected but is not statically imported by this P41 execution path. Native actual N9 remains held. [Exact R2 lineage](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
+
 > **2026-11-05 CANDIDATE #696 source-grade world correction:** W41 produced 84 TEST_ONLY selected-world views; J42 actually joined E41/W41/P41 into 84 E04 sourcefree receipts. R53 P53T later reproduced J42/P41 condition-identity and optimistic-negative defects; those prototype results are not a full source-native N9. Protected R05/P41 has a narrower one-step Y|X actual reader. [E41–R53 census](../E41_R41_R53_NO_LOSS_FUNCTION_CENSUS_20261105_R1.md) · [seam evidence](../TERMINAL_F2F4_GF1_STATUS_RECONCILIATION_20261105_R1.jsonl).
 
 
