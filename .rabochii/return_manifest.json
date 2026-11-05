@@ -1,14 +1,111 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1",
-  "branch": "agent/rabochii-pyat-hq118-i2-m2-release-runtime-r1",
+  "task_id": "PROGRAMMA-OCT28-P1F1-20261104-R1",
+  "branch": "agent/programma-oct28-p1f1-selector-ref-integrity-20261104-r1",
   "commission": {
-    "authority_ref": "d709ce3a64eced97c69c05506ead8a9e66292d67",
-    "exact_start_sha": "d709ce3a64eced97c69c05506ead8a9e66292d67"
+    "authority_ref": "25568b796964263b315727686ed14687bab9b309",
+    "exact_start_sha": "0a63e7c90cabcfd01dbb169d477f2d0ead5be22c"
+  },
+  "return_packet": {
+    "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/00_RETURN.md",
+    "blob_sha": "da498739c6a6cc2087441fd3ab535bd22069ec71"
+  },
+  "required_outputs": [
+    {
+      "name": "tested_source",
+      "kind": "commit",
+      "sha": "cd1e7ccf8419a000817b4a8535879da56c06db98",
+      "status": "DURABLE"
+    },
+    {
+      "name": "00_RETURN.md",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/00_RETURN.md",
+      "blob_sha": "da498739c6a6cc2087441fd3ab535bd22069ec71",
+      "status": "DURABLE"
+    },
+    {
+      "name": "PROVENANCE.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/PROVENANCE.json",
+      "blob_sha": "f90c5b43dd3627f6de50e48457fa56f7b8bed0b5",
+      "status": "DURABLE"
+    },
+    {
+      "name": "CHANGED_FILES.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/CHANGED_FILES.json",
+      "blob_sha": "4f5998badc975a08e561559710d6f1f25c36816d",
+      "status": "DURABLE"
+    },
+    {
+      "name": "SHA256SUMS",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/SHA256SUMS",
+      "blob_sha": "2ce892081f0b8d6620ffd59cfbeba6f9652bf843",
+      "status": "DURABLE"
+    },
+    {
+      "name": "MEASUREMENTS.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/MEASUREMENTS.json",
+      "blob_sha": "2696b5f08d74586c27b91cfc9e9a8fe56ffa7ca1",
+      "status": "DURABLE"
+    },
+    {
+      "name": "validation.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/validation.json",
+      "blob_sha": "d4f609bad95cfe876e67fb5365deb4cb7f5472f3",
+      "status": "DURABLE"
+    },
+    {
+      "name": "resources-status.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/resources-status.json",
+      "blob_sha": "b153c262e35461b4e3f2715e5ed502a35ef5716a",
+      "status": "DURABLE"
+    },
+    {
+      "name": "native-parity.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/native-parity.json",
+      "blob_sha": "20c647093150e8b951aa4a65b303d85f74e6bb88",
+      "status": "DURABLE"
+    },
+    {
+      "name": "native.json.xz",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/native.json.xz",
+      "blob_sha": "44a175df3dc88371359930887103dabeb75c7e2b",
+      "status": "DURABLE"
+    },
+    {
+      "name": "checkpoint-0.json",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/checkpoint-0.json",
+      "blob_sha": "36f905df84c3205e86f7a2ccacd2fef41066d877",
+      "status": "DURABLE"
+    },
+    {
+      "name": "COMMISSION.md",
+      "kind": "path",
+      "path": "WORKER_RETURNS/PROGRAMMA-OCT28-P1F1-20261104-R1/COMMISSION.md",
+      "blob_sha": "25568b796964263b315727686ed14687bab9b309",
+      "status": "DURABLE"
+    }
+  ],
+  "evidence": {
+    "required": false
+  },
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true
   },
   "return": {
     "result": "PASS",
-    "terminal": "PYAT_HQ118_I2_PASS__M2_RELEASE_CORE_AND_RESOLUTION_RUNTIME_SOURCE_FREE_GREEN__NO_LIFECYCLE_PUBLICATION_COLLAPSE__RETURN_TO_HQ",
+    "terminal": "PROGRAMMA_OCT28_P1F1_LOCAL_S2_PASS_READY_FOR_P1R2__RETURN_TO_HQ",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -18,93 +115,5 @@
       "return_packet_durable": true,
       "terminal_state_entered": true
     }
-  },
-  "separation": {
-    "performed_only_commissioned_role": true,
-    "no_uncommissioned_repair": true,
-    "no_uncommissioned_review": true
-  },
-  "return_packet": {
-    "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-    "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3"
-  },
-  "required_outputs": [
-    {
-      "name": "m2_runtime",
-      "kind": "path",
-      "path": "rawlsing_next/pre553_learned_product_release.py",
-      "blob_sha": "f76c390665f06ef126968ccf1a6b2d816f43ae92",
-      "status": "DURABLE"
-    },
-    {
-      "name": "m2_tests",
-      "kind": "path",
-      "path": "rawlsing_next/tests/test_pre553_learned_product_release.py",
-      "blob_sha": "d45b54190815b4c6af506579962a9aac8a7074c2",
-      "status": "DURABLE"
-    },
-    {
-      "name": "return_packet",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/00_RETURN.md",
-      "blob_sha": "f30629ffad6d64b3b3c7bbc4e63ee7bcdab5f4c3",
-      "status": "DURABLE"
-    },
-    {
-      "name": "changed_files",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/01_CHANGED_FILES.tsv",
-      "blob_sha": "d5a7b353bf85954cb3b2712ccf963caafa494f1e",
-      "status": "DURABLE"
-    },
-    {
-      "name": "public_api_owner_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/02_PUBLIC_API_AND_OWNER_RECEIPT.md",
-      "blob_sha": "4a40b119d4cdc8617b6cdf4c524608ddc7e3bb3a",
-      "status": "DURABLE"
-    },
-    {
-      "name": "hostile_test_ledger",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/03_HOSTILE_TEST_LEDGER.tsv",
-      "blob_sha": "e5e37c29fa1b9e3859b4c970209625b5d43f4727",
-      "status": "DURABLE"
-    },
-    {
-      "name": "m1_m2_interface_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/04_M1_TO_M2_INTERFACE_RECEIPT.md",
-      "blob_sha": "759428d57ab03bf0b7c7cf07ef20b896426cf7cc",
-      "status": "DURABLE"
-    },
-    {
-      "name": "representation_parity_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/05_VIRTUAL_MATERIALIZED_PARITY_RECEIPT.md",
-      "blob_sha": "6326a85da3eb3067456c483025d8a224b07a59b0",
-      "status": "DURABLE"
-    },
-    {
-      "name": "publication_boundary_receipt",
-      "kind": "path",
-      "path": "WORKER_RETURNS/PYAT-HQ118-I2-M2-RELEASE-RUNTIME-R1/06_PUBLICATION_BOUNDARY_RECEIPT.md",
-      "blob_sha": "210ef8b5e94ef09e95fb255c1f88e2fd7eafd8c2",
-      "status": "DURABLE"
-    },
-    {
-      "name": "qualified_semantic_candidate",
-      "kind": "commit",
-      "sha": "805f4ec04c5beff82ac5ac6bc346464d074dc1b0",
-      "status": "DURABLE"
-    }
-  ],
-  "evidence": {
-    "required": true,
-    "workflow_run_id": 36326255638,
-    "workflow_name": "Rabochii Governed Bounded Court",
-    "conclusion": "success",
-    "evidence_execution_sha": "4ba26b7e1501e8cbb2ef6e84ccd4a5d2dd8c890a",
-    "artifact_id": 10934510122
   }
 }

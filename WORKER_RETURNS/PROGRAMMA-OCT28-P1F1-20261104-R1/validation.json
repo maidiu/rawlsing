@@ -1,0 +1,112 @@
+[
+  {
+    "label": "selector-integrity-GREEN",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "/Users/matthewsmith/.codex/worktrees/f935/Rawlsing/WORKER_RETURNS/PROGRAMMA-OCT28-P1R1-20261104-R1/test_selector_ref_integrity.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "related-suite",
+    "argv": [
+      "bash",
+      "/tmp/rawlsing-oct28-p1f1/inputs/related-suite-command.sh"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "focused",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_pre553_c11_execution_view.py",
+      "rawlsing_next/tests/test_pre553_route_b_production.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "independent-tests",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "/tmp/rawlsing-oct28-p1f1/packet/test_independent_review.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider",
+      "-s"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "forced-compact",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "rawlsing_next/tests/test_pre553_query_frontier_hostile.py",
+      "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "-p",
+      "force_compact",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "cache-red-restore",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/Users/matthewsmith/.codex/worktrees/f935/Rawlsing/WORKER_RETURNS/PROGRAMMA-OCT28-P1R1-20261104-R1/cache_red_restore.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "p41-first-consumer",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "selector-alias-fixed-original-probe",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/Users/matthewsmith/.codex/worktrees/f935/Rawlsing/WORKER_RETURNS/PROGRAMMA-OCT28-P1R1-20261104-R1/probe_selector_ref_alias.py"
+    ],
+    "exit_code": 1,
+    "expected_exit": 1,
+    "secure_result": true
+  }
+]

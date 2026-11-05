@@ -1,0 +1,48 @@
+[
+  {
+    "label": "selector-alias-fixed-GREEN",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1f1/packet/probe_selector_ref_alias_fixed.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "native-ref-control",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1f1/packet/probe_native_ref_baseline.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "native-base",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1f1/inputs/capture_native.py",
+      "/tmp/rawlsing-oct28-p1f1/inputs/same-source.sav",
+      "/tmp/rawlsing-oct28-p1f1/native-base"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "native-fixed",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1f1/inputs/capture_native.py",
+      "/tmp/rawlsing-oct28-p1f1/inputs/same-source.sav",
+      "/tmp/rawlsing-oct28-p1f1/native-fixed"
+    ],
+    "exit_code": 0
+  },
+  {
+    "label": "resource-pairs",
+    "argv": [
+      "bash",
+      "/tmp/rawlsing-oct28-p1f1/packet/run_pairs_fixed.sh",
+      "/tmp/rawlsing-oct28-p1f1/resources",
+      "/tmp/rawlsing-oct28-p1f1/inputs"
+    ],
+    "exit_code": 0
+  }
+]
