@@ -11,6 +11,17 @@
         "old": "winners.append([t for t in target_order if counts[c][t] > 0])",
         "new": "winners.append(list(target_order))"
       }
+    },
+    {
+      "claim_id": "PYAT_GF1_SOURCEFREE_ACTUAL_C11_I03_TO_PAIR_CONSUMER_MUTATION_R1",
+      "actual_consumer": "current C11 sourcefree source release -> execute_empirical_query real I03 EmpiricalFact -> GF1 producer -> GF1 consumer support_vectors and separation_class",
+      "claimed_dependency": "Actual accepted C11/I03 two-target same-respondent cell counts must determine GF1 non-Q86 consumer class; severing the positive-cell test breaks real joined producer-consumer proof",
+      "positive_node": "rawlsing_next/tests/test_gf1_pair_candidate_sourcefree.py::test_current_i03_c11_sourcefree_actual_fact_to_gf1_consumer",
+      "fault": {
+        "path": "rawlsing_next/_gf1_candidate/gf1_pair_support_consumer.py",
+        "old": "winners.append([t for t in target_order if counts[c][t] > 0])",
+        "new": "winners.append(list(target_order))"
+      }
     }
   ]
 }
