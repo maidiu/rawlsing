@@ -1,5 +1,8 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+> **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 precise accepted engineering scope: E41 provider is both present and actively called through protected `TrustedNativeGraphCoordinator`. R61-R08 exact request/binding code is *also physically present* on protected at reviewed blob `3ca860e4...`, but no direct non-test import of R08 was found in 154 scanned `rawlsing_next` Python modules. These are different positive grades: E41 is an observed actual first importer; R08 is a source-present, first-reader-unverified capability. [Exact R2 lineage and immutable source crosswalk](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
+
+
 > **2026-11-05 DRAFT EVIDENCE CORRECTION (PR #696, NOT PROTECTED):** Current protected `pre553_learned_world_composition.py` **imports and calls** E41 exact-port `pre553_universal_empirical_extension.py::provide_empirical_possibility_slice_ext` and checks C1 identity. This is a real SOURCEFREE first reader, not an unimplemented E41 requirement; original35 measured F1–F4/selected N9/N10W still held. Do not regenerate E41 as a new engine. [Full E41–R53 census](../E41_R41_R53_NO_LOSS_FUNCTION_CENSUS_20261105_R1.md), [scoped 62/82/49 status delta](../TERMINAL_F2F4_GF1_STATUS_RECONCILIATION_20261105_R1.jsonl).
 
 
