@@ -1,0 +1,53 @@
+{
+  "review_role": "P1R1 reviewer, P1R2 nonauthor; no implementation edits",
+  "host": "oldMac.lan",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "source": "cd1e7ccf8419a000817b4a8535879da56c06db98",
+  "author_evidence": "4368b8661386c39cab2ed8b87a3521daad53c57d",
+  "original": "0a63e7c90cabcfd01dbb169d477f2d0ead5be22c",
+  "p1r1": "a7024d244f71e55c5a64e62089ba4c710e6f0059",
+  "baseline": "f58c8400a024d108a8ab9fa814c87967d336ea47",
+  "inputs": {
+    "profile_oct28.py": "9f0e8733175d70d7b5ccd6a24579daca458de0cf9e77c718131c2c61016dcb61",
+    "capture_native.py": "fc930224145a6f1478fc8aaf8f2f7ed68383917738d852e69cc42333b16c4666",
+    "related-suite-command.sh": "829c1b3928641c433bc33ac82b5d2dbef7ccdd801ce2c591c1ea0f3d4b18d5bf",
+    "same-source.sav": "c5ec6abad7311118651e79986322d4300409f4303d92cb17ce9440d630a7d56b"
+  },
+  "worktrees": {
+    "base": {
+      "path": "/Users/matthewsmith/.codex/worktrees/oct28-p1r1-baseline/Rawlsing",
+      "head": "f58c8400a024d108a8ab9fa814c87967d336ea47",
+      "status_at_execution_end": ""
+    },
+    "original": {
+      "path": "/Users/matthewsmith/.codex/worktrees/oct28-p1r1-candidate/Rawlsing",
+      "head": "0a63e7c90cabcfd01dbb169d477f2d0ead5be22c",
+      "status_at_execution_end": ""
+    },
+    "p1": {
+      "path": "/Users/matthewsmith/.codex/worktrees/oct28-p1r2-review/Rawlsing",
+      "head": "cd1e7ccf8419a000817b4a8535879da56c06db98",
+      "status_at_execution_end": ""
+    }
+  },
+  "source_diff": " rawlsing_next/_pre553_c11_execution_view.py        |  59 ++++++++----\n rawlsing_next/_pre553_query_predicate.py           |  19 ++++\n .../tests/test_pre553_c11_execution_view.py        | 102 +++++++++++++++++++++\n rawlsing_next/tests/test_pre553_empirical_query.py |   4 +-\n 4 files changed, 167 insertions(+), 17 deletions(-)\n",
+  "source_vs_evidence_code_diff": "",
+  "initial_live_heads": "4368b8661386c39cab2ed8b87a3521daad53c57d\trefs/heads/agent/programma-oct28-p1f1-selector-ref-integrity-20261104-r1\nf58c8400a024d108a8ab9fa814c87967d336ea47\trefs/heads/integration/pre-main-reconciliation-r1\n",
+  "end_of_execution_utc": "2026-11-05T04:27:12Z",
+  "dependencies": {
+    "pandas": "3.0.6",
+    "pyarrow": "22.0.0",
+    "pyreadstat": "1.3.2",
+    "pytest": "9.1.1"
+  },
+  "source_sha256": {
+    "rawlsing_next/_pre553_c11_execution_view.py": "ce7f2f746c18d90630aa9eab6d1387d3bb3fedaf7e4c109494a4aa4d33b07689",
+    "rawlsing_next/_pre553_query_predicate.py": "59beb313602eb6fffdd4960576090e78bee1ce769f23f885580ea6da635fbcfb",
+    "rawlsing_next/tests/test_pre553_c11_execution_view.py": "ee60a1fc58d317e99e77d57828a3def5ce13e9f06fedc8e2050f81ace6dc35a9",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "f1a93e83dd8b9f749523b0249e3796f8d13bb0d2909622e14023f09c07851b15"
+  },
+  "review_branch": "review/programma-oct28-p1r2-independent-acceptance-20261104-r1",
+  "review_return_start": "f58c8400a024d108a8ab9fa814c87967d336ea47",
+  "prepublication_live_heads": "f58c8400a024d108a8ab9fa814c87967d336ea47\trefs/heads/integration/pre-main-reconciliation-r1\n"
+}

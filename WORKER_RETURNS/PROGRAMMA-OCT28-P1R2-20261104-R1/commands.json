@@ -1,0 +1,213 @@
+[
+  {
+    "label": "original-alias-exploit",
+    "cut": "original",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1r2/packet/probe_selector_ref_alias.py"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "\"changed_provenance_contains_forged_hash\": true",
+    "ok": true
+  },
+  {
+    "label": "original-integrity-RED",
+    "cut": "original",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "/tmp/rawlsing-oct28-p1r2/packet/test_selector_ref_integrity.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit": 1,
+    "expected": 1,
+    "required_output": "1 failed",
+    "ok": true
+  },
+  {
+    "label": "fixed-integrity-GREEN",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "/tmp/rawlsing-oct28-p1r2/packet/test_selector_ref_integrity.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "1 passed",
+    "ok": true
+  },
+  {
+    "label": "fixed-unchanged-exploit-refused",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1r2/packet/probe_selector_ref_alias.py"
+    ],
+    "exit": 1,
+    "expected": 1,
+    "required_output": "no exercised selector changed a downstream fact",
+    "ok": true
+  },
+  {
+    "label": "native-baseline-control",
+    "cut": "base",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1r2/packet/probe_native_ref_baseline.py"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "PASS baseline",
+    "ok": true
+  },
+  {
+    "label": "related-suite",
+    "cut": "p1",
+    "argv": [
+      "bash",
+      "/tmp/rawlsing-oct28-p1r2/inputs/related-suite-command.sh"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "209 passed, 1 skipped",
+    "ok": true
+  },
+  {
+    "label": "focused",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_pre553_c11_execution_view.py",
+      "rawlsing_next/tests/test_pre553_route_b_production.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "42 passed",
+    "ok": true
+  },
+  {
+    "label": "independent-courts",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "/tmp/rawlsing-oct28-p1r2/packet/test_independent_review.py",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider",
+      "-s"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "9 passed",
+    "ok": true
+  },
+  {
+    "label": "forced-compact",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "rawlsing_next/tests/test_pre553_query_frontier_hostile.py",
+      "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "-p",
+      "force_compact",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "60 passed",
+    "ok": true
+  },
+  {
+    "label": "cache-sever-restore",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1r2/packet/cache_red_restore.py"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "HASH_CHECK_RESTORED_PASS",
+    "ok": true
+  },
+  {
+    "label": "p41-first-consumer",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "-m",
+      "pytest",
+      "rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41",
+      "-q",
+      "-o",
+      "addopts=",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": "1 passed",
+    "ok": true
+  },
+  {
+    "label": "native-base",
+    "cut": "base",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1r2/inputs/capture_native.py",
+      "/tmp/rawlsing-oct28-p1r2/inputs/same-source.sav",
+      "/tmp/rawlsing-oct28-p1r2/evidence/native-base"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": null,
+    "ok": true
+  },
+  {
+    "label": "native-p1",
+    "cut": "p1",
+    "argv": [
+      "/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+      "/tmp/rawlsing-oct28-p1r2/inputs/capture_native.py",
+      "/tmp/rawlsing-oct28-p1r2/inputs/same-source.sav",
+      "/tmp/rawlsing-oct28-p1r2/evidence/native-p1"
+    ],
+    "exit": 0,
+    "expected": 0,
+    "required_output": null,
+    "ok": true
+  }
+]
