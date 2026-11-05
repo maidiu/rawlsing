@@ -1,0 +1,9 @@
+# C4 R2 — M5 documentary contract versus actual owner currentness
+
+Frozen C2R all three `00` doors require `integrated_guide_head` or NONE_VERIFIED, `candidate_guide_branch_sha`, PENDING_GUIDE_INTEGRATION, component/phase/seam/selected_dependency (ALL_OF/ANY_OF/IF)/gap/owner/reviewer_cut, matching MD/JSON readbacks, and protected owner CAS. C2R return 04 was expressly a DRY RUN, not an incumbent publication. **M5_DOCUMENTARY_CONTRACT=ACCEPT_SCOPED.**
+
+**Actual later Pyat CAS:** PR #676 merged reviewed G4 guide at `c37833e5b4c00d04098570ba271ea7e6e68953e7`; PR #684 merged I03 sourcefree at `2dcef17355e5a3548452cd9bd9c6b9531cf77e03`; PR #686 merged bounded compact C11 sourcefree slice at `b9aa712144155bd0b8d5f45907fdf5f921ac9384`. Current protected `05_ROADMAP/README.md` blob `1dcada53ed8cd1cc74974c289bb6469f67a7ad5c` and Pyat progress MD blob `90db179fc5a0c1eb5644b48ce5b2759e729daea0` / JSON blob `50a00fb97827dbd926f24bc612490e641eec5520` revision 6 attest actual scoped guide receiving. Hence frozen G4-wide NONE_VERIFIED is historically true but not current. No complete explicit C2R locator transaction with all requested fields is verified; original science/rights remain held; `RRIF_TERMINAL__PROGRAMMA_REMAINS_USER_STOPPED` persists.
+
+**Sorok:** protected `CURRENT_PROGRESS.md` blob `fd6ce00595e7b1ea9bb997cf7bd9fcb4e83eccbe` revision 36 and `CURRENT_PROGRESS.json` blob `c7fb05d8e5d0240959191041a73e76e2f14cb436` revision 35 are not a coherent same-cut pair. No legitimate fiction can reconcile them.
+
+**M5_OWNER_LIVE_PROOF=HOLD_NOT_DEMONSTRATED for full C2R contract.** Pyat incumbent must anchor next qualified material update to actual received guide head and explicit source/owner/readback fields; Sorok incumbent must resolve MD36/JSON35 from source history. Separate reviewers, native issuers and protected CAS owner decide their own cases. No reviewer protected write or stop release.
