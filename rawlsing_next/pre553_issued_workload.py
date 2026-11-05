@@ -310,7 +310,9 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         source=source, projection=workload.projection, runtime_catalog=workload.catalog,
         i03_requests=workload.requests if n == 0 else (), discovery_authority_ref=ref,
     ) for n, ref in enumerate(workload.discoveries)) if max_units is None else ()
-    repo, release = build_source_backed_c11_repository(source, workload.projection)
+    repo, release = build_source_backed_c11_repository(
+        source, workload.projection, current_authorities=workload.catalog.authorities,
+    )
     executor = CarrierNeutralResearchExecutor(repo, (release.release_ref,), workload.catalog)
     units = tuple(BatchUnitSpec("QUERY", r.query_ref, (release.release_ref,),
                                (r.predicate_ref, workload.decision_ref)) for r in workload.requests)

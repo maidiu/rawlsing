@@ -12,6 +12,7 @@ import hashlib
 import math
 from typing import Any, Callable, Iterable, Mapping
 
+from rawlsing_next._pre553_c11_execution_view import _compact_public_objects
 from rawlsing_next.pre553_c11_ingest import (
     INGEST_CONTRACT_VERSION, C11SourceReleaseCandidate, SourceReleaseManifest,
     build_candidate_replay_manifest, validate_c11_source_release,
@@ -33,7 +34,7 @@ from rawlsing_next.pre553_physical_c11_bridge import (
     PhysicalSourceAuthorityProjection, build_validated_c11_release,
 )
 from rawlsing_next.pre553_physical_decoder import (
-    PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence,
+    DecoderError, PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence,
 )
 from rawlsing_next.pre553_r5_codec import (
     CODEC_VERSION as R5_CODEC_VERSION,
@@ -250,9 +251,12 @@ class ExactPhysicalCellStream:
     row_count: int
     cell_iter_factory: Callable[[], Iterable[PhysicalCell]]
     transport_identity: str = "EXACT_REPLAY_EQUIVALENT_PHYSICAL_CELL_STREAM"
+    decoder_metadata_digest: str | None = None
 
     def __post_init__(self):
         _sha(self.source_sha256, "source_sha256")
+        if self.decoder_metadata_digest is not None:
+            _sha(self.decoder_metadata_digest, "decoder_metadata_digest")
         if not isinstance(self.row_count, int) or isinstance(self.row_count, bool) or self.row_count < 0 or not callable(self.cell_iter_factory):
             raise SourceBackedC11FacadeError("invalid exact physical-cell stream")
 
@@ -639,7 +643,19 @@ def source_backed_facade_key(source, p):
     return SourceBackedFacadeKey(source.source_sha256, p.cache_identity)
 
 
-def build_source_backed_c11_repository(source, projection, *, cache=None, batch_size=10_000):
+def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalCellStream) -> str | None:
+    if isinstance(source, ExactPhysicalCellStream):
+        return source.decoder_metadata_digest
+    try:
+        return source.physical_metadata_digest
+    except DecoderError:
+        # Legacy in-memory incidence can be valid for I02 without a file decoder receipt.
+        return None
+
+
+def build_source_backed_c11_repository(
+    source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
+):
     key = source_backed_facade_key(source, projection)
     release = cache.get(key) if cache else None
     if release is None:
@@ -648,6 +664,23 @@ def build_source_backed_c11_repository(source, projection, *, cache=None, batch_
                    else build_validated_source_backed_c11_release_from_stream(source, projection)
                    if isinstance(source, ExactPhysicalCellStream)
                    else (_ for _ in ()).throw(SourceBackedC11FacadeError("unsupported physical transport")))
+        def physical_binding():
+            decoder_digest = _accelerator_decoder_digest(source)
+            if isinstance(source, PhysicalSourceIncidence) and decoder_digest is None:
+                return None
+            return {
+                "decoder_metadata": decoder_digest,
+                "transport": getattr(source, "transport_identity", None),
+                "facade_contract": CONTRACT_ID,
+                "value_codec": R5_CODEC_VERSION,
+                "current_authorities": sorted(snapshot.ref.key for snapshot in current_authorities),
+            }
+
+        public = _compact_public_objects(
+            release, physical_binding=physical_binding, projection_binding=key.projection_identity,
+        )
+        if public is not None:
+            release = replace(release, public_objects=public)
         if cache:
             cache.put(key, release)
     return C11Repository((release,)), release

@@ -6,25 +6,26 @@ from rawlsing_next._pre553_query_predicate import (
     _compile_derived_branch_memberships,
     _eval_predicate,
     _question_matches,
+    _select_respondent_events,
     _validate_public_object_authorities,
 )
 
 
-class _UsedObjectAccumulator(list[CanonicalSemanticObject | C11InternalRecord]):
+class _UsedObjectAccumulator(list[CanonicalSemanticObject | C11InternalRecord | _EventRead]):
     """Append-compatible exact-ref deduplication for evaluation provenance."""
 
     def __init__(self) -> None:
         super().__init__()
         self._seen_keys: set[str] = set()
 
-    def append(self, obj: CanonicalSemanticObject | C11InternalRecord) -> None:
+    def append(self, obj: CanonicalSemanticObject | C11InternalRecord | _EventRead) -> None:
         key = obj.ref.key
         if key in self._seen_keys:
             return
         self._seen_keys.add(key)
         super().append(obj)
 
-    def extend(self, objects: Iterable[CanonicalSemanticObject | C11InternalRecord]) -> None:
+    def extend(self, objects: Iterable[CanonicalSemanticObject | C11InternalRecord | _EventRead]) -> None:
         for obj in objects:
             self.append(obj)
 
@@ -54,7 +55,7 @@ def _routing_fact_for(
     target_ref: ExactRef,
     risk_set_ref: ExactRef,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
 ) -> RoutingEligibilityFact:
     matches = [
@@ -113,20 +114,13 @@ def _risk_membership(
     return member, explicitly_inapplicable
 
 
-def _event_matches_target(event: RespondentEvent, target_ref: ExactRef) -> bool:
-    if _question_matches(event, target_ref):
-        return True
-    component = _ref_field(event, "component_or_subitem_ref", allow_none=True)
-    return component is not None and component == target_ref
-
-
-def _event_cell_value(event: RespondentEvent) -> Any:
+def _event_cell_value(event: RespondentEvent | _EventRead) -> Any:
     if event.typed_state == "SUBSTANTIVE_RESPONSE":
         return canonicalize(_semantic_value(event))
     return canonicalize({"typed_response_state": event.typed_state})
 
 
-def _semantic_order_key(event: RespondentEvent) -> tuple[int, Any, str]:
+def _semantic_order_key(event: RespondentEvent | _EventRead) -> tuple[int, Any, str]:
     fields = event.multiplicity_order_rank_fields
     if not isinstance(fields, Mapping):
         raise UnsupportedResponseTopology("ordered/repeated target requires exact multiplicity/order/rank fields")
@@ -143,7 +137,7 @@ def _semantic_order_key(event: RespondentEvent) -> tuple[int, Any, str]:
     )
 
 
-def _carrier_topology_kind(event: RespondentEvent) -> str:
+def _carrier_topology_kind(event: RespondentEvent | _EventRead) -> str:
     fields = event.multiplicity_order_rank_fields
     if not isinstance(fields, Mapping):
         raise UnsupportedResponseTopology("response event lacks exact topology mapping")
@@ -174,14 +168,13 @@ def _target_component_value(
     index: _ReleaseIndex,
     component: _TargetComponent,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
 ) -> tuple[bool, Any]:
-    events = [
-        event for event in index.events_by_respondent[respondent.ref.key]
-        if _event_matches_target(event, component.target_ref)
-        and event.typed_state in component.included_states
-    ]
+    events = list(_select_respondent_events(
+        index, respondent.ref.key, component.target_ref,
+        include_component=True, states=component.included_states,
+    ))
     for event in events:
         carrier_topology = _carrier_topology_kind(event)
         if not _topology_compatible(component.topology, carrier_topology):
@@ -263,7 +256,7 @@ def _target_configuration(
     *,
     plan: _TargetPlan,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
 ) -> tuple[bool, Any]:
     values: list[Any] = []
@@ -285,7 +278,7 @@ def _weight_for(
     *,
     profile: _ExecutionProfile,
     registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead],
     used_auth: list[AuthorityRef],
 ) -> Fraction:
     if profile.measure_kind == "RAW":
@@ -333,7 +326,7 @@ def _evaluate_index_group(
         {canonical_json(cell): Fraction(0, 1) for cell in plan.full_domain}
         if profile.measure_kind == "GOVERNED_WEIGHTED" else None
     )
-    used: list[CanonicalSemanticObject | C11InternalRecord] = _UsedObjectAccumulator()
+    used: list[CanonicalSemanticObject | C11InternalRecord | _EventRead] = _UsedObjectAccumulator()
     used_auth: list[AuthorityRef] = _UsedAuthorityAccumulator()
     risk_members: list[ExactRef] = []
     denominator_members: list[ExactRef] = []

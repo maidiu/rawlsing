@@ -141,7 +141,7 @@ def _resolve_release_indices(
     for universe_ref in universe_refs:
         matches = []
         for release in releases:
-            if any(getattr(obj, "ref", None) == universe_ref for obj in release.public_objects):
+            if any(getattr(obj, "ref", None) == universe_ref for obj in release._public_non_events):
                 matches.append((release.release_ref, _release_index_for(repository, release, universe_ref)))
         if len(matches) != 1:
             raise EmpiricalQueryResolutionError(

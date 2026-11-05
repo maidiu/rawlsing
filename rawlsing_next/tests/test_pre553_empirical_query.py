@@ -1130,7 +1130,9 @@ def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detache
     # Exact repository resolution returns the sealed immutable object, not a
     # writable identity-bearing body.
     resolved_event = source["repo"].resolve_object_exact(event.ref)
-    assert resolved_event is event
+    assert isinstance(resolved_event, RespondentEvent)
+    assert resolved_event.ref == event.ref
+    assert resolved_event.as_dict() == event.as_dict()
     with pytest.raises(TypeError):
         resolved_event.multiplicity_order_rank_fields["kind"] = "REPOSITORY_MUTATION"
 

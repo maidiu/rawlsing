@@ -42,6 +42,7 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     ResponseValueRule,
     RowRespondentBinding,
     SourceBackedC11FacadeError,
+    _accelerator_decoder_digest,
     build_validated_source_backed_c11_release_from_stream,
     physical_value_binding_key,
 )
@@ -838,6 +839,7 @@ def materialize_native_preimages(
         source_sha256=source.declared_sha256,
         row_count=incidence.row_count,
         cell_iter_factory=lambda: tuple(transformed_cells()),
+        decoder_metadata_digest=_accelerator_decoder_digest(incidence),
     )
     projection = GovernedC11Projection(
         projection_identity_ref=_ref(
