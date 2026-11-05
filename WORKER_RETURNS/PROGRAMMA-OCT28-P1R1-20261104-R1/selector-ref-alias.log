@@ -1,0 +1,47 @@
+{
+  "mutation": "selector.ref.__dict__[content_hash] = f*64",
+  "original_event_ref": {
+    "kind": "RespondentEvent@1.0.0",
+    "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:53ed8c02e8681acb64d341a158734b5b8d9aff7ad0b613d79c51b3b118f6e7fe",
+    "content_hash": "53ed8c02e8681acb64d341a158734b5b8d9aff7ad0b613d79c51b3b118f6e7fe"
+  },
+  "original_facts": [
+    {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b83fce1581ecc4594d3cf2dcfadbb9425610b2a15de0f37ccfa50ec9d6bb48c6",
+      "content_hash": "b83fce1581ecc4594d3cf2dcfadbb9425610b2a15de0f37ccfa50ec9d6bb48c6"
+    }
+  ],
+  "changed_facts": [
+    {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:086b033d672287920af92b221b8e829faf97a3608f6c35cabd1c61a0301cdc04",
+      "content_hash": "086b033d672287920af92b221b8e829faf97a3608f6c35cabd1c61a0301cdc04"
+    }
+  ],
+  "changed_states": [
+    "SUPPORTED"
+  ],
+  "changed_provenance_contains_forged_hash": true,
+  "restored_exact": true,
+  "source_native_body_unchanged": true
+}
+{
+  "mutation": "selector.native_question_ref.__dict__[object_id] = forged-question",
+  "original_question_ref": {
+    "kind": "QUESTION_NATIVE",
+    "object_id": "urn:test:i03:question_native:m01-Y",
+    "content_hash": "7b1a9fa41dc1170104fa71c15d94aca9bc3b639f50d77e85350db952613379a6"
+  },
+  "changed_facts": [
+    {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:970a67533605ab2ecdc2d0dfb9c6d39c1ca5b27cf0f0dd6cba0c19c8cf92ce6f",
+      "content_hash": "970a67533605ab2ecdc2d0dfb9c6d39c1ca5b27cf0f0dd6cba0c19c8cf92ce6f"
+    }
+  ],
+  "changed_states": [
+    "UNRESOLVED"
+  ],
+  "restored_exact": true
+}

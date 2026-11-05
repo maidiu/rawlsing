@@ -1,0 +1,71 @@
+........................F...................................             [100%]
+=================================== FAILURES ===================================
+_ test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached _
+
+    def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached():
+        source = _build_source("astra001-deep-immutability", [
+            {"id": "R1", "responses": {"X": 0, "Y": 0}},
+            {"id": "R2", "responses": {"X": 1, "Y": 1}},
+        ])
+        qa = _query_authority("astra001-deep-immutability")
+        predicate = _branch_predicate(source, qa, tag="astra001")
+        query = _query(source, qa, predicate, ("X", "Y"), tag="astra001")
+        registry = _registry(source, qa)
+    
+        before = _run(source, qa, predicate, query, registry=registry)
+        before_fact_exports = tuple(fact.as_dict() for fact in before.facts)
+        release = source["repo"].resolve_release_exact(source["release_ref"])
+        release_ref_before = release.release_ref
+        query_ref_before = query.ref
+    
+        event = next(obj for obj in release.public_objects if isinstance(obj, RespondentEvent))
+        event_ref_before = event.ref
+        event_projection_before = event.semantic_projection()
+    
+        # Direct semantic-field attributes are dict/list-compatible for existing
+        # consumers, but identity-bearing descendants themselves are immutable.
+        with pytest.raises(TypeError):
+            event.scoped_respondent_ref["object_id"] = "urn:mutated"
+        with pytest.raises(TypeError):
+            event.multiplicity_order_rank_fields["kind"] = "RANKED_RESPONSE"
+    
+        # Explicit base-class mutation cannot bypass the immutable representation:
+        # these values are not writable dict/list subclasses.
+        with pytest.raises(TypeError):
+            dict.__setitem__(event.multiplicity_order_rank_fields, "kind", "BASE_BYPASS")
+        with pytest.raises(TypeError):
+            dict.__setitem__(event.scoped_respondent_ref, "object_id", "urn:base-bypass")
+    
+        components = query.target_arity_and_topology["components"]
+        assert not isinstance(components, list)
+        with pytest.raises(TypeError):
+            list.__setitem__(components, 0, {"mutated": True})
+        with pytest.raises((AttributeError, TypeError)):
+            object.__setattr__(components, "_items", ({"mutated": True},))
+    
+        # semantic_fields no longer exposes a writable nested alias.
+        with pytest.raises(TypeError):
+            event.semantic_fields["scoped_respondent_ref"]["content_hash"] = "0" * 64
+    
+        # semantic_projection()/as_dict() are detached exports. They remain ordinary
+        # mutable representations, but mutation cannot alter the sealed object.
+        projection_export = event.semantic_projection()
+        projection_export["semantic_fields"]["scoped_respondent_ref"]["object_id"] = "urn:detached"
+        projection_export["semantic_fields"]["multiplicity_order_rank_fields"]["kind"] = "DETACHED"
+        dict_export = event.as_dict()
+        dict_export["semantic_fields"]["scoped_respondent_ref"]["content_hash"] = "1" * 64
+        dict_export["semantic_fields"]["multiplicity_order_rank_fields"]["kind"] = "DETACHED"
+    
+        assert event.ref == event_ref_before
+        assert event.semantic_projection() == event_projection_before
+    
+        # Exact repository resolution returns the sealed immutable object, not a
+        # writable identity-bearing body.
+        resolved_event = source["repo"].resolve_object_exact(event.ref)
+>       assert resolved_event is event
+E       AssertionError: assert RespondentEvent(object_id='urn:rawlsing:pre553:RespondentEvent:sha256:744acd32b925ca9e4daf7133af148014cd6c1019626aa970d9ccc953f0b35639', typed_state='SUBSTANTIVE_RESPONSE') is RespondentEvent(object_id='urn:rawlsing:pre553:RespondentEvent:sha256:744acd32b925ca9e4daf7133af148014cd6c1019626aa970d9ccc953f0b35639', typed_state='SUBSTANTIVE_RESPONSE')
+
+rawlsing_next/tests/test_pre553_empirical_query.py:1133: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_empirical_query.py::test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached
+1 failed, 59 passed in 2.98s

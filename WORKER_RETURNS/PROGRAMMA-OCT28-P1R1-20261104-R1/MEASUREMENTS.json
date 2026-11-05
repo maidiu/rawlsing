@@ -1,0 +1,957 @@
+{
+  "checkpoint_lengths": [
+    28017
+  ],
+  "host": {
+    "dependencies": {
+      "pandas": "3.0.6",
+      "pyarrow": "22.0.0",
+      "pyreadstat": "1.3.2",
+      "pytest": "9.1.1"
+    },
+    "machine": "x86_64",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "system": "macOS-13.7.8-x86_64-i386-64bit"
+  },
+  "native_material_sha256": "5dd623dbfd4eb6b837644f84ccf4a2579d7403462d0c08fe26c4aff3d98e5287",
+  "p41_view_hash": "c6aaef3c9816cdd63601703f4de52adf58d86ef0382adccb7cb6764f53812cf5",
+  "runs": {
+    "base-a": {
+      "peak_rss_bytes": 250609664,
+      "phases": {
+        "authority_fitness": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 155098865,
+          "inclusive_ns": 155098865
+        },
+        "batch_execute": {
+          "calls": 5,
+          "exclusive_of_other_probes_ns": 6795108988,
+          "inclusive_ns": 28345545938
+        },
+        "candidate": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 157824978,
+          "inclusive_ns": 157824978
+        },
+        "checkpoint_capture": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2416374,
+          "inclusive_ns": 2416374
+        },
+        "checkpoint_restore": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 1668807,
+          "inclusive_ns": 1668807
+        },
+        "checkpoint_resume": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 57219121,
+          "inclusive_ns": 14223379516
+        },
+        "complete_cell_materialization": {
+          "calls": 2656,
+          "exclusive_of_other_probes_ns": 13099989,
+          "inclusive_ns": 13099989
+        },
+        "decode": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 36186917,
+          "inclusive_ns": 36186917
+        },
+        "evaluate_including_risk_predicate_weights_counts": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 859867910,
+          "inclusive_ns": 6066690953
+        },
+        "fact_and_evidence": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 2935102050,
+          "inclusive_ns": 3368746916
+        },
+        "index_build": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 8603656,
+          "inclusive_ns": 8603656
+        },
+        "negative_fact_and_evidence": {
+          "calls": 0,
+          "exclusive_of_other_probes_ns": 0,
+          "inclusive_ns": 0
+        },
+        "numeric_target_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 1026724889,
+          "inclusive_ns": 1026724889
+        },
+        "p41": {
+          "calls": 3,
+          "exclusive_of_other_probes_ns": 296211730,
+          "inclusive_ns": 296211730
+        },
+        "predicate_eval": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 2394533112,
+          "inclusive_ns": 2394533112
+        },
+        "predicate_membership_compile": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 96380138,
+          "inclusive_ns": 96380138
+        },
+        "release_resolution": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 164664429,
+          "inclusive_ns": 173268085
+        },
+        "replay_materialization": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 420544877,
+          "inclusive_ns": 426934534
+        },
+        "repository_exact_lookup_realization": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 2318730,
+          "inclusive_ns": 2318730
+        },
+        "risk_membership": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 67914054,
+          "inclusive_ns": 67914054
+        },
+        "risk_routing": {
+          "calls": 17664,
+          "exclusive_of_other_probes_ns": 1577336825,
+          "inclusive_ns": 1577336825
+        },
+        "route_b": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 11318058452,
+          "inclusive_ns": 16542472647
+        },
+        "source_preimages": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 18107064,
+          "inclusive_ns": 70768544
+        },
+        "target_plan_and_domain": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 202809640,
+          "inclusive_ns": 202809640
+        },
+        "validate_and_realize": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 237190146,
+          "inclusive_ns": 237190146
+        },
+        "weight_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 43934025,
+          "inclusive_ns": 43934025
+        }
+      },
+      "resources": {
+        "counts": {
+          "repository_commits": 6,
+          "source_snapshot_bytes_total": 911,
+          "source_snapshot_opens": 1
+        },
+        "maxima": {
+          "eager_event_count": 36,
+          "internal_record_count": 15,
+          "public_object_count": 92,
+          "source_snapshot_bytes": 911
+        }
+      },
+      "wall_seconds": 33.519820764
+    },
+    "base-b": {
+      "peak_rss_bytes": 250724352,
+      "phases": {
+        "authority_fitness": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 172294320,
+          "inclusive_ns": 172294320
+        },
+        "batch_execute": {
+          "calls": 5,
+          "exclusive_of_other_probes_ns": 6449462432,
+          "inclusive_ns": 29732237056
+        },
+        "candidate": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 204556834,
+          "inclusive_ns": 204556834
+        },
+        "checkpoint_capture": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2793648,
+          "inclusive_ns": 2793648
+        },
+        "checkpoint_restore": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2034339,
+          "inclusive_ns": 2034339
+        },
+        "checkpoint_resume": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 64090549,
+          "inclusive_ns": 14811263592
+        },
+        "complete_cell_materialization": {
+          "calls": 2656,
+          "exclusive_of_other_probes_ns": 14483589,
+          "inclusive_ns": 14483589
+        },
+        "decode": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 15187048,
+          "inclusive_ns": 15187048
+        },
+        "evaluate_including_risk_predicate_weights_counts": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 1119679359,
+          "inclusive_ns": 6582025489
+        },
+        "fact_and_evidence": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 3242772778,
+          "inclusive_ns": 3670815559
+        },
+        "index_build": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 8381403,
+          "inclusive_ns": 8381403
+        },
+        "negative_fact_and_evidence": {
+          "calls": 0,
+          "exclusive_of_other_probes_ns": 0,
+          "inclusive_ns": 0
+        },
+        "numeric_target_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 1115206536,
+          "inclusive_ns": 1115206536
+        },
+        "p41": {
+          "calls": 3,
+          "exclusive_of_other_probes_ns": 308349692,
+          "inclusive_ns": 308349692
+        },
+        "predicate_eval": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 2650568596,
+          "inclusive_ns": 2650568596
+        },
+        "predicate_membership_compile": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 106621900,
+          "inclusive_ns": 106621900
+        },
+        "release_resolution": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 173397412,
+          "inclusive_ns": 181778815
+        },
+        "replay_materialization": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 413559192,
+          "inclusive_ns": 420514449
+        },
+        "repository_exact_lookup_realization": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 2244268,
+          "inclusive_ns": 2244268
+        },
+        "risk_membership": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 71193409,
+          "inclusive_ns": 71193409
+        },
+        "risk_routing": {
+          "calls": 17664,
+          "exclusive_of_other_probes_ns": 1469905147,
+          "inclusive_ns": 1469905147
+        },
+        "route_b": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 12106105906,
+          "inclusive_ns": 18051123411
+        },
+        "source_preimages": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 14196263,
+          "inclusive_ns": 70704027
+        },
+        "target_plan_and_domain": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 226397651,
+          "inclusive_ns": 226397651
+        },
+        "validate_and_realize": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 271402486,
+          "inclusive_ns": 271402486
+        },
+        "weight_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 48850542,
+          "inclusive_ns": 48850542
+        }
+      },
+      "resources": {
+        "counts": {
+          "repository_commits": 6,
+          "source_snapshot_bytes_total": 911,
+          "source_snapshot_opens": 1
+        },
+        "maxima": {
+          "eager_event_count": 36,
+          "internal_record_count": 15,
+          "public_object_count": 92,
+          "source_snapshot_bytes": 911
+        }
+      },
+      "wall_seconds": 34.610853511
+    },
+    "compact-cold": {
+      "peak_rss_bytes": 251998208,
+      "phases": {
+        "authority_fitness": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 146015234,
+          "inclusive_ns": 146015234
+        },
+        "batch_execute": {
+          "calls": 5,
+          "exclusive_of_other_probes_ns": 6294931135,
+          "inclusive_ns": 25550997437
+        },
+        "candidate": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 161182549,
+          "inclusive_ns": 161182549
+        },
+        "checkpoint_capture": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2792961,
+          "inclusive_ns": 2792961
+        },
+        "checkpoint_restore": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 1899962,
+          "inclusive_ns": 1899962
+        },
+        "checkpoint_resume": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 63358014,
+          "inclusive_ns": 12625482860
+        },
+        "complete_cell_materialization": {
+          "calls": 2656,
+          "exclusive_of_other_probes_ns": 11360691,
+          "inclusive_ns": 11360691
+        },
+        "decode": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 15543332,
+          "inclusive_ns": 15543332
+        },
+        "evaluate_including_risk_predicate_weights_counts": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 654172461,
+          "inclusive_ns": 4588149412
+        },
+        "fact_and_evidence": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 2774866989,
+          "inclusive_ns": 3162545302
+        },
+        "index_build": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 4954353,
+          "inclusive_ns": 4954353
+        },
+        "negative_fact_and_evidence": {
+          "calls": 0,
+          "exclusive_of_other_probes_ns": 0,
+          "inclusive_ns": 0
+        },
+        "numeric_target_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 613807777,
+          "inclusive_ns": 613807777
+        },
+        "p41": {
+          "calls": 3,
+          "exclusive_of_other_probes_ns": 424163344,
+          "inclusive_ns": 424163344
+        },
+        "predicate_eval": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 1864922402,
+          "inclusive_ns": 1864922402
+        },
+        "predicate_membership_compile": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 84582214,
+          "inclusive_ns": 84582214
+        },
+        "release_resolution": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 153006494,
+          "inclusive_ns": 157960847
+        },
+        "replay_materialization": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 376317622,
+          "inclusive_ns": 382083893
+        },
+        "repository_exact_lookup_realization": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 2773383,
+          "inclusive_ns": 2773383
+        },
+        "risk_membership": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 69345986,
+          "inclusive_ns": 69345986
+        },
+        "risk_routing": {
+          "calls": 17664,
+          "exclusive_of_other_probes_ns": 1256221589,
+          "inclusive_ns": 1256221589
+        },
+        "route_b": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 10756299729,
+          "inclusive_ns": 14813696236
+        },
+        "source_preimages": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 15923644,
+          "inclusive_ns": 82795134
+        },
+        "target_plan_and_domain": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 196367865,
+          "inclusive_ns": 196367865
+        },
+        "validate_and_realize": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 240952684,
+          "inclusive_ns": 240952684
+        },
+        "weight_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 45096983,
+          "inclusive_ns": 45096983
+        }
+      },
+      "resources": {
+        "counts": {
+          "cache_hit": 4,
+          "cache_hit_ns": 5612672,
+          "cache_miss": 2,
+          "cache_miss_ns": 12272308,
+          "cache_publications": 2,
+          "compact_view_build_ns": 47429111,
+          "compact_view_builds": 6,
+          "repository_commits": 6,
+          "source_snapshot_bytes_total": 911,
+          "source_snapshot_opens": 1
+        },
+        "maxima": {
+          "cache_active_bytes": 41708,
+          "cache_active_members": 2,
+          "cache_active_plus_temp_bytes": 41708,
+          "cache_temp_bytes": 20854,
+          "compact_event_body_arrow_bytes": 118512,
+          "compact_event_count": 36,
+          "internal_record_count": 15,
+          "public_object_count": 92,
+          "source_snapshot_bytes": 911
+        }
+      },
+      "wall_seconds": 31.102722103
+    },
+    "compact-corrupt": {
+      "peak_rss_bytes": 232108032,
+      "phases": {
+        "authority_fitness": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 169522177,
+          "inclusive_ns": 169522177
+        },
+        "batch_execute": {
+          "calls": 5,
+          "exclusive_of_other_probes_ns": 7288879718,
+          "inclusive_ns": 29525389912
+        },
+        "candidate": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 156096113,
+          "inclusive_ns": 156096113
+        },
+        "checkpoint_capture": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2818868,
+          "inclusive_ns": 2818868
+        },
+        "checkpoint_restore": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2001675,
+          "inclusive_ns": 2001675
+        },
+        "checkpoint_resume": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 62599278,
+          "inclusive_ns": 14950512203
+        },
+        "complete_cell_materialization": {
+          "calls": 2656,
+          "exclusive_of_other_probes_ns": 13658588,
+          "inclusive_ns": 13658588
+        },
+        "decode": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 14733327,
+          "inclusive_ns": 14733327
+        },
+        "evaluate_including_risk_predicate_weights_counts": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 786941999,
+          "inclusive_ns": 5371950438
+        },
+        "fact_and_evidence": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 3269950189,
+          "inclusive_ns": 3693878665
+        },
+        "index_build": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 6265865,
+          "inclusive_ns": 6265865
+        },
+        "negative_fact_and_evidence": {
+          "calls": 0,
+          "exclusive_of_other_probes_ns": 0,
+          "inclusive_ns": 0
+        },
+        "numeric_target_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 745362775,
+          "inclusive_ns": 745362775
+        },
+        "p41": {
+          "calls": 3,
+          "exclusive_of_other_probes_ns": 296349812,
+          "inclusive_ns": 296349812
+        },
+        "predicate_eval": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 2025803929,
+          "inclusive_ns": 2025803929
+        },
+        "predicate_membership_compile": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 101333496,
+          "inclusive_ns": 101333496
+        },
+        "release_resolution": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 176096071,
+          "inclusive_ns": 182361936
+        },
+        "replay_materialization": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 410269888,
+          "inclusive_ns": 417341740
+        },
+        "repository_exact_lookup_realization": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 2668563,
+          "inclusive_ns": 2668563
+        },
+        "risk_membership": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 72964767,
+          "inclusive_ns": 72964767
+        },
+        "risk_routing": {
+          "calls": 17664,
+          "exclusive_of_other_probes_ns": 1588002959,
+          "inclusive_ns": 1588002959
+        },
+        "route_b": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 12164181740,
+          "inclusive_ns": 16932304602
+        },
+        "source_preimages": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 14794114,
+          "inclusive_ns": 69297958
+        },
+        "target_plan_and_domain": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 226831567,
+          "inclusive_ns": 226831567
+        },
+        "validate_and_realize": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 395101393,
+          "inclusive_ns": 395101393
+        },
+        "weight_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 51540513,
+          "inclusive_ns": 51540513
+        }
+      },
+      "resources": {
+        "counts": {
+          "cache_hit": 4,
+          "cache_hit_ns": 33278571,
+          "cache_miss": 2,
+          "cache_miss_ns": 12889302,
+          "cache_publications": 2,
+          "compact_view_build_ns": 83344152,
+          "compact_view_builds": 6,
+          "repository_commits": 6,
+          "source_snapshot_bytes_total": 911,
+          "source_snapshot_opens": 1
+        },
+        "maxima": {
+          "cache_active_bytes": 41708,
+          "cache_active_members": 2,
+          "cache_active_plus_temp_bytes": 41727,
+          "cache_temp_bytes": 20854,
+          "compact_event_body_arrow_bytes": 118512,
+          "compact_event_count": 36,
+          "internal_record_count": 15,
+          "public_object_count": 92,
+          "source_snapshot_bytes": 911
+        }
+      },
+      "wall_seconds": 34.227004062
+    },
+    "compact-deleted": {
+      "peak_rss_bytes": 248127488,
+      "phases": {
+        "authority_fitness": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 127024532,
+          "inclusive_ns": 127024532
+        },
+        "batch_execute": {
+          "calls": 5,
+          "exclusive_of_other_probes_ns": 5783704410,
+          "inclusive_ns": 22603250606
+        },
+        "candidate": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 132962942,
+          "inclusive_ns": 132962942
+        },
+        "checkpoint_capture": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2479211,
+          "inclusive_ns": 2479211
+        },
+        "checkpoint_restore": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 1885694,
+          "inclusive_ns": 1885694
+        },
+        "checkpoint_resume": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 55417143,
+          "inclusive_ns": 11392196412
+        },
+        "complete_cell_materialization": {
+          "calls": 2656,
+          "exclusive_of_other_probes_ns": 9930099,
+          "inclusive_ns": 9930099
+        },
+        "decode": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 18379232,
+          "inclusive_ns": 18379232
+        },
+        "evaluate_including_risk_predicate_weights_counts": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 579000508,
+          "inclusive_ns": 3947707428
+        },
+        "fact_and_evidence": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 2406629818,
+          "inclusive_ns": 2727957163
+        },
+        "index_build": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 4580004,
+          "inclusive_ns": 4580004
+        },
+        "negative_fact_and_evidence": {
+          "calls": 0,
+          "exclusive_of_other_probes_ns": 0,
+          "inclusive_ns": 0
+        },
+        "numeric_target_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 553365404,
+          "inclusive_ns": 553365404
+        },
+        "p41": {
+          "calls": 3,
+          "exclusive_of_other_probes_ns": 264610313,
+          "inclusive_ns": 264610313
+        },
+        "predicate_eval": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 1506196529,
+          "inclusive_ns": 1506196529
+        },
+        "predicate_membership_compile": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 75603983,
+          "inclusive_ns": 75603983
+        },
+        "release_resolution": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 158528061,
+          "inclusive_ns": 163108065
+        },
+        "replay_materialization": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 311397246,
+          "inclusive_ns": 316353854
+        },
+        "repository_exact_lookup_realization": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 2001925,
+          "inclusive_ns": 2001925
+        },
+        "risk_membership": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 53077791,
+          "inclusive_ns": 53077791
+        },
+        "risk_routing": {
+          "calls": 17664,
+          "exclusive_of_other_probes_ns": 1145340088,
+          "inclusive_ns": 1145340088
+        },
+        "route_b": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 9460038981,
+          "inclusive_ns": 13128891130
+        },
+        "source_preimages": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 14103684,
+          "inclusive_ns": 69011955
+        },
+        "target_plan_and_domain": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 168019467,
+          "inclusive_ns": 168019467
+        },
+        "validate_and_realize": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 210964457,
+          "inclusive_ns": 210964457
+        },
+        "weight_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 35123125,
+          "inclusive_ns": 35123125
+        }
+      },
+      "resources": {
+        "counts": {
+          "cache_hit": 4,
+          "cache_hit_ns": 5543335,
+          "cache_miss": 2,
+          "cache_miss_ns": 13749401,
+          "cache_publications": 2,
+          "compact_view_build_ns": 44693238,
+          "compact_view_builds": 6,
+          "repository_commits": 6,
+          "source_snapshot_bytes_total": 911,
+          "source_snapshot_opens": 1
+        },
+        "maxima": {
+          "cache_active_bytes": 41708,
+          "cache_active_members": 2,
+          "cache_active_plus_temp_bytes": 41708,
+          "cache_temp_bytes": 20854,
+          "compact_event_body_arrow_bytes": 118512,
+          "compact_event_count": 36,
+          "internal_record_count": 15,
+          "public_object_count": 92,
+          "source_snapshot_bytes": 911
+        }
+      },
+      "wall_seconds": 26.888055592
+    },
+    "compact-warm": {
+      "peak_rss_bytes": 252518400,
+      "phases": {
+        "authority_fitness": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 160331374,
+          "inclusive_ns": 160331374
+        },
+        "batch_execute": {
+          "calls": 5,
+          "exclusive_of_other_probes_ns": 6393484521,
+          "inclusive_ns": 27980248529
+        },
+        "candidate": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 199655412,
+          "inclusive_ns": 199655412
+        },
+        "checkpoint_capture": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 3336781,
+          "inclusive_ns": 3336781
+        },
+        "checkpoint_restore": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 2517369,
+          "inclusive_ns": 2517369
+        },
+        "checkpoint_resume": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 66946477,
+          "inclusive_ns": 14430600346
+        },
+        "complete_cell_materialization": {
+          "calls": 2656,
+          "exclusive_of_other_probes_ns": 12503764,
+          "inclusive_ns": 12503764
+        },
+        "decode": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 19532837,
+          "inclusive_ns": 19532837
+        },
+        "evaluate_including_risk_predicate_weights_counts": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 723683167,
+          "inclusive_ns": 4927646071
+        },
+        "fact_and_evidence": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 3100572530,
+          "inclusive_ns": 3508270549
+        },
+        "index_build": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 6745657,
+          "inclusive_ns": 6745657
+        },
+        "negative_fact_and_evidence": {
+          "calls": 0,
+          "exclusive_of_other_probes_ns": 0,
+          "inclusive_ns": 0
+        },
+        "numeric_target_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 671042455,
+          "inclusive_ns": 671042455
+        },
+        "p41": {
+          "calls": 3,
+          "exclusive_of_other_probes_ns": 299724795,
+          "inclusive_ns": 299724795
+        },
+        "predicate_eval": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 1906000166,
+          "inclusive_ns": 1906000166
+        },
+        "predicate_membership_compile": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 94933194,
+          "inclusive_ns": 94933194
+        },
+        "release_resolution": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 169781878,
+          "inclusive_ns": 176527535
+        },
+        "replay_materialization": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 395194255,
+          "inclusive_ns": 401608548
+        },
+        "repository_exact_lookup_realization": {
+          "calls": 6,
+          "exclusive_of_other_probes_ns": 3239950,
+          "inclusive_ns": 3239950
+        },
+        "risk_membership": {
+          "calls": 15936,
+          "exclusive_of_other_probes_ns": 69070678,
+          "inclusive_ns": 69070678
+        },
+        "risk_routing": {
+          "calls": 17664,
+          "exclusive_of_other_probes_ns": 1412111021,
+          "inclusive_ns": 1412111021
+        },
+        "route_b": {
+          "calls": 2,
+          "exclusive_of_other_probes_ns": 12050007296,
+          "inclusive_ns": 17159298606
+        },
+        "source_preimages": {
+          "calls": 1,
+          "exclusive_of_other_probes_ns": 14077355,
+          "inclusive_ns": 68325250
+        },
+        "target_plan_and_domain": {
+          "calls": 1328,
+          "exclusive_of_other_probes_ns": 222661885,
+          "inclusive_ns": 222661885
+        },
+        "validate_and_realize": {
+          "calls": 7,
+          "exclusive_of_other_probes_ns": 463359258,
+          "inclusive_ns": 463359258
+        },
+        "weight_resolution": {
+          "calls": 10704,
+          "exclusive_of_other_probes_ns": 50805390,
+          "inclusive_ns": 50805390
+        }
+      },
+      "resources": {
+        "counts": {
+          "cache_hit": 6,
+          "cache_hit_ns": 42426181,
+          "compact_view_build_ns": 72632129,
+          "compact_view_builds": 6,
+          "repository_commits": 6,
+          "source_snapshot_bytes_total": 911,
+          "source_snapshot_opens": 1
+        },
+        "maxima": {
+          "cache_active_bytes": 41708,
+          "cache_active_members": 2,
+          "compact_event_body_arrow_bytes": 118512,
+          "compact_event_count": 36,
+          "internal_record_count": 15,
+          "public_object_count": 92,
+          "source_snapshot_bytes": 911
+        }
+      },
+      "wall_seconds": 32.549091592
+    }
+  }
+}

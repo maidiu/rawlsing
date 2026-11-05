@@ -1,0 +1,236 @@
+.                                                                        [100%]
+1 passed in 1.37s
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_cache_faults_slots_and_binding_invalidation _______________
+
+document = {'authority_snapshot_refs': [{'authority_content_hash': 'e752e363b51959e4774121feff56ccec0ae3984f17b937e0768f409808902...a:event:sha256:3e09015cd34e0c485e08569911f9d3ade8f26e751155fd8628faad2db622e338'}, 'schema_id': 'RespondentEvent', ...}
+
+    def materialize_public_object(document: Mapping[str, Any]) -> CanonicalSemanticObject:
+        """Re-materialize one exact PRE553 public object from its full canonical preimage.
+    
+        This is deserialization, not semantic construction.  The existing PRE553
+        constructor recomputes the semantic projection and rejects any supplied
+        object_id/content_hash that does not match byte-for-byte canonical meaning.
+        No aliases, version elision, inferred fields, or hash inversion exist.
+        """
+        if not isinstance(document, Mapping):
+            raise CarrierExecutionBindingError("canonical object preimage must be a mapping")
+        if frozenset(document) != _SERIALIZED_PUBLIC_KEYS:
+            missing = sorted(_SERIALIZED_PUBLIC_KEYS - frozenset(document))
+            extra = sorted(frozenset(document) - _SERIALIZED_PUBLIC_KEYS)
+            raise CarrierExecutionBindingError(
+                f"canonical object preimage shape mismatch: missing={missing!r} extra={extra!r}"
+            )
+        schema_id = document.get("schema_id")
+        schema_version = document.get("schema_version")
+        cls = _PUBLIC_CLASS_BY_SCHEMA.get((schema_id, schema_version))
+        if cls is None:
+            raise CarrierExecutionBindingError(
+                f"unsupported exact PRE553 public schema {schema_id!r}@{schema_version!r}"
+            )
+        fields = document.get("semantic_fields")
+        if not isinstance(fields, Mapping):
+            raise CarrierExecutionBindingError("canonical object semantic_fields must be a mapping")
+        try:
+>           obj = cls(
+                schema_id=schema_id,
+                schema_version=schema_version,
+                typed_state=document.get("typed_state"),
+                authority_snapshot_refs=document.get("authority_snapshot_refs", ()),
+                dependency_refs=document.get("dependency_refs", ()),
+                producer_replay_locator_or_reference_root=document.get(
+                    "producer_replay_locator_or_reference_root"
+                ),
+                object_id=document.get("object_id"),
+                content_hash=document.get("content_hash"),
+                **dict(fields),
+            )
+
+rawlsing_next/pre553_carrier_execution.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <[AttributeError("'RespondentEvent' object has no attribute '_semantic_fields'") raised in repr()] RespondentEvent object at 0x1328abda0>
+typed_state = 'SUBSTANTIVE_RESPONSE'
+authority_snapshot_refs = [{'authority_content_hash': 'e752e363b51959e4774121feff56ccec0ae3984f17b937e0768f40980890270c', 'authority_id': 'I03-A...733642e7b426ec55aefb2284ce843b67332f5d1c411b39b', 'authority_id': 'I03-AUTH-m01-source', 'authority_version': '1.0.0'}]
+dependency_refs = [{'content_hash': 'ab0d207becb580408f5a73431bb07ad901dae7b9818b53fa78ef36091a9178ad', 'kind': 'C11Internal:QuestionVar... 'urn:rawlsing:pre553:c11:RespondentIdentity:sha256:fe4408e28f1d97cc3585d7590f4c1cbb055d4a6a06846104f80bdc44dddbff6b'}]
+producer_replay_locator_or_reference_root = {'content_hash': '3e09015cd34e0c485e08569911f9d3ade8f26e751155fd8628faad2db622e338', 'kind': 'PRE553_C05R2A_EVENT_REPL...object_id': 'urn:rawlsing:pre553:c05r2a:event:sha256:3e09015cd34e0c485e08569911f9d3ade8f26e751155fd8628faad2db622e338'}
+object_id = 'urn:rawlsing:pre553:RespondentEvent:sha256:024a7664087774a519f0c9be3933027da3539964c1213cfa01fbcd1436bb2f54'
+content_hash = '024a7664087774a519f0c9be3933027da3539964c1213cfa01fbcd1436bb2f54'
+schema_id = 'RespondentEvent', schema_version = '1.0.0'
+semantic_fields = {'canonical_question_ref_if_authorized': None, 'canonical_response_value_if_authorized': '1', 'component_or_subitem_re... 'urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d'}, ...}
+
+    def __init__(
+        self,
+        *,
+        typed_state: str,
+        authority_snapshot_refs: Iterable[AuthorityRef | Mapping[str, Any]] = (),
+        dependency_refs: Iterable[ExactRef | Mapping[str, Any]] = (),
+        producer_replay_locator_or_reference_root: Any,
+        object_id: str | None = None,
+        content_hash: str | None = None,
+        schema_id: str | None = None,
+        schema_version: str | None = None,
+        **semantic_fields: Any,
+    ) -> None:
+        if self.FAMILY not in PUBLIC_OBJECT_FAMILIES:
+            raise Pre553SemanticCollapseError(f"{self.FAMILY!r} is not a public P01 family")
+        family_name, family_version = self.FAMILY.split("@", 1)
+        if schema_id is not None and schema_id != family_name:
+            raise Pre553IntegrityError("schema_id cannot substitute another public family")
+        if schema_version is not None and schema_version != family_version:
+            raise Pre553IntegrityError("schema_version mismatch")
+        state = _text(typed_state, "typed_state")
+        allowed = STATE_FAMILIES.get(self.STATE_FAMILY)
+        if allowed is None or state not in allowed:
+            raise Pre553IntegrityError(f"typed_state {state!r} is not valid for {self.STATE_FAMILY}")
+        missing = sorted(self.REQUIRED_FIELDS - set(semantic_fields))
+        if missing:
+            raise Pre553IntegrityError(f"{family_name} missing required semantic fields: {missing!r}")
+    
+        auth_refs = _canonical_authority_ref_set(
+            _authority_refs(authority_snapshot_refs, "authority_snapshot_refs"))
+        deps = _canonical_ref_set(_refs(dependency_refs, "dependency_refs"))
+        if family_name != "AuthoritySnapshot" and not auth_refs:
+            raise Pre553IntegrityError(f"{family_name} requires exact authority_snapshot_refs for closure")
+    
+        normalized: dict[str, Any] = {}
+        for key, value in semantic_fields.items():
+            if key in {"family", "schema_id", "schema_version", "object_id", "content_hash"}:
+                raise Pre553IntegrityError(f"{key} is reserved identity material")
+            if key in self.SET_LIKE_FIELDS:
+                if isinstance(value, (str, bytes, bytearray)) or not isinstance(value, Iterable):
+                    raise Pre553IntegrityError(f"{key} must be a set-like iterable")
+                normalized[key] = _freeze_semantic_descendants(canonical_set(value))
+            else:
+                normalized[key] = _freeze_semantic_descendants(canonicalize(value))
+    
+        replay_root = _replay_root(producer_replay_locator_or_reference_root)
+        projection = {
+            "schema_id": family_name,
+            "schema_version": family_version,
+            "typed_state": state,
+            "authority_snapshot_refs": [x.as_dict() for x in auth_refs],
+            "dependency_refs": [x.as_dict() for x in deps],
+            "producer_replay_locator_or_reference_root": canonicalize(replay_root),
+            "semantic_fields": normalized,
+        }
+        digest = semantic_hash(projection)
+        expected_id = f"{URN_PREFIX}:{family_name}:sha256:{digest}"
+        if object_id is not None and object_id != expected_id:
+>           raise Pre553IntegrityError("object_id does not match deterministic semantic identity")
+E           rawlsing_next.pre553_empirical_objects.Pre553IntegrityError: object_id does not match deterministic semantic identity
+
+rawlsing_next/pre553_empirical_objects.py:435: Pre553IntegrityError
+
+The above exception was the direct cause of the following exception:
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x112293590>
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-376/test_cache_faults_slots_and_bi0')
+
+    def test_cache_faults_slots_and_binding_invalidation(monkeypatch, tmp_path):
+        fx = _fixture()
+        release = build_validated_source_backed_c11_release_from_stream(fx["stream"], fx["projection"])
+        root = tmp_path / "cache"
+        monkeypatch.setenv(view._CACHE_ENV, str(root))
+        binding = {"decoder_metadata": "a" * 64, "current_authorities": ["current"]}
+        sealed = compact(release, binding)
+        path, = root.glob("*.parquet")
+        golden = path.read_bytes()
+        assert root.stat().st_mode & 0o777 == 0o700
+        assert path.stat().st_mode & 0o777 == 0o600
+        for variant in ("metadata", "content", "truncated", "symlink"):
+            if variant == "metadata":
+                table = pq.read_table(path).replace_schema_metadata({view._CACHE_METADATA_KEY: b"foreign-key"})
+                pq.write_table(table, path)
+            elif variant == "content":
+                table = pq.read_table(path)
+                bodies = table.column(0).to_pylist()
+                payload = json.loads(bodies[0]); payload["semantic_fields"]["raw_response_value"] = "forged"
+                bodies[0] = canonical_json(payload).encode()
+                table = pa.table({view._EVENT_BODY_COLUMN: pa.array(bodies, type=pa.binary())}).replace_schema_metadata(table.schema.metadata)
+                pq.write_table(table, path)
+            elif variant == "truncated":
+                path.write_bytes(b"torn")
+            else:
+                outside = tmp_path / "outside"
+                outside.write_bytes(b"outside-must-not-change")
+                path.unlink(); path.symlink_to(outside)
+            restored = compact(release, binding)
+>           assert [x.as_dict() for x in restored.public_objects] == [x.as_dict() for x in release.public_objects]
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+../../f935/Rawlsing/WORKER_RETURNS/PROGRAMMA-OCT28-P1R1-20261104-R1/test_independent_review.py:184: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../f935/Rawlsing/WORKER_RETURNS/PROGRAMMA-OCT28-P1R1-20261104-R1/test_independent_review.py:184: in <listcomp>
+    assert [x.as_dict() for x in restored.public_objects] == [x.as_dict() for x in release.public_objects]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen _collections_abc>:993: in __iter__
+    ???
+rawlsing_next/_pre553_c11_execution_view.py:120: in __getitem__
+    return self._materialize(self.entries[index])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/_pre553_c11_execution_view.py:128: in _materialize
+    return self.lane.materialize(entry) if isinstance(entry, int) else entry
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/_pre553_c11_execution_view.py:59: in materialize
+    return materialize_public_object(body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+document = {'authority_snapshot_refs': [{'authority_content_hash': 'e752e363b51959e4774121feff56ccec0ae3984f17b937e0768f409808902...a:event:sha256:3e09015cd34e0c485e08569911f9d3ade8f26e751155fd8628faad2db622e338'}, 'schema_id': 'RespondentEvent', ...}
+
+    def materialize_public_object(document: Mapping[str, Any]) -> CanonicalSemanticObject:
+        """Re-materialize one exact PRE553 public object from its full canonical preimage.
+    
+        This is deserialization, not semantic construction.  The existing PRE553
+        constructor recomputes the semantic projection and rejects any supplied
+        object_id/content_hash that does not match byte-for-byte canonical meaning.
+        No aliases, version elision, inferred fields, or hash inversion exist.
+        """
+        if not isinstance(document, Mapping):
+            raise CarrierExecutionBindingError("canonical object preimage must be a mapping")
+        if frozenset(document) != _SERIALIZED_PUBLIC_KEYS:
+            missing = sorted(_SERIALIZED_PUBLIC_KEYS - frozenset(document))
+            extra = sorted(frozenset(document) - _SERIALIZED_PUBLIC_KEYS)
+            raise CarrierExecutionBindingError(
+                f"canonical object preimage shape mismatch: missing={missing!r} extra={extra!r}"
+            )
+        schema_id = document.get("schema_id")
+        schema_version = document.get("schema_version")
+        cls = _PUBLIC_CLASS_BY_SCHEMA.get((schema_id, schema_version))
+        if cls is None:
+            raise CarrierExecutionBindingError(
+                f"unsupported exact PRE553 public schema {schema_id!r}@{schema_version!r}"
+            )
+        fields = document.get("semantic_fields")
+        if not isinstance(fields, Mapping):
+            raise CarrierExecutionBindingError("canonical object semantic_fields must be a mapping")
+        try:
+            obj = cls(
+                schema_id=schema_id,
+                schema_version=schema_version,
+                typed_state=document.get("typed_state"),
+                authority_snapshot_refs=document.get("authority_snapshot_refs", ()),
+                dependency_refs=document.get("dependency_refs", ()),
+                producer_replay_locator_or_reference_root=document.get(
+                    "producer_replay_locator_or_reference_root"
+                ),
+                object_id=document.get("object_id"),
+                content_hash=document.get("content_hash"),
+                **dict(fields),
+            )
+        except (TypeError, ValueError, Pre553IntegrityError) as exc:
+>           raise CarrierExecutionBindingError(
+                f"canonical object preimage failed exact materialization: {exc}"
+            ) from exc
+E           rawlsing_next.pre553_carrier_execution.CarrierExecutionBindingError: canonical object preimage failed exact materialization: object_id does not match deterministic semantic identity
+
+rawlsing_next/pre553_carrier_execution.py:141: CarrierExecutionBindingError
+=========================== short test summary info ============================
+FAILED ../../f935/Rawlsing/WORKER_RETURNS/PROGRAMMA-OCT28-P1R1-20261104-R1/test_independent_review.py::test_cache_faults_slots_and_binding_invalidation
+1 failed in 0.24s
+HASH_CHECK_SEVERED_EXPECTED_RED_EXIT 1
+.                                                                        [100%]
+1 passed in 0.62s
+HASH_CHECK_RESTORED_PASS
