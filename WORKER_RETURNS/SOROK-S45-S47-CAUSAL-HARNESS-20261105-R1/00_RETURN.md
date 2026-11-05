@@ -6,14 +6,24 @@
 
 This harness is engineering evidence, not independent final review, acceptance, native/psychological issuance or human validation. The integration run below imports the shipped S45-S47 package closure directly; it does not use the harness's independent git-extraction stage.
 
+## Shipping unit
+
+All three adjacent return directories are required: this harness, the product
+import closure, and the public projection adapter. The package return alone does
+not contain the projection.
+
 ## Published history and pins
 
 - Public harness: `3d6207983b62646108d4c6e3ff1a3b4d65674977`.
 - Cherry-picked closure-branch commit: `5531492df2317166d223e6c6bc211b147e0912f7`.
-- Integration commit: this branch head after package-closure wiring; exact hash returned in final readback.
+- Accepted integration source: `da97d2624486b783bf5c4f465b17fdcdea3af20a`. Focused fix commit: this branch head after the three review fixes; exact hash returned in final readback; parent is `da97d2624486b783bf5c4f465b17fdcdea3af20a`.
 - Package closure: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1`.
 - Source pins remain S45 `f26a138e20d53c809d611cf8d834ec647b0804bf`, S46 `f0ef39b92ce2e4add5c0a699389e12f1d7ae434e`, S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`, with S37/S42 seam bytes from the S47 cumulative cut and the exact dependency closure in the package `SOURCE_MANIFEST.json` (424 blobs).
 - The package closure includes the same S37/S42 seam-carrying trees used by the prior stage run and adds pinned WP19/S11 projection dependencies.
+
+## Independent review status
+
+Independent reviewer session `ses_e526dc569ffe67E2MTl0k6Y38V` accepted the adjacent package+projection+harness unit at `da97d2624486b783bf5c4f465b17fdcdea3af20a` with 11 projection tests, 22 harness checks, cold replay, privacy and source cut/restore. That acceptance is historical for the focused fix commit; the new code requires focused closure.
 
 ## Package-closure mode
 
@@ -51,7 +61,7 @@ Source audit: 424/424 exact. Package modules under closure: `true`.
 Checks: 22/22 true. Full machine report: `evidence/harness_run.json`.
 Captured stdout: `logs/harness_stdout.log`.
 
-Original focused suites were intentionally **NOT_RUN** in this package-closure integration with reason `PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES`. The prior stage run's S45/S46/S47 `21/17/17 passed` evidence remains in git history and in the retained `logs/` and `evidence/junit/` files; those suites were not duplicated here.
+Original focused suites were intentionally **NOT_RUN** in this package-closure integration with the explicit selection `none` and reason `PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE`. Package mode now refuses `--original-tests all` or `s47` before success with `PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED` (exit 2); refusal evidence is `evidence/harness_original_tests_all_refusal.json`. The prior stage run's S45/S46/S47 `21/17/17 passed` evidence remains in git history and retained `logs/`/`evidence/junit/` files; those suites were not duplicated here.
 
 ## Same-root causal result
 
@@ -106,7 +116,7 @@ Private-hook source injection outside `qualify_source` is not a supported seam a
 ## Branch and publication
 
 Branch: `codex/sorok-s45-s47-closure-20261105-r1`.
-Published history: package `e42faf01b57a9188f0cf75baaccfcd57edb07173`; projection cherry-pick `4e9ebc85d78995e93a7fbace0ead78d703067244`; harness cherry-pick `5531492df2317166d223e6c6bc211b147e0912f7`; integration commit is the exact head returned in final readback.
+Published history: package `e42faf01b57a9188f0cf75baaccfcd57edb07173`; projection cherry-pick `4e9ebc85d78995e93a7fbace0ead78d703067244`; harness cherry-pick `5531492df2317166d223e6c6bc211b147e0912f7`; accepted integration `da97d2624486b783bf5c4f465b17fdcdea3af20a`; focused fix commit is the exact head returned in final readback.
 
 ## PROGRAMMA_DELTA
 

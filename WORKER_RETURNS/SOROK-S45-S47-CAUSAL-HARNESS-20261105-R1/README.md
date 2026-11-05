@@ -10,6 +10,12 @@ historical git-extraction mode that stages exact pinned source into
 exercise the performed-versus-scheduled causal chain through the actual S47 C9
 path and S45 `DO_HELP`.
 
+## Shipping unit
+
+All three adjacent return directories are required: this harness, the product
+import closure, and the public projection adapter. The package return alone does
+not contain the projection.
+
 ## Commission and pins
 
 - Whole-person receiving commission base:
@@ -34,8 +40,11 @@ python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harne
 This mode installs the shipped `sorok_s45_s47` package closure, verifies its
 424-file source manifest, confirms load-bearing modules resolve under the
 package vendor tree, and runs the causal scenarios against that exact package.
-It does not extract pins independently and does not duplicate full author
-suites (`original_tests` is recorded as `NOT_RUN`).
+It does not extract pins independently. Package mode accepts only explicit
+`--original-tests none`; an explicit `all` or `s47` returns a typed refusal
+(`PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED`, exit 2) instead of silently
+reporting `NOT_RUN` and claiming success. Use git-extraction mode for author
+suites.
 
 ## Git-extraction run
 

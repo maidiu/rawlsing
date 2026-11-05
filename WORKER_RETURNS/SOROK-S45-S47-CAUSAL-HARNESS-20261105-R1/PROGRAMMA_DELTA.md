@@ -2,7 +2,11 @@
 
 **Delta ID:** `SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1`
 **Grade:** `TEST_ONLY_ENGINEERING_CAUSAL_REGRESSION_NOT_INDEPENDENT_FINAL_REVIEW`.
-**Result:** `PASS` in `PACKAGE_CLOSURE` mode, 22/22 checks, exit 0.
+**Result:** `PASS` in `PACKAGE_CLOSURE` mode, 22/22 checks, exit 0. Accepted integration source `da97d2624486b783bf5c4f465b17fdcdea3af20a`; the focused fix commit is the exact head returned in final readback.
+
+## Shipping unit
+
+All three adjacent return directories are required: this harness, the product import closure, and the public projection adapter. The package return alone does not contain the projection.
 
 ## Delta
 
@@ -11,7 +15,7 @@ Added package-closure integration to the existing public harness:
 - `--package-closure PATH` installs the shipped `sorok_s45_s47` product closure.
 - `harness/package_closure.py` verifies the package `SOURCE_MANIFEST.json` (424 exact files), checks imported modules resolve under `product/vendor`, and reports `modules_under_package`.
 - Package mode runs the same ACTUAL/SCHEDULED_ONLY, S47 C9, S45 DO_HELP, sever/restore, cold replay and wrong-root scenarios against that exact package.
-- Package mode records `original_tests: NOT_RUN` with reason `PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES`; prior 21/17/17 evidence remains historical.
+- Package mode accepts only explicit `--original-tests none`; explicit `all`/`s47` now refuses with `PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED` (exit 2) instead of silently reporting `NOT_RUN` and PASS. Prior 21/17/17 evidence remains historical.
 
 ## Exact result
 

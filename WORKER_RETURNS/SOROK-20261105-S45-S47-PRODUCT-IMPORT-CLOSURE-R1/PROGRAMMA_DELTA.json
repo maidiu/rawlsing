@@ -1,70 +1,38 @@
 {
-  "schema": "SOROK_S45_S47_PROGRAMMA_DELTA@1",
-  "delta_class": "TEST_ONLY_SOURCEFREE_PRODUCT_CODE_CLOSURE_AND_PROJECTION_INTEGRATION",
-  "branch": "codex/sorok-s45-s47-closure-20261105-r1",
-  "published_history": {
-    "package": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
-    "projection_public": "39ff2c2d479d8ad71c156b01c168894527a486e4",
-    "projection_cherry_pick": "4e9ebc85d78995e93a7fbace0ead78d703067244",
-    "harness_public": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
-    "harness_cherry_pick": "5531492df2317166d223e6c6bc211b147e0912f7",
-    "integration_parent": "5531492df2317166d223e6c6bc211b147e0912f7",
-    "integration_commit": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_READBACK"
-  },
-  "source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
-  "source_files": 424,
-  "pins": {
-    "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
-    "s46": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
-    "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f",
-    "wp19": "3c4df43f813cd0727feff04f620aa0bbd9a63026",
-    "s11": "faec7ce909c54664e85320534bdf744b9bc47d37"
-  },
-  "integration": {
-    "projection_mode": "PACKAGE_CLOSURE",
-    "projection_tests": {
-      "count": 11,
-      "result": "11 passed in 30.08s",
-      "exit": 0
-    },
-    "causal_harness": {
-      "mode": "PACKAGE_CLOSURE",
-      "result": "PASS",
-      "checks_passed": 22,
-      "source_audit_files": 424,
-      "modules_under_package": true,
-      "original_tests": "NOT_RUN",
-      "original_tests_reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES"
-    },
-    "projected_demo_all_checks": true,
-    "projected_cli": [
-      "new", "view", "say", "do-help", "attend", "status",
-      "wait", "exit", "return", "absence"
+  "adjacent_shipping_unit": {
+    "package_alone_contains_projection": false,
+    "required_returns": [
+      "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+      "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1",
+      "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1"
     ]
   },
+  "branch": "codex/sorok-s45-s47-closure-20261105-r1",
   "causal_checks": {
-    "actual_material_after_interval": 0,
     "actual_c9_objective_material_eligible": false,
     "actual_do_help_status": "REFUSED",
     "actual_do_help_strategy": "HELP_REFUSE",
-    "scheduled_material_after_interval": 1,
+    "actual_material_after_interval": 0,
+    "cold_subprocess_same_source": true,
+    "cut_refused_then_restored": true,
+    "event_local_source_preserved": true,
+    "projection_privacy_passed": true,
     "scheduled_c9_objective_material_eligible": true,
     "scheduled_do_help_status": "OK",
     "scheduled_do_help_strategy": "HELP_ACCEPT",
-    "event_local_source_preserved": true,
-    "cut_refused_then_restored": true,
-    "cold_subprocess_same_source": true,
-    "projection_privacy_passed": true,
+    "scheduled_material_after_interval": 1,
     "wrong_root_refused": true
   },
-  "native_grants": {
-    "actor": false,
-    "rule": false,
-    "source": false,
-    "human": false,
-    "c8": false,
-    "c9": false,
-    "c12": false
+  "delta_class": "TEST_ONLY_SOURCEFREE_PRODUCT_CODE_CLOSURE_AND_PROJECTION_INTEGRATION",
+  "focused_fixes": {
+    "harness_original_tests": "package mode refuses all/s47 with PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED; explicit none accepted",
+    "new_cli_receipt": "new emits WP19 view schema; no root_hash/private keys in new/view/result/status",
+    "readback_census": "tools/readback_census.py excludes READBACK.json and __pycache__; exact set labeled",
+    "regression": {
+      "cli_tests": "2 passed in 6.60s",
+      "harness_all": "exit 2 explicit refusal",
+      "harness_none": "PASS 22/22"
+    }
   },
   "holds": [
     "independent exact-commit review NOT_RUN",
@@ -74,5 +42,79 @@
     "Pyat E001/E002 unchanged",
     "B current-root positive not claimed",
     "human S11/A5 Gate4/Gate5 not run"
-  ]
+  ],
+  "independent_review": {
+    "accepted_evidence": {
+      "cold": true,
+      "harness_checks": 22,
+      "privacy": true,
+      "projection_tests": 11,
+      "source_cut_restore": true
+    },
+    "accepted_scope": "adjacent package+projection+harness",
+    "accepted_source": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+    "historical_note": "Accepted review is historical for the focused fix commit; new code needs focused closure.",
+    "session": "ses_e526dc569ffe67E2MTl0k6Y38V",
+    "verdict": "ACCEPT"
+  },
+  "integration": {
+    "causal_harness": {
+      "checks_passed": 22,
+      "mode": "PACKAGE_CLOSURE",
+      "modules_under_package": true,
+      "original_tests": "NOT_RUN",
+      "original_tests_reason": "PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE",
+      "result": "PASS",
+      "source_audit_files": 424
+    },
+    "projected_cli": [
+      "new",
+      "view",
+      "say",
+      "do-help",
+      "attend",
+      "status",
+      "wait",
+      "exit",
+      "return",
+      "absence"
+    ],
+    "projected_demo_all_checks": true,
+    "projection_mode": "PACKAGE_CLOSURE",
+    "projection_tests": {
+      "count": 11,
+      "exit": 0,
+      "result": "11 passed in 30.08s"
+    }
+  },
+  "native_grants": {
+    "actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "human": false,
+    "rule": false,
+    "source": false
+  },
+  "pins": {
+    "s11": "faec7ce909c54664e85320534bdf744b9bc47d37",
+    "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+    "s46": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+    "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+    "wp19": "3c4df43f813cd0727feff04f620aa0bbd9a63026"
+  },
+  "published_history": {
+    "accepted_integration": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+    "focused_fix_commit": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_READBACK",
+    "focused_fix_parent": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+    "harness_cherry_pick": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "harness_public": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
+    "integration_parent": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "package": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+    "projection_cherry_pick": "4e9ebc85d78995e93a7fbace0ead78d703067244",
+    "projection_public": "39ff2c2d479d8ad71c156b01c168894527a486e4"
+  },
+  "schema": "SOROK_S45_S47_PROGRAMMA_DELTA@1",
+  "source_files": 424,
+  "source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b"
 }

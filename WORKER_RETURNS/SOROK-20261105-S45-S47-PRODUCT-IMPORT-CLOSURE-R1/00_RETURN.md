@@ -7,8 +7,26 @@
 - Workdir: `/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1`
 - Branch: `codex/sorok-s45-s47-closure-20261105-r1`
 - Published history: package `e42faf01b57a9188f0cf75baaccfcd57edb07173`; public projection `39ff2c2d479d8ad71c156b01c168894527a486e4` cherry-picked as `4e9ebc85d78995e93a7fbace0ead78d703067244`; causal harness `3d6207983b62646108d4c6e3ff1a3b4d65674977` cherry-picked as `5531492df2317166d223e6c6bc211b147e0912f7`.
-- The integration commit is this branch head; its exact hash is returned in the final chat readback. Parent is `5531492df2317166d223e6c6bc211b147e0912f7`.
+- Accepted integration source: `da97d2624486b783bf5c4f465b17fdcdea3af20a` (parent `5531492df2317166d223e6c6bc211b147e0912f7`).
+- The focused fix commit is this branch head; its exact hash is returned in the final chat readback. Parent is `da97d2624486b783bf5c4f465b17fdcdea3af20a`.
 - The separate original public/worker branch refs were not edited; integration is scoped to this closure branch.
+
+## ADJACENT_SHIPPING_UNIT
+
+The shipping unit is all three adjacent return directories, not the package return alone:
+
+- `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1` (package closure and single product CLI).
+- `WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1` (WP19 projection adapter and tests).
+- `WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1` (package-mode causal harness and evidence).
+
+The package return does not contain `s45_projection`; publishing package-return-alone would break projected output and the focused projection tests.
+
+## INDEPENDENT_FINAL_REVIEW
+
+- Independent reviewer session: `ses_e526dc569ffe67E2MTl0k6Y38V`.
+- Verdict: `ACCEPT`, scoped only to `da97d2624486b783bf5c4f465b17fdcdea3af20a` and the adjacent package+projection+harness source at that commit.
+- Accepted evidence verdict: 11 projection tests, 22 harness checks, cold replay, privacy, and source cut/restore.
+- This acceptance is historical for the focused fixes below. The focused fix commit is a new code state and requires focused closure; it is not covered by the da97 acceptance.
 
 ## SOURCE/CODE_DISPOSITIONS_AND_HASHES
 
@@ -28,9 +46,11 @@
 - `python3 -B WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none` → PASS, all 22 checks true, source audit 424/424, package modules under closure.
 - Single user-facing CLI smoke: projected `new`, `view`, `view --text`, `say`, `do-help`, `attend`, `wait`, `status`; engineering interval/admit/C9 retained.
 - Projected demo exit 0; all ten top-level checks true; cold subprocess exit 0 and same event-local source hash.
-- Full S45/S46/S47 author suites were not rerun in this integration; prior `55 passed` (S45 21, S46 17, S47 17) evidence remains in this return and git history. The package-mode harness records `original_tests: NOT_RUN` with reason `PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES`.
-- Evidence: `evidence/DEMO.json`, `evidence/MANIFEST_AUDIT.json`, `evidence/PROJECTION_PACKAGE_TESTS.log`, `evidence/cli/`, plus projection and harness return evidence.
-- Exact machine readback: `READBACK.json`, carrying authored-file hashes, publication-tree census and exact run hashes.
+- Full S45/S46/S47 author suites were not rerun in this integration; prior `55 passed` (S45 21, S46 17, S47 17) evidence remains in this return and git history. In package mode, only explicit `--original-tests none` is accepted; explicit `all`/`s47` now refuses before success with `PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED` (exit 2). The accepted run records `original_tests: NOT_RUN` with reason `PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE`.
+- Focused fix regression: `2 passed in 6.60s` for public CLI receipts; `new` now emits the WP19 view schema and `new`/`view`/result/`status` leak no `root_hash` or other private keys. Harness package-none still PASS 22/22; explicit package-all refusal evidence is `evidence/harness_original_tests_all_refusal.json`.
+- Publication census is defined by `tools/readback_census.py`: all regular files under the package return, excluding `READBACK.json` and any `__pycache__` component; `.local-logs` is outside the root. This removes the prior self-growth stale census.
+- Evidence: `evidence/DEMO.json`, `evidence/MANIFEST_AUDIT.json`, `evidence/PROJECTION_PACKAGE_TESTS.log`, `evidence/FOCUSED_FIXES.json`, `evidence/FOCUSED_CLI_PRIVACY.*`, `evidence/cli/`, plus projection and harness return evidence.
+- Exact machine readback: `READBACK.json`, carrying authored-file hashes, the reproducible census definition/set and exact run hashes.
 
 ## ACTUAL_USER_PERCEIVED_CAUSAL_CHANGE
 

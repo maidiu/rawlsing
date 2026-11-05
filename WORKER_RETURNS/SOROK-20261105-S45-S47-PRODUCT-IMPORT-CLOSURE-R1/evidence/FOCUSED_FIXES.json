@@ -1,0 +1,72 @@
+{
+  "adjacent_shipping_unit": {
+    "note": "All three adjacent return directories are required. The package return alone does not contain the projection adapter.",
+    "required_returns": [
+      "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+      "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1",
+      "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1"
+    ]
+  },
+  "fixed_issues": [
+    {
+      "fix": "Census is defined and computed by tools/readback_census.py: all regular files under the package return root, excluding READBACK.json and any __pycache__ component; .local-logs is outside the root.",
+      "issue": "READBACK self-growth made the publication census stale"
+    },
+    {
+      "fix": "new now emits the existing public WP19 view schema; focused test checks new/view/result/status outputs for private keys and root identity absence.",
+      "issue": "local user CLI new receipt exposed root_hash"
+    },
+    {
+      "fix": "Package mode now refuses any selection other than explicit none before running: exit 2 with PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED.",
+      "issue": "package harness silently reported NOT_RUN for explicit --original-tests all"
+    }
+  ],
+  "independent_review": {
+    "accepted_source": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+    "historical_note": "This accepted review is historical for the fixes below; the new fix commit requires focused closure.",
+    "scope": "adjacent package+projection+harness",
+    "session": "ses_e526dc569ffe67E2MTl0k6Y38V",
+    "verdict": "ACCEPT"
+  },
+  "not_run": [
+    "unchanged 55-test author suite rerun",
+    "independent review of this fix commit",
+    "PRE-MAIN merge",
+    "native/science/human/B grants"
+  ],
+  "schema": "SOROK_S45_S47_FOCUSED_FIXES@1",
+  "verification": {
+    "census_tool": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/tools/readback_census.py",
+    "focused_cli_privacy_tests": {
+      "checks": [
+        "new is WP19 view",
+        "view is WP19 view",
+        "no root_hash",
+        "no PRIVATE_KEYS",
+        "no forbidden markers",
+        "result/status public"
+      ],
+      "command": "python3 -B -m pytest -q -p no:cacheprovider --junitxml=.../evidence/FOCUSED_CLI_PRIVACY.xml .../product/tests",
+      "exit": 0,
+      "junit_sha256": "bb744d01adb010143a8c04c5f75d4a7f2c974a0e94ecf5e088122c9ba3e31867",
+      "log_sha256": "d131cb410f1c8e796f4b1f95d8b2b0335fa162b39407717464f31c2e31810954",
+      "result": "2 passed in 6.60s"
+    },
+    "harness_package_all_refusal": {
+      "error": "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:all:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE",
+      "evidence": "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/evidence/harness_original_tests_all_refusal.json",
+      "evidence_sha256": "f86a2efaeb0e8bd1130f357142989d42373144eed351a6f70e6aeb03470d174d",
+      "exit": 2,
+      "result": "ERROR"
+    },
+    "harness_package_none": {
+      "checks_passed": 22,
+      "checks_total": 22,
+      "original_tests": "NOT_RUN",
+      "original_tests_reason": "PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE",
+      "report": "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/evidence/harness_run.json",
+      "report_sha256": "95b5c61c14b10869f3dd2474797b505ee5f322fadb1e2b58adae209a337c68d2",
+      "result": "PASS"
+    }
+  }
+}

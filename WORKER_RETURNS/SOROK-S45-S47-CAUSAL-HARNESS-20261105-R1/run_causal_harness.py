@@ -372,6 +372,12 @@ def main(argv: list[str] | None = None) -> int:
             explicit[key] = value
     try:
         if args.package_closure is not None:
+            if args.original_tests != "none":
+                raise pins.HarnessError(
+                    "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:"
+                    + args.original_tests
+                    + ":USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE"
+                )
             stage_manifest = package_closure.configure(
                 args.package_closure, MODULE_NAMES
             )
@@ -385,7 +391,7 @@ def main(argv: list[str] | None = None) -> int:
                 "schema": "SOROK_S45_S47_HARNESS_ORIGINAL_TESTS@1",
                 "selection": args.original_tests,
                 "status": "NOT_RUN",
-                "reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES",
+                "reason": "PACKAGE_CLOSURE_MODE_EXPLICIT_ORIGINAL_TESTS_NONE",
                 "rows": {},
                 "checks": {},
                 "all_checks_pass": True,

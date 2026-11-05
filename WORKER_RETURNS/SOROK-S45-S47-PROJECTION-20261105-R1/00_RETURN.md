@@ -4,6 +4,14 @@
 
 This return implements the bounded projection/CLI integration contract and now consumes the shipped S45-S47 product import closure by default. It renders actual pinned S45 encounter results through the existing pinned WP19/S11 encounter surface. It does not perform S46/S47 material-interval work or the separate causal harness; those are covered by the shipped package and package-mode harness.
 
+## 0. Adjacent shipping unit
+
+The shipping unit is all three adjacent return directories: the product import closure, this projection adapter, and the causal harness. The package return alone does not contain `s45_projection`; all three must ship and be reviewed together.
+
+## 0a. Independent review status
+
+Independent reviewer session `ses_e526dc569ffe67E2MTl0k6Y38V` accepted the adjacent package+projection+harness unit at `da97d2624486b783bf5c4f465b17fdcdea3af20a` with 11 projection tests, 22 harness checks, cold replay, privacy and source cut/restore. That acceptance is historical for the focused fix commit; the new code requires focused closure.
+
 ## 1. Scope and pins
 
 - Worktree base history: package `e42faf01b57a9188f0cf75baaccfcd57edb07173`; projection public `39ff2c2d479d8ad71c156b01c168894527a486e4`; cherry-picked closure branch commit `4e9ebc85d78995e93a7fbace0ead78d703067244`.

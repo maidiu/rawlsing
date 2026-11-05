@@ -628,20 +628,10 @@ def command_new(args) -> int:
     session = _start_s47(state, args.seed)
     adapter = _projection(session)
     try:
-        report = {
-            "schema": "SOROK_S45_S47_CLI_ACTION@1",
-            "action": "new",
-            "state": str(state),
-            "root_hash": session.read_root()["root_hash"],
-            "clock": session.clock(),
-            "events": len(session.read_events()),
-            "encounters": len(session.read_encounters()),
-            "verify_ok": bool(session.verify().get("ok")),
-            "view": adapter.view(),
-        }
+        view = adapter.view()
     finally:
         adapter.close()
-    print(_json(report))
+    print(_json(view))
     return 0
 
 

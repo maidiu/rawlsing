@@ -1,0 +1,11 @@
+{
+  "commands": "/usr/local/bin/python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests all --json-out .local-logs/s45-s47-integration/focused/harness-all.json --work-dir .local-logs/s45-s47-integration/focused/work-all --logs-dir .local-logs/s45-s47-integration/focused/logs-all --evidence-dir .local-logs/s45-s47-integration/focused/evidence-all",
+  "elapsed_seconds": 0.003,
+  "error": "PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:all:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE",
+  "error_type": "HarnessError",
+  "result": "ERROR",
+  "schema": "SOROK_S45_S47_CAUSAL_HARNESS_FAILURE@1",
+  "source_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1",
+  "stage_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/.runtime/source-tree",
+  "traceback": "Traceback (most recent call last):\n  File \"/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py\", line 376, in main\n    raise pins.HarnessError(\nharness.pins.HarnessError: PACKAGE_CLOSURE_ORIGINAL_TESTS_UNSUPPORTED:all:USE_GIT_EXTRACTION_MODE_OR_PASS_ORIGINAL_TESTS_NONE\n"
+}
