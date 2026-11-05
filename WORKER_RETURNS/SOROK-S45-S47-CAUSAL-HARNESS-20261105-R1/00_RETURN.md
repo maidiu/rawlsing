@@ -1,106 +1,61 @@
-# SOROK S45-S47 causal regression harness
+# SOROK S45-S47 causal regression harness — package-closure integrated
 
-**RESULT:** `S45_S47_CAUSAL_HARNESS__EXACT_PINS__SAME_ROOT_ACTUAL_VS_SCHEDULED__S47_C9_AND_S45_DO_HELP__SEVER_RED_RESTORE_PASS__COLD_REPLAY__WRONG_ROOT_REFUSED__ORIGINAL_21_17_17__ENGINEERING_EVIDENCE_NOT_INDEPENDENT_REVIEW`.
+**RESULT:** `S45_S47_CAUSAL_HARNESS__PACKAGE_CLOSURE_IMPORT__SAME_ROOT_ACTUAL_VS_SCHEDULED__S47_C9_AND_S45_DO_HELP__SEVER_RED_RESTORE_PASS__COLD_REPLAY__WRONG_ROOT_REFUSED__22_CHECKS_PASS__ENGINEERING_EVIDENCE_NOT_INDEPENDENT_REVIEW`.
 
 **Grade:** `TEST_ONLY_ENGINEERING_CAUSAL_REGRESSION_NOT_INDEPENDENT_FINAL_REVIEW`.
 
-This return is a separate executable causal regression harness. It is engineering
-evidence, **not** an independent final review, acceptance, or native/psychological
-issuance. No product code, expected psychology, or other worker return was
-altered. All writes are confined to
-`WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/**` plus its ignored
-in-checkout `.runtime/` staging/logs.
+This harness is engineering evidence, not independent final review, acceptance, native/psychological issuance or human validation. The integration run below imports the shipped S45-S47 package closure directly; it does not use the harness's independent git-extraction stage.
 
-## Commission and exact pins
+## Published history and pins
 
-- Whole-person receiving commission read at base
-  `078d9c57bc835a34e90b3671bdef6c28a0f43747`
-  (`WORKER_COMMISSIONS/SOROK-20261105-S45-S47-CANONICAL-SOURCEFREE-PRODUCT-RECEIVING-R1/00_COMMISSION.md`).
-- S45 `f26a138e20d53c809d611cf8d834ec647b0804bf`
-- S46 `f0ef39b92ce2e4add5c0a699389e12f1d7ae434e`
-- S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`
+- Public harness: `3d6207983b62646108d4c6e3ff1a3b4d65674977`.
+- Cherry-picked closure-branch commit: `5531492df2317166d223e6c6bc211b147e0912f7`.
+- Integration commit: this branch head after package-closure wiring; exact hash returned in final readback.
+- Package closure: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1`.
+- Source pins remain S45 `f26a138e20d53c809d611cf8d834ec647b0804bf`, S46 `f0ef39b92ce2e4add5c0a699389e12f1d7ae434e`, S47 `765a441f87292aa4c17794745b65cb54e6aaa83f`, with S37/S42 seam bytes from the S47 cumulative cut and the exact dependency closure in the package `SOURCE_MANIFEST.json` (424 blobs).
+- The package closure includes the same S37/S42 seam-carrying trees used by the prior stage run and adds pinned WP19/S11 projection dependencies.
 
-Exact dependency closure used by the harness:
+## Package-closure mode
 
-| Key | Cut | Files checked exact |
-|---|---|---|
-| S45 | `f26a138e20d5` | 10 |
-| S46 | `f0ef39b92ce2` | 10 |
-| S47 | `765a441f8729` | 9 |
-| S44 | `923278fbe6b0` | 11 |
-| S43 | `3edd631fb6c3` | 14 |
-| S42 + S47 seam | `765a441f8729` | 10 |
-| S41 | `c72a10d284f8` | 14 |
-| S40 | `79b0357c7af9` | 11 |
-| S39 | `e41513fa6560` | 13 |
-| S37 + S47 seam | `765a441f8729` | 23 |
-| S36 | `8da78d8031a0` | 23 |
-| R31J vendor closure | `64fec28c374d` | 141 |
-| JOIN-E | `7bf2da302996` | 304 |
-| Language mediation | `8d2920da951f` | 11 |
-| M35 vendor inside S37 | `4170fbf19a9d` | 10 |
-
-The S42/S37 seam-carrying trees are taken from the S47 cut because that is the
-actual admitted S47 import closure. The seam files verified exact:
-
-- `s42/event.py` `b33389a298f828610d04e45bde08fc1a8577a23275b4475cb8e5749cb68589ce`
-- `s42/session.py` `5acdbb26b4dedcca9707483c3513f98358ffcf238b846dd959cdbabb28f1219d`
-- `s37/producer.py` `cbc1a9531caf73b2c70c5ca4e6767b7f2c9e87f3756278555f27dfaee815c42d`
-
-Every imported module resolved under the staged pin tree
-(`modules_under_stage: true`), including `s45`, `s46`, `s47`, `s42`, `s37`,
-`candidate`, `joined`, `language_mediation`, `bp1`, `bp4`, `r31e` and
-`firstclass`.
-
-## Callable harness
-
-`run_causal_harness.py` accepts the repository/source package root and explicit
-pinned paths:
+`run_causal_harness.py` now accepts:
 
 ```text
 python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py \
-  --source-root <repo-or-worktree> \
-  --s45-return <exact-S45-return-dir> \
-  --s46-return <exact-S46-return-dir> \
-  --s47-return <exact-S47-return-dir> \
-  --join-e-return <exact-JOIN-E-return-dir> \
-  --language-return <exact-LANGUAGE_MEDIATION_R1-dir> \
-  --original-tests all
+  --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product \
+  --original-tests none
 ```
 
-`--package-root` aliases `--source-root`. Any pin can also be supplied with
-`--pinned-path KEY=PATH`. Explicit paths are copied into the in-worktree stage
-and verified against the pinned blobs before import; a modified or missing pin
-fails closed. The interface and options are documented in `README.md`.
+In this mode the harness:
 
-## Exact command and result
+- installs `sorok_s45_s47.bootstrap` from the shipped package;
+- verifies every package source file against `SOURCE_MANIFEST.json`;
+- verifies the load-bearing imported modules resolve under `product/vendor`;
+- runs the same ACTUAL vs SCHEDULED_ONLY, C9, S45 DO_HELP, sever/restore, cold and wrong-root scenarios;
+- does not extract pins independently and does not rerun full author suites.
+
+The git-extraction mode remains available for historical reproduction.
+
+## Exact integration run and result
 
 Executed from the bound workdir:
 
 ```text
-/usr/local/bin/python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --original-tests all
+/usr/local/bin/python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py \
+  --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product \
+  --original-tests none \
+  --json-out WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/evidence/harness_run.json
 ```
 
-Result: **PASS**, exit `0`, elapsed `344.348s`. Environment: Python `3.11.3`,
-pytest `9.1.1`, macOS `13.7.8` x86_64. Full machine-readable report:
-`evidence/harness_run.json`. The harness was also smoke-run with all five
-explicit pinned paths; it returned PASS with the same causal results.
+Result: **PASS**, exit `0`, elapsed `69.457s`. Mode: `PACKAGE_CLOSURE`.
+Source audit: 424/424 exact. Package modules under closure: `true`.
+Checks: 22/22 true. Full machine report: `evidence/harness_run.json`.
+Captured stdout: `logs/harness_stdout.log`.
 
-Original focused suites, re-executed from the exact staged pins:
-
-| Suite | Result | Elapsed |
-|---|---|---|
-| S45 | 21 passed, 0 failed/error/skipped | 127.326s |
-| S46 | 17 passed, 0 failed/error/skipped | 42.518s |
-| S47 | 17 passed, 0 failed/error/skipped | 90.601s |
-
-JUnit and logs: `evidence/junit/*.xml`, `logs/s45_full.log`,
-`logs/s46_full.log`, `logs/s47_full.log`.
+Original focused suites were intentionally **NOT_RUN** in this package-closure integration with reason `PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES`. The prior stage run's S45/S46/S47 `21/17/17 passed` evidence remains in git history and in the retained `logs/` and `evidence/junit/` files; those suites were not duplicated here.
 
 ## Same-root causal result
 
-Both modes use the same S45 fixture seed and reconstruct the same root:
-`3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7`.
+Both modes reconstruct the same root `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7`.
 
 | Observation | ACTUAL performed interval | SCHEDULED_ONLY source |
 |---|---|---|
@@ -114,80 +69,45 @@ Both modes use the same S45 fixture seed and reconstruct the same root:
 | S45 `DO_HELP` | `OK`, accepted `false`, `HELP_REFUSE` | `OK`, accepted `true`, `HELP_ACCEPT` |
 | Other actor B state | preserved | preserved |
 
-The same user-visible `DO_HELP` consequence changes through the actual S47 C9
-material readset, not through a harness-side expected-psychology rule. Cold
-reopen of both state roots reproduced the same root, the same event-bound S47
-source hash, the same material eligibility, the same SAY/DO_HELP/ATTEND
-encounter chain and `verify().ok == true`.
+Cold reopen reproduced the same root, event-bound source hashes, eligibility and encounter chain.
 
 ## Sever dependency RED -> restore PASS
 
-Supported dependency cut and restore on the actual S46 condition:
-
-- Cut: second admission refused with `S46_INTERVAL_CONDITION_REVOKED` (RED).
-- Historical first C9 event still returned its admitted S47 source with
-  `s47_source_in_readset: true` and `present_condition_revoked: true`.
-- Restore: source reconstructed bit-identically
-  (`e196c974e43a...`), second admission PASS, C9 source in readset,
-  `objective_material_eligible: false`, target `NO_CHANGE`/`NO_PROPOSAL`.
-- Cold reopen: first and second event-keyed C9 reads returned the same admitted
-  source hashes and `verify().ok == true`.
+- Cut: second admission refused with `S46_INTERVAL_CONDITION_REVOKED`.
+- Historical first C9 event retained its admitted S47 source while the present condition was revoked.
+- Restore: source reconstructed with the same hash, second admission PASS, C9 source in readset, `objective_material_eligible=false`.
+- Cold reopen: first and second event-keyed C9 reads returned the same admitted source hashes.
+- Package-mode check: `sever_dependency_red`, `sever_preserves_historical_c9_source`, `restore_dependency_pass`, `sever_restore_cold_replay` all true.
 
 ## Wrong-root negative
 
-Two same-person sessions with different root seeds produced distinct roots:
-
-- Root A: `3bcb21fc22df...`
-- Root B: `b43c92c076ae...`
-
-Substituting root A's interval source into root B's supported S47 qualification
-gate:
+Two different root seeds produced distinct roots. Substituting A's interval source into B's supported S47 qualification gate:
 
 - Unresealed foreign source: refused `S47_SOURCE_AS_OF_MISMATCH`.
-- Resealed foreign source with B's `as_of`: refused
-  `S47_SOURCE_INTERVAL_STATE_ID_MISMATCH`.
-- B's own source remained accepted and unchanged
-  (`de80ffb1f0bb...`).
-- A normal B admission then used B's own source in C9, not A's.
+- Resealed foreign source: refused `S47_SOURCE_INTERVAL_STATE_ID_MISMATCH`.
+- B's own source remained accepted and B's C9 used B's own source.
 
-The supported qualification seam therefore refuses a foreign-root substitution.
-A harness-only private-hook injection that bypasses `qualify_source` is outside
-the supported interface and is deliberately not counted as product behavior.
+Private-hook source injection outside `qualify_source` is not a supported seam and is not counted as product behavior.
 
 ## Exact imports and source custody
 
-`evidence/harness_run.json` contains the per-file pin manifest, git blob SHA-1s,
-SHA-256s, seam rows, module origins, commands, environment and every scenario
-result. `evidence/junit/*.xml` are the original test receipts. `logs/*.log` are
-the captured original test and harness stdout. The stage is reproducible from
-the local git object store and lives only in ignored `.runtime/`.
+`evidence/harness_run.json` contains the package source audit, module origins, environment, commands and every scenario result. In package mode, `source_manifest` is the shipped package closure audit (`SOROK_S45_S47_HARNESS_PACKAGE_CLOSURE@1`) rather than a git-extraction stage manifest. No external checkout, Desktop path, temporary staging or other repo source was imported.
 
 ## Limitations
 
-- TEST_ONLY sourcefree synthetic roots and TEST_ONLY installed-simulation owner
-  material. No empirical probability, CAN008/CAN011, native C8/C9/C12/ADP,
-  developmental T, childhood biography, Pyat native world, human A5/Gate4/Gate5
-  or user study is claimed.
-- The harness proves engineering conditional causality at the pinned cut. It
-  does not prove native psychology, a real respondent, external message
-  delivery, paid action, or independent acceptance.
-- The reader is author-side engineering evidence, not the different qualified
-  independent reviewer required for final receiving.
-- Private-hook source injection outside `qualify_source` is not a supported seam
-  and was not treated as an accepted product path.
+- TEST_ONLY sourcefree synthetic roots and TEST_ONLY installed-simulation owner material.
+- No empirical probability, CAN008/CAN011, native C8/C9/C12/ADP, developmental T, childhood biography, Pyat native world, human A5/Gate4/Gate5 or user study is claimed.
+- No native psychology, real respondent, external message delivery, paid action or independent acceptance.
 - No provider call, network action, external channel or human trial occurred.
-- No product code, expected psychology or other worker return was modified.
-- A broad S37/S42/S44 or whole-estate regression was not run; this harness reran
-  the three requested focused author suites plus the causal scenario chain.
+- No pinned S45-S47 source behavior, expected psychology or psychological rule changed.
+- Full author suites were not duplicated in this integration; package-mode projection tests and the causal scenarios are the new regression.
+- Independent review and PRE-MAIN receiving remain separate holds.
 
 ## Branch and publication
 
-Branch: `codex/sorok-s45-s47-causal-harness-20261105-r1`. Base:
-`078d9c57bc835a34e90b3671bdef6c28a0f43747`. The pushed harness commit and
-publication receipt are in `PUBLICATION_RECEIPT.json`.
+Branch: `codex/sorok-s45-s47-closure-20261105-r1`.
+Published history: package `e42faf01b57a9188f0cf75baaccfcd57edb07173`; projection cherry-pick `4e9ebc85d78995e93a7fbace0ead78d703067244`; harness cherry-pick `5531492df2317166d223e6c6bc211b147e0912f7`; integration commit is the exact head returned in final readback.
 
 ## PROGRAMMA_DELTA
 
-See `PROGRAMMA_DELTA.md` / `PROGRAMMA_DELTA.json`: the delta is engineering
-evidence and a callable harness only. No PROGRAMMA canonical product, native
-science, seam register, gate register or receiving authority is changed.
+See `PROGRAMMA_DELTA.md` / `PROGRAMMA_DELTA.json`: package-closure integration and engineering evidence only. No PROGRAMMA canonical product, native science, seam/gate register or receiving authority changed.

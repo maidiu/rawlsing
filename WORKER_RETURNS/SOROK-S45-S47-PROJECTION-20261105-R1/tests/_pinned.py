@@ -72,7 +72,36 @@ def _extract(commit: str, paths: tuple[str, ...]) -> None:
         bundle.extractall(RUNTIME)
 
 
+def _package_info() -> dict | None:
+    from s45_projection.runtime import package_product
+
+    product = package_product()
+    if product is None:
+        return None
+    runtime = product / "vendor"
+    if not all((runtime / relative).is_file() for relative in _REQUIRED):
+        return None
+    return {
+        "repo": REPO,
+        "return": RETURN,
+        "runtime": runtime,
+        "mode": "PACKAGE_CLOSURE",
+        "package_product": product,
+        "s45_commit": S45_COMMIT,
+        "wp19_commit": WP19_COMMIT,
+        "s11_commit": S11_COMMIT,
+        "s45_return": runtime / S45_RETURN,
+        "wp19_return": runtime / WP19_RETURN,
+        "s11_return": runtime / S11_RETURN,
+        "s11_spec": runtime / S11_SPEC,
+    }
+
+
 def ensure_pinned() -> dict:
+    if os.environ.get("S45_PROJECTION_USE_GIT") != "1":
+        package = _package_info()
+        if package is not None:
+            return package
     if not all((RUNTIME / relative).is_file() for relative in _REQUIRED):
         _extract(S45_COMMIT, CHAIN_PATHS)
         _extract(WP19_COMMIT, (WP19_RETURN,))
@@ -84,6 +113,7 @@ def ensure_pinned() -> dict:
         "repo": REPO,
         "return": RETURN,
         "runtime": RUNTIME,
+        "mode": "GIT_EXTRACTION",
         "s45_commit": S45_COMMIT,
         "wp19_commit": WP19_COMMIT,
         "s11_commit": S11_COMMIT,
@@ -96,6 +126,10 @@ def ensure_pinned() -> dict:
 
 def ensure_pinned_imports() -> dict:
     info = ensure_pinned()
+    if info["mode"] == "PACKAGE_CLOSURE":
+        from s45_projection.runtime import install_package_closure
+
+        install_package_closure()
     for path in (str(info["wp19_return"]), str(info["s45_return"]), str(RETURN)):
         if path in sys.path:
             sys.path.remove(path)
@@ -121,6 +155,14 @@ def pinned_env() -> dict:
     info = ensure_pinned()
     env = dict(os.environ)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    if info["mode"] == "PACKAGE_CLOSURE":
+        env["SOROK_S45_S47_PACKAGE_ROOT"] = str(info["package_product"])
+        env["PYTHONPATH"] = os.pathsep.join([
+            str(RETURN),
+            str(info["package_product"]),
+            env.get("PYTHONPATH", ""),
+        ])
+        return env
     env["PYTHONPATH"] = os.pathsep.join([
         str(RETURN),
         str(info["s45_return"]),

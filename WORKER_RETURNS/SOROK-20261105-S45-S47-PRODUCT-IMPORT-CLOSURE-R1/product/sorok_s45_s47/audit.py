@@ -41,6 +41,7 @@ def _stdlib(path: Path) -> bool:
 
 def loaded_modules() -> dict:
     install()
+    local_roots = (PRODUCT.resolve(), PRODUCT.parents[1].resolve())
     rows = []
     external = []
     for name, module in sorted(sys.modules.items()):
@@ -48,7 +49,7 @@ def loaded_modules() -> dict:
         if not raw or not str(raw).endswith(".py"):
             continue
         path = Path(raw).resolve()
-        local = path.is_relative_to(PRODUCT.resolve())
+        local = any(path.is_relative_to(root) for root in local_roots)
         stdlib = _stdlib(path)
         rows.append({
             "module": name,
@@ -60,7 +61,7 @@ def loaded_modules() -> dict:
             external.append({"module": name, "path": str(path)})
     return {
         "schema": "SOROK_S45_S47_PRODUCT_IMPORT_AUDIT@1",
-        "local_roots": [str(PRODUCT.resolve()), str(VENDOR.resolve())],
+        "local_roots": [str(root) for root in local_roots],
         "modules": len(rows),
         "local_modules": sum(1 for row in rows if row["local"]),
         "stdlib_modules": sum(1 for row in rows if row["stdlib"]),

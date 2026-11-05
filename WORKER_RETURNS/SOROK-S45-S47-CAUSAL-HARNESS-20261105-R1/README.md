@@ -2,12 +2,13 @@
 
 **Grade:** `TEST_ONLY_ENGINEERING_CAUSAL_REGRESSION_NOT_INDEPENDENT_FINAL_REVIEW`
 
-This is a separate executable harness. It does not modify product code, expected
-psychology, or another worker return. It stages exact pinned source into
-`.runtime/source-tree`, verifies every imported Python file against its pinned
-git blob, runs the original focused S45/S46/S47 tests, and exercises the
-performed-versus-scheduled causal chain through the actual S47 C9 path and S45
-`DO_HELP`.
+This is a separate executable harness. It does not modify pinned S45-S47 source
+behavior, expected psychology, or another worker return. It can run directly
+against the shipped product import closure (`--package-closure`), or use the
+historical git-extraction mode that stages exact pinned source into
+`.runtime/source-tree`. Both modes verify source bytes, check import origins and
+exercise the performed-versus-scheduled causal chain through the actual S47 C9
+path and S45 `DO_HELP`.
 
 ## Commission and pins
 
@@ -20,7 +21,23 @@ performed-versus-scheduled causal chain through the actual S47 C9 path and S45
   `harness/pins.py`. The S42/S37 seam files are taken from the S47 cut because
   that is the actual admitted S47 import closure.
 
-## Default run
+## Package-closure run (integration mode)
+
+From the checkout root:
+
+```text
+python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py \
+  --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product \
+  --original-tests none
+```
+
+This mode installs the shipped `sorok_s45_s47` package closure, verifies its
+424-file source manifest, confirms load-bearing modules resolve under the
+package vendor tree, and runs the causal scenarios against that exact package.
+It does not extract pins independently and does not duplicate full author
+suites (`original_tests` is recorded as `NOT_RUN`).
+
+## Git-extraction run
 
 From the checkout root:
 
@@ -29,9 +46,9 @@ python3 WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harne
   --original-tests all
 ```
 
-The default invocation extracts all pins from the local git object store,
-re-runs the original focused suites (S45 21, S46 17, S47 17), runs the causal
-scenarios, and writes:
+The default non-package invocation extracts all pins from the local git object
+store, re-runs the original focused suites (S45 21, S46 17, S47 17), runs the
+causal scenarios, and writes:
 
 - `evidence/harness_run.json`
 - `evidence/junit/s45_full.xml`, `s46_full.xml`, `s47_full.xml`
@@ -60,6 +77,7 @@ Any pin can be overridden with `--pinned-path KEY=PATH`; keys are listed in
 
 ## Options
 
+- `--package-closure PATH`: run against the shipped product import closure.
 - `--original-tests {all,s47,none}`: original focused test scope.
 - `--test-timeout SECONDS`: per-suite timeout.
 - `--stage-dir`, `--work-dir`, `--logs-dir`, `--evidence-dir`, `--json-out`.

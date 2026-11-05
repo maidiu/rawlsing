@@ -18,7 +18,7 @@ RETURN = Path(__file__).resolve().parent
 if str(RETURN) not in sys.path:
     sys.path.insert(0, str(RETURN))
 
-from harness import pins  # noqa: E402
+from harness import package_closure, pins  # noqa: E402
 from harness.scenarios import run_scenarios  # noqa: E402
 
 EXPECTED_FOCUSED_TESTS = {"s45": 21, "s46": 17, "s47": 17}
@@ -211,6 +211,18 @@ def _run_original_tests(
 
 
 def _pin_checks(manifest: dict, origins: dict) -> dict:
+    if manifest.get("schema") == "SOROK_S45_S47_HARNESS_PACKAGE_CLOSURE@1":
+        failed_modules = {
+            name: row for name, row in origins.items()
+            if row["status"] != "IMPORTED" or not row["under_stage"]
+        }
+        return {
+            "package_source_manifest_exact": bool(
+                manifest["source_audit"]["ok"]
+            ),
+            "package_modules_under_closure": not failed_modules,
+            "failed_modules": failed_modules,
+        }
     by_key = {
         key: row["all_exact"] for key, row in manifest["pin_rows"].items()
     }
@@ -253,6 +265,15 @@ def build_parser() -> argparse.ArgumentParser:
         type=Path,
         default=pins.DEFAULT_SOURCE_ROOT,
         help="repository/worktree root containing the pinned commits",
+    )
+    parser.add_argument(
+        "--package-closure",
+        type=Path,
+        default=None,
+        help=(
+            "run against the shipped S45-S47 product import closure "
+            "instead of independent git extraction"
+        ),
     )
     parser.add_argument(
         "--stage-dir",
@@ -350,22 +371,42 @@ def main(argv: list[str] | None = None) -> int:
         if value is not None:
             explicit[key] = value
     try:
-        stage_manifest = pins.stage_sources(
-            source_root=source_root,
-            stage=stage,
-            explicit_paths=explicit,
-            refresh=not args.reuse_stage,
-        )
-        runtime = _configure_runtime(stage)
-        origins = pins.module_origins(stage, MODULE_NAMES)
-        original_tests = _run_original_tests(
-            source_root=source_root,
-            stage=stage,
-            logs_dir=logs_dir,
-            evidence_dir=evidence_dir,
-            selection=args.original_tests,
-            timeout=args.test_timeout,
-        )
+        if args.package_closure is not None:
+            stage_manifest = package_closure.configure(
+                args.package_closure, MODULE_NAMES
+            )
+            runtime = {
+                "roots": stage_manifest["runtime_roots"],
+                "env": {},
+                "mode": "PACKAGE_CLOSURE",
+            }
+            origins = stage_manifest["imports"]
+            original_tests = {
+                "schema": "SOROK_S45_S47_HARNESS_ORIGINAL_TESTS@1",
+                "selection": args.original_tests,
+                "status": "NOT_RUN",
+                "reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES",
+                "rows": {},
+                "checks": {},
+                "all_checks_pass": True,
+            }
+        else:
+            stage_manifest = pins.stage_sources(
+                source_root=source_root,
+                stage=stage,
+                explicit_paths=explicit,
+                refresh=not args.reuse_stage,
+            )
+            runtime = _configure_runtime(stage)
+            origins = pins.module_origins(stage, MODULE_NAMES)
+            original_tests = _run_original_tests(
+                source_root=source_root,
+                stage=stage,
+                logs_dir=logs_dir,
+                evidence_dir=evidence_dir,
+                selection=args.original_tests,
+                timeout=args.test_timeout,
+            )
         if work_dir.exists():
             shutil.rmtree(work_dir)
         scenarios = run_scenarios(work_dir)
@@ -406,13 +447,23 @@ def main(argv: list[str] | None = None) -> int:
                 "cwd": str(Path.cwd()),
                 "pytest": _pytest_version(),
             },
-            "inputs": {
-                "source_root": str(source_root),
-                "stage_dir": str(stage),
-                "work_dir": str(work_dir),
-                "explicit_paths": stage_manifest["explicit_paths"],
-                "pins": stage_manifest["pins"],
-            },
+            "inputs": (
+                {
+                    "mode": "PACKAGE_CLOSURE",
+                    "package_closure": stage_manifest["product"],
+                    "source_manifest": stage_manifest["source_manifest"],
+                    "work_dir": str(work_dir),
+                }
+                if args.package_closure is not None
+                else {
+                    "mode": "GIT_EXTRACTION",
+                    "source_root": str(source_root),
+                    "stage_dir": str(stage),
+                    "work_dir": str(work_dir),
+                    "explicit_paths": stage_manifest["explicit_paths"],
+                    "pins": stage_manifest["pins"],
+                }
+            ),
             "runtime_roots": runtime["roots"],
             "imports": origins,
             "source_manifest": stage_manifest,

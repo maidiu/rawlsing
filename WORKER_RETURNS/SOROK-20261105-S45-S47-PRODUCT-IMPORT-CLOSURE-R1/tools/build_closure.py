@@ -25,6 +25,8 @@ S46 = ("f0ef39b92ce2e4add5c0a699389e12f1d7ae434e", "SOROK-20261025-S46-INTERVAL-
 S47 = ("765a441f87292aa4c17794745b65cb54e6aaa83f", "SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1")
 JOIN_E = ("7bf2da302996491ddf34b9a039fea47ac982d135", "SOROK-20261022-SAME-PERSON-JOIN-R1")
 LANGUAGE = ("8d2920da951f98cd8246d7c34cac777928e0c732", "LANGUAGE_MEDIATION_R1")
+WP19 = ("3c4df43f813cd0727feff04f620aa0bbd9a63026", "SOROK-WP19-ENCOUNTER-PROTOTYPE-R1")
+S11 = ("faec7ce909c54664e85320534bdf744b9bc47d37", "SOROK-S11-ENCOUNTER-EXIT-SPEC-R1")
 LIVE = ("7bf2da302996491ddf34b9a039fea47ac982d135", "rawlsing_next")
 CUMULATIVE = "765a441f87292aa4c17794745b65cb54e6aaa83f"
 
@@ -67,6 +69,10 @@ def include(commit: str, path: str, kind: str) -> bool:
         return not (segments & SKIP_SEGMENTS)
     if kind == "language":
         return path.endswith(".py") and "/language_mediation/" in path
+    if kind == "wp19":
+        return path.endswith(".py") and "/wp19/" in path
+    if kind == "s11":
+        return path.endswith("/02_WP19_CONSUMABLE_INTERFACE.json")
     if kind == "live":
         return path in LIVE_FILES
     raise ValueError(kind)
@@ -85,6 +91,8 @@ def selected() -> list[tuple[str, str, str]]:
         rows += [(CUMULATIVE, p, commit) for p in paths_at(commit, f"WORKER_RETURNS/{name}/") if p.endswith(f"/run_{package}.py")]
     rows += [(JOIN_E[0], p, JOIN_E[0]) for p in paths_at(JOIN_E[0], f"WORKER_RETURNS/{JOIN_E[1]}/") if include(JOIN_E[0], p, "join")]
     rows += [(LANGUAGE[0], p, LANGUAGE[0]) for p in paths_at(LANGUAGE[0], f"{LANGUAGE[1]}/") if include(LANGUAGE[0], p, "language")]
+    rows += [(WP19[0], p, WP19[0]) for p in paths_at(WP19[0], f"WORKER_RETURNS/{WP19[1]}/") if include(WP19[0], p, "wp19")]
+    rows += [(S11[0], p, S11[0]) for p in paths_at(S11[0], f"WORKER_RETURNS/{S11[1]}/") if include(S11[0], p, "s11")]
     rows += [(LIVE[0], p, LIVE[0]) for p in paths_at(LIVE[0], "rawlsing_next/") if include(LIVE[0], p, "live")]
     return sorted(set(rows))
 
@@ -128,7 +136,9 @@ def main() -> int:
             "s36": S36[0], "s37": S37[0], "s39": S39[0], "s40": S40[0],
             "s41": S41[0], "s42": S42[0], "s43": S43[0], "s44": S44[0],
             "s45": S45[0], "s46": S46[0], "s47": S47[0],
-            "join_e": JOIN_E[0], "language": LANGUAGE[0], "live_rawlsing_next": LIVE[0],
+            "join_e": JOIN_E[0], "language": LANGUAGE[0],
+            "wp19": WP19[0], "s11": S11[0],
+            "live_rawlsing_next": LIVE[0],
         },
         "file_count": len(manifest),
         "total_bytes": sum(row["bytes"] for row in manifest),

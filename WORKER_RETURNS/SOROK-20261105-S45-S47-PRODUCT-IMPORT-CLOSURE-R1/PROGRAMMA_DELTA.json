@@ -1,38 +1,61 @@
 {
   "schema": "SOROK_S45_S47_PROGRAMMA_DELTA@1",
-  "delta_class": "TEST_ONLY_SOURCEFREE_PRODUCT_CODE_CLOSURE",
+  "delta_class": "TEST_ONLY_SOURCEFREE_PRODUCT_CODE_CLOSURE_AND_PROJECTION_INTEGRATION",
   "branch": "codex/sorok-s45-s47-closure-20261105-r1",
-  "head": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
-  "publication": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
-  "source_manifest_sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58",
-  "source_files": 417,
-  "reused_tests": {
-    "count": 55,
-    "result": "55 passed in 260.35s",
-    "s45": 21,
-    "s46": 17,
-    "s47": 17
+  "published_history": {
+    "package": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+    "projection_public": "39ff2c2d479d8ad71c156b01c168894527a486e4",
+    "projection_cherry_pick": "4e9ebc85d78995e93a7fbace0ead78d703067244",
+    "harness_public": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
+    "harness_cherry_pick": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "integration_parent": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "integration_commit": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_READBACK"
+  },
+  "source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
+  "source_files": 424,
+  "pins": {
+    "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
+    "s46": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
+    "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+    "wp19": "3c4df43f813cd0727feff04f620aa0bbd9a63026",
+    "s11": "faec7ce909c54664e85320534bdf744b9bc47d37"
+  },
+  "integration": {
+    "projection_mode": "PACKAGE_CLOSURE",
+    "projection_tests": {
+      "count": 11,
+      "result": "11 passed in 30.08s",
+      "exit": 0
+    },
+    "causal_harness": {
+      "mode": "PACKAGE_CLOSURE",
+      "result": "PASS",
+      "checks_passed": 22,
+      "source_audit_files": 424,
+      "modules_under_package": true,
+      "original_tests": "NOT_RUN",
+      "original_tests_reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES"
+    },
+    "projected_demo_all_checks": true,
+    "projected_cli": [
+      "new", "view", "say", "do-help", "attend", "status",
+      "wait", "exit", "return", "absence"
+    ]
   },
   "causal_checks": {
     "actual_material_after_interval": 0,
     "actual_c9_objective_material_eligible": false,
-    "actual_do_help_accepted": false,
+    "actual_do_help_status": "REFUSED",
     "actual_do_help_strategy": "HELP_REFUSE",
     "scheduled_material_after_interval": 1,
     "scheduled_c9_objective_material_eligible": true,
-    "scheduled_do_help_accepted": true,
+    "scheduled_do_help_status": "OK",
     "scheduled_do_help_strategy": "HELP_ACCEPT",
     "event_local_source_preserved": true,
     "cut_refused_then_restored": true,
-    "admission_time_source_used": true,
-    "cold_subprocess_same_source": true
-  },
-  "import_audit": {
-    "modules": 279,
-    "local_modules": 170,
-    "stdlib_modules": 109,
-    "external_modules": 0,
-    "ok": true
+    "cold_subprocess_same_source": true,
+    "projection_privacy_passed": true,
+    "wrong_root_refused": true
   },
   "native_grants": {
     "actor": false,
@@ -44,8 +67,9 @@
     "c12": false
   },
   "holds": [
-    "independent exact-tree review NOT_RUN",
+    "independent exact-commit review NOT_RUN",
     "PRE-MAIN selective receiving NOT_PREPARED",
+    "full author suites not rerun in this integration",
     "native CAN008/CAN011/C8/C9/C12 not issued",
     "Pyat E001/E002 unchanged",
     "B current-root positive not claimed",

@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from .contract import CONTRACT_SCHEMA
+from .runtime import install_package_closure
 from .projection import (
     GRADE,
     RESULT_SCHEMA,
@@ -36,6 +37,7 @@ class S45Projection:
 
     @classmethod
     def open(cls, state_root, **kwargs) -> "S45Projection":
+        install_package_closure()
         from s45.session import S45Session
 
         return cls(S45Session.open(state_root, **kwargs))
@@ -53,6 +55,7 @@ class S45Projection:
         attention: str = "focused",
         **kwargs,
     ) -> "S45Projection":
+        install_package_closure()
         from s45.fixtures import root_bundle
         from s45.session import S45Session
         from s37.harness import case_for, source_for

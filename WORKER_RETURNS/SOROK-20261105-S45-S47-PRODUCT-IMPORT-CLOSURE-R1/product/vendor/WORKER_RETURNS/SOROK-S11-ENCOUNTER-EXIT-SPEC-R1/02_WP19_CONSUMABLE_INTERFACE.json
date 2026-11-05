@@ -1,0 +1,241 @@
+{
+  "schema": "SOROK_S11_WP19_INTERFACE_SPEC@1",
+  "status": "S11_SPECIFY_SOURCE_QUALIFIED_INTERFACE",
+  "base": "ce2478aa38eec7fb021aa95c01464a468a46fbc9",
+  "guide_commit": "30de6d21963c64e832bc9220b870c8b26a6624ac",
+  "join_e_commit": "5e63672543973ce2533129e1ca3224d82af0dffc",
+  "cp_a5_commit": "913765328e4fab12b150ea01421ed6b445158184",
+  "native": false,
+  "human_trial": false,
+  "runtime": false,
+  "surfaces": {
+    "PORTAL": {
+      "visible": [
+        "clock",
+        "location",
+        "visible_events",
+        "visible_speech",
+        "visible_actions",
+        "attend_target",
+        "exit_control",
+        "accessibility_announcement",
+        "uncertainty"
+      ],
+      "controls": ["SAY", "DO", "ATTEND", "WAIT", "EXIT"]
+    },
+    "OUTSIDE": {
+      "visible": [
+        "contacts_with_actual_channel",
+        "thread_messages_actually_exchanged",
+        "last_encounter_if_available",
+        "return_control_if_lawful",
+        "exit_control"
+      ],
+      "controls": ["OPEN_THREAD", "SEND_MESSAGE", "RETURN", "WAIT", "EXIT"]
+    }
+  },
+  "visible_event_fields": [
+    "event_id",
+    "kind",
+    "clock",
+    "location",
+    "actor_visible_id",
+    "summary",
+    "body_public",
+    "source_ref",
+    "perceived_by_user"
+  ],
+  "hidden_fields": [
+    "actor_traits",
+    "affinity",
+    "trust",
+    "suspicion",
+    "private_motive",
+    "private_emotion",
+    "private_actor_model",
+    "unperceived_event_content",
+    "relationship_score",
+    "rarity",
+    "completion_percentage",
+    "unlock_level",
+    "hidden_market_commission",
+    "future_outcome"
+  ],
+  "control_semantics": {
+    "SAY": {
+      "attempt_not_outcome": true,
+      "exact_utterance_preserved": true,
+      "clarification_on_uncertain_ownership": true,
+      "no_hidden_state_disclosure": true
+    },
+    "DO": {
+      "attempt_status": ["attempted", "admitted", "performed", "refused", "blocked"],
+      "show_observable_result_only": true,
+      "no_simulated_success": true
+    },
+    "ATTEND": {
+      "perceived_target_only": true,
+      "unperceived_result": "UNKNOWN",
+      "no_world_event": true,
+      "interim_label": "LOCAL_ATTEND_ONLY"
+    },
+    "WAIT": {
+      "no_fabricated_time": true,
+      "no_fabricated_events": true,
+      "interim_result": "WAIT_UNSUPPORTED_TYPED_HOLD"
+    },
+    "EXIT": {
+      "always_visible": true,
+      "accessible": true,
+      "no_actor_or_world_event": true,
+      "interim_label": "LOCAL_EXIT_ONLY"
+    },
+    "RETURN": {
+      "requires_actual_meeting_or_channel": true,
+      "no_teleport": true,
+      "interim_result": "RETURN_UNSUPPORTED_TYPED_HOLD",
+      "reread_persisted_state": true
+    }
+  },
+  "accessibility_requirements": [
+    "keyboard_only_controls",
+    "visible_focus_order",
+    "screen_reader_labels",
+    "text_alternatives_for_gestures_and_visual_cues",
+    "no_color_only_meaning",
+    "exit_always_visible_and_announced",
+    "escape_does_not_silently_discard_input",
+    "return_route_explained_or_typed_hold",
+    "unknown_and_clarification_announced",
+    "portal_time_not_wall_clock_typing_speed",
+    "events_announced_in_persisted_order",
+    "reduced_motion_static_equivalents"
+  ],
+  "actual_available": {
+    "c12_world_events_and_perceptions": "JOIN-E C12 world_events/perceptions with event_id/kind/clock/location/summary",
+    "e_expression_admission": "JOIN-E/R31E accepted, strategy, speech, gesture, surface",
+    "cp_a5_view_ask": "CP-A5 known_event_ids, remembered_events, unperceived_event_count, tool_available, UNKNOWN answers, read_only",
+    "join_e_help_contrast": "performed accept, omitted/refused HELP_REFUSE with tools 0/1",
+    "material_tool_state": "actual world resources and actor tools_remaining"
+  },
+  "missing_producers": [
+    {
+      "id": "USER_SAY_DO_ATTEMPT_ADMISSION",
+      "needed_receipt": "user attempt, parse/clarification, admitted/performed/refused, event id/clock",
+      "interim": "local input only; no world write"
+    },
+    {
+      "id": "USER_ATTEND_RECEIPT",
+      "needed_receipt": "target, perceived event/object, clock, focus result",
+      "interim": "LOCAL_ATTEND_ONLY; UNKNOWN for unperceived"
+    },
+    {
+      "id": "WAIT_TIME_ADVANCE_RECEIPT",
+      "needed_receipt": "clock before/after, performed/omitted, events, reason",
+      "interim": "WAIT_UNSUPPORTED_TYPED_HOLD"
+    },
+    {
+      "id": "PORTAL_EXIT_RETURN_RECEIPT",
+      "needed_receipt": "exit/return action, root/branch/clock, absence interval, lawful route",
+      "interim": "LOCAL_EXIT_ONLY / RETURN_UNSUPPORTED_TYPED_HOLD"
+    },
+    {
+      "id": "USER_ABSENCE_LIFE_ADVANCE",
+      "needed_receipt": "absence interval, independent events, perception filter, return state",
+      "interim": "do not simulate; show only actual persisted events"
+    },
+    {
+      "id": "MESSAGE_CHANNEL_ESTABLISHMENT_AND_DELIVERY",
+      "needed_receipt": "channel route, consent, message event, delivery time",
+      "interim": "no thread without actual channel; no fabricated messages"
+    },
+    {
+      "id": "ACCESSIBILITY_PREFERENCE_ACK",
+      "needed_receipt": "preference, announcement policy, acknowledgement",
+      "interim": "local preferences only; no world write"
+    }
+  ],
+  "acceptance_examples": [
+    {
+      "id": "A1_SAY_REFUSAL",
+      "given": "JOIN-E targetless refusal output at 5e6367 (targetless_refusal.json blob 54bd91c655df6f31def194f678a5ac32c026ab46)",
+      "expected_visible": {
+        "accepted": false,
+        "strategy": "HELP_REFUSE",
+        "speech": "The tool's gone. I can't do it today.",
+        "gesture": "A looks at the empty tool space.",
+        "surface": ["the repair worker says: \"The tool's gone. I can't do it today.\" A looks at the empty tool space."],
+        "tools_remaining": 0
+      },
+      "forbidden": ["B private motive", "hidden A state", "relationship score"]
+    },
+    {
+      "id": "A2_SAY_ACCEPT",
+      "given": "S35 actual_a_evidence.json performed-omit.join_e.help (blob 6d0a2978fd2b136132063edca214ae4a2972ce2ca31f710d47bb517659d42237)",
+      "expected_visible": {
+        "accepted": true,
+        "strategy": "HELP_ACCEPT",
+        "speech": "Put your hand on the near edge. I'll take the slack.",
+        "gesture": "A clears a space at the bench.",
+        "tools_remaining": 1
+      },
+      "forbidden": ["hidden affection", "relationship score"]
+    },
+    {
+      "id": "A3_DO_VISIBLE",
+      "given": "JOIN-E C12 world events from the same encounter",
+      "expected_visible": [
+        {"kind": "INSPECT", "body": {"changed": false}, "clock": 10},
+        {"kind": "REPAIR", "body": {"cash_delta": 2, "completed_delta": 1, "hours_delta": -1, "material_delta": -1, "source_owned": true}, "clock": 10}
+      ],
+      "forbidden": ["hidden actor motive", "unperceived event detail"]
+    },
+    {
+      "id": "A4_ATTEND_KNOWN_AND_UNKNOWN",
+      "given": "CP-A5 EncounterReader view/ask at 9137653 encounter.py blob 8d388c2f10eec6b6d6ab0f3e5f1566b0053098e6",
+      "expected_visible": {
+        "tool_question": {
+          "status": "OK",
+          "answer": "A perceived B take the workshop tool, could not repair while it was away, and perceived its return.",
+          "read_only": true
+        },
+        "market_question": {
+          "status": "UNKNOWN",
+          "answer": "UNKNOWN: A did not perceive B's market commission.",
+          "evidence_event_ids": [],
+          "read_only": true
+        },
+        "unperceived_event_count": 4
+      },
+      "forbidden": ["market commission summary", "market event id", "hidden B motive"]
+    },
+    {
+      "id": "A5_WAIT_TYPED_HOLD",
+      "given": "no wait/time-advance producer in JOIN-E/CP-A5",
+      "expected_visible": {"result": "WAIT_UNSUPPORTED_TYPED_HOLD", "clock_changed": false, "world_event_created": false},
+      "forbidden": ["fabricated time passage", "fabricated event"]
+    },
+    {
+      "id": "A6_EXIT_RETURN_TYPED_HOLD",
+      "given": "no user-facing exit/return/absence producer in JOIN-E/CP-A5",
+      "expected_visible": {"exit": "LOCAL_EXIT_ONLY", "return": "RETURN_UNSUPPORTED_TYPED_HOLD"},
+      "forbidden": ["teleport", "fabricated leave event", "fabricated relationship change"]
+    },
+    {
+      "id": "A7_REFUSAL_AND_ABSENCE",
+      "given": "JOIN-E b_event_contrast.json blob b2d819aff09f9c20ac1d9ada88a72eb9fb53ba3a",
+      "expected_visible": {
+        "performed_help": {"accepted": true, "strategy": "HELP_ACCEPT"},
+        "omitted_help": {"accepted": false, "strategy": "HELP_REFUSE"},
+        "refused_help": {"accepted": false, "strategy": "HELP_REFUSE"}
+      },
+      "forbidden": ["B private cause inference", "forced speech contrast"]
+    },
+    {
+      "id": "A8_HIDDEN_STATE_NON_DISCLOSURE",
+      "given": "CP-A5 market question UNKNOWN while the C12 history contains the unperceived commission",
+      "expected_visible": "UNKNOWN only",
+      "forbidden": ["market event summary", "market event id", "hidden cause explanation"]
+    }
+  ]
+}

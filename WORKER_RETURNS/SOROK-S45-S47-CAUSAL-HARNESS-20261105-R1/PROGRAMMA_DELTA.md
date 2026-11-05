@@ -1,45 +1,35 @@
-# PROGRAMMA_DELTA — S45-S47 causal harness R1
+# PROGRAMMA_DELTA — S45-S47 causal harness package-closure integration
 
 **Delta ID:** `SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1`
-**Commission base:** `078d9c57bc835a34e90b3671bdef6c28a0f43747`
-**Result:** `PASS` engineering causal regression at exact pins.
 **Grade:** `TEST_ONLY_ENGINEERING_CAUSAL_REGRESSION_NOT_INDEPENDENT_FINAL_REVIEW`.
+**Result:** `PASS` in `PACKAGE_CLOSURE` mode, 22/22 checks, exit 0.
 
 ## Delta
 
-Added only:
+Added package-closure integration to the existing public harness:
 
-- `run_causal_harness.py` — callable harness accepting source root and explicit pinned paths.
-- `harness/pins.py` — exact pin table, in-checkout staging and blob verification.
-- `harness/scenarios.py` — same-root ACTUAL vs SCHEDULED_ONLY, S47 C9, S45
-  DO_HELP, sever/restore, cold replay and wrong-root negative.
-- `README.md`, `00_RETURN.md`, `evidence/`, `logs/` — interface, results and receipts.
+- `--package-closure PATH` installs the shipped `sorok_s45_s47` product closure.
+- `harness/package_closure.py` verifies the package `SOURCE_MANIFEST.json` (424 exact files), checks imported modules resolve under `product/vendor`, and reports `modules_under_package`.
+- Package mode runs the same ACTUAL/SCHEDULED_ONLY, S47 C9, S45 DO_HELP, sever/restore, cold replay and wrong-root scenarios against that exact package.
+- Package mode records `original_tests: NOT_RUN` with reason `PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES`; prior 21/17/17 evidence remains historical.
+
+## Exact result
+
+- Command: `run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none`
+- Elapsed: `69.457s`; checks: `22/22`; source audit: `424/424`.
+- ACTUAL: material `0`, C9 material ineligible, DO_HELP `HELP_REFUSE`.
+- SCHEDULED_ONLY: material `1`, C9 material eligible, DO_HELP `HELP_ACCEPT`.
+- Same root: `3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7`.
+- Sever RED: `S46_INTERVAL_CONDITION_REVOKED`; restore same source and PASS.
+- Cold replay PASS; wrong-root unresealed/resealed refused; B state preserved.
 
 ## Not changed
 
-- No PROGRAMMA canonical product, function identity, seam register, gate
-  register or protected PRE-MAIN content.
-- No product code, expected psychology, S45/S46/S47 source, S37/S42 seam source
-  or any other worker return.
+- No pinned S45-S47 source behavior, expected psychology or psychological rule changed.
+- No PROGRAMMA canonical product, seam/gate register, protected PRE-MAIN content or other branch ref was edited.
 - No native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority.
-- No new independent acceptance or receiving decision.
-
-## Receiving value
-
-The delta gives the receiving lead a reproducible, fail-closed engineering check
-that the already-executed S45-S47 sourcefree spine still produces the specified
-same-root causal consequence at the exact pins:
-
-- ACTUAL performed interval -> material `0`, S47 C9 material ineligible, S45
-  `DO_HELP` refused.
-- SCHEDULED_ONLY -> material `1`, S47 C9 material eligible, S45 `DO_HELP`
-  accepted.
-- Dependency cut -> RED `S46_INTERVAL_CONDITION_REVOKED`; restore -> PASS.
-- Cold reopen -> same root, event-bound source, eligibility and encounter chain.
-- Foreign-root source -> refused by the supported S47 qualification seam.
+- Independent review and PRE-MAIN receiving remain separate holds.
 
 ## Next owner action
 
-An independent qualified reviewer may rerun the same harness at the same pins.
-The receiving lead may cite `evidence/harness_run.json` as engineering evidence.
-No PROGRAMMA promotion follows automatically from this delta.
+An independent qualified reviewer may rerun package mode at the exact branch head. No PROGRAMMA promotion follows automatically from this delta.

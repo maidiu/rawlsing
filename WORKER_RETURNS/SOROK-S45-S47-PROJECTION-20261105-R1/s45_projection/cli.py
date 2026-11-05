@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from .adapter import S45Projection
+from .runtime import install_package_closure
 
 
 def _print(value) -> None:
@@ -53,6 +54,7 @@ def _open(args):
 
 
 def main(argv: list[str] | None = None) -> int:
+    install_package_closure()
     parser = argparse.ArgumentParser(
         description="Bounded S45 encounter projection over the WP19 surface"
     )

@@ -1,32 +1,40 @@
 {
   "schema": "SOROK_PROGRAMMA_DELTA@1",
   "delta_id": "SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1",
-  "commission_base": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
-  "branch": "codex/sorok-s45-s47-causal-harness-20261105-r1",
+  "delta_kind": "ENGINEERING_HARNESS_PACKAGE_CLOSURE_INTEGRATION",
+  "branch": "codex/sorok-s45-s47-closure-20261105-r1",
+  "published_history": {
+    "public_harness": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
+    "cherry_pick": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "integration_parent": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "integration_commit": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_READBACK"
+  },
   "result": "PASS",
+  "mode": "PACKAGE_CLOSURE",
   "grade": "TEST_ONLY_ENGINEERING_CAUSAL_REGRESSION_NOT_INDEPENDENT_FINAL_REVIEW",
   "pins": {
     "s45": "f26a138e20d53c809d611cf8d834ec647b0804bf",
     "s46": "f0ef39b92ce2e4add5c0a699389e12f1d7ae434e",
-    "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f"
+    "s47": "765a441f87292aa4c17794745b65cb54e6aaa83f",
+    "package_source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
+    "package_source_files": 424
   },
-  "delta_kind": "ENGINEERING_HARNESS_AND_CAUSAL_EVIDENCE_ONLY",
   "programma_canonical_change": false,
   "product_code_change": false,
   "expected_psychology_change": false,
-  "other_worker_file_change": false,
   "native_or_human_grant": false,
   "independent_final_review": false,
   "evidence": {
-    "harness": "run_causal_harness.py",
+    "harness": "run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none",
     "report": "evidence/harness_run.json",
-    "junit": [
-      "evidence/junit/s45_full.xml",
-      "evidence/junit/s46_full.xml",
-      "evidence/junit/s47_full.xml"
-    ]
+    "stdout": "logs/harness_stdout.log"
   },
   "observed": {
+    "checks_passed": 22,
+    "checks_total": 22,
+    "elapsed_seconds": 69.457,
+    "source_audit_files": 424,
+    "modules_under_package": true,
     "same_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
     "actual_material_after_interval": 0,
     "actual_c9_material_eligible": false,
@@ -37,12 +45,10 @@
     "sever_red": "S46_INTERVAL_CONDITION_REVOKED",
     "restore_pass": true,
     "cold_replay_pass": true,
+    "wrong_root_unresealed_refused": "S47_SOURCE_AS_OF_MISMATCH",
     "wrong_root_resealed_refused": "S47_SOURCE_INTERVAL_STATE_ID_MISMATCH",
-    "original_tests": {
-      "s45": 21,
-      "s46": 17,
-      "s47": 17
-    }
+    "original_tests": "NOT_RUN",
+    "original_tests_reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES"
   },
-  "next_owner_action": "Independent qualified reviewer may rerun the same harness at the same pins; no automatic PROGRAMMA promotion."
+  "next_owner_action": "Independent qualified reviewer may rerun package mode at the exact branch head; no automatic PROGRAMMA promotion."
 }

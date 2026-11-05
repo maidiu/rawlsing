@@ -16,6 +16,12 @@ from .audit import loaded_modules, verify_sources
 
 SCHEMA = "SOROK_S45_S47_PRODUCT_CLI@1"
 SCRIPT = PRODUCT / "run_s45_s47.py"
+PROJECTION_RETURN = Path(
+    os.environ.get(
+        "SOROK_S45_S47_PROJECTION_ROOT",
+        str(PRODUCT.parents[1] / "SOROK-S45-S47-PROJECTION-20261105-R1"),
+    )
+)
 
 
 def _json(value) -> str:
@@ -62,6 +68,17 @@ def _start_s47(state: Path, seed: str = "01" * 32):
         source=source_for(case),
         language_context={"milieu_id": "workshop"},
     )
+
+
+
+def _projection(session):
+    install()
+    text = str(PROJECTION_RETURN)
+    if text not in sys.path:
+        sys.path.insert(0, text)
+    from s45_projection.adapter import S45Projection
+
+    return S45Projection(session)
 
 
 def _open_s47(state: Path):
@@ -149,20 +166,44 @@ def _interval_summary(produced: dict) -> dict:
     }
 
 
+
+def _privacy_ok(value) -> bool:
+    from s45_projection import projection as projection_module
+
+    def walk(item) -> bool:
+        if isinstance(item, dict):
+            for key, child in item.items():
+                if key in projection_module.PRIVATE_KEYS:
+                    return False
+                if not walk(child):
+                    return False
+        elif isinstance(item, (list, tuple)):
+            for child in item:
+                if not walk(child):
+                    return False
+        elif isinstance(item, str):
+            if any(marker in item for marker in projection_module.FORBIDDEN_VALUE_MARKERS):
+                return False
+        return True
+
+    return walk(value)
+
 def _scenario_s45(root: Path) -> dict:
     S45Session, _ = _session_types()
     state = root / "s45"
     session = _start_s45(state)
+    adapter = _projection(session)
     try:
-        said = session.say("Can I help?")
-        helped = session.do_help()
-        attended = session.attend()
+        said = adapter.say("Can I help?")
+        helped = adapter.do_help()
+        attended = adapter.attend()
+        view = adapter.view()
         encounters = _encounter_summary(session)
         event_count = len(session.read_events())
         verify = session.verify()
         root_hash = session.read_root()["root_hash"]
     finally:
-        session.close()
+        adapter.close()
     cold = S45Session.open(state)
     try:
         cold_verify = cold.verify()
@@ -171,11 +212,17 @@ def _scenario_s45(root: Path) -> dict:
     finally:
         cold.close()
     checks = {
-        "say_ok_invite": said.get("status") == "OK" and said.get("strategy") == "HELP_INVITE",
-        "do_help_accept": helped.get("status") == "OK" and helped.get("accepted") is True
-        and helped.get("strategy") == "HELP_ACCEPT",
-        "attend_no_change": attended.get("status") == "NO_CHANGE",
+        "say_ok_invite": said.get("status") == "OK"
+        and (said.get("actor_response") or {}).get("strategy") == "HELP_INVITE",
+        "do_help_accept": helped.get("status") == "OK"
+        and (helped.get("actor_response") or {}).get("strategy") == "HELP_ACCEPT"
+        and (helped.get("actor_response") or {}).get("performed") is True,
+        "attend_no_change": attended.get("status") == "NO_CHANGE"
+        and attended.get("world_event_created") is False,
         "three_scenes": [row["kind"] for row in encounters] == ["SAY", "DO_HELP", "ATTEND"],
+        "privacy": _privacy_ok({
+            "say": said, "do_help": helped, "attend": attended, "view": view,
+        }),
         "verify_ok": bool(verify.get("ok") and cold_verify.get("ok")),
         "cold_same_root": cold_root_hash == root_hash,
         "cold_same_counts": cold_counts == (event_count, len(encounters)),
@@ -185,6 +232,10 @@ def _scenario_s45(root: Path) -> dict:
         "root_hash": root_hash,
         "event_count": event_count,
         "encounters": encounters,
+        "say": said,
+        "do_help": helped,
+        "attend": attended,
+        "view": view,
         "cold_event_and_encounter_counts": list(cold_counts),
         "checks": checks,
         "ok": all(checks.values()),
@@ -194,6 +245,7 @@ def _scenario_s45(root: Path) -> dict:
 def _scenario_mode(root: Path, mode: str) -> dict:
     state = root / ("s47-" + mode.lower())
     session = _start_s47(state)
+    adapter = _projection(session)
     try:
         domain_start = session.clock()
         from s46.model import make_domain
@@ -206,14 +258,15 @@ def _scenario_mode(root: Path, mode: str) -> dict:
         admitted = _admit(session)
         event_ref = admitted["event"]["e1_event_id"]
         c9 = session.read_c9_conditioning(event_ref)
-        said = session.say("Can I help?")
-        helped = session.do_help()
-        attended = session.attend()
+        said = adapter.say("Can I help?")
+        helped = adapter.do_help()
+        attended = adapter.attend()
+        view = adapter.view()
         encounters = _encounter_summary(session)
         verify = session.verify()
         root_hash = session.read_root()["root_hash"]
     finally:
-        session.close()
+        adapter.close()
     cold = _open_s47(state)
     try:
         cold_c9 = cold.read_c9_conditioning(event_ref)
@@ -224,19 +277,38 @@ def _scenario_mode(root: Path, mode: str) -> dict:
     expected_material = 0 if mode == "ACTUAL" else 1
     expected_c9 = mode != "ACTUAL"
     expected_accept = mode != "ACTUAL"
+    say_response = said.get("actor_response") or {}
+    help_response = helped.get("actor_response") or {}
     checks = {
         "material_after_interval": material_after_interval == expected_material,
         "c9_source_in_readset": c9.get("s47_source_in_readset") is True,
         "c9_objective_material": c9.get("objective_material_eligible") is expected_c9,
         "c9_targetless": c9.get("target_branch") == "NO_CHANGE"
         and c9.get("target_reason") == "NO_PROPOSAL",
-        "say_ok_invite": said.get("status") == "OK"
-        and (said.get("strategy") == "HELP_INVITE" if expected_accept else True),
-        "do_help_matches_material": helped.get("status") == "OK"
-        and helped.get("accepted") is expected_accept
-        and helped.get("strategy") == ("HELP_ACCEPT" if expected_accept else "HELP_REFUSE"),
-        "attend_no_change": attended.get("status") == "NO_CHANGE",
+        "say_attempt_not_performance": said.get("attempted") is True
+        and said.get("performed") is False,
+        "say_response_matches_material": (
+            say_response.get("strategy") == "HELP_INVITE"
+            if expected_accept
+            else say_response.get("strategy") == "HELP_REFUSE"
+        ),
+        "do_help_matches_material": (
+            helped.get("status") == "OK"
+            and help_response.get("strategy") == "HELP_ACCEPT"
+            and help_response.get("performed") is True
+            and helped.get("refusal") is False
+            if expected_accept
+            else helped.get("status") == "REFUSED"
+            and help_response.get("strategy") == "HELP_REFUSE"
+            and help_response.get("performed") is False
+            and helped.get("refusal") is True
+        ),
+        "attend_no_change": attended.get("status") == "NO_CHANGE"
+        and attended.get("world_event_created") is False,
         "three_scenes": [row["kind"] for row in encounters] == ["SAY", "DO_HELP", "ATTEND"],
+        "privacy": _privacy_ok({
+            "say": said, "do_help": helped, "attend": attended, "view": view,
+        }),
         "c9_source_is_event_local": c9.get("s47_source_ref") == (source or {}).get("source_ref"),
         "cold_c9_same_source": cold_c9.get("s47_source_hash") == c9.get("s47_source_hash"),
         "verify_ok": bool(verify.get("ok") and cold_verify.get("ok")),
@@ -260,9 +332,11 @@ def _scenario_mode(root: Path, mode: str) -> dict:
             "attempt_status": admitted["event"].get("attempt_status"),
         },
         "c9": _c9_summary(c9),
-        "say": {"status": said.get("status"), "strategy": said.get("strategy")},
-        "do_help": _do_help_summary(helped),
-        "attend": {"status": attended.get("status")},
+        "say": said,
+        "do_help": helped,
+        "attend": attended,
+        "view": view,
+        "encounters": encounters,
         "cold_c9": _c9_summary(cold_c9),
         "checks": checks,
         "ok": all(checks.values()),
@@ -552,6 +626,7 @@ def demo(args) -> int:
 def command_new(args) -> int:
     state = Path(args.state).expanduser().resolve()
     session = _start_s47(state, args.seed)
+    adapter = _projection(session)
     try:
         report = {
             "schema": "SOROK_S45_S47_CLI_ACTION@1",
@@ -562,69 +637,108 @@ def command_new(args) -> int:
             "events": len(session.read_events()),
             "encounters": len(session.read_encounters()),
             "verify_ok": bool(session.verify().get("ok")),
+            "view": adapter.view(),
         }
     finally:
-        session.close()
+        adapter.close()
     print(_json(report))
+    return 0
+
+
+def command_view(args) -> int:
+    session = _open_s47(Path(args.state).expanduser().resolve())
+    adapter = _projection(session)
+    try:
+        view = adapter.view()
+    finally:
+        adapter.close()
+    if args.text:
+        from wp19.interface import render_text
+
+        print(render_text(view))
+    else:
+        print(_json(view))
+    return 0
+
+
+def command_status(args) -> int:
+    session = _open_s47(Path(args.state).expanduser().resolve())
+    adapter = _projection(session)
+    try:
+        status = adapter.status()
+    finally:
+        adapter.close()
+    print(_json(status))
     return 0
 
 
 def command_say(args) -> int:
     session = _open_s47(Path(args.state).expanduser().resolve())
+    adapter = _projection(session)
     try:
-        said = session.say(args.text)
-        report = {
-            "schema": "SOROK_S45_S47_CLI_ACTION@1",
-            "action": "say",
-            "state": str(Path(args.state).expanduser().resolve()),
-            "status": said.get("status"),
-            "strategy": said.get("strategy"),
-            "reason": said.get("reason"),
-            "user_event_id": (said.get("user_event") or {}).get("event_id"),
-            "speech_event_id": (said.get("language") or {}).get("speech_event_id"),
-            "native_text": (said.get("language") or {}).get("native_text"),
-            "translation_text": (said.get("language") or {}).get("translation_text"),
-            "source_event_refs": (said.get("language") or {}).get("source_event_refs"),
-            "encounters": len(session.read_encounters()),
-        }
+        result = adapter.say(args.text)
     finally:
-        session.close()
-    print(_json(report))
+        adapter.close()
+    print(_json(result))
     return 0
 
 
 def command_do_help(args) -> int:
     session = _open_s47(Path(args.state).expanduser().resolve())
+    adapter = _projection(session)
     try:
-        helped = session.do_help()
-        report = {
-            "schema": "SOROK_S45_S47_CLI_ACTION@1",
-            "action": "do_help",
-            "state": str(Path(args.state).expanduser().resolve()),
-            **_do_help_summary(helped),
-        }
+        result = adapter.do_help()
     finally:
-        session.close()
-    print(_json(report))
+        adapter.close()
+    print(_json(result))
     return 0
 
 
 def command_attend(args) -> int:
     session = _open_s47(Path(args.state).expanduser().resolve())
+    adapter = _projection(session)
     try:
-        attended = session.attend()
-        report = {
-            "schema": "SOROK_S45_S47_CLI_ACTION@1",
-            "action": "attend",
-            "state": str(Path(args.state).expanduser().resolve()),
-            "status": attended.get("status"),
-            "new_knowledge": attended.get("new_knowledge"),
-            "surface_count": len(attended.get("surface") or []),
-        }
+        result = adapter.attend()
     finally:
-        session.close()
-    print(_json(report))
+        adapter.close()
+    print(_json(result))
     return 0
+
+
+def _command_hold(adapter, name: str) -> dict:
+    return {
+        "wait": adapter.wait,
+        "exit": adapter.exit,
+        "return": adapter.return_,
+        "absence": adapter.absence,
+    }[name]()
+
+
+def _run_hold(state: str, name: str) -> int:
+    session = _open_s47(Path(state).expanduser().resolve())
+    adapter = _projection(session)
+    try:
+        result = _command_hold(adapter, name)
+    finally:
+        adapter.close()
+    print(_json(result))
+    return 0
+
+
+def command_wait(args) -> int:
+    return _run_hold(args.state, "wait")
+
+
+def command_exit(args) -> int:
+    return _run_hold(args.state, "exit")
+
+
+def command_return(args) -> int:
+    return _run_hold(args.state, "return")
+
+
+def command_absence(args) -> int:
+    return _run_hold(args.state, "absence")
 
 
 def command_interval(args) -> int:
@@ -732,7 +846,16 @@ def build_parser() -> argparse.ArgumentParser:
     new.add_argument("--seed", default="01" * 32)
     new.set_defaults(func=command_new)
 
-    say = sub.add_parser("say", help="user SAY through the S45 encounter")
+    view = sub.add_parser("view", help="projected WP19 encounter view")
+    view.add_argument("--state", required=True)
+    view.add_argument("--text", action="store_true")
+    view.set_defaults(func=command_view)
+
+    status_parser = sub.add_parser("status", help="projected adapter status")
+    status_parser.add_argument("--state", required=True)
+    status_parser.set_defaults(func=command_status)
+
+    say = sub.add_parser("say", help="projected user SAY attempt")
     say.add_argument("--state", required=True)
     say.add_argument("text")
     say.set_defaults(func=command_say)
@@ -741,9 +864,25 @@ def build_parser() -> argparse.ArgumentParser:
     do_help.add_argument("--state", required=True)
     do_help.set_defaults(func=command_do_help)
 
-    attend = sub.add_parser("attend", help="user ATTEND presentation-only action")
+    attend = sub.add_parser("attend", help="projected user ATTEND action")
     attend.add_argument("--state", required=True)
     attend.set_defaults(func=command_attend)
+
+    wait = sub.add_parser("wait", help="typed WAIT hold without time advance")
+    wait.add_argument("--state", required=True)
+    wait.set_defaults(func=command_wait)
+
+    exit_parser = sub.add_parser("exit", help="local exit without actor/world event")
+    exit_parser.add_argument("--state", required=True)
+    exit_parser.set_defaults(func=command_exit)
+
+    return_parser = sub.add_parser("return", help="typed RETURN hold")
+    return_parser.add_argument("--state", required=True)
+    return_parser.set_defaults(func=command_return)
+
+    absence = sub.add_parser("absence", help="typed ABSENCE hold")
+    absence.add_argument("--state", required=True)
+    absence.set_defaults(func=command_absence)
 
     interval = sub.add_parser("interval", help="produce a real S46 interval")
     interval.add_argument("--state", required=True)

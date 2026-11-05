@@ -1,30 +1,37 @@
 {
-  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD python3 -B -m pytest -q -p no:cacheprovider --junitxml=evidence/junit.xml tests",
-  "cwd": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1",
-  "duration_seconds": 27.59,
+  "command": "python3 -B -m pytest -q -p no:cacheprovider --junitxml=WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/junit.xml WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/tests",
+  "cwd": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1",
+  "duration_seconds": 30.08,
   "errors": 0,
   "exit_code": 0,
   "failures": 0,
+  "junit": "evidence/junit.xml",
+  "junit_sha256": "312ee6f5feee413022a4f7db76e30efeb7553a7985d7d385fab94fd8841db3ed",
+  "log": "logs/pytest-evidence.log",
+  "log_sha256": "f6fedf03e1a29679eb0a41b4e89bccf25e453561dab0b1346eddf6bd98f42c71",
+  "mode": "PACKAGE_CLOSURE",
   "not_run": [
-    "S46/S47 material interval and C9 causal harness (owned by other worker)",
-    "import closure packaging (owned by other worker)"
+    "full S45 author suite rerun in this integration",
+    "independent qualified review",
+    "native/human/Pyat/C8/C9/C12 issuance"
   ],
+  "package_product": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+  "package_return": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+  "package_source_files": 424,
+  "package_source_manifest": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+  "package_source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
   "pinned_s45_author_suite": {
-    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD python3 -B -m pytest -q -p no:cacheprovider --junitxml=... tests",
-    "cwd": "WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1 (extracted at pinned f26a138e20d53c809d611cf8d834ec647b0804bf)",
-    "duration_seconds": 118.56,
-    "errors": 0,
-    "failures": 0,
-    "summary": "21 passed",
-    "tests_passed": 21
+    "historical_prior_run": "21 passed in 118.56s under git extraction; retained in git history and prior evidence",
+    "reason": "PACKAGE_CLOSURE_INTEGRATION_AVOIDS_DUPLICATE_FULL_SUITES",
+    "status": "NOT_RERUN"
   },
   "platform": "macOS-13.7.8-x86_64-i386-64bit",
-  "pytest": "9.1.1",
+  "pytest": "pytest 9.1.1",
   "python": "3.11.3",
   "schema": "SOROK_S45_PROJECTION_TEST_RUN@1",
   "skipped": 0,
   "status": "PASS",
-  "summary": "11 passed",
+  "summary": "11 passed in 30.08s",
   "test_cases": [
     "test_contract_matches_pinned_wp19_and_s11",
     "test_pinned_source_files_are_exact",
@@ -38,7 +45,7 @@
     "test_cli_contract_end_to_end",
     "test_cli_module_runs_on_pinned_source"
   ],
-  "tested_source": "pinned S45 f26a138e20d53c809d611cf8d834ec647b0804bf extracted from git at runtime",
-  "tested_surface": "WP19 3c4df43f813cd0727feff04f620aa0bbd9a63026 / S11 faec7ce909c54664e85320534bdf744b9bc47d37",
+  "tested_source": "shipped package closure product/vendor, not independent git extraction",
+  "tested_surface": "S45 f26a138e20d53c809d611cf8d834ec647b0804bf through package closure; WP19 3c4df43f813cd0727feff04f620aa0bbd9a63026; S11 faec7ce909c54664e85320534bdf744b9bc47d37",
   "tests_passed": 11
 }

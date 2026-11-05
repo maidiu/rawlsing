@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_S45_WP19_PROJECTION_CONTRACT@1",
-  "status": "SCOPED_PROJECTION_AND_CLI_CONTRACT__NOT_IMPORT_CLOSURE_NOT_CAUSAL_HARNESS",
+  "status": "SCOPED_PROJECTION_AND_CLI_CONTRACT__PACKAGE_IMPORT_CLOSURE_WIRED__NOT_CAUSAL_HARNESS",
   "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
   "native": false,
   "human_trial": false,
@@ -13,7 +13,10 @@
     "wp19_return": "WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1",
     "s11_commit": "faec7ce909c54664e85320534bdf744b9bc47d37",
     "s11_return": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1",
-    "s11_spec": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json"
+    "s11_spec": "WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/02_WP19_CONSUMABLE_INTERFACE.json",
+    "package_return": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+    "package_product": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+    "package_source_manifest": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json"
   },
   "consumed_callables": {
     "session_start": "s45.session.S45Session.start",
@@ -44,7 +47,13 @@
     "status_schema": "SOROK_WP19_STATUS@1",
     "source": "s45",
     "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
-    "controls": ["SAY", "DO", "ATTEND", "WAIT", "EXIT"],
+    "controls": [
+      "SAY",
+      "DO",
+      "ATTEND",
+      "WAIT",
+      "EXIT"
+    ],
     "visible_event_fields": [
       "event_id",
       "kind",
@@ -159,12 +168,19 @@
     "no_original_product_code_edits"
   ],
   "limitations": [
+    "Consumes the shipped S45-S47 product import closure by default; independent git extraction is fallback only",
     "S45 only; S46/S47 material interval, event-local C9 and causal harness are owned by other workers",
-    "No import closure; the caller must provide the pinned S45 chain plus WP19 and S11 sources",
     "No WAIT/time-advance producer",
     "No lawful return, absence or life-advance producer",
     "No message channel, establishment or delivery producer",
     "No human trial, native grant or production person claim",
     "The CLI is a thin JSON wrapper over the projected WP19 surface, not a second UI"
-  ]
+  ],
+  "closure": {
+    "mode": "PACKAGE_CLOSURE",
+    "package_return": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
+    "package_product": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product",
+    "source_manifest": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    "fallback": "git extraction only when the package closure is absent or S45_PROJECTION_USE_GIT=1"
+  }
 }

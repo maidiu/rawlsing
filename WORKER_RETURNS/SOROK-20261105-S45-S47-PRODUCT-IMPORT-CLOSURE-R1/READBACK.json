@@ -1,51 +1,25 @@
 {
-  "actual_readback": {
-    "c9_objective_material_eligible": false,
-    "c9_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "c9_source_in_readset": true,
-    "c9_target_branch": "NO_CHANGE",
-    "cold_c9_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "do_help_accepted": false,
-    "do_help_status": "OK",
-    "do_help_strategy": "HELP_REFUSE",
-    "interval_coverage": [
-      [
-        222,
-        223
-      ]
-    ],
-    "interval_status": "PARTIAL",
-    "material_after_interval": 0
-  },
   "actual_workdir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1",
-  "admission_source_readback": {
-    "admission_access": "denied",
-    "admission_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
-    "c9_source_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
-    "c9_uses_admission_source": true,
-    "interval_end_access": "granted",
-    "interval_end_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665"
-  },
   "authored_files": [
     {
-      "bytes": 8344,
+      "bytes": 9072,
       "path": "00_RETURN.md",
-      "sha256": "3e1a866ec9e42c7d0b3a9e9eecf93871468dfee69b5e9a2cfe10b1f009dafd26"
+      "sha256": "37ea96993abb31bc9ea6d46afd5cf1b39fb2c25fcf30cbf36f30aeb843d11b6d"
     },
     {
-      "bytes": 1671,
+      "bytes": 2833,
       "path": "PROGRAMMA_DELTA.json",
-      "sha256": "b9018c4ce3a370307f75b297f137131d965d1a52943743991df65eb6f7c45daf"
+      "sha256": "ae357a305319432b1054ff24461b35f1b7b6d3f048aa55a32cbc3fe9f3a52c3f"
     },
     {
-      "bytes": 2089,
+      "bytes": 2097,
       "path": "PROGRAMMA_DELTA.md",
-      "sha256": "b0d59f34137a0d1ed6d384552d1b6be0ea861c734dd8d3880e051fd72850c98c"
+      "sha256": "52a728b9b686f6bae770ada6ad0bbc568245e44c770486035f173620899f6521"
     },
     {
-      "bytes": 256063,
+      "bytes": 259995,
       "path": "SOURCE_MANIFEST.json",
-      "sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58"
+      "sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b"
     },
     {
       "bytes": 995,
@@ -68,272 +42,435 @@
       "sha256": "bcbc698ed621d7cf6c293755f555eaabee800e40d9a5120f0edb153c75b0fc6d"
     },
     {
-      "bytes": 2221,
+      "bytes": 2293,
       "path": "product/sorok_s45_s47/audit.py",
-      "sha256": "15a213b08d63ef29333eb906de63e7c40ec62f7abf25a5152920337742b31011"
+      "sha256": "c562fa1ab9df4157c8bb574fe058cc61cca7b8acad15f0f00029e9d39b78f7f4"
     },
     {
-      "bytes": 3694,
+      "bytes": 3922,
       "path": "product/sorok_s45_s47/bootstrap.py",
-      "sha256": "69e0654ac5587a652ae90fb2547ada31659a0384bc9b4cf283be5f7becda92f2"
+      "sha256": "31f702c9f7776dcc4c9aa3d76f2727583a208e87fc03b0330e1d70435e39d566"
     },
     {
-      "bytes": 28837,
+      "bytes": 32491,
       "path": "product/sorok_s45_s47/cli.py",
-      "sha256": "f656edc351a369e99955b780068034bc3c26246857201e0649aa23a4568f7f6c"
+      "sha256": "2a05a4d37bc29cbaaf6c62f5f88e9f9ab6c5cb198347452708ef324327c9e734"
     },
     {
-      "bytes": 7327,
+      "bytes": 7970,
       "path": "tools/build_closure.py",
-      "sha256": "97a5b21851c940af6aa90c7b9b8b943022ebc0171e6e0ecd434627090bae4d26"
+      "sha256": "3a9fa8020a7ce6133bb63d823d9bdb9db0e7bac9916bd0feaa760b5bead97367"
     }
   ],
   "branch": "codex/sorok-s45-s47-closure-20261105-r1",
-  "cli_smoke": {
-    "actual-do-help": {
-      "accepted": false,
-      "status": "OK",
-      "strategy": "HELP_REFUSE"
-    },
-    "actual-say": {
-      "status": "OK",
-      "strategy": "HELP_REFUSE"
-    },
-    "actual-verify": {
-      "encounters": [
-        "SAY",
-        "DO_HELP"
-      ],
-      "events": 4,
-      "verify_ok": true
-    },
-    "admit": {
-      "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
-      "status": "OK"
-    },
-    "attend": {
-      "status": "NO_CHANGE",
-      "strategy": null
-    },
-    "c9": {
-      "objective_material_eligible": false,
-      "s47_source_in_readset": true,
-      "target_branch": "NO_CHANGE"
-    },
-    "do-help": {
-      "accepted": true,
-      "status": "OK",
-      "strategy": "HELP_ACCEPT"
-    },
-    "interval": {
-      "coverage": [
-        [
-          222,
-          223
-        ]
-      ],
-      "material_after_interval": 0,
-      "mode": "ACTUAL",
-      "status": "PARTIAL"
-    },
-    "say": {
-      "status": "OK",
-      "strategy": "HELP_INVITE"
-    },
-    "scheduled-admit": {
-      "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
-      "status": "OK"
-    },
-    "scheduled-attend": {
-      "status": "NO_CHANGE",
-      "strategy": null
-    },
-    "scheduled-c9": {
-      "objective_material_eligible": true,
-      "s47_source_in_readset": true,
-      "target_branch": "NO_CHANGE"
-    },
-    "scheduled-do-help": {
-      "accepted": true,
-      "status": "OK",
-      "strategy": "HELP_ACCEPT"
-    },
-    "scheduled-interval": {
-      "coverage": [],
-      "material_after_interval": 1,
-      "mode": "SCHEDULED_ONLY",
-      "status": "NOT_PERFORMED"
-    },
-    "scheduled-verify": {
-      "encounters": [
-        "DO_HELP",
-        "ATTEND"
-      ],
-      "events": 4,
-      "verify_ok": true
-    },
-    "verify": {
-      "encounters": [
-        "SAY",
-        "DO_HELP",
-        "ATTEND"
-      ],
-      "events": 4,
-      "verify_ok": true
-    }
-  },
   "commands": [
-    "python3 .local-logs/s45-s47-closure/build_closure.py",
-    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py manifest",
-    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py demo --root .local-logs/s45-s47-closure/final --keep",
-    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_reused_tests.py --junitxml .local-logs/s45-s47-closure/run-2/reused-tests.xml",
-    "python3 WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py new/say/do-help/attend/interval/admit/c9/verify"
+    "python3 -B WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py manifest",
+    "python3 -B WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py demo --root .local-logs/s45-s47-integration/final/demo --keep",
+    "python3 -B -m pytest -q -p no:cacheprovider --junitxml=WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/junit.xml WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/tests",
+    "python3 -B WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py --package-closure WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product --original-tests none",
+    "python3 -B WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py new/view/say/do-help/attend/status/wait/interval/admit/c9"
   ],
-  "cut_restore_readback": {
-    "c9_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "cut_code": "S46_INTERVAL_CONDITION_REVOKED",
-    "restored_same_hash": true
-  },
-  "demo": {
-    "checks": {
-      "actual": true,
-      "admission_source": true,
-      "cold_subprocess_ok": true,
-      "cold_subprocess_same_source": true,
-      "cut_restore": true,
-      "event_local": true,
-      "import_closure": true,
-      "s45": true,
-      "scheduled": true,
-      "source_manifest": true
-    },
-    "cold_subprocess_returncode": 0,
-    "cold_subprocess_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "ok": true,
-    "path": "evidence/DEMO.json",
-    "sha256": "60be26dbc270cd6dd28da7d0dff676198b8e2c4ae1a672624d01a404a13199c0",
-    "state_root_retained": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/s45-s47-closure/final/sorok-s45-s47-cli-wxs6wjf6"
-  },
-  "event_local_readback": {
-    "cold_first_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "first_event_current_source_hash": "da322d47c96dcfb49b2b581199621ee5008e410f71057c848d29ac2675f71366",
-    "first_event_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "first_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "first_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
-    "second_source_hash": "da322d47c96dcfb49b2b581199621ee5008e410f71057c848d29ac2675f71366",
-    "second_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_735BCB2CBB4332C863DD1977"
-  },
   "git_status_short": [
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/PROGRAMMA_DELTA.json",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/PROGRAMMA_DELTA.md",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/READBACK.json",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/DEMO.json",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/MANIFEST_AUDIT.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/actual-do-help.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/actual-new.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/actual-say.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/actual-verify.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/admit.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/attend.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/c9.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/do-help.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/interval.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/new.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/say.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-admit.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-attend.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-c9.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-do-help.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-interval.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-new.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/scheduled-verify.json",
+    " D WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/verify.json",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47/audit.py",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47/bootstrap.py",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47/cli.py",
+    " M WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/tools/build_closure.py",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/00_RETURN.md",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/PROGRAMMA_DELTA.json",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/PROGRAMMA_DELTA.md",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/README.md",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/evidence/harness_run.json",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/logs/harness_stdout.log",
+    " M WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/00_RETURN.md",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/ADAPTER_CONTRACT.json",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/PROGRAMMA_DELTA.md",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/cli_demo.json",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/junit.xml",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/source_manifest.json",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/test_run.json",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/logs/pytest-evidence.log",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/adapter.py",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/cli.py",
+    " M WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/tests/_pinned.py",
     "?? .local-logs/",
     "?? .s35-sources/",
-    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/PROJECTION_PACKAGE_TESTS.log",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/PROJECTION_PACKAGE_TESTS.xml",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/interval-cli-admit.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/interval-cli-c9.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/interval-cli-do-help.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/interval-cli-interval.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/interval-cli-new.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-attend.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-do-help.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-new.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-say.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-status.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-view.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-cli-wait.json",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/cli/user-view.txt",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-S11-ENCOUNTER-EXIT-SPEC-R1/",
+    "?? WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/",
     "?? WORKER_RETURNS/SOROK-PERSONA-PERCEPTION-INPUT-R1/",
     "?? WORKER_RETURNS/SOROK-S35-C9R-ACCESS-R1/",
-    "?? WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/",
-    "?? rawlsing_next/__pycache__/"
+    "?? WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/harness/package_closure.py",
+    "?? WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/runtime.py",
+    "?? WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/"
   ],
-  "head": "078d9c57bc835a34e90b3671bdef6c28a0f43747",
-  "head_subject": "Sorok: make Codex lead and Browser-first/OpenCode delegation explicit; expand whole-person product commission",
+  "head_before_integration_commit": "5531492df2317166d223e6c6bc211b147e0912f7",
+  "head_subject_before_integration_commit": "Sorok S45-S47: add pinned causal regression harness",
   "import_audit": {
     "external_modules": [],
-    "local_modules": 170,
-    "modules": 279,
+    "local_modules": 175,
+    "modules": 284,
     "ok": true,
     "stdlib_modules": 109
   },
+  "integration": {
+    "causal_harness": {
+      "checks_passed": 22,
+      "checks_total": 22,
+      "elapsed_seconds": 69.457,
+      "mode": "PACKAGE_CLOSURE",
+      "modules_under_package": true,
+      "original_tests": "NOT_RUN",
+      "original_tests_reason": "PACKAGE_CLOSURE_MODE_AVOIDS_DUPLICATE_FULL_SUITES",
+      "report_sha256": "a7ded1130cb885b1e32cf3c49b4ae0ffd03b3f0592570da216719ee02b1d343f",
+      "result": "PASS",
+      "source_audit_files": 424,
+      "stdout_sha256": "91ac2c26e0d4893a988194d4031cde377ad26abc6b137e4f14188783a69b7502"
+    },
+    "cli_smoke": {
+      "interval-cli-admit": {
+        "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "schema": "SOROK_S45_S47_CLI_ACTION@1",
+        "status": "OK"
+      },
+      "interval-cli-c9": {
+        "objective_material_eligible": false,
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "schema": "SOROK_S45_S47_CLI_ACTION@1",
+        "target_branch": "NO_CHANGE"
+      },
+      "interval-cli-do-help": {
+        "attempted": true,
+        "performed": false,
+        "refusal": true,
+        "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+        "status": "REFUSED",
+        "strategy": "HELP_REFUSE"
+      },
+      "interval-cli-interval": {
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "material_after_interval": 0,
+        "mode": "ACTUAL",
+        "schema": "SOROK_S45_S47_CLI_ACTION@1",
+        "status": "PARTIAL"
+      },
+      "interval-cli-new": {
+        "action": "new",
+        "clock": 222,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "schema": "SOROK_S45_S47_CLI_ACTION@1"
+      },
+      "user-cli-attend": {
+        "attempted": true,
+        "performed": null,
+        "refusal": false,
+        "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+        "status": "NO_CHANGE",
+        "strategy": null
+      },
+      "user-cli-do-help": {
+        "attempted": true,
+        "performed": true,
+        "refusal": false,
+        "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+        "status": "OK",
+        "strategy": "HELP_ACCEPT"
+      },
+      "user-cli-new": {
+        "action": "new",
+        "clock": 222,
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "schema": "SOROK_S45_S47_CLI_ACTION@1"
+      },
+      "user-cli-say": {
+        "attempted": true,
+        "performed": false,
+        "refusal": false,
+        "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+        "status": "OK",
+        "strategy": "HELP_INVITE"
+      },
+      "user-cli-status": {
+        "attempted": null,
+        "performed": null,
+        "refusal": null,
+        "schema": "SOROK_WP19_STATUS@1",
+        "status": null,
+        "strategy": null
+      },
+      "user-cli-view": {
+        "attempted": null,
+        "performed": null,
+        "refusal": null,
+        "schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+        "status": null,
+        "strategy": null
+      },
+      "user-cli-wait": {
+        "attempted": true,
+        "performed": null,
+        "refusal": false,
+        "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+        "status": "HELD",
+        "strategy": null
+      }
+    },
+    "demo": {
+      "checks": {
+        "actual": true,
+        "admission_source": true,
+        "cold_subprocess_ok": true,
+        "cold_subprocess_same_source": true,
+        "cut_restore": true,
+        "event_local": true,
+        "import_closure": true,
+        "s45": true,
+        "scheduled": true,
+        "source_manifest": true
+      },
+      "cold_subprocess_returncode": 0,
+      "cold_subprocess_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+      "ok": true,
+      "path": "evidence/DEMO.json",
+      "sha256": "07d20ea02c2ef7d216a70ed25c9a9cbf4c967c00ff8733804adc6f8788239f07",
+      "source_audit_files": 424,
+      "source_audit_ok": true
+    },
+    "projection_mode": "PACKAGE_CLOSURE",
+    "projection_tests": {
+      "count": 11,
+      "duration_seconds": 30.08,
+      "full_author_suite": {
+        "historical_prior_run": "21 passed in 118.56s under git extraction; retained in git history and prior evidence",
+        "reason": "PACKAGE_CLOSURE_INTEGRATION_AVOIDS_DUPLICATE_FULL_SUITES",
+        "status": "NOT_RERUN"
+      },
+      "junit_sha256": "312ee6f5feee413022a4f7db76e30efeb7553a7985d7d385fab94fd8841db3ed",
+      "log_sha256": "f6fedf03e1a29679eb0a41b4e89bccf25e453561dab0b1346eddf6bd98f42c71",
+      "package_source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
+      "status": "PASS",
+      "summary": "11 passed in 30.08s",
+      "test_run_sha256": "278cd59f4e980452352920fdb9c5c81eab9797dfcb00f1f6d645771359ed2b19"
+    }
+  },
+  "integration_commit_status": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_CHAT_READBACK",
   "not_run": [
-    "independent scoped review by a different worker",
+    "independent exact-commit review",
     "PRE-MAIN selective merge",
+    "duplicate full S45/S46/S47 author suites in this integration",
     "native CAN008/CAN011, C8 security, C11/C12 native grant",
-    "human usability or external message delivery",
+    "human usability, S11/A5 Gate4/Gate5, external message delivery",
     "S48-S52 B-actor current-root positive"
   ],
   "platform": "macOS-13.7.8-x86_64-i386-64bit",
   "publication_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1",
   "publication_tree": {
     "excludes": "__pycache__ and .local-logs run state",
-    "file_count": 455,
-    "total_bytes": 5052515
+    "file_count": 458,
+    "total_bytes": 5213321
+  },
+  "published_history": {
+    "harness_cherry_pick": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "harness_public": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
+    "integration_parent": "5531492df2317166d223e6c6bc211b147e0912f7",
+    "package": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+    "projection_cherry_pick": "4e9ebc85d78995e93a7fbace0ead78d703067244",
+    "projection_public": "39ff2c2d479d8ad71c156b01c168894527a486e4"
   },
   "pytest": "pytest 9.1.1",
   "python": "3.11.3",
   "python_executable": "/usr/local/bin/python3",
-  "reused_tests": {
-    "count": 55,
-    "exit": 0,
-    "junit": "evidence/REUSED_TESTS.xml",
-    "junit_sha256": "9b9f3d0fcbdd389086ed1dc10deefdbd9728fa1cb0033c57dd03c447c1dffee4",
-    "log": "evidence/REUSED_TESTS.log",
-    "log_sha256": "312e47b35838f25cf802c39ef085fcfaa179a10f412ab7268024489b094d9a29",
-    "summary": "======================== 55 passed in 260.35s (0:04:20) ========================"
+  "readback_hashes": {
+    "demo": "07d20ea02c2ef7d216a70ed25c9a9cbf4c967c00ff8733804adc6f8788239f07",
+    "harness_run": "a7ded1130cb885b1e32cf3c49b4ae0ffd03b3f0592570da216719ee02b1d343f",
+    "harness_stdout": "91ac2c26e0d4893a988194d4031cde377ad26abc6b137e4f14188783a69b7502",
+    "manifest_audit": "704dc57a95b79faa28e6b88c1b84c9c52fad6ef0dfc535d92f08f8c98a3272a0",
+    "projection_cli_demo": "915de198927c95b50fb03aa84561acfd8e823a1c1109bcd1b0acd670d3586976",
+    "projection_junit": "312ee6f5feee413022a4f7db76e30efeb7553a7985d7d385fab94fd8841db3ed",
+    "projection_log": "f6fedf03e1a29679eb0a41b4e89bccf25e453561dab0b1346eddf6bd98f42c71",
+    "projection_source_manifest": "8e24179793fd4b7769a365d63d29d458a89f8d110400ff4796c0af67c7c89d88",
+    "projection_test_run": "278cd59f4e980452352920fdb9c5c81eab9797dfcb00f1f6d645771359ed2b19"
   },
-  "s45_readback": {
-    "cold_same_counts": true,
-    "cold_same_root": true,
-    "encounters": [
+  "related_return_files": {
+    "harness": [
       {
-        "kind": "SAY",
-        "status": "OK",
-        "strategy": "HELP_INVITE"
+        "bytes": 7018,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/00_RETURN.md",
+        "sha256": "f4a7ec5d4b36891d8080ade7dfc44999838a27a79ae7a10466914a4acd2b36f5"
       },
       {
-        "kind": "DO_HELP",
-        "status": "OK",
-        "strategy": "HELP_ACCEPT"
+        "bytes": 4070,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/README.md",
+        "sha256": "e2574ef0b2f2ca053897152bff615a755d6c782585c55b00576718520b76ef6b"
       },
       {
-        "kind": "ATTEND",
-        "status": "NO_CHANGE",
-        "strategy": null
+        "bytes": 2074,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/PROGRAMMA_DELTA.md",
+        "sha256": "f4f83c17231a4da49a68b905c46190ab58b770885e40ae6e0472d7096a7175e5"
+      },
+      {
+        "bytes": 2415,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/PROGRAMMA_DELTA.json",
+        "sha256": "d5a5431397ed2f9ae5deecd023ad2a12b152166de460803287c35df1733be210"
+      },
+      {
+        "bytes": 19070,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/run_causal_harness.py",
+        "sha256": "3585c40d3d59db585ea5e685961f0d4decdb72366477a32a338203c8f81a3235"
+      },
+      {
+        "bytes": 1668,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/harness/package_closure.py",
+        "sha256": "0cca0c2072b1b7da2e3b6951f4bc821b64302cf5dea09bab2af322a394420b66"
+      },
+      {
+        "bytes": 73414,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/evidence/harness_run.json",
+        "sha256": "a7ded1130cb885b1e32cf3c49b4ae0ffd03b3f0592570da216719ee02b1d343f"
+      },
+      {
+        "bytes": 1965,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/logs/harness_stdout.log",
+        "sha256": "91ac2c26e0d4893a988194d4031cde377ad26abc6b137e4f14188783a69b7502"
       }
     ],
-    "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+    "projection": [
+      {
+        "bytes": 7474,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/ADAPTER_CONTRACT.json",
+        "sha256": "8776ff7b400ff143d66b72dba64de3ec946744744b921142c61cc57e35e757c6"
+      },
+      {
+        "bytes": 6878,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/00_RETURN.md",
+        "sha256": "c2f00e895e687650a96d087561e1101277194764d96d9391c189e3bea622c8bb"
+      },
+      {
+        "bytes": 1333,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/PROGRAMMA_DELTA.md",
+        "sha256": "747885e566598a5183395aecb44398b44483f70a4c863a2492887ff5a159dfd9"
+      },
+      {
+        "bytes": 1434,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/runtime.py",
+        "sha256": "ab252314bb28dd44192a9f004d9ec93f6a43f6a45c2528ce1e8c679f18c912dd"
+      },
+      {
+        "bytes": 8290,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/adapter.py",
+        "sha256": "8599934d5b70506c3347e8a40a635bf9855311c1fac6e00b5a0295732113d11e"
+      },
+      {
+        "bytes": 4193,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/cli.py",
+        "sha256": "021111336ee593b1bef51783a14bd294852b388714ac528d02d36c06281b9a48"
+      },
+      {
+        "bytes": 5592,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/tests/_pinned.py",
+        "sha256": "94888968a85f326b1cb982c6cb8383b161ec3c247a892f88fe8c3838c28f53d6"
+      },
+      {
+        "bytes": 2587,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/test_run.json",
+        "sha256": "278cd59f4e980452352920fdb9c5c81eab9797dfcb00f1f6d645771359ed2b19"
+      },
+      {
+        "bytes": 2054,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/junit.xml",
+        "sha256": "312ee6f5feee413022a4f7db76e30efeb7553a7985d7d385fab94fd8841db3ed"
+      },
+      {
+        "bytes": 2985,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/source_manifest.json",
+        "sha256": "8e24179793fd4b7769a365d63d29d458a89f8d110400ff4796c0af67c7c89d88"
+      },
+      {
+        "bytes": 25565,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/evidence/cli_demo.json",
+        "sha256": "915de198927c95b50fb03aa84561acfd8e823a1c1109bcd1b0acd670d3586976"
+      },
+      {
+        "bytes": 100,
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/logs/pytest-evidence.log",
+        "sha256": "f6fedf03e1a29679eb0a41b4e89bccf25e453561dab0b1346eddf6bd98f42c71"
+      }
+    ]
   },
-  "scheduled_readback": {
-    "c9_objective_material_eligible": true,
-    "c9_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
-    "c9_source_in_readset": true,
-    "c9_target_branch": "NO_CHANGE",
-    "cold_c9_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
-    "do_help_accepted": true,
-    "do_help_status": "OK",
-    "do_help_strategy": "HELP_ACCEPT",
-    "interval_coverage": [],
-    "interval_status": "NOT_PERFORMED",
-    "material_after_interval": 1
-  },
-  "schema": "SOROK_S45_S47_PRODUCT_IMPORT_CLOSURE_READBACK@1",
+  "schema": "SOROK_S45_S47_PRODUCT_INTEGRATION_READBACK@1",
   "source_audit": {
-    "files": 417,
+    "files": 424,
     "manifest": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
     "ok": true,
     "problems": [],
     "schema": "SOROK_S45_S47_PRODUCT_SOURCE_AUDIT@1"
   },
   "source_manifest": {
-    "file_count": 417,
+    "file_count": 424,
     "integration_cut_files": [
       {
         "git_blob": "cf6f970ff12faa2003c43b0261fc7d6497efa356",
         "path": "WORKER_RETURNS/SOROK-20261024-S37-INTEGRATED-CONSUMER-R1/s37/producer.py",
-        "reason": "required S47 producer/S42 consumer interface bytes at cumulative cut",
         "source_commit": "765a441f87292aa4c17794745b65cb54e6aaa83f"
       },
       {
         "git_blob": "0aa6c3503e8d520a9bd6af58af4cabf3b7cc2366",
         "path": "WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/event.py",
-        "reason": "required S47 producer/S42 consumer interface bytes at cumulative cut",
         "source_commit": "765a441f87292aa4c17794745b65cb54e6aaa83f"
       },
       {
         "git_blob": "073f115b0aa71b9e609cd84a22b79907fe1b724e",
         "path": "WORKER_RETURNS/SOROK-20261024-S42-ONGOING-EVENT-CONSUMER-R1/s42/session.py",
-        "reason": "required S47 producer/S42 consumer interface bytes at cumulative cut",
         "source_commit": "765a441f87292aa4c17794745b65cb54e6aaa83f"
       }
     ],
     "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json",
-    "sha256": "ab87a09c22733bc6b987e3a9c99a7348a4d50bdab0576a2f3daa5cf01078ec58",
-    "total_bytes": 4536618
+    "sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
+    "total_bytes": 4574530
   }
 }

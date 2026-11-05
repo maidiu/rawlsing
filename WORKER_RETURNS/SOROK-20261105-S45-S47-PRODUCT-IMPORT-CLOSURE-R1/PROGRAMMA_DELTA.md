@@ -1,34 +1,34 @@
-# PROGRAMMA DELTA — S45-S47 PRODUCT IMPORT CLOSURE R1
+# PROGRAMMA DELTA — S45-S47 PRODUCT IMPORT CLOSURE R1, INTEGRATED
 
 ## Delta class
 
-Code capital and first-consumer product closure only. Not native science, not human validation, not protected PRE-MAIN receiving, not a new constitution.
+Code capital, projection wiring and first-consumer integration only. Not native science, not human validation, not protected PRE-MAIN receiving, not a new constitution.
+
+## Published history
+
+- `e42faf01b57a9188f0cf75baaccfcd57edb07173` — shipped product import closure and causal evidence.
+- `4e9ebc85d78995e93a7fbace0ead78d703067244` — public projection `39ff2c2d` cherry-picked.
+- `5531492df2317166d223e6c6bc211b147e0912f7` — causal harness `3d620798` cherry-picked.
+- Integration commit — this branch head after the package-first projection/harness/CLI wiring; exact hash in final readback.
 
 ## What now exists
 
-- One self-contained, checkout-local import closure for the pinned S45-S47 same-root product spine.
-- One fresh CLI that carries S45 SAY/DO_HELP/ATTEND and S46/S47 interval-to-event-local-C9 to actual help accept/refuse.
-- One pinned source manifest covering 417 blobs with exact commit, Git blob, SHA-256, size, and integration-cut disposition.
-- Reused pinned tests: 55 passed (S45 21, S46 17, S47 17).
-- Retained causal/cold demo: ACTUAL consumes material and refuses help; SCHEDULED_ONLY retains material and accepts help; event-local C9 preserves the admitted event source after later intervals; cut/restore and admission-time source change are proven; a fresh subprocess cold read returns the same source hash.
-
-## Exact evidence
-
-- Return: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md`
-- Readback: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/READBACK.json`
-- Source manifest: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/SOURCE_MANIFEST.json`
-- Demo: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/DEMO.json`
-- Tests: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/REUSED_TESTS.log`
-- CLI: `WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/run_s45_s47.py`
+- Shipped package closure pins 424 exact blobs including WP19 and S11.
+- `s45_projection` installs the shipped package closure by default; git extraction is fallback only.
+- Causal harness has `--package-closure`, audits the shipped manifest, and verifies imported modules remain under that package closure.
+- The single user-facing CLI exposes projected WP19 `view`, `say`, `do-help`, `attend`, `status`, typed holds and projected demo output, while retaining interval/admit/C9 engineering commands.
+- Package-mode projection tests: 11 passed.
+- Package-mode causal harness: PASS, 22/22 checks, sever RED, restore PASS, cold replay PASS, wrong-root refusal PASS.
+- Projected demo: ACTUAL material consumed and DO_HELP refused; SCHEDULED_ONLY material retained and DO_HELP accepted; first-event C9 source preserved; privacy walker passes.
 
 ## Currentness
 
-Working-tree publication on `codex/sorok-s45-s47-closure-20261105-r1` at HEAD `078d9c57bc835a34e90b3671bdef6c28a0f43747`. Not committed, not merged, not pushed. Other worker branches were not edited.
+Committed and pushed on `codex/sorok-s45-s47-closure-20261105-r1`; exact head returned in the final chat readback. No other branch was edited. No working-tree-only claim remains.
 
 ## Holds
 
-- Independent exact-tree review: NOT_RUN.
+- Independent exact-commit review: NOT_RUN.
 - PRE-MAIN selective receiving: NOT_PREPARED.
+- Full S45/S46/S47 author suites: not rerun in this integration; prior 55-pass evidence retained, per no-duplicate-suite instruction.
 - Native grants: NONE.
-- Original science, Pyat E001/E002, B-actor current-root positives, human gates: unchanged holds.
-- No fabricated B actor, no invented choice rule, no native source grant, no human trial.
+- Pyat E001/E002, B current-root positives, original science and human gates: unchanged holds.
