@@ -108,6 +108,43 @@ for rel, snippets in (
 
 
 
+# Canonical front-door and protected P1 CAS2 preservation.
+for p in (
+    PROG + "03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md",
+    "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+    "SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS.json",
+    "rawlsing_next/_pre553_c11_execution_view.py",
+    "rawlsing_next/tests/test_pre553_c11_execution_view.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py.proof.json",
+):
+    required(p)
+
+priority = ROOT / (PROG + "03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md")
+if priority.is_file():
+    textbody = priority.read_text(encoding="utf-8")
+    for m in ("first failing", "SOURCEFREE", "NATIVE", "CAN008", "E001", "P1R2", "MPC-1"):
+        check(m in textbody, f"priority view lost its original distinct evidence/claims: {m}")
+
+for p, marker in (
+    ("README.md", "03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md"),
+    (SOROK + "READ_FIRST.md", "03_MAXIMUM_VISIBLE_PRIORITY_AND_FIRST_MISSING_PROOF.md"),
+    (PYAT + "05_ROADMAP/README.md", "OCT28-CAS2"),
+):
+    f = ROOT / p
+    if f.is_file():
+        check(marker in f.read_text(encoding="utf-8"),
+              f"{p}: current priority/CAS2 navigation disappeared")
+
+prog = ROOT / "PYAT_CONTROL_ROOM/CURRENT_PROGRESS.json"
+if prog.is_file():
+    try:
+        state = json.loads(prog.read_text(encoding="utf-8"))
+        check(state.get("revision", 0) >= 6 and
+              state.get("oct28_cas2", {}).get("scope", "").startswith("PROTECTED_RECEIVED_ENGINEERING_SOURCEFREE_S2"),
+              "Pyat accepted protected P1 CAS2 receipt missing/downgraded")
+    except (TypeError, ValueError) as exc:
+        errors.append("Pyat current progress receipt failed to parse: " + str(exc))
+
 # Additional conserved evidence families. Structural checks guard against
 # accidental omission or duplicate identity, not scientific/current acceptance.
 # additional conserved evidence families
