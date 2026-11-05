@@ -1,0 +1,353 @@
+{
+  "cut": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+  "ok": true,
+  "results": [
+    {
+      "detail": {
+        "blocked": [
+          {
+            "actor_response": null,
+            "clock_changed": false,
+            "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+            "control": "SAY",
+            "refusal": true,
+            "status": "REFUSED",
+            "user_attempt": {
+              "accepted": null,
+              "attempted": true,
+              "control": "SAY",
+              "input": "",
+              "performed": false
+            },
+            "world_event_created": false
+          },
+          {
+            "actor_response": null,
+            "clock_changed": false,
+            "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+            "control": "DO_HELP",
+            "refusal": true,
+            "status": "REFUSED",
+            "user_attempt": {
+              "accepted": null,
+              "attempted": true,
+              "control": "DO_HELP",
+              "input": "",
+              "performed": false
+            },
+            "world_event_created": false
+          },
+          {
+            "actor_response": null,
+            "clock_changed": false,
+            "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+            "control": "ATTEND",
+            "refusal": true,
+            "status": "REFUSED",
+            "user_attempt": {
+              "accepted": null,
+              "attempted": true,
+              "control": "ATTEND",
+              "input": "",
+              "performed": false
+            },
+            "world_event_created": false
+          }
+        ],
+        "checks": {
+          "all_commands_exit_zero": true,
+          "blocked_controls": true,
+          "blocked_schema_and_code": true,
+          "canonical_store_unchanged": true,
+          "exit_local_only": true,
+          "lifecycle_outside": true,
+          "lifecycle_portal": true,
+          "local_return": true,
+          "new_portal_view": true,
+          "no_root_or_private_leaks": true,
+          "outside_view_clock_matches_portal": true,
+          "positive_say_after_return": true,
+          "status_outside_mode": true,
+          "view_outside_mode": true,
+          "view_portal_after_return": true
+        },
+        "exit_codes": {
+          "attend-blocked": 0,
+          "do-help-blocked": 0,
+          "exit": 0,
+          "lifecycle-outside": 0,
+          "lifecycle-portal": 0,
+          "new": 0,
+          "return": 0,
+          "say-after-return": 0,
+          "say-blocked": 0,
+          "status-outside": 0,
+          "status-outside-after-blocks": 0,
+          "status-portal": 0,
+          "view-outside": 0,
+          "view-portal": 0,
+          "view-text": 0
+        },
+        "outside_status_summary": {
+          "current_store_hash": "49e678a565c569e9b1379a83388dd7beae4dff878673bc31122951b1a3a335d9",
+          "mode": "OUTSIDE",
+          "schema": "SOROK_WP19_STATUS@1",
+          "store_mutated_since_load": false
+        },
+        "outside_view_summary": {
+          "absence_evidence": "NO_UNPERCEIVED_EVENT_IN_THIS_VIEW",
+          "clock": 222,
+          "controls": [
+            "SAY",
+            "DO",
+            "ATTEND",
+            "WAIT",
+            "EXIT"
+          ],
+          "location": "workshop",
+          "mode": "OUTSIDE",
+          "schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+          "unperceived_event_count": 0
+        },
+        "privacy_violations": {
+          "attend-blocked": [],
+          "do-help-blocked": [],
+          "exit": [],
+          "lifecycle-outside": [],
+          "lifecycle-portal": [],
+          "new": [],
+          "return": [],
+          "say-after-return": [],
+          "say-blocked": [],
+          "status-outside": [],
+          "status-outside-after-blocks": [],
+          "status-portal": [],
+          "view-outside": [],
+          "view-portal": [],
+          "view-text": []
+        },
+        "schemas": {
+          "attend-blocked": "SOROK_P2_LOCAL_LIFECYCLE_RESULT@1",
+          "do-help-blocked": "SOROK_P2_LOCAL_LIFECYCLE_RESULT@1",
+          "exit": "SOROK_WP19_INTERACTION_RESULT@1",
+          "lifecycle-outside": "SOROK_P2_LOCAL_ENCOUNTER_LIFECYCLE@1",
+          "lifecycle-portal": "SOROK_P2_LOCAL_ENCOUNTER_LIFECYCLE@1",
+          "new": "SOROK_WP19_ENCOUNTER_VIEW@1",
+          "return": "SOROK_P2_LOCAL_LIFECYCLE_RESULT@1",
+          "say-after-return": "SOROK_WP19_INTERACTION_RESULT@1",
+          "say-blocked": "SOROK_P2_LOCAL_LIFECYCLE_RESULT@1",
+          "status-outside": "SOROK_WP19_STATUS@1",
+          "status-outside-after-blocks": "SOROK_WP19_STATUS@1",
+          "status-portal": "SOROK_WP19_STATUS@1",
+          "view-outside": "SOROK_WP19_ENCOUNTER_VIEW@1",
+          "view-portal": "SOROK_WP19_ENCOUNTER_VIEW@1",
+          "view-text": null
+        },
+        "store_hashes": {
+          "outside": "49e678a565c569e9b1379a83388dd7beae4dff878673bc31122951b1a3a335d9",
+          "outside_after_blocks": "49e678a565c569e9b1379a83388dd7beae4dff878673bc31122951b1a3a335d9",
+          "portal_after_return": "49e678a565c569e9b1379a83388dd7beae4dff878673bc31122951b1a3a335d9"
+        }
+      },
+      "name": "fresh_cli_persisted_exit_outside_blocks_return",
+      "ok": true
+    },
+    {
+      "detail": {
+        "after_blocked": {
+          "clock": 222,
+          "encounters": 0,
+          "events": 1,
+          "store_hash": "4f053669808d2b155792f8ea2287e0dbcb9f40c512b4e883b4d1b6a890166bdf",
+          "world_hash": "b975ae46349e3aa8af73e7792da7d4aa1e6ccad55d91210c83bbb7f3f9f1eddc"
+        },
+        "after_exit": {
+          "clock": 222,
+          "encounters": 0,
+          "events": 1,
+          "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "store_hash": "4f053669808d2b155792f8ea2287e0dbcb9f40c512b4e883b4d1b6a890166bdf"
+        },
+        "after_return": {
+          "clock": 222,
+          "encounters": 0,
+          "events": 1,
+          "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "store_hash": "4f053669808d2b155792f8ea2287e0dbcb9f40c512b4e883b4d1b6a890166bdf"
+        },
+        "before": {
+          "clock": 222,
+          "encounters": 0,
+          "events": 1,
+          "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "store_hash": "4f053669808d2b155792f8ea2287e0dbcb9f40c512b4e883b4d1b6a890166bdf"
+        },
+        "checks": {
+          "blocked_no_canonical_change": true,
+          "blocked_results_no_world_event": true,
+          "exit_no_canonical_change": true,
+          "exit_result_no_world_event": true,
+          "local_return_no_canonical_change": true,
+          "local_return_no_world_event": true,
+          "status_outside_mode": true,
+          "status_portal_after_return": true,
+          "view_outside_mode": true,
+          "view_portal_after_return": true
+        },
+        "world_hashes": {
+          "after_blocked": "b975ae46349e3aa8af73e7792da7d4aa1e6ccad55d91210c83bbb7f3f9f1eddc",
+          "after_exit": "b975ae46349e3aa8af73e7792da7d4aa1e6ccad55d91210c83bbb7f3f9f1eddc",
+          "after_return": "b975ae46349e3aa8af73e7792da7d4aa1e6ccad55d91210c83bbb7f3f9f1eddc",
+          "before": "b975ae46349e3aa8af73e7792da7d4aa1e6ccad55d91210c83bbb7f3f9f1eddc"
+        }
+      },
+      "name": "canonical_store_clock_world_nonmutation",
+      "ok": true
+    },
+    {
+      "detail": {
+        "blocked_statuses": [
+          "LOCAL_OUTSIDE_MODE_BLOCKED",
+          "LOCAL_OUTSIDE_MODE_BLOCKED",
+          "LOCAL_OUTSIDE_MODE_BLOCKED"
+        ],
+        "calls_after_blocked": {
+          "attend": 0,
+          "do_help": 0,
+          "return_": 0,
+          "say": 0
+        },
+        "calls_after_local_return": {
+          "attend": 0,
+          "do_help": 0,
+          "return_": 0,
+          "say": 0
+        },
+        "calls_after_portal_return": {
+          "attend": 1,
+          "do_help": 1,
+          "return_": 1,
+          "say": 1
+        },
+        "calls_after_positive": {
+          "attend": 1,
+          "do_help": 1,
+          "return_": 0,
+          "say": 1
+        },
+        "checks": {
+          "blocked_no_projection_calls": true,
+          "local_return_after_blocked_calls": true,
+          "local_return_no_projection_return": true,
+          "portal_return_uses_world_hold": true,
+          "positive_calls_real_projection": true
+        },
+        "positive_statuses": [
+          "SOROK_WP19_INTERACTION_RESULT@1",
+          "SOROK_WP19_INTERACTION_RESULT@1",
+          "SOROK_WP19_INTERACTION_RESULT@1"
+        ]
+      },
+      "name": "outside_blocks_before_s45_projection_calls",
+      "ok": true
+    },
+    {
+      "detail": {
+        "cases": {
+          "bad_last_action": "LOCAL_LIFECYCLE_LAST_ACTION_INVALID",
+          "bad_mode": "LOCAL_LIFECYCLE_MODE_INVALID",
+          "bad_schema": "LOCAL_LIFECYCLE_SCHEMA_INVALID",
+          "bad_sequence": "LOCAL_LIFECYCLE_SEQUENCE_INVALID",
+          "foreign_root": "LOCAL_LIFECYCLE_ROOT_MISMATCH",
+          "malformed_json": "LOCAL_LIFECYCLE_STATE_UNREADABLE",
+          "missing": "NO_REFUSAL",
+          "missing_root": "LOCAL_LIFECYCLE_ROOT_BINDING_MISSING"
+        },
+        "checks": {
+          "bad_last_action_typed_refusal": true,
+          "bad_mode_typed_refusal": true,
+          "bad_schema_typed_refusal": true,
+          "bad_sequence_typed_refusal": true,
+          "cli_corrupt_exit_2_refusal": true,
+          "cli_missing_sidecar_exit_0_portal": true,
+          "foreign_root_typed_refusal": true,
+          "malformed_json_typed_refusal": true,
+          "missing_root_typed_refusal": true,
+          "missing_sidecar_is_portal": true,
+          "wrong_root_refused": true,
+          "wrong_root_removed_resets_portal": true
+        },
+        "cli_corrupt": {
+          "code": "LOCAL_LIFECYCLE_STATE_UNREADABLE",
+          "exit": 2,
+          "schema": "SOROK_P2_LOCAL_LIFECYCLE_REFUSAL@1"
+        },
+        "cli_missing": {
+          "exit": 0,
+          "mode": "PORTAL"
+        },
+        "wrong_root_code": "LOCAL_LIFECYCLE_ROOT_MISMATCH",
+        "wrong_root_removed_mode": "PORTAL"
+      },
+      "name": "wrong_root_sidecar_and_corrupt_state",
+      "ok": true
+    },
+    {
+      "detail": {
+        "checks": {
+          "adapter_under_projection_return": true,
+          "after_return_status_mode": true,
+          "after_return_view_mode": true,
+          "lifecycle_under_return": true,
+          "local_return_code": true,
+          "no_author_workspace_paths": true,
+          "outside_clock_not_advanced": true,
+          "outside_local_state_mode": true,
+          "outside_local_state_no_root_hash": true,
+          "outside_location_not_fabricated": true,
+          "outside_no_new_absence_fields": true,
+          "outside_status_equals_projection_status": true,
+          "outside_status_mode": true,
+          "outside_status_source_schema": true,
+          "outside_view_equals_projection_view": true,
+          "outside_view_mode": true,
+          "outside_view_source_schema": true,
+          "projection_under_projection_return": true,
+          "real_adapter_instance": true,
+          "s45_under_package": true,
+          "wp19_under_package": true
+        },
+        "origins": {
+          "adapter": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/adapter.py",
+          "lifecycle": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/sorok_p2_lifecycle/lifecycle.py",
+          "projection": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/projection.py",
+          "s45_session": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+          "wp19": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-WP19-ENCOUNTER-PROTOTYPE-R1/wp19/interface.py"
+        },
+        "outside_status_summary": {
+          "mode": "OUTSIDE",
+          "schema": "SOROK_WP19_STATUS@1",
+          "store_mutated_since_load": false
+        },
+        "outside_view_summary": {
+          "absence_evidence": "NO_UNPERCEIVED_EVENT_IN_THIS_VIEW",
+          "clock": 222,
+          "controls": [
+            "SAY",
+            "DO",
+            "ATTEND",
+            "WAIT",
+            "EXIT"
+          ],
+          "location": "workshop",
+          "mode": "OUTSIDE",
+          "schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+          "unperceived_event_count": 0
+        }
+      },
+      "name": "actual_importer_and_view_status_surface",
+      "ok": true
+    }
+  ],
+  "schema": "SOROK_P2_LIFECYCLE_INDEPENDENT_PROBE@1"
+}

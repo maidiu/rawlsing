@@ -1,0 +1,112 @@
+{
+  "accepted41bf_scope_preserved": true,
+  "authored_bytes": 26595,
+  "authored_file_count": 10,
+  "authored_files": [
+    {
+      "bytes": 4913,
+      "path": "00_RETURN.md",
+      "sha256": "ea689c196fe610013523e0655f4966f7fc64855c4ff05ed7b9ab186f5f467237"
+    },
+    {
+      "bytes": 1871,
+      "path": "PROGRAMMA_DELTA.json",
+      "sha256": "54567a3abe481c14bfc604fddeace2ccf41d1a17895d8a264f207baa74f6d9cd"
+    },
+    {
+      "bytes": 999,
+      "path": "PROGRAMMA_DELTA.md",
+      "sha256": "83df219630fe75130d2bce2b067be080403572e6aec763c1947b66b355b0c7ed"
+    },
+    {
+      "bytes": 1209,
+      "path": "evidence/AUTHOR_EVIDENCE_AUDIT.json",
+      "sha256": "ae1f3cd5ac50c457a9ec1c8d9522450ce42b3ae4ef3f8b8759418eb39d5fa51d"
+    },
+    {
+      "bytes": 559,
+      "path": "evidence/CLI_TEXT_OUTSIDE_AUDIT.json",
+      "sha256": "6dfb1bc8c3e0d9df1dc005b71b736291feac387102e7b4037aeaa4669434d323"
+    },
+    {
+      "bytes": 99,
+      "path": "evidence/FOCUSED_5_TESTS.log",
+      "sha256": "7c5e107118441348078844cb800352912d582cccbda00def1311910b86869f5c"
+    },
+    {
+      "bytes": 1160,
+      "path": "evidence/FOCUSED_5_TESTS.xml",
+      "sha256": "c15d5d9541ab7f2a75902ca284a103cc13c6a4e4c25cc055e25ed92cc3f7f0ed"
+    },
+    {
+      "bytes": 13326,
+      "path": "evidence/INDEPENDENT_PROBES.json",
+      "sha256": "afd3f5a2a8f7952800de534afa548dd8e1a85a9590f49145b09fe755b490cfb8"
+    },
+    {
+      "bytes": 2260,
+      "path": "evidence/REVIEW_SUMMARY.json",
+      "sha256": "d6baadb8dd143c7707810edfe7dacab0eca150a2e72ff0a495311656eaf15f67"
+    },
+    {
+      "bytes": 199,
+      "path": "evidence/SOURCE_MANIFEST_AUDIT.json",
+      "sha256": "e3eb09ae2df72bcbb54d9e38aab5ba60a5600ae8b574681f42567270a3f5ee94"
+    }
+  ],
+  "excludes": [
+    "READBACK.json"
+  ],
+  "focused_tests": {
+    "duration_seconds": 19.82,
+    "exit": 0,
+    "result": "5 passed"
+  },
+  "independent_probe_results": {
+    "actual_importer_and_view_status_surface": true,
+    "canonical_store_clock_world_nonmutation": true,
+    "fresh_cli_persisted_exit_outside_blocks_return": true,
+    "outside_blocks_before_s45_projection_calls": true,
+    "wrong_root_sidecar_and_corrupt_state": true
+  },
+  "native_human_holds": {
+    "adp_actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "can008": false,
+    "can011": false,
+    "human": false,
+    "native": false,
+    "pre_main": false,
+    "protected_write": false,
+    "pyat_world": false
+  },
+  "not_run": [
+    "full inherited 55-test estate",
+    "native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human grants",
+    "tamperproof sidecar/security architecture or general concurrency infrastructure",
+    "absence/life-advance, external delivery or world-return producer",
+    "full S11 OUTSIDE contacts/thread UI surface",
+    "canonical state corruption fuzzing beyond sidecar corrupt/missing semantics"
+  ],
+  "parent": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "remote_readback": "REMOTE_40SHA_REPORTED_IN_FINAL_CHAT_AFTER_PUSH",
+  "residual_limits": [
+    "Outside view/status are exactly the accepted S45 projection view/status with mode=OUTSIDE; the S11 OUTSIDE contacts/thread surface and world-return/absence/delivery producers remain unimplemented and unclaimed.",
+    "The local sidecar is a local UI convenience with root binding, not a tamperproof security or native authorization mechanism.",
+    "Blocked SAY returns an empty user_attempt.input; the local refusal does not preserve the attempted utterance. This is a UX limitation, not an access-boundary failure.",
+    "status retains local root/store path strings (inherited expected behavior) but no root_hash/root_id/private markers.",
+    "No full inherited 55-test estate, native/human/B/Pyat/science, concurrency, absence simulation or general security architecture was run."
+  ],
+  "review_branch": "codex/sorok-p2-lifecycle-independent-review-20261105-r1",
+  "reviewed_cut": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+  "schema": "SOROK_P2_LIFECYCLE_INDEPENDENT_REVIEW_READBACK@1",
+  "source_manifest": {
+    "all_hashes_match": true,
+    "bytes": 32700,
+    "files": 10,
+    "lifecycle_return": "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1"
+  },
+  "verdict": "ACCEPT_SCOPED_TEST_ONLY"
+}
