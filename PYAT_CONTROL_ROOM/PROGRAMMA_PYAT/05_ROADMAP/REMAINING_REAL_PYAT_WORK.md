@@ -907,3 +907,12 @@ D9161ba719f327867db78e084357245e369bc1195/code7ff5e8b78c242317f4b9d20d269c48893c
 OriginalD exactpermission/no-dropcorrectionjobpyat-universal35-transport-permission-repair-20261106-r1 PID77332 under3fc8a3537; Acoordinate/Cscale independent. No newunreadyreviewcourt or650sretry.
 
 PROGRAMMA_DELTA: exactD/code above, typedfact/querytransport codepresent/authorchecked butpermission/no-droptrustboundaryREVISE; actualoriginalempiricalconsumerNONE_VERIFIED. ExistingS06/S-F5/gap/work-now/currentpair records corrected isolatedcandidate; draft713 remainsfrozenprioracceptedcut, no unreviewedtransport/native/science/protectedpromotion. NextDexplicitcallerceiling/allfactaccounting+exactoutcomecounts, thenindependentfocusedreview; A/Coriginalblockersremain.
+
+
+### D r9 explicitpermission/no-drop repair; exact typed refusal scope
+
+D0d48fc73292277a403ca70e0d304450f62b5444b/codefbc6ca3eb1246aa6a946c558a5f6e30dedafeb45 addsoptionalexplicitcallerceiling/defaultNone/noautoenvelopes andmissingqueryrefusalbeforepartialartifact. Author1focusedtestPASS2.37s,30generated1targetfacts/30envelopes/30typedarityrefusals/0supportprofiles, structuralgrantfalse; callerceilingunchanged. Positive2targetjointproducerstillmissing; arityrefusaltransportnotauthenticoriginalEhandoff.
+
+Gactualboundaryreviewjobpyat-universal35-d-r9-transport-independent-review-20261106-r1 PID79373 under36d08a74b; wrapperstate_rootnocallerpermission andtruechangedproducerinput explicitlytested. Acoordinate/Cscale independent;threeusefullanes.
+
+PROGRAMMA_DELTA: exactD/code above, authortransportrepaircandidate only, oldHQhardcodedpermission/no-dropnegative preserved. ExistingS06/S-F5/gap/work-now/currentpair correctconsumer/readinessaxes; originalempiricalconsumerNONE_VERIFIED, positiveEprofileNOT_PROVEN, no native/science/protectedadoption or draft713advance. NextGclosure andexistingoriginalblockerrepairs, thenactualqualifiedjointproducerconnection.
