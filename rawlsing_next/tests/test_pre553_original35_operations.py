@@ -1,6 +1,7 @@
 """Bound original35 operation adapter and current-compiler consumer tests."""
 from __future__ import annotations
 
+from dataclasses import replace
 from functools import lru_cache
 import hashlib
 import json
@@ -220,21 +221,19 @@ def test_terminal_current_universal_consumer_executes_and_restores(tmp_path):
 
 def test_terminal_current_governed_frontier_joint_consumer(tmp_path):
     bundle, _rows = _frontier_bundle(tmp_path / "s35_frontier.sav")
-    inventory, policy, frontier = _frontier_fixture(bundle)
     config = _fixture_config(bundle)
     plan = build_original35_operation_plan(
         [config], source_presence={"SRC01": True}, require_all35=False)
     compilation = bind_governed_frontier(
-        plan, bundle=bundle, inventory=inventory, policy=policy,
-        frontier=frontier, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
     result = execute_governed_frontier(
         compilation=compilation,
         source_factory=lambda _ref: bundle.physical_stream)
     assert result.anti_join["no_drop_ok"] is True
     assert result.operation_anti_join["no_drop_ok"] is True
     assert result.fact_refs
-    assert any(op.claim_class in {"JOINT", "CO_TRAVEL"}
-               for op in frontier.operations)
+    assert any(record.status == "SUPPORTED"
+               for record in compilation.plan.records)
 
 
 def test_plan_refuses_incomplete_roster_and_wrong_expected_counts():
@@ -246,3 +245,37 @@ def test_plan_refuses_incomplete_roster_and_wrong_expected_counts():
         build_original35_operation_plan(
             _packs(), source_presence=_presence(), require_all35=True,
             expected_item_count=1)
+
+
+def test_governed_binding_actual_payload_change_severs_and_restores(tmp_path):
+    bundle, _rows = _frontier_bundle(tmp_path / "s35_payload.sav")
+    config = _fixture_config(bundle)
+    plan = build_original35_operation_plan(
+        [config], source_presence={"SRC01": True}, require_all35=False)
+    baseline = bind_governed_frontier(
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert baseline.content_hash
+    assert baseline.expected_candidate_ids
+
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            replace(plan, operations=()), bundle=bundle,
+            as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    code = next(op.source_variable_codes[0] for op in plan.operations
+                if op.kind == OPERATION_F1 and op.status == EXECUTABLE)
+    changed = tuple(
+        replace(op, response_values=("9",),
+                conditioner_values=tuple("9" for _ in op.conditioner_values))
+        if code in op.source_variable_codes
+        else op
+        for op in plan.operations)
+    changed_plan = replace(plan, operations=changed)
+    changed_compilation = bind_governed_frontier(
+        changed_plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert changed_compilation.content_hash != baseline.content_hash
+    assert changed_compilation.issued.record.expected_jobs != (
+        baseline.issued.record.expected_jobs)
+    restored = bind_governed_frontier(
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert restored.content_hash == baseline.content_hash

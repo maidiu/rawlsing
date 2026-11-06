@@ -70,8 +70,13 @@ no_drop=True
 plan_ref=3e3a604a78c377030bffa39eb62cf065d111746f9bc1588f7dbf33bac0373b9c
 elapsed=7.44s
 maxrss=878,350,336 bytes (~838 MiB)
-status counts: EXECUTABLE_RAW 5,630; HELD 1,595; ABSTAIN 0;
-               INAPPLICABLE 11,191; DEFERRED 51; NOT_REQUESTED 0
+status counts (F-corrected): EXECUTABLE_RAW 5,630; HELD 4,655; ABSTAIN 0;
+               INAPPLICABLE 8,131; DEFERRED 51; NOT_REQUESTED 0
+route split of EXECUTABLE_RAW: ELIGIBLE_APPLICABLE 676;
+               ROUTING_UNKNOWN 4,705; RULE_UNAVAILABLE 249
+historical plan_ref: 3e3a604a78c377030bffa39eb62cf065d111746f9bc1588f7dbf33bac0373b9c
+status-repair recomputed plan_ref:
+               9ae291ca403e3d26fd0e4af9b6c536fac9509be878e0d9cc43a589f293d14ff7
 pairs selected/candidates: 120 / 1,862,592
 joints selected/candidates: 20 / 742,250,526
 ```

@@ -20,6 +20,11 @@ from rawlsing_next.pre553_universal_workload import (
     UniversalOperation, compile_universal_workload, execute_universal_workload,
     compile_governed_frontier,
 )
+from rawlsing_next.universal_grammar.enumerate import enumerate_frontier
+from rawlsing_next.universal_grammar.types import (
+    ADMINISTERED, ELIGIBLE, MeasurePlan, Occurrence, OccurrenceKey,
+    SourceInventory, GrammarPolicy, DirectionGrant,
+)
 
 SCHEMA = "PRE553_ORIGINAL35_OPERATIONS@1.0.0"
 OPERATION_F1 = "F1_DISTRIBUTION"
@@ -542,29 +547,142 @@ def execute_plan_universal(plan: Original35OperationPlan, *, bundle: Any,
     return lowering, result
 
 
+
+
+def build_frontier_inputs_from_plan(plan: Original35OperationPlan, *,
+                                    source_id: str | None = None):
+    """Construct CURRENT grammar inputs from the actual planned F2/F3/F4 payload."""
+    if not isinstance(plan, Original35OperationPlan):
+        raise Original35OperationError("ORIGINAL35_OPERATION_PLAN_REQUIRED")
+    sid = source_id or (plan.rows[0].source_id if plan.rows else None)
+    if sid is None:
+        raise Original35OperationError("SOURCE_ID_REQUIRED")
+    row = next((r for r in plan.rows if r.source_id == sid), None)
+    if row is None:
+        raise Original35OperationError("SOURCE_NOT_IN_PLAN")
+    selected = [op for op in plan.operations
+                if op.source_id == sid
+                and op.kind in {OPERATION_F2, OPERATION_F3H, OPERATION_F3R, OPERATION_F4}]
+    if not selected:
+        selected = [op for op in plan.operations
+                    if op.source_id == sid and op.kind == OPERATION_F1
+                    and op.status == EXECUTABLE]
+    codes: dict[str, set[str]] = {}
+    for op in selected:
+        for code in op.source_variable_codes:
+            codes.setdefault(code, set()).update(op.response_values)
+    for op in plan.operations:
+        if op.source_id == sid and op.kind == OPERATION_F1 and op.status == EXECUTABLE:
+            codes.setdefault(op.source_variable_codes[0], set()).update(op.response_values)
+    if not codes:
+        raise Original35OperationError("NO_FRONTIER_ITEMS")
+    occurrences = []
+    for code in sorted(codes):
+        domain = tuple(sorted(codes[code])) or ("0",)
+        occurrences.append(Occurrence(
+            key=OccurrenceKey(item_id=code), label=code, unit="person",
+            topology="SCALAR_SINGULAR", forms=("DEFAULT_FORM",), domain=domain,
+            target_role="TARGET", conditioner_role="CONDITIONER",
+            administration=ADMINISTERED, route_state="KNOWN",
+            semantic_state="OBSERVED_SOURCE_NATIVE", scope=sid,
+            risk_set_refs=()))
+    classes = ("DIST", "CONDITIONAL", "JOINT", "CO_TRAVEL",
+               "INTERACTION", "FORK", "STATE_ROBUSTNESS")
+    grants = []
+    for cls in classes:
+        grants.append(DirectionGrant(
+            ("TARGET",), (), cls, "urn:plan:direction:" + cls + ":unary"))
+        grants.append(DirectionGrant(
+            ("TARGET",), ("CONDITIONER",), cls,
+            "urn:plan:direction:" + cls + ":conditional"))
+    policy = GrammarPolicy(
+        policy_id="PLAN-POLICY-" + sid, grade="PROPOSED_TEST_ONLY",
+        allowed_classes=classes, separate_classes=(),
+        target_roles=("TARGET",), conditioner_roles=("CONDITIONER",),
+        administrative_roles=(), direction_grants=tuple(grants),
+        bounds={"J": 3, "K": 1, "D": 0}, population_requires_weight=False,
+        validation_policy="PLAN_EXACT_ITEMS_VALUES", exploration_policy="BOUNDED",
+        stop_policy="EXPLICIT_FRONTIER", owner_refs=("D_PLAN_ADAPTER",),
+        authority_refs=(), risk_set_policy="UNCONSTRAINED")
+    measure = MeasurePlan(
+        measure_id="PLAN-RAW", kind="SAMPLE", weight_ref=None, design_ref=None,
+        estimand="RAW_OBSERVED_SAMPLE", variance_policy="NONE")
+    inventory = SourceInventory(
+        inventory_id="PLAN-INV-" + sid, source_id=sid, wave=row.wave,
+        edition=row.wave, source_sha256=row.source_sha256, scope=sid,
+        occurrences=tuple(occurrences), measure_plans=(measure,),
+        risk_set_refs=(), unit_transforms=(), state_map={}, authority_refs=(),
+        current_selection=None, inventory_complete=True, dataset_id=sid,
+        instrument_ref=None, observation_clock_ref=None, reference_clock_ref=None,
+        as_of_ref=None, publication_clock_ref=None)
+    frontier = enumerate_frontier(inventory, policy, partition_size=64)
+    return inventory, policy, frontier
+
+
+def _plan_frontier_missing(plan: Original35OperationPlan, source_id: str,
+                           frontier: Any) -> tuple[str, ...]:
+    operations = list(frontier.operations)
+    missing: list[str] = []
+    for op in plan.operations:
+        if op.source_id != source_id or op.kind not in {
+                OPERATION_F2, OPERATION_F3H, OPERATION_F3R, OPERATION_F4}:
+            continue
+        if op.status in {HELD, INAPPLICABLE}:
+            continue
+        if op.kind == OPERATION_F3R and op.status == DEFERRED:
+            continue
+        targets = list(op.source_variable_codes)
+        if op.kind == OPERATION_F4:
+            if not any(len(candidate.targets) >= 3
+                       and [key.item_id for key in candidate.targets] == targets
+                       for candidate in operations):
+                missing.append("F4:" + ",".join(targets))
+            continue
+        target = op.source_variable_codes[0]
+        if op.kind == OPERATION_F3H:
+            if not any(len(candidate.targets) == 1
+                       and candidate.targets[0].item_id == target
+                       for candidate in operations):
+                missing.append("F3H:" + target)
+            continue
+        if op.kind == OPERATION_F3R:
+            if not any(candidate.claim_class == "FORK"
+                       and candidate.targets[0].item_id == target
+                       for candidate in operations):
+                missing.append("F3R:" + target)
+            continue
+        conditioner = op.source_variable_codes[1]
+        if not any(
+            len(candidate.targets) == 1
+            and candidate.targets[0].item_id == target
+            and any(key.item_id == conditioner and str(value) in op.conditioner_values
+                    for key, value in candidate.conditions)
+            for candidate in operations
+        ):
+            missing.append("F2:" + target + "<-" + conditioner)
+    return tuple(sorted(set(missing)))
+
 def bind_governed_frontier(plan: Original35OperationPlan, *, bundle: Any,
-                           inventory: Any, policy: Any, frontier: Any,
+                           inventory: Any | None = None, policy: Any | None = None,
+                           frontier: Any | None = None,
+                           source_id: str | None = None,
                            as_of: str, host: str, purpose: str) -> Any:
-    """Join plan F2/F3/F4 requests to the CURRENT governed-frontier compiler."""
+    """Wire actual planned F2/F3/F4 payload into CURRENT compiler inputs."""
+    sid = source_id or (plan.rows[0].source_id if plan.rows else None)
+    if inventory is None or policy is None or frontier is None:
+        inventory, policy, frontier = build_frontier_inputs_from_plan(
+            plan, source_id=sid)
+    else:
+        if inventory.source_sha256 != next(
+                row.source_sha256 for row in plan.rows if row.source_id == sid):
+            raise Original35OperationError("PROVIDED_INVENTORY_SOURCE_MISMATCH")
+    missing = _plan_frontier_missing(plan, sid, frontier)
+    if missing:
+        raise Original35OperationError(
+            "GOVERNED_FRONTIER_PLAN_PAYLOAD_MISSING:" + ",".join(missing))
     compilation = compile_governed_frontier(
         bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
         as_of=as_of, host=host, purpose=purpose)
-    requested = {
-        code for op in plan.operations
-        if op.kind in {OPERATION_F2, OPERATION_F3H, OPERATION_F4}
-        for code in op.source_variable_codes
-    }
-    present = {
-        target.item_id for operation in frontier.operations
-        for target in operation.targets
-    } | {
-        key.item_id for operation in frontier.operations
-        for key, _ in operation.conditions
-    }
-    missing = tuple(sorted(requested - present))
-    if missing:
-        raise Original35OperationError(
-            "GOVERNED_FRONTIER_PLAN_ITEMS_MISSING:" + ",".join(missing))
     return compilation
 
 
@@ -575,6 +693,6 @@ __all__ = [
     "Original35OperationPlan", "PlanOperation", "RAW", "SCHEMA",
     "SOURCE_NOT_PRESENT_HERE", "SOURCE_PRESENT", "SOURCE_UNVERIFIED",
     "SourceRow", "UniversalLowering", "WEIGHTED", "bind_governed_frontier",
-    "build_original35_operation_plan", "execute_plan_universal",
-    "lower_to_universal_workload",
+    "build_frontier_inputs_from_plan", "build_original35_operation_plan",
+    "execute_plan_universal", "lower_to_universal_workload",
 ]
