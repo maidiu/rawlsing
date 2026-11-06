@@ -673,3 +673,8 @@ E remoteverified15da2b8bf71d1ee61d6b3040996436f8be537e06 (implementation08138f52
 ### E independent negative and narrow repair — 2026-11-06
 
 G e714a5dd3628f3b60ab5b6bdcfeef036ecdabc8f returnsREVISE_MATERIAL_NARROW onE15da2b8bf71d1ee61d6b3040996436f8be537e06. Independent11+25tests/ownerdelegation/structuralwithheld positives preserved, but five self-consistent semanticmismatch variants(condition/measure/response-state/scope/kind) acquire support. This invalidates ingress readiness while preserving earlierpositive evidence. E author exactrepair commissioned82b96d5a3, actualPID95437, samebranch/session/tests/returnonly. D contraryevidence delivered withoutrestart and originalnumericalwork remainsindependent. S06.1/S-F5 changedcandidategrade only; native/structural/protectedacceptance unchanged. Independent repairreview after frozenhead, actualDbind stillNOT_RUN.
+
+
+### E r1 author repair and independent closure — 2026-11-06
+
+RemoteverifiedE7d1aadfd4f655930ca2e65ea64cfa3df180a5f7b (code7920b7fca4471c035f5b728dace9e1777c68c074) returns exact5-field fact/query linkage checks; old5caseRED reproduced and preserved, repaired typedrefusals/positive with16ingress+25ownerregression authorPASS. No newFFsemanticowner/structuralgrant. G distinct frozen closure launched pyat-universal35-e-r1-independent-closure-20261106-r1 PID96858; acceptance remainswithheld untilreturn. D has repairedcut withoutrestart, actualDbind/native/protected stillunproved. Current3lanes D/F/G.
