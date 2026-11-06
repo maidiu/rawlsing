@@ -1,5 +1,7 @@
 # HQ disposition — #647
 
+**LATER PROTECTED RECEIVING (2026-11-06; overrides older PENDING headings solely for live state):** #697 merged `913fc49013daefcce1c59235143ddd27f65a74a9`, #699 merged `33c40a315d3c231cb2021bd8e60f3261547efa62`, #704 developmental recursion merged `0b7d8ba33b5cd905963292357507ae7bbc2219de`; complete current graded first-consumer / independent repair evidence and remaining holds: [protected developmental-recursion receiving/currentness](CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md). Earlier P2 'unmerged' statements below remain immutable source-period facts, not current GitHub state. No original science/native/human status is promoted.
+
 **PENDING_GUIDE_INTEGRATION.** This branch is HQ’s direct documentary write-through from immutable W8-R `a9ebf71e62d84e5dcc599662e976eca7fcd0e623`. Publication advances HQ's verified documentary cut. Guide-owner integration, scientific adoption and product validation are separate. The continuing operating rule is in contract §5.
 
 | Existing coordinates | Before at W8-R | Reconciled evidence and limits |
