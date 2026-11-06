@@ -1,0 +1,85 @@
+{
+ "after": {
+  "all_fill_equal": true,
+  "all_hit_equal": true,
+  "all_miss_equal": true,
+  "miss_wall_median_s": 0.20005578501150012,
+  "miss_wall_s": [
+   0.19985194795299321,
+   0.2625270689604804,
+   0.20005578501150012
+  ],
+  "scope_first": {
+   "capacity_fallbacks": 1,
+   "closed": false,
+   "core_build_attempts": 1,
+   "core_builds": 1,
+   "core_hits": 1,
+   "early_capacity_fallbacks": 1,
+   "fallbacks": 0,
+   "fingerprint_failures": 0,
+   "max_cached_members": 500000,
+   "max_groups": 1,
+   "open_groups": 1,
+   "raw_materializations": 2,
+   "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+   "weighted_materializations": 0
+  }
+ },
+ "before": {
+  "all_fill_equal": true,
+  "all_hit_equal": true,
+  "all_miss_equal": true,
+  "miss_wall_median_s": 0.33826174202840775,
+  "miss_wall_s": [
+   0.33231462305411696,
+   0.34353999700397253,
+   0.33826174202840775
+  ],
+  "scope_first": {
+   "capacity_fallbacks": 1,
+   "closed": false,
+   "core_build_attempts": 2,
+   "core_builds": 1,
+   "core_hits": 1,
+   "early_capacity_fallbacks": 0,
+   "fallbacks": 0,
+   "fingerprint_failures": 0,
+   "max_cached_members": 500000,
+   "max_groups": 1,
+   "open_groups": 1,
+   "raw_materializations": 2,
+   "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+   "weighted_materializations": 0
+  }
+ },
+ "claim_consistency": {
+  "after_claim_s": 0.2001,
+  "after_receipt_median_s": 0.20005578501150012,
+  "before_claim_s": 0.3383,
+  "before_receipt_median_s": 0.33826174202840775,
+  "matches": true,
+  "no_scope_claim_s": 0.1989,
+  "no_scope_receipt_median_s": 0.19894918601494282
+ },
+ "facts_exact_equal": true,
+ "implementation_sha": "9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3",
+ "n": 200,
+ "no_scope": {
+  "all_miss_equal": true,
+  "miss_wall_median_s": 0.19894918601494282,
+  "miss_wall_s": [
+   0.19207907910458744,
+   0.21988987002987415,
+   0.19894918601494282
+  ]
+ },
+ "note": "before is new code with _miss_capacity_exhausted forced False (guard-disabled A/B), not a run of old commit 409be; timings are author-grade, not reviewer-timed.",
+ "ops": [
+  "raw_Y",
+  "joint_XYZK"
+ ],
+ "previous_implementation_sha": "409be32f7e4b4b961a360be1c8f44a17b5c62173",
+ "rounds": 3,
+ "schema": "R03_CAPACITY_RECEIPT_CONSISTENCY@1"
+}
