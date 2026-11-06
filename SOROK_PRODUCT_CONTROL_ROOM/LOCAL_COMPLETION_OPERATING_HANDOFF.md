@@ -133,3 +133,8 @@ Remoteverified332e00cb3da51b859a408a31f820b1afd7fe8fc0 ACCEPT_SCOPED_TEST_ONLY a
 ### Exact interval correction imported; final later import dispatched
 
 Remoteverifiedd450f96b5de1fcf39bacefbfb4cd9bfbe66a8b18 imports interval76d5 exact30files,29receiptfiles checked, originalprivacy/receiptoraclePASS, fanincallsiteunchanged/no testestate rerun. Independentaccept332e00cb still exact25d, no newerheadpromotion. Same mainintegrator now `sorok-p2-final-later-import-20261105-r1` consumes laterb716 exactsource and only necessary APIchanges; focused actualboundary/coldsequence if callsitechanges, no newfeatures. Other2lanes independentpublicrepairclosure and coherentPROGRAMMApublicrepairsintake. Finalreceiving awaits exactnewhead review/sourceclosure; no protectedmerge.
+
+
+### Final repaired P2 source assembled
+
+Remoteverified4b2fed81c3f513eb4262ad5de277ce519c74c614 exactimports interval76d5 treef7bd1c51 + laterb716 tree67f01db8 (48filesexact); integratedcalls/primitivesunchanged, publicoraclezero hits, sourceoriginsverified. Earlier25daccept332e remains scoped; final4b2notyetindependentlyaccepted. Sameauthor now `sorok-p2-final-receiving-delta-20261105-r1` only actualfinalsource delta/allowlist/merge-tree and1cold firstconsumer sequence vs priorbf574 receiving, no repeatfullestate. Other2lanes focusedcomponentclosure and PROGRAMMApublicrepairsintake. Nextfinalqualification can reuse accepted25d+verifiedcomponentrepairs+finalreceivingdelta, no automaticbroadthirdreview; preciseindependentfinalcutstatement only if actualreviewerissues it. No protectedmerge/nativehumanBgrant.
