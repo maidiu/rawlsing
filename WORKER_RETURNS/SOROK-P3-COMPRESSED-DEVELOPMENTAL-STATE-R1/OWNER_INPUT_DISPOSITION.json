@@ -1,0 +1,20 @@
+{
+  "schema": "SOROK_P3_OWNER_INTAKE@1",
+  "return": "61c41e54cccae6f8f888aeb44a629e3a1bd6f892",
+  "verified": {
+    "durable_exit": 0,
+    "manifest_entries": 7,
+    "exclusive_paths": 8,
+    "remote_head": true
+  },
+  "disposition": "BANKED_UNEXECUTED_OWNER_CANDIDATE__NOT_FUNCTIONAL_ACCEPTANCE",
+  "author_tests": "2 guards passed;6 actual durable integration checks NOT_EXECUTED_MISSING_RETURNED_STORE (reported as skips, not a green integrated result)",
+  "hq_mechanical_correction": {
+    "defect": "self._store_class is already the returned PsycheStore class, but construction invoked it once without args and then attempted to call the result",
+    "change": "self._store_class()(path,...) -> self._store_class(path,...)",
+    "verification": "Python AST confirms one direct constructor call with path and binding/registry_hash/source_hash. Actual constructor execution awaits real store; no fake store introduced."
+  },
+  "current_owner_sha256": "b7b508637258907e4d18df3030b45e040fff83dc6adc992985922e50a9e009f7",
+  "retained_original_evidence": "evidence/owner/ unchanged; original implementation hash remains at exact return cut",
+  "next": "On real normalized store return, resume same owner author at integrated exact source and execute all durable tests; meanwhile author required original user A-H/two-batch proof harness against banked actual API. No full product acceptance or code replacement."
+}

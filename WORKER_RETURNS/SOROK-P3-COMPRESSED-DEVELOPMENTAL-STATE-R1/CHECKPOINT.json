@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "COMPRESSION_ACTUAL_BINDING_REPAIRED__PURE_READERS_COMPATIBLE__DURABLE_OWNER_IN_PROGRESS",
+  "state": "OWNER_GLUE_BANKED_CTOR_CALL_CORRECTED__REAL_STORE_DEPENDENCY_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -187,7 +187,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-owner-integration-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_BANKED_DEPENDENT_EXECUTION_NOT_RUN",
       "model_evidence": {
         "message": "msg_1b2e2aa1f001pYAg19mE1OmrXI",
         "model": {
@@ -199,7 +199,8 @@
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-owner-integration-r1/completion.json",
       "notification": "existing finite terminal observer",
       "scope": "Settled actual P2-root owner glue and meaningful tests; no fallback/inflight store or false executed result",
-      "execution_dependency": "Returned normalized store; compression positive waits on exact repair return"
+      "execution_dependency": "Returned normalized store; compression positive waits on exact repair return",
+      "return": "61c41e54cccae6f8f888aeb44a629e3a1bd6f892"
     }
   ],
   "holds": [
@@ -208,7 +209,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Receive actual normalized store and owner terminals; integrate exact returned modules plus corrected compression, resume same owner against returned store if required, execute full durable same-root A-H/two-batch/cold/crash/economy and distinct nonauthor review. No extra standalone compression review or native issuance.",
+  "next": "Prepare required full P3 two-batch A-H/resource proof harness against actual banked owner API; when normalized store returns, resume existing owner for actual integration/repair. No fake store, skipped-test green claim or new native authority.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -241,5 +242,6 @@
     "semantic_owner": "HQ retains sourcefree rules, architecture/conflicts, acceptance selection and final receiving",
     "final_reviewer": "non-author E1 input reviewer remains reserved"
   },
-  "compression_repair_intake": "COMPRESSION_REPAIR_DISPOSITION.json"
+  "compression_repair_intake": "COMPRESSION_REPAIR_DISPOSITION.json",
+  "owner_intake": "OWNER_INPUT_DISPOSITION.json"
 }
