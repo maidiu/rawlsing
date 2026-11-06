@@ -1687,3 +1687,10 @@ Direct user accession: secondary Browser Pyat HQ while primary Codex HQ keeps au
 ## R89 — R03 returned, R2 successor reviewer issued (2026-10-24)
 
 R03 author at `2d32d68e2a5acb9cac136c313e82068dfb8e6ba1` claims 120 passing native tests, 150 issued finite operations/147 supported/3 unsupported, real native receipts/facts, D3 and no-drop. Older R03V R1 `efb1822552bdb017adedc8617e268f9ad5719de8` REVISE was against early `5f3cee7cb7a9b53af266b05a4c8db01a53a13add`, not latest candidate. R03V R2 single successor independent review issued at `7d18e0a467db28e37079340f596ead83ef9dc20a`, branch `agent/opencode-pyat-r61-r03v-r2-independent-review-r1` prepared at latest author. NOT_LAUNCHED; code NOT_ACCEPTED, no R04/R05 wake. Primary Codex remains HQ and Browser secondary, pending exact reviewer outcome. All other holds unchanged.
+
+
+## Universal35 source custody changed — all35 exact bytes present
+
+HQ readonlyfilename search followed by streamedSHA256/stable-size+mtime verification found **35/35 originalsource files matching the R157 source roster**, total1,319,161,326bytes, under one caller-supplied localdata root. Versioned sanitized evidence: `WORKER_COMMISSIONS/PROGRAMMA_PYAT_UNIVERSAL35_20261106_R1/01_LOCAL_SOURCE_CUSTODY_OBSERVATION.json`; localabsolute bindings remain untracked, no sourcebytes/answersuploaded. This is actual bytepresence/custody, **not respondentdecode, nativeC11/empiricalrun, originalsemantic/scientificpermission or all35nativePASS**. Absentfile is not the observed currentblocker for anyof35; source/item/route/release/permission qualifications remainexactperoperation. A+BABI then D must pursue genuine source-data execution, not finalizeanall35SOURCE_NOT_PRESENT ledger or substitute fixture results. Typed per-operation held/unknown optionalweights/structuralmeaning limits remain separate.
+
+S01.1 and existing S-WORKLIST receive additive custodyaxis only, all historicalstatuses/62/82/49/predicates preserved. P1 original `_item_refusal` has unconditional WEIGHT_REF_ABSENT; B alreadyowns removal of this artificial blanket RAWobstruction under currentcommission, no competingcodewriter.
