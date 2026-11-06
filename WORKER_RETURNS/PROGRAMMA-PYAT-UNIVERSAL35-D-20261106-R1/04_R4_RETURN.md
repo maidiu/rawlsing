@@ -40,7 +40,7 @@ Evidence: `evidence/all35_frontier_accounting.json`, `evidence/route_qualificati
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r4 governed bridge
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 3fc9af676.
+- Identity: codex/pyat-universal35-d-20261106-r1@ea4fb3796faa3ad4635763dc653395b7c25e4407; input 3fc9af676.
 - Function: full explicit route-qualified F1/F2/F3H plan -> native bundle/catalog -> current bind_governed_frontier/compile_governed_frontier -> execute_governed_frontier facts; source bytes only through current source-read resolver.
 - Evidence: C 7 tests; D 3; B 8; plan 18276/18413/18467; route 676/4705/249; frontier 7 sources/694 ops.
 - Limits: no current original source-read decision -> actual original facts NOT_RUN; F4/3+ same-person current-reader proof deferred; E authentic two-target handshake NOT_RUN; native/science/protected authority unchanged.
