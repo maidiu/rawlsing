@@ -97,6 +97,7 @@ def _selected_frame_cells(
     except KeyError as exc:
         raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_ABSENT") from exc
     count = 0
+    row_ordinal = 0
     for row_ordinal, values in enumerate(frame.itertuples(index=False, name=None), 1):
         for variable, position in zip(selected, positions):
             yield _cell(variable, row_ordinal, values[position])
@@ -117,27 +118,48 @@ def _selected_chunk_cells(
         raise Original35PhysicalStreamError("COLUMN_PROJECTED_READER_UNAVAILABLE")
     import pyreadstat
 
-    reader = pyreadstat.read_sav if reader_kind == "SAV" else pyreadstat.read_dta
     rows_per_chunk = max(1, batch_size // len(selected))
-    snapshot.rewind()
-    chunks = pyreadstat.read_file_in_chunks(
-        reader, snapshot.reader_path, chunksize=rows_per_chunk,
-        usecols=[variable.name for variable in selected],
-        encoding=encoding, apply_value_formats=False, user_missing=True,
-    )
     row_offset = 0
-    for frame, _metadata in chunks:
-        snapshot.check_stable()
-        columns = tuple(str(name) for name in frame.columns)
-        if set(columns) != {variable.name for variable in selected}:
-            raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_SET_CHANGED")
-        index = {name: position for position, name in enumerate(columns)}
-        positions = tuple(index[variable.name] for variable in selected)
-        for local_row, values in enumerate(frame.itertuples(index=False, name=None), 1):
-            row_ordinal = row_offset + local_row
-            for variable, position in zip(selected, positions):
-                yield _cell(variable, row_ordinal, values[position])
-        row_offset += len(frame)
+    if reader_kind == "SAV":
+        snapshot.rewind()
+        chunks = pyreadstat.read_file_in_chunks(
+            pyreadstat.read_sav, snapshot.reader_path, chunksize=rows_per_chunk,
+            usecols=[variable.name for variable in selected],
+            encoding=encoding, apply_value_formats=False, user_missing=True,
+        )
+        for frame, _metadata in chunks:
+            snapshot.check_stable()
+            columns = tuple(str(name) for name in frame.columns)
+            if set(columns) != {variable.name for variable in selected}:
+                raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_SET_CHANGED")
+            index = {name: position for position, name in enumerate(columns)}
+            positions = tuple(index[variable.name] for variable in selected)
+            for local_row, values in enumerate(frame.itertuples(index=False, name=None), 1):
+                row_ordinal = row_offset + local_row
+                for variable, position in zip(selected, positions):
+                    yield _cell(variable, row_ordinal, values[position])
+            row_offset += len(frame)
+    else:
+        while row_offset < incidence.row_count:
+            snapshot.rewind()
+            frame, _metadata = pyreadstat.read_dta(
+                snapshot.reader_path, usecols=[variable.name for variable in selected],
+                encoding=encoding, apply_value_formats=False, user_missing=True,
+                row_offset=row_offset, row_limit=rows_per_chunk,
+            )
+            snapshot.check_stable()
+            columns = tuple(str(name) for name in frame.columns)
+            if set(columns) != {variable.name for variable in selected}:
+                raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_SET_CHANGED")
+            index = {name: position for position, name in enumerate(columns)}
+            positions = tuple(index[variable.name] for variable in selected)
+            for local_row, values in enumerate(frame.itertuples(index=False, name=None), 1):
+                row_ordinal = row_offset + local_row
+                for variable, position in zip(selected, positions):
+                    yield _cell(variable, row_ordinal, values[position])
+            if not len(frame):
+                raise Original35PhysicalStreamError("SILENT_PHYSICAL_GRID_TRUNCATION")
+            row_offset += len(frame)
     if row_offset != incidence.row_count:
         raise Original35PhysicalStreamError("SILENT_PHYSICAL_GRID_TRUNCATION")
     snapshot.verify()

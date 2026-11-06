@@ -2,6 +2,7 @@ from dataclasses import replace
 from pathlib import Path
 
 import pandas as pd
+import pyreadstat
 import pytest
 
 from rawlsing_next.pre553_original35_physical_stream import (
@@ -13,6 +14,7 @@ from rawlsing_next.pre553_physical_decoder import (
     PHYSICAL_METADATA_CONTRACT,
     PhysicalSourceIncidence,
     PhysicalVariable,
+    decode_dta,
     decode_sav,
 )
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
@@ -119,6 +121,57 @@ def test_bounded_stream_filtered_selected_columns_keep_every_row(tmp_path):
             bounded_physical_cell_stream(incidence, include_variables=("PID", "PID"))
     finally:
         incidence.close()
+
+
+def test_bounded_stream_dta_projection_matches_full_decode(tmp_path):
+    path = tmp_path / "bounded.dta"
+    pyreadstat.write_dta(
+        pd.DataFrame({"A": [1.0, 2.0, 3.0, 4.0, 5.0], "B": [10.0, 20.0, 30.0, 40.0, 50.0]}),
+        str(path),
+    )
+    incidence = decode_dta(path)
+    try:
+        selected = ("A",)
+        stream = bounded_physical_cell_stream(
+            incidence, batch_size=1, include_variables=selected,
+        )
+        expected = tuple(
+            cell for cell in incidence.iter_cells(2) if cell.variable_name in selected
+        )
+        assert tuple(stream.iter_cells()) == expected
+        assert tuple(stream.iter_cells()) == expected
+        assert stream.row_count == incidence.row_count == 5
+        assert stream.source_sha256 == incidence.source_sha256
+        assert stream.decoder_metadata_digest == incidence.physical_metadata_digest
+        assert [cell.row_ordinal for cell in expected] == [1, 2, 3, 4, 5]
+        with pytest.raises(Original35PhysicalStreamError, match="SELECTED_PHYSICAL_COLUMN_ABSENT"):
+            tuple(bounded_physical_cell_stream(
+                incidence, include_variables=("A", "ABSENT"),
+            ).iter_cells())
+    finally:
+        incidence.close()
+
+
+def test_bounded_stream_zero_row_frame_is_empty_not_unbound():
+    incidence = PhysicalSourceIncidence(
+        source_sha256="a" * 64,
+        source_format="SAV",
+        row_count=0,
+        variables=(PhysicalVariable(1, "a", "double", "a", {}, (), {}, {}),),
+        reader_configuration={"fixture": "empty"},
+        file_metadata={
+            "contract_schema": PHYSICAL_METADATA_CONTRACT,
+            "raw_layout_declarations": {},
+            "normalized_geometry": {},
+            "display_metadata": {},
+            "decoder_identity": {"implementation": "fixture"},
+        },
+        _frame=pd.DataFrame({"a": []}),
+    )
+    assert tuple(bounded_physical_cell_stream(incidence).iter_cells()) == ()
+    projected = bounded_physical_cell_stream(incidence, include_variables=("a",))
+    assert tuple(projected.iter_cells()) == ()
+    assert projected.row_count == 0
 
 
 def test_bounded_stream_native_package_parity_on_fixture():
