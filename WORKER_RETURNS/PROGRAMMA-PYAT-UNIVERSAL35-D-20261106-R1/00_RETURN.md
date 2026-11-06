@@ -71,7 +71,7 @@ No A source_configuration, C kernel/stream adapter, E consumer, guide, protected
 
 ```text
 PROGRAMMA_DELTA — Universal35 D integration
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; start d129eebdb0472b0c3625efa281826a858bd0a384; A/B/C candidates integrated sourcefree.
+- Identity: codex/pyat-universal35-d-20261106-r1@40d490e96170c4c0c28aed6da0c906960ae91179; start d129eebdb0472b0c3625efa281826a858bd0a384; A/B/C candidates integrated sourcefree.
 - Function/input-transform-typed-output: R157 full config document -> B 35-source no-drop plan -> route-qualified/unknown/rule-unavailable split -> actual planned F2/F3/F4 inventory/policy/frontier -> current compile_governed_frontier/compile_universal_workload. Manifest/selection and typed source residuals are real; native fact production awaits bounded current stream.
 - Root/schema/clock/permission: runtime source root alias only; B plan PRE553_ORIGINAL35_OPERATIONS@1.0.0; no native/source/science grant.
 - Actual first consumer: current R03 compiler payload for B actual F2/F3/F4 (sourcefree fixture); current C11 factory reached on SRC31 but typed-refused unbound mapping. No I03/I05/Batch EmpiricalFact or N10E/FF handoff claimed.
