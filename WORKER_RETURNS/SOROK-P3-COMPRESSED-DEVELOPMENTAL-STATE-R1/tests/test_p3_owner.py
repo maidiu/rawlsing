@@ -155,6 +155,67 @@ def test_missing_returned_store_is_explicit_not_a_fallback():
         p3_owner._store_class()
 
 
+def _child_roots() -> tuple[Path, Path, Path]:
+    return (
+        Path(__file__).resolve().parents[1],
+        Path(__file__).resolve().parents[2] / "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1",
+        Path(__file__).resolve().parents[3],
+    )
+
+
+def _child_environment() -> dict:
+    p3_root, engine_root, repo_root = _child_roots()
+    environment = dict(os.environ)
+    inherited = environment.get("PYTHONPATH", "")
+    environment["PYTHONPATH"] = os.pathsep.join(
+        [str(p3_root), str(engine_root), str(repo_root)]
+        + ([inherited] if inherited else []))
+    return environment
+
+
+def test_process_reopens_same_actual_p2_root(tmp_path):
+    fanin, owner = _actual_base(tmp_path)
+    root_hash = fanin.session.read_root()["root_hash"]
+    initial_state = owner.snapshot().document()
+    owner.close()
+    payload = tmp_path / "owner-root-payload.json"
+    payload.write_text(json.dumps({"root_hash": root_hash,
+                                   "initial_state": initial_state}), encoding="utf-8")
+    p3_root, engine_root, repo_root = _child_roots()
+    code = r'''
+import json, sys
+from pathlib import Path
+sys.path.insert(0, sys.argv[1])
+sys.path.insert(0, sys.argv[2])
+from developmental_recursion.p2_owner import P2Owner, load_p2
+root = Path(sys.argv[3]).resolve()
+p = json.loads(Path(sys.argv[4]).read_text())
+fanin = load_p2().open(root / "actual-p2")
+assert Path(fanin.session.state_root).resolve() == (root / "actual-p2").resolve()
+assert fanin.session.read_root()["root_hash"] == p["root_hash"]
+case = fanin.deps["case_for"](True)
+base = P2Owner(fanin, case=case, source=fanin.deps["source_for"](case),
+               participants=tuple(fanin.session.read_root()["actor_ids"]))
+assert base.snapshot().document() == p["initial_state"]
+base.close()
+'''
+    completed = subprocess.run(
+        [sys.executable, "-c", code, str(p3_root), str(engine_root),
+         str(tmp_path), str(payload)],
+        env=_child_environment(), capture_output=True, text=True, timeout=120,
+    )
+    assert completed.returncode == 0, completed.stderr
+    fanin2 = load_p2().open(tmp_path / "actual-p2")
+    case2 = fanin2.deps["case_for"](True)
+    base2 = P2Owner(fanin2, case=case2, source=fanin2.deps["source_for"](case2),
+                    participants=tuple(fanin2.session.read_root()["actor_ids"]))
+    try:
+        assert fanin2.session.read_root()["root_hash"] == root_hash
+        assert base2.snapshot().document() == initial_state
+    finally:
+        base2.close()
+
+
 @requires_store
 def test_actual_p2_root_configuration_and_combined_statehash(tmp_path):
     fanin, owner, initial, source_hash, config, _proposal = _build(tmp_path)
@@ -305,31 +366,49 @@ def test_real_subprocess_crash_boundary_recovers_prepared_base(tmp_path):
     base_before, and commits the psychological sidecar once.
     """
     fanin, owner, initial, source_hash, config, proposal = _build(tmp_path)
+    initial_root_hash = fanin.session.read_root()["root_hash"]
+    initial_state = owner.snapshot().document()
     payload = {
         "source": config["source"],
         "history": config["history"],
         "plans": config["plans"],
         "standpoints": config["standpoints"],
         "proposal": proposal.document(),
+        "root_hash": initial_root_hash,
+        "initial_state": initial_state,
     }
     payload_path = tmp_path / "owner-crash-payload.json"
     payload_path.write_text(json.dumps(payload), encoding="utf-8")
+    p3_root = Path(__file__).resolve().parents[1]
+    engine_root = Path(__file__).resolve().parents[2] / (
+        "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1")
+    repo_root = Path(__file__).resolve().parents[3]
+    # Cold child: the parent closes its P2 handle before the child reopens the
+    # exact same frozen root. The child must not call start() on this root.
+    owner.close()
     code = r'''
 import json, os, sys
 from pathlib import Path
 sys.path.insert(0, sys.argv[1])
+sys.path.insert(0, sys.argv[2])
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3 import p3_owner
 from developmental_recursion.contracts import EventProposal
-root = Path(sys.argv[2])
-p = json.loads(Path(sys.argv[3]).read_text())
-fanin = load_p2().start(root / "actual-p2")
+root = Path(sys.argv[3]).resolve()
+p = json.loads(Path(sys.argv[4]).read_text())
+fanin = load_p2().open(root / "actual-p2")
 case = fanin.deps["case_for"](True)
+assert Path(fanin.session.state_root).resolve() == (root / "actual-p2").resolve()
+assert fanin.session.read_root()["root_hash"] == p["root_hash"]
 base = P2Owner(fanin, case=case, source=fanin.deps["source_for"](case),
                participants=tuple(fanin.session.read_root()["actor_ids"]))
+assert base.snapshot().document() == p["initial_state"]
 owner = p3_owner.P3Owner(base, source=p["source"], history=p["history"],
                         plans=p["plans"], standpoints=p["standpoints"])
-proposal = EventProposal(**p["proposal"])
+proposal_doc = dict(p["proposal"])
+proposal_doc["source_refs"] = tuple(proposal_doc["source_refs"])
+proposal_doc["participants"] = tuple(proposal_doc["participants"])
+proposal = EventProposal(**proposal_doc)
 original = base.realize
 def crash_after_base(operation_id, proposal_arg, expected):
     result = original(operation_id, proposal_arg, expected)
@@ -338,15 +417,20 @@ base.realize = crash_after_base
 owner.realize("owner-crash-operation", proposal, owner.snapshot())
 '''
     environment = dict(os.environ)
+    inherited = environment.get("PYTHONPATH", "")
+    environment["PYTHONPATH"] = os.pathsep.join(
+        [str(p3_root), str(engine_root), str(repo_root)]
+        + ([inherited] if inherited else []))
     completed = subprocess.run(
-        [sys.executable, "-c", code, str(Path(__file__).resolve().parents[1]),
+        [sys.executable, "-c", code, str(p3_root), str(engine_root),
          str(tmp_path), str(payload_path)],
         env=environment, capture_output=True, text=True, timeout=120,
     )
     assert completed.returncode == 17, completed.stderr
     # The parent reopens the same P2 and P3 roots. The store remains PREPARED;
     # the base operation is already complete and must be replayed exactly.
-    fanin2 = load_p2().start(tmp_path / "actual-p2")
+    fanin2 = load_p2().open(tmp_path / "actual-p2")
+    assert fanin2.session.read_root()["root_hash"] == initial_root_hash
     case2 = fanin2.deps["case_for"](True)
     base2 = P2Owner(fanin2, case=case2, source=fanin2.deps["source_for"](case2),
                     participants=tuple(fanin2.session.read_root()["actor_ids"]))

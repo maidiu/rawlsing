@@ -340,3 +340,6 @@ Actual returned storage38f04ed6 verified9 hashes/10 exclusive paths/directremote
 
 
 Three actual existing OpenCode authors launched with separate scopes from integrated8cc2914b1: store ABI46559, owner crash integration46569, original resource proof46585. All actual assistant metadata verifies DeepSeek V4.1 Flash MAX. No selfacceptance or settings changes. Existing final nonauthor reviewer is reserved. Positive combined execution still depends on returned store repair; work is driven by terminal notifications only.
+
+
+Owner repairff193d9a verified10 manifest hashes/9 exclusive paths/directremote and imported unchanged. HQ actual same-root process reopen1 passes4.03s; exact root/state assertions and .open replace erroneous .start/inherited imports. Owner runtime unchanged. Author4 pass/4 fail/1 inapplicable guard skip: intended post-base crash still stops at known store provenance ABI, so no crash-completion/full-owner acceptance. Store ABI46559 and resource46585 remain out; owner resumption is a real dependency on exact returned storage repair, not another duplicate blocked run. Target3–5 substantive lanes when ready; final independent reviewer remains reserved for coherent runtime. Native/production/receiving holds and paused recurring wake policy remain.

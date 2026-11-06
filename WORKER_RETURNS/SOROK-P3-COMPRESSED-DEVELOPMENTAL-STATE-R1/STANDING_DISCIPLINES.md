@@ -22,7 +22,7 @@ Sequence unresolved decisions and actual consumption dependencies. Parallelize i
 
 A frozen sufficient upstream interface permits downstream preparation/implementation before upstream acceptance. Independently qualify the combined chain; do not require blanket upstream completion. Stop only dependent work for substantive choices, consequential engineering contracts, missing grants or write conflicts; continue unaffected lanes. Bring exact decisions/grants to the user, with qualified High/Astra escalation only when necessary.
 
-Target three to four substantive independent lanes whenever ready authorized work exists. Replace completed/blocked lanes promptly, running fewer when dependencies, authority or writes justify it. Never manufacture capacity-filling work, reopen discovery, commission another scheduling court or add polling. Keep the flight board concise/current. Executable action takes precedence over more scheduling analysis.
+Target three to five substantive independent lanes whenever ready authorized work exists. Replace completed/blocked lanes promptly, running fewer when dependencies, authority or writes justify it. Never manufacture capacity-filling work, reopen discovery, commission another scheduling court or add polling. Keep the flight board concise/current. Executable action takes precedence over more scheduling analysis.
 
 ## DO OR DIE — EXECUTION OVERRIDE, NO PROCEDURAL EXPANSION
 
