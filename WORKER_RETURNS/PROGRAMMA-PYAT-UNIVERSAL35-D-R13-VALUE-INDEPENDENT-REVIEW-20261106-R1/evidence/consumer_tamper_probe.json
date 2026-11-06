@@ -1,0 +1,38 @@
+{
+  "baseline": {
+    "outcome": "ACCEPTED",
+    "values": [["0"], ["1"]],
+    "selections": [1, 1],
+    "same_backing_fact": true,
+    "same_backing_query": true,
+    "conditioner": "fixture.A",
+    "target": "fixture.B"
+  },
+  "tampered_metadata": {
+    "outcome": "ACCEPTED",
+    "status": ["OK", "OK"],
+    "conditioner_item_id": "TAMPER_CONDITIONER",
+    "target_item_id": "TAMPER_TARGET",
+    "selections": [1, 1]
+  },
+  "tampered_backing_refs": {
+    "outcome": "ACCEPTED",
+    "status": ["OK", "OK"],
+    "fake_refs_echoed": true,
+    "selections": [1, 1]
+  },
+  "empty_requested_values": {
+    "outcome": "ACCEPTED",
+    "status": ["OK", "OK"],
+    "values": [[], ["1"]],
+    "selections": [0, 1]
+  },
+  "mismatched_value": {
+    "outcome": "ACCEPTED",
+    "status": ["REFUSED", "OK"],
+    "code": ["REQUESTED_CONDITIONER_VALUE_NOT_IN_PROFILE", null]
+  },
+  "value_matching": "str(condition_state) / str(requested) without canonical codec guard",
+  "actual_envelope_ref_validation": false,
+  "raw_rows_published": false
+}
