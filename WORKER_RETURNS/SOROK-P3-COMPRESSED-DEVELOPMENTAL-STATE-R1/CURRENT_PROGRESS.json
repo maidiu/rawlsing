@@ -1,5 +1,5 @@
 {
-  "status": "OWNER_BANKED_NOT_EXECUTED__REQUIRED_VERTICAL_PROOF_CODE_LAUNCHED__REAL_STORE_PENDING",
+  "status": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
   "owner_disposition": "OWNER_INPUT_DISPOSITION.json",
@@ -21,7 +21,7 @@
     },
     {
       "task": "sorok-p3-normalized-store-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "FAILED_INACTIVITY_PARTIAL_WORK_PRESERVED",
       "session": "ses_615d8e3a6a909213fb200be830",
       "pid": 15917
     },
@@ -51,13 +51,21 @@
     },
     {
       "task": "sorok-p3-vertical-proof-harness-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_BANKED_NOT_EXECUTED",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
       "pid": 38382
+    },
+    {
+      "task": "sorok-p3-normalized-store-inactivity-resume-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_615d8e3a6a909213fb200be830",
+      "pid": 41339
     }
   ],
   "runtime": "DURABLE_P3_NOT_YET_EXECUTED",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Intake actual normalized store; integrate exact returned source, resume same owner for six actual durable tests and minimal repairs, execute prepared full two-batch A-H/cost harness, obtain distinct final exact-runtime review. Harness may be authored against frozen owner API now; no actual durable claim until dependency executes."
+  "next": "Intake resumed exact store return; integrate and resume same owner for actual durable tests/repairs; resume same harness author for actual A-H/two-batch proof and required measured resource output, then distinct exact-runtime independent review. No polling or recurring wakes.",
+  "store_failure": "STORE_FAILURE_DISPOSITION.json",
+  "vertical_harness": "VERTICAL_HARNESS_INPUT_DISPOSITION.json"
 }

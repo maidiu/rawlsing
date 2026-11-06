@@ -1,3 +1,11 @@
+## P3 current scheduling boundary — storage inactivity recovery, proof code unexecuted
+
+Storage child15917 exited1 with exact OpenCode error “Session interrupted: inactivity”; no completed store return. Partial code/tests were preserved and the SAME session resumed under the original exclusive lease (child41339), with actual DeepSeek V4.1 Flash MAX verified. No architecture failure or acceptance inferred.
+
+Vertical harness return5c710f18 was verified (12 manifest hashes,13 exclusive paths, remote head) and banked unchanged:12 test definitions,0 executed tests/events/batches, no measured metrics. It is not functional proof. Original section11 measurement omissions and same-root crash reopening remain explicit checks for the same author on integrated execution.
+
+Owner remains banked/unexecuted pending the real store. Next: exact store return -> actual owner tests/repair -> full original A-H/two-batch/cold/crash/resource execution -> distinct final review -> selective PR. Native/science/memory/claim/B/human/production/CAS/merge limits persist. Recurring goal wakes stay paused; terminal notifications drive intake. Coherent progress is banked before usage exhaustion; account quota UNKNOWN.
+
 ## P3 owner actual return — code banked, durable execution unproved
 
 Owner return `61c41e54cccae6f8f888aeb44a629e3a1bd6f892`:2 guards passed;6 actual durable checks not run because the real store is still outstanding. No fake store was substituted. HQ fixed a definite doubled constructor invocation; only AST-verified until real store execution. [Disposition](../WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/OWNER_INPUT_DISPOSITION.json). Actual storage15917 was verified live; required original A-H/two-batch/economy harness construction now runs independently through an existing author (child38382), with no skipped/fake green claim. Same owner must resume against returned store before functional acceptance. Native/human/source/receiving maturity is unchanged.

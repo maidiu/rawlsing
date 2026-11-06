@@ -13,7 +13,7 @@
   "version_date": "2026-11-02",
   "source_registry": "fa8a2b1f75cd2ee2153a813215f51dea88e16a4b:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/LIVING_REFERENCE_CANDIDATE_R1/seed_source_registry.json",
   "primary_workstream_source": "865b5b01e1a27e99020cf2bb389af8cd4c874b57:SOROK_PRODUCT_CONTROL_ROOM/05_PROGRAM_MAP.md",
-  "mapping_rule": "C/A, Sorok N, O, S use exact titles and previously cited whole-spine source for first substantive organizational placement. M legacy and unlabeled modern edges retained at broadly correct SP-140/30 category ONLY, never falsely claimed functionally reconciled. All 144 rows remain traceable. M01–M40 now also have precise FUNCTIONAL SECTION placements based on their specific original symbols, historical notes and reuse/negative dispositions, still no verified modern one-to-one parity. All E01–E15, RCFB_E1–10 and remaining 15 historical/code candidates now assigned SEMANTIC GUIDANCE SECTION(S) from inherited registry descriptions, without claiming any current importer, work adoption or execution.",
+  "mapping_rule": "C/A, Sorok N, O, S use exact titles and previously cited whole-spine source for first substantive organizational placement. M legacy and unlabeled modern edges retained at broadly correct SP-140/30 category ONLY, never falsely claimed functionally reconciled. All 144 rows remain traceable. M01\u2013M40 now also have precise FUNCTIONAL SECTION placements based on their specific original symbols, historical notes and reuse/negative dispositions, still no verified modern one-to-one parity. All E01\u2013E15, RCFB_E1\u201310 and remaining 15 historical/code candidates now assigned SEMANTIC GUIDANCE SECTION(S) from inherited registry descriptions, without claiming any current importer, work adoption or execution.",
   "critical_warning": "consumer_as_recorded generally names required or historical consumer, NOT actual current PRE-MAIN import; grade/status are historically sourced from this particular inherited registry, not reissued/updated. SP labels are GUIDE SECTIONS only, not new scientific original IDs.",
   "count": 144,
   "mapping_grades": {
@@ -410,7 +410,14 @@
         "compression_repair": "c1f6aa89da22b2b0406d11d33b8c730d1b41b81c",
         "projection_source": "104a013d02c9b908d3223a0b344f993e33eb04fd",
         "sourcefree_rule": "895fc519191d1cee25a0eabceaf87e514f33378e",
-        "original_gates_unchanged": true
+        "original_gates_unchanged": true,
+        "current_p3_status": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
+        "store_failure": "SAME_SESSION_INACTIVITY_RESUME_ACTIVE",
+        "vertical_harness": "BANKED_0_EXECUTED_NOT_ACCEPTED",
+        "terminal_dispositions": [
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_FAILURE_DISPOSITION.json",
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_HARNESS_INPUT_DISPOSITION.json"
+        ]
       }
     },
     {
@@ -478,7 +485,14 @@
         "owner_code_return": "61c41e54cccae6f8f888aeb44a629e3a1bd6f892",
         "owner_code_state": "BANKED_UNEXECUTED_REAL_STORE_PENDING; direct constructor call mechanically corrected by HQ",
         "owner_disposition": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/OWNER_INPUT_DISPOSITION.json",
-        "whole_product_proof": "Original required A-H/two-batch/cost harness author launched; execution and independent acceptance pending"
+        "whole_product_proof": "Original required A-H/two-batch/cost harness author launched; execution and independent acceptance pending",
+        "current_p3_status": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
+        "store_failure": "SAME_SESSION_INACTIVITY_RESUME_ACTIVE",
+        "vertical_harness": "BANKED_0_EXECUTED_NOT_ACCEPTED",
+        "terminal_dispositions": [
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_FAILURE_DISPOSITION.json",
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_HARNESS_INPUT_DISPOSITION.json"
+        ]
       }
     },
     {
@@ -938,7 +952,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "identity+events/years → persistent actor state and integrity records",
+        "input_output": "identity+events/years \u2192 persistent actor state and integrity records",
         "historical_first_consumer": "v3/engine/yearly_step.py::run_one_year, v3/core/derived.py::compute_all_derived",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -1055,7 +1069,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "yearly time/money/health/support and events → updated Capacity",
+        "input_output": "yearly time/money/health/support and events \u2192 updated Capacity",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1172,7 +1186,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "regulatory vector+framework effects → scalar capacity/derived vitality",
+        "input_output": "regulatory vector+framework effects \u2192 scalar capacity/derived vitality",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1288,7 +1302,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "debt/dependents/housing/legal/job/care → reproduction constraints and hostage index",
+        "input_output": "debt/dependents/housing/legal/job/care \u2192 reproduction constraints and hostage index",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1412,7 +1426,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "A/S/V/Aim domain state+events → latent/expressed updates and gating",
+        "input_output": "A/S/V/Aim domain state+events \u2192 latent/expressed updates and gating",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1529,7 +1543,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "events+deltas → AlienationVector update",
+        "input_output": "events+deltas \u2192 AlienationVector update",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1658,7 +1672,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "inner/private/public registers+state → bounded expressed surface",
+        "input_output": "inner/private/public registers+state \u2192 bounded expressed surface",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1777,7 +1791,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "identity and rupture → WoundVector sensitivities",
+        "input_output": "identity and rupture \u2192 WoundVector sensitivities",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -1894,7 +1908,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "annual tension/repair → Crack collection and placeholder repair",
+        "input_output": "annual tension/repair \u2192 Crack collection and placeholder repair",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2006,7 +2020,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "event+annual constraints → Buffer strengths/cost profile",
+        "input_output": "event+annual constraints \u2192 Buffer strengths/cost profile",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2118,7 +2132,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "framework weights/half-lives+events → operator state",
+        "input_output": "framework weights/half-lives+events \u2192 operator state",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2223,7 +2237,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "collective support/repression/network events → infrastructure state",
+        "input_output": "collective support/repression/network events \u2192 infrastructure state",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2328,7 +2342,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "practice exposure+annual events → practice-stack updates",
+        "input_output": "practice exposure+annual events \u2192 practice-stack updates",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2349,7 +2363,7 @@
           "reviewer_file_read_grade": "REVIEW_DISPOSITION_REPORTED_BY_LEDGER__UNDERLYING_REVIEW_FILE_NOT_REOPENED_THIS_FLIGHT"
         },
         "current_equivalence_grade": "PARTIAL_SOURCEFREE_ANALOG",
-        "closest_present": "C9RI TEST_ONLY target store → later performed E2; P1 S35 NO_CHANGE",
+        "closest_present": "C9RI TEST_ONLY target store \u2192 later performed E2; P1 S35 NO_CHANGE",
         "same_contract_verified": "NOT_PROVEN",
         "pre_main_import": "NONE_PROVEN_AT_PREMAIN",
         "reuse_disposition": "Represent repeatable practices with objects, supports, contexts and histories; learn/sustain/lose/practice without guaranteed transfer. **ADAPT**.",
@@ -2458,7 +2472,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "annual transitions/coherence → loop topology and solidarity hysteresis",
+        "input_output": "annual transitions/coherence \u2192 loop topology and solidarity hysteresis",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2575,7 +2589,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "parent indicators/need axes → expectation baseline",
+        "input_output": "parent indicators/need axes \u2192 expectation baseline",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2694,7 +2708,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "age and events → persistent striving objects/momentum",
+        "input_output": "age and events \u2192 persistent striving objects/momentum",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2818,7 +2832,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "fulfillment/violation event → Gift/Disruption shards",
+        "input_output": "fulfillment/violation event \u2192 Gift/Disruption shards",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -2930,7 +2944,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "admitted discrepant event → RuptureShard/wound effects",
+        "input_output": "admitted discrepant event \u2192 RuptureShard/wound effects",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -3042,7 +3056,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "multi-year event sequence → MetabolizationProcess statuses/plasticity",
+        "input_output": "multi-year event sequence \u2192 MetabolizationProcess statuses/plasticity",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -3166,7 +3180,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "person/institution magnets+events → magnets and relational field",
+        "input_output": "person/institution magnets+events \u2192 magnets and relational field",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -3304,7 +3318,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "domain charge+conductance+events → flow traces, grooves and memory",
+        "input_output": "domain charge+conductance+events \u2192 flow traces, grooves and memory",
         "historical_first_consumer": "v3/engine/yearly_step.py::run_one_year post-year pressure flow; v3/psyche/flow.py::run_pressure_flow_cycle",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -3421,7 +3435,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "parent/identity inputs → child assumptions/taboos/possible worlds",
+        "input_output": "parent/identity inputs \u2192 child assumptions/taboos/possible worlds",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -3533,7 +3547,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "conditions/time → autonomy and safety micro-drift",
+        "input_output": "conditions/time \u2192 autonomy and safety micro-drift",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -3637,7 +3651,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "integration/intrusions → stability-threshold hysteresis",
+        "input_output": "integration/intrusions \u2192 stability-threshold hysteresis",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -3697,7 +3711,7 @@
         "symbol": "run_one_year",
         "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc"
       },
-      "consumer_as_recorded": "v3/engine/step_runner.py::run_n_years → v3/engine/yearly_step.py::run_one_year",
+      "consumer_as_recorded": "v3/engine/step_runner.py::run_n_years \u2192 v3/engine/yearly_step.py::run_one_year",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "SOURCE_FUNCTION_RECOVERED_SELECTED_TEST",
       "science_grade_as_recorded": "MECHANISM_NOT_ISSUED",
@@ -3766,8 +3780,8 @@
             "prior_verified": true
           }
         ],
-        "input_output": "BackboneState+DerivedIndices+config+step order → next annual state",
-        "historical_first_consumer": "v3/engine/step_runner.py::run_n_years → v3/engine/yearly_step.py::run_one_year",
+        "input_output": "BackboneState+DerivedIndices+config+step order \u2192 next annual state",
+        "historical_first_consumer": "v3/engine/step_runner.py::run_n_years \u2192 v3/engine/yearly_step.py::run_one_year",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
           "owner": "X04",
@@ -3907,7 +3921,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "stored BackboneState → computed DerivedIndices; forbid causal-field mixing",
+        "input_output": "stored BackboneState \u2192 computed DerivedIndices; forbid causal-field mixing",
         "historical_first_consumer": "v3/core/derived.py::compute_all_derived and original step invariant",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -4024,7 +4038,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "state+Pass1 prompt/LLM packet → proposed candidate event and code-applied deltas",
+        "input_output": "state+Pass1 prompt/LLM packet \u2192 proposed candidate event and code-applied deltas",
         "historical_first_consumer": "v3/engine/run_llm_band.py Pass 1",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -4148,7 +4162,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "event candidates/scores/random → selected and applied event deltas",
+        "input_output": "event candidates/scores/random \u2192 selected and applied event deltas",
         "historical_first_consumer": "v3/engine/run_llm_band.py selection",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -4277,7 +4291,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "state+render packet/Pass2 → nonmutating rendered year",
+        "input_output": "state+render packet/Pass2 \u2192 nonmutating rendered year",
         "historical_first_consumer": "v3/render/phenomenology.py::render_year; V2 surface",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -4298,7 +4312,7 @@
           "reviewer_file_read_grade": "REVIEW_DISPOSITION_REPORTED_BY_LEDGER__UNDERLYING_REVIEW_FILE_NOT_REOPENED_THIS_FLIGHT"
         },
         "current_equivalence_grade": "PARTIAL_CURRENT_GUARD_ANALOG",
-        "closest_present": "rawlsing_next/m6_actor_safe_expression.py → render_bounded_expression.py",
+        "closest_present": "rawlsing_next/m6_actor_safe_expression.py \u2192 render_bounded_expression.py",
         "same_contract_verified": "NOT_PROVEN",
         "pre_main_import": "NONE_PROVEN_AT_PREMAIN",
         "reuse_disposition": "**REUSE render nonmutation**; admit further self-interpretation only as an explicit interpreted internal event/operation through existing owners, never automatic readout overwrite.",
@@ -4346,7 +4360,14 @@
         "compression_repair": "c1f6aa89da22b2b0406d11d33b8c730d1b41b81c",
         "projection_source": "104a013d02c9b908d3223a0b344f993e33eb04fd",
         "sourcefree_rule": "895fc519191d1cee25a0eabceaf87e514f33378e",
-        "original_gates_unchanged": true
+        "original_gates_unchanged": true,
+        "current_p3_status": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
+        "store_failure": "SAME_SESSION_INACTIVITY_RESUME_ACTIVE",
+        "vertical_harness": "BANKED_0_EXECUTED_NOT_ACCEPTED",
+        "terminal_dispositions": [
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_FAILURE_DISPOSITION.json",
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_HARNESS_INPUT_DISPOSITION.json"
+        ]
       }
     },
     {
@@ -4426,7 +4447,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "V3 causal state+persona projection → V2 conversation preparation without separate psyche",
+        "input_output": "V3 causal state+persona projection \u2192 V2 conversation preparation without separate psyche",
         "historical_first_consumer": "v2/conversation_engine.py::prepare_conversation_turn",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -4447,7 +4468,7 @@
           "reviewer_file_read_grade": "REVIEW_DISPOSITION_REPORTED_BY_LEDGER__UNDERLYING_REVIEW_FILE_NOT_REOPENED_THIS_FLIGHT"
         },
         "current_equivalence_grade": "PARTIAL_ARCHITECTURAL_ANALOG",
-        "closest_present": "M6 actor-safe ingress → render_bounded_expression; GT0 no V3→V2 fabrication",
+        "closest_present": "M6 actor-safe ingress \u2192 render_bounded_expression; GT0 no V3\u2192V2 fabrication",
         "same_contract_verified": "NOT_PROVEN",
         "pre_main_import": "NONE_PROVEN_AT_PREMAIN",
         "reuse_disposition": "**REUSE one-person jurisdiction**; improve actor fallibility and partial knowledge rather than having narration become the authority on true memory.",
@@ -4550,7 +4571,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "life-course/parent typed indicators → end Enneagram match",
+        "input_output": "life-course/parent typed indicators \u2192 end Enneagram match",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -4674,7 +4695,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "V5 signed runtime bundle/status/refs → inert V3 attachment and gated numeric field injection",
+        "input_output": "V5 signed runtime bundle/status/refs \u2192 inert V3 attachment and gated numeric field injection",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -4695,7 +4716,7 @@
           "reviewer_file_read_grade": "REVIEW_DISPOSITION_REPORTED_BY_LEDGER__UNDERLYING_REVIEW_FILE_NOT_REOPENED_THIS_FLIGHT"
         },
         "current_equivalence_grade": "PARTIAL_CURRENT_BOUNDARY_ANALOG",
-        "closest_present": "rawlsing_next/wsc_gt0_prev3_bridge.py → wsc_gt0_v3_runtime.py",
+        "closest_present": "rawlsing_next/wsc_gt0_prev3_bridge.py \u2192 wsc_gt0_v3_runtime.py",
         "same_contract_verified": "NOT_PROVEN",
         "pre_main_import": "NONE_PROVEN_AT_PREMAIN",
         "reuse_disposition": "**ADAPT carrier** to current accepted structural-world authority and temporal/source bindings without forcing world facts through legacy stratum/psyche classifications.",
@@ -4782,7 +4803,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "year/pseudoseed → mechanical sampled events/deltas",
+        "input_output": "year/pseudoseed \u2192 mechanical sampled events/deltas",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -4901,7 +4922,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "empty LLM/selection → fabricated fallback practice candidate",
+        "input_output": "empty LLM/selection \u2192 fabricated fallback practice candidate",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -5013,7 +5034,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "absent cracks/frameworks → inserted placeholder causal objects",
+        "input_output": "absent cracks/frameworks \u2192 inserted placeholder causal objects",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -5118,7 +5139,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "unknown parent behavior → medium and hopeful default priors",
+        "input_output": "unknown parent behavior \u2192 medium and hopeful default priors",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -5142,7 +5163,7 @@
         "closest_present": "NONE; source-qualified history or unknown",
         "same_contract_verified": "NOT_PROVEN",
         "pre_main_import": "NONE_PROVEN_AT_PREMAIN",
-        "reuse_disposition": "**REMOVE** unknown→normal/hopeful conversion. Obtain actual independent caregiver history and childcare resources, or preserve uncertainty explicitly.",
+        "reuse_disposition": "**REMOVE** unknown\u2192normal/hopeful conversion. Obtain actual independent caregiver history and childcare resources, or preserve uncertainty explicitly.",
         "legacy_science_warning": "Unknown parent behavior initializes middle values and hopeful baselines.",
         "authority": "NO_NEW_NATIVE_OR_SCIENCE_GRANT",
         "exact_next_source": [
@@ -5242,7 +5263,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "non-LLM year → structural no-scene/degraded annotation",
+        "input_output": "non-LLM year \u2192 structural no-scene/degraded annotation",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -5360,7 +5381,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "step-local/top-level schedule → fail-fast derived schedule consistency",
+        "input_output": "step-local/top-level schedule \u2192 fail-fast derived schedule consistency",
         "historical_first_consumer": "v3/engine/yearly_step.py::_compute_derived_after_step",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -5465,7 +5486,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "age-band random hook → extra RuptureShard outside event ledger",
+        "input_output": "age-band random hook \u2192 extra RuptureShard outside event ledger",
         "historical_first_consumer": "HISTORICAL_RUNTIME_FIRST_READER_NOT_INDEPENDENTLY_TRACED_PER_ROW",
         "historical_test_scope": "PER_ROW_CALL_UNTRACED__ONLY_SELECTED_TEST",
         "prior_owner_return": {
@@ -5594,7 +5615,7 @@
             "prior_verified": true
           }
         ],
-        "input_output": "generation state/integrity/persona+store → clean/degraded/blocked readiness",
+        "input_output": "generation state/integrity/persona+store \u2192 clean/degraded/blocked readiness",
         "historical_first_consumer": "server/generation/store.py::readiness",
         "historical_test_scope": "PRIOR_STATIC_HISTORICAL_CALL_OR_TEST__NOT_CURRENT",
         "prior_owner_return": {
@@ -5618,7 +5639,7 @@
         "closest_present": "M6 named-authority BLOCKED, BP4/JOIN readiness/cold checks",
         "same_contract_verified": "NOT_PROVEN",
         "pre_main_import": "NONE_PROVEN_AT_PREMAIN",
-        "reuse_disposition": "**ADAPT** product readiness to distinguish executable engine, science-qualified rule, native source permission, historical actor provenance, autobiographical memory and consumer-observed person—not just passing fixture tests.",
+        "reuse_disposition": "**ADAPT** product readiness to distinguish executable engine, science-qualified rule, native source permission, historical actor provenance, autobiographical memory and consumer-observed person\u2014not just passing fixture tests.",
         "legacy_science_warning": "Clean/degraded/blocked generation-integrity system is real; simplistic ready-flag criticism is stale.",
         "authority": "NO_NEW_NATIVE_OR_SCIENCE_GRANT",
         "exact_next_source": [
@@ -6566,7 +6587,7 @@
         "proposed_scope_status": "HELD",
         "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
         "fields_or_contract": "C8 occurrence/out9, actor-relative source; no issued CAN008 readset",
-        "actual_first_reader_or_none": "BP2 JoinedProducer.stage_c9 TEST_ONLY Rule A; required CAN008→native C9 E2 absent",
+        "actual_first_reader_or_none": "BP2 JoinedProducer.stage_c9 TEST_ONLY Rule A; required CAN008\u2192native C9 E2 absent",
         "expected_or_historical_consumer": "C9 E2 CAN008 actor-relative source read",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
@@ -6610,7 +6631,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C9 Rule T receipt→later E2 earned-operation selector",
+      "consumer_as_recorded": "C9 Rule T receipt\u2192later E2 earned-operation selector",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -6628,8 +6649,8 @@
         "proposed_scope_status": "HELD",
         "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
         "fields_or_contract": "target_semantics; target/grant; E2 performed vs offered",
-        "actual_first_reader_or_none": "BP2 stage_c9→stage_e2 TEST_ONLY target; RRIF-R2 sourcefree NO_CHANGE; native selector absent",
-        "expected_or_historical_consumer": "C9 Rule T receipt→later E2 earned-operation selector",
+        "actual_first_reader_or_none": "BP2 stage_c9\u2192stage_e2 TEST_ONLY target; RRIF-R2 sourcefree NO_CHANGE; native selector absent",
+        "expected_or_historical_consumer": "C9 Rule T receipt\u2192later E2 earned-operation selector",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -6673,7 +6694,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C6/C8 reality constraints→C9 actor feasible action",
+      "consumer_as_recorded": "C6/C8 reality constraints\u2192C9 actor feasible action",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -6691,8 +6712,8 @@
         "proposed_scope_status": "HELD",
         "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
         "fields_or_contract": "world snapshot/tool availability vs actor action",
-        "actual_first_reader_or_none": "BP1 material life and BP4 methods branch-local; no native C6/C8→C9 import",
-        "expected_or_historical_consumer": "C6/C8 reality constraints→C9 actor feasible action",
+        "actual_first_reader_or_none": "BP1 material life and BP4 methods branch-local; no native C6/C8\u2192C9 import",
+        "expected_or_historical_consumer": "C6/C8 reality constraints\u2192C9 actor feasible action",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -6736,7 +6757,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "B owner→C8 world occurrence→actor access",
+      "consumer_as_recorded": "B owner\u2192C8 world occurrence\u2192actor access",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -6755,7 +6776,7 @@
         "producer_and_artifact": "build_world_occurrence; commit_world_occurrence; read_out9",
         "fields_or_contract": "B action, observed/access flags, WorldOccurrence/C8Commit/out9",
         "actual_first_reader_or_none": "R31J/BP2 B occurrence sourcefree; B-F1CR targetless I1 separate",
-        "expected_or_historical_consumer": "B owner→C8 world occurrence→actor access",
+        "expected_or_historical_consumer": "B owner\u2192C8 world occurrence\u2192actor access",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -6799,7 +6820,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C9 actor version+receipt+outbox→C9_READER E2 snapshot",
+      "consumer_as_recorded": "C9 actor version+receipt+outbox\u2192C9_READER E2 snapshot",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -6817,8 +6838,8 @@
         "proposed_scope_status": "HELD",
         "producer_and_artifact": "read_actor_snapshot; guarded_c12_cold_read; read_composite",
         "fields_or_contract": "actor_meta schema, actor_branch epoch, actor_head version, outbox; mirror optional",
-        "actual_first_reader_or_none": "C9C12-R2 read_actor_snapshot reads own SQLite; no PRE-MAIN canonical writer→reader",
-        "expected_or_historical_consumer": "C9 actor version+receipt+outbox→C9_READER E2 snapshot",
+        "actual_first_reader_or_none": "C9C12-R2 read_actor_snapshot reads own SQLite; no PRE-MAIN canonical writer\u2192reader",
+        "expected_or_historical_consumer": "C9 actor version+receipt+outbox\u2192C9_READER E2 snapshot",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -6862,7 +6883,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "JOIN-E C12 fork→C9 inherited history reader",
+      "consumer_as_recorded": "JOIN-E C12 fork\u2192C9 inherited history reader",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -6881,7 +6902,7 @@
         "producer_and_artifact": "JoinedSession.start/open/fork_alt; R31J build_product; R31E session",
         "fields_or_contract": "root/branch, C12 episode and lineage; C9 history not natively unified",
         "actual_first_reader_or_none": "JOIN-E sourcefree same-root fork/cold at 7bf; C9C12-R2 separate reader",
-        "expected_or_historical_consumer": "JOIN-E C12 fork→C9 inherited history reader",
+        "expected_or_historical_consumer": "JOIN-E C12 fork\u2192C9 inherited history reader",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -6925,7 +6946,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "F0 verified source import→future canonical runtime",
+      "consumer_as_recorded": "F0 verified source import\u2192future canonical runtime",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -6944,7 +6965,7 @@
         "producer_and_artifact": "run_gt0_end_to_end; _assert_conservation terminal BLOCKED_NAMED_AUTHORITY_REQUIRED",
         "fields_or_contract": "stage receipts, no permission widening; terminal BLOCKED",
         "actual_first_reader_or_none": "F0 typed source/transport exists, future canonical actor runtime absent",
-        "expected_or_historical_consumer": "F0 verified source import→future canonical runtime",
+        "expected_or_historical_consumer": "F0 verified source import\u2192future canonical runtime",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -6988,7 +7009,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C9 actor access→ADP016/017→postcall SCI05→N+1",
+      "consumer_as_recorded": "C9 actor access\u2192ADP016/017\u2192postcall SCI05\u2192N+1",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7007,7 +7028,7 @@
         "producer_and_artifact": "evaluate_actor_safe_ingress; require_situated_expression_owner raises M6NamedAuthorityRequired",
         "fields_or_contract": "actor-accessible envelope/claim refs, no private-memory widening",
         "actual_first_reader_or_none": "M6 guard is actor ceiling; ADP016/017 and SCI05 N+1 actual actor consumption unverified",
-        "expected_or_historical_consumer": "C9 actor access→ADP016/017→postcall SCI05→N+1",
+        "expected_or_historical_consumer": "C9 actor access\u2192ADP016/017\u2192postcall SCI05\u2192N+1",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7038,7 +7059,7 @@
     },
     {
       "id": "E09",
-      "title": "Irreversible 3–5 world event batch",
+      "title": "Irreversible 3\u20135 world event batch",
       "kind": "NAMED_FIRST_CONSUMER_EDGE",
       "guide_sections": [
         "SP-40",
@@ -7052,7 +7073,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "F3 conditional proposals→real C8/B execution→C9 durable state",
+      "consumer_as_recorded": "F3 conditional proposals\u2192real C8/B execution\u2192C9 durable state",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7070,8 +7091,8 @@
         "proposed_scope_status": "HELD",
         "producer_and_artifact": "BWorld/BAction/TargetlessC10Ledger/ContinuingPerson",
         "fields_or_contract": "B material action/tick; targetless C10 record only",
-        "actual_first_reader_or_none": "No native F3→B/C8→C9 irreversible batch reader; synthetic B branch-local",
-        "expected_or_historical_consumer": "F3 conditional proposals→real C8/B execution→C9 durable state",
+        "actual_first_reader_or_none": "No native F3\u2192B/C8\u2192C9 irreversible batch reader; synthetic B branch-local",
+        "expected_or_historical_consumer": "F3 conditional proposals\u2192real C8/B execution\u2192C9 durable state",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7115,7 +7136,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C4 antecedent life and material world→C8 child life",
+      "consumer_as_recorded": "C4 antecedent life and material world\u2192C8 child life",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7134,7 +7155,7 @@
         "producer_and_artifact": "freeze/intervene/Receiver.stage_world/stage_c9/same_receiver_assertion",
         "fields_or_contract": "original parent-child/backbone historical member only",
         "actual_first_reader_or_none": "Historical genealogy requirements; none verified current",
-        "expected_or_historical_consumer": "C4 antecedent life and material world→C8 child life",
+        "expected_or_historical_consumer": "C4 antecedent life and material world\u2192C8 child life",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7178,7 +7199,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "Pyat N11/N12 world service→C11 actual C12 person",
+      "consumer_as_recorded": "Pyat N11/N12 world service\u2192C11 actual C12 person",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7194,10 +7215,10 @@
         "source_worker": "W2-A@7a5a77843300e1a59b9a16677f963fb6176b00af",
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "HELD",
-        "producer_and_artifact": "build_validated_source_backed_c11_release/from_stream — empirical source release, NOT Sorok C11 weld",
-        "fields_or_contract": "physical survey cells→C11 logical release, NOT N11/N12 objective person ingress",
+        "producer_and_artifact": "build_validated_source_backed_c11_release/from_stream \u2014 empirical source release, NOT Sorok C11 weld",
+        "fields_or_contract": "physical survey cells\u2192C11 logical release, NOT N11/N12 objective person ingress",
         "actual_first_reader_or_none": "PRE-MAIN empirical pre553 C11 is a different namespace; no Sorok C11 weld",
-        "expected_or_historical_consumer": "Pyat N11/N12 world service→C11 actual C12 person",
+        "expected_or_historical_consumer": "Pyat N11/N12 world service\u2192C11 actual C12 person",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7209,7 +7230,7 @@
           {
             "commit": "9809203fd915a84bae056a67210e9213879840db",
             "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
-            "symbol": "build_validated_source_backed_c11_release/from_stream — empirical source release, NOT Sorok C11 weld",
+            "symbol": "build_validated_source_backed_c11_release/from_stream \u2014 empirical source release, NOT Sorok C11 weld",
             "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
           }
         ],
@@ -7241,7 +7262,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C12 same actual person→A0–A5",
+      "consumer_as_recorded": "C12 same actual person\u2192A0\u2013A5",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7259,8 +7280,8 @@
         "proposed_scope_status": "UNBUILT",
         "producer_and_artifact": "EncounterReader.ask; perceived-event filtering; UNKNOWN for unperceived B activity",
         "fields_or_contract": "C12 events/perceptions; A5 unperceived B event UNKNOWN",
-        "actual_first_reader_or_none": "BP4/CP-A5 sourcefree methods and encounters only; no human A0–A5",
-        "expected_or_historical_consumer": "C12 same actual person→A0–A5",
+        "actual_first_reader_or_none": "BP4/CP-A5 sourcefree methods and encounters only; no human A0\u2013A5",
+        "expected_or_historical_consumer": "C12 same actual person\u2192A0\u2013A5",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7304,7 +7325,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "C9 received care/challenge→later scoped response",
+      "consumer_as_recorded": "C9 received care/challenge\u2192later scoped response",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7323,7 +7344,7 @@
         "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
         "fields_or_contract": "help/repair and scoped state, not positive durable care disposition",
         "actual_first_reader_or_none": "BP4 sourcefree care/help gestures; no owned care/challenge generalizing E2 reader",
-        "expected_or_historical_consumer": "C9 received care/challenge→later scoped response",
+        "expected_or_historical_consumer": "C9 received care/challenge\u2192later scoped response",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7366,7 +7387,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "CAN011 qualified composed operation/relation→E2 semantic selector",
+      "consumer_as_recorded": "CAN011 qualified composed operation/relation\u2192E2 semantic selector",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7385,7 +7406,7 @@
         "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
         "fields_or_contract": "Rule T target, source-provenance link, later E2",
         "actual_first_reader_or_none": "Test-only target_semantics not an issued CAN011 composed relation",
-        "expected_or_historical_consumer": "CAN011 qualified composed operation/relation→E2 semantic selector",
+        "expected_or_historical_consumer": "CAN011 qualified composed operation/relation\u2192E2 semantic selector",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7429,7 +7450,7 @@
         "blob": "82c3f30c0b208a0cbd204e1041bba0835f847a59",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "Qualified educational/institutional history→actor interpretation/action",
+      "consumer_as_recorded": "Qualified educational/institutional history\u2192actor interpretation/action",
       "actual_consumer_state_as_recorded": "NONE_PROVEN_AT_PREMAIN",
       "engineering_grade_as_recorded": "CARRIER_OR_SOURCEFREE_ONLY",
       "science_grade_as_recorded": "EDGE_REQUIREMENT_NOT_ISSUED",
@@ -7448,7 +7469,7 @@
         "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
         "fields_or_contract": "No exact native interpreted educational history receipt",
         "actual_first_reader_or_none": "Historical learning obligations; no current imported education-to-action pathway",
-        "expected_or_historical_consumer": "Qualified educational/institutional history→actor interpretation/action",
+        "expected_or_historical_consumer": "Qualified educational/institutional history\u2192actor interpretation/action",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -7729,7 +7750,7 @@
       "guide_mapping_grade": "RECONCILED_FROM_EXACT_NAMED_FUNCTION_AND_ORIGINAL_WORKSTREAM",
       "original_workstream": {
         "primary_name": "Persona health / flourishing",
-        "question": "what does “benefit to the other” mean independently of liking, compliance or dependency?",
+        "question": "what does \u201cbenefit to the other\u201d mean independently of liking, compliance or dependency?",
         "expected_output": "explicit normative model, evidence base, uncertainty law, anti-therapist-God constraints."
       },
       "reference_at_cut": {
@@ -8034,7 +8055,14 @@
         "compression_repair": "c1f6aa89da22b2b0406d11d33b8c730d1b41b81c",
         "projection_source": "104a013d02c9b908d3223a0b344f993e33eb04fd",
         "sourcefree_rule": "895fc519191d1cee25a0eabceaf87e514f33378e",
-        "original_gates_unchanged": true
+        "original_gates_unchanged": true,
+        "current_p3_status": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
+        "store_failure": "SAME_SESSION_INACTIVITY_RESUME_ACTIVE",
+        "vertical_harness": "BANKED_0_EXECUTED_NOT_ACCEPTED",
+        "terminal_dispositions": [
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_FAILURE_DISPOSITION.json",
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_HARNESS_INPUT_DISPOSITION.json"
+        ]
       }
     },
     {
@@ -8092,7 +8120,14 @@
         "owner_code_return": "61c41e54cccae6f8f888aeb44a629e3a1bd6f892",
         "owner_code_state": "BANKED_UNEXECUTED_REAL_STORE_PENDING; direct constructor call mechanically corrected by HQ",
         "owner_disposition": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/OWNER_INPUT_DISPOSITION.json",
-        "whole_product_proof": "Original required A-H/two-batch/cost harness author launched; execution and independent acceptance pending"
+        "whole_product_proof": "Original required A-H/two-batch/cost harness author launched; execution and independent acceptance pending",
+        "current_p3_status": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
+        "store_failure": "SAME_SESSION_INACTIVITY_RESUME_ACTIVE",
+        "vertical_harness": "BANKED_0_EXECUTED_NOT_ACCEPTED",
+        "terminal_dispositions": [
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_FAILURE_DISPOSITION.json",
+          "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_HARNESS_INPUT_DISPOSITION.json"
+        ]
       }
     },
     {
@@ -8401,14 +8436,14 @@
     },
     {
       "id": "S16",
-      "title": "Product→engineering handoff",
+      "title": "Product\u2192engineering handoff",
       "kind": "DECLARED_S0_S16_WORKSTREAM",
       "guide_sections": [
         "SP-140"
       ],
       "guide_mapping_grade": "RECONCILED_FROM_EXACT_NAMED_FUNCTION_AND_ORIGINAL_WORKSTREAM",
       "original_workstream": {
-        "primary_name": "Product→engineering handoff",
+        "primary_name": "Product\u2192engineering handoff",
         "question": "when is a Sorok conclusion mature enough to constrain governed architecture?",
         "expected_output": "requirement packet with rationale, alternatives, evidence, dependencies, exact affected owners and reopen test."
       },
@@ -8584,7 +8619,7 @@
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "build_world_occurrence; commit_world_occurrence; read_out9",
         "fields_or_contract": "A/B snapshot, B SHARE/REFUSE/access, C8Commit, Out9Binding",
-        "actual_first_reader_or_none": "BP2 build_world_occurrence→commit_world_occurrence→read_out9; BP4 C10 receive downstream",
+        "actual_first_reader_or_none": "BP2 build_world_occurrence\u2192commit_world_occurrence\u2192read_out9; BP4 C10 receive downstream",
         "expected_or_historical_consumer": "bp2p4.reunion / candidate CandidateStore / bp4.c10.receive",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
@@ -8646,7 +8681,7 @@
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "JoinedProducer.stage_c8/stage_out9/stage_c9/stage_e2; test-only rule_a_semantics/target_semantics",
-        "fields_or_contract": "occurrence→Rule A response→Rule T target or NO_CHANGE",
+        "fields_or_contract": "occurrence\u2192Rule A response\u2192Rule T target or NO_CHANGE",
         "actual_first_reader_or_none": "BP2 stage_c8/out9/stage_c9 sourcefree; later RRIF-R2 preserved closure",
         "expected_or_historical_consumer": "JoinedProducer.stage_c9 / CandidateStore",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
@@ -8771,7 +8806,7 @@
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "BP4Product.observe/other/say/travel/repair/inspect/wait/fork/reenter",
-        "fields_or_contract": "C9 target/source state→timeline and material world episode",
+        "fields_or_contract": "C9 target/source state\u2192timeline and material world episode",
         "actual_first_reader_or_none": "BP4Product C10 receive on same candidate; BF1CR adds separate targetless ledger",
         "expected_or_historical_consumer": "bp4.c10.receive / JoinedProduct inherited A0-A3",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
@@ -8961,7 +8996,7 @@
         "proposed_scope_status": "HELD",
         "producer_and_artifact": "20-test JOIN-E 7bf sourcefree root; distinct candidates explicitly not merged",
         "fields_or_contract": "G17 candidate metadata; no actual BP2/C9 selected import",
-        "actual_first_reader_or_none": "G17 continue_person→c9_handoff_consumer.receive_handoff only historical/component",
+        "actual_first_reader_or_none": "G17 continue_person\u2192c9_handoff_consumer.receive_handoff only historical/component",
         "expected_or_historical_consumer": "continue_person / c9_handoff_consumer.receive_handoff (component)",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
@@ -9213,7 +9248,7 @@
         "proposed_scope_status": "UNKNOWN",
         "producer_and_artifact": "SOURCE_ROW_ONLY__NO_VERIFIED_CURRENT_PRODUCER",
         "fields_or_contract": "No bytes to inspect or execute",
-        "actual_first_reader_or_none": "NONE_VERIFIED — patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae unlocated",
+        "actual_first_reader_or_none": "NONE_VERIFIED \u2014 patched executable bf7e625e1f208908e583ea72ebb73992ad7d19ae unlocated",
         "expected_or_historical_consumer": "NONE_VERIFIABLE",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
@@ -9252,7 +9287,7 @@
         "blob": "c6e64b5874938045d80aae348de94930539d5cd2",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "BF1 targetless_c10_consumer.BWorld → TargetlessGuardedJoinedProduct",
+      "consumer_as_recorded": "BF1 targetless_c10_consumer.BWorld \u2192 TargetlessGuardedJoinedProduct",
       "actual_consumer_state_as_recorded": "HISTORICAL_SOURCE_ONLY",
       "engineering_grade_as_recorded": "RECONSTRUCTION_AUTHOR_TESTED",
       "science_grade_as_recorded": "NOT_ORIGINAL_SCIENCE",
@@ -9268,10 +9303,10 @@
         "source_worker": "W2-A@7a5a77843300e1a59b9a16677f963fb6176b00af",
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "PARTIAL",
-        "producer_and_artifact": "live_prior; same_receiver_assertion — reconstruction, not patched original",
+        "producer_and_artifact": "live_prior; same_receiver_assertion \u2014 reconstruction, not patched original",
         "fields_or_contract": "live_prior, A/B/shared history mutation binding",
         "actual_first_reader_or_none": "B-F1CR-R2 test root uses reconstruction, not original F1CR",
-        "expected_or_historical_consumer": "BF1 targetless_c10_consumer.BWorld → TargetlessGuardedJoinedProduct",
+        "expected_or_historical_consumer": "BF1 targetless_c10_consumer.BWorld \u2192 TargetlessGuardedJoinedProduct",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -9283,7 +9318,7 @@
           {
             "commit": "aebb2452b277bfc91fc78dec8d6001f8a844cc8c",
             "path": "WORKER_RETURNS/SOROK-R5-SOURCE-CUSTODY-R1/candidate/f1c_reconstructed_candidate.py",
-            "symbol": "live_prior; same_receiver_assertion — reconstruction, not patched original",
+            "symbol": "live_prior; same_receiver_assertion \u2014 reconstruction, not patched original",
             "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
           }
         ],
@@ -9302,7 +9337,7 @@
     },
     {
       "id": "B1",
-      "title": "B1 test-only E1→mediator→later E2",
+      "title": "B1 test-only E1\u2192mediator\u2192later E2",
       "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
       "guide_sections": [
         "SP-70",
@@ -9315,7 +9350,7 @@
         "blob": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "Store.commit → execute second event",
+      "consumer_as_recorded": "Store.commit \u2192 execute second event",
       "actual_consumer_state_as_recorded": "HISTORICAL_OR_AUTHOR_TESTED_ONLY",
       "engineering_grade_as_recorded": "SOURCEFREE_OR_TEST_ONLY",
       "science_grade_as_recorded": "NOT_ISSUED",
@@ -9333,8 +9368,8 @@
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "Store.commit; execute second event",
         "fields_or_contract": "E1 mediator, later E2 fixture record",
-        "actual_first_reader_or_none": "Store.commit→execute second event in bfirst.py only",
-        "expected_or_historical_consumer": "Store.commit → execute second event",
+        "actual_first_reader_or_none": "Store.commit\u2192execute second event in bfirst.py only",
+        "expected_or_historical_consumer": "Store.commit \u2192 execute second event",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -9379,7 +9414,7 @@
         "blob": "5c84ace202d04076e829461afee98dd0ae8ba5b7",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "Bridge.advance → d1_gate",
+      "consumer_as_recorded": "Bridge.advance \u2192 d1_gate",
       "actual_consumer_state_as_recorded": "HISTORICAL_OR_AUTHOR_TESTED_ONLY",
       "engineering_grade_as_recorded": "SOURCEFREE_OR_TEST_ONLY",
       "science_grade_as_recorded": "NOT_ISSUED",
@@ -9397,8 +9432,8 @@
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "Bridge.advance; d1_gate; occurrence_witness",
         "fields_or_contract": "capability_fixture, occurrence_witness, D1 packet",
-        "actual_first_reader_or_none": "Bridge.advance→d1_gate in bridge.py only",
-        "expected_or_historical_consumer": "Bridge.advance → d1_gate",
+        "actual_first_reader_or_none": "Bridge.advance\u2192d1_gate in bridge.py only",
+        "expected_or_historical_consumer": "Bridge.advance \u2192 d1_gate",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -9536,7 +9571,7 @@
           {
             "commit": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
             "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
-            "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+            "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run \u2014 logical schema/readset",
             "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
           },
           {
@@ -9590,7 +9625,7 @@
         "source_worker": "W2-A@7a5a77843300e1a59b9a16677f963fb6176b00af",
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "PARTIAL",
-        "producer_and_artifact": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+        "producer_and_artifact": "Integration.snapshot/_database_snapshot/admit_projection/run \u2014 logical schema/readset",
         "fields_or_contract": "SQLite schema/indices/triggers/views/user_version/application_version and tables",
         "actual_first_reader_or_none": "candidate Integration.snapshot/_database_snapshot/run; same sourcefree B3 tests",
         "expected_or_historical_consumer": "historical same sourcefree E3 readset and later consumer",
@@ -9605,7 +9640,7 @@
           {
             "commit": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
             "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
-            "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run — logical schema/readset",
+            "symbol": "Integration.snapshot/_database_snapshot/admit_projection/run \u2014 logical schema/readset",
             "proof_type": "DIRECT_CODE_OR_DOCUMENTARY_CUT_AS_QUALIFIED_IN_PROOF_AND_LIMIT"
           },
           {
@@ -9643,7 +9678,7 @@
         "blob": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "JoinedProduct → joined_downstream_a0_a2_assertion and C12 episode store",
+      "consumer_as_recorded": "JoinedProduct \u2192 joined_downstream_a0_a2_assertion and C12 episode store",
       "actual_consumer_state_as_recorded": "HISTORICAL_OR_AUTHOR_TESTED_ONLY",
       "engineering_grade_as_recorded": "SOURCEFREE_OR_TEST_ONLY",
       "science_grade_as_recorded": "NOT_ISSUED",
@@ -9660,9 +9695,9 @@
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "JoinedProduct(BP4Product); _check_binding_source; verify_join",
-        "fields_or_contract": "material occurrence/out9/target/E2→A0/A2+episode",
+        "fields_or_contract": "material occurrence/out9/target/E2\u2192A0/A2+episode",
         "actual_first_reader_or_none": "JoinedProduct(BP4Product) reads bp2p4 seed/reunion then C12; same root JOIN later",
-        "expected_or_historical_consumer": "JoinedProduct → joined_downstream_a0_a2_assertion and C12 episode store",
+        "expected_or_historical_consumer": "JoinedProduct \u2192 joined_downstream_a0_a2_assertion and C12 episode store",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -9699,7 +9734,7 @@
     },
     {
       "id": "S39_S52",
-      "title": "modern Codex S39–S52 series",
+      "title": "modern Codex S39\u2013S52 series",
       "kind": "PREEXISTING_PRODUCTION_OR_EXPERIMENT_LINEAGE",
       "guide_sections": [
         "SP-40",
@@ -9713,7 +9748,7 @@
         "blob": "c347d8a902f4f451852aca1054e9a3cd99d4c3f0",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "compile_candidate → produce_b_turn → perform_paid_participation",
+      "consumer_as_recorded": "compile_candidate \u2192 produce_b_turn \u2192 perform_paid_participation",
       "actual_consumer_state_as_recorded": "HISTORICAL_OR_AUTHOR_TESTED_ONLY",
       "engineering_grade_as_recorded": "SOURCEFREE_OR_TEST_ONLY",
       "science_grade_as_recorded": "NOT_ISSUED",
@@ -9731,8 +9766,8 @@
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "S52Session(S51Session); compile_candidate; produce_b_turn; perform_paid_participation",
         "fields_or_contract": "candidate/repertoire/source_records and paid participation",
-        "actual_first_reader_or_none": "S52Session→S51Session→produce_b_turn/perform_paid_participation branch-local",
-        "expected_or_historical_consumer": "compile_candidate → produce_b_turn → perform_paid_participation",
+        "actual_first_reader_or_none": "S52Session\u2192S51Session\u2192produce_b_turn/perform_paid_participation branch-local",
+        "expected_or_historical_consumer": "compile_candidate \u2192 produce_b_turn \u2192 perform_paid_participation",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -9754,7 +9789,7 @@
             "proof_type": "DIRECT_GITHUB_CODE_INSPECTION"
           }
         ],
-        "proof_limit": "Direct code, modern S39–S52 experiments, no PRE-MAIN import seen",
+        "proof_limit": "Direct code, modern S39\u2013S52 experiments, no PRE-MAIN import seen",
         "independent_review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
         "exact_next_action": "Identify current owner B activity consumer or retain as separate test lineage.",
         "execution": "NOT_RUN_THIS_W3_BROWSER"
@@ -9824,7 +9859,7 @@
         ],
         "proof_limit": "Direct static receipt: 0 provider calls, R1 3 invalid diagnostics, no valid blind scoring",
         "independent_review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
-        "exact_next_action": "Owner may run named RFA R2 smoke→60 only under separate approved experiment; not W2-A.",
+        "exact_next_action": "Owner may run named RFA R2 smoke\u219260 only under separate approved experiment; not W2-A.",
         "execution": "NOT_RUN_THIS_W3_BROWSER"
       },
       "w7_phase_function_view": {
@@ -9849,7 +9884,7 @@
         "blob": "b52b0c9a9ff6b49acf5b3f648f33cd49ad7cebdb",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "I1 GuardedJoinedProduct C12 same root → A sees tool-return but not B unperceived market commission",
+      "consumer_as_recorded": "I1 GuardedJoinedProduct C12 same root \u2192 A sees tool-return but not B unperceived market commission",
       "actual_consumer_state_as_recorded": "AUTHOR_TESTED_ONLY",
       "engineering_grade_as_recorded": "AUTHOR_TESTED_UNADOPTED",
       "science_grade_as_recorded": "NO_NATIVE_SCIENCE",
@@ -9874,7 +9909,7 @@
         "producer_and_artifact": "EncounterReader.ask; perceived-event filtering; UNKNOWN for unperceived B activity",
         "fields_or_contract": "actor perception IDs, events and UNKNOWN B market action",
         "actual_first_reader_or_none": "cp_a5 EncounterReader.ask reads same I1 C12 candidate root; not RRIF-R2 imported",
-        "expected_or_historical_consumer": "I1 GuardedJoinedProduct C12 same root → A sees tool-return but not B unperceived market commission",
+        "expected_or_historical_consumer": "I1 GuardedJoinedProduct C12 same root \u2192 A sees tool-return but not B unperceived market commission",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -9942,7 +9977,7 @@
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "read_actor_snapshot; guarded_c12_cold_read; read_composite",
         "fields_or_contract": "C9 schema/head/version/outbox optional mirror, C12 verify/fork, external custody HELD",
-        "actual_first_reader_or_none": "read_composite→read_actor_snapshot + guarded_c12_cold_read; not RRIF-R2 selected",
+        "actual_first_reader_or_none": "read_composite\u2192read_actor_snapshot + guarded_c12_cold_read; not RRIF-R2 selected",
         "expected_or_historical_consumer": "C9 actor R3B SQLite snapshot/outbox + BP4R C12 verified content under I1-compatible read-only composite",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
@@ -9980,7 +10015,7 @@
     },
     {
       "id": "B-F1CR-R2",
-      "title": "targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger → targetless_i1_bridge.TargetlessGuardedJoinedProduct",
+      "title": "targetless_c10_consumer.BWorld/BAction/TargetlessC10Ledger \u2192 targetless_i1_bridge.TargetlessGuardedJoinedProduct",
       "kind": "NEW_FOUR_RETURN_CODE_ASSET",
       "guide_sections": [
         "SP-40",
@@ -10049,7 +10084,7 @@
     },
     {
       "id": "V3CORE-R1",
-      "title": "v3core_adapter.i1_consumer.project_actual_market_event → I1 GuardedJoinedProduct",
+      "title": "v3core_adapter.i1_consumer.project_actual_market_event \u2192 I1 GuardedJoinedProduct",
       "kind": "NEW_FOUR_RETURN_CODE_ASSET",
       "guide_sections": [
         "SP-30",
@@ -10063,7 +10098,7 @@
         "blob": "a4d8e870b2aa0210ac82ef45a8f464afcb3039ac",
         "grade": "DIRECT_GITHUB_AUTHENTICATED_SOURCE_READ"
       },
-      "consumer_as_recorded": "Actual I1 market event 54→56 cash / workshop→market projected to restricted old V3 capacity; source clock domain verified",
+      "consumer_as_recorded": "Actual I1 market event 54\u219256 cash / workshop\u2192market projected to restricted old V3 capacity; source clock domain verified",
       "actual_consumer_state_as_recorded": "AUTHOR_TESTED_ONLY",
       "engineering_grade_as_recorded": "AUTHOR_TESTED_UNADOPTED",
       "science_grade_as_recorded": "NO_NATIVE_SCIENCE",
@@ -10086,9 +10121,9 @@
         "inspected_premain": "9809203fd915a84bae056a67210e9213879840db",
         "proposed_scope_status": "PARTIAL",
         "producer_and_artifact": "project_actual_market_event; I1 sourcefree consumer",
-        "fields_or_contract": "cash 54→56, workshop→market and capacity projection; 16/19 annual steps held",
-        "actual_first_reader_or_none": "v3core_adapter.i1_consumer.project_actual_market_event→I1 candidate",
-        "expected_or_historical_consumer": "Actual I1 market event 54→56 cash / workshop→market projected to restricted old V3 capacity; source clock domain verified",
+        "fields_or_contract": "cash 54\u219256, workshop\u2192market and capacity projection; 16/19 annual steps held",
+        "actual_first_reader_or_none": "v3core_adapter.i1_consumer.project_actual_market_event\u2192I1 candidate",
+        "expected_or_historical_consumer": "Actual I1 market event 54\u219256 cash / workshop\u2192market projected to restricted old V3 capacity; source clock domain verified",
         "present_premain_import": "NONE_VERIFIED_AT_INSPECTED_PREMAIN_FOR_THIS_SOROK_EDGE",
         "direct_or_attributed_evidence": [
           {
@@ -10106,7 +10141,7 @@
         ],
         "proof_limit": "Return JSON/source contract, author tests only; no native modern import",
         "independent_review_or_adoption": "SOURCEFREE_OR_HISTORICAL_SCOPED__NO_NEW_ADOPTION",
-        "exact_next_action": "Competent owner selects old functions without 0–100/Enneagram psychology; exact import test.",
+        "exact_next_action": "Competent owner selects old functions without 0\u2013100/Enneagram psychology; exact import test.",
         "execution": "NOT_RUN_THIS_W3_BROWSER"
       },
       "w7_phase_function_view": {
@@ -10409,7 +10444,7 @@
       }
     ],
     "engineering": "CONTROLLED_SOURCEFREE_AUTHOR_TESTED",
-    "admitted_occurrence_reader": "Controlled reader at eb2255231df00393d33cc0223bc5d79320360f88, bridge/occurrence_consumer.py read_occurrence → evaluate_occurrence. Reads admitted C9 event at 242 independently of C12 branch clock 10. 57 author tests, controlled intact/severed/restored/cold, byte-identical stores. Actual A producer NONE_VERIFIED, Independent REVISE at eb2255231df00393d33cc0223bc5d79320360f88; 57 passed in 28.88s. PERFORMED C9 occurrence can be combined with REFUSED C12 branch/source. Exact cross-binding held. Repair persisted JOIN-E occurrence/root/branch/source binding before relying on the reader. Full reexecution still incompatible. Author repair d504231674fe02fb765502b0cb4e187d4a5e0560, published eb489dcaac4fb6362b8a3ed1d78d1f1654950563, derives binding from persisted JOIN-E provenance; 57 author passes and mixed-root substitution refused live/cold. Independent ACCEPT scoped to the repaired mixed-root boundary at eb489dcaac4fb6362b8a3ed1d78d1f1654950563 (57 passed in 15.44s; original mix refused live/cold). Actual A remains NONE_VERIFIED. A producer audit ce2478aa38eec7fb021aa95c01464a468a46fbc9 (58 author passes; evidence/actual_a_evidence.json): R31J TEST_ONLY material_inspect/omission affects E help, but clock 10 and no E1 identity/order; S39 requires S37 synthetic premises. G-O15-VERIFY remains held pending E1-local observation, separately executed action/omission bound to E1 and its order, and source-owner qualification. No actual A positive. Next: qualify separate A perception/action and clock-domain receipts.",
+    "admitted_occurrence_reader": "Controlled reader at eb2255231df00393d33cc0223bc5d79320360f88, bridge/occurrence_consumer.py read_occurrence \u2192 evaluate_occurrence. Reads admitted C9 event at 242 independently of C12 branch clock 10. 57 author tests, controlled intact/severed/restored/cold, byte-identical stores. Actual A producer NONE_VERIFIED, Independent REVISE at eb2255231df00393d33cc0223bc5d79320360f88; 57 passed in 28.88s. PERFORMED C9 occurrence can be combined with REFUSED C12 branch/source. Exact cross-binding held. Repair persisted JOIN-E occurrence/root/branch/source binding before relying on the reader. Full reexecution still incompatible. Author repair d504231674fe02fb765502b0cb4e187d4a5e0560, published eb489dcaac4fb6362b8a3ed1d78d1f1654950563, derives binding from persisted JOIN-E provenance; 57 author passes and mixed-root substitution refused live/cold. Independent ACCEPT scoped to the repaired mixed-root boundary at eb489dcaac4fb6362b8a3ed1d78d1f1654950563 (57 passed in 15.44s; original mix refused live/cold). Actual A remains NONE_VERIFIED. A producer audit ce2478aa38eec7fb021aa95c01464a468a46fbc9 (58 author passes; evidence/actual_a_evidence.json): R31J TEST_ONLY material_inspect/omission affects E help, but clock 10 and no E1 identity/order; S39 requires S37 synthetic premises. G-O15-VERIFY remains held pending E1-local observation, separately executed action/omission bound to E1 and its order, and source-owner qualification. No actual A positive. Next: qualify separate A perception/action and clock-domain receipts.",
     "repair2_review": "ACCEPT_SCOPED_TEST_ONLY@08569b7481aec4f81b83b35f0099c1f5e9bb012a; 55 passed; exact decision linked",
     "same_target_gate": "HELD",
     "actual_a_first_consumer": "NONE_VERIFIED",

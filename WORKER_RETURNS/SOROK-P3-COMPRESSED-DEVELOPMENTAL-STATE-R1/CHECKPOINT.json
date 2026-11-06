@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "OWNER_BANKED_NOT_EXECUTED__REQUIRED_VERTICAL_PROOF_CODE_LAUNCHED__REAL_STORE_PENDING",
+  "state": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -90,7 +90,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "FAILED_INACTIVITY_PARTIAL_WORK_PRESERVED",
       "model": {
         "id": "deepseek-v4.1-flash",
         "providerID": "opencode-go",
@@ -98,7 +98,8 @@
       },
       "metadata_message": "msg_1b2c9f38a001y85UdpgtTdASmG",
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-r1/completion.json",
-      "notification": "finite existing completion observer"
+      "notification": "finite existing completion observer",
+      "failure_disposition": "STORE_FAILURE_DISPOSITION.json"
     },
     {
       "task": "sorok-p3-compression-evidence-r1",
@@ -214,7 +215,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-proof-harness-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_BANKED_NOT_EXECUTED",
       "model_evidence": {
         "message": "msg_1b2f313e3001r8lAAX8hxepys1",
         "model": {
@@ -225,7 +226,32 @@
       },
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-proof-harness-r1/completion.json",
       "notification": "existing finite terminal observer",
-      "scope": "Required original two-batch A-H and cost proof code; actual execution blocked until real returned store, no fake/skip green"
+      "scope": "Required original two-batch A-H and cost proof code; actual execution blocked until real returned store, no fake/skip green",
+      "return_commit": "5c710f18fa108fa73039b548da3025f67720f01c",
+      "disposition": "VERTICAL_HARNESS_INPUT_DISPOSITION.json"
+    },
+    {
+      "task": "sorok-p3-normalized-store-inactivity-resume-r1",
+      "session": "ses_615d8e3a6a909213fb200be830",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-batch-r1",
+      "launch": {
+        "job_id": "sorok-p3-normalized-store-inactivity-resume-r1",
+        "child_pid": 41339,
+        "supervisor_pid": 41338,
+        "observer_pid": 41340,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-inactivity-resume-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b30b93fc0013ssz6rYa36D1KM",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-inactivity-resume-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "scope": "Resume original store commission after exact inactivity interruption; partial files retained"
     }
   ],
   "holds": [
@@ -234,7 +260,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Intake actual normalized store; integrate exact returned source, resume same owner for six actual durable tests and minimal repairs, execute prepared full two-batch A-H/cost harness, obtain distinct final exact-runtime review. Harness may be authored against frozen owner API now; no actual durable claim until dependency executes.",
+  "next": "Intake resumed exact store return; integrate and resume same owner for actual durable tests/repairs; resume same harness author for actual A-H/two-batch proof and required measured resource output, then distinct exact-runtime independent review. No polling or recurring wakes.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -268,5 +294,8 @@
     "final_reviewer": "non-author E1 input reviewer remains reserved"
   },
   "compression_repair_intake": "COMPRESSION_REPAIR_DISPOSITION.json",
-  "owner_intake": "OWNER_INPUT_DISPOSITION.json"
+  "owner_intake": "OWNER_INPUT_DISPOSITION.json",
+  "store_failure_intake": "STORE_FAILURE_DISPOSITION.json",
+  "vertical_harness_intake": "VERTICAL_HARNESS_INPUT_DISPOSITION.json",
+  "usage_policy": "Account-wide quota UNKNOWN; bank coherent work and exact continuation at material boundaries; leave room for commit/push/directremote verification before usage exhaustion."
 }

@@ -1,0 +1,23 @@
+{
+  "schema": "SOROK_P3_VERTICAL_HARNESS_INTAKE@1",
+  "return": "5c710f18fa108fa73039b548da3025f67720f01c",
+  "artifact_commit": "5aa8b1df7c122a5ae06ea28041ec394d84a0cb0e",
+  "verified": {
+    "durable_exit": 0,
+    "manifest_hashes": 12,
+    "exclusive_paths": 13,
+    "remote_head": true
+  },
+  "disposition": "BANKED_TEST_DEFINITIONS_NOT_EXECUTED_NOT_ACCEPTANCE",
+  "actual_tests": 0,
+  "actual_events": 0,
+  "actual_batches": 0,
+  "metrics": "NOT_MEASURED",
+  "requirements_still_unproved": [
+    "All actual A-H and two-batch execution",
+    "Resource code currently measures totals only: per-event/per-batch/cold latency, targeted/full read counts, fixed-versus-incremental logical/storage cost and persisted actual metrics still required by original section11",
+    "Independent roots/fork proof not yet demonstrated",
+    "Crash child must reopen the same existing P2 root; current child calls build_case, so actual behavior must be checked and corrected through the same harness author before acceptance"
+  ],
+  "next": "Resume same harness author on returned integrated store/owner; execute full original matrix and fix actual harness gaps within original grant. No fake store, self-review or native claim."
+}

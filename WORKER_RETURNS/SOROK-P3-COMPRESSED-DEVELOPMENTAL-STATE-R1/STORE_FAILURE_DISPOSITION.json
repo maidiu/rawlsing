@@ -1,0 +1,27 @@
+{
+  "schema": "SOROK_P3_STORE_FAILURE_INTAKE@1",
+  "task": "sorok-p3-normalized-store-r1",
+  "exit_code": 1,
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-r1/completion.json",
+  "exact_failure": "Session interrupted: inactivity",
+  "partial_files": [
+    "p3/state_store.py",
+    "tests/test_state_store.py"
+  ],
+  "commit_produced": false,
+  "disposition": "REPAIR_SAME_SESSION_PRESERVED_PARTIAL_WORK",
+  "resume": {
+    "job_id": "sorok-p3-normalized-store-inactivity-resume-r1",
+    "child_pid": 41339,
+    "supervisor_pid": 41338,
+    "observer_pid": 41340,
+    "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-inactivity-resume-r1",
+    "launch_is_not_completion": true
+  },
+  "actual_model": {
+    "id": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "variant": "max"
+  },
+  "next": "Finish original store tests, measurements and returned commit; then integrate and execute actual owner tests. No store functional acceptance."
+}
