@@ -281,3 +281,174 @@ def test_selector_v1_dimensions_and_occurrences_match_native_after_descendant_fa
                         assert [event.ref for event in _select_respondent_events(selected, key, target, **flags)] == [event.ref for event in a]
     with pytest.raises(KeyError):
         tuple(_select_respondent_events(selected, "absent-respondent", next(iter(targets))))
+
+
+def test_compressed_event_bodies_exact_bounded_chunks_and_old_cache_read(tmp_path, monkeypatch):
+    from rawlsing_next import _pre553_c11_execution_view as compact
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+
+    fx = _fixture()
+    expected = build_validated_source_backed_c11_release_from_stream(fx["stream"], fx["projection"])
+    directory = _cache(monkeypatch, tmp_path)
+    observed = _execute(fx)
+    public = observed.c11_release.public_objects
+    assert isinstance(public, compact._CompactPublicObjects)
+    assert isinstance(public.lane.bodies, compact._CompressedBodies)
+    expected_events = {
+        obj.ref.key: obj for obj in expected.public_objects if obj.schema_id == "RespondentEvent"
+    }
+    assert len(public.lane.selectors) == len(expected_events)
+    chunk_rows = []
+    for row, selector in enumerate(public.lane.selectors):
+        rebuilt = public.lane.materialize(row)
+        assert rebuilt.ref == selector.ref
+        assert rebuilt.as_dict() == expected_events[selector.ref.key].as_dict()
+        body = public.lane.bodies.body_bytes(row)
+        assert body == canonical_json(rebuilt.semantic_projection()).encode("utf-8")
+    for compressed, raw_size, start, count in public.lane.bodies.chunks:
+        assert count <= compact._EVENT_BODY_CHUNK_EVENTS
+        assert raw_size > 0
+        chunk_rows.append((start, count))
+    assert sum(count for _, count in chunk_rows) == len(public.lane.selectors)
+    path, = directory.glob("c11-events-*.parquet")
+    schema = pq.read_schema(path)
+    key = schema.metadata[compact._CACHE_METADATA_KEY].decode("ascii")
+    old_rows = pq.read_table(path).to_pylist()
+    old_style = pa.table({
+        compact._EVENT_BODY_COLUMN: pa.array(
+            [row[compact._EVENT_BODY_COLUMN] for row in old_rows], type=pa.binary(),
+        ),
+    }).replace_schema_metadata(schema.metadata)
+    pq.write_table(old_style, path, compression="zstd", compression_level=3)
+    reread = compact._read_bodies(path, key, public.lane.selectors)
+    assert isinstance(reread, compact._CompressedBodies)
+    for row in range(len(public.lane.selectors)):
+        assert reread.body_bytes(row) == public.lane.bodies.body_bytes(row)
+
+
+def test_compressed_bodies_exact_across_routed_state_topology_and_weight_shapes(tmp_path, monkeypatch):
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent, canonical_json, exact_ref
+    from rawlsing_next.tests import pre553_query_frontier_fixtures as frontier
+    from rawlsing_next.tests.pre553_query_frontier_fixtures import (
+        raw_weighted_divergence_fixture,
+        special_state_fixture,
+        topology_fixture,
+    )
+    from rawlsing_next.tests.test_pre553_empirical_query import _build_source
+
+    ids = [f"W{i:04d}" for i in range(70)]
+    rows = [{
+        "id": rid,
+        "responses": {
+            "A": i & 1,
+            "B": (i >> 1) & 1,
+            "C": (i >> 2) & 1,
+            "K": (i & 1) ^ ((i >> 1) & 1) ^ ((i >> 2) & 1),
+            "X": i & 1,
+            "Y": (i >> 1) & 1,
+            "Z": (i & 1) ^ ((i >> 1) & 1),
+            "U": (i >> 2) & 1,
+        },
+        "coords": {"G": "A" if i % 5 else "B", "H": i & 1},
+    } for i, rid in enumerate(ids)]
+    weighted = _build_source(
+        "shape-weighted-routed",
+        rows,
+        risk_sets={
+            "R": {question: set(ids) for question in ("A", "B", "C", "K", "X", "Y", "Z", "U")},
+            "S": {
+                question: {rid for index, rid in enumerate(ids) if index % 2 == 0}
+                for question in ("A", "B", "C", "K", "X", "Y", "Z", "U")
+            },
+        },
+        weights={rid: ("WEIGHT_VALID_AUTHORIZED", str(1 + (index % 4))) for index, rid in enumerate(ids)},
+    )
+    original_universe = frontier.EmpiricalUniverse
+
+    def country_universe(*args, **kwargs):
+        kwargs.update(country_geography="ZZ", sampling_geography="ZZ-NATIONAL")
+        return original_universe(*args, **kwargs)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(frontier, "EmpiricalUniverse", country_universe)
+        country = frontier._build_event_source(
+            "shape-country-zz",
+            [
+                {"id": "C1", "events": {"Q": ({"value": "1"},)}},
+                {"id": "C2", "events": {"Q": ({"value": "0"},)}},
+            ],
+            {"Q": "SCALAR_SINGULAR"},
+        )
+    sources = (
+        ("weighted-routed-kway", weighted),
+        ("typed-states-and-routing", special_state_fixture()[0]),
+        ("ordered-ranked-repeated", topology_fixture()[0]),
+        ("raw-weighted-divergence", raw_weighted_divergence_fixture()[0]),
+        ("country-zz-scalar", country),
+    )
+    directory = _cache(monkeypatch, tmp_path)
+
+    def events_of(objects):
+        return tuple(obj for obj in objects if isinstance(obj, RespondentEvent))
+
+    def check(public, expected):
+        expected_events = events_of(expected)
+        assert isinstance(public, compact._CompactPublicObjects)
+        assert isinstance(public.lane.bodies, compact._CompressedBodies)
+        assert len(public.lane.selectors) == len(expected_events)
+        assert sum(count for _, _, _, count in public.lane.bodies.chunks) == len(expected_events)
+        assert tuple(start for _, _, start, _ in public.lane.bodies.chunks) == tuple(
+            range(0, len(expected_events), compact._EVENT_BODY_CHUNK_EVENTS)
+        )
+        assert all(
+            0 < count <= compact._EVENT_BODY_CHUNK_EVENTS
+            for _, _, _, count in public.lane.bodies.chunks
+        )
+        assert tuple(obj.as_dict() for obj in public.non_events) == tuple(
+            obj.as_dict() for obj in expected if not isinstance(obj, RespondentEvent)
+        )
+        for row, event in enumerate(expected_events):
+            rebuilt = public.lane.materialize(row)
+            assert rebuilt.ref == event.ref
+            assert rebuilt.as_dict() == event.as_dict()
+            assert public.lane.bodies.body_bytes(row) == canonical_json(
+                rebuilt.semantic_projection()
+            ).encode("utf-8")
+        for key, group in public.by_respondent.items():
+            expected_group = tuple(
+                event for event in expected_events
+                if (exact_ref(event.empirical_universe_ref), exact_ref(event.scoped_respondent_ref).key) == key
+            )
+            assert tuple(event.ref for event in group) == tuple(event.ref for event in expected_group)
+
+    for name, source in sources:
+        release = source["repo"].resolve_release_exact(source["release_ref"])
+        def binding(name=name):
+            return f"shape-binding-{name}"
+
+        first = compact._compact_public_objects(
+            release, physical_binding=binding, projection_binding=f"shape-{name}",
+        )
+        check(first, release.public_objects)
+        with monkeypatch.context() as patch:
+            def unexpected(_value):
+                pytest.fail("warm cross-shape cache reserialized exact event bodies")
+
+            patch.setattr(compact, "canonical_json", unexpected)
+            second = compact._compact_public_objects(
+                release, physical_binding=binding, projection_binding=f"shape-{name}",
+            )
+        check(second, release.public_objects)
+        assert tuple(
+            (compressed, raw_size, start, count)
+            for compressed, raw_size, start, count in second.lane.bodies.chunks
+        ) == tuple(first.lane.bodies.chunks)
+        if len(events_of(release.public_objects)) > compact._EVENT_BODY_CHUNK_EVENTS:
+            assert len(first.lane.bodies.chunks) > 1
+
+    for label, missing_weight in (("physical-routed-weight", False), ("physical-missing-weight", True)):
+        fx = _fixture(missing_weight=missing_weight)
+        expected = build_validated_source_backed_c11_release_from_stream(fx["stream"], fx["projection"])
+        observed = _execute(fx)
+        check(observed.c11_release.public_objects, expected.public_objects)
+    assert len(tuple(directory.glob("c11-events-*.parquet"))) == len(sources) + 2

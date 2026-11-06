@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from bisect import bisect_right
 from collections.abc import Callable, Iterator, Sequence
 from dataclasses import dataclass
 from hashlib import sha256
@@ -26,6 +27,8 @@ _CACHE_SCHEMA = "PRE553_I02_EVENT_ACCELERATOR@1"
 _CACHE_ENV = "RAWLSING_C11_ACCELERATOR_DIR"
 _EVENT_BODY_COLUMN = "canonical_event_body"
 _CACHE_METADATA_KEY = b"rawlsing.c11.event_accelerator"
+_EVENT_BODY_CHUNK_EVENTS = 256
+_EVENT_BODY_CODEC = "zstd"
 
 
 def _ref_identity(ref: ExactRef) -> tuple[str, str, str]:
@@ -70,15 +73,48 @@ class _EventRead:
 
 
 @dataclass(frozen=True, slots=True)
+class _CompressedBodies:
+    """Bounded compressed canonical event bodies with on-demand exact lookup."""
+
+    chunks: tuple[tuple[bytes, int, int, int], ...]
+    starts: tuple[int, ...]
+    total_rows: int
+
+    def body_bytes(self, row: int) -> bytes:
+        if not isinstance(row, int) or isinstance(row, bool) or row < 0 or row >= self.total_rows:
+            raise IndexError("event body row outside compressed lane")
+        chunk_index = bisect_right(self.starts, row) - 1
+        compressed, raw_size, start, count = self.chunks[chunk_index]
+        if row < start or row >= start + count:
+            raise IndexError("event body row outside bounded compressed chunk")
+        import pyarrow as pa
+
+        raw = pa.decompress(
+            compressed, decompressed_size=raw_size, codec=_EVENT_BODY_CODEC,
+            asbytes=True,
+        )
+        position = 0
+        for _ in range(row - start):
+            length = int.from_bytes(raw[position:position + 4], "big")
+            position += 4 + length
+        length = int.from_bytes(raw[position:position + 4], "big")
+        return raw[position + 4:position + 4 + length]
+
+
+@dataclass(frozen=True, slots=True)
 class _EventLane:
-    bodies: Any  # Arrow immutable binary array or chunked array
+    bodies: Any  # bounded compressed bodies or legacy Arrow binary array
     selectors: tuple[_EventRead, ...]
 
     def materialize(self, row: int) -> RespondentEvent:
         from rawlsing_next.pre553_carrier_execution import materialize_public_object
 
         ref = self.selectors[row].ref
-        body = json.loads(self.bodies[row].as_py())
+        if isinstance(self.bodies, _CompressedBodies):
+            body_bytes = self.bodies.body_bytes(row)
+        else:
+            body_bytes = self.bodies[row].as_py()
+        body = json.loads(body_bytes)
         body.update(object_id=ref.object_id, content_hash=ref.content_hash)
         return materialize_public_object(body)
 
@@ -175,6 +211,13 @@ def _cache_directory() -> Path | None:
     return directory
 
 
+def _compress_body_chunk(bodies: Sequence[bytes]) -> tuple[bytes, int]:
+    import pyarrow as pa
+
+    payload = b"".join(len(body).to_bytes(4, "big") + body for body in bodies)
+    return pa.compress(payload, codec=_EVENT_BODY_CODEC, asbytes=True), len(payload)
+
+
 def _read_bodies(path: Path, key: str, selectors: tuple[_EventRead, ...]):
     import pyarrow as pa
     import pyarrow.parquet as pq
@@ -192,49 +235,105 @@ def _read_bodies(path: Path, key: str, selectors: tuple[_EventRead, ...]):
                     or schema.remove_metadata() != pa.schema([(_EVENT_BODY_COLUMN, pa.binary())])
                     or parquet.metadata.num_rows != len(selectors)):
                 return None
-            batches = []
+            chunks = []
+            starts = []
             offset = 0
-            for batch in parquet.iter_batches(columns=[_EVENT_BODY_COLUMN]):
+            for batch in parquet.iter_batches(
+                batch_size=_EVENT_BODY_CHUNK_EVENTS, columns=[_EVENT_BODY_COLUMN],
+            ):
                 column = batch.column(0)
+                bodies = []
                 for scalar in column:
                     if (offset >= len(selectors) or not scalar.is_valid
                             or sha256(scalar.as_buffer()).hexdigest() != selectors[offset].ref.content_hash):
                         return None
+                    bodies.append(bytes(scalar.as_buffer()))
                     offset += 1
-                batches.append(column)
+                if bodies:
+                    compressed, raw_size = _compress_body_chunk(bodies)
+                    starts.append(offset - len(bodies))
+                    chunks.append((compressed, raw_size, offset - len(bodies), len(bodies)))
             if offset == len(selectors):
-                return pa.chunked_array(batches, type=pa.binary())
+                return _CompressedBodies(tuple(chunks), tuple(starts), len(selectors))
     except (OSError, ValueError, pa.ArrowException):
         return None
     return None
 
+class _BodyCacheWriter:
+    """Bounded streaming writer for the existing raw-body Parquet/Zstd cache format."""
+
+    def __init__(self, path: Path, key: str):
+        import pyarrow as pa
+        import pyarrow.parquet as pq
+
+        self._schema = pa.schema([(_EVENT_BODY_COLUMN, pa.binary())]).with_metadata(
+            {_CACHE_METADATA_KEY: key.encode("ascii")}
+        )
+        fd, name = tempfile.mkstemp(prefix=".c11-events-", dir=path.parent)
+        self._staged = Path(name)
+        self._handle = os.fdopen(fd, "wb")
+        self._writer = pq.ParquetWriter(
+            self._handle, self._schema, compression="zstd", compression_level=3,
+        )
+        self._committed = False
+
+    def write_batch(self, bodies: Sequence[bytes]) -> None:
+        if not bodies:
+            return
+        import pyarrow as pa
+
+        table = pa.table({
+            _EVENT_BODY_COLUMN: pa.array(bodies, type=pa.binary()),
+        }, schema=self._schema)
+        self._writer.write_table(table, row_group_size=len(bodies))
+
+    def commit(self, path: Path) -> None:
+        self._writer.close()
+        self._handle.flush()
+        os.fsync(self._handle.fileno())
+        self._handle.close()
+        os.replace(self._staged, path)
+        self._committed = True
+
+    def abort(self) -> None:
+        if self._committed:
+            return
+        try:
+            self._writer.close()
+        except OSError:
+            pass
+        try:
+            self._handle.close()
+        except OSError:
+            pass
+        try:
+            self._staged.unlink(missing_ok=True)
+        except OSError:
+            pass
+
+
 
 def _write_bodies(path: Path, key: str, bodies) -> None:
     import pyarrow as pa
-    import pyarrow.parquet as pq
 
-    staged = None
+    writer = None
     try:
-        fd, name = tempfile.mkstemp(prefix=".c11-events-", dir=path.parent)
-        staged = Path(name)
-        table = pa.table({_EVENT_BODY_COLUMN: bodies}).replace_schema_metadata(
-            {_CACHE_METADATA_KEY: key.encode("ascii")}
-        )
-        with os.fdopen(fd, "wb") as handle:
-            pq.write_table(table, handle, compression="zstd", compression_level=3)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(staged, path)
+        writer = _BodyCacheWriter(path, key)
+        batch = []
+        for body in bodies:
+            batch.append(body)
+            if len(batch) >= _EVENT_BODY_CHUNK_EVENTS:
+                writer.write_batch(batch)
+                batch.clear()
+        if batch:
+            writer.write_batch(batch)
+        writer.commit(path)
     except (OSError, ValueError, pa.ArrowException):
-        # Storage is disposable. The live view still comes from the sealed release.
-        pass
+        if writer is not None:
+            writer.abort()
     finally:
-        if staged is not None:
-            try:
-                staged.unlink(missing_ok=True)
-            except OSError:
-                pass
-
+        if writer is not None:
+            writer.abort()
 
 def _compact_public_objects(
     release: C11LogicalRelease, *, physical_binding: Callable[[], Any],
@@ -306,17 +405,40 @@ def _compact_public_objects(
         path = directory / f"c11-events-{key[0]}.parquet"
         bodies = _read_bodies(path, key, selectors)
     if bodies is None:
-        batch_size = 4096
-        bodies = pa.chunked_array([
-            pa.array(
-                (canonical_json(event.semantic_projection()).encode("utf-8")
-                 for event in events[start:start + batch_size]),
-                type=pa.binary(),
-            )
-            for start in range(0, len(events), batch_size)
-        ], type=pa.binary())
+        chunks = []
+        starts = []
+        writer = None
         if path is not None:
-            _write_bodies(path, key, bodies)
+            try:
+                writer = _BodyCacheWriter(path, key)
+            except (OSError, ValueError, pa.ArrowException):
+                writer = None
+        try:
+            for start in range(0, len(events), _EVENT_BODY_CHUNK_EVENTS):
+                chunk_events = events[start:start + _EVENT_BODY_CHUNK_EVENTS]
+                raw_bodies = [
+                    canonical_json(event.semantic_projection()).encode("utf-8")
+                    for event in chunk_events
+                ]
+                compressed, raw_size = _compress_body_chunk(raw_bodies)
+                starts.append(start)
+                chunks.append((compressed, raw_size, start, len(raw_bodies)))
+                if writer is not None:
+                    try:
+                        writer.write_batch(raw_bodies)
+                    except (OSError, ValueError, pa.ArrowException):
+                        writer.abort()
+                        writer = None
+            if writer is not None:
+                try:
+                    writer.commit(path)
+                except (OSError, ValueError, pa.ArrowException):
+                    writer.abort()
+                    writer = None
+        finally:
+            if writer is not None:
+                writer.abort()
+        bodies = _CompressedBodies(tuple(chunks), tuple(starts), len(events))
     lane = _EventLane(bodies, selectors)
     return _CompactPublicObjects(
         release.release_ref, release.replay_manifest.ref, lane, tuple(entries), tuple(non_events),
