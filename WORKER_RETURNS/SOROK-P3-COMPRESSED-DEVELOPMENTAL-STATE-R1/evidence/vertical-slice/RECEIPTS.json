@@ -1,0 +1,89 @@
+{
+  "branch": "agent/sorok-p3-vertical-proof-harness-20261106-r1",
+  "candidate_commit": "PENDING_ARTIFACT_COMMIT",
+  "commands": [
+    {
+      "command": "python3 -m py_compile tests/p3_fixture_support.py tests/test_p3_vertical_slice.py run_p3_vertical_slice.py",
+      "detail": "syntax compiled; no tests executed",
+      "exit": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 run_p3_vertical_slice.py",
+      "detail": "DEPENDENT_EXECUTION_NOT_RUN_MISSING_RETURNED_STATE_STORE; no tests executed",
+      "exit": 3
+    },
+    {
+      "command": "pytest tests/test_p3_vertical_slice.py",
+      "detail": "NOT_RUN; missing returned state store; not silently skipped",
+      "exit": null
+    },
+    {
+      "command": "actual P2 batches/events",
+      "detail": "NOT_RUN; zero actual P2 events and zero batches",
+      "exit": null
+    },
+    {
+      "command": "git diff --check -- tests/p3_fixture_support.py tests/test_p3_vertical_slice.py run_p3_vertical_slice.py",
+      "detail": "no whitespace errors",
+      "exit": 0
+    },
+    {
+      "command": "opencode --version; python3 --version; uname -srm",
+      "detail": "opencode v2.0.22; Python 3.11.3; Darwin 22.3.0 x86_64",
+      "exit": 0
+    }
+  ],
+  "files": {
+    "git-diff-check.txt": {
+      "bytes": 0,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-slice/git-diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "py_compile.log": {
+      "bytes": 0,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-slice/py_compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run_p3_vertical_slice.py": {
+      "bytes": 2220,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/run_p3_vertical_slice.py",
+      "sha256": "3dfba30d870e309e98fd314c09dd377ebed3fbe55927b9f21b7a08a54f83922a"
+    },
+    "runner.log": {
+      "bytes": 585,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-slice/runner.log",
+      "sha256": "c5d3b831d37ae04476d590826e50774d1b96f69ba24e40c41b63e36f1c4da291"
+    },
+    "tests/p3_fixture_support.py": {
+      "bytes": 18825,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/p3_fixture_support.py",
+      "sha256": "065bbb41f58664be3364ac3b00d766dff4c5f0b48d429c188d52f42f724e9a89"
+    },
+    "tests/test_p3_vertical_slice.py": {
+      "bytes": 22648,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+      "sha256": "4dca978a565dc1061786d3f480591a0d84f78175452f80f643d105ab8125b88a"
+    }
+  },
+  "metrics": null,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "schema": "SOROK_P3_VERTICAL_RECEIPTS@1.0.0",
+  "scope": {
+    "actual_execution": false,
+    "actual_p2_events": 0,
+    "adp016_017_memory_or_claim": false,
+    "author": true,
+    "ci": false,
+    "independent_review": false,
+    "original_sav_read": false,
+    "p2_batches": 0,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "s3": false,
+    "sourcefree": true
+  },
+  "startup_commit": "40fd1311e689c3c2336cc0d1a5e00c3db8c3447e",
+  "status": "DEPENDENT_EXECUTION_NOT_RUN_MISSING_RETURNED_STATE_STORE",
+  "worker": "sorok-p3-vertical-proof-harness-r1"
+}

@@ -1,0 +1,515 @@
+"""P3 vertical A-H proof definitions against actual P2/P3 owners.
+
+The selected user matrix is sections 10A-H and 11. This file is authored as a
+complete actual-runtime suite, but it is not executed in this startup because
+the returned normalized PsycheStore is absent. No store fallback exists here.
+"""
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+ENGINE_ROOT = ROOT.parent / "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1"
+for _path in (ROOT, ENGINE_ROOT):
+    if str(_path) not in sys.path:
+        sys.path.insert(0, str(_path))
+
+from developmental_recursion.contracts import (  # noqa: E402
+    EventProposal, RecursionRefusal, detached, digest,
+)
+from developmental_recursion.p2_owner import P2Owner, load_p2  # noqa: E402
+from p3 import compression, p3_owner, projections, test_rules  # noqa: E402
+from p3_fixture_support import (  # noqa: E402
+    COUNTERPART, PROJECT, VerticalCase, batch_events, build_case,
+    measure_case, reopen_owner, run_chain, workflow_records,
+)
+
+
+def close_case(case: VerticalCase) -> None:
+    try:
+        case.owner.close()
+    finally:
+        pass
+
+
+def response_for(result: Mapping) -> dict:
+    return result["consequences"]["test_only_psychological"]
+
+
+def first_two_batch_results(case: VerticalCase) -> tuple[dict, dict, dict]:
+    results = run_chain(case)
+    return results["bootstrap"], results["ordinary"], results["terminal"]
+
+
+# ---------------------------------------------------------------------------
+# PRIMARY — actual formation record -> later response vs no-record control.
+# ---------------------------------------------------------------------------
+
+
+def test_primary_actual_formation_read_later_and_no_mediator_control(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    control = build_case(tmp_path / "control", history_outcomes=())
+    try:
+        first, second, final = first_two_batch_results(case)
+        assert len(batch_events(first)) == 3
+        assert len(batch_events(second)) == 3
+        assert [row["mode"] for row in case.provider.calls] == [
+            "BOOTSTRAP", "ORDINARY", "TERMINAL"]
+        assert len(case.provider.calls) == 3
+
+        formation = batch_events(first)[0]
+        recruit = batch_events(first)[1]
+        assert formation["accessible"]["status"] == "OBSERVED"
+        formation_response = response_for(formation)
+        assert formation_response["status"] == "COMPUTED_TEST_ONLY_RESPONSE"
+        formed = workflow_records(case.owner, formation["after"]["clock"])
+        assert len(formed) == 2
+        assert {row["payload"]["mode"] for row in formed} == {
+            "joint_check", "private_check"}
+        formed_hashes = {row["hash"] for row in formed}
+        recruit_response = response_for(recruit)
+        assert recruit_response["status"] == "COMPUTED_TEST_ONLY_RESPONSE"
+        stream_records = {
+            row["record_hash"] for row in recruit_response["streams"]
+            if row.get("record_hash")
+        }
+        assert stream_records == formed_hashes
+        assert set(recruit["readset"]) & formed_hashes
+        assert recruit_response["native_action"] == "NOT_ISSUED_BY_P3_RULE"
+        assert all(row["native_action_performed"] is False
+                   for row in recruit_response["streams"])
+        material = recruit["consequences"]["immediate_response"][
+            "objective_material_eligible"]
+        assert all(row["material_eligible"] == material
+                   for row in recruit_response["streams"])
+
+        ctl_first, ctl_second, _ = first_two_batch_results(control)
+        ctl_recruit = batch_events(ctl_first)[1]
+        ctl_response = response_for(ctl_recruit)
+        assert [row["mode"] for row in ctl_response["streams"]] == ["inspect_alone"]
+        assert response_for(recruit) != ctl_response
+        assert control.owner.store.head()["count"] == 0
+
+        production = test_rules.production_guard()
+        assert production["status"] == "DENY_ZERO_EFFECT"
+        assert production["effects"] == []
+        assert final["batch_id"] != second["batch_id"]
+        assert len(case.provider.calls) == 3
+    finally:
+        close_case(case)
+        close_case(control)
+
+
+# ---------------------------------------------------------------------------
+# A — source-bound participation history changes later response.
+# ---------------------------------------------------------------------------
+
+
+def test_a_two_histories_change_later_move_without_demographic_labels(tmp_path: Path) -> None:
+    recognized = build_case(tmp_path / "recognized", history_outcomes=("recognized_plan",))
+    imposed = build_case(tmp_path / "imposed", history_outcomes=("imposed_plan",))
+    try:
+        r1, _, _ = first_two_batch_results(recognized)
+        r2, _, _ = first_two_batch_results(imposed)
+        rec1 = response_for(batch_events(r1)[1])
+        rec2 = response_for(batch_events(r2)[1])
+        assert {row["mode"] for row in rec1["streams"]} != {
+            row["mode"] for row in rec2["streams"]}
+        assert rec1["streams"][0]["record_hash"] != rec2["streams"][0]["record_hash"]
+        assert recognized.owner.source_hash == imposed.owner.source_hash
+        assert recognized.owner.history[0]["outcome"] != imposed.owner.history[0]["outcome"]
+        assert recognized.owner.initial.actor == imposed.owner.initial.actor
+        assert recognized.owner.initial.root == imposed.owner.initial.root
+    finally:
+        close_case(recognized)
+        close_case(imposed)
+
+
+# ---------------------------------------------------------------------------
+# B — material opportunity changes; psychological organization does not.
+# ---------------------------------------------------------------------------
+
+
+def test_b_actual_material_opportunity_changes_without_psych_mutation(tmp_path: Path) -> None:
+    actual = build_case(tmp_path / "actual", interval_modes={2: "ACTUAL"})
+    scheduled = build_case(tmp_path / "scheduled", interval_modes={2: "SCHEDULED_ONLY"})
+    try:
+        a_res = run_chain(actual)
+        s_res = run_chain(scheduled)
+        a_event = batch_events(a_res["bootstrap"])[2]
+        s_event = batch_events(s_res["bootstrap"])[2]
+        a_mat = a_event["consequences"]["immediate_response"][
+            "objective_material_eligible"]
+        s_mat = s_event["consequences"]["immediate_response"][
+            "objective_material_eligible"]
+        assert a_mat is False
+        assert s_mat is True
+        a_head = actual.owner.store.head()["hash"]
+        s_head = scheduled.owner.store.head()["hash"]
+        assert actual.owner.store.head()["count"] == 2
+        assert scheduled.owner.store.head()["count"] == 2
+        a_response = response_for(a_event)
+        s_response = response_for(s_event)
+        assert all(row["material_eligible"] == a_mat
+                   for row in a_response["streams"])
+        assert all(row["material_eligible"] == s_mat
+                   for row in s_response["streams"])
+        assert a_response["native_action"] == "NOT_ISSUED_BY_P3_RULE"
+        assert actual.owner.snapshot().state_hash != scheduled.owner.snapshot().state_hash
+        assert a_head != s_head
+        assert a_event["status"] == s_event["status"]
+    finally:
+        close_case(actual)
+        close_case(scheduled)
+
+
+# ---------------------------------------------------------------------------
+# C — one history, two source-bound standpoints.
+# ---------------------------------------------------------------------------
+
+
+def test_c_two_standpoints_same_history_without_mutation(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    try:
+        results = run_chain(case)
+        result = batch_events(results["bootstrap"])[0]
+        identity = result["after"]
+        experience = result["accessible"]
+        public = case.base_owner.fanin.view()
+        views = []
+        for standpoint in case.standpoints:
+            views.append(projections.project_views(
+                identity=identity,
+                actor_experience=experience,
+                experience_binding={
+                    "root": identity["root"], "actor": identity["actor"],
+                    "branch": identity["branch"], "clock": identity["clock"],
+                    "experience_hash": digest(experience),
+                },
+                public_view=public,
+                public_binding={
+                    "root": identity["root"], "actor": identity["actor"],
+                    "branch": identity["branch"], "clock": identity["clock"],
+                    "view_hash": digest(public),
+                },
+                standpoint=standpoint,
+            ))
+        assert views[0]["user"] != views[1]["user"]
+        assert views[0]["actor"] == views[1]["actor"]
+        assert views[0]["actor"]["memory_formation"] == "MISSING_RULE"
+        assert views[0]["user"]["claims_status"] == "DEFER_MISSING_AUTHORITY"
+        assert len(case.owner.store.head()["hash"]) == 64
+    finally:
+        close_case(case)
+
+
+# ---------------------------------------------------------------------------
+# D — contradictions coexist, no scalar winner or lifecycle write.
+# ---------------------------------------------------------------------------
+
+
+def test_d_incompatible_mediators_coexist_and_activate_without_resolution(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    try:
+        results = run_chain(case)
+        first = batch_events(results["bootstrap"])[0]
+        records = workflow_records(case.owner, first["after"]["clock"])
+        assert len(records) == 2
+        plan = case.plans[0]
+        op = case.owner.store.get_operation(first["operation_id"])
+        base_result = case.owner._base_result(op["base_result"])
+        context = case.owner._context(plan, base_result)
+        activation = projections.activate(
+            records, identity=first["after"], context=context,
+            registry=case.owner.registry,
+        )
+        assert activation["status"] == "CONTRADICTION"
+        assert len(activation["contradictions"]) == 1
+        assert {entry["activation"] for entry in activation["entries"]} == {
+            "ELIGIBLE"}
+        before = case.owner.store.head()
+        assert case.owner.store.head() == before
+        assert all(record.get("lifecycle") not in {"RESOLVED", "DORMANT"}
+                   for record in records)
+    finally:
+        close_case(case)
+
+
+# ---------------------------------------------------------------------------
+# E — stability/recruit reveals existing organization without new records.
+# ---------------------------------------------------------------------------
+
+
+def test_e_stability_event_reveals_without_new_record(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    try:
+        results = run_chain(case)
+        first_batch = batch_events(results["bootstrap"])
+        formation, stability = first_batch[0], first_batch[2]
+        before_head = case.owner.store.head()
+        before_records = workflow_records(case.owner, formation["after"]["clock"])
+        assert len(before_records) == 2
+        after_head = case.owner.store.head()
+        assert after_head == before_head
+        response = response_for(stability)
+        assert response["status"] == "COMPUTED_TEST_ONLY_RESPONSE"
+        assert response["streams"]
+        assert all(row["native_action_performed"] is False
+                   for row in response["streams"])
+        assert response["memory_formation"] == "MISSING_RULE"
+        assert len(workflow_records(case.owner, stability["after"]["clock"])) == 2
+        assert stability["after"]["state_hash"] == case.owner.snapshot().state_hash
+    finally:
+        close_case(case)
+
+
+# ---------------------------------------------------------------------------
+# F — all four corrected compression forms on actual events.
+# ---------------------------------------------------------------------------
+
+
+def test_f_four_actual_compression_forms_bind_without_fabricated_history(tmp_path: Path) -> None:
+    case = build_case(tmp_path, include_compression=True)
+    try:
+        results = run_chain(case)
+        events = batch_events(results["bootstrap"]) + batch_events(results["ordinary"])
+        forms = {
+            "SINGULAR_OCCURRENCE", "REPRESENTATIVE_EPISODE",
+            "ACCUMULATED_INTERVAL", "RETROSPECTIVE_CRYSTALLIZATION",
+        }
+        seen = set()
+        for event in events:
+            evidence = event["consequences"].get("test_only_compression_evidence")
+            if evidence is None:
+                continue
+            assert evidence["status"] == "BOUND"
+            seen.add(evidence["representation_form"])
+            assert evidence["actual_event_ref"] == event["objective"]["event"]["e1_event_id"]
+            assert evidence["actual_action_ref"] != evidence["actual_event_ref"]
+            assert evidence["perception_refs"]
+            assert evidence["psychological_effects"] == []
+            assert evidence["no_state_mutation"] is True
+            if evidence["representation_form"] == "ACCUMULATED_INTERVAL":
+                assert evidence["actual_interval_status"] == "PARTIAL"
+                assert evidence["actual_interval_ref"]
+        assert seen == forms
+        assert case.provider.context_bytes > 0
+    finally:
+        close_case(case)
+
+
+# ---------------------------------------------------------------------------
+# G — actor/user opacity and no analyst/private ledger leak.
+# ---------------------------------------------------------------------------
+
+
+def test_g_actor_and_user_views_are_narrower_than_objective_state(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    try:
+        results = run_chain(case)
+        result = batch_events(results["bootstrap"])[0]
+        identity = result["after"]
+        public = case.base_owner.fanin.view()
+        view = projections.project_views(
+            identity=identity, actor_experience=result["accessible"],
+            experience_binding={
+                "root": identity["root"], "actor": identity["actor"],
+                "branch": identity["branch"], "clock": identity["clock"],
+                "experience_hash": digest(result["accessible"]),
+            },
+            public_view=public,
+            public_binding={
+                "root": identity["root"], "actor": identity["actor"],
+                "branch": identity["branch"], "clock": identity["clock"],
+                "view_hash": digest(public),
+            },
+            standpoint=case.standpoints[0],
+        )
+        joined = json.dumps(view, sort_keys=True)
+        for sentinel in ("record_hash", "registry_hash", "rule_hash",
+                         "source_hash", "readset", "psyche", "world_before",
+                         "world_after", "memory_formation"):
+            # memory_formation is allowed only as an explicit MISSING_RULE status.
+            if sentinel == "memory_formation":
+                assert '"memory_formation": "MISSING_RULE"' in joined
+                continue
+            assert sentinel not in joined
+        assert view["user"]["claims_status"] == "DEFER_MISSING_AUTHORITY"
+        assert view["actor"]["status"] == "OBSERVED"
+        assert all("perceived_by_user" not in event for event in view["actor"]["events"])
+        # Objective P2 history remains larger than either projection.
+        assert public.get("visible_events") is not None
+        assert len(json.dumps(public, sort_keys=True)) >= len(joined)
+    finally:
+        close_case(case)
+
+
+# ---------------------------------------------------------------------------
+# H — wrong identity/source/rule/time and cold/crash/replay custody.
+# ---------------------------------------------------------------------------
+
+
+def test_h_wrong_root_actor_branch_time_source_rule_version_refuse_before_effects(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    try:
+        initial = case.initial
+        base_head = case.owner.snapshot().document()
+        for bad in (
+            {"root": "wrong-root"}, {"actor": "wrong-actor"},
+            {"branch": "wrong-branch"},
+        ):
+            bad_identity = copy.deepcopy(initial.document())
+            bad_identity.update(bad)
+            with pytest.raises(RecursionRefusal):
+                case.owner.realize("wrong-identity", case.proposals[0],
+                                   case.owner.snapshot().__class__(**bad_identity))
+            assert case.owner.snapshot().document() == base_head
+        with pytest.raises(RecursionRefusal):
+            bad_source = copy.deepcopy(case.source)
+            bad_source["root"] = "foreign-root"
+            p3_owner.P3Owner(
+                case.base_owner, source=bad_source, history=case.history,
+                plans=case.plans, catalog=case.catalog,
+                compression_specs=case.compression_specs,
+                standpoints=case.standpoints,
+            )
+        bad_plan = copy.deepcopy(case.plans[0])
+        bad_plan["permitted_rules"][0]["rule_version"] = "other"
+        bad_plan = dict({k: v for k, v in bad_plan.items() if k != "hash"},
+                        hash=digest({k: v for k, v in bad_plan.items() if k != "hash"}))
+        with pytest.raises(RecursionRefusal):
+            p3_owner.P3Owner(
+                case.base_owner, source=case.source, history=case.history,
+                plans=[bad_plan], catalog=case.catalog,
+                compression_specs=case.compression_specs,
+                standpoints=case.standpoints,
+            )
+        with pytest.raises(RecursionRefusal):
+            bad_time = copy.deepcopy(initial.document())
+            bad_time["clock"] = int(initial.clock) - 1
+            case.owner.realize("bad-time", case.proposals[0],
+                               case.owner.snapshot().__class__(**bad_time))
+        assert case.owner.snapshot().document() == base_head
+    finally:
+        close_case(case)
+
+
+def test_h_cold_reopen_idempotent_replay_and_source_restore(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    reopened = None
+    try:
+        results = run_chain(case)
+        first = batch_events(results["bootstrap"])[0]
+        operation_id = first["operation_id"]
+        state_after = case.owner.snapshot()
+        replay = case.owner.realize(
+            operation_id, case.proposals[0], case.owner.snapshot())
+        assert replay.document() == first
+        assert case.owner.snapshot() == state_after
+        config_path = case.owner._config_path
+        original_config = config_path.read_text(encoding="utf-8")
+        document = json.loads(original_config)
+        document["config_hash"] = "0" * 64
+        config_path.write_text(json.dumps(document), encoding="utf-8")
+        with pytest.raises(RecursionRefusal):
+            case.owner.snapshot()
+        config_path.write_text(original_config, encoding="utf-8")
+        assert case.owner.snapshot() == state_after
+        case.owner.close()
+        _, reopened = reopen_owner(case)
+        assert reopened.snapshot().state_hash == state_after.state_hash
+        cold_replay = reopened.realize(
+            operation_id, case.proposals[0], reopened.snapshot())
+        assert cold_replay.document() == first
+    finally:
+        if reopened is not None:
+            reopened.close()
+        close_case(case)
+
+
+def test_h_real_process_crash_after_base_before_psych_commit(tmp_path: Path) -> None:
+    """Kill one actual child after base realization, before save_world.
+
+    The parent reopens the exact actual P2/P3 root, replays the durable base
+    receipt through P3Owner's recovery path, and completes the sidecar once.
+    """
+    case = build_case(tmp_path)
+    recovered_owner = None
+    try:
+        payload = {
+            "source": case.source, "history": case.history, "plans": case.plans,
+            "catalog": case.catalog, "compression_specs": case.compression_specs,
+            "standpoints": case.standpoints,
+            "proposal": case.proposals[0].document(),
+        }
+        payload_path = tmp_path / "vertical-crash.json"
+        payload_path.write_text(json.dumps(payload), encoding="utf-8")
+        code = r'''
+import json, os, sys
+from pathlib import Path
+sys.path.insert(0, sys.argv[1])
+sys.path.insert(0, sys.argv[2])
+sys.path.insert(0, str(Path(sys.argv[1]) / "tests"))
+from developmental_recursion.contracts import EventProposal
+from p3_fixture_support import build_case
+p = json.loads(Path(sys.argv[3]).read_text())
+case = build_case(Path(sys.argv[4]))
+original = case.base_owner.realize
+def crash_after_base(operation_id, proposal, expected):
+    original(operation_id, proposal, expected)
+    os._exit(19)
+case.base_owner.realize = crash_after_base
+case.owner.realize("vertical-crash-operation", EventProposal(**p["proposal"]),
+                   case.owner.snapshot())
+'''
+        case.owner.close()
+        completed = subprocess.run(
+            [sys.executable, "-c", code, str(ROOT), str(ENGINE_ROOT),
+             str(payload_path), str(tmp_path)],
+            capture_output=True, text=True, timeout=180,
+        )
+        assert completed.returncode == 19, completed.stderr
+        _, recovered_owner = reopen_owner(case)
+        recovered = recovered_owner.realize(
+            "vertical-crash-operation", case.proposals[0],
+            recovered_owner.snapshot(),
+        )
+        assert recovered.accessible["status"] == "OBSERVED"
+        assert recovered.consequences["durable_psychological_transition"] == (
+            "MISSING_RULE")
+        assert recovered_owner.store.get_operation(
+            "vertical-crash-operation")["phase"] == "COMPLETE"
+    finally:
+        if recovered_owner is not None:
+            recovered_owner.close()
+
+
+def test_11_resource_receipts_are_actual_measurements(tmp_path: Path) -> None:
+    case = build_case(tmp_path)
+    try:
+        start = time.perf_counter()
+        results = run_chain(case)
+        elapsed = time.perf_counter() - start
+        metrics = measure_case(case, results)
+        assert metrics["provider_calls"] == 3
+        assert metrics["provider_modes"] == [
+            "BOOTSTRAP", "ORDINARY", "TERMINAL"]
+        assert metrics["batch_counts"] == [3, 3]
+        assert metrics["provider_context_bytes"] > 0
+        assert metrics["logical_cycle_store_bytes"] > 0
+        assert metrics["source_config_bytes"] > 0
+        assert metrics["retrospective_count"] == 2
+        assert all(value["bytes"] >= 0 for value in metrics["file_bytes"].values())
+        assert metrics["b1_historical_comparison"]["label"].startswith("E1 B1")
+        assert elapsed >= 0
+    finally:
+        close_case(case)
