@@ -40,7 +40,7 @@ The regression models G's former resolver sequence as it reaches the wrapper aft
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r6 actual decision capture
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input cc0a0e39e.
+- Identity: codex/pyat-universal35-d-20261106-r1@a286fe469f9622f6370af8993fca283b2f1af2c4; input cc0a0e39e.
 - Function: existing decode admission called through recording delegating resolver; first captured decision is the decode-approved decision; final post-consumer decision material must equal it exactly.
 - Evidence: focused ABBA-shaped regression passes; G/R5 30-fact sourcefree positive receipt preserved; held-Y/selected-missing preserved.
 - Limits: actual original facts/E handshake NOT_RUN; no original current decision; no native/science/protected acceptance.
