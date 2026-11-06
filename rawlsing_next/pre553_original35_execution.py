@@ -31,9 +31,11 @@ from rawlsing_next.universal_grammar.types import (
 )
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_empirical_objects import (
-    RespondentEvent, exact_ref, semantic_hash,
+    RespondentEvent, canonicalize, exact_ref, semantic_hash,
 )
-from rawlsing_next.pre553_field_forge_empirical_ingress import envelope_material
+from rawlsing_next.pre553_field_forge_empirical_ingress import (
+    decode_empirical_fact, decode_empirical_query, envelope_material,
+)
 from rawlsing_next.source_configuration.factory import (
     build_source_backed_c11_repository_from_config,
     build_validated_c11_release_from_config,
@@ -440,18 +442,44 @@ def execute_requested_two_target_joints(plan: Any, *, bundle: Any,
                 "fact_ref": fact.ref.as_dict(),
                 "query_ref": query.ref.as_dict(),
             })
+        if len(fact_rows) != 1:
+            results.append({
+                "requested_operation_id": requested_id,
+                "conditioner_values": list(conditioner_values),
+                "status": "REFUSED",
+                "code": "TWO_TARGET_FACT_AMBIGUOUS_OR_MISSING",
+            })
+            continue
+        fact_row = fact_rows[0]
+        query = fact_row["query"]
+        query_targets = [exact_ref(ref, "query.target_refs").as_dict()
+                         for ref in query.target_refs]
+        request_binding_id = semantic_hash({
+            "requested_operation_id": requested_id,
+            "conditioner_item_id": pair.conditioner_item_id,
+            "target_item_id": pair.item_ids[0],
+            "conditioner_values": list(conditioner_values),
+            "conditioner_ref": query_targets[0],
+            "target_ref": query_targets[1],
+            "fact_ref": fact_row["fact_ref"],
+            "query_ref": fact_row["query_ref"],
+        })
         results.append({
             "requested_operation_id": requested_id,
             "conditioner_values": list(conditioner_values),
-            "status": "OK" if fact_rows else "REFUSED",
-            "code": None if fact_rows else "TWO_TARGET_FACT_NOT_PRODUCED",
+            "status": "OK",
+            "code": None,
             "conditioner_item_id": pair.conditioner_item_id,
             "target_item_id": pair.item_ids[0],
+            "conditioner_ref": query_targets[0],
+            "target_ref": query_targets[1],
+            "query_target_refs": query_targets,
+            "request_binding_id": request_binding_id,
             "joint_operation_id": joint_frontier.operations[0].op_id,
             "joint_target_order": [key.item_id for key in targets],
             "compilation_hash": compilation.content_hash,
-            "fact_refs": [row["fact_ref"] for row in fact_rows],
-            "query_refs": [row["query_ref"] for row in fact_rows],
+            "fact_refs": [fact_row["fact_ref"]],
+            "query_refs": [fact_row["query_ref"]],
             "result": result,
             "fact_rows": fact_rows,
         })
@@ -553,26 +581,72 @@ def consume_requested_joint_transport(path: str | Path, *,
         if request.get("status") != "OK":
             consumed.append(entry)
             continue
-        envelopes = list(request.get("envelopes") or ())
-        if not envelopes:
+        requested_values_raw = list(request.get("conditioner_values") or ())
+        if not requested_values_raw:
             entry["status"] = "REFUSED"
-            entry["code"] = "REQUESTED_JOINT_ENVELOPE_MISSING"
+            entry["code"] = "REQUESTED_CONDITIONER_VALUES_EMPTY"
             consumed.append(entry)
             continue
-        responses = [ingest_envelope(envelope) for envelope in envelopes]
-        profile_rows = []
-        for response in responses:
-            if response.get("state") != "CONDITIONAL_SUPPORT_PROFILE":
-                entry["status"] = "REFUSED"
-                entry["code"] = response.get("refusal_code") or "E_PROFILE_REFUSED"
+        requested_values = tuple(canonicalize(value)
+                                 for value in requested_values_raw)
+        if any(value is None or value == "" for value in requested_values):
+            entry["status"] = "REFUSED"
+            entry["code"] = "REQUESTED_CONDITIONER_VALUE_NONCANONICAL"
+            consumed.append(entry)
+            continue
+        envelopes = list(request.get("envelopes") or ())
+        if len(envelopes) != 1:
+            raise Original35ExecutionError("REQUESTED_JOINT_ENVELOPE_AMBIGUOUS")
+        envelope = envelopes[0]
+        fact = decode_empirical_fact(envelope.get("fact"))
+        query = decode_empirical_query(envelope.get("query"))
+        actual_fact_ref = fact.ref.as_dict()
+        actual_query_ref = query.ref.as_dict()
+        actual_targets = [exact_ref(value, "query.target_refs").as_dict()
+                          for value in query.target_refs]
+        if len(actual_targets) != 2:
+            raise Original35ExecutionError("REQUESTED_JOINT_QUERY_NOT_TWO_TARGET")
+        if entry["backing_fact_refs"] != [actual_fact_ref]:
+            raise Original35ExecutionError("REQUESTED_JOINT_FACT_REF_MISMATCH")
+        if entry["backing_query_refs"] != [actual_query_ref]:
+            raise Original35ExecutionError("REQUESTED_JOINT_QUERY_REF_MISMATCH")
+        if request.get("conditioner_ref") != actual_targets[0]:
+            raise Original35ExecutionError("REQUESTED_JOINT_CONDITIONER_REF_MISMATCH")
+        if request.get("target_ref") != actual_targets[1]:
+            raise Original35ExecutionError("REQUESTED_JOINT_TARGET_REF_MISMATCH")
+        expected_binding = semantic_hash({
+            "requested_operation_id": request.get("requested_operation_id"),
+            "conditioner_item_id": request.get("conditioner_item_id"),
+            "target_item_id": request.get("target_item_id"),
+            "conditioner_values": list(request.get("conditioner_values") or ()),
+            "conditioner_ref": actual_targets[0],
+            "target_ref": actual_targets[1],
+            "fact_ref": actual_fact_ref,
+            "query_ref": actual_query_ref,
+        })
+        if request.get("request_binding_id") != expected_binding:
+            raise Original35ExecutionError("REQUESTED_JOINT_BINDING_MISMATCH")
+        response = ingest_envelope(envelope)
+        if response.get("state") != "CONDITIONAL_SUPPORT_PROFILE":
+            entry["status"] = "REFUSED"
+            entry["code"] = response.get("refusal_code") or "E_PROFILE_REFUSED"
+            consumed.append(entry)
+            continue
+        profile = response.get("profile") or {}
+        profile_rows = list(profile.get("conditional_count_profile") or ())
+        by_condition = {}
+        ambiguous = False
+        for row in profile_rows:
+            key = canonicalize(row.get("condition_state"))
+            if key is None or key == "" or key in by_condition:
+                ambiguous = True
                 break
-            profile = response.get("profile") or {}
-            profile_rows.extend(profile.get("conditional_count_profile") or [])
-        if entry["status"] != "OK":
+            by_condition[key] = row
+        if ambiguous:
+            entry["status"] = "REFUSED"
+            entry["code"] = "AMBIGUOUS_OR_NONCANONICAL_CONDITIONER_STATE"
             consumed.append(entry)
             continue
-        by_condition = {str(row.get("condition_state")): row for row in profile_rows}
-        requested_values = tuple(str(v) for v in entry["conditioner_values"])
         unmatched = [value for value in requested_values
                      if value not in by_condition]
         if unmatched:
@@ -585,11 +659,14 @@ def consume_requested_joint_transport(path: str | Path, *,
             row = by_condition[value]
             selection_material = {
                 "requested_operation_id": entry["requested_operation_id"],
-                "conditioner_item_id": entry["conditioner_item_id"],
-                "target_item_id": entry["target_item_id"],
+                "conditioner_item_id": request.get("conditioner_item_id"),
+                "target_item_id": request.get("target_item_id"),
                 "conditioner_value": value,
-                "backing_query_refs": entry["backing_query_refs"],
-                "backing_fact_refs": entry["backing_fact_refs"],
+                "conditioner_ref": actual_targets[0],
+                "target_ref": actual_targets[1],
+                "backing_query_refs": [actual_query_ref],
+                "backing_fact_refs": [actual_fact_ref],
+                "request_binding_id": expected_binding,
                 "selected_row": row,
                 "producer_permission_ceiling": list(ceiling),
             }
@@ -601,6 +678,9 @@ def consume_requested_joint_transport(path: str | Path, *,
                 "target_counts": list(row.get("target_counts") or ()),
                 "selection_material": selection_material,
             })
+        if not entry["selections"]:
+            entry["status"] = "REFUSED"
+            entry["code"] = "REQUESTED_JOINT_NO_SELECTION"
         consumed.append(entry)
     return {
         "schema": "PRE553_ORIGINAL35_REQUESTED_JOINT_CONSUMPTION@1.0.0",

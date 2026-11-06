@@ -31,6 +31,7 @@ from rawlsing_next.pre553_field_forge_empirical_ingress import (
 )
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
+from rawlsing_next.pre553_empirical_objects import semantic_hash
 from rawlsing_next.tests.test_pre553_original35_operations import _fixture_config
 from rawlsing_next.tests.test_universal_workload import (
     AS_OF, HOST, PURPOSE, _frontier_bundle,
@@ -381,3 +382,44 @@ def test_existing_joint_engine_exact_requested_conditional_direction(tmp_path):
     with pytest.raises(Exception):
         consume_requested_joint_transport(
             broken_path, producer_permission_ceiling=ceiling)
+
+    for field, value in (
+        ("conditioner_ref", {"kind": "WRONG", "object_id": "wrong",
+                             "content_hash": "0" * 64}),
+        ("target_ref", {"kind": "WRONG", "object_id": "wrong",
+                        "content_hash": "0" * 64}),
+        ("fact_refs", [{"kind": "WRONG", "object_id": "wrong",
+                        "content_hash": "0" * 64}]),
+        ("query_refs", [{"kind": "WRONG", "object_id": "wrong",
+                         "content_hash": "0" * 64}]),
+    ):
+        broken = json.loads(Path(summary["path"]).read_text())
+        broken["requests"][0][field] = value
+        broken_path.write_text(json.dumps(broken))
+        with pytest.raises(Original35ExecutionError):
+            consume_requested_joint_transport(
+                broken_path, producer_permission_ceiling=ceiling)
+
+    for values, code in (
+        ([], "REQUESTED_CONDITIONER_VALUES_EMPTY"),
+        ([None], "REQUESTED_CONDITIONER_VALUE_NONCANONICAL"),
+        (["UNKNOWN"], "REQUESTED_CONDITIONER_VALUE_NOT_IN_PROFILE"),
+    ):
+        broken = json.loads(Path(summary["path"]).read_text())
+        request = broken["requests"][0]
+        request["conditioner_values"] = values
+        request["request_binding_id"] = semantic_hash({
+            "requested_operation_id": request.get("requested_operation_id"),
+            "conditioner_item_id": request.get("conditioner_item_id"),
+            "target_item_id": request.get("target_item_id"),
+            "conditioner_values": values,
+            "conditioner_ref": request.get("conditioner_ref"),
+            "target_ref": request.get("target_ref"),
+            "fact_ref": request["fact_refs"][0],
+            "query_ref": request["query_refs"][0],
+        })
+        broken_path.write_text(json.dumps(broken))
+        consumed_broken = consume_requested_joint_transport(
+            broken_path, producer_permission_ceiling=ceiling)
+        assert consumed_broken["requests"][0]["status"] == "REFUSED"
+        assert consumed_broken["requests"][0]["code"] == code

@@ -1,24 +1,62 @@
 {
+  "changed_sourcefree_cell_changes_dependent_row": true,
+  "cold_consumer_binding": "DERIVED_FROM_ACCEPTED_ENVELOPE_FACT_QUERY_PROFILE",
+  "direction": "JOINT targets conditioner-first, target-second",
+  "empty_conditioner_values": "REFUSED",
+  "measure": {
+    "design_ref": null,
+    "estimand": "RAW_OBSERVED_SAMPLE",
+    "kind": "SAMPLE",
+    "variance_policy": "NONE",
+    "weight_ref": null
+  },
+  "original_native_science_authority": false,
+  "requests": [
+    {
+      "conditioner_value": "0",
+      "denominator": 6,
+      "requested": "F2(B <- A)",
+      "target_counts": {
+        "0": 6,
+        "1": 0
+      }
+    },
+    {
+      "conditioner_value": "1",
+      "denominator": 6,
+      "requested": "F2(B <- A)",
+      "target_counts": {
+        "0": 2,
+        "1": 4
+      }
+    },
+    {
+      "conditioner_value": "0",
+      "denominator": 8,
+      "requested": "F2(A <- B)",
+      "target_counts": {
+        "0": 6,
+        "1": 2
+      }
+    },
+    {
+      "conditioner_value": "1",
+      "denominator": 4,
+      "requested": "F2(A <- B)",
+      "target_counts": {
+        "0": 0,
+        "1": 4
+      }
+    }
+  ],
+  "restore_exact": true,
+  "same_backing_joint_distinct_selected_results": true,
   "schema": "PRE553_ORIGINAL35_REQUESTED_JOINT_TRANSPORT@1.0.0",
   "sourcefree": true,
-  "direction": "JOINT targets conditioner-first, target-second",
-  "requests": [
-    {"requested": "F2(B <- A)", "conditioner_value": "0", "denominator": 6,
-     "target_counts": {"0": 6, "1": 0}},
-    {"requested": "F2(B <- A)", "conditioner_value": "1", "denominator": 6,
-     "target_counts": {"0": 2, "1": 4}},
-    {"requested": "F2(A <- B)", "conditioner_value": "0", "denominator": 8,
-     "target_counts": {"0": 6, "1": 2}},
-    {"requested": "F2(A <- B)", "conditioner_value": "1", "denominator": 4,
-     "target_counts": {"0": 0, "1": 4}}
-  ],
-  "same_backing_joint_distinct_selected_results": true,
-  "measure": {"kind": "SAMPLE", "estimand": "RAW_OBSERVED_SAMPLE",
-              "weight_ref": null, "design_ref": null, "variance_policy": "NONE"},
-  "changed_sourcefree_cell_changes_dependent_row": true,
-  "restore_exact": true,
+  "structural_grant": false,
+  "tampered_backing_refs": "REFUSED",
+  "tampered_role_refs": "REFUSED",
   "unknown_value_refused": true,
   "weighted_request_refused": true,
-  "structural_grant": false,
-  "original_native_science_authority": false
+  "zero_selection_ok": false
 }
