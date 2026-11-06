@@ -190,3 +190,12 @@ Ebddef0b5ca40b750fd51770d47df22f2973679b4/codef708b4688f6aebd408510aa33faca453bd
 ExistingG nonauthor launched exact serialization/CLI reviewjobpyat-universal35-e-cold-adapter-independent-review-20261106-r1 PID41616 undered80119dc. D currentauthor received exactABI/command via noReply200 for later actualhandshake, no source/fact fabrication. Three lanes A/D/G; no newkernel/service/controller or protected/native claim.
 
 PROGRAMMA_DELTA: exactE/code above, originalEauthor/distinctGreviewer; envelopeconstructor/hash/ref/replay/permission -> existingingress/profile/refusal; authorpositives/refusals recorded, independentNOT_RUN at intake. Existing S06/S-F5/gap/work-now/currentpair receive additive candidate evidence; authenticoriginalfirstconsumerNONE_VERIFIED, no structuralgrant/native/science/protectedadoption. NextGclosure then actualDfacthandoff, A/Dexistingworkcontinues.
+
+
+### D r4 governed-wrapper candidate; exact positive-path review
+
+D43d35eed654d2fc98ea0f176bf5c4bd92f524da1/codeea4fb3796faa3ad4635763dc653395b7c25e4407 connects routequalifiedF1/F2/F3H to existing bind/execute_governed_frontier and derivesunit/IDs; mandatoryresolver and postcurrentness flags. Author7+3+8PASS; the3executiontests are manifest/path/noresolver, not fullpositivewrapper proof. New7sources694ops683eligible11held is routequalifiedfrontier scope, distinct from historical20sources991nonF1scope;35fullplan accounted. Originalfacts/actualcurrentdecision remainNOT_RUN.
+
+F exact actual-wrapper/readboundary reviewjobpyat-universal35-d-r4-execution-independent-review-20261106-r1 PID43271 under e33852578; sourcefree positive must use productionwrapper/compiler, not mockedfacts. Alias coverage and exactdecision changes explicit targets. A/Gcontinueindependently, threeactual lanes.
+
+PROGRAMMA_DELTA: exactD/code above, originalauthor/distinctFreviewer; currentcompilerconnection codepresent/authornegative-manifesttests, actualpositive/fulloriginalfirstconsumerNONE_VERIFIED. ExistingS03.2/S-WORKLIST/gap/work-now/currentpair updated isolatedcandidate, no protected/native/scienceadoption. NextFpositivepath/verdict beforeacceptance, not anotherdesignreport or fabricatedoriginalresolver.
