@@ -1,0 +1,54 @@
+# PROGRAMMA PYAT — PRE553 authority-to-execution reclosure: single controlling door
+
+**Status (2026-11-06):** `MANDATORY_HARD_STOP__INDEPENDENT_EXHAUSTIVE_COURT_NOT_YET_RUN`. Prepared scope/reconnaissance, **NOT** the completed authority-to-first-consumer inventory or a passed audit.
+
+**User order:** Before further authority-dependent PRE553 Pyat code, recover exactly **every** authority file/read/row/decision used by legacy `V550 → V551 → V552` and `V550J → V551J → V552J`, and determine the exact neo-`rawlsing_next` first-consumer successor or explicit absence. No replacement pipeline whose only concept of authority is a synthetic or caller-provided `AuthoritySnapshot` without positive source-to-snapshot provenance.
+
+**Issue / stop gate:** [#716](https://github.com/maidiu/rawlsing/issues/716). **Prepared branch:** `research/programma-pyat-pre553-legacy-authority-callsite-recourt-20261106-r1`, frozen source base `9ba4764bef551b1ce498e5772d60b73d69337d4b`. Before implementation reverify actual HEAD and active writer leases. **Workers merely listed below have not been launched.** This package does not confer local data, scientific, structural or protected merger rights.
+
+## Start here — evidence with qualified significance
+
+| Evidence | Current supported finding | Evidentiary limitation |
+|---|---|---|
+| `data/ddm_build_copy/build_determinicity_wave_shard_v550.py:142–185` | Real V550 `_build_authority_receipt`: records exact FQRA path/hash/count, response map path/hash/count and **four overlay families**: first-pass, semantic, position-conditioning and directionality. Loads overlays through `load_family_overlay` for source/wave. | Receipt is a tracing point, not proof all semantics consumed; follow actual read→application→first reader and source differences. |
+| Same file `1335–1400` | Response-semantic match gate rejects empty/unmatched response maps, computes contract hash, prefetches source/response rows and prepares harmonized respondent cache; joint-registry gate precedes joined extraction. | Determine every remaining caller and source-specific fallback and state. |
+| `ddm_v550_question_relation_authority.py:28–34,298–307,564–610` | FQRA/QSMv2 and bounded QRA paths, exact file loader, scope/alias logic; environment root override exists. | Need all callsites, idempotence, version/priority/conflict and actual current use. |
+| `ddm_v550_response_semantics_authority.py:128–255` | Frozen 35-wave response authority and V551-scale registry require manifest+SHA and exact keys/count; no dynamic invented contract. | This code is legacy and not a proven `rawlsing_next` first consumer. |
+| `ddm_v551_directionality_expectation.py:17–74` | V551 expectation is derived from `APPLICABLE_BY_AUTHORITY` stamped bridge rows; missing direction/intensity is typed as incomplete. | Need upstream origin of stamp and downstream use; no new source authority minted by V551. |
+| `compile_v552_structural_ddm.py:165–215` | V552 verifies V551 producer scope/manifest, artifacts and structural input contract. | Manifest integrity is not itself authority issuance; trace all inherited meanings. |
+| `build_v550j_prepared_substrate.py:298–409` | Optional prepared Parquet cache keyed by authority-compendium, question family, response contract, view schema, compiler version; can be rebuilt or loaded. | Prior route had authority-conditioned cache; do not assume it contains entire governing estate. |
+| `ddm_v550j_registry_contract.py:52–107` | Joint registry statuses are executable/missing/non-executable; P3 and joint releases separately required. | Need accepted registry file and specific permission and object-local roles. |
+| `ddm_v551j_contract.py:259–335` | V551J packet contract binds response semantics, authority statuses, registry hash, upstream evidence and measurement signature. | Hashing a declared status is not independent truth/permission. |
+| `rawlsing_next/pre553_empirical_authority.py:162–270` and `pre553_empirical_query.py:296–445,685–740` | Current I03 demands exact immutable authority snapshots, operation, source-universe, object family, query and target-use fitness. | A snapshot **must come from real authority lineage**. No all35 historical FQRA+response/manual→snapshot binding has been proved. |
+| [FIABC-A02](https://github.com/maidiu/rawlsing/blob/836be4f98e821d7d510981aee7dfbbdc318f6f4b/WORKER_RETURNS/FIABC-A02/00_RETURN.md) | 27 exact authority records + authority-to-function map; terminal **`FIABC_A02_BLOCKED__SEMANTIC_AUTHORITY_ESTATE_NOT_PROVED`**. | This crucial return's files are **not** on protected PRE-MAIN. P10 prior global anti-omission closure also negative. |
+
+These 11 entries are *seeded observations only*, not exhaustive lines or completeness claims. See `01_VERIFIED_LEGACY_CALLSITE_SEEDS.csv`.
+
+## Canonical artifact contract (one place, no duplicate HQ)
+
+Workers shall fill **this directory**, not scatter terminal states through unrelated issues. Source evidence can live in independent isolated worker branches, but the independently received final graph and runnable proofs belong here.
+
+1. `01_VERIFIED_LEGACY_CALLSITE_SEEDS.csv` — verified opening entries; replace with a complete `01_LEGACY_AUTHORITY_CALLSITE_REGISTER.csv` at closure (one row per callsite, transitive helper, env/CLI/default, file/DB/Parquet input).
+2. `02_AUTHORITY_ESTATE_AND_LOCAL_MANIFEST.md` + eventual `02_AUTHORITY_ASSET_AND_LINEAGE_REGISTER.tsv` — path/SHA/authority status, scope, priority, lifecycle, and local host custody.
+3. `03_WORKER_COMMISSIONS_AND_WRITER_LEASES.md` — six bounded independent workstreams; do not confuse an issue/branch with a running worker.
+4. `04_HYBRID_AUTHORITY_BINDING_DECISION.md` — where physical authority resides, where executable snapshots/values are derived, and when optional Parquet/DuckDB caches may be used.
+5. `05_ACCEPTANCE_AND_NEGATIVE_PROOF.md` — exact all6-stage anti-omission and all35 first-consumer acceptance law.
+6. **Required at final receiving:** `03_LEGACY_TO_CURRENT_FIRST_CONSUMER_MATRIX.csv`, `05_NEGATIVE_MISSING_AND_CONFLICT_COURT.csv`, `08_AUTHORITY_PROVENANCE_GRAPH.jsonl`, `evidence/` source hashes, dependency graph and exact replays.
+
+**Required one-row callsite fields:** stage, producer, function/symbol, exact code path/ref/line range, call-chain, authority family, exact source file or database table, asset sha256, accepted revision/status, source/wave/grain, direct vs inherited/materialized, mandatory/claim-conditional, use and typed negative policy, resulting field/artifact and next consumer, cache key and invalidation, present neo successor symbol, equivalent ABI/proof SHA, status (`EXACT_REUSE / ADAPTED_PROVED / ABSENT / UNBOUND / HISTORICAL_ONLY / CONFLICT`), next competent owner.
+
+## STOP / GO
+
+**HOLD:** authority-dependent PRE553 new feature work, assertion of all35 native readiness, semantic coordinate synthesis, routing assumptions, inferred direction/intensity, pooling/weight defaults, and unreviewed protected integration.
+
+**Permitted independently:** exact sourcefree hygiene, current code preservation, no-semantics-dependent performance work, independent reviews, evidence collecting and code-diff without any claim of semantic acceptance.
+
+**Unfreeze only when:** all six original stages' callsites and transitive providers exhaustively checked; A02 27 authority records and nine blockers fate-qualified; every retained authority-bound function has exact current source-to-snapshot or materialized input and first-consumer evidence; original35 operation scopes and unsupported residues accounted; negative mutation/severance/restoration court independently accepted; source/semantic/FF/actor rights not promoted by inference; qualified protected receiving and PROGRAMMA currentness accepted. A typed `HOLD` is acceptable for a particular unsupported operation, not a global completion PASS.
+
+**Historical route:** The earlier A-route contemplated broader materialized substrate; later B-route re-read original source; user's selected architecture is **compact source-authoritative regenerable hybrid**, with optional keyed Parquet/Zstd, never a second universal compiler or revived SRC04 global-pair engine. Authority documents remain mandatory even if some exact, immutable, authority-conditioned projections are cached.
+
+## Final consumer check
+
+For any one exact original source and operation, a cold operator must be able to answer: **Which accepted document/row decided the meaning? Which version and SHA? Where exactly is it loaded? Which code enforces it before calculation? Which authoritative result, governed absence or typed refusal follows if it changes? Where is it read by the next stage?** If any answer is unknown, that operation is not silently made operational.
+
+**Do not equate** original survey bytes, R157 source config, 18,467 planned operations, 35 fixture releases, authority snapshots constructed in tests, or Field Forge envelope typing with historical authority integration.
