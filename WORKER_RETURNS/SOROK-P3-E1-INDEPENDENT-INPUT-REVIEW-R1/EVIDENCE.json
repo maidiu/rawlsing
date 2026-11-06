@@ -1,0 +1,125 @@
+{
+  "schema": "SOROK_P3_E1_INDEPENDENT_INPUT_REVIEW_EVIDENCE@1",
+  "subject": "ee1ff298fe7e57277c34a5af16df33165743d84f",
+  "pr": 735,
+  "subject_tree": "5af145f2b0192636aba7adc6944813ef4fb703a5",
+  "startup_commit": "5f30f4f897e7636349586ac76468a89738a6d424",
+  "startup_e1_tree": "5af145f2b0192636aba7adc6944813ef4fb703a5",
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "branch": "review/sorok-p3-e1-input-20261106-r1",
+  "verdict": {
+    "engineering": "ACCEPT_SCOPED_TEST_ONLY_B1_COMPATIBILITY_RECONNAISSANCE",
+    "p2_integration": "NOT_DEMONSTRATED_NOT_ACCEPTED",
+    "science": "HOLD",
+    "authority": "HOLD",
+    "declined_plan_elements": [
+      "psych_effect field in P2Owner proposal grammar",
+      "C9 objective_material_eligible as psychological consumer",
+      "selection_basis/historical_scope/representativeness/compression_note as P2 proposal fields",
+      "lifecycle operations without explicit issued predicates or with automatic mutation",
+      "production registry entry/native issuance"
+    ]
+  },
+  "commands": [
+    {
+      "id": "nine-probe-tests",
+      "command": "cd <exact-E1-scratch>/WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe && PYTHONDONTWRITEBYTECODE=1 python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py",
+      "result": "9 passed in 0.46s",
+      "log": "logs/e1-pytest-nine.log"
+    },
+    {
+      "id": "run-probe",
+      "command": "cd <exact-E1-scratch>/WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe && PYTHONDONTWRITEBYTECODE=1 python3 -B run_probe.py",
+      "result": "exit 0; 9 tests; positive joint_check:caretaker; control inspect_alone:caretaker; guard DENY_ZERO_EFFECT",
+      "log": "logs/e1-run-probe.log",
+      "receipt": "logs/e1-independent-probe-receipt.json"
+    },
+    {
+      "id": "independent-direct-witness",
+      "command": "cd <exact-E1-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B e1_positive_control_cold_refusal.py",
+      "result": {
+        "positive_statuses": ["REALIZED", "NO_CHANGE", "REALIZED"],
+        "positive_event_hashes": [
+          "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+          "b54f9838f8f33f5fc1161ecbab6a2645cdc189c4e05a398fbfff6586492b08d5",
+          "5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d"
+        ],
+        "mediator_id": "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765",
+        "mediator_record_hash": "c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495",
+        "positive_event3": {"activity": "joint_check:caretaker", "recruited": ["c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495"]},
+        "control_event3": {"activity": "inspect_alone:caretaker", "recruited": [], "same_event3_hash": true},
+        "cold_snapshot_equal": true,
+        "cold_history_equal": true,
+        "cold_mediator_count": 1,
+        "cold_response_count": 3,
+        "refusal": {"code": "B1_SOURCE_REF_MISMATCH", "state_same": true, "occurrences": 0, "operations": 0, "batches": 0}
+      },
+      "log": "logs/e1-positive-control-cold-refusal.log"
+    },
+    {
+      "id": "source-hash-check",
+      "command": "recomputed all E1 engine_files pins and vendored B1 SHA-256",
+      "result": "all 14 engine pins match; B1 SHA-256 478b9897...; B1 Git blob 94ffc528...",
+      "log": "logs/native-p2-owner-check.log",
+      "structured_log": "logs/source-pin-check.json"
+    }
+  ],
+  "positive_control": {
+    "positive": {
+      "owner_db_bytes": 94208,
+      "journal_bytes": 98304,
+      "state_json_bytes": 15220,
+      "records_json_bytes": 23239,
+      "history_json_bytes": 23361,
+      "mediator_count": 1,
+      "responses": 3,
+      "transitions": 1,
+      "occurrences": 3,
+      "joint_receipts": 3,
+      "operations": 3,
+      "batch_wall_seconds": 0.051491,
+      "cold_reopen_seconds": 0.0058,
+      "model_calls": 0,
+      "provider_calls": 0
+    },
+    "control": {
+      "owner_db_bytes": 86016,
+      "journal_bytes": 94208,
+      "state_json_bytes": 8501,
+      "records_json_bytes": 21746,
+      "history_json_bytes": 21867,
+      "mediator_count": 0,
+      "responses": 3,
+      "transitions": 0,
+      "occurrences": 3,
+      "joint_receipts": 3,
+      "operations": 3,
+      "batch_wall_seconds": 0.041735,
+      "model_calls": 0,
+      "provider_calls": 0
+    }
+  },
+  "scaling": [
+    {"events": 3, "owner_db_bytes": 94208, "state_json_bytes": 15334, "responses": 3, "mediators": 1, "transitions": 1, "per_event_ms": 8.694},
+    {"events": 10, "owner_db_bytes": 217088, "state_json_bytes": 28713, "responses": 10, "mediators": 1, "transitions": 1, "per_event_ms": 10.946},
+    {"events": 30, "owner_db_bytes": 548864, "state_json_bytes": 66953, "responses": 30, "mediators": 1, "transitions": 1, "per_event_ms": 17.041},
+    {"events": 60, "owner_db_bytes": 1064960, "state_json_bytes": 124313, "responses": 60, "mediators": 1, "transitions": 1, "per_event_ms": 23.067}
+  ],
+  "source_hashes": {
+    "e1_tree": "5af145f2b0192636aba7adc6944813ef4fb703a5",
+    "b1_sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+    "b1_git_blob": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
+    "p2_owner_sha256": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+    "engine_sha256": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+    "contracts_sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "model_cycle_sha256": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5"
+  },
+  "limitations": [
+    "Isolated B1 SQLite checkpoint, actor child, adapter-label root/branch, synthetic prehistory and TEST_ONLY rules; not P2 S47 psychology.",
+    "P2Owner still has no psych rows in state_hash, no psych writer and no later psych consumer; P2 full owner suite NOT_RUN.",
+    "B1 39-test author court and #704 45/19 engine courts were not independently rerun; nine E1 probe tests plus direct positive/control/cold/refusal were.",
+    "Stored receipt current_head is parent 0d6baf55, not final subject ee1ff298; exact-subject test independently passes 9/9.",
+    "Exact per-event milliseconds vary between E1 prose, 06 findings, stored receipt and independent run; storage/state shape is stable and 06 discloses single-run.",
+    "No native CAN/ADP science, no independent B, no human validity, no production registry entry, no protected receiving."
+  ]
+}

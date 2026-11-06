@@ -1,0 +1,25 @@
+== positive ==
+statuses ['REALIZED', 'NO_CHANGE', 'REALIZED']
+event_hashes ['abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d', 'b54f9838f8f33f5fc1161ecbab6a2645cdc189c4e05a398fbfff6586492b08d5', '5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d']
+record state hashes [('event1', 'c28d6ccb925e39cd9ba270d9b0632c4adb00e60fe799bc558e3885838ca3e9f0', '48d118515a5558bfcbb1eb674156f97e90a12070d48cf7f425ba76fe1c6c9fea'), ('event2', '48d118515a5558bfcbb1eb674156f97e90a12070d48cf7f425ba76fe1c6c9fea', 'd082f85d2a3bbdd5827cf455e26d483fb7c62bfbfb0a398777ec19acc73111fb'), ('event3', 'd082f85d2a3bbdd5827cf455e26d483fb7c62bfbfb0a398777ec19acc73111fb', '0bd9a3249f2f42a4a71326610c70a9d085283a01b626f8ef8921dad88e5bf872')]
+mediator_ids ['994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765']
+mediator_record_hashes ['c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495']
+event3 ['joint_check:caretaker'] ['c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495']
+event1_accessible {'actor': 'child', 'actor_surface': {'actions': ['compare_current_plan:caretaker'], 'origin_explanation': 'NOT_ACCESSIBLE'}, 'grade': 'TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE', 'memory_formation': 'TEST_ONLY_FIXTURE_NOT_NATIVE', 'native_science': 'NOT_ISSUED', 'schema': 'B1_ACTOR_ACCESSIBLE_RESPONSE@1', 'status': 'RESPONSE_TRANSACTION_COMMITTED', 'uptake': [{'affective': ['recognized'], 'counterpart': 'caretaker', 'propositional': 'UNDECIDED_ATTRIBUTED_ASSERTION', 'stream': 'd1cbc85654dd112eafb71a1b5c8650a4b2151b25739b07ece8be4fc4bbf7ce1a', 'words': 'Let us check what can be secured.'}]}
+cold snapshot equal True
+cold history equal True
+cold mediator_count 1
+cold response_count 3
+== control ==
+proposals_equal True
+statuses ['IMMEDIATE_ONLY', 'IMMEDIATE_ONLY', 'IMMEDIATE_ONLY']
+event_hashes ['abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d', 'b54f9838f8f33f5fc1161ecbab6a2645cdc189c4e05a398fbfff6586492b08d5', '5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d']
+event3 ['inspect_alone:caretaker'] []
+mediator_count 0
+same_event3_hash True
+== refusal ==
+refusal B1_SOURCE_REF_MISMATCH
+state_same True
+occurrences 0
+operations 0
+batches 0

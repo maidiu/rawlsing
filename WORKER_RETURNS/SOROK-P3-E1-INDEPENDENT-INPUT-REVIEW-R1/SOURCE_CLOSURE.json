@@ -1,0 +1,64 @@
+{
+  "schema": "SOROK_P3_E1_INDEPENDENT_INPUT_REVIEW_SOURCE_CLOSURE@1",
+  "exact_subject": "ee1ff298fe7e57277c34a5af16df33165743d84f",
+  "subject_pr": 735,
+  "subject_tree": "5af145f2b0192636aba7adc6944813ef4fb703a5",
+  "startup_commit": "5f30f4f897e7636349586ac76468a89738a6d424",
+  "startup_e1_tree": "5af145f2b0192636aba7adc6944813ef4fb703a5",
+  "startup_equals_subject_tree": true,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "protected_is_ancestor": true,
+  "branch": "review/sorok-p3-e1-input-20261106-r1",
+  "e1_files_sha256": {
+    "00_RETURN.md": "cee10a97f4c6d1d662c95ba42ec88de8f54cf7bce2be39de7c5b6e9c11bdbbd7",
+    "01_CODE_REUSE_AND_SUPERSESSION.json": "e6def466f561f6a0e69f59ee6aa5f85cefef980d54bc664acd9b788cadb0ae15",
+    "02_DEVELOPMENT_OWNER_ABI_MATRIX.md": "728cce6b2ad3d1aca23c62f443d1d9f9a926303f1535a4cf7d824fbef70c448f",
+    "03_CAUSAL_FIRST_CONSUMER_PROOF.md": "a85f5a75fbf04da84a1e8ceac9bd278c75056307594ce150f7d68786b76018a5",
+    "04_SOURCE_SCIENCE_AND_NATIVE_HOLDS.md": "90577164d00cf76284ce23dacaed18fcfcc62cc2a7c2dae68f223a0e6ec05435",
+    "05_MINIMUM_P3_IMPLEMENTATION_PLAN.md": "508db84276eb1fa14ec1d8fd2f6ed3ccd212a98263636062c22edc1fbe79a6af",
+    "06_RESOURCE_COST_FINDINGS.md": "03061b196261c1b43330e75efb212eee1ce883ebb70f03c9aebe60fdb437a772",
+    "probe/b1_owner_adapter.py": "c56732ebcde27225c0797d7b11133684a92189612d319336f3a999d8978d51ad",
+    "probe/run_probe.py": "3364d5315bea5c95b10eb8d34c8f23a5cced3ee61e0f701a74f4a276a1742a11",
+    "probe/test_b1_owner_adapter.py": "daf5d25cd91c2c66d295e254077e2e6d3f607161fc759d5a15cd07f5be0f92e0",
+    "probe/source_pin.json": "62d2d7fa021ea587ceda3e2ce2104cc43f5c38bd53ee089b4a28d64c932bb142"
+  },
+  "b1_source": {
+    "commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+    "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+    "git_blob": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
+    "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+    "vendored_path": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py",
+    "vendored_sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+    "exact_bytes_match_commit": true
+  },
+  "native_receiving_hashes": {
+    "p2_owner.py": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+    "engine.py": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+    "contracts.py": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "model_cycle.py": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5"
+  },
+  "source_pins": {
+    "all_14_engine_files_match": true,
+    "probe_file_hashes_match": true,
+    "e1_tree_matches_exact_subject": true
+  },
+  "receipt_provenance": {
+    "stored_receipt_current_head": "0d6baf55987eb43fb03efed20fc3681c37f93374",
+    "stored_receipt_current_branch": "research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1",
+    "final_subject": "ee1ff298fe7e57277c34a5af16df33165743d84f",
+    "final_commit_adds": [
+      "exact pre-event DB restoration assertion",
+      "qualified missing-rule status wording"
+    ],
+    "independent_exact_subject_run": "9 passed in 0.46s",
+    "note": "The stored receipt records its parent commit; the exact final subject test/evidence tree is present and independently executed. This is a provenance limitation, not a functional failure."
+  },
+  "commands": [
+    "git rev-parse ee1ff298:WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1 -> 5af145f2...",
+    "git rev-parse HEAD:WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1 -> 5af145f2...",
+    "git diff --name-status ee1ff298:<E1> HEAD:<E1> -> empty",
+    "git merge-base --is-ancestor c852d751... HEAD -> 0",
+    "shasum -a 256 vendored B1 -> 478b9897...",
+    "git hash-object vendored B1 -> 94ffc528..."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "SOROK_P3_E1_INPUT_REVIEW_PASSPORT@1",
+  "job_id": "sorok-p3-e1-input-review-r1",
+  "reviewer_role": "distinct independent input reviewer for SOROK P3-E1",
+  "intelligence_level": "bounded source-consistency/engineering input review",
+  "session": {
+    "opencode_session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+    "opencode_agent": "build",
+    "parent_session": null,
+    "subagents_spawned": 0,
+    "session_title": "Independent engineering review of recursion engine",
+    "session_directory": "/Users/matthewsmith/Desktop/Rawlsing"
+  },
+  "model": {
+    "provider": "opencode-go",
+    "id": "deepseek-v4.1-flash",
+    "variant": "max",
+    "harness": "OpenCode",
+    "verification": "OpenCode session_v2.model and current assistant message data.model both record provider opencode-go, id deepseek-v4.1-flash, variant max; launch argv carries opencode-go/deepseek-v4.1-flash#max",
+    "actual_effort_label": "max",
+    "quota": "UNKNOWN_NOT_MEASURED"
+  },
+  "runtime": {
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "sqlite_cli": "3.39.5",
+    "os": "macOS"
+  },
+  "independence": {
+    "reviewer_distinct_from_e1_author": true,
+    "basis": "Independent OpenCode reviewer session; E1 author was a different worker/turn. No own implementation authorship of E1 or S1. Previous unrelated recursion recovery/review does not make this reviewer the E1 author.",
+    "subject_inputs_retained_unchanged": true
+  },
+  "sanitization": {
+    "respondent_data_read": false,
+    "original_sav_read": false,
+    "ui_automation": false,
+    "model_account_provider_region_change": false,
+    "sensitive_data": "none",
+    "secrets_or_tokens": "none"
+  },
+  "write_scope": "WORKER_RETURNS/SOROK-P3-E1-INDEPENDENT-INPUT-REVIEW-R1/ only; subject/runtime/PROGRAMMA/other review roots were not edited.",
+  "scratch_note": "The exact E1 tree was extracted with git archive to a scratch copy; an empty .git directory was added only so the probe's git helper could run. All executed source is exact E1/startup tree 5af145f2....",
+  "exact_subject": "ee1ff298fe7e57277c34a5af16df33165743d84f",
+  "subject_pr": 735,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "branch": "review/sorok-p3-e1-input-20261106-r1"
+}
