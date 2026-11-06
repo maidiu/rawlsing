@@ -133,3 +133,162 @@ complete and does not cancel selected capabilities.
 - P3/P4: **NOT_BUILT / not warranted by this evidence.**
 - Qualified guide write-through remains Pyat HQ's duty; this is not a second guide.
 MD
+
+---
+
+# Phase-3 preparation: exact W03/W04 function decision and next proof plan
+
+**State:** artifact-only preparation while independent R03 reviews
+`409be32f7e4b4b961a360be1c8f44a17b5c62173`. No production code, test, cache
+default, guide, source, or authority was changed or executed in this phase. No
+timed benchmark or heavy fixture generation was run.
+
+## Function-level decision
+
+| Requirement | Current input -> typed output | Present current function(s) / first consumer | Exact gap found | Preparation disposition |
+|---|---|---|---|---|
+| **W03/P01** economical exact sealed C11 realization/reconstruction (`ROADMAP:S03.2`, `S-C11`) | `GovernedC11Projection` + `PhysicalSourceIncidence`/`ExactPhysicalCellStream` -> sealed `C11LogicalRelease` (full native tuples, then `_CompactPublicObjects` when pyarrow installed) -> `C11Repository`/`_ReleaseIndex` -> exact I03 facts/replay | `PhysicalSourceIncidence.iter_batches` (`physical_decoder:156`), `project_c11_candidate_from_physical_cells` (`facade:502`), `validate_c11_source_release` (`ingest:743`), `_compact_public_objects` (`execution_view:239`), exact `_EventLane.materialize`/`resolve_object_exact` (`execution_view:77,95`; `repository:107`), `CarrierNeutralResearchExecutor.execute_i03` (`carrier:430`) | **No exact function gap at the current first consumer.** Cold construction is not streaming/lazy: all native events/coords/weights and sorted public/internal tuples are materialized before compact conversion. This is an **unproven economic cold-memory concern**, not a proven defect. | `PRESENT_COMPOSED_NO_BUILD` for exact function; `EVIDENCE_OR_ABI_READY` for controlled cold-construction economy. Do **not** build journal/streaming now. |
+| **W04/P02** default regenerable source/release/authority/version-keyed compact Parquet/Zstd acceleration or competent-owner-accepted equivalent (`ROADMAP:S03.2`, `S-C11`) | sealed compact release + source/decoder/projection/release/replay/member-root + current authorities -> in-memory compact Arrow; optional persistent authenticated Parquet/Zstd event-body slot; or full exact `ParquetC11Carrier` release reconstruction; or R4/R5 components | default `_compact_public_objects` in `build_source_backed_c11_repository` (`facade:679-683`); optional `_cache_directory`/`_read_bodies`/`_write_bodies` (`execution_view:160,178,212`); `ParquetC11Carrier.persist/reopen` (`parquet_carrier:249,279`); R4 writer/reader (`r4_compaction:127,256`); R5 codec (`r5_codec:180`) | **No missing codec/carrier function.** The precise gap is **default activation/policy**: with `RAWLSING_C11_ACCELERATOR_DIR` unset, `_cache_directory` returns `None`, so no persistent Parquet/Zstd slot exists even though the in-memory compact Arrow view is built. `ParquetC11Carrier` is a full logical carrier, not the compact hot view; R4/R5 are components, not a complete release cache. | `PRESENT_COMPOSED_NO_BUILD` for exact capability; `OWNER_DECIDE` for default activation or functional-equivalence acceptance. Do **not** silently cancel the selected capability or declare all W03/W04 complete. |
+
+### Exact first conditions
+
+- **W03/P01 first failure:** none found for exact realization/reconstruction at
+  the current sourcefree first consumer. The first falsifier is a controlled
+  same-sealed-release run at representative scale that exceeds authorized
+  memory/disk/time while still requiring the same exact facts/replay. The observed
+  code shape alone does not prove that failure.
+- **W04/P02 first failure:** unset `RAWLSING_C11_ACCELERATOR_DIR` -> no persistent
+  compressed slot (`execution_view:160-175`); also a legacy in-memory
+  `PhysicalSourceIncidence` without a decoder digest -> `physical_binding()` returns
+  `None` (`facade:667-680`, `execution_view:292`) -> no persistent body slot even
+  with a root. These are configuration/transport conditions, not source truth,
+  authority, or canonical-identity defects.
+
+## Default-policy alternatives for HQ (no invented owner acceptance)
+
+The user's no-blanket-cache constraint remains binding. The worker does not select
+an owner policy. HQ may choose among:
+
+1. **Keep current opt-in form (no production change).** Default in-memory compact
+   Arrow remains; persistent Parquet/Zstd is written only when the caller configures
+   a private root. This preserves no-blanket-cache and already provides the exact
+   optional capability.
+2. **Explicit workload/caller opt-in.** Add a bounded per-workload accelerator
+   root/policy parameter with private checkout-local storage, size cap, atomic
+   manifest, and selective invalidation. Still no process-global default.
+3. **Default private root with bounded retention.** This would satisfy a literal
+   “default persistent” reading but conflicts with the current no-blanket-cache
+   constraint unless HQ/user explicitly authorizes it. Not recommended by this
+   worker from present evidence.
+4. **Owner-accepted functional equivalence.** Accept the current default in-memory
+   compact realization plus the optional authenticated persistent cache as the
+   competent-owner equivalent. This requires the competent owner's decision, not
+   this return.
+
+All four leave exact source/authority/ref/replay and per-operation native fact
+semantics unchanged. None justifies a new persistent canonical carrier.
+
+## Smallest controlled same-sealed-release comparison
+
+This is a **plan only**. It must not run while the R03 reviewer has the exclusive
+timed runner; HQ schedules it after R03 timing returns.
+
+### Fixed inputs
+
+Use existing constructors/fixtures only: one `GovernedC11Projection` and one
+sealed release per scale, reused by every variant. Start with the existing small
+route-B/source-backed fixture and phase-1 `N=200`, then `N=1000`; run `N=3000` only
+if the smaller pair leaves a real decision. Do not use original35 or new
+architecture.
+
+### Variants (read-only/benchmark only)
+
+- **V0 full native:** call `build_validated_source_backed_c11_release_from_stream`
+  (or the existing `build_validated_c11_release`) directly, keep full
+  `C11LogicalRelease`, build `C11Repository` + `_ReleaseIndex` + first consumer.
+- **V1 current compact:** `build_source_backed_c11_repository` (default
+  `_compact_public_objects`), same repository/index/executor.
+- **V2 current persistent compact cache:** V1 with a private cache root; cold,
+  warm, delete, corrupt, stale, revoked; existing cache tests reused.
+- **V3 full exact carrier reconstruction:** `ParquetC11Carrier.persist` on V0,
+  `reopen`, `C11Repository`, `_ReleaseIndex`, first consumer.
+- **V4 R4/R5 component evidence:** R4 writer/reader exact event reconstruction and
+  R5 typed-value roundtrip; component-only, not a full release path.
+
+Every variant uses the same sealed release/workload and the same query/predicate
+oracles. No A/B/C architecture comparison.
+
+### Phase isolation and metrics
+
+Separate phases, measured from separate cold processes where RSS is compared:
+
+1. source/fixture construction (`C_source_fixture`) — once, excluded from variant
+   comparison;
+2. decoder/physical incidence (`C_source`);
+3. candidate construction (`C_projection`);
+4. complete I02 validation (`C_validate`);
+5. compact conversion (`C_cache_build`/`C_compact`);
+6. repository/index build (`C_repository`/`C_index`);
+7. query execution (`C_query`);
+8. native fact/replay/provenance construction (`C_fact`/`C_provenance`).
+
+Record wall, CPU, peak RSS in Darwin bytes, cold/warm, index builds, object/event/
+selector counts, event-body JSON bytes, Parquet/Zstd bytes and temp bytes, cache
+HIT/DELETE/CORRUPT/STALE/REVOKED counters, and exact fact/ref/replay/provenance
+equality. Do not compare a compact run and a native run with different fixture
+construction or process setup; phase-1 “compact vs native memory” was explicitly
+not a controlled memory proof.
+
+### Cases
+
+Reuse phase-1/2 oracles and existing fixtures for: 2/3/4-target AND joints;
+common/routed/asymmetric risk; forward/reverse conditionals; XOR/minority;
+observed zero/zero support/valid empty; MISSING/DK/REFUSAL/IAP/NOT_ASKED; unsupported
+topology; `NOT_ADMINISTERED` contract limitation; different releases/universes/
+authority/weights; cache HIT/DELETE/CORRUPT/STALE/REVOKED; and the actual first
+reader `CarrierNeutralResearchExecutor.execute_i03` plus issued Batch/I05/P41
+equivalence where affected.
+
+### Acceptance / stop rules
+
+- Any changed fact/cell/denominator/typed negative/provenance/replay vs V0 is RED.
+- Cache absence or rebuild may change only cost, never meaning/reachability.
+- W03/P01: if controlled cold RSS/time is within accepted bounds, no build; record
+  `NO_UNCOVERED_FUNCTION`. Only a demonstrated cold-construction failure justifies a
+  bounded streaming/lazy candidate/replay adapter.
+- W04/P02: if the current optional persistent cache plus default in-memory compact is
+  accepted as functionally equivalent, no build; if default activation is required,
+  implement the smallest explicit opt-in/config policy, not a new engine.
+- No declaration of complete W03/W04 from a tiny cache-hit fixture or a favorable
+  scale alone.
+
+## Minimal allowlist for the next proof
+
+- **Benchmark/test only:** a bounded script under this C4 return/tools using the
+  existing V0–V4 constructors and existing first consumer; no production edits.
+- **If W03/P01 cold failure is proved:** smallest read-only comparison/adaptation
+  candidates are `pre553_c11_ingest.py` and `pre553_c11_repository.py` (streaming
+  candidate/replay or lazy exact view). No historical journal resurrection.
+- **If W04/P02 default activation is selected:** smallest candidates are
+  `pre553_source_backed_c11_facade.py` and `_pre553_c11_execution_view.py`
+  (explicit policy/root/config), not `pre553_parquet_carrier.py` or R4/R5 rewrites.
+- **Do not touch without measured deficit:** `pre553_parquet_carrier.py`,
+  `pre553_r4_compaction.py`, `pre553_r5_codec.py`, compact selector ABI v1,
+  authority/source/permission semantics, or canonical identities.
+- **No resurrection:** historical `pre553_r5_compact_carrier.py` /
+  `pre553_r5_c11.py` are absent at this branch and are not a build ticket; the
+  current compact Arrow view, `ParquetC11Carrier`, R4 and R5 are the present
+  successors/components.
+
+## PROGRAMMA_DELTA addendum
+
+- `ROADMAP:S03.2`, W03/P01: **exact function present/composed; controlled cold
+  construction economy unproven; no mandatory streaming/journal rewrite.**
+- `ROADMAP:S03.2`, W04/P02: **exact compact/carrier/codec capability present;
+  default persistent activation is a policy/owner decision, not a missing engine.**
+- `S-C11`: **source/authority/ref/replay types unchanged; cache presence never grants
+  authority; no blanket default.**
+- `ROADMAP:S03.3`, W05/P03/P04: **phase-2 grouped implementation and per-operation
+  fact/replay cuts retained unchanged.**
+- No guide write-through, protected merge, native/original35/science/Sorok claim, or
+  production change is made by this preparation.

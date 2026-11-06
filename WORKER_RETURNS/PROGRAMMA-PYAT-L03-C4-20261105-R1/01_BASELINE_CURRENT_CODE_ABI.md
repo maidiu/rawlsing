@@ -334,3 +334,142 @@ redone per operation. No weighted result or final fact is cached.
 - Exact Phase-2 parity entries are appended to
   `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl`; paired costs and scope/counter
   receipts are appended to `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl`.
+
+---
+
+## Phase-3 preparation (artifact-only, no production/test change): W03/W04 physical chain
+
+**State:** preparation while independent R03 reviews frozen implementation
+`409be32f7e4b4b961a360be1c8f44a17b5c62173`. No production file, test, cache
+default, source, or guide was changed in this preparation. No timed benchmark,
+heavy fixture generation, or test suite was executed in this phase.
+
+### Exact current physical consumer chain
+
+The actual current chain at the assigned base is:
+
+```
+decode_sav/decode_dta -> PhysicalSourceIncidence.iter_batches/iter_cells
+  (pre553_physical_decoder.py:156,209; bounded physical cell stream)
+ -> build_source_backed_c11_repository / build_validated_source_backed_c11_release
+  (pre553_source_backed_c11_facade.py:601,656; pre553_physical_c11_bridge.py:24)
+ -> project_c11_candidate_from_physical_cells
+  (pre553_source_backed_c11_facade.py:502)
+  -> native RespondentEvent/coordinate/weight Python lists; then tuple(sorted(...))
+     at facade:558-560
+ -> validate_c11_source_release
+  (pre553_c11_ingest.py:743)
+  -> full I02 validation; public_objects/internal_records tuples sorted at
+     c11_ingest:777-778; sealed C11LogicalRelease
+ -> _compact_public_objects
+  (_pre553_c11_execution_view.py:239; called from facade:679)
+  -> _CompactPublicObjects/_EventLane selectors + immutable Arrow event-body array;
+     optional Parquet/Zstd cache at view:289-320
+ -> C11Repository._commit_validated / resolve_object_exact
+  (pre553_c11_repository.py:115,107)
+ -> CarrierNeutralResearchExecutor.execute_i03
+  (pre553_carrier_execution.py:430) through Route B
+  (pre553_route_b_production.py:495,582) or issued Batch
+  (pre553_issued_workload.py:280,335,340)
+```
+
+The compact Arrow conversion is explicitly **after** complete I02 validation of a
+fully materialized native candidate. The current default therefore is
+`full native candidate -> sealed full logical release -> compact execution view`;
+it is not a streaming/lazy I02 validation path. That source shape is a potential
+cold-construction peak, not by itself proof of a production defect.
+
+### Selected October capability mapping
+
+Reference: `315251451a6d112fb312a6a2e80b096d345c5de6`:
+`01_EXECUTIVE_ADJUDICATION.md` §§3–6; `04_TARGET_ARCHITECTURE...` §§H–J;
+`05_FULL_WORK_BREAKDOWN...` W03/W04; `06_PERFORMANCE...` cost model and
+storage/invalidation; `11_DECISION_AND_OBLIGATION_LEDGER.json` W03/W04/P01/P02.
+
+- **W03/P01:** efficient exact C11 realization/reconstruction and the logical
+  repository seam: exact sealed identity, compact/lazy working view, exact
+  on-demand object reconstruction, preserved I02 validation/closure/replay,
+  no mandatory 7.91 GB new-source derived bundle, memory lifecycle.
+- **W04/P02:** hybrid compact respondent-coherent transient plus a default
+  regenerable source/decoder/authority/projection/version-keyed compressed
+  Parquet/Zstd accelerator with manifests and atomic invalidation, or a
+  competent-owner-accepted functionally equivalent physical realization.
+- The October `P01`/`P02` entries are design/status records; the `P01-S3`
+  journal/streaming build order is **proposed and not launched**. It is not
+  adopted here as a mandatory rewrite.
+
+### Function-level present/absent comparison
+
+| Capability piece | Current actual function / ABI | Input -> typed output | Actual first consumer | Preparation finding |
+|---|---|---|---|---|
+| Bounded physical cell stream | `PhysicalSourceIncidence.iter_batches(batch_size)` / `iter_cells(batch_size)` (`physical_decoder:156,209`); `ExactPhysicalCellStream` (`facade:249`) | source snapshot + layout -> tuple[`PhysicalCell`] batches, exact row/slot ordinals | `build_validated_c11_release` / facade builder | **Present**; decoder does not retain a complete cell-object universe for chunk-capable readers. |
+| Governed candidate construction | `project_c11_candidate_from_physical_cells` (`facade:502`) | physical cells + `GovernedC11Projection` -> `C11SourceReleaseCandidate` | I02 validation | **Present but full-candidate materialized**: events/coords/weights are Python lists/tuples; no streaming candidate. |
+| Complete I02 validation | `validate_c11_source_release` (`ingest:743`) via `build_validated_c11_release` (`physical_c11_bridge:24`) | candidate -> sealed `C11LogicalRelease`, exact public/internal tuples, `ReplayManifest` | `build_source_backed_c11_repository`; exact object consumers | **Present**; full public tuple sorted at `ingest:777-778`. |
+| Compact execution view | `_compact_public_objects` (`execution_view:239`) | sealed release -> `_CompactPublicObjects`/`_EventLane` selectors + Arrow event-body array, or `None` if pyarrow absent | `build_source_backed_c11_repository:679`; I03 index/event selection | **Present and default when pyarrow is installed**; not a lazy I02 admission mechanism. |
+| Exact on-demand object reconstruction | `_EventLane.materialize` (`execution_view:77`), `_EventLocator.materialize` (`:95`), `_CompactPublicObjects.__getitem__` (`:142`), `C11Repository.resolve_object_exact` (`repository:107`) | exact ref -> full `RespondentEvent`/canonical object; absent/ambiguous ref fails closed | repository consumers, `_ReleaseIndex`, first reader where exact object needed | **Present** for the compact release; exact event and non-event resolution is available. |
+| Logical repository seam | `C11Repository._commit_validated` (`repository:115`) | sealed release -> exact ref map/repository; `staged = dict(self._objects)` copy at `:127` | all I03/I05/Batch consumers | **Present exact function**; full dict staging/copy remains an economic concern, not a demonstrated consumer failure. |
+| Default compact Arrow | `build_source_backed_c11_repository` always attempts `_compact_public_objects` (`facade:679-683`) | sealed release -> in-memory compact view | first consumer | **Present**; this is the current default in-memory compact realization. |
+| Optional persistent compressed compact cache | `_cache_directory` (`execution_view:160`), `_read_bodies` (`:178`), `_write_bodies` (`:212`), key at `:294-307` | sealed compact release + source/decoder/projection/release/replay/member-root + current authorities -> authenticated Parquet/Zstd event-body slot | `build_source_backed_c11_repository` when env/root configured | **Present optional**, not default; env unset means no persistent cache. |
+| Exact full logical carrier | `ParquetC11Carrier.persist` (`parquet_carrier:249`), `reopen` (`:279`) | sealed full `C11LogicalRelease` -> canonical Zstd Parquet relations; exact full release reconstruction | carrier/direct-session consumers, not default I03 hot view | **Present and exact**, but it is a full logical carrier, not the compact analytical hot view; using it as default would duplicate full C11 state. |
+| R4 typed event table | `R4RespondentEventWriter` (`r4_compaction:127`), `R4RespondentEventReader.reconstruct` (`:256,286`) | `RespondentEvent` stream -> compact typed Parquet event rows -> exact `RespondentEvent` | event-table/query consumers; tested exact reconstruction | **Present component**; event-only, not a complete release/replay carrier. |
+| R5 typed value codec | `R5TypedValueCodec.encode/decode` (`r5_codec:180,195,239`) | typed Python value -> versioned typed carrier -> exact value | physical decoder normalization and typed carriers | **Present component**; not a release/cache owner. |
+
+### W03/P01 exact function decision
+
+- **No exact function-level gap was found for the current first consumer.** The
+  physical stream, governed candidate, complete I02 validation, sealed release,
+  compact execution view, exact on-demand event resolution, repository exact lookup,
+  and `CarrierNeutralResearchExecutor.execute_i03` are all present and composed.
+- The selected *economy* claim is **not proved**: the current cold path materializes
+  all native events/coords/weights before validation (`facade:502,558-560`), then
+  materializes sorted public objects (`ingest:777-778`), then compacts. Without a
+  controlled same-release measurement this is an **unproven potential cold-memory
+  peak**, not a mandatory rewrite.
+- **Disposition:** `PRESENT_COMPOSED_NO_BUILD` for exact W03/P01 function;
+  `EVIDENCE_OR_ABI_READY` only for cold construction economy. A streaming/lazy I02
+  adapter or journal is **not** justified by code shape alone.
+- **First actual failure:** none in the current sourcefree first-consumer function.
+  The first falsifier would be a controlled same-sealed-release run at representative
+  scale that fails authorized memory/disk/time while the exact same facts/replay are
+  required; that would justify a bounded streaming candidate/replay adapter.
+
+### W04/P02 exact function decision
+
+- The exact **codec/carrier capabilities** are present: default in-memory compact
+  Arrow (`_compact_public_objects`), optional authenticated Parquet/Zstd event-body
+  cache with strict key/atomic write/read validation and HIT/DELETE/CORRUPT/STALE/
+  REVOKED behavior, full exact `ParquetC11Carrier.persist/reopen`, R4 typed event
+  table, R5 typed value codec.
+- The **default persistent compressed acceleration** is not present as a default:
+  `_cache_directory()` returns `None` when `RAWLSING_C11_ACCELERATOR_DIR` is unset
+  (`execution_view:160-175`), so no persistent Parquet/Zstd slot is written; the
+  in-memory compact Arrow view is still built. This is the precise first gap.
+- `ParquetC11Carrier` is not a substitute for the selected compact hot view: it
+  persists full public/internal objects and reconstructs a full logical release; it
+  is compatible exact reconstruction/carrier, but making it default would create a
+  second full persistent carrier. R4/R5 are components, not a complete release cache.
+- **Disposition:** `PRESENT_COMPOSED_NO_BUILD` for the exact compressed/regenerable
+  capability (optional), with `OWNER_DECIDE` for whether default activation or
+  functional-equivalence acceptance is required. This is a policy/default-delivery
+  decision, not a missing codec/engine. No blanket cache default is asserted.
+- **First actual failure:** env/root unset means no persistent slot; a legacy
+  in-memory `PhysicalSourceIncidence` without a decoder digest also yields
+  `physical_binding() is None` (`facade:667-680`, `execution_view:292`), so no
+  persistent body slot even with an env root. Both are configuration/transport
+  conditions, not source truth or authority defects.
+
+### Legacy/current and carrier comparison
+
+- Historical A/R5 `pre553_r5_compact_carrier.py` and `pre553_r5_c11.py` are **not
+  current files** at this branch. Their absence alone is not a gap: current
+  `_compact_public_objects`, `ParquetC11Carrier`, R4 and R5 already cover distinct
+  present functions. Do not resurrect the historical symbols by name.
+- `ParquetC11Carrier` is current, exact, and tested for persist/reopen, corruption,
+  stale root, direct DuckDB session, and exact public/internal/replay equality. It
+  is compatible with the current sealed release. It is **not** the compact I03 hot
+  view and must not be conflated with it.
+- R4 is current, exact for `RespondentEvent` reconstruction, and tested; it is an
+  event-table component. R5 is current and tested for typed values. A future
+  bounded adapter from R4/R5 into the compact view is possible only if a controlled
+  measurement proves the existing event-body lane is deficient; no such deficit is
+  shown here.
