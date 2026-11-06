@@ -1,0 +1,48 @@
+{
+  "commands": [
+    {
+      "command": "python3 WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ORIGINAL-READ-INPUT-20261106-R1/verify_local_binding.py",
+      "exit": 0,
+      "log": "verify_local_binding.log",
+      "log_sha256": "dd188cf788205e3a0f94802339eae4200d0e88514f81b8e4ef538080120465c9",
+      "result": "35 valid decisions; wrong host/purpose/consumer/scope/SHA refused; revoked and changed grant refused"
+    }
+  ],
+  "consumer_use": "D_ORIGINAL35_NATIVE_EXECUTION",
+  "effective_interval": "2026-11-06T00:00:00Z/2026-11-07T00:00:00Z",
+  "grant": {
+    "path": ".local-logs/pyat-universal35/original-read-input/local-engineering-read-grant.json",
+    "sha256": "9e433cd95600c0634b38a08781eea851086fc8208739a6f29e6c83bbe58a88c7"
+  },
+  "host": "oldMac.lan",
+  "limits": [
+    "local engineering RAW only",
+    "no native/science/actor/publication/export",
+    "private grant not committed",
+    "actual original facts not run in this resolution"
+  ],
+  "native_science_actor_publication_authority": false,
+  "original_source_bytes_read": false,
+  "purpose": "UNIVERSAL35_ORIGINAL_ENGINEERING_RAW",
+  "refusals": [
+    "host mismatch",
+    "purpose mismatch",
+    "consumer-use mismatch",
+    "semantic-scope mismatch",
+    "source-SHA mismatch",
+    "revoked grant",
+    "changed grant digest"
+  ],
+  "resolver_sha256": "b073c39daaedce269f8ffd2cba1c361b223b0b5c5878effa2ddd15f385507205",
+  "respondent_rows_or_native_keys_output": false,
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_LOCAL_READ_INPUT_VERIFICATION@1.0.0",
+  "semantic_use_scope": [
+    "RAW_OBSERVED_SAMPLE"
+  ],
+  "source_rows": 35,
+  "user_authorization": {
+    "path": "WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-ORIGINAL-READ-INPUT-20261106-R1/USER_ENGINEERING_READ_AUTHORIZATION.txt",
+    "sha256": "18b2b57188a91a4af25c53b67c0e1ff1c8b848ac823c2d3391a1a72e5517edb4"
+  },
+  "valid_decisions": 35
+}
