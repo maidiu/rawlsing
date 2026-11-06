@@ -1,0 +1,33 @@
+{
+  "actual_first_consumer": "HQ/D source-qualification correction intake; B/D current plan and D original execution remain independent",
+  "affected_existing_ids": [
+    "SRC01-SRC35",
+    "W00-W12",
+    "P01-P12",
+    "A/B/C/D/E source lanes"
+  ],
+  "clock": "no clock/replay or source-value mutation",
+  "conditional_unlocks": [
+    "D can preserve route-qualified RAW and type unknown-route operations correctly",
+    "B can repair F2/F3/F4 payload binding and return counts",
+    "A guide patch can use the source rows without changing code"
+  ],
+  "evidence": [
+    "01_SOURCE_35_ROWS.jsonl",
+    "02_HYB_25_CURRENTNESS.jsonl",
+    "03_HISTORICAL_LINEAGE.jsonl",
+    "04_B_PLAN_SOURCE_COMPARISON.json",
+    "06_ENVIRONMENT_PASSPORT.json"
+  ],
+  "function": "source-qualified reconciliation of all35 R157 source resources, 25 HYB currentness refs, historical V550/J-LiTS/WVS-SRC04/SRC17-P01-P06 lineage, and B/D planned classifications",
+  "identity": "PROGRAMMA-PYAT-UNIVERSAL35-F-20261106-R1",
+  "input_transform_typed_output": "R157 configs/exception ledgers + HQ custody metadata + HYB-01 + B plan evidence -> 35 source rows, 25 currentness rows, 13 lineage rows, and one route-qualification correction ledger",
+  "native_acceptance": false,
+  "next_action": "HQ forwards 04_B_PLAN_SOURCE_COMPARISON to D/B; D repairs route/F2-F4 lowering; F does not wait for D completion or claim native acceptance",
+  "permission": "sourcefree read-only; no source right, native grant, scientific issuance or protected mutation",
+  "protected_merge": false,
+  "reviewer_grade": "F source qualification only; no self-acceptance",
+  "root": "immutable R157/source metadata and current code inspection only; no original respondent data read",
+  "schema": "PROGRAMMA_DELTA@1.0.0",
+  "schema_id": "PROGRAMMA_PYAT_UNIVERSAL35_F_SOURCE_QUALIFICATION@1.0.0"
+}
