@@ -1861,3 +1861,10 @@ PROGRAMMA_DELTA: exactheads/grades above; missingreadtransportinput resolved und
 G193594a1a3805d947482b4aaea35a2bb031b414f ACCEPT_SCOPED_ENGINEERING at Dd054e4066715c0e87a063cb717cc9a6257a3933a/codea286fe469f9622f6370af8993fca283b2f1af2c4:actualsourcefreewrapperpositive/restore30facts15ops18candidates, ABBA/changed/revokedrefusals. Fcachedresolver FAILS livegrantrevocation/authchange; instructed strictfresh-load-eachresolve compositionPASS andmustbeused (changedgrant/auth/missingauthrefuse,valid35decisions). QualifiedresultdeliveredDnoReply200. No original/sourceS3/science/publication/protectedgrant.
 
 PROGRAMMA_DELTA: exactreview/D/F5e2cfcinput above; sourcefreeactualwrapper andexistinglocalengineeringtransport composition advance independentaxis, cachedinstanceexplicitnegative retained. S03.2/S-WORKLIST/gap/work-now/currentpair updated isolatedHQbranch; actualoriginalempiricalfirstconsumerNOT_YET_VERIFIED. Dgenuineoriginalexecution andA362compositestatefix active; dependenthandoff awaitsrealproducerreturn, no artificialcommission.
+
+
+### Exact ambiguous-state repair returned; same independent reviewer closing
+
+Acf44c5df67863c040ac2424e27413d0101917c40 changes362ambiguousprecise states toSOURCE_SPECIFIC_SPECIAL, omittedaddstate toINVALID_UNRESOLVED, accounts95declaredmissingtransitions. Author49PASS/0remainingprecisecomposites/0substantiveadditions, SRC31/R157/fixture/35denominators unchanged. Exact02_RETURN_R3.md preservesfullC11/nativeNOT_RUN. SameC independentclosurejobpyat-universal35-mapping-r3-independent-closure-20261106-r1 PID64373 under9d62764f6; D genuineoriginalexecution continues.
+
+PROGRAMMA_DELTA: exactAhead/originalAauthor/distinctC reviewer above; correctedsourceconfigstate candidate only,49authorPASS andpriorCnegative retained; actualoriginalempiricalconsumerNOT_YET_VERIFIED. S01.1/S-WORKLIST/gap/work-now/currentpair additivependingqualification, no protected/native/sciencepromotion. NextCclosure thenqualifiedDmappingintake ifneeded; currentoriginal09–15path unaffectedbytheseother-sourceentries.
