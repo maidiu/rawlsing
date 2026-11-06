@@ -7,3 +7,15 @@
 6. Source checks: 136 internal Markdown links previously zero broken; the appended NAVIGATION_CHECKS/README changes link to existing guide paths; 27/28 historical G1-A source paths verified at stated cuts, F6M path corrected to actual pending branch candidate.
 7. Remaining work is *not G2*: independent receiving sample, subsequent full GitHub code/asset attaching and maturity/seam sweep; optional targeted Library/mainMac only after material GitHub completion.
 8. Continue at [`WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md`](../../../WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md) and `README.md`; do not self-accept, commission further map authors or run source-native work from this guide.
+
+
+## L02 current k-way consumer candidate — 2026-11-05
+
+Branch `research/programma-pyat-r01r03-current-source-native-abi-qualification-20261105-r1`
+reuses current R01/R03/C11/I03/I05/Batch, with a bounded C1 primary query/fact
+selection repair. Exact true 3-target conditioned joint and inverse conditional
+reach E41/C1/N10E at sourcefree scope. R02 independent acceptance and protected
+receiving remain pending. Entry:
+`WORKER_RETURNS/PROGRAMMA-PYAT-L02-CURRENT-ABI-20261105-R1/00_RETURN.md`.
+Next operation: independent R02 review of the final frozen candidate head.
+No original35/source science, survey design, N11/N12 or actor authority is added.
