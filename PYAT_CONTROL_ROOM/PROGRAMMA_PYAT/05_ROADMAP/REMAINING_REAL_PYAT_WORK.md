@@ -1,5 +1,7 @@
 # Current Execution Agenda — PROGRAMMA Pyat B00 (2026-11-05; ordered S0–S1 candidate)
 
+> **CURRENT PROTECTED RECEIVING — CAS4 2026-11-06:** The universal35 master recovery, 35 R157 roster, 25-function hybrid crosswalk, binding overnight Codex goal and reference-audit are now permanently linked through [the five-document dossier](PRE553_UNIVERSAL35_RECOVERY_20261106_R1/00_MASTER_RECOVERY_AND_CURRENT_STATE.md), protected by [#709](https://github.com/maidiu/rawlsing/pull/709) at `728b3b8aed7609abbe1f9245ccd307484a604265` (**documentary only**). This is the P0 front door **above** the historical A01–A16 agenda; no new separate backlog. Current actual engineering A/B/C/D/E code/first-consumer review remains separate and not automatically merged. See [paired progress rev8](../../CURRENT_PROGRESS.md) and preserve original 62/82/49 and FIABC 144/3.
+
 
 ### Exact current code, planned-payload consumer and configuration distinction
 
