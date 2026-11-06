@@ -1,0 +1,39 @@
+{
+  "positive": {
+    "state": "CONDITIONAL_SUPPORT_PROFILE",
+    "profile_present": true,
+    "relation_ref": "2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855",
+    "structural_grant": false
+  },
+  "cold_subprocess_equals_direct": true,
+  "alias_equals_direct": true,
+  "changed_counts": {
+    "first_condition_denominator": 4,
+    "profile_changed": true,
+    "relation_ref_changed": true
+  },
+  "permission_narrowing": {
+    "producer": ["FIELD_FORGE_RELATION_PRODUCTION", "OTHER"],
+    "relation": ["FIELD_FORGE_RELATION_PRODUCTION"],
+    "result": "profile preserves both ceilings"
+  },
+  "refused": [
+    "tampered_fact_content_hash",
+    "tampered_fact_object_id",
+    "tampered_replay_fact_ref",
+    "wrong_envelope_schema",
+    "missing_replay",
+    "missing_provenance",
+    "missing_permissions",
+    "empty_producer_permission"
+  ],
+  "permission_widening": "TYPED_REFUSAL",
+  "normalization": {
+    "missing_optional_object_id": "computed by existing constructor",
+    "missing_optional_content_hash": "computed by existing constructor",
+    "grade": "caller metadata copied; no permission/profile/structural effect"
+  },
+  "no_eval_pickle_source_lookup": true,
+  "authentic_d_fact": "NOT_RUN",
+  "raw_rows_published": false
+}
