@@ -1,0 +1,101 @@
+{
+  "schema": "SOROK_DEVELOPMENTAL_RECURSION_CONTEXT_RECHECK_EVIDENCE@1",
+  "subject": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+  "subject_parent": "668161c654077adf89be193ab1399daef65e34d1",
+  "protected_baseline": "33c40a315d3c231cb2021bd8e60f3261547efa62",
+  "branch": "review/sorok-recursion-context-preflight-20261106-r1",
+  "review_scope": "R2 language-context grounding delta only",
+  "commands": [
+    {
+      "id": "focused-target",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py::test_invalid_language_context_is_refused_before_actual_interval",
+      "result": "1 passed in 8.21s after exact restoration",
+      "log": "logs/context-preflight-restore.log"
+    },
+    {
+      "id": "focused-owner-suite",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py",
+      "result": "5 passed in 29.56s",
+      "log": "logs/p2-owner-focused.log"
+    },
+    {
+      "id": "string-context-field-counterpart",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B reproductions/repro_string_context_pre_effect.py",
+      "result": "refused P2_LANGUAGE_CONTEXT_SCHEMA; state_same True; clock 222; intervals 0; ops 0; batches 0; events 0; same input retry refused",
+      "log": "logs/string-context-pre-effect.log"
+    },
+    {
+      "id": "later-proposal-invalid-context",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B reproductions/repro_invalid_context_later.py",
+      "result": "string/list/empty-dict/milieu-list/milieu-empty -> P2_LANGUAGE_CONTEXT_SCHEMA; unknown -> P2_LANGUAGE_CONTEXT_UNSUPPORTED; every case state_same True, intervals 0, ops 0, batches 0, events 0",
+      "log": "logs/later-proposal-invalid-context.log"
+    },
+    {
+      "id": "native-positive-cold",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B reproductions/repro_native_context_positive_cold.py",
+      "result": "default omitted/null -> workshop; explicit workshop -> workshop; explicit family -> family; all performed True/language ACCEPTED; cold reopen preserves the event S43 context",
+      "log": "logs/native-positive-cold-reopen.log"
+    },
+    {
+      "id": "later-proposal-valid-context",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B reproductions/repro_later_valid_context.py",
+      "result": "event1 workshop, event2 family, event3 workshop; all performed/language ACCEPTED; verify True; clock 240",
+      "log": "logs/later-proposal-valid-context.log"
+    },
+    {
+      "id": "registry-module-identity",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B reproductions/repro_context_modules.py",
+      "result": "preflight s43.registry is the same module as s43.session.S43Session in the S47 MRO; schema S43_FINITE_EXPRESSIVE_REPERTOIRE_REGISTRY@1; hash d6773bc6...; milieus family/public/workshop; native context workshop",
+      "log": "logs/s43-module-identity.log"
+    },
+    {
+      "id": "public-known-context-limit",
+      "command": "cd <exact-scratch> && PYTHONDONTWRITEBYTECODE=1 python3 -B reproductions/repro_public_known_context_limit.py",
+      "result": "event status REALIZED; performed False; accessible HELD; s43_refusal S43_SOURCE_BOUND_REFUSAL:S43_EXPRESSION_CONTEXT_UNSUPPORTED; clock 228; intervals 1",
+      "log": "logs/public-known-context-limit.log"
+    },
+    {
+      "id": "preflight-sever",
+      "command": "exact scratch copy: remove the 11-line language-context preflight block, run the focused target",
+      "result": "1 failed; owner clock 226 != 222 (the old field failure)",
+      "log": "logs/context-preflight-sever.log"
+    },
+    {
+      "id": "preflight-restore",
+      "command": "restore exact p2_owner.py bytes (fd98a757...) and run the focused target",
+      "result": "1 passed in 8.21s",
+      "log": "logs/context-preflight-restore.log"
+    }
+  ],
+  "field_failure_before": {
+    "source": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/evidence/context_preflight_before.json (lead evidence at 668161c65)",
+    "input": "language_context string on first proposal with ACTUAL interval",
+    "error": "RecursionRefusal:OWNER_REALIZE_FAILED:ValueError:dictionary update sequence element #0 has length 1; 2 is required",
+    "before_clock": 222,
+    "after_clock": 226,
+    "state_changed": true,
+    "owner_operations": 1,
+    "review_result": "CLOSED at exact subject 81b01f654 by pre-effect P2_LANGUAGE_CONTEXT_SCHEMA"
+  },
+  "hashes": {
+    "p2_owner.py": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+    "tests/test_p2_owner.py": "860698c8e2adacb55542b13b7a943225656828c58ebb25fba95cda0557eeb77b",
+    "engine.py": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+    "model_cycle.py": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5",
+    "contracts.py": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "s43_registry_hash": "d6773bc699236d0e735e3692005c700db1aa9554fbbf024988822dd8652024c4"
+  },
+  "verdict": {
+    "engineering": "ACCEPT_SCOPED_R2_LANGUAGE_CONTEXT_DELTA",
+    "science": "HOLD",
+    "authority": "HOLD",
+    "original_418_revise": "HISTORICAL_UNCHANGED"
+  },
+  "limits": [
+    "Controlled sourcefree P2 fixture; no native CAN/ADP, original actor/human validity, native memory or independently owned B.",
+    "The public known-context case is a native S43 no-speech refusal, not the malformed-string field failure; intent-availability preflight is outside this scoped repair.",
+    "The focused test does not itself assert the S43 record context; the independent positive/cold probe does. Test-strengthening recommendation, not a delta failure.",
+    "Quota UNKNOWN.",
+    "Other scoped repairs (R1 actor access, R3 chronology, R2 history refs) are not re-adjudicated here."
+  ]
+}
