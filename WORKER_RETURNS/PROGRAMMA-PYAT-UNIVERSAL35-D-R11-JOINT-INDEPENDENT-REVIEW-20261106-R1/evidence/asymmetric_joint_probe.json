@@ -1,0 +1,101 @@
+{
+  "api_correct": "TYPED_REFUSAL",
+  "api_reversed": "CONDITIONAL_SUPPORT_PROFILE",
+  "arities": {
+    "1": 2,
+    "2": 1
+  },
+  "cold": {
+    "exit": 0,
+    "profile": [
+      {
+        "condition_denominator_support": 8,
+        "condition_state": "0",
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 6,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 2,
+            "target_state": "1"
+          }
+        ]
+      },
+      {
+        "condition_denominator_support": 4,
+        "condition_state": "1",
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "0"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 4,
+            "target_state": "1"
+          }
+        ]
+      }
+    ],
+    "state": "CONDITIONAL_SUPPORT_PROFILE"
+  },
+  "cold_profile": [
+    {
+      "condition_denominator_support": 8,
+      "condition_state": "0",
+      "target_counts": [
+        {
+          "cell_state": "OBSERVED_POSITIVE",
+          "joint_support_count": 6,
+          "target_state": "0"
+        },
+        {
+          "cell_state": "OBSERVED_POSITIVE",
+          "joint_support_count": 2,
+          "target_state": "1"
+        }
+      ]
+    },
+    {
+      "condition_denominator_support": 4,
+      "condition_state": "1",
+      "target_counts": [
+        {
+          "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "joint_support_count": 0,
+          "target_state": "0"
+        },
+        {
+          "cell_state": "OBSERVED_POSITIVE",
+          "joint_support_count": 4,
+          "target_state": "1"
+        }
+      ]
+    }
+  ],
+  "cold_state": "CONDITIONAL_SUPPORT_PROFILE",
+  "e_codec": {
+    "blob_sha256": "6acba005f71559b03f4bd2f6013ecd956835e983710eff81449c4c5b8d584ea0"
+  },
+  "fact_count": 3,
+  "joint_cells": 4,
+  "pair": {
+    "conditioner": "fixture.A",
+    "target": "fixture.B"
+  },
+  "query_target_refs": [
+    "urn:rawlsing:r56:question_native:R56R02-B",
+    "urn:rawlsing:r56:question_native:R56R02-A"
+  ],
+  "raw_d": 12,
+  "raw_n": 12,
+  "refusal_probes": {
+    "missing_permission": "FieldForgeEmpiricalIngressError",
+    "tampered_joint_cell": "FieldForgeEmpiricalIngressError",
+    "tampered_replay": "FieldForgeEmpiricalIngressError"
+  }
+}
