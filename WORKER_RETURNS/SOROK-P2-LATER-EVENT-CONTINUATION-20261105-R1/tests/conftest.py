@@ -18,19 +18,38 @@ def shipped():
 
 
 @pytest.fixture(scope="session")
-def positive_report(shipped, tmp_path_factory):
+def positive_observation(shipped, tmp_path_factory):
     from p2_continuation.continuation import run_positive
 
-    state = tmp_path_factory.mktemp("p2-positive") / "state"
+    state = tmp_path_factory.mktemp("p2-positive-observe") / "state"
     return run_positive(state)
 
 
 @pytest.fixture(scope="session")
-def scheduled_report(shipped, tmp_path_factory):
+def positive_report(positive_observation, tmp_path_factory):
+    from p2_continuation.continuation import run_positive
+
+    state = tmp_path_factory.mktemp("p2-positive-action") / "state"
+    return run_positive(
+        state, execute_say=True, execute_do_help=True, execute_attend=True
+    )
+
+
+@pytest.fixture(scope="session")
+def scheduled_observation(shipped, tmp_path_factory):
     from p2_continuation.continuation import run_scheduled
 
-    state = tmp_path_factory.mktemp("p2-scheduled") / "state"
+    state = tmp_path_factory.mktemp("p2-scheduled-observe") / "state"
     return run_scheduled(state)
+
+
+@pytest.fixture(scope="session")
+def scheduled_report(scheduled_observation, tmp_path_factory):
+    from p2_continuation.continuation import run_scheduled
+
+    state = tmp_path_factory.mktemp("p2-scheduled-action") / "state"
+    return run_scheduled(state, execute_say=True, execute_do_help=True,
+                         execute_attend=True)
 
 
 @pytest.fixture(scope="session")

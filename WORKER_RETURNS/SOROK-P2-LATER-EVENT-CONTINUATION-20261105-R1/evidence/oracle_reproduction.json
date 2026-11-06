@@ -1,0 +1,54 @@
+{
+  "old_positive": {
+    "auto_do_help": true,
+    "encounter_count": 3,
+    "privacy_hits_shipped_walker": 59,
+    "privacy_key_examples": [
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.c9",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.c9.selected_event_ref",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.c9.target_proposals",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.event_ref",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.history_refs",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.history_refs[0]",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.s43.attempt_status",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.s43.plan_hash",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.s43.private_generation_sources_in_plan",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0002.s43.source_event_id",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.c9",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.c9.selected_event_ref",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.c9.target_proposals",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.event_ref",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.history_refs",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.history_refs[0]",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.history_refs[1]",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.s43.attempt_status",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.s43.plan_hash",
+      "cold.events.TEST_ONLY_BP2_E1_OCC-0003.s43.private_generation_sources_in_plan"
+    ],
+    "reviewer_reported_privacy_hits": 61
+  },
+  "old_primitive": {
+    "do_help_called": false,
+    "e2_status": "OK",
+    "e3_status": "OK",
+    "encounter_count": 0,
+    "interval_status": "PARTIAL",
+    "verify_ok": true
+  },
+  "old_source_commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+  "repaired_default": {
+    "auto_do_help": false,
+    "encounter_count_after_action": 0,
+    "encounter_count_before_action": 0,
+    "privacy_hits_shipped_walker": 0
+  },
+  "repaired_explicit_do_help": {
+    "do_help_status": "REFUSED",
+    "encounter_count_after_action": 1,
+    "encounter_count_before_action": 0,
+    "privacy_hits_shipped_walker": 0
+  },
+  "reproduction_note": "Old CLI defect reproduced (auto DO_HELP and privacy hits). Hit count is 59 with the shipped PRIVATE_KEYS walker versus reviewer-reported 61 with their broader walker; defect class and auto-user-attempt are reproduced. Primitive itself had zero encounters/no DO_HELP.",
+  "reviewer_commit": "f1a2872487b3aa492632a497ad7481e8529d937e",
+  "schema": "SOROK_P2_ORACLE_REPRODUCTION@1"
+}

@@ -1,0 +1,1090 @@
+{
+  "attend": {
+    "actor_response": null,
+    "actor_response_generated": false,
+    "attempted": true,
+    "clock_changed": false,
+    "code": "LOCAL_ATTEND_ONLY",
+    "control": "ATTEND",
+    "event_ids": [],
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "mode": "PORTAL",
+    "native": false,
+    "performed": false,
+    "reason": "",
+    "refusal": false,
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "simulated_delivery": false,
+    "source": "s45",
+    "status": "NO_CHANGE",
+    "store_hash_after": "6b84bfaeb4ff278694158864cef03a870d01019d6e7806696b7a23b3f7b37819",
+    "store_hash_before": "3b61d8dd074fa739962036d6f29a881cac4b1eca8b2e316bcd51661cfac8952f",
+    "surface": [],
+    "user_attempt": {
+      "accepted": null,
+      "attempted": true,
+      "control": "ATTEND",
+      "input": "attend",
+      "performed": false,
+      "source_status": "NO_CHANGE"
+    },
+    "world_event_created": false
+  },
+  "attend_executed": true,
+  "callables": {
+    "event_local_c9_reader": "S47Session.read_c9_conditioning",
+    "later_event_producer": "S43Session.admit_event",
+    "later_event_reader": "S45Session.read_event",
+    "later_event_reader_delegate": "s42.reader.read_event",
+    "projected_attend": "S45Projection.attend",
+    "projected_do_help": "S45Projection.do_help",
+    "projected_say": "S45Projection.say",
+    "s41_continuation_performer": "s41.performer.perform_continuation_attempt",
+    "s41_continuation_producer": "s41.event.ContinuationProducer.generate",
+    "s42_history_builder": "s42.event.make_history_records",
+    "s42_occurrence_builder": "s42.event.build_ongoing_occurrence",
+    "source_bound_expression_reader": "S43Session.read_s43_event"
+  },
+  "checks": {
+    "attend_presentation_only": true,
+    "c9_material_eligible": true,
+    "cold_same_root": true,
+    "cold_verify_ok": true,
+    "do_help_accepted_by_earlier_mode": true,
+    "do_help_attempt_not_performance": true,
+    "do_help_incremented": true,
+    "e3_history_includes_e2": true,
+    "interval_not_performed": true,
+    "later_events_admitted": true,
+    "material_remains": true,
+    "observation_before_explicit_action": true,
+    "say_attempt_not_performance": true,
+    "verify_ok": true
+  },
+  "cold": {
+    "encounter_count": 3,
+    "event_count": 6,
+    "events": {
+      "TEST_ONLY_BP2_E1_OCC-0002": {
+        "c9": {
+          "current_source_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
+          "current_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "event_ref": "40ee2252c343cb16d1d65bc19ba11484a071b87d17669aa85b0807a55f0196cf",
+          "historical_condition_revoked": false,
+          "objective_material_eligible": true,
+          "objective_material_refs": [
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+          ],
+          "present_condition_revoked": false,
+          "readset_refs": [
+            "40ee2252c343cb16d1d65bc19ba11484a071b87d17669aa85b0807a55f0196cf",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "68bae40f5432dc5615289790ae991fddcd2038f78b9350efa85af5b47ca1795e",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "24e1734a3d4f71cd186e0c3cf40d547a91603d171faf2aa06a266cc3b1469a15",
+            "TEST_ONLY_BP4_WORLD_EVT_7d9bcdb733fb6eccc7cfe1657b5e4c05e3ca60e21b8e0f9d422e0dac972f43a5"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "event_hash": "40ee2252c343cb16d1d65bc19ba11484a071b87d17669aa85b0807a55f0196cf",
+        "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "history_refs": [
+          "TEST_ONLY_BP2_E1_OCC-0001"
+        ],
+        "s43": {
+          "action_event_kind": "SPEECH",
+          "attempt_status": "ADMITTED",
+          "contrary_relation_ids": [
+            "LME_ENC_4df1f4c5b8f5ef3fdcf711b456e9f60aaa385f18d7e3f1e00fe1ee36d9e3c2a8"
+          ],
+          "currently_available": true,
+          "language_status": "ACCEPTED",
+          "native_text": "\u00bfPuedo usar la herramienta?",
+          "performed": true,
+          "plan_hash": "abff5af3d917170d5441a2f933aee07a42c8abf0c9db354c08a1f79a92d20de3",
+          "private_generation_sources_in_plan": false,
+          "repertoire_hash": "e0d29337fe0f3551e71e7d6d944d8e9b6ced2402649b116907069c7a1acb1888",
+          "repertoire_id": "S43_REP_E0D29337FE0F3551E71E7D6D",
+          "selected_relation_ids": [
+            "LME_ENC_9ff37133d9d7114b9b5b67f643497caca31bfbffaf0a36a84da37b7b00e69a9d"
+          ],
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+          "status": "OK",
+          "translation_text": "May I use the tool?"
+        },
+        "status": "OK"
+      },
+      "TEST_ONLY_BP2_E1_OCC-0003": {
+        "c9": {
+          "current_source_hash": "f4af94921ac4ab0646603f8bb79f3c21b666b99a19408e3b2febaa3eec31946d",
+          "current_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "event_ref": "b20c58ec0adec7f4eb50d378be67023648907ce7471ceb2a019acda28827cb78",
+          "historical_condition_revoked": false,
+          "objective_material_eligible": true,
+          "objective_material_refs": [
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+          ],
+          "present_condition_revoked": false,
+          "readset_refs": [
+            "b20c58ec0adec7f4eb50d378be67023648907ce7471ceb2a019acda28827cb78",
+            "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+            "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+            "614be7aa4b4460c771001ff28bede4930c39c8f01e033c5d52f94217fb20d9f0",
+            "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+            "302e73985b1677da46c0658a32e3a31b9865d0efdb2d3a2329a60f3941b26017",
+            "TEST_ONLY_BP4_WORLD_EVT_82762fff5cf0cfbaf6d5934944e6b3107c0558955f0f0c2c9946cd6d816729ec"
+          ],
+          "response_status": "RESPONSE_COMMITTED",
+          "s47_source_coverage": [],
+          "s47_source_currentness": "CURRENT",
+          "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+          "s47_source_in_readset": true,
+          "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+          "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0003",
+          "target_branch": "NO_CHANGE",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL"
+        },
+        "event_hash": "b20c58ec0adec7f4eb50d378be67023648907ce7471ceb2a019acda28827cb78",
+        "event_ref": "TEST_ONLY_BP2_E1_OCC-0003",
+        "history_refs": [
+          "TEST_ONLY_BP2_E1_OCC-0001",
+          "TEST_ONLY_BP2_E1_OCC-0002"
+        ],
+        "s43": {
+          "action_event_kind": "SPEECH",
+          "attempt_status": "ADMITTED",
+          "contrary_relation_ids": [
+            "LME_ENC_4df1f4c5b8f5ef3fdcf711b456e9f60aaa385f18d7e3f1e00fe1ee36d9e3c2a8"
+          ],
+          "currently_available": true,
+          "language_status": "ACCEPTED",
+          "native_text": "\u00bfPuedo usar la herramienta?",
+          "performed": true,
+          "plan_hash": "624530a937b81872d31d85b8fa63afdd5e4efc5affe87341eb58fade67e8e3eb",
+          "private_generation_sources_in_plan": false,
+          "repertoire_hash": "e0d29337fe0f3551e71e7d6d944d8e9b6ced2402649b116907069c7a1acb1888",
+          "repertoire_id": "S43_REP_E0D29337FE0F3551E71E7D6D",
+          "selected_relation_ids": [
+            "LME_ENC_9ff37133d9d7114b9b5b67f643497caca31bfbffaf0a36a84da37b7b00e69a9d"
+          ],
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+          "status": "OK",
+          "translation_text": "May I use the tool?"
+        },
+        "status": "OK"
+      }
+    },
+    "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "verify_ok": true
+  },
+  "cold_continuity": true,
+  "do_help": {
+    "actor_response": {
+      "action": "REPAIR",
+      "gesture": "A sets the tool beside your hand.",
+      "performed": true,
+      "performed_by": "A",
+      "speech": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+      "speech_english": "Hold the near edge. I'll check the seam.",
+      "strategy": "HELP_ACCEPT"
+    },
+    "actor_response_generated": true,
+    "attempted": true,
+    "clock_changed": false,
+    "code": "S45_HELP_ACCEPT",
+    "control": "DO_HELP",
+    "event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_1a854c64efbc23693cfed533447dcaffc777f3b162bb32c60081937777b1de06",
+      "TEST_ONLY_BP4_WORLD_EVT_cc6769ec36a705bf0c5a371c24fb57661f40d80b8c7a7c57045eb84e87116746"
+    ],
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "mode": "PORTAL",
+    "native": false,
+    "performed": false,
+    "reason": "",
+    "refusal": false,
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "simulated_delivery": false,
+    "source": "s45",
+    "status": "OK",
+    "store_hash_after": "3b61d8dd074fa739962036d6f29a881cac4b1eca8b2e316bcd51661cfac8952f",
+    "store_hash_before": "22e06ef8ee3b1e34192a9856f556f04237181f767e9763d263ed25f8919076a2",
+    "surface": [
+      "A material repair is performed in the workshop.",
+      "the repair worker says: \"Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.\" A sets the tool beside your hand.",
+      "[labeled English view, not actor speech: \"Hold the near edge. I'll check the seam.\"]"
+    ],
+    "user_attempt": {
+      "accepted": true,
+      "attempted": true,
+      "control": "DO_HELP",
+      "input": "help",
+      "performed": false,
+      "source_status": "OK"
+    },
+    "world_event_created": true
+  },
+  "do_help_executed": true,
+  "encounter_count": 3,
+  "encounter_count_after_action": 3,
+  "encounter_count_before_action": 0,
+  "first_event_ref": "TEST_ONLY_BP2_E1_OCC-0001",
+  "grade": "TEST_ONLY_SOURCEFREE_P2_LATER_EVENT_CONTINUATION_NOT_NATIVE",
+  "interval": {
+    "actor_knowledge_inferred": false,
+    "actual_daily_events_invented": 0,
+    "coverage": [],
+    "end": 226,
+    "material_after_interval": 1,
+    "mode": "SCHEDULED_ONLY",
+    "psychology_state_written": false,
+    "source": {
+      "access": "granted",
+      "coverage": [],
+      "currentness": "CURRENT",
+      "interval_state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "source_class": "ResolvedStructuralContext",
+      "source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+      "source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+    },
+    "start": 222,
+    "state_id": "S46_STATE_55FC9B2FDD360AEBF3474BA5",
+    "status": "NOT_PERFORMED"
+  },
+  "later_event_2": {
+    "actor_action_appended": true,
+    "attempt_status": "ADMITTED",
+    "c9": {
+      "current_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+      "current_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "event_ref": "40ee2252c343cb16d1d65bc19ba11484a071b87d17669aa85b0807a55f0196cf",
+      "historical_condition_revoked": false,
+      "objective_material_eligible": true,
+      "objective_material_refs": [
+        "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+      ],
+      "present_condition_revoked": false,
+      "readset_refs": [
+        "40ee2252c343cb16d1d65bc19ba11484a071b87d17669aa85b0807a55f0196cf",
+        "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+        "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+        "68bae40f5432dc5615289790ae991fddcd2038f78b9350efa85af5b47ca1795e",
+        "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+        "24e1734a3d4f71cd186e0c3cf40d547a91603d171faf2aa06a266cc3b1469a15",
+        "TEST_ONLY_BP4_WORLD_EVT_7d9bcdb733fb6eccc7cfe1657b5e4c05e3ca60e21b8e0f9d422e0dac972f43a5"
+      ],
+      "response_status": "RESPONSE_COMMITTED",
+      "s47_source_coverage": [],
+      "s47_source_currentness": "CURRENT",
+      "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+      "s47_source_in_readset": true,
+      "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL"
+    },
+    "event_hash": "40ee2252c343cb16d1d65bc19ba11484a071b87d17669aa85b0807a55f0196cf",
+    "event_ordinal": 2,
+    "event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+    "history_refs": [
+      "TEST_ONLY_BP2_E1_OCC-0001"
+    ],
+    "performed": true,
+    "reason": "",
+    "s43": {
+      "action_event_kind": "SPEECH",
+      "attempt_status": "ADMITTED",
+      "contrary_relation_ids": [
+        "LME_ENC_4df1f4c5b8f5ef3fdcf711b456e9f60aaa385f18d7e3f1e00fe1ee36d9e3c2a8"
+      ],
+      "currently_available": true,
+      "language_status": "ACCEPTED",
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "abff5af3d917170d5441a2f933aee07a42c8abf0c9db354c08a1f79a92d20de3",
+      "private_generation_sources_in_plan": false,
+      "repertoire_hash": "e0d29337fe0f3551e71e7d6d944d8e9b6ced2402649b116907069c7a1acb1888",
+      "repertoire_id": "S43_REP_E0D29337FE0F3551E71E7D6D",
+      "selected_relation_ids": [
+        "LME_ENC_9ff37133d9d7114b9b5b67f643497caca31bfbffaf0a36a84da37b7b00e69a9d"
+      ],
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+      "status": "OK",
+      "translation_text": "May I use the tool?"
+    },
+    "selected_option": "REQUEST_TOOL",
+    "status": "OK"
+  },
+  "later_event_3": {
+    "actor_action_appended": true,
+    "attempt_status": "ADMITTED",
+    "c9": {
+      "current_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+      "current_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "event_ref": "b20c58ec0adec7f4eb50d378be67023648907ce7471ceb2a019acda28827cb78",
+      "historical_condition_revoked": false,
+      "objective_material_eligible": true,
+      "objective_material_refs": [
+        "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5"
+      ],
+      "present_condition_revoked": false,
+      "readset_refs": [
+        "b20c58ec0adec7f4eb50d378be67023648907ce7471ceb2a019acda28827cb78",
+        "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+        "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+        "614be7aa4b4460c771001ff28bede4930c39c8f01e033c5d52f94217fb20d9f0",
+        "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+        "302e73985b1677da46c0658a32e3a31b9865d0efdb2d3a2329a60f3941b26017",
+        "TEST_ONLY_BP4_WORLD_EVT_82762fff5cf0cfbaf6d5934944e6b3107c0558955f0f0c2c9946cd6d816729ec"
+      ],
+      "response_status": "RESPONSE_COMMITTED",
+      "s47_source_coverage": [],
+      "s47_source_currentness": "CURRENT",
+      "s47_source_hash": "d73a00eff7209a6a6fa504fedd46912d5182e00f1d74ead3161dd29c8f494665",
+      "s47_source_in_readset": true,
+      "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_55FC9B2FDD360AEBF3474BA5",
+      "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0003",
+      "target_branch": "NO_CHANGE",
+      "target_proposals": [],
+      "target_reason": "NO_PROPOSAL"
+    },
+    "event_hash": "b20c58ec0adec7f4eb50d378be67023648907ce7471ceb2a019acda28827cb78",
+    "event_ordinal": 3,
+    "event_ref": "TEST_ONLY_BP2_E1_OCC-0003",
+    "history_refs": [
+      "TEST_ONLY_BP2_E1_OCC-0001",
+      "TEST_ONLY_BP2_E1_OCC-0002"
+    ],
+    "performed": true,
+    "reason": "",
+    "s43": {
+      "action_event_kind": "SPEECH",
+      "attempt_status": "ADMITTED",
+      "contrary_relation_ids": [
+        "LME_ENC_4df1f4c5b8f5ef3fdcf711b456e9f60aaa385f18d7e3f1e00fe1ee36d9e3c2a8"
+      ],
+      "currently_available": true,
+      "language_status": "ACCEPTED",
+      "native_text": "\u00bfPuedo usar la herramienta?",
+      "performed": true,
+      "plan_hash": "624530a937b81872d31d85b8fa63afdd5e4efc5affe87341eb58fade67e8e3eb",
+      "private_generation_sources_in_plan": false,
+      "repertoire_hash": "e0d29337fe0f3551e71e7d6d944d8e9b6ced2402649b116907069c7a1acb1888",
+      "repertoire_id": "S43_REP_E0D29337FE0F3551E71E7D6D",
+      "selected_relation_ids": [
+        "LME_ENC_9ff37133d9d7114b9b5b67f643497caca31bfbffaf0a36a84da37b7b00e69a9d"
+      ],
+      "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+      "status": "OK",
+      "translation_text": "May I use the tool?"
+    },
+    "selected_option": "REQUEST_TOOL",
+    "status": "OK"
+  },
+  "material_after_interval": 1,
+  "native": false,
+  "ok": true,
+  "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+  "say": {
+    "actor_response": {
+      "action": "",
+      "gesture": "A keeps one hand on the bench.",
+      "performed": false,
+      "performed_by": "",
+      "speech": "Si te ofreces, el borde cercano necesita una mano.",
+      "speech_english": "If you're offering, the near edge needs a hand.",
+      "strategy": "HELP_INVITE"
+    },
+    "actor_response_generated": true,
+    "attempted": true,
+    "clock_changed": false,
+    "code": "S45_HELP_INVITE",
+    "control": "SAY",
+    "event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_bd64c3a1c35716bdf126995284a89375b3b7f8d388d21dc219ff3b4023a6ac8d",
+      "TEST_ONLY_BP4_WORLD_EVT_4c49fe703c35a23236aeadc74107d423fd0a9f5d6eaf27df19bb1333a161fe7f"
+    ],
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "mode": "PORTAL",
+    "native": false,
+    "performed": false,
+    "reason": "",
+    "refusal": false,
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "simulated_delivery": false,
+    "source": "s45",
+    "status": "OK",
+    "store_hash_after": "22e06ef8ee3b1e34192a9856f556f04237181f767e9763d263ed25f8919076a2",
+    "store_hash_before": "6c5810a40d869fa5e8f62a7207b9f03bd6346f8359859391e278c9d8d61330fc",
+    "surface": [
+      "You say: \"Can I help?\"",
+      "the repair worker says: \"Si te ofreces, el borde cercano necesita una mano.\" A keeps one hand on the bench.",
+      "[labeled English view, not actor speech: \"If you're offering, the near edge needs a hand.\"]"
+    ],
+    "user_attempt": {
+      "accepted": null,
+      "attempted": true,
+      "control": "SAY",
+      "input": "Can I help?",
+      "performed": false,
+      "source_status": "OK"
+    },
+    "world_event_created": true
+  },
+  "say_executed": true,
+  "scenario": "SCHEDULED_LATER_EVENT_CONTROL",
+  "schema": "SOROK_P2_LATER_EVENT_CONTINUATION@1",
+  "state_root": ".local-logs/p2-later-repair/evidence-run/state-scheduled-action",
+  "verify_ok": true,
+  "view": {
+    "absence_evidence": "NO_UNPERCEIVED_EVENT_IN_THIS_VIEW",
+    "accessibility_announcement": [
+      "Mode: portal.",
+      "Clock: 228.",
+      "Location: workshop.",
+      "Visible events: 20.",
+      "Unperceived events remain unknown: 0.",
+      "Exit is always available.",
+      "Return requires an actual meeting or channel; typed hold otherwise."
+    ],
+    "accessible": {
+      "color_only_meaning": false,
+      "exit_always_visible": true,
+      "focus_order": [
+        "transcript",
+        "SAY input",
+        "DO input",
+        "ATTEND target",
+        "WAIT",
+        "EXIT",
+        "RETURN"
+      ],
+      "keyboard_only": true,
+      "screen_reader_labels": {
+        "ATTEND": "Attend to a visible event or object",
+        "DO": "Attempt an action",
+        "EXIT": "Exit portal",
+        "RETURN": "Return to encounter",
+        "SAY": "Say something",
+        "WAIT": "Wait without advancing time"
+      },
+      "text_alternatives": true,
+      "typed_holds_announced": true
+    },
+    "clock": 228,
+    "controls": [
+      "SAY",
+      "DO",
+      "ATTEND",
+      "WAIT",
+      "EXIT"
+    ],
+    "encounter_admission": {
+      "accepted": true,
+      "gesture": "",
+      "kind": "DO_HELP",
+      "refusal": false,
+      "speech": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+      "speech_english": "Hold the near edge. I'll check the seam.",
+      "status": "OK",
+      "strategy": "HELP_ACCEPT",
+      "user_text": ""
+    },
+    "exit_control": {
+      "accessible": true,
+      "always_visible": true,
+      "label": "Exit portal"
+    },
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "hidden_fields": [
+      "actor_traits",
+      "affinity",
+      "trust",
+      "suspicion",
+      "private_motive",
+      "private_emotion",
+      "private_actor_model",
+      "unperceived_event_content",
+      "relationship_score",
+      "rarity",
+      "completion_percentage",
+      "unlock_level",
+      "hidden_market_commission",
+      "future_outcome"
+    ],
+    "hidden_state_held": true,
+    "location": "workshop",
+    "mode": "PORTAL",
+    "native": false,
+    "refusal_present": false,
+    "return_control": {
+      "available": false,
+      "label": "Return to encounter",
+      "reason": "RETURN_UNSUPPORTED_TYPED_HOLD"
+    },
+    "schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+    "source": "s45",
+    "tool_available": true,
+    "tools_remaining": 1,
+    "uncertainty": [
+      "WAIT_TIME_ADVANCE_RECEIPT",
+      "PORTAL_EXIT_RETURN_RECEIPT",
+      "USER_ABSENCE_LIFE_ADVANCE",
+      "MESSAGE_CHANNEL_ESTABLISHMENT_AND_DELIVERY",
+      "ACCESSIBILITY_PREFERENCE_ACK"
+    ],
+    "unperceived_event_count": 0,
+    "visible_actions": [
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "present_with": [
+            "A"
+          ],
+          "public_role": "finishing"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "The finishing worker is already at the workshop bench."
+      },
+      {
+        "actor_visible_id": "U",
+        "body_public": {
+          "present_with": [
+            "A",
+            "B"
+          ],
+          "public_role": "visitor"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "You come up the stairs and stop at the open workshop door."
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "cash_delta": 2,
+          "completed_delta": 1,
+          "hours_delta": -1,
+          "material_delta": -1,
+          "source_owned": true
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_cc6769ec36a705bf0c5a371c24fb57661f40d80b8c7a7c57045eb84e87116746",
+        "kind": "REPAIR",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A material repair is performed in the workshop."
+      }
+    ],
+    "visible_events": [
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "present_with": [
+            "A"
+          ],
+          "public_role": "finishing"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "The finishing worker is already at the workshop bench."
+      },
+      {
+        "actor_visible_id": "U",
+        "body_public": {
+          "present_with": [
+            "A",
+            "B"
+          ],
+          "public_role": "visitor"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "You come up the stairs and stop at the open workshop door."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "\u00bfPuedo usar la herramienta?"
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6f30ad767a17625a86b51284d3f6e5ebb808b2c323c33396e21b3ec6349681a7",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "\u00bfPuedo usar la herramienta?"
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Si te ofreces, el borde cercano necesita una mano."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Si te ofreces, el borde cercano necesita una mano."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Puedes sostener el borde cercano si lo dices en serio."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Puedes sostener el borde cercano si lo dices en serio."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Pon la mano en el borde cercano. Yo tomo la holgura."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "No puedo tomar eso ahora. Tengo que terminar."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_1bdf8cd5bdb7a45fae06e64e10ddecb69d28eae97d28439ddcf7fe0dd612a1ac",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "No puedo tomar eso ahora. Tengo que terminar."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f235d7909d8948cc13df57f36f31de06bfaed6e66cb81c64f2396f79d48e7548",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Hoy no. El mercado cierra."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f7503611f3a644e4592e0ef4152eabb378d8ed77c1dc908750991e569e7c5fc5",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Hoy no. El mercado cierra."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_825c99d85dd8ad65b374328204ff470a76497d9e11f03fce0ad2d66f7ebddf93",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Me qued\u00e9 sin material. No puedo empezar eso ahora."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_adc5531849ae576224b0cd470b4e85eb81c0f2884430e7654a22bf54676d6b00",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: La herramienta no est\u00e1. Hoy no puedo hacerlo."
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A turns toward the bench.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_656289fc9d3722b1096efade2605f4c701f3ebc14e82579f41dd9b5d35711156",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A keeps a hand near the bench edge.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 227,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_7d9bcdb733fb6eccc7cfe1657b5e4c05e3ca60e21b8e0f9d422e0dac972f43a5",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A keeps a hand near the bench edge.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_82762fff5cf0cfbaf6d5934944e6b3107c0558955f0f0c2c9946cd6d816729ec",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "U",
+        "body_public": {
+          "observable": true,
+          "text": "Can I help?"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bd64c3a1c35716bdf126995284a89375b3b7f8d388d21dc219ff3b4023a6ac8d",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "U says: Can I help?"
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A keeps one hand on the bench.",
+          "language_tag": "es-MX",
+          "strategy": "HELP_INVITE",
+          "text": "Si te ofreces, el borde cercano necesita una mano.",
+          "tone": "practical"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_4c49fe703c35a23236aeadc74107d423fd0a9f5d6eaf27df19bb1333a161fe7f",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: Si te ofreces, el borde cercano necesita una mano."
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "cash_delta": 2,
+          "completed_delta": 1,
+          "hours_delta": -1,
+          "material_delta": -1,
+          "source_owned": true
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_cc6769ec36a705bf0c5a371c24fb57661f40d80b8c7a7c57045eb84e87116746",
+        "kind": "REPAIR",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A material repair is performed in the workshop."
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A sets the tool beside your hand.",
+          "language_tag": "es-MX",
+          "strategy": "HELP_ACCEPT",
+          "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+          "tone": "practical"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_1a854c64efbc23693cfed533447dcaffc777f3b162bb32c60081937777b1de06",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+      }
+    ],
+    "visible_speech": [
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6f30ad767a17625a86b51284d3f6e5ebb808b2c323c33396e21b3ec6349681a7",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Si te ofreces, el borde cercano necesita una mano.",
+        "text": "Si te ofreces, el borde cercano necesita una mano."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Puedes sostener el borde cercano si lo dices en serio.",
+        "text": "Puedes sostener el borde cercano si lo dices en serio."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+        "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Pon la mano en el borde cercano. Yo tomo la holgura.",
+        "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_1bdf8cd5bdb7a45fae06e64e10ddecb69d28eae97d28439ddcf7fe0dd612a1ac",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar.",
+        "text": "No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f235d7909d8948cc13df57f36f31de06bfaed6e66cb81c64f2396f79d48e7548",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar.",
+        "text": "No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f7503611f3a644e4592e0ef4152eabb378d8ed77c1dc908750991e569e7c5fc5",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Hoy no. El mercado cierra.",
+        "text": "Hoy no. El mercado cierra."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_825c99d85dd8ad65b374328204ff470a76497d9e11f03fce0ad2d66f7ebddf93",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+        "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_adc5531849ae576224b0cd470b4e85eb81c0f2884430e7654a22bf54676d6b00",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: La herramienta no est\u00e1. Hoy no puedo hacerlo.",
+        "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_656289fc9d3722b1096efade2605f4c701f3ebc14e82579f41dd9b5d35711156",
+        "gesture": "A turns toward the bench.",
+        "labeled_english": "",
+        "speaker": "A",
+        "strategy": "REQUEST_TOOL",
+        "summary": "A says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 227,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_7d9bcdb733fb6eccc7cfe1657b5e4c05e3ca60e21b8e0f9d422e0dac972f43a5",
+        "gesture": "A keeps a hand near the bench edge.",
+        "labeled_english": "",
+        "speaker": "A",
+        "strategy": "REQUEST_TOOL",
+        "summary": "A says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_82762fff5cf0cfbaf6d5934944e6b3107c0558955f0f0c2c9946cd6d816729ec",
+        "gesture": "A keeps a hand near the bench edge.",
+        "labeled_english": "",
+        "speaker": "A",
+        "strategy": "REQUEST_TOOL",
+        "summary": "A says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bd64c3a1c35716bdf126995284a89375b3b7f8d388d21dc219ff3b4023a6ac8d",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "U",
+        "strategy": "",
+        "summary": "U says: Can I help?",
+        "text": "Can I help?"
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_4c49fe703c35a23236aeadc74107d423fd0a9f5d6eaf27df19bb1333a161fe7f",
+        "gesture": "A keeps one hand on the bench.",
+        "labeled_english": "If you're offering, the near edge needs a hand.",
+        "speaker": "A",
+        "strategy": "HELP_INVITE",
+        "summary": "A says: Si te ofreces, el borde cercano necesita una mano.",
+        "text": "Si te ofreces, el borde cercano necesita una mano."
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_1a854c64efbc23693cfed533447dcaffc777f3b162bb32c60081937777b1de06",
+        "gesture": "A sets the tool beside your hand.",
+        "labeled_english": "Hold the near edge. I'll check the seam.",
+        "speaker": "A",
+        "strategy": "HELP_ACCEPT",
+        "summary": "A says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+        "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+      }
+    ]
+  }
+}

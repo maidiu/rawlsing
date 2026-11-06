@@ -6,8 +6,14 @@ import json
 from pathlib import Path
 
 from .continuation import (
+    GRADE,
     P2Continuation,
+    PUBLIC_SCHEMA,
     cold_read,
+    public_cold_report,
+    public_cut_restore_report,
+    public_opportunity,
+    public_report,
     run_cut_restore,
     run_positive,
     run_scheduled,
@@ -16,6 +22,36 @@ from .continuation import (
 
 def _json(value) -> str:
     return json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False)
+
+
+def _write_engineering(path: str | None, report) -> None:
+    if not path:
+        return
+    target = Path(path).expanduser().resolve()
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(_json(report) + "\n")
+
+
+def _public_error(scenario: str, reason: str) -> dict:
+    return {
+        "schema": PUBLIC_SCHEMA,
+        "grade": GRADE,
+        "native": False,
+        "scenario": scenario,
+        "status": "REFUSED",
+        "reason": reason,
+        "ok": False,
+    }
+
+
+def _add_actions(target) -> None:
+    target.add_argument("--say", action="store_true",
+                        help="explicit user SAY action")
+    target.add_argument("--do-help", action="store_true",
+                        help="explicit user DO_HELP action")
+    target.add_argument("--attend", action="store_true",
+                        help="explicit user ATTEND action")
+    target.add_argument("--engineering-out", default=None)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -28,14 +64,17 @@ def main(argv: list[str] | None = None) -> int:
     positive = sub.add_parser("positive")
     positive.add_argument("--state", required=True)
     positive.add_argument("--seed", default="01" * 32)
+    _add_actions(positive)
 
     scheduled = sub.add_parser("scheduled")
     scheduled.add_argument("--state", required=True)
     scheduled.add_argument("--seed", default="01" * 32)
+    _add_actions(scheduled)
 
     cut_restore = sub.add_parser("cut-restore")
     cut_restore.add_argument("--state", required=True)
     cut_restore.add_argument("--seed", default="01" * 32)
+    cut_restore.add_argument("--engineering-out", default=None)
 
     new = sub.add_parser("new")
     new.add_argument("--state", required=True)
@@ -44,6 +83,7 @@ def main(argv: list[str] | None = None) -> int:
     admit = sub.add_parser("admit")
     admit.add_argument("--state", required=True)
     admit.add_argument("--history-ref", action="append", default=[])
+    admit.add_argument("--engineering-out", default=None)
 
     say = sub.add_parser("say")
     say.add_argument("--state", required=True)
@@ -60,32 +100,51 @@ def main(argv: list[str] | None = None) -> int:
 
     verify = sub.add_parser("verify")
     verify.add_argument("--state", required=True)
+    verify.add_argument("--engineering-out", default=None)
 
     cold = sub.add_parser("cold")
     cold.add_argument("--state", required=True)
     cold.add_argument("--event-ref", action="append", required=True)
+    cold.add_argument("--engineering-out", default=None)
 
     args = parser.parse_args(argv)
     state = Path(args.state).expanduser().resolve()
 
     if args.command == "positive":
-        report = run_positive(state, seed=args.seed)
+        engineering = run_positive(
+            state, seed=args.seed, execute_say=args.say,
+            execute_do_help=args.do_help, execute_attend=args.attend,
+        )
+        _write_engineering(args.engineering_out, engineering)
+        report = public_report(engineering)
         print(_json(report))
         return 0 if report["ok"] else 1
     if args.command == "scheduled":
-        report = run_scheduled(state, seed=args.seed)
+        engineering = run_scheduled(
+            state, seed=args.seed, execute_say=args.say,
+            execute_do_help=args.do_help, execute_attend=args.attend,
+        )
+        _write_engineering(args.engineering_out, engineering)
+        report = public_report(engineering)
         print(_json(report))
         return 0 if report["ok"] else 1
     if args.command == "cut-restore":
-        report = run_cut_restore(state, seed=args.seed)
+        engineering = run_cut_restore(state, seed=args.seed)
+        _write_engineering(args.engineering_out, engineering)
+        report = public_cut_restore_report(engineering)
         print(_json(report))
         return 0 if report["ok"] else 1
     if args.command == "cold":
-        report = cold_read(state, tuple(args.event_ref))
+        engineering = cold_read(state, tuple(args.event_ref))
+        _write_engineering(args.engineering_out, engineering)
+        report = public_cold_report(engineering)
         print(_json(report))
-        return 0 if report["verify_ok"] else 1
+        return 0 if report["ok"] else 1
 
-    continuation = P2Continuation.start(state, seed=args.seed) if args.command == "new" else P2Continuation.open(state)
+    continuation = (
+        P2Continuation.start(state, seed=args.seed)
+        if args.command == "new" else P2Continuation.open(state)
+    )
     try:
         if args.command == "new":
             result = continuation.view()
@@ -95,7 +154,33 @@ def main(argv: list[str] | None = None) -> int:
                 history_refs = (
                     continuation.session.read_events()[0]["e1_event_id"],
                 )
-            result = continuation.admit_later_event(history_refs)
+            before = len(continuation.session.read_encounters())
+            try:
+                engineering = continuation.admit_later_event(history_refs)
+            except Exception as exc:
+                print(_json(_public_error(
+                    "ADMIT_LATER_EVENT_PUBLIC",
+                    getattr(exc, "code", type(exc).__name__),
+                )))
+                return 1
+            view = continuation.view()
+            after = len(continuation.session.read_encounters())
+            _write_engineering(args.engineering_out, {
+                **engineering, "view": view,
+            })
+            result = {
+                "schema": PUBLIC_SCHEMA,
+                "grade": GRADE,
+                "native": False,
+                "scenario": "ADMIT_LATER_EVENT_PUBLIC",
+                "status": engineering.get("status"),
+                "opportunity": public_opportunity(view),
+                "view": view,
+                "do_help_executed": False,
+                "encounter_count_before_action": before,
+                "encounter_count_after_action": after,
+                "ok": engineering.get("status") == "OK",
+            }
         elif args.command == "say":
             result = continuation.project_say(args.text)
         elif args.command == "do-help":
@@ -105,7 +190,18 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "view":
             result = continuation.view()
         elif args.command == "verify":
-            result = continuation.verify()
+            engineering = continuation.verify()
+            _write_engineering(args.engineering_out, engineering)
+            result = {
+                "schema": PUBLIC_SCHEMA,
+                "grade": GRADE,
+                "native": False,
+                "scenario": "VERIFY_PUBLIC",
+                "verify_ok": bool(engineering.get("ok")),
+                "event_count": len(continuation.session.read_events()),
+                "encounter_count": len(continuation.session.read_encounters()),
+                "ok": bool(engineering.get("ok")),
+            }
         else:
             raise AssertionError(args.command)
     finally:
