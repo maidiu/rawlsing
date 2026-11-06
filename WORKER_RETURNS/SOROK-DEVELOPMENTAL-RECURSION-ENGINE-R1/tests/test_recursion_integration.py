@@ -39,8 +39,8 @@ class RecordedTransport:
                 "batch_id": previous["batch_id"],
                 "history_hash": previous["history_hash"],
                 "event_ids": [row["event_id"] for row in previous["events"]],
-                "impressions": {"status": "RENDER_PROPOSAL_ONLY",
-                                "source_history_hash": previous["history_hash"]},
+                "impressions": [{"status": "RENDER_PROPOSAL_ONLY",
+                                 "source_history_hash": previous["history_hash"]}],
             }
         prospective = None
         if mode != "TERMINAL":

@@ -13,3 +13,5 @@ Batch author terminal intake: provider returned 429 prefill_cap_refused before a
 Added cold-process bootstrap/advance/finish integration entrypoint using supplied P2 source pack and model-response transport. Syntax parsed; execution depends on batch and cycle worker returns. Default result exposes only actor-accessible projections, with privileged history available via explicit engineering output. No completion or acceptance claim.
 
 Added two-batch actual-owner integration regression against the frozen ABI, pending core/cycle returns. Strengthened P2 adapter source binding across cold reopen and source-mutation severance/restore; rerun 3 owner tests passed in 16.22s. Integrated two-batch proof is still unexecuted.
+
+Model-cycle return 0d60caf received. Lead corrected an inherited ABI mistake: persist prior retrospective completion before executing the next batch. All 19 coordinator tests pass; removing that persistence makes the boundary assertion fail; restoration passes. This is a locally tested candidate pending actual-owner integration and distinct review.
