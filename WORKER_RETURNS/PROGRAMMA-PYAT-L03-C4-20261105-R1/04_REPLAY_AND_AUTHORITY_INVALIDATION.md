@@ -267,3 +267,16 @@ Python copy. No physical code was changed; no capacity/cache default changed.
 A material reduction requires a streaming/lazy I02 candidate/replay or incremental
 compact ABI, preserved selector v1/I02/refs/replay. N=3000 and delete/corrupt/stale/
 revoke were NOT_RUN here.
+
+## Bounded compressed event-body candidate
+
+At `02c1200b82b8397e551817e8e4cf2c6763413189` the private event body lane stores
+bounded Zstd chunks rather than the full uncompressed Arrow body array. Exact
+materialization decompresses one chunk on demand; selector v1 and all selection
+semantics are unchanged. Existing cache HIT/DELETE/CORRUPT/STALE/REVOKED tests pass
+(9 compact tests), along with source-backed/carrier/grouping tests (50 passed,
+1 skipped). Old raw-body Parquet/Zstd files remain readable, and the new streaming
+writer emits the same raw-body cache schema; cache remains optional and
+caller-configured. No provenance/refusal/ref/replay change was observed. Per-event
+exact lookup adds ≈0.96 ms bounded-chunk decompression over ≈1.27 ms decode/
+materialize; selector query hot paths do not materialize bodies.

@@ -1,14 +1,16 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
-**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 MEASURED / CAPACITY-MISS GUARD IMPLEMENTED / ALLOCATION INCISION COMPLETE.
+**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 MEASURED / CAPACITY-MISS GUARD / COMPRESSED-BODY CANDIDATE IMPLEMENTED AND MEASURED.
 **Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `a85df66ec93a951d8fd50d751822b70569df94ef`.
 **Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; it does **not** accept the new capacity-miss guard `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` or whole L03.
-**Phase-3 assessment:** `5dfef26d5ba25d2848d8e7a1b137e29c2d3b544d` accepts evidence but finds selected economical compact **NOT_FULFILLED**; this allocation incision identifies the exact remaining physical gap, not a repair authority.
+**Phase-3 assessment:** `5dfef26d5ba25d2848d8e7a1b137e29c2d3b544d` accepts evidence but found the **uncompressed** selected economical compact NOT_FULFILLED. The compressed-body candidate at `02c1200...` materially improves the measured physical result; it is not independently accepted and does not close whole L03.
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
 **Previous implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
-**New implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
+**Capacity implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
+**Compressed-body implementation/test SHA:** `02c1200b82b8397e551817e8e4cf2c6763413189`
+**Compressed-body evidence commit:** `__COMPRESS_EVIDENCE_SHA__`
 **Capacity evidence commit:** `2a41b4682cfbbdc2b5e12ba71d114adb431c670f`
 **Allocation evidence commit:** `a41a40a4021da2a7d926a930813f385e045d006e`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
@@ -272,13 +274,33 @@ live, not a measured redundant retained Python copy.
 
 A repeat N=1000 run confirmed native validation current RSS is variable
 (228.6–278.2 MB) while tracemalloc live was identical (93.4 MB); no compact-specific
-live validation allocation was found. The remaining compact RSS gap is a cold/
-conversion lifetime issue, not a lower-endstate win. No small adapter copy removal
-is warranted. A material reduction requires a streaming/lazy I02
-candidate/replay ABI or incremental compact construction before full native object
-materialization, preserving I02 validation, selector v1, refs and replay. That is a
-contract/owner decision, not invented here. The existing capacity guard `9a5cfa...`
-is unchanged; this incision adds no physical code.
+live validation allocation was found. The remaining compact RSS gap was a cold/
+conversion lifetime issue, not a lower-endstate win.
+
+### Bounded compressed event-body candidate
+
+Implementation/test SHA `02c1200b82b8397e551817e8e4cf2c6763413189` replaces the
+full uncompressed in-memory Arrow JSON body array with bounded Zstd-compressed
+chunks (256 events) while preserving selector v1, full I02 validation, exact
+canonical bodies, refs and replay. Exact event lookup decompresses one bounded chunk
+on demand. The optional on-disk cache remains the existing raw-body Parquet/Zstd
+format; the new streaming writer is old-reader compatible.
+
+At N=1000 the compact body representation fell from **29,701,433 raw bytes** to
+**1,575,621 compressed bytes** (18.85×; 36 bounded chunks). Old vs new compact
+endstate: **327.9→274.5 MB current**, **335.2→294.5 MB highwater** in the allocation
+control; V1 parent wall 21.76→19.55 s, V2-warm 21.03→19.41 s, V2-cold 21.55→21.21 s.
+At N=200 body bytes fell 5,940,064→301,031 (19.7×), compact endstate 169.5→154.0 MB
+current. Native/compact facts/cells/provenance/refs/replay remain exactly equal;
+cache HIT/DELETE/CORRUPT/STALE/REVOKED tests remain passing.
+
+Tradeoff: exact object lookup now adds measured bounded-chunk decompression
+(≈0.96 ms/event) on top of JSON decode/materialize (≈1.27 ms/event). Selector-based
+query hot paths do not materialize bodies. On-disk optional cache bytes increased
+slightly (1,716,950→2,184,216 at N=1000) because the streaming writer uses bounded
+row groups; it is still the existing raw-body Parquet/Zstd format and remains
+caller-configured, never default. This candidate is measured for focused review,
+not independently accepted; no whole-L03 completion or all35 claim follows.
 
 ## Read next
 

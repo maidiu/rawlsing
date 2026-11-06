@@ -432,3 +432,28 @@ incremental compact construction before full native object materialization, whil
 preserving I02 validation/closure, selector v1, refs and replay. That is an
 HQ/owner contract decision; it was not invented here. No physical code changed in
 this incision; capacity guard `9a5cfa...` remains the latest separate implementation.
+
+## Bounded compressed body candidate (new physical implementation)
+
+**Implementation/test SHA:** `02c1200b82b8397e551817e8e4cf2c6763413189`.
+
+This is the smallest warranted physical adaptation inside the existing compact
+adapter: keep selector v1 and the event-body lane, but store exact canonical event
+bodies as bounded Zstd-compressed 256-event chunks and decompress one chunk on
+demand. The full eager I02 candidate/validation remains unchanged. No second
+engine/index/carrier, no public ABI, no cache default, no native/science grant.
+
+N=1000 measured: body bytes 29,701,433→1,575,621 (18.85×); compact endstate
+327.9→274.5 MB current, 335.2→294.5 MB highwater; V1 parent wall 21.76→19.55 s,
+V2-warm 21.03→19.41 s, V2-cold 21.55→21.21 s. N=200 body bytes 5,940,064→301,031
+(19.7×), compact endstate 169.5→154.0 MB current. Exact native/compact facts/cells/
+refs/provenance/replay remain equal; cache HIT/DELETE/CORRUPT/STALE/REVOKED pass.
+
+Tradeoff: exact object lookup adds ≈0.96 ms/event bounded-chunk decompression on top
+of ≈1.27 ms/event decode/materialize; selector-based query execution does not
+materialize bodies. Optional cache disk bytes rose modestly (1,716,950→2,184,216)
+from bounded row groups but remain the existing raw-body Parquet/Zstd format and
+caller-configured. This candidate has measured economic justification at sourcefree
+N=200/1000 scope; it is **not** independently accepted and does not close whole L03
+or establish all35 production equivalence. A later independent focused review may
+accept or reject; no owner policy is invented.

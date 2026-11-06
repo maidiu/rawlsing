@@ -466,6 +466,7 @@ class Recorder:
 def _cache_probe():
     original_read = compact_view._read_bodies
     original_write = compact_view._write_bodies
+    original_commit = compact_view._BodyCacheWriter.commit
     state = {"reads": [], "writes": 0}
 
     def read(path, key, selectors):
@@ -477,15 +478,21 @@ def _cache_probe():
         state["writes"] += 1
         return original_write(path, key, bodies)
 
+    def commit(self, path):
+        state["writes"] += 1
+        return original_commit(self, path)
+
     @contextlib.contextmanager
     def probe():
         compact_view._read_bodies = read
         compact_view._write_bodies = write
+        compact_view._BodyCacheWriter.commit = commit
         try:
             yield state
         finally:
             compact_view._read_bodies = original_read
             compact_view._write_bodies = original_write
+            compact_view._BodyCacheWriter.commit = original_commit
 
     return probe
 
@@ -1599,12 +1606,50 @@ def _run_alloc_variant(args):
             "exact_fact_material_sha256": semantic_hash(fact.as_dict()),
         }
         snapshots.append(_alloc_snapshot("after_first_query"))
+        compact_bodies = None
+        lookup_tradeoff = None
+        if variant == "compact" and isinstance(release.public_objects, compact_view._CompactPublicObjects):
+            lane = release.public_objects.lane
+            bodies = lane.bodies
+            if isinstance(bodies, compact_view._CompressedBodies):
+                compact_bodies = {
+                    "chunk_count": len(bodies.chunks),
+                    "compressed_bytes": sum(len(chunk[0]) for chunk in bodies.chunks),
+                    "raw_bytes": sum(chunk[1] for chunk in bodies.chunks),
+                    "chunk_event_limit": compact_view._EVENT_BODY_CHUNK_EVENTS,
+                }
+                rows = min(len(lane.selectors), 256)
+                start_wall, start_cpu = time.perf_counter(), time.process_time()
+                raw_bodies = [bodies.body_bytes(row) for row in range(rows)]
+                decompress_wall = time.perf_counter() - start_wall
+                decompress_cpu = time.process_time() - start_cpu
+                from rawlsing_next.pre553_carrier_execution import materialize_public_object
+                start_wall, start_cpu = time.perf_counter(), time.process_time()
+                for row, raw_body in zip(range(rows), raw_bodies):
+                    ref = lane.selectors[row].ref
+                    body = json.loads(raw_body)
+                    body.update(object_id=ref.object_id, content_hash=ref.content_hash)
+                    materialize_public_object(body)
+                decode_wall = time.perf_counter() - start_wall
+                decode_cpu = time.process_time() - start_cpu
+                lookup_tradeoff = {
+                    "rows": rows,
+                    "decompress_wall_s": decompress_wall,
+                    "decompress_cpu_s": decompress_cpu,
+                    "decode_materialize_wall_s": decode_wall,
+                    "decode_materialize_cpu_s": decode_cpu,
+                    "decompress_wall_per_row_s": decompress_wall / rows if rows else None,
+                    "decode_materialize_wall_per_row_s": decode_wall / rows if rows else None,
+                    "note": "post-memory-snapshot microbenchmark; not used for declared RSS",
+                }
         payload = {
             "schema": SCHEMA,
             "mode": "alloc",
             "alloc_variant": variant,
             "n": n,
             "snapshots": snapshots,
+            "compact_bodies": compact_bodies,
+            "lookup_tradeoff": lookup_tradeoff,
             "phases": phases,
             "release": {
                 "release_ref": bc.ref_material(release.release_ref),

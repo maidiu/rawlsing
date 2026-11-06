@@ -179,3 +179,15 @@ incremental compact construction, preserving I02 validation/selector v1/ref/repl
 R03 acceptance remains scoped to `409be32f...`; capacity guard `9a5cfa...` is also
 not R03-accepted. The phase-3 assessment `5dfef26d...` remains evidence-only and
 marks economical compact `NOT_FULFILLED`.
+
+## Compressed-body candidate note
+
+A new physical implementation/test SHA `02c1200b82b8397e551817e8e4cf2c6763413189`
+replaces the private uncompressed event-body lane with bounded Zstd chunks and
+on-demand exact reconstruction. It preserves selector v1, I02 validation, canonical
+bodies/refs/replay and cache behavior; native/compact facts are exactly equal in the
+measured N=200/1000 controls. This is **not** covered by R03
+`e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` (scoped to `409be32f...`) and is not
+independently accepted. Measured tradeoff: body memory materially lower; exact
+lookup adds ≈0.96 ms/event decompression. No new review is requested here; HQ may
+schedule a focused review if it accepts the candidate.

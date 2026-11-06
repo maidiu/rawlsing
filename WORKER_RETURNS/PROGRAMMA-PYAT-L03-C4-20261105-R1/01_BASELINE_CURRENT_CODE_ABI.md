@@ -557,3 +557,24 @@ redundant retained Python copy. No small adapter fix is warranted; a material
 reduction needs streaming/lazy I02 candidate/replay or incremental compact
 construction before full native materialization. No physical code changed in this
 incision; capacity guard `9a5cfa...` is unchanged.
+
+### Bounded compressed event-body lane
+
+Implementation/test SHA `02c1200b82b8397e551817e8e4cf2c6763413189` changes only
+the private compact execution view. `_EventLane.bodies` is now a
+`_CompressedBodies` sequence of bounded Zstd-compressed 256-event chunks when the
+compact view is active; `materialize(row)` decompresses the containing bounded chunk
+on demand. Selectors, selector v1, I02 validation, exact canonical bodies, refs,
+replay and first-consumer facts are unchanged. Legacy Arrow binary bodies remain
+accepted by the lane, and the optional Parquet/Zstd cache keeps its raw-body schema;
+the new streaming cache writer is old-reader compatible.
+
+N=1000 body representation: 29,701,433 raw bytes → 1,575,621 compressed bytes
+(18.85×, 36 bounded chunks); N=200: 5,940,064 → 301,031 (19.7×). Compact endstate
+improved from 327.9→274.5 MB current and 335.2→294.5 MB highwater at N=1000;
+V1 parent wall 21.76→19.55 s, V2-warm 21.03→19.41 s, V2-cold 21.55→21.21 s. Exact
+lookup tradeoff: ≈0.96 ms bounded-chunk decompression plus ≈1.27 ms decode/materialize
+per event; selector query hot paths do not materialize bodies. Optional cache disk
+bytes increased 1,716,950→2,184,216 due bounded row groups, still raw-body
+Parquet/Zstd and caller-configured. Native/compact full facts/cells/provenance/refs/
+replay equal; compact/source-backed/carrier/grouping tests 50 passed, 1 skipped.
