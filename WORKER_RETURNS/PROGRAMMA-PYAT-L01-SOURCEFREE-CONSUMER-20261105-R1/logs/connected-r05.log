@@ -1,0 +1,16 @@
+...............................F                                         [100%]
+=================================== FAILURES ===================================
+____________ test_same_source_r04_partial_resume_reaches_actual_p41 ____________
+rawlsing_next/tests/test_universal_world_binding.py:1393: in test_same_source_r04_partial_resume_reaches_actual_p41
+    result = _same_source_connected(p41_runtime, source_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/tests/test_universal_world_binding.py:1361: in _same_source_connected
+    assert view.state == "R05_WORLD_SELECTED_VIEW", view.reason_code
+E   AssertionError: R05_ACTUAL_CONSUMER_REFUSED:P41ServiceError
+E   assert 'REFUSED' == 'R05_WORLD_SELECTED_VIEW'
+E     
+E     - R05_WORLD_SELECTED_VIEW
+E     + REFUSED
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41
+1 failed, 31 passed, 4 deselected in 52.88s
