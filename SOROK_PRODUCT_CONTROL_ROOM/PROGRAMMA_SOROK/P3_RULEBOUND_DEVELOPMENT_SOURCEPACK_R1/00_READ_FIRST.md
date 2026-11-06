@@ -1,5 +1,7 @@
 # P3 — Rule-bound developmental-state and causal-memory source pack
 
+**POST-RECEIVING SOURCE-CAPITAL CORRECTION (2026-11-06):** The 63-item atlas 01 is a verified **foundational source subset**, not every built sourcefree developmental implementation. Read [09 — already-executed code, reviewers and negative lessons](09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md) and [10 — preliminary materialist scientific adjudication](10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md) before commissioning P3. B1/B2/B3A, BP2P4J, HQ300, R3 M01, S35 and W01 are verified additional exact cuts. No original science or native rule is inferred. This correction does **not** alter the frozen 63-entry S0–S1 validation receipt.
+
 **ONE START HERE LOCATION.** This source pack prepares PROGRAMMA SOROK P3 for scientific and engineering construction; it is a **nonissuing preconstruction source/currentness and decision package**, not P3 implementation, owner appointment or an executed research fleet.
 
 **Protected baseline at start:** `62f1895093f8b79f466a73d1e6ec65f6563df3ac`, 2026-11-06. Recheck live PRE-MAIN before any new task. The received sourcefree developmental-recursion engine from [PR #704](https://github.com/maidiu/rawlsing/pull/704) and [PROGRAMMA currentness #710/#712](https://github.com/maidiu/rawlsing/pull/712) are **already protected**; do not reconstruct or relitigate them. Paired Sorok progress is revision 37; earlier rev35 JSON/rev36 MD remains dated history.
@@ -16,6 +18,9 @@
 | 6 | [06 — Start, readiness and falsifiable proof contract](06_P3_START_AND_READINESS_CONTRACT.md) | What may be coded now, what requires original scientific issuance, exact acceptance/negative cases, escalation rules |
 | 7 | [07 — External/attached theoretical reading map](07_SECONDARY_THEORY_READING_MAP.md) | Secondary literature useful to inspect; bibliography is NOT rule authority and may not be mounted for future agent |
 | 8 | [08 — Sourcepack validation / no-drop readback](08_VERIFICATION_RECEIPT.json) | Direct source-tree and index controls, machine-readable status without claiming local S2 execution |
+
+| 9 | [09 — Prior executable mechanism and review delta](09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md) | Exact previously built sourcefree developmental code and scoped independent reviews; selective reuse rather than reimplementation |
+| 10 | [10 — Preliminary theoretical adjudication](10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md) | Formation versus activation/opportunity, selected actually read primary texts, falsifiable O03/O05/O07/ADP016 mechanisms |
 
 ## Source hierarchy and “which material governs?” rule
 
