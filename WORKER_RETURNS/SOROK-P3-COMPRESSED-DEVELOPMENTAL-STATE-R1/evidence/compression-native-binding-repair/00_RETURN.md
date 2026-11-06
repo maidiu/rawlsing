@@ -140,6 +140,6 @@ negative cases remain meaningful.
 - `evidence/compression-native-binding-repair/pytest.log`
 - `evidence/compression-native-binding-repair/MANIFEST.json`
 
-**Commit:** `PENDING_ARTIFACT_COMMIT`  
+**Commit:** `e8612336d891bff8e1aa3642335a08d5bd3fe369`  
 After commit, push and verify this exact branch, then stop. This author pass is
 not independent final-runtime acceptance.
