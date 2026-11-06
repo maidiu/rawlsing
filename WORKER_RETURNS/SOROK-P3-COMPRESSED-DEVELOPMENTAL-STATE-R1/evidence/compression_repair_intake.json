@@ -1,0 +1,81 @@
+{
+  "schema": "SOROK_P3_HQ_COMPRESSION_REPAIR_RECEIVING@1",
+  "subject": "c1f6aa89da22b2b0406d11d33b8c730d1b41b81c",
+  "kind": "Replay of exact preserved actual P2 producer receipt that originally failed; not an additional live event or independent full-runtime review",
+  "producer_evidence": "evidence/compression_intake_actual.json",
+  "previous_result": "HELD",
+  "current_result": {
+    "schema": "SOROK_P3_COMPRESSION_EVIDENCE_ENVELOPE@TEST_ONLY/1",
+    "status": "BOUND",
+    "held_reason": null,
+    "envelope_id": "actual-sourcefree-witness",
+    "spec_hash": "59a3bc8d726bb2c83118d86d72012d353c6e681b76ea12900dc2db032cf1501f",
+    "sourcefree_grade": "SOURCEFREE_TEST_ONLY",
+    "identity": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 222,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "ea1e72cf15f927a5a5f47161ffc4c17bc4fa251ad831923be67e076fe2ec57d7"
+    },
+    "proposal_hash": "a79d057ba72a03935ec6cfadf735c156094b4aef29181ab4e8ae52aed31c78bd",
+    "representation_form": "SINGULAR_OCCURRENCE",
+    "represented_window": {
+      "coverage_basis": "participation",
+      "from_clock": 222,
+      "to_clock": 228
+    },
+    "source_ref_hashes": {
+      "participation": "bd6739531dae86a056ac3c8f0f615d3e2a95ff0c5629f5687b031206500bc567"
+    },
+    "actual_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+    "actual_event_hash": "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+    "actual_action_ref": "TEST_ONLY_BP4_WORLD_EVT_faedb3e061234e898bc9668e752377efe9b86b0575e5bc6369bb7e01acb4dc2a",
+    "actual_action_hash": "39689960a200953c5b99edcb23efcb08d14b8e62820bad83e75cb126e13cea23",
+    "native_status": "REALIZED",
+    "actual_interval_ref": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+    "actual_interval_hash": "228a633b55c08540b8dc58c2a6b2a9898f81c53740be89d2a093f1d76b6c2424",
+    "actual_interval_status": "PARTIAL",
+    "actor_access": "OBSERVED",
+    "perception_refs": [
+      {
+        "channel": "co_present",
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_faedb3e061234e898bc9668e752377efe9b86b0575e5bc6369bb7e01acb4dc2a",
+        "ref": "f683c647e0e167ab5b432ac235f43c252f00067e2b5fca938e1366dcb2931099"
+      }
+    ],
+    "observed": [
+      "current actual event"
+    ],
+    "unobserved": [
+      "unrepresented personal history"
+    ],
+    "selection_basis": "actual compatibility witness for pending P3 adapter",
+    "psychological_effects": [],
+    "no_psychological_effects": true,
+    "no_state_mutation": true,
+    "memory_or_claim_issued": false,
+    "adp016_017_authorized": false,
+    "envelope_hash": "a37f6bb77f93b13bb240c0cc14087ce5d452f98d58dfb4be4c008014d5755cf9"
+  },
+  "negative_checks": {
+    "removed_actor_perception": {
+      "status": "HELD",
+      "reason": "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT"
+    },
+    "substituted_action_receipt": {
+      "status": "HELD",
+      "reason": "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT"
+    },
+    "missing_action_binding": {
+      "status": "HELD",
+      "reason": "ACTUAL_ACTION_BINDING_UNAVAILABLE"
+    }
+  },
+  "exact_restore_equal": true,
+  "inputs_unchanged": true,
+  "verdict": "CANDIDATE_ACTUAL_BINDING_REPAIR_VERIFIED",
+  "native_psychology_memory_claims": "HELD",
+  "protected_receiving": "NOT_GRANTED"
+}

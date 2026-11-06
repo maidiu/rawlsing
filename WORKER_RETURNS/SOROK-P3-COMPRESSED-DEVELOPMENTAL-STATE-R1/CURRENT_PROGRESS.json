@@ -1,13 +1,17 @@
 {
-  "status": "PURE_READERS_ACTUAL_COMPATIBILITY_PASS__P3_OWNER_GLUE_LAUNCHED",
+  "status": "COMPRESSION_ACTUAL_BINDING_REPAIRED__PURE_READERS_COMPATIBLE__DURABLE_OWNER_IN_PROGRESS",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
+  "compression_repair_disposition": "COMPRESSION_REPAIR_DISPOSITION.json",
   "projection_disposition": "PROJECTION_INPUT_DISPOSITION.json",
-  "projection_actual_test": "tests/test_projection_receiving.py",
-  "projection_actual_receipt": "evidence/projection_intake_actual.json",
-  "tests": {
-    "combined_rule_projection_units": "13 passed in0.16s",
-    "actual_P2_output_compatibility": "1 passed in3.69s"
+  "rule_adapter": {
+    "files": [
+      "p3/__init__.py",
+      "p3/test_rules.py",
+      "tests/test_rules.py"
+    ],
+    "receipt": "evidence/rules/AUTHOR_RECEIPT.json",
+    "grade": "AUTHOR_MECHANICAL_TEST_ONLY_NOT_P2_INTEGRATION"
   },
   "lanes": [
     {
@@ -42,7 +46,7 @@
     },
     {
       "task": "sorok-p3-compression-native-binding-repair-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_CANDIDATE_REPAIR_VERIFIED",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
       "pid": 27272
     },
@@ -56,5 +60,5 @@
   "runtime": "DURABLE_P3_NOT_YET_INTEGRATED",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Intake store/repair/owner returns via terminal notifications; integrate exact normalized store and repaired compression sources, execute same-root durable A-H/two-batch/cold/crash/economy tests, then distinct exact-runtime review. No original or protected claims."
+  "next": "Receive actual normalized store and owner terminals; integrate exact returned modules plus corrected compression, resume same owner against returned store if required, execute full durable same-root A-H/two-batch/cold/crash/economy and distinct nonauthor review. No extra standalone compression review or native issuance."
 }

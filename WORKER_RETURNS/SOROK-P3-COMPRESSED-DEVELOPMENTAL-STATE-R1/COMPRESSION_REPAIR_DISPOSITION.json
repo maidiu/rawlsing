@@ -1,0 +1,27 @@
+{
+  "schema": "SOROK_P3_COMPRESSION_REPAIR_INTAKE@1",
+  "return": "c1f6aa89da22b2b0406d11d33b8c730d1b41b81c",
+  "artifact_commit": "e8612336d891bff8e1aa3642335a08d5bd3fe369",
+  "verified": {
+    "durable_exit": 0,
+    "manifest_entries": 10,
+    "exclusive_paths": 11,
+    "remote_head_matches": true,
+    "original_failure_and_author_return_unchanged": true
+  },
+  "author_tests": "23 passed in4.89s, includes actual P2 event",
+  "hq_reproduction": "Exact preserved actual P2 receipt changes HELD->BOUND; removed actor perception, unrelated action receipt and missing action binding remain HELD; exact restoration reproduces identical envelope",
+  "hq_fresh_actual_regression": "test_actual_p2_owner_e1_action_perception_binding:1 passed in4.93s",
+  "hq_evidence": "evidence/compression_repair_intake.json",
+  "disposition": "CANDIDATE_ACTUAL_BINDING_REPAIR_VERIFIED_FOR_INTEGRATION",
+  "boundary": "E1 occurrence identity and action identity remain distinct and hash-bound; compression emits no psychological effects or memory/claim authority",
+  "evidence_currentness_note": "Worker prose summary contains hashes from a different run than its compact actual_p2_receipt. The compact receipt is internally hash-consistent and authoritative for that run. HQ uses its own preserved complete producer receipt and fresh actual regression, never splices run identifiers. Original prose/artifact retained unchanged.",
+  "not_accepted": [
+    "full durable P3 product",
+    "independent exact-runtime acceptance",
+    "original/native science",
+    "human validity",
+    "protected receiving"
+  ],
+  "next": "Use corrected compression source when integrating/resuming actual P3Owner with returned normalized store; no further standalone compression court required. Final integrated A-H and nonauthor review remain."
+}
