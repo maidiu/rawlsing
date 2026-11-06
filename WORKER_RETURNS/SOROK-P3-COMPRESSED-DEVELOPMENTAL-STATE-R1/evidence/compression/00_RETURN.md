@@ -142,6 +142,6 @@ deterministic content addressing.
 - `evidence/compression/pytest.log`
 - `evidence/compression/MANIFEST.json`
 
-**Commit:** `PENDING_ARTIFACT_COMMIT`  
+**Commit:** `755836fe5b11352a2d092819b1c741ab51d2f0e8`  
 After commit, push and verify this exact branch, then stop. This author pass is
 not independent acceptance.
