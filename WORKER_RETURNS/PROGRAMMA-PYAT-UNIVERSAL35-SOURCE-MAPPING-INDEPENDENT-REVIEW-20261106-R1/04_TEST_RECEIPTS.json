@@ -1,0 +1,75 @@
+{
+  "commands": [
+    {
+      "command": "pytest -q rawlsing_next/tests/test_source_configuration_corrections.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "A correction",
+      "log": "a_correction_tests.log",
+      "log_sha256": "d5579e263d3cf70acb717b91007b4e8f4a22f00eeaa6558ee55446d3ad9d35d1",
+      "result": "5 passed in 1.59s"
+    },
+    {
+      "command": "pytest -q test_source_configuration_current_port.py test_source_configuration_library.py test_source_configuration_foundation.py test_pre553_source_read_admission.py",
+      "exit": 0,
+      "lane": "A support",
+      "log": "a_support_tests.log",
+      "log_sha256": "ccd32b9f0a292a96fec56ab0c506c0257f1728deadd498a376c209bdb727ea14",
+      "result": "38 passed in 109.11s"
+    },
+    {
+      "command": "probe_src31_boundary.py (selected affected SRC31 columns; aggregate only)",
+      "exit": 0,
+      "lane": "A selected original",
+      "log": "a_src31_probe.log",
+      "log_sha256": "70f28cee394722c44a4fa9e1de89dd13fe032cf43690a45a967296bd5540f036",
+      "result": "old RED; corrected PASS 92,862 events; DK 13,497; MISSING 6,387; NOT_ASKED 1,111; INVALID_UNRESOLVED 325; SUBSTANTIVE 71,542; 73.75s"
+    },
+    {
+      "command": "metadata-only SRC31 SAV label check for 31 changes",
+      "exit": 0,
+      "lane": "A labels",
+      "log": "a_labels.log",
+      "log_sha256": "ccb25878ea3f24af7ad33d9b86e13ce3b425161fffbe589fc9334875d47fc3b1",
+      "result": "all 14 replacement labels match actual SAV; 17 additions have no label/declaration and remain INVALID_UNRESOLVED"
+    },
+    {
+      "command": "path/commit binding mutation probe",
+      "exit": 0,
+      "lane": "A binding",
+      "log": "a_binding.log",
+      "log_sha256": "5f5100ba3ec487314e21e54ca4b17a9807411dadfcd219cd47f637e8e6ec8db7",
+      "result": "path variant corrections 31; changed base_commit/path corrections 31 (not enforced)"
+    },
+    {
+      "command": "all35 original/fixture correction counter",
+      "exit": 0,
+      "lane": "A all35",
+      "log": "a_all35_corrections.log",
+      "log_sha256": "ea2e5341c2e4397af94c0ec06632a92bb4f90ba5d3ecdffd07e0b52ad81893b4",
+      "result": "only SRC31 original 31; SRC31 fixture 0; 35 sources/18,276 items/18,413 slots"
+    }
+  ],
+  "corrected": "PASS selected columns 92,862 events",
+  "counts": {
+    "additions": 17,
+    "changes": 31,
+    "replacements": 14,
+    "states": {
+      "DK": 7,
+      "INVALID_UNRESOLVED": 17,
+      "NOT_ASKED": 3,
+      "SOURCE_SPECIFIC_SPECIAL": 4
+    }
+  },
+  "full_release": "NOT_RUN__POSITIVE_AUTHORITY_DEFER_EXPECTED",
+  "native_acceptance": false,
+  "not_run": [
+    "full all35 decode",
+    "whole estate suite",
+    "native/science acceptance",
+    "A 35 fixture floor rerun"
+  ],
+  "old_mapping": "RED unbound response value/state",
+  "original_rows_or_keys_output": false,
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_SOURCE_MAPPING_REVIEW_RECEIPTS@1.0.0"
+}

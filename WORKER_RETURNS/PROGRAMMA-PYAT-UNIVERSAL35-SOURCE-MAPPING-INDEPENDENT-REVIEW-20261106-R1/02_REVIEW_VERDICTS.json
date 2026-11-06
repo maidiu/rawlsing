@@ -1,0 +1,34 @@
+{
+  "A_BINDING_CONTRACT": {
+    "reason": "registry carries base_commit and base_config_path but apply_source_config_corrections does not compare either; byte-identical config from another path or a registry with changed base_commit/path still receives all 31 corrections",
+    "repro": "evidence/a_binding.log",
+    "required": "enforce base_commit/base_config_path in the binding or remove those claims; source SHA/base canonical hash/purpose/identity checks are already exact",
+    "verdict": "REVISE"
+  },
+  "A_FACTUAL_MAPPING": {
+    "accepted": [
+      "31 exact SRC31 changes: 14 replacements + 17 INVALID_UNRESOLVED additions",
+      "old selected mapping RED reproduced",
+      "corrected selected original consumer PASS: 92,862 response events",
+      "typed states DK 13,497; MISSING 6,387; NOT_ASKED 1,111; INVALID_UNRESOLVED 325; SUBSTANTIVE 71,542",
+      "actual SAV labels match all 14 replacement labels; c10ai 98=DK, 99=NOT_ASKED",
+      "fixture corrections 0; only SRC31 has 31 corrections; 35/18,276/18,413 preserved"
+    ],
+    "limits": [
+      "full release validation NOT_RUN behind positive-authority DEFER",
+      "selected-column original proof, not all35 native"
+    ],
+    "verdict": "ACCEPT_SCOPED"
+  },
+  "A_NATIVE_OR_SCIENCE": {
+    "reason": "no native/science/actor authority; full release DEFER; no EmpiricalFact claim",
+    "verdict": "HOLD"
+  },
+  "A_SOURCE_NEUTRALITY": {
+    "reason": "no survey-name branch in corrections machinery; correction is versioned data; fixture/unrelated sources unchanged",
+    "verdict": "ACCEPT_SCOPED"
+  },
+  "decision_owner": "HQ plus later distinct receiving/decision owner; review is evidence, not repair or acceptance",
+  "reviewer": "existing nonauthor F session; not A author",
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_SOURCE_MAPPING_REVIEW_VERDICTS@1.0.0"
+}
