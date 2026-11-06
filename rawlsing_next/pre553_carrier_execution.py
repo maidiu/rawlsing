@@ -54,7 +54,10 @@ from rawlsing_next.pre553_empirical_objects import (
     exact_ref,
     semantic_hash,
 )
-from rawlsing_next.pre553_empirical_query import execute_empirical_query
+from rawlsing_next.pre553_empirical_query import (
+    I03GroupedExecutionScope,
+    execute_empirical_query,
+)
 from rawlsing_next.pre553_source_backed_c11_facade import GovernedC11Projection
 
 
@@ -429,6 +432,7 @@ class CarrierNeutralResearchExecutor:
         *,
         query_ref: ExactRef | Mapping[str, Any],
         predicate_ref: ExactRef | Mapping[str, Any],
+        group_scope: I03GroupedExecutionScope | None = None,
     ) -> QueryExecutionResult:
         query = self.runtime_catalog.resolve_query_exact(query_ref)
         predicate = self.runtime_catalog.resolve_predicate_exact(predicate_ref)
@@ -437,22 +441,32 @@ class CarrierNeutralResearchExecutor:
             raise CarrierExecutionBindingError(
                 "supplied predicate_ref is not the exact query condition predicate"
             )
+        if group_scope is not None and not isinstance(group_scope, I03GroupedExecutionScope):
+            raise CarrierExecutionBindingError(
+                "group_scope must be an I03GroupedExecutionScope or None"
+            )
         return execute_empirical_query(
             repository=self.repository,
             query=query,
             predicate=predicate,
             authority_registry=self.runtime_catalog.authority_registry,
             release_refs=self.release_refs,
+            group_scope=group_scope,
         )
 
     def execute_i05(
         self,
         *,
         discovery_authority_ref: ExactRef | Mapping[str, Any],
+        group_scope: I03GroupedExecutionScope | None = None,
     ) -> ExactBoundedDiscoveryResult:
         authority = self.runtime_catalog.resolve_discovery_authority_exact(
             discovery_authority_ref
         )
+        if group_scope is not None and not isinstance(group_scope, I03GroupedExecutionScope):
+            raise CarrierExecutionBindingError(
+                "group_scope must be an I03GroupedExecutionScope or None"
+            )
         return execute_exact_bounded_discovery(
             repository=self.repository,
             discovery_authority=authority,
@@ -460,6 +474,18 @@ class CarrierNeutralResearchExecutor:
             release_refs=self.release_refs,
             predicate_catalog=self.runtime_catalog.predicates,
             query_template_catalog=self.runtime_catalog.queries,
+            group_scope=group_scope,
+        )
+
+    def grouped_i03_scope(
+        self,
+        *,
+        max_groups: int = 64,
+        max_cached_members: int = 500_000,
+    ) -> I03GroupedExecutionScope:
+        """Create one finite execution-local grouping scope owned by the caller."""
+        return I03GroupedExecutionScope(
+            max_groups=max_groups, max_cached_members=max_cached_members,
         )
 
     def binding_receipt(self) -> Mapping[str, Any]:
@@ -512,6 +538,7 @@ def learned_empirical_execution_receipt(
 __all__ = [
     "CARRIER_EXECUTION_CONTRACT_ID",
     "CarrierExecutionBindingError",
+    "I03GroupedExecutionScope",
     "RuntimeObjectCatalog",
     "CarrierNeutralResearchExecutor",
     "RepositoryBuilderBinding",

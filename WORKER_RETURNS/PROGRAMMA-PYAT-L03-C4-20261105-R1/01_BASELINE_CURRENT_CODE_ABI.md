@@ -1,7 +1,8 @@
-# 01 — Actual baseline ABI and current code call graph
+# 01 — Actual baseline ABI, Phase-2 grouped ABI, and current code call graph
 
-**Scope:** sourcefree Phase-1 measurement only. No production `rawlsing_next` change was
-made. No original35, native source/science, actor, human, Sorok, or protected-merge
+**Scope:** sourcefree Phase-1 measurement plus the bounded Phase-2 implementation. No
+original35, native source/science, actor, human, Sorok, or protected-merge authority is
+claimed. No original35, native source/science, actor, human, Sorok, or protected-merge
 authority is claimed.
 
 ## Identity
@@ -237,3 +238,99 @@ scientific omission and not an authorization to add a new state.
 - `tools/` — reusable benchmark worker/driver/finalizer.
 - `results/commands.jsonl`, `results/repeat_summary.json` — command receipts and
   warm-repeat statistics.
+
+
+## Phase-2 grouped execution ABI
+
+The production-first-consumer API now has an optional finite scope:
+
+```
+CarrierNeutralResearchExecutor.execute_i03(
+    *, query_ref, predicate_ref, group_scope: I03GroupedExecutionScope | None = None
+) -> QueryExecutionResult
+CarrierNeutralResearchExecutor.execute_i05(
+    *, discovery_authority_ref, group_scope: I03GroupedExecutionScope | None = None
+) -> ExactBoundedDiscoveryResult
+CarrierNeutralResearchExecutor.grouped_i03_scope(
+    *, max_groups=64, max_cached_members=500_000
+) -> I03GroupedExecutionScope
+```
+
+`execute_empirical_query(..., group_scope=None)` and
+`execute_exact_bounded_discovery(..., group_scope=None)` propagate the scope.
+`execute_issued_workload` creates one owned scope when a workload has more than one
+unit, passes it to every Batch query/I05 unit, and clears it in `finally` on success
+or error. A single-unit workload keeps the existing unshared path. A caller may also
+create a scope explicitly:
+
+```
+with executor.grouped_i03_scope() as scope:
+    executor.execute_i03(query_ref=q, predicate_ref=p, group_scope=scope)
+```
+
+### New call graph on a grouped hit
+
+```
+execute_i03
+  -> execute_empirical_query
+     -> per-operation identity/source/authority/issuance checks (unchanged)
+     -> _resolve_release_indices / attested _ReleaseIndex (unchanged)
+     -> _evaluate_index_group(..., group_scope=scope)
+        -> scope.evaluate(index, query, predicate, plan, profile, registry)
+           -> exact _core_key match + fingerprint/index identity check
+           -> _materialize_grouped_evaluation(core, plan, profile, registry)
+              -> RAW: exact core cells
+              -> GOVERNED_WEIGHTED: per-operation _weight_for over denominator members
+        -> on incompatibility/fallback: existing unshared loop
+     -> _build_fact / _make_execution_replay_ref (unchanged, per operation)
+```
+
+On a miss the scope computes `_evaluate_index_group_core`: the exact existing
+routing/risk, predicate, and target logic without weights, storing used objects and
+authority refs for faithful per-operation provenance. It does not call
+`_weight_for`, does not build a fact, and does not persist outside the scope.
+
+### Exact core key
+
+The core is keyed by:
+
+- the attested release index object, release/replay/semantic/source-manifest refs,
+  universe ref, and a respondent-identity root;
+- risk set ref, risk-set type, source-scope mode, and response-state semantics ref;
+- predicate ref and grammar authority ref;
+- the complete target plan: target refs, topology, domain, domain replay ref,
+  topology/response-semantic authority refs, included states, joint-order
+  semantics, and full domain identity;
+- exact query authority refs;
+- exact authority-registry fingerprint;
+- a measure-independent-core marker.
+
+Opt-in runtime successor binding disables grouping and falls back to the existing
+unshared path in this bounded diff. Measure/weight/design are not core determinants:
+they do not govern the core, and all measure/weight validation and aggregation is
+redone per operation. No weighted result or final fact is cached.
+
+### Bounded scope safety
+
+- Maximum 64 groups and 500,000 cached denominator members by default.
+- `close()`/context exit/error clears all entries; no process-global or persistent
+  store; no independently authoritative retained fact.
+- Every hit verifies `core.index is index` and recomputes the exact core
+  fingerprint; a mismatch evicts and falls back unshared.
+- Cache/index rebuild changes the index object identity and therefore the core key;
+  no stale group crosses a rebuild.
+- Incompatible release/universe/risk/predicate/target/authority/weight/runtime
+  material produces a different key or a conservative fallback.
+
+### Phase-2 measurement and artifact map
+
+- Paired benchmark script: `tools/bench_grouped_phase2.py`.
+- Phase-2 summary: `results/phase2_summary.json`.
+- Phase-2 commands: `results/phase2_commands.jsonl`.
+- Raw paired JSON (untracked checkout-local):
+  `.local-logs/pyat-l03-c4/phase2/main_n{200,1000,3000}.json`,
+  `small_fixtures.json`.
+- New focused tests: `rawlsing_next/tests/test_pre553_i03_grouping.py` (11 tests).
+- Exact Phase-2 parity entries are appended to
+  `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl`; paired costs and scope/counter
+  receipts are appended to `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl`.

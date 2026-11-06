@@ -998,6 +998,7 @@ def _evaluate_candidate(
     registry: AuthorityRegistry,
     release_refs: Iterable[ExactRef],
     minimum_raw_denominator: int,
+    group_scope=None,
 ) -> tuple[str, str, tuple[EmpiricalFact, ...], Mapping[str, Any]]:
     results: dict[str, QueryExecutionResult] = {}
     facts: list[EmpiricalFact] = []
@@ -1008,6 +1009,7 @@ def _evaluate_candidate(
             predicate=role.predicate,
             authority_registry=registry,
             release_refs=release_refs,
+            group_scope=group_scope,
         )
         results[role.role] = result
         facts.extend(result.facts)
@@ -1055,6 +1057,7 @@ def execute_exact_bounded_discovery(
     release_refs: Iterable[ExactRef],
     predicate_catalog: Iterable[EmpiricalPredicate],
     query_template_catalog: Iterable[EmpiricalQuerySpec],
+    group_scope=None,
 ) -> ExactBoundedDiscoveryResult:
     """Compile and exhaustively evaluate the exact authority-declared frontier.
 
@@ -1103,6 +1106,7 @@ def execute_exact_bounded_discovery(
             registry=authority_registry,
             release_refs=release_refs_tuple,
             minimum_raw_denominator=minimum_raw_denominator,
+            group_scope=group_scope,
         )
         if coverage_state not in TERMINAL_COVERAGE_STATES:
             raise ExactBoundedCoverageError("candidate did not receive terminal exact coverage state")

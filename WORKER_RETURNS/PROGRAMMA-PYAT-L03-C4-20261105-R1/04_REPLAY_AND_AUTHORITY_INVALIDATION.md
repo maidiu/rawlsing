@@ -145,3 +145,52 @@ tests.
   risk/weight/authority result across incompatible scopes.
 - A grouped or indexed result that replaces the separate exact `EmpiricalFact`
   and replay construction rather than feeding it.
+
+## Phase-2 grouped-scope invalidation
+
+The Phase-2 implementation adds a finite execution-local core memo. The existing
+Phase-1 replay/authority/cache evidence above is retained unchanged; the following
+new focused cases were added in `rawlsing_next/tests/test_pre553_i03_grouping.py`
+and passed at the candidate.
+
+- **Poisoned core memo.** After a successful grouped operation, the cached core's
+  `raw_cells` was replaced with forged counts while its stored fingerprint was left
+  stale. The next operation detected the fingerprint mismatch, evicted the entry,
+  fell back to the unshared path, and published the exact baseline fact
+  (`fingerprint_failures >= 1`; no forged `SUPPORTED` fact).
+- **Index rebuild / stale group.** A cached core was populated, then one respondent
+  was removed from the repository's cached index payload. The next operation
+  re-attested/rebuilt the index, saw a new index identity/key, built a new core, and
+  published the exact baseline fact. The old group was not reused across the rebuild.
+- **Runtime successor binding.** Under `bind_runtime(Pre553RuntimeAuthoritySet())`,
+  the scope deliberately declined grouping (`core_builds == 0`, `core_hits == 0`,
+  fallbacks > 0) and the existing unshared path produced the exact baseline fact.
+  This is the conservative fallback for query-specific runtime risk issuance.
+- **Authority DENY.** A nonpositive `PREDICATE_GRAMMAR` authority produced the same
+  typed `UNAVAILABLE` / `MISSING_REQUIRED_AUTHORITY` fact with and without the
+  grouped scope; grouping was not reached.
+- **Weight invalidation and regime isolation.** A missing weight and a query with
+  `weight_basis_id = W2` over `W` facts both matched the unshared negative exactly
+  (`MEASURE_UNAVAILABLE`). RAW and governed-weighted operations may share only the
+  measure-independent core; every weighted denominator/cell and `_weight_for`
+  validation is recomputed per operation.
+- **Release/universe/authority separation.** Two distinct releases and two distinct
+  universes produced separate core keys (`core_builds == 2`, `core_hits == 0`) and
+  exact per-scope facts. Two authority registries with different exact authority
+  sets also produced separate keys (`core_builds == 2`, `core_hits == 0`) with unchanged
+  facts.
+- **Scope cleanup on error.** A scope used inside a failing `with` block cleared all
+  groups and reported `closed: true`, `open_groups: 0`; no state survived the error.
+- **Single-operation and incompatible work.** A single operation with an explicit
+  scope built one core and published the exact baseline fact, with an honest measured
+  cost of roughly +2% to +4% versus the unchanged unshared path. Seven mutually
+  incompatible operations produced seven core builds, zero cross-operation hits, and
+  exact baseline facts; first-pass cost was +0.8% to +3.9% at N=1,000/3,000 and
+  +2.6% at N=200 in the final rerun.
+- **Issued Batch/I05 integration.** A real two-query plus discovery workload through
+  `execute_issued_workload` produced 2 core builds and 2 core hits in the grouped
+  scope and identical output refs, receipts, facts, and discovery receipts versus a
+  closed scope acting as the unshared baseline.
+
+No blanket cache default/change was made. The existing accelerator HIT/DELETE/
+CORRUPT/STALE/REVOKED evidence above remains the current physical-cache evidence.

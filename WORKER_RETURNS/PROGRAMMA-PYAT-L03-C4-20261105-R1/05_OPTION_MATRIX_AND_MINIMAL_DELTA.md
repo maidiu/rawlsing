@@ -1,159 +1,135 @@
-# 05 — Five-test work selection, option matrix, and minimal measured delta
+# 05 — Five-test disposition, implemented minimal delta, and option matrix
 
-**Status:** Phase-1 measured recommendation only. No production implementation is
-included or authorized by this return. P2/P3/P4 candidate implementations are
-marked **NOT_IMPLEMENTED / NOT_RUN** where applicable. This is not a complete C4
-claim, not a no-extra-code equivalence claim, and not native/original35 science.
+**Status:** Phase-2 implemented and frozen for independent R03 review. Sourcefree
+engineering only. No protected merge, original35, native science, actor/Sorok, or
+producer acceptance is claimed.
+
+## Implemented delta (P2)
+
+The smallest warranted W05/P03 delta is now implemented: **bounded execution-local
+compatible grouped AND-risk/target core reuse** inside the existing I03 evaluator and
+actual first-consumer path.
+
+- Core reuse is limited to measure-independent routing/risk membership, predicate
+  truth, exact target cell resolution, and used object/authority material.
+- Every operation still builds its own exact native `EmpiricalFact`, provenance,
+  dependency refs, and replay; no final-fact or grouped-aggregate memo is used.
+- Weighted aggregation and all weight validation remain per operation; no RAW/
+  governed-weighted result reuse.
+- Incompatible work is never cross-shared. A scope hit requires exact determinant
+  compatibility; otherwise the existing unshared path executes.
+- The scope is finite, context-managed, nonpersistent, and cleared on exit/error.
+- Production scope: `_pre553_query_eval.py`, `pre553_empirical_query.py`,
+  `pre553_carrier_execution.py`, plus minimal `pre553_discovery_exact.py` and
+  `pre553_issued_workload.py` hooks to make the real I03/I05/Batch path use it.
+- `_select_respondent_events` selector v1 ABI is unchanged.
 
 ## Five-test historical-function disposition
 
-The selected current destination is W05/P03 exact cross-operation sharing
-(`ROADMAP:S03.3`, `S-I03`), with W03/P01 sealed C11 realization and W04/P02 compact
-regenerable acceleration as adjacent selected capabilities.
-
-| Law field | Phase-1 answer |
+| Law field | Phase-2 answer |
 |---|---|
-| `HISTORY` | October W05/P03 grouped-economy capability; current code successor is the PR684 attested release-index cache plus PR686 compact body lane, not a historical file restoration. Historic actual caller for this measurement is the current `CarrierNeutralResearchExecutor.execute_i03`, not an old V550/V550J body. |
-| `CURRENT_REQUIREMENT` | `ROADMAP:S03.3` / `S-I03`: compatible exact cross-operation sharing at the actual first consumer; W05/P03. W03/P01 and W04/P02 remain selected but are not the primary measured gap here. |
-| `CURRENT_SUCCESSOR` | Index reuse and attestation are **present** (`_release_index_for`, `_build_release_index` only on miss). Compact Parquet/Zstd event-body view is **present** (`_compact_public_objects`, `_read_bodies`, `_write_bodies`). Per-operation respondent risk/predicate/target/weight recomputation is **not** shared across compatible operations. Derived-branch membership compilation is only execution-local per predicate. Disposition: **PARTIALLY_MISSING**. |
-| `FIRST_CONSUMER` | Exact actual reader: `CarrierNeutralResearchExecutor.execute_i03` (`pre553_carrier_execution:427`), called by Route-B production (`pre553_route_b_production:582`), with the issued Batch path and sourcefree P41 test as downstream context. The first consumer demands one exact `EmpiricalFact` + replay per operation, not a merged scientific result. |
-| `AUTHORITY` | Sourcefree engineering only. C11 release is sealed and exact; I03 authority is checked per operation; no new source/actor/science/weight/routing grant. Original35, native source release, and P41 native science remain separately held. |
-| `COMPARE_AND_COST` | See option matrix below. Current cache/index baseline is measured. Reuse/adapt of the existing evaluator is sufficient for the recommendation; new bitmap index and new persistent body engine are not justified by this baseline. |
-| `DISPOSITION` | `TRUE_CURRENT_GAP` for compatible cross-operation sharing at W05/P03; recommendation `REUSE_ADAPT`, not `BUILD_NEW` engine. |
-| `NEXT_WORK` | `REUSE_ADAPT` a minimal grouped kernel on the existing cached release index after HQ grants the exact production diff. Do not build a second semantic engine, persistent canonical copy, or new scheduler. |
-| `FALSIFIER` | A bounded P2 implementation that preserves all exact facts/replay while reducing measured compatible-workload cost and does not regress single-operation, incompatible-risk, release/universe, authority, weight, typed-state, zero, or replay checks. If P2 cannot produce a material reduction on the actual admitted mix, the recommendation reverses to `NO_ACTION`/defer. |
+| `HISTORY` | October W05/P03 grouped-economy capability; current code successor is the attested release-index cache plus compact body lane, now extended at the actual current I03 first consumer. No historical file/engine restoration. |
+| `CURRENT_REQUIREMENT` | `ROADMAP:S03.3` / `S-I03`: compatible exact cross-operation sharing; W05/P03. `ROADMAP:S04.1–S04.4` native facts/cells/denominators/replay remain separate. |
+| `CURRENT_SUCCESSOR` | **Present and now implemented:** exact release-index reuse, compact physical view, and execution-local compatible core reuse. Per-operation measure/weight, fact, provenance, and replay construction remain preserved. Disposition: **IMPLEMENTED_SCOPED**. |
+| `FIRST_CONSUMER` | `CarrierNeutralResearchExecutor.execute_i03` (`pre553_carrier_execution.py:427`), Route-B caller at `pre553_route_b_production.py:582`, and the issued Batch/I05 path. The integration creates one owned scope for multi-unit workloads and passes it to query and I05 units. |
+| `AUTHORITY` | Sourcefree engineering only. Per-operation identity/source/index-attestation/authority/issuance/revocation checks remain enabled. No new semantic, source, actor, weight, routing, or scientific authority. |
+| `COMPARE_AND_COST` | P2 implemented and measured on identical sealed releases/workload: warm 3.07–3.25× on the compatible synthetic mix, explicit single-op −2.5% to +10.9%, incompatible first pass +0.8% to +3.9% at N=1,000/3,000. P3/P4 not built. |
+| `DISPOSITION` | `REUSE_ADAPT` completed for W05/P03; no second semantic engine or persistent canonical copy. |
+| `NEXT_WORK` | Independent R03 review of the frozen implementation; then HQ selects protected receiving. No further P3/P4 build from this evidence. |
+| `FALSIFIER` | Any changed fact/cell/denominator/typed negative/replay/provenance on a grouped hit, any cross-scope sharing, or failure to produce a material warm-workload economy reverses the disposition. |
 
-## Measured baseline used for the decision
+## Paired measured result
 
-All timings are single-runner, sequential, sourcefree synthetic. Clean timings are
-without instrumentation. Warm repeats are passes 1–3 on one repository after the
-cold-index pass. Four-pass warm ranges are in `results/repeat_summary.json` and
-`02_EXACT_COST_AND_MEMORY_RESULTS.jsonl`.
+Identical sealed releases, fixture seeds, operation mix, and instrumentation; one
+timed process at a time. Baseline is the unchanged no-scope path. Full
+`EmpiricalFact.as_dict()`, fact-ref, and replay-ref equality held for every operation
+at every measured size.
 
-### Release-index reuse is real
+| N | cold baseline | cold candidate | warm baseline median | warm candidate median | warm speedup |
+|---:|---:|---:|---:|---:|---:|
+| 200 | 1.4159 s | 1.3585 s | 1.3433 s | 0.4140 s | 3.25× |
+| 1,000 | 6.9096 s | 6.5482 s | 6.4835 s | 2.1123 s | 3.07× |
+| 3,000 | 20.9967 s | 20.2396 s | 20.2322 s | 6.2198 s | 3.25× |
 
-| N | index build on first op | warm index lookup (`_release_index_for`) | warm resolve incl. universe scan | index builds after first |
-|---:|---:|---:|---:|---:|
-| 200 | 0.0765 s | 0.000021 s | 0.00066 s | 0 |
-| 1,000 | 0.3814 s | 0.000026 s | 0.00356 s | 0 |
-| 3,000 | 1.3441 s | 0.000026 s | 0.00911 s | 0 |
+Selected N=3,000 warm per-op speedups: 1-target branch 3.00×, weighted 1.97×,
+2-target 3.21×, 3-target 3.38×, 4-target 3.56×, forward conditional 3.32×, reverse
+conditional 3.39×, XOR 4.81×, minority 3.77×, incompatible risk set 3.46×.
 
-The cache is therefore not the residual gap for repeated operations. The residual
-gap is per-operation respondent computation and per-operation fact construction.
+Actual work counters for one warm pass (not timing):
 
-### Warm operation cost and attribution at N=3,000
+| N | baseline routing / predicate / target / weight | candidate routing / predicate / target / weight |
+|---:|---|---|
+| 200 | 3,800 / 2,500 / 2,002 / 2,002 | 0 / 0 / 0 / 200 |
+| 1,000 | 19,000 / 12,500 / 10,010 / 10,010 | 0 / 0 / 0 / 1,000 |
+| 3,000 | 57,000 / 37,500 / 30,030 / 30,030 | 0 / 0 / 0 / 3,000 |
 
-Selected warm medians (four-pass repeat measurement):
-
-| operation | warm wall median | cold-index first pass |
-|---|---:|---:|
-| `all_K_raw` (1 target, branch) | 1.2513 s | 2.5766 s |
-| `all_K_weighted` (same target/risk/predicate) | 1.5623 s | 1.6260 s |
-| `all_K_raw_sibling` (same semantics, different query identity) | 1.2939 s | 1.3109 s |
-| `all_XY_raw` (2 targets) | 2.2436 s | 2.3959 s |
-| `all_XYZ_raw` (3 targets) | 3.2246 s | 3.4689 s |
-| `all_ABCK_raw` (4 targets) | 4.4740 s | 4.0435 s |
-| `cond_X1_target_Y` | 1.4708 s | 1.3055 s |
-| `cond_Y1_target_X` | 1.4385 s | 1.2848 s |
-| `xor_condition_target_Z` | 2.6372 s | 2.2818 s |
-| `minority_branch_target_K` | 0.7761 s | 0.6986 s |
-| `risk_S_target_K` | 0.9843 s | 0.9039 s |
-
-Attribution on the same mix (instrumented; proportions are the defensible result):
-
-| operation class | risk/routing + predicate + target/weight share of warm op | fact/replay/provenance construction share |
-|---|---:|---:|
-| compatible 1-target branch operations | 0.615–0.648 | 0.243–0.264 |
-| 2/3/4-target branch operations | 0.686–0.720 | 0.200–0.224 |
-| forward/reverse conditional | 0.695–0.717 | 0.197–0.227 |
-| XOR condition | 0.778 | 0.168 |
-| minority branch | 0.715 | 0.195 |
-| incompatible risk set | 0.618 | 0.181 |
-
-At N=1,000 the corresponding shareable range was 0.529–0.785 and the
-fact-construction share 0.162–0.370; the 2-target instrumentation run had a
-large positive wrapper overhead and is not used as an absolute timing. The clean
-repeat data is the comparable timing source.
-
-The repeated components are exactly the ones that a grouped kernel can key by an
-exact compatible group: release, universe, risk set and risk-set type, measure,
-predicate identity, and target plan/domain. The fact/replay/provenance
-construction must remain per operation because it is the native `EmpiricalFact`
-publication unit; it cannot be replaced by a grouped aggregate.
-
-### Compact physical view at N=1,000 (context, not a controlled A/B)
-
-- one Parquet/Zstd event-body slot: **704,824 bytes**;
-- uncompressed event-body JSON: **14,856,000 bytes**;
-- cold compact build: **4.2353 s**;
-- warm cross-process compact build: **0.8205 s**;
-- native event-body view peak RSS: **287.7 MB**; compact run peak RSS: **352.0–383.8 MB**
-  (separate processes, includes pyarrow and compact construction; not a memory
-  claim in favor of compactness).
-
-The compact view removes native event-body reconstruction work and is an accepted
-scoped physical capability, but it does not remove the per-operation
-risk/predicate/target iteration. It is not a substitute for W05/P03 sharing.
+The cold grouped pass built 11 exact cores and had 2 compatible hits for the
+13-operation mix. The warm pass reused all 11 cores and materialized 13 separate
+facts. This is genuine shared count/routing/predicate/target work, not a final-fact
+hash memo.
 
 ## Option matrix
 
-| Option | What it would do | Exactness / authority | Measured evidence | Risk / delta | Disposition |
-|---|---|---|---|---|---|
-| **P0/P1 current** | Attested release-index reuse + per-operation evaluator/compact view | Exact existing I03; no new authority | 0 index rebuilds after first op; warm op cost and 61–78% shareable components measured | Already present; no new production change | **BASELINE / KEEP** |
-| **P2 minimal grouped AND-risk/target kernel** | Execution-local memo keyed by exact compatible group; compute respondent routing/risk, condition, target configuration, and weight once for compatible operations; still build one exact fact/replay/provenance per operation | Reuses existing exact predicate/risk/authority evaluator; no new semantic truth or canonical copy; no cross-release/risk/universe/authority/weight sharing | Measured shareable components 0.615–0.778 of warm op for the compatible classes; fact construction 0.168–0.264 remains per operation | Smallest coherent W05/P03 delta; requires exact parity and single-op non-regression tests; not implemented in Phase 1 | **RECOMMEND AFTER HQ DIFF GRANT** |
-| **P3 per-question bitmap/dictionary posting index** | Add per-target posting structures to accelerate routing/target scans | Could be exact, but adds a second physical access path and memory/retention surface | **NOT_IMPLEMENTED / NOT_RUN**; no measured benefit | Larger delta; rebuild/retention and authority-attestation burden; would not remove fact/replay construction and may not beat grouped recompute | **DEFER / NO BUILD NOW** |
-| **P4 new persistent Parquet/Zstd body engine** | Add or default a new persistent accelerated body store | Existing compact lane already regenerable and exact; new engine risks a second canonical copy | Existing accelerator measured for cold/warm/delete/corrupt/stale/revoked; `NOT_RUN` for a new engine | No evidence a new engine is needed; default/retention/eviction belongs to W04/P02 owner decision | **NO BUILD / NO DEFAULT CHANGE** |
-| **Reuse/adapt/compose existing owners** | Compose accepted C11, I03, compact view, Batch | Exact and already reviewed scoped code | All 65 focused tests passed; 52 baseline facts and 44 same-fact relations exact | No new semantic engine | **PREFERRED FRAME FOR P2** |
-| **Repair only** | Fix index/cache defect | Existing attestation already repairs corruption and same-identity faults | Fault repair returned the same fact; cache delete/corrupt/stale rebuilt | No evidence of a remaining cache correctness defect | **NO_ACTION** |
-| **New semantic engine / new scheduler / canonical copy** | Separate grouped truth engine | Collides with current I03 ownership and `05_HISTORICAL…` law | None | High; prohibited at this checkpoint | **REJECT / NO_ACTION** |
+| Option | Status | Exactness / authority | Measured evidence | Disposition |
+|---|---|---|---|---|
+| **P0/P1 current no-scope path** | Present | Exact accepted I03; no new authority | Baseline measured at N=200/1,000/3,000 | **RETAIN** as oracle/fallback |
+| **P2 execution-local grouped AND-risk/target** | **IMPLEMENTED** | Exact core determinants; per-operation native fact/replay; per-operation measure/weight; no cross-scope sharing | Warm 3.07–3.25×; cold −3.7% to −5.5% (candidate faster in this rerun, run-noise range); explicit single-op −2.5% to +10.9%; incompatible first pass +0.8% to +3.9% at N=1,000/3,000 | **FROZEN FOR R03 REVIEW** |
+| **P3 bitmap/posting index** | **NOT_BUILT** | Would add a second physical access path | No measured benefit; P2 already removes repeated routing/predicate/target work | **NO BUILD** |
+| **P4 new persistent body engine** | **NOT_BUILT** | Existing compact Parquet/Zstd lane is regenerable/authenticated | Existing cache HIT/DELETE/CORRUPT/STALE/REVOKED evidence retained | **NO NEW ENGINE** |
+| **New semantic engine / canonical copy / scheduler** | Rejected | Collides with current I03/Batch ownership | None | **NO ACTION** |
 
-## Minimal recommended delta for the next authorized phase
+## W03 / W04 physical-requirement distinction
 
-The smallest warranted W05/P03 delta is a **P2 execution-local grouped AND-risk/target
-kernel inside the existing I03 evaluation path**:
+W03/W04 remain selected physical requirements; this return does not declare them
+complete and does not cancel selected capabilities.
 
-1. Key only on exact compatible material: `(release_ref, universe_ref,
-   risk_set_ref, risk_set_type, measure_kind, condition predicate ref, exact
-   target plan/topology/domain refs)`.
-2. Reuse the existing `_ReleaseIndex`, `_routing_fact_for`, `_eval_predicate`,
-   `_weight_for`, and `_target_configuration` semantics; do not add new scientific
-   interpretation, weights, routing, or denominator rules.
-3. Memoize respondent-level routing/risk membership, condition truth, target
-   configuration, and governed weight only for the lifetime of the compatible
-   group/execution; do not persist or canonicalize the memo.
-4. Still construct the separate exact `EmpiricalFact`, provenance, and replay for
-   every operation, including weighted/raw siblings and every target arity.
-5. Refuse sharing across incompatible risk sets, releases, universes, authorities,
-   weights, or target domains; keep the existing typed states for
-   empty/zero/minority/unsupported/refusal cases.
-6. Require the bounded P2 implementation to demonstrate exact parity against the
-   existing frontier fixtures and the scaled mix, and to show no single-operation
-   regression, before independent R03 review.
+- **Existing default in-memory compact realization:** the source-backed builder
+  automatically chooses the compact Arrow view when pyarrow is installed. This is
+  the current default compact realization, not new in this diff.
+- **Optional authenticated compressed persistent acceleration:** Parquet/Zstd
+  event-body storage is caller-configured through `RAWLSING_C11_ACCELERATOR_DIR`;
+  it is regenerable and authenticated. This diff does not change its default,
+  retention, eviction, or storage policy.
+- **Fact cost:** per-operation fact construction was not reduced; the instrumented
+  counter pass measured candidate fact time +5–9% versus baseline (0.308/0.281 s at
+  N=200; 1.565/1.438 s at N=1,000; 4.532/4.219 s at N=3,000), so the economy comes
+  from shared routing/predicate/target work, not from altering native fact/replay
+  publication.
+- **Selected exact needed function vs economical cold construction/memory:**
+  W05/P03 exact sharing is implemented and measured. W03/W04 economical cold
+  construction/memory remains unresolved: at N=1,000 the compact run's measured
+  peak RSS was 352–384 MB versus 287.7 MB native, and source reacquisition/fixture
+  construction dominates cold passes. No production/original35 claim is made.
+- **No bundled compact-carrier rewrite:** no measured deficit justified one in this
+  diff; the existing compact lane is retained.
 
-Do **not** implement P3/P4 in the next diff from this evidence alone. P3 has no
-measured benefit and P4 already exists in scoped, env-gated form; enabling default
-retention/eviction is a W04/P02 owner decision, not a W05/P03 implementation
-shortcut.
+## Scope and authority constraints preserved
+
+- Query/predicate identity, source binding, index attestation, authority/issuance/
+  revocation checks are never bypassed on a grouped hit.
+- Runtime successor binding causes conservative unshared fallback.
+- Different releases, universes, risk sets, predicates, target plans, authority
+  registries, measures, weights, or runtime bindings do not cross-share.
+- Expired/corrupt/wrong-respondent memo, poisoned core, and rebuilt index all
+  fail closed to the exact unshared path.
+- Every operation publishes its own native fact/replay; no independently
+  authoritative retained fact or persistent group cache exists.
 
 ## PROGRAMMA_DELTA (ordinary return; not a guide write-through)
 
-Compact observation to attach to the existing IDs after HQ review:
-
-- `ROADMAP:S03.3`, `S-I03`, W05/P03: **baseline measured; current successor has
-  attested release-index reuse and compact body lane; residual gap is compatible
-  cross-operation respondent/risk/predicate/target/weight recomputation.**
-- `ROADMAP:S04.1–S04.4`: **no scientific contract change; all baseline facts and
-  frontier oracles are exact; grouped value must still be published as separate
-  native facts and replay.**
-- W05/P04 (`_make_execution_replay_ref` / `_build_fact` profiling): **fact/replay/
-  provenance construction is 0.168–0.264 of warm op at N=3,000 and 0.162–0.370 at
-  N=1,000 in the instrumented runs; it must remain per operation.**
-- `S-C11`: **compact accelerator HIT/DELETE/CORRUPT/STALE/REVOKED behaviors passed
-  exact material parity; no default/retention change proposed.**
-- `S-I03`: **actual first consumer is `CarrierNeutralResearchExecutor.execute_i03`;
-  issued Batch/I05 and sourcefree P41 test passed; original35/native science
-  remains held.**
-- Recommended next work: `REUSE_ADAPT` minimal P2 grouped kernel after an HQ-granted
-  production diff; `P3` defer/NOT_RUN; `P4` no new build/no default change.
-- Qualification/guide write-through remains Pyat HQ's duty; this file is not a
-  second guide and does not alter protected statuses.
+- `ROADMAP:S03.3`, `S-I03`, W05/P03: **P2 compatible exact core reuse implemented and
+  paired-measured; warm 3.07–3.25× on the synthetic compatible mix with exact
+  per-operation facts/replay; single-op and incompatible work honestly bounded.**
+- `ROADMAP:S04.1–S04.4`: **no scientific contract change; separate native facts,
+  cells, typed zeros, denominators, provenance, replay, weights, and both directional
+  products are preserved.**
+- W05/P04: **fact/replay/provenance construction remains per operation; no silent
+  canonical identity/ABI/version change.**
+- W03/P01: **existing sealed C11 exact execution and compact Arrow default realization
+  retained; no rewrite.**
+- W04/P02: **optional authenticated compressed persistent acceleration retained;
+  default/retention/eviction unchanged; economical cold construction/memory remains
+  unresolved rather than declared complete.**
+- P3/P4: **NOT_BUILT / not warranted by this evidence.**
+- Qualified guide write-through remains Pyat HQ's duty; this is not a second guide.
+MD

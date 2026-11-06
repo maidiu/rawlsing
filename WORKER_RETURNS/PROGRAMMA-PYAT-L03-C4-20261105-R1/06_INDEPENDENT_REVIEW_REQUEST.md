@@ -1,129 +1,137 @@
-# 06 — Independent review request (Phase-1 measured checkpoint)
+# 06 — Independent R03 review request against the frozen implementation
 
-**Requested from:** independent reviewer distinct from this author-controller.
-**Grade sought:** sourcefree Phase-1 measurement and bounded gap-selection review.
-**Not sought:** protected merge, native/original35 science, actor/Sorok scope,
-producer acceptance, or a claim that C4 is complete.
-**Production diff:** none. No `rawlsing_next` file was changed. A bounded P2
-implementation is **not yet authorized** and is not part of this review.
+**Implementation SHA:** `__IMPLEMENTATION_SHA__`
+**Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
+**Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
+**Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d`
+**Requested grade:** independent sourcefree R03 review of the frozen P2
+implementation, measurement, and per-operation exactness.
+**Not requested:** protected merge, native/original35 science, actor/Sorok scope,
+producer acceptance, or a complete W03/W04 declaration.
 
-## Artifacts to review
+## Frozen implementation scope
 
-- `00_RETURN.md`
-- `01_BASELINE_CURRENT_CODE_ABI.md`
-- `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl`
-- `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl`
-- `04_REPLAY_AND_AUTHORITY_INVALIDATION.md`
-- `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md`
-- `tools/bench_common.py`, `tools/bench_worker.py`, `tools/run_phase1.py`,
-  `tools/finalize_phase1.py`
-- `results/commands.jsonl`, `results/repeat_summary.json`
-- Raw scenario JSON and repeat JSON under the untracked checkout-local
-  `.local-logs/pyat-l03-c4/` (not committed; referenced for re-run comparison).
+Review exactly these changed production files at the implementation SHA:
+
+- `rawlsing_next/_pre553_query_eval.py`
+- `rawlsing_next/pre553_empirical_query.py`
+- `rawlsing_next/pre553_carrier_execution.py`
+- `rawlsing_next/pre553_discovery_exact.py` (minimal optional propagation only)
+- `rawlsing_next/pre553_issued_workload.py` (minimal owned-scope Batch hook only)
+- `rawlsing_next/tests/test_pre553_i03_grouping.py` (11 focused tests)
+
+No source ingestion, compact selector / `_select_respondent_events` ABI v1, authority
+semantics, P41, canonical identity, scheduler, or default cache policy was rewritten.
 
 ## Required review questions
 
-1. **First consumer / call graph.** Confirm the actual measured entry is
-   `CarrierNeutralResearchExecutor.execute_i03` (`pre553_carrier_execution.py:427`)
-   and that `execute_route_b_production` (`pre553_route_b_production.py:582`) and
-   the issued/Batch/I05 path are correctly described. Flag any invented reader or
-   contract edge.
-2. **Baseline identity.** Confirm the base commit
-   `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`, the assigned branch, and the current
-   presence of PR684/PR686/selector-v1 behavior. Confirm that the external
-   selector-v1 qualification commit is not represented as this worker's own run.
-3. **Exact facts and oracle.** Independently select a subset of the 52 baseline
-   facts in `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl` and check:
-   - exact typed state;
-   - exact raw numerator/denominator and complete cell projection;
-   - exact weighted fractions where authorized;
-   - exact risk/denominator member identity;
-   - exact fact/replay refs;
-   - agreement with the declared existing-fixture oracle and the scaled synthetic
-     arithmetic.
-   No checksum-only oracle was used.
-4. **Sharing claim.** Verify the measured statement that index reuse already
-   exists after the first operation (`_build_release_index` count 1 then 0) and
-   that the residual cost is per-operation risk/routing, predicate, target, and
-   weight work plus per-operation fact/replay/provenance construction. Confirm the
-   61–78% “shareable component” range is a component share, not an achieved
-   speedup, and that P2 is marked NOT_IMPLEMENTED.
-5. **No unsupported sharing.** Check the release/universe/risk/authority/weight
-   separation evidence: two releases → two indices; two universes → two indices;
-   one release/universe with different risk sets → one source index but different
-   risk/denominator sets and facts; nonpositive authority → typed refusal;
-   missing weight → typed refusal. Confirm no cross-scope result sharing.
-6. **Replay/authority negatives.** Re-run or inspect:
-   identical replay refs, replay mismatch refusal, cached-index fault repair,
-   missing-release binding refusal, typed direct-I03 source-scope refusal,
-   authority DENY refusal. Confirm none is laundered into a positive fact.
-7. **Accelerator behaviors.** Check HIT/DELETE/CORRUPT/STALE/REVOKED evidence and
-   exact material parity. Confirm the review does **not** read this as a new
-   default-cache authorization or a semantic authority grant.
-8. **Measurement method.** Check that clean timings are separate from instrumented
-   attribution, that instrumented overhead/run noise is disclosed including
-   negative deltas, that Darwin `ru_maxrss` is treated as bytes and as a
-   process high-water mark, and that cold-start includes synthetic fixture build.
-9. **Scope and claims.** Confirm no original35, native source/science, human,
-   actor/V3, Sorok, protected CAS, or complete-C4 claim is made; confirm no
-   invented weights/routing/denominators; confirm the `NOT_ADMINISTERED` contract
-   limitation is stated rather than fabricating an I03 state.
-10. **Recommendation.** Accept, reject, or narrow the Phase-1 recommendation:
-    smallest warranted P2 execution-local grouped AND-risk/target kernel; P3
-    bitmap/posting index deferred/not run; P4 existing compact accelerator retained
-    with no new default/retention change. The reviewer should state whether the
-    measured evidence is sufficient for HQ to grant a bounded production diff, or
-    whether an additional sourcefree measurement is required.
+1. **Actual first-consumer integration.** Confirm grouping is reachable through
+   `CarrierNeutralResearchExecutor.execute_i03` / `execute_i05`, the issued Batch
+   path, and the minimal discovery hook — not only a benchmark/private-kernel call.
+   Confirm single-unit workloads keep the existing unshared path.
+2. **Core key completeness.** Check that the core key contains all determinants that
+   govern the shared intermediate: exact release/replay/semantic/source-manifest
+   refs, universe, respondent identity root, attested index identity, risk set/type/
+   source-scope/response-state semantics, predicate + grammar authority, complete
+   target plan (targets, topology, domain, included states, topology/response
+   authorities, replay/order/domain identity), query authority refs, and exact
+   authority-registry fingerprint.
+3. **Measure-independent core.** Verify that excluding measure/weight/design from the
+   core key is sound because the core contains no weighted result; all RAW/weighted
+   aggregation and `_weight_for` validation is recomputed per operation. Flag any
+   path where a weighted or raw result is cached/reused across regimes.
+4. **Runtime risk issuance.** Confirm the conservative fallback under
+   `current_runtime_binding()` is safe and that different query identities with
+   query-specific runtime risk issuance cannot cross-share. If the reviewer requires
+   contract-keyed sharing instead of fallback, state the exact missing determinant.
+5. **Per-operation native fact/replay/provenance.** Verify every operation still
+   builds its own exact `EmpiricalFact`, provenance, dependency refs, and replay.
+   Confirm no final-fact hash memo, grouped aggregate, or independently authoritative
+   retained fact is published.
+6. **Actual shared work.** Verify the cold scope builds 11 exact cores with 2 hits
+   for the 13-operation mix and that warm counters show baseline routing/predicate/
+   target/weight calls collapsing to zero/zero/zero per-operation-weight calls. The
+   claim must be actual shared computation, not a label.
+7. **Incompatibility and negatives.** Check separate evaluation for different
+   releases, universes, risk sets, predicates, target plans, authority registries,
+   measures/weights, and runtime bindings; exact parity for special states, zero
+   support, unsupported topology, authority DENY, missing/wrong weight, release
+   separation, and the `NOT_ADMINISTERED` contract limitation.
+8. **Poison/rebuild/cleanup.** Verify stale fingerprint, wrong index identity,
+   poisoned core, index rebuild, and scope close/error paths fail closed to the
+   unshared path; no wrong `SUPPORTED` fact and no cross-call stale group.
+9. **Measurement integrity.** Check identical sealed releases/workload/seeds,
+   paired/interleaved baseline vs candidate, separated fixture/cold/query/fact
+   costs, CPU/wall/peak-RSS Darwin bytes/index build/scope counters, and honest
+   single-operation and incompatible-work costs. Confirm no checksum-only oracle
+   was used; full fact material was compared in-process and selected full material
+   is retained.
+10. **W03/W04 and claim safety.** Confirm the review does not read this as completing
+    W03/W04 or canceling the selected compact regenerable capability; confirm the
+    existing default in-memory compact realization, optional caller-configured
+    Parquet/Zstd persistence, measured compact-memory higher result, cold-construction
+    limit, and no production/original35 claim are stated correctly.
+
+## Evidence to inspect
+
+- `00_RETURN.md`, `01_BASELINE_CURRENT_CODE_ABI.md`
+- `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl` (Phase-1 + Phase-2 costs/counters)
+- `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl` (Phase-1 + Phase-2 exact parity)
+- `04_REPLAY_AND_AUTHORITY_INVALIDATION.md`
+- `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md`
+- `results/phase2_summary.json`, `results/phase2_commands.jsonl`,
+  `results/commands.jsonl`, `results/repeat_summary.json`
+- Raw paired JSON (untracked checkout-local):
+  `.local-logs/pyat-l03-c4/phase2/main_n{200,1000,3000}.json`,
+  `small_fixtures.json`
+- `tools/bench_grouped_phase2.py`, `tools/finalize_phase2.py`
 
 ## Suggested independent commands
 
-Use the verified runner and checkout-local TMPDIR/cache; do not install packages.
+Use the verified runner; no new packages or `/tmp` redirects.
 
 ```sh
 RUNNER=/tmp/rawlsing-oct28-p1r1/venv/bin/python
 TMPDIR="$PWD/.local-logs/pyat-l03-c4/review-tmp" \
 PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
 "$RUNNER" -m pytest -q -p no:cacheprovider \
+  rawlsing_next/tests/test_pre553_i03_grouping.py \
   rawlsing_next/tests/test_pre553_empirical_query.py \
   rawlsing_next/tests/test_pre553_carrier_execution.py \
   rawlsing_next/tests/test_pre553_c11_execution_view.py \
-  rawlsing_next/tests/test_pre553_query_frontier_hostile.py
+  rawlsing_next/tests/test_pre553_discovery_exact.py \
+  rawlsing_next/tests/test_pre553_query_frontier_hostile.py \
+  rawlsing_next/tests/test_pre553_route_b_production.py \
+  rawlsing_next/tests/test_universal_workload_custody.py
 ```
 
-Then inspect and selectively re-run:
+Then rerun the P41 consumer and one paired benchmark (N=200 first; N=1000/3000 only
+if the smaller pair is acceptable):
 
 ```sh
-"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_worker.py \
-  --scenario frontier \
-  --output .local-logs/pyat-l03-c4/review-frontier.json
-
-"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_worker.py \
-  --scenario invalidation \
-  --output .local-logs/pyat-l03-c4/review-invalidation.json
-```
-
-For the scaled timing, use a fresh cache root with mode `0700` and run one scenario
-at a time; do not parallelize timed cases:
-
-```sh
-mkdir -p .local-logs/pyat-l03-c4/review-cache && chmod 700 .local-logs/pyat-l03-c4/review-cache
 TMPDIR="$PWD/.local-logs/pyat-l03-c4/review-tmp" \
-RAWLSING_C11_ACCELERATOR_DIR="$PWD/.local-logs/pyat-l03-c4/review-cache" \
 PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
-"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_worker.py \
-  --scenario main --n 1000 --kind native --pass-mode clean --repeats 4 \
-  --output .local-logs/pyat-l03-c4/review-main1000.json
+"$RUNNER" -m pytest -q -p no:cacheprovider \
+  rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41
+
+TMPDIR="$PWD/.local-logs/pyat-l03-c4/review-tmp" \
+PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
+"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_grouped_phase2.py \
+  --scenario main --n 200 --rounds 3 \
+  --output .local-logs/pyat-l03-c4/review-grouped-n200.json
 ```
 
 ## Expected independent verdict fields
 
-- `BASELINE_IDENTITY`: PASS / REVISE / UNKNOWN
-- `EXACT_FACT_ORACLE`: PASS / REVISE / UNKNOWN
-- `INDEX_REUSE_AND_SHARING_GAP`: PASS / REVISE / UNKNOWN
-- `REPLAY_AUTHORITY_NEGATIVES`: PASS / REVISE / UNKNOWN
-- `CACHE_BEHAVIOR_ATTRIBUTION`: PASS / REVISE / UNKNOWN
-- `NO_UNSUPPORTED_CROSS_SCOPE_SHARING`: PASS / REVISE / UNKNOWN
-- `P2_RECOMMENDATION_SUFFICIENT_FOR_BOUNDED_DIFF`: YES / NO / NARROW
-- `P3_P4_DISPOSITION`: CONFIRM_DEFER / REQUIRE_MORE / REVISE
-- `SCOPE_CLAIM_SAFETY`: PASS / REVISE
-- `NEXT_WORK`: `REUSE_ADAPT_P2` / `MORE_MEASUREMENT` / `NO_ACTION`
+- `IMPLEMENTATION_SCOPE`: PASS / REVISE / UNKNOWN
+- `CORE_KEY_COMPLETENESS`: PASS / REVISE / UNKNOWN
+- `MEASURE_INDEPENDENT_CORE_SOUNDNESS`: PASS / REVISE / UNKNOWN
+- `PER_OPERATION_FACT_REPLAY_PROVENANCE`: PASS / REVISE / UNKNOWN
+- `ACTUAL_SHARED_WORK_EVIDENCE`: PASS / REVISE / UNKNOWN
+- `INCOMPATIBLE_AND_NEGATIVE_PARITY`: PASS / REVISE / UNKNOWN
+- `POISON_REBUILD_CLEANUP`: PASS / REVISE / UNKNOWN
+- `ISSUED_BATCH_I05_P41_INTEGRATION`: PASS / REVISE / UNKNOWN
+- `PAIRED_MEASUREMENT_INTEGRITY`: PASS / REVISE / UNKNOWN
+- `W03_W04_CLAIM_SAFETY`: PASS / REVISE / UNKNOWN
+- `R03_DISPOSITION`: ACCEPT_FOR_HQ_RECEIVING / REVISE_MATERIAL / MORE_EVIDENCE
+- `NEXT_WORK`: `HQ_RECEIVING` / `BOUNDED_REPAIR` / `NO_ACTION`
