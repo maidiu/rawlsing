@@ -18,6 +18,10 @@ This difference is not merely philosophical vocabulary.
 
 **Materialist caution:** 'practice' is not an internal skill-object detachable from instrument access, labor process, social cooperation, social power and institutional continuity. Nevertheless CAN-011 owns only **actor-specific acquired organization**, not the independent world or another person's labor. Preserve linked C4/C8/ADP15 material/social sources rather than copying them into a person's psyche.
 
+### Counterexample to making O05 the whole psychogenesis model
+
+Leontiev's *bitter candy* example (Portuguese attached PDF pp. 18–19) is a deliberate antithesis to the inspection-skill case. A child manages to obtain a desired reward but through an action that violates a relation with the experimenter; the reward becomes intolerable when the social significance of the action emerges. The motor/technical action can be successful **without acquisition of any new practice**, while relations among motives, the child's activity and others are reorganized. For Rawlsing this is precisely why a successful O05 proof does **not** establish CAN-010 need/motive change, CAN-011 mediator/tension change, self-interpretation or whole-person development. A parallel future science case must ask what happened to the *social meaning and relations among activities*, not just whether an operation became performable. No specific 'guilt' or 'conscience' state should be automatically minted from this vignette.
+
 ## II. The causal-identification problem
 
 Given an observed later performance, the claim 'A acquired an operation' is underdetermined.
