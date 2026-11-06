@@ -1,5 +1,8 @@
 # ROADMAP:S08 — F7 original comparable-wave evidence and independent structural time
 
+> **2026-11-06 UNIVERSAL35 F7 TEMPORAL SEAM — documentary candidate.** All35 source packs include exact edition/wave/time source metadata for dynamic routing; F7 may compare only actually comparable population/measurement/time claims and must label approximation separately. Do not use historic SRC04 global-pair route as temporal engine, and do not promote original sample distribution into an unissued world-era causal trajectory. [Source roster](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/01_SOURCE_ROSTER_AND_STATUS.md) · [master](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/00_MASTER_RECOVERY_AND_CURRENT_STATE.md).
+
+
 ## NEXT R F7 accepted clocks vs original comparable waves — 2026-11-03
 
 **S08.1–S08.4; GAP-034–037.** Historical typed comparability/temporal candidate P07 has **author-local** sourcefree checks on a distinct unmerged cut; its independent #571 hostile source review was **not returned** at E3's pinned inspection. The current R06 same-source synthetic `T0/T1` rule clock/refusal does not issue original35 comparable-wave estimands, cohort/risk sets, design/weights or independent N8E. The F7 IF edge applies only when a selected terminal/source scope requires original comparable waves. Exact next action is `OWNER_DECIDE` or `COMPARE_ONLY_UNKNOWN`, not an automatically green F7 operation. [Original 82 IF rules](../CURRENT_SEAM_STATES.jsonl), [E3 currentness/negative court](https://github.com/maidiu/rawlsing/blob/66a6f18541c95b28490775c97a9615cb58769509/WORKER_RETURNS/PROG5_NEXT_E3_CURRENTNESS_AUTHORITY_R1/PROTECTED_VS_BRANCH_ONLY_AND_NEGATIVES.md).
