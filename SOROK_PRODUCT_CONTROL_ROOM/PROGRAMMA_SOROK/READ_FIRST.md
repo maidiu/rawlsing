@@ -13,3 +13,6 @@ Newer additive receiving: [original 26-mechanism Pyat–Sorok document](16_PYAT_
 **Bounded source-grained convergence:** LIVE/COVER's D002/Astra minimum playable cell, COVER source-depth correction and later admitted-occurrence/work-now evidence are now combined with PSR1's world→actor sections in 06/10, retaining both source-cut claims. The LIVE 13 handoff is an exact prefix of PSR1 13, so no competing 13 body needed importing. This was a documentary same-body no-drop readback, **not** native C9/C12, independent S2 or actor-science acceptance.
 
 [Source and code admission ledger](../../CROSS_HQ_CONTROL_ROOM/PROGRAMMA/02_CANONICAL_RECEIVING_AND_CODE_CAPITAL.md).
+
+
+Current receiving cut: final product `4b2fed81c3f513eb4262ad5de277ce519c74c614`, independently scoped TEST_ONLY accepted at `81e5ed01e8ca2043599590dccf1c96c376249134`, ready/unmerged PR697. Exact evidence and native/human/source holds: [HQ disposition](00_HQ_WRITE_THROUGH_DECISION.md). Guide PR699 is published but not protected/adopted.

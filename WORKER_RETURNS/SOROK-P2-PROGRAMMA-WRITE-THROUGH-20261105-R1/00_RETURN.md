@@ -60,3 +60,8 @@ Reconcile the final focused closure into PROGRAMMA #647:
 ```
 
 Exact published source-branch SHA is returned in the final chat readback after commit/push.
+
+
+### Final qualified construction disposition — exact4b2 accepted, receiving prepared
+
+Exact final product4b2fed81c3f513eb4262ad5de277ce519c74c614 independently ACCEPT_SCOPED_TEST_ONLY at81e5ed01e8ca2043599590dccf1c96c376249134. Accepted25d evidence332e and acceptedrepairs3e04 preserved; reviewer verified exactimports/unchangedcalls/manifests plus actualfinalsnapshot publicprivacy, observation0vs explicithelp1, material/C9source/laterhistory and coldlifecycle. Finalengineeringreceivinga61dab8343181b0975c76496d0007e2b3a92bba0 PASS at declared protected8ff + product4b2 + guideb6d3, compositef5debb10c53b8e9a735f6fe1e1696bfbf46412fc (665product+9guide). Guide revisions after that cut have canonical/static verification, not invented freshproduct execution. ExistingPR697 was normallyfastforwarded41bf->4b2, ready/open/unmerged; no duplicateproductPR. GuidePR699 remains isolated/unmerged. First consumer: WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/run_fanin_cli.py -> P2ProductFanin on one S47root. All earlier RUNNING/notaccepted4b2/PR697head41bf statuses are historical snapshots superseded here. Nextactualoperation belongs to competent PRE-MAIN receivingowner under explicitmergeauthority. No nativeCAN/ADP/Pyat/source/Bcontext/acquiredpractice/humanGate4/Gate5 or automaticdependentREADY claimed; originalholds and REVISE cuts preserved. No new repair/review commissioned for closedfindings.
