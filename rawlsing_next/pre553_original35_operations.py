@@ -1,0 +1,580 @@
+"""Source-pack-neutral original35 operation adapter.
+
+The source configuration document is the only source-selection input. This
+module does not read respondent values, invent source semantics, issue native
+rights, or choose a survey-specific code path. It accounts every original item
+and physical slot, emits per-operation typed eligibility, and provides a
+minimal typed join to the existing R03 compiler/Batch/I03/I05 owners.
+"""
+from __future__ import annotations
+
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Iterable, Mapping
+import json
+
+from rawlsing_next.pre553_batch_runner import BatchUnitSpec
+from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_universal_workload import (
+    UniversalOperation, compile_universal_workload, execute_universal_workload,
+    compile_governed_frontier,
+)
+
+SCHEMA = "PRE553_ORIGINAL35_OPERATIONS@1.0.0"
+OPERATION_F1 = "F1_DISTRIBUTION"
+OPERATION_F2 = "F2_CONDITIONAL"
+OPERATION_F3H = "F3_HETEROGENEITY"
+OPERATION_F3R = "F3_RECURSIVE"
+OPERATION_F4 = "F4_JOINT"
+EXECUTABLE = "EXECUTABLE_RAW"
+HELD = "HELD"
+ABSTAIN = "ABSTAIN"
+INAPPLICABLE = "INAPPLICABLE"
+DEFERRED = "DEFERRED"
+NOT_REQUESTED = "NOT_REQUESTED"
+STATUSES = (EXECUTABLE, HELD, ABSTAIN, INAPPLICABLE, DEFERRED, NOT_REQUESTED)
+SOURCE_NOT_PRESENT_HERE = "SOURCE_NOT_PRESENT_HERE"
+SOURCE_PRESENT = "SOURCE_PRESENT_BY_CUSTODY"
+SOURCE_UNVERIFIED = "SOURCE_PRESENCE_NOT_VERIFIED_HERE"
+RAW = "RAW_OBSERVED_SAMPLE"
+WEIGHTED = "GOVERNED_WEIGHTED"
+
+
+class Original35OperationError(ValueError):
+    pass
+
+
+def _sha(value: Any, name: str) -> str:
+    if not isinstance(value, str) or len(value) != 64 or any(
+            ch not in "0123456789abcdef" for ch in value):
+        raise Original35OperationError(name + " must be lowercase sha256")
+    return value
+
+
+def _ref(kind: str, object_id: str, digest: str) -> ExactRef:
+    return ExactRef(kind, object_id, _sha(digest, "ref hash"))
+
+
+def _documents(document: Any) -> list[dict]:
+    if isinstance(document, (list, tuple)):
+        docs = list(document)
+    elif isinstance(document, Mapping) and isinstance(document.get("sources"), list):
+        docs = document["sources"]
+    elif isinstance(document, Mapping) and document.get("schema") == "PYAT_R157_SOURCE_CONFIGURATION@1.0.0":
+        docs = [document]
+    else:
+        raise Original35OperationError("LIBRARY_OR_SOURCE_CONFIG_DOCUMENT_REQUIRED")
+    if not docs or not all(isinstance(doc, Mapping) for doc in docs):
+        raise Original35OperationError("SOURCE_CONFIG_DOCUMENT_LIST_REQUIRED")
+    return [dict(doc) for doc in docs]
+
+
+def _substantive(values: Iterable[Mapping[str, Any]]) -> tuple[str, ...]:
+    out = set()
+    for row in values:
+        if (row.get("response_state") == "SUBSTANTIVE_RESPONSE"
+                and row.get("canonical_value") is not None):
+            out.add(str(row["canonical_value"]))
+    return tuple(sorted(out))
+
+
+def _special_states(values: Iterable[Mapping[str, Any]]) -> dict[str, int]:
+    counts: Counter[str] = Counter()
+    for row in values:
+        state = row.get("response_state") or row.get("missing_state") or "UNKNOWN"
+        if state != "SUBSTANTIVE_RESPONSE":
+            counts[str(state)] += 1
+    return dict(sorted(counts.items()))
+
+
+@dataclass(frozen=True)
+class PlanOperation:
+    operation_id: str
+    source_id: str
+    kind: str
+    item_ids: tuple[str, ...]
+    source_variable_codes: tuple[str, ...]
+    response_values: tuple[str, ...]
+    conditioner_item_id: str | None
+    conditioner_values: tuple[str, ...]
+    joint_arity: int
+    stratum_ref: str | None
+    measure_kind: str
+    status: str
+    reason: str | None
+    route_status: str
+    response_states: Mapping[str, int]
+    source_sha256: str
+    native: bool = False
+
+    def material(self) -> dict[str, Any]:
+        return {
+            "operation_id": self.operation_id, "source_id": self.source_id,
+            "kind": self.kind, "item_ids": list(self.item_ids),
+            "source_variable_codes": list(self.source_variable_codes),
+            "response_values": list(self.response_values),
+            "conditioner_item_id": self.conditioner_item_id,
+            "conditioner_values": list(self.conditioner_values),
+            "joint_arity": self.joint_arity, "stratum_ref": self.stratum_ref,
+            "measure_kind": self.measure_kind, "status": self.status,
+            "reason": self.reason, "route_status": self.route_status,
+            "response_states": dict(self.response_states),
+            "source_sha256": self.source_sha256, "native": self.native,
+        }
+
+
+@dataclass(frozen=True)
+class SourceRow:
+    source_id: str
+    family: str
+    wave: str
+    source_sha256: str
+    source_presence: str
+    item_ids: tuple[str, ...]
+    physical_slots: tuple[int, ...]
+    response_slot_count: int
+    weight_slot_count: int
+    counts: Mapping[str, int]
+    operation_refs: tuple[str, ...]
+    weight_status: str
+    pair_candidates: int
+    pair_selected: int
+    joint_candidates: int
+    joint_selected: int
+
+    def material(self) -> dict[str, Any]:
+        return {
+            "source_id": self.source_id, "family": self.family, "wave": self.wave,
+            "source_sha256": self.source_sha256,
+            "source_presence": self.source_presence,
+            "item_ids": list(self.item_ids),
+            "physical_slots": list(self.physical_slots),
+            "response_slot_count": self.response_slot_count,
+            "weight_slot_count": self.weight_slot_count,
+            "counts": dict(self.counts),
+            "operation_refs": list(self.operation_refs),
+            "weight_status": self.weight_status,
+            "pair_candidates": self.pair_candidates,
+            "pair_selected": self.pair_selected,
+            "joint_candidates": self.joint_candidates,
+            "joint_selected": self.joint_selected,
+            "native": False,
+        }
+
+
+@dataclass(frozen=True)
+class Original35OperationPlan:
+    schema: str
+    rows: tuple[SourceRow, ...]
+    operations: tuple[PlanOperation, ...]
+    counts: Mapping[str, int]
+    item_count: int
+    physical_slot_count: int
+    pair_candidates: int
+    pair_selected: int
+    joint_candidates: int
+    joint_selected: int
+    no_drop_ok: bool
+    universal_operations: tuple[UniversalOperation, ...]
+    batch_units: tuple[BatchUnitSpec, ...]
+    plan_ref: str
+
+    def material(self) -> dict[str, Any]:
+        return {
+            "schema": self.schema, "rows": [row.material() for row in self.rows],
+            "operations": [op.material() for op in self.operations],
+            "counts": dict(self.counts), "item_count": self.item_count,
+            "physical_slot_count": self.physical_slot_count,
+            "pair_candidates": self.pair_candidates,
+            "pair_selected": self.pair_selected,
+            "joint_candidates": self.joint_candidates,
+            "joint_selected": self.joint_selected,
+            "no_drop_ok": self.no_drop_ok,
+            "batch_unit_count": len(self.batch_units),
+            "plan_ref": self.plan_ref, "native": False,
+        }
+
+    def operations_for(self, source_id: str) -> tuple[PlanOperation, ...]:
+        return tuple(op for op in self.operations if op.source_id == source_id)
+
+
+def _presence(source_id: str, source_presence: Mapping[str, Any] | None,
+              source_root: str | Path | None, artifact_name: str | None) -> str:
+    if source_presence is not None and source_id in source_presence:
+        value = source_presence[source_id]
+        if isinstance(value, Mapping):
+            return str(value.get("presence_grade") or value.get("status") or
+                       (SOURCE_PRESENT if value.get("present") else SOURCE_NOT_PRESENT_HERE))
+        return SOURCE_PRESENT if value is True else (
+            SOURCE_NOT_PRESENT_HERE if value is False else str(value))
+    if source_root is not None and artifact_name:
+        return (SOURCE_PRESENT if (Path(source_root) / artifact_name).is_file()
+                else SOURCE_NOT_PRESENT_HERE)
+    return SOURCE_UNVERIFIED
+
+
+def _source_plan(config: Mapping[str, Any], *, source_presence: Mapping[str, Any] | None,
+                 source_root: str | Path | None, pair_budget: int,
+                 joint_budget: int) -> tuple[SourceRow, list[PlanOperation], list[UniversalOperation], list[BatchUnitSpec]]:
+    identity = config.get("identity") or {}
+    binding = config.get("binding") or {}
+    source_id = str(identity.get("source_id") or "")
+    if not source_id.startswith("SRC"):
+        raise Original35OperationError("SOURCE_ID_REQUIRED")
+    source_sha = _sha(binding.get("source_sha256") or identity.get("expected_source_sha256"),
+                      "source_sha256")
+    items = list(config.get("items") or [])
+    physical = list(config.get("physical_slots") or [])
+    response_slots = list(config.get("response_slots") or [])
+    coordinate_slots = list(config.get("coordinate_slots") or [])
+    weight_slots = list(config.get("weight_slots") or [])
+    routing = {str(row.get("question_id")): row for row in config.get("routing") or []}
+    response_by_q = {str(row.get("question_id")): row for row in response_slots}
+    item_ids = tuple(str(item.get("item_id") or item.get("implementation_id"))
+                     for item in items)
+    if any(not value or value == "None" for value in item_ids):
+        raise Original35OperationError("ORIGINAL_ITEM_ID_REQUIRED")
+    if len(set(item_ids)) != len(item_ids):
+        raise Original35OperationError("DUPLICATE_ORIGINAL_ITEM_ID")
+    item_by_code = {str(item.get("source_variable_code")): item for item in items}
+    item_id_by_code = {
+        str(item.get("source_variable_code")): str(item.get("item_id") or item.get("implementation_id"))
+        for item in items}
+    presence = _presence(
+        source_id, source_presence, source_root,
+        identity.get("source_artifact_id"))
+    operations: list[PlanOperation] = []
+    universal: list[UniversalOperation] = []
+    batch: list[BatchUnitSpec] = []
+    release = _ref(
+        "C11LogicalRelease",
+        "urn:rawlsing:pre553:original35:release:" + source_id + ":" + source_sha[:16],
+        semantic_hash({"source_id": source_id, "source_sha256": source_sha,
+                       "release": identity.get("release_id")}))
+    eligible: list[tuple[str, str, tuple[str, ...], str, Mapping[str, int]]] = []
+    stat_counts = Counter({status: 0 for status in STATUSES})
+
+    def emit(kind: str, item_ids_: tuple[str, ...], codes: tuple[str, ...],
+             values: tuple[str, ...], status: str, reason: str | None,
+             route_status: str, states: Mapping[str, int] | None = None,
+             conditioner_id: str | None = None,
+             conditioner_values: tuple[str, ...] = (),
+             joint_arity: int = 0, stratum: str | None = None,
+             measure: str = RAW) -> PlanOperation:
+        material = {
+            "source_id": source_id, "source_sha256": source_sha, "kind": kind,
+            "item_ids": item_ids_, "codes": codes, "values": values,
+            "conditioner_id": conditioner_id, "conditioner_values": conditioner_values,
+            "joint_arity": joint_arity, "stratum": stratum, "measure": measure,
+            "status": status, "reason": reason, "route": route_status,
+            "states": dict(states or {}),
+        }
+        digest = semantic_hash(material)
+        op = PlanOperation(
+            operation_id="urn:rawlsing:pre553:original35:op:" + digest,
+            source_id=source_id, kind=kind, item_ids=item_ids_,
+            source_variable_codes=codes, response_values=values,
+            conditioner_item_id=conditioner_id,
+            conditioner_values=conditioner_values, joint_arity=joint_arity,
+            stratum_ref=stratum, measure_kind=measure, status=status,
+            reason=reason, route_status=route_status,
+            response_states=dict(states or {}), source_sha256=source_sha)
+        operations.append(op)
+        stat_counts[status] += 1
+        if status == EXECUTABLE and kind == OPERATION_F1 and values:
+            for value in values:
+                uop = UniversalOperation(
+                    operation_id="urn:r03:op:" + semantic_hash({
+                        "original_operation": op.operation_id, "value": value})[:40],
+                    source_variable_code=codes[0], response_value=value,
+                    occurrence_identity={"item_id": item_ids_[0],
+                                         "source_id": source_id,
+                                         "source_sha256": source_sha},
+                    measure_kind="RAW", status="COMPILED")
+                universal.append(uop)
+                batch.append(BatchUnitSpec(
+                    job_kind="QUERY",
+                    job_ref=_ref("PRE553Original35Operation",
+                                 op.operation_id,
+                                 semantic_hash({"op": op.operation_id, "value": value})),
+                    release_refs=(release,),
+                    semantic_input_refs=(_ref("Original35Item", item_ids_[0],
+                                              semantic_hash({"item": item_ids_[0]})),)))
+        return op
+
+    for item in items:
+        code = str(item.get("source_variable_code"))
+        item_id = item_id_by_code[code]
+        disposition = str(item.get("disposition") or "")
+        slot = response_by_q.get(code)
+        route = routing.get(code) or {}
+        route_state = str(route.get("typed_state") or "ROUTING_UNKNOWN")
+        if slot is None:
+            if item_id in {str((c.get("slot") or {}).get("name")) for c in coordinate_slots} or "COORDINATE" in disposition:
+                emit(OPERATION_F1, (item_id,), (code,), (), INAPPLICABLE,
+                     "COORDINATE_CONTEXT_NOT_A_RESPONSE_DISTRIBUTION", route_state)
+            elif "HELD" in disposition or "UNKNOWN" in disposition:
+                emit(OPERATION_F1, (item_id,), (code,), (), HELD,
+                     "ITEM_DISPOSITION_" + disposition, route_state)
+            elif "GENERATION_FORBIDDEN" in disposition or "ADMIN" in disposition:
+                emit(OPERATION_F1, (item_id,), (code,), (), INAPPLICABLE,
+                     "ITEM_DISPOSITION_" + disposition, route_state)
+            elif "SUPPORTED" in disposition or "INCLUDED" in disposition:
+                emit(OPERATION_F1, (item_id,), (code,), (), HELD,
+                     "RESPONSE_MAPPING_ABSENT", route_state)
+            else:
+                emit(OPERATION_F1, (item_id,), (code,), (), INAPPLICABLE,
+                     "NO_ADMINISTERED_RESPONSE_SLOT", route_state)
+            continue
+        values = _substantive(slot.get("values") or [])
+        states = _special_states(slot.get("values") or [])
+        if not values:
+            emit(OPERATION_F1, (item_id,), (code,), (), HELD,
+                 "NO_SUBSTANTIVE_DOMAIN_VALUE", route_state, states)
+            continue
+        if route_state in {"NOT_ASKED", "INAPPLICABLE"}:
+            emit(OPERATION_F1, (item_id,), (code,), values, HELD,
+                 "ROUTE_" + route_state, route_state, states)
+            continue
+        if "HELD" in disposition or disposition == "UNKNOWN":
+            emit(OPERATION_F1, (item_id,), (code,), values, HELD,
+                 "ITEM_DISPOSITION_" + disposition, route_state, states)
+            continue
+        emit(OPERATION_F1, (item_id,), (code,), values, EXECUTABLE, None,
+             route_state, states)
+        eligible.append((item_id, code, values, route_state, states))
+
+    # Optional weights never gate RAW. A weighted request is typed separately.
+    weight_status = ("WEIGHT_DESIGN_AUTHORITY_UNRESOLVED" if weight_slots
+                     else "ABSENT_OPTIONAL_RAW_SUPPORTED")
+    if weight_slots and eligible:
+        item_id, code, values, route_state, states = eligible[0]
+        emit(OPERATION_F1, (item_id,), (code,), values, DEFERRED,
+             weight_status, route_state, states, measure=WEIGHTED)
+
+    # F2 both directions, bounded deterministic frontier, not all pairs.
+    pair_candidates = len(eligible) * (len(eligible) - 1)
+    pair_selected = 0
+    for index, (left_id, left_code, left_values, left_route, left_states) in enumerate(eligible):
+        if pair_selected >= pair_budget:
+            break
+        for right in eligible[index + 1:]:
+            if pair_selected >= pair_budget:
+                break
+            right_id, right_code, right_values, right_route, right_states = right
+            for source_item, target_item, source_code, target_code, target_values in (
+                (left_id, right_id, left_code, right_code, right_values),
+                (right_id, left_id, right_code, left_code, left_values),
+            ):
+                emit(OPERATION_F2, (target_item, source_item),
+                     (target_code, source_code), target_values, EXECUTABLE,
+                     None, right_route if target_item == right_id else left_route,
+                     {**left_states, **right_states},
+                     conditioner_id=source_item,
+                     conditioner_values=(left_values if target_item == right_id else right_values))
+                pair_selected += 1
+
+    # F3 heterogeneity/recursive alternatives are typed even when deferred.
+    if eligible:
+        item_id, code, values, route_state, states = eligible[0]
+        stratum = (coordinate_slots[0].get("slot") or {}).get("name") if coordinate_slots else None
+        emit(OPERATION_F3H, (item_id,), (code,), values,
+             EXECUTABLE if stratum else DEFERRED,
+             None if stratum else "STRATUM_VALUES_ABSENT", route_state, states,
+             stratum=str(stratum) if stratum else None)
+        emit(OPERATION_F3R, (item_id,), (code,), values, DEFERRED,
+             "RECURSIVE_AUTHORITY_NOT_ISSUED", route_state, states)
+
+    # F4 true 3+ same-person joint/minority request; source rows not decoded here.
+    joint_candidates = (len(eligible) * (len(eligible) - 1) * (len(eligible) - 2)
+                        if len(eligible) >= 3 else 0)
+    joint_selected = 0
+    for start in range(min(joint_budget, max(0, len(eligible) - 2))):
+        triple = eligible[start:start + 3]
+        if len(triple) < 3:
+            break
+        ids = tuple(row[0] for row in triple)
+        codes = tuple(row[1] for row in triple)
+        values = tuple(value for row in triple for value in row[2])
+        emit(OPERATION_F4, ids, codes, values, DEFERRED,
+             "SOURCE_ROWS_NOT_DECODED_THIS_RUN", "SAME_PERSON_ROW_REQUIRED",
+             {key: value for row in triple for key, value in row[4].items()},
+             joint_arity=3)
+        joint_selected += 1
+
+    for status in STATUSES:
+        stat_counts.setdefault(status, 0)
+    row = SourceRow(
+        source_id=source_id, family=str(identity.get("family")),
+        wave=str(identity.get("wave")), source_sha256=source_sha,
+        source_presence=presence, item_ids=item_ids,
+        physical_slots=tuple(int(row.get("ordinal")) for row in physical),
+        response_slot_count=len(response_slots), weight_slot_count=len(weight_slots),
+        counts=dict(sorted(stat_counts.items())),
+        operation_refs=tuple(op.operation_id for op in operations),
+        weight_status=weight_status, pair_candidates=pair_candidates,
+        pair_selected=pair_selected, joint_candidates=joint_candidates,
+        joint_selected=joint_selected)
+    return row, operations, universal, batch
+
+
+def build_original35_operation_plan(
+    document: Any, *, source_presence: Mapping[str, Any] | None = None,
+    source_root: str | Path | None = None, pair_budget: int = 6,
+    joint_budget: int = 1, require_all35: bool = True,
+    expected_item_count: int | None = None,
+    expected_physical_slot_count: int | None = None,
+) -> Original35OperationPlan:
+    """Build the no-drop source-neutral plan from library/config documents."""
+    docs = _documents(document)
+    if require_all35 and len(docs) != 35:
+        raise Original35OperationError("INDEPENDENT_ORIGINAL35_ROSTER_REQUIRED")
+    rows: list[SourceRow] = []
+    operations: list[PlanOperation] = []
+    universal: list[UniversalOperation] = []
+    batch: list[BatchUnitSpec] = []
+    seen_sources: set[str] = set()
+    for config in docs:
+        row, ops, uops, units = _source_plan(
+            config, source_presence=source_presence, source_root=source_root,
+            pair_budget=pair_budget, joint_budget=joint_budget)
+        if row.source_id in seen_sources:
+            raise Original35OperationError("DUPLICATE_SOURCE_ID")
+        seen_sources.add(row.source_id)
+        rows.append(row)
+        operations.extend(ops)
+        universal.extend(uops)
+        batch.extend(units)
+    total_items = sum(len(row.item_ids) for row in rows)
+    total_slots = sum(len(row.physical_slots) for row in rows)
+    if expected_item_count is not None and total_items != expected_item_count:
+        raise Original35OperationError("ORIGINAL_ITEM_COUNT_MISMATCH")
+    if expected_physical_slot_count is not None and total_slots != expected_physical_slot_count:
+        raise Original35OperationError("PHYSICAL_SLOT_COUNT_MISMATCH")
+    counts = Counter({status: 0 for status in STATUSES})
+    for operation in operations:
+        counts[operation.status] += 1
+    item_keys = [(row.source_id, item_id) for row in rows for item_id in row.item_ids]
+    no_drop_ok = (
+        (not require_all35 or len(rows) == 35)
+        and len(set(item_keys)) == len(item_keys) == total_items
+        and sum(counts.values()) == len(operations)
+        and all(sum(row.counts.values()) == len(row.operation_refs) for row in rows)
+    )
+    # Whole-plan duplicate check uses counters, never quadratic scans.
+    duplicates = [key for key, count in Counter(
+        op.operation_id for op in operations).items() if count > 1]
+    no_drop_ok = no_drop_ok and not duplicates
+    plan_material = {
+        "schema": SCHEMA,
+        "rows": [row.material() for row in rows],
+        "operations": [op.material() for op in operations],
+        "counts": dict(sorted(counts.items())),
+        "item_count": total_items, "physical_slot_count": total_slots,
+    }
+    plan_ref = semantic_hash(plan_material)
+    return Original35OperationPlan(
+        schema=SCHEMA, rows=tuple(rows), operations=tuple(operations),
+        counts=dict(sorted(counts.items())), item_count=total_items,
+        physical_slot_count=total_slots,
+        pair_candidates=sum(row.pair_candidates for row in rows),
+        pair_selected=sum(row.pair_selected for row in rows),
+        joint_candidates=sum(row.joint_candidates for row in rows),
+        joint_selected=sum(row.joint_selected for row in rows),
+        no_drop_ok=no_drop_ok, universal_operations=tuple(universal),
+        batch_units=tuple(sorted(batch, key=lambda unit: unit.unit_ref.key)),
+        plan_ref=plan_ref)
+
+
+@dataclass(frozen=True)
+class UniversalLowering:
+    plan_ref: str
+    compilation: Any
+    matched_operation_ids: tuple[str, ...]
+    missing: tuple[tuple[str, str], ...]
+    unexpected: tuple[tuple[str, str], ...]
+    no_drop_ok: bool
+
+
+def lower_to_universal_workload(plan: Original35OperationPlan, *, bundle: Any,
+                                as_of: str, host: str, purpose: str) -> UniversalLowering:
+    """Join plan distribution requests to the CURRENT R03 compiler; no second compiler."""
+    if not isinstance(plan, Original35OperationPlan):
+        raise Original35OperationError("ORIGINAL35_OPERATION_PLAN_REQUIRED")
+    compilation = compile_universal_workload(
+        bundle=bundle, as_of=as_of, host=host, purpose=purpose)
+    required = {
+        (op.source_variable_codes[0], value)
+        for op in plan.operations
+        if op.kind == OPERATION_F1 and op.status == EXECUTABLE
+        and op.measure_kind == RAW
+        for value in op.response_values
+    }
+    compiled = {
+        (op.source_variable_code, op.response_value)
+        for op in compilation.operations if op.status == "COMPILED"
+    }
+    missing = tuple(sorted(required - compiled))
+    unexpected = tuple(sorted(compiled - required))
+    return UniversalLowering(
+        plan_ref=plan.plan_ref, compilation=compilation,
+        matched_operation_ids=tuple(sorted(
+            op.operation_id for op in compilation.operations
+            if (op.source_variable_code, op.response_value) in required)),
+        missing=missing, unexpected=unexpected,
+        no_drop_ok=not missing and not unexpected)
+
+
+def execute_plan_universal(plan: Original35OperationPlan, *, bundle: Any,
+                           source_factory: Any, as_of: str, host: str,
+                           purpose: str) -> tuple[UniversalLowering, Any]:
+    lowering = lower_to_universal_workload(
+        plan, bundle=bundle, as_of=as_of, host=host, purpose=purpose)
+    if not lowering.no_drop_ok:
+        raise Original35OperationError(
+            "CURRENT_COMPILER_PLAN_MISMATCH:" + json.dumps(
+                {"missing": lowering.missing, "unexpected": lowering.unexpected}))
+    result = execute_universal_workload(
+        compilation=lowering.compilation, source_factory=source_factory)
+    if not result.anti_join()["no_drop_ok"]:
+        raise Original35OperationError("CURRENT_CONSUMER_NO_DROP_FAILED")
+    return lowering, result
+
+
+def bind_governed_frontier(plan: Original35OperationPlan, *, bundle: Any,
+                           inventory: Any, policy: Any, frontier: Any,
+                           as_of: str, host: str, purpose: str) -> Any:
+    """Join plan F2/F3/F4 requests to the CURRENT governed-frontier compiler."""
+    compilation = compile_governed_frontier(
+        bundle=bundle, inventory=inventory, policy=policy, frontier=frontier,
+        as_of=as_of, host=host, purpose=purpose)
+    requested = {
+        code for op in plan.operations
+        if op.kind in {OPERATION_F2, OPERATION_F3H, OPERATION_F4}
+        for code in op.source_variable_codes
+    }
+    present = {
+        target.item_id for operation in frontier.operations
+        for target in operation.targets
+    } | {
+        key.item_id for operation in frontier.operations
+        for key, _ in operation.conditions
+    }
+    missing = tuple(sorted(requested - present))
+    if missing:
+        raise Original35OperationError(
+            "GOVERNED_FRONTIER_PLAN_ITEMS_MISSING:" + ",".join(missing))
+    return compilation
+
+
+__all__ = [
+    "ABSTAIN", "DEFERRED", "EXECUTABLE", "HELD", "INAPPLICABLE",
+    "NOT_REQUESTED", "OPERATION_F1", "OPERATION_F2", "OPERATION_F3H",
+    "OPERATION_F3R", "OPERATION_F4", "Original35OperationError",
+    "Original35OperationPlan", "PlanOperation", "RAW", "SCHEMA",
+    "SOURCE_NOT_PRESENT_HERE", "SOURCE_PRESENT", "SOURCE_UNVERIFIED",
+    "SourceRow", "UniversalLowering", "WEIGHTED", "bind_governed_frontier",
+    "build_original35_operation_plan", "execute_plan_universal",
+    "lower_to_universal_workload",
+]
