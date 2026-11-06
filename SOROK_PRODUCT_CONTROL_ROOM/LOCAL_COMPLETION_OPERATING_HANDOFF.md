@@ -113,3 +113,8 @@ Laterrepair attached retry1 exited0 but contained databaseerror and no finalretu
 ### First verified successful post-lock shared-server return
 
 Rehearsalcont1 completed errorfree with publishedbf574e5a1c5b46bfd92d272fb9616ac697fbbe6a remoteverified. ActualcoldCLI and guidecanonicalPASS in composed protectedbase/product25d/guide5b569 snapshot tree3894541eeac3e2133a3823252c65f04252e21e93; snapshot-local imports, intended allowlist634changes. This demonstrates this managedshared-server continuation successfully completed, not universalinfrastructure health or independentproductacceptance. DirectPROGRAMMA existingrecord write-through now sourceb8c764f1279e5116d74d98ae7f5e423c5c69f7da, receivingb6d3f8d2b946a38f6336361c2b625c1260699100; PR699 body updated exactheads/receivingproof/interval89b334limits, canonicalPASSboth, notmerged. Other3current sessions continue publicrepairs and integratedreview.
+
+
+### Second successful shared-backend return: interval public/receipt correction
+
+Exact76d5a3d13e0219c1a085ebadd55071de2dd90e7d remoteverified; noerror+publishedreturn. Author6focusedPASS78.34s, originalprivacywalker and committedreceipt existenceoraclePASS,29actualfiles no pycache/selfreceipt. Primary noautohelp independentlyPASS89b334 preserved; finalkey/censusfix author-tested, no blanketindependentACCEPT. Existingmainintegrator resumed originalfaninbranch as `sorok-p2-final-interval-import-20261105-r1` through healthysharedbackend for exactimport/provenance and only affectedboundaryverification, no fullreruns. Laterpublicrepair and integrated25dreview remainactive;3lanes. Next coherent qualifiedPROGRAMMA intake includes corrected76d5 and integratednewhead without claiming old25dreview applies automatically. No protectedmerge/native/human/B change.
