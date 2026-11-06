@@ -1,0 +1,106 @@
+{
+  "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "checks": {
+    "absence_hold_no_user_action": true,
+    "actual_explicit_do_help_attempts_once": true,
+    "actual_explicit_do_help_refuses": true,
+    "actual_observation_no_user_action": true,
+    "actual_scheduled_material_contrast": true,
+    "cold_continuity_both": true,
+    "importer_pinned": true,
+    "interval_only_no_user_action": true,
+    "invalid_missing_mode_no_user_action": true,
+    "public_output_private_keys_absent": false,
+    "pycache_receipt_entries_absent": false,
+    "scheduled_explicit_do_help_accepts": true,
+    "scheduled_explicit_do_help_attempts_once": true,
+    "scheduled_observation_no_user_action": true,
+    "wait_hold_no_user_action": true
+  },
+  "code_parent": "dde8287a806a802cd8d6a3dc122870f8cf8c5c3a",
+  "importer_origins": {
+    "adapter": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/p2-interval-repair-review/snapshot/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/adapter.py",
+    "projection": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/p2-interval-repair-review/snapshot/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/projection.py",
+    "s45_session": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/p2-interval-repair-review/snapshot/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py"
+  },
+  "missing_receipt_entries": [
+    "p2_explicit_interval_flow/__pycache__/cli.cpython-311.pyc",
+    "p2_explicit_interval_flow/__pycache__/continuation.cpython-311.pyc",
+    "tests/__pycache__/test_explicit_interval_flow.cpython-311.pyc"
+  ],
+  "observations": {
+    "absence": {
+      "advanced": false,
+      "do_help": null,
+      "status": "HELD"
+    },
+    "explicit_actual": {
+      "do_help_status": "REFUSED",
+      "encounter_count_after": 1,
+      "encounter_count_before": 0,
+      "status": "DO_HELP_EXECUTED"
+    },
+    "explicit_scheduled": {
+      "do_help_status": "OK",
+      "encounter_count_after": 1,
+      "encounter_count_before": 0,
+      "status": "DO_HELP_EXECUTED"
+    },
+    "observation_actual": {
+      "do_help": null,
+      "encounter_count_after": 0,
+      "encounter_count_before": 0,
+      "encounters_unchanged": true,
+      "status": "CONTINUED"
+    },
+    "observation_scheduled": {
+      "do_help": null,
+      "encounters_unchanged": true,
+      "status": "CONTINUED"
+    },
+    "wait": {
+      "advanced": false,
+      "do_help": null,
+      "status": "HELD"
+    }
+  },
+  "ok": false,
+  "privacy": {
+    "exact_public_keys": [
+      "admission",
+      "c9"
+    ],
+    "explicit_actual": [
+      {
+        "kind": "private_key",
+        "path": "<root>.admission"
+      },
+      {
+        "kind": "private_key",
+        "path": "<root>.c9"
+      }
+    ],
+    "explicit_scheduled": [
+      {
+        "kind": "private_key",
+        "path": "<root>.admission"
+      },
+      {
+        "kind": "private_key",
+        "path": "<root>.c9"
+      }
+    ],
+    "observation": [
+      {
+        "kind": "private_key",
+        "path": "<root>.admission"
+      },
+      {
+        "kind": "private_key",
+        "path": "<root>.c9"
+      }
+    ]
+  },
+  "repair_commit": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+  "schema": "SOROK_P2_INTERVAL_REPAIR_ORACLE@1"
+}

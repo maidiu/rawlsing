@@ -1,0 +1,25 @@
+{
+  "explicit_do_help_actual": {
+    "cold_continuity": true,
+    "command": "run_explicit_interval_flow.py --base-root <snapshot> do-help --state <state> --request WAIT",
+    "do_help_executed": true,
+    "do_help_status": "REFUSED",
+    "do_help_strategy": "HELP_REFUSE",
+    "encounter_count_after": 1,
+    "encounter_count_before": 0,
+    "status": "DO_HELP_EXECUTED",
+    "user_attempt_executed": true
+  },
+  "observation_actual": {
+    "cold_continuity": true,
+    "command": "run_explicit_interval_flow.py --base-root <snapshot> continue --state <state> --request WAIT --mode ACTUAL --span 4",
+    "do_help": null,
+    "do_help_executed": false,
+    "encounter_count_after": 0,
+    "encounter_count_before": 0,
+    "encounters_unchanged": true,
+    "status": "CONTINUED",
+    "user_attempt_executed": false
+  },
+  "schema": "SOROK_P2_INTERVAL_REPAIR_CLI_REPROS@1"
+}

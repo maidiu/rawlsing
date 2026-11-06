@@ -1,0 +1,43 @@
+{
+  "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "delta_class": "DURABLE_DELIVERY_OF_COMPLETED_FOCUSED_CLOSURE_REVIEW",
+  "historical_bdad": "bdadbc57c2664d3155a97853422e74b6128261f8",
+  "narrow_repairs": [
+    "rename or omit public admission/c9 fields so the projection privacy walker is clean",
+    "exclude __pycache__/.pyc from evidence/result.json files and recompute the receipt"
+  ],
+  "native_human_holds": {
+    "adp_actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "can008": false,
+    "can011": false,
+    "human": false,
+    "native": false,
+    "pre_main": false,
+    "protected_write": false,
+    "pyat_world": false
+  },
+  "not_reviewed": [
+    "later event 76fdb624 remains separately REVISE; new repair not reviewed",
+    "fan-in 579 candidate not reviewed"
+  ],
+  "original_review": "f1a2872487b3aa492632a497ad7481e8529d937e",
+  "owner_intake": "Use this exact REVISE for 7a256ed closure. Primary auto-help fix is verified; public field naming and receipt pycache entries remain narrow repair items. No PRE-MAIN/native/human promotion.",
+  "primary_repair_passes": [
+    "WAIT/ABSENCE/mode/interval/admit observation creates no user event, encounter or DO_HELP",
+    "separate explicit_do_help executes exactly one user attempt and increments encounter count 0->1",
+    "ACTUAL explicit DO_HELP refuses; SCHEDULED explicit DO_HELP accepts",
+    "cold/cutrestore focused tests pass; importer pinned to snapshot package/projection"
+  ],
+  "remaining_failures": [
+    "public result still exposes exact private-key names admission and c9 (paths <root>.admission, <root>.c9)",
+    "evidence/result.json still lists three missing __pycache__ pyc entries; receipt not reproducible"
+  ],
+  "remote_readback": "REMOTE_40SHA_REPORTED_IN_FINAL_CHAT_AFTER_PUSH",
+  "repair_code_parent": "dde8287a806a802cd8d6a3dc122870f8cf8c5c3a",
+  "repair_head": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+  "schema": "SOROK_P2_INTERVAL_REPAIR_INDEPENDENT_REVIEW_PROGRAMMA_DELTA@1",
+  "verdict": "REVISE"
+}

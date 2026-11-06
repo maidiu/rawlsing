@@ -1,0 +1,45 @@
+{
+  "missing_entries": [
+    "p2_explicit_interval_flow/__pycache__/cli.cpython-311.pyc",
+    "p2_explicit_interval_flow/__pycache__/continuation.cpython-311.pyc",
+    "tests/__pycache__/test_explicit_interval_flow.cpython-311.pyc"
+  ],
+  "note": "evidence/result.json still lists generated __pycache__ files absent from the committed repair tree",
+  "privacy_keys": [
+    "admission",
+    "c9"
+  ],
+  "privacy_paths": {
+    "explicit_actual": [
+      {
+        "kind": "private_key",
+        "path": "<root>.admission"
+      },
+      {
+        "kind": "private_key",
+        "path": "<root>.c9"
+      }
+    ],
+    "explicit_scheduled": [
+      {
+        "kind": "private_key",
+        "path": "<root>.admission"
+      },
+      {
+        "kind": "private_key",
+        "path": "<root>.c9"
+      }
+    ],
+    "observation": [
+      {
+        "kind": "private_key",
+        "path": "<root>.admission"
+      },
+      {
+        "kind": "private_key",
+        "path": "<root>.c9"
+      }
+    ]
+  },
+  "schema": "SOROK_P2_INTERVAL_REPAIR_RECEIPT_AUDIT@1"
+}
