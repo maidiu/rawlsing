@@ -27,8 +27,9 @@ reproduction: `C1-joint-receipt-selection-defect.json`; matching arities are
 `[3,1,1,1]` happens to work. Current source therefore does not yet justify full
 PRESENT_COMPOSED_NO_BUILD at the requested downstream consumer scope.
 
-Selection-contract repair requires the requested High decision. No production
-repair, own independent acceptance or source-science authority is issued here.
+The bounded High decision and minimal production repair are recorded in
+HIGH_DECISION.md. No own independent acceptance or source-science authority
+is issued here.
 
 Final candidate: minimal C1 query-role selection repair;39 C1/regression tests
 pass and actual forward/inverse E41/C1/N10E reads are EXACT_SUPPORTED. See
