@@ -39,6 +39,7 @@ def consume(direction,bundle,compilation,result):
    if receipt.typed_state!='DISCOVERED_RESULT_SUPPORTED':continue
    fact,predicate,query=_validate_discovery_consumption(discovery_result=discovery,consumer_query=None,receipt_ref=receipt.ref)
    if fact.target_topology['arity']!=wanted_arity or fact.raw_denominator_support!=wanted_den:continue
+   if canonicalize(query.target_refs)!=[bundle.question_refs[name].as_dict() for name in ('income_band','access_code','route_choice')]:continue
    if direction=='REVERSE' and canonicalize(query.target_refs[0])!=bundle.question_refs['eligibility_group'].as_dict():continue
    break
   else:raise AssertionError('NO_EXACT_CONSUMABLE_DISCOVERY_RECEIPT')

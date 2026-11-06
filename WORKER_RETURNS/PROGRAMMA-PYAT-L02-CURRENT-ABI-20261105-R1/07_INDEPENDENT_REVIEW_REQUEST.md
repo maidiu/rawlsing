@@ -1,4 +1,4 @@
-# L02 R02 independent review handoff — not yet ready for acceptance
+# L02 R02 independent review handoff — final candidate review requested
 
 Repo: maidiu/rawlsing (private).
 Branch: research/programma-pyat-r01r03-current-source-native-abi-qualification-20261105-r1.
@@ -6,10 +6,10 @@ Protected base: 8ffec40a6924848a49f95950aa9ce28c27ee3ec1.
 
 A distinct qualified I3+/High R02 reviewer must review the final frozen L02 head;
 this author cannot independently accept it. This handoff is not proof of a
-launched reviewer. Current disposition is RED at C1 joint-versus-marginal fact
-selection, with High decision requested before dependent repair.
+launched reviewer. The C1 joint-versus-marginal defect is repaired using producer-owned exact
+query roles; its historical RED reproduction remains. See HIGH_DECISION.md.
 
-After that defect is resolved, review exact source-native occurrence/value/
+Review exact source-native occurrence/value/
 condition/source identities, the same-respondent k-way numerical oracle,
 forward/inverse changed denominators, F3 XOR/minority/zero semantics, F4 full
 domain/risk support, no-drop typed outcomes, actual E41/C1/N10E consumption,

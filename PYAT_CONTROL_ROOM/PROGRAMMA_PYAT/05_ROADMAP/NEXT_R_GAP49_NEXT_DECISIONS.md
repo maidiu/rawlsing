@@ -59,3 +59,15 @@
 **Class counts, E2's candidate judgment:** 31 `OWNER_DECISION_THEN_EXACT_CONSUMER`, 2 `EXACT_ABI_COMPARE`, 2 `EXACT_HISTORICAL_COMPARE`, 2 `NO_DUPLICATE_SOURCEFREE_P41`; all remaining single or narrow actions retain their original explicit classification. This is not a critical path derived from counts. [E2 nine finite terminal unlocks](https://github.com/maidiu/rawlsing/blob/34f1071496675096ab6c326597752e17b2b96df2/WORKER_RETURNS/PROG5_NEXT_E2_PRIORITY_SUBLATION_R1/TOP_TERMINAL_UNBLOCKS.md), [five-test law](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) and [15 function succession cases](https://github.com/maidiu/rawlsing/blob/34f1071496675096ab6c326597752e17b2b96df2/WORKER_RETURNS/PROG5_NEXT_E2_PRIORITY_SUBLATION_R1/HISTORICAL_SUCCESSION_FIVE_TEST_COURT.jsonl) are the precise selectable comparison packet. The independent review and competent original/host/Sorok authority remain separate.
 
 [Whole guide](README.md) · [82 later edges](NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) · [Prerequisite/reverse-unlock guide](PREREQUISITES_AND_UNLOCKS.md).
+
+
+## L02 sourcefree engineering evidence — independent R02 pending
+
+GAP-006–010/013–020/042/047 receive bounded current sourcefree qualification
+in `WORKER_RETURNS/PROGRAMMA-PYAT-L02-CURRENT-ABI-20261105-R1/`. Existing source,
+occurrence, routing, unit/design and original35 issuer requirements remain;
+synthetic operation counts are not original eligibility or N11 occupancy.
+R01/R03 are reused; the demonstrated C1 joint/marginal receipt selection defect
+has a minimal candidate repair. No compiler replacement, new architecture edge
+or native/scientific status promotion is made. Next acceptance owner: independent
+R02 reviewer, followed separately by competent protected receiving owner.

@@ -19,7 +19,7 @@ Current functions demonstrated without compiler changes:
 - actual complete joint domains including four observed-zero cells;
 - explicit full-frontier no-drop accounting and current replay provenance.
 
-**Current first-reader RED:** `pre553_analytical_composition.py::_validate_discovery_consumption`
+**Reproduced first-reader RED at protected base:** `pre553_analytical_composition.py::_validate_discovery_consumption`
 selects the first empirical fact with the receipt's winning predicate. A joint
 receipt contains both marginal and joint facts with that predicate. Exact
 reproduction: `C1-joint-receipt-selection-defect.json`; matching arities are
@@ -29,3 +29,7 @@ PRESENT_COMPOSED_NO_BUILD at the requested downstream consumer scope.
 
 Selection-contract repair requires the requested High decision. No production
 repair, own independent acceptance or source-science authority is issued here.
+
+Final candidate: minimal C1 query-role selection repair;39 C1/regression tests
+pass and actual forward/inverse E41/C1/N10E reads are EXACT_SUPPORTED. See
+HIGH_DECISION.md and 00_RETURN.md. Independent R02 acceptance remains pending.
