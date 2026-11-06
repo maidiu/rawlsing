@@ -1,0 +1,34 @@
+[
+  {
+    "label": "baseline",
+    "objects": 23,
+    "outcome": "ACCEPTED",
+    "release_ref": {
+      "content_hash": "4c119588fb679b2865e34ddd8765cec5f8a0a636f421ec11daa90ea03af4eb99",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    }
+  },
+  {
+    "label": "tampered_release_hash",
+    "objects": 23,
+    "outcome": "ACCEPTED",
+    "release_ref": {
+      "content_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "kind": "C11LogicalRelease",
+      "object_id": "R56-SYNTHETIC-RELEASE"
+    }
+  },
+  {
+    "error": "prebuilt release projection identity mismatch",
+    "label": "wrong_projection_identity",
+    "outcome": "REFUSED",
+    "type": "SourceBackedC11FacadeError"
+  },
+  {
+    "error": "prebuilt release source SHA mismatch",
+    "label": "wrong_source_sha",
+    "outcome": "REFUSED",
+    "type": "SourceBackedC11FacadeError"
+  }
+]

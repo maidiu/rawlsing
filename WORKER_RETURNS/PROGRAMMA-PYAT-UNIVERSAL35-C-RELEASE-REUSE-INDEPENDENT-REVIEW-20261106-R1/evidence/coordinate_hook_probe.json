@@ -1,0 +1,13 @@
+{
+  "fixture": "sourcefree SAV, SCORE administred, OCCASION coordinate",
+  "legacy_rule_object": "materialized projection coordinate_slots[0]",
+  "wrong_source_rule": {
+    "slot": {"ordinal": 2, "name": "OCCASION"},
+    "native_coordinate_ref": {"kind": "COORDINATE_NATIVE", "object_id": "urn:wrong:source", "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+    "result": "ACCEPTED",
+    "coordinate_slots": [[2, "OCCASION"]]
+  },
+  "empty_rules": "REFUSED COORDINATE_SLOT_RULE_MATCH_REQUIRED",
+  "unknown_rule_test": "PASS from author focused test",
+  "raw_rows_published": false
+}
