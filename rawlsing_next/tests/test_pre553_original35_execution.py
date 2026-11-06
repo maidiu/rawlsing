@@ -15,7 +15,8 @@ from dataclasses import asdict, dataclass, replace
 from rawlsing_next.pre553_original35_execution import (
     Original35ExecutionError, _RecordingResolver,
     execute_native_compiler_source, execute_source,
-    execute_requested_two_target_joints, execute_two_target_joint_from_plan,
+    consume_requested_joint_transport, execute_requested_two_target_joints,
+    execute_two_target_joint_from_plan,
     load_runtime_binding, write_field_forge_envelopes,
     write_requested_joint_transport,
 )
@@ -252,60 +253,48 @@ def test_existing_joint_engine_exact_requested_conditional_direction(tmp_path):
     f2 = [op for op in plan.operations if op.kind == "F2_CONDITIONAL"]
     ba = next(op for op in f2 if op.source_variable_codes == ("B", "A"))
     ab = next(op for op in f2 if op.source_variable_codes == ("A", "B"))
-    requested = [ba.operation_id, ab.operation_id]
+    ids = [ba.operation_id, ba.operation_id, ab.operation_id, ab.operation_id]
+    values = [("0",), ("1",), ("0",), ("1",)]
     results = execute_requested_two_target_joints(
         plan, bundle=bundle, source_id="SRC01",
-        requested_operation_ids=requested, as_of=AS_OF, host=HOST,
-        purpose=PURPOSE)
-    assert [row["status"] for row in results] == ["OK", "OK"]
+        requested_operation_ids=ids, requested_conditioner_values=values,
+        as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert [row["status"] for row in results] == ["OK"] * 4
     assert [row["joint_target_order"] for row in results] == [
         [ba.conditioner_item_id, ba.item_ids[0]],
+        [ba.conditioner_item_id, ba.item_ids[0]],
+        [ab.conditioner_item_id, ab.item_ids[0]],
         [ab.conditioner_item_id, ab.item_ids[0]]]
+    assert [row["conditioner_values"] for row in results] == [
+        ["0"], ["1"], ["0"], ["1"]]
 
     ceiling = ("FIELD_FORGE_RELATION_PRODUCTION",)
-    by_request = {}
-    for result in results:
-        summary = write_requested_joint_transport(
-            [result], source_id="SRC01", state_root=tmp_path,
-            producer_permission_ceiling=ceiling)
-        document = json.loads(Path(summary["path"]).read_text())
-        assert document["requests"][0]["envelope_count"] == 1
-        envelope = document["requests"][0]["envelopes"][0]
-        assert envelope["permissions"]["producer_permission_ceiling"] == list(ceiling)
-        response = ingest_envelope(envelope)
-        assert response["structural_grant"] is False
-        by_request[result["requested_operation_id"]] = response
+    summary = write_requested_joint_transport(
+        results, source_id="SRC01", state_root=tmp_path,
+        producer_permission_ceiling=ceiling)
+    consumed = consume_requested_joint_transport(
+        summary["path"], producer_permission_ceiling=ceiling)
+    rows = consumed["requests"]
+    assert [row["status"] for row in rows] == ["OK"] * 4
+    assert rows[0]["backing_fact_refs"] == rows[1]["backing_fact_refs"]
+    assert rows[0]["backing_query_refs"] == rows[1]["backing_query_refs"]
+    assert rows[0]["selections"][0]["selected_result_id"] != (
+        rows[1]["selections"][0]["selected_result_id"])
+    assert rows[2]["backing_fact_refs"] == rows[3]["backing_fact_refs"]
+    assert rows[2]["selections"][0]["selected_result_id"] != (
+        rows[3]["selections"][0]["selected_result_id"])
 
-    ba_rows = _profile_rows(by_request[ba.operation_id])
-    assert ba_rows == [
-        {"condition_denominator_support": 6, "condition_state": "0",
-         "target_counts": [
-             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 6,
-              "target_state": "0"},
-             {"cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
-              "joint_support_count": 0, "target_state": "1"}]},
-        {"condition_denominator_support": 6, "condition_state": "1",
-         "target_counts": [
-             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 2,
-              "target_state": "0"},
-             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 4,
-              "target_state": "1"}]},
-    ]
-    ab_rows = _profile_rows(by_request[ab.operation_id])
-    assert ab_rows == [
-        {"condition_denominator_support": 8, "condition_state": "0",
-         "target_counts": [
-             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 6,
-              "target_state": "0"},
-             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 2,
-              "target_state": "1"}]},
-        {"condition_denominator_support": 4, "condition_state": "1",
-         "target_counts": [
-             {"cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
-              "joint_support_count": 0, "target_state": "0"},
-             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 4,
-              "target_state": "1"}]},
-    ]
+    def selection(row):
+        assert len(row["selections"]) == 1
+        selected = row["selections"][0]
+        return selected["condition_denominator_support"], {
+            item["target_state"]: item["joint_support_count"]
+            for item in selected["target_counts"]}
+
+    assert selection(rows[0]) == (6, {"0": 6, "1": 0})
+    assert selection(rows[1]) == (6, {"0": 2, "1": 4})
+    assert selection(rows[2]) == (8, {"0": 6, "1": 2})
+    assert selection(rows[3]) == (4, {"0": 0, "1": 4})
 
     cells = tuple(bundle.physical_stream.iter_cells())
     def changed_cells():
@@ -326,44 +315,69 @@ def test_existing_joint_engine_exact_requested_conditional_direction(tmp_path):
     changed_bundle = replace(bundle, physical_stream=changed_stream)
     changed_results = execute_requested_two_target_joints(
         plan, bundle=changed_bundle, source_id="SRC01",
-        requested_operation_ids=[ba.operation_id],
+        requested_operation_ids=[ba.operation_id, ba.operation_id],
+        requested_conditioner_values=[("0",), ("1",)],
         as_of=AS_OF, host=HOST, purpose=PURPOSE)
     changed_summary = write_requested_joint_transport(
         changed_results, source_id="SRC01", state_root=tmp_path,
         producer_permission_ceiling=ceiling)
-    changed_document = json.loads(Path(changed_summary["path"]).read_text())
-    changed_profile = _profile_rows(ingest_envelope(
-        changed_document["requests"][0]["envelopes"][0]))
-    assert changed_profile != ba_rows
-    assert changed_profile[0]["target_counts"] == [
-        {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 5,
-         "target_state": "0"},
-        {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 1,
-         "target_state": "1"}]
+    changed_rows = consume_requested_joint_transport(
+        changed_summary["path"], producer_permission_ceiling=ceiling)["requests"]
+    assert selection(changed_rows[0]) == (6, {"0": 5, "1": 1})
+    assert selection(changed_rows[1]) == (6, {"0": 2, "1": 4})
     restored_results = execute_requested_two_target_joints(
         plan, bundle=bundle, source_id="SRC01",
-        requested_operation_ids=[ba.operation_id],
+        requested_operation_ids=[ba.operation_id, ba.operation_id],
+        requested_conditioner_values=[("0",), ("1",)],
         as_of=AS_OF, host=HOST, purpose=PURPOSE)
     restored_summary = write_requested_joint_transport(
         restored_results, source_id="SRC01", state_root=tmp_path,
         producer_permission_ceiling=ceiling)
-    restored_document = json.loads(Path(restored_summary["path"]).read_text())
-    assert _profile_rows(ingest_envelope(
-        restored_document["requests"][0]["envelopes"][0])) == ba_rows
+    restored_rows = consume_requested_joint_transport(
+        restored_summary["path"], producer_permission_ceiling=ceiling)["requests"]
+    assert selection(restored_rows[0]) == (6, {"0": 6, "1": 0})
+    assert selection(restored_rows[1]) == (6, {"0": 2, "1": 4})
+
+    weighted_plan = replace(
+        plan, operations=tuple(
+            replace(op, measure_kind="GOVERNED_WEIGHTED")
+            if op.operation_id == ba.operation_id else op
+            for op in plan.operations))
+    weighted = execute_requested_two_target_joints(
+        weighted_plan, bundle=bundle, source_id="SRC01",
+        requested_operation_ids=[ba.operation_id],
+        requested_conditioner_values=[("0",)],
+        as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert weighted[0]["status"] == "REFUSED"
+    assert "WEIGHTED_REQUEST_NOT_AUTHORIZED" in weighted[0]["code"]
 
     invalid = execute_requested_two_target_joints(
         plan, bundle=bundle, source_id="SRC01",
-        requested_operation_ids=["missing-operation-id"],
+        requested_operation_ids=[ba.operation_id],
+        requested_conditioner_values=[("9",)],
         as_of=AS_OF, host=HOST, purpose=PURPOSE)
     assert invalid[0]["status"] == "REFUSED"
-    assert invalid[0]["code"] == "REQUESTED_OPERATION_NOT_IN_PLAN"
+    assert invalid[0]["code"] == "REQUESTED_CONDITIONER_VALUE_NOT_IN_PLAN"
 
-    broken = json.loads(json.dumps(document))
+    unknown = execute_requested_two_target_joints(
+        plan, bundle=bundle, source_id="SRC01",
+        requested_operation_ids=["missing-operation-id"],
+        requested_conditioner_values=[("0",)],
+        as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert unknown[0]["status"] == "REFUSED"
+    assert unknown[0]["code"] == "REQUESTED_OPERATION_NOT_IN_PLAN"
+
+    broken = json.loads(Path(summary["path"]).read_text())
     broken["requests"][0]["envelopes"][0]["permissions"] = {}
+    broken_path = tmp_path / "broken.json"
+    broken_path.write_text(json.dumps(broken))
     with pytest.raises(Exception):
-        ingest_envelope(broken["requests"][0]["envelopes"][0])
-    broken = json.loads(json.dumps(document))
+        consume_requested_joint_transport(
+            broken_path, producer_permission_ceiling=ceiling)
+    broken = json.loads(Path(summary["path"]).read_text())
     broken["requests"][0]["envelopes"][0]["replay"]["fact_replay_ref"] = {
         "kind": "WRONG", "object_id": "wrong", "content_hash": "0" * 64}
+    broken_path.write_text(json.dumps(broken))
     with pytest.raises(Exception):
-        ingest_envelope(broken["requests"][0]["envelopes"][0])
+        consume_requested_joint_transport(
+            broken_path, producer_permission_ceiling=ceiling)

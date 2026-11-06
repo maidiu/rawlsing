@@ -30,7 +30,9 @@ from rawlsing_next.universal_grammar.types import (
     ScientificFrontier, content_hash, make_operation,
 )
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
-from rawlsing_next.pre553_empirical_objects import RespondentEvent, exact_ref
+from rawlsing_next.pre553_empirical_objects import (
+    RespondentEvent, exact_ref, semantic_hash,
+)
 from rawlsing_next.pre553_field_forge_empirical_ingress import envelope_material
 from rawlsing_next.source_configuration.factory import (
     build_source_backed_c11_repository_from_config,
@@ -268,9 +270,22 @@ def _joint_frontier_for_pair(plan: Any, source_id: str, pair: Any,
         raise Original35ExecutionError("JOINT_TARGET_NOT_IN_INVENTORY")
     if pair.measure_kind != "RAW_OBSERVED_SAMPLE":
         raise Original35ExecutionError("WEIGHTED_REQUEST_NOT_AUTHORIZED")
-    measure = next((m for m in inventory.measure_plans if m.kind == "SAMPLE"), None)
-    if measure is None:
+    expected_measure = {
+        "kind": "SAMPLE", "weight_ref": None, "design_ref": None,
+        "estimand": "RAW_OBSERVED_SAMPLE", "variance_policy": "NONE",
+    }
+    measure_matches = [
+        m for m in inventory.measure_plans
+        if m.kind == expected_measure["kind"]
+        and m.weight_ref == expected_measure["weight_ref"]
+        and m.design_ref == expected_measure["design_ref"]
+        and m.estimand == expected_measure["estimand"]
+        and m.variance_policy == expected_measure["variance_policy"]]
+    if not measure_matches:
         raise Original35ExecutionError("RAW_SAMPLE_MEASURE_MISSING")
+    if len(measure_matches) != 1:
+        raise Original35ExecutionError("RAW_SAMPLE_MEASURE_AMBIGUOUS")
+    measure = measure_matches[0]
     target_roles = tuple(by_key[key].target_role for key in targets)
     disposition, reasons, risk_refs = role_disposition(
         inventory, policy, targets=targets, target_roles=target_roles,
@@ -325,25 +340,49 @@ def _joint_frontier_for_pair(plan: Any, source_id: str, pair: Any,
 def execute_requested_two_target_joints(plan: Any, *, bundle: Any,
                                         source_id: str,
                                         requested_operation_ids: Any,
+                                        requested_conditioner_values: Any | None = None,
                                         as_of: str, host: str,
                                         purpose: str) -> list[dict[str, Any]]:
-    """Execute an explicit caller-selected batch of F2 pair requests."""
+    """Execute an explicit caller-selected batch of F2 pair/value requests."""
     if (isinstance(requested_operation_ids, (str, bytes))
             or not isinstance(requested_operation_ids, (tuple, list))
             or not requested_operation_ids
-            or any(not isinstance(x, str) or not x for x in requested_operation_ids)
-            or len(set(requested_operation_ids)) != len(requested_operation_ids)):
+            or any(not isinstance(x, str) or not x for x in requested_operation_ids)):
         raise Original35ExecutionError(
             "EXPLICIT_REQUESTED_F2_OPERATION_IDS_REQUIRED")
+    if requested_conditioner_values is None:
+        value_specs = [None] * len(requested_operation_ids)
+    else:
+        if (isinstance(requested_conditioner_values, (str, bytes))
+                or not isinstance(requested_conditioner_values, (tuple, list))
+                or len(requested_conditioner_values) != len(requested_operation_ids)):
+            raise Original35ExecutionError(
+                "REQUESTED_CONDITIONER_VALUES_ALIGNMENT_REQUIRED")
+        value_specs = []
+        for values in requested_conditioner_values:
+            if (isinstance(values, (str, bytes))
+                    or not isinstance(values, (tuple, list))
+                    or not values
+                    or any(not isinstance(x, str) or not x for x in values)):
+                raise Original35ExecutionError(
+                    "REQUESTED_CONDITIONER_VALUES_REQUIRED")
+            value_specs.append(tuple(values))
+    request_keys = []
+    for requested_id, values in zip(requested_operation_ids, value_specs):
+        key = (requested_id, values)
+        if key in request_keys:
+            raise Original35ExecutionError("DUPLICATE_REQUESTED_OPERATION_VALUE")
+        request_keys.append(key)
     inventory, policy, base_frontier = build_frontier_inputs_from_plan(
         plan, source_id=source_id)
     by_id = {op.operation_id: op for op in plan.operations
              if op.source_id == source_id}
     results: list[dict[str, Any]] = []
-    for requested_id in requested_operation_ids:
+    for requested_id, requested_values in zip(requested_operation_ids, value_specs):
         pair = by_id.get(requested_id)
         if pair is None:
             results.append({"requested_operation_id": requested_id,
+                            "conditioner_values": list(requested_values or ()),
                             "status": "REFUSED",
                             "code": "REQUESTED_OPERATION_NOT_IN_PLAN"})
             continue
@@ -351,8 +390,20 @@ def execute_requested_two_target_joints(plan: Any, *, bundle: Any,
                 or pair.route_status != "ELIGIBLE_APPLICABLE"
                 or not pair.conditioner_item_id):
             results.append({"requested_operation_id": requested_id,
+                            "conditioner_values": list(requested_values or ()),
                             "status": "REFUSED",
                             "code": "REQUESTED_OPERATION_NOT_ELIGIBLE_F2"})
+            continue
+        conditioner_values = (tuple(requested_values)
+                              if requested_values is not None
+                              else tuple(pair.conditioner_values))
+        if (not conditioner_values
+                or any(value not in pair.conditioner_values
+                       for value in conditioner_values)):
+            results.append({"requested_operation_id": requested_id,
+                            "conditioner_values": list(conditioner_values),
+                            "status": "REFUSED",
+                            "code": "REQUESTED_CONDITIONER_VALUE_NOT_IN_PLAN"})
             continue
         try:
             joint_frontier, targets = _joint_frontier_for_pair(
@@ -391,6 +442,7 @@ def execute_requested_two_target_joints(plan: Any, *, bundle: Any,
             })
         results.append({
             "requested_operation_id": requested_id,
+            "conditioner_values": list(conditioner_values),
             "status": "OK" if fact_rows else "REFUSED",
             "code": None if fact_rows else "TWO_TARGET_FACT_NOT_PRODUCED",
             "conditioner_item_id": pair.conditioner_item_id,
@@ -409,11 +461,13 @@ def execute_requested_two_target_joints(plan: Any, *, bundle: Any,
 def execute_two_target_joint_from_plan(plan: Any, *, bundle: Any,
                                         source_id: str,
                                         requested_operation_ids: Any,
+                                        requested_conditioner_values: Any | None = None,
                                         as_of: str, host: str,
                                         purpose: str) -> list[dict[str, Any]]:
     return execute_requested_two_target_joints(
         plan, bundle=bundle, source_id=source_id,
         requested_operation_ids=requested_operation_ids,
+        requested_conditioner_values=requested_conditioner_values,
         as_of=as_of, host=host, purpose=purpose)
 
 
@@ -463,6 +517,99 @@ def write_requested_joint_transport(results: Any, *, source_id: str,
     return {"path": str(target), "request_count": len(requests),
             "ok_count": sum(1 for r in requests if r["status"] == "OK"),
             "refused_count": sum(1 for r in requests if r["status"] != "OK")}
+
+
+def consume_requested_joint_transport(path: str | Path, *,
+                                       producer_permission_ceiling: Any) -> dict[str, Any]:
+    """Cold D consumer: apply exact requested conditioner-value selection."""
+    from rawlsing_next.pre553_field_forge_empirical_ingress import ingest_envelope
+    if (isinstance(producer_permission_ceiling, (str, bytes))
+            or not isinstance(producer_permission_ceiling, (tuple, list))
+            or not producer_permission_ceiling
+            or any(not isinstance(x, str) or not x.strip()
+                   for x in producer_permission_ceiling)):
+        raise Original35ExecutionError(
+            "EXPLICIT_PRODUCER_PERMISSION_CEILING_REQUIRED")
+    ceiling = tuple(producer_permission_ceiling)
+    document = json.loads(Path(path).read_text(encoding="utf8"))
+    if document.get("schema") != "PRE553_ORIGINAL35_REQUESTED_JOINT_TRANSPORT@1.0.0":
+        raise Original35ExecutionError("REQUESTED_JOINT_TRANSPORT_SCHEMA_REQUIRED")
+    if tuple(document.get("producer_permission_ceiling") or ()) != ceiling:
+        raise Original35ExecutionError("REQUESTED_JOINT_PERMISSION_MISMATCH")
+    consumed = []
+    for request in document.get("requests", ()):
+        entry = {
+            "requested_operation_id": request.get("requested_operation_id"),
+            "conditioner_item_id": request.get("conditioner_item_id"),
+            "target_item_id": request.get("target_item_id"),
+            "conditioner_values": list(request.get("conditioner_values") or ()),
+            "status": request.get("status"),
+            "code": request.get("code"),
+            "backing_fact_refs": list(request.get("fact_refs") or ()),
+            "backing_query_refs": list(request.get("query_refs") or ()),
+            "joint_operation_id": request.get("joint_operation_id"),
+            "selections": [],
+        }
+        if request.get("status") != "OK":
+            consumed.append(entry)
+            continue
+        envelopes = list(request.get("envelopes") or ())
+        if not envelopes:
+            entry["status"] = "REFUSED"
+            entry["code"] = "REQUESTED_JOINT_ENVELOPE_MISSING"
+            consumed.append(entry)
+            continue
+        responses = [ingest_envelope(envelope) for envelope in envelopes]
+        profile_rows = []
+        for response in responses:
+            if response.get("state") != "CONDITIONAL_SUPPORT_PROFILE":
+                entry["status"] = "REFUSED"
+                entry["code"] = response.get("refusal_code") or "E_PROFILE_REFUSED"
+                break
+            profile = response.get("profile") or {}
+            profile_rows.extend(profile.get("conditional_count_profile") or [])
+        if entry["status"] != "OK":
+            consumed.append(entry)
+            continue
+        by_condition = {str(row.get("condition_state")): row for row in profile_rows}
+        requested_values = tuple(str(v) for v in entry["conditioner_values"])
+        unmatched = [value for value in requested_values
+                     if value not in by_condition]
+        if unmatched:
+            entry["status"] = "REFUSED"
+            entry["code"] = "REQUESTED_CONDITIONER_VALUE_NOT_IN_PROFILE"
+            entry["unmatched_values"] = unmatched
+            consumed.append(entry)
+            continue
+        for value in requested_values:
+            row = by_condition[value]
+            selection_material = {
+                "requested_operation_id": entry["requested_operation_id"],
+                "conditioner_item_id": entry["conditioner_item_id"],
+                "target_item_id": entry["target_item_id"],
+                "conditioner_value": value,
+                "backing_query_refs": entry["backing_query_refs"],
+                "backing_fact_refs": entry["backing_fact_refs"],
+                "selected_row": row,
+                "producer_permission_ceiling": list(ceiling),
+            }
+            entry["selections"].append({
+                "conditioner_value": value,
+                "selected_result_id": "urn:rawlsing:pre553:original35:requested-joint-selection:" +
+                semantic_hash(selection_material),
+                "condition_denominator_support": row.get("condition_denominator_support"),
+                "target_counts": list(row.get("target_counts") or ()),
+                "selection_material": selection_material,
+            })
+        consumed.append(entry)
+    return {
+        "schema": "PRE553_ORIGINAL35_REQUESTED_JOINT_CONSUMPTION@1.0.0",
+        "source_id": document.get("source_id"),
+        "producer_permission_ceiling": list(ceiling),
+        "requests": consumed,
+        "raw_respondent_rows_included": False,
+        "native_science_authority": False,
+    }
 
 
 def write_field_forge_envelopes(result: Any, *, source_id: str,
@@ -739,7 +886,8 @@ __all__ = [
     "DEFAULT_BINDING", "Original35ExecutionError", "SCHEMA",
     "SourceExecutionResult", "execute_all",
     "execute_native_compiler_source", "execute_requested_two_target_joints",
-    "execute_source", "execute_two_target_joint_from_plan",
-    "write_field_forge_envelopes", "write_requested_joint_transport",
+    "consume_requested_joint_transport", "execute_source",
+    "execute_two_target_joint_from_plan", "write_field_forge_envelopes",
+    "write_requested_joint_transport",
     "load_runtime_binding", "main",
 ]
