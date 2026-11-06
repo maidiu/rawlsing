@@ -35,7 +35,7 @@ Observed: positive 30 facts/30 envelopes/30 typed arity refusals; explicit ceili
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r10 publication ordering
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 0d48fc732.
+- Identity: codex/pyat-universal35-d-20261106-r1@0b38f3c7ebc2f90ae0d716f249cd9ac6b0008267; input 0d48fc732.
 - Function: complete fact/ledger evaluation -> final exact source-read decision pass -> explicit-permission envelope validation -> staged atomic artifact publish.
 - Evidence: refused/failing path leaves no new/overwritten consumable artifact; positive 30/30/30 arity refusals, 0 profiles, structural_grant false; cold CLI parity.
 - Limits: 2-target joint producer missing; actual original facts/E handshake NOT_RUN; no native/science/protected acceptance.
