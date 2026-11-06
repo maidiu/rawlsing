@@ -206,3 +206,12 @@ PROGRAMMA_DELTA: exactD/code above, originalauthor/distinctFreviewer; currentcom
 G0360d2b4f8cb0d568d8d52d1223592fbb5b1a2e4 ACCEPT_SCOPED_ENGINEERING at Ebddef0b5ca40b750fd51770d47df22f2973679b4/codef708b4688f6aebd408510aa33faca453bd213749:20+25PASS, directAPI/coldsubprocess/alias exact, changedcountschangeprofile/ref, tamperedhash/ID/ref/replay/provenance/permission failclosed, structuralgrantfalse. ExistingownerGT2RAWscope preserved. AuthenticDfact/nativehandoff NOT_RUN. Qualifiedconsumer refs delivered DnoReply200; no newauthorjob needed untilactualproducer.
 
 PROGRAMMA_DELTA: exact G/Eheads above, existingEauthor/distinctGreview; coldserialization/trustboundary axis independentlyaccepted, originalempiricalfirstconsumerNONE_VERIFIED. S06/S-F5/gap/work-now/currentpair updated isolatedbranch; no protected/native/science promotion. A mappings and F actualDwrapperreview are two currentlyuseful active lanes; downstreamhandshake depends on actualproducer, no duplicate/filler commission. Next consume their concrete returns and execute genuinejoin.
+
+
+### Actual D wrapper independent positive; two exact defects returned
+
+Ff2d2bdea7e7c1073421bc8cdd3e3545aa0291a66 at D43d35eed654d2fc98ea0f176bf5c4bd92f524da1 executes actualproductionwrapper TEST_ONLY_SOURCEFREE:30facts/15ops/18candidates, anti/opanti true; extraoperationrefused. Postconsumer changedhost/metadata decision stillcurrent wronglyaccepted; heldunselectedY causes falsePHYSICAL_CODE_NOT_IN_BUNDLE. Positivecompilerproof retained, finalwrapperREVISE/HOLD, nooriginalfacts.
+
+OriginalD exacttwo-defectrepairjobpyat-universal35-d-postdecision-alias-repair-20261106-r1 PID47216 and F boundedexistingoriginalreadinputjobpyat-universal35-existing-original-read-input-20261106-r1 PID47226 launched under1f29d9447; A mappings continues thirdlane. F resolves already-issuedlocalengineeringreadscope/runtimeinput ratherthan manufacture nativeS3 or addapprovalgate. No newcontroller/semanticowner/protectedmerge.
+
+PROGRAMMA_DELTA: exact F/D above, actual currentgovernedcompilerfirstconsumer proven sourcefree, originalempiricalconsumerNONE_VERIFIED. Postdecision/heldaliasREDreceipts sourcebacked, preabsent/revoked/postrevokedrefusals positive. ExistingS03.2/S-WORKLIST/gap/work-now/currentpair additive correction preservesallhistory/7sources694scope. NextDrepairs/sameFreview and actualexistingreadinput; no all35nativeacceptance.
