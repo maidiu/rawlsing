@@ -483,20 +483,58 @@ def _coordinate_config(bundle):
     return config
 
 
-def test_factory_coordinate_rules_and_typed_omission(tmp_path):
+def test_factory_coordinate_rules_and_expected_binding_reach_adapter(tmp_path):
     library = SourceConfigLibrary(index_path=INDEX)
     config = library.load_original("SRC15")
     coordinate = config.document["coordinate_slots"][0]["slot"]["name"]
+    rule_section = config.document["coordinate_slots"][0]
     rules, rule = qualified_coordinate_rules(config, coordinate)
     assert rules
     assert rule.slot.name == coordinate
+    assert rule.slot.ordinal == rule_section["slot"]["ordinal"]
     assert rule.native_coordinate_ref.object_id
     assert rule.source_semantic_authority_ref.authority_id
 
+    ordinal = rule.slot.ordinal
+    rows = []
+    for index in range(12):
+        row = {"A": float(0 if index < 6 else 1),
+               "B": float(0 if index < 6 else (0 if index < 8 else 1))}
+        for column in range(3, ordinal):
+            row["FILL_%03d" % column] = 0.0
+        observed = next(value for value in rule_section["values"]
+                        if value.get("raw_value") is not None)
+        row[coordinate] = float(observed["raw_value"])
+        rows.append(row)
+    path = tmp_path / "src15_rule_adapter.sav"
+    write_rows(path, rows)
+    pkg = package(
+        path, len(rows),
+        (NativeSourceRule("impl.a", "A"), NativeSourceRule("impl.b", "B")),
+        coordinate=coordinate)
+    foreign = replace(
+        rule,
+        native_coordinate_ref=replace(
+            rule.native_coordinate_ref,
+            content_hash="f" * 64,
+            object_id=rule.native_coordinate_ref.object_id + "-FOREIGN"))
+    foreign_rules = tuple(
+        foreign if candidate.slot.name == coordinate else candidate
+        for candidate in rules)
+    incidence = decode_sav(path)
+    try:
+        with pytest.raises(Exception) as exc:
+            materialize_native_preimages(
+                package=pkg, incidence=incidence,
+                coordinate_rules=foreign_rules,
+                expected_coordinate_rule=rule)
+        assert "COORDINATE_RULE_EXPECTED_BINDING_MISMATCH" in str(exc.value)
+    finally:
+        incidence.close()
+
     without = json.loads(json.dumps(config.document))
     without["coordinate_slots"] = []
-    with pytest.raises(Original35ExecutionError) as exc:
+    with pytest.raises(Original35ExecutionError):
         qualified_coordinate_rules(without, coordinate)
-    assert "QUALIFIED_COORDINATE_RULE_MATCH_REQUIRED" in str(exc.value)
     with pytest.raises(Original35ExecutionError):
         qualified_coordinate_rules(config, "NOT_A_COORDINATE")

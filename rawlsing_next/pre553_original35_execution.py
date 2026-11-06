@@ -890,7 +890,8 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         as_of=as_of)
     bundle = materialize_native_preimages(
         package=package, incidence=stream,
-        coordinate_rules=coordinate_rules)
+        coordinate_rules=coordinate_rules,
+        expected_coordinate_rule=_coordinate_rule)
     non_f1 = any(op.kind != OPERATION_F1 for op in selected_ops)
     if non_f1:
         compilation = bind_governed_frontier(

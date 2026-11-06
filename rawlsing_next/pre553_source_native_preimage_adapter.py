@@ -527,6 +527,7 @@ def materialize_native_preimages(
     incidence: PhysicalSourceIncidence | ExactPhysicalCellStream,
     row_occurrence_plan: GovernedRowOccurrencePlan | None = None,
     coordinate_rules: Sequence[CoordinateSlotRule] | None = None,
+    expected_coordinate_rule: CoordinateSlotRule | None = None,
 ) -> NativePreimageBundle:
     """Materialize a governed C11 release from exact source cells.
 
@@ -783,6 +784,10 @@ def materialize_native_preimages(
         raise NativePreimageRefusal("NO_ADMINISTERED_MEASUREMENT_U")
 
     coordinate_cell = rows[1].get(package.coordinate_variable)
+    if (coordinate_rules is None) != (expected_coordinate_rule is None):
+        raise NativePreimageRefusal(
+            "COORDINATE_RULE_AND_EXPECTED_BINDING_REQUIRED",
+            package.coordinate_variable)
     if coordinate_rules is None:
         coordinate_slot = CoordinateSlotRule(
             PhysicalSlot(coordinate_cell.variable_ordinal, package.coordinate_variable),
@@ -807,6 +812,10 @@ def materialize_native_preimages(
         if coordinate_slot.slot.ordinal != coordinate_cell.variable_ordinal:
             raise NativePreimageRefusal(
                 "COORDINATE_SLOT_RULE_ORDINAL_MISMATCH", package.coordinate_variable)
+        if coordinate_slot != expected_coordinate_rule:
+            raise NativePreimageRefusal(
+                "COORDINATE_RULE_EXPECTED_BINDING_MISMATCH",
+                package.coordinate_variable)
     risk_ref = _ref("RISK_SET", f"{source.source_id}-whole")
     routing = tuple(
         RoutingEligibilityFact(

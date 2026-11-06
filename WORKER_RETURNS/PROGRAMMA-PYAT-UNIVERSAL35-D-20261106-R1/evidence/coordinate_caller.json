@@ -1,20 +1,28 @@
 {
-  "schema": "PRE553_ORIGINAL35_COORDINATE_CALLER@1.0.0",
   "a_dependency": {
+    "factory": "build_coordinate_slot_rules",
     "production": "bc84799edbeaefd7785e178a0aaacc94f76260fe",
-    "tests": "c84ea32de832f83656005f6e531cf837d1a58282",
-    "factory": "build_coordinate_slot_rules"
+    "tests": "c84ea32de832f83656005f6e531cf837d1a58282"
   },
-  "c_dependency": {
-    "candidate": "8c5e8236ba08dca9d2e5921f938b3ce3d480e3bc",
-    "accepted": false,
-    "open_review": "e05ff071aa282c339e8237e308767ec57beed464",
-    "defects": ["tampered prebuilt release", "foreign-source coordinate ref"]
-  },
-  "caller_wiring": "exact one config coordinate rule passed to materialize_native_preimages",
-  "missing_or_multiple_rule": "TYPED_REFUSAL",
+  "a_restored_test": "c84ea32de832f83656005f6e531cf837d1a58282:rawlsing_next/tests/test_source_configuration_corrections.py",
   "actual_src15_join": "NOT_RUN",
-  "sourcefree_caller_test": "2 passed in 4.63s",
+  "c_dependency": {
+    "accepted": false,
+    "candidate": "511856ac5daa0c6b38b449f3bc7b2a6734403638",
+    "code": "10e228129ce744a0627a52bb446ffac6815fa08c",
+    "defects": [
+      "tampered prebuilt release",
+      "foreign-source coordinate ref"
+    ],
+    "open_review": "e05ff071aa282c339e8237e308767ec57beed464"
+  },
+  "caller_contract": "materialize_native_preimages(..., coordinate_rules=rules, expected_coordinate_rule=expected)",
+  "caller_wiring": "exact one config coordinate rule passed to materialize_native_preimages",
+  "foreign_rule_refusal": "COORDINATE_RULE_EXPECTED_BINDING_MISMATCH",
+  "missing_or_multiple_rule": "TYPED_REFUSAL",
+  "native_science_authority": false,
   "original_empirical_facts": 0,
-  "native_science_authority": false
+  "schema": "PRE553_ORIGINAL35_COORDINATE_CALLER@1.0.0",
+  "sourcefree_caller_test": "2 passed in 4.63s",
+  "tests": "15 passed in 31.38s"
 }
