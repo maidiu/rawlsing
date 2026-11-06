@@ -16,7 +16,8 @@
     "pid": 27430,
     "session": "ses_e98c905cbffekusoHURfKyEUKG",
     "branch": "agent/sorok-recursion-reuse-20261106-r1",
-    "scope": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/"
+    "scope": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/",
+    "state": "TERMINAL_SELECTED_CURRENT_API_SOURCE_TRACE_RECEIVED"
   },
   "observed_interfaces": {
     "P2ProductFanin": "start/open, explicit interval, admit/read later event, public opportunity, session.verify/read_events/read_encounters/read_interval_states",
@@ -41,7 +42,8 @@
         "developmental_recursion/engine.py",
         "tests/test_engine.py"
       ],
-      "session": "ses_615d8e3a6a909213fb200be830"
+      "session": "ses_615d8e3a6a909213fb200be830",
+      "state": "TERMINAL_INTEGRATED_AUTHOR_QUALIFIED"
     },
     {
       "job": "sorok-recursion-cycle-r1",
@@ -50,7 +52,8 @@
       "files": [
         "developmental_recursion/model_cycle.py",
         "tests/test_model_cycle.py"
-      ]
+      ],
+      "state": "TERMINAL_INTEGRATED_AUTHOR_QUALIFIED"
     }
   ],
   "batch_provider_failure": {
@@ -68,8 +71,9 @@
   },
   "integration_regression": {
     "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py",
-    "status": "IMPLEMENTED_AWAITING_CORE_AND_CYCLE_IMPORTS",
-    "coverage": "Two actual S47 three-event batches; event-state carry-forward; 3 model calls total; actor-accessible retrospective input; terminal nonmutation; cold reopening; actual versus scheduled material antecedent."
+    "status": "PASS_66_COMBINED_TESTS_INCLUDING_ACTUAL_TWO_BATCH_REGRESSION",
+    "coverage": "Two actual S47 three-event batches; event-state carry-forward; 3 model calls total; actor-accessible retrospective input; terminal nonmutation; cold reopening; actual versus scheduled material antecedent.",
+    "receipt": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/evidence/MULTI_BATCH_EXECUTION_RECEIPT.json"
   },
   "cycle_intake": {
     "upstream_return": "0d60caf387d2539edabdc55ee3f666966657b6f9",
@@ -86,7 +90,7 @@
     "evidence": "24 S39-S47 exact selected source matches and P2 start/verify first reader. Author reports 8 ledger tests. No original-V3 execution or native psychology.",
     "historical_hold": "Exact staging archive absent; observed alternative container and key BackboneState/year-order/render files differ from pinned hashes. Some matching files still have incompatible state dependencies.",
     "reuse_decision": "Use current S47/P2 state, interval, event and public access APIs. Do not copy mismatched historical psychological code. Trace memory formation gap as source/owner hold; keep model output as proposed impressions.",
-    "next": "Integrate returned batch engine, run actual two-batch regression, then independent exact-cut review including inherited-owner semantics and limits."
+    "next": "Current-owner reuse is integrated and tested. Historical exact-source holds remain. Distinct integrated review is in flight."
   },
   "batch_intake": {
     "candidate": "68a1299f6e49ce0d4c3c3f9cc773b39a6c09841f",
