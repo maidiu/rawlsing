@@ -34,7 +34,7 @@ Exact observed: 30 facts / 30 envelopes / 1-target arity 30 / E typed arity refu
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r9 explicit E transport
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 9161ba719.
+- Identity: codex/pyat-universal35-d-20261106-r1@fbc6ca3eb1246aa6a946c558a5f6e30dedafeb45; input 9161ba719.
 - Function: existing governed facts/query/replay/provenance + explicit caller producer permission ceiling -> exact E envelopes; missing query fails before artifact; no automatic transport.
 - Evidence: 30 facts/30 envelopes/30 typed arity refusals; cold CLI typed refusal; permission/replay fail-closed; caller ceiling unchanged.
 - Limits: 2-target positive joint producer still missing; actual original facts/E handshake NOT_RUN; no native/science/protected acceptance.
