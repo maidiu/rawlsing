@@ -59,7 +59,7 @@ No production repair chosen or implemented. High requested through async input
 for the exact semantic ABI decision; desktop settings tool is unavailable.
 Medium remains default. Continue unaffected mechanical qualifications.
 
-Existing source-projection suite is running under exec session68850, log
+Existing source-projection suite completed: 31 passed in 5.50s; exec session68850 is terminal, log
 source-projection.log. It covers occurrence/normalized key ambiguity, administered
 false, missingness, source labels, MR/rank/form and same-consumer mutation/restore.
 Do not restart if still live. All original-source/scientific/actor/merge holds
