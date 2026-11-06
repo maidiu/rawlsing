@@ -256,30 +256,29 @@ class _RecordingResolver:
         return decision
 
 
-def execute_two_target_joint_from_plan(plan: Any, *, bundle: Any,
-                                        source_id: str, as_of: str,
-                                        host: str, purpose: str) -> Any:
-    """Lower one explicit eligible F2 pair to an existing 2-target JOINT run."""
-    inventory, policy, base_frontier = build_frontier_inputs_from_plan(
-        plan, source_id=source_id)
-    pair = next((op for op in plan.operations
-                 if op.source_id == source_id and op.kind == OPERATION_F2
-                 and op.status == EXECUTABLE
-                 and op.route_status == "ELIGIBLE_APPLICABLE"
-                 and op.conditioner_item_id), None)
-    if pair is None:
-        raise Original35ExecutionError("NO_ELIGIBLE_TWO_TARGET_PAIR_PLAN")
-    targets = (OccurrenceKey(item_id=pair.item_ids[0]),
-               OccurrenceKey(item_id=pair.conditioner_item_id))
+def _joint_frontier_for_pair(plan: Any, source_id: str, pair: Any,
+                             inventory: Any, policy: Any,
+                             base_frontier: Any) -> tuple[Any, tuple[Any, ...]]:
+    target_id = pair.item_ids[0]
+    conditioner_id = pair.conditioner_item_id
+    targets = (OccurrenceKey(item_id=conditioner_id),
+               OccurrenceKey(item_id=target_id))
     by_key = inventory.by_key()
     if any(key not in by_key for key in targets):
         raise Original35ExecutionError("JOINT_TARGET_NOT_IN_INVENTORY")
+    if pair.measure_kind != "RAW_OBSERVED_SAMPLE":
+        raise Original35ExecutionError("WEIGHTED_REQUEST_NOT_AUTHORIZED")
+    measure = next((m for m in inventory.measure_plans if m.kind == "SAMPLE"), None)
+    if measure is None:
+        raise Original35ExecutionError("RAW_SAMPLE_MEASURE_MISSING")
     target_roles = tuple(by_key[key].target_role for key in targets)
-    measure = inventory.measure_plans[0]
     disposition, reasons, risk_refs = role_disposition(
         inventory, policy, targets=targets, target_roles=target_roles,
         conditions=(), conditioner_roles=(), claim_class="JOINT",
         condition_mode="AND", measure=measure)
+    if disposition != ELIGIBLE:
+        raise Original35ExecutionError(
+            "JOINT_REQUEST_NOT_ELIGIBLE:" + ",".join(reasons))
     direction = policy.direction_for(target_roles, (), "JOINT")
     used = [by_key[key] for key in targets]
     form_scope = sorted(set.intersection(*(set(item.forms) for item in used)))
@@ -293,14 +292,14 @@ def execute_two_target_joint_from_plan(plan: Any, *, bundle: Any,
         direction_ref=(direction.direction_ref if direction else None),
         form_scope=form_scope, scope=source_id,
         disposition=disposition, reasons=reasons,
-        native_support=("PENDING" if disposition == ELIGIBLE else "NOT_APPLICABLE"),
+        native_support="PENDING",
         administration_states=sorted({item.administration for item in used}),
         aliases=(pair.operation_id,))
     operations = (operation,)
     class_counts = Counter(op.claim_class for op in operations)
     disposition_counts = Counter(op.disposition for op in operations)
     ids = tuple(op.op_id for op in operations)
-    joint_frontier = ScientificFrontier(
+    frontier = ScientificFrontier(
         schema=FRONTIER_SCHEMA, inventory_id=inventory.inventory_id,
         inventory_hash=inventory.content_hash, policy_id=policy.policy_id,
         policy_hash=policy.content_hash, policy_grade=policy.grade,
@@ -320,14 +319,150 @@ def execute_two_target_joint_from_plan(plan: Any, *, bundle: Any,
         e_pre_count=1,
         e_pre_root=content_hash([operation.identity_material()]),
         e_pre_cause=None)
-    alias_bundle = _bundle_with_plan_aliases(
-        plan, source_id, bundle, joint_frontier)
-    compilation = compile_governed_frontier(
-        bundle=alias_bundle, inventory=inventory, policy=policy,
-        frontier=joint_frontier, as_of=as_of, host=host, purpose=purpose)
-    return execute_governed_frontier(
-        compilation=compilation,
-        source_factory=lambda _ref: bundle.physical_stream)
+    return frontier, targets
+
+
+def execute_requested_two_target_joints(plan: Any, *, bundle: Any,
+                                        source_id: str,
+                                        requested_operation_ids: Any,
+                                        as_of: str, host: str,
+                                        purpose: str) -> list[dict[str, Any]]:
+    """Execute an explicit caller-selected batch of F2 pair requests."""
+    if (isinstance(requested_operation_ids, (str, bytes))
+            or not isinstance(requested_operation_ids, (tuple, list))
+            or not requested_operation_ids
+            or any(not isinstance(x, str) or not x for x in requested_operation_ids)
+            or len(set(requested_operation_ids)) != len(requested_operation_ids)):
+        raise Original35ExecutionError(
+            "EXPLICIT_REQUESTED_F2_OPERATION_IDS_REQUIRED")
+    inventory, policy, base_frontier = build_frontier_inputs_from_plan(
+        plan, source_id=source_id)
+    by_id = {op.operation_id: op for op in plan.operations
+             if op.source_id == source_id}
+    results: list[dict[str, Any]] = []
+    for requested_id in requested_operation_ids:
+        pair = by_id.get(requested_id)
+        if pair is None:
+            results.append({"requested_operation_id": requested_id,
+                            "status": "REFUSED",
+                            "code": "REQUESTED_OPERATION_NOT_IN_PLAN"})
+            continue
+        if (pair.kind != OPERATION_F2 or pair.status != EXECUTABLE
+                or pair.route_status != "ELIGIBLE_APPLICABLE"
+                or not pair.conditioner_item_id):
+            results.append({"requested_operation_id": requested_id,
+                            "status": "REFUSED",
+                            "code": "REQUESTED_OPERATION_NOT_ELIGIBLE_F2"})
+            continue
+        try:
+            joint_frontier, targets = _joint_frontier_for_pair(
+                plan, source_id, pair, inventory, policy, base_frontier)
+            alias_bundle = _bundle_with_plan_aliases(
+                plan, source_id, bundle, joint_frontier)
+            compilation = compile_governed_frontier(
+                bundle=alias_bundle, inventory=inventory, policy=policy,
+                frontier=joint_frontier, as_of=as_of, host=host,
+                purpose=purpose)
+            result = execute_governed_frontier(
+                compilation=compilation,
+                source_factory=lambda _ref: bundle.physical_stream)
+        except Exception as exc:
+            results.append({"requested_operation_id": requested_id,
+                            "status": "REFUSED",
+                            "code": type(exc).__name__ + ":" + str(exc)})
+            continue
+        native = result.native_execution.native_result
+        query_by_key = {q.ref.key: q for q in native.executed_queries}
+        fact_rows = []
+        for fact in native.empirical_facts:
+            qref = exact_ref(fact.empirical_query_spec_ref,
+                             "fact.empirical_query_spec_ref")
+            query = query_by_key.get(qref.key)
+            if query is None:
+                continue
+            topology = query.target_arity_and_topology or {}
+            if topology.get("arity") != 2:
+                continue
+            fact_rows.append({
+                "fact": fact,
+                "query": query,
+                "fact_ref": fact.ref.as_dict(),
+                "query_ref": query.ref.as_dict(),
+            })
+        results.append({
+            "requested_operation_id": requested_id,
+            "status": "OK" if fact_rows else "REFUSED",
+            "code": None if fact_rows else "TWO_TARGET_FACT_NOT_PRODUCED",
+            "conditioner_item_id": pair.conditioner_item_id,
+            "target_item_id": pair.item_ids[0],
+            "joint_operation_id": joint_frontier.operations[0].op_id,
+            "joint_target_order": [key.item_id for key in targets],
+            "compilation_hash": compilation.content_hash,
+            "fact_refs": [row["fact_ref"] for row in fact_rows],
+            "query_refs": [row["query_ref"] for row in fact_rows],
+            "result": result,
+            "fact_rows": fact_rows,
+        })
+    return results
+
+
+def execute_two_target_joint_from_plan(plan: Any, *, bundle: Any,
+                                        source_id: str,
+                                        requested_operation_ids: Any,
+                                        as_of: str, host: str,
+                                        purpose: str) -> list[dict[str, Any]]:
+    return execute_requested_two_target_joints(
+        plan, bundle=bundle, source_id=source_id,
+        requested_operation_ids=requested_operation_ids,
+        as_of=as_of, host=host, purpose=purpose)
+
+
+def write_requested_joint_transport(results: Any, *, source_id: str,
+                                    state_root: str | Path,
+                                    producer_permission_ceiling: Any) -> dict[str, Any]:
+    """Write per-request envelopes and supporting request identities."""
+    if (isinstance(producer_permission_ceiling, (str, bytes))
+            or not isinstance(producer_permission_ceiling, (tuple, list))
+            or not producer_permission_ceiling
+            or any(not isinstance(x, str) or not x.strip()
+                   for x in producer_permission_ceiling)):
+        raise Original35ExecutionError(
+            "EXPLICIT_PRODUCER_PERMISSION_CEILING_REQUIRED")
+    ceiling = tuple(producer_permission_ceiling)
+    requests = []
+    for entry in results:
+        row = {k: v for k, v in entry.items()
+               if k not in {"result", "fact_rows"}}
+        if entry.get("status") == "OK":
+            envelopes = [envelope_material(
+                fact=fact_row["fact"], query=fact_row["query"],
+                producer_permission_ceiling=ceiling)
+                for fact_row in entry["fact_rows"]]
+            row["envelopes"] = envelopes
+            row["envelope_count"] = len(envelopes)
+        else:
+            row["envelopes"] = []
+            row["envelope_count"] = 0
+        requests.append(row)
+    target = Path(state_root) / (source_id + ".requested_joint_transport.json")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    staged = target.with_name(target.name + ".staged-tmp")
+    try:
+        staged.write_text(json.dumps({
+            "schema": "PRE553_ORIGINAL35_REQUESTED_JOINT_TRANSPORT@1.0.0",
+            "source_id": source_id,
+            "producer_permission_ceiling": list(ceiling),
+            "requests": requests,
+            "raw_respondent_rows_included": False,
+            "native_science_authority": False,
+        }, indent=2, sort_keys=True) + "\n", encoding="utf8")
+        os.replace(staged, target)
+    finally:
+        if staged.exists():
+            staged.unlink()
+    return {"path": str(target), "request_count": len(requests),
+            "ok_count": sum(1 for r in requests if r["status"] == "OK"),
+            "refused_count": sum(1 for r in requests if r["status"] != "OK")}
 
 
 def write_field_forge_envelopes(result: Any, *, source_id: str,
@@ -603,7 +738,8 @@ if __name__ == "__main__":
 __all__ = [
     "DEFAULT_BINDING", "Original35ExecutionError", "SCHEMA",
     "SourceExecutionResult", "execute_all",
-    "execute_native_compiler_source", "execute_source",
-    "execute_two_target_joint_from_plan", "write_field_forge_envelopes",
+    "execute_native_compiler_source", "execute_requested_two_target_joints",
+    "execute_source", "execute_two_target_joint_from_plan",
+    "write_field_forge_envelopes", "write_requested_joint_transport",
     "load_runtime_binding", "main",
 ]

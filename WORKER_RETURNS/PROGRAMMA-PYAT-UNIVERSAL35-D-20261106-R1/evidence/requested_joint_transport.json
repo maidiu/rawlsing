@@ -1,0 +1,22 @@
+{
+  "schema": "PRE553_ORIGINAL35_REQUESTED_JOINT_TRANSPORT@1.0.0",
+  "sourcefree": true,
+  "direction": "JOINT targets conditioner-first, target-second",
+  "requests": [
+    {"requested": "F2(B <- A)", "joint_targets": ["A", "B"],
+     "profiles": [{"condition_state": "0", "denominator": 6,
+                   "target_counts": {"0": 6, "1": 0}},
+                  {"condition_state": "1", "denominator": 6,
+                   "target_counts": {"0": 2, "1": 4}}]},
+    {"requested": "F2(A <- B)", "joint_targets": ["B", "A"],
+     "profiles": [{"condition_state": "0", "denominator": 8,
+                   "target_counts": {"0": 6, "1": 2}},
+                  {"condition_state": "1", "denominator": 4,
+                   "target_counts": {"0": 0, "1": 4}}]}
+  ],
+  "changed_sourcefree_cell_changes_profile": true,
+  "restore_exact": true,
+  "structural_grant": false,
+  "raw_respondent_rows_included": false,
+  "original_native_science_authority": false
+}

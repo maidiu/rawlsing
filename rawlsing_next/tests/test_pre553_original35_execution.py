@@ -15,8 +15,9 @@ from dataclasses import asdict, dataclass, replace
 from rawlsing_next.pre553_original35_execution import (
     Original35ExecutionError, _RecordingResolver,
     execute_native_compiler_source, execute_source,
-    execute_two_target_joint_from_plan, load_runtime_binding,
-    write_field_forge_envelopes,
+    execute_requested_two_target_joints, execute_two_target_joint_from_plan,
+    load_runtime_binding, write_field_forge_envelopes,
+    write_requested_joint_transport,
 )
 from rawlsing_next.pre553_original35_operations import build_original35_operation_plan
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
@@ -32,6 +33,12 @@ from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
 from rawlsing_next.tests.test_pre553_original35_operations import _fixture_config
 from rawlsing_next.tests.test_universal_workload import (
     AS_OF, HOST, PURPOSE, _frontier_bundle,
+)
+from rawlsing_next.tests.test_universal_source_projection import (
+    decode_sav, package, write_rows,
+)
+from rawlsing_next.pre553_source_native_preimage_adapter import (
+    NativeSourceRule, materialize_native_preimages,
 )
 
 INDEX = "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json"
@@ -216,68 +223,147 @@ def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
         ingest_envelope(broken["envelopes"][0])
 
 
-def test_existing_joint_engine_produces_two_target_fact_for_cold_e(tmp_path):
-    bundle, _rows = _frontier_bundle(tmp_path / "two_target.sav")
+def _asymmetric_bundle(tmp_path):
+    rows = []
+    for index in range(12):
+        a = 0 if index < 6 else 1
+        b = 0 if index < 6 else (0 if index < 8 else 1)
+        rows.append({"A": float(a), "B": float(b), "G": float(index % 2)})
+    path = tmp_path / "asymmetric_joint.sav"
+    write_rows(path, rows)
+    pkg = package(
+        path, len(rows),
+        (NativeSourceRule("impl.a", "A"), NativeSourceRule("impl.b", "B")),
+        coordinate="G")
+    return materialize_native_preimages(
+        package=pkg, incidence=decode_sav(path))
+
+
+def _profile_rows(response):
+    assert response["state"] == "CONDITIONAL_SUPPORT_PROFILE"
+    return response["profile"]["conditional_count_profile"]
+
+
+def test_existing_joint_engine_exact_requested_conditional_direction(tmp_path):
+    bundle = _asymmetric_bundle(tmp_path)
     config = _fixture_config(bundle)
     plan = build_original35_operation_plan(
         [config], source_presence={"SRC01": True}, require_all35=False)
-    result = execute_two_target_joint_from_plan(
-        plan, bundle=bundle, source_id="SRC01", as_of=AS_OF,
-        host=HOST, purpose=PURPOSE)
+    f2 = [op for op in plan.operations if op.kind == "F2_CONDITIONAL"]
+    ba = next(op for op in f2 if op.source_variable_codes == ("B", "A"))
+    ab = next(op for op in f2 if op.source_variable_codes == ("A", "B"))
+    requested = [ba.operation_id, ab.operation_id]
+    results = execute_requested_two_target_joints(
+        plan, bundle=bundle, source_id="SRC01",
+        requested_operation_ids=requested, as_of=AS_OF, host=HOST,
+        purpose=PURPOSE)
+    assert [row["status"] for row in results] == ["OK", "OK"]
+    assert [row["joint_target_order"] for row in results] == [
+        [ba.conditioner_item_id, ba.item_ids[0]],
+        [ab.conditioner_item_id, ab.item_ids[0]]]
+
     ceiling = ("FIELD_FORGE_RELATION_PRODUCTION",)
-    summary = write_field_forge_envelopes(
-        result, source_id="SRC01", state_root=tmp_path,
-        producer_permission_ceiling=ceiling)
-    document = json.loads(Path(summary["path"]).read_text())
-    assert summary["fact_count"] == summary["envelope_count"] > 0
-    arities = Counter(
-        envelope["query"]["semantic_fields"]["target_arity_and_topology"]["arity"]
-        for envelope in document["envelopes"])
-    assert arities[2] >= 1
-    assert sum(arities.values()) == summary["fact_count"]
-    responses = [ingest_envelope(e) for e in document["envelopes"]]
-    profiles = [r for r in responses
-                if r["state"] == "CONDITIONAL_SUPPORT_PROFILE"]
-    assert len(profiles) == arities[2]
-    assert all(r["structural_grant"] is False for r in responses)
-    assert all(r["profile"] is not None for r in profiles)
-    for envelope, response in zip(document["envelopes"], responses):
-        arity = envelope["query"]["semantic_fields"]["target_arity_and_topology"]["arity"]
-        if arity == 1:
-            assert response["state"] == "TYPED_REFUSAL"
-            assert response["refusal_code"] == "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED"
-    original_facts = {f.key for f in result.fact_refs}
+    by_request = {}
+    for result in results:
+        summary = write_requested_joint_transport(
+            [result], source_id="SRC01", state_root=tmp_path,
+            producer_permission_ceiling=ceiling)
+        document = json.loads(Path(summary["path"]).read_text())
+        assert document["requests"][0]["envelope_count"] == 1
+        envelope = document["requests"][0]["envelopes"][0]
+        assert envelope["permissions"]["producer_permission_ceiling"] == list(ceiling)
+        response = ingest_envelope(envelope)
+        assert response["structural_grant"] is False
+        by_request[result["requested_operation_id"]] = response
+
+    ba_rows = _profile_rows(by_request[ba.operation_id])
+    assert ba_rows == [
+        {"condition_denominator_support": 6, "condition_state": "0",
+         "target_counts": [
+             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 6,
+              "target_state": "0"},
+             {"cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "joint_support_count": 0, "target_state": "1"}]},
+        {"condition_denominator_support": 6, "condition_state": "1",
+         "target_counts": [
+             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 2,
+              "target_state": "0"},
+             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 4,
+              "target_state": "1"}]},
+    ]
+    ab_rows = _profile_rows(by_request[ab.operation_id])
+    assert ab_rows == [
+        {"condition_denominator_support": 8, "condition_state": "0",
+         "target_counts": [
+             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 6,
+              "target_state": "0"},
+             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 2,
+              "target_state": "1"}]},
+        {"condition_denominator_support": 4, "condition_state": "1",
+         "target_counts": [
+             {"cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "joint_support_count": 0, "target_state": "0"},
+             {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 4,
+              "target_state": "1"}]},
+    ]
 
     cells = tuple(bundle.physical_stream.iter_cells())
-    def mutated_cells():
+    def changed_cells():
         out = []
+        changed = False
         for cell in cells:
-            if (cell.variable_name == "A"
+            if (not changed and cell.variable_name == "B"
                     and cell.missing_state is PhysicalMissingState.OBSERVED_STORAGE_VALUE):
-                out.append(replace(cell, raw_value=1.0 - float(cell.raw_value)))
+                out.append(replace(cell, raw_value=1.0))
+                changed = True
             else:
                 out.append(cell)
         return tuple(out)
-    mutated_stream = ExactPhysicalCellStream(
+    changed_stream = ExactPhysicalCellStream(
         source_sha256=bundle.source_sha256,
         row_count=bundle.physical_stream.row_count,
-        cell_iter_factory=mutated_cells)
-    changed_bundle = replace(bundle, physical_stream=mutated_stream)
-    changed = execute_two_target_joint_from_plan(
-        plan, bundle=changed_bundle, source_id="SRC01", as_of=AS_OF,
-        host=HOST, purpose=PURPOSE)
-    assert {f.key for f in changed.fact_refs} != original_facts
-    restored = execute_two_target_joint_from_plan(
-        plan, bundle=bundle, source_id="SRC01", as_of=AS_OF,
-        host=HOST, purpose=PURPOSE)
-    assert {f.key for f in restored.fact_refs} == original_facts
+        cell_iter_factory=changed_cells)
+    changed_bundle = replace(bundle, physical_stream=changed_stream)
+    changed_results = execute_requested_two_target_joints(
+        plan, bundle=changed_bundle, source_id="SRC01",
+        requested_operation_ids=[ba.operation_id],
+        as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    changed_summary = write_requested_joint_transport(
+        changed_results, source_id="SRC01", state_root=tmp_path,
+        producer_permission_ceiling=ceiling)
+    changed_document = json.loads(Path(changed_summary["path"]).read_text())
+    changed_profile = _profile_rows(ingest_envelope(
+        changed_document["requests"][0]["envelopes"][0]))
+    assert changed_profile != ba_rows
+    assert changed_profile[0]["target_counts"] == [
+        {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 5,
+         "target_state": "0"},
+        {"cell_state": "OBSERVED_POSITIVE", "joint_support_count": 1,
+         "target_state": "1"}]
+    restored_results = execute_requested_two_target_joints(
+        plan, bundle=bundle, source_id="SRC01",
+        requested_operation_ids=[ba.operation_id],
+        as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    restored_summary = write_requested_joint_transport(
+        restored_results, source_id="SRC01", state_root=tmp_path,
+        producer_permission_ceiling=ceiling)
+    restored_document = json.loads(Path(restored_summary["path"]).read_text())
+    assert _profile_rows(ingest_envelope(
+        restored_document["requests"][0]["envelopes"][0])) == ba_rows
+
+    invalid = execute_requested_two_target_joints(
+        plan, bundle=bundle, source_id="SRC01",
+        requested_operation_ids=["missing-operation-id"],
+        as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert invalid[0]["status"] == "REFUSED"
+    assert invalid[0]["code"] == "REQUESTED_OPERATION_NOT_IN_PLAN"
 
     broken = json.loads(json.dumps(document))
-    broken["envelopes"][0]["permissions"] = {}
+    broken["requests"][0]["envelopes"][0]["permissions"] = {}
     with pytest.raises(Exception):
-        ingest_envelope(broken["envelopes"][0])
+        ingest_envelope(broken["requests"][0]["envelopes"][0])
     broken = json.loads(json.dumps(document))
-    broken["envelopes"][0]["replay"]["fact_replay_ref"] = {
+    broken["requests"][0]["envelopes"][0]["replay"]["fact_replay_ref"] = {
         "kind": "WRONG", "object_id": "wrong", "content_hash": "0" * 64}
     with pytest.raises(Exception):
-        ingest_envelope(broken["envelopes"][0])
+        ingest_envelope(broken["requests"][0]["envelopes"][0])
