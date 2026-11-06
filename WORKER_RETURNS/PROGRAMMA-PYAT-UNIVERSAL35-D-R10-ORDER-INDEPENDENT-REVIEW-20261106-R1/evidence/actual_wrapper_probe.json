@@ -1,0 +1,52 @@
+{
+  "artifact_unchanged": true,
+  "artifact_valid": true,
+  "changed_new": {
+    "error": "SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+    "outcome": "REFUSED",
+    "type": "Original35ExecutionError"
+  },
+  "changed_same": {
+    "error": "SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+    "outcome": "REFUSED",
+    "type": "Original35ExecutionError"
+  },
+  "e_codec": {
+    "blob_sha256": "6acba005f71559b03f4bd2f6013ecd956835e983710eff81449c4c5b8d584ea0",
+    "matches_f708": true
+  },
+  "fresh_artifacts": [],
+  "fresh_staged": [],
+  "helper_failures": {
+    "missing_permission": "old artifact unchanged; no staged",
+    "missing_query": "old artifact unchanged; no staged",
+    "publication_failure": "os.replace failure; old artifact unchanged; no staged"
+  },
+  "native_unchanged": true,
+  "positive": {
+    "cands": 18,
+    "facts": 30,
+    "ops": 15,
+    "outcome": "ACCEPTED"
+  },
+  "positive2": {
+    "cands": 18,
+    "facts": 30,
+    "ops": 15,
+    "outcome": "ACCEPTED"
+  },
+  "positive_doc": {
+    "ceilings": [
+      [
+        "FIELD_FORGE_RELATION_PRODUCTION"
+      ]
+    ],
+    "envelope_count": 30,
+    "fact_count": 30
+  },
+  "reused": {
+    "changed_input": "actual fact/envelope identity changed",
+    "r9_positive": "30 facts/30 envelopes/30 typed arity refusals/0 profiles/structural false"
+  },
+  "same_staged": []
+}
