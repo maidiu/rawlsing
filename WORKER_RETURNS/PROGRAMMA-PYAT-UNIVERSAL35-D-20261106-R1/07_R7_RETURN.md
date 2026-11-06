@@ -39,7 +39,7 @@ No original respondent rows, native keys, source bytes or private grant were com
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r7 actual-run boundary
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input d054e4066.
+- Identity: codex/pyat-universal35-d-20261106-r1@20c9e383a802462ba46cb71a8221f807950280bf; input d054e4066.
 - Function: fresh-per-resolve local engineering resolver + C selected stream + current native/governed compiler; actual SRC15 coordinate refusal and SRC09/SRC10 >650s no-fact results.
 - Evidence: no actual facts; sourcefree accepted positives preserved; A accepted changes received; all35 plan/frontier accounting preserved.
 - Limits: actual original empirical facts/E handshake NOT_RUN; exact blockers named above; no native/science/protected/authority grant.
