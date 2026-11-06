@@ -123,7 +123,7 @@ def apply_source_config_corrections(
             value["raw_value"] = raw
             value["missing_state"] = change.get("missing_state", "OBSERVED_STORAGE_VALUE")
             value["source_missing_declaration"] = copy.deepcopy(change.get("source_missing_declaration"))
-            value["response_state"] = change.get("response_state", "SUBSTANTIVE_RESPONSE")
+            value["response_state"] = change.get("response_state", "INVALID_UNRESOLVED")
             value["canonical_value"] = copy.deepcopy(change.get("canonical_value"))
             values.append(value)
             applied.append({

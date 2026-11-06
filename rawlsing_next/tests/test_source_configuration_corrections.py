@@ -188,3 +188,80 @@ def test_remaining_base_path_mismatch_is_refused_and_restore_succeeds():
         base, base_commit=R157_COMMIT, base_config_path=path)
     assert len(applied) == REMAINING7[source_id]
     assert corrected["response_slots"] != base["response_slots"]
+
+
+COMPOSITE_LABELS = {
+    ("SRC16", "dk, na, iap"),
+    ("SRC24", "No answer/Refused"),
+    ("SRC25", "DK/NA"),
+    ("SRC25", "Don't know / Don't answer"),
+    ("SRC25", "Don't know/No answer"),
+    ("SRC25", "Don't know/No asnwer"),
+    ("SRC25", "No answer/Don't know"),
+    ("SRC25", "No answer/Refused"),
+    ("SRC26", "Don't know / No answer"),
+    ("SRC26", "Don't know/Don't remember"),
+}
+
+
+def test_composite_labels_are_not_mapped_to_precise_states():
+    registry = json.loads(CORRECTIONS_PATH.read_text(encoding="utf-8"))
+    matched = 0
+    for entry in registry["entries"]:
+        for change in entry["response_value_changes"]:
+            key = (entry["source_id"], change.get("source_label"))
+            if key in COMPOSITE_LABELS:
+                matched += 1
+                assert change["response_state"] == "SOURCE_SPECIFIC_SPECIAL", (key, change["response_state"])
+    assert matched == 362
+    assert not any(
+        change.get("response_state") == "SUBSTANTIVE_RESPONSE"
+        for entry in registry["entries"] for change in entry["response_value_changes"])
+
+
+def test_add_if_absent_without_explicit_state_defaults_to_invalid_unresolved(tmp_path: Path):
+    registry = json.loads(CORRECTIONS_PATH.read_text(encoding="utf-8"))
+    base_entry = next(e for e in registry["entries"] if e["source_id"] == "SRC31")
+    entry = json.loads(json.dumps(base_entry))
+    entry["response_value_changes"] = [{
+        "slot": {"ordinal": 27, "name": "c10ai"},
+        "raw_value": 12345.0,
+        "missing_state": "OBSERVED_STORAGE_VALUE",
+        "source_missing_declaration": None,
+        "add_if_absent": True,
+        "source_label": None,
+    }]
+    path = tmp_path / "registry.json"
+    path.write_text(json.dumps({"schema": registry["schema"], "entries": [entry]}), encoding="utf-8")
+    corrected, applied = apply_source_config_corrections(
+        _base_document(), registry_path=path,
+        base_commit=R157_COMMIT, base_config_path=SRC31_PATH)
+    assert len(applied) == 1
+    added = _value(_slot(corrected, "c10ai"), 12345.0)
+    assert added["response_state"] == "INVALID_UNRESOLVED"
+    assert added["canonical_value"] is None
+
+
+def test_existing_substantive_to_missing_transitions_are_accounted():
+    registry = json.loads(CORRECTIONS_PATH.read_text(encoding="utf-8"))
+    provider = GitObjectProvider()
+    transitions = []
+    for entry in registry["entries"]:
+        if entry["source_id"] == "SRC31":
+            continue
+        base = SourceConfig(json.loads(provider.read_bytes(entry["base_config_path"]).decode("utf-8")))
+        slots = {(s["slot"]["ordinal"], s["slot"]["name"]): s for s in base.document["response_slots"]}
+        for change in entry["response_value_changes"]:
+            slot = slots[(change["slot"]["ordinal"], change["slot"]["name"])]
+            old = next((v for v in slot["values"]
+                        if type(v["raw_value"]) is type(change["raw_value"])
+                        and v["raw_value"] == change["raw_value"]), None)
+            if old and old.get("response_state") == "SUBSTANTIVE_RESPONSE" and change["response_state"] != "SUBSTANTIVE_RESPONSE":
+                transitions.append((entry["source_id"], change))
+    assert len(transitions) == 95
+    for source_id, change in transitions:
+        assert change["missing_state"] != "OBSERVED_STORAGE_VALUE"
+        declaration = change.get("source_missing_declaration")
+        assert declaration is not None
+        assert declaration.get("kind") in {"discrete", "range", "extended"}
+        assert change["response_state"] in {"DK", "NOT_ASKED", "REFUSAL", "SOURCE_SPECIFIC_SPECIAL", "INVALID_UNRESOLVED", "MISSING"}

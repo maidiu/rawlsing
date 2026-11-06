@@ -1,0 +1,42 @@
+{
+  "actual_first_consumer": "corrected SourceConfig -> current physical response projection; full release NOT_RUN",
+  "affected_ids": [
+    "SRC16 composite values",
+    "SRC24 composite values",
+    "SRC25 composite values",
+    "SRC26 composite values"
+  ],
+  "conditional_unlocks": [
+    "independent review of R3 delta",
+    "D selected-column consumption"
+  ],
+  "evidence": [
+    "evidence_composite_state_repair.json",
+    "evidence_state_authority_repair.json",
+    "evidence_binding_contract.json",
+    "evidence_remaining7_boundary.json",
+    "evidence_pytest.txt"
+  ],
+  "function": "conservative composite-state repair and fail-closed correction default",
+  "identity": {
+    "branch": "codex/pyat-universal35-source-mapping-20261106-r1",
+    "c_review": "d731f0a15a54d6e664ac181c5e1be691f5be9f51",
+    "continues": "7f3931607d1309e84ad068c353946831248184b3",
+    "job": "PROGRAMMA-PYAT-UNIVERSAL35-SOURCE-MAPPING-20261106-R1-R3"
+  },
+  "input_transform_typed_output": {
+    "input": [
+      "exact declared missing metadata",
+      "composite/ambiguous source labels"
+    ],
+    "output": [
+      "conservative typed response states",
+      "95 warranted substantive-to-missing transitions accounted"
+    ],
+    "transform": "replace 362 precise composite states with SOURCE_SPECIFIC_SPECIAL; default omitted add-state to INVALID_UNRESOLVED"
+  },
+  "native_or_all35_promotion": "NOT_GRANTED",
+  "next_action": "nonauthor review of R3 only; full release behind positive-authority DEFER",
+  "root_schema_clock_permission": "NO_CHANGE; no source/native/science authority",
+  "schema": "PROGRAMMA_DELTA@1"
+}
