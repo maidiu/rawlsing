@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "PROGRAMMA_PYAT_L02_I05_JOINT_PRIMARY_QUERY_ORDER_FALSE_SEVERANCE_R1",
+      "actual_consumer": "current I05 exact receipt with JOINT plus same-predicate marginal -> C1 _validate_discovery_consumption -> uniquely selected producer joint EmpiricalFact",
+      "claimed_dependency": "Source/producer-declared JOINT query identity, not same-predicate marginal identity or receipt fact ordering, determines the C1 selected first-consumer fact (reverse_fact_order=False). Inverting role-query filter must return the wrong marginal and fail the positive exact joint-identity assertion.",
+      "positive_node": "rawlsing_next/tests/test_l02_joint_receipt_selection.py::test_declared_joint_is_selected_independently_of_fact_order[False]",
+      "fault": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "old": "if primary_queries and query_ref not in primary_queries:",
+        "new": "if primary_queries and query_ref in primary_queries:"
+      }
+    },
+    {
+      "claim_id": "PROGRAMMA_PYAT_L02_I05_JOINT_PRIMARY_QUERY_ORDER_TRUE_SEVERANCE_R1",
+      "actual_consumer": "current I05 exact receipt with JOINT plus same-predicate marginal -> C1 _validate_discovery_consumption -> uniquely selected producer joint EmpiricalFact",
+      "claimed_dependency": "Source/producer-declared JOINT query identity, not same-predicate marginal identity or receipt fact ordering, determines the C1 selected first-consumer fact (reverse_fact_order=True). Inverting role-query filter must return the wrong marginal and fail the positive exact joint-identity assertion.",
+      "positive_node": "rawlsing_next/tests/test_l02_joint_receipt_selection.py::test_declared_joint_is_selected_independently_of_fact_order[True]",
+      "fault": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "old": "if primary_queries and query_ref not in primary_queries:",
+        "new": "if primary_queries and query_ref in primary_queries:"
+      }
+    }
+  ]
+}
