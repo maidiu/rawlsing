@@ -1670,12 +1670,14 @@
       "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/CURRENT_PROGRESS.json"
     ],
     "disciplines": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STANDING_DISCIPLINES.md",
-    "status": "S1_DESIGN_SCOPED_ACCEPT__ACTIVATION_OPACITY_LAUNCHED__RUNTIME_PENDING",
+    "status": "BOTH_INPUTS_SCOPED_ACCEPTED__RULE_ADAPTER_AUTHOR_5_PASS__P2_ROOT_INTEGRATION_PENDING",
     "input_candidates": {
       "E1": {
         "head": "ee1ff298fe7e57277c34a5af16df33165743d84f",
         "pr": 735,
-        "grade": "AUTHOR_ONLY_TEST_ONLY_ISOLATED_B1_NOT_P2"
+        "grade": "ACCEPT_SCOPED_TEST_ONLY_B1_COMPATIBILITY_ABI_COST_INPUT",
+        "review_return": "04f57e03b9630f0f1aa442c940143f827d996ee1",
+        "disposition": "E1_INPUT_DISPOSITION.json"
       },
       "S1": {
         "head": "5a505a911509073eb38102f0022f445e7ec602e5",
@@ -1688,7 +1690,7 @@
     "lanes": [
       {
         "task": "sorok-p3-e1-input-review-r1",
-        "status": "ACTIVE_VERIFIED",
+        "status": "RETURNED_SCOPED_INPUT_ACCEPTED",
         "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
         "pid": 12610
       },
@@ -1720,6 +1722,8 @@
     "native_science": "HOLD",
     "protected_receiving": "NOT_REQUESTED_BEFORE_FINAL_INDEPENDENT_REVIEW",
     "incumbent_fields_preserved": true,
-    "S1_return_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/S1_INPUT_DISPOSITION.json"
+    "S1_return_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/S1_INPUT_DISPOSITION.json",
+    "E1_return_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/E1_INPUT_DISPOSITION.json",
+    "rule_adapter_author_receipt": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/rules/AUTHOR_RECEIPT.json"
   }
 }

@@ -1,18 +1,24 @@
 {
-  "status": "S1_DESIGN_SCOPED_ACCEPT__ACTIVATION_OPACITY_LAUNCHED__RUNTIME_PENDING",
+  "status": "BOTH_INPUTS_SCOPED_ACCEPTED__RULE_ADAPTER_AUTHOR_5_PASS__P2_ROOT_INTEGRATION_PENDING",
   "checkpoint": "CHECKPOINT.json",
-  "contract": "INTEGRATION_CONTRACT.md",
-  "activation_contract": "ACTIVATION_OPACITY_CONTRACT.md",
   "disciplines": "STANDING_DISCIPLINES.md",
-  "S1_input": {
-    "review": "7466d37bf5e3147efa84adb907c5f8ea28fcd1cf",
-    "disposition": "ACCEPT_SCOPED_TEST_ONLY_DESIGN_ONLY",
-    "no_new_review_needed": true
+  "input_dispositions": [
+    "E1_INPUT_DISPOSITION.json",
+    "S1_INPUT_DISPOSITION.json"
+  ],
+  "rule_adapter": {
+    "files": [
+      "p3/__init__.py",
+      "p3/test_rules.py",
+      "tests/test_rules.py"
+    ],
+    "receipt": "evidence/rules/AUTHOR_RECEIPT.json",
+    "grade": "AUTHOR_MECHANICAL_TEST_ONLY_NOT_P2_INTEGRATION"
   },
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_SCOPED_INPUT_ACCEPTED",
       "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
       "pid": 12610
     },
@@ -44,5 +50,5 @@
   "runtime": "NOT_YET_INTEGRATED",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Reuse terminal S1 review session for nonconflicting pure activation/opacity implementation, then HQ actual P2-root integration; final exact-runtime independent S2 review remains required."
+  "next": "Consume terminal store/compression/projection returns via existing notifications; implement actual same-P2-root owner with recoverable cross-store custody; run full user A-H/cold/cost evidence; distinct exact-runtime review. No new input review, P2 engine or native science."
 }

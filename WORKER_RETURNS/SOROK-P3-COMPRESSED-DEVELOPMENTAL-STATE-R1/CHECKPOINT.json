@@ -17,7 +17,9 @@
     "E1": {
       "head": "ee1ff298fe7e57277c34a5af16df33165743d84f",
       "pr": 735,
-      "grade": "AUTHOR_ONLY_TEST_ONLY_ISOLATED_B1_NOT_P2"
+      "grade": "ACCEPT_SCOPED_TEST_ONLY_B1_COMPATIBILITY_ABI_COST_INPUT",
+      "review_return": "04f57e03b9630f0f1aa442c940143f827d996ee1",
+      "disposition": "E1_INPUT_DISPOSITION.json"
     },
     "S1": {
       "head": "5a505a911509073eb38102f0022f445e7ec602e5",
@@ -27,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "S1_DESIGN_SCOPED_ACCEPT__ACTIVATION_OPACITY_LAUNCHED__RUNTIME_PENDING",
+  "state": "BOTH_INPUTS_SCOPED_ACCEPTED__RULE_ADAPTER_AUTHOR_5_PASS__P2_ROOT_INTEGRATION_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -41,7 +43,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-e1-input-review-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_SCOPED_INPUT_ACCEPTED",
       "model": {
         "id": "deepseek-v4.1-flash",
         "providerID": "opencode-go",
@@ -49,7 +51,9 @@
       },
       "metadata_message": "msg_1b2c65e10001kHag5q0WltfNQn",
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-e1-input-review-r1/completion.json",
-      "notification": "finite existing completion observer"
+      "notification": "finite existing completion observer",
+      "return": "04f57e03b9630f0f1aa442c940143f827d996ee1",
+      "next_role": "Remain nonauthor; qualified final-runtime independent review when runtime ready, no duplicate review now."
     },
     {
       "task": "sorok-p3-s1-input-review-r1",
@@ -150,7 +154,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Reuse terminal S1 review session for nonconflicting pure activation/opacity implementation, then HQ actual P2-root integration; final exact-runtime independent S2 review remains required.",
+  "next": "Consume terminal store/compression/projection returns via existing notifications; implement actual same-P2-root owner with recoverable cross-store custody; run full user A-H/cold/cost evidence; distinct exact-runtime review. No new input review, P2 engine or native science.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -160,5 +164,14 @@
     "to": "sorok-p3-activation-opacity-r1",
     "contract": "ACTIVATION_OPACITY_CONTRACT.md",
     "other_writes": "tests/test_projections.py and evidence/projections only"
+  },
+  "rule_adapter": {
+    "files": [
+      "p3/__init__.py",
+      "p3/test_rules.py",
+      "tests/test_rules.py"
+    ],
+    "receipt": "evidence/rules/AUTHOR_RECEIPT.json",
+    "grade": "AUTHOR_MECHANICAL_TEST_ONLY_NOT_P2_INTEGRATION"
   }
 }

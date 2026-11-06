@@ -1,0 +1,369 @@
+{
+  "causal_contrast": {
+    "control_later_activity": [
+      "inspect_alone:caretaker"
+    ],
+    "control_later_recruited": [],
+    "control_middle_count": 0,
+    "positive_later_activity": [
+      "joint_check:caretaker"
+    ],
+    "positive_later_recruited": [
+      "c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495"
+    ],
+    "positive_middle_count": 1,
+    "same_later_event_hash": true
+  },
+  "control": {
+    "batch_id": "batch-control",
+    "cold_reopen_matches_records": true,
+    "cold_reopen_seconds": 0.005041,
+    "cold_reopen_snapshot": {
+      "actor": "child",
+      "branch": "main",
+      "clock": 4,
+      "root": "root-control",
+      "state_hash": "534ee0e3fa3e0ef9faec36fcfe349db2d97faee1d15053b508062c38acd2e13b"
+    },
+    "event_hashes": [
+      "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+      "b54f9838f8f33f5fc1161ecbab6a2645cdc189c4e05a398fbfff6586492b08d5",
+      "5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d"
+    ],
+    "grade": "TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE",
+    "history_hash": "330a08b856d09d97754714863411b481958121601c06a49c2fbcdad7c1e60d4d",
+    "journal_only": true,
+    "later_accessible_actions": [
+      "inspect_alone:caretaker"
+    ],
+    "later_practical_activity": [
+      "inspect_alone:caretaker"
+    ],
+    "later_recruited": [],
+    "measurements": {
+      "batch_wall_seconds": 0.039934,
+      "history_json_bytes": 21867,
+      "joint_receipt_rows": 3,
+      "journal_bytes": 94208,
+      "middle_state_count": 0,
+      "model_calls": 0,
+      "occurrence_rows": 3,
+      "operation_rows": 3,
+      "owner_db_bytes": 86016,
+      "provider_calls": 0,
+      "records_json_bytes": 21746,
+      "response_count": 3,
+      "state_json_bytes": 8501,
+      "transition_count": 0
+    },
+    "middle_state_ids": [],
+    "middle_state_record_hashes": [],
+    "name": "control",
+    "snapshot_after": {
+      "actor": "child",
+      "branch": "main",
+      "clock": 4,
+      "root": "root-control",
+      "state_hash": "534ee0e3fa3e0ef9faec36fcfe349db2d97faee1d15053b508062c38acd2e13b"
+    },
+    "statuses": [
+      "IMMEDIATE_ONLY",
+      "IMMEDIATE_ONLY",
+      "IMMEDIATE_ONLY"
+    ]
+  },
+  "cost_notes": [
+    "B1 rewrites one full checkpoint JSON row per event; state/response/transition bytes grow with history.",
+    "Per event: one occurrence row, one joint_receipt row, one b1_operations row, one response record, plus one mediator/transition on a create.",
+    "No model/provider invocation occurs in this adapter probe.",
+    "B3A whole-store staging and BP2P4J product costs were not measured here; see 06_RESOURCE_COST_FINDINGS.md."
+  ],
+  "generated_at_utc": "2026-11-06T21:38:25Z",
+  "git": {
+    "current_branch": "UNAVAILABLE:CalledProcessError",
+    "current_head": "UNAVAILABLE:CalledProcessError",
+    "engine_runtime_cut": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+    "pr_704_receiving": "0b7d8ba33b5cd905963292357507ae7bbc2219de",
+    "protected_branch": "integration/pre-main-reconciliation-r1",
+    "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516"
+  },
+  "grade": "TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE",
+  "host": {
+    "editor_harness": "OpenCode",
+    "machine": "x86_64",
+    "model_reported_by_environment": "opencode/deepseek-v4.1-flash (DeepSeek V4.1-Flash MAX requested; actual reasoning configuration not machine-observable)",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3",
+    "python_implementation": "CPython"
+  },
+  "native_science": "NOT_ISSUED",
+  "not_run": [
+    "Full #704 P2Owner seven-test suite in this extracted probe root (inherited author/independent results remain historical).",
+    "B3A Integration.run through DevelopmentOwner (schema/ABI mismatch; not a narrow adapter).",
+    "HQ300 run_positive_chain through DevelopmentOwner (in-memory ledger, no durable owner).",
+    "M01 Cell through DevelopmentOwner (in-memory fixture, no durable owner).",
+    "BP2P4J JoinedProduct through DevelopmentOwner (separate C8/C9/C10/C12 product).",
+    "Original V3 yearly_step/flow tests against exact protected archive bytes (archive SHA mismatch).",
+    "Any native CAN008/CAN011/ADP016/ADP017 production operation."
+  ],
+  "positive": {
+    "batch_id": "batch-positive",
+    "cold_reopen_matches_records": true,
+    "cold_reopen_seconds": 0.00555,
+    "cold_reopen_snapshot": {
+      "actor": "child",
+      "branch": "main",
+      "clock": 4,
+      "root": "root-positive",
+      "state_hash": "0bd9a3249f2f42a4a71326610c70a9d085283a01b626f8ef8921dad88e5bf872"
+    },
+    "event_hashes": [
+      "abe04b9e0812fd9fb23ad19c0060dae36a2ee917a5e7529e7c6b36450716df7d",
+      "b54f9838f8f33f5fc1161ecbab6a2645cdc189c4e05a398fbfff6586492b08d5",
+      "5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d"
+    ],
+    "grade": "TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE",
+    "history_hash": "d34f5032df58d1a3bcdcb2c02059d45a78bd4bbfa692198c5b9f85fddb6f7c9f",
+    "journal_only": false,
+    "later_accessible_actions": [
+      "joint_check:caretaker"
+    ],
+    "later_practical_activity": [
+      "joint_check:caretaker"
+    ],
+    "later_recruited": [
+      "c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495"
+    ],
+    "measurements": {
+      "batch_wall_seconds": 0.046615,
+      "history_json_bytes": 23361,
+      "joint_receipt_rows": 3,
+      "journal_bytes": 98304,
+      "middle_state_count": 1,
+      "model_calls": 0,
+      "occurrence_rows": 3,
+      "operation_rows": 3,
+      "owner_db_bytes": 94208,
+      "provider_calls": 0,
+      "records_json_bytes": 23239,
+      "response_count": 3,
+      "state_json_bytes": 15220,
+      "transition_count": 1
+    },
+    "middle_state_ids": [
+      "994680cacb8f98757302ad2d6435e2c1052bd8f7cb8052aebb199efebc6df765"
+    ],
+    "middle_state_record_hashes": [
+      "c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495"
+    ],
+    "name": "positive",
+    "snapshot_after": {
+      "actor": "child",
+      "branch": "main",
+      "clock": 4,
+      "root": "root-positive",
+      "state_hash": "0bd9a3249f2f42a4a71326610c70a9d085283a01b626f8ef8921dad88e5bf872"
+    },
+    "statuses": [
+      "REALIZED",
+      "NO_CHANGE",
+      "REALIZED"
+    ]
+  },
+  "production_guard": {
+    "actor_state_effect": "ZERO",
+    "causal_ledger_appends": 0,
+    "guard_file": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+    "outcome": "DENY_ZERO_EFFECT",
+    "reason": "ZERO_POSITIVE_REGISTRY",
+    "registry_empty": true,
+    "rng_mutations": 0,
+    "scheduler_mutations": 0,
+    "zero_effect": true
+  },
+  "production_registry": "EMPTY_UNCHANGED",
+  "pytest": {
+    "command": [
+      "/usr/local/bin/python3",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "test_b1_owner_adapter.py"
+    ],
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 9
+    },
+    "returncode": 0,
+    "stderr_tail": "",
+    "stdout_tail": ".........                                                                [100%]\n9 passed in 0.48s\n",
+    "wall_seconds": 0.803792
+  },
+  "scaling": [
+    {
+      "events": 3,
+      "middle_state_count": 1,
+      "owner_db_bytes": 94208,
+      "per_event_ms": 8.781,
+      "response_count": 3,
+      "state_json_bytes": 15334,
+      "total_wall_seconds": 0.026342,
+      "transition_count": 1
+    },
+    {
+      "events": 10,
+      "middle_state_count": 1,
+      "owner_db_bytes": 217088,
+      "per_event_ms": 11.766,
+      "response_count": 10,
+      "state_json_bytes": 28713,
+      "total_wall_seconds": 0.117659,
+      "transition_count": 1
+    },
+    {
+      "events": 30,
+      "middle_state_count": 1,
+      "owner_db_bytes": 548864,
+      "per_event_ms": 15.324,
+      "response_count": 30,
+      "state_json_bytes": 66953,
+      "total_wall_seconds": 0.459708,
+      "transition_count": 1
+    },
+    {
+      "events": 60,
+      "middle_state_count": 1,
+      "owner_db_bytes": 1064960,
+      "per_event_ms": 23.215,
+      "response_count": 60,
+      "state_json_bytes": 124313,
+      "total_wall_seconds": 1.39291,
+      "transition_count": 1
+    }
+  ],
+  "schema": "SOROK_P3_E1_PROBE_RECEIPT@1",
+  "source_pins": {
+    "archive_note": {
+      "exact_archive_available": false,
+      "expected_v3_archive_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "local_copy_grade": "LOCAL_UNVERIFIED_ARCHIVE_COPY_NOT_EXACT_PROTECTED_BYTES",
+      "local_staging_zip_sha256": "3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289"
+    },
+    "b1": {
+      "actual_sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+      "commit": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+      "git_blob_sha1": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
+      "loaded": true,
+      "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+      "vendored_sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3"
+    },
+    "engine_source_pins": {
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/__init__.py": {
+        "actual_sha256": "677884dd060c7105e85e0d8fc199799399902f575abc7cff354ad56e038d0ae8",
+        "expected_sha256": "677884dd060c7105e85e0d8fc199799399902f575abc7cff354ad56e038d0ae8",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/__init__.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/contracts.py": {
+        "actual_sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+        "expected_sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/contracts.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py": {
+        "actual_sha256": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+        "expected_sha256": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py": {
+        "actual_sha256": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5",
+        "expected_sha256": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py": {
+        "actual_sha256": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+        "expected_sha256": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_cold_cli_witness.py": {
+        "actual_sha256": "29ba1011fee59f169dae711d4ecc1ebfa79958a79eabaeb9f82df324939c8d8c",
+        "expected_sha256": "29ba1011fee59f169dae711d4ecc1ebfa79958a79eabaeb9f82df324939c8d8c",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_cold_cli_witness.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_developmental_recursion.py": {
+        "actual_sha256": "ec031c5f355bd8c969d0e83a563d02ee53c62d46be1dbba8f754ec7aea4dd8bb",
+        "expected_sha256": "ec031c5f355bd8c969d0e83a563d02ee53c62d46be1dbba8f754ec7aea4dd8bb",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_developmental_recursion.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py": {
+        "actual_sha256": "e3478519a5b098162dd70d62c02ea69343448e56651922ba11fc75e50268b4ea",
+        "expected_sha256": "e3478519a5b098162dd70d62c02ea69343448e56651922ba11fc75e50268b4ea",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py": {
+        "actual_sha256": "493911dd5bfd24443a21c8c4a0f4865d61a2dcb8d25548468372498c7a1b34d7",
+        "expected_sha256": "493911dd5bfd24443a21c8c4a0f4865d61a2dcb8d25548468372498c7a1b34d7",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py": {
+        "actual_sha256": "860698c8e2adacb55542b13b7a943225656828c58ebb25fba95cda0557eeb77b",
+        "expected_sha256": "860698c8e2adacb55542b13b7a943225656828c58ebb25fba95cda0557eeb77b",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py": {
+        "actual_sha256": "7b6c32ec4fa2790d4c3b5c7211ee31aa9f59f61a59185587a066756274b64928",
+        "expected_sha256": "7b6c32ec4fa2790d4c3b5c7211ee31aa9f59f61a59185587a066756274b64928",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py.proof.json": {
+        "actual_sha256": "fcd3d368a72a7ea7e4b16167917a6c5ae3db62462b7a1b0644cfbec2c4a9f63f",
+        "expected_sha256": "fcd3d368a72a7ea7e4b16167917a6c5ae3db62462b7a1b0644cfbec2c4a9f63f",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py.proof.json"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/test_reuse_ledger.py": {
+        "actual_sha256": "ddb92cf9265591f3ac5ddae5101c66c6893141f72192616612d0adf27231d253",
+        "expected_sha256": "ddb92cf9265591f3ac5ddae5101c66c6893141f72192616612d0adf27231d253",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/test_reuse_ledger.py"
+      },
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/test_reuse_ledger.py.proof.json": {
+        "actual_sha256": "7791ca3f5076782fe2e29eee4103b566b58a687a4fa63f389836517f66172992",
+        "expected_sha256": "7791ca3f5076782fe2e29eee4103b566b58a687a4fa63f389836517f66172992",
+        "match": true,
+        "relative_path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/test_reuse_ledger.py.proof.json"
+      }
+    },
+    "protected_start": "33c40a315d3c231cb2021bd8e60f3261547efa62"
+  },
+  "test_matrix": {
+    "10_same_later_event_changed_prior_state": "PASS: test_identical_later_event_differs...",
+    "11_atomic_refusal_before_durable_mutation": "PASS: test_invalid_actor...",
+    "12_dormant_unexpressed_effect_stored": "PASS: test_positive_three_event_batch... event2",
+    "1_valid_actor_source_root": "PASS: test_positive_three_event_batch...",
+    "2_invalid_actor_foreign_root": "PASS: test_invalid_actor... + test_foreign_root...",
+    "3_wrong_clock": "PASS: test_invalid_actor... event_time=clock",
+    "4_bad_source_version_hash": "PASS: test_invalid_actor..., test_foreign_root..., test_middle_rule_version...",
+    "5_missing_scientific_rule": "PASS: test_production_zero_positive_guard... (production DENY_ZERO_EFFECT; B1 test-only rule is explicit)",
+    "6_test_only_positive_state_effect": "PASS: test_positive_three_event_batch...",
+    "7_production_positive_registry_denies": "PASS: test_production_zero_positive_guard...",
+    "8_state_cold_reopening": "PASS: test_positive_three_event_batch... reopened section",
+    "9_later_first_consumer_reads_state": "PASS: test_positive_three_event_batch... records[2]",
+    "operation_ambiguity_no_duplicate": "PASS: test_operation_idempotency...",
+    "source_severance_exact_restore": "PASS: test_mediator_severance... + test_foreign_root..."
+  }
+}

@@ -1,0 +1,57 @@
+== exact subject E1 tree ==
+5af145f2b0192636aba7adc6944813ef4fb703a5
+== startup E1 tree ==
+5af145f2b0192636aba7adc6944813ef4fb703a5
+== P2Owner hash ==
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LC_ALL = "C.UTF-8",
+	LC_CTYPE = "C.UTF-8",
+	LANG = "C.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0  WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py
+== P2Owner snapshot (no psych rows) ==
+    63	    def snapshot(self) -> StateIdentity:
+    64	        if self.source_ref != "P2_INPUT:" + digest({"case": self.case, "source": self.source}):
+    65	            raise RecursionRefusal("P2_INPUT_SOURCE_MUTATED")
+    66	        s = self.fanin.session
+    67	        verified = s.verify()
+    68	        if not verified.get("ok"):
+    69	            raise RecursionRefusal("P2_SOURCE_OR_STATE_VERIFICATION_FAILED")
+    70	        material = {
+    71	            "world": vars(s.world()),
+    72	            "events": s.read_events(),
+    73	            "intervals": s.read_interval_states(),
+    74	            "encounters": s.read_encounters(),
+    75	        }
+    76	        return StateIdentity(self.fanin.root_hash, self.actor, s.branch_id,
+    77	                             s.clock(), digest(material))
+== P2Owner consequence (MISSING_RULE) ==
+   262	        after = self.snapshot()
+   263	        consequence = {
+   264	            "grade": self.grade,
+   265	            "owner_state_changed": expected.state_hash != after.state_hash,
+   266	            "material_state_changed": material_before != detached(s.world().actor_state),
+   267	            "interval": detached(interval_result),
+   268	            "immediate_response": observation["c9"],
+   269	            "durable_psychological_transition": "MISSING_RULE",
+   270	            "independent_B": "CONTROLLED_SOURCEFREE_PARTICIPANT_ONLY",
+   271	        }
+   272	        result = RealizedEvent(
+   273	            operation_id, proposal_hash, expected, after, "REALIZED",
+   274	            {"event": detached(read), "interval": detached(interval_result)},
+   275	            self.actor_experience(read, after_clock=expected.clock), consequence,
+   276	            (self.source_ref, read["e1_event_hash"]), "P2_EVENT:" + read["e1_event_hash"],
+== B1 adapter imports ==
+12:import fcntl
+13:import hashlib
+14:import importlib.util
+15:import json
+16:import os
+18:import sys
+31:from developmental_recursion.contracts import (  # noqa: E402
+== B1 state schema keys (source) ==
+118:    return dict(schema=SCHEMA, actor_id='child', project=project,
+125:                middle=[], responses=[], transitions=[])
+218:    return sealed(dict(schema=SCHEMA, actor_id=state['actor_id'], event_ref=event['hash'],
