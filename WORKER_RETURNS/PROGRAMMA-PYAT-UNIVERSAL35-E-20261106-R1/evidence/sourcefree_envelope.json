@@ -1,0 +1,399 @@
+{
+  "fact": {
+    "authority_snapshot_refs": [
+      {
+        "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+        "authority_id": "AUTH-source",
+        "authority_version": "1.0.0"
+      }
+    ],
+    "content_hash": "9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887",
+    "dependency_refs": [
+      {
+        "content_hash": "75212e0562cae7bb54430a796584abf863280e6f5da0d61886c19208db16890b",
+        "kind": "C11_RELEASE",
+        "object_id": "urn:test:gt12c:r5"
+      },
+      {
+        "content_hash": "ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b"
+      },
+      {
+        "content_hash": "79a6115721d8a4df252459c71e1e3a30e2ac6827a7523739dfd1e8fe7b35ab68",
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:test:gt12c:fact-replay"
+      },
+      {
+        "content_hash": "2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+        "kind": "PREDICATE",
+        "object_id": "urn:test:gt12c:ALL-RISK-MEMBERS"
+      },
+      {
+        "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+        "kind": "UNIVERSE",
+        "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+      }
+    ],
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887",
+    "producer_replay_locator_or_reference_root": {
+      "content_hash": "79a6115721d8a4df252459c71e1e3a30e2ac6827a7523739dfd1e8fe7b35ab68",
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:test:gt12c:fact-replay"
+    },
+    "schema_id": "EmpiricalFact",
+    "schema_version": "1.0.0",
+    "semantic_fields": {
+      "condition_predicate_ref": {
+        "content_hash": "2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+        "kind": "PREDICATE",
+        "object_id": "urn:test:gt12c:ALL-RISK-MEMBERS"
+      },
+      "empirical_query_spec_ref": {
+        "content_hash": "ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b"
+      },
+      "empirical_universe_refs": [
+        {
+          "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+          "kind": "UNIVERSE",
+          "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+        }
+      ],
+      "execution_detail": "bounded GT12-C test fixture",
+      "measure_basis_ref": {
+        "content_hash": "4393dbeeeae411efdf14fa5c006494f925350d098bad6f8fcce4b153cbdd7c5d",
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:gt12c:RAW"
+      },
+      "measure_kind": "RAW",
+      "query_execution_contract_id": "PRE553_I03_QUERY_EXECUTION@TEST",
+      "raw_denominator_support": 6,
+      "raw_numerator_support": 6,
+      "raw_resolved_target_support": 6,
+      "replay_ref": {
+        "content_hash": "79a6115721d8a4df252459c71e1e3a30e2ac6827a7523739dfd1e8fe7b35ab68",
+        "kind": "PRE553_I03_QUERY_REPLAY",
+        "object_id": "urn:test:gt12c:fact-replay"
+      },
+      "response_state_semantics_ref": {
+        "content_hash": "96b6c44a5c4f6dea9b9f8120be8626b728362509502bfb6149bae8c0d8dfe9a7",
+        "kind": "RESPONSE_STATE_SEMANTICS",
+        "object_id": "urn:test:gt12c:Q86-SOURCE-NATIVE"
+      },
+      "risk_set_ref": {
+        "content_hash": "13eae9c8c13144b7d5760f80e8dc0399dd7d117d04fb9a29598ffb7347d24003",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:gt12c:FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+      },
+      "risk_set_type": "COMMON_ELIGIBLE_RISK_SET",
+      "source_empirical_provenance_refs": [
+        {
+          "content_hash": "75212e0562cae7bb54430a796584abf863280e6f5da0d61886c19208db16890b",
+          "kind": "C11_RELEASE",
+          "object_id": "urn:test:gt12c:r5"
+        },
+        {
+          "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+          "kind": "UNIVERSE",
+          "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+        }
+      ],
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "target_domain_identity": "a4e148d92dd407d6dd03fb4538c93b30acb808f535cb05ef21f420937a9a813e",
+      "target_topology": {
+        "arity": 2,
+        "complete_cell_semantic_projection": [
+          {
+            "cell": [
+              "0",
+              "1"
+            ],
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "0",
+              "2"
+            ],
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 1,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "0",
+              "9"
+            ],
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "raw_numerator_support": 0,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "1",
+              "1"
+            ],
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 1,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "1",
+              "2"
+            ],
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "raw_numerator_support": 0,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "1",
+              "9"
+            ],
+            "cell_state": "OBSERVED_POSITIVE",
+            "raw_numerator_support": 2,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "9",
+              "1"
+            ],
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "raw_numerator_support": 0,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "9",
+              "2"
+            ],
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "raw_numerator_support": 0,
+            "weighted_numerator_support_if_authorized": null
+          },
+          {
+            "cell": [
+              "9",
+              "9"
+            ],
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "raw_numerator_support": 0,
+            "weighted_numerator_support_if_authorized": null
+          }
+        ],
+        "joint_order_semantics": "SEMANTIC_ORDERED",
+        "target_domain_identity": "a4e148d92dd407d6dd03fb4538c93b30acb808f535cb05ef21f420937a9a813e"
+      },
+      "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
+      "weighted_denominator_support_if_authorized": null,
+      "weighted_numerator_support_if_authorized": null
+    },
+    "typed_state": "SUPPORTED"
+  },
+  "grade": "TEST_ONLY_SOURCEFREE",
+  "permissions": {
+    "producer_permission_ceiling": [
+      "FIELD_FORGE_RELATION_PRODUCTION"
+    ]
+  },
+  "query": {
+    "authority_snapshot_refs": [
+      {
+        "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+        "authority_id": "AUTH-source",
+        "authority_version": "1.0.0"
+      }
+    ],
+    "content_hash": "ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+    "dependency_refs": [
+      {
+        "content_hash": "2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+        "kind": "PREDICATE",
+        "object_id": "urn:test:gt12c:ALL-RISK-MEMBERS"
+      }
+    ],
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+    "producer_replay_locator_or_reference_root": {
+      "content_hash": "1f1d229db92cb1519647d13ce087fa67e138c62092ef08154369833baece3c75",
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:gt12c:query"
+    },
+    "schema_id": "EmpiricalQuerySpec",
+    "schema_version": "1.0.0",
+    "semantic_fields": {
+      "condition_predicate_ref": {
+        "content_hash": "2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+        "kind": "PREDICATE",
+        "object_id": "urn:test:gt12c:ALL-RISK-MEMBERS"
+      },
+      "empirical_universe_refs": [
+        {
+          "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+          "kind": "UNIVERSE",
+          "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+        }
+      ],
+      "measure_basis_ref": {
+        "content_hash": "4393dbeeeae411efdf14fa5c006494f925350d098bad6f8fcce4b153cbdd7c5d",
+        "kind": "MEASURE_BASIS",
+        "object_id": "urn:test:gt12c:RAW"
+      },
+      "query_authority_refs": [
+        {
+          "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+          "authority_id": "AUTH-source",
+          "authority_version": "1.0.0"
+        }
+      ],
+      "requested_output_grain": {
+        "measure_kind": "RAW",
+        "response_state_semantics_ref": {
+          "content_hash": "96b6c44a5c4f6dea9b9f8120be8626b728362509502bfb6149bae8c0d8dfe9a7",
+          "kind": "RESPONSE_STATE_SEMANTICS",
+          "object_id": "urn:test:gt12c:Q86-SOURCE-NATIVE"
+        },
+        "risk_set_type": "COMMON_ELIGIBLE_RISK_SET",
+        "source_scope_mode": "SINGLE_UNIVERSE",
+        "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      "risk_set_ref": {
+        "content_hash": "13eae9c8c13144b7d5760f80e8dc0399dd7d117d04fb9a29598ffb7347d24003",
+        "kind": "RISK_SET",
+        "object_id": "urn:test:gt12c:FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+      },
+      "scope_refs": [
+        {
+          "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+          "kind": "UNIVERSE",
+          "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+        }
+      ],
+      "target_arity_and_topology": {
+        "arity": 2,
+        "components": [
+          {
+            "domain": [
+              "0",
+              "1",
+              "9"
+            ],
+            "included_states": [
+              "SUBSTANTIVE_RESPONSE",
+              "MISSING",
+              "DK",
+              "REFUSAL"
+            ],
+            "response_semantic_authority_refs": [
+              {
+                "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+                "authority_id": "AUTH-source",
+                "authority_version": "1.0.0"
+              }
+            ],
+            "target_domain_replay_ref": {
+              "content_hash": "c63663b2793834c90bbd1d9c4a7c594379e6587549fa276161f4f2e41fd25930",
+              "kind": "TARGET_DOMAIN",
+              "object_id": "urn:test:gt12c:q86b-domain"
+            },
+            "target_ref": {
+              "content_hash": "c6641ad4c68c34a4a2adcf0228b1c2da66394ddaf06ffc6c7c210935ecb9b8c5",
+              "kind": "QUESTION",
+              "object_id": "urn:test:gt12c:Q86B"
+            },
+            "topology": "SCALAR_SINGULAR",
+            "topology_authority_refs": [
+              {
+                "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+                "authority_id": "AUTH-source",
+                "authority_version": "1.0.0"
+              }
+            ]
+          },
+          {
+            "domain": [
+              "1",
+              "2",
+              "9"
+            ],
+            "included_states": [
+              "SUBSTANTIVE_RESPONSE",
+              "MISSING",
+              "DK",
+              "REFUSAL"
+            ],
+            "response_semantic_authority_refs": [
+              {
+                "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+                "authority_id": "AUTH-source",
+                "authority_version": "1.0.0"
+              }
+            ],
+            "target_domain_replay_ref": {
+              "content_hash": "c5d6da82ae34528842a0a9f2741ada9d6702c370f1c79864683d4ed408ef1e92",
+              "kind": "TARGET_DOMAIN",
+              "object_id": "urn:test:gt12c:q86a-domain"
+            },
+            "target_ref": {
+              "content_hash": "dce75d8fc6dd639a28783dae2ba6cf074c6d74e4c5ab074bdfb11f2bed78fd17",
+              "kind": "QUESTION",
+              "object_id": "urn:test:gt12c:Q86A"
+            },
+            "topology": "SCALAR_SINGULAR",
+            "topology_authority_refs": [
+              {
+                "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+                "authority_id": "AUTH-source",
+                "authority_version": "1.0.0"
+              }
+            ]
+          }
+        ],
+        "joint_order_semantics": "SEMANTIC_ORDERED"
+      },
+      "target_refs": [
+        {
+          "content_hash": "c6641ad4c68c34a4a2adcf0228b1c2da66394ddaf06ffc6c7c210935ecb9b8c5",
+          "kind": "QUESTION",
+          "object_id": "urn:test:gt12c:Q86B"
+        },
+        {
+          "content_hash": "dce75d8fc6dd639a28783dae2ba6cf074c6d74e4c5ab074bdfb11f2bed78fd17",
+          "kind": "QUESTION",
+          "object_id": "urn:test:gt12c:Q86A"
+        }
+      ]
+    },
+    "typed_state": "QUERY_AUTHORIZED_RESOLVABLE"
+  },
+  "replay": {
+    "fact_replay_ref": {
+      "content_hash": "79a6115721d8a4df252459c71e1e3a30e2ac6827a7523739dfd1e8fe7b35ab68",
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:test:gt12c:fact-replay"
+    },
+    "provenance_refs": [
+      {
+        "content_hash": "75212e0562cae7bb54430a796584abf863280e6f5da0d61886c19208db16890b",
+        "kind": "C11_RELEASE",
+        "object_id": "urn:test:gt12c:r5"
+      },
+      {
+        "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+        "kind": "UNIVERSE",
+        "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+      }
+    ],
+    "query_replay_root": {
+      "content_hash": "1f1d229db92cb1519647d13ce087fa67e138c62092ef08154369833baece3c75",
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:gt12c:query"
+    }
+  },
+  "schema": "PRE553_FIELD_FORGE_EMPIRICAL_ENVELOPE@1"
+}

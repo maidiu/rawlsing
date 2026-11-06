@@ -1,18 +1,17 @@
 {
   "all_pass": true,
   "commands": {
+    "alias": "python3 <return>/run_ingress.py envelope --envelope <return>/evidence/sourcefree_envelope.json",
+    "cold": "python3 -m rawlsing_next.pre553_field_forge_empirical_ingress --envelope <return>/evidence/sourcefree_envelope.json",
     "ingress": "python3 -m pytest -q -p no:cacheprovider --junitxml=<return>/evidence/junit_ingress.xml rawlsing_next/tests/test_pre553_field_forge_empirical_ingress.py",
-    "old_red": "old 08138f52 five-case probe",
-    "regression": "python3 -m pytest -q -p no:cacheprovider --junitxml=<return>/evidence/junit_regression.xml rawlsing_next/tests/test_field_forge_conditional_support.py rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py",
-    "repaired_probe": "repaired five-case refusal",
-    "selftest": "python3 <return>/run_ingress.py selftest"
+    "regression": "python3 -m pytest -q -p no:cacheprovider --junitxml=<return>/evidence/junit_regression.xml rawlsing_next/tests/test_field_forge_conditional_support.py rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py"
   },
   "results": {
     "junit_ingress.xml": {
       "errors": 0,
       "failures": 0,
       "skipped": 0,
-      "tests": 16
+      "tests": 20
     },
     "junit_regression.xml": {
       "errors": 0,

@@ -5,8 +5,22 @@
     "rawlsing_next.pre553_structural_admission (not called for grant)"
   ],
   "callable": "rawlsing_next.pre553_field_forge_empirical_ingress.ingest_empirical_fact",
+  "cold_command": "python3 -m rawlsing_next.pre553_field_forge_empirical_ingress --envelope <path> [--out <path>]",
+  "cold_command_alias": "python3 WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-E-20261106-R1/run_ingress.py envelope --envelope <path>",
   "command": "python3 WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-E-20261106-R1/run_ingress.py selftest",
   "d_authentic_products": "NOT_RECEIVED_BY_E",
+  "envelope_fields": [
+    "schema",
+    "grade",
+    "fact.as_dict()",
+    "query.as_dict()",
+    "replay.fact_replay_ref",
+    "replay.query_replay_root",
+    "replay.provenance_refs",
+    "permissions.producer_permission_ceiling",
+    "permissions.relation_permission_ceiling optional"
+  ],
+  "envelope_schema": "PRE553_FIELD_FORGE_EMPIRICAL_ENVELOPE@1",
   "exact_linkage_required": {
     "condition_predicate_ref": "fact == query",
     "measure_basis_ref": "fact == query",

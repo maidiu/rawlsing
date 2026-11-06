@@ -1,0 +1,210 @@
+{
+  "bridge_evidence_ref": null,
+  "bridge_refusal": "GT12CToDBridgeError:frozen risk-set exact identity mismatch",
+  "bridge_state": "BRIDGE_TYPED_REFUSAL",
+  "conditioner_ref": {
+    "content_hash": "c6641ad4c68c34a4a2adcf0228b1c2da66394ddaf06ffc6c7c210935ecb9b8c5",
+    "kind": "QUESTION",
+    "object_id": "urn:test:gt12c:Q86B"
+  },
+  "contract_id": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS@1.0.0",
+  "envelope_grade": "TEST_ONLY_SOURCEFREE",
+  "fact_ref": {
+    "content_hash": "9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887",
+    "kind": "EmpiricalFact@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887"
+  },
+  "profile": {
+    "anti_inferences": [
+      "CONDITIONER != CAUSE",
+      "TARGET != EFFECT",
+      "CONDITIONAL_SUPPORT_PROFILE != CONDITIONAL_REDISTRIBUTION_MECHANISM",
+      "CONDITIONAL_SUPPORT_PROFILE != PRESSURE_PATHWAY",
+      "CONDITIONAL_SUPPORT_PROFILE != STRUCTURAL_MECHANISM",
+      "POPULATION_FACT != ACTOR_FACT"
+    ],
+    "conditional_count_profile": [
+      {
+        "condition_denominator_support": 3,
+        "condition_state": "0",
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 2,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 1,
+            "target_state": "2"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "9"
+          }
+        ]
+      },
+      {
+        "condition_denominator_support": 3,
+        "condition_state": "1",
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 1,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "2"
+          },
+          {
+            "cell_state": "OBSERVED_POSITIVE",
+            "joint_support_count": 2,
+            "target_state": "9"
+          }
+        ]
+      },
+      {
+        "condition_denominator_support": 0,
+        "condition_state": "9",
+        "target_counts": [
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "1"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "2"
+          },
+          {
+            "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+            "joint_support_count": 0,
+            "target_state": "9"
+          }
+        ]
+      }
+    ],
+    "conditioner_domain": [
+      "0",
+      "1",
+      "9"
+    ],
+    "content_hash": "2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855",
+    "empirical_universe_refs": [
+      {
+        "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+        "kind": "UNIVERSE",
+        "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+      }
+    ],
+    "information_loss": "NONE__REFERENCE_PRESERVING",
+    "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855",
+    "participant_cardinality": 2,
+    "participant_role_order": [
+      "CONDITIONER",
+      "TARGET"
+    ],
+    "producer_authority_refs": [
+      {
+        "authority_content_hash": "9e5027c17d025f929765cb41de4db272d408bf58c400506fa3beab103e160ce9",
+        "authority_id": "AUTH-source",
+        "authority_version": "1.0.0"
+      }
+    ],
+    "producer_fact_ref": {
+      "content_hash": "9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887"
+    },
+    "producer_permission_ceiling": [
+      "FIELD_FORGE_RELATION_PRODUCTION"
+    ],
+    "producer_provenance_refs": [
+      {
+        "content_hash": "75212e0562cae7bb54430a796584abf863280e6f5da0d61886c19208db16890b",
+        "kind": "C11_RELEASE",
+        "object_id": "urn:test:gt12c:r5"
+      },
+      {
+        "content_hash": "9f3968fa477fb465dea3b743fb6fce6f58e8ec89c7fdacb1cf42eb6aa692e340",
+        "kind": "UNIVERSE",
+        "object_id": "urn:test:gt12c:AFROBAROMETER-R5"
+      }
+    ],
+    "producer_query_ref": {
+      "content_hash": "ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b"
+    },
+    "producer_replay_ref": {
+      "content_hash": "79a6115721d8a4df252459c71e1e3a30e2ac6827a7523739dfd1e8fe7b35ab68",
+      "kind": "PRE553_I03_QUERY_REPLAY",
+      "object_id": "urn:test:gt12c:fact-replay"
+    },
+    "producer_state_blocking": false,
+    "relation_family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "relation_permission_ceiling": [
+      "FIELD_FORGE_RELATION_PRODUCTION"
+    ],
+    "relation_semantics": "EXACT_CONDITIONAL_SUPPORT_COUNT_PROFILE_WITHIN_SCOPE",
+    "risk_set_ref": {
+      "content_hash": "13eae9c8c13144b7d5760f80e8dc0399dd7d117d04fb9a29598ffb7347d24003",
+      "kind": "RISK_SET",
+      "object_id": "urn:test:gt12c:FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+    },
+    "roles": {
+      "CONDITIONER": {
+        "ref": {
+          "content_hash": "c6641ad4c68c34a4a2adcf0228b1c2da66394ddaf06ffc6c7c210935ecb9b8c5",
+          "kind": "QUESTION",
+          "object_id": "urn:test:gt12c:Q86B"
+        },
+        "source_native_variable": "Q86B"
+      },
+      "TARGET": {
+        "ref": {
+          "content_hash": "dce75d8fc6dd639a28783dae2ba6cf074c6d74e4c5ab074bdfb11f2bed78fd17",
+          "kind": "QUESTION",
+          "object_id": "urn:test:gt12c:Q86A"
+        },
+        "source_native_variable": "Q86A"
+      }
+    },
+    "semantic_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+    "state_order_semantics": "IDENTITY_ONLY__NO_ORDINAL_OR_METRIC_MEANING",
+    "target_domain": [
+      "1",
+      "2",
+      "9"
+    ],
+    "target_domain_identity": "a4e148d92dd407d6dd03fb4538c93b30acb808f535cb05ef21f420937a9a813e",
+    "typed_state": "SUPPORTED"
+  },
+  "query_ref": {
+    "content_hash": "ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+    "kind": "EmpiricalQuerySpec@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b"
+  },
+  "refusal_code": "",
+  "refusal_detail": "",
+  "relation_family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+  "relation_ref": {
+    "content_hash": "2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855",
+    "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855"
+  },
+  "relation_typed_state": "SUPPORTED",
+  "schema": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1",
+  "state": "CONDITIONAL_SUPPORT_PROFILE",
+  "structural_grant": false,
+  "structural_state": "WITHHELD__NO_STRUCTURAL_ADMISSION_GRANT",
+  "target_ref": {
+    "content_hash": "dce75d8fc6dd639a28783dae2ba6cf074c6d74e4c5ab074bdfb11f2bed78fd17",
+    "kind": "QUESTION",
+    "object_id": "urn:test:gt12c:Q86A"
+  }
+}

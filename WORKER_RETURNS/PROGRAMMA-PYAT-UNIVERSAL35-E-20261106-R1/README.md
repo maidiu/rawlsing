@@ -43,3 +43,14 @@ Missing/None/mismatch is a typed ingress error. See `revisions/r1/00_RETURN.md`.
 D must supply exact current `EmpiricalFact@1.0.0` + `EmpiricalQuerySpec@1.0.0`
 objects matching `D_INPUT_CONTRACT.json`. Authentic D products are
 `NOT_RECEIVED_BY_E`; this return contains no original response bytes.
+
+## Cold envelope command (r2)
+
+```text
+python3 -m rawlsing_next.pre553_field_forge_empirical_ingress \
+  --envelope <exact-envelope.json> [--out <result.json>]
+```
+
+The envelope schema is `PRE553_FIELD_FORGE_EMPIRICAL_ENVELOPE@1`; see
+`INTERFACE.json` and `D_INPUT_CONTRACT.json`. It is a thin serializer around the
+existing accepted `ingest_empirical_fact` owner, not a second engine.

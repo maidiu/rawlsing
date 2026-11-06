@@ -1,35 +1,31 @@
 {
+  "adapter": {
+    "changed_first_denominator": 4,
+    "changed_relation_differs": true,
+    "changed_state": "CONDITIONAL_SUPPORT_PROFILE",
+    "direct_equals_subprocess": true,
+    "missing_replay_error": "envelope replay must be a mapping",
+    "missing_replay_state": "ENVELOPE_ERROR",
+    "positive_state": "CONDITIONAL_SUPPORT_PROFILE",
+    "positive_structural_grant": false,
+    "schema": "E_ADAPTER_EVIDENCE@1",
+    "sourcefree": true,
+    "weighted_refusal": "FIELD_FORGE_RELATION_TYPED_REFUSAL",
+    "weighted_state": "TYPED_REFUSAL"
+  },
   "base": "d119045f4169439b4ba02d0870bc328f8beb3aaa",
   "d_authentic_bind": "NOT_RECEIVED_BY_E",
-  "five_linkage_cases_refused": true,
   "independent_rereview": "NOT_RUN",
-  "old_head_red_reproduced": true,
-  "prior_reviewer_verdict": "REVISE_MATERIAL_NARROW",
-  "result": "PASS_AUTHOR_FOCUSED_R1",
+  "prior_accepted_repair": "7d1aadfd4f655930ca2e65ea64cfa3df180a5f7b",
+  "result": "PASS_AUTHOR_FOCUSED_R2",
   "schema": "SOROK_E_FOCUSED_RESULT@1",
-  "selftest": {
-    "gt2_two_target_existing_ff_profile": {
-      "bridge_state": "BRIDGE_TYPED_REFUSAL",
-      "refusal_code": "",
-      "relation_typed_state": "SUPPORTED",
-      "state": "CONDITIONAL_SUPPORT_PROFILE",
-      "structural_grant": false
-    },
-    "n10e_current_i03_one_target_ff_refusal": {
-      "bridge_state": "BRIDGE_TYPED_REFUSAL",
-      "refusal_code": "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
-      "relation_typed_state": null,
-      "state": "TYPED_REFUSAL",
-      "structural_grant": false
-    }
-  },
   "structural_grant": false,
   "tests": {
     "junit_ingress.xml": {
       "errors": 0,
       "failures": 0,
       "skipped": 0,
-      "tests": 16
+      "tests": 20
     },
     "junit_regression.xml": {
       "errors": 0,

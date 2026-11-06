@@ -83,10 +83,20 @@ def main(argv=None) -> int:
     sub.add_parser("abi", help="print the frozen ingress ABI")
     selftest = sub.add_parser("selftest", help="run sourcefree current-owner cases")
     selftest.add_argument("--case", choices=("all", "gt2", "n10e"), default="all")
+    envelope = sub.add_parser("envelope", help="consume one exact empirical JSON envelope")
+    envelope.add_argument("--envelope", required=True)
+    envelope.add_argument("--out", default=None)
     args = parser.parse_args(argv)
     if args.command == "abi":
         print(INTERFACE.read_text())
         return 0
+    if args.command == "envelope":
+        from rawlsing_next.pre553_field_forge_empirical_ingress import main as ingress_main
+
+        forwarded = ["--envelope", args.envelope]
+        if args.out:
+            forwarded.extend(["--out", args.out])
+        return ingress_main(forwarded)
     cases = {}
     if args.case in {"all", "gt2"}:
         cases["gt2_two_target_existing_ff_profile"] = _gt2_case()

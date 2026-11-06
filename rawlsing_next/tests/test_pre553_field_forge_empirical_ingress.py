@@ -1,6 +1,11 @@
 """Focused ingress tests: current empirical fact -> existing FIELD FORGE owner."""
 from __future__ import annotations
 
+import json
+import subprocess
+import sys
+from pathlib import Path
+
 import pytest
 
 from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef
@@ -11,7 +16,9 @@ from rawlsing_next.pre553_field_forge_empirical_ingress import (
     REFUSAL_TWO_TARGET_REQUIRED,
     STATE_CONDITIONAL_SUPPORT,
     STATE_TYPED_REFUSAL,
+    envelope_material,
     ingest_empirical_fact,
+    ingest_envelope,
 )
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_possibility_provider import (
@@ -327,3 +334,102 @@ def test_fact_query_semantic_linkage_mismatch_is_typed_ingress_error(kwargs, det
             fact=forged, query=query, conditioner_ref=conditioner, target_ref=target
         )
     assert detail in str(exc.value)
+
+
+def _envelope(fact, query):
+    return envelope_material(
+        fact=fact, query=query,
+        producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",),
+        grade="TEST_ONLY_SOURCEFREE",
+    )
+
+
+def test_envelope_direct_accessor_matches_existing_ingress():
+    query, fact, _, _ = _base()
+    direct = ingest_empirical_fact(
+        fact=fact, query=query,
+        producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",),
+    ).material()
+    envelope = _envelope(fact, query)
+    out = ingest_envelope(envelope)
+    assert out["envelope_grade"] == "TEST_ONLY_SOURCEFREE"
+    assert out["state"] == STATE_CONDITIONAL_SUPPORT
+    assert out["fact_ref"] == direct["fact_ref"]
+    assert out["query_ref"] == direct["query_ref"]
+    assert out["relation_ref"] == direct["relation_ref"]
+    assert out["structural_grant"] is False
+    assert out["profile"]["conditional_count_profile"] == [
+        {"condition_state": "0", "condition_denominator_support": 3,
+         "target_counts": [
+             {"target_state": "1", "joint_support_count": 2, "cell_state": "OBSERVED_POSITIVE"},
+             {"target_state": "2", "joint_support_count": 1, "cell_state": "OBSERVED_POSITIVE"},
+             {"target_state": "9", "joint_support_count": 0, "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+         ]},
+        {"condition_state": "1", "condition_denominator_support": 3,
+         "target_counts": [
+             {"target_state": "1", "joint_support_count": 1, "cell_state": "OBSERVED_POSITIVE"},
+             {"target_state": "2", "joint_support_count": 0, "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+             {"target_state": "9", "joint_support_count": 2, "cell_state": "OBSERVED_POSITIVE"},
+         ]},
+        {"condition_state": "9", "condition_denominator_support": 0, "target_counts": [
+             {"target_state": "1", "joint_support_count": 0, "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+             {"target_state": "2", "joint_support_count": 0, "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+             {"target_state": "9", "joint_support_count": 0, "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"},
+         ]},
+    ]
+
+
+def test_envelope_subprocess_matches_direct_output(tmp_path):
+    query, fact, _, _ = _base()
+    envelope = _envelope(fact, query)
+    path = tmp_path / "envelope.json"
+    path.write_text(json.dumps(envelope), encoding="utf-8")
+    direct = ingest_envelope(envelope)
+    proc = subprocess.run(
+        [sys.executable, "-B", "-m", "rawlsing_next.pre553_field_forge_empirical_ingress",
+         "--envelope", str(path)],
+        cwd=str(Path(__file__).resolve().parents[2]),
+        capture_output=True, text=True,
+    )
+    assert proc.returncode == 0, proc.stderr
+    assert json.loads(proc.stdout) == direct
+
+
+def test_envelope_changed_counts_change_output():
+    query, fact, _, _ = _base()
+    base = ingest_envelope(_envelope(fact, query))
+    cells = [dict(cell) for cell in fact.target_topology["complete_cell_semantic_projection"]]
+    for cell in cells:
+        if cell["cell"] == ["0", "1"]:
+            cell["raw_numerator_support"] = 3
+    changed = _fact_variant(
+        fact, cells=cells, numerator=fact.raw_numerator_support + 1,
+        denominator=fact.raw_denominator_support + 1,
+    )
+    out = ingest_envelope(_envelope(changed, query))
+    assert out["state"] == STATE_CONDITIONAL_SUPPORT
+    assert out["profile"]["conditional_count_profile"][0]["condition_denominator_support"] == 4
+    assert out["profile"]["conditional_count_profile"][0]["target_counts"][0]["joint_support_count"] == 3
+    assert out["relation_ref"] != base["relation_ref"]
+
+
+def test_envelope_contradiction_and_weighted_refusal_preserved():
+    query, fact, _, _ = _base()
+    bad_condition = _fact_variant(
+        fact, condition_predicate_ref=ExactRef("PREDICATE", "urn:test:other-condition", "b" * 64)
+    )
+    with pytest.raises(Exception, match="condition predicate"):
+        ingest_envelope(_envelope(bad_condition, query))
+    missing_replay = _envelope(fact, query)
+    missing_replay.pop("replay")
+    with pytest.raises(Exception, match="replay"):
+        ingest_envelope(missing_replay)
+    missing_permissions = _envelope(fact, query)
+    missing_permissions.pop("permissions")
+    with pytest.raises(Exception, match="permissions"):
+        ingest_envelope(missing_permissions)
+    weighted = _fact_variant(fact, weighted_numerator=fact.raw_numerator_support)
+    out = ingest_envelope(_envelope(weighted, query))
+    assert out["state"] == STATE_TYPED_REFUSAL
+    assert out["refusal_code"] == REFUSAL_RELATION
+    assert out["structural_grant"] is False
