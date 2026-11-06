@@ -73,3 +73,8 @@ Fanin579afc5fe63ff305ec49d4c8d42abc8475acf8bb remote-verified, six author tests5
 ### Guide selective receiving candidate returned
 
 `114d142f7fa34917892aa9480f0cfe695dc32fcd` on `codex/sorok-programma-selective-receiving-20261105-r1` remote-verified against protected8ffec40a. Existing nine guide files only,25stage rows/10seams, canonical/JSON/diff checks PASS attributed to worker. Not adopted/merged. Worker resumed as `sorok-programma-fanin-currentness-20261105-r1` to reconcile newer fanin579af returned candidate and standalone interval auto-help defect on both source and receiving guide branches before PR creation. Other active lanes: independent interval/later review and exact interval-attempt repair. No extra source/science/merge grant.
+
+
+### Exact interval attempt repair received
+
+Remote-verified repaired interval head7a256ed4873155dfad86faf2464110ee6f1e2ad4 (codedde8287a806a802cd8d6a3dc122870f8cf8c5c3a): author reports6focusedPASS; admit/continue now observation-only, explicit_do_help/CLI do-help separate. AUTHOR_TESTED_REPAIR, not independentaccepted. Original bdad failure preserved. Fan-in original author resumed exact existing branch as `sorok-p2-fanin-interval-repair-intake-20261105-r1` to refresh repaired imported bytes, actual importer/source manifest and affected boundary tests. Existing independent review still addresses original cuts, not thisrepair/fanin. Guide-currentness worker active against its declared cut; next coherent qualified intake must reconcile repair and final fanin, not silently inherit old acceptance. No protected writes/newrights.
