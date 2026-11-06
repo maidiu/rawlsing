@@ -49,7 +49,7 @@ python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-R
 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py
 cd WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1
 python3 -B -m pytest -q -p no:cacheprovider test_bfirst.py
-cd ../../SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe
+cd ../SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe
 python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py
 python3 -B run_probe.py
 ```
