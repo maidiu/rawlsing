@@ -10683,12 +10683,12 @@
       "accepted": true
     },
     "product_fanin": {
-      "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED__FINAL_CUT_CLOSURE_RUNNING__NOT_PROMOTED",
+      "status": "INDEPENDENT_ACCEPT_SCOPED_TEST_ONLY_FINAL4B2_READY_FOR_QUALIFIED_RECEIVING",
       "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
       "branch": "codex/sorok-p2-product-fanin-20261105-r1",
       "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
       "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1",
-      "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e preserved; no independent acceptance claimed for newer4b2",
+      "independent_review": "ACCEPT_SCOPED_TEST_ONLY4b2@81e5ed01e8ca2043599590dccf1c96c376249134",
       "accepted_exact_cut": {
         "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
         "verdict": "ACCEPT_SCOPED_TEST_ONLY",
@@ -10721,15 +10721,16 @@
         "prior_receiving": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS preserved",
         "limit": "declared guide b6d3f8d2 only; does not extend 25d acceptance or accept/promote 4b2; final cut closure and final receiving delta RUNNING"
       },
-      "accepted": false,
+      "accepted": true,
       "auto_ready": false,
       "pr699": {
         "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
         "state": "DRAFT_UNMERGED"
       },
       "pr697": {
-        "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
-        "state": "OPEN_UNMERGED"
+        "head": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+        "state": "OPEN_READY_UNMERGED",
+        "independent_acceptance": "81e5ed01e8ca2043599590dccf1c96c376249134"
       },
       "sources": [
         {
@@ -10760,15 +10761,35 @@
           "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
         }
       ],
-      "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; engineering receipt a61dab covers 4b2 + declared guide b6d3f8d2 only and is not independent acceptance; do not promote 4b2. Integrated 25d accept332e preserved."
+      "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; engineering receipt a61dab covers 4b2 + declared guide b6d3f8d2 only and is not independent acceptance; do not promote 4b2. Integrated 25d accept332e preserved.",
+      "acceptance_scope": "Exact sourcefree integrated public path; not native/human/protected integration",
+      "final_exact_cut": {
+        "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+        "review": "81e5ed01e8ca2043599590dccf1c96c376249134",
+        "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+        "first_consumer": "run_fanin_cli.py -> P2ProductFanin -> actual S47/lifecycle/interval/later APIs",
+        "repair_review": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "receiving": "a61dab8343181b0975c76496d0007e2b3a92bba0",
+        "receiving_composite": "f5debb10c53b8e9a735f6fe1e1696bfbf46412fc",
+        "pr697": "OPEN_READY_UNMERGED_HEAD_4b2fed81c3f513eb4262ad5de277ce519c74c614",
+        "protected_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+        "protected_merge": false,
+        "native_science": false,
+        "human_validated": false,
+        "b_current_context": "HOLD_PRESERVED"
+      },
+      "final_receiving_job": "RETURNED_PASS_a61dab8343181b0975c76496d0007e2b3a92bba0",
+      "component_closure_job": "RETURNED_ACCEPT_3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+      "next_action": "Competent PRE-MAIN receiving owner verifies moving PR697/699 heads and explicit merge authority; no more causal repair/review for closed findings"
     },
     "pr699": {
       "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
       "state": "DRAFT_UNMERGED"
     },
     "pr697": {
-      "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
-      "state": "OPEN_UNMERGED"
+      "head": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+      "state": "OPEN_READY_UNMERGED",
+      "independent_acceptance": "81e5ed01e8ca2043599590dccf1c96c376249134"
     },
     "guide_integration": "ISOLATED_PENDING_INTEGRATION",
     "sources": [
@@ -10809,12 +10830,12 @@
     "record_effect": "Interval 76d5 and later b716 independently accepted scoped at 3e04b6c; old REVISE cuts preserved; 4b2 imports both exactly but final cut closure and receiving delta RUNNING; do not promote 4b2."
   },
   "hq_p2_product_fanin_20261105": {
-    "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED__FINAL_CUT_CLOSURE_RUNNING__NOT_PROMOTED",
+    "status": "INDEPENDENT_ACCEPT_SCOPED_TEST_ONLY_FINAL4B2_READY_FOR_QUALIFIED_RECEIVING",
     "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
     "branch": "codex/sorok-p2-product-fanin-20261105-r1",
     "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
     "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1",
-    "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e preserved; no independent acceptance claimed for newer4b2",
+    "independent_review": "ACCEPT_SCOPED_TEST_ONLY4b2@81e5ed01e8ca2043599590dccf1c96c376249134",
     "accepted_exact_cut": {
       "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
       "verdict": "ACCEPT_SCOPED_TEST_ONLY",
@@ -10847,15 +10868,16 @@
       "prior_receiving": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS preserved",
       "limit": "declared guide b6d3f8d2 only; does not extend 25d acceptance or accept/promote 4b2; final cut closure and final receiving delta RUNNING"
     },
-    "accepted": false,
+    "accepted": true,
     "auto_ready": false,
     "pr699": {
       "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
       "state": "DRAFT_UNMERGED"
     },
     "pr697": {
-      "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
-      "state": "OPEN_UNMERGED"
+      "head": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+      "state": "OPEN_READY_UNMERGED",
+      "independent_acceptance": "81e5ed01e8ca2043599590dccf1c96c376249134"
     },
     "sources": [
       {
@@ -10886,6 +10908,25 @@
         "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
       }
     ],
-    "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; engineering receipt a61dab covers 4b2 + declared guide b6d3f8d2 only and is not independent acceptance; do not promote 4b2. Integrated 25d accept332e preserved."
+    "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; engineering receipt a61dab covers 4b2 + declared guide b6d3f8d2 only and is not independent acceptance; do not promote 4b2. Integrated 25d accept332e preserved.",
+    "acceptance_scope": "Exact sourcefree integrated public path; not native/human/protected integration",
+    "final_exact_cut": {
+      "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+      "review": "81e5ed01e8ca2043599590dccf1c96c376249134",
+      "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+      "first_consumer": "run_fanin_cli.py -> P2ProductFanin -> actual S47/lifecycle/interval/later APIs",
+      "repair_review": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+      "receiving": "a61dab8343181b0975c76496d0007e2b3a92bba0",
+      "receiving_composite": "f5debb10c53b8e9a735f6fe1e1696bfbf46412fc",
+      "pr697": "OPEN_READY_UNMERGED_HEAD_4b2fed81c3f513eb4262ad5de277ce519c74c614",
+      "protected_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+      "protected_merge": false,
+      "native_science": false,
+      "human_validated": false,
+      "b_current_context": "HOLD_PRESERVED"
+    },
+    "final_receiving_job": "RETURNED_PASS_a61dab8343181b0975c76496d0007e2b3a92bba0",
+    "component_closure_job": "RETURNED_ACCEPT_3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+    "next_action": "Competent PRE-MAIN receiving owner verifies moving PR697/699 heads and explicit merge authority; no more causal repair/review for closed findings"
   }
 }
