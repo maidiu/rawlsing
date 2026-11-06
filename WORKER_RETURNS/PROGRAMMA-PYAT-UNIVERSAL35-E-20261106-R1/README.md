@@ -34,6 +34,10 @@ GT2-compatible fact yields the existing conditional support profile with withhel
 structural meaning; a current I03/N10E one-target fact yields the typed
 two-target refusal.
 
+r1 exact linkage: condition predicate, measure basis, response-state semantics,
+source scope and measure kind must equal the bound query before delegation.
+Missing/None/mismatch is a typed ingress error. See `revisions/r1/00_RETURN.md`.
+
 ## D binding
 
 D must supply exact current `EmpiricalFact@1.0.0` + `EmpiricalQuerySpec@1.0.0`

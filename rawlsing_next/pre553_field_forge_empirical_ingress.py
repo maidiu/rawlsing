@@ -91,6 +91,45 @@ def _exact_fact_query(fact: EmpiricalFact, query: EmpiricalQuerySpec) -> None:
         raise FieldForgeEmpiricalIngressError("query semantic identity mismatch")
     if exact_ref(fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref") != query.ref:
         raise FieldForgeEmpiricalIngressError("fact does not bind supplied query identity")
+    grain = query.requested_output_grain
+    if not isinstance(grain, Mapping):
+        raise FieldForgeEmpiricalIngressError("query requested_output_grain must be a mapping")
+    try:
+        fact_condition = exact_ref(fact.condition_predicate_ref, "fact.condition_predicate_ref")
+        query_condition = exact_ref(query.condition_predicate_ref, "query.condition_predicate_ref")
+    except Exception as exc:
+        raise FieldForgeEmpiricalIngressError("fact/query condition predicate identity missing or malformed") from exc
+    if fact_condition != query_condition:
+        raise FieldForgeEmpiricalIngressError("fact condition predicate does not bind query")
+    try:
+        fact_measure = exact_ref(fact.measure_basis_ref, "fact.measure_basis_ref")
+        query_measure = exact_ref(query.measure_basis_ref, "query.measure_basis_ref")
+    except Exception as exc:
+        raise FieldForgeEmpiricalIngressError("fact/query measure basis identity missing or malformed") from exc
+    if fact_measure != query_measure:
+        raise FieldForgeEmpiricalIngressError("fact measure basis does not bind query")
+    try:
+        fact_response = exact_ref(
+            fact.response_state_semantics_ref, "fact.response_state_semantics_ref"
+        )
+        query_response = exact_ref(
+            grain.get("response_state_semantics_ref"),
+            "query.requested_output_grain.response_state_semantics_ref",
+        )
+    except Exception as exc:
+        raise FieldForgeEmpiricalIngressError(
+            "fact/query response-state semantics identity missing or malformed"
+        ) from exc
+    if fact_response != query_response:
+        raise FieldForgeEmpiricalIngressError("fact response-state semantics do not bind query")
+    if not isinstance(fact.source_scope_mode, str) or not fact.source_scope_mode.strip():
+        raise FieldForgeEmpiricalIngressError("fact source_scope_mode missing")
+    if fact.source_scope_mode != grain.get("source_scope_mode"):
+        raise FieldForgeEmpiricalIngressError("fact source scope does not bind query")
+    if not isinstance(fact.measure_kind, str) or not fact.measure_kind.strip():
+        raise FieldForgeEmpiricalIngressError("fact measure_kind missing")
+    if fact.measure_kind != grain.get("measure_kind"):
+        raise FieldForgeEmpiricalIngressError("fact measure kind does not bind query")
 
 
 def ingest_empirical_fact(

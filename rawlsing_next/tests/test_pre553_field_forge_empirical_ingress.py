@@ -1,7 +1,7 @@
 """Focused ingress tests: current empirical fact -> existing FIELD FORGE owner."""
 from __future__ import annotations
 
-from dataclasses import replace
+import pytest
 
 from rawlsing_next.pre553_empirical_objects import EmpiricalFact, ExactRef
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
@@ -30,6 +30,9 @@ from rawlsing_next.tests.test_pre553_empirical_query import (
 )
 
 
+_UNSET = object()
+
+
 def _fact_variant(
     fact: EmpiricalFact,
     *,
@@ -39,6 +42,11 @@ def _fact_variant(
     weighted_numerator=None,
     provenance=None,
     query_ref=None,
+    condition_predicate_ref=_UNSET,
+    measure_basis_ref=_UNSET,
+    response_state_semantics_ref=_UNSET,
+    source_scope_mode=_UNSET,
+    measure_kind=_UNSET,
 ) -> EmpiricalFact:
     topology = dict(fact.target_topology)
     if cells is not None:
@@ -54,21 +62,31 @@ def _fact_variant(
         empirical_query_spec_ref=(fact.empirical_query_spec_ref if query_ref is None else query_ref),
         empirical_universe_refs=fact.empirical_universe_refs,
         target_topology=topology,
-        condition_predicate_ref=fact.condition_predicate_ref,
+        condition_predicate_ref=(
+            fact.condition_predicate_ref
+            if condition_predicate_ref is _UNSET else condition_predicate_ref
+        ),
         risk_set_ref=fact.risk_set_ref,
         raw_numerator_support=fact.raw_numerator_support if numerator is None else numerator,
         raw_denominator_support=fact.raw_denominator_support if denominator is None else denominator,
         weighted_numerator_support_if_authorized=weighted_numerator,
         weighted_denominator_support_if_authorized=None,
-        measure_basis_ref=fact.measure_basis_ref,
-        response_state_semantics_ref=fact.response_state_semantics_ref,
+        measure_basis_ref=(
+            fact.measure_basis_ref if measure_basis_ref is _UNSET else measure_basis_ref
+        ),
+        response_state_semantics_ref=(
+            fact.response_state_semantics_ref
+            if response_state_semantics_ref is _UNSET else response_state_semantics_ref
+        ),
         uncertainty_method_or_typed_state=fact.uncertainty_method_or_typed_state,
         source_empirical_provenance_refs=fact.source_empirical_provenance_refs if provenance is None else provenance,
         replay_ref=fact.replay_ref,
         query_execution_contract_id=fact.query_execution_contract_id,
         execution_detail=fact.execution_detail,
-        source_scope_mode=fact.source_scope_mode,
-        measure_kind=fact.measure_kind,
+        source_scope_mode=(
+            fact.source_scope_mode if source_scope_mode is _UNSET else source_scope_mode
+        ),
+        measure_kind=fact.measure_kind if measure_kind is _UNSET else measure_kind,
         risk_set_type=fact.risk_set_type,
         target_domain_identity=fact.target_domain_identity,
         raw_resolved_target_support=(
@@ -286,3 +304,26 @@ def test_current_i03_three_target_joint_reaches_ingress_and_refuses_two_target_o
     assert out.state == STATE_TYPED_REFUSAL
     assert out.refusal_code == REFUSAL_TWO_TARGET_REQUIRED
     assert out.fact_ref == fact.ref
+
+
+@pytest.mark.parametrize(
+    "kwargs,detail",
+    [
+        ({"condition_predicate_ref": ExactRef("PREDICATE", "urn:test:other-condition", "b" * 64)},
+         "condition predicate"),
+        ({"measure_basis_ref": ExactRef("MEASURE_BASIS", "urn:test:other-measure", "c" * 64)},
+         "measure basis"),
+        ({"response_state_semantics_ref": ExactRef("RESPONSE_STATE_SEMANTICS", "urn:test:other-response", "d" * 64)},
+         "response-state semantics"),
+        ({"source_scope_mode": None}, "source_scope_mode"),
+        ({"measure_kind": None}, "measure_kind"),
+    ],
+)
+def test_fact_query_semantic_linkage_mismatch_is_typed_ingress_error(kwargs, detail):
+    query, fact, conditioner, target = _base()
+    forged = _fact_variant(fact, **kwargs)
+    with pytest.raises(Exception) as exc:
+        ingest_empirical_fact(
+            fact=forged, query=query, conditioner_ref=conditioner, target_ref=target
+        )
+    assert detail in str(exc.value)

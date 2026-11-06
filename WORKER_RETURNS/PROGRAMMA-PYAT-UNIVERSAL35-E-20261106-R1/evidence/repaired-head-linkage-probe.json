@@ -1,0 +1,30 @@
+{
+  "cases": {
+    "different_condition": {
+      "accepted": false,
+      "error": "fact condition predicate does not bind query",
+      "error_type": "FieldForgeEmpiricalIngressError"
+    },
+    "different_measure_basis": {
+      "accepted": false,
+      "error": "fact measure basis does not bind query",
+      "error_type": "FieldForgeEmpiricalIngressError"
+    },
+    "different_response_state": {
+      "accepted": false,
+      "error": "fact response-state semantics do not bind query",
+      "error_type": "FieldForgeEmpiricalIngressError"
+    },
+    "null_measure_kind": {
+      "accepted": false,
+      "error": "fact measure_kind missing",
+      "error_type": "FieldForgeEmpiricalIngressError"
+    },
+    "null_source_scope": {
+      "accepted": false,
+      "error": "fact source_scope_mode missing",
+      "error_type": "FieldForgeEmpiricalIngressError"
+    }
+  },
+  "schema": "E_REPAIRED_HEAD_LINKAGE_PROBE@1"
+}

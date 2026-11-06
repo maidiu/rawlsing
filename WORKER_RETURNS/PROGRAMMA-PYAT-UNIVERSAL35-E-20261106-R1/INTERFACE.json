@@ -1,34 +1,54 @@
 {
-  "schema": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_INTERFACE@1.0.0",
-  "status": "FROZEN_FOR_D_BINDING_AND_FOCUSED_TESTS",
-  "callable": "rawlsing_next.pre553_field_forge_empirical_ingress.ingest_empirical_fact",
   "actual_owner_chain": [
     "rawlsing_next.field_forge_conditional_support.produce_exact_conditional_support_profile",
     "rawlsing_next.gt12_c_to_d_relation_bridge.bridge_gt12_c_relation_to_d_evidence",
     "rawlsing_next.pre553_structural_admission (not called for grant)"
   ],
+  "callable": "rawlsing_next.pre553_field_forge_empirical_ingress.ingest_empirical_fact",
+  "command": "python3 WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-E-20261106-R1/run_ingress.py selftest",
+  "d_authentic_products": "NOT_RECEIVED_BY_E",
+  "exact_linkage_required": {
+    "condition_predicate_ref": "fact == query",
+    "measure_basis_ref": "fact == query",
+    "measure_kind": "fact == query.requested_output_grain.measure_kind; nonempty",
+    "response_state_semantics_ref": "fact == query.requested_output_grain.response_state_semantics_ref",
+    "source_scope_mode": "fact == query.requested_output_grain.source_scope_mode; nonempty"
+  },
   "input": {
-    "fact": "exact EmpiricalFact@1.0.0",
-    "query": "exact EmpiricalQuerySpec@1.0.0 bound by fact.empirical_query_spec_ref",
-    "target_arity": 2,
     "conditioner_target_order": "query.target_refs[0]=CONDITIONER, query.target_refs[1]=TARGET unless explicit refs supplied",
+    "fact": "exact EmpiricalFact@1.0.0",
     "measure": "RAW only; weighted numerator/denominator must be null",
+    "optional": [
+      "conditioner_ref",
+      "target_ref",
+      "producer_permission_ceiling",
+      "relation_permission_ceiling",
+      "try_structural_bridge"
+    ],
+    "query": "exact EmpiricalQuerySpec@1.0.0 bound by fact.empirical_query_spec_ref",
     "scope": "SINGLE_UNIVERSE only",
-    "optional": ["conditioner_ref", "target_ref", "producer_permission_ceiling", "relation_permission_ceiling", "try_structural_bridge"]
+    "target_arity": 2
   },
   "output": {
-    "schema": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1",
-    "states": ["CONDITIONAL_SUPPORT_PROFILE", "TYPED_REFUSAL"],
+    "bridge_states": [
+      "TYPED_BRIDGE_EVIDENCE_ONLY",
+      "BRIDGE_TYPED_REFUSAL"
+    ],
     "profile_owner": "existing ExactConditionalSupportProfile",
+    "schema": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1",
+    "states": [
+      "CONDITIONAL_SUPPORT_PROFILE",
+      "TYPED_REFUSAL"
+    ],
     "structural_grant": false,
-    "bridge_states": ["TYPED_BRIDGE_EVIDENCE_ONLY", "BRIDGE_TYPED_REFUSAL"],
     "structural_state": "WITHHELD__NO_STRUCTURAL_ADMISSION_GRANT"
   },
   "refusal_codes": [
     "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
     "FIELD_FORGE_RELATION_TYPED_REFUSAL"
   ],
-  "command": "python3 WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-E-20261106-R1/run_ingress.py selftest",
-  "test_only_sourcefree_fixture": true,
-  "d_authentic_products": "NOT_RECEIVED_BY_E"
+  "repair_revision": "r1",
+  "schema": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_INTERFACE@1.0.0",
+  "status": "FROZEN_FOR_D_BINDING_AND_FOCUSED_TESTS",
+  "test_only_sourcefree_fixture": true
 }

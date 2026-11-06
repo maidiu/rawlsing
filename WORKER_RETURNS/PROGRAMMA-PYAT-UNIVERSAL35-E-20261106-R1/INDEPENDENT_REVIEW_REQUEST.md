@@ -1,17 +1,19 @@
-# Independent review request — universal35 E ingress
+# Independent rereview request — universal35 E ingress r1
 
-Review the exact commit in `PUBLICATION_RECEIPT.json`, not a fixture rerun.
+Review the exact repaired commit in `PUBLICATION_RECEIPT.json`.
 
-Check:
+Focus:
 
-1. `ingest_empirical_fact` delegates to the existing frozen FIELD FORGE owner and
-   GT12-C/D bridge; no duplicate empirical/FF engine or structural grant.
-2. Exact fact/query identity, two-target role order, RAW/SINGLE_UNIVERSE,
-   permission narrowing, provenance/replay closure and typed refusals.
-3. Positive profile, changed counts/denominator, source-edition identity change,
-   true zero/minority, 3+/one-target refusal, missing joint refusal, RAW weight
-   refusal and sever/restore.
-4. Public/return evidence contains no original respondent bytes or secrets.
-5. D authentic artifact bind is correctly reported `NOT_RECEIVED_BY_E`.
+1. `_exact_fact_query` enforces exact equality of condition predicate, measure
+   basis, response-state semantics, source scope and measure kind before
+   delegation; missing/None/mismatch is typed ingress error.
+2. Reproduce `evidence/old_head_defect_probe.json` against old `08138f52` (RED)
+   and `evidence/repaired_head_linkage_probe.json` against the repaired head
+   (five typed refusals).
+3. Positive exact profile, changed counts/denominator, source-edition identity,
+   true zero/minority, 3+/one-target, missing joint, RAW weight, role reversal,
+   sever/restore and structural-grant-false behavior remain intact.
+4. No new semantic owner, wider FF edit, original source read, native claim,
+   structural grant, D authentic bind or protected write.
 
 Verdict owner: distinct nonauthor reviewer. No self-acceptance.
