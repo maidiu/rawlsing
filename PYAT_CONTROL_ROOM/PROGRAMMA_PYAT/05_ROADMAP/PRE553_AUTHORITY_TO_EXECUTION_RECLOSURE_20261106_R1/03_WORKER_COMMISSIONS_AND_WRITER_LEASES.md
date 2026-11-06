@@ -4,13 +4,13 @@
 
 | Lane | Issue | Work | Exclusive writer lease |
 |---|---|---|---|
-| L1 | [#717](https://github.com/maidiu/rawlsing/issues/717) | Complete V550 original respondent + question/overlay/response authority (incl QSM/FQRA) | `WORKER_RETURNS/PROGRAMMA-PYAT-AUTHORITY-RECLOSURE-20261106-R1/L1_V550/` |
-| L2 | [#718](https://github.com/maidiu/rawlsing/issues/718) | V551→V552 directionality, atom/relation, consumer and structural stages | `.../L2_V551_V552/` |
-| L3 | [#719](https://github.com/maidiu/rawlsing/issues/719) | V550J source-native joint authority and Parquet caching | `.../L3_V550J/` |
-| L4 | [#720](https://github.com/maidiu/rawlsing/issues/720) | V551J→V552J joint evidence, structure and authority transfer | `.../L4_V551J_V552J/` |
-| L5 | [#721](https://github.com/maidiu/rawlsing/issues/721) | A02 27-row/P10 and exact local/manual/sha authority estate census | `.../L5_AUTHORITY_ESTATE/` |
-| L6 | [#722](https://github.com/maidiu/rawlsing/issues/722) | Neo-PRE553 exact successor/first-consumer, hybrid source/cached authority | `.../L6_NEO_HYBRID/` |
-| L7 | [#723](https://github.com/maidiu/rawlsing/issues/723) | **HELD** independent hostile all-stage anti-omission, code/asset/first-consumer receiving | `.../L7_INDEPENDENT_COURT/` |
+| L1 | [#717](https://github.com/maidiu/rawlsing/issues/717) | Complete V550 original respondent + question/overlay/response authority (incl QSM/FQRA) | `WORKER_RETURNS/PROGRAMMA-PYAT-AUTHORITY-RECLOSURE-20261106-R1/L1/` |
+| L2 | [#718](https://github.com/maidiu/rawlsing/issues/718) | V551→V552 directionality, atom/relation, consumer and structural stages | `.../L2/` |
+| L3 | [#719](https://github.com/maidiu/rawlsing/issues/719) | V550J source-native joint authority and Parquet caching | `.../L3/` |
+| L4 | [#720](https://github.com/maidiu/rawlsing/issues/720) | V551J→V552J joint evidence, structure and authority transfer | `.../L4/` |
+| L5 | [#721](https://github.com/maidiu/rawlsing/issues/721) | A02 27-row/P10 and exact local/manual/sha authority estate census | `.../L5/` |
+| L6 | [#722](https://github.com/maidiu/rawlsing/issues/722) | Neo-PRE553 exact successor/first-consumer, hybrid source/cached authority | `.../L6/` |
+| L7 | [#723](https://github.com/maidiu/rawlsing/issues/723) | **HELD** independent hostile all-stage anti-omission, code/asset/first-consumer receiving | `.../L7/` |
 
 All worker branches are new, isolated and **separate from protected PRE-MAIN**; create only after checking existing writer leases and source ownership. Suggested branch form `research/pyat-pre553-authority-recourt-lN-20261106-r1`; verify no existing collision before creating. If local file/user computer surfaces are inaccessible, L5 must return exact `S2_NOT_RUN` and asset list unavailable, rather than invent SHA/read success. Scrutinize any background Codex activity; do not race an incumbent HQ. Stop is on **authority-dependent new implementation**, not stopping legitimate already-running proof/receipt collection.
 
