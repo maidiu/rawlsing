@@ -64,3 +64,13 @@ source-projection.log. It covers occurrence/normalized key ambiguity, administer
 false, missingness, source labels, MR/rank/form and same-consumer mutation/restore.
 Do not restart if still live. All original-source/scientific/actor/merge holds
 remain. L02 is incomplete; do not issue NO_BUILD for the full first-consumer path.
+
+
+Fourth goal turn: verified actual model gpt-6.1-sol/medium and absent exposed
+send_message_to_thread. User replied "go" to the bounded High request; this
+provides authorization but metadata remains Medium, so requested the missing UI
+High selection. No production semantic decision was performed at Medium.
+Required ABI comparison, callgraph, no-drop inventory, issuer request and R02
+handoff are now prepared. They retain RED/incomplete downstream qualification.
+No test process remains live. The next dependent action is the High joint-fact
+selection decision after actual effort verification; no discovery restart.
