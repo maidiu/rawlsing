@@ -1,0 +1,43 @@
+{
+  "executed": [
+    {
+      "command": "git diff --name-status 25d40806d 4b2fed81c",
+      "result": "73 files; all under P2 interval/later/fanin returns; zero non-P2 changes"
+    },
+    {
+      "command": "git diff --name-only 25d40806d 4b2fed81c -- p2_product_fanin run_fanin_cli.py tests",
+      "result": "0 files; fanin code/tests unchanged"
+    },
+    {
+      "command": "component tree SHA check at 4b2",
+      "result": "lifecycle 79b tree 1eda53e4; interval 76d tree f7bd1c51; later b716 tree 67f01db8 all match"
+    },
+    {
+      "command": "python3 -B .local-logs/p2-final-cut-review/probe_fanin_final.py",
+      "result": "all CLI/callable checks true; public privacy empty; observation no auto-help; explicit help 0->1; cold/outside/local-return valid; e3 history/e2, exact C9, S43 accepted"
+    },
+    {
+      "command": "fanin source audit 12 files",
+      "result": "12/12 hashes match; no missing"
+    },
+    {
+      "command": "inspect published final receiving delta a61dab834",
+      "result": "published at origin; adds only receiving return; explicitly not independent acceptance or merge permission; guide outside this product review"
+    }
+  ],
+  "not_run": [
+    "full 7 fanin suite",
+    "full 8 later suite",
+    "full 6 interval suite",
+    "inherited 55 estate",
+    "broad source census",
+    "new framework/unrelated probes",
+    "guide acceptance"
+  ],
+  "reused": [
+    "25d 7-test focused acceptance and cold probe",
+    "3e04 focused interval/later repair oracles"
+  ],
+  "schema": "SOROK_P2_FINAL_CUT_COMMANDS@1",
+  "snapshot": "Git-archive extraction of exact 4b2 head under .local-logs/p2-final-cut-review/snapshot only"
+}
