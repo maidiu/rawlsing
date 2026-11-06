@@ -72,6 +72,7 @@ def test_materialize_consumes_exact_caller_coordinate_rules(tmp_path):
         assert rule.copy_observed_raw is False
         explicit = materialize_native_preimages(
             package=pkg, incidence=incidence, coordinate_rules=(rule,),
+            expected_coordinate_rule=rule,
         )
         assert explicit.projection.coordinate_slots == (rule,)
         coordinate_states = {
@@ -84,11 +85,16 @@ def test_materialize_consumes_exact_caller_coordinate_rules(tmp_path):
             native_coordinate_ref=ExactRef(
                 "COORDINATE_NATIVE", "urn:wrong:source", "a" * 64),
         )
-        with pytest.raises(NativePreimageRefusal, match="COORDINATE_RULE_SOURCE_QUALIFICATION_REQUIRED"):
+        with pytest.raises(NativePreimageRefusal, match="COORDINATE_RULE_AND_EXPECTED_BINDING_REQUIRED"):
             materialize_native_preimages(
                 package=pkg, incidence=incidence, coordinate_rules=(foreign,),
             )
-        with pytest.raises(NativePreimageRefusal, match="COORDINATE_SLOT_RULE_MATCH_REQUIRED"):
+        with pytest.raises(NativePreimageRefusal, match="COORDINATE_RULE_EXPECTED_BINDING_MISMATCH"):
+            materialize_native_preimages(
+                package=pkg, incidence=incidence, coordinate_rules=(foreign,),
+                expected_coordinate_rule=rule,
+            )
+        with pytest.raises(NativePreimageRefusal, match="COORDINATE_RULE_AND_EXPECTED_BINDING_REQUIRED"):
             materialize_native_preimages(package=pkg, incidence=incidence, coordinate_rules=())
     finally:
         incidence.close()
