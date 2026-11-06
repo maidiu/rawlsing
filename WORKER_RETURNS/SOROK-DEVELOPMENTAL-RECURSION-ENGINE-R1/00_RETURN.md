@@ -46,6 +46,8 @@ P2 participants are controlled sourcefree test participants. Missing independent
 
 ## Acceptance and receiving
 
+Remote changed-test proof enforcement passes at bf657e1c9. The subsequent inherited Pyat court is RED: three legacy hash-pin assertions fail, with 144 passes. Relevant modules, manifests, tests and court spec are unchanged from protected33c40a; evidence/receiving_ci.json records exact blobs and expected/actual values. This is not a green governed court or protected receiving approval. Unrelated authority pins and tests are preserved.
+
 Distinct exact-cut review of subject 41863919210021eced174ad5abdf49cb2df2042a is in flight. That frozen subject predates the actor-access repair above. Its result cannot independently accept the repaired cut; focused independent re-review remains necessary. No independent acceptance or protected merge is claimed here. Draft PRE-MAIN PR #704 preserves the candidate for selective receiving preparation.
 
 The next functional edge is a source-qualified developmental-operation/memory owner implementing the same explicit owner ABI. Exact absent historical source bytes and unissued native psychological rules remain separate dependencies; they do not block the demonstrated general batch/call/history machinery.
