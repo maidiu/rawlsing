@@ -44,7 +44,7 @@ Evidence refreshed: `evidence/route_qualification.json`; B `evidence/all35_plan.
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r1 identity/occurrence/frontier repair
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; frozen input 115fe70e6.
+- Identity: codex/pyat-universal35-d-20261106-r1@942743e99b4c0ca61791a264cfa3bb128dd5bdb9; frozen input 115fe70e6.
 - Function: full R157 config document -> B no-drop plan with OriginalItemID+physical-code binding and exact occurrence facts -> ONLY explicit planned F2/F3/F4 ScientificOperation/ScientificFrontier -> current compile_governed_frontier through verified original-ID aliases.
 - First consumer: current governed-frontier compilation/requests on sourcefree fixture; actual native facts remain NOT_RUN.
 - Evidence: 7 B tests; wrong/missing/cross-source ID refusal; value/conditioner mutation RED and restore; SRC01 unknown route non-eligible; all35 18276/18413/18467 counts.
