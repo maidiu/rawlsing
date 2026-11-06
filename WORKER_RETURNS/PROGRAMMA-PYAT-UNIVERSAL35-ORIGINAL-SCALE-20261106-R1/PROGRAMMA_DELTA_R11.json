@@ -1,0 +1,21 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "revision": "R11",
+  "branch": "codex/pyat-universal35-physical-cost-20261106-r1",
+  "code_head": "3aceba5d6e76a94095507c357d4b4ce38afddaf9",
+  "parent": "511856ac5daa0c6b38b449f3bc7b2a6734403638",
+  "status": "EVENT_IDENTITY_FAST_HASH_ACCEPTED_SCOPED__FULL_PLAN_HOLD",
+  "SRC10_before_after": {
+    "materialize_s": [169.265, 145.998],
+    "project_s": [51.7, 44.503],
+    "validate_s": [81.8, 73.892],
+    "replay_s": [4.4, 4.313],
+    "public_objects": 242567,
+    "peak_rss_bytes_after": 1472716800
+  },
+  "compile": "prior >425.861 s at 601.8 s ceiling; 0 facts; no rerun",
+  "tests": "29 scale/facade/universal PASS",
+  "coordinate": "R10 exact expected binding retained; SRC15 actual join NOT_RUN",
+  "not_run": ["SRC09/SRC10 full facts", "compile-sharing repair", "all35", "16 GiB", "native/science"],
+  "next": "G/D compile workload sharing; independent review of R11 physical hash change"
+}

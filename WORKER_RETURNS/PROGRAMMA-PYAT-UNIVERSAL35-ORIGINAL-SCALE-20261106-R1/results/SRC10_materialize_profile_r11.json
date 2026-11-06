@@ -1,0 +1,72 @@
+{
+  "error": null,
+  "maxrss": 1472716800,
+  "schema": "PYAT_UNIVERSAL35_MATERIALIZE_SUBSTAGE_PROFILE@1",
+  "source_id": "SRC10",
+  "status": "STOP_AFTER_MATERIALIZE",
+  "substages": [
+    {
+      "cpu_s": 0.031496999999999886,
+      "maxrss_after": 154947584,
+      "maxrss_before": 147271680,
+      "row_count": 26951,
+      "rss_after": 154877952,
+      "rss_before": 146083840,
+      "stage": "_row_cells",
+      "status": "OK",
+      "wall_s": 0.03409327892586589
+    },
+    {
+      "cpu_s": 0.003859000000000279,
+      "maxrss_after": 154947584,
+      "maxrss_before": 154947584,
+      "rss_after": 154808320,
+      "rss_before": 154796032,
+      "stage": "build_authority_set",
+      "status": "OK",
+      "wall_s": 0.005481789004988968
+    },
+    {
+      "cpu_s": 4.290836999999996,
+      "maxrss_after": 1249226752,
+      "maxrss_before": 1172307968,
+      "rss_after": 1177931776,
+      "rss_before": 1143947264,
+      "stage": "build_candidate_replay_manifest",
+      "status": "OK",
+      "wall_s": 4.312704655108973
+    },
+    {
+      "cpu_s": 44.294466,
+      "maxrss_after": 1249226752,
+      "maxrss_before": 572252160,
+      "rss_after": 1173520384,
+      "rss_before": 572194816,
+      "stage": "project_c11_candidate_from_physical_cells",
+      "status": "OK",
+      "wall_s": 44.50303421996068
+    },
+    {
+      "cpu_s": 73.405494,
+      "maxrss_after": 1472716800,
+      "maxrss_before": 1249226752,
+      "rss_after": 1396219904,
+      "rss_before": 1173389312,
+      "stage": "validate_c11_source_release",
+      "status": "OK",
+      "wall_s": 73.89225685200654
+    },
+    {
+      "cpu_s": 117.76160000000002,
+      "maxrss_after": 1472716800,
+      "maxrss_before": 570015744,
+      "public_object_count": 242567,
+      "rss_after": 1388978176,
+      "rss_before": 569962496,
+      "stage": "build_validated_source_backed_c11_release_from_stream",
+      "status": "OK",
+      "wall_s": 118.46714359894395
+    }
+  ],
+  "wall_s": 145.99812749796547
+}
