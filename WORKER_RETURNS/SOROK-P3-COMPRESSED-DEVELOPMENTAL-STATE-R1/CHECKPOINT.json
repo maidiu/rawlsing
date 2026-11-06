@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "REAL_STORE_AND_OWNER_DURABLE_CHAIN_PASS__FULL_PRIMARY_INTAKE_RUNNING",
+  "state": "THREE_FINAL_PHASE_LANES_OUT__FULL_P3_AUTHOR_PROOF_INHERITED_REGRESSIONS_INDEPENDENT_REVIEW",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -326,6 +326,75 @@
       "notification": "existing finite terminal observer",
       "return_commit": "bde6685570e752301f8bdae57637a4a191dd9c00",
       "disposition": "VERTICAL_RESOURCE_REPAIR_DISPOSITION.json"
+    },
+    {
+      "task": "sorok-p3-full-vertical-execution-r1",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1",
+      "launch": {
+        "job_id": "sorok-p3-full-vertical-execution-r1",
+        "child_pid": 55954,
+        "supervisor_pid": 55953,
+        "observer_pid": 55955,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-full-vertical-execution-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b320e5ed001RawBJskUu4qNdZ",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-full-vertical-execution-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "runtime_startup": "d1a6817b3 (resolve full SHA)"
+    },
+    {
+      "task": "sorok-p3-inherited-regression-r1",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1",
+      "launch": {
+        "job_id": "sorok-p3-inherited-regression-r1",
+        "child_pid": 55967,
+        "supervisor_pid": 55963,
+        "observer_pid": 55968,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-inherited-regression-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b320e76b0010hMaRGPup3csC9",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-inherited-regression-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "runtime_startup": "d1a6817b3 (resolve full SHA)"
+    },
+    {
+      "task": "sorok-p3-final-runtime-independent-review-r1",
+      "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-independent-review-r1",
+      "launch": {
+        "job_id": "sorok-p3-final-runtime-independent-review-r1",
+        "child_pid": 55978,
+        "supervisor_pid": 55977,
+        "observer_pid": 55979,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-runtime-independent-review-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b320e9180017ROQrXQnoaimhV",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-runtime-independent-review-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "runtime_startup": "d1a6817b3 (resolve full SHA)"
     }
   ],
   "holds": [
@@ -334,7 +403,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Complete actual full two-batch PRIMARY intake, then resume same harness author for full13 A-H/resource cases and measured output. Qualify exact coherent runtime through reserved nonauthor reviewer and preserve inherited #704 regressions; fix only material findings. Recurring wakes remain paused.",
+  "next": "Intake exact full vertical author result/metrics, inherited #704 regression result and independent exact-cut review. Integrate only disjoint permitted changes; route material runtime/fixture defects to existing owners with focused exact-cut recheck. Complete original requirement audit and selective PR only after demonstrated scope. No polling or recurring goal wakes.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -374,7 +443,8 @@
   "usage_policy": "Account-wide quota UNKNOWN; bank coherent work and exact continuation at material boundaries; leave room for commit/push/directremote verification before usage exhaustion.",
   "store_intake": "STORE_INPUT_DISPOSITION.json",
   "owner_actual_store_repair_intake": "OWNER_ACTUAL_STORE_REPAIR_DISPOSITION.json",
-  "parallel_lane_target": "3\u20135 substantive independent lanes when authorized work is ready; currently1 store repair out, owner/full-harness execution both depend on exact repaired source, final independent review depends on coherent runtime.",
+  "parallel_lane_target": "3\u20135 substantive independent lanes where ready;3 verified launches now. Full goal not accepted; no recurring goal wakes.",
   "vertical_resource_repair_intake": "VERTICAL_RESOURCE_REPAIR_DISPOSITION.json",
-  "store_abi_repair_intake": "STORE_ABI_REPAIR_DISPOSITION.json"
+  "store_abi_repair_intake": "STORE_ABI_REPAIR_DISPOSITION.json",
+  "primary_intake": "evidence/primary_intake_partial.json"
 }
