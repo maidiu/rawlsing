@@ -90,6 +90,8 @@ def apply_source_config_corrections(
     applied: list[dict[str, Any]] = []
     slots = {(int(s["slot"]["ordinal"]), str(s["slot"]["name"])): s
              for s in corrected.get("response_slots", ())}
+    coordinate_slots = {(int(s["slot"]["ordinal"]), str(s["slot"]["name"])): s
+                        for s in corrected.get("coordinate_slots", ())}
     for entry in matches:
         for change in entry.get("response_value_changes", ()):
             key = _slot_key(change["slot"])
@@ -136,7 +138,51 @@ def apply_source_config_corrections(
                 "base_commit": entry["base_commit"],
                 "base_config_path": entry["base_config_path"],
             })
-        slot["values"] = values
+        for change in entry.get("coordinate_value_changes", ()):
+            key = _slot_key(change["slot"])
+            slot = coordinate_slots.get(key)
+            if slot is None:
+                raise SourceCorrectionError(f"correction references unknown coordinate slot {key}")
+            values = slot.get("values") or []
+            raw = change["raw_value"]
+            existing = next((v for v in values if _same_raw(v.get("raw_value"), raw)), None)
+            if existing is not None:
+                for field in ("missing_state", "source_missing_declaration", "coordinate_state", "canonical_value"):
+                    if field in change:
+                        existing[field] = copy.deepcopy(change[field])
+                applied.append({
+                    "action": "REPLACE_COORDINATE_VALUE",
+                    "slot": list(key),
+                    "raw_value": raw,
+                    "missing_state": change.get("missing_state"),
+                    "coordinate_state": change.get("coordinate_state"),
+                    "correction_id": entry["correction_id"],
+                    "base_commit": entry["base_commit"],
+                    "base_config_path": entry["base_config_path"],
+                })
+                continue
+            if not change.get("add_if_absent", False):
+                raise SourceCorrectionError(f"correction raw coordinate {raw!r} absent in slot {key}")
+            template = values[0] if values else None
+            if template is None:
+                raise SourceCorrectionError(f"cannot add coordinate to empty slot {key}")
+            value = copy.deepcopy(template)
+            value["raw_value"] = raw
+            value["missing_state"] = change.get("missing_state", "OBSERVED_STORAGE_VALUE")
+            value["source_missing_declaration"] = copy.deepcopy(change.get("source_missing_declaration"))
+            value["coordinate_state"] = change.get("coordinate_state", "UNKNOWN")
+            value["canonical_value"] = copy.deepcopy(change.get("canonical_value"))
+            values.append(value)
+            applied.append({
+                "action": "ADD_COORDINATE_VALUE",
+                "slot": list(key),
+                "raw_value": raw,
+                "missing_state": value["missing_state"],
+                "coordinate_state": value["coordinate_state"],
+                "correction_id": entry["correction_id"],
+                "base_commit": entry["base_commit"],
+                "base_config_path": entry["base_config_path"],
+            })
     return corrected, applied
 
 

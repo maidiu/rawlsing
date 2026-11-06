@@ -1,0 +1,40 @@
+{
+  "actual_first_consumer": "build_coordinate_slot_rules -> existing materialization owner; full C11/native NOT_RUN",
+  "affected_ids": [
+    "SRC15:age_r2"
+  ],
+  "conditional_unlocks": [
+    "C adapter consumes exact coordinate rules",
+    "independent review of R4 delta"
+  ],
+  "evidence": [
+    "evidence_src15_coordinate_boundary.json",
+    "evidence_src15_coordinate_correction.json",
+    "evidence_src15_identity.json",
+    "evidence_pytest.txt"
+  ],
+  "function": "source/hash/base-path-bound SRC15 age_r2 coordinate missing-range binding and typed unknown observed codes",
+  "identity": {
+    "accepted_a_state": "cf44c5df67863c040ac2424e27413d0101917c40",
+    "branch": "codex/pyat-universal35-src15-coordinate-20261106-r1",
+    "c_review": "061d1dd71591863375110e451ddc49c1ee8cf6aa",
+    "job": "PROGRAMMA-PYAT-UNIVERSAL35-SOURCE-MAPPING-20261106-R1-R4",
+    "start": "f295f90f2dc2202055ddf21b575776621260b118"
+  },
+  "input_transform_typed_output": {
+    "input": [
+      "exact SRC15 source SHA",
+      "exact R157 base config/hash/path",
+      "SAV age_r2 missing range and value labels"
+    ],
+    "output": [
+      "typed EmpiricalCoordinateFact states",
+      "no unbound coordinate cells"
+    ],
+    "transform": "bind -10..-1 missing range exactly; add 1/2/3 as typed UNKNOWN coordinate facts"
+  },
+  "native_or_all35_promotion": "NOT_GRANTED",
+  "next_action": "C handoff and nonauthor review; no full release claim",
+  "root_schema_clock_permission": "NO_CHANGE; no source/native/science/actor authority",
+  "schema": "PROGRAMMA_DELTA@1"
+}

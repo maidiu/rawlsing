@@ -1,0 +1,52 @@
+{
+  "actual_unique_states": {
+    "-1.0|FORMAT_USER_MISSING_RANGE": 13,
+    "-2.0|FORMAT_USER_MISSING_RANGE": 312,
+    "1.0|OBSERVED_STORAGE_VALUE": 9840,
+    "2.0|OBSERVED_STORAGE_VALUE": 19342,
+    "3.0|OBSERVED_STORAGE_VALUE": 29931
+  },
+  "coordinate_slot": {
+    "missing_declaration": {
+      "hi": -1.0,
+      "kind": "range",
+      "lo": -10.0
+    },
+    "name": "age_r2",
+    "ordinal": 313,
+    "storage_type": "double"
+  },
+  "coordinate_variable": "age_r2",
+  "corrected_config": "negatives FORMAT_USER_MISSING_RANGE with exact declaration; 1/2/3 OBSERVED_STORAGE_VALUE with coordinate_state UNKNOWN under R157-EVS-SRC15-COORDINATE-DEFER",
+  "corrected_typed_states": {
+    "-1.0|UNKNOWN": 1,
+    "-2.0|MISSING": 1,
+    "1.0|UNKNOWN": 1,
+    "2.0|UNKNOWN": 1,
+    "3.0|UNKNOWN": 1
+  },
+  "corrected_unbound_cells": 0,
+  "corrected_untyped": 0,
+  "corrections_applied": 11,
+  "old_config_coordinate_states": "negative codes only; 1/2/3 absent; negatives OBSERVED_STORAGE_VALUE",
+  "old_exact_refusal": "SourceBackedC11FacadeError: unbound/missing coordinate cannot acquire semantics",
+  "old_unbound_cells": 59438,
+  "proof_maxrss_bytes": 603983872,
+  "proof_wall_seconds": 143.93,
+  "raw_bytes_committed": false,
+  "respondent_rows_emitted": false,
+  "schema": "PYAT_UNIVERSAL35_SRC15_COORDINATE_BOUNDARY@1",
+  "selected_operation_count": 8,
+  "selected_response_names": [
+    "v221",
+    "v232",
+    "v238",
+    "v239b",
+    "v240",
+    "v259",
+    "v260",
+    "v261"
+  ],
+  "source_id": "SRC15",
+  "source_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2"
+}

@@ -94512,6 +94512,200 @@
       ],
       "source_id": "SRC26",
       "source_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+    },
+    {
+      "base_commit": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+      "base_config_canonical_sha256": "e5e792ffab59ef9929a51225780e5e8d91488d7a5e50f265a09f805cd5d56e93",
+      "base_config_path": "rawlsing_next/source_configuration/data/SRC15/SRC15.config.json",
+      "config_purpose": "SOURCE_PREPARATION",
+      "coordinate_value_changes": [
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -1.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -10.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "MISSING",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -2.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "NOT_LAWFULLY_CONDITIONABLE",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -3.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -4.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "MISSING",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -5.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -8.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "FORMAT_USER_MISSING_RANGE",
+          "raw_value": -9.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": null,
+          "source_missing_declaration": {
+            "hi": -1.0,
+            "kind": "range",
+            "lo": -10.0
+          }
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "raw_value": 1.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": "15-29 years",
+          "source_missing_declaration": null
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "raw_value": 2.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": "30-49 years",
+          "source_missing_declaration": null
+        },
+        {
+          "add_if_absent": true,
+          "canonical_value": null,
+          "coordinate_state": "UNKNOWN",
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "raw_value": 3.0,
+          "slot": {
+            "name": "age_r2",
+            "ordinal": 313
+          },
+          "source_label": "50 and more years",
+          "source_missing_declaration": null
+        }
+      ],
+      "correction_id": "SRC15_COORDINATE_VALUE_BINDING_20261106",
+      "evidence": [
+        "exact source SHA",
+        "exact base config canonical hash",
+        "SAV age_r2 missing range -10..-1 and value labels"
+      ],
+      "identity_class": "ORIGINAL_SOURCE",
+      "reason": "Bind exact SAV-declared missing range for age_r2 and preserve observed age codes as typed UNKNOWN under the existing coordinate-defer authority; no semantic coordinate inference.",
+      "response_value_changes": [],
+      "source_id": "SRC15",
+      "source_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2"
     }
   ],
   "schema": "PYAT_R157_SOURCE_CONFIGURATION_CORRECTION@1.0.0"
