@@ -7,6 +7,11 @@ identity into an empirical claim.
 """
 from __future__ import annotations
 
+from .corrections import (
+    CORRECTIONS_PATH,
+    SourceCorrectionError,
+    apply_source_config_corrections,
+)
 from .errors import (
     SourceConfigurationBindingError,
     SourceConfigurationError,
@@ -51,6 +56,7 @@ from .library import (
 
 __all__ = [
     "SCHEMA_ID", "SourceConfig", "SourceConfigurationError",
+    "CORRECTIONS_PATH", "SourceCorrectionError", "apply_source_config_corrections",
     "SourceConfigurationSchemaError", "SourceConfigurationBindingError",
     "SourceConfigurationFactoryError", "SourceConfigurationEvidenceError",
     "canonical_config_hash", "config_file_sha256", "load_source_config",

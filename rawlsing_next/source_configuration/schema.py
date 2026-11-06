@@ -26,6 +26,7 @@ class SourceConfig:
 
     document: Mapping[str, Any]
     path: Path | None = None
+    corrections_applied: tuple[Mapping[str, Any], ...] = ()
 
     def __post_init__(self) -> None:
         from .validator import validate_source_config as _validate
@@ -73,13 +74,25 @@ def validate_source_config(document: Any) -> None:
     _validate(document)
 
 
-def load_source_config_bytes(raw: bytes, *, path: str | Path | None = None) -> SourceConfig:
-    """Load and validate a JSON source configuration from exact bytes."""
+def load_source_config_bytes(raw: bytes, *, path: str | Path | None = None,
+                             base_commit: str | None = None,
+                             base_config_path: str | None = None) -> SourceConfig:
+    """Load and validate a JSON source configuration from exact bytes.
+
+    A source/hash-bound correction overlay is applied only when the document is
+    an ORIGINAL_SOURCE/SOURCE_PREPARATION config whose exact source SHA and base
+    canonical hash match a versioned correction entry.  Fixtures and unrelated
+    sources are unchanged.
+    """
     try:
         document = json.loads(raw.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ValueError(f"source configuration {path or '<bytes>'} is not valid UTF-8 JSON: {exc}") from exc
-    return SourceConfig(document, path=None if path is None else Path(path))
+    from .corrections import apply_source_config_corrections
+    document, applied = apply_source_config_corrections(
+        document, base_commit=base_commit, base_config_path=base_config_path)
+    return SourceConfig(document, path=None if path is None else Path(path),
+                        corrections_applied=tuple(applied))
 
 
 def load_source_config(path: str | Path) -> SourceConfig:

@@ -606,31 +606,43 @@ class SourceConfigLibrary:
             actual = hashlib.sha256(raw).hexdigest()
             if actual != expected:
                 raise SourceArtifactError(f"{source_id}: {kind} SHA mismatch")
-            return relative, raw, row
+            return relative, raw, row, {
+                "base_commit": getattr(self.provider, "commit", None),
+                "base_config_path": relative,
+            }
         path = _exact_case_join(self.root, relative)
         if not path.is_file():
             raise SourceArtifactError(f"{source_id}: missing {kind} artifact {path}")
         actual = _sha(path)
         if actual != expected:
             raise SourceArtifactError(f"{source_id}: {kind} SHA mismatch")
-        return str(path), None, row
+        return str(path), None, row, {
+            "base_commit": None,
+            "base_config_path": relative,
+        }
 
     def load_original(self, source_id: str) -> SourceConfig:
-        path, raw, _ = self._artifact(source_id, "original")
-        config = load_source_config_bytes(raw, path=path) if raw is not None else load_source_config(path)
+        path, raw, _, provenance = self._artifact(source_id, "original")
+        config = (load_source_config_bytes(
+            raw, path=path, base_commit=provenance["base_commit"],
+            base_config_path=provenance["base_config_path"])
+            if raw is not None else load_source_config(path))
         if config.source_id != source_id or config.config_purpose != "SOURCE_PREPARATION":
             raise SourceArtifactError(f"{source_id}: original config identity/purpose mismatch")
         return config
 
     def load_fixture_config(self, source_id: str) -> SourceConfig:
-        path, raw, _ = self._artifact(source_id, "fixture-config")
-        config = load_source_config_bytes(raw, path=path) if raw is not None else load_source_config(path)
+        path, raw, _, provenance = self._artifact(source_id, "fixture-config")
+        config = (load_source_config_bytes(
+            raw, path=path, base_commit=provenance["base_commit"],
+            base_config_path=provenance["base_config_path"])
+            if raw is not None else load_source_config(path))
         if config.source_id != source_id or config.config_purpose != "NONRESPONDENT_FIXTURE":
             raise SourceArtifactError(f"{source_id}: fixture config identity/purpose mismatch")
         return config
 
     def load_fixture_stream(self, source_id: str):
-        path, raw, row = self._artifact(source_id, "fixture")
+        path, raw, row, _ = self._artifact(source_id, "fixture")
         stream = load_fixture_stream_bytes(raw, path=path) if raw is not None else load_fixture_stream(path)
         if stream.source_sha256 != row["fixture_source_sha256"]:
             raise SourceArtifactError(f"{source_id}: fixture stream source SHA mismatch")
@@ -664,6 +676,7 @@ class SourceConfigLibrary:
             "fixture_row_count": fixture.active_row_count == stream.row_count,
         }
         return {
+            "corrections_applied": list(original.corrections_applied),
             "source_id": source_id,
             "status": row["status"],
             "config_path": row["original_config_path"],
@@ -762,6 +775,7 @@ class SourceConfigLibrary:
             "fixture_config_path": row.get("fixture_config_path"),
             "fixture_path": row.get("fixture_path"),
             "fixture_source_sha256": row.get("fixture_source_sha256"),
+            "corrections_applied": list(original.corrections_applied),
             "reader_configuration": {
                 "source_sha256": reader.source_sha256,
                 "encoding": reader.encoding,

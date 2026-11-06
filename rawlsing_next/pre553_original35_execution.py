@@ -341,12 +341,38 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         instrument_release_id=str(doc["identity"]["instrument_release_id"]),
         as_of=as_of)
     bundle = materialize_native_preimages(package=package, incidence=stream)
-    compilation = bind_governed_frontier(
-        plan, bundle=bundle, source_id=source_id, as_of=as_of,
-        host=host, purpose=purpose)
-    result = execute_governed_frontier(
-        compilation=compilation,
-        source_factory=lambda _ref: bundle.physical_stream)
+    non_f1 = any(op.kind != OPERATION_F1 for op in selected_ops)
+    if non_f1:
+        compilation = bind_governed_frontier(
+            plan, bundle=bundle, source_id=source_id, as_of=as_of,
+            host=host, purpose=purpose)
+        result = execute_governed_frontier(
+            compilation=compilation,
+            source_factory=lambda _ref: bundle.physical_stream)
+        expected_operation_ids = list(compilation.expected_operation_ids)
+        expected_candidate_ids = list(compilation.expected_candidate_ids)
+        fact_refs = [ref.as_dict() for ref in result.fact_refs]
+        receipt_refs = [ref.as_dict() for ref in result.receipt_refs]
+        anti_join = dict(result.anti_join)
+        operation_anti_join = dict(result.operation_anti_join)
+        ledger_hash = result.content_hash
+        compilation_material = compilation.material()
+    else:
+        compilation = compile_universal_workload(
+            bundle=bundle, as_of=as_of, host=host, purpose=purpose)
+        result = execute_universal_workload(
+            compilation=compilation,
+            source_factory=lambda _ref: bundle.physical_stream)
+        expected_operation_ids = [
+            op.operation_id for op in compilation.operations
+            if op.status == "COMPILED"]
+        expected_candidate_ids = []
+        fact_refs = [ref.as_dict() for ref in result.fact_refs]
+        receipt_refs = [ref.as_dict() for ref in result.receipt_refs]
+        anti_join = dict(result.anti_join())
+        operation_anti_join = {"no_drop_ok": result.anti_join()["no_drop_ok"]}
+        ledger_hash = compilation.content_hash
+        compilation_material = compilation.material()
     after_decision = recording.resolve_current(request)
     from dataclasses import asdict
     if asdict(after_decision) != decode_decision:
@@ -365,14 +391,14 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         "diagnostic_max_items": max_items,
         "row_count": incidence.row_count,
         "compilation_hash": compilation.content_hash,
-        "compilation": compilation.material(),
-        "expected_operation_ids": list(compilation.expected_operation_ids),
-        "expected_candidate_ids": list(compilation.expected_candidate_ids),
-        "fact_refs": [ref.as_dict() for ref in result.fact_refs],
-        "receipt_refs": [ref.as_dict() for ref in result.receipt_refs],
-        "anti_join": dict(result.anti_join),
-        "operation_anti_join": dict(result.operation_anti_join),
-        "ledger_hash": result.content_hash,
+        "compilation": compilation_material,
+        "expected_operation_ids": expected_operation_ids,
+        "expected_candidate_ids": expected_candidate_ids,
+        "fact_refs": fact_refs,
+        "receipt_refs": receipt_refs,
+        "anti_join": anti_join,
+        "operation_anti_join": operation_anti_join,
+        "ledger_hash": ledger_hash,
         "elapsed_seconds": round(time.time() - started, 3),
         "maxrss_bytes": _maxrss(), "native": False,
     }

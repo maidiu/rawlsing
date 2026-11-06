@@ -44,6 +44,19 @@
     "source_read_request_from_config": "(config: 'SourceConfig | Mapping[str, Any]', *, host: 'str', purpose: 'str', consumer_use: 'str', semantic_use_scope: 'Sequence[str]', metadata_freeze_refs: 'Sequence[Any] | None' = None, custody_locator_binding: 'str | None' = None) -> 'SourceReadRequest'"
   },
   "schema": "PYAT_R157_SOURCE_PACK_ABI@1.0.0",
+  "source_configuration_corrections": {
+    "applies_to": "ORIGINAL_SOURCE / SOURCE_PREPARATION only",
+    "binding": [
+      "source_id",
+      "original_source_sha256",
+      "base_config_canonical_sha256",
+      "base_commit"
+    ],
+    "exposed_as": "SourceConfig.corrections_applied and SourceConfigLibrary.select/validate_source",
+    "note": "Corrections bind exact declared response values/missingness; they do not mint source/native/science authority.",
+    "path": "rawlsing_next/source_configuration/corrections/SOURCE_CONFIGURATION_CORRECTIONS.json",
+    "schema": "PYAT_R157_SOURCE_CONFIGURATION_CORRECTION@1.0.0"
+  },
   "source_locator_bindings_path": "rawlsing_next/source_configuration/source_locator_bindings.json",
   "source_pack_schema_id": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
   "source_pack_schema_path": "rawlsing_next/source_configuration/schema/source_configuration.schema.json",
