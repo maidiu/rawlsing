@@ -755,15 +755,37 @@ def _validate_discovery_consumption(
         raise DiscoveryConsumptionMismatch("receipt has no empirical facts")
     # Joint receipts also carry marginal facts under the winning predicate.
     # Select the producer-declared primary query, never the fact-list order.
-    roles = receipt.candidate_identity.get("query_roles", ())
-    primary_queries = {
-        _exact(role["query_ref"], "primary query_ref")
-        for role in roles
-        if role.get("role") in {"JOINT", "CONDITION", "BASE"}
-        and _exact(role["predicate_ref"], "primary predicate_ref") == predicate.ref
-    }
-    if len(primary_queries) > 1:
-        raise DiscoveryConsumptionMismatch("ambiguous primary discovery query")
+    identity = receipt.candidate_identity
+    roles = identity.get("query_roles", ())
+    validation = identity.get("validation", {})
+    validation_kind = validation.get("kind") if isinstance(validation, Mapping) else None
+    joint_dependence = (
+        validation_kind == "JOINT_NOT_PRODUCT_OF_MARGINALS"
+        or identity.get("family") == "JOINT_DEPENDENCE"
+    )
+    predicate_roles = [
+        role for role in roles
+        if _exact(role["predicate_ref"], "primary predicate_ref") == predicate.ref
+    ]
+    if joint_dependence:
+        joint_queries = {
+            _exact(role["query_ref"], "primary query_ref")
+            for role in predicate_roles
+            if role.get("role") == "JOINT"
+        }
+        if len(joint_queries) != 1:
+            raise DiscoveryConsumptionMismatch(
+                "joint dependence requires exactly one JOINT primary discovery query"
+            )
+        primary_queries = joint_queries
+    else:
+        primary_queries = {
+            _exact(role["query_ref"], "primary query_ref")
+            for role in predicate_roles
+            if role.get("role") in {"JOINT", "CONDITION", "BASE"}
+        }
+        if len(primary_queries) > 1:
+            raise DiscoveryConsumptionMismatch("ambiguous primary discovery query")
     matches = []
     for fact_ref in receipt.empirical_fact_refs:
         candidate = fact_by_ref.get(exact_ref(fact_ref))

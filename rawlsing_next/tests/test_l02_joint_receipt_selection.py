@@ -52,6 +52,17 @@ def test_missing_declared_joint_never_substitutes_a_supported_marginal():
         _validate_discovery_consumption(discovery_result=discovery,consumer_query=None,receipt_ref=receipt.ref)
 
 
+def test_missing_declared_joint_role_never_substitutes_a_supported_marginal():
+    discovery,receipt,joint,_=case()
+    receipt.candidate_identity['family']='JOINT_DEPENDENCE'
+    receipt.candidate_identity['validation']={'kind':'JOINT_NOT_PRODUCT_OF_MARGINALS'}
+    receipt.candidate_identity['query_roles']=[
+        role for role in receipt.candidate_identity['query_roles'] if role['role']!='JOINT']
+    receipt.empirical_fact_refs=tuple(ref for ref in receipt.empirical_fact_refs if ref!=joint.ref)
+    with pytest.raises(DiscoveryConsumptionMismatch):
+        _validate_discovery_consumption(discovery_result=discovery,consumer_query=None,receipt_ref=receipt.ref)
+
+
 def test_ambiguous_primary_queries_refuse_instead_of_choosing_first():
     discovery,receipt,_,_=case()
     receipt.candidate_identity['query_roles'][1]['role']='JOINT'

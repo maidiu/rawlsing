@@ -22,6 +22,17 @@
         "old": "if primary_queries and query_ref not in primary_queries:",
         "new": "if primary_queries and query_ref in primary_queries:"
       }
+    },
+    {
+      "claim_id": "PROGRAMMA_PYAT_L02_I05_MISSING_JOINT_ROLE_FAIL_CLOSED_R1",
+      "actual_consumer": "current I05 JOINT_NOT_PRODUCT_OF_MARGINALS receipt with no JOINT primary role and one same-predicate marginal fact -> C1 _validate_discovery_consumption -> DiscoveryConsumptionMismatch",
+      "claimed_dependency": "C1 must refuse an incomplete joint-dependence receipt identity. Relaxing the JOINT-role cardinality guard to allow zero roles disables the primary-query filter, selects the marginal fact, and fails the asserted refusal.",
+      "positive_node": "rawlsing_next/tests/test_l02_joint_receipt_selection.py::test_missing_declared_joint_role_never_substitutes_a_supported_marginal",
+      "fault": {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "old": "if len(joint_queries) != 1:",
+        "new": "if len(joint_queries) > 1:"
+      }
     }
   ]
 }
