@@ -339,25 +339,9 @@ P41_PACKET = ("WORKER_RETURNS/PYAT-R41-P41-GENERIC-PROGRESSIVE-"
 
 
 def _materialize_p41_runtime():
-    # CI may have a shallow checkout: recover only the exact pinned runtime object.
-    present = subprocess.run(
-        ["git", "cat-file", "-e", P41_COMMIT + "^{commit}"],
-        cwd=str(REPO_ROOT), capture_output=True,
-    )
-    if present.returncode:
-        subprocess.run(
-            ["git", "fetch", "--no-tags", "--depth=1", "origin", P41_COMMIT],
-            cwd=str(REPO_ROOT), check=True, capture_output=True, timeout=180,
-        )
-    base = Path(tempfile.mkdtemp(prefix=".r06r2-p41-", dir=REPO_ROOT))
-    archive = base / "p41.tar"
-    subprocess.run(
-        ["git", "archive", P41_COMMIT, P41_PACKET, "-o", str(archive)],
-        cwd=str(REPO_ROOT), check=True, capture_output=True, timeout=180,
-    )
-    with tarfile.open(archive) as handle:
-        handle.extractall(base)
-    return base / P41_PACKET / "runtime", base
+    from rawlsing_next.pre553_universal_world_binding import _pinned_p41_runtime
+    base = Path(tempfile.mkdtemp(prefix="l01-runtime-test-"))
+    return _pinned_p41_runtime(), base
 
 
 @pytest.fixture(scope="module")
@@ -460,12 +444,8 @@ def _build_r05_learned_inprocess():
 
 def _build_r05_p41_receipts(p41_runtime: str):
     """Subprocess entrypoint: actual R05 objects -> actual P41 N9/N10W/E04 view."""
-    if p41_runtime not in sys.path:
-        sys.path.insert(0, p41_runtime)
-    import bootstrap
-    bootstrap.install()
-    from p41_service import P41Service
-    from product.world import SelectedWorldCatalog
+    from rawlsing_next.sourcefree_world.p41_service import P41Service
+    from rawlsing_next.sourcefree_world.world import SelectedWorldCatalog
 
     data = _build_r05_learned_inprocess()
     case = data["case"]
