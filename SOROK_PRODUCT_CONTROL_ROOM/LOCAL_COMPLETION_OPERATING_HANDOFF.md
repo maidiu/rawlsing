@@ -47,3 +47,14 @@ Three actual controller launches extend the independently accepted sourcefree pr
 - `sorok-p2-later-event-continuation-20261105-r1` | `codex/sorok-p2-later-event-continuation-20261105-r1` | session `ses_e52a51c43ffeuVe7ZZhNcga5YP` | process `77840` observed alive with no terminal receipt at dispatch readback | assigned checkout `/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1`. Exact commission and binding: controller `sorok-p2-later-event-continuation-20261105-r1/job.json` and `binding.json`.
 
 Scopes respectively: persistent local exit/return with no actor/world mutation; explicit qualified interval activity to later public consequence with no automatic WAIT-as-action substitution; existing S41–S43 later-event producer/consumer continuation. New separate return directories only; no shared product/vendor/PROGRAMMA writes. DeepSeek V4.1-Flash MAX unchanged, existing session-scoped permissions only. Per-job supervisors and completion observers launched. Receive actual results, fan in compatible code on a later isolated integration branch, independently review consequential new boundaries, and write material results through PROGRAMMA. No new native/B-purpose/human/merge authority.
+
+
+### P2 returns received and next three commissions dispatched
+
+Lifecycle79b90e4a57cbd1b738a9b9484677736d1b6415ab independently ACCEPT_SCOPED_TEST_ONLY at6398888f1d28152b5d29fef816f0bb45e77dd43b (5tests+5probe groups). Intervalbdadbc57c2664d3155a97853422e74b6128261f8 (6author tests) and later-event76fdb624afc7674f088d10c349bfe15ffd0b865a (5author tests) are remote-verified candidates, not accepted. Actual terminal receipts and returns read in this HQ; intake records saved in original controller job directories.
+
+- `sorok-p2-product-fanin-20261105-r1`: launched existing controller/session; PID84916 observed live without terminal receipt; exact prompt and binding in controller job directory.
+- `sorok-p2-interval-later-independent-review-20261105-r1`: launched existing controller/session; PID84920 observed live without terminal receipt; exact prompt and binding in controller job directory.
+- `sorok-p2-programma-return-intake-20261105-r1`: launched existing controller/session; PID84924 observed live without terminal receipt; exact prompt and binding in controller job directory.
+
+Fan-in scope: one compatible same-root product CLI with lifecycle, qualified interval activity and later-event consumers. Separate independent review checks actual action/perception distinction and source-cut/cold boundaries. Guide worker owns direct affected-record write-through on existing PROGRAMMA branch; no competing guide edits. PR697/protected branch unchanged; no native/human/B grants.
