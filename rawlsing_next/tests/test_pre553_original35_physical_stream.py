@@ -15,12 +15,44 @@ from rawlsing_next.pre553_physical_decoder import (
     PhysicalVariable,
     decode_sav,
 )
+from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
+from rawlsing_next.pre553_source_native_preimage_adapter import (
+    NativeSourceIdentity,
+    NativeSourcePackage,
+    NativeSourceRule,
+    materialize_native_preimages,
+)
 from rawlsing_next.source_configuration.factory import build_validated_c11_release_from_config
 from rawlsing_next.source_configuration.schema import load_source_config
 from rawlsing_next.tests.test_universal_source_projection import build_s3, s3_rows
 
 CONFIG = Path(__file__).resolve().parents[2] / "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json"
 FIXTURE = Path(__file__).resolve().parents[2] / "source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json"
+
+
+def _fixture_incidence(config):
+    frame = pd.DataFrame({
+        "country": [1.0, 2.0, 3.0, 4.0, 5.0, 1.0, 2.0, 3.0, 4.0],
+        "q101": [1.0, 2.0, 3.0, 4.0, -1.0, 7.0, 8.0, 9.0, None],
+    })
+    return PhysicalSourceIncidence(
+        source_sha256=config.active_source_sha256,
+        source_format="SAV",
+        row_count=9,
+        variables=(
+            PhysicalVariable(1, "country", "double", "Country code", {}, (), {}, {}),
+            PhysicalVariable(124, "q101", "double", "q101", {}, (), {}, {}),
+        ),
+        reader_configuration={"fixture": "R157_P0_NONRESPONDENT"},
+        file_metadata={
+            "contract_schema": PHYSICAL_METADATA_CONTRACT,
+            "raw_layout_declarations": {},
+            "normalized_geometry": {},
+            "display_metadata": {},
+            "decoder_identity": {"implementation": "fixture"},
+        },
+        _frame=frame,
+    )
 
 
 def test_bounded_stream_exact_replay_and_factory_parity(tmp_path):
@@ -37,28 +69,7 @@ def test_bounded_stream_exact_replay_and_factory_parity(tmp_path):
         assert stream.decoder_metadata_digest == incidence.physical_metadata_digest
         assert stream.transport_identity == STREAM_TRANSPORT
         config = load_source_config(CONFIG)
-        frame = pd.DataFrame({
-            "country": [1.0, 2.0, 3.0, 4.0, 5.0, 1.0, 2.0, 3.0, 4.0],
-            "q101": [1.0, 2.0, 3.0, 4.0, -1.0, 7.0, 8.0, 9.0, None],
-        })
-        fixture_incidence = PhysicalSourceIncidence(
-            source_sha256=config.active_source_sha256,
-            source_format="SAV",
-            row_count=9,
-            variables=(
-                PhysicalVariable(1, "country", "double", "Country code", {}, (), {}, {}),
-                PhysicalVariable(124, "q101", "double", "q101", {}, (), {}, {}),
-            ),
-            reader_configuration={"fixture": "R157_P0_NONRESPONDENT"},
-            file_metadata={
-                "contract_schema": PHYSICAL_METADATA_CONTRACT,
-                "raw_layout_declarations": {},
-                "normalized_geometry": {},
-                "display_metadata": {},
-                "decoder_identity": {"implementation": "fixture"},
-            },
-            _frame=frame,
-        )
+        fixture_incidence = _fixture_incidence(config)
         fixture_stream = bounded_physical_cell_stream(fixture_incidence, batch_size=2)
         from_incidence = build_validated_c11_release_from_config(
             config, incidence=fixture_incidence, batch_size=2,
@@ -88,7 +99,14 @@ def test_bounded_stream_filtered_selected_columns_keep_every_row(tmp_path):
             cell for cell in incidence.iter_cells(5) if cell.variable_name in selected
         )
         assert tuple(stream.iter_cells()) == expected
-        assert tuple(stream.iter_cells()) == expected
+        original = incidence.iter_batches
+        object.__setattr__(incidence, "iter_batches", lambda *_args, **_kwargs: pytest.fail(
+            "projected selection iterated all physical cells"
+        ))
+        try:
+            assert tuple(stream.iter_cells()) == expected
+        finally:
+            object.__setattr__(incidence, "iter_batches", original)
         assert stream.row_count == incidence.row_count
         assert stream.source_sha256 == incidence.source_sha256
         assert {cell.row_ordinal for cell in expected} == set(range(1, incidence.row_count + 1))
@@ -97,6 +115,50 @@ def test_bounded_stream_filtered_selected_columns_keep_every_row(tmp_path):
             tuple(bounded_physical_cell_stream(
                 incidence, include_variables=("PID", "ABSENT"),
             ).iter_cells())
+        with pytest.raises(Original35PhysicalStreamError, match="EXACT_UNIQUE_COLUMN_SELECTION_REQUIRED"):
+            bounded_physical_cell_stream(incidence, include_variables=("PID", "PID"))
+    finally:
+        incidence.close()
+
+
+def test_bounded_stream_native_package_parity_on_fixture():
+    config = load_source_config(CONFIG)
+    document = config.document
+    incidence = _fixture_incidence(config)
+    try:
+        package = NativeSourcePackage(
+            source=NativeSourceIdentity(
+                source_id="SRC09", family=str(document["identity"]["family"]),
+                wave=str(document["identity"]["wave"]),
+                canonical_filename=str(document["identity"]["source_artifact_id"]),
+                declared_sha256=incidence.source_sha256,
+                source_format="SAV", expected_rows=incidence.row_count,
+            ),
+            selected=(NativeSourceRule("impl.q101", "q101"),),
+            coordinate_variable="country",
+            study_product_id=str(document["identity"]["study_product_id"]),
+            release_id=str(document["identity"]["release_id"]),
+            instrument_release_id=str(document["identity"]["instrument_release_id"]),
+            as_of="TEST_ONLY",
+        )
+        names = {"country", "q101"}
+        current = ExactPhysicalCellStream(
+            source_sha256=incidence.source_sha256,
+            row_count=incidence.row_count,
+            cell_iter_factory=lambda: tuple(
+                cell for cell in incidence.iter_cells() if cell.variable_name in names
+            ),
+            decoder_metadata_digest=incidence.physical_metadata_digest,
+        )
+        projected = bounded_physical_cell_stream(
+            incidence, batch_size=2, include_variables=("country", "q101"),
+        )
+        from_current = materialize_native_preimages(package=package, incidence=current)
+        from_projected = materialize_native_preimages(package=package, incidence=projected)
+        assert from_projected.release.release_ref == from_current.release.release_ref
+        assert from_projected.release.replay_manifest.ref == from_current.release.replay_manifest.ref
+        assert from_projected.release.semantic_release_hash == from_current.release.semantic_release_hash
+        assert len(from_projected.release.public_objects) == len(from_current.release.public_objects)
     finally:
         incidence.close()
 

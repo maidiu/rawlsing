@@ -13,6 +13,8 @@ from collections.abc import Iterator, Sequence
 from rawlsing_next.pre553_physical_decoder import (
     PhysicalCell,
     PhysicalSourceIncidence,
+    _physical_value,
+    classify_physical_value,
 )
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 
@@ -69,42 +71,94 @@ def _exact_cells(
         raise Original35PhysicalStreamError("SOURCE_IDENTITY_CHANGED_AFTER_SCAN")
 
 
-def _filtered_cells(
-    incidence: PhysicalSourceIncidence, batch_size: int, selected_names: tuple[str, ...],
+def _cell(variable, row: int, value) -> PhysicalCell:
+    raw = _physical_value(value)
+    state, declaration = classify_physical_value(raw, variable.missing_declarations)
+    return PhysicalCell(
+        row_ordinal=row,
+        variable_ordinal=variable.ordinal,
+        variable_name=variable.name,
+        raw_value=raw,
+        missing_state=state,
+        source_missing_declaration=declaration,
+        raw_value_label=variable.value_labels.get(str(raw)),
+    )
+
+
+def _selected_frame_cells(
+    incidence: PhysicalSourceIncidence, selected: tuple, frame,
 ) -> Iterator[PhysicalCell]:
-    _validate_incidence(incidence)
-    columns = tuple((variable.ordinal, variable.name) for variable in incidence.variables)
-    selected = tuple(column for column in columns if column[1] in selected_names)
-    if len(selected) != len(selected_names):
-        raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_ABSENT")
-    selected_set = set(selected)
-    expected = incidence.row_count * len(selected)
-    position = 0
-    row = 1
-    in_row = 0
-    for batch in incidence.iter_batches(batch_size):
-        if not isinstance(batch, tuple) or not batch:
-            raise Original35PhysicalStreamError("NONEMPTY_PHYSICAL_BATCH_REQUIRED")
-        for cell in batch:
-            if not isinstance(cell, PhysicalCell):
-                raise Original35PhysicalStreamError("PHYSICAL_CELL_REQUIRED")
-            if cell.row_ordinal != row:
-                if cell.row_ordinal != row + 1 or in_row != len(selected):
-                    raise Original35PhysicalStreamError("EXACT_ROW_COLUMN_IDENTITY_LOST")
-                row = cell.row_ordinal
-                in_row = 0
-            key = (cell.variable_ordinal, cell.variable_name)
-            if key not in selected_set:
-                continue
-            if key != selected[in_row]:
-                raise Original35PhysicalStreamError("EXACT_ROW_COLUMN_IDENTITY_LOST")
-            in_row += 1
-            position += 1
-            yield cell
-    if in_row != len(selected) or row != incidence.row_count or position != expected:
+    columns = tuple(str(name) for name in frame.columns)
+    if len(set(columns)) != len(columns):
+        raise Original35PhysicalStreamError("DUPLICATE_SOURCE_COLUMN_NAME")
+    index = {name: position for position, name in enumerate(columns)}
+    try:
+        positions = tuple(index[variable.name] for variable in selected)
+    except KeyError as exc:
+        raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_ABSENT") from exc
+    count = 0
+    for row_ordinal, values in enumerate(frame.itertuples(index=False, name=None), 1):
+        for variable, position in zip(selected, positions):
+            yield _cell(variable, row_ordinal, values[position])
+            count += 1
+    if row_ordinal != incidence.row_count or count != incidence.row_count * len(selected):
         raise Original35PhysicalStreamError("SILENT_PHYSICAL_GRID_TRUNCATION")
     if incidence.verify_source_identity() != incidence.source_sha256:
         raise Original35PhysicalStreamError("SOURCE_IDENTITY_CHANGED_AFTER_SCAN")
+
+
+def _selected_chunk_cells(
+    incidence: PhysicalSourceIncidence, batch_size: int, selected: tuple,
+) -> Iterator[PhysicalCell]:
+    snapshot = incidence._source_snapshot
+    reader_kind = incidence._reader_kind
+    encoding = incidence._encoding
+    if snapshot is None or reader_kind not in {"SAV", "DTA"}:
+        raise Original35PhysicalStreamError("COLUMN_PROJECTED_READER_UNAVAILABLE")
+    import pyreadstat
+
+    reader = pyreadstat.read_sav if reader_kind == "SAV" else pyreadstat.read_dta
+    rows_per_chunk = max(1, batch_size // len(selected))
+    snapshot.rewind()
+    chunks = pyreadstat.read_file_in_chunks(
+        reader, snapshot.reader_path, chunksize=rows_per_chunk,
+        usecols=[variable.name for variable in selected],
+        encoding=encoding, apply_value_formats=False, user_missing=True,
+    )
+    row_offset = 0
+    for frame, _metadata in chunks:
+        snapshot.check_stable()
+        columns = tuple(str(name) for name in frame.columns)
+        if set(columns) != {variable.name for variable in selected}:
+            raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_SET_CHANGED")
+        index = {name: position for position, name in enumerate(columns)}
+        positions = tuple(index[variable.name] for variable in selected)
+        for local_row, values in enumerate(frame.itertuples(index=False, name=None), 1):
+            row_ordinal = row_offset + local_row
+            for variable, position in zip(selected, positions):
+                yield _cell(variable, row_ordinal, values[position])
+        row_offset += len(frame)
+    if row_offset != incidence.row_count:
+        raise Original35PhysicalStreamError("SILENT_PHYSICAL_GRID_TRUNCATION")
+    snapshot.verify()
+
+
+def _selected_cells(
+    incidence: PhysicalSourceIncidence, batch_size: int, selected_names: tuple[str, ...],
+) -> Iterator[PhysicalCell]:
+    _validate_incidence(incidence)
+    selected = tuple(
+        variable for variable in incidence.variables if variable.name in selected_names
+    )
+    if len(selected) != len(selected_names):
+        raise Original35PhysicalStreamError("SELECTED_PHYSICAL_COLUMN_ABSENT")
+    if len({variable.name for variable in selected}) != len(selected):
+        raise Original35PhysicalStreamError("DUPLICATE_SOURCE_COLUMN_NAME")
+    frame = incidence._frame
+    if frame is not None:
+        yield from _selected_frame_cells(incidence, selected, frame)
+        return
+    yield from _selected_chunk_cells(incidence, batch_size, selected)
 
 
 def bounded_physical_cell_stream(
@@ -129,7 +183,7 @@ def bounded_physical_cell_stream(
                 or len(set(include_variables)) != len(include_variables)):
             raise Original35PhysicalStreamError("EXACT_UNIQUE_COLUMN_SELECTION_REQUIRED")
         selected_names = tuple(include_variables)
-        factory = lambda: _filtered_cells(incidence, batch_size, selected_names)
+        factory = lambda: _selected_cells(incidence, batch_size, selected_names)
     return ExactPhysicalCellStream(
         source_sha256=incidence.source_sha256,
         row_count=incidence.row_count,
