@@ -10700,6 +10700,27 @@
       "final_import_evidence": "4b2 imports both repaired sources exactly; primitives/callsite unchanged; public privacy oracle hits 0; prior tests reused",
       "final_cut_closure": "RUNNING sorok-p2-final-cut-independent-closure-20261105-r1",
       "final_receiving_delta": "RUNNING",
+      "receiving_engineering_receipt": {
+        "status": "ENGINEERING_RECEIVING_ONLY__NOT_INDEPENDENT_ACCEPTANCE",
+        "receipt_commit": "a61dab8343181b0975c76496d0007e2b3a92bba0",
+        "receipt_tree": "2f23fd5b82c9d14c464fad8c59511a27795b59d8",
+        "branch": "codex/sorok-p2-final-receiving-delta-20261105-r1",
+        "path": "WORKER_RETURNS/SOROK-P2-FINAL-RECEIVING-DELTA-20261105-R1",
+        "return_blob": "830460626bd6112a0e8dc0b5b84c93114df15c07",
+        "delta_blob": "b8fc6db745bc821765592ed4aa717e54c3818ce6",
+        "actual_product": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+        "declared_guide": "b6d3f8d2b946a38f6336361c2b625c1260699100",
+        "protected_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+        "composite": "f5debb10c53b8e9a735f6fe1e1696bfbf46412fc",
+        "files": {
+          "product": 665,
+          "guide": 9,
+          "total": 674
+        },
+        "checks": "one actual cold first-consumer CLI PASS; snapshot-local imports; public privacy clean; canonical guide PASS; observation encounters 0; explicit help 0->1 REFUSED",
+        "prior_receiving": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS preserved",
+        "limit": "declared guide b6d3f8d2 only; does not extend 25d acceptance or accept/promote 4b2; final cut closure and final receiving delta RUNNING"
+      },
       "accepted": false,
       "auto_ready": false,
       "pr699": {
@@ -10739,7 +10760,7 @@
           "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
         }
       ],
-      "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; do not promote 4b2. Integrated 25d accept332e preserved."
+      "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; engineering receipt a61dab covers 4b2 + declared guide b6d3f8d2 only and is not independent acceptance; do not promote 4b2. Integrated 25d accept332e preserved."
     },
     "pr699": {
       "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
@@ -10805,6 +10826,27 @@
     "final_import_evidence": "4b2 imports both repaired sources exactly; primitives/callsite unchanged; public privacy oracle hits 0; prior tests reused",
     "final_cut_closure": "RUNNING sorok-p2-final-cut-independent-closure-20261105-r1",
     "final_receiving_delta": "RUNNING",
+    "receiving_engineering_receipt": {
+      "status": "ENGINEERING_RECEIVING_ONLY__NOT_INDEPENDENT_ACCEPTANCE",
+      "receipt_commit": "a61dab8343181b0975c76496d0007e2b3a92bba0",
+      "receipt_tree": "2f23fd5b82c9d14c464fad8c59511a27795b59d8",
+      "branch": "codex/sorok-p2-final-receiving-delta-20261105-r1",
+      "path": "WORKER_RETURNS/SOROK-P2-FINAL-RECEIVING-DELTA-20261105-R1",
+      "return_blob": "830460626bd6112a0e8dc0b5b84c93114df15c07",
+      "delta_blob": "b8fc6db745bc821765592ed4aa717e54c3818ce6",
+      "actual_product": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+      "declared_guide": "b6d3f8d2b946a38f6336361c2b625c1260699100",
+      "protected_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+      "composite": "f5debb10c53b8e9a735f6fe1e1696bfbf46412fc",
+      "files": {
+        "product": 665,
+        "guide": 9,
+        "total": 674
+      },
+      "checks": "one actual cold first-consumer CLI PASS; snapshot-local imports; public privacy clean; canonical guide PASS; observation encounters 0; explicit help 0->1 REFUSED",
+      "prior_receiving": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS preserved",
+      "limit": "declared guide b6d3f8d2 only; does not extend 25d acceptance or accept/promote 4b2; final cut closure and final receiving delta RUNNING"
+    },
     "accepted": false,
     "auto_ready": false,
     "pr699": {
@@ -10844,6 +10886,6 @@
         "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
       }
     ],
-    "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; do not promote 4b2. Integrated 25d accept332e preserved."
+    "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; engineering receipt a61dab covers 4b2 + declared guide b6d3f8d2 only and is not independent acceptance; do not promote 4b2. Integrated 25d accept332e preserved."
   }
 }
