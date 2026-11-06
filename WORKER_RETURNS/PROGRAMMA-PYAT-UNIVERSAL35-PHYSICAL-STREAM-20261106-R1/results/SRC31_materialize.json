@@ -1,0 +1,69 @@
+{
+  "batch_size": 10000,
+  "config": {
+    "coordinate_slots": 4,
+    "physical_slots": 68,
+    "reader_encoding": null,
+    "response_slots": 64,
+    "row_count": 8442,
+    "source_format": "SAV",
+    "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+    "weight_slots": 0
+  },
+  "decode": {
+    "cpu_s": 1.352705,
+    "disk_after": {
+      "free": 3613061120,
+      "total": 438000656384,
+      "used": 434387595264
+    },
+    "disk_before": {
+      "free": 3613708288,
+      "total": 438000656384,
+      "used": 434386948096
+    },
+    "incidence_rows": 8442,
+    "incidence_variables": 68,
+    "maxrss_after": 93917184,
+    "maxrss_before": 28078080,
+    "physical_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+    "rss_after": 93806592,
+    "rss_before": 28016640,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "snapshot_size": 595974,
+      "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+    },
+    "wall_s": 0.6565875769592822
+  },
+  "host": "oldMac.lan",
+  "materialize": {
+    "cell_count": 574056,
+    "cpu_s": 2.5290829999999995,
+    "maxrss_after": 225943552,
+    "rss_after": 225787904,
+    "rss_before": 94642176,
+    "wall_s": 2.5506270839832723
+  },
+  "mode": "materialize",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "resolution": {
+    "expected_source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+    "relative_path": "South Asia Wave 1.sav",
+    "source_root_source": "LIBRARY_DEFAULT",
+    "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+  },
+  "result": {
+    "state": "MATERIALIZE_OK"
+  },
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+  "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+  "source_bytes": 595974,
+  "source_id": "SRC31"
+}

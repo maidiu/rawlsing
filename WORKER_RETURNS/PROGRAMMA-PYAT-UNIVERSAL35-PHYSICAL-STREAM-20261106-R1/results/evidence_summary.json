@@ -1,0 +1,611 @@
+{
+  "D_actual_attempts": {
+    "attempts": [
+      {
+        "elapsed_seconds": 94.603,
+        "maxrss_bytes": 1659699200,
+        "path": "original_sav",
+        "reason": "SourceBackedC11FacadeError:unbound response value/state; no label/frequency/missingness inference",
+        "rows": 8442,
+        "source_id": "SRC31",
+        "status": "C11_RELEASE_REFUSED"
+      },
+      {
+        "max_items_requested": 1,
+        "path": "native_r03_compiler",
+        "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED",
+        "source_id": "SRC09",
+        "status": "NOT_COMPLETED"
+      },
+      {
+        "max_items_requested": 1,
+        "path": "native_r03_compiler",
+        "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED",
+        "source_id": "SRC10",
+        "status": "NOT_COMPLETED"
+      },
+      {
+        "max_items_requested": 1,
+        "path": "native_r03_compiler",
+        "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED",
+        "source_id": "SRC11",
+        "status": "NOT_COMPLETED"
+      },
+      {
+        "max_items_requested": 1,
+        "path": "native_r03_compiler",
+        "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED",
+        "source_id": "SRC15",
+        "status": "NOT_COMPLETED"
+      }
+    ],
+    "exact_stream_need": "ExactPhysicalCellStream over only selected response+coordinate columns and full declared row_count, without eager full-frame materialization or rebuilding C11 twice; C new module is the intended producer.",
+    "native_facts_claimed": false,
+    "schema": "PRE553_ORIGINAL35_NATIVE_ATTEMPTS@1",
+    "source_root_alias": "USER_ORIGINAL35_DATA_ROOT",
+    "unbound_prescan": {
+      "SRC04": 49868,
+      "SRC16": 18105,
+      "SRC24": 21730,
+      "SRC25": 103491,
+      "SRC26": 9586,
+      "SRC31": 325,
+      "SRC32": 28877,
+      "SRC33": 1003
+    }
+  },
+  "base_commit": "d129eebdb0472b0c3625efa281826a858bd0a384",
+  "blockers": {
+    "genuine_c11_build": "SourceBackedC11FacadeError: unbound response value/state; no label/frequency/missingness inference",
+    "owner": "A source mapping/value binding; D consumer lowering; not reinterpreted by C"
+  },
+  "branch": "codex/pyat-universal35-physical-stream-20261106-r1",
+  "genuine_profiles": {
+    "SRC04_decode": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 3,
+        "physical_slots": 181,
+        "reader_encoding": null,
+        "response_slots": 178,
+        "row_count": 7337,
+        "source_format": "SAV",
+        "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+        "weight_slots": 0
+      },
+      "decode": {
+        "cpu_s": 1.4176039999999999,
+        "disk_after": {
+          "free": 3613155328,
+          "total": 438000656384,
+          "used": 434387501056
+        },
+        "disk_before": {
+          "free": 3616411648,
+          "total": 438000656384,
+          "used": 434384244736
+        },
+        "incidence_rows": 7337,
+        "incidence_variables": 181,
+        "maxrss_after": 107536384,
+        "maxrss_before": 41889792,
+        "physical_metadata_digest": "1ef1739f290e69ccb74b0bbd0486e8338e8eae6224c924e520e0da141f5cc3be",
+        "rss_after": 102109184,
+        "rss_before": 40796160,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+          "snapshot_size": 1531099,
+          "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+        },
+        "wall_s": 0.7328607949893922
+      },
+      "host": "oldMac.lan",
+      "mode": "decode",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+        "relative_path": "Arab Barometer Wave 1.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "DECODE_ONLY_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 1531099,
+      "source_id": "SRC04"
+    },
+    "SRC13_decode": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 45,
+        "physical_slots": 513,
+        "reader_encoding": "latin1",
+        "response_slots": 359,
+        "row_count": 41125,
+        "source_format": "SAV",
+        "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+        "weight_slots": 2
+      },
+      "decode": {
+        "cpu_s": 6.163786999999999,
+        "disk_after": {
+          "free": 3584135168,
+          "total": 438000656384,
+          "used": 434416521216
+        },
+        "disk_before": {
+          "free": 3616186368,
+          "total": 438000656384,
+          "used": 434384470016
+        },
+        "incidence_rows": 41125,
+        "incidence_variables": 513,
+        "maxrss_after": 806420480,
+        "maxrss_before": 68632576,
+        "physical_metadata_digest": "c133ab688926910b3c794819a75ac2958b37be554e9161344ba6bad53a51d2f2",
+        "rss_after": 289341440,
+        "rss_before": 59273216,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+          "snapshot_size": 31857144,
+          "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a"
+        },
+        "wall_s": 5.414587517967448
+      },
+      "host": "oldMac.lan",
+      "mode": "decode",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+        "relative_path": "EVS 1999.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "DECODE_ONLY_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 31857144,
+      "source_id": "SRC13"
+    },
+    "SRC16_decode": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 2,
+        "physical_slots": 216,
+        "reader_encoding": null,
+        "response_slots": 157,
+        "row_count": 1613,
+        "source_format": "SAV",
+        "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+        "weight_slots": 0
+      },
+      "decode": {
+        "cpu_s": 1.4353879999999999,
+        "disk_after": {
+          "free": 3614621696,
+          "total": 438000656384,
+          "used": 434386034688
+        },
+        "disk_before": {
+          "free": 3614806016,
+          "total": 438000656384,
+          "used": 434385850368
+        },
+        "incidence_rows": 1613,
+        "incidence_variables": 216,
+        "maxrss_after": 122232832,
+        "maxrss_before": 70397952,
+        "physical_metadata_digest": "d452d90732cdd6a843241bcf74ed0488bf88b5a43d542a00d13845b14a255b73",
+        "rss_after": 122122240,
+        "rss_before": 57737216,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+          "snapshot_size": 1647241,
+          "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204"
+        },
+        "wall_s": 0.630746355978772
+      },
+      "host": "oldMac.lan",
+      "mode": "decode",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+        "relative_path": "GSS1972.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "DECODE_ONLY_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 1647241,
+      "source_id": "SRC16"
+    },
+    "SRC31_decode": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 4,
+        "physical_slots": 68,
+        "reader_encoding": null,
+        "response_slots": 64,
+        "row_count": 8442,
+        "source_format": "SAV",
+        "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "weight_slots": 0
+      },
+      "decode": {
+        "cpu_s": 1.3228980000000001,
+        "disk_after": {
+          "free": 3613904896,
+          "total": 438000656384,
+          "used": 434386751488
+        },
+        "disk_before": {
+          "free": 3614502912,
+          "total": 438000656384,
+          "used": 434386153472
+        },
+        "incidence_rows": 8442,
+        "incidence_variables": 68,
+        "maxrss_after": 93609984,
+        "maxrss_before": 27926528,
+        "physical_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+        "rss_after": 93499392,
+        "rss_before": 27865088,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+          "snapshot_size": 595974,
+          "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        "wall_s": 0.6361464760266244
+      },
+      "host": "oldMac.lan",
+      "mode": "decode",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "relative_path": "South Asia Wave 1.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "DECODE_ONLY_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 595974,
+      "source_id": "SRC31"
+    },
+    "SRC31_filtered": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 4,
+        "physical_slots": 68,
+        "reader_encoding": null,
+        "response_slots": 64,
+        "row_count": 8442,
+        "source_format": "SAV",
+        "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "weight_slots": 0
+      },
+      "decode": {
+        "cpu_s": 1.289213,
+        "disk_after": {
+          "free": 2519560192,
+          "total": 438000656384,
+          "used": 435481096192
+        },
+        "disk_before": {
+          "free": 2520158208,
+          "total": 438000656384,
+          "used": 435480498176
+        },
+        "incidence_rows": 8442,
+        "incidence_variables": 68,
+        "maxrss_after": 94322688,
+        "maxrss_before": 28422144,
+        "physical_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+        "rss_after": 94212096,
+        "rss_before": 28360704,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+          "snapshot_size": 595974,
+          "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        "wall_s": 0.4798315829830244
+      },
+      "host": "oldMac.lan",
+      "mode": "filtered",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "relative_path": "South Asia Wave 1.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "FILTERED_STREAM_SCAN_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 595974,
+      "source_id": "SRC31",
+      "stream": {
+        "decoder_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+        "passes": [
+          {
+            "cell_count": 33768,
+            "cpu_s": 2.093331,
+            "first": [
+              1,
+              7,
+              "b8"
+            ],
+            "last": [
+              8442,
+              66,
+              "d18k"
+            ],
+            "maxrss_after": 101310464,
+            "pass": 1,
+            "rss_after": 101195776,
+            "rss_before": 95113216,
+            "wall_s": 2.1029940060107037
+          },
+          {
+            "cell_count": 33768,
+            "cpu_s": 2.1099090000000005,
+            "first": [
+              1,
+              7,
+              "b8"
+            ],
+            "last": [
+              8442,
+              66,
+              "d18k"
+            ],
+            "maxrss_after": 101679104,
+            "pass": 2,
+            "rss_after": 99364864,
+            "rss_before": 101113856,
+            "wall_s": 2.1229805580805987
+          }
+        ],
+        "selected_columns": [
+          "d18c",
+          "c13a",
+          "b8",
+          "d18k"
+        ],
+        "transport_identity": "BOUNDED_REPLAYABLE_ORIGINAL35_PHYSICAL_SOURCE_INCIDENCE@1"
+      }
+    },
+    "SRC31_materialize": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 4,
+        "physical_slots": 68,
+        "reader_encoding": null,
+        "response_slots": 64,
+        "row_count": 8442,
+        "source_format": "SAV",
+        "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "weight_slots": 0
+      },
+      "decode": {
+        "cpu_s": 1.352705,
+        "disk_after": {
+          "free": 3613061120,
+          "total": 438000656384,
+          "used": 434387595264
+        },
+        "disk_before": {
+          "free": 3613708288,
+          "total": 438000656384,
+          "used": 434386948096
+        },
+        "incidence_rows": 8442,
+        "incidence_variables": 68,
+        "maxrss_after": 93917184,
+        "maxrss_before": 28078080,
+        "physical_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+        "rss_after": 93806592,
+        "rss_before": 28016640,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+          "snapshot_size": 595974,
+          "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        "wall_s": 0.6565875769592822
+      },
+      "host": "oldMac.lan",
+      "materialize": {
+        "cell_count": 574056,
+        "cpu_s": 2.5290829999999995,
+        "maxrss_after": 225943552,
+        "rss_after": 225787904,
+        "rss_before": 94642176,
+        "wall_s": 2.5506270839832723
+      },
+      "mode": "materialize",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "relative_path": "South Asia Wave 1.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "MATERIALIZE_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 595974,
+      "source_id": "SRC31"
+    },
+    "SRC31_stream": {
+      "batch_size": 10000,
+      "config": {
+        "coordinate_slots": 4,
+        "physical_slots": 68,
+        "reader_encoding": null,
+        "response_slots": 64,
+        "row_count": 8442,
+        "source_format": "SAV",
+        "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "weight_slots": 0
+      },
+      "decode": {
+        "cpu_s": 1.2952190000000001,
+        "disk_after": {
+          "free": 1469628416,
+          "total": 438000656384,
+          "used": 436531027968
+        },
+        "disk_before": {
+          "free": 1470361600,
+          "total": 438000656384,
+          "used": 436530294784
+        },
+        "incidence_rows": 8442,
+        "incidence_variables": 68,
+        "maxrss_after": 94011392,
+        "maxrss_before": 28209152,
+        "physical_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+        "rss_after": 93900800,
+        "rss_before": 28147712,
+        "source_custody": {
+          "content_bound": true,
+          "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+          "reader_access_mode": "O_RDONLY",
+          "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+          "snapshot_path_unlinked": true,
+          "snapshot_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+          "snapshot_size": 595974,
+          "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        "wall_s": 0.493273549946025
+      },
+      "host": "oldMac.lan",
+      "mode": "stream",
+      "platform": "macOS-13.7.8-x86_64-i386-64bit",
+      "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+      "resolution": {
+        "expected_source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+        "relative_path": "South Asia Wave 1.sav",
+        "source_root_source": "LIBRARY_DEFAULT",
+        "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+      },
+      "result": {
+        "state": "STREAM_SCAN_OK"
+      },
+      "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+      "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+      "source_bytes": 595974,
+      "source_id": "SRC31",
+      "stream": {
+        "decoder_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+        "passes": [
+          {
+            "cell_count": 574056,
+            "cpu_s": 2.234115,
+            "first": [
+              1,
+              1,
+              "v1"
+            ],
+            "last": [
+              8442,
+              68,
+              "d13"
+            ],
+            "maxrss_after": 101261312,
+            "pass": 1,
+            "rss_after": 101179392,
+            "rss_before": 94806016,
+            "wall_s": 2.2469445139868185
+          },
+          {
+            "cell_count": 574056,
+            "cpu_s": 2.2572840000000003,
+            "first": [
+              1,
+              1,
+              "v1"
+            ],
+            "last": [
+              8442,
+              68,
+              "d13"
+            ],
+            "maxrss_after": 101638144,
+            "pass": 2,
+            "rss_after": 101576704,
+            "rss_before": 101097472,
+            "wall_s": 2.2736996919848025
+          }
+        ],
+        "transport_identity": "BOUNDED_REPLAYABLE_ORIGINAL35_PHYSICAL_SOURCE_INCIDENCE@1"
+      }
+    }
+  },
+  "implementation_commit": "be7e831f41e1c699890b7987cd2fea25be3f65d3",
+  "new_files": {
+    "rawlsing_next/pre553_original35_physical_stream.py": "95200d5bf2e77c0aa589cc21de6fd70b31cac497",
+    "rawlsing_next/tests/test_pre553_original35_physical_stream.py": "3e6553fd51bebbb501e923d22ff077842524a40a"
+  },
+  "not_run": [
+    "original35 native execution",
+    "all35 physical streaming",
+    "16 GiB operational test",
+    "SRC13 full bounded scan/build"
+  ],
+  "previous_adapter_commit": "69355d9a7a25de05b6b83049dcab8e986496738c",
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_EVIDENCE@1",
+  "tests": {
+    "adapter": "4 passed",
+    "focused": "34 passed"
+  }
+}

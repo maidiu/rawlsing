@@ -1,0 +1,9 @@
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py", "result": "4 passed", "step": "adapter_tests"}
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_original35_operations.py rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_current_port.py", "result": "34 passed", "step": "focused_tests"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode decode --batch-size 10000", "result": "decode OK", "step": "SRC31_decode"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode materialize --batch-size 10000", "result": "574056 cells; peak RSS 225943552", "step": "SRC31_materialize"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode stream --batch-size 10000", "result": "two exact passes; peak RSS 101638144", "step": "SRC31_stream"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode filtered --batch-size 10000", "result": "two exact 33768-cell selected-column passes over 8442 rows; peak RSS 101679104", "step": "SRC31_filtered"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode build --batch-size 10000", "result": "REFUSED unbound response value/state", "step": "SRC31_build"}
+{"command": "profile_existing_decode.py --source-id SRC16 --mode build --batch-size 10000", "result": "REFUSED unbound response value/state", "step": "SRC16_build"}
+{"command": "profile_existing_decode.py --source-id SRC13 --mode decode --batch-size 10000", "result": "decode OK; peak RSS 806420480", "step": "SRC13_decode"}

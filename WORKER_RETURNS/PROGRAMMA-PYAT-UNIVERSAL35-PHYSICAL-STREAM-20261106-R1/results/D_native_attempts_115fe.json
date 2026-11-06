@@ -1,0 +1,14 @@
+{
+  "schema": "PRE553_ORIGINAL35_NATIVE_ATTEMPTS@1",
+  "source_root_alias": "USER_ORIGINAL35_DATA_ROOT",
+  "attempts": [
+    {"source_id": "SRC31", "path": "original_sav", "status": "C11_RELEASE_REFUSED", "reason": "SourceBackedC11FacadeError:unbound response value/state; no label/frequency/missingness inference", "rows": 8442, "elapsed_seconds": 94.603, "maxrss_bytes": 1659699200},
+    {"source_id": "SRC09", "path": "native_r03_compiler", "status": "NOT_COMPLETED", "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED", "max_items_requested": 1},
+    {"source_id": "SRC10", "path": "native_r03_compiler", "status": "NOT_COMPLETED", "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED", "max_items_requested": 1},
+    {"source_id": "SRC11", "path": "native_r03_compiler", "status": "NOT_COMPLETED", "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED", "max_items_requested": 1},
+    {"source_id": "SRC15", "path": "native_r03_compiler", "status": "NOT_COMPLETED", "reason": "EAGER_PHYSICAL_DECODE_TIMEOUT_600S__EXACT_FILTERED_STREAM_ADAPTER_REQUIRED", "max_items_requested": 1}
+  ],
+  "unbound_prescan": {"SRC31": 325, "SRC32": 28877, "SRC04": 49868, "SRC16": 18105, "SRC24": 21730, "SRC25": 103491, "SRC33": 1003, "SRC26": 9586},
+  "exact_stream_need": "ExactPhysicalCellStream over only selected response+coordinate columns and full declared row_count, without eager full-frame materialization or rebuilding C11 twice; C new module is the intended producer.",
+  "native_facts_claimed": false
+}

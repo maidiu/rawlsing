@@ -1,0 +1,61 @@
+{
+  "batch_size": 10000,
+  "config": {
+    "coordinate_slots": 3,
+    "physical_slots": 181,
+    "reader_encoding": null,
+    "response_slots": 178,
+    "row_count": 7337,
+    "source_format": "SAV",
+    "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "weight_slots": 0
+  },
+  "decode": {
+    "cpu_s": 1.4176039999999999,
+    "disk_after": {
+      "free": 3613155328,
+      "total": 438000656384,
+      "used": 434387501056
+    },
+    "disk_before": {
+      "free": 3616411648,
+      "total": 438000656384,
+      "used": 434384244736
+    },
+    "incidence_rows": 7337,
+    "incidence_variables": 181,
+    "maxrss_after": 107536384,
+    "maxrss_before": 41889792,
+    "physical_metadata_digest": "1ef1739f290e69ccb74b0bbd0486e8338e8eae6224c924e520e0da141f5cc3be",
+    "rss_after": 102109184,
+    "rss_before": 40796160,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "snapshot_size": 1531099,
+      "source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    },
+    "wall_s": 0.7328607949893922
+  },
+  "host": "oldMac.lan",
+  "mode": "decode",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "resolution": {
+    "expected_source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "relative_path": "Arab Barometer Wave 1.sav",
+    "source_root_source": "LIBRARY_DEFAULT",
+    "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+  },
+  "result": {
+    "state": "DECODE_ONLY_OK"
+  },
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+  "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+  "source_bytes": 1531099,
+  "source_id": "SRC04"
+}

@@ -1,0 +1,61 @@
+{
+  "batch_size": 10000,
+  "config": {
+    "coordinate_slots": 2,
+    "physical_slots": 216,
+    "reader_encoding": null,
+    "response_slots": 157,
+    "row_count": 1613,
+    "source_format": "SAV",
+    "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "weight_slots": 0
+  },
+  "decode": {
+    "cpu_s": 1.4353879999999999,
+    "disk_after": {
+      "free": 3614621696,
+      "total": 438000656384,
+      "used": 434386034688
+    },
+    "disk_before": {
+      "free": 3614806016,
+      "total": 438000656384,
+      "used": 434385850368
+    },
+    "incidence_rows": 1613,
+    "incidence_variables": 216,
+    "maxrss_after": 122232832,
+    "maxrss_before": 70397952,
+    "physical_metadata_digest": "d452d90732cdd6a843241bcf74ed0488bf88b5a43d542a00d13845b14a255b73",
+    "rss_after": 122122240,
+    "rss_before": 57737216,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "snapshot_size": 1647241,
+      "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204"
+    },
+    "wall_s": 0.630746355978772
+  },
+  "host": "oldMac.lan",
+  "mode": "decode",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "resolution": {
+    "expected_source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "relative_path": "GSS1972.sav",
+    "source_root_source": "LIBRARY_DEFAULT",
+    "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+  },
+  "result": {
+    "state": "DECODE_ONLY_OK"
+  },
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+  "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+  "source_bytes": 1647241,
+  "source_id": "SRC16"
+}
