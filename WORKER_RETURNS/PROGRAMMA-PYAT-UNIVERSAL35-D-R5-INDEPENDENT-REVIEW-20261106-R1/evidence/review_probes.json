@@ -1,0 +1,28 @@
+{
+  "sourcefree": true,
+  "positive": {
+    "resolver_sequence": "A,A,A,A",
+    "facts": 30,
+    "expected_operations": 15,
+    "expected_candidates": 18,
+    "anti": true,
+    "op_anti": true,
+    "native": false,
+    "compilation_hash": "1735b859ca3620931ad9085bd9fb2b3759ef0c225ef123f6803948c6a6b4d555",
+    "ledger_hash": "62e879f35591793bf5a6a35907b9ce6ba4ca86069574b85004aafdf3a7ae381e"
+  },
+  "changed_after": "REFUSED SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+  "changed_pre_bypass": "ACCEPTED A,B,B,A with 30 facts/15 ops/18 candidates",
+  "revoked_after": "REFUSED SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+  "held_unselected_y": "PASS in 9 B tests; no eligible drop",
+  "tests": {"B": "9 passed in 30.24s", "D": "3 passed in 121.43s (manifest/path/no resolver)"},
+  "preserved": {
+    "frontier": {"sources": 7, "operations": 694, "eligible": 683, "held": 11, "no_explicit": 28},
+    "historical_frontier": {"sources": 20, "operations": 991},
+    "route": {"qualified": 676, "unknown": 4705, "unavailable": 249},
+    "plan": {"items": 18276, "slots": 18413, "operations": 18467},
+    "f_compilation_hash": "fdc6f3f98eb7aa1dd7189337106a5444fa1c375449d61e6debc50e708b19eef0",
+    "f_ledger_hash": "233d22727027b21a382267422a5f3311ce0b82d0d183e6d2a6023af56f4a66be"
+  },
+  "raw_rows_published": false
+}
