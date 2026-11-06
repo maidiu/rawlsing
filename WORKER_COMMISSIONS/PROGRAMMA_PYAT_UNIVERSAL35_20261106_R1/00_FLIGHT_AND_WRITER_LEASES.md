@@ -491,3 +491,12 @@ D `4b1d2ec8bec0166fcec7857a3a11fb3642b46109` / code `223e8bbc9624431ef8bae52e076
 Existing nonauthor F jobpyat-universal35-d-r15-caller-cold-independent-review-20261106-r1 PID1257 launched underc6c37fc30 at frozen4b1d2ec8. Checks real caller pass-through/nonSRC15 lawful behavior, exact source dependencies and new-process cold results/negative closure; no C adoption or original600srun. C validation repair and G compile engineering remain disjoint active lanes.
 
 PROGRAMMA_DELTA: existing native/physical/FieldForge component/seam/gap/work-now/current records identify actual caller candidate and remaining qualified C dependency. Author code present/tested does not imply actual original consumer proof. Originalfacts0/nativeS3/scientific/protected status unchanged; PR713 frozen qualified cut unaffected. Next receive existing three concrete code/review returns, qualify composition then execute authentic original path.
+
+
+### C R9 release-check repair candidate; coordinate token heuristic rejected
+
+C `423a8d85c823bb527e6c2ee105d2b7825bdf618b` / code `68980922c2748066e4481b0d222cc313256f3502` adds replay/coverage hash, authority snapshots, substrate and closure checks before release reuse. Author28testsPASS, zeroedhash/foreignref adverse cases refused. Independent validation acceptance remains pending; no performance/originalexecution improvement claimed.
+
+HQ actual diff finds coordinate qualification implemented with re.findall(authority_id), excluded words and sourceID/authority-token substrings in native/unit refs. That invents authority by name and can accept unrelated matching-token refs/refuse legitimate differently named refs. Exact boundary repair is not complete. Same C `pyat-universal35-exact-coordinate-binding-repair-20261106-r1` PID2586 launched under40bd19874 to replace heuristic with exact declared config/source/slot/native/unit/authority/effective-time binding, smallest typed input if existing package lacks it; D caller remains separate owner. No new signature framework or scientific meaning grant.
+
+PROGRAMMA_DELTA: existing physical/native component/seam/gap/work-now/current records preserve G e05 adverse evidence, add author release-check candidate and HQ observed heuristic defect. C correction/G compiler engineering/F frozenR15 review remain3useful lanes. Originalfacts0/actualSRC15joinNOT_RUN/fullscale improvement unproved; no native/scientific/protected acceptance or PR713 scope change. Next exact code correction then independent affected-boundary closure and genuine consumer execution.
