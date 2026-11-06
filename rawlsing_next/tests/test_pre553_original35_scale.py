@@ -3,6 +3,7 @@ from dataclasses import replace
 import pytest
 
 from rawlsing_next import pre553_source_backed_c11_facade as facade
+from rawlsing_next.pre553_empirical_objects import ExactRef
 from rawlsing_next.pre553_physical_decoder import PhysicalMissingState, decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     CoordinateValueRule,
@@ -41,6 +42,14 @@ def test_materialize_prebuilt_release_is_reused_by_repository(tmp_path, monkeypa
     assert release.release_ref == bundle.release.release_ref
     assert release.replay_manifest.ref == bundle.release.replay_manifest.ref
 
+    tampered = replace(bundle.release, semantic_release_hash="0" * 64)
+    hostile = replace(
+        stream, prebuilt_release=tampered,
+        prebuilt_projection_identity=bundle.projection.cache_identity,
+    )
+    with pytest.raises(facade.SourceBackedC11FacadeError, match="semantic hash"):
+        build_source_backed_c11_repository(hostile, bundle.projection)
+
 
 def test_materialize_consumes_exact_caller_coordinate_rules(tmp_path):
     path = tmp_path / "coordinate.sav"
@@ -70,6 +79,15 @@ def test_materialize_consumes_exact_caller_coordinate_rules(tmp_path):
             if obj.schema_id == "EmpiricalCoordinateFact"
         }
         assert coordinate_states == {"UNKNOWN"}
+        foreign = replace(
+            rule,
+            native_coordinate_ref=ExactRef(
+                "COORDINATE_NATIVE", "urn:wrong:source", "a" * 64),
+        )
+        with pytest.raises(NativePreimageRefusal, match="COORDINATE_RULE_SOURCE_QUALIFICATION_REQUIRED"):
+            materialize_native_preimages(
+                package=pkg, incidence=incidence, coordinate_rules=(foreign,),
+            )
         with pytest.raises(NativePreimageRefusal, match="COORDINATE_SLOT_RULE_MATCH_REQUIRED"):
             materialize_native_preimages(package=pkg, incidence=incidence, coordinate_rules=())
     finally:

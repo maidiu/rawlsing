@@ -19,6 +19,7 @@ from rawlsing_next.pre553_c11_ingest import (
 )
 from rawlsing_next.pre553_c11_integrity import (
     C11InternalRecord, QuestionVariableBinding, RespondentIdentity, TypedAbsence,
+    authority_snapshot_set_hash,
 )
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
@@ -606,6 +607,33 @@ def build_validated_source_backed_c11_release(incidence: PhysicalSourceIncidence
     return build_validated_c11_release(incidence, bridge, batch_size=batch_size)
 
 
+def _verify_prebuilt_release(release: C11LogicalRelease, projection: GovernedC11Projection) -> None:
+    if release.release_id != projection.release_id:
+        raise SourceBackedC11FacadeError("prebuilt release id mismatch")
+    if (release.source_artifact_ref.object_id != projection.source_artifact_id
+            or release.source_artifact_ref.content_hash != projection.expected_source_sha256):
+        raise SourceBackedC11FacadeError("prebuilt release source identity mismatch")
+    expected_release_hash = semantic_hash({
+        "candidate_projection_hash": release.replay_manifest.semantic_projection_hash,
+        "replay_manifest_ref": release.replay_manifest.ref.as_dict(),
+        "m01_m18": {key: list(value) for key, value in release.m01_m18_coverage.items()},
+    })
+    if expected_release_hash != release.semantic_release_hash:
+        raise SourceBackedC11FacadeError("prebuilt release semantic hash does not bind replay/coverage")
+    authorities = tuple(
+        obj for obj in release.public_objects if isinstance(obj, AuthoritySnapshot)
+    )
+    if release.replay_manifest.authority_snapshot_set_hash != authority_snapshot_set_hash(authorities):
+        raise SourceBackedC11FacadeError("prebuilt release authority binding mismatch")
+    if tuple(release.replay_manifest.source_substrate_content_refs) != (release.source_artifact_ref,):
+        raise SourceBackedC11FacadeError("prebuilt release source substrate binding mismatch")
+    refs = [release.source_artifact_ref, projection.source_snapshot_retention_ref]
+    refs.extend(obj.ref for obj in release.public_objects)
+    refs.extend(record.ref for record in release.internal_records)
+    if tuple(release.replay_manifest.closure_refs) != tuple(sorted(refs, key=lambda ref: ref.key)):
+        raise SourceBackedC11FacadeError("prebuilt release replay closure mismatch")
+
+
 def build_validated_source_backed_c11_release_from_stream(stream: ExactPhysicalCellStream, projection: GovernedC11Projection | None):
     if not isinstance(projection, GovernedC11Projection):
         raise SourceBackedC11FacadeError("explicit governed projection required")
@@ -614,6 +642,7 @@ def build_validated_source_backed_c11_release_from_stream(stream: ExactPhysicalC
             raise SourceBackedC11FacadeError("prebuilt release source SHA mismatch")
         if stream.prebuilt_projection_identity != projection.cache_identity:
             raise SourceBackedC11FacadeError("prebuilt release projection identity mismatch")
+        _verify_prebuilt_release(stream.prebuilt_release, projection)
         return stream.prebuilt_release
     candidate = project_c11_candidate_from_physical_cells(source_sha256=stream.source_sha256, row_count=stream.row_count,
                                                            cells=stream.iter_cells(), projection=projection)
@@ -678,6 +707,7 @@ def build_source_backed_c11_repository(
                 raise SourceBackedC11FacadeError("prebuilt release source SHA mismatch")
             if source.prebuilt_projection_identity != key.projection_identity:
                 raise SourceBackedC11FacadeError("prebuilt release projection identity mismatch")
+            _verify_prebuilt_release(source.prebuilt_release, projection)
             release = source.prebuilt_release
         else:
             release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)

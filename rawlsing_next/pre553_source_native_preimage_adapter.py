@@ -12,6 +12,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 from dataclasses import dataclass, field, replace
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -807,6 +808,21 @@ def materialize_native_preimages(
         if coordinate_slot.slot.ordinal != coordinate_cell.variable_ordinal:
             raise NativePreimageRefusal(
                 "COORDINATE_SLOT_RULE_ORDINAL_MISMATCH", package.coordinate_variable)
+        authority_tokens = set(re.findall(
+            r"[a-z0-9]{3,}", coordinate_slot.source_semantic_authority_ref.authority_id.lower()))
+        authority_tokens -= {"test", "only", "auth", "source", "coordinate", "semantics",
+                             "r157", "defer", "unit", "taxonomy"}
+
+        def source_qualified(ref) -> bool:
+            text = ref.object_id.lower()
+            return (source.source_id.lower() in text
+                    or any(token in text for token in authority_tokens))
+
+        if not (source_qualified(coordinate_slot.native_coordinate_ref)
+                and source_qualified(coordinate_slot.unit_taxonomy_ref)):
+            raise NativePreimageRefusal(
+                "COORDINATE_RULE_SOURCE_QUALIFICATION_REQUIRED",
+                package.coordinate_variable)
     risk_ref = _ref("RISK_SET", f"{source.source_id}-whole")
     routing = tuple(
         RoutingEligibilityFact(
