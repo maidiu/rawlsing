@@ -1,0 +1,15 @@
+returncode 1 source_restored True
+Traceback (most recent call last):
+  File "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-receive-evidence/r08_reorder_probe2.py", line 39, in <module>
+    handle=configure_evidence_world_context(target_ref=source["qrefs"]["Y"],conditions=conditions,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-cold-702/rawlsing_next/pre553_evidence_world_consumer.py", line 79, in configure_evidence_world_context
+    read_prefix_evidence(prefix)
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-cold-702/rawlsing_next/pre553_evidence_world_consumer.py", line 41, in read_prefix_evidence
+    values = reader.read()
+             ^^^^^^^^^^^^^
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-cold-702/rawlsing_next/pre553_universal_evidence_binding.py", line 2522, in read
+    self._assert_association()
+  File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-cold-702/rawlsing_next/pre553_universal_evidence_binding.py", line 2511, in _assert_association
+    raise EvidenceAssociationError(
+rawlsing_next.pre553_universal_evidence_binding.EvidenceAssociationError: result is not exact support: UNKNOWN

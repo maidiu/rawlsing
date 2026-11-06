@@ -1,0 +1,82 @@
+........................................................................ [ 48%]
+..............................................................F......... [ 97%]
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_ RuntimePackagingRebindTests.test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope _
+
+self = <test_fiabc_w3_i04_runtime_packaging_rebind.RuntimePackagingRebindTests testMethod=test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope>
+
+    def test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope(self) -> None:
+        overlay_path = RUNTIME / "03_LITS_RUNTIME_AUTHORITY_OVERLAY_BINDING.json"
+        overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            overlay["schema"],
+            "FIABC_LITS_I_RUNTIME_AUTHORITY_OVERLAY_BINDING@2.0.0",
+        )
+        self.assertEqual(
+            overlay["predecessor_packaging_binding"]["git_blob_sha"],
+            git_blob_sha(MANIFEST),
+        )
+        self.assertEqual(
+            overlay["historical_lits_materializer"]["git_blob_sha"],
+            "9406bacfd928393f6a159a46216aa1f7ec129f34",
+        )
+        self.assertEqual(
+            overlay["active_lits_runtime_materializer"]["git_blob_sha"],
+            git_blob_sha(RUNTIME / "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"),
+        )
+        for relative, expected in overlay["source_free_successor_components"].items():
+            self.assertTrue((ROOT / relative).is_file(), relative)
+>           self.assertEqual(git_blob_sha(ROOT / relative), expected, relative)
+E           AssertionError: '64555ce46807b815c6e26cb46b35622c73efe5ab' != 'f808dfcd2008cc71e9203de3cadf1abe14223974'
+E           - 64555ce46807b815c6e26cb46b35622c73efe5ab
+E           + f808dfcd2008cc71e9203de3cadf1abe14223974
+E            : rawlsing_next/_pre553_query_eval.py
+
+rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py:181: AssertionError
+___________ test_live_candidate_c_and_packaging_bind_final_hq_state ____________
+
+    def test_live_candidate_c_and_packaging_bind_final_hq_state():
+        binder = _constants(C_BINDER)
+        assert binder["WVS7_CURRENT_PROJECTION_CACHE_IDENTITY"] == WVS_PROJECTION
+>       assert _git_blob(C_BINDER) == C_BINDER_BLOB
+E       AssertionError: assert 'c2451b1b9d54...625083bb955d2' == '47893688ed45...aead6fb5bf2d2'
+E
+E         - 47893688ed455ced2c2f2311ad0aead6fb5bf2d2
+E         + c2451b1b9d54b9588455022e0d6625083bb955d2
+
+rawlsing_next/tests/test_fiabc_final_preflight_fanin.py:160: AssertionError
+_________ test_t5_contract_binds_final_successor_and_lits_current_law __________
+
+    def test_t5_contract_binds_final_successor_and_lits_current_law():
+        t5 = _load(T5)
+        wvs = t5["wvs_successor_court"]
+        assert wvs["discovery_authority"] == SUCCESSOR_DISCOVERY
+        assert wvs["lock2"] == SUCCESSOR_LOCK2
+        assert wvs["lock2_replay"] == SUCCESSOR_REPLAY
+        assert wvs["oracle_identity_sha256"] == WVS_ORACLE
+        assert wvs["oracle_truth_payload_identity"] == WVS_TRUTH
+        assert wvs["candidate_count"] == 46
+        assert wvs["candidate_hash_stream_exact"] is True
+
+        lits = t5["lits_a_current_court"]
+        assert lits["absent_historical_root"] is True
+        assert lits["current_entry_stage"] == "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD"
+        assert lits["preserved_s01_numeric_credit"] is False
+        assert lits["duplicate_prebuild_forbidden"] is True
+
+        anchors = t5["preservation_anchors"]
+        assert anchors["t1_runtime_packaging"]["wvs_runtime_package"]["blob"] == _git_blob(PACKAGE)
+        assert anchors["t1_runtime_packaging"]["wvs_projection_materializer"]["blob"] == _git_blob(MATERIALIZER)
+>       assert anchors["t2_current_binding"]["candidate_c_module"]["blob"] == _git_blob(C_BINDER)
+E       AssertionError: assert '47893688ed45...aead6fb5bf2d2' == 'c2451b1b9d54...625083bb955d2'
+E
+E         - c2451b1b9d54b9588455022e0d6625083bb955d2
+E         + 47893688ed455ced2c2f2311ad0aead6fb5bf2d2
+
+rawlsing_next/tests/test_fiabc_final_preflight_fanin.py:194: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py::RuntimePackagingRebindTests::test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope
+FAILED rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_live_candidate_c_and_packaging_bind_final_hq_state
+FAILED rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_t5_contract_binds_final_successor_and_lits_current_law
+3 failed, 144 passed in 55.08s

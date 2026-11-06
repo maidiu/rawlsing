@@ -1,0 +1,22 @@
+........................................................................ [ 42%]
+........................................................................ [ 84%]
+..........................F                                              [100%]
+=================================== FAILURES ===================================
+____________ test_same_source_r04_partial_resume_reaches_actual_p41 ____________
+rawlsing_next/tests/test_universal_world_binding.py:1393: in test_same_source_r04_partial_resume_reaches_actual_p41
+    result = _same_source_connected(p41_runtime, source_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+rawlsing_next/tests/test_universal_world_binding.py:949: in _same_source_connected
+    from rawlsing_next.tests.test_universal_workload import (
+/Users/matthewsmith/Library/Python/3.11/lib/python/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+rawlsing_next/tests/test_universal_workload.py:27: in <module>
+    from rawlsing_next.tests.test_universal_source_projection import (
+/Users/matthewsmith/Library/Python/3.11/lib/python/site-packages/_pytest/assertion/rewrite.py:188: in exec_module
+    exec(co, module.__dict__)
+rawlsing_next/tests/test_universal_source_projection.py:13: in <module>
+    import pyreadstat
+E   ModuleNotFoundError: No module named 'pyreadstat'
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41
+1 failed, 170 passed in 309.81s (0:05:09)

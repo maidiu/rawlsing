@@ -1,0 +1,35 @@
+# CI / PR-comment access limitation at receiving time
+
+Repository: maidiu/rawlsing (private)
+PR: 702
+Reviewed head: 0252e028e65dabb080d9aa485a151d5b77d32ffc
+
+The local fine-grained credential can read repository contents (git fetch and
+`GET /repos/maidiu/rawlsing` succeed; accepted permission metadata=read), but it
+cannot read pull requests, issue comments, issue events, notifications or
+Actions runs. No credential value is recorded here.
+
+Observed endpoints:
+
+- `GET https://api.github.com/repos/maidiu/rawlsing/pulls/702`
+  -> HTTP 403 `Resource not accessible by personal access token`.
+- `GET https://api.github.com/repos/maidiu/rawlsing/issues/702/comments`
+  -> HTTP 404 `Not Found`.
+- `GET https://api.github.com/repos/maidiu/rawlsing/pulls/702/comments`
+  -> HTTP 404 `Not Found`.
+- `GET https://api.github.com/repos/maidiu/rawlsing/actions/runs/42161998797`
+  -> HTTP 403 `Resource not accessible by personal access token`.
+- `GET https://api.github.com/repos/maidiu/rawlsing/issues/702/events`
+  -> HTTP 403 `Resource not accessible by personal access token`.
+- `GET https://api.github.com/repos/maidiu/rawlsing/commits/0252e028e65dabb080d9aa485a151d5b77d32ffc/comments`
+  -> HTTP 200 `[]`.
+- `git ls-remote origin refs/pull/702/head`
+  -> `0252e028e65dabb080d9aa485a151d5b77d32ffc refs/pull/702/head`.
+
+Consequence: the two mandatory issue-comment bodies
+(issuecomment-6675558777 and issuecomment-6676835047) and the exact CI run logs
+were not independently readable. The launch's quoted mandatory requirements,
+the in-repo L01 request/return, the R53/R116/R118 returns, and independently
+executed behavior at the exact head were used instead. The underlying CI
+commands were reproduced locally and matched the reported outcomes, but this
+is not a claim that the CI transport/artifact objects were read.

@@ -1,0 +1,104 @@
+# R01 final receiving — executed command ledger
+
+Repository: maidiu/rawlsing
+Reviewed head: 0252e028e65dabb080d9aa485a151d5b77d32ffc
+Reviewed tree: 245ff7941ab0d485c7ab346c0ef374a7d7924699
+Protected base: 8ffec40a6924848a49f95950aa9ce28c27ee3ec1
+Reviewer worktree: /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-receive-702
+Note: this host has no `python` executable; `python3` is Python 3.11.3.
+
+## Identity / clean worktree
+
+git fetch --no-tags origin refs/pull/702/head:refs/review/pr702-head
+git ls-remote origin 'refs/pull/702/head'
+git worktree add --detach <reviewer-worktree> refs/review/pr702-head
+git rev-parse HEAD
+git rev-parse HEAD^{tree}
+git rev-parse 8ffec40a6924848a49f95950aa9ce28c27ee3ec1
+git diff --stat 33af55415ef43f96457a017a24bdceab13fa6068 refs/review/pr702-head
+git status --porcelain=v1
+
+## Mandatory proof-integrity gate
+
+python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py changed --base 8ffec40a6924848a49f95950aa9ce28c27ee3ec1 --head 0252e028e65dabb080d9aa485a151d5b77d32ffc --root .
+
+## Retained sourcefree suite (five files, 171 nodes)
+
+python3 -B -m pytest -q -p no:cacheprovider --tb=short --junitxml=<evidence>/reviewer-sourcefree-junit.xml \
+  rawlsing_next/tests/test_l01_evidence_world_consumer.py \
+  rawlsing_next/tests/test_universal_evidence_binding.py \
+  rawlsing_next/tests/test_l01_reviewed_progressive_world.py \
+  rawlsing_next/tests/test_world_conditioned_progressive_service.py \
+  rawlsing_next/tests/test_universal_world_binding.py
+
+# Ambient interpreter lacked pyreadstat; the one affected node was rerun with
+# pyreadstat 1.3.2 and narwhals 2.28.0:
+python3 -B -m pytest -q -p no:cacheprovider --tb=short \
+  'rawlsing_next/tests/test_universal_world_binding.py::test_same_source_r04_partial_resume_reaches_actual_p41'
+
+## Actual first-consumer trace
+
+python3 -B -m rawlsing_next.tests.l01_sourcefree_replay
+
+## Cold replay in a second disposable worktree
+
+git worktree add --detach <cold-worktree> refs/review/pr702-head
+python3 WORKER_RETURNS/PROGRAMMA-PYAT-L01-SOURCEFREE-CONSUMER-20261105-R1/cold_replay.py
+
+Independent readback in the cold checkout:
+git rev-list --count HEAD                 # 1
+git remote                                # empty
+git status --porcelain                    # empty
+git cat-file -e f27d1101048638bba395143a48efb7ef00bfcda4^{commit}  # absent
+git cat-file -e f53cb0d2bce52640268c844c398bbd8007d28edc^{commit}  # absent
+git cat-file -e 849a76de18ef627c3c403b426ebe70f0951a7e7b^{commit}  # absent
+<venv>/bin/python -m pip freeze
+
+## Canonical tree integrity (reported CI run #42161998797)
+
+python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+
+## R61 sourcefree workload (reported CI run #42161998905)
+
+python3 -B -m pytest -q -p no:cacheprovider -o addopts='' --tb=short \
+  rawlsing_next/tests/test_universal_grammar.py \
+  rawlsing_next/tests/test_universal_workload.py \
+  rawlsing_next/tests/test_universal_source_projection.py \
+  rawlsing_next/tests/test_universal_source_byte_custody.py
+
+python3 -B -m pytest -q -p no:cacheprovider -o addopts='' --tb=short \
+  rawlsing_next/tests/test_r35_i01_physical_metadata.py \
+  rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py \
+  rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py
+
+python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_grammar.py.proof.json --root .
+python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_workload.py.proof.json --root .
+python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_universal_source_projection.py.proof.json --root .
+
+## Focused negative matrix
+
+python3 -B -m pytest -q -p no:cacheprovider -v --tb=short --junitxml=<evidence>/reviewer-negative-matrix-junit.xml \
+  rawlsing_next/tests/test_universal_evidence_binding.py::test_condition_a0_result_cannot_resolve_a1_request \
+  rawlsing_next/tests/test_universal_evidence_binding.py::test_wrong_actual_condition_or_admitted_labels_refuse_positive \
+  rawlsing_next/tests/test_universal_evidence_binding.py::test_actual_zero_support_does_not_become_positive_and_breaks_consumer \
+  rawlsing_next/tests/test_l01_evidence_world_consumer.py::test_wrong_claimed_prefix_condition_cannot_consume_signed_other_value \
+  rawlsing_next/tests/test_l01_evidence_world_consumer.py::test_status_mutation_never_produces_supported_world \
+  rawlsing_next/tests/test_l01_evidence_world_consumer.py::test_current_p41_receipt_owner_closes_historical_r53_failures \
+  rawlsing_next/tests/test_l01_reviewed_progressive_world.py::test_r117_mixed_prefix_model_identity_refuses \
+  rawlsing_next/tests/test_l01_reviewed_progressive_world.py::test_r117_consistent_alternate_model_remains_valid \
+  rawlsing_next/tests/test_l01_reviewed_progressive_world.py::test_r110_empirical_revocation_is_typed_unavailable_and_restores \
+  rawlsing_next/tests/test_l01_reviewed_progressive_world.py::test_r115_world_rows_hash_must_match_actual_owner_rows
+
+# Independent probes:
+python3 -B <evidence>/probes/cached_wrong_condition_probe.py
+python3 -B <evidence>/probes/r08_reorder_probe2.py
+python3 -B <evidence>/probes/run_r08_old_zip_control.py
+
+## Governed court (reported CI run #42161998791)
+
+python3 -m unittest discover -s CROSS_HQ_CONTROL_ROOM -p test_proof_integrity_gate_r1.py -v
+python3 -m rawlsing_next.rabochii_execution_protocol court .rabochii/court_spec.json
+python3 -m rawlsing_next.rabochii_bounded_court .rabochii/court_spec.json --receipt <evidence>/governed-court-receipt.json
+
+Result: 144 passed / 3 failed; the three failures are the inherited FIABC
+historical blob-anchor conflicts and are preserved as separate RED.

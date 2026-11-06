@@ -1,0 +1,72 @@
+{
+  "n10w": {
+    "prefix_cells": [
+      {
+        "0": 0,
+        "1": 4
+      },
+      {
+        "0": 0,
+        "1": 4
+      }
+    ],
+    "prefix_count": 2,
+    "state": "OPTIONS_AND_SOURCE_SUPPORT_PRODUCED"
+  },
+  "prefixes": [
+    {
+      "actual_association_order": [
+        "urn:test:i03:question_native:ord00-X"
+      ],
+      "association_matches_requested": true,
+      "canonical_leaf_order": [
+        "urn:test:i03:question_native:ord00-X"
+      ],
+      "conditioner_count": 1,
+      "old_positional_would_mismatch": false,
+      "orders_differ": false,
+      "prefix_index": 0,
+      "request_mismatch_reason": null,
+      "requested_binding_order": [
+        "urn:test:i03:question_native:ord00-X"
+      ],
+      "resolved_denominator": 4,
+      "resolved_state": "SUPPORTED"
+    },
+    {
+      "actual_association_order": [
+        "urn:test:i03:question_native:ord00-X",
+        "urn:test:i03:question_native:ord00-O"
+      ],
+      "association_matches_requested": true,
+      "canonical_leaf_order": [
+        "urn:test:i03:question_native:ord00-O",
+        "urn:test:i03:question_native:ord00-X"
+      ],
+      "conditioner_count": 2,
+      "old_positional_would_mismatch": true,
+      "orders_differ": true,
+      "prefix_index": 1,
+      "request_mismatch_reason": null,
+      "requested_binding_order": [
+        "urn:test:i03:question_native:ord00-X",
+        "urn:test:i03:question_native:ord00-O"
+      ],
+      "resolved_denominator": 4,
+      "resolved_state": "SUPPORTED"
+    }
+  ],
+  "requested_order": [
+    [
+      "X",
+      "1"
+    ],
+    [
+      "O",
+      "AB"
+    ]
+  ],
+  "tag": "ord00",
+  "view_reason": "ACTUAL_N9_N10E_N10W",
+  "view_state": "PROGRESSIVE_WORLD_SELECTED_VIEW"
+}

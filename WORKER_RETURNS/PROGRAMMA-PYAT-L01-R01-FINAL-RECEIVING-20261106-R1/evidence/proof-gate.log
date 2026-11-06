@@ -1,0 +1,71 @@
+{
+  "examined_tests": [
+    "rawlsing_next/tests/l01_evidence_world_fixture.py",
+    "rawlsing_next/tests/l01_sourcefree_replay.py",
+    "rawlsing_next/tests/test_l01_evidence_world_consumer.py",
+    "rawlsing_next/tests/test_l01_reviewed_progressive_world.py",
+    "rawlsing_next/tests/test_universal_evidence_binding.py",
+    "rawlsing_next/tests/test_universal_world_binding.py",
+    "rawlsing_next/tests/test_world_conditioned_progressive_service.py"
+  ],
+  "witness_contracts_run": 4,
+  "receipts": [
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "L01_SIGNED_R08_CELLS_REACH_NATIVE_NONPARENT_SOURCE_BALANCE",
+          "positive_node": "rawlsing_next/tests/test_l01_evidence_world_consumer.py::test_signed_r08_evidence_reaches_actual_nonparent_numbers_and_world_routes",
+          "fault_path": "rawlsing_next/pre553_universal_world_binding.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    },
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "R08_SIGNED_CONSUMER_DENOMINATOR_REACHES_E04_STEP",
+          "positive_node": "rawlsing_next/tests/test_universal_evidence_binding.py::test_positive_actual_producer_consumer_values_read",
+          "fault_path": "rawlsing_next/pre553_universal_evidence_binding.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    },
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "ACTUAL_P41_DISTINCT_MODELED_TEMPORAL_PAIR_IS_CONSUMED",
+          "positive_node": "rawlsing_next/tests/test_universal_world_binding.py::test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair",
+          "fault_path": "rawlsing_next/pre553_universal_world_binding.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    },
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "R118_PREFIX_EMPIRICAL_STEP_REACHES_NATIVE_NONPARENT",
+          "positive_node": "rawlsing_next/tests/test_world_conditioned_progressive_service.py::test_native_nonparent_consumer_runs_per_prefix_with_both_inputs",
+          "fault_path": "rawlsing_next/pre553_world_conditioned_progressive_service.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    }
+  ],
+  "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+}

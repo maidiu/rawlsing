@@ -1,0 +1,346 @@
+{
+  "schema": "RAWLSING_R01_INDEPENDENT_RECEIVING_MANIFEST_R1",
+  "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+  "repository": "maidiu/rawlsing",
+  "pr": 702,
+  "repaired_head": "0252e028e65dabb080d9aa485a151d5b77d32ffc",
+  "repaired_tree": "245ff7941ab0d485c7ab346c0ef374a7d7924699",
+  "protected_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+  "pre_repair_head": "33af55415ef43f96457a017a24bdceab13fa6068",
+  "repair_delta": {
+    "files": 3,
+    "insertions": 48,
+    "kind": "three sibling proof.json only"
+  },
+  "candidate_delta": {
+    "files": 59,
+    "insertions": 11285,
+    "deletions": 76
+  },
+  "reviewer_role": "independent I3+/High sourcefree receiving; not L01 author, repair implementer, original issuer, protected CAS merger or own reviewer",
+  "execution": {
+    "tool": "OpenCode local S2",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "host": "oldMac.lan",
+    "os": "macOS 13.7.8 x86_64",
+    "python": "3.11.3",
+    "ambient_pytest": "9.1.1",
+    "git": "2.39.1",
+    "cold_pytest": "9.0.2",
+    "cold_pandas": "2.3.1",
+    "cold_numpy": "2.3.2",
+    "cold_pyreadstat": "1.3.2",
+    "r61_pytest": "9.2.0",
+    "r61_pyarrow": "26.0.1",
+    "r61_duckdb": "2.0.0"
+  },
+  "results": {
+    "proof_gate": "PASS 4/4; all baselines PASS; all target assertions RED; source restored",
+    "sourcefree_warm": "171/171 behavior pass (170 first pass + 1 environment-dependency rerun)",
+    "cold_replay": "PASS; 167 passed, 4 deselected; one commit; no remotes; historical objects absent; trace byte-identical",
+    "first_consumer_output_hash": "760e934258844704ba0fb27e15f270ef880de1cd0c6fd7a3bfc45d6c004a705b",
+    "canonical_tree": "PASS",
+    "r61_sourcefree": "105 passed; decoder 37 passed + 1 documented skip; 3 witnesses PASS",
+    "governed_court": "144 passed / 3 failed inherited FIABC blob-anchor conflicts",
+    "negative_matrix": "17/17 focused nodes pass; cached wrong-condition refused; multi-leaf reorder current pass and old positional zip RED"
+  },
+  "residuals": [
+    "PR comment bodies and exact Actions run logs not readable with available credential (403/404); underlying commands reproduced locally.",
+    "R08 canonical-reorder edge has no committed regression fixture/proof contract; independently proven here.",
+    "P41 retained witness fault corrupts derived recorded flag; stronger non-consumption mutation also RED.",
+    "Inherited governed-court 144/3 remains separate RED; no FIABC repair or repin.",
+    "Scope is sourcefree TEST_ONLY only; no original source/science, R09, N11/N12, Sorok, protected CAS or production authority."
+  ],
+  "files": [
+    {
+      "path": "00_RETURN.md",
+      "sha256": "8695b03e7251ac098328e56fb80cb02545508e39fd0dd3694e7ddff46c396913",
+      "bytes": 19788
+    },
+    {
+      "path": "evidence/cached-wrong-condition-probe.json",
+      "sha256": "267fdc242b5c0029b22d5b9d599dbaecf8cf8fccc4e2a49f8e06c8689d1bc71e",
+      "bytes": 478
+    },
+    {
+      "path": "evidence/canonical-verify.log",
+      "sha256": "5581ba9fecb3090b6d0229dcd07fb975ab7d74d41c0195a6767965ada9982e4f",
+      "bytes": 205
+    },
+    {
+      "path": "evidence/ci-access-limitation.txt",
+      "sha256": "cae8328e2ea2edad21c9f87c8b5e751b9152be632221e33e288334fa467c4f88",
+      "bytes": 1819
+    },
+    {
+      "path": "evidence/cold-logs/cold-builder.log",
+      "sha256": "7f8b8067fc236b2e16656a2a51ed1c3f0eb365b06c83a78371bcd0da5b41ffc1",
+      "bytes": 671
+    },
+    {
+      "path": "evidence/cold-logs/cold-dependency-lock.txt",
+      "sha256": "785903373ca898d89d6cb3e0d33983d5c6e89c792a5ea2d6c10e981d5b98d54f",
+      "bytes": 191
+    },
+    {
+      "path": "evidence/cold-logs/cold-git-add.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/cold-logs/cold-git-commit.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/cold-logs/cold-git-init.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/cold-logs/cold-install.log",
+      "sha256": "8d39e8e3ec2ffde738a2b701696e0255f4aa5e1fde16bb471a3ebdca03901b70",
+      "bytes": 3182
+    },
+    {
+      "path": "evidence/cold-logs/cold-junit.xml",
+      "sha256": "2551c032d026b48afbc8c8c8cfa6872379349ba4b439a8d09eb84ca6380c5c6b",
+      "bytes": 28972
+    },
+    {
+      "path": "evidence/cold-logs/cold-replay-receipt.json",
+      "sha256": "110b41a0ef2f80ed8925d0c95e0bc712ebf06f7a3a286497fea65817c306b388",
+      "bytes": 671
+    },
+    {
+      "path": "evidence/cold-logs/cold-source-manifest.json",
+      "sha256": "eb89ffc9df48a748b107f86524f95bf2ac98ee2f40b3fa3b355ea8b9b0a6fc21",
+      "bytes": 60533
+    },
+    {
+      "path": "evidence/cold-logs/cold-tests.log",
+      "sha256": "ddc96bf4ddb10c659c406754ad2114dada2e8bb0b820ca385ea0bcc240cd81b7",
+      "bytes": 286
+    },
+    {
+      "path": "evidence/cold-logs/cold-trace.json",
+      "sha256": "3f83fe1fe70db7522cffa538ef32ed3b4de8953fcd3dd6ea561d280d81586bcd",
+      "bytes": 79612
+    },
+    {
+      "path": "evidence/cold-logs/cold-venv.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/cold-logs/warm-final-trace.json",
+      "sha256": "3f83fe1fe70db7522cffa538ef32ed3b4de8953fcd3dd6ea561d280d81586bcd",
+      "bytes": 79612
+    },
+    {
+      "path": "evidence/cold-replay.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/commands.txt",
+      "sha256": "796f6a326b5078391476429ff60c6b2e5ce00e8ece2648d3b521bb9ed1ba6e36",
+      "bytes": 5715
+    },
+    {
+      "path": "evidence/governed-court-receipt.json",
+      "sha256": "08cd9373252d045062515d77c40dea7270a02896c452f7acb076c75843933400",
+      "bytes": 1073
+    },
+    {
+      "path": "evidence/governed-court-validate.log",
+      "sha256": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+      "bytes": 5
+    },
+    {
+      "path": "evidence/governed-court.log",
+      "sha256": "1491e9521864e33814a59f2b6032a6fa747b2065900e7de01906a39869c8cc06",
+      "bytes": 4770
+    },
+    {
+      "path": "evidence/head-identity.txt",
+      "sha256": "4155ddc11d39f36acd1b3ff930a338c56841bd7e374663c6eb3968153f020335",
+      "bytes": 138
+    },
+    {
+      "path": "evidence/junit-summary.json",
+      "sha256": "4d12fd955b3923105467f3098e1ff123354bad06581bc0ccdf3100902dd6c88e",
+      "bytes": 1566
+    },
+    {
+      "path": "evidence/mutant-probes.json",
+      "sha256": "f99aa5f3e3f37ed320d29c9eebfb8d2c52d266896bc748feeeb5413a19650cd7",
+      "bytes": 9228
+    },
+    {
+      "path": "evidence/p41-nonconsumption-probe.json",
+      "sha256": "6babcb94cf61de142ea19b6634fdc08001ecc0a2a713d8fb97740b931ccb5101",
+      "bytes": 1661
+    },
+    {
+      "path": "evidence/post-gate-source-sha256.txt",
+      "sha256": "c4515b936faa31998cf0916f86096203a18132e46c254a8a249081b5e9ec8af6",
+      "bytes": 359
+    },
+    {
+      "path": "evidence/pre-gate-source-sha256.txt",
+      "sha256": "c4515b936faa31998cf0916f86096203a18132e46c254a8a249081b5e9ec8af6",
+      "bytes": 359
+    },
+    {
+      "path": "evidence/prior/R116_00_REVIEW.md",
+      "sha256": "de06da5ece7198742661c3b39c39926aef2ed0d6745148ff15eacad41f74b16a",
+      "bytes": 6184
+    },
+    {
+      "path": "evidence/prior/R118_00_REVIEW.md",
+      "sha256": "fc67c4b3b784fa7d9a7448e9436aa954d45d25f5a5f483370976a556f88929e0",
+      "bytes": 5247
+    },
+    {
+      "path": "evidence/prior/R53_00_RETURN.md",
+      "sha256": "e990c712bd75c533a87c1a2cf989c90d5356470b7c0c8204b8a9e58513c1c797",
+      "bytes": 6842
+    },
+    {
+      "path": "evidence/prior/R53_matrix.tsv",
+      "sha256": "4ae8fc4223e0efb2e3738acad8e09d958f25c98232aea8b53495a26819054562",
+      "bytes": 11815
+    },
+    {
+      "path": "evidence/probes/cached_wrong_condition_probe.py",
+      "sha256": "17582500f6f76f246878feb82c7b63b6b07b35924838ff20fd1ba79f2cb57e40",
+      "bytes": 1663
+    },
+    {
+      "path": "evidence/probes/r08_reorder_probe2.py",
+      "sha256": "b466afc9b9fd349209e44dcb9637cc95c806efb5b5b4e8855856e1df9b391925",
+      "bytes": 3572
+    },
+    {
+      "path": "evidence/probes/run_mutant_probes.py",
+      "sha256": "bb5fc19f434f4e70fa96968053c0225a79759e095c36a213ad14c0e4f1d61a9c",
+      "bytes": 2349
+    },
+    {
+      "path": "evidence/probes/run_p41_nonconsumption_probe.py",
+      "sha256": "0d726971123cd2cea90dcbfdc013db2a2f6c0fcdb5c5613f228dd1201fc4a184",
+      "bytes": 1595
+    },
+    {
+      "path": "evidence/probes/run_r08_old_zip_control.py",
+      "sha256": "b01caff787d88737f4a198fabd3f8155f387faf2378434119036d43c57445254",
+      "bytes": 1647
+    },
+    {
+      "path": "evidence/proof-gate-selftest.log",
+      "sha256": "5c1d729b0b04edfaa408aef3b43085f4802c21eb8de6bc717070bfe112c49651",
+      "bytes": 1230
+    },
+    {
+      "path": "evidence/proof-gate.log",
+      "sha256": "59906407c77e2b823962230c7c383ced46a6f9de2436bca9b667412d7b62a2ee",
+      "bytes": 3013
+    },
+    {
+      "path": "evidence/r08-old-zip-control.log",
+      "sha256": "9a44ed2b20826de3e591355e57d1b37b36d7a8f67433007e6abb916ce0de4ae8",
+      "bytes": 1349
+    },
+    {
+      "path": "evidence/r08-reorder-probe2.json",
+      "sha256": "fdf93b4d2518bea546b4138dcb777315c6fc9ee53a3d31c77e3c6dfcb380c003",
+      "bytes": 1721
+    },
+    {
+      "path": "evidence/r61-decoder-junit.xml",
+      "sha256": "cfd36da25f894f689e2fff9a5b13a9804e5b110c3926d05a37580cc77fb86b49",
+      "bytes": 7039
+    },
+    {
+      "path": "evidence/r61-decoder.log",
+      "sha256": "53cd2c334dc80b980f09bbefccd1aa25c5c323e58402f04a03ccd47b8cc781ac",
+      "bytes": 111
+    },
+    {
+      "path": "evidence/r61-sourcefree-junit.xml",
+      "sha256": "3bea26b532b7fdc8d4177d81e040f945ed2f4f26bdcc0c74e94fff366c2c096c",
+      "bytes": 16509
+    },
+    {
+      "path": "evidence/r61-sourcefree.log",
+      "sha256": "43e7e64392a45c3192f52bc748b2c79d2445fe60ec96152e86b90730f6004ed1",
+      "bytes": 192
+    },
+    {
+      "path": "evidence/r61-test_universal_grammar-witness.json",
+      "sha256": "5e4cae89f8ce03d55c952ff4daf7e5c3f6163997032fcd2b1b8350e43f7569a6",
+      "bytes": 527
+    },
+    {
+      "path": "evidence/r61-test_universal_grammar-witness.log",
+      "sha256": "5e4cae89f8ce03d55c952ff4daf7e5c3f6163997032fcd2b1b8350e43f7569a6",
+      "bytes": 527
+    },
+    {
+      "path": "evidence/r61-test_universal_source_projection-witness.json",
+      "sha256": "623d35e6ea8264631ca2c35ba46042d4ef9452d4f4c767ff54a8ac176fe4af6d",
+      "bytes": 547
+    },
+    {
+      "path": "evidence/r61-test_universal_source_projection-witness.log",
+      "sha256": "623d35e6ea8264631ca2c35ba46042d4ef9452d4f4c767ff54a8ac176fe4af6d",
+      "bytes": 547
+    },
+    {
+      "path": "evidence/r61-test_universal_workload-witness.json",
+      "sha256": "1c6b858411f159e2eab50b383772ed48c4bfae29d34745e02fcbce2b4fc2c137",
+      "bytes": 530
+    },
+    {
+      "path": "evidence/r61-test_universal_workload-witness.log",
+      "sha256": "1c6b858411f159e2eab50b383772ed48c4bfae29d34745e02fcbce2b4fc2c137",
+      "bytes": 530
+    },
+    {
+      "path": "evidence/reviewer-first-consumer-trace.json",
+      "sha256": "3f83fe1fe70db7522cffa538ef32ed3b4de8953fcd3dd6ea561d280d81586bcd",
+      "bytes": 79612
+    },
+    {
+      "path": "evidence/reviewer-negative-matrix-junit.xml",
+      "sha256": "7e709ea404ae45774b62812f475dc7d59af8777cb74cbf35e7aa5192bc483eb0",
+      "bytes": 3019
+    },
+    {
+      "path": "evidence/reviewer-negative-matrix.log",
+      "sha256": "a00efd16b87ff69faa4a5b4be7da122cc363ceeab3e6b02d86350e4fc8f50268",
+      "bytes": 713
+    },
+    {
+      "path": "evidence/reviewer-sourcefree-junit-rerun.xml",
+      "sha256": "48268d9587d0d6c479fdf18d31451620671733902ed0894252560d91417e05b4",
+      "bytes": 396
+    },
+    {
+      "path": "evidence/reviewer-sourcefree-junit.xml",
+      "sha256": "9a8ab9fb825c9761e0a6d93fceb7db3bcf105a02128bd8d128165452df550d6d",
+      "bytes": 30599
+    },
+    {
+      "path": "evidence/reviewer-sourcefree-rerun.log",
+      "sha256": "d222a53e6d14579e623737661d99aab0605ed82e962b44c4bc9aa6d4038214e0",
+      "bytes": 109
+    },
+    {
+      "path": "evidence/reviewer-sourcefree.log",
+      "sha256": "65c16dabaab023c4d23ff9c6f0ec8bce5675faa379a59fc576354e4180573e1c",
+      "bytes": 1595
+    }
+  ]
+}

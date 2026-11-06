@@ -1,0 +1,35 @@
+{
+  "mutation": "T1 snapshot not constructed under temporal pair",
+  "returncode": 1,
+  "source_restored": true,
+  "failure_lines": [
+    ">       assert view.state == \"R05_WORLD_SELECTED_VIEW\", view.reason_code",
+    "E       AssertionError: R05_CLAIMED_RECEIPT_MISSING",
+    "E       assert 'REFUSED' == 'R05_WORLD_SELECTED_VIEW'",
+    "E         ",
+    "E         - R05_WORLD_SELECTED_VIEW",
+    "E         + REFUSED"
+  ],
+  "tail": [
+    "=================================== FAILURES ===================================",
+    "________ test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair ________",
+    "",
+    "p41_runtime = '/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/r01-cold-702/rawlsing_next/sourcefree_world'",
+    "",
+    "    def test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair(p41_runtime):",
+    "        data = _build_r05_learned_inprocess()",
+    "        receipts = _run_r05_p41(p41_runtime)",
+    "        view = select_r05_world_view(_r05_request(data, receipts))",
+    ">       assert view.state == \"R05_WORLD_SELECTED_VIEW\", view.reason_code",
+    "E       AssertionError: R05_CLAIMED_RECEIPT_MISSING",
+    "E       assert 'REFUSED' == 'R05_WORLD_SELECTED_VIEW'",
+    "E         ",
+    "E         - R05_WORLD_SELECTED_VIEW",
+    "E         + REFUSED",
+    "",
+    "rawlsing_next/tests/test_universal_world_binding.py:664: AssertionError",
+    "=========================== short test summary info ============================",
+    "FAILED rawlsing_next/tests/test_universal_world_binding.py::test_r06r2_actual_r05_learned_to_p41_world_with_synthetic_pair",
+    "1 failed in 2.90s"
+  ]
+}
