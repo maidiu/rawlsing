@@ -1,0 +1,72 @@
+{
+  "actual_p2_regression": {
+    "action_event_hash": "d7c4a30bc59bcb55e953335647d58e7ba7d00659b30c06016bbb7b060d9f16bf",
+    "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_7f30b86812802bff54dbfb77f81ac06481d5aae255d5e0a2703cd5598ef4a416",
+    "actual_receipt": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/compression-native-binding-repair/actual_p2_receipt.json",
+    "actual_receipt_sha256": "1f8975c0c98f3c39c2917e5c8a5c90224a4452a78eadf1dce80995906e9ac885",
+    "e1_event_hash": "1b81224cc96857c385a05e898d69afb79ffe8308e271270337a3f515ba5a0c6a",
+    "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+    "envelope_hash": "eb8e6676b30d1e52e2d72418c61f69143b2bc14fe7b32b0ebb036e287b994d9b",
+    "held_checks": {
+      "restored_exact": true,
+      "substituted_action_id": {
+        "reason": "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT",
+        "status": "HELD"
+      },
+      "without_actor_perception": {
+        "reason": "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT",
+        "status": "HELD"
+      },
+      "without_e1_action_binding": {
+        "reason": "ACTUAL_ACTION_BINDING_UNAVAILABLE",
+        "status": "HELD"
+      }
+    },
+    "interval_receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+    "interval_status": "PARTIAL",
+    "perception": {
+      "channel": "co_present",
+      "clock": 228
+    },
+    "realized_sha256": "5353a21349f31d3ff75ccab0fee28c8b567d8b164bb50095d24d8f22c6021493",
+    "status": "PASS_BOUND"
+  },
+  "branch": "agent/sorok-p3-compression-native-binding-repair-20261106-r1",
+  "candidate_commit": "PENDING_ARTIFACT_COMMIT",
+  "duration_seconds_observed": 4.89,
+  "exit": 0,
+  "failed": 0,
+  "passed": 23,
+  "previous_author_tests": 22,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "pytest_log": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/compression-native-binding-repair/pytest.log",
+  "pytest_log_sha256": "417be7bd84008ae67a932504f02835371be0c4cc2693375b4121267088b98d18",
+  "runtime": {
+    "effort": "max",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "model_verification": "commission/session assignment; no separate model probe",
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "Python 3.11.3",
+    "quota": "UNKNOWN_UNOBSERVED"
+  },
+  "schema": "SOROK_P3_COMPRESSION_NATIVE_BINDING_REPAIR_TESTS@1.0.0",
+  "scope": {
+    "actual_p2_events_run": 1,
+    "adp016_017_memory_or_claim": false,
+    "ci": false,
+    "compression_owner_calls": 0,
+    "compression_world_events": 0,
+    "original_sav_read": false,
+    "p2_batches_run": 0,
+    "production_edit": false,
+    "protected_merge": false,
+    "psychological_effects": [],
+    "respondent_read": false,
+    "sourcefree": true
+  },
+  "skipped": 0,
+  "startup_commit": "501f646199bc28197d5dbb3966d016669b51c44b",
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1 python3 -m pytest WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_compression.py -q -o addopts=\"\" -p no:cacheprovider",
+  "worker": "sorok-p3-compression-native-binding-repair-r1"
+}

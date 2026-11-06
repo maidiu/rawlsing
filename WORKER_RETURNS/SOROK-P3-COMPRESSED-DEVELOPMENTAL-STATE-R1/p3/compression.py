@@ -345,13 +345,25 @@ def _realized(value: Any, identity: Mapping[str, Any], proposal: Mapping[str, An
         _fail("actual event branch does not bind identity")
     if event_hash not in doc["readset"] or doc["receipt_ref"] != "P2_EVENT:" + event_hash:
         _fail("actual event hash is not bound to readset/receipt")
+    action_ref = event.get("action_event_id")
+    action_hash = event.get("action_event_hash")
+    if action_ref is not None or action_hash is not None:
+        _string(action_ref, "actual action_event_id")
+        _string(action_hash, "actual action_event_hash")
+        if not _is_hash(action_hash):
+            _fail("actual action_event_hash must be a lowercase 64-hex digest")
+        doc["actual_action_ref"] = action_ref
+        doc["actual_action_hash"] = action_hash
+    else:
+        doc["actual_action_ref"] = None
+        doc["actual_action_hash"] = None
     doc["objective"]["event"] = event
     doc["actual_event_ref"] = event_ref
     doc["actual_event_hash"] = event_hash
     return doc
 
 
-def _perception_refs(accessible: Mapping[str, Any], event_ref: str,
+def _perception_refs(accessible: Mapping[str, Any], action_ref: str,
                      actor: str) -> list[dict[str, Any]]:
     status = accessible.get("status")
     if status != "OBSERVED":
@@ -405,7 +417,7 @@ def _perception_refs(accessible: Mapping[str, Any], event_ref: str,
                     "channel": channel,
                     "ref": digest({"event_id": event_id, "clock": clock, "channel": channel}),
                 })
-    if refs and not any(ref["event_id"] == event_ref for ref in refs):
+    if refs and not any(ref["event_id"] == action_ref for ref in refs):
         return []
     return refs
 
@@ -430,6 +442,8 @@ def _held_envelope(
     reason: str,
     actual_event_ref: str | None = None,
     actual_event_hash: str | None = None,
+    actual_action_ref: str | None = None,
+    actual_action_hash: str | None = None,
     actual_interval: Mapping[str, Any] | None = None,
     source_hashes: Mapping[str, str] | None = None,
     native_status: str | None = None,
@@ -448,6 +462,8 @@ def _held_envelope(
         "source_ref_hashes": detached(source_hashes or {}),
         "actual_event_ref": actual_event_ref,
         "actual_event_hash": actual_event_hash,
+        "actual_action_ref": actual_action_ref,
+        "actual_action_hash": actual_action_hash,
         "native_status": native_status,
         "actual_interval_ref": None,
         "actual_interval_hash": None,
@@ -476,6 +492,8 @@ def _bound_envelope(
     *,
     actual_event_ref: str,
     actual_event_hash: str,
+    actual_action_ref: str,
+    actual_action_hash: str,
     actual_interval: Mapping[str, Any] | None,
     perception_refs: list[dict[str, Any]],
     source_hashes: Mapping[str, str],
@@ -495,6 +513,8 @@ def _bound_envelope(
         "source_ref_hashes": detached(source_hashes),
         "actual_event_ref": actual_event_ref,
         "actual_event_hash": actual_event_hash,
+        "actual_action_ref": actual_action_ref,
+        "actual_action_hash": actual_action_hash,
         "native_status": native_status,
         "actual_interval_ref": actual_interval.get("receipt_hash") if actual_interval else None,
         "actual_interval_hash": digest(actual_interval) if actual_interval else None,
@@ -549,6 +569,8 @@ def bind(
 
     actual_event_ref = realized_doc.get("actual_event_ref")
     actual_event_hash = realized_doc.get("actual_event_hash")
+    actual_action_ref = realized_doc.get("actual_action_ref")
+    actual_action_hash = realized_doc.get("actual_action_hash")
     interval = _interval(realized_doc["objective"].get("interval"))
     consequence_interval = _interval(realized_doc["consequences"].get("interval"))
     if interval != consequence_interval:
@@ -560,6 +582,8 @@ def bind(
             reason="ACTUAL_EVENT_NOT_AVAILABLE",
             actual_event_ref=actual_event_ref,
             actual_event_hash=actual_event_hash,
+            actual_action_ref=actual_action_ref,
+            actual_action_hash=actual_action_hash,
             actual_interval=interval,
             source_hashes=source_hashes,
             native_status=realized_doc["status"],
@@ -568,6 +592,18 @@ def bind(
         return _held_envelope(
             spec_doc, identity_doc,
             reason="ACTUAL_EVENT_UNAVAILABLE",
+            actual_interval=interval,
+            source_hashes=source_hashes,
+            native_status=realized_doc["status"],
+        )
+    if not actual_action_ref or not actual_action_hash:
+        return _held_envelope(
+            spec_doc, identity_doc,
+            reason="ACTUAL_ACTION_BINDING_UNAVAILABLE",
+            actual_event_ref=actual_event_ref,
+            actual_event_hash=actual_event_hash,
+            actual_action_ref=actual_action_ref,
+            actual_action_hash=actual_action_hash,
             actual_interval=interval,
             source_hashes=source_hashes,
             native_status=realized_doc["status"],
@@ -581,17 +617,21 @@ def bind(
             reason="ACTOR_ACCESS_UNAVAILABLE",
             actual_event_ref=actual_event_ref,
             actual_event_hash=actual_event_hash,
+            actual_action_ref=actual_action_ref,
+            actual_action_hash=actual_action_hash,
             actual_interval=interval,
             source_hashes=source_hashes,
             native_status=realized_doc["status"],
         )
-    perception_refs = _perception_refs(accessible, actual_event_ref, identity_doc["actor"])
+    perception_refs = _perception_refs(accessible, actual_action_ref, identity_doc["actor"])
     if not perception_refs:
         return _held_envelope(
             spec_doc, identity_doc,
             reason="ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT",
             actual_event_ref=actual_event_ref,
             actual_event_hash=actual_event_hash,
+            actual_action_ref=actual_action_ref,
+            actual_action_hash=actual_action_hash,
             actual_interval=interval,
             source_hashes=source_hashes,
             native_status=realized_doc["status"],
@@ -603,6 +643,8 @@ def bind(
                 reason="ACTUAL_INTERVAL_UNAVAILABLE",
                 actual_event_ref=actual_event_ref,
                 actual_event_hash=actual_event_hash,
+                actual_action_ref=actual_action_ref,
+                actual_action_hash=actual_action_hash,
                 actual_interval=interval,
                 source_hashes=source_hashes,
                 native_status=realized_doc["status"],
@@ -611,6 +653,8 @@ def bind(
         spec_doc, identity_doc,
         actual_event_ref=actual_event_ref,
         actual_event_hash=actual_event_hash,
+        actual_action_ref=actual_action_ref,
+        actual_action_hash=actual_action_hash,
         actual_interval=interval,
         perception_refs=perception_refs,
         source_hashes=source_hashes,

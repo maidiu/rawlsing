@@ -142,9 +142,13 @@ def fixture_realized(proposal: dict, identity: dict, *,
     actor = event_actor or identity["actor"]
     branch = event_branch or identity["branch"]
     actual_hash = event_hash or digest({"fixture": "actual-event"})
+    action_id = "TEST_ONLY_BP4_WORLD_EVT_fixture-action"
+    action_hash = digest({"fixture": "actual-action"})
     actual_event = event or {
-        "e1_event_id": "TEST_ONLY_P2_EVENT_1",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-fixture",
         "e1_event_hash": actual_hash,
+        "action_event_id": action_id,
+        "action_event_hash": action_hash,
         "actor_id": actor,
         "branch_id": branch,
         "event_time": proposal["event_time"],
@@ -159,7 +163,7 @@ def fixture_realized(proposal: dict, identity: dict, *,
             "actor_ref": identity["actor"],
             "status": "OBSERVED",
             "events": [{
-                "event_id": actual_event["e1_event_id"],
+                "event_id": actual_event["action_event_id"],
                 "clock": proposal["event_time"],
                 "summary": "compact fixture projection",
                 "perception": {"clock": proposal["event_time"], "channel": "co_present"},
@@ -210,8 +214,11 @@ def test_preflight_and_bind_all_four_forms(form: str) -> None:
     assert envelope["status"] == "BOUND"
     assert envelope["representation_form"] == form
     assert envelope["identity"] == identity
-    assert envelope["actual_event_ref"] == "TEST_ONLY_P2_EVENT_1"
+    assert envelope["actual_event_ref"] == realized["objective"]["event"]["e1_event_id"]
     assert envelope["actual_event_hash"] == realized["objective"]["event"]["e1_event_hash"]
+    assert envelope["actual_action_ref"] == realized["objective"]["event"]["action_event_id"]
+    assert envelope["actual_action_hash"] == realized["objective"]["event"]["action_event_hash"]
+    assert envelope["actual_event_ref"] != envelope["actual_action_ref"]
     assert envelope["actor_access"] == "OBSERVED"
     assert envelope["perception_refs"]
     assert envelope["source_ref_hashes"]["source:participation"] == catalog["source:participation"]["hash"]
@@ -477,7 +484,7 @@ def test_summary_actor_experience_shape_is_supported_without_user_view() -> None
     summary["accessible"] = {
         "status": "OBSERVED",
         "actor_ref": identity["actor"],
-        "event_ids": ["TEST_ONLY_P2_EVENT_1"],
+        "event_ids": ["TEST_ONLY_BP4_WORLD_EVT_fixture-action"],
         "perceptions": [{"clock": 100, "channel": "co_present"}],
         "memory_formation": "MISSING_RULE",
     }
@@ -485,3 +492,144 @@ def test_summary_actor_experience_shape_is_supported_without_user_view() -> None
                   catalog=catalog, realized=summary)
     assert result["status"] == "BOUND"
     assert result["perception_refs"]
+
+
+# ---------------------------------------------------------------------------
+# Actual P2 owner regression: E1 occurrence and action/perception IDs differ.
+# ---------------------------------------------------------------------------
+
+
+def test_actual_p2_owner_e1_action_perception_binding() -> None:
+    """Run one real sourcefree P2 owner event and bind its realized document.
+
+    The compression layer itself only reads the supplied document. The single
+    P2 event is the required actual producer-consumer witness; no batch or
+    additional world event is issued by this module.
+    """
+    from developmental_recursion.p2_owner import P2Owner, load_p2
+
+    # Use a unique temporary directory outside tracked evidence.
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="sorok-compression-p2-") as td:
+        fanin = load_p2().start(Path(td) / "actual")
+        case = fanin.deps["case_for"](True)
+        owner = P2Owner(
+            fanin,
+            case=case,
+            source=fanin.deps["source_for"](case),
+            participants=tuple(fanin.session.read_root()["actor_ids"]),
+        )
+        try:
+            before = owner.snapshot()
+            proposal = {
+                "event_id": "actual-compression-witness",
+                "event_time": before.clock + 6,
+                "operation": "ADMIT_EVENT",
+                "source_refs": [owner.source_ref],
+                "participants": list(owner.participants),
+                "circumstances": {},
+                "interval": {"mode": "ACTUAL", "span": 4},
+            }
+            from developmental_recursion.contracts import EventProposal, digest
+            proposal_obj = EventProposal(
+                event_id=proposal["event_id"],
+                event_time=proposal["event_time"],
+                operation=proposal["operation"],
+                source_refs=tuple(proposal["source_refs"]),
+                participants=tuple(proposal["participants"]),
+                circumstances=proposal["circumstances"],
+                interval=proposal["interval"],
+            )
+            realized = owner.realize("actual-compression-witness", proposal_obj, before)
+            realized_doc = realized.document()
+            actual_event = realized_doc["objective"]["event"]
+            assert actual_event["e1_event_id"] == "TEST_ONLY_BP2_E1_OCC-0002"
+            assert actual_event["action_event_id"].startswith("TEST_ONLY_BP4_WORLD_EVT_")
+            assert actual_event["e1_event_id"] != actual_event["action_event_id"]
+            assert realized_doc["accessible"]["status"] == "OBSERVED"
+            assert realized_doc["accessible"]["actor_ref"] == before.actor
+            assert realized_doc["accessible"]["events"][0]["event_id"] == actual_event["action_event_id"]
+
+            source = source_doc(
+                "actual-participation", "ACTOR_PARTICIPATION",
+                before.clock, proposal["event_time"], before.document(),
+            )
+            catalog = {"actual-participation": source}
+            spec = {
+                "envelope_id": "actual-compression-envelope",
+                "proposal_hash": digest(proposal_obj.document()),
+                "representation_form": "SINGULAR_OCCURRENCE",
+                "represented_window": {
+                    "from_clock": before.clock,
+                    "to_clock": proposal["event_time"],
+                    "coverage_basis": "actual-participation",
+                },
+                "recurrence_basis_refs": [],
+                "participation_refs": ["actual-participation"],
+                "material_relation_refs": [],
+                "observed": ["actual present event"],
+                "unobserved": ["unrepresented prior history"],
+                "selection_basis": "actual P2 compatibility witness",
+            }
+            validated = preflight(
+                spec, identity=before.document(), proposal=proposal_obj.document(),
+                catalog=catalog,
+            )
+            envelope = bind(
+                validated, identity=before.document(), proposal=proposal_obj.document(),
+                catalog=catalog, realized=realized_doc,
+            )
+            assert envelope["status"] == "BOUND"
+            assert envelope["actual_event_ref"] == actual_event["e1_event_id"]
+            assert envelope["actual_event_hash"] == actual_event["e1_event_hash"]
+            assert envelope["actual_action_ref"] == actual_event["action_event_id"]
+            assert envelope["actual_action_hash"] == actual_event["action_event_hash"]
+            assert envelope["actual_event_ref"] != envelope["actual_action_ref"]
+            assert envelope["perception_refs"][0]["event_id"] == actual_event["action_event_id"]
+            assert envelope["perception_refs"][0]["clock"] == realized_doc["accessible"]["events"][0]["perception"]["clock"]
+            assert envelope["actual_interval_ref"] == realized_doc["objective"]["interval"]["receipt_hash"]
+            assert envelope["actual_interval_status"] == "PARTIAL"
+            assert envelope["psychological_effects"] == []
+            assert envelope["no_psychological_effects"] is True
+            assert envelope["no_state_mutation"] is True
+
+            # A removed actor perception must be HELD, not positive/no-change.
+            without_perception = copy.deepcopy(realized_doc)
+            without_perception["accessible"]["events"] = []
+            held = bind(
+                validated, identity=before.document(), proposal=proposal_obj.document(),
+                catalog=catalog, realized=without_perception,
+            )
+            assert held["status"] == "HELD"
+            assert held["held_reason"] == "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT"
+            assert held["perception_refs"] == []
+
+            # Substituting a different action event ID must not bind.
+            substituted = copy.deepcopy(realized_doc)
+            substituted["accessible"]["events"][0]["event_id"] = "TEST_ONLY_BP4_WORLD_EVT_substituted"
+            held = bind(
+                validated, identity=before.document(), proposal=proposal_obj.document(),
+                catalog=catalog, realized=substituted,
+            )
+            assert held["status"] == "HELD"
+            assert held["held_reason"] == "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT"
+
+            # Removing the E1 action binding must HELD rather than equalize IDs.
+            missing_action = copy.deepcopy(realized_doc)
+            missing_action["objective"]["event"]["action_event_id"] = None
+            missing_action["objective"]["event"]["action_event_hash"] = None
+            held = bind(
+                validated, identity=before.document(), proposal=proposal_obj.document(),
+                catalog=catalog, realized=missing_action,
+            )
+            assert held["status"] == "HELD"
+            assert held["held_reason"] == "ACTUAL_ACTION_BINDING_UNAVAILABLE"
+
+            # Exact producer output restored binds again.
+            restored = bind(
+                validated, identity=before.document(), proposal=proposal_obj.document(),
+                catalog=catalog, realized=realized_doc,
+            )
+            assert restored == envelope
+        finally:
+            owner.close()
