@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "STORE_INACTIVITY_REPAIR_RUNNING__OWNER_AND_VERTICAL_PROOF_BANKED_UNEXECUTED",
+  "state": "RETURNED_STORE_REVISE_INTEGRATION_ABI__OWNER_CRASH_FIX_AND_FULL_PROOFS_NEXT",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -242,7 +242,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-inactivity-resume-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_REVISE_OWNER_ABI",
       "model": {
         "id": "deepseek-v4.1-flash",
         "providerID": "opencode-go",
@@ -251,7 +251,9 @@
       "metadata_message": "msg_1b30b93fc0013ssz6rYa36D1KM",
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-inactivity-resume-r1/completion.json",
       "notification": "existing finite terminal observer",
-      "scope": "Resume original store commission after exact inactivity interruption; partial files retained"
+      "scope": "Resume original store commission after exact inactivity interruption; partial files retained",
+      "return_commit": "38f04ed627de40258724e006bf227a104bba9300",
+      "disposition": "STORE_INPUT_DISPOSITION.json"
     }
   ],
   "holds": [
@@ -260,7 +262,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Intake resumed exact store return; integrate and resume same owner for actual durable tests/repairs; resume same harness author for actual A-H/two-batch proof and required measured resource output, then distinct exact-runtime independent review. No polling or recurring wakes.",
+  "next": "Repair demonstrated store provenance and lossless-kind ABI through same store author; repair actual owner crash harness through same owner, finish required resource harness. Integrate returned disjoint repairs, execute original full P3 proof, obtain distinct final exact-runtime review.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -297,5 +299,6 @@
   "owner_intake": "OWNER_INPUT_DISPOSITION.json",
   "store_failure_intake": "STORE_FAILURE_DISPOSITION.json",
   "vertical_harness_intake": "VERTICAL_HARNESS_INPUT_DISPOSITION.json",
-  "usage_policy": "Account-wide quota UNKNOWN; bank coherent work and exact continuation at material boundaries; leave room for commit/push/directremote verification before usage exhaustion."
+  "usage_policy": "Account-wide quota UNKNOWN; bank coherent work and exact continuation at material boundaries; leave room for commit/push/directremote verification before usage exhaustion.",
+  "store_intake": "STORE_INPUT_DISPOSITION.json"
 }

@@ -1,3 +1,7 @@
+## P3 actual store intake — integration repair required
+
+Actual returned storage38f04ed6 verified9 hashes/10 exclusive paths/directremote,42 storage tests pass. Integrated owner+store run:45 pass/4 fail/1 inapplicable missing-store guard skipped in10.96s. Positive owner tests refuse at store PLAN_AUTHORITY_OR_GRADE_MISSING; frozen owner SOURCEFREE_TEST_ONLY provenance is already explicit TEST_ONLY scope. Store additionally rewrites V3MS kind before hash validation, incompatible with source-pinned producer/readers. Actual crash child fails an engine import before intended crash. Same existing authors receive exact disjoint repairs; original metrics harness omissions are repaired within section11. No store/owner/full-P3 acceptance yet; original evidence retained. Recurring wakes remain paused.
+
 ## P3 current scheduling boundary — storage inactivity recovery, proof code unexecuted
 
 Storage child15917 exited1 with exact OpenCode error “Session interrupted: inactivity”; no completed store return. Partial code/tests were preserved and the SAME session resumed under the original exclusive lease (child41339), with actual DeepSeek V4.1 Flash MAX verified. No architecture failure or acceptance inferred.

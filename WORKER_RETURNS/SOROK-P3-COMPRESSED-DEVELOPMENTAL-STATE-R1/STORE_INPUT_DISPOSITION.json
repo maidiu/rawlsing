@@ -1,0 +1,33 @@
+{
+  "schema": "SOROK_P3_STORE_INTAKE@1",
+  "return": "38f04ed627de40258724e006bf227a104bba9300",
+  "code_commit": "5dac5447b14a607f450fae3d84a9ecb782a2de19",
+  "verified": {
+    "durable_exit": 0,
+    "manifest_hashes": 9,
+    "exclusive_paths": 10,
+    "remote_head": true
+  },
+  "disposition": "REVISE_ACTUAL_OWNER_COMPATIBILITY_NOT_FUNCTIONAL_ACCEPTANCE",
+  "hq_combined_result": "45 passed,4 failed,1 inapplicable missing-store guard skipped;10.96s",
+  "storage_unit_result": "42 actual tests passed in combined run",
+  "actual_evidence": "evidence/storage_intake_actual.log",
+  "defects": [
+    {
+      "owner": "store",
+      "problem": "Existing frozen owner SOURCEFREE_TEST_ONLY grade with no separate authority field is rejected as PLAN_AUTHORITY_OR_GRADE_MISSING before actual realization; this is a newly imposed storage shape, not missing scientific authority.",
+      "required_correction": "Recognize exact SOURCEFREE_TEST_ONLY frozen TEST_ONLY provenance without inventing a separate grant. Retain source/registry/rule/identity bindings, deny production/native and conflicting explicit authority. Unknown/absent provenance still refuses."
+    },
+    {
+      "owner": "store",
+      "problem": "_record_document normalizes V3MS_MEDIATOR to MEDIATOR before computing hash; existing producer and later readers require original V3MS kind and hash.",
+      "required_correction": "Preserve exact allowed kind and supplied hash on storage/query/replay. No aliases rewritten or hashes silently reminted. Existing non-V3MS supported kinds remain allowed."
+    },
+    {
+      "owner": "owner",
+      "problem": "Actual crash child raises ModuleNotFoundError developmental_recursion instead of reaching intended crash.",
+      "required_correction": "Use repository-relative actual engine import path in subprocess; prove crash and same-root reopen/recovery, no fresh substituted root."
+    }
+  ],
+  "next": "Parallel same-owner store ABI repair, owner crash fixture correction and actual-store execution, harness missing original resource measurements; combine exact returns and full actual proofs before independent review."
+}
