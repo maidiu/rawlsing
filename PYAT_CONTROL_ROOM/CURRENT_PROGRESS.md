@@ -1802,3 +1802,10 @@ D43d35eed654d2fc98ea0f176bf5c4bd92f524da1/codeea4fb3796faa3ad4635763dc653395b7c2
 F exact actual-wrapper/readboundary reviewjobpyat-universal35-d-r4-execution-independent-review-20261106-r1 PID43271 under e33852578; sourcefree positive must use productionwrapper/compiler, not mockedfacts. Alias coverage and exactdecision changes explicit targets. A/Gcontinueindependently, threeactual lanes.
 
 PROGRAMMA_DELTA: exactD/code above, originalauthor/distinctFreviewer; currentcompilerconnection codepresent/authornegative-manifesttests, actualpositive/fulloriginalfirstconsumerNONE_VERIFIED. ExistingS03.2/S-WORKLIST/gap/work-now/currentpair updated isolatedcandidate, no protected/native/scienceadoption. NextFpositivepath/verdict beforeacceptance, not anotherdesignreport or fabricatedoriginalresolver.
+
+
+### E cold adapter independently accepted scoped
+
+G0360d2b4f8cb0d568d8d52d1223592fbb5b1a2e4 ACCEPT_SCOPED_ENGINEERING at Ebddef0b5ca40b750fd51770d47df22f2973679b4/codef708b4688f6aebd408510aa33faca453bd213749:20+25PASS, directAPI/coldsubprocess/alias exact, changedcountschangeprofile/ref, tamperedhash/ID/ref/replay/provenance/permission failclosed, structuralgrantfalse. ExistingownerGT2RAWscope preserved. AuthenticDfact/nativehandoff NOT_RUN. Qualifiedconsumer refs delivered DnoReply200; no newauthorjob needed untilactualproducer.
+
+PROGRAMMA_DELTA: exact G/Eheads above, existingEauthor/distinctGreview; coldserialization/trustboundary axis independentlyaccepted, originalempiricalfirstconsumerNONE_VERIFIED. S06/S-F5/gap/work-now/currentpair updated isolatedbranch; no protected/native/science promotion. A mappings and F actualDwrapperreview are two currentlyuseful active lanes; downstreamhandshake depends on actualproducer, no duplicate/filler commission. Next consume their concrete returns and execute genuinejoin.
