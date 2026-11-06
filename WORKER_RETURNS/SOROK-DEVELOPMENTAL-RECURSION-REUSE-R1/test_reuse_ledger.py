@@ -66,7 +66,7 @@ def test_04_original_v3_compatibility_import_is_bounded_and_incomplete():
     assert imports["v3.core.year_record"]["status"] == "IMPORT_FAILED"
 
 
-def test_05_p2_consumer_and_interval_owner_are_present():
+def test_05_p2_consumer_and_interval_owner_are_present(tmp_path):
     p2_methods = P["p2_product_fanin_methods"]
     for name in ("start", "open", "admit_later_event", "read_later_event",
                  "public_opportunity", "do_help", "say", "attend", "status",
@@ -79,6 +79,17 @@ def test_05_p2_consumer_and_interval_owner_are_present():
     assert L["consumer_binding"]["first_reader_smoke"]["status"] == "STARTED_VERIFIED_CLOSED"
     assert L["consumer_binding"]["first_reader_smoke"]["verify"]["ok"] is True
     assert L["consumer_binding"]["first_reader_smoke"]["state_removed"] is True
+
+    # Retained receipts establish the earlier cut; this invocation must also
+    # reach the actual accepted owner and its current verification reader.
+    import sys
+    sys.path.insert(0, str(R.parent / "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1"))
+    from developmental_recursion.p2_owner import load_p2
+    with load_p2().start(tmp_path / "live-owner") as fanin:
+        live = fanin.verify_public()
+        assert live["ok"] is True
+        assert live["event_count"] >= 1
+        assert fanin.root_hash
 
 
 def test_06_architecture_and_source_archive_identity_are_explicit():
