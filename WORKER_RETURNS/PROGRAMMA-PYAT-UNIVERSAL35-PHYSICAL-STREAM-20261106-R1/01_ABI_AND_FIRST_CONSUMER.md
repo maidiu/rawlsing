@@ -15,7 +15,7 @@ def bounded_physical_cell_stream(
 ) -> ExactPhysicalCellStream
 ```
 
-`include_variables=None` returns the complete row/column grid required by the source-backed C11 factory. An exact unique column selection returns only those columns over every declared row and the same source SHA, in decoder global order, for D's `execute_native_compiler_source` selected response+coordinate input.
+`include_variables=None` returns the complete row/column grid required by the source-backed C11 factory. An exact unique column selection uses the existing content-bound snapshot plus reader `usecols`/chunk facilities (or the already-materialized frame) to construct only those cells, over every declared row and the same source SHA, in decoder global order, for D's `execute_native_compiler_source` selected response+coordinate input.
 
 Input: an already current/authorized `PhysicalSourceIncidence` produced by the existing source-read admission and frozen decoder. The caller retains source-read decision custody.
 
@@ -46,22 +46,24 @@ selected_stream = bounded_physical_cell_stream(
 )
 ```
 
-The adapter itself performs no source-open and no permission defaulting. A caller that has not completed the existing source-read decision cannot obtain a valid `PhysicalSourceIncidence` through this module. D's current `execute_native_compiler_source` builds a filtered closure from `incidence.iter_cells()`; it can replace that closure with `include_variables` on this producer while retaining full row/SHA identity.
+The adapter itself performs no source-open and no permission defaulting. A caller that has not completed the existing source-read decision cannot obtain a valid `PhysicalSourceIncidence` through this module. D's current `execute_native_compiler_source` builds a filter-every-cell closure from `incidence.iter_cells()`; it can replace that closure with `include_variables` on this producer while retaining full row/SHA identity. Measured genuine SRC09: 5,972,763 cells created / 46–48 s became 41,334 cells / 0.44–0.53 s, with exact selected-cell digest and native-package output identity.
 
 ## Exactness properties
 
-- Full mode emits exactly `row_count * len(incidence.variables)` cells; filtered mode emits exactly `row_count * len(include_variables)` selected cells.
-- Cell sequence must be exact row-major `(row_ordinal, variable_ordinal, variable_name)` order; filtered mode still requires every row and every selected column.
-- Truncation, duplication/reordering, absent selected column, wrong source custody SHA, invalid batch size, or changed source identity refuses.
+- Full mode emits exactly `row_count * len(incidence.variables)` cells; projected mode emits exactly `row_count * len(include_variables)` selected cells, without constructing unselected cells.
+- Cell sequence must be exact row-major `(row_ordinal, variable_ordinal, variable_name)` order; projected mode still requires every row and every selected column.
+- Truncation, duplication/reordering, absent/duplicate selected column, wrong source custody SHA, invalid batch size, or changed source identity refuses.
+- Already-materialized compatibility frames remain in memory; projection changes new selected-cell construction, not the decoder's prior full-frame history.
 - Source snapshot stability is checked at producer construction and each full pass.
 - No silent sampled row limit.
 - `PhysicalCell` values and missing classifications come directly from the frozen decoder; no label/frequency/missingness inference.
 
 ## Measured dependency
 
-The physical stream is necessary for SRC31-sized already-decoded grids: eager cell materialization used ~226 MB versus ~101 MB for two exact streaming passes. It is **not** sufficient for:
-- unbound source-config response values/states (SRC31/SRC16 build refusal),
+Projection is necessary and measured for the selected physical path: SRC09 5,972,763 all-cell creation / 46–48 s became 41,334 selected cells / 0.44–0.53 s, exact digest, and equal native-package outputs. It is **not** sufficient for:
+- unbound source-config response values/states (SRC31/SRC16 C11 refusal; A owns mapping),
 - frozen latin1 compatibility full-frame decode (SRC13 ~806 MB after decode),
-- logical C11 event/coord/weight materialization and D lowering.
+- logical native-package/C11 event/coord/weight materialization (SRC09 native-package probe remained ~42–47 s),
+- D's published 600 s end-to-end native attempts.
 
-Those remain exact upstream/consumer dependencies; no hidden workaround was added.
+Those remain exact upstream/consumer dependencies; no hidden workaround or full-D speedup claim was added.

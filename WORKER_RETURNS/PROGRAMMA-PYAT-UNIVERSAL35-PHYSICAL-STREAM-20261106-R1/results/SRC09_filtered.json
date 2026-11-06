@@ -1,0 +1,109 @@
+{
+  "batch_size": 10000,
+  "config": {
+    "coordinate_slots": 46,
+    "physical_slots": 289,
+    "reader_encoding": null,
+    "response_slots": 240,
+    "row_count": 20667,
+    "source_format": "SAV",
+    "source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+    "weight_slots": 2
+  },
+  "decode": {
+    "cpu_s": 1.58604,
+    "disk_after": {
+      "free": 363974656,
+      "total": 438000656384,
+      "used": 437636681728
+    },
+    "disk_before": {
+      "free": 371712000,
+      "total": 438000656384,
+      "used": 437628944384
+    },
+    "incidence_rows": 20667,
+    "incidence_variables": 289,
+    "maxrss_after": 113954816,
+    "maxrss_before": 55459840,
+    "physical_metadata_digest": "facdd150e53d76255a5f506619bfa735b0bd2226f3bb279945bebe4c31e3d19d",
+    "rss_after": 106364928,
+    "rss_before": 49205248,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "snapshot_size": 7735596,
+      "source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200"
+    },
+    "wall_s": 0.8021876000566408
+  },
+  "host": "oldMac.lan",
+  "mode": "filtered",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "resolution": {
+    "expected_source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+    "relative_path": "Asian Barometer Wave 4.sav",
+    "source_root_source": "LIBRARY_DEFAULT",
+    "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+  },
+  "result": {
+    "state": "FILTERED_STREAM_SCAN_OK"
+  },
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+  "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+  "source_bytes": 7735596,
+  "source_id": "SRC09",
+  "stream": {
+    "decoder_metadata_digest": "facdd150e53d76255a5f506619bfa735b0bd2226f3bb279945bebe4c31e3d19d",
+    "passes": [
+      {
+        "cell_count": 41334,
+        "cpu_s": 0.442072,
+        "first": [
+          1,
+          87,
+          "q74"
+        ],
+        "last": [
+          20667,
+          259,
+          "ir2b"
+        ],
+        "maxrss_after": 114110464,
+        "pass": 1,
+        "rss_after": 112648192,
+        "rss_before": 109588480,
+        "wall_s": 0.4535038510803133
+      },
+      {
+        "cell_count": 41334,
+        "cpu_s": 0.43858799999999976,
+        "first": [
+          1,
+          87,
+          "q74"
+        ],
+        "last": [
+          20667,
+          259,
+          "ir2b"
+        ],
+        "maxrss_after": 114692096,
+        "pass": 2,
+        "rss_after": 113819648,
+        "rss_before": 112648192,
+        "wall_s": 0.4423405390698463
+      }
+    ],
+    "selected_columns": [
+      "q74",
+      "ir2b"
+    ],
+    "transport_identity": "BOUNDED_REPLAYABLE_ORIGINAL35_PHYSICAL_SOURCE_INCIDENCE@1"
+  }
+}

@@ -1,18 +1,18 @@
-# PROGRAMMA_DELTA — bounded original35 physical source stream
+# PROGRAMMA_DELTA — measured selected-reader projection
 
 | Field | Delta |
 |---|---|
-| `IDENTITY` | Sourcefree physical-transport engineering candidate at `be7e831f41e1c699890b7987cd2fea25be3f65d3`, base `d129eebdb0472b0c3625efa281826a858bd0a384`. No native/source/science grant. |
-| `FUNCTION` | Convert an already permitted/decoded `PhysicalSourceIncidence` into the existing `ExactPhysicalCellStream` expected by the current source-backed C11 factory, or an exact selected-column stream for D `execute_native_compiler_source`, without materializing the full physical grid. |
-| `INPUT_TRANSFORM_TYPED_OUTPUT` | `PhysicalSourceIncidence` + positive batch size + optional unique `include_variables` -> replayable full-grid or exact-selected-column `ExactPhysicalCellStream`; full declared row_count and source SHA retained; decoder metadata digest and `STREAM_TRANSPORT`; typed refusal on source custody/grid truncation/reorder/absent-column/batch fault. |
-| `ROOT` | No source root in module. Caller-supplied incidence carries the authorized source binding; runtime root alias remains `USER_ORIGINAL35_DATA_ROOT` only. |
-| `SCHEMA` | No new semantic/C11 schema. `STREAM_TRANSPORT = BOUNDED_REPLAYABLE_ORIGINAL35_PHYSICAL_SOURCE_INCIDENCE@1`; existing `ExactPhysicalCellStream` and factory contracts unchanged. |
-| `CLOCK` | Local host `oldMac.lan`, macOS 13.7.8 x86_64, Python 3.11.3, pyarrow 22.0.0; measurements are co-tenant. |
-| `PERMISSION` | Caller owns existing source-read decision/admission. Adapter opens no source bytes and cannot default to fabricated permission. |
-| `ACTUAL_FIRST_CONSUMER` | `rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config(..., stream=...)`, `build_source_backed_c11_repository_from_config(config, stream, ...)`, and D `execute_native_compiler_source` selected response+coordinate stream. |
-| `EVIDENCE` | SRC31 574,056 genuine full-grid cells: two exact stream passes at ~101 MB peak versus ~226 MB eager tuple; filtered 4-column stream 33,768 cells/pass over all 8,442 rows at ~101.7 MB; SRC13 latin1 decode ~806 MB; adapter 4 PASS; focused suite 34 PASS; fixture release parity exact; D actual attempts `115fe70e…` record SRC31 C11 refusal and SRC09/10/11/15 600 s native-R03 eager-decode blockers; A owns source mapping. |
-| `AFFECTED_EXISTING_IDS` | `S03.2/S-C11` W03/P01 physical realization input; `S03.3` W05/P03 sourcefree grouped path unchanged; `S04` numerical semantics unchanged; D original35 input scaffold/first consumer. |
-| `CONDITIONAL_UNLOCKS` | D can wire this producer without a new kernel/index. Genuine C11/native parity unlocks only after A/B bind or type the unbound source values and D lowers F2/F3/F4 against current I03/I05/Batch. |
-| `NEXT_ACTION` | HQ routes this exact signature/return to D; distinct nonauthor review of `be7e831f…`; then genuine SRC31/SRC16 parity and only later wider source/all35 tests. |
+| `IDENTITY` | Sourcefree physical-transport engineering candidate at `fd18faf0340f9d3751ffd9042799a0b7d58519bb`, base `d129eebdb0472b0c3625efa281826a858bd0a384`; previous module commit `be7e831f…` retained. No native/source/science grant. |
+| `FUNCTION` | Convert an already permitted/decoded `PhysicalSourceIncidence` into the existing `ExactPhysicalCellStream`: full grid for C11 factory, or exact selected-column stream for D `execute_native_compiler_source`, with column pushdown so unselected `PhysicalCell` objects are not constructed. |
+| `INPUT_TRANSFORM_TYPED_OUTPUT` | `PhysicalSourceIncidence` + positive batch + optional unique `include_variables` -> replayable exact stream; full declared row_count/source SHA/metadata digest; selected cells use frozen decoder `_physical_value` and `classify_physical_value`; typed refusal on custody/grid/order/duplicate/absent-column/batch faults. |
+| `ROOT` | No source root in module. Caller-supplied incidence carries the authorized snapshot; runtime root alias remains `USER_ORIGINAL35_DATA_ROOT` only. |
+| `SCHEMA` | No new semantic/C11 schema. Existing `ExactPhysicalCellStream`; `STREAM_TRANSPORT = BOUNDED_REPLAYABLE_ORIGINAL35_PHYSICAL_SOURCE_INCIDENCE@1`; reader uses existing `usecols`/chunks when the content-bound snapshot is open. |
+| `CLOCK` | Local macOS/x86_64, Python 3.11.3, pyarrow 22.0.0; co-tenant measurements, no clean-speedup claim. |
+| `PERMISSION` | Caller owns source-read admission; module opens no source bytes and cannot default permission. Already-materialized Latin1 frame memory is retained honestly. |
+| `ACTUAL_FIRST_CONSUMER` | Full-grid: `build_validated_c11_release_from_config(..., stream=...)` and `build_source_backed_c11_repository_from_config(config, stream, ...)`. Selected: D `execute_native_compiler_source` / native-package input. |
+| `EVIDENCE` | Current D-style SRC09 5,972,763 all cells / 46.4–47.6 s -> projected 41,334 selected cells / 0.44–0.53 s; exact digest `1d23d781…`; native-package refs/count equal; SRC31 574,056 all cells / 2.45–2.72 s -> 33,768 selected / 0.14–0.17 s; adapter 5 PASS; focused 35 PASS; D `115fe70e…` actual attempt limits retained. |
+| `AFFECTED_EXISTING_IDS` | `S03.2/S-C11` W03/P01 physical realization input; `S03.3` W05/P03 unchanged; `S04` numerical semantics unchanged; D original35 input scaffold/native compiler. |
+| `CONDITIONAL_UNLOCKS` | D can replace its filter-every-cell closure now. Full native parity still requires A's unbound mapping/value repair and D lowering; 600 s end-to-end remains D-owned/not claimed fixed. |
+| `NEXT_ACTION` | Distinct nonauthor review of `fd18faf0…`; HQ routes exact API/evidence to D; then genuine SRC09/SRC31 factory/native end-to-end and wider source/all35 only after A/D repairs. |
 
-No new engine, synthetic substitute, persistent canonical copy, global cache, protected status, or second truth source.
+No new engine, synthetic substitute, canonical copy, global cache, protected status, or second truth source.

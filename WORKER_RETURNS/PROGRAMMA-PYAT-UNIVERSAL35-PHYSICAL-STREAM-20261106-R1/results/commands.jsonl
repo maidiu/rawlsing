@@ -1,9 +1,10 @@
-{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py", "result": "4 passed", "step": "adapter_tests"}
-{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_original35_operations.py rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_current_port.py", "result": "34 passed", "step": "focused_tests"}
-{"command": "profile_existing_decode.py --source-id SRC31 --mode decode --batch-size 10000", "result": "decode OK", "step": "SRC31_decode"}
-{"command": "profile_existing_decode.py --source-id SRC31 --mode materialize --batch-size 10000", "result": "574056 cells; peak RSS 225943552", "step": "SRC31_materialize"}
-{"command": "profile_existing_decode.py --source-id SRC31 --mode stream --batch-size 10000", "result": "two exact passes; peak RSS 101638144", "step": "SRC31_stream"}
-{"command": "profile_existing_decode.py --source-id SRC31 --mode filtered --batch-size 10000", "result": "two exact 33768-cell selected-column passes over 8442 rows; peak RSS 101679104", "step": "SRC31_filtered"}
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py", "result": "5 passed", "step": "adapter_tests"}
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_original35_operations.py rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_current_port.py", "result": "35 passed", "step": "focused_tests"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode d_filtered --batch-size 10000", "result": "574056 all cells; 33768 selected; 2.45-2.72 s/pass", "step": "SRC31_D_filtered"}
+{"command": "profile_existing_decode.py --source-id SRC31 --mode filtered --batch-size 10000", "result": "33768 selected; 0.14-0.17 s/pass", "step": "SRC31_projected"}
+{"command": "profile_existing_decode.py --source-id SRC09 --mode d_filtered --batch-size 10000 --native-max-items 1", "result": "5972763 all cells; 41334 selected; 46.4-47.6 s/pass", "step": "SRC09_D_filtered"}
+{"command": "profile_existing_decode.py --source-id SRC09 --mode filtered --batch-size 10000 --native-max-items 1", "result": "41334 selected; 0.44-0.53 s/pass", "step": "SRC09_projected"}
+{"command": "compare_selected_paths.py --source-id SRC09 --max-items 1 --batch-size 10000", "result": "exact selected cells/digest; native-package outputs equal; baseline all cells 5972763", "step": "SRC09_selected_compare"}
 {"command": "profile_existing_decode.py --source-id SRC31 --mode build --batch-size 10000", "result": "REFUSED unbound response value/state", "step": "SRC31_build"}
 {"command": "profile_existing_decode.py --source-id SRC16 --mode build --batch-size 10000", "result": "REFUSED unbound response value/state", "step": "SRC16_build"}
 {"command": "profile_existing_decode.py --source-id SRC13 --mode decode --batch-size 10000", "result": "decode OK; peak RSS 806420480", "step": "SRC13_decode"}

@@ -1,0 +1,111 @@
+{
+  "batch_size": 10000,
+  "config": {
+    "coordinate_slots": 4,
+    "physical_slots": 68,
+    "reader_encoding": null,
+    "response_slots": 64,
+    "row_count": 8442,
+    "source_format": "SAV",
+    "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+    "weight_slots": 0
+  },
+  "decode": {
+    "cpu_s": 1.417776,
+    "disk_after": {
+      "free": 371974144,
+      "total": 438000656384,
+      "used": 437628682240
+    },
+    "disk_before": {
+      "free": 372641792,
+      "total": 438000656384,
+      "used": 437628014592
+    },
+    "incidence_rows": 8442,
+    "incidence_variables": 68,
+    "maxrss_after": 94269440,
+    "maxrss_before": 28078080,
+    "physical_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+    "rss_after": 94158848,
+    "rss_before": 28016640,
+    "source_custody": {
+      "content_bound": true,
+      "contract": "PRE553_CONTENT_BOUND_SOURCE_SNAPSHOT@1.0.0",
+      "reader_access_mode": "O_RDONLY",
+      "reader_binding": "OPEN_FD_VIA_POSIX_DEV_FD",
+      "snapshot_path_unlinked": true,
+      "snapshot_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "snapshot_size": 595974,
+      "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+    },
+    "wall_s": 0.6144834699807689
+  },
+  "host": "oldMac.lan",
+  "mode": "d_filtered",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "resolution": {
+    "expected_source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+    "relative_path": "South Asia Wave 1.sav",
+    "source_root_source": "LIBRARY_DEFAULT",
+    "status": "RESOLVED_UNDER_EFFECTIVE_ROOT"
+  },
+  "result": {
+    "state": "D_FILTERED_SCAN_OK"
+  },
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_PROFILE@1",
+  "scope": "LOWER_LEVEL_LOCAL_PHYSICAL_PROFILE_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE",
+  "source_bytes": 595974,
+  "source_id": "SRC31",
+  "stream": {
+    "decoder_metadata_digest": "52648c80befe90b59cdfcbf343cb2e814e58b3de8e6fadb73bd6a2dd9f5f222c",
+    "passes": [
+      {
+        "cell_count": 33768,
+        "cpu_s": 2.6984580000000005,
+        "first": [
+          1,
+          7,
+          "b8"
+        ],
+        "last": [
+          8442,
+          66,
+          "d18k"
+        ],
+        "maxrss_after": 102084608,
+        "pass": 1,
+        "rss_after": 101965824,
+        "rss_before": 95047680,
+        "wall_s": 2.7166947360383347
+      },
+      {
+        "cell_count": 33768,
+        "cpu_s": 2.4290350000000007,
+        "first": [
+          1,
+          7,
+          "b8"
+        ],
+        "last": [
+          8442,
+          66,
+          "d18k"
+        ],
+        "maxrss_after": 102301696,
+        "pass": 2,
+        "rss_after": 102219776,
+        "rss_before": 101883904,
+        "wall_s": 2.4533417630009353
+      }
+    ],
+    "selected_columns": [
+      "d18c",
+      "c13a",
+      "b8",
+      "d18k"
+    ],
+    "transport_identity": "D_CURRENT_FILTERED_GENERATOR"
+  }
+}
