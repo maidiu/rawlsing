@@ -1,21 +1,13 @@
 {
-  "status": "COMPRESSION_NATIVE_BINDING_REPAIR_LAUNCHED__STORE_PROJECTION_UNAFFECTED",
+  "status": "PURE_READERS_ACTUAL_COMPATIBILITY_PASS__P3_OWNER_GLUE_LAUNCHED",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
-  "input_dispositions": [
-    "E1_INPUT_DISPOSITION.json",
-    "S1_INPUT_DISPOSITION.json"
-  ],
-  "compression_disposition": "COMPRESSION_INPUT_DISPOSITION.json",
-  "compression_actual_probe": "evidence/compression_intake_actual.json",
-  "rule_adapter": {
-    "files": [
-      "p3/__init__.py",
-      "p3/test_rules.py",
-      "tests/test_rules.py"
-    ],
-    "receipt": "evidence/rules/AUTHOR_RECEIPT.json",
-    "grade": "AUTHOR_MECHANICAL_TEST_ONLY_NOT_P2_INTEGRATION"
+  "projection_disposition": "PROJECTION_INPUT_DISPOSITION.json",
+  "projection_actual_test": "tests/test_projection_receiving.py",
+  "projection_actual_receipt": "evidence/projection_intake_actual.json",
+  "tests": {
+    "combined_rule_projection_units": "13 passed in0.16s",
+    "actual_P2_output_compatibility": "1 passed in3.69s"
   },
   "lanes": [
     {
@@ -44,7 +36,7 @@
     },
     {
       "task": "sorok-p3-activation-opacity-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_CANDIDATE_COMPATIBILITY_PASS",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "pid": 21322
     },
@@ -53,10 +45,16 @@
       "status": "ACTIVE_VERIFIED",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
       "pid": 27272
+    },
+    {
+      "task": "sorok-p3-owner-integration-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 31072
     }
   ],
-  "runtime": "NOT_YET_INTEGRATED",
+  "runtime": "DURABLE_P3_NOT_YET_INTEGRATED",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Intake existing store/projection/repair terminals; consume exact returned APIs in P3Owner recoverable protocol and full actual P2-root A-H tests. Current compression is REVISE, not accepted; no duplicate input review."
+  "next": "Intake store/repair/owner returns via terminal notifications; integrate exact normalized store and repaired compression sources, execute same-root durable A-H/two-batch/cold/crash/economy tests, then distinct exact-runtime review. No original or protected claims."
 }
