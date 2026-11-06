@@ -12,8 +12,8 @@ from __future__ import annotations
 import hashlib
 import json
 import math
-from dataclasses import dataclass, field
-from typing import Any, Iterable, Mapping
+from dataclasses import dataclass, field, replace
+from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_c11_integrity import (
     QuestionVariableBinding,
@@ -526,6 +526,7 @@ def materialize_native_preimages(
     package: NativeSourcePackage,
     incidence: PhysicalSourceIncidence | ExactPhysicalCellStream,
     row_occurrence_plan: GovernedRowOccurrencePlan | None = None,
+    coordinate_rules: Sequence[CoordinateSlotRule] | None = None,
 ) -> NativePreimageBundle:
     """Materialize a governed C11 release from exact source cells.
 
@@ -782,15 +783,30 @@ def materialize_native_preimages(
         raise NativePreimageRefusal("NO_ADMINISTERED_MEASUREMENT_U")
 
     coordinate_cell = rows[1].get(package.coordinate_variable)
-    coordinate_slot = CoordinateSlotRule(
-        PhysicalSlot(coordinate_cell.variable_ordinal, package.coordinate_variable),
-        _ref("COORDINATE_NATIVE",
-             f"{source.source_id}-{package.coordinate_variable}"),
-        _ref("UNIT_TAXONOMY", f"{source.source_id}-{package.coordinate_unit}"),
-        package.coordinate_effective_time,
-        coord_auth.authority_ref,
-        copy_observed_raw=True,
-    )
+    if coordinate_rules is None:
+        coordinate_slot = CoordinateSlotRule(
+            PhysicalSlot(coordinate_cell.variable_ordinal, package.coordinate_variable),
+            _ref("COORDINATE_NATIVE",
+                 f"{source.source_id}-{package.coordinate_variable}"),
+            _ref("UNIT_TAXONOMY", f"{source.source_id}-{package.coordinate_unit}"),
+            package.coordinate_effective_time,
+            coord_auth.authority_ref,
+            copy_observed_raw=True,
+        )
+    else:
+        provided = tuple(coordinate_rules)
+        matching = [
+            rule for rule in provided
+            if isinstance(rule, CoordinateSlotRule)
+            and rule.slot.name == package.coordinate_variable
+        ]
+        if len(matching) != 1:
+            raise NativePreimageRefusal(
+                "COORDINATE_SLOT_RULE_MATCH_REQUIRED", package.coordinate_variable)
+        coordinate_slot = matching[0]
+        if coordinate_slot.slot.ordinal != coordinate_cell.variable_ordinal:
+            raise NativePreimageRefusal(
+                "COORDINATE_SLOT_RULE_ORDINAL_MISMATCH", package.coordinate_variable)
     risk_ref = _ref("RISK_SET", f"{source.source_id}-whole")
     routing = tuple(
         RoutingEligibilityFact(
@@ -875,6 +891,11 @@ def materialize_native_preimages(
     )
     try:
         release = build_validated_source_backed_c11_release_from_stream(stream, projection)
+        stream = replace(
+            stream,
+            prebuilt_release=release,
+            prebuilt_projection_identity=projection.cache_identity,
+        )
     except (SourceBackedC11FacadeError, ValueError) as error:
         raise NativePreimageRefusal("C11_VALIDATION_REFUSED", str(error)) from error
     material = {
