@@ -338,17 +338,6 @@
     "concurrency_limit_reason": "Three useful lanes: A source mapping repair, G selected-reader review, F D identity/finite-frontier review; resource-constrained host limit retained.",
     "active_workers": [
       {
-        "job_id": "pyat-universal35-selected-reader-r2-independent-closure-20261106-r1",
-        "child_pid": 29979,
-        "supervisor_pid": 29977,
-        "observer_pid": 29980,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-selected-reader-r2-independent-closure-20261106-r1",
-        "launch_is_not_completion": true,
-        "role": "G",
-        "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
-        "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1"
-      },
-      {
         "job_id": "pyat-universal35-d-exact-frontier-repair-20261106-r1",
         "child_pid": 31608,
         "supervisor_pid": 31603,
@@ -369,10 +358,21 @@
         "role": "F",
         "session": "ses_e52a51c43ffeuVe7ZZhNcga5YP",
         "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1"
+      },
+      {
+        "job_id": "pyat-universal35-original-dta-measurement-20261106-r1",
+        "child_pid": 35070,
+        "supervisor_pid": 35069,
+        "observer_pid": 35071,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-original-dta-measurement-20261106-r1",
+        "launch_is_not_completion": true,
+        "role": "C",
+        "session": "ses_e50ee2de8ffeVZ5fDDwTyiegq1",
+        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1"
       }
     ],
     "integration_start": "d129eebdb0472b0c3625efa281826a858bd0a384",
-    "current_next_action": "F source-mapping review, G selected-reader r2 closure, D exact-frontier repair in parallel. Qualified dependencies then feed original D execution; no all35 facts completed.",
+    "current_next_action": "D exact-frontier repair, F SRC31 source-mapping review, C original DTA physical measurement; accepted C producer delivered to D for later integration.",
     "E_return": {
       "branch": "codex/pyat-universal35-e-20261106-r1",
       "head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
@@ -598,6 +598,18 @@
       "review_job": "pyat-universal35-source-mapping-independent-review-20261106-r1",
       "review_pid": 33872,
       "adoption": "NOT_INDEPENDENTLY_ACCEPTED_NOT_PROTECTED"
+    },
+    "C_r2_independent_closure": {
+      "review": "a66e4a628f3e6e7b819097a15ace86cc1877022e",
+      "reviewed_head": "12d44c9d2418d7ab0cbcb92b4daa48d6a2cf20f3",
+      "implementation": "7a404b0dcaac0e4dd027b9edb98c9038d89dbd9a",
+      "grade": "ACCEPT_SCOPED_ENGINEERING",
+      "evidence": "WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-SELECTED-READER-INDEPENDENT-REVIEW-20261106-R1/revisions/r2/00_RETURN.md",
+      "tests": "7adapter37focusedPASS; oldDTAfailureRED -> window sizes1-100 exact14selectedcells; replay/sourceSHA/metadata/custody/truncation/empty-frame probesPASS",
+      "first_consumer": "Existing NativePackage parity PASS_SCOPED; original D empirical end-to-end NOT_RUN",
+      "limits": "OriginalDTA scale NOT_RUN; SAV physical economics proven scoped; no all35native/16GiB/scientific/protected adoption",
+      "next_job": "pyat-universal35-original-dta-measurement-20261106-r1",
+      "pid": 35070
     }
   }
 }
