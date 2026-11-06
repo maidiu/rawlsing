@@ -1,0 +1,49 @@
+{
+  "actual_first_consumer": "current source-config factory/facade physical-cell projection over selected original SRC31 columns",
+  "affected_ids": [
+    "SRC31:c10ai",
+    "SRC31:c12",
+    "SRC31:c17",
+    "SRC31:c18a",
+    "SRC31:c18b",
+    "SRC31:c18d",
+    "SRC31:c18e",
+    "SRC31:d3",
+    "SRC31:d7",
+    "SRC31:d12",
+    "SRC31:d13"
+  ],
+  "conditional_unlocks": [
+    "D selected-column original SRC31 consumption",
+    "independent review of this patch"
+  ],
+  "evidence": [
+    "evidence_src31_boundary.json",
+    "evidence_src31_correction_summary.json",
+    "evidence_src31_fixture_identity.json",
+    "evidence_pytest.txt"
+  ],
+  "function": "source/hash-bound SRC31 response-value/missingness correction; no new engine",
+  "identity": {
+    "branch": "codex/pyat-universal35-source-mapping-20261106-r1",
+    "guide_branch": "6c243ffee042187092fead1e7a25f0f838578b9e",
+    "job": "PROGRAMMA-PYAT-UNIVERSAL35-SOURCE-MAPPING-20261106-R1",
+    "source_pack_branch": "9eaf9dd145409d8aedf583226c7c99d663c43abc",
+    "start": "115fe70e660fb19a65ca49b4a12ffc8876be065c"
+  },
+  "input_transform_typed_output": {
+    "input": [
+      "pinned SRC31 original config",
+      "exact SAV-declared value labels and missing declarations"
+    ],
+    "output": [
+      "corrected SourceConfig with corrections_applied",
+      "typed RespondentEvent states"
+    ],
+    "transform": "bind 14 declared user-missing values; type 17 observed undeclared codes as INVALID_UNRESOLVED"
+  },
+  "native_or_all35_promotion": "NOT_GRANTED",
+  "next_action": "nonauthor review; then D integration; full release still behind positive-authority DEFER",
+  "root_schema_clock_permission": "NO_CHANGE; no source read grant, native/science/actor authority, schema or clock mutation",
+  "schema": "PROGRAMMA_DELTA@1"
+}

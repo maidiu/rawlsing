@@ -664,6 +664,7 @@ class SourceConfigLibrary:
             "fixture_row_count": fixture.active_row_count == stream.row_count,
         }
         return {
+            "corrections_applied": list(original.corrections_applied),
             "source_id": source_id,
             "status": row["status"],
             "config_path": row["original_config_path"],
@@ -762,6 +763,7 @@ class SourceConfigLibrary:
             "fixture_config_path": row.get("fixture_config_path"),
             "fixture_path": row.get("fixture_path"),
             "fixture_source_sha256": row.get("fixture_source_sha256"),
+            "corrections_applied": list(original.corrections_applied),
             "reader_configuration": {
                 "source_sha256": reader.source_sha256,
                 "encoding": reader.encoding,
