@@ -1,0 +1,39 @@
+{
+  "branch": "agent/sorok-p3-vertical-resource-repair-20261106-r1",
+  "candidate_commit": "31da7feb2ae44b1aff75bc2f6ea346c87a3d38e6",
+  "code_commit": "31da7feb2ae44b1aff75bc2f6ea346c87a3d38e6",
+  "model": {
+    "id": "deepseek-v4.1-flash",
+    "provider": "opencode-go",
+    "variant": "max",
+    "verification": "commission/session assignment; no separate model probe"
+  },
+  "note": "Quota is unknown because no quota observation was made. Actual run stopped at returned store PLAN_AUTHORITY_OR_GRADE_MISSING; no fallback.",
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "runtime": {
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "Python 3.11.3",
+    "quota": "UNKNOWN_UNOBSERVED"
+  },
+  "schema": "SOROK_P3_VERTICAL_RESOURCE_PASSPORT@1.0.0",
+  "scope": {
+    "actual_execution_attempted": true,
+    "actual_p2_events": 0,
+    "adp016_017_memory_or_claim": false,
+    "ci": false,
+    "human_validity_claim": false,
+    "metrics": false,
+    "native_source_issuance": false,
+    "original_sav_read": false,
+    "p2_batches": 0,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "s3": false,
+    "sourcefree": true
+  },
+  "sensitive_data": "none",
+  "startup_commit": "8cc2914b1089cfc113ae1737941bd2a9efde622b",
+  "worker": "sorok-p3-vertical-resource-repair-r1"
+}
