@@ -1,0 +1,89 @@
+{
+  "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "checks": {
+    "cold_same_root_and_sources": true,
+    "cut_refused_and_no_later_event": true,
+    "cut_restore_ok": true,
+    "cut_restore_source_same": true,
+    "e2_c9_exact_interval_source": true,
+    "e2_real_later_event": true,
+    "e3_c9_exact_interval_source": true,
+    "e3_history_uses_e2_ref": true,
+    "e3_real_later_event": true,
+    "earlier_event_identity_preserved": true,
+    "interval_actual_material_consumed": true,
+    "positive_attend_presentation_only": true,
+    "positive_ok": true,
+    "positive_projected_do_help_is_refusal": true,
+    "positive_scenario_calls_do_help": true,
+    "primitive_no_do_help": true,
+    "primitive_verify_ok": true,
+    "same_root": true,
+    "scheduled_material_retained": true,
+    "scheduled_ok": true
+  },
+  "cut": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+  "cut_summary": {
+    "cut_code": "S46_INTERVAL_CONDITION_REVOKED",
+    "events_after_cut": 1,
+    "events_before_cut": 1,
+    "ok": true,
+    "restored_source_same": true
+  },
+  "positive_scenario_unconditionally_calls_user_do_help": true,
+  "positive_summary": {
+    "attend_status": "NO_CHANGE",
+    "attend_world_event_created": false,
+    "c9_exact_interval_source": true,
+    "cold_same_root": true,
+    "do_help_attempted": true,
+    "do_help_refusal": true,
+    "do_help_status": "REFUSED",
+    "e2_performed": true,
+    "e2_status": "OK",
+    "e3_history_has_e2": true,
+    "e3_performed": true,
+    "e3_status": "OK",
+    "interval_status": "PARTIAL",
+    "material_after_interval": 0,
+    "ok": true
+  },
+  "primitive_does_not_call_user_do_help": true,
+  "primitive_encounters_after_e2_e3": {
+    "after_e2": [],
+    "after_e3": []
+  },
+  "privacy": {
+    "cut_violation_count": 26,
+    "finding": "engineering CLI/report fields expose source/history/plan/c9 internals and root identity; projected say/do_help/attend/view nested results were clean",
+    "positive_violation_count": 61,
+    "private_key_names": [
+      "attempt_status",
+      "c9",
+      "event_ref",
+      "first_event_ref",
+      "history_refs",
+      "plan_hash",
+      "private_generation_sources_in_plan",
+      "root_hash",
+      "selected_event_ref",
+      "selected_option",
+      "source_event_id",
+      "target_proposals"
+    ],
+    "projected_surface_counts": {
+      "attend": 0,
+      "do_help": 0,
+      "say": 0,
+      "view": 0
+    },
+    "scheduled_violation_count": 28
+  },
+  "scheduled_summary": {
+    "do_help_status": "OK",
+    "material_after_interval": 1,
+    "ok": true
+  },
+  "schema": "SOROK_P2_LATER_EVENT_FINDINGS@1",
+  "verdict": "REVISE"
+}

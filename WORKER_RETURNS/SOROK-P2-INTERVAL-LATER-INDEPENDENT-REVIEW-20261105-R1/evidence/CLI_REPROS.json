@@ -1,0 +1,27 @@
+{
+  "explicit_interval": {
+    "actual": {
+      "command": "run_explicit_interval_flow.py --base-root <snapshot> continue --state <state> --request WAIT --mode ACTUAL --span 4",
+      "result": "CONTINUED; do_help REFUSED; actual user_attempt control DO_HELP; baseline interval+admit has no DO_HELP encounter; continuation has DO_HELP encounter and different canonical store hash"
+    },
+    "scheduled": {
+      "command": "run_explicit_interval_flow.py --base-root <snapshot> continue --state <state> --request ABSENCE --mode SCHEDULED_ONLY --span 4",
+      "result": "CONTINUED; do_help OK/HELP_ACCEPT; actual user_attempt control DO_HELP; actor REPAIR performed"
+    },
+    "wait": {
+      "command": "run_explicit_interval_flow.py --base-root <snapshot> continue --state <state> --request WAIT",
+      "result": "HELD; advanced=false; reason=WAIT_UNSUPPORTED_TYPED_HOLD"
+    }
+  },
+  "later_event": {
+    "positive": {
+      "command": "PYTHONPATH=<later-return> python3 -B -m p2_continuation.cli positive --state <state>",
+      "result": "ok=true; causal chain passes; output contains 61 privacy-walker hits in engineering c9/s43/history/root fields; nested projected say/do_help/attend/view results contain 0 private-key hits; scenario calls project_do_help"
+    },
+    "primitive": {
+      "result": "P2Continuation.produce_input_interval + admit_later_event twice yields zero encounter records; no unconditional do_help in primitive"
+    }
+  },
+  "schema": "SOROK_P2_INTERVAL_LATER_CLI_REPROS@1",
+  "snapshot": ".local-logs/p2-interval-later-review/snapshot (untracked, git-archive extraction)"
+}

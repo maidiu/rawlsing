@@ -1,0 +1,35 @@
+{
+  "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "delta_class": "DURABLE_DELIVERY_OF_COMPLETED_FOCUSED_INDEPENDENT_REVIEW",
+  "findings": [
+    "explicit interval continuation unconditionally calls real S45Projection.do_help, generating an actual user DO_HELP action/encounter and canonical mutation without an explicit user attempt",
+    "later-event positive CLI/report exports private c9/s43/history/source/plan/root fields (61 privacy-walker hits) and the positive scenario unconditionally calls project_do_help; the primitive later-event chain does not call do_help and passes causal checks",
+    "explicit evidence result file list references a missing generated __pycache__ pyc"
+  ],
+  "native_human_holds": {
+    "adp_actor": false,
+    "c12": false,
+    "c8": false,
+    "c9": false,
+    "can008": false,
+    "can011": false,
+    "human": false,
+    "native": false,
+    "pre_main": false,
+    "protected_write": false,
+    "pyat_world": false
+  },
+  "owner_intake": "Use these exact verdicts for the two heads. Repairs are narrow: remove unconditional do_help from explicit continuation; redact/gate later engineering internals and separate scenario/user DO_HELP. No PRE-MAIN/native/human promotion.",
+  "passed_causal_checks": [
+    "WAIT/ABSENCE alone no world/action",
+    "ACTUAL interval changes material/C9 and SCHEDULED_ONLY retains",
+    "S47 C9 consumes exact interval source; later event history uses exact prior event ref",
+    "cold/root/source cut and restore"
+  ],
+  "remote_readback": "REMOTE_40SHA_REPORTED_IN_FINAL_CHAT_AFTER_PUSH",
+  "schema": "SOROK_P2_INTERVAL_LATER_INDEPENDENT_REVIEW_PROGRAMMA_DELTA@1",
+  "verdicts": {
+    "76fdb624afc7674f088d10c349bfe15ffd0b865a": "REVISE",
+    "bdadbc57c2664d3155a97853422e74b6128261f8": "REVISE"
+  }
+}
