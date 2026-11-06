@@ -43,7 +43,7 @@ Tamper/refusal checks:
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r14 cold request binding
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 7cafd1fd3.
+- Identity: codex/pyat-universal35-d-20261106-r1@ab7a6b606f15bd47c29d962da8c8c9db542710de; input 7cafd1fd3.
 - Function: cold consume -> decode accepted fact/query -> derive role/backing refs -> validate request binding -> canonical value selection from actual E profile.
 - Evidence: A0=6/0, A1=2/4, reverse 8/4 and 0/4; changed cell/restore; tampered refs/empty/None/unknown refused; no zero-selection OK.
 - Limits: controlled sourcefree only; original data/native/science NOT_RUN.
