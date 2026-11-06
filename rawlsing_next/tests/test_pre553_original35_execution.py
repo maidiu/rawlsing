@@ -8,7 +8,8 @@ from pathlib import Path
 import pytest
 
 from rawlsing_next.pre553_original35_execution import (
-    Original35ExecutionError, execute_source, load_runtime_binding,
+    Original35ExecutionError, execute_native_compiler_source, execute_source,
+    load_runtime_binding,
 )
 from rawlsing_next.pre553_original35_operations import build_original35_operation_plan
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
@@ -63,3 +64,15 @@ def test_manifest_only_source_result_and_typed_path_resolution():
     assert result.operation_counts["EXECUTABLE_RAW"] > 0
     assert result.reasons == ("MANIFEST_ONLY_NOT_DECODED",)
     assert result.material()["native"] is False
+
+
+def test_native_path_refuses_without_current_source_read_decision():
+    binding = _binding()
+    root = binding["USER_ORIGINAL35_DATA_ROOT"]
+    library = SourceConfigLibrary(index_path=INDEX, source_root=root)
+    with pytest.raises(Original35ExecutionError) as exc:
+        execute_native_compiler_source(
+            "SRC09", library=library, source_root=root,
+            host="local-d", purpose="ORIGINAL_RAW_ENGINEERING",
+            as_of="2026-11-06")
+    assert "CURRENT_SOURCE_READ_DECISION_REQUIRED_BEFORE_IO" in str(exc.value)

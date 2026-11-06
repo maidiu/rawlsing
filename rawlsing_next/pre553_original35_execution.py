@@ -17,7 +17,7 @@ import time
 from typing import Any, Mapping
 
 from rawlsing_next.pre553_original35_operations import (
-    build_original35_operation_plan,
+    EXECUTABLE, OPERATION_F1, build_original35_operation_plan,
 )
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_empirical_objects import RespondentEvent
@@ -26,6 +26,8 @@ from rawlsing_next.source_configuration.factory import (
     build_validated_c11_release_from_config,
 )
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
+from rawlsing_next.source_configuration.reader import decode_config_with_source_read_permission
+from rawlsing_next.pre553_original35_physical_stream import bounded_physical_cell_stream
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_source_native_preimage_adapter import (
     NativeSourceIdentity, NativeSourcePackage, NativeSourceRule,
@@ -225,9 +227,16 @@ def execute_source(source_id: str, *, library: SourceConfigLibrary,
 def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibrary,
                                    source_root: str | Path, host: str,
                                    purpose: str, as_of: str,
-                                   max_items: int = 3,
+                                   max_items: int | None = None,
+                                   resolver: Any | None = None,
+                                   incidence: Any | None = None,
                                    state_root: str | Path | None = None) -> dict[str, Any]:
-    """Run selected route-qualified items through CURRENT R03/I03/Batch facts."""
+    """Run supported route-qualified items through CURRENT R03/I03/Batch facts.
+
+    ``incidence`` must be a caller-admitted PhysicalSourceIncidence. Otherwise a
+    caller-supplied current source-read ``resolver`` is required; this function
+    never decodes original bytes without the existing admission decision.
+    """
     started = time.time()
     config = library.load_original(source_id)
     doc = config.document
@@ -240,21 +249,26 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     if "HOUSEHOLD" in str(respondent.get("subject_unit", "")).upper():
         raise Original35ExecutionError(
             "NON_SCALAR_HOUSEHOLD_TOPOLOGY_REQUIRES_STREAM_OCCURRENCE_PLAN")
-    routing = {row["question_id"]: row for row in doc.get("routing", [])}
+    plan = build_original35_operation_plan(
+        [doc], source_presence={source_id: True}, require_all35=False)
     qualified = []
-    for slot in doc.get("response_slots", []):
-        name = slot["slot"]["name"]
-        if routing.get(name, {}).get("typed_state") != "ELIGIBLE_APPLICABLE":
-            continue
-        values = [str(v.get("canonical_value")) for v in slot.get("values", [])
-                  if v.get("response_state") == "SUBSTANTIVE_RESPONSE"
-                  and v.get("canonical_value") is not None]
-        if values:
-            qualified.append((name, values))
-    qualified = qualified[:max_items]
+    for op in plan.operations:
+        if (op.source_id == source_id and op.kind == OPERATION_F1
+                and op.status == EXECUTABLE
+                and op.route_status == "ELIGIBLE_APPLICABLE"
+                and op.response_values):
+            original_id = op.item_ids[0]
+            physical = op.source_variable_codes[0]
+            if not original_id or not physical:
+                raise Original35ExecutionError("ORIGINAL_ID_OR_PHYSICAL_CODE_ABSENT")
+            qualified.append((physical, op.response_values, original_id))
+    if max_items is not None:
+        if type(max_items) is not int or max_items < 1:
+            raise Original35ExecutionError("DIAGNOSTIC_MAX_ITEMS_INVALID")
+        qualified = qualified[:max_items]
     if not qualified:
         raise Original35ExecutionError("NO_ROUTE_QUALIFIED_SUBSTANTIVE_ITEMS")
-    selected_names = {name for name, _ in qualified}
+    selected_names = {name for name, _, _ in qualified}
     coordinate = None
     for slot in doc.get("coordinate_slots", []):
         name = slot["slot"]["name"]
@@ -262,31 +276,21 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
             coordinate = name
             break
     if coordinate is None:
-        for slot in doc.get("physical_slots", []):
-            name = slot["name"]
-            if name not in selected_names:
-                coordinate = name
-                break
-    if coordinate is None:
-        raise Original35ExecutionError("COORDINATE_VARIABLE_ABSENT")
+        raise Original35ExecutionError("COORDINATE_FACT_ABSENT_NOT_GUESSED")
     fmt = str(selection.get("source_format") or "").upper()
-    encoding = _encoding(config)
-    incidence = (decode_sav(path, encoding=encoding) if fmt == "SAV"
-                 else decode_dta(path, encoding=encoding))
+    if incidence is None:
+        if resolver is None:
+            raise Original35ExecutionError(
+                "CURRENT_SOURCE_READ_DECISION_REQUIRED_BEFORE_IO")
+        incidence = decode_config_with_source_read_permission(
+            config, source_path=path, resolver=resolver, host=host,
+            purpose=purpose, consumer_use="D_ORIGINAL35_NATIVE_EXECUTION",
+            semantic_use_scope=("RAW_OBSERVED_SAMPLE",))
     if incidence.source_sha256 != doc["binding"]["source_sha256"]:
-        incidence.close()
         raise Original35ExecutionError("SOURCE_SHA_MISMATCH_AFTER_DECODE")
-    keep = selected_names | {coordinate}
-    def filtered_cells():
-        for cell in incidence.iter_cells():
-            if cell.variable_name in keep:
-                yield cell
-    stream = ExactPhysicalCellStream(
-        source_sha256=incidence.source_sha256, row_count=incidence.row_count,
-        cell_iter_factory=filtered_cells,
-        decoder_metadata_digest=(
-            incidence.file_metadata.get("metadata_digest")
-            if isinstance(incidence.file_metadata, Mapping) else None))
+    selected_variables = tuple(sorted(selected_names | {coordinate}))
+    stream = bounded_physical_cell_stream(
+        incidence, include_variables=selected_variables)
     package = NativeSourcePackage(
         source=NativeSourceIdentity(
             source_id=source_id, family=str(doc["identity"]["family"]),
@@ -295,8 +299,9 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
             declared_sha256=incidence.source_sha256, source_format=fmt,
             expected_rows=incidence.row_count),
         selected=tuple(NativeSourceRule(
-            implementation_id=source_id + ":" + name,
-            source_variable_code=name, unit="person") for name, _ in qualified),
+            implementation_id=item_id,
+            source_variable_code=name, unit="person")
+            for name, _values, item_id in qualified),
         coordinate_variable=coordinate,
         study_product_id=str(doc["identity"]["study_product_id"]),
         release_id=str(doc["identity"]["release_id"]),
@@ -310,9 +315,12 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     material = {
         "schema": "PRE553_ORIGINAL35_NATIVE_COMPILER_RESULT@1.0.0",
         "source_id": source_id, "source_sha256": incidence.source_sha256,
-        "selected_items": [name for name, _ in qualified],
-        "selected_values": {name: values for name, values in qualified},
+        "selected_items": [name for name, _, _ in qualified],
+        "selected_original_ids": {name: item_id for name, _, item_id in qualified},
+        "selected_values": {name: list(values) for name, values, _ in qualified},
         "coordinate_variable": coordinate,
+        "source_custody": dict(incidence.source_custody or {}),
+        "diagnostic_max_items": max_items,
         "row_count": incidence.row_count,
         "compilation_hash": compilation.content_hash,
         "expected_jobs": [list(job) for job in compilation.expected_jobs],
@@ -330,7 +338,6 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(json.dumps(material, indent=2, sort_keys=True) + "\n",
                           encoding="utf8")
-    incidence.close()
     return material
 
 
