@@ -1,0 +1,1039 @@
+{
+  "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC24",
+  "source_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+  "entries": [
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "routing.typed_state",
+      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 183 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+          "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 183 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
+      "affected_operation_or_slice": "eligibility/form-conditioned native query",
+      "unaffected_usable_slices": "unconditional source-native response incidence and coordinate binding",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-ROUTING-UNRESOLVED"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "respondents.source_native_key_slot",
+      "current_value_or_typed_unknown": "UNKNOWN: No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+          "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "affected_operation_or_slice": "respondent-key linkage or deduplication beyond row ordinal",
+      "unaffected_usable_slices": "row-ordinal-scoped source-native response and coordinate construction",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Supply exact row_native_keys only after a separately permitted decode; the corrected P0 factory refuses otherwise.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-ROW-NATIVE-KEY"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.supported_form_slice",
+      "current_value_or_typed_unknown": "UNKNOWN: Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is all that is established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+          "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is all that is established.",
+      "affected_operation_or_slice": "form-conditioned or administration-conditioned native query",
+      "unaffected_usable_slices": "source-native response incidence without form conditioning",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-FORM-ADMIN"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "weight_slots",
+      "current_value_or_typed_unknown": "NOT_DECLARED: The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+          "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "affected_operation_or_slice": "population or weighted estimation",
+      "unaffected_usable_slices": "raw-sample source-native response incidence",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Establish exact weight basis, design, estimand and effective scope before declaring a weighted slice.",
+      "status": "NOT_DECLARED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-WEIGHT-AUTHORITY"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "items.relation.manual_signed_polarity_status",
+      "current_value_or_typed_unknown": "NOT_CERTIFIED_BY_THIS_PREPARATION: Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+          "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "affected_operation_or_slice": "signed-direction empirical or structural analysis",
+      "unaffected_usable_slices": "source-native nominal/ordinal response incidence and exact value accounting",
+      "acquisition_fix_owner_and_step": "LATIN lane / later scientific authority owner: Use the original relation certification only at its exact evidenced scope; do not infer direction from this config.",
+      "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-DIRECTION"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.original_source_execution",
+      "current_value_or_typed_unknown": "NOT_PERFORMED: Original respondent execution and original workload issuance are a separate permission boundary.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC24",
+          "content_hash": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "Original respondent execution and original workload issuance are a separate permission boundary.",
+      "affected_operation_or_slice": "original empirical execution",
+      "unaffected_usable_slices": "portable configuration and nonrespondent fixture native validation",
+      "acquisition_fix_owner_and_step": "user-authorized execution owner: Issue a separate exact original-source execution grant and qualified reader binding.",
+      "status": "NOT_PERFORMED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-ORIGINAL-EXECUTION"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.0fa0a9f546132c54f98c @ p46f",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.0fa0a9f546132c54f98c",
+          "content_hash": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.0fa0a9f546132c54f98c",
+          "content_hash": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46f"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.23f75ff1ae9fa5f9e832 @ p46e",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.23f75ff1ae9fa5f9e832",
+          "content_hash": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.23f75ff1ae9fa5f9e832",
+          "content_hash": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46e"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.30e308d2f5b1add44a69 @ p43a",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.30e308d2f5b1add44a69",
+          "content_hash": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.30e308d2f5b1add44a69",
+          "content_hash": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p43a"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.62f74db198472da0b525 @ p47b",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.62f74db198472da0b525",
+          "content_hash": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.62f74db198472da0b525",
+          "content_hash": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p47b"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.715c3c525b8d7aea42cc @ p46a",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.715c3c525b8d7aea42cc",
+          "content_hash": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.715c3c525b8d7aea42cc",
+          "content_hash": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46a"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.7207b6d4db8252fc0c90 @ p46h",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7207b6d4db8252fc0c90",
+          "content_hash": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7207b6d4db8252fc0c90",
+          "content_hash": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46h"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.7dbb9eae2776776e6ea9 @ p46c",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7dbb9eae2776776e6ea9",
+          "content_hash": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7dbb9eae2776776e6ea9",
+          "content_hash": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46c"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.a4d13df93b0b5f774305 @ p46b",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a4d13df93b0b5f774305",
+          "content_hash": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a4d13df93b0b5f774305",
+          "content_hash": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46b"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.b347c6c99a427d8b7c48 @ p47c",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b347c6c99a427d8b7c48",
+          "content_hash": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b347c6c99a427d8b7c48",
+          "content_hash": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p47c"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.b5595cebe965f664cb27 @ p47a",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b5595cebe965f664cb27",
+          "content_hash": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b5595cebe965f664cb27",
+          "content_hash": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p47a"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.e02d1acbdbe0dd0d28ca @ p33b",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e02d1acbdbe0dd0d28ca",
+          "content_hash": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e02d1acbdbe0dd0d28ca",
+          "content_hash": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p33b"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.e8dc88eb458ddb593acd @ wt",
+      "required_native_field": "weight_slots[].design_authority_ref / estimand_authority_ref",
+      "current_value_or_typed_unknown": "WEIGHT_AUTHORITY_NOT_ESTABLISHED: The physical source carries a weight slot, but current evidence has no exact weight design, estimand or effective scope authority.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e8dc88eb458ddb593acd",
+          "content_hash": "e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e8dc88eb458ddb593acd",
+          "content_hash": "e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "The physical source carries a weight slot, but current evidence has no exact weight design, estimand or effective scope authority.",
+      "affected_operation_or_slice": "weighted/population estimation",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "WEIGHT_AUTHORITY_NOT_ESTABLISHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-wt"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.ec543f8a2afb10e7974a @ p46g",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ec543f8a2afb10e7974a",
+          "content_hash": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ec543f8a2afb10e7974a",
+          "content_hash": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46g"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.f86530d3805d17e8e918 @ p46d",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f86530d3805d17e8e918",
+          "content_hash": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f86530d3805d17e8e918",
+          "content_hash": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC24_PHYSICAL_METADATA.json",
+          "content_hash": "566bdd9eb641887da4798b9ac77a8cdbc37ac60c09bbf6209ed6fb8289b2f29b"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-EXCLUDED-p46d"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.0fa0a9f546132c54f98c @ p46f",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.0fa0a9f546132c54f98c",
+          "content_hash": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.0fa0a9f546132c54f98c",
+          "content_hash": "0fa0a9f546132c54f98c1114abadfc4c600edb9652d027c5d804033026d1837a"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.0fa0a9f546132c54f98c"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.1f60935613eb8655add9 @ numero",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1f60935613eb8655add9",
+          "content_hash": "1f60935613eb8655add9b8560c4c56483f85295fac24c775e0e391260f2c08a0"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1f60935613eb8655add9",
+          "content_hash": "1f60935613eb8655add9b8560c4c56483f85295fac24c775e0e391260f2c08a0"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.1f60935613eb8655add9"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.23f75ff1ae9fa5f9e832 @ p46e",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.23f75ff1ae9fa5f9e832",
+          "content_hash": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.23f75ff1ae9fa5f9e832",
+          "content_hash": "23f75ff1ae9fa5f9e8321d1a003a36e13d42c0da6219233a83f4b44508c2fc21"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.23f75ff1ae9fa5f9e832"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.30e308d2f5b1add44a69 @ p43a",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.30e308d2f5b1add44a69",
+          "content_hash": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.30e308d2f5b1add44a69",
+          "content_hash": "30e308d2f5b1add44a693a4572d68eae2b644ab754c3b2058a93ab3c3ca39640"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.30e308d2f5b1add44a69"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.339be33bf48093941579 @ enc",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.339be33bf48093941579",
+          "content_hash": "339be33bf48093941579fc88c64396226f0ffd1a112085c7658b568add570546"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.339be33bf48093941579",
+          "content_hash": "339be33bf48093941579fc88c64396226f0ffd1a112085c7658b568add570546"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.339be33bf48093941579"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.62f74db198472da0b525 @ p47b",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.62f74db198472da0b525",
+          "content_hash": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.62f74db198472da0b525",
+          "content_hash": "62f74db198472da0b525ca2252a0ee4d0bb399681a12585c9aef45157099ff22"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.62f74db198472da0b525"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.715c3c525b8d7aea42cc @ p46a",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.715c3c525b8d7aea42cc",
+          "content_hash": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.715c3c525b8d7aea42cc",
+          "content_hash": "715c3c525b8d7aea42ccbd39e5fa769103f500dafe29fab5e2db1e775aab79eb"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.715c3c525b8d7aea42cc"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.7207b6d4db8252fc0c90 @ p46h",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7207b6d4db8252fc0c90",
+          "content_hash": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7207b6d4db8252fc0c90",
+          "content_hash": "7207b6d4db8252fc0c906f79a6b96de911d29198292f3d3b4a682da281ca1360"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.7207b6d4db8252fc0c90"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.7d541ce591ee2c5b7920 @ pais",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7d541ce591ee2c5b7920",
+          "content_hash": "7d541ce591ee2c5b7920e925c391f18e54b10477dbd950c49470a62b8d71c35f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7d541ce591ee2c5b7920",
+          "content_hash": "7d541ce591ee2c5b7920e925c391f18e54b10477dbd950c49470a62b8d71c35f"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.7d541ce591ee2c5b7920"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.7dbb9eae2776776e6ea9 @ p46c",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7dbb9eae2776776e6ea9",
+          "content_hash": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7dbb9eae2776776e6ea9",
+          "content_hash": "7dbb9eae2776776e6ea9e88bea2a65adf2266e06097746967cc8c364e2ca5476"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.7dbb9eae2776776e6ea9"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.9147f6bcfc5d312f0ffd @ region",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9147f6bcfc5d312f0ffd",
+          "content_hash": "9147f6bcfc5d312f0ffdc950ab620060b57c74b4241c7cf012db4a7fea682dd2"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9147f6bcfc5d312f0ffd",
+          "content_hash": "9147f6bcfc5d312f0ffdc950ab620060b57c74b4241c7cf012db4a7fea682dd2"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.9147f6bcfc5d312f0ffd"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.a4d13df93b0b5f774305 @ p46b",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a4d13df93b0b5f774305",
+          "content_hash": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a4d13df93b0b5f774305",
+          "content_hash": "a4d13df93b0b5f774305cf4c076e5ecf94fd4653ab0187e70847e5056e503bc9"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.a4d13df93b0b5f774305"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.b347c6c99a427d8b7c48 @ p47c",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b347c6c99a427d8b7c48",
+          "content_hash": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b347c6c99a427d8b7c48",
+          "content_hash": "b347c6c99a427d8b7c48175d111f68fdefa3f47cdee4a1b4212ba38a200c527e"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.b347c6c99a427d8b7c48"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.b5595cebe965f664cb27 @ p47a",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b5595cebe965f664cb27",
+          "content_hash": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b5595cebe965f664cb27",
+          "content_hash": "b5595cebe965f664cb27dfc7fbe50d0d9428df9e6d76c80881371ea051911136"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.b5595cebe965f664cb27"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.e02d1acbdbe0dd0d28ca @ p33b",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e02d1acbdbe0dd0d28ca",
+          "content_hash": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e02d1acbdbe0dd0d28ca",
+          "content_hash": "e02d1acbdbe0dd0d28ca2f28364a6ef9bd4aa48c42e93342e2d4489c43ac6caa"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.e02d1acbdbe0dd0d28ca"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.e8dc88eb458ddb593acd @ wt",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e8dc88eb458ddb593acd",
+          "content_hash": "e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e8dc88eb458ddb593acd",
+          "content_hash": "e8dc88eb458ddb593acdee09d9b70ecf3e2ad0541d0a38336185c92f67479e0b"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.e8dc88eb458ddb593acd"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.ec543f8a2afb10e7974a @ p46g",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ec543f8a2afb10e7974a",
+          "content_hash": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ec543f8a2afb10e7974a",
+          "content_hash": "ec543f8a2afb10e7974a053c0e5c51c95ee15577c2c362b1ae077cbf427c2ba8"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.ec543f8a2afb10e7974a"
+    },
+    {
+      "source_id": "SRC24",
+      "implementation_id_or_physical_slot": "question_impl.phase0.f86530d3805d17e8e918 @ p46d",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f86530d3805d17e8e918",
+          "content_hash": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f86530d3805d17e8e918",
+          "content_hash": "f86530d3805d17e8e918397e909cc731a2e78a25951957d11267ee29c11c8955"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC24-UNMATCHED-question_impl.phase0.f86530d3805d17e8e918"
+    }
+  ],
+  "counts": {
+    "entries": 38,
+    "residuals": 20,
+    "unmatched_relation_items": 18,
+    "physical_only_extra_slots": 0,
+    "excluded_slots": 14,
+    "excluded_items": 14
+  },
+  "limits": [
+    "The ledger preserves exact IDs/ordinals and evidence; fixture success is not original-source authority.",
+    "Excluded rows are accounted, not deleted or silently aliased."
+  ]
+}

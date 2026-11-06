@@ -1,0 +1,2665 @@
+{
+  "schema": "PYAT_R157_GSS_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC17",
+  "source_config": "rawlsing_next/source_configuration/data/SRC17/SRC17.source.config.json",
+  "residual_count": 9,
+  "residuals": [
+    {
+      "residual_id": "SRC17-NATIVE-ROW-KEY",
+      "scope": "SRC17/respondents",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native id slot is bound, but no permitted decode-produced respondent keys are available during preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "schema validation, nonrespondent fixture projection and native C11 validation",
+      "owner": "R157 P3 integration owner with source-read decoder owner",
+      "next_step": "Populate the frozen row_native_keys argument from permitted decoded id cells and verified edition/currentness checks."
+    },
+    {
+      "residual_id": "SRC17-ROUTING-UNKNOWN",
+      "scope": "SRC17/routing",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 reports SOURCE_ROUTING_UNRESOLVED; exact form, ballot and administration routing was not recovered.",
+      "dependent_operation": "eligibility-conditioned original source claims or subsets",
+      "unaffected_scope": "raw scalar response decoding and fixture positive release",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact original route expressions/form assignment before any original eligibility claim."
+    },
+    {
+      "residual_id": "SRC17-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC17/authority",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted ALLOW authority for original scientific execution.",
+      "dependent_operation": "original scientific issuance or original-source semantic promotion",
+      "unaffected_scope": "portable source preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate the exact source operation scope; never promote fixture-only authority into original meaning."
+    },
+    {
+      "residual_id": "SRC17-CANONICAL-VALUE",
+      "scope": "SRC17/response_slots",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive NATIVE_CANONICAL_MAPPING_HARMONIZATION authority is present, so raw source values and states are retained without canonical recoding.",
+      "dependent_operation": "canonicalized cross-source value analysis",
+      "unaffected_scope": "raw response state and exact physical value projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact source-native to canonical mapping before setting canonical values."
+    },
+    {
+      "residual_id": "SRC17-WEIGHT-HELD",
+      "scope": "SRC17/weight_slots",
+      "field": "physical_slots[335].name=wtssall",
+      "status": "HELD",
+      "reason": "The source weight slot is identified, but exact weight basis, design, estimand and normalization authority are not established.",
+      "dependent_operation": "weighted estimands and population inference",
+      "unaffected_scope": "unweighted source-local raw sample configuration",
+      "owner": "GSS weight/design evidence owner",
+      "next_step": "Establish exact design/estimand/normalization authority before emitting an authorized weight lane."
+    },
+    {
+      "residual_id": "SRC17-FORM-ADMINISTRATION",
+      "scope": "SRC17/form",
+      "field": "supported_scope.supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Split form/ballot assignment and administration are not recovered as exact source facts in the portable evidence rows.",
+      "dependent_operation": "form-conditioned or administration-conditioned claims",
+      "unaffected_scope": "unconditional scalar response-rule fixture validation",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact form/ballot assignment evidence for this wave if a form-conditioned slice is required."
+    },
+    {
+      "residual_id": "SRC17-SAMPLE-FRAME",
+      "scope": "SRC17/universe",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "Country scope US is carried from the full-relation row; wave-specific sampling frame and design are not reconstructed from metadata alone.",
+      "dependent_operation": "population, design or design-based inference claims",
+      "unaffected_scope": "source-row identity and raw response-rule construction",
+      "owner": "GSS source evidence owner",
+      "next_step": "Recover exact wave sampling-frame/design evidence before population or design claims."
+    },
+    {
+      "residual_id": "SRC17-CONTINUOUS-NATIVE-FINITE-RULE",
+      "scope": "SRC17/continuous",
+      "field": "questions[].response_slots",
+      "status": "NATIVE_FINITE_RULE_REQUIRED",
+      "reason": "51 exact items are held: The source variables carry no substantive value labels and are continuous/typed numeric; native ResponseSlotRule requires exact finite physical value keys and must not force a categorical domain. Exact item/evidence rows: source_pre553_validation/SRC17/SRC17.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "continuous/source-native value handling in an owner with an exact continuous rule",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
+    },
+    {
+      "residual_id": "SRC17-ADMIN-NO-RESPONSE-SLOT",
+      "scope": "SRC17/admin",
+      "field": "questions[].response_slots",
+      "status": "RETAINED_ADMINISTRATIVE",
+      "reason": "5 exact items are held: The source items are administrative/context variables, not respondent measurement targets; their identities and dispositions are retained without a response event. Exact item/evidence rows: source_pre553_validation/SRC17/SRC17.exceptions.json#held_items.",
+      "dependent_operation": "administrative variable use as a measurement target",
+      "unaffected_scope": "administrative/context consumption from the retained physical metadata",
+      "owner": "GSS source/native-representation owner",
+      "next_step": "Do not substitute a default category; consume the exact held-item evidence or extend the receiving owner only through its actual contract."
+    }
+  ],
+  "bound_item_count": 279,
+  "held_item_count": 60,
+  "held_by_role_counts": {
+    "ADMIN": 5,
+    "CONTINUOUS": 51,
+    "COORDINATE": 2,
+    "ROW_KEY": 1,
+    "WEIGHT_HELD": 1
+  },
+  "held_items": [
+    {
+      "implementation_id": "question_impl.phase0.33a4dc85de0948ac819d",
+      "source_variable_code": "fileversion",
+      "physical_slot": {
+        "ordinal": 1,
+        "name": "fileversion"
+      },
+      "label": "gss data file version",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "ADMIN",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:fileversion",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 21,
+      "positive_label_count": 9,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "RETAINED_ADMINISTRATIVE",
+      "reason": "Administrative/sample/form metadata retained for identity and no-drop accounting.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.33a4dc85de0948ac819d",
+          "content_hash": "33a4dc85de0948ac819d68163820a84d1c853c5bfdcf99d719b35e5175d7f14c"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.33a4dc85de0948ac819d",
+          "content_hash": "33a4dc85de0948ac819d68163820a84d1c853c5bfdcf99d719b35e5175d7f14c"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_fileversion",
+          "content_hash": "eb417b76acaa3addaca72a5682b2c694184e14f307e4ffd55318199fc4346365"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.f4042a0ba5b41197f4ca",
+      "source_variable_code": "year",
+      "physical_slot": {
+        "ordinal": 2,
+        "name": "year"
+      },
+      "label": "gss year for this respondent",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "COORDINATE",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:year",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "SUPPORTED_COORDINATE_TIME",
+      "reason": "Source-native GSS survey-year coordinate; raw value copied only at permitted projection.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f4042a0ba5b41197f4ca",
+          "content_hash": "f4042a0ba5b41197f4ca14bc811361e8c5edc206f188274bc19ed627f0dcaf11"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f4042a0ba5b41197f4ca",
+          "content_hash": "f4042a0ba5b41197f4ca14bc811361e8c5edc206f188274bc19ed627f0dcaf11"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_year",
+          "content_hash": "78354c73fb0c9d5a1fa568e10cc516cf7ec4ab64841dea8f705299fe9af93cf6"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b69e25e8b4bc94ce66d8",
+      "source_variable_code": "id",
+      "physical_slot": {
+        "ordinal": 3,
+        "name": "id"
+      },
+      "label": "respondent id number",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "ROW_KEY",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:id",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "SOURCE_NATIVE_RESPONDENT_KEY",
+      "reason": "Source-native respondent id slot; values require a permitted decode before row witnesses exist.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b69e25e8b4bc94ce66d8",
+          "content_hash": "b69e25e8b4bc94ce66d8779c262f38adf7eaf38f3144cf966cf5b160b8083734"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b69e25e8b4bc94ce66d8",
+          "content_hash": "b69e25e8b4bc94ce66d8779c262f38adf7eaf38f3144cf966cf5b160b8083734"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_id",
+          "content_hash": "a4e9ee94fe9fec1f2e6e5cc50ae023c372965157dd39700006b46ab1aa3f4932"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.9fe27f9c11987c9416a4",
+      "source_variable_code": "agewed",
+      "physical_slot": {
+        "ordinal": 14,
+        "name": "agewed"
+      },
+      "label": "age when first married",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:agewed",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9fe27f9c11987c9416a4",
+          "content_hash": "9fe27f9c11987c9416a47ed711ec827ac51046044b1839d23522389de871adf5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9fe27f9c11987c9416a4",
+          "content_hash": "9fe27f9c11987c9416a47ed711ec827ac51046044b1839d23522389de871adf5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_agewed",
+          "content_hash": "f2fefb9e4292985205ae3876da7ca39a34b90086ab9c4e37ea88821d5cc3ce3e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.2e332817063650611f01",
+      "source_variable_code": "cohort",
+      "physical_slot": {
+        "ordinal": 37,
+        "name": "cohort"
+      },
+      "label": "year of birth",
+      "storage_type": "double",
+      "original_type": "F5.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "position_context",
+      "p2_question_id": "GSS:1973:cohort",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.2e332817063650611f01",
+          "content_hash": "2e332817063650611f01ad68311a3ecf5e4474b2dd333880acb992d8950eac47"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.2e332817063650611f01",
+          "content_hash": "2e332817063650611f01ad68311a3ecf5e4474b2dd333880acb992d8950eac47"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_cohort",
+          "content_hash": "164d596d02961bc29c720a1b90f139f1b66e30e5fd8ddbaa6d65147913205032"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.080616b4a66eb9538606",
+      "source_variable_code": "coninc",
+      "physical_slot": {
+        "ordinal": 49,
+        "name": "coninc"
+      },
+      "label": "family income in constant dollars",
+      "storage_type": "double",
+      "original_type": "F10.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "position_context",
+      "p2_question_id": "GSS:1973:coninc",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.080616b4a66eb9538606",
+          "content_hash": "080616b4a66eb9538606d1ebd19aff7ba4f89a58bc476578e522466a6d94632e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.080616b4a66eb9538606",
+          "content_hash": "080616b4a66eb9538606d1ebd19aff7ba4f89a58bc476578e522466a6d94632e"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_coninc",
+          "content_hash": "d413acfdd35829c3dcf90ff8760ef2d7810d696a5300bcfec4bfa3fb303b4b0b"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.d86ac4a79518f97cd189",
+      "source_variable_code": "dotdata",
+      "physical_slot": {
+        "ordinal": 67,
+        "name": "dotdata"
+      },
+      "label": "d.o.t. code - relation to data",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:dotdata",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.d86ac4a79518f97cd189",
+          "content_hash": "d86ac4a79518f97cd189fd791e8450851688e1cb3a4a65e0e9d7cf4090effde0"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.d86ac4a79518f97cd189",
+          "content_hash": "d86ac4a79518f97cd189fd791e8450851688e1cb3a4a65e0e9d7cf4090effde0"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_dotdata",
+          "content_hash": "d325346819089b552498b19f8ee8feca34cddf36613e4e775aa11b0b5df73197"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.49f14a350e3b504192eb",
+      "source_variable_code": "dotged",
+      "physical_slot": {
+        "ordinal": 68,
+        "name": "dotged"
+      },
+      "label": "d.o.t. code - general educ develop.",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:dotged",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.49f14a350e3b504192eb",
+          "content_hash": "49f14a350e3b504192ebd7680e264459d5d4c195b5858da93d8431936a9a4ab8"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.49f14a350e3b504192eb",
+          "content_hash": "49f14a350e3b504192ebd7680e264459d5d4c195b5858da93d8431936a9a4ab8"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_dotged",
+          "content_hash": "0a378a3d1a18b4f03fa03e5f49736c9a9915255f5c45eac7cef7a56e16fe9d1a"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.00d3aec5bebdf0b0fd2f",
+      "source_variable_code": "dotpeop",
+      "physical_slot": {
+        "ordinal": 69,
+        "name": "dotpeop"
+      },
+      "label": "d.o.t. code - relation to people",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:dotpeop",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.00d3aec5bebdf0b0fd2f",
+          "content_hash": "00d3aec5bebdf0b0fd2f8b497a1b96d20f2f3f08a74ed2f64edcb1eb9b734f30"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.00d3aec5bebdf0b0fd2f",
+          "content_hash": "00d3aec5bebdf0b0fd2f8b497a1b96d20f2f3f08a74ed2f64edcb1eb9b734f30"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_dotpeop",
+          "content_hash": "e0f606709473763dc0e8939ce60ad9f3cdacf04ac7273b60ce703b52ead64ba1"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.32ee19ec6fb3c3963492",
+      "source_variable_code": "dotpres",
+      "physical_slot": {
+        "ordinal": 70,
+        "name": "dotpres"
+      },
+      "label": "temme prestige scale",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:dotpres",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.32ee19ec6fb3c3963492",
+          "content_hash": "32ee19ec6fb3c39634928af8dd0150cea2d8b0000566653f4f89a5e0090fd498"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.32ee19ec6fb3c3963492",
+          "content_hash": "32ee19ec6fb3c39634928af8dd0150cea2d8b0000566653f4f89a5e0090fd498"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_dotpres",
+          "content_hash": "0440b92ce6e6ab71afdf63a370f511432d5b60fd66443cbde78077591200de66"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.c76cd5306bfe997f1561",
+      "source_variable_code": "dotsvp",
+      "physical_slot": {
+        "ordinal": 71,
+        "name": "dotsvp"
+      },
+      "label": "d.o.t. code - specific vocat. prep",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:dotsvp",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c76cd5306bfe997f1561",
+          "content_hash": "c76cd5306bfe997f1561de675f981c0563cd2156f674fa5cf4c45405a2355512"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c76cd5306bfe997f1561",
+          "content_hash": "c76cd5306bfe997f1561de675f981c0563cd2156f674fa5cf4c45405a2355512"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_dotsvp",
+          "content_hash": "c4f55d93dda0e0fed67dd576a10728a65d6318cee4bf061bcd22a06bd94a9227"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.a55211361a53ef1a4714",
+      "source_variable_code": "dotthng",
+      "physical_slot": {
+        "ordinal": 72,
+        "name": "dotthng"
+      },
+      "label": "d.o.t. code - relation to things",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:dotthng",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a55211361a53ef1a4714",
+          "content_hash": "a55211361a53ef1a4714d80049e7ca840263d1463c048eab02d5d680d187aa93"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a55211361a53ef1a4714",
+          "content_hash": "a55211361a53ef1a4714d80049e7ca840263d1463c048eab02d5d680d187aa93"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_dotthng",
+          "content_hash": "837848a896b3c6f10fc1677b26f50a1cc9ec0006d36d7be4c0153a27c09ddd36"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ef034e22e0348aff82b3",
+      "source_variable_code": "form",
+      "physical_slot": {
+        "ordinal": 85,
+        "name": "form"
+      },
+      "label": "form of split questionnaire asked",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "ADMIN",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:form",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 15,
+      "positive_label_count": 3,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "RETAINED_ADMINISTRATIVE",
+      "reason": "Administrative/sample/form metadata retained for identity and no-drop accounting.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ef034e22e0348aff82b3",
+          "content_hash": "ef034e22e0348aff82b31e4275bd4dc30c96af6d5e59d055a1675cb0048ca950"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ef034e22e0348aff82b3",
+          "content_hash": "ef034e22e0348aff82b31e4275bd4dc30c96af6d5e59d055a1675cb0048ca950"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_form",
+          "content_hash": "e9964d11b5038ddd114ba0d6f3162fc0080c6951991889bd6d3d361f56d07ce0"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.0fe9ed5a69c08303652f",
+      "source_variable_code": "hompop_7222",
+      "physical_slot": {
+        "ordinal": 111,
+        "name": "hompop_7222"
+      },
+      "label": "number of persons in household",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "position_context",
+      "p2_question_id": "GSS:1973:hompop_7222",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.0fe9ed5a69c08303652f",
+          "content_hash": "0fe9ed5a69c08303652fdb32fa90275080c95c81a1fcce99f5c9c73f8bbe3bab"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.0fe9ed5a69c08303652f",
+          "content_hash": "0fe9ed5a69c08303652fdb32fa90275080c95c81a1fcce99f5c9c73f8bbe3bab"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_hompop_7222",
+          "content_hash": "e61cdffdec886294f1392c19982498d676e15b2aff4d6b652ddbe087eb3d9fd3"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b5d8d0f7d89b377534dc",
+      "source_variable_code": "isco68",
+      "physical_slot": {
+        "ordinal": 126,
+        "name": "isco68"
+      },
+      "label": "respondent's occupation, 1970 census",
+      "storage_type": "double",
+      "original_type": "F5.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:isco68",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b5d8d0f7d89b377534dc",
+          "content_hash": "b5d8d0f7d89b377534dc27d162033cbbf7ef5b008a3a35b2ad27e8e5905a9de3"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b5d8d0f7d89b377534dc",
+          "content_hash": "b5d8d0f7d89b377534dc27d162033cbbf7ef5b008a3a35b2ad27e8e5905a9de3"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_isco68",
+          "content_hash": "d39563ad0a508491e83a57e89958530afdbb69f5224d6d31c62a7ae130d392ea"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.5d8cede1f40499e9c992",
+      "source_variable_code": "marcohrt",
+      "physical_slot": {
+        "ordinal": 147,
+        "name": "marcohrt"
+      },
+      "label": "year of first marriage",
+      "storage_type": "double",
+      "original_type": "F5.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:marcohrt",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5d8cede1f40499e9c992",
+          "content_hash": "5d8cede1f40499e9c992381a8d8add38addac8810179b68f07168e007f6c51fe"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5d8cede1f40499e9c992",
+          "content_hash": "5d8cede1f40499e9c992381a8d8add38addac8810179b68f07168e007f6c51fe"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_marcohrt",
+          "content_hash": "66ced7908817762b86d1eba12cbf0326b99e4df6288d496f918b2ada26d95602"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.f537cee37d94803f5f5a",
+      "source_variable_code": "occ",
+      "physical_slot": {
+        "ordinal": 165,
+        "name": "occ"
+      },
+      "label": "r's census occupation code (1970)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:occ",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f537cee37d94803f5f5a",
+          "content_hash": "f537cee37d94803f5f5ac0ef20f0fbd06fa1458ee5d2317e1ba991a90a5174c6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f537cee37d94803f5f5a",
+          "content_hash": "f537cee37d94803f5f5ac0ef20f0fbd06fa1458ee5d2317e1ba991a90a5174c6"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_occ",
+          "content_hash": "86899da9b64c870a4e000a1cb3919ab51a40311c3d3ef32898f693cd7f7029d9"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.964db7b87755a9feabe0",
+      "source_variable_code": "oversamp",
+      "physical_slot": {
+        "ordinal": 172,
+        "name": "oversamp"
+      },
+      "label": "weights for black oversamples",
+      "storage_type": "double",
+      "original_type": "F4.2",
+      "measure": "scale",
+      "configuration_role": "ADMIN",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:oversamp",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 13,
+      "positive_label_count": 1,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "RETAINED_ADMINISTRATIVE",
+      "reason": "Administrative/sample/form metadata retained for identity and no-drop accounting.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.964db7b87755a9feabe0",
+          "content_hash": "964db7b87755a9feabe0a76fc526c372c805913a7859502c6f5c4760f3b55bb0"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.964db7b87755a9feabe0",
+          "content_hash": "964db7b87755a9feabe0a76fc526c372c805913a7859502c6f5c4760f3b55bb0"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_oversamp",
+          "content_hash": "55a358fcd5495e3ca05b7bfea59f3edc5507f989e13dea8fee402284f3fe9807"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.5b841b1249dbb134a89c",
+      "source_variable_code": "padotdat",
+      "physical_slot": {
+        "ordinal": 175,
+        "name": "padotdat"
+      },
+      "label": "fa. d.o.t. code - relation to data",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:padotdat",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5b841b1249dbb134a89c",
+          "content_hash": "5b841b1249dbb134a89cd138fa85f12636a0c919d9524c6f8bff68d3eaf41bc3"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5b841b1249dbb134a89c",
+          "content_hash": "5b841b1249dbb134a89cd138fa85f12636a0c919d9524c6f8bff68d3eaf41bc3"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_padotdat",
+          "content_hash": "4204b057f16dc8ac99b17224432bf2ae093f8822d91fbf339fec86e959cab4d4"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.46dffec68acb77842cbd",
+      "source_variable_code": "padotged",
+      "physical_slot": {
+        "ordinal": 176,
+        "name": "padotged"
+      },
+      "label": "fa. d.o.t. code - general educ develop.",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:padotged",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.46dffec68acb77842cbd",
+          "content_hash": "46dffec68acb77842cbde9c31e63e45debf770714bac247998fbb7bf119f1579"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.46dffec68acb77842cbd",
+          "content_hash": "46dffec68acb77842cbde9c31e63e45debf770714bac247998fbb7bf119f1579"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_padotged",
+          "content_hash": "b17160e03c3e22984bdfd4fe019ef237e81f441c54bc7fd0811e16035f92153e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.4e31da47c05bbcc538d4",
+      "source_variable_code": "padotpeo",
+      "physical_slot": {
+        "ordinal": 177,
+        "name": "padotpeo"
+      },
+      "label": "fa. d.o.t. code - relation to people",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:padotpeo",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.4e31da47c05bbcc538d4",
+          "content_hash": "4e31da47c05bbcc538d45f720fe328f11da78e74ad3d0b4718f32a03c21c8207"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.4e31da47c05bbcc538d4",
+          "content_hash": "4e31da47c05bbcc538d45f720fe328f11da78e74ad3d0b4718f32a03c21c8207"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_padotpeo",
+          "content_hash": "e4ba641566c70ac0c1a4db1518e741e5bcfca89f88e0298a9dfb73b8e803e5b6"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.6f4f3bb87f83735b8ab0",
+      "source_variable_code": "padotpre",
+      "physical_slot": {
+        "ordinal": 178,
+        "name": "padotpre"
+      },
+      "label": "fa. temme prestige scale",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:padotpre",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6f4f3bb87f83735b8ab0",
+          "content_hash": "6f4f3bb87f83735b8ab0f857c8fc4f8a7c8a84c10b310735b5c4f406ccf82094"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6f4f3bb87f83735b8ab0",
+          "content_hash": "6f4f3bb87f83735b8ab0f857c8fc4f8a7c8a84c10b310735b5c4f406ccf82094"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_padotpre",
+          "content_hash": "464f7e3b6166667e657b9670cb8472d94b25fd3bef378c2dec9b52bf55eb1ce8"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.513610cf998c15fd9b4f",
+      "source_variable_code": "padotsvp",
+      "physical_slot": {
+        "ordinal": 179,
+        "name": "padotsvp"
+      },
+      "label": "fa. d.o.t. code - specific vocat. prep",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:padotsvp",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.513610cf998c15fd9b4f",
+          "content_hash": "513610cf998c15fd9b4f73714a8007ab6d239af0399b2bb3250d40a025c48f46"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.513610cf998c15fd9b4f",
+          "content_hash": "513610cf998c15fd9b4f73714a8007ab6d239af0399b2bb3250d40a025c48f46"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_padotsvp",
+          "content_hash": "b43454f25c1bbcaa51c3ea98e151cd6a52ebb661ad7987574132d40ce6e54193"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b798d1e609c0da221fae",
+      "source_variable_code": "padotthn",
+      "physical_slot": {
+        "ordinal": 180,
+        "name": "padotthn"
+      },
+      "label": "fa. d.o.t. code - relation to things",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:padotthn",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b798d1e609c0da221fae",
+          "content_hash": "b798d1e609c0da221fae898fc82700f1002745435caa590f45252e9663a1cca9"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b798d1e609c0da221fae",
+          "content_hash": "b798d1e609c0da221fae898fc82700f1002745435caa590f45252e9663a1cca9"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_padotthn",
+          "content_hash": "d84f9ca69a4ac3e7629a8c6ad1a8285805dfc8240cc1616b953680956f29e80a"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.320bad463cd94cc9eb0d",
+      "source_variable_code": "paisco68",
+      "physical_slot": {
+        "ordinal": 187,
+        "name": "paisco68"
+      },
+      "label": "r's father's occupation, 1970 census",
+      "storage_type": "double",
+      "original_type": "F5.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:paisco68",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.320bad463cd94cc9eb0d",
+          "content_hash": "320bad463cd94cc9eb0d0434361d313b8188fac6c14b51834c169a0608340f06"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.320bad463cd94cc9eb0d",
+          "content_hash": "320bad463cd94cc9eb0d0434361d313b8188fac6c14b51834c169a0608340f06"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_paisco68",
+          "content_hash": "133df45c4f17971e91edce0bd6a972a0409d0346b027ca64a5ff86fc7bc52c81"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.231a5a68a38b0761c05f",
+      "source_variable_code": "paocc16",
+      "physical_slot": {
+        "ordinal": 190,
+        "name": "paocc16"
+      },
+      "label": "father's census occupation code (1970)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:paocc16",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.231a5a68a38b0761c05f",
+          "content_hash": "231a5a68a38b0761c05f48ef8dd6536454ef78fe329f4285f098d81fd352262f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.231a5a68a38b0761c05f",
+          "content_hash": "231a5a68a38b0761c05f48ef8dd6536454ef78fe329f4285f098d81fd352262f"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_paocc16",
+          "content_hash": "0c6ab355a7f13999ca9ed4eccff55e71528182417ba6122aada26fd41d1231ce"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.9cc9db31470d8e112723",
+      "source_variable_code": "papres10",
+      "physical_slot": {
+        "ordinal": 194,
+        "name": "papres10"
+      },
+      "label": "father's (or oldest same-sex parent's) occupational prestige score (2010)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:papres10",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9cc9db31470d8e112723",
+          "content_hash": "9cc9db31470d8e11272339dd2ebc1a9f100dc9a5e3e297b2e3646ec410200c81"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9cc9db31470d8e112723",
+          "content_hash": "9cc9db31470d8e11272339dd2ebc1a9f100dc9a5e3e297b2e3646ec410200c81"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_papres10",
+          "content_hash": "c2a1d67bdc0bfd2d93c7a401407bedf86929a388e448a9cda74e0c735367c5d4"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.abf8f41ce1e430aaf153",
+      "source_variable_code": "papres105plus",
+      "physical_slot": {
+        "ordinal": 195,
+        "name": "papres105plus"
+      },
+      "label": "father's (or oldest same-sex parent's) occupational prestige score using thresho",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:papres105plus",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.abf8f41ce1e430aaf153",
+          "content_hash": "abf8f41ce1e430aaf153f8402f056f0cbc23ea6c98f0df1892d08e385b46e2d5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.abf8f41ce1e430aaf153",
+          "content_hash": "abf8f41ce1e430aaf153f8402f056f0cbc23ea6c98f0df1892d08e385b46e2d5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_papres105plus",
+          "content_hash": "0f2cb77836d2c9cb6fa3387cbbe8c594a9b2c0d777c1904db31732c3978f2678"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.13cecca3238dcd942149",
+      "source_variable_code": "papres16",
+      "physical_slot": {
+        "ordinal": 196,
+        "name": "papres16"
+      },
+      "label": "father's occupational prestige score (1970)",
+      "storage_type": "double",
+      "original_type": "F3.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:papres16",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.13cecca3238dcd942149",
+          "content_hash": "13cecca3238dcd94214975943250669ddb763db2d935761f1b047c67599e3461"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.13cecca3238dcd942149",
+          "content_hash": "13cecca3238dcd94214975943250669ddb763db2d935761f1b047c67599e3461"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_papres16",
+          "content_hash": "bc69987d3dc40e95d51023ae10454f1efab4161147ff97f048d18c988e4d1f49"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.f28ed7c4407299885463",
+      "source_variable_code": "pasei10",
+      "physical_slot": {
+        "ordinal": 198,
+        "name": "pasei10"
+      },
+      "label": "r's father's (or oldest same-sex parent's) socioeconomic index (2010)",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:pasei10",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f28ed7c4407299885463",
+          "content_hash": "f28ed7c4407299885463b1d6917406a50c621b4bfe007d8f4eff536be793667d"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f28ed7c4407299885463",
+          "content_hash": "f28ed7c4407299885463b1d6917406a50c621b4bfe007d8f4eff536be793667d"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_pasei10",
+          "content_hash": "d20d0df053741d465df4afa5c113f2a65a92f854f5299712eb7191ce42b7ebe0"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.397daf993c2aff4d57d6",
+      "source_variable_code": "pasei10educ",
+      "physical_slot": {
+        "ordinal": 199,
+        "name": "pasei10educ"
+      },
+      "label": "percentage of some college educ in paocc10 based on acs 2010",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:pasei10educ",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.397daf993c2aff4d57d6",
+          "content_hash": "397daf993c2aff4d57d6bb71f91c8938ee23a4f6f9981e92201b9fe234de1190"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.397daf993c2aff4d57d6",
+          "content_hash": "397daf993c2aff4d57d6bb71f91c8938ee23a4f6f9981e92201b9fe234de1190"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_pasei10educ",
+          "content_hash": "b56105297c1a4f9ae18523e2b135e08e71e6bdc8e89333674b32c10ae242b574"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.6e901863f971b3e0c4d8",
+      "source_variable_code": "pasei10inc",
+      "physical_slot": {
+        "ordinal": 200,
+        "name": "pasei10inc"
+      },
+      "label": "percentage of $45k+ earners in paocc10 based on acs 2010",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:pasei10inc",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6e901863f971b3e0c4d8",
+          "content_hash": "6e901863f971b3e0c4d89e3e87dccd218cd564687c77f8a53614540a4764a3cf"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6e901863f971b3e0c4d8",
+          "content_hash": "6e901863f971b3e0c4d89e3e87dccd218cd564687c77f8a53614540a4764a3cf"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_pasei10inc",
+          "content_hash": "1412cb129e18adf8117b707b810b502f11d62e532b83215c66c7259a2bc8218c"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.cc3ca0536530f6c3ed8c",
+      "source_variable_code": "prestg10",
+      "physical_slot": {
+        "ordinal": 218,
+        "name": "prestg10"
+      },
+      "label": "r's occupational prestige score (2010)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:prestg10",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.cc3ca0536530f6c3ed8c",
+          "content_hash": "cc3ca0536530f6c3ed8c7d0ee8f69e61bfd57175f164bfa8629f1b12882ae865"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.cc3ca0536530f6c3ed8c",
+          "content_hash": "cc3ca0536530f6c3ed8c7d0ee8f69e61bfd57175f164bfa8629f1b12882ae865"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_prestg10",
+          "content_hash": "4f7b2574662ae620e4367caef12228701107d394d966f1b2839b363e825a3dd3"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ffcc537e8758ea019a4c",
+      "source_variable_code": "prestg105plus",
+      "physical_slot": {
+        "ordinal": 219,
+        "name": "prestg105plus"
+      },
+      "label": "r's occupational prestige score using threshold method (2010)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:prestg105plus",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ffcc537e8758ea019a4c",
+          "content_hash": "ffcc537e8758ea019a4c9cf28a4d401a66c10569e21c2351ae9c681057c98e16"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ffcc537e8758ea019a4c",
+          "content_hash": "ffcc537e8758ea019a4c9cf28a4d401a66c10569e21c2351ae9c681057c98e16"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_prestg105plus",
+          "content_hash": "a1db5b5dd9ec4e77db1a79ad490dcc88ee0e12b70f6e4f73e40ef9382ae8e2a6"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ccc8ac7340154448fb7e",
+      "source_variable_code": "prestige",
+      "physical_slot": {
+        "ordinal": 220,
+        "name": "prestige"
+      },
+      "label": "r's occupational prestige score(1970)",
+      "storage_type": "double",
+      "original_type": "F3.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:prestige",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ccc8ac7340154448fb7e",
+          "content_hash": "ccc8ac7340154448fb7e52f9c2a854c5cc37d9a1976c764bd19730b6cbde9654"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ccc8ac7340154448fb7e",
+          "content_hash": "ccc8ac7340154448fb7e52f9c2a854c5cc37d9a1976c764bd19730b6cbde9654"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_prestige",
+          "content_hash": "76efb716295de911f5594408da51dbf3fb2492095d170a64ed46cb7113a77aaf"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.0b96b538b632a7aef78d",
+      "source_variable_code": "realinc",
+      "physical_slot": {
+        "ordinal": 234,
+        "name": "realinc"
+      },
+      "label": "family income in constant $",
+      "storage_type": "double",
+      "original_type": "F10.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "position_context",
+      "p2_question_id": "GSS:1973:realinc",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.0b96b538b632a7aef78d",
+          "content_hash": "0b96b538b632a7aef78d41e3bc66a1041b74cc5bdbc634b92c5677e654b7eb14"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.0b96b538b632a7aef78d",
+          "content_hash": "0b96b538b632a7aef78d41e3bc66a1041b74cc5bdbc634b92c5677e654b7eb14"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_realinc",
+          "content_hash": "589958357cbd752bb2bbfa685a6eebc801f9e3bb775a3fd4091e890fb13c6bc4"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.4eaec1580986aae3218d",
+      "source_variable_code": "region",
+      "physical_slot": {
+        "ordinal": 237,
+        "name": "region"
+      },
+      "label": "region of interview",
+      "storage_type": "double",
+      "original_type": "F1.0",
+      "measure": "nominal",
+      "configuration_role": "COORDINATE",
+      "source_disposition": "position_context",
+      "p2_question_id": "GSS:1973:region",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 16,
+      "positive_label_count": 4,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "SUPPORTED_CONTEXT_COORDINATE",
+      "reason": "Source-native region context coordinate retained as a coordinate, not a measurement target.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.4eaec1580986aae3218d",
+          "content_hash": "4eaec1580986aae3218d1c80c9bb8717586e1329787112eb968198715d600647"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.4eaec1580986aae3218d",
+          "content_hash": "4eaec1580986aae3218d1c80c9bb8717586e1329787112eb968198715d600647"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_region",
+          "content_hash": "2984dd7de3d536c75d709cf912e3a472ba1403cd56c574f12e7ece972e5401c3"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.2ad366c6d94b625396c3",
+      "source_variable_code": "sampcode",
+      "physical_slot": {
+        "ordinal": 249,
+        "name": "sampcode"
+      },
+      "label": "sampling error code",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sampcode",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.2ad366c6d94b625396c3",
+          "content_hash": "2ad366c6d94b625396c3b61e61ee3bd7f39131bcc18f67d00b35a7d869451a34"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.2ad366c6d94b625396c3",
+          "content_hash": "2ad366c6d94b625396c3b61e61ee3bd7f39131bcc18f67d00b35a7d869451a34"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sampcode",
+          "content_hash": "c4539bac427817aa125892f9a9b32b292e964061d26e7c5d2ba51703bc75fdc7"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e9e63ceaaca0d23364f8",
+      "source_variable_code": "sample",
+      "physical_slot": {
+        "ordinal": 250,
+        "name": "sample"
+      },
+      "label": "sampling frame and method",
+      "storage_type": "double",
+      "original_type": "F2.0",
+      "measure": "nominal",
+      "configuration_role": "ADMIN",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:sample",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 26,
+      "positive_label_count": 14,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "RETAINED_ADMINISTRATIVE",
+      "reason": "Administrative/sample/form metadata retained for identity and no-drop accounting.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e9e63ceaaca0d23364f8",
+          "content_hash": "e9e63ceaaca0d23364f81aa7f03807591129200f50ae5f97573813b15f8b0070"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e9e63ceaaca0d23364f8",
+          "content_hash": "e9e63ceaaca0d23364f81aa7f03807591129200f50ae5f97573813b15f8b0070"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sample",
+          "content_hash": "4822bd9ced67f9c1c513ff451bba78419642c60d111b8f7249c785a7e4fdefd2"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.41f5c729cec1cdafcb6d",
+      "source_variable_code": "sei10",
+      "physical_slot": {
+        "ordinal": 259,
+        "name": "sei10"
+      },
+      "label": "r's socioeconomic index (2010)",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sei10",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.41f5c729cec1cdafcb6d",
+          "content_hash": "41f5c729cec1cdafcb6dbaae817adce8e97ae0ca755c554eab8543de32f85270"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.41f5c729cec1cdafcb6d",
+          "content_hash": "41f5c729cec1cdafcb6dbaae817adce8e97ae0ca755c554eab8543de32f85270"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sei10",
+          "content_hash": "30bfd19794a3f0ba33418fb755d484d28bb4c9da2d9689c2c09808e73fe56370"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.f9666db7c01e89471afd",
+      "source_variable_code": "sei10educ",
+      "physical_slot": {
+        "ordinal": 260,
+        "name": "sei10educ"
+      },
+      "label": "percentage of some college educ in occ10 based on acs 2010",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sei10educ",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f9666db7c01e89471afd",
+          "content_hash": "f9666db7c01e89471afd4a1239a8653044d566f85db009835029543ffea727af"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f9666db7c01e89471afd",
+          "content_hash": "f9666db7c01e89471afd4a1239a8653044d566f85db009835029543ffea727af"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sei10educ",
+          "content_hash": "0fa33ab8502b4675d5cb231bdeb2d7f91da51f957f9abe31b51154d8615c2de4"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e40cd5f13dfd56f3427e",
+      "source_variable_code": "sei10inc",
+      "physical_slot": {
+        "ordinal": 261,
+        "name": "sei10inc"
+      },
+      "label": "percentage of $45k+ earners in occ10 based on acs 2010",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sei10inc",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e40cd5f13dfd56f3427e",
+          "content_hash": "e40cd5f13dfd56f3427e92615a9ab1850dbefae768136f2f63f1bd7d57919afb"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e40cd5f13dfd56f3427e",
+          "content_hash": "e40cd5f13dfd56f3427e92615a9ab1850dbefae768136f2f63f1bd7d57919afb"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sei10inc",
+          "content_hash": "67892dda61755e47fbb393ff71c694553c34e340db76d42c119846cfdfedf43d"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.d355b66d0547cf55d93c",
+      "source_variable_code": "sibs_7222",
+      "physical_slot": {
+        "ordinal": 265,
+        "name": "sibs_7222"
+      },
+      "label": "number of siblings (including step- and adopted)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "position_context",
+      "p2_question_id": "GSS:1973:sibs_7222",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.d355b66d0547cf55d93c",
+          "content_hash": "d355b66d0547cf55d93c953d4062692e2f077c028b8d7612e01f78f56a16f38a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.d355b66d0547cf55d93c",
+          "content_hash": "d355b66d0547cf55d93c953d4062692e2f077c028b8d7612e01f78f56a16f38a"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sibs_7222",
+          "content_hash": "b6c4595b1172c8ed31f5dd3f9c035f0e7ecc7a53906c26c64db322f8952992a8"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b4917942c13391abda2d",
+      "source_variable_code": "size",
+      "physical_slot": {
+        "ordinal": 266,
+        "name": "size"
+      },
+      "label": "size of place in 1000s",
+      "storage_type": "double",
+      "original_type": "F5.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:size",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b4917942c13391abda2d",
+          "content_hash": "b4917942c13391abda2df53dc48fca2b590cce10742643397c271135b41eb06a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b4917942c13391abda2d",
+          "content_hash": "b4917942c13391abda2df53dc48fca2b590cce10742643397c271135b41eb06a"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_size",
+          "content_hash": "15e57d8f14ad29fee54ffabe34eba8aba0d0b564dada63e7b728e9b2af07584b"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.aa8ff4eb26f964664c3a",
+      "source_variable_code": "spdotdat",
+      "physical_slot": {
+        "ordinal": 272,
+        "name": "spdotdat"
+      },
+      "label": "sp. d.o.t. code - relation to data",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spdotdat",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.aa8ff4eb26f964664c3a",
+          "content_hash": "aa8ff4eb26f964664c3a1cff3d4fad02bcaf299cc2e8480047e48bcd39dc5b1c"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.aa8ff4eb26f964664c3a",
+          "content_hash": "aa8ff4eb26f964664c3a1cff3d4fad02bcaf299cc2e8480047e48bcd39dc5b1c"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spdotdat",
+          "content_hash": "d6eeb10e236f0311e3a789105afd9a0cce7394f213b2cca8755ce649d2260d69"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.32437d84f6926567f36c",
+      "source_variable_code": "spdotged",
+      "physical_slot": {
+        "ordinal": 273,
+        "name": "spdotged"
+      },
+      "label": "sp. d.o.t. code - general educ develop.",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spdotged",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.32437d84f6926567f36c",
+          "content_hash": "32437d84f6926567f36cf7f70bd04d459ce90f7d7563125c66f98ca98cf8eed4"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.32437d84f6926567f36c",
+          "content_hash": "32437d84f6926567f36cf7f70bd04d459ce90f7d7563125c66f98ca98cf8eed4"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spdotged",
+          "content_hash": "7551257701fa00bfc17493981afc1b761e39ea41388a405bad077b8d305ffb79"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ca7114389873008de855",
+      "source_variable_code": "spdotpeo",
+      "physical_slot": {
+        "ordinal": 274,
+        "name": "spdotpeo"
+      },
+      "label": "sp. d.o.t. code - relation to people",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spdotpeo",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ca7114389873008de855",
+          "content_hash": "ca7114389873008de855ce0519d5f72e7c6ada6133861201ecabeca28738b5b4"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ca7114389873008de855",
+          "content_hash": "ca7114389873008de855ce0519d5f72e7c6ada6133861201ecabeca28738b5b4"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spdotpeo",
+          "content_hash": "7f3d65419cd5710ea99ee5d437a010e13a499003d8ae7af8980bad50a7890ef0"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.9f85ec93d15239118a5a",
+      "source_variable_code": "spdotpre",
+      "physical_slot": {
+        "ordinal": 275,
+        "name": "spdotpre"
+      },
+      "label": "sp. temme prestige scale",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spdotpre",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9f85ec93d15239118a5a",
+          "content_hash": "9f85ec93d15239118a5ade04f5062d28fa1c4f6fc02f931e14b5ce816e9d14f0"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9f85ec93d15239118a5a",
+          "content_hash": "9f85ec93d15239118a5ade04f5062d28fa1c4f6fc02f931e14b5ce816e9d14f0"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spdotpre",
+          "content_hash": "25c108d2452b874d24d4f8bb772b0cb9ae9a3479ba1180f91a10f78b5ea533e1"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.7c0b57d39c7689d90cf1",
+      "source_variable_code": "spdotsvp",
+      "physical_slot": {
+        "ordinal": 276,
+        "name": "spdotsvp"
+      },
+      "label": "sp. d.o.t. code - specific vocat. prep",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spdotsvp",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7c0b57d39c7689d90cf1",
+          "content_hash": "7c0b57d39c7689d90cf1bf00f917b746f92aeb5ff0020436d9fefb07885c6825"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7c0b57d39c7689d90cf1",
+          "content_hash": "7c0b57d39c7689d90cf1bf00f917b746f92aeb5ff0020436d9fefb07885c6825"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spdotsvp",
+          "content_hash": "b4124a5413fe0140e65ca7d5c993201c3aaf40841b31bd8c6b85623ba514f736"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.eacc0326466c08875ac7",
+      "source_variable_code": "spdotthn",
+      "physical_slot": {
+        "ordinal": 277,
+        "name": "spdotthn"
+      },
+      "label": "sp. d.o.t. code - relation to things",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spdotthn",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.eacc0326466c08875ac7",
+          "content_hash": "eacc0326466c08875ac750d20abd90d4a6e5fba3867364eeb312b37425016a3c"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.eacc0326466c08875ac7",
+          "content_hash": "eacc0326466c08875ac750d20abd90d4a6e5fba3867364eeb312b37425016a3c"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spdotthn",
+          "content_hash": "4097e8a1b931ff3a465ee1dd13d8e001b36c55e6d9cdb874b0a548b5c8df4054"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.4220337e73043fe232bc",
+      "source_variable_code": "spisco68",
+      "physical_slot": {
+        "ordinal": 289,
+        "name": "spisco68"
+      },
+      "label": "r's spouse's occupation, 1970 census",
+      "storage_type": "double",
+      "original_type": "F5.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spisco68",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.4220337e73043fe232bc",
+          "content_hash": "4220337e73043fe232bcf7056afed8fcc84c66dd710fae40c0ea88ccc16ec34a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.4220337e73043fe232bc",
+          "content_hash": "4220337e73043fe232bcf7056afed8fcc84c66dd710fae40c0ea88ccc16ec34a"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spisco68",
+          "content_hash": "d0cdb50f0862e70e99f18449b6b10c1531dcfe25fb1a04a17ae84fc8cde554f5"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.11d6c1e242efeeaabb0d",
+      "source_variable_code": "spocc",
+      "physical_slot": {
+        "ordinal": 295,
+        "name": "spocc"
+      },
+      "label": "spouse census occupation code (1970)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spocc",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.11d6c1e242efeeaabb0d",
+          "content_hash": "11d6c1e242efeeaabb0d615b104a5ce3bdb24b074a9bceeea2a7db816b484a7e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.11d6c1e242efeeaabb0d",
+          "content_hash": "11d6c1e242efeeaabb0d615b104a5ce3bdb24b074a9bceeea2a7db816b484a7e"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spocc",
+          "content_hash": "cd3a2ef0536c237e451d1d286f3b6a73ed5cf43ffaebd721ae7d092300897527"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.0cdd381370c3796db950",
+      "source_variable_code": "sppres",
+      "physical_slot": {
+        "ordinal": 302,
+        "name": "sppres"
+      },
+      "label": "spouse's occupational prestige score (1970)",
+      "storage_type": "double",
+      "original_type": "F3.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sppres",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_existing_mapping",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.0cdd381370c3796db950",
+          "content_hash": "0cdd381370c3796db9507bea2371221f911f7bd219efe481f73bc1b4cb54d64f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.0cdd381370c3796db950",
+          "content_hash": "0cdd381370c3796db9507bea2371221f911f7bd219efe481f73bc1b4cb54d64f"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sppres",
+          "content_hash": "964608f9b721c372bc80060b5ace3150183eb07caabbd7f02de1420584fb6917"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.82cacb0b7ad63c9eae04",
+      "source_variable_code": "sppres10",
+      "physical_slot": {
+        "ordinal": 303,
+        "name": "sppres10"
+      },
+      "label": "spouse occupational prestige score (2010)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sppres10",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.82cacb0b7ad63c9eae04",
+          "content_hash": "82cacb0b7ad63c9eae0400dbc0a8a06b2f92063828dd8aa6252a7b56b30d0f20"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.82cacb0b7ad63c9eae04",
+          "content_hash": "82cacb0b7ad63c9eae0400dbc0a8a06b2f92063828dd8aa6252a7b56b30d0f20"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sppres10",
+          "content_hash": "38a24453e35e57fa07a170eff9258c8a07d30d0c5aa8fa36da07dce859977da0"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.1d71d3cf91f8854df1f6",
+      "source_variable_code": "sppres105plus",
+      "physical_slot": {
+        "ordinal": 304,
+        "name": "sppres105plus"
+      },
+      "label": "spouse occupational prestige score using threshold method (2010)",
+      "storage_type": "double",
+      "original_type": "F4.0",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:sppres105plus",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1d71d3cf91f8854df1f6",
+          "content_hash": "1d71d3cf91f8854df1f6c1651b84cc2be8bc8256793b7ed6c3c1518db134e4d7"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1d71d3cf91f8854df1f6",
+          "content_hash": "1d71d3cf91f8854df1f6c1651b84cc2be8bc8256793b7ed6c3c1518db134e4d7"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_sppres105plus",
+          "content_hash": "c3fff59ae338bb2ca46ee5a8104ce66941b2e3f8d7b5ecb20195fae9ff326d80"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.7b7f95d5ceb208050fc0",
+      "source_variable_code": "spsei10",
+      "physical_slot": {
+        "ordinal": 307,
+        "name": "spsei10"
+      },
+      "label": "r's spouse's socioeconomic index (2010)",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spsei10",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7b7f95d5ceb208050fc0",
+          "content_hash": "7b7f95d5ceb208050fc06bfc9eb315c46fb5f86338fa3c6869fed137f07569cf"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7b7f95d5ceb208050fc0",
+          "content_hash": "7b7f95d5ceb208050fc06bfc9eb315c46fb5f86338fa3c6869fed137f07569cf"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spsei10",
+          "content_hash": "f5c53976a80150a9d06a19a8e6af7eb6d3a8f1fda234aa6578821d97f68a900a"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.c877d197bdf018dac318",
+      "source_variable_code": "spsei10educ",
+      "physical_slot": {
+        "ordinal": 308,
+        "name": "spsei10educ"
+      },
+      "label": "percentage of some college educ in spocc10 based on acs 2010",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spsei10educ",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c877d197bdf018dac318",
+          "content_hash": "c877d197bdf018dac31830ed0c4b5657a092ace505b66b79d179024e758dc61e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c877d197bdf018dac318",
+          "content_hash": "c877d197bdf018dac31830ed0c4b5657a092ace505b66b79d179024e758dc61e"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spsei10educ",
+          "content_hash": "3f0afa3390801ca2df0639b5d26e063125ecfa0a5b33a4c204ca0637f26a7631"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.2c41d5cd55d055cf0d45",
+      "source_variable_code": "spsei10inc",
+      "physical_slot": {
+        "ordinal": 309,
+        "name": "spsei10inc"
+      },
+      "label": "percentage of $45k+ earners in spocc10 based on acs 2010",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "relation_evidence",
+      "p2_question_id": "GSS:1973:spsei10inc",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_NON_DIRECTIONAL_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 0,
+      "positive_label_count": 0,
+      "native_field": "questions[].response_slots",
+      "configuration_disposition": "RETAINED_CONTINUOUS_NO_FINITE_RULE",
+      "reason": "Continuous/typed numeric variable retained at source metadata grade; native finite response-slot rule is not forced.",
+      "dependent_operation": "response projection",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.2c41d5cd55d055cf0d45",
+          "content_hash": "2c41d5cd55d055cf0d451828ee3096ce2aff738dee6cda80340f7bf1429c8fd0"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.2c41d5cd55d055cf0d45",
+          "content_hash": "2c41d5cd55d055cf0d451828ee3096ce2aff738dee6cda80340f7bf1429c8fd0"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_spsei10inc",
+          "content_hash": "f0fd4c6edd15f993ac57f6fd7e68e65d270359b42273a4b07ae80ac5896688a5"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.86836d903d1909419983",
+      "source_variable_code": "wtssall",
+      "physical_slot": {
+        "ordinal": 335,
+        "name": "wtssall"
+      },
+      "label": "weight variable",
+      "storage_type": "double",
+      "original_type": "F6.2",
+      "measure": "scale",
+      "configuration_role": "WEIGHT_HELD",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:wtssall",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "HELD_WEIGHT_DESIGN_UNRESOLVED",
+      "reason": "Source weight slot exists, but no exact design/estimand/normalization authority is established.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.86836d903d1909419983",
+          "content_hash": "86836d903d19094199831b1797ac2dd931403ca4a3ab938e154ec12b9e382641"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.86836d903d1909419983",
+          "content_hash": "86836d903d19094199831b1797ac2dd931403ca4a3ab938e154ec12b9e382641"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_wtssall",
+          "content_hash": "3ee23bfb0a356f8570827347e6af9a086a1c8fb830da3a7a52d952c99b7515df"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.71f065e437fafaad798c",
+      "source_variable_code": "wtssps",
+      "physical_slot": {
+        "ordinal": 336,
+        "name": "wtssps"
+      },
+      "label": "person post-stratification weight",
+      "storage_type": "double",
+      "original_type": "F7.2",
+      "measure": "scale",
+      "configuration_role": "ADMIN",
+      "source_disposition": "admin",
+      "p2_question_id": "GSS:1973:wtssps",
+      "p2_authority_status": "source_reviewed",
+      "h48_binding_grade": "EXACT_COORDINATE_CANDIDATES_ONLY_NOT_ADOPTION",
+      "relation_authority_status": "GOVERNED_ADMINISTRATIVE_DISPOSITION",
+      "relation_mapping_status": "accepted_context_only",
+      "value_label_count": 12,
+      "positive_label_count": 0,
+      "native_field": "physical_slots[].disposition",
+      "configuration_disposition": "RETAINED_ADMINISTRATIVE",
+      "reason": "Administrative/sample/form metadata retained for identity and no-drop accounting.",
+      "dependent_operation": "measurement-target eligibility / administration interpretation",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.71f065e437fafaad798c",
+          "content_hash": "71f065e437fafaad798ce789d093623587317b4980d876370f67cf98c2d52ff4"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.71f065e437fafaad798c",
+          "content_hash": "71f065e437fafaad798ce789d093623587317b4980d876370f67cf98c2d52ff4"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:GSS_1973_wtssps",
+          "content_hash": "34143432ba56b1aec38fde2009a8d66dfe444571ea51a86afb6cbd38d71c9de4"
+        }
+      ]
+    }
+  ],
+  "fixture_limits": [
+    {
+      "residual_id": "SRC17-FIXTURE-IDENTITY",
+      "scope": "SRC17/fixture",
+      "field": "binding.identity_class",
+      "status": "FIXTURE_ONLY",
+      "reason": "Fixture bytes, universe, authority and row identities are distinct from the original source and are not promoted.",
+      "dependent_operation": "original-source use",
+      "unaffected_scope": "actual factory and native C11 validation",
+      "owner": "R157 GSS lane author",
+      "next_step": "Consume the original config only with permitted original bytes and decode-produced row witnesses."
+    },
+    {
+      "residual_id": "SRC17-FIXTURE-WEIGHT",
+      "scope": "SRC17/weight_slots",
+      "field": "weight_slots[].weight_basis_id",
+      "status": "WEIGHT_BASIS_UNRESOLVED",
+      "reason": "Fixture exercises exact numeric weight cells, but no weighted design/estimand claim is made.",
+      "dependent_operation": "weighted inference",
+      "unaffected_scope": "nonrespondent scalar/coordinate native validation",
+      "owner": "R157 GSS lane author",
+      "next_step": "Establish design/estimand/normalization authority before any weighted scope."
+    }
+  ],
+  "blocking_lane_completion": false,
+  "blocking_original_execution": true,
+  "exact_next_operation": "P3 integration owner transports the qualified exact-SHA reader config and populates row_native_keys from permitted decoded id cells; original source execution remains separately authorized."
+}

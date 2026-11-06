@@ -1,0 +1,95 @@
+{
+  "frozen_factory": {
+    "alias": "construct_governed_c11_projection",
+    "callable": "build_governed_c11_projection",
+    "module": "rawlsing_next.source_configuration.factory",
+    "release_callable": "build_validated_c11_release_from_config",
+    "release_signature": "(config: SourceConfig | Mapping[str, Any], *, stream: ExactPhysicalCellStream | None = None, incidence: PhysicalSourceIncidence | None = None, source_sha256: str | None = None, row_count: int | None = None, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None, batch_size: int = 10000)",
+    "repository_callable": "build_source_backed_c11_repository_from_config",
+    "repository_signature": "(config: SourceConfig | Mapping[str, Any], source: ExactPhysicalCellStream | PhysicalSourceIncidence, *, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None, cache: Any = None, batch_size: int = 10000)",
+    "signature": "(config: SourceConfig | Mapping[str, Any], *, source_sha256: str | None = None, row_count: int | None = None, row_native_keys: Mapping[int, ExactRef | TypedAbsence] | None = None) -> GovernedC11Projection"
+  },
+  "invariants": [
+    "No replacement empirical engine or alternate projection type is accepted by the runtime section.",
+    "Original-source configs may not use a fixture universe, fixture authority, synthetic ZZ/TEST_ONLY/default universe or fixture SHA.",
+    "Fixture configs require a distinct byte identity, explicit nonrespondent provenance and fixture-only authority snapshots.",
+    "The factory constructs respondent/value witnesses only when the physical cell stream is projected; preparation does not pre-invent them.",
+    "A configured source_native_key_slot is not silently ignored: row_native_keys must carry exact observed key witnesses after a permitted decode, or the factory refuses.",
+    "Native C11 validation remains the deciding validator; a loader, identity object, refusal or unexecuted recipe is not positive construction."
+  ],
+  "native_owner": {
+    "bytes": 35016,
+    "class": "GovernedC11Projection",
+    "git_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "module": "rawlsing_next.pre553_source_backed_c11_facade",
+    "sha256": "7788feb514ad5eceb71e7d76191b1b80a66688dc64a56b0dc05f4a1b19bbdfcf",
+    "source_path": "rawlsing_next/pre553_source_backed_c11_facade.py"
+  },
+  "native_validators": [
+    {
+      "callable": "build_validated_source_backed_c11_release_from_stream",
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "signature": "(stream: ExactPhysicalCellStream, projection: GovernedC11Projection | None)",
+      "use": "P0 fixture and replay-equivalent exact-cell streams"
+    },
+    {
+      "callable": "build_validated_source_backed_c11_release",
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "signature": "(incidence: PhysicalSourceIncidence, projection: GovernedC11Projection | None, *, batch_size: int = 10000)",
+      "use": "permitted decoded physical incidence in P3/source execution"
+    },
+    {
+      "callable": "build_source_backed_c11_repository",
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "signature": "(source, projection, *, cache=None, batch_size=10000)",
+      "use": "existing source-backed C11 repository/facade owner"
+    },
+    {
+      "callable": "validate_c11_source_release",
+      "module": "rawlsing_next.pre553_c11_ingest",
+      "signature": "(candidate: C11SourceReleaseCandidate) -> C11LogicalRelease",
+      "use": "native C11 M01-M18 package validation invoked by the facade"
+    }
+  ],
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "projection_field_mapping": {
+    "authority_snapshots": "authority.snapshots -> native AuthoritySnapshot constructors",
+    "comparator_replay": "replay.comparator typed absence",
+    "coordinate_slots": "coordinate_slots -> native CoordinateSlotRule/CoordinateValueRule",
+    "discovery_replay": "replay.discovery typed absence",
+    "expected_source_sha256": "binding.source_sha256; original binding must equal identity.expected_source_sha256",
+    "instrument_release_id": "identity.instrument_release_id (original) / binding.fixture_provenance.fixture_instrument_release_id (fixture)",
+    "predicate_replay": "replay.predicate typed absence (P0 freezes no replay payloads)",
+    "projection_authority_ref": "authority.projection_authority_ref",
+    "projection_identity_ref": "authority.projection_identity_ref",
+    "questions": "questions -> native QuestionVariableBinding constructors",
+    "release_id": "identity.release_id (original) / binding.fixture_provenance.fixture_release_id (fixture)",
+    "replay_authority_ref": "authority.replay_authority_ref",
+    "replay_protocol_version": "authority.replay_protocol_version",
+    "required_authority_refs": "authority.required_refs",
+    "respondents": "respondents.respondent_key_pattern + binding.row_count + optional row_native_keys -> native RespondentIdentity constructors; configured source_native_key_slot requires exact row keys after permitted decode, otherwise TypedAbsence(UNKNOWN)",
+    "response_slots": "response_slots -> native ResponseSlotRule/ResponseValueRule/OccurrenceRule",
+    "routing": "routing rules expanded over row_selector -> native RoutingEligibilityFact",
+    "row_bindings": "generated 1..binding.row_count exact RowRespondentBinding values",
+    "slot_owner_sets": "slot_owner_sets -> native PhysicalSlotOwnerSet",
+    "source_artifact_id": "identity.source_artifact_id (original) / R157_FIXTURE:<fixture_id> (fixture)",
+    "source_family_id": "identity.source_family_id",
+    "source_relations": "source_relations.relations -> native SourceUniverseRelation; otherwise explicit distinct default",
+    "source_snapshot_retention_ref": "identity.source_snapshot_retention_ref (original) / binding.source_snapshot_ref (fixture)",
+    "structural_replay": "replay.structural typed absence",
+    "study_product_id": "identity.study_product_id (original) / binding.fixture_provenance.fixture_study_product_id (fixture)",
+    "tie_order_ref": "authority.tie_order_ref",
+    "universes": "universe.universes -> native EmpiricalUniverse constructors",
+    "weight_slots": "weight_slots -> native WeightSlotRule/WeightValueRule"
+  },
+  "schema": "PYAT_R157_OWNER_API_MAPPING@1.0.0",
+  "source_read_boundary": {
+    "decoder_implementation": "rawlsing_next.pre553_physical_decoder.decode_sav/decode_dta",
+    "decoder_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "identity_owner": "rawlsing_next.pre553_physical_decoder.PhysicalSourceIncidence",
+    "reader_configuration_frozen_in_config": true,
+    "reader_encoding_transport_state": "P3_PENDING_QUALIFIED_CONFIG_WIRING",
+    "request_owner": "rawlsing_next.pre553_source_read_admission.SourceReadRequest",
+    "zero_io_before_current_permission": true
+  }
+}

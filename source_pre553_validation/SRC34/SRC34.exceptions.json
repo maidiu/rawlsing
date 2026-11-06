@@ -1,0 +1,2048 @@
+{
+  "schema": "PYAT_R157_WVS_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC34",
+  "source_config": "rawlsing_next/source_configuration/data/SRC34/SRC34.source.config.json",
+  "residual_count": 13,
+  "residuals": [
+    {
+      "residual_id": "SRC34-NATIVE-ROW-KEY",
+      "scope": "SRC34",
+      "field": "respondents.source_native_key_slot",
+      "status": "DECODE_REQUIRED",
+      "reason": "The source-native key slot is declared, but no permitted decode-produced row key witness exists in preparation.",
+      "dependent_operation": "original build_governed_c11_projection / build_validated_c11_release_from_config",
+      "unaffected_scope": "fixture validation and schema preparation",
+      "owner": "P3/source-read owner",
+      "next_step": "Populate row_native_keys from permitted decoded key cells; original execution stays separate."
+    },
+    {
+      "residual_id": "SRC34-ROUTING-UNKNOWN",
+      "scope": "SRC34",
+      "field": "routing[].typed_state",
+      "status": "ROUTING_UNKNOWN",
+      "reason": "H48/O06 routing status is SOURCE_ROUTING_UNRESOLVED; exact form/ballot/administration routes are unavailable.",
+      "dependent_operation": "eligibility/form-conditioned original claims",
+      "unaffected_scope": "raw response rules and fixture positive release",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact route/form evidence before eligibility claims."
+    },
+    {
+      "residual_id": "SRC34-SOURCE-AUTHORITY-DEFER",
+      "scope": "SRC34",
+      "field": "authority.snapshots",
+      "status": "DEFER",
+      "reason": "H48/P2/full-relation evidence is source_reviewed candidate evidence, not an adopted original ALLOW authority.",
+      "dependent_operation": "original scientific issuance",
+      "unaffected_scope": "preparation and nonrespondent fixture validation",
+      "owner": "R157 authority owner",
+      "next_step": "Adjudicate exact source operation scope; do not promote fixture authority."
+    },
+    {
+      "residual_id": "SRC34-CANONICAL-VALUE",
+      "scope": "SRC34",
+      "field": "response_slots[].values[].canonical_value",
+      "status": "NOT_AUTHORIZED",
+      "reason": "No exact positive canonical mapping authority is present; raw source values/states are retained.",
+      "dependent_operation": "canonicalized analysis",
+      "unaffected_scope": "raw response projection",
+      "owner": "R157 mapping authority owner",
+      "next_step": "Adjudicate exact mappings before canonicalization."
+    },
+    {
+      "residual_id": "SRC34-WEIGHT-HELD",
+      "scope": "SRC34",
+      "field": "physical_slots[V245].weight",
+      "status": "HELD",
+      "reason": "A source weight slot is identified; design/estimand/normalization authority is not established.",
+      "dependent_operation": "weighted estimands",
+      "unaffected_scope": "unweighted source-local raw configuration",
+      "owner": "WVS weight/design owner",
+      "next_step": "Establish design/estimand/normalization authority before a weighted scope."
+    },
+    {
+      "residual_id": "SRC34-FORM-ADMINISTRATION",
+      "scope": "SRC34",
+      "field": "routing/supported_form_slice",
+      "status": "UNKNOWN",
+      "reason": "Exact form/ballot/administration assignment is not recovered in the portable evidence.",
+      "dependent_operation": "form/administration-conditioned claims",
+      "unaffected_scope": "unconditional source response rules",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact assignment evidence if required."
+    },
+    {
+      "residual_id": "SRC34-SAMPLE-FRAME",
+      "scope": "SRC34",
+      "field": "universe.sampling_design_regime",
+      "status": "UNRESOLVED",
+      "reason": "WVS source is multi-country and wave-specific sample frames/designs are not reconstructed from metadata alone.",
+      "dependent_operation": "population/design claims",
+      "unaffected_scope": "source-row identity and response rules",
+      "owner": "WVS source evidence owner",
+      "next_step": "Recover exact country/wave frame/design evidence before population claims."
+    },
+    {
+      "residual_id": "SRC34-GEN_FORBIDDEN-HELD",
+      "scope": "SRC34/gen_forbidden",
+      "field": "questions[].response_slots",
+      "status": "GEN_FORBIDDEN_HELD",
+      "reason": "4 exact items are held: P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted. Exact item/evidence rows: source_pre553_validation/SRC34/SRC34.exceptions.json#held_items.",
+      "dependent_operation": "generation/feature use",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC34-POSITION-HELD",
+      "scope": "SRC34/position",
+      "field": "coordinate_slots[].native_coordinate_ref",
+      "status": "POSITION_HELD",
+      "reason": "21 exact items are held: The item is a position/context code, not a declared response target; raw codebook identity is retained. Exact item/evidence rows: source_pre553_validation/SRC34/SRC34.exceptions.json#held_items.",
+      "dependent_operation": "coordinate/context interpretation",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC34-ADMIN-HELD",
+      "scope": "SRC34/admin",
+      "field": "physical_slots[].disposition",
+      "status": "ADMIN_HELD",
+      "reason": "2 exact items are held: The item is administrative metadata, not a respondent response target. Exact item/evidence rows: source_pre553_validation/SRC34/SRC34.exceptions.json#held_items.",
+      "dependent_operation": "administrative/metadata use",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC34-RANKED-HELD",
+      "scope": "SRC34/ranked",
+      "field": "response_slots[].values[].occurrences",
+      "status": "RANKED_HELD",
+      "reason": "13 exact items are held: manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented. Exact item/evidence rows: source_pre553_validation/SRC34/SRC34.exceptions.json#held_items.",
+      "dependent_operation": "ranked response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC34-CONTINUOUS-HELD",
+      "scope": "SRC34/continuous",
+      "field": "questions[].response_slots",
+      "status": "CONTINUOUS_HELD",
+      "reason": "19 exact items are held: The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys. Exact item/evidence rows: source_pre553_validation/SRC34/SRC34.exceptions.json#held_items.",
+      "dependent_operation": "continuous response projection",
+      "unaffected_scope": "other source-local rules and nonrespondent native validation",
+      "owner": "WVS source/native-representation owner",
+      "next_step": "Consume exact held-item evidence; do not substitute a default category or invented rank/aggregation."
+    },
+    {
+      "residual_id": "SRC34-MULTISELECT-AGGREGATION",
+      "scope": "SRC34/multiselect_child",
+      "field": "response_slots[].values[].occurrences[].component_ref",
+      "status": "AGGREGATION_NOT_INVENTED",
+      "reason": "67 exact multiselect child columns are bound as single columns; the portable evidence does not provide an exact member-set component/aggregation map. Exact rows: source_pre553_validation/SRC34/SRC34.exceptions.json#bound_items.",
+      "dependent_operation": "multiselect set/component aggregation",
+      "unaffected_scope": "each child column response rule and native event projection",
+      "owner": "WVS source/topology owner",
+      "next_step": "Recover exact member-set/component topology before aggregation; do not infer it from labels."
+    }
+  ],
+  "bound_item_count": 354,
+  "held_item_count": 64,
+  "held_by_role_counts": {
+    "ADMIN": 2,
+    "CONTINUOUS": 19,
+    "COORDINATE": 3,
+    "GEN_FORBIDDEN": 4,
+    "KEY": 1,
+    "POSITION": 21,
+    "RANKED": 13,
+    "WEIGHT": 1
+  },
+  "held_items": [
+    {
+      "implementation_id": "question_impl.phase0.dc89485b0ece69bd73fd",
+      "source_variable_code": "V1",
+      "physical_slot": {
+        "ordinal": 1,
+        "name": "V1"
+      },
+      "configuration_role": "COORDINATE",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "Source role retained without response promotion.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.dc89485b0ece69bd73fd",
+          "content_hash": "dc89485b0ece69bd73fd136834fd5487eccc80121904810585f55ffb01ece3bb"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.dc89485b0ece69bd73fd",
+          "content_hash": "dc89485b0ece69bd73fd136834fd5487eccc80121904810585f55ffb01ece3bb"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V1",
+          "content_hash": "e19ee1771a1a8c2a5a27d1fbb08e14d393189ccbe0d66249efd69a919a49f68b"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.db3a5c15c7a42681b913",
+      "source_variable_code": "C_COW_ALPHA",
+      "physical_slot": {
+        "ordinal": 2,
+        "name": "C_COW_ALPHA"
+      },
+      "configuration_role": "GEN_FORBIDDEN",
+      "source_disposition": "GENERATION_FORBIDDEN",
+      "native_field": "questions[].response_slots",
+      "reason": "P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.db3a5c15c7a42681b913",
+          "content_hash": "db3a5c15c7a42681b9139fdaad827b2c29472e075514a0d49beac513d830b9cc"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.db3a5c15c7a42681b913",
+          "content_hash": "db3a5c15c7a42681b9139fdaad827b2c29472e075514a0d49beac513d830b9cc"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:C_COW_ALPHA",
+          "content_hash": "c5b1d31b383ccfa6d8cfcf08e8d4d4e22feadf00e4b127bd2fd26e5477d556c9"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ed6dd862fbe442b11279",
+      "source_variable_code": "COW",
+      "physical_slot": {
+        "ordinal": 3,
+        "name": "COW"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "STRUCTURAL_CONTEXT",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ed6dd862fbe442b11279",
+          "content_hash": "ed6dd862fbe442b112795236306d75efe0d96507ade62add08d8b155f60636f5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ed6dd862fbe442b11279",
+          "content_hash": "ed6dd862fbe442b112795236306d75efe0d96507ade62add08d8b155f60636f5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:COW",
+          "content_hash": "de4e99653fab22c15d7c9153d778184a88508afa08550a8021b7c7deed2def53"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.772aea30ba447824b8ac",
+      "source_variable_code": "B_COUNTRY_ALPHA",
+      "physical_slot": {
+        "ordinal": 4,
+        "name": "B_COUNTRY_ALPHA"
+      },
+      "configuration_role": "GEN_FORBIDDEN",
+      "source_disposition": "GENERATION_FORBIDDEN",
+      "native_field": "questions[].response_slots",
+      "reason": "P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.772aea30ba447824b8ac",
+          "content_hash": "772aea30ba447824b8acb0810cdd6b1417a7672937ba3778696defb27df6f7e6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.772aea30ba447824b8ac",
+          "content_hash": "772aea30ba447824b8acb0810cdd6b1417a7672937ba3778696defb27df6f7e6"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:B_COUNTRY_ALPHA",
+          "content_hash": "1670a3c049fc9681101aaac1384ddb6e397163ae16da10a30eade505c992aac5"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.fb5c76e8b105880cef51",
+      "source_variable_code": "V2",
+      "physical_slot": {
+        "ordinal": 5,
+        "name": "V2"
+      },
+      "configuration_role": "COORDINATE",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "questions[].response_slots",
+      "reason": "Source role retained without response promotion.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.fb5c76e8b105880cef51",
+          "content_hash": "fb5c76e8b105880cef515d9f607632ca059089799ba37fbe9e47812249266bf4"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.fb5c76e8b105880cef51",
+          "content_hash": "fb5c76e8b105880cef515d9f607632ca059089799ba37fbe9e47812249266bf4"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V2",
+          "content_hash": "47c67bc809762186cab8364f3a4b90c419a70de6aa085179cc330e0908a31174"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.1ebd1561d75018191a81",
+      "source_variable_code": "V3",
+      "physical_slot": {
+        "ordinal": 7,
+        "name": "V3"
+      },
+      "configuration_role": "KEY",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "Source role retained without response promotion.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1ebd1561d75018191a81",
+          "content_hash": "1ebd1561d75018191a8154e987b5afcb9884530cee2526ecbe94839c53e7bd41"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1ebd1561d75018191a81",
+          "content_hash": "1ebd1561d75018191a8154e987b5afcb9884530cee2526ecbe94839c53e7bd41"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V3",
+          "content_hash": "ce4a91ab9fcebcd3e453eaabddc9f4d8dbc134be382ccedce151a53330596632"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.90fbbdd27ce0ee981e00",
+      "source_variable_code": "V33",
+      "physical_slot": {
+        "ordinal": 37,
+        "name": "V33"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.90fbbdd27ce0ee981e00",
+          "content_hash": "90fbbdd27ce0ee981e000008f6eb96c7106ff2eedfa48f4d9dc824db39ba292e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.90fbbdd27ce0ee981e00",
+          "content_hash": "90fbbdd27ce0ee981e000008f6eb96c7106ff2eedfa48f4d9dc824db39ba292e"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V33",
+          "content_hash": "eba3210ab4ab3294cd1f345c455f87503c8173dfd0982977601dadfb660ef778"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.914b52ad1f4f20658c63",
+      "source_variable_code": "V41",
+      "physical_slot": {
+        "ordinal": 45,
+        "name": "V41"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.914b52ad1f4f20658c63",
+          "content_hash": "914b52ad1f4f20658c63f33209c8c29499089d4154c260cadbcba425a3eb4098"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.914b52ad1f4f20658c63",
+          "content_hash": "914b52ad1f4f20658c63f33209c8c29499089d4154c260cadbcba425a3eb4098"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V41",
+          "content_hash": "15ba85ff6869bc12f2f175f6b8bd5f8495a09078a8d3ee98ab426d5ca984196b"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.30ccfbe2fd46cdac6855",
+      "source_variable_code": "V44",
+      "physical_slot": {
+        "ordinal": 48,
+        "name": "V44"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.30ccfbe2fd46cdac6855",
+          "content_hash": "30ccfbe2fd46cdac6855afc8606f368d48c632eb5b88c3828fdcb44a6130e7b9"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.30ccfbe2fd46cdac6855",
+          "content_hash": "30ccfbe2fd46cdac6855afc8606f368d48c632eb5b88c3828fdcb44a6130e7b9"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V44",
+          "content_hash": "20f34a59b81d70ebcef8246f5a7901452a220d6e1ee556a6a52a751f227f9b59"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.aff61f8a05d39fc0c590",
+      "source_variable_code": "V83",
+      "physical_slot": {
+        "ordinal": 114,
+        "name": "V83"
+      },
+      "configuration_role": "ADMIN",
+      "source_disposition": "ADMINISTRATIVE_METADATA",
+      "native_field": "physical_slots[].disposition",
+      "reason": "The item is administrative metadata, not a respondent response target.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.aff61f8a05d39fc0c590",
+          "content_hash": "aff61f8a05d39fc0c59066ad4e54169e7ce1a38b3bfd800615b7354eca261b78"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.aff61f8a05d39fc0c590",
+          "content_hash": "aff61f8a05d39fc0c59066ad4e54169e7ce1a38b3bfd800615b7354eca261b78"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V83",
+          "content_hash": "f9358fc7c1b33c482184994094b8618d5de4ba989996172997349df797f24280"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.44dfd2f16f7796b6a090",
+      "source_variable_code": "V84",
+      "physical_slot": {
+        "ordinal": 115,
+        "name": "V84"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.44dfd2f16f7796b6a090",
+          "content_hash": "44dfd2f16f7796b6a0903c0c4a0e523f154fdde903671250af34e053e86ccf49"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.44dfd2f16f7796b6a090",
+          "content_hash": "44dfd2f16f7796b6a0903c0c4a0e523f154fdde903671250af34e053e86ccf49"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V84",
+          "content_hash": "4d08c6e382655b1d9dbd65ebdcf8808ec245e99cec1de996022725a48653e656"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b5c1d42811136da688ea",
+      "source_variable_code": "V85",
+      "physical_slot": {
+        "ordinal": 116,
+        "name": "V85"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b5c1d42811136da688ea",
+          "content_hash": "b5c1d42811136da688eaeedf6bd488aed4429cffbbc3c14d3e4ce5718563054e"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b5c1d42811136da688ea",
+          "content_hash": "b5c1d42811136da688eaeedf6bd488aed4429cffbbc3c14d3e4ce5718563054e"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V85",
+          "content_hash": "f46f24b5ee6737cca2af0d15810e91050194b4ef2319552383d0b96e528b3de9"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ef169a1b5a411cf6ce01",
+      "source_variable_code": "V117",
+      "physical_slot": {
+        "ordinal": 148,
+        "name": "V117"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ef169a1b5a411cf6ce01",
+          "content_hash": "ef169a1b5a411cf6ce018e662a56640fd2b4b96b1f7eda0c438d1a8f7f0bc244"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ef169a1b5a411cf6ce01",
+          "content_hash": "ef169a1b5a411cf6ce018e662a56640fd2b4b96b1f7eda0c438d1a8f7f0bc244"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V117",
+          "content_hash": "a3f977ac473515bccba66a1921daaffed0263ff05c0a57c13fa718577b079aae"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.8986c202c5abb62dd66a",
+      "source_variable_code": "V119",
+      "physical_slot": {
+        "ordinal": 150,
+        "name": "V119"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8986c202c5abb62dd66a",
+          "content_hash": "8986c202c5abb62dd66a50904ec1cfd0ebfe9d4e4ef0a22f9cc0380e1cf81eb5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8986c202c5abb62dd66a",
+          "content_hash": "8986c202c5abb62dd66a50904ec1cfd0ebfe9d4e4ef0a22f9cc0380e1cf81eb5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V119",
+          "content_hash": "12a170506a0b5e40f724baa4e9a1a842afd1916e61c6cd112b18a89c62ca357e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.65f025694e30e97c2a52",
+      "source_variable_code": "V120",
+      "physical_slot": {
+        "ordinal": 151,
+        "name": "V120"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.65f025694e30e97c2a52",
+          "content_hash": "65f025694e30e97c2a5251b8343aed3d0ab04237853c8c6bbe18384c28069436"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.65f025694e30e97c2a52",
+          "content_hash": "65f025694e30e97c2a5251b8343aed3d0ab04237853c8c6bbe18384c28069436"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V120",
+          "content_hash": "985472d2989218c612d673216b69d2e23dc31d1e5caf055223648a6e21e820ac"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.dff80c6bc3830595775a",
+      "source_variable_code": "V121",
+      "physical_slot": {
+        "ordinal": 152,
+        "name": "V121"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.dff80c6bc3830595775a",
+          "content_hash": "dff80c6bc3830595775a7bae366167272d609701579a83fd7d6d9070fd064e1b"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.dff80c6bc3830595775a",
+          "content_hash": "dff80c6bc3830595775a7bae366167272d609701579a83fd7d6d9070fd064e1b"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V121",
+          "content_hash": "f8819319b07e6a1af4874d23c1e6e2bf14a09a828d481566215d8134161b987f"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.c3ef5bc2518dbdb4b5c4",
+      "source_variable_code": "V122",
+      "physical_slot": {
+        "ordinal": 153,
+        "name": "V122"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c3ef5bc2518dbdb4b5c4",
+          "content_hash": "c3ef5bc2518dbdb4b5c409d2903d1a3d10efe575665745c6c2fdc717d9c2657c"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c3ef5bc2518dbdb4b5c4",
+          "content_hash": "c3ef5bc2518dbdb4b5c409d2903d1a3d10efe575665745c6c2fdc717d9c2657c"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V122",
+          "content_hash": "e58256573312aee6f5ede05a8902a46a717cde584a9a67bf0cba3f8e8b4b780d"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.2e3e635495d21e9c206d",
+      "source_variable_code": "V123",
+      "physical_slot": {
+        "ordinal": 154,
+        "name": "V123"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.2e3e635495d21e9c206d",
+          "content_hash": "2e3e635495d21e9c206d97e73378c7694d297f88f8d1ea615f6c6a9920c67002"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.2e3e635495d21e9c206d",
+          "content_hash": "2e3e635495d21e9c206d97e73378c7694d297f88f8d1ea615f6c6a9920c67002"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V123",
+          "content_hash": "e039c1f81d6afb2ee08d30c7e6379368750f020a6f9dabff75ce06191bcce13c"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.115363fdd20c1bea1962",
+      "source_variable_code": "V124",
+      "physical_slot": {
+        "ordinal": 155,
+        "name": "V124"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.115363fdd20c1bea1962",
+          "content_hash": "115363fdd20c1bea196232560d16b5fe2ab6727db13a30557594059ed4051031"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.115363fdd20c1bea1962",
+          "content_hash": "115363fdd20c1bea196232560d16b5fe2ab6727db13a30557594059ed4051031"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V124",
+          "content_hash": "65991830c74bab5106c663875f64c65f01b52b346a92e614731a9fa730e4bf54"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.a3714ec9c5e4ada26af4",
+      "source_variable_code": "V125",
+      "physical_slot": {
+        "ordinal": 156,
+        "name": "V125"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a3714ec9c5e4ada26af4",
+          "content_hash": "a3714ec9c5e4ada26af46f30a6fbdcc624aa1797c1d7790bcc121f1e2d728735"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a3714ec9c5e4ada26af4",
+          "content_hash": "a3714ec9c5e4ada26af46f30a6fbdcc624aa1797c1d7790bcc121f1e2d728735"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V125",
+          "content_hash": "878b8a7b4f0f029e9f5b8421b5b97731a780e174a039b630758e4d2377cb6b48"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.bee9fd3f23c9966dc062",
+      "source_variable_code": "V141",
+      "physical_slot": {
+        "ordinal": 172,
+        "name": "V141"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.bee9fd3f23c9966dc062",
+          "content_hash": "bee9fd3f23c9966dc06251942466f4c8fd59304808553c4269693762f33421ca"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.bee9fd3f23c9966dc062",
+          "content_hash": "bee9fd3f23c9966dc06251942466f4c8fd59304808553c4269693762f33421ca"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V141",
+          "content_hash": "97d06d36160f88b6b607b505eb13165922c9d656fefbd5ddc0d1e37f5bdafb9d"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.4258fc4b648b08a04083",
+      "source_variable_code": "V214",
+      "physical_slot": {
+        "ordinal": 276,
+        "name": "V214"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.4258fc4b648b08a04083",
+          "content_hash": "4258fc4b648b08a0408300fc3a0fbb922cf9f741aeeb714d06755ed38ca5e300"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.4258fc4b648b08a04083",
+          "content_hash": "4258fc4b648b08a0408300fc3a0fbb922cf9f741aeeb714d06755ed38ca5e300"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V214",
+          "content_hash": "e27f61e30cf4b8073712c63e4eb265ab915b1321514452e71a2e09059d0ea3f8"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.97b5cc44d4e953a6b826",
+      "source_variable_code": "V215",
+      "physical_slot": {
+        "ordinal": 277,
+        "name": "V215"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.97b5cc44d4e953a6b826",
+          "content_hash": "97b5cc44d4e953a6b826d084b9fa5bbbefd98a0fc9760d5aa95ffc4771ac816b"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.97b5cc44d4e953a6b826",
+          "content_hash": "97b5cc44d4e953a6b826d084b9fa5bbbefd98a0fc9760d5aa95ffc4771ac816b"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V215",
+          "content_hash": "1393da7404dde447d1d005aac33fa80e4da2523703d4f230e11b2282f25f8f9a"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.c8baff4af43a572396c7",
+      "source_variable_code": "V219",
+      "physical_slot": {
+        "ordinal": 281,
+        "name": "V219"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c8baff4af43a572396c7",
+          "content_hash": "c8baff4af43a572396c70aeb1be83f88c528a5d25e92c54674329e15d63c4f97"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c8baff4af43a572396c7",
+          "content_hash": "c8baff4af43a572396c70aeb1be83f88c528a5d25e92c54674329e15d63c4f97"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V219",
+          "content_hash": "7bff7e3025caa1d7e43be4e00f85a1a42dadaab546b50048bc20eaea029c2670"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.29d6a0b7aeffb4d5b72c",
+      "source_variable_code": "V220",
+      "physical_slot": {
+        "ordinal": 282,
+        "name": "V220"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.29d6a0b7aeffb4d5b72c",
+          "content_hash": "29d6a0b7aeffb4d5b72c223d5995879bd8bde28e5a4d8dc077dc4670cdb783c6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.29d6a0b7aeffb4d5b72c",
+          "content_hash": "29d6a0b7aeffb4d5b72c223d5995879bd8bde28e5a4d8dc077dc4670cdb783c6"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V220",
+          "content_hash": "b12b4a97f7461362ea43cc74f515b78a8c278208f6359cf2bb824b12cf25bc9f"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.2762306431ee24df9d3a",
+      "source_variable_code": "Q223_LOCAL",
+      "physical_slot": {
+        "ordinal": 283,
+        "name": "Q223_LOCAL"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.2762306431ee24df9d3a",
+          "content_hash": "2762306431ee24df9d3a49a4372957d033030eb73489272a30af582269ee1051"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.2762306431ee24df9d3a",
+          "content_hash": "2762306431ee24df9d3a49a4372957d033030eb73489272a30af582269ee1051"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:Q223_LOCAL",
+          "content_hash": "4311f3f69c081a615766dfe2653449bd66859ff29af95bf4b7fdc6d2590aff6e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.466319501bb84b5cc47a",
+      "source_variable_code": "V221",
+      "physical_slot": {
+        "ordinal": 284,
+        "name": "V221"
+      },
+      "configuration_role": "RANKED",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "response_slots[].values[].occurrences",
+      "reason": "manual_response_topology is ranked_choice, but the single physical column does not carry an exact component/rank map; rank order cannot be invented.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.466319501bb84b5cc47a",
+          "content_hash": "466319501bb84b5cc47a25d35f190155631a8a70367af75d7f5ee2c0834431c3"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.466319501bb84b5cc47a",
+          "content_hash": "466319501bb84b5cc47a25d35f190155631a8a70367af75d7f5ee2c0834431c3"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V221",
+          "content_hash": "4b729d522a91bbc382a1f2d82288ad662458bfb56a4d0ff84f3f18477fbd212d"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.83d5451429055b3136fe",
+      "source_variable_code": "V223",
+      "physical_slot": {
+        "ordinal": 286,
+        "name": "V223"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.83d5451429055b3136fe",
+          "content_hash": "83d5451429055b3136febeb186adc547b47d70cd7eed6d195b693826c8c20454"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.83d5451429055b3136fe",
+          "content_hash": "83d5451429055b3136febeb186adc547b47d70cd7eed6d195b693826c8c20454"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V223",
+          "content_hash": "c98f3f22f3a1013ad1addcb60bfb8abd66ceea71c0c5ff9410a8610a7edadcc7"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.6b7f9d506445be44ccad",
+      "source_variable_code": "V224",
+      "physical_slot": {
+        "ordinal": 287,
+        "name": "V224"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6b7f9d506445be44ccad",
+          "content_hash": "6b7f9d506445be44ccad6a9e8334b96d7cf48eecdbf58026ea98337ae69b2f45"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6b7f9d506445be44ccad",
+          "content_hash": "6b7f9d506445be44ccad6a9e8334b96d7cf48eecdbf58026ea98337ae69b2f45"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V224",
+          "content_hash": "420f1bd90854dfb2c379710a2228b67b8fb00e538907288089b3ad1ece83dd34"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.25d095808506b28ba0c4",
+      "source_variable_code": "V225",
+      "physical_slot": {
+        "ordinal": 288,
+        "name": "V225"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.25d095808506b28ba0c4",
+          "content_hash": "25d095808506b28ba0c4994ce7b24befce7c503ea8a8d9d69e0196c4679d4412"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.25d095808506b28ba0c4",
+          "content_hash": "25d095808506b28ba0c4994ce7b24befce7c503ea8a8d9d69e0196c4679d4412"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V225",
+          "content_hash": "21facc2d71aa9a7fd16b528fe33291f574482bd554f6cc885588f8cb1c7eecb1"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e84a996d5c57ea0f8ebc",
+      "source_variable_code": "V225R2",
+      "physical_slot": {
+        "ordinal": 289,
+        "name": "V225R2"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e84a996d5c57ea0f8ebc",
+          "content_hash": "e84a996d5c57ea0f8ebccbecc6c0bdc92d5cc72dab13b031d623cd601065ab33"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e84a996d5c57ea0f8ebc",
+          "content_hash": "e84a996d5c57ea0f8ebccbecc6c0bdc92d5cc72dab13b031d623cd601065ab33"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V225R2",
+          "content_hash": "e840b5436c225b0d7894583ed4ac2138679bf1e9af1406243064fe7263d3b278"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.a2d97062a013960870e9",
+      "source_variable_code": "V225R",
+      "physical_slot": {
+        "ordinal": 290,
+        "name": "V225R"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a2d97062a013960870e9",
+          "content_hash": "a2d97062a013960870e9d3257602bfc9b97ccf00e36c5054f09d26a6feae3ffc"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a2d97062a013960870e9",
+          "content_hash": "a2d97062a013960870e9d3257602bfc9b97ccf00e36c5054f09d26a6feae3ffc"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V225R",
+          "content_hash": "9ec43fb71cc4348f9171d2bc6792445ceb63d05714678139769852c7c1ce39fc"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.39a76d0c70608948c4d6",
+      "source_variable_code": "V227",
+      "physical_slot": {
+        "ordinal": 294,
+        "name": "V227"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.39a76d0c70608948c4d6",
+          "content_hash": "39a76d0c70608948c4d6fc129d5da06c827c3cf6603168aafa2a4912b85fdb70"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.39a76d0c70608948c4d6",
+          "content_hash": "39a76d0c70608948c4d6fc129d5da06c827c3cf6603168aafa2a4912b85fdb70"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V227",
+          "content_hash": "683e63019fdeb78fdf74d785c541239bc76bc22413ace70d1f3850b0a14788af"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e46c497cf7c63bb4b7aa",
+      "source_variable_code": "V229",
+      "physical_slot": {
+        "ordinal": 296,
+        "name": "V229"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e46c497cf7c63bb4b7aa",
+          "content_hash": "e46c497cf7c63bb4b7aa9c10a4cc38e5a4ce721b07d1d4fe383adb6de252d91f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e46c497cf7c63bb4b7aa",
+          "content_hash": "e46c497cf7c63bb4b7aa9c10a4cc38e5a4ce721b07d1d4fe383adb6de252d91f"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V229",
+          "content_hash": "1e877aef18fcaa1ebfe8469de604ddf2a244d4c074ebcf5053cd1f1b3c241bb4"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.56ab8cab6dfa4567ea55",
+      "source_variable_code": "V236CS",
+      "physical_slot": {
+        "ordinal": 304,
+        "name": "V236CS"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.56ab8cab6dfa4567ea55",
+          "content_hash": "56ab8cab6dfa4567ea557510e1a15c792b06119363e594d545fe80758e81a4dc"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.56ab8cab6dfa4567ea55",
+          "content_hash": "56ab8cab6dfa4567ea557510e1a15c792b06119363e594d545fe80758e81a4dc"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V236CS",
+          "content_hash": "5bfbcba9eaf63c0733c5414b99c385b89e666241293bfc5ce07c174974a8cfee"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.1fa79da230b02e0b8c23",
+      "source_variable_code": "V238",
+      "physical_slot": {
+        "ordinal": 307,
+        "name": "V238"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.1fa79da230b02e0b8c23",
+          "content_hash": "1fa79da230b02e0b8c233856f4d532a28c2b4a4a83aed4e79a60ec9887a227a4"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.1fa79da230b02e0b8c23",
+          "content_hash": "1fa79da230b02e0b8c233856f4d532a28c2b4a4a83aed4e79a60ec9887a227a4"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V238",
+          "content_hash": "3b908be6a5e23874deea093d2ea3143d5bf5e8e6e91ba181104c7dd1b3f2a3ea"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.5219a0ffbbc7d11deab9",
+      "source_variable_code": "V239",
+      "physical_slot": {
+        "ordinal": 308,
+        "name": "V239"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5219a0ffbbc7d11deab9",
+          "content_hash": "5219a0ffbbc7d11deab973c5cb5c0a05262bc9028e63aeca8a1e78cedbfd0722"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5219a0ffbbc7d11deab9",
+          "content_hash": "5219a0ffbbc7d11deab973c5cb5c0a05262bc9028e63aeca8a1e78cedbfd0722"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V239",
+          "content_hash": "e9bdccc2221bdc04d4c9386bef17a0bf3bb3549838df7e52d36bd16408496e76"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.9547757f18c8765c64ae",
+      "source_variable_code": "V247",
+      "physical_slot": {
+        "ordinal": 314,
+        "name": "V247"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9547757f18c8765c64ae",
+          "content_hash": "9547757f18c8765c64ae1b1bc5f0b5b795b576bd1cb7477f746b2d442b27658a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9547757f18c8765c64ae",
+          "content_hash": "9547757f18c8765c64ae1b1bc5f0b5b795b576bd1cb7477f746b2d442b27658a"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V247",
+          "content_hash": "86b07babbeb00f01f823284242d3107c97566b7fb82346bfae04279444864cb7"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.c57347e3af87e1b368e1",
+      "source_variable_code": "V243",
+      "physical_slot": {
+        "ordinal": 316,
+        "name": "V243"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c57347e3af87e1b368e1",
+          "content_hash": "c57347e3af87e1b368e1d380953a694371fc7d8c27ad5dbbadecd37fbfa785ad"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c57347e3af87e1b368e1",
+          "content_hash": "c57347e3af87e1b368e1d380953a694371fc7d8c27ad5dbbadecd37fbfa785ad"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V243",
+          "content_hash": "714c153296f96eaa7bec9fe216560603a02c9e815565820ade80cd1ff9cdd593"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.171625827b7832fc7c07",
+      "source_variable_code": "REGION_ISO",
+      "physical_slot": {
+        "ordinal": 317,
+        "name": "REGION_ISO"
+      },
+      "configuration_role": "COORDINATE",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "questions[].response_slots",
+      "reason": "Source role retained without response promotion.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.171625827b7832fc7c07",
+          "content_hash": "171625827b7832fc7c0773d9d37645418b7dcbae340326f27a168aeede252787"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.171625827b7832fc7c07",
+          "content_hash": "171625827b7832fc7c0773d9d37645418b7dcbae340326f27a168aeede252787"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:REGION_ISO",
+          "content_hash": "c54ff240969914b6e7966c8e40cabbb57c5e9eef048f92edc7f56f9ab9fd9ab5"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.068f9feaf4f73747e13f",
+      "source_variable_code": "V244",
+      "physical_slot": {
+        "ordinal": 319,
+        "name": "V244"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.068f9feaf4f73747e13f",
+          "content_hash": "068f9feaf4f73747e13f2e06e9c914f5b399bd142fa4acfeb6a9e595138e52d5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.068f9feaf4f73747e13f",
+          "content_hash": "068f9feaf4f73747e13f2e06e9c914f5b399bd142fa4acfeb6a9e595138e52d5"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V244",
+          "content_hash": "de06f97ede8d97d7a535fba2bf9af4e3f3f5c7e4c828b1826734c2910e3bdde1"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.24d2926b31c625cbfab2",
+      "source_variable_code": "V245",
+      "physical_slot": {
+        "ordinal": 320,
+        "name": "V245"
+      },
+      "configuration_role": "WEIGHT",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "Source role retained without response promotion.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.24d2926b31c625cbfab2",
+          "content_hash": "24d2926b31c625cbfab2c230aaad6d875b2e063287758b86f7dfe1ff9aeb33ff"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.24d2926b31c625cbfab2",
+          "content_hash": "24d2926b31c625cbfab2c230aaad6d875b2e063287758b86f7dfe1ff9aeb33ff"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:V245",
+          "content_hash": "ef21c8acbaae331e151f5e1e21724ec3bb4f02c10b6df557199609e6850ed8eb"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.25199ae47bdf3d9189cc",
+      "source_variable_code": "S018",
+      "physical_slot": {
+        "ordinal": 321,
+        "name": "S018"
+      },
+      "configuration_role": "GEN_FORBIDDEN",
+      "source_disposition": "GENERATION_FORBIDDEN",
+      "native_field": "questions[].response_slots",
+      "reason": "P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.25199ae47bdf3d9189cc",
+          "content_hash": "25199ae47bdf3d9189cc5d4339ad80cd98d629100bffb705ac3a3eb4a477a000"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.25199ae47bdf3d9189cc",
+          "content_hash": "25199ae47bdf3d9189cc5d4339ad80cd98d629100bffb705ac3a3eb4a477a000"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:S018",
+          "content_hash": "8e9de21ab3d78b91a64a57cb0399d9e7d64cbde2ebde7f8909e71641147a813e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.d842143c3101df1f3609",
+      "source_variable_code": "ISL26",
+      "physical_slot": {
+        "ordinal": 367,
+        "name": "ISL26"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.d842143c3101df1f3609",
+          "content_hash": "d842143c3101df1f36090d016f9ce73391d598be262bbde99bbddeed9bb00e3f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.d842143c3101df1f3609",
+          "content_hash": "d842143c3101df1f36090d016f9ce73391d598be262bbde99bbddeed9bb00e3f"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:ISL26",
+          "content_hash": "7bf8258b1bb826fd3f47ff432dfaceb17c719f988a7442d43c5b0410919bd31e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.6b9704c56ffba4561b12",
+      "source_variable_code": "SACSECVAL",
+      "physical_slot": {
+        "ordinal": 383,
+        "name": "SACSECVAL"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.6b9704c56ffba4561b12",
+          "content_hash": "6b9704c56ffba4561b12e139eafe78d3f3ead8561d66e51006c25627c53f8083"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.6b9704c56ffba4561b12",
+          "content_hash": "6b9704c56ffba4561b12e139eafe78d3f3ead8561d66e51006c25627c53f8083"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:SACSECVAL",
+          "content_hash": "14b4a490397823b51cf4b79918fc69917db74237a76e6a751a6e04f380b5e834"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.86538ee7668a25d89a2f",
+      "source_variable_code": "SECVALWGT",
+      "physical_slot": {
+        "ordinal": 384,
+        "name": "SECVALWGT"
+      },
+      "configuration_role": "GEN_FORBIDDEN",
+      "source_disposition": "GENERATION_FORBIDDEN",
+      "native_field": "questions[].response_slots",
+      "reason": "P2 explicitly marks the item generation_forbidden; identity and evidence are retained but no response rule is promoted.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.86538ee7668a25d89a2f",
+          "content_hash": "86538ee7668a25d89a2f890b5152a7812e31950683e2e746d924e26e4c337938"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.86538ee7668a25d89a2f",
+          "content_hash": "86538ee7668a25d89a2f890b5152a7812e31950683e2e746d924e26e4c337938"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:SECVALWGT",
+          "content_hash": "5e018a9f4041e47f19cedcf3bd08850f2249e391870f91611197303960c62edd"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e7976f571a15e230eeeb",
+      "source_variable_code": "RESEMAVAL",
+      "physical_slot": {
+        "ordinal": 385,
+        "name": "RESEMAVAL"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e7976f571a15e230eeeb",
+          "content_hash": "e7976f571a15e230eeeb567e07171f8d1ad02593749e3c4f3bc1cda845ccb66c"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e7976f571a15e230eeeb",
+          "content_hash": "e7976f571a15e230eeeb567e07171f8d1ad02593749e3c4f3bc1cda845ccb66c"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:RESEMAVAL",
+          "content_hash": "0638d66e0029fea26d71d432eb75b9f6cee7cc86a38f7008247b5238bbc184e8"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.15f4ffcc77b0e900cc05",
+      "source_variable_code": "RESEMAWEIGHT",
+      "physical_slot": {
+        "ordinal": 386,
+        "name": "RESEMAWEIGHT"
+      },
+      "configuration_role": "ADMIN",
+      "source_disposition": "ADMINISTRATIVE_METADATA",
+      "native_field": "physical_slots[].disposition",
+      "reason": "The item is administrative metadata, not a respondent response target.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.15f4ffcc77b0e900cc05",
+          "content_hash": "15f4ffcc77b0e900cc051c8bfff96d896b67ab950c603f773aa9c860f91739d6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.15f4ffcc77b0e900cc05",
+          "content_hash": "15f4ffcc77b0e900cc051c8bfff96d896b67ab950c603f773aa9c860f91739d6"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:RESEMAWEIGHT",
+          "content_hash": "3d5e47a3eac21b0f404a328477ac0b7ee0537d3ed268d9589d232357e96e6bda"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.180eda2b975ffe63c197",
+      "source_variable_code": "DEFIANCE",
+      "physical_slot": {
+        "ordinal": 390,
+        "name": "DEFIANCE"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.180eda2b975ffe63c197",
+          "content_hash": "180eda2b975ffe63c197517a104fe2e443dee42b11f0b30d39a3ae9a6778b095"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.180eda2b975ffe63c197",
+          "content_hash": "180eda2b975ffe63c197517a104fe2e443dee42b11f0b30d39a3ae9a6778b095"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:DEFIANCE",
+          "content_hash": "125a775e2f7aa15a809d03e38db83a296172d06ec27ebb6dc620ac85659b3a42"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e95d227d769bd312d4e6",
+      "source_variable_code": "I_RELIGPRAC",
+      "physical_slot": {
+        "ordinal": 393,
+        "name": "I_RELIGPRAC"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e95d227d769bd312d4e6",
+          "content_hash": "e95d227d769bd312d4e639031c9300cbc97679f3d58f89c72922c9a92027c734"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e95d227d769bd312d4e6",
+          "content_hash": "e95d227d769bd312d4e639031c9300cbc97679f3d58f89c72922c9a92027c734"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_RELIGPRAC",
+          "content_hash": "b16de3438222ec066231ad77740f01d917f5e6f7b0cda54585b1495bf8dac03f"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.5281619b43aa3e7e7be4",
+      "source_variable_code": "DISBELIEF",
+      "physical_slot": {
+        "ordinal": 394,
+        "name": "DISBELIEF"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.5281619b43aa3e7e7be4",
+          "content_hash": "5281619b43aa3e7e7be4d32cd1a60282a0ea10af8149b19873c4c5c094595f52"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.5281619b43aa3e7e7be4",
+          "content_hash": "5281619b43aa3e7e7be4d32cd1a60282a0ea10af8149b19873c4c5c094595f52"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:DISBELIEF",
+          "content_hash": "6652ce5a76dfaceaf12e19d4428760db0426735b2d4495a5c6b0c042c1abd3b0"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b6cc98661ba49423e287",
+      "source_variable_code": "RELATIVISM",
+      "physical_slot": {
+        "ordinal": 398,
+        "name": "RELATIVISM"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b6cc98661ba49423e287",
+          "content_hash": "b6cc98661ba49423e287b81e5fd4ef0c511e11314ea0b17bca6ab9b5341b800b"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b6cc98661ba49423e287",
+          "content_hash": "b6cc98661ba49423e287b81e5fd4ef0c511e11314ea0b17bca6ab9b5341b800b"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:RELATIVISM",
+          "content_hash": "b3db5225b50d096ef12c944c25fee7616f036c36bd1cde543ac3eb7d9c501eb7"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e4e56de4c619980e7ce8",
+      "source_variable_code": "SCEPTICISM",
+      "physical_slot": {
+        "ordinal": 402,
+        "name": "SCEPTICISM"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e4e56de4c619980e7ce8",
+          "content_hash": "e4e56de4c619980e7ce85d0a466f068dfef8509c825a86453e56dd66f3a335ed"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e4e56de4c619980e7ce8",
+          "content_hash": "e4e56de4c619980e7ce85d0a466f068dfef8509c825a86453e56dd66f3a335ed"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:SCEPTICISM",
+          "content_hash": "74cc411f33a11878bf031b1da592c3b4b07d15b31889bd8c8de7741622563683"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.a60e07c081703a0ba95a",
+      "source_variable_code": "AUTONOMY",
+      "physical_slot": {
+        "ordinal": 406,
+        "name": "AUTONOMY"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a60e07c081703a0ba95a",
+          "content_hash": "a60e07c081703a0ba95a214d11c12654190621903c9c80acb2852fa00374ce62"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a60e07c081703a0ba95a",
+          "content_hash": "a60e07c081703a0ba95a214d11c12654190621903c9c80acb2852fa00374ce62"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:AUTONOMY",
+          "content_hash": "81a506c5d1bf8554e3df8fd25ccf027132334589c039fbacb3b6e1569293e68a"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b57b99f28448fadb23c3",
+      "source_variable_code": "I_WOMJOB",
+      "physical_slot": {
+        "ordinal": 407,
+        "name": "I_WOMJOB"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b57b99f28448fadb23c3",
+          "content_hash": "b57b99f28448fadb23c3fdeb421bcf8de979c3dddfa353ae01bcd6e30aceda27"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b57b99f28448fadb23c3",
+          "content_hash": "b57b99f28448fadb23c3fdeb421bcf8de979c3dddfa353ae01bcd6e30aceda27"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_WOMJOB",
+          "content_hash": "b31d8c618c308690883c7f2add6ddaf029195cf9cf690ccfe7fee04e8b5ca668"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.45f2d32ade598ea23f67",
+      "source_variable_code": "I_WOMPOL",
+      "physical_slot": {
+        "ordinal": 408,
+        "name": "I_WOMPOL"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.45f2d32ade598ea23f67",
+          "content_hash": "45f2d32ade598ea23f673209c85844764c1dca65a93691669f9d9ba6551f1887"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.45f2d32ade598ea23f67",
+          "content_hash": "45f2d32ade598ea23f673209c85844764c1dca65a93691669f9d9ba6551f1887"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_WOMPOL",
+          "content_hash": "2d7c03ec635fd7791df48bf5e9d0c2b979fd8f87e82fff02d3782896270a5409"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.a8540643661d8d3dcefc",
+      "source_variable_code": "I_WOMEDU",
+      "physical_slot": {
+        "ordinal": 409,
+        "name": "I_WOMEDU"
+      },
+      "configuration_role": "POSITION",
+      "source_disposition": "POSITION_COORDINATE",
+      "native_field": "coordinate_slots[].native_coordinate_ref",
+      "reason": "The item is a position/context code, not a declared response target; raw codebook identity is retained.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.a8540643661d8d3dcefc",
+          "content_hash": "a8540643661d8d3dcefcd24ee8f43d1c407a7e4a9c824ab0f7e1e063065e7514"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.a8540643661d8d3dcefc",
+          "content_hash": "a8540643661d8d3dcefcd24ee8f43d1c407a7e4a9c824ab0f7e1e063065e7514"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_WOMEDU",
+          "content_hash": "03a8f1b6ddbf662e9b5eb055e726938bf98080ffc041917cee9f7dbacbaa4b2e"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.8666430b9fee053f3164",
+      "source_variable_code": "EQUALITY",
+      "physical_slot": {
+        "ordinal": 410,
+        "name": "EQUALITY"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8666430b9fee053f3164",
+          "content_hash": "8666430b9fee053f31648ca153185791fde1753ce1edeb087e5280f26b52b2a2"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8666430b9fee053f3164",
+          "content_hash": "8666430b9fee053f31648ca153185791fde1753ce1edeb087e5280f26b52b2a2"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:EQUALITY",
+          "content_hash": "a7c81a4bdd4dac99d34ef977b5822405ffd699c97201df46445810509ba70189"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.b563a77eca031103d94e",
+      "source_variable_code": "I_HOMOLIB",
+      "physical_slot": {
+        "ordinal": 411,
+        "name": "I_HOMOLIB"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.b563a77eca031103d94e",
+          "content_hash": "b563a77eca031103d94e61ed09a557c8268546972589991f8cf7ae0b3a370c98"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.b563a77eca031103d94e",
+          "content_hash": "b563a77eca031103d94e61ed09a557c8268546972589991f8cf7ae0b3a370c98"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_HOMOLIB",
+          "content_hash": "0da5453dfe18f7a11190560962ac5b12353bb19cb93e3d35cdd5e5d1c450e2b8"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.ddc091e6c666215792c0",
+      "source_variable_code": "I_ABORTLIB",
+      "physical_slot": {
+        "ordinal": 412,
+        "name": "I_ABORTLIB"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.ddc091e6c666215792c0",
+          "content_hash": "ddc091e6c666215792c07e7780dfb47a59a6459afeeb6d83a4c57042f9b80c10"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.ddc091e6c666215792c0",
+          "content_hash": "ddc091e6c666215792c07e7780dfb47a59a6459afeeb6d83a4c57042f9b80c10"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_ABORTLIB",
+          "content_hash": "524fd114248e7259885c8072cc6edc393fe2bdf9251fa8f1355c6a406ad3734c"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.e4ea2ca2ef0b7f630ec5",
+      "source_variable_code": "I_DIVORLIB",
+      "physical_slot": {
+        "ordinal": 413,
+        "name": "I_DIVORLIB"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.e4ea2ca2ef0b7f630ec5",
+          "content_hash": "e4ea2ca2ef0b7f630ec5d4536b3a355592d67745b1d22f76d6c0310a536d5731"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.e4ea2ca2ef0b7f630ec5",
+          "content_hash": "e4ea2ca2ef0b7f630ec5d4536b3a355592d67745b1d22f76d6c0310a536d5731"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_DIVORLIB",
+          "content_hash": "a60354fd6aa775c0ff1edec1f073224f50cc9451128cb12d4629e265d1a8b789"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.d0d0a379b1c4dfce2768",
+      "source_variable_code": "CHOICE",
+      "physical_slot": {
+        "ordinal": 414,
+        "name": "CHOICE"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.d0d0a379b1c4dfce2768",
+          "content_hash": "d0d0a379b1c4dfce276813630da30d1aea299851c6add930a8d277056a2f5427"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.d0d0a379b1c4dfce2768",
+          "content_hash": "d0d0a379b1c4dfce276813630da30d1aea299851c6add930a8d277056a2f5427"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:CHOICE",
+          "content_hash": "a44e3c3075c7de8760d22741209f485ffffd507dd4bf088bb0ad589bdedc493d"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.f8c16c94d437fb462b5b",
+      "source_variable_code": "I_VOI2_00",
+      "physical_slot": {
+        "ordinal": 417,
+        "name": "I_VOI2_00"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f8c16c94d437fb462b5b",
+          "content_hash": "f8c16c94d437fb462b5b362591f076a4e52aedf5f2200f7b2e7fcc795d88dd84"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f8c16c94d437fb462b5b",
+          "content_hash": "f8c16c94d437fb462b5b362591f076a4e52aedf5f2200f7b2e7fcc795d88dd84"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:I_VOI2_00",
+          "content_hash": "9a63dbd730c830fc37d6e6349aec8984ae367fdd3dcecd37609d6fc2a78e3f21"
+        }
+      ]
+    },
+    {
+      "implementation_id": "question_impl.phase0.348b7a72ebd5388e5bbb",
+      "source_variable_code": "VOICE",
+      "physical_slot": {
+        "ordinal": 418,
+        "name": "VOICE"
+      },
+      "configuration_role": "CONTINUOUS",
+      "source_disposition": "RELATION_EVIDENCE",
+      "native_field": "questions[].response_slots",
+      "reason": "The item has no substantive source value labels and is continuous/typed numeric; native ResponseSlotRule requires exact finite value keys.",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.348b7a72ebd5388e5bbb",
+          "content_hash": "348b7a72ebd5388e5bbb671e9bab4589f48b0933d5d31b1ab538bd29e4dd1415"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.348b7a72ebd5388e5bbb",
+          "content_hash": "348b7a72ebd5388e5bbb671e9bab4589f48b0933d5d31b1ab538bd29e4dd1415"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:WVS:W4:VOICE",
+          "content_hash": "9439fd765f2a32e0aa5a364261bc0317661ab9afde16a34efdcbb6dac2bc7dcd"
+        }
+      ]
+    }
+  ],
+  "fixture_limits": [
+    {
+      "residual_id": "SRC34-FIXTURE-IDENTITY",
+      "scope": "SRC34/fixture",
+      "field": "binding.identity_class",
+      "status": "FIXTURE_ONLY",
+      "reason": "Fixture bytes, universe, authority and row identities are distinct from original source and are not promoted.",
+      "dependent_operation": "original-source use",
+      "unaffected_scope": "actual factory/native validation",
+      "owner": "R157 WVS lane author",
+      "next_step": "Use the original config only with permitted original bytes and decoded row keys."
+    },
+    {
+      "residual_id": "SRC34-FIXTURE-WEIGHT",
+      "scope": "SRC34/weight",
+      "field": "weight_slots[].weight_basis_id",
+      "status": "WEIGHT_BASIS_UNRESOLVED",
+      "reason": "Fixture exercises explicit numeric weight cells; no weighted design/estimand claim is made.",
+      "dependent_operation": "weighted inference",
+      "unaffected_scope": "fixture response/coordinate validation",
+      "owner": "R157 WVS lane author",
+      "next_step": "Establish design/estimand before weighted scope."
+    }
+  ],
+  "blocking_lane_completion": false,
+  "blocking_original_execution": true,
+  "exact_next_operation": "P3 integration owner transports the qualified reader config and supplies permitted decoded source incidence for original execution."
+}
