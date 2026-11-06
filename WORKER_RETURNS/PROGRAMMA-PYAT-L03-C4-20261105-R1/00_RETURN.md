@@ -3,7 +3,7 @@
 **Status:** PHASE-1 COMPLETE / AUTHOR CHECKPOINT ONLY / PRODUCTION NOT CHANGED.
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
-**Checkpoint SHA:** `__CHECKPOINT_SHA__`
+**Checkpoint SHA:** `da7be66893217175f9301717c7f1693e6ca89ed8`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
 **Authority:** sourcefree engineering measurement only. No original35, native
 source/science, actor/V3, human, Sorok, protected CAS, or merge authority. No
