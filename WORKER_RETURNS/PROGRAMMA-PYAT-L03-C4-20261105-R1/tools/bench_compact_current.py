@@ -16,6 +16,7 @@ import json
 import os
 import platform
 import resource
+import statistics
 import subprocess
 import sys
 import time
@@ -1263,9 +1264,176 @@ def _run_grouped(args):
     }, indent=2, sort_keys=True))
 
 
+
+def _capacity_metadata():
+    return {
+        "pid": os.getpid(),
+        "python": sys.version,
+        "executable": sys.executable,
+        "platform": platform.platform(),
+        "machine": platform.machine(),
+        "cpu_count": os.cpu_count(),
+        "ru_maxrss_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
+        "ru_utime_s": resource.getrusage(resource.RUSAGE_SELF).ru_utime,
+        "ru_stime_s": resource.getrusage(resource.RUSAGE_SELF).ru_stime,
+        "argv": sys.argv,
+        "env": {key: os.environ.get(key) for key in (
+            "PYTHONHASHSEED", "PYTHONDONTWRITEBYTECODE", "TMPDIR",
+            "RAWLSING_C11_ACCELERATOR_DIR",
+        )},
+        "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phase wall/CPU only",
+    }
+
+
+def _run_capacity(args):
+    n = args.n or 200
+    outdir = Path(args.outdir).resolve()
+    outdir.mkdir(parents=True, exist_ok=True)
+    os.environ.pop("RAWLSING_C11_ACCELERATOR_DIR", None)
+    fixture = _source_fixture(n, tag="compact-current")
+    ops, catalog = _grouped_ops(fixture)
+    release = _compact_release(fixture)
+    by_id = {op["op_id"]: op for op in ops}
+    op_a = by_id["raw_Y"]
+    op_b = by_id["joint_XYZK"]
+
+    def make_executor():
+        return CarrierNeutralResearchExecutor(
+            C11Repository((release,)), (release.release_ref,), catalog,
+        )
+
+    baseline_a = make_executor().execute_i03(
+        query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+    ).facts[0].as_dict()
+    baseline_b = make_executor().execute_i03(
+        query_ref=op_b["query"].ref, predicate_ref=op_b["predicate"].ref,
+    ).facts[0].as_dict()
+
+    def run_grouped_case():
+        executor = make_executor()
+        scope = I03GroupedExecutionScope(max_groups=1)
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        fill = executor.execute_i03(
+            query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+            group_scope=scope,
+        ).facts[0]
+        fill_wall = time.perf_counter() - start_wall
+        fill_cpu = time.process_time() - start_cpu
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        hit = executor.execute_i03(
+            query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+            group_scope=scope,
+        ).facts[0]
+        hit_wall = time.perf_counter() - start_wall
+        hit_cpu = time.process_time() - start_cpu
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        miss = executor.execute_i03(
+            query_ref=op_b["query"].ref, predicate_ref=op_b["predicate"].ref,
+            group_scope=scope,
+        ).facts[0]
+        miss_wall = time.perf_counter() - start_wall
+        miss_cpu = time.process_time() - start_cpu
+        return {
+            "fill_wall_s": fill_wall,
+            "fill_cpu_s": fill_cpu,
+            "hit_wall_s": hit_wall,
+            "hit_cpu_s": hit_cpu,
+            "miss_wall_s": miss_wall,
+            "miss_cpu_s": miss_cpu,
+            "fill_equal": fill.as_dict() == baseline_a,
+            "hit_equal": hit.as_dict() == baseline_a,
+            "miss_equal": miss.as_dict() == baseline_b,
+            "scope": scope.receipt(),
+        }
+
+    def run_before():
+        original = I03GroupedExecutionScope._miss_capacity_exhausted
+        I03GroupedExecutionScope._miss_capacity_exhausted = lambda self, cached_members: False
+        try:
+            return run_grouped_case()
+        finally:
+            I03GroupedExecutionScope._miss_capacity_exhausted = original
+
+    def run_no_scope():
+        executor = make_executor()
+        executor.execute_i03(
+            query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+        )
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        miss = executor.execute_i03(
+            query_ref=op_b["query"].ref, predicate_ref=op_b["predicate"].ref,
+        ).facts[0]
+        miss_wall = time.perf_counter() - start_wall
+        miss_cpu = time.process_time() - start_cpu
+        return {
+            "miss_wall_s": miss_wall,
+            "miss_cpu_s": miss_cpu,
+            "miss_equal": miss.as_dict() == baseline_b,
+        }
+
+    orders = (
+        ("before", "after", "no_scope"),
+        ("after", "no_scope", "before"),
+        ("no_scope", "before", "after"),
+    )
+    results = {name: [] for name in ("before", "after", "no_scope")}
+    for round_index in range(1, args.rounds + 1):
+        order = orders[(round_index - 1) % len(orders)]
+        for name in order:
+            if name == "before":
+                record = run_before()
+            elif name == "after":
+                record = run_grouped_case()
+            else:
+                record = run_no_scope()
+            record["round"] = round_index
+            results[name].append(record)
+    summary = {}
+    for name, records in results.items():
+        misses = [item["miss_wall_s"] for item in records]
+        summary[name] = {
+            "miss_wall_s": misses,
+            "miss_wall_median_s": statistics.median(misses),
+            "miss_cpu_median_s": statistics.median([item["miss_cpu_s"] for item in records]),
+            "all_miss_equal": all(item["miss_equal"] for item in records),
+            "records": records,
+        }
+        if name != "no_scope":
+            summary[name]["fill_wall_s"] = [item["fill_wall_s"] for item in records]
+            summary[name]["hit_wall_s"] = [item["hit_wall_s"] for item in records]
+            summary[name]["all_fill_equal"] = all(item["fill_equal"] for item in records)
+            summary[name]["all_hit_equal"] = all(item["hit_equal"] for item in records)
+            summary[name]["scope_first"] = records[0]["scope"]
+    payload = {
+        "schema": SCHEMA,
+        "mode": "capacity",
+        "n": n,
+        "rounds": args.rounds,
+        "op_fill": op_a["op_id"],
+        "op_miss": op_b["op_id"],
+        "baseline_facts_equal": True,
+        "summary": summary,
+        "process": _capacity_metadata(),
+    }
+    path = outdir / f"capacity_n{n}.json"
+    bc.dump_json(path, payload)
+    print(json.dumps({
+        "path": str(path),
+        "n": n,
+        "before_miss_median_s": summary["before"]["miss_wall_median_s"],
+        "after_miss_median_s": summary["after"]["miss_wall_median_s"],
+        "no_scope_miss_median_s": summary["no_scope"]["miss_wall_median_s"],
+        "before_scope": summary["before"]["scope_first"],
+        "after_scope": summary["after"]["scope_first"],
+        "all_facts_equal": all(
+            summary[name]["all_miss_equal"] for name in summary
+        ),
+    }, indent=2, sort_keys=True))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", required=True, choices=("variant", "compare", "grouped"))
+    parser.add_argument("--mode", required=True, choices=("variant", "compare", "grouped", "capacity"))
     parser.add_argument("--variant", choices=VARIANTS)
     parser.add_argument("--n", type=int, default=None)
     parser.add_argument("--outdir", required=True)
@@ -1278,8 +1446,10 @@ def main():
         _run_variant(args)
     elif args.mode == "compare":
         _run_compare(args)
-    else:
+    elif args.mode == "grouped":
         _run_grouped(args)
+    else:
+        _run_capacity(args)
 
 
 if __name__ == "__main__":

@@ -387,3 +387,22 @@ function gap; cold-construction economy remains fixture-limited and not a produc
 claim. W04/P02 exact compact/cache/carrier functions are demonstrated at sourcefree
 scope; default activation remains explicit-policy/owner decision, not blanket cache.
 No extra index/carrier/truth engine was added.
+
+## Capacity-miss guard delta (new implementation/test)
+
+**Implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` (based on
+the earlier measured compact/grouped work; R03 acceptance `e2f6c164...` remains
+limited to `409be32f7e4b4b961a360be1c8f44a17b5c62173`).
+
+The only change is an early capacity guard in `I03GroupedExecutionScope.evaluate`:
+on a cache MISS, if the group cap is already reached or cached denominator members
+already reach the member cap, return the existing unshared fallback before building
+the duplicate core. HITs occur before the guard and remain usable. Unknown prospective
+member size still uses the existing post-build fallback. No eviction/LRU/new estimate,
+capacity default, index/carrier, cache policy, or broader optimization was added.
+
+N=200 paired capacity-full result (3 interleaved rounds): before early guard
+0.3383 s, after 0.2001 s, no-scope 0.1989 s; all exact facts/refs/replay equal. Before
+core attempts/builds/early fallbacks = 2/1/0; after = 1/1/1; full-capacity HIT
+reused. Focused grouping suite 15 passed. The new code is not covered by the
+original R03 acceptance and is not a whole-L03 completion.

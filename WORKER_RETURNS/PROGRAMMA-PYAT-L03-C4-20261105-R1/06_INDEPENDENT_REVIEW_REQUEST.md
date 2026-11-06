@@ -157,3 +157,13 @@ with independent row oracle PASS. Timings are sourcefree synthetic N=200/N=1,000
 only; no N=3000/all35 claim. Capacity fallback was exact but slower and is unproven.
 No new independent review is requested for this measurement-only phase; HQ retains
 the R03-scoped acceptance record and may use these artifacts as supporting evidence.
+
+## Capacity-miss guard note
+
+A new implementation/test SHA `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` follows
+the measured capacity-full duplicate repair. It is **not** covered by R03
+`e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3`, which remains scoped to
+`409be32f7e4b4b961a360be1c8f44a17b5c62173`. The narrow guard preserves HIT reuse,
+per-query validation/identity/authority gates, and exact no-scope facts; unknown
+prospective member size keeps the post-build fallback. No new review is requested
+here; HQ may schedule one separately if it accepts the new code.

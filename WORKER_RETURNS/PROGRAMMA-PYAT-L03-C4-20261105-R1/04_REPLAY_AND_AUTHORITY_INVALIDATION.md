@@ -236,3 +236,15 @@ independent row oracle PASS, and counters showed actual routing/predicate/target
 removal. Capacity fallback (`max_groups=1`) was exact but slower, so it is reported as
 unproven, not a basis for production repair. R03's 82–92 P41 fallbacks remain a
 nonblocking limit.
+
+## Capacity-miss guard (new implementation/test)
+
+At `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`, a cache MISS checks only
+already-exhausted group/member capacity before invoking the core builder. HITs are
+unchanged and still reuse at full capacity. The unknown prospective member size
+still follows the existing post-build member fallback; no eviction/LRU/estimate or
+default change exists. N=200 exact paired capacity-full result: before 0.3383 s,
+after 0.2001 s, no-scope 0.1989 s; before build attempts 2 / builds 1 / early
+fallbacks 0, after attempts 1 / builds 1 / early fallbacks 1. Full facts/refs/replay
+matched no-scope. R03 `e2f6c164...` remains scoped to `409be...` and does not accept
+this new code.

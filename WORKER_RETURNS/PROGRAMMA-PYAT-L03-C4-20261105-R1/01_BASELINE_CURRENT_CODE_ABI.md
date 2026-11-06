@@ -518,3 +518,20 @@ at N=1,000 reduced routing/predicate/target calls 22,001/13,428/10,294 → 2/2/2
 weight 10,294 → 1,715. Single-operation and incompatible-first costs are honest
 outliers (+9.0%/+25.4% at N=1,000); capacity fallback is exact but slower and
 unproven. No N=3000 was required.
+
+### Capacity-miss guard
+
+Implementation/test SHA `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` adds
+`I03GroupedExecutionScope._miss_capacity_exhausted(cached_members)` and calls it
+only on a cache MISS, after the exact key is built and before
+`_evaluate_index_group_core`. HITs remain evaluated before the guard, so a core at
+full group/member capacity is still reusable. The guard returns true when
+`len(cache) >= max_groups` or already-cached denominator members have reached
+`max_cached_members`. The post-build prospective member check remains for the
+unknown-new-denominator case; no estimate, eviction, LRU, or default change was
+added.
+
+N=200 compact paired capacity-full result: before early guard 0.3383 s miss median,
+after 0.2001 s, no-scope 0.1989 s; full facts equal. Before: core attempts 2/builds 1/
+early fallbacks 0; after: attempts 1/builds 1/early fallbacks 1. Full-capacity HIT
+reused. Focused grouping tests 15 passed.

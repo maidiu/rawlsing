@@ -1,12 +1,14 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
-**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 COMPACT COMPARISON AND COMPACT-GROUPED MEASUREMENT COMPLETE.
+**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 MEASURED / CAPACITY-MISS GUARD IMPLEMENTED AND MEASURED.
 **Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `a85df66ec93a951d8fd50d751822b70569df94ef`.
-**Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; not whole L03.
+**Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; it does **not** accept the new capacity-miss guard `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` or whole L03.
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
-**Implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
+**Previous implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
+**New implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
+**Capacity evidence commit:** `__CAP_EVIDENCE_SHA__`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
 **Authority:** sourcefree engineering only. No original35, native source/science,
 actor/V3, human, Sorok, protected CAS, or merge authority is claimed.
@@ -221,6 +223,29 @@ No extra bitmap/index, new carrier, persistent truth, blanket cache default, or
 owner acceptance was introduced. Delete/corrupt/stale/revoke remain existing-test
 coverage and were **NOT_RUN** here. No N=3000 was run; N=200/1,000 resolved the
 comparison.
+
+### Capacity-miss guard (new implementation/test)
+
+The measured capacity-full duplicate was fixed only in
+`I03GroupedExecutionScope.evaluate` at implementation/test SHA
+`9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`: an exact early guard skips core
+construction on a cache MISS when the group cap is reached or already-cached
+denominator members have reached the member cap. The HIT path remains before the
+guard, so full-capacity cores still reuse. When the prospective member size is
+unknown, the existing post-build member fallback remains; no eviction/LRU,
+capacity-default, or prospective-size estimate was added.
+
+N=200 compact same-release paired capacity-full result, 3 interleaved rounds:
+
+| case | miss median wall | core build attempts | core builds | early capacity fallback | exact facts |
+|---|---:|---:|---:|---:|---|
+| before (early guard disabled) | 0.3383 s | 2 | 1 | 0 | PASS |
+| after (current guard) | 0.2001 s | 1 | 1 | 1 | PASS |
+| no-scope | 0.1989 s | n/a | n/a | n/a | PASS |
+
+The full-capacity HIT remained reusable (`core_hits=1`), and the unsupported/member
+bound cases remain honest fallbacks. This narrows the capacity-full duplicate only;
+it does not claim a whole-L03 or production-scale completion.
 
 ## Read next
 
