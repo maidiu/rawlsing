@@ -16,9 +16,18 @@ from pathlib import Path
 import time
 from typing import Any, Mapping
 
+from dataclasses import replace
 from rawlsing_next.pre553_original35_operations import (
     EXECUTABLE, OPERATION_F1, OPERATION_F2, OPERATION_F3H,
-    bind_governed_frontier, build_original35_operation_plan,
+    _bundle_with_plan_aliases, bind_governed_frontier,
+    build_frontier_inputs_from_plan, build_original35_operation_plan,
+)
+from rawlsing_next.universal_grammar.enumerate import (
+    inventory_ledger, role_disposition,
+)
+from rawlsing_next.universal_grammar.types import (
+    ELIGIBLE, FRONTIER_SCHEMA, NOT_STARTED, UNKNOWN, OccurrenceKey,
+    ScientificFrontier, content_hash, make_operation,
 )
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_empirical_objects import RespondentEvent, exact_ref
@@ -42,8 +51,8 @@ from rawlsing_next.pre553_source_native_preimage_adapter import (
     materialize_native_preimages,
 )
 from rawlsing_next.pre553_universal_workload import (
-    compile_universal_workload, execute_governed_frontier,
-    execute_universal_workload,
+    compile_governed_frontier, compile_universal_workload,
+    execute_governed_frontier, execute_universal_workload,
 )
 
 SCHEMA = "PRE553_ORIGINAL35_EXECUTION@1.0.0"
@@ -245,6 +254,80 @@ class _RecordingResolver:
         decision = self.inner.resolve_current(request)
         self.captured.append(asdict(decision))
         return decision
+
+
+def execute_two_target_joint_from_plan(plan: Any, *, bundle: Any,
+                                        source_id: str, as_of: str,
+                                        host: str, purpose: str) -> Any:
+    """Lower one explicit eligible F2 pair to an existing 2-target JOINT run."""
+    inventory, policy, base_frontier = build_frontier_inputs_from_plan(
+        plan, source_id=source_id)
+    pair = next((op for op in plan.operations
+                 if op.source_id == source_id and op.kind == OPERATION_F2
+                 and op.status == EXECUTABLE
+                 and op.route_status == "ELIGIBLE_APPLICABLE"
+                 and op.conditioner_item_id), None)
+    if pair is None:
+        raise Original35ExecutionError("NO_ELIGIBLE_TWO_TARGET_PAIR_PLAN")
+    targets = (OccurrenceKey(item_id=pair.item_ids[0]),
+               OccurrenceKey(item_id=pair.conditioner_item_id))
+    by_key = inventory.by_key()
+    if any(key not in by_key for key in targets):
+        raise Original35ExecutionError("JOINT_TARGET_NOT_IN_INVENTORY")
+    target_roles = tuple(by_key[key].target_role for key in targets)
+    measure = inventory.measure_plans[0]
+    disposition, reasons, risk_refs = role_disposition(
+        inventory, policy, targets=targets, target_roles=target_roles,
+        conditions=(), conditioner_roles=(), claim_class="JOINT",
+        condition_mode="AND", measure=measure)
+    direction = policy.direction_for(target_roles, (), "JOINT")
+    used = [by_key[key] for key in targets]
+    form_scope = sorted(set.intersection(*(set(item.forms) for item in used)))
+    operation = make_operation(
+        inventory=inventory, policy=policy, claim_class="JOINT",
+        targets=targets, target_roles=target_roles, conditions=(),
+        conditioner_roles=(), condition_mode="AND", unit=used[0].unit,
+        topology=used[0].topology, measure=measure,
+        risk_set_ref=(risk_refs[0] if risk_refs else None),
+        risk_set_refs=risk_refs,
+        direction_ref=(direction.direction_ref if direction else None),
+        form_scope=form_scope, scope=source_id,
+        disposition=disposition, reasons=reasons,
+        native_support=("PENDING" if disposition == ELIGIBLE else "NOT_APPLICABLE"),
+        administration_states=sorted({item.administration for item in used}),
+        aliases=(pair.operation_id,))
+    operations = (operation,)
+    class_counts = Counter(op.claim_class for op in operations)
+    disposition_counts = Counter(op.disposition for op in operations)
+    ids = tuple(op.op_id for op in operations)
+    joint_frontier = ScientificFrontier(
+        schema=FRONTIER_SCHEMA, inventory_id=inventory.inventory_id,
+        inventory_hash=inventory.content_hash, policy_id=policy.policy_id,
+        policy_hash=policy.content_hash, policy_grade=policy.grade,
+        source_identity=base_frontier.source_identity,
+        operations=operations,
+        inventory_ledger=inventory_ledger(inventory, policy),
+        class_counts=dict(sorted(class_counts.items())),
+        disposition_counts=dict(sorted(disposition_counts.items())),
+        execution_counts={NOT_STARTED: 1},
+        result_counts={UNKNOWN: 1}, deferred=(), unknown=(), excluded=(),
+        budget_state="EXPLICIT_PLANNED", pending_operation_ids=(),
+        partition_size=64,
+        partition_root=content_hash({"operation_ids": list(ids),
+                                     "partition_size": 64}),
+        partition_count=1, maximum_bounds=dict(policy.bounds),
+        u_item_root=None, u_unit_root=None, u_app_root=None,
+        e_pre_count=1,
+        e_pre_root=content_hash([operation.identity_material()]),
+        e_pre_cause=None)
+    alias_bundle = _bundle_with_plan_aliases(
+        plan, source_id, bundle, joint_frontier)
+    compilation = compile_governed_frontier(
+        bundle=alias_bundle, inventory=inventory, policy=policy,
+        frontier=joint_frontier, as_of=as_of, host=host, purpose=purpose)
+    return execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream)
 
 
 def write_field_forge_envelopes(result: Any, *, source_id: str,
@@ -521,6 +604,6 @@ __all__ = [
     "DEFAULT_BINDING", "Original35ExecutionError", "SCHEMA",
     "SourceExecutionResult", "execute_all",
     "execute_native_compiler_source", "execute_source",
-    "write_field_forge_envelopes",
+    "execute_two_target_joint_from_plan", "write_field_forge_envelopes",
     "load_runtime_binding", "main",
 ]
