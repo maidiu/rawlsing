@@ -41,7 +41,7 @@ Requested matrix:
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r12 F2 direction
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input e4f336972.
+- Identity: codex/pyat-universal35-d-20261106-r1@70d0f0fe45e0b383879ae625526cee6af03f2572; input e4f336972.
 - Function: explicit requested F2 operation ID -> conditioner-first/target-second JOINT ScientificOperation -> existing C11/I03 fact/query -> exact E conditional profile and conditioner-value rows.
 - Evidence: asymmetric P(B|A) 6/0 and 2/4; reverse P(A|B) 6/2 and 0/4; changed cell changes profile; restore exact; invalid request typed refusal.
 - Limits: controlled sourcefree only; original data/native/science NOT_RUN.
