@@ -1,0 +1,35 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "review": "PROGRAMMA-PYAT-UNIVERSAL35-MAPPING-R3-INDEPENDENT-REVIEW-20261106-R1",
+  "target_head": "cf44c5df67863c040ac2424e27413d0101917c40",
+  "delta": "7f3931607d1309e84ad068c353946831248184b3",
+  "verdict": "ACCEPT_SCOPED_ENGINEERING",
+  "axes": {
+    "mechanism_fail_closed_default": "ACCEPT_SCOPED_ENGINEERING",
+    "composite_state_repair": "ACCEPT_SCOPED_ENGINEERING",
+    "substantive_to_missing_transitions": "ACCEPT_SCOPED_ENGINEERING",
+    "projection_state_propagation": "ACCEPT_SCOPED_ENGINEERING",
+    "preserved_provenance_freeze_denominators": "ACCEPT_SCOPED_ENGINEERING",
+    "full_c11_native": "NOT_RUN"
+  },
+  "finding": "362 exact R2 composite precise states are now SOURCE_SPECIFIC_SPECIAL; remaining precise composites 0; substantive additions 0; omitted add-state defaults to INVALID_UNRESOLVED; 95 substantive-to-missing transitions have declared missing metadata; SRC16/SRC31 projection states match.",
+  "evidence": [
+    "results/pytest_49.log",
+    "results/r3_repair_tests.log",
+    "results/repair_audit.json",
+    "results/state_probe.json"
+  ],
+  "reused_unchanged": [
+    "R157/SRC31 freeze",
+    "base commit/path and registry provenance refusal/restore",
+    "fixture and unrelated-source identity",
+    "35 / 18276 / 18413 / 18250 / 26 denominators"
+  ],
+  "not_run": [
+    "full C11/native/empirical execution",
+    "all35 floor and genuine original facts",
+    "600-second scans",
+    "native/science/actor acceptance"
+  ],
+  "authority": "Nonauthor mapping review only; no code repair, protected merge or source/native/science grant."
+}
