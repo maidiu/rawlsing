@@ -205,10 +205,36 @@ if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
         sorok_state = json.loads(sorok_json.read_text(encoding="utf-8"))
         md_head = sorok_md.read_text(encoding="utf-8").splitlines()[0]
         is_split_cut = sorok_state.get("revision") == 35 and "revision36" in md_head
-        # At this exact receiving cut, the discrepancy must remain legible.
-        # If future owners truly synchronize the pair, this test must be updated
-        # with their competent accepted progress receipt, never auto-promoted.
-        check(is_split_cut, "Sorok MD36/JSON35 protected source cut changed: qualified paired receiving needed")
+        # The original MD36/JSON35 split remains historical evidence. A newer
+        # owner-qualified paired receipt is valid only at the exact protected
+        # code/guide source and scoped review grade, not by merely raising
+        # revision numbers or deleting the previously documented discrepancy.
+        r37 = sorok_state.get("protected_receiving_20261106", {})
+        received_path = ROOT / (SOROK + "CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md")
+        received_text = received_path.read_text(encoding="utf-8") if received_path.is_file() else ""
+        is_qualified_pair = (
+            sorok_state.get("revision") == 37
+            and "revision37" in md_head
+            and isinstance(r37, dict)
+            and r37.get("protected_merge_sha") == "0b7d8ba33b5cd905963292357507ae7bbc2219de"
+            and r37.get("source_head") == "d7a598bef85a534c71e1fbca74124dedde96d577"
+            and r37.get("reviewed_runtime") == "81b01f654f8ba09550d03df17e8014f43ffcfc9f"
+            and r37.get("grade") == "SOURCEFREE_TEST_ONLY_ENGINEERING"
+            and r37.get("no_new_hq_appointment") is True
+            and r37.get("guide_receipt") == str(received_path.relative_to(ROOT))
+            and "0b7d8ba33b5cd905963292357507ae7bbc2219de" in received_text
+            and "MISSING_RULE" in received_text
+            and (ROOT / "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/FINAL_DISPOSITION.json").is_file()
+        )
+        check(is_split_cut or is_qualified_pair,
+              "Sorok current-progress pair lacks original MD36/JSON35 split or exact qualified R37 receiving")
+        if is_qualified_pair:
+            for path in (ROOT / (SOROK + "00_PROGRAMMA_SOROK.md"),
+                         ROOT / (SOROK + "READ_FIRST.md"),
+                         ROOT / (SOROK + "10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md")):
+                check("CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md" in
+                      path.read_text(encoding="utf-8"),
+                      f"{path}: Sorok R37 receiving pointer absent")
         for name, path in (
             ("priority", priority_path),
             ("Sorok navigation", ROOT / (SOROK + "READ_FIRST.md")),
