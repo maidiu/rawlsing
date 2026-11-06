@@ -92,5 +92,5 @@ detached context, accessible-only prior events and separate impressions.
 - `cycle_evidence/MANIFEST.json` — evidence hashes.
 - `cycle_evidence/00_RETURN.md` — this return.
 
-**Commit:** `PENDING_ARTIFACT_COMMIT`  
+**Commit:** `01551cf893157f76f958b22051ed69bad5642c11`  
 **Final state:** commit and push this exact branch, verify remote, then stop.
