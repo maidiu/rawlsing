@@ -11829,77 +11829,119 @@
     ]
   },
   "hq_p2_interval_later_20261105": {
-    "status": "REPAIRED_CUTS_AUTHOR_TESTED_NOT_ACCEPTED__ORIGINAL_CUTS_REVISE_PRESERVED",
+    "status": "REPAIRED_CUTS_INDEPENDENTLY_ACCEPTED_SCOPED__ORIGINAL_CUTS_REVISE_PRESERVED",
     "auto_ready": false,
     "interval": {
       "original_commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
       "original_review": "f1a2872487b3aa492632a497ad7481e8529d937e REVISE; historical",
       "primary_repair_commit": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
-      "primary_repair_independent": "89b334 primary no-auto-help PASS6tests66.42s; REVISE7a256 for public keys and pyc receipt",
+      "primary_repair_independent": "89b334 primary no-auto-help PASS at 89b334; REVISE7a256 for public keys/pyc preserved",
       "final_repair_commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
-      "status": "FINAL_PUBLIC_KEY_AND_CENSUS_FIX_AUTHOR_TESTED_NOT_ACCEPTED",
-      "author_tests": "6 PASS in78.34s",
-      "oracle": "original privacy walker and receipt existence oracle PASS",
-      "public_keys": {
-        "admission": "admission_status",
-        "c9": "c9_public"
+      "status": "ACCEPT_SCOPED_TEST_ONLY@3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+      "accepted_scope": {
+        "commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+        "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+        "review": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "review_path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1",
+        "scope": "concrete original findings only; no full suite rerun",
+        "accepted": true,
+        "public_keys": [
+          "admission_status",
+          "c9_public"
+        ],
+        "receipt_files": 29,
+        "pyc_entries": 0,
+        "privacy_hits": 0,
+        "original_oracles": "PASS"
       },
-      "receipt_files": 29,
-      "pyc_entries": 0,
-      "accepted": false,
-      "product_import": "NOT_YET_IN_25D; 76d5 import RUNNING sorok-p2-final-interval-import-20261105-r1"
+      "product_import": "4B2 imports exact 76d5; final cut closure RUNNING; not promoted",
+      "accepted": true
     },
     "later_event": {
       "original_commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
       "original_review": "f1a2872487b3aa492632a497ad7481e8529d937e REVISE; historical",
       "final_repair_commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
       "code_commit": "4bdba46c4d3a667a9cd7845eb57caa980df76373",
-      "status": "PUBLIC_BOUNDARY_REPAIR_AUTHOR_TESTED_NOT_ACCEPTED",
-      "author_tests": "8 PASS",
-      "public_privacy_hits": 0,
-      "observation_encounters": "0->0",
-      "explicit_help_encounters": "0->1",
-      "preserved": "original primitive/source/cut/cold positives preserved",
-      "final_independent_review": "NOT_RUN",
-      "accepted": false,
-      "product_import": "NOT_IMPORTED_YET"
+      "status": "ACCEPT_SCOPED_TEST_ONLY@3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+      "accepted_scope": {
+        "commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+        "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+        "review": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "review_path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1",
+        "scope": "concrete original findings only; no full suite rerun",
+        "accepted": true,
+        "author_tests": "8 PASS",
+        "public_privacy_hits": 0,
+        "observation_encounters": "0->0",
+        "explicit_help_encounters": "0->1 ACTUAL refuse/SCHEDULED accept",
+        "source_history_cold_cut_restore": "intact"
+      },
+      "final_independent_review": "ACCEPT_SCOPED_TEST_ONLY@3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+      "product_import": "4B2 imports exact b716; final cut closure RUNNING; not promoted",
+      "accepted": true
     },
     "product_fanin": {
-      "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED_PRIOR_25D_INDEPENDENT_ACCEPT_FINAL_RECEIVING_PENDING",
+      "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED__FINAL_CUT_CLOSURE_RUNNING__NOT_PROMOTED",
       "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
       "branch": "codex/sorok-p2-product-fanin-20261105-r1",
       "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
       "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1",
-      "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e; no independent acceptance claimed for newer4b2",
-      "interval_import": "76d5 import RUNNING sorok-p2-final-interval-import-20261105-r1",
-      "later_event_import": "b716 NOT_IMPORTED_YET",
-      "receiving_engineering": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS; not independent acceptance/merge",
+      "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e preserved; no independent acceptance claimed for newer4b2",
+      "accepted_exact_cut": {
+        "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+        "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+        "review": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+        "tests": "7PASS103.31s + independent cold/trust-boundary probes"
+      },
+      "repaired_interval_import": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+      "repaired_later_import": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+      "final_import_evidence": "4b2 imports both repaired sources exactly; primitives/callsite unchanged; public privacy oracle hits 0; prior tests reused",
+      "final_cut_closure": "RUNNING sorok-p2-final-cut-independent-closure-20261105-r1",
+      "final_receiving_delta": "RUNNING",
+      "accepted": false,
+      "auto_ready": false,
       "pr699": {
-        "branch": "b6d3f8d2b946a38f6336361c2b625c1260699100",
-        "state": "OPEN_UNMERGED"
+        "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
+        "state": "DRAFT_UNMERGED"
       },
       "pr697": {
         "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
         "state": "OPEN_UNMERGED"
       },
-      "accepted": false,
-      "auto_ready": false,
-      "accepted_exact_cut": {
-        "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
-        "verdict": "ACCEPT_SCOPED_TEST_ONLY",
-        "review": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
-        "tests": "7PASS103.31s + independentcold/trustboundaryprobes"
-      },
-      "repaired_interval_import": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
-      "repaired_later_import": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
-      "final_import_evidence": "d450 interval30/30exact;4b2 later48/48exact; primitives/callsite unchanged; publicprivacyoracle0hits; prior tests reused",
-      "next_action": "Receive focused repairedsurface review and final4b2 receivingdelta; consolidate qualified product receiving without broad repeat estate or native/human/protectedpromotion",
-      "final_receiving_job": "RUNNING sorok-p2-final-receiving-delta-20261105-r1",
-      "component_closure_job": "RUNNING sorok-p2-public-repairs-focused-closure-20261105-r1"
+      "sources": [
+        {
+          "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+          "tree": "2d46816a00056eeabdc183e05b26ba3b4b934bb3",
+          "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1/00_RETURN.md",
+          "blob": "1a6ad9e7d92d898e7ddfd2cb774a8ccdab0af7d9",
+          "role": "focused independent ACCEPT_SCOPED_TEST_ONLY for interval 76d5 and later b716; original failure oracles PASS; no full suite rerun"
+        },
+        {
+          "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+          "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1/PROGRAMMA_DELTA.json",
+          "blob": "f4ff173dee4b8c6e8668eade663fe53fb3d60b4c",
+          "role": "closure delta: interval 29/29 files and zero reserved keys; later 0 privacy hits; ACTUAL refuse/SCHEDULED accept; historical REVISE preserved"
+        },
+        {
+          "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+          "tree": "07f3226184803362cc26e680730866d2a3faf930",
+          "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/00_RETURN.md",
+          "blob": "cd8b374ea2f06b4f93e1c7d7dbae35fa20cfe4a9",
+          "role": "current 4b2 imports both repaired sources exactly; final cut closure and final receiving delta RUNNING; not promoted"
+        },
+        {
+          "commit": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+          "tree": "72844c0c32755b70599c73faf2119296536f7e61",
+          "path": "WORKER_RETURNS/SOROK-P2-FANIN-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+          "blob": "4e962ffc41727f05c7d1e9959df375abb32f3e88",
+          "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
+        }
+      ],
+      "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; do not promote 4b2. Integrated 25d accept332e preserved."
     },
     "pr699": {
-      "branch": "b6d3f8d2b946a38f6336361c2b625c1260699100",
-      "state": "OPEN_UNMERGED"
+      "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
+      "state": "DRAFT_UNMERGED"
     },
     "pr697": {
       "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
@@ -11908,115 +11950,98 @@
     "guide_integration": "ISOLATED_PENDING_INTEGRATION",
     "sources": [
       {
-        "commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
-        "tree": "1b7a8c4a700a03adbb0f76829cec61bc68add253",
-        "path": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/00_RETURN.md",
-        "blob": "b03fea7f1b24a67a3d5eb37a0e9537fc7c79ba06",
-        "role": "interval final key/census repair; 6 author tests 78.34s + original oracle PASS; author-only not accepted"
+        "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "tree": "2d46816a00056eeabdc183e05b26ba3b4b934bb3",
+        "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1/00_RETURN.md",
+        "blob": "1a6ad9e7d92d898e7ddfd2cb774a8ccdab0af7d9",
+        "role": "focused independent ACCEPT_SCOPED_TEST_ONLY for interval 76d5 and later b716; original failure oracles PASS; no full suite rerun"
       },
       {
-        "commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
-        "path": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/evidence/result.json",
-        "blob": "61b14859923ec104de4018c3ef9dd6cfaba8800b",
-        "role": "29 actual receipt files; no pyc; admission_status/c9_public"
+        "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1/PROGRAMMA_DELTA.json",
+        "blob": "f4ff173dee4b8c6e8668eade663fe53fb3d60b4c",
+        "role": "closure delta: interval 29/29 files and zero reserved keys; later 0 privacy hits; ACTUAL refuse/SCHEDULED accept; historical REVISE preserved"
       },
       {
-        "commit": "89b33453eff13d8a3638a97cf516438c42e7af4f",
-        "tree": "15b18afb6c3149410a0513b0903b38d07d806146",
-        "path": "WORKER_RETURNS/SOROK-P2-INTERVAL-REPAIR-INDEPENDENT-CLOSURE-20261105-R1/00_RETURN.md",
-        "blob": "d0abd4a0f14d84285f2f85e491539b500b6daa34",
-        "role": "REVISE 7a256; primary no-auto-help independently PASS; original bdad REVISE preserved"
-      },
-      {
-        "commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
-        "tree": "270cbf003b082c5d0097f4518cd5a4a4777bc936",
-        "path": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1/00_RETURN.md",
-        "blob": "efd7c37e5e8ebb12c67ae9676a13ceef512141db",
-        "role": "later public-boundary repair; 8 author tests; 0 privacy hits; observation 0->0; explicit help 0->1; author-only"
-      },
-      {
-        "commit": "4bdba46c4d3a667a9cd7845eb57caa980df76373",
-        "path": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1/evidence/oracle_reproduction.json",
-        "blob": "6067d875c399197b7ba6b6e64e5b286f36db37a9",
-        "role": "historical 76fdb defect reproduction and repaired public/explicit behavior"
-      },
-      {
-        "commit": "f1a2872487b3aa492632a497ad7481e8529d937e",
-        "path": "WORKER_RETURNS/SOROK-P2-INTERVAL-LATER-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
-        "blob": "d0abd4a0f14d84285f2f85e491539b500b6daa34",
-        "role": "original bdad/76fdb REVISE; primitive positives preserved"
-      },
-      {
-        "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
-        "tree": "57dbdca8efdbb6bcda7b64df0ac60e8fe75ddc3a",
+        "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+        "tree": "07f3226184803362cc26e680730866d2a3faf930",
         "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/00_RETURN.md",
-        "blob": "6ce8d771fa2f37017f8a8223f611b99fbe9defb6",
-        "role": "current published product 25d; independently unaccepted; exact review RUNNING retry2"
+        "blob": "cd8b374ea2f06b4f93e1c7d7dbae35fa20cfe4a9",
+        "role": "current 4b2 imports both repaired sources exactly; final cut closure and final receiving delta RUNNING; not promoted"
       },
       {
-        "commit": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a",
-        "tree": "319b040daa74da843ca082a09512756dfa253690",
-        "path": "WORKER_RETURNS/SOROK-P2-PROTECTED-BASE-RECEIVING-REHEARSAL-20261105-R1/00_RETURN.md",
-        "blob": "c82db32cf295c6c74c9431fad5a9809b08bf4c4e",
-        "role": "receiving engineering rehearsal PASS; not independent acceptance/merge"
+        "commit": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+        "tree": "72844c0c32755b70599c73faf2119296536f7e61",
+        "path": "WORKER_RETURNS/SOROK-P2-FANIN-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+        "blob": "4e962ffc41727f05c7d1e9959df375abb32f3e88",
+        "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
       }
     ],
     "holds": [
       "no automatic dependent READY/native/human/B/protected promotion",
-      "no product/fan-in/later/lifecycle/guide/global config/protected write",
+      "no product/fan-in/later/lifecycle/guide-schema/global config/protected write",
       "A producer remains closed duplicate #690"
     ],
-    "currentness_note": "Interval final 76d5 key/census repair and later b716 public-boundary repair are author-tested; original cuts remain REVISE; product 25d is unaccepted with 76d5 import RUNNING; no dependent READY.",
-    "record_effect": "Interval final 76d5 key/census repair and later b716 repair author-tested; original cuts REVISE preserved; product 25d unaccepted with 76d5 import RUNNING; no dependent READY."
+    "currentness_note": "Interval 76d5 and later b716 are independently accepted scoped at 3e04b6c; old bdad/7a/76fd REVISE preserved; 4b2 imports both exactly but final cut closure and receiving delta RUNNING; do not promote 4b2.",
+    "record_effect": "Interval 76d5 and later b716 independently accepted scoped at 3e04b6c; old REVISE cuts preserved; 4b2 imports both exactly but final cut closure and receiving delta RUNNING; do not promote 4b2."
   },
   "hq_p2_product_fanin_20261105": {
-    "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED_PRIOR_25D_INDEPENDENT_ACCEPT_FINAL_RECEIVING_PENDING",
+    "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED__FINAL_CUT_CLOSURE_RUNNING__NOT_PROMOTED",
     "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
     "branch": "codex/sorok-p2-product-fanin-20261105-r1",
     "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
     "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1",
-    "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e; no independent acceptance claimed for newer4b2",
-    "interval_import": "76d5 import RUNNING sorok-p2-final-interval-import-20261105-r1",
-    "later_event_import": "b716 NOT_IMPORTED_YET",
-    "receiving_engineering": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS; not independent acceptance/merge",
+    "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e preserved; no independent acceptance claimed for newer4b2",
+    "accepted_exact_cut": {
+      "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+      "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+      "review": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+      "tests": "7PASS103.31s + independent cold/trust-boundary probes"
+    },
+    "repaired_interval_import": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+    "repaired_later_import": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+    "final_import_evidence": "4b2 imports both repaired sources exactly; primitives/callsite unchanged; public privacy oracle hits 0; prior tests reused",
+    "final_cut_closure": "RUNNING sorok-p2-final-cut-independent-closure-20261105-r1",
+    "final_receiving_delta": "RUNNING",
+    "accepted": false,
+    "auto_ready": false,
     "pr699": {
-      "branch": "b6d3f8d2b946a38f6336361c2b625c1260699100",
-      "state": "OPEN_UNMERGED"
+      "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
+      "state": "DRAFT_UNMERGED"
     },
     "pr697": {
       "head": "41bf45813fd0adeffd9b54e1306c2022abe96514",
       "state": "OPEN_UNMERGED"
     },
-    "accepted": false,
-    "auto_ready": false,
     "sources": [
       {
-        "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
-        "tree": "57dbdca8efdbb6bcda7b64df0ac60e8fe75ddc3a",
-        "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/00_RETURN.md",
-        "blob": "6ce8d771fa2f37017f8a8223f611b99fbe9defb6",
-        "role": "current published product 25d; independently unaccepted; exact review RUNNING retry2"
+        "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "tree": "2d46816a00056eeabdc183e05b26ba3b4b934bb3",
+        "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1/00_RETURN.md",
+        "blob": "1a6ad9e7d92d898e7ddfd2cb774a8ccdab0af7d9",
+        "role": "focused independent ACCEPT_SCOPED_TEST_ONLY for interval 76d5 and later b716; original failure oracles PASS; no full suite rerun"
       },
       {
-        "commit": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a",
-        "tree": "319b040daa74da843ca082a09512756dfa253690",
-        "path": "WORKER_RETURNS/SOROK-P2-PROTECTED-BASE-RECEIVING-REHEARSAL-20261105-R1/00_RETURN.md",
-        "blob": "c82db32cf295c6c74c9431fad5a9809b08bf4c4e",
-        "role": "receiving engineering rehearsal PASS; not independent acceptance/merge"
+        "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+        "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1/PROGRAMMA_DELTA.json",
+        "blob": "f4ff173dee4b8c6e8668eade663fe53fb3d60b4c",
+        "role": "closure delta: interval 29/29 files and zero reserved keys; later 0 privacy hits; ACTUAL refuse/SCHEDULED accept; historical REVISE preserved"
+      },
+      {
+        "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+        "tree": "07f3226184803362cc26e680730866d2a3faf930",
+        "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/00_RETURN.md",
+        "blob": "cd8b374ea2f06b4f93e1c7d7dbae35fa20cfe4a9",
+        "role": "current 4b2 imports both repaired sources exactly; final cut closure and final receiving delta RUNNING; not promoted"
+      },
+      {
+        "commit": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+        "tree": "72844c0c32755b70599c73faf2119296536f7e61",
+        "path": "WORKER_RETURNS/SOROK-P2-FANIN-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+        "blob": "4e962ffc41727f05c7d1e9959df375abb32f3e88",
+        "role": "preserved independent ACCEPT_SCOPED_TEST_ONLY for integrated 25d only; not acceptance of newer 4b2"
       }
     ],
-    "record_effect": "Product 25d remains independently unaccepted; exact review RUNNING retry2; 76d5 import RUNNING; later b716 not imported; no dependent READY.",
-    "accepted_exact_cut": {
-      "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
-      "verdict": "ACCEPT_SCOPED_TEST_ONLY",
-      "review": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
-      "tests": "7PASS103.31s + independentcold/trustboundaryprobes"
-    },
-    "repaired_interval_import": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
-    "repaired_later_import": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
-    "final_import_evidence": "d450 interval30/30exact;4b2 later48/48exact; primitives/callsite unchanged; publicprivacyoracle0hits; prior tests reused",
-    "next_action": "Receive focused repairedsurface review and final4b2 receivingdelta; consolidate qualified product receiving without broad repeat estate or native/human/protectedpromotion",
-    "final_receiving_job": "RUNNING sorok-p2-final-receiving-delta-20261105-r1",
-    "component_closure_job": "RUNNING sorok-p2-public-repairs-focused-closure-20261105-r1"
+    "record_effect": "4b2 imports both repaired sources exactly, but final cut closure and final receiving delta are RUNNING; do not promote 4b2. Integrated 25d accept332e preserved."
   }
 }
