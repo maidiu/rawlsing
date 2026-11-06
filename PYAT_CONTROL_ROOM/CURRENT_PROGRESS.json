@@ -338,17 +338,6 @@
     "concurrency_limit_reason": "Three useful lanes: A source mapping repair, G selected-reader review, F D identity/finite-frontier review; resource-constrained host limit retained.",
     "active_workers": [
       {
-        "job_id": "pyat-universal35-remaining-source-mapping-20261106-r1",
-        "child_pid": 38944,
-        "supervisor_pid": 38943,
-        "observer_pid": 38945,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-remaining-source-mapping-20261106-r1",
-        "launch_is_not_completion": true,
-        "role": "A",
-        "session": "ses_e65307bd2ffe2eFVrpUzrvgjUd",
-        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/programma-p0p1-repair1-20261102"
-      },
-      {
         "job_id": "pyat-universal35-existing-original-read-input-20261106-r1",
         "child_pid": 47226,
         "supervisor_pid": 47225,
@@ -369,10 +358,21 @@
         "role": "G",
         "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
         "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1"
+      },
+      {
+        "job_id": "pyat-universal35-mapping-r2-independent-review-20261106-r1",
+        "child_pid": 51186,
+        "supervisor_pid": 51184,
+        "observer_pid": 51187,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-mapping-r2-independent-review-20261106-r1",
+        "launch_is_not_completion": true,
+        "role": "C",
+        "session": "ses_e50ee2de8ffeVZ5fDDwTyiegq1",
+        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1"
       }
     ],
     "integration_start": "d129eebdb0472b0c3625efa281826a858bd0a384",
-    "current_next_action": "G exact D r5 closure, F existing original-read input resolution, A sourcebindings/mappings. Actualoriginalfacts and protectedadoption remainunproved.",
+    "current_next_action": "C independent7-source/state/basebinding review, G exact D r5 closure, F existingoriginalreadinput. No unreviewedmapping promotion; genuine empiricalhandoff still pending.",
     "E_return": {
       "branch": "codex/pyat-universal35-e-20261106-r1",
       "head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
@@ -714,6 +714,16 @@
       "limits": "Nooriginalfacts/currentoriginaldecision/Eauthentichandoff;priorFf2d2negative preserved",
       "review_job": "pyat-universal35-d-r5-focused-independent-closure-20261106-r1",
       "pid": 50200
+    },
+    "A_mapping_r2_candidate": {
+      "head": "7f3931607d1309e84ad068c353946831248184b3",
+      "grade": "AUTHOR_TESTED_REMAINING_SEVEN_AND_BASE_PROVENANCE_REPAIR_INDEPENDENT_PENDING",
+      "evidence": "WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-SOURCE-MAPPING-20261106-R1/01_RETURN_R2.md",
+      "corrections": "SRC32:86,SRC04:733,SRC16:2538,SRC24:999,SRC25:1086,SRC33:274,SRC26:378;SRC31entryunchanged",
+      "tests": "46authorPASS;all7oldunboundpositive->corrected0;trustedprovidercommit/path mismatch refuses/exactrestore",
+      "limits": "Mappingkeycoverage not fullC11/nativefacts;declaredlabel->substantive codetoken authority independentlymustqualify;fullpositiveauthorityDEFER",
+      "review_job": "pyat-universal35-mapping-r2-independent-review-20261106-r1",
+      "pid": 51186
     }
   }
 }
