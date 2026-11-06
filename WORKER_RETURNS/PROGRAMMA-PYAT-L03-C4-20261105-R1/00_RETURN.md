@@ -1,6 +1,7 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
-**Status:** PHASE-2 COMPLETE / P2 IMPLEMENTED AND FROZEN / PRODUCTION DIFF BOUNDED.
+**Status:** PHASE-2 COMPLETE / P2 IMPLEMENTED AND FROZEN / PHASE-3 COMPARISON DRIVER PREPARED, NOT RUN.
+**Preparation commit:** `__PREP_SHA__` (artifact-only; frozen implementation remains `409be32f7e4b4b961a360be1c8f44a17b5c62173`).
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
@@ -174,11 +175,45 @@ per operation.
 No scientific contract change is proposed. Qualified guide write-through remains
 HQ's duty; this is not a second guide.
 
+## Phase-3 preparation: compact physical comparison driver (NOT RUN)
+
+`tools/bench_compact_current.py` is prepared and tiny-smoke checked. It performs a
+same-sealed-source/release/projection comparison, not an architecture bakeoff:
+
+- **V0:** full validated native `C11LogicalRelease` + `C11Repository` + actual
+  `CarrierNeutralResearchExecutor.execute_i03`.
+- **V1:** existing default compact Arrow facade (`build_source_backed_c11_repository`).
+- **V2-cold / V2-warm:** same compact facade with an explicit workload-owned private
+  existing Parquet/Zstd cache root. V2 uses an `ExactPhysicalCellStream` with a
+  non-empty `decoder_metadata_digest`; the coordinator verifies cold miss/write and
+  warm HIT. A legacy in-memory `PhysicalSourceIncidence` with
+  `physical_binding=None` is explicitly not used as a cache HIT.
+
+Each variant runs in a **fresh process**; the coordinator runs variants sequentially
+and compares **full `EmpiricalFact.as_dict()`** (cells, refs, provenance, replay) per
+operation against V0. N=200 and N=1,000 are separately invocable. Tiny N=3 smoke
+passed with exact facts, equal release/source identity, and V2 cold miss/write plus
+warm HIT.
+
+**Timings are NOT_RUN here.** The R03 reviewer owns the timed runner. HQ may run the
+following after R03 releases it:
+
+```sh
+RUNNER=/tmp/rawlsing-oct28-p1r1/venv/bin/python
+TMPDIR="$PWD/.local-logs/pyat-l03-c4/tmp" PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 "$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py   --mode compare --n 200 --outdir .local-logs/pyat-l03-c4/compact_compare/n200
+# then n=1000 with a distinct outdir
+```
+
+Cold/warm are included. Delete/corrupt/stale/revoke remain covered by existing
+functional cache tests, referenced in `04_REPLAY_AND_AUTHORITY_INVALIDATION.md`;
+they are **NOT_RUN** in this preparation. No extra bitmap/index, new carrier,
+persistent truth, blanket cache default, or owner acceptance is introduced.
+
 ## Read next
 
-1. `01_BASELINE_CURRENT_CODE_ABI.md` — Phase-1 ABI plus Phase-2 grouped ABI.
-2. `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl` — Phase-1 and Phase-2 costs.
-3. `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl` — exact parity and counters.
+1. `01_BASELINE_CURRENT_CODE_ABI.md` — Phase-1 ABI, Phase-2 grouped ABI, W03/W04 chain.
+2. `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl` — Phase-1/2 costs; Phase-3 driver NOT_RUN.
+3. `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl` — exact parity and Phase-3 NOT_RUN status.
 4. `04_REPLAY_AND_AUTHORITY_INVALIDATION.md` — replay/authority/cache/grouped negatives.
-5. `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md` — implemented delta and W03/W04 matrix.
+5. `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md` — implemented delta, W03/W04 matrix, driver plan.
 6. `06_INDEPENDENT_REVIEW_REQUEST.md` — R03 request against the frozen implementation.

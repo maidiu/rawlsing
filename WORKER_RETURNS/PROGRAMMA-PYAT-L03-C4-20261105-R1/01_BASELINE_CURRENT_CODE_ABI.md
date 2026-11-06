@@ -473,3 +473,26 @@ storage/invalidation; `11_DECISION_AND_OBLIGATION_LEDGER.json` W03/W04/P01/P02.
   bounded adapter from R4/R5 into the compact view is possible only if a controlled
   measurement proves the existing event-body lane is deficient; no such deficit is
   shown here.
+
+### Phase-3 prepared comparison driver
+
+`tools/bench_compact_current.py` is the prepared, directly executable driver for
+the unresolved W03/W04 economy question. It reuses the current physical chain and
+first consumer, not a new framework:
+
+- V0 = `build_validated_source_backed_c11_release_from_stream` (full native sealed
+  release) + `C11Repository` + `CarrierNeutralResearchExecutor.execute_i03`.
+- V1 = `build_source_backed_c11_repository` with the existing default compact Arrow
+  `_CompactPublicObjects`.
+- V2-cold / V2-warm = the same V1 facade with an explicit workload-owned private
+  Parquet/Zstd cache root. The source is an `ExactPhysicalCellStream` with non-empty
+  `decoder_metadata_digest`; the coordinator asserts cold miss/write and warm HIT.
+  Legacy in-memory `PhysicalSourceIncidence` (`physical_binding=None`) is not used
+  as a cache HIT.
+
+The driver runs each variant in a fresh subprocess, reuses one fixture builder and
+the same sealed source/projection/release, records phase wall/CPU and whole-process
+Darwin `ru_maxrss` bytes, and compares **full fact material** (`fact.as_dict()`)
+including cells, refs, provenance, and replay against V0. N=200 and N=1,000 are
+separate commands. Tiny N=3 smoke is `SMOKE_ONLY_NOT_BENCHMARK`; no timing conclusion
+is drawn.

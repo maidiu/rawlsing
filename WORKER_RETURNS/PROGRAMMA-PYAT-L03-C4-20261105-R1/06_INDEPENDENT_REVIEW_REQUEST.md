@@ -135,3 +135,12 @@ PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
 - `W03_W04_CLAIM_SAFETY`: PASS / REVISE / UNKNOWN
 - `R03_DISPOSITION`: ACCEPT_FOR_HQ_RECEIVING / REVISE_MATERIAL / MORE_EVIDENCE
 - `NEXT_WORK`: `HQ_RECEIVING` / `BOUNDED_REPAIR` / `NO_ACTION`
+
+## Phase-3 preparation note
+
+This preparation adds only `tools/bench_compact_current.py` and documentary
+comparison/plan sections in `01`/`05` (plus ordinary status entries in `00`/`02`/
+`03`/`04`). It does not alter the frozen implementation
+`409be32f7e4b4b961a360be1c8f44a17b5c62173`, production source, numerical tests,
+authority, source, guide, or the independent R03 scope. Timed comparison runs are
+**NOT_RUN** here; HQ schedules the driver after R03 releases the timed runner.

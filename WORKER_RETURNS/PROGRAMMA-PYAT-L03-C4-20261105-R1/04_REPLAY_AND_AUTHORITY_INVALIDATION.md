@@ -194,3 +194,24 @@ and passed at the candidate.
 
 No blanket cache default/change was made. The existing accelerator HIT/DELETE/
 CORRUPT/STALE/REVOKED evidence above remains the current physical-cache evidence.
+
+## Phase-3 preparation: compact comparison cache status
+
+`tools/bench_compact_current.py` is prepared but **not run for timings** here.
+Its V2 variant uses an `ExactPhysicalCellStream` with a non-empty
+`decoder_metadata_digest`; the coordinator requires a cold cache miss/write and a
+warm cache HIT. A legacy in-memory `PhysicalSourceIncidence` whose
+`physical_binding()` is `None` is explicitly not counted as a cache HIT.
+
+The driver's cold/warm commands are in `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md`.
+Delete, corrupt, stale, and revoked cache behavior remain covered by existing
+functional tests and are **NOT_RUN** in this preparation:
+
+- `rawlsing_next/tests/test_pre553_c11_execution_view.py::test_cache_hit_delete_and_rehashed_same_key_poison_rebuild`
+- `...::test_stale_cache_and_torn_publication_keep_previous_complete_slot`
+- `...::test_revoked_workload_never_opens_warmed_accelerator`
+- `rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py` carrier persist/reopen corruption and stale-root tests
+
+No blanket cache default, retention policy, extra bitmap/index, new carrier, or
+persistent truth is introduced by the driver. Cache presence still does not grant
+authority; source/permission/revocation checks remain outside it.

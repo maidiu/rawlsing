@@ -292,3 +292,48 @@ equivalence where affected.
   fact/replay cuts retained unchanged.**
 - No guide write-through, protected merge, native/original35/science/Sorok claim, or
   production change is made by this preparation.
+
+## Prepared driver and directly executable commands
+
+The prepared driver is `tools/bench_compact_current.py`. It is a same-source
+current physical-function comparison, not a new architecture bakeoff:
+
+- V0 full validated native release/repository/actual I03.
+- V1 existing default compact Arrow facade.
+- V2-cold/V2-warm same compact facade with an explicitly workload-owned private
+  existing Parquet/Zstd cache under the requested output directory.
+
+Each variant is a separate fresh subprocess. The coordinator compares full native
+`fact.as_dict()` material per operation against V0, requires equal source/projection/
+release identity, and requires V2 cold miss/write + warm HIT. N=200 and N=1,000 are
+separately invocable. Timings are **NOT_RUN** in this preparation.
+
+Commands for HQ after the R03 timed-runner release:
+
+```sh
+RUNNER=/tmp/rawlsing-oct28-p1r1/venv/bin/python
+TMPDIR="$PWD/.local-logs/pyat-l03-c4/tmp" \
+PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
+"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py \
+  --mode compare --n 200 --outdir .local-logs/pyat-l03-c4/compact_compare/n200
+
+TMPDIR="$PWD/.local-logs/pyat-l03-c4/tmp" \
+PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
+"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py \
+  --mode compare --n 1000 --outdir .local-logs/pyat-l03-c4/compact_compare/n1000
+```
+
+The driver reports phase wall/CPU, whole-process Darwin `ru_maxrss` bytes with an
+explicit non-attribution note, source/cache bytes, selector/index/fact/replay build
+counts, and per-operation exact facts. Delete/corrupt/stale/revoke are existing-test
+coverage and remain NOT_RUN here.
+
+### Driver evidence status
+
+- Syntax: `python -m py_compile` **PASS**.
+- Tiny functional smoke: N=3 `--smoke` **PASS** with full fact equality for V1,
+  V2-cold, V2-warm against V0, equal source/projection/release identity, V2 cold
+  miss/write, and V2 warm HIT. Smoke is explicitly not a benchmark.
+- N=200/N=1,000 timings: **NOT_RUN**.
+- W03/W04 economic conclusion: **NOT_RUN**; no favorable toy result is claimed.
+- W04 default policy: **OWNER_DECIDE**, alternatives in the Phase-3 section above.
