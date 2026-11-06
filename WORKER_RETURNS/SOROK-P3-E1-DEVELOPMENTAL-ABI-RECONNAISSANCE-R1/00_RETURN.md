@@ -176,7 +176,7 @@ B1 3-event positive: owner DB 94,208 bytes; journal 98,304; state JSON 15,220; r
 
 **Worker branch:** `research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1`.
 **Base:** `c852d7516e23fcb6cf2215e9be7c5fa268503516`.
-**Worker commit:** the final immutable commit SHA is reported in the worker's final message. A tracked file cannot contain its own containing commit SHA without a circular preimage; this file is committed in that same final commit.
+**Evidence commit:** `a2c3c36ef7c29432df92806271b31a64f344cd78` (16 files, pushed and verified). This public note is a subsequent metadata commit; the branch HEAD is reported in the worker's final message. A tracked file cannot contain its own containing commit SHA without a circular preimage.
 **PR:** not opened by this worker; `gh` is unavailable on the host and the task leaves PR creation to repository permissions. The branch is ready to push.
 
 I did not review my own work. Independent review, scientific issuance and protected receiving remain with their competent owners.
