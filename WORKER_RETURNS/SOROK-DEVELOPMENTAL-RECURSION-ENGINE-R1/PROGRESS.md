@@ -1,4 +1,6 @@
-# Developmental recursion integration — implementation flight
+# Developmental recursion integration — completed engineering handoff
+
+Current disposition: HQ_ACCEPT_SCOPED_SOURCEFREE_DEVELOPMENTAL_RECURSION_ENGINE_R1 on implementation81b01f654. Both independent rechecks returned scoped ACCEPT; original418 REVISE remains historical. FINAL_DISPOSITION.json and00_RETURN.md are the current final status. Protected receiving/native science remain held. Earlier entries below are chronological evidence, not current pending work.
 
 Lead branch starts at protected 33c40a315d3c231cb2021bd8e60f3261547efa62. October 26 recursion source is pinned separately at fbfc529230d8b3c13f824cfac31741a5dfaa57e5. The ABI is frozen at 0d4edae634b3ef19643a7d0eb7752081013e5d83.
 
@@ -43,3 +45,5 @@ Received full distinct review ec8724b6 on exact418: REVISE R1 actor access, R2 n
 Final native-context repair regression:71 passed in279.35s plus cold CLI3+3/two retrospectives/same root PASS. Actual source-backed S43 context executes; malformed/unknown context rejects before interval/operations; native null/default preserved. Original full-reviewec8724b6 retained unchanged and formally received REVISE at418, with positive facts scoped. Existing7c repair review remains live; original reviewer will recheck only this new R2 context delta at the exact banked code.
 
 Original distinct reviewer resumed for only R2 context preflight at exact81b01f654: job sorok-recursion-context-preflight-recheck-r1, PID69803, independent new review branch. Actual assistant msg_1b05569a2001yvA5d2tdz3ch10 confirms opencode-go/deepseek-v4.1-flash/max. Separate7c repair review stays live; neither launch is acceptance. Combined disposition follows both scoped returns, without repeating the original broad court.
+
+Received repair review13f01945 and context recheckb4cbf213; verified11+22 manifest files, exact source hashes, exclusive scopes and remote heads. Their scoped accepts close the original R1/R2/R3 engineering failures on current implementation81b; original full-reviewec8724b6 REVISE is preserved. Combined HQ sourcefree engineering acceptance is recorded in FINAL_DISPOSITION.json with phaseA–G and twelve deliverable mappings. Author71, independent70 plus owner5/actual context/cold/sensitivity evidence retained. No further authorized engineering required by this commission; PR704 protected receiving and original scientific/source/B/human limits remain explicit.
