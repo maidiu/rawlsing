@@ -1,0 +1,80 @@
+{
+  "activation": {
+    "contradiction_status": "CONTRADICTION",
+    "lifecycle_flags": false,
+    "material_independent": true,
+    "scalar_winner": false,
+    "statuses": [
+      "ELIGIBLE",
+      "INHIBITED",
+      "UNKNOWN"
+    ],
+    "writes": false
+  },
+  "api": {
+    "activate": "activate(records, *, identity, context, registry) -> dict",
+    "project_views": "project_views(*, identity, actor_experience, experience_binding, public_view, public_binding, standpoint) -> dict"
+  },
+  "branch": "agent/sorok-p3-activation-opacity-20261106-r1",
+  "files": {
+    "evidence/projections/00_RETURN.md": {
+      "bytes": 4412,
+      "sha256": "1967cb4094b064382e52332c9a076d70dd4c054e4267a8d1609e361492cc811e"
+    },
+    "evidence/projections/COMMANDS.md": {
+      "bytes": 659,
+      "sha256": "88659f5fc4bdcbde6d0f2771bc347eee4b133a22af1067734a742c72efc284b3"
+    },
+    "evidence/projections/PASSPORT.json": {
+      "bytes": 493,
+      "sha256": "f3476817f7aa0fc0f5a1fbd9d8a5279968678b15c01e48c75dd1885d2f067c65"
+    },
+    "evidence/projections/test.log": {
+      "bytes": 98,
+      "sha256": "1aa0e443d6a2862389f7bee3ed0eda88e529d0c587a357ebc29f39d56207d12e"
+    },
+    "evidence/projections/test_junit.xml": {
+      "bytes": 1717,
+      "sha256": "924f3a4b2cef944c191cfeaa30037a44085a6327815acb4fbcbf6e3a4f492a10"
+    },
+    "p3/projections.py": {
+      "bytes": 22899,
+      "sha256": "ca405dda778191537ce38b0b63ff6b6ba8104dcd1ea676d6b458d454b362005b"
+    },
+    "tests/test_projections.py": {
+      "bytes": 15713,
+      "sha256": "e31c0ef8fdcbbc9bf4b23a4431eb8aac266022fbc53f74994a3d14fcf65b5829"
+    }
+  },
+  "limitations": [
+    "No P2-root integrated proof, two-batch #704 replay, storage, compression, P3Owner, test_rules or rendering engine in this unit.",
+    "No native CAN/ADP psychology, memory, claim, actor or human evidence.",
+    "No ActorAccessibleRenderEnvelope, formed memory or positive first-person claim entries.",
+    "S45 projector preferred when importable; exact public allowlist fallback for isolated P3 import.",
+    "HQ/nonauthor final integrated runtime review remains mandatory."
+  ],
+  "limits": {
+    "human_validation": false,
+    "merge": false,
+    "native_issuance": false,
+    "self_acceptance": false,
+    "sourcepack_runtime_programma_changes": false
+  },
+  "opacity": {
+    "actor_source": "actual actor_experience only",
+    "claims_status": "DEFER_MISSING_AUTHORITY",
+    "memory_formation": "MISSING_RULE",
+    "permissions_only_narrow": true,
+    "private_fields_recursive": true,
+    "render_envelope_constructed": false,
+    "user_source": "strict subset of public_view"
+  },
+  "schema": "SOROK_P3_ACTIVATION_OPACITY_IMPLEMENTATION_RECEIPT@1",
+  "startup": "34f4313859a9c9ef7262991dbcf805ce32ea5f96",
+  "status": "AUTHOR_QUALIFIED_TEST_ONLY",
+  "tests": {
+    "command": "python3 -B -m pytest -q -p no:cacheprovider tests/test_projections.py",
+    "junit": "evidence/projections/test_junit.xml",
+    "result": "8 passed in 0.09s"
+  }
+}

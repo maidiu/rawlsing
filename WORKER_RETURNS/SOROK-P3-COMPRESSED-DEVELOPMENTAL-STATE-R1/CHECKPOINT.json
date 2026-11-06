@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "COMPRESSION_NATIVE_BINDING_REPAIR_LAUNCHED__STORE_PROJECTION_UNAFFECTED",
+  "state": "PROJECTION_ACTUAL_COMPATIBILITY_PASS__OWNER_GLUE_READY_AGAINST_FROZEN_API",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -135,7 +135,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-activation-opacity-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_CANDIDATE_COMPATIBILITY_PASS",
       "model_evidence": {
         "message": "msg_1b2d009b10014BViZiwt4prMvX",
         "model": {
@@ -146,7 +146,8 @@
       },
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-activation-opacity-r1/completion.json",
       "notification": "existing finite terminal observer",
-      "scope": "pure activation/actor-user opacity only; final reviewer must be nonauthor"
+      "scope": "pure activation/actor-user opacity only; final reviewer must be nonauthor",
+      "return": "104a013d02c9b908d3223a0b344f993e33eb04fd"
     },
     {
       "task": "sorok-p3-compression-native-binding-repair-r1",
@@ -180,7 +181,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Intake existing store/projection/repair terminals; consume exact returned APIs in P3Owner recoverable protocol and full actual P2-root A-H tests. Current compression is REVISE, not accepted; no duplicate input review.",
+  "next": "Launch bounded P3Owner/glue implementation against frozen store API, without inventing or copying unreturned storage; storage return gates actual durable execution, not independent implementation. Keep final reviewer nonauthor.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -200,5 +201,6 @@
     "receipt": "evidence/rules/AUTHOR_RECEIPT.json",
     "grade": "AUTHOR_MECHANICAL_TEST_ONLY_NOT_P2_INTEGRATION"
   },
-  "compression_intake": "COMPRESSION_INPUT_DISPOSITION.json"
+  "compression_intake": "COMPRESSION_INPUT_DISPOSITION.json",
+  "projection_intake": "PROJECTION_INPUT_DISPOSITION.json"
 }

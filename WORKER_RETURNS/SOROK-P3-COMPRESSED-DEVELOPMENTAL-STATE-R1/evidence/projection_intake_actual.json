@@ -1,0 +1,132 @@
+{
+  "grade": "HQ_ACTUAL_P2_OUTPUT_COMPATIBILITY_NOT_DURABLE_P3",
+  "native_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+  "actual_actor_perceived_action_ref": "TEST_ONLY_BP4_WORLD_EVT_659c957668922a962c947a3da73cbc7bedea5c94b1af5a618fd8879d23550109",
+  "identity": {
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "branch": "first_session",
+    "clock": 228,
+    "state_hash": "0ce00375b6d31eac9bdb621f3bae048798486346db05b314ce86ff89997eea5e"
+  },
+  "activation": {
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "identity": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 228,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "0ce00375b6d31eac9bdb621f3bae048798486346db05b314ce86ff89997eea5e"
+    },
+    "context_hash": "da6e3bae239097de9d0785814b4295323da1e97444a4afd89810b1e61cff9026",
+    "registry_hash": "50378230d7346fcfb3418d8c98ca8b7677129cda8b1df5508ffb9849f5f80cdc",
+    "status": "CONTRADICTION",
+    "entries": [
+      {
+        "record_id": "ec4c4c0dab93bd6f5e2192d846a7b5dee8a4ff024d460b4942eef093ebb94f57",
+        "record_hash": "c8829e60204335ad538d343f1bdb5102adfd2d4ab5c8a1e41a34a2991c60be4f",
+        "kind": "V3MS_MEDIATOR",
+        "mode": "joint_check",
+        "activation": "ELIGIBLE",
+        "material_eligible": true,
+        "readset": [
+          "record:c8829e60204335ad538d343f1bdb5102adfd2d4ab5c8a1e41a34a2991c60be4f",
+          "registry:50378230d7346fcfb3418d8c98ca8b7677129cda8b1df5508ffb9849f5f80cdc",
+          "context:da6e3bae239097de9d0785814b4295323da1e97444a4afd89810b1e61cff9026",
+          "rule:90be21badcf8c184b2a79071fd0e97a05984df5a36ee0131a2a4ce69e7df41f3",
+          "source:9d715201bd3d3db5db5a7dab57bba340603d43e751670cd887646cf55baa3fa0"
+        ]
+      },
+      {
+        "record_id": "fa5d050bea2b953c930be603d9045dac3a4a4f0e073e0ebab42863fec6774081",
+        "record_hash": "7894bf1b5661f3edd73334890e95d5e84abe7523610fd9168666944a6c8d90d2",
+        "kind": "V3MS_MEDIATOR",
+        "mode": "private_check",
+        "activation": "ELIGIBLE",
+        "material_eligible": true,
+        "readset": [
+          "record:7894bf1b5661f3edd73334890e95d5e84abe7523610fd9168666944a6c8d90d2",
+          "registry:50378230d7346fcfb3418d8c98ca8b7677129cda8b1df5508ffb9849f5f80cdc",
+          "context:da6e3bae239097de9d0785814b4295323da1e97444a4afd89810b1e61cff9026",
+          "rule:90be21badcf8c184b2a79071fd0e97a05984df5a36ee0131a2a4ce69e7df41f3",
+          "source:9d715201bd3d3db5db5a7dab57bba340603d43e751670cd887646cf55baa3fa0"
+        ]
+      }
+    ],
+    "contradictions": [
+      [
+        "ec4c4c0dab93bd6f5e2192d846a7b5dee8a4ff024d460b4942eef093ebb94f57",
+        "fa5d050bea2b953c930be603d9045dac3a4a4f0e073e0ebab42863fec6774081"
+      ]
+    ]
+  },
+  "inhibited": {
+    "grade": "SOURCEFREE_TEST_ONLY",
+    "identity": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 228,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "0ce00375b6d31eac9bdb621f3bae048798486346db05b314ce86ff89997eea5e"
+    },
+    "context_hash": "b197d2967350f915458a50ccbbe6e1097a28fe5abcd37d5c91f894009c6455d2",
+    "registry_hash": "50378230d7346fcfb3418d8c98ca8b7677129cda8b1df5508ffb9849f5f80cdc",
+    "status": "CONTRADICTION",
+    "entries": [
+      {
+        "record_id": "ec4c4c0dab93bd6f5e2192d846a7b5dee8a4ff024d460b4942eef093ebb94f57",
+        "record_hash": "c8829e60204335ad538d343f1bdb5102adfd2d4ab5c8a1e41a34a2991c60be4f",
+        "kind": "V3MS_MEDIATOR",
+        "mode": "joint_check",
+        "activation": "INHIBITED",
+        "material_eligible": true,
+        "readset": [
+          "record:c8829e60204335ad538d343f1bdb5102adfd2d4ab5c8a1e41a34a2991c60be4f",
+          "registry:50378230d7346fcfb3418d8c98ca8b7677129cda8b1df5508ffb9849f5f80cdc",
+          "context:b197d2967350f915458a50ccbbe6e1097a28fe5abcd37d5c91f894009c6455d2",
+          "rule:90be21badcf8c184b2a79071fd0e97a05984df5a36ee0131a2a4ce69e7df41f3",
+          "source:9d715201bd3d3db5db5a7dab57bba340603d43e751670cd887646cf55baa3fa0"
+        ]
+      },
+      {
+        "record_id": "fa5d050bea2b953c930be603d9045dac3a4a4f0e073e0ebab42863fec6774081",
+        "record_hash": "7894bf1b5661f3edd73334890e95d5e84abe7523610fd9168666944a6c8d90d2",
+        "kind": "V3MS_MEDIATOR",
+        "mode": "private_check",
+        "activation": "INHIBITED",
+        "material_eligible": true,
+        "readset": [
+          "record:7894bf1b5661f3edd73334890e95d5e84abe7523610fd9168666944a6c8d90d2",
+          "registry:50378230d7346fcfb3418d8c98ca8b7677129cda8b1df5508ffb9849f5f80cdc",
+          "context:b197d2967350f915458a50ccbbe6e1097a28fe5abcd37d5c91f894009c6455d2",
+          "rule:90be21badcf8c184b2a79071fd0e97a05984df5a36ee0131a2a4ce69e7df41f3",
+          "source:9d715201bd3d3db5db5a7dab57bba340603d43e751670cd887646cf55baa3fa0"
+        ]
+      }
+    ],
+    "contradictions": [
+      [
+        "ec4c4c0dab93bd6f5e2192d846a7b5dee8a4ff024d460b4942eef093ebb94f57",
+        "fa5d050bea2b953c930be603d9045dac3a4a4f0e073e0ebab42863fec6774081"
+      ]
+    ]
+  },
+  "view_permissions_change_surface_only": true,
+  "owner_snapshot_unchanged_by_readers": true,
+  "actor_observed": "OBSERVED",
+  "public_dialogue_count": 13,
+  "user_dialogue_counts": {
+    "silent_observer": 0,
+    "dialogue_partner": 13
+  },
+  "no_causal_ledger_exposure": true,
+  "native_claims": "DEFER_MISSING_AUTHORITY",
+  "not_proved": [
+    "durable psychological store",
+    "P3Owner",
+    "later-state first consumer",
+    "two P3 batches",
+    "independent runtime acceptance",
+    "native science"
+  ]
+}
