@@ -37,7 +37,7 @@ Changed existing records: `07/08/09` `hq_p2_interval_later_20261105` and `hq_p2_
 
 ## 3. Conflict disposition
 
-- No conflict: protected base is the exact source merge-base; the 7-file delta applies cleanly and all 9 selective guide files byte-match source `d2f27a47a`.
+- No conflict: protected base is the exact source merge-base; the 7-file delta applies cleanly and all 9 selective guide files byte-match source `94388bf8b`.
 - Prior selective-base proof `8ffec40a` is preserved; prior source cuts `4aaefdd7b`, `f5d0af85d`, `b8c764f` and `35ae6f9a` remain historical references.
 - No unrelated protected row/field, product, vendor, projection, harness or protected-branch file changed.
 - Source return directories were not copied into the protected-base candidate; they remain cited by commit/path.
