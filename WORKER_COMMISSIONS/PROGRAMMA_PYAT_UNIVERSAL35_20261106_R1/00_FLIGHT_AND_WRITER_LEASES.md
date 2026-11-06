@@ -43,3 +43,8 @@ PROGRAMMA_DELTA (ordinary HQ receiving record): exact returned identities/first 
 ### E empirical ingress return — isolated candidate, 2026-11-06
 
 E remoteverified15da2b8bf71d1ee61d6b3040996436f8be537e06 (implementation08138f52da1c32b62d28532b87b0cdce340c2bae) supplies thin exact EmpiricalFact/query -> current FieldForge support/bridge adapter with11author-focused+25regressionPASS. Two-target RAW GT2 compatibility is the existing owner limit; unsupported1/3+/weighted/role/domain inputs retaintypedrefusal and structuralgrantfalse. This does not complete broadF4/N10E, all35native, original-source authority or structural meaning. D has the exact inputcontract; authenticbind remainsNOT_RUN. G distinct nonauthor frozen review launched job pyat-universal35-e-ingress-independent-review-20261106-r1 PID93520. Active construction D, F ABC review, G E review. Existing S06.1/S-F5 candidate overlays updated without altering frozenstatus/authority.
+
+
+### E independent negative and narrow repair — 2026-11-06
+
+G e714a5dd3628f3b60ab5b6bdcfeef036ecdabc8f returnsREVISE_MATERIAL_NARROW onE15da2b8bf71d1ee61d6b3040996436f8be537e06. Independent11+25tests/ownerdelegation/structuralwithheld positives preserved, but five self-consistent semanticmismatch variants(condition/measure/response-state/scope/kind) acquire support. This invalidates ingress readiness while preserving earlierpositive evidence. E author exactrepair commissioned82b96d5a3, actualPID95437, samebranch/session/tests/returnonly. D contraryevidence delivered withoutrestart and originalnumericalwork remainsindependent. S06.1/S-F5 changedcandidategrade only; native/structural/protectedacceptance unchanged. Independent repairreview after frozenhead, actualDbind stillNOT_RUN.
