@@ -1,0 +1,24 @@
+# C8 exact repair requests — PR #696 at 130ec2e00e112c9d897e1f976ad5e52b9430be5f
+
+**Owner:** B00/current PR #696 documentary author, not C8 reviewer. **Status:** REVISE, not a request to rebuild sourcefree machinery or issue scientific/actor authorization. Preserve original 62/82/49 and 51/82 counts and original 49 GAP text. Independent later reviewer and protected CAS remain separate.
+
+## R-C8-01 — refresh post-freeze Sorok and protected receiving facts (blocking)
+
+- **Failing source:** PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/REMAINING_REAL_PYAT_WORK.md, opening B06 R-09 table, A14 post-B06 note, A16 protected-base/source/currentness statements; matching PR #696 body/README if they describe PR #697 as presently open/unmerged.
+- **Observed frozen wording:** “Sorok #697 is open/unmerged at 4b2fed81…”; initial protected comparison 8ffec40a….
+- **Independent later truth:** PR #697 4b2fed81c3f513eb4262ad5de277ce519c74c614 CLOSED/MERGED 2026-11-06T04:20:25Z, merge SHA 913fc49013daefcce1c59235143ddd27f65a74a9. PR #699 CLOSED/MERGED 04:20:56Z, resulting protected HEAD 33c40a315d3c231cb2021bd8e60f3261547efa62. B00 commit preceded these merges; keep dated source assertions as historical, label currentness supersession.
+- **Minimal remedy:** Add one post-freeze dated currentness overlay near agenda top and correct operative A14/A16 state: Sorok sourcefree S45–S47 product and documentary receiving are now protected at TEST_ONLY/scoped grade; no selected Pyat N11/N12→E001/E002 native/actor proof, partner/cultural selection, N12 wake, original data or science granted. Distinguish 913fc product and 33c documentary receipt from PR #696 (still unmerged). Recheck protected head and merge status when editing.
+- **Acceptance falsifier:** A cold reader following A14 must not be sent to an open/unmerged #697 claim, nor believe #697 merge closes native actor/Sorok parent gate. New head must retain original comparison 8ff and refreshed protected as separate fields.
+
+## R-C8-02 — preserve IF scope in *child* inverse dependencies (blocking)
+
+- **Failing source:** PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/TERMINAL_F2F4_GF1_DEPENDENCY_AND_INVERSE_REACHABILITY_20261105_R1.jsonl, child ROADMAP:S09.1 and ROADMAP:S11.3, and reverse/transitive dependents at S06.4; any agenda/README text that treats those unconditional child arcs as required.
+- **Observed exact records:** S09.1 prerequisite_existing_ids includes S06.4; S11.3 prerequisite_existing_ids includes S06.4; both conditional_by_consumer_scope=false. Inverse S06.4 immediate reverse includes S09.1 and S11.3, and closure propagates accordingly. This file has 51 child rows, 82 seam rows and 101 child prerequisite/reverse arcs; all 82 seam original predicates already match canonical.
+- **Controlling original predicates:** ASTRA:IF:N6:N9:2 = “Its product family is required by this declared served-world scope”; ASTRA:IF:N6:N11:2 = “Evidence required to discharge the corresponding declared F gate or scope.” A08/A09/A11/A13 explicitly allow other qualified product families and do not make GF1/N6 a universal F2/F4 or N11 prerequisite. Required AND edges ASTRA:REQ:N9:N10W and ASTRA:REQ:N10E:N10W remain MUST and untouched.
+- **Minimal remedy:** Represent S06.4→S09.1 and S06.4→S11.3 as **IF selected** (or exclude them from unconditional prerequisites until selected) with exact source predicate, condition-aware inverse unlock, and no unconditional transitive blocker. Check the remaining 99 child arcs with the same method, especially family-conditional F5/N5, F6/N7, F7/N8 and learned N9 alternatives. Keep 51 child IDs, 82 canonical seam IDs, their kinds/predicates/frozen statuses and no invented 83rd ASTRA seam. A predicate-aware notation may be an additive candidate-only field if existing structure cannot express mixed AND/IF; do not silently rewrite canonical schema.
+- **Acceptance falsifier:** A reader choosing an N9 served-world scope that does **not** need N6 must not have S06.4 in the mandatory blocker set or its unconditional reverse path to N11; a world that actually declares N6 required must retain it as a conditional prerequisite. Recompute reciprocal and transitive reverse closure after any bounded graph edit, preserve node coverage and zero cycles.
+
+## Follow-up verification (not a third change request)
+
+- Recheck B00 R-01…R-09 corrections, 154 source blobs, exact original ledger IDs/grades, FIABC conditional P0, and R53 negative refusal. If no new code source changed on protected, do not demand a duplicate local test.
+- Exact new PR #696 HEAD must be frozen for independent re-review by a nonauthor. Review must return ACCEPT/REVISE/REJECT before protected merger. No own repair, PR #696 comment/commit, S2/S3 or CAS was performed here.
