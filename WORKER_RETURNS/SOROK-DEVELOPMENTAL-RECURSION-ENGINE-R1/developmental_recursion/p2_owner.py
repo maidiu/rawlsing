@@ -108,6 +108,53 @@ class P2Owner:
             fcntl.flock(handle, fcntl.LOCK_EX)
             return self._realize(operation_id, proposal, expected)
 
+    def actor_experience(self, event: Mapping, *, after_clock: int) -> dict:
+        """Compile actual actor perceptions, never the portal user's view.
+
+        The accepted E1 binding identifies the generated actor and its actual
+        BP4 action. That action supplies the store's actor alias; no alias is
+        guessed from an actor name. Perception rows govern event inclusion.
+        This is an experience input, not an issued psychological memory.
+        """
+        result = {"schema": "SOROK_ACTOR_EXPERIENCE@1", "grade": self.grade,
+                  "actor_ref": self.actor, "status": "HELD", "events": [],
+                  "memory_formation": "MISSING_RULE"}
+        s = self.fanin.session
+        if event.get("actor_id") != self.actor:
+            result["reason"] = "P2_EVENT_ACTOR_MISMATCH"
+            return result
+        action = s.event(event.get("action_event_id") or "")
+        if (not action or not event.get("action_event_hash")
+                or action.get("hash") != event["action_event_hash"]):
+            result["reason"] = "P2_ACTOR_ACTION_BINDING_UNAVAILABLE"
+            return result
+        alias = action.get("actor_id")
+        if not alias or alias == s.meta.get("user_actor"):
+            result["reason"] = "P2_DEVELOPING_ACTOR_ALIAS_UNAVAILABLE"
+            return result
+        receipts = s.product.store.perceptions(s.branch_id, actor_id=alias)
+        receipts = [row for row in receipts if row["actor_id"] == alias
+                    and after_clock < row["clock"] <= action["clock"]]
+        if not any(row["event_id"] == action["event_id"] for row in receipts):
+            result["reason"] = "P2_ACTOR_PERCEPTION_UNAVAILABLE"
+            return result
+        # Reuse the accepted observable-content projection, but remove its
+        # user-specific assertion. Access here comes from this actor's receipts.
+        from s45_projection.projection import project_event
+        for receipt in receipts:
+            observed = s.event(receipt["event_id"])
+            if not observed or observed["clock"] > receipt["clock"]:
+                result["reason"] = "P2_ACTOR_PERCEPTION_EVENT_UNAVAILABLE"
+                result["events"] = []
+                return result
+            projected = project_event(observed)
+            projected.pop("perceived_by_user")
+            projected["perception"] = {"clock": receipt["clock"],
+                                       "channel": receipt["channel"]}
+            result["events"].append(projected)
+        result.update(status="OBSERVED", actor_alias=alias)
+        return result
+
     def _realize(self, operation_id: str, proposal: EventProposal,
                  expected: StateIdentity) -> RealizedEvent:
         proposal_hash = digest(proposal.document())
@@ -189,7 +236,7 @@ class P2Owner:
         result = RealizedEvent(
             operation_id, proposal_hash, expected, after, "REALIZED",
             {"event": detached(read), "interval": detached(interval_result)},
-            self.fanin.public_opportunity(observation), consequence,
+            self.actor_experience(read, after_clock=expected.clock), consequence,
             (self.source_ref, read["e1_event_hash"]), "P2_EVENT:" + read["e1_event_hash"],
         )
         self.db.execute("UPDATE operations SET result=? WHERE id=?",

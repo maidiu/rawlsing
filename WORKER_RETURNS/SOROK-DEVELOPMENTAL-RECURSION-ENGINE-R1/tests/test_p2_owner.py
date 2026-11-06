@@ -32,7 +32,24 @@ def test_actual_material_effect_reaches_c9_and_owner_receipt_survives_reopen(tmp
     assert result.consequences["material_state_changed"] is True
     assert result.consequences["immediate_response"]["objective_material_eligible"] is False
     assert result.consequences["durable_psychological_transition"] == "MISSING_RULE"
-    assert result.accessible["user_attempt"] is False
+    assert result.accessible["status"] == "OBSERVED"
+    assert result.accessible["actor_ref"] == owner.actor
+    assert result.accessible["events"]
+    assert all("perceived_by_user" not in row for row in result.accessible["events"])
+    # A user's receipt must not stand in for the developing actor's receipt.
+    from unittest.mock import patch
+    store = owner.fanin.session.product.store
+    original_perceptions = store.perceptions
+    alias = result.accessible["actor_alias"]
+    assert original_perceptions(owner.fanin.session.branch_id,
+                                actor_id=owner.fanin.session.meta["user_actor"])
+    with patch.object(store, "perceptions", side_effect=lambda branch, actor_id=None:
+                      [] if actor_id == alias else original_perceptions(branch, actor_id)):
+        held = owner.actor_experience(result.objective["event"], after_clock=before.clock)
+        assert held["status"] == "HELD"
+        assert held["reason"] == "P2_ACTOR_PERCEPTION_UNAVAILABLE"
+        assert held["events"] == []
+    assert owner.actor_experience(result.objective["event"], after_clock=before.clock) == result.accessible
     assert result.objective["event"]["e1_event_hash"] in result.readset
     case, source, participants = owner.case, owner.source, owner.participants
     owner.close()

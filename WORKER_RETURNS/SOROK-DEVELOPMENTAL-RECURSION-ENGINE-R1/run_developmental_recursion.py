@@ -54,15 +54,16 @@ def main(argv=None):
         if args.engineering:
             output = result
         else:
-            # The actor-facing path forwards only the established accessible
-            # projection. Objective records and state identities stay internal.
+            # The developing actor's private experience belongs to the internal
+            # retrospective request. Default CLI output is an operator summary,
+            # not an authorization to publish that experience to a portal user.
             output = {
                 "grade": owner.grade,
                 "command": args.command,
                 "batch_id": result.get("batch_id"),
                 "history_hash": result.get("history_hash"),
                 "events": [{"event_id": row["event_id"],
-                            "accessible": row["accessible"]}
+                            "experience_status": row["accessible"].get("status")}
                            for row in result.get("records", [])],
             }
         print(json.dumps(output, sort_keys=True, allow_nan=False))

@@ -1,7 +1,7 @@
 {
   "grade": "TEST_ONLY_S47_MATERIAL_EVENT_C9_TWO_BATCH_INTEGRATION",
-  "tests": "66 passed in 261.73s",
-  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests",
+  "tests": "66 passed in 267.97s",
+  "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests",
   "batches": [
     {
       "batch_id": "batch-000001",
@@ -9,7 +9,7 @@
       "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
       "branch": "first_session",
       "status": "COMPLETE",
-      "history_hash": "6f43bcd0ae85473ca90a2c122dce93fd00e628d48c94a41ecf60e1f76d6135a2"
+      "history_hash": "96befa0bd96127d46773b111db3e143ec1bd91a521172d750e5363fe71d04717"
     },
     {
       "batch_id": "batch-000002",
@@ -17,7 +17,7 @@
       "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
       "branch": "first_session",
       "status": "COMPLETE",
-      "history_hash": "edce2a0652938f7185b5a3416f7ba7ad29730a1cbb79e8ad5cb69914235ac391"
+      "history_hash": "5bce06ba0a818fb64880782d5a35eb1f8445886782484190a954bd54ac329f35"
     }
   ],
   "records": [
@@ -29,23 +29,38 @@
         "branch": "first_session",
         "clock": 222,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "871d0feb784ac0b4d8d42b63da3eabc5e35de7fcd80f58e6cc2bf9ed54f4827f"
+        "state_hash": "7ad23a45914a85cd58da97c10af1f7cb6f8d3d213c6ee48a00dafdb1a7aa6e53"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 228,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "94f69f123c1b37990b5ce35b7396748bbe3ca4214045b9fe467de2aeedc94189"
+        "state_hash": "c3f58ea4905a2ffdf843d797c38143fdd66f9eff2e764ac3df374f8e3b2d473f"
       },
-      "receipt_ref": "P2_EVENT:2366047cda36630e4494597988d7b0c0f558b215a4340ce6cc81cd419a45de1a",
+      "receipt_ref": "P2_EVENT:4cba8b9cd4e41f5e4e86deed8c86607b58bb97a5b9a41e1893f9e55b70e9ab3a",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "2366047cda36630e4494597988d7b0c0f558b215a4340ce6cc81cd419a45de1a"
+        "4cba8b9cd4e41f5e4e86deed8c86607b58bb97a5b9a41e1893f9e55b70e9ab3a"
       ],
       "status": "REALIZED",
       "material_eligible": false,
-      "durable_psychological_transition": "MISSING_RULE"
+      "durable_psychological_transition": "MISSING_RULE",
+      "actor_experience": {
+        "status": "OBSERVED",
+        "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_alias": "A",
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_0febc5a0eb7931e6da790ee4c3b8703053c7dfcae786ab3eb0f760e2e0dd3a22"
+        ],
+        "perceptions": [
+          {
+            "channel": "co_present",
+            "clock": 228
+          }
+        ],
+        "memory_formation": "MISSING_RULE"
+      }
     },
     {
       "event_id": "batch-1-event-1",
@@ -55,23 +70,38 @@
         "branch": "first_session",
         "clock": 228,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "94f69f123c1b37990b5ce35b7396748bbe3ca4214045b9fe467de2aeedc94189"
+        "state_hash": "c3f58ea4905a2ffdf843d797c38143fdd66f9eff2e764ac3df374f8e3b2d473f"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 234,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "9436841fc66b513f76246bf05c3fe21e64c50237da5fb0939cd3bda31d44bff6"
+        "state_hash": "cfde3d678e237e09746ce27a2a5dfc70b46c6e3e45c04424c1b1351a6c1017a0"
       },
-      "receipt_ref": "P2_EVENT:7005b126c53115010a985fb258d89e46cbc4879b52a142922c61cbc98b7bb6a2",
+      "receipt_ref": "P2_EVENT:6c8a347cbaa42a0459d29e67ae0297833ddf647d73c54469897a8ee1e3653f49",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "7005b126c53115010a985fb258d89e46cbc4879b52a142922c61cbc98b7bb6a2"
+        "6c8a347cbaa42a0459d29e67ae0297833ddf647d73c54469897a8ee1e3653f49"
       ],
       "status": "REALIZED",
       "material_eligible": false,
-      "durable_psychological_transition": "MISSING_RULE"
+      "durable_psychological_transition": "MISSING_RULE",
+      "actor_experience": {
+        "status": "OBSERVED",
+        "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_alias": "A",
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_ee9e2a6f8b65cba6acbe241134cd58ba42c949758f97663e473b137b84cdb84f"
+        ],
+        "perceptions": [
+          {
+            "channel": "co_present",
+            "clock": 234
+          }
+        ],
+        "memory_formation": "MISSING_RULE"
+      }
     },
     {
       "event_id": "batch-1-event-2",
@@ -81,23 +111,38 @@
         "branch": "first_session",
         "clock": 234,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "9436841fc66b513f76246bf05c3fe21e64c50237da5fb0939cd3bda31d44bff6"
+        "state_hash": "cfde3d678e237e09746ce27a2a5dfc70b46c6e3e45c04424c1b1351a6c1017a0"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 240,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "6a6496c03cd79fcfd28a6b06f385fd9a1d0e26f524be7125d4834e8d5ff02e39"
+        "state_hash": "e8ab77c8caa9636c2c814e25a3d8575cb6bd39592134e6f70869ba1151a4fae2"
       },
-      "receipt_ref": "P2_EVENT:962153fea7bd6dec802b2208084c75a88c5f01a701d61c5ed6cfd066b117daf5",
+      "receipt_ref": "P2_EVENT:c7e66739b36646b8936a11602397321bc1798ecfc0f4211b5e2ff8dafaeea9e6",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "962153fea7bd6dec802b2208084c75a88c5f01a701d61c5ed6cfd066b117daf5"
+        "c7e66739b36646b8936a11602397321bc1798ecfc0f4211b5e2ff8dafaeea9e6"
       ],
       "status": "REALIZED",
       "material_eligible": false,
-      "durable_psychological_transition": "MISSING_RULE"
+      "durable_psychological_transition": "MISSING_RULE",
+      "actor_experience": {
+        "status": "OBSERVED",
+        "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_alias": "A",
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_a5f9a38cd749a22c59f149f168042b8ee0b1fa68d68e0e87e38f900ffc4df91b"
+        ],
+        "perceptions": [
+          {
+            "channel": "co_present",
+            "clock": 240
+          }
+        ],
+        "memory_formation": "MISSING_RULE"
+      }
     },
     {
       "event_id": "batch-2-event-0",
@@ -107,23 +152,38 @@
         "branch": "first_session",
         "clock": 240,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "6a6496c03cd79fcfd28a6b06f385fd9a1d0e26f524be7125d4834e8d5ff02e39"
+        "state_hash": "e8ab77c8caa9636c2c814e25a3d8575cb6bd39592134e6f70869ba1151a4fae2"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 246,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "2228bb04c662fdb296ccda4e3bec330731e50ddefdde1e159ca53ac0c38757e6"
+        "state_hash": "2ba0f79162dfead20c7d8f8c11dd1e798a3f3fa94459cf8d22d1cdf137e943b2"
       },
-      "receipt_ref": "P2_EVENT:35485ad899b909d0db9bc1f404f8b3090dbcb4cf1152eb59781f4ef3d839fc91",
+      "receipt_ref": "P2_EVENT:4fbeb39fc0ad69c28a81d5490a9f4271c0f4e14eb0a2cabe1551798e079cfd14",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "35485ad899b909d0db9bc1f404f8b3090dbcb4cf1152eb59781f4ef3d839fc91"
+        "4fbeb39fc0ad69c28a81d5490a9f4271c0f4e14eb0a2cabe1551798e079cfd14"
       ],
       "status": "REALIZED",
       "material_eligible": false,
-      "durable_psychological_transition": "MISSING_RULE"
+      "durable_psychological_transition": "MISSING_RULE",
+      "actor_experience": {
+        "status": "OBSERVED",
+        "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_alias": "A",
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_bc9c7ee9e295ea89847d7c117634246b846d29e5535f5b6323ca946c18e09c3b"
+        ],
+        "perceptions": [
+          {
+            "channel": "co_present",
+            "clock": 246
+          }
+        ],
+        "memory_formation": "MISSING_RULE"
+      }
     },
     {
       "event_id": "batch-2-event-1",
@@ -133,23 +193,38 @@
         "branch": "first_session",
         "clock": 246,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "2228bb04c662fdb296ccda4e3bec330731e50ddefdde1e159ca53ac0c38757e6"
+        "state_hash": "2ba0f79162dfead20c7d8f8c11dd1e798a3f3fa94459cf8d22d1cdf137e943b2"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 252,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "d540410d69193b77095c66d0d697705bf43ae4abc9a8ef47cedebf7266a3eb95"
+        "state_hash": "7812376f2d13a7f4eb282e845b1a62c37a2bd14c03c47448fd5de68bd487e610"
       },
-      "receipt_ref": "P2_EVENT:1f861f6d4c991ec8eefc0b637b14d518ac7f4069b3a5666b3fca74920a378975",
+      "receipt_ref": "P2_EVENT:9548f2f47c7fd6f14041b7c70103827118423bed8c4408433d8e18be975b8d9d",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "1f861f6d4c991ec8eefc0b637b14d518ac7f4069b3a5666b3fca74920a378975"
+        "9548f2f47c7fd6f14041b7c70103827118423bed8c4408433d8e18be975b8d9d"
       ],
       "status": "REALIZED",
       "material_eligible": false,
-      "durable_psychological_transition": "MISSING_RULE"
+      "durable_psychological_transition": "MISSING_RULE",
+      "actor_experience": {
+        "status": "OBSERVED",
+        "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_alias": "A",
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_2b2d2d856349471fcb23671ac535fc9e46aad2894462e29a62364c5758252af0"
+        ],
+        "perceptions": [
+          {
+            "channel": "co_present",
+            "clock": 252
+          }
+        ],
+        "memory_formation": "MISSING_RULE"
+      }
     },
     {
       "event_id": "batch-2-event-2",
@@ -159,23 +234,38 @@
         "branch": "first_session",
         "clock": 252,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "d540410d69193b77095c66d0d697705bf43ae4abc9a8ef47cedebf7266a3eb95"
+        "state_hash": "7812376f2d13a7f4eb282e845b1a62c37a2bd14c03c47448fd5de68bd487e610"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 258,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "ce3c6b950aab5881af302e78eea7301260b63a2c13a47aeacc6fecfd1635a2b4"
+        "state_hash": "57f81e4569d5270fe6d26a99f447177fae240fcad9040fa08be7adfe717fa6b8"
       },
-      "receipt_ref": "P2_EVENT:8fc0adc6956a1568c7e4b187bf44a024fd9d06677178b8876d0f88f19c80e0d1",
+      "receipt_ref": "P2_EVENT:fe0295a3fd5374ede6b024536ea8bead9aaa9ef4811c1900ade566ca09e04af4",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "8fc0adc6956a1568c7e4b187bf44a024fd9d06677178b8876d0f88f19c80e0d1"
+        "fe0295a3fd5374ede6b024536ea8bead9aaa9ef4811c1900ade566ca09e04af4"
       ],
       "status": "REALIZED",
       "material_eligible": false,
-      "durable_psychological_transition": "MISSING_RULE"
+      "durable_psychological_transition": "MISSING_RULE",
+      "actor_experience": {
+        "status": "OBSERVED",
+        "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_alias": "A",
+        "event_ids": [
+          "TEST_ONLY_BP4_WORLD_EVT_1aeabb6d4626f9cac279cb2fe85cfb11fadf75a66dbc13affc95f44d0365867e"
+        ],
+        "perceptions": [
+          {
+            "channel": "co_present",
+            "clock": 258
+          }
+        ],
+        "memory_formation": "MISSING_RULE"
+      }
     }
   ],
   "cycle_phase": "COMPLETE",
@@ -187,10 +277,10 @@
         "batch-1-event-1",
         "batch-1-event-2"
       ],
-      "history_hash": "6f43bcd0ae85473ca90a2c122dce93fd00e628d48c94a41ecf60e1f76d6135a2",
+      "history_hash": "96befa0bd96127d46773b111db3e143ec1bd91a521172d750e5363fe71d04717",
       "impressions": [
         {
-          "source_history_hash": "6f43bcd0ae85473ca90a2c122dce93fd00e628d48c94a41ecf60e1f76d6135a2",
+          "source_history_hash": "96befa0bd96127d46773b111db3e143ec1bd91a521172d750e5363fe71d04717",
           "status": "RENDER_PROPOSAL_ONLY"
         }
       ]
@@ -202,17 +292,25 @@
         "batch-2-event-1",
         "batch-2-event-2"
       ],
-      "history_hash": "edce2a0652938f7185b5a3416f7ba7ad29730a1cbb79e8ad5cb69914235ac391",
+      "history_hash": "5bce06ba0a818fb64880782d5a35eb1f8445886782484190a954bd54ac329f35",
       "impressions": [
         {
-          "source_history_hash": "edce2a0652938f7185b5a3416f7ba7ad29730a1cbb79e8ad5cb69914235ac391",
+          "source_history_hash": "5bce06ba0a818fb64880782d5a35eb1f8445886782484190a954bd54ac329f35",
           "status": "RENDER_PROPOSAL_ONLY"
         }
       ]
     }
   ],
-  "journal_sha256": "5ebe6800050fcfa1996817e62b03ad2dac0d99c6782585efaff22ce587f7f62a",
-  "cycle_sha256": "ddfd0b953743d1bc8b6c76bcf88be9c495d356374efd20557a0d415b6ac4e9e1",
-  "calls_and_access": "Integration assertions verified BOOTSTRAP/ORDINARY/TERMINAL exactly once each, zero provider calls within batches, and accessible-only prior histories. Actual owner cold-reopen and history assertions passed.",
-  "limits": "Controlled P2 participants and file/mock provider, no independent B or scientific psychological formation; original source rights and protected receiving separate."
+  "journal_sha256": "97bf31fc69ffe8bb64bed59e4bb58936391bf3b5c199e80c7a1796a4744e995e",
+  "cycle_sha256": "012f82ebeba61fbac741305f22fcea6f21018223289072c8f626489a75e3da24",
+  "calls_and_access": "BOOTSTRAP/ORDINARY/TERMINAL once each; no between-event model calls; actual developing-actor perception receipts, not portal-user public view. Cold root/history reopening passes.",
+  "actor_access_repair": {
+    "prior_subject": "41863919210021eced174ad5abdf49cb2df2042a",
+    "old_edge": "fanin.public_opportunity(observation) uses portal user U",
+    "replacement": "E1/action hash bound to developing actor; actor alias read from actual action; store.perceptions(branch,actor_id=alias); accepted observable projector minus perceived_by_user",
+    "negative_and_restore": "Focused owner suite 3 passed in 16.66s. With developing actor receipts suppressed and user receipts present, experience HELD/P2_ACTOR_PERCEPTION_UNAVAILABLE. Exact restoration reproduces actual experience.",
+    "private_output": "Cold CLI proves default event ID/status summary omits actor experience; internal provider request matches actual journal experience.",
+    "scope": "No C10 private-state observation or psychological memory is inferred from event perception."
+  },
+  "limits": "Controlled P2 participants and file/mock provider; no independent B or scientific psychological formation. Original source rights and protected receiving separate."
 }

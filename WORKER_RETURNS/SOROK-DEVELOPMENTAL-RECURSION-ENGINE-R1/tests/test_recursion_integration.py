@@ -92,7 +92,13 @@ def test_two_real_batches_retrospection_and_cold_root(tmp_path):
         assert records[1]["consequences"]["immediate_response"]["objective_material_eligible"] is False
         for row in records:
             assert row["consequences"]["durable_psychological_transition"] == "MISSING_RULE"
-            assert row["accessible"]["do_help_executed"] is False
+            experience = row["accessible"]
+            assert experience["status"] == "OBSERVED"
+            assert experience["actor_ref"] == owner.actor
+            assert experience["memory_formation"] == "MISSING_RULE"
+            action_id = row["objective"]["event"]["action_event_id"]
+            assert action_id in [x["event_id"] for x in experience["events"]]
+            assert all("perceived_by_user" not in x for x in experience["events"])
 
         second = cycle.advance(context={"clock": owner.snapshot().clock,
                                         "batch": 2, "interval_mode": "SCHEDULED_ONLY"})

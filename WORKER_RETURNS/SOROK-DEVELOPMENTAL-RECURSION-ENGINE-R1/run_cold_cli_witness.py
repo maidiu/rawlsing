@@ -9,6 +9,7 @@ import sys
 import tempfile
 
 from developmental_recursion.contracts import EventProposal
+from developmental_recursion.engine import BatchEngine
 from developmental_recursion.p2_owner import P2Owner, load_p2
 
 RETURN = Path(__file__).resolve().parent
@@ -28,6 +29,7 @@ def run(output_path: Path):
         owner.close()
         (tmp / "pack.json").write_text(json.dumps(pack))
         previous = None
+        previous_experiences = None
         outputs = []
         requests = []
         for sequence, mode in enumerate(("bootstrap", "advance", "finish"), 1):
@@ -68,15 +70,30 @@ def run(output_path: Path):
                              "finish": "TERMINAL"}[mode]
             assert request["mode"] == expected_mode
             if previous is not None:
-                assert request["previous"]["events"] == previous["events"]
+                assert request["previous"]["events"] == previous_experiences
             assert "records" not in result
             assert "root_hash" not in json.dumps(result)
+            assert "body_public" not in json.dumps(result)
+            assert "actor_ref" not in json.dumps(result)
             assert "objective" not in json.dumps(request["previous"])
             outputs.append(result)
             requests.append(request)
             if mode != "finish":
                 assert len(result["events"]) == 3
                 previous = result
+                cold = P2Owner(load_p2().open(state), **pack)
+                engine = BatchEngine(cold, tmp / "journal.sqlite")
+                try:
+                    history = engine.history(result["batch_id"])
+                    previous_experiences = [
+                        {"event_id": row["event_id"], "accessible": row["accessible"]}
+                        for row in history["records"]
+                    ]
+                    assert all(row["accessible"]["status"] == "OBSERVED"
+                               for row in previous_experiences)
+                finally:
+                    engine.close()
+                    cold.close()
         cold = P2Owner(load_p2().open(state), **pack)
         after = cold.snapshot()
         assert after.root == before.root
@@ -94,6 +111,8 @@ def run(output_path: Path):
                    "same_root": after.root == before.root,
                    "before_clock": before.clock, "after_clock": after.clock,
                    "cold_verified": True, "provider_calls_between_events": 0,
+                   "retrospective_uses_developing_actor_perceptions": True,
+                   "default_output_omits_actor_private_experience": True,
                    "native_psychological_transitions": "MISSING_RULE"}
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(json.dumps(receipt, indent=2) + "\n")

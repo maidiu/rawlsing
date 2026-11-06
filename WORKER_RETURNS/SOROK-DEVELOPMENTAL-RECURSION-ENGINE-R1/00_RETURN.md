@@ -20,13 +20,15 @@ The coordinator passes only actor-accessible projections and detached context to
 
 ## Actual multi-batch receipts
 
-Combined new suite: 66 passed in 261.73 seconds. Baseline P2 suite before implementation: 7 passed in 61.83 seconds. Exact command, actual six event identity transitions, readsets, receipts, two batch hashes, retrospective count and final cycle status are in evidence/MULTI_BATCH_EXECUTION_RECEIPT.json.
+Combined new suite after actor-access repair: 66 passed in 267.97 seconds. Baseline P2 suite before implementation: 7 passed in 61.83 seconds. Exact command, actual six event identity transitions, readsets, receipts, two batch hashes, actor perception receipts, retrospective count and final cycle status are in evidence/MULTI_BATCH_EXECUTION_RECEIPT.json.
 
 The integration tests exercise two consecutive three-event batches and exactly BOOTSTRAP/ORDINARY/TERMINAL provider calls, state carry-forward, actual-versus-scheduled material contrast, terminal state nonmutation, actor-accessible prior payloads and cold owner/history reopening. Batch worker evidence additionally contains hard-process exit-17 recovery and cross-process exclusivity. Provider-failure/custody and malformed-input negatives are covered by the batch/coordinator tests.
 
 The lead corrected an original ABI error about when prior recursion completes. The original author coordinator evidence remains pinned to its returned cut. cycle_evidence/lead_boundary_disposition.json records the lead change; removing the persisted pre-next-batch retrospective completion makes the targeted assertion fail and exact restoration passes.
 
-run_developmental_recursion.py exposes cold bootstrap/advance/finish with an explicit source pack and file model transport. run_cold_cli_witness.py performs an additional actual cold-process two-batch check. Its observed receipt, when complete, is evidence/cold_cli.json.
+run_developmental_recursion.py exposes cold bootstrap/advance/finish with an explicit source pack and file model transport. run_cold_cli_witness.py passed an additional actual cold-process two-batch check. Its observed receipt is evidence/cold_cli.json.
+
+The lead found and repaired a material mistake in the initial integrated candidate: P2's portal-user public view had been substituted for developing-actor experience. The repaired adapter binds the native E1/action hash, derives the store actor alias from that actual action and reads that actor's perception receipts. Missing actor receipts HOLD even when user receipts exist; restoring them reproduces the experience. The existing observable-content projector is reused without its user-specific assertion. Default CLI output now contains event IDs/status only; actor-specific experience stays in the internal retrospective request and explicit engineering output. This does not claim issued memory formation or a qualified private C10 state projection.
 
 ## Reused versus new code
 
@@ -42,6 +44,6 @@ P2 participants are controlled sourcefree test participants. Missing independent
 
 ## Acceptance and receiving
 
-The integrated candidate needs distinct exact-cut review of actual execution, source reuse, recursion ordering, safe state custody, privacy, source-cut/restore, cold replay and preserved P2 behavior. No independent acceptance or protected merge is claimed here. The full commission stays open through defect repair, re-review and selective PRE-MAIN PR preparation.
+Distinct exact-cut review of subject 41863919210021eced174ad5abdf49cb2df2042a is in flight. That frozen subject predates the actor-access repair above. Its result cannot independently accept the repaired cut; focused independent re-review remains necessary. No independent acceptance or protected merge is claimed here. Draft PRE-MAIN PR #704 preserves the candidate for selective receiving preparation.
 
 The next functional edge is a source-qualified developmental-operation/memory owner implementing the same explicit owner ABI. Exact absent historical source bytes and unissued native psychological rules remain separate dependencies; they do not block the demonstrated general batch/call/history machinery.
