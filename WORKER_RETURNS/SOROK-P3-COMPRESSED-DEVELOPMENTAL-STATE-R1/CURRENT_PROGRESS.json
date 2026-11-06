@@ -1,18 +1,11 @@
 {
-  "status": "COMPRESSION_ACTUAL_BINDING_REPAIRED__PURE_READERS_COMPATIBLE__DURABLE_OWNER_IN_PROGRESS",
+  "status": "OWNER_BANKED_NOT_EXECUTED__REQUIRED_VERTICAL_PROOF_CODE_LAUNCHED__REAL_STORE_PENDING",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
-  "compression_repair_disposition": "COMPRESSION_REPAIR_DISPOSITION.json",
-  "projection_disposition": "PROJECTION_INPUT_DISPOSITION.json",
-  "rule_adapter": {
-    "files": [
-      "p3/__init__.py",
-      "p3/test_rules.py",
-      "tests/test_rules.py"
-    ],
-    "receipt": "evidence/rules/AUTHOR_RECEIPT.json",
-    "grade": "AUTHOR_MECHANICAL_TEST_ONLY_NOT_P2_INTEGRATION"
-  },
+  "owner_disposition": "OWNER_INPUT_DISPOSITION.json",
+  "owner_runtime_tests": "6 NOT_EXECUTED_MISSING_RETURNED_STORE;2 guards passed at author cut; constructor direct-call fix only AST-verified",
+  "compression_repair": "VERIFIED_ACTUAL_BOUNDARY_ONLY",
+  "projection": "COMPATIBLE_ACTUAL_READERS_ONLY",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -52,13 +45,19 @@
     },
     {
       "task": "sorok-p3-owner-integration-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_BANKED_DEPENDENT_EXECUTION_NOT_RUN",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "pid": 31072
+    },
+    {
+      "task": "sorok-p3-vertical-proof-harness-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "pid": 38382
     }
   ],
-  "runtime": "DURABLE_P3_NOT_YET_INTEGRATED",
+  "runtime": "DURABLE_P3_NOT_YET_EXECUTED",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Receive actual normalized store and owner terminals; integrate exact returned modules plus corrected compression, resume same owner against returned store if required, execute full durable same-root A-H/two-batch/cold/crash/economy and distinct nonauthor review. No extra standalone compression review or native issuance."
+  "next": "Intake actual normalized store; integrate exact returned source, resume same owner for six actual durable tests and minimal repairs, execute prepared full two-batch A-H/cost harness, obtain distinct final exact-runtime review. Harness may be authored against frozen owner API now; no actual durable claim until dependency executes."
 }

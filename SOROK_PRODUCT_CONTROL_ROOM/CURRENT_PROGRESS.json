@@ -1670,7 +1670,7 @@
       "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/CURRENT_PROGRESS.json"
     ],
     "disciplines": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STANDING_DISCIPLINES.md",
-    "status": "COMPRESSION_ACTUAL_BINDING_REPAIRED__PURE_READERS_COMPATIBLE__DURABLE_OWNER_IN_PROGRESS",
+    "status": "OWNER_BANKED_NOT_EXECUTED__REQUIRED_VERTICAL_PROOF_CODE_LAUNCHED__REAL_STORE_PENDING",
     "input_candidates": {
       "E1": {
         "head": "ee1ff298fe7e57277c34a5af16df33165743d84f",
@@ -1726,9 +1726,15 @@
       },
       {
         "task": "sorok-p3-owner-integration-r1",
-        "status": "ACTIVE_VERIFIED",
+        "status": "RETURNED_BANKED_DEPENDENT_EXECUTION_NOT_RUN",
         "session": "ses_e98c905cbffekusoHURfKyEUKG",
         "pid": 31072
+      },
+      {
+        "task": "sorok-p3-vertical-proof-harness-r1",
+        "status": "ACTIVE_VERIFIED",
+        "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+        "pid": 38382
       }
     ],
     "native_science": "HOLD",
@@ -1749,6 +1755,16 @@
       "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-owner-integration-r1",
       "launch_is_not_completion": true
     },
-    "compression_repair_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/COMPRESSION_REPAIR_DISPOSITION.json"
+    "compression_repair_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/COMPRESSION_REPAIR_DISPOSITION.json",
+    "owner_return_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/OWNER_INPUT_DISPOSITION.json",
+    "owner_functional_status": "NOT_EXECUTED_REAL_STORE_MISSING",
+    "vertical_proof_launch": {
+      "job_id": "sorok-p3-vertical-proof-harness-r1",
+      "child_pid": 38382,
+      "supervisor_pid": 38381,
+      "observer_pid": 38383,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-proof-harness-r1",
+      "launch_is_not_completion": true
+    }
   }
 }

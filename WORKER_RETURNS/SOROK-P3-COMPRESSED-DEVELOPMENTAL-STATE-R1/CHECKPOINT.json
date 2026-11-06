@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "OWNER_GLUE_BANKED_CTOR_CALL_CORRECTED__REAL_STORE_DEPENDENCY_PENDING",
+  "state": "OWNER_BANKED_NOT_EXECUTED__REQUIRED_VERTICAL_PROOF_CODE_LAUNCHED__REAL_STORE_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -201,6 +201,31 @@
       "scope": "Settled actual P2-root owner glue and meaningful tests; no fallback/inflight store or false executed result",
       "execution_dependency": "Returned normalized store; compression positive waits on exact repair return",
       "return": "61c41e54cccae6f8f888aeb44a629e3a1bd6f892"
+    },
+    {
+      "task": "sorok-p3-vertical-proof-harness-r1",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1",
+      "launch": {
+        "job_id": "sorok-p3-vertical-proof-harness-r1",
+        "child_pid": 38382,
+        "supervisor_pid": 38381,
+        "observer_pid": 38383,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-proof-harness-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model_evidence": {
+        "message": "msg_1b2f313e3001r8lAAX8hxepys1",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      },
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-proof-harness-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "scope": "Required original two-batch A-H and cost proof code; actual execution blocked until real returned store, no fake/skip green"
     }
   ],
   "holds": [
@@ -209,7 +234,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Prepare required full P3 two-batch A-H/resource proof harness against actual banked owner API; when normalized store returns, resume existing owner for actual integration/repair. No fake store, skipped-test green claim or new native authority.",
+  "next": "Intake actual normalized store; integrate exact returned source, resume same owner for six actual durable tests and minimal repairs, execute prepared full two-batch A-H/cost harness, obtain distinct final exact-runtime review. Harness may be authored against frozen owner API now; no actual durable claim until dependency executes.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
