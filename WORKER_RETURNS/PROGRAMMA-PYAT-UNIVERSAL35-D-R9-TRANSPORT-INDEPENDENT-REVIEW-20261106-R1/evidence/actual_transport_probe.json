@@ -1,0 +1,82 @@
+{
+  "cold_cli": {
+    "exit": 0,
+    "refusal": "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
+    "state": "TYPED_REFUSAL",
+    "structural": false
+  },
+  "e_codec": {
+    "blob_sha256": "6acba005f71559b03f4bd2f6013ecd956835e983710eff81449c4c5b8d584ea0",
+    "matches_f708": true
+  },
+  "positive_artifact": {
+    "arities": {
+      "1": 30
+    },
+    "ceilings": [
+      [
+        "FIELD_FORGE_RELATION_PRODUCTION"
+      ]
+    ],
+    "envelope_count": 30,
+    "fact_count": 30,
+    "raw_rows": false,
+    "states": {
+      "('TYPED_REFUSAL', 'FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED')": 30
+    },
+    "structural": [
+      false
+    ]
+  },
+  "results": [
+    {
+      "artifacts": [
+        "SRC01.field_forge_envelopes.json"
+      ],
+      "cands": 18,
+      "facts": 30,
+      "label": "positive",
+      "ops": 15,
+      "outcome": "ACCEPTED",
+      "transport": {
+        "envelope_count": 30,
+        "fact_count": 30,
+        "missing_query_refs": [],
+        "path": ".local-logs/pyat-universal35/d-r9-review/actual/positive/SRC01.field_forge_envelopes.json"
+      }
+    },
+    {
+      "artifacts": [],
+      "cands": 18,
+      "facts": 30,
+      "label": "state_only",
+      "ops": 15,
+      "outcome": "ACCEPTED",
+      "transport": null
+    },
+    {
+      "artifacts": [],
+      "error": "EXPLICIT_PRODUCER_PERMISSION_CEILING_REQUIRED",
+      "label": "empty_permission",
+      "outcome": "REFUSED",
+      "type": "Original35ExecutionError"
+    },
+    {
+      "artifacts": [],
+      "error": "EXPLICIT_PRODUCER_PERMISSION_CEILING_REQUIRED",
+      "label": "invalid_permission",
+      "outcome": "REFUSED",
+      "type": "Original35ExecutionError"
+    },
+    {
+      "artifacts": [
+        "SRC01.field_forge_envelopes.json"
+      ],
+      "error": "SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+      "label": "changed_post",
+      "outcome": "REFUSED",
+      "type": "Original35ExecutionError"
+    }
+  ],
+  "sourcefree": true
+}
