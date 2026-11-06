@@ -75,6 +75,32 @@ def test_bounded_stream_exact_replay_and_factory_parity(tmp_path):
         incidence.close()
 
 
+def test_bounded_stream_filtered_selected_columns_keep_every_row(tmp_path):
+    path = tmp_path / "bounded-filtered.sav"
+    bundle = build_s3(path, s3_rows(respondents=4, occasions=2))
+    incidence = decode_sav(path, expected_source_sha256=bundle.source_sha256)
+    try:
+        selected = ("PID", "SCORE")
+        stream = bounded_physical_cell_stream(
+            incidence, batch_size=3, include_variables=selected,
+        )
+        expected = tuple(
+            cell for cell in incidence.iter_cells(5) if cell.variable_name in selected
+        )
+        assert tuple(stream.iter_cells()) == expected
+        assert tuple(stream.iter_cells()) == expected
+        assert stream.row_count == incidence.row_count
+        assert stream.source_sha256 == incidence.source_sha256
+        assert {cell.row_ordinal for cell in expected} == set(range(1, incidence.row_count + 1))
+        assert {cell.variable_name for cell in expected} == set(selected)
+        with pytest.raises(Original35PhysicalStreamError, match="SELECTED_PHYSICAL_COLUMN_ABSENT"):
+            tuple(bounded_physical_cell_stream(
+                incidence, include_variables=("PID", "ABSENT"),
+            ).iter_cells())
+    finally:
+        incidence.close()
+
+
 def test_bounded_stream_rejects_wrong_source_or_batch(tmp_path):
     path = tmp_path / "bounded-fault.sav"
     bundle = build_s3(path, s3_rows(respondents=3, occasions=1))
