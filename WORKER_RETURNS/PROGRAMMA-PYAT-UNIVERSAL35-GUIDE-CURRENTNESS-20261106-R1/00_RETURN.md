@@ -5,7 +5,7 @@
 **Start/protected base:** `4df35cba8a254e50622d4cb3059625c82e0cb74b`
 **#705 source:** `62329a720d835fd21505b67505751a7b3ec2ff02`
 **G review input:** `b491fa87eab60be5b646bb3206495e1784913ec4`
-**Status:** `G_REVIEWED_CURRENTNESS_PATCH__INDEPENDENT_REVIEW_REQUESTED__NOT_PROTECTED`
+**Status:** `CURRENTNESS_PATCH_FROM_PRIOR_G_FINDINGS__INDEPENDENT_REVIEW_REQUESTED__NOT_PROTECTED`
 **Implementation/evidence SHA:** reported by terminal push readback; a file cannot contain the SHA of its own commit.
 
 ## Finding
@@ -127,3 +127,8 @@ facts are stated at their exact grades, that 62/82/49, 51/82, 88/13 and FIABC
   authority.
 - This patch is unadopted until independent review and qualified protected
   receiving.
+
+
+## HQ post-return source qualification supplement
+
+Before exact-head independent review, HQ incorporated concurrently returned F43e5962bbad72501166da59b744d618d10877b22:676 route-qualified /4705 routing-unknown /249 rule-unavailable among5630 candidateRAW operations. Original statuses and denominator totals remain unchanged; no metadata establishes administered native results. Updated source/master section banners and existing candidate JSON fields, preserving unknown-route and optional-weight distinctions. Ambiguous G-reviewed wording now states that the candidate was prepared from G prior findings and its own exact-head review remains pending. New shared product/progress/controller code: none.
