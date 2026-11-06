@@ -1,0 +1,35 @@
+{
+  "actual_first_consumer": "NONE_VERIFIED in product code; documentary review return consumed by HQ",
+  "affected_existing_ids": [
+    "A/B/C/D/E universal35 lanes"
+  ],
+  "clock": "no clock/replay mutation",
+  "conditional_unlocks": [
+    "A and C may proceed to scoped receiving",
+    "B needs exact non-F1 binding repair and return-count correction before D/all35 receiving"
+  ],
+  "evidence": [
+    "01_EXACT_IDENTITIES.json",
+    "02_REVIEW_VERDICTS.json",
+    "03_FINDINGS_AND_REPRO.md",
+    "04_TEST_RECEIPTS.json",
+    "evidence/"
+  ],
+  "function": "independent exact-cut review of A/B/C code, tests and joined ABI/consumer seam",
+  "identity": "PROGRAMMA-PYAT-UNIVERSAL35-ABC-INDEPENDENT-REVIEW-20261106-R1",
+  "input_transform_typed_output": "frozen d129eeb checkout + exact A/B/C heads -> per-organ verdicts, test receipts and defect repros",
+  "native_or_scientific_acceptance": false,
+  "next_action": "HQ/author repair B F2-F4 binding and A/B select contract; then fresh distinct review at exact heads",
+  "permission": "sourcefree review only; no original response bytes, native grant or scientific issuance",
+  "protected_merge": false,
+  "root": "review checkout only; no product/guide/protected writer path",
+  "schema": "PROGRAMMA_DELTA@1.0.0",
+  "schema_id": "PROGRAMMA_PYAT_UNIVERSAL35_ABC_INDEPENDENT_REVIEW_VERDICTS@1.0.0",
+  "verdicts": {
+    "A": "ACCEPT_SCOPED_SOURCEFREE",
+    "A_B_C_JOIN": "REVISE",
+    "A_B_JOIN": "REVISE",
+    "B": "REVISE",
+    "C": "ACCEPT_SCOPED_SOURCEFREE"
+  }
+}

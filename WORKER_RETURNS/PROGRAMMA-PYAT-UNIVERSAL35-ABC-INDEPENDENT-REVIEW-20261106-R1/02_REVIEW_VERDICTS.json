@@ -1,0 +1,91 @@
+{
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_ABC_INDEPENDENT_REVIEW_VERDICTS@1.0.0",
+  "reviewer": "existing nonauthor F session; not an author or HQ acceptor",
+  "review_checkout": "d129eebdb0472b0c3625efa281826a858bd0a384",
+  "frozen_policy": "review only this checkout; D moving head not followed",
+  "A": {
+    "organ": "source-pack selector, registry, schema/validator, reader transport, fixture/C11 factory, 119-path ledger",
+    "author_head": "51f39988863e049b09daf9cf4aeb30c09d5e84c2",
+    "review_equivalent_head": "aa178e201d6399870e0fa8bc2a549de14031f406",
+    "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+    "accepted_scope": [
+      "35/35 index/status/validate and 35/35 nonrespondent native fixture releases matched recorded R157 release content hashes",
+      "18,276 original items, 18,413 physical slots, 18,250 exact joins, 26 unmatched preserved",
+      "35 relative locator bindings match custody observation; source-root override separates artifact and original-source roots",
+      "38 A tests pass; wrong-SHA/refusal/root-separation cases pass",
+      "119-path ledger contains exactly the expected 119 paths and 19 code paths"
+    ],
+    "not_claimed": [
+      "original respondent decode or native all35 execution",
+      "source rights or scientific issuance",
+      "protected merge",
+      "B operation adapter compatibility through the advertised select surface (see A/B seam)"
+    ],
+    "evidence": [
+      "evidence/a_tests.log",
+      "evidence/a_admission_tests.log",
+      "evidence/a_all35.log",
+      "01_EXACT_IDENTITIES.json"
+    ]
+  },
+  "B": {
+    "organ": "source-neutral original35 operation plan, optional-weight/RAW semantics, F1-F4 accounting, current compiler/first-consumer join",
+    "author_head": "dd0249a0fc8588f9fa1a10fb9702295e5aabaa1a",
+    "code_head": "bb0bc00643125191d52dc838868857156ac3aef8",
+    "verdict": "REVISE",
+    "accepted_subscope": [
+      "35/35 plan, 18,276 items, 18,413 slots, 18,467 typed operations, deterministic plan_ref",
+      "F1 RAW operations have a real current sourcefree consumer via execute_plan_universal -> compile_universal_workload/execute_universal_workload",
+      "6 B tests pass; optional weight does not blanket-hold RAW; no-drop plan internal accounting passes"
+    ],
+    "rejected_or_held": [
+      "F2/F3/F4 plan operations are not actually bound to the governed frontier compiler; the test uses an independent frontier and the binding only checks source variable codes",
+      "B return status counts disagree with its own all35_plan evidence: HELD 1,595/INAPPLICABLE 11,191 versus actual 4,655/8,131",
+      "A/B select ABI is not consumable by B without re-loading full config documents"
+    ],
+    "evidence": [
+      "evidence/b_tests.log",
+      "evidence/ab_integration.log",
+      "evidence/b_frontier_repro.txt",
+      "evidence/ab_select_repro.txt",
+      "04_TEST_RECEIPTS.json"
+    ]
+  },
+  "C": {
+    "organ": "current-base compressed C11 event-body view and cache compatibility",
+    "author_return_head": "da5df57b237641bcf8597f6ba9ebfecf6b784e61",
+    "implementation_head": "30bd02a10feb1b5b97bcbe70e3981f482d2a412c",
+    "review_equivalent_head": "14bc6375d869897ace044281899bce909736f413",
+    "verdict": "ACCEPT_SCOPED_SOURCEFREE",
+    "accepted_scope": [
+      "selected production view blob 986f327aa18053edc61bd837cdded02bbf8388d9 is byte-identical to the accepted donor view",
+      "10 selected-view tests pass, including cache poison/delete/stale/torn/revoked and compressed exactness",
+      "19 current carrier/grouped-I03 integration tests pass",
+      "P2/capacity and other current owner code unchanged by C"
+    ],
+    "not_claimed": [
+      "real-source cold/warm performance",
+      "whole-pipeline all35 native execution",
+      "independent review of the added author cross-shape test text",
+      "protected adoption"
+    ],
+    "evidence": [
+      "evidence/c_tests.log",
+      "evidence/c_integration.log",
+      "01_EXACT_IDENTITIES.json"
+    ]
+  },
+  "A_B_JOIN": {
+    "verdict": "REVISE",
+    "reason": "The advertised A select surface returns a compact selection, not a full SourceConfig document; B build_original35_operation_plan requires identity/binding/items/physical_slots/response_slots. Full-document load_original integration does work, but the frozen ABI advertises select as an operation-adapter input and the B return says a library/config document is accepted.",
+    "repro": "evidence/ab_select_repro.txt",
+    "owner": "A and B owners plus HQ; no reviewer code edit performed"
+  },
+  "A_B_C_JOIN": {
+    "verdict": "REVISE",
+    "reason": "C is independently exact at its selected scope, but the joined A/B/C receiving cannot be accepted while the A/B select seam and B F2/F3/F4 consumer seam remain unresolved.",
+    "protected_merge": false,
+    "scientific_or_native_acceptance": false
+  },
+  "decision_owner": "HQ plus the later distinct decision/receiving owner; this review is not self-acceptance or protected merge"
+}

@@ -1,0 +1,145 @@
+{
+  "A_B_plan": {
+    "counts": {
+      "ABSTAIN": 0,
+      "DEFERRED": 51,
+      "EXECUTABLE_RAW": 5630,
+      "HELD": 4655,
+      "INAPPLICABLE": 8131,
+      "NOT_REQUESTED": 0
+    },
+    "items": 18276,
+    "joint_candidates": 742250526,
+    "joint_selected": 20,
+    "no_drop_ok": true,
+    "operations": 18467,
+    "pair_candidates": 1862592,
+    "pair_selected": 120,
+    "plan_ref": "3e3a604a78c377030bffa39eb62cf065d111746f9bc1588f7dbf33bac0373b9c",
+    "rows": 35,
+    "slots": 18413
+  },
+  "A_all35": {
+    "exact_joins": 18250,
+    "fixture_release_match": 35,
+    "fixture_release_total": 35,
+    "items": 18276,
+    "locator_rows": 35,
+    "slots": 18413,
+    "unmatched": 26,
+    "validate_pass": 35,
+    "validate_total": 35
+  },
+  "B_return_vs_actual": {
+    "actual_plan_counts": {
+      "ABSTAIN": 0,
+      "DEFERRED": 51,
+      "EXECUTABLE_RAW": 5630,
+      "HELD": 4655,
+      "INAPPLICABLE": 8131,
+      "NOT_REQUESTED": 0
+    },
+    "mismatch": [
+      "HELD 1,595 vs 4,655",
+      "INAPPLICABLE 11,191 vs 8,131"
+    ],
+    "return_counts": {
+      "ABSTAIN": 0,
+      "DEFERRED": 51,
+      "EXECUTABLE_RAW": 5630,
+      "HELD": 1595,
+      "INAPPLICABLE": 11191,
+      "NOT_REQUESTED": 0
+    }
+  },
+  "C": {
+    "donor_commit": "02c1200b82b8397e551817e8e4cf2c6763413189",
+    "donor_review": "9999c0afac5d7d7eb72ad0df602da4b232a49565",
+    "selected_test_blob": "e6c002334724aefff7d61e0165577a30d8dc3a8d",
+    "selected_view_blob": "986f327aa18053edc61bd837cdded02bbf8388d9",
+    "tests": "10 selected view tests + 19 current carrier/grouping integration tests passed"
+  },
+  "commands": [
+    {
+      "command": "pytest -q test_source_configuration_current_port.py test_source_configuration_library.py test_source_configuration_foundation.py",
+      "exit": 0,
+      "lane": "A",
+      "log": "a_tests.log",
+      "log_sha256": "61ee059f15e5724b951b96b2381a8d7a1853f34ac8cfba2236cbc374eee12c72",
+      "result": "33 passed in 81.12s"
+    },
+    {
+      "command": "pytest -q test_pre553_source_read_admission.py",
+      "exit": 0,
+      "lane": "A",
+      "log": "a_admission_tests.log",
+      "log_sha256": "70fbf717ae74e25557bc55be610c442463bfc9effda9d8003363a6620e41f665",
+      "result": "5 passed in 1.16s"
+    },
+    {
+      "command": "35/35 validate_source + 35/35 build_fixture_release against pinned R157",
+      "exit": 0,
+      "lane": "A",
+      "log": "a_all35.log",
+      "log_sha256": "f45438fb4e3d9055f0d5a43cf79439778e35e2a0cde32d80aa8380e484393e1d",
+      "result": "validate 35/35 in 52.96s; native fixture release content_hash match 35/35 in 124.87s"
+    },
+    {
+      "command": "SourceConfigLibrary.from_pinned_r157 -> load_original 35 -> build_original35_operation_plan",
+      "exit": 0,
+      "lane": "A/B",
+      "log": "ab_integration.log",
+      "log_sha256": "2a45a6312f222b3e073969de9e3365bcb3df531731d6ca48b8b730b39d31268f",
+      "result": "35 rows; items 18,276; slots 18,413; operations 18,467; no_drop true; plan_ref 3e3a604a78c377030bffa39eb62cf065d111746f9bc1588f7dbf33bac0373b9c"
+    },
+    {
+      "command": "pytest -q test_pre553_original35_operations.py test_programma_pyat_original35_constructor_adapter.py",
+      "exit": 0,
+      "lane": "B",
+      "log": "b_tests.log",
+      "log_sha256": "ea52244f84de5ac5429d948b7e215b8195f94f9960cc07da0564f61da8d22d8b",
+      "result": "6 passed in 31.08s"
+    },
+    {
+      "command": "pytest -q test_pre553_c11_execution_view.py",
+      "exit": 0,
+      "lane": "C",
+      "log": "c_tests.log",
+      "log_sha256": "6cf77d91816bca9727a3582249ab5fb3ebbe357bbff0440dacfdff5df7b05e77",
+      "result": "10 passed in 6.09s"
+    },
+    {
+      "command": "pytest -q test_pre553_carrier_execution.py test_pre553_i03_grouping.py",
+      "exit": 0,
+      "lane": "C",
+      "log": "c_integration.log",
+      "log_sha256": "7c14acdc909db9426c2ff6478c9150dd2c492ec22b7ce9364758b20b11fb30ec",
+      "result": "19 passed in 5.92s"
+    },
+    {
+      "command": "build_original35_operation_plan(SourceConfigLibrary.select(s) for all 35)",
+      "exit": 0,
+      "lane": "A/B seam",
+      "log": "ab_select_repro.txt",
+      "log_sha256": "dcd86b43cb077b83a7dbcc7027d12f6a5e38e5b315e3f6ae1a42d3cd906240dd",
+      "result": "REFUSED Original35OperationError SOURCE_ID_REQUIRED"
+    },
+    {
+      "command": "bind_governed_frontier with frontier keyed by plan F2 item_ids",
+      "exit": 0,
+      "lane": "B seam",
+      "log": "b_frontier_repro.txt",
+      "log_sha256": "c800a8112f4d7e8eee835fec1fc2db83aa0c7a6dc6117b04fac6dbc9066b95eb",
+      "result": "REFUSED GOVERNED_FRONTIER_PLAN_ITEMS_MISSING:b8,c10ai,c13a,d18c"
+    }
+  ],
+  "environment": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python 3.11.3",
+  "not_run": [
+    "no original respondent decode or native all35 execution",
+    "no real-source cold/warm C performance",
+    "no protected merge",
+    "no scientific/structural issuance",
+    "no test on unavailable external source roots"
+  ],
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_ABC_REVIEW_RECEIPTS@1.0.0"
+}
