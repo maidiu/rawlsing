@@ -145,8 +145,17 @@ class P3Owner:
         for key in ("root", "actor", "branch"):
             if source_identity.get(key) != base.document()[key]:
                 _refuse("P3_SOURCE_IDENTITY:" + key)
-        self.source_ref = self.source.get("source_ref") or self.source.get("base_source_ref")
+        self.source_ref = (self.source.get("source_ref")
+                           or self.source.get("base_source_ref")
+                           or self.source.get("base_ref")
+                           or self.source.get("base_source"))
         _text(self.source_ref, "P3_SOURCE_REF")
+        actual_base_ref = getattr(base_owner, "source_ref", None)
+        declared_base_ref = (self.source.get("base_source_ref")
+                             or self.source.get("base_ref")
+                             or self.source.get("source_ref"))
+        if actual_base_ref and declared_base_ref != actual_base_ref:
+            _refuse("P3_SOURCE_BASE_REF_MISMATCH")
         self.source_hash = digest(self.source)
         self.registry = test_rules.make_registry(self.source_hash)
         self.history = test_rules.validate_history(
@@ -526,8 +535,14 @@ class P3Owner:
             standpoint=standpoint,
         )
 
+    def _assert_base_after(self, base_result: RealizedEvent) -> None:
+        current = self.base_owner.snapshot()
+        if current != base_result.after:
+            _refuse("P3_BASE_AFTER_STATE_MISMATCH")
+
     def _effect(self, operation_id: str, proposal: EventProposal, plan: dict,
                 base_result: RealizedEvent) -> tuple[dict, dict, dict]:
+        self._assert_base_after(base_result)
         records = self.store.query(
             project=plan["project"], counterpart=plan["counterpart"],
             as_of=base_result.after.clock,
@@ -557,6 +572,8 @@ class P3Owner:
             "access_status": base_result.accessible.get("status", ""),
             "access_hash": digest(base_result.accessible),
             "base_receipt_ref": base_result.receipt_ref,
+            "source_hash": self.source_hash,
+            "registry_hash": self.registry["hash"],
         }
         self.store.commit_effects(
             operation_id, records=effect["records"], response=effect["response"],
@@ -577,9 +594,7 @@ class P3Owner:
                 expected: StateIdentity, base_result: RealizedEvent,
                 effect: Mapping, projection: Mapping) -> RealizedEvent:
         base = self._base_snapshot()
-        if (base.root, base.actor, base.branch, base.clock) != (
-                base_result.after.root, base_result.after.actor,
-                base_result.after.branch, base_result.after.clock):
+        if base != base_result.after:
             _refuse("P3_BASE_STATE_CHANGED_AFTER_EFFECT")
         after = self._p3_identity(base)
         consequences = detached(base_result.consequences)
