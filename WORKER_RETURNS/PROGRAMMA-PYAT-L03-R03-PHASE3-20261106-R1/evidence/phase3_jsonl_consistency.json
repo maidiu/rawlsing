@@ -1,0 +1,71 @@
+{
+ "compact_current_query_rows": 104,
+ "comparisons": {
+  "1000": {
+   "cache_checks": {
+    "v2_cold_miss_write": true,
+    "v2_same_cache_files": true,
+    "v2_warm_hit": true
+   },
+   "facts_exact_equal": {
+    "v1": true,
+    "v2-cold": true,
+    "v2-warm": true
+   },
+   "pass": true,
+   "release_identity_equal": true,
+   "source_identity_equal": true
+  },
+  "200": {
+   "cache_checks": {
+    "v2_cold_miss_write": true,
+    "v2_same_cache_files": true,
+    "v2_warm_hit": true
+   },
+   "facts_exact_equal": {
+    "v1": true,
+    "v2-cold": true,
+    "v2-warm": true
+   },
+   "pass": true,
+   "release_identity_equal": true,
+   "source_identity_equal": true
+  }
+ },
+ "grouped": {
+  "1000": {
+   "capacity_fallback_equal": true,
+   "cold_all_facts_equal": true,
+   "incompatible_first_pass_equal": true,
+   "oracle_all_pass": true,
+   "oracle_checked_ops": 16,
+   "single_operation_equal": true,
+   "warm_all_rounds_facts_equal": true,
+   "warm_round_speeds": [
+    1.9724169266663838,
+    2.5683418877092015,
+    2.483844546689146
+   ],
+   "warm_speedup": 2.5313426196103603
+  },
+  "200": {
+   "capacity_fallback_equal": true,
+   "cold_all_facts_equal": true,
+   "incompatible_first_pass_equal": true,
+   "oracle_all_pass": true,
+   "oracle_checked_ops": 16,
+   "single_operation_equal": true,
+   "warm_all_rounds_facts_equal": true,
+   "warm_round_speeds": [
+    2.37622857095529,
+    2.399532006060507,
+    2.22435158955808
+   ],
+   "warm_speedup": 2.399532006060507
+  }
+ },
+ "note": "Parsed author compact_current_summary.json and compact_current_query entries in 02 JSONL; no hash/ref/replay mismatch across V0/V1/V2-cold/V2-warm for 13 ops x 2 n x 4 variants.",
+ "query_fact_material_mismatches": 0,
+ "query_fact_ref_replay_mismatches": 0,
+ "schema": "R03_PHASE3_JSONL_CONSISTENCY@1"
+}

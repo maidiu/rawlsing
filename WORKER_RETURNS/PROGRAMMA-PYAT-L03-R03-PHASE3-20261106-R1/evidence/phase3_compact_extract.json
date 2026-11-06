@@ -1,0 +1,1465 @@
+{
+ "author_evidence_commit": "141df637d49281fa1d33fa6ad275e09f0f6bd9d4",
+ "author_measurement_commit": "a85df66ec93a951d8fd50d751822b70569df94ef",
+ "comparisons": {
+  "1000": {
+   "cache_checks": {
+    "v2_cold_miss_write": true,
+    "v2_same_cache_files": true,
+    "v2_warm_hit": true
+   },
+   "facts_exact_equal": {
+    "v1": true,
+    "v2-cold": true,
+    "v2-warm": true
+   },
+   "pass": true,
+   "release_identity_equal": true,
+   "source_identity_equal": true,
+   "variants": {
+    "v0": {
+     "cache": {
+      "directory": null,
+      "eligible_hit": false,
+      "files": {
+       "enabled": false
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 0,
+      "read_misses": 0,
+      "writes": 0
+     },
+     "counts": {
+      "compact_conversions": 0,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 20.879393,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/v0_facts.jsonl",
+     "parent_wall_s": 21.289540218072943,
+     "phases": {
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 1.3824109999999958,
+       "wall_s": 1.399922581971623
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 1.208368,
+       "wall_s": 1.2225829620147124
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.261946,
+       "wall_s": 0.2622573879780248
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 6.031594000000009,
+       "wall_s": 6.149051090236753
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.11041099999999915,
+       "wall_s": 0.11054333089850843
+      },
+      "repository_commit": {
+       "count": 1,
+       "cpu_s": 0.062382999999998745,
+       "wall_s": 0.06249038502573967
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 9.145001,
+       "wall_s": 9.242195713915862
+      }
+     },
+     "ru_maxrss_bytes": 153800704
+    },
+    "v1": {
+     "cache": {
+      "directory": null,
+      "eligible_hit": false,
+      "files": {
+       "enabled": false
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 0,
+      "read_misses": 0,
+      "writes": 0
+     },
+     "counts": {
+      "compact_conversions": 1,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 22.168353,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/v1_facts.jsonl",
+     "parent_wall_s": 21.758666533976793,
+     "phases": {
+      "compact_conversion": {
+       "count": 1,
+       "cpu_s": 3.0497200000000007,
+       "wall_s": 2.2725552899064496
+      },
+      "facade_build": {
+       "count": 1,
+       "cpu_s": 12.707347,
+       "wall_s": 11.984235674026422
+      },
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 1.4191749999999974,
+       "wall_s": 1.4231171630090103
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 1.1641299999999999,
+       "wall_s": 1.1785744890803471
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.13171900000000036,
+       "wall_s": 0.13198312802705914
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 5.270434000000002,
+       "wall_s": 5.284115922055207
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.12066000000000088,
+       "wall_s": 0.12101714580785483
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 9.559823,
+       "wall_s": 9.608118720003404
+      }
+     },
+     "ru_maxrss_bytes": 263397376
+    },
+    "v2-cold": {
+     "cache": {
+      "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/cache",
+      "eligible_hit": false,
+      "files": {
+       "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/cache",
+       "enabled": true,
+       "file_count": 1,
+       "files": [
+        {
+         "bytes": 1716950,
+         "name": "c11-events-d.parquet"
+        }
+       ],
+       "total_bytes": 1716950
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 0,
+      "read_misses": 1,
+      "writes": 1
+     },
+     "counts": {
+      "compact_conversions": 1,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 21.801157,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/v2-cold_facts.jsonl",
+     "parent_wall_s": 21.549828035058454,
+     "phases": {
+      "compact_conversion": {
+       "count": 1,
+       "cpu_s": 3.157141000000001,
+       "wall_s": 2.3577304949285462
+      },
+      "facade_build": {
+       "count": 1,
+       "cpu_s": 12.285086,
+       "wall_s": 11.643929507001303
+      },
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 1.3982050000000008,
+       "wall_s": 1.4008869098033756
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 1.322375,
+       "wall_s": 1.4511578740784898
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.13852699999999984,
+       "wall_s": 0.14002135093323886
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 5.132747999999998,
+       "wall_s": 5.170595996198244
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.11566199999999327,
+       "wall_s": 0.11572903220076114
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 9.038863,
+       "wall_s": 9.196938025997952
+      }
+     },
+     "ru_maxrss_bytes": 272281600
+    },
+    "v2-warm": {
+     "cache": {
+      "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/cache",
+      "eligible_hit": true,
+      "files": {
+       "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/cache",
+       "enabled": true,
+       "file_count": 1,
+       "files": [
+        {
+         "bytes": 1716950,
+         "name": "c11-events-d.parquet"
+        }
+       ],
+       "total_bytes": 1716950
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 1,
+      "read_misses": 0,
+      "writes": 0
+     },
+     "counts": {
+      "compact_conversions": 1,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 21.247568,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n1000/v2-warm_facts.jsonl",
+     "parent_wall_s": 21.03120248403866,
+     "phases": {
+      "compact_conversion": {
+       "count": 1,
+       "cpu_s": 1.5466559999999987,
+       "wall_s": 0.7432522429153323
+      },
+      "facade_build": {
+       "count": 1,
+       "cpu_s": 11.341164,
+       "wall_s": 10.749141652951948
+      },
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 1.5253340000000026,
+       "wall_s": 1.5545537088764831
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 1.16097,
+       "wall_s": 1.1636215939652175
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.14292800000000128,
+       "wall_s": 0.1431649869773537
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 5.738184999999996,
+       "wall_s": 5.819537263130769
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.130073000000003,
+       "wall_s": 0.13046495208982378
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 9.705784,
+       "wall_s": 9.91690261696931
+      }
+     },
+     "ru_maxrss_bytes": 265728000
+    }
+   }
+  },
+  "200": {
+   "cache_checks": {
+    "v2_cold_miss_write": true,
+    "v2_same_cache_files": true,
+    "v2_warm_hit": true
+   },
+   "facts_exact_equal": {
+    "v1": true,
+    "v2-cold": true,
+    "v2-warm": true
+   },
+   "pass": true,
+   "release_identity_equal": true,
+   "source_identity_equal": true,
+   "variants": {
+    "v0": {
+     "cache": {
+      "directory": null,
+      "eligible_hit": false,
+      "files": {
+       "enabled": false
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 0,
+      "read_misses": 0,
+      "writes": 0
+     },
+     "counts": {
+      "compact_conversions": 0,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 5.589144,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/v0_facts.jsonl",
+     "parent_wall_s": 6.182535920059308,
+     "phases": {
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 0.35022299999999973,
+       "wall_s": 0.36143567226827145
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 0.26849700000000004,
+       "wall_s": 0.2713657219428569
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.05915899999999974,
+       "wall_s": 0.05941325891762972
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 1.594384999999999,
+       "wall_s": 1.7030868388246745
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.02928300000000128,
+       "wall_s": 0.029748338973149657
+      },
+      "repository_commit": {
+       "count": 1,
+       "cpu_s": 0.01253700000000002,
+       "wall_s": 0.012571975938044488
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 2.3500699999999997,
+       "wall_s": 2.666146066971123
+      }
+     },
+     "ru_maxrss_bytes": 63193088
+    },
+    "v1": {
+     "cache": {
+      "directory": null,
+      "eligible_hit": false,
+      "files": {
+       "enabled": false
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 0,
+      "read_misses": 0,
+      "writes": 0
+     },
+     "counts": {
+      "compact_conversions": 1,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 5.984156,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/v1_facts.jsonl",
+     "parent_wall_s": 6.555121291079558,
+     "phases": {
+      "compact_conversion": {
+       "count": 1,
+       "cpu_s": 1.6974040000000001,
+       "wall_s": 1.96735863504
+      },
+      "facade_build": {
+       "count": 1,
+       "cpu_s": 3.5967590000000005,
+       "wall_s": 3.927946210023947
+      },
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 0.26344299999999965,
+       "wall_s": 0.26461917208507657
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 0.23103,
+       "wall_s": 0.2315823669778183
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.030711000000000155,
+       "wall_s": 0.030833177966997027
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 1.1228549999999995,
+       "wall_s": 1.1376155921025202
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.02343000000000295,
+       "wall_s": 0.02343951293732971
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 1.883389,
+       "wall_s": 1.9446132800076157
+      }
+     },
+     "ru_maxrss_bytes": 135000064
+    },
+    "v2-cold": {
+     "cache": {
+      "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/cache",
+      "eligible_hit": false,
+      "files": {
+       "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/cache",
+       "enabled": true,
+       "file_count": 1,
+       "files": [
+        {
+         "bytes": 318780,
+         "name": "c11-events-2.parquet"
+        }
+       ],
+       "total_bytes": 318780
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 0,
+      "read_misses": 1,
+      "writes": 1
+     },
+     "counts": {
+      "compact_conversions": 1,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 5.778588,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/v2-cold_facts.jsonl",
+     "parent_wall_s": 5.402125180000439,
+     "phases": {
+      "compact_conversion": {
+       "count": 1,
+       "cpu_s": 1.616714,
+       "wall_s": 1.0413617179729044
+      },
+      "facade_build": {
+       "count": 1,
+       "cpu_s": 3.4792880000000004,
+       "wall_s": 2.92875198693946
+      },
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 0.2616669999999992,
+       "wall_s": 0.26273512188345194
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 0.260634,
+       "wall_s": 0.26200827094726264
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.024382000000000126,
+       "wall_s": 0.02448128303512931
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 1.0117379999999994,
+       "wall_s": 1.0265044729458168
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.022191000000000294,
+       "wall_s": 0.022206873050890863
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 1.8480560000000001,
+       "wall_s": 1.8728582749608904
+      }
+     },
+     "ru_maxrss_bytes": 142155776
+    },
+    "v2-warm": {
+     "cache": {
+      "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/cache",
+      "eligible_hit": true,
+      "files": {
+       "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/cache",
+       "enabled": true,
+       "file_count": 1,
+       "files": [
+        {
+         "bytes": 318780,
+         "name": "c11-events-2.parquet"
+        }
+       ],
+       "total_bytes": 318780
+      },
+      "legacy_in_memory_incidence_not_used": true,
+      "read_hits": 1,
+      "read_misses": 0,
+      "writes": 0
+     },
+     "counts": {
+      "compact_conversions": 1,
+      "fact_builds": 12,
+      "index_builds": 1,
+      "replay_builds": 12
+     },
+     "cpu_s": 5.008751999999999,
+     "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/compact_compare/n200/v2-warm_facts.jsonl",
+     "parent_wall_s": 4.336711187963374,
+     "phases": {
+      "compact_conversion": {
+       "count": 1,
+       "cpu_s": 1.115529,
+       "wall_s": 0.33062836597673595
+      },
+      "facade_build": {
+       "count": 1,
+       "cpu_s": 2.897233,
+       "wall_s": 2.1229724399745464
+      },
+      "fact_build": {
+       "count": 12,
+       "cpu_s": 0.2568270000000017,
+       "wall_s": 0.257251879083924
+      },
+      "fixture_build": {
+       "count": 1,
+       "cpu_s": 0.261773,
+       "wall_s": 0.2662040030118078
+      },
+      "index_build": {
+       "count": 1,
+       "cpu_s": 0.026686999999999905,
+       "wall_s": 0.026730922982096672
+      },
+      "query_execution": {
+       "count": 13,
+       "cpu_s": 1.0333980000000023,
+       "wall_s": 1.0363587426254526
+      },
+      "replay_build": {
+       "count": 12,
+       "cpu_s": 0.022944000000002518,
+       "wall_s": 0.022968754870817065
+      },
+      "validation_build": {
+       "count": 1,
+       "cpu_s": 1.7660369999999999,
+       "wall_s": 1.7765889669535682
+      }
+     },
+     "ru_maxrss_bytes": 109461504
+    }
+   }
+  }
+ },
+ "frozen_implementation": "409be32f7e4b4b961a360be1c8f44a17b5c62173",
+ "grouped": {
+  "1000": {
+   "capacity_fallback": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 1.4307508079800755,
+    "candidate_delta_pct": 60.745505173114076,
+    "candidate_wall_s": 2.2998676140559837,
+    "note": "capacity fallback is a bounded limit, not evidence of cheaper behavior",
+    "op_ids": [
+     "raw_Y",
+     "joint_XYZK"
+    ],
+    "scope": {
+     "capacity_fallbacks": 1,
+     "closed": false,
+     "core_build_attempts": 2,
+     "core_builds": 1,
+     "core_hits": 0,
+     "fallbacks": 0,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 1,
+     "open_groups": 1,
+     "raw_materializations": 1,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 0
+    }
+   },
+   "cold": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 6.774053458124399,
+    "candidate_wall_s": 6.227501135203056,
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 12,
+     "core_builds": 11,
+     "core_hits": 4,
+     "fallbacks": 1,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 11,
+     "raw_materializations": 13,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 2
+    }
+   },
+   "counters": {
+    "baseline": {
+     "calls": {
+      "_build_fact": 15,
+      "_eval_predicate": 13428,
+      "_evaluate_index_group_core": 0,
+      "_make_execution_replay_ref": 15,
+      "_routing_fact_for": 22001,
+      "_target_configuration": 10294,
+      "_weight_for": 10294
+     },
+     "times_s": {
+      "_build_fact": 2.1704732821090147,
+      "_make_execution_replay_ref": 0.1744306137552485
+     }
+    },
+    "candidate": {
+     "calls": {
+      "_build_fact": 15,
+      "_eval_predicate": 2,
+      "_evaluate_index_group_core": 0,
+      "_make_execution_replay_ref": 15,
+      "_routing_fact_for": 2,
+      "_target_configuration": 2,
+      "_weight_for": 1715
+     },
+     "times_s": {
+      "_build_fact": 2.062139042071067,
+      "_make_execution_replay_ref": 0.17690261115785688
+     }
+    },
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 13,
+     "core_builds": 11,
+     "core_hits": 19,
+     "fallbacks": 2,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 11,
+     "raw_materializations": 26,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 4
+    }
+   },
+   "facts_files": {
+    "baseline": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/grouped_compact/n1000/grouped_cold_baseline_facts.jsonl",
+    "candidate": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/grouped_compact/n1000/grouped_cold_candidate_facts.jsonl"
+   },
+   "incompatible_first_pass": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 3.5508360840613022,
+    "candidate_delta_pct": 25.413522209446924,
+    "candidate_wall_s": 4.453228600905277,
+    "op_ids": [
+     "raw_Y",
+     "joint_XYZK",
+     "cond_X1_Y",
+     "cond_Y1_X",
+     "xor_Z",
+     "minority_Y",
+     "zero_support_Y",
+     "ordered_O"
+    ],
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 8,
+     "core_builds": 8,
+     "core_hits": 0,
+     "fallbacks": 0,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 8,
+     "raw_materializations": 8,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 0
+    }
+   },
+   "oracle": {
+    "all_pass": true,
+    "checked_ops": 16,
+    "errors": {
+     "cond_X1_Y": [],
+     "cond_Y1_X": [],
+     "joint_XY": [],
+     "joint_XYZ": [],
+     "joint_XYZK": [],
+     "joint_XY_sibling": [],
+     "minority_Y": [],
+     "missing_M": [],
+     "ordered_O": [],
+     "raw_Y": [],
+     "raw_Y_sibling": [],
+     "unsupported_O": [],
+     "weighted_Y": [],
+     "weighted_Y_sibling": [],
+     "xor_Z": [],
+     "zero_support_Y": []
+    }
+   },
+   "per_op": {
+    "cond_X1_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.33780503808520734,
+     "cold_candidate_wall_s": 0.33188549196347594,
+     "speedup": 2.766575545214758,
+     "warm_baseline_wall_median_s": 0.342887170962058,
+     "warm_candidate_wall_median_s": 0.1239392040297389
+    },
+    "cond_Y1_X": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.3544772380264476,
+     "cold_candidate_wall_s": 0.3751316759735346,
+     "speedup": 2.535533809079798,
+     "warm_baseline_wall_median_s": 0.3441450500395149,
+     "warm_candidate_wall_median_s": 0.13572883501183242
+    },
+    "joint_XY": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.5268038149224594,
+     "cold_candidate_wall_s": 0.5411331210052595,
+     "speedup": 2.6227929560508705,
+     "warm_baseline_wall_median_s": 0.5206044160295278,
+     "warm_candidate_wall_median_s": 0.19849237997550517
+    },
+    "joint_XYZ": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.7324397530173883,
+     "cold_candidate_wall_s": 0.7579392559127882,
+     "speedup": 2.686300411828679,
+     "warm_baseline_wall_median_s": 0.7343314430909231,
+     "warm_candidate_wall_median_s": 0.27336162398569286
+    },
+    "joint_XYZK": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.9467493810225278,
+     "cold_candidate_wall_s": 0.9893076469888911,
+     "speedup": 2.8295595347828097,
+     "warm_baseline_wall_median_s": 0.950544083956629,
+     "warm_candidate_wall_median_s": 0.33593358693178743
+    },
+    "joint_XY_sibling": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.5213662199676037,
+     "cold_candidate_wall_s": 0.20539817900862545,
+     "speedup": 2.5951509781729936,
+     "warm_baseline_wall_median_s": 0.5202838430413976,
+     "warm_candidate_wall_median_s": 0.20048307301476598
+    },
+    "minority_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.18012626306153834,
+     "cold_candidate_wall_s": 0.18780551897361875,
+     "speedup": 2.5409512891608985,
+     "warm_baseline_wall_median_s": 0.17701257904991508,
+     "warm_candidate_wall_median_s": 0.06966390099842101
+    },
+    "missing_M": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.35890127706807107,
+     "cold_candidate_wall_s": 0.3511697760550305,
+     "speedup": 2.3318372833085785,
+     "warm_baseline_wall_median_s": 0.33637254394125193,
+     "warm_candidate_wall_median_s": 0.1442521510180086
+    },
+    "ordered_O": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.43940024997573346,
+     "cold_candidate_wall_s": 0.48523983999621123,
+     "speedup": 2.5829191522127233,
+     "warm_baseline_wall_median_s": 0.4574200010392815,
+     "warm_candidate_wall_median_s": 0.17709420004393905
+    },
+    "raw_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.4204994310857728,
+     "cold_candidate_wall_s": 0.4643263390753418,
+     "speedup": 2.3369079543593783,
+     "warm_baseline_wall_median_s": 0.3197872049640864,
+     "warm_candidate_wall_median_s": 0.13684201997239143
+    },
+    "raw_Y_sibling": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.2973177880048752,
+     "cold_candidate_wall_s": 0.1309542910894379,
+     "speedup": 2.2618610821826364,
+     "warm_baseline_wall_median_s": 0.311897458974272,
+     "warm_candidate_wall_median_s": 0.13789417105726898
+    },
+    "unsupported_O": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.027317626983858645,
+     "cold_candidate_wall_s": 0.03761683509219438,
+     "speedup": 0.7825051070572907,
+     "warm_baseline_wall_median_s": 0.02814642700832337,
+     "warm_candidate_wall_median_s": 0.03596964001189917
+    },
+    "weighted_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.36607041594106704,
+     "cold_candidate_wall_s": 0.22326270095072687,
+     "speedup": 1.7377201103036075,
+     "warm_baseline_wall_median_s": 0.3902182210003957,
+     "warm_candidate_wall_median_s": 0.22455757902935147
+    },
+    "weighted_Y_sibling": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.3958455550018698,
+     "cold_candidate_wall_s": 0.22843401902355254,
+     "speedup": 1.7063672861603727,
+     "warm_baseline_wall_median_s": 0.3879283679416403,
+     "warm_candidate_wall_median_s": 0.22734165797010064
+    },
+    "xor_Z": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.6958390199579298,
+     "cold_candidate_wall_s": 0.7373053000774235,
+     "speedup": 3.8132800702147485,
+     "warm_baseline_wall_median_s": 0.6798327299766243,
+     "warm_candidate_wall_median_s": 0.17828030395321548
+    },
+    "zero_support_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.17309438600204885,
+     "cold_candidate_wall_s": 0.18059114401694387,
+     "speedup": 2.652173835410384,
+     "warm_baseline_wall_median_s": 0.17551063501741737,
+     "warm_candidate_wall_median_s": 0.0661761430092156
+    }
+   },
+   "process": {
+    "argv": [
+     "WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py",
+     "--mode",
+     "grouped",
+     "--n",
+     "1000",
+     "--rounds",
+     "3",
+     "--outdir",
+     ".local-logs/pyat-l03-c4/grouped_compact/n1000"
+    ],
+    "cpu_count": 16,
+    "env": {
+     "PYTHONDONTWRITEBYTECODE": "1",
+     "PYTHONHASHSEED": "0",
+     "RAWLSING_C11_ACCELERATOR_DIR": null,
+     "TMPDIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/tmp"
+    },
+    "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+    "machine": "x86_64",
+    "pid": 51822,
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only",
+    "ru_maxrss_bytes": 350818304,
+    "ru_stime_s": 2.614065,
+    "ru_utime_s": 181.294351
+   },
+   "release": {
+    "compact": true,
+    "release_ref": {
+     "content_hash": "d085f4531552b58fcc51300622dcb882371317af3f0ecd099c9c10615ff2fd5c",
+     "kind": "C11LogicalRelease",
+     "object_id": "REL-compact-current"
+    },
+    "replay_ref": {
+     "content_hash": "57fc7ea8bfcd37d00f0d0b1e122d138dd6ff8ab90c4f7c65f7dc539ae4c8026c",
+     "kind": "C11Internal:ReplayManifest",
+     "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:57fc7ea8bfcd37d00f0d0b1e122d138dd6ff8ab90c4f7c65f7dc539ae4c8026c"
+    },
+    "selector_count": 9000
+   },
+   "setup_s": {
+    "compact_release_build": 12.382071762927808,
+    "fixture_build": {
+     "fixture_build": {
+      "count": 1,
+      "cpu_s": 1.261217,
+      "wall_s": 1.2827151529490948
+     }
+    }
+   },
+   "single_operation": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 0.44558544107712805,
+    "candidate_delta_pct": 9.042317634705599,
+    "candidate_wall_s": 0.48587669199332595,
+    "op_id": "raw_Y",
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 1,
+     "core_builds": 1,
+     "core_hits": 0,
+     "fallbacks": 0,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 1,
+     "raw_materializations": 1,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 0
+    }
+   },
+   "source": {
+    "decoder_metadata_digest": "d48d7e53aef988eb6e71a2cf99bd1da008aa8f3a8d24ede08a8c73bcc01261e0",
+    "physical_cell_count": 9000,
+    "row_count": 1000,
+    "source_sha256": "55c7a64f32bf59956cc5d10caf172979c06782e6938e39d56d8efac66dc97c56"
+   },
+   "warm": {
+    "all_rounds_facts_equal": true,
+    "baseline_wall_median_s": 6.724022648879327,
+    "candidate_wall_median_s": 2.6563068139366806,
+    "rounds": [
+     {
+      "baseline_cpu_s": 6.635707000000004,
+      "baseline_wall_s": 6.724022648879327,
+      "candidate_cpu_s": 3.0706779999999867,
+      "candidate_wall_s": 3.4090270459419116,
+      "round": 1,
+      "scope": {
+       "capacity_fallbacks": 0,
+       "closed": false,
+       "core_build_attempts": 13,
+       "core_builds": 11,
+       "core_hits": 19,
+       "fallbacks": 2,
+       "fingerprint_failures": 0,
+       "max_cached_members": 500000,
+       "max_groups": 64,
+       "open_groups": 11,
+       "raw_materializations": 26,
+       "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+       "weighted_materializations": 4
+      }
+     },
+     {
+      "baseline_cpu_s": 6.743925999999988,
+      "baseline_wall_s": 6.822304056840949,
+      "candidate_cpu_s": 2.63172000000003,
+      "candidate_wall_s": 2.6563068139366806,
+      "round": 2,
+      "scope": {
+       "capacity_fallbacks": 0,
+       "closed": false,
+       "core_build_attempts": 14,
+       "core_builds": 11,
+       "core_hits": 34,
+       "fallbacks": 3,
+       "fingerprint_failures": 0,
+       "max_cached_members": 500000,
+       "max_groups": 64,
+       "open_groups": 11,
+       "raw_materializations": 39,
+       "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+       "weighted_materializations": 6
+      }
+     },
+     {
+      "baseline_cpu_s": 6.436473999999976,
+      "baseline_wall_s": 6.512184739927761,
+      "candidate_cpu_s": 2.600287999999992,
+      "candidate_wall_s": 2.6218165499158204,
+      "round": 3,
+      "scope": {
+       "capacity_fallbacks": 0,
+       "closed": false,
+       "core_build_attempts": 15,
+       "core_builds": 11,
+       "core_hits": 49,
+       "fallbacks": 4,
+       "fingerprint_failures": 0,
+       "max_cached_members": 500000,
+       "max_groups": 64,
+       "open_groups": 11,
+       "raw_materializations": 52,
+       "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+       "weighted_materializations": 8
+      }
+     }
+    ],
+    "speedup": 2.5313426196103603
+   }
+  },
+  "200": {
+   "capacity_fallback": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 0.4060347870690748,
+    "candidate_delta_pct": 46.76698744091779,
+    "candidate_wall_s": 0.5959250249434263,
+    "note": "capacity fallback is a bounded limit, not evidence of cheaper behavior",
+    "op_ids": [
+     "raw_Y",
+     "joint_XYZK"
+    ],
+    "scope": {
+     "capacity_fallbacks": 1,
+     "closed": false,
+     "core_build_attempts": 2,
+     "core_builds": 1,
+     "core_hits": 0,
+     "fallbacks": 0,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 1,
+     "open_groups": 1,
+     "raw_materializations": 1,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 0
+    }
+   },
+   "cold": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 1.5758440749486908,
+    "candidate_wall_s": 1.2836614641128108,
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 12,
+     "core_builds": 11,
+     "core_hits": 4,
+     "fallbacks": 1,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 11,
+     "raw_materializations": 13,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 2
+    }
+   },
+   "counters": {
+    "baseline": {
+     "calls": {
+      "_build_fact": 15,
+      "_eval_predicate": 2682,
+      "_evaluate_index_group_core": 0,
+      "_make_execution_replay_ref": 15,
+      "_routing_fact_for": 4401,
+      "_target_configuration": 2056,
+      "_weight_for": 2056
+     },
+     "times_s": {
+      "_build_fact": 0.36862085305619985,
+      "_make_execution_replay_ref": 0.030100717907771468
+     }
+    },
+    "candidate": {
+     "calls": {
+      "_build_fact": 15,
+      "_eval_predicate": 2,
+      "_evaluate_index_group_core": 0,
+      "_make_execution_replay_ref": 15,
+      "_routing_fact_for": 2,
+      "_target_configuration": 2,
+      "_weight_for": 343
+     },
+     "times_s": {
+      "_build_fact": 0.4034686670638621,
+      "_make_execution_replay_ref": 0.03685594873968512
+     }
+    },
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 13,
+     "core_builds": 11,
+     "core_hits": 19,
+     "fallbacks": 2,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 11,
+     "raw_materializations": 26,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 4
+    }
+   },
+   "facts_files": {
+    "baseline": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/grouped_compact/n200/grouped_cold_baseline_facts.jsonl",
+    "candidate": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/grouped_compact/n200/grouped_cold_candidate_facts.jsonl"
+   },
+   "incompatible_first_pass": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 0.8037007099483162,
+    "candidate_delta_pct": -3.586747972260751,
+    "candidate_wall_s": 0.7748739910311997,
+    "op_ids": [
+     "raw_Y",
+     "joint_XYZK",
+     "cond_X1_Y",
+     "cond_Y1_X",
+     "xor_Z",
+     "minority_Y",
+     "zero_support_Y",
+     "ordered_O"
+    ],
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 8,
+     "core_builds": 8,
+     "core_hits": 0,
+     "fallbacks": 0,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 8,
+     "raw_materializations": 8,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 0
+    }
+   },
+   "oracle": {
+    "all_pass": true,
+    "checked_ops": 16,
+    "errors": {
+     "cond_X1_Y": [],
+     "cond_Y1_X": [],
+     "joint_XY": [],
+     "joint_XYZ": [],
+     "joint_XYZK": [],
+     "joint_XY_sibling": [],
+     "minority_Y": [],
+     "missing_M": [],
+     "ordered_O": [],
+     "raw_Y": [],
+     "raw_Y_sibling": [],
+     "unsupported_O": [],
+     "weighted_Y": [],
+     "weighted_Y_sibling": [],
+     "xor_Z": [],
+     "zero_support_Y": []
+    }
+   },
+   "per_op": {
+    "cond_X1_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.07048581494018435,
+     "cold_candidate_wall_s": 0.07258708297740668,
+     "speedup": 2.343059753534373,
+     "warm_baseline_wall_median_s": 0.06726338097359985,
+     "warm_candidate_wall_median_s": 0.028707497054710984
+    },
+    "cond_Y1_X": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.09308327292092144,
+     "cold_candidate_wall_s": 0.07810864399652928,
+     "speedup": 2.390438872600938,
+     "warm_baseline_wall_median_s": 0.072878462029621,
+     "warm_candidate_wall_median_s": 0.030487481970340014
+    },
+    "joint_XY": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.12615928903687745,
+     "cold_candidate_wall_s": 0.11206703307107091,
+     "speedup": 2.248260541379596,
+     "warm_baseline_wall_median_s": 0.10676119895651937,
+     "warm_candidate_wall_median_s": 0.0474861329421401
+    },
+    "joint_XYZ": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.17574439488817006,
+     "cold_candidate_wall_s": 0.15951988997403532,
+     "speedup": 2.4866177454423397,
+     "warm_baseline_wall_median_s": 0.14471685595344752,
+     "warm_candidate_wall_median_s": 0.058198272017762065
+    },
+    "joint_XYZK": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.2298719419632107,
+     "cold_candidate_wall_s": 0.19737570104189217,
+     "speedup": 2.500295494498351,
+     "warm_baseline_wall_median_s": 0.18641608394682407,
+     "warm_candidate_wall_median_s": 0.07455762103199959
+    },
+    "joint_XY_sibling": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.10640459600836039,
+     "cold_candidate_wall_s": 0.03936977393459529,
+     "speedup": 2.473475287506041,
+     "warm_baseline_wall_median_s": 0.10866259399335831,
+     "warm_candidate_wall_median_s": 0.04393114196136594
+    },
+    "minority_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.0749345439253375,
+     "cold_candidate_wall_s": 0.03957193298265338,
+     "speedup": 2.5397817523676345,
+     "warm_baseline_wall_median_s": 0.03938818501774222,
+     "warm_candidate_wall_median_s": 0.015508492011576891
+    },
+    "missing_M": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.07811425707768649,
+     "cold_candidate_wall_s": 0.0781958979787305,
+     "speedup": 2.1163933895289686,
+     "warm_baseline_wall_median_s": 0.07397353195119649,
+     "warm_candidate_wall_median_s": 0.034952637972310185
+    },
+    "ordered_O": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.09611507400404662,
+     "cold_candidate_wall_s": 0.09721966704819351,
+     "speedup": 2.3902669492194413,
+     "warm_baseline_wall_median_s": 0.09838196798227727,
+     "warm_candidate_wall_median_s": 0.04115940607152879
+    },
+    "raw_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.09136575600132346,
+     "cold_candidate_wall_s": 0.10250438807997853,
+     "speedup": 2.223996405722852,
+     "warm_baseline_wall_median_s": 0.06555654399562627,
+     "warm_candidate_wall_median_s": 0.02947691094595939
+    },
+    "raw_Y_sibling": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.06466660695150495,
+     "cold_candidate_wall_s": 0.02572191401850432,
+     "speedup": 2.190939343329222,
+     "warm_baseline_wall_median_s": 0.06585987110156566,
+     "warm_candidate_wall_median_s": 0.03006010700482875
+    },
+    "unsupported_O": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.00733614806085825,
+     "cold_candidate_wall_s": 0.009192666970193386,
+     "speedup": 0.8536692778452546,
+     "warm_baseline_wall_median_s": 0.0077738710679113865,
+     "warm_candidate_wall_median_s": 0.009106420096941292
+    },
+    "weighted_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.07750536210369319,
+     "cold_candidate_wall_s": 0.04744347697123885,
+     "speedup": 1.753796987846599,
+     "warm_baseline_wall_median_s": 0.08712915692012757,
+     "warm_candidate_wall_median_s": 0.049680297961458564
+    },
+    "weighted_Y_sibling": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.08020419406238943,
+     "cold_candidate_wall_s": 0.04261496907565743,
+     "speedup": 1.6257627278123883,
+     "warm_baseline_wall_median_s": 0.08106149698141962,
+     "warm_candidate_wall_median_s": 0.04986059502698481
+    },
+    "xor_Z": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.15911187301389873,
+     "cold_candidate_wall_s": 0.1434729560278356,
+     "speedup": 3.4644059107339094,
+     "warm_baseline_wall_median_s": 0.13893572404049337,
+     "warm_candidate_wall_median_s": 0.04010376601945609
+    },
+    "zero_support_Y": {
+     "all_facts_equal": true,
+     "cold_baseline_wall_s": 0.04474094999022782,
+     "cold_candidate_wall_s": 0.038695469964295626,
+     "speedup": 2.677732324616653,
+     "warm_baseline_wall_median_s": 0.04007594601716846,
+     "warm_candidate_wall_median_s": 0.014966374961659312
+    }
+   },
+   "process": {
+    "argv": [
+     "WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py",
+     "--mode",
+     "grouped",
+     "--n",
+     "200",
+     "--rounds",
+     "3",
+     "--outdir",
+     ".local-logs/pyat-l03-c4/grouped_compact/n200"
+    ],
+    "cpu_count": 16,
+    "env": {
+     "PYTHONDONTWRITEBYTECODE": "1",
+     "PYTHONHASHSEED": "0",
+     "RAWLSING_C11_ACCELERATOR_DIR": null,
+     "TMPDIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-l03-c4/tmp"
+    },
+    "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+    "machine": "x86_64",
+    "pid": 51789,
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only",
+    "ru_maxrss_bytes": 172097536,
+    "ru_stime_s": 0.673569,
+    "ru_utime_s": 42.02442
+   },
+   "release": {
+    "compact": true,
+    "release_ref": {
+     "content_hash": "011843ce7617d89514cd27c60247654063deeca5941362c9db6ef3ff9b6daf0f",
+     "kind": "C11LogicalRelease",
+     "object_id": "REL-compact-current"
+    },
+    "replay_ref": {
+     "content_hash": "0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5",
+     "kind": "C11Internal:ReplayManifest",
+     "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5"
+    },
+    "selector_count": 1800
+   },
+   "setup_s": {
+    "compact_release_build": 3.1034369169501588,
+    "fixture_build": {
+     "fixture_build": {
+      "count": 1,
+      "cpu_s": 0.290613,
+      "wall_s": 0.30198666895739734
+     }
+    }
+   },
+   "single_operation": {
+    "all_facts_equal": true,
+    "baseline_wall_s": 0.1147994720377028,
+    "candidate_delta_pct": 47.905419835150354,
+    "candidate_wall_s": 0.16979464108590037,
+    "op_id": "raw_Y",
+    "scope": {
+     "capacity_fallbacks": 0,
+     "closed": false,
+     "core_build_attempts": 1,
+     "core_builds": 1,
+     "core_hits": 0,
+     "fallbacks": 0,
+     "fingerprint_failures": 0,
+     "max_cached_members": 500000,
+     "max_groups": 64,
+     "open_groups": 1,
+     "raw_materializations": 1,
+     "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+     "weighted_materializations": 0
+    }
+   },
+   "source": {
+    "decoder_metadata_digest": "86988d2ca529eb1632af8e8d3d712cd429830bfaf6268d01a3f1e8f04d536bc5",
+    "physical_cell_count": 1800,
+    "row_count": 200,
+    "source_sha256": "8ca4fd183f433bac94ecd59a7eb72d02733cd70e435d10ba3ae94f7b592420ff"
+   },
+   "warm": {
+    "all_rounds_facts_equal": true,
+    "baseline_wall_median_s": 1.4220060480292886,
+    "candidate_wall_median_s": 0.5926180790411308,
+    "rounds": [
+     {
+      "baseline_cpu_s": 1.3754110000000015,
+      "baseline_wall_s": 1.3938304550247267,
+      "candidate_cpu_s": 0.5800019999999968,
+      "candidate_wall_s": 0.5865725511685014,
+      "round": 1,
+      "scope": {
+       "capacity_fallbacks": 0,
+       "closed": false,
+       "core_build_attempts": 13,
+       "core_builds": 11,
+       "core_hits": 19,
+       "fallbacks": 2,
+       "fingerprint_failures": 0,
+       "max_cached_members": 500000,
+       "max_groups": 64,
+       "open_groups": 11,
+       "raw_materializations": 26,
+       "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+       "weighted_materializations": 4
+      }
+     },
+     {
+      "baseline_cpu_s": 1.3983080000000108,
+      "baseline_wall_s": 1.4220060480292886,
+      "candidate_cpu_s": 0.5862639999999999,
+      "candidate_wall_s": 0.5926180790411308,
+      "round": 2,
+      "scope": {
+       "capacity_fallbacks": 0,
+       "closed": false,
+       "core_build_attempts": 14,
+       "core_builds": 11,
+       "core_hits": 34,
+       "fallbacks": 3,
+       "fingerprint_failures": 0,
+       "max_cached_members": 500000,
+       "max_groups": 64,
+       "open_groups": 11,
+       "raw_materializations": 39,
+       "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+       "weighted_materializations": 6
+      }
+     },
+     {
+      "baseline_cpu_s": 1.47942299999999,
+      "baseline_wall_s": 1.587857914972119,
+      "candidate_cpu_s": 0.6671230000000001,
+      "candidate_wall_s": 0.713852037792094,
+      "round": 3,
+      "scope": {
+       "capacity_fallbacks": 0,
+       "closed": false,
+       "core_build_attempts": 15,
+       "core_builds": 11,
+       "core_hits": 49,
+       "fallbacks": 4,
+       "fingerprint_failures": 0,
+       "max_cached_members": 500000,
+       "max_groups": 64,
+       "open_groups": 11,
+       "raw_materializations": 52,
+       "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+       "weighted_materializations": 8
+      }
+     }
+    ],
+    "speedup": 2.399532006060507
+   }
+  }
+ },
+ "production_tests_unchanged": true,
+ "schema": "R03_PHASE3_COMPACT_EXTRACT@1"
+}
