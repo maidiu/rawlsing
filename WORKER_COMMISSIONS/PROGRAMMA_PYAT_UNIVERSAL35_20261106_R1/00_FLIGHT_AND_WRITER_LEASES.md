@@ -68,3 +68,8 @@ F review ebd20c165bb275f66e4b3e2210535e96eecaf2ac accepts A and C at sourcefree 
 G independent6334063ab290d6497e7b8047eb1292b69661f51e ACCEPT_SCOPED repairedE7d1aadfd4f655930ca2e65ea64cfa3df180a5f7b / code7920b7fca4471c035f5b728dace9e1777c68c074:16+25PASS, eightmismatch/missing/nullprobesrefused, exactpositiveexistingownerprofile. Oldnegativee714at15da retained. This conditionallyunlocksDauthenticcompatible2targetRAWbind, notfullFF/F4/native/science/protectedacceptance.
 
 Fresh protected4df35cba8a254e50622d4cb3059625c82e0cb74b addsCAS3 documentary15return/currentprogress write-through afterd119; productcode unchanged. Any isolated#705receivingpatch mustpreserve those newerobservations; no blindoverwrite/mergeintoalreadymerged696.
+
+
+## Actual three-lane continuation after scoped reviews
+
+D remains existing original B/D author/session, owns actual F2-F4 payload binding repair plus original execution. A resumed as sole isolated existing-guide writer from protected4df35cba8a254e50622d4cb3059625c82e0cb74b, job pyat-universal35-guide-currentness-20261106-r1 PID98539; source-code branch9eaf9dd145409d8aedf583226c7c99d663c43abc preserved. F resumes original unfinished finite source/provenance qualification, job pyat-universal35-source-qualification-20261106-r1 PID98543, on branch codex/pyat-universal35-source-qualification-20261106-r1 from its own ABC review ebd20c165bb275f66e4b3e2210535e96eecaf2ac; no product/guide edits or repeated119path census. Full prompts published6d2a3dffb. HQ reserves pairedCURRENT_PROGRESS and this ordinary receivingrecord and will not concurrently edit A leased guide paths. No new protected/scientific/native authority.
