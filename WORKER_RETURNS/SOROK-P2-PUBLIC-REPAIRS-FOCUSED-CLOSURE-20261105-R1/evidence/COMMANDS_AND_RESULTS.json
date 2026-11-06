@@ -1,0 +1,31 @@
+{
+  "interval": [
+    {
+      "command": "git archive 41bf... product/projection + git archive 76d5... interval | tar -x -C snapshot-interval",
+      "result": "exact committed sources staged in checkout-local .local-logs snapshot"
+    },
+    {
+      "command": "python3 -B .local-logs/p2-public-repairs-review/probe_interval_public.py",
+      "result": "all focused public-key/receipt checks true; 29/29 files exist; no pycache; no reserved keys; privacy clean"
+    }
+  ],
+  "later": [
+    {
+      "command": "git archive 41bf... product/projection + git archive b71624f later | tar -x -C snapshot-later",
+      "result": "exact committed sources staged in checkout-local .local-logs snapshot"
+    },
+    {
+      "command": "python3 -B .local-logs/p2-public-repairs-review/probe_later_public.py",
+      "result": "all focused public-boundary/causal checks true; 0 privacy hits; observation no auto-help; explicit do-help 0->1; ACTUAL REFUSED/SCHEDULED OK; causal/source/cold/cut restore pass"
+    }
+  ],
+  "not_run": [
+    "full inherited 6 interval tests",
+    "full inherited 8 later tests",
+    "full inherited 7 fanin tests",
+    "full inherited 55 estate",
+    "new framework/unrelated probes"
+  ],
+  "schema": "SOROK_P2_PUBLIC_REPAIRS_COMMANDS@1",
+  "snapshot": "Git-archive extraction under .local-logs/p2-public-repairs-review only"
+}
