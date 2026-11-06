@@ -1,0 +1,77 @@
+{
+  "D_code": {
+    "changed_post": "REFUSED SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+    "extra_precall_removed": true,
+    "old_abba": "REFUSED SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+    "positive": {
+      "anti": true,
+      "candidates": 18,
+      "facts": 30,
+      "op_anti": true,
+      "ops": 15,
+      "resolver": "A,A,A"
+    },
+    "restore": "ACCEPTED 30/15/18",
+    "revoked_after": "REFUSED SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER",
+    "revoked_before": "REFUSED SOURCE_READ_NOT_CURRENT"
+  },
+  "F_local_input": {
+    "anchors_match": {
+      "commission": true,
+      "custody": true,
+      "user_authorization": true
+    },
+    "auth_sha256": "18b2b57188a91a4af25c53b67c0e1ff1c8b848ac823c2d3391a1a72e5517edb4",
+    "cached_after_auth_change": "ACCEPTED CURRENT_GRANTED",
+    "cached_after_grant_revoke": "ACCEPTED CURRENT_GRANTED",
+    "fresh_after_auth_change": "REFUSED SOURCE_READ_USER_AUTHORIZATION_CHANGED",
+    "fresh_after_grant_revoke": "REFUSED SOURCE_READ_LOCAL_ENGINEERING_GRANT_CHANGED_OR_REVOKED",
+    "fresh_auth_missing": "REFUSED SOURCE_READ_USER_AUTHORIZATION_MISSING",
+    "fresh_before": "ACCEPTED CURRENT_GRANTED",
+    "fresh_load_composed_use": "PASS",
+    "grant_sha256": "9e433cd95600c0634b38a08781eea851086fc8208739a6f29e6c83bbe58a88c7",
+    "mismatches_refused": [
+      "host",
+      "purpose",
+      "consumer",
+      "scope",
+      "source_sha",
+      "source_format",
+      "custody"
+    ],
+    "retention": {
+      "export": "DENY",
+      "native_science": "NOT_GRANTED",
+      "publication": "DENY",
+      "raw_records": "NOT_COMMITTED",
+      "retention": "SESSION_LOCAL_ONLY"
+    },
+    "valid_decisions": 35
+  },
+  "actual_original": "NOT_RUN",
+  "preserved": {
+    "frontier": {
+      "eligible": 683,
+      "held": 11,
+      "no_explicit": 28,
+      "operations": 694,
+      "sources": 7
+    },
+    "historical": {
+      "operations": 991,
+      "sources": 20
+    },
+    "plan": {
+      "items": 18276,
+      "operations": 18467,
+      "slots": 18413
+    },
+    "route": {
+      "qualified": 676,
+      "unavailable": 249,
+      "unknown": 4705
+    }
+  },
+  "raw_bytes_read": false,
+  "sourcefree": true
+}
