@@ -4,7 +4,7 @@
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
-**Implementation SHA:** `__IMPLEMENTATION_SHA__`
+**Implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
 **Authority:** sourcefree engineering only. No original35, native source/science,
 actor/V3, human, Sorok, protected CAS, or merge authority is claimed.
