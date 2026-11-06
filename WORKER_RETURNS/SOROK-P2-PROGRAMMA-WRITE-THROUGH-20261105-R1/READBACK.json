@@ -2,48 +2,57 @@
   "branch": "codex/sorok-programma-product-intake-20261105-r1",
   "changed_files": [
     {
-      "bytes": 20421,
-      "git_blob_sha1": "56dfacab4648d6bd2b77ce816aaabecb3078deeb",
+      "bytes": 20434,
+      "git_blob_sha1": "c49f6aea6578f5e42e4cc0ac17dc05cf1dee5052",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_HQ_WRITE_THROUGH_DECISION.md",
-      "sha256": "845ffd945dfff51a9b07dc0416700358c392621d8ffaea00fa1f509154b11602"
+      "sha256": "f650dc9d04d1b1ae3e0e7bc6414938903af270b3c0d1e2d8958a0282125c5f41"
     },
     {
-      "bytes": 648884,
-      "git_blob_sha1": "248aadfaaec6588c6b168b9cdf9f5c7dcb494689",
+      "bytes": 652323,
+      "git_blob_sha1": "b19f9ec7a98293316c3afba15ed2a868bcc5359c",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json",
-      "sha256": "050c138037e1c5e429d746e25ee376e4a8ff084252313869a795263e512f465f"
+      "sha256": "e4aa0fb1cf7ca5df3f0fb8262cc6902d562b7e95d598fa7dbada58d129686c6f"
     },
     {
-      "bytes": 396127,
-      "git_blob_sha1": "25b87837e9d77c01f2976a2fd30d5bd76d6088c7",
+      "bytes": 399566,
+      "git_blob_sha1": "07eaf9a1988ccef1c4bd5a250003114fe5ede324",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json",
-      "sha256": "7dee968b85df9622d8588b42d71af39d8c0bc411ed82ec12d5f10a7a1fb5a090"
+      "sha256": "894c87707f5e674f0953da91f66c3fb4d8b3606bde8371dd0eb942fcf85d8c1a"
     },
     {
-      "bytes": 651352,
-      "git_blob_sha1": "04cbc08265d3c25ae08275d1b80e5e7ff6d85887",
+      "bytes": 654791,
+      "git_blob_sha1": "0b57a0bd327dda7f9e944e249bb81bffd827ac26",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json",
-      "sha256": "03b64e8bee27041a1ff2ef949f44185104ccfe8781924954c7f917f0eaf5ef36"
+      "sha256": "8266f9a544beefad848cdb564891fcd64f911dd52ba54caf89c42eedafa13f86"
     },
     {
-      "bytes": 64894,
-      "git_blob_sha1": "66783e673db104a68cb7910c4cb7b4b146813f0e",
+      "bytes": 64907,
+      "git_blob_sha1": "ff162b95ca25d286fd4ea11da28d2b2573a8daf2",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md",
-      "sha256": "2914d34115cb22c92afa221fea8591165d387386165d259418df74ffe7fae715"
+      "sha256": "6a7863718057a658527f097f477b0fcc70e40afb20006cb78302197b4becdf8f"
     },
     {
-      "bytes": 1239426,
-      "git_blob_sha1": "60c824587ff1dc666130d45a35abb8b517a536d8",
+      "bytes": 1270099,
+      "git_blob_sha1": "e0a89102e1d1f3b4b7e7d7828bb6d2515db687af",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl",
-      "sha256": "14c6c280048ce20f6d7cb698dc144f2928fd9a4030ef71f53ca1f6c4624bbfc6"
+      "sha256": "a47ee754ae4a21953c8fc33f81af8ee6e974e498fd23cb3283b2822a0f77c2b3"
     },
     {
-      "bytes": 521455,
-      "git_blob_sha1": "f529506b03717ff38b7a085db297d79836db5cbb",
+      "bytes": 533792,
+      "git_blob_sha1": "e311c8a11151ac4dda93490376aaa3cf16e220f1",
       "path": "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl",
-      "sha256": "2979c65fde3e9347c5fc4d15305a82d1cb9c8726f48e596d33c93ece44c6742e"
+      "sha256": "4440a7ad43103a0cec06356533279db0cc06a47ffbdc9ea93a759366fa6fcd12"
     }
   ],
+  "closure": {
+    "commit": "3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81",
+    "path": "WORKER_RETURNS/SOROK-P2-PUBLIC-REPAIRS-FOCUSED-CLOSURE-20261105-R1",
+    "tests": "no full suite rerun; original oracles PASS",
+    "verdicts": {
+      "76d5a3d13e": "ACCEPT_SCOPED_TEST_ONLY",
+      "b71624f21": "ACCEPT_SCOPED_TEST_ONLY"
+    }
+  },
   "conserved_counts": {
     "sorok_07_assets": 304,
     "sorok_08_seams": 22,
@@ -56,48 +65,40 @@
   "environment": {
     "platform": "macOS-13.7.8-x86_64-i386-64bit",
     "python": "3.11.3",
-    "readback_at_utc": "2026-11-06T02:34:33.861016+00:00"
+    "readback_at_utc": "2026-11-06T02:53:04.422253+00:00"
   },
   "interval": {
-    "final_repair": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
-    "final_status": "FINAL_PUBLIC_KEY_AND_CENSUS_FIX_AUTHOR_TESTED_NOT_ACCEPTED",
-    "original": "bdadbc57c2664d3155a97853422e74b6128261f8",
-    "original_review": "f1a2872487b3aa492632a497ad7481e8529d937e REVISE",
-    "primary_closure": "89b33453eff13d8a3638a97cf516438c42e7af4f REVISE; primary no-auto-help PASS",
-    "primary_repair": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+    "final": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+    "historical_revise": [
+      "bdadbc57",
+      "7a256ed4"
+    ],
+    "primary_positive": "89b334",
+    "privacy_hits": 0,
     "public_keys": [
       "admission_status",
       "c9_public"
     ],
+    "publication_receipt_placeholders": "NON_GATING; exact SHA supplied by review",
     "pyc_entries": 0,
     "receipt_files": 29,
-    "tests": "6 PASS in78.34s + original privacy/receipt oracle PASS"
+    "status": "ACCEPT_SCOPED_TEST_ONLY@3e04b6c"
   },
   "later_event": {
-    "code_commit": "4bdba46c4d3a667a9cd7845eb57caa980df76373",
-    "explicit_help_encounters": "0->1",
-    "final_independent_review": "NOT_RUN",
-    "final_repair": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
-    "final_status": "PUBLIC_BOUNDARY_REPAIR_AUTHOR_TESTED_NOT_ACCEPTED",
+    "code": "4bdba46c4d3a667a9cd7845eb57caa980df76373",
+    "explicit_help_encounters": "0->1 ACTUAL refuse/SCHEDULED accept",
+    "final": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+    "historical_revise": "76fdb624/f1a287",
     "observation_encounters": "0->0",
-    "original": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
-    "original_review": "f1a2872487b3aa492632a497ad7481e8529d937e REVISE",
     "public_privacy_hits": 0,
-    "tests": "8 PASS"
-  },
-  "lifecycle": {
-    "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
-    "review": "6398888f1d28152b5d29fef816f0bb45e77dd43b",
-    "status": "ACCEPT_SCOPED_TEST_ONLY",
-    "unchanged": true
+    "source_history_cold_cut_restore": "intact",
+    "status": "ACCEPT_SCOPED_TEST_ONLY@3e04b6c"
   },
   "not_run": [
-    "no product suite rerun",
-    "exact 25d review RUNNING retry2",
-    "76d5 import RUNNING",
-    "later b716 not imported",
-    "final interval key/census fix author-only",
-    "final later repair independent review NOT_RUN",
+    "no product tests rerun",
+    "no full suite rerun",
+    "final cut closure RUNNING",
+    "final receiving delta RUNNING",
     "no native/human/B/Pyat/protected execution"
   ],
   "pr697": {
@@ -105,8 +106,8 @@
     "state": "OPEN_UNMERGED"
   },
   "pr699": {
-    "branch": "b6d3f8d2b946a38f6336361c2b625c1260699100",
-    "state": "OPEN_UNMERGED"
+    "branch": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
+    "state": "DRAFT_UNMERGED"
   },
   "preserved_holds": [
     "no automatic dependent READY/native/human/B/protected promotion",
@@ -114,27 +115,27 @@
     "A producer remains closed duplicate #690"
   ],
   "product": {
-    "interval_import": "RUNNING sorok-p2-final-interval-import-20261105-r1",
-    "later_event_import": "NOT_IMPORTED_YET",
-    "published": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
-    "receiving_engineering": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS; not independent acceptance/merge",
-    "review": "RUNNING sorok-p2-fanin-independent-review-20261105-r1-retry2",
-    "status": "AUTHOR_TESTED_INDEPENDENTLY_UNACCEPTED"
+    "accepted_exact": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+    "current": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+    "current_status": "IMPORTS_BOTH_REPAIRS_EXACT__FINAL_CUT_CLOSURE_RUNNING__NOT_PROMOTED",
+    "final_cut_closure": "RUNNING sorok-p2-final-cut-independent-closure-20261105-r1",
+    "final_receiving_delta": "RUNNING",
+    "review": "332e00cb3da51b859a408a31f820b1afd7fe8fc0"
   },
   "publication": {
-    "receiving_sha": "b6d3f8d2b946a38f6336361c2b625c1260699100",
+    "receiving_sha": "aa9ebbb533198acfa7056147f8cae3deb246ffe2",
     "scope": "source guide branch only; commit/push after readback generation",
     "source_sha": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_READBACK"
   },
-  "result": "P2_REPAIRED_SOURCE_INTAKE__INTERVAL_76D5_AUTHOR_ORACLE_PASS__LATER_B716_AUTHOR_PASS__PRODUCT_25D_UNACCEPTED_REVIEW_RUNNING__PR699_PR697_UNMERGED",
+  "result": "P2_REPAIRED_SOURCES_CLOSED_SCOPED__INTERVAL_76D5_ACCEPT__LATER_B716_ACCEPT__25D_ACCEPT_332E_PRESERVED__4B2_FINAL_CLOSURE_RUNNING",
   "return_file": {
-    "bytes": 5090,
-    "git_blob_sha1": "7259887f670800e62fbf08d90a850e1cdff1e5c8",
+    "bytes": 4270,
+    "git_blob_sha1": "d6c4fd7cf0f4a0167550fb8a0542051d84d27f56",
     "path": "WORKER_RETURNS/SOROK-P2-PROGRAMMA-WRITE-THROUGH-20261105-R1/00_RETURN.md",
-    "sha256": "642aea965d231e9ae5126326042fe1b8a323160a4faa959221903a16791401a8"
+    "sha256": "1907d0b369b10384b41fad6ae9308c1fd388e65aed77a7b9cfd89599f26d362f"
   },
   "schema": "SOROK_P2_PROGRAMMA_WRITE_THROUGH_READBACK@1",
-  "start": "b8c764f1279e5116d74d98ae7f5e423c5c69f7da",
+  "start": "4aaefdd7b248ac76d25b46f9b693f11b80f9f5b5",
   "tests_run": [
     "canonical PROGRAMMA static verifier",
     "JSON/JSONL parse and count validation",
