@@ -1,0 +1,9 @@
+-- SOROK P3 normalized psyche sidecar schema, generated from p3/state_store.py
+-- Mechanical storage only; no native science or production authority.
+CREATE TABLE p3_meta (id INTEGER PRIMARY KEY CHECK(id=1),schema TEXT NOT NULL,root TEXT NOT NULL,actor TEXT NOT NULL,branch TEXT NOT NULL,registry_hash TEXT NOT NULL,source_hash TEXT NOT NULL,head_hash TEXT NOT NULL,record_count INTEGER NOT NULL CHECK(record_count>=0),head_record_id TEXT,head_record_hash TEXT);
+CREATE TABLE p3_operations (seq INTEGER PRIMARY KEY AUTOINCREMENT,operation_id TEXT NOT NULL UNIQUE,proposal_hash TEXT NOT NULL,expected_json TEXT NOT NULL,plan_hash TEXT NOT NULL,plan_json TEXT NOT NULL,base_before_json TEXT NOT NULL,psyche_before_json TEXT NOT NULL,phase TEXT NOT NULL CHECK(phase IN ('PREPARED','WORLD_COMMITTED','PSYCH_COMMITTED','COMPLETE')),base_result_json TEXT,base_result_hash TEXT,effects_receipt_json TEXT,effects_receipt_hash TEXT,result_json TEXT,result_hash TEXT);
+CREATE TABLE p3_records (seq INTEGER PRIMARY KEY AUTOINCREMENT,record_id TEXT NOT NULL UNIQUE,root TEXT NOT NULL,actor TEXT NOT NULL,branch TEXT NOT NULL,project TEXT,counterpart TEXT,kind TEXT NOT NULL CHECK(kind IN ('MEDIATOR','TENSION','PRACTICE','V3MS_MEDIATOR','V3MS_TENSION','V3MS_PRACTICE')),payload_json TEXT NOT NULL,rule_id TEXT NOT NULL,rule_version_json TEXT NOT NULL,rule_hash TEXT NOT NULL,registry_hash TEXT NOT NULL,source_hash TEXT NOT NULL,effective_from INTEGER NOT NULL,causal_parents_json TEXT NOT NULL,grade TEXT NOT NULL,hash TEXT NOT NULL UNIQUE,record_json TEXT NOT NULL,previous_chain TEXT NOT NULL,chain_hash TEXT NOT NULL UNIQUE,operation_id TEXT NOT NULL);
+CREATE INDEX p3_operations_phase ON p3_operations(phase, seq);
+CREATE INDEX p3_records_kind ON p3_records(root, actor, branch, kind, effective_from, seq);
+CREATE INDEX p3_records_scope ON p3_records(root, actor, branch, project, counterpart, effective_from, seq);
+PRAGMA user_version=2;

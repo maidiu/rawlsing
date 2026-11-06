@@ -30,6 +30,7 @@ from p3.state_store import (  # noqa: E402
     PHASE_PREPARED,
     PHASE_PSYCH,
     PHASE_WORLD,
+    RECORD_COLUMNS,
     PsycheStore,
 )
 
@@ -390,8 +391,64 @@ def test_nested_plan_identity_and_source_are_accepted(tmp_path):
     store.close()
 
 
-# ---------------------------------------------------------------------------
-# World / effects / finish phases
+def test_frozen_sourcefree_test_only_grade_without_authority_is_accepted(tmp_path):
+    store = opened(tmp_path)
+    frozen = plan(grade="SOURCEFREE_TEST_ONLY")
+    frozen.pop("authority")
+    context = ready(store, plan_value=frozen)
+    value = record("frozen-sealed", kind="V3MS_MEDIATOR", grade="SOURCEFREE_TEST_ONLY")
+    value["hash"] = digest({k: v for k, v in value.items() if k != "hash"})
+    receipt = store.commit_effects(
+        "op-1",
+        records=[value],
+        response={"status": "COMPUTED_TEST_ONLY_RESPONSE"},
+        event_binding=context["event"],
+    )
+    assert receipt["authority"] == "TEST_ONLY"
+    assert receipt["grade"] == "SOURCEFREE_TEST_ONLY"
+    stored = store.query(project="project-a", counterpart="counterpart-a", as_of=1)
+    assert len(stored) == 1
+    assert stored[0]["kind"] == "V3MS_MEDIATOR"
+    assert stored[0]["hash"] == value["hash"]
+    store.close()
+    reopened = opened(tmp_path)
+    assert reopened.query(
+        project="project-a", counterpart="counterpart-a", as_of=1
+    )[0]["hash"] == value["hash"]
+    assert reopened.verify() is True
+    reopened.close()
+
+
+def test_frozen_provenance_conflicts_unknown_and_production_deny(tmp_path):
+    store = opened(tmp_path)
+    frozen = plan(grade="SOURCEFREE_TEST_ONLY")
+    frozen.pop("authority")
+    cases = [
+        {**frozen, "authority": "PRODUCTION"},
+        {**frozen, "authority": "NATIVE"},
+        {**frozen, "authority": "UNKNOWN"},
+        {**frozen, "authority": "SOURCEFREE_TEST_ONLY"},
+        {**frozen, "grade": GRADE},
+        {**frozen, "grade": "UNKNOWN"},
+        {**frozen, "production": True},
+        {**frozen, "native": True},
+        {**frozen, "provenance": {"authority": "PRODUCTION"}},
+        {**frozen, "provenance": {"grade": "TEST_ONLY_DIFFERENT"}},
+        {key: value for key, value in frozen.items() if key != "grade"},
+    ]
+    for index, bad_plan in enumerate(cases):
+        with pytest.raises(RecursionRefusal):
+            store.reserve(
+                f"bad-frozen-{index}",
+                proposal_hash="proposal:bad",
+                expected=state(0, "bad-expected"),
+                plan_hash=digest(bad_plan),
+                base_before=state(0, "bad-before"),
+                psyche_before=store.head(),
+                plan=bad_plan,
+            )
+    assert store.pending() == []
+    store.close()
 
 
 def test_save_world_is_idempotent_and_rejects_changed_result(tmp_path):
@@ -603,7 +660,7 @@ def test_kind_alias_operation_create_and_optional_hash_are_normalized(tmp_path):
         event_binding=context["event"],
     )
     stored = store.query(project="project-a", counterpart="counterpart-a", as_of=1)[0]
-    assert stored["kind"] == "MEDIATOR"
+    assert stored["kind"] == "V3MS_MEDIATOR"
     assert stored["record_id"] == "alias"
     assert stored["hash"] == receipt["record_hashes"][0]
     assert digest({k: v for k, v in stored.items() if k != "hash"}) == stored["hash"]
@@ -620,6 +677,37 @@ def test_record_with_correct_explicit_hash_is_accepted(tmp_path):
     )
     assert receipt["record_ids"] == ["explicit"]
     store.close()
+
+
+@pytest.mark.parametrize(
+    "kind",
+    [
+        "V3MS_MEDIATOR",
+        "V3MS_TENSION",
+        "V3MS_PRACTICE",
+        "MEDIATOR",
+        "TENSION",
+        "PRACTICE",
+    ],
+)
+def test_all_allowed_kind_spellings_keep_sealed_hash_through_cold_reopen(tmp_path, kind):
+    store = opened(tmp_path)
+    context = ready(store)
+    value = record("sealed-" + kind, kind=kind)
+    value["hash"] = digest({k: v for k, v in value.items() if k != "hash"})
+    receipt = store.commit_effects(
+        "op-1", records=[value], response={}, event_binding=context["event"]
+    )
+    stored = store.query(project="project-a", counterpart="counterpart-a", as_of=1)
+    assert stored[0]["kind"] == kind
+    assert stored[0]["hash"] == value["hash"] == receipt["record_hashes"][0]
+    store.close()
+    reopened = opened(tmp_path)
+    stored = reopened.query(project="project-a", counterpart="counterpart-a", as_of=1)
+    assert stored[0]["kind"] == kind
+    assert stored[0]["hash"] == value["hash"]
+    assert reopened.verify() is True
+    reopened.close()
 
 
 # ---------------------------------------------------------------------------
@@ -763,6 +851,74 @@ def test_nested_owner_event_binding_and_top_level_base_fallback(tmp_path):
     )
     assert receipt2["phase"] == PHASE_PSYCH
     store2.close()
+
+
+def test_prior_three_kind_schema_migrates_and_accepts_v3ms_losslessly(tmp_path):
+    store = opened(tmp_path)
+    context = ready(store)
+    legacy = record("legacy-canonical", kind="MEDIATOR")
+    legacy["hash"] = digest({k: v for k, v in legacy.items() if k != "hash"})
+    store.commit_effects(
+        "op-1", records=[legacy], response={}, event_binding=context["event"]
+    )
+    store.close()
+
+    connection = sqlite3.connect(tmp_path / "store.sqlite")
+    try:
+        connection.execute("ALTER TABLE p3_records RENAME TO p3_records_current")
+        connection.execute(
+            "CREATE TABLE p3_records ("
+            "seq INTEGER PRIMARY KEY AUTOINCREMENT,"
+            "record_id TEXT NOT NULL UNIQUE,"
+            "root TEXT NOT NULL,"
+            "actor TEXT NOT NULL,"
+            "branch TEXT NOT NULL,"
+            "project TEXT,"
+            "counterpart TEXT,"
+            "kind TEXT NOT NULL CHECK(kind IN ('MEDIATOR','TENSION','PRACTICE')),"
+            "payload_json TEXT NOT NULL,"
+            "rule_id TEXT NOT NULL,"
+            "rule_version_json TEXT NOT NULL,"
+            "rule_hash TEXT NOT NULL,"
+            "registry_hash TEXT NOT NULL,"
+            "source_hash TEXT NOT NULL,"
+            "effective_from INTEGER NOT NULL,"
+            "causal_parents_json TEXT NOT NULL,"
+            "grade TEXT NOT NULL,"
+            "hash TEXT NOT NULL UNIQUE,"
+            "record_json TEXT NOT NULL,"
+            "previous_chain TEXT NOT NULL,"
+            "chain_hash TEXT NOT NULL UNIQUE,"
+            "operation_id TEXT NOT NULL)"
+        )
+        columns = ", ".join(RECORD_COLUMNS)
+        connection.execute(
+            "INSERT INTO p3_records (" + columns + ") "
+            "SELECT " + columns + " FROM p3_records_current"
+        )
+        connection.execute("DROP TABLE p3_records_current")
+        connection.commit()
+    finally:
+        connection.close()
+
+    reopened = opened(tmp_path)
+    assert reopened._connection.execute("PRAGMA user_version").fetchone()[0] == 2
+    assert reopened.query(project="project-a", counterpart="counterpart-a", as_of=1)[0]["hash"] == legacy["hash"]
+    second = ready(reopened, "op-2", clock=2, event_id="event-2")
+    upgraded = record("v3ms-after-migration", kind="V3MS_MEDIATOR", clock=2, event_id="event-2")
+    upgraded["hash"] = digest({k: v for k, v in upgraded.items() if k != "hash"})
+    reopened.commit_effects(
+        "op-2", records=[upgraded], response={}, event_binding=second["event"]
+    )
+    rows = reopened.query(project="project-a", counterpart="counterpart-a", as_of=2)
+    assert [row["record_id"] for row in rows] == [
+        "legacy-canonical",
+        "v3ms-after-migration",
+    ]
+    assert rows[1]["kind"] == "V3MS_MEDIATOR"
+    assert rows[1]["hash"] == upgraded["hash"]
+    assert reopened.verify() is True
+    reopened.close()
 
 
 def test_cold_reopen_preserves_head_records_operations_and_pending(tmp_path):

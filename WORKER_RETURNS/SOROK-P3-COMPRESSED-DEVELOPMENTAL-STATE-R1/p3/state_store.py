@@ -44,12 +44,16 @@ UNRESOLVED_PHASES = (PHASE_PREPARED, PHASE_WORLD, PHASE_PSYCH)
 CORE_STATUSES = frozenset(
     {"REALIZED", "IMMEDIATE_ONLY", "NO_CHANGE", "HELD", "REFUSED", "OMITTED"}
 )
-KINDS = frozenset({"MEDIATOR", "TENSION", "PRACTICE"})
-KIND_ALIASES = {
-    "V3MS_MEDIATOR": "MEDIATOR",
-    "V3MS_TENSION": "TENSION",
-    "V3MS_PRACTICE": "PRACTICE",
-}
+KINDS = frozenset(
+    {
+        "MEDIATOR",
+        "TENSION",
+        "PRACTICE",
+        "V3MS_MEDIATOR",
+        "V3MS_TENSION",
+        "V3MS_PRACTICE",
+    }
+)
 STATE_KEYS = frozenset({"root", "actor", "branch", "clock", "state_hash"})
 HEAD_KEYS = frozenset({"hash", "count"})
 RECORD_REQUIRED = frozenset(
@@ -89,6 +93,68 @@ RESULT_KEYS = frozenset(
     }
 )
 MAX_JSON_DEPTH = 100
+
+RECORD_COLUMNS = (
+    "seq",
+    "record_id",
+    "root",
+    "actor",
+    "branch",
+    "project",
+    "counterpart",
+    "kind",
+    "payload_json",
+    "rule_id",
+    "rule_version_json",
+    "rule_hash",
+    "registry_hash",
+    "source_hash",
+    "effective_from",
+    "causal_parents_json",
+    "grade",
+    "hash",
+    "record_json",
+    "previous_chain",
+    "chain_hash",
+    "operation_id",
+)
+RECORD_COLUMNS_SQL = ",".join(RECORD_COLUMNS)
+RECORDS_TABLE_DDL = (
+    "CREATE TABLE IF NOT EXISTS p3_records ("
+    "seq INTEGER PRIMARY KEY AUTOINCREMENT,"
+    "record_id TEXT NOT NULL UNIQUE,"
+    "root TEXT NOT NULL,"
+    "actor TEXT NOT NULL,"
+    "branch TEXT NOT NULL,"
+    "project TEXT,"
+    "counterpart TEXT,"
+    "kind TEXT NOT NULL CHECK(kind IN "
+    "('MEDIATOR','TENSION','PRACTICE',"
+    "'V3MS_MEDIATOR','V3MS_TENSION','V3MS_PRACTICE')),"
+    "payload_json TEXT NOT NULL,"
+    "rule_id TEXT NOT NULL,"
+    "rule_version_json TEXT NOT NULL,"
+    "rule_hash TEXT NOT NULL,"
+    "registry_hash TEXT NOT NULL,"
+    "source_hash TEXT NOT NULL,"
+    "effective_from INTEGER NOT NULL,"
+    "causal_parents_json TEXT NOT NULL,"
+    "grade TEXT NOT NULL,"
+    "hash TEXT NOT NULL UNIQUE,"
+    "record_json TEXT NOT NULL,"
+    "previous_chain TEXT NOT NULL,"
+    "chain_hash TEXT NOT NULL UNIQUE,"
+    "operation_id TEXT NOT NULL)"
+)
+RECORDS_SCOPE_INDEX_DDL = (
+    "CREATE INDEX IF NOT EXISTS p3_records_scope "
+    "ON p3_records(root, actor, branch, project, counterpart, "
+    "effective_from, seq)"
+)
+RECORDS_KIND_INDEX_DDL = (
+    "CREATE INDEX IF NOT EXISTS p3_records_kind "
+    "ON p3_records(root, actor, branch, kind, effective_from, seq)"
+)
 
 
 def _text(value: Any, code: str) -> str:
@@ -270,25 +336,45 @@ def _plan_authority(plan: Mapping[str, Any]) -> tuple[str, str]:
             authority_values.append(_text(source["authority"], "PLAN_AUTHORITY_INVALID"))
         if "grade" in source:
             grade_values.append(_text(source["grade"], "PLAN_GRADE_INVALID"))
-    if not authority_values or not grade_values:
+    if not grade_values:
         raise RecursionRefusal("PLAN_AUTHORITY_OR_GRADE_MISSING")
-    if len(set(authority_values)) != 1 or len(set(grade_values)) != 1:
+    if len(set(authority_values)) > 1 or len(set(grade_values)) != 1:
         raise RecursionRefusal("PLAN_AUTHORITY_OR_GRADE_CONFLICT")
-    authority = authority_values[0]
     grade = grade_values[0]
-    if not authority.startswith("TEST_ONLY"):
-        raise RecursionRefusal("PLAN_AUTHORITY_DENIED")
-    if not grade.startswith("TEST_ONLY"):
+    explicit_authority = authority_values[0] if authority_values else None
+
+    def is_test_only(value: str) -> bool:
+        return value == "SOURCEFREE_TEST_ONLY" or value.startswith("TEST_ONLY")
+
+    if not is_test_only(grade):
         raise RecursionRefusal("PLAN_GRADE_DENIED")
-    for key in ("production", "native", "native_science", "source_native", "human_validity"):
-        value = plan.get(key)
-        if value is True:
-            raise RecursionRefusal("PLAN_PRODUCTION_OR_NATIVE_DENIED")
-        if isinstance(value, str) and value.upper() in {
-            "TRUE", "PRODUCTION", "ISSUED", "NATIVE", "ACCEPTED"
-        }:
-            raise RecursionRefusal("PLAN_PRODUCTION_OR_NATIVE_DENIED")
-    return authority, grade
+    if explicit_authority is None and grade != "SOURCEFREE_TEST_ONLY":
+        raise RecursionRefusal("PLAN_AUTHORITY_OR_GRADE_MISSING")
+    if explicit_authority is not None and not explicit_authority.startswith("TEST_ONLY"):
+        raise RecursionRefusal("PLAN_AUTHORITY_DENIED")
+
+    for source in (plan, provenance):
+        if not isinstance(source, Mapping):
+            continue
+        for key in (
+            "production",
+            "native",
+            "native_science",
+            "source_native",
+            "human_validity",
+        ):
+            value = source.get(key)
+            if value is True:
+                raise RecursionRefusal("PLAN_PRODUCTION_OR_NATIVE_DENIED")
+            if isinstance(value, str) and value.upper() in {
+                "TRUE", "PRODUCTION", "ISSUED", "NATIVE", "ACCEPTED"
+            }:
+                raise RecursionRefusal("PLAN_PRODUCTION_OR_NATIVE_DENIED")
+    # Exact frozen SOURCEFREE_TEST_ONLY grade is the existing explicit TEST_ONLY
+    # provenance when no conflicting authority is supplied. Legacy
+    # TEST_ONLY-prefixed mechanical plans remain supported. The stored plan is
+    # not rewritten and no authority field is added to it.
+    return "TEST_ONLY", grade
 
 
 def _plan_rules(plan: Mapping[str, Any]) -> tuple[list[dict], set[str]]:
@@ -375,7 +461,6 @@ def _record_body(
     counterpart = _scope_value(value["counterpart"], "RECORD_COUNTERPART_INVALID")
     record_id = _text(value["record_id"], "RECORD_ID_INVALID")
     kind = _text(value["kind"], "RECORD_KIND_INVALID")
-    kind = KIND_ALIASES.get(kind, kind)
     if kind not in KINDS:
         raise RecursionRefusal("RECORD_KIND_INVALID")
     payload = _json_mapping(value["payload"], "RECORD_PAYLOAD_INVALID")
@@ -1157,7 +1242,7 @@ class PsycheStore:
                     "AND name IN ('p3_meta','p3_records','p3_operations')"
                 )
             }
-            if version not in (0, 1):
+            if version not in (0, 1, 2):
                 raise RecursionRefusal("STORE_SCHEMA_VERSION_UNSUPPORTED")
             if version == 0 and existing:
                 raise RecursionRefusal("JOURNAL_INTEGRITY:UNMARKED_SCHEMA")
@@ -1175,40 +1260,10 @@ class PsycheStore:
                 "head_record_id TEXT,"
                 "head_record_hash TEXT)"
             )
-            self._connection.execute(
-                "CREATE TABLE IF NOT EXISTS p3_records ("
-                "seq INTEGER PRIMARY KEY AUTOINCREMENT,"
-                "record_id TEXT NOT NULL UNIQUE,"
-                "root TEXT NOT NULL,"
-                "actor TEXT NOT NULL,"
-                "branch TEXT NOT NULL,"
-                "project TEXT,"
-                "counterpart TEXT,"
-                "kind TEXT NOT NULL CHECK(kind IN ('MEDIATOR','TENSION','PRACTICE')),"
-                "payload_json TEXT NOT NULL,"
-                "rule_id TEXT NOT NULL,"
-                "rule_version_json TEXT NOT NULL,"
-                "rule_hash TEXT NOT NULL,"
-                "registry_hash TEXT NOT NULL,"
-                "source_hash TEXT NOT NULL,"
-                "effective_from INTEGER NOT NULL,"
-                "causal_parents_json TEXT NOT NULL,"
-                "grade TEXT NOT NULL,"
-                "hash TEXT NOT NULL UNIQUE,"
-                "record_json TEXT NOT NULL,"
-                "previous_chain TEXT NOT NULL,"
-                "chain_hash TEXT NOT NULL UNIQUE,"
-                "operation_id TEXT NOT NULL)"
-            )
-            self._connection.execute(
-                "CREATE INDEX IF NOT EXISTS p3_records_scope "
-                "ON p3_records(root, actor, branch, project, counterpart, "
-                "effective_from, seq)"
-            )
-            self._connection.execute(
-                "CREATE INDEX IF NOT EXISTS p3_records_kind "
-                "ON p3_records(root, actor, branch, kind, effective_from, seq)"
-            )
+            self._connection.execute(RECORDS_TABLE_DDL)
+            self._migrate_records_kind_schema_if_needed()
+            self._connection.execute(RECORDS_SCOPE_INDEX_DDL)
+            self._connection.execute(RECORDS_KIND_INDEX_DDL)
             self._connection.execute(
                 "CREATE TABLE IF NOT EXISTS p3_operations ("
                 "seq INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -1232,7 +1287,7 @@ class PsycheStore:
                 "CREATE INDEX IF NOT EXISTS p3_operations_phase "
                 "ON p3_operations(phase, seq)"
             )
-            self._connection.execute("PRAGMA user_version=1")
+            self._connection.execute("PRAGMA user_version=2")
             self._connection.execute("COMMIT")
         except BaseException:
             if self._connection.in_transaction:
@@ -1266,6 +1321,29 @@ class PsycheStore:
             return
         self._validate_meta(row)
         self._read_head()
+
+    def _migrate_records_kind_schema_if_needed(self) -> None:
+        row = self._connection.execute(
+            "SELECT sql FROM sqlite_master WHERE type='table' AND name='p3_records'"
+        ).fetchone()
+        if row is None or not row["sql"]:
+            return
+        sql = row["sql"]
+        if "V3MS_MEDIATOR" in sql:
+            return
+        if "CHECK" not in sql.upper() or "KIND" not in sql.upper():
+            return
+        self._connection.execute("ALTER TABLE p3_records RENAME TO p3_records_legacy")
+        self._connection.execute("DROP INDEX IF EXISTS p3_records_scope")
+        self._connection.execute("DROP INDEX IF EXISTS p3_records_kind")
+        self._connection.execute(RECORDS_TABLE_DDL)
+        self._connection.execute(
+            "INSERT INTO p3_records (" + RECORD_COLUMNS_SQL + ") "
+            "SELECT " + RECORD_COLUMNS_SQL + " FROM p3_records_legacy"
+        )
+        self._connection.execute("DROP TABLE p3_records_legacy")
+        self._connection.execute(RECORDS_SCOPE_INDEX_DDL)
+        self._connection.execute(RECORDS_KIND_INDEX_DDL)
 
     def _validate_meta(self, row: sqlite3.Row) -> None:
         if row["schema"] != SCHEMA:
@@ -1477,7 +1555,7 @@ class PsycheStore:
         for parent in parents:
             _text(parent, "JOURNAL_INTEGRITY:RECORD_PARENT")
         grade = _text(record["grade"], "JOURNAL_INTEGRITY:RECORD_GRADE")
-        if not grade.startswith("TEST_ONLY"):
+        if grade != "SOURCEFREE_TEST_ONLY" and not grade.startswith("TEST_ONLY"):
             raise RecursionRefusal("JOURNAL_INTEGRITY:RECORD_GRADE_NOT_TEST_ONLY")
         return _detached(record)
 

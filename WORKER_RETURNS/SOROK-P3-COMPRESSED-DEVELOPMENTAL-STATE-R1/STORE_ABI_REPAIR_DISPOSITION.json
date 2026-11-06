@@ -1,0 +1,24 @@
+{
+  "schema": "SOROK_P3_STORE_ABI_REPAIR_INTAKE@1",
+  "return": "eaf0cbb73d4656531ab329ea5f35c3179cba3dab",
+  "code_commit": "7aa2b78424c6f48576f0a9ad37c5def5dae1a4d8",
+  "verified_before_hq_edits": {
+    "manifest_hashes": 11,
+    "exclusive_paths": 12,
+    "remote_head": true,
+    "durable_exit": 0
+  },
+  "disposition": "ACCEPT_SCOPED_FOR_INTEGRATION__ACTUAL_OWNER_CHAIN_PASS__FINAL_INDEPENDENT_REVIEW_PENDING",
+  "hq_minimal_corrections": [
+    "Restrict omitted-authority exception to exact SOURCEFREE_TEST_ONLY grade; retain prior explicit TEST_ONLY authority requirement for legacy grades and prior denial of conflicting explicit authority. Extend existing negative test cases.",
+    "Restore original test function ID retained from original42; corrected lossless-kind assertion remains, not original erroneous normalization behavior."
+  ],
+  "current_sha256": {
+    "p3/state_store.py": "76e5ee55fd8e5b4c9b0fefa48737644163c7794b687f4c0e342d0eba63eb252a",
+    "tests/test_state_store.py": "313a73fcdbb7e83dcf771f34a6f1fb6f420efed276a4e4996e6e34c9fb7a1e20"
+  },
+  "actual_hq_execution": "51 store tests +8 applicable owner checks pass;59 passed1 inapplicable missing-store guard skipped35.22s",
+  "actual_evidence": "evidence/store_abi_owner_intake_actual.log",
+  "positive_scope": "Actual P2-root formation->persisted exact V3MS hash->later computed response/control, cold replay and actual process crash recovery now pass with returned owner reopening fix. No native rule or full P3 acceptance.",
+  "next": "Full actual two-batch A-H/resource proof and distinct exact-runtime independent S2 review; preserve original store/repair evidence and native holds."
+}
