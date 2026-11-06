@@ -406,3 +406,29 @@ N=200 paired capacity-full result (3 interleaved rounds): before early guard
 core attempts/builds/early fallbacks = 2/1/0; after = 1/1/1; full-capacity HIT
 reused. Focused grouping suite 15 passed. The new code is not covered by the
 original R03 acceptance and is not a whole-L03 completion.
+
+## Allocation incision causal result and disposition
+
+The phase-3 assessment `5dfef26d...` accepts evidence but marks selected economical
+compact `NOT_FULFILLED`. The one bounded allocation incision confirms the exact
+remaining physical gap:
+
+- Fixed Arrow import/runtime current RSS: 118.0 MB (N=200), 116.6 MB (N=1,000),
+  common to native and compact controls.
+- N=1,000 native endstate: 228.6–278.2 MB current / 258.0–305.4 MB highwater.
+- N=1,000 compact endstate: 327.9–328.1 MB current / 335.2–336.4 MB highwater.
+- Compact conversion delta: 37.7 MB current / 13.9 MB highwater; Arrow event-body
+  array 29.7 MB; live Python `tracemalloc` +4.9 MB.
+- Compact endstate live Python (82.6 MB) is **lower** than native (100.2 MB).
+  Native validation current RSS varied across repeats while tracemalloc live was
+  identical (93.4 MB).
+- Index/query overlap after compact construction is small.
+
+**Causal finding:** the resident gap is required Arrow event bodies plus compact
+conversion overlap/allocator retention while the full native release is live, not a
+measured redundant retained Python copy. There is no smallest warranted adapter-copy
+fix. A material reduction requires a streaming/lazy I02 candidate/replay ABI or
+incremental compact construction before full native object materialization, while
+preserving I02 validation/closure, selector v1, refs and replay. That is an
+HQ/owner contract decision; it was not invented here. No physical code changed in
+this incision; capacity guard `9a5cfa...` remains the latest separate implementation.

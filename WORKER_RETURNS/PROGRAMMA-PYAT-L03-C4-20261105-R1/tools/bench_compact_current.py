@@ -1431,9 +1431,296 @@ def _run_capacity(args):
     }, indent=2, sort_keys=True))
 
 
+
+def _current_rss_bytes():
+    try:
+        value = subprocess.check_output(
+            ["ps", "-o", "rss=", "-p", str(os.getpid())], text=True,
+        ).strip()
+        return int(value) * 1024
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return None
+
+
+def _arrow_memory():
+    try:
+        import pyarrow as pa
+    except ModuleNotFoundError:
+        return {"available": False, "bytes_allocated": None,
+                "max_memory": None, "num_allocations": None}
+    pool = pa.default_memory_pool()
+    return {
+        "available": True,
+        "total_allocated_bytes": pa.total_allocated_bytes(),
+        "bytes_allocated": pool.bytes_allocated(),
+        "max_memory": pool.max_memory(),
+        "num_allocations": pool.num_allocations(),
+        "backend": pool.backend_name,
+    }
+
+
+def _tracemalloc_state():
+    import tracemalloc
+    current, peak = tracemalloc.get_traced_memory()
+    return {"current_bytes": current, "peak_bytes": peak, "enabled": tracemalloc.is_tracing()}
+
+
+def _alloc_snapshot(label):
+    return {
+        "label": label,
+        "current_rss_bytes": _current_rss_bytes(),
+        "ru_maxrss_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
+        "tracemalloc": _tracemalloc_state(),
+        "arrow": _arrow_memory(),
+    }
+
+
+def _run_alloc_variant(args):
+    variant = args.alloc_variant
+    if variant not in {"arrow", "native", "compact"}:
+        raise SystemExit("alloc-variant must be arrow/native/compact")
+    n = args.n or 200
+    outdir = Path(args.outdir).resolve()
+    outdir.mkdir(parents=True, exist_ok=True)
+    os.environ.pop("RAWLSING_C11_ACCELERATOR_DIR", None)
+    snapshots = []
+    phases = {}
+    import tracemalloc
+    import pyarrow as pa
+    snapshots.append(_alloc_snapshot("after_imports"))
+    tracemalloc.start()
+    try:
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        baseline_array = pa.array([b"allocation-baseline"])
+        phases["arrow_runtime"] = {
+            "wall_s": time.perf_counter() - start_wall,
+            "cpu_s": time.process_time() - start_cpu,
+            "length": len(baseline_array),
+        }
+        snapshots.append(_alloc_snapshot("after_arrow_runtime"))
+        if variant == "arrow":
+            payload = {
+                "schema": SCHEMA,
+                "mode": "alloc",
+                "alloc_variant": variant,
+                "n": n,
+                "snapshots": snapshots,
+                "phases": phases,
+                "note": "fixed pyarrow import/runtime baseline after a minimal Arrow array; no fixture or builder",
+                "process": _capacity_metadata(),
+            }
+            bc.dump_json(outdir / "alloc_arrow.json", payload)
+            print(json.dumps({"path": str(outdir / "alloc_arrow.json"), "variant": variant}, indent=2))
+            return
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        fixture = _source_fixture(n, tag="compact-current")
+        ops, catalog = _grouped_ops(fixture)
+        phases["fixture_build"] = {
+            "wall_s": time.perf_counter() - start_wall,
+            "cpu_s": time.process_time() - start_cpu,
+        }
+        snapshots.append(_alloc_snapshot("after_fixture_build"))
+        source = fixture["stream"]
+        projection = fixture["projection"]
+        if variant == "native":
+            start_wall, start_cpu = time.perf_counter(), time.process_time()
+            release = build_validated_source_backed_c11_release_from_stream(source, projection)
+            phases["validation_build"] = {
+                "wall_s": time.perf_counter() - start_wall,
+                "cpu_s": time.process_time() - start_cpu,
+            }
+            snapshots.append(_alloc_snapshot("after_validation_build"))
+            start_wall, start_cpu = time.perf_counter(), time.process_time()
+            repository = C11Repository((release,))
+            phases["repository_commit"] = {
+                "wall_s": time.perf_counter() - start_wall,
+                "cpu_s": time.process_time() - start_cpu,
+            }
+            snapshots.append(_alloc_snapshot("after_repository_commit"))
+        else:
+            original_validation = facade.build_validated_source_backed_c11_release_from_stream
+            original_compact = facade._compact_public_objects
+
+            def validation_wrapper(*args, **kwargs):
+                snapshots.append(_alloc_snapshot("before_validation_build"))
+                start_wall, start_cpu = time.perf_counter(), time.process_time()
+                try:
+                    return original_validation(*args, **kwargs)
+                finally:
+                    phases["validation_build"] = {
+                        "wall_s": time.perf_counter() - start_wall,
+                        "cpu_s": time.process_time() - start_cpu,
+                    }
+                    snapshots.append(_alloc_snapshot("after_validation_build"))
+
+            def compact_wrapper(*args, **kwargs):
+                snapshots.append(_alloc_snapshot("before_compact_conversion"))
+                start_wall, start_cpu = time.perf_counter(), time.process_time()
+                try:
+                    return original_compact(*args, **kwargs)
+                finally:
+                    phases["compact_conversion"] = {
+                        "wall_s": time.perf_counter() - start_wall,
+                        "cpu_s": time.process_time() - start_cpu,
+                    }
+                    snapshots.append(_alloc_snapshot("after_compact_conversion"))
+
+            facade.build_validated_source_backed_c11_release_from_stream = validation_wrapper
+            facade._compact_public_objects = compact_wrapper
+            try:
+                start_wall, start_cpu = time.perf_counter(), time.process_time()
+                repository, release = build_source_backed_c11_repository(
+                    source, projection,
+                    current_authorities=projection.authority_snapshots,
+                )
+                phases["facade_build"] = {
+                    "wall_s": time.perf_counter() - start_wall,
+                    "cpu_s": time.process_time() - start_cpu,
+                }
+            finally:
+                facade.build_validated_source_backed_c11_release_from_stream = original_validation
+                facade._compact_public_objects = original_compact
+            snapshots.append(_alloc_snapshot("after_facade_build"))
+        executor = CarrierNeutralResearchExecutor(
+            repository, (release.release_ref,), catalog,
+        )
+        snapshots.append(_alloc_snapshot("after_executor_bind"))
+        op = next(item for item in ops if item["op_id"] == "raw_Y")
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        fact = executor.execute_i03(
+            query_ref=op["query"].ref, predicate_ref=op["predicate"].ref,
+        ).facts[0]
+        phases["first_query"] = {
+            "wall_s": time.perf_counter() - start_wall,
+            "cpu_s": time.process_time() - start_cpu,
+            "typed_state": fact.typed_state,
+            "fact_ref": bc.ref_material(fact.ref),
+            "replay_ref": bc.ref_material(fact.replay_ref),
+            "exact_fact_material_sha256": semantic_hash(fact.as_dict()),
+        }
+        snapshots.append(_alloc_snapshot("after_first_query"))
+        payload = {
+            "schema": SCHEMA,
+            "mode": "alloc",
+            "alloc_variant": variant,
+            "n": n,
+            "snapshots": snapshots,
+            "phases": phases,
+            "release": {
+                "release_ref": bc.ref_material(release.release_ref),
+                "compact": isinstance(release.public_objects, compact_view._CompactPublicObjects),
+                "selector_count": (
+                    len(release.public_objects.lane.selectors)
+                    if isinstance(release.public_objects, compact_view._CompactPublicObjects) else None
+                ),
+            },
+            "process": _capacity_metadata(),
+        }
+        bc.dump_json(outdir / f"alloc_{variant}.json", payload)
+        print(json.dumps({
+            "path": str(outdir / f"alloc_{variant}.json"),
+            "variant": variant,
+            "snapshots": [{"label": item["label"],
+                           "current_rss_bytes": item["current_rss_bytes"],
+                           "ru_maxrss_bytes": item["ru_maxrss_bytes"]} for item in snapshots],
+        }, indent=2, sort_keys=True))
+    finally:
+        tracemalloc.stop()
+
+
+def _run_alloc(args):
+    n = args.n or 200
+    outdir = Path(args.outdir).resolve()
+    outdir.mkdir(parents=True, exist_ok=True)
+    base_env = dict(os.environ)
+    base_env["PYTHONHASHSEED"] = "0"
+    base_env["PYTHONDONTWRITEBYTECODE"] = "1"
+    tmp_dir = outdir / "tmp"
+    tmp_dir.mkdir(parents=True, exist_ok=True)
+    base_env["TMPDIR"] = str(tmp_dir)
+    base_env.pop("RAWLSING_C11_ACCELERATOR_DIR", None)
+    commands = []
+    for variant in ("arrow", "native", "compact"):
+        command = [
+            sys.executable, str(Path(__file__).resolve()),
+            "--mode", "alloc-variant", "--alloc-variant", variant,
+            "--n", str(n), "--outdir", str(outdir),
+        ]
+        start_wall = time.perf_counter()
+        proc = subprocess.run(command, env=base_env, cwd=str(REPO_ROOT), capture_output=True, text=True)
+        commands.append({
+            "variant": variant,
+            "command": command,
+            "exit": proc.returncode,
+            "parent_wall_s": time.perf_counter() - start_wall,
+            "stdout_tail": proc.stdout[-1000:],
+            "stderr_tail": proc.stderr[-1000:],
+        })
+        if proc.returncode != 0:
+            raise SystemExit(f"alloc {variant} failed: {proc.stderr[-2000:]}")
+    payloads = {
+        variant: json.loads((outdir / f"alloc_{variant}.json").read_text())
+        for variant in ("arrow", "native", "compact")
+    }
+    def snapshot(variant, label):
+        return next(item for item in payloads[variant]["snapshots"] if item["label"] == label)
+    def delta(variant, before, after, field):
+        return snapshot(variant, after)[field] - snapshot(variant, before)[field]
+
+    def arrow_delta(variant, before, after):
+        return (
+            snapshot(variant, after)["arrow"]["bytes_allocated"]
+            - snapshot(variant, before)["arrow"]["bytes_allocated"]
+        )
+    summary = {
+        "schema": SCHEMA,
+        "mode": "alloc",
+        "n": n,
+        "timing_claim": "MEASURED_ALLOCATION_INCISION_CONTENDED_WALL_QUALIFIED",
+        "commands": commands,
+        "payloads": payloads,
+        "deltas": {
+            "arrow_import_to_runtime_current_rss": delta("arrow", "after_imports", "after_arrow_runtime", "current_rss_bytes"),
+            "native_fixture_to_validation_current_rss": delta("native", "after_fixture_build", "after_validation_build", "current_rss_bytes"),
+            "native_validation_ru_maxrss": delta("native", "after_fixture_build", "after_validation_build", "ru_maxrss_bytes"),
+            "compact_fixture_to_validation_current_rss": delta("compact", "after_fixture_build", "after_validation_build", "current_rss_bytes"),
+            "compact_validation_to_compact_current_rss": delta("compact", "after_validation_build", "after_compact_conversion", "current_rss_bytes"),
+            "compact_compact_arrow_bytes": arrow_delta("compact", "before_compact_conversion", "after_compact_conversion"),
+            "compact_compact_tracemalloc_bytes": (
+                snapshot("compact", "after_compact_conversion")["tracemalloc"]["current_bytes"]
+                - snapshot("compact", "before_compact_conversion")["tracemalloc"]["current_bytes"]
+            ),
+            "compact_validation_ru_maxrss": delta("compact", "after_fixture_build", "after_validation_build", "ru_maxrss_bytes"),
+            "compact_conversion_ru_maxrss": delta("compact", "before_compact_conversion", "after_compact_conversion", "ru_maxrss_bytes"),
+            "native_first_query_current_rss": delta("native", "after_repository_commit", "after_first_query", "current_rss_bytes"),
+            "compact_first_query_current_rss": delta("compact", "after_facade_build", "after_first_query", "current_rss_bytes"),
+        },
+        "endstate": {
+            "arrow_after_import_current_rss": snapshot("arrow", "after_imports")["current_rss_bytes"],
+            "arrow_after_runtime_current_rss": snapshot("arrow", "after_arrow_runtime")["current_rss_bytes"],
+            "native_after_first_query_current_rss": snapshot("native", "after_first_query")["current_rss_bytes"],
+            "compact_after_first_query_current_rss": snapshot("compact", "after_first_query")["current_rss_bytes"],
+            "native_after_first_query_ru_maxrss": snapshot("native", "after_first_query")["ru_maxrss_bytes"],
+            "compact_after_first_query_ru_maxrss": snapshot("compact", "after_first_query")["ru_maxrss_bytes"],
+            "native_fact": payloads["native"]["phases"]["first_query"],
+            "compact_fact": payloads["compact"]["phases"]["first_query"],
+        },
+        "note": "Current RSS and ru_maxrss are whole-process; tracemalloc is Python-only; Arrow is its pool. No startup cost is subtracted.",
+    }
+    path = outdir / f"alloc_n{n}.json"
+    bc.dump_json(path, summary)
+    print(json.dumps({
+        "path": str(path),
+        "n": n,
+        "endstate": summary["endstate"],
+        "deltas": summary["deltas"],
+    }, indent=2, sort_keys=True))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", required=True, choices=("variant", "compare", "grouped", "capacity"))
+    parser.add_argument("--mode", required=True, choices=("variant", "compare", "grouped", "capacity", "alloc", "alloc-variant"))
+    parser.add_argument("--alloc-variant", choices=("arrow", "native", "compact"))
     parser.add_argument("--variant", choices=VARIANTS)
     parser.add_argument("--n", type=int, default=None)
     parser.add_argument("--outdir", required=True)
@@ -1448,8 +1735,12 @@ def main():
         _run_compare(args)
     elif args.mode == "grouped":
         _run_grouped(args)
-    else:
+    elif args.mode == "capacity":
         _run_capacity(args)
+    elif args.mode == "alloc":
+        _run_alloc(args)
+    else:
+        _run_alloc_variant(args)
 
 
 if __name__ == "__main__":

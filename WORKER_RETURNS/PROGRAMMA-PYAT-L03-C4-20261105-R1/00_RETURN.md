@@ -1,14 +1,16 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
-**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 MEASURED / CAPACITY-MISS GUARD IMPLEMENTED AND MEASURED.
+**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 MEASURED / CAPACITY-MISS GUARD IMPLEMENTED / ALLOCATION INCISION COMPLETE.
 **Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `a85df66ec93a951d8fd50d751822b70569df94ef`.
 **Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; it does **not** accept the new capacity-miss guard `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` or whole L03.
+**Phase-3 assessment:** `5dfef26d5ba25d2848d8e7a1b137e29c2d3b544d` accepts evidence but finds selected economical compact **NOT_FULFILLED**; this allocation incision identifies the exact remaining physical gap, not a repair authority.
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
 **Previous implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
 **New implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
 **Capacity evidence commit:** `2a41b4682cfbbdc2b5e12ba71d114adb431c670f`
+**Allocation evidence commit:** `__ALLOC_EVIDENCE_SHA__`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
 **Authority:** sourcefree engineering only. No original35, native source/science,
 actor/V3, human, Sorok, protected CAS, or merge authority is claimed.
@@ -246,6 +248,37 @@ N=200 compact same-release paired capacity-full result, 3 interleaved rounds:
 The full-capacity HIT remained reusable (`core_hits=1`), and the unsupported/member
 bound cases remain honest fallbacks. This narrows the capacity-full duplicate only;
 it does not claim a whole-L03 or production-scale completion.
+
+### Allocation incision (same source, actual builder/first consumer, fresh processes)
+
+Fixed Arrow baseline was measured with the same `import pyarrow` plus a minimal
+array in the native control, so the library/runtime cost is not attributed to the
+compact representation. Python `tracemalloc`, Arrow pool counters, current RSS
+(`ps`), and whole-process Darwin `ru_maxrss` were recorded separately.
+
+| N | fixed Arrow runtime current | native current / highwater | compact current / highwater |
+|---:|---:|---:|---:|
+| 200 | 118.0 MB | 154.6 / 154.7 MB | 169.5 / 169.5 MB |
+| 1000 | 116.6 MB | 228.6–278.2 / 258.0–305.4 MB | 327.9–328.1 / 335.2–336.4 MB |
+
+Native and compact first-query facts were exactly equal. At N=1000, compact
+conversion added 37.7 MB current and 13.9 MB highwater; of that, the Arrow body
+array was **29.7 MB** and Python `tracemalloc` live addition was **4.9 MB**.
+Selector/groups/entries live Python remained about 4.9 MB; index/query overlap was
+small. Compact **live Python** at endstate was lower than native (82.6 vs 100.2 MB),
+not higher. The resident gap above native is therefore required Arrow event bodies
+plus conversion overlap/allocator retention while the full native release is still
+live, not a measured redundant retained Python copy.
+
+A repeat N=1000 run confirmed native validation current RSS is variable
+(228.6–278.2 MB) while tracemalloc live was identical (93.4 MB); no compact-specific
+live validation allocation was found. The remaining compact RSS gap is a cold/
+conversion lifetime issue, not a lower-endstate win. No small adapter copy removal
+is warranted. A material reduction requires a streaming/lazy I02
+candidate/replay ABI or incremental compact construction before full native object
+materialization, preserving I02 validation, selector v1, refs and replay. That is a
+contract/owner decision, not invented here. The existing capacity guard `9a5cfa...`
+is unchanged; this incision adds no physical code.
 
 ## Read next
 

@@ -535,3 +535,25 @@ N=200 compact paired capacity-full result: before early guard 0.3383 s miss medi
 after 0.2001 s, no-scope 0.1989 s; full facts equal. Before: core attempts 2/builds 1/
 early fallbacks 0; after: attempts 1/builds 1/early fallbacks 1. Full-capacity HIT
 reused. Focused grouping tests 15 passed.
+
+### Allocation incision result
+
+Fresh-process allocation incision at N=200/N=1,000 used the same fixture, actual
+builder, and first consumer, with a native control carrying the same Arrow import
+and minimal runtime array. Fixed Arrow runtime current RSS was 118.0 MB (N=200) and
+116.6 MB (N=1,000). With that common baseline, native endstate was 154.6/228.6–278.2
+MB current and 154.7/258.0–305.4 MB highwater; compact endstate was 169.5/327.9–328.1
+MB current and 169.5/335.2–336.4 MB highwater. Native and compact first-query facts
+were exactly equal.
+
+At N=1,000 compact conversion added 37.7 MB current / 13.9 MB highwater, of which
+the Arrow event-body array was 29.7 MB and live Python `tracemalloc` addition was
+4.9 MB. Compact endstate live Python was lower than native (82.6 vs 100.2 MB).
+Native validation current RSS varied across repeats while tracemalloc live was
+identical (93.4 MB), so no compact-specific live validation allocation was isolated.
+The remaining compact resident gap is required Arrow bodies plus conversion
+overlap/allocator retention while the full native release is live, not a measurable
+redundant retained Python copy. No small adapter fix is warranted; a material
+reduction needs streaming/lazy I02 candidate/replay or incremental compact
+construction before full native materialization. No physical code changed in this
+incision; capacity guard `9a5cfa...` is unchanged.

@@ -167,3 +167,15 @@ the measured capacity-full duplicate repair. It is **not** covered by R03
 per-query validation/identity/authority gates, and exact no-scope facts; unknown
 prospective member size keeps the post-build fallback. No new review is requested
 here; HQ may schedule one separately if it accepts the new code.
+
+## Allocation incision note
+
+The allocation incision (N=200/N=1,000) added no physical code. It measured the
+fixed Arrow runtime baseline separately and found compact endstate live Python lower
+than native, while required Arrow event bodies plus conversion overlap/allocator
+retention account for the resident gap. No small retained-copy repair was found.
+A material reduction depends on a streaming/lazy I02 candidate/replay ABI or
+incremental compact construction, preserving I02 validation/selector v1/ref/replay.
+R03 acceptance remains scoped to `409be32f...`; capacity guard `9a5cfa...` is also
+not R03-accepted. The phase-3 assessment `5dfef26d...` remains evidence-only and
+marks economical compact `NOT_FULFILLED`.

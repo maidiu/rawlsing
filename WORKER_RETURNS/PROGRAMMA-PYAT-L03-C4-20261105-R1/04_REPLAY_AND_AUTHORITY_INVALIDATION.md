@@ -248,3 +248,22 @@ after 0.2001 s, no-scope 0.1989 s; before build attempts 2 / builds 1 / early
 fallbacks 0, after attempts 1 / builds 1 / early fallbacks 1. Full facts/refs/replay
 matched no-scope. R03 `e2f6c164...` remains scoped to `409be...` and does not accept
 this new code.
+
+## Allocation incision (no physical code change)
+
+Allocation incisions at N=200/N=1,000 used fresh processes, same fixture and first
+consumer, with native control carrying the same Arrow import/runtime. Native and
+compact first-query facts/refs/replay matched exactly. Fixed Arrow runtime current
+RSS was 118.0/116.6 MB; native endstate 154.6/228.6–278.2 MB current and
+154.7/258.0–305.4 MB highwater; compact 169.5/327.9–328.1 MB current and
+169.5/335.2–336.4 MB highwater.
+
+At N=1,000 compact conversion added 37.7 MB current, 13.9 MB highwater; Arrow body
+array 29.7 MB, live Python `tracemalloc` +4.9 MB. Compact live Python endstate was
+lower than native (82.6 vs 100.2 MB); native validation current RSS varied while
+live tracemalloc was identical. The remaining resident gap is conversion
+overlap/allocator retention plus required Arrow bodies, not a redundant retained
+Python copy. No physical code was changed; no capacity/cache default changed.
+A material reduction requires a streaming/lazy I02 candidate/replay or incremental
+compact ABI, preserved selector v1/I02/refs/replay. N=3000 and delete/corrupt/stale/
+revoke were NOT_RUN here.
