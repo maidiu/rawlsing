@@ -145,6 +145,6 @@ it does not emit a hard-coded DONE report.
 
 ## Commit
 
-**Commit:** `PENDING_ARTIFACT_COMMIT`
+**Commit:** `5aa8b1df7c122a5ae06ea28041ec394d84a0cb0e`
 
 After commit, push and verify this exact branch, then stop.
