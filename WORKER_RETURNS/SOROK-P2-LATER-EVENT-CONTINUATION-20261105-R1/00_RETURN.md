@@ -142,3 +142,9 @@ exact commit is required before receiving acceptance or protected writes.
 See `PROGRAMMA_DELTA.md` / `PROGRAMMA_DELTA.json`: focused public-boundary and
 explicit-action repair only; no PROGRAMMA canonical product, seam/gate register,
 native science or receiving authority changed.
+
+## Publication
+
+Branch: `codex/sorok-p2-later-public-boundary-repair-20261105-r1`.
+Repair commit: `4bdba46c4d3a667a9cd7845eb57caa980df76373`.
+Final pushed head and receipt: `PUBLICATION_RECEIPT.json`.
