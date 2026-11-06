@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import json
 import os
 import subprocess
@@ -57,6 +58,22 @@ def _run_cli(*args):
     )
     assert completed.returncode == 0, completed.stderr
     return json.loads(completed.stdout)
+
+
+def test_imported_interval_repair_source_is_loaded_and_observation_only():
+    deps = runtime.load()
+    from p2_explicit_interval_flow import continuation as interval_continuation
+
+    path = Path(interval_continuation.__file__).resolve()
+    assert path.is_relative_to(runtime.INTERVAL_RETURN.resolve())
+    assert deps["interval_apply"].__module__ == "p2_explicit_interval_flow.continuation"
+    assert callable(interval_continuation.explicit_do_help)
+    observation = inspect.getsource(interval_continuation.admit_continuation)
+    explicit = inspect.getsource(interval_continuation.explicit_do_help)
+    assert "adapter.do_help()" not in observation
+    assert "adapter.do_help()" in explicit
+    assert "explicit_do_help" in interval_continuation.__all__
+
 
 
 def test_actual_interval_later_observation_then_explicit_attempt(tmp_path):
@@ -287,6 +304,25 @@ def test_cold_cli_sequence_observation_before_attempt(tmp_path):
     assert later["do_help_executed"] is False
     assert later["user_attempt"] is False
     assert "root_hash" not in json.dumps(later)
+
+    fanin = P2ProductFanin.open(state)
+    try:
+        later_event_ref = fanin.session.read_events()[-1]["e1_event_id"]
+        encounters_before_opportunity = len(fanin.session.read_encounters())
+    finally:
+        fanin.close()
+    opportunity = _run_cli(
+        "opportunity", "--state", str(state), "--event-ref", later_event_ref
+    )
+    assert opportunity["schema"] == OPPORTUNITY_SCHEMA
+    assert opportunity["event_status"] == "OK"
+    assert opportunity["do_help_executed"] is False
+    assert opportunity["user_attempt"] is False
+    fanin = P2ProductFanin.open(state)
+    try:
+        assert len(fanin.session.read_encounters()) == encounters_before_opportunity
+    finally:
+        fanin.close()
 
     helped = _run_cli("do-help", "--state", str(state))
     assert helped["schema"] == "SOROK_WP19_INTERACTION_RESULT@1"

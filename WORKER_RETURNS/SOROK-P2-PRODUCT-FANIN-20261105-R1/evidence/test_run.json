@@ -1,6 +1,6 @@
 {
   "cli_sequence": "evidence/cli/summary.json",
-  "cli_sequence_sha256": "28f6e86bb4adfd621cc84986b552c04ddc8b007eede8c9773d67e346e72462a9",
+  "cli_sequence_sha256": "48242a35dd8b47d7e1b3d5f7f24323bc5f5db80f4501ed45a92662a4cba40cd1",
   "command": "TMPDIR=$PWD/.local-logs/sorok-p2-product-fanin-20261105-r1/pytest-tmp python3 -B -m pytest -q -p no:cacheprovider --junitxml=WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/focused_fanin.xml WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/tests",
   "cut_restore": "evidence/cut_restore.json",
   "cut_restore_sha256": "d835ff7b37ea0b63f0b6599a56ccb13a4fed0710846d28458700d02e67608823",
@@ -8,13 +8,16 @@
   "errors": 0,
   "exit": 0,
   "failures": 0,
+  "interval_repair_tests": "evidence/interval_repair_tests.json",
+  "interval_repair_tests_sha256": "fe6f68991e44c170f80ba019930bf3ce690408b34883c9feecf7e0284b2ed1b5",
   "junit": "evidence/focused_fanin.xml",
-  "junit_sha256": "d53d8a67ea34657eff985320c379fcad8a5c4d0359cd51a3eb1dcfffbed8fd4c",
+  "junit_sha256": "6e42359853186292617497cd1718c41aa73d18013caf109538801a3b8b791011",
   "log": "logs/focused_fanin.log",
-  "log_sha256": "f6946e1d5e8ab7d76e4a6333e4367d334d62123b55b54ce21c7a0ec129b51bb5",
+  "log_sha256": "816b11b007012fc1048f9fea55dcc10b8943a00240b184c3343c5d1b6c444344",
   "not_run": [
-    "independent review of this fanin commit",
-    "latter2 independent review (separately running)",
+    "independent review of interval repair 7a256ed4",
+    "independent review of this fanin refresh",
+    "current interval/later review on old cuts is not acceptance of this repair/fanin",
     "inherited 55-test full estate",
     "native/science/human/B grants",
     "actual elapsed life, absence activity, delivery or human validation"
@@ -25,8 +28,9 @@
   "schema": "SOROK_P2_PRODUCT_FANIN_TEST_RUN@1",
   "skipped": 0,
   "status": "PASS",
-  "summary": "6 passed in 58.22s",
+  "summary": "7 passed in 71.86s (0:01:11)",
   "tests": [
+    "test_imported_interval_repair_source_is_loaded_and_observation_only",
     "test_actual_interval_later_observation_then_explicit_attempt",
     "test_scheduled_control_reads_opportunity_before_explicit_help",
     "test_outside_blocks_encounter_actions_and_local_return_does_not_mutate",
@@ -34,5 +38,7 @@
     "test_unknown_and_invalid_interval_are_explicit",
     "test_cold_cli_sequence_observation_before_attempt"
   ],
-  "tests_passed": 6
+  "tests_passed": 7,
+  "upstream_repair_status": "evidence/upstream_interval_auto_do_help.json",
+  "upstream_repair_status_sha256": "ef1427b2350520ca80031e6a839c4ffee7cbdb6af0f702cd893e96af02b527e0"
 }

@@ -6,6 +6,7 @@ from .continuation import (
     admit_continuation,
     apply_explicit_interval,
     continue_after_request,
+    explicit_do_help,
 )
 
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     "admit_continuation",
     "apply_explicit_interval",
     "continue_after_request",
+    "explicit_do_help",
 ]

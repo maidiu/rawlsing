@@ -16,7 +16,9 @@
     "02-interval-actual.json",
     "03-verify-after-interval.json",
     "04-later-event-observation.json",
+    "04b-opportunity.json",
     "05-verify-after-observation.json",
+    "05b-verify-after-opportunity.json",
     "06-do-help-explicit.json",
     "07-verify-after-explicit-help.json",
     "08-attend.json",
@@ -31,7 +33,8 @@
   "encounter_counts": {
     "after_explicit_do_help": 1,
     "after_interval": 0,
-    "after_later_observation": 0
+    "after_later_observation": 0,
+    "after_opportunity": 0
   },
   "exit": {
     "code": "LOCAL_EXIT_ONLY",
@@ -69,9 +72,17 @@
     "world_event_created": false
   },
   "new_view_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+  "opportunity_read": {
+    "c9_material_eligible": false,
+    "do_help_executed": false,
+    "event_status": "OK",
+    "language_status": "ACCEPTED",
+    "user_attempt": false
+  },
   "privacy": {
     "01-new.json": false,
     "04-later-event-observation.json": false,
+    "04b-opportunity.json": false,
     "14-status.json": false,
     "15-verify-final.json": false
   },

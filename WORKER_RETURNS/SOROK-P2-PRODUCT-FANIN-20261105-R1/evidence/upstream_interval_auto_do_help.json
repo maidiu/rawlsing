@@ -1,10 +1,43 @@
 {
-  "callable": "p2_explicit_interval_flow.continuation.admit_continuation",
-  "defect": "admit_continuation invokes adapter.do_help() to display a projected consequence, auto-executing a user DO_HELP attempt.",
-  "fanin_behavior": "later-event output sets do_help_executed=false; tests assert encounter_count is unchanged before explicit do-help.",
-  "integration_avoidance": "Fanin uses only p2_explicit_interval_flow.continuation.apply_explicit_interval, then P2Continuation.admit_later_event/read_later_event for later-event observation. DO_HELP is only executed by the explicit fanin do-help command.",
-  "observed_marker": "p2_explicit_interval_flow/continuation.py calls helped = adapter.do_help() inside admit_continuation",
-  "schema": "SOROK_P2_FANIN_UPSTREAM_DEFECT@1",
-  "source_commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
-  "source_return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1"
+  "fanin_callsite": {
+    "changed": false,
+    "explicit_user_help": "Fanin do-help uses the accepted lifecycle adapter; no interval helper auto-help.",
+    "reason": "Fanin already used only apply_explicit_interval and never called admit_continuation; apply_explicit_interval ABI is unchanged.",
+    "still_avoids_admit_continuation": true
+  },
+  "historical": {
+    "callable": "p2_explicit_interval_flow.continuation.admit_continuation",
+    "defect": "admit_continuation invoked adapter.do_help() to display a projected consequence, auto-executing a user DO_HELP attempt.",
+    "fanin_candidate": "579afc5fe63ff305ec49d4c8d42abc8475acf8bb",
+    "fanin_evidence": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/upstream_interval_auto_do_help.json historical contents and git history",
+    "note": "Historical bdad/fanin defect evidence is preserved in git history and in this status record.",
+    "source_commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
+    "source_return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
+    "source_tree_sha1": "0209fdb84d3564c46e704573a6a2d1b44adfee86"
+  },
+  "not_run": [
+    "independent review of the interval repair cut",
+    "independent review of this fanin refresh",
+    "inherited full 55-test estate",
+    "native/science/human/B grants"
+  ],
+  "repair": {
+    "api_changes": "admit_continuation is observation-only; explicit_do_help and CLI do-help are separate explicit user operations.",
+    "code_commit": "dde8287a806a802cd8d6a3dc122870f8cf8c5c3a",
+    "loaded_module_path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/p2_explicit_interval_flow/continuation.py",
+    "loaded_module_sha256": "6a79b58951832f58c3a825bac66cf0b59adf615dc0d73204d3f6d95b37599d1a",
+    "loaded_module_under_refreshed_return": true,
+    "source_commit": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+    "source_return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
+    "source_tree_sha1": "6bc6632fa3ca67cedcdd16bc6cb5ea61b8e81789"
+  },
+  "schema": "SOROK_P2_FANIN_UPSTREAM_REPAIR_STATUS@1",
+  "status": "REPAIRED_AUTHOR_TESTED_PENDING_INDEPENDENT_REVIEW",
+  "verification": {
+    "fanin_tests": "7 passed in 71.86s",
+    "interval_repair_tests": "6 passed in 76.97s against refreshed interval return",
+    "loaded_repair_source_test": "test_imported_interval_repair_source_is_loaded_and_observation_only",
+    "single_explicit_help": "encounter count after explicit do-help = 1",
+    "zero_help_attempts_observation": "encounter counts after interval and later observation = 0"
+  }
 }

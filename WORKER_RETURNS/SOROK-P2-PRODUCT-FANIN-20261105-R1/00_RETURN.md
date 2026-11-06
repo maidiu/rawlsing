@@ -8,7 +8,8 @@
 
 - Base accepted: `41bf45813fd0adeffd9b54e1306c2022abe96514` (independent ACCEPT scoped TEST_ONLY; PR697 unchanged/unmerged).
 - Lifecycle source: `79b90e4a57cbd1b738a9b9484677736d1b6415ab`; independent ACCEPT review commit `6398888f1d28152b5d29fef816f0bb45e77dd43b`. Imported directory tree `1eda53e475f5e07c1251a6f61eacecacc1284ed6`.
-- Explicit interval source: `bdadbc57c2664d3155a97853422e74b6128261f8`. Imported directory tree `0209fdb84d3564c46e704573a6a2d1b44adfee86`.
+- Explicit interval source: repair `7a256ed4873155dfad86faf2464110ee6f1e2ad4` (code `dde8287a806a802cd8d6a3dc122870f8cf8c5c3a`), replacing historical `bdadbc57c2664d3155a97853422e74b6128261f8`. Imported directory tree `6bc6632fa3ca67cedcdd16bc6cb5ea61b8e81789`.
+- Historical bdad interval/fanin auto-DO_HELP defect evidence remains preserved in git history and in `evidence/upstream_interval_auto_do_help.json`; the refreshed cut is `AUTHOR_TESTED`, pending independent review. Current independent interval/later review is still running old cuts and is not acceptance of this repair/fanin.
 - Later-event source: `76fdb624afc7674f088d10c349bfe15ffd0b865a`. Imported directory tree `1c701c14e131be131e7f62bdeccec3fe7415d0fb`. Its independent review is separately running; this fanin is not independently accepted.
 - All three new `WORKER_RETURNS` directories were imported byte-exactly from those Git trees, with their evidence preserved. No accepted base/vendor/projection/PR697/programma working file was edited.
 - New integration code/tests/evidence only under `WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/`.
@@ -47,7 +48,7 @@ The supplied interval is not a user-WAIT/absence choice. It is an explicit inter
 
 ## ATTEMPT VERSUS OBSERVATION
 
-This integration does not auto-execute user `DO_HELP` to show a predicted consequence. The imported interval helper `p2_explicit_interval_flow.continuation.admit_continuation` does call `adapter.do_help()` internally; that is an upstream defect for a user-attempt boundary. This fanin does not call that helper. Evidence: `evidence/upstream_interval_auto_do_help.json`.
+This integration does not auto-execute user `DO_HELP` to show a predicted consequence. The historical interval helper `admit_continuation` called `adapter.do_help()` internally; repair `7a256ed4` now makes it observation-only and adds separate `explicit_do_help`/CLI `do-help`. Fanin still uses only `apply_explicit_interval` and never calls `admit_continuation`; its explicit user help remains the accepted lifecycle `do-help`. Evidence: `evidence/upstream_interval_auto_do_help.json`.
 
 Fanin uses only:
 
@@ -55,7 +56,7 @@ Fanin uses only:
 - `p2_continuation.continuation.P2Continuation.admit_later_event/read_later_event` for the real later event and source-bound expression/C9 observation.
 - The accepted lifecycle `SAY`/`DO_HELP`/`ATTEND` only on explicit CLI commands.
 
-The cold CLI evidence proves encounter count remains `0` after interval and later-event observation, then becomes `1` only after explicit `do-help`.
+The cold CLI evidence proves encounter count remains `0` after interval, later-event observation and opportunity read, then becomes `1` only after explicit `do-help`.
 
 ## EXACT EXECUTED EVIDENCE
 
@@ -66,11 +67,22 @@ TMPDIR=$PWD/.local-logs/sorok-p2-product-fanin-20261105-r1/pytest-tmp \
 python3 -B -m pytest -q -p no:cacheprovider \
   --junitxml=WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/focused_fanin.xml \
   WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/tests
-# 6 passed in 58.22s, exit 0
+# 7 passed in 71.86s, exit 0
+```
+
+Affected imported interval repair tests were also rerun against the refreshed source:
+
+```text
+SOROK_P2_BASE_ROOT=$PWD TMPDIR=$PWD/.local-logs/sorok-p2-product-fanin-20261105-r1/interval-pytest \
+python3 -B -m pytest -q -p no:cacheprovider \
+  --junitxml=WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/interval_repair_focused.xml \
+  WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/tests
+# 6 passed in 76.97s, exit 0
 ```
 
 Covered:
 
+0. Loaded repaired interval module is the refreshed return source; `admit_continuation` has no `adapter.do_help()`, while `explicit_do_help` does.
 1. Same compatible S47 root across start/interval/later-event/cold reopen.
 2. ACTUAL interval material `1 -> 0`; later event C9 `objective_material_eligible=false`; S43 expression `ACCEPTED`.
 3. Observation of later opportunity does not increment encounters; explicit DO_HELP then refuses with `HELP_REFUSE`.
@@ -80,12 +92,12 @@ Covered:
 7. Unsupported SAY is `UNKNOWN`; missing/invalid interval input is HELD/REFUSED without advance.
 8. Privacy walker on views/action results/opportunity/local state/verify has no `root_hash`, `root_id`, private keys or forbidden markers.
 
-Cold CLI sequence (15 fresh commands):
+Cold CLI sequence (17 fresh commands):
 
-- `new -> interval ACTUAL -> verify -> later-event -> verify -> do-help -> verify -> attend -> say UNKNOWN -> exit -> blocked say -> return -> say -> status -> verify`.
-- Encounter counts: after interval `0`, after later observation `0`, after explicit DO_HELP `1`.
+- `new -> interval ACTUAL -> verify -> later-event -> opportunity -> verify -> do-help -> verify -> attend -> say UNKNOWN -> exit -> blocked say -> return -> say -> status -> verify`.
+- Encounter counts: after interval `0`, after later observation `0`, after opportunity read `0`, after explicit DO_HELP `1`.
 - ACTUAL interval `PARTIAL`, coverage `[[222,223]]`, material `0`.
-- Later observation: `event_status=OK`, `c9_material_eligible=false`, `language_status=ACCEPTED`, `do_help_executed=false`, `user_attempt=false`.
+- Later observation and opportunity read: `event_status=OK`, `c9_material_eligible=false`, `language_status=ACCEPTED`, `do_help_executed=false`, `user_attempt=false`.
 - Explicit DO_HELP: `REFUSED`, `attempted=true`, `performed=false`, `refusal=true`.
 - ATTEND: `NO_CHANGE`, `world_event_created=false`, `clock_changed=false`, `performed=false`.
 - Outside: blocked SAY `LOCAL_OUTSIDE_MODE_BLOCKED`, `actor_response=null`; local return `LOCAL_RETURN_ONLY`; then real WP19 SAY result again.
@@ -96,15 +108,18 @@ Cut/restore evidence: `evidence/cut_restore.json` records cut code, unchanged ev
 Evidence:
 
 - `evidence/test_run.json`, `evidence/focused_fanin.xml`, `logs/focused_fanin.log`
-- `evidence/cli/` (15 cold command receipts plus `summary.json`)
+- `evidence/cli/` (17 cold command receipts plus `summary.json`)
 - `evidence/cut_restore.json`
-- `evidence/upstream_interval_auto_do_help.json`
+- `evidence/upstream_interval_auto_do_help.json` (historical defect + repair status)
+- `evidence/interval_repair_focused.xml`, `logs/interval_repair_focused.log` (affected interval tests)
 - `evidence/source_manifest.json` (fanin files plus exact imported-tree hashes)
 
 ## NOT RUN / HOLDS
 
 - No independent review of this fanin commit.
-- Latter2 independent review is separately running; this return does not claim it accepted.
+- No independent review of interval repair `7a256ed4`; it is AUTHOR_TESTED only.
+- Latter2 independent review is separately running on old cuts; this return does not claim it accepted.
+- Current interval/later independent review is still running old cuts; it is not acceptance of repair `7a256ed4` or this fanin.
 - Inherited full 55-test estate was not rerun.
 - No native C8/C9/C12, CAN008/CAN011, ADP, Pyat, human usability, B-owned context or paid action is claimed.
 - No actual elapsed life, absence activity, delivery, world return or external message channel is claimed.

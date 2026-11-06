@@ -9,6 +9,7 @@ from .continuation import (
     admit_continuation,
     apply_explicit_interval,
     continue_after_request,
+    explicit_do_help,
 )
 
 
@@ -55,6 +56,14 @@ def command_admit(args) -> int:
     return 0
 
 
+def command_do_help(args) -> int:
+    result = explicit_do_help(
+        args.state, request=args.request, base_root=args.base_root
+    )
+    print(_json(result))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="sorok-p2-explicit-interval-flow",
@@ -88,11 +97,19 @@ def build_parser() -> argparse.ArgumentParser:
     interval.set_defaults(func=command_interval)
 
     admit = sub.add_parser(
-        "admit", help="admit and expose the public continued encounter"
+        "admit", help="admit and observe the public continued opportunity"
     )
     admit.add_argument("--state", required=True)
     admit.add_argument("--request", default="WAIT", choices=("WAIT", "ABSENCE"))
     admit.set_defaults(func=command_admit)
+
+    do_help = sub.add_parser(
+        "do-help",
+        help="explicit user DO_HELP operation; never automatic",
+    )
+    do_help.add_argument("--state", required=True)
+    do_help.add_argument("--request", default="WAIT", choices=("WAIT", "ABSENCE"))
+    do_help.set_defaults(func=command_do_help)
     return parser
 
 

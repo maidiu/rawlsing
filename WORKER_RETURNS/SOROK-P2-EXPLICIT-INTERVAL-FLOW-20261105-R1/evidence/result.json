@@ -4,14 +4,20 @@
   "base_product_source_manifest_sha256": "2535398efa2c376731aec17cd7b2ceda2e0fee477f064ae049870393b838b94b",
   "checks": {
     "actual_c9_material_false": true,
-    "actual_cold_continuity": true,
-    "actual_do_help_refused": true,
+    "actual_explicit_do_help_increments_one_encounter": true,
+    "actual_explicit_do_help_refused": true,
     "actual_material_consumed": true,
+    "actual_observation_no_auto_do_help": true,
+    "actual_observation_no_encounter_mutation": true,
+    "explicit_do_help_cold_continuity": true,
     "focused_tests_pass": true,
+    "observation_cold_continuity": true,
     "scheduled_c9_material_true": true,
-    "scheduled_cold_continuity": true,
-    "scheduled_do_help_accepted": true,
+    "scheduled_explicit_do_help_accepted": true,
+    "scheduled_explicit_do_help_increments_one_encounter": true,
     "scheduled_material_retained": true,
+    "scheduled_observation_no_auto_do_help": true,
+    "scheduled_observation_no_encounter_mutation": true,
     "wait_without_interval_holds": true
   },
   "cli": {
@@ -24,10 +30,11 @@
         "target_reason": "NO_PROPOSAL"
       },
       "cold_continuity": true,
-      "do_help": {
-        "status": "REFUSED",
-        "strategy": "HELP_REFUSE"
-      },
+      "do_help": null,
+      "do_help_executed": false,
+      "encounter_count_after": 0,
+      "encounter_count_before": 0,
+      "encounters_unchanged": true,
       "interval": {
         "actor_knowledge_inferred": false,
         "actual_daily_events_invented": 0,
@@ -44,8 +51,26 @@
         "start": 222,
         "status": "PARTIAL"
       },
+      "opportunity": {
+        "clock": 227,
+        "controls": [
+          "SAY",
+          "DO",
+          "ATTEND",
+          "WAIT",
+          "EXIT"
+        ],
+        "encounter_admission": null,
+        "location": "workshop",
+        "return_available": false,
+        "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+        "source": "s45",
+        "tool_available": true,
+        "visible_event_count": 15
+      },
       "reason": null,
-      "status": "CONTINUED"
+      "status": "CONTINUED",
+      "user_attempt_executed": false
     },
     "continue-scheduled": {
       "advanced": true,
@@ -56,10 +81,11 @@
         "target_reason": "NO_PROPOSAL"
       },
       "cold_continuity": true,
-      "do_help": {
-        "status": "OK",
-        "strategy": "HELP_ACCEPT"
-      },
+      "do_help": null,
+      "do_help_executed": false,
+      "encounter_count_after": 0,
+      "encounter_count_before": 0,
+      "encounters_unchanged": true,
       "interval": {
         "actor_knowledge_inferred": false,
         "actual_daily_events_invented": 0,
@@ -71,24 +97,135 @@
         "start": 222,
         "status": "NOT_PERFORMED"
       },
+      "opportunity": {
+        "clock": 227,
+        "controls": [
+          "SAY",
+          "DO",
+          "ATTEND",
+          "WAIT",
+          "EXIT"
+        ],
+        "encounter_admission": null,
+        "location": "workshop",
+        "return_available": false,
+        "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+        "source": "s45",
+        "tool_available": true,
+        "visible_event_count": 15
+      },
       "reason": null,
-      "status": "CONTINUED"
+      "status": "CONTINUED",
+      "user_attempt_executed": false
+    },
+    "do-help-actual": {
+      "advanced": false,
+      "c9": null,
+      "cold_continuity": true,
+      "do_help": {
+        "status": "REFUSED",
+        "strategy": "HELP_REFUSE"
+      },
+      "do_help_executed": true,
+      "encounter_count_after": 1,
+      "encounter_count_before": 0,
+      "encounters_unchanged": false,
+      "interval": null,
+      "opportunity": {
+        "clock": 227,
+        "controls": [
+          "SAY",
+          "DO",
+          "ATTEND",
+          "WAIT",
+          "EXIT"
+        ],
+        "encounter_admission": {
+          "accepted": false,
+          "gesture": "",
+          "kind": "DO_HELP",
+          "refusal": true,
+          "speech": "La herramienta no est\u00e1. Hoy no puedo hacerlo.",
+          "speech_english": "The tool's gone. I can't do it today.",
+          "status": "OK",
+          "strategy": "HELP_REFUSE",
+          "user_text": ""
+        },
+        "location": "workshop",
+        "return_available": false,
+        "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+        "source": "s45",
+        "tool_available": true,
+        "visible_event_count": 16
+      },
+      "reason": null,
+      "status": "DO_HELP_EXECUTED",
+      "user_attempt_executed": true
+    },
+    "do-help-scheduled": {
+      "advanced": false,
+      "c9": null,
+      "cold_continuity": true,
+      "do_help": {
+        "status": "OK",
+        "strategy": "HELP_ACCEPT"
+      },
+      "do_help_executed": true,
+      "encounter_count_after": 1,
+      "encounter_count_before": 0,
+      "encounters_unchanged": false,
+      "interval": null,
+      "opportunity": {
+        "clock": 227,
+        "controls": [
+          "SAY",
+          "DO",
+          "ATTEND",
+          "WAIT",
+          "EXIT"
+        ],
+        "encounter_admission": {
+          "accepted": true,
+          "gesture": "",
+          "kind": "DO_HELP",
+          "refusal": false,
+          "speech": "Pon la mano en el borde cercano. Yo tomo la holgura.",
+          "speech_english": "Put your hand on the near edge. I'll take the slack.",
+          "status": "OK",
+          "strategy": "HELP_ACCEPT",
+          "user_text": ""
+        },
+        "location": "workshop",
+        "return_available": false,
+        "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+        "source": "s45",
+        "tool_available": true,
+        "visible_event_count": 17
+      },
+      "reason": null,
+      "status": "DO_HELP_EXECUTED",
+      "user_attempt_executed": true
     },
     "hold-wait": {
       "advanced": false,
       "c9": null,
       "cold_continuity": null,
       "do_help": null,
+      "do_help_executed": false,
+      "encounter_count_after": null,
+      "encounter_count_before": null,
+      "encounters_unchanged": null,
       "interval": null,
+      "opportunity": null,
       "reason": "WAIT_UNSUPPORTED_TYPED_HOLD",
-      "status": "HELD"
+      "status": "HELD",
+      "user_attempt_executed": false
     }
   },
   "commands": {
-    "actual": "python3 -I -B <return>/run_explicit_interval_flow.py --base-root <base> continue --state <state> --request WAIT --mode ACTUAL --span 4",
-    "hold": "python3 -I -B <return>/run_explicit_interval_flow.py --base-root <base> continue --state <state> --request WAIT",
-    "new_actual": "python3 -I -B <base-product>/run_s45_s47.py new --state <state>",
-    "scheduled": "python3 -I -B <return>/run_explicit_interval_flow.py --base-root <base> continue --state <state> --request ABSENCE --mode SCHEDULED_ONLY --span 4",
+    "explicit_do_help": "python3 -I -B <return>/run_explicit_interval_flow.py --base-root <base> do-help --state <state> --request WAIT",
+    "new": "python3 -I -B <base-product>/run_s45_s47.py new --state <state>",
+    "observe": "python3 -I -B <return>/run_explicit_interval_flow.py --base-root <base> continue --state <state> --request WAIT --mode ACTUAL --span 4",
     "tests": "SOROK_P2_BASE_ROOT=<base> TMPDIR=<return>/logs/tmp python3 -B -m pytest -q -p no:cacheprovider --junitxml=<return>/evidence/focused_tests.xml <return>/tests"
   },
   "files": [
@@ -98,24 +235,29 @@
       "sha256": "ed748824675adbe2fa6a2b379512eceb2da741fdcbd135a64390b2b440513357"
     },
     {
-      "bytes": 5465,
+      "bytes": 4994,
       "path": "00_RETURN.md",
-      "sha256": "2ccaec59afb30cb51de4f995dcad84dd3ed46bb445ec29abeb287c9c0a6c1472"
+      "sha256": "c69d5d4ebb1649a9485f3cbbcec74f2bbb957fbe4df90efe27130c42f92dd9fe"
     },
     {
-      "bytes": 1217,
+      "bytes": 1173,
       "path": "PROGRAMMA_DELTA.json",
-      "sha256": "2a6be7120e760c619d2b7d3d332671966801359044dcfb4cafc58803f9cc3078"
+      "sha256": "f7c020ad8cd637a29b8571625ca8274232c752106ef87bb56a9f3ea21c8678f4"
     },
     {
-      "bytes": 1410,
+      "bytes": 1394,
       "path": "PROGRAMMA_DELTA.md",
-      "sha256": "b177112e9a6480bb820cfa042e78d919de6b0f0ab4bf1eb13796242f8b00e796"
+      "sha256": "8a3f1220f5436baf6628cc1df877ffea6404c1c53bbd8c1f0a0967c3d880526c"
     },
     {
-      "bytes": 2437,
+      "bytes": 855,
+      "path": "PUBLICATION_RECEIPT.json",
+      "sha256": "30c7e6071d5447741a5ee62811fa00fbdf886b6d3cefb7402b7c88ebc2cd89aa"
+    },
+    {
+      "bytes": 3020,
       "path": "README.md",
-      "sha256": "ddef4732a5c2f7bcf0f5b2392ab32a52acf9d0d1cfb7d06c94cae4eb402c37d7"
+      "sha256": "ccc7eb75486e09043430537fb56847f13b2be2b82ac8be466574700d8facd525"
     },
     {
       "bytes": 0,
@@ -123,9 +265,9 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "bytes": 38372,
+      "bytes": 18643,
       "path": "evidence/cli/continue-actual.json",
-      "sha256": "0379e46c88b1b928465909470d1fdbfe7a2e8f8b8c01c92653f289f318bfe71c"
+      "sha256": "8d40120faad7e05016cd3aafdf07736f84103f0814e931395736ae26e812400d"
     },
     {
       "bytes": 0,
@@ -133,9 +275,29 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "bytes": 39719,
+      "bytes": 18613,
       "path": "evidence/cli/continue-scheduled.json",
-      "sha256": "7e2c1982c42d593b5a8e529249f8e4346e002bc5a1dd3bf0c82a41ec93b1c520"
+      "sha256": "ffdb022935b18ee21b7db96e9b0ec779663253e479c05ef2222355a76bf5b207"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/cli/do-help-actual.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 21414,
+      "path": "evidence/cli/do-help-actual.json",
+      "sha256": "cafc5063058f2c5df7cf473027054601b600dd0324f4cee5a4b4407c509840a6"
+    },
+    {
+      "bytes": 0,
+      "path": "evidence/cli/do-help-scheduled.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 22866,
+      "path": "evidence/cli/do-help-scheduled.json",
+      "sha256": "74632e1f4d57d2dc288cbcd3c357bf51ea7a3153c4455a44aaf442d12b343760"
     },
     {
       "bytes": 0,
@@ -143,9 +305,9 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "bytes": 519,
+      "bytes": 704,
       "path": "evidence/cli/hold-wait.json",
-      "sha256": "fa1a5f44d2976a7f967e63a71acc1c90d734b79bc93b08f3a2d14e472114a359"
+      "sha256": "af7bf5b9f90fa382749bf9665a02fb1e76f24ce6d2ac970b051c66c440b933fb"
     },
     {
       "bytes": 0,
@@ -155,7 +317,7 @@
     {
       "bytes": 15248,
       "path": "evidence/cli/product-new-actual.json",
-      "sha256": "8e0fe510f0a657899cd10cc561c172018218216700dce9f5065857ca584a9f3c"
+      "sha256": "e587a2f97e34c655f0882cdff8e6cf4a3ac48846505a7b7472a40612490654c9"
     },
     {
       "bytes": 0,
@@ -165,27 +327,32 @@
     {
       "bytes": 15248,
       "path": "evidence/cli/product-new-scheduled.json",
-      "sha256": "9b0b7bc8909a1aafb7a906a35b0f397b2354436f029e0856afc0ee5706a0be48"
+      "sha256": "3658ed3816b62be61e01eeb88ed2487da7dc85365ec1ccbce4e4121f49278389"
     },
     {
-      "bytes": 1415,
+      "bytes": 1442,
       "path": "evidence/focused_tests.xml",
-      "sha256": "970d82f710f644e50a5cd73fbb2a70b647587a3ebb20faf8f46b04f4ea209737"
+      "sha256": "ebc749bfa41d006b9fbdb4ac8454f69ac541408495e11d9e0a4e08951e24bbcc"
     },
     {
-      "bytes": 99,
+      "bytes": 109,
       "path": "logs/focused_tests.log",
-      "sha256": "8b0822973eaabe4a02617397f28e96e2239d441fcccbf4b5a2f0dc781f8e8dca"
+      "sha256": "333cca9402c4928ffcf5ceaf3f1a94a5362bc661416c898f6411464755b0be06"
     },
     {
-      "bytes": 390,
+      "bytes": 436,
       "path": "p2_explicit_interval_flow/__init__.py",
-      "sha256": "330e41bf62c10b8a403d57541e9bff3cc924465ec5a49c1ccd8f2d7444d40a32"
+      "sha256": "c4edfe0ba20cf31ac25a6fa059b8d06bdff608aea887313cf3c7e935d247d583"
     },
     {
-      "bytes": 13166,
+      "bytes": 6204,
+      "path": "p2_explicit_interval_flow/__pycache__/cli.cpython-311.pyc",
+      "sha256": "8a8a137b80818bb2747f8cc696e82ad9880809755383bcc883e08676e957cb10"
+    },
+    {
+      "bytes": 16880,
       "path": "p2_explicit_interval_flow/__pycache__/continuation.cpython-311.pyc",
-      "sha256": "87bc99e095fee0bf58902143288003971678491434454a1fb4be8f63a6aa6e46"
+      "sha256": "f22d4c95999940410eb7cf67110dcaf3177284acb80abb6dba13226da4614c53"
     },
     {
       "bytes": 2377,
@@ -193,14 +360,14 @@
       "sha256": "76e33b2c94dbeacf2537477f14a97439e33c7f907b440db0cac7633a28ba82c3"
     },
     {
-      "bytes": 3073,
+      "bytes": 3578,
       "path": "p2_explicit_interval_flow/cli.py",
-      "sha256": "f7f361ad01fcccc8365a8cee5f5264330619216b35804f19c554b5ab9cece6c0"
+      "sha256": "2c06bd4f28c0f12d6331e68b61a956b60c256e4becd21197b7bcea1a7680cc09"
     },
     {
-      "bytes": 9340,
+      "bytes": 11863,
       "path": "p2_explicit_interval_flow/continuation.py",
-      "sha256": "2c354496afadee973a2e38cab06d6441995a9bd2b877b9409ad3a19ae7e10b8a"
+      "sha256": "6a79b58951832f58c3a825bac66cf0b59adf615dc0d73204d3f6d95b37599d1a"
     },
     {
       "bytes": 310,
@@ -208,14 +375,19 @@
       "sha256": "6d2b5686dfca682b220d8de92c29956dc7b82348aed97912df056bf966665752"
     },
     {
+      "bytes": 12561,
+      "path": "tests/__pycache__/test_explicit_interval_flow.cpython-311.pyc",
+      "sha256": "4de9c8ec34c946b5306a8a3e068b39e1b606b3ff0ee9b3bebcbc6e72027ac552"
+    },
+    {
       "bytes": 186,
       "path": "tests/conftest.py",
       "sha256": "b549459c4bd19e9a26073ef981ae38d533dd4c6451a8b2588836c90385691979"
     },
     {
-      "bytes": 6040,
+      "bytes": 7700,
       "path": "tests/test_explicit_interval_flow.py",
-      "sha256": "ec8175e831931eaea753be5e4b270b60cf36187e25339fd91685ea2fc4d8684a"
+      "sha256": "9c61f672a7969e3df9bfbc780230b1fa78d58007fc96562b060d725b80673ddd"
     }
   ],
   "focused_tests": {
@@ -230,11 +402,25 @@
   "limitations": [
     "TEST_ONLY sourcefree explicit interval continuation; not autonomous absence life.",
     "WAIT/ABSENCE alone remain typed holds; no activity is inferred.",
+    "Observation never executes a user DO_HELP attempt or increments encounters.",
+    "Explicit do-help is a separate user operation only.",
     "No native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority.",
     "No actor choice, motive, B state or paid counterpart is fabricated.",
     "Inherited product/projection/vendor source is used unchanged from base 41bf45813.",
-    "Focused checks only; inherited full estate not rerun."
+    "Focused checks only; inherited full estate not rerun.",
+    "Not independent acceptance; historical bdad commit remains immutable."
   ],
+  "repair": {
+    "auto_do_help_removed": true,
+    "defect_evidence": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/upstream_interval_auto_do_help.json",
+    "explicit_do_help_operation": "explicit_do_help / CLI do-help",
+    "observation_only_default": true,
+    "prior_commit_immutable": true,
+    "prior_published_commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
+    "public_opportunity_source": "S45Projection view",
+    "raw_private_c9_or_state_exposed": false,
+    "schema": "SOROK_P2_AUTO_DO_HELP_REPAIR@1"
+  },
   "result": "PASS",
   "schema": "SOROK_P2_EXPLICIT_INTERVAL_FLOW_RESULT@1"
 }

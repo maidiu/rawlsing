@@ -2,9 +2,9 @@
 
 **Delta ID:** `SOROK-P2-PRODUCT-FANIN-20261105-R1`
 **Base accepted:** `41bf45813fd0adeffd9b54e1306c2022abe96514`.
-**Sources:** lifecycle `79b90e4a57cbd1b738a9b9484677736d1b6415ab`; interval `bdadbc57c2664d3155a97853422e74b6128261f8`; later-event `76fdb624afc7674f088d10c349bfe15ffd0b865a`.
+**Sources:** lifecycle `79b90e4a57cbd1b738a9b9484677736d1b6415ab`; interval repair `7a256ed4873155dfad86faf2464110ee6f1e2ad4` (code `dde8287a806a802cd8d6a3dc122870f8cf8c5c3a`; historical `bdadbc57c...` preserved); later-event `76fdb624afc7674f088d10c349bfe15ffd0b865a`.
 **Grade:** `TEST_ONLY_SOURCEFREE_P2_PRODUCT_FANIN_NOT_NATIVE`.
-**Result:** 6 focused tests pass; cold CLI sequence passes; one S47 root; no auto DO_HELP.
+**Result:** 7 fanin tests and 6 affected interval-repair tests pass; cold CLI sequence passes; one S47 root; zero help attempts on observation; explicit do-help is the single action.
 
 ## Added
 
@@ -18,7 +18,7 @@
 - `OUTSIDE` blocks only user encounter actions; local `RETURN` restores `PORTAL` with no canonical actor/world mutation.
 - Explicit interval is supplied input, not WAIT/absence-caused actor choice.
 - Later-event observation is not a user attempt. Only explicit `do-help` performs user DO_HELP.
-- The upstream interval helper `admit_continuation` auto-calls `do_help`; fanin avoids it and records the concrete defect.
+- Historical interval `admit_continuation` auto-called `do_help`; repair `7a256ed4` makes it observation-only and adds separate `explicit_do_help`. Fanin avoids `admit_continuation`; its callsite did not need change and explicit do-help remains the accepted lifecycle action. The repaired cut is AUTHOR_TESTED pending independent review.
 
 ## Not changed
 
