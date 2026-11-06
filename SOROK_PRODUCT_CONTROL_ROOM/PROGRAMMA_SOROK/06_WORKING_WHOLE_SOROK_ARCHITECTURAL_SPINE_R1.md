@@ -1,5 +1,7 @@
 # W8-R CURRENT WHOLE / SOURCE / MATURITY / FIRST-READER SPINE
 
+**CURRENT PROTECTED CODE RECEIVING OVERRIDE (2026-11-06):** Read [protected developmental-recursion receiving/currentness](CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md) before interpreting this frozen W8-R maturity ledger. #697/#699 and now #704 are **MERGED** on PRE-MAIN; the generic `RecursionCycle → BatchEngine → P2Owner → S39–S47/P2` actually executes 3–5 sequential proposals with state carry-forward, actor-bound retrospective input and cold two-batch evidence, graded SOURCEFREE TEST_ONLY. Earlier statements in this document that #697 is unmerged, P2 is only candidate, or no recursive 3–5 first consumer exists are historical cut claims, not current statements. Full D002 MPC and native psychogenesis/memory remain unqualified. Preserve the original 144/38 ID identities and all separate conditional gates.
+
 **This is a finite reference for Sorok work, not operational scientific truth.** Pin W8-F actual guide 097d46c47b6e41ff93a427e54646195892644cde; W8-J 38 typed seam ledger b78528a314aa26f6167d34e3e6a8bb045ae6ebdc; W8-N twelve orphan stages, eight candidate requirements and sixteen new direct source reads 9b0b5f3aae6cb8fd77d257170c31be77511ca52e. W7-C/S/P/D source cuts and W8-F's repaired claim gates remain visible below. W8-J's prior W7-I author proximity and W8-N's prior W6-B/D author proximity prohibit treating either as its own independent acceptance.
 
 ## Post-W8 source-qualified original-product proof — D002/Astra (candidate, NOT adopted)
