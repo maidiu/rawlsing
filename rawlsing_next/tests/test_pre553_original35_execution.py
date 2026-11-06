@@ -4,18 +4,35 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
+from collections import Counter
+from types import SimpleNamespace
 
 import pytest
 
 from dataclasses import asdict, dataclass
 from rawlsing_next.pre553_original35_execution import (
     Original35ExecutionError, _RecordingResolver,
-    execute_native_compiler_source, execute_source, load_runtime_binding,
+    execute_native_compiler_source, execute_source,
+    load_runtime_binding, write_field_forge_envelopes,
 )
 from rawlsing_next.pre553_original35_operations import build_original35_operation_plan
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
+from rawlsing_next.pre553_original35_operations import (
+    bind_governed_frontier, build_original35_operation_plan,
+)
+from rawlsing_next.pre553_universal_workload import execute_governed_frontier
+from rawlsing_next.pre553_field_forge_empirical_ingress import (
+    ingest_envelope,
+)
+from rawlsing_next.tests.test_pre553_original35_operations import _fixture_config
+from rawlsing_next.tests.test_universal_workload import (
+    AS_OF, HOST, PURPOSE, _frontier_bundle,
+)
 
 INDEX = "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json"
+REPO = Path(__file__).resolve().parents[2]
 
 
 def _binding():
@@ -110,3 +127,87 @@ def test_recording_resolver_binds_actual_decode_decision_not_extra_precall():
     for _ in range(3):
         same.resolve_current(None)
     assert same.captured[0] == same.captured[-1]
+
+
+def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
+    bundle, _rows = _frontier_bundle(tmp_path / "e_transport.sav")
+    config = _fixture_config(bundle)
+    plan = build_original35_operation_plan(
+        [config], source_presence={"SRC01": True}, require_all35=False)
+    compilation = bind_governed_frontier(
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream)
+    no_permission_root = tmp_path / "no_permission"
+    with pytest.raises(Original35ExecutionError):
+        write_field_forge_envelopes(
+            result, source_id="SRC01", state_root=no_permission_root,
+            producer_permission_ceiling=None)
+    with pytest.raises(Original35ExecutionError):
+        write_field_forge_envelopes(
+            result, source_id="SRC01", state_root=no_permission_root,
+            producer_permission_ceiling=())
+    assert not list(no_permission_root.glob("*.field_forge_envelopes.json"))
+
+    ceiling = ("FIELD_FORGE_RELATION_PRODUCTION",)
+    summary = write_field_forge_envelopes(
+        result, source_id="SRC01", state_root=tmp_path,
+        producer_permission_ceiling=ceiling)
+    assert summary["fact_count"] == summary["envelope_count"] == 30
+    document = json.loads(Path(summary["path"]).read_text())
+    assert document["schema"] == "PRE553_ORIGINAL35_E_TRANSPORT@1.0.0"
+    assert document["raw_respondent_rows_included"] is False
+    assert all(tuple(envelope["permissions"]["producer_permission_ceiling"])
+               == ceiling for envelope in document["envelopes"])
+    arities = Counter(
+        envelope["query"]["semantic_fields"]["target_arity_and_topology"]["arity"]
+        for envelope in document["envelopes"])
+    assert arities == {1: 30}
+    responses = [ingest_envelope(envelope) for envelope in document["envelopes"]]
+    assert Counter((response["state"], response["refusal_code"])
+                   for response in responses) == {
+        ("TYPED_REFUSAL", "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED"): 30}
+    assert all(response["structural_grant"] is False for response in responses)
+    envelope_path = tmp_path / "first_envelope.json"
+    envelope_path.write_text(json.dumps(document["envelopes"][0], sort_keys=True))
+    run = subprocess.run(
+        [sys.executable, "-B", "-m",
+         "rawlsing_next.pre553_field_forge_empirical_ingress",
+         "--envelope", str(envelope_path)],
+        cwd=str(REPO),
+        env={**os.environ, "PYTHONPATH": str(REPO),
+             "PYTHONDONTWRITEBYTECODE": "1"},
+        text=True, capture_output=True, timeout=120)
+    assert run.returncode == 0, run.stderr[-2000:]
+    cold = json.loads(run.stdout)
+    assert cold["schema"] == "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1"
+    assert cold["state"] == "TYPED_REFUSAL"
+    assert cold["refusal_code"] == "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED"
+    assert cold["structural_grant"] is False
+
+    missing_root = tmp_path / "missing_query"
+    missing_root.mkdir(parents=True)
+    prior = missing_root / "SRC01.field_forge_envelopes.json"
+    prior.write_text("PRIOR_VALID_ARTIFACT\n")
+    fake = SimpleNamespace(
+        native_execution=SimpleNamespace(native_result=SimpleNamespace(
+            empirical_facts=result.native_execution.native_result.empirical_facts,
+            executed_queries=())),
+        compilation=SimpleNamespace(runtime_catalog=SimpleNamespace(queries=())))
+    with pytest.raises(Original35ExecutionError):
+        write_field_forge_envelopes(
+            fake, source_id="SRC01", state_root=missing_root,
+            producer_permission_ceiling=ceiling)
+    assert prior.read_text() == "PRIOR_VALID_ARTIFACT\n"
+    assert not list(missing_root.glob("*.staged-tmp"))
+
+    broken = json.loads(json.dumps(document))
+    broken["envelopes"][0]["permissions"] = {}
+    with pytest.raises(Exception):
+        ingest_envelope(broken["envelopes"][0])
+    broken = json.loads(json.dumps(document))
+    broken["envelopes"][0]["replay"]["fact_replay_ref"] = {
+        "kind": "WRONG", "object_id": "wrong", "content_hash": "0" * 64}
+    with pytest.raises(Exception):
+        ingest_envelope(broken["envelopes"][0])

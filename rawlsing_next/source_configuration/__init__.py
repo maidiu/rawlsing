@@ -29,6 +29,7 @@ from .schema import (
 )
 from .factory import (
     build_governed_c11_projection,
+    build_coordinate_slot_rules,
     build_source_backed_c11_repository_from_config,
     build_validated_c11_release_from_config,
     construct_governed_c11_projection,
@@ -61,7 +62,8 @@ __all__ = [
     "SourceConfigurationFactoryError", "SourceConfigurationEvidenceError",
     "canonical_config_hash", "config_file_sha256", "load_source_config",
     "validate_source_config", "build_governed_c11_projection",
-    "construct_governed_c11_projection", "build_validated_c11_release_from_config",
+    "construct_governed_c11_projection", "build_coordinate_slot_rules",
+    "build_validated_c11_release_from_config",
     "build_source_backed_c11_repository_from_config", "row_native_keys_from_transport",
     "FIXTURE_SCHEMA_ID",
     "fixture_document_sha256", "fixture_stream_from_document", "load_fixture_stream",

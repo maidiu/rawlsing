@@ -1,4 +1,4 @@
-"""Source/hash-bound R157 config corrections for the SRC31 response boundary."""
+"""Source/hash-bound R157 config corrections for accepted response and SRC15 coordinate gaps."""
 from __future__ import annotations
 
 import json
@@ -11,6 +11,7 @@ from rawlsing_next.source_configuration.corrections import (
     SourceCorrectionError,
     apply_source_config_corrections,
 )
+from rawlsing_next.source_configuration.factory import build_coordinate_slot_rules
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
 from rawlsing_next.source_configuration.provider import GitObjectProvider
 from rawlsing_next.source_configuration.schema import SourceConfig
@@ -145,7 +146,7 @@ def test_remaining_seven_corrections_are_source_hash_and_base_bound():
     library = SourceConfigLibrary.from_pinned_r157()
     registry = json.loads(CORRECTIONS_PATH.read_text(encoding="utf-8"))
     entries = {entry["source_id"]: entry for entry in registry["entries"]}
-    assert set(entries) == {"SRC31", *REMAINING7}
+    assert set(entries) == {"SRC31", "SRC15", *REMAINING7}
     for source_id, expected in REMAINING7.items():
         config = library.load_original(source_id)
         entry = entries[source_id]
@@ -265,3 +266,38 @@ def test_existing_substantive_to_missing_transitions_are_accounted():
         assert declaration is not None
         assert declaration.get("kind") in {"discrete", "range", "extended"}
         assert change["response_state"] in {"DK", "NOT_ASKED", "REFUSAL", "SOURCE_SPECIFIC_SPECIAL", "INVALID_UNRESOLVED", "MISSING"}
+
+
+def test_src15_coordinate_missing_range_and_observed_age_codes_are_bound():
+    library = SourceConfigLibrary.from_pinned_r157()
+    config = library.load_original("SRC15")
+    assert len(config.corrections_applied) == 11
+    slot = next(s for s in config.document["coordinate_slots"] if s["slot"]["name"] == "age_r2")
+    values = {v["raw_value"]: v for v in slot["values"]}
+    for raw in (-10.0, -9.0, -8.0, -5.0, -4.0, -3.0, -2.0, -1.0):
+        assert values[raw]["missing_state"] == "FORMAT_USER_MISSING_RANGE"
+        assert values[raw]["source_missing_declaration"] == {"kind": "range", "lo": -10.0, "hi": -1.0}
+    for raw in (1.0, 2.0, 3.0):
+        assert values[raw]["missing_state"] == "OBSERVED_STORAGE_VALUE"
+        assert values[raw]["coordinate_state"] == "UNKNOWN"
+        assert values[raw]["canonical_value"] is None
+    assert len(slot["values"]) == 11
+    assert len(config.document["items"]) == 474
+    assert len(config.document["physical_slots"]) == 474
+    assert len(config.document["response_slots"]) == 337
+    validation = library.validate_source("SRC15")
+    assert validation["passed"] is True
+    assert len(validation["corrections_applied"]) == 11
+
+
+
+def test_src15_coordinate_rules_are_exposed_to_current_owner():
+    config = SourceConfigLibrary.from_pinned_r157().load_original("SRC15")
+    rules = build_coordinate_slot_rules(config)
+    age = next(rule for rule in rules if rule.slot.name == "age_r2")
+    keys = {rule.physical_key for rule in age.values}
+    assert len(keys) == 11
+    assert all(rule.coordinate_state in {"UNKNOWN", "MISSING", "NOT_LAWFULLY_CONDITIONABLE"} for rule in age.values)
+    # The missing range is bound by exact declaration; observed age codes remain typed unknown.
+    missing = [rule for rule in age.values if rule.coordinate_state == "MISSING"]
+    assert len(missing) >= 1
