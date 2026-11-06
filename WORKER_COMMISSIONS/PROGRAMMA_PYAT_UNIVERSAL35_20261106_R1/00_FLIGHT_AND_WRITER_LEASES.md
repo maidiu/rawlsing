@@ -10,3 +10,14 @@ Bound source 62329a720d835fd21505b67505751a7b3ec2ff02; refreshedprotected d11904
 | G | codex/pyat-universal35-g-20261106-r1 | NO sharedguide/status/product edits or merge. Own RETURN_ROOT only; scratch .local-logs/pyat-universal35 only |
 
 HQ alone owns isolated guide/currentprogress updates; qualifiedprotectedCASowner remainsseparate. A+B frozenABI prerequisite for D. Cownslistedquery/hybridmodules, EownsFF/N10Econsumer; F/Greadonlyproduct. Newreviewindependence assessedagainst actualauthorship. Fullstandalone prompts A/B/C/E/F/G adjacent; prearmed meansnotactive. Controllerterminalwakeups primary, no reasoningpollwaits.
+
+## Observed actual dispatch
+
+- A: `pyat-universal35-a-20261106-r1`, PID68519, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
+- B: `pyat-universal35-b-20261106-r1`, PID68525, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
+- C: `pyat-universal35-c-20261106-r1`, PID68531, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
+- E: `pyat-universal35-e-20261106-r1`, PID68547, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
+- F: `pyat-universal35-f-20261106-r1`, PID68554, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
+- G: `pyat-universal35-g-20261106-r1`, PID68586, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
+
+Completionreceipts are custody, never acceptance. No repeatedpolls/extraobserver required; existingcontroller wakes sameHQ on terminal.
