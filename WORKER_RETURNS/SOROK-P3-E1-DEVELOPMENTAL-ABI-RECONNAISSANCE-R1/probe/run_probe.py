@@ -98,7 +98,9 @@ def scenario(root: Path, name: str, *, journal_only: bool):
     }
     owner.close()
     engine.close()
-    reopened_owner = B1Owner(db, root="root-" + name, branch="main")
+    reopened_owner = B1Owner(
+        db, root="root-" + name, branch="main", journal_only=journal_only
+    )
     reopened_engine = BatchEngine(reopened_owner, journal)
     started = time.perf_counter()
     cold_history = reopened_engine.history(batch_id)
