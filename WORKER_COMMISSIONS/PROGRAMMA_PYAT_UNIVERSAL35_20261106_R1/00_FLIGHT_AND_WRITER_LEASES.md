@@ -134,3 +134,12 @@ PROGRAMMA_DELTA: IDENTITY D branch codex/pyat-universal35-d-20261106-r1, exact h
 G `20dee3499bea3cc1f13131568b50dd079fcee8cd` reviews C `89a41589c7541f625c6d2f9346436629d374b93e`: REVISE for DTA selected /dev/fd read failure and zero-row frame UnboundLocalError. SAV cell/parity/economy and NativePackage first-consumer evidence remain PASS_SCOPED; 5+35 tests pass, no original D end-to-end/native acceptance. Existing C author launched `pyat-universal35-selected-reader-dta-repair-20261106-r1` PID25650 under `c6098991d`, same module/test/ordinary return lease. A mapping and F D closure remain independent.
 
 PROGRAMMA_DELTA: exact G review above qualifies C fd18faf0340f9d3751ffd9042799a0b7d58519bb as SAV-scoped positive, format-complete reader REVISE. Actual interface remains permitted snapshot -> selected exact cells -> NativePackage; D empirical consumer NOT_RUN. DTA/empty-frame tests are required repair evidence; no new semantic/source authority or downstream READY promotion. Next action is existing C repair then same independent G closure; actual all35 empirical/Field Forge work remains incomplete.
+
+
+### Selected-reader r2 repair returned; exact independent closure active
+
+C head `12d44c9d2418d7ab0cbcb92b4daa48d6a2cf20f3`, code `7a404b0dcaac0e4dd027b9edb98c9038d89dbd9a`, repairs DTA selection using row_offset/row_limit over the existing content-bound snapshot and initializes empty-frame row ordinal. Author7adapter/37focusedPASS; original DTA NOT_RUN. Actual r2 evidence is existing physical-stream root00_RETURN plus04_R2_DTA_AND_EMPTY_FRAME_REPAIR.md. Prior G20dee349 REVISE and SAV-scoped positives remain preserved.
+
+G same independent reviewer launched exact-cut closure `pyat-universal35-selected-reader-r2-independent-closure-20261106-r1`, PID29979, commission8d4721b2f. A mapping and F D r1 review continue as separate lanes. No protected/native/scientific or full-D600s completion claimed.
+
+PROGRAMMA_DELTA: C original author/same branch above, distinct reviewer G; functional change DTA/empty-frame defects repaired at author-tested axis. Interface remains permitted snapshot -> selected exact cells -> existing NativePackage, D empirical consumer NONE_VERIFIED. Sourcefree DTA multi-window and zero-row tests pass; independent r2 NOT_RUN at intake, prior negative20dee349 retained. Potential physical-reader dependency repair only, no downstream READY promotion. Next smallest action existing G closure, then original D lawful integration with A mapping and F identity proof.
