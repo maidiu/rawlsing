@@ -1,0 +1,64 @@
+{
+ "all_five_refused": true,
+ "cases": {
+  "different_condition": {
+   "detail": "fact condition predicate does not bind query",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "different_measure_basis": {
+   "detail": "fact measure basis does not bind query",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "different_response_state": {
+   "detail": "fact response-state semantics do not bind query",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "null_condition": {
+   "detail": "fact/query condition predicate identity missing or malformed",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "null_measure_basis": {
+   "detail": "fact/query measure basis identity missing or malformed",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "null_measure_kind": {
+   "detail": "fact measure_kind missing",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "null_response_state": {
+   "detail": "fact/query response-state semantics identity missing or malformed",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  },
+  "null_source_scope": {
+   "detail": "fact source_scope_mode missing",
+   "error_type": "FieldForgeEmpiricalIngressError",
+   "result": "TYPED_INGRESS_ERROR"
+  }
+ },
+ "implementation_sha": "7920b7fca4471c035f5b728dace9e1777c68c074",
+ "missing_none_refused": true,
+ "positive": {
+  "bridge_state": "BRIDGE_TYPED_REFUSAL",
+  "counts": [
+   3,
+   3,
+   0
+  ],
+  "matches_direct_owner": true,
+  "relation_ref": {
+   "content_hash": "2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855",
+   "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+   "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855"
+  },
+  "state": "CONDITIONAL_SUPPORT_PROFILE",
+  "structural_grant": false
+ },
+ "schema": "R03_E_R1_FIVECASE_PROBE@1"
+}
