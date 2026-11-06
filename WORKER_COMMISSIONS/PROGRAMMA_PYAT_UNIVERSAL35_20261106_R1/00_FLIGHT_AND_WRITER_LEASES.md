@@ -179,3 +179,14 @@ D head `a31175cbd1371c599e2855e150ba3beb877c4ed4`/code `7b0ac186a8b0e27e26ebcc9c
 Existing distinct G launched exact-cut closure PID36425/jobpyat-universal35-d-r2-frontier-independent-closure-20261106-r1 underc664cbbd1 while F mappingreview/C originalDTAmeasurements continue. No author self-review or parallel code collision.
 
 PROGRAMMA_DELTA: exact D/code above, original B/D author/distinct G reviewer; plan -> exact ScientificFrontier -> existing governed compiler, author8PASS incl negative/restore, independentr2NOT_RUN at intake. S02.2/S-WORKLIST/gap/work-now additive candidate observation updated; original35empirical/FFconsumerNONE_VERIFIED, source/native/protected acceptance absent. Next exactGclosure plus Fmapping and Cphysical evidence, then originalD genuineintegration; no F1-only or fixture substitute.
+
+
+### D exact-frontier accepted; genuine DTA physical results; actual integration launched
+
+G `897251a525c8d7bba098da6b3b37fd187663b398` ACCEPT_SCOPED_ENGINEERING at D `a31175cbd1371c599e2855e150ba3beb877c4ed4`/code7b0ac186:8PASS31.10s, exact frontier refusals/restoration, genuine planned mutation reaches facts, all35 accounting35/20/15/991/21/970. Native wrapper and original empirical readiness remain HOLD.
+
+C evidence `f44d8c42eecc01cba962ee05f0af2daa22abeafb` runs accepted unchanged reader on originals SRC27–30: full-row selected streams all4;27/30exact baseline parity.27projected2.455s130.5MB vs118.684s1.227GB;30projected2.885s178.5MB vs174.838s1.748GB.28/29projected succeed, full-frame baselines fail encoding; failures preserved, no guessed encoding. No original native empirical facts from physical measurements.
+
+Underac3583304 original D integration jobpyat-universal35-d-native-integration-20261106-r1 PID38938 now closes wrapper/read-admission/default3/arbitrarycoordinate/syntheticID/unit residuals using qualified C and existing owners; source-authority decision cannot be fabricated. A remaining seven reported source-mapping gaps jobpyat-universal35-remaining-source-mapping-20261106-r1 PID38944 continues source-resource lease, frozenSRC31ef43 remainsF review. Three actual noncolliding lanes D/A/F, no new agents/controller or protected merge.
+
+PROGRAMMA_DELTA: exact G/D/C heads above; sourcefree compiler binding independently qualified, genuineDTA physical metrics author-measured on independently qualified code; actual empirical/FieldForgeconsumerNONE_VERIFIED. Prior negatives retained,28/29formatlimits explicit. Existing S02.2/S03.1/S-WORKLIST/gaps/work-now/current pair written through as isolated observations, not protected adoption. Next actual Dglue and lawful originalexecution, A exact factual corrections and F mapping verdict.
