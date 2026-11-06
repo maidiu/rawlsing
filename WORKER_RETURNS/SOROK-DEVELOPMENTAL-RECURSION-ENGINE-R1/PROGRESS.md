@@ -9,3 +9,5 @@ Three nonconflicting OpenCode lanes were launched for historical reuse, batch ex
 Remaining required work is the complete commission: actual two-batch integration, ordered actor-accessible retrospection, bootstrap/ordinary/terminal sequencing, state custody, source-cut and restore, independent review and selective PRE-MAIN PR preparation.
 
 Batch author terminal intake: provider returned 429 prefill_cap_refused before any write. Verified clean assigned worktree and absent old PID. One exact-task retry launched in fresh OpenCode session, same model/account and exclusive branch. No acceptance or implementation change claimed. Exact custody is in CHECKPOINT.json.
+
+Added cold-process bootstrap/advance/finish integration entrypoint using supplied P2 source pack and model-response transport. Syntax parsed; execution depends on batch and cycle worker returns. Default result exposes only actor-accessible projections, with privileged history available via explicit engineering output. No completion or acceptance claim.
