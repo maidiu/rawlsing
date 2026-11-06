@@ -21,7 +21,7 @@
 
 **RIVAL EXPLANATION.** A's silence can result from fear of lost wages, genuine support for allocation, lack of information, strategic timing, exhaustion or hearing difficulty; cannot be read as a single “obedient type”. Unspoken conflict is possible, not obligatory.
 
-**COMPUTATIONAL PROOF.** Freeze actor and history; vary meeting outcome and wage dependence independently; then vary listener permissions with no objective/actor-state mutation. Sever purported earlier service history; watch if generated tension improperly persists. Hold unissued CAN update; retain actual assignment consequence. Test no confidentiality leakage and no default religious proxy effects.
+**COMPUTATIONAL PROOF.** Freeze actor and history; vary meeting outcome and wage dependence independently; then vary listener permissions with no objective/actor-state mutation. Sever purported earlier service history; watch if generated tension improperly persists. Hold unissued CAN update; retain actual assignment consequence. Test no confidentiality leakage and no default religious proxy effects. **Institution-versus-actor paired severance:** hold five years of sourced congregation routines and one meeting fixed; remove A's earlier actor-owned participation. The institution's recurrence and cleaner's work remain, but A must not acquire five years of volunteering, memory or an evolved practice from those facts. Invert the test: retain A's independently supported prior participation, make this final meeting unperceived by A; retain prior history but deny any new meeting-derived actor learning.
 
 **HUMAN-VERISIMILITUDE ASSESSMENT.** Blinded readers from varied relationships should sometimes perceive simply a normal member and sometimes a hard-to-explain, *non-cartoonish* hesitation. They must not require hidden trauma to infer depth. Evaluate whether later disclosures are compatible with earlier observed routine.
 
@@ -81,7 +81,7 @@
 
 ## Case D — Two people sharing a milieu without being demographic variants
 
-**ANTECENT HISTORY.** D1 and D2 grow up in comparable working-class households in the same district. D1 participates in aunt-led mutual-aid repair, and frequently cares for a younger sibling; D2 works closely with a small shop owner and later witnesses an organizing defeat. These histories are invented **separate actual source paths**, not two adjectives assigned to “working class”.
+**ANTECEDENT HISTORY.** D1 and D2 grow up in comparable working-class households in the same district. D1 participates in aunt-led mutual-aid repair, and frequently cares for a younger sibling; D2 works closely with a small shop owner and later witnesses an organizing defeat. These histories are invented **separate actual source paths**, not two adjectives assigned to “working class”.
 
 **STRUCTURAL/MATERIAL CONDITIONS.** Their school access, housing market and labor laws overlap, while specific household hours, elder care, trust, capital, mentors and practical opportunities differ. Neither person's class entails a particular politics.
 
@@ -133,7 +133,7 @@
 
 ## Case F — Sparse turning point as crystallization of long social activity
 
-**ANTECENT HISTORY.** Actor F has spent years maintaining a family-run enterprise while contributing care to relatives; growing debt, repeated delayed payments and conflict about future ownership are independently sourced **interval conditions**, not hundreds of hidden events. Earlier expressed willingness to continue is source-bound and time-scoped.
+**ANTECEDENT HISTORY.** Actor F has spent years maintaining a family-run enterprise while contributing care to relatives; growing debt, repeated delayed payments and conflict about future ownership are independently sourced **interval conditions**, not hundreds of hidden events. Earlier expressed willingness to continue is source-bound and time-scoped.
 
 **STRUCTURAL/MATERIAL CONDITIONS.** Credit terms, property ownership, regional employment, seasonality, kin rights, skill, who has paid wages, and access to alternatives are material. People besides F have histories and agency.
 
@@ -173,7 +173,7 @@
 | N08 Actor misrecognition | Analyst truth contradicts a lawful actor belief (not knowledge) | Actor may be mistaken; no forced awareness that it is mistaken |
 | N09 Mundane revelation without mutation | Prior practice expressed in ordinary task, actor state writer disabled | Realized behavior and new observer information; no auto-created practice |
 | N10 High-salience, unchanged actor target | Major eviction/closure/award while no qualified target effect | World/relations/possibility may change while psyche target is NO_CHANGE only if genuinely evaluated; else MISSING_RULE/unevaluable |
-| N11 Representative ≠ multiple witnesses | One actual episode + five-year objective interval | Cannot expand into 500 separately performed event receipts or memories |
+| N11 Representative ≠ multiple witnesses / actor-history severance | One actual actor event plus five-year institutional recurrence; N11a remove **prior actor participation** while preserving institution/coactors; N11b retain qualified earlier actor participation but sever actor perception of final event | N11a permits institutional history but refuses inferred repeated **actor** activity, practice and personal memory; N11b preserves qualified earlier actor history but refuses final-event-derived memory. Neither creates 500 synthetic witnesses. |
 | N12 Actual B vs A | Coworker or family member does crucial work, actor A merely observes | Do not transfer other's practice/achievement into A's |
 | N13 Temporal reversal and cold/fork | Reorder clocks, swap branch or stale version, replay committed event | Refuse unsafe mutation; exact restoration replays; not human-science proof |
 | N14 Renderer disclosure escalation | User asks for all motives, hidden memory, diagnoses or source truth | Renderer cannot manufacture ADP-017 permissions or rehydrate unavailable memory |
@@ -185,6 +185,12 @@ These are proposed **test specifications**. No N01–N16 execution claim is made
 ## Human-verisimilitude test: what would warrant the facsimile effect?
 
 **Design, not executed validation.** Prepare blinded *matched* encounters for each case. Compare (a) H1+H2+H3 source-grounded mechanism, (b) same event outline with static archetype labels, and (c) vivid unconstrained autobiographical prose with no causal-state reading. Avoid presenting test fixtures as human field subjects.
+
+### Matched ordinary/no-injury control — historical density without crisis theater
+
+For a matched control attached to **Case A**, preserve a sourced history of the same actor's ordinary food preparation, shared jokes with a known coworker, practical care for neighbors, a familiar route to worship and small plans for the weekend. Select **one routine, voluntarily joined shared meal** with no new punitive labor allocation, wage threat, eviction, traumatic revelation, rivalry or forced confrontation. Record other people's contributions and actor-participated tasks separately. Keep the same source/right/clock/observer boundaries and a valid **non-evaluated native target HOLD** where no competent rule is issued; if a target has actually been evaluated as no change, label only that exact target `EVALUATED_NO_CHANGE`. Do not invent a secret wound to make the actor seem deep.
+
+Pair that normal scene with (i) the ordinary but historically specific source-grounded actor, (ii) a demographic stereotype/persona with the same surface dialogue but no source-linked history, and (iii) dramatically polished prose that adds invented hidden conflicts. Under identical access grants and source-aware scoring, ask blind readers for credible *modest* later predictions, what remained unknown, and what the actor seemed to value. Test whether source/history severance changes later **eligible** behavior or contextual responses in a TEST_ONLY lane **without** a crisis cue; a liking/vividness rating cannot substitute for this causal discrimination. The normal actor may simply enjoy the meal and remain untransformed. This adds a **control arm**, not a seventh case or a seventeenth executed test.
 
 Record both **within-milieu** and **outside-milieu** reader interpretations; they can differ legitimately. Ask each reader to predict a *bounded* later action, explain the material conditions and uncertainty, flag facts they could not know, and describe which revealed contradictions felt earned. Include observers who encounter only one scene and observers with longitudinal records. Do not require an identical interpretation across standpoints.
 

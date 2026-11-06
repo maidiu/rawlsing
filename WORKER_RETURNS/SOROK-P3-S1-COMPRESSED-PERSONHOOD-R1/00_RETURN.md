@@ -45,6 +45,17 @@ The original Luria Uzbekistan study was conducted in the violent institutional c
 
 Detailed causal contracts, evidence classes, transition refusal and budget design: [01_MECHANISM_CONTRACTS_AND_BUDGETS.md](01_MECHANISM_CONTRACTS_AND_BUDGETS.md). Six 12-field adversarial cases, shared negative matrix and human assessment: [02_CASES_TESTS_AND_HUMAN_EVALUATION.md](02_CASES_TESTS_AND_HUMAN_EVALUATION.md). Implementation handoff and evidence index: [03_HANDOFF_AND_SOURCE_REGISTER.json](03_HANDOFF_AND_SOURCE_REGISTER.json).
 
+## Post-R02 correction — bounded authored response; new independent acceptance pending
+
+The exact-head nonauthor R02 review on [PR #734](https://github.com/maidiu/rawlsing/pull/734#issuecomment-6697605285) requested four bounded clarifications. The reviewer was subsequently instructed by the user to implement them on this existing documentary branch; consequently this amendment is **author-side repair, not that reviewer's own independent acceptance**. Original research, source cuts and tested/not-tested boundaries above remain historical evidence.
+
+- **Participation ≠ institutional recurrence:** a recurrent institution may have a history even where the actor's participation over that interval is unknown; neither coactors' labor nor institutional time coverage can be silently issued as that actor's practice or memory. N11 now includes symmetric actor-history severance controls.
+- **Constructive TEST_ONLY is possible without pretending to be native:** a separately namespaced, reversible hypothetical effect/sandbox later-reader is permitted for generative falsification, while native CAN/ADP writers still refuse unissued positive rules and preserve MISSING_RULE versus evaluated NO_CHANGE.
+- **Ordinary encounter control:** a matched routine/no-new-injury condition distinguishes historically situated, sometimes unremarkable otherness from high-drama narrative familiarity.
+- **Consumer vocabulary:** all six analytical event-function tokens in JSON and the sidecar now match this narrative; they do not become CAN-011 state kinds. All six existing cases retain twelve consistent headings, and N01–N16 remain sixteen unexecuted specifications.
+
+**Status:** S0–S1 documentary repair only, no new S2/S3 or native rule, no P3-E1 ABI compatibility claim, no protected CAS or science signature. A distinct nonauthor exact-HEAD re-review is required.
+
 ## Decision and handoff
 
 **GO:** three bounded, mechanistically distinct **test-only generative hypotheses**, with documented source-grade restrictions, conservative read-only indexing, event/interval provenance and sourcefree counterfactuals; evaluate against ordinary actors and two-user opacity. **HOLD:** original/native positive CAN-008/010/011/ADP-016/017 transitions, original no-change certification, any structure→psyche shortcut, or human-validation claim. **No conclusion about P3-E1 ABI compatibility** is made. Existing #704 state writer/readers and the P2Owner's limited input schema must be preserved until the actual owner allows a verified adapter.

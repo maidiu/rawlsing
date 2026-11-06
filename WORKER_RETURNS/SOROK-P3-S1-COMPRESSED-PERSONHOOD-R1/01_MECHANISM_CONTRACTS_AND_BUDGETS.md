@@ -24,12 +24,14 @@ The **selection function** is artistic/architectural: among source-admissible ev
   "representation_form": "SINGULAR_OCCURRENCE|REPRESENTATIVE_EPISODE|ACCUMULATED_INTERVAL|RETROSPECTIVE_CRYSTALLIZATION|RUPTURE_CANDIDATE",
   "represented_window": {"from_clock": "exact", "to_clock": "exact", "coverage_basis": "explicit"},
   "episode_ref": "actual event hash or null for interval-only interpretation",
-  "recurrence_basis_refs": ["objective institution or participant activity source"],
+  "recurrence_basis_refs": ["institution-level recurring relation; not actor participation proof"],
   "actor_participation_refs": ["exact actor-owned performance or access receipts"],
+  "actor_history_scope": "UNKNOWN_ACTOR_HISTORY",
+  "evidence_scope_roles": ["INSTITUTIONAL_RECURRENCE", "UNKNOWN_ACTOR_HISTORY"],
   "other_actor_contribution_refs": ["real coactor labor/action sources"],
   "material_relation_refs": ["household/work/institution/permission/reward/cost"],
   "scope_and_missingness": {"observed": ["exact"], "unobserved": ["exact"]},
-  "eligible_analytical_functions": ["CONSOLIDATION", "REVELATION"],
+  "eligible_analytical_functions": ["CONSOLIDATION", "REVELATION_TO_OBSERVER"],
   "proposed_semantic_rule_refs": [],
   "objective_history_binding": "root/branch/clock/hash",
   "interpretation_grade": "DESIGN_CONSTRUCTIVE_HYPOTHESIS"
@@ -41,11 +43,37 @@ This is a **documentation shape**, not presently accepted runtime JSON: IDs, `co
 The minimal necessary distinction in all cases is:
 `objective_world_occurrence != actor_actually_participated != actor_causal_state != actor_memory != actor_knowledge != rendered_observation`.
 
+### Source-grain court: institutional repetition is not personal repetition
+
+Four **noninterchangeable evidence scopes** describe source meaning, not new canonical CAN/ADP kinds or executable `EventProposal` fields:
+
+| Evidence scope | Admissible assertion | Illicit promotion |
+|---|---|---|
+| `INSTITUTIONAL_RECURRENCE` | A relation/practice persists across a sourced interval, possibly enacted by many people | This actor repeatedly performed it, perceived it or remembered it |
+| `ACTOR_PARTICIPATED_INTERVAL` | This exact actor participated over a qualified interval, to the specificity the participation source actually warrants | A fabricated number of discrete acts, continuous feeling, or automatically acquired practice |
+| `COACTOR_CONTRIBUTION` | Another identified actor performed their own work/contribution | Attribution of that labor, learning or access to the selected actor |
+| `UNKNOWN_ACTOR_HISTORY` | Actor participation over the interval is unobserved/unevaluable, even if the institution's recurrence is known | `NO_PARTICIPATION`, `NO_CHANGE`, prior practice, or inferred memory |
+
+The prototype sidecar's `recurrence_basis_refs` and `actor_participation_refs` must be evaluated **independently**; its illustrative `actor_history_scope` is `UNKNOWN_ACTOR_HISTORY` until qualified actor-owned participation establishes `ACTOR_PARTICIPATED_INTERVAL`. `COACTOR_CONTRIBUTION` is explicitly attached to the other actor, even when indispensable to the selected actor's livelihood. Such scopes could be represented by a validated read-only external evidence index, but this text does **not** issue an ABI or guarantee that the sample JSON can be admitted directly to P2Owner.
+
+**Adversarial paired test:** keep one witnessed actor meeting plus a five-year source-backed institutional interval, but remove any actor-owned **earlier interval participation**: institution/history and coactors stay real; the actor gains **no** five-year practice, private memories or longitudinal motive by inference. Conversely, retain a qualified actor-participated interval and remove/withhold the latest selected meeting from the actor's perceptions: the prior qualified participation remains, but no memory or state update from the unperceived meeting is licensed. This is a no-fictitious-history rule, **not** an exhaustive microepisode requirement or a uniform small effect constraint.
+
+### Four-grade transition court — what a constructive test is allowed to do
+
+| Lane | Result when the target rule/observation is available | State and later-reader discipline |
+|---|---|---|
+| `NATIVE_ISSUED_RULE` | Original competent source/actor authority permits a named target-specific CAN/ADP effect with exact root, rule, clock and source | Only qualified owner commits canonical state; first consumer must actually read that committed state |
+| `TEST_ONLY_HYPOTHETICAL_EFFECT` | Explicitly named artistic/scientific **assumption** may generate a reversible **sandbox-only** response/mediator/memory *surrogate* to test whether it changes a later sandbox consumer | Isolated namespace, fixed actor/root/branch/clock, declared provenance and assumption, input mutation/severance RED, cold/replay/rollback, later test-only reader; cannot appear as accepted CAN/ADP fact, original memory or native proof |
+| `MISSING_RULE` / `UNEVALUABLE` | Native issuer absent, source/participation insufficient, or state target cannot be evaluated | Native positive result is refused/held; sandbox may explore a distinct **labeled** counterfactual, never replace the native hold |
+| `EVALUATED_NO_CHANGE` | Only an actual qualified evaluation found no target change | Certified nonchange is **not** a synonym for unissued rule, missing actor history or sandbox null output |
+
+The TEST_ONLY surrogate **may be persisted inside its isolated experimental namespace solely to prove later conditional dependence**, and its persistence is not a CAN-011 lifecycle transition, ADP-016 memory issuance or extension of #704 production authority. Declare its source and *hypothetical* rule, not fabricated probabilities or universal effect magnitudes. Compare matched positive/negative runs with the same runtime and source cuts; deleting the assumption or actor participation must remove the simulated positive while native holds remain unchanged. No extra model call between the settled 3–5-event batch events is implied.
+
 ## II. Mechanism H1 — Historically condensed participation (material activity → possible developmental organization)
 
 **MECHANISM.** A selected actual episode samples a longer history of work, school, caregiving, worship, household duty or collective organization. Mechanistic parents are **activity, object, available means, other people's labor, institutional rules, timing, stakes and actor participation**, not an event adjective. The event may maintain a relation, expose dependence, recruit prior competence, create a new resource constraint, or support *a candidate* acquired operation.
 
-**SOURCE WARRANT.** Leontiev, supplied Portuguese *Actividade, Consciência e Personalidade*, PDF pp. 18–24 and 29–31 (needs become object-directed and one action may realize competing motives); Sève, *Man in Marxist Theory*, printed 193–202 (the worker's own activity and the wages/product available to them are socially mediated rather than immediate equivalents); Kohn & Schooler, 1982 AJS 87:1257–1283 (longitudinal reciprocal relations; work conditions and selection); Elder & Shanahan 2007 (historical timing, trajectories, transitions, turning points); Mortimer 2003 ch. 6 (different work quality and perceived developmental outcomes).
+**SOURCE WARRANT.** Leontiev, supplied Portuguese *Actividade, Consciência e Personalidade*, PDF pp. 18–24 and 29–31 (needs become object-directed and one action may realize competing motives); Sève, *Man in Marxist Theory*, printed 193–202 (the worker's own activity and the wages/product available to them are socially mediated rather than immediate equivalents); Kohn & Schooler, 1982 AJS 87:1257–1286 (longitudinal reciprocal relations; work conditions and selection); Elder & Shanahan 2007 (historical timing, trajectories, transitions, turning points); Mortimer 2003 ch. 6 (different work quality and perceived developmental outcomes).
 
 **CONSTRUCTIVE HYPOTHESIS.** A few temporally extended/representative samples can convey a background of recurring material relations when the objective interval and social-process evidence are kept separately from the actual event and from inferred learning. The selection is fictionalized historical *coverage*; not proof of a naturally large one-off psychological effect.
 
@@ -53,7 +81,7 @@ The minimal necessary distinction in all cases is:
 
 **ACTOR STATE.** Read immutable actor/root/branch/clock and owner-qualified event, ADP-015 relations, actual material opportunities, CAN-010 scoped expectations/strivings and existing CAN-011 PRACTICE/MEDIATOR/TENSION. Possible effect target: qualified CAN-010 expectation or striving, CAN-011 practice/mediator/tension, or **world/relationship-only** update. ADP-016 memory is separate.
 
-**CAUSAL RULE (TEST_ONLY candidate).** (1) Validate event/interval receipt and scope. (2) Check actor-specific *actual* participation and the other party's distinct contribution. (3) Read preexisting capacity, task opportunity, affordance and role permission. (4) Return an explicit alternative set: `WORLD_ONLY`, `RECRUIT_PREEXISTING`, `POSSIBLE_NEW_PRACTICE`, `RELATIONAL_CHANGE`, `UNEVALUABLE`. (5) If and only if original target-specific Rule T/other issuer is accepted, construct an authorized actor-state proposal bound to exact parent/rule/version and commit through `DevelopmentOwner`. Otherwise **no native positive** and retain `MISSING_RULE`; a future competent evaluator's genuine NO_CHANGE is not identical. This is *qualitative inference*, not a terminal enum.
+**CAUSAL RULE (TEST_ONLY candidate).** (1) Validate event/interval receipt and scope. (2) Check actor-specific *actual* participation and the other party's distinct contribution. (3) Read preexisting capacity, task opportunity, affordance and role permission. (4) Return an explicit alternative set: `WORLD_ONLY`, `RECRUIT_PREEXISTING`, `POSSIBLE_NEW_PRACTICE`, `RELATIONAL_CHANGE`, `UNEVALUABLE`. (5) If and only if original target-specific Rule T/other issuer is accepted, construct an authorized actor-state proposal bound to exact parent/rule/version and commit through `DevelopmentOwner`. Otherwise **no native positive** and retain `MISSING_RULE`; a future competent evaluator's genuine NO_CHANGE is not identical. A separately isolated `TEST_ONLY_HYPOTHETICAL_EFFECT` may try a reversible practice surrogate under a named assumption and source severance, without writing canonical CAN-011 state. Institutional recurrence alone never supplies the actor-participated training history. This is *qualitative inference*, not a terminal enum.
 
 **CONTEXT DEPENDENCE.** Work ownership, tools, coworkers' help, freedom to refuse, childcare, exhaustion, time, state enforcement and task scope can alter expression while leaving a capacity stable. No passive reinforcement or age decay.
 
@@ -79,7 +107,7 @@ The minimal necessary distinction in all cases is:
 
 **ACTOR STATE.** Read CAN-011 records `V3MS_MEDIATOR` (role-tagged), `V3MS_TENSION`, `V3MS_PRACTICE`; CAN-010 expectation scopes, competing striving IDs; ADP-015 actual relationship; current material role power and ADP-017 actor-access rules. No “class”, “religion” or Enneagram variable directly emits a state.
 
-**CAUSAL RULE (TEST_ONLY candidate).** Input is `(actor_identity, current_world_event, actor_access, scoped prior records, relations, actual affordances, authorized Rule-A)`. Derive the set of *eligible action/response streams* by matching exact trigger/readsets; mark inhibited possibilities from denied tools/role/sanction; retain independently qualified inconsistent streams. The actor may comply visibly and experience competing motives, or refuse, defer, evade, or not know what to do. If original CAN-008 Rule A not issued, only return a **counterfactual diagnostic plan**, not authorized response or invented CAN-011 mutation. No generic “winner = highest weighted motive”.
+**CAUSAL RULE (TEST_ONLY candidate).** Input is `(actor_identity, current_world_event, actor_access, scoped prior records, relations, actual affordances, authorized Rule-A)`. Derive the set of *eligible action/response streams* by matching exact trigger/readsets; mark inhibited possibilities from denied tools/role/sanction; retain independently qualified inconsistent streams. The actor may comply visibly and experience competing motives, or refuse, defer, evade, or not know what to do. If original CAN-008 Rule A is unissued, the **native** path returns its typed `MISSING_RULE`/`UNEVALUABLE` hold, not an authorized response or CAN-011 mutation. Separately, the declared `TEST_ONLY_HYPOTHETICAL_EFFECT` sandbox may construct a reversible conditional response candidate and test a later **test-only** reader; it cannot write canonical actor state, confer Rule A or turn a counterfactual into a native event. No generic “winner = highest weighted motive”.
 
 **CONTEXT DEPENDENCE.** Audience, punishment risk, membership, bodily fatigue, legal consequences, location, who can observe, access to help, and when the encounter occurs. Transfer across domains is **unknown until tested or separately warranted**; one act of public deference does not make a global trait.
 
@@ -105,7 +133,7 @@ The minimal necessary distinction in all cases is:
 
 **ACTOR STATE.** Objective ADP-019 occurrence and C9 history; ADP-016 `EVENT_REFERENTIAL_MEMORY` or `CAUSAL_TRACE_MEMORY` if formed; ADP-017 `KNOWLEDGE/BELIEF/UNCERTAINTY/NONKNOWLEDGE` if separately admitted; CAN-010/011 if authorized new practical orientation; V2 renderer reads only `ActorAccessibleRenderEnvelope`. LLM retrospective impressions remain proposals.
 
-**CAUSAL RULE (TEST_ONLY candidate).** (1) Keep objective event ledger unchanged. (2) Later event has an independently admitted actor-facing exposure. (3) Read which prior features were retained, inaccessible or unknown: NEVER rehydrate `UNAVAILABLE` from analyst history. (4) Under accepted ADP-016 formation/reactivation and ADP-017 epistemic effects, propose a changed time-scoped interpretation/claim; otherwise maintain `DEFERRED_MISSING_MEMORY_BASIS` or unknown. (5) Any claim "I misjudged X" requires actual epistemic effect; analyst detection of a mistaken interpretation does not entail actor insight. (6) User renderer selects only permitted public expression and relationship-sensitive presentation. If no authorized rule exists, demonstrate **no hidden write**, not fake developmental realization.
+**CAUSAL RULE (TEST_ONLY candidate).** (1) Keep objective event ledger unchanged. (2) Later event has an independently admitted actor-facing exposure. (3) Read which prior features were retained, inaccessible or unknown: NEVER rehydrate `UNAVAILABLE` from analyst history. (4) Under accepted ADP-016 formation/reactivation and ADP-017 epistemic effects, propose a changed time-scoped interpretation/claim; otherwise maintain `DEFERRED_MISSING_MEMORY_BASIS` or unknown. (5) Any claim "I misjudged X" requires actual epistemic effect; analyst detection of a mistaken interpretation does not entail actor insight. (6) User renderer selects only permitted public expression and relationship-sensitive presentation. If no authorized rule exists, demonstrate **no hidden native write**, not fake developmental realization. A distinct reversible TEST_ONLY surrogate may probe hypothetical retrospective interpretation against already actor-accessible features; it cannot restore unavailable memory from objective history, grant new actor knowledge or appear as a canonical ADP-016/017 effect.
 
 **CONTEXT DEPENDENCE.** Audience safety, present evidence, old actor-access, strategic silence, relation with user, institutional risk and exact scope of current question.
 
