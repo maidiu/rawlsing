@@ -1,5 +1,7 @@
 # UNIVERSAL35 C — measured selected-reader projection, r2
 
+**R3 STATUS:** Genuine SRC27–SRC30 DTA physical execution evidence is in `05_R3_ORIGINAL_DTA_EXECUTION.md`. All four projected reads executed. SRC27/SRC30 full-cell baselines completed with exact selected digest/source/metadata parity; SRC28/SRC29 full-frame baselines failed closed on unselected string decoding (SRC28 `ReadstatError` invalid byte sequence, SRC29 UTF-8 byte 0xb5), while projected selected reads succeeded. Code stays `7a404b0d…`; no new kernel.
+
 **R2 STATUS:** Independent review `20dee349…` returned REVISE on DTA snapshot chunking and zero-row frame handling. The bounded repair is code `7a404b0dcaac0e4dd027b9edb98c9038d89dbd9a`; see `04_R2_DTA_AND_EMPTY_FRAME_REPAIR.md`.
 
 **FINDING:** The current D-style filtered generator is not eager tuple materialization, but it still creates every physical cell before filtering. On genuine SRC09 with D's `max_items=1` selection, it created **5,972,763** cells to yield **41,334** selected cells and took **46.4–47.6 s per pass**. The smallest generic column-projected path in this module used the existing content-bound snapshot plus reader `usecols`/chunking, created only the **41,334** selected cells, and took **0.44–0.53 s per pass**. Selected-cell sequence equality and SHA-256 digest were exact (`1d23d781…`), and native-package release ref, replay ref, semantic release hash and public-object count matched.
@@ -45,10 +47,12 @@ bounded_physical_cell_stream(
 - SRC09 projected path: 41,334 selected cells, 0.44–0.53 s/pass; exact selected digest and two-pass replay.
 - SRC09 native-package outputs equal: release `38f8d092…`, replay `ded005be…`, 62,009 public objects.
 - Existing fixture: full factory release/replay/public-object parity; native-package parity.
-- DTA sourcefree fixture: selected windowed read matches full-decode selected cells exactly; original DTA SRC27–30 not opened.
+- DTA sourcefree fixture: selected windowed read matches full-decode selected cells exactly.
+- Genuine DTA SRC27–SRC30: all four projected streams executed; SRC27/SRC30 baseline exact parity; SRC28/SRC29 baseline failed closed on unselected strings. See `05_R3_ORIGINAL_DTA_EXECUTION.md`.
 - Zero-row frame: exact empty full/projected streams, no unbound variable.
 - D actual attempts `115fe70e…`: SRC31 C11 refusal 8,442 rows / 94.603 s / 1.66 GB; SRC09/10/11/15 native-R03 `max_items=1` did not finish 600 s before facts. This is full-D evidence, not claimed fixed here.
 - SRC13 latin1 decode ~806 MB before any projection; frame projection keeps that history.
+- DTA SRC27/30 full-frame baseline retained at 1.23/1.75 GB and 119/175 s; projection did not remove that full-frame cost where it succeeds.
 
 ## Boundaries and finite residuals
 

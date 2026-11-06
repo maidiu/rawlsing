@@ -11,3 +11,11 @@
 {"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py -k 'dta or zero_row'", "result": "2 passed", "step": "R2_DTA_projection"}
 {"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py", "result": "7 passed", "step": "R2_adapter_tests"}
 {"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q ... five files ...", "result": "37 passed", "step": "R2_focused_tests"}
+{"command": "dta_source_compare.py --source-id SRC27 --mode projected --batch-size 10000", "result": "OK 58004 selected / 2.455 s / 130.5 MB / digest 30f25e8f", "step": "R3_SRC27_projected"}
+{"command": "dta_source_compare.py --source-id SRC27 --mode baseline --batch-size 10000", "result": "OK 34744396 cells / 118.684 s / 1.227 GB / exact digest", "step": "R3_SRC27_baseline"}
+{"command": "dta_source_compare.py --source-id SRC28 --mode projected --batch-size 10000", "result": "OK 77728 selected / 2.361 s / 128.0 MB / digest a40a9738", "step": "R3_SRC28_projected"}
+{"command": "dta_source_compare.py --source-id SRC28 --mode baseline --batch-size 10000", "result": "FAILED ReadstatError invalid byte sequence after 6.305 s", "step": "R3_SRC28_baseline"}
+{"command": "dta_source_compare.py --source-id SRC29 --mode projected --batch-size 10000", "result": "OK 102412 selected / 4.596 s / 158.2 MB / digest 956b0baa", "step": "R3_SRC29_projected"}
+{"command": "dta_source_compare.py --source-id SRC29 --mode baseline --batch-size 10000", "result": "FAILED UnicodeDecodeError 0xb5 after 6.177 s", "step": "R3_SRC29_baseline"}
+{"command": "dta_source_compare.py --source-id SRC30 --mode projected --batch-size 10000", "result": "OK 74956 selected / 2.885 s / 178.5 MB / digest b9105955", "step": "R3_SRC30_projected"}
+{"command": "dta_source_compare.py --source-id SRC30 --mode baseline --batch-size 10000", "result": "OK 49433482 cells / 174.838 s / 1.748 GB / exact digest", "step": "R3_SRC30_baseline"}

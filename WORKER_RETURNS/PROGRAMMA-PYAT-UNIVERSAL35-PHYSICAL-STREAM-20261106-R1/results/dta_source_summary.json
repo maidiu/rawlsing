@@ -1,0 +1,141 @@
+{
+  "all_projected_executed": true,
+  "baseline_failed_reasons": {
+    "SRC28": "ReadstatError:Unable to convert string to the requested encoding (invalid byte sequence)",
+    "SRC29": "UnicodeDecodeError:'utf-8' codec can't decode byte 0xb5 in position 3: invalid start byte"
+  },
+  "baseline_ok_count": 2,
+  "limitations": [
+    "SRC28/SRC29 full-frame baselines fail on unselected string decoding; no encoding guess made",
+    "physical parity only, not respondent linkage/administration/native agreement",
+    "no full35/all35 native/economics claim"
+  ],
+  "rows": [
+    {
+      "baseline": {
+        "all_cells_created": 34744396,
+        "digest": "30f25e8f2ef0b64100d8da6ef16e9f548d2c832ee0a829294535ce3bcd6d1036",
+        "elapsed_s": null,
+        "error": null,
+        "maxrss": 1226993664,
+        "scan_wall_s": 118.68371444498189,
+        "status": "OK"
+      },
+      "exact_when_baseline_ok": true,
+      "physical_slots": 1198,
+      "projected": {
+        "digest": "30f25e8f2ef0b64100d8da6ef16e9f548d2c832ee0a829294535ce3bcd6d1036",
+        "maxrss": 130473984,
+        "physical_metadata_digest": "3a03a814a8ae58e98a16fc340ec31ed2d25583ff5595b60f51f80cd16e99214f",
+        "scan_cpu_s": 6.459623,
+        "scan_wall_s": 2.454556721029803,
+        "status": "OK"
+      },
+      "row_count": 29002,
+      "selected_cells": 58004,
+      "selected_columns": [
+        "q103_1",
+        "country"
+      ],
+      "selected_rows": 29002,
+      "source_bytes": 139531180,
+      "source_id": "SRC27",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    {
+      "baseline": {
+        "all_cells_created": null,
+        "digest": null,
+        "elapsed_s": 6.305333852767944,
+        "error": "ReadstatError:Unable to convert string to the requested encoding (invalid byte sequence)",
+        "maxrss": 307089408,
+        "scan_wall_s": null,
+        "status": "FAILED"
+      },
+      "exact_when_baseline_ok": false,
+      "physical_slots": 627,
+      "projected": {
+        "digest": "a40a973811b025c454002787796bb78171558307e8b875c2005906e344cc90f0",
+        "maxrss": 128028672,
+        "physical_metadata_digest": "63c780eeddfd9f79fec705c0de0adb577ec8119448b78e3b2568ebaf3efbbfe4",
+        "scan_cpu_s": 6.515402,
+        "scan_wall_s": 2.3608836620114744,
+        "status": "OK"
+      },
+      "row_count": 38864,
+      "selected_cells": 77728,
+      "selected_columns": [
+        "q102_1",
+        "country"
+      ],
+      "selected_rows": 38864,
+      "source_bytes": 199716969,
+      "source_id": "SRC28",
+      "source_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9"
+    },
+    {
+      "baseline": {
+        "all_cells_created": null,
+        "digest": null,
+        "elapsed_s": 6.176538944244385,
+        "error": "UnicodeDecodeError:'utf-8' codec can't decode byte 0xb5 in position 3: invalid start byte",
+        "maxrss": 630558720,
+        "scan_wall_s": null,
+        "status": "FAILED"
+      },
+      "exact_when_baseline_ok": false,
+      "physical_slots": 1290,
+      "projected": {
+        "digest": "956b0baaeadd558356863cf861349d08e8ec7253a1f4e2bfba8842225a7e27e4",
+        "maxrss": 158216192,
+        "physical_metadata_digest": "967029b2234d9bce87a70af85c0d2c8da481d43e06812916a6d681738a523e56",
+        "scan_cpu_s": 9.206436,
+        "scan_wall_s": 4.5957762519828975,
+        "status": "OK"
+      },
+      "row_count": 51206,
+      "selected_cells": 102412,
+      "selected_columns": [
+        "gender_pr",
+        "country"
+      ],
+      "selected_rows": 51206,
+      "source_bytes": 170487994,
+      "source_id": "SRC29",
+      "source_sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8"
+    },
+    {
+      "baseline": {
+        "all_cells_created": 49433482,
+        "digest": "b9105955514932c518a66969c443e5031312a810552a5f1841ba173880df6447",
+        "elapsed_s": null,
+        "error": null,
+        "maxrss": 1747881984,
+        "scan_wall_s": 174.83827678801026,
+        "status": "OK"
+      },
+      "exact_when_baseline_ok": true,
+      "physical_slots": 1319,
+      "projected": {
+        "digest": "b9105955514932c518a66969c443e5031312a810552a5f1841ba173880df6447",
+        "maxrss": 178483200,
+        "physical_metadata_digest": "931d87739ea8033d2e79a223745d4ee49b95dbf883f7e605075b9aa70a1a9508",
+        "scan_cpu_s": 6.722829,
+        "scan_wall_s": 2.8846155740320683,
+        "status": "OK"
+      },
+      "row_count": 37478,
+      "selected_cells": 74956,
+      "selected_columns": [
+        "sampapp",
+        "country"
+      ],
+      "selected_rows": 37478,
+      "source_bytes": 110465945,
+      "source_id": "SRC30",
+      "source_sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c"
+    }
+  ],
+  "schema": "PYAT_UNIVERSAL35_ORIGINAL_DTA_EVIDENCE@1",
+  "scope": "GENUINE_LOCAL_READ_ONLY_PHYSICAL_ENGINEERING_NOT_NATIVE_OR_SCIENTIFIC_ISSUANCE"
+}
