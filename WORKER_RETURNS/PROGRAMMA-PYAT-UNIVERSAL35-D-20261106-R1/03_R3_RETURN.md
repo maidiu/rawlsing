@@ -57,7 +57,7 @@ No A source_configuration, B operation/grammar, C semantics beyond received file
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r3 native bridge
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input a31175cb.
+- Identity: codex/pyat-universal35-d-20261106-r1@0e36e9a7c6567bfda3395d08bcb32dc386ea8e78; input a31175cb.
 - Function: admitted incidence/resolver -> C bounded selected-column ExactPhysicalCellStream -> NativeSourcePackage (original IDs + physical aliases) -> current compile_universal_workload/execute_universal_workload.
 - First consumer: current R03 universal compiler; actual original facts NOT_RUN because no current source-read decision in this run.
 - Evidence: C stream 7 tests; D execution 3 tests; B 8 tests; all35 accounting preserved.
