@@ -212,3 +212,7 @@
 **HQ ACTION (requested, not performed):** No E41/R01/R03/R08 rebuild; assign one existing current R05/P41/R118 first reader for R08 negative-binding and source/ABI check; obtain exact R118 receiving review separately; locate original F4 source-science and native N11 evidence only through competent issuers; preserve USER_STOP on all unrelated work.
 
 **COMPETENT OWNER:** Pyat HQ selects engineering and can commission the qualified first-reader test; respective code owners prepare; independent reviewers accept code; original survey/source scientific issuers grant original35 U/Epre; protected CAS owner alone receives into PRE-MAIN; Sorok alone decides actor/dyad rights. C1 issues none.
+
+## 2026-11-05 concurrent B00 documentary currentness
+
+After C1's initial `df35c282...` source cut, PR #696 advanced to `a2c3a6259337c6e8b6d26325b7152521ebf30c54` in three **documentary** files. Its updated C9 packet declares historical `git archive`/old Git objects unacceptable as dependencies of an *operative* deployed PRE-MAIN; only isolated test oracle use may retain them. The P41 card's reuse option therefore means **retained test evidence** or **independently reviewed, hash-closed, cold-installable lawful packaged successor**, not live historical archive reliance. This updated rule is in a draft PR, not yet a protected accepted implementation; the operative defect remains. No additional engine-build presumption follows.
