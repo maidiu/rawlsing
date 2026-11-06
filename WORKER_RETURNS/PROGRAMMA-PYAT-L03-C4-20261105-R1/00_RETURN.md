@@ -1,7 +1,7 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
 **Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 COMPACT COMPARISON AND COMPACT-GROUPED MEASUREMENT COMPLETE.
-**Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `__MEASURE_SHA__`.
+**Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `a85df66ec93a951d8fd50d751822b70569df94ef`.
 **Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; not whole L03.
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
