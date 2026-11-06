@@ -143,3 +143,12 @@ G `a66e4a628f3e6e7b819097a15ace86cc1877022e` ACCEPT_SCOPED_ENGINEERING at C `12d
 Actual D context delivery200 supplies qualified C cut without interrupting current author repair. C originalDTA SRC27–30 parity/performance jobpyat-universal35-original-dta-measurement-20261106-r1 PID35070 launched under1915094c2 to close an explicit final-performance gap, one source at a time; no new kernel or wholeall35 native claim. F SRC31 mapping review and D exactfrontier repair remain independent.
 
 PROGRAMMA_DELTA: exact C/G identity above, original C author/distinct G reviewer; DTA/empty-frame repair moves engineering axis from REVISE to independently accepted scoped. Permitted snapshot -> selected exact cells -> existing NativePackage first-consumer parity; authentic original empirical/FieldForge consumer NONE_VERIFIED. Historical SAV positives/oldnegative preserved, fullnative/science/protected adoption absent. Existing S03.1/S-WORKLIST/gap/work-now records updated on isolated HQ branch. Next: C genuine DTA metrics, F source mapping verdict, D frontier repair and qualified integration; never infer all35 native readiness from this reader acceptance.
+
+
+### D r2 author correction returned — 2026-11-06
+
+D head `a31175cbd1371c599e2855e150ba3beb877c4ed4`/code `7b0ac186a8b0e27e26ebcc9c4d0e1f57f36597ae` reports exact supplied-frontier operation identity/material checks, extra/substitution/duplicate/missing refusals and restore,35explicit accounting rows (20nonF1frontiers/15typedno-request), corrected676/4705/249route split; author8PASS29.26s. Ordinary return02_R2_RETURN.md retains native wrapper HOLD/no empiricalfacts. Prior Ff2c477REVISE remains history, not erased by author result.
+
+Existing distinct G launched exact-cut closure PID36425/jobpyat-universal35-d-r2-frontier-independent-closure-20261106-r1 underc664cbbd1 while F mappingreview/C originalDTAmeasurements continue. No author self-review or parallel code collision.
+
+PROGRAMMA_DELTA: exact D/code above, original B/D author/distinct G reviewer; plan -> exact ScientificFrontier -> existing governed compiler, author8PASS incl negative/restore, independentr2NOT_RUN at intake. S02.2/S-WORKLIST/gap/work-now additive candidate observation updated; original35empirical/FFconsumerNONE_VERIFIED, source/native/protected acceptance absent. Next exactGclosure plus Fmapping and Cphysical evidence, then originalD genuineintegration; no F1-only or fixture substitute.
