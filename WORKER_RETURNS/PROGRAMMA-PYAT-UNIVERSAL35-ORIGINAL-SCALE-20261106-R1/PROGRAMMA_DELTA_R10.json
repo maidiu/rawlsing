@@ -1,0 +1,12 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "revision": "R10",
+  "code_head": "10e228129ce744a0627a52bb446ffac6815fa08c",
+  "prior": "68980922c2748066e4481b0d222cc313256f3502",
+  "coordinate": "NAME_HEURISTIC_REMOVED__EXACT_EXPECTED_COORDINATE_RULE_REQUIRED",
+  "caller_api": "pass coordinate_rules and expected_coordinate_rule from accepted build_coordinate_slot_rules(config)",
+  "tests": "28 scale/facade/universal PASS",
+  "release_reuse": "existing binding/replay/authority/closure checks retained; full validator not rerun",
+  "not_run": ["SRC15 actual join", "SRC09/SRC10 full plan", "all35", "16 GiB", "native/science"],
+  "next": "D caller glue passes exact expected rule; independent review"
+}
