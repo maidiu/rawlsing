@@ -37,7 +37,7 @@ Observed joint fixture: 3 existing facts = 2 one-target + 1 two-target; 1 genuin
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r11 two-target E connection
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 70c9ae198.
+- Identity: codex/pyat-universal35-d-20261106-r1@ca4ef1aa207859a7c93493a39f3a3571564df710; input 70c9ae198.
 - Function: explicit plan F2 pair -> existing JOINT ScientificOperation -> current governed C11/I03 fact + query/replay/provenance -> exact E envelope -> cold `CONDITIONAL_SUPPORT_PROFILE`.
 - Evidence: sourcefree 2-target fact, exact profile, structural_grant false; changed source cell changes fact refs; restore exact; 1-target refusals retained.
 - Limits: original data/native/science NOT_RUN; sourcefree connection only.
