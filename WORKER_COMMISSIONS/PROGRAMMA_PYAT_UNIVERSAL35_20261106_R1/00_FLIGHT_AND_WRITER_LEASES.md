@@ -21,3 +21,8 @@ HQ alone owns isolated guide/currentprogress updates; qualifiedprotectedCASowner
 - G: `pyat-universal35-g-20261106-r1`, PID68586, authenticatedsession BUSY, assistantprovider opencode-go / deepseek-v4.1-flash / max observed. Branch/source at launch as above.
 
 Completionreceipts are custody, never acceptance. No repeatedpolls/extraobserver required; existingcontroller wakes sameHQ on terminal.
+
+
+## Runtime recovery, 2026-11-06
+
+Observed SQLite disk-full errors in A/B/F/G and ENOSPC in E; no acceptance inferred. Managed sessions were aborted and the existing authenticated localhost server restarted (44934 → 75122), preserving sessions, branches and leases. Unauthenticated session access401; authenticated health200. Lossless gzip of31 old L03 scratch JSON files recovered640,517,991bytes; decompressed SHA256 verified before original scratch removal. Local exact custody receipt: `.local-logs/pyat-universal35-20261106-r1/lossless-scratch-compression.json`. No original survey bytes, tracked code, global permission settings or reviewer authority changed. All six existing sessions resumed with bounded output/scratch under job suffix `-memory-resume2`; paired CURRENT_PROGRESS JSON carries exact process/API observations. These are execution-recovery receipts, not capability or review promotion.
