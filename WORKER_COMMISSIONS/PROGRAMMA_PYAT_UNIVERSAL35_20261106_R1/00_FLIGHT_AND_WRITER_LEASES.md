@@ -446,3 +446,12 @@ Actual SRC10 decode1.431s, stream0.078s, first materialize169.265s/242567objects
 Same C worker `pyat-universal35-compile-reuse-repair-20261106-r1` PID96610 launched under370f480ea with bounded disjoint lease on universal-workload compile/helpers/tests; D execution consumer, A config and E/semantic kernels read-only. Must preserve exact facts/query/risk/replay/refusals and prove genuine full supported plan, not two-item replacement. D cold binding repair and G Draft713 review remain parallel; host capacity three. Existing nonauthor C candidate review queued when capacity frees, before adoption.
 
 PROGRAMMA_DELTA: source-qualified C source/first-consumer candidate, measured cost and finite negative added to existing S03.1/S03.2/physical seam/gap/work-now/current records. Qualified earlier selected-reader parity remains valid. Actual original empirical facts zero, original Field Forge handoff unproved, native/scientific/protected acceptance unchanged. Next receive existing active repairs/review; no unchanged650s replay or new compiler.
+
+
+### D cold binding author repair returned; independent F closure running
+
+D `a1d1ec379656d4e46841060004423931eed4b262` / code `ab7a6b606f15bd47c29d962da8c8c9db542710de` decodes fact/query, compares actual role/backing refs, adds deterministic request binding and canonical nonempty selected values. Author2targetedPASS3.82s preserves exact asymmetric/reverse/changed-input rows; fake refs/empty/None/unknown/permission/replay negatives exercised. Author evidence only; G6158 R13 identity/zero-selection failure remains preserved.
+
+Existing nonauthor F `pyat-universal35-d-r14-cold-binding-independent-review-20261106-r1` PID97361 launched undercbad6d915 on frozen D head. Verify actual new-process cold output and exact G negatives, including whether real role claims bind to validated targets rather than only a recomputed untrusted checksum; no new authorization framework. F did receiving records, not D implementation. G existing Draft713 composition and C compile reuse remain independent, three useful lanes.
+
+PROGRAMMA_DELTA: existing S06/S-F5 component/seam/gap/work-now/current records now identify returned author candidate and independent review owner. No source/native/scientific/protected authority change; original empirical facts zero/authentic handoff still unproved; PR713 excludes unreviewed D joint code. Next actual three returns, no duplicate D launch or full-estate rerun.
