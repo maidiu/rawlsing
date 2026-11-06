@@ -233,3 +233,10 @@ A7f3931607d1309e84ad068c353946831248184b3 adds6094source/hash/base-bound correct
 ExistingC physicalengineer is independent ofAmappingauthorship; exactC reviewjobpyat-universal35-mapping-r2-independent-review-20261106-r1 PID51186 under996b01219, scoped7sourceprovenance/state/consumer andmismatchrefusals, no new source/sciencegrant. G Dclosure/Fexistingreadinput remain third-partyparallel lanes.
 
 PROGRAMMA_DELTA: exactAhead above/originalAauthor/distinctCreviewer; trustedsourceconfigcorrection candidate,46authorPASS and7keyscanpositives, independentNOT_RUN at intake. S01.1/S-WORKLIST/gap/work-now/currentpair updated isolatedcandidate;35/18276/18413/18250/26 andfixtureidentity preserved, fulloriginalempiricalconsumerNONE_VERIFIED. NextCreview andqualifiedDjoin; no all35native/protectedadoption fromzero-unboundkeys.
+
+
+### D r5 held-alias closed; actual-decode-decision comparison still REVISE
+
+Gbc01712c111c7522d92bbd27e8a318453c4518e3 atDcc0a0e39ef2d05cca3a92f045cec8830386cf647 confirms heldY/selectedmissing9Btests and actualproductionwrapper30facts15ops18candidates sourcefreepositive. Extra wrapperprequery isnot actualadmissionpredecision; A,B,B,A currentdecisionref sequence accepted. OriginalD narrowrepairjobpyat-universal35-d-actual-decode-decision-repair-20261106-r1 PID55579 under961309ff1 captures actualadmissiondecision ratherthan adds anotherquery. Cmappingreview/Fexistingreadinput remain parallel.
+
+PROGRAMMA_DELTA: exact G/Dheads above, identity/alias/sourcefreefacts positivepreserved, postdecision exactness REVISE with actualrepro. S03.2/S-WORKLIST/gap/work-now/currentpair additive qualifiednegative, no original/native/science/protected promotion. Nextoneobservedtransportfix+focusedregression/closure; actualoriginalempiricalconsumerNONE_VERIFIED.
