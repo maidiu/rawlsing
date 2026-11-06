@@ -15,3 +15,5 @@ Added cold-process bootstrap/advance/finish integration entrypoint using supplie
 Added two-batch actual-owner integration regression against the frozen ABI, pending core/cycle returns. Strengthened P2 adapter source binding across cold reopen and source-mutation severance/restore; rerun 3 owner tests passed in 16.22s. Integrated two-batch proof is still unexecuted.
 
 Model-cycle return 0d60caf received. Lead corrected an inherited ABI mistake: persist prior retrospective completion before executing the next batch. All 19 coordinator tests pass; removing that persistence makes the boundary assertion fail; restoration passes. This is a locally tested candidate pending actual-owner integration and distinct review.
+
+Phase A return b9f7f306 received at exact current-owner source/API scope. S39-S47 chain is reusable through P2; old V3 source/closure is held for exact archive and hash mismatches, with S50 actual-B dependency separately held. Recovery evidence imported unchanged under its own return root. No adapter rebuilding of accepted owners is required.
