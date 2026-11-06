@@ -283,17 +283,23 @@ def write_field_forge_envelopes(result: Any, *, source_id: str,
             "FIELD_FORGE_QUERY_REF_MISSING:" + json.dumps(missing, sort_keys=True))
     target = Path(state_root) / (source_id + ".field_forge_envelopes.json")
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(json.dumps({
-        "schema": "PRE553_ORIGINAL35_E_TRANSPORT@1.0.0",
-        "source_id": source_id,
-        "fact_count": len(facts),
-        "envelope_count": len(envelopes),
-        "missing_query_refs": missing,
-        "envelopes": envelopes,
-        "raw_respondent_rows_included": False,
-        "producer_permission_ceiling": list(producer_permission_ceiling),
-        "native_science_authority": False,
-    }, indent=2, sort_keys=True) + "\n", encoding="utf8")
+    staged = target.with_name(target.name + ".staged-tmp")
+    try:
+        staged.write_text(json.dumps({
+            "schema": "PRE553_ORIGINAL35_E_TRANSPORT@1.0.0",
+            "source_id": source_id,
+            "fact_count": len(facts),
+            "envelope_count": len(envelopes),
+            "missing_query_refs": missing,
+            "envelopes": envelopes,
+            "raw_respondent_rows_included": False,
+            "producer_permission_ceiling": list(producer_permission_ceiling),
+            "native_science_authority": False,
+        }, indent=2, sort_keys=True) + "\n", encoding="utf8")
+        os.replace(staged, target)
+    finally:
+        if staged.exists():
+            staged.unlink()
     return {"path": str(target), "fact_count": len(facts),
             "envelope_count": len(envelopes), "missing_query_refs": missing}
 
@@ -410,11 +416,7 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         operation_anti_join = dict(result.operation_anti_join)
         ledger_hash = result.content_hash
         compilation_material = compilation.material()
-        transport = (write_field_forge_envelopes(
-            result, source_id=source_id, state_root=state_root,
-            producer_permission_ceiling=producer_permission_ceiling)
-            if state_root is not None and producer_permission_ceiling is not None
-            else None)
+        transport = None
     else:
         compilation = compile_universal_workload(
             bundle=bundle, as_of=as_of, host=host, purpose=purpose)
@@ -438,6 +440,11 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         incidence.close()
         raise Original35ExecutionError(
             "SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER")
+    if (non_f1 and state_root is not None
+            and producer_permission_ceiling is not None):
+        transport = write_field_forge_envelopes(
+            result, source_id=source_id, state_root=state_root,
+            producer_permission_ceiling=producer_permission_ceiling)
     material = {
         "schema": "PRE553_ORIGINAL35_NATIVE_COMPILER_RESULT@1.0.0",
         "source_id": source_id, "source_sha256": incidence.source_sha256,

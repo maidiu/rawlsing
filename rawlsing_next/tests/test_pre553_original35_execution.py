@@ -187,6 +187,9 @@ def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
     assert cold["structural_grant"] is False
 
     missing_root = tmp_path / "missing_query"
+    missing_root.mkdir(parents=True)
+    prior = missing_root / "SRC01.field_forge_envelopes.json"
+    prior.write_text("PRIOR_VALID_ARTIFACT\n")
     fake = SimpleNamespace(
         native_execution=SimpleNamespace(native_result=SimpleNamespace(
             empirical_facts=result.native_execution.native_result.empirical_facts,
@@ -196,7 +199,8 @@ def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
         write_field_forge_envelopes(
             fake, source_id="SRC01", state_root=missing_root,
             producer_permission_ceiling=ceiling)
-    assert not list(missing_root.glob("*.field_forge_envelopes.json"))
+    assert prior.read_text() == "PRIOR_VALID_ARTIFACT\n"
+    assert not list(missing_root.glob("*.staged-tmp"))
 
     broken = json.loads(json.dumps(document))
     broken["envelopes"][0]["permissions"] = {}
