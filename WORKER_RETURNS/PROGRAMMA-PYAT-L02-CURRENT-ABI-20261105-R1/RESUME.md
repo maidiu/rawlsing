@@ -44,3 +44,23 @@ still NOT PROVED for this four-item source. Do not promote to full L02 completio
 Next operation: bind the exact generated joint/conditional facts and discovery
 receipts to current E41/C1/N10E first reader, then occurrence/routing/status and
 hostile restore matrix. No production defect/repair has yet been concluded.
+
+
+Third goal turn: new current E41/C1 first-reader probe did not pass.
+`probe_first_reader.py` calls actual `_validate_discovery_consumption` over the
+actual R03 native discovery result; `first-reader.log` records no exact eligible
+joint receipt selected for the requested arity/denominator. Persisted original
+joint receipt proof `C1-joint-receipt-selection-defect.json` has matching fact
+arities [1,3,1,1] under the same winning predicate; C1 picks first marginal.
+Other receipt ordering [3,1,1,1] happens to select joint, demonstrating the issue
+is ambiguous fact selection, not absence of generated true joints. SAV source
+byte identity affects content-address order; do not infer stable list position.
+No production repair chosen or implemented. High requested through async input
+for the exact semantic ABI decision; desktop settings tool is unavailable.
+Medium remains default. Continue unaffected mechanical qualifications.
+
+Existing source-projection suite is running under exec session68850, log
+source-projection.log. It covers occurrence/normalized key ambiguity, administered
+false, missingness, source labels, MR/rank/form and same-consumer mutation/restore.
+Do not restart if still live. All original-source/scientific/actor/merge holds
+remain. L02 is incomplete; do not issue NO_BUILD for the full first-consumer path.

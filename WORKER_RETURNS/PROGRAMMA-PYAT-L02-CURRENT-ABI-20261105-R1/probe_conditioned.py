@@ -20,7 +20,7 @@ for group,repeats in [(1,3),(0,1)]:
    for repeat in range(repeats):
     ROWS.append(dict(zip(NAMES,(float(a),float(b),float(a^b),float(group))),exposure_clock=0.0))
 
-def run():
+def run(consumer_hook=None):
  outputs=[]
  with TemporaryDirectory() as directory:
   path=Path(directory)/'four-item.sav';write_rows(path,ROWS)
@@ -45,6 +45,8 @@ def run():
    result=execute_governed_frontier(compilation=compilation,source_factory=lambda _:bundle.physical_stream)
    assert result.operation_anti_join['no_drop_ok']
    # Freeze actual native objects so later consumer binding uses these exact facts.
+   if consumer_hook is not None:
+    consumer_hook(direction,bundle,compilation,result)
    ledger=result.ledger()
    selected={op.op_id:op for op in frontier.operations if tuple(k.item_id for k in op.targets)==targets and len(op.conditions)==len(conditioners) and op.measure_kind=='SAMPLE' and op.claim_class==('JOINT' if direction=='FORWARD' else 'CONDITIONAL')}
    rows=[r for r in result.operation_ledger if r['operation_id'] in selected]
