@@ -1,7 +1,7 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
 **Status:** PHASE-2 COMPLETE / P2 IMPLEMENTED AND FROZEN / PHASE-3 COMPARISON DRIVER PREPARED, NOT RUN.
-**Preparation commit:** `__PREP_SHA__` (artifact-only; frozen implementation remains `409be32f7e4b4b961a360be1c8f44a17b5c62173`).
+**Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683` (artifact-only; frozen implementation remains `409be32f7e4b4b961a360be1c8f44a17b5c62173`).
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
