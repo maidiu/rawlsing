@@ -146,7 +146,7 @@ The detailed task order, files, test gates and ownership boundaries are in [`05_
 | 2 | Invalid actor or foreign root | **PASS** | `test_invalid_actor...`; `test_foreign_root...` |
 | 3 | Wrong clock | **PASS** | `test_invalid_actor...` (`event_time=clock`) |
 | 4 | Bad source/version hash | **PASS** | `test_invalid_actor...`; `test_foreign_root...`; `test_middle_rule_version...` |
-| 5 | Missing scientific rule | **PASS (test-only rule explicit; production unissued)** | `test_production_zero_positive_guard...`; B1 rule IDs are `TEST_ONLY_*` |
+| 5 | Missing scientific rule | **PASS for production DENY; native missing-rule owner path NOT_RUN** | `test_production_zero_positive_guard...`; B1 rule IDs are `TEST_ONLY_*`; no native rule was executed |
 | 6 | TEST_ONLY positive state effect | **PASS** | mediator id `994680…`, record hash `c06f526a…`; state hash changes; later action |
 | 7 | Production registry still denies | **PASS** | guard `DENY_ZERO_EFFECT` / `ZERO_POSITIVE_REGISTRY` |
 | 8 | State cold reopening | **PASS** | `test_positive...` reopened section; cold history 0.006s |
@@ -176,7 +176,7 @@ B1 3-event positive: owner DB 94,208 bytes; journal 98,304; state JSON 15,220; r
 
 **Worker branch:** `research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1`.
 **Base:** `c852d7516e23fcb6cf2215e9be7c5fa268503516`.
-**Evidence commit:** `a2c3c36ef7c29432df92806271b31a64f344cd78` (16 files, pushed and verified). This public note is a subsequent metadata commit; the branch HEAD is reported in the worker's final message. A tracked file cannot contain its own containing commit SHA without a circular preimage.
+**Initial evidence commit:** `a2c3c36ef7c29432df92806271b31a64f344cd78` (16 files, pushed and verified). The final execution commit, including the strengthened severance/restore proof and the qualified missing-rule status, is reported in the worker's final message. A tracked file cannot contain its own containing commit SHA without a circular preimage.
 **Branch HEAD:** the subsequent publication-note commit is reported in the worker's final message; a tracked file cannot contain its own containing commit SHA.
 **PR:** not opened by this worker. `gh` and a GitHub API token are unavailable on the host. GitHub's suggested PR URL from the push is `https://github.com/maidiu/rawlsing/pull/new/research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1`. The branch is pushed and reviewable; PR creation remains with the repository's authorized owner.
 

@@ -308,6 +308,8 @@ def test_mediator_severance_breaks_later_reader_and_restoration_restores(tmp_pat
         mediator = state["middle"][0]["middle_state_record_hash"]
         owner_a.close()
 
+        db_pre = tmp_path / "sever-pre.sqlite"
+        shutil.copy2(db_a, db_pre)
         db_b = tmp_path / "sever-b.sqlite"
         shutil.copy2(db_a, db_b)
         owner_b = B1Owner(db_b, root="root-sever-a", branch="main")
@@ -330,6 +332,18 @@ def test_mediator_severance_breaks_later_reader_and_restoration_restores(tmp_pat
         result_a = owner_a.realize("a3", proposals[2], owner_a.snapshot())
         assert result_a.consequences["practical_activity"] == ["joint_check:caretaker"]
         assert result_a.consequences["recruited"] == [mediator]
+        owner_a.close()
+
+        shutil.copy2(db_pre, db_b)
+        owner_restored = B1Owner(db_b, root="root-sever-a", branch="main")
+        result_restored = owner_restored.realize(
+            "b3-restored", proposals[2], owner_restored.snapshot()
+        )
+        assert result_restored.consequences["practical_activity"] == [
+            "joint_check:caretaker"
+        ]
+        assert result_restored.consequences["recruited"] == [mediator]
+        owner_restored.close()
     finally:
         try:
             owner_a.close()

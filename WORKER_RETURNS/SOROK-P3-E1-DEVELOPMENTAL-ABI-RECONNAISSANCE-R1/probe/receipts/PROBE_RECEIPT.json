@@ -17,7 +17,7 @@
   "control": {
     "batch_id": "batch-control",
     "cold_reopen_matches_records": true,
-    "cold_reopen_seconds": 0.005153,
+    "cold_reopen_seconds": 0.005452,
     "cold_reopen_snapshot": {
       "actor": "child",
       "branch": "main",
@@ -41,7 +41,7 @@
     ],
     "later_recruited": [],
     "measurements": {
-      "batch_wall_seconds": 0.037368,
+      "batch_wall_seconds": 0.041383,
       "history_json_bytes": 21867,
       "joint_receipt_rows": 3,
       "journal_bytes": 94208,
@@ -78,10 +78,10 @@
     "No model/provider invocation occurs in this adapter probe.",
     "B3A whole-store staging and BP2P4J product costs were not measured here; see 06_RESOURCE_COST_FINDINGS.md."
   ],
-  "generated_at_utc": "2026-11-06T20:32:43Z",
+  "generated_at_utc": "2026-11-06T20:35:54Z",
   "git": {
     "current_branch": "research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1",
-    "current_head": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+    "current_head": "0d6baf55987eb43fb03efed20fc3681c37f93374",
     "engine_runtime_cut": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
     "pr_704_receiving": "0b7d8ba33b5cd905963292357507ae7bbc2219de",
     "protected_branch": "integration/pre-main-reconciliation-r1",
@@ -109,7 +109,7 @@
   "positive": {
     "batch_id": "batch-positive",
     "cold_reopen_matches_records": true,
-    "cold_reopen_seconds": 0.005108,
+    "cold_reopen_seconds": 0.005835,
     "cold_reopen_snapshot": {
       "actor": "child",
       "branch": "main",
@@ -135,7 +135,7 @@
       "c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495"
     ],
     "measurements": {
-      "batch_wall_seconds": 0.042545,
+      "batch_wall_seconds": 0.048487,
       "history_json_bytes": 23361,
       "joint_receipt_rows": 3,
       "journal_bytes": 98304,
@@ -201,48 +201,48 @@
     },
     "returncode": 0,
     "stderr_tail": "",
-    "stdout_tail": ".........                                                                [100%]\n9 passed in 0.43s\n",
-    "wall_seconds": 0.637996
+    "stdout_tail": ".........                                                                [100%]\n9 passed in 0.49s\n",
+    "wall_seconds": 0.715619
   },
   "scaling": [
     {
       "events": 3,
       "middle_state_count": 1,
       "owner_db_bytes": 94208,
-      "per_event_ms": 8.179,
+      "per_event_ms": 9.42,
       "response_count": 3,
       "state_json_bytes": 15334,
-      "total_wall_seconds": 0.024536,
+      "total_wall_seconds": 0.028261,
       "transition_count": 1
     },
     {
       "events": 10,
       "middle_state_count": 1,
       "owner_db_bytes": 217088,
-      "per_event_ms": 10.637,
+      "per_event_ms": 13.74,
       "response_count": 10,
       "state_json_bytes": 28713,
-      "total_wall_seconds": 0.10637,
+      "total_wall_seconds": 0.137403,
       "transition_count": 1
     },
     {
       "events": 30,
       "middle_state_count": 1,
       "owner_db_bytes": 548864,
-      "per_event_ms": 14.532,
+      "per_event_ms": 20.454,
       "response_count": 30,
       "state_json_bytes": 66953,
-      "total_wall_seconds": 0.435957,
+      "total_wall_seconds": 0.613624,
       "transition_count": 1
     },
     {
       "events": 60,
       "middle_state_count": 1,
       "owner_db_bytes": 1064960,
-      "per_event_ms": 21.303,
+      "per_event_ms": 22.721,
       "response_count": 60,
       "state_json_bytes": 124313,
-      "total_wall_seconds": 1.278193,
+      "total_wall_seconds": 1.363251,
       "transition_count": 1
     }
   ],

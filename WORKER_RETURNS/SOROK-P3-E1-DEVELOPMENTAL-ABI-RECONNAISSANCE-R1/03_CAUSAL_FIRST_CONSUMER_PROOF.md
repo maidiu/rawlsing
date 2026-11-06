@@ -81,9 +81,10 @@ The actual later reader is state-dependent, not a static fixture:
 2. The DB is byte-copied.
 3. In the copy, the mediator is removed from `checkpoint['middle']` (an exact state severance; the orphan transition is not consulted by the later reader).
 4. The same `event3` proposal then yields `inspect_alone:caretaker` and `recruited=[]`.
-5. The original DB (never mutated after the copy) yields `joint_check:caretaker` and `recruited=[c06f526a…]`.
+5. The original DB (never mutated after the pre-event copy) yields `joint_check:caretaker` and `recruited=[c06f526a…]`.
+6. The exact pre-event DB bytes are copied over the tampered path, and the same `event3` is run again with a fresh operation ID. It yields `joint_check:caretaker` and `recruited=[c06f526a…]`.
 
-This proves the later response consumes the stored mediator edge. The restoration is exact because the original DB is unchanged; the copy is the severed control.
+This proves the later response consumes the stored mediator edge. The restoration is exact at the SQLite-file byte level from the pre-event copy; the tampered copy is the severed control.
 
 Additional source custody:
 
@@ -128,7 +129,7 @@ The B1 adapter does **not** mutate this registry. B1's rules remain `TEST_ONLY_C
 | 2 | Invalid actor or foreign root | **PASS** | `participants=("child","stranger")`; `B1Owner(root-b)` |
 | 3 | Wrong clock | **PASS** | `event_time == owner.snapshot().clock` |
 | 4 | Bad source/version hash | **PASS** | wrong `source_refs`; source-body tamper; mediator rule-version tamper |
-| 5 | Missing scientific rule | **PASS (explicitly unissued)** | production guard denies; B1's authored rule is labeled test-only |
+| 5 | Missing scientific rule | **PASS for production DENY; native missing-rule owner path NOT_RUN** | production guard denies; B1's authored rule is labeled test-only |
 | 6 | TEST_ONLY positive state effect | **PASS** | mediator record and changed state hash |
 | 7 | Production positive registry still denying | **PASS** | guard receipt |
 | 8 | State cold reopening | **PASS** | reopen + history + same snapshot |
