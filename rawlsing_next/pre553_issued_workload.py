@@ -18,7 +18,9 @@ from rawlsing_next.pre553_batch_runner import (
     BatchExecutionRunner, BatchManifest, BatchUnitSpec, ExecutionOutcome,
     ExecutorBinding, UnitExecutionReceipt,
 )
-from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor, RuntimeObjectCatalog
+from rawlsing_next.pre553_carrier_execution import (
+    CarrierNeutralResearchExecutor, I03GroupedExecutionScope, RuntimeObjectCatalog,
+)
 from rawlsing_next._pre553_query_common import QueryExecutionResult
 from types import SimpleNamespace
 from rawlsing_next.pre553_empirical_objects import (
@@ -279,7 +281,8 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
                             source_factory: Callable[[ExactRef], Any], host: str, purpose: str,
                             allow_test_only: bool = False, prior_receipts=(),
                             prior_outputs=None, max_units=None,
-                            expected_wave: OriginalWaveIdentity | None = None):
+                            expected_wave: OriginalWaveIdentity | None = None,
+                            group_scope: I03GroupedExecutionScope | None = None):
     """Reuse C11, Route B, I03, I05 and Batch; eligibility comes from external U/E_pre.
 
     A factory is called only after admission. Source bytes stay inside the native
@@ -314,6 +317,10 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         source, workload.projection, current_authorities=workload.catalog.authorities,
     )
     executor = CarrierNeutralResearchExecutor(repo, (release.release_ref,), workload.catalog)
+    owned_group_scope = None
+    if group_scope is None and len(workload.requests) + len(workload.discoveries) > 1:
+        group_scope = I03GroupedExecutionScope()
+        owned_group_scope = group_scope
     units = tuple(BatchUnitSpec("QUERY", r.query_ref, (release.release_ref,),
                                (r.predicate_ref, workload.decision_ref)) for r in workload.requests)
     units += tuple(BatchUnitSpec("DISCOVERY", d, (release.release_ref,),
@@ -326,10 +333,12 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         check_current()
         if unit.job_kind == "QUERY":
             result = executor.execute_i03(query_ref=unit.job_ref,
-                predicate_ref=requests_by_query[unit.job_ref.key].predicate_ref)
+                predicate_ref=requests_by_query[unit.job_ref.key].predicate_ref,
+                group_scope=group_scope)
             refs = tuple(f.ref for f in result.facts)
         else:
-            result = executor.execute_i05(discovery_authority_ref=unit.job_ref)
+            result = executor.execute_i05(discovery_authority_ref=unit.job_ref,
+                group_scope=group_scope)
             refs = tuple(r.ref for r in result.receipts)
         check_current()
         outputs[unit.unit_hash] = result
@@ -340,17 +349,22 @@ def execute_issued_workload(workload: NativeWorkload, resolver: CurrentDecisionR
         return ExactRef("U43_ISSUED_NATIVE_TRANSPORT", "urn:rawlsing:u43:" + h, h)
 
     runner = BatchExecutionRunner(manifest=manifest, repository=repo, prior_receipts=prior_receipts)
-    runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
-               max_units=max_units)
-    check_current()
-    # Every receipt is a native unit receipt. A partial run retains the full manifest.
-    if max_units is None and (len(runner.receipts) != len(manifest.units)
-                             or any(r.state != "COMPLETED" for r in runner.receipts)):
-        raise NativeWorkloadExecutionError("NATIVE_EXECUTION_INCOMPLETE_SEE_RECEIPTS")
-    return NativeWorkloadResult(routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
-        tuple(ref for r in runner.receipts for ref in r.result_refs),
-        record.envelope_sha256, record.decision_ref, record.scope, runner.summary(),
-        record.original_wave_identity, record.source_sha256, dict(outputs))
+    try:
+        runner.run(executors={k: ExecutorBinding(executor_ref(k), execute) for k in ("QUERY", "DISCOVERY")},
+                   max_units=max_units)
+        check_current()
+        # Every receipt is a native unit receipt. A partial run retains the full manifest.
+        if max_units is None and (len(runner.receipts) != len(manifest.units)
+                                 or any(r.state != "COMPLETED" for r in runner.receipts)):
+            raise NativeWorkloadExecutionError("NATIVE_EXECUTION_INCOMPLETE_SEE_RECEIPTS")
+        result = NativeWorkloadResult(routes, tuple(outputs[k] for k in sorted(outputs)), manifest, runner.receipts,
+            tuple(ref for r in runner.receipts for ref in r.result_refs),
+            record.envelope_sha256, record.decision_ref, record.scope, runner.summary(),
+            record.original_wave_identity, record.source_sha256, dict(outputs))
+    finally:
+        if owned_group_scope is not None:
+            owned_group_scope.close()
+    return result
 
 
 JOINED_CUSTODY_SCHEMA = "PRE553_R04_JOINED_WORKLOAD_CUSTODY@2.0.0"
