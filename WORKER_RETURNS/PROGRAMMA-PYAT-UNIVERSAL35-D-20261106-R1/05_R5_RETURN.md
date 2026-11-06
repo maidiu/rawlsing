@@ -37,7 +37,7 @@ The B suite now includes held/unselected `Y` positive with a partial A/B native 
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r5 exact postdecision/alias repair
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 43d35eed6.
+- Identity: codex/pyat-universal35-d-20261106-r1@608be7780d0eee93a8e0d06aade4ff2f67081026; input 43d35eed6.
 - Function: full plan route-qualified F1/F2/F3H -> exact plan frontier -> governed compiler/facts; pre/post source-read decision must be identical; aliases only selected frontier IDs.
 - Evidence: B 9 tests; D 3 tests; F sourcefree positive 30 facts/15 ops/18 candidates preserved; all35 18276/18413/18467; frontier 7/694/683/11.
 - Limits: actual original facts/E handoff NOT_RUN; no current original source-read decision; no native/science/protected acceptance.
