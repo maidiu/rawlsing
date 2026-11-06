@@ -36,7 +36,7 @@ Observed: 30 existing facts transported; 30 exact envelopes; JSON reload; E cold
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r8 E cold transport
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input f295f90f2.
+- Identity: codex/pyat-universal35-d-20261106-r1@7ff5e8b78c242317f4b9d20d269c48893c38ab41; input f295f90f2.
 - Function: existing EmpiricalFact/EmpiricalQuerySpec/replay/provenance -> PRE553_FIELD_FORGE_EMPIRICAL_ENVELOPE@1 private artifact -> accepted E cold API/CLI.
 - Evidence: focused sourcefree regression 30 facts/30 envelopes; E ingress result; missing query/replay/permission fail-closed; 1/3+/weighted typed refusals retained.
 - Limits: actual original facts still blocked by A coordinate semantics and D/C scale; no native/science/protected acceptance.
