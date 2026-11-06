@@ -957,3 +957,12 @@ De4f336972c6c341451ba6e511a2f3c428fc7fb5f/codeca4ef1aa207859a7c93493a39f3a357156
 Gindependentreviewjobpyat-universal35-d-r11-joint-independent-review-20261106-r1 PID86805 under90ee0a567 usesactualengine/asymmetriccontrolledcounts andcoldpositiveproof, no forcedroles orfakejoint. Fcoordinate/Cscalework remainparallel.
 
 PROGRAMMA_DELTA: exactDhead/originalauthor/distinctGreviewer; sourcefreepositiveEfirstconsumer authorcandidate, actualoriginalconsumerNONE_VERIFIED. S06/S-F5/gap/work-now/currentpair write-through preservesR10qualifiedtransport, addsnumericalrisk/direction/requestselectionpending; no all35native/science/protectedadoption/draft713scopechange. NextexactGreviewplusactualcoordinate/scalefixes.
+
+
+### Genuine joint producer passes; requested F2 conditional direction fails
+
+Ge81c71c798c579227039f5b4b371159fc40fde73 atDe4f336972c6c341451ba6e511a2f3c428fc7fb5f confirms3genuineenginefacts/4jointcellsRAW12/12/coldprofile, no marginalfabrication; mechanicalconsumerPASS butsemanticsREVISE. F2targetB/conditionerA query[B,A] makesE P(A|B),notrequestedP(B|A). ExpectedA0denom6 B{0:6,1:0},A1denom6 B{0:2,1:4}; reversedB0denom8/B1denom4. Firstpair/firstmeasure/no explicitconditions selector isnotcompletegenericrequestbinding.
+
+OriginalDexactrequest/directionrepairjobpyat-universal35-joint-request-direction-repair-20261106-r1 PID88361 underf232fc9f4:conditioner-firstactualquery order,exactcalleroperationID(s)/measure/source/risk/conditionervaluerows, supportingjointidentity distinctfromconditionalestimand. No forcedroles/newscience/globalgrammar; Fcoordinate/Cscalecontinue.
+
+PROGRAMMA_DELTA: exactG/Dheads above; existingengineproducer sourcefreePASS andR10trustboundaryretained, positiveErequestedestimandREVISE withactualasymmetriccounts. S06/S-F5/gap/work-now/currentpair write-through; originalempiricalfacts0/nativeS3/science/protectedadoptionwithheld, draft713frozenacceptedcutunchanged. Nextactualrequestsemanticsrepair+focusedindependentclosure andoriginalsourceblockerfixes.
