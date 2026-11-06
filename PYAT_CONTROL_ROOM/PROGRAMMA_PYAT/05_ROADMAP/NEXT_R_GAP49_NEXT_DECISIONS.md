@@ -215,3 +215,12 @@ Ff2d2bdea7e7c1073421bc8cdd3e3545aa0291a66 at D43d35eed654d2fc98ea0f176bf5c4bd92f
 OriginalD exacttwo-defectrepairjobpyat-universal35-d-postdecision-alias-repair-20261106-r1 PID47216 and F boundedexistingoriginalreadinputjobpyat-universal35-existing-original-read-input-20261106-r1 PID47226 launched under1f29d9447; A mappings continues thirdlane. F resolves already-issuedlocalengineeringreadscope/runtimeinput ratherthan manufacture nativeS3 or addapprovalgate. No newcontroller/semanticowner/protectedmerge.
 
 PROGRAMMA_DELTA: exact F/D above, actual currentgovernedcompilerfirstconsumer proven sourcefree, originalempiricalconsumerNONE_VERIFIED. Postdecision/heldaliasREDreceipts sourcebacked, preabsent/revoked/postrevokedrefusals positive. ExistingS03.2/S-WORKLIST/gap/work-now/currentpair additive correction preservesallhistory/7sources694scope. NextDrepairs/sameFreview and actualexistingreadinput; no all35nativeacceptance.
+
+
+### D r5 exact repair candidate; independent closure active
+
+Dcc0a0e39ef2d05cca3a92f045cec8830386cf647/code608be7780d0eee93a8e0d06aade4ff2f67081026 adds full pre/postdecision equality and selected-frontier-only native aliases; author9B/3DPASS withheldYpositive/selectedmissingnegative. PriorFf2d2actualwrapperpositive andpostdecision/aliasnegative retained; r5actualpositive/currentdecisionmutationclosure pending.
+
+G distinct nonauthor exactclosurejobpyat-universal35-d-r5-focused-independent-closure-20261106-r1 PID50200 under8992ceab0; Fexistingreadinput/Aremainingmapping continue. Threeuseful lanes, no newcontroller/authority.
+
+PROGRAMMA_DELTA: exactDhead/code above, originalD/Bauthor/distinctGreviewer; sourcefreegovernedwrapper candidate repair, independentlyaccepted scope NOT_YET_ADVANCED. ExistingS03.2/S-WORKLIST/gap/work-now/currentpair updated isolatedcandidate; actualoriginalempiricalfirstconsumerNONE_VERIFIED/native/science/protectedHOLD. NextGexactclosure and existingreadinput to unlockgenuineoriginalexecution, not anotherfixtureasfinalgoal.
