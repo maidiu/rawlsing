@@ -17,7 +17,8 @@ import time
 from typing import Any, Mapping
 
 from rawlsing_next.pre553_original35_operations import (
-    EXECUTABLE, OPERATION_F1, build_original35_operation_plan,
+    EXECUTABLE, OPERATION_F1, OPERATION_F2, OPERATION_F3H,
+    bind_governed_frontier, build_original35_operation_plan,
 )
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
 from rawlsing_next.pre553_empirical_objects import RespondentEvent
@@ -26,7 +27,9 @@ from rawlsing_next.source_configuration.factory import (
     build_validated_c11_release_from_config,
 )
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
-from rawlsing_next.source_configuration.reader import decode_config_with_source_read_permission
+from rawlsing_next.source_configuration.reader import (
+    decode_config_with_source_read_permission, source_read_request_from_config,
+)
 from rawlsing_next.pre553_original35_physical_stream import bounded_physical_cell_stream
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
 from rawlsing_next.pre553_source_native_preimage_adapter import (
@@ -34,7 +37,8 @@ from rawlsing_next.pre553_source_native_preimage_adapter import (
     materialize_native_preimages,
 )
 from rawlsing_next.pre553_universal_workload import (
-    compile_universal_workload, execute_universal_workload,
+    compile_universal_workload, execute_governed_frontier,
+    execute_universal_workload,
 )
 
 SCHEMA = "PRE553_ORIGINAL35_EXECUTION@1.0.0"
@@ -229,13 +233,11 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
                                    purpose: str, as_of: str,
                                    max_items: int | None = None,
                                    resolver: Any | None = None,
-                                   incidence: Any | None = None,
                                    state_root: str | Path | None = None) -> dict[str, Any]:
-    """Run supported route-qualified items through CURRENT R03/I03/Batch facts.
+    """Run full supported explicit plan through CURRENT governed compiler/facts.
 
-    ``incidence`` must be a caller-admitted PhysicalSourceIncidence. Otherwise a
-    caller-supplied current source-read ``resolver`` is required; this function
-    never decodes original bytes without the existing admission decision.
+    Source bytes are opened only through the existing current source-read
+    decision/resolver path. No raw incidence or fabricated resolver can bypass it.
     """
     started = time.time()
     config = library.load_original(source_id)
@@ -245,30 +247,34 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     if resolution.get("status") != "RESOLVED_UNDER_EFFECTIVE_ROOT":
         raise Original35ExecutionError("SOURCE_PATH_UNRESOLVED")
     path = Path(resolution["resolved_source_path"])
-    respondent = doc.get("respondents") or {}
-    if "HOUSEHOLD" in str(respondent.get("subject_unit", "")).upper():
+    if resolver is None:
         raise Original35ExecutionError(
-            "NON_SCALAR_HOUSEHOLD_TOPOLOGY_REQUIRES_STREAM_OCCURRENCE_PLAN")
+            "CURRENT_SOURCE_READ_DECISION_REQUIRED_BEFORE_IO")
     plan = build_original35_operation_plan(
         [doc], source_presence={source_id: True}, require_all35=False)
-    qualified = []
+    selected_ops = []
     for op in plan.operations:
-        if (op.source_id == source_id and op.kind == OPERATION_F1
+        if (op.source_id == source_id
+                and op.kind in {OPERATION_F1, OPERATION_F2, OPERATION_F3H}
                 and op.status == EXECUTABLE
                 and op.route_status == "ELIGIBLE_APPLICABLE"
                 and op.response_values):
-            original_id = op.item_ids[0]
-            physical = op.source_variable_codes[0]
-            if not original_id or not physical:
-                raise Original35ExecutionError("ORIGINAL_ID_OR_PHYSICAL_CODE_ABSENT")
-            qualified.append((physical, op.response_values, original_id))
+            selected_ops.append(op)
     if max_items is not None:
         if type(max_items) is not int or max_items < 1:
             raise Original35ExecutionError("DIAGNOSTIC_MAX_ITEMS_INVALID")
-        qualified = qualified[:max_items]
-    if not qualified:
+        selected_ops = selected_ops[:max_items]
+    if not selected_ops:
         raise Original35ExecutionError("NO_ROUTE_QUALIFIED_SUBSTANTIVE_ITEMS")
-    selected_names = {name for name, _, _ in qualified}
+    bindings: dict[str, tuple[str, str, str]] = {}
+    for op in selected_ops:
+        for original_id, physical in zip(op.item_ids, op.source_variable_codes):
+            prior = bindings.get(physical)
+            if prior is not None and prior[0] != original_id:
+                raise Original35ExecutionError(
+                    "ORIGINAL_ID_PHYSICAL_CODE_CONFLICT:" + physical)
+            bindings[physical] = (original_id, op.unit, op.topology)
+    selected_names = set(bindings)
     coordinate = None
     for slot in doc.get("coordinate_slots", []):
         name = slot["slot"]["name"]
@@ -276,17 +282,20 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
             coordinate = name
             break
     if coordinate is None:
+        key_slot = (doc.get("respondents") or {}).get("source_native_key_slot")
+        if isinstance(key_slot, Mapping) and key_slot.get("name") not in selected_names:
+            coordinate = key_slot.get("name")
+    if coordinate is None:
         raise Original35ExecutionError("COORDINATE_FACT_ABSENT_NOT_GUESSED")
     fmt = str(selection.get("source_format") or "").upper()
-    if incidence is None:
-        if resolver is None:
-            raise Original35ExecutionError(
-                "CURRENT_SOURCE_READ_DECISION_REQUIRED_BEFORE_IO")
-        incidence = decode_config_with_source_read_permission(
-            config, source_path=path, resolver=resolver, host=host,
-            purpose=purpose, consumer_use="D_ORIGINAL35_NATIVE_EXECUTION",
-            semantic_use_scope=("RAW_OBSERVED_SAMPLE",))
+    consumer_use = "D_ORIGINAL35_NATIVE_EXECUTION"
+    semantic_scope = ("RAW_OBSERVED_SAMPLE",)
+    incidence = decode_config_with_source_read_permission(
+        config, source_path=path, resolver=resolver, host=host,
+        purpose=purpose, consumer_use=consumer_use,
+        semantic_use_scope=semantic_scope)
     if incidence.source_sha256 != doc["binding"]["source_sha256"]:
+        incidence.close()
         raise Original35ExecutionError("SOURCE_SHA_MISMATCH_AFTER_DECODE")
     selected_variables = tuple(sorted(selected_names | {coordinate}))
     stream = bounded_physical_cell_stream(
@@ -299,40 +308,52 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
             declared_sha256=incidence.source_sha256, source_format=fmt,
             expected_rows=incidence.row_count),
         selected=tuple(NativeSourceRule(
-            implementation_id=item_id,
-            source_variable_code=name, unit="person")
-            for name, _values, item_id in qualified),
+            implementation_id=bindings[name][0], source_variable_code=name,
+            unit=bindings[name][1]) for name in sorted(bindings)),
         coordinate_variable=coordinate,
         study_product_id=str(doc["identity"]["study_product_id"]),
         release_id=str(doc["identity"]["release_id"]),
         instrument_release_id=str(doc["identity"]["instrument_release_id"]),
         as_of=as_of)
     bundle = materialize_native_preimages(package=package, incidence=stream)
-    compilation = compile_universal_workload(
-        bundle=bundle, as_of=as_of, host=host, purpose=purpose)
-    result = execute_universal_workload(
-        compilation=compilation, source_factory=lambda _ref: bundle.physical_stream)
+    compilation = bind_governed_frontier(
+        plan, bundle=bundle, source_id=source_id, as_of=as_of,
+        host=host, purpose=purpose)
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream)
+    request = source_read_request_from_config(
+        config, host=host, purpose=purpose, consumer_use=consumer_use,
+        semantic_use_scope=semantic_scope)
+    current = resolver.resolve_current(request)
+    if (getattr(current, "currentness", None) != "CURRENT_GRANTED"
+            or getattr(current, "revocation_ref", None) is not None):
+        incidence.close()
+        raise Original35ExecutionError("SOURCE_READ_DECISION_NO_LONGER_CURRENT")
     material = {
         "schema": "PRE553_ORIGINAL35_NATIVE_COMPILER_RESULT@1.0.0",
         "source_id": source_id, "source_sha256": incidence.source_sha256,
-        "selected_items": [name for name, _, _ in qualified],
-        "selected_original_ids": {name: item_id for name, _, item_id in qualified},
-        "selected_values": {name: list(values) for name, values, _ in qualified},
+        "selected_items": sorted(bindings),
+        "selected_original_ids": {name: bindings[name][0] for name in bindings},
+        "selected_units": {name: bindings[name][1] for name in bindings},
+        "selected_topologies": {name: bindings[name][2] for name in bindings},
         "coordinate_variable": coordinate,
         "source_custody": dict(incidence.source_custody or {}),
         "diagnostic_max_items": max_items,
         "row_count": incidence.row_count,
         "compilation_hash": compilation.content_hash,
-        "expected_jobs": [list(job) for job in compilation.expected_jobs],
-        "executed_operation_ids": list(result.executed_operation_ids),
+        "compilation": compilation.material(),
+        "expected_operation_ids": list(compilation.expected_operation_ids),
+        "expected_candidate_ids": list(compilation.expected_candidate_ids),
         "fact_refs": [ref.as_dict() for ref in result.fact_refs],
         "receipt_refs": [ref.as_dict() for ref in result.receipt_refs],
-        "anti_join": result.anti_join(),
-        "native_result_count": len(result.native_results),
-        "failed": list(result.failed),
+        "anti_join": dict(result.anti_join),
+        "operation_anti_join": dict(result.operation_anti_join),
+        "ledger_hash": result.content_hash,
         "elapsed_seconds": round(time.time() - started, 3),
         "maxrss_bytes": _maxrss(), "native": False,
     }
+    incidence.close()
     if state_root is not None:
         target = Path(state_root) / (source_id + ".native.json")
         target.parent.mkdir(parents=True, exist_ok=True)

@@ -604,9 +604,9 @@ def build_frontier_inputs_from_plan(plan: Original35OperationPlan, *,
         raise Original35OperationError("SOURCE_NOT_IN_PLAN")
     selected = [op for op in plan.operations
                 if op.source_id == sid
-                and op.kind in {OPERATION_F2, OPERATION_F3H, OPERATION_F3R, OPERATION_F4}
-                and op.status not in {HELD, INAPPLICABLE}
-                and not (op.kind == OPERATION_F3R and op.status == DEFERRED)]
+                and op.kind in {OPERATION_F1, OPERATION_F2, OPERATION_F3H}
+                and op.status == EXECUTABLE
+                and op.route_status == "ELIGIBLE_APPLICABLE"]
     if not selected:
         raise Original35OperationError("NO_EXPLICIT_PLANNED_FRONTIER")
     id_by_code: dict[str, str] = {}
@@ -684,13 +684,13 @@ def build_frontier_inputs_from_plan(plan: Original35OperationPlan, *,
         if planned.kind == OPERATION_F4:
             target_keys = tuple(OccurrenceKey(item_id=value) for value in planned.item_ids)
             claim_class = "JOINT"
-            conditions = ()
-            conditioner_roles = ()
             condition_values = (None,)
+            conditioner_roles = ()
         else:
             target_key = OccurrenceKey(item_id=planned.item_ids[0])
             target_keys = (target_key,)
             claim_class = ("STATE_ROBUSTNESS" if planned.kind == OPERATION_F3H
+                           else "DIST" if planned.kind == OPERATION_F1
                            else "CONDITIONAL")
             condition_key = None
             if planned.kind == OPERATION_F2 and planned.conditioner_item_id:
@@ -798,7 +798,9 @@ def _plan_frontier_missing(plan: Original35OperationPlan, source_id: str,
             continue
         if op.status in {HELD, INAPPLICABLE}:
             continue
-        if op.kind == OPERATION_F3R and op.status == DEFERRED:
+        if op.kind in {OPERATION_F3R, OPERATION_F4} and op.status == DEFERRED:
+            continue
+        if op.route_status != "ELIGIBLE_APPLICABLE":
             continue
         targets = list(op.item_ids)
         if op.kind == OPERATION_F4:
