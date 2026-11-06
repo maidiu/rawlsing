@@ -353,18 +353,6 @@
         "observed_utc": "2026-11-06T13:20:40.850340+00:00"
       },
       {
-        "role": "F",
-        "session": "ses_e52a51c43ffeuVe7ZZhNcga5YP",
-        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1",
-        "job_id": "pyat-universal35-d-r1-independent-closure-20261106-r1",
-        "child_pid": 22438,
-        "supervisor_pid": 22437,
-        "observer_pid": 22439,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-d-r1-independent-closure-20261106-r1",
-        "launch_is_not_completion": true,
-        "state": "LAUNCHED_TERMINAL_RECEIPT_NOT_YET_PRESENT"
-      },
-      {
         "job_id": "pyat-universal35-selected-reader-r2-independent-closure-20261106-r1",
         "child_pid": 29979,
         "supervisor_pid": 29977,
@@ -374,10 +362,21 @@
         "role": "G",
         "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
         "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1"
+      },
+      {
+        "job_id": "pyat-universal35-d-exact-frontier-repair-20261106-r1",
+        "child_pid": 31608,
+        "supervisor_pid": 31603,
+        "observer_pid": 31609,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-d-exact-frontier-repair-20261106-r1",
+        "launch_is_not_completion": true,
+        "role": "D",
+        "session": "ses_e5fe236a1ffeh1DP9xcm2Jjvhu",
+        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/join-e-b-event"
       }
     ],
     "integration_start": "d129eebdb0472b0c3625efa281826a858bd0a384",
-    "current_next_action": "Receive A source mapping, F D r1 identity/frontier closure and G C r2 reader closure; original D then integrates qualified dependencies into authentic original execution.",
+    "current_next_action": "A mapping, G C r2 review, D exact-frontier/no-request accounting repair; then genuine original execution with qualified dependencies.",
     "E_return": {
       "branch": "codex/pyat-universal35-e-20261106-r1",
       "head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
@@ -580,6 +579,17 @@
       "review_job": "pyat-universal35-selected-reader-r2-independent-closure-20261106-r1",
       "review_pid": 29979,
       "limits": "Prior SAV scoped acceptance retained; all35/native facts/D end-to-end NOT_COMPLETED"
+    },
+    "D_r1_independent_closure": {
+      "review": "f2c477cee7535bad6103a5353f220a7eddd73a99",
+      "reviewed_head": "017337a9e1edafcbcdbaf538eac9c2c91f7d0791",
+      "grade": "IDENTITY_PAYLOAD_SCOPED_PASS_EXACT_FRONTIER_REVISE_NATIVE_HOLD",
+      "positive": "OriginalID/physical binding/refusals, value/conditioner changes actual compiler/facts/ledger, exact restore; SRC01 UNKNOWN preserved",
+      "defects": "Extra unplanned operation accepted;15sources no explicit nonF1frontier accounting; route_qualified evidence labels misleading",
+      "measurement": "35plan18467ops;20frontiers991ops=21eligible970held;15NO_EXPLICIT_PLANNED_FRONTIER;frontier1.185s;peak969379840bytes",
+      "next_job": "pyat-universal35-d-exact-frontier-repair-20261106-r1",
+      "pid": 31608,
+      "native": "NOT_COMPLETED; diagnostic wrapper defects unchanged"
     }
   }
 }
