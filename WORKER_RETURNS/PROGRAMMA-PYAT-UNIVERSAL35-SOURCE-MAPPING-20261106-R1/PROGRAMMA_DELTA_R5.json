@@ -1,0 +1,38 @@
+{
+  "actual_first_consumer": "NONE_VERIFIED; test-only repair",
+  "conditional_unlocks": [
+    "routine author receipt",
+    "no new hostile review court required"
+  ],
+  "evidence": [
+    "evidence_test_restore.json",
+    "evidence_correction_tests.txt",
+    "evidence_changed_paths.txt"
+  ],
+  "function": "test-only restoration of accepted cf44 correction regressions plus unique SRC15 coordinate tests",
+  "identity": {
+    "branch": "codex/pyat-universal35-src15-coordinate-20261106-r1",
+    "continues": "bc84799edbeaefd7785e178a0aaacc94f76260fe",
+    "f_review": "dcb2ff81c88aa08788a06acb62676e90f7674185",
+    "job": "PROGRAMMA-PYAT-UNIVERSAL35-SOURCE-MAPPING-20261106-R1-R5"
+  },
+  "input_transform_typed_output": {
+    "input": [
+      "accepted cf44 11-test module",
+      "2 unique SRC15 tests"
+    ],
+    "output": [
+      "13-test correction module"
+    ],
+    "transform": "merge without weakening assertions or changing production"
+  },
+  "missing_old_tests": 0,
+  "native_or_all35_promotion": "NOT_GRANTED",
+  "new_tests": 13,
+  "next_action": "accept test restoration; F producer review remains valid",
+  "old_tests": 11,
+  "result": "13 passed in 27.28s",
+  "root_schema_clock_permission": "NO_CHANGE; no production/coordinate/registry/factory/ABI change",
+  "schema": "PROGRAMMA_DELTA@1",
+  "weakened_assertions": 0
+}

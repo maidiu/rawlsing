@@ -1,0 +1,42 @@
+{
+  "command": "python3 -m pytest -q -o addopts= -p no:cacheprovider rawlsing_next/tests/test_source_configuration_corrections.py",
+  "missing_old_tests": [],
+  "new_test_count": 13,
+  "new_tests": {
+    "test_add_if_absent_without_explicit_state_defaults_to_invalid_unresolved": 3,
+    "test_composite_labels_are_not_mapped_to_precise_states": 3,
+    "test_existing_substantive_to_missing_transitions_are_accounted": 5,
+    "test_library_exposes_corrections_without_changing_denominators_or_fixture": 8,
+    "test_registry_is_versioned_resource_data_with_pinned_lineage": 9,
+    "test_remaining_base_path_mismatch_is_refused_and_restore_succeeds": 3,
+    "test_remaining_corrections_never_promote_unknown_codes_to_substantive": 3,
+    "test_remaining_seven_corrections_are_source_hash_and_base_bound": 9,
+    "test_src15_coordinate_missing_range_and_observed_age_codes_are_bound": 12,
+    "test_src15_coordinate_rules_are_exposed_to_current_owner": 3,
+    "test_src31_correction_is_source_hash_and_base_hash_bound": 8,
+    "test_src31_declared_user_missing_codes_are_typed_not_substantive": 7,
+    "test_src31_observed_undeclared_codes_are_typed_unresolved_not_substantive": 3
+  },
+  "old_test_count": 11,
+  "old_tests": {
+    "test_add_if_absent_without_explicit_state_defaults_to_invalid_unresolved": 3,
+    "test_composite_labels_are_not_mapped_to_precise_states": 3,
+    "test_existing_substantive_to_missing_transitions_are_accounted": 5,
+    "test_library_exposes_corrections_without_changing_denominators_or_fixture": 8,
+    "test_registry_is_versioned_resource_data_with_pinned_lineage": 9,
+    "test_remaining_base_path_mismatch_is_refused_and_restore_succeeds": 3,
+    "test_remaining_corrections_never_promote_unknown_codes_to_substantive": 3,
+    "test_remaining_seven_corrections_are_source_hash_and_base_bound": 9,
+    "test_src31_correction_is_source_hash_and_base_hash_bound": 8,
+    "test_src31_declared_user_missing_codes_are_typed_not_substantive": 7,
+    "test_src31_observed_undeclared_codes_are_typed_unresolved_not_substantive": 3
+  },
+  "production_files_changed": [],
+  "result": "13 passed in 27.28s",
+  "schema": "PYAT_UNIVERSAL35_CORRECTION_TEST_RESTORE@1",
+  "src15_tests": [
+    "test_src15_coordinate_missing_range_and_observed_age_codes_are_bound",
+    "test_src15_coordinate_rules_are_exposed_to_current_owner"
+  ],
+  "weakened_assertion_counts": {}
+}
