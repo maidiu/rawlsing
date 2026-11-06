@@ -678,3 +678,12 @@ G e714a5dd3628f3b60ab5b6bdcfeef036ecdabc8f returnsREVISE_MATERIAL_NARROW onE15da
 ### E r1 author repair and independent closure — 2026-11-06
 
 RemoteverifiedE7d1aadfd4f655930ca2e65ea64cfa3df180a5f7b (code7920b7fca4471c035f5b728dace9e1777c68c074) returns exact5-field fact/query linkage checks; old5caseRED reproduced and preserved, repaired typedrefusals/positive with16ingress+25ownerregression authorPASS. No newFFsemanticowner/structuralgrant. G distinct frozen closure launched pyat-universal35-e-r1-independent-closure-20261106-r1 PID96858; acceptance remainswithheld untilreturn. D has repairedcut withoutrestart, actualDbind/native/protected stillunproved. Current3lanes D/F/G.
+
+
+### Independent ABC and E closure receiving — 2026-11-06
+
+F review ebd20c165bb275f66e4b3e2210535e96eecaf2ac accepts A and C at sourcefree scope; BnonF1 and AB/ABCjoin REVISE: plannedF2/F3/F4 payload neverreachesgovernedcompiler, shortcodes disagreeexactitemIDs, separatefrontier testnotproof. IndependentcountsRAW5630/HELD4655/INAPPLICABLE8131/DEFERRED51 preserve18467total/35sources/18276items18413slots; stale Breturncounts1595/11191 mustnotpropagate. Actualfullconfigload_original(sid).document works; selectiscompactmetadata. Description-only A ABI correction9eaf9dd145409d8aedf583226c7c99d663c43abc now namesprovedfullconfigpath, no behaviorchange. D, originalBauthor, receivedexactdefects and owns existingmutableB/Drepair; no rivalwriter.
+
+G independent6334063ab290d6497e7b8047eb1292b69661f51e ACCEPT_SCOPED repairedE7d1aadfd4f655930ca2e65ea64cfa3df180a5f7b / code7920b7fca4471c035f5b728dace9e1777c68c074:16+25PASS, eightmismatch/missing/nullprobesrefused, exactpositiveexistingownerprofile. Oldnegativee714at15da retained. This conditionallyunlocksDauthenticcompatible2targetRAWbind, notfullFF/F4/native/science/protectedacceptance.
+
+Fresh protected4df35cba8a254e50622d4cb3059625c82e0cb74b addsCAS3 documentary15return/currentprogress write-through afterd119; productcode unchanged. Any isolated#705receivingpatch mustpreserve those newerobservations; no blindoverwrite/mergeintoalreadymerged696.
