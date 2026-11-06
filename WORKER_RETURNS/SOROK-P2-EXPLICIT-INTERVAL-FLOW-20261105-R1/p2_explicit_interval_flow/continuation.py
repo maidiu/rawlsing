@@ -34,7 +34,13 @@ def _result(*, request: str, status: str, **extra) -> dict:
         "admission": None,
         "c9": None,
         "view": None,
+        "opportunity": None,
         "do_help": None,
+        "do_help_executed": False,
+        "user_attempt_executed": False,
+        "encounter_count_before": None,
+        "encounter_count_after": None,
+        "encounters_unchanged": None,
         "cold_continuity": None,
     }
     body.update(extra)
@@ -131,6 +137,20 @@ def _projection(state: Path):
     return session, S45Projection(session)
 
 
+def _public_opportunity(view: dict) -> dict:
+    return {
+        "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+        "source": view.get("source"),
+        "clock": view.get("clock"),
+        "location": view.get("location"),
+        "visible_event_count": len(view.get("visible_events") or []),
+        "encounter_admission": view.get("encounter_admission"),
+        "tool_available": view.get("tool_available"),
+        "controls": view.get("controls"),
+        "return_available": (view.get("return_control") or {}).get("available"),
+    }
+
+
 def apply_explicit_interval(
     state: str | Path,
     interval_input: dict | None,
@@ -217,14 +237,15 @@ def admit_continuation(
         )
     session, adapter = _projection(state)
     try:
-        view_before = adapter.view()
-        helped = adapter.do_help()
-        view_after = adapter.view()
+        encounters_before = len(session.read_encounters())
+        view = adapter.view()
+        encounters_after = len(session.read_encounters())
     finally:
         adapter.close()
     cold_session, cold_adapter = _projection(state)
     try:
         cold_view = cold_adapter.view()
+        cold_encounters = len(cold_session.read_encounters())
     finally:
         cold_adapter.close()
     return _result(
@@ -234,11 +255,63 @@ def admit_continuation(
         interval=None,
         admission={"status": admitted["payload"].get("status")},
         c9=_public_c9(c9_run["payload"]),
-        view_before_do_help=view_before,
-        view=view_after,
+        view=view,
+        opportunity=_public_opportunity(view),
+        do_help=None,
+        do_help_executed=False,
+        user_attempt_executed=False,
+        encounter_count_before=encounters_before,
+        encounter_count_after=encounters_after,
+        encounters_unchanged=(
+            encounters_before == encounters_after == cold_encounters
+        ),
+        cold_continuity=cold_view == view,
+        method="EXISTING_COMMAND_ADMIT_PLUS_PUBLIC_OBSERVATION",
+    )
+
+
+
+
+def explicit_do_help(
+    state: str | Path,
+    *,
+    request: str = "WAIT",
+    base_root: str | Path | None = None,
+) -> dict:
+    """Execute a user DO_HELP only when the caller explicitly requests it."""
+    install(base_root)
+    state = Path(state).expanduser().resolve()
+    request = str(request).upper()
+    session, adapter = _projection(state)
+    try:
+        encounters_before = len(session.read_encounters())
+        helped = adapter.do_help()
+        view = adapter.view()
+        encounters_after = len(session.read_encounters())
+    finally:
+        adapter.close()
+    cold_session, cold_adapter = _projection(state)
+    try:
+        cold_view = cold_adapter.view()
+        cold_encounters = len(cold_session.read_encounters())
+    finally:
+        cold_adapter.close()
+    return _result(
+        request=request,
+        status="DO_HELP_EXECUTED",
+        advanced=False,
+        view=view,
+        opportunity=_public_opportunity(view),
         do_help=helped,
-        cold_continuity=cold_view == view_after,
-        method="EXISTING_COMMAND_ADMIT_PLUS_PUBLIC_PROJECTION",
+        do_help_executed=True,
+        user_attempt_executed=True,
+        encounter_count_before=encounters_before,
+        encounter_count_after=encounters_after,
+        encounters_unchanged=(
+            encounters_before == encounters_after == cold_encounters
+        ),
+        cold_continuity=cold_view == view,
+        method="EXPLICIT_USER_DO_HELP",
     )
 
 
@@ -290,4 +363,5 @@ __all__ = [
     "admit_continuation",
     "apply_explicit_interval",
     "continue_after_request",
+    "explicit_do_help",
 ]

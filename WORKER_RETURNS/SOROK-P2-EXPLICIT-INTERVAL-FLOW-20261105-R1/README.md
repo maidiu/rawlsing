@@ -5,8 +5,12 @@ base `41bf45813fd0adeffd9b54e1306c2022abe96514`.
 
 WAIT/ABSENCE alone are not activity. Continuation occurs only when the caller
 explicitly supplies an interval input. The implementation calls the existing
-`run_s45_s47.py interval` and `admit` commands, then consumes the public
-`S45Projection` encounter/DO_HELP surface.
+`run_s45_s47.py interval` and `admit` commands, then observes the public
+`S45Projection` continued opportunity/read view.
+
+Observation never executes a user DO_HELP attempt and never increments the
+encounter count. A user DO_HELP is a separate explicit operation (`do-help`) or
+call to `explicit_do_help(...)`; it is never automatic.
 
 ## Run
 
@@ -23,6 +27,13 @@ continuation:
 python3 WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/run_explicit_interval_flow.py \
   --base-root <candidate-root-containing-WORKER_RETURNS> \
   continue --state <state> --request WAIT --mode ACTUAL --span 4
+```
+
+Explicit user DO_HELP after observation:
+
+```text
+<return>/run_explicit_interval_flow.py --base-root <base> do-help \
+  --state <state> --request WAIT
 ```
 
 `--mode` is required for any advance and accepts the existing S46 modes:
@@ -42,16 +53,20 @@ from p2_explicit_interval_flow import (
     apply_explicit_interval,
     admit_continuation,
     continue_after_request,
+    explicit_do_help,
 )
 ```
 
 - `continue_after_request(state, request="WAIT", interval_input=None)` — held
   without interval input; otherwise interval + existing admit + public
-  encounter/DO_HELP.
+  opportunity/read view. No automatic DO_HELP.
 - `apply_explicit_interval(state, interval_input)` — existing `interval`
   command only.
 - `admit_continuation(state, request="WAIT")` — existing `admit`, C9 public
-  summary, public continued view/DO_HELP and cold continuity.
+  summary, public continued view/opportunity and cold continuity; observation
+  only.
+- `explicit_do_help(state, request="WAIT")` — explicit user DO_HELP operation;
+  returns the projected result and encounter increment.
 
 ## Base closure
 

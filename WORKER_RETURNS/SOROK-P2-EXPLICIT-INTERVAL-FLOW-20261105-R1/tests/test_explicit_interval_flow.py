@@ -13,6 +13,7 @@ from p2_explicit_interval_flow.continuation import (
     admit_continuation,
     apply_explicit_interval,
     continue_after_request,
+    explicit_do_help,
 )
 
 REPO = Path(__file__).resolve().parents[3]
@@ -57,6 +58,16 @@ def _identity(state: Path) -> tuple:
         session.close()
 
 
+def _encounter_count(state: Path) -> int:
+    from s47.session import S47Session
+
+    session = S47Session.open(state)
+    try:
+        return len(session.read_encounters())
+    finally:
+        session.close()
+
+
 def test_wait_and_absence_without_interval_remain_typed_holds(state):
     for request, reason in (
         ("WAIT", "WAIT_UNSUPPORTED_TYPED_HOLD"),
@@ -83,7 +94,8 @@ def test_invalid_or_missing_mode_is_not_forced_to_actual(state):
     assert _identity(state) == before
 
 
-def test_actual_interval_changes_material_and_refuses_do_help(state):
+def test_actual_observation_does_not_auto_do_help_then_explicit_refuses(state):
+    before_encounters = _encounter_count(state)
     result = continue_after_request(
         state, request="WAIT",
         interval_input={"mode": "ACTUAL", "span": 4},
@@ -94,13 +106,24 @@ def test_actual_interval_changes_material_and_refuses_do_help(state):
     assert result["interval"]["actual_daily_events_invented"] == 0
     assert result["c9"]["objective_material_eligible"] is False
     assert result["c9"]["s47_source_in_readset"] is True
-    assert result["do_help"]["status"] == "REFUSED"
-    assert result["do_help"]["actor_response"]["strategy"] == "HELP_REFUSE"
-    assert result["cold_continuity"] is True
+    assert result["do_help"] is None
+    assert result["do_help_executed"] is False
+    assert result["user_attempt_executed"] is False
+    assert result["encounters_unchanged"] is True
+    assert result["opportunity"]["clock"] == result["view"]["clock"]
+    assert _encounter_count(state) == before_encounters
+    explicit = explicit_do_help(state, request="WAIT")
+    assert explicit["status"] == "DO_HELP_EXECUTED"
+    assert explicit["do_help_executed"] is True
+    assert explicit["do_help"]["status"] == "REFUSED"
+    assert explicit["do_help"]["actor_response"]["strategy"] == "HELP_REFUSE"
+    assert explicit["encounter_count_after"] == explicit["encounter_count_before"] + 1
+    assert explicit["cold_continuity"] is True
     assert result["general_autonomous_absence_life"] is False
 
 
-def test_scheduled_only_preserves_material_and_accepts_do_help(state):
+def test_scheduled_only_observation_does_not_auto_do_help_then_explicit_accepts(state):
+    before_encounters = _encounter_count(state)
     result = continue_after_request(
         state, request="ABSENCE",
         interval_input={"mode": "SCHEDULED_ONLY", "span": 4},
@@ -110,9 +133,16 @@ def test_scheduled_only_preserves_material_and_accepts_do_help(state):
     assert result["interval"]["material_after_interval"] == 1
     assert result["interval"]["actual_daily_events_invented"] == 0
     assert result["c9"]["objective_material_eligible"] is True
-    assert result["do_help"]["status"] == "OK"
-    assert result["do_help"]["actor_response"]["strategy"] == "HELP_ACCEPT"
-    assert result["cold_continuity"] is True
+    assert result["do_help"] is None
+    assert result["do_help_executed"] is False
+    assert result["encounters_unchanged"] is True
+    assert _encounter_count(state) == before_encounters
+    explicit = explicit_do_help(state, request="ABSENCE")
+    assert explicit["status"] == "DO_HELP_EXECUTED"
+    assert explicit["do_help"]["status"] == "OK"
+    assert explicit["do_help"]["actor_response"]["strategy"] == "HELP_ACCEPT"
+    assert explicit["encounter_count_after"] == explicit["encounter_count_before"] + 1
+    assert explicit["cold_continuity"] is True
 
 
 def test_unknown_mode_preserves_unknown_without_material_invention(state):
@@ -124,6 +154,9 @@ def test_unknown_mode_preserves_unknown_without_material_invention(state):
     assert result["interval"]["status"] == "UNKNOWN"
     assert result["interval"]["material_after_interval"] == 1
     assert result["interval"]["actor_knowledge_inferred"] is False
+    assert result["do_help"] is None
+    assert result["do_help_executed"] is False
+    assert result["encounters_unchanged"] is True
 
 
 def test_dependency_cut_refuses_then_restore_continues(state, base_root):
@@ -162,5 +195,9 @@ def test_dependency_cut_refuses_then_restore_continues(state, base_root):
     restored = admit_continuation(state, request="WAIT", base_root=base_root)
     assert restored["status"] == "CONTINUED"
     assert restored["c9"]["objective_material_eligible"] is False
-    assert restored["do_help"]["actor_response"]["strategy"] == "HELP_REFUSE"
-    assert restored["cold_continuity"] is True
+    assert restored["do_help"] is None
+    assert restored["do_help_executed"] is False
+    assert restored["encounters_unchanged"] is True
+    explicit = explicit_do_help(state, request="WAIT", base_root=base_root)
+    assert explicit["do_help"]["actor_response"]["strategy"] == "HELP_REFUSE"
+    assert explicit["cold_continuity"] is True
