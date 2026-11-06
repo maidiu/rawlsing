@@ -1,0 +1,18 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "revision": "R9",
+  "code_head": "68980922c2748066e4481b0d222cc313256f3502",
+  "prior_candidate": "8c5e8236ba08dca9d2e5921f938b3ce3d480e3bc",
+  "g_review": "e05ff071aa282c339e8237e308767ec57beed464",
+  "release_reuse": "REPAIRED_SCOPED",
+  "coordinate_source": "REPAIRED_SCOPED",
+  "full_plan": "HOLD",
+  "adverse": {
+    "tampered_semantic_release_hash": "RED_REFUSED",
+    "foreign_coordinate_ref": "RED_REFUSED",
+    "valid_release_reuse": "PASS",
+    "valid_UNKNOWN_coordinate": "PASS"
+  },
+  "tests": "28 scale/facade/universal PASS",
+  "limits": ["SRC10 0 facts; compile >425.9 s at 601.8 s", "SRC09 materialize >347 s", "SRC15 actual join NOT_RUN", "no native/all35/16-GiB/protected claim"]
+}
