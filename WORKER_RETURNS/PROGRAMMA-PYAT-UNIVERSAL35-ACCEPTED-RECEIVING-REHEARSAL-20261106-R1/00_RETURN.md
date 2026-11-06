@@ -1,5 +1,10 @@
 # PROGRAMMA PYAT — Universal35 accepted receiving rehearsal
 
+> **R1 refresh superseding this rehearsal:** see `revisions/r1/00_RETURN.md`.
+> Refreshed code head `3c3255e713c9e910a113c6d4f08a3266fb70670d`; actual
+> protected base advanced docs-only from `62f1895` to `fce43498e` and was merged
+> into the isolated PR branch. The original rehearsal record below is preserved.
+
 **STATUS:** `INTEGRATION_REHEARSAL_PASS_SCOPED__SOURCEFREE_POSITIVE_ONLY__ACTUAL_ORIGINAL_NEGATIVE__E_HANDOFF_NOT_COMPLETE`
 
 - **Branch:** `codex/pyat-universal35-accepted-receiving-20261106-r1`
