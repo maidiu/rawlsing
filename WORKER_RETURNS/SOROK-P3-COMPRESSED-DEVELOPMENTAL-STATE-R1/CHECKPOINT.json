@@ -27,7 +27,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "S1_DESIGN_ACCEPTED__INDEPENDENT_IMPLEMENTATION_CONTINUES",
+  "state": "S1_DESIGN_SCOPED_ACCEPT__ACTIVATION_OPACITY_LAUNCHED__RUNTIME_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -117,6 +117,31 @@
       "metadata_message": "msg_1b2c9f620001acwGSu9dj0MBJc",
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-compression-evidence-r1/completion.json",
       "notification": "finite existing completion observer"
+    },
+    {
+      "task": "sorok-p3-activation-opacity-r1",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1",
+      "launch": {
+        "job_id": "sorok-p3-activation-opacity-r1",
+        "child_pid": 21322,
+        "supervisor_pid": 21321,
+        "observer_pid": 21323,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-activation-opacity-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model_evidence": {
+        "message": "msg_1b2d009b10014BViZiwt4prMvX",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        }
+      },
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-activation-opacity-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "scope": "pure activation/actor-user opacity only; final reviewer must be nonauthor"
     }
   ],
   "holds": [
@@ -128,5 +153,12 @@
   "next": "Reuse terminal S1 review session for nonconflicting pure activation/opacity implementation, then HQ actual P2-root integration; final exact-runtime independent S2 review remains required.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
-  "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md"
+  "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
+  "write_lease_transfer": {
+    "file": "p3/projections.py",
+    "from": "HQ",
+    "to": "sorok-p3-activation-opacity-r1",
+    "contract": "ACTIVATION_OPACITY_CONTRACT.md",
+    "other_writes": "tests/test_projections.py and evidence/projections only"
+  }
 }

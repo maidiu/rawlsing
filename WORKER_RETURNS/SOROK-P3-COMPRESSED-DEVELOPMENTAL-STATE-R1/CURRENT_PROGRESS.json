@@ -1,8 +1,14 @@
 {
-  "status": "FOUR_DISTINCT_LANES_ACTIVE_VERIFIED__HQ_INTEGRATION_PENDING",
+  "status": "S1_DESIGN_SCOPED_ACCEPT__ACTIVATION_OPACITY_LAUNCHED__RUNTIME_PENDING",
   "checkpoint": "CHECKPOINT.json",
   "contract": "INTEGRATION_CONTRACT.md",
+  "activation_contract": "ACTIVATION_OPACITY_CONTRACT.md",
   "disciplines": "STANDING_DISCIPLINES.md",
+  "S1_input": {
+    "review": "7466d37bf5e3147efa84adb907c5f8ea28fcd1cf",
+    "disposition": "ACCEPT_SCOPED_TEST_ONLY_DESIGN_ONLY",
+    "no_new_review_needed": true
+  },
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -12,7 +18,7 @@
     },
     {
       "task": "sorok-p3-s1-input-review-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_SCOPED_DESIGN_ACCEPTED",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "pid": 12614
     },
@@ -27,11 +33,16 @@
       "status": "ACTIVE_VERIFIED",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
       "pid": 15921
+    },
+    {
+      "task": "sorok-p3-activation-opacity-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 21322
     }
   ],
   "runtime": "NOT_YET_INTEGRATED",
-  "input_acceptance": "PENDING_INDEPENDENT_RETURNS",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Intake terminal returns once notified, import qualified store/compression modules; HQ implement P3Owner/test-only rules/projections and full actual P2-root A-H integration. Input reviews do not accept final runtime."
+  "next": "Reuse terminal S1 review session for nonconflicting pure activation/opacity implementation, then HQ actual P2-root integration; final exact-runtime independent S2 review remains required."
 }

@@ -1,3 +1,7 @@
+## P3 S1 actual input return — isolated overlay update
+
+S1 review `7466d37bf5e3147efa84adb907c5f8ea28fcd1cf` is HQ ACCEPT_SCOPED as TEST_ONLY H1/H2/H3 design only, not runtime/native/scientific-source acceptance. Placeholder ABI/read adapters are mapped to existing compression and new activation/opacity contracts; code/economy/A–H proof remains required, scholarly pages remain unpromoted. The terminal review session now implements the required read-only activation/projection module (child21322), with exclusive writes and separate final-review independence. [Exact disposition](../WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/S1_INPUT_DISPOSITION.json). Recurring goal wakes remain paused; existing terminal notifications govern intake.
+
 # Isolated P3 engineering overlay — 2026-11-06
 
 The user-authorized P3 compressed-state/opaque-Other commission is now launched on `agent/sorok-p3-compressed-developmental-state-20261106-r1`, protected start `c852d7516e23fcb6cf2215e9be7c5fa268503516`. Four exclusive OpenCode/MAX lanes are process-verified: E1 input review, S1 input review, normalized state store and compression evidence. These are neither independently received P3 runtime nor native scientific effects. [Current checkpoint and exact custody](../WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/CHECKPOINT.json). Paired scoped progress and operative standing disciplines are in that same return root. This isolated-branch overlay does not replace the incumbent HQ or alter protected revision37/scientific/source/human rights below.
