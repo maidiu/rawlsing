@@ -42,6 +42,10 @@ def main() -> int:
         paths + ([env["PYTHONPATH"]] if env.get("PYTHONPATH") else []))
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     env["PYTHONHASHSEED"] = "0"
+    metrics_path = ROOT / "evidence" / "vertical-resource-repair" / "actual_metrics.json"
+    metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    env["P3_VERTICAL_METRICS_PATH"] = str(metrics_path)
+    payload["metrics_path"] = str(metrics_path)
     completed = subprocess.run(payload["command"], cwd=str(ROOT),
                                env=env, capture_output=True, text=True)
     payload["exit"] = completed.returncode
