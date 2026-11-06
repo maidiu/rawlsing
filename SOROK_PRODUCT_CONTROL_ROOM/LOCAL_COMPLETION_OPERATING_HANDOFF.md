@@ -138,3 +138,8 @@ Remoteverifiedd450f96b5de1fcf39bacefbfb4cd9bfbe66a8b18 imports interval76d5 exac
 ### Final repaired P2 source assembled
 
 Remoteverified4b2fed81c3f513eb4262ad5de277ce519c74c614 exactimports interval76d5 treef7bd1c51 + laterb716 tree67f01db8 (48filesexact); integratedcalls/primitivesunchanged, publicoraclezero hits, sourceoriginsverified. Earlier25daccept332e remains scoped; final4b2notyetindependentlyaccepted. Sameauthor now `sorok-p2-final-receiving-delta-20261105-r1` only actualfinalsource delta/allowlist/merge-tree and1cold firstconsumer sequence vs priorbf574 receiving, no repeatfullestate. Other2lanes focusedcomponentclosure and PROGRAMMApublicrepairsintake. Nextfinalqualification can reuse accepted25d+verifiedcomponentrepairs+finalreceivingdelta, no automaticbroadthirdreview; preciseindependentfinalcutstatement only if actualreviewerissues it. No protectedmerge/nativehumanBgrant.
+
+
+### Coherent PROGRAMMA repairs intake received and advanced to newest qualified cut
+
+Worker f5d0af85/source+eda49af2/receiving read and received. HQ directly corrected obsolete declaredsnapshot25d-unaccepted/import-running using independent332eaccept and exactcurrent4b2imports. Existing stage/seam nested productstatuses reconciled too, not merely narrativeappend. Published source4aaefdd7b248ac76d25b46f9b693f11b80f9f5b5 and receivingaa9ebbb533198acfa7056147f8cae3deb246ffe2, canonicalPASSboth. PR699 exacthead/bodycrosslinks updated; remainsdraftunmerged. Two final dependency-bound constructionjobs active: focusedrepairclosure and finalreceivingdelta. No fillercommissions while those determine receiving; preserve actualscientific/human/source and protectedlimits. Next concrete receivingdecision on actualreturns.
