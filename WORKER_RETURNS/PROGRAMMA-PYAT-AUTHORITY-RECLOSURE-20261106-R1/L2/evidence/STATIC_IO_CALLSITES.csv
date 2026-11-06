@@ -1,0 +1,66 @@
+stage,path,line,symbol,call,expression
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,68,_read,pd.read_csv,"pd.read_csv(path, low_memory=False)"
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,68,_read,pd.read_parquet,pd.read_parquet(path)
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,78,_logical_hash,work.to_csv,work.to_csv(index=False)
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,82,_file_hash,path.read_bytes,path.read_bytes()
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,135,_write_parquet,df.to_parquet,"df.to_parquet(path, index=False)"
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,148,_write_csv,df.to_csv,"df.to_csv(path, index=False)"
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,256,compile_v551_run,atomic_write_json,"atomic_write_json(staging_dir / ""manifest.json"", manifest)"
+L2_CORE,data/ddm_build_copy/compile_v551_relation_evidence_atoms.py,257,compile_v551_run,publish_staged_directory,"publish_staged_directory(staging_dir, final_dir)"
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,67,_read_frame,require_canonical_parquet,require_canonical_parquet(path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,68,_read_frame,pd.read_parquet,pd.read_parquet(path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,78,_logical_hash,work.to_csv,work.to_csv(index=False)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,117,_verify_declared_artifact,require_canonical_parquet,require_canonical_parquet(base / rel)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,118,_verify_declared_artifact,inspect_artifact,inspect_artifact(path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,173,verify_v551_producer_bundle,read_status_document,read_status_document(manifest_path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,229,verify_v551_producer_bundle,sha256_file,sha256_file(manifest_path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,251,_write_parquet,frame.to_parquet,"frame.to_parquet(path, index=False)"
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,257,_write_parquet,sha256_file,sha256_file(path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,265,_write_csv,frame.to_csv,"frame.to_csv(path, index=False)"
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,271,_write_csv,sha256_file,sha256_file(path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,301,compile_v552_run,require_canonical_parquet,require_canonical_parquet(Path(conditional_determinicity_path))
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,302,compile_v552_run,pd.read_parquet,pd.read_parquet(conditional_path)
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,383,compile_v552_run,atomic_write_json,"atomic_write_json(staging_dir / ""manifest.json"", manifest)"
+L2_CORE,data/ddm_build_copy/compile_v552_structural_ddm.py,384,compile_v552_run,publish_staged_directory,"publish_staged_directory(staging_dir, final_dir)"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,27,_logical_hash,w.to_csv,w.to_csv(index=False)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,30,_read_manifest,read_status_document,read_status_document(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,77,_resolve_declared_path,require_canonical_parquet,require_canonical_parquet((manifest.parent/rel).resolve())
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,84,_verify_and_read_declared,inspect_artifact,inspect_artifact(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,90,_verify_and_read_declared,pd.read_parquet,pd.read_parquet(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,129,verify_v551j_producer_bundle,sha256_file,sha256_file(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,138,verify_v552_producer_bundle,sha256_file,sha256_file(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,147,_write_frame,df.to_parquet,"df.to_parquet(path,index=False)"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,147,_write_frame,sha256_file,sha256_file(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,149,_write_csv,df.to_csv,"df.to_csv(path,index=False)"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,149,_write_csv,sha256_file,sha256_file(path)
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,158,compile_v552j_run,atomic_write_json,"atomic_write_json(staging/""manifest.json"",manifest)"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,158,compile_v552j_run,atomic_write_json,"atomic_write_json(staging/""manifest""/""v552j_readiness_report.json"",readiness)"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,158,compile_v552j_run,atomic_write_json,"atomic_write_json(staging/""manifest""/""v552j_runtime_handoff_manifest.json"",manifest)"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,158,compile_v552j_run,atomic_write_json,"atomic_write_json(staging/""manifest""/""v552j_v553_handoff_manifest.json"",{**readiness,""v553_input_index_path"":""packets/v552j_v553_input_index.parquet"",""v553_probe_row_count"":int(join[""ready_for_v553_probe""].map(bool).sum()) if not join.empty else 0,""v553_temporal_field_row_count"":0})"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/compile_v552j_structural_handoff.py,158,compile_v552j_run,publish_staged_directory,"publish_staged_directory(staging,final)"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_consumer.py,106,verify_producer_boundary_manifest,read_status_document,read_status_document(manifest_path)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_consumer.py,156,verify_producer_boundary_manifest,require_canonical_parquet,require_canonical_parquet(rel_text)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_consumer.py,170,verify_producer_boundary_manifest,inspect_artifact,inspect_artifact(manifest_dir / rel_text)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,97,sha256_file,p.open,"p.open(""rb"")"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,109,verify_external_dependency_ledger,sha256_file,sha256_file(p)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,115,verify_external_dependency_ledger,json.loads,"json.loads(p.read_text(encoding=""utf-8""))"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,115,verify_external_dependency_ledger,p.read_text,"p.read_text(encoding=""utf-8"")"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,129,_parquet_row_count,pd.read_parquet,pd.read_parquet(path)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,137,inspect_artifact,sha256_file,sha256_file(p)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,146,inspect_artifact,pd.read_csv,"pd.read_csv(p, low_memory=False)"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,148,inspect_artifact,json.loads,"json.loads(p.read_text(encoding=""utf-8""))"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,148,inspect_artifact,p.read_text,"p.read_text(encoding=""utf-8"")"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,156,inspect_artifact,p.open,"p.open(""rb"")"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,172,read_status_document,json.loads,"json.loads(p.read_text(encoding=""utf-8""))"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,172,read_status_document,p.read_text,"p.read_text(encoding=""utf-8"")"
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,176,read_status_document,pd.read_parquet,pd.read_parquet(p)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,299,verify_boundary_manifest,read_status_document,read_status_document(manifest_path)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,330,verify_boundary_manifest,inspect_artifact,inspect_artifact(base / rel)
+L2_CORE,data/ddm_build_copy/ddm_pipeline_boundary_contract.py,362,load_closed_35_waves,path.open,"path.open(newline="""", encoding=""utf-8-sig"")"
+L2_CORE,data/ddm_build_copy/ddm_v551_atoms.py,77,_load_registry,SCALE_REGISTRY_MANIFEST_PATH.read_text,"SCALE_REGISTRY_MANIFEST_PATH.read_text(encoding=""utf-8"")"
+L2_CORE,data/ddm_build_copy/ddm_v551_atoms.py,77,_load_registry,json.loads,"json.loads(SCALE_REGISTRY_MANIFEST_PATH.read_text(encoding=""utf-8""))"
+L2_CORE,data/ddm_build_copy/ddm_v551_atoms.py,79,_load_registry,SCALE_REGISTRY_PATH.read_bytes,SCALE_REGISTRY_PATH.read_bytes()
+L2_CORE,data/ddm_build_copy/ddm_v551_atoms.py,81,_load_registry,pd.read_csv,"pd.read_csv(SCALE_REGISTRY_PATH,dtype=str)"
+L2_CORE,data/ddm_build_copy/ddm_v552_structural.py,63,compute_input_hash,p.read_bytes,p.read_bytes()
+L2_CORE,data/ddm_build_copy/ddm_v552_validation.py,73,_json_list,json.loads,"json.loads(_clean(value) or ""[]"")"
+DOWNSTREAM_L4_HANDOFF,data/ddm_build_copy/ddm_v552j_handoff.py,33,_parse_json_array,json.loads,json.loads(s)
