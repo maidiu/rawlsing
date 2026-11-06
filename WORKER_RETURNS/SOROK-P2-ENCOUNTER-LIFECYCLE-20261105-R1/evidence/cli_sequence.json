@@ -1,0 +1,83 @@
+{
+  "after_return_action": {
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "strategy": "HELP_REFUSE"
+  },
+  "canonical_store_unchanged_across_exit_and_return": true,
+  "commands": [
+    "01-new.json",
+    "02-view-portal.json",
+    "03-say.json",
+    "04-do-help.json",
+    "05-attend.json",
+    "06-status-before-exit.json",
+    "07-exit.json",
+    "08-status-outside.json",
+    "09-view-outside.json",
+    "10-say-blocked.json",
+    "11-do-help-blocked.json",
+    "12-attend-blocked.json",
+    "13-lifecycle-outside.json",
+    "14-return.json",
+    "15-lifecycle-portal.json",
+    "16-status-after-return.json",
+    "17-say-after-return.json",
+    "18-view-after-return.json"
+  ],
+  "exit": {
+    "code": "LOCAL_EXIT_ONLY",
+    "mode": "OUTSIDE"
+  },
+  "local_return": {
+    "clock_changed": false,
+    "code": "LOCAL_RETURN_ONLY",
+    "mode": "PORTAL",
+    "world_event_created": false
+  },
+  "modes": [
+    "PORTAL",
+    "OUTSIDE",
+    "PORTAL"
+  ],
+  "outside_blocks": [
+    {
+      "actor_response": null,
+      "clock_changed": false,
+      "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+      "control": "SAY",
+      "status": "REFUSED",
+      "world_event_created": false
+    },
+    {
+      "actor_response": null,
+      "clock_changed": false,
+      "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+      "control": "DO_HELP",
+      "status": "REFUSED",
+      "world_event_created": false
+    },
+    {
+      "actor_response": null,
+      "clock_changed": false,
+      "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+      "control": "ATTEND",
+      "status": "REFUSED",
+      "world_event_created": false
+    }
+  ],
+  "positive": {
+    "attend_status": "NO_CHANGE",
+    "do_help_performed": true,
+    "do_help_strategy": "HELP_ACCEPT",
+    "say_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "say_strategy": "HELP_INVITE"
+  },
+  "privacy": {
+    "lifecycle_has_root_hash": false,
+    "new_has_root_hash": false,
+    "view_has_root_hash": false
+  },
+  "schema": "SOROK_P2_LOCAL_LIFECYCLE_CLI_SEQUENCE@1",
+  "state": "CLI_STATE_RELATIVE_UNDER_LOCAL_LOGS",
+  "store_hash": "16c66ec1a3df43feb575aadfa64e15e119183a21444b4634aae945f86bab4f9a"
+}

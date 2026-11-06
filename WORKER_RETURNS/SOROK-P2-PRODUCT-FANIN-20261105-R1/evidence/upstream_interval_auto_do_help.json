@@ -1,0 +1,10 @@
+{
+  "callable": "p2_explicit_interval_flow.continuation.admit_continuation",
+  "defect": "admit_continuation invokes adapter.do_help() to display a projected consequence, auto-executing a user DO_HELP attempt.",
+  "fanin_behavior": "later-event output sets do_help_executed=false; tests assert encounter_count is unchanged before explicit do-help.",
+  "integration_avoidance": "Fanin uses only p2_explicit_interval_flow.continuation.apply_explicit_interval, then P2Continuation.admit_later_event/read_later_event for later-event observation. DO_HELP is only executed by the explicit fanin do-help command.",
+  "observed_marker": "p2_explicit_interval_flow/continuation.py calls helped = adapter.do_help() inside admit_continuation",
+  "schema": "SOROK_P2_FANIN_UPSTREAM_DEFECT@1",
+  "source_commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
+  "source_return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1"
+}

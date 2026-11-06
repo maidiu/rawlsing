@@ -1,0 +1,87 @@
+{
+  "base_accepted": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "branch": "codex/sorok-p2-product-fanin-20261105-r1",
+  "fanin_file_count": 11,
+  "fanin_files": [
+    {
+      "bytes": 29,
+      "path": ".gitignore",
+      "sha256": "fb444f80fd669bb417a953c822d3fba59e3df419660cd7de15c13af0a61977ed"
+    },
+    {
+      "bytes": 7972,
+      "path": "00_RETURN.md",
+      "sha256": "01a00ec4bdbbd6e2d01b299d4890b478f263573ca59b7f7ef4e04c1416f7f5ac"
+    },
+    {
+      "bytes": 1929,
+      "path": "PROGRAMMA_DELTA.md",
+      "sha256": "148823edbf6155558884461c7d95f70f523cecf35e9b58c0caef12ff147aa7b9"
+    },
+    {
+      "bytes": 1365,
+      "path": "README.md",
+      "sha256": "cc7973d08029e757726dcfb7c657006e9605ebdbdeb53d97220c84e25db3509f"
+    },
+    {
+      "bytes": 396,
+      "path": "p2_product_fanin/__init__.py",
+      "sha256": "dd430793eda70ac09d0482cd6bf78dccad67428cf2d006f121963697f8ddc625"
+    },
+    {
+      "bytes": 6326,
+      "path": "p2_product_fanin/cli.py",
+      "sha256": "bff4f498b5f16613aaaa0dfbf58d5869e6ea1de35e9716fa5e5e1bd658721a2b"
+    },
+    {
+      "bytes": 6514,
+      "path": "p2_product_fanin/integration.py",
+      "sha256": "fd1c626d8ea8c7c747da7d8dcf09ec421622d3086ee845c773180b1e7b9eb1e2"
+    },
+    {
+      "bytes": 2710,
+      "path": "p2_product_fanin/runtime.py",
+      "sha256": "99009dd92b748b4fa8bb7ee42b36a7a39bd4beb64d6baeeb97cff69e432973b7"
+    },
+    {
+      "bytes": 280,
+      "path": "run_fanin_cli.py",
+      "sha256": "70b14bb8890c055b0af700cc6d93367b4a129dc1a3da7f2ae5b8180790fed87c"
+    },
+    {
+      "bytes": 186,
+      "path": "tests/conftest.py",
+      "sha256": "b549459c4bd19e9a26073ef981ae38d533dd4c6451a8b2588836c90385691979"
+    },
+    {
+      "bytes": 12594,
+      "path": "tests/test_product_fanin.py",
+      "sha256": "c4ac7377b152e8ed32233c3ad21e37f235239ce7ebaf196c3cb68f18253cc5b7"
+    }
+  ],
+  "fanin_total_bytes": 40301,
+  "schema": "SOROK_P2_PRODUCT_FANIN_SOURCE_MANIFEST@1",
+  "sources": {
+    "interval": {
+      "commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
+      "file_count": 26,
+      "imported_exact": true,
+      "return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
+      "tree_sha1": "0209fdb84d3564c46e704573a6a2d1b44adfee86"
+    },
+    "later_event": {
+      "commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+      "file_count": 20,
+      "imported_exact": true,
+      "return": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
+      "tree_sha1": "1c701c14e131be131e7f62bdeccec3fe7415d0fb"
+    },
+    "lifecycle": {
+      "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+      "file_count": 34,
+      "imported_exact": true,
+      "return": "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1",
+      "tree_sha1": "1eda53e475f5e07c1251a6f61eacecacc1284ed6"
+    }
+  }
+}

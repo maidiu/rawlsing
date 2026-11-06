@@ -1,0 +1,83 @@
+{
+  "after_return_say_schema": "SOROK_WP19_INTERACTION_RESULT@1",
+  "attend": {
+    "clock_changed": false,
+    "performed": false,
+    "status": "NO_CHANGE",
+    "world_event_created": false
+  },
+  "blocked": {
+    "actor_response": null,
+    "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+    "status": "REFUSED"
+  },
+  "commands": [
+    "01-new.json",
+    "02-interval-actual.json",
+    "03-verify-after-interval.json",
+    "04-later-event-observation.json",
+    "05-verify-after-observation.json",
+    "06-do-help-explicit.json",
+    "07-verify-after-explicit-help.json",
+    "08-attend.json",
+    "09-say-unknown.json",
+    "10-exit.json",
+    "11-say-blocked.json",
+    "12-return.json",
+    "13-say-after-return.json",
+    "14-status.json",
+    "15-verify-final.json"
+  ],
+  "encounter_counts": {
+    "after_explicit_do_help": 1,
+    "after_interval": 0,
+    "after_later_observation": 0
+  },
+  "exit": {
+    "code": "LOCAL_EXIT_ONLY",
+    "mode": "OUTSIDE"
+  },
+  "explicit_do_help": {
+    "attempted": true,
+    "performed": false,
+    "refusal": true,
+    "status": "REFUSED"
+  },
+  "final_status_mode": "PORTAL",
+  "final_verify": {
+    "encounter_count": 4,
+    "event_count": 6,
+    "ok": true
+  },
+  "interval": {
+    "do_help_executed": false,
+    "interval_status": "PARTIAL",
+    "material_after_interval": 0,
+    "status": "OK"
+  },
+  "later_observation": {
+    "c9_material_eligible": false,
+    "do_help_executed": false,
+    "event_status": "OK",
+    "language_status": "ACCEPTED",
+    "user_attempt": false
+  },
+  "local_return": {
+    "clock_changed": false,
+    "code": "LOCAL_RETURN_ONLY",
+    "mode": "PORTAL",
+    "world_event_created": false
+  },
+  "new_view_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+  "privacy": {
+    "01-new.json": false,
+    "04-later-event-observation.json": false,
+    "14-status.json": false,
+    "15-verify-final.json": false
+  },
+  "schema": "SOROK_P2_PRODUCT_FANIN_CLI_SEQUENCE@1",
+  "unknown_say": {
+    "actor_response": null,
+    "status": "UNKNOWN"
+  }
+}
