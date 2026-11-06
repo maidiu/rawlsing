@@ -1,0 +1,73 @@
+{
+  "schema": "SOROK_DEVELOPMENTAL_RECURSION_REVIEW_SOURCE_CLOSURE@1",
+  "exact_subject": "41863919210021eced174ad5abdf49cb2df2042a",
+  "subject_parent": "bffd5c2414111d923bfde0d849c050c3fac72196",
+  "protected_baseline": "33c40a315d3c231cb2021bd8e60f3261547efa62",
+  "protected_is_ancestor": true,
+  "review_branch": "review/sorok-developmental-recursion-engine-20261106-r1",
+  "review_branch_base_at_dispatch": "41863919210021eced174ad5abdf49cb2df2042a",
+  "reuse_return": "b9f7f30609d135473bf098857334d4f75253b421",
+  "batch_return": "68a1299f6e49ce0d4c3c3f9cc773b39a6c09841f",
+  "cycle_return": "0d60caf387d2539edabdc55ee3f666966657b6f9",
+  "architecture": {
+    "commit": "fbfc529230d8b3c13f824cfac31741a5dfaa57e5",
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_USER_SETTLED_BATCH_RECURSION_IMPRESSION_MEMORY_R1.md",
+    "sha256": "38876f6e73ac150754d642b6741fb0be71be255563b352fca32b40f00e5e7859",
+    "ancestor_of_subject": false,
+    "note": "The architecture commit is a separate Oct 26 lineage; its exact blob is present in Git and the sha256 matches the subject pin. This is a source-lineage observation, not an acceptance."
+  },
+  "user_task": {
+    "path": "/Users/matthewsmith/.codex/attachments/84fb39b9-ecc5-4a0d-998c-fb97ac106092/pasted-text-1.txt",
+    "sha256": "c8f91bda634be7357f30c969c742ad832d93a776784846f6b4c6a48b3a5e5a20"
+  },
+  "accepted_product_refs": {
+    "pr697_product_source": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+    "pr699_programma_source": "ab59af291dd2e75262939af4f0b41f537c33983c",
+    "p2_product_return": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1",
+    "p2_tree_diff_baseline_to_subject": "EMPTY",
+    "programma_diff_baseline_to_subject": [
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md"
+    ],
+    "programma_change": "Append-only candidate status note after the accepted final disposition; accepted text was not rewritten."
+  },
+  "subject_file_hashes": {
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/__init__.py": "677884dd060c7105e85e0d8fc199799399902f575abc7cff354ad56e038d0ae8",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/model_cycle.py": "af83f8f1a3d31c4281dc2550e07fa0e5c31304cfd3fb1bc9538f674c95f46df5",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py": "3192b93e25768c1d19e489f76fd6bad3ddc6ea51287f59c5593875d4c64b53af",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py": "c9566d18a304c6db0e9e01ba792473c5daab2e838ff3f3a8178123a10001f1c5",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/contracts.py": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py": "1f09ebe35bf9419b052c6ef757b5410be496361aeab3be7e51675edc3b72096c",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py": "6f77cc7da885348f94f1f7226342782c09269a52014d06fff65a1f8699fd59c9",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py": "493911dd5bfd24443a21c8c4a0f4865d61a2dcb8d25548468372498c7a1b34d7",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py": "7a98946a5cf375173c43c95f42939d3d16f5c23021eebeff0075f6f2dc0e4264",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_developmental_recursion.py": "1c6a6eebc0cc7c8fbcd6411bce7f416f56beae567ebc93e06d570aed7270e844",
+    "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_cold_cli_witness.py": "864a246caf32dfdb8993b17b7c314065063ad6472dff4b9f2d7cbd502029c990"
+  },
+  "hash_verification": "All 11 subject file hashes match SOURCE_PINS.json and were re-computed in the review worktree.",
+  "integration_identity": {
+    "engine_and_test_engine_match_batch_return": true,
+    "batch_return_diff": "EMPTY for developmental_recursion/engine.py and tests/test_engine.py",
+    "model_cycle_matches_cycle_return_plus_lead_boundary_repair": true,
+    "cycle_return_diff": "The only code change is the lead's persisted retrospective-before-next-batch block in model_cycle.py; exact restore hash af83f8f1...",
+    "p2_owner_author": "lead integration code; exact subject hash pinned above"
+  },
+  "branch_state_observed": {
+    "local_agent_branch_head_at_review": "45be8b563",
+    "remote_agent_branch_head_at_review": "99e79810fb6a8cc6f1cd2860a458f72994cc86b2",
+    "remote_agent_branch_later_commits": [
+      "b4aca5f3e Bind recursion retrospection to developing actor perception receipts",
+      "77321a907 Add actual-consumer fault witnesses required by receiving CI",
+      "bf657e1c9 Record passing receiving proof court and exact source restoration",
+      "99e79810f Preserve inherited Pyat CI failures separately from passing recursion proof"
+    ],
+    "review_scope": "The verdict is for exact subject 418639192. The later lead head is outside exact subject; its actor-access repair was spot-checked but is not accepted here."
+  },
+  "commands": [
+    "git rev-parse HEAD -> 41863919210021eced174ad5abdf49cb2df2042a",
+    "git merge-base --is-ancestor 33c40a315d3c231cb2021bd8e60f3261547efa62 HEAD -> 0",
+    "git diff --name-only 33c40a315d3c231cb2021bd8e60f3261547efa62..HEAD -- <P2 product, lifecycle, interval, later, projection, import-closure dirs> -> empty",
+    "git diff 33c40a315d3c231cb2021bd8e60f3261547efa62..HEAD -- SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK -> one append-only candidate note",
+    "git cat-file blob fbfc529...:SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_... | shasum -a 256 -> 38876f6e73ac150754d642b6741fb0be71be255563b352fca32b40f00e5e7859",
+    "shasum -a 256 /Users/matthewsmith/.codex/attachments/.../pasted-text-1.txt -> c8f91bda634be7357f30c969c742ad832d93a776784846f6b4c6a48b3a5e5a20"
+  ]
+}
