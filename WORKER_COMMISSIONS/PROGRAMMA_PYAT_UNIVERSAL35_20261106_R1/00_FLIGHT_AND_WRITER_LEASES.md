@@ -267,3 +267,14 @@ PROGRAMMA_DELTA: exactAhead above/originalAauthor/distinctCreviewer; trustedsour
 Gbc01712c111c7522d92bbd27e8a318453c4518e3 atDcc0a0e39ef2d05cca3a92f045cec8830386cf647 confirms heldY/selectedmissing9Btests and actualproductionwrapper30facts15ops18candidates sourcefreepositive. Extra wrapperprequery isnot actualadmissionpredecision; A,B,B,A currentdecisionref sequence accepted. OriginalD narrowrepairjobpyat-universal35-d-actual-decode-decision-repair-20261106-r1 PID55579 under961309ff1 captures actualadmissiondecision ratherthan adds anotherquery. Cmappingreview/Fexistingreadinput remain parallel.
 
 PROGRAMMA_DELTA: exact G/Dheads above, identity/alias/sourcefreefacts positivepreserved, postdecision exactness REVISE with actualrepro. S03.2/S-WORKLIST/gap/work-now/currentpair additive qualifiednegative, no original/native/science/protected promotion. Nextoneobservedtransportfix+focusedregression/closure; actualoriginalempiricalconsumerNONE_VERIFIED.
+
+
+### Latest returns reconciled; genuine original engineering flight launched
+
+C d731f0a15a54d6e664ac181c5e1be691f5be9f51 accepts A7f393160 provenance/metadata/denominators/checkedprojection but REVISE362ambiguous missing-label precise-state mappings, fail-open omittedstate default,95substantive-to-missing transitions needaccounting. Zero substantive additions/46testsPASS/R157SRC31fixturepreserved. AexactrepairPID60480 under2a72fc265 active.
+
+F5e2cfc568588944479c6c7b44b8db72c114b0828 resolves existinguserauthorizedlocalengineeringRAW35source readinput, notnativeS3/science. Exactprivategrant9e433cd95600c0634b38a08781eea851086fc8208739a6f29e6c83bbe58a88c7/authbytes verified/copied0600D/Gownruntime, noGit/sourcebytes. Cachedresolverlivefilecurrentness caveat found; Dcomposesstrictfreshinstanceeachresolve and Gindependentlytests thatuse, notunqualifiedcachedinstance.
+
+D d054e4066715c0e87a063cb717cc9a6257a3933a/codea286fe469f9622f6370af8993fca283b2f1af2c4 captures actualadmissiondecision viarecordingdelegator,1focusedtestPASS; actualwrapperclosure Gjobpyat-universal35-d-r6-and-local-read-review-20261106-r1 PID60488. Dgenuineoriginalread/factexecutionjobpyat-universal35-original-engineering-execution-20261106-r1 PID60494 starts againstcurrentlyqualifiedsources09–15 withfull35accounting; originalfactsNOT_COMPLETED atdispatch. ActualEacceptedcoldconsumeravailable, authenticjoinnotyetproved.
+
+PROGRAMMA_DELTA: exactheads/grades above; missingreadtransportinput resolved underexistingauthorization whilemappingprecisestatesheld; sourcefreeactualwrapperpositive remains30facts, genuineoriginalgoalstillincomplete. Existing S01.1/S03.2/S-WORKLIST/gap/work-now/currentpair updated onisolatedHQbranch, historical62/82/49 and oldnegativecuts preserved. Threeusefullanes A/G/D; no newnative/science/protectedauthority or fictionalall35PASS. Nextactualoriginalresults, exactmappingrepair and independentboundaryclosure; no extraapprovalgate.
