@@ -1,0 +1,14 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "revision": "R8",
+  "code_head": "8c5e8236ba08dca9d2e5921f938b3ce3d480e3bc",
+  "status": "PARTIAL_PHYSICAL_REUSE_PLUS_COORDINATE_HOOK__COMPILE_HOLD",
+  "actual": {
+    "SRC10": {"decode_s": 1.431, "stream_s": 0.078, "materialize_s": 169.265, "compile_s_at_ceiling": 425.861, "facts": 0, "peak_rss_bytes": 2074533888},
+    "SRC09": {"materialize_s_at_ceiling": 347.332, "facts": 0, "peak_rss_bytes": 1636061184}
+  },
+  "bottleneck": "Repeat per-response-value build_projection_catalog/build_test_only_workload full envelope over unchanged bundle, plus first C11 validation.",
+  "coordinate": "optional caller rules supported; actual SRC15 join NOT_RUN; default legacy fallback unchanged",
+  "not_run": ["full SRC09/SRC10 facts", "all35", "16 GiB", "native/science", "SRC15 actual join"],
+  "next": "D/universal-workload shared catalog/envelope repair with exact issued per-operation identity; independent review"
+}
