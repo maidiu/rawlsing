@@ -8,7 +8,7 @@
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
 **Previous implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
 **New implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
-**Capacity evidence commit:** `__CAP_EVIDENCE_SHA__`
+**Capacity evidence commit:** `2a41b4682cfbbdc2b5e12ba71d114adb431c670f`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
 **Authority:** sourcefree engineering only. No original35, native source/science,
 actor/V3, human, Sorok, protected CAS, or merge authority is claimed.
