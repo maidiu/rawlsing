@@ -1,5 +1,8 @@
 # ROADMAP:S06 — Field Forge F5 and demanded objective PRE-V3
 
+> **2026-11-06 UNIVERSAL35 → FIELD FORGE INGRESS — documentary candidate.** User's product intention: **empirical artifacts can be produced with accurate source/RAW/optional weighted scope before F5 adjudicates what those artifacts mean structurally**. All35 generic source-pack→C11/I03/I05 output reaches existing `field_forge_conditional_support.py` / `gt12_c_to_d_relation_bridge.py` / `pre553_structural_admission.py` as evidence support or typed refusal; F5 material/causal/position claim remains a separate owner. Do not make one survey, 42 questions, sample weights or a complete theory of structure a global prerequisite to the empirical source-neutral engine. [Master](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/00_MASTER_RECOVERY_AND_CURRENT_STATE.md) · [Codex overnight goal](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/03_CODEX_OVERNIGHT_GOAL.md). No present F5 original35 positive claimed.
+
+
 > **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 GF1 remains narrow optional source-native descriptive pair relation, PR691 review and scientific S1–S9 still held. E41 exact protected port + current R01/R03 sourcefree multi-operations already execute independently of GF1. R08 binder exists protected but first consumer is unproved; R118 world service is reviewed branch-only. Never make GF1 the universal gateway to F2 inverse or F4 same-person k-way distributions. [Exact R2 lineage](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
 
 
