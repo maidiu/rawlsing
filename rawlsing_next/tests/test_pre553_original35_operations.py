@@ -395,3 +395,34 @@ def test_supplied_frontier_must_be_exact_plan_derived_no_extras(tmp_path):
         plan, bundle=bundle, inventory=inventory, policy=policy,
         frontier=frontier, as_of=AS_OF, host=HOST, purpose=PURPOSE)
     assert restored.content_hash == baseline.content_hash
+
+
+def test_held_unselected_alias_does_not_require_missing_native_ref(tmp_path):
+    bundle, _ = _frontier_bundle(tmp_path / "s35_held_alias.sav")
+    config = _fixture_config(bundle)
+    for index, item in enumerate(config["items"]):
+        if item["source_variable_code"] == "Y":
+            changed_item = dict(item)
+            changed_item["disposition"] = "HELD_RESPONSE_AUTHORITY_GAP"
+            config["items"][index] = changed_item
+    config["response_slots"] = [
+        slot for slot in config["response_slots"]
+        if slot["question_id"] != "Y"]
+    plan = build_original35_operation_plan(
+        [config], source_presence={"SRC01": True}, require_all35=False)
+    from dataclasses import replace as dc_replace
+    partial_bundle = dc_replace(
+        bundle, question_refs={
+            key: value for key, value in bundle.question_refs.items()
+            if key != "Y"})
+    compilation = bind_governed_frontier(
+        plan, bundle=partial_bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert compilation.expected_operation_ids
+
+    full_plan = build_original35_operation_plan(
+        [_fixture_config(bundle)], source_presence={"SRC01": True},
+        require_all35=False)
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            full_plan, bundle=partial_bundle, as_of=AS_OF,
+            host=HOST, purpose=PURPOSE)

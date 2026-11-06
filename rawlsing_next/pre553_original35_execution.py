@@ -28,7 +28,11 @@ from rawlsing_next.source_configuration.factory import (
 )
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
 from rawlsing_next.source_configuration.reader import (
-    decode_config_with_source_read_permission, source_read_request_from_config,
+    decode_config_with_source_read_permission,
+    reader_configuration_from_config, source_read_request_from_config,
+)
+from rawlsing_next.pre553_source_read_admission import (
+    decode_with_source_read_permission,
 )
 from rawlsing_next.pre553_original35_physical_stream import bounded_physical_cell_stream
 from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
@@ -290,10 +294,13 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     fmt = str(selection.get("source_format") or "").upper()
     consumer_use = "D_ORIGINAL35_NATIVE_EXECUTION"
     semantic_scope = ("RAW_OBSERVED_SAMPLE",)
-    incidence = decode_config_with_source_read_permission(
-        config, source_path=path, resolver=resolver, host=host,
-        purpose=purpose, consumer_use=consumer_use,
+    request = source_read_request_from_config(
+        config, host=host, purpose=purpose, consumer_use=consumer_use,
         semantic_use_scope=semantic_scope)
+    reader = reader_configuration_from_config(config)
+    before_decision = resolver.resolve_current(request)
+    incidence = decode_with_source_read_permission(
+        source_path=path, request=request, resolver=resolver, reader=reader)
     if incidence.source_sha256 != doc["binding"]["source_sha256"]:
         incidence.close()
         raise Original35ExecutionError("SOURCE_SHA_MISMATCH_AFTER_DECODE")
@@ -322,14 +329,11 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     result = execute_governed_frontier(
         compilation=compilation,
         source_factory=lambda _ref: bundle.physical_stream)
-    request = source_read_request_from_config(
-        config, host=host, purpose=purpose, consumer_use=consumer_use,
-        semantic_use_scope=semantic_scope)
-    current = resolver.resolve_current(request)
-    if (getattr(current, "currentness", None) != "CURRENT_GRANTED"
-            or getattr(current, "revocation_ref", None) is not None):
+    after_decision = resolver.resolve_current(request)
+    if after_decision != before_decision:
         incidence.close()
-        raise Original35ExecutionError("SOURCE_READ_DECISION_NO_LONGER_CURRENT")
+        raise Original35ExecutionError(
+            "SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER")
     material = {
         "schema": "PRE553_ORIGINAL35_NATIVE_COMPILER_RESULT@1.0.0",
         "source_id": source_id, "source_sha256": incidence.source_sha256,

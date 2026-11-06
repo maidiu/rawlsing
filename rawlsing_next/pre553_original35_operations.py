@@ -760,29 +760,43 @@ def build_frontier_inputs_from_plan(plan: Original35OperationPlan, *,
 
 
 def _bundle_with_plan_aliases(plan: Original35OperationPlan, source_id: str,
-                              bundle: Any) -> Any:
-    """Verified OriginalItemID -> physical code -> native question-ref aliases."""
+                              bundle: Any, frontier: Any) -> Any:
+    """Verified aliases for exact selected/current-frontier operations only."""
     from dataclasses import replace
-    aliases: dict[str, Any] = {}
+    needed_original_ids = {
+        key.item_id for op in frontier.operations for key in op.targets
+    } | {
+        key.item_id for op in frontier.operations for key, _ in op.conditions
+    }
+    if not needed_original_ids:
+        raise Original35OperationError("NO_SELECTED_FRONTIER_ORIGINAL_IDS")
+    by_original: dict[str, str] = {}
     for op in plan.operations:
         if op.source_id != source_id:
             continue
         for original_id, code in zip(op.item_ids, op.source_variable_codes):
-            qref = bundle.question_refs.get(code)
-            if qref is None:
-                raise Original35OperationError(
-                    "PHYSICAL_CODE_NOT_IN_BUNDLE:" + code)
-            prior = aliases.get(original_id)
-            if prior is not None and prior != qref:
+            if original_id not in needed_original_ids:
+                continue
+            prior = by_original.get(original_id)
+            if prior is not None and prior != code:
                 raise Original35OperationError(
                     "CROSS_SOURCE_OR_CONFLICTING_ORIGINAL_ID:" + original_id)
-            existing = bundle.question_refs.get(original_id)
-            if existing is not None and existing != qref:
-                raise Original35OperationError(
-                    "ORIGINAL_ID_CONTRADICTS_BUNDLE_IDENTITY:" + original_id)
-            aliases[original_id] = qref
-    if not aliases:
-        raise Original35OperationError("NO_ORIGINAL_ITEM_ALIASES")
+            by_original[original_id] = code
+    missing_ids = sorted(needed_original_ids - set(by_original))
+    if missing_ids:
+        raise Original35OperationError(
+            "SELECTED_ORIGINAL_ID_PHYSICAL_BINDING_ABSENT:" + ",".join(missing_ids))
+    aliases: dict[str, Any] = {}
+    for original_id, code in sorted(by_original.items()):
+        qref = bundle.question_refs.get(code)
+        if qref is None:
+            raise Original35OperationError(
+                "PHYSICAL_CODE_NOT_IN_BUNDLE:" + code)
+        existing = bundle.question_refs.get(original_id)
+        if existing is not None and existing != qref:
+            raise Original35OperationError(
+                "ORIGINAL_ID_CONTRADICTS_BUNDLE_IDENTITY:" + original_id)
+        aliases[original_id] = qref
     merged = dict(bundle.question_refs)
     merged.update(aliases)
     return replace(bundle, question_refs=merged)
@@ -938,7 +952,7 @@ def bind_governed_frontier(plan: Original35OperationPlan, *, bundle: Any,
     if missing_payload:
         raise Original35OperationError(
             "GOVERNED_FRONTIER_PLAN_PAYLOAD_MISSING:" + ",".join(missing_payload))
-    alias_bundle = _bundle_with_plan_aliases(plan, sid, bundle)
+    alias_bundle = _bundle_with_plan_aliases(plan, sid, bundle, frontier)
     compilation = compile_governed_frontier(
         bundle=alias_bundle, inventory=inventory, policy=policy, frontier=frontier,
         as_of=as_of, host=host, purpose=purpose)
