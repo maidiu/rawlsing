@@ -30,6 +30,8 @@ run_developmental_recursion.py exposes cold bootstrap/advance/finish with an exp
 
 The lead found and repaired a material mistake in the initial integrated candidate: P2's portal-user public view had been substituted for developing-actor experience. The repaired adapter binds the native E1/action hash, derives the store actor alias from that actual action and reads that actor's perception receipts. Missing actor receipts HOLD even when user receipts exist; restoring them reproduces the experience. The existing observable-content projector is reused without its user-specific assertion. Default CLI output now contains event IDs/status only; actor-specific experience stays in the internal retrospective request and explicit engineering output. This does not claim issued memory formation or a qualified private C10 state projection.
 
+The receiving proof-integrity checker initially rejected two missing executable contracts. Added actual interval→later-C9 and live P2 first-reader fault witnesses; the unchanged checker passes both with baseline PASS and exact target assertion RED. Source hashes and accepted P2 bytes are restored exactly. The reuse ledger remains unchanged; its first-reader test now also executes current P2 start/verify rather than relying only on retained JSON. See evidence/changed_test_proof_gate.json.
+
 ## Reused versus new code
 
 See REUSED_VERSUS_NEW.md and imported WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-REUSE-R1/ for exact source identities. Existing accepted P2, its vendors, public privacy behavior and APIs were left intact. The recovery establishes selected S39-S47 source and first-reader compatibility.
