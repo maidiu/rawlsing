@@ -482,6 +482,7 @@ class I03GroupedExecutionScope:
             "core_hits": 0,
             "fingerprint_failures": 0,
             "capacity_fallbacks": 0,
+            "early_capacity_fallbacks": 0,
             "fallbacks": 0,
             "raw_materializations": 0,
             "weighted_materializations": 0,
@@ -576,6 +577,20 @@ class I03GroupedExecutionScope:
             "MEASURE_INDEPENDENT_CORE",
         )
 
+    def _miss_capacity_exhausted(self, cached_members: int) -> bool:
+        """Return True only when no new core can fit the current bounds.
+
+        This is the early cache-MISS guard. An existing cache HIT is always
+        evaluated before this check, so full-capacity cores remain reusable.
+        The member condition is exact only when the already-cached member count
+        has reached the cap; a prospective unknown denominator is still checked
+        after core construction, preserving the honest fallback bound.
+        """
+        return (
+            len(self._cache) >= self._max_groups
+            or cached_members >= self._max_cached_members
+        )
+
     def evaluate(
         self,
         *,
@@ -624,6 +639,13 @@ class I03GroupedExecutionScope:
                 else "raw_materializations"
             ] += 1
             return evaluation
+        cached_members = sum(
+            len(existing.denominator_members) for existing in self._cache.values()
+        )
+        if self._miss_capacity_exhausted(cached_members):
+            self._stats["capacity_fallbacks"] += 1
+            self._stats["early_capacity_fallbacks"] += 1
+            return None
         self._stats["core_build_attempts"] += 1
         try:
             core = _evaluate_index_group_core(
@@ -637,9 +659,6 @@ class I03GroupedExecutionScope:
         except Exception:
             self._stats["fallbacks"] += 1
             return None
-        cached_members = sum(
-            len(existing.denominator_members) for existing in self._cache.values()
-        )
         if (
             len(self._cache) >= self._max_groups
             or cached_members + len(core.denominator_members) > self._max_cached_members

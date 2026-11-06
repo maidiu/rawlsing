@@ -19,6 +19,7 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     semantic_hash,
 )
+from rawlsing_next import pre553_empirical_query as empirical_query
 from rawlsing_next.pre553_empirical_query import I03GroupedExecutionScope, execute_empirical_query
 from rawlsing_next._pre553_query_eval import _group_core_fingerprint
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
@@ -665,3 +666,130 @@ def test_grouped_scope_universe_and_authority_registry_separation():
     assert second.facts[0].as_dict() == first.facts[0].as_dict()
     assert scope.receipt()["core_builds"] == 4
     assert scope.receipt()["core_hits"] == 0
+
+
+def test_grouped_scope_warm_hit_at_group_capacity_still_reuses():
+    source, ops, catalog = _main_data("grouped-cap-hit")
+    op = ops[0]
+    baseline = _executor(source, catalog).execute_i03(
+        query_ref=op["query"].ref, predicate_ref=op["predicate"].ref,
+    )
+    scope = I03GroupedExecutionScope(max_groups=1)
+    executor = _executor(source, catalog)
+    first = executor.execute_i03(
+        query_ref=op["query"].ref, predicate_ref=op["predicate"].ref, group_scope=scope,
+    )
+    second = executor.execute_i03(
+        query_ref=op["query"].ref, predicate_ref=op["predicate"].ref, group_scope=scope,
+    )
+    assert first.facts[0].as_dict() == baseline.facts[0].as_dict()
+    assert second.facts[0].as_dict() == baseline.facts[0].as_dict()
+    receipt = scope.receipt()
+    assert receipt["core_builds"] == 1
+    assert receipt["core_hits"] == 1
+    assert receipt["capacity_fallbacks"] == 0
+    assert receipt["early_capacity_fallbacks"] == 0
+    assert receipt["open_groups"] == 1
+
+
+def test_grouped_scope_capacity_miss_does_not_invoke_core_builder(monkeypatch):
+    source, ops, catalog = _main_data("grouped-cap-miss")
+    op_a, op_b = ops[0], ops[3]
+    baseline_b = _executor(source, catalog).execute_i03(
+        query_ref=op_b["query"].ref, predicate_ref=op_b["predicate"].ref,
+    ).facts[0]
+    scope = I03GroupedExecutionScope(max_groups=1)
+    executor = _executor(source, catalog)
+    executor.execute_i03(
+        query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+        group_scope=scope,
+    )
+    calls = {"count": 0}
+    original = empirical_query._evaluate_index_group_core
+
+    def counted(*args, **kwargs):
+        calls["count"] += 1
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(empirical_query, "_evaluate_index_group_core", counted)
+    observed = executor.execute_i03(
+        query_ref=op_b["query"].ref, predicate_ref=op_b["predicate"].ref,
+        group_scope=scope,
+    ).facts[0]
+    monkeypatch.setattr(empirical_query, "_evaluate_index_group_core", original)
+    assert calls["count"] == 0
+    assert observed.as_dict() == baseline_b.as_dict()
+    receipt = scope.receipt()
+    assert receipt["core_build_attempts"] == 1
+    assert receipt["core_builds"] == 1
+    assert receipt["early_capacity_fallbacks"] == 1
+    assert receipt["capacity_fallbacks"] == 1
+    assert receipt["open_groups"] == 1
+    baseline_a = _executor(source, catalog).execute_i03(
+        query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+    ).facts[0]
+    replay = executor.execute_i03(
+        query_ref=op_a["query"].ref, predicate_ref=op_a["predicate"].ref,
+        group_scope=scope,
+    ).facts[0]
+    assert replay.as_dict() == baseline_a.as_dict()
+    assert scope.receipt()["core_hits"] >= 1
+
+
+def test_grouped_scope_member_bound_unknown_prospective_keeps_honest_fallback():
+    source, ops, catalog = _main_data("grouped-member-bound")
+    op = ops[0]
+    baseline = _executor(source, catalog).execute_i03(
+        query_ref=op["query"].ref, predicate_ref=op["predicate"].ref,
+    ).facts[0]
+    scope = I03GroupedExecutionScope(max_cached_members=1)
+    executor = _executor(source, catalog)
+    first = executor.execute_i03(
+        query_ref=op["query"].ref, predicate_ref=op["predicate"].ref, group_scope=scope,
+    ).facts[0]
+    second = executor.execute_i03(
+        query_ref=op["query"].ref, predicate_ref=op["predicate"].ref, group_scope=scope,
+    ).facts[0]
+    assert first.as_dict() == baseline.as_dict()
+    assert second.as_dict() == baseline.as_dict()
+    receipt = scope.receipt()
+    assert receipt["core_build_attempts"] == 2
+    assert receipt["core_builds"] == 0
+    assert receipt["early_capacity_fallbacks"] == 0
+    assert receipt["capacity_fallbacks"] == 2
+    assert receipt["open_groups"] == 0
+
+
+def test_grouped_scope_member_capacity_hit_and_exhausted_miss():
+    source, ops, catalog = _main_data("grouped-member-hit")
+    by_id = {op["op_id"]: op for op in ops}
+    op_small = by_id["minority_branch_target_K"]
+    op_zero = by_id["all_X_raw"]
+    baseline = _executor(source, catalog).execute_i03(
+        query_ref=op_small["query"].ref, predicate_ref=op_small["predicate"].ref,
+    ).facts[0]
+    scope = I03GroupedExecutionScope(max_cached_members=1, max_groups=4)
+    executor = _executor(source, catalog)
+    first = executor.execute_i03(
+        query_ref=op_small["query"].ref, predicate_ref=op_small["predicate"].ref,
+        group_scope=scope,
+    ).facts[0]
+    second = executor.execute_i03(
+        query_ref=op_small["query"].ref, predicate_ref=op_small["predicate"].ref,
+        group_scope=scope,
+    ).facts[0]
+    assert first.as_dict() == baseline.as_dict()
+    assert second.as_dict() == baseline.as_dict()
+    assert scope.receipt()["core_builds"] == 1
+    assert scope.receipt()["core_hits"] == 1
+    assert scope.receipt()["capacity_fallbacks"] == 0
+    zero_baseline = _executor(source, catalog).execute_i03(
+        query_ref=op_zero["query"].ref, predicate_ref=op_zero["predicate"].ref,
+    ).facts[0]
+    zero = executor.execute_i03(
+        query_ref=op_zero["query"].ref, predicate_ref=op_zero["predicate"].ref,
+        group_scope=scope,
+    ).facts[0]
+    assert zero.as_dict() == zero_baseline.as_dict()
+    assert scope.receipt()["early_capacity_fallbacks"] == 1
+    assert scope.receipt()["capacity_fallbacks"] == 1
