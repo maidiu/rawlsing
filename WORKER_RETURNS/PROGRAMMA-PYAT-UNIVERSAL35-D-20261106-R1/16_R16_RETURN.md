@@ -45,7 +45,7 @@ Observed:
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r16 expected-rule caller
-- Identity: codex/pyat-universal35-coordinate-caller-20261106-r1@<returned-commit>; D input 4b1d2ec8b; A bc84799ed + test c84ea32d; C candidate 10e228129 unaccepted.
+- Identity: codex/pyat-universal35-coordinate-caller-20261106-r1@0f3a22f3d40d9cf2543c3300a8e6163142e64cf8; D input 4b1d2ec8b; A bc84799ed + test c84ea32d; C candidate 10e228129 unaccepted.
 - Function: exact config factory -> (rules, expected) -> both forwarded to current materialize_native_preimages; foreign operational rule refused; cold label/ref/value repairs retained.
 - Evidence: 13 A tests + 2 D caller/cold tests = 15 passed.
 - Limits: actual SRC15 NOT_RUN until C qualified; original facts/native/science/protected authority unchanged.
