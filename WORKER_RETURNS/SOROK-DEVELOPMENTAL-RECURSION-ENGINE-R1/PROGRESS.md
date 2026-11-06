@@ -7,3 +7,5 @@ Baseline accepted P2 regression passed 7 tests. Lead P2 adapter passed 3 tests a
 Three nonconflicting OpenCode lanes were launched for historical reuse, batch execution and model-call sequencing. Their exact process and branch receipts are in CHECKPOINT.json. Public P2 APIs and privacy code remain at their accepted source cut. This isolated worker progress is not incumbent Sorok HQ replacement, scientific issuance, independent acceptance or protected receiving.
 
 Remaining required work is the complete commission: actual two-batch integration, ordered actor-accessible retrospection, bootstrap/ordinary/terminal sequencing, state custody, source-cut and restore, independent review and selective PRE-MAIN PR preparation.
+
+Batch author terminal intake: provider returned 429 prefill_cap_refused before any write. Verified clean assigned worktree and absent old PID. One exact-task retry launched in fresh OpenCode session, same model/account and exclusive branch. No acceptance or implementation change claimed. Exact custody is in CHECKPOINT.json.

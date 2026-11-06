@@ -34,13 +34,14 @@
   },
   "implementation_workers": [
     {
-      "job": "sorok-recursion-batch-r1",
-      "pid": 28578,
+      "job": "sorok-recursion-batch-capacity-retry-r1",
+      "pid": 29944,
       "branch": "agent/sorok-recursion-batch-20261106-r1",
       "files": [
         "developmental_recursion/engine.py",
         "tests/test_engine.py"
-      ]
+      ],
+      "session": "ses_615d8e3a6a909213fb200be830"
     },
     {
       "job": "sorok-recursion-cycle-r1",
@@ -51,5 +52,12 @@
         "tests/test_model_cycle.py"
       ]
     }
-  ]
+  ],
+  "batch_provider_failure": {
+    "job": "sorok-recursion-batch-r1",
+    "exit_code": 1,
+    "error": "429 prefill_cap_refused: cell at capacity",
+    "code_written": false,
+    "disposition": "One fresh-context retry, same model/account/worktree/commission; no overlapping prior process."
+  }
 }
