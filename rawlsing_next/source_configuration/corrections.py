@@ -50,6 +50,8 @@ def apply_source_config_corrections(
     document: Mapping[str, Any],
     *,
     registry_path: str | Path | None = None,
+    base_commit: str | None = None,
+    base_config_path: str | None = None,
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     """Return a corrected deep copy and the exact applied-correction records.
 
@@ -75,6 +77,15 @@ def apply_source_config_corrections(
     ]
     if not matches:
         return copy.deepcopy(dict(document)), []
+    # Corrections are applied only when the trusted loader/provider supplies
+    # the exact immutable base commit and repository-relative config path.
+    # Registry self-assertion is not provenance.
+    if base_commit is None or base_config_path is None:
+        return copy.deepcopy(dict(document)), []
+    for entry in matches:
+        if entry.get("base_commit") != base_commit or entry.get("base_config_path") != base_config_path:
+            raise SourceCorrectionError(
+                "CORRECTION_BASE_PROVENANCE_MISMATCH: trusted base commit/path differ from registry")
     corrected = copy.deepcopy(dict(document))
     applied: list[dict[str, Any]] = []
     slots = {(int(s["slot"]["ordinal"]), str(s["slot"]["name"])): s
@@ -99,6 +110,8 @@ def apply_source_config_corrections(
                     "missing_state": change.get("missing_state"),
                     "response_state": change.get("response_state"),
                     "correction_id": entry["correction_id"],
+                    "base_commit": entry["base_commit"],
+                    "base_config_path": entry["base_config_path"],
                 })
                 continue
             if not change.get("add_if_absent", False):
@@ -120,6 +133,8 @@ def apply_source_config_corrections(
                 "missing_state": value["missing_state"],
                 "response_state": value["response_state"],
                 "correction_id": entry["correction_id"],
+                "base_commit": entry["base_commit"],
+                "base_config_path": entry["base_config_path"],
             })
         slot["values"] = values
     return corrected, applied
