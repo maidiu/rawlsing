@@ -1,0 +1,218 @@
+{
+  "grade": "TEST_ONLY_S47_MATERIAL_EVENT_C9_TWO_BATCH_INTEGRATION",
+  "tests": "66 passed in 261.73s",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests",
+  "batches": [
+    {
+      "batch_id": "batch-000001",
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "status": "COMPLETE",
+      "history_hash": "6f43bcd0ae85473ca90a2c122dce93fd00e628d48c94a41ecf60e1f76d6135a2"
+    },
+    {
+      "batch_id": "batch-000002",
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "status": "COMPLETE",
+      "history_hash": "edce2a0652938f7185b5a3416f7ba7ad29730a1cbb79e8ad5cb69914235ac391"
+    }
+  ],
+  "records": [
+    {
+      "event_id": "batch-1-event-0",
+      "operation_id": "op:2edfd2ad16f48dc9c1ee96d6c242c1e947f0728a41ef697104b1e3a44a0e2837",
+      "before": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 222,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "871d0feb784ac0b4d8d42b63da3eabc5e35de7fcd80f58e6cc2bf9ed54f4827f"
+      },
+      "after": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 228,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "94f69f123c1b37990b5ce35b7396748bbe3ca4214045b9fe467de2aeedc94189"
+      },
+      "receipt_ref": "P2_EVENT:2366047cda36630e4494597988d7b0c0f558b215a4340ce6cc81cd419a45de1a",
+      "readset": [
+        "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+        "2366047cda36630e4494597988d7b0c0f558b215a4340ce6cc81cd419a45de1a"
+      ],
+      "status": "REALIZED",
+      "material_eligible": false,
+      "durable_psychological_transition": "MISSING_RULE"
+    },
+    {
+      "event_id": "batch-1-event-1",
+      "operation_id": "op:5476b00a3a05f230290aff5eca667db63041d27dd96b127dbd047eff5dac1378",
+      "before": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 228,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "94f69f123c1b37990b5ce35b7396748bbe3ca4214045b9fe467de2aeedc94189"
+      },
+      "after": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 234,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "9436841fc66b513f76246bf05c3fe21e64c50237da5fb0939cd3bda31d44bff6"
+      },
+      "receipt_ref": "P2_EVENT:7005b126c53115010a985fb258d89e46cbc4879b52a142922c61cbc98b7bb6a2",
+      "readset": [
+        "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+        "7005b126c53115010a985fb258d89e46cbc4879b52a142922c61cbc98b7bb6a2"
+      ],
+      "status": "REALIZED",
+      "material_eligible": false,
+      "durable_psychological_transition": "MISSING_RULE"
+    },
+    {
+      "event_id": "batch-1-event-2",
+      "operation_id": "op:48d50d55f58113862d699c3ceb2104988fd1e3d48ad999256a5a86079bb82b50",
+      "before": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 234,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "9436841fc66b513f76246bf05c3fe21e64c50237da5fb0939cd3bda31d44bff6"
+      },
+      "after": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 240,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "6a6496c03cd79fcfd28a6b06f385fd9a1d0e26f524be7125d4834e8d5ff02e39"
+      },
+      "receipt_ref": "P2_EVENT:962153fea7bd6dec802b2208084c75a88c5f01a701d61c5ed6cfd066b117daf5",
+      "readset": [
+        "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+        "962153fea7bd6dec802b2208084c75a88c5f01a701d61c5ed6cfd066b117daf5"
+      ],
+      "status": "REALIZED",
+      "material_eligible": false,
+      "durable_psychological_transition": "MISSING_RULE"
+    },
+    {
+      "event_id": "batch-2-event-0",
+      "operation_id": "op:90cbaa413961631ab8fe6149ed3a1553852419ddf44425891bf4eeef84951b72",
+      "before": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 240,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "6a6496c03cd79fcfd28a6b06f385fd9a1d0e26f524be7125d4834e8d5ff02e39"
+      },
+      "after": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 246,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "2228bb04c662fdb296ccda4e3bec330731e50ddefdde1e159ca53ac0c38757e6"
+      },
+      "receipt_ref": "P2_EVENT:35485ad899b909d0db9bc1f404f8b3090dbcb4cf1152eb59781f4ef3d839fc91",
+      "readset": [
+        "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+        "35485ad899b909d0db9bc1f404f8b3090dbcb4cf1152eb59781f4ef3d839fc91"
+      ],
+      "status": "REALIZED",
+      "material_eligible": false,
+      "durable_psychological_transition": "MISSING_RULE"
+    },
+    {
+      "event_id": "batch-2-event-1",
+      "operation_id": "op:5cc1a5ced438e897c804148d6bfe04ed880a2d3c27d153f140496fb8bc55b242",
+      "before": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 246,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "2228bb04c662fdb296ccda4e3bec330731e50ddefdde1e159ca53ac0c38757e6"
+      },
+      "after": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 252,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "d540410d69193b77095c66d0d697705bf43ae4abc9a8ef47cedebf7266a3eb95"
+      },
+      "receipt_ref": "P2_EVENT:1f861f6d4c991ec8eefc0b637b14d518ac7f4069b3a5666b3fca74920a378975",
+      "readset": [
+        "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+        "1f861f6d4c991ec8eefc0b637b14d518ac7f4069b3a5666b3fca74920a378975"
+      ],
+      "status": "REALIZED",
+      "material_eligible": false,
+      "durable_psychological_transition": "MISSING_RULE"
+    },
+    {
+      "event_id": "batch-2-event-2",
+      "operation_id": "op:cf0565a6667349e87b5067bcea0804a485bb7c01e559b19b736ac72454058de1",
+      "before": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 252,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "d540410d69193b77095c66d0d697705bf43ae4abc9a8ef47cedebf7266a3eb95"
+      },
+      "after": {
+        "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "branch": "first_session",
+        "clock": 258,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "state_hash": "ce3c6b950aab5881af302e78eea7301260b63a2c13a47aeacc6fecfd1635a2b4"
+      },
+      "receipt_ref": "P2_EVENT:8fc0adc6956a1568c7e4b187bf44a024fd9d06677178b8876d0f88f19c80e0d1",
+      "readset": [
+        "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+        "8fc0adc6956a1568c7e4b187bf44a024fd9d06677178b8876d0f88f19c80e0d1"
+      ],
+      "status": "REALIZED",
+      "material_eligible": false,
+      "durable_psychological_transition": "MISSING_RULE"
+    }
+  ],
+  "cycle_phase": "COMPLETE",
+  "retrospectives": [
+    {
+      "batch_id": "batch-000001",
+      "event_ids": [
+        "batch-1-event-0",
+        "batch-1-event-1",
+        "batch-1-event-2"
+      ],
+      "history_hash": "6f43bcd0ae85473ca90a2c122dce93fd00e628d48c94a41ecf60e1f76d6135a2",
+      "impressions": [
+        {
+          "source_history_hash": "6f43bcd0ae85473ca90a2c122dce93fd00e628d48c94a41ecf60e1f76d6135a2",
+          "status": "RENDER_PROPOSAL_ONLY"
+        }
+      ]
+    },
+    {
+      "batch_id": "batch-000002",
+      "event_ids": [
+        "batch-2-event-0",
+        "batch-2-event-1",
+        "batch-2-event-2"
+      ],
+      "history_hash": "edce2a0652938f7185b5a3416f7ba7ad29730a1cbb79e8ad5cb69914235ac391",
+      "impressions": [
+        {
+          "source_history_hash": "edce2a0652938f7185b5a3416f7ba7ad29730a1cbb79e8ad5cb69914235ac391",
+          "status": "RENDER_PROPOSAL_ONLY"
+        }
+      ]
+    }
+  ],
+  "journal_sha256": "5ebe6800050fcfa1996817e62b03ad2dac0d99c6782585efaff22ce587f7f62a",
+  "cycle_sha256": "ddfd0b953743d1bc8b6c76bcf88be9c495d356374efd20557a0d415b6ac4e9e1",
+  "calls_and_access": "Integration assertions verified BOOTSTRAP/ORDINARY/TERMINAL exactly once each, zero provider calls within batches, and accessible-only prior histories. Actual owner cold-reopen and history assertions passed.",
+  "limits": "Controlled P2 participants and file/mock provider, no independent B or scientific psychological formation; original source rights and protected receiving separate."
+}

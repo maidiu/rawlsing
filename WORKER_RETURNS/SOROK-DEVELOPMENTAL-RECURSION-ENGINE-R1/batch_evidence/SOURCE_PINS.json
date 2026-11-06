@@ -1,0 +1,31 @@
+{
+  "schema": "SOROK_BATCH_ENGINE_SOURCE_PINS@1",
+  "startup_commit": "0d4edae634b3ef19643a7d0eb7752081013e5d83",
+  "baseline_commit": "33c40a315d3c231cb2021bd8e60f3261547efa62",
+  "architecture": {
+    "commit": "fbfc529230d8b3c13f824cfac31741a5dfaa57e5",
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261026_USER_SETTLED_BATCH_RECURSION_IMPRESSION_MEMORY_R1.md",
+    "sha256": "38876f6e73ac150754d642b6741fb0be71be255563b352fca32b40f00e5e7859"
+  },
+  "abi": {
+    "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/ABI.md",
+    "sha256": "08a44f995990f24060b430f96c58a4a8c0d421ef0deb0cb5ee7df90b5afc7489"
+  },
+  "contracts": {
+    "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/contracts.py",
+    "sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d"
+  },
+  "implementation": {
+    "code_commit": "27645b56cddf361403609c5c6cc22b35757ccad5",
+    "engine": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py",
+    "engine_sha256": "3192b93e25768c1d19e489f76fd6bad3ddc6ea51287f59c5593875d4c64b53af",
+    "tests": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py",
+    "tests_sha256": "1f09ebe35bf9419b052c6ef757b5410be496361aeab3be7e51675edc3b72096c"
+  },
+  "parallel_worker_references": {
+    "lead_p2_owner_branch": "agent/sorok-developmental-recursion-engine-20261105-r1",
+    "lead_p2_owner_commit": "695e0bbfa",
+    "model_cycle_branch": "agent/sorok-recursion-cycle-20261106-r1",
+    "modified_by_this_worker": false
+  }
+}
