@@ -1,0 +1,61 @@
+{
+  "cases": {
+    "gt2_two_target_existing_ff_profile": {
+      "bridge_refusal": "GT12CToDBridgeError:frozen risk-set exact identity mismatch",
+      "bridge_state": "BRIDGE_TYPED_REFUSAL",
+      "condition_denominators": [
+        3,
+        3,
+        0
+      ],
+      "fact_ref": {
+        "content_hash": "9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9f1427495436adaee4f0d01eab5394d1b5e77106ae8e150556fa36ba49582887"
+      },
+      "query_ref": {
+        "content_hash": "ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ae267556b277f55492c01a0c39b2809e6fd8f59ad714911cb94d1560cf33399b"
+      },
+      "refusal_code": "",
+      "refusal_detail": "",
+      "relation_ref": {
+        "content_hash": "2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:2d384db43cb5d1a51d8df27fd4de2aea7fbf7a39e0885cdce340f187bef2e855"
+      },
+      "relation_typed_state": "SUPPORTED",
+      "state": "CONDITIONAL_SUPPORT_PROFILE",
+      "structural_grant": false,
+      "structural_state": "WITHHELD__NO_STRUCTURAL_ADMISSION_GRANT",
+      "test_only_sourcefree": true
+    },
+    "n10e_current_i03_one_target_ff_refusal": {
+      "bridge_refusal": "",
+      "bridge_state": "BRIDGE_TYPED_REFUSAL",
+      "condition_denominators": null,
+      "fact_ref": {
+        "content_hash": "9a9562cc62d9be01cbc57dd80db13484166d7c5d7656ffe6d4e0ad54091365c4",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:9a9562cc62d9be01cbc57dd80db13484166d7c5d7656ffe6d4e0ad54091365c4"
+      },
+      "n10e_producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "n10e_provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+      "query_ref": {
+        "content_hash": "d92336a8f57ea148695dd28c5e6634a30100b9a0dd07f8087b8e68e9c5883cc3",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:d92336a8f57ea148695dd28c5e6634a30100b9a0dd07f8087b8e68e9c5883cc3"
+      },
+      "refusal_code": "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
+      "refusal_detail": "FIELD FORGE conditional support requires exactly two targets; got 1",
+      "relation_ref": null,
+      "relation_typed_state": null,
+      "state": "TYPED_REFUSAL",
+      "structural_grant": false,
+      "structural_state": "WITHHELD__NO_STRUCTURAL_ADMISSION_GRANT",
+      "test_only_sourcefree": true
+    }
+  },
+  "schema": "SOROK_FF_INGRESS_SELFTEST@1"
+}

@@ -1,0 +1,25 @@
+{
+  "all_pass": true,
+  "commands": {
+    "abi": "python3 <return>/run_ingress.py abi",
+    "ingress": "python3 -m pytest -q -p no:cacheprovider --junitxml=<return>/evidence/junit_ingress.xml rawlsing_next/tests/test_pre553_field_forge_empirical_ingress.py",
+    "regression": "python3 -m pytest -q -p no:cacheprovider --junitxml=<return>/evidence/junit_regression.xml rawlsing_next/tests/test_field_forge_conditional_support.py rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py",
+    "selftest": "python3 <return>/run_ingress.py selftest"
+  },
+  "results": {
+    "junit_ingress.xml": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 11
+    },
+    "junit_regression.xml": {
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "tests": 25
+    }
+  },
+  "runner": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+  "schema": "SOROK_E_TEST_RUN@1"
+}

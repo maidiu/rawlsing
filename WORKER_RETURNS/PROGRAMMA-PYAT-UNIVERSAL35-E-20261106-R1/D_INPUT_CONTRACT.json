@@ -1,0 +1,63 @@
+{
+  "schema": "PRE553_FIELD_FORGE_D_INPUT_CONTRACT@1.0.0",
+  "consumer": "rawlsing_next.pre553_field_forge_empirical_ingress.ingest_empirical_fact",
+  "d_authentic_products_received": false,
+  "required_from_d": {
+    "fact_object": "EmpiricalFact@1.0.0 produced by current C11/I03/I05",
+    "query_object": "EmpiricalQuerySpec@1.0.0 referenced exactly by fact.empirical_query_spec_ref",
+    "exact_identity": ["fact.content_hash valid", "query.content_hash valid", "fact/query ref linkage exact"],
+    "two_targets": {
+      "arity": 2,
+      "components": "two SCALAR_SINGULAR components with complete native domains",
+      "joint_order_semantics": "SEMANTIC_ORDERED",
+      "conditioner": "target_refs[0] unless explicit conditioner_ref supplied",
+      "target": "target_refs[1] unless explicit target_ref supplied"
+    },
+    "fact_fields": [
+      "target_topology.complete_cell_semantic_projection",
+      "condition_predicate_ref",
+      "risk_set_ref",
+      "raw_numerator_support",
+      "raw_denominator_support",
+      "weighted_numerator_support_if_authorized=null",
+      "weighted_denominator_support_if_authorized=null",
+      "measure_basis_ref",
+      "response_state_semantics_ref",
+      "uncertainty_method_or_typed_state",
+      "source_empirical_provenance_refs in dependency_refs",
+      "replay_ref",
+      "source_scope_mode=SINGLE_UNIVERSE",
+      "measure_kind=RAW",
+      "target_domain_identity",
+      "raw_resolved_target_support"
+    ],
+    "query_fields": [
+      "target_refs",
+      "target_arity_and_topology",
+      "condition_predicate_ref",
+      "risk_set_ref",
+      "empirical_universe_refs",
+      "scope_refs",
+      "measure_basis_ref",
+      "requested_output_grain.source_scope_mode=SINGLE_UNIVERSE",
+      "requested_output_grain.measure_kind=RAW",
+      "query_authority_refs"
+    ],
+    "permissions": "nonempty producer_permission_ceiling; relation ceiling may narrow only",
+    "replay_time": "exact fact/query/replay/provenance refs supplied; no mutable latest/default selector"
+  },
+  "typed_refusals_preserved_for_d": [
+    "three-or-more target fact -> FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
+    "one-target fact -> FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
+    "missing joint cell/domain -> FIELD_FORGE_RELATION_TYPED_REFUSAL",
+    "reversed CONDITIONER/TARGET role -> FIELD_FORGE_RELATION_TYPED_REFUSAL",
+    "weighted numerator/denominator -> FIELD_FORGE_RELATION_TYPED_REFUSAL"
+  ],
+  "not_claimed": [
+    "authentic D source decode",
+    "native all35 PASS",
+    "structural admission grant",
+    "population estimate",
+    "actor/person inference"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "SOROK_PROGRAMMA_DELTA@1",
+  "delta_id": "PROGRAMMA-PYAT-UNIVERSAL35-E-20261106-R1",
+  "base": "d119045f4169439b4ba02d0870bc328f8beb3aaa",
+  "branch": "codex/pyat-universal35-e-20261106-r1",
+  "result": "AUTHOR_FOCUSED_PASS_INDEPENDENT_REVIEW_PENDING",
+  "identity": "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS@1.0.0",
+  "function": "ingest_empirical_fact",
+  "input_transform": "exact two-target EmpiricalFact@1.0.0 + EmpiricalQuerySpec@1.0.0 -> existing frozen conditional support / typed refusal",
+  "typed_output": ["CONDITIONAL_SUPPORT_PROFILE", "TYPED_REFUSAL"],
+  "root": "existing fact/query universe/release/provenance refs only",
+  "clock": "existing source/query time refs; no new clock",
+  "permission": "producer ceiling required; relation ceiling may narrow only",
+  "actual_first_consumer": "field_forge_conditional_support exact profile; gt12_c_to_d bridge typed evidence only",
+  "d_authentic_products": "NOT_RECEIVED_BY_E",
+  "evidence": {
+    "ingress_tests": "11 passed",
+    "owner_regression": "25 passed",
+    "selftest": "evidence/ingress-selftest.json",
+    "interface": "INTERFACE.json",
+    "d_input": "D_INPUT_CONTRACT.json"
+  },
+  "affected_existing_ids": ["W08", "W09", "P07", "P08", "S-F1F4", "N10E"],
+  "conditional_unlocks": ["D authentic two-target RAW fact -> existing FF profile"],
+  "structural_grant": false,
+  "next_action": "independent review of exact commit; D supplies authentic artifacts"
+}
