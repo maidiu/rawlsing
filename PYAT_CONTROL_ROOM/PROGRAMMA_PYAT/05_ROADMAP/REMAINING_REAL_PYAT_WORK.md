@@ -715,3 +715,10 @@ C01ba3b2c3eb5f00b950494a80daf70ac193eb051/codebe7e831f41e1c699890b7987cd2fea25be
 Fdd2158e4b89976310632f722239a0da3a352f14a atD115fe70/code40d490e preservesvalue/conditioner -> actualfact/ledgerchange andrestorepositive, accepts ABfull-configjoin/sourcefreemanifestdiagnostic, but BpayloadREVISE/DfullHOLD: OriginalItemID ignored, unknownrouting/unit/topology/form falselydefaulted, SRC01symbolicfrontierglobalenumerationtimeout600s, wrappergate/default3items/arbitrarycoordinate/syntheticID stillunready. Independent7PASS/2Dskip; no nativefacts.
 
 HQ read exactexisting OccurrenceKey/Occurrence/make_operation/ScientificFrontier and currentcompiler/catalog contracts. Narrow repair31e072ba3 asks originalDauthor tokeepOriginalID versusphysicalcode inverifiedbinding, carryrealoccurrencefacts/UNKNOWN, buildonlyfinitealreadyplannedoperations usingexistingtypes/helpers ratherthancartesianenumeration. SameDbranch/sessionPID18103, no newcompiler/kernelwriter. A/Cdependencies remainparallel; sourcefree/scientific/protectedgrades notpromoted. Fullgoal unchanged, no F1/3item substitute.
+
+
+### Actual selected-reader C r1 and distinct review — 2026-11-06
+
+C89a41589c7541f625c6d2f9346436629d374b93e/codefd18faf0340f9d3751ffd9042799a0b7d58519bb nowuses projectedreaderusecols/chunks againstactualDfilteredbaseline. SRC09creates41334selectedcellsratherthan5972763,0.44–0.53s versus46.4–47.6s/pass; exactselectedcellsequence/digest and nativepackage release/replay/62009publicobjects match. SRC31selected33768cells0.14–0.17s versus2.45–2.72s;5+35authorPASS. These are authoractualsourcephysicalproofs, notall35/nativeEmpiricalFact or600sendtoendcompletion; nativepackageitself42–47s andLatin1preframe~806MBremain. Oldtuplediagnosticclarificationpreserved.
+
+G distinctfrozenreview launched PID19494 job pyat-universal35-selected-reader-independent-review-20261106-r1, prompt48b414e2a; allowedonlyownreturn andboundedread-onlyphysicalparity, no source/science/protectedissuance. D/A continueexactseparatedefects; sameCproducer/APIavailableforlaterintegrator afterqualifiedreview. No newkernel/index orsemanticengine.
