@@ -20,7 +20,7 @@ The coordinator passes only actor-accessible projections and detached context to
 
 ## Actual multi-batch receipts
 
-Combined new suite after actor-access repair: 66 passed in 267.97 seconds. Baseline P2 suite before implementation: 7 passed in 61.83 seconds. Exact command, actual six event identity transitions, readsets, receipts, two batch hashes, actor perception receipts, retrospective count and final cycle status are in evidence/MULTI_BATCH_EXECUTION_RECEIPT.json.
+Combined new suite after actor-access, chronology and native-grounding repairs: 70 passed in 269.35 seconds; final strengthened native-owner negatives passed 4 tests in 21.86 seconds. Baseline P2 suite before implementation: 7 passed in 61.83 seconds. Exact command, actual six event identity transitions, readsets, receipts, two batch hashes, actor perception receipts, retrospective count and final cycle status are in evidence/MULTI_BATCH_EXECUTION_RECEIPT.json.
 
 The integration tests exercise two consecutive three-event batches and exactly BOOTSTRAP/ORDINARY/TERMINAL provider calls, state carry-forward, actual-versus-scheduled material contrast, terminal state nonmutation, actor-accessible prior payloads and cold owner/history reopening. Batch worker evidence additionally contains hard-process exit-17 recovery and cross-process exclusivity. Provider-failure/custody and malformed-input negatives are covered by the batch/coordinator tests.
 
@@ -31,6 +31,8 @@ run_developmental_recursion.py exposes cold bootstrap/advance/finish with an exp
 The lead found and repaired a material mistake in the initial integrated candidate: P2's portal-user public view had been substituted for developing-actor experience. The repaired adapter binds the native E1/action hash, derives the store actor alias from that actual action and reads that actor's perception receipts. Missing actor receipts HOLD even when user receipts exist; restoring them reproduces the experience. The existing observable-content projector is reused without its user-specific assertion. Default CLI output now contains event IDs/status only; actor-specific experience stays in the internal retrospective request and explicit engineering output. This does not claim issued memory formation or a qualified private C10 state projection.
 
 The receiving proof-integrity checker initially rejected two missing executable contracts. Added actual interval→later-C9 and live P2 first-reader fault witnesses; the unchanged checker passes both with baseline PASS and exact target assertion RED. Source hashes and accepted P2 bytes are restored exactly. The reuse ledger remains unchanged; its first-reader test now also executes current P2 start/verify rather than relying only on retained JSON. See evidence/changed_test_proof_gate.json.
+
+The ongoing independent review also reproduced partial execution from nonforward event times and late rejection of invalid native history references. New batches now require strictly forward proposal times before any claim, and P2 validates all explicit native references before any interval. Actual-owner negatives verify unchanged snapshots, no intervals and no owner operation receipts on refusal, including invalid grounding in a later proposal. Valid native ID/hash references remain supported. Historical partial records are not rewritten.
 
 ## Reused versus new code
 

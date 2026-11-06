@@ -112,3 +112,40 @@ def test_wrong_source_clock_state_and_unknown_operation_do_not_mutate_owner(tmp_
         assert owner.snapshot() == before
     finally:
         owner.close()
+
+
+def test_bad_history_in_later_proposal_is_refused_before_first_interval(tmp_path):
+    from developmental_recursion.engine import BatchEngine
+    owner = start(tmp_path / "grounding")
+    engine = BatchEngine(owner, tmp_path / "journal.sqlite")
+    try:
+        before = owner.snapshot()
+        native = owner.fanin.session.read_events()[0]
+        first = event(owner)
+        second = replace(first, event_id="second", event_time=before.clock + 12, interval=None)
+        third = replace(first, event_id="third", event_time=before.clock + 18, interval=None)
+        for times in ((18, 6, 24), (6, 6, 18)):
+            with pytest.raises(RecursionRefusal):
+                engine.run_batch("bad-native-times", [
+                    replace(p, event_time=before.clock + t)
+                    for p, t in zip((first, second, third), times)])
+            assert owner.snapshot() == before
+            assert owner.fanin.session.read_interval_states() == []
+            assert owner.db.execute("SELECT COUNT(*) FROM operations").fetchone()[0] == 0
+        for bad in (["does-not-exist"], "not-a-ref-list", [None],
+                    [native["e1_event_id"], native["e1_event_id"]],
+                    [native["e1_event_hash"], native["e1_event_id"]]):
+            with pytest.raises(RecursionRefusal):
+                engine.run_batch("bad-grounding", [first, second,
+                    replace(third, circumstances={"history_refs": bad})])
+            assert owner.snapshot() == before
+            assert owner.fanin.session.read_interval_states() == []
+            assert owner.db.execute("SELECT COUNT(*) FROM operations").fetchone()[0] == 0
+        # The owner's existing ID and hash reference forms remain legitimate.
+        for ref in (native["e1_event_id"], native["e1_event_hash"]):
+            owner.validate_proposal(replace(first, circumstances={"history_refs": [ref]}))
+        assert owner.snapshot() == before
+        assert engine.verify()
+    finally:
+        engine.close()
+        owner.close()

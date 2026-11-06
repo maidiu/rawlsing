@@ -230,6 +230,20 @@ def test_batch_requires_exactly_three_to_five_valid_proposals_before_effects(
     assert owner.order == []
 
 
+@pytest.mark.parametrize("times", [(3, 1, 4), (1, 1, 2), (0, 1, 2)])
+def test_invalid_batch_chronology_is_refused_before_effects(tmp_path, times):
+    owner = ControlledOwner()
+    before = owner.snapshot()
+    engine = BatchEngine(owner, tmp_path / "journal.sqlite")
+    with pytest.raises(RecursionRefusal):
+        engine.run_batch("bad-times", [event(str(i), t) for i, t in enumerate(times)])
+    assert owner.snapshot() == before
+    assert owner.realize_calls == 0
+    assert owner.effect_count == 0
+    with sqlite3.connect(tmp_path / "journal.sqlite") as conn:
+        assert conn.execute("SELECT COUNT(*) FROM batches").fetchone()[0] == 0
+
+
 def test_invalid_owner_snapshot_is_refused_before_effects(tmp_path):
     owner = ControlledOwner()
     engine = BatchEngine(owner, tmp_path / "journal.sqlite")

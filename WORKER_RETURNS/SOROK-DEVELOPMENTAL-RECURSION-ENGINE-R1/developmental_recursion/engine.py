@@ -891,6 +891,13 @@ class BatchEngine:
         snapshot: StateIdentity,
         proposals: tuple[EventProposal, ...],
     ) -> None:
+        # Reject a deterministically impossible sequence before reserving or
+        # realizing its first event. Never sort the caller's causal order.
+        prior_clock = snapshot.clock
+        for proposal in proposals:
+            if proposal.event_time <= prior_clock:
+                raise RecursionRefusal("BATCH_EVENT_TIMES_NOT_FORWARD")
+            prior_clock = proposal.event_time
         running = conn.execute(
             "SELECT batch_id FROM batches WHERE status=? LIMIT 1",
             (BATCH_RUNNING,),

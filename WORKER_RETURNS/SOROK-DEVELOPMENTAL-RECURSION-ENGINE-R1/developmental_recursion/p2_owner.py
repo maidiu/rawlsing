@@ -85,9 +85,34 @@ class P2Owner:
             raise RecursionRefusal("P2_PARTICIPANT_SCOPE_MISMATCH")
         if set(proposal.circumstances) - {"history_refs", "language_context"}:
             raise RecursionRefusal("P2_UNSUPPORTED_EVENT_CIRCUMSTANCES")
-        now = self.snapshot().clock
         if isinstance(proposal.event_time, bool) or not isinstance(proposal.event_time, int):
             raise RecursionRefusal("P2_INVALID_EVENT_CLOCK")
+        refs = proposal.circumstances.get("history_refs", ())
+        if not isinstance(refs, (list, tuple)) or any(
+                not isinstance(ref, str) or not ref.strip() for ref in refs):
+            raise RecursionRefusal("P2_HISTORY_REFS_SCHEMA")
+        # Mirror the existing native reader's identity/order prerequisites
+        # before any ACTUAL interval can commit. Resolve only native IDs/hashes.
+        history = self.fanin.session.read_events() if refs else []
+        seen = set()
+        last_ordinal, last_time = -1, -1
+        for ref in refs:
+            prior = next((row for row in history if ref in
+                          (row["e1_event_id"], row["e1_event_hash"])), None)
+            if prior is None:
+                raise RecursionRefusal("P2_HISTORY_REF_MISSING:" + ref)
+            if prior["e1_event_id"] in seen:
+                raise RecursionRefusal("P2_HISTORY_REF_DUPLICATE")
+            if (prior["branch_id"] != self.fanin.session.branch_id
+                    or prior["actor_id"] != self.actor):
+                raise RecursionRefusal("P2_HISTORY_IDENTITY_MISMATCH")
+            ordinal, clock = int(prior["event_ordinal"]), int(prior["event_time"])
+            if (ordinal <= last_ordinal or clock <= last_time
+                    or clock >= proposal.event_time):
+                raise RecursionRefusal("P2_HISTORY_REF_ORDER_INVALID")
+            seen.add(prior["e1_event_id"])
+            last_ordinal, last_time = ordinal, clock
+        now = self.snapshot().clock
         if proposal.event_time <= now:
             raise RecursionRefusal("P2_EVENT_CLOCK_NOT_FUTURE")
         if proposal.interval is not None:
