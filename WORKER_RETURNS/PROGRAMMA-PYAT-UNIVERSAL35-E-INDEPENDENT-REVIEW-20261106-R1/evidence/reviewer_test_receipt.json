@@ -1,0 +1,15 @@
+{
+ "base": "d119045f4169439b4ba02d0870bc328f8beb3aaa",
+ "defect": "E accepts facts whose condition_predicate_ref/measure_basis_ref/response_state_semantics_ref/source_scope_mode/measure_kind contradicts the bound query; FF owner does not compare these fields",
+ "defect_probe": "evidence/e_ingress_defect_probe.json",
+ "implementation_commit": "08138f52da1c32b62d28532b87b0cdce340c2bae",
+ "reviewed_head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
+ "schema": "R03_E_REVIEWER_TEST_RECEIPT@1",
+ "tests": {
+  "dep_sever_restore": "1 passed in 0.34s",
+  "ingress_11": "11 passed in 0.76s",
+  "owner_regression_25": "25 passed in 0.27s",
+  "selftest": "exit 0; gt2=CONDITIONAL_SUPPORT_PROFILE, n10e=TYPED_REFUSAL"
+ },
+ "verdict": "REVISE_MATERIAL_NARROW"
+}

@@ -1,0 +1,46 @@
+{
+ "cases": {
+  "different_condition": {
+   "fact_condition_key": "PREDICATE|urn:test:e-probe:other-condition|8f0c13b3309ae5ecd9a4b1bed6c3fac0ad7628a3a1a270599c1eee0cf37f7064",
+   "fact_condition_matches_query": false,
+   "query_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "refusal_code": "",
+   "relation_is_not_none": true,
+   "state": "CONDITIONAL_SUPPORT_PROFILE"
+  },
+  "different_measure_basis": {
+   "fact_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "fact_condition_matches_query": true,
+   "query_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "refusal_code": "",
+   "relation_is_not_none": true,
+   "state": "CONDITIONAL_SUPPORT_PROFILE"
+  },
+  "different_response_state": {
+   "fact_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "fact_condition_matches_query": true,
+   "query_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "refusal_code": "",
+   "relation_is_not_none": true,
+   "state": "CONDITIONAL_SUPPORT_PROFILE"
+  },
+  "null_measure_kind": {
+   "fact_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "fact_condition_matches_query": true,
+   "query_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "refusal_code": "",
+   "relation_is_not_none": true,
+   "state": "CONDITIONAL_SUPPORT_PROFILE"
+  },
+  "null_source_scope": {
+   "fact_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "fact_condition_matches_query": true,
+   "query_condition_key": "PREDICATE|urn:test:gt12c:ALL-RISK-MEMBERS|2c0ab4f5b0ae6d8fc78583ea66479abf138682a981e510c8ff1503acf44e4b52",
+   "refusal_code": "",
+   "relation_is_not_none": true,
+   "state": "CONDITIONAL_SUPPORT_PROFILE"
+  }
+ },
+ "note": "E accepts facts whose condition/measure/response/scope fields differ from the bound query; FF owner does not compare these fields.",
+ "schema": "R03_E_INGRESS_DEFECT_PROBE@1"
+}
