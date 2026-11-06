@@ -338,22 +338,6 @@
     "concurrency_limit_reason": "Three active code lanes A/B/C while host capacity is constrained; E/F/G sessions preserved, not completed",
     "active_workers": [
       {
-        "role": "D",
-        "session": "ses_e5fe236a1ffeh1DP9xcm2Jjvhu",
-        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/join-e-b-event",
-        "job_id": "pyat-universal35-d-original-execution-20261106-r1",
-        "child_pid": 89394,
-        "supervisor_pid": 89393,
-        "observer_pid": 89395,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-d-original-execution-20261106-r1",
-        "launch_is_not_completion": true,
-        "api_state": {
-          "type": "busy"
-        },
-        "grade": "DISPATCHED_NOT_ACCEPTED",
-        "observed_utc": "2026-11-06T12:30:29.470452+00:00"
-      },
-      {
         "role": "C",
         "session": "ses_e50ee2de8ffeVZ5fDDwTyiegq1",
         "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1",
@@ -366,26 +350,41 @@
         "api_state": {
           "type": "busy"
         },
-        "observed_utc": "2026-11-06T12:30:29.472871+00:00"
+        "observed_utc": "2026-11-06T12:45:08.313787+00:00"
       },
       {
-        "role": "G",
-        "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
-        "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1",
-        "job_id": "pyat-universal35-guide-r1-independent-closure-20261106-r1",
-        "child_pid": 5228,
-        "supervisor_pid": 5226,
-        "observer_pid": 5229,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-guide-r1-independent-closure-20261106-r1",
+        "role": "F",
+        "session": "ses_e52a51c43ffeuVe7ZZhNcga5YP",
+        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1",
+        "job_id": "pyat-universal35-d-independent-review-20261106-r1",
+        "child_pid": 9666,
+        "supervisor_pid": 9665,
+        "observer_pid": 9667,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-d-independent-review-20261106-r1",
         "launch_is_not_completion": true,
         "api_state": {
           "type": "busy"
         },
-        "observed_utc": "2026-11-06T12:30:29.474285+00:00"
+        "observed_utc": "2026-11-06T12:45:08.316600+00:00"
+      },
+      {
+        "role": "A",
+        "session": "ses_e65307bd2ffe2eFVrpUzrvgjUd",
+        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/programma-p0p1-repair1-20261102",
+        "job_id": "pyat-universal35-source-mapping-20261106-r1",
+        "child_pid": 9670,
+        "supervisor_pid": 9669,
+        "observer_pid": 9671,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-source-mapping-20261106-r1",
+        "launch_is_not_completion": true,
+        "api_state": {
+          "type": "busy"
+        },
+        "observed_utc": "2026-11-06T12:45:08.318269+00:00"
       }
     ],
     "integration_start": "d129eebdb0472b0c3625efa281826a858bd0a384",
-    "current_next_action": "D actualoperationpayload/originalexecution, C measuredphysicalstream, G focusedfour-detailguideclosure. Guide pendingqualifiedprotectedreceiving; no nativepromotion.",
+    "current_next_action": "C bounded physicalproducer, A exactreportedunboundmapping, F frozenDpayloadreview; originalDterminalintermediateawaitsproductive deps, not modelwait. Guideaccepted scoped but actualqualifiedCASunobserved; codeworkcontinues.",
     "E_return": {
       "branch": "codex/pyat-universal35-e-20261106-r1",
       "head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
@@ -481,7 +480,7 @@
       "source_qualified_head": "6c243ffee042187092fead1e7a25f0f838578b9e",
       "base": "4df35cba8a254e50622d4cb3059625c82e0cb74b",
       "branch": "codex/pyat-universal35-guide-receiving-20261106-r1",
-      "grade": "FOUR_REQUESTED_ADDITIONS_APPLIED_FOCUSED_INDEPENDENT_CLOSURE_PENDING_NOT_ADOPTED",
+      "grade": "INDEPENDENTLY_ACCEPTED_SCOPED_DOCUMENTARY_NOT_PROTECTED_ADOPTED",
       "source_qual_supplement": "F43e5962 routingqualification and accurate exact-head-review-pending wording",
       "protected_receiving": "NONE",
       "prior_head": "6a5f1ab3e4a096b738965c91917a879445c57862"
@@ -493,6 +492,33 @@
       "positive_preserved": "Sourcebody andbinding03preserved;62/82/49semantics0diff afterstrip;51/82/88/13 graph, FIABC144/3 and CAS3 preserved; pinnedfrontdoorPASS",
       "required_additions": "ExactC30bd02/blob986f327 scopedaccepted vsprotectedde561; actualBpayloadnotconsumed AB/ABCjoinREVISE; D repair/executionowner; selectmetadata not fullconfiguration",
       "review_typo_correction": "Review0bd02a10 is incorrect prefix; actualGitcommit30bd02a10feb1b5b97bcbe70e3981f482d2a412c"
+    },
+    "D_intermediate_return": {
+      "head": "115fe70e660fb19a65ca49b4a12ffc8876be065c",
+      "implementation": "40d490e96170c4c0c28aed6da0c906960ae91179",
+      "grade": "INTERMEDIATE_AUTHOR_RETURN_F_FROZEN_REVIEW_PENDING_NOT_NATIVE_COMPLETE",
+      "evidence": "WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-D-20261106-R1/00_RETURN.md",
+      "function": "PlannednonF1 -> SourceInventory/GrammarPolicy/ScientificFrontier -> currentcompiler; originalmanifest/C11/nativecompiler diagnostic scaffold",
+      "tests": "Author B6+D2+P1compat1PASS; priorBnegative preserved; nativefacts NOT_COMPLETED",
+      "original_limits": "SRC31unboundresponse325/8442rows94.603s1.66GBpeak; SRC09/10/11/15 eagerdecode600s noncompletion; no actualI03/I05/Batch orN10E/FForiginalfacts",
+      "next": "F exactpayloadreview; A reportedsource/configmappingfix; C boundedphysicalstream; originalD resumesintegrationafterconcretequalifieddeps"
+    },
+    "guide_independent_closure": {
+      "head": "48c87186cc3ba873109f32edce10e16de220405e",
+      "reviewed_head": "6c243ffee042187092fead1e7a25f0f838578b9e",
+      "verdict": "ACCEPT_SCOPED_DOCUMENTARY",
+      "limits": "Staticonly; no newproduct/native/protectedgrant; no original-source run",
+      "source": "WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-GUIDE-INDEPENDENT-REVIEW-20261106-R1/revisions/r1/00_RETURN.md"
+    },
+    "receiving_handoff": {
+      "existing_owner_thread": "6aecf8ba-5cb0-83e9-8e87-ce08c06dbfa4",
+      "owner_title": "Programma Pyat Briefing",
+      "owner_prior_authorization_evidence": "Read existing user final15-return protected integration instruction and actual CAS3 completion",
+      "send_result": "App returnedthreadID acknowledgment, no observed newintaketurn",
+      "observed_owner_state": "systemError; priorcompletedturn stilllatest",
+      "monitor_note": "wait_threads supportsCodex, not thisChatGPTchat; usedread_thread fallback once; no retries/newHQ/modelactivation claim",
+      "published_fallback": "https://github.com/maidiu/rawlsing/pull/705#issuecomment-6684959722",
+      "protected_receiving": "NOT_OBSERVED; do nottreatacceptedcandidateadopted"
     }
   }
 }
