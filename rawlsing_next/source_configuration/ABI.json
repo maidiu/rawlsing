@@ -1,0 +1,69 @@
+{
+  "factory": {
+    "build_governed_c11_projection": "(config: 'SourceConfig | Mapping[str, Any]', *, source_sha256: 'str | None' = None, row_count: 'int | None' = None, row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None) -> 'GovernedC11Projection'",
+    "build_source_backed_c11_repository_from_config": "(config: 'SourceConfig | Mapping[str, Any]', source: 'ExactPhysicalCellStream | PhysicalSourceIncidence', *, row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None, cache: 'Any' = None, batch_size: 'int' = 10000)",
+    "build_validated_c11_release_from_config": "(config: 'SourceConfig | Mapping[str, Any]', *, stream: 'ExactPhysicalCellStream | None' = None, incidence: 'PhysicalSourceIncidence | None' = None, source_sha256: 'str | None' = None, row_count: 'int | None' = None, row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None, batch_size: 'int' = 10000)",
+    "row_native_keys_from_transport": "(config: 'SourceConfig | Mapping[str, Any]', *, stream: 'ExactPhysicalCellStream | None' = None, incidence: 'PhysicalSourceIncidence | None' = None, batch_size: 'int' = 10000) -> 'Mapping[int, ExactRef | TypedAbsence] | None'"
+  },
+  "first_consumer": {
+    "callable": "rawlsing_next.source_configuration.library.SourceConfigLibrary.build_fixture_release",
+    "calls": [
+      "factory.build_validated_c11_release_from_config",
+      "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream"
+    ],
+    "original_workload_issued": false,
+    "source_read_performed": false
+  },
+  "library": {
+    "class": "rawlsing_next.source_configuration.library.SourceConfigLibrary",
+    "methods": {
+      "build_fixture_release": "(self, source_id: 'str')",
+      "load_fixture_config": "(self, source_id: 'str') -> 'SourceConfig'",
+      "load_fixture_stream": "(self, source_id: 'str')",
+      "load_original": "(self, source_id: 'str') -> 'SourceConfig'",
+      "original_plan": "(self, source_id: 'str', *, source_path: 'str | None' = None, source_root: 'str | Path | None' = None, source_relative_path: 'str | None' = None, host: 'str', purpose: 'str', consumer_use: 'str', semantic_use_scope: 'Iterable[str]', custody_locator_binding: 'str | None' = None, metadata_freeze_refs: 'Iterable[Any] | None' = None) -> 'dict[str, Any]'",
+      "resolve_source_path": "(self, source_id: 'str', *, source_root: 'str | Path | None' = None, source_relative_path: 'str | None' = None) -> 'dict[str, Any]'",
+      "select": "(self, source_id: 'str', *, source_root: 'str | Path | None' = None, source_relative_path: 'str | None' = None) -> 'dict[str, Any]'",
+      "validate_source": "(self, source_id: 'str') -> 'dict[str, Any]'"
+    }
+  },
+  "no_survey_specific_code": true,
+  "operation_adapter_inputs": [
+    "validated SourceConfig document",
+    "SourceConfigLibrary.select(source_id, source_root=...)",
+    "configured row/key witnesses",
+    "permitted ExactPhysicalCellStream or PhysicalSourceIncidence",
+    "existing R01/R03 compiler-issued request (B owner)"
+  ],
+  "pinned_index_path": "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json",
+  "pinned_r157_commit": "1924499ef52403a0f331b8aff9b7c7eff99bf1e2",
+  "reader": {
+    "decode_config_with_source_read_permission": "(config: 'SourceConfig | Mapping[str, Any]', *, source_path: 'Any' = None, source_root: 'str | Path | None' = None, source_relative_path: 'str | None' = None, resolver: 'Any', host: 'str', purpose: 'str', consumer_use: 'str', semantic_use_scope: 'Sequence[str]', metadata_freeze_refs: 'Sequence[Any] | None' = None, custody_locator_binding: 'str | None' = None)",
+    "reader_configuration_from_config": "(config: 'SourceConfig | Mapping[str, Any]') -> 'SourceReaderConfiguration'",
+    "resolve_source_path_from_config": "(config: 'SourceConfig | Mapping[str, Any]', *, source_root: 'str | Path | None', source_relative_path: 'str | None' = None) -> 'Path'",
+    "source_read_request_from_config": "(config: 'SourceConfig | Mapping[str, Any]', *, host: 'str', purpose: 'str', consumer_use: 'str', semantic_use_scope: 'Sequence[str]', metadata_freeze_refs: 'Sequence[Any] | None' = None, custody_locator_binding: 'str | None' = None) -> 'SourceReadRequest'"
+  },
+  "schema": "PYAT_R157_SOURCE_PACK_ABI@1.0.0",
+  "source_locator_bindings_path": "rawlsing_next/source_configuration/source_locator_bindings.json",
+  "source_pack_schema_id": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+  "source_pack_schema_path": "rawlsing_next/source_configuration/schema/source_configuration.schema.json",
+  "source_root_contract": {
+    "absolute_paths_hardcoded": false,
+    "library_root": "repository/config artifact root",
+    "override_order": [
+      "explicit call argument",
+      "library.source_root",
+      "R157_SOURCE_ROOT",
+      "USER_ORIGINAL35_DATA_ROOT"
+    ],
+    "source_root": "effective original-source bytes root"
+  },
+  "transport": {
+    "classes": [
+      "rawlsing_next.pre553_source_backed_c11_facade.ExactPhysicalCellStream",
+      "rawlsing_next.pre553_physical_decoder.PhysicalSourceIncidence"
+    ],
+    "projection_output": "GovernedC11Projection",
+    "release_output": "C11LogicalRelease"
+  }
+}

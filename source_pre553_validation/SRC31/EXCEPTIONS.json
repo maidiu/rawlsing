@@ -1,0 +1,161 @@
+{
+  "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC31",
+  "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+  "entries": [
+    {
+      "source_id": "SRC31",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "routing.typed_state",
+      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 64 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC31",
+          "content_hash": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC31_PHYSICAL_METADATA.json",
+          "content_hash": "61acc1e817d0e5b03eab819c1aed9e892edde588bce82efcc81ac6b661ce6b48"
+        }
+      ],
+      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 64 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+      "affected_operation_or_slice": "eligibility/form-conditioned native query",
+      "unaffected_usable_slices": "unconditional source-native response incidence and coordinate binding",
+      "acquisition_fix_owner_and_step": "SOUTH_ASIA lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC31",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "respondents.source_native_key_slot",
+      "current_value_or_typed_unknown": "UNKNOWN: No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC31",
+          "content_hash": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC31_PHYSICAL_METADATA.json",
+          "content_hash": "61acc1e817d0e5b03eab819c1aed9e892edde588bce82efcc81ac6b661ce6b48"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "affected_operation_or_slice": "respondent-key linkage beyond row ordinal",
+      "unaffected_usable_slices": "row-ordinal-scoped source-native construction",
+      "acquisition_fix_owner_and_step": "SOUTH_ASIA lane / P3 integration owner: Supply exact row_native_keys only after a separately permitted decode.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC31",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.supported_form_slice",
+      "current_value_or_typed_unknown": "UNKNOWN: Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC31",
+          "content_hash": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC31_PHYSICAL_METADATA.json",
+          "content_hash": "61acc1e817d0e5b03eab819c1aed9e892edde588bce82efcc81ac6b661ce6b48"
+        }
+      ],
+      "contradiction_or_missing_fact": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+      "affected_operation_or_slice": "form-conditioned or administration-conditioned native query",
+      "unaffected_usable_slices": "source-native response incidence without form conditioning",
+      "acquisition_fix_owner_and_step": "SOUTH_ASIA lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC31",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "weight_slots",
+      "current_value_or_typed_unknown": "NOT_DECLARED: No source weight item/slot is present in current physical/codebook evidence; no weighted scope is declared.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC31",
+          "content_hash": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC31_PHYSICAL_METADATA.json",
+          "content_hash": "61acc1e817d0e5b03eab819c1aed9e892edde588bce82efcc81ac6b661ce6b48"
+        }
+      ],
+      "contradiction_or_missing_fact": "No source weight item/slot is present in current physical/codebook evidence; no weighted scope is declared.",
+      "affected_operation_or_slice": "population or weighted estimation",
+      "unaffected_usable_slices": "raw-sample source-native response incidence",
+      "acquisition_fix_owner_and_step": "SOUTH_ASIA lane / P3 integration owner: Bind exact weight basis, design, estimand and scope only if such a source slot is established.",
+      "status": "NOT_DECLARED",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC31",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "items.relation.manual_signed_polarity_status",
+      "current_value_or_typed_unknown": "NOT_CERTIFIED_BY_THIS_PREPARATION: Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC31",
+          "content_hash": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC31_PHYSICAL_METADATA.json",
+          "content_hash": "61acc1e817d0e5b03eab819c1aed9e892edde588bce82efcc81ac6b661ce6b48"
+        }
+      ],
+      "contradiction_or_missing_fact": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "affected_operation_or_slice": "signed-direction empirical or structural analysis",
+      "unaffected_usable_slices": "source-native nominal/ordinal response incidence and exact value accounting",
+      "acquisition_fix_owner_and_step": "SOUTH_ASIA lane / later scientific authority owner: Use the original relation certification only at its exact evidenced scope.",
+      "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+      "resolution_evidence": null
+    },
+    {
+      "source_id": "SRC31",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.original_source_execution",
+      "current_value_or_typed_unknown": "NOT_PERFORMED: Original respondent execution and original workload issuance are a separate permission boundary.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC31",
+          "content_hash": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC31_PHYSICAL_METADATA.json",
+          "content_hash": "61acc1e817d0e5b03eab819c1aed9e892edde588bce82efcc81ac6b661ce6b48"
+        }
+      ],
+      "contradiction_or_missing_fact": "Original respondent execution and original workload issuance are a separate permission boundary.",
+      "affected_operation_or_slice": "original empirical execution",
+      "unaffected_usable_slices": "portable configuration and nonrespondent fixture native validation",
+      "acquisition_fix_owner_and_step": "user-authorized execution owner: Issue a separate exact original-source execution grant and qualified reader binding.",
+      "status": "NOT_PERFORMED",
+      "resolution_evidence": null
+    }
+  ],
+  "counts": {
+    "entries": 6,
+    "residuals": 6,
+    "excluded_slots": 0,
+    "excluded_items": 0
+  },
+  "limits": [
+    "Exact IDs/slots and evidence preserved; fixture success is not original authority.",
+    "No generic unselected/future-expansion exception is used."
+  ]
+}
