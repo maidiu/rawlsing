@@ -11958,12 +11958,12 @@
     "record_effect": "Interval final 76d5 key/census repair and later b716 repair author-tested; original cuts REVISE preserved; product 25d unaccepted with 76d5 import RUNNING; no dependent READY."
   },
   "hq_p2_product_fanin_20261105": {
-    "status": "PRODUCT_25D_AUTHOR_TESTED_INDEPENDENTLY_UNACCEPTED",
-    "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+    "status": "FINAL_REPAIRED_IMPORTS_OWNER_VERIFIED_PRIOR_25D_INDEPENDENT_ACCEPT_FINAL_RECEIVING_PENDING",
+    "commit": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
     "branch": "codex/sorok-p2-product-fanin-20261105-r1",
     "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
     "path": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1",
-    "independent_review": "RUNNING sorok-p2-fanin-independent-review-20261105-r1-retry2; no verdict",
+    "independent_review": "ACCEPT_SCOPED_TEST_ONLY25d@332e; no independent acceptance claimed for newer4b2",
     "interval_import": "76d5 import RUNNING sorok-p2-final-interval-import-20261105-r1",
     "later_event_import": "b716 NOT_IMPORTED_YET",
     "receiving_engineering": "bf574e5a1c5b46bfd92d272fb9616ac697fbbe6a PASS; not independent acceptance/merge",
@@ -11993,6 +11993,18 @@
         "role": "receiving engineering rehearsal PASS; not independent acceptance/merge"
       }
     ],
-    "record_effect": "Product 25d remains independently unaccepted; exact review RUNNING retry2; 76d5 import RUNNING; later b716 not imported; no dependent READY."
+    "record_effect": "Product 25d remains independently unaccepted; exact review RUNNING retry2; 76d5 import RUNNING; later b716 not imported; no dependent READY.",
+    "accepted_exact_cut": {
+      "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+      "verdict": "ACCEPT_SCOPED_TEST_ONLY",
+      "review": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+      "tests": "7PASS103.31s + independentcold/trustboundaryprobes"
+    },
+    "repaired_interval_import": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+    "repaired_later_import": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+    "final_import_evidence": "d450 interval30/30exact;4b2 later48/48exact; primitives/callsite unchanged; publicprivacyoracle0hits; prior tests reused",
+    "next_action": "Receive focused repairedsurface review and final4b2 receivingdelta; consolidate qualified product receiving without broad repeat estate or native/human/protectedpromotion",
+    "final_receiving_job": "RUNNING sorok-p2-final-receiving-delta-20261105-r1",
+    "component_closure_job": "RUNNING sorok-p2-public-repairs-focused-closure-20261105-r1"
   }
 }
