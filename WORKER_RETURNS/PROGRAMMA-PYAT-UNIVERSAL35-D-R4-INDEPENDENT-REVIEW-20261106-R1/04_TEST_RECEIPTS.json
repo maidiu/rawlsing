@@ -1,0 +1,88 @@
+{
+  "all35_frontier": {
+    "eligible": 683,
+    "held": 11,
+    "no_explicit": 28,
+    "operations": 694,
+    "sources": 7
+  },
+  "all35_plan": {
+    "items": 18276,
+    "operations": 18467,
+    "slots": 18413,
+    "sources": 35
+  },
+  "commands": [
+    {
+      "command": "pytest -q rawlsing_next/tests/test_pre553_original35_operations.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "B",
+      "log": "d_r4_b_tests.log",
+      "log_sha256": "65f94a877b4dc12a990203334c37a4cdb9fc59125b7c96ecec3c7676434419e1",
+      "result": "8 passed in 30.56s"
+    },
+    {
+      "command": "pytest -q rawlsing_next/tests/test_pre553_original35_execution.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "D",
+      "log": "d_r4_exec_tests.log",
+      "log_sha256": "959493d9aa28d6d88f3b7e766fc63c493b350c9e54f99299b6515397923a602c",
+      "result": "3 passed in 117.58s (manifest/path/no-resolver)"
+    },
+    {
+      "command": "minimal sourcefree SAV/config production execute_native_compiler_source",
+      "exit": 0,
+      "lane": "D positive",
+      "log": "d_r4_positive.log",
+      "log_sha256": "e003a9419fe8b647d8034b0c2107993150121ef3f874f271e6bfde1b8c518a68",
+      "result": "selected A/B/Y; 30 facts; 15 expected ops; 18 candidates; anti/op_anti true; native false"
+    },
+    {
+      "command": "post-consumer changed exact decision / revoked before/after",
+      "exit": 0,
+      "lane": "D resolver",
+      "log": "d_r4_resolver.log",
+      "log_sha256": "843fea581b5fdcb6c18d8a1175321b1383f477047f85edda49a07f83eb34d266",
+      "result": "positive PASS; changed_after PASS (defect); revoked_before/after refused"
+    },
+    {
+      "command": "bind full plan with held Y and selected A/B bundle",
+      "exit": 0,
+      "lane": "D full-plan alias",
+      "log": "d_r4_held_alias.log",
+      "log_sha256": "8be207935374b6db1ae6f82e081d3ae60c69d93da8e8f60aaa85ddee7ce45fdc",
+      "result": "HELD_ALIAS_REFUSED PHYSICAL_CODE_NOT_IN_BUNDLE:Y"
+    },
+    {
+      "command": "supplied frontier with extra unplanned operation",
+      "exit": 0,
+      "lane": "B extra frontier",
+      "log": "d_r4_extra.log",
+      "log_sha256": "e9a66b1c13f7cca158271e652d711f2954e9c0624b0c488f68f580315bf75a5d",
+      "result": "EXTRA_REFUSED GOVERNED_FRONTIER_NOT_EXACTLY_PLAN_DERIVED"
+    },
+    {
+      "command": "actual R157 full-config plan + build_frontier_inputs_from_plan all sources",
+      "exit": 0,
+      "lane": "all35 symbolic",
+      "log": "d_r4_all35_frontier.log",
+      "log_sha256": "7198f0e1e980a09b24d20fcd6074aadc366e7fd7feaec5b66c83e70e0dff9f95",
+      "result": "7/35 frontier rows; 694 ops; 683 eligible/11 held; 28 NO_EXPLICIT_PLANNED_FRONTIER; wall 33.7s; CPU 31.7s; RSS 954,146,816"
+    }
+  ],
+  "native_acceptance": false,
+  "not_run": [
+    "original source read decision",
+    "actual original facts",
+    "E/N10E handoff",
+    "whole-estate fixture floor",
+    "C rerun"
+  ],
+  "original_response_bytes_read": false,
+  "route_split": {
+    "ELIGIBLE_APPLICABLE": 676,
+    "ROUTING_UNKNOWN": 4705,
+    "RULE_UNAVAILABLE": 249
+  },
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_D_R4_REVIEW_RECEIPTS@1.0.0"
+}
