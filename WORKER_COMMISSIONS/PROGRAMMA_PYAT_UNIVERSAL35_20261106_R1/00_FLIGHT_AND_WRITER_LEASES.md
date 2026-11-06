@@ -104,3 +104,10 @@ D115fe70e660fb19a65ca49b4a12ffc8876be065c/code40d490e96170c4c0c28aed6da0c906960a
 ### Physical-stream return and exact first-reader correction — 2026-11-06
 
 C01ba3b2c3eb5f00b950494a80daf70ac193eb051/codebe7e831f41e1c699890b7987cd2fea25be3f65d3 returns4+34authorPASS, exactSRC31full/filteredcellsequence/replay and fixturefactoryparity; no originalnativefacts. Reported~226MB eagerphysicaltuple versus~101MB streaming is a diagnosticcomparison. Currentincidencealreadybounded/lazy and D's actualfilteredgeneratordidnoteagerlytuple; Cfilteredwrapperstillcreatesallcolumncells, so no600stimeoutunlock isaccepted. SameCauthor nowmeasuresactualDfilteredbaseline and smallestrequired sourcecolumnprojection initsownnewmodule under a778b1c71; PID13422, no decoder/facade/D/A edits, no secondcompiler. Aactualmapping and FfrozenDreview continue. Existingpositivecellparityandoldceilingspreserved, no native/protectedpromotion.
+
+
+### D independent review and exact finite-contract repair — 2026-11-06
+
+Fdd2158e4b89976310632f722239a0da3a352f14a atD115fe70/code40d490e preservesvalue/conditioner -> actualfact/ledgerchange andrestorepositive, accepts ABfull-configjoin/sourcefreemanifestdiagnostic, but BpayloadREVISE/DfullHOLD: OriginalItemID ignored, unknownrouting/unit/topology/form falselydefaulted, SRC01symbolicfrontierglobalenumerationtimeout600s, wrappergate/default3items/arbitrarycoordinate/syntheticID stillunready. Independent7PASS/2Dskip; no nativefacts.
+
+HQ read exactexisting OccurrenceKey/Occurrence/make_operation/ScientificFrontier and currentcompiler/catalog contracts. Narrow repair31e072ba3 asks originalDauthor tokeepOriginalID versusphysicalcode inverifiedbinding, carryrealoccurrencefacts/UNKNOWN, buildonlyfinitealreadyplannedoperations usingexistingtypes/helpers ratherthancartesianenumeration. SameDbranch/sessionPID18103, no newcompiler/kernelwriter. A/Cdependencies remainparallel; sourcefree/scientific/protectedgrades notpromoted. Fullgoal unchanged, no F1/3item substitute.
