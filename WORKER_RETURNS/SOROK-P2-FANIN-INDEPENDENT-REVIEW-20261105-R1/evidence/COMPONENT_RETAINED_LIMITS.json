@@ -1,0 +1,32 @@
+{
+  "fanin_candidate_579": "not separately reviewed; exact review is 25d40806 head",
+  "historical_interval_bdad": {
+    "review": "f1a2872487b3aa492632a497ad7481e8529d937e",
+    "status": "REVISE"
+  },
+  "interval_standalone_7a": {
+    "fanin_use": "only apply_explicit_interval subset; fanin public CLI showed no private-key/forbidden-marker violations",
+    "issues": [
+      "standalone public result still uses reserved keys admission and c9",
+      "evidence/result.json still lists missing __pycache__ entries"
+    ],
+    "review": "89b33453eff13d8a3638a97cf516438c42e7af4f",
+    "status": "REVISE"
+  },
+  "later_event_standalone_76": {
+    "fanin_use": "public_opportunity allowlist only; explicit do-help uses accepted lifecycle adapter; fanin did not adopt standalone positive CLI",
+    "issues": [
+      "standalone public CLI/report exposes engineering c9/s43/history/plan/root fields",
+      "standalone positive scenario unconditionally calls user DO_HELP"
+    ],
+    "review": "f1a2872487b3aa492632a497ad7481e8529d937e",
+    "status": "REVISE"
+  },
+  "later_public_cli_repair": "RUNNING_NOT_REVIEWED",
+  "note": "Unused/rejected standalone component surfaces are retained limits, not blanket adoption or total block of the fanin public path.",
+  "original_interval_later_review": {
+    "review": "f1a2872487b3aa492632a497ad7481e8529d937e",
+    "status": "REVISE"
+  },
+  "schema": "SOROK_P2_FANIN_COMPONENT_RETAINED_LIMITS@1"
+}
