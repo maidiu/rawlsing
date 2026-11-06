@@ -149,3 +149,39 @@ def test_bad_history_in_later_proposal_is_refused_before_first_interval(tmp_path
     finally:
         engine.close()
         owner.close()
+
+
+def test_invalid_language_context_is_refused_before_actual_interval(tmp_path):
+    from developmental_recursion.engine import BatchEngine
+    owner = start(tmp_path / "context")
+    engine = BatchEngine(owner, tmp_path / "journal.sqlite")
+    try:
+        before = owner.snapshot()
+        first = event(owner)
+        later = [replace(first, event_id=str(i), event_time=before.clock + 6*i,
+                         interval=None) for i in (2, 3)]
+        for context in ("invalid-context", [], {}, {"milieu_id": []},
+                        {"milieu_id": ""}, {"milieu_id": "MISSING_NATIVE_CONTEXT"}):
+            with pytest.raises(RecursionRefusal):
+                engine.run_batch("bad-context", [
+                    replace(first, circumstances={"language_context": context}), *later])
+            assert owner.snapshot() == before
+            assert owner.fanin.session.read_interval_states() == []
+            assert owner.db.execute("SELECT COUNT(*) FROM operations").fetchone()[0] == 0
+        # The explicit context is supplied by the existing native session,
+        # rather than a new wrapper-owned context vocabulary.
+        native_context = owner.fanin.session.s43_context()
+        for context in (None, native_context):
+            owner.validate_proposal(replace(first, circumstances={
+                "language_context": context}))
+        assert owner.snapshot() == before
+        result = owner.realize("valid-context", replace(first, circumstances={
+            "language_context": native_context}), before)
+        assert result.status == "REALIZED"
+        assert result.after.clock == first.event_time
+        assert result.accessible["status"] == "OBSERVED"
+        assert result.consequences["immediate_response"]["objective_material_eligible"] is False
+        assert engine.verify()
+    finally:
+        engine.close()
+        owner.close()

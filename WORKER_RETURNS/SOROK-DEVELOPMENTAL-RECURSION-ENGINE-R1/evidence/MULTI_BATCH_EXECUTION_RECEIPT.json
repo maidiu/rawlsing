@@ -1,6 +1,6 @@
 {
   "grade": "TEST_ONLY_S47_MATERIAL_EVENT_C9_TWO_BATCH_INTEGRATION",
-  "tests": "70 passed in 269.35s; final strengthened native-owner negatives: 4 passed in 21.86s",
+  "tests": "71 passed in279.35s after native context preflight repair",
   "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests",
   "batches": [
     {
@@ -9,7 +9,7 @@
       "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
       "branch": "first_session",
       "status": "COMPLETE",
-      "history_hash": "c01b32520646d0c8a826bd66ea544ccc74d9fd7803b7c1bb203115336b9dad8f"
+      "history_hash": "e349cb5b30eff3eb778a3652b27b0c7cae344d6a631d63c4b12fe6767f4e153e"
     },
     {
       "batch_id": "batch-000002",
@@ -17,7 +17,7 @@
       "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
       "branch": "first_session",
       "status": "COMPLETE",
-      "history_hash": "f1b9fe5cd4ddbfca835624d45edc99b06f292f6689dcc7a86897c578b7370204"
+      "history_hash": "161189259a8b62c61d8bb411120608eec528edd5f9c6500a9ea9cd89209ac637"
     }
   ],
   "records": [
@@ -29,19 +29,19 @@
         "branch": "first_session",
         "clock": 222,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "9a54bc6edf03db97448ec6e0ad835d29048dc418a2d7f75a9f75eee6525dc69c"
+        "state_hash": "446bef673790aa0ead72685e6af8e8f53cfbc33962f2c2a0f4e8afd18272d69b"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 228,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "c1ef100d7b79a0bd031664a7e0636168e6ef28319430d9721ca0958dc8611969"
+        "state_hash": "085ed0ded68733cfbc21f64e71a6cf88e890d166832289f86cbffd1da27c8bbc"
       },
-      "receipt_ref": "P2_EVENT:e666a1ad8eeeeddaccab266aa0864d5e99547350dcafc1fbc47b29f92114c423",
+      "receipt_ref": "P2_EVENT:a45828ed683c02e281f34123bc62b4decc11457f2c84407022d2253ad41749ba",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "e666a1ad8eeeeddaccab266aa0864d5e99547350dcafc1fbc47b29f92114c423"
+        "a45828ed683c02e281f34123bc62b4decc11457f2c84407022d2253ad41749ba"
       ],
       "status": "REALIZED",
       "material_eligible": false,
@@ -51,7 +51,7 @@
         "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_alias": "A",
         "event_ids": [
-          "TEST_ONLY_BP4_WORLD_EVT_88bc8d748e97bd91ee5ea6aa1f30a865682d9c19f8a7ef07457c3ba90f820c47"
+          "TEST_ONLY_BP4_WORLD_EVT_2e0d351628e9a3d516c6021091e8d407abe21f34b2a3879cdaa5d741443fd5b4"
         ],
         "perceptions": [
           {
@@ -70,19 +70,19 @@
         "branch": "first_session",
         "clock": 228,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "c1ef100d7b79a0bd031664a7e0636168e6ef28319430d9721ca0958dc8611969"
+        "state_hash": "085ed0ded68733cfbc21f64e71a6cf88e890d166832289f86cbffd1da27c8bbc"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 234,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "ed2a17fd14b559ca1bfbf66c164d28e26a5a7ddce5fbe423ff1ca23f45eeb5a3"
+        "state_hash": "640273f5fdc3c4012ba35da95565e6078d2c2a58c991406c057fc715a4e57422"
       },
-      "receipt_ref": "P2_EVENT:9405d944b8399c00d562ab310d1dd4325e8dc5e93f9aa2c5f79b8c2e773be87b",
+      "receipt_ref": "P2_EVENT:c6dfe399dcb55933c414280a93704766b4e341adc583effc31b107d2d31b0b80",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "9405d944b8399c00d562ab310d1dd4325e8dc5e93f9aa2c5f79b8c2e773be87b"
+        "c6dfe399dcb55933c414280a93704766b4e341adc583effc31b107d2d31b0b80"
       ],
       "status": "REALIZED",
       "material_eligible": false,
@@ -92,7 +92,7 @@
         "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_alias": "A",
         "event_ids": [
-          "TEST_ONLY_BP4_WORLD_EVT_2eaf09554e62a0f9760c1657420d2429b6ff7640929f9da52dac88f076df99f2"
+          "TEST_ONLY_BP4_WORLD_EVT_6c8d1a6fca0f3ae78b02b4d778f40c6062987ef90cb9cf24b474b5f5693d1568"
         ],
         "perceptions": [
           {
@@ -111,19 +111,19 @@
         "branch": "first_session",
         "clock": 234,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "ed2a17fd14b559ca1bfbf66c164d28e26a5a7ddce5fbe423ff1ca23f45eeb5a3"
+        "state_hash": "640273f5fdc3c4012ba35da95565e6078d2c2a58c991406c057fc715a4e57422"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 240,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "0bf129b308856e96843484cdbc1a8a7e75c3291cf3c6f73e52232d5a69e94111"
+        "state_hash": "460847d9ed90448f26204b2df5c0a11d191ace042d56bb94fe2d73e1d98f22f9"
       },
-      "receipt_ref": "P2_EVENT:89a5ecdd1a40260f91017b201a5a0f53fbf1c169e4efe8110ccaa88cd4fc4140",
+      "receipt_ref": "P2_EVENT:fb7807232573220a221bd0904e5333fcd1351fbc4c06e118196276bbef94cada",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "89a5ecdd1a40260f91017b201a5a0f53fbf1c169e4efe8110ccaa88cd4fc4140"
+        "fb7807232573220a221bd0904e5333fcd1351fbc4c06e118196276bbef94cada"
       ],
       "status": "REALIZED",
       "material_eligible": false,
@@ -133,7 +133,7 @@
         "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_alias": "A",
         "event_ids": [
-          "TEST_ONLY_BP4_WORLD_EVT_97fa69ad2a1cb2af8fbf946839b1c86e87cd5a59fd378f91d105f042ac980028"
+          "TEST_ONLY_BP4_WORLD_EVT_3c6acd862403636236a86705119bef1ff42a2f1fa63a433d0c3d66b89897c99c"
         ],
         "perceptions": [
           {
@@ -152,19 +152,19 @@
         "branch": "first_session",
         "clock": 240,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "0bf129b308856e96843484cdbc1a8a7e75c3291cf3c6f73e52232d5a69e94111"
+        "state_hash": "460847d9ed90448f26204b2df5c0a11d191ace042d56bb94fe2d73e1d98f22f9"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 246,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "ccca76e73ac394120ea0b6f30af6521863e4197a132220fdffd966d9ac3c38ef"
+        "state_hash": "44bff6f427e7e2df163e170f3156113c405e9ed2f0d49791eed37c549317a394"
       },
-      "receipt_ref": "P2_EVENT:edab3a94fb670b7720b73d85f872c8a549c4407cbbc7eae1244f51947dd114db",
+      "receipt_ref": "P2_EVENT:c3bca2c982c3252ce0816220428cc17badb3045b40f157d26f8cd2e460b4093f",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "edab3a94fb670b7720b73d85f872c8a549c4407cbbc7eae1244f51947dd114db"
+        "c3bca2c982c3252ce0816220428cc17badb3045b40f157d26f8cd2e460b4093f"
       ],
       "status": "REALIZED",
       "material_eligible": false,
@@ -174,7 +174,7 @@
         "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_alias": "A",
         "event_ids": [
-          "TEST_ONLY_BP4_WORLD_EVT_57858c68f839918d5326ecee6c6b82dd4fa9c17ae01bc4a0ef4e8d155a5d07bd"
+          "TEST_ONLY_BP4_WORLD_EVT_ab5c9c885462845110d7068bfb2c2ad2be9c4758f11da90d2e1c7f226be3e43a"
         ],
         "perceptions": [
           {
@@ -193,19 +193,19 @@
         "branch": "first_session",
         "clock": 246,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "ccca76e73ac394120ea0b6f30af6521863e4197a132220fdffd966d9ac3c38ef"
+        "state_hash": "44bff6f427e7e2df163e170f3156113c405e9ed2f0d49791eed37c549317a394"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 252,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "b5af6876d1f13f985c9ff7e05a9032c06c5efc6aa1e256378b1505835db69e2d"
+        "state_hash": "99453c3771245a8f923cd64252ee579f7b6cf3f0491ed1e306244dea6bcd5970"
       },
-      "receipt_ref": "P2_EVENT:a00aa6959125b83a94f7d1bee513cb8e19b68130637bd99f1a357e50f5ad5089",
+      "receipt_ref": "P2_EVENT:06a5e3b148f0523a76b48ac23cbb8882d5ddf58870188269a504af446d85d38d",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "a00aa6959125b83a94f7d1bee513cb8e19b68130637bd99f1a357e50f5ad5089"
+        "06a5e3b148f0523a76b48ac23cbb8882d5ddf58870188269a504af446d85d38d"
       ],
       "status": "REALIZED",
       "material_eligible": false,
@@ -215,7 +215,7 @@
         "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_alias": "A",
         "event_ids": [
-          "TEST_ONLY_BP4_WORLD_EVT_012f448548467c32b6507f81923e292a7869851376f61d9d443743fe0b4e7af6"
+          "TEST_ONLY_BP4_WORLD_EVT_eb31916bbb58e50fe80016f992278456f63aa7f6ce8b88f38d39ee11de5dff76"
         ],
         "perceptions": [
           {
@@ -234,19 +234,19 @@
         "branch": "first_session",
         "clock": 252,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "b5af6876d1f13f985c9ff7e05a9032c06c5efc6aa1e256378b1505835db69e2d"
+        "state_hash": "99453c3771245a8f923cd64252ee579f7b6cf3f0491ed1e306244dea6bcd5970"
       },
       "after": {
         "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "branch": "first_session",
         "clock": 258,
         "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-        "state_hash": "5dbdc50415e0b26874275e26ecdc7aa527031d994a21c0b60a5de4ef70587aa9"
+        "state_hash": "91dbefca123da52baa949bd3b1bb78d0a6d951aa8cce72c4216c43a216f8d444"
       },
-      "receipt_ref": "P2_EVENT:30d54571f309407571c227f5d7bf23f06b5e4ad47dee854437dfe112b3b87e4a",
+      "receipt_ref": "P2_EVENT:878f7d29dadfb9faeca3137b6a85cf6c8c77c951ef60b19fe3d136a07cd5fdd5",
       "readset": [
         "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
-        "30d54571f309407571c227f5d7bf23f06b5e4ad47dee854437dfe112b3b87e4a"
+        "878f7d29dadfb9faeca3137b6a85cf6c8c77c951ef60b19fe3d136a07cd5fdd5"
       ],
       "status": "REALIZED",
       "material_eligible": false,
@@ -256,7 +256,7 @@
         "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
         "actor_alias": "A",
         "event_ids": [
-          "TEST_ONLY_BP4_WORLD_EVT_25963b66a23658a35dae5b5d27e2db4ac2ee3e1b08394740c697aabb94f0ae94"
+          "TEST_ONLY_BP4_WORLD_EVT_ce8ccf136952eee7af7fb58733bde636bb60915b3bc77f385d8979779f1c220d"
         ],
         "perceptions": [
           {
@@ -277,10 +277,10 @@
         "batch-1-event-1",
         "batch-1-event-2"
       ],
-      "history_hash": "c01b32520646d0c8a826bd66ea544ccc74d9fd7803b7c1bb203115336b9dad8f",
+      "history_hash": "e349cb5b30eff3eb778a3652b27b0c7cae344d6a631d63c4b12fe6767f4e153e",
       "impressions": [
         {
-          "source_history_hash": "c01b32520646d0c8a826bd66ea544ccc74d9fd7803b7c1bb203115336b9dad8f",
+          "source_history_hash": "e349cb5b30eff3eb778a3652b27b0c7cae344d6a631d63c4b12fe6767f4e153e",
           "status": "RENDER_PROPOSAL_ONLY"
         }
       ]
@@ -292,17 +292,17 @@
         "batch-2-event-1",
         "batch-2-event-2"
       ],
-      "history_hash": "f1b9fe5cd4ddbfca835624d45edc99b06f292f6689dcc7a86897c578b7370204",
+      "history_hash": "161189259a8b62c61d8bb411120608eec528edd5f9c6500a9ea9cd89209ac637",
       "impressions": [
         {
-          "source_history_hash": "f1b9fe5cd4ddbfca835624d45edc99b06f292f6689dcc7a86897c578b7370204",
+          "source_history_hash": "161189259a8b62c61d8bb411120608eec528edd5f9c6500a9ea9cd89209ac637",
           "status": "RENDER_PROPOSAL_ONLY"
         }
       ]
     }
   ],
-  "journal_sha256": "2f31cb4ad9e6a8472feda801f583f3d6cc297bed1bf9115f0b48db9eca6fde3d",
-  "cycle_sha256": "fb5f593d833c01643e701d40bc25aaf4025384c57e753ac7ae1a0ebb5cc72588",
+  "journal_sha256": "8565c5f18a333a9e68b27c583621565266e891ac43584567c1a88c6ca873e68f",
+  "cycle_sha256": "2eba31186416355b05d3728f222d62b63658f0db64e3ad723c2f68b1e29516e5",
   "calls_and_access": "BOOTSTRAP/ORDINARY/TERMINAL once each; no between-event model calls; actual developing-actor perception receipts, not portal-user public view. Cold root/history reopening passes.",
   "actor_access_repair": {
     "prior_subject": "41863919210021eced174ad5abdf49cb2df2042a",
@@ -318,5 +318,12 @@
     "native_history_grounding": "All explicit references preflighted against existing native actor/branch event IDs/hashes and native order before interval effects. Default implicit realized-history selection preserved.",
     "actual_owner_negatives": "Inverted/equal event times and a later bad-history proposal leave snapshot unchanged, interval history empty and owner operation table empty. Both native ID and hash reference forms validate without effects.",
     "tests": "Core/coordinator/owner 68 passed in 21.97s; full70 passed; final expanded native-negative check4 passed in21.86s; cold CLI3+3 events passed."
+  },
+  "context_preflight_repair": {
+    "before": "evidence/context_preflight_before.json: malformed context committed interval clock222\u2192226 before failure",
+    "after": "Actual-owner negative assertions preserve clock/state, zero interval and operation writes for malformed/unknown native contexts. Native null/default validates; actual supported context realizes ADMIT_EVENT and actor experience, material C9 antecedent preserved.",
+    "native_context_owner": "s43.registry.registry_document unit_library, unchanged accepted source",
+    "full_tests": "71 passed in279.35s",
+    "cold_cli": "BOOTSTRAP/ORDINARY/TERMINAL,3+3events,2retrospectives,same root,clock222\u2192258,actor-specific requests,private default output absent"
   }
 }

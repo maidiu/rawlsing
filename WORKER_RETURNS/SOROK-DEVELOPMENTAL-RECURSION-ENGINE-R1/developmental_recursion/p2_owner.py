@@ -85,6 +85,17 @@ class P2Owner:
             raise RecursionRefusal("P2_PARTICIPANT_SCOPE_MISMATCH")
         if set(proposal.circumstances) - {"history_refs", "language_context"}:
             raise RecursionRefusal("P2_UNSUPPORTED_EVENT_CIRCUMSTANCES")
+        if proposal.circumstances.get("language_context") is not None:
+            context = proposal.circumstances["language_context"]
+            if (not isinstance(context, Mapping)
+                    or not isinstance(context.get("milieu_id"), str)
+                    or not context["milieu_id"].strip()):
+                raise RecursionRefusal("P2_LANGUAGE_CONTEXT_SCHEMA")
+            from s43.registry import registry_document
+            contexts = {unit["milieu_id"] for unit in
+                        registry_document()["unit_library"].values()}
+            if context["milieu_id"] not in contexts:
+                raise RecursionRefusal("P2_LANGUAGE_CONTEXT_UNSUPPORTED")
         if isinstance(proposal.event_time, bool) or not isinstance(proposal.event_time, int):
             raise RecursionRefusal("P2_INVALID_EVENT_CLOCK")
         refs = proposal.circumstances.get("history_refs", ())
