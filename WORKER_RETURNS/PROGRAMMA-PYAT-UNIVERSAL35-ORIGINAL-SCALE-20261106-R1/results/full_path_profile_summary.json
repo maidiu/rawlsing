@@ -1,0 +1,40 @@
+{
+  "command": "profile_d_path.py --source-id SRC10 --max-seconds 600 (post release-reuse fix)",
+  "facts_emitted": 0,
+  "maxrss_bytes": 2074533888,
+  "notes": [
+    "Materialize substage prior run: project 51.7s, validate 81.8s, replay 4.4s, total C11 133.6s; SRC10 full path still compile-bound.",
+    "No raw rows/native keys/source bytes published."
+  ],
+  "schema": "PYAT_UNIVERSAL35_D_FULL_PATH_PROFILE_SUMMARY@1",
+  "scope": "LOCAL_ENGINEERING_RAW_FULL_SELECTED_PLAN_DIAGNOSTIC_NOT_NATIVE_SCIENCE",
+  "source_id": "SRC10",
+  "stages": [
+    {
+      "stage": "decode_with_source_read_permission",
+      "status": "OK",
+      "wall_s": 1.4314997459296137
+    },
+    {
+      "stage": "bounded_physical_cell_stream",
+      "status": "OK",
+      "wall_s": 0.07758814096450806
+    },
+    {
+      "maxrss_bytes": 1342361600,
+      "physical_row_count": 26951,
+      "public_object_count": 242567,
+      "stage": "materialize_native_preimages",
+      "status": "OK",
+      "wall_s": 169.26452343002893
+    },
+    {
+      "note": "still running at profile ceiling; no facts emitted",
+      "stage": "compile_universal_workload",
+      "status": "TIME_LIMIT",
+      "wall_s": 425.861010427936
+    }
+  ],
+  "status": "TIME_LIMIT",
+  "wall_s": 601.8155913860537
+}

@@ -1,0 +1,31 @@
+{
+  "error": "TimeoutError:PROFILE_TIME_LIMIT",
+  "maxrss": 1636061184,
+  "schema": "PYAT_UNIVERSAL35_MATERIALIZE_SUBSTAGE_PROFILE@1",
+  "source_id": "SRC09",
+  "status": "TIME_LIMIT",
+  "substages": [
+    {
+      "cpu_s": 0.4896409999999989,
+      "maxrss_after": 560254976,
+      "maxrss_before": 490487808,
+      "row_count": 20667,
+      "rss_after": 560189440,
+      "rss_before": 489209856,
+      "stage": "_row_cells",
+      "status": "OK",
+      "wall_s": 0.49595653696451336
+    },
+    {
+      "cpu_s": 0.004457000000002154,
+      "maxrss_after": 560254976,
+      "maxrss_before": 560254976,
+      "rss_after": 560128000,
+      "rss_before": 560107520,
+      "stage": "build_authority_set",
+      "status": "OK",
+      "wall_s": 0.006561650894582272
+    }
+  ],
+  "wall_s": 347.3325102950912
+}

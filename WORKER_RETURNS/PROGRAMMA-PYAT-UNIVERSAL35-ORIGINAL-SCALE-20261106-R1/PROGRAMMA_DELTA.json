@@ -1,0 +1,42 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "identity": {
+    "branch": "codex/pyat-universal35-original-scale-20261106-r1",
+    "base": "f295f90f2dc2202055ddf21b575776621260b118",
+    "code_head": "8c5e8236ba08dca9d2e5921f938b3ce3d480e3bc"
+  },
+  "status": "PARTIAL_REUSE_ACCEPTED_SCOPED__FULL_PLAN_HOLD",
+  "function": "Attach an already validated C11 release to the selected physical stream and reuse it in the existing repository build; optionally consume exact caller coordinate rules in native preimage materialization.",
+  "actual_measurements": {
+    "SRC10": {
+      "decode_wall_s": 1.4314997459296137,
+      "stream_wall_s": 0.07758814096450806,
+      "materialize_wall_s": 169.26452343002893,
+      "materialize_public_objects": 242567,
+      "compile_universal_workload_wall_s_at_ceiling": 425.861010427936,
+      "total_wall_s": 601.8155913860537,
+      "peak_rss_bytes": 2074533888,
+      "facts_emitted": 0
+    },
+    "SRC09": {
+      "materialize_wall_s_at_ceiling": 347.3325102950912,
+      "peak_rss_bytes": 1636061184,
+      "facts_emitted": 0
+    }
+  },
+  "bottleneck": "First C11 projection/validation and repeated full-projection/catalog envelope construction in compile_universal_workload; prebuilt release reuse removes only the second repository C11 rebuild.",
+  "coordinate_consumer": "Optional exact caller-provided CoordinateSlotRule sequence; actual SRC15 D join NOT_RUN; default legacy copy-observed fallback unchanged for backward compatibility.",
+  "limits": [
+    "No genuine native facts emitted on full SRC09/SRC10 plan",
+    "No all35, 16-GiB or native/science/actor claim",
+    "D must batch/share compile catalog/envelope and pass exact A coordinate rules",
+    "Independent review required; no protected merge"
+  ],
+  "evidence": [
+    "results/full_path_profile_summary.json",
+    "results/SRC10_materialize_profile.json",
+    "results/SRC09_materialize_profile.json",
+    "results/scale_tests.log",
+    "results/d_execution_quick_tests.log"
+  ]
+}
