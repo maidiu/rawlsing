@@ -58,3 +58,8 @@ Lifecycle79b90e4a57cbd1b738a9b9484677736d1b6415ab independently ACCEPT_SCOPED_TE
 - `sorok-p2-programma-return-intake-20261105-r1`: launched existing controller/session; PID84924 observed live without terminal receipt; exact prompt and binding in controller job directory.
 
 Fan-in scope: one compatible same-root product CLI with lifecycle, qualified interval activity and later-event consumers. Separate independent review checks actual action/perception distinction and source-cut/cold boundaries. Guide worker owns direct affected-record write-through on existing PROGRAMMA branch; no competing guide edits. PR697/protected branch unchanged; no native/human/B grants.
+
+
+### PROGRAMMA P2 intake publication and receiving continuation
+
+Actual guide worker return35ae6f9aeaa5437ec497b44bbd044d32f76d4b0a remote-verified and received: existing00/07/08/09/10/14/15 now distinguish lifecycle scoped independent acceptance, interval/later author-tested candidates, running fan-in/review, and guide/protected/native/human holds. Canonical verifier PASS attributed to worker, no product rerun. Existing guide worker resumed as `sorok-programma-selective-receiving-20261105-r1` to stage the smallest compatible existing-record patch against live PRE-MAIN, preserving other owners/newer fields, or name exact indispensable predecessor. This advances actual pending guide receiving; no protected merge authorized. Product fan-in and independent causal review continue separately.
