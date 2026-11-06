@@ -383,6 +383,124 @@ def test_production_zero_positive_guard_still_denies():
     assert decision.zero_effect
 
 
+def test_per_event_mediator_grade_counts_only_new_committed_targets(tmp_path):
+    positive, positive_engine, positive_result, _, _ = scenario(
+        tmp_path, "event-delta-positive"
+    )
+    control, control_engine, control_result, _, _ = scenario(
+        tmp_path, "event-delta-control", journal_only=True
+    )
+    try:
+        expected_positive = [
+            "TEST_ONLY_B1_V3MS_MEDIATOR",
+            "TEST_ONLY_VALID_EMPTY_NO_NEW_MEDIATOR",
+            "TEST_ONLY_VALID_EMPTY_NO_NEW_MEDIATOR",
+        ]
+        first_mediators = positive_result["records"][0]["consequences"][
+            "new_middle_state_record_hashes"
+        ]
+        assert len(first_mediators) == 1
+        for index, record in enumerate(positive_result["records"]):
+            consequence = record["consequences"]
+            assert consequence["durable_psychological_transition"] == expected_positive[index]
+            assert len(consequence["new_middle_state_ids"]) == (1 if index == 0 else 0)
+            assert len(consequence["new_middle_state_record_hashes"]) == (
+                1 if index == 0 else 0
+            )
+        assert positive_result["records"][1]["status"] == "NO_CHANGE"
+        assert positive_result["records"][1]["consequences"][
+            "middle_state_record_hashes"
+        ] == first_mediators  # retained historical state, not a newly created target
+        assert positive_result["records"][2]["consequences"][
+            "recruited"
+        ] == first_mediators
+        assert positive_result["records"][2]["consequences"][
+            "practical_activity"
+        ] == ["joint_check:caretaker"]
+        for record in control_result["records"]:
+            consequence = record["consequences"]
+            assert consequence["durable_psychological_transition"] == (
+                "TEST_ONLY_JOURNAL_ONLY_NO_DURABLE_EFFECT"
+            )
+            assert consequence["new_middle_state_ids"] == []
+            assert consequence["new_middle_state_record_hashes"] == []
+            assert consequence["middle_state_record_hashes"] == []
+            assert record["status"] == "IMMEDIATE_ONLY"
+        assert control_result["records"][2]["consequences"][
+            "practical_activity"
+        ] == ["inspect_alone:caretaker"]
+    finally:
+        positive_engine.close()
+        control_engine.close()
+        positive.close()
+        control.close()
+
+
+@pytest.mark.parametrize("journal_only", [False, True])
+def test_cold_reopen_mode_binding_refuses_flip_and_preserves_future_writes(
+    tmp_path, journal_only
+):
+    suffix = "journal" if journal_only else "committed"
+    db = tmp_path / ("bound-" + suffix + ".sqlite")
+    root = "root-bound-" + suffix
+    owner = B1Owner(db, root=root, journal_only=journal_only)
+    try:
+        before = owner.snapshot()
+        source_ref = owner.source_ref
+    finally:
+        owner.close()
+    with pytest.raises(RecursionRefusal, match="B1_OWNER_EXECUTION_MODE_MISMATCH"):
+        B1Owner(db, root=root, journal_only=not journal_only)
+    owner = B1Owner(db, root=root, journal_only=journal_only)
+    try:
+        assert owner.snapshot() == before
+        event1, event2, event3 = make_proposals(source_ref)
+        first = owner.realize("cold-e1", event1, before)
+        assert first.consequences["durable_psychological_transition"] == (
+            "TEST_ONLY_JOURNAL_ONLY_NO_DURABLE_EFFECT" if journal_only
+            else "TEST_ONLY_B1_V3MS_MEDIATOR"
+        )
+    finally:
+        owner.close()
+    # A second cold continuation keeps the same immutable execution policy.
+    owner = B1Owner(db, root=root, journal_only=journal_only)
+    try:
+        middle = owner.realize("cold-e2", event2, owner.snapshot())
+        final = owner.realize("cold-e3", event3, owner.snapshot())
+        assert middle.consequences["new_middle_state_ids"] == []
+        assert final.consequences["new_middle_state_ids"] == []
+        assert final.consequences["practical_activity"] == (
+            ["inspect_alone:caretaker"] if journal_only
+            else ["joint_check:caretaker"]
+        )
+        assert len(owner.state()["middle"]) == (0 if journal_only else 1)
+        assert owner.db.execute(
+            "SELECT COUNT(*) FROM b1_operations WHERE status='COMPLETE'"
+        ).fetchone()[0] == 3
+    finally:
+        owner.close()
+
+
+def test_mode_metadata_tamper_refused_and_exactly_restored(tmp_path):
+    db = tmp_path / "mode-tamper.sqlite"
+    owner = B1Owner(db, root="root-mode-tamper", journal_only=False)
+    try:
+        before = owner.snapshot()
+        owner.db.execute(
+            "UPDATE b1_owner_meta SET journal_only=1 WHERE id=1"
+        )
+        owner.db.commit()
+        with pytest.raises(RecursionRefusal, match="B1_OWNER_EXECUTION_MODE_MISMATCH"):
+            owner.snapshot()
+        owner.db.execute(
+            "UPDATE b1_owner_meta SET journal_only=0 WHERE id=1"
+        )
+        owner.db.commit()
+        assert owner.snapshot() == before
+    finally:
+        owner.close()
+
+
 def test_adapter_grade_and_source_pin_are_declared():
     assert GRADE == "TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE"
     assert OPERATION == "B1_RESPOND"
