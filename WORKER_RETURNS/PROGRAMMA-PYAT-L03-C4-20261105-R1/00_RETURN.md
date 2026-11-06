@@ -10,7 +10,7 @@
 **Previous implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
 **Capacity implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
 **Compressed-body implementation/test SHA:** `02c1200b82b8397e551817e8e4cf2c6763413189`
-**Compressed-body evidence commit:** `__COMPRESS_EVIDENCE_SHA__`
+**Compressed-body evidence commit:** `1f939152a3118e43e47c6f5799d7a1f7d5f356ff`
 **Capacity evidence commit:** `2a41b4682cfbbdc2b5e12ba71d114adb431c670f`
 **Allocation evidence commit:** `a41a40a4021da2a7d926a930813f385e045d006e`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
