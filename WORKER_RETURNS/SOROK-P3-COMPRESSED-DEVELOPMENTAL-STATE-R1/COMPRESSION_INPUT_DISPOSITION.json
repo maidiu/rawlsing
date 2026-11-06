@@ -1,0 +1,25 @@
+{
+  "schema": "SOROK_P3_COMPRESSION_INTAKE@1",
+  "return": "816c4380208a494acd25fd74d49f79041c1765f7",
+  "artifact_code_commit": "755836fe5b11352a2d092819b1c741ab51d2f0e8",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-compression-evidence-r1/completion.json",
+  "verified": {
+    "exit": 0,
+    "manifest_files": 10,
+    "exclusive_paths": 11,
+    "remote_head": true
+  },
+  "author_evidence": "22 passed in0.11s on compact documents, not actual P2 compatibility",
+  "hq_disposition": "REVISE_ACTUAL_P2_PERCEPTION_BINDING",
+  "demonstrated_defect": {
+    "location": "p3/compression.py::_perception_refs/bind",
+    "actual_E1_id": "TEST_ONLY_BP2_E1_OCC-0002",
+    "actual_action_id": "TEST_ONLY_BP4_WORLD_EVT_faedb3e061234e898bc9668e752377efe9b86b0575e5bc6369bb7e01acb4dc2a",
+    "actual_actor_projection": "OBSERVED; action ID present, actual perception at228",
+    "candidate_result": "HELD/ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT",
+    "cause": "Compares actor perception event IDs to E1 occurrence ID instead of its actual E1/action-hash-bound action_event_id",
+    "evidence": "evidence/compression_intake_actual.json"
+  },
+  "required_repair": "Follow actual E1->action_id/action_hash->developing actor perception relationship without accepting arbitrary unrelated or user-only receipt; preserve actual clock/source/identity checks and existing native/privacy boundaries. Actual P2 positive must bind; absent or substituted receipt must fail/hold. No other scope expansion.",
+  "next": "Same qualified author bounded native-binding repair; preserve original author return unchanged and final integrated independent review requirement."
+}
