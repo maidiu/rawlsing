@@ -1993,3 +1993,12 @@ Gdcbb8b1bcfcf7ff2dd34492c55e40ba4f2fca108 atDcca6f2b0b46029b0684f539dd58b0f6b0e6
 OriginalDvalue-selectionjobpyat-universal35-exact-condition-value-repair-20261106-r1 PID91953 underca258c690 carriesexactvalues/selectedexistingErows/coldconsumer/distinctrequestselectionidentity anduniqueRAWmeasurebinding. Fexistingdraftrefreshjobpyat-universal35-draft713-qualified-refresh-20261106-r1 PID91959 updatesSAMEPR713withonlyGqualifiedD70c9R10 andFqualifiedAcoordinatebc847+testrestorec84, preservesfreshprotected/newerCcompact, excludesunreviewedR11+joint/Cperf. Cactualscalecontinues,threeusefullanes.
 
 PROGRAMMA_DELTA: exactG/Dabove advancesdirectionaxiswhilevalue-specificrequest/Esemanticsheld; S06/S-F5/gap/work-now/currentpair written through. Actualoriginalfacts0/positivefullrequestedconditionalhandoffNOT_VERIFIED/nativeS3/science/protectedadoptionwithheld; draft713stillpendingrefreshandownerCAS. NextDexactvaluebinding+review,Cactualprofile/repair,qualifiedcomponentintegration.
+
+
+### Exact conditioner-value author repair returned; independent closure running
+
+D `7cafd1fd3830454ad4833ba98a7d68eb1a9e610f` / implementation `6c66654c7f2882b94b9ad8a74ee438c77844af2f` carries requested values into the transport and selects existing E profile rows through `consume_requested_joint_transport`. Author 2 tests PASS in 3.07s: A=0 denominator6 counts6/0; A=1 denominator6 counts2/4, shared backing joint and distinct selected-result identities; reverse direction, changed input/restore and exact unique RAW measure checks. Author evidence only. Prior G R12 value-selection failure remains historical evidence.
+
+G review `pyat-universal35-d-r13-value-independent-closure-20261106-r1` PID93537 is durably launched against frozen D head under commission `5569784c9d6bda788c0f3c2ab88ee44e3f010fea`; cold-process selection, request/envelope identity, canonical values and exact measure binding await actual verdict. F PR713 qualified refresh and C physical scale repair remain assigned independently. No duplicate D launch.
+
+PROGRAMMA_DELTA: original D author and independent G reviewer retained; existing S06/S-F5 component/seam/gap/work-now/current records updated to returned candidate. Original empirical facts remain zero; native/scientific/protected acceptance unchanged. Next receive these three existing lanes, integrate only qualified results.
