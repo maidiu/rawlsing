@@ -71,6 +71,20 @@ def _dref(kind: str, ns: str, material: Any) -> ExactRef:
     return ExactRef(kind, f"urn:rawlsing:pre553:c05r2a:{ns}:sha256:{h}", h)
 
 
+def _fast_json_hash(value: Any) -> str:
+    """Hash JSON-shaped event material without repeating semantic dataclass walks."""
+    import json
+    return hashlib.sha256(json.dumps(
+        value, sort_keys=True, separators=(",", ":"),
+        ensure_ascii=False, allow_nan=False,
+    ).encode("utf-8")).hexdigest()
+
+
+def _fast_dref(kind: str, ns: str, material: Any) -> ExactRef:
+    h = _fast_json_hash(material)
+    return ExactRef(kind, f"urn:rawlsing:pre553:c05r2a:{ns}:sha256:{h}", h)
+
+
 def _auths(values: Iterable[AuthorityRef]) -> tuple[AuthorityRef, ...]:
     return tuple(sorted(set(values), key=lambda x: x.key))
 
@@ -400,8 +414,8 @@ def _event(source_sha, row, respondent, slot, cell, value, occ, p, owner_authori
                 "slot": slot.slot.key, "physical_value_key": value.physical_key, "occurrence": occ.key}
     if owner_authority_refs:
         material["slot_owner_authority_refs"] = [x.as_dict() for x in owner_authority_refs]
-    group = semantic_hash({**material, "role": "GROUP"})
-    eid = semantic_hash({**material, "role": "EVENT"})
+    group = _fast_json_hash({**material, "role": "GROUP"})
+    eid = _fast_json_hash({**material, "role": "EVENT"})
     auths = [p.projection_authority_ref, authority_ref(q.semantic_authority_ref, "question semantic authority"),
              authority_ref(q.topology_authority_ref, "question topology authority"), *value.extra_authority_refs,
              *owner_authority_refs]
@@ -410,7 +424,7 @@ def _event(source_sha, row, respondent, slot, cell, value, occ, p, owner_authori
     component = occ.component_ref or _opt_ref(q.component_subitem_ref_or_typed_absence, "component")
     return RespondentEvent(
         typed_state=value.response_state, authority_snapshot_refs=_auths(auths), dependency_refs=_refs((respondent.ref, q.ref)),
-        producer_replay_locator_or_reference_root=_dref("PRE553_C05R2A_EVENT_REPLAY_ROOT", "event", material),
+        producer_replay_locator_or_reference_root=_fast_dref("PRE553_C05R2A_EVENT_REPLAY_ROOT", "event", material),
         empirical_universe_ref=respondent.empirical_universe_ref, scoped_respondent_ref=respondent.ref,
         native_question_ref=q.native_question_ref,
         canonical_question_ref_if_authorized=_opt_ref(q.canonical_question_ref_or_typed_absence, "canonical question"),

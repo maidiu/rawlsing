@@ -3,7 +3,7 @@ from dataclasses import replace
 import pytest
 
 from rawlsing_next import pre553_source_backed_c11_facade as facade
-from rawlsing_next.pre553_empirical_objects import ExactRef
+from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
 from rawlsing_next.pre553_physical_decoder import PhysicalMissingState, decode_sav
 from rawlsing_next.pre553_source_backed_c11_facade import (
     CoordinateValueRule,
@@ -23,6 +23,26 @@ from rawlsing_next.tests.test_universal_source_projection import (
 )
 
 AS_OF = "2026-11-06"
+
+
+def test_fast_event_material_hash_matches_semantic_identity():
+    material = {
+        "contract": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+        "projection": {"kind": "C11_SEMANTIC_PROJECTION", "object_id": "source",
+                       "content_hash": "a" * 64},
+        "source_sha": "b" * 64,
+        "row": 7,
+        "respondent": {"kind": "RespondentIdentity", "object_id": "r",
+                       "content_hash": "c" * 64},
+        "question": {"kind": "QUESTION_NATIVE", "object_id": "q",
+                     "content_hash": "d" * 64},
+        "slot": (3, "X"),
+        "physical_value_key": "e" * 64,
+        "occurrence": "urn:occurrence:0",
+        "slot_owner_authority_refs": [{"authority_id": "A", "authority_version": "1",
+                                       "authority_content_hash": "f" * 64}],
+    }
+    assert facade._fast_json_hash(material) == semantic_hash(material)
 
 
 def test_materialize_prebuilt_release_is_reused_by_repository(tmp_path, monkeypatch):
