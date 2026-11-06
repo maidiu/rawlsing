@@ -2094,3 +2094,12 @@ F `ca679db10a569adfb02410474b60478aba1d13f6` atD4b1d2ec8 independentlyPASS cold 
 Required fixes: cited A c84 restoredtestmodule absent inD; source-mismatch refusal at original8c5hook/caller unproved. Existing D R16 jobpyat-universal35-d-r16-expected-rule-join-20261106-r1 PID4408 launched under60900e7c5 to receive exact13tests and forward independently factory-selected expected_coordinate_rule with rules at actual source-SHA/config-bound caller; compose exact C10e candidate as UNACCEPTED pendingA review, no new nameheuristic/sourcegrant. A C review and G compileengineering remain active, three useful lanes.
 
 PROGRAMMA_DELTA: existing FieldForge/native/physical component/seam/gap/work-now/current records split independent cold-consumerPASS from caller/dependencyREVISE and named nextowner/API. Originalfacts0/nativeS3/scientific/protectedstatus unchanged;PR713 scoped frozen acceptance unaffected. Next exact caller repair and qualified adapter composition, then authentic original execution; no fullestate or unchanged600s retry.
+
+
+### Actual compiler sharing code returned; exact-identity review running
+
+G `a14306978bd1be54f87dae2de3f73712043e9ea9` changes existing universal-workload/native-binding/issued-envelope code: one PreparedProjectionCatalog per compile instead of per response value, per-value query/catalog/issued jobs retained; per-workload prepared envelope material, no global cache/new compiler. Controlled ten-value preparation10->1,compile0.09481->0.08208s,execution0.64349->0.46272s,10facts/10receipts/0failures with author exact identity hashes. Changedinput/restore andbundle/asofrefusal pass. Author2+16+8testsPASS, originalSRC09/SRC10 not retimed.
+
+F nonauthor reviewpyat-universal35-compile-reuse-independent-review-20261106-r1 PID5143 launched under55f57a4c1 atfrozena1430697. Checks genuine old/new baseline, numerical/issued/replay/refusal identities, prepared projection/catalog authority/currentness and mutable material divergence, proportional sever/restore. G is author of this code and cannot review it. A C validation review and D R16 caller repair continue, three useful lanes.
+
+PROGRAMMA_DELTA: existing physical/native component/seam/gap/work-now/current records add actual compiled producer/firstconsumer and bounded measured sourcefree candidate. Originalfacts0/fullSRC10+SRC09 negatives retained;no originalscale/performance/native/science/protected acceptance or PR713scopechange. Next independent review and qualified C/D/compiler composition, then genuine original supported plan execution.
