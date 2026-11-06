@@ -89,3 +89,20 @@ One short paragraph/table in *existing* next-work/flight record per chosen targe
 - **E3 four locators + owner court:** [current effective-N](SECTIONS/04_F1_F4_EMPIRICAL.md), [D05 narrow adapter](SECTIONS/09_N9_WORLD.md), [PR563 genealogy](CROSS_PLAN_IDS.md), [PR602 decoder](SECTIONS/03_ROUTE_B_C11.md) are already present code/identity. R157 P6 independent nonrespondent fixture-preparation PASS does **not** place source configuration factory on current protected cut. R09 R00/D7 improvements are branch-only and **D1/D4 host held**.
 
 **Codex can select** exact documentary ABI comparisons (B49/G50/I51→R03, J04/K04), nominated narrow sourcefree engineering proof/repair after selecting a real first consumer and owner-authorized S2 path, reuse of protected F018/C3, and no-action when current function suffices. **Codex cannot self-issue** original35 eligibility/native data, F1–F8 theory or transport, real N9/N10W source rights, R09 host/parent trust, all35 N11 or N12/Sorok actor decisions. [Full packet and first-test examples](../../../WORKER_RETURNS/PROG5_NEXT_R_RECEIVING_R1/HQ_AUTONOMY_HANDOFF.md) belong to this receiving branch and remain **unreviewed** until independent E-F.
+
+
+## L01 sourcefree consumer return — 2026-11-05
+
+Candidate: `codex/programma-pyat-l01-sourcefree-consumer-20261105-r1`, protected
+base `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`. The existing R08 first reader
+now feeds exact signed request/evidence identities and counts into the reviewed
+R118 world-conditioned native nonparent assertion. Current source replaces the
+P41 runtime Git archive dependency. R08's multi-conditioner leaf association is
+repaired by exact coordinate; single-conditioner compatibility is retained.
+
+Evidence and exclusive file custody:
+`WORKER_RETURNS/PROGRAMMA-PYAT-L01-SOURCEFREE-CONSUMER-20261105-R1/`.
+Next action: independent I3+/High R01 review of the frozen code and cold replay;
+protected receiving belongs to its competent owner. Original35, scientific
+meaning, N11/N12, Sorok and actor rights remain held. No other lane is dispatched
+or represented as running by this return.

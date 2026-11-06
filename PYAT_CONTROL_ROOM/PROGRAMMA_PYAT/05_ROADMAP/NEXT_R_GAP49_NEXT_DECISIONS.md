@@ -59,3 +59,21 @@
 **Class counts, E2's candidate judgment:** 31 `OWNER_DECISION_THEN_EXACT_CONSUMER`, 2 `EXACT_ABI_COMPARE`, 2 `EXACT_HISTORICAL_COMPARE`, 2 `NO_DUPLICATE_SOURCEFREE_P41`; all remaining single or narrow actions retain their original explicit classification. This is not a critical path derived from counts. [E2 nine finite terminal unlocks](https://github.com/maidiu/rawlsing/blob/34f1071496675096ab6c326597752e17b2b96df2/WORKER_RETURNS/PROG5_NEXT_E2_PRIORITY_SUBLATION_R1/TOP_TERMINAL_UNBLOCKS.md), [five-test law](../05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md) and [15 function succession cases](https://github.com/maidiu/rawlsing/blob/34f1071496675096ab6c326597752e17b2b96df2/WORKER_RETURNS/PROG5_NEXT_E2_PRIORITY_SUBLATION_R1/HISTORICAL_SUCCESSION_FIVE_TEST_COURT.jsonl) are the precise selectable comparison packet. The independent review and competent original/host/Sorok authority remain separate.
 
 [Whole guide](README.md) · [82 later edges](NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) · [Prerequisite/reverse-unlock guide](PREREQUISITES_AND_UNLOCKS.md).
+
+
+## L01 candidate delta — sourcefree first consumer, independent R01 pending
+
+The isolated L01 branch `codex/programma-pyat-l01-sourcefree-consumer-20261105-r1`
+connects admitted R08 readers to the reviewed R118 world-conditioned path and
+current repository-owned P41/E04 source. Exact receipts and replay instructions:
+`WORKER_RETURNS/PROGRAMMA-PYAT-L01-SOURCEFREE-CONSUMER-20261105-R1/`.
+
+- GAP-041/043: actual sourcefree signed-evidence + selected-world first reader
+  is author-tested; independent R01 and protected receiving remain pending.
+- GAP-044: complete cells, observed zero and route-probability null are preserved
+  at that bounded first consumer; no original science conclusion follows.
+- GAP-045/047/048: model/use issuance, original35 evidence, N11/N12 and actor
+  decisions remain with their existing competent owners.
+
+This delta changes neither existing GAP identity nor architectural predicates,
+and makes no native or formal acceptance claim.

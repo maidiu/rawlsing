@@ -7,3 +7,14 @@
 6. Source checks: 136 internal Markdown links previously zero broken; the appended NAVIGATION_CHECKS/README changes link to existing guide paths; 27/28 historical G1-A source paths verified at stated cuts, F6M path corrected to actual pending branch candidate.
 7. Remaining work is *not G2*: independent receiving sample, subsequent full GitHub code/asset attaching and maturity/seam sweep; optional targeted Library/mainMac only after material GitHub completion.
 8. Continue at [`WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md`](../../../WORKER_RETURNS/PROG5_G2_COMPLETE_ROUGH_ROADMAP_R1/00_RETURN.md) and `README.md`; do not self-accept, commission further map authors or run source-native work from this guide.
+
+
+### L01 resume checkpoint — 2026-11-05
+
+Resume candidate `codex/programma-pyat-l01-sourcefree-consumer-20261105-r1` at
+`WORKER_RETURNS/PROGRAMMA-PYAT-L01-SOURCEFREE-CONSUMER-20261105-R1/00_RETURN.md`.
+Sourcefree first consumer and current executable closure are author-verified;
+independent R01 acceptance and protected receiving are pending. Do not restart
+R08/R118 discovery or rewrite the binder. Review the exact coordinate-association
+repair, current P41 subset and the same signed evidence/native consumer trace.
+No original-source, scientific or actor authority is added.
