@@ -5,7 +5,7 @@ generated-position mapping, actor/V3/V2 state, rendering, legacy fallback or cut
 """
 from __future__ import annotations
 
-from typing import Iterable, Mapping
+from typing import Any, Iterable, Mapping
 
 from rawlsing_next._pre553_query_common import (
     AuthorityRef,
@@ -38,6 +38,13 @@ from rawlsing_next._pre553_query_eval import (
     _build_fact,
     _build_negative_fact,
     _evaluate_index_group,
+    _evaluate_index_group_core,
+    _group_core_fingerprint,
+    _materialize_grouped_evaluation,
+    _predicate_identity,
+    _registry_fingerprint,
+    _respondent_root,
+    _target_plan_identity,
 )
 from rawlsing_next._pre553_query_predicate import (
     _build_release_index,
@@ -431,6 +438,250 @@ def _require_exact_i03_authority_fitness(
         )
 
 
+class I03GroupedExecutionScope:
+    """Finite, execution-local reuse of exact measure-independent I03 cores.
+
+    The scope is a context-managed, nonauthoritative memo owned by one workload
+    execution. It stores only routing/risk membership, condition truth, exact
+    target cell resolution, and the used object/authority material for a
+    demonstrably compatible core. Every operation still validates its own
+    identity, source binding, index attestation, authority/issuance/revocation
+    state, and builds its own native EmpiricalFact, provenance, and replay.
+
+    The core key excludes measure/weight/design deliberately: those determinants
+    do not govern the measure-independent core, and RAW/GOVERNED_WEIGHTED
+    aggregation plus all weight validation is recomputed per operation. No
+    weighted result is cached or reused across measure regimes.
+    """
+
+    _SCHEMA = "PRE553_I03_GROUPED_EXECUTION_SCOPE@1"
+
+    def __init__(
+        self,
+        *,
+        max_groups: int = 64,
+        max_cached_members: int = 500_000,
+    ) -> None:
+        if not isinstance(max_groups, int) or isinstance(max_groups, bool) or max_groups < 1:
+            raise ValueError("max_groups must be a positive integer")
+        if (
+            not isinstance(max_cached_members, int)
+            or isinstance(max_cached_members, bool)
+            or max_cached_members < 1
+        ):
+            raise ValueError("max_cached_members must be a positive integer")
+        self._max_groups = max_groups
+        self._max_cached_members = max_cached_members
+        self._cache: dict[tuple, Any] = {}
+        self._index_identities: dict[int, tuple[Any, tuple]] = {}
+        self._registry_identities: dict[int, tuple[Any, str]] = {}
+        self._closed = False
+        self._stats = {
+            "core_build_attempts": 0,
+            "core_builds": 0,
+            "core_hits": 0,
+            "fingerprint_failures": 0,
+            "capacity_fallbacks": 0,
+            "early_capacity_fallbacks": 0,
+            "fallbacks": 0,
+            "raw_materializations": 0,
+            "weighted_materializations": 0,
+        }
+
+    def __enter__(self) -> "I03GroupedExecutionScope":
+        return self
+
+    def __exit__(self, exc_type, exc, traceback) -> None:
+        self.close()
+
+    def close(self) -> None:
+        self._cache.clear()
+        self._index_identities.clear()
+        self._registry_identities.clear()
+        self._closed = True
+
+    def receipt(self) -> Mapping[str, Any]:
+        return {
+            "schema": self._SCHEMA,
+            "closed": self._closed,
+            "open_groups": len(self._cache),
+            "max_groups": self._max_groups,
+            "max_cached_members": self._max_cached_members,
+            **self._stats,
+        }
+
+    def _index_identity(self, index) -> tuple:
+        entry = self._index_identities.get(id(index))
+        if entry is not None and entry[0] is index:
+            return entry[1]
+        release = index.release
+        identity = (
+            release.release_ref.key,
+            release.semantic_release_hash,
+            release.source_release_manifest_hash,
+            release.replay_manifest.ref.key,
+            index.universe.ref.key,
+            id(index),
+            _respondent_root(index),
+            len(index.respondents),
+            len(index.events_by_respondent),
+            len(index.coordinates_by_respondent),
+            len(index.routing_by_respondent),
+            len(index.weights_by_respondent),
+        )
+        self._index_identities[id(index)] = (index, identity)
+        return identity
+
+    def _registry_identity(self, registry) -> str:
+        entry = self._registry_identities.get(id(registry))
+        if entry is not None and entry[0] is registry:
+            return entry[1]
+        identity = _registry_fingerprint(registry)
+        self._registry_identities[id(registry)] = (registry, identity)
+        return identity
+
+    def _core_key(self, *, index, query, predicate, plan, profile, registry):
+        try:
+            from rawlsing_next.pre553_runtime_context import current_runtime_binding
+
+            runtime_binding = current_runtime_binding()
+        except ImportError:
+            runtime_binding = None
+        if runtime_binding is not None:
+            return None
+        if (
+            index.runtime_authorities is not None
+            or index.runtime_repository is not None
+            or index.runtime_predicate_grammar_authority_ref is not None
+        ):
+            return None
+        return (
+            self._SCHEMA,
+            self._index_identity(index),
+            (
+                _exact(query.risk_set_ref, "query.risk_set_ref").key,
+                profile.risk_set_type,
+                profile.source_scope_mode,
+                _exact(
+                    profile.response_state_semantics_ref,
+                    "response_state_semantics_ref",
+                ).key,
+            ),
+            _predicate_identity(predicate),
+            _target_plan_identity(plan),
+            tuple(sorted(
+                _authority(ref, "query.query_authority_refs").key
+                for ref in query.query_authority_refs
+            )),
+            self._registry_identity(registry),
+            "MEASURE_INDEPENDENT_CORE",
+        )
+
+    def _miss_capacity_exhausted(self, cached_members: int) -> bool:
+        """Return True only when no new core can fit the current bounds.
+
+        This is the early cache-MISS guard. An existing cache HIT is always
+        evaluated before this check, so full-capacity cores remain reusable.
+        The member condition is exact only when the already-cached member count
+        has reached the cap; a prospective unknown denominator is still checked
+        after core construction, preserving the honest fallback bound.
+        """
+        return (
+            len(self._cache) >= self._max_groups
+            or cached_members >= self._max_cached_members
+        )
+
+    def evaluate(
+        self,
+        *,
+        index,
+        query,
+        predicate,
+        plan,
+        profile,
+        registry,
+    ):
+        if self._closed:
+            self._stats["fallbacks"] += 1
+            return None
+        try:
+            key = self._core_key(
+                index=index, query=query, predicate=predicate, plan=plan,
+                profile=profile, registry=registry,
+            )
+        except Exception:
+            self._stats["fallbacks"] += 1
+            return None
+        if key is None:
+            self._stats["fallbacks"] += 1
+            return None
+        entry = self._cache.get(key)
+        if entry is not None:
+            if entry.index is not index:
+                self._cache.pop(key, None)
+                self._stats["fingerprint_failures"] += 1
+                return None
+            if _group_core_fingerprint(entry) != entry.fingerprint:
+                self._cache.pop(key, None)
+                self._stats["fingerprint_failures"] += 1
+                return None
+            self._stats["core_hits"] += 1
+            try:
+                evaluation = _materialize_grouped_evaluation(
+                    entry, plan=plan, profile=profile, registry=registry,
+                )
+            except Exception:
+                self._stats["fallbacks"] += 1
+                return None
+            self._stats[
+                "weighted_materializations"
+                if profile.measure_kind == "GOVERNED_WEIGHTED"
+                else "raw_materializations"
+            ] += 1
+            return evaluation
+        cached_members = sum(
+            len(existing.denominator_members) for existing in self._cache.values()
+        )
+        if self._miss_capacity_exhausted(cached_members):
+            self._stats["capacity_fallbacks"] += 1
+            self._stats["early_capacity_fallbacks"] += 1
+            return None
+        self._stats["core_build_attempts"] += 1
+        try:
+            core = _evaluate_index_group_core(
+                index,
+                query=query,
+                predicate=predicate,
+                plan=plan,
+                profile=profile,
+                registry=registry,
+            )
+        except Exception:
+            self._stats["fallbacks"] += 1
+            return None
+        if (
+            len(self._cache) >= self._max_groups
+            or cached_members + len(core.denominator_members) > self._max_cached_members
+        ):
+            self._stats["capacity_fallbacks"] += 1
+            return None
+        self._cache[key] = core
+        self._stats["core_builds"] += 1
+        try:
+            evaluation = _materialize_grouped_evaluation(
+                core, plan=plan, profile=profile, registry=registry,
+            )
+        except Exception:
+            self._stats["fallbacks"] += 1
+            return None
+        self._stats[
+            "weighted_materializations"
+            if profile.measure_kind == "GOVERNED_WEIGHTED"
+            else "raw_materializations"
+        ] += 1
+        return evaluation
+
+
 def execute_empirical_query(
     *,
     repository: C11Repository,
@@ -438,6 +689,7 @@ def execute_empirical_query(
     predicate: EmpiricalPredicate,
     authority_registry: AuthorityRegistry,
     release_refs: Iterable[ExactRef],
+    group_scope: "I03GroupedExecutionScope | None" = None,
 ) -> QueryExecutionResult:
     """Execute one exact P02 query against one exact sealed C11 source scope.
 
@@ -533,6 +785,7 @@ def execute_empirical_query(
                 evaluation = _evaluate_index_group(
                     (index,), query=query, predicate=predicate, plan=plan,
                     profile=profile, registry=authority_registry,
+                    group_scope=group_scope,
                 )
                 fact = _build_fact(
                     (index,), query=query, predicate=predicate, plan=plan,
@@ -558,6 +811,7 @@ def execute_empirical_query(
             evaluation = _evaluate_index_group(
                 indices, query=query, predicate=predicate, plan=plan,
                 profile=profile, registry=authority_registry,
+                group_scope=group_scope,
             )
             facts.append(_build_fact(
                 indices, query=query, predicate=predicate, plan=plan,
@@ -579,6 +833,7 @@ def execute_empirical_query(
             evaluation = _evaluate_index_group(
                 indices, query=query, predicate=predicate, plan=plan,
                 profile=profile, registry=authority_registry,
+                group_scope=group_scope,
             )
             facts.append(_build_fact(
                 indices, query=query, predicate=predicate, plan=plan,
@@ -627,6 +882,7 @@ def replay_empirical_query(
 
 
 __all__ = [
+    "I03GroupedExecutionScope",
     "execute_empirical_query",
     "replay_empirical_query",
     "QueryExecutionResult",

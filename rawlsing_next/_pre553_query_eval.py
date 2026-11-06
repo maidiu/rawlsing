@@ -310,6 +310,319 @@ def _weight_for(
     return value
 
 
+@dataclass(frozen=True)
+class _GroupCore:
+    """Measure-independent exact I03 intermediate for one compatible group.
+
+    This cache stores only routing/risk membership, condition truth, exact target
+    cell resolution, and the used object/authority material for the core. It never
+    stores weighted cells, weighted denominators, query-specific facts, or replay
+    material. RAW/GOVERNED_WEIGHTED aggregation and every native EmpiricalFact are
+    rebuilt per operation from these exact core inputs.
+    """
+
+    index: _ReleaseIndex
+    registry: AuthorityRegistry
+    fact_state: str
+    detail: str
+    risk_members: tuple[ExactRef, ...]
+    denominator_members: tuple[ExactRef, ...]
+    raw_denominator: int
+    raw_resolved_target_support: int
+    raw_cells: Mapping[str, int]
+    cell_material: Mapping[str, Any]
+    cell_by_respondent: Mapping[str, str]
+    used_objects: tuple[Any, ...]
+    used_authority_refs: tuple[AuthorityRef, ...]
+    fingerprint: str
+
+
+def _group_core_fingerprint(core: _GroupCore) -> str:
+    return semantic_hash({
+        "schema": "PRE553_I03_GROUP_CORE@1",
+        "release": core.index.release.release_ref.key,
+        "universe": core.index.universe.ref.key,
+        "fact_state": core.fact_state,
+        "detail": core.detail,
+        "risk_members": [ref.key for ref in core.risk_members],
+        "denominator_members": [ref.key for ref in core.denominator_members],
+        "raw_denominator": core.raw_denominator,
+        "raw_resolved_target_support": core.raw_resolved_target_support,
+        "raw_cells": sorted(core.raw_cells.items()),
+        "cell_material": [
+            (key, canonical_json(value)) for key, value in sorted(core.cell_material.items())
+        ],
+        "cell_by_respondent": sorted(core.cell_by_respondent.items()),
+        "used_objects": [obj.ref.key for obj in core.used_objects],
+        "used_authority_refs": [ref.key for ref in core.used_authority_refs],
+    })
+
+
+def _respondent_root(index: _ReleaseIndex) -> str:
+    return semantic_hash([
+        respondent.ref.as_dict()
+        for respondent in sorted(index.respondents.values(), key=lambda item: item.ref.key)
+    ])
+
+
+def _predicate_identity(predicate: EmpiricalPredicate) -> tuple[str, str]:
+    return predicate.ref.key, _authority(
+        predicate.grammar_authority_ref, "predicate.grammar_authority_ref"
+    ).key
+
+
+def _target_plan_identity(plan: _TargetPlan) -> tuple[Any, ...]:
+    components = tuple(
+        (
+            component.target_ref.key,
+            component.topology,
+            tuple(canonical_json(value) for value in component.domain),
+            component.target_domain_replay_ref.key,
+            tuple(ref.key for ref in component.topology_authority_refs),
+            tuple(ref.key for ref in component.response_semantic_authority_refs),
+            tuple(sorted(component.included_states)),
+        )
+        for component in plan.components
+    )
+    return (
+        plan.domain_identity,
+        plan.joint_order_semantics,
+        components,
+        tuple(canonical_json(value) for value in plan.full_domain),
+    )
+
+
+def _registry_fingerprint(registry: AuthorityRegistry) -> str:
+    return semantic_hash([
+        snapshot.authority_ref.as_dict()
+        for snapshot in sorted(
+            registry._by_key.values(), key=lambda item: item.authority_ref.key
+        )
+    ])
+
+
+def _evaluate_index_group_core(
+    index: _ReleaseIndex,
+    *,
+    query: EmpiricalQuerySpec,
+    predicate: EmpiricalPredicate,
+    plan: _TargetPlan,
+    profile: _ExecutionProfile,
+    registry: AuthorityRegistry,
+) -> _GroupCore:
+    """Compute the exact measure-independent I03 core for one release index."""
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_binding
+
+        runtime_binding = current_runtime_binding()
+    except ImportError:
+        runtime_binding = None
+    if runtime_binding is not None:
+        raise EmpiricalQueryExecutionError(
+            "grouped I03 core is not shared under an opt-in runtime successor binding"
+        )
+    if (
+        index.runtime_authorities is not None
+        or index.runtime_repository is not None
+        or index.runtime_predicate_grammar_authority_ref is not None
+    ):
+        raise EmpiricalQueryExecutionError(
+            "grouped I03 core requires an unmodified sealed release index"
+        )
+
+    risk_set_ref = _exact(query.risk_set_ref, "query.risk_set_ref")
+    raw_cells = {canonical_json(cell): 0 for cell in plan.full_domain}
+    cell_material = {canonical_json(cell): cell for cell in plan.full_domain}
+    cell_by_respondent: dict[str, str] = {}
+    used: list[Any] = _UsedObjectAccumulator()
+    used_auth: list[AuthorityRef] = _UsedAuthorityAccumulator()
+    risk_members: list[ExactRef] = []
+    denominator_members: list[ExactRef] = []
+    raw_resolved = 0
+    inapplicable_count = 0
+    component_positive = [False] * plan.arity
+    derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
+
+    used.extend([index.universe, index.release.replay_manifest])
+    used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+    for respondent in sorted(index.respondents.values(), key=lambda item: item.ref.key):
+        per_target_states: list[str] = []
+        for i, component in enumerate(plan.components):
+            fact = _routing_fact_for(
+                respondent,
+                index,
+                target_ref=component.target_ref,
+                risk_set_ref=risk_set_ref,
+                registry=registry,
+                used=used,
+                used_auth=used_auth,
+            )
+            per_target_states.append(str(fact.routing_state))
+            if fact.routing_state in ELIGIBLE_ROUTING_STATES:
+                component_positive[i] = True
+        member, explicitly_inapplicable = _risk_membership(
+            per_target_states,
+            profile=profile,
+        )
+        if explicitly_inapplicable:
+            inapplicable_count += 1
+        if not member:
+            continue
+        risk_members.append(respondent.ref)
+        condition = _eval_predicate(
+            predicate.predicate_ast,
+            respondent=respondent,
+            index=index,
+            registry=registry,
+            used=used,
+            used_auth=used_auth,
+            derived_branch_memberships=derived_branch_memberships,
+        )
+        if not condition:
+            continue
+        denominator_members.append(respondent.ref)
+        if not plan.full_domain:
+            continue
+        resolved, cell = _target_configuration(
+            respondent,
+            index,
+            plan=plan,
+            registry=registry,
+            used=used,
+            used_auth=used_auth,
+        )
+        if not resolved:
+            continue
+        key = canonical_json(cell)
+        if key not in raw_cells:
+            raise EmpiricalQueryExecutionError(
+                "realized exact target cell is absent from the query-declared full target domain"
+            )
+        raw_resolved += 1
+        raw_cells[key] += 1
+        cell_by_respondent[respondent.ref.key] = key
+
+    risk_refs = _canonical_refs(risk_members)
+    denominator_refs = _canonical_refs(denominator_members)
+    raw_denominator = len(denominator_refs)
+
+    if not risk_refs:
+        if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET" and all(component_positive):
+            state = "ZERO_OVERLAP"
+            detail = "each target has eligible respondents but exact common risk-set overlap is zero"
+        elif inapplicable_count > 0 and inapplicable_count == len(index.respondents):
+            state = "NOT_APPLICABLE"
+            detail = "exact routing/applicability law marks the target inapplicable for the scoped respondent domain"
+        else:
+            state = "ZERO_SUPPORT"
+            detail = "exact risk set resolves to zero members"
+    elif raw_denominator == 0:
+        state = "ZERO_SUPPORT"
+        detail = "exact risk set is nonempty but the condition-selected denominator has zero members"
+    elif not plan.full_domain:
+        state = "VALID_EMPTY"
+        detail = "query-declared exact target domain is empty"
+    elif raw_resolved != raw_denominator:
+        state = "UNRESOLVED"
+        detail = "positive denominator exists but exact target configuration is unresolved for one or more denominator members"
+    else:
+        state = "SUPPORTED"
+        detail = "exact governed target distribution resolved"
+
+    core = _GroupCore(
+        index=index,
+        registry=registry,
+        fact_state=state,
+        detail=detail,
+        risk_members=risk_refs,
+        denominator_members=denominator_refs,
+        raw_denominator=raw_denominator,
+        raw_resolved_target_support=raw_resolved,
+        raw_cells=MappingProxyType(dict(sorted(raw_cells.items()))),
+        cell_material=MappingProxyType(dict(sorted(cell_material.items()))),
+        cell_by_respondent=MappingProxyType(dict(sorted(cell_by_respondent.items()))),
+        used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
+        used_authority_refs=_canonical_authorities(used_auth),
+        fingerprint="",
+    )
+    object.__setattr__(core, "fingerprint", _group_core_fingerprint(core))
+    return core
+
+
+def _validate_group_core_authorities(
+    core: _GroupCore, registry: AuthorityRegistry,
+) -> None:
+    """Revalidate every exact authority used by a shared core on each hit."""
+    for ref in core.used_authority_refs:
+        snapshot = registry.resolve_exact(ref).snapshot
+        if snapshot.typed_state != "ALLOW":
+            raise Pre553AuthorityError(
+                "grouped core authority closure contains a nonpositive exact snapshot"
+            )
+
+
+def _materialize_grouped_evaluation(
+    core: _GroupCore,
+    *,
+    plan: _TargetPlan,
+    profile: _ExecutionProfile,
+    registry: AuthorityRegistry,
+) -> _Evaluation:
+    """Apply this operation's measure/weight law to an exact shared core."""
+    _validate_group_core_authorities(core, registry)
+    if profile.measure_kind == "RAW":
+        return _Evaluation(
+            fact_state=core.fact_state,
+            detail=core.detail,
+            risk_members=core.risk_members,
+            denominator_members=core.denominator_members,
+            raw_denominator=core.raw_denominator,
+            raw_resolved_target_support=core.raw_resolved_target_support,
+            raw_cells=core.raw_cells,
+            cell_material=core.cell_material,
+            weighted_denominator=None,
+            weighted_cells=None,
+            used_objects=core.used_objects,
+            used_authority_refs=core.used_authority_refs,
+        )
+    if profile.measure_kind != "GOVERNED_WEIGHTED":
+        raise EmpiricalQueryExecutionError("unsupported measure kind in grouped materialization")
+    used = _UsedObjectAccumulator()
+    used.extend(core.used_objects)
+    used_auth = _UsedAuthorityAccumulator()
+    used_auth.extend(core.used_authority_refs)
+    weighted_cells = {canonical_json(cell): Fraction(0, 1) for cell in plan.full_domain}
+    weighted_denominator = Fraction(0, 1)
+    for member_ref in core.denominator_members:
+        respondent = core.index.respondents[member_ref.key]
+        weight = _weight_for(
+            respondent,
+            core.index,
+            profile=profile,
+            registry=registry,
+            used=used,
+            used_auth=used_auth,
+        )
+        weighted_denominator += weight
+        cell_key = core.cell_by_respondent.get(member_ref.key)
+        if cell_key is not None:
+            weighted_cells[cell_key] += weight
+    return _Evaluation(
+        fact_state=core.fact_state,
+        detail=core.detail,
+        risk_members=core.risk_members,
+        denominator_members=core.denominator_members,
+        raw_denominator=core.raw_denominator,
+        raw_resolved_target_support=core.raw_resolved_target_support,
+        raw_cells=core.raw_cells,
+        cell_material=core.cell_material,
+        weighted_denominator=weighted_denominator,
+        weighted_cells=MappingProxyType(dict(sorted(weighted_cells.items()))),
+        used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
+        used_authority_refs=_canonical_authorities(used_auth),
+    )
+
+
 def _evaluate_index_group(
     indices: Sequence[_ReleaseIndex],
     *,
@@ -318,7 +631,20 @@ def _evaluate_index_group(
     plan: _TargetPlan,
     profile: _ExecutionProfile,
     registry: AuthorityRegistry,
+    group_scope: Any | None = None,
 ) -> _Evaluation:
+    if group_scope is not None and len(indices) == 1:
+        shared = group_scope.evaluate(
+            index=indices[0],
+            query=query,
+            predicate=predicate,
+            plan=plan,
+            profile=profile,
+            registry=registry,
+        )
+        if shared is not None:
+            return shared
+
     risk_set_ref = _exact(query.risk_set_ref, "query.risk_set_ref")
     raw_cells = {canonical_json(cell): 0 for cell in plan.full_domain}
     cell_material = {canonical_json(cell): cell for cell in plan.full_domain}
@@ -724,4 +1050,10 @@ def _build_negative_fact(
     )
 
 
-__all__ = ["_evaluate_index_group", "_build_fact", "_build_negative_fact"]
+__all__ = [
+    "_GroupCore", "_evaluate_index_group", "_evaluate_index_group_core",
+    "_materialize_grouped_evaluation", "_validate_group_core_authorities",
+    "_group_core_fingerprint", "_respondent_root",
+    "_predicate_identity", "_target_plan_identity", "_registry_fingerprint",
+    "_build_fact", "_build_negative_fact",
+]
