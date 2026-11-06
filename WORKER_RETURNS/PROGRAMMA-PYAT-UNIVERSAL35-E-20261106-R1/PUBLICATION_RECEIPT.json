@@ -5,27 +5,27 @@
   "remote": "origin",
   "branch": "codex/pyat-universal35-e-20261106-r1",
   "base": "d119045f4169439b4ba02d0870bc328f8beb3aaa",
-  "frozen_prior_head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
-  "prior_implementation": "08138f52da1c32b62d28532b87b0cdce340c2bae",
-  "reviewer_g": "e714a5dd3628f3b60ab5b6bdcfeef036ecdabc8f",
-  "prior_verdict": "REVISE_MATERIAL_NARROW",
-  "repair_commit": "7920b7fca4471c035f5b728dace9e1777c68c074",
-  "pushed_at_utc": "2026-11-06T11:50:05Z",
-  "result": "AUTHOR_FOCUSED_PASS_R1_INDEPENDENT_REREVIEW_PENDING",
+  "prior_accepted_repair": "7d1aadfd4f655930ca2e65ea64cfa3df180a5f7b",
+  "prior_implementation": "7920b7fca4471c035f5b728dace9e1777c68c074",
+  "prior_reviewer": "6334063ab290d6497e7b8047eb1292b69661f51e",
+  "adapter_commit": "f708b4688f6aebd408510aa33faca453bd213749",
+  "pushed_at_utc": "2026-11-06T14:00:34Z",
+  "result": "AUTHOR_FOCUSED_PASS_R2_INDEPENDENT_REREVIEW_PENDING",
   "grades": {
-    "engineering": "AUTHOR_FOCUSED_PASS_R1",
+    "engineering": "AUTHOR_FOCUSED_PASS_R2",
     "independent_rereview": "NOT_RUN",
     "native_all35": "NOT_CLAIMED",
     "d_authentic_bind": "NOT_RECEIVED_BY_E"
   },
   "tests": {
-    "ingress": "16 passed",
+    "ingress": "20 passed",
     "existing_owner_regression": "25 passed"
   },
-  "old_head_five_case_red_reproduced": true,
-  "repaired_head_five_cases_refused": true,
+  "envelope_schema": "PRE553_FIELD_FORGE_EMPIRICAL_ENVELOPE@1",
+  "cold_command": "python3 -m rawlsing_next.pre553_field_forge_empirical_ingress --envelope <path>",
+  "direct_equals_subprocess": true,
   "structural_grant": false,
   "protected_write": false,
   "self_acceptance": false,
-  "note": "The receipt commit is a publication child of repair_commit; final branch head is the receipt commit."
+  "note": "The receipt commit is a publication child of adapter_commit; final branch head is the receipt commit."
 }
