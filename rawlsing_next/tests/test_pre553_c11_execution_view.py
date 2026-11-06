@@ -281,3 +281,46 @@ def test_selector_v1_dimensions_and_occurrences_match_native_after_descendant_fa
                         assert [event.ref for event in _select_respondent_events(selected, key, target, **flags)] == [event.ref for event in a]
     with pytest.raises(KeyError):
         tuple(_select_respondent_events(selected, "absent-respondent", next(iter(targets))))
+
+
+def test_compressed_event_bodies_exact_bounded_chunks_and_old_cache_read(tmp_path, monkeypatch):
+    from rawlsing_next import _pre553_c11_execution_view as compact
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+
+    fx = _fixture()
+    expected = build_validated_source_backed_c11_release_from_stream(fx["stream"], fx["projection"])
+    directory = _cache(monkeypatch, tmp_path)
+    observed = _execute(fx)
+    public = observed.c11_release.public_objects
+    assert isinstance(public, compact._CompactPublicObjects)
+    assert isinstance(public.lane.bodies, compact._CompressedBodies)
+    expected_events = {
+        obj.ref.key: obj for obj in expected.public_objects if obj.schema_id == "RespondentEvent"
+    }
+    assert len(public.lane.selectors) == len(expected_events)
+    chunk_rows = []
+    for row, selector in enumerate(public.lane.selectors):
+        rebuilt = public.lane.materialize(row)
+        assert rebuilt.ref == selector.ref
+        assert rebuilt.as_dict() == expected_events[selector.ref.key].as_dict()
+        body = public.lane.bodies.body_bytes(row)
+        assert body == canonical_json(rebuilt.semantic_projection()).encode("utf-8")
+    for compressed, raw_size, start, count in public.lane.bodies.chunks:
+        assert count <= compact._EVENT_BODY_CHUNK_EVENTS
+        assert raw_size > 0
+        chunk_rows.append((start, count))
+    assert sum(count for _, count in chunk_rows) == len(public.lane.selectors)
+    path, = directory.glob("c11-events-*.parquet")
+    schema = pq.read_schema(path)
+    key = schema.metadata[compact._CACHE_METADATA_KEY].decode("ascii")
+    old_rows = pq.read_table(path).to_pylist()
+    old_style = pa.table({
+        compact._EVENT_BODY_COLUMN: pa.array(
+            [row[compact._EVENT_BODY_COLUMN] for row in old_rows], type=pa.binary(),
+        ),
+    }).replace_schema_metadata(schema.metadata)
+    pq.write_table(old_style, path, compression="zstd", compression_level=3)
+    reread = compact._read_bodies(path, key, public.lane.selectors)
+    assert isinstance(reread, compact._CompressedBodies)
+    for row in range(len(public.lane.selectors)):
+        assert reread.body_bytes(row) == public.lane.bodies.body_bytes(row)
