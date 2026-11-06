@@ -252,6 +252,8 @@ class ExactPhysicalCellStream:
     cell_iter_factory: Callable[[], Iterable[PhysicalCell]]
     transport_identity: str = "EXACT_REPLAY_EQUIVALENT_PHYSICAL_CELL_STREAM"
     decoder_metadata_digest: str | None = None
+    prebuilt_release: C11LogicalRelease | None = None
+    prebuilt_projection_identity: str | None = None
 
     def __post_init__(self):
         _sha(self.source_sha256, "source_sha256")
@@ -259,6 +261,12 @@ class ExactPhysicalCellStream:
             _sha(self.decoder_metadata_digest, "decoder_metadata_digest")
         if not isinstance(self.row_count, int) or isinstance(self.row_count, bool) or self.row_count < 0 or not callable(self.cell_iter_factory):
             raise SourceBackedC11FacadeError("invalid exact physical-cell stream")
+        if (self.prebuilt_release is None) != (self.prebuilt_projection_identity is None):
+            raise SourceBackedC11FacadeError("prebuilt release/projection identity must be paired")
+        if self.prebuilt_release is not None:
+            if not isinstance(self.prebuilt_release, C11LogicalRelease):
+                raise SourceBackedC11FacadeError("prebuilt release is not a C11LogicalRelease")
+            _sha(self.prebuilt_projection_identity, "prebuilt_projection_identity")
 
     def iter_cells(self):
         return self.cell_iter_factory()
@@ -601,6 +609,12 @@ def build_validated_source_backed_c11_release(incidence: PhysicalSourceIncidence
 def build_validated_source_backed_c11_release_from_stream(stream: ExactPhysicalCellStream, projection: GovernedC11Projection | None):
     if not isinstance(projection, GovernedC11Projection):
         raise SourceBackedC11FacadeError("explicit governed projection required")
+    if stream.prebuilt_release is not None:
+        if stream.prebuilt_release.source_artifact_ref.content_hash != stream.source_sha256:
+            raise SourceBackedC11FacadeError("prebuilt release source SHA mismatch")
+        if stream.prebuilt_projection_identity != projection.cache_identity:
+            raise SourceBackedC11FacadeError("prebuilt release projection identity mismatch")
+        return stream.prebuilt_release
     candidate = project_c11_candidate_from_physical_cells(source_sha256=stream.source_sha256, row_count=stream.row_count,
                                                            cells=stream.iter_cells(), projection=projection)
     _verify(candidate, projection, stream.source_sha256)
@@ -659,11 +673,18 @@ def build_source_backed_c11_repository(
     key = source_backed_facade_key(source, projection)
     release = cache.get(key) if cache else None
     if release is None:
-        release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
-                   if isinstance(source, PhysicalSourceIncidence)
-                   else build_validated_source_backed_c11_release_from_stream(source, projection)
-                   if isinstance(source, ExactPhysicalCellStream)
-                   else (_ for _ in ()).throw(SourceBackedC11FacadeError("unsupported physical transport")))
+        if isinstance(source, ExactPhysicalCellStream) and source.prebuilt_release is not None:
+            if source.prebuilt_release.source_artifact_ref.content_hash != source.source_sha256:
+                raise SourceBackedC11FacadeError("prebuilt release source SHA mismatch")
+            if source.prebuilt_projection_identity != key.projection_identity:
+                raise SourceBackedC11FacadeError("prebuilt release projection identity mismatch")
+            release = source.prebuilt_release
+        else:
+            release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
+                       if isinstance(source, PhysicalSourceIncidence)
+                       else build_validated_source_backed_c11_release_from_stream(source, projection)
+                       if isinstance(source, ExactPhysicalCellStream)
+                       else (_ for _ in ()).throw(SourceBackedC11FacadeError("unsupported physical transport")))
         def physical_binding():
             decoder_digest = _accelerator_decoder_digest(source)
             if isinstance(source, PhysicalSourceIncidence) and decoder_digest is None:

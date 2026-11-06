@@ -1,5 +1,6 @@
 {
   "factory": {
+    "build_coordinate_slot_rules": "(config: 'SourceConfig | Mapping[str, Any]') -> 'tuple[CoordinateSlotRule, ...]'",
     "build_governed_c11_projection": "(config: 'SourceConfig | Mapping[str, Any]', *, source_sha256: 'str | None' = None, row_count: 'int | None' = None, row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None) -> 'GovernedC11Projection'",
     "build_source_backed_c11_repository_from_config": "(config: 'SourceConfig | Mapping[str, Any]', source: 'ExactPhysicalCellStream | PhysicalSourceIncidence', *, row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None, cache: 'Any' = None, batch_size: 'int' = 10000)",
     "build_validated_c11_release_from_config": "(config: 'SourceConfig | Mapping[str, Any]', *, stream: 'ExactPhysicalCellStream | None' = None, incidence: 'PhysicalSourceIncidence | None' = None, source_sha256: 'str | None' = None, row_count: 'int | None' = None, row_native_keys: 'Mapping[int, ExactRef | TypedAbsence] | None' = None, batch_size: 'int' = 10000)",

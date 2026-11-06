@@ -495,6 +495,15 @@ def build_governed_c11_projection(
     return projection
 
 
+def build_coordinate_slot_rules(config: SourceConfig | Mapping[str, Any]) -> tuple[CoordinateSlotRule, ...]:
+    """Expose the exact configured coordinate rules for the existing owner.
+
+    This is an adapter for the current native-preimage/materialization owner; it
+    adds no coordinate semantics and performs no source I/O.
+    """
+    return _coordinate_slots(_doc(config))
+
+
 # Explicit frozen name used by P0_RETURN.json and source lanes.
 construct_governed_c11_projection = build_governed_c11_projection
 

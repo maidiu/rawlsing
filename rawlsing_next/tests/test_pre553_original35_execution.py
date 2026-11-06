@@ -16,7 +16,7 @@ from rawlsing_next.pre553_original35_execution import (
     Original35ExecutionError, _RecordingResolver,
     execute_native_compiler_source, execute_source,
     consume_requested_joint_transport, execute_requested_two_target_joints,
-    execute_two_target_joint_from_plan,
+    execute_two_target_joint_from_plan, qualified_coordinate_rules,
     load_runtime_binding, write_field_forge_envelopes,
     write_requested_joint_transport,
 )
@@ -400,10 +400,37 @@ def test_existing_joint_engine_exact_requested_conditional_direction(tmp_path):
             consume_requested_joint_transport(
                 broken_path, producer_permission_ceiling=ceiling)
 
+    for label_field, label_value in (
+        ("conditioner_item_id", "fixture.FORGED"),
+        ("target_item_id", "fixture.FORGED"),
+    ):
+        broken = json.loads(Path(summary["path"]).read_text())
+        request = broken["requests"][0]
+        request[label_field] = label_value
+        request["request_binding_id"] = semantic_hash({
+            "requested_operation_id": request.get("requested_operation_id"),
+            "conditioner_item_id": request.get("conditioner_item_id"),
+            "target_item_id": request.get("target_item_id"),
+            "conditioner_values": request.get("conditioner_values"),
+            "conditioner_ref": request.get("conditioner_ref"),
+            "target_ref": request.get("target_ref"),
+            "fact_ref": request["fact_refs"][0],
+            "query_ref": request["query_refs"][0],
+        })
+        broken_path.write_text(json.dumps(broken))
+        consumed_labels = consume_requested_joint_transport(
+            broken_path, producer_permission_ceiling=ceiling)["requests"][0]
+        assert consumed_labels["status"] == "OK"
+        assert consumed_labels["label_authority"] == (
+            "OPAQUE_SOURCE_LABEL_NOT_ROLE_IDENTITY")
+        assert consumed_labels["selections"][0]["selection_material"][
+            "role_identity_source"] == "DECODED_QUERY_TARGET_REFS"
+
     for values, code in (
         ([], "REQUESTED_CONDITIONER_VALUES_EMPTY"),
         ([None], "REQUESTED_CONDITIONER_VALUE_NONCANONICAL"),
         (["UNKNOWN"], "REQUESTED_CONDITIONER_VALUE_NOT_IN_PROFILE"),
+        ([["unhashable"]], "REQUESTED_CONDITIONER_VALUE_UNSUPPORTED"),
     ):
         broken = json.loads(Path(summary["path"]).read_text())
         request = broken["requests"][0]
@@ -423,3 +450,53 @@ def test_existing_joint_engine_exact_requested_conditional_direction(tmp_path):
             broken_path, producer_permission_ceiling=ceiling)
         assert consumed_broken["requests"][0]["status"] == "REFUSED"
         assert consumed_broken["requests"][0]["code"] == code
+
+
+def _coordinate_config(bundle):
+    config = _fixture_config(bundle)
+    config["coordinate_slots"] = [{
+        "slot": {"ordinal": 3, "name": "G"},
+        "native_coordinate_ref": {
+            "kind": "COORDINATE_NATIVE",
+            "object_id": "urn:test:coordinate:G",
+            "content_hash": "a" * 64},
+        "unit_taxonomy_ref": {
+            "kind": "UNIT_TAXONOMY",
+            "object_id": "urn:test:unit:person",
+            "content_hash": "b" * 64},
+        "effective_time": "W1",
+        "source_semantic_authority_ref": {
+            "authority_id": "TEST-COORDINATE",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "c" * 64},
+        "canonical_coordinate_ref": None,
+        "normalization_ref": None,
+        "values": [
+            {"raw_value": 0.0, "missing_state": "OBSERVED_STORAGE_VALUE",
+             "coordinate_state": "OBSERVED_COORDINATE",
+             "canonical_value": "0", "extra_authority_refs": []},
+            {"raw_value": 1.0, "missing_state": "OBSERVED_STORAGE_VALUE",
+             "coordinate_state": "OBSERVED_COORDINATE",
+             "canonical_value": "1", "extra_authority_refs": []}],
+        "copy_observed_raw": False,
+    }]
+    return config
+
+
+def test_factory_coordinate_rules_and_typed_omission(tmp_path):
+    library = SourceConfigLibrary(index_path=INDEX)
+    config = library.load_original("SRC15")
+    coordinate = config.document["coordinate_slots"][0]["slot"]["name"]
+    rules, rule = qualified_coordinate_rules(config, coordinate)
+    assert rules
+    assert rule.slot.name == coordinate
+    assert rule.native_coordinate_ref.object_id
+    assert rule.source_semantic_authority_ref.authority_id
+
+    without = json.loads(json.dumps(config.document))
+    without["coordinate_slots"] = []
+    with pytest.raises(Original35ExecutionError) as exc:
+        qualified_coordinate_rules(without, coordinate)
+    assert "QUALIFIED_COORDINATE_RULE_MATCH_REQUIRED" in str(exc.value)
+    with pytest.raises(Original35ExecutionError):
+        qualified_coordinate_rules(config, "NOT_A_COORDINATE")

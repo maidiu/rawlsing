@@ -568,8 +568,11 @@ def consume_requested_joint_transport(path: str | Path, *,
     for request in document.get("requests", ()):
         entry = {
             "requested_operation_id": request.get("requested_operation_id"),
-            "conditioner_item_id": request.get("conditioner_item_id"),
-            "target_item_id": request.get("target_item_id"),
+            "conditioner_label": request.get("conditioner_label",
+                                             request.get("conditioner_item_id")),
+            "target_label": request.get("target_label",
+                                        request.get("target_item_id")),
+            "label_authority": "OPAQUE_SOURCE_LABEL_NOT_ROLE_IDENTITY",
             "conditioner_values": list(request.get("conditioner_values") or ()),
             "status": request.get("status"),
             "code": request.get("code"),
@@ -587,8 +590,29 @@ def consume_requested_joint_transport(path: str | Path, *,
             entry["code"] = "REQUESTED_CONDITIONER_VALUES_EMPTY"
             consumed.append(entry)
             continue
-        requested_values = tuple(canonicalize(value)
-                                 for value in requested_values_raw)
+        canonical_values = []
+        unsupported = False
+        noncanonical = False
+        for value in requested_values_raw:
+            canonical = canonicalize(value)
+            if canonical is None or canonical == "":
+                noncanonical = True
+                break
+            if not isinstance(canonical, (str, int, bool)):
+                unsupported = True
+                break
+            canonical_values.append(canonical)
+        if noncanonical:
+            entry["status"] = "REFUSED"
+            entry["code"] = "REQUESTED_CONDITIONER_VALUE_NONCANONICAL"
+            consumed.append(entry)
+            continue
+        if unsupported:
+            entry["status"] = "REFUSED"
+            entry["code"] = "REQUESTED_CONDITIONER_VALUE_UNSUPPORTED"
+            consumed.append(entry)
+            continue
+        requested_values = tuple(canonical_values)
         if any(value is None or value == "" for value in requested_values):
             entry["status"] = "REFUSED"
             entry["code"] = "REQUESTED_CONDITIONER_VALUE_NONCANONICAL"
@@ -659,11 +683,10 @@ def consume_requested_joint_transport(path: str | Path, *,
             row = by_condition[value]
             selection_material = {
                 "requested_operation_id": entry["requested_operation_id"],
-                "conditioner_item_id": request.get("conditioner_item_id"),
-                "target_item_id": request.get("target_item_id"),
                 "conditioner_value": value,
                 "conditioner_ref": actual_targets[0],
                 "target_ref": actual_targets[1],
+                "role_identity_source": "DECODED_QUERY_TARGET_REFS",
                 "backing_query_refs": [actual_query_ref],
                 "backing_fact_refs": [actual_fact_ref],
                 "request_binding_id": expected_binding,
@@ -749,6 +772,25 @@ def write_field_forge_envelopes(result: Any, *, source_id: str,
             "envelope_count": len(envelopes), "missing_query_refs": missing}
 
 
+def qualified_coordinate_rules(config: Any, coordinate_name: str):
+    """Read exact A factory rules for the selected source coordinate."""
+    try:
+        from rawlsing_next.source_configuration.factory import (
+            build_coordinate_slot_rules,
+        )
+    except Exception as exc:
+        raise Original35ExecutionError(
+            "COORDINATE_RULE_FACTORY_UNAVAILABLE:" + type(exc).__name__) from exc
+    rules = tuple(build_coordinate_slot_rules(config))
+    matching = tuple(rule for rule in rules
+                     if getattr(getattr(rule, "slot", None), "name", None)
+                     == coordinate_name)
+    if len(matching) != 1:
+        raise Original35ExecutionError(
+            "QUALIFIED_COORDINATE_RULE_MATCH_REQUIRED:" + coordinate_name)
+    return rules, matching[0]
+
+
 def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibrary,
                                    source_root: str | Path, host: str,
                                    purpose: str, as_of: str,
@@ -826,6 +868,8 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     if incidence.source_sha256 != doc["binding"]["source_sha256"]:
         incidence.close()
         raise Original35ExecutionError("SOURCE_SHA_MISMATCH_AFTER_DECODE")
+    coordinate_rules, _coordinate_rule = qualified_coordinate_rules(
+        config, coordinate)
     selected_variables = tuple(sorted(selected_names | {coordinate}))
     stream = bounded_physical_cell_stream(
         incidence, include_variables=selected_variables)
@@ -844,7 +888,9 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         release_id=str(doc["identity"]["release_id"]),
         instrument_release_id=str(doc["identity"]["instrument_release_id"]),
         as_of=as_of)
-    bundle = materialize_native_preimages(package=package, incidence=stream)
+    bundle = materialize_native_preimages(
+        package=package, incidence=stream,
+        coordinate_rules=coordinate_rules)
     non_f1 = any(op.kind != OPERATION_F1 for op in selected_ops)
     if non_f1:
         compilation = bind_governed_frontier(
