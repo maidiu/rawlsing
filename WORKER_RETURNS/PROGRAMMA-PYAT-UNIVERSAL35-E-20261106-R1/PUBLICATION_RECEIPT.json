@@ -5,21 +5,27 @@
   "remote": "origin",
   "branch": "codex/pyat-universal35-e-20261106-r1",
   "base": "d119045f4169439b4ba02d0870bc328f8beb3aaa",
-  "implementation_commit": "08138f52da1c32b62d28532b87b0cdce340c2bae",
-  "pushed_at_utc": "2026-11-06T11:36:44Z",
-  "result": "AUTHOR_FOCUSED_PASS_INDEPENDENT_REVIEW_PENDING",
+  "frozen_prior_head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
+  "prior_implementation": "08138f52da1c32b62d28532b87b0cdce340c2bae",
+  "reviewer_g": "e714a5dd3628f3b60ab5b6bdcfeef036ecdabc8f",
+  "prior_verdict": "REVISE_MATERIAL_NARROW",
+  "repair_commit": "7920b7fca4471c035f5b728dace9e1777c68c074",
+  "pushed_at_utc": "2026-11-06T11:50:05Z",
+  "result": "AUTHOR_FOCUSED_PASS_R1_INDEPENDENT_REREVIEW_PENDING",
   "grades": {
-    "engineering": "AUTHOR_FOCUSED_PASS",
-    "independent_review": "NOT_RUN",
+    "engineering": "AUTHOR_FOCUSED_PASS_R1",
+    "independent_rereview": "NOT_RUN",
     "native_all35": "NOT_CLAIMED",
     "d_authentic_bind": "NOT_RECEIVED_BY_E"
   },
   "tests": {
-    "ingress": "11 passed",
+    "ingress": "16 passed",
     "existing_owner_regression": "25 passed"
   },
+  "old_head_five_case_red_reproduced": true,
+  "repaired_head_five_cases_refused": true,
   "structural_grant": false,
   "protected_write": false,
   "self_acceptance": false,
-  "note": "The receipt commit is a publication child of implementation_commit; final branch head is the receipt commit."
+  "note": "The receipt commit is a publication child of repair_commit; final branch head is the receipt commit."
 }
