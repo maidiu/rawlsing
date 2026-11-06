@@ -1,0 +1,21 @@
+# sorok-p3-compression-native-binding-repair-r1
+
+Exact launched scope:
+
+```text
+AGENT_TYPE: same existing compression author, exact demonstrated receiving repair. INTELLIGENCE_LEVEL:I2 bounded S2 sourcefree implementation/actual P2 compatibility, not new theory or review. Existing OpenCode Go DeepSeek V4.1 Flash MAX; no account/provider/model/region/effort/UI changes. Quota UNKNOWN. Read full user P3 commission /Users/matthewsmith/.codex/attachments/de32bc85-d779-4830-85ae-f249aa757b45/pasted-text-1.txt and operative WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STANDING_DISCIPLINES.md.
+
+Your original return816c4380208a494acd25fd74d49f79041c1765f7 is banked unchanged, author22 tests only. HQ intake is REVISE, not acceptance: COMPRESSION_INPUT_DISPOSITION.json and evidence/compression_intake_actual.json contain the exact actual P2 execution. New branch agent/sorok-p3-compression-native-binding-repair-20261106-r1 at501f64619 (resolve fullSHA). Original protectedc852d751 remains unchanged.
+
+Demonstrated indispensable defect: bind/_perception_refs compares accessible event IDs to native E1 occurrence e1_event_id (TEST_ONLY_BP2_E1_OCC-0002). Actual accepted P2 actor_experience contains perception of the E1 occurrence's action_event_id (TEST_ONLY_BP4_WORLD_EVT_faed...), and E1 carries the corresponding action_event_hash. Real owner has OBSERVED developingactorA with that action perceived at228, but your module falsely returns HELD/ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT. These are distinct legitimate IDs, not aliases to normalize or replace globally. Follow exact existing E1->action_id/action_hash->actor's actual perception binding; output must retain original E1 ref/hash separately. Read unchanged P2Owner.actor_experience to preserve its real actor/privacy checks.
+
+Fix only this actual receiving defect and its directly necessary identity/clock/access checks. Do not accept arbitrary unrelated or portal-user receipt as actor participation. Preserve actual native event/proposal/owner/source/time binding and no claim/memory/state effects. An inaccessible actor remains HELD/refused even if U observes. Do not rewrite accepted P2/704, loosen guards, rename/remove tests, change native IDs or force the actual producer into mock shapes. Existing actual interval PARTIAL schema is already accepted; do not invent a replacement interval owner or positivity requirement.
+
+Write ONLY under this P3 root: p3/compression.py, tests/test_compression.py, NEW evidence/compression-native-binding-repair/. Original evidence/compression/ and evidence/compression_intake_actual.json must remain unchanged, as must every other worker module/rule/projection/store and PROGRAMMA. No bundled improvements or broad court.
+
+Require a regression using the actual different native E1/action IDs; independently run one actual sourcefree P2 owner event (with ACTUAL interval as in HQ proof) and positively bind its RealizedEvent document, recording real E1/action/perception refs and interval receipt without issuing new world events in the compression layer. Use original factory/owner supplied case/source/participants. Removing or substituting actual actor perception/action binding must HELD/refuse; exact restored producer output binds. All prior22 mechanical tests should remain meaningful with realistic shapes; no E1/action-ID equalization. Preserve four-form metadata and empty psychological effects. No need to rerun all71 or multiple full batches; actual final P3 integrated A-H remains HQ work.
+
+Return evidence/compression-native-binding-repair/00_RETURN.md and exact commands/results, actual producer-consumer receipt and hashmanifest. Author pass is not independent final-runtime acceptance. Commit/push assigned repair branch, directremote verify; report precise repaired boundary and remaining limits, then STOP.
+```
+
+Actual child PID 27272; session ses_e84b9f75cffeOYB4AakaEDZNJg; run /Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-compression-native-binding-repair-r1; actual model metadata {"message": "msg_1b2daf763001NBfypU3zXjQUUu", "model": {"id": "deepseek-v4.1-flash", "providerID": "opencode-go", "variant": "max"}}

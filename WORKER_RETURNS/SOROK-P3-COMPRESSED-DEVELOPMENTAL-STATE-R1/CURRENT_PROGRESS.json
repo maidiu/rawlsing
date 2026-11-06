@@ -1,11 +1,13 @@
 {
-  "status": "BOTH_INPUTS_SCOPED_ACCEPTED__RULE_ADAPTER_AUTHOR_5_PASS__P2_ROOT_INTEGRATION_PENDING",
+  "status": "COMPRESSION_NATIVE_BINDING_REPAIR_LAUNCHED__STORE_PROJECTION_UNAFFECTED",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
   "input_dispositions": [
     "E1_INPUT_DISPOSITION.json",
     "S1_INPUT_DISPOSITION.json"
   ],
+  "compression_disposition": "COMPRESSION_INPUT_DISPOSITION.json",
+  "compression_actual_probe": "evidence/compression_intake_actual.json",
   "rule_adapter": {
     "files": [
       "p3/__init__.py",
@@ -36,7 +38,7 @@
     },
     {
       "task": "sorok-p3-compression-evidence-r1",
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_REVISE_ACTUAL_BINDING",
       "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
       "pid": 15921
     },
@@ -45,10 +47,16 @@
       "status": "ACTIVE_VERIFIED",
       "session": "ses_e98c905cbffekusoHURfKyEUKG",
       "pid": 21322
+    },
+    {
+      "task": "sorok-p3-compression-native-binding-repair-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "pid": 27272
     }
   ],
   "runtime": "NOT_YET_INTEGRATED",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Consume terminal store/compression/projection returns via existing notifications; implement actual same-P2-root owner with recoverable cross-store custody; run full user A-H/cold/cost evidence; distinct exact-runtime review. No new input review, P2 engine or native science."
+  "next": "Intake existing store/projection/repair terminals; consume exact returned APIs in P3Owner recoverable protocol and full actual P2-root A-H tests. Current compression is REVISE, not accepted; no duplicate input review."
 }
