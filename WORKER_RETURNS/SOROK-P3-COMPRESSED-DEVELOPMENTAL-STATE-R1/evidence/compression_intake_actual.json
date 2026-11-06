@@ -1,0 +1,1749 @@
+{
+  "grade": "HQ_ACTUAL_SOURCEFREE_P2_BIND_COMPATIBILITY_PROBE",
+  "candidate": "816c4380208a494acd25fd74d49f79041c1765f7",
+  "before": {
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+    "branch": "first_session",
+    "clock": 222,
+    "state_hash": "ea1e72cf15f927a5a5f47161ffc4c17bc4fa251ad831923be67e076fe2ec57d7"
+  },
+  "proposal": {
+    "circumstances": {},
+    "event_id": "actual-compression-witness",
+    "event_time": 228,
+    "interval": {
+      "mode": "ACTUAL",
+      "span": 4
+    },
+    "operation": "ADMIT_EVENT",
+    "participants": [
+      "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "TEST_ONLY_BP1_R26V_ACTOR_B"
+    ],
+    "source_refs": [
+      "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8"
+    ]
+  },
+  "catalog": {
+    "participation": {
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "grade": "SOURCEFREE_TEST_ONLY",
+      "kind": "ACTOR_PARTICIPATION",
+      "from_clock": 222,
+      "to_clock": 228,
+      "data": {
+        "scope": "sourcefree controlled participation; actual receipt required at bind"
+      },
+      "hash": "bd6739531dae86a056ac3c8f0f615d3e2a95ff0c5629f5687b031206500bc567"
+    }
+  },
+  "spec": {
+    "envelope_id": "actual-sourcefree-witness",
+    "proposal_hash": "a79d057ba72a03935ec6cfadf735c156094b4aef29181ab4e8ae52aed31c78bd",
+    "representation_form": "SINGULAR_OCCURRENCE",
+    "represented_window": {
+      "from_clock": 222,
+      "to_clock": 228,
+      "coverage_basis": "participation"
+    },
+    "recurrence_basis_refs": [],
+    "participation_refs": [
+      "participation"
+    ],
+    "material_relation_refs": [],
+    "observed": [
+      "current actual event"
+    ],
+    "unobserved": [
+      "unrepresented personal history"
+    ],
+    "selection_basis": "actual compatibility witness for pending P3 adapter"
+  },
+  "realized": {
+    "accessible": {
+      "actor_alias": "A",
+      "actor_ref": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "events": [
+        {
+          "actor_visible_id": "A",
+          "body_public": {
+            "gesture": "A keeps a hand near the bench edge.",
+            "language_tag": "es-MX",
+            "strategy": "REQUEST_TOOL",
+            "text": "\u00bfPuedo usar la herramienta?",
+            "tone": "ordinary"
+          },
+          "clock": 228,
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_faedb3e061234e898bc9668e752377efe9b86b0575e5bc6369bb7e01acb4dc2a",
+          "kind": "SPEECH",
+          "location": "workshop",
+          "perception": {
+            "channel": "co_present",
+            "clock": 228
+          },
+          "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+          "summary": "A says: \u00bfPuedo usar la herramienta?"
+        }
+      ],
+      "grade": "TEST_ONLY_S47_OWNER_NOT_NATIVE_DEVELOPMENTAL_SCIENCE",
+      "memory_formation": "MISSING_RULE",
+      "schema": "SOROK_ACTOR_EXPERIENCE@1",
+      "status": "OBSERVED"
+    },
+    "after": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 228,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "5102cd4975165cf2f6192c44af360f0914fe54e27985dee7b9f022fed45c8203"
+    },
+    "before": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 222,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "ea1e72cf15f927a5a5f47161ffc4c17bc4fa251ad831923be67e076fe2ec57d7"
+    },
+    "consequences": {
+      "durable_psychological_transition": "MISSING_RULE",
+      "grade": "TEST_ONLY_S47_OWNER_NOT_NATIVE_DEVELOPMENTAL_SCIENCE",
+      "immediate_response": {
+        "current_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "current_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "event_ref": "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+        "historical_condition_revoked": false,
+        "objective_material_eligible": false,
+        "objective_material_refs": [],
+        "present_condition_revoked": false,
+        "readset_refs": [
+          "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+          "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+          "TEST_ONLY_ADP017_ACCESS_S37_SHARE_TOOL",
+          "beeac4e6a2fffa73d700133001cb8acf61929ab290dee63fdaf840ec1c02ea24",
+          "TEST_ONLY_A_RESPONSE_S39_REQUEST_TOOL",
+          "aebc50c5d394cf1831dab03aaa49a78145ce5e5c346727da55239941790099c2",
+          "TEST_ONLY_BP4_WORLD_EVT_faedb3e061234e898bc9668e752377efe9b86b0575e5bc6369bb7e01acb4dc2a"
+        ],
+        "response_status": "RESPONSE_COMMITTED",
+        "s47_source_coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "s47_source_currentness": "CURRENT",
+        "s47_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
+        "s47_source_in_readset": true,
+        "s47_source_ref": "TEST_ONLY_S47_INTERVAL_S46_STATE_E22149E8875BE71309CFEB56",
+        "selected_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+        "target_branch": "NO_CHANGE",
+        "target_proposals": [],
+        "target_reason": "NO_PROPOSAL"
+      },
+      "independent_B": "CONTROLLED_SOURCEFREE_PARTICIPANT_ONLY",
+      "interval": {
+        "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+        "actor_owner_version": "1",
+        "actual_daily_events_invented": 0,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain": {
+          "action_span_units": 1,
+          "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+          "actor_owner_version": "1",
+          "branch_id": "first_session",
+          "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+          "domain_hash": "71610513a53a024237de595a69e6f4cf7609a3538357ce6c9194d46b397c7b60",
+          "domain_id": "S46_DOMAIN_ACTUAL",
+          "end": 226,
+          "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+          "hash": "9cfc87361554c1ea92ef70adaafb3ac6291a2e6a46fc0ef3c4b74c5f50a87b30",
+          "mode": "ACTUAL",
+          "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+          "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+          "model_version": "1",
+          "native": false,
+          "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+          "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+          "policy_version": "1",
+          "psychology_claim": false,
+          "resolution": "BOUNDED_PERIOD_STATE",
+          "schema": "S46_INTERVAL_DOMAIN@1",
+          "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+          "segments": [
+            [
+              222,
+              224
+            ],
+            [
+              224,
+              226
+            ]
+          ],
+          "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+          "start": 222,
+          "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+          "world_owner_version": "1"
+        },
+        "domain_hash": "71610513a53a024237de595a69e6f4cf7609a3538357ce6c9194d46b397c7b60",
+        "domain_id": "S46_DOMAIN_ACTUAL",
+        "domain_issuance_hash": "a9e6f86df2d025aa0946029c2e07719efbae1367258d30f79c69bb090e7d5f19",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_f8dca502008caa3fcbaedbd922353b5422af683d1d1493caa3f39d5da3f04249",
+        "end": 226,
+        "episode_id": "TEST_ONLY_BP4_EP_85018e00364b8742852b6e633b2b4616ca67f8237041831ebeb74c4e3831ab08",
+        "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+        "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+        "native": false,
+        "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+        "psychology_claim": false,
+        "psychology_state_written": false,
+        "receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+        "resolution": "BOUNDED_PERIOD_STATE_NO_DAILY_EVENTS",
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "schema": "S46_INTERVAL_PARTICIPATION_STATE@1",
+        "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+        "segments": [
+          {
+            "attempt": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_result_claimed": false,
+              "attempt": "ATTEMPT",
+              "branch_id": "first_session",
+              "consent_or_willingness_claimed": false,
+              "end": 224,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "inputs": {
+                "actor_present": true,
+                "free_hours": true,
+                "material_available": true,
+                "tool_available": true
+              },
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+              "policy_version": "1",
+              "predecessor_world_receipt_hash": "",
+              "psychology_claim": false,
+              "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+              "receipt_hash": "946addd6c6104c00c0037dd44d1769b260ebc891f22ffd72e1515c443f80334c",
+              "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 222
+            },
+            "coverage": [
+              [
+                222,
+                223
+              ]
+            ],
+            "end": 224,
+            "start": 222,
+            "status": "REALIZED",
+            "world": {
+              "actor_attempt_receipt_hash": "946addd6c6104c00c0037dd44d1769b260ebc891f22ffd72e1515c443f80334c",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_action_event_hash": "97c76fee78741c4e3f56f8d62bebd673c61374ed89a1263cd89f74cb0b8bd85b",
+              "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_739efde7eaaec7e8602dc50d812754bc2aef2567dd99d8ea159f8f61a5d89e8d",
+              "actual_daily_events_invented": 0,
+              "branch_id": "first_session",
+              "end": 224,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "psychology_claim": false,
+              "reason": "",
+              "receipt_hash": "1552450613f58ecfdba030a5503c2256e071f2937fea2b6ca6eb4fe8b6a638c8",
+              "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 222,
+              "state_after": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 10,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 0,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "state_before": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 56,
+                "completed_units": 5,
+                "debt_units": 2,
+                "free_hours": 11,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 1,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "status": "CONFIRMED",
+              "welfare_or_consent_inferred": false
+            }
+          },
+          {
+            "attempt": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_result_claimed": false,
+              "attempt": "ATTEMPT",
+              "branch_id": "first_session",
+              "consent_or_willingness_claimed": false,
+              "end": 226,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "inputs": {
+                "actor_present": true,
+                "free_hours": true,
+                "material_available": false,
+                "tool_available": true
+              },
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+              "policy_version": "1",
+              "predecessor_world_receipt_hash": "1552450613f58ecfdba030a5503c2256e071f2937fea2b6ca6eb4fe8b6a638c8",
+              "psychology_claim": false,
+              "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+              "receipt_hash": "e0390ce6193f2a64f8021a5fe17f40762e4888f562cf0f0c9d2570c53ae9700b",
+              "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 224
+            },
+            "coverage": [],
+            "end": 226,
+            "start": 224,
+            "status": "NOT_PERFORMED",
+            "world": {
+              "actor_attempt_receipt_hash": "e0390ce6193f2a64f8021a5fe17f40762e4888f562cf0f0c9d2570c53ae9700b",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_action_event_hash": "",
+              "actual_action_event_id": "",
+              "actual_daily_events_invented": 0,
+              "branch_id": "first_session",
+              "end": 226,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "psychology_claim": false,
+              "reason": "MATERIAL_EXHAUSTED",
+              "receipt_hash": "6d2df850b39e99542d9901496ce2fbd419c2fc77fc88953ebaa3151f7e132048",
+              "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 224,
+              "state_after": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 10,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 0,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "state_before": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 10,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 0,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "status": "NOT_PERFORMED",
+              "welfare_or_consent_inferred": false
+            }
+          }
+        ],
+        "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+        "start": 222,
+        "state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+        "status": "PARTIAL",
+        "superseded_by": "",
+        "target_proposals": [],
+        "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+        "world_owner_version": "1"
+      },
+      "material_state_changed": true,
+      "owner_state_changed": true
+    },
+    "objective": {
+      "event": {
+        "action_event_hash": "39689960a200953c5b99edcb23efcb08d14b8e62820bad83e75cb126e13cea23",
+        "action_event_id": "TEST_ONLY_BP4_WORLD_EVT_faedb3e061234e898bc9668e752377efe9b86b0575e5bc6369bb7e01acb4dc2a",
+        "action_event_kind": "SPEECH",
+        "actor_action_appended": true,
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "as_of": 233,
+        "attempt_hash": "1fc54d1ba05d8428b23c2b9f9f1d0ce2f6236e5c0e34e1b71d79bf569946a3de",
+        "attempt_status": "ADMITTED",
+        "branch_id": "first_session",
+        "c8_content_hash": "0452f17058c632ef3730397a8f5bae42e029f93e8f562b8c4c03b838cd0f7dfc",
+        "c8_occurrence_id": "OCC-0002",
+        "c8_state_digest": "a522d7b8706d8a01d5dd323e65c1e97a31a16676a7a6ba9e39601a061abfee9d",
+        "c9": {
+          "outcome": "OBSERVED_IMMEDIATE_OBJECT_ORIENTATION",
+          "receipt_ref": "d75464a81bcd3d372f6b4eae579384cbbff0e2762e58bd3481d11d46d8862a63",
+          "response_kind": "REQUEST_TOOL",
+          "response_ref": "cec9c4b1d1490b0005ad13f8d3ca5650298ba58c4e211f59737f5277139f46cf",
+          "target_branch": "NO_CHANGE",
+          "target_id": "",
+          "target_proposals": [],
+          "target_reason": "NO_PROPOSAL",
+          "target_state_rows": 0
+        },
+        "e1_event_hash": "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+        "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0002",
+        "event_ordinal": 2,
+        "event_time": 228,
+        "generation_hash": "71282cfe8068c1181111b635eebf625ad717940e85f07e158f293f0061d0f96a",
+        "generation_source_refs": [
+          "TEST_ONLY_S39_CTX_REPAIR_URGENT",
+          "TEST_ONLY_S39_CTX_AVOID_DEBT",
+          "TEST_ONLY_S41_HIST_TEST_ONLY_BP2_E1_OCC-0001"
+        ],
+        "generation_status": "UNIQUE_SELECTED",
+        "history_predicates": [
+          "PRIOR_B_SHARE"
+        ],
+        "history_refs": [
+          {
+            "c8_content_hash": "4de8c80ee839b5aacad7536856160c51d949bfdaf504942d3aa9936f2b562f45",
+            "c8_occurrence_id": "OCC-0001",
+            "e1_event_hash": "bd5c526eb07386f992bd6149c24742c747606aca53617f95d404a30dd97a6163",
+            "e1_event_id": "TEST_ONLY_BP2_E1_OCC-0001",
+            "event_ordinal": 1
+          }
+        ],
+        "language": {
+          "access_receipt_id": "LME_ACCESS_75738d9e5ce711fab57b28284110462002efb3fdcd562a5a4ca761779bbcfbee",
+          "equivalence_receipt_hash": "459acbc4eb45bf00dc02df62e84faa4ae39bbfd6dfe332ffb39d3e725ea419a3",
+          "native_artifact_hash": "9c62be51e1527c2fde269ffcac638f5b654a10f05e866f193387f2b6074cb4a1",
+          "native_text": "\u00bfPuedo usar la herramienta?",
+          "plan_hash": "14caf1fba0f7e5ec6975af2366f3a60bbda9ec4e431e3bde8719446ec42d5210",
+          "source_event_hash": "d2d543ccb9fa400936984036607c26cd07a3cfaae0c9ec455ffcd094c7440ea9",
+          "source_event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+          "status": "ACCEPTED",
+          "translation_artifact_hash": "198a5a87d41cfce8c49150316d692f308b4dd7829324483368470420a73c74d2",
+          "translation_text": "May I use the tool?"
+        },
+        "performed": true,
+        "provenance": "TEST_ONLY_CONSTRUCTIVE_GENERATION_NOT_EXTERNALLY_OBSERVED",
+        "schema": "SOROK_S42_EVENT_READ@1",
+        "selected_option": "REQUEST_TOOL",
+        "source_event_hash": "16f11d2e849cbb3abcbfd8c76d32a509a38e74e3b503361dddeb2adf9403a486",
+        "source_operation": "SHARE_TOOL",
+        "status": "OK",
+        "target_proposals": [],
+        "world_after": {
+          "actor_state": {
+            "A": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 58,
+              "completed_units": 6,
+              "debt_units": 2,
+              "free_hours": 10,
+              "health": "recovered",
+              "material_position": "waged_repair",
+              "material_remaining": 0,
+              "nonmother_relations": [
+                "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_repair_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "repair",
+              "skill": 6,
+              "tools_remaining": 1
+            },
+            "B": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 54,
+              "completed_units": 5,
+              "debt_units": 2,
+              "free_hours": 11,
+              "health": "recovered",
+              "material_position": "waged_finishing",
+              "material_remaining": 1,
+              "nonmother_relations": [
+                "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_finishing_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "finishing",
+              "skill": 6,
+              "tools_remaining": 1
+            },
+            "U": {
+              "actor_id": "TEST_ONLY_R30A_USER_U",
+              "free_hours": 8,
+              "material_remaining": 0,
+              "role": "visitor",
+              "tools_remaining": 0
+            }
+          },
+          "clock": 228,
+          "events": [
+            {
+              "actor_id": "B",
+              "body": {
+                "present_with": [
+                  "A"
+                ],
+                "public_role": "finishing"
+              },
+              "clock": 10,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "35c32f999f3bd1fc0155727790653999a831c274baca45dd9aa7ac1c05af6fe8",
+              "kind": "ARRIVAL",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 0,
+              "summary": "The finishing worker is already at the workshop bench."
+            },
+            {
+              "actor_id": "U",
+              "body": {
+                "present_with": [
+                  "A",
+                  "B"
+                ],
+                "public_role": "visitor"
+              },
+              "clock": 10,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "ARRIVAL",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 1,
+              "summary": "You come up the stairs and stop at the open workshop door."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "\u00bfPuedo usar la herramienta?"
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_6f30ad767a17625a86b51284d3f6e5ebb808b2c323c33396e21b3ec6349681a7",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "b20d07f331d9c92552e588b62be005cf2b39bd356f4d509afd2e0324ce492654",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 2,
+              "summary": "B says: \u00bfPuedo usar la herramienta?"
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "\u00bfPuedo usar la herramienta?"
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "d2d543ccb9fa400936984036607c26cd07a3cfaae0c9ec455ffcd094c7440ea9",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 3,
+              "summary": "B says: \u00bfPuedo usar la herramienta?"
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Si te ofreces, el borde cercano necesita una mano."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "7d4d3e5fa041f09effe457eb696006059ad70953c3f1239270313a1949f3aab0",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 4,
+              "summary": "B says: Si te ofreces, el borde cercano necesita una mano."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Puedes sostener el borde cercano si lo dices en serio."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "d93cb819fd473ed7001caa5ae03295caba841bd609bad068675433f438c0eb3e",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 5,
+              "summary": "B says: Puedes sostener el borde cercano si lo dices en serio."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "9b348f7f5f89b09ef09ae965c516251d48339314d29bc74ee230c3a287ef6a92",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 6,
+              "summary": "B says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "287dc2d1cefc68dd66e68b4f1705958c5fa1399f3f112cc15558e6ca6f5f3f87",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 7,
+              "summary": "B says: Pon la mano en el borde cercano. Yo tomo la holgura."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "No puedo tomar eso ahora. Tengo que terminar."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_1bdf8cd5bdb7a45fae06e64e10ddecb69d28eae97d28439ddcf7fe0dd612a1ac",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "28d4386d8ca11f055fa58fb4250b6184f5f6d515b00b3b92e475e1ec6deb2a9c",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 8,
+              "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "No puedo tomar eso ahora. Tengo que terminar."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_f235d7909d8948cc13df57f36f31de06bfaed6e66cb81c64f2396f79d48e7548",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "25cd84ed58a60c2f3946115ec9761f75dd08ef9e4b10bf86be6f0969b7f15188",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 9,
+              "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Hoy no. El mercado cierra."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_f7503611f3a644e4592e0ef4152eabb378d8ed77c1dc908750991e569e7c5fc5",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "25ac31dc4cfc753a95ab60016305daec08385368ae9b379d8f17f4de7ef19a41",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 10,
+              "summary": "B says: Hoy no. El mercado cierra."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_825c99d85dd8ad65b374328204ff470a76497d9e11f03fce0ad2d66f7ebddf93",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "deb5955e6b9688b9fb47967d881f4bac2e5b16f63f56afb53c4c204732448d3a",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 11,
+              "summary": "B says: Me qued\u00e9 sin material. No puedo empezar eso ahora."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_adc5531849ae576224b0cd470b4e85eb81c0f2884430e7654a22bf54676d6b00",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "faa62517bfa59557d9a784779d7dc0a86e44da8d3ed7228ad3a37cf809ab85b6",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 12,
+              "summary": "B says: La herramienta no est\u00e1. Hoy no puedo hacerlo."
+            },
+            {
+              "actor_id": "A",
+              "body": {
+                "cash_delta": 2,
+                "completed_delta": 1,
+                "hours_delta": -1,
+                "material_delta": -1,
+                "source_owned": true
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_739efde7eaaec7e8602dc50d812754bc2aef2567dd99d8ea159f8f61a5d89e8d",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "97c76fee78741c4e3f56f8d62bebd673c61374ed89a1263cd89f74cb0b8bd85b",
+              "kind": "REPAIR",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": {
+                "act": "REPAIR",
+                "actor_id": "A",
+                "clock": 222,
+                "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+                "hash": "1dcdac5086eeba59c56a83ceed74ecd9b388e1b8c406cbc29f238a0d1bcdf775",
+                "location": "workshop",
+                "native": false,
+                "owner_ref": "TEST_ONLY_BP4_WORLD_OWNER",
+                "performed": true,
+                "schema": "BP4_WORLD_OWNER_RECEIPT@1"
+              },
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 13,
+              "summary": "A material repair is performed in the workshop."
+            }
+          ],
+          "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+          "hash": "7d76f90a849a952642c0d3a6b86a47e2ab3d796f19b92f4a8c460363bc5c2a77",
+          "native": false,
+          "offscreen_done": false,
+          "owner": "TEST_ONLY_BP4_WORLD_OWNER",
+          "positions": {
+            "A": "workshop",
+            "B": "workshop",
+            "U": "workshop"
+          },
+          "resources": {
+            "market": {
+              "material": 0
+            },
+            "workshop": {
+              "material": 2,
+              "tool_available": true
+            }
+          },
+          "schema": "BP4_OBJECTIVE_WORLD@1"
+        },
+        "world_before": {
+          "actor_state": {
+            "A": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 58,
+              "completed_units": 6,
+              "debt_units": 2,
+              "free_hours": 10,
+              "health": "recovered",
+              "material_position": "waged_repair",
+              "material_remaining": 0,
+              "nonmother_relations": [
+                "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_repair_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "repair",
+              "skill": 6,
+              "tools_remaining": 1
+            },
+            "B": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_B",
+              "attitudes": [
+                "reciprocity_in_work_obligations"
+              ],
+              "availability_status": "available_for_encounter",
+              "cash": 54,
+              "completed_units": 5,
+              "debt_units": 2,
+              "free_hours": 11,
+              "health": "recovered",
+              "material_position": "waged_finishing",
+              "material_remaining": 1,
+              "nonmother_relations": [
+                "G15_NONKIN_aeaed10bc2ce4882d7cb6e71825c42105ed8f3f1c73c883fa7357db8db681c8b"
+              ],
+              "place": "INST_WORKSHOP_A",
+              "practices": [
+                "scheduled_finishing_ledger_discipline"
+              ],
+              "projects": [
+                "communal_irrigation_pump_repair"
+              ],
+              "role": "finishing",
+              "skill": 6,
+              "tools_remaining": 1
+            },
+            "U": {
+              "actor_id": "TEST_ONLY_R30A_USER_U",
+              "free_hours": 8,
+              "material_remaining": 0,
+              "role": "visitor",
+              "tools_remaining": 0
+            }
+          },
+          "clock": 226,
+          "events": [
+            {
+              "actor_id": "B",
+              "body": {
+                "present_with": [
+                  "A"
+                ],
+                "public_role": "finishing"
+              },
+              "clock": 10,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "35c32f999f3bd1fc0155727790653999a831c274baca45dd9aa7ac1c05af6fe8",
+              "kind": "ARRIVAL",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 0,
+              "summary": "The finishing worker is already at the workshop bench."
+            },
+            {
+              "actor_id": "U",
+              "body": {
+                "present_with": [
+                  "A",
+                  "B"
+                ],
+                "public_role": "visitor"
+              },
+              "clock": 10,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "ARRIVAL",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 1,
+              "summary": "You come up the stairs and stop at the open workshop door."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "\u00bfPuedo usar la herramienta?"
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_6f30ad767a17625a86b51284d3f6e5ebb808b2c323c33396e21b3ec6349681a7",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "b20d07f331d9c92552e588b62be005cf2b39bd356f4d509afd2e0324ce492654",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 2,
+              "summary": "B says: \u00bfPuedo usar la herramienta?"
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "\u00bfPuedo usar la herramienta?"
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "d2d543ccb9fa400936984036607c26cd07a3cfaae0c9ec455ffcd094c7440ea9",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 3,
+              "summary": "B says: \u00bfPuedo usar la herramienta?"
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Si te ofreces, el borde cercano necesita una mano."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "7d4d3e5fa041f09effe457eb696006059ad70953c3f1239270313a1949f3aab0",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 4,
+              "summary": "B says: Si te ofreces, el borde cercano necesita una mano."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Puedes sostener el borde cercano si lo dices en serio."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "d93cb819fd473ed7001caa5ae03295caba841bd609bad068675433f438c0eb3e",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 5,
+              "summary": "B says: Puedes sostener el borde cercano si lo dices en serio."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "9b348f7f5f89b09ef09ae965c516251d48339314d29bc74ee230c3a287ef6a92",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 6,
+              "summary": "B says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "287dc2d1cefc68dd66e68b4f1705958c5fa1399f3f112cc15558e6ca6f5f3f87",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 7,
+              "summary": "B says: Pon la mano en el borde cercano. Yo tomo la holgura."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "No puedo tomar eso ahora. Tengo que terminar."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_1bdf8cd5bdb7a45fae06e64e10ddecb69d28eae97d28439ddcf7fe0dd612a1ac",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "28d4386d8ca11f055fa58fb4250b6184f5f6d515b00b3b92e475e1ec6deb2a9c",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 8,
+              "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "No puedo tomar eso ahora. Tengo que terminar."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_f235d7909d8948cc13df57f36f31de06bfaed6e66cb81c64f2396f79d48e7548",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "25cd84ed58a60c2f3946115ec9761f75dd08ef9e4b10bf86be6f0969b7f15188",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 9,
+              "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Hoy no. El mercado cierra."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_f7503611f3a644e4592e0ef4152eabb378d8ed77c1dc908750991e569e7c5fc5",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "25ac31dc4cfc753a95ab60016305daec08385368ae9b379d8f17f4de7ef19a41",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 10,
+              "summary": "B says: Hoy no. El mercado cierra."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_825c99d85dd8ad65b374328204ff470a76497d9e11f03fce0ad2d66f7ebddf93",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "deb5955e6b9688b9fb47967d881f4bac2e5b16f63f56afb53c4c204732448d3a",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 11,
+              "summary": "B says: Me qued\u00e9 sin material. No puedo empezar eso ahora."
+            },
+            {
+              "actor_id": "B",
+              "body": {
+                "language_tag": "es-MX",
+                "observable": true,
+                "source_grade": "TEST_ONLY_INVENTED_LANGUAGE_EVENT",
+                "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_adc5531849ae576224b0cd470b4e85eb81c0f2884430e7654a22bf54676d6b00",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "faa62517bfa59557d9a784779d7dc0a86e44da8d3ed7228ad3a37cf809ab85b6",
+              "kind": "SPEECH",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": null,
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 12,
+              "summary": "B says: La herramienta no est\u00e1. Hoy no puedo hacerlo."
+            },
+            {
+              "actor_id": "A",
+              "body": {
+                "cash_delta": 2,
+                "completed_delta": 1,
+                "hours_delta": -1,
+                "material_delta": -1,
+                "source_owned": true
+              },
+              "clock": 222,
+              "event_id": "TEST_ONLY_BP4_WORLD_EVT_739efde7eaaec7e8602dc50d812754bc2aef2567dd99d8ea159f8f61a5d89e8d",
+              "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+              "hash": "97c76fee78741c4e3f56f8d62bebd673c61374ed89a1263cd89f74cb0b8bd85b",
+              "kind": "REPAIR",
+              "location": "workshop",
+              "native": false,
+              "owner_receipt": {
+                "act": "REPAIR",
+                "actor_id": "A",
+                "clock": 222,
+                "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+                "hash": "1dcdac5086eeba59c56a83ceed74ecd9b388e1b8c406cbc29f238a0d1bcdf775",
+                "location": "workshop",
+                "native": false,
+                "owner_ref": "TEST_ONLY_BP4_WORLD_OWNER",
+                "performed": true,
+                "schema": "BP4_WORLD_OWNER_RECEIPT@1"
+              },
+              "persistent": false,
+              "schema": "BP4_WORLD_EVENT@1",
+              "sequence": 13,
+              "summary": "A material repair is performed in the workshop."
+            }
+          ],
+          "grade": "TEST_ONLY_SOURCEFREE_WORLD_NOT_NATIVE",
+          "hash": "f059edd3706a5e4054762531ffdb25c2fa590a60315cd1760393d59eaf83a91b",
+          "native": false,
+          "offscreen_done": false,
+          "owner": "TEST_ONLY_BP4_WORLD_OWNER",
+          "positions": {
+            "A": "workshop",
+            "B": "workshop",
+            "U": "workshop"
+          },
+          "resources": {
+            "market": {
+              "material": 0
+            },
+            "workshop": {
+              "material": 2,
+              "tool_available": true
+            }
+          },
+          "schema": "BP4_OBJECTIVE_WORLD@1"
+        },
+        "world_clock_after": 228,
+        "world_clock_before": 226,
+        "world_tools_remaining": 1
+      },
+      "interval": {
+        "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+        "actor_knowledge_inferred": false,
+        "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+        "actor_owner_version": "1",
+        "actual_daily_events_invented": 0,
+        "branch_id": "first_session",
+        "coverage": [
+          [
+            222,
+            223
+          ]
+        ],
+        "currentness": "CURRENT",
+        "domain": {
+          "action_span_units": 1,
+          "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+          "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+          "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+          "actor_owner_version": "1",
+          "branch_id": "first_session",
+          "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+          "domain_hash": "71610513a53a024237de595a69e6f4cf7609a3538357ce6c9194d46b397c7b60",
+          "domain_id": "S46_DOMAIN_ACTUAL",
+          "end": 226,
+          "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+          "hash": "9cfc87361554c1ea92ef70adaafb3ac6291a2e6a46fc0ef3c4b74c5f50a87b30",
+          "mode": "ACTUAL",
+          "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+          "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+          "model_version": "1",
+          "native": false,
+          "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+          "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+          "policy_version": "1",
+          "psychology_claim": false,
+          "resolution": "BOUNDED_PERIOD_STATE",
+          "schema": "S46_INTERVAL_DOMAIN@1",
+          "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+          "segments": [
+            [
+              222,
+              224
+            ],
+            [
+              224,
+              226
+            ]
+          ],
+          "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+          "start": 222,
+          "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+          "world_owner_version": "1"
+        },
+        "domain_hash": "71610513a53a024237de595a69e6f4cf7609a3538357ce6c9194d46b397c7b60",
+        "domain_id": "S46_DOMAIN_ACTUAL",
+        "domain_issuance_hash": "a9e6f86df2d025aa0946029c2e07719efbae1367258d30f79c69bb090e7d5f19",
+        "domain_issuance_id": "TEST_ONLY_BP4_EP_f8dca502008caa3fcbaedbd922353b5422af683d1d1493caa3f39d5da3f04249",
+        "end": 226,
+        "episode_id": "TEST_ONLY_BP4_EP_85018e00364b8742852b6e633b2b4616ca67f8237041831ebeb74c4e3831ab08",
+        "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+        "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+        "native": false,
+        "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+        "psychology_claim": false,
+        "psychology_state_written": false,
+        "receipt_hash": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+        "resolution": "BOUNDED_PERIOD_STATE_NO_DAILY_EVENTS",
+        "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+        "schema": "S46_INTERVAL_PARTICIPATION_STATE@1",
+        "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+        "segments": [
+          {
+            "attempt": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_result_claimed": false,
+              "attempt": "ATTEMPT",
+              "branch_id": "first_session",
+              "consent_or_willingness_claimed": false,
+              "end": 224,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "inputs": {
+                "actor_present": true,
+                "free_hours": true,
+                "material_available": true,
+                "tool_available": true
+              },
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+              "policy_version": "1",
+              "predecessor_world_receipt_hash": "",
+              "psychology_claim": false,
+              "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+              "receipt_hash": "946addd6c6104c00c0037dd44d1769b260ebc891f22ffd72e1515c443f80334c",
+              "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 222
+            },
+            "coverage": [
+              [
+                222,
+                223
+              ]
+            ],
+            "end": 224,
+            "start": 222,
+            "status": "REALIZED",
+            "world": {
+              "actor_attempt_receipt_hash": "946addd6c6104c00c0037dd44d1769b260ebc891f22ffd72e1515c443f80334c",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_action_event_hash": "97c76fee78741c4e3f56f8d62bebd673c61374ed89a1263cd89f74cb0b8bd85b",
+              "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_739efde7eaaec7e8602dc50d812754bc2aef2567dd99d8ea159f8f61a5d89e8d",
+              "actual_daily_events_invented": 0,
+              "branch_id": "first_session",
+              "end": 224,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "psychology_claim": false,
+              "reason": "",
+              "receipt_hash": "1552450613f58ecfdba030a5503c2256e071f2937fea2b6ca6eb4fe8b6a638c8",
+              "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 222,
+              "state_after": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 10,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 0,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "state_before": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 56,
+                "completed_units": 5,
+                "debt_units": 2,
+                "free_hours": 11,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 1,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "status": "CONFIRMED",
+              "welfare_or_consent_inferred": false
+            }
+          },
+          {
+            "attempt": {
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_result_claimed": false,
+              "attempt": "ATTEMPT",
+              "branch_id": "first_session",
+              "consent_or_willingness_claimed": false,
+              "end": 226,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "inputs": {
+                "actor_present": true,
+                "free_hours": true,
+                "material_available": false,
+                "tool_available": true
+              },
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+              "policy_version": "1",
+              "predecessor_world_receipt_hash": "1552450613f58ecfdba030a5503c2256e071f2937fea2b6ca6eb4fe8b6a638c8",
+              "psychology_claim": false,
+              "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+              "receipt_hash": "e0390ce6193f2a64f8021a5fe17f40762e4888f562cf0f0c9d2570c53ae9700b",
+              "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 224
+            },
+            "coverage": [],
+            "end": 226,
+            "start": 224,
+            "status": "NOT_PERFORMED",
+            "world": {
+              "actor_attempt_receipt_hash": "e0390ce6193f2a64f8021a5fe17f40762e4888f562cf0f0c9d2570c53ae9700b",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "actual_action_event_hash": "",
+              "actual_action_event_id": "",
+              "actual_daily_events_invented": 0,
+              "branch_id": "first_session",
+              "end": 226,
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "native": false,
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "psychology_claim": false,
+              "reason": "MATERIAL_EXHAUSTED",
+              "receipt_hash": "6d2df850b39e99542d9901496ce2fbd419c2fc77fc88953ebaa3151f7e132048",
+              "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "source_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "start": 224,
+              "state_after": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 10,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 0,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "state_before": {
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "attitudes": [
+                  "reciprocity_in_work_obligations"
+                ],
+                "availability_status": "available_for_encounter",
+                "cash": 58,
+                "completed_units": 6,
+                "debt_units": 2,
+                "free_hours": 10,
+                "health": "recovered",
+                "material_position": "waged_repair",
+                "material_remaining": 0,
+                "nonmother_relations": [
+                  "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                ],
+                "place": "INST_WORKSHOP_A",
+                "practices": [
+                  "scheduled_repair_ledger_discipline"
+                ],
+                "projects": [
+                  "communal_irrigation_pump_repair"
+                ],
+                "role": "repair",
+                "skill": 6,
+                "tools_remaining": 1
+              },
+              "status": "NOT_PERFORMED",
+              "welfare_or_consent_inferred": false
+            }
+          }
+        ],
+        "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+        "start": 222,
+        "state_id": "S46_STATE_E22149E8875BE71309CFEB56",
+        "status": "PARTIAL",
+        "superseded_by": "",
+        "target_proposals": [],
+        "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+        "world_owner_version": "1"
+      }
+    },
+    "operation_id": "compression-native-binding-witness",
+    "proposal_hash": "a79d057ba72a03935ec6cfadf735c156094b4aef29181ab4e8ae52aed31c78bd",
+    "readset": [
+      "P2_INPUT:4cc71dca6d4647446d1dd76306958ef195b5231e090550b95423e091a08704e8",
+      "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2"
+    ],
+    "receipt_ref": "P2_EVENT:a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+    "status": "REALIZED"
+  },
+  "actual_result": {
+    "schema": "SOROK_P3_COMPRESSION_EVIDENCE_ENVELOPE@TEST_ONLY/1",
+    "status": "HELD",
+    "held_reason": "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT",
+    "envelope_id": "actual-sourcefree-witness",
+    "spec_hash": "59a3bc8d726bb2c83118d86d72012d353c6e681b76ea12900dc2db032cf1501f",
+    "sourcefree_grade": "SOURCEFREE_TEST_ONLY",
+    "identity": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 222,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "ea1e72cf15f927a5a5f47161ffc4c17bc4fa251ad831923be67e076fe2ec57d7"
+    },
+    "proposal_hash": "a79d057ba72a03935ec6cfadf735c156094b4aef29181ab4e8ae52aed31c78bd",
+    "representation_form": "SINGULAR_OCCURRENCE",
+    "represented_window": {
+      "coverage_basis": "participation",
+      "from_clock": 222,
+      "to_clock": 228
+    },
+    "source_ref_hashes": {
+      "participation": "bd6739531dae86a056ac3c8f0f615d3e2a95ff0c5629f5687b031206500bc567"
+    },
+    "actual_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+    "actual_event_hash": "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+    "native_status": "REALIZED",
+    "actual_interval_ref": "5438e358b9ee26d4e4e718600a694384337ac0142e1e4d91fc8f39478c64676c",
+    "actual_interval_hash": "228a633b55c08540b8dc58c2a6b2a9898f81c53740be89d2a093f1d76b6c2424",
+    "actual_interval_status": "PARTIAL",
+    "actor_access": "HELD",
+    "perception_refs": [],
+    "observed": [
+      "current actual event"
+    ],
+    "unobserved": [
+      "unrepresented personal history"
+    ],
+    "selection_basis": "actual compatibility witness for pending P3 adapter",
+    "psychological_effects": [],
+    "no_psychological_effects": true,
+    "no_state_mutation": true,
+    "memory_or_claim_issued": false,
+    "adp016_017_authorized": false,
+    "envelope_hash": "1313d95854d978567d2ae06afd81c9514108e9494893c8b139d7e8f1de8a3cd7"
+  },
+  "interval_removed_diagnostic_only": {
+    "schema": "SOROK_P3_COMPRESSION_EVIDENCE_ENVELOPE@TEST_ONLY/1",
+    "status": "HELD",
+    "held_reason": "ACTOR_PERCEPTION_UNAVAILABLE_FOR_PRESENT_EVENT",
+    "envelope_id": "actual-sourcefree-witness",
+    "spec_hash": "59a3bc8d726bb2c83118d86d72012d353c6e681b76ea12900dc2db032cf1501f",
+    "sourcefree_grade": "SOURCEFREE_TEST_ONLY",
+    "identity": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 222,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "state_hash": "ea1e72cf15f927a5a5f47161ffc4c17bc4fa251ad831923be67e076fe2ec57d7"
+    },
+    "proposal_hash": "a79d057ba72a03935ec6cfadf735c156094b4aef29181ab4e8ae52aed31c78bd",
+    "representation_form": "SINGULAR_OCCURRENCE",
+    "represented_window": {
+      "coverage_basis": "participation",
+      "from_clock": 222,
+      "to_clock": 228
+    },
+    "source_ref_hashes": {
+      "participation": "bd6739531dae86a056ac3c8f0f615d3e2a95ff0c5629f5687b031206500bc567"
+    },
+    "actual_event_ref": "TEST_ONLY_BP2_E1_OCC-0002",
+    "actual_event_hash": "a81f7b77e6b3dd962a0368e10f5eeeb6404cfc3ca994b145e606874131421bb2",
+    "native_status": "REALIZED",
+    "actual_interval_ref": null,
+    "actual_interval_hash": null,
+    "actual_interval_status": null,
+    "actor_access": "HELD",
+    "perception_refs": [],
+    "observed": [
+      "current actual event"
+    ],
+    "unobserved": [
+      "unrepresented personal history"
+    ],
+    "selection_basis": "actual compatibility witness for pending P3 adapter",
+    "psychological_effects": [],
+    "no_psychological_effects": true,
+    "no_state_mutation": true,
+    "memory_or_claim_issued": false,
+    "adp016_017_authorized": false,
+    "envelope_hash": "0501198558143305df5e6b3fd4e24dec1d5bd67a9007a972aa4be53c10b26ede"
+  },
+  "limits": "Actual positive uses unmodified P2 owner; interval-removed document is diagnostic only, not an alternate real execution."
+}
