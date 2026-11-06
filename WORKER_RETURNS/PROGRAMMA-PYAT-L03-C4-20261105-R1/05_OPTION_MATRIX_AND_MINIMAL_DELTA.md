@@ -460,3 +460,16 @@ caller-configured. This candidate has measured economic justification at sourcef
 N=200/1000 scope; it is **not** independently accepted and does not close whole L03
 or establish all35 production equivalence. A later independent focused review may
 accept or reject; no owner policy is invented.
+
+
+## Final HQ receiving disposition — 2026-11-06
+
+The user answered the sole remaining W04 design question: **“Accept the reviewed caller-configured persistent cache as W04’s equivalent”.** This supplies owner acceptance of the reviewed physical equivalent; it does not grant original35/native source, scientific issuance, protected merge or production acceptance. Earlier author-stage “pending review”, “NOT_FULFILLED” and “owner question” passages above are historical cuts superseded for current status by this disposition and the exact independent reviews below; their measured limits remain intact.
+
+- Accepted implementation: `02c1200b82b8397e551817e8e4cf2c6763413189`, including the earlier grouped and capacity changes.
+- Independent accepted reviews: P2 `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3`; capacity `0d3191b32df0ebed8ecdca10ee399e1b550a6997`; compressed body `9999c0afac5d7d7eb72ad0df602da4b232a49565`.
+- All seven required artifacts are present; the case/first-consumer matrix and cost/parity JSONL retain executed receipts and explicit limits. No further engineering or review is required by this scoped L03 commission.
+- Preserve 50 PASS / 1 dependency metadata SKIP plus independent 4 carrier PASS; original35/S3/production not run; native-memory alternative, exact-lookup CPU cost, increased cache bytes, event-count rather than universal byte bounds, and legacy-large-rowgroup transient limits remain.
+- No protected merge is performed. Receiving owner may use these exact reviewed commits and this ordinary return for subsequent integration under its existing authority.
+
+**PROGRAMMA_DELTA:** W03/P01 exact compressed reconstruction/economic delta and W05/P03 compatible grouped execution plus capacity guard are independently accepted at the named sourcefree scope. W04/P02 configured private-root persistence is now explicitly owner-accepted as the selected physical equivalent. The prior default-policy blocker is closed. Code present, author measured, independently reviewed, human physical-policy accepted, protected adopted and native scientifically authorized remain separate axes; the last two are NOT granted. No blanket downstream READY or new task follows.

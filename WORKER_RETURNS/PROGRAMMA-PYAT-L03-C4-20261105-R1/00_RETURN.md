@@ -1,6 +1,6 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
-**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 MEASURED / CAPACITY-MISS GUARD / COMPRESSED-BODY CANDIDATE IMPLEMENTED AND MEASURED.
+**Status:** COMPLETE — authorized sourcefree L03/C4 engineering and seven-file handoff; independently reviewed implementation; W04 equivalent accepted by the user on 2026-11-06. No protected merge or native/production acceptance.
 **Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `a85df66ec93a951d8fd50d751822b70569df94ef`.
 **Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; it does **not** accept the new capacity-miss guard `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3` or whole L03.
 **Phase-3 assessment:** `5dfef26d5ba25d2848d8e7a1b137e29c2d3b544d` accepts evidence but found the **uncompressed** selected economical compact NOT_FULFILLED. The compressed-body candidate at `02c1200...` materially improves the measured physical result; it is not independently accepted and does not close whole L03.
@@ -347,12 +347,12 @@ I03/compact failure.
 | 00–06 files | Present in this directory; this file links all six others |
 | Base / branch | `8ffec40a...` / `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1` |
 | Original accepted P2 | `409be32f7e4b4b961a360be1c8f44a17b5c62173`; R03 `e2f6c164...` = `ACCEPT_SCOPED_P2` only |
-| Capacity guard | `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`; pending focused review, not R03-accepted |
-| Compressed-body candidate | `02c1200b82b8397e551817e8e4cf2c6763413189`; evidence `1f939152...`; pending focused review, not R03-accepted |
+| Capacity guard | `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`; independently accepted at `0d3191b32df0ebed8ecdca10ee399e1b550a6997` |
+| Compressed-body implementation | `02c1200b82b8397e551817e8e4cf2c6763413189`; evidence `1f939152a3118e43e47c6f5799d7a1f7d5f356ff`; independently accepted at `9999c0afac5d7d7eb72ad0df602da4b232a49565` |
 | Phase-3 assessment | `5dfef26d...` accepted evidence; found **uncompressed** economical compact NOT_FULFILLED; not acceptance of candidate |
 | Current candidate effect | Body 29.7 MB→1.58 MB at N=1,000; compact endstate 327.9/335.2→274.5/294.5 MB current/highwater; exact parity retained |
-| Reviewer request | `06` remains the R03 request against `409be...`; no independent acceptance of `9a5cfa` or `02c1200` is claimed |
-| Remaining W04 policy | If W04/P02 literal “default” means persistent compressed storage without caller configuration, current `_cache_directory()` returns `None` when `RAWLSING_C11_ACCELERATOR_DIR` is unset (`_pre553_c11_execution_view.py:160`, first reader `build_source_backed_c11_repository` → `_compact_public_objects`). If explicit workload-owned storage is accepted as the competent-owner equivalent, no function is missing. Exact policy question: **does W04/P02 require a global/home default persistent root (conflicts with latest no-blanket-cache), or does default in-memory Arrow plus explicit workload-owned Parquet/Zstd satisfy the selected “owner-accepted functionally equivalent” clause?** |
+| Reviewer request | Fulfilled by original P2 review `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3`, capacity review `0d3191b32df0ebed8ecdca10ee399e1b550a6997`, and physical review `9999c0afac5d7d7eb72ad0df602da4b232a49565` |
+| W04 owner equivalence | RESOLVED by direct user reply, 2026-11-06: “Accept the reviewed caller-configured persistent cache as W04’s equivalent”. Default compressed memory plus explicit private workload-owned persistent root is the accepted physical design. No automatic global/home cache or new code required. |
 
 New body-adapter economics are relative to the selected current compact baseline:
 old compact resident 327.9/335.2 MB, new 274.5/294.5 MB at N=1,000; native control
@@ -368,3 +368,16 @@ cache disk rises modestly. No universal beat-native or all35 claim.
 4. `04_REPLAY_AND_AUTHORITY_INVALIDATION.md` — replay/authority/cache/grouped negatives.
 5. `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md` — implemented delta, W03/W04 matrix, measured disposition.
 6. `06_INDEPENDENT_REVIEW_REQUEST.md` — R03 acceptance context and Phase-3 evidence.
+
+
+## Final HQ receiving disposition — 2026-11-06
+
+The user answered the sole remaining W04 design question: **“Accept the reviewed caller-configured persistent cache as W04’s equivalent”.** This supplies owner acceptance of the reviewed physical equivalent; it does not grant original35/native source, scientific issuance, protected merge or production acceptance. Earlier author-stage “pending review”, “NOT_FULFILLED” and “owner question” passages above are historical cuts superseded for current status by this disposition and the exact independent reviews below; their measured limits remain intact.
+
+- Accepted implementation: `02c1200b82b8397e551817e8e4cf2c6763413189`, including the earlier grouped and capacity changes.
+- Independent accepted reviews: P2 `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3`; capacity `0d3191b32df0ebed8ecdca10ee399e1b550a6997`; compressed body `9999c0afac5d7d7eb72ad0df602da4b232a49565`.
+- All seven required artifacts are present; the case/first-consumer matrix and cost/parity JSONL retain executed receipts and explicit limits. No further engineering or review is required by this scoped L03 commission.
+- Preserve 50 PASS / 1 dependency metadata SKIP plus independent 4 carrier PASS; original35/S3/production not run; native-memory alternative, exact-lookup CPU cost, increased cache bytes, event-count rather than universal byte bounds, and legacy-large-rowgroup transient limits remain.
+- No protected merge is performed. Receiving owner may use these exact reviewed commits and this ordinary return for subsequent integration under its existing authority.
+
+**PROGRAMMA_DELTA:** W03/P01 exact compressed reconstruction/economic delta and W05/P03 compatible grouped execution plus capacity guard are independently accepted at the named sourcefree scope. W04/P02 configured private-root persistence is now explicitly owner-accepted as the selected physical equivalent. The prior default-policy blocker is closed. Code present, author measured, independently reviewed, human physical-policy accepted, protected adopted and native scientifically authorized remain separate axes; the last two are NOT granted. No blanket downstream READY or new task follows.
