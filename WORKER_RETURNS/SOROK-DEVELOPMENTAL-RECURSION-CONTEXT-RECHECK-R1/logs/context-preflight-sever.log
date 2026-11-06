@@ -1,0 +1,38 @@
+SEVER: removed language-context preflight block
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_invalid_language_context_is_refused_before_actual_interval ________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-106/test_invalid_language_context_0')
+
+    def test_invalid_language_context_is_refused_before_actual_interval(tmp_path):
+        from developmental_recursion.engine import BatchEngine
+        owner = start(tmp_path / "context")
+        engine = BatchEngine(owner, tmp_path / "journal.sqlite")
+        try:
+            before = owner.snapshot()
+            first = event(owner)
+            later = [replace(first, event_id=str(i), event_time=before.clock + 6*i,
+                             interval=None) for i in (2, 3)]
+            for context in ("invalid-context", [], {}, {"milieu_id": []},
+                            {"milieu_id": ""}, {"milieu_id": "MISSING_NATIVE_CONTEXT"}):
+                with pytest.raises(RecursionRefusal):
+                    engine.run_batch("bad-context", [
+                        replace(first, circumstances={"language_context": context}), *later])
+>               assert owner.snapshot() == before
+E               AssertionError: assert StateIdentity...61a6788df4d6') == StateIdentity...f72abe535a77')
+E                 
+E                 Omitting 3 identical items, use -vv to show
+E                 Differing attributes:
+E                 ['clock', 'state_hash']
+E                 
+E                 Drill down into differing attribute clock:
+E                   clock: 226 != 222...
+E                 
+E                 ...Full output truncated (5 lines hidden), use '-vv' to show
+
+WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py:168: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py::test_invalid_language_context_is_refused_before_actual_interval
+1 failed in 3.96s
+SEVER_EXIT=1

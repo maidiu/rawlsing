@@ -1,0 +1,50 @@
+{
+  "branch": "agent/sorok-recursion-cycle-20261106-r1",
+  "candidate_commit": "01551cf893157f76f958b22051ed69bad5642c11",
+  "checks": [
+    "full bootstrap/ordinary/terminal cycle with one provider call per batch",
+    "3-5 strict prospective event documents; extra/missing keys rejected",
+    "owner source/admission validation",
+    "durable store reopen",
+    "history identity/reorder/hash refusal",
+    "provider pre/post snapshot mutation HOLD",
+    "durable reservation before provider call",
+    "ambiguous provider/engine HOLD without blind retry",
+    "terminal next-batch rejection",
+    "bootstrap fictitious-memory rejection",
+    "context detachment and actor-accessible-only previous payloads",
+    "impressions stored separately from canonical owner state",
+    "invalid root/clock custody refusal"
+  ],
+  "duration_seconds_observed": 0.24,
+  "exit": 0,
+  "failed": 0,
+  "passed": 19,
+  "pytest_log": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/cycle_evidence/pytest.log",
+  "pytest_log_sha256": "799a95b7e0bdf4aa8a74d6956a27d993a8eb122b9ccddbf32792f3e2a9ad9143",
+  "runtime": {
+    "effort": "max",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "Python 3.11.3",
+    "quota": "UNKNOWN_UNOBSERVED"
+  },
+  "schema": "SOROK_DEVELOPMENTAL_RECURSION_CYCLE_TEST_RESULTS@1.0.0",
+  "scope": {
+    "ci": false,
+    "contracts_py_changed": false,
+    "engine_py_written": false,
+    "original_sav_read": false,
+    "p2_adapter_written": false,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "sourcefree": true
+  },
+  "skipped": 0,
+  "startup_commit": "0d4edae634b3ef19643a7d0eb7752081013e5d83",
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py -q -o addopts=\"\" -p no:cacheprovider",
+  "tests_sha256": "4c9b35bee0ca9547108782b174314ac48dee7c7d541aad700a9dba85765803ed",
+  "worker": "sorok-recursion-cycle-r1"
+}

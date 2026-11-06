@@ -1,0 +1,87 @@
+{
+  "schema": "SOROK_SANITIZED_WORKER_PASSPORT@1",
+  "job_id": "sorok-recursion-batch-capacity-retry-r1",
+  "agent_type": "OpenCode bounded implementation author",
+  "intelligence_level": "I2 / S2",
+  "model": {
+    "provider": "opencode-go",
+    "id": "deepseek-v4.1-flash",
+    "variant": "max",
+    "runtime": "OpenCode"
+  },
+  "quota": "UNKNOWN_NOT_OBSERVED",
+  "platform": {
+    "os": "Darwin 22.3.0 x86_64",
+    "python": "3.11.3",
+    "sqlite": "3.40.1",
+    "pytest": "9.0.2"
+  },
+  "branch": "agent/sorok-recursion-batch-20261106-r1",
+  "startup_commit": "0d4edae634b3ef19643a7d0eb7752081013e5d83",
+  "code_commit": "27645b56cddf361403609c5c6cc22b35757ccad5",
+  "worktree_scope": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1",
+  "files_touched": [
+    "developmental_recursion/engine.py",
+    "tests/test_engine.py",
+    "batch_evidence/README.md",
+    "batch_evidence/COMMANDS.md",
+    "batch_evidence/ENVIRONMENT.txt",
+    "batch_evidence/TEST_ENGINE.log",
+    "batch_evidence/TEST_COLLECTION.txt",
+    "batch_evidence/HARD_CRASH_RECOVERY.log",
+    "batch_evidence/CROSS_PROCESS_EXCLUSIVE.log",
+    "batch_evidence/SOURCE_PINS.json",
+    "batch_evidence/RECEIPT.md",
+    "batch_evidence/SANITIZED_PASSPORT.json",
+    "batch_evidence/hard_crash_recovery.py",
+    "batch_evidence/cross_process_exclusive.py"
+  ],
+  "unchanged_by_this_worker": [
+    "ABI.md",
+    "developmental_recursion/contracts.py",
+    "developmental_recursion/p2_owner.py",
+    "model_cycle.py",
+    "all production and accepted P2 files"
+  ],
+  "tests": {
+    "command": "python3 -m pytest -q tests/test_engine.py",
+    "passed": 42,
+    "failed": 0,
+    "seconds": 0.60
+  },
+  "evidence": {
+    "hard_crash_exit": 17,
+    "batch_after_crash": "RUNNING",
+    "reservation_after_crash": "RESERVED",
+    "recorded_result_after_crash": null,
+    "recovery_same_operation": true,
+    "recovered_event_ids": ["e1", "e2", "e3"],
+    "cross_process_duplicate_effects": 0,
+    "cross_process_verified": true
+  },
+  "source_pins": {
+    "architecture_commit": "fbfc529230d8b3c13f824cfac31741a5dfaa57e5",
+    "architecture_sha256": "38876f6e73ac150754d642b6741fb0be71be255563b352fca32b40f00e5e7859",
+    "abi_sha256": "08a44f995990f24060b430f96c58a4a8c0d421ef0deb0cb5ee7df90b5afc7489",
+    "contracts_sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "engine_sha256": "3192b93e25768c1d19e489f76fd6bad3ddc6ea51287f59c5593875d4c64b53af",
+    "tests_sha256": "1f09ebe35bf9419b052c6ef757b5410be496361aeab3be7e51675edc3b72096c"
+  },
+  "result": "ENGINEERING_PASS_CORE_TESTS__SCIENTIFIC_HOLD_EXPLICIT__NO_MERGE",
+  "authority": {
+    "local_sourcefree_implementation": true,
+    "protected_merge": false,
+    "native_or_source_issuance": false,
+    "protected_receiving": false,
+    "human_validity_claim": false,
+    "scientific_issuance": false
+  },
+  "holds": [
+    "exact propagation and coupling rules remain unavailable",
+    "impression-dependent memory formation and persistent developmental transition rules remain unavailable",
+    "native source issuance and protected receiving remain held",
+    "independently owned B behavior remains held",
+    "P2 adapter and model coordinator are other workers' surfaces",
+    "HQ decides after independent review"
+  ]
+}
