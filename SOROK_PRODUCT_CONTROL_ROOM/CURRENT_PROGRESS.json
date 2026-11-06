@@ -1670,7 +1670,7 @@
       "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/CURRENT_PROGRESS.json"
     ],
     "disciplines": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STANDING_DISCIPLINES.md",
-    "status": "OWNER_REOPEN_FIX_VERIFIED__STORE_ABI_AND_RESOURCE_REPAIRS_OUT",
+    "status": "OWNER_REOPEN_AND_RESOURCE_HARNESS_BANKED__STORE_ABI_REPAIR_OUT",
     "input_candidates": {
       "E1": {
         "head": "ee1ff298fe7e57277c34a5af16df33165743d84f",
@@ -1756,7 +1756,7 @@
       },
       {
         "task": "sorok-p3-vertical-resource-repair-r1",
-        "status": "ACTIVE_VERIFIED",
+        "status": "RETURNED_BANKED_RESOURCE_AND_CRASH_CODE__DEPENDENT_STORE_ABI",
         "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
         "pid": 46585
       }
@@ -1792,10 +1792,11 @@
     },
     "store_failure_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_FAILURE_DISPOSITION.json",
     "vertical_harness_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_HARNESS_INPUT_DISPOSITION.json",
-    "next": "Intake exact store ABI repair, integrate with banked exact owner reopen fix and resume same owner session for actual durable/cold/crash checks. Intake independent resource harness repair, run coherent full A-H/two-batch/cost proof, then reserved nonauthor exact-runtime S2 review. No polling/recurring wakes.",
+    "next": "Intake exact store ABI repair; integrate returned source with banked owner/recovery/resource corrections. Resume same owner for actual durable cases and same harness for full A-H/two-batch/cold/crash/measured resource proof as settled shared interfaces allow; route concrete defects to existing owners and get reserved independent exact-runtime review. No recurring wakes or duplicate blocked runs.",
     "store_return_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STORE_INPUT_DISPOSITION.json",
     "actual_owner_store_result": "45PASS_4FAIL_1INAPPLICABLE_SKIP",
     "owner_actual_store_repair_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/OWNER_ACTUAL_STORE_REPAIR_DISPOSITION.json",
-    "parallel_lane_target": "3\u20135 substantive independent lanes where necessary authorized work is ready; currently2 out, owner execution awaits actual store ABI return, final reviewer awaits coherent runtime."
+    "parallel_lane_target": "3\u20135 substantive independent lanes when authorized work is ready; currently1 store repair out, owner/full-harness execution both depend on exact repaired source, final independent review depends on coherent runtime.",
+    "vertical_resource_repair_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/VERTICAL_RESOURCE_REPAIR_DISPOSITION.json"
   }
 }

@@ -1,8 +1,9 @@
 """P3 vertical A-H proof definitions against actual P2/P3 owners.
 
 The selected user matrix is sections 10A-H and 11. This file is authored as a
-complete actual-runtime suite, but it is not executed in this startup because
-the returned normalized PsycheStore is absent. No store fallback exists here.
+complete actual-runtime suite. On the integrated startup the returned store is
+present but its plan-provenance ABI currently blocks the actual chain before a
+P2 batch. No store fallback exists here.
 """
 from __future__ import annotations
 
@@ -30,7 +31,7 @@ from developmental_recursion.p2_owner import P2Owner, load_p2  # noqa: E402
 from p3 import compression, p3_owner, projections, test_rules  # noqa: E402
 from p3_fixture_support import (  # noqa: E402
     COUNTERPART, PROJECT, VerticalCase, batch_events, build_case,
-    measure_case, reopen_owner, run_chain, workflow_records,
+    measure_case, reopen_owner, run_chain, run_chain_timed, workflow_records,
 )
 
 
@@ -403,6 +404,32 @@ def test_h_wrong_root_actor_branch_time_source_rule_version_refuse_before_effect
         close_case(case)
 
 
+def test_h_cross_root_binding_is_refused_not_migrated(tmp_path: Path) -> None:
+    left = build_case(tmp_path / "left")
+    right = build_case(tmp_path / "right")
+    try:
+        assert left.owner.store.head()["count"] == 0
+        assert right.owner.store.head()["count"] == 0
+        for source in (
+            left.source,
+            dict(left.source, root="foreign-root"),
+            dict(left.source, actor="foreign-actor"),
+            dict(left.source, branch="foreign-branch"),
+        ):
+            with pytest.raises(RecursionRefusal):
+                p3_owner.P3Owner(
+                    right.base_owner, source=source, history=left.history,
+                    plans=left.plans, catalog=left.catalog,
+                    compression_specs=left.compression_specs,
+                    standpoints=left.standpoints,
+                )
+        assert left.owner.store.head()["count"] == 0
+        assert right.owner.store.head()["count"] == 0
+    finally:
+        close_case(left)
+        close_case(right)
+
+
 def test_h_cold_reopen_idempotent_replay_and_source_restore(tmp_path: Path) -> None:
     case = build_case(tmp_path)
     reopened = None
@@ -450,6 +477,10 @@ def test_h_real_process_crash_after_base_before_psych_commit(tmp_path: Path) -> 
             "catalog": case.catalog, "compression_specs": case.compression_specs,
             "standpoints": case.standpoints,
             "proposal": case.proposals[0].document(),
+            "p2_root": str(Path(case.state_root)),
+            "p2_case": detached(case.base_owner.case),
+            "p2_source": detached(case.base_owner.source),
+            "p2_participants": list(case.base_owner.participants),
         }
         payload_path = tmp_path / "vertical-crash.json"
         payload_path.write_text(json.dumps(payload), encoding="utf-8")
@@ -460,16 +491,23 @@ sys.path.insert(0, sys.argv[1])
 sys.path.insert(0, sys.argv[2])
 sys.path.insert(0, str(Path(sys.argv[1]) / "tests"))
 from developmental_recursion.contracts import EventProposal
-from p3_fixture_support import build_case
+from developmental_recursion.p2_owner import P2Owner, load_p2
+from p3 import p3_owner
 p = json.loads(Path(sys.argv[3]).read_text())
-case = build_case(Path(sys.argv[4]))
-original = case.base_owner.realize
+fanin = load_p2().open(Path(p["p2_root"]))
+base = P2Owner(fanin, case=p["p2_case"], source=p["p2_source"],
+               participants=tuple(p["p2_participants"]))
+owner = p3_owner.P3Owner(base, source=p["source"], history=p["history"],
+                        plans=p["plans"], catalog=p["catalog"],
+                        compression_specs=p["compression_specs"],
+                        standpoints=p["standpoints"])
+original = base.realize
 def crash_after_base(operation_id, proposal, expected):
     original(operation_id, proposal, expected)
     os._exit(19)
-case.base_owner.realize = crash_after_base
-case.owner.realize("vertical-crash-operation", EventProposal(**p["proposal"]),
-                   case.owner.snapshot())
+base.realize = crash_after_base
+owner.realize("vertical-crash-operation", EventProposal(**p["proposal"]),
+              owner.snapshot())
 '''
         case.owner.close()
         completed = subprocess.run(
@@ -495,21 +533,60 @@ case.owner.realize("vertical-crash-operation", EventProposal(**p["proposal"]),
 
 def test_11_resource_receipts_are_actual_measurements(tmp_path: Path) -> None:
     case = build_case(tmp_path)
+    reopened = None
     try:
         start = time.perf_counter()
-        results = run_chain(case)
-        elapsed = time.perf_counter() - start
-        metrics = measure_case(case, results)
+        results, timings = run_chain_timed(case)
+        total_seconds = time.perf_counter() - start
+        verify_before = detached(case.owner.store.stats())
+        verify_start = time.perf_counter()
+        assert case.owner.store.verify() is True
+        full_verify_seconds = time.perf_counter() - verify_start
+        verify_after = detached(case.owner.store.stats())
+        timings["verify_before"] = verify_before
+        timings["verify_after"] = verify_after
+        metrics = measure_case(case, results, timings,
+                               full_verify_seconds=full_verify_seconds)
         assert metrics["provider_calls"] == 3
         assert metrics["provider_modes"] == [
             "BOOTSTRAP", "ORDINARY", "TERMINAL"]
+        assert metrics["event_batches"] == 2
+        assert metrics["calls_per_batch"] == 1.5
+        assert metrics["provider_calls_per_cycle"] == 3
         assert metrics["batch_counts"] == [3, 3]
+        assert metrics["retrospective_count"] == 2
         assert metrics["provider_context_bytes"] > 0
         assert metrics["logical_cycle_store_bytes"] > 0
-        assert metrics["source_config_bytes"] > 0
-        assert metrics["retrospective_count"] == 2
+        assert metrics["batch_latency_seconds"]["bootstrap"] >= 0
+        assert metrics["batch_latency_seconds"]["ordinary"] >= 0
+        assert metrics["batch_latency_seconds"]["terminal"] >= 0
+        assert metrics["event_latency_count"] == 6
+        assert all(value >= 0 for value in metrics["event_latency_seconds"])
+        assert metrics["targeted_vs_full_reads"]["targeted_queries"] > 0
+        assert metrics["targeted_vs_full_reads"]["full_verify_row_reads"] > 0
+        assert metrics["targeted_vs_full_reads"]["verify_full_scans"] == 1
+        assert metrics["bytes"]["db_bytes"] > 0
+        assert metrics["bytes"]["db_plus_wal_bytes"] >= metrics["bytes"]["db_bytes"]
+        assert metrics["bytes"]["incremental_db_bytes"] >= 0
+        assert metrics["bytes"]["bytes_per_record"] is not None
+        assert metrics["bytes"]["source_config_bytes"] > 0
+        assert metrics["bytes"]["source_provenance_overhead_bytes"] > 0
         assert all(value["bytes"] >= 0 for value in metrics["file_bytes"].values())
         assert metrics["b1_historical_comparison"]["label"].startswith("E1 B1")
-        assert elapsed >= 0
+        assert total_seconds >= 0
+        case.owner.close()
+        cold_start = time.perf_counter()
+        _, reopened = reopen_owner(case)
+        cold_open_seconds = time.perf_counter() - cold_start
+        metrics["cold_open_seconds"] = cold_open_seconds
+        metrics_path = os.environ.get("P3_VERTICAL_METRICS_PATH")
+        if metrics_path:
+            path = Path(metrics_path)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n",
+                            encoding="utf-8")
+        assert metrics["cold_open_seconds"] >= 0
     finally:
+        if reopened is not None:
+            reopened.close()
         close_case(case)

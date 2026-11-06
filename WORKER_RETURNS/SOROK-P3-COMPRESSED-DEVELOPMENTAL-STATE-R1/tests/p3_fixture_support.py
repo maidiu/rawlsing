@@ -2,8 +2,9 @@
 
 This module is TEST_ONLY model transport/test construction. It does not
 implement a state store, owner, rule, projection or event engine. The durable
-normalized store is imported only by the banked P3Owner; when absent, the
-harness is not executed.
+normalized store is imported only by the banked P3Owner. On the integrated
+startup the returned store is present but its plan-provenance ABI currently
+blocks execution before the two-batch chain; no fallback is provided.
 """
 from __future__ import annotations
 
@@ -240,6 +241,7 @@ class VerticalCase:
     cycle: Any
     journal_path: Path
     cycle_store_path: Path
+    state_root: Path
 
 
 class ScriptedProvider:
@@ -360,7 +362,7 @@ def build_case(tmp_path: Path, *, history_outcomes: tuple[str, ...] = HISTORY_OU
             source=source, history=history, proposals=proposals, plans=plans,
             catalog=catalog, compression_specs=specs, standpoints=stand,
             provider=provider, cycle=cycle, journal_path=journal,
-            cycle_store_path=cycle_store,
+            cycle_store_path=cycle_store, state_root=Path(fanin.session.state_root),
         )
     except BaseException:
         base.close()
@@ -369,7 +371,7 @@ def build_case(tmp_path: Path, *, history_outcomes: tuple[str, ...] = HISTORY_OU
 
 def reopen_owner(case: VerticalCase):
     """Reopen the exact actual P2 root and the banked P3 owner."""
-    fanin = load_p2().open(Path(case.base_owner.fanin.session.state_root))
+    fanin = load_p2().open(Path(case.state_root))
     actual_case = fanin.deps["case_for"](True)
     base = P2Owner(
         fanin, case=actual_case, source=fanin.deps["source_for"](actual_case),
@@ -384,10 +386,49 @@ def reopen_owner(case: VerticalCase):
 
 
 def run_chain(case: VerticalCase) -> dict:
-    first = case.cycle.bootstrap(context={"fixture": "vertical-bootstrap"})
-    second = case.cycle.advance(context={"fixture": "vertical-ordinary"})
-    final = case.cycle.finish(context={"fixture": "vertical-terminal"})
-    return {"bootstrap": first, "ordinary": second, "terminal": final}
+    return run_chain_timed(case)[0]
+
+
+def run_chain_timed(case: VerticalCase) -> tuple[dict, dict]:
+    import time
+    store_before = detached(case.owner.store.stats())
+    event_times: list[float] = []
+    original_realize = case.owner.realize
+
+    def timed_realize(operation_id, proposal, expected):
+        started = time.perf_counter()
+        try:
+            return original_realize(operation_id, proposal, expected)
+        finally:
+            event_times.append(time.perf_counter() - started)
+
+    case.owner.realize = timed_realize
+    try:
+        started = time.perf_counter()
+        first = case.cycle.bootstrap(context={"fixture": "vertical-bootstrap"})
+        bootstrap_seconds = time.perf_counter() - started
+        started = time.perf_counter()
+        second = case.cycle.advance(context={"fixture": "vertical-ordinary"})
+        ordinary_seconds = time.perf_counter() - started
+        started = time.perf_counter()
+        final = case.cycle.finish(context={"fixture": "vertical-terminal"})
+        terminal_seconds = time.perf_counter() - started
+    finally:
+        case.owner.realize = original_realize
+    store_after = detached(case.owner.store.stats())
+    return (
+        {"bootstrap": first, "ordinary": second, "terminal": final},
+        {
+            "store_before": store_before,
+            "store_after": store_after,
+            "event_latency_seconds": event_times,
+            "batch_latency_seconds": {
+                "bootstrap": bootstrap_seconds,
+                "ordinary": ordinary_seconds,
+                "terminal": terminal_seconds,
+            },
+        },
+    )
 
 
 def workflow_records(owner: Any, max_clock: int) -> list[dict]:
@@ -414,30 +455,82 @@ def file_metrics(paths: list[Path]) -> dict:
     }
 
 
-def measure_case(case: VerticalCase, results: Mapping[str, Any]) -> dict:
+def measure_case(case: VerticalCase, results: Mapping[str, Any],
+                  timings: Mapping[str, Any] | None = None,
+                  *, cold_open_seconds: float | None = None,
+                  full_verify_seconds: float | None = None) -> dict:
+    import json
     pr = case.provider
     files = [case.journal_path, case.cycle_store_path,
-             Path(case.base_owner.fanin.session.state_root) / "recursion_owner.sqlite",
-             Path(case.base_owner.fanin.session.state_root) / "p3_psyche.sqlite3",
-             Path(case.base_owner.fanin.session.state_root) / "p3_owner_config.json"]
+             Path(case.state_root) / "recursion_owner.sqlite",
+             Path(case.state_root) / "p3_psyche.sqlite3",
+             Path(case.state_root) / "p3_owner_config.json"]
     for base in list(files):
         for suffix in ("-wal", "-shm"):
             files.append(Path(str(base) + suffix))
+    timings = timings or {}
     head = case.owner.store.head()
+    store_after = detached(case.owner.store.stats())
+    store_before = detached(timings.get("store_before", store_after))
+    full_verify_before = detached(timings.get("verify_before", store_after))
+    full_verify_after = detached(timings.get("verify_after", store_after))
+    db_bytes = store_after.get("db_bytes", 0)
+    wal_bytes = store_after.get("wal_bytes", 0)
+    count = int(head.get("count", 0))
+    cycle = json.loads(case.cycle_store_path.read_text(encoding="utf-8")) if case.cycle_store_path.exists() else {}
+    batch_counts = [len(batch_events(results.get("bootstrap", {}))),
+                    len(batch_events(results.get("ordinary", {})))]
+    event_times = list(timings.get("event_latency_seconds", []))
+    batch_times = timings.get("batch_latency_seconds", {})
+    full_scans = int(store_after.get("full_scans", 0))
+    targeted = int(store_after.get("targeted_queries", 0))
+    row_reads = int(store_after.get("row_reads", 0))
+    row_writes = int(store_after.get("row_writes", 0))
     return {
         "schema": "SOROK_P3_VERTICAL_METRICS@1",
         "provider_calls": len(pr.calls),
         "provider_modes": [row["mode"] for row in pr.calls],
+        "event_batches": len(batch_counts),
+        "calls_per_batch": len(pr.calls) / max(1, len(batch_counts)),
+        "provider_calls_per_cycle": len(pr.calls),
         "provider_context_bytes": pr.context_bytes,
         "p3_record_head": detached(head),
+        "retrospective_count": len(cycle.get("retrospectives", [])),
+        "batch_counts": batch_counts,
+        "batch_latency_seconds": detached(batch_times),
+        "event_latency_seconds": event_times,
+        "event_latency_count": len(event_times),
+        "cold_open_seconds": cold_open_seconds,
+        "full_verify_seconds": full_verify_seconds,
+        "store_stats": store_after,
+        "store_stats_delta": {
+            key: int(store_after.get(key, 0)) - int(store_before.get(key, 0))
+            for key in ("row_reads", "row_writes", "targeted_queries",
+                        "full_scans", "records_returned")
+        },
+        "targeted_vs_full_reads": {
+            "targeted_queries": targeted,
+            "row_reads": row_reads,
+            "full_scans": full_scans,
+            "full_verify_row_reads": int(full_verify_after.get("row_reads", 0)) - int(full_verify_before.get("row_reads", 0)),
+            "verify_full_scans": int(full_verify_after.get("full_scans", 0)) - int(full_verify_before.get("full_scans", 0)),
+        },
+        "bytes": {
+            "db_bytes": db_bytes,
+            "wal_bytes": wal_bytes,
+            "db_plus_wal_bytes": db_bytes + wal_bytes,
+            "fixed_db_bytes_before_records": int(store_before.get("db_bytes", 0)),
+            "incremental_db_bytes": db_bytes - int(store_before.get("db_bytes", 0)),
+            "bytes_per_record": (db_bytes - int(store_before.get("db_bytes", 0))) / count if count else None,
+            "bytes_per_event": (db_bytes - int(store_before.get("db_bytes", 0))) / max(1, sum(batch_counts)),
+            "cycle_store_logical_bytes": (case.cycle_store_path.stat().st_size
+                                           if case.cycle_store_path.exists() else 0),
+            "source_config_bytes": len(canonical(case.owner.config).encode("utf-8")),
+            "source_provenance_overhead_bytes": len(canonical(case.source).encode("utf-8")),
+        },
         "file_bytes": file_metrics(files),
         "logical_cycle_store_bytes": (case.cycle_store_path.stat().st_size
                                        if case.cycle_store_path.exists() else 0),
-        "retrospective_count": len(json.loads(
-            case.cycle_store_path.read_text(encoding="utf-8")
-        ).get("retrospectives", [])) if case.cycle_store_path.exists() else 0,
-        "batch_counts": [len(batch_events(results["bootstrap"])),
-                         len(batch_events(results["ordinary"]))],
         "source_config_bytes": len(canonical(case.owner.config).encode("utf-8")),
         "b1_historical_comparison": {
             "label": "E1 B1 measured historical 3-event baseline; not this runtime",
