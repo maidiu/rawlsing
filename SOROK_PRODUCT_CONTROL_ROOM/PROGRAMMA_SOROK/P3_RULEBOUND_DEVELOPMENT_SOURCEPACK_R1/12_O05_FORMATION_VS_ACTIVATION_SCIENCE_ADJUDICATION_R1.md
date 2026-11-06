@@ -37,6 +37,19 @@ We must distinguish:
 
 **No hard-coded number-of-exposures threshold.** Some operations may be learned through a rare transformative event, others through long participation; universal 'two acts -> mastery' is a test-fixture convention, not scientific Rule T.
 
+### Two operators that must never be conflated: production and inference
+
+Rawlsing is a **generative** machine, not merely an observer diagnosing real human learning. This imposes another necessary separation:
+
+- **Generative Rule T:** under an accepted model and actual prior actor state/history, what *causally changes inside the simulation* when the actor participates? It may legitimately produce an acquired capacity under narrowly issued conditions even if the character does not display it immediately.
+- **Source-scientific warrant for Rule T:** what real empirical/theoretical evidence justifies making that causal transition for the relevant modeled population and setting, with scope and uncertainty? A programmer-made fixture and its subsequent output are not independent evidence.
+- **Evidentiary/observer inference:** what can a researcher, user, or later actor infer from external performances? A latent acquired capacity may remain unexpressed, and a skillful performance may be assisted or preexisting. Observation and the generative event are not logically identical.
+- **O15 first-consumer demonstration:** prove the later software consumer actually reads the committed state and responds under its real constraints. This demonstrates model execution; it must not be the *retroactive cause* or sole definition of the earlier acquisition.
+
+Thus a later performed E2 action is required to validate an **observable behavior-changing downstream claim** when that is the proof being made. It is not a universal requirement that every newly formed practical capacity immediately manifest itself to exist. Nor does repeated visible success in synthetic tests independently validate the psychological transformation law.
+
+This avoids two opposing errors: introspection-by-generator ('the model knows because it wrote the field') and crude behaviorism ('unseen or unperformed means no acquired capacity'). Source law, modeled causal events and evidence about human reality must each be judged at its own grade.
+
 ## III. Finite source-grounded test case: A learns to carry out one object-directed inspection
 
 Use the actual S35/R31J material tool and object-directed action frontier, *not* a new abstract classroom skill.
