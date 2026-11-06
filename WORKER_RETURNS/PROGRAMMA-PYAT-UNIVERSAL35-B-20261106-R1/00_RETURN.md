@@ -121,3 +121,6 @@ PROGRAMMA_DELTA — Universal35 B operation adapter
 - Native C8/C10/C11/C12/KMS, CAN/ADP/Pyat issuance, provider calls, human A5, protected merge: `NOT_RUN`/`HOLD`.
 - The all35 plan is a finite metadata/operation plan; it is not a claim that 742M joint or 1.86M pair candidates were executed. Selected/candidate denominators are explicit.
 - Independent review is required; this author return cannot self-accept. No protected merge was performed.
+
+### D r1 identity/occurrence/frontier receiving
+F `dd2158e4b89976310632f722239a0da3a352f14a` B_PAYLOAD_REVISE is addressed in D r1: OriginalItemID is distinct from physical code, occurrence facts are source-config-derived, and only explicit planned F2/F3/F4 operations are lowered. Current OriginalID/occurrence plan ref is `aae15f52877e4eb0c61bfbfb47efc2d650d3289036ce38d3a76acee1b1e84e20`; historical ref `3e3a604a…` and status-repair ref `9ae291ca…` remain recorded. Counts are unchanged: 5630/4655/8131/51/0, route 676/4705/249. See `WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-D-20261106-R1/01_R1_RETURN.md`.

@@ -15,7 +15,8 @@ from rawlsing_next.pre553_original35_operations import (
     EXECUTABLE, DEFERRED, HELD, INAPPLICABLE, OPERATION_F1, OPERATION_F2,
     OPERATION_F3H, OPERATION_F3R, OPERATION_F4, SOURCE_PRESENT,
     Original35OperationError, bind_governed_frontier,
-    build_original35_operation_plan, execute_plan_universal,
+    build_frontier_inputs_from_plan, build_original35_operation_plan,
+    execute_plan_universal,
 )
 from rawlsing_next.tests.test_universal_source_projection import (
     build_s3, s3_rows,
@@ -96,7 +97,7 @@ def _fixture_config(bundle, source_id="SRC01"):
             "authority_status": "TEST_ONLY",
             "evidence_refs": [],
             "limits": [],
-            "relation": None,
+            "relation": {"manual_response_topology": "scalar"},
         })
     return {
         "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
@@ -119,6 +120,8 @@ def _fixture_config(bundle, source_id="SRC01"):
             "source_sha256": bundle.source_sha256,
             "row_count": bundle.physical_stream.row_count,
         },
+        "respondents": {"subject_unit": "SOURCE_INTERVIEW_ROW"},
+        "supported_scope": {"supported_form_slice": "SINGLE_SAV_FILE_NO_FORM_VARIABLE_EVIDENCE"},
         "items": items, "physical_slots": [
             {"ordinal": index} for index in range(1, len(items) + 1)
         ], "response_slots": response_slots, "coordinate_slots": [],
@@ -150,6 +153,9 @@ def test_all35_no_drop_plan_accounts_every_original_item_and_slot():
     assert all(row.source_presence == "LOCAL_BYTES_PRESENT_EXACT_SHA"
                for row in plan.rows)
     assert all(row.item_ids and row.physical_slots for row in plan.rows)
+    assert any(op.unit == "household" for op in plan.operations)
+    assert any(op.topology not in {"SCALAR_SINGULAR", "scalar"}
+               for op in plan.operations)
     kinds = {op.kind for op in plan.operations}
     assert {OPERATION_F1, OPERATION_F2, OPERATION_F3H,
             OPERATION_F3R, OPERATION_F4} <= kinds
@@ -262,12 +268,15 @@ def test_governed_binding_actual_payload_change_severs_and_restores(tmp_path):
             replace(plan, operations=()), bundle=bundle,
             as_of=AS_OF, host=HOST, purpose=PURPOSE)
 
-    code = next(op.source_variable_codes[0] for op in plan.operations
-                if op.kind == OPERATION_F1 and op.status == EXECUTABLE)
+    f2 = next(op for op in plan.operations
+              if op.kind == OPERATION_F2 and op.status == EXECUTABLE
+              and op.conditioner_item_id)
+    conditioner_code = f2.source_variable_codes[1]
     changed = tuple(
-        replace(op, response_values=("9",),
-                conditioner_values=tuple("9" for _ in op.conditioner_values))
-        if code in op.source_variable_codes
+        replace(op, response_values=tuple(sorted(set(op.response_values) | {"9"})))
+        if op.kind == OPERATION_F1 and op.source_variable_codes[0] == conditioner_code
+        else replace(op, conditioner_values=("9",))
+        if op is f2
         else op
         for op in plan.operations)
     changed_plan = replace(plan, operations=changed)
@@ -279,3 +288,65 @@ def test_governed_binding_actual_payload_change_severs_and_restores(tmp_path):
     restored = bind_governed_frontier(
         plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
     assert restored.content_hash == baseline.content_hash
+
+
+def test_original_id_identity_refusals_and_route_unknown_not_administered(tmp_path):
+    bundle, _ = _frontier_bundle(tmp_path / "s35_identity.sav")
+    config = _fixture_config(bundle)
+    plan = build_original35_operation_plan(
+        [config], source_presence={"SRC01": True}, require_all35=False)
+    baseline = bind_governed_frontier(
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    f2 = next(op for op in plan.operations
+              if op.kind == OPERATION_F2 and op.conditioner_item_id)
+
+    conflict = tuple(
+        replace(op, item_ids=(op.item_ids[0] + "-WRONG",) + op.item_ids[1:])
+        if op is f2 else op for op in plan.operations)
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            replace(plan, operations=conflict), bundle=bundle,
+            as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    missing = tuple(
+        replace(op, item_ids=("",) + op.item_ids[1:]) if op is f2 else op
+        for op in plan.operations)
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            replace(plan, operations=missing), bundle=bundle,
+            as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    wrong_code = tuple(
+        replace(op, source_variable_codes=(op.source_variable_codes[0],
+                                           "NOT_A_PHYSICAL_CODE")
+                + op.source_variable_codes[2:])
+        if op is f2 else op for op in plan.operations)
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            replace(plan, operations=wrong_code), bundle=bundle,
+            as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    restored = bind_governed_frontier(
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert restored.content_hash == baseline.content_hash
+
+    unknown_config = _fixture_config(bundle)
+    unknown_config["routing"][0]["typed_state"] = "ROUTING_UNKNOWN"
+    unknown_plan = build_original35_operation_plan(
+        [unknown_config], source_presence={"SRC01": True}, require_all35=False)
+    inventory, _policy, frontier = build_frontier_inputs_from_plan(
+        unknown_plan, source_id="SRC01")
+    code = next(op.source_variable_codes[0] for op in unknown_plan.operations
+                if op.kind == OPERATION_F1 and op.route_status == "ROUTING_UNKNOWN")
+    original_id = next(item_id for item_id, physical in zip(
+        next(op for op in unknown_plan.operations
+             if op.kind == OPERATION_F1 and op.source_variable_codes[0] == code).item_ids,
+        next(op for op in unknown_plan.operations
+             if op.kind == OPERATION_F1 and op.source_variable_codes[0] == code).source_variable_codes))
+    occurrence = next(o for o in inventory.occurrences
+                      if o.key.item_id == original_id)
+    assert occurrence.administration == "UNKNOWN"
+    assert occurrence.route_state == "UNKNOWN"
+    assert all(not (op.targets and op.targets[0].item_id == original_id
+                    and op.disposition == "ELIGIBLE")
+               for op in frontier.operations)
