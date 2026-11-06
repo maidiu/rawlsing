@@ -1,5 +1,7 @@
 # ROADMAP:S09 — N9 current, historical and as-of objective-world serving
 
+> **POST-CAS3 ACTUAL CURRENTNESS (2026-11-06; factual scoped owner receipt)** — S09 protected CAS3: L01 reviewed R08 signed evidence and R118 actual per-prefix sourcefree world service now protected via #702; the old P41 historical Git-object executable dependency is removed at sourcefree scope. Parent N9 objective/structural world native authority, R09 host verified parent provenance, and original35 population conditioning remain distinct holds; sourcefree N10E/N9 first reader does not self-issue world meaning. [Every return, review and protected merge](../PROGRAMMA_PYAT_15_RETURN_PROTECTED_RECEIVING_20261106_R1.md). All original G4 cut grades and MUST/IF predicates preserved; see earlier sections below for their date-labeled evidence.\n
+
 > **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 actual runtime distinction: protected `pre553_universal_world_binding.py` can `git archive` pinned P41 commit `f27d1101...`, imports/executes its historical `p41_service` (sourcefree TEST_ONLY) and separately validates externally generated J42 receipt material; protected test executes J42 from Git history. R118 reviewed per-prefix world consuming successor `ACCEPT_SCOPED_LOCAL` is **branch-only**, not current protected N9. R08 exact evidence binder exists protected but is not statically imported by this P41 execution path. Native actual N9 remains held. [Exact R2 lineage](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
 
 
