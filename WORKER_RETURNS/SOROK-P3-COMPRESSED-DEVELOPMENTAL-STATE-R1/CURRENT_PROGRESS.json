@@ -1,10 +1,37 @@
 {
-  "status": "INPUT_REVIEWS_LAUNCHED__MECHANICAL_CONTRACT_FROZEN",
+  "status": "FOUR_DISTINCT_LANES_ACTIVE_VERIFIED__HQ_INTEGRATION_PENDING",
   "checkpoint": "CHECKPOINT.json",
   "contract": "INTEGRATION_CONTRACT.md",
   "disciplines": "STANDING_DISCIPLINES.md",
-  "input_reviews": "LAUNCHED_NOT_ACCEPTED",
-  "runtime": "NOT_IMPLEMENTED_YET",
+  "lanes": [
+    {
+      "task": "sorok-p3-e1-input-review-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+      "pid": 12610
+    },
+    {
+      "task": "sorok-p3-s1-input-review-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "pid": 12614
+    },
+    {
+      "task": "sorok-p3-normalized-store-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_615d8e3a6a909213fb200be830",
+      "pid": 15917
+    },
+    {
+      "task": "sorok-p3-compression-evidence-r1",
+      "status": "ACTIVE_VERIFIED",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "pid": 15921
+    }
+  ],
+  "runtime": "NOT_YET_INTEGRATED",
+  "input_acceptance": "PENDING_INDEPENDENT_RETURNS",
   "native_science": "HOLD",
-  "protected_receiving": "HOLD"
+  "protected_receiving": "HOLD",
+  "next": "Intake terminal returns once notified, import qualified store/compression modules; HQ implement P3Owner/test-only rules/projections and full actual P2-root A-H integration. Input reviews do not accept final runtime."
 }

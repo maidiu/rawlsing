@@ -1,3 +1,9 @@
+# Isolated P3 engineering overlay — 2026-11-06
+
+The user-authorized P3 compressed-state/opaque-Other commission is now launched on `agent/sorok-p3-compressed-developmental-state-20261106-r1`, protected start `c852d7516e23fcb6cf2215e9be7c5fa268503516`. Four exclusive OpenCode/MAX lanes are process-verified: E1 input review, S1 input review, normalized state store and compression evidence. These are neither independently received P3 runtime nor native scientific effects. [Current checkpoint and exact custody](../WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/CHECKPOINT.json). Paired scoped progress and operative standing disciplines are in that same return root. This isolated-branch overlay does not replace the incumbent HQ or alter protected revision37/scientific/source/human rights below.
+
+---
+
 # Sorok current progress revision37 — protected P2 and developmental recursion received, sourcefree only
 
 **Verified 2026-11-06, protected receiving cut:** `0b7d8ba33b5cd905963292357507ae7bbc2219de` from [PR #704](https://github.com/maidiu/rawlsing/pull/704). This revision is a **receiving/currentness entry**, not a new Sorok HQ appointment, CAN/ADP scientific issuance, native actor/source grant or declaration of SOROK completion. Reconfirm live HEAD and leases before future execution. Full source and scope: `SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md`.

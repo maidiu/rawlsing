@@ -1,0 +1,17 @@
+# sorok-p3-s1-input-review-r1
+
+AGENT_TYPE: Distinct independent source/input reviewer
+INTELLIGENCE_LEVEL: I3 bounded exact-source/claim review; no original scientific issuance
+EXECUTION: S0-S1 private GitHub, permitted local S2 sourcefree tests where required; no S3.
+STARTUP: 5f30f4f897e7636349586ac76468a89738a6d424
+ACTUAL_MODEL: opencode-go/deepseek-v4.1-flash#max verified assistant msg_1b2c65f4b001S28XyYX5eWmXC0
+SESSION: ses_e98c905cbffekusoHURfKyEUKG
+WORKTREE: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1
+
+```text
+You are a distinct independent input reviewer for the authorized SOROK P3 commission. Read the full user commission /Users/matthewsmith/.codex/attachments/de32bc85-d779-4830-85ae-f249aa757b45/pasted-text-1.txt and WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/STANDING_DISCIPLINES.md. These disciplines govern your bounded work. Protected start c852d7516e23fcb6cf2215e9be7c5fa268503516; your startup includes unchanged copies of both candidate returns. No source-native psychological, scientific, human, original actor, B, production registry or protected receiving authority is granted. No code edits outside your return root. No own implementation authorship of these two inputs; previous unrelated recursion recovery/review does not make you their author. Preserve original claims and negative evidence. Actual current OpenCode Go DeepSeek V4.1 Flash MAX only; no account/provider/model/region/settings or UI changes. Quota UNKNOWN. HQ retains consequential semantic/scientific judgment. Do source-consistency/engineering review; do not create a new theory or research fleet.
+
+Exact subject S1 5a505a911509073eb38102f0022f445e7ec602e5 / PR734, WORKER_RETURNS/SOROK-P3-S1-COMPRESSED-PERSONHOOD-R1/. Independently review all four files against the full present user P3 commission, user-settled sparse-event/opaque-Other directive and actual sourcepack CAN/ADP authority. This is bounded source/construct-validity review of proposals, not new original science or S2 implementation. Check H1 source-bound compressed participation without fabricated acts/global multiplier; H2 contextual read-time activation and coexisting contradictions without automatic lifecycle; H3 asymmetric access and proposed retrospective reinterpretation without canonical memory/claim issuance. Evaluate all substantive obligations notwithstanding the original truncated launch and four-file consolidation. Identify exact missing coverage rather than pretending all original requested outputs existed. Distinguish sourced claims actually verifiable here from scholarly findings not re-examined; no claim of independently rereading unavailable full books. Judge sufficiency as explicitly TEST_ONLY design capital for current A-E implementation, not issued native laws or human validation. Give finite concrete blocking defects, nonblocking limitations, safe contracts and precise acceptance scope. Do not invent a universal completeness gate, new theory, fields in P2 proposal grammar or research fleet. Write only WORKER_RETURNS/SOROK-P3-S1-INDEPENDENT-INPUT-REVIEW-R1/ with manifest, exact source/claim mapping and verdict. Commit/push assigned new review branch and directremote verify. No scientific issuance, sourcepack/runtime/PROGRAMMA changes or merge. STOP after return.
+```
+
+Actual launch PID 12614. Launch is not acceptance. Terminal receipt: /Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-s1-input-review-r1/completion.json

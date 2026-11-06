@@ -25,10 +25,12 @@
       "grade": "CONSTRUCTIVE_HYPOTHESES_TRUNCATED_ORIGINAL_LAUNCH_NOT_NATIVE_LAWS"
     }
   },
-  "state": "INPUT_REVIEWS_LAUNCHED__MECHANICAL_CONTRACT_FROZEN",
+  "state": "FOUR_DISTINCT_LANES_ACTIVE_VERIFIED__HQ_INTEGRATION_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
+      "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-independent-review-r1",
       "launch": {
         "job_id": "sorok-p3-e1-input-review-r1",
         "child_pid": 12610,
@@ -37,11 +39,20 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-e1-input-review-r1",
         "launch_is_not_completion": true
       },
-      "state": "LAUNCHED_NOT_ACCEPTED",
-      "notification": "existing finite terminal observer"
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b2c65e10001kHag5q0WltfNQn",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-e1-input-review-r1/completion.json",
+      "notification": "finite existing completion observer"
     },
     {
       "task": "sorok-p3-s1-input-review-r1",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1",
       "launch": {
         "job_id": "sorok-p3-s1-input-review-r1",
         "child_pid": 12614,
@@ -50,8 +61,59 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-s1-input-review-r1",
         "launch_is_not_completion": true
       },
-      "state": "LAUNCHED_NOT_ACCEPTED",
-      "notification": "existing finite terminal observer"
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b2c65f4b001S28XyYX5eWmXC0",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-s1-input-review-r1/completion.json",
+      "notification": "finite existing completion observer"
+    },
+    {
+      "task": "sorok-p3-normalized-store-r1",
+      "session": "ses_615d8e3a6a909213fb200be830",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-batch-r1",
+      "launch": {
+        "job_id": "sorok-p3-normalized-store-r1",
+        "child_pid": 15917,
+        "supervisor_pid": 15916,
+        "observer_pid": 15918,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b2c9f38a001y85UdpgtTdASmG",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-normalized-store-r1/completion.json",
+      "notification": "finite existing completion observer"
+    },
+    {
+      "task": "sorok-p3-compression-evidence-r1",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1",
+      "launch": {
+        "job_id": "sorok-p3-compression-evidence-r1",
+        "child_pid": 15921,
+        "supervisor_pid": 15920,
+        "observer_pid": 15922,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-compression-evidence-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b2c9f620001acwGSu9dj0MBJc",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-compression-evidence-r1/completion.json",
+      "notification": "finite existing completion observer"
     }
   ],
   "holds": [
@@ -60,6 +122,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Launch exact input reviews; settle actual P2-root store/owner seam; delegate independent implementation against that contract. No second engine or B1-only canary.",
-  "integration_contract": "INTEGRATION_CONTRACT.md"
+  "next": "Intake terminal returns once notified, import qualified store/compression modules; HQ implement P3Owner/test-only rules/projections and full actual P2-root A-H integration. Input reviews do not accept final runtime.",
+  "integration_contract": "INTEGRATION_CONTRACT.md",
+  "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action."
 }
