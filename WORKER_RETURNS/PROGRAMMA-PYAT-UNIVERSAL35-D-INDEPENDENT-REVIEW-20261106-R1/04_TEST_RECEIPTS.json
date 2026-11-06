@@ -1,0 +1,76 @@
+{
+  "B_counts": {
+    "ABSTAIN": 0,
+    "DEFERRED": 51,
+    "EXECUTABLE_RAW": 5630,
+    "HELD": 4655,
+    "INAPPLICABLE": 8131,
+    "NOT_REQUESTED": 0,
+    "historical_plan_ref": "3e3a604a78c377030bffa39eb62cf065d111746f9bc1588f7dbf33bac0373b9c",
+    "recomputed_plan_ref": "9ae291ca403e3d26fd0e4af9b6c536fac9509be878e0d9cc43a589f293d14ff7"
+  },
+  "D_native_attempts": {
+    "SRC09": "NOT_COMPLETED EAGER_PHYSICAL_DECODE_TIMEOUT_600S",
+    "SRC10": "NOT_COMPLETED EAGER_PHYSICAL_DECODE_TIMEOUT_600S",
+    "SRC11": "NOT_COMPLETED EAGER_PHYSICAL_DECODE_TIMEOUT_600S",
+    "SRC15": "NOT_COMPLETED EAGER_PHYSICAL_DECODE_TIMEOUT_600S",
+    "SRC31": "C11_RELEASE_REFUSED unbound response value/state; rows 8442; 94.603s"
+  },
+  "commands": [
+    {
+      "command": "pytest -q rawlsing_next/tests/test_pre553_original35_operations.py rawlsing_next/tests/test_programma_pyat_original35_constructor_adapter.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "B/D",
+      "log": "d_b_tests.log",
+      "log_sha256": "f67808a29cb3aece41476a0963b3b600a742c5ab2ee221710824110c8ed87163",
+      "result": "7 passed in 26.95s"
+    },
+    {
+      "command": "pytest -q rawlsing_next/tests/test_pre553_original35_execution.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "D",
+      "log": "d_execution_tests.log",
+      "log_sha256": "b7efcde3b7745d5eccae11502cad60a9b95f6d2d96eb20bb3af1501c1d1a4588",
+      "result": "2 skipped in 0.38s (runtime binding unavailable)"
+    },
+    {
+      "command": "custom payload mutation/missing/restore against current compiler fixture",
+      "exit": 0,
+      "lane": "B payload",
+      "log": "d_payload.log",
+      "log_sha256": "0f28dbd0d0c5f3ac24896393845b93f6f7dc86ebb6d0600ade0403029ac62107",
+      "result": "item_id mutation ignored; value mutation changed compilation/facts/ledger; restore exact; empty plan refused"
+    },
+    {
+      "command": "build_frontier_inputs_from_plan on actual SRC01 plan with enumeration stubbed to capture inventory flags",
+      "exit": 0,
+      "lane": "B route/unit",
+      "log": "d_frontier_flags.log",
+      "log_sha256": "609c4a444661b9d1d5871466be8bff8fa708efa45af8bfb6b53dd4bbde7800b0",
+      "result": "129 occurrences all ADMINISTERED KNOWN person SCALAR_SINGULAR DEFAULT_FORM despite source 126 ROUTING_UNKNOWN/3 RULE_UNAVAILABLE"
+    },
+    {
+      "command": "build_frontier_inputs_from_plan on actual SRC01 plan, 600s process bound",
+      "exit": null,
+      "lane": "B scale",
+      "log": "d_actual_plan_frontier_timeout.txt",
+      "log_sha256": "80ceff0e4dcc4345ec97d94a4eea289c0cbf81a5638354d12d617a8f29a0ad09",
+      "result": "NO_OUTPUT_BEFORE_600S_BOUND"
+    }
+  ],
+  "native_or_scientific_acceptance": false,
+  "original_response_bytes_read": false,
+  "route_split": {
+    "ELIGIBLE_APPLICABLE": 676,
+    "F4_DEFERRED": 20,
+    "ROUTING_UNKNOWN": 4705,
+    "RULE_UNAVAILABLE": 249
+  },
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_D_INDEPENDENT_REVIEW_RECEIPTS@1.0.0",
+  "tests_not_rerun": [
+    "A 35 fixture floor (previously independently accepted)",
+    "full all35 estate",
+    "broad hostile court",
+    "original data decode (not needed)"
+  ]
+}

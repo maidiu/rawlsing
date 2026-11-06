@@ -1,0 +1,71 @@
+{
+  "AB_JOIN": {
+    "limitation": "The advertised compact select ABI still is not a full source-config document; this was a previous ABC review finding. D uses load_original, so the actual D path is scoped-accepted, not the select ABI claim.",
+    "scope": [
+      "SourceConfigLibrary.load_original(sid).document -> build_original35_operation_plan reproduces 35/35 plan and exact plan_ref",
+      "A/B counts and item/slot identities match prior source qualification"
+    ],
+    "verdict": "ACCEPT_SCOPED_ENGINEERING_VIA_FULL_CONFIG_PATH"
+  },
+  "B_REPAIRED_PAYLOAD": {
+    "accepted_subscope": [
+      "value/conditioner payload mutation changes compilation, emitted jobs, facts and operation ledger",
+      "empty planned payload is refused",
+      "exact restore returns baseline compilation/facts/ledger",
+      "B counts corrected to 4,655 HELD / 8,131 INAPPLICABLE with historical plan_ref preserved"
+    ],
+    "evidence": [
+      "evidence/d_payload.log",
+      "evidence/d_frontier_flags.log",
+      "evidence/d_actual_plan_frontier_timeout.txt"
+    ],
+    "rejected_or_held": [
+      "OriginalItemID mutation is ignored: compilation/facts/ledger stay identical",
+      "frontier occurrences hardcode ADMINISTERED/KNOWN/person/SCALAR_SINGULAR/DEFAULT_FORM instead of using plan route/unit/topology",
+      "actual SRC01 plan frontier construction did not complete within 600s (sourcefree scale test)",
+      "B/D evidence labels all executable operations as route_qualified despite route_split 676/4,705/249"
+    ],
+    "verdict": "REVISE"
+  },
+  "D_EXECUTION_WRAPPER": {
+    "defects_or_limits": [
+      "direct decode_sav/decode_dta bypasses existing pre553_source_read_admission current-decision/revocation/replay gate",
+      "max_items=3 default is diagnostic only and not final full supported-operation execution",
+      "first non-selected physical slot fallback invents a coordinate when no coordinate slot exists",
+      "NativeSourceRule implementation_id is synthetic source_id:name and unit is hardcoded person instead of source config item/unit identity",
+      "SRC31 mapping refusal and 4x600s eager-decode noncompletion are honest; no native facts claimed"
+    ],
+    "evidence": [
+      "evidence/d_execution_tests.log",
+      "evidence/d_frontier_flags.log"
+    ],
+    "verdict": "HOLD_SCOPED_DIAGNOSTIC__NOT_FULL_READINESS"
+  },
+  "D_FULL_READINESS": {
+    "not_claimed": [
+      "all35 native",
+      "native EmpiricalFact",
+      "E authentic bind",
+      "scientific/structural issuance",
+      "protected merge"
+    ],
+    "reason": "Actual original I03/I05/Batch EmpiricalFacts and E/N10E handoff are NOT_COMPLETED; C bounded stream producer and source mapping repair remain separate dependencies.",
+    "verdict": "HOLD"
+  },
+  "D_MANIFEST_SELECTION": {
+    "limitation": "D execution tests skipped in this checkout (2 skipped; runtime binding unavailable); do not treat this as original execution acceptance.",
+    "scope": [
+      "35 manifest-only rows, 18,276 items / 18,413 slots",
+      "SRC31 C11 mapping refusal is typed and honest",
+      "all35 manifest rows native=false, no EmpiricalFact"
+    ],
+    "verdict": "ACCEPT_SCOPED_SOURCEFREE_DIAGNOSTIC"
+  },
+  "decision_owner": "HQ plus later distinct decision/receiving owner; this review is not self-acceptance or repair",
+  "previous_reviews_preserved": [
+    "ebd20c165bb275f66e4b3e2210535e96eecaf2ac",
+    "43e5962bbad72501166da59b744d618d10877b22"
+  ],
+  "reviewer": "existing nonauthor F session; not D/B author or HQ acceptor",
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_D_INDEPENDENT_REVIEW_VERDICTS@1.0.0"
+}

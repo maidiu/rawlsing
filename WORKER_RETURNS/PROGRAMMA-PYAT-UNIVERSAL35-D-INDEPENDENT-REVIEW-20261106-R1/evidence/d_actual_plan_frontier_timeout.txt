@@ -1,0 +1,21 @@
+Command:
+  PYTHONPATH=. TMPDIR=<assigned scratch>/tmp \
+  /tmp/rawlsing-oct28-p1r1/venv/bin/python \
+  .local-logs/pyat-universal35/review_d_frontier_inputs.py
+
+Purpose:
+  Sourcefree actual-plan probe: load SRC01 from the pinned R157 source pack,
+  build the B plan, then call build_frontier_inputs_from_plan for SRC01.
+
+Observed:
+  - No output before the 600s process bound.
+  - The process was terminated by the shell timeout; no frontier/result was produced.
+  - The same function completed only on the small author test fixture.
+  - This probe did NOT decode or read original respondent bytes. It is a
+    sourcefree frontier-construction scale test, not an original-data attempt.
+
+Implication:
+  The repaired F2/F3/F4 adapter is not demonstrated at an actual source-plan
+  scale (SRC01 has 129 occurrence codes and J=3/K=1 frontier settings). The
+  author's B/D tests use a tiny fixture; the all35 manifest path does not
+  exercise actual F2/F3/F4 frontier construction for an actual source.
