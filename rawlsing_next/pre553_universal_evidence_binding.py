@@ -872,7 +872,17 @@ def _actual_condition_identities(binding: "EmpiricalProducerBinding") -> tuple[M
             "actual producer leaf/conditioner count differs from consumer bindings"
         )
     out = []
-    for leaf, conditioner in zip(leaves, bindings):
+    # Predicate AND leaves are canonically sorted; consumer bindings preserve
+    # requested prefix order. Associate by exact coordinate, never position.
+    remaining = list(leaves)
+    for conditioner in bindings:
+        matches = [leaf for leaf in remaining
+                   if canonicalize(_leaf_semantic_ref(leaf))
+                   == canonicalize(conditioner.empirical_coordinate_ref.as_dict())]
+        if len(matches) != 1:
+            raise EvidenceBindingMismatch("producer leaf/conditioner exact coordinate association ambiguous")
+        leaf = matches[0]
+        remaining.remove(leaf)
         semantic_ref = _leaf_semantic_ref(leaf)
         if not isinstance(semantic_ref, Mapping):
             raise EvidenceBindingMismatch("producer leaf lacks a semantic ref")
