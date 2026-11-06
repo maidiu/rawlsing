@@ -21,7 +21,8 @@ from rawlsing_next.pre553_original35_operations import (
     bind_governed_frontier, build_original35_operation_plan,
 )
 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
-from rawlsing_next.pre553_empirical_objects import RespondentEvent
+from rawlsing_next.pre553_empirical_objects import RespondentEvent, exact_ref
+from rawlsing_next.pre553_field_forge_empirical_ingress import envelope_material
 from rawlsing_next.source_configuration.factory import (
     build_source_backed_c11_repository_from_config,
     build_validated_c11_release_from_config,
@@ -246,6 +247,46 @@ class _RecordingResolver:
         return decision
 
 
+def write_field_forge_envelopes(result: Any, *, source_id: str,
+                                state_root: str | Path,
+                                producer_permission_ceiling: tuple[str, ...]) -> dict[str, Any]:
+    """Persist exact existing fact/query envelopes; never mint permission."""
+    native = getattr(getattr(result, "native_execution", None), "native_result", None)
+    if native is None:
+        raise Original35ExecutionError("GOVERNED_NATIVE_RESULT_REQUIRED")
+    facts = tuple(getattr(native, "empirical_facts", ()))
+    catalog = getattr(getattr(result, "compilation", None), "runtime_catalog", None)
+    queries = {query.ref.key: query for query in getattr(catalog, "queries", ())}
+    queries.update({query.ref.key: query
+                    for query in getattr(native, "executed_queries", ())})
+    envelopes = []
+    missing = []
+    for fact in facts:
+        qref = exact_ref(fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref")
+        query = queries.get(qref.key)
+        if query is None:
+            missing.append(qref.as_dict())
+            continue
+        envelopes.append(envelope_material(
+            fact=fact, query=query,
+            producer_permission_ceiling=producer_permission_ceiling))
+    target = Path(state_root) / (source_id + ".field_forge_envelopes.json")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps({
+        "schema": "PRE553_ORIGINAL35_E_TRANSPORT@1.0.0",
+        "source_id": source_id,
+        "fact_count": len(facts),
+        "envelope_count": len(envelopes),
+        "missing_query_refs": missing,
+        "envelopes": envelopes,
+        "raw_respondent_rows_included": False,
+        "producer_permission_ceiling": list(producer_permission_ceiling),
+        "native_science_authority": False,
+    }, indent=2, sort_keys=True) + "\n", encoding="utf8")
+    return {"path": str(target), "fact_count": len(facts),
+            "envelope_count": len(envelopes), "missing_query_refs": missing}
+
+
 def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibrary,
                                    source_root: str | Path, host: str,
                                    purpose: str, as_of: str,
@@ -357,6 +398,10 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         operation_anti_join = dict(result.operation_anti_join)
         ledger_hash = result.content_hash
         compilation_material = compilation.material()
+        transport = (write_field_forge_envelopes(
+            result, source_id=source_id, state_root=state_root,
+            producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",))
+            if state_root is not None else None)
     else:
         compilation = compile_universal_workload(
             bundle=bundle, as_of=as_of, host=host, purpose=purpose)
@@ -373,6 +418,7 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         operation_anti_join = {"no_drop_ok": result.anti_join()["no_drop_ok"]}
         ledger_hash = compilation.content_hash
         compilation_material = compilation.material()
+        transport = None
     after_decision = recording.resolve_current(request)
     from dataclasses import asdict
     if asdict(after_decision) != decode_decision:
@@ -399,6 +445,7 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         "anti_join": anti_join,
         "operation_anti_join": operation_anti_join,
         "ledger_hash": ledger_hash,
+        "field_forge_transport": transport,
         "elapsed_seconds": round(time.time() - started, 3),
         "maxrss_bytes": _maxrss(), "native": False,
     }
@@ -454,5 +501,6 @@ __all__ = [
     "DEFAULT_BINDING", "Original35ExecutionError", "SCHEMA",
     "SourceExecutionResult", "execute_all",
     "execute_native_compiler_source", "execute_source",
+    "write_field_forge_envelopes",
     "load_runtime_binding", "main",
 ]

@@ -4,18 +4,33 @@ from __future__ import annotations
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
 from dataclasses import asdict, dataclass
 from rawlsing_next.pre553_original35_execution import (
     Original35ExecutionError, _RecordingResolver,
-    execute_native_compiler_source, execute_source, load_runtime_binding,
+    execute_native_compiler_source, execute_source,
+    load_runtime_binding, write_field_forge_envelopes,
 )
 from rawlsing_next.pre553_original35_operations import build_original35_operation_plan
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
+from rawlsing_next.pre553_original35_operations import (
+    bind_governed_frontier, build_original35_operation_plan,
+)
+from rawlsing_next.pre553_universal_workload import execute_governed_frontier
+from rawlsing_next.pre553_field_forge_empirical_ingress import (
+    ingest_envelope,
+)
+from rawlsing_next.tests.test_pre553_original35_operations import _fixture_config
+from rawlsing_next.tests.test_universal_workload import (
+    AS_OF, HOST, PURPOSE, _frontier_bundle,
+)
 
 INDEX = "source_pre553_validation/integration/SOURCE_LIBRARY_INDEX.json"
+REPO = Path(__file__).resolve().parents[2]
 
 
 def _binding():
@@ -110,3 +125,55 @@ def test_recording_resolver_binds_actual_decode_decision_not_extra_precall():
     for _ in range(3):
         same.resolve_current(None)
     assert same.captured[0] == same.captured[-1]
+
+
+def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
+    bundle, _rows = _frontier_bundle(tmp_path / "e_transport.sav")
+    config = _fixture_config(bundle)
+    plan = build_original35_operation_plan(
+        [config], source_presence={"SRC01": True}, require_all35=False)
+    compilation = bind_governed_frontier(
+        plan, bundle=bundle, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    result = execute_governed_frontier(
+        compilation=compilation,
+        source_factory=lambda _ref: bundle.physical_stream)
+    summary = write_field_forge_envelopes(
+        result, source_id="SRC01", state_root=tmp_path,
+        producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",))
+    assert summary["fact_count"] == summary["envelope_count"] > 0
+    document = json.loads(Path(summary["path"]).read_text())
+    assert document["schema"] == "PRE553_ORIGINAL35_E_TRANSPORT@1.0.0"
+    assert document["raw_respondent_rows_included"] is False
+    accepted = 0
+    for envelope in document["envelopes"]:
+        response = ingest_envelope(envelope)
+        assert response["schema"] == "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1"
+        if response["state"] == "CONDITIONAL_SUPPORT_PROFILE":
+            accepted += 1
+        else:
+            assert response["refusal_code"] in {
+                "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
+                "FIELD_FORGE_RELATION_TYPED_REFUSAL"}
+    assert accepted >= 0
+    envelope_path = tmp_path / "first_envelope.json"
+    envelope_path.write_text(json.dumps(document["envelopes"][0], sort_keys=True))
+    run = subprocess.run(
+        [sys.executable, "-B", "-m",
+         "rawlsing_next.pre553_field_forge_empirical_ingress",
+         "--envelope", str(envelope_path)],
+        cwd=str(REPO),
+        env={**os.environ, "PYTHONPATH": str(REPO),
+             "PYTHONDONTWRITEBYTECODE": "1"},
+        text=True, capture_output=True, timeout=120)
+    assert run.returncode == 0, run.stderr[-2000:]
+    assert "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1" in run.stdout
+
+    broken = json.loads(json.dumps(document))
+    broken["envelopes"][0]["permissions"] = {}
+    with pytest.raises(Exception):
+        ingest_envelope(broken["envelopes"][0])
+    broken = json.loads(json.dumps(document))
+    broken["envelopes"][0]["replay"]["fact_replay_ref"] = {
+        "kind": "WRONG", "object_id": "wrong", "content_hash": "0" * 64}
+    with pytest.raises(Exception):
+        ingest_envelope(broken["envelopes"][0])
