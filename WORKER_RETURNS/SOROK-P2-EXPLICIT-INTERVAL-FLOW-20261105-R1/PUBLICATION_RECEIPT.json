@@ -3,20 +3,31 @@
   "return": "SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
   "repository": "maidiu/rawlsing",
   "remote": "origin",
-  "branch": "codex/sorok-p2-explicit-interval-flow-20261105-r1",
+  "branch": "codex/sorok-p2-interval-public-receipt-repair-20261105-r1",
   "product_base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
-  "repair_base": "bdadbc57c2664d3155a97853422e74b6128261f8",
-  "repair_commit": "dde8287a806a802cd8d6a3dc122870f8cf8c5c3a",
-  "pushed_at_utc": "2026-11-06T01:33:32Z",
+  "primary_repair_base": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+  "independent_closure": "89b33453eff13d8a3638a97cf516438c42e7af4f",
+  "historical_base": "bdadbc57c2664d3155a97853422e74b6128261f8",
+  "repair_commit": "THIS_BRANCH_HEAD_RETURNED_IN_FINAL_READBACK",
+  "pushed_at_utc": "PENDING_FINAL_READBACK",
   "result": "PASS",
   "grade": "TEST_ONLY_S45_S47_EXPLICIT_INTERVAL_CONTINUATION_NOT_NATIVE",
   "defect_evidence": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/upstream_interval_auto_do_help.json",
   "repair": {
-    "auto_do_help_removed": true,
+    "primary_auto_do_help_removed": true,
+    "primary_independently_verified": true,
+    "public_keys_renamed": {
+      "admission": "admission_status",
+      "c9": "c9_public"
+    },
+    "public_key_fix_author_tested_only": true,
+    "census_pycache_and_self_receipt_excluded": true,
+    "census_fix_author_tested_only": true,
     "observation_only_default": true,
     "explicit_do_help_operation": "explicit_do_help / CLI do-help",
     "observation_encounter_mutation": false,
-    "historical_bdad_immutable": true
+    "historical_bdad_immutable": true,
+    "prior_revise_closure_immutable": true
   },
   "focused_tests": {
     "tests": 6,
@@ -26,9 +37,10 @@
   },
   "product_code_change": false,
   "inherited_source_edit": false,
+  "programma_working_file_edit": false,
   "protected_premain_write": false,
   "pr697_merged": false,
   "native_or_human_grant": false,
   "independent_acceptance": false,
-  "note": "The receipt commit is a publication child of repair_commit; final branch head is the receipt commit."
+  "note": "The receipt carries the exact repair SHA in the final chat readback; no self-referential future or receipt hash is embedded in the census."
 }

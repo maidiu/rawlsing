@@ -1,10 +1,11 @@
 # SOROK P2 explicit interval continuation R1 — auto-DO_HELP repair
 
-**RESULT:** `PASS` — focused repair of automatic user-attempt manufacture.
+**RESULT:** `PASS__PRIMARY_AUTO_DO_HELP_REPAIR_INDEPENDENTLY_VERIFIED__SECOND_NARROW_PUBLIC_KEY_AND_CENSUS_REPAIR_AUTHOR_TESTED__NO_ACCEPTANCE_PROMOTION`.
 
 **Grade:** `TEST_ONLY_S45_S47_EXPLICIT_INTERVAL_CONTINUATION_NOT_NATIVE`.
 
-**Repair base:** `bdadbc57c2664d3155a97853422e74b6128261f8` (historical, immutable).
+**Primary repair base:** `7a256ed4873155dfad86faf2464110ee6f1e2ad4`; independent closure `89b33453eff13d8a3638a97cf516438c42e7af4f` recorded the primary no-auto-help repair as PASSED with two secondary defects still open.
+**Historical base:** `bdadbc57c2664d3155a97853422e74b6128261f8` (immutable).
 **Product base:** `41bf45813fd0adeffd9b54e1306c2022abe96514` (unchanged).
 **Defect source:** `WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/upstream_interval_auto_do_help.json`.
 
@@ -12,6 +13,16 @@ The previous `admit_continuation` called `adapter.do_help()` while presenting a
 continued opportunity, automatically executing a user attempt. This repair
 removes only that automatic user-attempt manufacture. No product, vendor,
 projection, fan-in, later-lifecycle or PROGRAMMA working file was edited.
+
+
+## Second narrow repair — public keys and authored-file census
+
+The independent closure `89b33453eff13d8a3638a97cf516438c42e7af4f` confirmed the primary auto-DO_HELP repair but returned `REVISE` for two secondary defects:
+
+1. Observation and explicit-action results exposed top-level reserved projection keys `admission` and `c9`. They are now renamed to `admission_status` and `c9_public`, using the accepted projection privacy boundary. Values remain the same redacted summaries; no new data, raw readset, source hash, actor state or root hash is exposed.
+2. `evidence/result.json` listed nonexistent `__pycache__` entries. The authored-file census now excludes `__pycache__`/`.pyc` and the result receipt itself, and recomputes SHA-256 only for actual files present in the committed repair tree.
+
+The prior failing closure evidence remains immutable in Git at `89b33453eff13d8a3638a97cf516438c42e7af4f`. The new key/census repair is author-tested only and does not promote acceptance.
 
 ## Repair behavior
 
@@ -45,7 +56,7 @@ python3 -B -m pytest -q -p no:cacheprovider \
   --junitxml=<return>/evidence/focused_tests.xml <return>/tests
 ```
 
-Result: **6 passed** in `69.14s`, 0 failed/error/skipped. The affected tests now
+Result: **6 passed** in `78.34s`, 0 failed/error/skipped. The affected tests now
 assert no auto-help and no encounter mutation on observation, then call the
 explicit do-help operation for the real admitted/refused user attempt.
 
@@ -67,7 +78,7 @@ ACTUAL material result.
 
 ## Evidence
 
-- `evidence/result.json` — PASS checks, repair metadata and authored-file hashes.
+- `evidence/result.json` — PASS checks, both repair metadata items and deterministic authored-file hashes (no `__pycache__`/`.pyc`, no self-receipt).
 - `evidence/focused_tests.xml`, `logs/focused_tests.log` — 6 focused tests.
 - `evidence/cli/hold-wait.json` — typed hold.
 - `evidence/cli/continue-actual.json`, `continue-scheduled.json` — observation
@@ -84,7 +95,8 @@ ACTUAL material result.
   user request only.
 - Focused checks only; inherited full estate/full55 was not rerun.
 - No native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority.
-- Not independent acceptance. Historical `bdadbc57c...` remains immutable.
+- Primary no-auto-help repair is independently verified; the public-key rename and census fix are author-tested only. No acceptance promotion.
+- Historical `bdadbc57c...` and the prior `REVISE` closure `89b33453...` remain immutable.
 
 ## Next receiving owner action
 
@@ -101,5 +113,6 @@ receiving authority changed.
 
 ## Publication
 
-Branch: `codex/sorok-p2-explicit-interval-flow-20261105-r1`. Exact repair commit
-and pushed SHA: `PUBLICATION_RECEIPT.json`.
+Branch: `codex/sorok-p2-interval-public-receipt-repair-20261105-r1`, based on
+`7a256ed4873155dfad86faf2464110ee6f1e2ad4`. Exact repair commit and pushed SHA:
+`PUBLICATION_RECEIPT.json` and the final chat readback.

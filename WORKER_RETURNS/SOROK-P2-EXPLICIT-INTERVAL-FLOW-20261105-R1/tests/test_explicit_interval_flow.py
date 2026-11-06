@@ -104,8 +104,8 @@ def test_actual_observation_does_not_auto_do_help_then_explicit_refuses(state):
     assert result["interval"]["status"] == "PARTIAL"
     assert result["interval"]["material_after_interval"] == 0
     assert result["interval"]["actual_daily_events_invented"] == 0
-    assert result["c9"]["objective_material_eligible"] is False
-    assert result["c9"]["s47_source_in_readset"] is True
+    assert result["c9_public"]["objective_material_eligible"] is False
+    assert result["c9_public"]["s47_source_in_readset"] is True
     assert result["do_help"] is None
     assert result["do_help_executed"] is False
     assert result["user_attempt_executed"] is False
@@ -132,7 +132,7 @@ def test_scheduled_only_observation_does_not_auto_do_help_then_explicit_accepts(
     assert result["interval"]["status"] == "NOT_PERFORMED"
     assert result["interval"]["material_after_interval"] == 1
     assert result["interval"]["actual_daily_events_invented"] == 0
-    assert result["c9"]["objective_material_eligible"] is True
+    assert result["c9_public"]["objective_material_eligible"] is True
     assert result["do_help"] is None
     assert result["do_help_executed"] is False
     assert result["encounters_unchanged"] is True
@@ -194,7 +194,7 @@ def test_dependency_cut_refuses_then_restore_continues(state, base_root):
         session.close()
     restored = admit_continuation(state, request="WAIT", base_root=base_root)
     assert restored["status"] == "CONTINUED"
-    assert restored["c9"]["objective_material_eligible"] is False
+    assert restored["c9_public"]["objective_material_eligible"] is False
     assert restored["do_help"] is None
     assert restored["do_help_executed"] is False
     assert restored["encounters_unchanged"] is True
