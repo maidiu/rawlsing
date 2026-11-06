@@ -42,7 +42,7 @@ PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B \
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r15 coordinate caller
-- Identity: codex/pyat-universal35-coordinate-caller-20261106-r1@<returned-commit>; D input a1d1ec379; A bc84799ed; C candidate 8c5e8236b unaccepted.
+- Identity: codex/pyat-universal35-coordinate-caller-20261106-r1@223e8bbc9624431ef8bae52e0767ae92357340d3; D input a1d1ec379; A bc84799ed; C candidate 8c5e8236b unaccepted.
 - Function: exact bound config -> A build_coordinate_slot_rules -> matching typed rule -> actual materialize_native_preimages caller; plus R14 cold label/ref and unsupported-value repairs.
 - Evidence: sourcefree factory/refusal tests; joint/cold matrix preserved; actual SRC15 NOT_RUN pending C repair/qualification.
 - Limits: no original facts/native/science/protected acceptance; C defects remain.
