@@ -25,14 +25,15 @@ Closure: `3e04b6c7bb8af09c8506d8cf1310d923cbf4ea81` at `WORKER_RETURNS/SOROK-P2-
 
 - Integrated `25d40806d15516b7f7ffa04f47bc651022c6f2b0` remains `ACCEPT_SCOPED_TEST_ONLY` under review `332e00cb3da51b859a408a31f820b1afd7fe8fc0`.
 - Current `4b2fed81c3f513eb4262ad5de277ce519c74c614` imports both repaired sources exactly; independent final-cut closure is RUNNING as `sorok-p2-final-cut-independent-closure-20261105-r1`; final receiving delta is RUNNING. **Do not promote 4b2 yet.**
-- PR699 is draft/unmerged at `aa9ebbb533198acfa7056147f8cae3deb246ffe2`; PR697 remains open/unmerged at `41bf45813fd0adeffd9b54e1306c2022abe96514`.
+- Engineering receiving receipt `a61dab8343181b0975c76496d0007e2b3a92bba0` at `WORKER_RETURNS/SOROK-P2-FINAL-RECEIVING-DELTA-20261105-R1` proves `4b2` plus declared guide `b6d3f8d2` on protected `8ffec40a` into composite `f5debb10c53b8e9a735f6fe1e1696bfbf46412fc` (665 product + 9 guide = 674 changes; one cold first-consumer chain, snapshot-local imports, privacy clean, canonical guide PASS, observation `0`, explicit help `0→1` refused). It is engineering-only, covers only the declared guide, and does not accept `4b2` or extend `25d`; prior `bf574e5a` proof is preserved.
+- PR699 is draft/unmerged; pre-update head was `aa9ebbb533198acfa7056147f8cae3deb246ffe2`, and the published receiving head is recorded in the receiving readback. PR697 remains open/unmerged at `41bf45813fd0adeffd9b54e1306c2022abe96514`.
 - Lifecycle scoped acceptance `6398888f1d28152b5d29fef816f0bb45e77dd43b` and accepted `41bf` are preserved.
 - No automatic dependent READY, native/human/B grant or protected promotion.
 
 ## 3. Changed existing guide records
 
 - `00_HQ_WRITE_THROUGH_DECISION.md`, `10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md`: final focused-closure currentness.
-- `07/08/09`: `hq_p2_interval_later_20261105` and `hq_p2_product_fanin_20261105` updated with exact acceptances, old REVISE preservation and 4b2 running state; counts conserved.
+- `07/08/09`: `hq_p2_interval_later_20261105` and `hq_p2_product_fanin_20261105` updated with exact acceptances, old REVISE preservation, `4b2` running state and the engineering-only `a61dab` receiving receipt; counts conserved.
 - `14`: 20 existing rows updated; 668 rows/83 gates unchanged.
 - `15`: 8 existing seams updated; 38 seams unchanged.
 
