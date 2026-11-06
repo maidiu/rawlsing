@@ -40,7 +40,7 @@
 <!-- HQ_RULE_START id=HQ-C1-004 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
 ### HQ-C1-004: In-flight worker no disturbance and status taxonomy
 **TRIGGER:** flight selection, commission amendment, returns
-**OPERATIVE ACTION:** Separate READY_PARALLEL, ACTIVE_VERIFIED, PUBLISHED_NOT_LAUNCHED, RETURNED and blocked; no stealth reroute or replacement of actual worker; default isolated noncolliding branches.
+**OPERATIVE ACTION:** Distinguish prepared/PUBLISHED_NOT_LAUNCHED, ACTIVE_VERIFIED, RETURNED, independently reviewed or held, owner-received at scope, and terminal branch disposition in the existing flight/commission/PR/progress records. Record actual worker branch/start/return SHA, reviewer finding, competent owner decision, protected CAS/immutable held-evidence ref and accountable next receiver. RETURNED is neither accepted, functionally recovered nor safe to delete. Retire a branch only after checking no active lease/writer or open dependent PR and preserving every unique code/evidence path through reachable exact commit/archive or canonical receipt; branch deletion is optional, never automatic. Do not disturb or duplicate active workers.
 **COMPETENT OWNER:** own HQ+user dispatcher; active worker owner
 **FAILURE / FALSIFIER:** Calling precreated commission active, bumping model/branch, or scheduling nonisolated duplicate.
 **CONTROLLING ORIGINAL AT C1:** `CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1`. C1 original status `ADOPTED_SHARED_LAW`. This inclusion in C2 is candidate law text until actual independent C3 and qualified owner/CAS receiving; prior adopted sources remain controlling in the meantime. It grants no additional native, actor, source, scientist or reviewer authority.
@@ -76,7 +76,7 @@
 <!-- HQ_RULE_START id=HQ-C1-008 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
 ### HQ-C1-008: Proof-integrity: claim-specific positive/severance
 **TRIGGER:** any material code test, return, reviewer, acceptance
-**OPERATIVE ACTION:** Define actual claim-edge producer→consumer, positive, source mutation/severance RED, restore PASS, nonvacuous assertions and exact source/clock/identity/host; no duplicate court.
+**OPERATIVE ACTION:** For a claimed recovered/integrated function, demonstrate its correct source-qualified implementation in the current executable/import closure, actual required downstream reader (not a stand-in), positive, claim-specific source/consumer severance RED and restore PASS, exact source/root/clock/identity/host, and existing independent exact-cut testing at the claimed grade. A found file, merged file or isolated green test does not prove a live functional dependency; preserve NOT_RUN/NOT_PROVED and separate issuer/rights holds. Do not create another duplicate court.
 **COMPETENT OWNER:** implementation author; genuinely independent reviewer when required; owner adopter
 **FAILURE / FALSIFIER:** GREEN suite with no asserted edge, independent RED ignored, or synthetic promoted native.
 **CONTROLLING ORIGINAL AT C1:** `CROSS_HQ_CONTROL_ROOM/PROOF_INTEGRITY_AND_FALSIFIABLE_TEST_LAW_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1`. C1 original status `ADOPTED_USER_DIRECTED_20261018`. This inclusion in C2 is candidate law text until actual independent C3 and qualified owner/CAS receiving; prior adopted sources remain controlling in the meantime. It grants no additional native, actor, source, scientist or reviewer authority.
@@ -85,7 +85,7 @@
 <!-- HQ_RULE_START id=HQ-C1-009 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
 ### HQ-C1-009: Judgment-bearing return and four objects
 **TRIGGER:** material worker return intake and subsequent work selection
-**OPERATIVE ACTION:** Worker includes FINDING, INTERPRETATION, scientific/engineering/authority implications, terminal handback/uncertainty; HQ captures FINDING|INTERPRETATION|ACTION|OWNER in existing motion/progress; preserve all negatives.
+**OPERATIVE ACTION:** Worker includes FINDING, INTERPRETATION, scientific/engineering/authority implications, terminal handback and uncertainty; HQ captures FINDING|INTERPRETATION|ACTION|OWNER in existing motion/progress with exact branch/head, reviewer, competent adopter, receiving PR/CAS or immutable evidence location, current consumer and remaining holds. Worker returned, implementation received, function recovered at scope and branch safely retired are four distinct outcomes; assign a receiving owner instead of labeling a return as product completion. Preserve negatives.
 **COMPETENT OWNER:** worker interprets; HQ adjudicates; original issuer decides science; reviewer independent
 **FAILURE / FALSIFIER:** Return PASS-only or HQ equates worker opinion to adoption.
 **CONTROLLING ORIGINAL AT C1:** `CROSS_HQ_CONTROL_ROOM/HQ_JUDGMENT_BEARING_RETURNS_INTAKE_AND_DUAL_ECONOMY_COMMISSION_LAW_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1`. C1 original status `ADOPTED_USER_DIRECTED_20261019`. This inclusion in C2 is candidate law text until actual independent C3 and qualified owner/CAS receiving; prior adopted sources remain controlling in the meantime. It grants no additional native, actor, source, scientist or reviewer authority.
@@ -94,7 +94,7 @@
 <!-- HQ_RULE_START id=HQ-C1-010 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
 ### HQ-C1-010: Missing-function five-term user check
 **TRIGGER:** material missing function or repeated blocked dependency
-**OPERATIVE ACTION:** Define inputs, transformation, output, actual first consumer, terminal consequence, historical carrier; ask user whether already built/decided and where; compare before build; UNKNOWN cannot become BUILD.
+**OPERATIVE ACTION:** Define the real inputs, transformation, output, required first consumer, terminal consequence and historical carriers; ask user once whether already built and compare the current successor before BUILD. At declared scope a function's recovery is complete ONLY when the correct source-qualified implementation is accessible in the CURRENT EXECUTABLE CLOSURE, consumed by the ACTUAL REQUIRED DOWNSTREAM FUNCTION, independently tested against MATERIAL FAILURE MODES, and written through to the existing PROGRAMMA function/component/seam statuses AND DEPENDENCIES with matching owner progress. Finding or merging code alone is insufficient. Where any condition remains unproved, name its exact failing edge, evidence grade and owner; do not create a new status regime, issuer or tracker.
 **COMPETENT OWNER:** incumbent HQ asks user, source/architecture owner reviews
 **FAILURE / FALSIFIER:** Issue generic coding task for missing index/symbol or BLOCKED with no function explanation.
 **CONTROLLING ORIGINAL AT C1:** `CROSS_HQ_CONTROL_ROOM/MISSING_FUNCTION_DISCOVERY_USER_CHECK_AND_BUILD_OR_REUSE_CONSTITUTION_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1`. C1 original status `ADOPTED_USER_DIRECTED_20261019`. This inclusion in C2 is candidate law text until actual independent C3 and qualified owner/CAS receiving; prior adopted sources remain controlling in the meantime. It grants no additional native, actor, source, scientist or reviewer authority.
@@ -103,7 +103,7 @@
 <!-- HQ_RULE_START id=HQ-C1-011 src=773bb412a820949f13a7178b6671327cd56a3bf1 -->
 ### HQ-C1-011: Reciprocal progress pairs and checkpoint
 **TRIGGER:** material source/adoption/return, cross-jurisdiction dependency, handoff
-**OPERATIVE ACTION:** Update own paired CURRENT_PROGRESS at matching actual cut and checkpoint when needed, review counterpart without editing its status; stale reports mark RECONCILIATION_REQUIRED for affected claims, not global stop.
+**OPERATIVE ACTION:** At every material return, review, adoption, actual consumer integration or branch disposition, update own paired CURRENT_PROGRESS at the same verified cut and amend the affected existing PROGRAMMA functional statuses/dependency edges and commission/PR/flight receipt with exact code, proof, reader, authority and receiving/CAS or immutable-evidence refs. Report reviewer/owner-held or pending propagation explicitly; do not overwrite counterpart's pair, promote historical branch changes to adopted status, or churn unchanged-test records.
 **COMPETENT OWNER:** each HQ writes OWN MD+JSON pair only, protected owner/CAS
 **FAILURE / FALSIFIER:** Unmerged guide recorded as current, dual MD/JSON drift, copied counterpart authority.
 **CONTROLLING ORIGINAL AT C1:** `CROSS_HQ_CONTROL_ROOM/HQ_GROK_AND_PROGRESS_PROTOCOL_R1.md@773bb412a820949f13a7178b6671327cd56a3bf1`. C1 original status `ADOPTED_SHARED_20261014`. This inclusion in C2 is candidate law text until actual independent C3 and qualified owner/CAS receiving; prior adopted sources remain controlling in the meantime. It grants no additional native, actor, source, scientist or reviewer authority.
