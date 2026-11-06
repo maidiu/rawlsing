@@ -232,6 +232,20 @@ def execute_source(source_id: str, *, library: SourceConfigLibrary,
 
 
 
+class _RecordingResolver:
+    """Delegate unchanged admission calls while capturing exact decision material."""
+
+    def __init__(self, inner: Any) -> None:
+        self.inner = inner
+        self.captured: list[dict[str, Any]] = []
+
+    def resolve_current(self, request: Any) -> Any:
+        from dataclasses import asdict
+        decision = self.inner.resolve_current(request)
+        self.captured.append(asdict(decision))
+        return decision
+
+
 def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibrary,
                                    source_root: str | Path, host: str,
                                    purpose: str, as_of: str,
@@ -298,9 +312,13 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         config, host=host, purpose=purpose, consumer_use=consumer_use,
         semantic_use_scope=semantic_scope)
     reader = reader_configuration_from_config(config)
-    before_decision = resolver.resolve_current(request)
+    recording = _RecordingResolver(resolver)
     incidence = decode_with_source_read_permission(
-        source_path=path, request=request, resolver=resolver, reader=reader)
+        source_path=path, request=request, resolver=recording, reader=reader)
+    if not recording.captured:
+        incidence.close()
+        raise Original35ExecutionError("SOURCE_READ_DECODE_DECISION_NOT_OBSERVED")
+    decode_decision = recording.captured[0]
     if incidence.source_sha256 != doc["binding"]["source_sha256"]:
         incidence.close()
         raise Original35ExecutionError("SOURCE_SHA_MISMATCH_AFTER_DECODE")
@@ -329,8 +347,9 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
     result = execute_governed_frontier(
         compilation=compilation,
         source_factory=lambda _ref: bundle.physical_stream)
-    after_decision = resolver.resolve_current(request)
-    if after_decision != before_decision:
+    after_decision = recording.resolve_current(request)
+    from dataclasses import asdict
+    if asdict(after_decision) != decode_decision:
         incidence.close()
         raise Original35ExecutionError(
             "SOURCE_READ_DECISION_CHANGED_AFTER_CONSUMER")

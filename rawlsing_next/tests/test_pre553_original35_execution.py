@@ -7,9 +7,10 @@ from pathlib import Path
 
 import pytest
 
+from dataclasses import asdict, dataclass
 from rawlsing_next.pre553_original35_execution import (
-    Original35ExecutionError, execute_native_compiler_source, execute_source,
-    load_runtime_binding,
+    Original35ExecutionError, _RecordingResolver,
+    execute_native_compiler_source, execute_source, load_runtime_binding,
 )
 from rawlsing_next.pre553_original35_operations import build_original35_operation_plan
 from rawlsing_next.source_configuration.library import SourceConfigLibrary
@@ -76,3 +77,36 @@ def test_native_path_refuses_without_current_source_read_decision():
             host="local-d", purpose="ORIGINAL_RAW_ENGINEERING",
             as_of="2026-11-06")
     assert "CURRENT_SOURCE_READ_DECISION_REQUIRED_BEFORE_IO" in str(exc.value)
+
+
+@dataclass(frozen=True)
+class _FakeDecision:
+    decision_ref: str
+    host: str
+
+
+class _SequenceResolver:
+    def __init__(self, decisions):
+        self.decisions = list(decisions)
+
+    def resolve_current(self, request):
+        return self.decisions.pop(0)
+
+
+def test_recording_resolver_binds_actual_decode_decision_not_extra_precall():
+    # G sequence A,B,B,A previously had an extra wrapper pre-call A. After the
+    # repair the recorded calls are decode-B, decode-post-B, consumer-A.
+    a = _FakeDecision("A", "host-a")
+    b = _FakeDecision("B", "host-b")
+    recording = _RecordingResolver(_SequenceResolver((b, b, a)))
+    assert recording.resolve_current(None) is b
+    assert recording.resolve_current(None) is b
+    assert recording.resolve_current(None) is a
+    assert recording.captured[0] == asdict(b)
+    assert recording.captured[-1] == asdict(a)
+    assert recording.captured[0] != recording.captured[-1]
+
+    same = _RecordingResolver(_SequenceResolver((a, a, a)))
+    for _ in range(3):
+        same.resolve_current(None)
+    assert same.captured[0] == same.captured[-1]
