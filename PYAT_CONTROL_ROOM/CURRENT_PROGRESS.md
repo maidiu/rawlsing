@@ -1877,3 +1877,12 @@ C061d1dd71591863375110e451ddc49c1ee8cf6aa ACCEPT_SCOPED_ENGINEERING at Acf44c5df
 Fexistingworkerjobpyat-universal35-accepted-receiving-rehearsal-20261106-r1 PID66927 under2ebcead7d refreshesprotectedbase and joinsacceptedfinalA/C/D/Eblobs only onisolatedbranch; no protectedCAS/sciencegrant, no unreviewedDlivehead. Dactualoriginalruncontinues separately.
 
 PROGRAMMA_DELTA: exactC/Aheads above, sourceconfigurationstate/provenance/consumerprojection axis independentlyaccepted, empiricalfirstconsumerNOT_YET_VERIFIED. ExistingS01.1/S-WORKLIST/gap/work-now/currentpair write-through preservespriorREVISEcuts/limits; no automaticall35dependentREADY/nativeadoption. NextactualDfacts/Ehandoff and isolatedcurrentbaseintegrationresults, thenqualifiedreceivingowner.
+
+
+### Actual original attempts produced no empirical facts; concrete repairs active
+
+D f295f90f2dc2202055ddf21b575776621260b118/code20c9e383a802462ba46cb71a8221f807950280bf receivedacceptedAchanges andattemptedactualsourcebytes underexistinglocalengineeringreadinput. SRC15currentC11refusesunbound/missingcoordinate;SRC09governed/SRC10F1exceed650swallwithoutfacts. No originalempirical/actualEhandoff complete. Oldnative_attempts.json remainshistorical; new07_R7_RETURN.md is actualcurrentnegative, exactstageCPU/RSSdetails remainmissing/profilingneeded. Priorphysical/sourcefreepositives retained, notactualfullpipelinespeedproof.
+
+A exactsourcecoordinatejobpyat-universal35-src15-coordinate-repair-20261106-r1 PID73713 andCprofile/minimalphysicalscalejobpyat-universal35-original-pipeline-scale-20261106-r1 PID73721 launched under88792e559 on separatebranches fromDf295; Fexistingacceptedcurrentbaseintegrationreceivesactualnegative200. Exactprivategrant/authcopied0600 A/Cownruntime, strictfreshresolve/no nativeS3 authority. Cowns adapter/facadephysicalincision, A sourceconfig, no overlappingwriters orunchanged650sretry.
+
+PROGRAMMA_DELTA: exact D/code above, actualoriginalconsumerattemptfails/0facts, sourcecurrentnessinputworksbutcoordinate+scale gaps observed. ExistingS03.2/S-WORKLIST/gap/work-now/currentpair written through; dependentoriginalreadinessinvalidatedwithout erasingC/A/Dsourcefree/Epositives. NextactualAcoordinate/Cprofileandrepair, independentexactproof thenDgenuinefullsupportedplanretry, qualifiedprotectedreceivingseparate. No fictionalall35nativePASS.
