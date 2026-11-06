@@ -338,17 +338,6 @@
     "concurrency_limit_reason": "Three useful disjoint lanes: D reported cold consumer defect, G independent Draft713 receiving composition, C physical scale. Host memory/disk capacity limit retained.",
     "active_workers": [
       {
-        "job_id": "pyat-universal35-draft713-r1-independent-review-20261106-r1",
-        "child_pid": 95354,
-        "supervisor_pid": 95352,
-        "observer_pid": 95355,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-draft713-r1-independent-review-20261106-r1",
-        "launch_is_not_completion": true,
-        "role": "G",
-        "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
-        "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1"
-      },
-      {
         "job_id": "pyat-universal35-compile-reuse-repair-20261106-r1",
         "child_pid": 96610,
         "supervisor_pid": 96609,
@@ -369,10 +358,21 @@
         "role": "F",
         "session": "ses_e52a51c43ffeuVe7ZZhNcga5YP",
         "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-join-e-b-event-review-r1"
+      },
+      {
+        "job_id": "pyat-universal35-c-release-reuse-independent-review-20261106-r1",
+        "child_pid": 97738,
+        "supervisor_pid": 97737,
+        "observer_pid": 97739,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-c-release-reuse-independent-review-20261106-r1",
+        "launch_is_not_completion": true,
+        "role": "G",
+        "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
+        "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1"
       }
     ],
     "integration_start": "d129eebdb0472b0c3625efa281826a858bd0a384",
-    "current_next_action": "Receive F independent R14 cold binding closure, G qualified Draft713 composition review, C measured compile reuse repair. Original facts zero; unreviewed candidates excluded from protected receiving.",
+    "current_next_action": "PR713 scoped independent receiving composition accepted and exact handoff published; protected owner adoption pending. C compile reuse repair, F D R14 cold binding closure, G frozen C release/coordinate review active; no original empirical success claimed.",
     "E_return": {
       "branch": "codex/pyat-universal35-e-20261106-r1",
       "head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
@@ -968,10 +968,11 @@
       "head": "064993da7176d34e109b45d81e1714048d0450f0",
       "code": "3c3255e713c9e910a113c6d4f08a3266fb70670d",
       "protected_base": "fce43498e16e4709f3c9801e8717f0fdae18126a",
-      "grade": "DRAFT_PUBLISHED_AUTHOR_COMPOSITION_TESTED_INDEPENDENT_PENDING",
+      "grade": "ACCEPT_SCOPED_ENGINEERING_RECEIVING_COMPOSITION_NOT_PROTECTED_ADOPTED",
       "url": "https://github.com/maidiu/rawlsing/pull/713",
       "proof": "51 exact source blobs; A13,D5+target1,E20 pass; sourcefree30facts30envelopes30typed-arity-refusals0profiles",
-      "exclusions": "D R11+ joint code and unreviewed C scale excluded; actual C coordinate join NOT_RUN; original facts zero."
+      "exclusions": "D R11+ joint code and unreviewed C scale excluded; actual C coordinate join NOT_RUN; original facts zero.",
+      "independent_review": "f25c4d945d5b2d0901129e17f6456d98921d218f"
     },
     "C_original_scale_candidate": {
       "head": "6f9e41f3aa85b6e26120e78744a72380f4d013d2",
@@ -991,7 +992,8 @@
       },
       "author_tests": "28 scale/facade/universal-workload +3 focused D execution PASS",
       "limits": "Not independently accepted. No complete original facts, nativeS3/science or protected adoption. First C11 build and repeated full compilation remain costly. Return self-label PARTIAL_REUSE_ACCEPTED_SCOPED is author interpretation only.",
-      "next": "C same worker measured repeated catalog/issued workload reuse repair PID96610; independent release-validation/source-projection/refusal review queued for existing nonauthor owner when capacity frees, before receiving."
+      "next": "C same worker measured repeated catalog/issued workload reuse repair PID96610; independent release-validation/source-projection/refusal review queued for existing nonauthor owner when capacity frees, before receiving.",
+      "independent_review_job": "pyat-universal35-c-release-reuse-independent-review-20261106-r1 PID97738 frozen6f9e41f3; sourcefree release validation/source-projection/refusal and coordinate-hook scope only"
     },
     "D_r14_cold_binding_candidate": {
       "head": "a1d1ec379656d4e46841060004423931eed4b262",
@@ -1002,6 +1004,16 @@
       "author_tests": "2 targeted PASS3.82s; asymmetric selected rows/reverse/changedinput-restore; refs/empty/None/unknown/permission/replay negatives.",
       "review": "F nonauthor pyat-universal35-d-r14-cold-binding-independent-review-20261106-r1 PID97361 undercbad6d915; actual cold new-process and G exact negative closure pending.",
       "limits": "R13 independent failure retained. No independent acceptance, original facts remain zero; no native/scientific/protected adoption."
+    },
+    "draft713_independent_composition_review": {
+      "review": "f25c4d945d5b2d0901129e17f6456d98921d218f",
+      "reviewed_head": "064993da7176d34e109b45d81e1714048d0450f0",
+      "code": "3c3255e713c9e910a113c6d4f08a3266fb70670d",
+      "protected_base": "fce43498e16e4709f3c9801e8717f0fdae18126a",
+      "grade": "ACCEPT_SCOPED_ENGINEERING_RECEIVING_COMPOSITION_NOT_PROTECTED_ADOPTED",
+      "proof": "51/51 exact source blobs;72 added paths/0 protected modifications or deletions;independent target1PASS1.66s;actualwrapper30facts15operations18candidates;AAB no fresh artifact/prior bytes unchanged/no staged files.",
+      "limits": "Draft only;original facts0;C adapterjoin NOT_RUN;newer D joint/C scale excluded;no nativeS3/science/protected acceptance.",
+      "handoff": "https://github.com/maidiu/rawlsing/pull/713#issuecomment-6691238973"
     }
   }
 }
