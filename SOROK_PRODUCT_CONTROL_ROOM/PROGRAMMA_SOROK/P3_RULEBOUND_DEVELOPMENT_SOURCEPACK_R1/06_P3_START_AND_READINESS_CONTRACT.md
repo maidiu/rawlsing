@@ -1,5 +1,7 @@
 # 06 — P3 start/dispatch contract, readiness and proof plan
 
+**ADDITIONAL VERIFIED CODE INPUT (2026-11-06):** Review [09](09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md) and [10](10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md) before any commission. B3A's refusal-atomic/schema fixes are independently ACCEPT_SCOPED at sourcefree engineering grade; HQ300's Rule-A/ADP016/017/later-use candidate reports 317 author tests with production registry intentionally EMPTY. Do **not** implement another generic E1→state→E2 canary. Instead compare the existing candidate writer/reader bytes against the accepted #704 `DevelopmentOwner` and select only the actual missing adapter or original scientifically issued transition. 
+
 **Status:** PRECONSTRUCTION SOURCE AND INTELLECTUAL PREFLIGHT; **NOT A LAUNCHED P3 CODE WORKER**. Current protected code start at package formation: `62f1895093f8b79f466a73d1e6ec65f6563df3ac`. Reverify the actual protected branch before execution. This source pack neither appoints an HQ nor grants original scientific rights.
 
 ## Fast start (single entrypoint)
