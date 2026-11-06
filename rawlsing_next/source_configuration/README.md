@@ -99,3 +99,7 @@ PYTHONPATH=. python3 -m rawlsing_next.source_configuration.tools.publish_p0
 
 The remaining P3 seam is the qualified reader-configuration transport through
 the existing source-read/decoder owner; the P0 constructor signature is frozen.
+
+
+Operation adapters require `library.load_original(source_id).document`.
+`library.select(source_id, source_root=...)` returns compact source/locator metadata and is not a replacement for that full validated configuration.

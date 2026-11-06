@@ -33,7 +33,7 @@
 Source-pack input is a validated `PYAT_R157_SOURCE_CONFIGURATION@1.0.0` document
 plus a permitted `ExactPhysicalCellStream` or `PhysicalSourceIncidence`; output is
 the existing `GovernedC11Projection` / `C11LogicalRelease` / source-backed
-repository. B can build its operation adapter against `SourceConfigLibrary.select`,
+repository. B/D operation adapters consume `SourceConfigLibrary.load_original(source_id).document`,
 `build_governed_c11_projection`, `build_validated_c11_release_from_config` and
 `row_native_keys_from_transport` without editing A files.
 
@@ -152,3 +152,8 @@ native grant, or protected mutation occurred.
 4. Protected receiving/merge by the authorized integrator.
 5. Source-specific held/residual semantics remain at their exact R157 spans; no
    blanket source absence or global stop.
+
+
+## Post-review ABI description correction
+
+Independent review ebd20c165bb275f66e4b3e2210535e96eecaf2ac accepted A code at sourcefree scope but rejected the advertised A/B selector seam. `select` returns compact metadata/locator information; `load_original(source_id).document` is the validated full configuration consumed by B. ABI.json now names that already-existing, independently executed full35 caller path. No library/factory/reader behavior, source counts, permissions or accepted fixture receipts changed; no new full regression is needed for this description-only correction. D/B non-F1 operation binding remains a separate live repair; joined acceptance is not inferred.
