@@ -10,7 +10,7 @@
 **Previous implementation SHA:** `409be32f7e4b4b961a360be1c8f44a17b5c62173`
 **New implementation/test SHA:** `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`
 **Capacity evidence commit:** `2a41b4682cfbbdc2b5e12ba71d114adb431c670f`
-**Allocation evidence commit:** `__ALLOC_EVIDENCE_SHA__`
+**Allocation evidence commit:** `a41a40a4021da2a7d926a930813f385e045d006e`
 **Model provider observed at invocation:** `opencode-go/deepseek-v4.1-flash`.
 **Authority:** sourcefree engineering only. No original35, native source/science,
 actor/V3, human, Sorok, protected CAS, or merge authority is claimed.
