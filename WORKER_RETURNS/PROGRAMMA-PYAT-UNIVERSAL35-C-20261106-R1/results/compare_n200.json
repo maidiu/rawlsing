@@ -1,0 +1,3968 @@
+{
+  "cache_checks": {
+    "v2_cold_miss_write": true,
+    "v2_same_cache_files": true,
+    "v2_warm_hit": true
+  },
+  "cache_root": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+  "commands": [
+    {
+      "command": [
+        "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+        "--mode",
+        "variant",
+        "--variant",
+        "v0",
+        "--n",
+        "200",
+        "--outdir",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+        "--cache-root",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+      ],
+      "exit": 0,
+      "parent_wall_s": 4.6690865230048075,
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "variant": "v0"
+    },
+    {
+      "command": [
+        "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+        "--mode",
+        "variant",
+        "--variant",
+        "v1",
+        "--n",
+        "200",
+        "--outdir",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+        "--cache-root",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+      ],
+      "exit": 0,
+      "parent_wall_s": 4.5612291399156675,
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "variant": "v1"
+    },
+    {
+      "command": [
+        "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+        "--mode",
+        "variant",
+        "--variant",
+        "v2-cold",
+        "--n",
+        "200",
+        "--outdir",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+        "--cache-root",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+      ],
+      "exit": 0,
+      "parent_wall_s": 4.919832821935415,
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "variant": "v2-cold"
+    },
+    {
+      "command": [
+        "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+        "--mode",
+        "variant",
+        "--variant",
+        "v2-warm",
+        "--n",
+        "200",
+        "--outdir",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+        "--cache-root",
+        "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+      ],
+      "exit": 0,
+      "parent_wall_s": 4.0188844720833,
+      "stderr_tail": "",
+      "stdout_tail": "",
+      "variant": "v2-warm"
+    }
+  ],
+  "facts_exact_equal": {
+    "v1": true,
+    "v2-cold": true,
+    "v2-warm": true
+  },
+  "mode": "compare",
+  "n": 200,
+  "pass": true,
+  "release_identity_equal": true,
+  "schema": "PROGRAMMA_PYAT_L03_C4_COMPACT_CURRENT@1",
+  "smoke": false,
+  "source_identity_equal": true,
+  "timing_claim": "MEASURED_COMPARISON",
+  "variants": {
+    "v0": {
+      "cache": {
+        "directory": null,
+        "eligible_hit": false,
+        "files": {
+          "enabled": false
+        },
+        "legacy_in_memory_incidence_not_used": true,
+        "read_hits": 0,
+        "read_misses": 0,
+        "writes": 0
+      },
+      "counts": {
+        "compact_conversions": 0,
+        "fact_builds": 12,
+        "index_builds": 1,
+        "replay_builds": 12
+      },
+      "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/v0_facts.jsonl",
+      "mode": "variant",
+      "n": 200,
+      "phases": {
+        "fact_build": {
+          "count": 12,
+          "cpu_s": 0.2630020000000006,
+          "wall_s": 0.2636682621669024
+        },
+        "fixture_build": {
+          "count": 1,
+          "cpu_s": 0.261204,
+          "wall_s": 0.2616138090379536
+        },
+        "index_build": {
+          "count": 1,
+          "cpu_s": 0.05022800000000016,
+          "wall_s": 0.05024291295558214
+        },
+        "query_execution": {
+          "count": 13,
+          "cpu_s": 1.1724730000000014,
+          "wall_s": 1.1756384623004124
+        },
+        "replay_build": {
+          "count": 12,
+          "cpu_s": 0.022063999999999417,
+          "wall_s": 0.02207824378274381
+        },
+        "repository_commit": {
+          "count": 1,
+          "cpu_s": 0.010477000000000292,
+          "wall_s": 0.010474417940713465
+        },
+        "validation_build": {
+          "count": 1,
+          "cpu_s": 1.845237,
+          "wall_s": 1.8680650109890848
+        }
+      },
+      "process": {
+        "argv": [
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+          "--mode",
+          "variant",
+          "--variant",
+          "v0",
+          "--n",
+          "200",
+          "--outdir",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+          "--cache-root",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+        ],
+        "cpu_count": 16,
+        "env": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTHONHASHSEED": "0",
+          "RAWLSING_C11_ACCELERATOR_DIR": null,
+          "TMPDIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/tmp"
+        },
+        "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "machine": "x86_64",
+        "pid": 73775,
+        "platform": "macOS-13.7.8-x86_64-i386-64bit",
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "ru_maxrss_bytes": 60252160,
+        "ru_stime_s": 0.076388,
+        "ru_utime_s": 4.233266
+      },
+      "projection": {
+        "cache_identity": "9aa486e32af25dd2279266d01842a06e50be625401310379e097daf56a000879",
+        "identity": {
+          "content_hash": "fc1eeed9f0ac73d71890caa1d5183962a4e029b91116b3e1090c8d2bfd613655",
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:test:i03:c11_semantic_projection:compact-current-200"
+        }
+      },
+      "queries": [
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.11442599999999992,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 377,
+          "exact_fact_material_sha256": "42da2ca1ecd1070781b8e72972905f51b90061a96ad046ccc799ec7592b1077b",
+          "fact_ref": {
+            "content_hash": "4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980"
+          },
+          "op_id": "raw_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 374,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.11594654200598598,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  128,
+                  1
+                ]
+              }
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  301,
+                  1
+                ]
+              }
+            }
+          ],
+          "cpu_s": 0.07733300000000032,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 548,
+          "exact_fact_material_sha256": "6162d13df872c2e921402125b8e058fb4536c1db00186d01415bea6a2ac32903",
+          "fact_ref": {
+            "content_hash": "e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2"
+          },
+          "op_id": "weighted_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 545,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.07734150101896375,
+          "weighted_denominator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          },
+          "weighted_numerator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          }
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 42,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.10629700000000009,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 748,
+          "exact_fact_material_sha256": "39f91712b64f9b901210c384c7495482570e2ed892f72f9e52f693b9afe2d4f4",
+          "fact_ref": {
+            "content_hash": "aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4"
+          },
+          "op_id": "joint_XY",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 745,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.1063221839722246,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.14910700000000032,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1119,
+          "exact_fact_material_sha256": "d55d7cece290363a498e0f7876965c45eb5d2b683a72f2740509b5c59bf45e17",
+          "fact_ref": {
+            "content_hash": "3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7"
+          },
+          "op_id": "joint_XYZ",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1116,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.14920749398879707,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.19672299999999998,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1490,
+          "exact_fact_material_sha256": "7497b25ae5eae9dc0c35f5ee99e7cf3f06b71389a49bb63d6b33faa2a5cb835b",
+          "fact_ref": {
+            "content_hash": "3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5"
+          },
+          "op_id": "joint_XYZK",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1487,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.19764327199663967,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.067415,
+          "denominator_member_count": 86,
+          "dependency_ref_count": 463,
+          "exact_fact_material_sha256": "f87347545c6c802ed1c3949341ae8924262024a8b29ba1c1bbed072ebd4bfd3c",
+          "fact_ref": {
+            "content_hash": "36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4"
+          },
+          "op_id": "cond_X1_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 460,
+          "raw_denominator_support": 86,
+          "raw_numerator_support": 86,
+          "raw_resolved_target_support": 86,
+          "replay_ref": {
+            "content_hash": "a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06745181104633957,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.07677900000000015,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 506,
+          "exact_fact_material_sha256": "1b39aeacedfc5688593f19b7e4e26d080e6e3b2e2886414d5313bb9fd080a5ac",
+          "fact_ref": {
+            "content_hash": "b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d"
+          },
+          "op_id": "cond_Y1_X",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 503,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.07680937403347343,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.15741700000000014,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 706,
+          "exact_fact_material_sha256": "fe7402a373eb9290af518630e47ee80c57c76628012b6d9d3139623fb6361b5b",
+          "fact_ref": {
+            "content_hash": "b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f"
+          },
+          "op_id": "xor_Z",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 703,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.15752759703900665,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 1,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.031870000000000065,
+          "denominator_member_count": 1,
+          "dependency_ref_count": 207,
+          "exact_fact_material_sha256": "3db8eb90072bea8447884a8ae14bb6579308afc717fa1b40902e60dd4e3ae5c3",
+          "fact_ref": {
+            "content_hash": "4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89"
+          },
+          "op_id": "minority_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 204,
+          "raw_denominator_support": 1,
+          "raw_numerator_support": 1,
+          "raw_resolved_target_support": 1,
+          "replay_ref": {
+            "content_hash": "7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.03187239705584943,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.032163000000000164,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 206,
+          "exact_fact_material_sha256": "b878173b5f08b053d4df551db5a8e902348bdfc793172c0b2d9a5be7eba5bff2",
+          "fact_ref": {
+            "content_hash": "7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd"
+          },
+          "op_id": "zero_support_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 203,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": 0,
+          "replay_ref": {
+            "content_hash": "1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164"
+          },
+          "risk_member_count": 171,
+          "typed_state": "ZERO_SUPPORT",
+          "wall_s": 0.032219475018791854,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [],
+          "cpu_s": 0.005670000000000286,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 5,
+          "exact_fact_material_sha256": "076b3225c1a4fd03a50e420fe4a98e63c4ce8720e12abce81cae3ac49f5a9c15",
+          "fact_ref": {
+            "content_hash": "f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f"
+          },
+          "op_id": "unsupported_O",
+          "p02_failure_state": "UNSUPPORTED_RESPONSE_TOPOLOGY",
+          "position": 0,
+          "provenance_ref_count": 2,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": null,
+          "replay_ref": {
+            "content_hash": "bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f"
+          },
+          "risk_member_count": 0,
+          "typed_state": "UNRESOLVED",
+          "wall_s": 0.005700467969290912,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": {
+                "typed_response_state": "MISSING"
+              },
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 16,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06604600000000005,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 406,
+          "exact_fact_material_sha256": "be3252f36ab9fdc57523e82c5997131934120d5f61f9aac90bd92cc59978f68b",
+          "fact_ref": {
+            "content_hash": "23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39"
+          },
+          "op_id": "missing_M",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 403,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06605373311322182,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "AB",
+                "AB"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "BA",
+                "BA"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.09122699999999995,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 606,
+          "exact_fact_material_sha256": "cf1e8dd9b59d958fee7170470a1be368447e6a30880c34784555fb84a4a1683a",
+          "fact_ref": {
+            "content_hash": "ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5"
+          },
+          "op_id": "ordered_O",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 603,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.09154261404182762,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "release": {
+        "compact": {
+          "class": "tuple",
+          "compact": false,
+          "event_count": 1800,
+          "public_object_count": 3608
+        },
+        "release_ref": {
+          "content_hash": "011843ce7617d89514cd27c60247654063deeca5941362c9db6ef3ff9b6daf0f",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-compact-current"
+        },
+        "replay_ref": {
+          "content_hash": "0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5",
+          "kind": "C11Internal:ReplayManifest",
+          "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5"
+        }
+      },
+      "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only, not RSS attribution",
+      "schema": "PROGRAMMA_PYAT_L03_C4_COMPACT_CURRENT@1",
+      "smoke": false,
+      "source": {
+        "cache_binding_eligible": true,
+        "compact_body_nbytes": null,
+        "decoder_metadata_digest": "86988d2ca529eb1632af8e8d3d712cd429830bfaf6268d01a3f1e8f04d536bc5",
+        "event_body_json_bytes": 5932864,
+        "legacy_in_memory_incidence": false,
+        "physical_cell_count": 1800,
+        "row_count": 200,
+        "source_sha256": "8ca4fd183f433bac94ecd59a7eb72d02733cd70e435d10ba3ae94f7b592420ff"
+      },
+      "timing_claim": "MEASURED_VARIANT",
+      "variant": "v0"
+    },
+    "v1": {
+      "cache": {
+        "directory": null,
+        "eligible_hit": false,
+        "files": {
+          "enabled": false
+        },
+        "legacy_in_memory_incidence_not_used": true,
+        "read_hits": 0,
+        "read_misses": 0,
+        "writes": 0
+      },
+      "counts": {
+        "compact_conversions": 1,
+        "fact_builds": 12,
+        "index_builds": 1,
+        "replay_builds": 12
+      },
+      "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/v1_facts.jsonl",
+      "mode": "variant",
+      "n": 200,
+      "phases": {
+        "compact_conversion": {
+          "count": 1,
+          "cpu_s": 1.3075169999999998,
+          "wall_s": 0.6888986530248076
+        },
+        "facade_build": {
+          "count": 1,
+          "cpu_s": 3.0710460000000004,
+          "wall_s": 2.459637787891552
+        },
+        "fact_build": {
+          "count": 12,
+          "cpu_s": 0.2677940000000012,
+          "wall_s": 0.26848512701690197
+        },
+        "fixture_build": {
+          "count": 1,
+          "cpu_s": 0.235359,
+          "wall_s": 0.2362100799800828
+        },
+        "index_build": {
+          "count": 1,
+          "cpu_s": 0.025958000000000148,
+          "wall_s": 0.02598181297071278
+        },
+        "query_execution": {
+          "count": 13,
+          "cpu_s": 1.0091589999999995,
+          "wall_s": 1.0115012368187308
+        },
+        "replay_build": {
+          "count": 12,
+          "cpu_s": 0.022587000000001467,
+          "wall_s": 0.022658831789158285
+        },
+        "validation_build": {
+          "count": 1,
+          "cpu_s": 1.7480559999999998,
+          "wall_s": 1.7552647469565272
+        }
+      },
+      "process": {
+        "argv": [
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+          "--mode",
+          "variant",
+          "--variant",
+          "v1",
+          "--n",
+          "200",
+          "--outdir",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+          "--cache-root",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+        ],
+        "cpu_count": 16,
+        "env": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTHONHASHSEED": "0",
+          "RAWLSING_C11_ACCELERATOR_DIR": null,
+          "TMPDIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/tmp"
+        },
+        "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "machine": "x86_64",
+        "pid": 73788,
+        "platform": "macOS-13.7.8-x86_64-i386-64bit",
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "ru_maxrss_bytes": 86806528,
+        "ru_stime_s": 0.130522,
+        "ru_utime_s": 4.931199
+      },
+      "projection": {
+        "cache_identity": "9aa486e32af25dd2279266d01842a06e50be625401310379e097daf56a000879",
+        "identity": {
+          "content_hash": "fc1eeed9f0ac73d71890caa1d5183962a4e029b91116b3e1090c8d2bfd613655",
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:test:i03:c11_semantic_projection:compact-current-200"
+        }
+      },
+      "queries": [
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.08384299999999989,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 377,
+          "exact_fact_material_sha256": "42da2ca1ecd1070781b8e72972905f51b90061a96ad046ccc799ec7592b1077b",
+          "fact_ref": {
+            "content_hash": "4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980"
+          },
+          "op_id": "raw_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 374,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.08396608289331198,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  128,
+                  1
+                ]
+              }
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  301,
+                  1
+                ]
+              }
+            }
+          ],
+          "cpu_s": 0.06690599999999991,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 548,
+          "exact_fact_material_sha256": "6162d13df872c2e921402125b8e058fb4536c1db00186d01415bea6a2ac32903",
+          "fact_ref": {
+            "content_hash": "e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2"
+          },
+          "op_id": "weighted_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 545,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.0669619960244745,
+          "weighted_denominator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          },
+          "weighted_numerator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          }
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 42,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.09320800000000018,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 748,
+          "exact_fact_material_sha256": "39f91712b64f9b901210c384c7495482570e2ed892f72f9e52f693b9afe2d4f4",
+          "fact_ref": {
+            "content_hash": "aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4"
+          },
+          "op_id": "joint_XY",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 745,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.09320892707910389,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.13431700000000024,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1119,
+          "exact_fact_material_sha256": "d55d7cece290363a498e0f7876965c45eb5d2b683a72f2740509b5c59bf45e17",
+          "fact_ref": {
+            "content_hash": "3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7"
+          },
+          "op_id": "joint_XYZ",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1116,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.13447087397798896,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.16747800000000002,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1490,
+          "exact_fact_material_sha256": "7497b25ae5eae9dc0c35f5ee99e7cf3f06b71389a49bb63d6b33faa2a5cb835b",
+          "fact_ref": {
+            "content_hash": "3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5"
+          },
+          "op_id": "joint_XYZK",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1487,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.16803172300569713,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06152599999999975,
+          "denominator_member_count": 86,
+          "dependency_ref_count": 463,
+          "exact_fact_material_sha256": "f87347545c6c802ed1c3949341ae8924262024a8b29ba1c1bbed072ebd4bfd3c",
+          "fact_ref": {
+            "content_hash": "36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4"
+          },
+          "op_id": "cond_X1_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 460,
+          "raw_denominator_support": 86,
+          "raw_numerator_support": 86,
+          "raw_resolved_target_support": 86,
+          "replay_ref": {
+            "content_hash": "a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.061845668009482324,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06407999999999969,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 506,
+          "exact_fact_material_sha256": "1b39aeacedfc5688593f19b7e4e26d080e6e3b2e2886414d5313bb9fd080a5ac",
+          "fact_ref": {
+            "content_hash": "b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d"
+          },
+          "op_id": "cond_Y1_X",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 503,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06429838296025991,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.11965599999999998,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 706,
+          "exact_fact_material_sha256": "fe7402a373eb9290af518630e47ee80c57c76628012b6d9d3139623fb6361b5b",
+          "fact_ref": {
+            "content_hash": "b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f"
+          },
+          "op_id": "xor_Z",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 703,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.11989982798695564,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 1,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.03189300000000017,
+          "denominator_member_count": 1,
+          "dependency_ref_count": 207,
+          "exact_fact_material_sha256": "3db8eb90072bea8447884a8ae14bb6579308afc717fa1b40902e60dd4e3ae5c3",
+          "fact_ref": {
+            "content_hash": "4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89"
+          },
+          "op_id": "minority_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 204,
+          "raw_denominator_support": 1,
+          "raw_numerator_support": 1,
+          "raw_resolved_target_support": 1,
+          "replay_ref": {
+            "content_hash": "7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.03195057495031506,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.03265600000000024,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 206,
+          "exact_fact_material_sha256": "b878173b5f08b053d4df551db5a8e902348bdfc793172c0b2d9a5be7eba5bff2",
+          "fact_ref": {
+            "content_hash": "7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd"
+          },
+          "op_id": "zero_support_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 203,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": 0,
+          "replay_ref": {
+            "content_hash": "1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164"
+          },
+          "risk_member_count": 171,
+          "typed_state": "ZERO_SUPPORT",
+          "wall_s": 0.03273073001764715,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [],
+          "cpu_s": 0.005589999999999762,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 5,
+          "exact_fact_material_sha256": "076b3225c1a4fd03a50e420fe4a98e63c4ce8720e12abce81cae3ac49f5a9c15",
+          "fact_ref": {
+            "content_hash": "f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f"
+          },
+          "op_id": "unsupported_O",
+          "p02_failure_state": "UNSUPPORTED_RESPONSE_TOPOLOGY",
+          "position": 0,
+          "provenance_ref_count": 2,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": null,
+          "replay_ref": {
+            "content_hash": "bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f"
+          },
+          "risk_member_count": 0,
+          "typed_state": "UNRESOLVED",
+          "wall_s": 0.005599875934422016,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": {
+                "typed_response_state": "MISSING"
+              },
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 16,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06380199999999991,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 406,
+          "exact_fact_material_sha256": "be3252f36ab9fdc57523e82c5997131934120d5f61f9aac90bd92cc59978f68b",
+          "fact_ref": {
+            "content_hash": "23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39"
+          },
+          "op_id": "missing_M",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 403,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06398706801701337,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "AB",
+                "AB"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "BA",
+                "BA"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.08420399999999972,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 606,
+          "exact_fact_material_sha256": "cf1e8dd9b59d958fee7170470a1be368447e6a30880c34784555fb84a4a1683a",
+          "fact_ref": {
+            "content_hash": "ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5"
+          },
+          "op_id": "ordered_O",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 603,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.0845495059620589,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "release": {
+        "compact": {
+          "by_respondent_groups": 200,
+          "class": "_CompactPublicObjects",
+          "compact": true,
+          "entry_count": 3608,
+          "non_event_count": 1808,
+          "selector_count": 1800
+        },
+        "release_ref": {
+          "content_hash": "011843ce7617d89514cd27c60247654063deeca5941362c9db6ef3ff9b6daf0f",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-compact-current"
+        },
+        "replay_ref": {
+          "content_hash": "0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5",
+          "kind": "C11Internal:ReplayManifest",
+          "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5"
+        }
+      },
+      "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only, not RSS attribution",
+      "schema": "PROGRAMMA_PYAT_L03_C4_COMPACT_CURRENT@1",
+      "smoke": false,
+      "source": {
+        "cache_binding_eligible": true,
+        "compact_body_nbytes": null,
+        "decoder_metadata_digest": "86988d2ca529eb1632af8e8d3d712cd429830bfaf6268d01a3f1e8f04d536bc5",
+        "event_body_json_bytes": null,
+        "legacy_in_memory_incidence": false,
+        "physical_cell_count": 1800,
+        "row_count": 200,
+        "source_sha256": "8ca4fd183f433bac94ecd59a7eb72d02733cd70e435d10ba3ae94f7b592420ff"
+      },
+      "timing_claim": "MEASURED_VARIANT",
+      "variant": "v1"
+    },
+    "v2-cold": {
+      "cache": {
+        "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+        "eligible_hit": false,
+        "files": {
+          "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+          "enabled": true,
+          "file_count": 1,
+          "files": [
+            {
+              "bytes": 429814,
+              "name": "c11-events-2.parquet"
+            }
+          ],
+          "total_bytes": 429814
+        },
+        "legacy_in_memory_incidence_not_used": true,
+        "read_hits": 0,
+        "read_misses": 1,
+        "writes": 1
+      },
+      "counts": {
+        "compact_conversions": 1,
+        "fact_builds": 12,
+        "index_builds": 1,
+        "replay_builds": 12
+      },
+      "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/v2-cold_facts.jsonl",
+      "mode": "variant",
+      "n": 200,
+      "phases": {
+        "compact_conversion": {
+          "count": 1,
+          "cpu_s": 1.59503,
+          "wall_s": 0.9708864149870351
+        },
+        "facade_build": {
+          "count": 1,
+          "cpu_s": 3.350436,
+          "wall_s": 2.7285282720113173
+        },
+        "fact_build": {
+          "count": 12,
+          "cpu_s": 0.24464999999999915,
+          "wall_s": 0.24568239704240113
+        },
+        "fixture_build": {
+          "count": 1,
+          "cpu_s": 0.234857,
+          "wall_s": 0.2354816939914599
+        },
+        "index_build": {
+          "count": 1,
+          "cpu_s": 0.025408000000000097,
+          "wall_s": 0.025407897075638175
+        },
+        "query_execution": {
+          "count": 13,
+          "cpu_s": 0.9842019999999998,
+          "wall_s": 0.9880222831852734
+        },
+        "replay_build": {
+          "count": 12,
+          "cpu_s": 0.021175000000000388,
+          "wall_s": 0.021180544863454998
+        },
+        "validation_build": {
+          "count": 1,
+          "cpu_s": 1.740967,
+          "wall_s": 1.7431499409722164
+        }
+      },
+      "process": {
+        "argv": [
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+          "--mode",
+          "variant",
+          "--variant",
+          "v2-cold",
+          "--n",
+          "200",
+          "--outdir",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+          "--cache-root",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+        ],
+        "cpu_count": 16,
+        "env": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTHONHASHSEED": "0",
+          "RAWLSING_C11_ACCELERATOR_DIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+          "TMPDIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/tmp"
+        },
+        "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "machine": "x86_64",
+        "pid": 73795,
+        "platform": "macOS-13.7.8-x86_64-i386-64bit",
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "ru_maxrss_bytes": 135401472,
+        "ru_stime_s": 0.166014,
+        "ru_utime_s": 5.240685
+      },
+      "projection": {
+        "cache_identity": "9aa486e32af25dd2279266d01842a06e50be625401310379e097daf56a000879",
+        "identity": {
+          "content_hash": "fc1eeed9f0ac73d71890caa1d5183962a4e029b91116b3e1090c8d2bfd613655",
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:test:i03:c11_semantic_projection:compact-current-200"
+        }
+      },
+      "queries": [
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.07763700000000018,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 377,
+          "exact_fact_material_sha256": "42da2ca1ecd1070781b8e72972905f51b90061a96ad046ccc799ec7592b1077b",
+          "fact_ref": {
+            "content_hash": "4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980"
+          },
+          "op_id": "raw_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 374,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.07764699205290526,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  128,
+                  1
+                ]
+              }
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  301,
+                  1
+                ]
+              }
+            }
+          ],
+          "cpu_s": 0.06651600000000002,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 548,
+          "exact_fact_material_sha256": "6162d13df872c2e921402125b8e058fb4536c1db00186d01415bea6a2ac32903",
+          "fact_ref": {
+            "content_hash": "e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2"
+          },
+          "op_id": "weighted_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 545,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06651988497469574,
+          "weighted_denominator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          },
+          "weighted_numerator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          }
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 42,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.08708500000000008,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 748,
+          "exact_fact_material_sha256": "39f91712b64f9b901210c384c7495482570e2ed892f72f9e52f693b9afe2d4f4",
+          "fact_ref": {
+            "content_hash": "aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4"
+          },
+          "op_id": "joint_XY",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 745,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.08733004599343985,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.12895900000000005,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1119,
+          "exact_fact_material_sha256": "d55d7cece290363a498e0f7876965c45eb5d2b683a72f2740509b5c59bf45e17",
+          "fact_ref": {
+            "content_hash": "3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7"
+          },
+          "op_id": "joint_XYZ",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1116,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.12957740004640073,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.16446999999999967,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1490,
+          "exact_fact_material_sha256": "7497b25ae5eae9dc0c35f5ee99e7cf3f06b71389a49bb63d6b33faa2a5cb835b",
+          "fact_ref": {
+            "content_hash": "3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5"
+          },
+          "op_id": "joint_XYZK",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1487,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.16554747999180108,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.0626679999999995,
+          "denominator_member_count": 86,
+          "dependency_ref_count": 463,
+          "exact_fact_material_sha256": "f87347545c6c802ed1c3949341ae8924262024a8b29ba1c1bbed072ebd4bfd3c",
+          "fact_ref": {
+            "content_hash": "36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4"
+          },
+          "op_id": "cond_X1_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 460,
+          "raw_denominator_support": 86,
+          "raw_numerator_support": 86,
+          "raw_resolved_target_support": 86,
+          "replay_ref": {
+            "content_hash": "a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.0630238939775154,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06687499999999957,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 506,
+          "exact_fact_material_sha256": "1b39aeacedfc5688593f19b7e4e26d080e6e3b2e2886414d5313bb9fd080a5ac",
+          "fact_ref": {
+            "content_hash": "b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d"
+          },
+          "op_id": "cond_Y1_X",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 503,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06715617701411247,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.12083999999999939,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 706,
+          "exact_fact_material_sha256": "fe7402a373eb9290af518630e47ee80c57c76628012b6d9d3139623fb6361b5b",
+          "fact_ref": {
+            "content_hash": "b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f"
+          },
+          "op_id": "xor_Z",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 703,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.12155999103561044,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 1,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.033351000000000575,
+          "denominator_member_count": 1,
+          "dependency_ref_count": 207,
+          "exact_fact_material_sha256": "3db8eb90072bea8447884a8ae14bb6579308afc717fa1b40902e60dd4e3ae5c3",
+          "fact_ref": {
+            "content_hash": "4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89"
+          },
+          "op_id": "minority_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 204,
+          "raw_denominator_support": 1,
+          "raw_numerator_support": 1,
+          "raw_resolved_target_support": 1,
+          "replay_ref": {
+            "content_hash": "7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.03350653708912432,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.0326600000000008,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 206,
+          "exact_fact_material_sha256": "b878173b5f08b053d4df551db5a8e902348bdfc793172c0b2d9a5be7eba5bff2",
+          "fact_ref": {
+            "content_hash": "7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd"
+          },
+          "op_id": "zero_support_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 203,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": 0,
+          "replay_ref": {
+            "content_hash": "1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164"
+          },
+          "risk_member_count": 171,
+          "typed_state": "ZERO_SUPPORT",
+          "wall_s": 0.03276614402420819,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [],
+          "cpu_s": 0.005633999999999695,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 5,
+          "exact_fact_material_sha256": "076b3225c1a4fd03a50e420fe4a98e63c4ce8720e12abce81cae3ac49f5a9c15",
+          "fact_ref": {
+            "content_hash": "f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f"
+          },
+          "op_id": "unsupported_O",
+          "p02_failure_state": "UNSUPPORTED_RESPONSE_TOPOLOGY",
+          "position": 0,
+          "provenance_ref_count": 2,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": null,
+          "replay_ref": {
+            "content_hash": "bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f"
+          },
+          "risk_member_count": 0,
+          "typed_state": "UNRESOLVED",
+          "wall_s": 0.005638118949718773,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": {
+                "typed_response_state": "MISSING"
+              },
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 16,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06126599999999982,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 406,
+          "exact_fact_material_sha256": "be3252f36ab9fdc57523e82c5997131934120d5f61f9aac90bd92cc59978f68b",
+          "fact_ref": {
+            "content_hash": "23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39"
+          },
+          "op_id": "missing_M",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 403,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06129491701722145,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "AB",
+                "AB"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "BA",
+                "BA"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.07624100000000045,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 606,
+          "exact_fact_material_sha256": "cf1e8dd9b59d958fee7170470a1be368447e6a30880c34784555fb84a4a1683a",
+          "fact_ref": {
+            "content_hash": "ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5"
+          },
+          "op_id": "ordered_O",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 603,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.0764547010185197,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "release": {
+        "compact": {
+          "by_respondent_groups": 200,
+          "class": "_CompactPublicObjects",
+          "compact": true,
+          "entry_count": 3608,
+          "non_event_count": 1808,
+          "selector_count": 1800
+        },
+        "release_ref": {
+          "content_hash": "011843ce7617d89514cd27c60247654063deeca5941362c9db6ef3ff9b6daf0f",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-compact-current"
+        },
+        "replay_ref": {
+          "content_hash": "0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5",
+          "kind": "C11Internal:ReplayManifest",
+          "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5"
+        }
+      },
+      "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only, not RSS attribution",
+      "schema": "PROGRAMMA_PYAT_L03_C4_COMPACT_CURRENT@1",
+      "smoke": false,
+      "source": {
+        "cache_binding_eligible": true,
+        "compact_body_nbytes": null,
+        "decoder_metadata_digest": "86988d2ca529eb1632af8e8d3d712cd429830bfaf6268d01a3f1e8f04d536bc5",
+        "event_body_json_bytes": null,
+        "legacy_in_memory_incidence": false,
+        "physical_cell_count": 1800,
+        "row_count": 200,
+        "source_sha256": "8ca4fd183f433bac94ecd59a7eb72d02733cd70e435d10ba3ae94f7b592420ff"
+      },
+      "timing_claim": "MEASURED_VARIANT",
+      "variant": "v2-cold"
+    },
+    "v2-warm": {
+      "cache": {
+        "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+        "eligible_hit": true,
+        "files": {
+          "directory": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+          "enabled": true,
+          "file_count": 1,
+          "files": [
+            {
+              "bytes": 429814,
+              "name": "c11-events-2.parquet"
+            }
+          ],
+          "total_bytes": 429814
+        },
+        "legacy_in_memory_incidence_not_used": true,
+        "read_hits": 1,
+        "read_misses": 0,
+        "writes": 0
+      },
+      "counts": {
+        "compact_conversions": 1,
+        "fact_builds": 12,
+        "index_builds": 1,
+        "replay_builds": 12
+      },
+      "facts_file": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/v2-warm_facts.jsonl",
+      "mode": "variant",
+      "n": 200,
+      "phases": {
+        "compact_conversion": {
+          "count": 1,
+          "cpu_s": 1.1029909999999998,
+          "wall_s": 0.2973535500932485
+        },
+        "facade_build": {
+          "count": 1,
+          "cpu_s": 2.791306,
+          "wall_s": 1.9951413020025939
+        },
+        "fact_build": {
+          "count": 12,
+          "cpu_s": 0.2512139999999996,
+          "wall_s": 0.25755939807277173
+        },
+        "fixture_build": {
+          "count": 1,
+          "cpu_s": 0.228406,
+          "wall_s": 0.2286805040203035
+        },
+        "index_build": {
+          "count": 1,
+          "cpu_s": 0.025408999999999793,
+          "wall_s": 0.025465492974035442
+        },
+        "query_execution": {
+          "count": 13,
+          "cpu_s": 0.9872739999999971,
+          "wall_s": 0.997271767933853
+        },
+        "replay_build": {
+          "count": 12,
+          "cpu_s": 0.021580000000001043,
+          "wall_s": 0.021774426917545497
+        },
+        "validation_build": {
+          "count": 1,
+          "cpu_s": 1.674732,
+          "wall_s": 1.6842010280815884
+        }
+      },
+      "process": {
+        "argv": [
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/tools/bench_compact_current.py",
+          "--mode",
+          "variant",
+          "--variant",
+          "v2-warm",
+          "--n",
+          "200",
+          "--outdir",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200",
+          "--cache-root",
+          "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache"
+        ],
+        "cpu_count": 16,
+        "env": {
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTHONHASHSEED": "0",
+          "RAWLSING_C11_ACCELERATOR_DIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/cache",
+          "TMPDIR": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/pyat-universal35/results/compare_n200/tmp"
+        },
+        "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+        "machine": "x86_64",
+        "pid": 73798,
+        "platform": "macOS-13.7.8-x86_64-i386-64bit",
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "ru_maxrss_bytes": 92725248,
+        "ru_stime_s": 0.097774,
+        "ru_utime_s": 4.612908
+      },
+      "projection": {
+        "cache_identity": "9aa486e32af25dd2279266d01842a06e50be625401310379e097daf56a000879",
+        "identity": {
+          "content_hash": "fc1eeed9f0ac73d71890caa1d5183962a4e029b91116b3e1090c8d2bfd613655",
+          "kind": "C11_SEMANTIC_PROJECTION",
+          "object_id": "urn:test:i03:c11_semantic_projection:compact-current-200"
+        }
+      },
+      "queries": [
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.0765819999999997,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 377,
+          "exact_fact_material_sha256": "42da2ca1ecd1070781b8e72972905f51b90061a96ad046ccc799ec7592b1077b",
+          "fact_ref": {
+            "content_hash": "4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4add5aeec0e4dd63c878fc039a9a3928d0b001d7894050ca1f6dbbd89ba74980"
+          },
+          "op_id": "raw_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 374,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:46620456f297940e5df1b39f03f324f5afb559862a71cd674fe00add0861e822"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.0767012219876051,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 85,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  128,
+                  1
+                ]
+              }
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 86,
+              "weighted_numerator_support_if_authorized": {
+                "$exact_fraction": [
+                  301,
+                  1
+                ]
+              }
+            }
+          ],
+          "cpu_s": 0.06451899999999977,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 548,
+          "exact_fact_material_sha256": "6162d13df872c2e921402125b8e058fb4536c1db00186d01415bea6a2ac32903",
+          "fact_ref": {
+            "content_hash": "e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:e3e0dba01061fe7611cdba91ea74ae6c06975b24f8c875fcc2695b82831560c2"
+          },
+          "op_id": "weighted_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 545,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3115f1aa7b56bdd8818d46b93ad7048562f41cbe769063a7ad709e63e9152d36"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.0645879270741716,
+          "weighted_denominator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          },
+          "weighted_numerator_support_if_authorized": {
+            "$exact_fraction": [
+              429,
+              1
+            ]
+          }
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 42,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.10725799999999985,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 748,
+          "exact_fact_material_sha256": "39f91712b64f9b901210c384c7495482570e2ed892f72f9e52f693b9afe2d4f4",
+          "fact_ref": {
+            "content_hash": "aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:aecc15ae80bb37c6324c5724df690b0028e96b51ae378a116bd5c320919a8ee4"
+          },
+          "op_id": "joint_XY",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 745,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1822dce00244a0e3ff13dae00739b77affa40ad15b024c48500b6e5663039e5b"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.11315615894272923,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.12993999999999994,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1119,
+          "exact_fact_material_sha256": "d55d7cece290363a498e0f7876965c45eb5d2b683a72f2740509b5c59bf45e17",
+          "fact_ref": {
+            "content_hash": "3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3b733e88be08c7131e2d5b062dd242eb849a6474cd75405baa49d7d5b54ce0c7"
+          },
+          "op_id": "joint_XYZ",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1116,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:9c74df8d8b6d15d77c739c794e2e312be1608661ea74b074f071d1d5aa22e41d"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.13065911794546992,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "0",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "0",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "0"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 22,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "0",
+                "1"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "0"
+              ],
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "1",
+                "1",
+                "1",
+                "1"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 21,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.16666599999999976,
+          "denominator_member_count": 171,
+          "dependency_ref_count": 1490,
+          "exact_fact_material_sha256": "7497b25ae5eae9dc0c35f5ee99e7cf3f06b71389a49bb63d6b33faa2a5cb835b",
+          "fact_ref": {
+            "content_hash": "3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:3cb3517cfa731fbdda7731a8b12bbf2a0d051e7853177ba5f9a17fc393315aa5"
+          },
+          "op_id": "joint_XYZK",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 1487,
+          "raw_denominator_support": 171,
+          "raw_numerator_support": 171,
+          "raw_resolved_target_support": 171,
+          "replay_ref": {
+            "content_hash": "120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:120895003d7454519625e35b6dec9e7c5802a92f6d21edcada22d84e634558ee"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.16862215800210834,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 43,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.05906600000000051,
+          "denominator_member_count": 86,
+          "dependency_ref_count": 463,
+          "exact_fact_material_sha256": "f87347545c6c802ed1c3949341ae8924262024a8b29ba1c1bbed072ebd4bfd3c",
+          "fact_ref": {
+            "content_hash": "36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:36f66d54d0126ca5c72f30cf30a31ef2d2386258fec7bc71962451e1566061c4"
+          },
+          "op_id": "cond_X1_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 460,
+          "raw_denominator_support": 86,
+          "raw_numerator_support": 86,
+          "raw_resolved_target_support": 86,
+          "replay_ref": {
+            "content_hash": "a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:a36b5acc8d46e2264969d0e12d0f51c111e08d61b26b05ca1f1af8754cad1f4f"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.05930206994526088,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.06390899999999977,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 506,
+          "exact_fact_material_sha256": "1b39aeacedfc5688593f19b7e4e26d080e6e3b2e2886414d5313bb9fd080a5ac",
+          "fact_ref": {
+            "content_hash": "b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b26e1a364f23e03cdaf8dccd4047c583edb81ae2f983357276ffc407f84e133d"
+          },
+          "op_id": "cond_Y1_X",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 503,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:8253a44fef1d5db6a49da023be0ad0b39c86311939e939cdce601fd4120ed3e9"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.06417333800345659,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 50,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.11661699999999975,
+          "denominator_member_count": 100,
+          "dependency_ref_count": 706,
+          "exact_fact_material_sha256": "fe7402a373eb9290af518630e47ee80c57c76628012b6d9d3139623fb6361b5b",
+          "fact_ref": {
+            "content_hash": "b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:b245e31c5063918d8bd0511e441315bd87d1494af514562a949b6e94590eb93f"
+          },
+          "op_id": "xor_Z",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 703,
+          "raw_denominator_support": 100,
+          "raw_numerator_support": 100,
+          "raw_resolved_target_support": 100,
+          "replay_ref": {
+            "content_hash": "d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:d11b26ebd91042b790716efddcf132be7bb1b4bec5877f620c0c4b65e82b909c"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.11709453398361802,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 1,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.030648999999999482,
+          "denominator_member_count": 1,
+          "dependency_ref_count": 207,
+          "exact_fact_material_sha256": "3db8eb90072bea8447884a8ae14bb6579308afc717fa1b40902e60dd4e3ae5c3",
+          "fact_ref": {
+            "content_hash": "4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:4271094e9fb2dc105839cc11a88e4b560aa86c3b3ee477b5486a4c316e4b7a89"
+          },
+          "op_id": "minority_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 204,
+          "raw_denominator_support": 1,
+          "raw_numerator_support": 1,
+          "raw_resolved_target_support": 1,
+          "replay_ref": {
+            "content_hash": "7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:7dc6f0d339f123f2958ae2de73e53ba56a542ccb43fa067f88e9d1856b3272fb"
+          },
+          "risk_member_count": 171,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.030652774963527918,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "ZERO_SUPPORT",
+              "raw_numerator_support": 0,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.032242000000000104,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 206,
+          "exact_fact_material_sha256": "b878173b5f08b053d4df551db5a8e902348bdfc793172c0b2d9a5be7eba5bff2",
+          "fact_ref": {
+            "content_hash": "7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7f817a17c59cb3d5749b098ed90d7cc96c4c6b7921c4f8e262b13f0da302b0bd"
+          },
+          "op_id": "zero_support_Y",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 203,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": 0,
+          "replay_ref": {
+            "content_hash": "1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1dc693a8c6de2614056c002e8d76dc181b6c01adf0acfe98ad9b83db11b57164"
+          },
+          "risk_member_count": 171,
+          "typed_state": "ZERO_SUPPORT",
+          "wall_s": 0.03228405606932938,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [],
+          "cpu_s": 0.0054789999999993455,
+          "denominator_member_count": 0,
+          "dependency_ref_count": 5,
+          "exact_fact_material_sha256": "076b3225c1a4fd03a50e420fe4a98e63c4ce8720e12abce81cae3ac49f5a9c15",
+          "fact_ref": {
+            "content_hash": "f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f728f51b5ec92478fed00061a2a485940ffae272b81e602cff6cc726fa2ef78f"
+          },
+          "op_id": "unsupported_O",
+          "p02_failure_state": "UNSUPPORTED_RESPONSE_TOPOLOGY",
+          "position": 0,
+          "provenance_ref_count": 2,
+          "raw_denominator_support": 0,
+          "raw_numerator_support": 0,
+          "raw_resolved_target_support": null,
+          "replay_ref": {
+            "content_hash": "bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:bfc2d4aef9a35eb0a58b193198653854b99835cef2fe50e47e71b4861085671f"
+          },
+          "risk_member_count": 0,
+          "typed_state": "UNRESOLVED",
+          "wall_s": 0.005480839055962861,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": "0",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": "1",
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 92,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": {
+                "typed_response_state": "MISSING"
+              },
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 16,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.05754599999999943,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 406,
+          "exact_fact_material_sha256": "be3252f36ab9fdc57523e82c5997131934120d5f61f9aac90bd92cc59978f68b",
+          "fact_ref": {
+            "content_hash": "23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:23d6d31cf012a838d2c2cc6b7150308577a06b9391664e560613218716f75c39"
+          },
+          "op_id": "missing_M",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 403,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:52aab4e43e44b78dd0a537e695da08f044716bdeff1dc4ebad5a4e924b6b9d03"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.05760003998875618,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        },
+        {
+          "cell_projection": [
+            {
+              "cell": [
+                "AB",
+                "AB"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            },
+            {
+              "cell": [
+                "BA",
+                "BA"
+              ],
+              "cell_state": "OBSERVED_POSITIVE",
+              "raw_numerator_support": 100,
+              "weighted_numerator_support_if_authorized": null
+            }
+          ],
+          "cpu_s": 0.07680099999999968,
+          "denominator_member_count": 200,
+          "dependency_ref_count": 606,
+          "exact_fact_material_sha256": "cf1e8dd9b59d958fee7170470a1be368447e6a30880c34784555fb84a4a1683a",
+          "fact_ref": {
+            "content_hash": "ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5",
+            "kind": "EmpiricalFact@1.0.0",
+            "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:ec18ff2572ceabf0531b037f0dc31e05193993f24771b58d3d814dc49fa11ed5"
+          },
+          "op_id": "ordered_O",
+          "p02_failure_state": null,
+          "position": 0,
+          "provenance_ref_count": 603,
+          "raw_denominator_support": 200,
+          "raw_numerator_support": 200,
+          "raw_resolved_target_support": 200,
+          "replay_ref": {
+            "content_hash": "59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519",
+            "kind": "PRE553_I03_QUERY_REPLAY",
+            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:59382eba62710d98e9ff8c14f41e7b0774c4b675fe49d37417aa4540ddda4519"
+          },
+          "risk_member_count": 200,
+          "typed_state": "SUPPORTED",
+          "wall_s": 0.07695753197185695,
+          "weighted_denominator_support_if_authorized": null,
+          "weighted_numerator_support_if_authorized": null
+        }
+      ],
+      "release": {
+        "compact": {
+          "by_respondent_groups": 200,
+          "class": "_CompactPublicObjects",
+          "compact": true,
+          "entry_count": 3608,
+          "non_event_count": 1808,
+          "selector_count": 1800
+        },
+        "release_ref": {
+          "content_hash": "011843ce7617d89514cd27c60247654063deeca5941362c9db6ef3ff9b6daf0f",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-compact-current"
+        },
+        "replay_ref": {
+          "content_hash": "0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5",
+          "kind": "C11Internal:ReplayManifest",
+          "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0810d0eed82480475896a6941323e07d98e91ecb4ed9c2b860a799b334b6eff5"
+        }
+      },
+      "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only, not RSS attribution",
+      "schema": "PROGRAMMA_PYAT_L03_C4_COMPACT_CURRENT@1",
+      "smoke": false,
+      "source": {
+        "cache_binding_eligible": true,
+        "compact_body_nbytes": null,
+        "decoder_metadata_digest": "86988d2ca529eb1632af8e8d3d712cd429830bfaf6268d01a3f1e8f04d536bc5",
+        "event_body_json_bytes": null,
+        "legacy_in_memory_incidence": false,
+        "physical_cell_count": 1800,
+        "row_count": 200,
+        "source_sha256": "8ca4fd183f433bac94ecd59a7eb72d02733cd70e435d10ba3ae94f7b592420ff"
+      },
+      "timing_claim": "MEASURED_VARIANT",
+      "variant": "v2-warm"
+    }
+  }
+}
