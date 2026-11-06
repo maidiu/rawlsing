@@ -249,8 +249,16 @@ class _RecordingResolver:
 
 def write_field_forge_envelopes(result: Any, *, source_id: str,
                                 state_root: str | Path,
-                                producer_permission_ceiling: tuple[str, ...]) -> dict[str, Any]:
+                                producer_permission_ceiling: Any) -> dict[str, Any]:
     """Persist exact existing fact/query envelopes; never mint permission."""
+    if (isinstance(producer_permission_ceiling, (str, bytes))
+            or not isinstance(producer_permission_ceiling, (tuple, list))
+            or not producer_permission_ceiling
+            or any(not isinstance(value, str) or not value.strip()
+                   for value in producer_permission_ceiling)):
+        raise Original35ExecutionError(
+            "EXPLICIT_PRODUCER_PERMISSION_CEILING_REQUIRED")
+    producer_permission_ceiling = tuple(producer_permission_ceiling)
     native = getattr(getattr(result, "native_execution", None), "native_result", None)
     if native is None:
         raise Original35ExecutionError("GOVERNED_NATIVE_RESULT_REQUIRED")
@@ -270,6 +278,9 @@ def write_field_forge_envelopes(result: Any, *, source_id: str,
         envelopes.append(envelope_material(
             fact=fact, query=query,
             producer_permission_ceiling=producer_permission_ceiling))
+    if missing:
+        raise Original35ExecutionError(
+            "FIELD_FORGE_QUERY_REF_MISSING:" + json.dumps(missing, sort_keys=True))
     target = Path(state_root) / (source_id + ".field_forge_envelopes.json")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps({
@@ -292,7 +303,8 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
                                    purpose: str, as_of: str,
                                    max_items: int | None = None,
                                    resolver: Any | None = None,
-                                   state_root: str | Path | None = None) -> dict[str, Any]:
+                                   state_root: str | Path | None = None,
+                                   producer_permission_ceiling: Any | None = None) -> dict[str, Any]:
     """Run full supported explicit plan through CURRENT governed compiler/facts.
 
     Source bytes are opened only through the existing current source-read
@@ -400,8 +412,9 @@ def execute_native_compiler_source(source_id: str, *, library: SourceConfigLibra
         compilation_material = compilation.material()
         transport = (write_field_forge_envelopes(
             result, source_id=source_id, state_root=state_root,
-            producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",))
-            if state_root is not None else None)
+            producer_permission_ceiling=producer_permission_ceiling)
+            if state_root is not None and producer_permission_ceiling is not None
+            else None)
     else:
         compilation = compile_universal_workload(
             bundle=bundle, as_of=as_of, host=host, purpose=purpose)

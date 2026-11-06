@@ -6,6 +6,8 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+from collections import Counter
+from types import SimpleNamespace
 
 import pytest
 
@@ -137,24 +139,36 @@ def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
     result = execute_governed_frontier(
         compilation=compilation,
         source_factory=lambda _ref: bundle.physical_stream)
+    no_permission_root = tmp_path / "no_permission"
+    with pytest.raises(Original35ExecutionError):
+        write_field_forge_envelopes(
+            result, source_id="SRC01", state_root=no_permission_root,
+            producer_permission_ceiling=None)
+    with pytest.raises(Original35ExecutionError):
+        write_field_forge_envelopes(
+            result, source_id="SRC01", state_root=no_permission_root,
+            producer_permission_ceiling=())
+    assert not list(no_permission_root.glob("*.field_forge_envelopes.json"))
+
+    ceiling = ("FIELD_FORGE_RELATION_PRODUCTION",)
     summary = write_field_forge_envelopes(
         result, source_id="SRC01", state_root=tmp_path,
-        producer_permission_ceiling=("FIELD_FORGE_RELATION_PRODUCTION",))
-    assert summary["fact_count"] == summary["envelope_count"] > 0
+        producer_permission_ceiling=ceiling)
+    assert summary["fact_count"] == summary["envelope_count"] == 30
     document = json.loads(Path(summary["path"]).read_text())
     assert document["schema"] == "PRE553_ORIGINAL35_E_TRANSPORT@1.0.0"
     assert document["raw_respondent_rows_included"] is False
-    accepted = 0
-    for envelope in document["envelopes"]:
-        response = ingest_envelope(envelope)
-        assert response["schema"] == "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1"
-        if response["state"] == "CONDITIONAL_SUPPORT_PROFILE":
-            accepted += 1
-        else:
-            assert response["refusal_code"] in {
-                "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED",
-                "FIELD_FORGE_RELATION_TYPED_REFUSAL"}
-    assert accepted >= 0
+    assert all(tuple(envelope["permissions"]["producer_permission_ceiling"])
+               == ceiling for envelope in document["envelopes"])
+    arities = Counter(
+        envelope["query"]["semantic_fields"]["target_arity_and_topology"]["arity"]
+        for envelope in document["envelopes"])
+    assert arities == {1: 30}
+    responses = [ingest_envelope(envelope) for envelope in document["envelopes"]]
+    assert Counter((response["state"], response["refusal_code"])
+                   for response in responses) == {
+        ("TYPED_REFUSAL", "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED"): 30}
+    assert all(response["structural_grant"] is False for response in responses)
     envelope_path = tmp_path / "first_envelope.json"
     envelope_path.write_text(json.dumps(document["envelopes"][0], sort_keys=True))
     run = subprocess.run(
@@ -166,7 +180,23 @@ def test_governed_facts_queries_become_exact_cold_e_envelopes(tmp_path):
              "PYTHONDONTWRITEBYTECODE": "1"},
         text=True, capture_output=True, timeout=120)
     assert run.returncode == 0, run.stderr[-2000:]
-    assert "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1" in run.stdout
+    cold = json.loads(run.stdout)
+    assert cold["schema"] == "PRE553_FIELD_FORGE_EMPIRICAL_INGRESS_RESULT@1"
+    assert cold["state"] == "TYPED_REFUSAL"
+    assert cold["refusal_code"] == "FIELD_FORGE_TWO_TARGET_RELATION_REQUIRED"
+    assert cold["structural_grant"] is False
+
+    missing_root = tmp_path / "missing_query"
+    fake = SimpleNamespace(
+        native_execution=SimpleNamespace(native_result=SimpleNamespace(
+            empirical_facts=result.native_execution.native_result.empirical_facts,
+            executed_queries=())),
+        compilation=SimpleNamespace(runtime_catalog=SimpleNamespace(queries=())))
+    with pytest.raises(Original35ExecutionError):
+        write_field_forge_envelopes(
+            fake, source_id="SRC01", state_root=missing_root,
+            producer_permission_ceiling=ceiling)
+    assert not list(missing_root.glob("*.field_forge_envelopes.json"))
 
     broken = json.loads(json.dumps(document))
     broken["envelopes"][0]["permissions"] = {}
