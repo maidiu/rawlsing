@@ -86,5 +86,12 @@ def test_wrong_source_clock_state_and_unknown_operation_do_not_mutate_owner(tmp_
         with pytest.raises(RecursionRefusal, match="AMBIGUOUS"):
             owner.realize("interrupted", proposal, before)
         assert owner.snapshot() == before
+        original = owner.source.copy()
+        owner.source["unissued_source_mutation"] = True
+        with pytest.raises(RecursionRefusal, match="SOURCE_MUTATED"):
+            owner.realize("severed", proposal, before)
+        owner.source.clear()
+        owner.source.update(original)
+        assert owner.snapshot() == before
     finally:
         owner.close()

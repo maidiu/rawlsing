@@ -11,3 +11,5 @@ Remaining required work is the complete commission: actual two-batch integration
 Batch author terminal intake: provider returned 429 prefill_cap_refused before any write. Verified clean assigned worktree and absent old PID. One exact-task retry launched in fresh OpenCode session, same model/account and exclusive branch. No acceptance or implementation change claimed. Exact custody is in CHECKPOINT.json.
 
 Added cold-process bootstrap/advance/finish integration entrypoint using supplied P2 source pack and model-response transport. Syntax parsed; execution depends on batch and cycle worker returns. Default result exposes only actor-accessible projections, with privileged history available via explicit engineering output. No completion or acceptance claim.
+
+Added two-batch actual-owner integration regression against the frozen ABI, pending core/cycle returns. Strengthened P2 adapter source binding across cold reopen and source-mutation severance/restore; rerun 3 owner tests passed in 16.22s. Integrated two-batch proof is still unexecuted.

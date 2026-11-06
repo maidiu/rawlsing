@@ -49,9 +49,20 @@ class P2Owner:
         self.db.execute("CREATE TABLE IF NOT EXISTS operations "
                         "(id TEXT PRIMARY KEY, proposal TEXT NOT NULL, "
                         "before_state TEXT NOT NULL, result TEXT)")
+        self.db.execute("CREATE TABLE IF NOT EXISTS binding (id INTEGER PRIMARY KEY, value TEXT)")
+        binding = canonical({"root": fanin.root_hash, "branch": fanin.session.branch_id,
+                             "source": self.source_ref, "participants": participants})
+        row = self.db.execute("SELECT value FROM binding WHERE id=1").fetchone()
+        if row is None:
+            self.db.execute("INSERT INTO binding VALUES (1,?)", (binding,))
+        elif row[0] != binding:
+            self.db.close()
+            raise RecursionRefusal("P2_OWNER_BINDING_MISMATCH")
         self.db.commit()
 
     def snapshot(self) -> StateIdentity:
+        if self.source_ref != "P2_INPUT:" + digest({"case": self.case, "source": self.source}):
+            raise RecursionRefusal("P2_INPUT_SOURCE_MUTATED")
         s = self.fanin.session
         verified = s.verify()
         if not verified.get("ok"):

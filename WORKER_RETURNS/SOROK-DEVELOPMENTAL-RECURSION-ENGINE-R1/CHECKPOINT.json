@@ -29,7 +29,7 @@
   },
   "adapter_result": {
     "command": "python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_p2_owner.py",
-    "result": "3 passed in 16.18s",
+    "result": "3 passed in 16.22s after durable source/root binding and source-mutation severance/restore",
     "scope": "Actual S47 material interval reaches C9; scheduled control, cold owner receipt, wrong source/root/branch/clock and interrupted-operation hold. No native psychological transition."
   },
   "implementation_workers": [
@@ -64,5 +64,10 @@
     "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/run_developmental_recursion.py",
     "state": "ADAPTER_ENTRYPOINT_PENDING_ENGINE_AND_CYCLE_RETURN",
     "transport": "Explicit JSON model-response fixture; records actual request when requested. Actual P2 source pack supplied separately. Default output forwards accessible event fields only."
+  },
+  "integration_regression": {
+    "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_recursion_integration.py",
+    "status": "IMPLEMENTED_AWAITING_CORE_AND_CYCLE_IMPORTS",
+    "coverage": "Two actual S47 three-event batches; event-state carry-forward; 3 model calls total; actor-accessible retrospective input; terminal nonmutation; cold reopening; actual versus scheduled material antecedent."
   }
 }
