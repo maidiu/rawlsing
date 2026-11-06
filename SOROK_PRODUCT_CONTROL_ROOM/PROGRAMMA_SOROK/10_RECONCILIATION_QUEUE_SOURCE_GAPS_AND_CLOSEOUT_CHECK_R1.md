@@ -337,3 +337,6 @@ P3 terminal intake: Storage child15917 exited1 with exact OpenCode error “Sess
 
 
 Actual returned storage38f04ed6 verified9 hashes/10 exclusive paths/directremote,42 storage tests pass. Integrated owner+store run:45 pass/4 fail/1 inapplicable missing-store guard skipped in10.96s. Positive owner tests refuse at store PLAN_AUTHORITY_OR_GRADE_MISSING; frozen owner SOURCEFREE_TEST_ONLY provenance is already explicit TEST_ONLY scope. Store additionally rewrites V3MS kind before hash validation, incompatible with source-pinned producer/readers. Actual crash child fails an engine import before intended crash. Same existing authors receive exact disjoint repairs; original metrics harness omissions are repaired within section11. No store/owner/full-P3 acceptance yet; original evidence retained. Recurring wakes remain paused.
+
+
+Three actual existing OpenCode authors launched with separate scopes from integrated8cc2914b1: store ABI46559, owner crash integration46569, original resource proof46585. All actual assistant metadata verifies DeepSeek V4.1 Flash MAX. No selfacceptance or settings changes. Existing final nonauthor reviewer is reserved. Positive combined execution still depends on returned store repair; work is driven by terminal notifications only.

@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "RETURNED_STORE_REVISE_INTEGRATION_ABI__OWNER_CRASH_FIX_AND_FULL_PROOFS_NEXT",
+  "state": "THREE_EXISTING_AUTHORS_REPAIR_ACTUAL_STORE_ABI_OWNER_CRASH_AND_RESOURCE_PROOF",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -254,6 +254,72 @@
       "scope": "Resume original store commission after exact inactivity interruption; partial files retained",
       "return_commit": "38f04ed627de40258724e006bf227a104bba9300",
       "disposition": "STORE_INPUT_DISPOSITION.json"
+    },
+    {
+      "task": "sorok-p3-store-abi-repair-r1",
+      "session": "ses_615d8e3a6a909213fb200be830",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-batch-r1",
+      "launch": {
+        "job_id": "sorok-p3-store-abi-repair-r1",
+        "child_pid": 46559,
+        "supervisor_pid": 46558,
+        "observer_pid": 46560,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-store-abi-repair-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b312492100199HkgPh43GeSh0",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-store-abi-repair-r1/completion.json",
+      "notification": "existing finite terminal observer"
+    },
+    {
+      "task": "sorok-p3-owner-actual-store-repair-r1",
+      "session": "ses_e98c905cbffekusoHURfKyEUKG",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1",
+      "launch": {
+        "job_id": "sorok-p3-owner-actual-store-repair-r1",
+        "child_pid": 46569,
+        "supervisor_pid": 46566,
+        "observer_pid": 46570,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-owner-actual-store-repair-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b3124a34001Fmg4IUIH17cFqR",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-owner-actual-store-repair-r1/completion.json",
+      "notification": "existing finite terminal observer"
+    },
+    {
+      "task": "sorok-p3-vertical-resource-repair-r1",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1",
+      "launch": {
+        "job_id": "sorok-p3-vertical-resource-repair-r1",
+        "child_pid": 46585,
+        "supervisor_pid": 46583,
+        "observer_pid": 46586,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-resource-repair-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b3124ca7001DoFehyZ2g8tzS5",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-vertical-resource-repair-r1/completion.json",
+      "notification": "existing finite terminal observer"
     }
   ],
   "holds": [
@@ -262,7 +328,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Repair demonstrated store provenance and lossless-kind ABI through same store author; repair actual owner crash harness through same owner, finish required resource harness. Integrate returned disjoint repairs, execute original full P3 proof, obtain distinct final exact-runtime review.",
+  "next": "Intake exact store ABI repair and disjoint owner/harness corrections, integrate coherent source; resume same owners to execute actual durable and complete A-H/two-batch/cold/crash/resource checks; distinct final exact-runtime review. Wait on terminal notifications, no recurring wakes.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
