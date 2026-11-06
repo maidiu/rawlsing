@@ -21,6 +21,7 @@
 
 | 9 | [09 — Prior executable mechanism and review delta](09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md) | Exact previously built sourcefree developmental code and scoped independent reviews; selective reuse rather than reimplementation |
 | 10 | [10 — Preliminary theoretical adjudication](10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md) | Formation versus activation/opportunity, selected actually read primary texts, falsifiable O03/O05/O07/ADP016 mechanisms |
+| 11 | [11 — Additional source/readback receipt](11_ADDITIONAL_SOURCE_AND_INTERPRETATION_READBACK.json) | Verified 11 historic source/code/review Git blobs in the code-reuse delta; no S2 or native scientific claims |
 
 ## Source hierarchy and “which material governs?” rule
 
