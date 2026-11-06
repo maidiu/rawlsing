@@ -43,7 +43,7 @@ Requested matrix:
 
 ```text
 PROGRAMMA_DELTA — Universal35 D r13 requested conditioner-value realization
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input cca6f2b0b.
+- Identity: codex/pyat-universal35-d-20261106-r1@6c66654c7f2882b94b9ad8a74ee438c77844af2f; input cca6f2b0b.
 - Function: explicit requested F2 ID(s)+conditioner value(s) -> exact RAW/SAMPLE JOINT backing -> accepted E full profile -> cold D value-specific selected rows/results.
 - Evidence: B|A 0/1 and reverse A|B exact denominators/counts; same backing joint, distinct selected IDs; changed cell/restore; unknown value/weighted/measure refusal.
 - Limits: controlled sourcefree only; original data/native/science NOT_RUN.
