@@ -981,10 +981,10 @@
       }
     }
   },
-  "implementation_commit": "fd18faf0340f9d3751ffd9042799a0b7d58519bb",
+  "implementation_commit": "7a404b0dcaac0e4dd027b9edb98c9038d89dbd9a",
   "new_files": {
-    "rawlsing_next/pre553_original35_physical_stream.py": "55843cd3489112af187be016b79bf6e3a8d086df",
-    "rawlsing_next/tests/test_pre553_original35_physical_stream.py": "48d9cc67f867974cb89a30e820df4f9602405afb"
+    "rawlsing_next/pre553_original35_physical_stream.py": "8623995495a836189bf9c7717962305162b24b44",
+    "rawlsing_next/tests/test_pre553_original35_physical_stream.py": "dadff0f5bfb44495c2d7c5308c254dd0452d9af4"
   },
   "not_run": [
     "original35 native execution",
@@ -993,9 +993,20 @@
     "SRC13 full bounded scan/build"
   ],
   "previous_module_commit": "be7e831f41e1c699890b7987cd2fea25be3f65d3",
-  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_EVIDENCE@1",
+  "r2_repair": {
+    "adapter_tests": "7 passed",
+    "dta_fixture": "sourcefree DTA multi-window exact parity",
+    "dta_reader": "bounded read_dta windows on existing content-bound /dev/fd snapshot",
+    "focused_tests": "37 passed",
+    "original_dta": "SRC27-SRC30 NOT_RUN",
+    "prior_review_target": "89a41589c7541f625c6d2f9346436629d374b93e",
+    "review_defect_commit": "20dee3499bea3cc1f13131568b50dd079fcee8cd",
+    "zero_row": "empty exact stream; row_ordinal initialized"
+  },
+  "schema": "PYAT_UNIVERSAL35_PHYSICAL_STREAM_EVIDENCE@2",
   "tests": {
-    "adapter": "5 passed",
-    "focused": "35 passed"
+    "adapter": "7 passed",
+    "focused": "37 passed",
+    "r2_dta_empty": "2 passed"
   }
 }

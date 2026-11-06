@@ -42,10 +42,14 @@ A owns the final source-mapping disposition and its prescan counts. This lane do
 
 D's published attempts `115fe70e660fb19a65ca49b4a12ffc8876be065c`/`WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-D-20261106-R1/evidence/native_attempts.json` record SRC31 C11 refusal at 8,442 rows, 94.603 s, 1.66 GB peak, and SRC09/10/11/15 native-R03 `max_items=1` attempts not finishing 600 s before facts. The physical selected-reader improvement above is necessary but does not by itself claim to repair the full D 600 s end-to-end path.
 
+## R2 DTA/empty-frame repair
+
+DTA selected reading now uses windowed `read_dta` on the content-bound `/dev/fd` snapshot; sourcefree DTA matched full-decode selected cells exactly across multiple windows. Zero-row frame projection returns an exact empty stream. Original DTA SRC27–SRC30 remain NOT_RUN. See `04_R2_DTA_AND_EMPTY_FRAME_REPAIR.md`.
+
 ## Tests and limits
 
-- Adapter tests: **5 passed**.
-- Focused ABI/read-admission/original35-operations/source-config suite: **35 passed**. Log: `results/focused_tests.log`.
+- Adapter tests: **7 passed**.
+- Focused ABI/read-admission/original35-operations/source-config suite: **37 passed**. Log: `results/focused_tests.log`.
 - Existing fixture full-factory and native-package parity passed.
 - Refused: wrong source custody SHA, invalid batch, full-grid truncation/reorder, absent/duplicate selected column, changed source identity.
 - Already-materialized compatibility frames stay in memory; projection does not remove that prior history.

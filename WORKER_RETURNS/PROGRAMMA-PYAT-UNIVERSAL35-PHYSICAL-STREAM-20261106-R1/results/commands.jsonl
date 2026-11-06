@@ -8,3 +8,6 @@
 {"command": "profile_existing_decode.py --source-id SRC31 --mode build --batch-size 10000", "result": "REFUSED unbound response value/state", "step": "SRC31_build"}
 {"command": "profile_existing_decode.py --source-id SRC16 --mode build --batch-size 10000", "result": "REFUSED unbound response value/state", "step": "SRC16_build"}
 {"command": "profile_existing_decode.py --source-id SRC13 --mode decode --batch-size 10000", "result": "decode OK; peak RSS 806420480", "step": "SRC13_decode"}
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py -k 'dta or zero_row'", "result": "2 passed", "step": "R2_DTA_projection"}
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_original35_physical_stream.py", "result": "7 passed", "step": "R2_adapter_tests"}
+{"command": "/tmp/rawlsing-oct28-p1r1/venv/bin/python -m pytest -q ... five files ...", "result": "37 passed", "step": "R2_focused_tests"}

@@ -54,6 +54,7 @@ The adapter itself performs no source-open and no permission defaulting. A calle
 - Cell sequence must be exact row-major `(row_ordinal, variable_ordinal, variable_name)` order; projected mode still requires every row and every selected column.
 - Truncation, duplication/reordering, absent/duplicate selected column, wrong source custody SHA, invalid batch size, or changed source identity refuses.
 - Already-materialized compatibility frames remain in memory; projection changes new selected-cell construction, not the decoder's prior full-frame history.
+- DTA sourcefree fixture passed; original DTA SRC27–SRC30 were not opened. Zero-row frames return empty streams.
 - Source snapshot stability is checked at producer construction and each full pass.
 - No silent sampled row limit.
 - `PhysicalCell` values and missing classifications come directly from the frozen decoder; no label/frequency/missingness inference.
