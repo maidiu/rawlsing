@@ -132,3 +132,8 @@ facts are stated at their exact grades, that 62/82/49, 51/82, 88/13 and FIABC
 ## HQ post-return source qualification supplement
 
 Before exact-head independent review, HQ incorporated concurrently returned F43e5962bbad72501166da59b744d618d10877b22:676 route-qualified /4705 routing-unknown /249 rule-unavailable among5630 candidateRAW operations. Original statuses and denominator totals remain unchanged; no metadata establishes administered native results. Updated source/master section banners and existing candidate JSON fields, preserving unknown-route and optional-weight distinctions. Ambiguous G-reviewed wording now states that the candidate was prepared from G prior findings and its own exact-head review remains pending. New shared product/progress/controller code: none.
+
+
+## Exact G review follow-up
+
+G e932b99327843a6ce25a6e285c9bfbf7edb24561 preserved structural PASS at6a5f1ab3 but requested four currentness details. Added exact C30bd02a10/blob986f327aa/F ebd20c acceptance versus protected de5613301, actual B non-F1 payload disconnect and AB/ABC REVISE, D live repair/execution ownership, and explicit select-metadata versus load_original full configuration distinction. The review's0bd02a10 string is a typo; the referenced existing commit is30bd02a10. No frozen source body, base status, graph, product, controller or pairedprogress changed. Exact-head independent focused closure requested; no protected adoption inferred.

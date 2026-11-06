@@ -1,5 +1,13 @@
 # PRE-553 — universal 35-source architecture, historical recovery and actual currentness
 
+
+### Exact current code, planned-payload consumer and configuration distinction
+
+- **C current-base code:** `30bd02a10feb1b5b97bcbe70e3981f482d2a412c`, production view blob `986f327aa18053edc61bd837cdded02bbf8388d9`, independently sourcefree-accepted by F `ebd20c165bb275f66e4b3e2210535e96eecaf2ac`. The blob is donor-identical to accepted compressed code, but **is not protected** at `4df35cba8a254e50622d4cb3059625c82e0cb74b`, whose view remains `de5613301…`. Prior review e932b993's `0bd02a10…` string is a transcription error; the existing Git commit begins `30bd02a10…`.
+- **B non-F1 consumer:** at `dd0249a0`, the actual planned F2/F3/F4 item, conditioner and operation payload does **not** reach `compile_governed_frontier`; a separately supplied frontier passing tests is not planned-payload consumption. **B/AB/ABC joined seams remain REVISE.**
+- **D repair/execution owner:** the original B author, reused as D, owns the live binding repair and original execution in `pre553_original35_operations.py` / `pre553_original35_execution.py`. Current I03/I05/Batch facts and actual original N10E/Field Forge first-reader evidence remain to be proved; C11 state counters cannot substitute for that path.
+- **A/B configuration input:** `SourceConfigLibrary.select(...)` returns compact source/locator metadata, **not** a validated `SourceConfig` document or the B operation adapter's configuration input. The existing full validated input is `SourceConfigLibrary.load_original(source_id).document`, as documented by `9eaf9dd145409d8aedf583226c7c99d663c43abc` and independently exercised by F. No selector behavior or scientific/source authority changes.
+
 > **SOURCE-QUALIFICATION SUPPLEMENT — source cut43e5962bbad72501166da59b744d618d10877b22, not native acceptance.** Of the5,630 B operations labeled `EXECUTABLE_RAW`,676 are `ELIGIBLE_APPLICABLE`,4,705 `ROUTING_UNKNOWN`,249 `RULE_UNAVAILABLE`. The label is not evidence of complete administration or denominator coverage. D must preserve unknown/exposure scope, hold dependent denominator claims where needed, and may retain lawful explicitly scoped observed-response-only products under existing contracts. Optional missing weights do not globally block RAW.35-source/25-HYB/13-lineage evidence is in `WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-F-20261106-R1/` at that cut; no original respondent run occurred in F.
 
 
