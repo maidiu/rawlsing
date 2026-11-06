@@ -349,17 +349,6 @@
         "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/programma-p0p1-repair1-20261102"
       },
       {
-        "job_id": "pyat-universal35-e-cold-use-adapter-20261106-r1",
-        "child_pid": 39689,
-        "supervisor_pid": 39688,
-        "observer_pid": 39690,
-        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-e-cold-use-adapter-20261106-r1",
-        "launch_is_not_completion": true,
-        "role": "E",
-        "session": "ses_e52a51ef1ffeNtPTpxKAP6J37a",
-        "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-review-r1"
-      },
-      {
         "job_id": "pyat-universal35-d-governed-execution-completion-20261106-r1",
         "child_pid": 40968,
         "supervisor_pid": 40967,
@@ -369,10 +358,21 @@
         "role": "D",
         "session": "ses_e5fe236a1ffeh1DP9xcm2Jjvhu",
         "worktree": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/join-e-b-event"
+      },
+      {
+        "job_id": "pyat-universal35-e-cold-adapter-independent-review-20261106-r1",
+        "child_pid": 41616,
+        "supervisor_pid": 41614,
+        "observer_pid": 41617,
+        "run_dir": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/pyat-universal35-e-cold-adapter-independent-review-20261106-r1",
+        "launch_is_not_completion": true,
+        "role": "G",
+        "session": "ses_e5080f5a4ffefNtOS2IfinqpYi",
+        "worktree": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1"
       }
     ],
     "integration_start": "d129eebdb0472b0c3625efa281826a858bd0a384",
-    "current_next_action": "D completes exact governed nonF1/unit/current-read bridge; A sourcebindings; E coldadapter, three disjoint lanes; originalfacts remain unproved.",
+    "current_next_action": "G exact E coldadapter review, D governed execution completion, A mappings/basebinding repair. D receives exact E envelope ABI, authentic handoff still NOT_RUN.",
     "E_return": {
       "branch": "codex/pyat-universal35-e-20261106-r1",
       "head": "15da2b8bf71d1ee61d6b3040996436f8be537e06",
@@ -661,6 +661,17 @@
       "originalfacts": "NOT_RUN_NO_CURRENT_DECISION_SUPPLIED; actualownerlookupneeded notblanketcodeblock",
       "next_job": "pyat-universal35-d-governed-execution-completion-20261106-r1",
       "pid": 40968
+    },
+    "E_r2_cold_adapter_candidate": {
+      "head": "bddef0b5ca40b750fd51770d47df22f2973679b4",
+      "implementation": "f708b4688f6aebd408510aa33faca453bd213749",
+      "grade": "AUTHOR_COLD_ADAPTER_TESTED_INDEPENDENT_REVIEW_PENDING",
+      "evidence": "WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-E-20261106-R1/revisions/r2/00_RETURN.md",
+      "interface": "Exact fact/query/replay/provenance/explicitpermission envelope -> existing ingest_empirical_fact -> same result/profile or typedrefusal; python -m rawlsing_next.pre553_field_forge_empirical_ingress --envelope FILE",
+      "tests": "20ingress25regression authorPASS; subprocess==direct;changed3to4denominatorchangesref;missingreplayerror;weightedrefusal",
+      "limits": "TEST_ONLY_SOURCEFREE;authenticDproductsNOT_RECEIVED;structuralgrantfalse;no native/science/protected acceptance",
+      "review_job": "pyat-universal35-e-cold-adapter-independent-review-20261106-r1",
+      "pid": 41616
     }
   }
 }
