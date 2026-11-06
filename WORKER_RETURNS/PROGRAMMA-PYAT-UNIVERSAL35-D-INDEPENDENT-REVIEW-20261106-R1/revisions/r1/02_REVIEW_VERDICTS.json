@@ -1,0 +1,64 @@
+{
+  "AB_JOIN": {
+    "limitation": "Compact select ABI remains a prior documentary limit; do not accept it as the operation-plan document.",
+    "scope": "SourceConfigLibrary.load_original(sid).document -> build_original35_operation_plan is the actual full-config path; 35-source accounting preserved.",
+    "verdict": "ACCEPT_SCOPED_ENGINEERING_VIA_FULL_CONFIG_PATH"
+  },
+  "B_FINITE_PAYLOAD": {
+    "accepted_subscope": [
+      "OriginalItemID is now distinct from physical code",
+      "wrong/missing/cross-source item IDs and physical codes are typed refused",
+      "value/conditioner mutation changes actual compilation/jobs/facts/ledger; restore exact",
+      "SRC01 unknown route occurrences remain UNKNOWN; all32 frontier ops HELD",
+      "B counts 4,655 HELD / 8,131 INAPPLICABLE corrected; historical plan_ref preserved"
+    ],
+    "evidence": [
+      "evidence/d_r1_probe.log",
+      "evidence/d_r1_disconnected.log",
+      "evidence/d_r1_extra.log",
+      "evidence/d_r1_all35_frontier.log",
+      "evidence/d_r1_flags.log"
+    ],
+    "rejected_or_held": [
+      "a caller-supplied frontier with an extra unplanned operation is accepted",
+      "actual all35 symbolic frontier construction succeeds for only 20/35 sources; 15 return NO_EXPLICIT_PLANNED_FRONTIER",
+      "actual SRC01 frontier has 32 HELD/0 ELIGIBLE, so no actual candidate execution follows from that source",
+      "evidence still labels all executable as route_qualified (5,630/5,490+120+20) while route_split is 676/4,705/249"
+    ],
+    "verdict": "REVISE"
+  },
+  "D_EXECUTION_WRAPPER": {
+    "defects": [
+      "direct decode_sav/decode_dta bypasses existing pre553_source_read_admission current-decision/revocation/replay gate",
+      "max_items=3 diagnostic limit",
+      "first-unselected physical slot coordinate fallback",
+      "synthetic source_id:name original IDs and hardcoded person unit",
+      "full eager decode before filtering; C bounded reader pending"
+    ],
+    "evidence": [
+      "evidence/d_r1_flags.log",
+      "evidence/d_execution_tests.log"
+    ],
+    "verdict": "HOLD_SCOPED_DIAGNOSTIC__NOT_FULL_READINESS"
+  },
+  "D_FULL_READINESS": {
+    "reason": "Actual original native EmpiricalFacts/I03/I05/Batch and E/N10E handoff remain NOT_COMPLETED; no all35 native or protected acceptance.",
+    "verdict": "HOLD"
+  },
+  "D_MANIFEST_SELECTION": {
+    "evidence": [
+      "evidence/d_execution_tests.log"
+    ],
+    "limitation": "D execution tests 2 skipped in this checkout because runtime binding unavailable; no native facts.",
+    "scope": "35 manifest-only rows, 18,276/18,413 accounting; SRC31 mapping refusal and eager-decode noncompletion honest.",
+    "verdict": "ACCEPT_SCOPED_SOURCEFREE_DIAGNOSTIC"
+  },
+  "decision_owner": "HQ plus later distinct receiving/decision owner; this review is evidence, not repair or acceptance",
+  "previous_reviews_preserved": [
+    "dd2158e4b89976310632f722239a0da3a352f14a",
+    "ebd20c165bb275f66e4b3e2210535e96eecaf2ac",
+    "43e5962bbad72501166da59b744d618d10877b22"
+  ],
+  "reviewer": "existing nonauthor F reviewer; no code/test authorship",
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_D_R1_INDEPENDENT_REVIEW_VERDICTS@1.0.0"
+}

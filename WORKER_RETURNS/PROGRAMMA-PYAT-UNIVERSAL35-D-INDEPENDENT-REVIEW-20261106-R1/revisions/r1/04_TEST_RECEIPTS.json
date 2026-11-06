@@ -1,0 +1,97 @@
+{
+  "B_counts": {
+    "DEFERRED": 51,
+    "EXECUTABLE_RAW": 5630,
+    "HELD": 4655,
+    "INAPPLICABLE": 8131,
+    "historical_plan_ref": "3e3a604a78c377030bffa39eb62cf065d111746f9bc1588f7dbf33bac0373b9c",
+    "recomputed_plan_ref": "9ae291ca403e3d26fd0e4af9b6c536fac9509be878e0d9cc43a589f293d14ff7"
+  },
+  "all35_frontier": {
+    "cpu_system_s": 1.124,
+    "cpu_user_s": 30.99,
+    "deferred": 0,
+    "eligible": 21,
+    "held": 970,
+    "operations": 991,
+    "pending": 0,
+    "rss_max_bytes": 969379840,
+    "sources_no_explicit_frontier": 15,
+    "sources_with_explicit_frontier": 20,
+    "wall_s": 33.786
+  },
+  "commands": [
+    {
+      "command": "pytest -q rawlsing_next/tests/test_pre553_original35_operations.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "B",
+      "log": "d_b_tests.log",
+      "log_sha256": "f67808a29cb3aece41476a0963b3b600a742c5ab2ee221710824110c8ed87163",
+      "result": "7 passed in 26.95s"
+    },
+    {
+      "command": "pytest -q rawlsing_next/tests/test_pre553_original35_execution.py -p no:cacheprovider --tb=short",
+      "exit": 0,
+      "lane": "D",
+      "log": "d_execution_tests.log",
+      "log_sha256": "b7efcde3b7745d5eccae11502cad60a9b95f6d2d96eb20bb3af1501c1d1a4588",
+      "result": "2 skipped in 0.38s (runtime binding unavailable)"
+    },
+    {
+      "command": "focused original ID/physical/source/conditioner mutation probe",
+      "exit": 0,
+      "lane": "B identity/refusal",
+      "log": "d_r1_probe.log",
+      "log_sha256": "6f8fd6292bd83c66424b326bc02eea6124fb55df69c66a95933ccdf5dc2e55f7",
+      "result": "wrong/missing/cross-source IDs and wrong physical code refused; value mutation changes facts/ledger; restore exact"
+    },
+    {
+      "command": "bind_governed_frontier with independent frontier lacking planned payload",
+      "exit": 0,
+      "lane": "B disconnected frontier",
+      "log": "d_r1_disconnected.log",
+      "log_sha256": "4c71f554e7bd3728880c677d0e6a759245441586545477d271009a42466eb764",
+      "result": "REFUSED GOVERNED_FRONTIER_PLAN_PAYLOAD_MISSING"
+    },
+    {
+      "command": "bind_governed_frontier with planned frontier plus one extra unplanned DIST operation",
+      "exit": 0,
+      "lane": "B extra frontier",
+      "log": "d_r1_extra.log",
+      "log_sha256": "a445557d282b7954056230f2a8bc8d2dda97bea0746797e9195acc94396de092",
+      "result": "UNEXPECTED_ACCEPT ca89f337..."
+    },
+    {
+      "command": "build_frontier_inputs_from_plan SRC01",
+      "exit": 0,
+      "lane": "B actual SRC01 flags",
+      "log": "d_r1_flags.log",
+      "log_sha256": "4a19ec2b7c2e7c46dfc8a8c436c800f88f9d745a277841b4709c94816a52e6ce",
+      "result": "4 original-ID occurrences UNKNOWN/UNKNOWN/actual unit/topology/forms; 32 frontier ops all HELD"
+    },
+    {
+      "command": "load 35 R157 configs -> plan -> build_frontier_inputs_from_plan for each source",
+      "exit": 0,
+      "lane": "B all35 symbolic",
+      "log": "d_r1_all35_frontier.log",
+      "log_sha256": "ae6355270cb32ea2cb9aeb6f1d1c50b45ad5d68e8d6490528b3d828f196a600f",
+      "result": "20/35 frontier rows; 991 ops (970 HELD/21 ELIGIBLE); 15 typed NO_EXPLICIT_PLANNED_FRONTIER; wall 33.8s; CPU 32.1s; maxRSS 969,379,840 B"
+    }
+  ],
+  "native_acceptance": false,
+  "not_run": [
+    "original respondent data decode",
+    "D native empirical facts",
+    "A 35 fixture floor rerun",
+    "whole estate/broad hostile court",
+    "C selected reader review (parallel lane)"
+  ],
+  "original_response_bytes_read": false,
+  "route_split": {
+    "ELIGIBLE_APPLICABLE": 676,
+    "F4_DEFERRED": 20,
+    "ROUTING_UNKNOWN": 4705,
+    "RULE_UNAVAILABLE": 249
+  },
+  "schema": "PROGRAMMA_PYAT_UNIVERSAL35_D_R1_REVIEW_RECEIPTS@1.0.0"
+}
