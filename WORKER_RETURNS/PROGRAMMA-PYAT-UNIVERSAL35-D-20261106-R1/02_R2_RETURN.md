@@ -45,7 +45,7 @@ Evidence:
 
 ```text
 PROGRAMMA_DELTA — Universal35 D/B r2 exact frontier
-- Identity: codex/pyat-universal35-d-20261106-r1@<returned-commit>; input 017337a9e.
+- Identity: codex/pyat-universal35-d-20261106-r1@7b0ac186a8b0e27e26ebcc9c4d0e1f57f36597ae; input 017337a9e.
 - Function: explicit plan -> exact plan-derived ScientificFrontier; supplied frontier must match operation identity/material exactly; all35 per-source accounting includes 15 typed no-request rows.
 - First consumer: current compile_governed_frontier on exact plan-derived frontier; native original facts remain NOT_RUN.
 - Evidence: 8 tests; extra/substitution/duplicate/missing refusals and restore; 20/35 explicit, 15/35 no-request, 991/21/970 frontier counts; route 676/4705/249.
