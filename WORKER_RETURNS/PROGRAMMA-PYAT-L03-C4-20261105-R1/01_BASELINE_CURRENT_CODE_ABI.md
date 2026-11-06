@@ -554,9 +554,11 @@ identical (93.4 MB), so no compact-specific live validation allocation was isola
 The remaining compact resident gap is required Arrow bodies plus conversion
 overlap/allocator retention while the full native release is live, not a measurable
 redundant retained Python copy. No small adapter fix is warranted; a material
-reduction needs streaming/lazy I02 candidate/replay or incremental compact
-construction before full native materialization. No physical code changed in this
-incision; capacity guard `9a5cfa...` is unchanged.
+reduction would need streaming/lazy I02 candidate/replay or incremental compact
+construction if the body representation stayed uncompressed. No physical code
+changed in this incision; capacity guard `9a5cfa...` is unchanged. The separate
+bounded compressed-body candidate below later reduced the body representation without
+changing I02 validation or selector v1.
 
 ### Bounded compressed event-body lane
 

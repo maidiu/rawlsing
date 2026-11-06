@@ -136,14 +136,12 @@ PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
 - `R03_DISPOSITION`: ACCEPT_FOR_HQ_RECEIVING / REVISE_MATERIAL / MORE_EVIDENCE
 - `NEXT_WORK`: `HQ_RECEIVING` / `BOUNDED_REPAIR` / `NO_ACTION`
 
-## Phase-3 preparation note
+## Phase-3 preparation note (historical cut)
 
-This preparation adds only `tools/bench_compact_current.py` and documentary
-comparison/plan sections in `01`/`05` (plus ordinary status entries in `00`/`02`/
-`03`/`04`). It does not alter the frozen implementation
-`409be32f7e4b4b961a360be1c8f44a17b5c62173`, production source, numerical tests,
-authority, source, guide, or the independent R03 scope. Timed comparison runs are
-**NOT_RUN** here; HQ schedules the driver after R03 releases the timed runner.
+This preparation entry is retained as a dated historical cut. It added
+`tools/bench_compact_current.py` and documentary comparison/plan sections and did
+not alter `409be32f...`. Its preparation-only timing statement was later superseded
+by the measured Phase-3 receipts in `00`/`02`/`03`/`04`/`05`.
 
 ## Phase-3 measurement context
 
@@ -172,13 +170,14 @@ here; HQ may schedule one separately if it accepts the new code.
 
 The allocation incision (N=200/N=1,000) added no physical code. It measured the
 fixed Arrow runtime baseline separately and found compact endstate live Python lower
-than native, while required Arrow event bodies plus conversion overlap/allocator
-retention account for the resident gap. No small retained-copy repair was found.
-A material reduction depends on a streaming/lazy I02 candidate/replay ABI or
-incremental compact construction, preserving I02 validation/selector v1/ref/replay.
-R03 acceptance remains scoped to `409be32f...`; capacity guard `9a5cfa...` is also
-not R03-accepted. The phase-3 assessment `5dfef26d...` remains evidence-only and
-marks economical compact `NOT_FULFILLED`.
+than native, while uncompressed Arrow event bodies plus conversion overlap/allocator
+retention accounted for the resident gap. It found no small retained-copy repair.
+The separate bounded compressed-body candidate `02c1200...` later reduced that body
+representation without changing I02 validation/selector v1/refs/replay, so a
+streaming/lazy ABI was not required for this measured improvement. R03 acceptance
+remains scoped to `409be32f...`; capacity `9a5cfa...` and compressed-body `02c1200...`
+are not R03-accepted. The phase-3 assessment `5dfef26d...` remains evidence-only and
+marked the earlier uncompressed compact `NOT_FULFILLED`.
 
 ## Compressed-body candidate note
 
@@ -191,3 +190,24 @@ measured N=200/1000 controls. This is **not** covered by R03
 independently accepted. Measured tradeoff: body memory materially lower; exact
 lookup adds ≈0.96 ms/event decompression. No new review is requested here; HQ may
 schedule a focused review if it accepts the candidate.
+
+
+## Final seven-file reconciliation
+
+All seven ordinary C4 artifacts are present. Current implementation/evidence heads
+are kept separate from independent grades:
+
+| Item | Exact value / status |
+|---|---|
+| Original accepted P2 | `409be32f7e4b4b961a360be1c8f44a17b5c62173`; R03 `e2f6c164...` = `ACCEPT_SCOPED_P2` only |
+| Capacity guard | `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`; pending focused review |
+| Compressed-body candidate | `02c1200b82b8397e551817e8e4cf2c6763413189`; evidence `1f939152...`; pending focused review |
+| Phase-3 assessment | `5dfef26d...` evidence-only; prior uncompressed compact NOT_FULFILLED |
+| Focused tests | 50 passed, 1 skipped; skip is pyreadstat `missing_user_values` fixture limitation |
+| N=3000 | NOT_RUN |
+| Original35/native/production | NOT_RUN / no authority |
+| W04 exact policy | global/home default persistent root vs default in-memory Arrow + explicit workload-owned storage; unresolved owner question, no selection invented |
+
+No independent acceptance of `9a5cfa` or `02c1200` is claimed. The review request in
+this file remains against `409be32f...`; any focused review of the new physical heads
+is separate and not self-issued.

@@ -138,17 +138,17 @@ MD
 
 # Phase-3 preparation: exact W03/W04 function decision and next proof plan
 
-**State:** artifact-only preparation while independent R03 reviews
-`409be32f7e4b4b961a360be1c8f44a17b5c62173`. No production code, test, cache
-default, guide, source, or authority was changed or executed in this phase. No
-timed benchmark or heavy fixture generation was run.
+**State:** this section began as artifact-only preparation while independent R03
+reviewed `409be32f7e4b4b961a360be1c8f44a17b5c62173`. Later measured sections in
+this file supersede preparation-only status; the preparation text is retained as a
+dated historical cut.
 
 ## Function-level decision
 
 | Requirement | Current input -> typed output | Present current function(s) / first consumer | Exact gap found | Preparation disposition |
 |---|---|---|---|---|
-| **W03/P01** economical exact sealed C11 realization/reconstruction (`ROADMAP:S03.2`, `S-C11`) | `GovernedC11Projection` + `PhysicalSourceIncidence`/`ExactPhysicalCellStream` -> sealed `C11LogicalRelease` (full native tuples, then `_CompactPublicObjects` when pyarrow installed) -> `C11Repository`/`_ReleaseIndex` -> exact I03 facts/replay | `PhysicalSourceIncidence.iter_batches` (`physical_decoder:156`), `project_c11_candidate_from_physical_cells` (`facade:502`), `validate_c11_source_release` (`ingest:743`), `_compact_public_objects` (`execution_view:239`), exact `_EventLane.materialize`/`resolve_object_exact` (`execution_view:77,95`; `repository:107`), `CarrierNeutralResearchExecutor.execute_i03` (`carrier:430`) | **No exact function gap at the current first consumer.** Cold construction is not streaming/lazy: all native events/coords/weights and sorted public/internal tuples are materialized before compact conversion. This is an **unproven economic cold-memory concern**, not a proven defect. | `PRESENT_COMPOSED_NO_BUILD` for exact function; `EVIDENCE_OR_ABI_READY` for controlled cold-construction economy. Do **not** build journal/streaming now. |
-| **W04/P02** default regenerable source/release/authority/version-keyed compact Parquet/Zstd acceleration or competent-owner-accepted equivalent (`ROADMAP:S03.2`, `S-C11`) | sealed compact release + source/decoder/projection/release/replay/member-root + current authorities -> in-memory compact Arrow; optional persistent authenticated Parquet/Zstd event-body slot; or full exact `ParquetC11Carrier` release reconstruction; or R4/R5 components | default `_compact_public_objects` in `build_source_backed_c11_repository` (`facade:679-683`); optional `_cache_directory`/`_read_bodies`/`_write_bodies` (`execution_view:160,178,212`); `ParquetC11Carrier.persist/reopen` (`parquet_carrier:249,279`); R4 writer/reader (`r4_compaction:127,256`); R5 codec (`r5_codec:180`) | **No missing codec/carrier function.** The precise gap is **default activation/policy**: with `RAWLSING_C11_ACCELERATOR_DIR` unset, `_cache_directory` returns `None`, so no persistent Parquet/Zstd slot exists even though the in-memory compact Arrow view is built. `ParquetC11Carrier` is a full logical carrier, not the compact hot view; R4/R5 are components, not a complete release cache. | `PRESENT_COMPOSED_NO_BUILD` for exact capability; `OWNER_DECIDE` for default activation or functional-equivalence acceptance. Do **not** silently cancel the selected capability or declare all W03/W04 complete. |
+| **W03/P01** economical exact sealed C11 realization/reconstruction (`ROADMAP:S03.2`, `S-C11`) | `GovernedC11Projection` + `PhysicalSourceIncidence`/`ExactPhysicalCellStream` -> sealed `C11LogicalRelease` (full native tuples, then `_CompactPublicObjects` when pyarrow installed) -> `C11Repository`/`_ReleaseIndex` -> exact I03 facts/replay | `PhysicalSourceIncidence.iter_batches` (`physical_decoder:156`), `project_c11_candidate_from_physical_cells` (`facade:502`), `validate_c11_source_release` (`ingest:743`), `_compact_public_objects` (`execution_view:239`), exact `_EventLane.materialize`/`resolve_object_exact` (`execution_view:77,95`; `repository:107`), `CarrierNeutralResearchExecutor.execute_i03` (`carrier:430`) | **No exact function gap at the current first consumer.** Eager native candidate/validation remains; the measured compact resident cost was improved by the separate bounded compressed-body candidate without changing I02/streaming. | `PRESENT_COMPOSED_NO_BUILD` for exact function; compressed-body `02c1200...` measured as the smallest physical adaptation. No journal/streaming build was warranted for that improvement. |
+| **W04/P02** default regenerable source/release/authority/version-keyed compact Parquet/Zstd acceleration or competent-owner-accepted equivalent (`ROADMAP:S03.2`, `S-C11`) | sealed compact release + source/decoder/projection/release/replay/member-root + current authorities -> in-memory compact Arrow; optional persistent authenticated Parquet/Zstd event-body slot; or full exact `ParquetC11Carrier` release reconstruction; or R4/R5 components | default `_compact_public_objects` in `build_source_backed_c11_repository` (`facade:679-683`); optional `_cache_directory`/`_read_bodies`/`_write_bodies` (`execution_view:160,178,212`); `ParquetC11Carrier.persist/reopen` (`parquet_carrier:249,279`); R4 writer/reader (`r4_compaction:127,256`); R5 codec (`r5_codec:180`) | **No missing codec/carrier function.** If W04/P02's literal “default” means persistent compressed storage without caller configuration, the exact failure is `_cache_directory()` returning `None` when `RAWLSING_C11_ACCELERATOR_DIR` is unset (`_pre553_c11_execution_view.py:160`), first reader `build_source_backed_c11_repository` → `_compact_public_objects`. If explicit workload-owned storage is the owner-accepted equivalent, no function is missing. `ParquetC11Carrier` is a full logical carrier, not the compact hot view; R4/R5 are components, not a complete release cache. | `PRESENT_COMPOSED_NO_BUILD` for exact codec/carrier capability. Exact policy question: **does W04/P02 require a global/home default persistent root (conflicts with latest no-blanket-cache), or does default in-memory Arrow plus explicit workload-owned Parquet/Zstd satisfy the selected “owner-accepted functionally equivalent” clause?** Do not silently select. |
 
 ### Exact first conditions
 
@@ -325,8 +325,9 @@ PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 \
 
 The driver reports phase wall/CPU, whole-process Darwin `ru_maxrss` bytes with an
 explicit non-attribution note, source/cache bytes, selector/index/fact/replay build
-counts, and per-operation exact facts. Delete/corrupt/stale/revoke are existing-test
-coverage and remain NOT_RUN here.
+counts, and per-operation exact facts. Delete/corrupt/stale/revoke were exercised by
+the existing compact tests (9 compact tests passed) and are retained as measured
+negative coverage.
 
 Compact grouped commands on the same prepared fixture/release:
 
@@ -346,7 +347,8 @@ Compact grouped commands on the same prepared fixture/release:
 - N=200/N=1,000 compact comparison: **MEASURED**; V0/V1/V2 exact full-fact parity, V2 cold miss/write and warm HIT.
 - Compact grouped N=200/N=1,000: **MEASURED**; exact cold/warm/single/incompatible/capacity parity, independent oracle PASS.
 - W03/W04 economic conclusion: **MEASURED_SCOPED**; sourcefree fixture only, no all35 production equivalence.
-- W04 default policy: **OWNER_DECIDE**, alternatives in the Phase-3 section above; no blanket default added.
+- W04 default policy: exact policy question in the W04/P02 table above; **no owner
+  acceptance or blanket default is invented or selected** by this return.
 
 
 ## Measured compact comparison and compact grouped result
@@ -424,14 +426,15 @@ remaining physical gap:
   identical (93.4 MB).
 - Index/query overlap after compact construction is small.
 
-**Causal finding:** the resident gap is required Arrow event bodies plus compact
-conversion overlap/allocator retention while the full native release is live, not a
-measured redundant retained Python copy. There is no smallest warranted adapter-copy
-fix. A material reduction requires a streaming/lazy I02 candidate/replay ABI or
-incremental compact construction before full native object materialization, while
-preserving I02 validation/closure, selector v1, refs and replay. That is an
-HQ/owner contract decision; it was not invented here. No physical code changed in
-this incision; capacity guard `9a5cfa...` remains the latest separate implementation.
+**Causal finding:** the resident gap was required uncompressed Arrow event bodies
+plus compact conversion overlap/allocator retention while the full native release is
+live, not a measured redundant retained Python copy. This incision found no small
+**copy** fix. The separate bounded compressed-body candidate `02c1200...` later
+reduced the body representation without changing I02 validation/selector v1/refs/
+replay; a streaming/lazy I02 ABI was not required for that measured improvement.
+Any residual reduction beyond the compressed candidate would still need separate
+evidence. No physical code changed in this incision; capacity guard `9a5cfa...`
+remains a separate pending-review implementation.
 
 ## Bounded compressed body candidate (new physical implementation)
 

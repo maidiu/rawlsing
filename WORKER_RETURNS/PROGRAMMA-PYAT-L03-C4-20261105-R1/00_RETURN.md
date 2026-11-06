@@ -190,7 +190,8 @@ facade with explicit workload-owned Parquet/Zstd cache). All four variants used 
 same sealed source/projection/release; full `EmpiricalFact.as_dict()` material was
 equal for every operation, and V2 cold miss/write plus warm HIT were verified.
 
-Compact comparison highlights (sourcefree, tiny synthetic fixture; not all35):
+Compact comparison highlights before the compressed-body candidate (sourcefree,
+tiny synthetic fixture; not all35; these are the selected current compact baseline):
 
 | N | variant | parent wall | validation | compact conversion | query | fact+replay | peak RSS | cache bytes |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|
@@ -224,9 +225,9 @@ economy is **unproven**. R03's P41 82–92 fallbacks remain a nonblocking limit,
 authority to rewrite production.
 
 No extra bitmap/index, new carrier, persistent truth, blanket cache default, or
-owner acceptance was introduced. Delete/corrupt/stale/revoke remain existing-test
-coverage and were **NOT_RUN** here. No N=3000 was run; N=200/1,000 resolved the
-comparison.
+owner acceptance was introduced. Delete/corrupt/stale/revoke were exercised by the
+existing compact tests in the final focused receipt (9 compact tests; 50 passed,
+1 skipped). No N=3000 was run; N=200/1,000 resolved the comparison.
 
 ### Capacity-miss guard (new implementation/test)
 
@@ -301,6 +302,63 @@ slightly (1,716,950→2,184,216 at N=1000) because the streaming writer uses bou
 row groups; it is still the existing raw-body Parquet/Zstd format and remains
 caller-configured, never default. This candidate is measured for focused review,
 not independently accepted; no whole-L03 completion or all35 claim follows.
+
+## Required-case and consumer reconciliation
+
+Statuses are against actual executed sourcefree receipts in this return. `PASS`
+means the named case was exercised with exact facts/refusals and the recorded
+consumer; it does not imply original35 or production acceptance.
+
+| Required case/capability | Actual executed evidence | Status |
+|---|---|---|
+| 2/3/4-target respondent-linked joints | Phase-1/2 main mix N=200/1,000/3,000; compact grouped N=200/1,000; exact cells/denominators/refs/replay | PASS |
+| forward/reverse conditional | Phase-1/2 `cond_X1_target_Y`, `cond_Y1_target_X`; compact grouped same | PASS |
+| XOR / minority / no lower-order signal | Phase-1 XOR fixture; compact grouped XOR and minority; exact joint cells | PASS |
+| compatible repeated work / risk | raw/weighted/sibling core hits; risk R/S separation; compact grouped counters | PASS |
+| routed/asymmetric risk | routing fixture and compact common-risk joints; denominator asymmetry retained | PASS |
+| skip/DK/NOT_ASKED | Phase-1 special-state frontier fixture; exact carrier/routing states | PASS |
+| legit zero, zero support, empty | observed-zero and zero-support fixtures; compact zero support | PASS |
+| missing | Phase-1 typed MISSING fixture; compact physical `missing_M` | PASS |
+| unsupported topology | Phase-2/compact negative `UNRESOLVED / UNSUPPORTED_RESPONSE_TOPOLOGY` | PASS |
+| NOT_ADMINISTERED | Not a C11/I03 typed state; binding refusal `FIXTURE_TARGET_NOT_ADMINISTERED` only | CONTRACT LIMIT / NOT_RUN as I03 |
+| exact ref/replay/authority/refusal | Phase-1/2 exact facts and invalidation; phase-3 full fact equality | PASS |
+| cache HIT/delete/corrupt/stale/revoked | existing compact tests 9 passed (including revoke); V2 cold miss/write + warm HIT measured | PASS |
+| actual I03/I05/Batch/P41 | Phase-2 100-test focused suite; P41 1 passed 50.39 s; issued two-query+discovery integration | PASS sourcefree |
+| source/release/permission rebuild | Phase-1 missing/stale release, authority DENY, revoked issuance, cache rebuild | PASS scoped |
+| P3 bitmap/posting index | Not built / not run | NOT_IMPLEMENTED / NOT_RUN |
+| N=3000 compressed candidate | Not run; N=200/1,000 resolved causal comparison | NOT_RUN |
+| original35 / native source / production | No source/native/host authority | NOT_RUN |
+
+### Focused test receipt
+
+Final focused test command covered `test_pre553_c11_execution_view.py`,
+`test_pre553_source_backed_c11_facade.py`, `test_pre553_sr06_decoder_carrier.py`,
+and `test_pre553_i03_grouping.py`: **50 passed, 1 skipped** in 9.89 s.
+The single skip is
+`test_pre553_sr06_decoder_carrier.py::test_real_writer_dta_extended_missing_fixture_or_typed_dependency_limitation`,
+because the installed pyreadstat writer/readback does not expose
+`missing_user_values` in metadata. It is a fixture/dependency limitation, not an
+I03/compact failure.
+
+## Seven-file and grade reconciliation
+
+| Artifact/status | Current exact value |
+|---|---|
+| 00–06 files | Present in this directory; this file links all six others |
+| Base / branch | `8ffec40a...` / `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1` |
+| Original accepted P2 | `409be32f7e4b4b961a360be1c8f44a17b5c62173`; R03 `e2f6c164...` = `ACCEPT_SCOPED_P2` only |
+| Capacity guard | `9a5cfd2aba62b3e320aa4fd4a85c689eb4649bd3`; pending focused review, not R03-accepted |
+| Compressed-body candidate | `02c1200b82b8397e551817e8e4cf2c6763413189`; evidence `1f939152...`; pending focused review, not R03-accepted |
+| Phase-3 assessment | `5dfef26d...` accepted evidence; found **uncompressed** economical compact NOT_FULFILLED; not acceptance of candidate |
+| Current candidate effect | Body 29.7 MB→1.58 MB at N=1,000; compact endstate 327.9/335.2→274.5/294.5 MB current/highwater; exact parity retained |
+| Reviewer request | `06` remains the R03 request against `409be...`; no independent acceptance of `9a5cfa` or `02c1200` is claimed |
+| Remaining W04 policy | If W04/P02 literal “default” means persistent compressed storage without caller configuration, current `_cache_directory()` returns `None` when `RAWLSING_C11_ACCELERATOR_DIR` is unset (`_pre553_c11_execution_view.py:160`, first reader `build_source_backed_c11_repository` → `_compact_public_objects`). If explicit workload-owned storage is accepted as the competent-owner equivalent, no function is missing. Exact policy question: **does W04/P02 require a global/home default persistent root (conflicts with latest no-blanket-cache), or does default in-memory Arrow plus explicit workload-owned Parquet/Zstd satisfy the selected “owner-accepted functionally equivalent” clause?** |
+
+New body-adapter economics are relative to the selected current compact baseline:
+old compact resident 327.9/335.2 MB, new 274.5/294.5 MB at N=1,000; native control
+remains 228.6–278.2 MB current / 258.0–305.4 MB highwater with the same ~116.6 MB
+Arrow fixed runtime. Exact lookup adds ≈0.96 ms decompression per event; optional
+cache disk rises modestly. No universal beat-native or all35 claim.
 
 ## Read next
 

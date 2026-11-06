@@ -197,15 +197,17 @@ CORRUPT/STALE/REVOKED evidence above remains the current physical-cache evidence
 
 ## Phase-3 preparation: compact comparison cache status
 
-`tools/bench_compact_current.py` is prepared but **not run for timings** here.
+This preparation section is a **historical cut**; later Phase-3 sections below
+supersede its timing statement with measured receipts.
 Its V2 variant uses an `ExactPhysicalCellStream` with a non-empty
 `decoder_metadata_digest`; the coordinator requires a cold cache miss/write and a
 warm cache HIT. A legacy in-memory `PhysicalSourceIncidence` whose
 `physical_binding()` is `None` is explicitly not counted as a cache HIT.
 
 The driver's cold/warm commands are in `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md`.
-Delete, corrupt, stale, and revoked cache behavior remain covered by existing
-functional tests and are **NOT_RUN** in this preparation:
+Delete, corrupt, stale, and revoked cache behavior were later exercised by the
+existing compact tests (9 compact tests passed); the preparation-only NOT_RUN
+statement is superseded:
 
 - `rawlsing_next/tests/test_pre553_c11_execution_view.py::test_cache_hit_delete_and_rehashed_same_key_poison_rebuild`
 - `...::test_stale_cache_and_torn_publication_keep_previous_complete_slot`
@@ -227,8 +229,8 @@ provenance/replay equality passed; release/source/projection identity equality p
 Compact cache bytes were 318,780 at N=200 and 1,716,950 at N=1,000. Warm compact
 conversion fell from 1.97→0.33 s and 2.27→0.74 s versus V1, but total wall remained
 dominated by validation/query/fact. Compact peak RSS remained higher than V0 at both
-sizes. Delete/corrupt/stale/revoked behavior remains existing functional-test
-coverage and was **NOT_RUN** in this measurement.
+sizes. Delete/corrupt/stale/revoked behavior was subsequently exercised by the
+existing compact tests (9 passed), not left unrun.
 
 The same compact release was then measured with no scope versus bounded
 `I03GroupedExecutionScope`: cold/warm/single/incompatible/capacity full facts matched,
@@ -263,10 +265,10 @@ array 29.7 MB, live Python `tracemalloc` +4.9 MB. Compact live Python endstate w
 lower than native (82.6 vs 100.2 MB); native validation current RSS varied while
 live tracemalloc was identical. The remaining resident gap is conversion
 overlap/allocator retention plus required Arrow bodies, not a redundant retained
-Python copy. No physical code was changed; no capacity/cache default changed.
-A material reduction requires a streaming/lazy I02 candidate/replay or incremental
-compact ABI, preserved selector v1/I02/refs/replay. N=3000 and delete/corrupt/stale/
-revoke were NOT_RUN here.
+Python copy. No physical code was changed in this incision; no capacity/cache
+default changed. The separate bounded compressed-body candidate below later reduced
+the body representation without changing I02 validation or selector v1. N=3000 was
+NOT_RUN here; delete/corrupt/stale/revoke were later exercised by the compact tests.
 
 ## Bounded compressed event-body candidate
 
