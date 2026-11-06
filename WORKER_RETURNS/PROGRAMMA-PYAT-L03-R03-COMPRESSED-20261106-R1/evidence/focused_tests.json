@@ -1,0 +1,10 @@
+{
+ "carrier_suite": "4 passed in 0.50s",
+ "command": "pytest -q -p no:cacheprovider test_pre553_c11_execution_view.py test_pre553_source_backed_c11_facade.py test_pre553_sr06_decoder_carrier.py test_pre553_i03_grouping.py",
+ "result": "50 passed, 1 skipped in 13.84s",
+ "schema": "R03_COMPRESSED_FOCUSED_TESTS@1",
+ "skip": {
+  "nodeid": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py::test_real_writer_dta_extended_missing_fixture_or_typed_dependency_limitation",
+  "reason": "installed pyreadstat writer/readback does not expose missing_user_values in metadata"
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "all_pass": true,
+ "atomic_commit_failure_cleanup": true,
+ "atomic_replace_failure_cleanup": true,
+ "chunk_count": 11,
+ "chunk_counts": [
+  256,
+  256,
+  256,
+  256,
+  256,
+  256,
+  256,
+  256,
+  256,
+  256,
+  140
+ ],
+ "chunk_event_limit": 256,
+ "chunk_starts_contiguous": true,
+ "compressed_bytes": 458480,
+ "compression_ratio": 19.404650148316176,
+ "detached_selector_refs_equal": true,
+ "event_count": 2700,
+ "implementation_sha": "02c1200b82b8397e551817e8e4cf2c6763413189",
+ "last_chunk_count": 140,
+ "lookup_ms_per_event": {
+  "decompress_median": 0.2414981913716474,
+  "materialize_median": 0.5955390311100928,
+  "passes": [
+   [
+    0.2236180193904147,
+    1.0540512616898923
+   ],
+   [
+    0.2414981913716474,
+    0.5955390311100928
+   ],
+   [
+    0.34162593738074065,
+    0.5848377459187759
+   ]
+  ]
+ },
+ "n": 300,
+ "old_reader_style_readback": true,
+ "order_rank_rows_checked": 10,
+ "out_of_range_index_error": true,
+ "random_repeated_lookup_rows_checked": 2700,
+ "raw_bytes": 8896644,
+ "schema": "R03_COMPRESSED_BODY_GATE@1"
+}

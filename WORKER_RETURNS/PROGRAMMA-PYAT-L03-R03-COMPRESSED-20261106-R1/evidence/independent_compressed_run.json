@@ -1,0 +1,352 @@
+{
+ "alloc_n200_new": {
+  "arrow_after_import_current_rss": 60940288,
+  "arrow_after_runtime_current_rss": 110538752,
+  "compact_after_first_query_current_rss": 155611136,
+  "compact_after_first_query_ru_maxrss": 155697152,
+  "compact_bodies": {
+   "chunk_count": 8,
+   "chunk_event_limit": 256,
+   "compressed_bytes": 301031,
+   "raw_bytes": 5940064
+  },
+  "deltas": {
+   "arrow_import_to_runtime_current_rss": 49598464,
+   "compact_compact_arrow_bytes": 0,
+   "compact_compact_tracemalloc_bytes": 1193842,
+   "compact_conversion_ru_maxrss": 4198400,
+   "compact_first_query_current_rss": 36864,
+   "compact_fixture_to_validation_current_rss": 29503488,
+   "compact_validation_ru_maxrss": 29589504,
+   "compact_validation_to_compact_current_rss": 4337664,
+   "native_first_query_current_rss": 360448,
+   "native_fixture_to_validation_current_rss": 29020160,
+   "native_validation_ru_maxrss": 29278208
+  },
+  "lookup_tradeoff": {
+   "decode_materialize_cpu_s": 0.5525229999999972,
+   "decode_materialize_wall_per_row_s": 0.00222881935951591,
+   "decode_materialize_wall_s": 0.570577756036073,
+   "decompress_cpu_s": 0.3969730000000027,
+   "decompress_wall_per_row_s": 0.0016122092270052235,
+   "decompress_wall_s": 0.4127255621133372,
+   "note": "post-memory-snapshot microbenchmark; not used for declared RSS",
+   "rows": 256
+  },
+  "native_after_first_query_current_rss": 151015424,
+  "native_after_first_query_ru_maxrss": 151023616
+ },
+ "author_claims": {
+  "body_bytes_n1000": [
+   29701433,
+   1575621
+  ],
+  "cache_bytes_n1000": [
+   1716950,
+   2184216
+  ],
+  "compact_current_n1000_mb": [
+   329,
+   274.5
+  ],
+  "compact_peak_n1000_mb": [
+   335,
+   294.5
+  ],
+  "lookup_ms_per_event": [
+   0.96,
+   1.27
+  ]
+ },
+ "chunk_gate": {
+  "all_pass": true,
+  "atomic_commit_failure_cleanup": true,
+  "atomic_replace_failure_cleanup": true,
+  "chunk_count": 11,
+  "chunk_counts": [
+   256,
+   256,
+   256,
+   256,
+   256,
+   256,
+   256,
+   256,
+   256,
+   256,
+   140
+  ],
+  "chunk_event_limit": 256,
+  "chunk_starts_contiguous": true,
+  "compressed_bytes": 458480,
+  "compression_ratio": 19.404650148316176,
+  "detached_selector_refs_equal": true,
+  "event_count": 2700,
+  "implementation_sha": "02c1200b82b8397e551817e8e4cf2c6763413189",
+  "last_chunk_count": 140,
+  "lookup_ms_per_event": {
+   "decompress_median": 0.2414981913716474,
+   "materialize_median": 0.5955390311100928,
+   "passes": [
+    [
+     0.2236180193904147,
+     1.0540512616898923
+    ],
+    [
+     0.2414981913716474,
+     0.5955390311100928
+    ],
+    [
+     0.34162593738074065,
+     0.5848377459187759
+    ]
+   ]
+  },
+  "n": 300,
+  "old_reader_style_readback": true,
+  "order_rank_rows_checked": 10,
+  "out_of_range_index_error": true,
+  "random_repeated_lookup_rows_checked": 2700,
+  "raw_bytes": 8896644,
+  "schema": "R03_COMPRESSED_BODY_GATE@1"
+ },
+ "implementation_sha": "02c1200b82b8397e551817e8e4cf2c6763413189",
+ "n": 200,
+ "new_compare": {
+  "cache_checks": {
+   "v2_cold_miss_write": true,
+   "v2_same_cache_files": true,
+   "v2_warm_hit": true
+  },
+  "facts_exact_equal": {
+   "v1": true,
+   "v2-cold": true,
+   "v2-warm": true
+  },
+  "pass": true,
+  "release_identity_equal": true,
+  "source_identity_equal": true,
+  "variants": {
+   "v0": {
+    "cache": {
+     "files": {
+      "enabled": false
+     },
+     "read_hits": 0,
+     "read_misses": 0,
+     "writes": 0
+    },
+    "counts": {
+     "compact_conversions": 0,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 7.123836376005784,
+    "ru_maxrss_bytes": 64397312
+   },
+   "v1": {
+    "cache": {
+     "files": {
+      "enabled": false
+     },
+     "read_hits": 0,
+     "read_misses": 0,
+     "writes": 0
+    },
+    "counts": {
+     "compact_conversions": 1,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 7.133599584107287,
+    "ru_maxrss_bytes": 86364160
+   },
+   "v2-cold": {
+    "cache": {
+     "files": {
+      "directory": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/pyat-l03-r03/checkout-7ee/.local-logs/pyat-l03-r03/new_n200_v2/cache",
+      "enabled": true,
+      "file_count": 1,
+      "files": [
+       {
+        "bytes": 429814,
+        "name": "c11-events-2.parquet"
+       }
+      ],
+      "total_bytes": 429814
+     },
+     "read_hits": 0,
+     "read_misses": 1,
+     "writes": 1
+    },
+    "counts": {
+     "compact_conversions": 1,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 8.143765162094496,
+    "ru_maxrss_bytes": 132034560
+   },
+   "v2-warm": {
+    "cache": {
+     "files": {
+      "directory": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/pyat-l03-r03/checkout-7ee/.local-logs/pyat-l03-r03/new_n200_v2/cache",
+      "enabled": true,
+      "file_count": 1,
+      "files": [
+       {
+        "bytes": 429814,
+        "name": "c11-events-2.parquet"
+       }
+      ],
+      "total_bytes": 429814
+     },
+     "read_hits": 1,
+     "read_misses": 0,
+     "writes": 0
+    },
+    "counts": {
+     "compact_conversions": 1,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 6.291356372996233,
+    "ru_maxrss_bytes": 98017280
+   }
+  }
+ },
+ "pre_compare": {
+  "cache_checks": {
+   "v2_cold_miss_write": true,
+   "v2_same_cache_files": true,
+   "v2_warm_hit": true
+  },
+  "facts_exact_equal": {
+   "v1": true,
+   "v2-cold": true,
+   "v2-warm": true
+  },
+  "pass": true,
+  "release_identity_equal": true,
+  "source_identity_equal": true,
+  "variants": {
+   "v0": {
+    "cache": {
+     "files": {
+      "enabled": false
+     },
+     "read_hits": 0,
+     "read_misses": 0,
+     "writes": 0
+    },
+    "counts": {
+     "compact_conversions": 0,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 10.53018191398587,
+    "ru_maxrss_bytes": 63438848
+   },
+   "v1": {
+    "cache": {
+     "files": {
+      "enabled": false
+     },
+     "read_hits": 0,
+     "read_misses": 0,
+     "writes": 0
+    },
+    "counts": {
+     "compact_conversions": 1,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 8.735405048937537,
+    "ru_maxrss_bytes": 134045696
+   },
+   "v2-cold": {
+    "cache": {
+     "files": {
+      "directory": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/pyat-l03-r03/checkout-pre9a5/.local-logs/pyat-l03-r03/pre_n200_v2/cache",
+      "enabled": true,
+      "file_count": 1,
+      "files": [
+       {
+        "bytes": 318780,
+        "name": "c11-events-2.parquet"
+       }
+      ],
+      "total_bytes": 318780
+     },
+     "read_hits": 0,
+     "read_misses": 1,
+     "writes": 1
+    },
+    "counts": {
+     "compact_conversions": 1,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 8.137361738015898,
+    "ru_maxrss_bytes": 140685312
+   },
+   "v2-warm": {
+    "cache": {
+     "files": {
+      "directory": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/pyat-l03-r03/checkout-pre9a5/.local-logs/pyat-l03-r03/pre_n200_v2/cache",
+      "enabled": true,
+      "file_count": 1,
+      "files": [
+       {
+        "bytes": 318780,
+        "name": "c11-events-2.parquet"
+       }
+      ],
+      "total_bytes": 318780
+     },
+     "read_hits": 1,
+     "read_misses": 0,
+     "writes": 0
+    },
+    "counts": {
+     "compact_conversions": 1,
+     "fact_builds": 12,
+     "index_builds": 1,
+     "replay_builds": 12
+    },
+    "fact_count": 13,
+    "full_facts_sha256": "9a2f0a1589d48174b80be59cb9d2940323699a61fdde26da41a13951ddd31d13",
+    "parent_wall_s": 6.803850803989917,
+    "ru_maxrss_bytes": 107040768
+   }
+  }
+ },
+ "pre_vs_new_full_facts_equal": {
+  "v0": true,
+  "v1": true,
+  "v2-cold": true,
+  "v2-warm": true
+ },
+ "schema": "R03_COMPRESSED_BODY_INDEPENDENT_RUN@1"
+}
