@@ -1,5 +1,8 @@
 # ROADMAP:S05 — Learned empirical world: family adjudication, release, selection and currentness
 
+> **2026-11-06 UNIVERSAL35 CURRENTNESS — documentary candidate, not a native F5 issue.** [Full PRE-553 model/consumer lineage](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/00_MASTER_RECOVERY_AND_CURRENT_STATE.md) explicitly preserves protected E41 and N3/R05/N10E learned product lifecycle and reviewed-but-unmerged #702 world evidence binding. The priority is a **generic 35-source manifest→native EmpiricalFact→existing learned owner** with changed observed RAW/optional weighted evidence causing changed possibility output, not another learned compiler or a one-survey canary. Original SRC04/SRC17 positives are historical scoped and the retired SRC04 all-pairs runner is not resumed. Sourcefree first reader ≠ 35-native F1–F8 acceptance. See [execution priorities](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/02_FUNCTION_EVIDENCE_AND_PRIORITIES.md).
+
+
 > **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 precise accepted engineering scope: E41 provider is both present and actively called through protected `TrustedNativeGraphCoordinator`. R61-R08 exact request/binding code is *also physically present* on protected at reviewed blob `3ca860e4...`, but no direct non-test import of R08 was found in 154 scanned `rawlsing_next` Python modules. These are different positive grades: E41 is an observed actual first importer; R08 is a source-present, first-reader-unverified capability. [Exact R2 lineage and immutable source crosswalk](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
 
 
