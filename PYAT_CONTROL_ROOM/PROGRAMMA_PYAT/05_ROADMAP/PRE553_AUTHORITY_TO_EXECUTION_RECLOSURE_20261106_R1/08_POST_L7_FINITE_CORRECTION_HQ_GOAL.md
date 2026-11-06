@@ -1,5 +1,7 @@
 # /goal PROGRAMMA PYAT — POST-L7 REVISE: FINITE AUTHORITY RECLOSURE, NOT UNIVERSAL35 FEATURE RESUMPTION
 
+**PRIORITY CORRECTION — USER SIX-STEP ORDER CONTROLS:** Before acting on the T/A/C/H defect groups below, follow [09_USER_DIRECTED_SIX_STEP_RECOVERY_AND_INSTALLATION.md](09_USER_DIRECTED_SIX_STEP_RECOVERY_AND_INSTALLATION.md) as the main plan: legacy authority call → governing function → existing/missing neo function → exact asset list → Long Memory/repo/Mac verified best accepted release selection → actual PRE-MAIN asset and executable-binding installation. Treat T/A/C/H only as a set of repairs/checks within those six steps. Do **not** make another open-ended archaeology fleet or claim the work ends merely by enumerating blockers.
+
 **Role:** incumbent PYAT HQ, user controlling STOP #716. **STATUS:** ALL L1–L7 returned, L7 independently REVISE_MATERIAL. This is a targeted corrective goal, **not** a new science rule, automatic agent/session launch, protected merge or instruction to discard existing accepted PRE553 infrastructure.
 
 **Mandatory sources:** central PR #724 document 07_ALL_SEVEN_RETURNS_AND_L7_REVISE_INTAKE.md; source returns #731 L1, #728 L2, #730 L3, #729 L4, #726 L5, #727 L6 and #736 independent L7; exact L7 06_PROGRAMMA_DELTA.md D01–D15, its 04_NEGATIVES_AND_UNAVAILABLE.md, FIABC-A02 27 records and nine blockers, frozen legacy V550/V551/V552/V550J/V551J/V552J code and actual current PRE553 code. Recheck active protected HEAD and writer leases. Preserve completed returns and their immutable originals. No new broad archaeology fleet.
