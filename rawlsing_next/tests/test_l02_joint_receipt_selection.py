@@ -28,14 +28,21 @@ def case():
     return discovery,receipt,joint,joint_query
 
 
-@pytest.mark.parametrize('reverse',[False,True])
-def test_declared_joint_is_selected_independently_of_fact_order(reverse):
+def _assert_declared_joint_selected_independently_of_fact_order(reverse):
     discovery,receipt,joint,query=case()
     if reverse:receipt.empirical_fact_refs=tuple(reversed(receipt.empirical_fact_refs))
     actual,_,actual_query=_validate_discovery_consumption(
         discovery_result=discovery,consumer_query=None,receipt_ref=receipt.ref)
     assert actual is joint
     assert actual_query is query
+
+
+def test_declared_joint_selected_when_marginal_first():
+    _assert_declared_joint_selected_independently_of_fact_order(False)
+
+
+def test_declared_joint_selected_when_joint_first():
+    _assert_declared_joint_selected_independently_of_fact_order(True)
 
 
 def test_missing_declared_joint_never_substitutes_a_supported_marginal():
