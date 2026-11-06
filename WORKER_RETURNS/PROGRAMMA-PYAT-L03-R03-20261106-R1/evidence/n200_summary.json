@@ -1,0 +1,197 @@
+{
+ "cache": {
+  "enabled": false
+ },
+ "cold": {
+  "all_facts_equal": true,
+  "baseline_cpu_s": 1.3522180000000006,
+  "baseline_wall_s": 1.3546673678793013,
+  "candidate_cpu_s": 1.2937070000000013,
+  "candidate_delta_pct": -4.41776735769674,
+  "candidate_wall_s": 1.29482131509576,
+  "scope": {
+   "capacity_fallbacks": 0,
+   "closed": false,
+   "core_build_attempts": 11,
+   "core_builds": 11,
+   "core_hits": 2,
+   "fallbacks": 0,
+   "fingerprint_failures": 0,
+   "max_cached_members": 500000,
+   "max_groups": 64,
+   "open_groups": 11,
+   "raw_materializations": 12,
+   "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+   "weighted_materializations": 1
+  }
+ },
+ "counters": {
+  "baseline": {
+   "_build_fact": 13,
+   "_eval_predicate": 2500,
+   "_evaluate_index_group_core": 0,
+   "_make_execution_replay_ref": 13,
+   "_routing_fact_for": 3800,
+   "_target_configuration": 2002,
+   "_weight_for": 2002
+  },
+  "candidate": {
+   "_build_fact": 13,
+   "_eval_predicate": 0,
+   "_evaluate_index_group_core": 0,
+   "_make_execution_replay_ref": 13,
+   "_routing_fact_for": 0,
+   "_target_configuration": 0,
+   "_weight_for": 200
+  },
+  "candidate_scope": {
+   "capacity_fallbacks": 0,
+   "closed": false,
+   "core_build_attempts": 11,
+   "core_builds": 11,
+   "core_hits": 21,
+   "fallbacks": 0,
+   "fingerprint_failures": 0,
+   "max_cached_members": 500000,
+   "max_groups": 64,
+   "open_groups": 11,
+   "raw_materializations": 29,
+   "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+   "weighted_materializations": 3
+  }
+ },
+ "fixture_build_s": 2.100162758026272,
+ "incompatible_first_pass": {
+  "all_facts_equal": true,
+  "baseline_wall_s": 0.718541088164784,
+  "candidate_delta_pct": -1.0232539392523292,
+  "candidate_wall_s": 0.7111885881749913,
+  "scope": {
+   "capacity_fallbacks": 0,
+   "closed": false,
+   "core_build_attempts": 7,
+   "core_builds": 7,
+   "core_hits": 0,
+   "fallbacks": 0,
+   "fingerprint_failures": 0,
+   "max_cached_members": 500000,
+   "max_groups": 64,
+   "open_groups": 7,
+   "raw_materializations": 7,
+   "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+   "weighted_materializations": 0
+  }
+ },
+ "n": 200,
+ "process": {
+  "argv": [
+   "WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_grouped_phase2.py",
+   "--scenario",
+   "main",
+   "--n",
+   "200",
+   "--rounds",
+   "3",
+   "--output",
+   ".local-logs/pyat-l03-r03/evidence/review-grouped-n200.json"
+  ],
+  "env": {
+   "PYTHONDONTWRITEBYTECODE": "1",
+   "PYTHONHASHSEED": "0",
+   "RAWLSING_C11_ACCELERATOR_DIR": null,
+   "TMPDIR": "/Users/matthewsmith/repos/rawlsing-controller/.worktrees/sorok-incumbent-attachment/.local-logs/sorok-attachment/reviewer-7bf2da3-r1/.local-logs/pyat-l03-r03/tmp"
+  },
+  "executable": "/private/tmp/rawlsing-oct28-p1r1/venv/bin/python",
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "ru_maxrss_bytes": 92553216,
+  "worker_total_s": 30.024509335053153
+ },
+ "raw_evidence_local_path": ".local-logs/pyat-l03-r03/evidence/review-grouped-n200.json",
+ "release_public_objects_class": "tuple",
+ "rounds": 3,
+ "schema": "R03_N200_PAIRED_SUMMARY@1",
+ "selected_full_fact_parity": {
+  "all_ABCK_raw": true,
+  "all_K_raw": true,
+  "all_K_weighted": true,
+  "cond_X1_target_Y": true,
+  "minority_branch_target_K": true,
+  "xor_condition_target_Z": true
+ },
+ "single_operation": {
+  "all_facts_equal": true,
+  "baseline_wall_s": 0.13469453004654497,
+  "candidate_delta_pct": 8.222319750590605,
+  "candidate_wall_s": 0.14576954499352723,
+  "scope": {
+   "capacity_fallbacks": 0,
+   "closed": false,
+   "core_build_attempts": 1,
+   "core_builds": 1,
+   "core_hits": 0,
+   "fallbacks": 0,
+   "fingerprint_failures": 0,
+   "max_cached_members": 500000,
+   "max_groups": 64,
+   "open_groups": 1,
+   "raw_materializations": 1,
+   "schema": "PRE553_I03_GROUPED_EXECUTION_SCOPE@1",
+   "weighted_materializations": 0
+  }
+ },
+ "source": {
+  "event_body_json_bytes": 2966400,
+  "event_count": 1600,
+  "internal_record_count": 208,
+  "object_family_counts": {
+   "AuthoritySnapshot": 5,
+   "EmpiricalCoordinateFact": 200,
+   "EmpiricalUniverse": 1,
+   "RespondentEvent": 1600,
+   "RoutingEligibilityFact": 3200,
+   "WeightMeasureFact": 200
+  },
+  "public_object_count": 5206,
+  "release_public_objects_class": "tuple",
+  "release_ref": {
+   "content_hash": "9b9ce7a5475b6b4340764c6fab7bd6c976e17ae99386b58394cd346f84630c20",
+   "kind": "C11LogicalRelease",
+   "object_id": "REL-c4-main-200"
+  },
+  "replay_ref": {
+   "content_hash": "b1cfd73bf171d8efae6507dcf0834f66b59ff04a6bf1dfbebb049e796d448d4b",
+   "kind": "C11Internal:ReplayManifest",
+   "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:b1cfd73bf171d8efae6507dcf0834f66b59ff04a6bf1dfbebb049e796d448d4b"
+  }
+ },
+ "warm_rounds": [
+  {
+   "all_facts_equal": true,
+   "baseline_cpu_s": 1.2723499999999994,
+   "baseline_wall_s": 1.2739224371034652,
+   "candidate_cpu_s": 0.41606799999999744,
+   "candidate_wall_s": 0.416099825873971,
+   "round": 1,
+   "speedup_wall": 3.0615788757607243
+  },
+  {
+   "all_facts_equal": true,
+   "baseline_cpu_s": 1.2527439999999963,
+   "baseline_wall_s": 1.253317169030197,
+   "candidate_cpu_s": 0.4106190000000023,
+   "candidate_wall_s": 0.41070937423501164,
+   "round": 2,
+   "speedup_wall": 3.0515913384364035
+  },
+  {
+   "all_facts_equal": true,
+   "baseline_cpu_s": 1.2656859999999952,
+   "baseline_wall_s": 1.266276736278087,
+   "candidate_cpu_s": 0.4098589999999973,
+   "candidate_wall_s": 0.41001026693265885,
+   "round": 3,
+   "speedup_wall": 3.088402506969572
+  }
+ ]
+}
