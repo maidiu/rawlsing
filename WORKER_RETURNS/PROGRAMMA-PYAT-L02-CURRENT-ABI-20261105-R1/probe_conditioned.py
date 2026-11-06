@@ -23,7 +23,8 @@ for group,repeats in [(1,3),(0,1)]:
 def run(consumer_hook=None):
  outputs=[]
  with TemporaryDirectory() as directory:
-  path=Path(directory)/'four-item.sav';write_rows(path,ROWS)
+  path=Path(__file__).with_name('sourcefree-four-item.sav')
+  if not path.exists():write_rows(path,ROWS)
   pkg=package(path,len(ROWS),tuple(NativeSourceRule('impl.'+n,n) for n in NAMES),coordinate='exposure_clock')
   bundle=materialize_native_preimages(package=pkg,incidence=decode_sav(path))
   for direction in ('FORWARD','REVERSE'):

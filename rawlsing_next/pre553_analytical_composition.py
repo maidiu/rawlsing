@@ -753,24 +753,37 @@ def _validate_discovery_consumption(
 
     if not receipt.empirical_fact_refs:
         raise DiscoveryConsumptionMismatch("receipt has no empirical facts")
-    # A receipt carries the baseline fact alongside the candidate fact, so the
-    # consumed fact must be the one conditioned by the winning predicate rather
-    # than whichever fact happens to be first in the receipt's list.
-    fact = None
+    # Joint receipts also carry marginal facts under the winning predicate.
+    # Select the producer-declared primary query, never the fact-list order.
+    roles = receipt.candidate_identity.get("query_roles", ())
+    primary_queries = {
+        _exact(role["query_ref"], "primary query_ref")
+        for role in roles
+        if role.get("role") in {"JOINT", "CONDITION", "BASE"}
+        and _exact(role["predicate_ref"], "primary predicate_ref") == predicate.ref
+    }
+    if len(primary_queries) > 1:
+        raise DiscoveryConsumptionMismatch("ambiguous primary discovery query")
+    matches = []
     for fact_ref in receipt.empirical_fact_refs:
         candidate = fact_by_ref.get(exact_ref(fact_ref))
         if candidate is None:
             continue
-        if _exact(candidate.condition_predicate_ref, "condition_predicate_ref") == predicate.ref:
-            fact = candidate
-            break
-    if fact is None:
-        raise DiscoveryConsumptionMismatch("fact predicate mismatch")
-
+        if _exact(candidate.condition_predicate_ref, "condition_predicate_ref") != predicate.ref:
+            continue
+        query_ref = _exact(candidate.empirical_query_spec_ref, "empirical_query_spec_ref")
+        if primary_queries and query_ref not in primary_queries:
+            continue
+        matches.append(candidate)
+    if len(matches) != 1:
+        raise DiscoveryConsumptionMismatch("missing or ambiguous discovery fact/query association")
+    fact = matches[0]
     query_ref = _exact(fact.empirical_query_spec_ref, "empirical_query_spec_ref")
     query = query_by_ref.get(query_ref)
     if query is None:
         raise DiscoveryConsumptionMismatch("query not found for fact")
+    if _exact(query.condition_predicate_ref, "query condition_predicate_ref") != predicate.ref:
+        raise DiscoveryConsumptionMismatch("discovery query predicate mismatch")
 
     return fact, predicate, query
 

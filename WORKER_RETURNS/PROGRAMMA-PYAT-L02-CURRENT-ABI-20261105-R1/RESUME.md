@@ -74,3 +74,25 @@ Required ABI comparison, callgraph, no-drop inventory, issuer request and R02
 handoff are now prepared. They retain RED/incomplete downstream qualification.
 No test process remains live. The next dependent action is the High joint-fact
 selection decision after actual effort verification; no discovery restart.
+
+
+Resumed High phase: actual turn01a1aeb0-3a81-7c41-871c-19815d887852 verified
+high. `HIGH_DECISION.md` records producer-owned query-role selection. Minimal
+C1 repair now selects the unique primary JOINT/CONDITION/BASE query and its
+unique winning-predicate fact, refusing ambiguity; scalar legacy uniqueness is
+retained. No compiler/grammar/R03/L01 source edits. New meaningful regression
+plus existing C1 higher-order suite:39 passed (`repair-regression.log`).
+Actual forward I05 joint and reverse direct E41/C1/N10E both EXACT_SUPPORTED
+with native fact identity equality. Reverse discovery legitimately VALID_EMPTY
+(no departure), so ordinary exact conditional uses current E41 direct route.
+Six source/condition/occurrence request mutations refuse at the downstream
+boundary and restore the original actual consumer hash; receipt fact reversal
+retains the joint selection (`first-reader-negative-restore.json`).
+
+Pinned source fixture is being retained for exact fresh-process replay rather
+than regenerating timestamp-bearing SAV bytes. Current exec22004 runs the
+pinned first-reader probe; inspect same handle until terminal. Still required:
+fresh-process exact replay, actual source-response mutation/assertion failure/
+restore, final full capability audit/status deltas, bounded PR and R02 request.
+No full L02 completion or independent acceptance is claimed. Return to Medium
+for mechanical completion once the bounded High phase is banked.
