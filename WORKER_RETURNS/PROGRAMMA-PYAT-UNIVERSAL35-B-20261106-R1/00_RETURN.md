@@ -5,6 +5,7 @@
 **BASE:** `d119045f4169439b4ba02d0870bc328f8beb3aaa`
 **SOURCE CUT:** R157 `1924499ef52403a0f331b8aff9b7c7eff99bf1e2`
 **CUSTODY OBSERVATION:** `b90708f7d79624faae3da2408932829e569e5ae2` (`35/35` exact SHA, `1,319,161,326` bytes; decode/native facts not inferred)
+**HQ HEADER UPDATE:** all35 physical headers observed readable; SRC13/SRC14 use exact R157 source-bound latin1 compatibility configurations with default failure preserved. Header/metadata evidence only; no C11/native/science promotion.
 **RUNNER:** `/tmp/rawlsing-oct28-p1r1/venv/bin/python` (Python 3.11.3, pyreadstat 1.3.2, pandas 3.0.6)
 **GRADE:** sourcefree author evidence only; no independent acceptance, native/scientific issuance, protected merge, provider call or human A5.
 
@@ -98,7 +99,7 @@ No A-owned source-configuration package, current compiler/issued workload, E con
 
 ```text
 PROGRAMMA_DELTA — Universal35 B operation adapter
-- Identity: codex/pyat-universal35-b-20261106-r1@<returned-commit>; base d119045f4169439b4ba02d0870bc328f8beb3aaa; R157 source cut 1924499ef52403a0f331b8aff9b7c7eff99bf1e2; custody b90708f7d79624faae3da2408932829e569e5ae2.
+- Identity: codex/pyat-universal35-b-20261106-r1@bb0bc00643125191d52dc838868857156ac3aef8; base d119045f4169439b4ba02d0870bc328f8beb3aaa; R157 source cut 1924499ef52403a0f331b8aff9b7c7eff99bf1e2; custody b90708f7d79624faae3da2408932829e569e5ae2.
 - Function/input-transform-typed-output: library/config document -> deterministic 35-source no-drop plan -> per-item/per-operation typed F1/F2/F3/F4 status -> current UniversalOperation/BatchUnitSpec payload -> current compile_universal_workload/compile_governed_frontier -> current I03/I05/Batch consumer on supported fixtures.
 - Root/schema/clock/permission: schema PRE553_ORIGINAL35_OPERATIONS@1.0.0; caller-configured source root; no hardcoded personal path; no native/source/science permission issued.
 - Actual first consumer: current execute_universal_workload and execute_governed_frontier on sourcefree heterogeneous fixtures (native facts/receipts observed). All35 original native facts NONE_VERIFIED_THIS_RUN.
@@ -110,7 +111,7 @@ PROGRAMMA_DELTA — Universal35 B operation adapter
 
 ## 6. LIMITS / NOT RUN
 
-- All35 original **respondent decode and native empirical execution**: `NOT_RUN`; only exact byte custody and operation planning are verified.
+- All35 original **respondent decode and native empirical execution**: `NOT_RUN`; exact byte custody and operation planning are verified. HQ separately observed all35 physical headers readable, including SRC13/SRC14 source-bound latin1 configurations; that is header/metadata evidence only.
 - All35 source/item/route/permission qualifications remain per-operation; no fabricated native PASS.
 - Native C8/C10/C11/C12/KMS, CAN/ADP/Pyat issuance, provider calls, human A5, protected merge: `NOT_RUN`/`HOLD`.
 - The all35 plan is a finite metadata/operation plan; it is not a claim that 742M joint or 1.86M pair candidates were executed. Selected/candidate denominators are explicit.
