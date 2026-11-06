@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /private/tmp/rawlsing-oct28-p1r1/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1
+collecting ... collected 25 items / 17 deselected / 8 selected
+
+rawlsing_next/tests/test_pre553_c11_execution_view.py::test_cache_hit_delete_and_rehashed_same_key_poison_rebuild PASSED [ 12%]
+rawlsing_next/tests/test_pre553_c11_execution_view.py::test_stale_cache_and_torn_publication_keep_previous_complete_slot PASSED [ 25%]
+rawlsing_next/tests/test_pre553_c11_execution_view.py::test_revoked_workload_never_opens_warmed_accelerator PASSED [ 37%]
+rawlsing_next/tests/test_pre553_c11_execution_view.py::test_compressed_event_bodies_exact_bounded_chunks_and_old_cache_read PASSED [ 50%]
+rawlsing_next/tests/test_pre553_c11_execution_view.py::test_compressed_bodies_exact_across_routed_state_topology_and_weight_shapes PASSED [ 62%]
+rawlsing_next/tests/test_pre553_i03_grouping.py::test_grouped_scope_exact_parity_and_actual_core_sharing PASSED [ 75%]
+rawlsing_next/tests/test_pre553_i03_grouping.py::test_grouped_scope_shares_only_exact_compatible_keys PASSED [ 87%]
+rawlsing_next/tests/test_pre553_i03_grouping.py::test_grouped_scope_weighted_first_then_raw_still_exact PASSED [100%]
+
+====================== 8 passed, 17 deselected in 11.62s =======================
