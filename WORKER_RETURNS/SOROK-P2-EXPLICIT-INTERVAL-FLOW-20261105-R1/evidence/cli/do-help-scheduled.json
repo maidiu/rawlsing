@@ -1,16 +1,16 @@
 {
-  "admission": null,
+  "admission_status": null,
   "advanced": false,
-  "c9": null,
+  "c9_public": null,
   "cold_continuity": true,
   "do_help": {
     "actor_response": {
       "action": "REPAIR",
-      "gesture": "A clears a space at the bench.",
+      "gesture": "A sets the tool beside your hand.",
       "performed": true,
       "performed_by": "A",
-      "speech": "Pon la mano en el borde cercano. Yo tomo la holgura.",
-      "speech_english": "Put your hand on the near edge. I'll take the slack.",
+      "speech": "Sostén el borde cercano. Revisaré la costura.",
+      "speech_english": "Hold the near edge. I'll check the seam.",
       "strategy": "HELP_ACCEPT"
     },
     "actor_response_generated": true,
@@ -19,7 +19,7 @@
     "code": "S45_HELP_ACCEPT",
     "control": "DO_HELP",
     "event_ids": [
-      "TEST_ONLY_BP4_WORLD_EVT_bf7daa32338cb67b333fe77cbb9da2e233817c5147c089720af8bcb4d3f9d310",
+      "TEST_ONLY_BP4_WORLD_EVT_621df2e568540676472617942d2b5a5411b0eefe622d23b910cd360c1da650f8",
       "TEST_ONLY_BP4_WORLD_EVT_367f1c1bf839ef3f06dd838fe81679f34f14f4f7c507dcf5753b23ac3ff20f26"
     ],
     "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
@@ -32,12 +32,12 @@
     "simulated_delivery": false,
     "source": "s45",
     "status": "OK",
-    "store_hash_after": "dc494cf041fb02b144e950a5f29e64c4cf4569a4976729befce4e3083858f8eb",
-    "store_hash_before": "e7fa9abac266ca65fa65296cb4aff8da08b2d83bcfc0573af8529ba29a5a83c3",
+    "store_hash_after": "7acff0b025158750dfd5ad0e9d011100fa44839f439bf8ef6a13950a38c07798",
+    "store_hash_before": "20bbf76b7bd95479a347d00479ab503fd70c2d496dbb2d6f0365f587fc491af9",
     "surface": [
       "A material repair is performed in the workshop.",
-      "the repair worker says: \"Pon la mano en el borde cercano. Yo tomo la holgura.\" A clears a space at the bench.",
-      "[labeled English view, not actor speech: \"Put your hand on the near edge. I'll take the slack.\"]"
+      "the repair worker says: \"Sostén el borde cercano. Revisaré la costura.\" A sets the tool beside your hand.",
+      "[labeled English view, not actor speech: \"Hold the near edge. I'll check the seam.\"]"
     ],
     "user_attempt": {
       "accepted": true,
@@ -72,8 +72,8 @@
       "gesture": "",
       "kind": "DO_HELP",
       "refusal": false,
-      "speech": "Pon la mano en el borde cercano. Yo tomo la holgura.",
-      "speech_english": "Put your hand on the near edge. I'll take the slack.",
+      "speech": "Sostén el borde cercano. Revisaré la costura.",
+      "speech_english": "Hold the near edge. I'll check the seam.",
       "status": "OK",
       "strategy": "HELP_ACCEPT",
       "user_text": ""
@@ -137,8 +137,8 @@
       "gesture": "",
       "kind": "DO_HELP",
       "refusal": false,
-      "speech": "Pon la mano en el borde cercano. Yo tomo la holgura.",
-      "speech_english": "Put your hand on the near edge. I'll take the slack.",
+      "speech": "Sostén el borde cercano. Revisaré la costura.",
+      "speech_english": "Hold the near edge. I'll check the seam.",
       "status": "OK",
       "strategy": "HELP_ACCEPT",
       "user_text": ""
@@ -448,7 +448,7 @@
           "tone": "ordinary"
         },
         "clock": 222,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_4804a5e58f93648daca8726ad030d1e3388ff8ffc458ce665309a51945815195",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_8940cbaeb863f56938f6cab8d3dec0a60f465c6680966a6ce217e70f73bc3b55",
         "kind": "SPEECH",
         "location": "workshop",
         "perceived_by_user": true,
@@ -465,7 +465,7 @@
           "tone": "ordinary"
         },
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_858e513d657bbf10f12107afaf5ea8a4156a3dfcd68d626d2f0168abba38bc80",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_410ad71b7373830933f421a8f97d348c6913289167e96fa82f849bdbb0d47f24",
         "kind": "SPEECH",
         "location": "workshop",
         "perceived_by_user": true,
@@ -492,19 +492,19 @@
       {
         "actor_visible_id": "A",
         "body_public": {
-          "gesture": "A clears a space at the bench.",
+          "gesture": "A sets the tool beside your hand.",
           "language_tag": "es-MX",
           "strategy": "HELP_ACCEPT",
-          "text": "Pon la mano en el borde cercano. Yo tomo la holgura.",
+          "text": "Sostén el borde cercano. Revisaré la costura.",
           "tone": "practical"
         },
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf7daa32338cb67b333fe77cbb9da2e233817c5147c089720af8bcb4d3f9d310",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_621df2e568540676472617942d2b5a5411b0eefe622d23b910cd360c1da650f8",
         "kind": "SPEECH",
         "location": "workshop",
         "perceived_by_user": true,
         "source_ref": "S45_C12_WORLD_EVENT@f26a138",
-        "summary": "A says: Pon la mano en el borde cercano. Yo tomo la holgura."
+        "summary": "A says: Sostén el borde cercano. Revisaré la costura."
       }
     ],
     "visible_speech": [
@@ -620,7 +620,7 @@
       },
       {
         "clock": 222,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_4804a5e58f93648daca8726ad030d1e3388ff8ffc458ce665309a51945815195",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_8940cbaeb863f56938f6cab8d3dec0a60f465c6680966a6ce217e70f73bc3b55",
         "gesture": "A turns toward the bench.",
         "labeled_english": "",
         "speaker": "A",
@@ -630,7 +630,7 @@
       },
       {
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_858e513d657bbf10f12107afaf5ea8a4156a3dfcd68d626d2f0168abba38bc80",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_410ad71b7373830933f421a8f97d348c6913289167e96fa82f849bdbb0d47f24",
         "gesture": "A keeps a hand near the bench edge.",
         "labeled_english": "",
         "speaker": "A",
@@ -640,13 +640,13 @@
       },
       {
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf7daa32338cb67b333fe77cbb9da2e233817c5147c089720af8bcb4d3f9d310",
-        "gesture": "A clears a space at the bench.",
-        "labeled_english": "Put your hand on the near edge. I'll take the slack.",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_621df2e568540676472617942d2b5a5411b0eefe622d23b910cd360c1da650f8",
+        "gesture": "A sets the tool beside your hand.",
+        "labeled_english": "Hold the near edge. I'll check the seam.",
         "speaker": "A",
         "strategy": "HELP_ACCEPT",
-        "summary": "A says: Pon la mano en el borde cercano. Yo tomo la holgura.",
-        "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+        "summary": "A says: Sostén el borde cercano. Revisaré la costura.",
+        "text": "Sostén el borde cercano. Revisaré la costura."
       }
     ]
   }

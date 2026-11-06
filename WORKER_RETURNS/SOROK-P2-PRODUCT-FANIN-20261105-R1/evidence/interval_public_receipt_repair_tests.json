@@ -1,0 +1,18 @@
+{
+  "historical_prior_interval_repair_evidence": "evidence/interval_repair_tests.json (7a256ed4, 6 passed 76.97s)",
+  "junit": "evidence/interval_public_receipt_focused.xml",
+  "junit_sha256": "1c9881c048a33d2ae1b489a2bf82eaf80317feb74e0d6d289399d83476b04459",
+  "log": "logs/interval_public_receipt_focused.log",
+  "log_sha256": "7b1c4c2de0fdcc7a2599eab864b5954ea772d14d3be596cc3c1928d607928da4",
+  "oracle": "evidence/interval_refresh_oracle.json",
+  "oracle_ok": true,
+  "oracle_sha256": "fae060c637798bfd0489f0d19906acbfc00704ceb8cbef73708c56cfa83d0fec",
+  "rerun_by_fanin": false,
+  "result": "6 passed in 78.34s (0:01:18)",
+  "reuse_reason": "Fanin callsite uses only apply_explicit_interval and does not consume renamed admission/c9 fields; previous 7 fanin tests reused.",
+  "schema": "SOROK_P2_INTERVAL_PUBLIC_RECEIPT_REPAIR_TESTS@1",
+  "source_commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+  "source_tree": "f7bd1c51f5420c83970487d5163d585a5c4e9e2c",
+  "status": "AUTHOR_TESTED_PENDING_INDEPENDENT_REVIEW",
+  "tests_passed": 6
+}

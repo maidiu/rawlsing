@@ -1,30 +1,50 @@
 {
   "schema": "SOROK_PROGRAMMA_DELTA@1",
   "delta_id": "SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
-  "repair_base": "bdadbc57c2664d3155a97853422e74b6128261f8",
+  "delta_class": "SECOND_NARROW_REPAIR_AUTHOR_TESTED",
+  "primary_repair_base": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+  "independent_closure": "89b33453eff13d8a3638a97cf516438c42e7af4f",
+  "independent_verdict": "PRIMARY_AUTO_DO_HELP_REPAIR_PASSED__TWO_SECONDARY_DEFECTS_REVISE",
+  "historical_base": "bdadbc57c2664d3155a97853422e74b6128261f8",
   "product_base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
-  "branch": "codex/sorok-p2-explicit-interval-flow-20261105-r1",
-  "result": "PASS",
-  "grade": "TEST_ONLY_S45_S47_EXPLICIT_INTERVAL_CONTINUATION_NOT_NATIVE",
-  "delta_kind": "FOCUSED_AUTO_DO_HELP_REPAIR",
-  "auto_do_help_removed": true,
-  "observation_only_default": true,
-  "explicit_do_help_operation": "explicit_do_help / CLI do-help",
-  "observation_encounter_mutation": false,
-  "explicit_do_help_increments_encounter": true,
-  "original_positive_material_evidence_preserved": true,
-  "historical_bdad_immutable": true,
-  "product_code_change": false,
-  "inherited_source_edit": false,
-  "programma_working_file_change": false,
-  "protected_premain_write": false,
-  "pr697_merged": false,
-  "native_or_human_grant": false,
-  "focused_tests": {
-    "tests": 6,
-    "failures": 0,
-    "errors": 0,
-    "skipped": 0
+  "repair_items": {
+    "primary_no_auto_help": {
+      "status": "PRESERVED_INDEPENDENTLY_VERIFIED",
+      "observation_only": true,
+      "explicit_do_help_separate": true,
+      "encounters_unchanged_on_observation": true
+    },
+    "public_result_keys": {
+      "status": "AUTHOR_TESTED",
+      "renamed": {
+        "admission": "admission_status",
+        "c9": "c9_public"
+      },
+      "values_unchanged_redacted": true,
+      "raw_internals_exposed": false
+    },
+    "authored_file_census": {
+      "status": "AUTHOR_TESTED",
+      "pycache_and_pyc_excluded": true,
+      "self_receipt_excluded": true,
+      "hashes_recomputed_for_actual_committed_files": true
+    }
   },
-  "next_owner_action": "Existing independent review of the exact repair commit before receiving acceptance or HQ fan-in."
+  "tests": {
+    "focused": 6,
+    "result": "6 passed in78.34s",
+    "full_estate_rerun": false
+  },
+  "programma_canonical_change": false,
+  "product_code_change": false,
+  "native_or_human_grant": false,
+  "acceptance_promotion": false,
+  "protected_write": false,
+  "holds": [
+    "no product/fan-in/later/lifecycle/guide/global config/protected write",
+    "no native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority",
+    "no acceptance promotion",
+    "historical cut and prior REVISE closure remain immutable"
+  ],
+  "next_owner_action": "Existing independent reviewer may recheck the two narrow repairs at this exact repair SHA; no automatic acceptance."
 }

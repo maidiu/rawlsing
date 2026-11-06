@@ -8,26 +8,43 @@
   "errors": 0,
   "exit": 0,
   "failures": 0,
-  "interval_repair_tests": "evidence/interval_repair_tests.json",
-  "interval_repair_tests_sha256": "fe6f68991e44c170f80ba019930bf3ce690408b34883c9feecf7e0284b2ed1b5",
+  "historical_interval_repair_tests": "evidence/interval_repair_tests.json (7a256ed4, 6 passed in 76.97s)",
+  "interval_public_receipt_tests": {
+    "evidence": "evidence/interval_public_receipt_repair_tests.json",
+    "evidence_sha256": "b6081ed8264da0e6594a3e16c6579f6f97312becdb136a611003b584197319d1",
+    "rerun_by_fanin": false,
+    "result": "6 passed in 78.34s (0:01:18)",
+    "source_commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+    "source_tree": "f7bd1c51f5420c83970487d5163d585a5c4e9e2c",
+    "status": "AUTHOR_TESTED_PENDING_INDEPENDENT_REVIEW"
+  },
+  "interval_refresh_oracle": {
+    "interval_commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+    "interval_tree": "f7bd1c51f5420c83970487d5163d585a5c4e9e2c",
+    "loaded_module_under_interval_return": true,
+    "ok": true,
+    "path": "evidence/interval_refresh_oracle.json",
+    "sha256": "fae060c637798bfd0489f0d19906acbfc00704ceb8cbef73708c56cfa83d0fec"
+  },
   "junit": "evidence/focused_fanin.xml",
   "junit_sha256": "6e42359853186292617497cd1718c41aa73d18013caf109538801a3b8b791011",
   "log": "logs/focused_fanin.log",
   "log_sha256": "816b11b007012fc1048f9fea55dcc10b8943a00240b184c3343c5d1b6c444344",
   "not_run": [
-    "independent review of interval repair 7a256ed4",
-    "independent review of this fanin refresh",
-    "current interval/later review on old cuts is not acceptance of this repair/fanin",
+    "independent review of secondary repair 76d5a3d",
+    "independent review of this refreshed fanin head",
+    "routine rerun of 6 interval tests or 7 fanin tests after unchanged callsite",
+    "current integrated review on exact 25d is not acceptance of new head",
     "inherited 55-test full estate",
-    "native/science/human/B grants",
-    "actual elapsed life, absence activity, delivery or human validation"
+    "native/science/human/B grants"
   ],
   "platform": "macOS-13.7.8-x86_64-i386-64bit",
   "pytest": "pytest 9.1.1",
   "python": "3.11.3",
+  "reuse_note": "7 fanin tests reused from 25d; not rerun because the actual fanin callsite uses only apply_explicit_interval and renamed fields do not affect it.",
   "schema": "SOROK_P2_PRODUCT_FANIN_TEST_RUN@1",
   "skipped": 0,
-  "status": "PASS",
+  "status": "PASS_REUSED_AT_25D",
   "summary": "7 passed in 71.86s (0:01:11)",
   "tests": [
     "test_imported_interval_repair_source_is_loaded_and_observation_only",
@@ -40,5 +57,5 @@
   ],
   "tests_passed": 7,
   "upstream_repair_status": "evidence/upstream_interval_auto_do_help.json",
-  "upstream_repair_status_sha256": "ef1427b2350520ca80031e6a839c4ffee7cbdb6af0f702cd893e96af02b527e0"
+  "upstream_repair_status_sha256": "de9c9c20322302e3b54cde9d708906fc44c9b79c8b65a4366a8f8b188854bbab"
 }

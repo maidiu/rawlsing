@@ -1,16 +1,16 @@
 {
-  "admission": null,
+  "admission_status": null,
   "advanced": false,
-  "c9": null,
+  "c9_public": null,
   "cold_continuity": true,
   "do_help": {
     "actor_response": {
       "action": "",
-      "gesture": "A looks at the empty tool space.",
+      "gesture": "A turns the empty bench over.",
       "performed": false,
       "performed_by": "",
-      "speech": "La herramienta no está. Hoy no puedo hacerlo.",
-      "speech_english": "The tool's gone. I can't do it today.",
+      "speech": "Me quedé sin material. No puedo empezar eso ahora.",
+      "speech_english": "I'm out of material. I can't start that now.",
       "strategy": "HELP_REFUSE"
     },
     "actor_response_generated": true,
@@ -19,7 +19,7 @@
     "code": "S45_HELP_REFUSE",
     "control": "DO_HELP",
     "event_ids": [
-      "TEST_ONLY_BP4_WORLD_EVT_0109e7675acfe790f87bec3722ceee90dfff10947aa36ba11d4e725830f5f514"
+      "TEST_ONLY_BP4_WORLD_EVT_2318173fd52c9ce4e9bf8518fc3081962f0c3135484c0bf343cebd4de9903182"
     ],
     "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
     "mode": "PORTAL",
@@ -31,11 +31,11 @@
     "simulated_delivery": false,
     "source": "s45",
     "status": "REFUSED",
-    "store_hash_after": "f4d3281b57ca75a9f0bd3171b42ce653f871481d3e1a95874f036aaa3e7ee072",
-    "store_hash_before": "ab07d9548cfabcf894b562c2d060ea423ebf9ca79c240de122584bedd3cd4faf",
+    "store_hash_after": "923f6e1112646befa066b0a472ea305724f70c22e197a752dd731b9bd1179951",
+    "store_hash_before": "fbb8d8625a82dc675f83d568f0935aaf303df044abcb800e9f3f4ba6d6567a15",
     "surface": [
-      "the repair worker says: \"La herramienta no está. Hoy no puedo hacerlo.\" A looks at the empty tool space.",
-      "[labeled English view, not actor speech: \"The tool's gone. I can't do it today.\"]"
+      "the repair worker says: \"Me quedé sin material. No puedo empezar eso ahora.\" A turns the empty bench over.",
+      "[labeled English view, not actor speech: \"I'm out of material. I can't start that now.\"]"
     ],
     "user_attempt": {
       "accepted": false,
@@ -70,8 +70,8 @@
       "gesture": "",
       "kind": "DO_HELP",
       "refusal": true,
-      "speech": "La herramienta no está. Hoy no puedo hacerlo.",
-      "speech_english": "The tool's gone. I can't do it today.",
+      "speech": "Me quedé sin material. No puedo empezar eso ahora.",
+      "speech_english": "I'm out of material. I can't start that now.",
       "status": "OK",
       "strategy": "HELP_REFUSE",
       "user_text": ""
@@ -135,8 +135,8 @@
       "gesture": "",
       "kind": "DO_HELP",
       "refusal": true,
-      "speech": "La herramienta no está. Hoy no puedo hacerlo.",
-      "speech_english": "The tool's gone. I can't do it today.",
+      "speech": "Me quedé sin material. No puedo empezar eso ahora.",
+      "speech_english": "I'm out of material. I can't start that now.",
       "status": "OK",
       "strategy": "HELP_REFUSE",
       "user_text": ""
@@ -429,7 +429,7 @@
           "tone": "ordinary"
         },
         "clock": 222,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2959fa8b12628f4bfd8174494520187ca6c240c177948757627d5b96f9f6c127",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_92089d1a56eb57ca3d87d9c84e4837cb6bef45936f3ed2227ba0cd8f460efbca",
         "kind": "SPEECH",
         "location": "workshop",
         "perceived_by_user": true,
@@ -446,7 +446,7 @@
           "tone": "ordinary"
         },
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2499ecb62c28a2c9f261330b6c7e61b683841c48c3928959303d77d39623be06",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_eb4ae1dca54f1bbb432737f7c48413f415ee642b4d8d14b3f7ba8ab20b6819bb",
         "kind": "SPEECH",
         "location": "workshop",
         "perceived_by_user": true,
@@ -456,19 +456,19 @@
       {
         "actor_visible_id": "A",
         "body_public": {
-          "gesture": "A looks at the empty tool space.",
+          "gesture": "A turns the empty bench over.",
           "language_tag": "es-MX",
           "strategy": "HELP_REFUSE",
-          "text": "La herramienta no está. Hoy no puedo hacerlo.",
+          "text": "Me quedé sin material. No puedo empezar eso ahora.",
           "tone": "flat"
         },
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0109e7675acfe790f87bec3722ceee90dfff10947aa36ba11d4e725830f5f514",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2318173fd52c9ce4e9bf8518fc3081962f0c3135484c0bf343cebd4de9903182",
         "kind": "SPEECH",
         "location": "workshop",
         "perceived_by_user": true,
         "source_ref": "S45_C12_WORLD_EVENT@f26a138",
-        "summary": "A says: La herramienta no está. Hoy no puedo hacerlo."
+        "summary": "A says: Me quedé sin material. No puedo empezar eso ahora."
       }
     ],
     "visible_speech": [
@@ -584,7 +584,7 @@
       },
       {
         "clock": 222,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2959fa8b12628f4bfd8174494520187ca6c240c177948757627d5b96f9f6c127",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_92089d1a56eb57ca3d87d9c84e4837cb6bef45936f3ed2227ba0cd8f460efbca",
         "gesture": "A turns toward the bench.",
         "labeled_english": "",
         "speaker": "A",
@@ -594,7 +594,7 @@
       },
       {
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2499ecb62c28a2c9f261330b6c7e61b683841c48c3928959303d77d39623be06",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_eb4ae1dca54f1bbb432737f7c48413f415ee642b4d8d14b3f7ba8ab20b6819bb",
         "gesture": "A keeps a hand near the bench edge.",
         "labeled_english": "",
         "speaker": "A",
@@ -604,13 +604,13 @@
       },
       {
         "clock": 227,
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0109e7675acfe790f87bec3722ceee90dfff10947aa36ba11d4e725830f5f514",
-        "gesture": "A looks at the empty tool space.",
-        "labeled_english": "The tool's gone. I can't do it today.",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_2318173fd52c9ce4e9bf8518fc3081962f0c3135484c0bf343cebd4de9903182",
+        "gesture": "A turns the empty bench over.",
+        "labeled_english": "I'm out of material. I can't start that now.",
         "speaker": "A",
         "strategy": "HELP_REFUSE",
-        "summary": "A says: La herramienta no está. Hoy no puedo hacerlo.",
-        "text": "La herramienta no está. Hoy no puedo hacerlo."
+        "summary": "A says: Me quedé sin material. No puedo empezar eso ahora.",
+        "text": "Me quedé sin material. No puedo empezar eso ahora."
       }
     ]
   }

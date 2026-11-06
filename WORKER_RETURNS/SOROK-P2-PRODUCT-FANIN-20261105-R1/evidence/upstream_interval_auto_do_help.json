@@ -1,43 +1,41 @@
 {
   "fanin_callsite": {
     "changed": false,
-    "explicit_user_help": "Fanin do-help uses the accepted lifecycle adapter; no interval helper auto-help.",
-    "reason": "Fanin already used only apply_explicit_interval and never called admit_continuation; apply_explicit_interval ABI is unchanged.",
-    "still_avoids_admit_continuation": true
+    "reason": "Fanin uses only apply_explicit_interval; it never calls admit_continuation and does not consume the renamed admission/c9 fields.",
+    "renamed_fields_affect_caller": false
   },
   "historical": {
-    "callable": "p2_explicit_interval_flow.continuation.admit_continuation",
     "defect": "admit_continuation invoked adapter.do_help() to display a projected consequence, auto-executing a user DO_HELP attempt.",
     "fanin_candidate": "579afc5fe63ff305ec49d4c8d42abc8475acf8bb",
-    "fanin_evidence": "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/upstream_interval_auto_do_help.json historical contents and git history",
-    "note": "Historical bdad/fanin defect evidence is preserved in git history and in this status record.",
+    "note": "Historical bdad/fanin defect evidence remains preserved in Git history and in this status record.",
     "source_commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
-    "source_return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
     "source_tree_sha1": "0209fdb84d3564c46e704573a6a2d1b44adfee86"
   },
+  "loaded_module": {
+    "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/p2_explicit_interval_flow/continuation.py",
+    "sha256": "e7d66a1ec11f232b119200f572592cd8d78c49d937e46829435d8b92e82216ec",
+    "under_refreshed_interval_return": true
+  },
   "not_run": [
-    "independent review of the interval repair cut",
-    "independent review of this fanin refresh",
+    "independent review of secondary repair 76d5a3d",
+    "independent review of this fanin refresh head",
+    "routine rerun of 6 interval tests or 7 fanin tests after unchanged callsite",
     "inherited full 55-test estate",
     "native/science/human/B grants"
   ],
-  "repair": {
-    "api_changes": "admit_continuation is observation-only; explicit_do_help and CLI do-help are separate explicit user operations.",
-    "code_commit": "dde8287a806a802cd8d6a3dc122870f8cf8c5c3a",
-    "loaded_module_path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/p2_explicit_interval_flow/continuation.py",
-    "loaded_module_sha256": "6a79b58951832f58c3a825bac66cf0b59adf615dc0d73204d3f6d95b37599d1a",
-    "loaded_module_under_refreshed_return": true,
+  "primary_repair": {
+    "independent_closure": "89b33453eff13d8a3638a97cf516438c42e7af4f",
     "source_commit": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
-    "source_return": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
-    "source_tree_sha1": "6bc6632fa3ca67cedcdd16bc6cb5ea61b8e81789"
+    "source_tree_sha1": "6bc6632fa3ca67cedcdd16bc6cb5ea61b8e81789",
+    "verdict": "PRIMARY_NO_AUTO_HELP_PASSED__TWO_SECONDARY_DEFECTS_REVISE"
   },
   "schema": "SOROK_P2_FANIN_UPSTREAM_REPAIR_STATUS@1",
-  "status": "REPAIRED_AUTHOR_TESTED_PENDING_INDEPENDENT_REVIEW",
-  "verification": {
-    "fanin_tests": "7 passed in 71.86s",
-    "interval_repair_tests": "6 passed in 76.97s against refreshed interval return",
-    "loaded_repair_source_test": "test_imported_interval_repair_source_is_loaded_and_observation_only",
-    "single_explicit_help": "encounter count after explicit do-help = 1",
-    "zero_help_attempts_observation": "encounter counts after interval and later observation = 0"
-  }
+  "secondary_repair": {
+    "author_evidence": "6 passed in 78.34s; original public privacy/receipt oracle PASS",
+    "changes": "reserved top-level admission/c9 renamed to admission_status/c9_public; receipt census excludes __pycache__/.pyc and self-receipt",
+    "source_commit": "76d5a3d13e0219c1a085ebadd55071de2dd90e7d",
+    "source_tree_sha1": "f7bd1c51f5420c83970487d5163d585a5c4e9e2c",
+    "status": "AUTHOR_TESTED_PENDING_INDEPENDENT_REVIEW"
+  },
+  "status": "PRIMARY_NO_AUTO_HELP_INDEPENDENTLY_PASSED__SECONDARY_PUBLIC_KEYS_AND_CENSUS_AUTHOR_TESTED_PENDING_INDEPENDENT_REVIEW"
 }

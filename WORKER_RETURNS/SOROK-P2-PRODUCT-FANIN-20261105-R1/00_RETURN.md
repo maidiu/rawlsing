@@ -8,8 +8,9 @@
 
 - Base accepted: `41bf45813fd0adeffd9b54e1306c2022abe96514` (independent ACCEPT scoped TEST_ONLY; PR697 unchanged/unmerged).
 - Lifecycle source: `79b90e4a57cbd1b738a9b9484677736d1b6415ab`; independent ACCEPT review commit `6398888f1d28152b5d29fef816f0bb45e77dd43b`. Imported directory tree `1eda53e475f5e07c1251a6f61eacecacc1284ed6`.
-- Explicit interval source: repair `7a256ed4873155dfad86faf2464110ee6f1e2ad4` (code `dde8287a806a802cd8d6a3dc122870f8cf8c5c3a`), replacing historical `bdadbc57c2664d3155a97853422e74b6128261f8`. Imported directory tree `6bc6632fa3ca67cedcdd16bc6cb5ea61b8e81789`.
-- Historical bdad interval/fanin auto-DO_HELP defect evidence remains preserved in git history and in `evidence/upstream_interval_auto_do_help.json`; the refreshed cut is `AUTHOR_TESTED`, pending independent review. Current independent interval/later review is still running old cuts and is not acceptance of this repair/fanin.
+- Explicit interval source: public-key/census repair `76d5a3d13e0219c1a085ebadd55071de2dd90e7d`, built on primary repair `7a256ed4` and historical `bdadbc57c...`. Imported directory tree `f7bd1c51f5420c83970487d5163d585a5c4e9e2c`.
+- Primary no-auto-help repair is independently `PASS` at closure `89b33453eff13d8a3638a97cf516438c42e7af4f`; the remaining public-key rename/census fix in `76d5a3d` is `AUTHOR_TESTED` pending independent review. The independent integrated review currently covers exact `25d40806` (old interval import), not this refreshed fanin head.
+- Historical bdad interval/fanin auto-DO_HELP defect evidence and the prior `89b334` REVISE closure remain preserved in Git history and in `evidence/upstream_interval_auto_do_help.json`. The new secondary repair is author-tested only; no acceptance promotion.
 - Later-event source: `76fdb624afc7674f088d10c349bfe15ffd0b865a`. Imported directory tree `1c701c14e131be131e7f62bdeccec3fe7415d0fb`. Its independent review is separately running; this fanin is not independently accepted.
 - All three new `WORKER_RETURNS` directories were imported byte-exactly from those Git trees, with their evidence preserved. No accepted base/vendor/projection/PR697/programma working file was edited.
 - New integration code/tests/evidence only under `WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/`.
@@ -48,7 +49,7 @@ The supplied interval is not a user-WAIT/absence choice. It is an explicit inter
 
 ## ATTEMPT VERSUS OBSERVATION
 
-This integration does not auto-execute user `DO_HELP` to show a predicted consequence. The historical interval helper `admit_continuation` called `adapter.do_help()` internally; repair `7a256ed4` now makes it observation-only and adds separate `explicit_do_help`/CLI `do-help`. Fanin still uses only `apply_explicit_interval` and never calls `admit_continuation`; its explicit user help remains the accepted lifecycle `do-help`. Evidence: `evidence/upstream_interval_auto_do_help.json`.
+This integration does not auto-execute user `DO_HELP` to show a predicted consequence. The historical interval helper `admit_continuation` auto-called `adapter.do_help()`; primary repair `7a256ed4` made it observation-only and added separate `explicit_do_help`/CLI `do-help`. Repair `76d5a3d` additionally renames reserved public keys to `admission_status`/`c9_public` and fixes the receipt census. Fanin uses only `apply_explicit_interval`, never calls `admit_continuation`, and does not consume the renamed fields, so its callsite is unchanged. Evidence: `evidence/upstream_interval_auto_do_help.json`, `evidence/interval_refresh_oracle.json`.
 
 Fanin uses only:
 
@@ -70,15 +71,7 @@ python3 -B -m pytest -q -p no:cacheprovider \
 # 7 passed in 71.86s, exit 0
 ```
 
-Affected imported interval repair tests were also rerun against the refreshed source:
-
-```text
-SOROK_P2_BASE_ROOT=$PWD TMPDIR=$PWD/.local-logs/sorok-p2-product-fanin-20261105-r1/interval-pytest \
-python3 -B -m pytest -q -p no:cacheprovider \
-  --junitxml=WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/interval_repair_focused.xml \
-  WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/tests
-# 6 passed in 76.97s, exit 0
-```
+The refreshed interval return carries its own author evidence: **6 passed in 78.34s** at `76d5a3d`, with the original public privacy/receipt oracle PASS. Fanin did not rerun those tests or the 7 fanin tests because the fanin callsite is unchanged; the prior 7-fanin evidence `7 passed in 71.86s` is reused. Historical `7a256ed4` interval evidence (`6 passed in 76.97s`) is retained separately.
 
 Covered:
 
@@ -111,15 +104,17 @@ Evidence:
 - `evidence/cli/` (17 cold command receipts plus `summary.json`)
 - `evidence/cut_restore.json`
 - `evidence/upstream_interval_auto_do_help.json` (historical defect + repair status)
-- `evidence/interval_repair_focused.xml`, `logs/interval_repair_focused.log` (affected interval tests)
+- `evidence/interval_public_receipt_focused.xml`, `logs/interval_public_receipt_focused.log` (76d5a3d author tests)
+- `evidence/interval_public_receipt_repair_tests.json`, `evidence/interval_refresh_oracle.json`
+- `evidence/interval_repair_focused.xml`, `logs/interval_repair_focused.log` (historical 7a256 tests)
 - `evidence/source_manifest.json` (fanin files plus exact imported-tree hashes)
 
 ## NOT RUN / HOLDS
 
-- No independent review of this fanin commit.
-- No independent review of interval repair `7a256ed4`; it is AUTHOR_TESTED only.
-- Latter2 independent review is separately running on old cuts; this return does not claim it accepted.
-- Current interval/later independent review is still running old cuts; it is not acceptance of repair `7a256ed4` or this fanin.
+- No independent review of this refreshed fanin commit.
+- Primary interval no-auto-help repair is independently PASS at `89b334`; secondary public-key/census repair `76d5a3d` is AUTHOR_TESTED only, pending independent review.
+- Latter2 independent review remains on old cuts; later-event `76fdb624` original `REVISE` and public-CLI limits are preserved.
+- Independent integrated review currently covers exact `25d40806` (old interval import); it is not acceptance of this refreshed head.
 - Inherited full 55-test estate was not rerun.
 - No native C8/C9/C12, CAN008/CAN011, ADP, Pyat, human usability, B-owned context or paid action is claimed.
 - No actual elapsed life, absence activity, delivery, world return or external message channel is claimed.

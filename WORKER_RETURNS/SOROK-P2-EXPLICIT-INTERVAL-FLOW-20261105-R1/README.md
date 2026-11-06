@@ -68,6 +68,11 @@ from p2_explicit_interval_flow import (
 - `explicit_do_help(state, request="WAIT")` — explicit user DO_HELP operation;
   returns the projected result and encounter increment.
 
+Observation results expose the redacted public summaries as `admission_status`
+and `c9_public`. The reserved projection keys `admission` and `c9` are not
+emitted at the top level; no raw readset, source hash, actor state or root hash
+is added.
+
 ## Base closure
 
 The base product/projection returns are used unchanged from commit
