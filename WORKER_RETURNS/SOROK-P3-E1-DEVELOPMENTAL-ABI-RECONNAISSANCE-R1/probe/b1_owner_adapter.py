@@ -15,6 +15,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import sqlite3
 import sys
 from typing import Any, Mapping
 
@@ -52,7 +53,8 @@ CREATE TABLE IF NOT EXISTS b1_owner_meta (
   root TEXT NOT NULL,
   branch TEXT NOT NULL,
   actor TEXT NOT NULL,
-  source_ref TEXT NOT NULL
+  source_ref TEXT NOT NULL,
+  journal_only INTEGER NOT NULL CHECK (journal_only IN (0, 1))
 );
 CREATE TABLE IF NOT EXISTS b1_source (
   id INTEGER PRIMARY KEY CHECK (id = 1),
@@ -142,7 +144,9 @@ class B1Owner:
         self.root = _text(root, "B1_ROOT_REQUIRED")
         self.branch = _text(branch, "B1_BRANCH_REQUIRED")
         self.actor = _text(actor, "B1_ACTOR_REQUIRED")
-        self.journal_only = bool(journal_only)
+        if not isinstance(journal_only, bool):
+            raise RecursionRefusal("B1_JOURNAL_MODE_BOOLEAN_REQUIRED")
+        self.journal_only = journal_only
         if initial is None:
             initial = self.b1.initialize(self.b1.prehistory())
         initial = detached(initial)
@@ -168,14 +172,18 @@ class B1Owner:
         self.db.executescript(_META_DDL)
         if new:
             self.db.execute(
-                "INSERT INTO b1_owner_meta VALUES (1,?,?,?,?)",
-                (self.root, self.branch, self.actor, self.source_ref),
+                "INSERT INTO b1_owner_meta VALUES (1,?,?,?,?,?)",
+                (self.root, self.branch, self.actor, self.source_ref, int(self.journal_only)),
             )
             self.db.execute(
                 "INSERT INTO b1_source VALUES (1,?)", (canonical(self._fixture),)
             )
             self.db.commit()
-        self._verify_source()
+        try:
+            self._verify_source()
+        except Exception:
+            self.store.close()
+            raise
 
     # ------------------------------------------------------------------
     # DevelopmentOwner surface
@@ -235,11 +243,20 @@ class B1Owner:
         return state
 
     def _verify_source(self) -> None:
-        meta = self.db.execute(
-            "SELECT root, branch, actor, source_ref FROM b1_owner_meta WHERE id=1"
-        ).fetchone()
-        if meta != (self.root, self.branch, self.actor, self.source_ref):
+        try:
+            meta = self.db.execute(
+                "SELECT root, branch, actor, source_ref, journal_only "
+                "FROM b1_owner_meta WHERE id=1"
+            ).fetchone()
+        except sqlite3.Error as exc:
+            # Legacy test stores do not silently acquire a new execution mode.
+            raise RecursionRefusal("B1_OWNER_MODE_BINDING_MISSING") from exc
+        if meta is None or meta[:4] != (
+            self.root, self.branch, self.actor, self.source_ref
+        ):
             raise RecursionRefusal("B1_OWNER_BINDING_MISMATCH")
+        if meta[4] != int(self.journal_only):
+            raise RecursionRefusal("B1_OWNER_EXECUTION_MODE_MISMATCH")
         row = self.db.execute("SELECT body FROM b1_source WHERE id=1").fetchone()
         if row is None:
             raise RecursionRefusal("B1_SOURCE_IDENTITY_MISSING")
@@ -375,6 +392,28 @@ class B1Owner:
             raise RecursionRefusal("B1_TRANSACTION_REFUSED:" + reason)
 
         after_state = self._state()
+        prior_middle = before_state["middle"]
+        prior_transitions = before_state["transitions"]
+        if (
+            after_state["middle"][:len(prior_middle)] != prior_middle
+            or after_state["transitions"][:len(prior_transitions)] != prior_transitions
+        ):
+            raise RecursionRefusal("B1_NONADDITIVE_MEDIATOR_STATE_HOLD")
+        committed_middle = after_state["middle"][len(prior_middle):]
+        committed_transitions = after_state["transitions"][len(prior_transitions):]
+        owner_decisions = receipt["owner_decisions"]
+        if (
+            len(committed_middle) != len(committed_transitions)
+            or len(committed_middle) != len(owner_decisions)
+            or (self.journal_only and committed_middle)
+        ):
+            raise RecursionRefusal("B1_MEDIATOR_COMMIT_RECEIPT_MISMATCH")
+        if committed_middle:
+            transition_grade = "TEST_ONLY_B1_V3MS_MEDIATOR"
+        elif self.journal_only:
+            transition_grade = "TEST_ONLY_JOURNAL_ONLY_NO_DURABLE_EFFECT"
+        else:
+            transition_grade = "TEST_ONLY_VALID_EMPTY_NO_NEW_MEDIATOR"
         after = StateIdentity(
             self.root,
             self.actor,
@@ -418,7 +457,11 @@ class B1Owner:
             },
             consequences={
                 "grade": GRADE,
-                "durable_psychological_transition": "TEST_ONLY_B1_V3MS_MEDIATOR",
+                "durable_psychological_transition": transition_grade,
+                "new_middle_state_ids": [m["middle_state_id"] for m in committed_middle],
+                "new_middle_state_record_hashes": [
+                    m["middle_state_record_hash"] for m in committed_middle
+                ],
                 "native_science": "NOT_ISSUED",
                 "journal_only": self.journal_only,
                 "middle_state_ids": mediator_ids,
