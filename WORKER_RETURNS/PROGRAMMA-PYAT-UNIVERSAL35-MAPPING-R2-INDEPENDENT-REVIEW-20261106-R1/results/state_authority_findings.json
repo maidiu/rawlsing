@@ -1,0 +1,905 @@
+{
+  "composite_label_change_count": 362,
+  "composite_label_precise_state": [
+    {
+      "changes": 154,
+      "response_state": "DK",
+      "source_id": "SRC16",
+      "source_label": "dk, na, iap"
+    },
+    {
+      "changes": 182,
+      "response_state": "REFUSAL",
+      "source_id": "SRC24",
+      "source_label": "No answer/Refused"
+    },
+    {
+      "changes": 1,
+      "response_state": "DK",
+      "source_id": "SRC25",
+      "source_label": "DK/NA"
+    },
+    {
+      "changes": 8,
+      "response_state": "DK",
+      "source_id": "SRC25",
+      "source_label": "Don't know / Don't answer"
+    },
+    {
+      "changes": 6,
+      "response_state": "DK",
+      "source_id": "SRC25",
+      "source_label": "Don't know/No answer"
+    },
+    {
+      "changes": 1,
+      "response_state": "DK",
+      "source_id": "SRC25",
+      "source_label": "Don't know/No asnwer"
+    },
+    {
+      "changes": 6,
+      "response_state": "DK",
+      "source_id": "SRC25",
+      "source_label": "No answer/Don't know"
+    },
+    {
+      "changes": 2,
+      "response_state": "REFUSAL",
+      "source_id": "SRC25",
+      "source_label": "No answer/Refused"
+    },
+    {
+      "changes": 1,
+      "response_state": "DK",
+      "source_id": "SRC26",
+      "source_label": "Don't know / No answer"
+    },
+    {
+      "changes": 1,
+      "response_state": "DK",
+      "source_id": "SRC26",
+      "source_label": "Don't know/Don't remember"
+    }
+  ],
+  "existing_state_transitions": [
+    {
+      "changes": 283,
+      "from": "DK",
+      "to": "DK"
+    },
+    {
+      "changes": 329,
+      "from": "DK",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 398,
+      "from": "INAPPLICABLE",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 308,
+      "from": "INVALID_UNRESOLVED",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 262,
+      "from": "MISSING",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 335,
+      "from": "NOT_ASKED",
+      "to": "NOT_ASKED"
+    },
+    {
+      "changes": 477,
+      "from": "NOT_ASKED",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 338,
+      "from": "REFUSAL",
+      "to": "REFUSAL"
+    },
+    {
+      "changes": 273,
+      "from": "REFUSAL",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 167,
+      "from": "SOURCE_SPECIFIC_SPECIAL",
+      "to": "DK"
+    },
+    {
+      "changes": 407,
+      "from": "SOURCE_SPECIFIC_SPECIAL",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    },
+    {
+      "changes": 8,
+      "from": "SUBSTANTIVE_RESPONSE",
+      "to": "DK"
+    },
+    {
+      "changes": 3,
+      "from": "SUBSTANTIVE_RESPONSE",
+      "to": "NOT_ASKED"
+    },
+    {
+      "changes": 98,
+      "from": "SUBSTANTIVE_RESPONSE",
+      "to": "SOURCE_SPECIFIC_SPECIAL"
+    }
+  ],
+  "interpretation": "No substantive additions were found. Composite/ambiguous labels are mapped to single precise DK/NOT_ASKED/REFUSAL states without an exact state-authority receipt; existing states and 95 substantive values are overwritten based on declared missing range plus label.",
+  "schema": "PYAT_UNIVERSAL35_MAPPING_R2_STATE_AUTHORITY_FINDINGS@1",
+  "substantive_demotion_count": 109,
+  "substantive_demotions": [
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c10ai",
+      "source_id": "SRC31",
+      "source_label": "98: DK"
+    },
+    {
+      "new": "NOT_ASKED",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c10ai",
+      "source_id": "SRC31",
+      "source_label": "99: NA"
+    },
+    {
+      "new": "NOT_ASKED",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "d3",
+      "source_id": "SRC31",
+      "source_label": "NA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18d",
+      "source_id": "SRC31",
+      "source_label": "Could not understand"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18d",
+      "source_id": "SRC31",
+      "source_label": "No opinion"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c17",
+      "source_id": "SRC31",
+      "source_label": "No opinion"
+    },
+    {
+      "new": "NOT_ASKED",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "d13",
+      "source_id": "SRC31",
+      "source_label": "NA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18e",
+      "source_id": "SRC31",
+      "source_label": "Could not understand"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18e",
+      "source_id": "SRC31",
+      "source_label": "No opinion"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18b",
+      "source_id": "SRC31",
+      "source_label": "Could not understand"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18b",
+      "source_id": "SRC31",
+      "source_label": "No opinion"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18a",
+      "source_id": "SRC31",
+      "source_label": "Could not understand"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c18a",
+      "source_id": "SRC31",
+      "source_label": "No opinion"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "c12",
+      "source_id": "SRC31",
+      "source_label": "No opinion"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "p33",
+      "source_id": "SRC24",
+      "source_label": "No documentado"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "p33",
+      "source_id": "SRC24",
+      "source_label": "No preguntada"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "p33",
+      "source_id": "SRC24",
+      "source_label": "No aplica"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "s7",
+      "source_id": "SRC24",
+      "source_label": "Respondent is studying"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P38ST",
+      "source_id": "SRC25",
+      "source_label": "No documentado"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P38ST",
+      "source_id": "SRC25",
+      "source_label": "No preguntada"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P38ST",
+      "source_id": "SRC25",
+      "source_label": "No aplica"
+    },
+    {
+      "new": "DK",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P39ST.A",
+      "source_id": "SRC25",
+      "source_label": "DK/NA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P39STM.B",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P40ST",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.A",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.B",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.C",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.D",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.E",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.F",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.G",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.H",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.I",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.J",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.K",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.L",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P41ST.M",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.1",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.1",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.2",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.2",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.3",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.3",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.4",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.4",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.5",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.5",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.6",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.6",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.7",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.7",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.8",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.8",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.10",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.10",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.11",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.11",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.12",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.12",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.13",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.13",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.14",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.14",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.15",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.15",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.16",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.16",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.17",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.17",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.18",
+      "source_id": "SRC25",
+      "source_label": "Person not known"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P54ST.18",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t know"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P63ST",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P64ST.A",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P64N.B",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P67ST.A",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t have these services"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P67ST.B",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t have these services"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P67ST.C",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t have these services"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P67ST.D",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t have these services"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P67ST.E",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t have these services"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P67ST.F",
+      "source_id": "SRC25",
+      "source_label": "Doesn\u00b4t have these services"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P69ST.A",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P69ST.B",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P69N.D",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P69N.E",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70ST.A",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70ST.B",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70ST.C",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70ST.D",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70N.E",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70N.F",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P70N.G",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P76ST",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P77ST",
+      "source_id": "SRC25",
+      "source_label": "Don't answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P79ST",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P80ST.D",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P80ST.E",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P80ST.F",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P81ST",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P82N",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "P85ST",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S7N",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S20",
+      "source_id": "SRC25",
+      "source_label": "Respondent is studying"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S20",
+      "source_id": "SRC25",
+      "source_label": "No studies"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S25",
+      "source_id": "SRC25",
+      "source_label": "DNK/DNA"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S29",
+      "source_id": "SRC25",
+      "source_label": "Respondent is studying"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S29",
+      "source_id": "SRC25",
+      "source_label": "No studies"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S29",
+      "source_id": "SRC25",
+      "source_label": "No applicable"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S30",
+      "source_id": "SRC25",
+      "source_label": "No applicable"
+    },
+    {
+      "new": "SOURCE_SPECIFIC_SPECIAL",
+      "old": "SUBSTANTIVE_RESPONSE",
+      "slot": "S32",
+      "source_id": "SRC25",
+      "source_label": "Don\u00b4t answer / No data"
+    }
+  ]
+}

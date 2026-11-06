@@ -1,0 +1,33 @@
+{
+  "schema": "PROGRAMMA_DELTA@1",
+  "review": "PROGRAMMA-PYAT-UNIVERSAL35-MAPPING-R2-INDEPENDENT-REVIEW-20261106-R1",
+  "target_head": "7f3931607d1309e84ad068c353946831248184b3",
+  "delta": "ef43bbbbb16ac8925056f7c5bed522d6b1200ea5",
+  "axes": {
+    "mechanism_provenance": "ACCEPT_SCOPED_ENGINEERING",
+    "source_metadata_denominators": "ACCEPT_SCOPED_ENGINEERING",
+    "factual_response_state_authority": "REVISE",
+    "consumer_projection": "ACCEPT_SCOPED_ENGINEERING",
+    "full_native": "NOT_RUN"
+  },
+  "finding": "362 composite-label changes map to precise DK/NOT_ASKED/REFUSAL without exact state authority; add-if-absent default is fail-open; 95 existing substantive values are overwritten to non-substantive states (not a substantive promotion).",
+  "required_repair": [
+    "composite/ambiguous labels -> SOURCE_SPECIFIC_SPECIAL or INVALID_UNRESOLVED unless exact authority",
+    "require explicit response_state for corrections; fail closed, never substantive default",
+    "document/justify existing substantive-to-missing transitions",
+    "preserve provenance enforcement, SRC31 freeze, fixture identity and denominators"
+  ],
+  "evidence": [
+    "results/pytest_46.log",
+    "results/provenance_probe.json",
+    "results/state_probe.json",
+    "results/state_authority_findings.json"
+  ],
+  "not_run": [
+    "full C11/native/empirical execution",
+    "full 600s scan",
+    "all35 fixture floor",
+    "original DTA/native acceptance"
+  ],
+  "authority": "Nonauthor physical/mapping review only; no science/source/native/actor grant and no protected or A/D/E edits."
+}
