@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from collections import Counter
 from collections.abc import Mapping
+import copy
 from dataclasses import dataclass, fields, is_dataclass
 import json
 from typing import Any, Callable, Protocol
@@ -204,9 +205,17 @@ class NativeWorkload:
             raise WorkloadAdmissionError("CLOSED_CANONICAL_COMPLETE_DESCRIPTOR_REQUIRED")
         if any(v is None or v == "UNBOUND" for v in descriptor.values()):
             raise WorkloadAdmissionError("ISSUED_DESCRIPTOR_HAS_UNBOUND_REQUIRED_FIELD")
+        projection_material = getattr(self, "_prepared_projection_material", None)
+        catalog_material = getattr(self, "_prepared_catalog_material", None)
         envelope = dict(
-            descriptor=descriptor, projection=material(self.projection),
-            catalog=material(self.catalog), source_factory_ref=self.source_factory_ref.as_dict(),
+            descriptor=descriptor,
+            projection=(copy.deepcopy(projection_material)
+                        if projection_material is not None
+                        else material(self.projection)),
+            catalog=(copy.deepcopy(catalog_material)
+                     if catalog_material is not None
+                     else material(self.catalog)),
+            source_factory_ref=self.source_factory_ref.as_dict(),
             requests=[r.as_dict() for r in self.requests],
             discoveries=[r.as_dict() for r in self.discoveries],
             original_u_root=self.original_u_root, expected_frontier_root=self.expected_frontier_root,

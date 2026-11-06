@@ -18,7 +18,7 @@ from rawlsing_next.pre553_native_workload_binding import (
     build_discovery_authority, build_frontier_native_catalog,
     build_projection_catalog, build_test_only_discovery_workload,
     build_test_only_workload, execute_test_only_discovery_workload,
-    execute_test_only_workload,
+    execute_test_only_workload, prepare_projection_catalog,
 )
 from rawlsing_next.pre553_source_native_preimage_adapter import NativePreimageBundle
 from rawlsing_next.universal_grammar.native_map import (
@@ -151,6 +151,7 @@ def compile_universal_workload(
     """Freeze the finite administered inventory frontier before any native run."""
     if not isinstance(bundle, NativePreimageBundle):
         raise WorkloadBindingRefusal("NATIVE_PREIMAGE_BUNDLE_REQUIRED")
+    prepared = prepare_projection_catalog(bundle=bundle, as_of=as_of)
     operations: list[UniversalOperation] = []
     compiled: list[CompiledOperation] = []
     expected_jobs: list[tuple[str, str, str]] = []
@@ -189,11 +190,12 @@ def compile_universal_workload(
             )
             try:
                 catalog, request = build_projection_catalog(
-                    bundle=bundle, operation=fixture, as_of=as_of)
+                    bundle=bundle, operation=fixture, as_of=as_of,
+                    prepared=prepared)
                 issued = build_test_only_workload(
                     bundle=bundle, projection=bundle.projection, catalog=catalog,
                     request=request, operation=fixture, as_of=as_of,
-                    host=host, purpose=purpose,
+                    host=host, purpose=purpose, prepared=prepared,
                 )
                 operations.append(operation)
                 compiled.append(CompiledOperation(operation=operation, issued=issued))

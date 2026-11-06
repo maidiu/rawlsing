@@ -31,7 +31,9 @@ from rawlsing_next.pre553_discovery_exact import (
 from rawlsing_next.pre553_empirical_objects import (
     AuthoritySnapshot,
     DiscoveryAuthority,
+    EmpiricalPredicate,
     EmpiricalQuerySpec,
+    EmpiricalUniverse,
     ExactRef,
     make_empirical_predicate,
     semantic_hash,
@@ -42,6 +44,7 @@ from rawlsing_next.pre553_issued_workload import (
     NativeWorkloadResult,
     admit,
     execute_issued_workload,
+    material,
 )
 from rawlsing_next.pre553_route_b_production import I03ExecutionRequest
 from rawlsing_next.pre553_source_backed_c11_facade import (
@@ -105,29 +108,33 @@ class OperationFixture:
             raise WorkloadBindingRefusal("FIXTURE_MEASURE_UNSUPPORTED", self.measure_kind)
 
 
-def build_projection_catalog(
-    *,
-    bundle: NativePreimageBundle,
-    operation: OperationFixture,
-    as_of: str,
-) -> tuple[RuntimeObjectCatalog, I03ExecutionRequest]:
-    """Build the exact RuntimeObjectCatalog for one TEST_ONLY query operation.
 
-    Reuses the existing predicate/query/catalog owners. Refuses when the
-    fixture target is not an administered item of the projection.
-    """
+@dataclass(frozen=True)
+class PreparedProjectionCatalog:
+    """Immutable per-bundle preparation shared by value-specific catalog builds."""
+
+    bundle_hash: str
+    source_sha256: str
+    as_of: str
+    projection_identity: str
+    projection_auth: AuthoritySnapshot
+    query_auth: AuthoritySnapshot
+    universe: EmpiricalUniverse
+    members: tuple[ExactRef, ...]
+    membership: ExactRef
+    branch: EmpiricalPredicate
+    target_domains: Mapping[str, tuple[Any, ...]]
+    projection_material: Mapping[str, Any]
+
+
+def prepare_projection_catalog(
+    *, bundle: NativePreimageBundle, as_of: str,
+) -> PreparedProjectionCatalog:
+    if not isinstance(bundle, NativePreimageBundle):
+        raise WorkloadBindingRefusal("NATIVE_PREIMAGE_BUNDLE_REQUIRED")
     projection = bundle.projection
-    target_ref = bundle.question_refs.get(operation.target_variable_code)
-    target = next(
-        (q for q in projection.questions if q.native_question_ref == target_ref),
-        None,
-    ) if target_ref is not None else None
-    if target is None:
-        raise WorkloadBindingRefusal(
-            "FIXTURE_TARGET_NOT_ADMINISTERED", operation.target_variable_code
-        )
     projection_auth = next(
-        a for a in bundle.projection.authority_snapshots if a.authority_kind == "SOURCE_SEMANTICS_TOPOLOGY"
+        a for a in projection.authority_snapshots if a.authority_kind == "SOURCE_SEMANTICS_TOPOLOGY"
         and "RespondentEvent@1.0.0" in a.governed_object_families
         and "EmpiricalCoordinateFact@1.0.0" in a.governed_object_families
     )
@@ -193,6 +200,59 @@ def build_projection_catalog(
         same_respondent_binding_semantics="EXACT_SCOPED_RESPONDENT",
         operator_semantics_refs=(_ref("OPERATOR_SEMANTICS", "BOOLEAN-AND-OR-NOT"),),
     )
+    target_domains = {}
+    for code, qref in bundle.question_refs.items():
+        target_domains[code] = tuple(sorted({
+            rule.canonical_value
+            for slot in projection.response_slots
+            if slot.question_binding.native_question_ref == qref
+            for rule in slot.values
+            if rule.response_state == "SUBSTANTIVE_RESPONSE" and rule.canonical_value is not None
+        }))
+    return PreparedProjectionCatalog(
+        bundle_hash=bundle.bundle_hash, source_sha256=bundle.source_sha256,
+        as_of=as_of, projection_identity=projection.cache_identity,
+        projection_auth=projection_auth, query_auth=query_auth,
+        universe=universe, members=members, membership=membership,
+        branch=branch, target_domains=target_domains,
+        projection_material=material(projection),
+    )
+
+def build_projection_catalog(
+    *,
+    bundle: NativePreimageBundle,
+    operation: OperationFixture,
+    as_of: str,
+    prepared: PreparedProjectionCatalog | None = None,
+) -> tuple[RuntimeObjectCatalog, I03ExecutionRequest]:
+    """Build the exact RuntimeObjectCatalog for one TEST_ONLY query operation.
+
+    Reuses the existing predicate/query/catalog owners. Refuses when the
+    fixture target is not an administered item of the projection.
+    """
+    projection = bundle.projection
+    if prepared is None:
+        prepared = prepare_projection_catalog(bundle=bundle, as_of=as_of)
+    elif (
+        prepared.bundle_hash != bundle.bundle_hash
+        or prepared.source_sha256 != bundle.source_sha256
+        or prepared.as_of != as_of
+        or prepared.projection_identity != projection.cache_identity
+    ):
+        raise WorkloadBindingRefusal("PREPARED_PROJECTION_MISMATCH")
+    target_ref = bundle.question_refs.get(operation.target_variable_code)
+    target = next(
+        (q for q in projection.questions if q.native_question_ref == target_ref),
+        None,
+    ) if target_ref is not None else None
+    if target is None:
+        raise WorkloadBindingRefusal(
+            "FIXTURE_TARGET_NOT_ADMINISTERED", operation.target_variable_code
+        )
+    projection_auth = prepared.projection_auth
+    query_auth = prepared.query_auth
+    universe = prepared.universe
+    branch = prepared.branch
     response_ast = {
         "op": "LEAF",
         "leaf_type": "SURVEY_RESPONSE_EVENT",
@@ -223,13 +283,7 @@ def build_projection_catalog(
         same_respondent_binding_semantics="EXACT_SCOPED_RESPONDENT",
         operator_semantics_refs=(_ref("OPERATOR_SEMANTICS", "BOOLEAN-AND-OR-NOT"),),
     )
-    target_domain = tuple(sorted({
-        rule.canonical_value
-        for slot in projection.response_slots
-        if slot.question_binding.native_question_ref == target.native_question_ref
-        for rule in slot.values
-        if rule.response_state == "SUBSTANTIVE_RESPONSE" and rule.canonical_value is not None
-    }))
+    target_domain = prepared.target_domains.get(operation.target_variable_code, ())
     from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec
 
     grain = {
@@ -306,6 +360,7 @@ def build_test_only_workload(
     as_of: str,
     host: str,
     purpose: str,
+    prepared: PreparedProjectionCatalog | None = None,
 ) -> TestOnlyIssuedWorkload:
     """Build one TEST_ONLY NativeWorkload and its matching resolver record.
 
@@ -315,6 +370,16 @@ def build_test_only_workload(
     """
     if projection is not bundle.projection:
         raise WorkloadBindingRefusal("PROJECTION_NOT_FROM_BUNDLE")
+    if prepared is not None and (
+        prepared.bundle_hash != bundle.bundle_hash
+        or prepared.source_sha256 != bundle.source_sha256
+        or prepared.as_of != as_of
+        or prepared.projection_identity != projection.cache_identity
+    ):
+        raise WorkloadBindingRefusal("PREPARED_PROJECTION_MISMATCH")
+    projection_material = (
+        prepared.projection_material if prepared is not None else material(projection)
+    )
     native_item_ids = tuple(
         sorted(item.source_variable_code for item in bundle.administered)
     )
@@ -373,6 +438,8 @@ def build_test_only_workload(
         original_u_root=original_u_root,
         expected_frontier_root=expected_frontier_root,
     )
+    object.__setattr__(workload, "_prepared_projection_material", projection_material)
+    object.__setattr__(workload, "_prepared_catalog_material", material(catalog))
     envelope_sha256 = _hash(workload.envelope())
     record = IssuedWorkloadRecord(
         decision_ref=decision_ref,
@@ -443,6 +510,7 @@ def execute_test_only_workload(
 __all__ = [
     "DESCRIPTOR_FIELDS",
     "OperationFixture",
+    "PreparedProjectionCatalog",
     "SCHEMA",
     "TEST_ONLY_SCOPE",
     "TestOnlyIssuedWorkload",
@@ -454,6 +522,7 @@ __all__ = [
     "build_frontier_native_catalog",
     "build_projection_catalog",
     "build_test_only_discovery_workload",
+    "prepare_projection_catalog",
     "build_test_only_workload",
     "execute_test_only_discovery_workload",
     "execute_test_only_workload",
