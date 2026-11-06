@@ -124,3 +124,6 @@ PROGRAMMA_DELTA — Universal35 B operation adapter
 
 ### D r1 identity/occurrence/frontier receiving
 F `dd2158e4b89976310632f722239a0da3a352f14a` B_PAYLOAD_REVISE is addressed in D r1: OriginalItemID is distinct from physical code, occurrence facts are source-config-derived, and only explicit planned F2/F3/F4 operations are lowered. Current OriginalID/occurrence plan ref is `aae15f52877e4eb0c61bfbfb47efc2d650d3289036ce38d3a76acee1b1e84e20`; historical ref `3e3a604a…` and status-repair ref `9ae291ca…` remain recorded. Counts are unchanged: 5630/4655/8131/51/0, route 676/4705/249. See `WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-D-20261106-R1/01_R1_RETURN.md`.
+
+### D/B r2 exact-frontier receiving
+Supplied frontiers are now required to equal the plan-derived frontier by content hash and operation identity/material counters; extra, substituted, duplicate, missing or incomplete frontiers are refused. All35 frontier accounting is explicit: 20 sources have planned non-F1 frontiers, 15 are typed no-request, total 991 operations (21 eligible / 970 held-or-unknown). Route labels are `candidate_raw_total=5630`, `route_qualified_total=676`, `route_unknown_total=4705`, `route_rule_unavailable_total=249`. See `WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-D-20261106-R1/02_R2_RETURN.md`.

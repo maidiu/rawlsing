@@ -14,7 +14,7 @@ import pytest
 from rawlsing_next.pre553_original35_operations import (
     EXECUTABLE, DEFERRED, HELD, INAPPLICABLE, OPERATION_F1, OPERATION_F2,
     OPERATION_F3H, OPERATION_F3R, OPERATION_F4, SOURCE_PRESENT,
-    Original35OperationError, bind_governed_frontier,
+    Original35OperationError, account_all35_frontiers, bind_governed_frontier,
     build_frontier_inputs_from_plan, build_original35_operation_plan,
     execute_plan_universal,
 )
@@ -169,6 +169,12 @@ def test_all35_no_drop_plan_accounts_every_original_item_and_slot():
         _packs(), source_presence=_presence(), require_all35=True)
     assert again.plan_ref == plan.plan_ref
     # Bounded whole-estate construction; broad but finite.
+    accounting = account_all35_frontiers(plan)
+    assert accounting["sources"] == 35
+    assert (accounting["explicit_frontier_sources"]
+            + accounting["no_explicit_request_sources"]) == 35
+    assert accounting["no_explicit_request_sources"] == 15
+    assert accounting["frontier_operation_count"] > 0
     assert elapsed < 60
 
 
@@ -350,3 +356,42 @@ def test_original_id_identity_refusals_and_route_unknown_not_administered(tmp_pa
     assert all(not (op.targets and op.targets[0].item_id == original_id
                     and op.disposition == "ELIGIBLE")
                for op in frontier.operations)
+
+
+def test_supplied_frontier_must_be_exact_plan_derived_no_extras(tmp_path):
+    bundle, _ = _frontier_bundle(tmp_path / "s35_exact_frontier.sav")
+    config = _fixture_config(bundle)
+    plan = build_original35_operation_plan(
+        [config], source_presence={"SRC01": True}, require_all35=False)
+    inventory, policy, frontier = build_frontier_inputs_from_plan(
+        plan, source_id="SRC01")
+    baseline = bind_governed_frontier(
+        plan, bundle=bundle, inventory=inventory, policy=policy,
+        frontier=frontier, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert baseline.content_hash
+
+    extra = replace(frontier, operations=frontier.operations + (frontier.operations[0],))
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            plan, bundle=bundle, inventory=inventory, policy=policy,
+            frontier=extra, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    substituted = replace(
+        frontier, operations=(replace(frontier.operations[0], disposition="HELD",
+                                      reasons=("SUBSTITUTED",)),)
+        + frontier.operations[1:])
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            plan, bundle=bundle, inventory=inventory, policy=policy,
+            frontier=substituted, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    missing = replace(frontier, operations=frontier.operations[:-1])
+    with pytest.raises(Original35OperationError):
+        bind_governed_frontier(
+            plan, bundle=bundle, inventory=inventory, policy=policy,
+            frontier=missing, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+
+    restored = bind_governed_frontier(
+        plan, bundle=bundle, inventory=inventory, policy=policy,
+        frontier=frontier, as_of=AS_OF, host=HOST, purpose=PURPOSE)
+    assert restored.content_hash == baseline.content_hash

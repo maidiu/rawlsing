@@ -831,6 +831,73 @@ def _plan_frontier_missing(plan: Original35OperationPlan, source_id: str,
             missing.append("F2:" + target + "<-" + conditioner)
     return tuple(sorted(set(missing)))
 
+def _frontier_operation_counter(frontier: Any) -> Counter:
+    return Counter((op.op_id, semantic_hash(op.material()))
+                   for op in frontier.operations)
+
+
+def account_all35_frontiers(plan: Original35OperationPlan) -> dict[str, Any]:
+    """Explicit per-source frontier accounting; never invent F2-F4 requests."""
+    if not isinstance(plan, Original35OperationPlan):
+        raise Original35OperationError("ORIGINAL35_OPERATION_PLAN_REQUIRED")
+    rows = []
+    explicit = 0
+    no_request = 0
+    total_ops = 0
+    total_eligible = 0
+    total_held = 0
+    for row in plan.rows:
+        source_ops = [op for op in plan.operations if op.source_id == row.source_id]
+        f1_ops = [op for op in source_ops if op.kind == OPERATION_F1]
+        try:
+            inventory, policy, frontier = build_frontier_inputs_from_plan(
+                plan, source_id=row.source_id)
+        except Original35OperationError as exc:
+            if str(exc).startswith("NO_EXPLICIT_PLANNED_FRONTIER"):
+                status = "NO_EXPLICIT_PLANNED_FRONTIER"
+                no_request += 1
+            else:
+                raise
+            rows.append({
+                "source_id": row.source_id, "status": status,
+                "f1_operation_count": len(f1_ops),
+                "f2_f3_f4_operation_count": len(source_ops) - len(f1_ops),
+                "frontier_operation_count": 0, "eligible": 0, "held": 0,
+                "unknown": 0, "inventory_occurrences": 0,
+                "reason": "NO_EXPLICIT_PLANNED_F2_F3_F4_REQUEST",
+            })
+            continue
+        counts = Counter(op.disposition for op in frontier.operations)
+        eligible = counts.get(ELIGIBLE, 0)
+        held = counts.get(HELD, 0) + counts.get(UNKNOWN, 0)
+        explicit += 1
+        total_ops += len(frontier.operations)
+        total_eligible += eligible
+        total_held += held
+        rows.append({
+            "source_id": row.source_id, "status": "EXPLICIT_PLANNED_FRONTIER",
+            "f1_operation_count": len(f1_ops),
+            "f2_f3_f4_operation_count": len(source_ops) - len(f1_ops),
+            "frontier_operation_count": len(frontier.operations),
+            "eligible": eligible, "held": held,
+            "unknown": counts.get(UNKNOWN, 0),
+            "inventory_occurrences": len(inventory.occurrences),
+            "inventory_hash": inventory.content_hash,
+            "policy_hash": policy.content_hash,
+            "frontier_hash": frontier.content_hash,
+            "reason": None,
+        })
+    return {
+        "schema": "PRE553_ORIGINAL35_FRONTIER_ACCOUNTING@1.0.0",
+        "sources": len(plan.rows), "explicit_frontier_sources": explicit,
+        "no_explicit_request_sources": no_request,
+        "frontier_operation_count": total_ops,
+        "frontier_eligible_count": total_eligible,
+        "frontier_held_or_unknown_count": total_held,
+        "rows": rows, "native": False,
+    }
+
+
 def bind_governed_frontier(plan: Original35OperationPlan, *, bundle: Any,
                            inventory: Any | None = None, policy: Any | None = None,
                            frontier: Any | None = None,
@@ -838,17 +905,37 @@ def bind_governed_frontier(plan: Original35OperationPlan, *, bundle: Any,
                            as_of: str, host: str, purpose: str) -> Any:
     """Wire actual planned F2/F3/F4 payload into CURRENT compiler inputs."""
     sid = source_id or (plan.rows[0].source_id if plan.rows else None)
-    if inventory is None or policy is None or frontier is None:
-        inventory, policy, frontier = build_frontier_inputs_from_plan(
-            plan, source_id=sid)
-    else:
-        if inventory.source_sha256 != next(
-                row.source_sha256 for row in plan.rows if row.source_id == sid):
-            raise Original35OperationError("PROVIDED_INVENTORY_SOURCE_MISMATCH")
-    missing = _plan_frontier_missing(plan, sid, frontier)
-    if missing:
+    expected_inventory, expected_policy, expected_frontier = (
+        build_frontier_inputs_from_plan(plan, source_id=sid))
+    if inventory is not None or policy is not None or frontier is not None:
+        if inventory is None or policy is None or frontier is None:
+            raise Original35OperationError("GOVERNED_FRONTIER_INPUTS_INCOMPLETE")
+        checks = {
+            "inventory": inventory.content_hash == expected_inventory.content_hash,
+            "policy": policy.content_hash == expected_policy.content_hash,
+            "frontier": frontier.content_hash == expected_frontier.content_hash,
+        }
+        expected_counter = _frontier_operation_counter(expected_frontier)
+        actual_counter = _frontier_operation_counter(frontier)
+        extras = actual_counter - expected_counter
+        missing = expected_counter - actual_counter
+        duplicate_ids = tuple(sorted(
+            op_id for op_id, count in Counter(
+                op.op_id for op in frontier.operations).items() if count > 1))
+        if not all(checks.values()) or extras or missing or duplicate_ids:
+            raise Original35OperationError(
+                "GOVERNED_FRONTIER_NOT_EXACTLY_PLAN_DERIVED:" + json.dumps({
+                    "checks": checks,
+                    "extra": [list(key) for key in sorted(extras)],
+                    "missing": [list(key) for key in sorted(missing)],
+                    "duplicate_operation_ids": list(duplicate_ids),
+                }, sort_keys=True))
+    inventory, policy, frontier = (
+        expected_inventory, expected_policy, expected_frontier)
+    missing_payload = _plan_frontier_missing(plan, sid, frontier)
+    if missing_payload:
         raise Original35OperationError(
-            "GOVERNED_FRONTIER_PLAN_PAYLOAD_MISSING:" + ",".join(missing))
+            "GOVERNED_FRONTIER_PLAN_PAYLOAD_MISSING:" + ",".join(missing_payload))
     alias_bundle = _bundle_with_plan_aliases(plan, sid, bundle)
     compilation = compile_governed_frontier(
         bundle=alias_bundle, inventory=inventory, policy=policy, frontier=frontier,
@@ -862,7 +949,8 @@ __all__ = [
     "OPERATION_F3R", "OPERATION_F4", "Original35OperationError",
     "Original35OperationPlan", "PlanOperation", "RAW", "SCHEMA",
     "SOURCE_NOT_PRESENT_HERE", "SOURCE_PRESENT", "SOURCE_UNVERIFIED",
-    "SourceRow", "UniversalLowering", "WEIGHTED", "bind_governed_frontier",
-    "build_frontier_inputs_from_plan", "build_original35_operation_plan",
+    "SourceRow", "UniversalLowering", "WEIGHTED", "account_all35_frontiers",
+    "bind_governed_frontier", "build_frontier_inputs_from_plan",
+    "build_original35_operation_plan",
     "execute_plan_universal", "lower_to_universal_workload",
 ]
