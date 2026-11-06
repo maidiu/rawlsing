@@ -1,0 +1,47 @@
+{
+  "branch": "agent/sorok-p3-compression-evidence-20261106-r1",
+  "candidate_commit": "PENDING_ARTIFACT_COMMIT",
+  "checks": [
+    "all four representation forms pass preflight and bind",
+    "sourcefree source hashes, root/actor/branch, window, and grade validation",
+    "source kind and exact window requirements per form",
+    "wrong proposal/context/identity/clock and actual-event bindings refuse",
+    "actual interval receipt required for ACCUMULATED_INTERVAL",
+    "absent actor access returns HELD; no false NO_CHANGE",
+    "user-view marker / wrong actor access refused",
+    "unsupported fields, global multiplier, witness count and automatic effects refused",
+    "deterministic pure bind with no input mutation, no psychological or state effects"
+  ],
+  "duration_seconds_observed": 0.11,
+  "exit": 0,
+  "failed": 0,
+  "passed": 22,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "pytest_log": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/compression/pytest.log",
+  "pytest_log_sha256": "b411c023c70b8479e9c4dc98b4a317930ed647ad5f3b6f0ea8bcb3a01496dd08",
+  "runtime": {
+    "effort": "max",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "model_verification": "commission/session assignment; no separate model probe",
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "Python 3.11.3",
+    "quota": "UNKNOWN_UNOBSERVED"
+  },
+  "schema": "SOROK_P3_COMPRESSION_EVIDENCE_TEST_RESULTS@1.0.0",
+  "scope": {
+    "adp016_017_memory_or_claim": false,
+    "ci": false,
+    "metadata_only": true,
+    "original_sav_read": false,
+    "p2_batch_rerun": false,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "sourcefree": true
+  },
+  "skipped": 0,
+  "startup_commit": "7db475fb29c0977d2c368dc2f83b5471f0a59460",
+  "test_command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1 python3 -m pytest WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_compression.py -q -o addopts=\"\" -p no:cacheprovider",
+  "worker": "sorok-p3-compression-evidence-r1"
+}
