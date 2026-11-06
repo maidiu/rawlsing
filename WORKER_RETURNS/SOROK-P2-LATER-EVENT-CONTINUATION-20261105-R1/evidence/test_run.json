@@ -1,0 +1,42 @@
+{
+  "cli_evidence_commands": [
+    "python3 -B -m p2_continuation.cli positive --state .local-logs/p2-evidence/positive/state > evidence/positive.json",
+    "python3 -B -m p2_continuation.cli scheduled --state .local-logs/p2-evidence/scheduled/state > evidence/scheduled.json",
+    "python3 -B -m p2_continuation.cli cut-restore --state .local-logs/p2-evidence/cut/state > evidence/cut_restore.json",
+    "python3 -B -m p2_continuation.cli cold --state .local-logs/p2-evidence/positive/state --event-ref TEST_ONLY_BP2_E1_OCC-0002 --event-ref TEST_ONLY_BP2_E1_OCC-0003 > evidence/cold.json",
+    "python3 -B -m p2_continuation.cli verify --state .local-logs/p2-evidence/positive/state > evidence/verify_positive.json"
+  ],
+  "cli_exit_codes": {
+    "cold": 0,
+    "cut_restore": 0,
+    "positive": 0,
+    "scheduled": 0,
+    "verify_positive": 0
+  },
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD python3 -B -m pytest -q -p no:cacheprovider --junitxml=evidence/junit.xml tests",
+  "cwd": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
+  "duration_seconds": 84.85,
+  "errors": 0,
+  "exit_code": 0,
+  "failures": 0,
+  "not_run": [
+    "inherited full S45-S47 estate suite not rerun",
+    "no native/human/Pyat/provider execution",
+    "no protected or shipped product edits"
+  ],
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "pytest": "9.1.1",
+  "python": "3.11.3",
+  "schema": "SOROK_P2_LATER_EVENT_TEST_RUN@1",
+  "skipped": 0,
+  "status": "PASS",
+  "summary": "5 passed",
+  "test_cases": [
+    "test_positive_later_event_chain_and_projected_refusal",
+    "test_producer_and_first_consumers_are_named_callables",
+    "test_scheduled_control_same_root_accepts_help",
+    "test_interval_condition_cut_refuses_then_restores",
+    "test_cli_reads_existing_positive_chain"
+  ],
+  "tests_passed": 5
+}
