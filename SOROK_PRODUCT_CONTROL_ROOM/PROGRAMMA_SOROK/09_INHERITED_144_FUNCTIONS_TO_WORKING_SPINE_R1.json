@@ -10631,7 +10631,7 @@
     ]
   },
   "hq_p2_interval_later_20261105": {
-    "status": "AUTHOR_TESTED_CANDIDATE_INDEPENDENT_REVIEW_RUNNING_NOT_ADOPTED",
+    "status": "ORIGINAL_CUTS_INDEPENDENT_REVISE_REPAIRS_PENDING_CLOSURE",
     "auto_ready": false,
     "interval": {
       "commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
@@ -10639,7 +10639,7 @@
       "path": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
       "grade": "TEST_ONLY_S45_S47_EXPLICIT_INTERVAL_CONTINUATION_NOT_NATIVE",
       "author_tests": "6 PASS in55.59s",
-      "independent_review": "RUNNING sorok-p2-interval-later-independent-review-20261105-r1; no published verdict",
+      "independent_review": "REVISE@f1a2872487b3aa492632a497ad7481e8529d937e for original bdadbc57; repaired7a256 not reviewed yet",
       "first_consumer": "run_explicit_interval_flow.py continue -> existing run_s45_s47.py interval/admit/c9 -> S45Projection",
       "observed": {
         "actual_material": 0,
@@ -10650,11 +10650,13 @@
         "cut_refusal": "S46_INTERVAL_CONDITION_REVOKED",
         "cold_continuity": true
       },
-      "status": "AUTHOR_TESTED_CANDIDATE_REPAIR_RUNNING_NOT_ACCEPTED",
+      "status": "ORIGINAL_BDAD_REVISE_REPAIR_AUTHOR_TESTED_NOT_ACCEPTED",
       "repair_branch": "sorok-p2-interval-attempt-boundary-repair-20261105-r1",
-      "repair_status": "RUNNING; no repair SHA/acceptance yet",
+      "repair_status": "RETURNED_AUTHOR_TESTED_6PASS_INDEPENDENT_CLOSURE_RUNNING",
       "accepted": false,
-      "defect": "standalone interval bdad admit_continuation automatically calls adapter.do_help, violating observation versus user attempt; fanin bypasses the offending helper"
+      "defect": "standalone interval bdad admit_continuation automatically calls adapter.do_help, violating observation versus user attempt; fanin bypasses the offending helper",
+      "repair_commit": "7a256ed4873155dfad86faf2464110ee6f1e2ad4",
+      "next_action": "Receive independent closure job sorok-p2-interval-repair-independent-closure-20261105-r1; no inherited acceptance"
     },
     "later_event": {
       "commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
@@ -10662,7 +10664,7 @@
       "path": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
       "grade": "TEST_ONLY_SOURCEFREE_P2_LATER_EVENT_CONTINUATION_NOT_NATIVE",
       "author_tests": "5 PASS in84.85s",
-      "independent_review": "RUNNING sorok-p2-interval-later-independent-review-20261105-r1; no published verdict",
+      "independent_review": "REVISE@f1a2872487b3aa492632a497ad7481e8529d937e",
       "producer": "s43.session.S43Session.admit_event",
       "first_consumers": [
         "s45.session.S45Session.read_event -> s42.reader.read_event",
@@ -10685,9 +10687,12 @@
         "cold_same_root_and_source": true,
         "attend_presentation_only": true
       },
-      "status": "AUTHOR_TESTED_CANDIDATE_INDEPENDENT_REVIEW_RUNNING_NOT_ADOPTED",
+      "status": "INDEPENDENT_REVISE_PUBLIC_PROJECTION_AND_IMPLICIT_ATTEMPT",
       "accepted": false,
-      "fanin_observation": "fanin observes the real later event/source-bound expression/C9 opportunity without auto DO_HELP; this is not independent acceptance"
+      "fanin_observation": "fanin observes the real later event/source-bound expression/C9 opportunity without auto DO_HELP; this is not independent acceptance",
+      "defect": "Public positive/scheduled CLI exposes internal source/plan/root/readset fields and automatically attempts user DO_HELP; primitive causal chain passed",
+      "repair_status": "RUNNING sorok-p2-later-public-boundary-repair-20261105-r1",
+      "next_action": "Receive exact public boundary repair, preserve causal positives; independent closure before acceptance"
     },
     "product_fanin": {
       "status": "RETURNED_AUTHOR_TESTED_NOT_INDEPENDENTLY_ACCEPTED",
@@ -10788,7 +10793,8 @@
       "A producer remains closed duplicate #690; not relaunched"
     ],
     "currentness_note": "Interval remains author-tested candidate with repair RUNNING; fanin returned author-tested but is NOT independently accepted. No dependent READY.",
-    "record_effect": "Interval remains author-tested candidate with repair RUNNING; fanin returned author-tested but is NOT independently accepted. No dependent READY."
+    "record_effect": "Interval remains author-tested candidate with repair RUNNING; fanin returned author-tested but is NOT independently accepted. No dependent READY.",
+    "independent_review_commit": "f1a2872487b3aa492632a497ad7481e8529d937e"
   },
   "hq_p2_product_fanin_20261105": {
     "status": "RETURNED_AUTHOR_TESTED_NOT_INDEPENDENTLY_ACCEPTED",
@@ -10815,7 +10821,8 @@
       "defect": "admit_continuation invokes adapter.do_help(), auto-executing a user DO_HELP attempt",
       "fanin_mitigation": "fanin bypasses admit_continuation; uses apply_explicit_interval and later-event observation; DO_HELP only on explicit command",
       "repair_branch": "sorok-p2-interval-attempt-boundary-repair-20261105-r1",
-      "repair_status": "RUNNING; no repair SHA/acceptance yet"
+      "repair_status": "RETURNED_AUTHOR_TESTED_PENDING_INDEPENDENT_CLOSURE",
+      "repair_commit": "7a256ed4873155dfad86faf2464110ee6f1e2ad4"
     },
     "sources": [
       {
@@ -10832,6 +10839,8 @@
         "role": "upstream interval admit_continuation auto DO_HELP defect evidence"
       }
     ],
-    "record_effect": "Fanin returned author-tested; independent review NOT_RUN; not accepted. No dependent READY."
+    "record_effect": "Fanin returned author-tested; independent review NOT_RUN; not accepted. No dependent READY.",
+    "upstream_review": "f1a2872487b3aa492632a497ad7481e8529d937e REVISE original interval and later cuts; integrated fanin remains author-tested",
+    "next_action": "Refresh repaired interval import via running sorok-p2-fanin-interval-repair-intake-20261105-r1; later public repair and final independent fanin review remain pending"
   }
 }
