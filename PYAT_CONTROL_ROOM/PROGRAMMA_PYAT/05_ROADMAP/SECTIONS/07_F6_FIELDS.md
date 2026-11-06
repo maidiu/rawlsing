@@ -1,5 +1,8 @@
 # ROADMAP:S07 — F6 lawful multi-field, independent-survey composition
 
+> **2026-11-06 UNIVERSAL35 F6 EVIDENCE SEAM — documentary candidate.** [Source-pack 35/35 manifest and per-source exceptions](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/01_SOURCE_ROSTER_AND_STATUS.md) supplies a generic cross-field **source-indexed** empirical substrate; F6 must never counterfeit cross-survey same respondents. Cross-source comparability and structural field content are separately asserted when actual sources/meaning warrant it, but RAW within-source artifact production is not globally blocked. [Current execution order](../PRE553_UNIVERSAL35_RECOVERY_20261106_R1/02_FUNCTION_EVIDENCE_AND_PRIORITIES.md).
+
+
 ## NEXT R F6 independent-source transport remains source-owner gated — 2026-11-03
 
 **S07.1–S07.4; GAP-030–033.** Historical F6M partial nonpooled relations and W41 read-only adjacent evidence display **do not establish** original independent-survey composition or transport into a served N9. A two-source estimand/target/overlap/permissions and actual receiver are an **AND** gate when F6 is demanded, not automatic work for every F family. E1's F6 tree/older witness is current-path **UNKNOWN for native consumer**, not globally absent sourcefree code. Compare inherited candidates only by exact ABI/first reader/owner and five-test gain; see [82 edge evidence grades](../NEXT_R_82_CURRENTNESS_AND_FIRST_READERS.md) and [49 current GAP dispositions](../NEXT_R_GAP49_NEXT_DECISIONS.md).
