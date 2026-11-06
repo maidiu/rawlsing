@@ -496,3 +496,25 @@ Darwin `ru_maxrss` bytes, and compares **full fact material** (`fact.as_dict()`)
 including cells, refs, provenance, and replay against V0. N=200 and N=1,000 are
 separate commands. Tiny N=3 smoke is `SMOKE_ONLY_NOT_BENCHMARK`; no timing conclusion
 is drawn.
+
+### Phase-3 measured outcome
+
+The prepared V0/V1/V2 driver ran N=200 and N=1,000. All variants shared the same
+sealed source SHA, projection identity, and C11 release; full `EmpiricalFact`
+material (cells, refs, provenance, replay) was exactly equal. V2 used a non-empty
+decoder binding and passed cold miss/write plus warm HIT.
+
+Key measured facts at N=1,000: V0 native 21.29 s parent / 153.8 MB peak RSS; V1
+compact 21.76 s / 263.4 MB; V2 cold 21.55 s / 272.3 MB with 1,716,950 cache bytes;
+V2 warm 21.03 s / 265.7 MB, compact conversion 2.27→0.74 s. Validation/query/fact
+remain dominant, so the warm cache improves conversion but not total wall at this
+synthetic fixture. Compact peak RSS is higher than native at both sizes; this is a
+controlled same-release result, not all35 production evidence.
+
+The same compact release then ran no-scope vs bounded `group_scope`: warm median
+1.422→0.593 s at N=200 and 6.724→2.656 s at N=1,000 (2.40×/2.53×), with exact cold/
+warm/single/incompatible/capacity facts and an independent row oracle PASS. Counters
+at N=1,000 reduced routing/predicate/target calls 22,001/13,428/10,294 → 2/2/2 and
+weight 10,294 → 1,715. Single-operation and incompatible-first costs are honest
+outliers (+9.0%/+25.4% at N=1,000); capacity fallback is exact but slower and
+unproven. No N=3000 was required.

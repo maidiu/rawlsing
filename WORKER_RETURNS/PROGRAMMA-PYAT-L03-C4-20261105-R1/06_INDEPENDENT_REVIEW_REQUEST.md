@@ -144,3 +144,16 @@ comparison/plan sections in `01`/`05` (plus ordinary status entries in `00`/`02`
 `409be32f7e4b4b961a360be1c8f44a17b5c62173`, production source, numerical tests,
 authority, source, guide, or the independent R03 scope. Timed comparison runs are
 **NOT_RUN** here; HQ schedules the driver after R03 releases the timed runner.
+
+## Phase-3 measurement context
+
+R03 is complete at `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` with
+`ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; that
+acceptance does **not** extend to whole L03. Phase-3 then ran the prepared compact
+comparison and compact-grouped measurement without changing production/tests:
+V0/V1/V2-cold/warm full-fact parity and V2 cache HIT passed, and compact-release
+grouped no-scope vs scope passed exact cold/warm/single/incompatible/capacity checks
+with independent row oracle PASS. Timings are sourcefree synthetic N=200/N=1,000
+only; no N=3000/all35 claim. Capacity fallback was exact but slower and is unproven.
+No new independent review is requested for this measurement-only phase; HQ retains
+the R03-scoped acceptance record and may use these artifacts as supporting evidence.

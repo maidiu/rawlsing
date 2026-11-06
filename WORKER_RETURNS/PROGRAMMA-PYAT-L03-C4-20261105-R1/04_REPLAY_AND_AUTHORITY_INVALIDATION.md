@@ -215,3 +215,24 @@ functional tests and are **NOT_RUN** in this preparation:
 No blanket cache default, retention policy, extra bitmap/index, new carrier, or
 persistent truth is introduced by the driver. Cache presence still does not grant
 authority; source/permission/revocation checks remain outside it.
+
+## Phase-3 measured compact cache/grouped evidence
+
+The prepared compact comparison ran at N=200/N=1,000. V2 used an `ExactPhysicalCellStream`
+with non-empty `decoder_metadata_digest`; cold wrote one authenticated Parquet/Zstd
+slot and warm read it with no write, while a legacy `PhysicalSourceIncidence` with
+`physical_binding=None` was not used. V0/V1/V2-cold/V2-warm full fact/cell/ref/
+provenance/replay equality passed; release/source/projection identity equality passed.
+
+Compact cache bytes were 318,780 at N=200 and 1,716,950 at N=1,000. Warm compact
+conversion fell from 1.97→0.33 s and 2.27→0.74 s versus V1, but total wall remained
+dominated by validation/query/fact. Compact peak RSS remained higher than V0 at both
+sizes. Delete/corrupt/stale/revoked behavior remains existing functional-test
+coverage and was **NOT_RUN** in this measurement.
+
+The same compact release was then measured with no scope versus bounded
+`I03GroupedExecutionScope`: cold/warm/single/incompatible/capacity full facts matched,
+independent row oracle PASS, and counters showed actual routing/predicate/target work
+removal. Capacity fallback (`max_groups=1`) was exact but slower, so it is reported as
+unproven, not a basis for production repair. R03's 82–92 P41 fallbacks remain a
+nonblocking limit.

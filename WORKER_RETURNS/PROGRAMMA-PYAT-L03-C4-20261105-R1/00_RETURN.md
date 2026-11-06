@@ -1,7 +1,8 @@
 # PROGRAMMA PYAT L03 / C4 — Phase-2 implemented grouped economy
 
-**Status:** PHASE-2 COMPLETE / P2 IMPLEMENTED AND FROZEN / PHASE-3 COMPARISON DRIVER PREPARED, NOT RUN.
-**Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683` (artifact-only; frozen implementation remains `409be32f7e4b4b961a360be1c8f44a17b5c62173`).
+**Status:** PHASE-2 COMPLETE / P2 FROZEN / PHASE-3 COMPACT COMPARISON AND COMPACT-GROUPED MEASUREMENT COMPLETE.
+**Preparation commit:** `83fcb4f760b1e150333b34a2e90d8c980661d683`. **Measurement commit:** `__MEASURE_SHA__`.
+**Independent R03:** `e2f6c1649801b42a475ce3d81f3d85a7c5ccb5b3` = `ACCEPT_SCOPED_P2` for frozen `409be32f7e4b4b961a360be1c8f44a17b5c62173`; not whole L03.
 **Branch:** `perf/programma-pyat-w05-p03-f1f4-grouped-economy-20261105-r1`
 **Base:** `8ffec40a6924848a49f95950aa9ce28c27ee3ec1`
 **Phase-1 checkpoint:** `05a9abccded29dfcf7e27b5febcecb4442c8714d` (artifact `da7be66893217175f9301717c7f1693e6ca89ed8`)
@@ -175,45 +176,57 @@ per operation.
 No scientific contract change is proposed. Qualified guide write-through remains
 HQ's duty; this is not a second guide.
 
-## Phase-3 preparation: compact physical comparison driver (NOT RUN)
+## Phase-3 measured compact comparison and compact-grouped result
 
-`tools/bench_compact_current.py` is prepared and tiny-smoke checked. It performs a
-same-sealed-source/release/projection comparison, not an architecture bakeoff:
+`tools/bench_compact_current.py` ran N=200 and N=1,000 with fresh processes for
+V0 (full native), V1 (default compact Arrow), V2-cold and V2-warm (same compact
+facade with explicit workload-owned Parquet/Zstd cache). All four variants used the
+same sealed source/projection/release; full `EmpiricalFact.as_dict()` material was
+equal for every operation, and V2 cold miss/write plus warm HIT were verified.
 
-- **V0:** full validated native `C11LogicalRelease` + `C11Repository` + actual
-  `CarrierNeutralResearchExecutor.execute_i03`.
-- **V1:** existing default compact Arrow facade (`build_source_backed_c11_repository`).
-- **V2-cold / V2-warm:** same compact facade with an explicit workload-owned private
-  existing Parquet/Zstd cache root. V2 uses an `ExactPhysicalCellStream` with a
-  non-empty `decoder_metadata_digest`; the coordinator verifies cold miss/write and
-  warm HIT. A legacy in-memory `PhysicalSourceIncidence` with
-  `physical_binding=None` is explicitly not used as a cache HIT.
+Compact comparison highlights (sourcefree, tiny synthetic fixture; not all35):
 
-Each variant runs in a **fresh process**; the coordinator runs variants sequentially
-and compares **full `EmpiricalFact.as_dict()`** (cells, refs, provenance, replay) per
-operation against V0. N=200 and N=1,000 are separately invocable. Tiny N=3 smoke
-passed with exact facts, equal release/source identity, and V2 cold miss/write plus
-warm HIT.
+| N | variant | parent wall | validation | compact conversion | query | fact+replay | peak RSS | cache bytes |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|
+| 200 | V0 native | 6.18 s | 2.67 s | n/a | 1.70 s | 0.39 s | 63.2 MB | n/a |
+| 200 | V1 compact | 6.56 s | 1.94 s | 1.97 s | 1.14 s | 0.29 s | 135.0 MB | n/a |
+| 200 | V2 cold | 5.40 s | 1.87 s | 1.04 s | 1.03 s | 0.28 s | 142.2 MB | 318,780 |
+| 200 | V2 warm | 4.34 s | 1.78 s | 0.33 s | 1.04 s | 0.28 s | 109.5 MB | 318,780 |
+| 1000 | V0 native | 21.29 s | 9.24 s | n/a | 6.15 s | 1.51 s | 153.8 MB | n/a |
+| 1000 | V1 compact | 21.76 s | 9.61 s | 2.27 s | 5.28 s | 1.54 s | 263.4 MB | n/a |
+| 1000 | V2 cold | 21.55 s | 9.20 s | 2.36 s | 5.17 s | 1.52 s | 272.3 MB | 1,716,950 |
+| 1000 | V2 warm | 21.03 s | 9.92 s | 0.74 s | 5.82 s | 1.69 s | 265.7 MB | 1,716,950 |
 
-**Timings are NOT_RUN here.** The R03 reviewer owns the timed runner. HQ may run the
-following after R03 releases it:
+V2 warm removes most compact-conversion cost, but total wall remains dominated by
+validation/query/fact and is not materially better than V0 at this fixture. The
+compact path is higher RSS at both sizes; phase-1's cross-setup memory comparison is
+not used as a controlled claim.
 
-```sh
-RUNNER=/tmp/rawlsing-oct28-p1r1/venv/bin/python
-TMPDIR="$PWD/.local-logs/pyat-l03-c4/tmp" PYTHONHASHSEED=0 PYTHONDONTWRITEBYTECODE=1 "$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py   --mode compare --n 200 --outdir .local-logs/pyat-l03-c4/compact_compare/n200
-# then n=1000 with a distinct outdir
-```
+Compact-release grouped measurement reused the same fixture/release and actual
+first consumer (not a native tuple benchmark):
 
-Cold/warm are included. Delete/corrupt/stale/revoke remain covered by existing
-functional cache tests, referenced in `04_REPLAY_AND_AUTHORITY_INVALIDATION.md`;
-they are **NOT_RUN** in this preparation. No extra bitmap/index, new carrier,
-persistent truth, blanket cache default, or owner acceptance is introduced.
+| N | cold no-scope / grouped | warm no-scope median | warm grouped median | speedup | single-op Δ | incompatible-first Δ | oracle |
+|---:|---:|---:|---:|---:|---:|---:|---|
+| 200 | 1.576 / 1.284 s | 1.422 s | 0.593 s | 2.40× | +47.9% | −3.6% | PASS |
+| 1000 | 6.774 / 6.228 s | 6.724 s | 2.656 s | 2.53× | +9.0% | +25.4% | PASS |
+
+Grouped counters on the compact source-backed release reduced routing/predicate/
+target calls from 22,001/13,428/10,294 to 2/2/2 at N=1,000 (the 2 are the unsupported
+negative fallback); weight calls fell from 10,294 to 1,715. Capacity fallback with
+`max_groups=1` was exact but slower (+46.8% at N=200, +60.8% at N=1,000), so fallback
+economy is **unproven**. R03's P41 82–92 fallbacks remain a nonblocking limit, not
+authority to rewrite production.
+
+No extra bitmap/index, new carrier, persistent truth, blanket cache default, or
+owner acceptance was introduced. Delete/corrupt/stale/revoke remain existing-test
+coverage and were **NOT_RUN** here. No N=3000 was run; N=200/1,000 resolved the
+comparison.
 
 ## Read next
 
-1. `01_BASELINE_CURRENT_CODE_ABI.md` — Phase-1 ABI, Phase-2 grouped ABI, W03/W04 chain.
-2. `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl` — Phase-1/2 costs; Phase-3 driver NOT_RUN.
-3. `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl` — exact parity and Phase-3 NOT_RUN status.
+1. `01_BASELINE_CURRENT_CODE_ABI.md` — Phase-1/2 ABI and Phase-3 measured chain/result.
+2. `02_EXACT_COST_AND_MEMORY_RESULTS.jsonl` — Phase-1/2/3 costs and scope/counter receipts.
+3. `03_SAME_FACT_GROUPED_AND_KWAY_PARITY.jsonl` — exact parity and selected full fact material.
 4. `04_REPLAY_AND_AUTHORITY_INVALIDATION.md` — replay/authority/cache/grouped negatives.
-5. `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md` — implemented delta, W03/W04 matrix, driver plan.
-6. `06_INDEPENDENT_REVIEW_REQUEST.md` — R03 request against the frozen implementation.
+5. `05_OPTION_MATRIX_AND_MINIMAL_DELTA.md` — implemented delta, W03/W04 matrix, measured disposition.
+6. `06_INDEPENDENT_REVIEW_REQUEST.md` — R03 acceptance context and Phase-3 evidence.

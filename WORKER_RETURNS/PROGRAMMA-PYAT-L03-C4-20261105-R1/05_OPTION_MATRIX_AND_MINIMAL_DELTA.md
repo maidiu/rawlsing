@@ -306,7 +306,7 @@ current physical-function comparison, not a new architecture bakeoff:
 Each variant is a separate fresh subprocess. The coordinator compares full native
 `fact.as_dict()` material per operation against V0, requires equal source/projection/
 release identity, and requires V2 cold miss/write + warm HIT. N=200 and N=1,000 are
-separately invocable. Timings are **NOT_RUN** in this preparation.
+separately invocable. Timings were run for N=200/N=1,000 after R03 released the timed runner; N=3 smoke is not a benchmark.
 
 Commands for HQ after the R03 timed-runner release:
 
@@ -328,12 +328,62 @@ explicit non-attribution note, source/cache bytes, selector/index/fact/replay bu
 counts, and per-operation exact facts. Delete/corrupt/stale/revoke are existing-test
 coverage and remain NOT_RUN here.
 
+Compact grouped commands on the same prepared fixture/release:
+
+```sh
+"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py \
+  --mode grouped --n 200 --rounds 3 --outdir .local-logs/pyat-l03-c4/grouped_compact/n200
+"$RUNNER" WORKER_RETURNS/PROGRAMMA-PYAT-L03-C4-20261105-R1/tools/bench_compact_current.py \
+  --mode grouped --n 1000 --rounds 3 --outdir .local-logs/pyat-l03-c4/grouped_compact/n1000
+```
+
 ### Driver evidence status
 
 - Syntax: `python -m py_compile` **PASS**.
 - Tiny functional smoke: N=3 `--smoke` **PASS** with full fact equality for V1,
   V2-cold, V2-warm against V0, equal source/projection/release identity, V2 cold
   miss/write, and V2 warm HIT. Smoke is explicitly not a benchmark.
-- N=200/N=1,000 timings: **NOT_RUN**.
-- W03/W04 economic conclusion: **NOT_RUN**; no favorable toy result is claimed.
-- W04 default policy: **OWNER_DECIDE**, alternatives in the Phase-3 section above.
+- N=200/N=1,000 compact comparison: **MEASURED**; V0/V1/V2 exact full-fact parity, V2 cold miss/write and warm HIT.
+- Compact grouped N=200/N=1,000: **MEASURED**; exact cold/warm/single/incompatible/capacity parity, independent oracle PASS.
+- W03/W04 economic conclusion: **MEASURED_SCOPED**; sourcefree fixture only, no all35 production equivalence.
+- W04 default policy: **OWNER_DECIDE**, alternatives in the Phase-3 section above; no blanket default added.
+
+
+## Measured compact comparison and compact grouped result
+
+The prepared driver ran successfully at N=200 and N=1,000. All V0/V1/V2 variants
+used the same sealed source/projection/release; full fact, cell, denominator/risk
+refs, provenance, and replay material matched exactly. V2 used a non-empty decoder
+binding and passed cold miss/write and warm HIT checks.
+
+Compact comparison (fresh process per variant; whole-process Darwin peak RSS):
+
+| N | V0 native | V1 compact | V2 cold | V2 warm | V2 cache bytes | peak RSS V0/V1/V2-warm |
+|---:|---:|---:|---:|---:|---:|---:|
+| 200 | 6.18 s | 6.56 s | 5.40 s | 4.34 s | 318,780 | 63.2 / 135.0 / 109.5 MB |
+| 1000 | 21.29 s | 21.76 s | 21.55 s | 21.03 s | 1,716,950 | 153.8 / 263.4 / 265.7 MB |
+
+The warm cache removes most compact-conversion time (1.97→0.33 s at N=200;
+2.27→0.74 s at N=1000), but total wall remains dominated by I02 validation, query,
+and per-operation fact/replay. Compact RSS is higher than native at both sizes. This
+is a sourcefree synthetic fixture result, not all35 production equivalence.
+
+Compact grouped measurement on the same compact release (actual first consumer,
+not native tuple):
+
+| N | cold no-scope / grouped | warm no-scope / grouped median | speedup | single-op Δ | incompatible-first Δ | oracle |
+|---:|---:|---:|---:|---:|---:|---|
+| 200 | 1.576 / 1.284 s | 1.422 / 0.593 s | 2.40× | +47.9% | −3.6% | PASS |
+| 1000 | 6.774 / 6.228 s | 6.724 / 2.656 s | 2.53× | +9.0% | +25.4% | PASS |
+
+Counters confirm actual work reduction at N=1,000: routing/predicate/target calls
+22,001/13,428/10,294 → 2/2/2, weight 10,294 → 1,715; the two residual calls are the
+unsupported negative fallback. Capacity fallback with `max_groups=1` was exact but
+slower (+46.8% N=200, +60.8% N=1,000), so fallback economy is unproven. R03's 82–92
+P41 fallbacks remain a nonblocking limit; no capacity repair was made.
+
+**Disposition:** W03/P01 exact current composition is demonstrated with no exact
+function gap; cold-construction economy remains fixture-limited and not a production
+claim. W04/P02 exact compact/cache/carrier functions are demonstrated at sourcefree
+scope; default activation remains explicit-policy/owner decision, not blanket cache.
+No extra index/carrier/truth engine was added.

@@ -20,6 +20,7 @@ import subprocess
 import sys
 import time
 from dataclasses import replace
+from fractions import Fraction
 from pathlib import Path
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping
@@ -43,6 +44,7 @@ from rawlsing_next.pre553_carrier_execution import (  # noqa: E402
     CarrierNeutralResearchExecutor,
     RuntimeObjectCatalog,
 )
+from rawlsing_next.pre553_empirical_query import I03GroupedExecutionScope  # noqa: E402
 from rawlsing_next.pre553_empirical_objects import (  # noqa: E402
     EmpiricalQuerySpec,
     EmpiricalUniverse,
@@ -814,20 +816,470 @@ def _run_compare(args):
         raise SystemExit("COMPACT_CURRENT_COMPARISON_FAILED")
 
 
+
+def _grouped_ops(fixture):
+    ops, catalog = _operations(fixture)
+    qa = _query_authority(fixture["tag"])
+    source = fixture["source_stub"]
+    by_id = {op["op_id"]: op for op in ops}
+    extras = []
+    for op_id, base_id, targets, measure in (
+        ("raw_Y_sibling", "raw_Y", ("Y",), "RAW"),
+        ("weighted_Y_sibling", "weighted_Y", ("Y",), "GOVERNED_WEIGHTED"),
+        ("joint_XY_sibling", "joint_XY", ("X", "Y"), "RAW"),
+    ):
+        predicate = by_id[base_id]["predicate"]
+        query = _query(
+            source, qa, predicate, targets, measure=measure,
+            tag=f"{fixture['tag']}-{op_id}",
+        )
+        extras.append({"op_id": op_id, "query": query, "predicate": predicate})
+    all_ops = ops + extras
+    catalog = RuntimeObjectCatalog(
+        authorities=catalog.authorities,
+        predicates=catalog.predicates,
+        queries=tuple(op["query"] for op in all_ops),
+        discovery_authorities=(),
+    )
+    return all_ops, catalog
+
+
+def _compact_release(fixture):
+    os.environ.pop("RAWLSING_C11_ACCELERATOR_DIR", None)
+    repository, release = build_source_backed_c11_repository(
+        fixture["stream"], fixture["projection"],
+        current_authorities=fixture["projection"].authority_snapshots,
+    )
+    return release
+
+
+def _same_facts(left, right):
+    return [fact.as_dict() for fact in left] == [fact.as_dict() for fact in right]
+
+
+def _grouped_pass(executor, ops, scope, keep_facts=False, compare_to=None):
+    records = {}
+    materials = {}
+    for op in ops:
+        gc.collect()
+        start_wall, start_cpu = time.perf_counter(), time.process_time()
+        result = executor.execute_i03(
+            query_ref=op["query"].ref,
+            predicate_ref=op["predicate"].ref,
+            group_scope=scope,
+        )
+        wall = time.perf_counter() - start_wall
+        cpu = time.process_time() - start_cpu
+        facts = tuple(result.facts)
+        fact_material = [fact.as_dict() for fact in facts]
+        record = {
+            "op_id": op["op_id"],
+            "wall_s": wall,
+            "cpu_s": cpu,
+            "typed_states": [fact.typed_state for fact in facts],
+            "fact_refs": [bc.ref_material(fact.ref) for fact in facts],
+            "replay_refs": [bc.ref_material(fact.replay_ref) for fact in facts],
+            "exact_fact_material_sha256": semantic_hash(fact_material),
+            "summary": [_fact_record(fact) for fact in facts],
+        }
+        if compare_to is not None:
+            record["facts_equal"] = fact_material == compare_to.get(op["op_id"])
+        records[op["op_id"]] = record
+        if keep_facts:
+            materials[op["op_id"]] = fact_material
+    return records, materials
+
+
+def _totals(records):
+    return {
+        "wall_s": sum(item["wall_s"] for item in records.values()),
+        "cpu_s": sum(item["cpu_s"] for item in records.values()),
+    }
+
+
+def _expected_cells(fixture, op_id):
+    rows = fixture["rows"]
+    n = fixture["n"]
+    by_id = {}
+    if op_id in {"raw_Y", "weighted_Y", "raw_Y_sibling", "weighted_Y_sibling"}:
+        targets, predicate, risk_target = ("Y",), "all", "Y"
+    elif op_id in {"joint_XY", "joint_XY_sibling"}:
+        targets, predicate, risk_target = ("X", "Y"), "all", "Y"
+    elif op_id == "joint_XYZ":
+        targets, predicate, risk_target = ("X", "Y", "Z"), "all", "Y"
+    elif op_id == "joint_XYZK":
+        targets, predicate, risk_target = ("X", "Y", "Z", "K"), "all", "Y"
+    elif op_id == "cond_X1_Y":
+        targets, predicate, risk_target = ("Y",), "x1", "Y"
+    elif op_id == "cond_Y1_X":
+        targets, predicate, risk_target = ("X",), "y1", "X"
+    elif op_id == "xor_Z":
+        targets, predicate, risk_target = ("Z",), "xor", "Z"
+    elif op_id == "minority_Y":
+        targets, predicate, risk_target = ("Y",), "minority", "Y"
+    elif op_id == "missing_M":
+        targets, predicate, risk_target = ("M",), "all", "M"
+    elif op_id == "ordered_O":
+        targets, predicate, risk_target = ("O",), "all", "O"
+    elif op_id == "zero_support_Y":
+        return {"typed_state": "ZERO_SUPPORT", "raw_denominator": 0}
+    elif op_id == "unsupported_O":
+        return {"typed_state": "UNRESOLVED", "p02_failure_state": "UNSUPPORTED_RESPONSE_TOPOLOGY"}
+    else:
+        return None
+    members = []
+    for index, row in enumerate(rows):
+        if risk_target == "Y" and index % 7 == 0:
+            continue
+        if predicate == "x1" and row["X"] != "1":
+            continue
+        if predicate == "y1" and row["Y"] != "1":
+            continue
+        if predicate == "xor" and row["X"] == row["Y"]:
+            continue
+        if predicate == "minority" and index >= max(1, n // 100):
+            continue
+        members.append((index, row))
+    domain = None
+    if targets == ("M",):
+        domain = ["0", "1", {"typed_response_state": "MISSING"}]
+    elif targets == ("O",):
+        domain = [["AB", "AB"], ["BA", "BA"]]
+    elif len(targets) == 1:
+        domain = ["0", "1"]
+    else:
+        import itertools
+        domain = list(itertools.product(("0", "1"), repeat=len(targets)))
+    raw_cells = {bc.canonical_json(cell): 0 for cell in domain}
+    weighted_cells = {bc.canonical_json(cell): Fraction(0, 1) for cell in domain}
+    weighted_denominator = Fraction(0, 1)
+    for index, row in members:
+        values = []
+        for target in targets:
+            if target == "M":
+                value = {"typed_response_state": "MISSING"} if row["M"] is None else row["M"]
+            elif target == "O":
+                value = [row["O"], row["O"]]
+            else:
+                value = row[target]
+            values.append(value)
+        cell = values[0] if len(values) == 1 else values
+        key = bc.canonical_json(cell)
+        if key not in raw_cells:
+            return {"oracle_domain_error": key}
+        raw_cells[key] += 1
+        weight = Fraction(1 + (index % 4), 1)
+        weighted_cells[key] += weight
+        weighted_denominator += weight
+    return {
+        "typed_state": "SUPPORTED" if members else "ZERO_SUPPORT",
+        "raw_denominator": len(members),
+        "raw_numerator": len(members),
+        "raw_cells": raw_cells,
+        "weighted_denominator": weighted_denominator if op_id.startswith("weighted") else None,
+        "weighted_cells": weighted_cells if op_id.startswith("weighted") else None,
+    }
+
+
+def _check_expected(fact_material, expected):
+    if expected is None:
+        return []
+    fields = fact_material.get("semantic_fields", fact_material)
+    errors = []
+    if fact_material["typed_state"] != expected["typed_state"]:
+        errors.append(f"typed_state {fact_material['typed_state']} != {expected['typed_state']}")
+        return errors
+    if "p02_failure_state" in expected:
+        if fields.get("p02_failure_state") != expected["p02_failure_state"]:
+            errors.append("p02 failure state mismatch")
+        return errors
+    if fields["raw_denominator_support"] != expected["raw_denominator"]:
+        errors.append("raw denominator mismatch")
+    if fields["raw_numerator_support"] != expected.get("raw_numerator", 0):
+        errors.append("raw numerator mismatch")
+    cells = {
+        bc.canonical_json(row["cell"]): row
+        for row in fields["target_topology"].get("complete_cell_semantic_projection", ())
+    }
+    for key, count in expected.get("raw_cells", {}).items():
+        row = cells.get(key)
+        if row is None:
+            errors.append(f"missing cell {key}")
+            continue
+        if row["raw_numerator_support"] != count:
+            errors.append(f"cell {key} raw mismatch")
+        if expected.get("weighted_cells") is not None:
+            actual = bc.frac(row["weighted_numerator_support_if_authorized"])
+            if actual != expected["weighted_cells"][key]:
+                errors.append(f"cell {key} weighted mismatch")
+    if expected.get("weighted_denominator") is not None:
+        actual = bc.frac(fields["weighted_denominator_support_if_authorized"])
+        if actual != expected["weighted_denominator"]:
+            errors.append("weighted denominator mismatch")
+    return errors
+
+
+def _grouped_process_metadata():
+    return {
+        "pid": os.getpid(),
+        "python": sys.version,
+        "executable": sys.executable,
+        "platform": platform.platform(),
+        "machine": platform.machine(),
+        "cpu_count": os.cpu_count(),
+        "ru_maxrss_bytes": int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss),
+        "ru_utime_s": resource.getrusage(resource.RUSAGE_SELF).ru_utime,
+        "ru_stime_s": resource.getrusage(resource.RUSAGE_SELF).ru_stime,
+        "argv": sys.argv,
+        "env": {key: os.environ.get(key) for key in (
+            "PYTHONHASHSEED", "PYTHONDONTWRITEBYTECODE", "TMPDIR",
+            "RAWLSING_C11_ACCELERATOR_DIR",
+        )},
+        "rss_note": "ru_maxrss_bytes is whole-process Darwin high-water; phases report wall/CPU only",
+    }
+
+
+def _run_grouped(args):
+    n = args.n or (3 if args.smoke else None)
+    if not n:
+        raise SystemExit("grouped mode requires --n")
+    outdir = Path(args.outdir).resolve()
+    outdir.mkdir(parents=True, exist_ok=True)
+    os.environ.pop("RAWLSING_C11_ACCELERATOR_DIR", None)
+    recorder = Recorder()
+    with recorder.phase("fixture_build"):
+        fixture = _source_fixture(n, tag="compact-current")
+        ops, catalog = _grouped_ops(fixture)
+    setup_start = time.perf_counter()
+    release = _compact_release(fixture)
+    setup_wall = time.perf_counter() - setup_start
+
+    def make_executor():
+        return CarrierNeutralResearchExecutor(
+            C11Repository((release,)), (release.release_ref,), catalog,
+        )
+
+    cold_base = make_executor()
+    cold_cand = make_executor()
+    cold_scope = I03GroupedExecutionScope()
+    cold_base_records, cold_base_facts = _grouped_pass(cold_base, ops, None, keep_facts=True)
+    cold_cand_records, cold_cand_facts = _grouped_pass(
+        cold_cand, ops, cold_scope, keep_facts=True, compare_to=cold_base_facts,
+    )
+    facts_files = {}
+    for label, materials in (("baseline", cold_base_facts), ("candidate", cold_cand_facts)):
+        path = outdir / f"grouped_cold_{label}_facts.jsonl"
+        with path.open("w", encoding="utf-8") as handle:
+            for op in ops:
+                for material in materials.get(op["op_id"], ()):
+                    handle.write(json.dumps(material, sort_keys=True, separators=(",", ":")) + "\n")
+        facts_files[label] = str(path)
+    cold_equal = all(
+        cold_cand_records[op_id].get("facts_equal") is True
+        and cold_base_records[op_id]["fact_refs"] == cold_cand_records[op_id]["fact_refs"]
+        and cold_base_records[op_id]["replay_refs"] == cold_cand_records[op_id]["replay_refs"]
+        for op_id in cold_base_records
+    )
+
+    warm_base = make_executor()
+    warm_cand = make_executor()
+    warm_scope = I03GroupedExecutionScope()
+    _grouped_pass(warm_base, ops, None)
+    _grouped_pass(warm_cand, ops, warm_scope)
+    warm_rounds = []
+    for round_index in range(1, args.rounds + 1):
+        baseline, baseline_facts = _grouped_pass(warm_base, ops, None, keep_facts=True)
+        candidate, _ = _grouped_pass(warm_cand, ops, warm_scope, compare_to=baseline_facts)
+        warm_rounds.append({
+            "round": round_index,
+            "baseline": {"ops": baseline, **_totals(baseline)},
+            "candidate": {"ops": candidate, **_totals(candidate)},
+            "all_facts_equal": all(
+                candidate[op_id].get("facts_equal") is True
+                and baseline[op_id]["fact_refs"] == candidate[op_id]["fact_refs"]
+                and baseline[op_id]["replay_refs"] == candidate[op_id]["replay_refs"]
+                for op_id in baseline
+            ),
+            "scope": warm_scope.receipt(),
+        })
+
+    single_op = ops[0]
+    single_base = make_executor()
+    single_cand = make_executor()
+    single_scope = I03GroupedExecutionScope()
+    single_base_records, single_base_facts = _grouped_pass(single_base, [single_op], None, keep_facts=True)
+    single_cand_records, _ = _grouped_pass(single_cand, [single_op], single_scope, compare_to=single_base_facts)
+    single_equal = single_cand_records[single_op["op_id"]].get("facts_equal") is True
+
+    by_id = {op["op_id"]: op for op in ops}
+    incompatible_ids = (
+        "raw_Y", "joint_XYZK", "cond_X1_Y", "cond_Y1_X",
+        "xor_Z", "minority_Y", "zero_support_Y", "ordered_O",
+    )
+    incompatible_ops = [by_id[op_id] for op_id in incompatible_ids]
+    inc_base = make_executor()
+    inc_cand = make_executor()
+    inc_scope = I03GroupedExecutionScope()
+    inc_first_base, inc_first_base_facts = _grouped_pass(inc_base, incompatible_ops, None, keep_facts=True)
+    inc_first_cand, _ = _grouped_pass(inc_cand, incompatible_ops, inc_scope, compare_to=inc_first_base_facts)
+    scope_first = inc_scope.receipt()
+    inc_second_base, inc_second_base_facts = _grouped_pass(inc_base, incompatible_ops, None, keep_facts=True)
+    inc_second_cand, _ = _grouped_pass(inc_cand, incompatible_ops, inc_scope, compare_to=inc_second_base_facts)
+    inc_equal_first = all(
+        inc_first_cand[op_id].get("facts_equal") is True for op_id in inc_first_base
+    )
+    inc_equal_second = all(
+        inc_second_cand[op_id].get("facts_equal") is True for op_id in inc_second_base
+    )
+
+    capacity_ops = [by_id["raw_Y"], by_id["joint_XYZK"]]
+    cap_base = make_executor()
+    cap_cand = make_executor()
+    cap_scope = I03GroupedExecutionScope(max_groups=1)
+    cap_base_records, cap_base_facts = _grouped_pass(cap_base, capacity_ops, None, keep_facts=True)
+    cap_cand_records, _ = _grouped_pass(cap_cand, capacity_ops, cap_scope, compare_to=cap_base_facts)
+    capacity_equal = all(
+        cap_cand_records[op_id].get("facts_equal") is True for op_id in cap_base_records
+    )
+
+    from bench_grouped_phase2 import Counters
+
+    counter_base = make_executor()
+    counter_cand = make_executor()
+    counter_scope = I03GroupedExecutionScope()
+    _grouped_pass(counter_base, ops, None)
+    _grouped_pass(counter_cand, ops, counter_scope)
+    baseline_counters = Counters()
+    saved = baseline_counters.wrap()
+    try:
+        _grouped_pass(counter_base, ops, None)
+    finally:
+        Counters.restore(saved)
+    candidate_counters = Counters()
+    saved = candidate_counters.wrap()
+    try:
+        _grouped_pass(counter_cand, ops, counter_scope)
+    finally:
+        Counters.restore(saved)
+
+    oracle_errors = {}
+    for op in ops:
+        expected = _expected_cells(fixture, op["op_id"])
+        errors = []
+        for material in cold_base_facts.get(op["op_id"], ()):
+            errors.extend(_check_expected(material, expected))
+        oracle_errors[op["op_id"]] = errors
+
+    payload = {
+        "schema": SCHEMA,
+        "mode": "grouped",
+        "n": n,
+        "smoke": bool(args.smoke),
+        "timing_claim": "SMOKE_ONLY_NOT_BENCHMARK" if args.smoke else "MEASURED_GROUPED_COMPACT",
+        "source": {
+            "source_sha256": fixture["source_sha"],
+            "decoder_metadata_digest": fixture["decoder_digest"],
+            "row_count": n,
+            "physical_cell_count": len(fixture["cells"]),
+        },
+        "release": {
+            "release_ref": bc.ref_material(release.release_ref),
+            "replay_ref": bc.ref_material(release.replay_manifest.ref),
+            "compact": isinstance(release.public_objects, compact_view._CompactPublicObjects),
+            "selector_count": (
+                len(release.public_objects.lane.selectors)
+                if isinstance(release.public_objects, compact_view._CompactPublicObjects) else None
+            ),
+        },
+        "setup_s": {
+            "fixture_build": recorder.entries,
+            "compact_release_build": setup_wall,
+        },
+        "facts_files": facts_files,
+        "cold": {
+            "baseline": {"ops": cold_base_records, **_totals(cold_base_records)},
+            "candidate": {"ops": cold_cand_records, **_totals(cold_cand_records)},
+            "all_facts_equal": cold_equal,
+            "scope": cold_scope.receipt(),
+        },
+        "warm_rounds": warm_rounds,
+        "single_operation": {
+            "op_id": single_op["op_id"],
+            "baseline": {"ops": single_base_records, **_totals(single_base_records)},
+            "candidate": {"ops": single_cand_records, **_totals(single_cand_records)},
+            "all_facts_equal": single_equal,
+            "scope": single_scope.receipt(),
+        },
+        "incompatible": {
+            "op_ids": list(incompatible_ids),
+            "first_pass": {
+                "baseline": {"ops": inc_first_base, **_totals(inc_first_base)},
+                "candidate": {"ops": inc_first_cand, **_totals(inc_first_cand)},
+                "all_facts_equal": inc_equal_first,
+                "scope": scope_first,
+            },
+            "second_pass": {
+                "baseline": {"ops": inc_second_base, **_totals(inc_second_base)},
+                "candidate": {"ops": inc_second_cand, **_totals(inc_second_cand)},
+                "all_facts_equal": inc_equal_second,
+                "scope": inc_scope.receipt(),
+            },
+        },
+        "capacity_fallback": {
+            "op_ids": [op["op_id"] for op in capacity_ops],
+            "max_groups": 1,
+            "baseline": {"ops": cap_base_records, **_totals(cap_base_records)},
+            "candidate": {"ops": cap_cand_records, **_totals(cap_cand_records)},
+            "all_facts_equal": capacity_equal,
+            "scope": cap_scope.receipt(),
+            "note": "capacity fallback is a bounded limit, not evidence of cheaper behavior",
+        },
+        "counters": {
+            "baseline": {"calls": baseline_counters.calls, "times_s": baseline_counters.times},
+            "candidate": {"calls": candidate_counters.calls, "times_s": candidate_counters.times},
+            "scope": counter_scope.receipt(),
+        },
+        "oracle": {
+            "checked_ops": len(ops),
+            "errors": oracle_errors,
+            "all_pass": all(not errors for errors in oracle_errors.values()),
+        },
+        "process": _grouped_process_metadata(),
+    }
+    path = outdir / ("grouped_smoke.json" if args.smoke else f"grouped_n{n}.json")
+    bc.dump_json(path, payload)
+    print(json.dumps({
+        "path": str(path),
+        "n": n,
+        "smoke": bool(args.smoke),
+        "cold_equal": cold_equal,
+        "warm_equal": all(item["all_facts_equal"] for item in warm_rounds),
+        "single_equal": single_equal,
+        "incompatible_equal": inc_equal_first and inc_equal_second,
+        "capacity_equal": capacity_equal,
+        "oracle_all_pass": payload["oracle"]["all_pass"],
+        "cold_scope": cold_scope.receipt(),
+        "warm_scope": warm_scope.receipt(),
+    }, indent=2, sort_keys=True))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mode", required=True, choices=("variant", "compare"))
+    parser.add_argument("--mode", required=True, choices=("variant", "compare", "grouped"))
     parser.add_argument("--variant", choices=VARIANTS)
     parser.add_argument("--n", type=int, default=None)
     parser.add_argument("--outdir", required=True)
     parser.add_argument("--cache-root", default=None)
     parser.add_argument("--smoke", action="store_true")
     parser.add_argument("--keep-cache", action="store_true")
+    parser.add_argument("--rounds", type=int, default=3)
     args = parser.parse_args()
     if args.mode == "variant":
         _run_variant(args)
-    else:
+    elif args.mode == "compare":
         _run_compare(args)
+    else:
+        _run_grouped(args)
 
 
 if __name__ == "__main__":
