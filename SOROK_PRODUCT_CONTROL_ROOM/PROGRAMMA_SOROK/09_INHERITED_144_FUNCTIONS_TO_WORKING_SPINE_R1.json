@@ -10386,5 +10386,355 @@
     "science_boundary": "Legacy psychometric Enneagram/v3.4 person-determination law is not current original CAN/ADP science.",
     "first_modern_importer": "NONE_VERIFIED_AS_NATIVE_ONGOING_PERSON",
     "no_new_engineering_tickets_from_579": true
+  },
+  "hq_647_incremental_20261105": {
+    "baseline": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+    "decision": "00_HQ_WRITE_THROUGH_DECISION.md#s45-s47-incremental-receiving-2026-11-05",
+    "status": "CANDIDATE_PENDING_PROTECTED_INTEGRATION",
+    "original_ids": [
+      "C4",
+      "C8",
+      "C9",
+      "C10",
+      "C12",
+      "O15",
+      "S8",
+      "S9",
+      "S11"
+    ],
+    "affected_local_ids": [
+      "C4:LOCAL_GUIDE:ACTOR_SOURCE",
+      "C4:LOCAL_GUIDE:COACTOR_B",
+      "C8:LOCAL_GUIDE:ACTOR_ACCESS",
+      "C9:LOCAL_GUIDE:C9R_ACCESS_BRIDGE",
+      "C9:LOCAL_GUIDE:WRITER_SCHEMA",
+      "C12:LOCAL_GUIDE:READER_ROOT",
+      "C12:LOCAL_GUIDE:COLD_FORK",
+      "C10:LOCAL_GUIDE:EVENT_BATCH",
+      "O15:LOCAL_GUIDE:LATER_E2_READER",
+      "S8:LOCAL_GUIDE:ACTION_CONTRACT",
+      "S9:LOCAL_GUIDE:OCCURRENCE",
+      "S11:LOCAL_GUIDE:UX_PROTO",
+      "E008:LOCAL_GUIDE:TUPLE_MATRIX"
+    ],
+    "sources": [
+      {
+        "commit": "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+        "tree": "5679c54c15ab9b976bbc100f223acaee02773731",
+        "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+        "blob": "7f6a23e2f2883b8d7e05947e30cdd36d1a44e272",
+        "role": "historical product import closure; 55 author tests"
+      },
+      {
+        "commit": "fa0a1b14e96c86abe9b764c2f5ee8a484cbe83a5",
+        "harness_commit": "3d6207983b62646108d4c6e3ff1a3b4d65674977",
+        "tree": "a51bfeb2ffccc0439d412d2f4f972a1aa1afdae8",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/00_RETURN.md",
+        "blob": "d65a6a06d2dacfd8e0db3e5762c2e409eaf5ed88",
+        "role": "historical causal harness; 22 checks"
+      },
+      {
+        "commit": "39ff2c2d479d8ad71c156b01c168894527a486e4",
+        "tree": "41d6cc41dcd132998110d7c5f90cb5084e4c14a7",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/00_RETURN.md",
+        "blob": "95b89d8a80c4229c5ac2883d97a952ecc64f66b8",
+        "role": "historical projection/CLI; 11 projection + 21 S45 author tests"
+      }
+    ],
+    "engineering": "AUTHOR_EXECUTED_SOURCEFREE_TEST_ONLY",
+    "independent_review": "e42 ACCEPT + da97 ACCEPT + 41bf focused ACCEPT by ses_e526dc569ffe67E2MTl0k6Y38V; durable review published at f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70",
+    "integration": "codex/sorok-s45-s47-closure-20261105-r1@41bf45813fd0adeffd9b54e1306c2022abe96514; PR697_OPEN_READY_NOT_MERGED",
+    "native_or_human_grant": false,
+    "record_effect": "The 144 original function identities are unchanged. New candidate and independent-review evidence attaches only to the named existing C4/C8/C9/C10/C12/O15/S8/S9/S11 and E008 local IDs; B identity/access does not create current B-owned context or an independent counterpart.",
+    "preserved_holds": [
+      "B current-owned context and independent counterpart NOT_VERIFIED; historical S48-S52 cut grades preserved",
+      "CAN008 Rule A not issued",
+      "CAN011 O05 acquired practice / O07 evaluated NO_CHANGE not issued",
+      "native C8/C9/C12/ADP not issued",
+      "Pyat E001/E002 unchanged",
+      "human S11/A5 Gate4/Gate5 not run",
+      "A producer remains closed duplicate #690; not relaunched"
+    ],
+    "historical_cut_grades_preserved": true,
+    "accepted_integration": "da97d2624486b783bf5c4f465b17fdcdea3af20a; ACCEPT_SCOPED_TEST_ONLY by ses_e526dc569ffe67E2MTl0k6Y38V; 11 projection tests, 22 causal checks, cold/privacy/wrong-root",
+    "focused_fix": "41bf45813fd0adeffd9b54e1306c2022abe96514; focused independent ACCEPT scoped TEST_ONLY published at f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70; two focused privacy tests, 22 causal checks",
+    "pull_request": {
+      "url": "https://github.com/maidiu/rawlsing/pull/697",
+      "state": "OPEN_READY_NOT_MERGED",
+      "source_head": "41bf45813fd0adeffd9b54e1306c2022abe96514"
+    },
+    "b_source_disposition": {
+      "commit": "3aec2a2740f9e6ebebcf1576777aff5aff96c5e1",
+      "identity_access": "PRESENT",
+      "current_b_owned_context": "MISSING",
+      "independent_counterpart": "MISSING",
+      "checks": 20,
+      "focused_hold_tests": 7,
+      "historical_cut_grades_preserved": true
+    },
+    "integration_sources": [
+      {
+        "commit": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+        "tree": "65d7083a774ad4d3415f38382f61871b14369947",
+        "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+        "blob": "24ab1b1de4a34e1b5a84c72f44342da72b3decce",
+        "role": "final integration; independently ACCEPTED scoped TEST_ONLY by ses_e526dc569ffe67E2MTl0k6Y38V; 11 projection tests, 22 causal checks, cold/privacy/wrong-root"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "tree": "29b9e99fea0c70722434d2dce2410e8848c1cf5e",
+        "path": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/00_RETURN.md",
+        "blob": "2c8870498b992f1c6d8fc6d283f74b27decfe30f",
+        "role": "review fixes; two focused privacy tests and 22 causal checks; focused independent closure PENDING"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/evidence/FOCUSED_FIXES.json",
+        "blob": "fa4669e55bb4579cdf24bda47fe40fde14c7a8e3",
+        "role": "focused privacy tests 2 passed; harness package-none 22/22; accepted review historical for this fix commit"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/00_RETURN.md",
+        "blob": "bf9cf13728dde4e293905d279bd856b16136149f",
+        "role": "package-mode harness 22 checks; focused closure pending"
+      },
+      {
+        "commit": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/00_RETURN.md",
+        "blob": "d6695cefa46b02378ad1423de1f2054b47e917de",
+        "role": "projection package integration; focused closure pending"
+      },
+      {
+        "commit": "3aec2a2740f9e6ebebcf1576777aff5aff96c5e1",
+        "tree": "7fe2a4a01813e91acfe3ba97143097b3e2578a52",
+        "path": "WORKER_RETURNS/SOROK-CURRENT-B-SEAM-20261105-R1/00_RETURN.md",
+        "blob": "ae01fabb5c900dfbe9855eec7f075c0c464a91cf",
+        "role": "B identity/access present; current B-owned context and independent counterpart missing; 20 checks, 7 focused HOLD tests"
+      }
+    ],
+    "newer_facts": "Focused independent ACCEPT scoped TEST_ONLY for 41bf4581 is published at f2a4210d; prior e42faf01 and da97d262 scoped accepts are preserved. Rehearsal PASS at d911b099 for da97d262 into 8ffec40a base (merge tree 65d7083a); the final correction-diff Git check completed at 9a33c723f74d2133597740692103eba9e2bc993e; final runtime evidence is reused from independent review f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70, with no new runtime execution claimed. PR697 source head 41bf remains unmerged. B-source 3aec2a27 shows identity/access present but current B-owned context and independent counterpart missing (20 checks, 7 focused HOLD tests). Protected integration remains pending.",
+    "preserved_scoped_accepts": [
+      "e42faf01b57a9188f0cf75baaccfcd57edb07173",
+      "da97d2624486b783bf5c4f465b17fdcdea3af20a"
+    ],
+    "rehearsal": {
+      "commit": "d911b0999b458e0726c954ab6c62f2d591e6a9ed",
+      "status": "PASS",
+      "candidate": "da97d2624486b783bf5c4f465b17fdcdea3af20a",
+      "baseline": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+      "merge_tree": "65d7083a774ad4d3415f38382f61871b14369947",
+      "final_correction_diff_rehearsal": "COMPLETE_HQ_GIT_CHECK_9a33c723f74d2133597740692103eba9e2bc993e_REUSED_INDEPENDENT_RUNTIME",
+      "pr_merged": false
+    },
+    "review_sources": [
+      {
+        "commit": "f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70",
+        "tree": "36b070c672504b69febe485c5f4756a5658e2953",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+        "blob": "cc373b1244ef8e7b93cca59fba4140cf21284707",
+        "role": "durable independent review: e42 ACCEPT, da97 ACCEPT, 41bf focused ACCEPT; TEST_ONLY sourcefree scoped"
+      },
+      {
+        "commit": "f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-INDEPENDENT-REVIEW-20261105-R1/PROGRAMMA_DELTA.json",
+        "blob": "444be77d111eb702aa952256380abed4d789274a",
+        "role": "review PROGRAMMA delta; exact heads and native/human holds"
+      },
+      {
+        "commit": "f2a4210dbd86ad4ecc3d4633b6cbf5ebf958cc70",
+        "path": "WORKER_RETURNS/SOROK-S45-S47-INDEPENDENT-REVIEW-20261105-R1/READBACK.json",
+        "blob": "87eb1d08303d4178aa9ee6be710c258ffbd8c2b8",
+        "role": "review hash/receipt index"
+      },
+      {
+        "commit": "d911b0999b458e0726c954ab6c62f2d591e6a9ed",
+        "tree": "534b99414539f8cd8e5ecee67f076b259d99e94f",
+        "path": "WORKER_RETURNS/SOROK-PR697-RECEIVING-REHEARSAL-20261105-R1/PUBLICATION_RECEIPT.json",
+        "blob": "0e2f6722615501e50876a6bc59d8909e68dbb9c7",
+        "role": "receiving rehearsal PASS receipt: da97 into 8ff base; PR697 not merged"
+      },
+      {
+        "commit": "169f24263516a15208779fc381b212c6e45520ee",
+        "tree": "077a63ed9d56c153ee45dd2b1f613a85258c1376",
+        "path": "WORKER_RETURNS/SOROK-PR697-RECEIVING-REHEARSAL-20261105-R1/00_RETURN.md",
+        "blob": "f4e61933077033ccf287009f81d0e86838ebd40d",
+        "role": "rehearsal PASS details: merge tree 65d7083a, allowlist, 22/22, 11 projection tests"
+      },
+      {
+        "commit": "169f24263516a15208779fc381b212c6e45520ee",
+        "path": "WORKER_RETURNS/SOROK-PR697-RECEIVING-REHEARSAL-20261105-R1/evidence/rehearsal.json",
+        "blob": "56a21ab977f067e1813e4996e4fbb38c02e9ba11",
+        "role": "machine rehearsal receipt"
+      }
+    ]
+  },
+  "hq_p2_local_lifecycle_candidate_20261105": {
+    "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+    "branch": "codex/sorok-p2-encounter-lifecycle-20261105-r1",
+    "path": "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1",
+    "grade": "INDEPENDENT_ACCEPT_SCOPED_TEST_ONLY",
+    "producer": "sorok_p2_lifecycle.lifecycle.LifecycleEncounter.exit/return_",
+    "first_consumer": "sorok_p2_lifecycle.cli -> LifecycleEncounter.open -> say/do_help/attend",
+    "interface": "Existing S45Projection + root-bound local mode sidecar -> local projected mode/blocked action/local return; no actor/world/time mutation on local transition",
+    "author_tests": "5 PASS in20.61s; fresh CLI exit/reopen/return; root mismatch; cut/restore",
+    "independent_tests": "ACCEPT_SCOPED_TEST_ONLY@6398888f1d28152b5d29fef816f0bb45e77dd43b; 5 tests in19.82s + 5 independent probe groups",
+    "reviewer": "ses_e526dc569ffe67E2MTl0k6Y38V (not lifecycle author)",
+    "worker": "ses_e52b17161ffe7omlNtc0EddtAB",
+    "holds": [
+      "No native security/actor source authority",
+      "No simulated absence activity",
+      "No elapsed-world-time advance",
+      "No human validation",
+      "No protected integration"
+    ],
+    "next_action": "Fan in only compatible reviewed lifecycle behavior; no automatic dependent READY/native/protected promotion.",
+    "prior_status": "AUTHOR_TESTED_CANDIDATE_REVIEW_RUNNING_NOT_ADOPTED",
+    "review_commit": "6398888f1d28152b5d29fef816f0bb45e77dd43b",
+    "review_path": "WORKER_RETURNS/SOROK-P2-LIFECYCLE-INDEPENDENT-REVIEW-20261105-R1",
+    "review_sources": [
+      {
+        "commit": "6398888f1d28152b5d29fef816f0bb45e77dd43b",
+        "tree": "aeeed187871ad20d8a4b7cf0ca4cdff74b781a06",
+        "path": "WORKER_RETURNS/SOROK-P2-LIFECYCLE-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+        "blob": "0821d27558d8e6b69bc6ad4307318cce2ca51ce4",
+        "role": "focused independent ACCEPT_SCOPED_TEST_ONLY; 5 tests 19.82s + 5 probe groups"
+      }
+    ],
+    "accepted_scope": "local UI lifecycle boundary around the accepted projection; adjacent lifecycle+projection+package unit",
+    "review_verified": [
+      "source importer origins verified",
+      "local-only sidecar is not security/tamperproof",
+      "outside view retains pinned portal shape with mode=OUTSIDE",
+      "missing sidecar defaults PORTAL"
+    ],
+    "residual_limits": [
+      "blocked SAY does not preserve attempted utterance in user_attempt.input",
+      "full S11 OUTSIDE contacts/thread and absence/delivery/world-return producers remain missing",
+      "no full inherited estate rerun"
+    ],
+    "source_refs": [
+      {
+        "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+        "tree": "c85520949b7dc523a867c2de721d229a1ed4b366",
+        "path": "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/00_RETURN.md",
+        "blob": "8e75d29b567d783113a7a69e4035c8170804f035",
+        "role": "lifecycle author return; 5 tests 20.61s; before independent accept"
+      },
+      {
+        "commit": "6398888f1d28152b5d29fef816f0bb45e77dd43b",
+        "tree": "aeeed187871ad20d8a4b7cf0ca4cdff74b781a06",
+        "path": "WORKER_RETURNS/SOROK-P2-LIFECYCLE-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+        "blob": "0821d27558d8e6b69bc6ad4307318cce2ca51ce4",
+        "role": "focused independent ACCEPT_SCOPED_TEST_ONLY; 5 tests 19.82s + 5 probe groups"
+      }
+    ]
+  },
+  "hq_p2_interval_later_20261105": {
+    "status": "AUTHOR_TESTED_CANDIDATE_INDEPENDENT_REVIEW_RUNNING_NOT_ADOPTED",
+    "auto_ready": false,
+    "interval": {
+      "commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
+      "branch": "codex/sorok-p2-explicit-interval-flow-20261105-r1",
+      "path": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
+      "grade": "TEST_ONLY_S45_S47_EXPLICIT_INTERVAL_CONTINUATION_NOT_NATIVE",
+      "author_tests": "6 PASS in55.59s",
+      "independent_review": "RUNNING sorok-p2-interval-later-independent-review-20261105-r1; no published verdict",
+      "first_consumer": "run_explicit_interval_flow.py continue -> existing run_s45_s47.py interval/admit/c9 -> S45Projection",
+      "observed": {
+        "actual_material": 0,
+        "actual_do_help": "HELP_REFUSE",
+        "scheduled_material": 1,
+        "scheduled_do_help": "HELP_ACCEPT",
+        "wait_absence_without_input": "TYPED_HOLD",
+        "cut_refusal": "S46_INTERVAL_CONDITION_REVOKED",
+        "cold_continuity": true
+      }
+    },
+    "later_event": {
+      "commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+      "branch": "codex/sorok-p2-later-event-continuation-20261105-r1",
+      "path": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
+      "grade": "TEST_ONLY_SOURCEFREE_P2_LATER_EVENT_CONTINUATION_NOT_NATIVE",
+      "author_tests": "5 PASS in84.85s",
+      "independent_review": "RUNNING sorok-p2-interval-later-independent-review-20261105-r1; no published verdict",
+      "producer": "s43.session.S43Session.admit_event",
+      "first_consumers": [
+        "s45.session.S45Session.read_event -> s42.reader.read_event",
+        "s43.session.S43Session.read_s43_event",
+        "s47.session.S47Session.read_c9_conditioning",
+        "s45_projection.adapter.S45Projection.say/do_help/attend"
+      ],
+      "observed": {
+        "later_events": [
+          "TEST_ONLY_BP2_E1_OCC-0002",
+          "TEST_ONLY_BP2_E1_OCC-0003"
+        ],
+        "later_event_2_c9_source_in_readset": true,
+        "later_event_2_c9_objective_material_eligible": false,
+        "later_event_3_history_includes_event_2": true,
+        "s43_expression_status": "ACCEPTED",
+        "actual_do_help": "HELP_REFUSE",
+        "scheduled_do_help": "HELP_ACCEPT",
+        "cut_refusal": "S46_INTERVAL_CONDITION_REVOKED",
+        "cold_same_root_and_source": true,
+        "attend_presentation_only": true
+      }
+    },
+    "product_fanin": {
+      "status": "RUNNING_NOT_INTEGRATED_NOT_ACCEPTED",
+      "branch": "codex/sorok-p2-product-fanin-20261105-r1",
+      "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+      "published_head": "NONE_PUBLISHED"
+    },
+    "pr697": {
+      "state": "OPEN_READY_NOT_MERGED",
+      "head": "41bf45813fd0adeffd9b54e1306c2022abe96514"
+    },
+    "guide_integration": "ISOLATED_PENDING_INTEGRATION",
+    "sources": [
+      {
+        "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",
+        "tree": "c85520949b7dc523a867c2de721d229a1ed4b366",
+        "path": "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/00_RETURN.md",
+        "blob": "8e75d29b567d783113a7a69e4035c8170804f035",
+        "role": "lifecycle author return; 5 tests 20.61s; before independent accept"
+      },
+      {
+        "commit": "6398888f1d28152b5d29fef816f0bb45e77dd43b",
+        "tree": "aeeed187871ad20d8a4b7cf0ca4cdff74b781a06",
+        "path": "WORKER_RETURNS/SOROK-P2-LIFECYCLE-INDEPENDENT-REVIEW-20261105-R1/00_RETURN.md",
+        "blob": "0821d27558d8e6b69bc6ad4307318cce2ca51ce4",
+        "role": "focused independent ACCEPT_SCOPED_TEST_ONLY; 5 tests 19.82s + 5 probe groups"
+      },
+      {
+        "commit": "bdadbc57c2664d3155a97853422e74b6128261f8",
+        "tree": "bd39b8f38aa05bc57d35020193c856a646904561",
+        "path": "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/00_RETURN.md",
+        "blob": "396ed600a586f27e66633697c4821e23d1092ce4",
+        "role": "explicit interval author-tested candidate; 6 tests 55.59s; independent review running"
+      },
+      {
+        "commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+        "tree": "ca8388238aeecb0dcc5d02dce437d3a6a6c3f06c",
+        "path": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1/00_RETURN.md",
+        "blob": "48ae7897b73ac7e7163fd54d1b05edd96a31ed9a",
+        "role": "later-event author-tested candidate; 5 tests 84.85s; independent review running"
+      }
+    ],
+    "holds": [
+      "native C8/C9/C12, CAN008/CAN011, ADP, Pyat and human authority not issued",
+      "current B-owned context and independent counterpart NOT_VERIFIED",
+      "no absence/life-advance, delivery, world-return or security/tamperproof claim",
+      "no automatic dependent READY or protected integration",
+      "A producer remains closed duplicate #690; not relaunched"
+    ]
+  },
+  "hq_p2_product_fanin_20261105": {
+    "status": "RUNNING_NOT_INTEGRATED_NOT_ACCEPTED",
+    "branch": "codex/sorok-p2-product-fanin-20261105-r1",
+    "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+    "published_head": "NONE_PUBLISHED",
+    "record_effect": "Fan-in is running, not integrated/accepted; no dependent READY."
   }
 }
