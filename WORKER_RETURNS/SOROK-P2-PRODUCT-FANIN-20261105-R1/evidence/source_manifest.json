@@ -1,7 +1,7 @@
 {
   "base_accepted": "41bf45813fd0adeffd9b54e1306c2022abe96514",
   "branch": "codex/sorok-p2-product-fanin-20261105-r1",
-  "fanin_file_count": 11,
+  "fanin_file_count": 12,
   "fanin_files": [
     {
       "bytes": 29,
@@ -9,14 +9,19 @@
       "sha256": "fb444f80fd669bb417a953c822d3fba59e3df419660cd7de15c13af0a61977ed"
     },
     {
-      "bytes": 10257,
+      "bytes": 11286,
       "path": "00_RETURN.md",
-      "sha256": "2c14e6e2af42b581036a6be0cb91158dcf89983cd362f0781a48861248f66e6b"
+      "sha256": "50c6b194074b5333fb7b8239a2ef03f6533a232404f354c757b6243ab51029b8"
     },
     {
-      "bytes": 2535,
+      "bytes": 2919,
       "path": "PROGRAMMA_DELTA.md",
-      "sha256": "98e2e01d219a71e14b2ef78bc1fc4930044555b7ff11b561b2cea5b4734f53de"
+      "sha256": "5442e6976d801a9f3bbfb2fd5fa0c58a2ed5a8ed8eb3baa5b312c7800c487e9e"
+    },
+    {
+      "bytes": 2332,
+      "path": "PR_READY_RECEIVING_DESCRIPTION.md",
+      "sha256": "70c350c5181ed4942e89a1949a1e014ac8469b99edcab2ef51a436929c3f5bbf"
     },
     {
       "bytes": 1365,
@@ -59,7 +64,7 @@
       "sha256": "68dc60fbd27d85a6e37a8f233a59d460877873b8a71387cdc3e036ea9b56f816"
     }
   ],
-  "fanin_total_bytes": 44687,
+  "fanin_total_bytes": 48432,
   "schema": "SOROK_P2_PRODUCT_FANIN_SOURCE_MANIFEST@1",
   "sources": {
     "interval": {
@@ -77,11 +82,17 @@
       "tree_sha1": "f7bd1c51f5420c83970487d5163d585a5c4e9e2c"
     },
     "later_event": {
-      "commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
-      "file_count": 20,
+      "commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+      "file_count": 48,
+      "historical_source_commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+      "historical_tree_sha1": "1c701c14e131be131e7f62bdeccec3fe7415d0fb",
+      "historical_verdict": "REVISE_PUBLIC_PRIVACY_AND_IMPLICIT_USER_ATTEMPT",
       "imported_exact": true,
+      "repair_code_commit": "4bdba46c4d3a667a9cd7845eb57caa980df76373",
+      "repair_status": "AUTHOR_TESTED_PENDING_INDEPENDENT_CLOSURE",
       "return": "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
-      "tree_sha1": "1c701c14e131be131e7f62bdeccec3fe7415d0fb"
+      "reviewer_commit": "f1a2872487b3aa492632a497ad7481e8529d937e",
+      "tree_sha1": "67f01db82c3722f6d5dcf98da722872db909a237"
     },
     "lifecycle": {
       "commit": "79b90e4a57cbd1b738a9b9484677736d1b6415ab",

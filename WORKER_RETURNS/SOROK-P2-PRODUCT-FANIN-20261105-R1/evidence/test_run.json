@@ -1,4 +1,10 @@
 {
+  "accepted_integrated_cut": {
+    "candidate": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+    "note": "Exact 25d scope preserved; not acceptance of newer fanin head or later repair.",
+    "review_commit": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+    "verdict": "ACCEPT_SCOPED_TEST_ONLY"
+  },
   "cli_sequence": "evidence/cli/summary.json",
   "cli_sequence_sha256": "48242a35dd8b47d7e1b3d5f7f24323bc5f5db80f4501ed45a92662a4cba40cd1",
   "command": "TMPDIR=$PWD/.local-logs/sorok-p2-product-fanin-20261105-r1/pytest-tmp python3 -B -m pytest -q -p no:cacheprovider --junitxml=WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/evidence/focused_fanin.xml WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/tests",
@@ -28,20 +34,44 @@
   },
   "junit": "evidence/focused_fanin.xml",
   "junit_sha256": "6e42359853186292617497cd1718c41aa73d18013caf109538801a3b8b791011",
+  "later_public_boundary_tests": {
+    "evidence": "evidence/later_public_boundary_test_run.json",
+    "evidence_sha256": "05198c17a12adbf5f8891c7a53fe19b0cb4c3764c5c61b10fb8bd45d28669f30",
+    "rerun_by_fanin": false,
+    "result": "8 passed in 150.9s",
+    "source_commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+    "source_tree": "67f01db82c3722f6d5dcf98da722872db909a237",
+    "status": "AUTHOR_TESTED_PENDING_INDEPENDENT_CLOSURE"
+  },
+  "later_refresh_oracle": {
+    "caller_changed": false,
+    "later_commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+    "later_tree": "67f01db82c3722f6d5dcf98da722872db909a237",
+    "loaded_module_under_later_return": true,
+    "ok": true,
+    "path": "evidence/later_refresh_oracle.json",
+    "sha256": "ac42607997979668f470efd4089e5a7cbdcfbec6f42e6e82c6740dadfa54da19"
+  },
+  "later_repair_status": {
+    "historical_review": "f1a2872487b3aa492632a497ad7481e8529d937e_REVISE_76fdb624",
+    "path": "evidence/later_public_boundary_repair_status.json",
+    "sha256": "c992e13836d107e0823b70446060f6d4bc6f0a99657098c59f5bf7e1f7dbc36e",
+    "status": "PUBLIC_BOUNDARY_REPAIR_AUTHOR_TESTED_INDEPENDENT_CLOSURE_RUNNING"
+  },
   "log": "logs/focused_fanin.log",
   "log_sha256": "816b11b007012fc1048f9fea55dcc10b8943a00240b184c3343c5d1b6c444344",
   "not_run": [
-    "independent review of secondary repair 76d5a3d",
-    "independent review of this refreshed fanin head",
-    "routine rerun of 6 interval tests or 7 fanin tests after unchanged callsite",
-    "current integrated review on exact 25d is not acceptance of new head",
+    "independent closure of later-event repair b71624f",
+    "independent review of this newer fanin head",
+    "routine rerun of unchanged fanin tests/CLI after preserved later primitive API",
+    "current integrated acceptance covers exact 25d only, not this newer head",
     "inherited 55-test full estate",
     "native/science/human/B grants"
   ],
   "platform": "macOS-13.7.8-x86_64-i386-64bit",
   "pytest": "pytest 9.1.1",
   "python": "3.11.3",
-  "reuse_note": "7 fanin tests reused from 25d; not rerun because the actual fanin callsite uses only apply_explicit_interval and renamed fields do not affect it.",
+  "reuse_note": "7 fanin tests reused from 25d; not rerun because the actual fanin callsite uses only apply_explicit_interval and renamed fields do not affect it. Later-event primitives preserved; no fanin callsite change; 8 later author tests reused, not rerun.",
   "schema": "SOROK_P2_PRODUCT_FANIN_TEST_RUN@1",
   "skipped": 0,
   "status": "PASS_REUSED_AT_25D",

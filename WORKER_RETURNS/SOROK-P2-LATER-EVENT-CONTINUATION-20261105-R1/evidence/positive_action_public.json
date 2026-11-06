@@ -1,0 +1,791 @@
+{
+  "attend": {
+    "actor_response": null,
+    "actor_response_generated": false,
+    "attempted": true,
+    "clock_changed": false,
+    "code": "LOCAL_ATTEND_ONLY",
+    "control": "ATTEND",
+    "event_ids": [],
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "mode": "PORTAL",
+    "native": false,
+    "performed": false,
+    "reason": "",
+    "refusal": false,
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "simulated_delivery": false,
+    "source": "s45",
+    "status": "NO_CHANGE",
+    "store_hash_after": "590e62d8db37f82efd7d55081acd7bafc444ced7162abac0b6827d66fae6a94d",
+    "store_hash_before": "032c1575d78ebd59fca1f4c65c040f7d078a9d7b525614867739ef9ab76d77e9",
+    "surface": [],
+    "user_attempt": {
+      "accepted": null,
+      "attempted": true,
+      "control": "ATTEND",
+      "input": "attend",
+      "performed": false,
+      "source_status": "NO_CHANGE"
+    },
+    "world_event_created": false
+  },
+  "attend_executed": true,
+  "checks": {
+    "cold_continuity": true,
+    "do_help_explicit": true,
+    "encounters_zero_before_action": true,
+    "later_events_admitted": true,
+    "material_expected": true,
+    "privacy_clean": true,
+    "verify_ok": true
+  },
+  "cold_continuity": true,
+  "do_help": {
+    "actor_response": {
+      "action": "",
+      "gesture": "A turns the empty bench over.",
+      "performed": false,
+      "performed_by": "",
+      "speech": "Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+      "speech_english": "I'm out of material. I can't start that now.",
+      "strategy": "HELP_REFUSE"
+    },
+    "actor_response_generated": true,
+    "attempted": true,
+    "clock_changed": false,
+    "code": "S45_HELP_REFUSE",
+    "control": "DO_HELP",
+    "event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_51837a80fd0cdf82541d0ae1d88a008034c049f418f037143f48d151ca9ce7b9"
+    ],
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "mode": "PORTAL",
+    "native": false,
+    "performed": false,
+    "reason": "",
+    "refusal": true,
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "simulated_delivery": false,
+    "source": "s45",
+    "status": "REFUSED",
+    "store_hash_after": "032c1575d78ebd59fca1f4c65c040f7d078a9d7b525614867739ef9ab76d77e9",
+    "store_hash_before": "00605e3c53cefd7906282c1dd9b4e738a2c23a1323f7270a9b540728669e2cef",
+    "surface": [
+      "the repair worker says: \"Me qued\u00e9 sin material. No puedo empezar eso ahora.\" A turns the empty bench over.",
+      "[labeled English view, not actor speech: \"I'm out of material. I can't start that now.\"]"
+    ],
+    "user_attempt": {
+      "accepted": false,
+      "attempted": true,
+      "control": "DO_HELP",
+      "input": "help",
+      "performed": false,
+      "source_status": "OK"
+    },
+    "world_event_created": true
+  },
+  "do_help_executed": true,
+  "encounter_count_after_action": 3,
+  "encounter_count_before_action": 0,
+  "encounters_unchanged_before_action": true,
+  "grade": "TEST_ONLY_SOURCEFREE_P2_LATER_EVENT_CONTINUATION_NOT_NATIVE",
+  "interval": {
+    "actor_knowledge_inferred": false,
+    "actual_daily_events_invented": 0,
+    "coverage": [
+      [
+        222,
+        223
+      ]
+    ],
+    "material_after_interval": 0,
+    "mode": "ACTUAL",
+    "psychology_state_written": false,
+    "status": "PARTIAL"
+  },
+  "native": false,
+  "ok": true,
+  "opportunity": {
+    "clock": 228,
+    "controls": [
+      "SAY",
+      "DO",
+      "ATTEND",
+      "WAIT",
+      "EXIT"
+    ],
+    "encounter_admission": {
+      "accepted": false,
+      "gesture": "",
+      "kind": "DO_HELP",
+      "refusal": true,
+      "speech": "Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+      "speech_english": "I'm out of material. I can't start that now.",
+      "status": "OK",
+      "strategy": "HELP_REFUSE",
+      "user_text": ""
+    },
+    "location": "workshop",
+    "return_available": false,
+    "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+    "source": "s45",
+    "tool_available": true,
+    "visible_event_count": 19
+  },
+  "say": {
+    "actor_response": {
+      "action": "",
+      "gesture": "A looks at the empty tool space.",
+      "performed": false,
+      "performed_by": "",
+      "speech": "La herramienta no est\u00e1. Hoy no puedo hacerlo.",
+      "speech_english": "The tool's gone. I can't do it today.",
+      "strategy": "HELP_REFUSE"
+    },
+    "actor_response_generated": true,
+    "attempted": true,
+    "clock_changed": false,
+    "code": "S45_HELP_REFUSE",
+    "control": "SAY",
+    "event_ids": [
+      "TEST_ONLY_BP4_WORLD_EVT_e08fdc07950a890085763f7804976e4ea010954f2f53fbb513583797a8997964",
+      "TEST_ONLY_BP4_WORLD_EVT_6aba3795f3fd9aa8f753c0f310d93809f19a47eebaee8b3bddf1a6e9f08f1888"
+    ],
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "mode": "PORTAL",
+    "native": false,
+    "performed": false,
+    "reason": "",
+    "refusal": true,
+    "schema": "SOROK_WP19_INTERACTION_RESULT@1",
+    "simulated_delivery": false,
+    "source": "s45",
+    "status": "REFUSED",
+    "store_hash_after": "00605e3c53cefd7906282c1dd9b4e738a2c23a1323f7270a9b540728669e2cef",
+    "store_hash_before": "8db6992787d3338baae532fb24f290bce86e94e223bd6bd73a3e04ec4a8c776d",
+    "surface": [
+      "You say: \"Can I help?\"",
+      "the repair worker says: \"La herramienta no est\u00e1. Hoy no puedo hacerlo.\" A looks at the empty tool space.",
+      "[labeled English view, not actor speech: \"The tool's gone. I can't do it today.\"]"
+    ],
+    "user_attempt": {
+      "accepted": null,
+      "attempted": true,
+      "control": "SAY",
+      "input": "Can I help?",
+      "performed": false,
+      "source_status": "OK"
+    },
+    "world_event_created": true
+  },
+  "say_executed": true,
+  "scenario": "ACTUAL_LATER_EVENT_POSITIVE",
+  "schema": "SOROK_P2_LATER_EVENT_PUBLIC@1",
+  "verify_ok": true,
+  "view": {
+    "absence_evidence": "UNPERCEIVED_EVENTS_REMAIN_UNKNOWN",
+    "accessibility_announcement": [
+      "Mode: portal.",
+      "Clock: 228.",
+      "Location: workshop.",
+      "Visible events: 19.",
+      "Unperceived events remain unknown: 1.",
+      "Exit is always available.",
+      "Return requires an actual meeting or channel; typed hold otherwise."
+    ],
+    "accessible": {
+      "color_only_meaning": false,
+      "exit_always_visible": true,
+      "focus_order": [
+        "transcript",
+        "SAY input",
+        "DO input",
+        "ATTEND target",
+        "WAIT",
+        "EXIT",
+        "RETURN"
+      ],
+      "keyboard_only": true,
+      "screen_reader_labels": {
+        "ATTEND": "Attend to a visible event or object",
+        "DO": "Attempt an action",
+        "EXIT": "Exit portal",
+        "RETURN": "Return to encounter",
+        "SAY": "Say something",
+        "WAIT": "Wait without advancing time"
+      },
+      "text_alternatives": true,
+      "typed_holds_announced": true
+    },
+    "clock": 228,
+    "controls": [
+      "SAY",
+      "DO",
+      "ATTEND",
+      "WAIT",
+      "EXIT"
+    ],
+    "encounter_admission": {
+      "accepted": false,
+      "gesture": "",
+      "kind": "DO_HELP",
+      "refusal": true,
+      "speech": "Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+      "speech_english": "I'm out of material. I can't start that now.",
+      "status": "OK",
+      "strategy": "HELP_REFUSE",
+      "user_text": ""
+    },
+    "exit_control": {
+      "accessible": true,
+      "always_visible": true,
+      "label": "Exit portal"
+    },
+    "grade": "TEST_ONLY_S45_WP19_PROJECTION_NOT_NATIVE",
+    "hidden_fields": [
+      "actor_traits",
+      "affinity",
+      "trust",
+      "suspicion",
+      "private_motive",
+      "private_emotion",
+      "private_actor_model",
+      "unperceived_event_content",
+      "relationship_score",
+      "rarity",
+      "completion_percentage",
+      "unlock_level",
+      "hidden_market_commission",
+      "future_outcome"
+    ],
+    "hidden_state_held": true,
+    "location": "workshop",
+    "mode": "PORTAL",
+    "native": false,
+    "refusal_present": true,
+    "return_control": {
+      "available": false,
+      "label": "Return to encounter",
+      "reason": "RETURN_UNSUPPORTED_TYPED_HOLD"
+    },
+    "schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+    "source": "s45",
+    "tool_available": true,
+    "tools_remaining": 1,
+    "uncertainty": [
+      "WAIT_TIME_ADVANCE_RECEIPT",
+      "PORTAL_EXIT_RETURN_RECEIPT",
+      "USER_ABSENCE_LIFE_ADVANCE",
+      "MESSAGE_CHANNEL_ESTABLISHMENT_AND_DELIVERY",
+      "ACCESSIBILITY_PREFERENCE_ACK"
+    ],
+    "unperceived_event_count": 1,
+    "visible_actions": [
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "present_with": [
+            "A"
+          ],
+          "public_role": "finishing"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "The finishing worker is already at the workshop bench."
+      },
+      {
+        "actor_visible_id": "U",
+        "body_public": {
+          "present_with": [
+            "A",
+            "B"
+          ],
+          "public_role": "visitor"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "You come up the stairs and stop at the open workshop door."
+      }
+    ],
+    "visible_events": [
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "present_with": [
+            "A"
+          ],
+          "public_role": "finishing"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "The finishing worker is already at the workshop bench."
+      },
+      {
+        "actor_visible_id": "U",
+        "body_public": {
+          "present_with": [
+            "A",
+            "B"
+          ],
+          "public_role": "visitor"
+        },
+        "clock": 10,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+        "kind": "ARRIVAL",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "You come up the stairs and stop at the open workshop door."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "\u00bfPuedo usar la herramienta?"
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6f30ad767a17625a86b51284d3f6e5ebb808b2c323c33396e21b3ec6349681a7",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "\u00bfPuedo usar la herramienta?"
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Si te ofreces, el borde cercano necesita una mano."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Si te ofreces, el borde cercano necesita una mano."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Puedes sostener el borde cercano si lo dices en serio."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Puedes sostener el borde cercano si lo dices en serio."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Pon la mano en el borde cercano. Yo tomo la holgura."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "No puedo tomar eso ahora. Tengo que terminar."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_1bdf8cd5bdb7a45fae06e64e10ddecb69d28eae97d28439ddcf7fe0dd612a1ac",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "No puedo tomar eso ahora. Tengo que terminar."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f235d7909d8948cc13df57f36f31de06bfaed6e66cb81c64f2396f79d48e7548",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Hoy no. El mercado cierra."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f7503611f3a644e4592e0ef4152eabb378d8ed77c1dc908750991e569e7c5fc5",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Hoy no. El mercado cierra."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_825c99d85dd8ad65b374328204ff470a76497d9e11f03fce0ad2d66f7ebddf93",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: Me qued\u00e9 sin material. No puedo empezar eso ahora."
+      },
+      {
+        "actor_visible_id": "B",
+        "body_public": {
+          "language_tag": "es-MX",
+          "observable": true,
+          "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_adc5531849ae576224b0cd470b4e85eb81c0f2884430e7654a22bf54676d6b00",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "B says: La herramienta no est\u00e1. Hoy no puedo hacerlo."
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A turns toward the bench.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_affb2181ef525f65dd12f6061c4864584b8846a0d06551854d7382554bc19556",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A keeps a hand near the bench edge.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 227,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a90eda9fe9053b49f8f8cc6cd65ea8f9d9028aac74a60100b94575d1839ff13",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A keeps a hand near the bench edge.",
+          "language_tag": "es-MX",
+          "strategy": "REQUEST_TOOL",
+          "text": "\u00bfPuedo usar la herramienta?",
+          "tone": "ordinary"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9b87062fd81823a14065239d91c531838934f48a742c3a5d66ce551b57fdb437",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: \u00bfPuedo usar la herramienta?"
+      },
+      {
+        "actor_visible_id": "U",
+        "body_public": {
+          "observable": true,
+          "text": "Can I help?"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e08fdc07950a890085763f7804976e4ea010954f2f53fbb513583797a8997964",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "U says: Can I help?"
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A looks at the empty tool space.",
+          "language_tag": "es-MX",
+          "strategy": "HELP_REFUSE",
+          "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo.",
+          "tone": "flat"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6aba3795f3fd9aa8f753c0f310d93809f19a47eebaee8b3bddf1a6e9f08f1888",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: La herramienta no est\u00e1. Hoy no puedo hacerlo."
+      },
+      {
+        "actor_visible_id": "A",
+        "body_public": {
+          "gesture": "A turns the empty bench over.",
+          "language_tag": "es-MX",
+          "strategy": "HELP_REFUSE",
+          "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+          "tone": "flat"
+        },
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_51837a80fd0cdf82541d0ae1d88a008034c049f418f037143f48d151ca9ce7b9",
+        "kind": "SPEECH",
+        "location": "workshop",
+        "perceived_by_user": true,
+        "source_ref": "S45_C12_WORLD_EVENT@f26a138",
+        "summary": "A says: Me qued\u00e9 sin material. No puedo empezar eso ahora."
+      }
+    ],
+    "visible_speech": [
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6f30ad767a17625a86b51284d3f6e5ebb808b2c323c33396e21b3ec6349681a7",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f9564f04a59db5211c56148c7f42506dca00de2c41d9f4d0d4fc27093feaddab",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_86efe89b82ce043b5a267da9f52917508754a007f703d4a44fe3c27e3926ec8a",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Si te ofreces, el borde cercano necesita una mano.",
+        "text": "Si te ofreces, el borde cercano necesita una mano."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_bf9c51b2836e455c63c0595c0742629c8993694f8ba0040b56705fd964baf435",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Puedes sostener el borde cercano si lo dices en serio.",
+        "text": "Puedes sostener el borde cercano si lo dices en serio."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_235db1c23e079d07051e6a84290c764a416840e1accb32a9c0195f014b14b537",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Sost\u00e9n el borde cercano. Revisar\u00e9 la costura.",
+        "text": "Sost\u00e9n el borde cercano. Revisar\u00e9 la costura."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e34c0fde9ff8ed70db965a50f06ec2d5357daa5289772b4233eeaf7da6baab9d",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Pon la mano en el borde cercano. Yo tomo la holgura.",
+        "text": "Pon la mano en el borde cercano. Yo tomo la holgura."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_1bdf8cd5bdb7a45fae06e64e10ddecb69d28eae97d28439ddcf7fe0dd612a1ac",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar.",
+        "text": "No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f235d7909d8948cc13df57f36f31de06bfaed6e66cb81c64f2396f79d48e7548",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: No puedo tomar eso ahora. Tengo que terminar.",
+        "text": "No puedo tomar eso ahora. Tengo que terminar."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f7503611f3a644e4592e0ef4152eabb378d8ed77c1dc908750991e569e7c5fc5",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Hoy no. El mercado cierra.",
+        "text": "Hoy no. El mercado cierra."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_825c99d85dd8ad65b374328204ff470a76497d9e11f03fce0ad2d66f7ebddf93",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+        "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_adc5531849ae576224b0cd470b4e85eb81c0f2884430e7654a22bf54676d6b00",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "B",
+        "strategy": "",
+        "summary": "B says: La herramienta no est\u00e1. Hoy no puedo hacerlo.",
+        "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+      },
+      {
+        "clock": 222,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_affb2181ef525f65dd12f6061c4864584b8846a0d06551854d7382554bc19556",
+        "gesture": "A turns toward the bench.",
+        "labeled_english": "",
+        "speaker": "A",
+        "strategy": "REQUEST_TOOL",
+        "summary": "A says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 227,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9a90eda9fe9053b49f8f8cc6cd65ea8f9d9028aac74a60100b94575d1839ff13",
+        "gesture": "A keeps a hand near the bench edge.",
+        "labeled_english": "",
+        "speaker": "A",
+        "strategy": "REQUEST_TOOL",
+        "summary": "A says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_9b87062fd81823a14065239d91c531838934f48a742c3a5d66ce551b57fdb437",
+        "gesture": "A keeps a hand near the bench edge.",
+        "labeled_english": "",
+        "speaker": "A",
+        "strategy": "REQUEST_TOOL",
+        "summary": "A says: \u00bfPuedo usar la herramienta?",
+        "text": "\u00bfPuedo usar la herramienta?"
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_e08fdc07950a890085763f7804976e4ea010954f2f53fbb513583797a8997964",
+        "gesture": "",
+        "labeled_english": "",
+        "speaker": "U",
+        "strategy": "",
+        "summary": "U says: Can I help?",
+        "text": "Can I help?"
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_6aba3795f3fd9aa8f753c0f310d93809f19a47eebaee8b3bddf1a6e9f08f1888",
+        "gesture": "A looks at the empty tool space.",
+        "labeled_english": "The tool's gone. I can't do it today.",
+        "speaker": "A",
+        "strategy": "HELP_REFUSE",
+        "summary": "A says: La herramienta no est\u00e1. Hoy no puedo hacerlo.",
+        "text": "La herramienta no est\u00e1. Hoy no puedo hacerlo."
+      },
+      {
+        "clock": 228,
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_51837a80fd0cdf82541d0ae1d88a008034c049f418f037143f48d151ca9ce7b9",
+        "gesture": "A turns the empty bench over.",
+        "labeled_english": "I'm out of material. I can't start that now.",
+        "speaker": "A",
+        "strategy": "HELP_REFUSE",
+        "summary": "A says: Me qued\u00e9 sin material. No puedo empezar eso ahora.",
+        "text": "Me qued\u00e9 sin material. No puedo empezar eso ahora."
+      }
+    ]
+  }
+}

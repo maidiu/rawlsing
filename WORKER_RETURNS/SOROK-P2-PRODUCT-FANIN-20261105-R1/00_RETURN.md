@@ -11,7 +11,8 @@
 - Explicit interval source: public-key/census repair `76d5a3d13e0219c1a085ebadd55071de2dd90e7d`, built on primary repair `7a256ed4` and historical `bdadbc57c...`. Imported directory tree `f7bd1c51f5420c83970487d5163d585a5c4e9e2c`.
 - Primary no-auto-help repair is independently `PASS` at closure `89b33453eff13d8a3638a97cf516438c42e7af4f`; the remaining public-key rename/census fix in `76d5a3d` is `AUTHOR_TESTED` pending independent review. The independent integrated review currently covers exact `25d40806` (old interval import), not this refreshed fanin head.
 - Historical bdad interval/fanin auto-DO_HELP defect evidence and the prior `89b334` REVISE closure remain preserved in Git history and in `evidence/upstream_interval_auto_do_help.json`. The new secondary repair is author-tested only; no acceptance promotion.
-- Later-event source: `76fdb624afc7674f088d10c349bfe15ffd0b865a`. Imported directory tree `1c701c14e131be131e7f62bdeccec3fe7415d0fb`. Its independent review is separately running; this fanin is not independently accepted.
+- Later-event source: public-boundary repair `b71624f21d0bc638e8817f3929cc6c01ab8b0f61` (code `4bdba46c4d3a667a9cd7845eb57caa980df76373`), imported tree `67f01db82c3722f6d5dcf98da722872db909a237`, 48 files. Historical `76fdb624` remains original `REVISE`; repair author evidence is 8 passed in 150.90s, independent closure running.
+- Existing integrated cut `25d40806` is independently `ACCEPT_SCOPED_TEST_ONLY` at `332e00cb3da51b859a408a31f820b1afd7fe8fc0`; that exact scope is preserved and is not acceptance of this newer head.
 - All three new `WORKER_RETURNS` directories were imported byte-exactly from those Git trees, with their evidence preserved. No accepted base/vendor/projection/PR697/programma working file was edited.
 - New integration code/tests/evidence only under `WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/`.
 
@@ -49,7 +50,7 @@ The supplied interval is not a user-WAIT/absence choice. It is an explicit inter
 
 ## ATTEMPT VERSUS OBSERVATION
 
-This integration does not auto-execute user `DO_HELP` to show a predicted consequence. The historical interval helper `admit_continuation` auto-called `adapter.do_help()`; primary repair `7a256ed4` made it observation-only and added separate `explicit_do_help`/CLI `do-help`. Repair `76d5a3d` additionally renames reserved public keys to `admission_status`/`c9_public` and fixes the receipt census. Fanin uses only `apply_explicit_interval`, never calls `admit_continuation`, and does not consume the renamed fields, so its callsite is unchanged. Evidence: `evidence/upstream_interval_auto_do_help.json`, `evidence/interval_refresh_oracle.json`.
+This integration does not auto-execute user `DO_HELP` to show a predicted consequence. The later-event repair `b71624f` separates allowlisted public output from privileged engineering output (`*_engineering` / `--engineering-out`) and keeps DO_HELP as a separate explicit request. Fanin still uses only the preserved `P2Continuation.admit_later_event/read_later_event` primitives, performs its own internal engineering reads, and emits its existing `public_opportunity` allowlist; it does not import the standalone later CLI or its privileged evidence. The interval repair's reserved-key/census fix is also imported. Evidence: `evidence/later_refresh_oracle.json`, `evidence/later_public_boundary_repair_status.json`, `evidence/upstream_interval_auto_do_help.json`.
 
 Fanin uses only:
 
@@ -103,18 +104,23 @@ Evidence:
 - `evidence/test_run.json`, `evidence/focused_fanin.xml`, `logs/focused_fanin.log`
 - `evidence/cli/` (17 cold command receipts plus `summary.json`)
 - `evidence/cut_restore.json`
-- `evidence/upstream_interval_auto_do_help.json` (historical defect + repair status)
+- `evidence/upstream_interval_auto_do_help.json` (historical defect + interval repair status)
+- `evidence/later_refresh_oracle.json`, `evidence/later_public_boundary_repair_status.json`
+- `evidence/later_public_boundary_focused.xml`, `logs/later_public_boundary_focused.log`
+- `evidence/later_public_boundary_test_run.json`, `evidence/later_public_boundary_oracle.json`, `evidence/later_public_boundary_source_manifest.json`
 - `evidence/interval_public_receipt_focused.xml`, `logs/interval_public_receipt_focused.log` (76d5a3d author tests)
 - `evidence/interval_public_receipt_repair_tests.json`, `evidence/interval_refresh_oracle.json`
 - `evidence/interval_repair_focused.xml`, `logs/interval_repair_focused.log` (historical 7a256 tests)
 - `evidence/source_manifest.json` (fanin files plus exact imported-tree hashes)
+- `PR_READY_RECEIVING_DESCRIPTION.md` (HQ receiving description; no merge permission)
 
 ## NOT RUN / HOLDS
 
 - No independent review of this refreshed fanin commit.
 - Primary interval no-auto-help repair is independently PASS at `89b334`; secondary public-key/census repair `76d5a3d` is AUTHOR_TESTED only, pending independent review.
-- Latter2 independent review remains on old cuts; later-event `76fdb624` original `REVISE` and public-CLI limits are preserved.
-- Independent integrated review currently covers exact `25d40806` (old interval import); it is not acceptance of this refreshed head.
+- Later-event `76fdb624` original `REVISE` and public-CLI limits remain historically preserved; repair `b71624f` is AUTHOR_TESTED with independent closure still running.
+- Independent integrated review currently covers exact `25d40806` (old interval/later imports), not this refreshed head.
+- No routine rerun of unchanged fanin tests/CLI after later primitive API preservation; 8 later author tests and prior 7 fanin tests are reused.
 - Inherited full 55-test estate was not rerun.
 - No native C8/C9/C12, CAN008/CAN011, ADP, Pyat, human usability, B-owned context or paid action is claimed.
 - No actual elapsed life, absence activity, delivery, world return or external message channel is claimed.

@@ -1,64 +1,34 @@
 {
   "schema": "SOROK_PROGRAMMA_DELTA@1",
   "delta_id": "SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
-  "delta_class": "ADDITIVE_SOURCEFREE_P2_LATER_EVENT_CONSTRUCTION",
-  "base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
-  "branch": "codex/sorok-p2-later-event-continuation-20261105-r1",
+  "repair_base": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+  "reviewer": "f1a2872487b3aa492632a497ad7481e8529d937e",
+  "product_base": "41bf45813fd0adeffd9b54e1306c2022abe96514",
+  "branch": "codex/sorok-p2-later-public-boundary-repair-20261105-r1",
+  "result": "PASS",
   "grade": "TEST_ONLY_SOURCEFREE_P2_LATER_EVENT_CONTINUATION_NOT_NATIVE",
-  "native": false,
-  "provider_calls": 0,
-  "programma_canonical_change": false,
-  "shipped_product_edit": false,
-  "protected_write": false,
-  "pr_697": {
-    "state": "DRAFT_NOT_MERGED",
-    "source_head": "41bf45813fd0adeffd9b54e1306c2022abe96514"
-  },
-  "producer": "s43.session.S43Session.admit_event",
-  "first_consumers": [
-    "s45.session.S45Session.read_event -> s42.reader.read_event",
-    "s43.session.S43Session.read_s43_event",
-    "s47.session.S47Session.read_c9_conditioning",
-    "s45_projection.adapter.S45Projection.say",
-    "s45_projection.adapter.S45Projection.do_help",
-    "s45_projection.adapter.S45Projection.attend"
+  "delta_kind": "PUBLIC_PRIVACY_AND_EXPLICIT_DO_HELP_REPAIR",
+  "public_privacy_hits": 0,
+  "auto_do_help_removed": true,
+  "explicit_do_help_operation": "project_do_help / CLI --do-help / CLI do-help",
+  "observation_encounter_mutation": false,
+  "explicit_do_help_increments_encounter": true,
+  "preserved_primitives": [
+    "produce_input_interval",
+    "admit_later_event",
+    "read_later_event",
+    "cold_read"
   ],
-  "s41_internal": [
-    "s41.event.ContinuationProducer.generate",
-    "s41.performer.perform_continuation_attempt",
-    "s42.event.make_history_records",
-    "s42.event.build_ongoing_occurrence"
-  ],
-  "observed": {
-    "same_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
-    "actual_material_after_interval": 0,
-    "actual_interval_source_hash": "e196c974e43a024055949113f6b875be8c012f1c422d6829d4890e8a46688658",
-    "later_event_2": "TEST_ONLY_BP2_E1_OCC-0002",
-    "later_event_3": "TEST_ONLY_BP2_E1_OCC-0003",
-    "later_event_2_c9_source_in_readset": true,
-    "later_event_2_c9_objective_material_eligible": false,
-    "later_event_3_history_includes_event_2": true,
-    "s43_expression_status": "ACCEPTED",
-    "s43_repertoire_hash": "e0d29337fe0f3551e71e7d6d944d8e9b6ced2402649b116907069c7a1acb1888",
-    "actual_do_help": "HELP_REFUSE",
-    "scheduled_material_after_interval": 1,
-    "scheduled_do_help": "HELP_ACCEPT",
-    "cut_refusal": "S46_INTERVAL_CONDITION_REVOKED",
-    "restore_same_source": true,
-    "cold_same_root_and_source": true,
-    "attend_presentation_only": true
+  "focused_tests": {
+    "tests": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
   },
-  "tests": {
-    "focused_passed": 5,
-    "focused_failed": 0,
-    "full_inherited_estate_rerun": false
-  },
-  "holds": [
-    "no native C8/C9/C12, CAN008/CAN011, ADP, Pyat or human authority",
-    "no current B-owned context or independent counterpart; no invented B personality/choice",
-    "no new actor rule, memory/practice grant, target proposal, delivery or human trial",
-    "additive continuation not independently reviewed",
-    "no protected merge"
-  ],
-  "owner_intake": "Use as additive P2 sourcefree construction evidence. Do not treat as native/human acceptance or protected receiving; exact return SHA is reported in the final chat readback."
+  "historical_repair_base_immutable": true,
+  "product_code_change": false,
+  "protected_premain_write": false,
+  "pr697_merged": false,
+  "native_or_human_grant": false,
+  "next_owner_action": "Independent review of the exact repair commit and HQ adoption of public observation plus explicit do-help."
 }

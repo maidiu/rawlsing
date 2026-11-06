@@ -1,0 +1,122 @@
+{
+  "caller_unchanged": {
+    "fanin_imports_later_cli": false,
+    "fanin_uses_primitive_only": true,
+    "note": "Fanin already used P2Continuation.admit_later_event/read_later_event and its own public_opportunity allowlist; repair preserves those primitives.",
+    "renamed_or_removed_primitive_api": false
+  },
+  "checks": {
+    "explicit_help_exactly_one": true,
+    "fanin_public_privacy_clean": true,
+    "fanin_reused_evidence_zeros_then_one": true,
+    "later_history_c9_cold_reused": true,
+    "later_public_privacy_clean": true,
+    "primitive_observation_no_attempt": true,
+    "source_origin_under_later_return": true,
+    "standalone_later_cli_not_imported": true
+  },
+  "later_commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+  "later_return": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
+  "later_tree": "67f01db82c3722f6d5dcf98da722872db909a237",
+  "loaded_module_path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1/p2_continuation/continuation.py",
+  "loaded_module_under_later_return": true,
+  "ok": true,
+  "primitive_methods_present": {
+    "admit_later_event": true,
+    "cold_read": true,
+    "produce_input_interval": true,
+    "read_later_event": true
+  },
+  "public_privacy": {
+    "engineering_hits_expected_nonzero_separate": {
+      "cold_engineering.json": 22,
+      "cut_restore_engineering.json": 24,
+      "positive_action_engineering.json": 59,
+      "positive_engineering.json": 59,
+      "scheduled_action_engineering.json": 49,
+      "scheduled_engineering.json": 49
+    },
+    "fanin_public_all_zero": true,
+    "fanin_public_hits": {
+      "01-new.json": [],
+      "02-interval-actual.json": [],
+      "03-verify-after-interval.json": [],
+      "04-later-event-observation.json": [],
+      "04b-opportunity.json": [],
+      "05-verify-after-observation.json": [],
+      "05b-verify-after-opportunity.json": [],
+      "06-do-help-explicit.json": [],
+      "07-verify-after-explicit-help.json": [],
+      "08-attend.json": [],
+      "09-say-unknown.json": [],
+      "10-exit.json": [],
+      "11-say-blocked.json": [],
+      "12-return.json": [],
+      "13-say-after-return.json": [],
+      "14-status.json": [],
+      "15-verify-final.json": [],
+      "summary.json": []
+    },
+    "later_public_all_zero": true,
+    "later_public_hits": {
+      "cli/cold.json": [],
+      "cli/cut-restore.json": [],
+      "cli/positive-action.json": [],
+      "cli/positive-default.json": [],
+      "cli/scheduled-default.json": [],
+      "cold_public.json": [],
+      "cut_restore_public.json": [],
+      "positive_action_public.json": [],
+      "positive_public.json": [],
+      "scheduled_action_public.json": [],
+      "scheduled_public.json": []
+    }
+  },
+  "reused_author_evidence": {
+    "fanin_cli_encounters": {
+      "after_explicit_do_help": 1,
+      "after_interval": 0,
+      "after_later_observation": 0,
+      "after_opportunity": 0
+    },
+    "fanin_explicit_do_help": {
+      "attempted": true,
+      "performed": false,
+      "refusal": true,
+      "status": "REFUSED"
+    },
+    "fanin_later_observation": {
+      "c9_material_eligible": false,
+      "do_help_executed": false,
+      "event_status": "OK",
+      "language_status": "ACCEPTED",
+      "user_attempt": false
+    },
+    "fanin_reused": true,
+    "fanin_test_run": "7 passed in 71.86s (0:01:11)",
+    "later_focused_elapsed_seconds": 150.9,
+    "later_focused_tests": 8,
+    "later_junit": "evidence/junit.xml",
+    "oracle_old_primitive": {
+      "do_help_called": false,
+      "e2_status": "OK",
+      "e3_status": "OK",
+      "encounter_count": 0,
+      "interval_status": "PARTIAL",
+      "verify_ok": true
+    },
+    "oracle_repaired_default": {
+      "auto_do_help": false,
+      "encounter_count_after_action": 0,
+      "encounter_count_before_action": 0,
+      "privacy_hits_shipped_walker": 0
+    },
+    "oracle_repaired_explicit_do_help": {
+      "do_help_status": "REFUSED",
+      "encounter_count_after_action": 1,
+      "encounter_count_before_action": 0,
+      "privacy_hits_shipped_walker": 0
+    }
+  },
+  "schema": "SOROK_P2_FANIN_LATER_REFRESH_ORACLE@1"
+}

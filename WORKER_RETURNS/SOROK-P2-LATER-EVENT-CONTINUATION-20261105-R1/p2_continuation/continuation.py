@@ -7,6 +7,7 @@ from typing import Any, Mapping
 from .bootstrap import load
 
 SCHEMA = "SOROK_P2_LATER_EVENT_CONTINUATION@1"
+PUBLIC_SCHEMA = "SOROK_P2_LATER_EVENT_PUBLIC@1"
 GRADE = "TEST_ONLY_SOURCEFREE_P2_LATER_EVENT_CONTINUATION_NOT_NATIVE"
 
 
@@ -77,6 +78,118 @@ def _history_ids(read: Mapping[str, Any]) -> list[str]:
         for row in (read.get("history_refs") or [])
         if isinstance(row, Mapping)
     ]
+
+
+def privacy_hits(value: Any) -> list[str]:
+    """Return key paths that hit the shipped projection privacy walker."""
+    from s45_projection.projection import FORBIDDEN_VALUE_MARKERS, PRIVATE_KEYS
+
+    hits: list[str] = []
+
+    def walk(item: Any, path: str) -> None:
+        if isinstance(item, Mapping):
+            for key, child in item.items():
+                child_path = path + "." + str(key) if path else str(key)
+                if key in PRIVATE_KEYS:
+                    hits.append(child_path)
+                walk(child, child_path)
+        elif isinstance(item, (list, tuple)):
+            for index, child in enumerate(item):
+                walk(child, path + "[" + str(index) + "]")
+        elif isinstance(item, str):
+            if any(marker in item for marker in FORBIDDEN_VALUE_MARKERS):
+                hits.append(path)
+
+    walk(value, "")
+    return hits
+
+
+def public_interval_summary(interval: Mapping[str, Any] | None) -> dict:
+    interval = interval or {}
+    return {
+        "mode": interval.get("mode"),
+        "status": interval.get("status"),
+        "coverage": list(interval.get("coverage") or []),
+        "material_after_interval": interval.get("material_after_interval"),
+        "actual_daily_events_invented": interval.get("actual_daily_events_invented"),
+        "actor_knowledge_inferred": interval.get("actor_knowledge_inferred"),
+        "psychology_state_written": interval.get("psychology_state_written"),
+    }
+
+
+def public_opportunity(view: Mapping[str, Any] | None) -> dict:
+    view = view or {}
+    return {
+        "schema": "SOROK_P2_CONTINUED_PUBLIC_OPPORTUNITY@1",
+        "source": view.get("source"),
+        "clock": view.get("clock"),
+        "location": view.get("location"),
+        "visible_event_count": len(view.get("visible_events") or []),
+        "encounter_admission": view.get("encounter_admission"),
+        "tool_available": view.get("tool_available"),
+        "controls": view.get("controls"),
+        "return_available": (view.get("return_control") or {}).get("available"),
+    }
+
+
+def public_report(report: Mapping[str, Any]) -> dict:
+    """Allowlisted user-facing report; engineering fields stay out."""
+    interval = public_interval_summary(report.get("interval"))
+    view = report.get("view")
+    do_help = report.get("do_help")
+    say = report.get("say")
+    attend = report.get("attend")
+    before = report.get("encounter_count_before_action")
+    after = report.get("encounter_count_after_action")
+    if after is None:
+        after = report.get("encounter_count")
+    body = {
+        "schema": PUBLIC_SCHEMA,
+        "grade": GRADE,
+        "native": False,
+        "scenario": report.get("scenario"),
+        "interval": interval,
+        "opportunity": public_opportunity(view),
+        "view": view,
+        "say": say,
+        "do_help": do_help,
+        "attend": attend,
+        "do_help_executed": bool(report.get("do_help_executed")),
+        "say_executed": bool(report.get("say_executed")),
+        "attend_executed": bool(report.get("attend_executed")),
+        "encounter_count_before_action": before,
+        "encounter_count_after_action": after,
+        "encounters_unchanged_before_action": (
+            before == 0 if before is not None else None
+        ),
+        "verify_ok": report.get("verify_ok"),
+        "cold_continuity": report.get("cold_continuity"),
+    }
+    hits = privacy_hits(body)
+    checks = {
+        "material_expected": (
+            interval.get("material_after_interval") == 0
+            if interval.get("mode") == "ACTUAL"
+            else (
+                interval.get("material_after_interval") == 1
+                if interval.get("mode") == "SCHEDULED_ONLY"
+                else True
+            )
+        ),
+        "later_events_admitted": bool(
+            (report.get("checks") or {}).get("later_events_admitted", True)
+        ),
+        "verify_ok": body["verify_ok"] is True,
+        "cold_continuity": body["cold_continuity"] is True,
+        "privacy_clean": not hits,
+        "encounters_zero_before_action": body["encounters_unchanged_before_action"] is True,
+        "do_help_explicit": (
+            (body["do_help"] is not None) == body["do_help_executed"]
+        ),
+    }
+    body["checks"] = checks
+    body["ok"] = all(checks.values())
+    return body
 
 
 def _callables(session, adapter) -> dict:
@@ -275,21 +388,84 @@ def cold_read(state_root, event_refs: tuple[str, ...]) -> dict:
         session.close()
 
 
+def public_cut_restore_report(report: Mapping[str, Any]) -> dict:
+    checks = report.get("checks") or {}
+    body = {
+        "schema": PUBLIC_SCHEMA,
+        "grade": GRADE,
+        "native": False,
+        "scenario": "INTERVAL_CONDITION_CUT_RESTORE_PUBLIC",
+        "interval": public_interval_summary(report.get("interval")),
+        "cut_refused": checks.get("cut_refused") is True,
+        "cut_code": report.get("cut_code", ""),
+        "cut_appended_no_later_event": checks.get("cut_appended_no_later_event") is True,
+        "restored_admission_ok": checks.get("restored_admission_ok") is True,
+        "source_intact": checks.get("restored_source_same") is True,
+        "verify_ok": report.get("verify_ok") is True,
+        "cold_continuity": (
+            (report.get("cold") or {}).get("verify_ok") is True
+        ),
+        "do_help_executed": False,
+    }
+    hits = privacy_hits(body)
+    body["checks"] = {
+        "cut_refused": body["cut_refused"],
+        "no_later_event_after_cut": body["cut_appended_no_later_event"],
+        "restore_admitted": body["restored_admission_ok"],
+        "source_intact": body["source_intact"],
+        "verify_ok": body["verify_ok"],
+        "cold_continuity": body["cold_continuity"],
+        "privacy_clean": not hits,
+    }
+    body["ok"] = all(body["checks"].values())
+    return body
+
+
+def public_cold_report(report: Mapping[str, Any]) -> dict:
+    body = {
+        "schema": PUBLIC_SCHEMA,
+        "grade": GRADE,
+        "native": False,
+        "scenario": "COLD_REOPEN_PUBLIC",
+        "event_count": report.get("event_count"),
+        "encounter_count": report.get("encounter_count"),
+        "verify_ok": report.get("verify_ok") is True,
+        "cold_continuity": report.get("verify_ok") is True,
+        "do_help_executed": False,
+    }
+    hits = privacy_hits(body)
+    body["checks"] = {
+        "verify_ok": body["verify_ok"],
+        "cold_continuity": body["cold_continuity"],
+        "privacy_clean": not hits,
+    }
+    body["ok"] = all(body["checks"].values())
+    return body
+
+
+def run_positive_public(state_root, *, seed: str = "01" * 32, **kwargs) -> dict:
+    return public_report(run_positive(state_root, seed=seed, **kwargs))
+
+
+def run_scheduled_public(state_root, *, seed: str = "01" * 32, **kwargs) -> dict:
+    return public_report(run_scheduled(state_root, seed=seed, **kwargs))
+
+
 def _positive_checks(report: Mapping[str, Any]) -> dict:
     interval = report["interval"]
     e2 = report["later_event_2"]
     e3 = report["later_event_3"]
     e2_after = report["earlier_event_after_later"]
-    said = report["say"]
-    helped = report["do_help"]
-    attended = report["attend"]
+    said = report.get("say")
+    helped = report.get("do_help")
+    attended = report.get("attend")
     cold = report["cold"]
     e2_c9 = e2["c9"]
     e3_c9 = e3["c9"]
     e2_cold = cold["events"].get(e2["event_ref"], {})
     e3_cold = cold["events"].get(e3["event_ref"], {})
     e2_s43 = e2["s43"]
-    return {
+    checks = {
         "interval_actual_consumes_material": interval["status"] in {
             "PARTIAL", "REALIZED"
         } and interval["source"]["source_hash"] != "" and report[
@@ -297,6 +473,7 @@ def _positive_checks(report: Mapping[str, Any]) -> dict:
         ] == 0,
         "e2_real_later_event": e2["status"] == "OK" and e2["performed"] is True,
         "e3_real_later_event": e3["status"] == "OK" and e3["performed"] is True,
+        "later_events_admitted": e2["status"] == "OK" and e3["status"] == "OK",
         "e3_history_includes_e2": e2["event_ref"] in e3["history_refs"],
         "e2_source_in_c9_readset": e2_c9["s47_source_in_readset"] is True,
         "e2_c9_uses_interval_source": e2_c9["s47_source_hash"]
@@ -310,18 +487,6 @@ def _positive_checks(report: Mapping[str, Any]) -> dict:
         == e2["event_hash"]
         and e2_after["c9"]["s47_source_hash"] == e2_c9["s47_source_hash"]
         and e2_after["c9"]["s47_source_ref"] == e2_c9["s47_source_ref"],
-        "say_attempt_not_performance": said.get("attempted") is True
-        and said.get("performed") is False,
-        "do_help_attempt_not_performance": helped.get("attempted") is True
-        and helped.get("performed") is False,
-        "do_help_refused_by_earlier_activity": helped.get("status") == "REFUSED"
-        and helped.get("refusal") is True
-        and (helped.get("actor_response") or {}).get("strategy") == "HELP_REFUSE"
-        and (helped.get("actor_response") or {}).get("performed") is False,
-        "attend_presentation_only": attended.get("status") == "NO_CHANGE"
-        and attended.get("world_event_created") is False
-        and attended.get("clock_changed") is False
-        and attended.get("performed") is False,
         "verify_ok": report["verify_ok"] is True,
         "cold_same_root": cold["root_hash"] == report["root_hash"],
         "cold_e2_source_same": e2_cold.get("c9", {}).get("s47_source_hash")
@@ -331,10 +496,46 @@ def _positive_checks(report: Mapping[str, Any]) -> dict:
         "cold_s43_same": e2_cold.get("s43", {}).get("repertoire_hash")
         == e2_s43["repertoire_hash"],
         "cold_verify_ok": cold["verify_ok"] is True,
+        "observation_before_explicit_action": (
+            report.get("encounter_count_before_action") == 0
+        ),
     }
+    if said is not None:
+        checks["say_attempt_not_performance"] = (
+            said.get("attempted") is True and said.get("performed") is False
+        )
+    if helped is not None:
+        checks["do_help_attempt_not_performance"] = (
+            helped.get("attempted") is True and helped.get("performed") is False
+        )
+        checks["do_help_refused_by_earlier_activity"] = (
+            helped.get("status") == "REFUSED"
+            and helped.get("refusal") is True
+            and (helped.get("actor_response") or {}).get("strategy") == "HELP_REFUSE"
+            and (helped.get("actor_response") or {}).get("performed") is False
+        )
+        checks["do_help_incremented"] = (
+            report.get("encounter_count_after_action", 0)
+            > report.get("encounter_count_before_action", 0)
+        )
+    if attended is not None:
+        checks["attend_presentation_only"] = (
+            attended.get("status") == "NO_CHANGE"
+            and attended.get("world_event_created") is False
+            and attended.get("clock_changed") is False
+            and attended.get("performed") is False
+        )
+    return checks
 
 
-def run_positive(state_root, *, seed: str = "01" * 32) -> dict:
+def run_positive(
+    state_root,
+    *,
+    seed: str = "01" * 32,
+    execute_say: bool = False,
+    execute_do_help: bool = False,
+    execute_attend: bool = False,
+) -> dict:
     continuation = P2Continuation.start(Path(state_root), seed=seed)
     try:
         callables = _callables(continuation.session, continuation.adapter)
@@ -343,14 +544,15 @@ def run_positive(state_root, *, seed: str = "01" * 32) -> dict:
         e2 = continuation.admit_later_event((first_ref,))
         e3 = continuation.admit_later_event((first_ref, e2["event_ref"]))
         e2_after = continuation.read_later_event(e2["event_ref"])
-        said = continuation.project_say("Can I help?")
-        helped = continuation.project_do_help()
-        attended = continuation.project_attend()
+        encounter_count_before_action = len(continuation.session.read_encounters())
+        said = continuation.project_say("Can I help?") if execute_say else None
+        helped = continuation.project_do_help() if execute_do_help else None
+        attended = continuation.project_attend() if execute_attend else None
         view = continuation.view()
         verify = continuation.verify()
         root_hash = continuation.session.read_root()["root_hash"]
         event_count = len(continuation.session.read_events())
-        encounter_count = len(continuation.session.read_encounters())
+        encounter_count_after_action = len(continuation.session.read_encounters())
     finally:
         continuation.close()
 
@@ -363,7 +565,12 @@ def run_positive(state_root, *, seed: str = "01" * 32) -> dict:
         "state_root": str(Path(state_root)),
         "root_hash": root_hash,
         "event_count": event_count,
-        "encounter_count": encounter_count,
+        "encounter_count_before_action": encounter_count_before_action,
+        "encounter_count_after_action": encounter_count_after_action,
+        "encounter_count": encounter_count_after_action,
+        "say_executed": execute_say,
+        "do_help_executed": execute_do_help,
+        "attend_executed": execute_attend,
         "callables": callables,
         "interval": interval,
         "interval_source_ref": interval["source"]["source_ref"],
@@ -378,6 +585,13 @@ def run_positive(state_root, *, seed: str = "01" * 32) -> dict:
         "attend": attended,
         "view": view,
         "verify_ok": bool(verify.get("ok")),
+        "cold_continuity": (
+            cold["root_hash"] == root_hash
+            and cold["verify_ok"] is True
+            and cold["events"].get(e2["event_ref"], {}).get("c9", {}).get(
+                "s47_source_hash"
+            ) == e2["c9"]["s47_source_hash"]
+        ),
         "cold": cold,
     }
     report["checks"] = _positive_checks(report)
@@ -385,7 +599,14 @@ def run_positive(state_root, *, seed: str = "01" * 32) -> dict:
     return report
 
 
-def run_scheduled(state_root, *, seed: str = "01" * 32) -> dict:
+def run_scheduled(
+    state_root,
+    *,
+    seed: str = "01" * 32,
+    execute_say: bool = False,
+    execute_do_help: bool = False,
+    execute_attend: bool = False,
+) -> dict:
     continuation = P2Continuation.start(Path(state_root), seed=seed)
     try:
         callables = _callables(continuation.session, continuation.adapter)
@@ -393,27 +614,53 @@ def run_scheduled(state_root, *, seed: str = "01" * 32) -> dict:
         first_ref = continuation.session.read_events()[0]["e1_event_id"]
         e2 = continuation.admit_later_event((first_ref,))
         e3 = continuation.admit_later_event((first_ref, e2["event_ref"]))
-        helped = continuation.project_do_help()
+        encounter_count_before_action = len(continuation.session.read_encounters())
+        said = continuation.project_say("Can I help?") if execute_say else None
+        helped = continuation.project_do_help() if execute_do_help else None
+        attended = continuation.project_attend() if execute_attend else None
         view = continuation.view()
         verify = continuation.verify()
         root_hash = continuation.session.read_root()["root_hash"]
+        encounter_count_after_action = len(continuation.session.read_encounters())
     finally:
         continuation.close()
 
+    cold = cold_read(state_root, (e2["event_ref"], e3["event_ref"]))
     checks = {
         "interval_not_performed": interval["status"] == "NOT_PERFORMED",
         "material_remains": interval["material_after_interval"] == 1,
         "later_events_admitted": e2["status"] == "OK" and e3["status"] == "OK",
         "e3_history_includes_e2": e2["event_ref"] in e3["history_refs"],
         "c9_material_eligible": e2["c9"]["objective_material_eligible"] is True,
-        "do_help_attempt_not_performance": helped.get("attempted") is True
-        and helped.get("performed") is False,
-        "do_help_accepted_by_earlier_mode": helped.get("status") == "OK"
-        and helped.get("refusal") is False
-        and (helped.get("actor_response") or {}).get("strategy") == "HELP_ACCEPT"
-        and (helped.get("actor_response") or {}).get("performed") is True,
         "verify_ok": bool(verify.get("ok")),
+        "cold_same_root": cold["root_hash"] == root_hash,
+        "cold_verify_ok": cold["verify_ok"] is True,
+        "observation_before_explicit_action": encounter_count_before_action == 0,
     }
+    if said is not None:
+        checks["say_attempt_not_performance"] = (
+            said.get("attempted") is True and said.get("performed") is False
+        )
+    if helped is not None:
+        checks["do_help_attempt_not_performance"] = (
+            helped.get("attempted") is True and helped.get("performed") is False
+        )
+        checks["do_help_accepted_by_earlier_mode"] = (
+            helped.get("status") == "OK"
+            and helped.get("refusal") is False
+            and (helped.get("actor_response") or {}).get("strategy") == "HELP_ACCEPT"
+            and (helped.get("actor_response") or {}).get("performed") is True
+        )
+        checks["do_help_incremented"] = (
+            encounter_count_after_action > encounter_count_before_action
+        )
+    if attended is not None:
+        checks["attend_presentation_only"] = (
+            attended.get("status") == "NO_CHANGE"
+            and attended.get("world_event_created") is False
+            and attended.get("clock_changed") is False
+            and attended.get("performed") is False
+        )
     return {
         "schema": SCHEMA,
         "grade": GRADE,
@@ -421,15 +668,28 @@ def run_scheduled(state_root, *, seed: str = "01" * 32) -> dict:
         "scenario": "SCHEDULED_LATER_EVENT_CONTROL",
         "state_root": str(Path(state_root)),
         "root_hash": root_hash,
+        "encounter_count_before_action": encounter_count_before_action,
+        "encounter_count_after_action": encounter_count_after_action,
+        "encounter_count": encounter_count_after_action,
+        "say_executed": execute_say,
+        "do_help_executed": execute_do_help,
+        "attend_executed": execute_attend,
         "callables": callables,
         "interval": interval,
         "material_after_interval": interval["material_after_interval"],
         "first_event_ref": first_ref,
         "later_event_2": e2,
         "later_event_3": e3,
+        "say": said,
         "do_help": helped,
+        "attend": attended,
         "view": view,
         "verify_ok": bool(verify.get("ok")),
+        "cold_continuity": (
+            cold["root_hash"] == root_hash
+            and cold["verify_ok"] is True
+        ),
+        "cold": cold,
         "checks": checks,
         "ok": all(checks.values()),
     }
@@ -505,8 +765,17 @@ __all__ = [
     "GRADE",
     "P2Continuation",
     "SCHEMA",
+    "PUBLIC_SCHEMA",
     "cold_read",
+    "privacy_hits",
+    "public_cold_report",
+    "public_cut_restore_report",
+    "public_interval_summary",
+    "public_opportunity",
+    "public_report",
     "run_cut_restore",
     "run_positive",
+    "run_positive_public",
     "run_scheduled",
+    "run_scheduled_public",
 ]

@@ -4,7 +4,13 @@ import json
 from pathlib import Path
 
 from p2_continuation import cli
-from p2_continuation.continuation import SCHEMA, cold_read
+from p2_continuation.continuation import (
+    SCHEMA,
+    cold_read,
+    privacy_hits,
+    public_cut_restore_report,
+    public_report,
+)
 
 
 def test_positive_later_event_chain_and_projected_refusal(positive_report):
@@ -33,6 +39,8 @@ def test_positive_later_event_chain_and_projected_refusal(positive_report):
     assert report["do_help"]["attempted"] is True
     assert report["do_help"]["performed"] is False
     assert report["do_help"]["refusal"] is True
+    assert report["encounter_count_before_action"] == 0
+    assert report["encounter_count_after_action"] == 3
     assert report["attend"]["status"] == "NO_CHANGE"
     assert report["attend"]["world_event_created"] is False
     assert report["attend"]["clock_changed"] is False
@@ -74,6 +82,44 @@ def test_scheduled_control_same_root_accepts_help(
     assert report["do_help"]["performed"] is False
     assert report["do_help"]["actor_response"]["strategy"] == "HELP_ACCEPT"
     assert report["do_help"]["actor_response"]["performed"] is True
+    assert report["encounter_count_before_action"] == 0
+    assert report["encounter_count_after_action"] == 3
+
+
+def test_observation_does_not_manufacture_user_attempt(
+    positive_observation, scheduled_observation
+):
+    for report in (positive_observation, scheduled_observation):
+        assert report["ok"] is True, report["checks"]
+        assert report["say"] is None
+        assert report["do_help"] is None
+        assert report["attend"] is None
+        assert report["say_executed"] is False
+        assert report["do_help_executed"] is False
+        assert report["attend_executed"] is False
+        assert report["encounter_count_before_action"] == 0
+        assert report["encounter_count_after_action"] == 0
+        public = public_report(report)
+        assert privacy_hits(public) == []
+        assert public["checks"]["privacy_clean"] is True
+        assert public["do_help"] is None
+        assert public["do_help_executed"] is False
+        assert public["encounter_count_before_action"] == 0
+        assert public["encounter_count_after_action"] == 0
+
+
+def test_public_action_reports_privacy_and_explicit_counts(
+    positive_report, scheduled_report
+):
+    for report in (positive_report, scheduled_report):
+        public = public_report(report)
+        assert privacy_hits(public) == []
+        assert public["checks"]["privacy_clean"] is True
+        assert public["do_help_executed"] is True
+        assert public["do_help"] is not None
+        assert public["encounter_count_before_action"] == 0
+        assert public["encounter_count_after_action"] == 3
+        assert public["checks"]["do_help_explicit"] is True
 
 
 def test_interval_condition_cut_refuses_then_restores(cut_report):
@@ -89,29 +135,46 @@ def test_interval_condition_cut_refuses_then_restores(cut_report):
     assert report["admitted"]["c9"]["s47_source_in_readset"] is True
     assert report["cold"]["verify_ok"] is True
     assert report["cold"]["root_hash"] == report["root_hash"]
+    public = public_cut_restore_report(report)
+    assert privacy_hits(public) == []
+    assert public["checks"]["privacy_clean"] is True
+    assert public["checks"]["source_intact"] is True
+    assert public["checks"]["cold_continuity"] is True
 
 
-def test_cli_reads_existing_positive_chain(positive_report, capsys):
-    state = positive_report["state_root"]
-    e2 = positive_report["later_event_2"]["event_ref"]
-    e3 = positive_report["later_event_3"]["event_ref"]
+def test_source_intact_cold_engineering_read(cut_report):
+    report = cut_report
+    admitted = report["admitted"]
+    cold = cold_read(report["state_root"], (admitted["event_ref"],))
+    cold_event = cold["events"][admitted["event_ref"]]
+    assert cold["verify_ok"] is True
+    assert cold_event["c9"]["s47_source_hash"] == report["before_source"][
+        "source_hash"
+    ]
+    assert cold_event["c9"]["s47_source_in_readset"] is True
 
-    code = cli.main(["verify", "--state", state])
+
+def test_cli_public_default_and_explicit_action(tmp_path, capsys):
+    state = tmp_path / "cli-default" / "state"
+    code = cli.main(["positive", "--state", str(state)])
     captured = capsys.readouterr()
     assert code == 0, captured.err
-    verify = json.loads(captured.out)
-    assert verify["ok"] is True
-    assert len(verify["s42_events"]) >= 3
+    public = json.loads(captured.out)
+    assert privacy_hits(public) == []
+    assert public["do_help"] is None
+    assert public["do_help_executed"] is False
+    assert public["encounter_count_before_action"] == 0
+    assert public["encounter_count_after_action"] == 0
 
+    state_action = tmp_path / "cli-action" / "state"
     code = cli.main([
-        "cold", "--state", state,
-        "--event-ref", e2, "--event-ref", e3,
+        "positive", "--state", str(state_action), "--do-help",
     ])
     captured = capsys.readouterr()
     assert code == 0, captured.err
-    cold = json.loads(captured.out)
-    assert cold["verify_ok"] is True
-    assert cold["root_hash"] == positive_report["root_hash"]
-    assert cold["events"][e2]["c9"]["s47_source_hash"] == (
-        positive_report["later_event_2"]["c9"]["s47_source_hash"]
-    )
+    public_action = json.loads(captured.out)
+    assert privacy_hits(public_action) == []
+    assert public_action["do_help_executed"] is True
+    assert public_action["do_help"]["status"] == "REFUSED"
+    assert public_action["encounter_count_before_action"] == 0
+    assert public_action["encounter_count_after_action"] == 1

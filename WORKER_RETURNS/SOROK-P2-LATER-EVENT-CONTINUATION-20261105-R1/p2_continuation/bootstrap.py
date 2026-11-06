@@ -1,13 +1,15 @@
 """Install the shipped S45-S47 closure and expose the P2 later-event callables."""
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
 RETURN = Path(__file__).resolve().parents[1]
 REPO = RETURN.parents[1]
-PRODUCT = REPO / "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product"
-PROJECTION = REPO / "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1"
+BASE_ROOT = Path(os.environ.get("SOROK_P2_BASE_ROOT", str(REPO))).expanduser().resolve()
+PRODUCT = BASE_ROOT / "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product"
+PROJECTION = BASE_ROOT / "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1"
 
 _LOADED = False
 _DEPS: dict | None = None
@@ -37,6 +39,7 @@ def load() -> dict:
     _DEPS = {
         "return": RETURN,
         "repo": REPO,
+        "base_root": BASE_ROOT,
         "product": PRODUCT,
         "projection": PROJECTION,
         "S47Session": S47Session,
@@ -54,10 +57,11 @@ def roots() -> dict:
     return {
         "return": RETURN,
         "repo": REPO,
+        "base_root": BASE_ROOT,
         "product": PRODUCT,
         "projection": PROJECTION,
         "product_source_manifest": PRODUCT.parent / "SOURCE_MANIFEST.json",
     }
 
 
-__all__ = ["PRODUCT", "PROJECTION", "REPO", "RETURN", "load", "roots"]
+__all__ = ["BASE_ROOT", "PRODUCT", "PROJECTION", "REPO", "RETURN", "load", "roots"]
