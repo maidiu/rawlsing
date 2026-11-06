@@ -1,0 +1,177 @@
+{
+  "accepted_product_25d": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+  "checks": {
+    "actual_material_zero": true,
+    "c9_condition_false_refusal": true,
+    "cold_cli_sequence_complete": true,
+    "explicit_do_help_exactly_one": true,
+    "final_verify_ok": true,
+    "guide_canonical_verify_pass": true,
+    "imports_from_snapshot": true,
+    "local_return_portal": true,
+    "no_collisions": true,
+    "outside_cold_blocked": true,
+    "privacy_clean": true,
+    "unknown_preserved": true,
+    "zero_encounters_after_observation": true
+  },
+  "cli_sequence": {
+    "cold_blocked_say": {
+      "actor_response": null,
+      "clock_changed": false,
+      "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+      "status": "REFUSED",
+      "world_event_created": false
+    },
+    "commands": [
+      "01-new.json",
+      "02-interval-actual.json",
+      "03-later-event.json",
+      "04-opportunity.json",
+      "05-verify-zero-encounters.json",
+      "06-do-help-explicit.json",
+      "07-exit.json",
+      "08-cold-blocked-say.json",
+      "09-local-return.json",
+      "10-unknown-say.json",
+      "11-verify-final.json"
+    ],
+    "exit": {
+      "code": "LOCAL_EXIT_ONLY",
+      "mode": "OUTSIDE"
+    },
+    "explicit_do_help": {
+      "attempted": true,
+      "performed": false,
+      "refusal": true,
+      "status": "REFUSED"
+    },
+    "final_verify": {
+      "encounter_count": 2,
+      "event_count": 4,
+      "ok": true
+    },
+    "interval": {
+      "do_help_executed": false,
+      "interval_status": "PARTIAL",
+      "material_after_interval": 0,
+      "status": "OK"
+    },
+    "later_event": {
+      "c9_material_eligible": false,
+      "do_help_executed": false,
+      "event_status": "OK",
+      "language_status": "ACCEPTED",
+      "user_attempt": false
+    },
+    "local_return": {
+      "clock_changed": false,
+      "code": "LOCAL_RETURN_ONLY",
+      "mode": "PORTAL",
+      "world_event_created": false
+    },
+    "new_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+    "opportunity": {
+      "c9_material_eligible": false,
+      "do_help_executed": false,
+      "event_status": "OK",
+      "language_status": "ACCEPTED",
+      "user_attempt": false
+    },
+    "schema": "SOROK_P2_FINAL_RECEIVING_CLI@1",
+    "unknown_say": {
+      "actor_response": null,
+      "status": "UNKNOWN"
+    },
+    "verify_zero_encounters": {
+      "encounter_count": 0,
+      "event_count": 2,
+      "ok": true
+    }
+  },
+  "composite_tree": "f5debb10c53b8e9a735f6fe1e1696bfbf46412fc",
+  "final_product": "4b2fed81c3f513eb4262ad5de277ce519c74c614",
+  "guide_canonical_verify": {
+    "exit": 0,
+    "log": "logs/guide_canonical_verify.log",
+    "result": "PASS",
+    "sha256": "5581ba9fecb3090b6d0229dcd07fb975ab7d74d41c0195a6767965ada9982e4f"
+  },
+  "guide_head": "b6d3f8d2b946a38f6336361c2b625c1260699100",
+  "import_origin_check": {
+    "all_under_snapshot": true,
+    "modules": {
+      "p2_continuation.continuation": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1/p2_continuation/continuation.py",
+        "under_snapshot": true
+      },
+      "p2_explicit_interval_flow.continuation": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/p2_explicit_interval_flow/continuation.py",
+        "under_snapshot": true
+      },
+      "p2_product_fanin.integration": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/p2_product_fanin/integration.py",
+        "under_snapshot": true
+      },
+      "p2_product_fanin.runtime": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/p2_product_fanin/runtime.py",
+        "under_snapshot": true
+      },
+      "s45.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S45-GENERATED-ROOT-ENCOUNTER-R1/s45/session.py",
+        "under_snapshot": true
+      },
+      "s45_projection.adapter": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/adapter.py",
+        "under_snapshot": true
+      },
+      "s47.session": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261025-S47-INTERVAL-C9-CONDITIONING-R1/s47/session.py",
+        "under_snapshot": true
+      },
+      "sorok_p2_lifecycle.lifecycle": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/sorok_p2_lifecycle/lifecycle.py",
+        "under_snapshot": true
+      },
+      "sorok_s45_s47.bootstrap": {
+        "path": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot/WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/sorok_s45_s47/bootstrap.py",
+        "under_snapshot": true
+      }
+    },
+    "schema": "SOROK_P2_FINAL_RECEIVING_IMPORT_ORIGIN_CHECK@1",
+    "snapshot": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/.local-logs/sorok-p2-final-receiving-delta-20261105-r1/snapshot"
+  },
+  "not_run": [
+    "independent acceptance of final head 4b2fed81",
+    "full 7+8+6 or inherited 55-test suites",
+    "new broad review",
+    "protected merge or PR697 action",
+    "native/science/human/B grants"
+  ],
+  "prior_protected_composite": "3894541eeac3e2133a3823252c65f04252e21e93",
+  "privacy_check": {
+    "ok": true,
+    "problems": {
+      "01-new.json": [],
+      "03-later-event.json": [],
+      "04-opportunity.json": [],
+      "11-verify-final.json": []
+    },
+    "root_hash_present": {
+      "01-new.json": false,
+      "03-later-event.json": false,
+      "04-opportunity.json": false,
+      "11-verify-final.json": false
+    },
+    "schema": "SOROK_P2_FINAL_RECEIVING_PRIVACY_CHECK@1",
+    "schema_names": {
+      "01-new.json": "SOROK_WP19_ENCOUNTER_VIEW@1",
+      "03-later-event.json": "SOROK_P2_PRODUCT_FANIN_OPPORTUNITY@1",
+      "04-opportunity.json": "SOROK_P2_PRODUCT_FANIN_OPPORTUNITY@1",
+      "11-verify-final.json": "SOROK_P2_PRODUCT_FANIN_VERIFY@1"
+    }
+  },
+  "protected_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+  "remaining_review_limit": "Final head is not independently accepted. Accepted 25d scope is preserved; interval secondary and later public-boundary component closures remain pending.",
+  "schema": "SOROK_P2_FINAL_RECEIVING_REHEARSAL@1"
+}

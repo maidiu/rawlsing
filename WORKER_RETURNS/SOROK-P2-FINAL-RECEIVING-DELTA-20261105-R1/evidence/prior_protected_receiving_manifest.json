@@ -1,0 +1,76 @@
+{
+  "candidate_head": {
+    "commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+    "tree": "57dbdca8efdbb6bcda7b64df0ac60e8fe75ddc3a"
+  },
+  "collisions": {
+    "guide_files_existing_in_base_replaced": 9,
+    "product_files_existing_in_base": 0,
+    "product_guide_path_overlap": 0,
+    "schema_root_import_incompatibility_observed": false
+  },
+  "composite": {
+    "added_files": 625,
+    "changed_files_vs_base": 634,
+    "guide_files": 9,
+    "guide_return_files_excluded": 4,
+    "modified_files": 9,
+    "product_files": 625,
+    "tree": "3894541eeac3e2133a3823252c65f04252e21e93"
+  },
+  "guide_allowlist": {
+    "file_count": 9,
+    "paths": [
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00_HQ_WRITE_THROUGH_DECISION.md",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/06_WORKING_WHOLE_SOROK_ARCHITECTURAL_SPINE_R1.md",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/08_INITIAL_EVIDENCE_GRADED_DEPENDENCY_AND_SEAM_REGISTER_R1.json",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/09_INHERITED_144_FUNCTIONS_TO_WORKING_SPINE_R1.json",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/14_W7_RECURSIVE_PHASE_GATES_AND_WORK_PACKAGES_R1.jsonl",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/READ_FIRST.md"
+    ],
+    "paths_file": "evidence/guide_allowlist.txt",
+    "sha256": "4a4dc85b318ad9347988882d8054bef4ee30624429cd21f4ea32cc3eafa68ab6",
+    "source_commit": "5b569b130379ee012936e2f6517fc7c49ddcbdea"
+  },
+  "guide_head": {
+    "commit": "5b569b130379ee012936e2f6517fc7c49ddcbdea",
+    "tree": "a6a823344bff865d8e42d68242e0a5eff98fe4b3"
+  },
+  "live_protected_base": {
+    "commit": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+    "tree": "ba895ff69255f35c8fec58c0d0b28e339def57f6"
+  },
+  "merge_base": "8ffec40a6924848a49f95950aa9ce28c27ee3ec1",
+  "merge_tree": {
+    "combined_25d_5b569b": "b3a82908dfc50186a9f37ebe60e2bd5acf9fdfb6",
+    "conflicts": [],
+    "guide_8ffec40_5b569b": "a6a823344bff865d8e42d68242e0a5eff98fe4b3",
+    "note": "Combined tree includes the 4 guide-return evidence files; explicit guide allowlist excludes them, so composite differs only by those 4 additions.",
+    "product_8ffec40_25d": "57dbdca8efdbb6bcda7b64df0ac60e8fe75ddc3a"
+  },
+  "product_allowlist": {
+    "file_count": 625,
+    "paths_file": "evidence/product_allowlist.txt",
+    "prefixes": [
+      "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/",
+      "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/",
+      "WORKER_RETURNS/SOROK-S45-S47-CAUSAL-HARNESS-20261105-R1/",
+      "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/",
+      "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1/",
+      "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1/",
+      "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/",
+      "WORKER_COMMISSIONS/SOROK-20261105-S45-S47-CANONICAL-SOURCEFREE-PRODUCT-RECEIVING-R1/"
+    ],
+    "sha256": "f79ee2e94770d5579fc8bc99e0612f0f1e10dd174fe467e9f56291666e7a350b",
+    "source_commit": "25d40806d15516b7f7ffa04f47bc651022c6f2b0"
+  },
+  "schema": "SOROK_P2_PROTECTED_BASE_RECEIVING_SELECTION@1",
+  "snapshot": {
+    "composite_tree_recheck": "3894541eeac3e2133a3823252c65f04252e21e93",
+    "file_count": 8866,
+    "location": "checkout-local .local-logs disposable snapshot"
+  }
+}

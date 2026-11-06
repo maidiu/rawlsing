@@ -1,0 +1,74 @@
+{
+  "cold_blocked_say": {
+    "actor_response": null,
+    "clock_changed": false,
+    "code": "LOCAL_OUTSIDE_MODE_BLOCKED",
+    "status": "REFUSED",
+    "world_event_created": false
+  },
+  "commands": [
+    "01-new.json",
+    "02-interval-actual.json",
+    "03-later-event.json",
+    "04-opportunity.json",
+    "05-verify-zero-encounters.json",
+    "06-do-help-explicit.json",
+    "07-exit.json",
+    "08-cold-blocked-say.json",
+    "09-local-return.json",
+    "10-unknown-say.json",
+    "11-verify-final.json"
+  ],
+  "exit": {
+    "code": "LOCAL_EXIT_ONLY",
+    "mode": "OUTSIDE"
+  },
+  "explicit_do_help": {
+    "attempted": true,
+    "performed": false,
+    "refusal": true,
+    "status": "REFUSED"
+  },
+  "final_verify": {
+    "encounter_count": 2,
+    "event_count": 4,
+    "ok": true
+  },
+  "interval": {
+    "do_help_executed": false,
+    "interval_status": "PARTIAL",
+    "material_after_interval": 0,
+    "status": "OK"
+  },
+  "later_event": {
+    "c9_material_eligible": false,
+    "do_help_executed": false,
+    "event_status": "OK",
+    "language_status": "ACCEPTED",
+    "user_attempt": false
+  },
+  "local_return": {
+    "clock_changed": false,
+    "code": "LOCAL_RETURN_ONLY",
+    "mode": "PORTAL",
+    "world_event_created": false
+  },
+  "new_schema": "SOROK_WP19_ENCOUNTER_VIEW@1",
+  "opportunity": {
+    "c9_material_eligible": false,
+    "do_help_executed": false,
+    "event_status": "OK",
+    "language_status": "ACCEPTED",
+    "user_attempt": false
+  },
+  "schema": "SOROK_P2_FINAL_RECEIVING_CLI@1",
+  "unknown_say": {
+    "actor_response": null,
+    "status": "UNKNOWN"
+  },
+  "verify_zero_encounters": {
+    "encounter_count": 0,
+    "event_count": 2,
+    "ok": true
+  }
+}
