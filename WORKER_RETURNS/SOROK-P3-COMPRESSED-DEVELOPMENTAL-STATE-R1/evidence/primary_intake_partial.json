@@ -1,0 +1,37 @@
+{
+  "status": "HQ_INTERRUPTED_NOT_A_TEST_PASS_OR_ASSERTION_FAILURE",
+  "wall_seconds": 145.56,
+  "reason": "Bounded HQ intake stopped during still-computing no-mediator control; full execution delegated to existing supervised author, no increased-scope optimization authorized.",
+  "test_log": "evidence/primary_intake_interrupted.log",
+  "observed_sample": {
+    "process_cpu_percent": 98.9,
+    "rss_kb": 68536,
+    "native_interrupt_location": "inherited BP4 C12Store.episodes JSON row loading"
+  },
+  "partial_sourcefree_observation": {
+    "case": {
+      "operations_by_phase": {
+        "COMPLETE": 4,
+        "PREPARED": 1
+      },
+      "record_count": 2,
+      "cycle_keys": [
+        "expected_owner_state",
+        "identity",
+        "last_error",
+        "model_call",
+        "next_sequence",
+        "pending",
+        "phase",
+        "proposed_impressions",
+        "retrospectives",
+        "schema"
+      ],
+      "retrospective_count": 1
+    },
+    "control": {
+      "operations_by_phase": {},
+      "record_count": 0
+    }
+  }
+}
