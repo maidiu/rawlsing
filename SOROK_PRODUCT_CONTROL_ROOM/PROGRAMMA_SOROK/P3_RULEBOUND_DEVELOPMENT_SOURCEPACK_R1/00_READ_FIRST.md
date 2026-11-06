@@ -2,6 +2,8 @@
 
 **POST-RECEIVING SOURCE-CAPITAL CORRECTION (2026-11-06):** The 63-item atlas 01 is a verified **foundational source subset**, not every built sourcefree developmental implementation. Read [09 — already-executed code, reviewers and negative lessons](09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md) and [10 — preliminary materialist scientific adjudication](10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md) before commissioning P3. B1/B2/B3A, BP2P4J, HQ300, R3 M01, S35 and W01 are verified additional exact cuts. No original science or native rule is inferred. This correction does **not** alter the frozen 63-entry S0–S1 validation receipt.
 
+**ONGOING SCIENTIFIC DELIBERATION:** [12](12_O05_FORMATION_VS_ACTIVATION_SCIENCE_ADJUDICATION_R1.md) addresses the user-requested first substantive O05 adjudication. This is source-grounded theory and falsification design, not an original Rule T, O05/O07 acceptance, or new Codex commission. Do not turn its recommendations into scientific law without the competent original-source decision.
+
 **ONE START HERE LOCATION.** This source pack prepares PROGRAMMA SOROK P3 for scientific and engineering construction; it is a **nonissuing preconstruction source/currentness and decision package**, not P3 implementation, owner appointment or an executed research fleet.
 
 **Protected baseline at start:** `62f1895093f8b79f466a73d1e6ec65f6563df3ac`, 2026-11-06. Recheck live PRE-MAIN before any new task. The received sourcefree developmental-recursion engine from [PR #704](https://github.com/maidiu/rawlsing/pull/704) and [PROGRAMMA currentness #710/#712](https://github.com/maidiu/rawlsing/pull/712) are **already protected**; do not reconstruct or relitigate them. Paired Sorok progress is revision 37; earlier rev35 JSON/rev36 MD remains dated history.
@@ -22,6 +24,7 @@
 | 9 | [09 — Prior executable mechanism and review delta](09_ALREADY_EXECUTED_DEVELOPMENTAL_CODE_AND_REVIEW_DELTA.md) | Exact previously built sourcefree developmental code and scoped independent reviews; selective reuse rather than reimplementation |
 | 10 | [10 — Preliminary theoretical adjudication](10_PRELIMINARY_MATERIALIST_SCIENCE_ADJUDICATION.md) | Formation versus activation/opportunity, selected actually read primary texts, falsifiable O03/O05/O07/ADP016 mechanisms |
 | 11 | [11 — Additional source/readback receipt](11_ADDITIONAL_SOURCE_AND_INTERPRETATION_READBACK.json) | Verified 11 historic source/code/review Git blobs in the code-reuse delta; no S2 or native scientific claims |
+| 12 | [12 — O05 acquisition-vs-opportunity adjudication](12_O05_FORMATION_VS_ACTIVATION_SCIENCE_ADJUDICATION_R1.md) | Substantive materialist theory, source-anchored rival causal explanations, finite S35 tool/inspection case, O07 negative distinction, and undecided first-science goal |
 
 ## Source hierarchy and “which material governs?” rule
 
