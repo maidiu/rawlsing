@@ -1,5 +1,7 @@
 # ROADMAP:S06 — Field Forge F5 and demanded objective PRE-V3
 
+> **POST-CAS3 ACTUAL CURRENTNESS (2026-11-06; factual scoped owner receipt)** — S06 first consumer: reviewed L01 sourcefree world-conditioned evidence is now protected, and L02 sourcefree 3+-way empirical fact consumer now protected. That does **not** prove original35 F1–F4 physically ingested into F5 or issue Field Forge structural/causal meaning. User-selected next stage is generic all35 sourcepack empirical facts → existing conditional-support/structural-refusal ingress, with actual changed-value support and typed structural no-claim. Original SRC04 all-pair brute force is retired. Full FF ingress closure goal in review-pending #705, not yet adopted. [Every return, review and protected merge](../PROGRAMMA_PYAT_15_RETURN_PROTECTED_RECEIVING_20261106_R1.md). All original G4 cut grades and MUST/IF predicates preserved; see earlier sections below for their date-labeled evidence.\n
+
 > **R2 PROTECTED EXECUTION SUCCESSION — 2026-11-05 / PR #696 DRAFT, NOT ADOPTED.** R2 GF1 remains narrow optional source-native descriptive pair relation, PR691 review and scientific S1–S9 still held. E41 exact protected port + current R01/R03 sourcefree multi-operations already execute independently of GF1. R08 binder exists protected but first consumer is unproved; R118 world service is reviewed branch-only. Never make GF1 the universal gateway to F2 inverse or F4 same-person k-way distributions. [Exact R2 lineage](../E41_J42_P41_R61_R118_PROTECTED_EXECUTION_LINEAGE_R2_20261105.md).
 
 
