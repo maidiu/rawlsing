@@ -1,0 +1,211 @@
+{
+  "schema": "PYAT_R157_NONRESPONDENT_FIXTURE_SPEC@1.0.0",
+  "fixture_id": "R157-P0-SRC09-Q101-NONRESPONDENT",
+  "fixture_path": "source_pre553_validation/foundation/fixtures/SRC09_q101_nonrespondent.json",
+  "fixture_file_sha256": "cc7a587a57943251acbef1679a8a4aff808c6c65ff399c06428026d3371efb1d",
+  "fixture_source_sha256": "a93b4dab00a2b7cbd559d8a0bb1ca498caaa87f27bd1bd73e9fceb0f2820a491",
+  "identity_class": "NONRESPONDENT_FIXTURE",
+  "nonrespondent": true,
+  "original_source_id": "SRC09",
+  "original_source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+  "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+  "fixture_config_path": "source_pre553_validation/foundation/examples/SRC09_q101_fixture.config.json",
+  "fixture_config_sha256": "17968eaf280aa2537ba2050e281f71be137e09ae387c52a6b82c9844732e3456",
+  "shape_coverage": [
+    "SAV scalar categorical response (q101) with exact native value binding",
+    "substantive categories 1..4",
+    "source-stored special states -1, 7, 8, 9 mapped to MISSING, DK, SOURCE_SPECIFIC_SPECIAL, REFUSAL",
+    "system-missing cell mapped to MISSING",
+    "source-native country coordinate (copy observed raw; no canonical crosswalk)",
+    "routing facts are fixture-scoped and do not assert original eligibility"
+  ],
+  "row_count": 9,
+  "cells": [
+    {
+      "row_ordinal": 1,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 1.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 1,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 1.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 2,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 2.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 2,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 2.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 3,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 3.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 3,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 3.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 4,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 4.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 4,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 4.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 5,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": -1.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 5,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 5.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 6,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 7.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 6,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 1.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 7,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 8.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 7,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 2.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 8,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": 9.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 8,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 3.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 9,
+      "variable_ordinal": 124,
+      "variable_name": "q101",
+      "raw_value": null,
+      "missing_state": "SYSTEM_MISSING",
+      "source_missing_declaration": null
+    },
+    {
+      "row_ordinal": 9,
+      "variable_ordinal": 1,
+      "variable_name": "country",
+      "raw_value": 4.0,
+      "missing_state": "OBSERVED_STORAGE_VALUE",
+      "source_missing_declaration": null
+    }
+  ],
+  "expected_results": {
+    "fixture_only": true,
+    "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+    "response_event_count": 9,
+    "coordinate_fact_count": 9,
+    "routing_fact_count": 9,
+    "response_states": [
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "SUBSTANTIVE_RESPONSE",
+      "MISSING",
+      "DK",
+      "SOURCE_SPECIFIC_SPECIAL",
+      "REFUSAL",
+      "MISSING"
+    ],
+    "canonical_values": [
+      "1",
+      "2",
+      "3",
+      "4",
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "weight_section": "NOT_APPLICABLE",
+    "source_relation_section": "DISTINCT_BY_DEFAULT"
+  },
+  "oracle_basis": "Expected results are declared from the fixture cells and the serialized q101 value/state rules before the factory call; they are not copied from the native result.",
+  "factory_call": {
+    "projection": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "release": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "transport": "ExactPhysicalCellStream"
+  },
+  "limits": [
+    "The fixture is synthetic nonrespondent input, not original respondent data.",
+    "Fixture authority is explicitly fixture-only and cannot be used for original-source construction.",
+    "Native validation of this fixture does not establish original-source scientific results or execution permission."
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "schema": "PYAT_R157_PARALLEL_LANES_V1",
+  "integration_branch": "agent/pyat-source-pre553-r157",
+  "initial_max_concurrent_OpenCode_authors_including_integrator": 4,
+  "source_lane_count": 9,
+  "integration_owner_existing_session": "ses_e98c905cbffekusoHURfKyEUKG",
+  "final_reviewer_existing_session": "ses_e96304356ffeC8HSvwFluWOjG1",
+  "global_stage_barriers": "P0freeze and finalintegration/review only; source-specific dependencies govern intermediate advancement",
+  "lanes": [
+    {
+      "lane_id": "AFRO",
+      "source_ids": [
+        "SRC01",
+        "SRC02",
+        "SRC03"
+      ],
+      "branch": "agent/pyat-pre553-r157-afro",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC01/",
+        "source_pre553_validation/SRC01/",
+        "rawlsing_next/source_configuration/data/SRC02/",
+        "source_pre553_validation/SRC02/",
+        "rawlsing_next/source_configuration/data/SRC03/",
+        "source_pre553_validation/SRC03/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "ARAB",
+      "source_ids": [
+        "SRC04",
+        "SRC05",
+        "SRC06",
+        "SRC07"
+      ],
+      "branch": "agent/pyat-pre553-r157-arab",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC04/",
+        "source_pre553_validation/SRC04/",
+        "rawlsing_next/source_configuration/data/SRC05/",
+        "source_pre553_validation/SRC05/",
+        "rawlsing_next/source_configuration/data/SRC06/",
+        "source_pre553_validation/SRC06/",
+        "rawlsing_next/source_configuration/data/SRC07/",
+        "source_pre553_validation/SRC07/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "ASIAN",
+      "source_ids": [
+        "SRC08",
+        "SRC09",
+        "SRC10"
+      ],
+      "branch": "agent/pyat-pre553-r157-asian",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC08/",
+        "source_pre553_validation/SRC08/",
+        "rawlsing_next/source_configuration/data/SRC09/",
+        "source_pre553_validation/SRC09/",
+        "rawlsing_next/source_configuration/data/SRC10/",
+        "source_pre553_validation/SRC10/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "EVS",
+      "source_ids": [
+        "SRC11",
+        "SRC12",
+        "SRC13",
+        "SRC14",
+        "SRC15"
+      ],
+      "branch": "agent/pyat-pre553-r157-evs",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC11/",
+        "source_pre553_validation/SRC11/",
+        "rawlsing_next/source_configuration/data/SRC12/",
+        "source_pre553_validation/SRC12/",
+        "rawlsing_next/source_configuration/data/SRC13/",
+        "source_pre553_validation/SRC13/",
+        "rawlsing_next/source_configuration/data/SRC14/",
+        "source_pre553_validation/SRC14/",
+        "rawlsing_next/source_configuration/data/SRC15/",
+        "source_pre553_validation/SRC15/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "GSS",
+      "source_ids": [
+        "SRC16",
+        "SRC17",
+        "SRC18",
+        "SRC19",
+        "SRC20",
+        "SRC21",
+        "SRC22",
+        "SRC23"
+      ],
+      "branch": "agent/pyat-pre553-r157-gss",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC16/",
+        "source_pre553_validation/SRC16/",
+        "rawlsing_next/source_configuration/data/SRC17/",
+        "source_pre553_validation/SRC17/",
+        "rawlsing_next/source_configuration/data/SRC18/",
+        "source_pre553_validation/SRC18/",
+        "rawlsing_next/source_configuration/data/SRC19/",
+        "source_pre553_validation/SRC19/",
+        "rawlsing_next/source_configuration/data/SRC20/",
+        "source_pre553_validation/SRC20/",
+        "rawlsing_next/source_configuration/data/SRC21/",
+        "source_pre553_validation/SRC21/",
+        "rawlsing_next/source_configuration/data/SRC22/",
+        "source_pre553_validation/SRC22/",
+        "rawlsing_next/source_configuration/data/SRC23/",
+        "source_pre553_validation/SRC23/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "LATIN",
+      "source_ids": [
+        "SRC24",
+        "SRC25",
+        "SRC26"
+      ],
+      "branch": "agent/pyat-pre553-r157-latin",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC24/",
+        "source_pre553_validation/SRC24/",
+        "rawlsing_next/source_configuration/data/SRC25/",
+        "source_pre553_validation/SRC25/",
+        "rawlsing_next/source_configuration/data/SRC26/",
+        "source_pre553_validation/SRC26/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "LITS",
+      "source_ids": [
+        "SRC27",
+        "SRC28",
+        "SRC29",
+        "SRC30"
+      ],
+      "branch": "agent/pyat-pre553-r157-lits",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC27/",
+        "source_pre553_validation/SRC27/",
+        "rawlsing_next/source_configuration/data/SRC28/",
+        "source_pre553_validation/SRC28/",
+        "rawlsing_next/source_configuration/data/SRC29/",
+        "source_pre553_validation/SRC29/",
+        "rawlsing_next/source_configuration/data/SRC30/",
+        "source_pre553_validation/SRC30/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "SOUTH_ASIA",
+      "source_ids": [
+        "SRC31",
+        "SRC32"
+      ],
+      "branch": "agent/pyat-pre553-r157-south-asia",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC31/",
+        "source_pre553_validation/SRC31/",
+        "rawlsing_next/source_configuration/data/SRC32/",
+        "source_pre553_validation/SRC32/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    },
+    {
+      "lane_id": "WVS",
+      "source_ids": [
+        "SRC33",
+        "SRC34",
+        "SRC35"
+      ],
+      "branch": "agent/pyat-pre553-r157-wvs",
+      "role": "boundedOpenCodesource-configauthor",
+      "write_paths": [
+        "rawlsing_next/source_configuration/data/SRC33/",
+        "source_pre553_validation/SRC33/",
+        "rawlsing_next/source_configuration/data/SRC34/",
+        "source_pre553_validation/SRC34/",
+        "rawlsing_next/source_configuration/data/SRC35/",
+        "source_pre553_validation/SRC35/"
+      ],
+      "shared_schema_and_factory": "READ_ONLY_PINNED_COMMITS",
+      "stage_queue": [
+        "EVIDENCE",
+        "CORRESPONDENCE",
+        "CONFIG",
+        "NATIVE_VALIDATION",
+        "RETURN"
+      ],
+      "new_Codex_worker": false
+    }
+  ]
+}
