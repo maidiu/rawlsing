@@ -31,3 +31,16 @@ restoration and no-drop status inventory. No new compiler authorized unless an
 actual necessary gap survives current-code qualification. Preserve required
 independent R02 review request, original35 issuer requests and PROGRAMMA deltas.
 Remain Medium for routine work; request High only for an actual semantic conflict.
+
+
+Second goal turn: baseline session 15940 completed, 48 passed in 97.87s.
+Four-item unchanged-code probe (`probe_conditioned.py`, session1716) completed:
+FORWARD 2 selected JOINT operations SUPPORTED; REVERSE48 selected CONDITIONAL
+operations SUPPORTED. Both full generated frontier ledgers retain no-drop true.
+`conditioned-numerical-oracle.json` asserts exact 8-cell XOR joint denominators
+4/12 and reverse denominator4, counts1/3. Unobserved reverse tuples have zero
+support. These are native I05/I03 fact proofs; E41/C1 downstream consumption is
+still NOT PROVED for this four-item source. Do not promote to full L02 completion.
+Next operation: bind the exact generated joint/conditional facts and discovery
+receipts to current E41/C1/N10E first reader, then occurrence/routing/status and
+hostile restore matrix. No production defect/repair has yet been concluded.
