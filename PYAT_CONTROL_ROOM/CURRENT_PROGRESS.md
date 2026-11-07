@@ -1,3 +1,7 @@
+# #777 latest intake — FF/postFF ten cases under independent review
+
+Author `4b232e81a7a1128a75548ac8c26ef0e13bb59a52` supplies 31 sourcefree checks and ten candidate operation verdicts. None of its generic inadequacy/absence or issuer-blocked labels is independently accepted yet; focused review is launched to test those distinctions against actual current owners and receiving paths. All 15 case records are retained in central fan-in; this is not full coverage. C1 reporting corrections/C4 independent review continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C3_RETURN_INTAKE.json`. All historical/callsite/17agenda and native/protected holds remain.
+
 # #777 latest intake — J-role candidate under independent review
 
 C4 cut `8986f3d4936edb1bda68f9eda55bf4be710e8642` documents seven sourcefree mechanism checks and exact historical source pins. Historical selection and non-test caller remain UNPROVED; literal grep does not establish global absence, and different role vocabularies do not establish whole-pipeline inadequacy. Focused distinct review is launched with verified model metadata. C1 reporting corrections/C3 FFpostFF continue, three lanes out. No production repair/authority expansion. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C4_RETURN_INTAKE.json`.

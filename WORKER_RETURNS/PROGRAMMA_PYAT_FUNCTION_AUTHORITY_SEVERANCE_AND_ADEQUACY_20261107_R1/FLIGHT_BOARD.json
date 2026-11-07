@@ -85,7 +85,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED_CUSTODY_ONLY_INDEPENDENT_REVIEW_RUNNING",
     "actual_model": {
       "id": "msg_1b81bc8f0001mlMWHMyUvrIRaL",
       "type": "assistant",
@@ -99,7 +99,10 @@
         "streamed": 1794090219377,
         "completed": 1794090219924
       }
-    }
+    },
+    "returned_commit": "4b232e81a7a1128a75548ac8c26ef0e13bb59a52",
+    "hq_import_commit": "290458bf6",
+    "disposition": "Ten author operation cases and 31 sourcefree tests imported; global inadequacy/absence/source holds not yet accepted. Independent qualification must distinguish demonstrated defect, unselected candidate and separate source/native holds."
   },
   {
     "task": "pyat777-joint-independent-review-r1",
@@ -300,6 +303,38 @@
         "created": 1794091764048,
         "streamed": 1794091770974,
         "completed": 1794091771130
+      }
+    }
+  },
+  {
+    "task": "pyat777-ff-postff-independent-review-r1",
+    "session": "ses_0f9d2691183445a2a848d3f923",
+    "branch": "review/pyat777-ff-postff-20261107-r1",
+    "startup": "4b232e81a7a1128a75548ac8c26ef0e13bb59a52",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-ff-postff-independent-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C3_INDEPENDENT_REVIEW",
+    "launch": {
+      "job_id": "pyat777-ff-postff-independent-review-r1",
+      "child_pid": 6881,
+      "supervisor_pid": 6880,
+      "observer_pid": 6882,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-ff-postff-independent-review-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "actual_model": {
+      "id": "msg_1b835ade0001Hs9O0d4SF7ZTMd",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794091888131,
+        "streamed": 1794091899488,
+        "completed": 1794091899685
       }
     }
   }
