@@ -94,6 +94,9 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path, monkeypatc
     )
     assert json.loads(cold.stdout) == work_view
 
+    # The conduct contrast starts with one unit of real work remaining.
+    baseline = tmp_path / "baseline"
+    shutil.copytree(state, baseline)
     attended = act("attend")
     assert attended["clock"] == inspected["clock"] + 1
     interval = ledger()["turns"][-1]["receipt"]["interval"]
@@ -114,8 +117,8 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path, monkeypatc
 
     # Branch from the same cold checkpoint at the same path. P2 binds its
     # store to that path, so copied baselines only run after restoration.
-    baseline = tmp_path / "baseline"
-    shutil.copytree(state, baseline)
+    state.rename(tmp_path / "ordinary-continuation")
+    shutil.copytree(baseline, state)
     utterance = "Could we look at the edge once more?"
     work_request = act("say", text=utterance, request_edge=True)
     work_world = ledger()
@@ -140,7 +143,11 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path, monkeypatc
     assert plain_turn["receipt"]["speech"]["attempt"]["text"] == utterance
     assert plain_turn["receipt"]["uptake"]["status"] == "PERCEIVED_NO_INSPECTION_REQUEST"
     assert plain_turn["receipt"]["expression"] is None
-    assert plain["clock"] == quiet["clock"] + 1
+    assert plain["clock"] == inspected["clock"] + 1
+    plain_work = plain_turn["receipt"]["interval"]["segments"][0]["world"]
+    assert plain_work["actual_action_event_id"]
+    assert plain_work["state_before"]["material_remaining"] == 1
+    assert plain_work["state_after"]["material_remaining"] == 0
 
 
 def test_deliberate_sustained_inspection_advances_two_work_periods(tmp_path):
