@@ -17,9 +17,9 @@ additive nonauthor qualification has not returned.
 | 1 | Sparse historically dense state and real computational difference | `p3/p3_owner.py`, `p3/state_store.py`, combined PRIMARY/A–H matrix; actual formation 2 records → later response; `evidence/full-vertical-execution-combined/` | **TEST_ONLY ACCEPTED**; no native/human claim |
 | 2 | E1/S1 scoped inputs | `E1_INPUT_DISPOSITION.json`, `S1_INPUT_DISPOSITION.json`; E1 review `04f57e03…` 9P; S1 review `7466d37b…` design-only | Scoped input accepts; S1 never accepted A–E/native |
 | 3 | Preserve #704/#697 architecture and sourcepack; no new engine | Engine 71P `286.10s`, cold `200.21s`; protected engine/closure diff empty; sourcepack/architecture pins in `evidence/inherited-regression/` and `goal-audit/SOURCE_PINS.json` | **TEST_ONLY ACCEPTED**; no sourcepack/engine mutation |
-| 4 | Startup, protected, input reviews | Protected `c852d751`; E1/S1 scoped reviews; focused recheck `e85b6f6a…` at exact `16275d03` | **ACCEPTED SCOPE** for runtime; additive author proof pending |
+| 4 | Startup, protected, input reviews | Protected `c852d751`; E1/S1 scoped reviews; focused recheck `e85b6f6a…` at exact `16275d03` | **ACCEPTED SCOPE** for runtime; additive proof independently accepted |
 | 5 | Actual P2-root writer, store, phases, replay/cold, later reader | `p3/p3_owner.py` `e735ada…`, `p3/state_store.py` `173d4d6…`; owner/store `61P/1skip`; independent primary/cold/crash; focused e85 M1–M3 closed | **TEST_ONLY ACCEPTED**; exact current code hashes match matrix |
-| 6 | TEST_ONLY rule adapter/later consumer, control, production deny, source severance | `p3/test_rules.py` exact B1 source `478b9897…`; primary formation/later response; `production_guard` DENY; residual author source-severance test and same-history proof; additive qualification pending | **TEST_ONLY ACCEPTED for runtime**; residual author proof **PENDING additive review**; full-state-hash limit recorded |
+| 6 | TEST_ONLY rule adapter/later consumer, control, production deny, source severance | `p3/test_rules.py` exact B1 source `478b9897…`; primary formation/later response; `production_guard` DENY; residual author source-severance test and same-history proof; additive qualification pending | **TEST_ONLY ACCEPTED for runtime**; residual proof **INDEPENDENTLY ACCEPTED**; full-state-hash limit recorded |
 | 7 | Four compression evidence forms, no fabricated history/multiplier | `test_f_four_actual_compression_forms…` PASS; SINGULAR, REPRESENTATIVE, ACCUMULATED, RETROSPECTIVE; actual event/access/interval receipts | **TEST_ONLY ACCEPTED**; no compression-native claim |
 | 8 | Context-sensitive activation, contradictions, stability, no scalar winner/lifecycle | C PASS (two standpoints same history), D PASS (contradiction, two records, no lifecycle), E PASS (stability no new record); `p3/projections.py` pure reader | **TEST_ONLY ACCEPTED**; no CAN-011 lifecycle |
 | 9 | Actor/user/objective opacity, no ADP016/017 without authority | G PASS; `project_views`; actor `OBSERVED`, user `DEFER_MISSING_AUTHORITY`, `memory_formation=MISSING_RULE`; no ledger/private sentinels | **TEST_ONLY ACCEPTED**; claims/memory HOLD |
@@ -27,8 +27,8 @@ additive nonauthor qualification has not returned.
 | 11 | Resource economy, DB+WAL, targeted/full reads, context, latency, calls | `metrics/resource.json`; focused independent metrics: DB `4096` B, WAL `1,536,792` B, DB+WAL `1,540,888` B, incremental `1,483,200` B, per-record `741,600` B, per-event `247,200` B, cold `10.512s`, 3 calls, 3+3 events, 2 retrospectives, context `4,359` B | **MEASURED / TEST_ONLY**; not a cheap-production claim |
 | 12 | Scientific/source/authority holds | `p3/test_rules.py` MISSING_RULE; `p3/compression.py` no memory/claim issuance; `projections.py` claims defer; focused review HOLD | **HOLD**; no native/ADP016/017/B/human/production/CAS |
 | 13 | Delegation/economy; no new engine | Existing P2/S39–S47 reuse; final source hashes; selective receiving prep only; no new engine | **ENGINEERING ACCEPTED**, no merge |
-| 14 | Independent exact-SHA review before receiving | Focused review `e85b6f6a…` accepted TEST_ONLY runtime; earlier REVISE and M1–M3 negatives preserved; additive residual qualification pending | **RUNTIME REVIEW ACCEPTED**; **ADDITIVE REVIEW PENDING**; no PR/merge |
-| 15 | Full deliverable | Requirements below, final `FINAL_DELIVERY.md`, source pins and manifest | **DELIVERY DRAFT**, not final acceptance |
+| 14 | Independent exact-SHA review before receiving | Focused review `e85b6f6a…` accepted TEST_ONLY runtime; earlier REVISE and M1–M3 negatives preserved; additive residual qualification accepted | **RUNTIME REVIEW ACCEPTED**; **ADDITIVE REVIEW ACCEPTED fae525709**; no PR/merge |
+| 15 | Full deliverable | Requirements below, final `FINAL_DELIVERY.md`, source pins and manifest | **FINAL SCOPED DELIVERY ACCEPTED** |
 
 ## A–H matrix
 
@@ -43,9 +43,9 @@ additive nonauthor qualification has not returned.
 | F condensed | four forms BOUND; actual event/action/perception/interval receipts; no fabricated witnesses | PASS (author/HQ) |
 | G opacity | no private/ledger fields; actor observed; user claims deferred; objective public view larger | PASS (author/HQ) |
 | H failure/custody | wrong identity/time/source/rule, cold reopen, replay, source restore, real child crash; full matrix PASS | PASS (author/HQ; independent primary/cold/denial/crash) |
-| H root/fork limitation | official cross-root case uses deterministic same-root replicas; additive author proof adds two actually seeded distinct roots (`3bcb21fc…` vs `b43c92c0…`) and foreign-source denial; additive nonauthor qualification pending | **AUTHOR PASS / PENDING**; no positive fork inheritance |
-| Same-history control | author proof: same source/history/root/actor/branch/clock/later objective world; FORMATION 2 records vs STABILITY 0; later `joint_check/private_check` vs `inspect_alone`; exact record hashes in formation readset only | **AUTHOR PASS / PENDING**; full P2 `state_hash` differs across separately initialized fixture roots; exact snapshot/fork/remap API unavailable |
-| Source severance | author proof: missing/altered B1 → `P3_B1_SOURCE_SEVERED` before effects; exact restore → REALIZED/COMPLETE/replay | **AUTHOR PASS / PENDING** |
+| H root/fork limitation | official cross-root case uses deterministic same-root replicas; additive author proof adds two actually seeded distinct roots (`3bcb21fc…` vs `b43c92c0…`) and foreign-source denial; additive nonauthor qualification accepted | **INDEPENDENT PASS fae525709**; no positive fork inheritance |
+| Same-history control | author proof: same source/history/root/actor/branch/clock/later objective world; FORMATION 2 records vs STABILITY 0; later `joint_check/private_check` vs `inspect_alone`; exact record hashes in formation readset only | **INDEPENDENT PASS fae525709**; full P2 `state_hash` differs across separately initialized fixture roots; exact snapshot/fork/remap API unavailable |
+| Source severance | author proof: missing/altered B1 → `P3_B1_SOURCE_SEVERED` before effects; exact restore → REALIZED/COMPLETE/replay | **INDEPENDENT PASS fae525709** |
 
 ## Reused / declined capital
 
@@ -71,21 +71,6 @@ HQ records correction: no runtime/source hash, authority, engine or sourcepack
 change. All matrix source hashes match `16275d03`. This is a records-provenance
 note, not an engineering rerun or a new gate.
 
-## Exact remaining checklist
+## Final HQ disposition
 
-1. **Nonauthor qualification of the additive author proof remains PENDING:**
-   `tests/test_p3_goal_residuals.py` SHA `7fcd6c48…` and
-   `evidence/goal-residual-proof/` at `036787c1…`; 3 author tests passed in
-   27.14s. Do not silently accept it.
-2. **Selective PR publication / protected receiving remains held** until that
-   additive qualification and final HQ disposition; the prepared package has
-   no published PR and no merge.
-3. **Exact original limiting premise:** same-history proof demonstrates equal
-   source/history/root/actor/branch/clock/later objective world, but not equal
-   full P2 `state_hash` for separately initialized deterministic roots. If
-   exact P2 `StateIdentity` identity is required, the smallest missing
-   interface is an actual P2 root snapshot/fork/remap API; this is a recorded
-   limitation, not a newly invented gate.
-4. No other original TEST_ONLY requirement is known missing; native science,
-   human validity, independent B, ADP016/017, production positive rules, CAS
-   and protected merge remain holds, not TEST_ONLY delivery gates.
+Independent additive review `fae525709` re-executed only the three new targeted tests (3 PASS27.15s) and accepts their original-goal sufficiency. It identifies no response-relevant confound from opaque P2 state-hash differences. Earlier pending entries in the author matrix above are historical author statuses, resolved by this disposition. No positive psychological inheritance/migration, native science or protected merge is inferred. See `FINAL_GOAL_AUDIT.json` for the authoritative final section-by-section acceptance and PR custody. Selective PR publication is the remaining delivery action; no engineering or test rerun remains.

@@ -1,6 +1,6 @@
 # SOROK P3 final delivery write-up — for user/Browser-HQ
 
-**STATUS: DELIVERY READY FOR ADDITIVE QUALIFICATION, NOT YET FULLY FINAL.**
+**STATUS: ORIGINAL SOURCEFREE TEST_ONLY ENGINEERING ACCEPTED; SELECTIVE PR READY.**
 
 Runtime/evidence cut: `16275d03fc4724a694c48ed9d447c4eeadbe25f2`  
 Implementation cut: `486d42a4aa5dcd449564b95567ae93b59c4679a4`  
@@ -8,7 +8,7 @@ Protected start: `c852d7516e23fcb6cf2215e9be7c5fa268503516`
 Focused nonauthor runtime review: `e85b6f6a733ef5bbd664679bdf9613c04003e3de`,
 **ACCEPT_SCOPED_TEST_ONLY**; M1–M3 closed.  
 Additive author proofs: `036787c1f0c227cdc47828ba521a62b76c57a903`, **3 passed
-author-only, nonauthor qualification PENDING**.
+author tests; independently re-executed 3 PASS in 27.15s and accepted by `fae525709`**.
 
 This is a sourcefree TEST_ONLY engineering delivery. It is not native
 psychology, validated human personhood, independent B behavior, production
@@ -101,7 +101,7 @@ D (contradiction), E (stability), F (compression), G (opacity), and H
 (custody) are in the 13-case matrix. The PRIMARY writer→store→later-response
 contrast is actual. Additive author proof extends the control to matched
 source/history/later objective-world FORMATION vs STABILITY; its nonauthor
-qualification is still pending.
+qualification is accepted by `fae525709`.
 
 ### 9. Cold / negative / custody
 
@@ -155,24 +155,15 @@ The distinct nonauthor focused review `e85b6f6a…` at exact
 It independently executed owner/store, units, M1/M2, PRIMARY, cold,
 denial/cross-root, crash and resource; it inspected but did not independently
 rerun all 13 matrix cases. Its earlier REVISE findings and reproductions remain
-preserved. Additive author proofs remain **PENDING nonauthor qualification**.
+preserved. Additive proofs are independently **ACCEPT_SCOPED_TEST_ONLY** at `fae525709`, with no response-relevant confound identified.
 
 ### 13. Selective PRE-MAIN PR
 
-The selective receiving preparation is complete as a draft package:
-170 selected paths from the exact cuts, exact base
-`c852d751…`, protected receiving base
-`integration/pre-main-reconciliation-r1`, PR draft and dependency/hash checks
-in `evidence/selective-receiving-prep/`. No PR was created; no protected ref
-was moved; no merge occurred. Publication remains held pending the additive
-qualification and final HQ disposition.
+The isolated branch `codex/sorok-p3-selective-receiving-20261107-r1` carries the source-equivalent selective payload, original negative evidence, both accepting reviews, final delivery and bounded PROGRAMMA updates. It targets `integration/pre-main-reconciliation-r1` at protected `c852d751`. See `FINAL_GOAL_AUDIT.json` for actual publication custody. No protected merge is performed.
 
 ### 14. Next engineering edge
 
-The next genuinely unblocked engineering edge is not another event engine or
-B1 canary. It is a qualified native developmental/memory writer with issued
-authority, compatible actual actor/root and a real consumer. That authority is
-absent and remains HOLD; it must not be invented from this TEST_ONLY success.
+This bounded sourcefree engineering goal is fulfilled. Native developmental/memory writing remains blocked on competent source/rule authority; it is not an unblocked commission. No replacement engine, migration design, new native law or additional development is inferred from this delivery.
 
 ## §15 closing statement
 
@@ -182,18 +173,4 @@ later computed response, preserve material/native separation, expose only
 selected actor/user surfaces, carry source-bound compression evidence, survive
 cold/crash/replay/negative boundaries, and measure actual DB+WAL cost.
 
-It is **not** a validated human person, native psychological law, independent
-B product, or production system. The final delivery remains conditional on
-the separate additive nonauthor qualification and selective receiving
-publication; no one is authorized to merge by this document.
-
-## Remaining checklist
-
-1. Nonauthor additive qualification of `tests/test_p3_goal_residuals.py`
-   (`7fcd6c48…`) and `evidence/goal-residual-proof/` at `036787c1…` — **PENDING**.
-2. Selective PR publication and protected receiving after that qualification —
-   **HELD**; no PR, no merge.
-3. If exact full P2 `StateIdentity` equality is required for the same-history
-   control, the missing interface is an actual P2 root snapshot/fork/remap API;
-   the proven claim is equal source/history/root/actor/branch/clock/later
-   objective world, not equal full `state_hash`.
+It is **not** a validated human person, native psychological law, independent B product or production system. Runtime and additive proofs have independent scoped acceptance. Exact full-state snapshot/fork/remap and positive psychological inheritance are not claimed; the reviewer finds the matched response-relevant causal control sufficient. Protected merge and native-science holds persist. The remaining authorized delivery action is publishing the selective PR, without merging.
