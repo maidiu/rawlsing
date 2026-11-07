@@ -1,0 +1,91 @@
+{
+  "acceptance": "PENDING_NONAUTHOR_FOCUSED_RECHECK",
+  "candidate": {
+    "branch": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
+    "evidence_cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "implementation_commit": "486d42a4aa5dcd449564b95567ae93b59c4679a4"
+  },
+  "focused_recheck": {
+    "commit": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "gates_acceptance_and_pr_publication": true,
+    "local_ref": "review/sorok-p3-focused-recheck-20261107-r1",
+    "remote_observed": false,
+    "status": "PENDING"
+  },
+  "m1_m2_m3_repair": {
+    "m3": "REPAIRED_AND_MATRIX_GREEN",
+    "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/final-review-repair/M1_M2_REPAIR.json",
+    "remaining": "focused nonauthor recheck PENDING",
+    "sha256": "3fdf7761aeabea127ac4f978b1d76b20d6e82d0944e66cc81294cc5fd1da46cc",
+    "store_owner": "61 passed, 1 skipped in 40.62s",
+    "units": "37 passed in 8.23s"
+  },
+  "matrix": {
+    "cases": 13,
+    "failed": 0,
+    "passed": 13,
+    "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution-combined/matrix_summary.json",
+    "resource_path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution-combined/metrics/resource.json",
+    "resource_sha256": "36c2102c04f75b25c2a09f44f2be9579b07d99cfa6bbd2fb3d22b48cbd567bed",
+    "sha256": "dc56815499a7a562eb44279b8e7d8ececbc6449baa4db9f386c60135309125db",
+    "source_sha256": {
+      "p3/compression.py": "49df70d60cbc3b37ec3e484c5a7c64e14ac174faafe8fcaa02e5428c583be4f4",
+      "p3/p3_owner.py": "e735ada798533a8f568739e823767bb2e2b4272c3c03d84dc2cd47f73cf65df1",
+      "p3/state_store.py": "173d4d6d3e94580804cac90039a01bfe6e3adfffcda9e806a56132b10ecc06bf",
+      "run_p3_vertical_slice.py": "1a895a4b68ae190679827197d2c58591afd0985c3ee30387bba1432b8d145462",
+      "tests/p3_fixture_support.py": "7c3490178921c0765c8dfd42c9fb3f39d0c4696d2d048340094d746120b958eb",
+      "tests/test_p3_vertical_slice.py": "0501754503a2af007154494654ed7f1edf5957e91ae56892949392f51b39c7ff"
+    }
+  },
+  "negative_review": {
+    "material_findings": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/final-independent-review/FINDINGS.md",
+    "review_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
+    "reviewcut": "d1a6817b3210880812f68090bcd2b1109ec68ef9",
+    "sha256": "e2ff33fd0d6248a661fb7dfaadb983ac6d3c7a5da9fab1d77a0408e611efc4e9",
+    "verdict": "REVISE_CONDITIONAL_FULL_P3"
+  },
+  "pr": "NOT_CREATED",
+  "protected_receiving": "PENDING",
+  "resource": {
+    "batch_counts": [
+      3,
+      3
+    ],
+    "batch_latency_seconds": {
+      "bootstrap": 39.94427190697752,
+      "ordinary": 175.16481345699867,
+      "terminal": 17.33477687498089
+    },
+    "bytes": {
+      "bytes_per_event": 247200.0,
+      "bytes_per_record": 741600.0,
+      "cycle_store_logical_bytes": 1315,
+      "db_bytes": 4096,
+      "db_plus_wal_bytes": 1540888,
+      "fixed_db_bytes_before_records": 4096,
+      "fixed_db_plus_wal_bytes_before_records": 57688,
+      "incremental_db_bytes": 0,
+      "incremental_db_plus_wal_bytes": 1483200,
+      "source_config_bytes": 14756,
+      "source_provenance_overhead_bytes": 402,
+      "wal_bytes": 1536792
+    },
+    "calls_per_batch": 1.5,
+    "cold_open_seconds": 10.754477652983041,
+    "event_batches": 2,
+    "event_latency_seconds": [
+      2.193680304015288,
+      8.114214832981816,
+      18.021616676996928,
+      25.07633354899008,
+      32.489866982010426,
+      42.65131872598431
+    ]
+  },
+  "schema": "SOROK_P3_SELECTIVE_RECEIVING_CANDIDATE_SUMMARY@1"
+}
