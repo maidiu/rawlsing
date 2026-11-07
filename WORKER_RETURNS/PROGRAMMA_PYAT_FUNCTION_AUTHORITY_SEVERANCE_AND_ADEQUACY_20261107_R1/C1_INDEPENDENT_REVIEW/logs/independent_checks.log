@@ -1,0 +1,130 @@
+{
+  "csv": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_response_option_authority.csv",
+    "bytes": 15498257,
+    "sha256": "305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332",
+    "total_rows": 15992
+  },
+  "q86": [
+    {
+      "variable": "Q86A",
+      "rows": 6,
+      "handling_rules": [
+        "context_only"
+      ],
+      "computations": [
+        "none"
+      ],
+      "question_types": [
+        "ordinal_context"
+      ],
+      "response_families": [
+        "context_only"
+      ],
+      "statuses": [
+        "curated_packet",
+        "curated_special"
+      ],
+      "contract_hashes": [
+        "198f189adafd2f4b9e459184a897c8257fa4631f5f940686cd77736cccd38082"
+      ],
+      "substantive_codes": [
+        "0",
+        "1"
+      ],
+      "special_codes": [
+        "-1",
+        "9",
+        "997",
+        "998"
+      ]
+    },
+    {
+      "variable": "Q86B",
+      "rows": 6,
+      "handling_rules": [
+        "context_only"
+      ],
+      "computations": [
+        "none"
+      ],
+      "question_types": [
+        "ordinal_context"
+      ],
+      "response_families": [
+        "context_only"
+      ],
+      "statuses": [
+        "curated_packet",
+        "curated_special"
+      ],
+      "contract_hashes": [
+        "01ceeb78b8b4788c0732afeaab07374140b974fc1e330f79eb9f948e4c1eaa13"
+      ],
+      "substantive_codes": [
+        "0",
+        "1"
+      ],
+      "special_codes": [
+        "-1",
+        "9",
+        "997",
+        "998"
+      ]
+    }
+  ],
+  "contract_hash_hits_in_rawlsing_next": {},
+  "non_test_callers": {
+    "execute_and_replay_a2_gt1": [
+      "rawlsing_next/wave1_gt12_a2_real_gt1.py"
+    ],
+    "build_gt1_q86a_i03_plan": [
+      "rawlsing_next/wave1_gt12_a2_real_gt1.py",
+      "rawlsing_next/wave1_gt12_i03_positive_facts.py"
+    ],
+    "build_gt2_q86a_q86b_i03_plan": [
+      "rawlsing_next/wave1_gt12_i03_positive_facts.py"
+    ],
+    "produce_exact_conditional_support_profile": [
+      "rawlsing_next/field_forge_conditional_support.py",
+      "rawlsing_next/gt12_c_to_d_relation_bridge.py"
+    ],
+    "build_r5_q86_c11_projection": [
+      "rawlsing_next/wave1_r5_q86_c11_projection.py"
+    ]
+  },
+  "source_semantics_authority": {
+    "constant": true,
+    "operation": true,
+    "line_contains": [
+      334
+    ]
+  },
+  "r4_ar0033": {
+    "asset_release_id": "AR-0033",
+    "f1_function_ids": "F05_RESP_OPTION;F06_RESP_CONTRACT",
+    "f1_call_ids": "F1-L1-A03;F1-L1-A04;F1-L1-A05;F1-L1-A06;F1-L1-R01;F1-L1-R02;F1-L1-R03;F1-L1-R04;F1-L1-R05;F1-L1-R06;F1-L1-R07;F1-L1-R08;F1-L1-R09;F1-L1-A11;F1-L1-A12;F1-L2-006;F1-L2-007;F1-L3-017;F1-L3-018;F1-L3-059;F1-L3-060;F1-L3-063;F1-L3-064;F1-L3-065;F1-L4-A01;F1-L4-A05",
+    "f1_a02_authority_id": "A02-AUTH-008",
+    "f3b_primary_partition": "LOCAL_18",
+    "f3b_issuer_grade": "A02_RECORDED_HISTORICAL_DECISION_NOT_ORIGINAL_SIGNER",
+    "f3b_current_release_selected": "NO_CURRENT_RELEASE_PROVED",
+    "historical_operation_grain": "per source family/wave/variable/response code; producer-side certified manual response-option packet",
+    "historical_release_state": "HISTORICAL_VERSION_SELECTED",
+    "historical_selected_release_version": "F3A cold rehash; exact SHA also pinned in AR-0007/AR-0046 manifests (response_authority_inputs)",
+    "historical_selected_content_sha256": "305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332",
+    "historical_selected_bytes": "15498257",
+    "git_blob_sha1": "",
+    "selected_locator": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_response_option_authority.csv",
+    "byte_evidence_grade": "ASSET_BYTES_VERIFIED",
+    "selection_law_witness": "AR-0007/AR-0046 manifests pin the nine packet SHAs; 700-row reconciliation validation uses the same SHAs (236/236 PASS rows); V550 runtime re-reads the compact binding/registry, not this packet",
+    "historical_scope": "per source family / wave / variable / response code",
+    "current_vs_historical": "HISTORICAL_ONLY__CURRENT_PROTECTED_PATH_ABSENT",
+    "competition_state": "NONE__EXACT_MANIFEST_AND_ROW_HASH_MATCH",
+    "current_native_status": "CURRENT_NATIVE_ISSUER_NEEDED__CURRENT_NATIVE_NOT_RUN",
+    "restoration_disposition": "RESTORABLE_AS_HISTORICAL_PRODUCER_INPUT",
+    "labels": "HISTORICAL_VERSION_SELECTED;ASSET_BYTES_VERIFIED;DURABLE_CUSTODY_PENDING;CURRENT_NATIVE_ISSUER_NEEDED;CURRENT_NATIVE_NOT_RUN",
+    "exact_next_dependency": "Original response-option issuer for any modern re-derivation; historical V550/V551 consumers use AR-0007/AR-0046 bytes",
+    "f3a_class_or_status": "ISSUER-HOLD-AR-0033",
+    "notes": "Do not reload the packet as a per-query runtime authority; it is the certified producer input."
+  }
+}
