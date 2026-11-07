@@ -106,16 +106,22 @@ def new(state, ledger_file, history):
         case.owner.close()
 
 
-def act(owner, ledger_file, ledger, args):
+def act(owner, ledger_file, ledger, args, *, pacing=None):
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()
     if args.command == "say":
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
-    else:
+    elif args.command == "inspect-edge":
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
         if args.then_wait:
             action["then_wait"] = True
+    elif pacing is not None and args.command in {"inspect", "attend"}:
+        action = {"operation": args.command.upper()}
+    else:
+        raise RecursionRefusal("P4_ACTION_UNSUPPORTED")
+    if pacing is not None:
+        action["pacing"] = "P5"
     if args.request_id:
         for turn in ledger["turns"]:
             if turn["request_id"] != args.request_id:
@@ -132,15 +138,20 @@ def act(owner, ledger_file, ledger, args):
         uptake = read_response(owner, speech, ledger["scope"])
         expression, observation = express(session, uptake)
         offers_inspection = uptake["mode"] == "joint_check" and observation is not None
-        interval = advance(fanin) if speech["performed"] and not offers_inspection else None
+        interval = None
+        if speech["performed"] and not offers_inspection:
+            interval = (advance(fanin) if pacing is None else pacing(fanin, action))
         receipt = {"speech": speech, "uptake": uptake, "expression": expression,
                    "interval": interval}
         public = {"admission": speech["admission"], "performed": speech["performed"] is not None,
                   "observation": observation}
-    else:
+    elif args.command in {"inspect", "inspect-edge"}:
         from s45_projection.projection import project_event
 
-        valid = session.scene_open() and args.invitation == invitation(session, ledger)
+        token = action.get("invitation")
+        valid = session.scene_open() and (
+            args.command == "inspect" or token == invitation(session, ledger)
+        )
         event = None
         if valid:
             session.inspect()
@@ -149,10 +160,30 @@ def act(owner, ledger_file, ledger, args):
                     or event["actor_id"] != session.meta["user_actor"]
                     or event["event_id"] not in session.user_perceived_ids()):
                 raise RecursionRefusal("P4_INSPECTION_RECEIPT_MISSING")
-        interval = advance(fanin) if valid and args.then_wait else None
-        receipt = {"performed": event, "invitation": args.invitation, "interval": interval}
+        interval = None
+        if valid:
+            if pacing is not None:
+                interval = pacing(fanin, action)
+            elif args.then_wait:
+                interval = advance(fanin)
+        receipt = {"performed": event, "invitation": token, "interval": interval}
         public = {"admission": "ADMITTED" if valid else "INVITATION_UNAVAILABLE",
                   "performed": valid, "observation": project_event(event) if valid else None}
+    else:
+        valid = session.scene_open()
+        interval = None
+        result = None
+        if valid:
+            before_ids = session.user_perceived_ids()
+            result = session.attend()
+            # The received attention action can cause an actor to initiate.
+            # Return before compressing time if a new utterance is perceived.
+            newly_perceived = session.user_perceived_ids() - before_ids
+            if not any(session.event(ref)["kind"] == "SPEECH" for ref in newly_perceived):
+                interval = pacing(fanin, action)
+        receipt = {"attention": result, "interval": interval}
+        public = {"admission": "ADMITTED" if valid else "SCENE_CLOSED",
+                  "performed": valid, "observation": None}
 
     ledger["turns"].append({"action": action, "request_id": args.request_id,
                             "receipt": receipt, "before": before,

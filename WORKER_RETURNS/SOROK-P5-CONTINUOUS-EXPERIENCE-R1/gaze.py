@@ -57,6 +57,10 @@ def line(event):
             if speaker == "A":
                 return f'Nadia says, “{text}”'
             return f'The finisher says, “{text}”' if speaker == "B" else event["summary"]
+    if event["kind"] == "REPAIR" and event["actor_visible_id"] == "A":
+        return "Nadia makes a repair."
+    if event["kind"] == "INSPECT" and event["actor_visible_id"] == "U":
+        return "You examine the work."
     return event["summary"]
 
 
@@ -69,9 +73,9 @@ def render(surface, history, *, candidates=None, boundary=None):
         visible[ref] for ref in refs
         if ref in visible and ref != boundary and visible[ref]["kind"] in CHANNELS
     ]
-    if focus is not None:
-        rows.sort(key=lambda event: CHANNELS[event["kind"]] != focus)
-    chosen = rows[:DETAIL_BUDGET]
+    ranked = sorted(reversed(rows), key=lambda event: CHANNELS[event["kind"]] != focus)
+    selected = {event["event_id"] for event in ranked[:DETAIL_BUDGET]}
+    chosen = [event for event in rows if event["event_id"] in selected]
     if boundary in visible:
         chosen.append(visible[boundary])
     return [
