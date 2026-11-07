@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/11_h_cold_reopen_idempotent_replay_and_source_restore.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_h_cold_reopen_idempotent_replay_and_source_restore ____________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-161/test_h_cold_reopen_idempotent_0')\n\n    def test_h_cold_reopen_idempotent_replay_and_source_restore(tmp_path: Path) -> None:\n        case = build_case(tmp_path)\n        reopened = None\n        try:\n            results = run_chain(case)\n            first = batch_events(results[\"bootstrap\"])[0]\n            operation_id = first[\"operation_id\"]\n            state_after = case.owner.snapshot()\n>           replay = case.owner.realize(\n                operation_id, case.proposals[0], case.owner.snapshot())\n\ntests/test_p3_vertical_slice.py:441: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \np3/p3_owner.py:683: in realize\n    _refuse(\"P3_REPLAY_STATE_MISMATCH\")\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncode = 'P3_REPLAY_STATE_MISMATCH', detail = ''\n\n    def _refuse(code: str, detail: str = \"\") -> None:\n>       raise RecursionRefusal(code if not detail else code + \":\" + detail)\nE       developmental_recursion.contracts.RecursionRefusal: P3_REPLAY_STATE_MISMATCH\n\np3/p3_owner.py:39: RecursionRefusal\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore\n1 failed in 243.02s (0:04:03)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_h_cold_reopen_idempotent_replay_and_source_restore"
+  ],
+  "timeout_seconds": 600.0
+}

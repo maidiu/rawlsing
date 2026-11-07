@@ -476,6 +476,12 @@ def measure_case(case: VerticalCase, results: Mapping[str, Any],
     full_verify_after = detached(timings.get("verify_after", store_after))
     db_bytes = store_after.get("db_bytes", 0)
     wal_bytes = store_after.get("wal_bytes", 0)
+    before_db_bytes = int(store_before.get("db_bytes", 0))
+    before_wal_bytes = int(store_before.get("wal_bytes", 0))
+    incremental_db_bytes = db_bytes - before_db_bytes
+    incremental_db_plus_wal_bytes = (
+        (db_bytes + wal_bytes) - (before_db_bytes + before_wal_bytes)
+    )
     count = int(head.get("count", 0))
     cycle = json.loads(case.cycle_store_path.read_text(encoding="utf-8")) if case.cycle_store_path.exists() else {}
     batch_counts = [len(batch_events(results.get("bootstrap", {}))),
@@ -519,10 +525,15 @@ def measure_case(case: VerticalCase, results: Mapping[str, Any],
             "db_bytes": db_bytes,
             "wal_bytes": wal_bytes,
             "db_plus_wal_bytes": db_bytes + wal_bytes,
-            "fixed_db_bytes_before_records": int(store_before.get("db_bytes", 0)),
-            "incremental_db_bytes": db_bytes - int(store_before.get("db_bytes", 0)),
-            "bytes_per_record": (db_bytes - int(store_before.get("db_bytes", 0))) / count if count else None,
-            "bytes_per_event": (db_bytes - int(store_before.get("db_bytes", 0))) / max(1, sum(batch_counts)),
+            "fixed_db_bytes_before_records": before_db_bytes,
+            "fixed_db_plus_wal_bytes_before_records": (
+                before_db_bytes + before_wal_bytes),
+            "incremental_db_bytes": incremental_db_bytes,
+            "incremental_db_plus_wal_bytes": incremental_db_plus_wal_bytes,
+            "bytes_per_record": (
+                incremental_db_plus_wal_bytes / count if count else None),
+            "bytes_per_event": (
+                incremental_db_plus_wal_bytes / max(1, sum(batch_counts))),
             "cycle_store_logical_bytes": (case.cycle_store_path.stat().st_size
                                            if case.cycle_store_path.exists() else 0),
             "source_config_bytes": len(canonical(case.owner.config).encode("utf-8")),

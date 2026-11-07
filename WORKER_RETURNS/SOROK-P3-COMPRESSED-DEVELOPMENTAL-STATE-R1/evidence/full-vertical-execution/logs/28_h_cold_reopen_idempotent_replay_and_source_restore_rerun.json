@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/28_h_cold_reopen_idempotent_replay_and_source_restore_rerun.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_h_cold_reopen_idempotent_replay_and_source_restore ____________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-182/test_h_cold_reopen_idempotent_0')\n\n    def test_h_cold_reopen_idempotent_replay_and_source_restore(tmp_path: Path) -> None:\n        case = build_case(tmp_path)\n        reopened = None\n        try:\n            results = run_chain(case)\n            first = batch_events(results[\"ordinary\"])[-1]\n            operation_id = first[\"operation_id\"]\n            last_proposal = case.proposals[-1]\n            state_after = case.owner.snapshot()\n            replay = case.owner.realize(\n                operation_id, last_proposal, case.owner.snapshot())\n>           assert replay.document() == first\nE           AssertionError: assert {'accessible'...Y', ...}, ...} == {'accessible'...Y', ...}, ...}\nE             \nE             Omitting 10 identical items, use -vv to show\nE             Right contains 1 more item:\nE             {'event_id': 'vertical:event:6'}\nE             Use -v to get more diff\n\ntests/test_p3_vertical_slice.py:486: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_h_cold_reopen_idempotent_replay_and_source_restore\n1 failed in 258.80s (0:04:18)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_h_cold_reopen_idempotent_replay_and_source_restore"
+  ],
+  "timeout_seconds": 600.0
+}

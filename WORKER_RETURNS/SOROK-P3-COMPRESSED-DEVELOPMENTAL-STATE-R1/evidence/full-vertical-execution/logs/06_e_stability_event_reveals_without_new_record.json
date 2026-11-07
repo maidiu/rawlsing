@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_e_stability_event_reveals_without_new_record",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/06_e_stability_event_reveals_without_new_record.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________ test_e_stability_event_reveals_without_new_record _______________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-156/test_e_stability_event_reveals0')\n\n    def test_e_stability_event_reveals_without_new_record(tmp_path: Path) -> None:\n        case = build_case(tmp_path)\n        try:\n            results = run_chain(case)\n            first_batch = batch_events(results[\"bootstrap\"])\n            formation, stability = first_batch[0], first_batch[2]\n            before_head = case.owner.store.head()\n            before_records = workflow_records(case.owner, formation[\"after\"][\"clock\"])\n            assert len(before_records) == 2\n            after_head = case.owner.store.head()\n            assert after_head == before_head\n            response = response_for(stability)\n            assert response[\"status\"] == \"COMPUTED_TEST_ONLY_RESPONSE\"\n            assert response[\"streams\"]\n            assert all(row[\"native_action_performed\"] is False\n                       for row in response[\"streams\"])\n            assert response[\"memory_formation\"] == \"MISSING_RULE\"\n            assert len(workflow_records(case.owner, stability[\"after\"][\"clock\"])) == 2\n>           assert stability[\"after\"][\"state_hash\"] == case.owner.snapshot().state_hash\nE           AssertionError: assert '1765b74ddd19...ff67d6947ee52' == 'c524a7531442...776c64c1b3750'\nE             \nE             - c524a7531442b5825f9ca208fa359e53ecdb67d5d9626987e8d776c64c1b3750\nE             + 1765b74ddd199ccb74229e379cafac22d4ac01a573d8d49111bff67d6947ee52\n\ntests/test_p3_vertical_slice.py:271: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_e_stability_event_reveals_without_new_record\n1 failed in 230.81s (0:03:50)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_e_stability_event_reveals_without_new_record"
+  ],
+  "timeout_seconds": 600.0
+}

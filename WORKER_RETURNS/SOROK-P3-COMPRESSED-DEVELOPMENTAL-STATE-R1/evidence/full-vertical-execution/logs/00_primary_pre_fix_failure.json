@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/actual_metrics.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_______ test_primary_actual_formation_read_later_and_no_mediator_control _______\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-143/test_primary_actual_formation_0')\n\n    def test_primary_actual_formation_read_later_and_no_mediator_control(tmp_path: Path) -> None:\n        case = build_case(tmp_path)\n        control = build_case(tmp_path / \"control\", history_outcomes=())\n        try:\n            first, second, final = first_two_batch_results(case)\n            assert len(batch_events(first)) == 3\n            assert len(batch_events(second)) == 3\n            assert [row[\"mode\"] for row in case.provider.calls] == [\n                \"BOOTSTRAP\", \"ORDINARY\", \"TERMINAL\"]\n            assert len(case.provider.calls) == 3\n    \n            formation = batch_events(first)[0]\n            recruit = batch_events(first)[1]\n            assert formation[\"accessible\"][\"status\"] == \"OBSERVED\"\n            formation_response = response_for(formation)\n            assert formation_response[\"status\"] == \"COMPUTED_TEST_ONLY_RESPONSE\"\n            formed = workflow_records(case.owner, formation[\"after\"][\"clock\"])\n            assert len(formed) == 2\n            assert {row[\"payload\"][\"mode\"] for row in formed} == {\n                \"joint_check\", \"private_check\"}\n            formed_hashes = {row[\"hash\"] for row in formed}\n            recruit_response = response_for(recruit)\n            assert recruit_response[\"status\"] == \"COMPUTED_TEST_ONLY_RESPONSE\"\n            stream_records = {\n                row[\"record_hash\"] for row in recruit_response[\"streams\"]\n                if row.get(\"record_hash\")\n            }\n            assert stream_records == formed_hashes\n            assert set(recruit[\"readset\"]) & formed_hashes\n            assert recruit_response[\"native_action\"] == \"NOT_ISSUED_BY_P3_RULE\"\n            assert all(row[\"native_action_performed\"] is False\n                       for row in recruit_response[\"streams\"])\n            material = recruit[\"consequences\"][\"immediate_response\"][\n                \"objective_material_eligible\"]\n            assert all(row[\"material_eligible\"] == material\n                       for row in recruit_response[\"streams\"])\n    \n            ctl_first, ctl_second, _ = first_two_batch_results(control)\n            ctl_recruit = batch_events(ctl_first)[1]\n            ctl_response = response_for(ctl_recruit)\n            assert [row[\"mode\"] for row in ctl_response[\"streams\"]] == [\"inspect_alone\"]\n            assert response_for(recruit) != ctl_response\n            assert control.owner.store.head()[\"count\"] == 0\n    \n            production = test_rules.production_guard()\n            assert production[\"status\"] == \"DENY_ZERO_EFFECT\"\n            assert production[\"effects\"] == []\n>           assert final[\"batch_id\"] != second[\"batch_id\"]\nE           AssertionError: assert 'batch-000002' != 'batch-000002'\n\ntests/test_p3_vertical_slice.py:106: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control\n1 failed in 454.01s (0:07:34)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_primary_actual_formation_read_later_and_no_mediator_control"
+  ],
+  "timeout_seconds": 600.0
+}

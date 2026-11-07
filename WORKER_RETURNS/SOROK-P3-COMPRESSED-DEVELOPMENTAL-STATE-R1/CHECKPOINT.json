@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "FINAL_INDEPENDENT_REVIEW_REVISE__M1_M2_RUNTIME_REPAIRED__M3_AND_HARNESS_WITH_AUTHOR_LANE__FULL_MATRIX_PENDING",
+  "state": "AUTHOR_TERMINAL_INTAKEN__M1_M2_M3_REPAIRED__FULL_MATRIX_RUNNING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -460,7 +460,22 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "M3 measurement and full13 harness corrections remain with the live author lane; on return, intake corrected matrix, reexecute at the corrected exact cut, then focused nonauthor re-review and selective PR without merge. Do not treat M1/M2 repair as full-goal acceptance.",
+  "next": "Execute the complete 13-case PRIMARY/A-H/resource matrix at the combined cut and commit actual evidence; dispatch focused nonauthor re-review of the exact SHA; prepare selective receiving PR only if accepted; no merge.",
+  "author_terminal_intake": {
+    "manifest": "evidence/author-terminal-intake/MANIFEST.json",
+    "task": "sorok-p3-full-vertical-network-resume-r1",
+    "exit_code": 1,
+    "terminal_error": "Failed to execute statement",
+    "committed": false,
+    "return_written": false,
+    "e_stability": "PASS 216.10s",
+    "h_cold": "PASS 304.36s",
+    "harness_files": [
+      "run_p3_vertical_slice.py",
+      "tests/test_p3_vertical_slice.py"
+    ],
+    "terminal_evidence": "evidence/full-vertical-execution/"
+  },
   "m1_m2_repair": {
     "evidence": "evidence/final-review-repair/M1_M2_REPAIR.json",
     "logs": [
@@ -469,8 +484,8 @@
     ],
     "tests": "61 passed, 1 inapplicable guard skipped (store/owner); 37 passed (compression/projections/rules)",
     "scope": "M1 receipt linkage and receipt-bound surfaces; M2 pre-commit compression persistence and receipt-based cold recovery",
-    "m3": "OPEN_AUTHOR_LANE",
-    "full_matrix": "PENDING_CORRECTED_CUT"
+    "m3": "REPAIRED_PENDING_FULL_MATRIX: measure_case now reports incremental DB+WAL bytes and the resource case requires positive per-record/per-event values",
+    "full_matrix": "RUNNING_AT_COMBINED_CUT"
   },
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
@@ -532,6 +547,6 @@
   "open_material_findings": {
     "M1": "REPAIRED_PENDING_FOCUSED_REVIEW: finish requires effects-receipt link, exact P3_PSYCH response-hash ref, and receipt-bound actor surface; forged result refused. p3/state_store.py, p3/p3_owner.py.",
     "M2": "REPAIRED_PENDING_FOCUSED_REVIEW: compression envelope is bound before effects commit, persisted in receipt, and restored on cold PSYCH_COMMITTED recovery; finish verifies it. p3/p3_owner.py, p3/state_store.py.",
-    "M3": "OPEN_AUTHOR_LANE: DB-only byte measurement ignores WAL; author owns tests/p3_fixture_support.py measure_case."
+    "M3": "REPAIRED_PENDING_FOCUSED_REVIEW: measure_case now uses the incremental DB+WAL footprint; resource case requires positive bytes_per_record/bytes_per_event. tests/p3_fixture_support.py, tests/test_p3_vertical_slice.py."
   }
 }

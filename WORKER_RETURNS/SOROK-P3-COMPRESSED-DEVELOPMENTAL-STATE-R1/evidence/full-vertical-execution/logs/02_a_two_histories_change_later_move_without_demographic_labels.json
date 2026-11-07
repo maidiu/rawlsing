@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_a_two_histories_change_later_move_without_demographic_labels",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/02_a_two_histories_change_later_move_without_demographic_labels.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______ test_a_two_histories_change_later_move_without_demographic_labels _______\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-147/test_a_two_histories_change_la0')\n\n    def test_a_two_histories_change_later_move_without_demographic_labels(tmp_path: Path) -> None:\n        recognized = build_case(tmp_path / \"recognized\", history_outcomes=(\"recognized_plan\",))\n        imposed = build_case(tmp_path / \"imposed\", history_outcomes=(\"imposed_plan\",))\n        try:\n            r1, _, _ = first_two_batch_results(recognized)\n            r2, _, _ = first_two_batch_results(imposed)\n            rec1 = response_for(batch_events(r1)[1])\n            rec2 = response_for(batch_events(r2)[1])\n            assert {row[\"mode\"] for row in rec1[\"streams\"]} != {\n                row[\"mode\"] for row in rec2[\"streams\"]}\n            assert rec1[\"streams\"][0][\"record_hash\"] != rec2[\"streams\"][0][\"record_hash\"]\n            assert recognized.owner.source_hash == imposed.owner.source_hash\n            assert recognized.owner.history[0][\"outcome\"] != imposed.owner.history[0][\"outcome\"]\n>           assert recognized.owner.initial.actor == imposed.owner.initial.actor\n                   ^^^^^^^^^^^^^^^^^^^^^^^^\nE           AttributeError: 'P3Owner' object has no attribute 'initial'\n\ntests/test_p3_vertical_slice.py:131: AttributeError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_a_two_histories_change_later_move_without_demographic_labels\n1 failed in 438.63s (0:07:18)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_a_two_histories_change_later_move_without_demographic_labels"
+  ],
+  "timeout_seconds": 600.0
+}

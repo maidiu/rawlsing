@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_f_four_actual_compression_forms_bind_without_fabricated_history",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/07_f_four_actual_compression_forms_bind_without_fabricated_history.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____ test_f_four_actual_compression_forms_bind_without_fabricated_history _____\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-157/test_f_four_actual_compression0')\n\n    def test_f_four_actual_compression_forms_bind_without_fabricated_history(tmp_path: Path) -> None:\n        case = build_case(tmp_path, include_compression=True)\n        try:\n            results = run_chain(case)\n            events = batch_events(results[\"bootstrap\"]) + batch_events(results[\"ordinary\"])\n            forms = {\n                \"SINGULAR_OCCURRENCE\", \"REPRESENTATIVE_EPISODE\",\n                \"ACCUMULATED_INTERVAL\", \"RETROSPECTIVE_CRYSTALLIZATION\",\n            }\n            seen = set()\n            for event in events:\n                evidence = event[\"consequences\"].get(\"test_only_compression_evidence\")\n                if evidence is None:\n                    continue\n>               assert evidence[\"status\"] == \"BOUND\"\nE               AssertionError: assert 'HELD' == 'BOUND'\nE                 \nE                 - BOUND\nE                 + HELD\n\ntests/test_p3_vertical_slice.py:295: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_f_four_actual_compression_forms_bind_without_fabricated_history\n1 failed in 224.81s (0:03:44)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_f_four_actual_compression_forms_bind_without_fabricated_history"
+  ],
+  "timeout_seconds": 600.0
+}

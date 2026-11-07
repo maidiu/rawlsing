@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_cross_root_binding_is_refused_not_migrated",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/10_h_cross_root_binding_is_refused_not_migrated.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______________ test_h_cross_root_binding_is_refused_not_migrated _______________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-160/test_h_cross_root_binding_is_r0')\n\n    def test_h_cross_root_binding_is_refused_not_migrated(tmp_path: Path) -> None:\n        left = build_case(tmp_path / \"left\")\n        right = build_case(tmp_path / \"right\")\n        try:\n            assert left.owner.store.head()[\"count\"] == 0\n            assert right.owner.store.head()[\"count\"] == 0\n            for source in (\n                left.source,\n                dict(left.source, root=\"foreign-root\"),\n                dict(left.source, actor=\"foreign-actor\"),\n                dict(left.source, branch=\"foreign-branch\"),\n            ):\n>               with pytest.raises(RecursionRefusal):\nE               Failed: DID NOT RAISE <class 'developmental_recursion.contracts.RecursionRefusal'>\n\ntests/test_p3_vertical_slice.py:419: Failed\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_h_cross_root_binding_is_refused_not_migrated\n1 failed in 6.26s\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_h_cross_root_binding_is_refused_not_migrated"
+  ],
+  "timeout_seconds": 600.0
+}

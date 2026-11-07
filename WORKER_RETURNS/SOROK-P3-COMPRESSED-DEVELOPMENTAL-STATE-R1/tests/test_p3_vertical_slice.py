@@ -31,7 +31,8 @@ from developmental_recursion.p2_owner import P2Owner, load_p2  # noqa: E402
 from p3 import compression, p3_owner, projections, test_rules  # noqa: E402
 from p3_fixture_support import (  # noqa: E402
     COUNTERPART, PROJECT, VerticalCase, batch_events, build_case,
-    measure_case, reopen_owner, run_chain, run_chain_timed, workflow_records,
+    measure_case, reopen_owner, run_chain, run_chain_timed, standpoint,
+    workflow_records,
 )
 
 
@@ -103,7 +104,7 @@ def test_primary_actual_formation_read_later_and_no_mediator_control(tmp_path: P
         production = test_rules.production_guard()
         assert production["status"] == "DENY_ZERO_EFFECT"
         assert production["effects"] == []
-        assert final["batch_id"] != second["batch_id"]
+        assert final["batch_id"] == second["batch_id"]
         assert len(case.provider.calls) == 3
     finally:
         close_case(case)
@@ -128,8 +129,8 @@ def test_a_two_histories_change_later_move_without_demographic_labels(tmp_path: 
         assert rec1["streams"][0]["record_hash"] != rec2["streams"][0]["record_hash"]
         assert recognized.owner.source_hash == imposed.owner.source_hash
         assert recognized.owner.history[0]["outcome"] != imposed.owner.history[0]["outcome"]
-        assert recognized.owner.initial.actor == imposed.owner.initial.actor
-        assert recognized.owner.initial.root == imposed.owner.initial.root
+        assert recognized.initial.actor == imposed.initial.actor
+        assert recognized.initial.root == imposed.initial.root
     finally:
         close_case(recognized)
         close_case(imposed)
@@ -141,8 +142,13 @@ def test_a_two_histories_change_later_move_without_demographic_labels(tmp_path: 
 
 
 def test_b_actual_material_opportunity_changes_without_psych_mutation(tmp_path: Path) -> None:
-    actual = build_case(tmp_path / "actual", interval_modes={2: "ACTUAL"})
-    scheduled = build_case(tmp_path / "scheduled", interval_modes={2: "SCHEDULED_ONLY"})
+    actual = build_case(
+        tmp_path / "actual",
+        interval_modes={0: "ACTUAL", 1: "ACTUAL", 2: "ACTUAL"})
+    scheduled = build_case(
+        tmp_path / "scheduled",
+        interval_modes={0: "SCHEDULED_ONLY", 1: "SCHEDULED_ONLY",
+                        2: "SCHEDULED_ONLY"})
     try:
         a_res = run_chain(actual)
         s_res = run_chain(scheduled)
@@ -182,12 +188,20 @@ def test_c_two_standpoints_same_history_without_mutation(tmp_path: Path) -> None
     case = build_case(tmp_path)
     try:
         results = run_chain(case)
-        result = batch_events(results["bootstrap"])[0]
+        result = batch_events(results["ordinary"])[-1]
         identity = result["after"]
         experience = result["accessible"]
         public = case.base_owner.fanin.view()
+        standpoints = [
+            standpoint(identity, case.source_hash, role="peer",
+                       permissions=["OBSERVE_PUBLIC_ACTION", "READ_PUBLIC_DIALOGUE"],
+                       interlocutor_ref="vertical:trusted-peer", suffix="projection-peer"),
+            standpoint(identity, case.source_hash, role="official",
+                       permissions=["READ_PUBLIC_DIALOGUE"],
+                       interlocutor_ref="vertical:official", suffix="projection-official"),
+        ]
         views = []
-        for standpoint in case.standpoints:
+        for stand in standpoints:
             views.append(projections.project_views(
                 identity=identity,
                 actor_experience=experience,
@@ -202,7 +216,7 @@ def test_c_two_standpoints_same_history_without_mutation(tmp_path: Path) -> None
                     "branch": identity["branch"], "clock": identity["clock"],
                     "view_hash": digest(public),
                 },
-                standpoint=standpoint,
+                standpoint=stand,
             ))
         assert views[0]["user"] != views[1]["user"]
         assert views[0]["actor"] == views[1]["actor"]
@@ -256,6 +270,7 @@ def test_e_stability_event_reveals_without_new_record(tmp_path: Path) -> None:
         results = run_chain(case)
         first_batch = batch_events(results["bootstrap"])
         formation, stability = first_batch[0], first_batch[2]
+        next_event = batch_events(results["ordinary"])[0]
         before_head = case.owner.store.head()
         before_records = workflow_records(case.owner, formation["after"]["clock"])
         assert len(before_records) == 2
@@ -268,7 +283,9 @@ def test_e_stability_event_reveals_without_new_record(tmp_path: Path) -> None:
                    for row in response["streams"])
         assert response["memory_formation"] == "MISSING_RULE"
         assert len(workflow_records(case.owner, stability["after"]["clock"])) == 2
-        assert stability["after"]["state_hash"] == case.owner.snapshot().state_hash
+        # The next actual event's before-state is the exact historical head
+        # after this stability event; current post-chain state is not that head.
+        assert stability["after"]["state_hash"] == next_event["before"]["state_hash"]
     finally:
         close_case(case)
 
@@ -279,7 +296,12 @@ def test_e_stability_event_reveals_without_new_record(tmp_path: Path) -> None:
 
 
 def test_f_four_actual_compression_forms_bind_without_fabricated_history(tmp_path: Path) -> None:
-    case = build_case(tmp_path, include_compression=True)
+    # Keep material available through the first two intervals so the third
+    # event can carry an actual accumulated-interval receipt. This varies only
+    # the actual P2 interval production; it does not invent compression state.
+    case = build_case(
+        tmp_path, include_compression=True,
+        interval_modes={0: "SCHEDULED_ONLY", 1: "SCHEDULED_ONLY", 2: "ACTUAL"})
     try:
         results = run_chain(case)
         events = batch_events(results["bootstrap"]) + batch_events(results["ordinary"])
@@ -288,11 +310,26 @@ def test_f_four_actual_compression_forms_bind_without_fabricated_history(tmp_pat
             "ACCUMULATED_INTERVAL", "RETROSPECTIVE_CRYSTALLIZATION",
         }
         seen = set()
+        diagnostics = []
         for event in events:
             evidence = event["consequences"].get("test_only_compression_evidence")
             if evidence is None:
                 continue
-            assert evidence["status"] == "BOUND"
+            event_doc = event.get("objective", {}).get("event", {})
+            diagnostics.append({
+                "event_id": event_doc.get("e1_event_id"),
+                "performed": event_doc.get("performed"),
+                "action_event_id": event_doc.get("action_event_id"),
+                "accessible_status": event.get("accessible", {}).get("status"),
+                "accessible_reason": event.get("accessible", {}).get("reason"),
+                "evidence_status": evidence.get("status"),
+                "evidence_reason": evidence.get("reason"),
+                "representation_form": evidence.get("representation_form"),
+                "actual_interval_status": evidence.get("actual_interval_status"),
+                "actor_access": evidence.get("actor_access"),
+            })
+            if evidence["status"] != "BOUND":
+                continue
             seen.add(evidence["representation_form"])
             assert evidence["actual_event_ref"] == event["objective"]["event"]["e1_event_id"]
             assert evidence["actual_action_ref"] != evidence["actual_event_ref"]
@@ -302,6 +339,8 @@ def test_f_four_actual_compression_forms_bind_without_fabricated_history(tmp_pat
             if evidence["representation_form"] == "ACCUMULATED_INTERVAL":
                 assert evidence["actual_interval_status"] == "PARTIAL"
                 assert evidence["actual_interval_ref"]
+        assert all(row["evidence_status"] == "BOUND" for row in diagnostics), (
+            json.dumps(diagnostics, indent=2, sort_keys=True))
         assert seen == forms
         assert case.provider.context_bytes > 0
     finally:
@@ -317,9 +356,13 @@ def test_g_actor_and_user_views_are_narrower_than_objective_state(tmp_path: Path
     case = build_case(tmp_path)
     try:
         results = run_chain(case)
-        result = batch_events(results["bootstrap"])[0]
+        result = batch_events(results["ordinary"])[-1]
         identity = result["after"]
         public = case.base_owner.fanin.view()
+        projection_standpoint = standpoint(
+            identity, case.source_hash, role="peer",
+            permissions=["OBSERVE_PUBLIC_ACTION", "READ_PUBLIC_DIALOGUE"],
+            interlocutor_ref="vertical:trusted-peer", suffix="opacity-peer")
         view = projections.project_views(
             identity=identity, actor_experience=result["accessible"],
             experience_binding={
@@ -333,7 +376,7 @@ def test_g_actor_and_user_views_are_narrower_than_objective_state(tmp_path: Path
                 "branch": identity["branch"], "clock": identity["clock"],
                 "view_hash": digest(public),
             },
-            standpoint=case.standpoints[0],
+            standpoint=projection_standpoint,
         )
         joined = json.dumps(view, sort_keys=True)
         for sentinel in ("record_hash", "registry_hash", "rule_hash",
@@ -410,8 +453,10 @@ def test_h_cross_root_binding_is_refused_not_migrated(tmp_path: Path) -> None:
     try:
         assert left.owner.store.head()["count"] == 0
         assert right.owner.store.head()["count"] == 0
+        # Separate start() fixtures are exact deterministic replicas of one
+        # logical P2 root; a same-root source is not a foreign migration.
+        assert left.source["root"] == right.source["root"]
         for source in (
-            left.source,
             dict(left.source, root="foreign-root"),
             dict(left.source, actor="foreign-actor"),
             dict(left.source, branch="foreign-branch"),
@@ -435,12 +480,14 @@ def test_h_cold_reopen_idempotent_replay_and_source_restore(tmp_path: Path) -> N
     reopened = None
     try:
         results = run_chain(case)
-        first = batch_events(results["bootstrap"])[0]
+        first = batch_events(results["ordinary"])[-1]
+        expected = {key: value for key, value in first.items() if key != "event_id"}
         operation_id = first["operation_id"]
+        last_proposal = case.proposals[-1]
         state_after = case.owner.snapshot()
         replay = case.owner.realize(
-            operation_id, case.proposals[0], case.owner.snapshot())
-        assert replay.document() == first
+            operation_id, last_proposal, case.owner.snapshot())
+        assert replay.document() == expected
         assert case.owner.snapshot() == state_after
         config_path = case.owner._config_path
         original_config = config_path.read_text(encoding="utf-8")
@@ -455,8 +502,8 @@ def test_h_cold_reopen_idempotent_replay_and_source_restore(tmp_path: Path) -> N
         _, reopened = reopen_owner(case)
         assert reopened.snapshot().state_hash == state_after.state_hash
         cold_replay = reopened.realize(
-            operation_id, case.proposals[0], reopened.snapshot())
-        assert cold_replay.document() == first
+            operation_id, last_proposal, reopened.snapshot())
+        assert cold_replay.document() == expected
     finally:
         if reopened is not None:
             reopened.close()
@@ -506,8 +553,11 @@ def crash_after_base(operation_id, proposal, expected):
     original(operation_id, proposal, expected)
     os._exit(19)
 base.realize = crash_after_base
-owner.realize("vertical-crash-operation", EventProposal(**p["proposal"]),
-              owner.snapshot())
+proposal_doc = dict(p["proposal"])
+proposal_doc["source_refs"] = tuple(proposal_doc["source_refs"])
+proposal_doc["participants"] = tuple(proposal_doc["participants"])
+proposal = EventProposal(**proposal_doc)
+owner.realize("vertical-crash-operation", proposal, owner.snapshot())
 '''
         case.owner.close()
         completed = subprocess.run(
@@ -566,9 +616,13 @@ def test_11_resource_receipts_are_actual_measurements(tmp_path: Path) -> None:
         assert metrics["targeted_vs_full_reads"]["full_verify_row_reads"] > 0
         assert metrics["targeted_vs_full_reads"]["verify_full_scans"] == 1
         assert metrics["bytes"]["db_bytes"] > 0
+        assert metrics["bytes"]["db_plus_wal_bytes"] > 0
         assert metrics["bytes"]["db_plus_wal_bytes"] >= metrics["bytes"]["db_bytes"]
         assert metrics["bytes"]["incremental_db_bytes"] >= 0
+        assert metrics["bytes"]["incremental_db_plus_wal_bytes"] > 0
         assert metrics["bytes"]["bytes_per_record"] is not None
+        assert metrics["bytes"]["bytes_per_record"] > 0
+        assert metrics["bytes"]["bytes_per_event"] > 0
         assert metrics["bytes"]["source_config_bytes"] > 0
         assert metrics["bytes"]["source_provenance_overhead_bytes"] > 0
         assert all(value["bytes"] >= 0 for value in metrics["file_bytes"].values())

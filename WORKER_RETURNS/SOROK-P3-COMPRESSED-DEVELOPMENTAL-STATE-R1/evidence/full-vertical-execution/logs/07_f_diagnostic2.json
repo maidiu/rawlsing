@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_f_four_actual_compression_forms_bind_without_fabricated_history",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/f_diagnostic.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____ test_f_four_actual_compression_forms_bind_without_fabricated_history _____\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-167/test_f_four_actual_compression0')\n\n    def test_f_four_actual_compression_forms_bind_without_fabricated_history(tmp_path: Path) -> None:\n        case = build_case(tmp_path, include_compression=True)\n        try:\n            results = run_chain(case)\n            events = batch_events(results[\"bootstrap\"]) + batch_events(results[\"ordinary\"])\n            forms = {\n                \"SINGULAR_OCCURRENCE\", \"REPRESENTATIVE_EPISODE\",\n                \"ACCUMULATED_INTERVAL\", \"RETROSPECTIVE_CRYSTALLIZATION\",\n            }\n            seen = set()\n            for event in events:\n                evidence = event[\"consequences\"].get(\"test_only_compression_evidence\")\n                if evidence is None:\n                    continue\n>               assert evidence[\"status\"] == \"BOUND\", {\n                    \"event_id\": (\n                        event.get(\"objective\", {}).get(\"event\", {}).get(\"e1_event_id\")\n                        or event.get(\"event_id\")\n                    ),\n                    \"status\": event.get(\"status\"),\n                    \"accessible_status\": event.get(\"accessible\", {}).get(\"status\"),\n                    \"evidence\": evidence,\n                }\nE               AssertionError: {'accessible_status': 'OBSERVED', 'event_id': 'TEST_ONLY_BP2_E1_OCC-0004', 'evidence': {'actor_access': 'HELD', 'actua...', 'actual_event_hash': 'f30edc33b01d1c1c00c701d7d1c68252f4524248efb97831bd953bb9b586c7ff', ...}, 'status': 'REALIZED'}\nE               assert 'HELD' == 'BOUND'\nE                 \nE                 - BOUND\nE                 + HELD\n\ntests/test_p3_vertical_slice.py:309: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_f_four_actual_compression_forms_bind_without_fabricated_history\n1 failed in 239.89s (0:03:59)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_f_four_actual_compression_forms_bind_without_fabricated_history"
+  ],
+  "timeout_seconds": 600.0
+}

@@ -7,6 +7,7 @@ silent skip, fake store or in-memory fallback.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import subprocess
@@ -27,27 +28,61 @@ def status(status: str, **extra: object) -> dict:
             "test_file": str(TEST_FILE), **extra}
 
 
+def _metrics_path(value: str) -> Path:
+    path = Path(value)
+    return path if path.is_absolute() else ROOT / path
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--metrics-path", default="evidence/full-vertical-execution/actual_metrics.json",
+        help="Machine-readable resource receipt path; defaults to the new evidence directory.",
+    )
+    parser.add_argument(
+        "--test", action="append", dest="tests", default=None,
+        help="Optional pytest node ID (without file prefix), repeatable for a scoped actual run.",
+    )
+    parser.add_argument(
+        "--timeout", type=float, default=0.0,
+        help="Finite subprocess timeout in seconds; 0 disables an outer timeout.",
+    )
+    args = parser.parse_args()
     if not STORE.is_file():
         result = status(STORE_MISSING, executed=False,
                         reason="returned normalized PsycheStore not present at startup")
         print(json.dumps(result, indent=2, sort_keys=True))
         return 3
     payload = status("RUNNING", executed=True)
-    payload["command"] = [sys.executable, "-m", "pytest", str(TEST_FILE),
+    target = str(TEST_FILE) if not args.tests else "::".join(
+        [str(TEST_FILE), *args.tests])
+    payload["command"] = [sys.executable, "-m", "pytest", target,
                           "-q", "-o", "addopts=", "-p", "no:cacheprovider"]
+    payload["tests"] = args.tests
+    payload["timeout_seconds"] = args.timeout or None
     env = dict(os.environ)
     paths = [str(ROOT), str(ENGINE_ROOT), str(PROJECTION_ROOT)]
     env["PYTHONPATH"] = os.pathsep.join(
         paths + ([env["PYTHONPATH"]] if env.get("PYTHONPATH") else []))
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     env["PYTHONHASHSEED"] = "0"
-    metrics_path = ROOT / "evidence" / "vertical-resource-repair" / "actual_metrics.json"
+    metrics_path = _metrics_path(args.metrics_path)
     metrics_path.parent.mkdir(parents=True, exist_ok=True)
     env["P3_VERTICAL_METRICS_PATH"] = str(metrics_path)
     payload["metrics_path"] = str(metrics_path)
-    completed = subprocess.run(payload["command"], cwd=str(ROOT),
-                               env=env, capture_output=True, text=True)
+    try:
+        completed = subprocess.run(
+            payload["command"], cwd=str(ROOT), env=env,
+            capture_output=True, text=True,
+            timeout=args.timeout if args.timeout > 0 else None,
+        )
+    except subprocess.TimeoutExpired as exc:
+        payload["exit"] = 124
+        payload["stdout"] = (exc.stdout or "") if isinstance(exc.stdout, str) else ""
+        payload["stderr"] = (exc.stderr or "") if isinstance(exc.stderr, str) else ""
+        payload["status"] = "TIMEOUT"
+        print(json.dumps(payload, indent=2, sort_keys=True))
+        return 124
     payload["exit"] = completed.returncode
     payload["stdout"] = completed.stdout
     payload["stderr"] = completed.stderr

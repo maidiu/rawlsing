@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_b_actual_material_opportunity_changes_without_psych_mutation",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/03_b_actual_material_opportunity_changes_without_psych_mutation.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n______ test_b_actual_material_opportunity_changes_without_psych_mutation _______\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-151/test_b_actual_material_opportu0')\n\n    def test_b_actual_material_opportunity_changes_without_psych_mutation(tmp_path: Path) -> None:\n        actual = build_case(tmp_path / \"actual\", interval_modes={2: \"ACTUAL\"})\n        scheduled = build_case(tmp_path / \"scheduled\", interval_modes={2: \"SCHEDULED_ONLY\"})\n        try:\n            a_res = run_chain(actual)\n            s_res = run_chain(scheduled)\n            a_event = batch_events(a_res[\"bootstrap\"])[2]\n            s_event = batch_events(s_res[\"bootstrap\"])[2]\n            a_mat = a_event[\"consequences\"][\"immediate_response\"][\n                \"objective_material_eligible\"]\n            s_mat = s_event[\"consequences\"][\"immediate_response\"][\n                \"objective_material_eligible\"]\n            assert a_mat is False\n>           assert s_mat is True\nE           assert False is True\n\ntests/test_p3_vertical_slice.py:156: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_b_actual_material_opportunity_changes_without_psych_mutation\n1 failed in 440.38s (0:07:20)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_b_actual_material_opportunity_changes_without_psych_mutation"
+  ],
+  "timeout_seconds": 600.0
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-m",
+    "pytest",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_c_two_standpoints_same_history_without_mutation",
+    "-q",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider"
+  ],
+  "executed": true,
+  "exit": 1,
+  "metrics_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution/metrics/04_c_two_standpoints_same_history_without_mutation.json",
+  "schema": "SOROK_P3_VERTICAL_RUNNER@1.0.0",
+  "status": "FAIL",
+  "stderr": "",
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n_____________ test_c_two_standpoints_same_history_without_mutation _____________\n\ntmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-153/test_c_two_standpoints_same_hi0')\n\n    def test_c_two_standpoints_same_history_without_mutation(tmp_path: Path) -> None:\n        case = build_case(tmp_path)\n        try:\n            results = run_chain(case)\n            result = batch_events(results[\"bootstrap\"])[0]\n            identity = result[\"after\"]\n            experience = result[\"accessible\"]\n            public = case.base_owner.fanin.view()\n            views = []\n            for standpoint in case.standpoints:\n>               views.append(projections.project_views(\n                    identity=identity,\n                    actor_experience=experience,\n                    experience_binding={\n                        \"root\": identity[\"root\"], \"actor\": identity[\"actor\"],\n                        \"branch\": identity[\"branch\"], \"clock\": identity[\"clock\"],\n                        \"experience_hash\": digest(experience),\n                    },\n                    public_view=public,\n                    public_binding={\n                        \"root\": identity[\"root\"], \"actor\": identity[\"actor\"],\n                        \"branch\": identity[\"branch\"], \"clock\": identity[\"clock\"],\n                        \"view_hash\": digest(public),\n                    },\n                    standpoint=standpoint,\n                ))\n\ntests/test_p3_vertical_slice.py:191: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \np3/projections.py:516: in project_views\n    stand = _standpoint(standpoint, ident)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\np3/projections.py:476: in _standpoint\n    _same_identity(identity, standpoint, \"STANDPOINT\")\np3/projections.py:181: in _same_identity\n    _refuse(code + \"_IDENTITY_MISMATCH:\" + key)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncode = 'STANDPOINT_IDENTITY_MISMATCH:clock', detail = ''\n\n    def _refuse(code: str, detail: str = \"\") -> None:\n>       raise RecursionRefusal(code if not detail else code + \":\" + detail)\nE       developmental_recursion.contracts.RecursionRefusal: STANDPOINT_IDENTITY_MISMATCH:clock\n\np3/projections.py:101: RecursionRefusal\n=========================== short test summary info ============================\nFAILED tests/test_p3_vertical_slice.py::test_c_two_standpoints_same_history_without_mutation\n1 failed in 217.28s (0:03:37)\n",
+  "store_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": true,
+  "test_file": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+  "tests": [
+    "test_c_two_standpoints_same_history_without_mutation"
+  ],
+  "timeout_seconds": 600.0
+}
