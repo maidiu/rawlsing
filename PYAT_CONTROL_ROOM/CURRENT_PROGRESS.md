@@ -1,3 +1,7 @@
+# #777 latest intake — J-role candidate under independent review
+
+C4 cut `8986f3d4936edb1bda68f9eda55bf4be710e8642` documents seven sourcefree mechanism checks and exact historical source pins. Historical selection and non-test caller remain UNPROVED; literal grep does not establish global absence, and different role vocabularies do not establish whole-pipeline inadequacy. Focused distinct review is launched with verified model metadata. C1 reporting corrections/C3 FFpostFF continue, three lanes out. No production repair/authority expansion. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C4_RETURN_INTAKE.json`.
+
 # #777 latest disposition — C1 independent review narrows remedy
 
 Independent review `753ff5dc95fb218f84ebf1697a91a2d392367f2c` qualifies historical response metadata and sourcefree canary guards. No non-test Q86 first consumer is proved; current code-created source semantics is a candidate equivalent, unassessed. Historical AR0033 is producer input under issuer hold; binding it as a runtime authority or retiring raw counts is not justified. Reporting corrections are launched with existing author. C2 sourcefree composition remains accepted; C3 FF/postFF and C4 Jrole continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_REVIEW_INTAKE.json`. No production repair or expanded authority.
