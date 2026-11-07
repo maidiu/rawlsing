@@ -1,3 +1,7 @@
+# #777 latest intake — C1 return, distinct review launched
+
+C1 exact `a98299e7c9cd05aa3eabe2c22d20ea6b746ea667` is evidence only. Selected historical response rows and current sourcefree guards are documented; provenance remains UNPROVED. Independent review must check actual dynamic wiring and whether context-only restrictions affect raw counting; no bind-or-retire repair is approved. Three substantive lanes remain out: C1 review, C2 review, C3 FF/postFF author. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_RETURN_INTAKE.json`. All unmatched rows, all 17 agenda obligations and authority holds remain.
+
 # #777 latest intake — C2 author return, independent review running
 
 Exact author cut `751fb3fab88ab0faef4b20afeb57a89801f7cce8` is imported as evidence only. Existing exact multi-conditioner composition is demonstrated on nonrespondent fixtures; original J issuer provenance remains UNPROVED. The advertised cold restore is same-process deterministic reconstruction. Independent nonauthor review `pyat777-joint-independent-review-r1` is actually launched with verified Flash MAX metadata; C1/C3 remain out at the single intake check. No production repair, historical equivalence, protected adoption or goal completion is accepted. Full standing disciplines and all 17 agenda obligations remain. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_RETURN_INTAKE.json`.

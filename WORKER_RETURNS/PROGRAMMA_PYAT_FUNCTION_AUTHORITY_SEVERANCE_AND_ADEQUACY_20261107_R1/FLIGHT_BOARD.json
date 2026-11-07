@@ -15,7 +15,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED_CUSTODY_ONLY_INDEPENDENT_REVIEW_RUNNING",
     "actual_model": {
       "id": "msg_1b81bc574001AwD0A7tJocgfB0",
       "type": "assistant",
@@ -29,7 +29,10 @@
         "streamed": 1794090215715,
         "completed": 1794090215919
       }
-    }
+    },
+    "returned_commit": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+    "hq_import_commit": "06a6e0b73",
+    "disposition": "Actual historical Q86 response rows inspected; sourcefree guards exercised; selected current provenance UNPROVED. Proposed bind-or-retire action not adopted pending independent semantic review."
   },
   {
     "task": "pyat777-joint-consumer-r1",
@@ -127,6 +130,36 @@
         "created": 1794090680540,
         "streamed": 1794090701561,
         "completed": 1794090701873
+      }
+    }
+  },
+  {
+    "task": "pyat777-source-independent-review-r1",
+    "session": "ses_0f9d2691183445a2a848d3f923",
+    "branch": "review/pyat777-source-consumer-20261107-r1",
+    "startup": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-independent-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_INDEPENDENT_REVIEW",
+    "launch": {
+      "job_id": "pyat777-source-independent-review-r1",
+      "child_pid": 4105,
+      "supervisor_pid": 4103,
+      "observer_pid": 4106,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-independent-review-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "actual_model": {
+      "id": "msg_1b827da4b0015f7CDYRI93zqGJ",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794090981997
       }
     }
   }

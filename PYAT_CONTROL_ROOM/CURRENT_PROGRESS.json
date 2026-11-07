@@ -323,7 +323,7 @@
           "launch_is_not_completion": true
         },
         "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-        "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+        "status": "RETURNED_CUSTODY_ONLY_INDEPENDENT_REVIEW_RUNNING",
         "actual_model": {
           "id": "msg_1b81bc574001AwD0A7tJocgfB0",
           "type": "assistant",
@@ -337,7 +337,10 @@
             "streamed": 1794090215715,
             "completed": 1794090215919
           }
-        }
+        },
+        "returned_commit": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+        "hq_import_commit": "06a6e0b73",
+        "disposition": "Actual historical Q86 response rows inspected; sourcefree guards exercised; selected current provenance UNPROVED. Proposed bind-or-retire action not adopted pending independent semantic review."
       },
       {
         "task": "pyat777-joint-consumer-r1",
@@ -437,9 +440,39 @@
             "completed": 1794090701873
           }
         }
+      },
+      {
+        "task": "pyat777-source-independent-review-r1",
+        "session": "ses_0f9d2691183445a2a848d3f923",
+        "branch": "review/pyat777-source-consumer-20261107-r1",
+        "startup": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-independent-review",
+        "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_INDEPENDENT_REVIEW",
+        "launch": {
+          "job_id": "pyat777-source-independent-review-r1",
+          "child_pid": 4105,
+          "supervisor_pid": 4103,
+          "observer_pid": 4106,
+          "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-independent-review-r1",
+          "launch_is_not_completion": true
+        },
+        "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+        "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+        "actual_model": {
+          "id": "msg_1b827da4b0015f7CDYRI93zqGJ",
+          "type": "assistant",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "time": {
+            "created": 1794090981997
+          }
+        }
       }
     ],
-    "proof_scope": "C2 author evidence received, independent review running; no scoped authority equivalence/severance or production acceptance",
+    "proof_scope": "C1 and C2 author candidates received, distinct reviews running; C3 author out. No original authority equivalence/severance or production repair accepted.",
     "source_status": "ISOLATED_HQ_CANDIDATE_NOT_PROTECTED",
     "preserved_boundaries": "#748allterminalcapital;#765/#772/#767ownersnotpreempted;interactiveclientsunknownuntouched;noS3/native/science/actor/CASgrant",
     "quota": "UNKNOWN",
@@ -478,40 +511,41 @@
       }
     ],
     "latest_return": {
-      "task": "pyat777-joint-consumer-r1",
-      "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-joint-consumer-r1/completion.json",
-      "receipt_verified": {
-        "session": "ses_1b9742b6c02745d8a69d062011",
-        "pid": 99122,
-        "exit_code": 0
+      "task": "pyat777-source-consumer-r1",
+      "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-consumer-r1/completion.json",
+      "verified_terminal": {
+        "session": "ses_b998af9086264002a86ee57b6e",
+        "pid": 99104,
+        "exit_code": 0,
+        "finished_utc": "2026-11-07T22:35:18.624283+00:00"
       },
-      "author_commit": "751fb3fab88ab0faef4b20afeb57a89801f7cce8",
-      "author_remote_readback": "751fb3fab88ab0faef4b20afeb57a89801f7cce8",
-      "scope": "Author evidence imported, not independently accepted",
+      "author_commit": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+      "author_remote_readback": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+      "scope": "C1 bounded candidate evidence imported, independent review required",
       "observed_evidence": [
-        "Two A-J case records",
-        "Real current N10E/C1/F8 owner calls over 58 synthetic nonrespondent rows",
-        "Denominators 32/16/8 and fractions 9/16,5/8,3/4 reported",
-        "Four owner refusal controls and four named tests reported"
+        "AR-0033 selected metadata hash/row sets identified by author",
+        "One Q86 raw unary/joint canary; current guards positive and negatives reported",
+        "Generic T01 falsifier separate, existing owner not displaced",
+        "212 source rows with 195 unmatched retained; not universal operation coverage"
       ],
-      "hq_observed_limits": [
-        "Cold restore is same-process reconstruction, not persisted cross-process restore",
-        "provider_state is a literal in probe output; reviewer must distinguish actual observed owner results",
-        "Generic exact joint capability does not establish historical J provenance, equivalence or severance",
-        "Shadow/version/revocation tests NOT_RUN; missing selected issuer remains precise unknown"
+      "hq_limits": [
+        "Literal contract hash absence does not prove runtime selected authority absence",
+        "context_only/no structural computation does not alone prohibit raw counting",
+        "No selected competent issuer or equivalent established; not proved severance",
+        "Author bind-or-retire remedy is conditional advice, not an approved repair or newly imposed authority gate"
       ],
       "next_action": {
-        "job": "pyat777-joint-independent-review-r1",
+        "job": "pyat777-source-independent-review-r1",
         "launch": {
-          "job_id": "pyat777-joint-independent-review-r1",
-          "child_pid": 3380,
-          "supervisor_pid": 3379,
-          "observer_pid": 3381,
-          "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-joint-independent-review-r1",
+          "job_id": "pyat777-source-independent-review-r1",
+          "child_pid": 4105,
+          "supervisor_pid": 4103,
+          "observer_pid": 4106,
+          "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-independent-review-r1",
           "launch_is_not_completion": true
         },
         "actual_model": {
-          "id": "msg_1b82340b4001n5WFBJJujup5JM",
+          "id": "msg_1b827da4b0015f7CDYRI93zqGJ",
           "type": "assistant",
           "model": {
             "id": "deepseek-v4.1-flash",
@@ -519,9 +553,7 @@
             "variant": "max"
           },
           "time": {
-            "created": 1794090680540,
-            "streamed": 1794090701561,
-            "completed": 1794090701873
+            "created": 1794090981997
           }
         }
       },
