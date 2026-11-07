@@ -213,8 +213,8 @@ if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
         received_path = ROOT / (SOROK + "CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md")
         received_text = received_path.read_text(encoding="utf-8") if received_path.is_file() else ""
         is_qualified_pair = (
-            sorok_state.get("revision") in (37, 38)
-            and ("revision37" if sorok_state.get("revision") == 37 else "revision38") in md_head
+            sorok_state.get("revision") in (37, 38, 39)
+            and f"revision{sorok_state.get('revision')}" in md_head
             and isinstance(r37, dict)
             and r37.get("protected_merge_sha") == "0b7d8ba33b5cd905963292357507ae7bbc2219de"
             and r37.get("source_head") == "d7a598bef85a534c71e1fbca74124dedde96d577"
@@ -233,7 +233,7 @@ if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
         # GitHub approval. The FIABC/LiTS REDs remain unaffected.
         r38 = sorok_state.get("protected_receiving_20261107", {})
         is_r38_pair = (
-            sorok_state.get("revision") == 38
+            sorok_state.get("revision") in (38, 39)
             and is_qualified_pair
             and isinstance(r38, dict)
             and r38.get("protected_merge_sha") == "a245e6f99bb8d56771f7d88701c8240929887541"
@@ -254,16 +254,66 @@ if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
                 SOROK + "24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md"
             and (ROOT / r38.get("guide_receipt", "NONEXISTENT_R38")).is_file()
         )
-        check(is_split_cut or (is_qualified_pair and sorok_state.get("revision") == 37) or is_r38_pair,
-              "Sorok current-progress pair lacks original MD36/JSON35 split, qualified R37, or exact R38 protected receiving")
-        if sorok_state.get("revision") == 38:
-            check(is_r38_pair, "Sorok R38 protected documentary receiving lacks exact PR749 proof/limits")
+        # R39 banks actually protected P4 after independently reviewed
+        # sourcefree first-consumer execution. It does NOT promote science or
+        # human/native authority, and it retains the exact R37 and R38 courts.
+        r39 = sorok_state.get("protected_receiving_20261107_p4", {})
+        r39_receipt = SOROK + "25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md"
+        r39_runtime = ROOT / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py"
+        r39_independent = ROOT / ("WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/evidence/"
+                                  "independent-control-return-disposition.md")
+        is_r39_pair = (
+            sorok_state.get("revision") == 39
+            and is_r38_pair
+            and isinstance(r39, dict)
+            and r39.get("merged_pr") == 751
+            and r39.get("protected_merge_sha") == "ae3dd0922c5bf00a50071ed34f75798838ad4e95"
+            and r39.get("source_head") == "80bce19efeaeb98b1452e8b5995ebf80f83e166f"
+            and r39.get("parent_sha") == "2cb4113f0d1204bb83ec452625ca8d5c984c3f9a"
+            and r39.get("independently_reviewed_runtime") ==
+                "9eacf50380176d617637489d04cab3a969dd0a29"
+            and r39.get("grade") == "ACCEPT_SCOPED_SOURCEFREE_TEST_ONLY_FIRST_CONSUMER"
+            and r39.get("engineering_first_consumer") is True
+            and r39.get("d002_mpc_obligations_demonstrated") == 7
+            and r39.get("ci") == "CANONICAL_PASS__FIABC_GOVERNED_144PASS_3HISTORIC_FAIL"
+            and r39.get("connected_git_review") ==
+                "COMMENTED_SAME_GITHUB_PRINCIPAL_NOT_THIRD_PARTY_APPROVE"
+            and r39.get("native_science_issued") is False
+            and r39.get("human_validation_issued") is False
+            and r39.get("actor_source_grants_issued") is False
+            and r39.get("independent_b_native_issued") is False
+            and r39.get("operative_rights_issued") is False
+            and r39.get("formal_distinct_git_approval") is False
+            and r39.get("original_gates_promoted") is False
+            and r39.get("guide_receipt") == r39_receipt
+            and isinstance(r39.get("next_goal"), dict)
+            and r39["next_goal"].get("status") == "PROPOSED_NOT_LAUNCHED"
+            and (ROOT / r39_receipt).is_file()
+            and r39_runtime.is_file()
+            and r39_independent.is_file()
+        )
+        check(is_split_cut or
+              (is_qualified_pair and sorok_state.get("revision") == 37) or
+              (is_r38_pair and sorok_state.get("revision") == 38) or
+              is_r39_pair,
+              "Sorok progress lacks historical split, exact R37/R38, or exact protected P4 R39")
+        if sorok_state.get("revision") in (38, 39):
+            check(is_r38_pair, "Sorok conserved R38 documentary receiving lacks exact PR749 proof/limits")
             for path in (ROOT / (SOROK + "00_PROGRAMMA_SOROK.md"),
                          ROOT / (SOROK + "READ_FIRST.md"),
                          ROOT / "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md"):
                 check("24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md" in
                       path.read_text(encoding="utf-8"),
                       f"{path}: Sorok protected R38 closeout navigation missing")
+        if sorok_state.get("revision") == 39:
+            check(is_r39_pair, "Sorok R39 protected P4 first-consumer receipt lacks exact scope or custody")
+            for path in (ROOT / (SOROK + "00_PROGRAMMA_SOROK.md"),
+                         ROOT / (SOROK + "READ_FIRST.md"),
+                         ROOT / "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md",
+                         priority_path):
+                check("25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md" in
+                      path.read_text(encoding="utf-8"),
+                      f"{path}: Sorok current protected R39 sourcefree receiving pointer absent")
         if is_qualified_pair:
             for path in (ROOT / (SOROK + "00_PROGRAMMA_SOROK.md"),
                          ROOT / (SOROK + "READ_FIRST.md"),
