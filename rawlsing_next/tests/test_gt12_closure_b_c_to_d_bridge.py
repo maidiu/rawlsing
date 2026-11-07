@@ -10,6 +10,7 @@ from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as bridge
 from rawlsing_next import wave1_ff_prev3_relation_admission as adm
 from rawlsing_next.pre553_empirical_objects import AuthorityRef, EmpiricalFact, EmpiricalQuerySpec, ExactRef, semantic_hash
+from rawlsing_next.wave1_r5_q86_c11_projection import question_ref
 
 
 def _h(label: str) -> str:
@@ -20,12 +21,12 @@ def _ref(kind: str, label: str) -> ExactRef:
     return ExactRef(kind, f"urn:test:gt12-closure-b:{label}", _h(label))
 
 
-def _fixture(*, fact_state: str = "SUPPORTED", relation_permissions=None):
-    conditioner = _ref("QUESTION", "Q86B")
-    target = _ref("QUESTION", "Q86A")
+def _fixture(*, fact_state: str = "SUPPORTED", relation_permissions=None, risk_ref=None):
+    conditioner = question_ref("Q86B")
+    target = question_ref("Q86A")
     c_domain, t_domain = ("0", "1"), ("1", "2")
     auth = AuthorityRef("GT12-CLOSURE-B-SOURCE", "R1", _h("source-authority"))
-    risk = ExactRef("RISK_SET", adm.GT2_RISK_SET_ID, adm.GT2_RISK_SET_MEMBER_SET_SHA256)
+    risk = risk_ref or ExactRef("RISK_SET", adm.GT2_RISK_SET_ID, adm.GT2_RISK_SET_MEMBER_SET_SHA256)
     universe = _ref("UNIVERSE", "AFROBAROMETER-R5")
     predicate = _ref("PREDICATE", "ALL-FROZEN-RISK-MEMBERS")
     response_semantics = _ref("RESPONSE_STATE_SEMANTICS", "Q86-SOURCE-NATIVE")
@@ -130,6 +131,20 @@ def test_permission_widening_or_missing_permission_fails_closed():
     result = bridge.admit_gt12_c_relation(narrow)
     assert result.admission.decision is adm.AdmissionDecision.DENIED
     assert result.admission.target_use_permissions == ()
+
+
+def test_source_family_and_wave_are_not_reinterpreted_before_admission():
+    relation, _ = _fixture()
+    evidence = bridge.bridge_gt12_c_relation_to_d_evidence(relation)
+    rule = bridge.make_gt12_c_to_d_admission_rule(relation)
+    for mutated in (
+        replace(evidence, source_family="OtherSource"),
+        replace(evidence, source_wave="R4"),
+    ):
+        receipt = adm.evaluate_gt2_relation_admission(adm.RelationAdmissionRequest(mutated), rule)
+        assert receipt.decision is adm.AdmissionDecision.OUT_OF_SCOPE
+        assert receipt.reason_code == "SOURCE_FAMILY_OR_WAVE_MISMATCH"
+        assert receipt.target_use_permissions == ()
 
 
 def test_ref_hash_rule_source_and_risk_tamper_fail_closed():

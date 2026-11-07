@@ -1,0 +1,252 @@
+{
+  "baseline": {
+    "admission": {
+      "decision": "ADMITTED",
+      "evidence_participants": [
+        {
+          "native_variable": "Q86B",
+          "participant_ref": {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          "role": "CONDITIONER"
+        },
+        {
+          "native_variable": "Q86A",
+          "participant_ref": {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          },
+          "role": "TARGET"
+        }
+      ],
+      "reason_code": "EXACT_GT2_RELATION_ADMITTED_FOR_STRUCTURAL_MEDIATION_INPUT",
+      "relation_ref": {
+        "content_hash": "e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891"
+      },
+      "relation_typed_state": "SUPPORTED",
+      "target_use_permissions": [
+        "STRUCTURAL_MEDIATION_INPUT"
+      ]
+    },
+    "relation": {
+      "conditioner_ref": {
+        "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+        "kind": "QUESTION_IMPLEMENTATION",
+        "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+      },
+      "count_profile_hash": "2c8fb38c06db7f63d0ee78d71bcc40c8889601f9f503a10c7d8fdbb63f44a520",
+      "producer_fact_ref": {
+        "content_hash": "7988f71002b2ad59e15b2bf63367d794589f750000579e44d461396683a7a18d",
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:7988f71002b2ad59e15b2bf63367d794589f750000579e44d461396683a7a18d"
+      },
+      "producer_permission_ceiling": [
+        "FIELD_FORGE_RELATION_PRODUCTION",
+        "STRUCTURAL_MEDIATION_INPUT"
+      ],
+      "producer_query_ref": {
+        "content_hash": "7ec382fdca8c3c37206d2dbcfc789ac227d64d533bc26be7349dbb6c599337a6",
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:7ec382fdca8c3c37206d2dbcfc789ac227d64d533bc26be7349dbb6c599337a6"
+      },
+      "producer_state_blocking": false,
+      "relation_permission_ceiling": [
+        "STRUCTURAL_MEDIATION_INPUT"
+      ],
+      "relation_ref": {
+        "content_hash": "e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891"
+      },
+      "risk_set_ref": {
+        "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+        "kind": "RISK_SET",
+        "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+      },
+      "roles": {
+        "CONDITIONER": {
+          "ref": {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          "source_native_variable": "Q86B"
+        },
+        "TARGET": {
+          "ref": {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          },
+          "source_native_variable": "Q86A"
+        }
+      },
+      "target_ref": {
+        "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+        "kind": "QUESTION_IMPLEMENTATION",
+        "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+      },
+      "typed_state": "SUPPORTED"
+    }
+  },
+  "cold_restore": {
+    "admission": {
+      "decision": "ADMITTED",
+      "evidence_participants": [
+        {
+          "native_variable": "Q86B",
+          "participant_ref": {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          "role": "CONDITIONER"
+        },
+        {
+          "native_variable": "Q86A",
+          "participant_ref": {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          },
+          "role": "TARGET"
+        }
+      ],
+      "reason_code": "EXACT_GT2_RELATION_ADMITTED_FOR_STRUCTURAL_MEDIATION_INPUT",
+      "relation_ref": {
+        "content_hash": "e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891"
+      },
+      "relation_typed_state": "SUPPORTED",
+      "target_use_permissions": [
+        "STRUCTURAL_MEDIATION_INPUT"
+      ]
+    },
+    "matches_baseline": true,
+    "relation_ref": {
+      "content_hash": "e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891",
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:e9b9eb5d1904262a3be7689f5853c23cedef09e2bcb9256db7cb28072d207891"
+    }
+  },
+  "negatives": {
+    "forged_wrong_hash": {
+      "error": "frozen GT2 producer requires exact Q86B/Q86A QUESTION_IMPLEMENTATION source identity; arbitrary pair refs are not accepted",
+      "error_type": "FieldForgeConditionalSupportError",
+      "name": "forged_Q86_wrong_identity_hash",
+      "refused": true
+    },
+    "forged_wrong_kind": {
+      "error": "frozen GT2 producer requires exact Q86B/Q86A QUESTION_IMPLEMENTATION source identity; arbitrary pair refs are not accepted",
+      "error_type": "FieldForgeConditionalSupportError",
+      "name": "forged_Q86_object_id_wrong_kind",
+      "refused": true
+    },
+    "nonpositive_observed_zero": {
+      "decision": "UNRESOLVED",
+      "evidence_participants": [
+        {
+          "native_variable": "Q86B",
+          "participant_ref": {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          "role": "CONDITIONER"
+        },
+        {
+          "native_variable": "Q86A",
+          "participant_ref": {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          },
+          "role": "TARGET"
+        }
+      ],
+      "reason_code": "UPSTREAM_RELATION_OBSERVED_ZERO",
+      "relation_ref": {
+        "content_hash": "ad0e06eee524658287a6c5e3613c24f497c2bb15d10a850ae6622a8bab959c68",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:ad0e06eee524658287a6c5e3613c24f497c2bb15d10a850ae6622a8bab959c68"
+      },
+      "relation_typed_state": "OBSERVED_ZERO",
+      "target_use_permissions": []
+    },
+    "source_wave_family_artifact": [
+      {
+        "decision": "OUT_OF_SCOPE",
+        "name": "wrong_source_family",
+        "reason_code": "SOURCE_FAMILY_OR_WAVE_MISMATCH",
+        "target_use_permissions": []
+      },
+      {
+        "decision": "OUT_OF_SCOPE",
+        "name": "wrong_source_wave",
+        "reason_code": "SOURCE_FAMILY_OR_WAVE_MISMATCH",
+        "target_use_permissions": []
+      },
+      {
+        "decision": "INTEGRITY_FAILURE",
+        "name": "wrong_source_artifact",
+        "reason_code": "SOURCE_ARTIFACT_IDENTITY_MISMATCH",
+        "target_use_permissions": []
+      }
+    ],
+    "swapped_roles": {
+      "error": "query target role/order must be exactly [Q86B CONDITIONER, Q86A TARGET]",
+      "error_type": "FieldForgeConditionalSupportError",
+      "name": "swapped_Q86_roles",
+      "refused": true
+    },
+    "unlike_pair": {
+      "error": "frozen GT2 producer requires exact Q86B/Q86A QUESTION_IMPLEMENTATION source identity; arbitrary pair refs are not accepted",
+      "error_type": "FieldForgeConditionalSupportError",
+      "name": "unlike_Q99B_Q99A",
+      "refused": true
+    },
+    "wrong_permission": {
+      "decision": "DENIED",
+      "evidence_participants": [
+        {
+          "native_variable": "Q86B",
+          "participant_ref": {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          "role": "CONDITIONER"
+        },
+        {
+          "native_variable": "Q86A",
+          "participant_ref": {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          },
+          "role": "TARGET"
+        }
+      ],
+      "reason_code": "TARGET_USE_NOT_PERMITTED_BY_RELATION",
+      "relation_ref": {
+        "content_hash": "16806e9c374688480abdd191d1980f6a09fba9db72f9039fca81fd733ee9c781",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:16806e9c374688480abdd191d1980f6a09fba9db72f9039fca81fd733ee9c781"
+      },
+      "relation_typed_state": "SUPPORTED",
+      "target_use_permissions": []
+    },
+    "wrong_risk": {
+      "error": "frozen risk-set exact identity mismatch",
+      "error_type": "GT12CToDBridgeError",
+      "name": "wrong_risk",
+      "refused": true
+    }
+  }
+}
