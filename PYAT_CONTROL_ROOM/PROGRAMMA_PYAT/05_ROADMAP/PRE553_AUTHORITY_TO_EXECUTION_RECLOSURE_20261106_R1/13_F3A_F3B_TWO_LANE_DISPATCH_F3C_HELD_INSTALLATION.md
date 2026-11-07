@@ -1,0 +1,39 @@
+# PROGRAMMA PYAT #716 — F3-A PHYSICAL CUSTODY × F3-B ORIGINAL ISSUER: TWO-LANE DISPATCH AND HELD F3-C
+
+**STATUS:** TWO NEW DISPATCH-READY issues+prepared isolated branches, NOT launched; **F3-C HELD** for qualified first release and custody. Existing original authority-dependent STOP #716 and distinct protected PRE-MAIN CAS remain intact. This is a control-board amendment on candidate PR #724, not accepted protected authority.
+
+## Exact independent receiving result: why these are the next two tasks
+
+Independent F2-R [#741 exact return](https://github.com/maidiu/rawlsing/issues/741#issuecomment-6701240549) accepted only `ACCEPT_SCOPED_F2_DOCUMENTARY_SELECTION`. It separately issued **`DURABILITY_HOLD`**, **`LIVE_INSTALL_HOLD` with 0 permitted assets**, **`NATIVE_NOT_RUN`**. F1 #739 (exact `6f8da13c2734ba1b5e83ff0de6c0ab1aefe3cf95`) had only scoped read-only handoff #740. F2 sanitized 33,419-byte ZIP at SHA-256 `4b2ac0b7eb6d63555eeb9c0071e8b2f17d5817b6795ecfd7c594f0362b102df6` passed independent documentary review, **not original Mac asset byte rehash**. Protected PRE-MAIN observed `c852d7516e23fcb6cf2215e9be7c5fa268503516` at this dispatch.
+
+F2 58-row split: 15 Git-present, 18 locally asserted candidates = 14 distinct content hashes (~317.6 MiB), eight **primary** conflict/pattern records, 17 issuer/no-byte holds, 13 external original path clues found locally in F2 assertions. 29 functions mapped documentary: 17 runtime-present unbound, five current function absent, seven unproved. Zero actual original→current first-consumer receipts. **Cross-cut shadow:** `AR-0048` present in protected Git has a competing alternate 469-byte version; count/handle shadow separately from primary partition. F2-derived `F06→AR-0043` and `F13` links are not F1-proven direct bindings. Never misstate these as grants.
+
+## F3-A — LOCAL ORIGINAL-BYTE REHASH AND DURABLE NONOPERATIVE CUSTODY
+
+**Binding full issue** [#742](https://github.com/maidiu/rawlsing/issues/742). **Environment:** actual local user-authorized Mac Codex/OpenCode; exact isolated branch `agent/pyat-f3a-local-original-byte-coldhash-durable-custody-20261106-r1` from protected `c852d751...` (reverify); exclusive `WORKER_RETURNS/PROGRAMMA-PYAT-AUTHORITY-RECLOSURE-20261106-R1/F3A_LOCAL_CUSTODY/`.
+
+**Mission:** independently STREAM rehash the 14 content classes behind 18 local candidate asset records and the concrete conflict versions (especially 0009, 0039, 0040, 0049, 0048), preserve per-asset source/wave and symlink/zip scope, real storage-cost/capacity and rights/PII/custodian choice. User-reported Mac free space (~255 MiB) is less than unique candidate content (~317.6 MiB), so no blind local duplication or wholesale archive push. **A0/A1 cold read-only may launch now**; actual nonoperative copy/cold restore requires **explicit user/custodian permission and an existing approved, content-addressed sufficient store**, with `runtime_current=false`, `issuer_status=HOLD`. If not, return a precise `DURABLE_STORAGE_DECISION_HOLD`. No native/source/semantic promotion.
+
+## F3-B — ORIGINAL ISSUER + CURRENT SELECTED RELEASE EVIDENCE
+
+**Binding full issue** [#743](https://github.com/maidiu/rawlsing/issues/743). **Environment:** Browser GPT-6 High proposed, private GitHub/source inheritance S0–S1; exact isolated branch `research/pyat-f3b-issuer-release-selection-proof-20261106-r1` from protected `c852d751...` (reverify); exclusive `WORKER_RETURNS/PROGRAMMA-PYAT-AUTHORITY-RECLOSURE-20261106-R1/F3B_ISSUER_RELEASE_COURT/`.
+
+**Mission:** trace historic/manual A02/P10/Long Memory actual competent issuer, release/currentness, row/wave/source/operation and accepted negative/withdrawn status for current `AR-0007` response semantics and conditionally `AR-0046` response scale, plus alias, LiTS, South Asia, QSR, AR-0048, overlay roots and 17 missing decisions. Produce one qualified original real source/wave/row/operation **or exact named HOLD**, never an invented issuer. Check correct current `pre553_issued_workload.admit` permission/SourceConfig/C11/AuthorityRegistry/I03 reader boundary; no code editing and no `CURRENT_GRANTED` from Git existence.
+
+## Parallelism and joins
+
+F3-A read-only original-byte and storage due diligence + F3-B documentary issuer research may proceed in parallel; their writer directories and roles do not overlap. F3-B MUST NOT infer Mac byte proof from F2; F3-A MUST NOT assert scientific decision based on physical hash. Any proposed current operative release requires **both** proved exact byte/durable integrity and documented original competent current issuer/rights/claim scope, then independently received. F3-A cannot authorize physical custody store on behalf of user and F3-B cannot issue science. As independent loops they may share read-only references and return contradictions to HQ. Do not re-launch #733 L5 or F2 massive inventory.
+
+## F3-C — PREPARED QUALIFICATION ENVELOPE ONLY; NOT LAUNCHED
+
+**HOLD at least until:** (1) F3-A exact original SHA, owner/custodian-approved durable retrievable store for any required non-Git inputs, cold-restore hash; (2) F3-B exact competent current issuer/release/source/wave/row/operation/negative/rights; (3) independent exact-head source/asset receiving of those results; (4) an explicit bounded existing code owner/branch grant. **AR-0007** and only if needed **AR-0046**, both already Git-present, are the preferred first source-scoped proof candidates, but absent issuer status no operative install is permitted; durable copy of other assets need not block a valid independent in-Git asset if original issuer/rights are established.
+
+At that point appoint **distinct** I3+ bounded F3-C implementation worker, on its own isolated branch and exclusive code write lease: connect actual selected authority raw SHA+issuer+release+row/scope → SourceConfig/C11/AuthorityRegistry → competent issued R01/R03 → I03/Batch actual selected consumer; prove both positive and typed refusal, wrong SHA, shadow, revoked, unchanged-source authority mutation/severance/restore and cold/warm cache semantics. Sourcefree tests alone aren't native original proof. No second compiler, no blanket RAW blocking, no Field Forge/actor grant. Independent nonauthor receiver then qualified protected CAS merges only accepted slice and updates paired PROGRAMMA status. STOP #716 remains for unqualified rest of 35.
+
+## Copy-paste dispatches
+
+**Local F3-A:** `Execute the entire isolated local commission https://github.com/maidiu/rawlsing/issues/742. Verify protected/current branch and writer lease. Stream rehash 14 local distinct SHA classes + exact held alternates, report F2 row-by-row byte identity, rights and real durable store options. Begin READ-ONLY; do not copy any original asset until I approve a destination and necessary custody rights. Do not alter originals or install runtime authority. Produce exact 00–08 evidence and immutable branch SHA.`
+
+**Browser F3-B:** `Execute the entire independent Browser commission https://github.com/maidiu/rawlsing/issues/743 on the prepared isolated branch. Recover original issuer/current accepted release and status for AR-0007 and conditional AR-0046 first, then exact named competing/held cases; establish source/wave/row/operation ABI and current qualification or explicit named HOLD without inventing an issuer, copying Mac bytes or touching protected code. Read #741, F1 #739 and F2 report, return exact 00–08 with immutable SHA.`
+
+**NO F3-C DISPATCH** until the two source/evidence streams have proved a specific lawful operative release and independent review accepts it. **No new PRE-MAIN code/asset alteration at issue creation.**
