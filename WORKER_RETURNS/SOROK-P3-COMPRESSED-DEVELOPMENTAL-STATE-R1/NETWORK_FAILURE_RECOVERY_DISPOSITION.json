@@ -1,0 +1,65 @@
+{
+  "schema": "SOROK_P3_PROVIDER_FAILURE_RECOVERY@1",
+  "failed_jobs": [
+    "sorok-p3-final-runtime-independent-review-r1",
+    "sorok-p3-full-vertical-execution-r1"
+  ],
+  "exact_error": "provider.transport: getaddrinfo ENOTFOUND opencode.ai",
+  "exit_codes": [
+    1,
+    1
+  ],
+  "current_recovery_observation": "DNS resolves opencode.ai and unauthenticated HTTPS HEAD returns200; no settings/provider/account changes.",
+  "partial_author_result": "All13 attempted:4PASS (PRIMARY,D,Hidentity,resource);9FAIL (A,B,C,E,F,G,Hcrossroot,Hreplay,Hcrash). This is incomplete P3, not9 missing runtime functions by default.",
+  "partial_review_result": "Substantial independent commands, owner8PASS1inapplicable skip, independent resource1PASS235.17s, scratch diagnostics and failing contrasts; no final report/acceptance. Exact modified scratch vs frozen cut still must be reconciled.",
+  "resumes": [
+    {
+      "task": "sorok-p3-full-vertical-network-resume-r1",
+      "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-cycle-r1",
+      "launch": {
+        "job_id": "sorok-p3-full-vertical-network-resume-r1",
+        "child_pid": 62571,
+        "supervisor_pid": 62570,
+        "observer_pid": 62572,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-full-vertical-network-resume-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b360d622001L134CzTc62BcBI",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-full-vertical-network-resume-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "partial_backup": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-full-vertical-network-resume-r1-dispatch/partial_manifest.json"
+    },
+    {
+      "task": "sorok-p3-final-review-network-resume-r1",
+      "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-independent-review-r1",
+      "launch": {
+        "job_id": "sorok-p3-final-review-network-resume-r1",
+        "child_pid": 62589,
+        "supervisor_pid": 62582,
+        "observer_pid": 62590,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1",
+        "launch_is_not_completion": true
+      },
+      "status": "ACTIVE_VERIFIED",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "metadata_message": "msg_1b360d9ac001ALJPe1yGcYAjQi",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1/completion.json",
+      "notification": "existing finite terminal observer",
+      "partial_backup": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1-dispatch/partial_manifest.json"
+    }
+  ],
+  "authority": "Same sessions, original scopes and independent-review constraints; bounded resume after observed recovery. No successful unchanged command duplicated.",
+  "next": "Complete reviewer report and fix demonstrated harness mistakes through existing author; route actual runtime/architecture defects to existing owners/HQ; preserve negatives and source pins, then focused exact-cut verification."
+}
