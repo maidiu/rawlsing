@@ -51,7 +51,8 @@ def open_owner(root):
 
 
 def invitation(session, ledger):
-    latest = ledger["turns"][-1] if ledger["turns"] else {}
+    latest = next((turn for turn in reversed(ledger["turns"])
+                   if turn["public"]["performed"]), {})
     receipt = latest.get("receipt", {})
     event = receipt.get("expression")
     if (receipt.get("uptake", {}).get("mode") == "joint_check" and event
@@ -68,6 +69,7 @@ def surface(owner, ledger):
     choices = ["SAY", "INSPECT_EDGE"] if invited else ["SAY"]
     return {"grade": GRADE, "clock": fanin.session.clock(),
             "location": view.get("location"),
+            "tool_available": view.get("tool_available"),
             "observations": view.get("visible_events", []),
             "choices": choices, "invitation": invited}
 
@@ -98,7 +100,6 @@ def new(state, ledger_file, history):
 
 
 def act(owner, ledger_file, ledger, args):
-    check_source(owner)
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()

@@ -1,3 +1,4 @@
+import json
 import sys
 from pathlib import Path
 
@@ -40,6 +41,30 @@ def test_performed_speech_reads_real_prior_p3_formation(tmp_path, monkeypatch):
             assert speech["performed"]["hash"] in uptake["readset"]
 
             if index == 0:
+                from bp4.world import make_event
+                from run_p4 import surface
+
+                actor_private = "ACTOR_PRIVATE_P4_CONTROL_7f88"
+                user_private = "USER_PRIVATE_P4_CONTROL_4b32"
+                world = session.world()
+                actor = uptake["actor_alias"]
+                private_event = make_event(
+                    clock=world.clock, kind="INSPECT", actor_id=actor,
+                    location=world.positions[actor], summary=actor_private,
+                    body={"text": actor_private}, sequence=len(world.events),
+                )
+                world.add_event(private_event)
+                session._append_event(private_event, perceive=(actor,))
+                session.product._append_episode(
+                    session.branch_id, session.meta["user_actor"], "PRIVATE_NOTE",
+                    world.clock, {"text": user_private},
+                )
+                session.product._checkpoint(session.branch_id, world.clock, world)
+                assert session.event(private_event["event_id"])["summary"] == actor_private
+                assert session.episodes(session.meta["user_actor"])[-1]["body"]["text"] == user_private
+                assert read_response(case.owner, speech, scope) == uptake
+                public = json.dumps(surface(case.owner, {"turns": []}))
+                assert actor_private not in public and user_private not in public
                 with monkeypatch.context() as cut:
                     cut.setattr(test_rules, "B1_PATH", tmp_path / "absent")
                     with pytest.raises(RecursionRefusal, match="P3_B1_SOURCE_SEVERED"):
