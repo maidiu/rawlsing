@@ -75,9 +75,9 @@ def render(surface, history, *, candidates=None, boundary=None):
     ]
     ranked = sorted(reversed(rows), key=lambda event: CHANNELS[event["kind"]] != focus)
     selected = {event["event_id"] for event in ranked[:DETAIL_BUDGET]}
-    chosen = [event for event in rows if event["event_id"] in selected]
     if boundary in visible:
-        chosen.append(visible[boundary])
+        selected.add(boundary)
+    chosen = [event for ref, event in visible.items() if ref in selected]
     return [
         {"event_id": event["event_id"], "text": text}
         for event in chosen if (text := line(event))

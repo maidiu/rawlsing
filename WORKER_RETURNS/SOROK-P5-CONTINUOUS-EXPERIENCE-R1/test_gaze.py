@@ -43,3 +43,12 @@ def test_sparse_or_tied_evidence_does_not_assert_a_preference():
     assert orientation(visible, ["repair", "repair", "repair"]) is None
     assert orientation(visible, list(visible)) is None
     assert orientation(visible, ["repair", "inspect"]) == "work"
+
+
+def test_a_reserved_reply_keeps_its_place_before_later_work():
+    surface = {"observations": [
+        occurrence("reply", "SPEECH", text="I'll check it first."),
+        occurrence("repair", "REPAIR"),
+    ]}
+    narration = render(surface, [], candidates=["repair"], boundary="reply")
+    assert [row["event_id"] for row in narration] == ["reply", "repair"]

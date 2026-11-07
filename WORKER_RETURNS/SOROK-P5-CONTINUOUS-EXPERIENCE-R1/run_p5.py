@@ -17,6 +17,9 @@ from developmental_recursion.contracts import RecursionRefusal
 from gaze import attend, render
 from pacing import advance_for_action
 
+# This received S44 draw has stock for more than one repair after its prehistory.
+WORKSHOP_SEED = "05" * 32
+
 
 def experience(state, args):
     command = args.command
@@ -27,7 +30,7 @@ def experience(state, args):
     with (state / "p4.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         if command == "new":
-            new(state, ledger_file, args.history)
+            new(state, ledger_file, args.history, seed=WORKSHOP_SEED)
         ledger = json.loads(ledger_file.read_text())
         if ledger["pending"]:
             raise RecursionRefusal("P4_PENDING_OPERATION_REQUIRES_RECONCILIATION")
@@ -96,8 +99,12 @@ def main():
     inspect_edge.add_argument("invitation")
     inspect_edge.set_defaults(then_wait=False)
     inspect_edge.add_argument("--request-id")
-    for name in ("inspect", "attend"):
-        commands.add_parser(name).add_argument("--request-id")
+    inspect = commands.add_parser("inspect")
+    for examination in (inspect, inspect_edge):
+        examination.add_argument("--thorough", action="store_true",
+                                 help="Continue a closer examination for two work periods.")
+    inspect.add_argument("--request-id")
+    commands.add_parser("attend").add_argument("--request-id")
     commands.add_parser("view")
     orient = commands.add_parser("orient", help="Register interest in a perceived occurrence.")
     orient.add_argument("event_id")

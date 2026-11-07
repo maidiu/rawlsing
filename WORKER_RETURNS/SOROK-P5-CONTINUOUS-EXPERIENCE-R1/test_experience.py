@@ -9,9 +9,10 @@ import sys
 import pytest
 
 from run_p5 import RecursionRefusal, experience, open_owner
+from p3 import test_rules
 
 
-def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path):
+def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path, monkeypatch):
     state = tmp_path / "encounter"
 
     def act(command, **kwargs):
@@ -22,6 +23,12 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path):
         return json.loads((state / "p4_receipts.json").read_text())
 
     opening = act("new", history="recognized_plan")
+    original = ledger()
+    with monkeypatch.context() as cut:
+        cut.setattr(test_rules, "B1_PATH", tmp_path / "missing-b1")
+        with pytest.raises(RecursionRefusal, match="P3_B1_SOURCE_SEVERED"):
+            act("say", text="Could we look at this edge?", request_edge=True)
+    assert ledger() == original
     first = act("say", text="Could we look at this edge?", request_edge=True)
     assert first["clock"] == opening["clock"]
     invite = first["invitation"]
@@ -30,6 +37,9 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path):
     pending = ledger()
     with pytest.raises(RecursionRefusal, match="P5_INVITATION_REQUIRES_EXPLICIT_RESPONSE"):
         act("attend")
+    assert ledger() == pending
+    with pytest.raises(RecursionRefusal, match="P5_OCCURRENCE_UNAVAILABLE"):
+        act("orient", event_id="unperceived-occurrence")
     assert ledger() == pending
     refused = act("inspect-edge", invitation="unknown")
     assert not refused["performed"]
@@ -51,8 +61,8 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path):
     work = segment["world"]
     repair = work["actual_action_event_id"]
     inspection = turn["receipt"]["performed"]["event_id"]
-    assert work["state_before"]["material_remaining"] == 1
-    assert work["state_after"]["material_remaining"] == 0
+    assert work["state_before"]["material_remaining"] == 2
+    assert work["state_after"]["material_remaining"] == 1
     assert turn["receipt"]["performed"]["clock"] == segment["start"] == first["clock"]
 
     owner = open_owner(state / "actual-p2")
@@ -87,8 +97,19 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path):
     attended = act("attend")
     assert attended["clock"] == inspected["clock"] + 1
     interval = ledger()["turns"][-1]["receipt"]["interval"]
-    assert interval["segments"][0]["world"]["actual_action_event_id"] == ""
-    assert attended["narration"] == []
+    second_work = interval["segments"][0]["world"]
+    assert second_work["state_before"]["material_remaining"] == 1
+    assert second_work["state_after"]["material_remaining"] == 0
+    assert second_work["actual_action_event_id"] != repair
+    assert attended["narration"] == [{
+        "event_id": second_work["actual_action_event_id"], "text": "Nadia makes a repair.",
+    }]
+
+    quiet = act("attend")
+    assert quiet["clock"] == attended["clock"] + 1
+    assert ledger()["turns"][-1]["receipt"]["interval"]["segments"][0]["world"][
+        "actual_action_event_id"] == ""
+    assert quiet["narration"] == []
 
 
     # Branch from the same cold checkpoint at the same path. P2 binds its
@@ -119,4 +140,22 @@ def test_ordinary_encounter_returns_before_work_and_reopens(tmp_path):
     assert plain_turn["receipt"]["speech"]["attempt"]["text"] == utterance
     assert plain_turn["receipt"]["uptake"]["status"] == "PERCEIVED_NO_INSPECTION_REQUEST"
     assert plain_turn["receipt"]["expression"] is None
-    assert plain["clock"] == attended["clock"] + 1
+    assert plain["clock"] == quiet["clock"] + 1
+
+
+def test_deliberate_sustained_inspection_advances_two_work_periods(tmp_path):
+    experience(tmp_path, Namespace(command="new", history="recognized_plan"))
+    result = experience(tmp_path, Namespace(command="inspect", request_id=None, thorough=True))
+    ledger = json.loads((tmp_path / "p4_receipts.json").read_text())
+    turn = ledger["turns"][0]
+    start = turn["before"]["clock"]
+    assert turn["action"]["thorough"] is True
+    assert result["clock"] == start + 6
+    segments = turn["receipt"]["interval"]["segments"]
+    assert [(row["start"], row["end"]) for row in segments] == [
+        (start, start + 3), (start + 3, start + 6),
+    ]
+    assert [row["world"]["state_after"]["material_remaining"] for row in segments] == [1, 0]
+    assert [line["event_id"] for line in result["narration"]] == [
+        row["world"]["actual_action_event_id"] for row in segments
+    ]

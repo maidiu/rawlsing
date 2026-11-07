@@ -81,11 +81,11 @@ def surface(owner, ledger):
             "choices": choices, "invitation": invited}
 
 
-def new(state, ledger_file, history):
+def new(state, ledger_file, history, *, seed="01" * 32):
     if ledger_file.exists() or (state / "actual-p2").exists():
         raise RecursionRefusal("P4_STATE_ALREADY_EXISTS")
     case = build_case(state, history_outcomes=(history,) if history else (),
-                      include_compression=False, standpoints=False)
+                      include_compression=False, standpoints=False, seed=seed)
     try:
         owner = case.owner
         formation = owner.realize("p4-formation", case.proposals[0], owner.snapshot())
@@ -122,6 +122,8 @@ def act(owner, ledger_file, ledger, args, *, pacing=None):
         raise RecursionRefusal("P4_ACTION_UNSUPPORTED")
     if pacing is not None:
         action["pacing"] = "P5"
+        if args.command in {"inspect", "inspect-edge"} and getattr(args, "thorough", False):
+            action["thorough"] = True
     if args.request_id:
         for turn in ledger["turns"]:
             if turn["request_id"] != args.request_id:
