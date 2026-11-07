@@ -213,8 +213,8 @@ if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
         received_path = ROOT / (SOROK + "CURRENT_RECEIVED_DEVELOPMENTAL_RECURSION_20261106_R1.md")
         received_text = received_path.read_text(encoding="utf-8") if received_path.is_file() else ""
         is_qualified_pair = (
-            sorok_state.get("revision") == 37
-            and "revision37" in md_head
+            sorok_state.get("revision") in (37, 38)
+            and ("revision37" if sorok_state.get("revision") == 37 else "revision38") in md_head
             and isinstance(r37, dict)
             and r37.get("protected_merge_sha") == "0b7d8ba33b5cd905963292357507ae7bbc2219de"
             and r37.get("source_head") == "d7a598bef85a534c71e1fbca74124dedde96d577"
@@ -226,8 +226,44 @@ if sorok_json.is_file() and sorok_md.is_file() and priority_path.is_file():
             and "MISSING_RULE" in received_text
             and (ROOT / "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/FINAL_DISPOSITION.json").is_file()
         )
-        check(is_split_cut or is_qualified_pair,
-              "Sorok current-progress pair lacks original MD36/JSON35 split or exact qualified R37 receiving")
+
+        # R38 is the *actual protected documentary receipt* of PR #749.
+        # Retain the earlier R37 engineering proof, but never accept a bare
+        # revision increment or treat a same-account comment as independent
+        # GitHub approval. The FIABC/LiTS REDs remain unaffected.
+        r38 = sorok_state.get("protected_receiving_20261107", {})
+        is_r38_pair = (
+            sorok_state.get("revision") == 38
+            and is_qualified_pair
+            and isinstance(r38, dict)
+            and r38.get("protected_merge_sha") == "a245e6f99bb8d56771f7d88701c8240929887541"
+            and r38.get("source_head") == "02c405c4da0fb5a8e69f7d3d6b5b56bbe9ed0ede"
+            and r38.get("source_parent") == "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14"
+            and r38.get("grade") == "SCOPED_DOCUMENTARY_CURRENTNESS__NOT_NATIVE"
+            and r38.get("technical_review_id") == "5810774993"
+            and r38.get("independent_git_principal_approval") is False
+            and r38.get("no_new_hq_appointment") is True
+            and r38.get("native_grants_issued") is False
+            and r38.get("human_grants_issued") is False
+            and r38.get("functions") == 144 and r38.get("seams") == 38
+            and r38.get("reviewed_gate_rows") == 83
+            and r38.get("assets") == 304 and r38.get("inputs") == 100
+            and r38.get("fiabc_governed_court_at_reviewed_head") == "144_PASS_3_HISTORICAL_FAIL"
+            and r38.get("p4_launched") is False
+            and r38.get("guide_receipt") ==
+                SOROK + "24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md"
+            and (ROOT / r38.get("guide_receipt", "NONEXISTENT_R38")).is_file()
+        )
+        check(is_split_cut or (is_qualified_pair and sorok_state.get("revision") == 37) or is_r38_pair,
+              "Sorok current-progress pair lacks original MD36/JSON35 split, qualified R37, or exact R38 protected receiving")
+        if sorok_state.get("revision") == 38:
+            check(is_r38_pair, "Sorok R38 protected documentary receiving lacks exact PR749 proof/limits")
+            for path in (ROOT / (SOROK + "00_PROGRAMMA_SOROK.md"),
+                         ROOT / (SOROK + "READ_FIRST.md"),
+                         ROOT / "SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md"):
+                check("24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md" in
+                      path.read_text(encoding="utf-8"),
+                      f"{path}: Sorok protected R38 closeout navigation missing")
         if is_qualified_pair:
             for path in (ROOT / (SOROK + "00_PROGRAMMA_SOROK.md"),
                          ROOT / (SOROK + "READ_FIRST.md"),
