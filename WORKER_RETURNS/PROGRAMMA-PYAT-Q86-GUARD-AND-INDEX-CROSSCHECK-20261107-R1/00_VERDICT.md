@@ -8,7 +8,7 @@
 - The true frozen Q86 relation hash is preserved: `urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19`, count-profile hash `49bf14eb4a2b7fbf8e79ea4c72d10f4027819381564f582242ef6e24fc14fb59`.
 - Required negative outcomes are recorded in `01_IDENTITY_GUARD_PROOF_AND_NEGATIVES.md` and `R8_PROOF_TRACE.json`.
 - Focused sourcefree tests: `140 passed in 117.78s`, exit `0`; C11/facade/query tests: `58 passed in 2.25s`, exit `0`; M1/M5/N9 `41 passed`; E2B binding `29 passed`.
-- PR #774 checks: `canonical-tree` PASS; `governed-court` FAIL only on the three inherited protected-base packaging tests (`3 failed, 144 passed in 48.93s`). No R8 guard test failed.
+- PR #774 checks: `canonical-tree` PASS; `governed-court` FAIL only on the three inherited protected-base packaging tests (`3 failed, 144 passed in 50.44s`). No R8 guard test failed.
 - The 16-chain cross-check is in `02_INDEXED_16_CHAIN_CROSSCHECK.tsv`; the stage-specific generic-vs-canary answer is in `03_GENERIC_VS_CANARY_CURRENTNESS.md`.
 - A generic Field Forge relation producer does **not** run alongside Q86 at a current protected stage. The generic path is current at PRE553 I03/I05, then stops at the unmerged/test-only GF1 candidate. This commission did not broaden into a generic FF implementation.
 

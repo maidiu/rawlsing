@@ -30,6 +30,6 @@ These are inherited at the protected source/test cut and are not attributed to t
 
 ## R8 PR CI
 - PR #774, `canonical-tree`: PASS.
-- PR #774, `governed-court`: FAIL in the full court with the same three inherited packaging assertions: `3 failed, 144 passed in 48.93s`.
+- PR #774, `governed-court`: FAIL in the full court with the same three inherited packaging assertions: `3 failed, 144 passed in 50.44s`.
 - The changed-test proof gate is satisfied by the two proof sidecars and did not report RED.
 - No R8 guard test or sourcefree regression failed in CI.
