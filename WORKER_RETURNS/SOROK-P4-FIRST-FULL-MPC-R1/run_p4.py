@@ -114,6 +114,8 @@ def act(owner, ledger_file, ledger, args):
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
     else:
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
+        if args.then_wait:
+            action["then_wait"] = True
     if args.request_id:
         for turn in ledger["turns"]:
             if turn["request_id"] != args.request_id:
@@ -129,7 +131,8 @@ def act(owner, ledger_file, ledger, args):
                               request_edge=args.request_edge)
         uptake = read_response(owner, speech, ledger["scope"])
         expression, observation = express(session, uptake)
-        interval = advance(fanin) if speech["performed"] else None
+        offers_inspection = uptake["mode"] == "joint_check" and observation is not None
+        interval = advance(fanin) if speech["performed"] and not offers_inspection else None
         receipt = {"speech": speech, "uptake": uptake, "expression": expression,
                    "interval": interval}
         public = {"admission": speech["admission"], "performed": speech["performed"] is not None,
@@ -146,7 +149,8 @@ def act(owner, ledger_file, ledger, args):
                     or event["actor_id"] != session.meta["user_actor"]
                     or event["event_id"] not in session.user_perceived_ids()):
                 raise RecursionRefusal("P4_INSPECTION_RECEIPT_MISSING")
-        receipt = {"performed": event, "invitation": args.invitation}
+        interval = advance(fanin) if valid and args.then_wait else None
+        receipt = {"performed": event, "invitation": args.invitation, "interval": interval}
         public = {"admission": "ADMITTED" if valid else "INVITATION_UNAVAILABLE",
                   "performed": valid, "observation": project_event(event) if valid else None}
 
@@ -175,6 +179,8 @@ def main():
     inspect = commands.add_parser("inspect-edge")
     inspect.add_argument("invitation")
     inspect.add_argument("--request-id")
+    inspect.add_argument("--then-wait", action="store_true",
+                         help="After inspection, let two workshop clock units pass.")
     args = parser.parse_args()
 
     state = args.state.resolve()

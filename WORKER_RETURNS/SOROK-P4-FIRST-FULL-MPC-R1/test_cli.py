@@ -76,11 +76,20 @@ def test_complete_cell_and_controls(tmp_path):
     assert event["body"]["attempt_hash"] == speech["attempt"]["hash"]
     assert speech["actor_access"]["event_id"] == event["event_id"]
     assert event["hash"] in first_turn["receipt"]["uptake"]["readset"]
-    interval = first_turn["receipt"]["interval"]
-    material = interval["segments"][0]["world"]
-    assert material["actual_action_event_id"] and material["actual_action_event_hash"]
-    assert material["state_before"]["material_remaining"] > material["state_after"]["material_remaining"]
-    assert first["next"]["clock"] == opening["clock"] + 2
+    # The invitation is the decision boundary, including on a cold reopen.
+    assert first_turn["receipt"]["interval"] is None
+    assert first["next"]["clock"] == first["observation"]["clock"] == opening["clock"]
+    assert call(root, "view") == first["next"]
+    from run_p4 import open_owner
+
+    owner = open_owner(root / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        actor = first_turn["receipt"]["uptake"]["actor_alias"]
+        assert session.world().actor_state[actor]["material_remaining"] == 1
+        assert all(row["domain"]["mode"] != "ACTUAL" for row in session.read_interval_states())
+    finally:
+        owner.close()
 
     accepted_path = tmp_path / "accepted"
     root.rename(accepted_path)
@@ -112,12 +121,14 @@ def test_complete_cell_and_controls(tmp_path):
     assert blank_turn["receipt"]["uptake"]["status"] == "NOT_PERFORMED"
     assert blank_turn["receipt"]["interval"] is None
 
-    bad = call(root, "inspect-edge", "foreign-invitation")
+    bad = call(root, "inspect-edge", "foreign-invitation", "--then-wait")
     assert not bad["performed"] and bad["next"]["invitation"] == invitation
-    second = call(root, "inspect-edge", invitation)
+    assert receipts(root)["turns"][-1]["receipt"]["interval"] is None
+    second = call(root, "inspect-edge", invitation, "--then-wait")
     assert second["performed"] and second["observation"]["kind"] == "INSPECT"
     assert second["observation"]["body_public"]["changed"] is False
-    assert second["next"]["clock"] == first["next"]["clock"]
+    assert second["observation"]["clock"] == first["next"]["clock"]
+    assert second["next"]["clock"] == first["next"]["clock"] + 2
     assert second["next"]["choices"] == ["SAY", "REQUEST_EDGE"]
     assert call(root, "view") == second["next"]
 
@@ -130,6 +141,20 @@ def test_complete_cell_and_controls(tmp_path):
         assert all(turn["after"][key] == first_turn["before"][key]
                    for key in ("root", "actor", "branch"))
     assert turns[-1]["receipt"]["invitation"] == invitation
+    assert turns[-1]["action"]["then_wait"] is True
+    interval = turns[-1]["receipt"]["interval"]
+    material = interval["segments"][0]["world"]
+    assert material["actual_action_event_id"] and material["actual_action_event_hash"]
+    assert material["state_before"]["material_remaining"] == 1
+    assert material["state_after"]["material_remaining"] == 0
+    owner = open_owner(root / "actual-p2")
+    try:
+        events = owner.base_owner.fanin.session.events()
+        event_ids = [row["event_id"] for row in events]
+        assert event_ids.index(second["observation"]["event_id"]) < event_ids.index(
+            material["actual_action_event_id"])
+    finally:
+        owner.close()
     assert turns[-1]["receipt"]["performed"]["event_id"] == second["observation"]["event_id"]
 
     imposed = tmp_path / "private"
