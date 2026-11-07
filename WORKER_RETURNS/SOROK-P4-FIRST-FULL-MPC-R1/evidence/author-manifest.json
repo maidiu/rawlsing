@@ -23,7 +23,9 @@
     "cli-transcript.json": "d3cf1839b37c28b9b18ddc33e7e6c06f2ea5aa93f0f27a114327525547870ca0",
     "internal-receipts.json": "efc764c8eb19643319cb2e1c6d32023c2f977cf513b744fb9b31ac8d9a4a5668",
     "independent-disposition.md": "45838fa8f1e1ea3b2278d669115e6f0b5f679ba993600c77b256239929793186",
-    "independent-driver.py": "f6db0fb211aeb60d01d15a5289de0f6e16cd1ecf2c7acbe44c3e7482ce690e24"
+    "independent-driver.py": "f6db0fb211aeb60d01d15a5289de0f6e16cd1ecf2c7acbe44c3e7482ce690e24",
+    "independent-control-return-disposition.md": "044f4f5febf71d65e7d76557b09dc603a867cebf75272b77052749c9a34b6131",
+    "independent-control-return-driver.py": "9830f337ac2fedbfd009a1cf8db3032c4fff08361cf17df005a124f9729092c6"
   },
   "author_checks": {
     "P4": "3 passed in 117.22s on 9eacf5038",
@@ -59,7 +61,7 @@
     "A matching observed invitation permits a new caller-selected inspection"
   ],
   "courts": {
-    "engineering": "Control-return repair awaiting independent re-review.",
+    "engineering": "Control-return repair independently accepted at the exact sourcefree runtime and package.",
     "scientific": "HOLD for original native effects; all demonstrated response behavior is SOURCEFREE_TEST_ONLY.",
     "authority": "HOLD for original actor/source grants, human participation, operated rights and protected CAS. Draft PR publication is within worker scope."
   },
@@ -79,6 +81,11 @@
     "reviewed_pr_head": "f9464f6c7c648d9c081f1837d361c5134ed100ff",
     "prior_runtime": "0fde115bf8adb6d3929ea2a6e98bbd5cb6274274",
     "defect": "S46 repair ran after invitation and before returning control.",
-    "negative_regression": "New test_cli.py failed against f9464f6c7 Python runtime at first_turn.receipt.interval is None (1 failed in 25.26 s)."
+    "negative_regression": "New test_cli.py failed against f9464f6c7 Python runtime at first_turn.receipt.interval is None (1 failed in 25.26 s).",
+    "independent_disposition": "ACCEPT_SOURCEFREE_TEST_ONLY_ENGINEERING",
+    "reviewed_runtime": "9eacf50380176d617637489d04cab3a969dd0a29",
+    "reviewed_package": "4eef0167e7a58d707cc406633af3336af5f3111c",
+    "original_controls_passed": 10,
+    "independent_suite": "3 passed in 128.82s"
   }
 }
