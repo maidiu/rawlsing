@@ -1,5 +1,7 @@
 # PROGRAMMA SOROK — current guide navigation
 
+**P5 candidate update (2026-11-07).** [P5 situated experience](26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.
+
 **LATEST R39 PROTECTED RECEIVING — 2026-11-07:** P4 PR [#751](https://github.com/maidiu/rawlsing/pull/751) **MERGED** at `ae3dd0922c5bf00a50071ed34f75798838ad4e95`. [Read 25 P4 sourcefree first-consumer/currentness and next decision](25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md), [R39 progress MD](../CURRENT_PROGRESS.md) and [JSON](../CURRENT_PROGRESS.json). P4 is a bounded D002 MPC1–7 **SOURCEFREE_TEST_ONLY** result; P5 continuous situated narration/overlapping activity is **PROPOSED, NOT LAUNCHED**. Existing native/scientific/B/source/human/S14 holds and 144 PASS/3 FAIL FIABC remain; no new original gate/authority. Review identity caveat: separate nonauthor S2 return is recorded, GitHub review same principal COMMENTED. Previous R38 and P3-preconstruction/P4-planning headings are historical, not current protected project state.
 
 

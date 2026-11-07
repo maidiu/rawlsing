@@ -1,5 +1,7 @@
 # PROGRAMMA SOROK R39 — protected P4 sourcefree first-consumer receiving and next work
 
+**P5 candidate update (2026-11-07).** [P5 situated experience](26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.
+
 **FACTUAL PROTECTED RECEIPT (2026-11-07).** [PR #751](https://github.com/maidiu/rawlsing/pull/751) merged into `integration/pre-main-reconciliation-r1` at exact commit `ae3dd0922c5bf00a50071ed34f75798838ad4e95` from reviewed head `80bce19efeaeb98b1452e8b5995ebf80f83e166f`. Parent protected PRE-MAIN was `2cb4113f0d1204bb83ec452625ca8d5c984c3f9a` (Sorok R38 post-P3). This is **accepted bounded sourcefree engineering**, **NOT** original scientific, B/actor-source, human, operated-rights or native person issuance.
 
 ## Actually received
