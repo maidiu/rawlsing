@@ -1,5 +1,7 @@
 # Sorok current progress revision37 — protected-qualified pair with additive P3 receiving candidate (2026-11-07)
 
+**Additional source no-drop ledger:** PROGRAMMA_SOROK/23_POST_P3_ASSET_AND_INPUT_NO_DROP_COURT_20261107_R1.json conserves 304 historical GIT asset rows and 100 original source-input rows, with no original-asset/issuer promotion. Author recourt pending independent review.
+
 **Protected fact:** #746 sourcefree TEST_ONLY P3 merged at `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`; runtime `16275d03fc4724a694c48ed9d447c4eeadbe25f2`, focused nonauthor `e85b6f6a733ef5bbd664679bdf9613c04003e3de`, additive nonauthor `fae525709bebceac21cb7a44a811dbf5b456b22f`. P3 first consumer: RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner -> PsycheStore -> later computed response. 13/13 author matrix; 61 store/owner PASS one inapplicable skip; 37 units; inherited #704 71 PASS.
 
 **Documentary receiving candidate, NOT yet independently accepted:** `PROGRAMMA_SOROK/18_PROTECTED_P3_RECEIVING_AND_WHOLE_PROGRAM_CURRENTNESS_20261107_R1.md` plus 19 per-ID 144/38/83 ledger and 20 P4 work-now decision. Preserve 77 original W7 gates plus six later mirrored, full 14-file independent read pending. Do not infer native, memory, independent B or human readiness.

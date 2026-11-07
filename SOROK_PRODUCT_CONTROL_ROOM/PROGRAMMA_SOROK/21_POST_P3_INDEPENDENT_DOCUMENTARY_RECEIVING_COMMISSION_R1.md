@@ -12,3 +12,5 @@
 
 Deliver source-hash readback, denominators, per-grade diff, negative court, final decision, and all active holds. No workstream proliferation.
 
+
+8. Compare frozen `07_GITHUB_ACCESSIBLE_ASSET_LOCATOR_R1.json` **304** assets and `12_W1_W2_INPUT_DISPOSITIONS_R1.jsonl` **100** input IDs against new `23_POST_P3_ASSET_AND_INPUT_NO_DROP_COURT_20261107_R1.json`; ensure only guide-affinity, no original-source issuer or current runtime import claim. Do not mistake a code/blob index for original source examination.

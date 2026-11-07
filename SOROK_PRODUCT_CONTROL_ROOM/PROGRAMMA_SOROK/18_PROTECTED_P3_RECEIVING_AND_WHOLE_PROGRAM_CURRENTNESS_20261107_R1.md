@@ -51,3 +51,7 @@ Other valid work fronts persist: S10 sourcefree memory design (SPECIFY scope alr
 
 Every further received Sorok result must write through BOTH `SOROK_PRODUCT_CONTROL_ROOM/CURRENT_PROGRESS` front doors, the PROGRAMMA `00`/`READ_FIRST` entrypoints, the `08`/`09`/`14`/`15` context through compatible overlays, `10` work-now priorities and exact negative/independent receiving evidence. Preserve source-period statements as history with a visible current override, never silently erase adversarial failures. New code/source proof must carry exact cut, owner, status, reader and tested grade. This author's documentary recourt is **NOT independent acceptance** until a genuinely distinct reviewer verifies its exact SHA and the full `14` payload.
 
+
+## Source-asset and source-input no-drop supplement
+
+**Additional full-denominator source conservation:** [23 post-P3 source asset/input no-drop court](23_POST_P3_ASSET_AND_INPUT_NO_DROP_COURT_20261107_R1.json) independently indexes the existing **304/304 unique GIT asset identifiers** and **100/100 original W1/W2 source input identifiers** at their exact frozen cuts. 62 asset rows and 32 source-input rows are P3-related by inherited guide-component affinity only, NOT by new issuer/current runtime provenance. The other 242 assets and 68 source inputs have no P3-specific new grant. Underlying historical source assets were not re-read in full; neither these counts nor naming affinities adopt original source authority.
