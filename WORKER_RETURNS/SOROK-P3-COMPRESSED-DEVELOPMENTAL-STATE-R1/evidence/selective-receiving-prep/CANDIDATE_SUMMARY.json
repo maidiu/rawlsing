@@ -1,5 +1,5 @@
 {
-  "acceptance": "PENDING_NONAUTHOR_FOCUSED_RECHECK",
+  "acceptance": "PENDING_EXACT_TARGET_RECHECK_AND_ADDITIVE_RESIDUAL_QUALIFICATION",
   "candidate": {
     "branch": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
     "evidence_cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
@@ -11,6 +11,27 @@
     "local_ref": "review/sorok-p3-focused-recheck-20261107-r1",
     "remote_observed": false,
     "status": "PENDING"
+  },
+  "goal_audit": {
+    "commit": "140b585f9b7321984725cf6f38ae95c2cb2bf89c",
+    "matrix_sha256": "cf6c89a90861255e75a04c0684d82eb6d5e439a471fd5ddec83b026b57964623",
+    "path": "evidence/goal-audit/",
+    "ref": "agent/sorok-p3-goal-audit-20261107-r1",
+    "return_sha256": "93ef9813bfdf4b1a6581bac31f8305feb00e585662e59a91d65ead5b5838ade4",
+    "status": "DELIVERY_PREPARATION_COMPLETE_GOAL_ACCEPTANCE_PENDING"
+  },
+  "goal_residual_proof": {
+    "commit": "036787c1f0c227cdc47828ba521a62b76c57a903",
+    "failed": 0,
+    "limit": "equal objective world/P2 identity/clock/source/history; independently initialized deterministic P2 fixtures have different full state_hash; exact P2 root snapshot/fork/remap API unavailable",
+    "passed": 3,
+    "path": "evidence/goal-residual-proof/",
+    "ref": "agent/sorok-p3-goal-residual-proof-20261107-r1",
+    "seconds": 27.14,
+    "status": "AUTHOR_PROOF_PENDING_NONAUTHOR_QUALIFICATION",
+    "test_path": "tests/test_p3_goal_residuals.py",
+    "test_sha256": "7fcd6c48a33b0aecb0f689149b235d714599b50d115f1272a7e06dd2b14260d8",
+    "tests": 3
   },
   "m1_m2_repair": {
     "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/final-review-repair/M1_M2_REPAIR.json",
@@ -92,5 +113,13 @@
       42.65131872598431
     ]
   },
-  "schema": "SOROK_P3_SELECTIVE_RECEIVING_CANDIDATE_SUMMARY@1"
+  "schema": "SOROK_P3_SELECTIVE_RECEIVING_CANDIDATE_SUMMARY@1",
+  "source_cuts": {
+    "goal_audit": "140b585f9b7321984725cf6f38ae95c2cb2bf89c",
+    "goal_residual_proof": "036787c1f0c227cdc47828ba521a62b76c57a903",
+    "implementation": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
+    "runtime_evidence": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "runtime_source_unchanged": true,
+    "selection_tip": "036787c1f0c227cdc47828ba521a62b76c57a903"
+  }
 }

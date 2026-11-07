@@ -4,13 +4,16 @@
 
 ```text
 16275d03fc4724a694c48ed9d447c4eeadbe25f2  refs/heads/agent/sorok-p3-compressed-developmental-state-20261106-r1
+140b585f9b7321984725cf6f38ae95c2cb2bf89c  refs/heads/agent/sorok-p3-goal-audit-20261107-r1
+036787c1f0c227cdc47828ba521a62b76c57a903  refs/heads/agent/sorok-p3-goal-residual-proof-20261107-r1
 c852d7516e23fcb6cf2215e9be7c5fa268503516  refs/heads/integration/pre-main-reconciliation-r1
 25830fe7462bb9e29bc4087e6ae14f3f84cec377  refs/heads/main
 ```
 
 - `integration/pre-main-reconciliation-r1` is the live protected PRE-MAIN receiving ref at `c852d751`.
 - `main` at `25830fe74` is an older ancestor and is not the P3 receiving base.
-- Candidate branch remote head is exactly `16275d03`.
+- Runtime candidate branch remote head is exactly `16275d03`.
+- Goal-audit remote head is exactly `140b585f`; additive residual-proof remote head is exactly `036787c1`.
 
 ## Focused recheck
 

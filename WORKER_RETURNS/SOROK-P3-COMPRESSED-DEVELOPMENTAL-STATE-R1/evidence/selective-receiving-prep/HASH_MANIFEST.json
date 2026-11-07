@@ -1,41 +1,58 @@
 {
-  "acceptance": "PENDING_NONAUTHOR_FOCUSED_RECHECK",
+  "acceptance": "PENDING_EXACT_TARGET_RECHECK_AND_ADDITIVE_RESIDUAL_QUALIFICATION",
   "candidate": {
-    "branch": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
-    "evidence_cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
-    "implementation_commit": "486d42a4aa5dcd449564b95567ae93b59c4679a4"
+    "goal_audit_cut": "140b585f9b7321984725cf6f38ae95c2cb2bf89c",
+    "goal_audit_ref": "agent/sorok-p3-goal-audit-20261107-r1",
+    "implementation_commit": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
+    "residual_proof_cut": "036787c1f0c227cdc47828ba521a62b76c57a903",
+    "residual_proof_ref": "agent/sorok-p3-goal-residual-proof-20261107-r1",
+    "runtime_evidence_cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "runtime_ref": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
+    "selection_tip": "036787c1f0c227cdc47828ba521a62b76c57a903"
   },
   "excluded_paths": 135,
   "files": {
     "00_RETURN.md": {
-      "bytes": 7812,
-      "sha256": "073a58ea15835f73d61154557f0864ad4b995fb3da9d7e02833c31bfb26117b1"
+      "bytes": 10164,
+      "sha256": "dfa17f5d9fe494e43b1d3bb1deb7df05b2ecd8ea9bc963969357bc8e7560344f"
     },
     "CANDIDATE_SUMMARY.json": {
-      "bytes": 4037,
-      "sha256": "cf8be5783d501baecea65391f24585fb22151942b99915e892070f0d60dae072"
+      "bytes": 5552,
+      "sha256": "07578e7fdb12e111d42161ba634ef9a1f383687192a1021067773dc2fb2bb31c"
     },
     "COMMANDS.md": {
-      "bytes": 3630,
-      "sha256": "3feeaf57ac7898dfd5484d7b63d2e5cac24f9d490821b3b94e7125fd2e5e5413"
+      "bytes": 4271,
+      "sha256": "c7508548e52076b699984515bce530ffa4ee44e5df92037e96debf6e17b9544a"
     },
     "DEPENDENCY_CHECK.json": {
-      "bytes": 12414,
-      "sha256": "59086b23c81e065898ce9ec594812a15d64d671725442e68c1d4dea73179c8a8"
+      "bytes": 14976,
+      "sha256": "0c3bce81419a4d6267a6c20badcdb8b9982253e3b78cc17cf0306c1db38e8201"
     },
     "PR_DRAFT.md": {
-      "bytes": 3627,
-      "sha256": "4c834658b7116ab0959929952212376757453c57abbe47da5bbb3efa57cd26d9"
+      "bytes": 4910,
+      "sha256": "e30c941a841bf27e7edb2198a73564f39bf1d920a1dba86ea8531ea23c5e1413"
     },
     "REMOTE_PINS.txt": {
-      "bytes": 1007,
-      "sha256": "6342ab84560f23285b2b2ca1d87b4346298580dea17c2696052a3cbe04abd71a"
+      "bytes": 1313,
+      "sha256": "577c922dac8f0c601091789eede658ed1230a3538e26e234b6734da2b1133b44"
     },
     "SELECTIVE_INVENTORY.json": {
-      "bytes": 91477,
-      "sha256": "74881131663b52996832b07e7c4dd52ad5167d638fd4bcb71d03e8527f212a58"
+      "bytes": 107932,
+      "sha256": "d9cf0402befef9b35d3402e74ffd8ca5563d6158ab433f244e9a04af79e444d5"
     },
     "SELECTIVE_PATHS.txt": {
+      "bytes": 18336,
+      "sha256": "992d911591f6eeb9be3d35e10faa7d78e30c90b943074246b2692759ca59e634"
+    },
+    "SELECTIVE_PATHS_0367.txt": {
+      "bytes": 794,
+      "sha256": "fafeb569555fd3f1159011b12086b20eed47b6d862972f8e1c72fc73b6f302f6"
+    },
+    "SELECTIVE_PATHS_140b.txt": {
+      "bytes": 474,
+      "sha256": "7f61dc0a0e59016f77af2372d8289195e584fd5e971ffbd77becbb9c6768b684"
+    },
+    "SELECTIVE_PATHS_16275.txt": {
       "bytes": 17068,
       "sha256": "0395b2e61d76d723d50032d2abf31ed3ad3cd82eae56eafc968a47f6ca97f074"
     }
@@ -47,5 +64,5 @@
   },
   "protected_receiving": "PENDING",
   "schema": "SOROK_P3_SELECTIVE_RECEIVING_PREP_MANIFEST@1",
-  "selected_paths": 157
+  "selected_paths": 170
 }

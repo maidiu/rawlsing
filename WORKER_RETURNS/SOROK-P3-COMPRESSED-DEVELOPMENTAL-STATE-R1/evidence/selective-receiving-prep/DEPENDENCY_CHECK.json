@@ -1,4 +1,30 @@
 {
+  "additive_sources": {
+    "additive_diff_only": [
+      "evidence/goal-audit/*",
+      "evidence/goal-residual-proof/*",
+      "tests/test_p3_goal_residuals.py"
+    ],
+    "goal_audit": {
+      "cut": "140b585f9b7321984725cf6f38ae95c2cb2bf89c",
+      "paths": 5,
+      "ref": "agent/sorok-p3-goal-audit-20261107-r1",
+      "role": "original-goal requirement/evidence audit and delivery draft",
+      "runtime_change": false
+    },
+    "goal_residual_proof": {
+      "cut": "036787c1f0c227cdc47828ba521a62b76c57a903",
+      "paths": 8,
+      "ref": "agent/sorok-p3-goal-residual-proof-20261107-r1",
+      "result": "3 passed in 27.14s (author proof; no matrix/71 rerun)",
+      "role": "targeted goal-residual author proofs",
+      "runtime_change": false,
+      "test_bytes": 12236,
+      "test_path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_goal_residuals.py",
+      "test_sha256": "7fcd6c48a33b0aecb0f689149b235d714599b50d115f1272a7e06dd2b14260d8"
+    },
+    "runtime_source_unchanged": true
+  },
   "base_present": [
     {
       "bytes": 57,
@@ -63,11 +89,15 @@
   ],
   "candidate": {
     "evidence_cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "goal_audit_cut": "140b585f9b7321984725cf6f38ae95c2cb2bf89c",
+    "goal_audit_ref": "agent/sorok-p3-goal-audit-20261107-r1",
     "implementation_commit": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
     "ref": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
-    "remote_verified": true
+    "residual_proof_cut": "036787c1f0c227cdc47828ba521a62b76c57a903",
+    "residual_proof_ref": "agent/sorok-p3-goal-residual-proof-20261107-r1",
+    "selection_tip": "036787c1f0c227cdc47828ba521a62b76c57a903"
   },
-  "conclusion": "SELECTED_RUNTIME_CLOSURE_SATISFIED_WITH_E1_B1_VENDOR_INCLUDED",
+  "conclusion": "SELECTED_RUNTIME_CLOSURE_SATISFIED_WITH_E1_B1_VENDOR_INCLUDED__ADDITIVE_GOAL_AUDIT_AND_RESIDUAL_PROOFS_INCLUDED_FROM_EXACT_CUTS",
   "e1_source_pin": {
     "b1_base_present": false,
     "b1_bytes": 21193,
@@ -231,6 +261,25 @@
     "commit": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
     "ref": "integration/pre-main-reconciliation-r1",
     "remote_verified": true
+  },
+  "residual_limits": {
+    "distinct_root": "PASS author: distinct seeded P2 roots 3bcb21fc... vs b43c92c0..., cross-root source denied before right P3 effects/config/store",
+    "same_history": "equal objective world, P2 identity/clock, source, history and later proposal; independently initialized deterministic P2 fixtures have different full state_hash; exact P2 root snapshot/fork/remap API not available; no deletion/synthetic record used",
+    "source_severance": "PASS author: actual-chain B1 missing/altered denial with unchanged P2/P3 head, exact restore and REALIZED/COMPLETE replay"
+  },
+  "residual_test_dependencies": {
+    "base_present": [
+      "WORKER_RETURNS/SOROK-P2-PRODUCT-FANIN-20261105-R1/p2_product_fanin/integration.py (start(..., seed=...))",
+      "WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1",
+      "WORKER_RETURNS/SOROK-P2-EXPLICIT-INTERVAL-FLOW-20261105-R1",
+      "WORKER_RETURNS/SOROK-P2-LATER-EVENT-CONTINUATION-20261105-R1",
+      "tests/p3_fixture_support.py",
+      "tests/test_p3_owner.py",
+      "p3/p3_owner.py",
+      "p3/test_rules.py"
+    ],
+    "included_or_base": true,
+    "missing": []
   },
   "s1_design_input": {
     "head": "5a505a911509073eb38102f0022f445e7ec602e5",

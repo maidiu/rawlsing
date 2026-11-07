@@ -8,6 +8,8 @@ All commands below were read-only. No proposed receiving branch, PR, protected r
 git ls-remote --heads origin \
   refs/heads/integration/pre-main-reconciliation-r1 \
   refs/heads/agent/sorok-p3-compressed-developmental-state-20261106-r1 \
+  refs/heads/agent/sorok-p3-goal-audit-20261107-r1 \
+  refs/heads/agent/sorok-p3-goal-residual-proof-20261107-r1 \
   refs/heads/main
 ```
 
@@ -16,6 +18,8 @@ Result:
 ```text
 c852d7516e23fcb6cf2215e9be7c5fa268503516  refs/heads/integration/pre-main-reconciliation-r1
 16275d03fc4724a694c48ed9d447c4eeadbe25f2  refs/heads/agent/sorok-p3-compressed-developmental-state-20261106-r1
+140b585f9b7321984725cf6f38ae95c2cb2bf89c  refs/heads/agent/sorok-p3-goal-audit-20261107-r1
+036787c1f0c227cdc47828ba521a62b76c57a903  refs/heads/agent/sorok-p3-goal-residual-proof-20261107-r1
 25830fe7462bb9e29bc4087e6ae14f3f84cec377  refs/heads/main
 ```
 
@@ -24,12 +28,12 @@ c852d7516e23fcb6cf2215e9be7c5fa268503516  refs/heads/integration/pre-main-reconc
 ## Candidate delta inspection
 
 ```bash
-git diff --name-status c852d7516e23fcb6cf2215e9be7c5fa268503516..16275d03fc4724a694c48ed9d447c4eeadbe25f2
-git diff --stat c852d7516e23fcb6cf2215e9be7c5fa268503516..16275d03fc4724a694c48ed9d447c4eeadbe25f2
-git rev-list --count c852d7516e23fcb6cf2215e9be7c5fa268503516..16275d03fc4724a694c48ed9d447c4eeadbe25f2
+git diff --name-status c852d7516e23fcb6cf2215e9be7c5fa268503516..036787c1f0c227cdc47828ba521a62b76c57a903
+git diff --stat c852d7516e23fcb6cf2215e9be7c5fa268503516..036787c1f0c227cdc47828ba521a62b76c57a903
+git rev-list --count c852d7516e23fcb6cf2215e9be7c5fa268503516..036787c1f0c227cdc47828ba521a62b76c57a903
 ```
 
-Observed: 30 commits, 292 changed paths.
+Observed: 32 commits, 305 changed paths; runtime source is unchanged between `16275d03` and the additive commits (13 additive paths only).
 
 ## Dependency and code/test identity checks
 
@@ -58,12 +62,16 @@ The receiving owner may construct the candidate only after the focused review ac
 set -euo pipefail
 BASE=c852d7516e23fcb6cf2215e9be7c5fa268503516
 CAND=16275d03fc4724a694c48ed9d447c4eeadbe25f2
+AUDIT=140b585f9b7321984725cf6f38ae95c2cb2bf89c
+RESIDUAL=036787c1f0c227cdc47828ba521a62b76c57a903
 BRANCH=codex/sorok-p3-selective-receiving-20261107-r1
+P=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/selective-receiving-prep
 
 git fetch origin integration/pre-main-reconciliation-r1
 git switch -c "$BRANCH" "$BASE"
-xargs -a WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/selective-receiving-prep/SELECTIVE_PATHS.txt \
-  git checkout "$CAND" --
+xargs -a "$P/SELECTIVE_PATHS_16275.txt" git checkout "$CAND" --
+xargs -a "$P/SELECTIVE_PATHS_140b.txt" git checkout "$AUDIT" --
+xargs -a "$P/SELECTIVE_PATHS_0367.txt" git checkout "$RESIDUAL" --
 
 git diff --cached --check
 git diff --cached --name-only | sort > /tmp/p3-selective-actual.txt
