@@ -1,0 +1,293 @@
+{
+  "probe_id": "C2_JOINT_CURRENT_COMPOSITION_S2",
+  "scope": "SOURCEFREE_COMPARE_ONLY__NO_ORIGINAL_ISSUER_TRACE",
+  "fixture": "E03_PROGRESSIVE_ABC_Y_58",
+  "fixture_rows": 58,
+  "fixture_real_subject": false,
+  "sourcefree_positive": {
+    "provider_state": "EXACT_SUPPORTED",
+    "composition_analytical_state": "SUPPORTED",
+    "composition_raw_denominator": 16,
+    "composition_consumer_state": "EXACT_SUPPORTED",
+    "three_step_chain": [
+      {
+        "step_id": "P_Y_given_A",
+        "conditioners": [
+          [
+            "A",
+            1
+          ]
+        ],
+        "producer_route": "N10E_SINGLE_CONDITIONER",
+        "producer_fact_state": "SUPPORTED",
+        "raw_denominator_support": 32,
+        "cells": {
+          "0": {
+            "raw_numerator_support": 14,
+            "raw_denominator_support": null,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                7,
+                16
+              ]
+            }
+          },
+          "1": {
+            "raw_numerator_support": 18,
+            "raw_denominator_support": null,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                9,
+                16
+              ]
+            }
+          }
+        },
+        "consumer_state": "EXACT_SUPPORTED",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e03-progressive",
+          "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db"
+        },
+        "risk_set_ref": {
+          "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+        },
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:dd6f2ac917c0c4775783f5bbe7c001a5fde44222d458184664aa3dd0bd036592",
+          "content_hash": "dd6f2ac917c0c4775783f5bbe7c001a5fde44222d458184664aa3dd0bd036592"
+        },
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "step_id": "P_Y_given_A_B",
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ]
+        ],
+        "producer_route": "C1_MULTI_CONDITIONER",
+        "producer_fact_state": "SUPPORTED",
+        "raw_denominator_support": 16,
+        "cells": {
+          "0": {
+            "raw_numerator_support": 6,
+            "raw_denominator_support": null,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                8
+              ]
+            }
+          },
+          "1": {
+            "raw_numerator_support": 10,
+            "raw_denominator_support": null,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                5,
+                8
+              ]
+            }
+          }
+        },
+        "consumer_state": "EXACT_SUPPORTED",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e03-progressive",
+          "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db"
+        },
+        "risk_set_ref": {
+          "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+        },
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:26d6e745fca91da652ec9b70d098bdf85929d889ad46c2c9b9ab485bb4038c4c",
+          "content_hash": "26d6e745fca91da652ec9b70d098bdf85929d889ad46c2c9b9ab485bb4038c4c"
+        },
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      },
+      {
+        "step_id": "P_Y_given_A_B_C",
+        "conditioners": [
+          [
+            "A",
+            1
+          ],
+          [
+            "B",
+            1
+          ],
+          [
+            "C",
+            1
+          ]
+        ],
+        "producer_route": "C1_MULTI_CONDITIONER",
+        "producer_fact_state": "SUPPORTED",
+        "raw_denominator_support": 8,
+        "cells": {
+          "0": {
+            "raw_numerator_support": 2,
+            "raw_denominator_support": null,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                1,
+                4
+              ]
+            }
+          },
+          "1": {
+            "raw_numerator_support": 6,
+            "raw_denominator_support": null,
+            "raw_probability_exact_fraction": {
+              "$exact_fraction": [
+                3,
+                4
+              ]
+            }
+          }
+        },
+        "consumer_state": "EXACT_SUPPORTED",
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-e03-progressive",
+          "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db"
+        },
+        "risk_set_ref": {
+          "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+          "kind": "RISK_SET",
+          "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+        },
+        "evidence_ref": {
+          "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+          "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:67a00f3109559961ef9ded2808b9fa637380d4a7822d982ee67b4f6581044b1c",
+          "content_hash": "67a00f3109559961ef9ded2808b9fa637380d4a7822d982ee67b4f6581044b1c"
+        },
+        "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED"
+      }
+    ],
+    "first_consumers": [
+      "provide_empirical_possibility_slice",
+      "compose_positioned_subject_possibility",
+      "compose_positioned_subject_possibility",
+      "evaluate_positioned_subject_possibility",
+      "evaluate_positioned_subject_possibility",
+      "evaluate_positioned_subject_possibility"
+    ]
+  },
+  "authority_surface": {
+    "producer_selector": "pre553_empirical_possibility_provider.provide_empirical_possibility_slice",
+    "composition_owner": "pre553_analytical_composition.compose_positioned_subject_possibility",
+    "consumer_owner": "source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+    "empirical_query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:b339e46cdb1eb868c83c06efbac4bb57b80d6c575fd6f8cd7533f5a1e5a7f50b",
+      "content_hash": "b339e46cdb1eb868c83c06efbac4bb57b80d6c575fd6f8cd7533f5a1e5a7f50b"
+    },
+    "predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:0df3fb3a5621ac106bc0c910607e54596c77315f88f6ffc0f29436bc646a557f",
+      "content_hash": "0df3fb3a5621ac106bc0c910607e54596c77315f88f6ffc0f29436bc646a557f"
+    },
+    "consumer_query_ref": {
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:d349e48ef76f00907b784400da8d882f1de74e8f8b25082f05fbc260aa8431db",
+      "content_hash": "d349e48ef76f00907b784400da8d882f1de74e8f8b25082f05fbc260aa8431db"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-e03-progressive",
+      "content_hash": "b0fed5e96bd903404b6d2a1c252e7add429b3e05ef56dcd17bbf6159184390db"
+    },
+    "risk_set_ref": {
+      "content_hash": "5ed692aa18a735d500c9982ca71cc9680d0317945f61bcdf1f5e3e04c9df8fba",
+      "kind": "RISK_SET",
+      "object_id": "urn:test:i03:risk_set:e03-progressive-R_ALL"
+    },
+    "target_refs": [
+      {
+        "content_hash": "6a4bbb2ee1fd79b64326d49f3000b8d4c9c6df9f22015d05fb9069af0b4814a6",
+        "kind": "QUESTION_NATIVE",
+        "object_id": "urn:test:i03:question_native:e03-progressive-Y"
+      }
+    ],
+    "requested_output_grain": {
+      "measure_kind": "RAW",
+      "response_state_semantics_ref": {
+        "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+        "kind": "RESPONSE_STATE_SEMANTICS",
+        "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+      },
+      "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+      "source_scope_mode": "SINGLE_UNIVERSE",
+      "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED"
+    },
+    "measure_basis_ref": {
+      "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+      "kind": "MEASURE_BASIS",
+      "object_id": "urn:test:i03:measure_basis:RAW"
+    },
+    "model_rule_ref": {
+      "authority_id": "urn:test:c1-02:model-authority:e03-progressive",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "3e8ef0d1855d44d1505146771e6e7e89f0d130eb0c81c3c45a0a9c6188d977be"
+    },
+    "historical_selected_issuer": "UNKNOWN__NO_SELECTED_ORIGINAL_J_ISSUER",
+    "original_selected_document": null
+  },
+  "negative_controls": {
+    "wrong_order": {
+      "state": "REFUSED",
+      "error_type": "ConditionValueRelationMismatch",
+      "detail": "CONDITION_VALUE_RELATION_MISMATCH: witness field mismatch: consumer_query_ref"
+    },
+    "false_pairing": {
+      "state": "REFUSED",
+      "error_type": "ConditionValueRelationMismatch",
+      "detail": "CONDITION_VALUE_RELATION_MISMATCH: conditioner 1: pairing exact value mismatch"
+    },
+    "wrong_source_universe": {
+      "state": "REFUSED",
+      "error_type": "PositionedSubjectPossibilityError",
+      "detail": "conditioner source/release mismatch; no implicit bridge"
+    },
+    "missing_needed_authority": {
+      "state": "REFUSED",
+      "error_type": "EmpiricalQueryExecutionError",
+      "detail": "authority_registry must be exact immutable AuthorityRegistry"
+    }
+  },
+  "cold_restore": {
+    "same_step_ids": true,
+    "same_denominators": true,
+    "same_cells": true,
+    "same_evidence_refs": true,
+    "same_consumer_states": true
+  },
+  "effects": {
+    "source_meaning_inference": false,
+    "model_use_grant": false,
+    "g0b_issuance": false,
+    "b5_current_selection": false,
+    "field_forge_effect": false,
+    "temporal_current_effect": false,
+    "actor_v3_effect": false,
+    "real_current_claim": false
+  },
+  "source_hashes": {
+    "provider": "99d716051f23e1ef75990a5184afec612aa7855078a67893f6436b44f57b4697",
+    "composition": "2358cd2676133e61b8a36dd59295ef6dc16f2ef840bbc7d9792ebcc3961fdd01",
+    "consumer": "9c041cb134a7b9198d12f75a1eb82a7e37cdb781adf5f68033b5ad21e62dbc01",
+    "candidate_fixture": "78f85aea938e9a087167af2938ab11aabbf5a731e852194f021918cf21044c8d"
+  }
+}
