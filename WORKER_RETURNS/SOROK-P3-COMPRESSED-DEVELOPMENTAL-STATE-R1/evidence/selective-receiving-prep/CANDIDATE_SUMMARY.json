@@ -12,13 +12,18 @@
     "remote_observed": false,
     "status": "PENDING"
   },
-  "m1_m2_m3_repair": {
-    "m3": "REPAIRED_AND_MATRIX_GREEN",
+  "m1_m2_repair": {
     "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/final-review-repair/M1_M2_REPAIR.json",
     "remaining": "focused nonauthor recheck PENDING",
     "sha256": "3fdf7761aeabea127ac4f978b1d76b20d6e82d0944e66cc81294cc5fd1da46cc",
     "store_owner": "61 passed, 1 skipped in 40.62s",
     "units": "37 passed in 8.23s"
+  },
+  "m3": {
+    "assertion": "positive incremental DB+WAL per-record/per-event bytes in combined resource receipt",
+    "resource_path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/full-vertical-execution-combined/metrics/resource.json",
+    "resource_sha256": "36c2102c04f75b25c2a09f44f2be9579b07d99cfa6bbd2fb3d22b48cbd567bed",
+    "status": "REPAIRED_AND_MATRIX_GREEN"
   },
   "matrix": {
     "cases": 13,
