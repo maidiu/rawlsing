@@ -1,0 +1,48 @@
+{
+  "schema": "P3_OWNER_PASSPORT@1",
+  "status": "BOUNDED_IMPLEMENTATION_BANKED",
+  "runtime": {
+    "agent": "OpenCode Go DeepSeek V4.1 Flash MAX",
+    "intelligence_level": "I2/I3",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1",
+    "branch": "agent/sorok-p3-owner-integration-20261106-r1",
+    "startup_commit": "735098c7d07a3a91182f16e2e48ef781b9afbcb7",
+    "protected_commit": "c852d7516e23fcb6cf2215e9be7c5fa268503516"
+  },
+  "dependencies": {
+    "development_contracts": "present",
+    "p2_owner": "present",
+    "test_rules": "present",
+    "projections": "present",
+    "compression": {
+      "status": "PRESENT_REVISE_SEPARATE_WORKER",
+      "positive_claim": false
+    },
+    "state_store": {
+      "status": "ABSENT_MISSING_RETURNED_STATE_STORE",
+      "fallback_used": false,
+      "dependent_tests_executed": false
+    }
+  },
+  "tests": {
+    "command": "PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1:WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -rs WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_owner.py -p no:cacheprovider",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 6,
+    "blocked_reason": "DEPENDENT_EXECUTION_NOT_RUN_MISSING_RETURNED_STATE_STORE"
+  },
+  "write_scope": [
+    "p3/p3_owner.py",
+    "tests/test_p3_owner.py",
+    "evidence/owner/"
+  ],
+  "not_done": [
+    "actual P2-root durable integration",
+    "two-batch/cold/crash functional proof",
+    "native psychological transition",
+    "ADP016 formed memory",
+    "ADP017 first-person claims",
+    "independent runtime acceptance",
+    "self-acceptance or merge"
+  ]
+}

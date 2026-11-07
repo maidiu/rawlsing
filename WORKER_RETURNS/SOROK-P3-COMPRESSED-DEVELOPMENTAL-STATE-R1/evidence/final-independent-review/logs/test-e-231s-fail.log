@@ -1,0 +1,34 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_e_stability_event_reveals_without_new_record _______________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-144/test_e_stability_event_reveals0')
+
+    def test_e_stability_event_reveals_without_new_record(tmp_path: Path) -> None:
+        case = build_case(tmp_path)
+        try:
+            results = run_chain(case)
+            first_batch = batch_events(results["bootstrap"])
+            formation, stability = first_batch[0], first_batch[2]
+            before_head = case.owner.store.head()
+            before_records = workflow_records(case.owner, formation["after"]["clock"])
+            assert len(before_records) == 2
+            after_head = case.owner.store.head()
+            assert after_head == before_head
+            response = response_for(stability)
+            assert response["status"] == "COMPUTED_TEST_ONLY_RESPONSE"
+            assert response["streams"]
+            assert all(row["native_action_performed"] is False
+                       for row in response["streams"])
+            assert response["memory_formation"] == "MISSING_RULE"
+            assert len(workflow_records(case.owner, stability["after"]["clock"])) == 2
+>           assert stability["after"]["state_hash"] == case.owner.snapshot().state_hash
+E           AssertionError: assert '7104257db9fc...c4062a9883c90' == '1ea9c5a338f2...35805435bfcbc'
+E             
+E             - 1ea9c5a338f2b0c1825f673eadbac06107bc40a73cafba38b5d35805435bfcbc
+E             + 7104257db9fce04f30b90a451732f93afb5f5af181d5ba2f9cdc4062a9883c90
+
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py:271: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_e_stability_event_reveals_without_new_record
+1 failed in 231.15s (0:03:51)
