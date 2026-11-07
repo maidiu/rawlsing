@@ -60,6 +60,7 @@
   "path_allowlist": "PATH_ALLOWLIST.txt",
   "remaining": [
     "nonauthor qualification of additive 140b585f/036787c1 residual proofs",
+    "HQ reconcile observed source-ref movement 16275d03->fd51a5d (runtime/test hashes unchanged; coordination/PROGRAMMA only)",
     "HQ final PR publication, protected receiving and merge remain held"
   ],
   "runtime_and_test_source_hashes_exact": true,
@@ -69,6 +70,17 @@
     "focused_review_artifacts": 15,
     "prepared_package": 170,
     "total": 186
+  },
+  "source_ref_observation": {
+    "action": "Candidate uses frozen 16275 runtime/test blobs and excludes fd51 coordination/PROGRAMMA; HQ must reconcile the source-ref provenance before publication.",
+    "additive_evidence_selected_from_base_commits": true,
+    "branch": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
+    "frozen_cut_used": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
+    "observed_head_adds_evidence_coordination_programma": true,
+    "observed_head_adds_no_runtime_or_test_change": true,
+    "observed_head_parent": "9abb3eee3d59c76ce20d5131d5b60151f7ca98ae",
+    "observed_remote_head": "fd51a5d871f00233cf5b32bc2e6082757526495b",
+    "runtime_and_test_hashes_unchanged": true
   },
   "sources": {
     "focused_disposition": {
@@ -94,6 +106,7 @@
       "cut": "16275d03fc4724a694c48ed9d447c4eeadbe25f2",
       "implementation": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
       "ref": "agent/sorok-p3-compressed-developmental-state-20261106-r1",
+      "remote_head_observed_at_assembly": "fd51a5d871f00233cf5b32bc2e6082757526495b",
       "remote_verified": true
     }
   },

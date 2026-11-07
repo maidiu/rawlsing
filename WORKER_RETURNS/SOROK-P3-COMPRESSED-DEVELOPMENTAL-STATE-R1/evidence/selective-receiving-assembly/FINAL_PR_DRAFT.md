@@ -18,6 +18,8 @@ Implementation cut: 486d42a4aa5dcd449564b95567ae93b59c4679a4
 Goal audit: 140b585f9b7321984725cf6f38ae95c2cb2bf89c
 Additive residual proof: 036787c1f0c227cdc47828ba521a62b76c57a903
 
+Source-ref custody note: at assembly the source branch head had moved to fd51a5d871f00233cf5b32bc2e6082757526495b, a descendant of 9abb3eee/16275d03. Runtime/test SHA-256 values at fd51a5d are identical to 16275d03; the observed head adds evidence/coordination/PROGRAMMA records only. This candidate uses the frozen 16275d03 runtime/test bytes and excludes the added coordination/PROGRAMMA; HQ must reconcile that source-ref movement before publication.
+
 This is a selective checkout of 186 paths, not a bulk merge. It contains the 170-path prepared package plus 15 focused-review artifacts and 1 HQ focused-recheck disposition. Runtime/tests remain byte-identical to the accepted source; no runtime/test/authority edits were made.
 
 Focused review:
@@ -39,6 +41,7 @@ Evidence retained:
 
 Remaining before publication:
 - Nonauthor qualification of additive 140b585f/036787c1 residual proofs.
+- HQ reconciliation of source-ref movement 16275d03 -> fd51a5d (runtime/test hashes unchanged; evidence/coordination/PROGRAMMA only).
 - HQ final PR publication, protected receiving and merge. No one merges from this author assembly.
 
 Holds:
