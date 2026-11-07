@@ -1,7 +1,7 @@
 {
   "schema": "SOROK_BROWSER_HQ_ACCESSION_CANDIDATE@1",
   "date": "2026-11-07",
-  "authority_status": "CANDIDATE_READ_ONLY_HQ_GROK__NOT_COMMAND",
+  "authority_status": "CANDIDATE_READ_ONLY_HQ_GROK__NOT_COMMAND__R39_CORRECTED__RE_REVIEW_NEEDED",
   "candidate_branch": "agent/vozhd-sorok-20261107-browser-hq-accession-candidate-r1",
   "parent_protected_head": "2cb4113f0d1204bb83ec452625ca8d5c984c3f9a",
   "repository": "maidiu/rawlsing",
@@ -101,7 +101,7 @@
     }
   ],
   "progress_read": {
-    "Sorok": 38,
+    "Sorok": 39,
     "Pyat": 8
   },
   "protected_receiving": {
@@ -137,9 +137,10 @@
   },
   "p4": {
     "target": "D002 MPC1-7 joined user->world->Other->user",
-    "grade": "PROPOSED_SOURCEFREE_TEST_ONLY",
-    "launched": false,
-    "first_full_mpc_consumer_verified": false
+    "grade": "PROTECTED_ACCEPT_SCOPED_SOURCEFREE_TEST_ONLY_FIRST_CONSUMER",
+    "launched": true,
+    "completed_at_scope": true,
+    "protected_at": "ae3dd0922c5bf00a50071ed34f75798838ad4e95"
   },
   "original_authority": {
     "Sorok_CAN008_A": "NOT_ISSUED",
@@ -171,5 +172,33 @@
     "ACCEPT_EXISTING_SOROK_HQ_SCOPE",
     "REVISE_PRECISE_DEFICIENCIES",
     "HOLD_SOURCE_OR_AUTHORITY"
-  ]
+  ],
+  "status_currentness_correction": {
+    "reason": "Protected P4 R39 advanced after initial R38 candidate read; initial P4 not launched finding superseded",
+    "protected_head_verified": "7a5429ffbc48efd25e28c912da80c822e66bc182",
+    "sorok_current_revision": 39,
+    "p4": {
+      "pr": 751,
+      "merge": "ae3dd0922c5bf00a50071ed34f75798838ad4e95",
+      "reviewed_runtime": "9eacf50380176d617637489d04cab3a969dd0a29",
+      "grade": "ACCEPT_SCOPED_SOURCEFREE_TEST_ONLY_FIRST_CONSUMER",
+      "fully_jointed_mpc_1_to_7": true,
+      "original_science_native_human_grants": false
+    },
+    "r39": {
+      "pr": 760,
+      "merge": "7a5429ffbc48efd25e28c912da80c822e66bc182"
+    },
+    "p5": {
+      "user_reported_local_commit": "cc4f2bec01637e3ad168d4d6ecf1f8eaaecd03f5",
+      "user_reported_tests_passed": 8,
+      "user_reported_source_pins_verified": 424,
+      "remote_git_commit": "NOT_FOUND_422_AT_AUDIT",
+      "protected_p5_path": "NOT_FOUND_404_AT_AUDIT",
+      "status": "LOCAL_RETURN_USER_REPORTED__CODE_NOT_ACCESSIBLE_FOR_REMOTE_INDEPENDENT_REVIEW__NOT_PROTECTED"
+    },
+    "post_p5_issue": 768,
+    "old_p4_and_r38_values": "HISTORICAL_AT_INITIAL_CANDIDATE_CUT__NOT_CURRENT",
+    "independent_accession_re_review_needed": true
+  }
 }
