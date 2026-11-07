@@ -5,7 +5,8 @@
   "fixture_rows": 58,
   "fixture_real_subject": false,
   "sourcefree_positive": {
-    "provider_state": "EXACT_SUPPORTED",
+    "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+    "provider_state_source": "actual_invocation_log:provide_empirical_possibility_slice.outputs.provider_state",
     "composition_analytical_state": "SUPPORTED",
     "composition_raw_denominator": 16,
     "composition_consumer_state": "EXACT_SUPPORTED",
@@ -267,12 +268,19 @@
       "detail": "authority_registry must be exact immutable AuthorityRegistry"
     }
   },
-  "cold_restore": {
+  "negative_evidence_status": {
+    "wrong_order": "ASSERTED_BY_NAMED_TEST",
+    "false_pairing": "ASSERTED_BY_NAMED_TEST",
+    "wrong_source_universe": "OBSERVED_NOT_ASSERTED",
+    "missing_needed_authority": "OBSERVED_NOT_ASSERTED"
+  },
+  "same_process_deterministic_rebuild": {
     "same_step_ids": true,
     "same_denominators": true,
     "same_cells": true,
     "same_evidence_refs": true,
-    "same_consumer_states": true
+    "same_consumer_states": true,
+    "cross_process_persisted_restore": "NOT_RUN__SAME_PROCESS_REBUILD_ONLY"
   },
   "effects": {
     "source_meaning_inference": false,

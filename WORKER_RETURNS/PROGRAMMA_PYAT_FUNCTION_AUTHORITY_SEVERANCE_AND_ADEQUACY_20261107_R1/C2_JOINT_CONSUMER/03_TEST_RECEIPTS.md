@@ -14,10 +14,11 @@ python3 WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_
 - Exit: `0`
 - `probe_joint.err`: empty
 - Fixture: `E03_PROGRESSIVE_ABC_Y_58`, 58 synthetic nonrespondent rows, `real_subject=False`
-- Positive: `EXACT_SUPPORTED`; denominators `32/16/8`; exact fractions `9/16`, `5/8`, `3/4`; consumer `EXACT_SUPPORTED` at all three steps.
-- Negative: wrong conditioner order `ConditionValueRelationMismatch`; false pairing `ConditionValueRelationMismatch`; wrong source universe `PositionedSubjectPossibilityError`; missing authority registry `EmpiricalQueryExecutionError`.
-- Cold restore: same step IDs, denominators, cells, evidence refs and consumer states.
+- Positive provider state: `EXACT_SUPPORTED_SLICE_PRODUCED` derived from the actual `provide_empirical_possibility_slice` invocation-log output. Composition state: `SUPPORTED`; consumer state: `EXACT_SUPPORTED`. Denominators `32/16/8`; exact fractions `9/16`, `5/8`, `3/4`.
+- Negative: wrong conditioner order `ConditionValueRelationMismatch` (asserted by named test); false pairing `ConditionValueRelationMismatch` (asserted by named test); wrong source universe `PositionedSubjectPossibilityError` (observed, not asserted); missing authority registry `EmpiricalQueryExecutionError` (observed, not asserted).
+- Same-process deterministic rebuild: same step IDs, denominators, cells, evidence refs and consumer states. Cross-process persisted restore, serialization/cache cold start and durable reconstruction: `NOT_RUN`.
 - No original respondent/SAV/DTA/DB read; no original J issuer selected; no native/science/actor run.
+- Old-version, shadow and revocation behavior: `NOT_RUN__NO_SELECTED_J_ISSUER_OR_VERSION`.
 - Seed: deterministic synthetic fixture; no RNG seed used.
 
 ## Named existing sourcefree tests
@@ -48,19 +49,23 @@ PYTHONDONTWRITEBYTECODE=1 TMPDIR=... python3 -m pytest -q -p no:cacheprovider \
 
 | Output | SHA-256 |
 |---|---|
-| `00_RETURN.md` | `f1a45319812e8b32835fbde7641e912029d3a3f2750d66a2eb23b9c24bac8d1a` |
-| `01_CASES.jsonl` | `5ee7d9072ffb207b8506088a6eabb3937e802d14c1fe95b276bfc5595d6d7802` |
-| `02_CASES.tsv` | `7b8529b812005b201ce6db82a3a054c7e6db8ea79061d09e41add586fcefdf2e` |
-| `04_MINIMAL_OWNER_ACTIONS.tsv` | `16ef7fc065436049ff0947f0359f63eeba9a3790e043608472cd8deed413cf87` |
+| `00_RETURN.md` | `46105573ea1947d44db88df72e1c0cda386551ec518dd6944df594a4cb0ba71b` |
+| `01_CASES.jsonl` | `08b8745d25057a8b48ab1af08957e47eefec510582ed4a62c14f818bd40897c3` |
+| `02_CASES.tsv` | `caf9d507d43c88c6c674c9c0718b3553cc9de2de549880aed2366a3da7124971` |
+| `04_MINIMAL_OWNER_ACTIONS.tsv` | `74448710e7f4cb343c8cc1760843a65575721b99f4ba0cc0797a1ce1957ebe4a` |
 | `05_REGISTER_ANTIJOIN.tsv` | `128fb87b803fff412a259def263ba48c6b5c9daa351454196c16c7aeb68c66b4` |
-| `probes/probe_joint.py` | `8a460f723ac888ed5ef3373caa52ac606621b8361dcaa6cd642cb4e391df190a` |
-| `logs/probe_joint.json` | `952a8311cf03ecd6b81b153c197dfb218249c7aafdfe3029ca67dbe9ffe92f81` |
+| `probes/probe_joint.py` | `83a9724fc2d705a51afa36c6443fe853c2cbef9546a91dda28c25f00e587372f` |
+| `logs/probe_joint.json` | `d061fa82fbce20c695c2e3a0a3ddaf17bd225729e466e2b536c364bc0d77e16b` |
 | `logs/pytest_joint.log` | `9749135c41084e8173dbba868a950d160ec3c5551a45ff1fb5468ed9bb740241` |
+| `06_REPORTING_CORRECTIONS.md` | `b810754f3f5fdc209e41f715164a0029a50c2f2472bf2cdecf6d8faad04a3414` |
 
 `03_TEST_RECEIPTS.md` is this document and is not self-hashed.
 
 ## Blocked / not run
 
 - Original J issuer/row selected authority: `NOT_RUN__NO_SELECTED_ORIGINAL_J_RELEASE`; explicit HOLD at O11, not a fabricated proof.
+- Old version, shadow and revocation: `NOT_RUN__NO_SELECTED_J_ISSUER_OR_VERSION`.
+- Cross-process persisted restore/serialization/cache cold start/durable reconstruction: `NOT_RUN`.
+- Prior independently reviewed cut `751fb3fab88ab0faef4b20afeb57a89801f7cce8`; these are reporting corrections only.
 - Original respondent/SAV/DTA/DB: `NOT_RUN` by lease.
 - Native/science/actor/current grant: `NOT_RUN`; no production patch.

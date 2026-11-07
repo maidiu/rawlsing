@@ -144,18 +144,35 @@ def main() -> int:
         condition_binding_witness=witness,
     ))
 
-    # Cold restore: deterministic replay of the same sourcefree chain.
-    restored = pc.run_progressive_chain(pc.build_synthetic_world())
-    cold_restore = {
-        "same_step_ids": [s.step_id for s in chain.steps] == [s.step_id for s in restored.steps],
-        "same_denominators": [s.raw_denominator_support for s in chain.steps] == [s.raw_denominator_support for s in restored.steps],
-        "same_cells": [s.cells for s in chain.steps] == [s.cells for s in restored.steps],
-        "same_evidence_refs": [ref(s.produced_evidence.evidence_ref) for s in chain.steps] == [ref(s.produced_evidence.evidence_ref) for s in restored.steps],
-        "same_consumer_states": [s.consumer_state for s in chain.steps] == [s.consumer_state for s in restored.steps],
+    # Same-process deterministic rebuild: not a persisted cross-process restore.
+    rebuilt = pc.run_progressive_chain(pc.build_synthetic_world())
+    same_process_deterministic_rebuild = {
+        "same_step_ids": [s.step_id for s in chain.steps] == [s.step_id for s in rebuilt.steps],
+        "same_denominators": [s.raw_denominator_support for s in chain.steps] == [s.raw_denominator_support for s in rebuilt.steps],
+        "same_cells": [s.cells for s in chain.steps] == [s.cells for s in rebuilt.steps],
+        "same_evidence_refs": [ref(s.produced_evidence.evidence_ref) for s in chain.steps] == [ref(s.produced_evidence.evidence_ref) for s in rebuilt.steps],
+        "same_consumer_states": [s.consumer_state for s in chain.steps] == [s.consumer_state for s in rebuilt.steps],
+        "cross_process_persisted_restore": "NOT_RUN__SAME_PROCESS_REBUILD_ONLY",
     }
 
     # Actual first-consumer invocation evidence from the real accepted owners.
     first_consumers = [entry.get("call") for entry in chain.invocation_log]
+    provider_invocations = [
+        entry for entry in chain.invocation_log
+        if entry.get("call") == "provide_empirical_possibility_slice"
+    ]
+    if not provider_invocations:
+        raise RuntimeError("provider invocation log is absent")
+    invocation_provider_state = provider_invocations[0]["outputs"].get("provider_state")
+    if not invocation_provider_state:
+        raise RuntimeError("provider invocation log has no provider_state")
+    composition_invocations = [
+        entry for entry in chain.invocation_log
+        if entry.get("call") == "compose_positioned_subject_possibility"
+    ]
+    if not composition_invocations:
+        raise RuntimeError("composition invocation log is absent")
+    invocation_composition_state = composition_invocations[0]["outputs"].get("analytical_state")
     out = {
         "probe_id": "C2_JOINT_CURRENT_COMPOSITION_S2",
         "scope": "SOURCEFREE_COMPARE_ONLY__NO_ORIGINAL_ISSUER_TRACE",
@@ -163,8 +180,9 @@ def main() -> int:
         "fixture_rows": len(pc.synthetic_world_rows()),
         "fixture_real_subject": False,
         "sourcefree_positive": {
-            "provider_state": "EXACT_SUPPORTED",
-            "composition_analytical_state": composition.analytical_state,
+            "provider_state": invocation_provider_state,
+            "provider_state_source": "actual_invocation_log:provide_empirical_possibility_slice.outputs.provider_state",
+            "composition_analytical_state": invocation_composition_state,
             "composition_raw_denominator": composition.raw_denominator_support,
             "composition_consumer_state": composition.consumer_result_or_null.result_state,
             "three_step_chain": steps,
@@ -192,7 +210,13 @@ def main() -> int:
             "wrong_source_universe": wrong_source_attempt,
             "missing_needed_authority": missing_authority_attempt,
         },
-        "cold_restore": cold_restore,
+        "negative_evidence_status": {
+            "wrong_order": "ASSERTED_BY_NAMED_TEST",
+            "false_pairing": "ASSERTED_BY_NAMED_TEST",
+            "wrong_source_universe": "OBSERVED_NOT_ASSERTED",
+            "missing_needed_authority": "OBSERVED_NOT_ASSERTED",
+        },
+        "same_process_deterministic_rebuild": same_process_deterministic_rebuild,
         "effects": dict(chain.effects),
         "source_hashes": {
             "provider": sha_file(ROOT / "rawlsing_next/pre553_empirical_possibility_provider.py"),
