@@ -129,8 +129,8 @@ Full machine-readable A–J fields are in `01_CASES.jsonl` and `02_CASES.tsv`.
 
 ## Review commit
 
-- Review artifacts commit: `REVIEW_ARTIFACTS_COMMIT_PLACEHOLDER`
-- Final branch head is the follow-up commit recording this SHA; the terminal
-  return gives the exact final commit.
+- Review artifacts commit: `134050de28396384b7ed3907bcfb6b72bb32cf59`
+- Final branch head is the follow-up commit recording this SHA and the hash
+  manifest; the terminal return gives the exact final commit.
 - No production/test edit, author repair, self-review, protected merge, native
   run, respondent read, or external upload.
