@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_INCOMING_HQ_GROK_ATTESTATION_R1",
-  "status": "CANDIDATE__READ_ONLY_GROK",
+  "status": "USER_ACCEPTED_ACCESSION__EXISTING_HQD_SCOPE_ONLY",
   "template": false,
   "purpose": "2026-11-07 source-qualified full-machine successor candidature only, separate independent/user accession acceptance still absent; no incumbent replacement or protected write",
   "candidate": {
@@ -429,20 +429,21 @@
     "required_approvals_and_missing_edges": "Issued original source/operation right, current host provenance, source-competent sampling/meaning, independent sourcefree reviewer, true N9 selected world, independent N11, separate N12 Sorok/actor/human/consent acceptance; none manufactured by accession."
   },
   "independent_acceptance": {
-    "status": "NOT_REVIEWED",
-    "reviewer_type": null,
-    "reviewer_identity_or_user_ack": null,
-    "review_artifact_ref": null,
-    "review_sha": null,
-    "reviewed_candidate_sha": null,
+    "status": "ACCEPTED",
+    "reviewer_type": "USER",
+    "reviewer_identity_or_user_ack": "Explicit original user message in this chat on 2026-11-07: 'i grant you accession'; after candidate PR #771 was presented. Chat channel statement attested by assistant in repository, not a separate authenticated GitHub reviewer.",
+    "review_artifact_ref": "WORKER_RETURNS/PROGRAMMA_PYAT_HQ_ACCESSION_20261107_R1/02_DIRECT_USER_ACCESSION_GRANT_RECEIPT.md@3cdeb4d44f1ea79ca79221a12a820a4c576eb328",
+    "review_sha": "d8a264a00d2fd5a049e13053315eba796b47f57d",
+    "reviewed_candidate_sha": "fac286d861659accc47ffca5401952e559eb87a4",
     "unresolved_challenges": [
-      "Independent exact-head reviewer/source-competent assessment outstanding",
-      "Actual machine/worker lease/account state UNKNOWN",
-      "Original35 native/N11/N12 actor issuances separate"
+      "No source/scientific/actor/native/independent reviewer grant follows user accession",
+      "No local Mac/worker process, quota/lease or host status verified",
+      "Not a protected CAS; no incumbent worker preemption",
+      "Accession accepted by user rather than by independent source/science review"
     ]
   },
-  "final_readiness": "NOT_VALID_AS_OPERATIVE_HQ",
-  "note": "Substantive sections marked PASS are self-audited source-reading claims only. Repository validator MUST fail due to unreviewed accession/final readiness; DO NOT falsify acceptance fields. No protected progress pair edits, new workers or physical source rights.",
+  "final_readiness": "ACCESSION_REVIEW_ACCEPTED__OPERATIVE_CONTROL_STILL_SUBJECT_TO_EXISTING_HQD",
+  "note": "User explicitly granted accession to prior candidate head; this JSON update records user consent but is not independent reviewer validation. HQ role remains within existing Pyat/Codex/Browser scope. Source, original respondent, actor, protected merge and host powers held separately.",
   "parallel_flight_board": {
     "status": "PASS",
     "source_law": "CROSS_HQ_CONTROL_ROOM/HQ_PARALLEL_FLIGHTS_AND_ECONOMICAL_MODEL_ROUTING_LAW_R1.md",
