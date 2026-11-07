@@ -1,0 +1,36 @@
+# R9 / #767 — independent exact-final R5C historical F13/F14 source court
+
+**Verdict:** `R5C_EXACT_FINAL_INDEPENDENT_SOURCE_COURT_REPAIR__F14_CURRENT_USE_STILL_HELD__R5D_DOC_ERRATUM`.
+**Reviewer role:** independent non-R5C-author, non-B6-author S0–S1 GitHub historical source/consumer examiner. **S2/S3: NOT_RUN.** No local Mac, original respondent/source, Python/pytest, CI or protected branch execution. This is not a science or production-acceptance decision.
+
+## Immutable cuts / custody
+
+- Corrected R5C branch `agent/pyat748-r5c-historical-bridge-20261107-r1` equals exact final `f548c1f3bfd6820574f18c74341d52d16756e46b` (Git compare **identical**, ahead 0/behind 0). Its substantive source/test commit is `97d367a176df5a42753dbcc07807593cf8fca8b9`.
+- Prior independent RED court `94e3da933abebb6734b6f9a9978e1f109ab5dc21`, reviewing earlier R5C `9e69659fc76d89b0b73f4a50cce922746124ac69`. Original producer/atom authority code pinned `9ba4764bef551b1ce498e5772d60b73d69337d4b`.
+- Protected observation / this review branch prepared at `7a5429ffbc48efd25e28c912da80c822e66bc182`, prior to only the six documentary files of this return. No R5C author branch, PRE-MAIN, B6, R5D, runtime or test source writes.
+- B6 Order A/A5–A6 and C06–C07: PR #764 `3bca0b354d77221198065efb8a82d6f0e0d8acc1`; R5D documentary supersession commit `3e51869dbad2d72210410fdfca91958554f4a662`.
+
+## Bottom line
+
+**Five author repairs are source-supported, but D2 remains incomplete for the first public F14 handoff.** Corrected code now refuses simple row-context mismatch, stale `source_row_hash`, stale `empirical_object_id` and explicit negative F14 gates. However `build_f14_handoff(rows: Sequence[Mapping], response_authority, context)` accepts caller-provided mappings without checking that *the specific signed/support fields* are those of an F13-produced row. `_expected_producer_identity` hashes run/shard/source/wave/country/n_respondents/question/variable/position/response raw+normalized/table; it **does not hash `response_direction`, `response_intensity`, `usable_for_evidence`, `support_status` or the permission/status gates**. It verifies recomputation of this limited self-described identity, not membership in F13 receipt output. In `build_f14_handoff:1422–1481`, these omitted mutable values determine positive/negative signed projection and acceptance. This leaves a concrete negative-to-positive and/or signed-polarity substitution pathway even when the context and two identity strings remain unchanged.
+
+**Static falsification to run on an independent permitted sourcefree runner (NOT_RUN here):** (a) produce a valid direct aggregate F13 row; keep its run/context, row hash, object ID, contract hash and source/response keys; change only a valid signed `response_direction` from `negative` to `positive`, keeping intensity. Both direction signs are shown as accepted in source test `test_f14_positive_and_negative_projections:407–424`. The identity check will not notice the substitution; F14 projects the changed sign from the same binding. (b) produce zero-support row (`n_unweighted=0`), whose F13 `usable_for_evidence=False` and F14 normally denies; keep original producer identity and change only `usable_for_evidence=True` (plus any unneeded status labels). The hash does not cover this field, while F14 tests only its supplied boolean. No detached arbitrary-row F14 `PROMOTABLE` may be accepted as authenticated. A single independent probe with positive promotion in either case confirms material D2 failure; the missing membership check is visible directly from the code regardless.
+
+F1/F14 **historical aggregate-grain sourcefree code remains valuable**, but its arbitrary-row F14 entrypoint cannot earn independent full D1–D6 scoped acceptance yet. This is a finite repair of the F14 handoff trust seam, **not** a request for a second V550/FF compiler, full source archaeology, native original35 tests or a new original issuer. The current currentness/semantic owner remains separate. Preserve D1/D3/D4/D5/D6 repairs; re-review only this D2 seam after author amendment.
+
+## D1–D6 court summary
+
+| Defect | Source-only result | Limit |
+|---|---|---|
+| D1 stale manifest | **PASS scoped**: final `01_SOURCE_HASH_MANIFEST.tsv:16–17` matches Git blob SHA1s `8857f8aa…` (78,690-byte module) and `fcee02c0…` (36,344-byte tests) at content commit `97d367…`. Old 74,051-byte hash is explicitly superseded. | Listed SHA-256 and execution logs are author receipts; this Browser reviewer did not independently byte-rehash or execute pytest. |
+| D2 forged F14 source/identity/eligibility | **REPAIR material**: simple context/hash and negative-gate checks fixed (`:1334–1481`, tests `:467–563`), but F14 signed/support fields and producer membership remain unauthenticated. | Do not promote arbitrary-row `F14Projection.promotable` as original signed/source proof; independent falsifier demanded. |
+| D3 role defaults | **PASS scoped**: `:501–532` mirrors original `ddm_v550_authority_contract.py:221–228`; no role-only relation/cloud grant. | QUC/current issuer status still external. |
+| D4 support gate location | **PASS F13 scoped**: `:1167–1182` mirrors original `ddm_v550_bridge.py:621–646`; zero/missing can be producer eligible, but normal F14 denies `usable=False`. | F14's caller-modifiable usable flag remains D2 repair. |
+| D5 broad producer parity | **PASS source code/sample scope**: fixed low-confidence fallback (`:1002–1006`), role/cloud defaults; test `:263–328` is 14 table types × 5 cases = 70 comparisons. | Executed 70 comparisons are reported by author, not independently rerun; QSM is replaced by identity for original fixture. |
+| D6 receipt labels | **PASS static**: `:1095–1101` and `:1548–1564` omit original-parity-executed and test-executed claims; test `:580–594` asserts absence. | Historic function label is not a live original35 data/issuer grant. |
+
+**Author-only executed-evidence report (not new independent execution):** `pytest_bridge_final.log` says 20 passed/7.91s; `pytest_r5c_final.log` says 143 passed/60.12s (frozen R5 123 + bridge 20). Historical RED/GREEN, source SHA-256 and actual output JSON are preserved as author records, not independent S2 facts. No claim of combined latest R5 136, full QSM, 35-wave original runs or C11/I03/FF native parity.
+
+**Governing boundary:** old F13 operates over aggregate `answer_distribution`/country marginal records and selected historical source/response authority. Current C11 ingest binds respondent event/identity scope (`pre553_c11_ingest.py:578–615`); FF exact conditional support consumes an `EmpiricalFact` with exact joint/query/permission (`field_forge_conditional_support.py:467–529`). Aggregate F13 rows cannot be manufactured into respondent C11 cells, joint co-occurrence, current FF relation, positive original F14 current use, I04 pressure or actor permission by ancestry.
+
+See `01` for six-case evidence matrix, `02` for grain/first consumer, `03` for finite D2 repair, `04` for owner handoff, and `05` for separate R5D historical false-positive-label erratum. Parent #716/#753/#748 stops and Nov 3 five-test owner selection law remain.
