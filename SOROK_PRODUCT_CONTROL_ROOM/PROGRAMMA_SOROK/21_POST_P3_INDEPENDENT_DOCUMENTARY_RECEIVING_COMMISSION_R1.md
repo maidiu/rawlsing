@@ -1,5 +1,7 @@
 # INDEPENDENT RECEIVING COMMISSION — POST-P3 PROGRAMMA CURRENTNESS (DOCUMENTARY)
 
+**CLOSED AS HISTORICAL DISPATCH DOCUMENT:** PR #749 has since merged into protected PRE-MAIN at `a245e6f99bb8d56771f7d88701c8240929887541`; independent source-grained technical review [#5810774993](https://github.com/maidiu/rawlsing/pull/749) was recorded as `COMMENTED` under the same GitHub principal, not formal distinct-principal APPROVE. The human user directed protected receiving with this known custody limitation. Exact 668-record phase file was directly read by blob and all 83 gates matched, despite the original author’s file-reader limitation. For current operational status consult [24 closeout](24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md), not the pre-review instructions below.
+
 **STATUS: READY FOR INDEPENDENT DISPATCH; NO REVIEWER LAUNCHED BY THIS FILE.** Target is exact branch `docs/programma-sorok-post-p3-receiving-full-reconciliation-20261107-r1` at the actual HEAD to be verified at dispatch. Source protected PRE-MAIN: `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`. Distinct I3+ independent nonauthor; not this reconciliation author, native science issuer, Pyat HQ, P3 implementation author or protected CAS merger.
 
 1. Verify isolated changed-file scope and pinned PR #746 protected merge; independently check P3 final audit, accepted `e85b6f6a`/`fae525709` evidence grades and actual code first-consumer calls.
