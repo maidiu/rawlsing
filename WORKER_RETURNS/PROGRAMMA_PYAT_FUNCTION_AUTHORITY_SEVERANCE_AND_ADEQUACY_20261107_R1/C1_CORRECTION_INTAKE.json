@@ -1,0 +1,51 @@
+{
+  "task": "pyat777-source-reporting-corrections-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-reporting-corrections-r1/completion.json",
+  "receipt_verified": {
+    "session": "ses_b998af9086264002a86ee57b6e",
+    "pid": 5814,
+    "exit_code": 0,
+    "finished_utc": "2026-11-07T22:54:26.062653+00:00"
+  },
+  "author_commit": "79c4f33c51e7d0146e06e12cac6ea903c79cb7b0",
+  "author_remote_readback": "79c4f33c51e7d0146e06e12cac6ea903c79cb7b0",
+  "independent_review": "753ff5dc95fb218f84ebf1697a91a2d392367f2c",
+  "hq_disposition": "ACCEPT_SCOPED_HISTORICAL_METADATA_AND_SOURCEFREE_CANARY_WITH_CORRECTIONS_VERIFIED",
+  "checks": [
+    "13 modified files confined to C1 evidencelease; no production writes",
+    "JSONL and TSV parse and column widths consistent",
+    "212 anti-join rows retained",
+    "Historical original probe JSON preserved byte-identically",
+    "Current candidate authority acknowledged, competence unproved not disproved",
+    "Non-test demand unproved and FF producer candidate correctly described",
+    "Mandatory oldpacket binding/retirement removed; context_only no automatic rawcount ban"
+  ],
+  "next_requirement": "B5 O01-O07 shared sourceconfiguration producer\u2192C11 selected-authority path across35 remains unaccounted; Q86canary cannot substitute for that estate requirement.",
+  "next_action": {
+    "job": "pyat777-source-estate-producer-consumer-r1",
+    "launch": {
+      "job_id": "pyat777-source-estate-producer-consumer-r1",
+      "child_pid": 7969,
+      "supervisor_pid": 7968,
+      "observer_pid": 7970,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-estate-producer-consumer-r1",
+      "launch_is_not_completion": true
+    },
+    "actual_model": {
+      "id": "msg_1b83aeff7001SkY0XUopN9lU1L",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794092232771,
+        "streamed": 1794092239641,
+        "completed": 1794092239736
+      }
+    }
+  },
+  "goal_complete": false,
+  "production_patch_authorized": false
+}

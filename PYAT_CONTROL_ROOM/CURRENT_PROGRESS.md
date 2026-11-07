@@ -1,3 +1,7 @@
+# #777 latest disposition — C1 corrections closed; shared source-estate court out
+
+Corrected `79c4f33c51e7d0146e06e12cac6ea903c79cb7b0` passes HQ mechanical consistency and evidence-retention checks. C1 historical metadata/sourcefree canary scope accepted; current selected provenance/equivalence remains UNPROVED. Freed author now traces shared O01-O07 sourceconfiguration authority→C11 across35, reusing R157/P1 and qualified predecessor capital; no one-wave extraction or replacementengine. C4 corrections/C3 review continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_CORRECTION_INTAKE.json`. No native/science/production/protected claim.
+
 # #777 latest review — O14 registration preserved, absence claim corrected
 
 Review `0def1171f8f9d2681b64ebe287adb7d209c896c7` verifies seven O14 tests, historical source pins and actual M1 registration builder. The original literal-constructor search missed registration; invocation is only NONE_FOUND_IN_STATIC_SOURCE. Different role responsibility is not proved whole-pipeline inadequacy. Four reporting corrections dispatched to existing author; no replacement or original-J gate justified. C1 corrections/C3 review continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C4_REVIEW_INTAKE.json`. Historical selection/equivalence remains UNPROVED and all inherited estates/17agenda remain.
