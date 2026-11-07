@@ -1,5 +1,7 @@
 # PROGRAMMA PYAT #716 — F2 LOCAL SELECTION COURT RETURN: USER-REPORTED CUSTODY, NOT PRE-MAIN INSTALLATION
 
+**INDEPENDENT F2 RECEIVING COMMISSION PREPARED:** [Issue #741](https://github.com/maidiu/rawlsing/issues/741), HELD until actual bounded sanitized ZIP/return is accessible and independently checked. It must resolve documentary F2 58-row safety, 18 durable-store held assets, 8 conflicts, 17 issuer/no-byte holds, and 13 original-file local SHA claims without inventing Mac access or live issuer permission.
+
 **Status:** `F2_PARTIAL__SELECTION_COURT_COMPLETE__MATERIAL_ISSUER_DURABILITY_AND_BINDING_HOLDS__NO_NEW_INSTALL__NO_PR__NO_LIVE_AUTHORITY_PROMOTION`. This is an **exact user-reported local worker terminal summary**, not a ChatGPT/GitHub independently examined ZIP or source-asset verification. As of this documentary record, original local bytes/ZIP are **not accessible** through the active GitHub source connection and were not opened here. **Parent #716 authority-dependent STOP remains.**
 
 ## Exact inherited F1 and independent acquisition review
