@@ -4,7 +4,7 @@
 
 **Source and identity conservation:** Original **144/144 functions, 38/38 seams, 83/83 current gates (77 initial W7 + six later), 304/304 historical source asset identities and 100/100 inherited source inputs** preserved, per exact independent full-blob/ledger readback at [PR #749 technical review](https://github.com/maidiu/rawlsing/pull/749). No issuer, native C9/C12, actor B, ADP016 memory, operated S14, Gate4/Gate5 or production authority issued.
 
-**Review limitation explicitly retained:** The documented source-grained technical reviewer was a distinct ChatGPT conversation, but GitHub recorded a same-repository-account `COMMENTED` event rather than an independently authenticated third-party APPROVE. The human user directed protected completion with this limitation disclosed. Neither the merger nor this factual record manufactures a separate-principal approval.
+**Review limitation explicitly retained:** The documented source-grained technical reviewer was a review pass separate from the recorded PR #749 authoring work, but GitHub recorded a same-repository-account `COMMENTED` event rather than an independently authenticated third-party APPROVE. The human user directed protected completion with this limitation disclosed. Neither the merger nor this factual record manufactures a separate-principal approval.
 
 **CI adverse truth:** Canonical tree integrity PASS for the reviewed #749 head; separate governed FIABC/LiTS court remains **144 passed / 3 failed**. No Pyat/LiTS repairs or test relaxation. This factual revision does not claim a new S2 run.
 
