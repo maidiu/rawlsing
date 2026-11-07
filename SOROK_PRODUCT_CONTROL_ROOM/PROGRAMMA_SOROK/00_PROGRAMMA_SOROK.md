@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+**CURRENT PROTECTED STATUS — Sorok operating-law front door adopted at `ba165a6a073dfdac0cb2e993ab8111ebb5ef404c`; #746 sourcefree P3 received at `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`. Original native, source, reviewer and human rights held; this newer documentary recourt is a candidate pending independent acceptance.**
+
+
 **LATEST PROTECTED CURRENTNESS — 2026-11-07:** [#746](https://github.com/maidiu/rawlsing/pull/746) merged sourcefree P3 at `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`. Read [18 protected P3 receiving](18_PROTECTED_P3_RECEIVING_AND_WHOLE_PROGRAM_CURRENTNESS_20261107_R1.md), [19 exact 144-function / 38-seam / 83-current-gate recourt (77 original + six later)](19_POST_P3_FUNCTION_SEAM_GATE_RECOURT_20261107_R1.json) and [20 next-goal decision](20_P4_NEXT_GOAL_DECISION_AND_PROOF_PLAN_20261107_R1.md). Original W8/#704-era source-period statements below are retained as history, not current priorities. P3 TEST_ONLY engineering accepted; native Rule A/T, ADP016/017, independent B, C12 native, S14 operated rights, human A5, production still HELD. The new documentary recourt itself requires independent acceptance before protected adoption.
 
 

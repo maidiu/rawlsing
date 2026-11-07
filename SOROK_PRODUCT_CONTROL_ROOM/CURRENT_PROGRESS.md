@@ -1,4 +1,4 @@
-# Sorok current progress revision38 — protected P3 engineering received, whole-PROGRAMMA recourt candidate
+# Sorok current progress revision37 — protected-qualified pair with additive P3 receiving candidate (2026-11-07)
 
 **Protected fact:** #746 sourcefree TEST_ONLY P3 merged at `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`; runtime `16275d03fc4724a694c48ed9d447c4eeadbe25f2`, focused nonauthor `e85b6f6a733ef5bbd664679bdf9613c04003e3de`, additive nonauthor `fae525709bebceac21cb7a44a811dbf5b456b22f`. P3 first consumer: RecursionCycle -> BatchEngine -> P3Owner -> unchanged P2Owner -> PsycheStore -> later computed response. 13/13 author matrix; 61 store/owner PASS one inapplicable skip; 37 units; inherited #704 71 PASS.
 
