@@ -152,7 +152,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED_ACCEPT_WITH_REPORTING_CORRECTIONS",
     "actual_model": {
       "id": "msg_1b827da4b0015f7CDYRI93zqGJ",
       "type": "assistant",
@@ -164,7 +164,10 @@
       "time": {
         "created": 1794090981997
       }
-    }
+    },
+    "returned_commit": "753ff5dc95fb218f84ebf1697a91a2d392367f2c",
+    "hq_import_commit": "643fb7570",
+    "disposition": "Qualified historical metadata and sourcefree canary evidence accepted; current non-test consumer not proved; current code-created source semantics substitute unassessed. Mandatory historical rebinding or retirement rejected as unjustified."
   },
   {
     "task": "pyat777-joint-reporting-corrections-r1",
@@ -230,6 +233,38 @@
         "created": 1794091406373,
         "streamed": 1794091412686,
         "completed": 1794091412768
+      }
+    }
+  },
+  {
+    "task": "pyat777-source-reporting-corrections-r1",
+    "session": "ses_b998af9086264002a86ee57b6e",
+    "branch": "agent/pyat777-source-consumer-20261107-r1",
+    "startup": "a98299e7c9cd05aa3eabe2c22d20ea6b746ea667",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-consumer",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_SOURCE_CONSUMER",
+    "launch": {
+      "job_id": "pyat777-source-reporting-corrections-r1",
+      "child_pid": 5814,
+      "supervisor_pid": 5813,
+      "observer_pid": 5815,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-source-reporting-corrections-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "actual_model": {
+      "id": "msg_1b830db01001jjKAEil77IPvfR",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794091572060,
+        "streamed": 1794091576099,
+        "completed": 1794091576210
       }
     }
   }
