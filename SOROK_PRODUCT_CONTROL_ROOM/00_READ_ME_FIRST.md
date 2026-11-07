@@ -1,5 +1,8 @@
 # SOROK HQ — compatibility first-read and historical startup
 
+**LATEST R39 PROTECTED P4 RECEIVING:** PR [#751](https://github.com/maidiu/rawlsing/pull/751) merged `ae3dd0922c5bf00a50071ed34f75798838ad4e95`. Read [PROGRAMMA 00](PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md), [25 exact P4 receiving/currentness and next goal](PROGRAMMA_SOROK/25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md) and [paired revision39 progress](CURRENT_PROGRESS.json). P4 D002 first-consumer accepted **sourcefree TEST_ONLY**, P5 ordinary continuous situated encounter reader **not yet launched**. Separate native scientific/source/B/operated rights/human gates HELD; FIABC 3 historical FAIL. Earlier R38 and pre-P4 candidate statements below reflect their dated cuts.
+
+
 **LATEST PROTECTED SOROK RECEIVING (R38, 2026-11-07):** PR [#749](https://github.com/maidiu/rawlsing/pull/749) **merged** at `a245e6f99bb8d56771f7d88701c8240929887541` after #746 TEST_ONLY P3. [Current PROGRAMMA front door](PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md) and [R38 closeout receipt](PROGRAMMA_SOROK/24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md) control; [paired progress](CURRENT_PROGRESS.json) now revision38. The old pre-merge author-candidate wording below is historical. Source-grained technical review and human user-directed receiving are recorded with same-GitHub-account limitation; not a distinct third-party approval. All native/scientific/independent B/human holds and the separate 144 PASS / 3 FAIL FIABC/LiTS RED persist. P4 is SOURCEFREE_TEST_ONLY proposed, NOT launched.
 
 

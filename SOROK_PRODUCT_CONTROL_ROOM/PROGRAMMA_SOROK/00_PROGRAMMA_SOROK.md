@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — COMPLETE SELF-SUFFICIENT HQ OPERATING FRONT DOOR
 
+**CURRENT PROTECTED STATUS — R39 P4 SOURCEFREE RECEIVED (2026-11-07):** PR [#751](https://github.com/maidiu/rawlsing/pull/751) merged sourcefree D002 MPC1–7 bounded first consumer at `ae3dd0922c5bf00a50071ed34f75798838ad4e95`, exact source `80bce19efeaeb98b1452e8b5995ebf80f83e166f`. Read [25 exact P4 receipt and next-work selector](25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md) and paired [progress R39](../CURRENT_PROGRESS.md). R38 P3 documentation and source law preserved, PR #751 had distinct nonauthor sourcefree code receiving (same GitHub-principal COMMENT custody caveat). Native CAN/O05/ADP/B/actor source, operated S14, human A5/S11 and production remain HELD. Governed FIABC/LiTS 144 PASS/3 FAIL. **Next P5 situated continuity sourcefree experiment PROPOSED_NOT_LAUNCHED**, no new gate. Historic "P4 not launched" paragraphs below are pre-#751 cut assertions.
+
+
 **CURRENT PROTECTED STATUS — Sorok operating-law front door adopted at `ba165a6a073dfdac0cb2e993ab8111ebb5ef404c`; #746 sourcefree P3 received at `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`; #749 post-P3 documentary recourt merged into protected PRE-MAIN at `a245e6f99bb8d56771f7d88701c8240929887541`. Progress R38 is paired; source, native, human and independent-review identity limits persist.**
 
 
