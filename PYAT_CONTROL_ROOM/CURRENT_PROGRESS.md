@@ -1,3 +1,7 @@
+# #777 latest intake — C2 author return, independent review running
+
+Exact author cut `751fb3fab88ab0faef4b20afeb57a89801f7cce8` is imported as evidence only. Existing exact multi-conditioner composition is demonstrated on nonrespondent fixtures; original J issuer provenance remains UNPROVED. The advertised cold restore is same-process deterministic reconstruction. Independent nonauthor review `pyat777-joint-independent-review-r1` is actually launched with verified Flash MAX metadata; C1/C3 remain out at the single intake check. No production repair, historical equivalence, protected adoption or goal completion is accepted. Full standing disciplines and all 17 agenda obligations remain. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_RETURN_INTAKE.json`.
+
 # CURRENT CANDIDATE — #777 source/reference graph and no-drop accounting
 
 Required P1/P6 accounting now retains154 native-ID source records with166 source-explicit reference edges, fourteen passing retention checks, and an explicit unmatched case anti-join. Independent historical/document registers retain58release,27A02identity,27authority/function,228locator,581readset and687joined-call rows. They are overlapping denominators, not a claimed executed universe. No selected-use/equivalence/severance verdict follows from import.

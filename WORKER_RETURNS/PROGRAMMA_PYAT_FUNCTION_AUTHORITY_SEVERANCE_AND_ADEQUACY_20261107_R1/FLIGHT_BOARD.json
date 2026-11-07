@@ -47,7 +47,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED_CUSTODY_ONLY_INDEPENDENT_REVIEW_RUNNING",
     "actual_model": {
       "id": "msg_1b81bc5e700138t1A6twlKNaU6",
       "type": "assistant",
@@ -61,7 +61,10 @@
         "streamed": 1794090214235,
         "completed": 1794090214706
       }
-    }
+    },
+    "returned_commit": "751fb3fab88ab0faef4b20afeb57a89801f7cce8",
+    "hq_import_commit": "0eae02a31",
+    "disposition": "Existing exact joint mechanism demonstrated by author; original J provenance UNPROVED; cold restore only same-process rebuild; no severance/equivalence accepted."
   },
   {
     "task": "pyat777-ff-postff-consumer-r1",
@@ -92,6 +95,38 @@
         "created": 1794090191124,
         "streamed": 1794090219377,
         "completed": 1794090219924
+      }
+    }
+  },
+  {
+    "task": "pyat777-joint-independent-review-r1",
+    "session": "ses_13b19dd9c6ac46bc89e488bff2",
+    "branch": "review/pyat777-joint-consumer-20261107-r1",
+    "startup": "751fb3fab88ab0faef4b20afeb57a89801f7cce8",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-joint-independent-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_INDEPENDENT_REVIEW",
+    "launch": {
+      "job_id": "pyat777-joint-independent-review-r1",
+      "child_pid": 3380,
+      "supervisor_pid": 3379,
+      "observer_pid": 3381,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-joint-independent-review-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "actual_model": {
+      "id": "msg_1b82340b4001n5WFBJJujup5JM",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794090680540,
+        "streamed": 1794090701561,
+        "completed": 1794090701873
       }
     }
   }
