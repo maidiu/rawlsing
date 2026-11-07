@@ -1,3 +1,19 @@
+# Sorok current progress revision38 — post-P3 PROGRAMMA documentary received (2026-11-07)
+
+**Protected receiving verified:** PR [#749](https://github.com/maidiu/rawlsing/pull/749) merged at `a245e6f99bb8d56771f7d88701c8240929887541` from exact reviewed candidate `02c405c4da0fb5a8e69f7d3d6b5b56bbe9ed0ede` after protected sourcefree P3 PR #746. The post-P3 PROGRAMMA front door and the 18–23 documentary source/denominator/gate/priority overlays now physically exist on protected PRE-MAIN; see [R38 receiving closeout](PROGRAMMA_SOROK/24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md). This is protected **documentary currentness**, not new engineering/science/native/human acceptance.
+
+**Source and identity conservation:** Original **144/144 functions, 38/38 seams, 83/83 current gates (77 initial W7 + six later), 304/304 historical source asset identities and 100/100 inherited source inputs** preserved, per exact independent full-blob/ledger readback at [PR #749 technical review](https://github.com/maidiu/rawlsing/pull/749). No issuer, native C9/C12, actor B, ADP016 memory, operated S14, Gate4/Gate5 or production authority issued.
+
+**Review limitation explicitly retained:** The documented source-grained technical reviewer was a distinct ChatGPT conversation, but GitHub recorded a same-repository-account `COMMENTED` event rather than an independently authenticated third-party APPROVE. The human user directed protected completion with this limitation disclosed. Neither the merger nor this factual record manufactures a separate-principal approval.
+
+**CI adverse truth:** Canonical tree integrity PASS for the reviewed #749 head; separate governed FIABC/LiTS court remains **144 passed / 3 failed**. No Pyat/LiTS repairs or test relaxation. This factual revision does not claim a new S2 run.
+
+**Next real product move:** P4 D002 MPC1–7 **SOURCEFREE_TEST_ONLY** first user→world→historically conditioned Other→user encounter, with one actual first consumer, source severance and independent hostile receiving. P4 remains **PROPOSED_NOT_LAUNCHED**. Parallel legitimate science/owner, native-B, S10 original memory, S14 rights and human work remains separately held.
+
+**Historical progress follows unchanged.** Revision37's prior author-candidate/pending-review wording was true at its pre-#749-merge cut, not today's protected status. Earlier rev36 MD/rev35 JSON split and M35/S35 `PUBLISHED_NOT_LAUNCHED` remain historical evidence.
+
+---
+
 # Sorok current progress revision37 — protected-qualified pair with additive P3 receiving candidate (2026-11-07)
 
 **Additional source no-drop ledger:** PROGRAMMA_SOROK/23_POST_P3_ASSET_AND_INPUT_NO_DROP_COURT_20261107_R1.json conserves 304 historical GIT asset rows and 100 original source-input rows, with no original-asset/issuer promotion. Author recourt pending independent review.
