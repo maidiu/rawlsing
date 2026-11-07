@@ -1,6 +1,6 @@
 # SOROK P3 final delivery write-up — for user/Browser-HQ
 
-**STATUS: ORIGINAL SOURCEFREE TEST_ONLY ENGINEERING ACCEPTED; SELECTIVE PR READY.**
+**STATUS: ORIGINAL SOURCEFREE TEST_ONLY ENGINEERING ACCEPTED; SELECTIVE PR #746 PUBLISHED; NO MERGE.**
 
 Runtime/evidence cut: `16275d03fc4724a694c48ed9d447c4eeadbe25f2`  
 Implementation cut: `486d42a4aa5dcd449564b95567ae93b59c4679a4`  
@@ -159,7 +159,7 @@ preserved. Additive proofs are independently **ACCEPT_SCOPED_TEST_ONLY** at `fae
 
 ### 13. Selective PRE-MAIN PR
 
-The isolated branch `codex/sorok-p3-selective-receiving-20261107-r1` carries the source-equivalent selective payload, original negative evidence, both accepting reviews, final delivery and bounded PROGRAMMA updates. It targets `integration/pre-main-reconciliation-r1` at protected `c852d751`. See `FINAL_GOAL_AUDIT.json` for actual publication custody. No protected merge is performed.
+The isolated branch `codex/sorok-p3-selective-receiving-20261107-r1` carries the source-equivalent selective payload, original negative evidence, both accepting reviews, final delivery and bounded PROGRAMMA updates. It targets `integration/pre-main-reconciliation-r1` at protected `c852d751`. Published PR: [#746](https://github.com/maidiu/rawlsing/pull/746). See `FINAL_GOAL_AUDIT.json` for publication custody. No protected merge is performed.
 
 ### 14. Next engineering edge
 
@@ -173,4 +173,4 @@ later computed response, preserve material/native separation, expose only
 selected actor/user surfaces, carry source-bound compression evidence, survive
 cold/crash/replay/negative boundaries, and measure actual DB+WAL cost.
 
-It is **not** a validated human person, native psychological law, independent B product or production system. Runtime and additive proofs have independent scoped acceptance. Exact full-state snapshot/fork/remap and positive psychological inheritance are not claimed; the reviewer finds the matched response-relevant causal control sufficient. Protected merge and native-science holds persist. The remaining authorized delivery action is publishing the selective PR, without merging.
+It is **not** a validated human person, native psychological law, independent B product or production system. Runtime and additive proofs have independent scoped acceptance. Exact full-state snapshot/fork/remap and positive psychological inheritance are not claimed; the reviewer finds the matched response-relevant causal control sufficient. Protected merge and native-science holds persist. The selective PR [#746](https://github.com/maidiu/rawlsing/pull/746) is published. The assigned sourcefree engineering and PR delivery are complete; protected receiving/merge remains held.
