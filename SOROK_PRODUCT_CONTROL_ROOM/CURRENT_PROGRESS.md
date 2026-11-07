@@ -1,3 +1,19 @@
+# Sorok current progress revision39 — P4 sourcefree first consumer protected received (2026-11-07)
+
+**Protected P4:** PR [#751](https://github.com/maidiu/rawlsing/pull/751) **MERGED** at `ae3dd0922c5bf00a50071ed34f75798838ad4e95`; exact source head `80bce19efeaeb98b1452e8b5995ebf80f83e166f`, source parent `2cb4113f0d1204bb83ec452625ca8d5c984c3f9a`. Original independent Codex re-review received repaired P4 runtime `9eacf50380176d617637489d04cab3a969dd0a29`; later changes were evidence/README only. Current [R39 receiving and next-work receipt](PROGRAMMA_SOROK/25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md).
+
+**Completed scoped proof:** D002 MPC1–7 first user-owned speech → performed P2 world → historically conditioned P3 Other → user-perceived expression → separately chosen inspection, real clock/material causality, cold-readback, source severance/restore and privacy negatives within sourcefree workshop fixture. Joint invitation returns at 230 with material 1; plain inspection material/time no-change; optional post-inspection two-clock interval at user instruction causes S46 material 1→0. Other non-actionable outward speech may coexist with lawful independent background continuation. No universal WAIT action and no requirement to return at each trivial utterance.
+
+**Grading:** `ACCEPT_SCOPED_SOURCEFREE_TEST_ONLY_FIRST_CONSUMER`. **NOT** production/native-science/admitted original source/independent B/ADP memory/human S11/A5/operated S14. GitHub reviews posted as same-principal COMMENTED, with prior distinct nonauthor Codex S2 return recorded; no separately authenticated approving principal. No new reviewer grant. Original 144/38/83/304/100 identity register holds remain.
+
+**Live CI truth:** reviewed #751 head canonical integrity PASS; governed FIABC/LiTS **144 PASS / 3 inherited FAIL** unwaived. Sourcefree P4 reported tests 3 PASS, original P2 71 PASS, selected P3 74 PASS/1 SKIP; no new S2 test run is implied by this status receipt.
+
+**Next highest-leverage product-engineering candidate:** bounded sourcefree continuous situated experience reader / ongoing Other activity × user intervention × perceptual salience, reusing S45/S46/P2/P3/P4 rather than adding duplicate time/world stores; user intent/attention cannot be invented. This is **PROPOSED_NOT_LAUNCHED**, non-gating; parallel actual original science, independent coactor/actor rights and human lanes still need qualified owners and authority.
+
+**Historical progress follows unchanged.** R38 and earlier pre-#751 P4 proposal/pending descriptions are historical, not current protected P4 status; the old MD36/JSON35 split remains recorded as historical evidence.
+
+---
+
 # Sorok current progress revision38 — post-P3 PROGRAMMA documentary received (2026-11-07)
 
 **Protected receiving verified:** PR [#749](https://github.com/maidiu/rawlsing/pull/749) merged at `a245e6f99bb8d56771f7d88701c8240929887541` from exact reviewed candidate `02c405c4da0fb5a8e69f7d3d6b5b56bbe9ed0ede` after protected sourcefree P3 PR #746. The post-P3 PROGRAMMA front door and the 18–23 documentary source/denominator/gate/priority overlays now physically exist on protected PRE-MAIN; see [R38 receiving closeout](PROGRAMMA_SOROK/24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md). This is protected **documentary currentness**, not new engineering/science/native/human acceptance.
