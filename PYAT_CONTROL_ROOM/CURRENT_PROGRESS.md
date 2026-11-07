@@ -1,3 +1,7 @@
+# #777 latest review — FF behavior qualified, inadequacy claim rejected
+
+Independent `aa122437b1fe224f4c6ea2ee31ed2f7de6af7323` qualifies sourcefree positives/negatives and eleven exact source identities. Absence of selected generic non-test FF path does not prove implementation inadequacy; native/structural/actor rows are NOT_RUN with selection unproved, not exact issuer-blocked claims. Existing author is correcting all ten verdicts. C5 shared35 producer and C6 historical selected-use work continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C3_REVIEW_INTAKE.json`. No new engine or authority gate justified; full777 incomplete.
+
 # #777 latest disposition — C4 bounded court closed; historical selected-use closure out
 
 Corrected `950ff275527a2963253336cbb05924a6c2943cd8` passes HQ consistency/evidence-retention checks. Actual M1 registration, seven sourcefree checks and static historical pins are accepted at that scope; selected historical use/equivalence remains UNPROVED. Freed author now closes actual selected-use edges from existing29function/58release/581-687call capital; no recensus or modernconsumer duplication. C3 review/C5 shared source35 continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C4_CORRECTION_INTAKE.json`. All goal/authority/17agenda limits remain.
