@@ -1,6 +1,6 @@
 {
   "grade": "SOURCEFREE_TEST_ONLY",
-  "runtime_commit": "0fde115bf8adb6d3929ea2a6e98bbd5cb6274274",
+  "runtime_commit": "9eacf50380176d617637489d04cab3a969dd0a29",
   "protected_start": "034bf8b6927bcd9c7c0b88b36368c1282a8f1f14",
   "source_sha256": {
     "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
@@ -12,21 +12,21 @@
     "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/p3_fixture_support.py": "7c3490178921c0765c8dfd42c9fb3f39d0c4696d2d048340094d746120b958eb",
     "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
     "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/response.py": "3f06d0f5d6f1ac2a035951759a61fe3f4212d473f8c1f204a991a8b8964afd7d",
-    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py": "ad3dda259c808ffbe6d218e66fb051e00a53fc2258f50614f60c219568442906",
+    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py": "b4d092ac367b12aad6617f136db0c30bffd6a0e29a122e83920d012b8a4687b0",
     "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/speech.py": "f996a179d17bc19a8e56ad7c280d2b6ce5d47b6db531ee4527fde13e5e0114bd",
-    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py": "ee5f9f12b25cc527acd0f4ef8c5c6cd29a530bbc46d34854e7337281543f9f54",
+    "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py": "d91139340a242da86cc797e340dbfa77dc466c0028a23eeee137ef94ab2e689f",
     "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py": "26fbd1d70da181ec27898fae662a75c498098c1dbc4dd13ed37ae90f1b75572a",
     "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_speech.py": "d6ca90d592d92a251a42cf0374555c71fa26b890cc967ca51e0f7b1c1a0bde4b",
     "WORKER_RETURNS/SOROK-S45-S47-PROJECTION-20261105-R1/s45_projection/projection.py": "6e7771000b0d50abcdc990192a2d834171640371e6e814694a918eb9286386fd"
   },
   "evidence_sha256": {
-    "cli-transcript.json": "0f4f3b651018485a0808b0123a5714206bba13c6c84549cb41d1de24591f3e4b",
-    "internal-receipts.json": "f512d1390dea575e6f944ef80ba23b3a5081b942ced0f9a4aeb81801c337435d",
+    "cli-transcript.json": "d3cf1839b37c28b9b18ddc33e7e6c06f2ea5aa93f0f27a114327525547870ca0",
+    "internal-receipts.json": "efc764c8eb19643319cb2e1c6d32023c2f977cf513b744fb9b31ac8d9a4a5668",
     "independent-disposition.md": "45838fa8f1e1ea3b2278d669115e6f0b5f679ba993600c77b256239929793186",
     "independent-driver.py": "f6db0fb211aeb60d01d15a5289de0f6e16cd1ecf2c7acbe44c3e7482ce690e24"
   },
   "author_checks": {
-    "P4": "3 passed in 121.55s",
+    "P4": "3 passed in 117.22s on 9eacf5038",
     "P3 selected owner, rules, projection, store": "74 passed, 1 skipped in 39.69s",
     "received P2 developmental recursion full suite": "71 passed in 281.56s"
   },
@@ -37,7 +37,8 @@
     "original_disposition": "REVISE",
     "original_runtime": "b6c9170cab7403ffc14cad2ab95b6dc969c24e3e",
     "independence": "Distinct nonauthor Codex reviewer, separate scratch execution. No separate GitHub principal approval claimed.",
-    "controls_passed": 10
+    "controls_passed": 10,
+    "superseded_by_receiving_review": 5813377183
   },
   "superseded_runtime_commit": "b6c9170cab7403ffc14cad2ab95b6dc969c24e3e",
   "author_commands": {
@@ -58,7 +59,7 @@
     "A matching observed invitation permits a new caller-selected inspection"
   ],
   "courts": {
-    "engineering": "Independently accepted at the exact sourcefree runtime.",
+    "engineering": "Control-return repair awaiting independent re-review.",
     "scientific": "HOLD for original native effects; all demonstrated response behavior is SOURCEFREE_TEST_ONLY.",
     "authority": "HOLD for original actor/source grants, human participation, operated rights and protected CAS. Draft PR publication is within worker scope."
   },
@@ -72,5 +73,12 @@
     "codex_billing": "Not exposed in local session telemetry",
     "product_runtime_provider_calls": 0,
     "product_runtime_provider_cost": 0
+  },
+  "control_return_repair": {
+    "review_id": 5813377183,
+    "reviewed_pr_head": "f9464f6c7c648d9c081f1837d361c5134ed100ff",
+    "prior_runtime": "0fde115bf8adb6d3929ea2a6e98bbd5cb6274274",
+    "defect": "S46 repair ran after invitation and before returning control.",
+    "negative_regression": "New test_cli.py failed against f9464f6c7 Python runtime at first_turn.receipt.interval is None (1 failed in 25.26 s)."
   }
 }

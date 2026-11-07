@@ -14,6 +14,7 @@
     [
       "inspect-edge",
       "TEST_ONLY_BP4_WORLD_EVT_ea29900c8f288d9736bbf9fca918dd522292176b26818e4a397c8fbf63eb1685",
+      "--then-wait",
       "--request-id",
       "inspect"
     ],
@@ -89,7 +90,7 @@
       },
       "next": {
         "grade": "SOURCEFREE_TEST_ONLY",
-        "clock": 232,
+        "clock": 230,
         "location": "workshop",
         "tool_available": true,
         "observations": [
@@ -169,9 +170,9 @@
       "admission": "ADMITTED",
       "performed": true,
       "observation": {
-        "event_id": "TEST_ONLY_BP4_WORLD_EVT_d797d48135a0cc77815329f79966eda4bb0b6da6af1c296ba1dfcb372e28fa4d",
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_f83d558ba474c4eb0b12be57cdf1535fcc38955e5b4688fc050dba3ea88bb614",
         "kind": "INSPECT",
-        "clock": 232,
+        "clock": 230,
         "location": "workshop",
         "actor_visible_id": "U",
         "summary": "The actor inspects the present material but changes nothing.",
@@ -251,9 +252,9 @@
             "perceived_by_user": true
           },
           {
-            "event_id": "TEST_ONLY_BP4_WORLD_EVT_d797d48135a0cc77815329f79966eda4bb0b6da6af1c296ba1dfcb372e28fa4d",
+            "event_id": "TEST_ONLY_BP4_WORLD_EVT_f83d558ba474c4eb0b12be57cdf1535fcc38955e5b4688fc050dba3ea88bb614",
             "kind": "INSPECT",
-            "clock": 232,
+            "clock": 230,
             "location": "workshop",
             "actor_visible_id": "U",
             "summary": "The actor inspects the present material but changes nothing.",
@@ -341,9 +342,9 @@
           "perceived_by_user": true
         },
         {
-          "event_id": "TEST_ONLY_BP4_WORLD_EVT_d797d48135a0cc77815329f79966eda4bb0b6da6af1c296ba1dfcb372e28fa4d",
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_f83d558ba474c4eb0b12be57cdf1535fcc38955e5b4688fc050dba3ea88bb614",
           "kind": "INSPECT",
-          "clock": 232,
+          "clock": 230,
           "location": "workshop",
           "actor_visible_id": "U",
           "summary": "The actor inspects the present material but changes nothing.",
@@ -362,10 +363,10 @@
     }
   },
   "author_timing": {
-    "new": "real 6.10\nuser 5.65\nsys 0.32\n            51126272  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               15590  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                 593  voluntary context switches\n                1840  involuntary context switches\n         38835285656  instructions retired\n         19558545882  cycles elapsed\n            45584384  peak memory footprint\n",
-    "say": "real 8.69\nuser 8.44\nsys 0.18\n            44797952  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               13347  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                  75  voluntary context switches\n                3217  involuntary context switches\n         59760337060  instructions retired\n         28353563194  cycles elapsed\n            39649280  peak memory footprint\n",
-    "inspect": "real 9.95\nuser 9.68\nsys 0.17\n            47636480  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               14120  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                  21  voluntary context switches\n                2632  involuntary context switches\n         69311921460  instructions retired\n         32484020106  cycles elapsed\n            42496000  peak memory footprint\n",
-    "view": "real 5.85\nuser 5.68\nsys 0.12\n            45006848  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               13397  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   3  voluntary context switches\n                2568  involuntary context switches\n         42971914854  instructions retired\n         20293553987  cycles elapsed\n            39886848  peak memory footprint\n"
+    "new": "real 5.35\nuser 4.96\nsys 0.28\n            52232192  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               15874  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                 585  voluntary context switches\n                1416  involuntary context switches\n         38867344846  instructions retired\n         19457981888  cycles elapsed\n            46690304  peak memory footprint\n",
+    "say": "real 7.11\nuser 6.75\nsys 0.15\n            47202304  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               13933  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                  36  voluntary context switches\n                3701  involuntary context switches\n         53152346879  instructions retired\n         25347971225  cycles elapsed\n            42053632  peak memory footprint\n",
+    "inspect": "real 7.73\nuser 7.12\nsys 0.17\n            47841280  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               14088  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                  63  voluntary context switches\n                4778  involuntary context switches\n         50905497182  instructions retired\n         24761007653  cycles elapsed\n            42692608  peak memory footprint\n",
+    "view": "real 6.01\nuser 5.86\nsys 0.13\n            44064768  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               13165  page reclaims\n                   0  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   3  voluntary context switches\n                1664  involuntary context switches\n         42924642053  instructions retired\n         20112722041  cycles elapsed\n            38944768  peak memory footprint\n"
   },
   "python": "3.11.3",
   "host": "Darwin x86_64",
