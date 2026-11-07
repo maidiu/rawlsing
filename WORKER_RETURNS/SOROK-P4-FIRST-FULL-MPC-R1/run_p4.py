@@ -81,7 +81,7 @@ def surface(owner, ledger):
             "choices": choices, "invitation": invited}
 
 
-def new(state, ledger_file, history, *, seed="01" * 32):
+def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
     if ledger_file.exists() or (state / "actual-p2").exists():
         raise RecursionRefusal("P4_STATE_ALREADY_EXISTS")
     case = build_case(state, history_outcomes=(history,) if history else (),
@@ -90,6 +90,8 @@ def new(state, ledger_file, history, *, seed="01" * 32):
         owner = case.owner
         formation = owner.realize("p4-formation", case.proposals[0], owner.snapshot())
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
+        if establish is not None:
+            establish(case.base_owner.fanin.session)
         plan = case.plans[0]
         ledger = {"scope": {key: plan[key] for key in
                             ("project", "counterpart", "interlocutor_role")},
@@ -106,11 +108,13 @@ def new(state, ledger_file, history, *, seed="01" * 32):
         case.owner.close()
 
 
-def act(owner, ledger_file, ledger, args, *, pacing=None):
+def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()
-    if args.command == "say":
+    if conduct is not None:
+        action, perform = conduct
+    elif args.command == "say":
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
     elif args.command == "inspect-edge":
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
@@ -134,7 +138,9 @@ def act(owner, ledger_file, ledger, args, *, pacing=None):
 
     ledger["pending"] = {"action": action, "before": before, "request_id": args.request_id}
     save(ledger_file, ledger)
-    if args.command == "say":
+    if conduct is not None:
+        receipt, public = perform(session, action)
+    elif args.command == "say":
         speech = admit_speech(session, text=args.text, actor_ref=before["actor"],
                               request_edge=args.request_edge)
         uptake = read_response(owner, speech, ledger["scope"])
