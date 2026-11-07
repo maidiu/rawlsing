@@ -1,0 +1,308 @@
+{
+  "schema": "SOROK_P3_E1_CODE_REUSE_AND_SUPERSESSION@1",
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "protected_branch": "integration/pre-main-reconciliation-r1",
+  "worker_branch": "research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1",
+  "engine_runtime_cut": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+  "pr_704_receiving": "0b7d8ba33b5cd905963292357507ae7bbc2219de",
+  "entries": [
+    {
+      "id": "B1",
+      "name": "V2 B1 bounded historical mediator",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1/bfirst.py",
+      "ref": "c0f4588c158b40c8903b4aae2f292eae5238b8a0",
+      "git_blob": "94ffc52847e4c8ae760212d1bc8543594ba793fa",
+      "sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+      "grade": "PROVISIONAL_MODEL_HYPOTHESIS / TEST_ONLY_BFIRST_CANDIDATE_PENDING_I2",
+      "callable": [
+        {"symbol": "initialize", "line": 116, "role": "creates synthetic prehistory state"},
+        {"symbol": "prehistory", "line": 128, "role": "author fixture prehistory"},
+        {"symbol": "Event", "line": 101, "role": "sealed synthetic occurrence input"},
+        {"symbol": "mode_for", "line": 152, "role": "later-conditioning lookup"},
+        {"symbol": "propose", "line": 161, "role": "CAN008 response + target proposals + later recruitment"},
+        {"symbol": "TestOnlyCAN011Owner.validate", "line": 239, "role": "separate destination predicate court"},
+        {"symbol": "Store.admit_fixture", "line": 298, "role": "separate durable occurrence admission"},
+        {"symbol": "Store.commit", "line": 304, "role": "atomic response + mediator + transition + receipt"},
+        {"symbol": "execute", "line": 352, "role": "convenience chain"},
+        {"symbol": "demonstrate", "line": 361, "role": "two-event positive and journal-only control"}
+      ],
+      "state_schema": {
+        "storage": "SQLite; tables checkpoint(id,body), occurrence(hash,body), joint_receipt(hash,body)",
+        "state_keys": ["actor_id", "capabilities", "epistemic", "history", "middle", "project", "responses", "schema"],
+        "actor": "child",
+        "clock": "event time carried in history/middle/responses; no native root/branch clock",
+        "mediator_record": ["actor_id", "middle_state_id", "registry_id", "registry_version", "registry_snapshot_hash", "state_kind_id", "mediator_role_tags", "semantic_object_ref", "target_refs", "lifecycle_status", "effective_from", "effective_to", "governed_payload", "creation_or_update_rule_ref", "causal_parent_refs", "source_context_receipt_refs", "prior_middle_state_record_hash", "provenance_refs", "middle_state_record_hash"]
+      },
+      "transaction": {
+        "admission": "Store.admit_fixture commits the occurrence before response evaluation",
+        "commit": "BEGIN IMMEDIATE; rechecks admitted event, stale response, exact propose() rerun, same-time order, owner decisions; writes checkpoint and joint receipt atomically",
+        "rollback": "Refusal/sqlite error rolls back response, middle, transition and receipt; occurrence remains",
+        "idempotency": "exact replay is deterministic but there is no operation_id protocol; the probe adapter adds b1_operations"
+      },
+      "later_reader": {
+        "location": "propose() lines 161-225, mode_for() line 152 and the ACTIVE-middle match block",
+        "read": "state['middle'] filtered by lifecycle_status ACTIVE and target_refs == [project, counterpart]",
+        "observable_difference": "recruited record hashes and practical_activity joint_check/private_check vs inspect_alone",
+        "not_a_separate_consumer": true
+      },
+      "author_tests": "39 passed (new execution in this probe)",
+      "independent_review": "B1 itself pending I2; B2's later independent scientific review found the labels authored, not generated psychology",
+      "reuse_disposition": "SELECTIVE_ADAPT_EXECUTED",
+      "adapter": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/b1_owner_adapter.py",
+      "proof": "probe/receipts/PROBE_RECEIPT.json; 13/13 adapter tests at R02 head",
+      "why_not_native": "authored TEST_ONLY_CAN008_B1/TEST_ONLY_CAN011_B1 rules; no original science issuance"
+    },
+    {
+      "id": "B2",
+      "name": "V2 B2 independent occurrence bridge",
+      "path": "WORKER_RETURNS/SOROK-V2-HQ325-B2-FOUR_RETURN_INTEGRATION-R1/bridge.py",
+      "ref": "950ecf0b3816ea7d0dd3ab48b62c92cedfe0e883",
+      "git_blob": "5c84ace202d04076e829461afee98dd0ae8ba5b7",
+      "sha256": "5f95c5d55f6545c67add59635cd0e824a6f6b89117d2b0f81759366ebd76113f",
+      "grade": "TEST_ONLY_BFIRST_INTEGRATED_PENDING_I2",
+      "callable": [
+        {"symbol": "Bridge.advance", "line": 156, "role": "witnessed admission + capability gate + B1 transaction"},
+        {"symbol": "occurrence_witness", "line": 120, "role": "independent synthetic occurrence fixture"},
+        {"symbol": "d1_gate", "line": 91, "role": "unchanged D1 Node capability gate"},
+        {"symbol": "run_two", "line": 270, "role": "two-event positive/control"},
+        {"symbol": "replay", "line": 292, "role": "cold replay"}
+      ],
+      "state_schema": "B1 Store plus b2_ingress(id,body); separate witness/capability registries in memory",
+      "transaction": "witness checks, capability decision, B2 ingress insert, then B1 admit/commit; B2 does not share B3A's readset publication",
+      "later_reader": "same B1 later recruitment; B2 adds independently derived participant actions and exposure checks",
+      "author_tests": "45 connected integration + 36 F1 applicability/accounting (inherited, not rerun here)",
+      "independent_review": "independent scientific review found labels authored; native F1 17 RED at its own scope",
+      "reuse_disposition": "HOLD_AS_ADMISSION_AND_WITNESS_EVIDENCE_NOT_PSYCHOLOGY",
+      "why_not_drop_in": "adds a witness/capability layer; not a DevelopmentOwner; no root/branch state identity; does not provide native admission"
+    },
+    {
+      "id": "B3A",
+      "name": "V2 B3A repaired historical developmental transaction",
+      "path": "WORKER_RETURNS/SOROK-20261018-B3A-SCHEMA-READSET-REPAIR-R1/candidate/integration.py",
+      "ref": "16f15a125ba54cdf17f5d41be2d851bbcd2240d7",
+      "git_blob": "d3a324bb93c17fdaf12670dd153aeb138d9c426a",
+      "sha256": "6b0187c5dfa0a48928f78fb0c3979de6c35e49aa770c9d10f644f57eaed6a679",
+      "grade": "TEST_ONLY_B3_SCHEMA_READSET_REPAIR_R1 + independent ACCEPT_SCOPED for schema/readset",
+      "callable": [
+        {"symbol": "Integration.run", "line": 194, "role": "atomic public frame boundary"},
+        {"symbol": "Integration._run", "line": 245, "role": "source admission, scene, response, target transition"},
+        {"symbol": "Integration.middle", "line": 176, "role": "later CAN011 transition reader"},
+        {"symbol": "Integration.snapshot", "line": 157, "role": "all table rows"},
+        {"symbol": "Integration._database_snapshot", "line": 160, "role": "schema + metadata + rows readset"},
+        {"symbol": "response", "line": 119, "role": "bounded practical affordances and CHECK_LOCK"},
+        {"symbol": "qualify", "line": 43, "role": "source/access/readset/capability preflight"},
+        {"symbol": "target_owner.validate", "line": 9, "role": "separate CAN011 practice target court"}
+      ],
+      "state_schema": {
+        "storage": "SQLite with b3_source, b3_transition, b3_response, b3_clock, b3_m2_sources, b3_preimage, b3_audit; B1 Store in the same file",
+        "practice_record": ["registry_id", "registry_version", "registry_snapshot_hash", "before_target_hash", "actor", "kind", "rule", "rule_hash", "targets", "payload", "effective_from", "lifecycle", "causal_parents", "actor_memory_access", "grade", "hash"],
+        "clock": "as_of integer and b3_clock; no root/branch/state_hash"
+      },
+      "transaction": "whole-DB staging via SQLite backup; full logical readset recheck under BEGIN IMMEDIATE; additive publication; refusal rollback",
+      "later_reader": "response(data, admission, possibilities, middle): ACTIVE transition with matching target enables CHECK_LOCK; M2 eligibility also read",
+      "author_tests": "71 B3 + 63 B3A atomicity + 42 F2 + 33 author repair (inherited, not rerun here)",
+      "independent_review": "independent I2 ACCEPT_SCOPED for the schema/readset repair only; no psychological/native acceptance",
+      "reuse_disposition": "PREFERRED_TRANSACTION_SHELL_NOT_DROP_IN",
+      "why_not_drop_in": "Integration.run takes a full material/social frame, not EventProposal; requires pinned B2/M2 closure; no operation_id/DevelopmentOwner protocol; state is table rows, not StateIdentity"
+    },
+    {
+      "id": "BP2P4J",
+      "name": "Joined BP2 -> BP4 product/actor consumer",
+      "path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/product.py",
+      "ref": "5b3e6577400ea1d88971ae6b48e41a118b8059ae",
+      "git_blob": "8f7177a6b4e3ae0cae6316a13cf57adf363e0460",
+      "sha256": "55c99dffb8cc7ab64e9fba4e15a353b41a984466a22e2cecf36f793a749a0a0f",
+      "severance_path": "WORKER_RETURNS/SOROK-20261020-BP2P4J-ACTUAL-JOINED-ALPHA-R1/bp2p4/severance.py",
+      "severance_git_blob": "1e5fc5237dd3b2d94bfa44842fb0dd2b41e20607",
+      "severance_sha256": "67de08af2c87051f36d2d9776ee2a98a3031bb4a0ec76806e7196bc3b2528943",
+      "grade": "TEST_ONLY_SOURCEFREE_JOINED_PRODUCT_ALPHA_NOT_NATIVE",
+      "callable": [
+        {"symbol": "JoinedProduct", "line": 47, "role": "BP4 product over BP2 joined seed"},
+        {"symbol": "JoinedProduct.joined_source", "line": 121, "role": "joined source identity"},
+        {"symbol": "JoinedProduct.verify_join", "line": 150, "role": "rechecks C8/C9/E2/envelope edges"},
+        {"symbol": "run_severance", "line": 256, "role": "seven physical source severances"},
+        {"symbol": "run_all_severances", "line": 341, "role": "full severance receipt"}
+      ],
+      "state_schema": "C12Store SQLite + bp2_join.json; actor/world state from BP4; practice materialized into projects/tools_remaining; no #704 root/branch/state_hash",
+      "transaction": "BP2 C8/C9/E2 and BP4 C10/C12 flows; joined source reverified; no shared transaction with #704",
+      "later_reader": "BP4 A0/A2; offscreen repair completes because the tool/material is available; 7 severances plus 3 supplementary cuts",
+      "author_tests": "98 author tests, 7 main severance edges + 3 supplementary (inherited, not rerun here)",
+      "independent_review": "no independent complete acceptance; C12Store verification and raw-SQL custody issues noted",
+      "reuse_disposition": "HOLD_AS_HIGH_VALUE_FIRST_CONSUMER_CAPITAL_NOT_DROP_IN",
+      "why_not_drop_in": "separate C8/C9/C10/C12 product and world; depends on vendored BP2/BP4/BP1/C9R; not the P2 S47 actor root"
+    },
+    {
+      "id": "HQ300",
+      "name": "Sourcefree CAN008/ADP016/ADP017 positive chain",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ300-CAN008-FIRST-POSITIVE-SOURCEFREE-R1/candidate/positive_chain.py",
+      "ref": "189da3b54307d8731132c9a7f7baf578fee8bc96",
+      "git_blob": "b4db0cc1c26992a2ca9714e827075fd73e1a18f2",
+      "sha256": "11bc2a6d7622eef0cbd0dfcf31b984f03dfb0f1cdb8eea90e5eab06e3be0bd95",
+      "grade": "SOURCEFREE_CANDIDATE_CHAIN__NOT_ADOPTED__NOT_V3_OPERATION",
+      "callable": [
+        {"symbol": "ChainEventLedger.commit", "line": 61, "role": "hash-chained causal-order ledger"},
+        {"symbol": "ChainEventLedger.read_effects", "line": 82, "role": "later effect reader"},
+        {"symbol": "run_positive_chain", "line": 89, "role": "admitted event -> coupling -> effect -> ADP016 -> ADP017 -> later response"},
+        {"symbol": "run_control_without_prior_effect", "line": 290, "role": "later control"}
+      ],
+      "state_schema": "in-memory ChainEventLedger entries(seq, kind, payload, effective_causal_time, causal_parent_refs, entry_hash, prev_entry_hash); no SQLite/root/branch/clock",
+      "transaction": "entry appended only after typed checks; H9 reverse-chronology guard; no durable owner transaction",
+      "later_reader": "ledger.read_effects('CAN008_CURRENT_RESPONSE_EFFECT'); prior BUFFER -> DEFLECT else AMPLIFY",
+      "author_tests": "317/317 author tests (inherited, not rerun here)",
+      "independent_review": "no independent scientific acceptance; production registry intentionally EMPTY",
+      "reuse_disposition": "FIRST_SCIENTIFIC_CANDIDATE_TO_FALSIFY_OR_UPGRADE_TEST_ONLY",
+      "why_not_drop_in": "in-memory ledger and hardcoded later effect; no durable state identity or operation receipt; not an owner"
+    },
+    {
+      "id": "M01",
+      "name": "Memory/knowledge mediation causal cell",
+      "path": "WORKER_RETURNS/SOROK-R3-HQ310-M01-MEMORY-MEDIATION-CAUSAL-CELL-R1/repro/cell.py",
+      "ref": "02187a14e75ff30dd953d3c7185d689b80e62304",
+      "git_blob": "4d78a6333c7f696913b826107fd4bf9598b2ce4a",
+      "sha256": "f5c4e9af7cc979f63ffee03e06580f0ca45c83b305dd210d4796278e2bc4b428",
+      "grade": "SOURCEFREE_NEW_MEMORY_MEDIATION_CANDIDATE_REQUIRES_I2",
+      "callable": [
+        {"symbol": "Cell.prepare", "line": 66, "role": "commits memory/epistemic fixture state"},
+        {"symbol": "Cell.read_owner", "line": 90, "role": "reads verified stored memory/epistemic state"},
+        {"symbol": "Cell.later", "line": 127, "role": "later CAN008 response graph"},
+        {"symbol": "Cell.export", "line": 146, "role": "audit-only export"}
+      ],
+      "state_schema": "in-memory FixtureOwnerState: memories, memory_transitions, claims, stances, state_sets; ChainEventLedger history/journal",
+      "transaction": "in-memory checkpoint/restore; validates all streams before journal commit; no durable SQLite transaction",
+      "later_reader": "read_owner() maps retained trace to BUFFER/DEFLECT/AMPLIFY and epistemic access to REROUTE/BLOCK",
+      "author_tests": "413 selected author/inherited tests (inherited, not rerun here)",
+      "independent_review": "MECHANISM_IDENTIFICATION_HOLD for operative owner causality and serial ADP016->ADP017 mediation; sourcefree candidate only",
+      "reuse_disposition": "SELECTIVE_MEMORY_MECHANISM_TEST_ONLY_NOT_DROP_IN",
+      "why_not_drop_in": "in-memory fixture owner, no root/branch/operation-id; audit receipt is not an actor render envelope"
+    },
+    {
+      "id": "ENGINE-704",
+      "name": "Received developmental recursion engine",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/engine.py",
+      "ref": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+      "git_blob": "ba6caa74b2c57e567dbefa57571bc931bac8e4e5108bf844efe2966754ae9586",
+      "grade": "ACCEPTED_SOURCEFREE_TEST_ONLY",
+      "callable": [
+        {"symbol": "BatchEngine.run_batch", "line": 337, "role": "3-5 ordered proposals, durable reservations, records"},
+        {"symbol": "BatchEngine.history", "line": 501, "role": "validate and replay stored chain"},
+        {"symbol": "BatchEngine.verify", "line": 540, "role": "journal/owner linkage"},
+        {"symbol": "RecursionCycle.bootstrap/advance/finish", "file": "model_cycle.py", "role": "provider halves and retrospection"}
+      ],
+      "state_schema": "SQLite journal: batches, events, meta; StateIdentity(root, actor, branch, clock, state_hash); operation_id = digest(batch_id,event_id)",
+      "transaction": "reserve before owner.realize; owner resolves idempotently or ambiguous HOLD; records immutable; history hash",
+      "later_reader": "engine history -> RecursionCycle previous.accessible -> next provider call; no psychological writer",
+      "author_tests": "71/71 author tests (inherited); probe reran test_engine 45 and test_model_cycle 19",
+      "reuse_disposition": "PRESERVE_AS_RECEIVED",
+      "why_not_drop_in": "it is the engine; missing writer is the owner's responsibility"
+    },
+    {
+      "id": "P2OWNER",
+      "name": "P2 actor/world owner adapter",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "ref": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+      "git_blob": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+      "grade": "TEST_ONLY_S47_OWNER_NOT_NATIVE_DEVELOPMENTAL_SCIENCE",
+      "callable": [
+        {"symbol": "P2Owner.snapshot", "line": 63, "role": "StateIdentity over world/events/intervals/encounters"},
+        {"symbol": "P2Owner.validate_proposal", "line": 79, "role": "ADMIT_EVENT source/participants/history/context/clock"},
+        {"symbol": "P2Owner.realize", "line": 140, "role": "operation lock + idempotent result"},
+        {"symbol": "P2Owner.actor_experience", "line": 147, "role": "actual actor perception"},
+        {"symbol": "P2Owner._realize", "line": 194, "role": "interval, event admission, S43/C9 read, RealizedEvent"}
+      ],
+      "state_schema": "S47/P2 SQLite; actor_state material fields; operations table; no psychological state",
+      "transaction": "BEGIN IMMEDIATE on operations; native P2 event/interval commits; unknown effects are never blindly reissued",
+      "later_reader": "C9 eligibility; actor experience; no psychological consumer",
+      "author_tests": "P2 seven-test suite inherited; full P2 suite NOT_RUN in this probe",
+      "reuse_disposition": "EXTEND_WITH_PSYCHOLOGICAL_STATE_SEAM",
+      "why_not_drop_in": "snapshot hash excludes psychology; realize reports MISSING_RULE; no later psychological reader"
+    },
+    {
+      "id": "V3",
+      "name": "Original V3 yearly developmental machinery",
+      "path": "rawlsing_next (protected) + local untracked Rawlsing_code_bundle_staging/v3",
+      "ref": "expected archive 953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086; local archive 3f2c5ed925273153a4f300f75e54524729f0b4fef9974957be1f3cd887c91289",
+      "grade": "LOCAL_UNVERIFIED_ARCHIVE_COPY_NOT_EXACT_PROTECTED_BYTES",
+      "callable": [
+        {"symbol": "BackboneState", "file": "v3/core/state.py", "line": 501, "role": "0-100 numeric developmental state"},
+        {"symbol": "run_pressure_flow_cycle", "file": "v3/psyche/flow.py", "line": 753, "role": "post-year charge routing and trace memory"},
+        {"symbol": "run_one_year", "file": "v3/engine/yearly_step.py", "line": 10, "role": "yearly step order"},
+        {"symbol": "run_n_years", "file": "v3/engine/step_runner.py", "line": 11, "role": "N-year loop"}
+      ],
+      "state_schema": "BackboneState with 0-100 capacity/psychological_capacity/domains/wound_vector/cracks/buffers/frameworks/practice_stack/pressure_flow_history/pressure_flow_memory/rupture_shards/metabolization_processes/striving_objects/expectation_baseline/registers/active_magnets; yearly clock",
+      "transaction": "flow.py routes charge on a working copy then commits route state, history and memory; no 3-5 event boundary",
+      "later_reader": "pressure_flow_memory and surface_psyche_profile; yearly_step; old V3 tests",
+      "author_tests": "NOT_RUN: exact archive unavailable; local staging is not the protected historical archive",
+      "reuse_disposition": "NOT_REQUALIFIED_NUMERIC_PSYCHOLOGY_QUARANTINED",
+      "why_not_drop_in": "yearly drift, 0-100 scales, fixed modules and old defaults are not current law; exact archive bytes absent"
+    },
+    {
+      "id": "PRODUCTION-GUARD",
+      "name": "Zero-positive production guard",
+      "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "ref": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+      "callable": [{"symbol": "evaluate_psepf_zero_positive_guard", "line": 366, "role": "pure deny/delegate decision"}],
+      "state_schema": "immutable MappingProxyType empty registry",
+      "transaction": "pure; zero actor state effect, zero ledger/RNG/scheduler mutation",
+      "later_reader": "not applicable",
+      "author_tests": "probe executed the guard; DENY_ZERO_EFFECT / ZERO_POSITIVE_REGISTRY",
+      "reuse_disposition": "KEEP_EMPTY_AS_PRODUCTION_DENY",
+      "why_not_drop_in": "it is intentionally not a positive writer"
+    }
+  ],
+  "first_missing_adapter": {
+    "production": {
+      "source_file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py",
+      "source_functions": ["P2Owner.snapshot:63", "P2Owner.validate_proposal:79", "P2Owner.realize:140", "P2Owner._realize:194"],
+      "target": "new DevelopmentOwner implementation or P2Owner extension",
+      "required_operations": [
+        "own a psychological state table keyed by root/branch/actor/clock",
+        "include psychological rows in snapshot().state_hash",
+        "commit a source-qualified psychological effect with the P2 event/interval transaction or a durable two-store operation receipt",
+        "return the psychological effect receipt in RealizedEvent.consequences",
+        "add a later P2 event/action consumer that reads the committed row",
+        "preserve MISSING_RULE when no rule is issued"
+      ],
+      "incompatible_fields": [
+        "P2 event grammar: history_refs/language_context/interval versus B1 project/offers/interrupted",
+        "P2 clock: session clock versus B1 event time",
+        "P2 store: S47 SQLite root versus B1 checkpoint DB",
+        "P2 actor: S47 generated/controlled actor versus B1 'child'",
+        "P2 state hash excludes psychology",
+        "no shared transaction between P2 and B1/B3A/HQ300/M01/BP2P4J"
+      ]
+    },
+    "test_only_executed": {
+      "path": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/b1_owner_adapter.py",
+      "evidence": "probe/receipts/PROBE_RECEIPT.json",
+      "tests": "13/13 passed at R02 head 992779441",
+      "demonstrated": "B1 stored mediator -> later reader difference for byte-identical later events",
+      "not_demonstrated": "P2 actor-root psychological writer/reader; native science"
+    }
+  },
+  "supersession": {
+    "engine": "#704 BatchEngine/RecursionCycle is the received batch/cycle engine; do not rebuild it.",
+    "s48": "S48 single-prospective turn is incompatible with the settled 3-5 batch boundary; retain source, not runtime replacement.",
+    "s49_s52": "S49-S52 independent-B/source/object/paid-activity candidates remain held; no current compatible B source.",
+    "v3": "V3 yearly step and numeric psychology are historical capital, not current law; the October 26 3-5-event recursion and ADP-021 scheduling rule take precedence.",
+    "b1_b2_b3a_hq300_m01_bp2p4j": "All are candidate/sourcefree research implementations; none is a current native CAN/ADP writer or production registry entry."
+  },
+  "not_reusable_as_is": [
+    "B1 as a production P2 writer (separate state, clock, actor, event grammar, authored rule)",
+    "B3A Integration.run as a DevelopmentOwner (frame schema, no operation_id, requires B2/M2 closure)",
+    "HQ300 run_positive_chain as an owner (in-memory ledger, hardcoded later effect)",
+    "M01 Cell as an owner (in-memory fixture state, audit-only export)",
+    "BP2P4J JoinedProduct as the #704 consumer (separate C8/C9/C10/C12 product)",
+    "V3 BackboneState/yearly_step as the P3 state model (0-100 scales, yearly drift, unverified archive)",
+    "S35 candidate NO_CHANGE as evaluated O07",
+    "Any prose impression or LLM retrospective text as a CAN008/ADP016/ADP017 writer"
+  ],
+  "evidence": {
+    "return": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/00_RETURN.md",
+    "abi_matrix": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/02_DEVELOPMENT_OWNER_ABI_MATRIX.md",
+    "proof": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/03_CAUSAL_FIRST_CONSUMER_PROOF.md",
+    "holds": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/04_SOURCE_SCIENCE_AND_NATIVE_HOLDS.md",
+    "plan": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/05_MINIMUM_P3_IMPLEMENTATION_PLAN.md",
+    "costs": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/06_RESOURCE_COST_FINDINGS.md",
+    "probe_receipt": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/receipts/PROBE_RECEIPT.json"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "B1_CANDIDATE_ADAPTER@1.0.0",
+  "grade": "SYNTHETIC_PREHISTORY_FIXTURE",
+  "child_history": [
+    {
+      "episode_id": "init",
+      "actor_id": "child",
+      "counterpart": "caretaker",
+      "project": "repair_route",
+      "time": 0,
+      "activity": "learn_object_check",
+      "outcome": "check_enacted",
+      "actor_access": "EXPLICIT",
+      "parent_refs": [],
+      "provenance": "SYNTHETIC_PREHISTORY_FIXTURE"
+    },
+    {
+      "episode_id": "shared_task",
+      "actor_id": "child",
+      "counterpart": "caretaker",
+      "project": "repair_route",
+      "time": 1,
+      "activity": "compare_plans_in_task",
+      "outcome": "recognized_plan",
+      "actor_access": "INACCESSIBLE",
+      "parent_refs": [
+        "5dd05ecbdbb78b4952673f463585cc42891a87d3f9aa7df783e878a1f027a5ab"
+      ],
+      "provenance": "SYNTHETIC_PREHISTORY_FIXTURE"
+    }
+  ],
+  "participants": [
+    {
+      "actor_id": "caretaker",
+      "project": "own_work",
+      "history": [
+        {
+          "episode_id": "caretaker_work",
+          "actor_id": "caretaker",
+          "counterpart": "workshop",
+          "project": "own_work",
+          "time": 0,
+          "activity": "organize_work",
+          "outcome": "tools_available",
+          "actor_access": "EXPLICIT",
+          "parent_refs": [],
+          "provenance": "SYNTHETIC_PREHISTORY_FIXTURE"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "event1",
+      "actor_id": "child",
+      "time": 2,
+      "world_ref": "world:garage",
+      "objective_occurrence": "bike_stolen",
+      "project": "repair_route",
+      "relation_refs": [
+        "relation:child:caretaker"
+      ],
+      "power_ref": "power:caretaker_controls_tools",
+      "offers": [
+        [
+          "caretaker",
+          "Let us check what can be secured.",
+          "joint_inventory"
+        ]
+      ],
+      "interrupted": true,
+      "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+      "provenance": "B1_AUTHORED_SOURCEFREE"
+    },
+    {
+      "event_id": "event2",
+      "actor_id": "child",
+      "time": 3,
+      "world_ref": "world:garage",
+      "objective_occurrence": "shared_tool_offer",
+      "project": "repair_route",
+      "relation_refs": [
+        "relation:child:caretaker"
+      ],
+      "power_ref": "power:caretaker_controls_tools",
+      "offers": [
+        [
+          "caretaker",
+          "Let us check what can be secured.",
+          "joint_inventory"
+        ]
+      ],
+      "interrupted": false,
+      "admission_grade": "ADMITTED_SYNTHETIC_FIXTURE_ONLY",
+      "provenance": "B1_AUTHORED_SOURCEFREE"
+    }
+  ],
+  "parameter_provenance": "Authored deterministic research predicates, uncalibrated; no numerical weights."
+}
