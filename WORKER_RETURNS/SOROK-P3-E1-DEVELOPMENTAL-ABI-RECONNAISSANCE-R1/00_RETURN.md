@@ -11,7 +11,7 @@
 
 ## Verdict
 
-**The next meaningful developmental chain is already implemented in B1, and the received `DevelopmentOwner` ABI can host it through a narrow test-only adapter. The adapter was built and executed: 9/9 tests pass, a stored CAN-011 mediator changes the later response from `inspect_alone:caretaker` to `joint_check:caretaker` for byte-identical later events. The production boundary is not B1's ABI. It is the P2 actor root's missing psychological state writer/reader: `P2Owner` has no psychological state in `snapshot().state_hash`, no psychological writer in `realize()`, and no later psychological consumer. No native science is issued or claimed.**
+**The next meaningful developmental chain is already implemented in B1, and the received `DevelopmentOwner` ABI can host it through a narrow test-only adapter. The adapter was built and executed: 13/13 tests pass (9 original + 4 R02 cases), a stored CAN-011 mediator changes the later response from `inspect_alone:caretaker` to `joint_check:caretaker` for byte-identical later events. The production boundary is not B1's ABI. It is the P2 actor root's missing psychological state writer/reader: `P2Owner` has no psychological state in `snapshot().state_hash`, no psychological writer in `realize()`, and no later psychological consumer. No native science is issued or claimed.**
 
 The exact reusable chain is:
 
@@ -32,10 +32,10 @@ That chain is exactly what the engine needs from a `DevelopmentOwner`. What it l
 
 | Command | Result | Evidence |
 |---|---|---|
-| `python3 -B -m pytest -q -p no:cacheprovider test_bfirst.py` in the pinned B1 return | **39 passed** | B1's own author court; new execution, not inherited upload |
+| `python3 -B -m pytest -q -p no:cacheprovider probe/vendor/B1/test_bfirst.py` | **39 passed** | byte-identical vendored B1 author court |
 | `python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py` | **45 passed** | new execution at protected start |
 | `python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py` | **19 passed** | new execution at protected start |
-| `python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py` | **9 passed** | new probe court |
+| `python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py` | **13 passed** | new probe court |
 | `python3 -B run_probe.py` | **0**; positive/control and guard receipts written | `probe/receipts/PROBE_RECEIPT.json`; `probe/receipts/junit.xml` |
 
 The B1 test command was run against the byte-identical pinned `bfirst.py` (Git blob `94ffc52847e4c8ae760212d1bc8543594ba793fa`, SHA-256 `478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3`). The engine files were verified against `SOURCE_PINS.json` in `probe/receipts/PROBE_RECEIPT.json`.
@@ -62,7 +62,7 @@ The exact ABI comparison, including every incompatible field, is in [`02_DEVELOP
 ### Q2 — Which old tests demonstrate a real stored-state effect, and which only change material/menus/labels?
 
 **Stored psychological-like field + later read (real within the test-only fixture):**
-- B1: first event creates `checkpoint['middle']` mediator; later event recruits it and changes `practical_activity` (`joint_check` vs `inspect_alone`). New execution: 39/39 B1 tests; probe 9/9. The field is a CAN-011-shaped mediator, but the rule is authored `PROVISIONAL_MODEL_HYPOTHESIS`.
+- B1: first event creates `checkpoint['middle']` mediator; later event recruits it and changes `practical_activity` (`joint_check` vs `inspect_alone`). New execution: 39/39 B1 tests; probe 13/13 at the R02 head. The field is a CAN-011-shaped mediator, but the rule is authored `PROVISIONAL_MODEL_HYPOTHESIS`.
 - B3A: `b3_transition` V3MS_PRACTICE record after two performed practices; `middle()` is read by `response()` and changes the later `CHECK_LOCK` action. Author 71/71, atomicity 63/63, F2 42/42; independent I2 accepted the schema/readset repair only. Not run here.
 - HQ300: in-memory `ADP016_TRACE_COMMIT` + `ADP017_EPISTEMIC_UPDATE`; later event reads the prior effect and returns `DEFLECT` vs `AMPLIFY`. Author 317/317; production registry empty. Not run here.
 - M01: in-memory applied ADP016/ADP017 fixture state produces later `BUFFER`/`DEFLECT`/`AMPLIFY` and `REROUTE`/`BLOCK` streams. Author 413/413; `MECHANISM_IDENTIFICATION_HOLD`. Not run here.
@@ -100,7 +100,7 @@ The adapter is a compatibility witness, not the production bridge. The productio
 
 ### Q4 — What can work now at sourcefree TEST_ONLY grade?
 
-- **YES, executed:** B1's CAN008→CAN011→persisted mediator→later reader mechanics through `DevelopmentOwner`/`BatchEngine`, with a test-only rule. 9/9 probe tests pass; production registry remains empty.
+- **YES, executed:** B1's CAN008→CAN011→persisted mediator→later reader mechanics through `DevelopmentOwner`/`BatchEngine`, with a test-only rule. 13/13 probe tests pass at the R02 head; production registry remains empty.
 - **NO, not demonstrated:** B3A through `DevelopmentOwner`. `Integration.run(data)` takes a full material/social frame, needs the pinned B2/M2 closure, and has no operation-id `DevelopmentOwner` protocol. A port is possible but is a larger adapter, not the smallest.
 - **NO, not demonstrated:** HQ300/M01 through `DevelopmentOwner`. Their ledgers and `FixtureOwnerState` are in-memory; a durable wrapper must add SQLite, root/branch/clock, and operation receipts. The rule chains are reusable as test-only candidates, not as owners.
 - **NO, not demonstrated:** BP2P4J through `DevelopmentOwner`. It is a separate BP4 product with its own C8/C9/C10/C12 and world; it is high-value first-consumer capital but not a drop-in owner.

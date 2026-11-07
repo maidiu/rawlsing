@@ -17,7 +17,7 @@
   "control": {
     "batch_id": "batch-control",
     "cold_reopen_matches_records": true,
-    "cold_reopen_seconds": 0.005452,
+    "cold_reopen_seconds": 0.004561,
     "cold_reopen_snapshot": {
       "actor": "child",
       "branch": "main",
@@ -31,7 +31,7 @@
       "5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d"
     ],
     "grade": "TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE",
-    "history_hash": "330a08b856d09d97754714863411b481958121601c06a49c2fbcdad7c1e60d4d",
+    "history_hash": "809c4201ba3c6a0564ad3716f883f6cb3bfd0ff7fc47441e505b35c93f5aac15",
     "journal_only": true,
     "later_accessible_actions": [
       "inspect_alone:caretaker"
@@ -41,8 +41,8 @@
     ],
     "later_recruited": [],
     "measurements": {
-      "batch_wall_seconds": 0.041383,
-      "history_json_bytes": 21867,
+      "batch_wall_seconds": 0.033115,
+      "history_json_bytes": 22095,
       "joint_receipt_rows": 3,
       "journal_bytes": 94208,
       "middle_state_count": 0,
@@ -51,7 +51,7 @@
       "operation_rows": 3,
       "owner_db_bytes": 86016,
       "provider_calls": 0,
-      "records_json_bytes": 21746,
+      "records_json_bytes": 21974,
       "response_count": 3,
       "state_json_bytes": 8501,
       "transition_count": 0
@@ -78,10 +78,10 @@
     "No model/provider invocation occurs in this adapter probe.",
     "B3A whole-store staging and BP2P4J product costs were not measured here; see 06_RESOURCE_COST_FINDINGS.md."
   ],
-  "generated_at_utc": "2026-11-06T20:35:54Z",
+  "generated_at_utc": "2026-11-07T06:23:42Z",
   "git": {
     "current_branch": "research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1",
-    "current_head": "0d6baf55987eb43fb03efed20fc3681c37f93374",
+    "current_head": "9927794414e6b5737c5e6dbd2001b7eb7474744d",
     "engine_runtime_cut": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
     "pr_704_receiving": "0b7d8ba33b5cd905963292357507ae7bbc2219de",
     "protected_branch": "integration/pre-main-reconciliation-r1",
@@ -109,7 +109,7 @@
   "positive": {
     "batch_id": "batch-positive",
     "cold_reopen_matches_records": true,
-    "cold_reopen_seconds": 0.005835,
+    "cold_reopen_seconds": 0.005062,
     "cold_reopen_snapshot": {
       "actor": "child",
       "branch": "main",
@@ -123,7 +123,7 @@
       "5686ac24711ffb79411c5658ab29f96328df5cd7da375683c683e6bd8455392d"
     ],
     "grade": "TEST_ONLY_B1_DEVELOPMENT_OWNER_ADAPTER_NOT_NATIVE",
-    "history_hash": "d34f5032df58d1a3bcdcb2c02059d45a78bd4bbfa692198c5b9f85fddb6f7c9f",
+    "history_hash": "38ecf5d0aec55ddb9ec74deafaac92760731ab6037be7f19a691b44b973e25f2",
     "journal_only": false,
     "later_accessible_actions": [
       "joint_check:caretaker"
@@ -135,8 +135,8 @@
       "c06f526ae0fbfebb5af37bda74846c93716b03016a0a6fb2ce3e13d0e197c495"
     ],
     "measurements": {
-      "batch_wall_seconds": 0.048487,
-      "history_json_bytes": 23361,
+      "batch_wall_seconds": 0.039312,
+      "history_json_bytes": 23701,
       "joint_receipt_rows": 3,
       "journal_bytes": 98304,
       "middle_state_count": 1,
@@ -145,7 +145,7 @@
       "operation_rows": 3,
       "owner_db_bytes": 94208,
       "provider_calls": 0,
-      "records_json_bytes": 23239,
+      "records_json_bytes": 23579,
       "response_count": 3,
       "state_json_bytes": 15220,
       "transition_count": 1
@@ -197,52 +197,52 @@
       "errors": 0,
       "failures": 0,
       "skipped": 0,
-      "tests": 9
+      "tests": 13
     },
     "returncode": 0,
     "stderr_tail": "",
-    "stdout_tail": ".........                                                                [100%]\n9 passed in 0.49s\n",
-    "wall_seconds": 0.715619
+    "stdout_tail": ".............                                                            [100%]\n13 passed in 0.64s\n",
+    "wall_seconds": 0.9328
   },
   "scaling": [
     {
       "events": 3,
       "middle_state_count": 1,
       "owner_db_bytes": 94208,
-      "per_event_ms": 9.42,
+      "per_event_ms": 8.021,
       "response_count": 3,
       "state_json_bytes": 15334,
-      "total_wall_seconds": 0.028261,
+      "total_wall_seconds": 0.024064,
       "transition_count": 1
     },
     {
       "events": 10,
       "middle_state_count": 1,
       "owner_db_bytes": 217088,
-      "per_event_ms": 13.74,
+      "per_event_ms": 10.461,
       "response_count": 10,
       "state_json_bytes": 28713,
-      "total_wall_seconds": 0.137403,
+      "total_wall_seconds": 0.104609,
       "transition_count": 1
     },
     {
       "events": 30,
       "middle_state_count": 1,
       "owner_db_bytes": 548864,
-      "per_event_ms": 20.454,
+      "per_event_ms": 15.398,
       "response_count": 30,
       "state_json_bytes": 66953,
-      "total_wall_seconds": 0.613624,
+      "total_wall_seconds": 0.46195,
       "transition_count": 1
     },
     {
       "events": 60,
       "middle_state_count": 1,
       "owner_db_bytes": 1064960,
-      "per_event_ms": 22.721,
+      "per_event_ms": 21.491,
       "response_count": 60,
       "state_json_bytes": 124313,
-      "total_wall_seconds": 1.363251,
+      "total_wall_seconds": 1.289447,
       "transition_count": 1
     }
   ],

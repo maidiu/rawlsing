@@ -1,6 +1,6 @@
 # Sorok P3-E1 — R02 exact-two-defect bounded repair return
 
-**Status:** IMPLEMENTED / S0–S1 GITHUB SOURCE AND READBACK; **S2 NEW-HEAD TARGETED TESTS NOT_RUN**. This is an implementation return **not independent R02 reacceptance**.
+**Status:** IMPLEMENTED / S0–S1 GITHUB SOURCE; **S2 LOCAL TARGETED TESTS PASS AT `992779441`** (see [08 — S2 local execution addendum](08_S2_LOCAL_EXECUTION_ADDENDUM.md)). This is an implementation and executor record, **not independent R02 reacceptance**.
 
 **PR:** #735 / existing branch `research/sorok-p3-e1-developmental-capital-abi-recovery-20261106-r1`.
 **Original reviewed head:** `ee1ff298fe7e57277c34a5af16df33165743d84f`.
@@ -32,13 +32,13 @@ The adapter now persists `journal_only` as an integer-constrained metadata colum
 - `test_cold_reopen_mode_binding_refuses_flip_and_preserves_future_writes` in both regular and journal-only modes: wrong-mode reopening rejects; original-mode reopening retains snapshot and can perform new event1, close again, then event2/event3 with expected later action and count.
 - `test_mode_metadata_tamper_refused_and_exactly_restored`: tampered persistent execution mode refuses snapshot; restoring metadata restores original identity.
 
-Existing nine tests, source/response severance and restore, idempotency, production `DENY_ZERO_EFFECT` and cold replay remain intact.
+Existing nine original tests plus the four R02 cases pass (13/13), including source/response severance and restore, idempotency, production `DENY_ZERO_EFFECT` and cold replay.
 
 ## Executed vs not executed / custody truth
 
 **Performed:** S0–S1 private GitHub PR/current-ref checks; exact source reads, deterministic bounded text substitutions, sequential GitHub contents-API commits, exact SHA readback, static inspection of mode bindings/per-operation fields/new tests/probe reopen. PR remained on the same branch; no protected writes/merges.
 
-**NOT RUN:** actual local `python -m pytest`, `python -B run_probe.py`, cold SQLite reopen, actual fault severance, source-blob mutation/red-restore, or complete S2 matrix on this new code. This tool session has no authorized repository checkout/runner; do not borrow the predecessor's 9-pass receipt as an executable result for the modified 13 cases. The existing `probe/receipts/PROBE_RECEIPT.json`, `junit.xml` and `source_pin.json` remain **historical / STALE FOR REPAIRED HEAD** until authorized S2 regeneration. The code is implemented, not yet machine-verified by the required local court.
+**NOW RUN at `992779441`:** the corrected vendored-B1 command executed locally. Adapter **13/13**, vendored B1 **39/39**, engine core **45/45**, engine coordinator **19/19**, and `run_probe.py` **exit 0**; positive `joint_check:caretaker`, control `inspect_alone:caretaker`, same later event hash, production guard `DENY_ZERO_EFFECT`. `probe/receipts/PROBE_RECEIPT.json`, `junit.xml` and `source_pin.json` were regenerated for the new head. This is executor evidence, not independent R02 reacceptance.
 
 ## Exact next S2 verification
 
@@ -47,14 +47,16 @@ Use an isolated clean worktree at final PR #735 HEAD, matching protected source 
 ```bash
 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py
 python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_model_cycle.py
-cd WORKER_RETURNS/SOROK-V2-HQ324-B1-COUPLED-DEVELOPMENT-R1
+
+cd WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1
 python3 -B -m pytest -q -p no:cacheprovider test_bfirst.py
-cd ../SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe
+
+cd ../..
 python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py
 python3 -B run_probe.py
 ```
 
-The last `cd` is relative to the original B1 directory's `WORKER_RETURNS` parent path. Preserve exact source SHA pins and inspect the regenerated receipt: `middle_state_count`, `durable_psychological_transition`, per-event `new_middle_state_*`, identical later event/proposal hashes, actor action difference, journal-only cold read, two-way mode refusal, and the production empty registry.
+The B1 author test and fixture are vendored byte-identically under `probe/vendor/B1/`, so the command works from a clean protected checkout. Preserve exact source SHA pins and inspect the regenerated receipt: `middle_state_count`, `durable_psychological_transition`, per-event `new_middle_state_*`, identical later event/proposal hashes, actor action difference, journal-only cold read, two-way mode refusal, and the production empty registry.
 
 Test direct mode-flip negative -> RED/typed refusal -> same-mode cold continuation PASS. Check source/probe mutation restoration and unchanged worktree. If the new test fails, repair on this PR branch and rerun at actual new HEAD; do not claim accepted S2 from this document.
 

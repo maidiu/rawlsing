@@ -45,27 +45,33 @@
       "kind": "new probe court",
       "cwd": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe",
       "command": "python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py",
-      "tests": 9,
+      "tests": 13,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "wall_seconds": 0.52
+      "wall_seconds": 0.86,
+      "note": "R02 head 992779441: original 9 + 4 repair cases"
     },
     {
       "component": "full probe + guard",
       "kind": "new execution",
       "cwd": "WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe",
       "command": "python3 -B run_probe.py",
-      "tests": 9,
+      "tests": 13,
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "wall_seconds": 0.45,
+      "wall_seconds": 0.5,
       "extra": {
-        "positive_later_activity": ["joint_check:caretaker"],
-        "control_later_activity": ["inspect_alone:caretaker"],
+        "positive_later_activity": [
+          "joint_check:caretaker"
+        ],
+        "control_later_activity": [
+          "inspect_alone:caretaker"
+        ],
         "production_guard": "DENY_ZERO_EFFECT / ZERO_POSITIVE_REGISTRY"
-      }
+      },
+      "note": "R02 head 992779441: 13-test receipt and guard"
     }
   ],
   "not_run": [
@@ -104,5 +110,20 @@
       "reason": "no issued rule/owner/source",
       "status": "NOT_RUN"
     }
-  ]
+  ],
+  "s2_addendum": {
+    "head": "9927794414e6b5737c5e6dbd2001b7eb7474744d",
+    "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+    "b1_vendored_court": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "wall_seconds": 0.51,
+      "note": "vendored test_bfirst.py + scenario.json, pinned c0f4588"
+    },
+    "receipt": "probe/receipts/PROBE_RECEIPT.json",
+    "junit": "probe/receipts/junit.xml",
+    "grade": "S2_LOCAL_EXECUTION_PASS_NOT_INDEPENDENT_R02_REACCEPTANCE"
+  }
 }

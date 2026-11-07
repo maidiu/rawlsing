@@ -7,7 +7,7 @@
 | Component | Status | Action |
 |---|---|---|
 | #704 `BatchEngine`/`RecursionCycle`/`P2Owner` | accepted sourcefree TEST_ONLY, protected | Preserve; do not rewrite |
-| B1 CAN008/CAN011/later-reader | 39/39 author tests; 9/9 adapter tests in this probe | Reuse the adapter pattern; do not rebuild B1 |
+| B1 CAN008/CAN011/later-reader | 39/39 author tests; 13/13 adapter tests at the R02 head | Reuse the adapter pattern; do not rebuild B1 |
 | B3A schema/readset transaction | independent ACCEPT_SCOPED for the repair | Reuse the transaction/readset pattern; do not reimplement the whole B3 engine |
 | HQ300 / M01 | test-only candidates | Reuse rule/chain shapes at TEST_ONLY; do not promote to production |
 | BP2P4J | joined product alpha | Reuse as first-consumer capital; do not build another joined-alpha shell |

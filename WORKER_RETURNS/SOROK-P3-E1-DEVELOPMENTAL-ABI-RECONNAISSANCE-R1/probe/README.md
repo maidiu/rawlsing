@@ -20,6 +20,7 @@ It does **not** prove native CAN-008/CAN-011/ADP-016/ADP-017 science, a P2 actor
 From this directory:
 
 ```bash
+python3 -B -m pytest -q -p no:cacheprovider vendor/B1/test_bfirst.py
 python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py
 python3 -B run_probe.py
 ```
@@ -30,16 +31,18 @@ python3 -B run_probe.py
 - `receipts/junit.xml` — JUnit.
 - `source_pin.json` — B1/engine/probe hashes.
 
-Historical submitted receipt: 9 passed on the earlier candidate; the two-defect repair now contains 12 test functions (13 pytest cases including two mode variants) and **requires fresh S2 execution**. Do not treat the previous `receipts/PROBE_RECEIPT.json` / JUnit as the new-head result. Expected later action `joint_check:caretaker`; control later action `inspect_alone:caretaker`; production guard `DENY_ZERO_EFFECT`.
+Fresh S2 at PR #735 head `992779441`: **13/13 adapter tests pass** (the original 9 plus 4 R02 cases). The regenerated `receipts/PROBE_RECEIPT.json` / JUnit are current for that head. Expected later action `joint_check:caretaker`; control later action `inspect_alone:caretaker`; production guard `DENY_ZERO_EFFECT`.
 
 ## Files
 
 | File | Role |
 |---|---|
 | `b1_owner_adapter.py` | `DevelopmentOwner` adapter over pinned B1 `bfirst.py` |
-| `test_b1_owner_adapter.py` | 9-test compatibility/negative/severance court |
+| `test_b1_owner_adapter.py` | 13-test compatibility/negative/severance/mode court (9 original + 4 R02) |
 | `run_probe.py` | scenario execution, scaling, guard, pytest and receipt writer |
 | `vendor/B1/bfirst.py` | byte-identical pinned B1 copy (SHA-256 `478b9897…`) |
+| `vendor/B1/test_bfirst.py` | byte-identical B1 author court (blob `e5dd0073…`) |
+| `vendor/B1/scenario.json` | byte-identical B1 fixture (blob `2f0c6f0d…`) |
 | `source_pin.json` | exact commit/blob/hash pins |
 | `receipts/` | generated evidence |
 

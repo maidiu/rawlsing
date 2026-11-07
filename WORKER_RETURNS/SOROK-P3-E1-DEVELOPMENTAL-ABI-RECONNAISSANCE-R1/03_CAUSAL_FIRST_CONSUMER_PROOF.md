@@ -8,10 +8,10 @@
 
 | Run | Command | Result |
 |---|---|---|
-| B1 author court | `python3 -B -m pytest -q -p no:cacheprovider test_bfirst.py` (pinned B1 bytes) | **39 passed in 0.59s** |
+| B1 author court | `python3 -B -m pytest -q -p no:cacheprovider probe/vendor/B1/test_bfirst.py` (pinned B1 bytes) | **39 passed in 0.50s** |
 | Engine core | `python3 -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests/test_engine.py` | **45 passed in 0.99s** |
 | Engine coordinator | `.../tests/test_model_cycle.py` | **19 passed in 0.36s** |
-| Adapter court | `python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py` | **9 passed in 0.52s** |
+| Adapter court | `python3 -B -m pytest -q -p no:cacheprovider test_b1_owner_adapter.py` | **13 passed in 0.86s** |
 | Full probe | `python3 -B run_probe.py` | **0**; positive/control, scaling, guard, JUnit receipt written |
 
 Receipts:
@@ -156,7 +156,7 @@ The inherited author/independent results for those components remain historical 
 **New in this probe:**
 - B1 39/39 (new run of pinned bytes).
 - Engine `test_engine` 45/45 and `test_model_cycle` 19/19 (new run at protected start).
-- Adapter 9/9, positive/control, cold reopen, severance/restore, ambiguity, guard (new).
+- Adapter 13/13 at the R02 head, positive/control, cold reopen, severance/restore, ambiguity, mode binding, guard (new).
 - Scaling measurements 3/10/30/60 events (new).
 
 **Inherited, not rerun:**
