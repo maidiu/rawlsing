@@ -1,3 +1,15 @@
+# CURRENT CANDIDATE — #777 authority severance and functional adequacy
+
+Incumbent mainMac HQ is executing the corrected #777 commission on its prepared isolated branch. Protected HEAD observed7a5429ffbc48efd25e28c912da80c822e66bc182; prior #748 code and scoped evidence remain capital, not a new blanket installation mandate. Full adopted objective plus full evergreen disciplines are recorded in the #777 return GOAL.md. All17 frozen secondary agenda items are preserved without automatic discharge.
+
+P0 confirms no live #748 supervised job. Existing published #770/#773/#774/#771/#776/#764 are OPEN candidates at observed exactheads. Untracked local files and two unknown-owner interactive OpenCode clients are left untouched. Seven existing register denominators are imported losslessly:29/30/27/26/16/15/11, not summed as unique functions.
+
+Three bounded local sourcefree case courts are dispatched: source semantics to current consumer, higher-order joint composition, and FieldForge/postFF authority consumption. Exact sessions/PIDs/write leases/current-turn model proofs are in FLIGHT_BOARD.json and LAUNCH_RECEIPTS. They may write only their case evidence/probes, not production code. Each must classify actual selected authority or qualified equivalent, first consumer, exact effect/negative, severance/unknown and true owner action. No generic archaeology fleet or upstream FF rebuild is launched.
+
+No scientific/native/protected/actor acceptance, generic FF through-path or completed777 is claimed. Terminal notifications govern intake; no recurringpolling. Earlier protected progress is preserved below as its historical sourcecut.
+
+---
+
 # PROGRAMMA PYAT CAS4 — PRE-553 UNIVERSAL35 DOCUMENTARY RECOVERY RECEIVED — 2026-11-06
 
 **Protected factual receiving:** [PR #709](https://github.com/maidiu/rawlsing/pull/709) merged the independently accepted universal35 recovery and currentness overlays from `6c243ffee042187092fead1e7a25f0f838578b9e`, with a receiving-only two-line canonical front-door status marker at `f4dc51fbd02dace3a893adc5397d5aa42adbff03`. PRE-MAIN moved from CAS3 `4df35cba8a254e50622d4cb3059625c82e0cb74b` to **`728b3b8aed7609abbe1f9245ccd307484a604265`**. Independent nonauthor receipt: `48c87186cc3ba873109f32edce10e16de220405e` **ACCEPT_SCOPED_DOCUMENTARY** at the unchanged dossier cut. Old draft [#705](https://github.com/maidiu/rawlsing/pull/705) is an immutable historical parent and must not be merged over CAS4.
