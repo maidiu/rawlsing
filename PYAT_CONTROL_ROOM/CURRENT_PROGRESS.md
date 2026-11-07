@@ -1,3 +1,7 @@
+# #777 latest disposition — C4 bounded court closed; historical selected-use closure out
+
+Corrected `950ff275527a2963253336cbb05924a6c2943cd8` passes HQ consistency/evidence-retention checks. Actual M1 registration, seven sourcefree checks and static historical pins are accepted at that scope; selected historical use/equivalence remains UNPROVED. Freed author now closes actual selected-use edges from existing29function/58release/581-687call capital; no recensus or modernconsumer duplication. C3 review/C5 shared source35 continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C4_CORRECTION_INTAKE.json`. All goal/authority/17agenda limits remain.
+
 # #777 latest disposition — C1 corrections closed; shared source-estate court out
 
 Corrected `79c4f33c51e7d0146e06e12cac6ea903c79cb7b0` passes HQ mechanical consistency and evidence-retention checks. C1 historical metadata/sourcefree canary scope accepted; current selected provenance/equivalence remains UNPROVED. Freed author now traces shared O01-O07 sourceconfiguration authority→C11 across35, reusing R157/P1 and qualified predecessor capital; no one-wave extraction or replacementengine. C4 corrections/C3 review continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_CORRECTION_INTAKE.json`. No native/science/production/protected claim.
