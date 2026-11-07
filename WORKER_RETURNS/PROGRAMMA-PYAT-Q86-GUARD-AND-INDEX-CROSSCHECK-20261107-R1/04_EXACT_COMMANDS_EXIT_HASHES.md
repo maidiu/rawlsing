@@ -68,6 +68,12 @@ a1481103ab1e711c01db155b45d140fba1261efcc33634c2f343a27bb701573a  R8_PROOF_TRACE
 0e88ee8cad16309bacdb93d085e4f1fc5fbc59c10f46301258c95ab650696558  02_INDEXED_16_CHAIN_CROSSCHECK.tsv
 ```
 
+## PR CI status
+- PR #774 head `c1e45f8652adffe6408947250801de2002f47ff1` (`test: add R8 proof-integrity severance witnesses`).
+- `canonical-tree`: PASS.
+- `governed-court`: FAIL after the changed-test proof gate; full court `3 failed, 144 passed in 48.93s`, exactly the three inherited protected-base packaging failures recorded in `07_R7_GATE_AND_INHERITED_FAILURES.md`.
+- No R8/guard test failed in CI. The changed-test proof gate passed locally and in CI before the inherited full-court failures.
+
 ## R7 gate status
 - PR #770 head `392de04e86202a2a80361a91808ef06fd34c1cc8`, OPEN, no reviews.
 - `governed-court` failed on three inherited packaging tests; `canonical-tree` passed.
