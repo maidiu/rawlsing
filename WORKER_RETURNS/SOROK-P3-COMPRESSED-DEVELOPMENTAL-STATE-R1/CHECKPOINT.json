@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "FINAL_INDEPENDENT_REVIEW_REVISE_INTAKEN__M1_M2_RUNTIME_REPAIR__AUTHOR_HARNESS_LIVE",
+  "state": "FINAL_INDEPENDENT_REVIEW_REVISE__M1_M2_RUNTIME_REPAIRED__M3_AND_HARNESS_WITH_AUTHOR_LANE__FULL_MATRIX_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -460,7 +460,18 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Repair M1/M2 runtime and M3 measurement through existing owners; intake author corrected full13 harness; reexecute complete matrix at corrected exact cut; focused independent re-review; selective PR without merge when demonstrated.",
+  "next": "M3 measurement and full13 harness corrections remain with the live author lane; on return, intake corrected matrix, reexecute at the corrected exact cut, then focused nonauthor re-review and selective PR without merge. Do not treat M1/M2 repair as full-goal acceptance.",
+  "m1_m2_repair": {
+    "evidence": "evidence/final-review-repair/M1_M2_REPAIR.json",
+    "logs": [
+      "evidence/final-review-repair/store_owner.log",
+      "evidence/final-review-repair/units.log"
+    ],
+    "tests": "61 passed, 1 inapplicable guard skipped (store/owner); 37 passed (compression/projections/rules)",
+    "scope": "M1 receipt linkage and receipt-bound surfaces; M2 pre-commit compression persistence and receipt-based cold recovery",
+    "m3": "OPEN_AUTHOR_LANE",
+    "full_matrix": "PENDING_CORRECTED_CUT"
+  },
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -514,12 +525,13 @@
     "reviewcut": "d1a6817b3210880812f68090bcd2b1109ec68ef9",
     "verdict": "REVISE_CONDITIONAL_FULL_P3",
     "remote_verified": true,
-    "intake_commit": null,
+    "intake_commit": "3c3c50fcaf329fa58681157746c7af23f31bde61",
+    "repair_evidence": "evidence/final-review-repair/M1_M2_REPAIR.json",
     "demonstrated": "ACTUAL_P2_ROOT_PRODUCER_STORE_LATER_RESPONSE__OWNER8P1skip_STORE51P_UNIT36P_RESOURCE_MEASURED"
   },
   "open_material_findings": {
-    "M1": "store result/effects receipt linkage and forged-result acceptance",
-    "M2": "compression evidence loss across PSYCH_COMMITTED recovery",
-    "M3": "per-record/per-event storage metric zero from DB-only measurement"
+    "M1": "REPAIRED_PENDING_FOCUSED_REVIEW: finish requires effects-receipt link, exact P3_PSYCH response-hash ref, and receipt-bound actor surface; forged result refused. p3/state_store.py, p3/p3_owner.py.",
+    "M2": "REPAIRED_PENDING_FOCUSED_REVIEW: compression envelope is bound before effects commit, persisted in receipt, and restored on cold PSYCH_COMMITTED recovery; finish verifies it. p3/p3_owner.py, p3/state_store.py.",
+    "M3": "OPEN_AUTHOR_LANE: DB-only byte measurement ignores WAL; author owns tests/p3_fixture_support.py measure_case."
   }
 }

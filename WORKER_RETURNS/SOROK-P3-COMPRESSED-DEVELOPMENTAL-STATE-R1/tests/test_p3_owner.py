@@ -259,6 +259,12 @@ def test_formation_stored_records_pure_views_and_later_response(tmp_path):
         assert realized_first.accessible["memory_formation"] == "MISSING_RULE"
         assert realized_first.consequences["durable_psychological_transition"] == "MISSING_RULE"
         assert realized_first.consequences["native_action"] == "NOT_ISSUED_BY_P3_RULE"
+        formation_receipt = p3.store.get_operation("owner-operation-1")["effects_receipt"]
+        assert realized_first.consequences["effects_receipt_hash"] == (
+            formation_receipt["receipt_hash"])
+        assert realized_first.receipt_ref == (
+            "P3_PSYCH:" + formation_receipt["response_hash"])
+        assert realized_first.accessible == formation_receipt["projection"]["actor"]
         assert realized_first.after.clock == first.event_time
         assert p3.snapshot() == realized_first.after
         records = p3.store.query(
@@ -355,6 +361,52 @@ def test_idempotent_replay_and_reopened_owner_return_immutable_result(tmp_path):
             cold.store.close()
     finally:
         p3.close()
+
+
+@requires_store
+def test_compression_evidence_survives_psych_committed_crash(tmp_path):
+    """M2: a cold crash after commit must recover receipt compression evidence."""
+    from p3_fixture_support import build_case, reopen_owner
+
+    case = build_case(tmp_path, include_compression=True)
+    recovered_owner = None
+    try:
+        owner = case.owner
+        proposal = case.proposals[0]
+        original_finish = owner.store.finish
+        calls = {"count": 0}
+
+        def crash_once(operation_id, result):
+            calls["count"] += 1
+            if calls["count"] == 1:
+                raise RuntimeError("INJECTED_CRASH_AFTER_PSYCH_COMMIT")
+            return original_finish(operation_id, result)
+
+        owner.store.finish = crash_once
+        with pytest.raises(RuntimeError, match="INJECTED_CRASH"):
+            owner.realize("m2-compression-crash", proposal, owner.snapshot())
+        operation = owner.store.get_operation("m2-compression-crash")
+        assert operation["phase"] == "PSYCH_COMMITTED"
+        receipt = operation["effects_receipt"]
+        evidence = receipt["compression"]
+        assert evidence["status"] == "BOUND"
+        owner.close()
+        _base2, recovered_owner = reopen_owner(case)
+        recovered = recovered_owner.realize(
+            "m2-compression-crash", proposal, recovered_owner.snapshot())
+        assert recovered.consequences["test_only_compression_evidence"] == evidence
+        assert recovered.consequences["effects_receipt_hash"] == (
+            receipt["receipt_hash"])
+        assert recovered.receipt_ref == "P3_PSYCH:" + receipt["response_hash"]
+        completed = recovered_owner.store.get_operation("m2-compression-crash")
+        assert completed["phase"] == "COMPLETE"
+        assert completed["result"]["consequences"][
+            "test_only_compression_evidence"] == evidence
+    finally:
+        if recovered_owner is not None:
+            recovered_owner.close()
+        else:
+            case.owner.close()
 
 
 @pytest.mark.skipif(not _store_available(), reason=STORE_BLOCK)

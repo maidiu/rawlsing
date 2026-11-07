@@ -1,10 +1,16 @@
 {
-  "status": "FINAL_INDEPENDENT_REVIEW_RETURNED_REVISE__M1_M2_REPAIR__AUTHOR_HARNESS_LIVE",
+  "status": "FINAL_INDEPENDENT_REVIEW_REVISE__M1_M2_RUNTIME_REPAIRED__M3_AND_HARNESS_WITH_AUTHOR_LANE",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
   "owner_disposition": "OWNER_INPUT_DISPOSITION.json",
-  "owner_runtime_tests": "59 combined store/owner PASS;1 inapplicable missing-store guard skipped; actual crash recovery passes",
+  "owner_runtime_tests": "61 combined store/owner PASS;1 inapplicable missing-store guard skipped;37 unit PASS; M1/M2 repair evidence in evidence/final-review-repair/",
   "compression_repair": "VERIFIED_ACTUAL_BOUNDARY_ONLY",
+  "m1_m2_repair": {
+    "evidence": "evidence/final-review-repair/M1_M2_REPAIR.json",
+    "m1": "RECEIPT_LINK_EXACT_REF_BOUND_SURFACES_AND_NEGATIVE_TESTS",
+    "m2": "PRE_COMMIT_BIND_RECEIPT_PERSISTENCE_AND_COLD_CRASH_RECOVERY",
+    "m3": "OPEN_AUTHOR_LANE"
+  },
   "projection": "COMPATIBLE_ACTUAL_READERS_ONLY",
   "lanes": [
     {
@@ -111,10 +117,10 @@
       "return_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a"
     }
   ],
-  "runtime": "ACTUAL_SAME_P2_ROOT_WRITER_AND_LATER_READER_PASS__FULL_P3_PENDING",
+  "runtime": "ACTUAL_SAME_P2_ROOT_WRITER_AND_LATER_READER_PASS__M1_M2_REPAIRED__FULL_P3_PENDING",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Repair M1/M2 runtime and M3 measurement via existing owners; author completes full13 harness repairs; reexecute complete matrix at corrected exact cut with actual metrics; focused independent re-review; selective PR without merge when demonstrated.",
+  "next": "M3 measurement and full13 harness corrections remain with the live author lane; on return, intake corrected matrix, reexecute at the corrected exact cut, then focused nonauthor re-review and selective PR without merge.",
   "store_failure": "STORE_FAILURE_DISPOSITION.json",
   "vertical_harness": "VERTICAL_HARNESS_INPUT_DISPOSITION.json",
   "store_intake": "STORE_INPUT_DISPOSITION.json",
@@ -128,9 +134,9 @@
   "review_return_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
   "review_intake": "FINAL_REVIEW_INTAKE_DISPOSITION.json",
   "material_findings": [
-    "M1 store result/receipt linkage",
-    "M2 compression recovery evidence",
-    "M3 DB+WAL per-record metric"
+    "M1 store result/receipt linkage — repaired pending focused review",
+    "M2 compression recovery evidence — repaired pending focused review",
+    "M3 DB+WAL per-record metric — open author lane"
   ],
   "review_demonstrated": "ACTUAL_P2_ROOT_FORMATION_TWO_RECORDS_LATER_COMPUTED_RESPONSE_SAME_HISTORY_CONTRAST__OWNER8P1skip_STORE51P_UNIT36P"
 }

@@ -422,12 +422,17 @@ class P3Owner:
         if not isinstance(readset, (list, tuple)):
             readset = response.get("readset", [])
         return {"records": detached(receipt.get("records", [])),
-                "response": detached(response), "readset": list(readset)}
+                "response": detached(response), "readset": list(readset),
+                "effects_receipt": detached(receipt),
+                "compression": detached(receipt.get("compression")),
+                "projection": detached(receipt.get("projection"))}
 
     def _psych_result(self, operation_id: str, proposal: EventProposal,
                       expected: StateIdentity, base_result: RealizedEvent,
                       effect: Mapping) -> RealizedEvent:
-        projection = self._project(base_result)
+        projection = effect.get("projection")
+        if not isinstance(projection, Mapping):
+            projection = self._project(base_result)
         return self._result(operation_id, proposal, expected, base_result,
                             effect, projection)
 
@@ -575,19 +580,26 @@ class P3Owner:
             "source_hash": self.source_hash,
             "registry_hash": self.registry["hash"],
         }
-        self.store.commit_effects(
-            operation_id, records=effect["records"], response=effect["response"],
-            event_binding=event_binding,
-        )
+        projection = self._project(base_result)
+        compression_doc = None
         if proposal.event_id in self.compression_specs:
             # Optional evidence only. The compression worker's current return
             # is REVISE; no positive compression claim is made here.
-            effect["compression"] = compression_module.bind(
+            compression_doc = compression_module.bind(
                 self.compression_specs[proposal.event_id],
                 identity=base_result.before.document(),
                 proposal=proposal.document(), catalog=self.catalog,
                 realized=base_result.document(),
             )
+        receipt = self.store.commit_effects(
+            operation_id, records=effect["records"], response=effect["response"],
+            event_binding=event_binding, compression=compression_doc,
+            projection=projection,
+        )
+        effect["effects_receipt"] = receipt
+        effect["projection"] = projection
+        if compression_doc is not None:
+            effect["compression"] = compression_doc
         return effect, activated, event_binding
 
     def _result(self, operation_id: str, proposal: EventProposal,
@@ -597,6 +609,11 @@ class P3Owner:
         if base != base_result.after:
             _refuse("P3_BASE_STATE_CHANGED_AFTER_EFFECT")
         after = self._p3_identity(base)
+        receipt = effect.get("effects_receipt")
+        if not isinstance(receipt, Mapping) or not isinstance(
+            receipt.get("receipt_hash"), str
+        ):
+            _refuse("P3_EFFECTS_RECEIPT_MISSING")
         consequences = detached(base_result.consequences)
         consequences.update({
             "durable_psychological_transition": "MISSING_RULE",
@@ -604,8 +621,9 @@ class P3Owner:
             "test_only_user_surface": detached(projection["user"]),
             "test_only_actor_surface": detached(projection["actor"]),
             "native_action": "NOT_ISSUED_BY_P3_RULE",
+            "effects_receipt_hash": receipt["receipt_hash"],
         })
-        if "compression" in effect:
+        if effect.get("compression") is not None:
             consequences["test_only_compression_evidence"] = detached(
                 effect["compression"])
         readset = list(dict.fromkeys(
@@ -617,7 +635,10 @@ class P3Owner:
             objective=detached(base_result.objective),
             accessible=detached(projection["actor"]),
             consequences=consequences, readset=tuple(readset),
-            receipt_ref="P3_PSYCH:" + str(effect["response"].get("hash", operation_id)),
+            receipt_ref="P3_PSYCH:" + str(
+                receipt.get("response_hash")
+                or effect["response"].get("hash", operation_id)
+            ),
         )
 
     def _complete(self, operation_id: str, result: RealizedEvent) -> RealizedEvent:

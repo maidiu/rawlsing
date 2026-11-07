@@ -666,17 +666,53 @@ def _validate_result(
         _text(ref, "RESULT_READSET_ELEMENT_INVALID")
     _text(value["receipt_ref"], "RESULT_RECEIPT_INVALID")
     if effects_receipt is not None and isinstance(value["consequences"], Mapping):
+        consequences = value["consequences"]
         receipt_hash = effects_receipt.get("receipt_hash")
-        for key in (
+        link_keys = (
             "effects_receipt_hash",
             "psyche_effects_receipt_hash",
             "p3_effects_receipt_hash",
-        ):
-            if key in value["consequences"] and value["consequences"][key] != receipt_hash:
+        )
+        links = [key for key in link_keys if key in consequences]
+        if not links:
+            raise RecursionRefusal("RESULT_RECEIPT_LINK_MISSING")
+        for key in links:
+            if consequences[key] != receipt_hash:
                 raise RecursionRefusal("RESULT_RECEIPT_LINK_MISMATCH")
-        if "effects_receipt" in value["consequences"]:
-            if canonical(value["consequences"]["effects_receipt"]) != canonical(effects_receipt):
+        if "effects_receipt" in consequences:
+            if canonical(consequences["effects_receipt"]) != canonical(effects_receipt):
                 raise RecursionRefusal("RESULT_RECEIPT_LINK_MISMATCH")
+        response = effects_receipt.get("response")
+        response_hash = effects_receipt.get("response_hash")
+        expected_ref = None
+        if isinstance(response_hash, str) and response_hash:
+            expected_ref = "P3_PSYCH:" + response_hash
+        elif isinstance(response, Mapping):
+            embedded = response.get("hash")
+            if isinstance(embedded, str) and embedded:
+                expected_ref = "P3_PSYCH:" + embedded
+        if expected_ref is not None and value["receipt_ref"] != expected_ref:
+            raise RecursionRefusal("RESULT_RECEIPT_REF_MISMATCH")
+        projection = effects_receipt.get("projection")
+        if isinstance(projection, Mapping):
+            actor_surface = projection.get("actor")
+            if isinstance(actor_surface, Mapping):
+                if canonical(value["accessible"]) != canonical(actor_surface):
+                    raise RecursionRefusal("RESULT_ACCESSIBLE_RECEIPT_MISMATCH")
+                if (
+                    "test_only_actor_surface" in consequences
+                    and canonical(consequences["test_only_actor_surface"])
+                    != canonical(actor_surface)
+                ):
+                    raise RecursionRefusal("RESULT_ACCESSIBLE_RECEIPT_MISMATCH")
+        compression = effects_receipt.get("compression")
+        if compression is not None:
+            if (
+                "test_only_compression_evidence" not in consequences
+                or canonical(consequences["test_only_compression_evidence"])
+                != canonical(compression)
+            ):
+                raise RecursionRefusal("RESULT_COMPRESSION_EVIDENCE_MISMATCH")
     return _detached(value)
 
 
@@ -931,12 +967,22 @@ class PsycheStore:
         records: list[Mapping[str, Any]] | tuple[Mapping[str, Any], ...],
         response: Mapping[str, Any],
         event_binding: Mapping[str, Any],
+        compression: Mapping[str, Any] | None = None,
+        projection: Mapping[str, Any] | None = None,
     ) -> dict:
         operation_id = _text(operation_id, "OPERATION_ID_REQUIRED")
         response_doc = _json_mapping(response, "RESPONSE_INVALID")
         if not isinstance(records, (list, tuple)):
             raise RecursionRefusal("RECORDS_NOT_A_SEQUENCE")
         event = _event_binding_view(event_binding, self._binding)
+        compression_doc = (
+            None if compression is None
+            else _json_mapping(compression, "COMPRESSION_INVALID")
+        )
+        projection_doc = (
+            None if projection is None
+            else _json_mapping(projection, "PROJECTION_INVALID")
+        )
         with self._lock:
             self._ensure_open()
             with self._write():
@@ -964,7 +1010,13 @@ class PsycheStore:
                 if len(set(record_ids)) != len(record_ids):
                     raise RecursionRefusal("DUPLICATE_RECORD_ID")
                 request_hash = digest(
-                    {"records": normalized, "response": response_doc, "event_binding": event}
+                    {
+                        "records": normalized,
+                        "response": response_doc,
+                        "event_binding": event,
+                        "compression": compression_doc,
+                        "projection": projection_doc,
+                    }
                 )
                 if op["phase"] in (PHASE_PSYCH, PHASE_COMPLETE):
                     receipt = op["effects_receipt"]
@@ -1085,6 +1137,12 @@ class PsycheStore:
                     "native_science": "NOT_ISSUED",
                     "production": False,
                 }
+                if compression_doc is not None:
+                    receipt["compression"] = compression_doc
+                    receipt["compression_hash"] = digest(compression_doc)
+                if projection_doc is not None:
+                    receipt["projection"] = projection_doc
+                    receipt["projection_hash"] = digest(projection_doc)
                 receipt["receipt_hash"] = digest(receipt)
                 self._connection.execute(
                     "UPDATE p3_operations SET phase=?, effects_receipt_json=?, "

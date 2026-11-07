@@ -193,7 +193,8 @@ def ready(
     }
 
 
-def committed(store: PsycheStore, context: dict, records=None) -> dict:
+def committed(store: PsycheStore, context: dict, records=None, *,
+              compression=None, projection=None) -> dict:
     records = records if records is not None else [
         record(clock=context["clock"], event_id=context["event_id"])
     ]
@@ -202,6 +203,8 @@ def committed(store: PsycheStore, context: dict, records=None) -> dict:
         records=records,
         response={"selected": "candidate", "authority": "TEST_ONLY"},
         event_binding=context["event"],
+        compression=compression,
+        projection=projection,
     )
 
 
@@ -216,7 +219,8 @@ def result_for(store: PsycheStore, context: dict, receipt: dict, **overrides):
         "accessible": {"event_id": context["event_id"]},
         "consequences": {"effects_receipt_hash": receipt["receipt_hash"]},
         "readset": [event_hash(context["event_id"])],
-        "receipt_ref": "P3:" + context["operation_id"],
+        "receipt_ref": "P3_PSYCH:" + str(
+            receipt.get("response_hash", context["operation_id"])),
     }
     value.update(overrides)
     return value
@@ -552,6 +556,55 @@ def test_finish_before_commit_and_receipt_link_mismatch_refuse(tmp_path):
     bad["consequences"]["effects_receipt_hash"] = "wrong"
     with pytest.raises(RecursionRefusal, match="RECEIPT_LINK_MISMATCH"):
         store.finish("op-1", bad)
+    unlinked = result_for(store, context, receipt, consequences={})
+    with pytest.raises(RecursionRefusal, match="RESULT_RECEIPT_LINK_MISSING"):
+        store.finish("op-1", unlinked)
+    store.close()
+
+
+def test_finish_binds_receipt_ref_access_and_compression_evidence(tmp_path):
+    store = opened(tmp_path)
+    context = ready(store)
+    projection = {"user": {"scope": "user"}, "actor": {"status": "OBSERVED"}}
+    compression = {"status": "BOUND", "envelope_id": "envelope-1"}
+    receipt = committed(
+        store, context, compression=compression, projection=projection)
+    good = result_for(
+        store,
+        context,
+        receipt,
+        accessible=projection["actor"],
+        consequences={
+            "effects_receipt_hash": receipt["receipt_hash"],
+            "test_only_actor_surface": projection["actor"],
+            "test_only_compression_evidence": compression,
+        },
+    )
+    forged_ref = {**good, "receipt_ref": "P3_PSYCH:forged"}
+    with pytest.raises(RecursionRefusal, match="RESULT_RECEIPT_REF_MISMATCH"):
+        store.finish("op-1", forged_ref)
+    bad_access = {**good, "accessible": {"status": "HELD"}}
+    with pytest.raises(RecursionRefusal, match="RESULT_ACCESSIBLE_RECEIPT_MISMATCH"):
+        store.finish("op-1", bad_access)
+    bad_compression = {
+        **good,
+        "consequences": {
+            **good["consequences"],
+            "test_only_compression_evidence": {"status": "HELD"},
+        },
+    }
+    with pytest.raises(RecursionRefusal, match="RESULT_COMPRESSION_EVIDENCE_MISMATCH"):
+        store.finish("op-1", bad_compression)
+    missing_compression = {
+        **good,
+        "consequences": {
+            "effects_receipt_hash": receipt["receipt_hash"],
+            "test_only_actor_surface": projection["actor"],
+        },
+    }
+    with pytest.raises(RecursionRefusal, match="RESULT_COMPRESSION_EVIDENCE_MISMATCH"):
+        store.finish("op-1", missing_compression)
+    assert store.finish("op-1", good)["phase"] == PHASE_COMPLETE
     store.close()
 
 
