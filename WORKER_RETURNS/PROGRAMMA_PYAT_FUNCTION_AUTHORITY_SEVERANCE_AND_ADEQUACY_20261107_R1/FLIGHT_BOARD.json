@@ -117,7 +117,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED_ACCEPT_WITH_REPORTING_CORRECTIONS",
     "actual_model": {
       "id": "msg_1b82340b4001n5WFBJJujup5JM",
       "type": "assistant",
@@ -131,7 +131,10 @@
         "streamed": 1794090701561,
         "completed": 1794090701873
       }
-    }
+    },
+    "returned_commit": "638f75e7b661057954f7dbd3b58739b83ec2e8e1",
+    "hq_import_commit": "d6102d4aa",
+    "disposition": "Independent seven focused checks reproduce exact sourcefree composition and controls. HQ accepts functional evidence at that scope. Five reporting corrections pending; no original J provenance/equivalence/severance accepted."
   },
   {
     "task": "pyat777-source-independent-review-r1",
@@ -160,6 +163,38 @@
       },
       "time": {
         "created": 1794090981997
+      }
+    }
+  },
+  {
+    "task": "pyat777-joint-reporting-corrections-r1",
+    "session": "ses_1b9742b6c02745d8a69d062011",
+    "branch": "agent/pyat777-joint-consumer-20261107-r1",
+    "startup": "751fb3fab88ab0faef4b20afeb57a89801f7cce8",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-joint-consumer",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_JOINT_CONSUMER",
+    "launch": {
+      "job_id": "pyat777-joint-reporting-corrections-r1",
+      "child_pid": 4532,
+      "supervisor_pid": 4531,
+      "observer_pid": 4533,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-joint-reporting-corrections-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "actual_model": {
+      "id": "msg_1b82a0ef4001DMwTQDA6VLsAGj",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794091126594,
+        "streamed": 1794091131799,
+        "completed": 1794091131893
       }
     }
   }

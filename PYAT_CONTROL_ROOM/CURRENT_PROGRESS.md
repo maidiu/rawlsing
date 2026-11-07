@@ -1,3 +1,7 @@
+# #777 latest disposition — C2 functional evidence accepted, reporting correction out
+
+Independent review `638f75e7b661057954f7dbd3b58739b83ec2e8e1` reproduced seven focused checks, actual owner calls and exact same-person joint arithmetic. HQ accepts that sourcefree capability only. Five bounded reporting corrections are dispatched to the existing author; no additional general review or production repair is required. Original J authority provenance/equivalence/severance remains UNPROVED. C1 review and C3 author continue independently. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_REVIEW_INTAKE.json`. All estate/callsite/unmatched and 17 agenda obligations remain.
+
 # #777 latest intake — C1 return, distinct review launched
 
 C1 exact `a98299e7c9cd05aa3eabe2c22d20ea6b746ea667` is evidence only. Selected historical response rows and current sourcefree guards are documented; provenance remains UNPROVED. Independent review must check actual dynamic wiring and whether context-only restrictions affect raw counting; no bind-or-retire repair is approved. Three substantive lanes remain out: C1 review, C2 review, C3 FF/postFF author. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C1_RETURN_INTAKE.json`. All unmatched rows, all 17 agenda obligations and authority holds remain.
