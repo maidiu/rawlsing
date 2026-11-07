@@ -29,14 +29,14 @@ def test_performed_speech_reads_real_prior_p3_formation(tmp_path, monkeypatch):
             world_before = session.world().snapshot()
             scope = dict(case.plans[0], relation_ref=case.plans[0]["relation_refs"][0])
             speech = admit_speech(session, text="Could you look at this edge?",
-                                  actor_ref=case.initial.actor)
+                                  actor_ref=case.initial.actor, request_edge=True)
             # A later access must recruit strictly antecedent records.
             session.produce_interval(case.base_owner.fanin.deps["make_domain"](
                 mode="ACTUAL", start=session.clock(), end=session.clock() + 2))
             with pytest.raises(RecursionRefusal, match="P4_SPEECH_IDENTITY_MISMATCH"):
                 read_response(case.owner, speech, scope)
             speech = admit_speech(session, text="Could you look at this edge?",
-                                  actor_ref=case.initial.actor)
+                                  actor_ref=case.initial.actor, request_edge=True)
             uptake = read_response(case.owner, speech, scope)
             assert speech["performed"]["hash"] in uptake["readset"]
 
@@ -63,7 +63,8 @@ def test_performed_speech_reads_real_prior_p3_formation(tmp_path, monkeypatch):
                 assert session.event(private_event["event_id"])["summary"] == actor_private
                 assert session.episodes(session.meta["user_actor"])[-1]["body"]["text"] == user_private
                 assert read_response(case.owner, speech, scope) == uptake
-                public = json.dumps(surface(case.owner, {"turns": []}))
+                ledger = {"turns": [], "antecedent": {"identity": {"clock": session.clock()}}}
+                public = json.dumps(surface(case.owner, ledger))
                 assert actor_private not in public and user_private not in public
                 with monkeypatch.context() as cut:
                     cut.setattr(test_rules, "B1_PATH", tmp_path / "absent")

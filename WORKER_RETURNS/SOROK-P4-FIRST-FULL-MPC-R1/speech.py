@@ -15,7 +15,7 @@ def developing_actor(session, actor_ref):
     raise RecursionRefusal("P4_ACTOR_ACTION_BINDING_UNAVAILABLE")
 
 
-def admit_speech(session, *, text, actor_ref):
+def admit_speech(session, *, text, actor_ref, request_edge=False):
     """Record the attempt, then commit and perceive speech only if admitted.
 
     The interaction owner calls this inside its serialized operation. This
@@ -32,6 +32,7 @@ def admit_speech(session, *, text, actor_ref):
     attempt = {
         "operation": "SAY",
         "text": text,
+        "request_edge": request_edge,
         "performer": user,
         "root": session.read_root()["root_hash"],
         "branch": session.branch_id,
@@ -51,7 +52,8 @@ def admit_speech(session, *, text, actor_ref):
         event = make_event(
             clock=world.clock, kind="SPEECH", actor_id=user,
             location=world.positions[user], summary=f"{user} says: {text}",
-            body={"text": text, "observable": True, "attempt_hash": attempt["hash"]},
+            body={"text": text, "observable": True, "request_edge": request_edge,
+                  "attempt_hash": attempt["hash"]},
             sequence=len(world.events),
         )
         world.add_event(event)

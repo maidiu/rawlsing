@@ -66,11 +66,18 @@ def surface(owner, ledger):
     fanin = owner.base_owner.fanin
     view = fanin.view()
     invited = invitation(fanin.session, ledger)
-    choices = ["SAY", "INSPECT_EDGE"] if invited else ["SAY"]
+    choices = ["SAY", "REQUEST_EDGE"]
+    if invited:
+        choices.append("INSPECT_EDGE")
+    opening_clock = ledger["antecedent"]["identity"]["clock"]
+    observations = [
+        row for row in view["visible_events"]
+        if row["clock"] >= opening_clock or row["kind"] == "ARRIVAL"
+    ]
     return {"grade": GRADE, "clock": fanin.session.clock(),
             "location": view.get("location"),
             "tool_available": view.get("tool_available"),
-            "observations": view.get("visible_events", []),
+            "observations": observations,
             "choices": choices, "invitation": invited}
 
 
@@ -104,7 +111,7 @@ def act(owner, ledger_file, ledger, args):
     session = fanin.session
     before = owner.snapshot().document()
     if args.command == "say":
-        action = {"operation": "SAY", "text": args.text}
+        action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
     else:
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
     if args.request_id:
@@ -118,7 +125,8 @@ def act(owner, ledger_file, ledger, args):
     ledger["pending"] = {"action": action, "before": before, "request_id": args.request_id}
     save(ledger_file, ledger)
     if args.command == "say":
-        speech = admit_speech(session, text=args.text, actor_ref=before["actor"])
+        speech = admit_speech(session, text=args.text, actor_ref=before["actor"],
+                              request_edge=args.request_edge)
         uptake = read_response(owner, speech, ledger["scope"])
         expression, observation = express(session, uptake)
         interval = advance(fanin) if speech["performed"] else None
@@ -161,6 +169,8 @@ def main():
     commands.add_parser("view")
     say = commands.add_parser("say")
     say.add_argument("text")
+    say.add_argument("--request-edge", action="store_true",
+                     help="Explicitly ask the Other to look at the edge with you.")
     say.add_argument("--request-id")
     inspect = commands.add_parser("inspect-edge")
     inspect.add_argument("invitation")

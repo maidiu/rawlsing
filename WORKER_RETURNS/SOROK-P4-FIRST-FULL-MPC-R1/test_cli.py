@@ -50,7 +50,8 @@ def test_complete_cell_and_controls(tmp_path):
     assert original["antecedent"]["formation"].startswith("P3_PSYCH:")
     assert opening["clock"] == original["antecedent"]["identity"]["clock"]
     assert any(e["kind"] == "ARRIVAL" for e in opening["observations"])
-    assert opening["choices"] == ["SAY"]
+    assert all(e["kind"] != "SPEECH" for e in opening["observations"])
+    assert opening["choices"] == ["SAY", "REQUEST_EDGE"]
     assert opening["invitation"] is None
 
     # Keep an exact cold checkpoint. S37 refuses relocated live state, so
@@ -58,7 +59,7 @@ def test_complete_cell_and_controls(tmp_path):
     alternate = tmp_path / "alternate"
     shutil.copytree(root, alternate)
     text = "  I need a closer look at that edge.  "
-    args = ("say", text, "--request-id", "first")
+    args = ("say", text, "--request-edge", "--request-id", "first")
     rejected = call(root, *args, sever=True)
     assert rejected["status"] == "REFUSED"
     assert rejected["reason"] == "P3_B1_SOURCE_SEVERED"
@@ -86,13 +87,17 @@ def test_complete_cell_and_controls(tmp_path):
     alternate.rename(root)
     try:
         assert receipts(root) == original
-        changed = call(root, "say", "Please keep working; I can wait.")
+        changed = call(root, "say", "Do not invite me to inspect. I am leaving the edge.")
         changed_turn = receipts(root)["turns"][0]
     finally:
         root.rename(alternate)
         accepted_path.rename(root)
     other_event = changed_turn["receipt"]["speech"]["performed"]
     assert changed["performed"] and other_event["hash"] != event["hash"]
+    assert changed["observation"] is None and changed["next"]["invitation"] is None
+    assert changed_turn["receipt"]["uptake"]["status"] == "PERCEIVED_NO_INSPECTION_REQUEST"
+    assert speech["attempt"]["request_edge"] is True
+    assert changed_turn["receipt"]["speech"]["attempt"]["request_edge"] is False
     assert other_event["hash"] in changed_turn["receipt"]["uptake"]["readset"]
     assert event["hash"] not in changed_turn["receipt"]["uptake"]["readset"]
 
@@ -113,7 +118,7 @@ def test_complete_cell_and_controls(tmp_path):
     assert second["performed"] and second["observation"]["kind"] == "INSPECT"
     assert second["observation"]["body_public"]["changed"] is False
     assert second["next"]["clock"] == first["next"]["clock"]
-    assert second["next"]["choices"] == ["SAY"]
+    assert second["next"]["choices"] == ["SAY", "REQUEST_EDGE"]
     assert call(root, "view") == second["next"]
 
     turns = receipts(root)["turns"]
@@ -131,7 +136,7 @@ def test_complete_cell_and_controls(tmp_path):
     assert footing(call(imposed, "new", "--history", "imposed_plan")) == footing(opening)
     private = call(imposed, *args)
     assert private["observation"]["body_public"]["text"] != first["observation"]["body_public"]["text"]
-    assert private["next"]["choices"] == ["SAY"]
+    assert private["next"]["choices"] == ["SAY", "REQUEST_EDGE"]
     private_receipt = receipts(imposed)["turns"][0]["receipt"]
     assert private_receipt["speech"]["performed"]["body"]["text"] == text
     assert private_receipt["interval"]["segments"][0]["world"]["state_before"] == material["state_before"]
@@ -140,7 +145,7 @@ def test_complete_cell_and_controls(tmp_path):
     assert footing(call(empty, "new", "--history", "")) == footing(opening)
     assert receipts(empty)["antecedent"]["psychology_head"]["count"] == 0
     valid_empty = call(empty, *args)
-    assert valid_empty["performed"] and valid_empty["next"]["choices"] == ["SAY"]
+    assert valid_empty["performed"] and valid_empty["next"]["choices"] == ["SAY", "REQUEST_EDGE"]
     assert valid_empty["observation"]["body_public"]["text"] != private["observation"]["body_public"]["text"]
 
     outputs = json.dumps([opening, first, blank, second, private, valid_empty])

@@ -36,7 +36,8 @@ def read_response(owner, admission, scope):
     if (stored != event or event["kind"] != "SPEECH" or event["actor_id"] != user
             or event["clock"] != identity["clock"]
             or event["body"].get("attempt_hash") != attempt["hash"]
-            or event["body"].get("text") != attempt["text"]):
+            or event["body"].get("text") != attempt["text"]
+            or event["body"].get("request_edge") is not attempt["request_edge"]):
         raise RecursionRefusal("P4_SPEECH_EVENT_BINDING_MISMATCH")
 
     actor = developing_actor(session, identity["actor"])
@@ -49,7 +50,11 @@ def read_response(owner, admission, scope):
     if access is None:
         return result
 
-    result["readset"].extend([digest(access), owner.registry["hash"],
+    result["readset"].append(digest(access))
+    if not event["body"]["request_edge"]:
+        return dict(result, status="PERCEIVED_NO_INSPECTION_REQUEST")
+
+    result["readset"].extend([owner.registry["hash"],
                               test_rules.B1_SHA256, owner.source_hash])
     context = {
         **{key: identity[key] for key in ("root", "actor", "branch", "clock")},
