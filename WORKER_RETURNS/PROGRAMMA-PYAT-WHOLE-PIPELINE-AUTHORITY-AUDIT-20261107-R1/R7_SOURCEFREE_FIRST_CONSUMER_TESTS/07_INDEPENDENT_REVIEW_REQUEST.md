@@ -6,8 +6,9 @@ Separate nonauthor exact-head reviewer required. Do not self-review, and do not 
 ## Review target
 - Branch: `agent/pyat753-r7-three-first-consumer-authority-falsifiers-20261107-r1`
 - Base: `integration/pre-main-reconciliation-r1@7a5429ffbc48efd25e28c912da80c822e66bc182`
-- PR head: recorded in the PR body and final head update after the bounded PR is opened.
-- PR URL: recorded after the bounded PR is opened.
+- PR: https://github.com/maidiu/rawlsing/pull/770
+- Initial evidence commit: `f7eb40fc8c24dcd85fdc86e59b36853c732224c5`.
+- Exact final PR head: latest commit on PR #770; the reviewer request comment records the exact SHA.
 - Scope: test-only return artifacts and execution runner; no production module changes.
 
 ## Findings to review

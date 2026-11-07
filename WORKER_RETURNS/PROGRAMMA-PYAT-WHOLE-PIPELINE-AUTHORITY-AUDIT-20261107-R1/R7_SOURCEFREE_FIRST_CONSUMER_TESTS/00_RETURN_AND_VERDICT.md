@@ -20,7 +20,9 @@
 - Prepared branch: `agent/pyat753-r7-three-first-consumer-authority-falsifiers-20261107-r1`.
 - Base: `integration/pre-main-reconciliation-r1@7a5429ffbc48efd25e28c912da80c822e66bc182`.
 - Worktree: `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r7-first-consumer-falsifiers-20261107-r1`.
-- Final PR head and PR URL are recorded in `07_INDEPENDENT_REVIEW_REQUEST.md` after the bounded PR is opened.
+- PR: https://github.com/maidiu/rawlsing/pull/770
+- Initial evidence commit: `f7eb40fc8c24dcd85fdc86e59b36853c732224c5`.
+- Exact final PR head is the latest commit on PR #770; the reviewer request comment records it.
 - Runner: `08_EXECUTION_RUNNER.py`, exit `0`.
 - Machine trace: `R7_EXECUTION_TRACE.json`.
 - Mutation ledger: `04_MUTATION_NEGATIVE_COLD_REPLAY.tsv` (17 lines including header).
