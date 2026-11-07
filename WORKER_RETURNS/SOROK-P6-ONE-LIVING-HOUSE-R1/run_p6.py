@@ -3,6 +3,7 @@
 
 import argparse
 import fcntl
+from functools import partial
 import json
 from pathlib import Path
 import sys
@@ -10,10 +11,13 @@ import sys
 RETURNS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RETURNS / "SOROK-P5-CONTINUOUS-EXPERIENCE-R1"))
 
-from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitation, new, open_owner, surface
+from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitation, new, open_owner, save, surface
 from developmental_recursion.contracts import RecursionRefusal
+from attention import register, select
 from gaze import render
-from house import establish, perform, read_house, scene
+from house import close_on_repair, establish, perform, read_house, scene
+
+PACE = partial(advance_for_action, on_repair=close_on_repair)
 
 
 def experience(state, args):
@@ -21,6 +25,7 @@ def experience(state, args):
     if command == "new":
         state.mkdir(parents=True, exist_ok=True)
     ledger_file = state / "p4_receipts.json"
+    gaze_file = state / "p6_gaze.json"
     with (state / "p4.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         if command == "new":
@@ -37,6 +42,7 @@ def experience(state, args):
                         else ledger["antecedent"]["identity"])
             if owner.snapshot().document() != expected:
                 raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
+            prior = scene(session)
             outcome = None
             if command in {"go", "look", "attend", "inspect"} and invitation(session, ledger):
                 raise RecursionRefusal("P6_INVITATION_REQUIRES_EXPLICIT_RESPONSE")
@@ -47,13 +53,13 @@ def experience(state, args):
                 def perform_with_time(current, admitted):
                     receipt, public = perform(current, admitted)
                     if public["performed"]:
-                        receipt["interval"] = advance_for_action(owner.base_owner.fanin, admitted)
+                        receipt["interval"] = PACE(owner.base_owner.fanin, admitted)
                     return receipt, public
 
                 outcome = act(owner, ledger_file, ledger, args,
                               conduct=(action, perform_with_time))
             elif command in {"say", "attend", "inspect", "inspect-edge"}:
-                outcome = act(owner, ledger_file, ledger, args, pacing=advance_for_action)
+                outcome = act(owner, ledger_file, ledger, args, pacing=PACE)
             view = surface(owner, ledger)
             frame = scene(session)
         finally:
@@ -67,7 +73,16 @@ def experience(state, args):
             evidence = latest["receipt"].get("expression") or latest["receipt"].get("performed")
             if boundary is None and evidence:
                 boundary = evidence["event_id"]
-        result = {"clock": view["clock"], **frame,
+        profile = (json.loads(gaze_file.read_text()) if gaze_file.exists()
+                   else {"history": [], "exposure": {}})
+        if command == "look" and outcome["performed"] and latest["action"].get("target") == args.target:
+            register(profile, prior, args.target, len(ledger["turns"]))
+        objects = frame.pop("objects")
+        selected = select(objects, profile["history"])
+        profile["exposure"] = {"room": frame["room"], "detail": selected}
+        save(gaze_file, profile)
+        result = {"clock": view["clock"], **frame, "available": sorted(objects),
+                  "detail": objects.get(selected),
                   "narration": render(view, [], candidates=candidates, boundary=boundary),
                   "invitation": view["invitation"]}
         if outcome is not None:

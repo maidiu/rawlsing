@@ -8,6 +8,8 @@ ROOMS = {
     "living room": {"other": "workshop", "line": "The workbench is through the doorway. A low shelf runs along the wall."},
 }
 OBJECTS = {
+    "bench": {"room": "workshop", "glance": "The bench stands beside the doorway.",
+              "close": "Shallow cuts cross the bench top."},
     "mug": {"room": "workshop", "glance": "A mug stands beside the bench.",
             "close": "There is a chip in the rim."},
     "sandals": {"room": "living room", "glance": "A pair of brown sandals lies beneath the shelf.",
@@ -20,6 +22,7 @@ OBJECTS = {
 # Offsets refer to the established encounter clock. The photograph captures
 # the repaired strap, so its exposure has to follow the repair.
 HISTORY = (
+    {"id": "bench-installation", "object": "bench", "offset": -14, "depends_on": []},
     {"id": "strap-repair", "object": "sandals", "offset": -9, "depends_on": []},
     {"id": "photo-exposure", "object": "photo", "offset": -4, "depends_on": ["strap-repair"],
      "depicts": "sandals"},
@@ -67,6 +70,21 @@ def read_house(session):
             for ref, row in history.items())):
         raise RecursionRefusal("P6_OBJECT_PROVENANCE_MISMATCH")
     return world, house
+
+
+def close_on_repair(session, event):
+    """Resolve the support history on actual workshop work, even out of sight."""
+    if event["kind"] != "REPAIR" or event["actor_id"] != "A" or event["location"] != "workshop":
+        return
+    world, house = read_house(session)
+    if "bench-installation" not in house["history"]:
+        house["history"]["bench-installation"] = facts(house["epoch"])["bench-installation"]
+        session.product._append_episode(
+            session.branch_id, "A", "P6_OBJECT_CLOSURE", world.clock,
+            {"source_event_id": event["event_id"], "fact_id": "bench-installation",
+             "source_hash": SOURCE},
+        )
+        session.product._checkpoint(session.branch_id, world.clock, world)
 
 
 def perform(session, action):
