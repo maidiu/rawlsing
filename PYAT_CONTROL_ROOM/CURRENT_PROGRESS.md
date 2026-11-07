@@ -1,3 +1,7 @@
+# #777 latest disposition — C2 closed at demonstrated scope; O14 court out
+
+C2 corrected cut `b132fa4a02b31ba539b33f24ad022846bb81acb8` satisfies the five independent reporting corrections; HQ mechanical checks passed with arithmetic and source scope preserved. Existing exact joint functionality is accepted at sourcefree scope; historical selected provenance and equivalence remain UNPROVED. Freed author is now dispatched on distinct O14 J-family role certification and historical F17/F19/F20/F21 selected authority. C1 review/C3 author continue, three lanes out. No production repair or original-science acceptance. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_CORRECTION_INTAKE.json` and consolidated actual cases.
+
 # #777 latest disposition — C2 functional evidence accepted, reporting correction out
 
 Independent review `638f75e7b661057954f7dbd3b58739b83ec2e8e1` reproduced seven focused checks, actual owner calls and exact same-person joint arithmetic. HQ accepts that sourcefree capability only. Five bounded reporting corrections are dispatched to the existing author; no additional general review or production repair is required. Original J authority provenance/equivalence/severance remains UNPROVED. C1 review and C3 author continue independently. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C2_REVIEW_INTAKE.json`. All estate/callsite/unmatched and 17 agenda obligations remain.
