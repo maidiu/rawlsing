@@ -55,11 +55,18 @@ def experience(state, args):
                 raise RecursionRefusal("P5_OCCURRENCE_UNAVAILABLE")
             save(gaze_file, history)
         candidates = None
+        boundary = view["invitation"]
         if ledger["turns"]:
-            start = ledger["turns"][-1]["before"]["clock"]
+            latest = ledger["turns"][-1]
+            start = latest["before"]["clock"]
+            # Keep a direct answer audible when the received perception
+            # confirms it, including a response that offers no joint work.
+            reply = latest["receipt"].get("expression")
+            if boundary is None and reply is not None:
+                boundary = reply["event_id"]
             candidates = [event["event_id"] for event in view["observations"]
                           if event["clock"] >= start]
-        narration = render(view, history, candidates=candidates, boundary=view["invitation"])
+        narration = render(view, history, candidates=candidates, boundary=boundary)
         result = {
             "grade": view["grade"],
             "clock": view["clock"],
