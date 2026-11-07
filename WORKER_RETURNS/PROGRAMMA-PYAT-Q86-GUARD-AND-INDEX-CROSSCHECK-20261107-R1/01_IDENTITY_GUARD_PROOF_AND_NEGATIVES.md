@@ -35,6 +35,13 @@ Proof runner: `06_R8_PROOF_RUNNER.py`, exit `0`, trace `R8_PROOF_TRACE.json`.
 
 The wrong-risk result is deliberately an admission-level refusal: exact Q86 identity is established first, and the later frozen bridge remains the owner for risk/source/permission closure. The guard does not widen or duplicate that authority.
 
+## Proof-integrity sidecars
+Changed material test modules now carry executable severance witnesses:
+- `test_field_forge_conditional_support.py.proof.json`: increments the joint support count in the producer; the named count-profile test passes baseline and fails by assertion under mutation.
+- `test_gt12_e2b_actual_object_consumer_harness.py.proof.json`: flips the V3 zero-actor-effect guard outcome; the named full-chain test passes baseline and fails by assertion under mutation.
+
+Both local witnesses returned `MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION`, baseline `PASS`, fault probe `TARGET_ASSERTION_FAILED`, exit `0`.
+
 ## Tests
 - `140 passed in 117.78s`, exit `0`: FF producer, closure-B bridge, E2B harness, D to M4 bridge, retained structural court, and GT12 I03 positive facts.
 - `58 passed in 2.25s`, exit `0`: C11 ingest, source-backed facade, and empirical query.

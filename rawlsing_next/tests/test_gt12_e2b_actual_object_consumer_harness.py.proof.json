@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R8_FROZEN_Q86_CHAIN_REACHES_ZERO_ACTOR_EFFECT_GUARD",
+      "actual_consumer": "gt12_d_to_m4_typed_bridge.publish_and_resolve_relation_v554_at_current_m4 -> v3_psepf_zero_positive_guard._deny -> GuardDecision consumed by test_synthetic_ordinary_objects_exercise_full_frozen_chain_to_exact_v3_zero_effect",
+      "claimed_dependency": "The frozen Q86 relation chain must reach the V3 zero-actor-effect guard and return DENY_ZERO_EFFECT; a delegated or positive outcome breaks the named downstream assertion",
+      "positive_node": "rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py::test_synthetic_ordinary_objects_exercise_full_frozen_chain_to_exact_v3_zero_effect",
+      "fault": {
+        "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+        "old": "        outcome=GuardOutcome.DENY_ZERO_EFFECT,",
+        "new": "        outcome=GuardOutcome.DELEGATE_TO_ACCEPTED_OWNER,"
+      }
+    }
+  ]
+}

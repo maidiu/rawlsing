@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R8_FROZEN_Q86_EXACT_COUNT_PROFILE_REACHES_CONSUMER",
+      "actual_consumer": "produce_exact_conditional_support_profile -> ExactConditionalSupportProfile.conditional_count_profile consumed by test_exact_count_profile_preserves_q86b_condition_denominators_and_zero_cells",
+      "claimed_dependency": "Exact joint cell counts from the producer must reach the conditional count profile and its condition denominators without a constant or off-by-one replacement",
+      "positive_node": "rawlsing_next/tests/test_field_forge_conditional_support.py::test_exact_count_profile_preserves_q86b_condition_denominators_and_zero_cells",
+      "fault": {
+        "path": "rawlsing_next/field_forge_conditional_support.py",
+        "old": "                \"joint_support_count\": count,",
+        "new": "                \"joint_support_count\": count + 1,"
+      }
+    }
+  ]
+}

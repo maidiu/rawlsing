@@ -39,6 +39,14 @@ $ python3 -m pytest rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py ra
 exit 1
 inherited: identical failure/errors on untouched R7 base at 172.41s; see 07_R7_GATE_AND_INHERITED_FAILURES.md
 
+$ python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_field_forge_conditional_support.py.proof.json --root .
+MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION; baseline PASS; fault probe TARGET_ASSERTION_FAILED
+exit 0
+
+$ python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py witness rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py.proof.json --root .
+MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION; baseline PASS; fault probe TARGET_ASSERTION_FAILED
+exit 0
+
 $ git grep -n -I -E 'Q86A|Q86B|Q69B|GT12|GT34|Afrobarometer|FIRST_GENUINE_CANARY' 7a5429ffbc48efd25e28c912da80c822e66bc182 -- rawlsing_next
 946 literal lines across 55 rawlsing_next files
 exit 0
