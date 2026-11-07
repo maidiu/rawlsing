@@ -527,3 +527,12 @@ G `a14306978bd1be54f87dae2de3f73712043e9ea9` changes existing universal-workload
 F nonauthor reviewpyat-universal35-compile-reuse-independent-review-20261106-r1 PID5143 launched under55f57a4c1 atfrozena1430697. Checks genuine old/new baseline, numerical/issued/replay/refusal identities, prepared projection/catalog authority/currentness and mutable material divergence, proportional sever/restore. G is author of this code and cannot review it. A C validation review and D R16 caller repair continue, three useful lanes.
 
 PROGRAMMA_DELTA: existing physical/native component/seam/gap/work-now/current records add actual compiled producer/firstconsumer and bounded measured sourcefree candidate. Originalfacts0/fullSRC10+SRC09 negatives retained;no originalscale/performance/native/science/protected acceptance or PR713scopechange. Next independent review and qualified C/D/compiler composition, then genuine original supported plan execution.
+
+
+### Universal35 returns reconciled before the P6 proof flight
+
+D R16 `1a6ec5d75ec859c4c21cd3106c1bed8c7979c1f0` forwards both exact factory rule arguments and restores the A regression file. The 15 focused tests passed. A review `eb24f1fda3418924011306b487b113874a5c0dc9` qualifies the coordinate contract at scoped level and returns REVISE on release reuse. Valid SCORE and MR1 releases share the old cache identity, allowing foreign-projection substitution.
+
+F review `34ed6aafebd3b9fd17e3fa318e8dcd8781ea34b8` reproduced exact controlled facts and identities and ten-to-one preparation. It returns REVISE because the hidden envelope material can detach from its projection or catalog. C R11 `ad75d0bb59976ffe8160ad9c6c28ae72dfdd0a70` measures genuine SRC10 first materialization at 145.998 s, down from 169.265 s, with 242,567 public objects in both runs and 29 author tests passing. The hash change awaits independent review. Full original execution and the actual SRC15 join remain pending.
+
+The user-directed P6 handoff took the three managed slots for isolated proof work against existing draft #779. Next Pyat work is the exact projection binding and envelope coherence repair, followed by qualified original execution.
