@@ -1,0 +1,76 @@
+M1 registration/call-through evidence
+build_j_validator_registry definition
+def build_j_validator_registry(
+    binding: m1.M1FamilyRuleBinding,
+) -> m1.M1ValidatorRegistry:
+    _validate_j_binding(binding)
+    return m1.M1ValidatorRegistry(
+        (
+            m1.FamilyValidatorRegistration.from_binding(
+                binding, j_component_certification_validator
+            ),
+        )
+    )
+M1 registry exact/no-alias declaration
+class M1ValidatorRegistry:
+    """Exact immutable validator registry; no aliases, latest, defaults or fallback."""
+
+    def __init__(self, registrations: Iterable[FamilyValidatorRegistration] = ()) -> None:
+        by_key: dict[tuple[str, str, str, str, str], FamilyValidatorRegistration] = {}
+        for registration in registrations:
+            if not isinstance(registration, FamilyValidatorRegistration):
+                raise M1IntegrityError("validator registry accepts exact registrations only")
+            prior = by_key.get(registration.dispatch_key)
+            if prior is not None and prior.registration_identity != registration.registration_identity:
+                raise M1IntegrityError("conflicting validator registrations share exact dispatch key")
+            by_key[registration.dispatch_key] = registration
+        self._by_key = MappingProxyType(by_key)
+
+    def resolve_exact(self, binding: M1FamilyRuleBinding) -> FamilyValidatorRegistration:
+        registration = self._by_key.get(binding.validator_dispatch_key)
+        if registration is None:
+            raise M1BlockedError(
+                "exact validator registration unavailable; no latest/default/fuzzy fallback"
+            )
+        if registration.validator_contract_fingerprint != binding.validator_contract_fingerprint:
+            raise M1BlockedError(
+                "validator registration does not match exact family-rule contract"
+            )
+        if registration.validator_algorithm_identity != binding.validator_algorithm_identity_if_required:
+            raise M1BlockedError("validator algorithm identity does not match exact binding")
+        if registration.validator_parameters_ref != binding.validator_parameters_ref:
+            raise M1BlockedError("validator parameters do not match exact binding")
+        return registration
+
+
+learned-world registry call-through
+
+        if contract.route == "M01_M1_M2_B5":
+            if m01_result is None:
+                raise LearnedWorldCompositionBlocked(
+                    "M01_M1_M2_B5 route requires exact M01 result"
+                )
+            if validator_registry is None:
+                raise LearnedWorldCompositionBlocked(
+                    "M01_M1_M2_B5 route requires exact M1 validator registry"
+                )
+            bundle = build_m1_bundle_from_m01(
+                m01_result,
+                contract=contract,
+                family_rule_binding=m1_family_rule_binding,
+                selected_discovery_receipt_refs=selected_discovery_receipt_refs,
+                requested_scope=requested_scope or {},
+                additional_authority_snapshots=m1_authority_snapshots,
+                prerequisite_channels=prerequisite_channels,
+                additional_dependency_refs=exact_additional_dependencies,
+            )
+            disposition = adjudicate_learned_empirical(
+                bundle,
+                m1_family_rule_binding,
+                validator_registry=validator_registry,
+            )
+        elif contract.route == "M1_M2_B5":
+            if disposition is None:
+                raise LearnedWorldCompositionBlocked(
+non-test calls of build_j_validator_registry (none expected)
+rawlsing_next/pre553_j_role_certification.py:1018:def build_j_validator_registry(

@@ -1,0 +1,31 @@
+J-role constructor/registration/caller search
+--- literal constructor/channel/validator calls excluding tests ---
+rawlsing_next/pre553_j_role_certification.py:356:def build_j_family_item_role_vector(
+rawlsing_next/pre553_j_role_certification.py:567:def build_j_family_item_role_channel(
+rawlsing_next/pre553_j_role_certification.py:1257:def j_component_certification_validator(
+--- registration builder and M1 references ---
+rawlsing_next/pre553_j_role_certification.py:1018:def build_j_validator_registry(
+rawlsing_next/pre553_j_role_certification.py:1020:) -> m1.M1ValidatorRegistry:
+rawlsing_next/pre553_j_role_certification.py:1022:    return m1.M1ValidatorRegistry(
+rawlsing_next/pre553_j_role_certification.py:1024:            m1.FamilyValidatorRegistration.from_binding(
+rawlsing_next/pre553_j_role_certification.py:1486:    "build_j_validator_registry",
+rawlsing_next/pre553_learned_world_composition.py:27:    M1ValidatorRegistry,
+rawlsing_next/pre553_learned_world_composition.py:1121:def compose_learned_world(
+rawlsing_next/pre553_learned_world_composition.py:1130:    validator_registry: M1ValidatorRegistry | None = None,
+rawlsing_next/pre553_learned_world_composition.py:1181:            if validator_registry is None:
+rawlsing_next/pre553_learned_world_composition.py:1198:                validator_registry=validator_registry,
+rawlsing_next/pre553_learned_world_composition.py:1444:    "compose_learned_world",
+rawlsing_next/pre553_learned_empirical_adjudication.py:1032:class FamilyValidatorRegistration:
+rawlsing_next/pre553_learned_empirical_adjudication.py:1077:    ) -> "FamilyValidatorRegistration":
+rawlsing_next/pre553_learned_empirical_adjudication.py:1112:class M1ValidatorRegistry:
+rawlsing_next/pre553_learned_empirical_adjudication.py:1115:    def __init__(self, registrations: Iterable[FamilyValidatorRegistration] = ()) -> None:
+rawlsing_next/pre553_learned_empirical_adjudication.py:1116:        by_key: dict[tuple[str, str, str, str, str], FamilyValidatorRegistration] = {}
+rawlsing_next/pre553_learned_empirical_adjudication.py:1118:            if not isinstance(registration, FamilyValidatorRegistration):
+rawlsing_next/pre553_learned_empirical_adjudication.py:1126:    def resolve_exact(self, binding: M1FamilyRuleBinding) -> FamilyValidatorRegistration:
+rawlsing_next/pre553_learned_empirical_adjudication.py:1683:    registration: FamilyValidatorRegistration,
+rawlsing_next/pre553_learned_empirical_adjudication.py:2107:    validator_registry: M1ValidatorRegistry,
+rawlsing_next/pre553_learned_empirical_adjudication.py:2112:    if not isinstance(validator_registry, M1ValidatorRegistry):
+rawlsing_next/pre553_learned_empirical_adjudication.py:2113:        raise M1IntegrityError("exact M1ValidatorRegistry required")
+rawlsing_next/pre553_learned_empirical_adjudication.py:2180:        registration = validator_registry.resolve_exact(family_rule_binding)
+rawlsing_next/pre553_learned_empirical_adjudication.py:2315:    "FamilyValidatorRegistration",
+rawlsing_next/pre553_learned_empirical_adjudication.py:2316:    "M1ValidatorRegistry",
