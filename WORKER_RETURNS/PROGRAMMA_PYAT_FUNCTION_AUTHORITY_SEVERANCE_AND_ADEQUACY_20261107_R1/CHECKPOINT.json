@@ -16,5 +16,41 @@
   "quota": "UNKNOWN",
   "register_rows_imported": 154,
   "denominator_policy": "154source-registerrows are overlapping registers,NOT154uniquefunctions;originalrows/nativeIDsretained;completeanti-joinnotclaimed",
-  "flight_board": "FLIGHT_BOARD.json"
+  "flight_board": "FLIGHT_BOARD.json",
+  "p1_register_graph": {
+    "nodes": 154,
+    "source_reference_edges": 166,
+    "original_row_loss": 0,
+    "native_id_retention_checks_pass": 14,
+    "actual_operation_case_anti_join": "P1_UNMATCHED_CASE_ANTIJOIN.tsv",
+    "status": "SOURCE_DEFINED_GRAPH_NOT_SEVERANCE_VERDICTS"
+  },
+  "independent_historical_denominators": [
+    {
+      "register": "F1_AUTHORITY_ASSET_RELEASES",
+      "rows": 58
+    },
+    {
+      "register": "A02_SEMANTIC_AUTHORITY_IDENTITIES",
+      "rows": 27
+    },
+    {
+      "register": "A02_AUTHORITY_FUNCTION_MAP",
+      "rows": 27
+    },
+    {
+      "register": "F1_LEGACY_CALLSITE_LOCATORS",
+      "rows": 228
+    },
+    {
+      "register": "748_ACCEPTED_STATIC_READSET",
+      "rows": 581
+    },
+    {
+      "register": "748_JOINED_CALLS",
+      "rows": 687
+    }
+  ],
+  "previous_goal_turn_classification": "PROGRESS:verifieddispatches,fullgoal/disciplinesand17agendaanchored;currentturnsinglelivePIDcheckandrequiredsourcegraph/estateanti-joinmaterialprogress",
+  "worker_state_observation": "AllthreeexactchildPIDsconfirmedpresent,no terminalreceipts atsinglecheck;no repeatedpolling"
 }

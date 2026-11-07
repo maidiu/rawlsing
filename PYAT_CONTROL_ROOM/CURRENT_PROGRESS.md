@@ -1,3 +1,11 @@
+# CURRENT CANDIDATE — #777 source/reference graph and no-drop accounting
+
+Required P1/P6 accounting now retains154 native-ID source records with166 source-explicit reference edges, fourteen passing retention checks, and an explicit unmatched case anti-join. Independent historical/document registers retain58release,27A02identity,27authority/function,228locator,581readset and687joined-call rows. They are overlapping denominators, not a claimed executed universe. No selected-use/equivalence/severance verdict follows from import.
+
+The three dispatched actual-consumer jobs were each confirmed live once by PID, with no terminal receipt at that observation. They remain notification-driven. All17 frozen agenda items and all unmatched source records are preserved for later case disposition. No production-code change or native/structural/actor/protected claim is made.
+
+---
+
 # CURRENT CANDIDATE — #777 authority severance and functional adequacy
 
 Incumbent mainMac HQ is executing the corrected #777 commission on its prepared isolated branch. Protected HEAD observed7a5429ffbc48efd25e28c912da80c822e66bc182; prior #748 code and scoped evidence remain capital, not a new blanket installation mandate. Full adopted objective plus full evergreen disciplines are recorded in the #777 return GOAL.md. All17 frozen secondary agenda items are preserved without automatic discharge.
