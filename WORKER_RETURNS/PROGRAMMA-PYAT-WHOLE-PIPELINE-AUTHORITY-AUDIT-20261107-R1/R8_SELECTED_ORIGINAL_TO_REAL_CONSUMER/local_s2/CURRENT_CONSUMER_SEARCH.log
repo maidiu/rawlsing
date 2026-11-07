@@ -1,0 +1,55 @@
+# Current protected-source consumer search
+# cwd: /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r8-local-s2-20261107-r1
+# HEAD: 490fc5f862410d0bd5c55bad4413d1ca991c549b
+
+$ git grep -n -i dememp -- rawlsing_next
+exit=1
+
+$ git grep -n "response_semantics_contract\|V551_RESPONSE\|dememp" -- rawlsing_next
+rawlsing_next/pre553_legacy_compat.py:27:V550_V551_AUTHORITY_ID = "V550_V551_RESPONSE_SEMANTICS_INFRASTRUCTURE_SEAM_R1"
+exit=0
+
+$ git grep -l -i dememp -- . ":!data" ":!WORKER_RETURNS" ":!section85" ":!*.csv"
+exit=1
+
+$ git grep -n "Q86A\|Q86B" -- rawlsing_next/wave1_gt12_i03_positive_facts.py
+rawlsing_next/wave1_gt12_i03_positive_facts.py:6:* GT1: Q86A raw unary distribution on the exact common R5 risk set;
+rawlsing_next/wave1_gt12_i03_positive_facts.py:7:* GT2: Q86B x Q86A raw joint distribution on that same exact risk set.
+rawlsing_next/wave1_gt12_i03_positive_facts.py:9:The GT2 component order is intentionally ``(Q86B, Q86A)`` because the frozen
+rawlsing_next/wave1_gt12_i03_positive_facts.py:10:contract preserves Q86B as the later FIELD FORGE conditioner and Q86A as target.
+rawlsing_next/wave1_gt12_i03_positive_facts.py:50:GT1_CLAIM_ID = "GT1_R5_Q86A_RAW_UNARY_EXACT_RISK_SET@1"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:51:GT2_CLAIM_ID = "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:58:FROZEN_Q86A_QIMPL = "question_impl.phase0.67f036c0efb7fb98ff4a"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:59:FROZEN_Q86B_QIMPL = "question_impl.phase0.2fb3a62609dad4c1306d"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:60:FROZEN_Q86A_SOURCE_STRUCTURE = "cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:201:    if binding.q86a.source_native_variable != "Q86A" or binding.q86a.question_impl_id != FROZEN_Q86A_QIMPL:
+rawlsing_next/wave1_gt12_i03_positive_facts.py:202:        raise GT12BI03BindingError("Q86A identity/qimpl drift")
+rawlsing_next/wave1_gt12_i03_positive_facts.py:203:    if binding.q86a.current_source_structure_id != FROZEN_Q86A_SOURCE_STRUCTURE:
+rawlsing_next/wave1_gt12_i03_positive_facts.py:204:        raise GT12BI03BindingError("Q86A current source-structure drift")
+rawlsing_next/wave1_gt12_i03_positive_facts.py:205:    if binding.q86b.source_native_variable != "Q86B" or binding.q86b.question_impl_id != FROZEN_Q86B_QIMPL:
+rawlsing_next/wave1_gt12_i03_positive_facts.py:206:        raise GT12BI03BindingError("Q86B identity/qimpl drift")
+rawlsing_next/wave1_gt12_i03_positive_facts.py:208:        raise GT12BI03BindingError("Q86B must remain bound to exact current Afrobarometer R5 source-structure grain")
+rawlsing_next/wave1_gt12_i03_positive_facts.py:210:        raise GT12BI03BindingError("Q86A and Q86B exact native question refs must remain distinct")
+rawlsing_next/wave1_gt12_i03_positive_facts.py:282:            "exact routing facts must cover every release respondent for both Q86A and Q86B; response presence is not routing"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:291:            "Q86A/Q86B exact eligible member sets differ; jointability may not be inferred from source-block membership"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:362:        binding.q86a.native_question_ref.key: "Q86A",
+rawlsing_next/wave1_gt12_i03_positive_facts.py:363:        binding.q86b.native_question_ref.key: "Q86B",
+rawlsing_next/wave1_gt12_i03_positive_facts.py:365:    routing: dict[str, dict[str, tuple[str, str, str]]] = {"Q86A": {}, "Q86B": {}}
+rawlsing_next/wave1_gt12_i03_positive_facts.py:395:    for target_name in ("Q86A", "Q86B"):
+rawlsing_next/wave1_gt12_i03_positive_facts.py:398:                "exact routing facts must cover every release respondent for both Q86A and Q86B; response presence is not routing"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:403:        for target_name in ("Q86A", "Q86B")
+rawlsing_next/wave1_gt12_i03_positive_facts.py:409:    a_keys = {key for key, signature in routing["Q86A"].items() if signature[0] == "ELIGIBLE_APPLICABLE"}
+rawlsing_next/wave1_gt12_i03_positive_facts.py:410:    b_keys = {key for key, signature in routing["Q86B"].items() if signature[0] == "ELIGIBLE_APPLICABLE"}
+rawlsing_next/wave1_gt12_i03_positive_facts.py:413:            "Q86A/Q86B exact eligible member sets differ; jointability may not be inferred from source-block membership"
+rawlsing_next/wave1_gt12_i03_positive_facts.py:421:        "Q86A": {canonical_json(value) for value in binding.q86a.domain},
+rawlsing_next/wave1_gt12_i03_positive_facts.py:422:        "Q86B": {canonical_json(value) for value in binding.q86b.domain},
+rawlsing_next/wave1_gt12_i03_positive_facts.py:425:        "Q86A": set(binding.q86a.included_states),
+rawlsing_next/wave1_gt12_i03_positive_facts.py:426:        "Q86B": set(binding.q86b.included_states),
+rawlsing_next/wave1_gt12_i03_positive_facts.py:429:        binding.q86a.native_question_ref.key: "Q86A",
+rawlsing_next/wave1_gt12_i03_positive_facts.py:430:        binding.q86b.native_question_ref.key: "Q86B",
+rawlsing_next/wave1_gt12_i03_positive_facts.py:432:    seen: dict[str, set[str]] = {"Q86A": set(), "Q86B": set()}
+rawlsing_next/wave1_gt12_i03_positive_facts.py:461:    for target_name in ("Q86A", "Q86B"):
+rawlsing_next/wave1_gt12_i03_positive_facts.py:684:    # Frozen semantic component order is Q86B conditioner dimension, then Q86A target dimension.
+exit=0
+
+CONCLUSION: no current rawlsing_next dememp consumer was found; the real current GT12 operation selects Afrobarometer R5 Q86A/Q86B.

@@ -1,0 +1,43 @@
+PYAT #753 R8 LOCAL_S2 CONTINUATION
+executed_at_utc=2026-11-07T19:22:39.919176+00:00
+python=3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]
+r8_root=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r8-local-s2-20261107-r1
+candidate_root=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat748-r5
+mac_root=/Users/matthewsmith/Desktop/Rawlsing
+
+# 1. Historical reader pytest (from R8 root)
+cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r8-local-s2-20261107-r1
+PYTHONPATH=. python3 -B -m pytest -v -p no:cacheprovider data/ddm_build_copy/tests/test_postg5_v550_v551_response_semantics_contract.py
+exit=0
+result=14 passed in 1.44s
+log=HISTORICAL_READER_PYTEST.log
+
+# 2. Candidate historical adapter pytest (from candidate root)
+cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat748-r5
+PYTHONPATH=. python3 -B -m pytest -v -p no:cacheprovider rawlsing_next/tests/test_pre553_historical_authority.py
+exit=0
+result=104 passed in 79.10s
+log=CANDIDATE_ADAPTER_PYTEST.log
+
+# 3. Local sourcefree authority-to-ABI harness (from this local_s2 directory)
+cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r8-local-s2-20261107-r1/WORKER_RETURNS/PROGRAMMA-PYAT-WHOLE-PIPELINE-AUTHORITY-AUDIT-20261107-R1/R8_SELECTED_ORIGINAL_TO_REAL_CONSUMER/local_s2
+PYTHONPATH=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat748-r5 R8_ROOT=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r8-local-s2-20261107-r1 CANDIDATE_ROOT=/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat748-r5 python3 -B run_local_s2.py
+exit=0
+receipt=LOCAL_S2_RECEIPT.json
+
+historical_reader: PASS (236 bindings, 145 registry contracts, dememp exact)
+authority_snapshot: PASS (44c656... exact, ALLOW, SOURCE_SEMANTICS_TOPOLOGY)
+authority_registry: PASS (exact scope/target-use; wrong target-use rejected)
+modern_c11_positive: PASS (7 synthetic cells; release deterministic; release_ref=729ac0962427544065ba1b0e5a7a212ef05959a5e07ea3ee45e552f833fef073)
+modern_c11_wrong_source_sha: PASS (rejected)
+modern_c11_missing_historical_authority: PASS (rejected)
+modern_c11_unbound_response_value: PASS (rejected)
+modern_c11_generic_alternate_contract: ACCEPTED (negative control; not native selection)
+i03_execute_empirical_query: NOT_RUN (no exact currently authorized dememp query formed)
+original_respondent_or_sav_execution: NOT_RUN
+product_code_modified: NO
+merge: NO
+
+# 4. Current protected-source consumer search
+log=CURRENT_CONSUMER_SEARCH.log
+result=no rawlsing_next dememp consumer; GT12 selects Afrobarometer R5 Q86A/Q86B

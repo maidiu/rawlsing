@@ -1,0 +1,408 @@
+{
+  "abi_file_sha256": {
+    "rawlsing_next/pre553_c11_ingest.py": {
+      "candidate": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf",
+      "identical": true,
+      "r8": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+    },
+    "rawlsing_next/pre553_empirical_authority.py": {
+      "candidate": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "identical": true,
+      "r8": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a"
+    },
+    "rawlsing_next/pre553_empirical_objects.py": {
+      "candidate": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4",
+      "identical": true,
+      "r8": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+    },
+    "rawlsing_next/pre553_physical_decoder.py": {
+      "candidate": "f9794976aef51c418e8152850a7b0143df6790d0596549ea7f0991fc1f4501e9",
+      "identical": true,
+      "r8": "f9794976aef51c418e8152850a7b0143df6790d0596549ea7f0991fc1f4501e9"
+    },
+    "rawlsing_next/pre553_source_backed_c11_facade.py": {
+      "candidate": "7788feb514ad5eceb71e7d76191b1b80a66688dc64a56b0dc05f4a1b19bbdfcf",
+      "identical": true,
+      "r8": "7788feb514ad5eceb71e7d76191b1b80a66688dc64a56b0dc05f4a1b19bbdfcf"
+    }
+  },
+  "authority_registry_probe": {
+    "positive_exact_scope_target_use": "PASS",
+    "wrong_target_use": {
+      "error": "Pre553AuthorityError: exact authority scope does not include target_use_refs",
+      "rejected": true
+    }
+  },
+  "candidate_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat748-r5",
+  "executed_at_utc": "2026-11-07T19:22:39.919176+00:00",
+  "five_test_disposition": {
+    "1_current_necessity": "NOT_PROVED",
+    "2_successor_equivalence": "UNKNOWN",
+    "3_exact_first_consumer": "MISSING_SELECTION_AT_UPSTREAM_SOURCE_QUESTION_SEMANTIC_PRODUCER",
+    "4_historical_vs_sourcefree": "HISTORIC_SOURCE_READER_RELEVANT_BUT_CURRENT_CONSUMER_NOT_SELECTED",
+    "5_comparative_gain": "NO_PROVED_GAIN_WITHOUT_EXACT_CURRENT_OPERATION"
+  },
+  "historical_files": [
+    {
+      "git_worktree_bytes": 5734,
+      "git_worktree_sha256": "89d0cb28c20f014278a58fcbb269b8726efe8a9580f2d470caa299ab113f00eb",
+      "mac_bytes": 5734,
+      "mac_equals_worktree": true,
+      "mac_sha256": "89d0cb28c20f014278a58fcbb269b8726efe8a9580f2d470caa299ab113f00eb",
+      "path": "data/ddm_build_copy/authority/v550_v551_response_semantics_contract_binding_v1.csv",
+      "role": "AR-0007 binding"
+    },
+    {
+      "git_worktree_bytes": 5610,
+      "git_worktree_sha256": "5bcfea51b6a62a20aceb7b16dbf122a5dd60e5b236e64e7edb6948322ba396ec",
+      "mac_bytes": 5610,
+      "mac_equals_worktree": true,
+      "mac_sha256": "5bcfea51b6a62a20aceb7b16dbf122a5dd60e5b236e64e7edb6948322ba396ec",
+      "path": "data/ddm_build_copy/authority/v550_v551_response_semantics_contract_binding_v1.manifest.json",
+      "role": "manifest"
+    },
+    {
+      "git_worktree_bytes": 76430,
+      "git_worktree_sha256": "d270f59da94029780b0e7f26f78cc0f5ede418ed431b5ababeefd2c5e2a00fc8",
+      "mac_bytes": 76430,
+      "mac_equals_worktree": true,
+      "mac_sha256": "d270f59da94029780b0e7f26f78cc0f5ede418ed431b5ababeefd2c5e2a00fc8",
+      "path": "data/ddm_build_copy/authority/response_scale_encoding_registry_35wave_active_v1.csv",
+      "role": "AR-0046 registry"
+    },
+    {
+      "git_worktree_bytes": 2872,
+      "git_worktree_sha256": "5e25ae393aef241d17b70b4ee139e5560d1ffbd8379f8b77c26af7cf0c8b0990",
+      "mac_bytes": 2872,
+      "mac_equals_worktree": true,
+      "mac_sha256": "5e25ae393aef241d17b70b4ee139e5560d1ffbd8379f8b77c26af7cf0c8b0990",
+      "path": "data/ddm_build_copy/authority/response_scale_encoding_registry_35wave_active_v1.manifest.json",
+      "role": "manifest"
+    }
+  ],
+  "historical_reader": {
+    "authority_class": "ResponseSemanticsContractAuthority",
+    "binding_count": 236,
+    "dememp_contract": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+    "registry_count": 145,
+    "snapshot_authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+    "snapshot_authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+    "snapshot_authority_ref": {
+      "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+      "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+      "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+    },
+    "snapshot_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+    "snapshot_effective_time": "HISTORICAL_FROZEN",
+    "snapshot_governed_object_families": [
+      "EmpiricalFact@1.0.0",
+      "RespondentEvent@1.0.0"
+    ],
+    "snapshot_governed_operations": [
+      "BIND_V551_RESPONSE_SEMANTICS_CONTRACT",
+      "PROJECT_V551_SIGNED_RESPONSE"
+    ],
+    "snapshot_negative_limits": [
+      "REJECT_RESPONSE_GEOMETRY_INFERENCE",
+      "REJECT_UNPINNED_REGISTRY_ORDERING"
+    ],
+    "snapshot_scope_envelope": {
+      "source_universe_refs": [
+        "afrobarometer|ROUND1|dememp"
+      ],
+      "target_use_refs": [
+        "V551_SIGNED_RELATION_EVIDENCE"
+      ]
+    },
+    "wrong_source_ArabBarometer": null,
+    "wrong_wave_R2": null
+  },
+  "limits": [
+    "Synthetic source-free cells only; no original respondent data or SAV executed.",
+    "Candidate historical adapter is not established as protected/installed.",
+    "C11 generic acceptance of any exact snapshot is not native/current selection.",
+    "No I03 execute_empirical_query or Field Forge issuance was performed.",
+    "No product code was modified; historical bytes are read-only."
+  ],
+  "mac_root": "/Users/matthewsmith/Desktop/Rawlsing",
+  "modern_c11": {
+    "generic_alternate_contract_synthetic": {
+      "accepted": true,
+      "alternate_content_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "note": "C11 generic ABI acceptance; not native selection and not a historical proof"
+    },
+    "missing_historical_authority": {
+      "error": "C11IntegrityError: exact historical authority unavailable; no fallback permitted",
+      "rejected": true
+    },
+    "positive": {
+      "accepted": true,
+      "deterministic_release_ref": true,
+      "summary": {
+        "event_values": [
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "4",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "4"
+                }
+              }
+            },
+            "state": "SUBSTANTIVE_RESPONSE"
+          },
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "98",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "98"
+                }
+              }
+            },
+            "state": "MISSING"
+          },
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "9",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "9"
+                }
+              }
+            },
+            "state": "MISSING"
+          },
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "2",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "2"
+                }
+              }
+            },
+            "state": "SUBSTANTIVE_RESPONSE"
+          },
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "1",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "1"
+                }
+              }
+            },
+            "state": "SUBSTANTIVE_RESPONSE"
+          },
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "99",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "99"
+                }
+              }
+            },
+            "state": "MISSING"
+          },
+          {
+            "authority_refs": [
+              {
+                "authority_content_hash": "9a5bd977b32644a2c456d74843b846c2a3a822d695c6684982be7e867468e10a",
+                "authority_id": "R8-LOCAL-S2-mapping",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "3230ef7af0bb0c9e6fd63f5eefd6e60a2d46f7abee075771b535de53f9d2f6b6",
+                "authority_id": "R8-LOCAL-S2-projection",
+                "authority_version": "1.0.0"
+              },
+              {
+                "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+                "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+              }
+            ],
+            "canonical": "3",
+            "raw_witness": {
+              "$raw_physical_value": {
+                "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+                "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+                "token": {
+                  "t": "str",
+                  "v": "3"
+                }
+              }
+            },
+            "state": "SUBSTANTIVE_RESPONSE"
+          }
+        ],
+        "historical_snapshot_present": true,
+        "public_object_count": 37,
+        "question_semantic_authority": [
+          {
+            "native_question_ref": {
+              "content_hash": "0e4b6100f4d02763fc5fda8935a44862cd069e9dface30f0b5785825b1e5e146",
+              "kind": "QUESTION_NATIVE",
+              "object_id": "urn:test:r8-local-s2:question_native:Afrobarometer-R1-dememp"
+            },
+            "semantic_authority_ref": {
+              "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+              "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+              "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+            },
+            "topology_authority_ref": {
+              "authority_content_hash": "44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+              "authority_id": "V551_RESPONSE_SEMANTICS_CONTRACT:44c656ab1aeccb1e0e7b1254f01360f985fbd8dc99be9c8751bac37bd43ba1ab",
+              "authority_version": "v551_scale_encoding_registry_35wave_active_v1"
+            }
+          }
+        ],
+        "release_ref": {
+          "content_hash": "729ac0962427544065ba1b0e5a7a212ef05959a5e07ea3ee45e552f833fef073",
+          "kind": "C11LogicalRelease",
+          "object_id": "REL-1"
+        },
+        "replay_manifest_ref": {
+          "content_hash": "d267640da47d00aac0afe101f6d5edc2d72a82f1ad297dc84a93ba3d6691f554",
+          "kind": "C11Internal:ReplayManifest",
+          "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:d267640da47d00aac0afe101f6d5edc2d72a82f1ad297dc84a93ba3d6691f554"
+        },
+        "respondent_event_count": 7
+      }
+    },
+    "unbound_response_value": {
+      "error": "SourceBackedC11FacadeError: unbound response value/state; no label/frequency/missingness inference",
+      "rejected": true
+    },
+    "wrong_source_sha": {
+      "error": "SourceBackedC11FacadeError: snapshot ref does not bind expected source SHA",
+      "rejected": true
+    }
+  },
+  "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "r8_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat753-r8-local-s2-20261107-r1",
+  "test_id": "PYAT753_R8_LOCAL_S2_CONTINUATION_R1",
+  "verdict": "LOCAL_SOURCEFREE_AUTHORITY_TO_ABI_COMPARISON_EXECUTED__HISTORICAL_READER_AND_MODERN_C11_POSITIVE_WITH_CLOSED_NEGATIVES__NO_PROVED_CURRENT_SELECTED_DEMEMP_CONSUMER"
+}
