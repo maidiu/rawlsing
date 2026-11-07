@@ -8,7 +8,14 @@ All commands run from `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-jo
 grep -RIn 'JFamilyRoleAssignment(\|build_j_family_item_role_vector(\|build_j_family_item_role_channel(\|j_component_certification_validator(' rawlsing_next --include='*.py' | grep -v '/tests/'
 ```
 
-Observed: only definitions inside `rawlsing_next/pre553_j_role_certification.py` (lines 356, 567, 1257); no non-test constructor/caller. Log: `logs/non_test_caller_search.txt`.
+Observed prior narrow constructor search: only definitions inside `pre553_j_role_certification.py` (lines 356, 567, 1257). This log is preserved as a **historical incomplete search**; it omitted `build_j_validator_registry` and bare-callable registration.
+
+Corrected C4-R1 evidence (from independent review, no new investigation):
+- `build_j_validator_registry` at `pre553_j_role_certification.py:1018-1027` is an actual non-test M1 registration builder.
+- It constructs `FamilyValidatorRegistration.from_binding(binding, j_component_certification_validator)` into an exact `M1ValidatorRegistry`.
+- `M1ValidatorRegistry` is exact/immutable with no aliases/latest/default/fallback (`pre553_learned_empirical_adjudication.py:1112-1140`).
+- `compose_learned_world` accepts the caller-supplied exact registry on the M01_M1_M2_B5 route and dispatches through M1.
+- No non-test **invocation/call-through** of the registration builder or J constructors was found statically: `NONE_FOUND_IN_STATIC_SOURCE`, not proof of absence and not a generic producer finding.
 
 ## Named O14 mechanism tests
 
@@ -25,7 +32,7 @@ PYTHONDONTWRITEBYTECODE=1 TMPDIR=... python3 -m pytest -q -p no:cacheprovider \
 ```
 
 - Exit: `0`
-- Result: `7 passed in 2.23s` (`logs/pytest_j_role_o14.log`)
+- Result: `7 passed in 2.23s` (`logs/pytest_j_role_o14.log`; independent review 7 passed in 2.69s)
 - Positive: h08 two relation components certify without historical executor.
 - Negative: h10 negative role; h11 changed role authority; h12 missing successor mapping; h14 component-set/order; h15 serialized replay; exact current-selection authority mismatch.
 - These are **current synthetic mechanism tests only**. They do not establish selected original J release, historical first reader, historical effects/negative rules, or a real non-test consumer.
@@ -48,21 +55,22 @@ PYTHONDONTWRITEBYTECODE=1 TMPDIR=... python3 -m pytest -q -p no:cacheprovider \
 
 | Output | SHA-256 |
 |---|---|
-| `00_RETURN.md` | `35dfec320df66e61a6700f4b53be7da4a9ed799a36e12dd338cedbca3dae15be` |
-| `01_CASES.jsonl` | `571937a1a8ba4133e88744e3f057d88e04e18e1393b98f0b24d2eb314d0a4fca` |
-| `02_CASES.tsv` | `bd707e6e1c213a6aa13784cf3dd478524db5e7e705814001cb669cd33b50b133` |
-| `04_MINIMAL_OWNER_ACTIONS.tsv` | `09c709482e1bc59aa44b9ebf84d18c9c87577fa9c698054255b0029138207560` |
-| `05_REGISTER_ANTIJOIN.tsv` | `cfe9ef568fd72f213a9ad24a6de247541d55daa0ce8dc2c905af0a71b635df61` |
+| `00_RETURN.md` | `744eaf6ecb3eab1baff8e4f8ee24732aeaf5b91290701851f41a28a6cfa5241d` |
+| `01_CASES.jsonl` | `db426c5d26bba398a7fe32f77632d75cf58724a710c8fbb617f64b267f5c5117` |
+| `02_CASES.tsv` | `2a35616f528b2a535ac7376f359ed0c7ccd7a5b3e515e6e4704cee767bb0c7b6` |
+| `04_MINIMAL_OWNER_ACTIONS.tsv` | `b8cedc4e506310771380550f2ac2924471be68b1a4ccebd5908fa0645e762ec0` |
+| `05_REGISTER_ANTIJOIN.tsv` | `d212bad2171ec66379ddb4d44eb6429fc9feb7c96571dd06f1c8f11afdb9e392` |
 | `logs/pytest_j_role_o14.log` | `488b8212ba6338aaf0c98f27e098cbe13c33de80dc3e101c9fe8c1bf511d204d` |
 | `logs/non_test_caller_search.txt` | `d06400b5d988bededcc75794ec988a606037dd8f1688ca5ed456e50e1b3efab2` |
+| `06_REPORTING_CORRECTIONS.md` | `2e986a419e58855ead60fa3924df32b4c967854c452f027f826f6c13fe4e6161` |
 
 `03_TEST_RECEIPTS.md` is this document and is not self-hashed.
 
 ## NOT_RUN / exact blockers
 
-- Selected original J release/row: `NOT_RUN__NO_SELECTED_ORIGINAL_J_RELEASE`.
+- Selected original J release/row: `NOT_RUN__NO_SELECTED_ORIGINAL_J_RELEASE`; historical static pins/calls are proved, but selected release is UNPROVED, not historical absence.
 - Historical first-reader execution/effects: `NOT_RUN__STATIC_CALLSITE_ONLY`.
-- Original old-version/shadow/revocation/scope at O14: `NOT_RUN__NO_SELECTED_J_RELEASE`.
+- Original old-version/shadow/revocation/scope at O14: `NOT_RUN__NO_SELECTED_J_RELEASE`; explicit, not an absence claim or new authority gate.
 - Native/science/actor/current grant: `NOT_RUN`.
 - No original respondent/SAV/DTA/DB read; no asset copy/upload; no production/test-existing/HQ/peer/protected writes.
 - C3 FF/post-FF and Q86/T01/R9 owners untouched; F21/M3 handoff only.
