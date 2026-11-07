@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "AUTHOR_AND_INDEPENDENT_REVIEW_NETWORK_FAILURES_RESUMED_WITH_PARTIAL_EVIDENCE",
+  "state": "FINAL_INDEPENDENT_REVIEW_REVISE_INTAKEN__M1_M2_RUNTIME_REPAIR__AUTHOR_HARNESS_LIVE",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -412,7 +412,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-full-vertical-network-resume-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "ACTIVE_VERIFIED__HARNESS_REPAIR_IN_PROGRESS",
       "model": {
         "id": "deepseek-v4.1-flash",
         "providerID": "opencode-go",
@@ -435,7 +435,7 @@
         "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1",
         "launch_is_not_completion": true
       },
-      "status": "ACTIVE_VERIFIED",
+      "status": "RETURNED_REVISE_CONDITIONAL_FULL_P3",
       "model": {
         "id": "deepseek-v4.1-flash",
         "providerID": "opencode-go",
@@ -444,7 +444,14 @@
       "metadata_message": "msg_1b360d9ac001ALJPe1yGcYAjQi",
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1/completion.json",
       "notification": "existing finite terminal observer",
-      "partial_backup": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1-dispatch/partial_manifest.json"
+      "partial_backup": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1-dispatch/partial_manifest.json",
+      "return_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
+      "review_verdict": "REVISE_CONDITIONAL_FULL_P3",
+      "material_findings": [
+        "M1",
+        "M2",
+        "M3"
+      ]
     }
   ],
   "holds": [
@@ -453,7 +460,7 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Intake same-session final independent review report and author corrected failed-case evidence. Original matrix4PASS9FAIL is not full acceptance; resolve concrete fixture/runtime findings at actual source scope, preserve negatives and measured cost. Focused exact-cut review after relevant changes, original full goal audit and selective PR without merge when demonstrated. Notifications only; goal wakeups remain paused.",
+  "next": "Repair M1/M2 runtime and M3 measurement through existing owners; intake author corrected full13 harness; reexecute complete matrix at corrected exact cut; focused independent re-review; selective PR without merge when demonstrated.",
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
   "activation_opacity_contract": "ACTIVATION_OPACITY_CONTRACT.md",
@@ -498,5 +505,21 @@
   "store_abi_repair_intake": "STORE_ABI_REPAIR_DISPOSITION.json",
   "primary_intake": "evidence/primary_intake_partial.json",
   "inherited_regression_intake": "INHERITED_REGRESSION_DISPOSITION.json",
-  "network_failure_recovery": "NETWORK_FAILURE_RECOVERY_DISPOSITION.json"
+  "network_failure_recovery": "NETWORK_FAILURE_RECOVERY_DISPOSITION.json",
+  "final_review_intake": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/FINAL_REVIEW_INTAKE_DISPOSITION.json",
+  "final_review": {
+    "task": "sorok-p3-final-review-network-resume-r1",
+    "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+    "commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
+    "reviewcut": "d1a6817b3210880812f68090bcd2b1109ec68ef9",
+    "verdict": "REVISE_CONDITIONAL_FULL_P3",
+    "remote_verified": true,
+    "intake_commit": null,
+    "demonstrated": "ACTUAL_P2_ROOT_PRODUCER_STORE_LATER_RESPONSE__OWNER8P1skip_STORE51P_UNIT36P_RESOURCE_MEASURED"
+  },
+  "open_material_findings": {
+    "M1": "store result/effects receipt linkage and forged-result acceptance",
+    "M2": "compression evidence loss across PSYCH_COMMITTED recovery",
+    "M3": "per-record/per-event storage metric zero from DB-only measurement"
+  }
 }

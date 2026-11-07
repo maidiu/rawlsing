@@ -1,0 +1,123 @@
+{
+  "schema": "SOROK_P3_FINAL_REVIEW_INTAKE@1",
+  "received_from": {
+    "task": "sorok-p3-final-review-network-resume-r1",
+    "session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+    "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/sorok-p3-01a15c1e/sorok-p3-final-review-network-resume-r1/completion.json",
+    "exit_code": 0,
+    "finished_utc": "2026-11-07T00:53:15.560424+00:00",
+    "review_branch": "review/sorok-p3-final-runtime-20261106-r1",
+    "review_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
+    "remote_head_verified": true,
+    "reviewcut": "d1a6817b3210880812f68090bcd2b1109ec68ef9",
+    "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+    "independence": "distinct nonauthor reviewer; reviewed runtime authored by HQ/other lanes"
+  },
+  "verdict": "REVISE_CONDITIONAL_FULL_P3",
+  "demonstrated_scope": {
+    "runtime_chain": "ACTUAL_P2_ROOT_FORMATION_TWO_V3MS_RECORDS_LATER_COMPUTED_RESPONSE_AND_SAME_HISTORY_CONTRAST__TEST_ONLY",
+    "owner_suite": "8PASS_1_INAPPLICABLE_GUARD_SKIP_31.41s",
+    "store_suite": "51PASS_0.75s",
+    "unit_suites": "36PASS_8.89s",
+    "inherited_engine": "71PASS_AND_COLD_2X3_SAME_ROOT__PRIOR_RECEIPT",
+    "resource": "ACTUAL_TWO_BATCHES_3_EVENTS_3_PROVIDER_CALLS_2_RETROSPECTIVES_MEASURED__PER_RECORD_METRIC_INVALID"
+  },
+  "material_findings": [
+    {
+      "id": "M1",
+      "defect": "store.finish accepts result without effects-receipt link; forged receipt_ref/accessible accepted and verify() true",
+      "owner": "HQ runtime (p3/state_store.py, p3/p3_owner.py)",
+      "minimal_fix": "include effects_receipt_hash/receipt in P3Owner consequences; require and verify in PsycheStore.finish; add omitted-link negative test"
+    },
+    {
+      "id": "M2",
+      "defect": "compression evidence lost when crash/exception occurs after PSYCH_COMMITTED and before compression.bind persists",
+      "owner": "HQ runtime (p3/p3_owner.py)",
+      "minimal_fix": "compute and persist deterministic compression envelope in receipt before commit_effects, or recompute and verify on PSYCH_COMMITTED recovery; add exact crash-boundary test"
+    },
+    {
+      "id": "M3",
+      "defect": "bytes_per_record and bytes_per_event are 0.0 because measurement subtracts main DB only and ignores WAL",
+      "owner": "author harness lane / HQ measurement repair",
+      "minimal_fix": "use DB+WAL or checkpoint before measurement; assert positive per-record/event values; retain main/WAL separately"
+    }
+  ],
+  "harness_defects": [
+    {
+      "test": "primary line 106",
+      "owner": "author lane",
+      "defect": "final batch_id equality assertion contradicts terminal retrospective semantics"
+    },
+    {
+      "test": "primary control lines 61/118",
+      "owner": "author lane",
+      "defect": "control uses empty history, confounds no-history with no-record"
+    },
+    {
+      "test": "E line 271",
+      "owner": "author lane",
+      "defect": "intermediate stability hash compared to final snapshot"
+    },
+    {
+      "test": "H cold line 441",
+      "owner": "author lane",
+      "defect": "direct completed realize after later batches demands current-head replay"
+    },
+    {
+      "test": "H crash child",
+      "owner": "author lane",
+      "defect": "source_refs/participants passed as lists instead of tuples"
+    },
+    {
+      "test": "A line 131",
+      "owner": "author lane",
+      "defect": "nonexistent owner.initial attribute"
+    },
+    {
+      "test": "B line 156",
+      "owner": "author lane",
+      "defect": "interval label assumed to control material feasibility"
+    },
+    {
+      "test": "C/G line 323",
+      "owner": "author lane",
+      "defect": "stale initial-clock standpoints used with later event identity"
+    },
+    {
+      "test": "F line 295",
+      "owner": "author lane",
+      "defect": "NOT_PERFORMED interval cannot yield BOUND compression"
+    },
+    {
+      "test": "H cross-root line 419",
+      "owner": "author lane",
+      "defect": "left/right share default logical root; replica not foreign root"
+    },
+    {
+      "test": "resource test",
+      "owner": "author lane",
+      "defect": "asserts only non-None zero per-record/event bytes"
+    }
+  ],
+  "runtime_correctly_refuses": [
+    "P3_REPLAY_STATE_MISMATCH on historical-current-head replay demand",
+    "HELD compression for NOT_PERFORMED interval",
+    "standpoint clock/identity mismatch",
+    "P2_ABSENT_OR_WRONG_SOURCE for malformed child proposal"
+  ],
+  "required_before_full_acceptance": [
+    "Repair M1-M3 at exact source scope",
+    "Repair full13 harness defects without weakening/renaming assertions",
+    "Reexecute complete full13 and resource matrix at corrected exact cut with actual metrics",
+    "Focused independent changed-cut re-review",
+    "Original full-goal audit and selective receiving PR without merge"
+  ],
+  "preserved_holds": [
+    "native scientific psychological and memory issuance",
+    "original human/native actor and independent B",
+    "production positive rules",
+    "protected receiving and merge"
+  ],
+  "receiving": "NOT_REQUESTED__NO_MERGE",
+  "next": "HQ repairs M1/M2 and M3 measurement through existing owners; author lane completes harness repairs and reverts to HQ for corrected-cut execution; reviewer rechecks changed cut."
+}
