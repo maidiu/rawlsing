@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — Living Whole-Undertaking Reference and Orchestration Contract R1
 
+**POST-P3 EXECUTED CURRENTNESS (2026-11-07):** The operating contract's source-period status below is conserved; do not mistake it for a new approval. Protected PR #746 is integrated at `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`. For current exhaustive P3 impact and next priority read [18 receiving](18_PROTECTED_P3_RECEIVING_AND_WHOLE_PROGRAM_CURRENTNESS_20261107_R1.md), [19 full 144/38/83 recourt](19_POST_P3_FUNCTION_SEAM_GATE_RECOURT_20261107_R1.json), and [20 P4 decision](20_P4_NEXT_GOAL_DECISION_AND_PROOF_PLAN_20261107_R1.md). The additional documentary reconciliation requires nonauthor review; native/person/human gates are not upgraded.
+
+
 **Status:** `PROPOSED_OPERATING_CONTRACT__NOT_CANONICAL_UNTIL_AUTHORIZED_PREMAIN_ADOPTION`  
 **Parent:** `00_PROGRAMMA_SOROK.md`; common parent `CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md`.  
 **Purpose:** make the user's actual **one-place, zoomable, current, complete, source-graded, priority-bearing overview of every requisite piece** an executable acceptance and update obligation, rather than a document aspiration, disconnected inventories, a list of green tests, or a sequence of HQ pronouncements.
