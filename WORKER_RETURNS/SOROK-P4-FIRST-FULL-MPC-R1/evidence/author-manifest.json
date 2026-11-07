@@ -21,7 +21,9 @@
   },
   "evidence_sha256": {
     "cli-transcript.json": "0f4f3b651018485a0808b0123a5714206bba13c6c84549cb41d1de24591f3e4b",
-    "internal-receipts.json": "f512d1390dea575e6f944ef80ba23b3a5081b942ced0f9a4aeb81801c337435d"
+    "internal-receipts.json": "f512d1390dea575e6f944ef80ba23b3a5081b942ced0f9a4aeb81801c337435d",
+    "independent-disposition.md": "45838fa8f1e1ea3b2278d669115e6f0b5f679ba993600c77b256239929793186",
+    "independent-driver.py": "f6db0fb211aeb60d01d15a5289de0f6e16cd1ecf2c7acbe44c3e7482ce690e24"
   },
   "author_checks": {
     "P4": "3 passed in 121.55s",
@@ -29,7 +31,14 @@
     "received P2 developmental recursion full suite": "71 passed in 281.56s"
   },
   "receiving_base_at_open": "2cb4113f0d1204bb83ec452625ca8d5c984c3f9a",
-  "review": "Initial exact-cut reviewer identified implicit invitation from unrelated speech and leaked training examples in current footing. Recheck of revised runtime in progress.",
+  "review": {
+    "disposition": "ACCEPT_SOURCEFREE_TEST_ONLY_ENGINEERING",
+    "reviewed_runtime": "0fde115bf8adb6d3929ea2a6e98bbd5cb6274274",
+    "original_disposition": "REVISE",
+    "original_runtime": "b6c9170cab7403ffc14cad2ab95b6dc969c24e3e",
+    "independence": "Distinct nonauthor Codex reviewer, separate scratch execution. No separate GitHub principal approval claimed.",
+    "controls_passed": 10
+  },
   "superseded_runtime_commit": "b6c9170cab7403ffc14cad2ab95b6dc969c24e3e",
   "author_commands": {
     "P4": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -o addopts= -p no:cacheprovider WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1",
@@ -47,5 +56,21 @@
     "Cold process identity and final user view agree with persisted receipts",
     "Actor-only world-event sentinel and user-private episode stay outside the public surface",
     "A matching observed invitation permits a new caller-selected inspection"
-  ]
+  ],
+  "courts": {
+    "engineering": "Independently accepted at the exact sourcefree runtime.",
+    "scientific": "HOLD for original native effects; all demonstrated response behavior is SOURCEFREE_TEST_ONLY.",
+    "authority": "HOLD for original actor/source grants, human participation, operated rights and protected CAS. Draft PR publication is within worker scope."
+  },
+  "author_host": {
+    "host": "Codex Desktop",
+    "cli_version": "0.166.0-alpha.6",
+    "provider": "openai",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "recorded_goal_usage_snapshot_tokens": 362923,
+    "codex_billing": "Not exposed in local session telemetry",
+    "product_runtime_provider_calls": 0,
+    "product_runtime_provider_cost": 0
+  }
 }
