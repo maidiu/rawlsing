@@ -1,0 +1,56 @@
+{
+  "baseline": {
+    "raw_denominator_support": 3,
+    "raw_numerator_support": 3,
+    "typed_state": "SUPPORTED"
+  },
+  "cases": [
+    {
+      "case": "wrong_source_sha",
+      "exception": "GT12BI03BindingError",
+      "message": "validated release source SHA drift from frozen R5 source",
+      "result": "TYPED_REFUSAL"
+    },
+    {
+      "case": "wrong_qimpl",
+      "exception": "GT12BI03BindingError",
+      "message": "Q86A identity/qimpl drift",
+      "result": "TYPED_REFUSAL"
+    },
+    {
+      "case": "wrong_source_structure_wave_grain",
+      "exception": "GT12BI03BindingError",
+      "message": "Q86A current source-structure drift",
+      "result": "TYPED_REFUSAL"
+    },
+    {
+      "case": "wrong_risk_set_count",
+      "exception": "GT12BI03BindingError",
+      "message": "frozen common risk-set count mismatch: 3 != 2",
+      "result": "TYPED_REFUSAL"
+    },
+    {
+      "case": "wrong_target_use_operation",
+      "exception": "GT12BI03BindingError",
+      "message": "exact target-use authority does not cover frozen query use",
+      "result": "TYPED_REFUSAL"
+    },
+    {
+      "case": "wrong_permission_ceiling",
+      "exception": "GT12BI03BindingError",
+      "message": "GT1 target-use permission ceiling drift",
+      "result": "TYPED_REFUSAL"
+    }
+  ],
+  "fixture_source_sha256": "243ab7441490e801fe8cb358cbc671fde4bf1d5ef39104927f630b9b355e86da",
+  "module_sha256": "ab14f87d25a05c8b3463fceb47763d977aea6470798422ec3058f73a71ad5635",
+  "production_frozen_source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+  "restoration_pass": true,
+  "schema": "C1_Q86_NEGATIVE_RESTORATION_PROBE_V1",
+  "seed": "PYTHONHASHSEED=0",
+  "selected_contract_hash_binding_test": {
+    "blocker": "current Q86 operation and fixture do not bind AR-0033 selected response_semantics_contract_hash; no legal actual selected-version fixture exists in this lease",
+    "result": "NOT_RUN"
+  },
+  "sourcefree_fixture": true
+}

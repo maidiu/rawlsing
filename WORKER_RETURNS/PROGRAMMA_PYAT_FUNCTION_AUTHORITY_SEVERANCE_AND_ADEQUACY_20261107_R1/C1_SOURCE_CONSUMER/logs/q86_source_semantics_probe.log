@@ -1,0 +1,50 @@
+{
+  "current_operation": {
+    "claims": [
+      "GT1_R5_Q86A_RAW_UNARY_EXACT_RISK_SET@1",
+      "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"
+    ],
+    "constants": {
+      "FROZEN_CONTRACT_BLOB": "\"c956ffb46b6609d0e4e16abbe8180a3e1930d099\"",
+      "FROZEN_CONTRACT_COMMIT": "\"a9416094cbb4653dd2de2e4aa7b67577a355560c\"",
+      "FROZEN_Q86A_QIMPL": "\"question_impl.phase0.67f036c0efb7fb98ff4a\"",
+      "FROZEN_Q86A_SOURCE_STRUCTURE": "\"cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4\"",
+      "FROZEN_Q86B_QIMPL": "\"question_impl.phase0.2fb3a62609dad4c1306d\"",
+      "FROZEN_R5_SOURCE_SHA256": "\"c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651\"",
+      "FROZEN_RISK_MEMBER_SET_SHA256": "\"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b\"",
+      "FROZEN_RISK_SET_ID": "\"FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1\"",
+      "FROZEN_RISK_SET_MEMBER_COUNT": "19_210"
+    },
+    "first_semantic_promoting_reader": "build_gt1_q86a_i03_plan/build_gt2_q86a_q86b_i03_plan -> execute_empirical_query",
+    "module": "rawlsing_next/wave1_gt12_i03_positive_facts.py",
+    "module_sha256": "ab14f87d25a05c8b3463fceb47763d977aea6470798422ec3058f73a71ad5635",
+    "risk_set_member_count": "19210",
+    "source_family": "Afrobarometer",
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "use": "RAW unary Q86A and RAW joint Q86B->Q86A; no structural/actor promotion",
+    "wave": "R5"
+  },
+  "finding": "CURRENT_Q86_OPERATION_IS_REAL_AND_SOURCE_ANCHORED_BUT_ACTUAL_SELECTED_Q86_RESPONSE_SEMANTICS_IS_NOT_BOUND__FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED",
+  "provenance_scan": {
+    "contract_hash_referenced_in_current_rawlsing_next": false,
+    "current_operation_binds_selected_q86_contract_hash": false,
+    "current_operation_binds_selected_source_sha": true,
+    "current_operation_uses_generic_caller_supplied_source_semantics": true,
+    "files_referencing_selected_contract_hashes": [],
+    "positive_test_fixture_is_sourcefree_synthetic_not_original_issuer": true,
+    "selected_q86_contract_hashes": [
+      "198f189adafd2f4b9e459184a897c8257fa4631f5f940686cd77736cccd38082",
+      "01ceeb78b8b4788c0732afeaab07374140b974fc1e330f79eb9f948e4c1eaa13"
+    ]
+  },
+  "selected_authority_csv": {
+    "bytes": 15498257,
+    "exists": true,
+    "expected_sha256": "305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332",
+    "issuer_grade": "A02_RECORDED_HISTORICAL_DECISION_NOT_ORIGINAL_SIGNER",
+    "matches_accepted_AR_0033": true,
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_response_option_authority.csv",
+    "selected_release": "AR-0033",
+    "sha256": "305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332"
+  }
+}
