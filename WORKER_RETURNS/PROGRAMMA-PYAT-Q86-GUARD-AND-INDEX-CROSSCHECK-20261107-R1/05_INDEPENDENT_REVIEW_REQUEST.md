@@ -6,8 +6,9 @@ Separate nonauthor exact-head reviewer required. Do not self-review. Do not use 
 ## PR and head
 - Branch: `fix/pyat-r8-frozen-ff-q86-source-identity-guard-20261107-r1`
 - Base: `integration/pre-main-reconciliation-r1@7a5429ffbc48efd25e28c912da80c822e66bc182`
-- PR: to be recorded after the bounded PR is opened.
-- Final head SHA: to be recorded in the PR review comment and this file after the metadata commit.
+- PR: https://github.com/maidiu/rawlsing/pull/774
+- Initial evidence commit: `16ad1415aa7c07115014e2ffa1930ba219e790be`.
+- Exact final head: latest commit on PR #774; the reviewer request comment records the exact SHA.
 
 ## Review scope
 1. Exact Q86B/Q86A `QUESTION_IMPLEMENTATION` refs are required from the existing source owner; no object_id substring/label inference; unlike pair, forged kind/object ID, wrong hash, and swapped roles refuse before profile minting.

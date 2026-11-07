@@ -15,7 +15,9 @@
 - R7 exact-head acceptance is still pending. PR #770 (`392de04e86202a2a80361a91808ef06fd34c1cc8`) has no independent review and its `governed-court` check failed on inherited tests; the R8 PR must not claim the R7 gate is accepted.
 - R8 requires a separate nonauthor exact-head reviewer. No self-acceptance, protected merge, native/source issuer, S3, actor, or scientific promotion is claimed.
 - The branch is isolated as required: `fix/pyat-r8-frozen-ff-q86-source-identity-guard-20261107-r1`.
-- PR URL and final head SHA are recorded in `05_INDEPENDENT_REVIEW_REQUEST.md` and the PR review comment.
+- PR: https://github.com/maidiu/rawlsing/pull/774
+- Initial evidence commit: `16ad1415aa7c07115014e2ffa1930ba219e790be`.
+- Exact final head is the latest commit on PR #774; the reviewer request comment records it.
 
 ## Scope
 Only the frozen producer and its tests/return evidence changed. The C to D bridge, D to M4 bridge, M1/M4/M5, permission ceilings, relation family/version, and source-specific canary data were not widened or generalized.
