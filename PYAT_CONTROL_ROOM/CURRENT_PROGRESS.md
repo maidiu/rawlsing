@@ -1,3 +1,7 @@
+# #777 latest review — O14 registration preserved, absence claim corrected
+
+Review `0def1171f8f9d2681b64ebe287adb7d209c896c7` verifies seven O14 tests, historical source pins and actual M1 registration builder. The original literal-constructor search missed registration; invocation is only NONE_FOUND_IN_STATIC_SOURCE. Different role responsibility is not proved whole-pipeline inadequacy. Four reporting corrections dispatched to existing author; no replacement or original-J gate justified. C1 corrections/C3 review continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C4_REVIEW_INTAKE.json`. Historical selection/equivalence remains UNPROVED and all inherited estates/17agenda remain.
+
 # #777 latest intake — FF/postFF ten cases under independent review
 
 Author `4b232e81a7a1128a75548ac8c26ef0e13bb59a52` supplies 31 sourcefree checks and ten candidate operation verdicts. None of its generic inadequacy/absence or issuer-blocked labels is independently accepted yet; focused review is launched to test those distinctions against actual current owners and receiving paths. All 15 case records are retained in central fan-in; this is not full coverage. C1 reporting corrections/C4 independent review continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C3_RETURN_INTAKE.json`. All historical/callsite/17agenda and native/protected holds remain.
