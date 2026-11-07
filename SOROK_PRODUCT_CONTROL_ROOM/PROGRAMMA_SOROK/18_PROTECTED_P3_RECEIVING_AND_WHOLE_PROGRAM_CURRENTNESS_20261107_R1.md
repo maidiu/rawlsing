@@ -1,5 +1,7 @@
 # PROGRAMMA SOROK — protected post-P3 receiving and whole-spine currentness R1
 
+**R38 PROTECTED DOCUMENTARY RECEIVING UPDATE:** #749 merged at `a245e6f99bb8d56771f7d88701c8240929887541`. See [24 exact receiving closeout](24_POST_P3_PROTECTED_RECEIVING_CLOSEOUT_20261107_R1.md). The underlying sourcefree P3 #746 claims, original source/actor/right/science holds, 144/38/83 gates and 304/100 identities remain exactly scoped; no new native/human validation occurred. Earlier candidate/pending wording in frozen source sections is pre-merge history, not current status.
+
 **CURRENTNESS OVERRIDE, 2026-11-07.** Protected PRE-MAIN received [PR #746](https://github.com/maidiu/rawlsing/pull/746) at exact merge `034bf8b6927bcd9c7c0b88b36368c1282a8f1f14`. Earlier protected #697/#699/#704 receiving reports and W8 source-cut claims remain genuine historical evidence, **not** the current latest engineering state. This is a bounded documentary reconciliation, not new S2 execution, original science, rights, or human acceptance.
 
 ## What the protected code now actually does
