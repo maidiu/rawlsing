@@ -29,7 +29,7 @@
       "disposition": "S1_INPUT_DISPOSITION.json"
     }
   },
-  "state": "AUTHOR_TERMINAL_INTAKEN__M1_M2_M3_REPAIRED__FULL_MATRIX_RUNNING",
+  "state": "COMBINED_CUT_FULL13_PASS__FOCUSED_NONAUTHOR_REVIEW_PENDING",
   "lanes": [
     {
       "task": "sorok-p3-e1-input-review-r1",
@@ -460,7 +460,23 @@
     "production positive rules",
     "protected receiving and merge"
   ],
-  "next": "Execute the complete 13-case PRIMARY/A-H/resource matrix at the combined cut and commit actual evidence; dispatch focused nonauthor re-review of the exact SHA; prepare selective receiving PR only if accepted; no merge.",
+  "next": "Dispatch focused nonauthor re-review of the exact combined-cut SHA and matrix evidence; if accepted prepare the selective receiving PR; no merge.",
+  "combined_cut": {
+    "source_commit": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
+    "matrix_evidence": "evidence/full-vertical-execution-combined/",
+    "matrix_summary": "evidence/full-vertical-execution-combined/matrix_summary.json",
+    "result": "13/13 PASS including PRIMARY, A-H, cold reopen, real process crash and resource",
+    "elapsed_seconds": 3040,
+    "resource": {
+      "db_bytes": 4096,
+      "wal_bytes": 1536792,
+      "db_plus_wal_bytes": 1540888,
+      "incremental_db_plus_wal_bytes": 1483200,
+      "bytes_per_record": 741600.0,
+      "bytes_per_event": 247200.0,
+      "cold_open_seconds": 10.754477652983041
+    }
+  },
   "author_terminal_intake": {
     "manifest": "evidence/author-terminal-intake/MANIFEST.json",
     "task": "sorok-p3-full-vertical-network-resume-r1",
@@ -484,8 +500,8 @@
     ],
     "tests": "61 passed, 1 inapplicable guard skipped (store/owner); 37 passed (compression/projections/rules)",
     "scope": "M1 receipt linkage and receipt-bound surfaces; M2 pre-commit compression persistence and receipt-based cold recovery",
-    "m3": "REPAIRED_PENDING_FULL_MATRIX: measure_case now reports incremental DB+WAL bytes and the resource case requires positive per-record/per-event values",
-    "full_matrix": "RUNNING_AT_COMBINED_CUT"
+    "m3": "REPAIRED_AND_MATRIX_GREEN: measure_case reports incremental DB+WAL bytes; resource case requires positive per-record/per-event values",
+    "full_matrix": "13/13_PASS_AT_486d42a4a__FOCUSED_REVIEW_PENDING"
   },
   "integration_contract": "INTEGRATION_CONTRACT.md",
   "wake_policy": "User explicitly reaffirmed paused recurring goal wake-ups while workers are out; finite terminal notifications authorize scoped intake and next in-scope action.",
@@ -545,8 +561,8 @@
     "demonstrated": "ACTUAL_P2_ROOT_PRODUCER_STORE_LATER_RESPONSE__OWNER8P1skip_STORE51P_UNIT36P_RESOURCE_MEASURED"
   },
   "open_material_findings": {
-    "M1": "REPAIRED_PENDING_FOCUSED_REVIEW: finish requires effects-receipt link, exact P3_PSYCH response-hash ref, and receipt-bound actor surface; forged result refused. p3/state_store.py, p3/p3_owner.py.",
-    "M2": "REPAIRED_PENDING_FOCUSED_REVIEW: compression envelope is bound before effects commit, persisted in receipt, and restored on cold PSYCH_COMMITTED recovery; finish verifies it. p3/p3_owner.py, p3/state_store.py.",
-    "M3": "REPAIRED_PENDING_FOCUSED_REVIEW: measure_case now uses the incremental DB+WAL footprint; resource case requires positive bytes_per_record/bytes_per_event. tests/p3_fixture_support.py, tests/test_p3_vertical_slice.py."
+    "M1": "REPAIRED_AND_MATRIX_GREEN_PENDING_FOCUSED_REVIEW: result requires effects-receipt link, exact P3_PSYCH response-hash ref, and receipt-bound actor surface.",
+    "M2": "REPAIRED_AND_MATRIX_GREEN_PENDING_FOCUSED_REVIEW: compression is bound before effects commit, persisted in the receipt, and restored on cold PSYCH_COMMITTED recovery.",
+    "M3": "REPAIRED_AND_MATRIX_GREEN_PENDING_FOCUSED_REVIEW: incremental DB+WAL per-record/event bytes are positive in the actual resource receipt."
   }
 }

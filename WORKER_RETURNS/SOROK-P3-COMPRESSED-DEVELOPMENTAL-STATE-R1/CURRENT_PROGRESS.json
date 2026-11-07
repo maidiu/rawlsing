@@ -1,5 +1,5 @@
 {
-  "status": "AUTHOR_TERMINAL_INTAKEN__M1_M2_M3_REPAIRED__FULL_MATRIX_RUNNING",
+  "status": "COMBINED_CUT_FULL13_PASS__FOCUSED_NONAUTHOR_REVIEW_PENDING",
   "checkpoint": "CHECKPOINT.json",
   "disciplines": "STANDING_DISCIPLINES.md",
   "owner_disposition": "OWNER_INPUT_DISPOSITION.json",
@@ -9,7 +9,7 @@
     "evidence": "evidence/final-review-repair/M1_M2_REPAIR.json",
     "m1": "RECEIPT_LINK_EXACT_REF_BOUND_SURFACES_AND_NEGATIVE_TESTS",
     "m2": "PRE_COMMIT_BIND_RECEIPT_PERSISTENCE_AND_COLD_CRASH_RECOVERY",
-    "m3": "REPAIRED_PENDING_FULL_MATRIX"
+    "m3": "REPAIRED_AND_MATRIX_GREEN"
   },
   "author_terminal_intake": {
     "manifest": "evidence/author-terminal-intake/MANIFEST.json",
@@ -125,26 +125,34 @@
       "return_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a"
     }
   ],
-  "runtime": "ACTUAL_SAME_P2_ROOT_WRITER_AND_LATER_READER_PASS__M1_M2_M3_REPAIRED__FULL_MATRIX_RUNNING",
+  "runtime": "FULL13_PRIMARY_AH_RESOURCE_PASS_AT_COMBINED_CUT__FOCUSED_REVIEW_PENDING",
   "native_science": "HOLD",
   "protected_receiving": "HOLD",
-  "next": "Execute the complete 13-case PRIMARY/A-H/resource matrix at the combined cut and commit actual evidence; dispatch focused nonauthor re-review of the exact SHA; prepare selective receiving PR only if accepted.",
+  "next": "Dispatch focused nonauthor re-review of the exact combined-cut SHA and matrix evidence; if accepted prepare the selective receiving PR; no merge.",
   "store_failure": "STORE_FAILURE_DISPOSITION.json",
   "vertical_harness": "VERTICAL_HARNESS_INPUT_DISPOSITION.json",
   "store_intake": "STORE_INPUT_DISPOSITION.json",
   "owner_actual_store_repair": "OWNER_ACTUAL_STORE_REPAIR_DISPOSITION.json",
   "vertical_resource_repair": "VERTICAL_RESOURCE_REPAIR_DISPOSITION.json",
-  "full_primary": "Author PRIMARY actualPASS after corrected terminal-retrospective fixture; full matrix4PASS9FAIL pending repair/independent disposition",
+  "full_primary": "PRIMARY_PASS_AT_COMBINED_CUT_450s__CONTROL_INCLUDED",
   "inherited_regression": "71PASS_AND_COLD_2X3_SAME_ROOT__AUTHOR_EXECUTED_HQ_ARTIFACT_VERIFIED",
-  "full_matrix": "FROZEN_CUT_D1A6817B3_4PASS9FAIL__REVIEW_CONFIRMED_MAJORITY_FIXTURE_DEFECTS__NOT_ACCEPTED",
+  "full_matrix": "13/13_PASS_AT_486d42a4a__COMBINED_AUTHOR_M1_M2_M3_CUT__INCLUDES_COLD_PROCESS_AND_RESOURCE",
   "network_recovery": "NETWORK_FAILURE_RECOVERY_DISPOSITION.json",
   "review_verdict": "REVISE_CONDITIONAL_FULL_P3",
   "review_return_commit": "1686c0b01e6b0b80738eaca89f31bab163fab36a",
   "review_intake": "FINAL_REVIEW_INTAKE_DISPOSITION.json",
   "material_findings": [
-    "M1 store result/receipt linkage — repaired pending focused review",
-    "M2 compression recovery evidence — repaired pending focused review",
-    "M3 DB+WAL per-record metric — repaired pending full matrix"
+    "M1 store result/receipt linkage \u2014 repaired pending focused review",
+    "M2 compression recovery evidence \u2014 repaired pending focused review",
+    "M3 DB+WAL per-record metric \u2014 repaired pending full matrix"
   ],
-  "review_demonstrated": "ACTUAL_P2_ROOT_FORMATION_TWO_RECORDS_LATER_COMPUTED_RESPONSE_SAME_HISTORY_CONTRAST__OWNER8P1skip_STORE51P_UNIT36P"
+  "review_demonstrated": "ACTUAL_P2_ROOT_FORMATION_TWO_RECORDS_LATER_COMPUTED_RESPONSE_SAME_HISTORY_CONTRAST__OWNER8P1skip_STORE51P_UNIT36P",
+  "combined_cut": {
+    "source_commit": "486d42a4aa5dcd449564b95567ae93b59c4679a4",
+    "matrix_evidence": "evidence/full-vertical-execution-combined/",
+    "result": "13/13 PASS including PRIMARY, A-H, cold reopen, real process crash and resource",
+    "elapsed_seconds": 3040,
+    "bytes_per_record": 741600.0,
+    "bytes_per_event": 247200.0
+  }
 }
