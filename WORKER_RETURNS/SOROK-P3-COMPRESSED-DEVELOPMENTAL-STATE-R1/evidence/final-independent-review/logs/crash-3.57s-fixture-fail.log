@@ -1,0 +1,74 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_h_real_process_crash_after_base_before_psych_commit ___________
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-148/test_h_real_process_crash_afte0')
+
+    def test_h_real_process_crash_after_base_before_psych_commit(tmp_path: Path) -> None:
+        """Kill one actual child after base realization, before save_world.
+    
+        The parent reopens the exact actual P2/P3 root, replays the durable base
+        receipt through P3Owner's recovery path, and completes the sidecar once.
+        """
+        case = build_case(tmp_path)
+        recovered_owner = None
+        try:
+            payload = {
+                "source": case.source, "history": case.history, "plans": case.plans,
+                "catalog": case.catalog, "compression_specs": case.compression_specs,
+                "standpoints": case.standpoints,
+                "proposal": case.proposals[0].document(),
+                "p2_root": str(Path(case.state_root)),
+                "p2_case": detached(case.base_owner.case),
+                "p2_source": detached(case.base_owner.source),
+                "p2_participants": list(case.base_owner.participants),
+            }
+            payload_path = tmp_path / "vertical-crash.json"
+            payload_path.write_text(json.dumps(payload), encoding="utf-8")
+            code = r'''
+    import json, os, sys
+    from pathlib import Path
+    sys.path.insert(0, sys.argv[1])
+    sys.path.insert(0, sys.argv[2])
+    sys.path.insert(0, str(Path(sys.argv[1]) / "tests"))
+    from developmental_recursion.contracts import EventProposal
+    from developmental_recursion.p2_owner import P2Owner, load_p2
+    from p3 import p3_owner
+    p = json.loads(Path(sys.argv[3]).read_text())
+    fanin = load_p2().open(Path(p["p2_root"]))
+    base = P2Owner(fanin, case=p["p2_case"], source=p["p2_source"],
+                   participants=tuple(p["p2_participants"]))
+    owner = p3_owner.P3Owner(base, source=p["source"], history=p["history"],
+                            plans=p["plans"], catalog=p["catalog"],
+                            compression_specs=p["compression_specs"],
+                            standpoints=p["standpoints"])
+    original = base.realize
+    def crash_after_base(operation_id, proposal, expected):
+        original(operation_id, proposal, expected)
+        os._exit(19)
+    base.realize = crash_after_base
+    owner.realize("vertical-crash-operation", EventProposal(**p["proposal"]),
+                  owner.snapshot())
+    '''
+            case.owner.close()
+            completed = subprocess.run(
+                [sys.executable, "-c", code, str(ROOT), str(ENGINE_ROOT),
+                 str(payload_path), str(tmp_path)],
+                capture_output=True, text=True, timeout=180,
+            )
+>           assert completed.returncode == 19, completed.stderr
+E           AssertionError: Traceback (most recent call last):
+E               File "<string>", line 23, in <module>
+E               File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-p3-final-scratch/WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/p3_owner.py", line 648, in realize
+E                 self.base_owner.validate_proposal(proposal)
+E               File "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/sorok-p3-final-scratch/WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/p2_owner.py", line 83, in validate_proposal
+E                 raise RecursionRefusal("P2_ABSENT_OR_WRONG_SOURCE")
+E             developmental_recursion.contracts.RecursionRefusal: P2_ABSENT_OR_WRONG_SOURCE
+E             
+E           assert 1 == 19
+E            +  where 1 = CompletedProcess(args=['/usr/local/bin/python3', '-c', '\nimport json, os, sys\nfrom pathlib import Path\nsys.path.ins...Refusal("P2_ABSENT_OR_WRONG_SOURCE")\ndevelopmental_recursion.contracts.RecursionRefusal: P2_ABSENT_OR_WRONG_SOURCE\n').returncode
+
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py:518: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_h_real_process_crash_after_base_before_psych_commit
+1 failed in 3.57s

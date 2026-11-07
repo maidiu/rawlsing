@@ -1,0 +1,59 @@
+{
+  "actual_p2_events": 0,
+  "branch": "agent/sorok-p3-vertical-proof-harness-20261106-r1",
+  "candidate_commit": "5aa8b1df7c122a5ae06ea28041ec394d84a0cb0e",
+  "coverage_map": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-slice/COVERAGE_MAP.json",
+  "coverage_map_sha256": "ae29f1210c959253fb8e3667a371fca0b3a65120edc8f8d87bac02718a65b6c6",
+  "executed_tests": 0,
+  "metrics": null,
+  "metrics_status": "NOT_RUN__NO_EXECUTION",
+  "p2_batches": 0,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "runner": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/run_p3_vertical_slice.py",
+    "exit": 3,
+    "log": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-slice/runner.log",
+    "log_sha256": "c5d3b831d37ae04476d590826e50774d1b96f69ba24e40c41b63e36f1c4da291",
+    "status": "DEPENDENT_EXECUTION_NOT_RUN_MISSING_RETURNED_STATE_STORE"
+  },
+  "runtime": {
+    "effort": "max",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "model_verification": "commission/session assignment; no separate model probe",
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "Python 3.11.3",
+    "quota": "UNKNOWN_UNOBSERVED"
+  },
+  "schema": "SOROK_P3_VERTICAL_SLICE_TEST_RESULTS@1.0.0",
+  "scope": {
+    "adp016_017_memory_or_claim": false,
+    "author": true,
+    "ci": false,
+    "independent_review": false,
+    "native_science": false,
+    "original_sav_read": false,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "s3": false,
+    "sourcefree": true
+  },
+  "startup_commit": "40fd1311e689c3c2336cc0d1a5e00c3db8c3447e",
+  "status": "DEPENDENT_EXECUTION_NOT_RUN_MISSING_RETURNED_STATE_STORE",
+  "store_path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+  "store_present": false,
+  "syntax_checks": {
+    "exit": 0,
+    "log": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-slice/py_compile.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "paths": [
+      "tests/p3_fixture_support.py",
+      "tests/test_p3_vertical_slice.py",
+      "run_p3_vertical_slice.py"
+    ],
+    "status": "PASS"
+  },
+  "test_definitions": 12,
+  "worker": "sorok-p3-vertical-proof-harness-r1"
+}

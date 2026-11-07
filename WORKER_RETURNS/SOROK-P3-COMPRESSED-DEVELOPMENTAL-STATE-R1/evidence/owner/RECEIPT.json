@@ -1,0 +1,84 @@
+{
+  "schema": "P3_OWNER_RETURN_RECEIPT@1",
+  "status": "BOUNDED_IMPLEMENTATION_BANKED_DEPENDENT_STORE_ABSENT",
+  "branch": "agent/sorok-p3-owner-integration-20261106-r1",
+  "startup_commit": "735098c7d07a3a91182f16e2e48ef781b9afbcb7",
+  "protected_commit": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "files": {
+    "p3/p3_owner.py": "247c193139c49e17f583f1edad2949f448f9116f63df07ae77e5addbb27091f0",
+    "tests/test_p3_owner.py": "4a5f610e78a3370e7be3b6e3eaf185473704e481d35bcf5d54286e33dc327e3d"
+  },
+  "public_api": {
+    "class": "P3Owner",
+    "constructor": "P3Owner(base_owner, *, source, history, plans, catalog=None, compression_specs=None, standpoints=None, mode=\"TEST_ONLY\")",
+    "methods": [
+      "snapshot() -> StateIdentity",
+      "validate_proposal(proposal) -> None",
+      "realize(operation_id, proposal, expected) -> RealizedEvent",
+      "close() -> None"
+    ]
+  },
+  "executed": {
+    "py_compile": "PASS",
+    "pytest": {
+      "command": "PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1:WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -rs WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_owner.py -p no:cacheprovider",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 6,
+      "observed": "2 passed, 6 skipped in 0.10s",
+      "executed_tests": [
+        "non-TEST_ONLY mode refuses before base or store access",
+        "missing returned state store is an explicit refusal, not a fallback"
+      ],
+      "skipped_reason": "DEPENDENT_EXECUTION_NOT_RUN_MISSING_RETURNED_STATE_STORE"
+    }
+  },
+  "blocked_tests": [
+    "actual P2 root configuration and combined state hash",
+    "sourcefree formation -> stored records -> later response/control",
+    "pure actor/user projection surfaces",
+    "wrong source, rule version and config mutation",
+    "idempotent replay and cold owner reopening",
+    "real subprocess crash boundary after base effect"
+  ],
+  "actual_modules": {
+    "state_store": {
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/state_store.py",
+      "present": false,
+      "use": "lazy required dependency; absent means explicit refusal and no substitute"
+    },
+    "test_rules_sha256": "27272cd43c26b6aa114ee65c97ca07eb56accecbd440841c29696b98e203b4b4",
+    "projections_sha256": "ca405dda778191537ce38b0b63ff6b6ba8104dcd1ea676d6b458d454b362005b",
+    "compression_sha256": "5219fd21ec9461468b508e2208c1e09ac0dcf9f1e76cc9fe8d0603f8fbcb8efb",
+    "p2_owner_sha256": "fd98a757a102faae78b5b9e520cf7ce07d518d5f62942bea3279b696a13401d0",
+    "contracts_sha256": "9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d",
+    "compression_status": "REVISE_SEPARATE_WORKER_NO_POSITIVE_CLAIM"
+  },
+  "implemented_guarantees": [
+    "actual P2 owner remains the sole world writer",
+    "owner files are under the actual session.state_root",
+    "canonical immutable owner configuration file and whole config hash",
+    "exact SOURCEFREE_TEST_ONLY source/history/rule/plan/code validation",
+    "root-local lock and PREPARED -> WORLD_COMMITTED -> PSYCH_COMMITTED -> COMPLETE recovery",
+    "stable deterministic base operation IDs",
+    "base reservation without result is explicit ambiguous hold",
+    "actual P2 material/access receipts retained",
+    "durable_psychological_transition=MISSING_RULE",
+    "no ADP016 formed memory and no ADP017 first-person claim",
+    "accessible result is the actual actor projection",
+    "user surface only through configured read-only standpoint consequences"
+  ],
+  "limits": [
+    "not an integrated runtime acceptance",
+    "no actual P2-root store execution in this startup",
+    "no durable two-batch, cold, crash or economy evidence",
+    "no native psychology or source issuance",
+    "no human validation or final independent reviewer acceptance",
+    "no self-acceptance, merge, receiving gate or production authority"
+  ],
+  "write_scope_verified": [
+    "p3/p3_owner.py",
+    "tests/test_p3_owner.py",
+    "evidence/owner/"
+  ]
+}

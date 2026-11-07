@@ -1,0 +1,78 @@
+{
+  "schema": "P3_OWNER_ACTUAL_STORE_REPAIR_RECEIPT@1",
+  "status": "BOUNDED_OWNER_TEST_REPAIR_BANKED_ACTUAL_STORE_ABI_BLOCKED",
+  "branch": "agent/sorok-p3-owner-actual-store-repair-20261106-r1",
+  "startup_commit": "8cc2914b1089cfc113ae1737941bd2a9efde622b",
+  "protected_commit": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "returned_store": "38f04ed627de40258724e006bf227a104bba9300",
+  "store_code_commit_from_disposition": "5dac5447b14a607f450fae3d84a9ecb782a2de19",
+  "files": {
+    "p3/p3_owner.py": "b7b508637258907e4d18df3030b45e040fff83dc6adc992985922e50a9e009f7",
+    "tests/test_p3_owner.py": "4f627eba7ae61a8a670523f1e8ac612c14207649b21b4d93545405827475d660",
+    "p3/state_store.py": "40b29d96c359de61fcb62937c08f7cdb73cd68b936247ef2e9219348119586a0",
+    "evidence/owner-actual-store-repair/TEST_LOG_ACTUAL.txt": "1a769693b1801a7a8f7c5a49b016a1607e2a96e746c914768d1d56f55c165b00",
+    "evidence/owner-actual-store-repair/ROOT_REOPEN_PROBE.txt": "dfef1a28907063f897e05deeb91c9592e26b3a446215a3a0314f6e901e33e305"
+  },
+  "executed": {
+    "py_compile": {
+      "status": "PASS",
+      "files": ["p3/p3_owner.py", "tests/test_p3_owner.py"]
+    },
+    "owner_tests": {
+      "command": "PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1:WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -rs WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_owner.py -p no:cacheprovider",
+      "passed": 4,
+      "failed": 4,
+      "skipped": 1,
+      "observed": "4 passed, 4 failed, 1 skipped in 16.75s",
+      "passed_tests": [
+        "test_non_test_only_refuses_before_base_or_store_access",
+        "test_process_reopens_same_actual_p2_root",
+        "test_actual_p2_root_configuration_and_combined_statehash",
+        "test_wrong_source_rule_version_and_config_change_refuse_before_new_effects"
+      ],
+      "failed_tests": [
+        "test_formation_stored_records_pure_views_and_later_response",
+        "test_later_no_mediator_control_uses_inspect_alone",
+        "test_idempotent_replay_and_reopened_owner_return_immutable_result",
+        "test_real_subprocess_crash_boundary_recovers_prepared_base"
+      ],
+      "failure_reason": "returned store PLAN_AUTHORITY_OR_GRADE_MISSING before base effects",
+      "skip_reason": "existing missing-store guard is inapplicable because the returned store is present"
+    },
+    "root_reopen_probe": {
+      "command": "PYTHONPATH=... python3 -m pytest -v -q .../test_p3_owner.py::test_process_reopens_same_actual_p2_root -p no:cacheprovider",
+      "observed": "1 passed in 3.57s",
+      "child_import": "explicit repository-relative P3, engine and repository paths",
+      "child_open": "P2ProductFanin.open on the same existing actual-p2 root",
+      "asserted": [
+        "child state_root equals the parent actual-p2 root",
+        "child frozen root hash equals the parent root hash",
+        "child initial P2 StateIdentity equals the parent initial state",
+        "parent reopened the same root/state after the cold child"
+      ]
+    }
+  },
+  "repair": {
+    "defect": "crash child used load_p2().start on an existing frozen actual-p2 root and relied on inherited module paths",
+    "correction": "explicit repository-relative P3/engine/repo paths; use load_p2().open; assert same actual root/root hash/initial state; close parent handle before child",
+    "not_claimed": "intended post-base kill/recovery is not reached because the separate returned store refuses frozen owner plans before base effects"
+  },
+  "preserved": {
+    "prior_evidence_owner_byte_identical": true,
+    "protected_commit_unchanged": true,
+    "no_state_store_edit": true,
+    "no_p3_owner_edit": true,
+    "no_fake_store_or_fallback": true,
+    "no_silent_assertion_weakening": true
+  },
+  "limits": [
+    "not full owner integration",
+    "three owner positives remain blocked at the separate store ABI",
+    "actual crash recovery is not executed",
+    "no all-six-durable-cases claim",
+    "no compressed state positive claim",
+    "no native psychology, ADP016/017 memory or first-person claims",
+    "no independent review, acceptance, merge or production authority"
+  ],
+  "next": "HQ merges the separate exact store authority/kind repair and resumes this same owner session/branch to execute all six durable cases, including the actual PREPARED -> base effect -> cold kill/recovery."
+}
