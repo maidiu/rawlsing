@@ -11,6 +11,7 @@ import csv
 import hashlib
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path("/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-consumer")
@@ -36,6 +37,7 @@ def main() -> int:
     selected = []
     for var in ("Q86A", "Q86B"):
         vr = [r for r in q86 if r.get("var_name") == var]
+        status_counts = Counter(r.get("response_semantics_status") for r in vr)
         selected.append({
             "source_native_variable": var,
             "question_id": vr[0].get("question_id") if vr else None,
@@ -46,7 +48,12 @@ def main() -> int:
             "handling_rule": vr[0].get("handling_rule") if vr else None,
             "recommended_computation": vr[0].get("recommended_computation") if vr else None,
             "response_family": vr[0].get("response_family") if vr else None,
-            "response_semantics_status": vr[0].get("response_semantics_status") if vr else None,
+            "response_semantics_status": "MIXED__curated_packet_for_substantive_0_1__curated_special_for_specials_-1_9_997_998" if vr else None,
+            "response_semantics_status_counts": dict(status_counts),
+            "substantive_rows_status": "curated_packet",
+            "special_rows_status": "curated_special",
+            "special_codes": ["-1", "9", "997", "998"],
+            "context_only_does_not_ban_raw_counts": "NOT_DEMONSTRATED__SOURCE_OWNER_DECISION_REQUIRED",
             "response_semantics_source": vr[0].get("response_semantics_source") if vr else None,
             "response_semantics_contract_hash": vr[0].get("response_semantics_contract_hash") if vr else None,
             "source_structure_classification": vr[0].get("source_structure_classification") if vr else None,
@@ -96,6 +103,17 @@ def main() -> int:
             "claims": ["GT1_R5_Q86A_RAW_UNARY_EXACT_RISK_SET@1", "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"],
             "use": "RAW unary Q86A and RAW joint Q86B->Q86A; no structural/actor promotion",
             "first_semantic_promoting_reader": "build_gt1_q86a_i03_plan/build_gt2_q86a_q86b_i03_plan -> execute_empirical_query",
+            "operation_status": "SOURCEFREE_CANARY_CANDIDATE__NO_NON_TEST_FIRST_CONSUMER_PROVED",
+            "non_test_first_consumer": "NOT_PROVED",
+            "candidate_current_substitute": {
+                "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+                "path": "rawlsing_next/wave1_r5_q86_c11_projection.py:334",
+                "operation": "R5_Q86A_Q86B_NATIVE_RESPONSE_SEMANTICS",
+                "material": "source/codebook/QIMPL/domain/currentness",
+                "competence": "UNPROVED",
+                "provenance": "UNPROVED",
+                "status": "CANDIDATE_CURRENT_SUBSTITUTE__NOT_DISPROVED",
+            },
             "constants": constants,
         },
         "provenance_scan": {
@@ -106,13 +124,38 @@ def main() -> int:
             "current_operation_binds_selected_source_sha": (constants.get("FROZEN_R5_SOURCE_SHA256") or "").strip('"') == "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
             "current_operation_uses_generic_caller_supplied_source_semantics": True,
             "positive_test_fixture_is_sourcefree_synthetic_not_original_issuer": True,
+            "literal_hash_absence_is_severance": False,
+            "literal_hash_absence_note": "Literal absence of AR-0033 Q86 contract hashes alone is not proof of severance; current GT12-A-R5-Q86-SOURCE-SEMANTICS is an unproved candidate substitute.",
+            "current_code_created_candidate_substitute": {
+                "authority_id": "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+                "path": "rawlsing_next/wave1_r5_q86_c11_projection.py:334",
+                "operation": "R5_Q86A_Q86B_NATIVE_RESPONSE_SEMANTICS",
+                "competence": "UNPROVED",
+                "provenance": "UNPROVED",
+                "status": "CANDIDATE_CURRENT_SUBSTITUTE__NOT_DISPROVED",
+            },
+            "context_only_does_not_ban_raw_counts": "NOT_DEMONSTRATED__SOURCE_OWNER_DECISION_REQUIRED",
         },
-        "finding": "CURRENT_Q86_OPERATION_IS_REAL_AND_SOURCE_ANCHORED_BUT_ACTUAL_SELECTED_Q86_RESPONSE_SEMANTICS_IS_NOT_BOUND__FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED",
+        "historical_overclaim_superseded": {
+            "original_finding": "CURRENT_Q86_OPERATION_IS_REAL_AND_SOURCE_ANCHORED_BUT_ACTUAL_SELECTED_Q86_RESPONSE_SEMANTICS_IS_NOT_BOUND__FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED",
+            "superseded_by": ["C1R-08", "C1R-09", "C1R-10", "C1R-11", "C1R-12"],
+            "note": "Raw CSV bytes/rows retained; this correction changes reporting status only.",
+        },
+        "finding": "SOURCEFREE_CANARY_CANDIDATE_OPERATION__SELECTED_AR0033_Q86_SEMANTICS_NOT_BOUND__CURRENT_CANDIDATE_SUBSTITUTE_UNPROVED__FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED",
         "limits": [
             "No respondent/SAV/DB read; sourcefree tests only.",
             "No original issuer/adoption claim; selected authority bytes are historically accepted AR-0033 metadata.",
             "No production patch, C11/runtime edit, native release, or science claim.",
+            "No non-test first consumer proved; literal hash absence alone is not severance; current GT12-A-R5-Q86-SOURCE-SEMANTICS competence/provenance UNPROVED.",
+            "Context_only/recommended_computation=none does not by itself demonstrate a raw-count ban; source-owner decision remains.",
         ],
+        "reporting_corrections": {
+            "C1R-08": "Sourcefree canary/candidate operation; no non-test first consumer proved.",
+            "C1R-09": "FF producer candidate; no non-test Q86 joint caller proved.",
+            "C1R-10": "AR-0033 is historical producer input/issuer hold; no mandatory runtime binding or forced retirement.",
+            "C1R-11": "GT12-A-R5-Q86-SOURCE-SEMANTICS is a real code-created candidate substitute; competence/provenance UNPROVED, not disproved.",
+            "C1R-12": "Context_only/recommended none does not demonstrate a raw-count ban.",
+        },
     }
     (OUT / "probes/q86_source_semantics_probe.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({k: result[k] for k in ["selected_authority_csv", "current_operation", "provenance_scan", "finding"]}, indent=2, sort_keys=True))

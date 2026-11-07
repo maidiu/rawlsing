@@ -30,7 +30,7 @@ python3 -B -m pytest -q -p no:cacheprovider --basetemp=<C1>/tmp/pytest-97 \
 
 Result: exit `0`; `97 passed in 3.02s`. Log SHA-256: `1b2cbb19e5ac4a0f00a25fdd1f147a6b04878208947eb70aac6a866f14868809`.
 
-### 2. Direct Q86 operation tests — PASS
+### 2. Direct Q86 sourcefree/canary tests — PASS
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 TMPDIR=<C1>/tmp PYTHONPATH="$PWD" \
@@ -66,13 +66,13 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 TMPDIR=<C1>/tmp \
 python3 -B <C1>/probes/q86_source_semantics_probe.py
 ```
 
-Result: exit `0`. Selected AR-0033 CSV is present, 15,498,257 bytes, SHA-256 `305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332`, matching accepted AR-0033. Q86A/Q86B each have 6 selected rows, `context_only`, `recommended_computation=none`, contract hashes `198f189a...` / `01ceeb78...`. Current `rawlsing_next` contains neither selected contract hash. Current Q86 module pins source SHA `c9200ba...` but not the selected response contract.
+Result: exit `0`. Selected AR-0033 CSV is present, 15,498,257 bytes, SHA-256 `305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332`, matching accepted AR-0033. Q86A/Q86B each have 6 selected rows, `context_only`, `recommended_computation=none`, contract hashes `198f189a...` / `01ceeb78...`. Substantive 0/1 rows are `curated_packet`; specials -1/9/997/998 are `curated_special`. Current `rawlsing_next` contains neither selected contract hash. Current Q86 module pins source SHA `c9200ba...` but not the selected AR-0033 response contract; it has a code-created candidate substitute `GT12-A-R5-Q86-SOURCE-SEMANTICS` at `wave1_r5_q86_c11_projection.py:334`, whose competence/provenance is UNPROVED, not disproved. Literal hash absence alone is not severance. `context_only`/`recommended_none` does not by itself demonstrate a raw-count ban.
 
-- Probe SHA-256: `5fd1e5b2fc845937f586aef83571d24a3286e2df223bcaa53e737ac9993317ec`
-- Output SHA-256: `c4901265e79a6622c439afe668b9ec5aed8e8909e610ce16f3cd68107691009f`
-- Log SHA-256: `6e2499141fed1a02f003a6bf37edbc21dbf83a595cc17ed0d33ab030c7a0a87a`
-- `SEVERANCE_RED`: `SELECTED_Q86_CONTRACT_HASH_NOT_BOUND__PROVENANCE_UNPROVED` (not a proved severance).
-- `RESTORATION_PASS`: baseline Q86 first-reader positive still `SUPPORTED 3/3` under the synthetic fixture.
+- Probe SHA-256: `1484506c8a794ff987e357d01171c86adb4caf4785725cf2fbebb55acec86412`
+- Output SHA-256: `1b3ed2379bbdd6c4425b91053b83d2416f21537fd19c7964f8258460e4ccd77c`
+- Raw log SHA-256 (retained; superseded wording): `6e2499141fed1a02f003a6bf37edbc21dbf83a595cc17ed0d33ab030c7a0a87a`
+- `PROVENANCE_RED`: `SELECTED_AR0033_Q86_CONTRACT_HASH_NOT_BOUND__CURRENT_CANDIDATE_SUBSTITUTE_UNPROVED` (not a proved severance).
+- `RESTORATION_PASS`: baseline Q86 sourcefree first-reader positive still `SUPPORTED 3/3` under the synthetic fixture.
 
 ### 5. Q86 exact negative/restoration probe — PASS
 
@@ -108,11 +108,12 @@ python3 -B <C1>/probes/build_case_outputs.py
 
 Result: exit `0`; 212 register rows preserved, 17 matched, 195 unmatched; one case `C1-Q86-R5-RAW-001`.
 
-- Builder SHA-256: `682f801e4f6992be61aa02bf31cfb48f48569a121e553efda86192763eb9c491`
-- `01_CASES.jsonl` SHA-256: `ca3f05a5bcad7d1fb6cee4435111bf51e9d6bf3227fcf3000697327a7921bf8a`
-- `02_CASES.tsv` SHA-256: `89a6444ce912b4f6f2152f59da62a845e387390d988b07a6ca1f4f69adbaa9f3`
-- `04_MINIMAL_OWNER_ACTIONS.tsv` SHA-256: `b9bb022a783e557b52c4a74012c6965a20b9885e2bc6d1ed5df8c65158e0c964`
-- `05_REGISTER_ANTIJOIN.tsv` SHA-256: `2f2a853c3689fff14dc0bf42fc2ddbb7da4a58897f430f7b483d12063a1efd96`
+- Builder SHA-256: `8f684884c68ecefae8972d9588466c46789d1e8137e77baff5bbb5477ae3c1ae`
+- `01_CASES.jsonl` SHA-256: `1a494391d0e1cf817efde6aad5878d3fc1dec12969e58af805ebdeb6d883a767`
+- `02_CASES.tsv` SHA-256: `861dbea0b415c9bb634fafd4c85cad6fb6505e6f0be4cd3ba268e74aeb6772b3`
+- `04_MINIMAL_OWNER_ACTIONS.tsv` SHA-256: `44153bcc716838490cab290654ee43d62af529b070801c68c9a8023ae3debcfc`
+- `05_REGISTER_ANTIJOIN.tsv` SHA-256: `2f7975d2463bc83601ddce8e6700c64f2e99520e5a35ee667a03267f264b48b4`
+- Corrected build log SHA-256: `0c02bc0b3899d257ef58a109d594bd9c4bca3403e093ff2b85589629329ec3be`
 
 ## Source hashes used
 
@@ -131,7 +132,8 @@ ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034  rawlsing_next/
 ## Explicit NOT_RUN / limits
 
 - No original respondent/SAV/DTA/DB read, no native original35 workload, no current native/science/actor issuance.
-- No actual selected Q86 version/shadow/withdrawal/cold-restore fixture; no competent current Q86 issuer. This is the named blocker for the missing provenance test.
+- No actual selected Q86 version/shadow/withdrawal/cold-restore fixture; no selected AR-0033 fixture/issuer. Current `GT12-A-R5-Q86-SOURCE-SEMANTICS` candidate competence/provenance is unproved, not disproved. This is the named blocker for the missing provenance test.
 - No production/C11/runtime/source patch; no protected/HQ/peer writes.
 - No claim of proved severance, proved equivalence, or full #777 completion.
 - No claim that T01 wrong-kind/op/scope proves the Q86 historical row was selected.
+- Reporting corrections are mapped in `06_REPORTING_CORRECTIONS.md`; no 97/8 suite was repeated for this reporting-only pass.
