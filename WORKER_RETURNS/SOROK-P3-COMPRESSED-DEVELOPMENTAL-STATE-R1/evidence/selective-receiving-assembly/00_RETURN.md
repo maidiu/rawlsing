@@ -9,7 +9,7 @@ Status: **ISOLATED CANDIDATE ASSEMBLED / NO PR / NO MERGE / ADDITIVE QUALIFICATI
 | Protected PRE-MAIN base | `integration/pre-main-reconciliation-r1` @ `c852d7516e23fcb6cf2215e9be7c5fa268503516` |
 | Isolated candidate branch | `codex/sorok-p3-selective-receiving-20261107-r1` |
 | Runtime/evidence source | `agent/sorok-p3-compressed-developmental-state-20261106-r1` @ `16275d03fc4724a694c48ed9d447c4eeadbe25f2` (frozen runtime cut used) |
-| Observed source-branch head at assembly | `fd51a5d871f00233cf5b32bc2e6082757526495b`; runtime/test hashes identical to `16275d03`; adds evidence/coordination/PROGRAMMA only |
+| Observed source-branch head at assembly | `687dc0cfc0d1f32942bec1e07eff68a811b8f0df`; runtime/test hashes identical to `16275d03`; adds evidence/coordination/PROGRAMMA only |
 | Implementation cut | `486d42a4aa5dcd449564b95567ae93b59c4679a4` |
 | Goal-audit source | `agent/sorok-p3-goal-audit-20261107-r1` @ `140b585f9b7321984725cf6f38ae95c2cb2bf89c` |
 | Additive residual-proof source | `agent/sorok-p3-goal-residual-proof-20261107-r1` @ `036787c1f0c227cdc47828ba521a62b76c57a903` |
@@ -44,7 +44,7 @@ Focused-review acceptance is real at the exact runtime cut but does not accept a
 ## Remaining dependencies
 
 1. Nonauthor qualification of the additive `140b585f` / `036787c1` goal-audit and residual-proof artifacts.
-2. HQ reconciliation of the observed source-branch movement `16275d03` -> `fd51a5d8`: runtime/test hashes are unchanged, but the observed head adds evidence/coordination/PROGRAMMA. This candidate uses the frozen `16275d03` runtime/test bytes and excludes the added coordination.
+2. HQ reconciliation of the observed source-branch movement `16275d03` -> `687dc0cf`: runtime/test hashes are unchanged, but the observed head adds evidence/coordination/PROGRAMMA. This candidate uses the frozen `16275d03` runtime/test bytes and excludes the added coordination.
 3. HQ final PR publication, protected receiving and merge. This author assembly does not push the protected target and does not create or publish a PR.
 
 No native-science, original-human, actor-B, production, source-grant, CAS, protected-receiving or merge authority is claimed.

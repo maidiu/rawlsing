@@ -14,7 +14,7 @@ git ls-remote --heads origin \
 
 Observed protected base `c852d751…`; runtime `16275d03…`; audit `140b585f…`; residual `036787c1…`.
 
-At the final remote check, `agent/sorok-p3-compressed-developmental-state-20261106-r1` had advanced to `fd51a5d871f00233cf5b32bc2e6082757526495b`, a descendant of `9abb3eee`/`16275d03`. Runtime/test hashes at that observed head are identical to `16275d03`; the candidate therefore uses the frozen `16275d03` bytes and records the source-ref movement as a HQ reconciliation dependency.
+At the final remote check, `agent/sorok-p3-compressed-developmental-state-20261106-r1` had advanced to `687dc0cfc0d1f32942bec1e07eff68a811b8f0df`, a descendant of `9abb3eee`/`16275d03`. Runtime/test hashes at that observed head are identical to `16275d03`; the candidate therefore uses the frozen `16275d03` bytes and records the source-ref movement as a HQ reconciliation dependency.
 
 ## Isolated branch construction
 
