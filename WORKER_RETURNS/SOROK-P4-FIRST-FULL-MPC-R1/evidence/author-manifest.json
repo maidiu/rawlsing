@@ -24,11 +24,28 @@
     "internal-receipts.json": "f512d1390dea575e6f944ef80ba23b3a5081b942ced0f9a4aeb81801c337435d"
   },
   "author_checks": {
-    "P4": "Revised cut test run pending.",
+    "P4": "3 passed in 121.55s",
     "P3 selected owner, rules, projection, store": "74 passed, 1 skipped in 39.69s",
     "received P2 developmental recursion full suite": "71 passed in 281.56s"
   },
   "receiving_base_at_open": "2cb4113f0d1204bb83ec452625ca8d5c984c3f9a",
   "review": "Initial exact-cut reviewer identified implicit invitation from unrelated speech and leaked training examples in current footing. Recheck of revised runtime in progress.",
-  "superseded_runtime_commit": "b6c9170cab7403ffc14cad2ab95b6dc969c24e3e"
+  "superseded_runtime_commit": "b6c9170cab7403ffc14cad2ab95b6dc969c24e3e",
+  "author_commands": {
+    "P4": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -o addopts= -p no:cacheprovider WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1",
+    "P2": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -o addopts= -p no:cacheprovider WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/tests",
+    "P3": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1:WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1 python3 -m pytest -q -o addopts= -p no:cacheprovider WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_{p3_owner,rules,projections,state_store}.py"
+  },
+  "author_controls": [
+    "Antecedent formation, material schedule and clock established before any input",
+    "Exact alternate utterance and no selected request change event and response receipt",
+    "Blank utterance and foreign invitation do not perform",
+    "Recognized and imposed histories produce distinct observed expression at matched material footing",
+    "Empty history remains playable and admitted inspection changes no material",
+    "Missing B1 path refuses at CLI with unchanged ledger",
+    "Restored source accepts, exact request-ID replay returns identical public output",
+    "Cold process identity and final user view agree with persisted receipts",
+    "Actor-only world-event sentinel and user-private episode stay outside the public surface",
+    "A matching observed invitation permits a new caller-selected inspection"
+  ]
 }
