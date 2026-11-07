@@ -1,12 +1,14 @@
 # PROGRAMMA SOROK — P4 next-goal priority and executable proof plan R1
 
+**R38 P4 STATUS:** Post-P3 PROGRAMMA PR #749 is protected received; P4 remains **PROPOSED_NOT_LAUNCHED**, and this document is a proof/priority plan rather than a complete worker dispatch. Use a separate exact-head commission with worker branch/host, genuine user input, D002 MPC-1..7 in one causal trace, severance/restore, ten hostile controls and distinct engineering/scientific/authority courts. No original native source/actor/Rule A/T or human Gate4/Gate5 is issued by this plan.
+
 **2026-11-07: scoped recommendation only, not a launched `/goal`, new original gate or authority adoption.** The governing [current P3 receiving](18_PROTECTED_P3_RECEIVING_AND_WHOLE_PROGRAM_CURRENTNESS_20261107_R1.md) and [144/38/83 recourt](19_POST_P3_FUNCTION_SEAM_GATE_RECOURT_20261107_R1.json) control scope. Original D002 contract is the [Smallest Lawful Playable Moment adjudication](https://github.com/maidiu/rawlsing/blob/865b5b01e1a27e99020cf2bb389af8cd4c874b57/SOROK_PRODUCT_CONTROL_ROOM/dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/12_SMALLEST_LAWFUL_PLAYABLE_MOMENT_ADJUDICATION_R1.md); protected user intent is `SOROK_PRODUCT_CONTROL_ROOM/USER_DIRECTED_ARCHITECTURE/20261106_USER_SETTLED_SPARSE_EVENT_HYPERCOMPRESSION_AND_OPAQUE_OTHER_R1.md`.
 
 ## Priority comparison (scope and blocked alternatives)
 
 | Candidate | Reusable currently received capital | Actual missing first consumer | Lawful immediate stage / no false promotion |
 |---|---|---|---|
-| **P4: actual user → world → historically formed Other → user** | #704/P2 recursion + #746/P3 historical state/response + D002 seven-cell law | User-owned native meaning actually admitted, realized, actor-limited reception and control-return in one executable causal trace | **SOURCEFREE_TEST_ONLY BUILD/VERIFY**; no claim of human usability, native B or Rule A/T |
+| **P4: actual user → world → historically formed Other → user** | #704/P2 recursion + #746/P3 historical state/response + D002 seven-cell law | Genuinely user-authored meaning admitted at SOURCEFREE_TEST_ONLY grade, realized, actor-limited reception and control-return in one executable causal trace | **SOURCEFREE_TEST_ONLY BUILD/VERIFY**; no claim of human usability, native B or Rule A/T |
 | S10 original formed-memory writer | P3 state persistence and opacity, ADP016 design | Qualified original event-to-memory formation/update and actor-accessible later use | **SPECIFY**, original positive science held; P3 compression evidence is not ADP016 memory |
 | O03/O05/O07 acquisition | Preflight source dockets, TEST_ONLY P3 heuristic and H0 control | Owner-issued Rule A/T, formed practice or evaluated NO_CHANGE with rival explanations | **ISSUER/SCIENCE action**, not ungoverned native programming |
 | Independent coactor B / native A3 | Existing sourcefree B/JOIN/P2 candidate readers | B-originated independently owned actor/world production and first reader | Scoped B-source implementation if actual actor/source owner permits; B1 P3 registry is not actor B |
