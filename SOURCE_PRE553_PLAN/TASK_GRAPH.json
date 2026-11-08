@@ -1,0 +1,1871 @@
+{
+  "schema": "PYAT_R157_TASK_GRAPH_V1",
+  "execution_status": "PLAN_READY_AWAITING_EXPLICIT_RESUME",
+  "tasks": [
+    {
+      "id": "P0_FOUNDATION",
+      "role": "integration_owner",
+      "depends_on": [],
+      "output": "frozennativeconfigschema/API/dependencies/evidencemanifest/fixturespec/codegrant",
+      "done_check": "actualimports/schema/examplevalidators; narrowownerinterface; exactplanseal and laneinputs; nosyntheticdefaults",
+      "write_scope": "sharedintegrationterrain"
+    },
+    {
+      "id": "SRC01:EVIDENCE",
+      "source_id": "SRC01",
+      "lane": "AFRO",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC01:CORRESPONDENCE",
+      "source_id": "SRC01",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC01:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC01:CONFIG",
+      "source_id": "SRC01",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC01:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC01:NATIVE_VALIDATION",
+      "source_id": "SRC01",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC01:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC01:RETURN",
+      "source_id": "SRC01",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC01:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC02:EVIDENCE",
+      "source_id": "SRC02",
+      "lane": "AFRO",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC02:CORRESPONDENCE",
+      "source_id": "SRC02",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC02:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC02:CONFIG",
+      "source_id": "SRC02",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC02:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC02:NATIVE_VALIDATION",
+      "source_id": "SRC02",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC02:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC02:RETURN",
+      "source_id": "SRC02",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC02:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC03:EVIDENCE",
+      "source_id": "SRC03",
+      "lane": "AFRO",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC03:CORRESPONDENCE",
+      "source_id": "SRC03",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC03:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC03:CONFIG",
+      "source_id": "SRC03",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC03:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC03:NATIVE_VALIDATION",
+      "source_id": "SRC03",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC03:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC03:RETURN",
+      "source_id": "SRC03",
+      "lane": "AFRO",
+      "depends_on": [
+        "SRC03:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC04:EVIDENCE",
+      "source_id": "SRC04",
+      "lane": "ARAB",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC04:CORRESPONDENCE",
+      "source_id": "SRC04",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC04:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC04:CONFIG",
+      "source_id": "SRC04",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC04:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC04:NATIVE_VALIDATION",
+      "source_id": "SRC04",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC04:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC04:RETURN",
+      "source_id": "SRC04",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC04:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC05:EVIDENCE",
+      "source_id": "SRC05",
+      "lane": "ARAB",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC05:CORRESPONDENCE",
+      "source_id": "SRC05",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC05:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC05:CONFIG",
+      "source_id": "SRC05",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC05:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC05:NATIVE_VALIDATION",
+      "source_id": "SRC05",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC05:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC05:RETURN",
+      "source_id": "SRC05",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC05:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC06:EVIDENCE",
+      "source_id": "SRC06",
+      "lane": "ARAB",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC06:CORRESPONDENCE",
+      "source_id": "SRC06",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC06:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC06:CONFIG",
+      "source_id": "SRC06",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC06:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC06:NATIVE_VALIDATION",
+      "source_id": "SRC06",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC06:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC06:RETURN",
+      "source_id": "SRC06",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC06:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC07:EVIDENCE",
+      "source_id": "SRC07",
+      "lane": "ARAB",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC07:CORRESPONDENCE",
+      "source_id": "SRC07",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC07:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC07:CONFIG",
+      "source_id": "SRC07",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC07:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC07:NATIVE_VALIDATION",
+      "source_id": "SRC07",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC07:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC07:RETURN",
+      "source_id": "SRC07",
+      "lane": "ARAB",
+      "depends_on": [
+        "SRC07:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC08:EVIDENCE",
+      "source_id": "SRC08",
+      "lane": "ASIAN",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC08:CORRESPONDENCE",
+      "source_id": "SRC08",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC08:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC08:CONFIG",
+      "source_id": "SRC08",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC08:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC08:NATIVE_VALIDATION",
+      "source_id": "SRC08",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC08:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC08:RETURN",
+      "source_id": "SRC08",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC08:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC09:EVIDENCE",
+      "source_id": "SRC09",
+      "lane": "ASIAN",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC09:CORRESPONDENCE",
+      "source_id": "SRC09",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC09:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC09:CONFIG",
+      "source_id": "SRC09",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC09:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC09:NATIVE_VALIDATION",
+      "source_id": "SRC09",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC09:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC09:RETURN",
+      "source_id": "SRC09",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC09:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC10:EVIDENCE",
+      "source_id": "SRC10",
+      "lane": "ASIAN",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC10:CORRESPONDENCE",
+      "source_id": "SRC10",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC10:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC10:CONFIG",
+      "source_id": "SRC10",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC10:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC10:NATIVE_VALIDATION",
+      "source_id": "SRC10",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC10:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC10:RETURN",
+      "source_id": "SRC10",
+      "lane": "ASIAN",
+      "depends_on": [
+        "SRC10:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC11:EVIDENCE",
+      "source_id": "SRC11",
+      "lane": "EVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC11:CORRESPONDENCE",
+      "source_id": "SRC11",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC11:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC11:CONFIG",
+      "source_id": "SRC11",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC11:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC11:NATIVE_VALIDATION",
+      "source_id": "SRC11",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC11:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC11:RETURN",
+      "source_id": "SRC11",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC11:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC12:EVIDENCE",
+      "source_id": "SRC12",
+      "lane": "EVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC12:CORRESPONDENCE",
+      "source_id": "SRC12",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC12:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC12:CONFIG",
+      "source_id": "SRC12",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC12:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC12:NATIVE_VALIDATION",
+      "source_id": "SRC12",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC12:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC12:RETURN",
+      "source_id": "SRC12",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC12:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC13:EVIDENCE",
+      "source_id": "SRC13",
+      "lane": "EVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC13:CORRESPONDENCE",
+      "source_id": "SRC13",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC13:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC13:CONFIG",
+      "source_id": "SRC13",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC13:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC13:NATIVE_VALIDATION",
+      "source_id": "SRC13",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC13:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC13:RETURN",
+      "source_id": "SRC13",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC13:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC14:EVIDENCE",
+      "source_id": "SRC14",
+      "lane": "EVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC14:CORRESPONDENCE",
+      "source_id": "SRC14",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC14:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC14:CONFIG",
+      "source_id": "SRC14",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC14:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC14:NATIVE_VALIDATION",
+      "source_id": "SRC14",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC14:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC14:RETURN",
+      "source_id": "SRC14",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC14:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC15:EVIDENCE",
+      "source_id": "SRC15",
+      "lane": "EVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC15:CORRESPONDENCE",
+      "source_id": "SRC15",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC15:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC15:CONFIG",
+      "source_id": "SRC15",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC15:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC15:NATIVE_VALIDATION",
+      "source_id": "SRC15",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC15:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC15:RETURN",
+      "source_id": "SRC15",
+      "lane": "EVS",
+      "depends_on": [
+        "SRC15:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC16:EVIDENCE",
+      "source_id": "SRC16",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC16:CORRESPONDENCE",
+      "source_id": "SRC16",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC16:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC16:CONFIG",
+      "source_id": "SRC16",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC16:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC16:NATIVE_VALIDATION",
+      "source_id": "SRC16",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC16:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC16:RETURN",
+      "source_id": "SRC16",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC16:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC17:EVIDENCE",
+      "source_id": "SRC17",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC17:CORRESPONDENCE",
+      "source_id": "SRC17",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC17:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC17:CONFIG",
+      "source_id": "SRC17",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC17:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC17:NATIVE_VALIDATION",
+      "source_id": "SRC17",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC17:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC17:RETURN",
+      "source_id": "SRC17",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC17:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC18:EVIDENCE",
+      "source_id": "SRC18",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC18:CORRESPONDENCE",
+      "source_id": "SRC18",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC18:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC18:CONFIG",
+      "source_id": "SRC18",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC18:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC18:NATIVE_VALIDATION",
+      "source_id": "SRC18",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC18:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC18:RETURN",
+      "source_id": "SRC18",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC18:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC19:EVIDENCE",
+      "source_id": "SRC19",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC19:CORRESPONDENCE",
+      "source_id": "SRC19",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC19:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC19:CONFIG",
+      "source_id": "SRC19",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC19:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC19:NATIVE_VALIDATION",
+      "source_id": "SRC19",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC19:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC19:RETURN",
+      "source_id": "SRC19",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC19:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC20:EVIDENCE",
+      "source_id": "SRC20",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC20:CORRESPONDENCE",
+      "source_id": "SRC20",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC20:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC20:CONFIG",
+      "source_id": "SRC20",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC20:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC20:NATIVE_VALIDATION",
+      "source_id": "SRC20",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC20:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC20:RETURN",
+      "source_id": "SRC20",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC20:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC21:EVIDENCE",
+      "source_id": "SRC21",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC21:CORRESPONDENCE",
+      "source_id": "SRC21",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC21:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC21:CONFIG",
+      "source_id": "SRC21",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC21:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC21:NATIVE_VALIDATION",
+      "source_id": "SRC21",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC21:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC21:RETURN",
+      "source_id": "SRC21",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC21:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC22:EVIDENCE",
+      "source_id": "SRC22",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC22:CORRESPONDENCE",
+      "source_id": "SRC22",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC22:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC22:CONFIG",
+      "source_id": "SRC22",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC22:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC22:NATIVE_VALIDATION",
+      "source_id": "SRC22",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC22:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC22:RETURN",
+      "source_id": "SRC22",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC22:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC23:EVIDENCE",
+      "source_id": "SRC23",
+      "lane": "GSS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC23:CORRESPONDENCE",
+      "source_id": "SRC23",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC23:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC23:CONFIG",
+      "source_id": "SRC23",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC23:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC23:NATIVE_VALIDATION",
+      "source_id": "SRC23",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC23:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC23:RETURN",
+      "source_id": "SRC23",
+      "lane": "GSS",
+      "depends_on": [
+        "SRC23:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC24:EVIDENCE",
+      "source_id": "SRC24",
+      "lane": "LATIN",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC24:CORRESPONDENCE",
+      "source_id": "SRC24",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC24:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC24:CONFIG",
+      "source_id": "SRC24",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC24:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC24:NATIVE_VALIDATION",
+      "source_id": "SRC24",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC24:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC24:RETURN",
+      "source_id": "SRC24",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC24:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC25:EVIDENCE",
+      "source_id": "SRC25",
+      "lane": "LATIN",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC25:CORRESPONDENCE",
+      "source_id": "SRC25",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC25:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC25:CONFIG",
+      "source_id": "SRC25",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC25:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC25:NATIVE_VALIDATION",
+      "source_id": "SRC25",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC25:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC25:RETURN",
+      "source_id": "SRC25",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC25:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC26:EVIDENCE",
+      "source_id": "SRC26",
+      "lane": "LATIN",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC26:CORRESPONDENCE",
+      "source_id": "SRC26",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC26:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC26:CONFIG",
+      "source_id": "SRC26",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC26:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC26:NATIVE_VALIDATION",
+      "source_id": "SRC26",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC26:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC26:RETURN",
+      "source_id": "SRC26",
+      "lane": "LATIN",
+      "depends_on": [
+        "SRC26:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC27:EVIDENCE",
+      "source_id": "SRC27",
+      "lane": "LITS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC27:CORRESPONDENCE",
+      "source_id": "SRC27",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC27:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC27:CONFIG",
+      "source_id": "SRC27",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC27:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC27:NATIVE_VALIDATION",
+      "source_id": "SRC27",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC27:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC27:RETURN",
+      "source_id": "SRC27",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC27:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC28:EVIDENCE",
+      "source_id": "SRC28",
+      "lane": "LITS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC28:CORRESPONDENCE",
+      "source_id": "SRC28",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC28:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC28:CONFIG",
+      "source_id": "SRC28",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC28:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC28:NATIVE_VALIDATION",
+      "source_id": "SRC28",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC28:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC28:RETURN",
+      "source_id": "SRC28",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC28:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC29:EVIDENCE",
+      "source_id": "SRC29",
+      "lane": "LITS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC29:CORRESPONDENCE",
+      "source_id": "SRC29",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC29:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC29:CONFIG",
+      "source_id": "SRC29",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC29:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC29:NATIVE_VALIDATION",
+      "source_id": "SRC29",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC29:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC29:RETURN",
+      "source_id": "SRC29",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC29:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC30:EVIDENCE",
+      "source_id": "SRC30",
+      "lane": "LITS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC30:CORRESPONDENCE",
+      "source_id": "SRC30",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC30:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC30:CONFIG",
+      "source_id": "SRC30",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC30:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC30:NATIVE_VALIDATION",
+      "source_id": "SRC30",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC30:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC30:RETURN",
+      "source_id": "SRC30",
+      "lane": "LITS",
+      "depends_on": [
+        "SRC30:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC31:EVIDENCE",
+      "source_id": "SRC31",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC31:CORRESPONDENCE",
+      "source_id": "SRC31",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC31:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC31:CONFIG",
+      "source_id": "SRC31",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC31:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC31:NATIVE_VALIDATION",
+      "source_id": "SRC31",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC31:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC31:RETURN",
+      "source_id": "SRC31",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC31:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC32:EVIDENCE",
+      "source_id": "SRC32",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC32:CORRESPONDENCE",
+      "source_id": "SRC32",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC32:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC32:CONFIG",
+      "source_id": "SRC32",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC32:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC32:NATIVE_VALIDATION",
+      "source_id": "SRC32",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC32:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC32:RETURN",
+      "source_id": "SRC32",
+      "lane": "SOUTH_ASIA",
+      "depends_on": [
+        "SRC32:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC33:EVIDENCE",
+      "source_id": "SRC33",
+      "lane": "WVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC33:CORRESPONDENCE",
+      "source_id": "SRC33",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC33:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC33:CONFIG",
+      "source_id": "SRC33",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC33:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC33:NATIVE_VALIDATION",
+      "source_id": "SRC33",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC33:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC33:RETURN",
+      "source_id": "SRC33",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC33:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC34:EVIDENCE",
+      "source_id": "SRC34",
+      "lane": "WVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC34:CORRESPONDENCE",
+      "source_id": "SRC34",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC34:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC34:CONFIG",
+      "source_id": "SRC34",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC34:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC34:NATIVE_VALIDATION",
+      "source_id": "SRC34",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC34:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC34:RETURN",
+      "source_id": "SRC34",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC34:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "SRC35:EVIDENCE",
+      "source_id": "SRC35",
+      "lane": "WVS",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "fullpriorrowvalues+grades/accounting/residuals",
+      "done_check": "allapplicablesourceitems/slotsandevidenceconsumed; no globalabsencefrompartialindex"
+    },
+    {
+      "id": "SRC35:CORRESPONDENCE",
+      "source_id": "SRC35",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC35:EVIDENCE"
+      ],
+      "output": "exactphysical/codebookmap",
+      "done_check": "33exactnamesreused; SRC25/26aliasesexplicitandwarranted; allslotsmappedorpreciseheld"
+    },
+    {
+      "id": "SRC35:CONFIG",
+      "source_id": "SRC35",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC35:CORRESPONDENCE"
+      ],
+      "output": "sourceconfig/nativebuilderrecipe",
+      "done_check": "actualunit/form/domain/missing/route/coordinate/authorityvaluesbound; preciseunknowns; no defaults"
+    },
+    {
+      "id": "SRC35:NATIVE_VALIDATION",
+      "source_id": "SRC35",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC35:CONFIG",
+        "P3_FACTORY_READY"
+      ],
+      "output": "nativeownerpositive/refusal/restoretracesforpreparedscope",
+      "done_check": "actualconfigconsumedbyexistingnativevalidator, nonrespondentfixturegrade, no identity-onlyproof"
+    },
+    {
+      "id": "SRC35:RETURN",
+      "source_id": "SRC35",
+      "lane": "WVS",
+      "depends_on": [
+        "SRC35:NATIVE_VALIDATION"
+      ],
+      "output": "hashedsourceconfig/fixtures/results/exceptionscommit",
+      "done_check": "allpromisedsourceworkcheckedordependencyexactlyblocked; remoteSHAverified"
+    },
+    {
+      "id": "P3_FACTORY_READY",
+      "role": "integration_owner",
+      "depends_on": [
+        "P0_FOUNDATION"
+      ],
+      "output": "workingconfig-to-nativefactoryandqualifiedreadertransport",
+      "done_check": "realnativepositivepath; no unconditionalstub/syntheticoriginaluniverse/privatepath; wrongsource/configrefusal+restore; selectedshapeproof"
+    },
+    {
+      "id": "P5_INTEGRATION",
+      "role": "integration_owner",
+      "depends_on": [
+        "SRC01:RETURN",
+        "SRC02:RETURN",
+        "SRC03:RETURN",
+        "SRC04:RETURN",
+        "SRC05:RETURN",
+        "SRC06:RETURN",
+        "SRC07:RETURN",
+        "SRC08:RETURN",
+        "SRC09:RETURN",
+        "SRC10:RETURN",
+        "SRC11:RETURN",
+        "SRC12:RETURN",
+        "SRC13:RETURN",
+        "SRC14:RETURN",
+        "SRC15:RETURN",
+        "SRC16:RETURN",
+        "SRC17:RETURN",
+        "SRC18:RETURN",
+        "SRC19:RETURN",
+        "SRC20:RETURN",
+        "SRC21:RETURN",
+        "SRC22:RETURN",
+        "SRC23:RETURN",
+        "SRC24:RETURN",
+        "SRC25:RETURN",
+        "SRC26:RETURN",
+        "SRC27:RETURN",
+        "SRC28:RETURN",
+        "SRC29:RETURN",
+        "SRC30:RETURN",
+        "SRC31:RETURN",
+        "SRC32:RETURN",
+        "SRC33:RETURN",
+        "SRC34:RETURN",
+        "SRC35:RETURN",
+        "P3_FACTORY_READY"
+      ],
+      "output": "coherentportableall35library/coldload/readiness/nativecalls/candidateSHA",
+      "done_check": "eachsupportedsource/slicehasactualnativeacceptance; allitem/slotcoverage; no newpermissions/downstreamgates"
+    },
+    {
+      "id": "P6_INDEPENDENT_REVIEW",
+      "role": "distinct_reviewer",
+      "depends_on": [
+        "P5_INTEGRATION"
+      ],
+      "output": "qualifiedfinalboundarydispositionatcandidateSHA",
+      "done_check": "exactcontract/oraclebeforecandidate; actualfactory/all35coverage/portability/refusals; fixonlydemonstrateddefects"
+    },
+    {
+      "id": "P7_COMPLETION_AUDIT",
+      "role": "HQ",
+      "depends_on": [
+        "P6_INDEPENDENT_REVIEW"
+      ],
+      "output": "allacceptancecellsproved/exactbranchcommit/userdelivery",
+      "done_check": "A01-A16provedatdeclaredscope; no substitutionbyledger/fixture/refusal; unresolvedwholewavekeepsgoalunfinished"
+    }
+  ],
+  "blocked_dependency_policy": "Blockedtasksdonotcountdone. Continueindependentreadytasks; actualscope/acceptancechangesneedexplicituseramendment."
+}

@@ -1,0 +1,111 @@
+{
+  "schema": "PYAT_R157_TOPOLOGY_ASSERTIONS@1.0.0",
+  "source_id": "SRC24",
+  "entries": [
+    {
+      "source_id": "SRC24",
+      "source_variable_code": "s14",
+      "implementation_id": "question_impl.phase0.7b2229c966da3eb73422",
+      "inherited_topology": "nominal_choice",
+      "config_item_topology": "nominal_choice",
+      "response_slots": [
+        "s14"
+      ],
+      "occurrence_kinds": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected_occurrence_kind": "NOMINAL_CHOICE",
+      "pass": true,
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.7b2229c966da3eb73422",
+          "content_hash": "7b2229c966da3eb7342275642acc5dae204905f8d7838bf7eafc4650acc5ac55"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.7b2229c966da3eb73422",
+          "content_hash": "7b2229c966da3eb7342275642acc5dae204905f8d7838bf7eafc4650acc5ac55"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:S14",
+          "content_hash": "a4291dadc6a680a95e89f24e3d45a7010984db8db4e7c3d155be6692171a7bea"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC24",
+      "source_variable_code": "s6",
+      "implementation_id": "question_impl.phase0.8ff1e5abcf187c5b9ca2",
+      "inherited_topology": "nominal_choice",
+      "config_item_topology": "nominal_choice",
+      "response_slots": [
+        "s6"
+      ],
+      "occurrence_kinds": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected_occurrence_kind": "NOMINAL_CHOICE",
+      "pass": true,
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8ff1e5abcf187c5b9ca2",
+          "content_hash": "8ff1e5abcf187c5b9ca2b52b0011e577ac9af368f65f5ef0b418060fd9572b4a"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8ff1e5abcf187c5b9ca2",
+          "content_hash": "8ff1e5abcf187c5b9ca2b52b0011e577ac9af368f65f5ef0b418060fd9572b4a"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:S6",
+          "content_hash": "2431a570010e7e0b39e165e8bce844cc58ba18ad4669eb557f0161ebd490f730"
+        }
+      ]
+    },
+    {
+      "source_id": "SRC24",
+      "source_variable_code": "p20",
+      "implementation_id": "question_impl.phase0.c427923033739e5b106b",
+      "inherited_topology": "nominal_choice",
+      "config_item_topology": "nominal_choice",
+      "response_slots": [
+        "p20"
+      ],
+      "occurrence_kinds": [
+        "NOMINAL_CHOICE"
+      ],
+      "expected_occurrence_kind": "NOMINAL_CHOICE",
+      "pass": true,
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.c427923033739e5b106b",
+          "content_hash": "c427923033739e5b106bb142db26c93dee285e7b3213d2f29ea130e37cd91106"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.c427923033739e5b106b",
+          "content_hash": "c427923033739e5b106bb142db26c93dee285e7b3213d2f29ea130e37cd91106"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:relation:Latinobarómetro:1995:P20",
+          "content_hash": "2efbf39cf07b32971d614c2a16b96feead84ef53f41afd4a4f6d74743913df46"
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "affected": 3,
+    "pass": 3,
+    "fail": 0
+  },
+  "limits": [
+    "Assertions compare each item's inherited H48/P2 topology to the serialized config occurrence kind.",
+    "A single-response nominal item must not be emitted as UNORDERED_MULTISELECT_SET."
+  ]
+}

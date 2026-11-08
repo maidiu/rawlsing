@@ -1,0 +1,39 @@
+{
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
+  "candidate": "3d30a416b93b4d2ecaf177b8750dcda4354c097e",
+  "remote_verified": true,
+  "source_ids": [
+    "SRC31",
+    "SRC32"
+  ],
+  "file_hashes_verified": 12,
+  "hq_native_replay": [
+    {
+      "source": "SRC31",
+      "checks": 275,
+      "release": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189"
+    },
+    {
+      "source": "SRC32",
+      "checks": 295,
+      "release": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0"
+    }
+  ],
+  "source_holds": {
+    "blockers": [],
+    "precise_residuals": [
+      "SRC31: 68/68 items/slots included (64 response questions + 4 coordinates); no item exclusion.",
+      "SRC32: 73/73 items/slots included (69 response questions + 4 coordinates); no item exclusion.",
+      "Routing is SOURCE_ROUTING_UNRESOLVED; portable recipe uses row_selector=ALL with ROUTING_UNKNOWN and was not physically expanded for original validation.",
+      "No source weight item/slot is present; no weighted scope is claimed.",
+      "No form/ballot/administration variable, row-native respondent key, new direction certification or original-source execution is claimed.",
+      "Continuous context is bound as raw coordinates; no false categorical default."
+    ],
+    "distinct_review": "NOT_PERFORMED; reserved for the distinct coherent all35 boundary review."
+  },
+  "limits": [
+    "Unknown routing and source-specific authority holds remain precise",
+    "No original respondent/source-byte execution or original workload issuance",
+    "Distinct final all35 review remains pending"
+  ]
+}

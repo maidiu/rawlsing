@@ -1,0 +1,3829 @@
+{
+  "SRC01": {
+    "summary": {
+      "source_id": "SRC01",
+      "family": "Afrobarometer",
+      "wave": "R1",
+      "format": "SAV",
+      "physical_columns": 144,
+      "codebook_rows": 144,
+      "exact_code_matches": 144,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 144,
+      "prior_exact_relation_ids": 141,
+      "prior_item_codes_in_current_header": 144,
+      "r154_partial_evidence_rows": 5,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 10,
+        "SOURCE_ROUTING_UNRESOLVED": 131,
+        "COUNTRY_CONDITIONAL": 3
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 7,
+        "bound": 137
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 141,
+        "manual_response_topology": 141,
+        "manual_response_normalization_rule": 141,
+        "manual_position_conditioning": 141,
+        "p2_response_topology": 141,
+        "p2_semantic_role": 141,
+        "p2_exact_question_text": 141
+      },
+      "unmatched_explicit_relation_ids": [
+        "question_impl.phase0.e8a81e3fdbb1f7e81e74",
+        "question_impl.phase0.238565c640e3d79b72d0",
+        "question_impl.phase0.c1b201b575e7490270a8"
+      ],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC01:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 144,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC01:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC01:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC02": {
+    "summary": {
+      "source_id": "SRC02",
+      "family": "Afrobarometer",
+      "wave": "R5",
+      "format": "SAV",
+      "physical_columns": 348,
+      "codebook_rows": 348,
+      "exact_code_matches": 348,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 348,
+      "prior_exact_relation_ids": 348,
+      "prior_item_codes_in_current_header": 348,
+      "r154_partial_evidence_rows": 1,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 232,
+        "ADMIN_OR_NONRESPONDENT": 49,
+        "COUNTRY_CONDITIONAL": 65,
+        "MULTI_CONDITION": 2
+      },
+      "response_binding_states": {
+        "bound": 324,
+        "blocked_response_authority_gap": 24
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 348,
+        "manual_response_topology": 348,
+        "manual_response_normalization_rule": 348,
+        "manual_position_conditioning": 348,
+        "p2_response_topology": 348,
+        "p2_semantic_role": 348,
+        "p2_exact_question_text": 348
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC02:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 348,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC02:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC02:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC03": {
+    "summary": {
+      "source_id": "SRC03",
+      "family": "Afrobarometer",
+      "wave": "R9",
+      "format": "SAV",
+      "physical_columns": 421,
+      "codebook_rows": 421,
+      "exact_code_matches": 421,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 421,
+      "prior_exact_relation_ids": 421,
+      "prior_item_codes_in_current_header": 421,
+      "r154_partial_evidence_rows": 3,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 294,
+        "ADMIN_OR_NONRESPONDENT": 97,
+        "COUNTRY_CONDITIONAL": 3,
+        "RESPONDENT_ANSWER_CONDITIONAL": 27
+      },
+      "response_binding_states": {
+        "bound": 370,
+        "blocked_response_authority_gap": 51
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 421,
+        "manual_response_topology": 421,
+        "manual_response_normalization_rule": 421,
+        "manual_position_conditioning": 421,
+        "p2_response_topology": 421,
+        "p2_semantic_role": 421,
+        "p2_exact_question_text": 421
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC03:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 421,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC03:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC03:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC04": {
+    "summary": {
+      "source_id": "SRC04",
+      "family": "Arab Barometer",
+      "wave": "I",
+      "format": "SAV",
+      "physical_columns": 181,
+      "codebook_rows": 181,
+      "exact_code_matches": 181,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 181,
+      "prior_exact_relation_ids": 181,
+      "prior_item_codes_in_current_header": 181,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 179,
+        "ADMIN_OR_NONRESPONDENT": 2
+      },
+      "response_binding_states": {
+        "bound": 179,
+        "blocked_response_authority_gap": 2
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 181,
+        "manual_response_topology": 181,
+        "manual_response_normalization_rule": 181,
+        "manual_position_conditioning": 181,
+        "p2_response_topology": 181,
+        "p2_semantic_role": 181,
+        "p2_exact_question_text": 181
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC04:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 181,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC04:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC04:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC05": {
+    "summary": {
+      "source_id": "SRC05",
+      "family": "Arab Barometer",
+      "wave": "II",
+      "format": "SAV",
+      "physical_columns": 468,
+      "codebook_rows": 468,
+      "exact_code_matches": 468,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 468,
+      "prior_exact_relation_ids": 468,
+      "prior_item_codes_in_current_header": 468,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 463,
+        "ADMIN_OR_NONRESPONDENT": 3,
+        "RESPONDENT_ANSWER_CONDITIONAL": 1,
+        "COUNTRY_CONDITIONAL": 1
+      },
+      "response_binding_states": {
+        "bound": 466,
+        "blocked_response_authority_gap": 2
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 468,
+        "manual_response_topology": 468,
+        "manual_response_normalization_rule": 468,
+        "manual_position_conditioning": 468,
+        "p2_response_topology": 468,
+        "p2_semantic_role": 468,
+        "p2_exact_question_text": 468
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC05:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 468,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC05:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC05:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC06": {
+    "summary": {
+      "source_id": "SRC06",
+      "family": "Arab Barometer",
+      "wave": "V",
+      "format": "SAV",
+      "physical_columns": 359,
+      "codebook_rows": 359,
+      "exact_code_matches": 359,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 359,
+      "prior_exact_relation_ids": 359,
+      "prior_item_codes_in_current_header": 359,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 11,
+        "UNCONDITIONAL_SOURCE_PROVEN": 26,
+        "COUNTRY_CONDITIONAL": 39,
+        "MULTI_CONDITION": 36,
+        "RESPONDENT_ANSWER_CONDITIONAL": 5,
+        "SOURCE_ROUTING_UNRESOLVED": 241,
+        "SPLIT_SAMPLE_CONDITIONAL": 1
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 13,
+        "bound": 346
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 359,
+        "manual_response_topology": 359,
+        "manual_response_normalization_rule": 359,
+        "manual_position_conditioning": 359,
+        "p2_response_topology": 359,
+        "p2_semantic_role": 359,
+        "p2_exact_question_text": 359
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC06:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 359,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC06:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC06:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC07": {
+    "summary": {
+      "source_id": "SRC07",
+      "family": "Arab Barometer",
+      "wave": "VIII",
+      "format": "SAV",
+      "physical_columns": 690,
+      "codebook_rows": 690,
+      "exact_code_matches": 690,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 690,
+      "prior_exact_relation_ids": 690,
+      "prior_item_codes_in_current_header": 690,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 7,
+        "SOURCE_ROUTING_UNRESOLVED": 554,
+        "RESPONDENT_ANSWER_CONDITIONAL": 17,
+        "MULTI_CONDITION": 31,
+        "COUNTRY_CONDITIONAL": 65,
+        "UNCONDITIONAL_SOURCE_PROVEN": 1,
+        "SPLIT_SAMPLE_CONDITIONAL": 15
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 30,
+        "bound": 660
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 690,
+        "manual_response_topology": 690,
+        "manual_response_normalization_rule": 690,
+        "manual_position_conditioning": 690,
+        "p2_response_topology": 690,
+        "p2_semantic_role": 690,
+        "p2_exact_question_text": 690
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC07:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 690,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC07:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC07:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC08": {
+    "summary": {
+      "source_id": "SRC08",
+      "family": "Asian Barometer",
+      "wave": "W1",
+      "format": "SAV",
+      "physical_columns": 217,
+      "codebook_rows": 217,
+      "exact_code_matches": 217,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 217,
+      "prior_exact_relation_ids": 217,
+      "prior_item_codes_in_current_header": 217,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 23,
+        "SOURCE_ROUTING_UNRESOLVED": 183,
+        "COUNTRY_CONDITIONAL": 3,
+        "RESPONDENT_ANSWER_CONDITIONAL": 8
+      },
+      "response_binding_states": {
+        "bound": 207,
+        "blocked_response_authority_gap": 10
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 217,
+        "manual_response_topology": 217,
+        "manual_response_normalization_rule": 217,
+        "manual_position_conditioning": 217,
+        "p2_response_topology": 217,
+        "p2_semantic_role": 217,
+        "p2_exact_question_text": 217
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC08:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 217,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC08:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC08:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC09": {
+    "summary": {
+      "source_id": "SRC09",
+      "family": "Asian Barometer",
+      "wave": "W4",
+      "format": "SAV",
+      "physical_columns": 289,
+      "codebook_rows": 289,
+      "exact_code_matches": 289,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 289,
+      "prior_exact_relation_ids": 289,
+      "prior_item_codes_in_current_header": 289,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 18,
+        "SOURCE_ROUTING_UNRESOLVED": 180,
+        "UNCONDITIONAL_SOURCE_PROVEN": 91
+      },
+      "response_binding_states": {
+        "bound": 286,
+        "blocked_response_authority_gap": 3
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 289,
+        "manual_response_topology": 289,
+        "manual_response_normalization_rule": 289,
+        "manual_position_conditioning": 289,
+        "p2_response_topology": 289,
+        "p2_semantic_role": 289,
+        "p2_exact_question_text": 289
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC09:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 289,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC09:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC09:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC10": {
+    "summary": {
+      "source_id": "SRC10",
+      "family": "Asian Barometer",
+      "wave": "W5",
+      "format": "SAV",
+      "physical_columns": 308,
+      "codebook_rows": 308,
+      "exact_code_matches": 308,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 308,
+      "prior_exact_relation_ids": 308,
+      "prior_item_codes_in_current_header": 308,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 17,
+        "SOURCE_ROUTING_UNRESOLVED": 277,
+        "RESPONDENT_ANSWER_CONDITIONAL": 10,
+        "UNCONDITIONAL_SOURCE_PROVEN": 4
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 99,
+        "bound": 209
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 308,
+        "manual_response_topology": 308,
+        "manual_response_normalization_rule": 308,
+        "manual_position_conditioning": 308,
+        "p2_response_topology": 308,
+        "p2_semantic_role": 308,
+        "p2_exact_question_text": 308
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC10:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 308,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC10:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC10:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC11": {
+    "summary": {
+      "source_id": "SRC11",
+      "family": "EVS",
+      "wave": "1981",
+      "format": "SAV",
+      "physical_columns": 370,
+      "codebook_rows": 370,
+      "exact_code_matches": 370,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 370,
+      "prior_exact_relation_ids": 370,
+      "prior_item_codes_in_current_header": 370,
+      "r154_partial_evidence_rows": 4,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "UNCONDITIONAL_SOURCE_PROVEN": 228,
+        "SOURCE_ROUTING_UNRESOLVED": 89,
+        "ADMIN_OR_NONRESPONDENT": 26,
+        "RESPONDENT_ANSWER_CONDITIONAL": 25,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 2
+      },
+      "response_binding_states": {
+        "bound": 364,
+        "blocked_response_authority_gap": 6
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 370,
+        "manual_response_topology": 370,
+        "manual_response_normalization_rule": 370,
+        "manual_position_conditioning": 370,
+        "p2_response_topology": 370,
+        "p2_semantic_role": 370,
+        "p2_exact_question_text": 370
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC11:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 370,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC11:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC11:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC12": {
+    "summary": {
+      "source_id": "SRC12",
+      "family": "EVS",
+      "wave": "1990",
+      "format": "SAV",
+      "physical_columns": 390,
+      "codebook_rows": 390,
+      "exact_code_matches": 390,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 390,
+      "prior_exact_relation_ids": 390,
+      "prior_item_codes_in_current_header": 390,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 203,
+        "ADMIN_OR_NONRESPONDENT": 33,
+        "RESPONDENT_ANSWER_CONDITIONAL": 3,
+        "UNCONDITIONAL_SOURCE_PROVEN": 150,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 1
+      },
+      "response_binding_states": {
+        "bound": 382,
+        "blocked_response_authority_gap": 8
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 390,
+        "manual_response_topology": 390,
+        "manual_response_normalization_rule": 390,
+        "manual_position_conditioning": 390,
+        "p2_response_topology": 390,
+        "p2_semantic_role": 390,
+        "p2_exact_question_text": 390
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC12:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 390,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC12:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC12:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC13": {
+    "summary": {
+      "source_id": "SRC13",
+      "family": "EVS",
+      "wave": "1999",
+      "format": "SAV",
+      "physical_columns": 513,
+      "codebook_rows": 513,
+      "exact_code_matches": 513,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 513,
+      "prior_exact_relation_ids": 513,
+      "prior_item_codes_in_current_header": 513,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "latin1",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "UNCONDITIONAL_SOURCE_PROVEN": 22,
+        "SOURCE_ROUTING_UNRESOLVED": 435,
+        "ADMIN_OR_NONRESPONDENT": 29,
+        "RESPONDENT_ANSWER_CONDITIONAL": 27
+      },
+      "response_binding_states": {
+        "bound": 506,
+        "blocked_response_authority_gap": 7
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 513,
+        "manual_response_topology": 513,
+        "manual_response_normalization_rule": 513,
+        "manual_position_conditioning": 513,
+        "p2_response_topology": 513,
+        "p2_semantic_role": 513,
+        "p2_exact_question_text": 513
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC13:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 513,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC13:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC13:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      },
+      {
+        "id": "SRC13:ENCODING_TRANSPORT",
+        "need": "Current SourceReadRequest/decode_with_source_read_permission does not forward encoding although current SHA is decoder-allowlisted for latin1",
+        "deliverable": "Bind exact qualified config in permitted decoder transport; no guessing or new representation rule"
+      }
+    ]
+  },
+  "SRC14": {
+    "summary": {
+      "source_id": "SRC14",
+      "family": "EVS",
+      "wave": "2008",
+      "format": "SAV",
+      "physical_columns": 477,
+      "codebook_rows": 477,
+      "exact_code_matches": 477,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 477,
+      "prior_exact_relation_ids": 477,
+      "prior_item_codes_in_current_header": 477,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "latin1",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 174,
+        "ADMIN_OR_NONRESPONDENT": 44,
+        "UNCONDITIONAL_SOURCE_PROVEN": 190,
+        "RESPONDENT_ANSWER_CONDITIONAL": 69
+      },
+      "response_binding_states": {
+        "bound": 468,
+        "blocked_response_authority_gap": 9
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 477,
+        "manual_response_topology": 477,
+        "manual_response_normalization_rule": 477,
+        "manual_position_conditioning": 477,
+        "p2_response_topology": 477,
+        "p2_semantic_role": 477,
+        "p2_exact_question_text": 477
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC14:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 477,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC14:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC14:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      },
+      {
+        "id": "SRC14:ENCODING_TRANSPORT",
+        "need": "Current SourceReadRequest/decode_with_source_read_permission does not forward encoding although current SHA is decoder-allowlisted for latin1",
+        "deliverable": "Bind exact qualified config in permitted decoder transport; no guessing or new representation rule"
+      }
+    ]
+  },
+  "SRC15": {
+    "summary": {
+      "source_id": "SRC15",
+      "family": "EVS",
+      "wave": "2017",
+      "format": "SAV",
+      "physical_columns": 474,
+      "codebook_rows": 474,
+      "exact_code_matches": 474,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 474,
+      "prior_exact_relation_ids": 474,
+      "prior_item_codes_in_current_header": 474,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "UNCONDITIONAL_SOURCE_PROVEN": 13,
+        "SOURCE_ROUTING_UNRESOLVED": 362,
+        "ADMIN_OR_NONRESPONDENT": 56,
+        "RESPONDENT_ANSWER_CONDITIONAL": 43
+      },
+      "response_binding_states": {
+        "bound": 461,
+        "blocked_response_authority_gap": 13
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 474,
+        "manual_response_topology": 474,
+        "manual_response_normalization_rule": 474,
+        "manual_position_conditioning": 474,
+        "p2_response_topology": 474,
+        "p2_semantic_role": 474,
+        "p2_exact_question_text": 474
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC15:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 474,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC15:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC15:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC16": {
+    "summary": {
+      "source_id": "SRC16",
+      "family": "GSS",
+      "wave": "1972",
+      "format": "SAV",
+      "physical_columns": 216,
+      "codebook_rows": 216,
+      "exact_code_matches": 216,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 216,
+      "prior_exact_relation_ids": 216,
+      "prior_item_codes_in_current_header": 216,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 107,
+        "RESPONDENT_ANSWER_CONDITIONAL": 26,
+        "ADMIN_OR_NONRESPONDENT": 32,
+        "UNCONDITIONAL_SOURCE_PROVEN": 2,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 22,
+        "MULTI_CONDITION": 27
+      },
+      "response_binding_states": {
+        "bound": 206,
+        "blocked_response_authority_gap": 10
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 216,
+        "manual_response_topology": 216,
+        "manual_response_normalization_rule": 216,
+        "manual_position_conditioning": 216,
+        "p2_response_topology": 216,
+        "p2_semantic_role": 216,
+        "p2_exact_question_text": 216
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC16:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 216,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC16:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC16:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC17": {
+    "summary": {
+      "source_id": "SRC17",
+      "family": "GSS",
+      "wave": "1973",
+      "format": "SAV",
+      "physical_columns": 339,
+      "codebook_rows": 339,
+      "exact_code_matches": 339,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 339,
+      "prior_exact_relation_ids": 339,
+      "prior_item_codes_in_current_header": 339,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 221,
+        "RESPONDENT_ANSWER_CONDITIONAL": 27,
+        "UNCONDITIONAL_SOURCE_PROVEN": 3,
+        "ADMIN_OR_NONRESPONDENT": 35,
+        "MULTI_CONDITION": 32,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 21
+      },
+      "response_binding_states": {
+        "bound": 329,
+        "blocked_response_authority_gap": 10
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 339,
+        "manual_response_topology": 339,
+        "manual_response_normalization_rule": 339,
+        "manual_position_conditioning": 339,
+        "p2_response_topology": 339,
+        "p2_semantic_role": 339,
+        "p2_exact_question_text": 339
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC17:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 339,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC17:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC17:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC18": {
+    "summary": {
+      "source_id": "SRC18",
+      "family": "GSS",
+      "wave": "1984",
+      "format": "SAV",
+      "physical_columns": 675,
+      "codebook_rows": 675,
+      "exact_code_matches": 675,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 675,
+      "prior_exact_relation_ids": 675,
+      "prior_item_codes_in_current_header": 675,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "UNCONDITIONAL_SOURCE_PROVEN": 88,
+        "MODULE_OR_BALLOT_CONDITIONAL": 103,
+        "SOURCE_ROUTING_UNRESOLVED": 417,
+        "RESPONDENT_ANSWER_CONDITIONAL": 22,
+        "ADMIN_OR_NONRESPONDENT": 39,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 6
+      },
+      "response_binding_states": {
+        "bound": 665,
+        "blocked_response_authority_gap": 10
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 675,
+        "manual_response_topology": 675,
+        "manual_response_normalization_rule": 675,
+        "manual_position_conditioning": 675,
+        "p2_response_topology": 675,
+        "p2_semantic_role": 675,
+        "p2_exact_question_text": 675
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC18:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 675,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC18:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC18:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC19": {
+    "summary": {
+      "source_id": "SRC19",
+      "family": "GSS",
+      "wave": "1993",
+      "format": "SAV",
+      "physical_columns": 752,
+      "codebook_rows": 752,
+      "exact_code_matches": 752,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 752,
+      "prior_exact_relation_ids": 752,
+      "prior_item_codes_in_current_header": 752,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 645,
+        "RESPONDENT_ANSWER_CONDITIONAL": 8,
+        "UNCONDITIONAL_SOURCE_PROVEN": 58,
+        "ADMIN_OR_NONRESPONDENT": 41
+      },
+      "response_binding_states": {
+        "bound": 739,
+        "blocked_response_authority_gap": 13
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 752,
+        "manual_response_topology": 752,
+        "manual_response_normalization_rule": 752,
+        "manual_position_conditioning": 752,
+        "p2_response_topology": 752,
+        "p2_semantic_role": 752,
+        "p2_exact_question_text": 752
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC19:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 752,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC19:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC19:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC20": {
+    "summary": {
+      "source_id": "SRC20",
+      "family": "GSS",
+      "wave": "2002",
+      "format": "SAV",
+      "physical_columns": 1119,
+      "codebook_rows": 1119,
+      "exact_code_matches": 1119,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 1119,
+      "prior_exact_relation_ids": 1119,
+      "prior_item_codes_in_current_header": 1119,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 1076,
+        "ADMIN_OR_NONRESPONDENT": 43
+      },
+      "response_binding_states": {
+        "bound": 1102,
+        "blocked_response_authority_gap": 17
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 1119,
+        "manual_response_topology": 1119,
+        "manual_response_normalization_rule": 1119,
+        "manual_position_conditioning": 1119,
+        "p2_response_topology": 1119,
+        "p2_semantic_role": 1119,
+        "p2_exact_question_text": 1119
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC20:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 1119,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC20:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC20:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC21": {
+    "summary": {
+      "source_id": "SRC21",
+      "family": "GSS",
+      "wave": "2010",
+      "format": "SAV",
+      "physical_columns": 922,
+      "codebook_rows": 922,
+      "exact_code_matches": 922,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 922,
+      "prior_exact_relation_ids": 922,
+      "prior_item_codes_in_current_header": 922,
+      "r154_partial_evidence_rows": 6,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 622,
+        "SPLIT_SAMPLE_CONDITIONAL": 104,
+        "RESPONDENT_ANSWER_CONDITIONAL": 108,
+        "ADMIN_OR_NONRESPONDENT": 62,
+        "MULTI_CONDITION": 26
+      },
+      "response_binding_states": {
+        "bound": 903,
+        "blocked_response_authority_gap": 19
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 922,
+        "manual_response_topology": 922,
+        "manual_response_normalization_rule": 922,
+        "manual_position_conditioning": 922,
+        "p2_response_topology": 922,
+        "p2_semantic_role": 922,
+        "p2_exact_question_text": 922
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC21:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 922,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC21:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC21:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC22": {
+    "summary": {
+      "source_id": "SRC22",
+      "family": "GSS",
+      "wave": "2016",
+      "format": "SAV",
+      "physical_columns": 1018,
+      "codebook_rows": 1018,
+      "exact_code_matches": 1018,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 1018,
+      "prior_exact_relation_ids": 1018,
+      "prior_item_codes_in_current_header": 1018,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 577,
+        "SPLIT_SAMPLE_CONDITIONAL": 224,
+        "MODULE_OR_BALLOT_CONDITIONAL": 24,
+        "MULTI_CONDITION": 119,
+        "RESPONDENT_ANSWER_CONDITIONAL": 27,
+        "ADMIN_OR_NONRESPONDENT": 47
+      },
+      "response_binding_states": {
+        "bound": 999,
+        "blocked_response_authority_gap": 19
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 1018,
+        "manual_response_topology": 1018,
+        "manual_response_normalization_rule": 1018,
+        "manual_position_conditioning": 1018,
+        "p2_response_topology": 1018,
+        "p2_semantic_role": 1018,
+        "p2_exact_question_text": 1018
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC22:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 1018,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC22:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC22:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC23": {
+    "summary": {
+      "source_id": "SRC23",
+      "family": "GSS",
+      "wave": "2024",
+      "format": "SAV",
+      "physical_columns": 980,
+      "codebook_rows": 980,
+      "exact_code_matches": 980,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 980,
+      "prior_exact_relation_ids": 980,
+      "prior_item_codes_in_current_header": 980,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 800,
+        "MODULE_OR_BALLOT_CONDITIONAL": 48,
+        "RESPONDENT_ANSWER_CONDITIONAL": 36,
+        "ADMIN_OR_NONRESPONDENT": 49,
+        "MULTI_CONDITION": 15,
+        "SPLIT_SAMPLE_CONDITIONAL": 32
+      },
+      "response_binding_states": {
+        "bound": 963,
+        "blocked_response_authority_gap": 17
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 980,
+        "manual_response_topology": 980,
+        "manual_response_normalization_rule": 980,
+        "manual_position_conditioning": 980,
+        "p2_response_topology": 980,
+        "p2_semantic_role": 980,
+        "p2_exact_question_text": 980
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC23:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 980,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC23:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC23:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC24": {
+    "summary": {
+      "source_id": "SRC24",
+      "family": "Latinobar\u00f3metro",
+      "wave": "1995",
+      "format": "SAV",
+      "physical_columns": 203,
+      "codebook_rows": 203,
+      "exact_code_matches": 203,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 203,
+      "prior_exact_relation_ids": 185,
+      "prior_item_codes_in_current_header": 203,
+      "r154_partial_evidence_rows": 21,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 6,
+        "SOURCE_ROUTING_UNRESOLVED": 197
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 7,
+        "bound": 196
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 185,
+        "manual_response_topology": 185,
+        "manual_response_normalization_rule": 185,
+        "manual_position_conditioning": 185,
+        "p2_response_topology": 185,
+        "p2_semantic_role": 185,
+        "p2_exact_question_text": 185
+      },
+      "unmatched_explicit_relation_ids": [
+        "question_impl.phase0.339be33bf48093941579",
+        "question_impl.phase0.1f60935613eb8655add9",
+        "question_impl.phase0.e02d1acbdbe0dd0d28ca",
+        "question_impl.phase0.30e308d2f5b1add44a69",
+        "question_impl.phase0.715c3c525b8d7aea42cc",
+        "question_impl.phase0.a4d13df93b0b5f774305",
+        "question_impl.phase0.7dbb9eae2776776e6ea9",
+        "question_impl.phase0.f86530d3805d17e8e918",
+        "question_impl.phase0.23f75ff1ae9fa5f9e832",
+        "question_impl.phase0.0fa0a9f546132c54f98c",
+        "question_impl.phase0.ec543f8a2afb10e7974a",
+        "question_impl.phase0.7207b6d4db8252fc0c90",
+        "question_impl.phase0.b5595cebe965f664cb27",
+        "question_impl.phase0.62f74db198472da0b525",
+        "question_impl.phase0.b347c6c99a427d8b7c48",
+        "question_impl.phase0.7d541ce591ee2c5b7920",
+        "question_impl.phase0.9147f6bcfc5d312f0ffd",
+        "question_impl.phase0.e8dc88eb458ddb593acd"
+      ],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC24:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 203,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC24:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC24:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC25": {
+    "summary": {
+      "source_id": "SRC25",
+      "family": "Latinobar\u00f3metro",
+      "wave": "2011",
+      "format": "SAV",
+      "physical_columns": 414,
+      "codebook_rows": 414,
+      "exact_code_matches": 170,
+      "physical_only": 244,
+      "codebook_only": 244,
+      "prior_H48_items": 414,
+      "prior_exact_relation_ids": 414,
+      "prior_item_codes_in_current_header": 170,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [
+        "CIUDAD",
+        "CODIF",
+        "CODIGO",
+        "CODSUPER",
+        "COMDIST",
+        "DIAREAL",
+        "DIGIT",
+        "DURA",
+        "EDAD",
+        "FAMPART",
+        "FIN",
+        "IDENPA",
+        "INI",
+        "MESREAL",
+        "NUMCASA",
+        "NUMENTRE",
+        "NUMINVES",
+        "P11ST.A",
+        "P11ST.B",
+        "P11ST.C",
+        "P14ST.A",
+        "P14ST.B",
+        "P16N.D",
+        "P16N.F",
+        "P16ST.A",
+        "P16ST.B",
+        "P16ST.C",
+        "P16ST.E",
+        "P20ST.A",
+        "P20ST.B",
+        "P20ST.C",
+        "P20ST.D",
+        "P20ST.E",
+        "P20ST.F",
+        "P20ST.G",
+        "P20ST.H",
+        "P22ST.A",
+        "P22ST.B",
+        "P22ST.C",
+        "P22ST.D",
+        "P22ST.E",
+        "P22ST.F",
+        "P22ST.G",
+        "P22ST.H",
+        "P26NE.A",
+        "P26NE.B",
+        "P26NE.C",
+        "P26NE.D",
+        "P26NE.E",
+        "P26NE.F",
+        "P27NE.A",
+        "P27NE.B",
+        "P30NE.A",
+        "P30NE.B",
+        "P30NE.C",
+        "P31NE.A",
+        "P31NE.B",
+        "P33NE.A",
+        "P33NE.BA",
+        "P33NE.BB",
+        "P33NE.BC",
+        "P33NE.BD",
+        "P33NE.BE",
+        "P33NE.BF",
+        "P33NE.BG",
+        "P33NE.BH",
+        "P33NE.BI",
+        "P33NE.BJ",
+        "P33NE.BK",
+        "P33NE.BL",
+        "P33NE.BM",
+        "P33NE.BN",
+        "P33NE.BX",
+        "P33NE.BY",
+        "P33NE.BZ",
+        "P34NE.A",
+        "P34NE.B",
+        "P34NE.C",
+        "P35NIA.A",
+        "P35NIA.B",
+        "P35NIA.C",
+        "P39ST.A",
+        "P39STM.B",
+        "P3ST.A",
+        "P3ST.B",
+        "P41ST.A",
+        "P41ST.B",
+        "P41ST.C",
+        "P41ST.D",
+        "P41ST.E",
+        "P41ST.F",
+        "P41ST.G",
+        "P41ST.H",
+        "P41ST.I",
+        "P41ST.J",
+        "P41ST.K",
+        "P41ST.L",
+        "P41ST.M",
+        "P44N.H",
+        "P44N.I",
+        "P44ST.A",
+        "P44ST.B",
+        "P44ST.C",
+        "P44ST.D",
+        "P44ST.E",
+        "P44ST.F",
+        "P44ST.G",
+        "P45ST.A",
+        "P45ST.B",
+        "P45ST.C",
+        "P46NIA.A",
+        "P46NIA.B",
+        "P47NIA.A",
+        "P47NIA.B",
+        "P49ST.A",
+        "P49ST.B",
+        "P49ST.C",
+        "P49ST.D",
+        "P49ST.E",
+        "P49ST.F",
+        "P50ST.AA",
+        "P50ST.AB",
+        "P50ST.BA",
+        "P50ST.BB",
+        "P50ST.CA",
+        "P50ST.CB",
+        "P50ST.DA",
+        "P50ST.DB",
+        "P50ST.EA",
+        "P50ST.EB",
+        "P50ST.FA",
+        "P50ST.FB",
+        "P52ST.A",
+        "P52ST.B",
+        "P54ST.1",
+        "P54ST.10",
+        "P54ST.11",
+        "P54ST.12",
+        "P54ST.13",
+        "P54ST.14",
+        "P54ST.15",
+        "P54ST.16",
+        "P54ST.17",
+        "P54ST.18",
+        "P54ST.2",
+        "P54ST.3",
+        "P54ST.4",
+        "P54ST.5",
+        "P54ST.6",
+        "P54ST.7",
+        "P54ST.8",
+        "P54ST.9",
+        "P57N.A",
+        "P57N.B",
+        "P58N.A",
+        "P58N.B",
+        "P58N.C",
+        "P58N.D",
+        "P59N.A",
+        "P59N.B",
+        "P59N.C",
+        "P61ST.A",
+        "P61ST.B",
+        "P61ST.C",
+        "P64N.B",
+        "P64ST.A",
+        "P66ST.A",
+        "P66ST.B",
+        "P66ST.C",
+        "P66ST.D",
+        "P66ST.E",
+        "P67ST.A",
+        "P67ST.B",
+        "P67ST.C",
+        "P67ST.D",
+        "P67ST.E",
+        "P67ST.F",
+        "P69N.D",
+        "P69N.E",
+        "P69ST.A",
+        "P69ST.B",
+        "P69ST.C",
+        "P70N.E",
+        "P70N.F",
+        "P70N.G",
+        "P70ST.A",
+        "P70ST.B",
+        "P70ST.C",
+        "P70ST.D",
+        "P71N.D",
+        "P71ST.A",
+        "P71ST.B",
+        "P71ST.C",
+        "P80N.B",
+        "P80ST.A",
+        "P80ST.C",
+        "P80ST.D",
+        "P80ST.E",
+        "P80ST.F",
+        "P83N.A",
+        "P83N.B",
+        "P83N.C",
+        "P83N.D",
+        "PERPART",
+        "REEDAD",
+        "REG",
+        "S11.A",
+        "S11.B",
+        "S12NE.A",
+        "S12NE.B",
+        "S12NE.C",
+        "S18.A",
+        "S33ST.AA",
+        "S33ST.AB",
+        "S33ST.AC",
+        "S33ST.AD",
+        "S33ST.AE",
+        "S33ST.AF",
+        "S33ST.AG",
+        "S33ST.AH",
+        "S33ST.AY",
+        "S33ST.AZ",
+        "S33ST.BA",
+        "S33ST.BB",
+        "S33ST.BC",
+        "S33ST.BD",
+        "S33ST.BE",
+        "S33ST.BF",
+        "S33ST.BG",
+        "S33ST.BH",
+        "S33ST.BI",
+        "S33ST.BW",
+        "S33ST.BX",
+        "S33ST.BY",
+        "S33ST.BZ",
+        "SEXO",
+        "SUPERVEN",
+        "SUPERVVI",
+        "TAMCIUD",
+        "TOTCUOT",
+        "TOTPERD",
+        "TOTRECH",
+        "TOTREVI",
+        "WT"
+      ],
+      "codebook_only": [
+        "P11ST_A",
+        "P11ST_B",
+        "P11ST_C",
+        "P14ST_A",
+        "P14ST_B",
+        "P16N_D",
+        "P16N_F",
+        "P16ST_A",
+        "P16ST_B",
+        "P16ST_C",
+        "P16ST_E",
+        "P20ST_A",
+        "P20ST_B",
+        "P20ST_C",
+        "P20ST_D",
+        "P20ST_E",
+        "P20ST_F",
+        "P20ST_G",
+        "P20ST_H",
+        "P22ST_A",
+        "P22ST_B",
+        "P22ST_C",
+        "P22ST_D",
+        "P22ST_E",
+        "P22ST_F",
+        "P22ST_G",
+        "P22ST_H",
+        "P26NE_A",
+        "P26NE_B",
+        "P26NE_C",
+        "P26NE_D",
+        "P26NE_E",
+        "P26NE_F",
+        "P27NE_A",
+        "P27NE_B",
+        "P30NE_A",
+        "P30NE_B",
+        "P30NE_C",
+        "P31NE_A",
+        "P31NE_B",
+        "P33NE_A",
+        "P33NE_BA",
+        "P33NE_BB",
+        "P33NE_BC",
+        "P33NE_BD",
+        "P33NE_BE",
+        "P33NE_BF",
+        "P33NE_BG",
+        "P33NE_BH",
+        "P33NE_BI",
+        "P33NE_BJ",
+        "P33NE_BK",
+        "P33NE_BL",
+        "P33NE_BM",
+        "P33NE_BN",
+        "P33NE_BX",
+        "P33NE_BY",
+        "P33NE_BZ",
+        "P34NE_A",
+        "P34NE_B",
+        "P34NE_C",
+        "P35NIA_A",
+        "P35NIA_B",
+        "P35NIA_C",
+        "P39STM_B",
+        "P39ST_A",
+        "P3ST_A",
+        "P3ST_B",
+        "P41ST_A",
+        "P41ST_B",
+        "P41ST_C",
+        "P41ST_D",
+        "P41ST_E",
+        "P41ST_F",
+        "P41ST_G",
+        "P41ST_H",
+        "P41ST_I",
+        "P41ST_J",
+        "P41ST_K",
+        "P41ST_L",
+        "P41ST_M",
+        "P44N_H",
+        "P44N_I",
+        "P44ST_A",
+        "P44ST_B",
+        "P44ST_C",
+        "P44ST_D",
+        "P44ST_E",
+        "P44ST_F",
+        "P44ST_G",
+        "P45ST_A",
+        "P45ST_B",
+        "P45ST_C",
+        "P46NIA_A",
+        "P46NIA_B",
+        "P47NIA_A",
+        "P47NIA_B",
+        "P49ST_A",
+        "P49ST_B",
+        "P49ST_C",
+        "P49ST_D",
+        "P49ST_E",
+        "P49ST_F",
+        "P50ST_AA",
+        "P50ST_AB",
+        "P50ST_BA",
+        "P50ST_BB",
+        "P50ST_CA",
+        "P50ST_CB",
+        "P50ST_DA",
+        "P50ST_DB",
+        "P50ST_EA",
+        "P50ST_EB",
+        "P50ST_FA",
+        "P50ST_FB",
+        "P52ST_A",
+        "P52ST_B",
+        "P54ST_1",
+        "P54ST_10",
+        "P54ST_11",
+        "P54ST_12",
+        "P54ST_13",
+        "P54ST_14",
+        "P54ST_15",
+        "P54ST_16",
+        "P54ST_17",
+        "P54ST_18",
+        "P54ST_2",
+        "P54ST_3",
+        "P54ST_4",
+        "P54ST_5",
+        "P54ST_6",
+        "P54ST_7",
+        "P54ST_8",
+        "P54ST_9",
+        "P57N_A",
+        "P57N_B",
+        "P58N_A",
+        "P58N_B",
+        "P58N_C",
+        "P58N_D",
+        "P59N_A",
+        "P59N_B",
+        "P59N_C",
+        "P61ST_A",
+        "P61ST_B",
+        "P61ST_C",
+        "P64N_B",
+        "P64ST_A",
+        "P66ST_A",
+        "P66ST_B",
+        "P66ST_C",
+        "P66ST_D",
+        "P66ST_E",
+        "P67ST_A",
+        "P67ST_B",
+        "P67ST_C",
+        "P67ST_D",
+        "P67ST_E",
+        "P67ST_F",
+        "P69N_D",
+        "P69N_E",
+        "P69ST_A",
+        "P69ST_B",
+        "P69ST_C",
+        "P70N_E",
+        "P70N_F",
+        "P70N_G",
+        "P70ST_A",
+        "P70ST_B",
+        "P70ST_C",
+        "P70ST_D",
+        "P71N_D",
+        "P71ST_A",
+        "P71ST_B",
+        "P71ST_C",
+        "P80N_B",
+        "P80ST_A",
+        "P80ST_C",
+        "P80ST_D",
+        "P80ST_E",
+        "P80ST_F",
+        "P83N_A",
+        "P83N_B",
+        "P83N_C",
+        "P83N_D",
+        "S11_A",
+        "S11_B",
+        "S12NE_A",
+        "S12NE_B",
+        "S12NE_C",
+        "S18_A",
+        "S33ST_AA",
+        "S33ST_AB",
+        "S33ST_AC",
+        "S33ST_AD",
+        "S33ST_AE",
+        "S33ST_AF",
+        "S33ST_AG",
+        "S33ST_AH",
+        "S33ST_AY",
+        "S33ST_AZ",
+        "S33ST_BA",
+        "S33ST_BB",
+        "S33ST_BC",
+        "S33ST_BD",
+        "S33ST_BE",
+        "S33ST_BF",
+        "S33ST_BG",
+        "S33ST_BH",
+        "S33ST_BI",
+        "S33ST_BW",
+        "S33ST_BX",
+        "S33ST_BY",
+        "S33ST_BZ",
+        "ciudad",
+        "codif",
+        "codigo",
+        "codsuper",
+        "comdist",
+        "diareal",
+        "digit",
+        "dura",
+        "edad",
+        "fampart",
+        "fin",
+        "idenpa",
+        "ini",
+        "mesreal",
+        "numcasa",
+        "numentre",
+        "numinves",
+        "perpart",
+        "reedad",
+        "reg",
+        "sexo",
+        "superven",
+        "supervvi",
+        "tamciud",
+        "totcuot",
+        "totperd",
+        "totrech",
+        "totrevi",
+        "wt"
+      ]
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 35,
+        "SOURCE_ROUTING_UNRESOLVED": 379
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 25,
+        "bound": 389
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 414,
+        "manual_response_topology": 414,
+        "manual_response_normalization_rule": 414,
+        "manual_position_conditioning": 414,
+        "p2_response_topology": 414,
+        "p2_semantic_role": 414,
+        "p2_exact_question_text": 414
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC25:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 414,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC25:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 244,
+        "codebook_only": 244,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC25:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC26": {
+    "summary": {
+      "source_id": "SRC26",
+      "family": "Latinobar\u00f3metro",
+      "wave": "2024",
+      "format": "SAV",
+      "physical_columns": 332,
+      "codebook_rows": 195,
+      "exact_code_matches": 38,
+      "physical_only": 294,
+      "codebook_only": 157,
+      "prior_H48_items": 195,
+      "prior_exact_relation_ids": 190,
+      "prior_item_codes_in_current_header": 38,
+      "r154_partial_evidence_rows": 5,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [
+        "CIUDAD",
+        "CODIF",
+        "CODIGO",
+        "CODSUPER",
+        "COMDIST",
+        "DIAREAL",
+        "DIGIT",
+        "DURA",
+        "EDAD",
+        "EDESCSINCONT",
+        "FAMPART",
+        "FIN",
+        "IDENPA",
+        "INI",
+        "MESREAL",
+        "NEGATELEGDESC",
+        "NUMCASA",
+        "NUMENTRE",
+        "NUMINVES",
+        "OTROSELEGDES",
+        "P10NOIJ",
+        "P10STGBS",
+        "P11STGBS",
+        "P12STGBS.A",
+        "P12STGBS.B",
+        "P13ST",
+        "P14ST.C",
+        "P14ST.D",
+        "P14ST.E",
+        "P14ST.F",
+        "P14ST.G",
+        "P14ST.H",
+        "P14ST.I",
+        "P14ST.J",
+        "P14ST.K",
+        "P14ST.L",
+        "P14ST.M",
+        "P14ST.N",
+        "P14STGBS.A",
+        "P14STGBS.B",
+        "P15STGBS",
+        "P16ST",
+        "P17ST",
+        "P18ST.A",
+        "P18ST.B",
+        "P18ST.C",
+        "P18ST.D",
+        "P19ST",
+        "P1NCV",
+        "P1NOIJ",
+        "P1ST",
+        "P1TE.A",
+        "P1TE.B",
+        "P1TE.C",
+        "P1TE.D",
+        "P20ST",
+        "P21ST",
+        "P22N",
+        "P23STM.1",
+        "P23STM.2",
+        "P23STM.3",
+        "P24STGBS",
+        "P25ST",
+        "P26ST",
+        "P27ST",
+        "P28ST",
+        "P28ST.A",
+        "P28ST.B",
+        "P28ST.C",
+        "P28ST.D",
+        "P29ST.A",
+        "P29ST.B",
+        "P29ST.C",
+        "P29ST.D",
+        "P29ST.E",
+        "P29ST.F",
+        "P29ST.G",
+        "P29ST.H",
+        "P2NCV.1",
+        "P2NCV.10",
+        "P2NCV.11",
+        "P2NCV.12",
+        "P2NCV.2",
+        "P2NCV.3",
+        "P2NCV.4",
+        "P2NCV.5",
+        "P2NCV.6",
+        "P2NCV.7",
+        "P2NCV.8",
+        "P2NCV.9",
+        "P2NINT",
+        "P2NOIJ.1",
+        "P2NOIJ.10",
+        "P2NOIJ.11",
+        "P2NOIJ.12",
+        "P2NOIJ.2",
+        "P2NOIJ.3",
+        "P2NOIJ.4",
+        "P2NOIJ.5",
+        "P2NOIJ.6",
+        "P2NOIJ.7",
+        "P2NOIJ.8",
+        "P2NOIJ.9",
+        "P2ST",
+        "P2TE.A",
+        "P2TE.B",
+        "P2TE.C",
+        "P2TE.D",
+        "P30ST.A",
+        "P30ST.B",
+        "P30ST.C",
+        "P30ST.D",
+        "P30ST.E",
+        "P31ST",
+        "P32ST.A",
+        "P32ST.B",
+        "P33N.C",
+        "P33N.E",
+        "P33ST.A",
+        "P33ST.B",
+        "P33ST.D",
+        "P34ST",
+        "P35ST",
+        "P36STGBS",
+        "P37ST.A",
+        "P37ST.B",
+        "P38STGBS",
+        "P39STGBS.A",
+        "P3N",
+        "P3NCV",
+        "P3NINT",
+        "P3NOIJ.1",
+        "P3NOIJ.2",
+        "P3NOIJ.3",
+        "P3NOIJ.4",
+        "P3NOIJ.5",
+        "P3NOIJ.6",
+        "P3NOIJ.7",
+        "P3NOIJ.8",
+        "P3NOIJ.9",
+        "P3TE",
+        "P40STGBS.B",
+        "P41ST",
+        "P42ST",
+        "P43ST",
+        "P44ST",
+        "P45ST",
+        "P46ST",
+        "P47ST.A",
+        "P47ST.B",
+        "P47ST.C",
+        "P47ST.D",
+        "P48ST.1",
+        "P48ST.10",
+        "P48ST.11",
+        "P48ST.2",
+        "P48ST.3",
+        "P48ST.4",
+        "P48ST.5",
+        "P48ST.6",
+        "P48ST.7",
+        "P48ST.8",
+        "P48ST.9",
+        "P49ST.A",
+        "P49ST.B",
+        "P49ST.C",
+        "P4NCV.1",
+        "P4NCV.2",
+        "P4NCV.3",
+        "P4NCV.4",
+        "P4NCV.5",
+        "P4NCV.6",
+        "P4NCV.7",
+        "P4NCV.8",
+        "P4NCV.9",
+        "P4NINT.1",
+        "P4NINT.10",
+        "P4NINT.2",
+        "P4NINT.3",
+        "P4NINT.4",
+        "P4NINT.5",
+        "P4NINT.6",
+        "P4NINT.7",
+        "P4NINT.8",
+        "P4NINT.9",
+        "P4NOIJ.1",
+        "P4NOIJ.2",
+        "P4NOIJ.3",
+        "P4NOIJ.4",
+        "P4NOIJ.5",
+        "P4ST",
+        "P50ST.A",
+        "P50ST.B",
+        "P50ST.C",
+        "P51ST",
+        "P52N",
+        "P53N",
+        "P54N",
+        "P56N.1",
+        "P56N.13",
+        "P56N.3",
+        "P56ST.10",
+        "P56ST.11",
+        "P56ST.12",
+        "P56ST.14",
+        "P56ST.2",
+        "P56ST.4",
+        "P56ST.5",
+        "P56ST.6",
+        "P56ST.7",
+        "P56ST.8",
+        "P56ST.9",
+        "P57N",
+        "P5NCV.1",
+        "P5NCV.2",
+        "P5NCV.3",
+        "P5NCV.4",
+        "P5NCV.5",
+        "P5NCV.6",
+        "P5NOIJ",
+        "P5STGBS",
+        "P6NCV.1",
+        "P6NCV.2",
+        "P6NCV.3",
+        "P6NCV.4",
+        "P6NCV.5",
+        "P6NCV.6",
+        "P6NCV.7",
+        "P6NCV.8",
+        "P6NOIJ",
+        "P6STGBS",
+        "P7NCV.A",
+        "P7NCV.B",
+        "P7NCV.C",
+        "P7NCV.D",
+        "P7NCV.E",
+        "P7NCV.F",
+        "P7NCV.G",
+        "P7NOIJ",
+        "P7STGBS",
+        "P8NCV.A",
+        "P8NCV.B",
+        "P8NCV.C",
+        "P8NCV.D",
+        "P8NOIJ",
+        "P8ST",
+        "P9NCV.1",
+        "P9NCV.2",
+        "P9NCV.3",
+        "P9NCV.4",
+        "P9NCV.5",
+        "P9NCV.6",
+        "P9NCV.7",
+        "P9NCV.8",
+        "P9NOIJ",
+        "P9STGBS",
+        "PERPART",
+        "REEDAD",
+        "REEDUC.1",
+        "REEDUC.2",
+        "REEDUC.3",
+        "REG",
+        "S13P1STINT.1",
+        "S13P1STINT.2",
+        "S13P1STINT.3",
+        "S13P1STINT.4",
+        "S13P1STINT.5",
+        "S13P1STINT.6",
+        "S14M.1",
+        "S14M.10",
+        "S14M.11",
+        "S14M.2",
+        "S14M.3",
+        "S14M.4",
+        "S14M.5",
+        "S14M.6",
+        "S14M.7",
+        "S14M.8",
+        "S14M.9",
+        "S17.A",
+        "S17.B",
+        "S17.C",
+        "S18.A",
+        "S18.B",
+        "S1A",
+        "SEXO",
+        "SUPERVEN",
+        "SUPERVVI",
+        "TAMCIUD",
+        "TOTCUOT",
+        "TOTNOCONT",
+        "TOTRECH",
+        "TOTREVI",
+        "WT"
+      ],
+      "codebook_only": [
+        "P6NIOJ",
+        "Q10NOIJ",
+        "Q10STGBS",
+        "Q11STGBS",
+        "Q12STGBSA",
+        "Q12STGBSB",
+        "Q13ST",
+        "Q14STGBSCA",
+        "Q14STGBSCB",
+        "Q14STGBSCC",
+        "Q14STGBSCD",
+        "Q14STGBSCE",
+        "Q14STGBSCG",
+        "Q14STGBSCH",
+        "Q14STGBSCI",
+        "Q14STGBSCJ",
+        "Q14STGBSCK",
+        "Q14STGBSCL",
+        "Q14STGBSCM",
+        "Q14STGBSCN",
+        "Q15STGBS",
+        "Q16ST",
+        "Q17ST",
+        "Q18STA",
+        "Q18STB",
+        "Q18STC",
+        "Q18STD",
+        "Q19ST",
+        "Q1NCV",
+        "Q1NOIJ",
+        "Q1ST",
+        "Q1TEA",
+        "Q1TEB",
+        "Q1TEC",
+        "Q1TED",
+        "Q20ST",
+        "Q21ST",
+        "Q22N",
+        "Q23STM",
+        "Q24STGBS",
+        "Q25ST",
+        "Q26ST",
+        "Q27ST",
+        "Q28STA",
+        "Q28STB",
+        "Q28STC",
+        "Q28STD",
+        "Q28STE",
+        "Q29STA",
+        "Q29STB",
+        "Q29STC",
+        "Q29STD",
+        "Q29STE",
+        "Q29STF",
+        "Q29STG",
+        "Q29STH",
+        "Q2NCV",
+        "Q2NINT",
+        "Q2NOIJ",
+        "Q2ST",
+        "Q2TEA",
+        "Q2TEB",
+        "Q2TEC",
+        "Q2TED",
+        "Q30STA",
+        "Q30STB",
+        "Q30STC",
+        "Q30STD",
+        "Q30STE",
+        "Q31ST",
+        "Q32STA",
+        "Q32STB",
+        "Q33NC",
+        "Q33NE",
+        "Q33STA",
+        "Q33STB",
+        "Q33STD",
+        "Q34ST",
+        "Q35ST",
+        "Q36STGBS",
+        "Q37STA",
+        "Q37STB",
+        "Q38STGBS",
+        "Q39STGBSA",
+        "Q3N",
+        "Q3NCV",
+        "Q3NINT",
+        "Q3NOIJ",
+        "Q3TE",
+        "Q40STGBSB",
+        "Q41ST",
+        "Q42ST",
+        "Q43ST",
+        "Q44ST",
+        "Q45ST",
+        "Q46ST",
+        "Q47STA",
+        "Q47STB",
+        "Q47STC",
+        "Q47STD",
+        "Q48ST",
+        "Q49STA",
+        "Q49STB",
+        "Q49STC",
+        "Q4NCV",
+        "Q4NINT",
+        "Q4NOIJ",
+        "Q4ST",
+        "Q50STA",
+        "Q50STB",
+        "Q50STC",
+        "Q51ST",
+        "Q53N",
+        "Q54N",
+        "Q56N1",
+        "Q56N12",
+        "Q56N13",
+        "Q56N3",
+        "Q56ST10",
+        "Q56ST11",
+        "Q56ST14",
+        "Q56ST2",
+        "Q56ST4",
+        "Q56ST5",
+        "Q56ST6",
+        "Q56ST7",
+        "Q56ST8",
+        "Q56ST9",
+        "Q57N",
+        "Q5NCV",
+        "Q5NOIJ",
+        "Q5STGBS",
+        "Q6NCV",
+        "Q6STGBS",
+        "Q7NCVA",
+        "Q7NCVB",
+        "Q7NCVC",
+        "Q7NCVD",
+        "Q7NCVE",
+        "Q7NCVF",
+        "Q7NCVG",
+        "Q7NOIJ",
+        "Q7STGBS",
+        "Q8NCVA",
+        "Q8NCVB",
+        "Q8NCVC",
+        "Q8NCVD",
+        "Q8NOIJ",
+        "Q8ST",
+        "Q9NCV",
+        "Q9NOIJ",
+        "Q9STGBS",
+        "S1.A",
+        "S13-Q1STINT",
+        "S14M",
+        "S18A",
+        "S18B"
+      ]
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 193,
+        "ADMIN_OR_NONRESPONDENT": 2
+      },
+      "response_binding_states": {
+        "bound": 190,
+        "blocked_response_authority_gap": 5
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 190,
+        "manual_response_topology": 190,
+        "manual_response_normalization_rule": 190,
+        "manual_position_conditioning": 190,
+        "p2_response_topology": 190,
+        "p2_semantic_role": 190,
+        "p2_exact_question_text": 190
+      },
+      "unmatched_explicit_relation_ids": [
+        "question_impl.phase0.9e4cec8d21b7bd803dd5",
+        "question_impl.phase0.79ced092c7ce65377c1c",
+        "question_impl.phase0.50b49a78bd42f4ccc762",
+        "question_impl.phase0.f90eff21049e70ac36bf",
+        "question_impl.phase0.8399e795f61d5c853609"
+      ],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC26:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 195,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC26:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 294,
+        "codebook_only": 157,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC26:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC27": {
+    "summary": {
+      "source_id": "SRC27",
+      "family": "LiTS",
+      "wave": "2006",
+      "format": "DTA",
+      "physical_columns": 1198,
+      "codebook_rows": 1198,
+      "exact_code_matches": 1198,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 1198,
+      "prior_exact_relation_ids": 1198,
+      "prior_item_codes_in_current_header": 1198,
+      "r154_partial_evidence_rows": 1198,
+      "qualified_encoding": "latin1",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 67,
+        "UNCONDITIONAL_SOURCE_PROVEN": 485,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 99,
+        "RESPONDENT_ANSWER_CONDITIONAL": 487,
+        "MULTI_CONDITION": 60
+      },
+      "response_binding_states": {
+        "blocked_response_authority_gap": 918,
+        "bound": 280
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 1198,
+        "manual_response_topology": 1198,
+        "manual_response_normalization_rule": 1198,
+        "manual_position_conditioning": 1198,
+        "p2_response_topology": 1198,
+        "p2_semantic_role": 1198,
+        "p2_exact_question_text": 1198
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC27:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 1198,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC27:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC27:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC28": {
+    "summary": {
+      "source_id": "SRC28",
+      "family": "LiTS",
+      "wave": "II",
+      "format": "DTA",
+      "physical_columns": 627,
+      "codebook_rows": 627,
+      "exact_code_matches": 627,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 627,
+      "prior_exact_relation_ids": 627,
+      "prior_item_codes_in_current_header": 627,
+      "r154_partial_evidence_rows": 627,
+      "qualified_encoding": "latin1",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 74,
+        "SOURCE_ROUTING_UNRESOLVED": 3,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 33,
+        "UNCONDITIONAL_SOURCE_PROVEN": 291,
+        "RESPONDENT_ANSWER_CONDITIONAL": 162,
+        "MULTI_CONDITION": 61,
+        "COUNTRY_CONDITIONAL": 3
+      },
+      "response_binding_states": {
+        "bound": 543,
+        "blocked_response_authority_gap": 84
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 627,
+        "manual_response_topology": 627,
+        "manual_response_normalization_rule": 627,
+        "manual_position_conditioning": 627,
+        "p2_response_topology": 627,
+        "p2_semantic_role": 627,
+        "p2_exact_question_text": 627
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC28:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 627,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC28:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC28:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC29": {
+    "summary": {
+      "source_id": "SRC29",
+      "family": "LiTS",
+      "wave": "III",
+      "format": "DTA",
+      "physical_columns": 1290,
+      "codebook_rows": 1290,
+      "exact_code_matches": 1290,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 1290,
+      "prior_exact_relation_ids": 1290,
+      "prior_item_codes_in_current_header": 1290,
+      "r154_partial_evidence_rows": 1290,
+      "qualified_encoding": "latin1",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 113,
+        "UNCONDITIONAL_SOURCE_PROVEN": 19,
+        "RESPONDENT_ANSWER_CONDITIONAL": 720,
+        "MULTI_CONDITION": 264,
+        "COUNTRY_CONDITIONAL": 126,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 47,
+        "SPLIT_SAMPLE_CONDITIONAL": 1
+      },
+      "response_binding_states": {
+        "bound": 1166,
+        "blocked_response_authority_gap": 124
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 1290,
+        "manual_response_topology": 1290,
+        "manual_response_normalization_rule": 1290,
+        "manual_position_conditioning": 1290,
+        "p2_response_topology": 1290,
+        "p2_semantic_role": 1290,
+        "p2_exact_question_text": 1290
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC29:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 1290,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC29:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC29:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC30": {
+    "summary": {
+      "source_id": "SRC30",
+      "family": "LiTS",
+      "wave": "IV",
+      "format": "DTA",
+      "physical_columns": 1319,
+      "codebook_rows": 1319,
+      "exact_code_matches": 1319,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 1319,
+      "prior_exact_relation_ids": 1319,
+      "prior_item_codes_in_current_header": 1319,
+      "r154_partial_evidence_rows": 1319,
+      "qualified_encoding": "latin1",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "ADMIN_OR_NONRESPONDENT": 217,
+        "UNCONDITIONAL_SOURCE_PROVEN": 315,
+        "RESPONDENT_ANSWER_CONDITIONAL": 145,
+        "MULTI_CONDITION": 73,
+        "COUNTRY_CONDITIONAL": 564,
+        "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 5
+      },
+      "response_binding_states": {
+        "bound": 1074,
+        "blocked_response_authority_gap": 245
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 1319,
+        "manual_response_topology": 1319,
+        "manual_response_normalization_rule": 1319,
+        "manual_position_conditioning": 1319,
+        "p2_response_topology": 1319,
+        "p2_semantic_role": 1319,
+        "p2_exact_question_text": 1319
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC30:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 1319,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC30:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC30:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC31": {
+    "summary": {
+      "source_id": "SRC31",
+      "family": "South Asia",
+      "wave": "W1",
+      "format": "SAV",
+      "physical_columns": 68,
+      "codebook_rows": 68,
+      "exact_code_matches": 68,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 68,
+      "prior_exact_relation_ids": 68,
+      "prior_item_codes_in_current_header": 68,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 66,
+        "RESPONDENT_ANSWER_CONDITIONAL": 1,
+        "ADMIN_OR_NONRESPONDENT": 1
+      },
+      "response_binding_states": {
+        "bound": 65,
+        "blocked_response_authority_gap": 3
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 68,
+        "manual_response_topology": 68,
+        "manual_response_normalization_rule": 68,
+        "manual_position_conditioning": 68,
+        "p2_response_topology": 68,
+        "p2_semantic_role": 68,
+        "p2_exact_question_text": 68
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC31:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 68,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC31:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC31:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC32": {
+    "summary": {
+      "source_id": "SRC32",
+      "family": "South Asia",
+      "wave": "W2",
+      "format": "SAV",
+      "physical_columns": 73,
+      "codebook_rows": 73,
+      "exact_code_matches": 73,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 73,
+      "prior_exact_relation_ids": 73,
+      "prior_item_codes_in_current_header": 73,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 70,
+        "RESPONDENT_ANSWER_CONDITIONAL": 1,
+        "ADMIN_OR_NONRESPONDENT": 2
+      },
+      "response_binding_states": {
+        "bound": 70,
+        "blocked_response_authority_gap": 3
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 73,
+        "manual_response_topology": 73,
+        "manual_response_normalization_rule": 73,
+        "manual_position_conditioning": 73,
+        "p2_response_topology": 73,
+        "p2_semantic_role": 73,
+        "p2_exact_question_text": 73
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC32:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 73,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC32:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC32:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC33": {
+    "summary": {
+      "source_id": "SRC33",
+      "family": "WVS",
+      "wave": "W1",
+      "format": "SAV",
+      "physical_columns": 188,
+      "codebook_rows": 188,
+      "exact_code_matches": 188,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 188,
+      "prior_exact_relation_ids": 188,
+      "prior_item_codes_in_current_header": 188,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 175,
+        "ADMIN_OR_NONRESPONDENT": 13
+      },
+      "response_binding_states": {
+        "bound": 183,
+        "blocked_response_authority_gap": 5
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 188,
+        "manual_response_topology": 188,
+        "manual_response_normalization_rule": 188,
+        "manual_position_conditioning": 188,
+        "p2_response_topology": 188,
+        "p2_semantic_role": 188,
+        "p2_exact_question_text": 188
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC33:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 188,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC33:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC33:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC34": {
+    "summary": {
+      "source_id": "SRC34",
+      "family": "WVS",
+      "wave": "W4",
+      "format": "SAV",
+      "physical_columns": 418,
+      "codebook_rows": 418,
+      "exact_code_matches": 418,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 418,
+      "prior_exact_relation_ids": 418,
+      "prior_item_codes_in_current_header": 418,
+      "r154_partial_evidence_rows": 0,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 406,
+        "ADMIN_OR_NONRESPONDENT": 12
+      },
+      "response_binding_states": {
+        "bound": 414,
+        "blocked_response_authority_gap": 4
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 418,
+        "manual_response_topology": 418,
+        "manual_response_normalization_rule": 418,
+        "manual_position_conditioning": 418,
+        "p2_response_topology": 418,
+        "p2_semantic_role": 418,
+        "p2_exact_question_text": 418
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC34:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 418,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC34:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC34:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  },
+  "SRC35": {
+    "summary": {
+      "source_id": "SRC35",
+      "family": "WVS",
+      "wave": "W7",
+      "format": "SAV",
+      "physical_columns": 613,
+      "codebook_rows": 613,
+      "exact_code_matches": 613,
+      "physical_only": 0,
+      "codebook_only": 0,
+      "prior_H48_items": 613,
+      "prior_exact_relation_ids": 613,
+      "prior_item_codes_in_current_header": 613,
+      "r154_partial_evidence_rows": 2,
+      "qualified_encoding": "native/default",
+      "metadata_ready": true,
+      "native_projection_preparer_ready": "NOT_ESTABLISHED_BY_R154",
+      "response_execution_permission": "NOT_ADJUDICATED_BY_ASSESSMENT"
+    },
+    "exact_reconciliation": {
+      "physical_only": [],
+      "codebook_only": []
+    },
+    "prior_authority_inventory": {
+      "routing_states": {
+        "SOURCE_ROUTING_UNRESOLVED": 397,
+        "ADMIN_OR_NONRESPONDENT": 180,
+        "COUNTRY_CONDITIONAL": 34,
+        "MULTI_CONDITION": 2
+      },
+      "response_binding_states": {
+        "bound": 467,
+        "blocked_response_authority_gap": 146
+      },
+      "primary_relation_populated_fields": {
+        "manual_semantic_role": 613,
+        "manual_response_topology": 613,
+        "manual_response_normalization_rule": 613,
+        "manual_position_conditioning": 613,
+        "p2_response_topology": 613,
+        "p2_semantic_role": 613,
+        "p2_exact_question_text": 613
+      },
+      "unmatched_explicit_relation_ids": [],
+      "exact_source": {
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz"
+      },
+      "full_primary_relation": {
+        "evidence_id": "Ecf98d50a3b68",
+        "locator": "git:9561723cfe0932869e781f2be27e9c80b050ad7a:data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+        "bytes": 47874248,
+        "kind": "GIT",
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "blob_oid": "e4f79f47417077c840f985d37e9341f068e3cf8f"
+      }
+    },
+    "remaining_source_input_tasks": [
+      {
+        "id": "SRC35:RECOVER_PRIOR_INPUTS",
+        "need": "Join full prior item/row authority to actual native source-preparer fields, not just partial B49 records",
+        "input_items": 613,
+        "deliverable": "evidence-preserving per-variable source config with exact input field/evidence references"
+      },
+      {
+        "id": "SRC35:RECONCILE_COLUMNS",
+        "need": "Classify listed physical-only/codebook-only entries; explicit alias/edition/admin/held disposition before active use",
+        "physical_only": 0,
+        "codebook_only": 0,
+        "deliverable": "exact source-column map and all-column ledger"
+      },
+      {
+        "id": "SRC35:SOURCE_PROJECTION_CONFIG",
+        "need": "Bind actual respondent/unit/form/routing/slot/universe/authority inputs required by chosen pre553 producer from existing packets; retain exact field-level residuals",
+        "deliverable": "configuration loadable by existing source-backed projection builder; no unconditional placeholder refusal"
+      }
+    ]
+  }
+}

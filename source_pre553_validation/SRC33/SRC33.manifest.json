@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_R157_WVS_SOURCE_MANIFEST@1.0.0",
+  "source_id": "SRC33",
+  "paths": {
+    "source_config": {
+      "path": "rawlsing_next/source_configuration/data/SRC33/SRC33.source.config.json",
+      "sha256": "3ee3d46a4db06c5b329486e24f5b9e3563d74f346469201f7fc8350c886d7e3b",
+      "bytes": 2978297
+    },
+    "evidence_accounting": {
+      "path": "rawlsing_next/source_configuration/data/SRC33/SRC33.evidence-accounting.json",
+      "sha256": "1c7f021963835c953cb5f1dc70f4df71e636eab44e28781864ae60d6194107d4",
+      "bytes": 222280
+    },
+    "fixture_config": {
+      "path": "source_pre553_validation/SRC33/SRC33.fixture.config.json",
+      "sha256": "fc107ca3853df3db664033f89da29f6b44a5c58924e0eddc9850e099a420a800",
+      "bytes": 2771397
+    },
+    "fixture": {
+      "path": "source_pre553_validation/SRC33/SRC33.fixture.json",
+      "sha256": "e13a7a129b196109ecc78aaf777e48d3bdc998ce5a0cd0a6e1ca666f05b17d63",
+      "bytes": 151524
+    },
+    "fixture_spec": {
+      "path": "source_pre553_validation/SRC33/SRC33.fixture-spec.json",
+      "sha256": "3cadaec5cbe21ced7d314de0df9067738999fcfdafd39014e5179bf741c7397d",
+      "bytes": 27860
+    },
+    "validation_results": {
+      "path": "source_pre553_validation/SRC33/SRC33.validation-results.json",
+      "sha256": "9e11407bf4271c5b5dfe69c3ae480ffa2d4d6c54dc940336cf17a8f26ae2de5c",
+      "bytes": 38505
+    },
+    "exceptions": {
+      "path": "source_pre553_validation/SRC33/SRC33.exceptions.json",
+      "sha256": "911864ee555f3974906a53560788c14e84ad96b2c2cb71b0b7c1220bfbdd71db",
+      "bytes": 65340
+    }
+  },
+  "config_hashes": {
+    "original_config_canonical_sha256": "08eb764ae2e23041e720fbd54beb8e1ef4c3e1560f2688e0feb2d8f747a23d7b",
+    "original_config_file_sha256": "3ee3d46a4db06c5b329486e24f5b9e3563d74f346469201f7fc8350c886d7e3b",
+    "fixture_config_canonical_sha256": "d829a4f5b41788595118f0bb525d9d50b8bd251b4c4529b11c0b4137a28473e6",
+    "fixture_config_file_sha256": "fc107ca3853df3db664033f89da29f6b44a5c58924e0eddc9850e099a420a800",
+    "fixture_source_sha256": "3ba032d9dddb2279abb3c6ca33a8f7b99642a8e2ca822f859699274a17122085"
+  },
+  "native_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+    "content_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"
+  },
+  "no_drop": true,
+  "limits": [
+    "Original WVS respondent execution is NOT performed or claimed.",
+    "Positive native release is from a distinct nonrespondent fixture.",
+    "Original construction requires permitted decoded row keys and remains P3/source-read work.",
+    "No cross-country canonicalization, weight authorization or population claim is asserted."
+  ]
+}

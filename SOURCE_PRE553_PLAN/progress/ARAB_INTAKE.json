@@ -1,0 +1,109 @@
+{
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
+  "candidate": "d9ef85f0b007ad18278dba9d625924f08cb9afe5",
+  "remote_verified": true,
+  "source_ids": [
+    "SRC04",
+    "SRC05",
+    "SRC06",
+    "SRC07"
+  ],
+  "imported_paths": [
+    "rawlsing_next/source_configuration/data/SRC04",
+    "rawlsing_next/source_configuration/data/SRC05",
+    "rawlsing_next/source_configuration/data/SRC06",
+    "rawlsing_next/source_configuration/data/SRC07",
+    "source_pre553_validation/SRC04",
+    "source_pre553_validation/SRC05",
+    "source_pre553_validation/SRC06",
+    "source_pre553_validation/SRC07"
+  ],
+  "hq_native_replay": [
+    {
+      "source": "SRC04",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC04",
+        "content_hash": "9026fa33bb5739b87b06309f12e1d31fe6fd21fb471237eda870d6d278d47f42"
+      },
+      "fixture_questions": 178,
+      "fixture_response_slots": 178,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 24,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1424,
+        "RoutingEligibilityFact": 1424
+      }
+    },
+    {
+      "source": "SRC05",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC05",
+        "content_hash": "3a3c35f9611d54793fa3aa63ccbe921b7e6388deac55a8ea8ede50eb732b9f3f"
+      },
+      "fixture_questions": 448,
+      "fixture_response_slots": 448,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 152,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 3584,
+        "RoutingEligibilityFact": 3584
+      }
+    },
+    {
+      "source": "SRC06",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC06",
+        "content_hash": "774e48b41a70553ffdabfa8918d4d298eef4f84162432982aa14a59d15cd018d"
+      },
+      "fixture_questions": 337,
+      "fixture_response_slots": 337,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 136,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2696,
+        "RoutingEligibilityFact": 2696
+      }
+    },
+    {
+      "source": "SRC07",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/SRC07",
+        "content_hash": "276c183d7cd9dfbb988285e85716b7d088624b9e7de53100423f3584b15cd10d"
+      },
+      "fixture_questions": 651,
+      "fixture_response_slots": 651,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 304,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 5208,
+        "RoutingEligibilityFact": 5208
+      }
+    }
+  ],
+  "prior_scope_or_residuals": {
+    "blockers": [],
+    "precise_residuals": [
+      "SRC04: 181/181 items included (178 response questions + 3 coordinates); no item exclusion.",
+      "SRC05: 467/468 included; wt excluded for absent weight design/estimand authority.",
+      "SRC06: 354/359 included; wt excluded; Q860A-D continuous list-experiment counts have no finite declared native response domain.",
+      "SRC07: 689/690 included; WT excluded for absent weight design/estimand authority.",
+      "Routing is SOURCE_ROUTING_UNRESOLVED; the portable recipe uses row_selector=ALL with ROUTING_UNKNOWN and was not physically expanded for original validation.",
+      "No form/ballot/administration variable, row-native respondent key, weight design, new direction certification or original-source execution is claimed.",
+      "Continuous context is bound as raw coordinates; no false categorical default."
+    ],
+    "distinct_review": "NOT_PERFORMED; reserved for the distinct coherent all35 boundary review."
+  },
+  "limits": [
+    "Precise source-specific holds/unknowns retained",
+    "No original respondent execution or original workload issuance",
+    "Distinct final all35 review not yet performed"
+  ]
+}

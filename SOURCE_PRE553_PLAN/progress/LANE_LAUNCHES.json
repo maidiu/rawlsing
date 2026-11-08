@@ -1,0 +1,519 @@
+[
+  {
+    "lane": "LATIN",
+    "task": "LATIN:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC24",
+      "SRC25",
+      "SRC26"
+    ],
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "supervisor_pid": 39410,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin",
+    "branch": "agent/pyat-pre553-r157-latin",
+    "startup": "9b51c6578ec6d059463440870ac1ee95e67dbe63",
+    "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing Global",
+    "quota": "UNKNOWN",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin/.r61/r157-latin-binding-repair",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC24/",
+      "source_pre553_validation/SRC24/",
+      "rawlsing_next/source_configuration/data/SRC25/",
+      "source_pre553_validation/SRC25/",
+      "rawlsing_next/source_configuration/data/SRC26/",
+      "source_pre553_validation/SRC26/"
+    ],
+    "prompt_sha256": "4a5e4a370a9864e5f9b0805204500abbd8b844f43228c68ca603feba351bc324",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC24/LANE_RETURN.json",
+    "next_consumer": "R157 integration / final independent review",
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-latin\n05955fa93db59e70885dc9c902e05e001f52de41\n D WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/runtime/__pycache__/r154_compile.cpython-311.pyc\n D WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/runtime/__pycache__/r154_load.cpython-311.pyc\n D WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/tests/__pycache__/test_r154_store.cpython-311-pytest-9.0.2.pyc\n M rawlsing_next/source_configuration/data/SRC24/crosswalk.json\n M rawlsing_next/source_configuration/data/SRC24/field_evidence.json\n M rawlsing_next/source_configuration/data/SRC24/source.config.json\n M rawlsing_next/source_configuration/data/SRC25/crosswalk.json\n M rawlsing_next/source_configuration/data/SRC25/field_evidence.json\n M rawlsing_next/source_configuration/data/SRC25/source.config.json\n M rawlsing_next/source_configuration/data/SRC26/crosswalk.json\n M rawlsing_next/source_configuration/data/SRC26/field_evidence.json\n M rawlsing_next/source_configuration/data/SRC26/source.config.json\n M source_pre553_validation/SRC24/EXCEPTIONS.json\n M source_pre553_validation/SRC24/VALIDATION_RESULTS.json\n M source_pre553_validation/SRC24/fixture.config.json\n M source_pre553_validation/SRC24/fixture.json\n M source_pre553_validation/SRC24/fixture_oracle.json\n M source_pre553_validation/SRC24/manifest.json\n M source_pre553_validation/SRC25/EXCEPTIONS.json\n M source_pre553_validation/SRC25/VALIDATION_RESULTS.json\n M source_pre553_validation/SRC25/fixture.config.json\n M source_pre553_validation/SRC25/fixture.json\n M source_pre553_validation/SRC25/fixture_oracle.json\n M source_pre553_validation/SRC25/manifest.json\n M source_pre553_validation/SRC26/EXCEPTIONS.json\n M source_pre553_validation/SRC26/VALIDATION_RESULTS.json\n M source_pre553_validation/SRC26/fixture.config.json\n M source_pre553_validation/SRC26/fixture.json\n M source_pre553_validation/SRC26/fixture_oracle.json\n M source_pre553_validation/SRC26/manifest.json\n?? source_pre553_validation/SRC24/tools/build_lane_return.py\n?? source_pre553_validation/SRC24/tools/latin_full.py\n/dev/disk1s1  466Gi  432Gi   16Gi    97% 2582251 169769840    1%   /System/Volumes/Data\n",
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin/.r61/r157-lane",
+        "pid": 15088,
+        "exit_code": 1,
+        "error": {
+          "type": "provider.auth",
+          "message": "Upstream request failed: An active OpenCode Go subscription is required to use Go models.",
+          "status": 403,
+          "response": {
+            "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: An active OpenCode Go subscription is required to use Go models.\"}}"
+          }
+        },
+        "banked_commit": "d82f2fec4422ed23d6ffd3150d9887ffaa927d4e"
+      },
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin/.r61/r157-lane-auth-retry",
+        "pid": 27957,
+        "state": "STOPPED_DURING_DISK_EXHAUSTION",
+        "partial_head": "05955fa93db59e70885dc9c902e05e001f52de41"
+      },
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-latin/.r61/r157-disk-resume",
+        "pid": 35731,
+        "exit_code": 0,
+        "candidate": "9b51c6578ec6d059463440870ac1ee95e67dbe63",
+        "intake": "LATIN_INTAKE.json"
+      }
+    ],
+    "banked_commit": "d82f2fec4422ed23d6ffd3150d9887ffaa927d4e",
+    "retry_user_text": "it should be logged in now",
+    "completion_observer_pid": 39480,
+    "actual_pid": 39411,
+    "accepted_candidate": "f704de41db72578dd2c619506937fc741cd8be86"
+  },
+  {
+    "lane": "GSS",
+    "task": "GSS:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC16",
+      "SRC17",
+      "SRC18",
+      "SRC19",
+      "SRC20",
+      "SRC21",
+      "SRC22",
+      "SRC23"
+    ],
+    "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+    "supervisor_pid": 35726,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss",
+    "branch": "agent/pyat-pre553-r157-gss",
+    "startup": "746f6811e3eb9d604af5e92a44e02a6470ff3bc1",
+    "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing Global",
+    "quota": "UNKNOWN",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss/.r61/r157-disk-resume",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC16/",
+      "source_pre553_validation/SRC16/",
+      "rawlsing_next/source_configuration/data/SRC17/",
+      "source_pre553_validation/SRC17/",
+      "rawlsing_next/source_configuration/data/SRC18/",
+      "source_pre553_validation/SRC18/",
+      "rawlsing_next/source_configuration/data/SRC19/",
+      "source_pre553_validation/SRC19/",
+      "rawlsing_next/source_configuration/data/SRC20/",
+      "source_pre553_validation/SRC20/",
+      "rawlsing_next/source_configuration/data/SRC21/",
+      "source_pre553_validation/SRC21/",
+      "rawlsing_next/source_configuration/data/SRC22/",
+      "source_pre553_validation/SRC22/",
+      "rawlsing_next/source_configuration/data/SRC23/",
+      "source_pre553_validation/SRC23/"
+    ],
+    "prompt_sha256": "89a235941de84748078705633e42c3884a75e0c41c7f4253c2e90b5780043b89",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC16/LANE_RETURN.json",
+    "next_consumer": "R157 integration / final independent review",
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss\n/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-gss\n746f6811e3eb9d604af5e92a44e02a6470ff3bc1\n M rawlsing_next/source_configuration/data/SRC16/SRC16.evidence-accounting.json\n M rawlsing_next/source_configuration/data/SRC16/SRC16.source.config.json\n D rawlsing_next/source_configuration/data/SRC17/SRC17.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC17/SRC17.source.config.json\n D rawlsing_next/source_configuration/data/SRC18/SRC18.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC18/SRC18.source.config.json\n D rawlsing_next/source_configuration/data/SRC19/SRC19.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC19/SRC19.source.config.json\n D rawlsing_next/source_configuration/data/SRC20/SRC20.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC20/SRC20.source.config.json\n D rawlsing_next/source_configuration/data/SRC21/SRC21.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC21/SRC21.source.config.json\n D rawlsing_next/source_configuration/data/SRC22/SRC22.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC22/SRC22.source.config.json\n D rawlsing_next/source_configuration/data/SRC23/SRC23.evidence-accounting.json\n D rawlsing_next/source_configuration/data/SRC23/SRC23.source.config.json\n M source_pre553_validation/SRC16/SRC16.exceptions.json\n M source_pre553_validation/SRC16/SRC16.fixture-spec.json\n M source_pre553_validation/SRC16/SRC16.fixture.config.json\n M source_pre553_validation/SRC16/SRC16.fixture.json\n M source_pre553_validation/SRC16/SRC16.manifest.json\n M source_pre553_validation/SRC16/SRC16.validation-results.json\n M source_pre553_validation/SRC16/build_gss_lane.py\n M source_pre553_validation/SRC16/test_gss_lane.py\n D source_pre553_validation/SRC17/SRC17.exceptions.json\n D source_pre553_validation/SRC17/SRC17.fixture-spec.json\n D source_pre553_validation/SRC17/SRC17.fixture.config.json\n D source_pre553_validation/SRC17/SRC17.fixture.json\n D source_pre553_validation/SRC17/SRC17.manifest.json\n D source_pre553_validation/SRC17/SRC17.validation-results.json\n D source_pre553_validation/SRC18/SRC18.exceptions.json\n D source_pre553_validation/SRC18/SRC18.fixture-spec.json\n D source_pre553_validation/SRC18/SRC18.fixture.config.json\n D source_pre553_validation/SRC18/SRC18.fixture.json\n D source_pre553_validation/SRC18/SRC18.manifest.json\n D source_pre553_validation/SRC18/SRC18.validation-results.json\n D source_pre553_validation/SRC19/SRC19.exceptions.json\n D source_pre553_validation/SRC19/SRC19.fixture-spec.json\n D source_pre553_validation/SRC19/SRC19.fixture.config.json\n D source_pre553_validation/SRC19/SRC19.fixture.json\n D source_pre553_validation/SRC19/SRC19.manifest.json\n D source_pre553_validation/SRC19/SRC19.validation-results.json\n D source_pre553_validation/SRC20/SRC20.exceptions.json\n D source_pre553_validation/SRC20/SRC20.fixture-spec.json\n D source_pre553_validation/SRC20/SRC20.fixture.config.json\n D source_pre553_validation/SRC20/SRC20.fixture.json\n D source_pre553_validation/SRC20/SRC20.manifest.json\n D source_pre553_validation/SRC20/SRC20.validation-results.json\n D source_pre553_validation/SRC21/SRC21.exceptions.json\n D source_pre553_validation/SRC21/SRC21.fixture-spec.json\n D source_pre553_validation/SRC21/SRC21.fixture.config.json\n D source_pre553_validation/SRC21/SRC21.fixture.json\n D source_pre553_validation/SRC21/SRC21.manifest.json\n D source_pre553_validation/SRC21/SRC21.validation-results.json\n D source_pre553_validation/SRC22/SRC22.exceptions.json\n D source_pre553_validation/SRC22/SRC22.fixture-spec.json\n D source_pre553_validation/SRC22/SRC22.fixture.config.json\n D source_pre553_validation/SRC22/SRC22.fixture.json\n D source_pre553_validation/SRC22/SRC22.manifest.json\n D source_pre553_validation/SRC22/SRC22.validation-results.json\n D source_pre553_validation/SRC23/SRC23.exceptions.json\n D source_pre553_validation/SRC23/SRC23.fixture-spec.json\n D source_pre553_validation/SRC23/SRC23.fixture.config.json\n D source_pre553_validation/SRC23/SRC23.fixture.json\n D source_pre553_validation/SRC23/SRC23.manifest.json\n D source_pre553_validation/SRC23/SRC23.validation-results.json\n?? source_pre553_validation/SRC16/write_lane_return.py\nFilesystem     Size   Used  Avail Capacity iused     ifree %iused  Mounted on\n/dev/disk1s1  466Gi  432Gi   16Gi    97% 2582251 169794080    1%   /System/Volumes/Data\n",
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss/.r61/r157-lane",
+        "pid": 15095,
+        "exit_code": 1,
+        "error": {
+          "type": "provider.auth",
+          "message": "Upstream request failed: An active OpenCode Go subscription is required to use Go models.",
+          "status": 403,
+          "response": {
+            "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: An active OpenCode Go subscription is required to use Go models.\"}}"
+          }
+        },
+        "banked_commit": "746f6811e3eb9d604af5e92a44e02a6470ff3bc1"
+      },
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-gss/.r61/r157-lane-auth-retry",
+        "pid": 27962,
+        "state": "STOPPED_DURING_DISK_EXHAUSTION",
+        "partial_head": "746f6811e3eb9d604af5e92a44e02a6470ff3bc1"
+      }
+    ],
+    "banked_commit": "746f6811e3eb9d604af5e92a44e02a6470ff3bc1",
+    "retry_user_text": "it should be logged in now",
+    "actual_pid": 35732,
+    "completion_observer_pid": 35854,
+    "accepted_candidate": "42b115f25b4af9b0b5f5c9f2250b45c5438ad550"
+  },
+  {
+    "lane": "LITS",
+    "task": "LITS:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC27",
+      "SRC28",
+      "SRC29",
+      "SRC30"
+    ],
+    "session": "ses_e84b9f75cffeOYB4AakaEDZNJg",
+    "supervisor_pid": 52781,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits",
+    "branch": "agent/pyat-pre553-r157-lits",
+    "startup": "941072526c831a992d21bffe5a0712f0f52b87f1",
+    "frozen_p0": "328e394e871ea09289c7023d3fb54b3f030d8481",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing Global",
+    "quota": "UNKNOWN",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits/.r61/r157-lits-full-scope-validation",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC27/",
+      "source_pre553_validation/SRC27/",
+      "rawlsing_next/source_configuration/data/SRC28/",
+      "source_pre553_validation/SRC28/",
+      "rawlsing_next/source_configuration/data/SRC29/",
+      "source_pre553_validation/SRC29/",
+      "rawlsing_next/source_configuration/data/SRC30/",
+      "source_pre553_validation/SRC30/"
+    ],
+    "prompt_sha256": "f5e05651cd2d626aef03c9a9cbb37182bdcbdac8b9cd313d0bc3d7267259bc60",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC27/LANE_RETURN.json",
+    "next_consumer": "R157 integration / final independent review",
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits\n/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-lits\n941072526c831a992d21bffe5a0712f0f52b87f1\n?? rawlsing_next/__pycache__/\n?? rawlsing_next/source_configuration/__pycache__/\n",
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits/.r61/r157-lane",
+        "pid": 15101,
+        "exit_code": 1,
+        "error": {
+          "type": "provider.auth",
+          "message": "Upstream request failed: An active OpenCode Go subscription is required to use Go models.",
+          "status": 403,
+          "response": {
+            "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"Upstream request failed: An active OpenCode Go subscription is required to use Go models.\"}}"
+          }
+        },
+        "banked_commit": "d33e9d479d32388a00d1af432c2ae0990bf5809f"
+      },
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits/.r61/r157-lane-auth-retry",
+        "pid": 27969,
+        "state": "STOPPED_DURING_DISK_EXHAUSTION",
+        "partial_head": "d33e9d479d32388a00d1af432c2ae0990bf5809f"
+      },
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-lits/.r61/r157-disk-resume",
+        "pid": 35733,
+        "exit_code": 0,
+        "candidate": "941072526c831a992d21bffe5a0712f0f52b87f1",
+        "intake": "LITS_INTAKE.json"
+      }
+    ],
+    "banked_commit": "d33e9d479d32388a00d1af432c2ae0990bf5809f",
+    "retry_user_text": "it should be logged in now",
+    "completion_observer_pid": 52893,
+    "actual_pid": 52782,
+    "accepted_candidate": "c868cc7312245ed90f7168bbbed8212cb5287f84"
+  },
+  {
+    "lane": "EVS",
+    "task": "EVS:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC11",
+      "SRC12",
+      "SRC13",
+      "SRC14",
+      "SRC15"
+    ],
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "supervisor_pid": 35730,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs",
+    "branch": "agent/pyat-pre553-r157-evs",
+    "startup": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3",
+    "frozen_p0": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+    "p3": "519355ec2215409b40d566ef13c3b21f611e0726",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "account": "existing Global",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-disk-resume",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC11/",
+      "source_pre553_validation/SRC11/",
+      "rawlsing_next/source_configuration/data/SRC12/",
+      "source_pre553_validation/SRC12/",
+      "rawlsing_next/source_configuration/data/SRC13/",
+      "source_pre553_validation/SRC13/",
+      "rawlsing_next/source_configuration/data/SRC14/",
+      "source_pre553_validation/SRC14/",
+      "rawlsing_next/source_configuration/data/SRC15/",
+      "source_pre553_validation/SRC15/"
+    ],
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "prompt_sha256": "04b17c2e7ab2e856bf2537c939932a78e2a8e997497af16e83947ebb38aa564f",
+    "expected_return": "source_pre553_validation/SRC11/LANE_RETURN.json",
+    "next_consumer": "all35 integration and distinct final review",
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-evs\nfff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3\n M rawlsing_next/source_configuration/data/SRC11/SRC11.config.json\n M rawlsing_next/source_configuration/data/SRC12/SRC12.config.json\n M rawlsing_next/source_configuration/data/SRC13/SRC13.config.json\n M rawlsing_next/source_configuration/data/SRC14/SRC14.config.json\n M source_pre553_validation/SRC11/EVIDENCE_ACCOUNTING.json\n M source_pre553_validation/SRC11/EXCEPTION_LEDGER.json\n M source_pre553_validation/SRC11/NATIVE_RESULTS.json\n M source_pre553_validation/SRC12/EVIDENCE_ACCOUNTING.json\n M source_pre553_validation/SRC12/EXCEPTION_LEDGER.json\n M source_pre553_validation/SRC12/NATIVE_RESULTS.json\n M source_pre553_validation/SRC13/EVIDENCE_ACCOUNTING.json\n M source_pre553_validation/SRC13/EXCEPTION_LEDGER.json\n M source_pre553_validation/SRC13/NATIVE_RESULTS.json\n M source_pre553_validation/SRC14/NATIVE_RESULTS.json\n?? rawlsing_next/source_configuration/data/SRC11/SRC11.full.fixture.config.json\n?? rawlsing_next/source_configuration/data/SRC12/SRC12.full.fixture.config.json\n?? rawlsing_next/source_configuration/data/SRC13/SRC13.full.fixture.config.json\n?? source_pre553_validation/SRC11/FULL_NATIVE_RESULTS.json\n?? source_pre553_validation/SRC11/SRC11.full.fixture.json\n?? source_pre553_validation/SRC11/build_evs_full.py\n?? source_pre553_validation/SRC12/FULL_NATIVE_RESULTS.json\n?? source_pre553_validation/SRC12/SRC12.full.fixture.json\n?? source_pre553_validation/SRC13/FULL_NATIVE_RESULTS.json\n?? source_pre553_validation/SRC13/SRC13.full.fixture.json\n/dev/disk1s1  466Gi  432Gi   16Gi    97% 2582282 169793440    1%   /System/Volumes/Data\n",
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "completion_observer_pid": 35854,
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-lane",
+        "pid": 25507,
+        "exit_code": 0,
+        "candidate": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3",
+        "intake": "REVISE_INCOMPLETE_CONFIGURATION_SCOPE",
+        "receipt": "EVS_INTAKE.json"
+      },
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-evs/.r61/r157-evs-completion-repair",
+        "pid": 30112,
+        "state": "STOPPED_DURING_DISK_EXHAUSTION",
+        "partial_head": "fff9e29ae11bee4a0d9bc19880fc68f13c8f7eb3"
+      }
+    ],
+    "actual_pid": 35734,
+    "accepted_candidate": "9687ff50104fd90c73f9cd727abb625a1300f3ec"
+  },
+  {
+    "lane": "AFRO",
+    "task": "AFRO:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC01",
+      "SRC02",
+      "SRC03"
+    ],
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "supervisor_pid": 42453,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro",
+    "branch": "agent/pyat-pre553-r157-afro",
+    "startup": "db24fc60ed8503487fbc989faff1227ce4b66b0d",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC01/",
+      "source_pre553_validation/SRC01/",
+      "rawlsing_next/source_configuration/data/SRC02/",
+      "source_pre553_validation/SRC02/",
+      "rawlsing_next/source_configuration/data/SRC03/",
+      "source_pre553_validation/SRC03/"
+    ],
+    "prompt_sha256": "0029cc34dfebab6e0f9c427e0233b5c5b67ebad7e94f93bba5a4e004439261e1",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC01/LANE_RETURN.json",
+    "actual_pid": 42454,
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-afro\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-afro\ndb24fc60ed8503487fbc989faff1227ce4b66b0d\n",
+    "completion_observer_pid": 42516,
+    "accepted_candidate": "747dacbf6f4eefdc574659847c20ce525be35d71"
+  },
+  {
+    "lane": "ARAB",
+    "task": "ARAB:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC04",
+      "SRC05",
+      "SRC06",
+      "SRC07"
+    ],
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "supervisor_pid": 43680,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-arab",
+    "branch": "agent/pyat-pre553-r157-arab",
+    "startup": "e2cfc49badbe52eb65f44561ccf6727ee53be60e",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-arab/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC04/",
+      "source_pre553_validation/SRC04/",
+      "rawlsing_next/source_configuration/data/SRC05/",
+      "source_pre553_validation/SRC05/",
+      "rawlsing_next/source_configuration/data/SRC06/",
+      "source_pre553_validation/SRC06/",
+      "rawlsing_next/source_configuration/data/SRC07/",
+      "source_pre553_validation/SRC07/"
+    ],
+    "prompt_sha256": "1fb483a4bc0169dd0065935d5168002cebdedd5a93749451b537ccec88207787",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC04/LANE_RETURN.json",
+    "actual_pid": 43681,
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-arab\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-arab\ne2cfc49badbe52eb65f44561ccf6727ee53be60e\n",
+    "completion_observer_pid": 43834,
+    "accepted_candidate": "d9ef85f0b007ad18278dba9d625924f08cb9afe5"
+  },
+  {
+    "lane": "ASIAN",
+    "task": "ASIAN:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC08",
+      "SRC09",
+      "SRC10"
+    ],
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "supervisor_pid": 52630,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian",
+    "branch": "agent/pyat-pre553-r157-asian",
+    "startup": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC08/",
+      "source_pre553_validation/SRC08/",
+      "rawlsing_next/source_configuration/data/SRC09/",
+      "source_pre553_validation/SRC09/",
+      "rawlsing_next/source_configuration/data/SRC10/",
+      "source_pre553_validation/SRC10/"
+    ],
+    "prompt_sha256": "05f911de11d2d1ad1469df0520a8bc3494d249f8e748ffa6d2addfe4c41ae790",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC08/LANE_RETURN.json",
+    "actual_pid": 52637,
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-asian\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-asian\n3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad\n/dev/disk1s1  466Gi  434Gi   15Gi    97% 2587736 160915880    2%   /System/Volumes/Data\n",
+    "completion_observer_pid": 52893,
+    "accepted_candidate": "c5c3ea8fceb45c8a7c6a33cf1e8b023c098e7447"
+  },
+  {
+    "lane": "SOUTH_ASIA",
+    "task": "SOUTH_ASIA:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC31",
+      "SRC32"
+    ],
+    "session": "ses_e98c8dfe6ffewNYOqJpvqK21a6",
+    "supervisor_pid": 52647,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia",
+    "branch": "agent/pyat-pre553-r157-south-asia",
+    "startup": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC31/",
+      "source_pre553_validation/SRC31/",
+      "rawlsing_next/source_configuration/data/SRC32/",
+      "source_pre553_validation/SRC32/"
+    ],
+    "prompt_sha256": "9116de65f3c4d021f5ef2aaaf208684fbb4a5d5f3949125e9468f1a0f1b1e031",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC31/LANE_RETURN.json",
+    "actual_pid": 52654,
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-south-asia\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-south-asia\n3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad\n",
+    "completion_observer_pid": 52893,
+    "accepted_candidate": "3d30a416b93b4d2ecaf177b8750dcda4354c097e"
+  },
+  {
+    "lane": "WVS",
+    "task": "WVS:SOURCE_CONFIGURATION_QUEUE",
+    "source_ids": [
+      "SRC33",
+      "SRC34",
+      "SRC35"
+    ],
+    "session": "ses_e84b9fb79ffedqgfCcG6ZXZKRS",
+    "supervisor_pid": 52655,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs",
+    "branch": "agent/pyat-pre553-r157-wvs",
+    "startup": "3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad",
+    "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs/.r61/r157-lane",
+    "allowed_paths": [
+      "rawlsing_next/source_configuration/data/SRC33/",
+      "source_pre553_validation/SRC33/",
+      "rawlsing_next/source_configuration/data/SRC34/",
+      "source_pre553_validation/SRC34/",
+      "rawlsing_next/source_configuration/data/SRC35/",
+      "source_pre553_validation/SRC35/"
+    ],
+    "prompt_sha256": "61d0f2115d0858413afbc0cfc0cadff80720c09f5b6219d5c1b30eb46090778c",
+    "state": "TERMINAL_ACCEPTED_SCOPED_WITH_EXACT_HELD_PREMISES",
+    "expected_return": "source_pre553_validation/SRC33/LANE_RETURN.json",
+    "actual_pid": 52656,
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs\n/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-wvs\nhttps://github.com/maidiu/rawlsing.git\nagent/pyat-pre553-r157-wvs\n3c59f8d391915b67cd08dcfa9b5cd4eeca77a4ad\n",
+    "completion_observer_pid": 52893,
+    "accepted_candidate": "a8e49e7518e7434569c4f65c9b93ebcda1a9226d"
+  },
+  {
+    "lane": "P5",
+    "task": "P5_PORTABLE_DELIVERY_IMPLEMENTATION",
+    "source_ids": [],
+    "session": "ses_e98c905cbffekusoHURfKyEUKG",
+    "supervisor_pid": 58619,
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation",
+    "branch": "agent/pyat-pre553-r157-integration",
+    "startup": "cde6bac08a4d3b74da8e7824335eaa8ffb693b78",
+    "model": "opencode-go/deepseek-v4.1-flash",
+    "variant": "max",
+    "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p5-case-repair",
+    "prompt_sha256": "10b62153c9f49dc275ee4f44d54d319b14cc0df3dcabb11e8084122962c048ff",
+    "state": "RUNNING_PATH_CASE_REPAIR_PREFLIGHT_VERIFIED",
+    "expected_return": "source_pre553_validation/integration/P5_RETURN.json",
+    "actual_model_readback": {
+      "id": "deepseek-v4.1-flash",
+      "providerID": "opencode-go",
+      "variant": "max"
+    },
+    "actual_tool_preflight": "[\n  {\n    \"source\": \"SRC27\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC27/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC27/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC27\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC27/SRC27.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC27/src27.config.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC28\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC28/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC28/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC28\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC28/SRC28.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC28/src28.config.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC29\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC29/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC29/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC29\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC29/SRC29.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC29/src29.config.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC30\",\n    \"field\": \"native_results_path\",\n    \"indexed\": \"source_pre553_validation/SRC30/VALIDATION_RESULTS.json\",\n    \"tracked\": [\n      \"source_pre553_validation/SRC30/validation_results.json\"\n    ]\n  },\n  {\n    \"source\": \"SRC30\",\n    \"field\": \"original_config_path\",\n    \"indexed\": \"rawlsing_next/source_configuration/data/SRC30/SRC30.config.json\",\n    \"tracked\": [\n      \"rawlsing_next/source_configuration/data/SRC30/src30.config.json\"\n    ]\n  }\n]\n",
+    "completion_observer_pid": 58663,
+    "prior_attempts": [
+      {
+        "logs": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/r157-foundation/.r61/r157-p5-portable",
+        "pid": 54991,
+        "exit_code": 0,
+        "candidate": "cde6bac08a4d3b74da8e7824335eaa8ffb693b78",
+        "intake": "P5_INTAKE.json"
+      }
+    ],
+    "actual_pid": 58620
+  }
+]

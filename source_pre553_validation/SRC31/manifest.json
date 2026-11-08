@@ -1,0 +1,108 @@
+{
+  "schema": "PYAT_R157_SOUTH_ASIA_SOURCE_MANIFEST@1.0.0",
+  "source_id": "SRC31",
+  "family": "South Asia",
+  "wave": "W1",
+  "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+  "config_sha256": "9c00ebc83bf89c45dcde2ff375bd62155f7f2d65a683f013580e39ddd525a0d0",
+  "fixture_config_sha256": "9e8871236f73346ff439b9d511b8152634f03e233c6d785b67671fcc9c235299",
+  "fixture_source_sha256": "4b34b4145bdd16e70831fd3e0bb2a5453758e100d0d39d3a696c1f8eea3cfe15",
+  "counts": {
+    "physical_slots": 68,
+    "original_items": 68,
+    "included_slots": 68,
+    "included_items": 68,
+    "excluded_slots": 0,
+    "excluded_items": 0,
+    "response_questions": 64,
+    "response_slots": 64,
+    "coordinate_slots": 4,
+    "crosswalk_entries": 68
+  },
+  "artifacts": [
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC31/crosswalk.json",
+      "sha256": "c0df445ad45bdbcb3e42de866c7638e21913e6581f26e106dd0cf37f093546e7",
+      "bytes": 61947
+    },
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC31/source.config.json",
+      "sha256": "ed403fb5900d9d5ab5d9eb90b1864d7b6a93f89fc6f9159461cf4ddd3b180687",
+      "bytes": 1176542
+    },
+    {
+      "path": "rawlsing_next/source_configuration/data/SRC31/field_evidence.json",
+      "sha256": "188f3438ff08767ab73c2549283efabcea07443862cdd28ba8f1bae6555351c9",
+      "bytes": 93364
+    },
+    {
+      "path": "source_pre553_validation/SRC31/fixture.json",
+      "sha256": "75eafd5f9676716899ccd734a416f3b55c95c2ae116c531926b9c1de2110f959",
+      "bytes": 114659
+    },
+    {
+      "path": "source_pre553_validation/SRC31/fixture.config.json",
+      "sha256": "463521e5322dfbb19f5f76eec25af4c13f31f598335d72ca0dca606ba6125efa",
+      "bytes": 1169585
+    },
+    {
+      "path": "source_pre553_validation/SRC31/fixture_oracle.json",
+      "sha256": "043ac40e0aed60e3b465768964e6a919c2a77b8eef0b3b45e897f13a8c780cc5",
+      "bytes": 34169
+    },
+    {
+      "path": "source_pre553_validation/SRC31/VALIDATION_RESULTS.json",
+      "sha256": "b5000a7c52e7717a2e45b5aaf350b25158ea7a9de6d395597909ac968b420733",
+      "bytes": 203110
+    },
+    {
+      "path": "source_pre553_validation/SRC31/EXCEPTIONS.json",
+      "sha256": "7f01079b49a31afbfea6ae86f1dfcbdd3bbfcabcb1ff997e365721e7dc588d9c",
+      "bytes": 9843
+    },
+    {
+      "path": "source_pre553_validation/SRC31/TOPOLOGY_ASSERTIONS.json",
+      "sha256": "d1ad0d54b9e02431929ce47eeea927ba7a40f3d912ec1bc0f4826c422c7b92a5",
+      "bytes": 75745
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "native_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "R157_FIXTURE_RELEASE/SRC31",
+      "content_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189"
+    },
+    "semantic_release_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189",
+    "actual_counts": {
+      "response_event_count": 512,
+      "coordinate_fact_count": 32,
+      "routing_fact_count": 512
+    },
+    "no_drop": {
+      "physical_slots_total": 68,
+      "physical_slots_included": 68,
+      "physical_slots_excluded": 0,
+      "items_total": 68,
+      "items_included": 68,
+      "items_excluded": 0
+    },
+    "refusals": [
+      {
+        "case": "original config + wrong active SHA (pre-expansion)",
+        "type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      {
+        "case": "fixture config + wrong fixture SHA",
+        "type": "SourceConfigurationBindingError",
+        "message": "active source SHA differs from the frozen config binding"
+      },
+      {
+        "case": "configured source_native_key_slot without row_native_keys",
+        "type": "SourceConfigurationBindingError",
+        "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+      }
+    ]
+  }
+}

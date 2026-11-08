@@ -1,0 +1,129 @@
+{
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
+  "candidate": "a8e49e7518e7434569c4f65c9b93ebcda1a9226d",
+  "artifact_commit": "fbc395ff4da72d0e5a06d5e09ff588bd47c2b41d",
+  "remote_verified": true,
+  "source_ids": [
+    "SRC33",
+    "SRC34",
+    "SRC35"
+  ],
+  "hq_native_replay": [
+    {
+      "source": "SRC33",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_WVS_FIXTURE_RELEASE/SRC33",
+        "content_hash": "af40041eb17c824661d9f8c87864293694317bd3c68d061752963fbf8ded79e2"
+      },
+      "fixture_questions": 188,
+      "fixture_response_slots": 143,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 18,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 858,
+        "RoutingEligibilityFact": 858,
+        "WeightMeasureFact": 6
+      }
+    },
+    {
+      "source": "SRC34",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_WVS_FIXTURE_RELEASE/SRC34",
+        "content_hash": "f65426daf94f1d7246e7929506fd595013450663504cf80506c8aa3ebdc4b3ee"
+      },
+      "fixture_questions": 418,
+      "fixture_response_slots": 354,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 18,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2124,
+        "RoutingEligibilityFact": 2124,
+        "WeightMeasureFact": 6
+      }
+    },
+    {
+      "source": "SRC35",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_WVS_FIXTURE_RELEASE/SRC35",
+        "content_hash": "5d43581578f37e5e4545388d4b8914070766d5475a897570f7afec76007fc586"
+      },
+      "fixture_questions": 613,
+      "fixture_response_slots": 390,
+      "counts": {
+        "AuthoritySnapshot": 7,
+        "EmpiricalCoordinateFact": 18,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 2340,
+        "RoutingEligibilityFact": 2340,
+        "WeightMeasureFact": 6
+      }
+    }
+  ],
+  "source_file_hashes_verified": 24,
+  "source_scope": {
+    "sources": 3,
+    "physical_columns": 1219,
+    "original_items": 1219,
+    "physical_slots_serialized": 1219,
+    "items_serialized": 1219,
+    "response_bound_items": 887,
+    "held_items": 332,
+    "fixture_native_releases": 3,
+    "respondent_events": 5322,
+    "coordinate_facts": 54,
+    "weight_facts": 18,
+    "routing_facts": 5322,
+    "residuals": 40,
+    "no_drop_all_sources": true,
+    "expected_match_all_sources": true,
+    "repositories_match_stream": true
+  },
+  "original_execution_dependencies": [
+    {
+      "id": "WVS-ORIGINAL-ROW-KEYS",
+      "required": "Permitted original PhysicalSourceIncidence with decoded source key cells",
+      "operation": "P3 row_native_keys_from_transport/build_validated_c11_release_from_config",
+      "current": "Original configs bind S007/V3; no original bytes/keys read",
+      "owner": "P3/integration owner with source-read custody",
+      "next": "Supply permitted incidence; original execution remains separately authorized"
+    },
+    {
+      "id": "WVS-SOURCE-AUTHORITY-DEFER",
+      "required": "Exact adopted original operation/authority scope",
+      "current": "H48/P2/full-relation evidence retained as source_reviewed candidate evidence; original source snapshots DEFER",
+      "owner": "R157 authority owner",
+      "next": "Adjudicate exact scope; never promote fixture authority"
+    },
+    {
+      "id": "WVS-ROUTING-UNKNOWN",
+      "required": "Exact form/ballot/administration and eligibility routes",
+      "current": "H48 routing status unresolved; original routing facts ROUTING_UNKNOWN",
+      "owner": "WVS source evidence owner",
+      "next": "Recover exact routing expressions before eligibility claims"
+    },
+    {
+      "id": "WVS-HELD-SOURCE-ROLES",
+      "required": "Exact rank maps, cross-country code normalizations, generation-forbidden dispositions, continuous native rules, administrative/context semantics",
+      "current": "Held items are per-item evidence rows in each exceptions ledger, not generic unselected inventory",
+      "owner": "WVS source/native-representation owner",
+      "next": "Consume exact held evidence or extend the existing owner only through its contract"
+    },
+    {
+      "id": "WVS-WEIGHT-HELD",
+      "required": "Weight design/estimand/normalization authority",
+      "current": "Weight slot identified and held; fixture exercises unresolved-basis weight facts only",
+      "owner": "WVS weight/design owner",
+      "next": "Establish design/estimand before weighted scope"
+    }
+  ],
+  "limits": [
+    "Only declared supported slots positively validated;held roles and source-specific unknowns retained",
+    "No original respondent/sourcebyte execution or original workload issued",
+    "Portable all35 integration and final distinct review still pending"
+  ]
+}

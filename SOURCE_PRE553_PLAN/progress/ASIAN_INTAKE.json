@@ -1,0 +1,86 @@
+{
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
+  "candidate": "c5c3ea8fceb45c8a7c6a33cf1e8b023c098e7447",
+  "remote_verified": true,
+  "source_ids": [
+    "SRC08",
+    "SRC09",
+    "SRC10"
+  ],
+  "file_hashes_verified": 20,
+  "hq_native_replay": [
+    {
+      "source": "SRC08",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W1",
+        "content_hash": "66c53fef01cd318543c9addf1df382282efb650e7212b7ddfc6d6c7feb44f3e3"
+      },
+      "fixture_questions": 187,
+      "fixture_response_slots": 187,
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 120,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1122,
+        "RoutingEligibilityFact": 1122,
+        "WeightMeasureFact": 54
+      }
+    },
+    {
+      "source": "SRC09",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W4",
+        "content_hash": "15f65920ec025a02a67b1572c3ce43f343186322f7dd2c381f18733c2d58194b"
+      },
+      "fixture_questions": 240,
+      "fixture_response_slots": 240,
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 276,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1440,
+        "RoutingEligibilityFact": 1440,
+        "WeightMeasureFact": 12
+      }
+    },
+    {
+      "source": "SRC10",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Asian Barometer/W5",
+        "content_hash": "bb844d2bbcac6ed6433ffffa453117c90fbf7ca620faece5aec8514f82d2a7d5"
+      },
+      "fixture_questions": 204,
+      "fixture_response_slots": 204,
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 300,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1224,
+        "RoutingEligibilityFact": 1224,
+        "WeightMeasureFact": 6
+      }
+    }
+  ],
+  "source_holds": {
+    "sources": 3,
+    "physical_slots": 814,
+    "items": 814,
+    "response_items": 631,
+    "coordinate_items": 116,
+    "weight_items": 12,
+    "held_items": 52,
+    "held_by_category": {
+      "held_blocked_response": 52
+    },
+    "conditional_routing_items": 536,
+    "unmatched_relation_ids": 0
+  },
+  "limits": [
+    "Unknown routing and source-specific authority holds remain precise",
+    "No original respondent/source-byte execution or original workload issuance",
+    "Distinct final all35 review remains pending"
+  ]
+}

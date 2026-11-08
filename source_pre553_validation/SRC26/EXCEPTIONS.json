@@ -1,0 +1,1304 @@
+{
+  "schema": "PYAT_R157_SOURCE_EXCEPTION_LEDGER@1.0.0",
+  "source_id": "SRC26",
+  "source_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+  "entries": [
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "routing.typed_state",
+      "current_value_or_typed_unknown": "UNKNOWN: SOURCE_ROUTING_UNRESOLVED for 178 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC26",
+          "content_hash": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "SOURCE_ROUTING_UNRESOLVED for 178 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. The original source rows were not physically expanded for validation.",
+      "affected_operation_or_slice": "eligibility/form-conditioned native query",
+      "unaffected_usable_slices": "unconditional source-native response incidence and coordinate binding",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-ROUTING-UNRESOLVED"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "respondents.source_native_key_slot",
+      "current_value_or_typed_unknown": "UNKNOWN: No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC26",
+          "content_hash": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+      "affected_operation_or_slice": "respondent-key linkage or deduplication beyond row ordinal",
+      "unaffected_usable_slices": "row-ordinal-scoped source-native response and coordinate construction",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Supply exact row_native_keys only after a separately permitted decode; the corrected P0 factory refuses otherwise.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-ROW-NATIVE-KEY"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.supported_form_slice",
+      "current_value_or_typed_unknown": "UNKNOWN: Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is all that is established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC26",
+          "content_hash": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is all that is established.",
+      "affected_operation_or_slice": "form-conditioned or administration-conditioned native query",
+      "unaffected_usable_slices": "source-native response incidence without form conditioning",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Acquire exact source form/administration evidence before claiming a form-conditioned slice.",
+      "status": "UNKNOWN",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-FORM-ADMIN"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "weight_slots",
+      "current_value_or_typed_unknown": "NOT_DECLARED: The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC26",
+          "content_hash": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "The source carries a weight slot, but no exact design/estimand authority or weighted scope is present in current evidence.",
+      "affected_operation_or_slice": "population or weighted estimation",
+      "unaffected_usable_slices": "raw-sample source-native response incidence",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Establish exact weight basis, design, estimand and effective scope before declaring a weighted slice.",
+      "status": "NOT_DECLARED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-WEIGHT-AUTHORITY"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "items.relation.manual_signed_polarity_status",
+      "current_value_or_typed_unknown": "NOT_CERTIFIED_BY_THIS_PREPARATION: Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC26",
+          "content_hash": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+      "affected_operation_or_slice": "signed-direction empirical or structural analysis",
+      "unaffected_usable_slices": "source-native nominal/ordinal response incidence and exact value accounting",
+      "acquisition_fix_owner_and_step": "LATIN lane / later scientific authority owner: Use the original relation certification only at its exact evidenced scope; do not infer direction from this config.",
+      "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-DIRECTION"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "SOURCE_LEVEL",
+      "required_native_field": "supported_scope.original_source_execution",
+      "current_value_or_typed_unknown": "NOT_PERFORMED: Original respondent execution and original workload issuance are a separate permission boundary.",
+      "exact_evidence_refs": [
+        {
+          "kind": "SOURCE_SNAPSHOT",
+          "object_id": "urn:rawlsing:r157:source-snapshot:SRC26",
+          "content_hash": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Original respondent execution and original workload issuance are a separate permission boundary.",
+      "affected_operation_or_slice": "original empirical execution",
+      "unaffected_usable_slices": "portable configuration and nonrespondent fixture native validation",
+      "acquisition_fix_owner_and_step": "user-authorized execution owner: Issue a separate exact original-source execution grant and qualified reader binding.",
+      "status": "NOT_PERFORMED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-ORIGINAL-EXECUTION"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.50b49a78bd42f4ccc762 @ P8NCV.A",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.50b49a78bd42f4ccc762",
+          "content_hash": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.50b49a78bd42f4ccc762",
+          "content_hash": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-Q8NCVA"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.79ced092c7ce65377c1c @ P47ST.C",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.79ced092c7ce65377c1c",
+          "content_hash": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.79ced092c7ce65377c1c",
+          "content_hash": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-Q47STC"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.8399e795f61d5c853609 @ P8NCV.C",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8399e795f61d5c853609",
+          "content_hash": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8399e795f61d5c853609",
+          "content_hash": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-Q8NCVC"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.9e4cec8d21b7bd803dd5 @ P45ST",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9e4cec8d21b7bd803dd5",
+          "content_hash": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9e4cec8d21b7bd803dd5",
+          "content_hash": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-Q45ST"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.f90eff21049e70ac36bf @ P8NCV.B",
+      "required_native_field": "items.relation.governed_row_payload_hash",
+      "current_value_or_typed_unknown": "RELATION_ID_UNMATCHED: H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f90eff21049e70ac36bf",
+          "content_hash": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f90eff21049e70ac36bf",
+          "content_hash": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f"
+        },
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "H48/P2 exact implementation identity exists, but the exact full-relation row is unmatched; no substitution is permitted.",
+      "affected_operation_or_slice": "relation-scoped semantic response use",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "RELATION_ID_UNMATCHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-Q8NCVB"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[48]:P14ST.F",
+      "required_native_field": "physical_slots[].codebook_mapping / items",
+      "current_value_or_typed_unknown": "PHYSICAL_ONLY_NO_ITEM_IDENTITY: Physical-only judiciary trust field; no current codebook row or implementation item; measurement identity not established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical-only judiciary trust field; no current codebook row or implementation item; measurement identity not established.",
+      "affected_operation_or_slice": "codebook-linked measurement response construction",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "PHYSICAL_ONLY_NO_ITEM_IDENTITY",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-P14ST.F"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[202]:P52N",
+      "required_native_field": "physical_slots[].codebook_mapping / items",
+      "current_value_or_typed_unknown": "PHYSICAL_ONLY_NO_ITEM_IDENTITY: Physical-only item with no current codebook row or implementation item; measurement identity not established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical-only item with no current codebook row or implementation item; measurement identity not established.",
+      "affected_operation_or_slice": "codebook-linked measurement response construction",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "PHYSICAL_ONLY_NO_ITEM_IDENTITY",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-P52N"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[332]:WT",
+      "required_native_field": "physical_slots[].codebook_mapping / items",
+      "current_value_or_typed_unknown": "WEIGHT_AUTHORITY_NOT_ESTABLISHED: Source weight slot; design/estimand authority is not established.",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Source weight slot; design/estimand authority is not established.",
+      "affected_operation_or_slice": "weighted estimation",
+      "unaffected_usable_slices": "all other included source-native response and coordinate bindings",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve the exact limitation; acquire the named missing source/native fact before binding this item/slot.",
+      "status": "WEIGHT_AUTHORITY_NOT_ESTABLISHED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-EXCLUDED-WT"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.50b49a78bd42f4ccc762 @ P8NCV.A",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.50b49a78bd42f4ccc762",
+          "content_hash": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.50b49a78bd42f4ccc762",
+          "content_hash": "50b49a78bd42f4ccc762733a600e89f6c11dd1457ca30007e73fb35e3a0cb981"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-UNMATCHED-question_impl.phase0.50b49a78bd42f4ccc762"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.79ced092c7ce65377c1c @ P47ST.C",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.79ced092c7ce65377c1c",
+          "content_hash": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.79ced092c7ce65377c1c",
+          "content_hash": "79ced092c7ce65377c1ce222745ab00cdd0b797af713d9a0b8d4b817fecb5ee6"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-UNMATCHED-question_impl.phase0.79ced092c7ce65377c1c"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.8399e795f61d5c853609 @ P8NCV.C",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.8399e795f61d5c853609",
+          "content_hash": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.8399e795f61d5c853609",
+          "content_hash": "8399e795f61d5c85360987d3f5a5477d7e863ade35d4173cdc6ad6a1843032f5"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-UNMATCHED-question_impl.phase0.8399e795f61d5c853609"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.9e4cec8d21b7bd803dd5 @ P45ST",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.9e4cec8d21b7bd803dd5",
+          "content_hash": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.9e4cec8d21b7bd803dd5",
+          "content_hash": "9e4cec8d21b7bd803dd5906eb5427f35f52b9c98bece0b51a0e2f6807be3acef"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-UNMATCHED-question_impl.phase0.9e4cec8d21b7bd803dd5"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "question_impl.phase0.f90eff21049e70ac36bf @ P8NCV.B",
+      "required_native_field": "items.relation",
+      "current_value_or_typed_unknown": "UNMATCHED_EXPLICIT_ID",
+      "exact_evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:h48:question_impl.phase0.f90eff21049e70ac36bf",
+          "content_hash": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:p2:question_impl.phase0.f90eff21049e70ac36bf",
+          "content_hash": "f90eff21049e70ac36bfefe820046d9b08240f5b7a658b9dc88d3de016aa969f"
+        }
+      ],
+      "contradiction_or_missing_fact": "No exact full-relation row exists for this exact implementation ID; preserved, not promoted.",
+      "affected_operation_or_slice": "relation-scoped semantic use of this item",
+      "unaffected_usable_slices": "item accounting, matched items and the declared supported slice",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Retain exact unmatched identity; never substitute a last row, casefold alias or nearest relation.",
+      "status": "HELD_UNMATCHED_RELATION",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-UNMATCHED-question_impl.phase0.f90eff21049e70ac36bf"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[1]:NUMINVES",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-NUMINVES"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[2]:IDENPA",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-IDENPA"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[3]:NUMENTRE",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-NUMENTRE"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[4]:REG",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-REG"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[5]:CIUDAD",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-CIUDAD"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[6]:TAMCIUD",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-TAMCIUD"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[7]:COMDIST",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-COMDIST"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[8]:EDAD",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-EDAD"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[9]:SEXO",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-SEXO"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[10]:CODIGO",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-CODIGO"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[11]:DIAREAL",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-DIAREAL"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[12]:MESREAL",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-MESREAL"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[13]:INI",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-INI"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[14]:FIN",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-FIN"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[15]:DURA",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-DURA"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[16]:TOTRECH",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-TOTRECH"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[17]:TOTNOCONT",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-TOTNOCONT"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[18]:TOTREVI",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-TOTREVI"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[19]:EDESCSINCONT",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-EDESCSINCONT"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[20]:NEGATELEGDESC",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-NEGATELEGDESC"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[21]:OTROSELEGDES",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-OTROSELEGDES"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[22]:TOTCUOT",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-TOTCUOT"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[23]:NUMCASA",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-NUMCASA"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[24]:CODSUPER",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-CODSUPER"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[25]:SUPERVVI",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-SUPERVVI"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[26]:SUPERVEN",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-SUPERVEN"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[27]:CODIF",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-CODIF"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[28]:DIGIT",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative/context slot; current codebook begins with substantive Q1ST.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-DIGIT"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[48]:P14ST.F",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "PHYSICAL_ONLY_EXTRA",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical-only judiciary trust field; no current codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use of this physical slot",
+      "unaffected_usable_slices": "explicit crosswalk, supported slice and all other accounted slots",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "HELD_UNMAPPED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-P14ST.F"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[202]:P52N",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "PHYSICAL_ONLY_EXTRA",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical-only item; current codebook has no Q52N row.",
+      "affected_operation_or_slice": "codebook-linked semantic use of this physical slot",
+      "unaffected_usable_slices": "explicit crosswalk, supported slice and all other accounted slots",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "HELD_UNMAPPED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-P52N"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[302]:S17.A",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical date-of-birth component; codebook has only summary S17.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-S17.A"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[303]:S17.B",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical date-of-birth component; codebook has only summary S17.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-S17.B"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[304]:S17.C",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Physical date-of-birth component; codebook has only summary S17.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-S17.C"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[326]:REEDUC.1",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative education-code component with no codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-REEDUC.1"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[327]:REEDUC.2",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative education-code component with no codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-REEDUC.2"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[328]:REEDUC.3",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative education-code component with no codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-REEDUC.3"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[329]:REEDAD",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative education age field with no codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-REEDAD"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[330]:PERPART",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative questionnaire participation field with no codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-PERPART"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[331]:FAMPART",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "SOURCE_NATIVE_COORDINATE_WITHOUT_CODEBOOK_ROW",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Administrative family participation field with no codebook row.",
+      "affected_operation_or_slice": "codebook-linked semantic use; not used for raw coordinate observation",
+      "unaffected_usable_slices": "raw source-native country coordinate",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "USED_RAW_COORDINATE",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-FAMPART"
+    },
+    {
+      "source_id": "SRC26",
+      "implementation_id_or_physical_slot": "physical_slots[332]:WT",
+      "required_native_field": "physical_slots.codebook_mapping",
+      "current_value_or_typed_unknown": "PHYSICAL_ONLY_EXTRA",
+      "exact_evidence_refs": [
+        {
+          "kind": "R154_PHYSICAL_METADATA",
+          "object_id": "urn:rawlsing:r157:metadata:WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC26_PHYSICAL_METADATA.json",
+          "content_hash": "c6696ff6f2e0e83bcddd63542efd18c480ccdb5cd603a5f853b7a207f5a01f61"
+        }
+      ],
+      "contradiction_or_missing_fact": "Source weight slot; design/estimand authority is not established in current evidence.",
+      "affected_operation_or_slice": "codebook-linked semantic use of this physical slot",
+      "unaffected_usable_slices": "explicit crosswalk, supported slice and all other accounted slots",
+      "acquisition_fix_owner_and_step": "LATIN lane / P3 integration owner: Preserve physical-only status; acquire exact edition/codebook evidence before any alias.",
+      "status": "HELD_UNMAPPED",
+      "resolution_evidence": null,
+      "slice_id": "SRC26-PHYSICAL-ONLY-WT"
+    }
+  ],
+  "counts": {
+    "entries": 59,
+    "residuals": 14,
+    "unmatched_relation_items": 5,
+    "physical_only_extra_slots": 40,
+    "excluded_slots": 8,
+    "excluded_items": 5
+  },
+  "limits": [
+    "The ledger preserves exact IDs/ordinals and evidence; fixture success is not original-source authority.",
+    "Excluded rows are accounted, not deleted or silently aliased."
+  ]
+}

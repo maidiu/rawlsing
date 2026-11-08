@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_R156_FINITE_SOURCE_PRE553_CORRECTION_V1",
+  "status": "PROPOSED_NOT_DISPATCHED",
+  "one_existing_qualified_worker": true,
+  "one_running_task_at_a_time": true,
+  "source_scope": "all35currentlocalfilepreparationforexistingPRE553",
+  "response_execution_authorized": false,
+  "tasks": [
+    {
+      "id": "C1_FULL_PRIOR_INPUTS",
+      "depends_on": [],
+      "inputs": [
+        "H48original_item_authority_candidates.json.gz@359ddabc",
+        "fullrelationCSV@9561723c",
+        "hashverifiedP2CSVlocal"
+      ],
+      "action": "Recover full18276rows and exact18250relation joins with source scope/fieldvalues/grades; keep26unmatched",
+      "output": "canonicalfull-itemtable consumed by nativeconfiguration adapter",
+      "done_check": "35sources,18276uniqueimplementations,18250exactIDjoins,26explicitmissingIDs; perfieldprovenance and no droppingcontext"
+    },
+    {
+      "id": "C2_SOURCE_COORDINATES",
+      "depends_on": [
+        "C1_FULL_PRIOR_INPUTS"
+      ],
+      "inputs": [
+        "PER_SOURCE_GAPS.json:SRC25,SRC26",
+        "existingcolumnalias/editionauthority",
+        "currentheader+codebookrows"
+      ],
+      "action": "Resolve SRC25244/244 andSRC26294/157 coordinateentries explicitly; do not redo33exactmatchedwaves",
+      "output": "exactphysicalslot/questioncrosswalkandresiduals",
+      "done_check": "everyphysical/documentcolumnaccounted; activequeriescannotusetheunresolvedmap; noimplicitcasefoldorP/Q/dotnormalization"
+    },
+    {
+      "id": "C3_NATIVE_SOURCE_CONFIGS",
+      "depends_on": [
+        "C1_FULL_PRIOR_INPUTS"
+      ],
+      "inputs": [
+        "source-backedfacadecurrenttypes",
+        "existingadoptedsource-localuniverse/row/slot/routing/inputrules",
+        "fullprioritemtable",
+        "C2resultswhereapplicable"
+      ],
+      "action": "OnewaveataTime: compileactualnativeproducerconfiguration; pull exactexistingfacts beforedeclaringmissing",
+      "output": "35sourceconfigs/currentnativefactorybindingswithfield-levelscopedresiduals",
+      "done_check": "genuineuniverse/coordinate/question/response/optionalweight/routing/refbindings; no syntheticdefaults; no blanketunknownorfalseconditionalblockers"
+    },
+    {
+      "id": "C4_EXISTING_PRODUCER_WIRING",
+      "depends_on": [
+        "C3_NATIVE_SOURCE_CONFIGS"
+      ],
+      "inputs": [
+        "R154builderstub",
+        "GovernedC11Projection/facade/nativecatalogandworkloadowners",
+        "exactSHAencodingallowlist"
+      ],
+      "action": "Wirepreparedconfigsintoexistingproducer; useexactallowedEVSencoding; decoderpermissionstaysseparate",
+      "output": "realnativeconstructionpathanddeclaredsourcefactory",
+      "done_check": "actualcurrentownercalledwithgroundedobjects; absentgrantrefusalonlyatpermissiongate; builderhasrealpositivepath; wrongsource/configrefuses"
+    },
+    {
+      "id": "C5_DELIVER_SOURCE_PRE553",
+      "depends_on": [
+        "C2_SOURCE_COORDINATES",
+        "C4_EXISTING_PRODUCER_WIRING"
+      ],
+      "inputs": [
+        "allsourceconfigs",
+        "actualproducerloader",
+        "knowncode/evidencedependencies"
+      ],
+      "action": "Cold-loadonecanonicalindexedlibrary/nativeexportsandrunnecessaryvalidator/refusalchecks; deliveractualpre553commands",
+      "output": "usable35sourceinputlibrarywithexactnextrunargumentsandremainingpermissions",
+      "done_check": "whole35column/itemcoverage;exacttypedstates/evidence; realnativeowneracceptanceatscope; no FieldForgegate/newengine/originalsourceclaimfromfixtures"
+    }
+  ]
+}

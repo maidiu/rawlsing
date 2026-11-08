@@ -1,0 +1,1192 @@
+{
+  "schema": "PYAT_R157_SOURCE_CONFIGURATION@1.0.0",
+  "config_id": "R157-EVS-SRC12-q650-FIXTURE",
+  "config_revision": 1,
+  "config_purpose": "NONRESPONDENT_FIXTURE",
+  "identity": {
+    "source_id": "SRC12",
+    "family": "EVS",
+    "wave": "1990",
+    "source_family_id": "EVS",
+    "study_product_id": "EVS",
+    "release_id": "EVS_1990",
+    "instrument_release_id": "SRC12_METADATA_WITNESS_SHA256:be8ade64a64e03c38e8491e467d826b40068e7fdcbb0aa36f93d1ec25272dd13",
+    "source_artifact_id": "EVS 1990.sav",
+    "expected_source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+    "source_format": "SAV",
+    "source_row_count": 38213,
+    "source_column_count": 390,
+    "source_bytes": 24341244,
+    "codebook_rows": 390,
+    "original_item_count": 390,
+    "source_snapshot_retention_ref": {
+      "kind": "SOURCE_SNAPSHOT",
+      "object_id": "urn:rawlsing:r157:evs:SRC12:source",
+      "content_hash": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec"
+    },
+    "metadata_witness_ref": {
+      "kind": "R154_PHYSICAL_METADATA",
+      "object_id": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/records/physical/SRC12_PHYSICAL_METADATA.json",
+      "content_hash": "be8ade64a64e03c38e8491e467d826b40068e7fdcbb0aa36f93d1ec25272dd13"
+    },
+    "locator": {
+      "root": "EXTERNAL_LOCATOR_ID",
+      "locator_id": "SRC12_ORIGINAL_SOURCE_EXTERNAL_RUNTIME_BINDING"
+    },
+    "reader": {
+      "decoder_owner": "rawlsing_next.pre553_physical_decoder.decode_sav",
+      "configuration_ref": {
+        "kind": "READER_CONFIGURATION",
+        "object_id": "urn:rawlsing:r157:evs:SRC12:sav",
+        "content_hash": "62c69372f5b33074f7e1caa571f5250bdfd01fcee10e19d1cd5739a92bc9e2b0"
+      },
+      "encoding": null
+    }
+  },
+  "binding": {
+    "identity_class": "NONRESPONDENT_FIXTURE",
+    "source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+    "row_count": 10,
+    "source_snapshot_ref": {
+      "kind": "FIXTURE_SNAPSHOT",
+      "object_id": "urn:rawlsing:r157:evs:R157-EVS-SRC12-q650-NONRESPONDENT",
+      "content_hash": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d"
+    },
+    "fixture_provenance": {
+      "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT",
+      "provenance": "Repository-generated nonrespondent EVS fixture; no original respondents represented.",
+      "authority_grade": "NONRESPONDENT_FIXTURE_ONLY",
+      "original_source_id": "SRC12",
+      "original_source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "no_original_respondents": true,
+      "fixture_study_product_id": "R157_FIXTURE/EVS/1990",
+      "fixture_release_id": "R157_FIXTURE_RELEASE/EVS/1990",
+      "fixture_instrument_release_id": "R157_FIXTURE_INSTRUMENT/EVS/1990"
+    }
+  },
+  "authority": {
+    "snapshots": [
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:source:producer",
+          "content_hash": "95467510f19452f7f634ce59f78f816b2bca0a552b4b9e04cd49a4563126907d"
+        },
+        "authority_id": "R157-EVS-SRC12-SOURCE-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "31268d40d2cf96d4b758da101279f03d0bbf2fdc58c67f9a48a04515619d67ea",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "EmpiricalUniverse@1.0.0",
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "a31733faa56b015fa018ed4fb0212d54271357ca8010b8928ea5a1d04705075c",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:source:replay",
+          "content_hash": "f2238a349899f7148c86952df43ab41c30e53aaec58ba5daf99e536a419fe182"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:mapping:producer",
+          "content_hash": "03a5d2ca7f198fe894b293a156dd27ea69ddf78666349a85cd013cc21bf41074"
+        },
+        "authority_id": "R157-EVS-SRC12-MAPPING-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e152570b34964a2d0a6721936705dcac3c31ad37c02167f4a2acb65cf0b4dff",
+        "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "231971e8754062534a9f836821e4c23cae5a3bd0cdf393e8c7664e7eb639f54c",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:mapping:replay",
+          "content_hash": "4ce7e74d6dbb207ac2cf3d700ffaa0b89248719c6bb79186671cac3eeb508e73"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:topology:producer",
+          "content_hash": "010a463c5e2cd0f7a4f1b1a4e0d3914fcf8fa3c5e1db29b266c7742ca4d65a04"
+        },
+        "authority_id": "R157-EVS-SRC12-TOPOLOGY-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "72641c66db363e99eaa4de31f51ffc8a4ca4e05103c48b6d59926c192e4d9c0c",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "a9e4c3fc312c5fbc1eac5b64111bc680f8206570ae2752b79b9812031bc0bf1c",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:topology:replay",
+          "content_hash": "4d22ae935547a0530c50b1983c83d837835b3693ab2a5b4bc2e7ea2fd6087db8"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:coordinate:producer",
+          "content_hash": "2fe83d1bb4b2caa4c44bfc80ad318ccb6cdeb79725212c55360e77c46962cfe0"
+        },
+        "authority_id": "R157-EVS-SRC12-COORDINATE-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "04f53449941f0b78bd6fca1fc1503df3c5511375f5b5335659a3cbabadd55355",
+        "authority_kind": "COORDINATE_SEMANTICS",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "EmpiricalCoordinateFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "d6e9bdf555fc08b34bf5326b2ac8dcbadf69f336ed8f85509f1ca0447592d5e2",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:coordinate:replay",
+          "content_hash": "73c1214dd6ec2282744ad75a271d407b671e6bec5fb2cb7f098b46e15ff6f7b2"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:routing:producer",
+          "content_hash": "98f21f8fb2c9f050e482c5164f21cd37c894680c8a99b5e95ec76673d7755d50"
+        },
+        "authority_id": "R157-EVS-SRC12-ROUTING-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "707a00354340a15eb7b6bb5e3a89d64a9b4e50a83ec59f0f07f9950cf39def69",
+        "authority_kind": "ROUTING_RISK_SET",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "RoutingEligibilityFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "62135b3fd6b660fd3476980a086e9b88571b8c6be9c720ad41cf3539ce13aa46",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:routing:replay",
+          "content_hash": "2e7a37ef4432f2a23691a7e7d823e1269f6a9faa9cf1a676cb0ce6a53ef645e7"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:replay:producer",
+          "content_hash": "31fffe0dcfbc7295e6bc88f54595f11a26a2f11bfa51c5b99dbbc870371b0868"
+        },
+        "authority_id": "R157-EVS-SRC12-REPLAY-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "df74be07454243d5e4a9ed8c2ad82cb9f0668d5f59411afc079b94cdcefdf217",
+        "authority_kind": "REPLAY_PROTOCOL",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "ReplayReceipt@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "c0eb30a4cdb75b19560ad2660b167aacf398af45ee42611d6ffc51b46533cb9a",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:replay:replay",
+          "content_hash": "fc311f91575eba99e378f19dc834ec64f59b246e9db98ca7425bb94790d921d3"
+        }
+      },
+      {
+        "typed_state": "ALLOW",
+        "authority_snapshot_refs": [],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:projection:producer",
+          "content_hash": "1deb9e5890acd847eb5f8d9cbbc50c56ab8f97724738c5496c76bbe72c0614f2"
+        },
+        "authority_id": "R157-EVS-SRC12-PROJECTION-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2f1f315f11f22305f53aeec6d79b4d3c9007f7d8ce5e47e0a27617777a831ce2",
+        "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+        "decision_state": "ALLOW",
+        "governed_operations": [
+          "R157_EVS_FIXTURE_VALIDATION"
+        ],
+        "governed_object_families": [
+          "RespondentEvent@1.0.0",
+          "EmpiricalCoordinateFact@1.0.0"
+        ],
+        "scope_envelope": {
+          "source_id": "SRC12",
+          "wave": "1990",
+          "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "evidence_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+          "grade": "NONRESPONDENT_FIXTURE_ONLY",
+          "fixture_only": true,
+          "fixture_source_sha256": "ba2a0a3666388f6aee3eb5aa680cb06ff41fc4f4b8040f1f8ec47b2fe02d506d",
+          "fixture_id": "R157-EVS-SRC12-q650-NONRESPONDENT"
+        },
+        "effective_time_or_interval": "R157_NONRESPONDENT_FIXTURE",
+        "parent_authority_refs": [],
+        "negative_limit_refs": [],
+        "supersession_refs": [],
+        "interpretation_semantics_fingerprint": "6ebe7363a29bcb08782b074b35893d95e679e76dc02c18afba8ea194f5b63680",
+        "replay_protocol_ref": {
+          "kind": "REPLAY_PROTOCOL",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:projection:replay",
+          "content_hash": "d1cf20425c9ec472bce2336ba4c1441d37576f6a92975c2bffb63aad630a6349"
+        }
+      }
+    ],
+    "required_refs": [
+      {
+        "authority_id": "R157-EVS-SRC12-SOURCE-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "31268d40d2cf96d4b758da101279f03d0bbf2fdc58c67f9a48a04515619d67ea"
+      },
+      {
+        "authority_id": "R157-EVS-SRC12-MAPPING-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "5e152570b34964a2d0a6721936705dcac3c31ad37c02167f4a2acb65cf0b4dff"
+      },
+      {
+        "authority_id": "R157-EVS-SRC12-TOPOLOGY-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "72641c66db363e99eaa4de31f51ffc8a4ca4e05103c48b6d59926c192e4d9c0c"
+      },
+      {
+        "authority_id": "R157-EVS-SRC12-COORDINATE-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "04f53449941f0b78bd6fca1fc1503df3c5511375f5b5335659a3cbabadd55355"
+      },
+      {
+        "authority_id": "R157-EVS-SRC12-ROUTING-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "707a00354340a15eb7b6bb5e3a89d64a9b4e50a83ec59f0f07f9950cf39def69"
+      },
+      {
+        "authority_id": "R157-EVS-SRC12-REPLAY-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "df74be07454243d5e4a9ed8c2ad82cb9f0668d5f59411afc079b94cdcefdf217"
+      },
+      {
+        "authority_id": "R157-EVS-SRC12-PROJECTION-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2f1f315f11f22305f53aeec6d79b4d3c9007f7d8ce5e47e0a27617777a831ce2"
+      }
+    ],
+    "projection_authority_ref": {
+      "authority_id": "R157-EVS-SRC12-PROJECTION-ALLOW",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "2f1f315f11f22305f53aeec6d79b4d3c9007f7d8ce5e47e0a27617777a831ce2"
+    },
+    "replay_authority_ref": {
+      "authority_id": "R157-EVS-SRC12-REPLAY-ALLOW",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "df74be07454243d5e4a9ed8c2ad82cb9f0668d5f59411afc079b94cdcefdf217"
+    },
+    "projection_identity_ref": {
+      "kind": "C11_SEMANTIC_PROJECTION",
+      "object_id": "urn:rawlsing:r157:evs:SRC12:q650:fixture",
+      "content_hash": "0f2ae8dcebb1219c708b906be29278602ec17997c30e12467eaadb9d6dea8803"
+    },
+    "tie_order_ref": {
+      "kind": "ORDER_RULE",
+      "object_id": "urn:rawlsing:r157:evs:SRC12:fixture:canonical-ref-sort",
+      "content_hash": "e65354c201670ebc3f43dcc95cf2dfe401cb36f838aff31d88fdc65229ff7741"
+    },
+    "replay_protocol_version": "1.0.0"
+  },
+  "universe": {
+    "universes": [
+      {
+        "typed_state": "UNIVERSE_IDENTIFIED",
+        "authority_snapshot_refs": [
+          {
+            "authority_id": "R157-EVS-SRC12-SOURCE-ALLOW",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "31268d40d2cf96d4b758da101279f03d0bbf2fdc58c67f9a48a04515619d67ea"
+          }
+        ],
+        "dependency_refs": [],
+        "producer_replay_locator_or_reference_root": {
+          "kind": "UNIVERSE_REPLAY_ROOT",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:universe:fixture",
+          "content_hash": "84bd10d799b840289d99ea1b4dbb8dd36737fda2b6aae2c1d212547b9172f5fb"
+        },
+        "raw_source_identity": "R157-NONRESPONDENT-FIXTURE:SRC12:R157-EVS-SRC12-q650-NONRESPONDENT",
+        "source_family": "EVS",
+        "study_product_release": "R157_FIXTURE/EVS/1990",
+        "instrument_release": "R157_FIXTURE_INSTRUMENT/EVS/1990",
+        "country_geography": "FIXTURE_MULTI_COUNTRY",
+        "sampling_geography": "FIXTURE_NONPROBABILITY",
+        "raw_wave": "1990",
+        "canonical_wave_if_governed": null,
+        "field_or_reference_time": "R157_NONRESPONDENT_FIXTURE",
+        "target_population_and_sample_frame": "NONRESPONDENT_FIXTURE_ROWS",
+        "sampling_design_regime": "NONRESPONDENT_FIXTURE_ONLY",
+        "respondent_namespace": "urn:rawlsing:r157:evs:SRC12:fixture",
+        "source_artifact_import_lineage": "R157_FIXTURE_ONLY__NOT_ORIGINAL_SOURCE",
+        "harmonization_authority_ref": null,
+        "source_relation_refs": []
+      }
+    ]
+  },
+  "respondents": {
+    "subject_unit": "SOURCE_NATIVE_UNIFIED_RESPONDENT",
+    "respondent_namespace": "urn:rawlsing:r157:evs:SRC12:id_cocas",
+    "respondent_key_pattern": "EVS-1990-ROW-{row_ordinal:06d}",
+    "source_native_key_slot": {
+      "ordinal": 5,
+      "name": "id_cocas"
+    },
+    "identity_map_authority_ref": null,
+    "row_identity_grade": "SOURCE_NATIVE_ID_COCAS"
+  },
+  "questions": [
+    {
+      "question_id": "q650",
+      "empirical_universe_ref": {
+        "kind": "EmpiricalUniverse@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:230dc347552cd44b46fec230a8a634eab9a210eda179cef38e392ef817446579",
+        "content_hash": "230dc347552cd44b46fec230a8a634eab9a210eda179cef38e392ef817446579"
+      },
+      "native_question_ref": {
+        "kind": "NATIVE_QUESTION",
+        "object_id": "urn:rawlsing:r157:evs:SRC12:q650",
+        "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+      },
+      "instrument_question_version": "1990",
+      "canonical_question_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_AUTHORIZED",
+        "detail": null
+      },
+      "component_subitem_ref_or_typed_absence": {
+        "typed_absence_state": "NOT_APPLICABLE",
+        "detail": null
+      },
+      "semantic_authority_ref": {
+        "authority_id": "R157-EVS-SRC12-SOURCE-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "31268d40d2cf96d4b758da101279f03d0bbf2fdc58c67f9a48a04515619d67ea"
+      },
+      "topology_authority_ref": {
+        "authority_id": "R157-EVS-SRC12-TOPOLOGY-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "72641c66db363e99eaa4de31f51ffc8a4ca4e05103c48b6d59926c192e4d9c0c"
+      },
+      "item_evidence": {
+        "implementation_id": "question_impl.phase0.0b7a0191fa49e4c6dede",
+        "exact_identity_sha256": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6",
+        "relation_join_status": "EXACT"
+      }
+    }
+  ],
+  "physical_slots": [
+    {
+      "ordinal": 5,
+      "name": "id_cocas",
+      "label": "unified respondent number",
+      "storage_type": "double",
+      "original_type": "F12.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": null,
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "1cbdca909d7588ee470e6ac7b7b9589777f42313484f6cb3d74428de569b89c6",
+        "status": "EXACT",
+        "var_name": "id_cocas"
+      },
+      "disposition": "SUBJECT_KEY",
+      "disposition_reason": "Source-native unified respondent identifier (id_cocas)."
+    },
+    {
+      "ordinal": 8,
+      "name": "country",
+      "label": "country code",
+      "storage_type": "double",
+      "original_type": "F3.0",
+      "storage_width": "8",
+      "measure": "scale",
+      "value_labels": {
+        "-1.0": "don't know",
+        "-2.0": "no answer",
+        "-3.0": "not applicable",
+        "-4.0": "question not asked",
+        "-5.0": "other missing",
+        "100.0": "Bulgaria",
+        "124.0": "Canada",
+        "203.0": "Czech Republic",
+        "208.0": "Denmark",
+        "233.0": "Estonia",
+        "246.0": "Finland",
+        "250.0": "France",
+        "276.0": "Germany",
+        "348.0": "Hungary",
+        "352.0": "Iceland",
+        "372.0": "Ireland",
+        "380.0": "Italy",
+        "40.0": "Austria",
+        "428.0": "Latvia",
+        "440.0": "Lithuania",
+        "470.0": "Malta",
+        "528.0": "Netherlands",
+        "56.0": "Belgium",
+        "578.0": "Norway",
+        "616.0": "Poland",
+        "620.0": "Portugal",
+        "642.0": "Romania",
+        "703.0": "Slovak Republic",
+        "705.0": "Slovenia",
+        "724.0": "Spain",
+        "752.0": "Sweden",
+        "826.0": "Great Britain",
+        "840.0": "USA",
+        "909.0": "Northern Ireland"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "63ad10d6583765b2201e4967fd75dc4e5f4ee7e6c04ac1f2e49e49b0d432b7f9",
+        "status": "EXACT",
+        "var_name": "country"
+      },
+      "disposition": "SUPPORTED_COORDINATE",
+      "disposition_reason": "Source-native country coordinate; no canonical crosswalk claimed."
+    },
+    {
+      "ordinal": 341,
+      "name": "q650",
+      "label": "how proud are you to be a ... (country) citizen (Q650)",
+      "storage_type": "double",
+      "original_type": "F2.0",
+      "storage_width": "8",
+      "measure": "nominal",
+      "value_labels": {
+        "-1.0": "don't know",
+        "-2.0": "no answer",
+        "-3.0": "not applicable",
+        "-4.0": "question not asked",
+        "-5.0": "other missing",
+        "1.0": "Very proud",
+        "2.0": "Quite proud",
+        "3.0": "Not very proud",
+        "4.0": "Not at all proud"
+      },
+      "missing_declarations": null,
+      "mr_declarations": null,
+      "codebook_mapping": {
+        "row_hash": "8a8745b302102ed719062015d8bdcabac03eb13e5b82b3c4f39d04aa60538a87",
+        "status": "EXACT",
+        "var_name": "q650"
+      },
+      "disposition": "SUPPORTED_RESPONSE",
+      "disposition_reason": "Selected P3 EVS scalar item with exact H48/P2/full-relation evidence."
+    }
+  ],
+  "items": [
+    {
+      "implementation_id": "question_impl.phase0.0b7a0191fa49e4c6dede",
+      "source_variable_code": "q650",
+      "exact_identity_sha256": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6",
+      "question_text": "how proud are you to be a ... (country) citizen (Q650)",
+      "disposition": "RELATION_EVIDENCE",
+      "response_classes": "support|oppose|unknown|missing|inapplicable",
+      "mapping_status": "governed_qsmv2_relation",
+      "authority_status": "GOVERNED_QSMV2_RELATION_AUTHORITY",
+      "evidence_refs": [
+        {
+          "kind": "H48_ITEM_AUTHORITY",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:question_impl.phase0.0b7a0191fa49e4c6dede:h48",
+          "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+        },
+        {
+          "kind": "P2_PHASE0_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:question_impl.phase0.0b7a0191fa49e4c6dede:p2",
+          "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+        },
+        {
+          "kind": "FULL_RELATION_ROW",
+          "object_id": "urn:rawlsing:r157:evs:SRC12:EVS:1990:q650:relation",
+          "content_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04"
+        }
+      ],
+      "limits": [
+        "manual_conditional_strata_weights=source-native country, wave, mode, and observed availability only",
+        "relation_use_status_final=GOVERNED_QSMV2_RELATION_AUTHORITY",
+        "directional_certification_status=CERTIFIED",
+        "source-native response codes preserved; no directional scale normalization applied",
+        "P3 EVS supported scalar slice"
+      ],
+      "relation": {
+        "status": "EXACT",
+        "question_id": "EVS:1990:q650",
+        "mapping_status": "governed_qsmv2_relation",
+        "manual_response_topology": "scalar",
+        "manual_response_normalization_rule": "linear source-order normalization from negative anchor \"Not at all proud\" to positive anchor \"Very proud\"; specials excluded",
+        "manual_position_conditioning": "no",
+        "manual_semantic_role": "RELATION_EVIDENCE",
+        "manual_signed_polarity_status": "signed",
+        "forbidden_inference": "none recorded",
+        "does_not_measure": "none recorded",
+        "governed_row_payload_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04",
+        "p2_exact_identity_sha256": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+      }
+    }
+  ],
+  "response_slots": [
+    {
+      "slot": {
+        "ordinal": 341,
+        "name": "q650"
+      },
+      "question_id": "q650",
+      "values": [
+        {
+          "raw_value": 1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "1",
+          "transform_authority_ref": {
+            "authority_id": "R157-EVS-SRC12-MAPPING-ALLOW",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "5e152570b34964a2d0a6721936705dcac3c31ad37c02167f4a2acb65cf0b4dff"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "2",
+          "transform_authority_ref": {
+            "authority_id": "R157-EVS-SRC12-MAPPING-ALLOW",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "5e152570b34964a2d0a6721936705dcac3c31ad37c02167f4a2acb65cf0b4dff"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "3",
+          "transform_authority_ref": {
+            "authority_id": "R157-EVS-SRC12-MAPPING-ALLOW",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "5e152570b34964a2d0a6721936705dcac3c31ad37c02167f4a2acb65cf0b4dff"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": 4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "SUBSTANTIVE_RESPONSE",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": "4",
+          "transform_authority_ref": {
+            "authority_id": "R157-EVS-SRC12-MAPPING-ALLOW",
+            "authority_version": "1.0.0",
+            "authority_content_hash": "5e152570b34964a2d0a6721936705dcac3c31ad37c02167f4a2acb65cf0b4dff"
+          },
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -5.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "NOT_ASKED",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "IAP",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "REFUSAL",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "response_state": "DK",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": null,
+          "missing_state": "SYSTEM_MISSING",
+          "source_missing_declaration": null,
+          "response_state": "MISSING",
+          "occurrences": [
+            {
+              "key": "0",
+              "topology_ref": {
+                "kind": "RESPONSE_TOPOLOGY",
+                "object_id": "urn:rawlsing:r157:evs:SRC12:q650:SCALAR_SINGULAR",
+                "content_hash": "ae8aa438a15260de859e4863bbcea199873b9c4c1b0c1bcb516c3dc2ce9854cf"
+              },
+              "multiplicity_order_rank_fields": {
+                "kind": "SCALAR_SINGULAR",
+                "index": 0
+              }
+            }
+          ],
+          "canonical_value": null,
+          "transform_authority_ref": null,
+          "extra_authority_refs": []
+        }
+      ]
+    }
+  ],
+  "coordinate_slots": [
+    {
+      "slot": {
+        "ordinal": 8,
+        "name": "country"
+      },
+      "native_coordinate_ref": {
+        "kind": "COORDINATE_NATIVE",
+        "object_id": "urn:rawlsing:r157:evs:country:1990:country",
+        "content_hash": "63ad10d6583765b2201e4967fd75dc4e5f4ee7e6c04ac1f2e49e49b0d432b7f9"
+      },
+      "unit_taxonomy_ref": {
+        "kind": "UNIT_TAXONOMY",
+        "object_id": "urn:rawlsing:r157:evs:country-code:1990",
+        "content_hash": "ddcf4171cc26fa83b0c879e832d603f940bf947e576343b404f33459500d5716"
+      },
+      "effective_time": "1990",
+      "source_semantic_authority_ref": {
+        "authority_id": "R157-EVS-SRC12-COORDINATE-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "04f53449941f0b78bd6fca1fc1503df3c5511375f5b5335659a3cbabadd55355"
+      },
+      "canonical_coordinate_ref": null,
+      "normalization_ref": null,
+      "values": [
+        {
+          "raw_value": -1.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "coordinate_state": "UNKNOWN",
+          "canonical_value": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -2.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "coordinate_state": "MISSING",
+          "canonical_value": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -3.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "coordinate_state": "NOT_LAWFULLY_CONDITIONABLE",
+          "canonical_value": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -4.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "coordinate_state": "UNKNOWN",
+          "canonical_value": null,
+          "extra_authority_refs": []
+        },
+        {
+          "raw_value": -5.0,
+          "missing_state": "OBSERVED_STORAGE_VALUE",
+          "source_missing_declaration": null,
+          "coordinate_state": "MISSING",
+          "canonical_value": null,
+          "extra_authority_refs": []
+        }
+      ],
+      "copy_observed_raw": true
+    }
+  ],
+  "weight_slots": [],
+  "routing": [
+    {
+      "question_id": "q650",
+      "row_selector": "ALL",
+      "typed_state": "ELIGIBLE_APPLICABLE",
+      "risk_set_ref": {
+        "kind": "RISK_SET",
+        "object_id": "urn:rawlsing:r157:evs:SRC12:q650:unconditional",
+        "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+      },
+      "routing_rule_ref": {
+        "kind": "ROUTING_RULE",
+        "object_id": "urn:rawlsing:r157:evs:SRC12:q650:o06",
+        "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+      },
+      "member_set_replay_ref": {
+        "kind": "MEMBER_SET_REPLAY",
+        "object_id": "urn:rawlsing:r157:evs:SRC12:q650:all",
+        "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+      },
+      "authority_ref": {
+        "authority_id": "R157-EVS-SRC12-ROUTING-ALLOW",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "707a00354340a15eb7b6bb5e3a89d64a9b4e50a83ec59f0f07f9950cf39def69"
+      },
+      "parent_predicate_refs": [],
+      "dependency_refs": []
+    }
+  ],
+  "source_relations": {
+    "typed_absence_state": "DISTINCT_BY_DEFAULT"
+  },
+  "replay": {
+    "predicate": {
+      "typed_absence_state": "NOT_APPLICABLE",
+      "detail": null
+    },
+    "comparator": {
+      "typed_absence_state": "DEFERRED",
+      "detail": null
+    },
+    "discovery": {
+      "typed_absence_state": "DEFERRED",
+      "detail": null
+    },
+    "structural": {
+      "typed_absence_state": "NOT_APPLICABLE",
+      "detail": null
+    }
+  },
+  "supported_scope": {
+    "scope_id": "EVS-SRC12-q650-P3-FIXTURE",
+    "purpose": "NONRESPONDENT_FIXTURE_VALIDATION",
+    "declared_supported": true,
+    "supported_question_ids": [
+      "q650"
+    ],
+    "native_validation_expectation": "POSITIVE_RELEASE",
+    "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+    "supported_unit_slice": "SOURCE_NATIVE_UNIFIED_RESPONDENT_ID_COCAS",
+    "supported_form_slice": "EVS 1990 scalar item",
+    "notes": [
+      "Fixture authority is explicitly nonrespondent and does not establish original-source authority."
+    ]
+  },
+  "coverage": {
+    "physical_slots_total": 390,
+    "items_total": 390,
+    "physical_slots_included": [
+      5,
+      8,
+      341
+    ],
+    "physical_slots_excluded": [],
+    "items_included": [
+      "question_impl.phase0.0b7a0191fa49e4c6dede"
+    ],
+    "items_excluded": [],
+    "partial_scope_reason": "P3 EVS nonrespondent fixture binds only the selected scalar item, country coordinate and id_cocas key."
+  },
+  "residuals": [
+    {
+      "residual_id": "ORIGINAL_AUTHORITY_DEFER",
+      "scope": "SRC12/q650",
+      "field": "authority.snapshots",
+      "status": "FIXTURE_ONLY",
+      "reason": "The fixture proves the constructor; original EVS authority remains DEFER.",
+      "dependent_operation": "original-source native validation",
+      "unaffected_scope": "fixture native validation",
+      "owner": "R157_EVS_LANE",
+      "next_step": "P4/integration supplies source-grounded original authority."
+    },
+    {
+      "residual_id": "UNSUPPORTED_ITEM_SLICE",
+      "scope": "SRC12",
+      "field": "items",
+      "status": "HELD_UNSUPPORTED_SLICE",
+      "reason": "389 EVS items are accounted but not bound in this fixture slice.",
+      "dependent_operation": "response-slot construction for unselected items",
+      "unaffected_scope": "selected scalar item and full source ledger",
+      "owner": "R157_EVS_LANE",
+      "next_step": "P4 lane expansion."
+    },
+    {
+      "residual_id": "WEIGHTS_NOT_CLAIMED",
+      "scope": "SRC12",
+      "field": "weight_slots",
+      "status": "NOT_CLAIMED",
+      "reason": "No weight design/estimand authority is claimed for this slice.",
+      "dependent_operation": "weighted estimates",
+      "unaffected_scope": "raw/unweighted fixture validation",
+      "owner": "R157_EVS_LANE",
+      "next_step": "P4 weighted lane if warranted."
+    }
+  ],
+  "evidence": {
+    "source_roster_path": "rawlsing_next/source_configuration/evidence/SOURCE_ROSTER.json",
+    "item_index_path": "rawlsing_next/source_configuration/evidence/ITEM_EVIDENCE.jsonl.gz",
+    "evidence_manifest_path": "rawlsing_next/source_configuration/evidence/EVIDENCE_MANIFEST.json",
+    "pinned_inputs": [
+      {
+        "commit": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+        "kind": "R157_PLAN_SEAL"
+      },
+      {
+        "bytes": 30912512,
+        "commit": "a02adc896264e1b46afd143cba9426182ec14802",
+        "kind": "R154_METADATA_SNAPSHOT",
+        "path": "WORKER_RETURNS/PYAT-R154-EXACT-ALL35-PIPELINE-INPUT-COMPILATION-R1/store/r154_all35.sqlite",
+        "sha256": "7d6421e6e50f7d249cf09e7ecf964757d6afa4a7926d7a31eb1aad3407a12a16"
+      },
+      {
+        "bytes": 3107463,
+        "commit": "359ddabc89d78ceb4c8fa45561588ee4cad7dd11",
+        "kind": "H48_ITEM_INDEX",
+        "path": "WORKER_RETURNS/PYAT-R48-H48-AUTHORITY-AND-CODE-ATLAS-R1/evidence/original_item_authority_candidates.json.gz",
+        "sha256": "35818e2cdd2b7e16e60788bef094eb117ef78fc63df3dc068ecb8b8948f728f5"
+      },
+      {
+        "bytes": 7709908,
+        "kind": "P2_PHASE0",
+        "sha256": "d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6"
+      },
+      {
+        "bytes": 47874248,
+        "commit": "9561723cfe0932869e781f2be27e9c80b050ad7a",
+        "kind": "FULL_RELATION_AUTHORITY",
+        "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+        "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+      }
+    ],
+    "field_evidence": [
+      {
+        "field": "items[0].implementation_id",
+        "refs": [
+          {
+            "kind": "H48_ITEM_AUTHORITY",
+            "object_id": "urn:rawlsing:r157:evs:SRC12:question_impl.phase0.0b7a0191fa49e4c6dede:h48",
+            "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+          },
+          {
+            "kind": "P2_PHASE0_ROW",
+            "object_id": "urn:rawlsing:r157:evs:SRC12:question_impl.phase0.0b7a0191fa49e4c6dede:p2",
+            "content_hash": "0b7a0191fa49e4c6dedebf7a1a9d3d3ba5a9fe539424b7d93b0b8604385b0da6"
+          }
+        ]
+      },
+      {
+        "field": "items[0].relation",
+        "refs": [
+          {
+            "kind": "FULL_RELATION_ROW",
+            "object_id": "urn:rawlsing:r157:evs:SRC12:EVS:1990:q650:relation",
+            "content_hash": "471fddf546e14183cd17b81b92f93a1ba6f6f2d6bd7d580b17586ff0f1e9cc04"
+          }
+        ]
+      },
+      {
+        "field": "physical_slots.item",
+        "refs": [
+          {
+            "kind": "CODEBOOK_ROW",
+            "object_id": "urn:rawlsing:r157:evs:SRC12:q650",
+            "content_hash": "8a8745b302102ed719062015d8bdcabac03eb13e5b82b3c4f39d04aa60538a87"
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "Prior authority evidence is reused with its original grade and limits.",
+      "Original authority is DEFER; fixture authority is NONRESPONDENT_FIXTURE_ONLY.",
+      "No original respondent rows or original source file bytes were read."
+    ]
+  },
+  "runtime": {
+    "projection_builder": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "release_builder": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "repository_builder": "rawlsing_next.source_configuration.factory.build_source_backed_c11_repository_from_config",
+    "native_owner": "rawlsing_next.pre553_source_backed_c11_facade.GovernedC11Projection",
+    "native_validator_stream": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream",
+    "native_validator_incidence": "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release",
+    "source_read_owner": "rawlsing_next.pre553_source_read_admission.decode_with_source_read_permission",
+    "transport": [
+      "ExactPhysicalCellStream",
+      "PhysicalSourceIncidence"
+    ],
+    "reader_encoding_transport": "R157_P3_QUALIFIED_CONFIG_TRANSPORT"
+  }
+}

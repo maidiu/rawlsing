@@ -1,0 +1,94 @@
+{
+  "decision": "ACCEPTED_SCOPED_CONFIGURATION_PREPARATION_WITH_EXACT_HELD_PREMISES",
+  "candidate": "747dacbf6f4eefdc574659847c20ce525be35d71",
+  "remote_verified": true,
+  "source_ids": [
+    "SRC01",
+    "SRC02",
+    "SRC03"
+  ],
+  "imported_paths": [
+    "rawlsing_next/source_configuration/data/SRC01",
+    "rawlsing_next/source_configuration/data/SRC02",
+    "rawlsing_next/source_configuration/data/SRC03",
+    "source_pre553_validation/SRC01",
+    "source_pre553_validation/SRC02",
+    "source_pre553_validation/SRC03"
+  ],
+  "hq_native_replay": [
+    {
+      "source": "SRC01",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R1",
+        "content_hash": "da262dcd4c5c19e0a74ad522d0e65673f41b1b27014ca3f0b624f0be0143db7e"
+      },
+      "fixture_questions": 129,
+      "fixture_response_slots": 129,
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 30,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 774,
+        "RoutingEligibilityFact": 774,
+        "WeightMeasureFact": 30
+      }
+    },
+    {
+      "source": "SRC02",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R5",
+        "content_hash": "293e2a0884b205a18228f4f131c5b0627d333978c6a2017ffcced2c4aeb3a1db"
+      },
+      "fixture_questions": 249,
+      "fixture_response_slots": 249,
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 576,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1494,
+        "RoutingEligibilityFact": 1494,
+        "WeightMeasureFact": 12
+      }
+    },
+    {
+      "source": "SRC03",
+      "release": {
+        "kind": "C11LogicalRelease",
+        "object_id": "R157_FIXTURE_RELEASE/Afrobarometer/R9",
+        "content_hash": "b8f39c3d8905f5d87e55720b05d144cb24f4a60e91e72b9146877c0b87d60a7f"
+      },
+      "fixture_questions": 310,
+      "fixture_response_slots": 310,
+      "counts": {
+        "AuthoritySnapshot": 8,
+        "EmpiricalCoordinateFact": 606,
+        "EmpiricalUniverse": 1,
+        "RespondentEvent": 1860,
+        "RoutingEligibilityFact": 1860,
+        "WeightMeasureFact": 24
+      }
+    }
+  ],
+  "prior_scope_or_residuals": {
+    "sources": 3,
+    "physical_slots": 913,
+    "items": 913,
+    "response_items": 688,
+    "coordinate_items": 202,
+    "weight_items": 11,
+    "held_items": 9,
+    "held_by_category": {
+      "held_ranked": 7,
+      "held_unmatched_relation": 2
+    },
+    "conditional_routing_items": 688,
+    "unmatched_relation_ids": 3
+  },
+  "limits": [
+    "Precise source-specific holds/unknowns retained",
+    "No original respondent execution or original workload issuance",
+    "Distinct final all35 review not yet performed"
+  ]
+}

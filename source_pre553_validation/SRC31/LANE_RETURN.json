@@ -1,0 +1,1112 @@
+{
+  "schema": "PYAT_R157_LANE_RETURN@1.0.0",
+  "lane_id": "SOUTH_ASIA",
+  "branch": "agent/pyat-pre553-r157-south-asia",
+  "plan_seal": "4c0c619eac747afee1d8e65e1418bf2d472da4c3",
+  "artifact_commit": "fc7c96977b276a301cd60a69d61bc53684c038a6",
+  "p0_corrected_commit": "d8d7087a8e56c24042bf5945fea1c97eb0d6c710",
+  "p3_terminal_commit": "519355ec2215409b40d566ef13c3b21f611e0726",
+  "source_ids": [
+    "SRC31",
+    "SRC32"
+  ],
+  "source_results": {
+    "SRC31": {
+      "source_id": "SRC31",
+      "family": "South Asia",
+      "wave": "W1",
+      "source_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "source_rows": 8442,
+      "source_columns": 68,
+      "original_items": 68,
+      "original_config": {
+        "path": "rawlsing_next/source_configuration/data/SRC31/source.config.json",
+        "config_id": "R157-SOUTH-ASIA-SRC31-FULL-SOURCE-PREPARATION",
+        "config_purpose": "SOURCE_PREPARATION",
+        "identity_class": "ORIGINAL_SOURCE",
+        "canonical_sha256": "9c00ebc83bf89c45dcde2ff375bd62155f7f2d65a683f013580e39ddd525a0d0",
+        "file_sha256": "ed403fb5900d9d5ab5d9eb90b1864d7b6a93f89fc6f9159461cf4ddd3b180687",
+        "supported_question_ids": [
+          "d18c",
+          "c13a",
+          "b8",
+          "c10ai",
+          "c29",
+          "c24",
+          "d2",
+          "c21",
+          "c3",
+          "d18h",
+          "d12",
+          "c2",
+          "d3",
+          "d8",
+          "c18d",
+          "d7",
+          "c6",
+          "b1b",
+          "b3",
+          "b7",
+          "c13e",
+          "d5",
+          "c31c",
+          "c1",
+          "c22",
+          "d18e",
+          "c20c",
+          "b9",
+          "c17",
+          "c9b",
+          "c13h",
+          "c10",
+          "c20b",
+          "c19",
+          "c23",
+          "d13",
+          "c13d",
+          "d6",
+          "b12",
+          "c13i",
+          "c18e",
+          "d18i",
+          "d18a",
+          "d18j",
+          "d10",
+          "c20a",
+          "c18b",
+          "b2",
+          "d18g",
+          "c18a",
+          "c12",
+          "c20d",
+          "c32",
+          "b4",
+          "c13j",
+          "c9a",
+          "d18f",
+          "c27",
+          "c8",
+          "d18b",
+          "c13f",
+          "c13g",
+          "d18d",
+          "c13c"
+        ],
+        "included_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68
+        ],
+        "included_items": [
+          "question_impl.phase0.01879af9828cfbfddab5",
+          "question_impl.phase0.091f9a2b2e90afe75950",
+          "question_impl.phase0.09c8e496e3bfd3bad25a",
+          "question_impl.phase0.0d8ee6711e34f6d0530b",
+          "question_impl.phase0.0e258e73be2e0d5f93f7",
+          "question_impl.phase0.10b3c240a5da52148fa2",
+          "question_impl.phase0.12fb46d0750dd0b4e71b",
+          "question_impl.phase0.1b182c1f7b8fbfc6e69c",
+          "question_impl.phase0.1ed6cf2436f98c0a7a6f",
+          "question_impl.phase0.20a8dd2ac61324330b57",
+          "question_impl.phase0.238511a5194829cbf81b",
+          "question_impl.phase0.25029fe66a4819454aa8",
+          "question_impl.phase0.2b39d86bbfaf6b0196b4",
+          "question_impl.phase0.2ea933bdc16a7ad4b738",
+          "question_impl.phase0.3297dc1b3c61f73a13db",
+          "question_impl.phase0.36504fb89b8bfab99d77",
+          "question_impl.phase0.3a94195938e0ec685eec",
+          "question_impl.phase0.40dabf04847c84600c62",
+          "question_impl.phase0.44090104867e79c57103",
+          "question_impl.phase0.48a73113a7ddb2968562",
+          "question_impl.phase0.4a64113157b68f9db2ba",
+          "question_impl.phase0.53535a6b2a30543534a1",
+          "question_impl.phase0.661560835ccba1a9aaf6",
+          "question_impl.phase0.6aa667279e13b18af4bd",
+          "question_impl.phase0.6ef9ca324cb74bc73432",
+          "question_impl.phase0.71cbfc63ae7c2bf5b49d",
+          "question_impl.phase0.772950bf913ae6ff63ce",
+          "question_impl.phase0.79cf3450bbc052a9a916",
+          "question_impl.phase0.7b3aeebaa5775f5ef9f0",
+          "question_impl.phase0.7e6edde6622be5f046ed",
+          "question_impl.phase0.80644de57e9a55ba8144",
+          "question_impl.phase0.80b7c3a2dc0e28b1cbad",
+          "question_impl.phase0.811214f8cf80fcba1fda",
+          "question_impl.phase0.836e600bbb3f4c5cf1d0",
+          "question_impl.phase0.84e61fee36b8da6c75c7",
+          "question_impl.phase0.8582cd538674b23d6127",
+          "question_impl.phase0.8aa08acd6da6b05f4a63",
+          "question_impl.phase0.8fe6315a4112e7eed60c",
+          "question_impl.phase0.903e79749082f37e4c49",
+          "question_impl.phase0.925d5886372feb08e784",
+          "question_impl.phase0.9af609cba66ca7205d27",
+          "question_impl.phase0.9c5410edb1f3e6a854e3",
+          "question_impl.phase0.a1d588ea35e7dd30ab5a",
+          "question_impl.phase0.a87a0d2d154c472b64bf",
+          "question_impl.phase0.ae4d213209f19ce1a039",
+          "question_impl.phase0.aea3269f66a0102b08bc",
+          "question_impl.phase0.b041a411216b77fac732",
+          "question_impl.phase0.b293652c0265dee520fe",
+          "question_impl.phase0.b2cc12e1f0fcea625a07",
+          "question_impl.phase0.b466559b58116a09828d",
+          "question_impl.phase0.bede2a8467b77bf77f09",
+          "question_impl.phase0.c68b3c234d0d8c39d5b5",
+          "question_impl.phase0.c88e95d883d4c7c168c0",
+          "question_impl.phase0.ca6a4fea803fde621f66",
+          "question_impl.phase0.ce425e0d297847c47dbe",
+          "question_impl.phase0.cf9ff48111d1143a692e",
+          "question_impl.phase0.d4585aa4c96c16c12198",
+          "question_impl.phase0.d924a1941d9c6af354d3",
+          "question_impl.phase0.d970a8e10dc882f9b17a",
+          "question_impl.phase0.df2da6702f8ba35f659e",
+          "question_impl.phase0.e7be0c82ad155a8b6bb3",
+          "question_impl.phase0.ea8b97ef99c5e2e88bc7",
+          "question_impl.phase0.ef1501e86e6ba10204ea",
+          "question_impl.phase0.f31bd04c3583cbdf6dff",
+          "question_impl.phase0.f3fde179f6dc13aa715e",
+          "question_impl.phase0.fbb4db62fa104ad994db",
+          "question_impl.phase0.fe6bb28c5da3baee6b1d",
+          "question_impl.phase0.feb4c2af21c94519fa04"
+        ],
+        "excluded_items_exact": [],
+        "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+        "residuals": [
+          {
+            "residual_id": "SRC31-ROUTING-UNRESOLVED",
+            "field": "routing.typed_state",
+            "status": "UNKNOWN",
+            "reason": "SOURCE_ROUTING_UNRESOLVED for 64 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+            "dependent_operation": "eligibility/form-conditioned native query",
+            "unaffected_scope": "unconditional source-native response incidence and coordinate binding",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope."
+          },
+          {
+            "residual_id": "SRC31-ROW-NATIVE-KEY",
+            "field": "respondents.source_native_key_slot",
+            "status": "UNKNOWN",
+            "reason": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+            "dependent_operation": "respondent-key linkage beyond row ordinal",
+            "unaffected_scope": "row-ordinal-scoped source-native construction",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Supply exact row_native_keys only after a separately permitted decode."
+          },
+          {
+            "residual_id": "SRC31-FORM-ADMIN",
+            "field": "supported_scope.supported_form_slice",
+            "status": "UNKNOWN",
+            "reason": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+            "dependent_operation": "form-conditioned or administration-conditioned native query",
+            "unaffected_scope": "source-native response incidence without form conditioning",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Acquire exact source form/administration evidence before claiming a form-conditioned slice."
+          },
+          {
+            "residual_id": "SRC31-WEIGHT-AUTHORITY",
+            "field": "weight_slots",
+            "status": "NOT_DECLARED",
+            "reason": "No source weight item/slot is present in current physical/codebook evidence; no weighted scope is declared.",
+            "dependent_operation": "population or weighted estimation",
+            "unaffected_scope": "raw-sample source-native response incidence",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Bind exact weight basis, design, estimand and scope only if such a source slot is established."
+          },
+          {
+            "residual_id": "SRC31-DIRECTION",
+            "field": "items.relation.manual_signed_polarity_status",
+            "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+            "reason": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+            "dependent_operation": "signed-direction empirical or structural analysis",
+            "unaffected_scope": "source-native nominal/ordinal response incidence and exact value accounting",
+            "owner": "SOUTH_ASIA lane / later scientific authority owner",
+            "next_step": "Use the original relation certification only at its exact evidenced scope."
+          },
+          {
+            "residual_id": "SRC31-ORIGINAL-EXECUTION",
+            "field": "supported_scope.original_source_execution",
+            "status": "NOT_PERFORMED",
+            "reason": "Original respondent execution and original workload issuance are a separate permission boundary.",
+            "dependent_operation": "original empirical execution",
+            "unaffected_scope": "portable configuration and nonrespondent fixture native validation",
+            "owner": "user-authorized execution owner",
+            "next_step": "Issue a separate exact original-source execution grant and qualified reader binding."
+          }
+        ]
+      },
+      "crosswalk": {
+        "path": "rawlsing_next/source_configuration/data/SRC31/crosswalk.json",
+        "sha256": "c0df445ad45bdbcb3e42de866c7638e21913e6581f26e106dd0cf37f093546e7",
+        "method": "EXACT_NAMES",
+        "counts": {
+          "physical_entries": 68,
+          "codebook_entries": 68,
+          "one_to_one": 68,
+          "one_to_many": 0,
+          "physical_only_extra": 0,
+          "codebook_only_unmapped": 0,
+          "selected_for_supported_slice": 68
+        },
+        "limits": [
+          "Exact source names and ordinals; no alias or normalization is inferred."
+        ]
+      },
+      "field_evidence": {
+        "path": "rawlsing_next/source_configuration/data/SRC31/field_evidence.json",
+        "sha256": "188f3438ff08767ab73c2549283efabcea07443862cdd28ba8f1bae6555351c9"
+      },
+      "fixture": {
+        "path": "source_pre553_validation/SRC31/fixture.json",
+        "sha256": "75eafd5f9676716899ccd734a416f3b55c95c2ae116c531926b9c1de2110f959",
+        "fixture_id": "R157-SOUTH-ASIA-SRC31-NONRESPONDENT",
+        "fixture_source_sha256": "4b34b4145bdd16e70831fd3e0bb2a5453758e100d0d39d3a696c1f8eea3cfe15",
+        "row_count": 8,
+        "identity_class": "NONRESPONDENT_FIXTURE",
+        "nonrespondent": true,
+        "config_path": "source_pre553_validation/SRC31/fixture.config.json",
+        "config_canonical_sha256": "9e8871236f73346ff439b9d511b8152634f03e233c6d785b67671fcc9c235299",
+        "config_file_sha256": "463521e5322dfbb19f5f76eec25af4c13f31f598335d72ca0dca606ba6125efa",
+        "oracle_path": "source_pre553_validation/SRC31/fixture_oracle.json",
+        "oracle_sha256": "043ac40e0aed60e3b465768964e6a919c2a77b8eef0b3b45e897f13a8c780cc5"
+      },
+      "native_validation": {
+        "status": "PASS",
+        "check_count": 275,
+        "passed": 275,
+        "failed": 0,
+        "skipped": 0,
+        "original_recipe_validation": {
+          "call": "static original routing recipe validation",
+          "input": "ORIGINAL_SOURCE config (not physically expanded)",
+          "config_id": "R157-SOUTH-ASIA-SRC31-FULL-SOURCE-PREPARATION",
+          "config_sha256": "9c00ebc83bf89c45dcde2ff375bd62155f7f2d65a683f013580e39ddd525a0d0",
+          "result": "ROUTING_RECIPE_VALIDATED",
+          "questions": 64,
+          "routing_entries": 64,
+          "row_selector": "ALL",
+          "typed_state": "ROUTING_UNKNOWN",
+          "physical_row_expansion": "NOT_PERFORMED"
+        },
+        "original_projection_expansion": "NOT_PERFORMED_BY_DESIGN",
+        "fixture_projection": {
+          "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+          "input": "NONRESPONDENT_FIXTURE config",
+          "config_id": "R157-SOUTH-ASIA-SRC31-NONRESPONDENT-FIXTURE",
+          "config_sha256": "9e8871236f73346ff439b9d511b8152634f03e233c6d785b67671fcc9c235299",
+          "result": "GovernedC11Projection",
+          "source_sha256": "4b34b4145bdd16e70831fd3e0bb2a5453758e100d0d39d3a696c1f8eea3cfe15",
+          "respondents": 8,
+          "response_slots": 64,
+          "coordinate_slots": 4,
+          "routing_facts": 512,
+          "questions": 64
+        },
+        "fixture_release": {
+          "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+          "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
+          "config_id": "R157-SOUTH-ASIA-SRC31-NONRESPONDENT-FIXTURE",
+          "config_sha256": "9e8871236f73346ff439b9d511b8152634f03e233c6d785b67671fcc9c235299",
+          "fixture_source_sha256": "4b34b4145bdd16e70831fd3e0bb2a5453758e100d0d39d3a696c1f8eea3cfe15",
+          "result": "C11LogicalRelease",
+          "release_id": "R157_FIXTURE_RELEASE/SRC31",
+          "release_ref": {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_FIXTURE_RELEASE/SRC31",
+            "content_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189"
+          },
+          "semantic_release_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189",
+          "source_release_manifest_hash": "d6a5857f393dc68abb5d78c913aa7e28962668c31f2a4eb338fae3d65fd7507c"
+        },
+        "actual_counts": {
+          "response_event_count": 512,
+          "coordinate_fact_count": 32,
+          "routing_fact_count": 512
+        },
+        "response_state_counts": {
+          "SUBSTANTIVE_RESPONSE": 444,
+          "MISSING": 68
+        },
+        "routing_state_counts": {
+          "ROUTING_UNKNOWN": 512
+        },
+        "coordinate_state_counts": {
+          "OBSERVED_COORDINATE": 32
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_FIXTURE_RELEASE/SRC31",
+          "content_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189"
+        },
+        "semantic_release_hash": "85fc1d3ca2acffcf41244ac9e4f41a2664dd7d86fd6a4b53194baa8bf7702189",
+        "m01_m18_coverage": {
+          "M01": 1,
+          "M02": 1,
+          "M03": 1,
+          "M04": 1,
+          "M05": 2,
+          "M06": 1,
+          "M07": 1,
+          "M08": 1,
+          "M09": 1,
+          "M10": 1,
+          "M11": 1,
+          "M12": 2,
+          "M13": 1,
+          "M14": 1,
+          "M15": 1,
+          "M16": 1,
+          "M17": 2,
+          "M18": 1
+        },
+        "refusals": [
+          {
+            "case": "original config + wrong active SHA (pre-expansion)",
+            "type": "SourceConfigurationBindingError",
+            "message": "active source SHA differs from the frozen config binding"
+          },
+          {
+            "case": "fixture config + wrong fixture SHA",
+            "type": "SourceConfigurationBindingError",
+            "message": "active source SHA differs from the frozen config binding"
+          },
+          {
+            "case": "configured source_native_key_slot without row_native_keys",
+            "type": "SourceConfigurationBindingError",
+            "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+          }
+        ]
+      },
+      "topology_assertions": {
+        "path": "source_pre553_validation/SRC31/TOPOLOGY_ASSERTIONS.json",
+        "sha256": "d1ad0d54b9e02431929ce47eeea927ba7a40f3d912ec1bc0f4826c422c7b92a5",
+        "counts": {
+          "affected": 64,
+          "pass": 64,
+          "fail": 0
+        }
+      },
+      "exceptions": {
+        "path": "source_pre553_validation/SRC31/EXCEPTIONS.json",
+        "sha256": "7f01079b49a31afbfea6ae86f1dfcbdd3bbfcabcb1ff997e365721e7dc588d9c",
+        "counts": {
+          "entries": 6,
+          "residuals": 6,
+          "excluded_slots": 0,
+          "excluded_items": 0
+        }
+      },
+      "manifest": {
+        "path": "source_pre553_validation/SRC31/manifest.json",
+        "sha256": "e166c53fc98c1120a39e0a4e094ef23ea6e117b1cef15a3108b7e99d4447a625",
+        "validation_status": "PASS"
+      },
+      "no_drop": {
+        "physical_slots_total": 68,
+        "physical_slots_included": 68,
+        "physical_slots_excluded": 0,
+        "items_total": 68,
+        "items_included": 68,
+        "items_excluded": 0
+      },
+      "artifacts": {
+        "rawlsing_next/source_configuration/data/SRC31/source.config.json": {
+          "sha256": "ed403fb5900d9d5ab5d9eb90b1864d7b6a93f89fc6f9159461cf4ddd3b180687",
+          "bytes": 1176542
+        },
+        "rawlsing_next/source_configuration/data/SRC31/crosswalk.json": {
+          "sha256": "c0df445ad45bdbcb3e42de866c7638e21913e6581f26e106dd0cf37f093546e7",
+          "bytes": 61947
+        },
+        "rawlsing_next/source_configuration/data/SRC31/field_evidence.json": {
+          "sha256": "188f3438ff08767ab73c2549283efabcea07443862cdd28ba8f1bae6555351c9",
+          "bytes": 93364
+        },
+        "source_pre553_validation/SRC31/fixture.config.json": {
+          "sha256": "463521e5322dfbb19f5f76eec25af4c13f31f598335d72ca0dca606ba6125efa",
+          "bytes": 1169585
+        },
+        "source_pre553_validation/SRC31/fixture.json": {
+          "sha256": "75eafd5f9676716899ccd734a416f3b55c95c2ae116c531926b9c1de2110f959",
+          "bytes": 114659
+        },
+        "source_pre553_validation/SRC31/fixture_oracle.json": {
+          "sha256": "043ac40e0aed60e3b465768964e6a919c2a77b8eef0b3b45e897f13a8c780cc5",
+          "bytes": 34169
+        },
+        "source_pre553_validation/SRC31/VALIDATION_RESULTS.json": {
+          "sha256": "b5000a7c52e7717a2e45b5aaf350b25158ea7a9de6d395597909ac968b420733",
+          "bytes": 203110
+        },
+        "source_pre553_validation/SRC31/EXCEPTIONS.json": {
+          "sha256": "7f01079b49a31afbfea6ae86f1dfcbdd3bbfcabcb1ff997e365721e7dc588d9c",
+          "bytes": 9843
+        },
+        "source_pre553_validation/SRC31/TOPOLOGY_ASSERTIONS.json": {
+          "sha256": "d1ad0d54b9e02431929ce47eeea927ba7a40f3d912ec1bc0f4826c422c7b92a5",
+          "bytes": 75745
+        },
+        "source_pre553_validation/SRC31/manifest.json": {
+          "sha256": "e166c53fc98c1120a39e0a4e094ef23ea6e117b1cef15a3108b7e99d4447a625",
+          "bytes": 3893
+        }
+      }
+    },
+    "SRC32": {
+      "source_id": "SRC32",
+      "family": "South Asia",
+      "wave": "W2",
+      "source_sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "source_rows": 10617,
+      "source_columns": 73,
+      "original_items": 73,
+      "original_config": {
+        "path": "rawlsing_next/source_configuration/data/SRC32/source.config.json",
+        "config_id": "R157-SOUTH-ASIA-SRC32-FULL-SOURCE-PREPARATION",
+        "config_purpose": "SOURCE_PREPARATION",
+        "identity_class": "ORIGINAL_SOURCE",
+        "canonical_sha256": "bbf94c042fd226012e16b7c2bd4d234c5ef7490755120c6b63d678a1b8814cc2",
+        "file_sha256": "377774a330115fade91bbfc0080da68fad62adfa41f289443adcb3992d52ab41",
+        "supported_question_ids": [
+          "GBC35c",
+          "GBC35b",
+          "GB2",
+          "GB19",
+          "GBC17c",
+          "GB20a",
+          "GBC12d",
+          "GBC36a",
+          "GBC12c",
+          "GB30",
+          "GBC17e",
+          "GB7f",
+          "GBC5",
+          "GBC27",
+          "GB7m",
+          "GB24",
+          "GBC34",
+          "GB13",
+          "GB7g",
+          "GB20",
+          "GB7a",
+          "GB18b",
+          "z8",
+          "GB10",
+          "GB7l",
+          "GBC12a",
+          "z4",
+          "GB29",
+          "GB7e",
+          "GBC31b",
+          "GB1",
+          "GBC26",
+          "GBC6",
+          "GB11",
+          "GB7c",
+          "z10",
+          "GB7h",
+          "z15i",
+          "GBC4",
+          "GBC28",
+          "GBC12b",
+          "GB15",
+          "GBC17f",
+          "GB14",
+          "GBC32",
+          "GBC17a",
+          "z7a",
+          "z3",
+          "z5",
+          "GBC17b",
+          "GB23",
+          "GB3",
+          "GBC35a",
+          "GBC31c",
+          "GB18a",
+          "GB19a",
+          "GBC31a",
+          "z13",
+          "z2",
+          "GB9",
+          "GB25",
+          "GB7k",
+          "GB22",
+          "GB7b",
+          "GB7j",
+          "z15d",
+          "GB7i",
+          "GB33",
+          "GBC8"
+        ],
+        "included_slots": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73
+        ],
+        "included_items": [
+          "question_impl.phase0.058787f4e6577f971fe0",
+          "question_impl.phase0.061713304c527531e74a",
+          "question_impl.phase0.07ffccc108c7d31132ea",
+          "question_impl.phase0.0ed35e85c180d609eab4",
+          "question_impl.phase0.13f28ebe004fcbea2af8",
+          "question_impl.phase0.18dc076bc858a77f3a3b",
+          "question_impl.phase0.19811dffbbbe359592b0",
+          "question_impl.phase0.1a4e8d1386f94414adda",
+          "question_impl.phase0.1afd90400799a5024fa6",
+          "question_impl.phase0.1c84419aa8fc631106e3",
+          "question_impl.phase0.20a30fa2aa4f79fc355a",
+          "question_impl.phase0.2b7c4ee4adff25cc9452",
+          "question_impl.phase0.30594dee0bd004ef1bde",
+          "question_impl.phase0.308f86804b8a8a3abda8",
+          "question_impl.phase0.3130e70882f1c2d37644",
+          "question_impl.phase0.355be74e727408e80c05",
+          "question_impl.phase0.3596615173d8529f28f4",
+          "question_impl.phase0.38bf7eb1e127a3710b1c",
+          "question_impl.phase0.3c26ef03bc0221123d0d",
+          "question_impl.phase0.3e0d68e7d3a112116847",
+          "question_impl.phase0.418fc2f36df92a228eee",
+          "question_impl.phase0.46eedd72d87b6e60dfb5",
+          "question_impl.phase0.4894ff65fa58e34fca2a",
+          "question_impl.phase0.496fbf2d8e68e09bfaec",
+          "question_impl.phase0.574f29cb070c94b3fbff",
+          "question_impl.phase0.58a6f3807dc2a4dc3782",
+          "question_impl.phase0.5d30a4d27b21f661ff82",
+          "question_impl.phase0.5f6af15ceef0dc0c39f7",
+          "question_impl.phase0.631653e6a1ad81e2f80c",
+          "question_impl.phase0.66a6af6ff537aaf3b2ca",
+          "question_impl.phase0.6f8b202d57483101572e",
+          "question_impl.phase0.7016257d2070df7fd2d6",
+          "question_impl.phase0.7ab1cabd175e31abb735",
+          "question_impl.phase0.7bce542c9a3f0cf25afe",
+          "question_impl.phase0.7c7d8978e2b358cd80bf",
+          "question_impl.phase0.7e6c92724c99ba834e5d",
+          "question_impl.phase0.863424c5e03bd2ea0a52",
+          "question_impl.phase0.88336f8c50f1d7e27196",
+          "question_impl.phase0.8b3fa3db0d3abd81f1c5",
+          "question_impl.phase0.8c6bd7bb3370fd58607c",
+          "question_impl.phase0.8d69d32431279b8b38f4",
+          "question_impl.phase0.90f7082a6d1a39f01277",
+          "question_impl.phase0.97087387782875723a3b",
+          "question_impl.phase0.97a82e9a8ab9e93209a0",
+          "question_impl.phase0.985db4f0e49fc8bec0c7",
+          "question_impl.phase0.9955e8039dedab518ad7",
+          "question_impl.phase0.9b34090706dcba5aefec",
+          "question_impl.phase0.9c88630f0a8a21ac7caa",
+          "question_impl.phase0.9e03667a08983178dd85",
+          "question_impl.phase0.a00431875414f92915ed",
+          "question_impl.phase0.a4456a0cbaf6fbd5e566",
+          "question_impl.phase0.a7afc4b649ca531ea67f",
+          "question_impl.phase0.aa2d000a9f8fb61386e5",
+          "question_impl.phase0.aaa916332dc57db4c5ab",
+          "question_impl.phase0.aedaee4861094b56224d",
+          "question_impl.phase0.b06ba950e41371848cfb",
+          "question_impl.phase0.b117d43654d0d60b6bc4",
+          "question_impl.phase0.b895c21c16dc2a4bbc08",
+          "question_impl.phase0.b8c61a048ca7761e98f7",
+          "question_impl.phase0.bf49524dda2445d8f7f5",
+          "question_impl.phase0.c5c26c67cafb3b046a00",
+          "question_impl.phase0.d79fb5aba81a4f3f29d9",
+          "question_impl.phase0.daf7b505efa654205ecf",
+          "question_impl.phase0.dc0d34be368e5ce263c7",
+          "question_impl.phase0.dcd3f4b1d30a172fc59a",
+          "question_impl.phase0.de45e4c3ff73e87a60ec",
+          "question_impl.phase0.e35f7a0e3a707bd4e2aa",
+          "question_impl.phase0.e87722d460f2c5202e7b",
+          "question_impl.phase0.e98c2ea608c76fe78ca4",
+          "question_impl.phase0.f6da8e66a7e25abb0ea9",
+          "question_impl.phase0.f86d22f27d204ff92124",
+          "question_impl.phase0.fa33ffc16bfcf4da8f58",
+          "question_impl.phase0.ff2cfc4a3b05c6052a3a"
+        ],
+        "excluded_items_exact": [],
+        "original_source_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION",
+        "residuals": [
+          {
+            "residual_id": "SRC32-ROUTING-UNRESOLVED",
+            "field": "routing.typed_state",
+            "status": "UNKNOWN",
+            "reason": "SOURCE_ROUTING_UNRESOLVED for 69 response items. The portable recipe declares row_selector=ALL with typed_state ROUTING_UNKNOWN for every produced routing fact; it does not invent eligibility, forms, populations or permissions. Original rows were not physically expanded for validation.",
+            "dependent_operation": "eligibility/form-conditioned native query",
+            "unaffected_scope": "unconditional source-native response incidence and coordinate binding",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Recover exact indexed routing/form expressions before claiming eligibility-conditioned scope."
+          },
+          {
+            "residual_id": "SRC32-ROW-NATIVE-KEY",
+            "field": "respondents.source_native_key_slot",
+            "status": "UNKNOWN",
+            "reason": "No exact decoded source-native respondent key witness exists in preparation; physical row ordinal is the only established key.",
+            "dependent_operation": "respondent-key linkage beyond row ordinal",
+            "unaffected_scope": "row-ordinal-scoped source-native construction",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Supply exact row_native_keys only after a separately permitted decode."
+          },
+          {
+            "residual_id": "SRC32-FORM-ADMIN",
+            "field": "supported_scope.supported_form_slice",
+            "status": "UNKNOWN",
+            "reason": "Current physical/codebook evidence contains no form, ballot or administration variable; single-file SAV shape is established.",
+            "dependent_operation": "form-conditioned or administration-conditioned native query",
+            "unaffected_scope": "source-native response incidence without form conditioning",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Acquire exact source form/administration evidence before claiming a form-conditioned slice."
+          },
+          {
+            "residual_id": "SRC32-WEIGHT-AUTHORITY",
+            "field": "weight_slots",
+            "status": "NOT_DECLARED",
+            "reason": "No source weight item/slot is present in current physical/codebook evidence; no weighted scope is declared.",
+            "dependent_operation": "population or weighted estimation",
+            "unaffected_scope": "raw-sample source-native response incidence",
+            "owner": "SOUTH_ASIA lane / P3 integration owner",
+            "next_step": "Bind exact weight basis, design, estimand and scope only if such a source slot is established."
+          },
+          {
+            "residual_id": "SRC32-DIRECTION",
+            "field": "items.relation.manual_signed_polarity_status",
+            "status": "NOT_CERTIFIED_BY_THIS_PREPARATION",
+            "reason": "Response states and exact source code tokens are bound, but this preparation does not issue a new signed-direction or canonical semantic certification.",
+            "dependent_operation": "signed-direction empirical or structural analysis",
+            "unaffected_scope": "source-native nominal/ordinal response incidence and exact value accounting",
+            "owner": "SOUTH_ASIA lane / later scientific authority owner",
+            "next_step": "Use the original relation certification only at its exact evidenced scope."
+          },
+          {
+            "residual_id": "SRC32-ORIGINAL-EXECUTION",
+            "field": "supported_scope.original_source_execution",
+            "status": "NOT_PERFORMED",
+            "reason": "Original respondent execution and original workload issuance are a separate permission boundary.",
+            "dependent_operation": "original empirical execution",
+            "unaffected_scope": "portable configuration and nonrespondent fixture native validation",
+            "owner": "user-authorized execution owner",
+            "next_step": "Issue a separate exact original-source execution grant and qualified reader binding."
+          }
+        ]
+      },
+      "crosswalk": {
+        "path": "rawlsing_next/source_configuration/data/SRC32/crosswalk.json",
+        "sha256": "82c9313a5fa1499d910c03f378109ec2d03290eb48b1995c019a33288056d007",
+        "method": "EXACT_NAMES",
+        "counts": {
+          "physical_entries": 73,
+          "codebook_entries": 73,
+          "one_to_one": 73,
+          "one_to_many": 0,
+          "physical_only_extra": 0,
+          "codebook_only_unmapped": 0,
+          "selected_for_supported_slice": 73
+        },
+        "limits": [
+          "Exact source names and ordinals; no alias or normalization is inferred."
+        ]
+      },
+      "field_evidence": {
+        "path": "rawlsing_next/source_configuration/data/SRC32/field_evidence.json",
+        "sha256": "5e0ef55f27e458b6aac41dc30d565233d808b1ce84396f729ffb8e66a351ce77"
+      },
+      "fixture": {
+        "path": "source_pre553_validation/SRC32/fixture.json",
+        "sha256": "185146f18fa89893b1d7d9fadd958b2cfee9a7b61100b51b9cb882c23dac12b2",
+        "fixture_id": "R157-SOUTH-ASIA-SRC32-NONRESPONDENT",
+        "fixture_source_sha256": "5e60886ff23d4fea0b5f74dce276100e6f652e3d7783d9347aea5311a93607a2",
+        "row_count": 8,
+        "identity_class": "NONRESPONDENT_FIXTURE",
+        "nonrespondent": true,
+        "config_path": "source_pre553_validation/SRC32/fixture.config.json",
+        "config_canonical_sha256": "28e66148dd3b71f5c763fe57b04dfb940f809abe031af91cbad9326dabbef664",
+        "config_file_sha256": "e65a79c853ef4d139fba5352286657913d66ccbafb5f43729e9e0857842bbc33",
+        "oracle_path": "source_pre553_validation/SRC32/fixture_oracle.json",
+        "oracle_sha256": "e9785491ed84e4b07cbd447c22279477fe38d81612adb310d32d268a6b561388"
+      },
+      "native_validation": {
+        "status": "PASS",
+        "check_count": 295,
+        "passed": 295,
+        "failed": 0,
+        "skipped": 0,
+        "original_recipe_validation": {
+          "call": "static original routing recipe validation",
+          "input": "ORIGINAL_SOURCE config (not physically expanded)",
+          "config_id": "R157-SOUTH-ASIA-SRC32-FULL-SOURCE-PREPARATION",
+          "config_sha256": "bbf94c042fd226012e16b7c2bd4d234c5ef7490755120c6b63d678a1b8814cc2",
+          "result": "ROUTING_RECIPE_VALIDATED",
+          "questions": 69,
+          "routing_entries": 69,
+          "row_selector": "ALL",
+          "typed_state": "ROUTING_UNKNOWN",
+          "physical_row_expansion": "NOT_PERFORMED"
+        },
+        "original_projection_expansion": "NOT_PERFORMED_BY_DESIGN",
+        "fixture_projection": {
+          "call": "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+          "input": "NONRESPONDENT_FIXTURE config",
+          "config_id": "R157-SOUTH-ASIA-SRC32-NONRESPONDENT-FIXTURE",
+          "config_sha256": "28e66148dd3b71f5c763fe57b04dfb940f809abe031af91cbad9326dabbef664",
+          "result": "GovernedC11Projection",
+          "source_sha256": "5e60886ff23d4fea0b5f74dce276100e6f652e3d7783d9347aea5311a93607a2",
+          "respondents": 8,
+          "response_slots": 69,
+          "coordinate_slots": 4,
+          "routing_facts": 552,
+          "questions": 69
+        },
+        "fixture_release": {
+          "call": "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+          "input": "NONRESPONDENT_FIXTURE config + ExactPhysicalCellStream",
+          "config_id": "R157-SOUTH-ASIA-SRC32-NONRESPONDENT-FIXTURE",
+          "config_sha256": "28e66148dd3b71f5c763fe57b04dfb940f809abe031af91cbad9326dabbef664",
+          "fixture_source_sha256": "5e60886ff23d4fea0b5f74dce276100e6f652e3d7783d9347aea5311a93607a2",
+          "result": "C11LogicalRelease",
+          "release_id": "R157_FIXTURE_RELEASE/SRC32",
+          "release_ref": {
+            "kind": "C11LogicalRelease",
+            "object_id": "R157_FIXTURE_RELEASE/SRC32",
+            "content_hash": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0"
+          },
+          "semantic_release_hash": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0",
+          "source_release_manifest_hash": "82cd0cb856c1c6184d573adea6475b21e0839918c04ad8da665542674fd7ea9e"
+        },
+        "actual_counts": {
+          "response_event_count": 552,
+          "coordinate_fact_count": 32,
+          "routing_fact_count": 552
+        },
+        "response_state_counts": {
+          "SUBSTANTIVE_RESPONSE": 484,
+          "MISSING": 64,
+          "NOT_ASKED": 3,
+          "INAPPLICABLE": 1
+        },
+        "routing_state_counts": {
+          "ROUTING_UNKNOWN": 552
+        },
+        "coordinate_state_counts": {
+          "OBSERVED_COORDINATE": 32
+        },
+        "release_ref": {
+          "kind": "C11LogicalRelease",
+          "object_id": "R157_FIXTURE_RELEASE/SRC32",
+          "content_hash": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0"
+        },
+        "semantic_release_hash": "013a84680d5d186af305fdc4d40fedd34d453f65bff55c1e514f07ce6a0eb6e0",
+        "m01_m18_coverage": {
+          "M01": 1,
+          "M02": 1,
+          "M03": 1,
+          "M04": 1,
+          "M05": 2,
+          "M06": 1,
+          "M07": 1,
+          "M08": 1,
+          "M09": 1,
+          "M10": 1,
+          "M11": 1,
+          "M12": 2,
+          "M13": 1,
+          "M14": 1,
+          "M15": 1,
+          "M16": 1,
+          "M17": 2,
+          "M18": 1
+        },
+        "refusals": [
+          {
+            "case": "original config + wrong active SHA (pre-expansion)",
+            "type": "SourceConfigurationBindingError",
+            "message": "active source SHA differs from the frozen config binding"
+          },
+          {
+            "case": "fixture config + wrong fixture SHA",
+            "type": "SourceConfigurationBindingError",
+            "message": "active source SHA differs from the frozen config binding"
+          },
+          {
+            "case": "configured source_native_key_slot without row_native_keys",
+            "type": "SourceConfigurationBindingError",
+            "message": "configured source_native_key_slot requires row_native_keys after a permitted decode"
+          }
+        ]
+      },
+      "topology_assertions": {
+        "path": "source_pre553_validation/SRC32/TOPOLOGY_ASSERTIONS.json",
+        "sha256": "6a16f24a344fb8cecb3548d28a39cd8b2054d7f2fc330c0db12eedaf21350755",
+        "counts": {
+          "affected": 69,
+          "pass": 69,
+          "fail": 0
+        }
+      },
+      "exceptions": {
+        "path": "source_pre553_validation/SRC32/EXCEPTIONS.json",
+        "sha256": "8b51babfcec6ff2ef46821830cb856a20519f563ccfe0275e3b80d249f89e1b1",
+        "counts": {
+          "entries": 6,
+          "residuals": 6,
+          "excluded_slots": 0,
+          "excluded_items": 0
+        }
+      },
+      "manifest": {
+        "path": "source_pre553_validation/SRC32/manifest.json",
+        "sha256": "9d2d4d9ace83971d98ed933bf5f7b8f42c44cd3a93663705382258ec36dc588b",
+        "validation_status": "PASS"
+      },
+      "no_drop": {
+        "physical_slots_total": 73,
+        "physical_slots_included": 73,
+        "physical_slots_excluded": 0,
+        "items_total": 73,
+        "items_included": 73,
+        "items_excluded": 0
+      },
+      "artifacts": {
+        "rawlsing_next/source_configuration/data/SRC32/source.config.json": {
+          "sha256": "377774a330115fade91bbfc0080da68fad62adfa41f289443adcb3992d52ab41",
+          "bytes": 1508115
+        },
+        "rawlsing_next/source_configuration/data/SRC32/crosswalk.json": {
+          "sha256": "82c9313a5fa1499d910c03f378109ec2d03290eb48b1995c019a33288056d007",
+          "bytes": 83787
+        },
+        "rawlsing_next/source_configuration/data/SRC32/field_evidence.json": {
+          "sha256": "5e0ef55f27e458b6aac41dc30d565233d808b1ce84396f729ffb8e66a351ce77",
+          "bytes": 100441
+        },
+        "source_pre553_validation/SRC32/fixture.config.json": {
+          "sha256": "e65a79c853ef4d139fba5352286657913d66ccbafb5f43729e9e0857842bbc33",
+          "bytes": 1500832
+        },
+        "source_pre553_validation/SRC32/fixture.json": {
+          "sha256": "185146f18fa89893b1d7d9fadd958b2cfee9a7b61100b51b9cb882c23dac12b2",
+          "bytes": 123800
+        },
+        "source_pre553_validation/SRC32/fixture_oracle.json": {
+          "sha256": "e9785491ed84e4b07cbd447c22279477fe38d81612adb310d32d268a6b561388",
+          "bytes": 37127
+        },
+        "source_pre553_validation/SRC32/VALIDATION_RESULTS.json": {
+          "sha256": "75387da0e29381fae4e463640c69c0d9b96319a3917bc679bd3f0001cd45b632",
+          "bytes": 218733
+        },
+        "source_pre553_validation/SRC32/EXCEPTIONS.json": {
+          "sha256": "8b51babfcec6ff2ef46821830cb856a20519f563ccfe0275e3b80d249f89e1b1",
+          "bytes": 9843
+        },
+        "source_pre553_validation/SRC32/TOPOLOGY_ASSERTIONS.json": {
+          "sha256": "6a16f24a344fb8cecb3548d28a39cd8b2054d7f2fc330c0db12eedaf21350755",
+          "bytes": 81702
+        },
+        "source_pre553_validation/SRC32/manifest.json": {
+          "sha256": "9d2d4d9ace83971d98ed933bf5f7b8f42c44cd3a93663705382258ec36dc588b",
+          "bytes": 3894
+        }
+      }
+    }
+  },
+  "commands": [
+    {
+      "command": "PYTHONPATH=. python3 source_pre553_validation/SRC31/tools/south_asia_full.py",
+      "result": "generated/validated full original configs, crosswalks, field evidence, nonrespondent fixtures, fixture configs and oracles for SRC31-SRC32",
+      "status": "PASS"
+    },
+    {
+      "command": "PYTHONPATH=. python3 source_pre553_validation/SRC31/tools/run_south_asia_validation.py",
+      "result": "SRC31 PASS 275/275; SRC32 PASS 295/295; 0 failed; 0 skipped",
+      "status": "PASS"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py -q -o addopts=''",
+      "result": "21 passed",
+      "status": "PASS"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_p3.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py rawlsing_next/tests/test_pre553_source_read_admission.py rawlsing_next/tests/test_pre553_c11_repository_ingest.py -q -o addopts=''",
+      "result": "65 passed",
+      "status": "PASS"
+    }
+  ],
+  "native_api_calls": [
+    "rawlsing_next.source_configuration.schema.load_source_config",
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.source_configuration.fixture.load_fixture_stream",
+    "rawlsing_next.source_configuration.factory.build_validated_c11_release_from_config",
+    "rawlsing_next.pre553_source_backed_c11_facade.build_validated_source_backed_c11_release_from_stream (through frozen factory)"
+  ],
+  "identity_separation": {
+    "original_identity_class": "ORIGINAL_SOURCE",
+    "fixture_identity_class": "NONRESPONDENT_FIXTURE",
+    "original_configs_carry_no_fixture_provenance": true,
+    "fixture_source_shas_distinct_from_original": true,
+    "original_authority": "DEFER source semantics; ALLOW only local replay protocol",
+    "fixture_authority": "fixture_only ALLOW, grade NONRESPONDENT_FIXTURE_ONLY",
+    "original_respondent_execution": "NOT_PERFORMED_UNDER_R157_PREPARATION"
+  },
+  "reader_transport": {
+    "p3_reader_available": true,
+    "config_encoding": null,
+    "reason": "No SRC31-SRC32 SHA is in the exact decoder compatibility allowlist; no encoding is guessed.",
+    "original_source_read": "NOT_PERFORMED"
+  },
+  "exceptions_and_limits": {
+    "blockers": [],
+    "precise_residuals": [
+      "SRC31: 68/68 items/slots included (64 response questions + 4 coordinates); no item exclusion.",
+      "SRC32: 73/73 items/slots included (69 response questions + 4 coordinates); no item exclusion.",
+      "Routing is SOURCE_ROUTING_UNRESOLVED; portable recipe uses row_selector=ALL with ROUTING_UNKNOWN and was not physically expanded for original validation.",
+      "No source weight item/slot is present; no weighted scope is claimed.",
+      "No form/ballot/administration variable, row-native respondent key, new direction certification or original-source execution is claimed.",
+      "Continuous context is bound as raw coordinates; no false categorical default."
+    ],
+    "distinct_review": "NOT_PERFORMED; reserved for the distinct coherent all35 boundary review."
+  },
+  "next_integration_edge": {
+    "owner": "R157 integration owner / P5 coherent all35 boundary",
+    "action": "Intake SRC31-SRC32 configs, crosswalks and nonrespondent fixture positives; rerun lane validation; then coherent all35 readiness and distinct final review.",
+    "artifact_commit": "fc7c96977b276a301cd60a69d61bc53684c038a6",
+    "do_not_do": [
+      "Do not promote fixture authority/universe/SHA into original meaning.",
+      "Do not claim original empirical execution.",
+      "Do not route through the legacy R154 load_all/load_source B49 path."
+    ]
+  },
+  "no_original_source_access": true,
+  "original_respondent_rows_read": 0,
+  "original_workload_issued": false,
+  "quota": "UNKNOWN",
+  "remote_push": {
+    "status": "NON_FORCE_PUSH_PERFORMED_AFTER_THIS_FILE",
+    "direct_readback": "reported in the final lane return message"
+  }
+}
