@@ -359,3 +359,28 @@ def test_endpoint_keeps_document_text_out_of_system_instructions(monkeypatch):
     assert result.ok
     assert result.receipt.issues_authority is False
     assert result.receipt.writes_world is False
+
+
+def test_endpoint_redirect_does_not_forward_bearer_credential(monkeypatch):
+    from contextlib import nullcontext
+    from io import BytesIO
+    from urllib.request import HTTPRedirectHandler
+
+    def respond(request, **kwargs):
+        assert request.get_header("Authorization") == "Bearer test-only-key"
+        redirected = HTTPRedirectHandler().redirect_request(
+            request, None, 302, "Found", {}, "https://different.invalid/result"
+        )
+        assert redirected.get_header("Authorization") is None
+        assert redirected.data is None
+        return nullcontext(BytesIO(json.dumps({
+            "output_text": json.dumps(candidate()),
+        }).encode()))
+
+    monkeypatch.setattr("rawlsing_next.sorok_history.provider.urllib.request.urlopen", respond)
+    provider = HistoricalModelProvider(
+        endpoint="https://model.example.invalid/v1/chat/completions",
+        model="configured-model", api_key="test-only-key",
+    )
+
+    assert run(provider.propose(packet())).ok

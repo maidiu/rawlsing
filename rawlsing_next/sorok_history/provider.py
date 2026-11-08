@@ -562,15 +562,14 @@ class EndpointModelTransport:
             "temperature": 0,
             "stream": False,
         }
-        headers = {"Content-Type": "application/json"}
-        if self._api_key:
-            headers["Authorization"] = f"Bearer {self._api_key}"
         req = urllib.request.Request(
             self.endpoint,
             data=canonical(body).encode("utf-8"),
-            headers=headers,
+            headers={"Content-Type": "application/json"},
             method="POST",
         )
+        if self._api_key:
+            req.add_unredirected_header("Authorization", f"Bearer {self._api_key}")
         timeout = float(request.get("timeout_s", self.timeout_s))
         # Allow JSON escaping and bounded response metadata in addition to model text.
         response_limit = 6 * int(request["max_output_chars"]) + 65_536
