@@ -980,6 +980,41 @@
         }
       },
       "requirement": "Issue777 P7 and terminalcriteria audit must reconcile new C9-C13 evidence before final whole-record review"
+    },
+    "c14_intake": {
+      "saved_utc": "2026-11-08T06:27:44.946677+00:00",
+      "task": "pyat777-c9-c13-required-hq-fanin-r1",
+      "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-c9-c13-required-hq-fanin-r1/completion.json",
+      "exit_code": 0,
+      "content_snapshot": "f42b73abf2532f9a4ea589e7f80841e15585d8e1",
+      "provenance_commit": "ea7e878a82e2343591724433fcd6b13910602c84",
+      "remote_verified": true,
+      "disposition": "COMBINED_RETURN_RECEIVED__WHOLE_RECORD_REVIEW_LAUNCHED__NOT_ACCEPTED",
+      "hq_checks": [
+        "55uniqueIDs",
+        "All51historical IDs and verdicts preserved",
+        "Canonicalaliasbyteequal and sha256f21823f83e6aed6a64695150bf4ed43df2e7fd88b3310ab26752476acc61a778",
+        "25FUNCTION_CURRENT_UNPROVED plus30NOT_RUN"
+      ],
+      "goal_audit_status": "Criterion2 NOT_SATISFIED/typedhold; criterion6parentdispositionsheld; claimedlimitedcriteria subjectindependentreview",
+      "next_action": {
+        "task": "pyat777-hq-fanin-c14-independent-whole-record-review-r1",
+        "session": "ses_e47b17f8fffedazgQeSGbql4HH",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-c5-source35-independent-review",
+        "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C15_HQ_FANIN_C14_REREVIEW",
+        "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+        "review_target": "f42b73abf2532f9a4ea589e7f80841e15585d8e1",
+        "actual_model": null,
+        "launch": {
+          "child_pid": 60068,
+          "supervisor_pid": 60067,
+          "observer_pid": 60069,
+          "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-hq-fanin-c14-independent-whole-record-review-r1",
+          "launch_is_not_completion": true
+        },
+        "independence": "Existing C5 reviewer, nonauthor of fanin/C14/implementations; priorreviewrelationship disclosed. UserP7 nonauthor requirement governs; author-added ban onallpriorreviewers isnotnewauthority."
+      },
+      "goal_complete": false
     }
   }
 }
