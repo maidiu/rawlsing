@@ -509,6 +509,38 @@ def test_real_interval_binds_completed_output_without_inspection(
         ]
         assert packet["authority"]["allowed_H_classes"] == ["H0"]
         if not interrupt_before_enqueue:
+            import asyncio
+            import json
+
+            from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+
+            async def transport(request):
+                submitted = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+                assert submitted == packet
+                return {"text": json.dumps({
+                    "request_id": job["id"], "occurrences": [], "links": [],
+                    "facts": [{
+                        "target_id": target["id"], "predicate": "condition", "value": "smooth",
+                        "effective_time": packet["time"], "dependency_group": "repair-output",
+                        "asserted_H_class": "H0",
+                    }],
+                    "dependencies": [{
+                        "group_id": "repair-output", "parent_refs": packet["event_refs"],
+                        "parent_groups": [], "asserted_H_class": "H0",
+                    }],
+                })}
+
+            result = asyncio.run(HistoricalModelProvider(transport=transport).propose(packet))
+            assert history.record_candidate(
+                job["id"], lease["job"]["lease_token"], result.candidate, result.receipt.as_dict()
+            ) == "CANDIDATE_READY"
+            admitted = history.commit_candidate(job["id"])
+            assert admitted["status"] == "INDEX_READY"
+            assert history.target(target["id"])["physical_depth"]["condition"]["value"] == "smooth"
+            assert target["id"] not in {row["id"] for row in history.visible_surfaces()}
+            with pytest.raises(HistoryRefusal, match="HISTORICAL_TARGET_UNAVAILABLE"):
+                history.inspect(target["id"])
+
             # Supply a second unit of stock through the test world's existing checkpoint.
             session = reopened.base_owner.fanin.session
             world = session.world()
