@@ -95,3 +95,91 @@ def test_worker_releases_foreground_guard_during_inference():
         "status": "INDEX_READY"
     }
     assert not locked
+
+
+def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+    import os
+    from queue import Queue
+    from subprocess import run
+    from threading import Thread
+    from time import monotonic, sleep
+
+    monkeypatch.syspath_prepend(str(P4))
+    from run_p4 import foreground_lock, open_owner
+    from rawlsing_next.sorok_history.owner import HistoricalWorld
+
+    packets = Queue()
+
+    class MockEndpoint(BaseHTTPRequestHandler):
+        def do_POST(self):
+            request = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            prompt = request["messages"][0]["content"]
+            packet = json.loads(prompt.split("Packet:\n", 1)[1])
+            packets.put(packet)
+            candidate = {
+                "request_id": packet["request_id"],
+                "facts": [{
+                    "target_id": packet["target_ids"][0], "predicate": "texture",
+                    "value": "matte", "effective_time": packet["time"],
+                    "dependency_group": "physical", "asserted_H_class": "H0",
+                }],
+                "occurrences": [], "links": [],
+                "dependencies": [{
+                    "group_id": "physical", "parent_refs": packet["event_refs"],
+                    "parent_groups": [], "asserted_H_class": "H0",
+                }],
+            }
+            payload = json.dumps({
+                "model": "test-endpoint",
+                "choices": [{"message": {"content": json.dumps(candidate)}}],
+            }).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Length", str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
+
+        def log_message(self, *args):
+            pass
+
+    env = {key: value for key, value in os.environ.items()
+           if not key.startswith("SOROK_HISTORY_")}
+    cli = [sys.executable, str(P4 / "run_p4.py"), "--state", str(tmp_path)]
+    with HTTPServer(("127.0.0.1", 0), MockEndpoint) as server:
+        request_thread = Thread(target=server.handle_request)
+        server.timeout = 60
+        request_thread.start()
+        try:
+            opened = run(
+                cli + ["new"], capture_output=True, text=True, check=True, timeout=90,
+                env={**env, "SOROK_HISTORY_MODEL": "test-endpoint",
+                     "SOROK_HISTORY_MODEL_ENDPOINT": f"http://127.0.0.1:{server.server_port}"},
+            )
+            assert "matte" not in opened.stdout
+            packet = packets.get(timeout=45)
+        finally:
+            request_thread.join()
+
+    with foreground_lock(tmp_path):
+        owner = open_owner(tmp_path / "actual-p2")
+    try:
+        history = HistoricalWorld(owner.base_owner.fanin.session)
+        deadline = monotonic() + 15
+        while True:
+            job = history.job(packet["request_id"])
+            if job["status"] not in {"RUNNING", "CANDIDATE_READY"} or monotonic() >= deadline:
+                break
+            sleep(0.1)
+        assert job["status"] == "INDEX_READY", job
+        assert job["provider_receipt"]["model"] == "test-endpoint"
+    finally:
+        owner.close()
+
+    inspected = run(
+        cli + ["inspect-particular", packet["target_ids"][0]],
+        capture_output=True, text=True, check=True, timeout=45, env=env,
+    )
+    [fact] = json.loads(inspected.stdout)["observation"]["physical"]
+    assert fact["value"] == "matte"
+    assert fact["fact_id"] == job["admission"]["accepted"][0]["fact_ids"][0]

@@ -96,3 +96,17 @@ Tests verify the invocation follows the foreground save and lock release,
 absent configuration skips the wake, and the guard is open during inference.
 The launch proof uses an injected process starter. Live model execution and
 independent review remain unverified.
+
+### P4 background process and HTTP transport evidence
+
+The P4 opening, automatic worker process, HTTP request, owner admission and
+cold inspection now run together in
+`test_p4_wake_completes_through_a_mock_http_endpoint`. The one-request loopback
+fixture returns controlled material. The test reads the durable owner receipt
+and checks that a separate inspection reads the exact admitted fact ID.
+The endpoint is a transport fixture. Live model proof remains
+`LIVE_PROVIDER_NOT_RUN`.
+
+The HTTP adapter now bounds response bytes before JSON decoding. Oversized
+responses receive `RESPONSE_LIMIT_EXCEEDED` and no candidate. This caps the
+transport allocation even when an endpoint ignores the output-token request.

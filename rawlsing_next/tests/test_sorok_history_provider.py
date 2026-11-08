@@ -303,3 +303,29 @@ def test_request_id_mismatch_is_terminal_and_does_not_return_the_candidate():
     assert result.candidate is None
     assert result.receipt.failure_code == "REQUEST_ID_MISMATCH"
     assert result.receipt.failure_grade == GRADE_TERMINAL
+
+
+def test_endpoint_response_body_is_bounded_before_parsing(monkeypatch):
+    from contextlib import nullcontext
+
+    reads = []
+
+    class Response:
+        def read(self, length):
+            reads.append(length)
+            return b" " * length
+
+    monkeypatch.setattr(
+        "rawlsing_next.sorok_history.provider.urllib.request.urlopen",
+        lambda *args, **kwargs: nullcontext(Response()),
+    )
+    provider = HistoricalModelProvider(config=ProviderConfig(
+        endpoint="https://model.example.invalid/v1/chat/completions",
+        model="configured-model", max_output_chars=100,
+    ))
+
+    result = run(provider.propose(packet()))
+
+    assert reads == [6 * 100 + 65_536 + 1]
+    assert result.candidate is None
+    assert result.receipt.failure_code == "RESPONSE_LIMIT_EXCEEDED"

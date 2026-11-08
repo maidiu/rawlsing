@@ -564,9 +564,16 @@ class EndpointModelTransport:
             method="POST",
         )
         timeout = float(request.get("timeout_s", self.timeout_s))
+        # Allow JSON escaping and bounded response metadata in addition to model text.
+        response_limit = 6 * int(request["max_output_chars"]) + 65_536
         try:
             with urllib.request.urlopen(req, timeout=timeout) as response:
-                payload = json.loads(response.read().decode("utf-8"))
+                raw = response.read(response_limit + 1)
+            if len(raw) > response_limit:
+                raise ProviderTerminalError(
+                    "endpoint response exceeds the transport bound", code="RESPONSE_LIMIT_EXCEEDED"
+                )
+            payload = json.loads(raw.decode("utf-8"))
         except urllib.error.HTTPError as exc:
             status = int(exc.code)
             if status == 429:
@@ -580,7 +587,7 @@ class EndpointModelTransport:
             ) from exc
         except (urllib.error.URLError, TimeoutError, OSError) as exc:
             raise ProviderTransientError("endpoint transport failure", code="TRANSPORT_FAILURE") from exc
-        except json.JSONDecodeError as exc:
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
             raise ProviderTerminalError("endpoint returned malformed JSON", code="INVALID_JSON") from exc
         if not isinstance(payload, Mapping):
             raise ProviderTerminalError("endpoint response is not an object", code="INVALID_RESPONSE")
@@ -717,6 +724,7 @@ class HistoricalModelProvider:
             "request_id": packet["request_id"],
             "prompt": prompt,
             "max_output_tokens": self.config.max_output_tokens,
+            "max_output_chars": self.config.max_output_chars,
             "timeout_s": self.config.timeout_s,
             "stream": False,
         }
