@@ -9,6 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parent
 P3 = ROOT.parent / "SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1"
 sys.path.insert(0, str(P3 / "tests"))
+sys.path.append(str(ROOT.parents[1]))
 
 # Reuse the received sourcefree scenario constructors. They provide antecedent
 # data only. All user operations come from this CLI's caller.
@@ -74,11 +75,17 @@ def surface(owner, ledger):
         row for row in view["visible_events"]
         if row["clock"] >= opening_clock or row["kind"] == "ARRIVAL"
     ]
-    return {"grade": GRADE, "clock": fanin.session.clock(),
+    result = {"grade": GRADE, "clock": fanin.session.clock(),
             "location": view.get("location"),
             "tool_available": view.get("tool_available"),
             "observations": observations,
             "choices": choices, "invitation": invited}
+    from rawlsing_next.sorok_history.owner import HistoricalWorld
+
+    particulars = HistoricalWorld(fanin.session).visible_surfaces()
+    if particulars:
+        result["historical_particulars"] = list(particulars)
+    return result
 
 
 def new(state, ledger_file, history):

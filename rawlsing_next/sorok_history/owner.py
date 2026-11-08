@@ -1,9 +1,12 @@
 """Historical-materialization state in the existing Sorok world checkpoint."""
 
+from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 from hashlib import sha256
 import json
+import time
+from uuid import uuid4
 
 
 RESOURCE = "sorok.historical_materialization.v1"
@@ -51,6 +54,31 @@ class HistoricalWorld:
             raise HistoryRefusal("WORLD_HISTORY_SCOPE_MISMATCH")
         return state
 
+    @contextmanager
+    def _write(self):
+        session = self.session
+        db = session.product.store.db
+        db.execute("BEGIN IMMEDIATE")
+        try:
+            world = session.world()
+            state = self._state(world)
+            before = digest(state)
+            yield world, state
+            if digest(state) != before:
+                world.resources[RESOURCE] = state
+                session.product._checkpoint(session.branch_id, world.clock, world)
+            db.commit()
+        except BaseException:
+            db.rollback()
+            raise
+
+    @staticmethod
+    def _world_readset(world):
+        material = world.snapshot()
+        material.pop("hash", None)
+        material["resources"].pop(RESOURCE, None)
+        return digest(material)
+
     def admit_surface(self, particular: SurfaceParticular):
         """Commit existence and the first historical demand in one checkpoint."""
         if not isinstance(particular, SurfaceParticular):
@@ -68,12 +96,8 @@ class HistoricalWorld:
             raise HistoryRefusal("INVALID_SURFACE_PARTICULAR")
 
         session = self.session
-        db = session.product.store.db
-        db.execute("BEGIN IMMEDIATE")
-        try:
-            world = session.world()
-            state = self._state(world)
-            root, branch = self.scope()
+        with self._write() as (world, state):
+            root, branch = state["root"], state["branch"]
             target_id = "history-target:" + digest([root, branch, particular.referent_key])
             material = asdict(particular)
             dimensions = sorted(set(particular.unresolved))
@@ -82,7 +106,6 @@ class HistoricalWorld:
             if previous is not None:
                 if previous["surface"] != material:
                     raise HistoryRefusal("BOUND_SURFACE_CONFLICT")
-                db.commit()
                 return deepcopy(previous)
 
             event = session.event(particular.occurrence_id)
@@ -109,19 +132,96 @@ class HistoricalWorld:
                 }
                 target["job_id"] = job_id
             state["targets"][target_id] = target
-            world.resources[RESOURCE] = state
-            session.product._checkpoint(branch, world.clock, world)
-            db.commit()
             return deepcopy(target)
-        except BaseException:
-            db.rollback()
-            raise
 
     def target(self, target_id):
         state = self._state(self.session.world())
         return deepcopy(state["targets"].get(target_id))
 
+    def visible_surfaces(self):
+        """Project admitted surface facts available to the current observer."""
+        world = self.session.world()
+        if RESOURCE not in world.resources:
+            return ()
+        state = self._state(world)
+        actor = self.session.meta["user_actor"]
+        location = world.positions.get(actor)
+        perceived = self.session.user_perceived_ids()
+        return tuple(
+            {"id": target["id"], "domain": target["surface"]["domain"],
+             "physical": deepcopy(target["surface"]["physical"])}
+            for target in state["targets"].values()
+            if target["surface"]["location"] == location
+            and target["surface"]["occurrence_id"] in perceived
+        )
+
     def pending(self):
         state = self._state(self.session.world())
         return tuple(deepcopy(job) for job in state["outbox"].values()
                      if job["status"] == "ENQUEUED")
+
+
+    def lease(self, *, seconds=60, now=None):
+        """Acquire one durable attempt, recovering expired attempts on reopen."""
+        if type(seconds) is not int or not 1 <= seconds <= 600:
+            raise HistoryRefusal("INVALID_LEASE_DURATION")
+        now = time.time() if now is None else now
+        with self._write() as (world, state):
+            for job in state["outbox"].values():
+                if job["status"] == "RUNNING" and job["expires_at"] <= now:
+                    job["status"] = ("FAILED_RETRYABLE" if job["attempt"] < 3
+                                     else "FAILED_TERMINAL")
+                if job["status"] not in {"ENQUEUED", "FAILED_RETRYABLE"}:
+                    continue
+                target = state["targets"][job["target_id"]]
+                if target["version"] != job["target_version"]:
+                    job["status"] = "STALE"
+                    continue
+                job.update(status="RUNNING", attempt=job.get("attempt", 0) + 1,
+                           lease_token=uuid4().hex, expires_at=now + seconds,
+                           world_readset=self._world_readset(world))
+                return deepcopy({"job": job, "target": target, "world_clock": world.clock})
+        return None
+
+    @staticmethod
+    def _active_attempt(state, job_id, token, now):
+        job = state["outbox"].get(job_id)
+        if (job is None or job["status"] != "RUNNING" or job["lease_token"] != token
+                or job["expires_at"] <= now):
+            raise HistoryRefusal("HISTORICAL_ATTEMPT_NOT_CURRENT")
+        return job
+
+    def record_candidate(self, job_id, token, candidate, receipt, *, now=None):
+        """Persist provider output in the outbox. Admission remains a separate write."""
+        if not isinstance(candidate, dict) or candidate.get("request_id") != job_id:
+            raise HistoryRefusal("HISTORICAL_REQUEST_MISMATCH")
+        if not isinstance(receipt, dict):
+            raise HistoryRefusal("HISTORICAL_RECEIPT_REQUIRED")
+        material = json.dumps([candidate, receipt], ensure_ascii=False, allow_nan=False)
+        if len(material.encode("utf-8")) > 128_000:
+            raise HistoryRefusal("HISTORICAL_RESULT_TOO_LARGE")
+        now = time.time() if now is None else now
+        with self._write() as (world, state):
+            job = self._active_attempt(state, job_id, token, now)
+            target = state["targets"][job["target_id"]]
+            if (job["world_readset"] != self._world_readset(world)
+                    or target["version"] != job["target_version"]):
+                job["status"] = "STALE"
+            else:
+                job.update(status="CANDIDATE_READY", candidate=deepcopy(candidate),
+                           provider_receipt=deepcopy(receipt))
+            return job["status"]
+
+    def record_failure(self, job_id, token, code, *, retryable=False, now=None):
+        if not isinstance(code, str) or not code or len(code) > 100:
+            raise HistoryRefusal("INVALID_HISTORICAL_FAILURE_CODE")
+        now = time.time() if now is None else now
+        with self._write() as (_, state):
+            job = self._active_attempt(state, job_id, token, now)
+            job.update(failure_code=code, status=(
+                "FAILED_RETRYABLE" if retryable and job["attempt"] < 3 else "FAILED_TERMINAL"
+            ))
+            return job["status"]
+
+    def job(self, job_id):
+        return deepcopy(self._state(self.session.world())["outbox"].get(job_id))

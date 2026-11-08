@@ -59,6 +59,78 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
     try:
         owner = HistoricalWorld(reopened.session)
         assert owner.target(target["id"]) == target
-        assert [row["id"] for row in owner.pending()] == [target["job_id"]]
+        job_id = target["job_id"]
+        assert [row["id"] for row in owner.pending()] == [job_id]
+        first = owner.lease(now=100, seconds=5)["job"]
+        assert first["status"] == "RUNNING"
+        assert owner.lease(now=104) is None
+
+        # A separate owner sees the durable attempt and can recover it only after expiry.
+        concurrent = fanin_api.open(root)
+        try:
+            recovered = HistoricalWorld(concurrent.session)
+            second = recovered.lease(now=106)["job"]
+            assert second["attempt"] == 2
+            assert second["lease_token"] != first["lease_token"]
+            candidate = {"request_id": job_id, "facts": []}
+            with pytest.raises(HistoryRefusal, match="HISTORICAL_ATTEMPT_NOT_CURRENT"):
+                owner.record_candidate(job_id, first["lease_token"], candidate, {}, now=107)
+            # Movement changes the owner's causal snapshot while the provider is away.
+            actor = concurrent.session.meta["user_actor"]
+            here = concurrent.session.world().positions[actor]
+            there = "market" if here == "workshop" else "workshop"
+            concurrent.session.travel(there)
+            assert recovered.record_candidate(
+                job_id, second["lease_token"], candidate, {}, now=107
+            ) == "STALE"
+            assert "candidate" not in recovered.job(job_id)
+            new_event = concurrent.session.events()[-1]
+            next_target = recovered.admit_surface(
+                replace(surface, referent_key="fixture:another-tool",
+                        location=there, occurrence_id=new_event["event_id"])
+            )
+            attempt = recovered.lease(now=108)["job"]
+            assert attempt["id"] == next_target["job_id"]
+            candidate = {"request_id": attempt["id"], "facts": []}
+            assert recovered.record_candidate(
+                attempt["id"], attempt["lease_token"], candidate,
+                {"grade": "MOCK"}, now=109
+            ) == "CANDIDATE_READY"
+            assert recovered.job(attempt["id"])["candidate"] == candidate
+            assert recovered.target(next_target["id"]) == next_target
+        finally:
+            concurrent.close()
     finally:
         reopened.close()
+
+
+def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, monkeypatch):
+    import json
+
+    p4_dir = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
+    monkeypatch.syspath_prepend(str(p4_dir))
+    from run_p4 import new, open_owner, surface as foreground_surface
+
+    ledger_file = tmp_path / "p4_receipts.json"
+    new(tmp_path, ledger_file, "recognized_plan")
+    ledger = json.loads(ledger_file.read_text())
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        actor = session.meta["user_actor"]
+        here = session.world().positions[actor]
+        there = "market" if here == "workshop" else "workshop"
+        session.travel(there)
+        event = session.events()[-1]
+        history = HistoricalWorld(session)
+        target = history.admit_surface(
+            SurfaceParticular(event["event_id"], "fixture:document-2", "artifact",
+                              there, {"cover": "paper"}, ("provenance",))
+        )
+        assert foreground_surface(owner, ledger)["historical_particulars"] == [
+            {"id": target["id"], "domain": "artifact", "physical": {"cover": "paper"}}
+        ]
+        session.travel(here)
+        assert "historical_particulars" not in foreground_surface(owner, ledger)
+    finally:
+        owner.close()

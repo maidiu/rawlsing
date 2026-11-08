@@ -23,3 +23,16 @@ checkpoint insertion, rejected unadmitted parents, conflicting surfaces,
 idempotent enqueue and cold reopen. The test supplies a structured foreground
 assertion. The live foreground and provider are pending and this test does not
 establish their acceptance.
+
+The outbox now persists a bounded running attempt in the same checkpoint.
+A separate reopened owner can recover an expired attempt. A superseded lease
+cannot save a result. A changed world snapshot marks the attempt stale.
+A current candidate is durable in the outbox and remains separate from
+admitted target material.
+
+The existing P4 `surface(owner, ledger)` now reads committed surface facts
+at the observer's current location when the source occurrence was perceived.
+It omits outbox contents and the producer's referent key. The integration
+test calls the real P4 surface after movement and verifies that leaving the
+location removes the target from the view. Historical DepthRead and the
+foreground producer still require integration.
