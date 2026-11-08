@@ -73,3 +73,10 @@ deduplication and wrong-hash refusal, and reopens the target and job.
 This proves independent world activity can introduce a target. Whether
 an independent activity can consume newly materialized depth is separate
 and remains unverified.
+
+On reopen, the worker can recover a missed repair obligation directly from
+the same branch's event journal and committed world checkpoint. Both must
+agree on the event hash. The copied prefix of a fork is excluded. The test
+commits an actual interval without calling the history adapter, closes the
+owner, and reopens through the worker with no model configured. The target
+and job are recovered and a repeated scan leaves the same job intact.

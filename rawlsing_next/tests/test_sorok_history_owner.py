@@ -426,10 +426,13 @@ def test_actual_fork_holds_parent_history_and_inflight_job(tmp_path, monkeypatch
         nested_owner.close()
 
 
-def test_real_interval_binds_completed_output_without_inspection(tmp_path, monkeypatch):
+@pytest.mark.parametrize("interrupt_before_enqueue", [False, True])
+def test_real_interval_binds_completed_output_without_inspection(
+    tmp_path, monkeypatch, interrupt_before_enqueue,
+):
     p4_dir = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
     monkeypatch.syspath_prepend(str(p4_dir))
-    from run_p4 import advance, new, open_owner
+    from run_p4 import advance, new, open_owner, run_history_worker
 
     new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
     owner = open_owner(tmp_path / "actual-p2")
@@ -437,28 +440,40 @@ def test_real_interval_binds_completed_output_without_inspection(tmp_path, monke
         fanin = owner.base_owner.fanin
         history = HistoricalWorld(fanin.session)
         before = {job["id"] for job in history.pending()}
-        interval = advance(fanin)
+        if interrupt_before_enqueue:
+            start = fanin.session.clock()
+            domain = fanin.deps["make_domain"](mode="ACTUAL", start=start, end=start + 2)
+            interval = fanin.session.produce_interval(domain)
+            assert {job["id"] for job in history.pending()} == before
+        else:
+            interval = advance(fanin)
         [receipt] = [row["world"] for row in interval["segments"]
                      if row["world"]["status"] == "CONFIRMED"]
+        assert not any(event["kind"] == "INSPECT" for event in fanin.session.events())
+    finally:
+        owner.close()
+
+    for key in ("SOROK_HISTORY_MODEL_ENDPOINT", "SOROK_HISTORY_ENDPOINT",
+                "SOROK_HISTORY_MODEL", "SOROK_HISTORY_MODEL_ID"):
+        monkeypatch.delenv(key, raising=False)
+    if interrupt_before_enqueue:
+        assert run_history_worker(tmp_path) == {"status": "LIVE_PROVIDER_NOT_RUN"}
+
+    reopened = open_owner(tmp_path / "actual-p2")
+    try:
+        history = HistoricalWorld(reopened.base_owner.fanin.session)
         [job] = [row for row in history.pending() if row["id"] not in before]
         target = history.target(job["target_id"])
         assert target["surface"]["domain"] == "artifact"
         assert target["surface"]["physical"] == {"completed_units": 1}
         assert target["surface"]["occurrence_id"] == receipt["actual_action_event_id"]
         assert job["parent_hash"] == receipt["actual_action_event_hash"]
-        assert not any(event["kind"] == "INSPECT" for event in fanin.session.events())
+        history.recover_completed_units()
+        assert [row for row in history.pending() if row["id"] not in before] == [job]
         assert history.capture_completed_unit(
             receipt["actual_action_event_id"], receipt["actual_action_event_hash"]
         ) == target["id"]
         with pytest.raises(HistoryRefusal, match="HISTORICAL_REPAIR_PARENT_REQUIRED"):
             history.capture_completed_unit(receipt["actual_action_event_id"], "wrong-hash")
-    finally:
-        owner.close()
-
-    reopened = open_owner(tmp_path / "actual-p2")
-    try:
-        history = HistoricalWorld(reopened.base_owner.fanin.session)
-        assert history.target(target["id"]) == target
-        assert history.job(job["id"]) == job
     finally:
         reopened.close()

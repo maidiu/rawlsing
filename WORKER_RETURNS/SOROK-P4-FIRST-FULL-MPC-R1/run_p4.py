@@ -257,7 +257,8 @@ def run_history_worker(state, *, drain_backlog=False):
     try:
         with foreground_lock(state):
             check_source(owner)
-        history = HistoricalWorld(owner.base_owner.fanin.session)
+            history = HistoricalWorld(owner.base_owner.fanin.session)
+            history.recover_completed_units()
         service = drain if drain_backlog else run_once
         result = asyncio.run(service(
             history, provider if provider.live else None, guard=lambda: foreground_lock(state)
@@ -322,8 +323,9 @@ def main():
                         if witness is None or foreground_witness(owner, current) != witness:
                             raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
                     if args.command == "view":
-                        result = surface(owner, ledger)
                         history = HistoricalWorld(owner.base_owner.fanin.session)
+                        history.recover_completed_units()
+                        result = surface(owner, ledger)
                         candidate_ready = history.ready_candidate_id() is not None
                         recover_history = candidate_ready or bool(history.pending())
                     else:

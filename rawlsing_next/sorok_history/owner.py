@@ -201,24 +201,47 @@ class HistoricalWorld:
             )
             return self._register(state, particular, occurrence, world.clock)["id"]
 
+    @staticmethod
+    def _completed_unit_event(event):
+        body = event.get("body", {})
+        return (event.get("kind") == "REPAIR" and body.get("source_owned") is True
+                and type(body.get("completed_delta")) is int and body["completed_delta"] == 1
+                and bool(event.get("location")))
+
+    def _register_completed_unit(self, state, event, clock):
+        event_id = event["event_id"]
+        particular = SurfaceParticular(
+            event_id, f"completed-unit:{event_id}", "artifact", event["location"],
+            {"completed_units": 1}, ("physical", "provenance"),
+        )
+        return self._register(state, particular, event, clock)["id"]
+
+    def _local_events(self, branch_id):
+        branch = self.session.product.store.branch(branch_id)
+        inherited = branch["root_counts"].get("world_event", 0) if branch["parent_branch_id"] else 0
+        return self.session.events()[inherited:]
+
     def capture_completed_unit(self, event_id, event_hash):
         """Bind one completed output at the resolution of an actual repair event."""
         with self._write() as (world, state):
             event = self.session.event(event_id)
             if (event is None or event.get("hash") != event_hash
                     or event.get("kind") != "REPAIR" or event["clock"] > world.clock
-                    or not event.get("location")):
+                    or event not in world.events
+                    or event not in self._local_events(state["branch"])):
                 raise HistoryRefusal("HISTORICAL_REPAIR_PARENT_REQUIRED")
-            body = event["body"]
-            if (body.get("source_owned") is not True
-                    or type(body.get("completed_delta")) is not int
-                    or body["completed_delta"] != 1):
+            if not self._completed_unit_event(event):
                 raise HistoryRefusal("HISTORICAL_COMPLETED_UNIT_REQUIRED")
-            particular = SurfaceParticular(
-                event_id, f"completed-unit:{event_id}", "artifact", event["location"],
-                {"completed_units": 1}, ("physical", "provenance"),
-            )
-            return self._register(state, particular, event, world.clock)["id"]
+            return self._register_completed_unit(state, event, world.clock)
+
+    def recover_completed_units(self):
+        """Recover repair obligations from this branch's committed world events."""
+        with self._write() as (world, state):
+            checkpoint_events = {event["event_id"]: event["hash"] for event in world.events}
+            for event in self._local_events(state["branch"]):
+                if (self._completed_unit_event(event)
+                        and checkpoint_events.get(event["event_id"]) == event["hash"]):
+                    self._register_completed_unit(state, event, world.clock)
 
     def target(self, target_id):
         state = self._state(self.session.world())
