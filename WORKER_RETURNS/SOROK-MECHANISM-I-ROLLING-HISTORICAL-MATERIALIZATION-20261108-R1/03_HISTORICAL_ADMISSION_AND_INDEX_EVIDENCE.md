@@ -89,3 +89,10 @@ The packet carries identity and the observed role, with no actor-state
 payload. H0 remains the write ceiling. Existing leased packets retain
 their original digest inputs. The focused repair and provider tests verify
 the exact actor and event references and unchanged authority ceiling.
+
+The owner now persists the objective repair link in a reverse index keyed
+by the existing actor identity. The trusted read revalidates the current
+branch's target and original event before returning the link. The repair
+constraint packet uses the same link derivation. The recovery test removes
+the derived index and rebuilds the exact link from the committed journal.
+No user-facing reader receives this reverse index.

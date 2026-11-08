@@ -208,13 +208,53 @@ class HistoricalWorld:
                 and type(body.get("completed_delta")) is int and body["completed_delta"] == 1
                 and bool(event.get("location")))
 
-    def _register_completed_unit(self, state, event, clock):
+    def _repair_link(self, world, target, event):
+        if (target["surface"]["referent_key"] != f'completed-unit:{event["event_id"]}'
+                or event["hash"] != target["parent_hash"]
+                or not self._completed_unit_event(event)):
+            return None
+        actor_id = world.actor_state.get(event["actor_id"], {}).get("actor_id")
+        if actor_id not in self.session.read_root()["actor_ids"]:
+            return None
+        root = target["root"]
+        actor = {"kind": "ACTOR", "object_id": actor_id,
+                 "content_hash": digest({"root": root, "actor_id": actor_id})}
+        link = {
+            "target_id": target["id"], "relation": "PERFORMED_REPAIR",
+            "actor_ref": actor, "event_id": event["event_id"], "event_hash": event["hash"],
+            "clock": event["clock"], "root": root, "branch": target["branch"],
+        }
+        return {"edge_id": "history-link:" + digest(link), **link}
+
+    def _register_completed_unit(self, state, event, world):
         event_id = event["event_id"]
         particular = SurfaceParticular(
             event_id, f"completed-unit:{event_id}", "artifact", event["location"],
             {"completed_units": 1}, ("physical", "provenance"),
         )
-        return self._register(state, particular, event, clock)["id"]
+        target = self._register(state, particular, event, world.clock)
+        link = self._repair_link(world, target, event)
+        if link is not None:
+            actor_id = link["actor_ref"]["object_id"]
+            state.setdefault("repair_links_by_actor", {}).setdefault(actor_id, {})[
+                target["id"]
+            ] = link
+        return target["id"]
+
+    def repair_links_for_actor(self, actor_id):
+        """Return branch-owned objective participation to a trusted world consumer."""
+        world = self.session.world()
+        state = self._state(world)
+        indexed = state.get("repair_links_by_actor", {}).get(actor_id, {})
+        links = []
+        for target_id, link in sorted(indexed.items()):
+            target = state["targets"].get(target_id)
+            event = self.session.event(link["event_id"])
+            if target is not None and event is not None:
+                actual = self._repair_link(world, target, event)
+                if actual == link:
+                    links.append(actual)
+        return tuple(links)
 
     def _local_events(self, branch_id):
         branch = self.session.product.store.branch(branch_id)
@@ -232,7 +272,7 @@ class HistoricalWorld:
                 raise HistoryRefusal("HISTORICAL_REPAIR_PARENT_REQUIRED")
             if not self._completed_unit_event(event):
                 raise HistoryRefusal("HISTORICAL_COMPLETED_UNIT_REQUIRED")
-            return self._register_completed_unit(state, event, world.clock)
+            return self._register_completed_unit(state, event, world)
 
     def recover_completed_units(self):
         """Recover repair obligations from this branch's committed world events."""
@@ -241,7 +281,7 @@ class HistoricalWorld:
             for event in self._local_events(state["branch"]):
                 if (self._completed_unit_event(event)
                         and checkpoint_events.get(event["event_id"]) == event["hash"]):
-                    self._register_completed_unit(state, event, world.clock)
+                    self._register_completed_unit(state, event, world)
 
     def target(self, target_id):
         state = self._state(self.session.world())
@@ -319,17 +359,13 @@ class HistoricalWorld:
                 "ref": occurrence, "time": event["clock"], "targets": [target_id],
             }]
         actor_refs = []
-        if (job.get("repair_actor_bound")
-                and target["surface"]["referent_key"] == f'completed-unit:{event["event_id"]}'
-                and self._completed_unit_event(event)):
-            actor = world.actor_state.get(event["actor_id"], {})
-            actor_id = actor.get("actor_id")
-            if actor_id in self.session.read_root()["actor_ids"]:
-                identity = ref("ACTOR", actor_id, digest({"root": root, "actor_id": actor_id}))
-                actor_refs.append(identity)
-                chronology["records"][0]["participants"] = [
-                    {"role": "PERFORMED_REPAIR", "actor_ref": identity},
-                ]
+        link = self._repair_link(world, target, event) if job.get("repair_actor_bound") else None
+        if link is not None:
+            identity = link["actor_ref"]
+            actor_refs.append(identity)
+            chronology["records"][0]["participants"] = [
+                {"role": link["relation"], "actor_ref": identity},
+            ]
         return {
             "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
             "request_id": job["id"], "root": root, "branch": branch, "time": world.clock,

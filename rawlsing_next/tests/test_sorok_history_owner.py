@@ -476,6 +476,16 @@ def test_real_interval_binds_completed_output_without_inspection(
         with pytest.raises(HistoryRefusal, match="HISTORICAL_REPAIR_PARENT_REQUIRED"):
             history.capture_completed_unit(receipt["actual_action_event_id"], "wrong-hash")
 
+        [link] = history.repair_links_for_actor(receipt["actor_id"])
+        assert link["target_id"] == target["id"]
+        assert link["event_id"] == receipt["actual_action_event_id"]
+        assert link["event_hash"] == receipt["actual_action_event_hash"]
+        assert history.repair_links_for_actor("unbound-actor") == ()
+        with history._write() as (_, state):
+            state.pop("repair_links_by_actor")
+        history.recover_completed_units()
+        assert history.repair_links_for_actor(receipt["actor_id"]) == (link,)
+
         assert history.lease()["job"]["id"] in before
         lease = history.lease()
         assert lease["job"]["id"] == job["id"]
