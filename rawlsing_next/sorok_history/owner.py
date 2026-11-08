@@ -291,7 +291,10 @@ class HistoricalWorld:
             raise HistoryRefusal("INVALID_LEASE_DURATION")
         now = time.time() if now is None else now
         with self._write() as (world, state):
-            jobs = sorted(state["outbox"].values(), key=lambda job: job["status"] == "STALE")
+            jobs = sorted(
+                state["outbox"].values(),
+                key=lambda job: ("inspection_priority_event" not in job, job["status"] == "STALE"),
+            )
             for job in jobs:
                 if job["status"] == "RUNNING" and job["expires_at"] <= now:
                     job["status"] = ("FAILED_RETRYABLE" if job["attempt"] < 3
@@ -515,6 +518,8 @@ class HistoricalWorld:
                  "changed": False, "action_seq": session._action_seq()},
             )
             state.setdefault("inspections", {})[event["event_id"]] = event["hash"]
+            if depth_status == "PENDING":
+                job.setdefault("inspection_priority_event", event["event_id"])
             return deepcopy(event)
 
     def read_inspection(self, event_id):

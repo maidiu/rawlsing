@@ -197,7 +197,7 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
         history = HistoricalWorld(session)
         target = history.admit_surface(
             SurfaceParticular(event["event_id"], "fixture:document-2", "artifact",
-                              there, {"cover": "paper"}, ("provenance",))
+                              there, {"cover": "paper"}, ("physical", "provenance"))
         )
         sibling = history.admit_surface(
             SurfaceParticular(event["event_id"], "fixture:collection-3", "collection",
@@ -219,6 +219,13 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
             row["id"]: (row["domain"], row["physical"])
             for row in foreground_surface(owner, ledger)["historical_particulars"]
         } == expected
+        request = history.inspect(target["id"])
+        repeated = history.inspect(target["id"])
+        assert repeated["event_id"] != request["event_id"]
+        lease = history.lease()
+        assert lease["job"]["id"] == target["job_id"]
+        assert lease["job"]["inspection_priority_event"] == request["event_id"]
+        assert lease["packet"]["event_refs"][0]["object_id"] == event["event_id"]
         session.travel(here)
         assert foreground_surface(owner, ledger)["historical_particulars"] == [tool]
         result = act(owner, ledger_file, ledger, Namespace(
