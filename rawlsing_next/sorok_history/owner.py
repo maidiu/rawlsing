@@ -521,12 +521,14 @@ class HistoricalWorld:
                 row["dependency_group"] for family in ("occurrences", "links")
                 for row in (candidate.get(family) or [])
             }
-            admitted_groups = set()
+            admitted_groups = {}
             for group in result["accepted_groups"]:
                 group_id = group["group_id"]
                 claims = group["claims"]
                 dependency = dependencies.get(group_id, {})
                 if (group_id in nonphysical_groups
+                        or any(digest(ref) not in owner_refs
+                               for claim in claims for ref in (claim.get("source_refs") or ()))
                         or any(parent not in admitted_groups
                                for parent in (dependency.get("parent_groups") or []))
                         or any(digest(ref) not in owner_refs
@@ -564,6 +566,14 @@ class HistoricalWorld:
                             world.clock if effective_time is None else effective_time
                         ),
                         "asserted_at": world.clock, "parent_hash": target["parent_hash"],
+                        "parent_event_ref": packet["event_refs"][0],
+                        "claim_ref": claim.get("ref"),
+                        "owner_dependency_refs": dependency.get("parent_refs") or [],
+                        "owner_source_refs": claim.get("source_refs") or [],
+                        "dependency_fact_ids": sorted({
+                            fact_id for parent in (dependency.get("parent_groups") or ())
+                            for fact_id in admitted_groups[parent]
+                        }),
                         "job_id": job_id, "group_id": group_id,
                         "evidence_class": "SOURCEFREE_SYNTHETIC_PHYSICAL",
                     }
@@ -573,7 +583,7 @@ class HistoricalWorld:
                 else:
                     physical = proposed
                     accepted.append({"group_id": group_id, "fact_ids": group_facts})
-                    admitted_groups.add(group_id)
+                    admitted_groups[group_id] = group_facts
                     continue
                 rejected.append({"group_id": group_id, "reason": "PHYSICAL_FACT_CONFLICT_OR_TYPE"})
 
@@ -679,6 +689,11 @@ class HistoricalWorld:
             fact = facts.get(predicate)
             if fact is None or fact["id"] != fact_id:
                 raise HistoryRefusal("HISTORICAL_INSPECTION_READSET_MISMATCH")
+            parent_ref = fact.get("parent_event_ref")
+            if parent_ref is not None:
+                parent = session.event(parent_ref["object_id"])
+                if parent is None or parent["hash"] != parent_ref["content_hash"]:
+                    raise HistoryRefusal("HISTORICAL_INSPECTION_PARENT_MISMATCH")
             observed.append({"predicate": predicate, "value": fact["value"], "fact_id": fact_id})
         result = {"target_id": target["id"], "observation_id": event_id, "physical": observed}
         if "physical_depth_status" in body:

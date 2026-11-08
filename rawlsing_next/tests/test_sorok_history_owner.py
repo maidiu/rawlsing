@@ -140,6 +140,9 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
             depth = recovered.target(next_target["id"])["physical_depth"]
             assert depth["texture"]["value"] == "matte"
             assert depth["texture"]["parent_hash"] == new_event["hash"]
+            assert depth["texture"]["parent_event_ref"] == packet["event_refs"][0]
+            assert depth["texture"]["owner_dependency_refs"] == packet["event_refs"]
+            assert depth["texture"]["claim_ref"] == candidate["facts"][0]["ref"]
             with pytest.raises(HistoryRefusal, match="HISTORICAL_INSPECTION_NOT_PERCEIVED"):
                 recovered.read_inspection(new_event["event_id"])
             seen = recovered.inspect(next_target["id"])
@@ -147,6 +150,13 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
                 {"predicate": "texture", "value": "matte", "fact_id": depth["texture"]["id"]}
             ]
             assert "condition" not in depth
+            read_event = concurrent.session.event
+            with monkeypatch.context() as patch:
+                patch.setattr(concurrent.session, "event", lambda event_id: (
+                    None if event_id == new_event["event_id"] else read_event(event_id)
+                ))
+                with pytest.raises(HistoryRefusal, match="HISTORICAL_INSPECTION_PARENT_MISMATCH"):
+                    recovered.read_inspection(seen["event_id"])
 
             retry = recovered.lease(now=110, seconds=5)
             assert retry["job"]["id"] == job_id
