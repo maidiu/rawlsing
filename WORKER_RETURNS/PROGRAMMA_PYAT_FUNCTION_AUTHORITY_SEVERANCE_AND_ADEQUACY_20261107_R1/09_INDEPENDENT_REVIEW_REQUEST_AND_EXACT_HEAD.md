@@ -12,7 +12,8 @@
 
 ## Exact output head to review
 
-**Fan-in output head:** `__EXACT_OUTPUT_HEAD__` (the commit containing this file; verify with `git rev-parse HEAD` after the lease commit/amend and `git ls-remote origin refs/heads/agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`).
+**Fan-in content head:** `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe` (the commit containing deliverables 00–10 and CHECKPOINT).
+**Branch head:** the metadata-only commit on top of the content head; verify with `git rev-parse HEAD` and `git ls-remote origin refs/heads/agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`. The content under review is the content head; the branch head changes only `09`/`CHECKPOINT.json` metadata.
 **Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
 **Preparation base observed at intake:** `e2fdd975f618228ecc4e146840cb0eed2091a20f`.
 **Protected source observation:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.

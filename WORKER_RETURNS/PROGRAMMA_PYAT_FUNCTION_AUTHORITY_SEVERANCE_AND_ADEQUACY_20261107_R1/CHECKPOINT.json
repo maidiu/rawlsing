@@ -2,7 +2,7 @@
   "schema": "PYAT777_CHECKPOINT_V1",
   "goal_complete": false,
   "stage": "HQ_FANIN_DRAFT_COMPLETE_INDEPENDENT_REVIEW_PENDING",
-  "exact_output_head": "__EXACT_OUTPUT_HEAD__",
+  "exact_output_head": "ad4fe3c9cd67eed5bc79644bb399a7090846a8fe",
   "prepared_branch": "agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1",
   "preparation_base_observed": "e2fdd975f618228ecc4e146840cb0eed2091a20f",
   "protected_source_observation": "7a5429ffbc48efd25e28c912da80c822e66bc182",
@@ -183,7 +183,8 @@
     "performed": false,
     "review_lease": "C7_HQ_FANIN_INDEPENDENT_REVIEW/",
     "request": "09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md",
-    "status": "HELD"
+    "status": "HELD",
+    "exact_content_head": "ad4fe3c9cd67eed5bc79644bb399a7090846a8fe"
   },
   "no_completion_claims": [
     "No whole-777 completion",
@@ -195,5 +196,6 @@
     "No source_configuration execution",
     "No production/existing-test/HQ/peer/protected write"
   ],
-  "saved_utc": "2026-11-08T00:00:00+00:00"
+  "saved_utc": "2026-11-08T00:00:00+00:00",
+  "branch_head_note": "branch head is the metadata-only commit on top of the content head; verify with ls-remote; the fan-in content under review is exact_output_head"
 }
