@@ -65,9 +65,21 @@ At the demonstrated scope, the fan-in unlocks:
 - It does **not** close the 17 secondary gates, the FIABC 3 fails, R09 provenance, #774 review or GF1 acceptance.
 - It does **not** complete whole #777.
 
+## C7 correction status (this revision)
+
+The C7 independent review (`605e1cb67156a09f9ce4c0990e572fa3fda1fdd1`) returned `REVISE` with five reporting/schema findings. The bounded author-HQ correction is applied:
+
+- **C7-001:** all 29 C6 `I` fields are typed current grades; historic A02 statuses preserved in `historical_a02_status`; no original signer/current operation inferred.
+- **C7-002:** GF1 is `NOT_RUN` / `UNPROVED_SELECTION_AND_EQUIVALENCE__TEST_ONLY_UNMERGED_CANDIDATE`; candidate exists, PR #691 unmerged, no defect proved; no merge/reimplementation.
+- **C7-003:** all 19 historical-only labels withdrawn to `NOT_RUN`/`DEMAND_UNPROVED`; genuine historical evidence preserved by `historical_evidence_class`; 10 current labels audited (7 exact current generic refs, 3 `UNPROVED_CURRENT_SELECTION`).
+- **C7-004:** `02`/`05` separate historical readers/A02 metadata from current owner/first-consumer fields; 29/29 C6 documentary locators preserved; 7 exact current refs + 22 `UNKNOWN_NOT_PROVED`; no invented filenames.
+- **C7-005:** canonical `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` + exact-content alias `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl`; SHA-256 equality and no-drift rule in `11`/`CHECKPOINT`.
+
+Taxonomy after correction: **21 FUNCTION_CURRENT / 30 NOT_RUN / 0 HISTORICAL_ONLY / 0 IMPLEMENTATION**. `goal_complete=false`; whole #777 remains incomplete.
+
 ## Next actual HQ action
 
-1. Commit the fan-in lease + `CHECKPOINT.json` on the prepared branch.
-2. Amend the commit to insert the exact output SHA in `09` and `CHECKPOINT.json`; push; direct `ls-remote` verify.
-3. **STOP.** Do not dispatch a new worker, do not poll, do not reopen C1–C6, do not touch protected/production state.
-4. The next authorized action is the **independent hostile whole-record review** in `09`, followed by HQ adjudication of its findings. Quota is `UNKNOWN`; whole #777 remains incomplete.
+1. Freeze the corrected content commit (00–11, canonical/alias 03, CHECKPOINT) on the prepared branch.
+2. Insert the corrected content SHA in `09`/`CHECKPOINT` and create the metadata-only commit; push; direct `ls-remote` verify.
+3. **STOP.** Do not dispatch a new worker, do not poll, do not reopen C1–C6 or C7, do not touch protected/production state.
+4. The next authorized action is the **C8 independent exact-head rereview of only C7-001–005 plus the widened current-field/taxonomy claims** in `09`, followed by HQ adjudication. Quota is `UNKNOWN`; whole #777 remains incomplete.
