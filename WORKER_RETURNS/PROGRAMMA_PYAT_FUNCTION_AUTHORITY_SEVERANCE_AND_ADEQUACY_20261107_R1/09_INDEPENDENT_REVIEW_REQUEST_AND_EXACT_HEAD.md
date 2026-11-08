@@ -13,8 +13,8 @@
 
 ## Exact output head to review
 
-**Corrected fan-in content head:** `__C7_CORRECTED_CONTENT_HEAD__` (the commit containing corrected `00`–`11`, `CHECKPOINT.json`, the canonical `03` and its exact-content alias).
-**Corrected metadata branch head:** the metadata-only commit on top of the content head; verify with `git rev-parse HEAD` and `git ls-remote origin refs/heads/agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
+**Corrected content commit:** `5efb9fa33aa26e0cfb6bc7a03270e4c896411843` (the commit containing corrected `00`–`11`, `CHECKPOINT.json`, the canonical `03` and its exact-content alias).
+**C8 review head:** the corrected metadata branch head on top of the content commit; verify with `git rev-parse HEAD` and `git ls-remote origin refs/heads/agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`. The branch head contains the same `00`–`11` content plus exact-head metadata; review the branch head.
 **Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
 **Prior content head reviewed by C7:** `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe`.
 **Prior metadata head:** `483f2a156d2156eeed22f31efc23a05b9335219d`.

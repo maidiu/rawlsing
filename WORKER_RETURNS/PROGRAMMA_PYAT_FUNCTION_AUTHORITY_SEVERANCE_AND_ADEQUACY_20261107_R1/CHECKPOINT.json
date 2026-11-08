@@ -2,7 +2,7 @@
   "schema": "PYAT777_CHECKPOINT_V1",
   "goal_complete": false,
   "stage": "C7_REVISE_RECEIVED__FANIN_AUTHOR_CORRECTION_READY_FOR_INDEPENDENT_REREVIEW__GOAL_FALSE",
-  "exact_output_head": "__C7_CORRECTED_CONTENT_HEAD__",
+  "exact_output_head": "5efb9fa33aa26e0cfb6bc7a03270e4c896411843",
   "branch_head_note": "branch head is the metadata-only commit on top of the corrected content head; verify with ls-remote; the fan-in content under review is exact_output_head",
   "prepared_branch": "agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1",
   "preparation_base_observed": "e2fdd975f618228ecc4e146840cb0eed2091a20f",
@@ -23,7 +23,7 @@
     "C7-003": "19/19 prior HISTORICAL_ONLY labels withdrawn to NOT_RUN/DEMAND_UNPROVED; genuine F07/F22/F23/F25 evidence preserved via historical_evidence_class; retirement_proof=NOT_PROVIDED__FIVE_TEST_COURT_NOT_RUN; 10 C6 current labels audited: 7 exact current generic refs + 3 UNPROVED_CURRENT_SELECTION",
     "C7-004": "29/29 C6 05 rows separate CURRENT_OWNER_FILE_OR_ABI/CURRENT_FIRST_READER from DOCUMENTARY_EVIDENCE_LOCATOR; 7 exact current refs + 22 UNKNOWN_NOT_PROVED; 02 separates HISTORICAL_READER/HISTORICAL_A02_METADATA from CURRENT_OWNER/CURRENT_FIRST_CONSUMER; no invented filenames",
     "C7-005": "canonical 03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl and exact-content alias 03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl; SHA-256 equality 9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049; single canonical pointer; no-drift rule",
-    "revision_diff": "ad4fe3c9cd67eed5bc79644bb399a7090846a8fe..__C7_CORRECTED_CONTENT_HEAD__"
+    "revision_diff": "ad4fe3c9cd67eed5bc79644bb399a7090846a8fe..5efb9fa33aa26e0cfb6bc7a03270e4c896411843"
   },
   "canonical_03": {
     "canonical": "03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl",
@@ -86,11 +86,28 @@
   "c7_003_audit": {
     "historical_only_withdrawn": 19,
     "historical_only_remaining": 0,
-    "genuine_historical_evidence_preserved": ["F07_OVERLAY", "F22_R3_REL", "F23_R3_NEG", "F25_LIFECYCLE"],
+    "genuine_historical_evidence_preserved": [
+      "F07_OVERLAY",
+      "F22_R3_REL",
+      "F23_R3_NEG",
+      "F25_LIFECYCLE"
+    ],
     "retirement_proof": "NOT_PROVIDED__FIVE_TEST_COURT_NOT_RUN",
     "c6_current_labels_total": 10,
-    "c6_current_labels_exact_current_refs": ["F01_QIDENTITY", "F02_SCOPE", "F06_RESP_CONTRACT", "F09_ROUTING", "F10_UNIVERSE", "F11_WEIGHT", "F17_J_REGISTRY"],
-    "c6_current_labels_unproved_current_selection": ["F03_QREL", "F05_RESP_OPTION", "F08_Q_USE"]
+    "c6_current_labels_exact_current_refs": [
+      "F01_QIDENTITY",
+      "F02_SCOPE",
+      "F06_RESP_CONTRACT",
+      "F09_ROUTING",
+      "F10_UNIVERSE",
+      "F11_WEIGHT",
+      "F17_J_REGISTRY"
+    ],
+    "c6_current_labels_unproved_current_selection": [
+      "F03_QREL",
+      "F05_RESP_OPTION",
+      "F08_Q_USE"
+    ]
   },
   "c7_001_c6_i": {
     "total_c6_records": 29,
@@ -241,7 +258,7 @@
     "request": "09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md",
     "status": "HELD",
     "c7_review_sha": "605e1cb67156a09f9ce4c0990e572fa3fda1fdd1",
-    "corrected_content_head": "__C7_CORRECTED_CONTENT_HEAD__"
+    "corrected_content_head": "5efb9fa33aa26e0cfb6bc7a03270e4c896411843"
   },
   "no_completion_claims": [
     "No whole-777 completion",

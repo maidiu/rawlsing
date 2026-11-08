@@ -4,8 +4,8 @@
 **C7 verdict:** `REVISE` (five reporting/schema findings; no source-code defect, no proved severance, no full equivalence).
 **Prior fan-in content head:** `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe`.
 **Prior metadata head:** `483f2a156d2156eeed22f31efc23a05b9335219d`.
-**Corrected content head:** `__C7_CORRECTED_CONTENT_HEAD__`.
-**Corrected metadata branch head:** `__C7_CORRECTED_METADATA_HEAD__`.
+**Corrected content head:** `5efb9fa33aa26e0cfb6bc7a03270e4c896411843`.
+**Corrected metadata branch head:** `the metadata-only commit on top of the content head; verify with git rev-parse HEAD / ls-remote`.
 **Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
 **Stage:** `C7_REVISE_RECEIVED__FANIN_AUTHOR_CORRECTION_READY_FOR_INDEPENDENT_REREVIEW__GOAL_FALSE`.
 **Goal complete:** **false**. Whole #777 remains incomplete.
@@ -143,18 +143,18 @@ Corrected artifact SHA-256:
 | `06_REAL_LOCAL_TEST_COMMANDS_OUTPUT_HASHES_AND_MUTATIONS.md` | `5be23983c960ba74952789cac2999ee6ccb78d0498157f2d2416956da7446c4c` |
 | `07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md` | `ffe887b7c69824cf3ba98e21b54ea4473a1a33e8a7fc60cc7d198a2932e7e1c2` |
 | `08_COVERAGE_DENOMINATORS_COLD_HANDOFF.tsv` | `9fcec6736121781d7476f07ba257dc1d05dcafc6f81bcc4fcb5bbc2510ad33b7` |
-| `09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md` | `bc7eae4eba1ca8f712245d51bcfb5db12c2b67ca454793ac5dccf0518a54b66c` |
+| `09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md` | `83bb4320cd9546a3f1c05fe00eb1b18a3d8b51135c6bbb2e98820087b23113ba` |
 | `10_HQ_PRIORITY_AND_NEXT_WORK.md` | `b51891292705c2f248f6db20f74ef049d4bf699d6693157c020720df37c7f322` |
-| `CHECKPOINT.json` | `c528c53092d52a45b9d1d019aa0a162022f17f7bd4728e94792f34c6876e1c98` |
+| `CHECKPOINT.json` | `5767fc529ab428522cbfe8eae18512a7f12ce2260ea5c29c53c2a6ac344b5e2a` |
 
 **C7 SHA:** `605e1cb67156a09f9ce4c0990e572fa3fda1fdd1`.
 **Prior content head:** `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe`.
-**Corrected content head:** `__C7_CORRECTED_CONTENT_HEAD__`.
-**Corrected metadata head:** `__C7_CORRECTED_METADATA_HEAD__`.
+**Corrected content head:** `5efb9fa33aa26e0cfb6bc7a03270e4c896411843`.
+**Corrected metadata head:** `the metadata-only commit on top of the content head; verify with git rev-parse HEAD / ls-remote`.
 
 ## 9. Revision diff and source currentness
 
-- Revision diff: `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe..__C7_CORRECTED_CONTENT_HEAD__` (recorded in `CHECKPOINT.c7_correction.revision_diff`).
+- Revision diff: `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe..5efb9fa33aa26e0cfb6bc7a03270e4c896411843` (recorded in `CHECKPOINT.c7_correction.revision_diff`).
 - Source currentness: protected observation `7a5429ffbc48efd25e28c912da80c822e66bc182` unchanged; C1–C6 author/review cuts unchanged; C7 review immutable at `605e1cb...`.
 - No C7 or C1–C6 return file was edited. Only the fan-in lease (`00`–`11`, `CHECKPOINT`, canonical/alias `03`) was written.
 
