@@ -1,104 +1,81 @@
-> Current status: C8 returned REVISE (`356124ee...`); three mechanical corrections described in12 are applied. Same-reviewer focused confirmation is pending against the next frozen content cut. Earlier exact-head request below records the prior target; it is not a new whole-machine review.
-
-# 09 — C8 independent rereview request and exact output head
+# 09 — C14 independent whole-record review request and exact content snapshot
 
 ## Status
 
-**C8 rereview not yet performed.** The C7 review returned `REVISE`; the author-HQ correction (C7-001–C7-005) is applied in this lease. The corrected fan-in is **not accepted** until a distinct nonauthor C8 exact-head rereview returns. Stage: `C7_REVISE_RECEIVED__FANIN_AUTHOR_CORRECTION_READY_FOR_INDEPENDENT_REREVIEW__GOAL_FALSE`; `goal_complete=false`.
+**C14 review not yet performed.** The C9–C13 combined return is prepared on the existing #777 fan-in branch. The content snapshot and provenance commit are recorded after the content commit is frozen; this request is not acceptance, not whole-product acceptance, and not a protected merge authorization.
 
 ## Named reviewer
 
-**Reviewer job:** `pyat777-hq-fanin-c8-independent-rereview-r1`.
-**Reviewer type:** distinct nonauthor, exact-head, schema/lineage rereviewer. Must be a different session from every C1–C6 author/reviewer, the HQ fan-in author, and the C7 reviewer. Must not have write authority in the fan-in lease. Model/effort must be verified on the actual next turn; no silent harness/host/model/effort switch.
-**Review lease:** a separate `C8_HQ_FANIN_REREVIEW/` directory only; no edits to `00`–`11`, `CHECKPOINT.json`, the canonical/alias `03`, C7, C1–C6, production code, tests, HQ, peer or protected state.
-**Review scope:** **only C7-001–C7-005 plus the widened current-field/taxonomy claims.** This is a schema/lineage correctness rereview, **not** a second whole-machine source/semantic/native acceptance, not a new severance/equivalence court, and not an S3/native authorization. C8 may reuse C7 proof but must read the exact changed files.
+**Reviewer job:** `pyat777-hq-fanin-c14-independent-whole-record-review-r1`.
+**Reviewer type:** distinct nonauthor, exact-content-snapshot, hostile whole-record reviewer. Must be a different session from every C1–C13 author/reviewer, the HQ fan-in author, and the C7/C8 reviewers. Must not have write authority in the fan-in lease. Model/effort must be verified on the actual next turn; no silent harness/host/model/effort change.
+**Review lease:** a separate `C15_HQ_FANIN_C14_REREVIEW/` directory only; no edits to `00`–`10`, the canonical/alias `03`, `C14_POST_C9_C13_FANIN/`, C8/C9–C13 returns, production code, tests, HQ, peer or protected state.
+**Scope:** whole-record schema/lineage/current-effect/terminal-criteria correctness on the exact C14 content snapshot. **Not** a new whole-machine source/semantic/native/S3 acceptance, not a new severance/equivalence court, and not an authorization to build or merge.
 
-## Exact output head to review
+## Exact content snapshot and provenance
 
-**Corrected content commit:** `5efb9fa33aa26e0cfb6bc7a03270e4c896411843` (the commit containing corrected `00`–`11`, `CHECKPOINT.json`, the canonical `03` and its exact-content alias).
-**C8 review head:** the corrected metadata branch head on top of the content commit; verify with `git rev-parse HEAD` and `git ls-remote origin refs/heads/agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`. The branch head contains the same `00`–`11` content plus exact-head metadata; review the branch head.
-**Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
-**Prior content head reviewed by C7:** `ad4fe3c9cd67eed5bc79644bb399a7090846a8fe`.
-**Prior metadata head:** `483f2a156d2156eeed22f31efc23a05b9335219d`.
-**C7 independent review SHA:** `605e1cb67156a09f9ce4c0990e572fa3fda1fdd1`.
-**Preparation base observed:** `e2fdd975f618228ecc4e146840cb0eed2091a20f`.
-**Protected source observation:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
+- **Base commit verified at intake:** `46104b8ddf44db4d5a32e603ca9332cebbbb1f94` (full `git rev-parse`; local prepared branch).
+- **C8-accepted historical content:** `55fca441d1c674c256473c264cabda48f2df0e52`.
+- **C14 content snapshot:** `__C14_CONTENT_SNAPSHOT__` — immutable fan-in content (00–10, canonical/alias 03, C14/00_RETURN.md, GOAL_AUDIT.json, EVIDENCE_INDEX.json). The content snapshot is hashed as a defined immutable set; it does not contain its own commit hash.
+- **C14 provenance commit:** `__C14_PROVENANCE_COMMIT__` — metadata-only commit recording the content snapshot SHA and file hashes; provenance separate from content.
+- **Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
+- **Protected source observation:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
 
-## Exact inputs the C8 reviewer must read
+## Exact inputs the C14 reviewer must read
 
-### Corrected fan-in artifacts
+### Fan-in artifacts at the content snapshot
 
 - `00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md`
 - `01_LEGACY_SELECTED_AUTHORITY_USE_AND_INCOMPLETE_CALLEE_COVERAGE.tsv`
 - `02_CURRENT_IMPLEMENTATIONS_PRE_FORGE_VS_WHOLE_PREV3.tsv`
-- `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` — **canonical required path**
-- `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` — exact-content alias; SHA-256 equality and no-drift rule recorded in `11`/`CHECKPOINT`
+- `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` — canonical required path
+- `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` — exact-content alias
 - `04_PROVED_EQUIVALENCES_AND_NO_BUILD_DECISIONS.md`
 - `05_SEVERED_OR_INCOMPLETE_MINIMAL_OWNER_REPAIRS.tsv`
 - `06_REAL_LOCAL_TEST_COMMANDS_OUTPUT_HASHES_AND_MUTATIONS.md`
-- `07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md`
 - `08_COVERAGE_DENOMINATORS_COLD_HANDOFF.tsv`
 - `09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md`
 - `10_HQ_PRIORITY_AND_NEXT_WORK.md`
-- `11_C7_CORRECTION_AND_CLOSURE.md`
-- `CHECKPOINT.json`
+- `C14_POST_C9_C13_FANIN/00_RETURN.md`
+- `C14_POST_C9_C13_FANIN/GOAL_AUDIT.json`
+- `C14_POST_C9_C13_FANIN/EVIDENCE_INDEX.json`
 
-### C7 review (immutable)
+`07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md` is unchanged from the C8-accepted content and is preserved; `CHECKPOINT.json` is HQ-retained and not written by this return.
 
-`WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C7_HQ_FANIN_INDEPENDENT_REVIEW/` at `605e1cb67156a09f9ce4c0990e572fa3fda1fdd1`:
+### C8 accepted content and C9–C13 returns/reviews
 
-- `00_REVIEW.md`
-- `01_FINDINGS.jsonl`
-- `02_COMMANDS_AND_EVIDENCE.md`
-- `03_REVIEW_COMMIT.txt`
+- C8 review and focused correction check: `C8_HQ_FANIN_REREVIEW/00_REVIEW.md`, `01_FINDINGS.jsonl`, `02_COMMANDS_AND_EVIDENCE.md`, `FOCUSED_CORRECTION_CHECK/00_REVIEW.md`, `FOCUSED_CORRECTION_CHECK/01_FINDINGS.jsonl`; accepted repair `55fca441d1c674c256473c264cabda48f2df0e52`.
+- C9: `C9_WORKLOAD_AUTHORITY_FIRST_CONSUMER/00_RETURN.md`, `01_CASES.jsonl`, `02_PRODUCER_SELECTOR_CONSUMER_TRACE.tsv`, `03_TEST_RECEIPTS.md`, `04_INDISPENSABLE_DEPENDENCIES.tsv`, `05_DECLARED_ESTATE_SCOPE.tsv`, `P1_CANDIDATE_BOUNDARY/00_RETURN.md`, `01_TRACE.jsonl`, `02_COMMANDS_AND_EVIDENCE.md`, `03_MINIMUM_OWNER_ACTION.tsv`, `04_BOUNDARY_LEDGER.jsonl`; independent review `05a750ad6bcab8124c1f5d86b8867181fa4ee92c` (`C9_P1_EXISTING_SUCCESSOR_INDEPENDENT_REVIEW/00_RETURN.md`, `REVIEW.json`); C9R correction `02a13a5e01880835434b30d9a3587147f9dab0de`.
+- C10: `C10_Q3_F03_FIRST_CONSUMER_EFFECT/00_RETURN.md`, `TRACE.jsonl`, `logs/replay_results.json`, `scripts/replay_f03.py`; independent review `ac8f10220dfbc489cd2d261d1d66e228f2bc2424` (`00_RETURN.md`, `REVIEW.json`, `02_COMMANDS_AND_EVIDENCE.md`, `logs/verify_c10.json`); author `fdda847507936f5e2cd32cf8c57326f0f65200d6`.
+- C11: `C11_Q3_F08_FIRST_CONSUMER_EFFECT/00_RETURN.md`, `TRACE.jsonl`, `probes/q3_f08_replay.json`, `logs/q3_f08_replay.log`; independent review `b939c51a21359efc556c3f58860789e247b011aa` (`00_RETURN.md`, `REVIEW.json`); author `76392135cea16afc0ff07da97843837bd33fc9b7`.
+- C12: `C12_F08_FUNCTIONAL_RESPONSIBILITY/00_RETURN.md`, `RESPONSIBILITY_MAP.jsonl`; author `71c40ba0325cb841c5ea3f45522b1ce72d5deff8`; map SHA-256 `5067649bbd16a2c95426ae88e112c56da2667029071b53cfc0a48bb8991675a1`.
+- C13: `C13_F03_FUNCTIONAL_RESPONSIBILITY/00_RETURN.md`, `RESPONSIBILITY_MAP.jsonl`; author `87390f002c3d122b958031087a77f7f7575931fc`; map SHA-256 `66e7ee95f2d6d02a27d08b238319d0a9ba460129cf8b65bae7cfb34ef4db9ed2`.
 
-### C1–C6 returns/reviews
-
-The C1–C6 author cuts and independent review cuts are unchanged from the prior fan-in:
-
-| Lane | Author/correction cut | Review cut |
-|---|---|---|
-| C1 | `79c4f33c51e7d0146e06e12cac6ea903c79cb7b0` | `753ff5dc95fb218f84ebf1697a91a2d392367f2c` |
-| C2 | `b132fa4a02b31ba539b33f24ad022846bb81acb8` | `638f75e7b661057954f7dbd3b58739b83ec2e8e1` |
-| C3 | `3fd285d671d51c8576fd2b962bc34eda1a714ece` | `aa122437b1fe224f4c6ea2ee31ed2f7de6af7323` |
-| C4 | `950ff275527a2963253336cbb05924a6c2943cd8` | `0def1171f8f9d2681b64ebe287adb7d209c896c7` |
-| C5 | `451f8d1e094800d523589cdd4db5159a338db836` | `ea9ff9e54e2bc7c9a56a1398d172e87a8f109f03` |
-| C6 | `0d548b033a0a20c9738fa4a3412ba5acd01217c5` | `333ade4e4c003595630d7f53eaeece85902d6759` |
-
-## C7 5/5 closure mapping the C8 reviewer must verify
-
-| C7 finding | Required correction | Corrected evidence |
-|---|---|---|
-| **C7-001** | All 29 C6 A–J field `I` typed current grade; historic A02 status preserved separately; no authority promotion | `03` C6 records: `I = CURRENT_SELECTED_ISSUER_UNPROVED; CURRENT_NATIVE_NOT_RUN; CURRENT_SCIENTIFIC_AUTHORITY_NOT_PROVED; ...`; `historical_a02_status` 29/29; `historical_a02_status_source`; `current_grade` object; 02/04/05/CHECKPOINT synchronized |
-| **C7-002** | GF1 frozen taxonomy not `IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE`; retain candidate/unmerged/no-defect | `03` C3-FF-04 `frozen_taxonomy_verdict=NOT_RUN`; `exact_hold=UNPROVED_SELECTION_AND_EQUIVALENCE__TEST_ONLY_UNMERGED_CANDIDATE__NO_SELECTED_NON_TEST_DEMAND__NO_DEFECT_PROVED`; `gf1_status`; 02/04/05/00/CHECKPOINT synchronized |
-| **C7-003** | All 19 historical-only labels audited; no five-test retirement pretense; preserve genuine evidence; audit 10 current labels | 19/19 retyped `NOT_RUN`/`DEMAND_UNPROVED`; `historical_evidence_class` for F07/F22/F23/F25; `retirement_proof=NOT_PROVIDED__FIVE_TEST_COURT_NOT_RUN`; 10 current labels: 7 exact current generic refs + 3 `UNPROVED_CURRENT_SELECTION` |
-| **C7-004** | 05 C6 owner/ABI is documentary locator, not exact current ABI; 02 C6 current fields separated | 05: `OWNER_FILE_OR_ABI=UNKNOWN_NOT_PROVED`, `DOCUMENTARY_EVIDENCE_LOCATOR` preserved 29/29, `CURRENT_OWNER_FILE_OR_ABI` 7 exact + 22 UNKNOWN, `CURRENT_FIRST_READER` 7 exact + 22 UNKNOWN; 02: `HISTORICAL_READER`/`HISTORICAL_A02_METADATA` separated from `CURRENT_OWNER`/`CURRENT_FIRST_CONSUMER`, field-class columns added |
-| **C7-005** | Required 03 filename present or governed alias with SHA-256 equality/no-drift | canonical `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl`; alias `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl`; SHA-256 equality `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251` at correction; single canonical pointer/no-drift rule |
-
-## Source-vs-execution limits the C8 reviewer must enforce
+## Source-vs-execution limits
 
 - **S0/S1 documentary:** historical release metadata, selected version/SHA/locator, A02 status, issuer holds. Not execution.
-- **S2 local sourcefree:** synthetic nonrespondent fixtures, sourcefree tests, fixture builds, static source inspection. Not original respondent/native execution, not current native issuer.
-- **S3 native/original:** **not run** in C1–C7 or this correction. No original respondent/SAV/DTA/DB read; no original35 issuance; no science/actor authority.
-- **No actual historical six-stage invocation** for the 29/58; all 581 R1 rows `RUNTIME_EXECUTED=NO`.
+- **S2 local sourcefree/test-time:** C9 sourcefree API witness, C10/C11 test-time historical replays, C2/C3/C4/C5 sourcefree/fixture receipts. Not original respondent/native execution, not current native issuer.
+- **S3 native/original:** **not run** in C1–C13 or this return. No original respondent/SAV/DTA/DB read; no original35 issuance; no science/actor authority.
+- **C10/C11 original historical run:** `NOT_OBSERVED` / `NOT_RUN`; test-time replay only; one-row/9-family witnesses are not all35.
+- **C9 P1:** 840 ATLAS candidate operations are test-only/sourcefree, not original35; empty C11 is an expected as-built negative, not missing engine; 630 non-DIST are typed refusals, not 630 missing capabilities.
 - **No current native issuer** for AR-0033, J, R157/original35, structural or actor cases; A02 recorded decisions are not the original signer.
 - **No protected merge**; no production/existing-test/HQ/peer write in this lease.
 - **No CI waiver**: FIABC 144 pass/3 fail and R09 provenance remain; #774 Q86 open; GF1 #691 test-only/unmerged.
-- **No whole-#777 completion**; 17 secondary gates remain open.
+- **No whole-#777 completion**; 17 secondary gates remain open; `goal_complete=false`.
 
-## C8 acceptance gates
+## C14 acceptance gates
 
-1. **C7 5/5 closure:** every C7 finding has the exact corrected evidence above; no finding is papered over.
-2. **51-case integrity:** `02`/`03`/`05` each contain exactly 51 unique case IDs, families 1/2/10/2/7/29, no extra/drop; `02` keeps 26 FF, 16 FF dependencies, 15 post-FF mechanisms, 11 seams, 30 #748 owner rows; `05` 51 rows.
-3. **C7-001:** all 29 C6 `I` fields are typed current grades; `historical_a02_status` preserved 29/29; no original signer/current operation inferred; `current_native_distinction` and first-readers preserved.
-4. **C7-002:** GF1 is `NOT_RUN`/typed unmerged-candidate hold; candidate exists; PR #691 unmerged; not runtime-selected; no defect proved; taxonomy totals 0 `IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE`.
-5. **C7-003:** 19/19 historical-only labels withdrawn to `NOT_RUN`/`DEMAND_UNPROVED`; genuine historical evidence preserved by `historical_evidence_class`; 10 current labels audited (7 exact current generic refs, 3 `UNPROVED_CURRENT_SELECTION`); no retirement or operational-currentness claim.
-6. **C7-004:** all 29 C6 `05` rows separate `CURRENT_OWNER_FILE_OR_ABI`/`CURRENT_FIRST_READER` from `DOCUMENTARY_EVIDENCE_LOCATOR`; 7 exact current refs + 22 `UNKNOWN_NOT_PROVED`; `02` separates historical readers/A02 metadata from current owner/first consumer.
-7. **C7-005:** canonical `03` and exact-content alias have SHA-256 equality, one canonical pointer and a no-drift rule; no two-study claim.
-8. **Taxonomy:** 21 `FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED`, 30 `NOT_RUN`, 0 `HISTORICAL_ONLY_OR_NO_JUSTIFIED_CURRENT_CONSUMER`, 0 `IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE`.
-9. **Denominators:** 29/58/228/581/687, 42/16, 15/8/7/10/3, 26/16, 15/11, 58, 27/9, 154/1608 remain separate; no magic sum.
-10. **No false green:** no proved severance, no full historical equivalence, no native/S3/science/actor/N11/N12, no CI waiver, no whole-#777 completion; `goal_complete=false`; C8 rereview is not acceptance.
-11. **Exact head/independence:** corrected content head exact; metadata branch head verified; C8 reviewer distinct nonauthor; no write outside C8 lease.
+1. **Case identity:** 51 historical case IDs/taxonomy preserved exactly from the C8-accepted snapshot; 4 C9 cases appended (`C9-O08-QUERY-TARGET-USE`, `C9-O12-ISSUED-WORKLOAD`, `C9-O13-BATCH-RECEIVING`, `C9-P1-CANDIDATE-BOUNDARY`); exactly **55 unique** cases; families C1 1/C2 2/C3 10/C4 2/C5 7/C6 29/C9 4; no extra/drop.
+2. **Canonical/alias:** `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` and `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` byte-equal; SHA-256 equality; one canonical pointer/no-drift.
+3. **A–J schema:** all 55 records have nonempty A–J, `forward_walk`, `reverse_walk`, `exact_hold`, `frozen_taxonomy_verdict`; the 4 C9 cases use the existing approved schema; no invented fields required.
+4. **Q3 supplemental:** C6-F03_QREL and C6-F08_Q_USE carry accepted Q3 supplemental fields; current grades/taxonomy unchanged; original historical run `NOT_OBSERVED`/`NOT_RUN`; current selection `UNPROVED`; no promotion.
+5. **Taxonomy:** 51 historical snapshot = 21 `FUNCTION_CURRENT...` + 30 `NOT_RUN`; current 55-case return = 25 `FUNCTION_CURRENT...` + 30 `NOT_RUN`; 0 historical-only; 0 implementation-inadequate; 0 original-wired; 0 qualified-equivalent; 0 proved-severance.
+6. **C9 actual effects:** 4/4 API ops/facts/receipts; wrong SHA 0/4; wrong host/purpose typed; restore exact; 840 candidate admitted; PDEV01 210/210 COMPLETED/SUPPORTED; 630 typed refusals; I05 16/30/16; empty C11 expected negative; **no missing engine, no 630 missing capabilities**.
+7. **C10/C11 actual effects:** C10 18,518/35/9 with negatives/restore; C11 one GSS/1973/`uswar` row with positive/negatives/restore; both test-time only, original runs not observed; current F03/F08 selection `UNPROVED`; no equivalence/severance claim.
+8. **C12/C13:** five QUC and five F03 obligations compared; different/partial responsibilities; no QUC/F03-equivalent producer→selector→consumer; no selected current operation; no repair/new reader.
+9. **Six terminal criteria:** `C14/GOAL_AUDIT.json` audits all six with satisfied/not_satisfied/typed_hold and exact pins, not "documents exist"; criterion 2 is `NOT_SATISFIED__TYPED_HOLD`; criterion 6 is a typed hold for parent issue-by-issue disposition.
+10. **No false green:** no proved severance, no full historical equivalence, no native/S3/science/actor/N11/N12/PFF, no CI waiver, no whole-#777 completion; `goal_complete=false`; C14 review is not acceptance.
+11. **Denominators/agenda:** 29/58/228/581/687; 42 selected-state/16 unresolved; 15/8/7/10/3; 26/16; 15/11; 58; 27/9; 154/1608 remain separate; 17 A01–A17 gates open; no magic sum.
+12. **Exact head/independence:** C14 content snapshot exact; provenance commit separate; C14 reviewer distinct nonauthor; no write outside C15 lease.
 
 ## Reviewer commands (read-only)
 
@@ -113,24 +90,24 @@ python3 - <<'PY'
 import json
 p='WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl'
 rows=[json.loads(l) for l in open(p)]
-assert len(rows)==51 and len({r['case_id'] for r in rows})==51
+assert len(rows)==55 and len({r['case_id'] for r in rows})==55
 for r in rows:
     assert r['frozen_taxonomy_verdict'] in ('FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED','NOT_RUN')
     assert r.get('forward_walk') and r.get('reverse_walk') and r.get('exact_hold')
-print('51-case schema OK')
+print('55-case schema OK')
 PY
 ```
 
-For C7, use `git show 605e1cb67156a09f9ce4c0990e572fa3fda1fdd1:.../C7_HQ_FANIN_INDEPENDENT_REVIEW/...`. Do not rely on prose alone.
+For C8/C9–C13, use `git show <cut>:<path>`; do not rely on prose alone.
 
-## Requested C8 verdict format
+## Requested C14 verdict format
 
-The C8 reviewer must return, in its own lease:
+The C14 reviewer must return, in its own lease:
 
-- `00_REVIEW.md` — exact-head schema/lineage verdict on C7-001–005 plus widened current-field/taxonomy claims; supported/rejected; no whole-machine acceptance.
+- `00_REVIEW.md` — exact-content-snapshot whole-record verdict on the C14 gates, supported/rejected, no whole-machine/native acceptance.
 - `01_FINDINGS.jsonl` — one finding per gate/defect, severity, exact file/record/line, evidence, required correction.
 - `02_COMMANDS_AND_EVIDENCE.md` — exact read-only commands, hashes, counts, independent spot checks.
 - `03_REVIEW_COMMIT.txt` — review commit and remote readback.
-- No edits to the fan-in lease, canonical/alias `03`, C7, C1–C6, production code, tests, HQ, peer or protected state.
+- No edits to the fan-in lease, canonical/alias `03`, C14 files, C8/C9–C13 returns, production code, tests, HQ, peer or protected state.
 
-**C8 rereview not yet performed. The corrected fan-in is not accepted until C8 returns and its findings are adjudicated. Whole #777 remains incomplete.**
+**C14 review not yet performed. The combined return is not accepted until C14 returns and its findings are adjudicated. Whole #777 remains incomplete; `goal_complete=false`.**

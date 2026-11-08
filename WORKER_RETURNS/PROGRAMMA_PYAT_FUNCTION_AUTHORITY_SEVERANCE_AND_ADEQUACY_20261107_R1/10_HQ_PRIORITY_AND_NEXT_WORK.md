@@ -75,11 +75,20 @@ The C7 independent review (`605e1cb67156a09f9ce4c0990e572fa3fda1fdd1`) returned 
 - **C7-004:** `02`/`05` separate historical readers/A02 metadata from current owner/first-consumer fields; 29/29 C6 documentary locators preserved; 7 exact current refs + 22 `UNKNOWN_NOT_PROVED`; no invented filenames.
 - **C7-005:** canonical `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` + exact-content alias `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl`; SHA-256 equality and no-drift rule in `11`/`CHECKPOINT`.
 
-Taxonomy after correction: **21 FUNCTION_CURRENT / 30 NOT_RUN / 0 HISTORICAL_ONLY / 0 IMPLEMENTATION**. `goal_complete=false`; whole #777 remains incomplete.
+Taxonomy after C7: 51 historical snapshot = **21 FUNCTION_CURRENT / 30 NOT_RUN**; current 55-case return after C9 append = **25 FUNCTION_CURRENT / 30 NOT_RUN**; 0 HISTORICAL_ONLY; 0 IMPLEMENTATION. `goal_complete=false`; whole #777 remains incomplete.
+
+## C9–C13 combined-return priorities
+
+1. **C9 P1/shared35:** name the exact selected shared35 source/wave + current C11 release + I03 query/predicate, or keep `NOT_RUN__UNPROVED_SELECTION`. Reuse PDEV01-GAP007 210-DIST (210/210 COMPLETED/SUPPORTED); keep 630 non-DIST typed refusals with operation-kind owners. Do not add an EpreOperation→I03 resolver or treat empty C11 as missing engine.
+2. **C9 O08/O12 issuer:** if a real selected operation exists, source/science owner supplies the exact current decision record/target-use permission; otherwise retain the sourcefree witness. No forged grant.
+3. **C10/C13 F03:** name one actual selected current F03 operation with exact current authority/permission binding, or keep `F03=UNPROVED_CURRENT_SELECTION`; no new FQRA adapter or C6 filename installation.
+4. **C11/C12 F08:** determine whether any actual selected current operation demands QUC semantic-role/itinerary/taxonomy responsibility; if none, keep `UNPROVED`/`NOT_RUN`; if yes, route at the existing metadata/FF/role owner. No QUC reader/engine.
+5. **Preserve** C10/C11 test-time replay positives and limits: C10 18,518/35/9, C11 one GSS/1973/`uswar` row, original runs `NOT_OBSERVED`/`NOT_RUN`, current selection `UNPROVED`.
+6. **No-new-work:** no P1 resolver, no new Batch/C11/I03 engine, no 630 missing-capability inference, no QUC reader, no F03 adapter, no new semantic engine, no forced historical packet, no original issuer mint.
 
 ## Next actual HQ action
 
-1. Freeze the corrected content commit (00–11, canonical/alias 03, CHECKPOINT) on the prepared branch.
-2. Insert the corrected content SHA in `09`/`CHECKPOINT` and create the metadata-only commit; push; direct `ls-remote` verify.
-3. **STOP.** Do not dispatch a new worker, do not poll, do not reopen C1–C6 or C7, do not touch protected/production state.
-4. The next authorized action is the **C8 independent exact-head rereview of only C7-001–005 plus the widened current-field/taxonomy claims** in `09`, followed by HQ adjudication. Quota is `UNKNOWN`; whole #777 remains incomplete.
+1. Freeze the C14 content snapshot (00–10, canonical/alias 03, C14/00_RETURN.md, GOAL_AUDIT.json, EVIDENCE_INDEX.json) on the prepared branch.
+2. Create the separate provenance commit recording the content snapshot SHA and file hashes; push; direct `ls-remote` verify.
+3. **STOP.** Do not dispatch a new worker, do not poll, do not reopen C1–C13, do not touch protected/production/HQ state.
+4. The next authorized action is the **C14 independent whole-record review** in `09`, followed by HQ adjudication. Quota is `UNKNOWN`; whole #777 remains incomplete.

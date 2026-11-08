@@ -246,3 +246,44 @@ C6 counts: 29 functions; 58 releases; 42 selected-state / 16 unresolved; 38 sing
 - C6 pytest or native execution: `NOT_RUN`; no pytest log claimed.
 - Any new test, new probe, code patch, production/existing-test/HQ/peer/protected write: `NOT_RUN` by this lease.
 - CI waiver: **none fabricated.** FIABC 144 pass / 3 fail and R09 provenance remain as previously recorded.
+
+## C9–C13 — reused real local receipts (no rerun by this fan-in)
+
+The C14 combined return did **not** execute any test, probe, replay or source code. The following are reused from the exact C9–C13 returns and independent reviews at their stated cuts. They are S0/S1 documentary plus reused S2 sourcefree/test-time evidence.
+
+### C9 — workload-plan/query-target-use → I03 first consumer
+
+- **Author:** `396bfee9cca0275d040597828848ede4a7da80a7`; P1 boundary author `d540cfcc44359f8f78aceccf8afb247c4a7ad80d`; C9R correction `02a13a5e01880835434b30d9a3587147f9dab0de`; independent review `05a750ad6bcab8124c1f5d86b8867181fa4ee92c` (`REVISE_SCOPED`; C9R-01/C9R-02 reconciled).
+- **Sourcefree API witness:** `compile_universal_workload:143` → `build_test_only_workload:299` → `execute_universal_workload:229` → `execute_test_only_workload:423` → `admit:219` → `execute_issued_workload:280` → `CarrierNeutralResearchExecutor.execute_i03:430` → `execute_empirical_query:685`.
+- **Observed:** 4/4 compiled/executed operations; 4 SUPPORTED RAW facts; 4 receipts; no-drop 4/4; authority `B49-TEST-ONLY-QUERY-AUTH`; scope `TEST_ONLY_SOURCEFREE`; `target_use_permission_ids=[]`; denominators 3/3, 3/3, 4/4, 2/2.
+- **Negative/restore:** wrong source SHA → 0/4 executed, 4 failed, no-drop false; wrong host/purpose → typed `WorkloadAdmissionError: SOURCE_HOST_PURPOSE_MISMATCH`; restoration fact refs match positive.
+- **P1 boundary:** 840 ATLAS candidate operations/units admitted by current `BatchManifest`; direct `BatchExecutionRunner(manifest=..., repository=C11Repository())` refused at synthetic `C11LogicalRelease release25` — **expected as-built negative, not missing engine**. Existing PDEV01-GAP007 at `d3d6e48791623478fd1d838c7e95a72b77b5cd74` already binds 210 DIST operations to 210 current I03 queries/predicates and 210 Batch units: 210/210 COMPLETED, 210 SUPPORTED; 630 non-DIST typed `P1_OPERATION_KIND_HAS_NO_EXACT_CURRENT_I03_BINDING`; I05 16 receipts/30 facts/16 candidates; receipt SHA-256 `bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab`.
+- **Limits:** sourcefree/test-only; no actual shared35 selected input, original35 execution, native/S3/science/actor effect, or production acceptance; 840 synthetic ATLAS operations are not original35; 630 typed refusals are not 630 missing capabilities.
+
+### C10 — Q3/F03 historical first-consumer replay
+
+- **Author:** `fdda847507936f5e2cd32cf8c57326f0f65200d6`; trace SHA-256 `53c2b4ed0ae775682f4ae7b7cd477868d6dc9dadd4d70bf802ce45670cb97184`; independent review `ac8f10220dfbc489cd2d261d1d66e228f2bc2424` (`REVISE_SCOPED`; C10R-01/02/03).
+- **Pins:** AR-0005 `0f7fa1c0...` 47,874,248 bytes/18,518 rows; AR-0006 `a91239a5...` 1,119,028 bytes/700 rows; historical module `2fb0851d...` 38,858 bytes; historical source `9ba4764bef551b1ce498e5772d60b73d69337d4b`.
+- **Observed:** full audit 18,518 rows; 35 active waves; 9 positive family witnesses with hashes; explicit block/ambiguous/missing-row/limited-registry/missing-file/cold-restore negatives; AR-0006 20-row residual.
+- **Limits:** test-time replay only; **original historical run `NOT_OBSERVED`**; downstream V550 bridge/V551 atoms `NOT_RUN`; nine rows are not all35; current selection/equivalence `UNPROVED`; no positive severance finding.
+
+### C11 — Q3/F08 historical first-consumer replay
+
+- **Author:** `76392135cea16afc0ff07da97843837bd33fc9b7`; independent review `b939c51a21359efc556c3f58860789e247b011aa` (`REVISE_SCOPED`; C11R-01 Q4 wording corrected by HQ).
+- **Pins:** AR-0047 `866eb3ab...` 11,059 bytes/35 rows; AR-0048 `29e7706b...` 1,702 bytes/7 rows; AR-0049 `15f7b561...` 26,582,348 bytes/18,792 rows; AR-0050 `3612c6b4...` 3,487 bytes/8 question types; QUC module `254542f9...` 115,511 bytes; historical source `9ba4764...`.
+- **Observed:** selected GSS/1973/`uswar` row; `manual_override_used=true`; `semantic_role=RELATION_EVIDENCE`; `review_required=true`; `allowed_as_v551_relation_evidence=false`; contract hash `6c94c7a8...`; positive output `1c78a386...`; missing override/duplicate/missing register/missing itinerary negatives; restore equals positive.
+- **Limits:** one selected nonrespondent authority row; test-time replay only; **original historical run `NOT_RUN`**; AR-0050 is register-builder metadata only, not QUC runtime effect; one row does not prove all35; current QUC succession `UNPROVED`.
+
+### C12/C13 — functional-responsibility maps
+
+- **C12 F08:** `71c40ba0325cb841c5ea3f45522b1ce72d5deff8`; `RESPONSIBILITY_MAP.jsonl` SHA-256 `5067649bbd16a2c95426ae88e112c56da2667029071b53cfc0a48bb8991675a1`; 6 rows; five QUC obligations compared; no QUC-equivalent producer→selector→consumer; current selection `UNPROVED`; no repair/new reader.
+- **C13 F03:** `87390f002c3d122b958031087a77f7f7575931fc`; `RESPONSIBILITY_MAP.jsonl` SHA-256 `66e7ee95f2d6d02a27d08b238319d0a9ba460129cf8b65bae7cfb34ef4db9ed2`; 5 rows; generic C11/authority/query and bounded WVS7 routing pin present; full F03 selected operation/adapter `UNPROVED`; `F03=UNPROVED_CURRENT_SELECTION`; no new engine/adapter.
+
+### C9–C13 explicit NOT_RUN
+
+- Original historical run for C10/C11: `NOT_OBSERVED` / `NOT_RUN`.
+- Actual selected shared35 source/wave + C11 release + I03 query/predicate: `NOT_RUN__UNPROVED_SELECTION`.
+- Actual selected current F03 operation: `NONE_PROVED`.
+- Actual selected current QUC operation: `NONE_PROVED`.
+- Original issuer / native / S3 / science / actor: `NOT_RUN`.
+- No new test, replay, probe, source read, source_configuration execution, production patch, protected/peer/HQ write, or worker dispatch in C14.
