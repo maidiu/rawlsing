@@ -1,3 +1,5 @@
+> Current status: C8 returned REVISE (`356124ee...`); three mechanical corrections described in12 are applied. Same-reviewer focused confirmation is pending against the next frozen content cut. Earlier exact-head request below records the prior target; it is not a new whole-machine review.
+
 # 09 — C8 independent rereview request and exact output head
 
 ## Status
@@ -56,10 +58,10 @@ The C1–C6 author cuts and independent review cuts are unchanged from the prior
 
 | Lane | Author/correction cut | Review cut |
 |---|---|---|
-| C1 | `451f8d1e094800d523589cdd4db5159a338db836` | `753ff5dc95fb218f84ebf1697a91a2d392367f2c` |
-| C2 | `0d548b033a0a20c9738fa4a3412ba5acd01217c5` | `638f75e7b661057954f7dbd3b58739b83ec2e8e1` |
+| C1 | `79c4f33c51e7d0146e06e12cac6ea903c79cb7b0` | `753ff5dc95fb218f84ebf1697a91a2d392367f2c` |
+| C2 | `b132fa4a02b31ba539b33f24ad022846bb81acb8` | `638f75e7b661057954f7dbd3b58739b83ec2e8e1` |
 | C3 | `3fd285d671d51c8576fd2b962bc34eda1a714ece` | `aa122437b1fe224f4c6ea2ee31ed2f7de6af7323` |
-| C4 | `0d548b033a0a20c9738fa4a3412ba5acd01217c5` | `0def1171f8f9d2681b64ebe287adb7d209c896c7` |
+| C4 | `950ff275527a2963253336cbb05924a6c2943cd8` | `0def1171f8f9d2681b64ebe287adb7d209c896c7` |
 | C5 | `451f8d1e094800d523589cdd4db5159a338db836` | `ea9ff9e54e2bc7c9a56a1398d172e87a8f109f03` |
 | C6 | `0d548b033a0a20c9738fa4a3412ba5acd01217c5` | `333ade4e4c003595630d7f53eaeece85902d6759` |
 
@@ -71,7 +73,7 @@ The C1–C6 author cuts and independent review cuts are unchanged from the prior
 | **C7-002** | GF1 frozen taxonomy not `IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE`; retain candidate/unmerged/no-defect | `03` C3-FF-04 `frozen_taxonomy_verdict=NOT_RUN`; `exact_hold=UNPROVED_SELECTION_AND_EQUIVALENCE__TEST_ONLY_UNMERGED_CANDIDATE__NO_SELECTED_NON_TEST_DEMAND__NO_DEFECT_PROVED`; `gf1_status`; 02/04/05/00/CHECKPOINT synchronized |
 | **C7-003** | All 19 historical-only labels audited; no five-test retirement pretense; preserve genuine evidence; audit 10 current labels | 19/19 retyped `NOT_RUN`/`DEMAND_UNPROVED`; `historical_evidence_class` for F07/F22/F23/F25; `retirement_proof=NOT_PROVIDED__FIVE_TEST_COURT_NOT_RUN`; 10 current labels: 7 exact current generic refs + 3 `UNPROVED_CURRENT_SELECTION` |
 | **C7-004** | 05 C6 owner/ABI is documentary locator, not exact current ABI; 02 C6 current fields separated | 05: `OWNER_FILE_OR_ABI=UNKNOWN_NOT_PROVED`, `DOCUMENTARY_EVIDENCE_LOCATOR` preserved 29/29, `CURRENT_OWNER_FILE_OR_ABI` 7 exact + 22 UNKNOWN, `CURRENT_FIRST_READER` 7 exact + 22 UNKNOWN; 02: `HISTORICAL_READER`/`HISTORICAL_A02_METADATA` separated from `CURRENT_OWNER`/`CURRENT_FIRST_CONSUMER`, field-class columns added |
-| **C7-005** | Required 03 filename present or governed alias with SHA-256 equality/no-drift | canonical `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl`; alias `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl`; SHA-256 equality `9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049` at correction; single canonical pointer/no-drift rule |
+| **C7-005** | Required 03 filename present or governed alias with SHA-256 equality/no-drift | canonical `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl`; alias `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl`; SHA-256 equality `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251` at correction; single canonical pointer/no-drift rule |
 
 ## Source-vs-execution limits the C8 reviewer must enforce
 

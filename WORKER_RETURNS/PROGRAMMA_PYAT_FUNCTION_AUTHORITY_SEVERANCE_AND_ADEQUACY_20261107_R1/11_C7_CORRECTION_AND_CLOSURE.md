@@ -18,7 +18,7 @@
 | **C7-002** | P1 | GF1 `C3-FF-04` no longer `IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE`; retyped to lawful `NOT_RUN` / typed unmerged-candidate hold; candidate existence and PR #691 status retained; no defect proved; no merge/reimplementation. | `03` C3-FF-04: `frozen_taxonomy_verdict=NOT_RUN`, `prior_frozen_taxonomy_verdict=IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE`, `exact_hold=UNPROVED_SELECTION_AND_EQUIVALENCE__TEST_ONLY_UNMERGED_CANDIDATE__NO_SELECTED_NON_TEST_DEMAND__NO_DEFECT_PROVED`, `gf1_status=CANDIDATE_EXISTS__PR_691_UNMERGED__NOT_RUNTIME_SELECTED__NO_DEFECT_PROVED`. `00`/`02`/`04`/`05`/`CHECKPOINT` updated. |
 | **C7-003** | P2 | All 19 prior `HISTORICAL_ONLY_OR_NO_JUSTIFIED_CURRENT_CONSUMER` labels withdrawn and audited into `NOT_RUN`/`DEMAND_UNPROVED`; genuine historical negative/provenance/member-set evidence preserved independently; 10 C6 current labels audited (7 exact current generic refs + 3 `UNPROVED_CURRENT_SELECTION`); no retirement/operational-currentness claim. | `03`: 19/19 `prior_frozen_taxonomy_verdict=HISTORICAL_ONLY...`, new `NOT_RUN`; `retirement_proof=NOT_PROVIDED__FIVE_TEST_COURT_NOT_RUN`; `historical_evidence_class` for F07 `NONRUNTIME_MEMBER_SET_PRODUCER_INPUT`, F22 `GENUINE_HISTORICAL_PROVENANCE_DOCUMENT`, F23 `GENUINE_HISTORICAL_NEGATIVE_OR_SUCCESSION_EVIDENCE`, F25 `GENUINE_HISTORICAL_SUCCESSION_AND_RULING_LEDGER`. F03/F05/F08 retyped `NOT_RUN`/`UNPROVED_CURRENT_SELECTION`; F01/F02/F06/F09/F10/F11/F17 kept `FUNCTION_CURRENT` only with exact current generic refs. |
 | **C7-004** | P2 | `05` C6 rows separate documentary locators from current owner/ABI/first reader; `02` separates historical readers/A02 metadata from current owner/first consumer; unsupported current fields `UNKNOWN_NOT_PROVED`; no invented filenames. | `05`: 29/29 C6 rows `OWNER_FILE_OR_ABI=UNKNOWN_NOT_PROVED`; `DOCUMENTARY_EVIDENCE_LOCATOR` 29/29; `CURRENT_OWNER_FILE_OR_ABI` 7 exact + 22 `UNKNOWN_NOT_PROVED`; `CURRENT_FIRST_READER` 7 exact + 22 `UNKNOWN_NOT_PROVED`. `02`: `HISTORICAL_READER`/`HISTORICAL_A02_METADATA` and `ACTUAL_OWNER_FIELD_CLASS`/`FIRST_CONSUMER_FIELD_CLASS` separate from `CURRENT_OWNER`/`CURRENT_FIRST_CONSUMER`; 7 exact + 22 `UNKNOWN_NOT_PROVED`. |
-| **C7-005** | P2 | Canonical required 03 filename created as exact-content canonical; existing 03 retained as governed exact-content alias; SHA-256 equality, single canonical pointer and no-drift rule recorded. | `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` (canonical) and `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` (alias) both SHA-256 `9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049` at correction. `CHECKPOINT.canonical_03` records equality/no-drift. No two-study claim. |
+| **C7-005** | P2 | Canonical required 03 filename created as exact-content canonical; existing 03 retained as governed exact-content alias; SHA-256 equality, single canonical pointer and no-drift rule recorded. | `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` (canonical) and `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` (alias) both SHA-256 `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251` at correction. `CHECKPOINT.canonical_03` records equality/no-drift. No two-study claim. |
 
 **5/5 closed by author-HQ correction. C7 itself remains an immutable REVISE review; this is not C7 acceptance. C8 rereview is required.**
 
@@ -102,7 +102,7 @@ Pre-correction freeze (from prior content head `ad4fe3c9`):
 |---|---|
 | Canonical required path | `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` |
 | Alias | `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` |
-| SHA-256 (both) | `9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049` |
+| SHA-256 (both) | `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251` |
 | Equality check | `shasum -a 256` both files; byte-identical |
 | Canonical pointer | `CHECKPOINT.case_fan_in` = canonical path; `CHECKPOINT.case_fan_in_alias` = alias |
 | No-drift rule | Any future edit must update both files and re-verify SHA-256 equality; one canonical 51-case study only |
@@ -136,8 +136,8 @@ Corrected artifact SHA-256:
 | `00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md` | `aa43f29afe3b21e1b78d1b83180bb160f3e40305a4aa3c7f7f7f5bd123e1d57d` |
 | `01_LEGACY_SELECTED_AUTHORITY_USE_AND_INCOMPLETE_CALLEE_COVERAGE.tsv` | `a9f8c9d9af9f73bd48982eeb9556f03d89e183414ed164588f930278e3f8a84d` |
 | `02_CURRENT_IMPLEMENTATIONS_PRE_FORGE_VS_WHOLE_PREV3.tsv` | `4a16e86c57063fe02f9074ec6e07296feca5d4ee830b5b75036c109153c66e6b` |
-| `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` | `9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049` |
-| `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` | `9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049` |
+| `03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl` | `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251` |
+| `03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl` | `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251` |
 | `04_PROVED_EQUIVALENCES_AND_NO_BUILD_DECISIONS.md` | `2d17eaa591cc50a5ab3ccbc00cf6ef9417d7ec87d1929134f445fd15e638b0df` |
 | `05_SEVERED_OR_INCOMPLETE_MINIMAL_OWNER_REPAIRS.tsv` | `b7cd11e8f298b62f1238f3c27fcf8e94432954a024313f5c9f1e42004bb2b610` |
 | `06_REAL_LOCAL_TEST_COMMANDS_OUTPUT_HASHES_AND_MUTATIONS.md` | `5be23983c960ba74952789cac2999ee6ccb78d0498157f2d2416956da7446c4c` |
