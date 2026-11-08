@@ -1,8 +1,8 @@
 # VMESTYE — ONE MACHINE, THREE GENEALOGIES, NO LOST FUNCTIONS
-**PROGRAMMA VMESTYE · N020_LONG_MEMORY · 2026-11-08 · PREPARATORY DOCUMENTARY CANDIDATE**
+**PROGRAMMA VMESTYE · N020_LONG_MEMORY · PROTECTED DOCUMENTARY SCAFFOLD (PR #795 RECEIVED 2026-11-08)**
 
-**STATE:** `PRELIMINARIES_AUTHORED__FLEET_NOT_DISPATCHED__ATLAS_NOT_CERTIFIED__NO_ZERO_LOSS_CLAIM`.
-**Frozen protected PRE-MAIN observation:** `integration/pre-main-reconciliation-r1@7a5429ffbc48efd25e28c912da80c822e66bc182`. **This VMESTYE directory is on an isolated draft branch, not protected.**
+**STATE:** `PROTECTED_DOCUMENTARY_SCAFFOLD_INSTALLED__FLEET_NOT_DISPATCHED__P0_INDEPENDENT_RECEIVING_NOT_RUN__ATLAS_NOT_CERTIFIED__NO_ZERO_LOSS_CLAIM`.
+**Initial protected receiving:** `integration/pre-main-reconciliation-r1@41533b89c4f7cfd1d8067a2c0a2b8afd0463163b` (PR #795). **For currentness, verify the branch's live HEAD at every cold entry; this is a historical receipt, not a live-HEAD assertion.**
 **Parent:** [N020 Long Memory read-first](../00_READ_FIRST.md). It is a historical inheritance route; VMESTYE is a proposed **living functional reconciliation surface** nested within it, not a new fourth HQ or a science/source issuer.
 
 ## What it is
@@ -26,8 +26,9 @@ Not three summaries. Every material functional obligation must be linkable **for
 10. [10_SOURCE_STARTER_MANIFEST.md](10_SOURCE_STARTER_MANIFEST.md) — verified immutable evidence entries and known estate sizes.
 11. [11_SIDE_BY_SIDE_EXEMPLARS.md](11_SIDE_BY_SIDE_EXEMPLARS.md) — initial F03, QUC, joint, C11 and FIABC comparisons **as limited examples, not final findings**.
 12. [12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md) — **MANDATORY** previous-week work/branch-only authority, SR-01, hybrid, #716/#748/#753/#777/#784 and stop intake before fleet commissioning.
+13. [13_SR01_CLASSIFICATION_AND_FUNCTIONAL_CONSERVATION.md](13_SR01_CLASSIFICATION_AND_FUNCTIONAL_CONSERVATION.md) — two actually returned Pyat/Sorok SR-01 overlays and their distinct classification/conservation jurisdictions.
 
-**Machines:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv) · [CONTROL/PHASE_GATES.tsv](CONTROL/PHASE_GATES.tsv) · [CONTROL/ESTATE_COVERAGE.tsv](CONTROL/ESTATE_COVERAGE.tsv) · [CONTROL/OPEN_DISPUTES.tsv](CONTROL/OPEN_DISPUTES.tsv) · [DATA/LMX44_SEED.tsv](DATA/LMX44_SEED.tsv) · [DATA/LMQ30_SEED.tsv](DATA/LMQ30_SEED.tsv) · [DATA/LEGACY_F29_SEED.tsv](DATA/LEGACY_F29_SEED.tsv) · [DATA/LEGACY_AR58_SEED.tsv](DATA/LEGACY_AR58_SEED.tsv) · [DATA/C6_AUXILIARY7_SEED.tsv](DATA/C6_AUXILIARY7_SEED.tsv) · [DATA/FUNCTION_ATLAS.tsv](DATA/FUNCTION_ATLAS.tsv) · [DATA/OPERATION_TRACES.tsv](DATA/OPERATION_TRACES.tsv) · [DATA/AUTHORITY_APPLICATIONS.tsv](DATA/AUTHORITY_APPLICATIONS.tsv) · [DATA/RELATIONS.tsv](DATA/RELATIONS.tsv) · [DATA/EVIDENCE.tsv](DATA/EVIDENCE.tsv) · [validation/README.md](validation/README.md).
+**Machines:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv) · [CONTROL/PHASE_GATES.tsv](CONTROL/PHASE_GATES.tsv) · [CONTROL/ESTATE_COVERAGE.tsv](CONTROL/ESTATE_COVERAGE.tsv) · [CONTROL/SR01_RETURN_REGISTER.tsv](CONTROL/SR01_RETURN_REGISTER.tsv) · [CONTROL/RECENT_CAMPAIGN_INTAKE.tsv](CONTROL/RECENT_CAMPAIGN_INTAKE.tsv) · [CONTROL/OPEN_DISPUTES.tsv](CONTROL/OPEN_DISPUTES.tsv) · [DATA/LMX44_SEED.tsv](DATA/LMX44_SEED.tsv) · [DATA/LMQ30_SEED.tsv](DATA/LMQ30_SEED.tsv) · [DATA/LEGACY_F29_SEED.tsv](DATA/LEGACY_F29_SEED.tsv) · [DATA/LEGACY_AR58_SEED.tsv](DATA/LEGACY_AR58_SEED.tsv) · [DATA/C6_AUXILIARY7_SEED.tsv](DATA/C6_AUXILIARY7_SEED.tsv) · [DATA/FUNCTION_ATLAS.tsv](DATA/FUNCTION_ATLAS.tsv) · [DATA/OPERATION_TRACES.tsv](DATA/OPERATION_TRACES.tsv) · [DATA/AUTHORITY_APPLICATIONS.tsv](DATA/AUTHORITY_APPLICATIONS.tsv) · [DATA/RELATIONS.tsv](DATA/RELATIONS.tsv) · [DATA/EVIDENCE.tsv](DATA/EVIDENCE.tsv) · [validation/README.md](validation/README.md).
 
 **Prongs:** [PRONGS/README.md](PRONGS/README.md), with isolated, labeled legacy, Dva, Trii, Chetiri, Long Memory, Pyat, PROGRAMMA and adversarial/crosscutting findings. **Findings belong with their subject; authoritative final dispositions belong to the master crosswalk, never contradictory parallel trackers.**
 

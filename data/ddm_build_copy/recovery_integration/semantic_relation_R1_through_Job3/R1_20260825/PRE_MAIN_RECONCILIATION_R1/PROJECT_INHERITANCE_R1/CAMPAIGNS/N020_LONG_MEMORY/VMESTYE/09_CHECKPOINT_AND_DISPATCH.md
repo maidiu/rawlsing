@@ -1,12 +1,11 @@
 # VMESTYE — CHECKPOINT, WORKER STATUS AND FUTURE DISPATCH LOCK
-**User-requested protected documentary receiving may carry this structure into PRE-MAIN; that action does not turn its content into verified functional conservation, issue science, or launch workers.**
+**The preliminary VMESTYE documentary scaffold was protected-merged by PR #795 at `41533b89c4f7cfd1d8067a2c0a2b8afd0463163b`.** It is **not** independent P0 source completeness or functional conservation acceptance.
 **2026-11-08 USER STOP:** #777/#784/PR786 overlapping code/review/discovery and paused #787–#790 remain HELD pending explicit resumption; [repository stop record](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md) is not a verified Mac process stop.
-**Protected PRE-MAIN observed 2026-11-08:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
-**Candidate branch:** `docs/long-memory-vmestye-programma-20261108-r1`.
+**Historical protected receiving cut:** `41533b89c4f7cfd1d8067a2c0a2b8afd0463163b`. Recheck live HEAD before work. **Correction branch** is evidence-only until specifically reviewed/merged.
 **Fleet control:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv). Every initial ZL-00–ZL-17 row is `NOT_DISPATCHED`; no invented host/runner/slot. The old #787/#788/#789/#790 remain paused.
 
 ## Current stage
-`STRUCTURE_PREPARATION_IN_PROGRESS` until all files have committed and a cold readback verifies paths, base head and 44/30 seed identities. After qualified independent receiving the state may become `PROGRAMMA_BOOTSTRAPPED__FLEET_PENDING_USER_DISPATCH`. Do not substitute candidate source for protected receiving.
+`PROTECTED_SCAFFOLD_INSTALLED__P0_RECEIVING_PENDING__FLEET_NOT_DISPATCHED`. Both returned SR-01 source overlays are pinned in [CONTROL/SR01_RETURN_REGISTER.tsv](CONTROL/SR01_RETURN_REGISTER.tsv), **not yet imported or independent-reviewed**. The 30 recent capital locators include branch-only returns and reviewed REPAIR states; they are not semantic-function results. After qualified independent P0 receiving the state may become `PROGRAMMA_BOOTSTRAPPED__FLEET_PENDING_USER_DISPATCH`. Do not substitute candidate source for protected receiving.
 
 ## Dispatch prerequisites
 - User explicitly dispatches one or more complete commission prompts. Every prompt is self-contained and gives agent type/I level, user-selected Browser/editor/model/effort, exact branch/startup 40hex, repo/private rights, S0/S1/S2/S3 boundaries, independent reviewer, deliverables, data source cuts, first consumer and no-collision lease.

@@ -1,5 +1,5 @@
 # PROGRAMMA VMESTYE — OPERATIVE GOAL AND CONTROL CONSTITUTION
-**STATUS:** DRAFT CANDIDATE, awaiting cold receiving. **Jurisdiction:** documentary functional conservation and navigational reconciliation inside N020_LONG_MEMORY, subordinate to PRE-MAIN shared law and PROGRAMMA PYAT's implementation authority.
+**STATUS:** PROTECTED DOCUMENTARY SCAFFOLD by PR #795, **not** independently certified semantic atlas; Phase 0 independent receiving still pending. **Jurisdiction:** documentary functional conservation and navigational reconciliation inside N020_LONG_MEMORY, subordinate to PRE-MAIN shared law and PROGRAMMA PYAT's implementation authority.
 
 ## 1. Programma is the work, not a decorative title
 **Mission:** make the total known Rawlsing functional estate traceable:
@@ -9,13 +9,13 @@ Track each **authority** as a first-class determinant of a specific transformati
 The measure of success is that a new human or agent can navigate from any inherited obligation to an explained current fate, and from any current output backward through every necessary authority and source, without commissioning yet another reconnaissance merely to understand the project.
 
 ## 2. Parentage and boundaries
-- VMESTYE is **a Long Memory subdirectory** on PRE-MAIN *upon qualified merge*, not a new executive HQ, source issuer or fourth jurisdiction. Its source-parent is [N020_LONG_MEMORY](../00_READ_FIRST.md).
+- VMESTYE is **a Long Memory subdirectory** on protected PRE-MAIN at PR #795 documentary scope, not a new executive HQ, source issuer or fourth jurisdiction. Its source-parent is [N020_LONG_MEMORY](../00_READ_FIRST.md).
 - PRE-MAIN maintains common law and protected merging; Pyat owns source→objective world machinery; Sorok owns actor/person product; competent original source/science/review issuers remain separate. Read [shared PROGRAMMA front door](https://github.com/maidiu/rawlsing/blob/7a5429ffbc48efd25e28c912da80c822e66bc182/CROSS_HQ_CONTROL_ROOM/PROGRAMMA/00_PROGRAMMA_RAWLSING.md) and [Pyat PROGRAMMA](https://github.com/maidiu/rawlsing/blob/7a5429ffbc48efd25e28c912da80c822e66bc182/PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/00_PROGRAMMA_PYAT.md).
 - This program **does not authorize** original respondent access, host rights, S2/S3 tests, current scientific interpretation, actor creation, protected merges or architectural redesign.
 - The October 28 selected **source-authoritative, compact, regenerable hybrid** remains the physical destination; semantic owners and native evidence must be judged at their exact actual cut. No automatically revived physical stage or new parallel engine.
 
 ## 3. The full circuit
-**Inherit:** immutable Long Memory 44/30, Authority39/40 D01–D07, original lineage and accepted Dva/Trii/Chetiri decisions. **Excavate only precise residuals**, reusing earlier existing inventories and callsite evidence.
+**Inherit:** existing Pyat SR-01 2,416 and Sorok SR-01 1,314 returned classification records (branch-only, independently unaccepted) via [SR-01 relation law](13_SR01_CLASSIFICATION_AND_FUNCTIONAL_CONSERVATION.md), plus immutable Long Memory 44/30, Authority39/40 D01–D07, original lineage and accepted Dva/Trii/Chetiri decisions. **Excavate only precise residuals**, reusing earlier existing inventories and callsite evidence.
 **Normalize:** function/operation/authority/implementation/consumer/evidence IDs and evidence grades, keeping original identifiers.
 **Trace:** forward data flow, backward result explanation, and cross-generation functional succession.
 **Adjudicate:** historical functionality versus current necessity, actual same-or-stronger successor, selection and application of rules, downstream demand and justified retirement.
