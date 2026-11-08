@@ -506,7 +506,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED_REVISE__THREE_MECHANICAL_CORRECTIONS_APPLIED",
     "actual_model": {
       "id": "msg_1b94a3b08001urYYme5zU1eTAY",
       "type": "assistant",
@@ -520,6 +520,37 @@
         "streamed": 1794110037469,
         "completed": 1794110038246
       }
-    }
+    },
+    "returned_commit": "356124ee452d8cababaae7f2f57d05e8f0d17deb"
+  },
+  {
+    "task": "pyat777-c8-mechanical-correction-check-r1",
+    "session": "ses_6857b9b4c50542e7a7268dfb7d",
+    "branch": "review/pyat777-hq-fanin-c8-20261108-r1",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-hq-fanin-c8-review",
+    "review_target": "55fca441d1c674c256473c264cabda48f2df0e52",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C8_HQ_FANIN_REREVIEW/FOCUSED_CORRECTION_CHECK",
+    "launch": {
+      "job_id": "pyat777-c8-mechanical-correction-check-r1",
+      "child_pid": 29913,
+      "supervisor_pid": 29912,
+      "observer_pid": 29914,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-c8-mechanical-correction-check-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "actual_model": {
+      "id": "msg_1b96253be001cRjfoDepbExBnt",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794111591382
+      }
+    },
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL"
   }
 ]

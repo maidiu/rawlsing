@@ -1,3 +1,7 @@
+# #777 C8 return — three mechanical corrections pushed; focused confirmation out
+
+C8 `356124ee452d8cababaae7f2f57d05e8f0d17deb` returned REVISE on stale02verdicts and exact lane-cut citations. HQ corrected23derivedgrades to21FUNCTION_CURRENT/30NOT_RUN and exactC1/C2/C4lineage at `55fca441d1c674c256473c264cabda48f2df0e52`;51IDs/A-J/content preserved, canonical/alias equal. Same independent reviewer is checking only these mechanical fixes with verified FlashMAX metadata. Whole777 remains incomplete; no sourcecode/native/science/CI/protected change. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C8_RETURN_INTAKE.json`.
+
 # #777 current intake — C7 correction received, C8 exact-head review running
 
 Correction content `5efb9fa33aa26e0cfb6bc7a03270e4c896411843` and metadata `4ded573400ddc8cfa05d38374a1c7206e440f7f7` verified against terminal receipt/remote. Canonical/alias03 remain byte-identical with51unique cases. Existing distinct reviewer session has launched C8 at the immutable metadata cut with actual FlashMAX metadata verified; scope is only five C7 schema/lineage corrections plus widened claims. This does not establish substantive authority succession or finish777. Fanin00-11/canonical03 unchanged by this custody update; native/science/protected holds remain. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C7_CORRECTION_RETURN_INTAKE.json`.
