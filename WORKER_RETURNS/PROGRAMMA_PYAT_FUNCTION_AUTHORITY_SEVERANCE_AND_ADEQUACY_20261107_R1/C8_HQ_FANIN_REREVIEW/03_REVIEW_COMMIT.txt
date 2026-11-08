@@ -1,0 +1,29 @@
+C8 REVIEW COMMIT AND EXACT-HEAD RECORD
+
+Repository: maidiu/rawlsing
+Review branch: review/pyat777-hq-fanin-c8-20261108-r1
+Reviewed frozen metadata head: 4ded573400ddc8cfa05d38374a1c7206e440f7f7
+Reviewed corrected content: 5efb9fa33aa26e0cfb6bc7a03270e4c896411843
+Prior content: ad4fe3c9cd67eed5bc79644bb399a7090846a8fe
+Immutable C7 review: 605e1cb67156a09f9ce4c0990e572fa3fda1fdd1
+Fan-in prepared branch observed at dispatch: 4ded573400ddc8cfa05d38374a1c7206e440f7f7
+Remote prepared branch observed at review time: 2ceb34202c62fa79b1ce4475adebd4632b8ced8d
+  (HQ bookkeeping advance only: progress/flight board, C7 correction intake, C8 commission/launch receipts; the reviewed 00-11 content remains 5efb9fa. This review did not retarget.)
+
+Review files in this lease:
+- 00_REVIEW.md
+- 01_FINDINGS.jsonl
+- 02_COMMANDS_AND_EVIDENCE.md
+- 03_REVIEW_COMMIT.txt
+
+Content-complete review commit: the Git commit containing 00_REVIEW.md, 01_FINDINGS.jsonl, 02_COMMANDS_AND_EVIDENCE.md and this file. The exact final branch HEAD cannot be embedded into this file without changing that SHA; the exact review commit SHA and direct `git ls-remote` remote readback are reported in the terminal return after push.
+
+Verdict: REVISE
+  - C7-001 PASS
+  - C7-002 REVISE (02 EVIDENCE_GRADE still says IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE for C3-FF-04)
+  - C7-003 REVISE (02 EVIDENCE_GRADE still has 19 HISTORICAL_ONLY and 10 C6 FUNCTION_CURRENT values; corrected counts are 21/30/0/0 and 7+3)
+  - C7-004 PASS
+  - C7-005 PASS
+  - Widened exact-cut/lineage defect: C1/C2/C4 cut citations in 09/06/03 use C5/C6 integration heads rather than the lane correction cuts 79c4f33 / b132fa4 / 950ff275.
+No whole-#777 completion; goal_complete=false; 17 secondary gates remain open; no CI waiver, protected merge, native/S3/science/actor or generic FF live claim.
+No writes outside WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C8_HQ_FANIN_REREVIEW/; no fan-in correction.
