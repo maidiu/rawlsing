@@ -25,6 +25,7 @@ Not three summaries. Every material functional obligation must be linkable **for
 9. [09_CHECKPOINT_AND_DISPATCH.md](09_CHECKPOINT_AND_DISPATCH.md) — statuses, launch lock, incumbent succession.
 10. [10_SOURCE_STARTER_MANIFEST.md](10_SOURCE_STARTER_MANIFEST.md) — verified immutable evidence entries and known estate sizes.
 11. [11_SIDE_BY_SIDE_EXEMPLARS.md](11_SIDE_BY_SIDE_EXEMPLARS.md) — initial F03, QUC, joint, C11 and FIABC comparisons **as limited examples, not final findings**.
+12. [12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md) — **MANDATORY** previous-week work/branch-only authority, SR-01, hybrid, #716/#748/#753/#777/#784 and stop intake before fleet commissioning.
 
 **Machines:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv) · [CONTROL/PHASE_GATES.tsv](CONTROL/PHASE_GATES.tsv) · [CONTROL/ESTATE_COVERAGE.tsv](CONTROL/ESTATE_COVERAGE.tsv) · [CONTROL/OPEN_DISPUTES.tsv](CONTROL/OPEN_DISPUTES.tsv) · [DATA/LMX44_SEED.tsv](DATA/LMX44_SEED.tsv) · [DATA/LMQ30_SEED.tsv](DATA/LMQ30_SEED.tsv) · [DATA/LEGACY_F29_SEED.tsv](DATA/LEGACY_F29_SEED.tsv) · [DATA/LEGACY_AR58_SEED.tsv](DATA/LEGACY_AR58_SEED.tsv) · [DATA/C6_AUXILIARY7_SEED.tsv](DATA/C6_AUXILIARY7_SEED.tsv) · [DATA/FUNCTION_ATLAS.tsv](DATA/FUNCTION_ATLAS.tsv) · [DATA/OPERATION_TRACES.tsv](DATA/OPERATION_TRACES.tsv) · [DATA/AUTHORITY_APPLICATIONS.tsv](DATA/AUTHORITY_APPLICATIONS.tsv) · [DATA/RELATIONS.tsv](DATA/RELATIONS.tsv) · [DATA/EVIDENCE.tsv](DATA/EVIDENCE.tsv) · [validation/README.md](validation/README.md).
 
