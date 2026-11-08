@@ -13,6 +13,8 @@ The end product is **one integrated, bidirectionally navigable and independently
 
 Not three summaries. Every material functional obligation must be linkable **forward, backward and sideways** across these lineages with exact source identity, behavioral role, selected governing authority, implementation, first consumer, tested proof and missing edge where applicable.
 
+**Actual commission numbers and strict launch order:** [14_COMMISSION_ISSUE_DISPATCH.md](14_COMMISSION_ISSUE_DISPATCH.md) · [21 issue links and dependencies](CONTROL/COMMISSION_ISSUES.tsv). Issues are prepared, **not** launched. Actual execution status remains in CONTROL/FLIGHT_BOARD.tsv and phase gates.
+
 ## Navigation — read these in order
 1. [01_PROGRAMMA_VMESTYE.md](01_PROGRAMMA_VMESTYE.md) — objective, operating law, finite outcome, exclusions.
 2. [02_GROKKING_PROTOCOL.md](02_GROKKING_PROTOCOL.md) — cold entry, source hierarchy, exact-currentness, how to act without imaginary permission.
