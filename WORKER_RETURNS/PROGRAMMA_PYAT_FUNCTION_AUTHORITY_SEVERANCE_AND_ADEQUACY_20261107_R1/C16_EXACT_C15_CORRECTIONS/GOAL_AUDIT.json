@@ -1,0 +1,377 @@
+{
+  "schema": "PYAT777_C16_GOAL_AUDIT_V1",
+  "issue": 777,
+  "branch": "agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1",
+  "original_prepared_base": "e2fdd975f618228ecc4e146840cb0eed2091a20f",
+  "c14_intake_base": "46104b8ddf44db4d5a32e603ca9332cebbbb1f94",
+  "c15_correction_base": "ad28344350af30861681f50f5b5d908157354223",
+  "c8_historical_snapshot": {
+    "content": "55fca441d1c674c256473c264cabda48f2df0e52",
+    "case_count": 51,
+    "canonical_03_sha256": "cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251",
+    "review_commit": "356124ee452d8cababaae7f2f57d05e8f0d17deb",
+    "focused_check_commit": "77a8798223998cf56535424794bc3bcb6ce80c9f",
+    "reference_residual_closure": "0e0997213"
+  },
+  "c14_historical_snapshot": {
+    "content": "f42b73abf2532f9a4ea589e7f80841e15585d8e1",
+    "provenance": "ea7e878a82e2343591724433fcd6b13910602c84",
+    "case_count": 55,
+    "canonical_03_sha256": "f21823f83e6aed6a64695150bf4ed43df2e7fd88b3310ab26752476acc61a778",
+    "external_intake_locator": "C14_COMBINED_RETURN_INTAKE.json#content_snapshot,#provenance_commit",
+    "c15_review": {
+      "content_commit": "9195d25b67fd99a101e1208b30517a79148d8158",
+      "metadata_commit": "c4f68989788a0a0b27a3b65be610502cb4a824db",
+      "verdict": "REVISE",
+      "findings": 10,
+      "failed_checks": 11
+    }
+  },
+  "c16_current_correction": {
+    "content_snapshot": "EXTERNAL_C16_INTAKE_RECORD__NO_SELF_HASH",
+    "provenance_locator": "EXTERNAL_C16_PROVENANCE_LOCATOR__NO_SELF_HASH",
+    "canonical_03_sha256": "a7aa9d1a3530755c755d526c61c2dfb252783d9478eb70f0851fa5ae189e14e7",
+    "alias_sha256": "a7aa9d1a3530755c755d526c61c2dfb252783d9478eb70f0851fa5ae189e14e7",
+    "case_count": 55,
+    "taxonomy": {
+      "FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED": 25,
+      "NOT_RUN": 30,
+      "HISTORICAL_ONLY_OR_NO_JUSTIFIED_CURRENT_CONSUMER": 0,
+      "IMPLEMENTATION_NOT_CURRENTLY_ADEQUATE": 0,
+      "ORIGINAL_AUTHORITY_WIRED_AND_CONSUMED": 0,
+      "QUALIFIED_EQUIVALENT_PROVED__ORIGINAL_ASSET_NOT_RUNTIME_REQUIRED": 0,
+      "SEVERED_PROVED__MISSING_NEEDED_AUTHORITY": 0
+    }
+  },
+  "goal_complete": false,
+  "overall_status": "C16_EXACT_C15_CORRECTION_READY_FOR_HQ_INTAKE__GOAL_FALSE",
+  "case_identity": {
+    "historical_snapshot_case_count": 51,
+    "historical_snapshot_ids_preserved": true,
+    "historical_snapshot_taxonomy_preserved": true,
+    "historical_families": {
+      "C1": 1,
+      "C2": 2,
+      "C3": 10,
+      "C4": 2,
+      "C5": 7,
+      "C6": 29
+    },
+    "current_return_case_count": 55,
+    "current_return_unique_case_count": 55,
+    "current_return_families": {
+      "C1": 1,
+      "C2": 2,
+      "C3": 10,
+      "C4": 2,
+      "C5": 7,
+      "C6": 29,
+      "C9": 4
+    },
+    "no_extra_or_drop": true
+  },
+  "c9_lineage": {
+    "cases": [
+      "C9-O08-QUERY-TARGET-USE",
+      "C9-O12-ISSUED-WORKLOAD",
+      "C9-O13-BATCH-RECEIVING",
+      "C9-P1-CANDIDATE-BOUNDARY"
+    ],
+    "reviewed_target_cut": "d540cfcc44359f8f78aceccf8afb247c4a7ad80d",
+    "review_cut": "05a750ad6bcab8124c1f5d86b8867181fa4ee92c",
+    "review_verdict": "REVISE_SCOPED",
+    "correction_cut": "02a13a5e01880835434b30d9a3587147f9dab0de",
+    "correction_review_status": "NO_INDEPENDENT_REREVIEW_OF_CORRECTION",
+    "hq_acceptance_scope": "SCOPED_ACCEPTANCE_AFTER_CORRECTION__SOURCEFREE_TEST_ONLY__NO_ORIGINAL35_OR_ENGINE_ABSENCE",
+    "effects_preserved": {
+      "api_operations": 4,
+      "supported_raw_facts": 4,
+      "receipts": 4,
+      "wrong_sha": "0/4",
+      "restore": "exact",
+      "candidate_operations": 840,
+      "pdev01_dist": 210,
+      "batch_completed": 210,
+      "supported_facts": 210,
+      "typed_refusals": 630,
+      "i05_receipts": 16,
+      "i05_facts": 30,
+      "i05_candidates": 16,
+      "empty_c11": "EXPECTED_AS_BUILT_NEGATIVE__NOT_MISSING_ENGINE"
+    }
+  },
+  "terminal_criteria": [
+    {
+      "criterion_id": "T1",
+      "text": "Zero silently lost attempted modern functions among bounded joined existing registers; every one receives a first-reader and selected-authority/equivalent/unknown verdict.",
+      "status": "SATISFIED_AT_BOUNDED_DECLARED_SCOPE__NOT_GLOBAL_MACHINE_COMPLETENESS",
+      "evidence": {
+        "current_return_cases": 55,
+        "historical_snapshot_cases": 51,
+        "ff_functions": 26,
+        "ff_dependencies": 16,
+        "post_ff_mechanisms": 15,
+        "post_ff_seams": 11,
+        "748_owner_rows": 30,
+        "all_A_J_forward_reverse_hold_taxonomy": true
+      },
+      "limits": [
+        "Global machine completeness not claimed",
+        "Bounded joined registers only"
+      ]
+    },
+    {
+      "criterion_id": "T2",
+      "text": "At least one genuinely demanded non-canary present operation gets a positive/negative sourcefree first-consumer authority-to-output demonstration if a legal fixture exists; otherwise the exact real ABI/issuer/host blocker is established.",
+      "status": "NOT_SATISFIED__TYPED_HOLD",
+      "evidence": {
+        "C9": "real API path exercised in sourcefree test-only harness; not production/non-test selected operation",
+        "C10": "test-time F03 replay; original run NOT_OBSERVED",
+        "C11": "test-time F08 one-row replay; original run NOT_RUN",
+        "exact_blockers": [
+          "selected shared35 source/wave + current C11 release + I03 query/predicate",
+          "selected current F03 operation with current authority/permission",
+          "selected current QUC operation with successor contract",
+          "original/current source/science issuer record"
+        ]
+      },
+      "limits": [
+        "No new science gate",
+        "No retirement",
+        "Do not halt eligible existing-owner tests"
+      ]
+    },
+    {
+      "criterion_id": "T3",
+      "text": "Every claimed fully equivalent substitute passes an adversarial positive/negative/old-version differential or receives explicit inadequacy/unknown, including upstream relevance and downstream role.",
+      "status": "SATISFIED_AS_LIMIT__ZERO_EQUIVALENCE_CLAIMS__NO_PRODUCT_POSITIVE_PROOF",
+      "evidence": {
+        "qualified_equivalent_proved": 0,
+        "full_historical_equivalence_claimed": 0,
+        "all_positives_sourcefree_bounded_or_test_time": true
+      },
+      "limits": [
+        "Limit only; not product positive proof",
+        "No equivalence accepted"
+      ]
+    },
+    {
+      "criterion_id": "T4",
+      "text": "Every proven severance yields the smallest true owner-correct interface/asset need and independent repair test; no Pre-Forge duplication of FF or code transplantation by old module name.",
+      "status": "SATISFIED_AS_LIMIT__ZERO_PROVED_SEVERANCES__NO_PRODUCT_POSITIVE_PROOF",
+      "evidence": {
+        "severed_proved": 0,
+        "repair_authorized": false,
+        "gf1": "test-only/unmerged PR #691",
+        "empty_c11": "expected as-built negative",
+        "630_non_dist": "typed refusals, not missing capabilities",
+        "pre_forge_ff_duplication": false
+      },
+      "limits": [
+        "Limit only; not product positive proof",
+        "No severance proved",
+        "No repair/build authorized"
+      ]
+    },
+    {
+      "criterion_id": "T5",
+      "text": "Historical coverage residual and document custody/revision/issuer questions stay OPEN until truly closed, not dropped to accelerate Q3-Q5.",
+      "status": "SATISFIED_AT_PRESERVATION__RESIDUALS_REMAIN_OPEN",
+      "evidence": {
+        "secondary_gates_open": 17,
+        "selected_state_rows": 42,
+        "unresolved_release_rows": 16,
+        "c6_gaps": 50,
+        "issuer_provenance_holds": [
+          "AR-0043",
+          "AR-0045",
+          "AR-0019",
+          "AR-0020",
+          "AR-0021",
+          "AR-0022",
+          "AR-0023",
+          "AR-0024",
+          "AR-0046"
+        ],
+        "overlap_rows_154_1608_distinct": true
+      },
+      "limits": [
+        "No closure pretense",
+        "Residuals remain open"
+      ]
+    },
+    {
+      "criterion_id": "T6",
+      "text": "Parent #716/#748/#753 and all post-#765 issues receive source-qualified HQ disposition; all 17 secondary agenda items preserved; no false native/N11/actor authority, fake CI waiver, or coworker displacement.",
+      "status": "SATISFIED_AT_ISSUE-BY-ISSUE_DISPOSITION_RECORDED__NO ISSUE CLOSURE__17 GATES PRESERVED__NO FALSE GREEN",
+      "evidence": {
+        "disposition_file": "C16_EXACT_C15_CORRECTIONS/PARENT_ISSUE_DISPOSITIONS.jsonl",
+        "row_count": 12,
+        "union": [
+          716,
+          748,
+          753,
+          765,
+          766,
+          767,
+          772,
+          769,
+          770,
+          773,
+          774,
+          691
+        ],
+        "parents": [
+          716,
+          748,
+          753
+        ],
+        "post_765": [
+          765,
+          766,
+          767,
+          772
+        ],
+        "associated_prs": [
+          769,
+          770,
+          773,
+          774,
+          691
+        ],
+        "dedupe": "12 unique issue/PR rows; no unrelated >=765 expansion",
+        "referenced_within_parent_rows": [
+          764,
+          771,
+          736,
+          739,
+          741,
+          742,
+          744,
+          745
+        ],
+        "live_github_observed_utc": "2026-11-08T06:44:54.743614+00:00",
+        "all_live_states_open": true,
+        "all_prs_unmerged": true,
+        "no_issue_closure": true,
+        "no_fresh_semantic_acceptance": true,
+        "no_current_issuer_invented": true,
+        "secondary_gates_open": 17,
+        "native_n11_actor_n12_pff_claim": false,
+        "ci_waiver": false,
+        "coworker_displacement": false
+      },
+      "limits": [
+        "Disposition table records qualified records/needed actions; it does not close issues",
+        "Live GitHub state is point-in-time",
+        "No merge/post/semantic acceptance"
+      ]
+    }
+  ],
+  "exact_remaining": {
+    "smallest_substantive_decision": "Name one actual selected current operation and its exact competent authority, or record the exact NOT_RUN blocker.",
+    "C9_P1_shared35": "selected_shared35_source_id/wave -> P1 WaveIdentity.atlas_id/dataset_id + EligibleItem.item_ref/source_variable_code; exact current C11 release + I03 query/predicate; NOT_RUN__UNPROVED_SELECTION if absent",
+    "C9_O08_O12": "exact current target-use permission and original/current source/science decision record; sourcefree witness otherwise; no forged grant",
+    "C10_C13_F03": "one actual selected current F03 operation with exact current authority/permission binding; F03=UNPROVED_CURRENT_SELECTION if absent",
+    "C11_C12_F08": "one actual selected current operation demanding QUC semantic-role/itinerary/taxonomy with exact successor contract; UNPROVED/NOT_RUN if absent",
+    "nonclaims": [
+      "Lack of selected operation is not a new science gate",
+      "Lack of selected operation is never proof of retirement"
+    ]
+  },
+  "no_build": [
+    "No P1 EpreOperation->I03 resolver",
+    "No new Batch/C11/I03 engine",
+    "No 630 missing-capability inference",
+    "No QUC reader/resolver (current QUC owner/first consumer UNKNOWN_NOT_PROVED; no absence proof)",
+    "No F03 FQRA adapter",
+    "No new semantic engine",
+    "No generic FF engine or GF1 merge",
+    "No old J registry/compiler/cache restoration",
+    "No source_configuration rebuild",
+    "No AR-0033 per-query reload",
+    "No weight=1 default",
+    "No structural/actor/PFF promotion",
+    "No new authority gate or forced historical packet"
+  ],
+  "secondary_gates": {
+    "count": 17,
+    "ids": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17"
+    ],
+    "all_open": true,
+    "file_unchanged": "07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md"
+  },
+  "source_level": {
+    "S0_S1_documentary": true,
+    "S2_reused_sourcefree_test_time": true,
+    "S3_native_original": false,
+    "new_execution": false,
+    "new_tests": false,
+    "new_replay": false,
+    "source_configuration_execution": false,
+    "production_or_protected_write": false
+  },
+  "changed_files": [
+    "00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md",
+    "01_LEGACY_SELECTED_AUTHORITY_USE_AND_INCOMPLETE_CALLEE_COVERAGE.tsv",
+    "02_CURRENT_IMPLEMENTATIONS_PRE_FORGE_VS_WHOLE_PREV3.tsv",
+    "03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl",
+    "03_BIDIRECTIONAL_FUNCTION_AUTHORITY_CASES.jsonl",
+    "04_PROVED_EQUIVALENCES_AND_NO_BUILD_DECISIONS.md",
+    "05_SEVERED_OR_INCOMPLETE_MINIMAL_OWNER_REPAIRS.tsv",
+    "06_REAL_LOCAL_TEST_COMMANDS_OUTPUT_HASHES_AND_MUTATIONS.md",
+    "08_COVERAGE_DENOMINATORS_COLD_HANDOFF.tsv",
+    "09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md",
+    "10_HQ_PRIORITY_AND_NEXT_WORK.md",
+    "C16_EXACT_C15_CORRECTIONS/00_RETURN.md",
+    "C16_EXACT_C15_CORRECTIONS/FINDING_RESOLUTION.jsonl",
+    "C16_EXACT_C15_CORRECTIONS/PARENT_ISSUE_DISPOSITIONS.jsonl",
+    "C16_EXACT_C15_CORRECTIONS/GOAL_AUDIT.json",
+    "C16_EXACT_C15_CORRECTIONS/VALIDATION.md",
+    "C16_EXACT_C15_CORRECTIONS/validate_c16.py"
+  ],
+  "not_written": [
+    "CHECKPOINT.json",
+    "FLIGHT_BOARD.json",
+    "COMMISSIONS/",
+    "PYAT_CONTROL_ROOM/",
+    "07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md",
+    "C14_POST_C9_C13_FANIN/",
+    "C15_HQ_FANIN_C14_REREVIEW/",
+    "C7_HQ_FANIN_INDEPENDENT_REVIEW/",
+    "C8_HQ_FANIN_REREVIEW/",
+    "C9-C13 returns",
+    "production code",
+    "existing tests",
+    "protected/peer/HQ state"
+  ],
+  "review_status": {
+    "c15_verdict": "REVISE",
+    "c16_correction": "READY_FOR_HQ_INTAKE",
+    "new_review_authorized_by_c16": false,
+    "goal_complete": false
+  },
+  "quota": "UNKNOWN",
+  "whole_777_complete": false,
+  "current_hq_head_at_correction": "9651352a846da9ed85d4e64562b7d2b07b90fb07",
+  "c15_review_intake": "C15_WHOLE_RECORD_REVIEW_INTAKE.json",
+  "c15_review_intake_content": "9195d25b67fd99a101e1208b30517a79148d8158",
+  "c15_review_intake_metadata": "c4f68989788a0a0b27a3b65be610502cb4a824db"
+}

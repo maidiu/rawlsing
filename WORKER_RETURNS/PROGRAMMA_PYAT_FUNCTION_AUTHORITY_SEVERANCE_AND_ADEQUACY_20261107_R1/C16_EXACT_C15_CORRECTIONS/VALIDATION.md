@@ -1,0 +1,76 @@
+# C16 validation commands and results
+
+Command:
+```sh
+cd /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-authority-severance-hq/WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1
+python3 C16_EXACT_C15_CORRECTIONS/validate_c16.py
+```
+
+Result: exit 0; 61/61 checks passed; no checker weakening or vacuous PASS.
+
+```text
+PASS 03_count_55 55
+PASS 03_unique_55 
+PASS families_1_2_10_2_7_29_4 {'C1': 1, 'C2': 2, 'C3': 10, 'C4': 2, 'C5': 7, 'C6': 29, 'C9': 4}
+PASS taxonomy_25_30 {'FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED': 25, 'NOT_RUN': 30}
+PASS canonical_alias_equal 
+PASS canonical_alias_sha_equal 
+PASS c16_03_hash_distinct_from_c14 a7aa9d1a3530755c755d526c61c2dfb252783d9478eb70f0851fa5ae189e14e7
+PASS historical_51_ids_preserved 
+PASS historical_51_taxonomy_preserved 
+PASS all_A_J_nonempty 
+PASS all_forward_reverse_hold 
+PASS c9_4_cases 
+PASS c9_reviewed_target_d540 
+PASS c9_review_05a750ad 
+PASS c9_correction_02a13a5e 
+PASS c9_no_independent_rereview 
+PASS f08_hold_qualified 
+PASS f08_current_quc_unknown 
+PASS f08_grade_preserved 
+PASS 02_153_rows 153
+PASS 02_55_case_rows 
+PASS 02_register_counts {'CASE': 55, 'FF_REGISTER': 26, 'FF_DEPENDENCY': 16, 'POST_FF_REGISTER': 15, 'POST_FF_SEAM': 11, '748_CURRENT_OWNER': 30}
+PASS 05_55_rows 
+PASS 01_94_rows 94
+PASS 08_63_rows 63
+PASS 02_05_03_ids_equal 
+PASS exists_C16_EXACT_C15_CORRECTIONS/00_RETURN.md 
+PASS exists_C16_EXACT_C15_CORRECTIONS/FINDING_RESOLUTION.jsonl 
+PASS exists_C16_EXACT_C15_CORRECTIONS/PARENT_ISSUE_DISPOSITIONS.jsonl 
+PASS exists_C16_EXACT_C15_CORRECTIONS/GOAL_AUDIT.json 
+PASS finding_resolution_10 10
+PASS finding_ids_exact 
+PASS parent_rows_12 12
+PASS parent_union_exact 
+PASS parent_live_states_open 
+PASS parent_prs_unmerged 
+PASS T2_typed_hold NOT_SATISFIED__TYPED_HOLD
+PASS T3_limit SATISFIED_AS_LIMIT__ZERO_EQUIVALENCE_CLAIMS__NO_PRODUCT_POSITIVE_PROOF
+PASS T4_limit SATISFIED_AS_LIMIT__ZERO_PROVED_SEVERANCES__NO_PRODUCT_POSITIVE_PROOF
+PASS T6_issue_table SATISFIED_AT_ISSUE-BY-ISSUE_DISPOSITION_RECORDED__NO ISSUE CLOSURE__17 GATES PRESERVED__NO FALSE GREEN
+PASS goal_false 
+PASS no_see_branch_head_00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md 
+PASS no_see_branch_head_09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md 
+PASS no_unqualified_NO_QUC_READER_00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md 
+PASS no_unqualified_NO_QUC_READER_01_LEGACY_SELECTED_AUTHORITY_USE_AND_INCOMPLETE_CALLEE_COVERAGE.tsv 
+PASS no_unqualified_NO_QUC_READER_02_CURRENT_IMPLEMENTATIONS_PRE_FORGE_VS_WHOLE_PREV3.tsv 
+PASS no_unqualified_NO_QUC_READER_03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl 
+PASS no_unqualified_NO_QUC_READER_04_PROVED_EQUIVALENCES_AND_NO_BUILD_DECISIONS.md 
+PASS no_unqualified_NO_QUC_READER_05_SEVERED_OR_INCOMPLETE_MINIMAL_OWNER_REPAIRS.tsv 
+PASS no_unqualified_NO_QUC_READER_06_REAL_LOCAL_TEST_COMMANDS_OUTPUT_HASHES_AND_MUTATIONS.md 
+PASS no_unqualified_NO_QUC_READER_08_COVERAGE_DENOMINATORS_COLD_HANDOFF.tsv 
+PASS no_unqualified_NO_QUC_READER_09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md 
+PASS no_unqualified_NO_QUC_READER_10_HQ_PRIORITY_AND_NEXT_WORK.md 
+PASS forbidden_unchanged_07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md 
+PASS forbidden_unchanged_CHECKPOINT.json 
+PASS forbidden_unchanged_FLIGHT_BOARD.json 
+PASS forbidden_unchanged_COMMISSIONS 
+PASS forbidden_unchanged_PYAT_CONTROL_ROOM 
+PASS forbidden_unchanged_C14_POST_C9_C13_FANIN 
+PASS forbidden_unchanged_C15_HQ_FANIN_C14_REREVIEW 
+PASS agenda_17 
+
+SUMMARY: 61/61 checks passed; 0 failed
+C16_VALIDATION_PASS
+```

@@ -253,7 +253,7 @@ The C14 combined return did **not** execute any test, probe, replay or source co
 
 ### C9 — workload-plan/query-target-use → I03 first consumer
 
-- **Author:** `396bfee9cca0275d040597828848ede4a7da80a7`; P1 boundary author `d540cfcc44359f8f78aceccf8afb247c4a7ad80d`; C9R correction `02a13a5e01880835434b30d9a3587147f9dab0de`; independent review `05a750ad6bcab8124c1f5d86b8867181fa4ee92c` (`REVISE_SCOPED`; C9R-01/C9R-02 reconciled).
+- **Author:** `396bfee9cca0275d040597828848ede4a7da80a7`; P1 boundary author `d540cfcc44359f8f78aceccf8afb247c4a7ad80d`; C9R correction `02a13a5e01880835434b30d9a3587147f9dab0de`; independent review `05a750ad6bcab8124c1f5d86b8867181fa4ee92c` reviewed target `d540cfcc` and returned `REVISE_SCOPED`; C9R-01/C9R-02 were reconciled in `02a13a5e`, which received HQ scoped acceptance after correction with **no independent re-review**. Do not present `05a750ad` as the review of `02a13a5e`.
 - **Sourcefree API witness:** `compile_universal_workload:143` → `build_test_only_workload:299` → `execute_universal_workload:229` → `execute_test_only_workload:423` → `admit:219` → `execute_issued_workload:280` → `CarrierNeutralResearchExecutor.execute_i03:430` → `execute_empirical_query:685`.
 - **Observed:** 4/4 compiled/executed operations; 4 SUPPORTED RAW facts; 4 receipts; no-drop 4/4; authority `B49-TEST-ONLY-QUERY-AUTH`; scope `TEST_ONLY_SOURCEFREE`; `target_use_permission_ids=[]`; denominators 3/3, 3/3, 4/4, 2/2.
 - **Negative/restore:** wrong source SHA → 0/4 executed, 4 failed, no-drop false; wrong host/purpose → typed `WorkloadAdmissionError: SOURCE_HOST_PURPOSE_MISMATCH`; restoration fact refs match positive.

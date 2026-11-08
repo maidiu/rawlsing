@@ -82,13 +82,15 @@ Taxonomy after C7: 51 historical snapshot = **21 FUNCTION_CURRENT / 30 NOT_RUN**
 1. **C9 P1/shared35:** name the exact selected shared35 source/wave + current C11 release + I03 query/predicate, or keep `NOT_RUN__UNPROVED_SELECTION`. Reuse PDEV01-GAP007 210-DIST (210/210 COMPLETED/SUPPORTED); keep 630 non-DIST typed refusals with operation-kind owners. Do not add an EpreOperation→I03 resolver or treat empty C11 as missing engine.
 2. **C9 O08/O12 issuer:** if a real selected operation exists, source/science owner supplies the exact current decision record/target-use permission; otherwise retain the sourcefree witness. No forged grant.
 3. **C10/C13 F03:** name one actual selected current F03 operation with exact current authority/permission binding, or keep `F03=UNPROVED_CURRENT_SELECTION`; no new FQRA adapter or C6 filename installation.
-4. **C11/C12 F08:** determine whether any actual selected current operation demands QUC semantic-role/itinerary/taxonomy responsibility; if none, keep `UNPROVED`/`NOT_RUN`; if yes, route at the existing metadata/FF/role owner. No QUC reader/engine.
-5. **Preserve** C10/C11 test-time replay positives and limits: C10 18,518/35/9, C11 one GSS/1973/`uswar` row, original runs `NOT_OBSERVED`/`NOT_RUN`, current selection `UNPROVED`.
-6. **No-new-work:** no P1 resolver, no new Batch/C11/I03 engine, no 630 missing-capability inference, no QUC reader, no F03 adapter, no new semantic engine, no forced historical packet, no original issuer mint.
+4. **C11/C12 F08:** determine whether any actual selected current operation demands QUC semantic-role/itinerary/taxonomy responsibility; if none, keep `UNPROVED`/`NOT_RUN`; if yes, route at the existing metadata/FF/role owner. No QUC reader/engine is authorized; current QUC owner/first consumer remains UNKNOWN_NOT_PROVED; no absence proof.
+5. **C9 lineage:** reviewed target `d540cfcc`, review `05a750ad` `REVISE_SCOPED`; C9R correction `02a13a5e`; HQ scoped acceptance after correction with no independent re-review. Preserve the 840/210/630/16/30/16 effects.
+6. **T3/T4:** zero-equivalence and zero-severance statuses are **claim limits, not product positive proof**. Preserve T2 `NOT_SATISFIED__TYPED_HOLD`; no new science gate or retirement.
+7. **Preserve** C10/C11 test-time replay positives and limits: C10 18,518/35/9, C11 one GSS/1973/`uswar` row, original runs `NOT_OBSERVED`/`NOT_RUN`, current selection `UNPROVED`.
+8. **No-new-work:** no P1 resolver, no new Batch/C11/I03 engine, no 630 missing-capability inference, no QUC reader, no F03 adapter (current QUC owner/first consumer UNKNOWN_NOT_PROVED; no absence proof), no new semantic engine, no forced historical packet, no original issuer mint.
 
 ## Next actual HQ action
 
-1. Freeze the C14 content snapshot (00–10, canonical/alias 03, C14/00_RETURN.md, GOAL_AUDIT.json, EVIDENCE_INDEX.json) on the prepared branch.
-2. Create the separate provenance commit recording the content snapshot SHA and file hashes; push; direct `ls-remote` verify.
-3. **STOP.** Do not dispatch a new worker, do not poll, do not reopen C1–C13, do not touch protected/production/HQ state.
-4. The next authorized action is the **C14 independent whole-record review** in `09`, followed by HQ adjudication. Quota is `UNKNOWN`; whole #777 remains incomplete.
+1. Freeze the C16 content snapshot (00–10, canonical/alias 03, C16/00_RETURN.md, FINDING_RESOLUTION.jsonl, PARENT_ISSUE_DISPOSITIONS.jsonl, GOAL_AUDIT.json, VALIDATION.md) on the prepared branch.
+2. Create the separate provenance commit/locator recording the content snapshot SHA and file hashes; push; direct `ls-remote` verify.
+3. **STOP.** Do not dispatch a new worker, do not poll, do not reopen C1–C15, do not touch protected/production/HQ state. HQ handles C16 intake/disposition.
+4. C15 `REVISE` correction is applied at documentary scope; no new review is authorized by this return. HQ may dispatch a focused C16 rereview if its acceptance policy requires one. Quota is `UNKNOWN`; whole #777 remains incomplete.

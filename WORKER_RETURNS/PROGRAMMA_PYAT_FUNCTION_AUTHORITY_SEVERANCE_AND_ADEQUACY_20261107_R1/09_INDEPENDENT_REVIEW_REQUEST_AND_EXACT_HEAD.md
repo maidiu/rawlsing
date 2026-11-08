@@ -2,21 +2,24 @@
 
 ## Status
 
-**C14 review not yet performed.** The C9–C13 combined return is prepared on the existing #777 fan-in branch. The content snapshot and provenance commit are recorded after the content commit is frozen; this request is not acceptance, not whole-product acceptance, and not a protected merge authorization.
+**C15 review returned `REVISE`.** This `09` is retained as the historical C14 review request; the bounded C16 correction is in `C16_EXACT_C15_CORRECTIONS/00_RETURN.md`. The C14 content snapshot and provenance commit are recorded above; this request is not acceptance, not whole-product acceptance, and not a protected merge authorization.
 
 ## Named reviewer
 
 **Reviewer job:** `pyat777-hq-fanin-c14-independent-whole-record-review-r1`.
-**Reviewer type:** distinct nonauthor, exact-content-snapshot, hostile whole-record reviewer. Must be a different session from every C1–C13 author/reviewer, the HQ fan-in author, and the C7/C8 reviewers. Must not have write authority in the fan-in lease. Model/effort must be verified on the actual next turn; no silent harness/host/model/effort change.
+**Reviewer type:** distinct nonauthor of C14/fanin/implementations, exact-content-snapshot, hostile whole-record reviewer. The governing requirement is nonauthor independence, not absence of all prior review experience. Prior review relationships must be disclosed (for example, the existing C5 independent reviewer at `ea9ff9e54e2bc7c9a56a1398d172e87a8f109f03` may be reused; that prior C5 review is not independent re-verification of C5 by the C14 review). Must not have write authority in the fan-in lease. Model/effort must be verified on the actual next turn; no silent harness/host/model/effort change.
 **Review lease:** a separate `C15_HQ_FANIN_C14_REREVIEW/` directory only; no edits to `00`–`10`, the canonical/alias `03`, `C14_POST_C9_C13_FANIN/`, C8/C9–C13 returns, production code, tests, HQ, peer or protected state.
 **Scope:** whole-record schema/lineage/current-effect/terminal-criteria correctness on the exact C14 content snapshot. **Not** a new whole-machine source/semantic/native/S3 acceptance, not a new severance/equivalence court, and not an authorization to build or merge.
 
 ## Exact content snapshot and provenance
 
-- **Base commit verified at intake:** `46104b8ddf44db4d5a32e603ca9332cebbbb1f94` (full `git rev-parse`; local prepared branch).
-- **C8-accepted historical content:** `55fca441d1c674c256473c264cabda48f2df0e52`.
-- **C14 content snapshot:** `f42b73abf2532f9a4ea589e7f80841e15585d8e1` — immutable fan-in content (00–10, canonical/alias 03, C14/00_RETURN.md, GOAL_AUDIT.json, EVIDENCE_INDEX.json). The content snapshot is hashed as a defined immutable set; it does not contain its own commit hash.
-- **C14 provenance commit:** `SEE_BRANCH_HEAD__VERIFY_GIT_REV_PARSE_HEAD` — metadata-only commit recording the content snapshot SHA and file hashes; provenance separate from content.
+- **Original prepared-branch base:** `e2fdd975f618228ecc4e146840cb0eed2091a20f`.
+- **C14 intake base:** `46104b8ddf44db4d5a32e603ca9332cebbbb1f94` (full `git rev-parse`; distinct from the original preparation base).
+- **HQ head at C16 correction:** `9651352a846da9ed85d4e64562b7d2b07b90fb07`; HQ-owned control-room files changed in that HQ commit are not C16 writes.
+- **C8-accepted historical content:** `55fca441d1c674c256473c264cabda48f2df0e52`; C8 51-case `03` SHA-256 `cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251`; C8 review `356124ee`, focused check `77a879822`, residual closure `0e0997213`.
+- **C14 historical content snapshot:** `f42b73abf2532f9a4ea589e7f80841e15585d8e1`; C14 55-case `03` SHA-256 `f21823f83e6aed6a64695150bf4ed43df2e7fd88b3310ab26752476acc61a778`. The C14 snapshot is preserved separately from the C8 51-case snapshot and the C16 current correction; it does not contain its own commit hash.
+- **C14 provenance commit:** `ea7e878a82e2343591724433fcd6b13910602c84` — metadata-only commit recording the content snapshot SHA and file hashes; external immutable locator `C14_COMBINED_RETURN_INTAKE.json#provenance_commit`; provenance separate from content. No moving-HEAD placeholder.
+- **C16 current `03`:** SHA-256 `a7aa9d1a3530755c755d526c61c2dfb252783d9478eb70f0851fa5ae189e14e7` (canonical = alias; distinct from historical C14 `f21823`); C16 current snapshot/provenance is recorded in the external C16 intake record.
 - **Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
 - **Protected source observation:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
 
@@ -72,7 +75,7 @@
 6. **C9 actual effects:** 4/4 API ops/facts/receipts; wrong SHA 0/4; wrong host/purpose typed; restore exact; 840 candidate admitted; PDEV01 210/210 COMPLETED/SUPPORTED; 630 typed refusals; I05 16/30/16; empty C11 expected negative; **no missing engine, no 630 missing capabilities**.
 7. **C10/C11 actual effects:** C10 18,518/35/9 with negatives/restore; C11 one GSS/1973/`uswar` row with positive/negatives/restore; both test-time only, original runs not observed; current F03/F08 selection `UNPROVED`; no equivalence/severance claim.
 8. **C12/C13:** five QUC and five F03 obligations compared; different/partial responsibilities; no QUC/F03-equivalent producer→selector→consumer; no selected current operation; no repair/new reader.
-9. **Six terminal criteria:** `C14/GOAL_AUDIT.json` audits all six with satisfied/not_satisfied/typed_hold and exact pins, not "documents exist"; criterion 2 is `NOT_SATISFIED__TYPED_HOLD`; criterion 6 is a typed hold for parent issue-by-issue disposition.
+9. **Six terminal criteria:** `C16_EXACT_C15_CORRECTIONS/GOAL_AUDIT.json` audits all six with satisfied/not_satisfied/typed_hold and exact pins, not "documents exist"; criterion 2 remains `NOT_SATISFIED__TYPED_HOLD`; criterion 6 now has the issue-by-issue table in `C16_EXACT_C15_CORRECTIONS/PARENT_ISSUE_DISPOSITIONS.jsonl`. T3/T4 are claim limits, not product positive proof.
 10. **No false green:** no proved severance, no full historical equivalence, no native/S3/science/actor/N11/N12/PFF, no CI waiver, no whole-#777 completion; `goal_complete=false`; C14 review is not acceptance.
 11. **Denominators/agenda:** 29/58/228/581/687; 42 selected-state/16 unresolved; 15/8/7/10/3; 26/16; 15/11; 58; 27/9; 154/1608 remain separate; 17 A01–A17 gates open; no magic sum.
 12. **Exact head/independence:** C14 content snapshot exact; provenance commit separate; C14 reviewer distinct nonauthor; no write outside C15 lease.
@@ -110,4 +113,4 @@ The C14 reviewer must return, in its own lease:
 - `03_REVIEW_COMMIT.txt` — review commit and remote readback.
 - No edits to the fan-in lease, canonical/alias `03`, C14 files, C8/C9–C13 returns, production code, tests, HQ, peer or protected state.
 
-**C14 review not yet performed. The combined return is not accepted until C14 returns and its findings are adjudicated. Whole #777 remains incomplete; `goal_complete=false`.**
+**C15 returned `REVISE`; the bounded C16 correction is prepared. No new review is authorized by C16; HQ handles intake/disposition. Whole #777 remains incomplete; `goal_complete=false`.**
