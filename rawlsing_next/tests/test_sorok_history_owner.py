@@ -334,3 +334,46 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resum
     changed = subprocess.run(cli + ["view"], text=True, capture_output=True)
     assert changed.returncode == 2
     assert json.loads(changed.stdout)["reason"] == "P4_COLD_STATE_MISMATCH"
+
+
+def test_actual_fork_holds_parent_history_and_inflight_job(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(ENGINE))
+    from developmental_recursion.p2_owner import load_p2
+
+    api = load_p2()
+    root = tmp_path / "session"
+    owner = api.start(root)
+    try:
+        session = owner.session
+        current = session.world().positions[session.meta["user_actor"]]
+        session.travel("market" if current == "workshop" else "workshop")
+        event = session.events()[-1]
+        history = HistoricalWorld(session)
+        surface = SurfaceParticular(event["event_id"], "fixture:fork-tool", "item",
+                                    event["location"], {"condition": "scuffed"}, ("physical",))
+        target = history.admit_surface(surface)
+        lease = history.lease()
+        assert lease["job"]["id"] == target["job_id"]
+        parent = session.branch_id
+
+        session.fork_alt("mechanism-i-isolation")
+        assert session.branch_id != parent
+        assert history.target(target["id"]) is None
+        assert history.job(target["job_id"]) is None
+        assert history.lease() is None
+
+        child = history.admit_surface(surface)
+        assert child["id"] != target["id"]
+        assert child["branch"] == session.branch_id
+        assert child["root"] == target["root"]
+        assert history.pending()[0]["id"] == child["job_id"]
+    finally:
+        owner.close()
+
+    reopened = api.open(root)
+    try:
+        history = HistoricalWorld(reopened.session)
+        assert history.target(child["id"]) == child
+        assert history.job(target["job_id"]) is None
+    finally:
+        reopened.close()

@@ -60,11 +60,19 @@ class HistoricalWorld:
     def _state(self, world):
         root, branch = self.scope()
         state = world.resources.get(RESOURCE)
+        empty = {"root": root, "branch": branch, "targets": {}, "outbox": {}}
         if state is None:
-            return {"root": root, "branch": branch, "targets": {}, "outbox": {}}
-        if (state["root"], state["branch"]) != (root, branch):
-            raise HistoryRefusal("WORLD_HISTORY_SCOPE_MISMATCH")
-        return state
+            return empty
+        if (state["root"], state["branch"]) == (root, branch):
+            return state
+        store = self.session.product.store
+        if (state["root"] == root
+                and store.branch(branch)["parent_branch_id"] == state["branch"]
+                and store.shared_root_equal(branch, state["branch"])["equal"]):
+            # This resource contains only branch-local admissions. The BP4 fork
+            # copies checkpoint bytes, but their targets and leases stay parent-owned.
+            return empty
+        raise HistoryRefusal("WORLD_HISTORY_SCOPE_MISMATCH")
 
     @contextmanager
     def _write(self):

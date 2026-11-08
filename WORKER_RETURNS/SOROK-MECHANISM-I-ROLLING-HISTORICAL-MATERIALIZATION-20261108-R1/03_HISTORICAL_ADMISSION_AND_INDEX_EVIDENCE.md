@@ -37,3 +37,13 @@ The foreground test binds an artifact and a collection to one actual
 movement event, verifies both are returned, removes the derived index in
 the fixture to verify rebuild parity, and leaves the location to verify
 neither remains visible. It does not establish actor-history linkage.
+
+The received BP4 fork copies checkpoint bytes. The historical owner now
+recognizes a verified direct fork and starts an empty child history view
+when the copied resource belongs to its parent. The fork test confirms the
+child cannot read or lease the parent's target or in-flight job, can admit
+a distinct branch-local target, and recovers that child target after a cold
+open. The existing S39 reader accepts the sealed inherited generation
+receipt only after the store verifies a direct fork and its shared prefix.
+This proves branch-local isolation on the received direct-fork path.
+Shared pre-contact historical writes and deeper fork chains remain open.
