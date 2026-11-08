@@ -173,11 +173,35 @@ def prepare_state(value):
     return Path(tempfile.mkdtemp(prefix="run-", dir=scratch))
 
 
+def prepare_output(value):
+    protected = HERE.resolve()
+    if value:
+        output = Path(value).resolve()
+        if output == protected:
+            raise SystemExit(
+                f"refusing to overwrite checked-in evidence directory: {output}")
+        if output.exists():
+            if not output.is_dir():
+                raise SystemExit(f"refusing non-directory output: {output}")
+            if any(output.iterdir()):
+                raise SystemExit(f"refusing non-empty output: {output}")
+        output.mkdir(parents=True, exist_ok=True)
+        return output
+    scratch = Path(tempfile.gettempdir()) / "sorok-p6-cold-demo"
+    scratch.mkdir(parents=True, exist_ok=True)
+    return Path(tempfile.mkdtemp(prefix="out-", dir=scratch))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, help="empty bounded scratch state directory")
+    parser.add_argument("--out", "--output", dest="out", type=Path,
+                        help="new empty output directory; default is a fresh temp directory")
     args = parser.parse_args()
     state = prepare_state(args.state)
+    output = prepare_output(args.out)
+    print(f"state: {state}")
+    print(f"output: {output}")
     env = os.environ.copy()
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     records = []
@@ -242,12 +266,12 @@ def main() -> int:
         })
         print(f"[{len(records):02d}] house history: exit {process.returncode} in {elapsed:.2f}s")
 
-    (HERE / "actual_run.jsonl").write_text(
+    (output / "actual_run.jsonl").write_text(
         "".join(json.dumps(row, sort_keys=True) + "\n" for row in records),
         encoding="utf-8",
     )
     if house is not None:
-        (HERE / "house_history.json").write_text(
+        (output / "house_history.json").write_text(
             json.dumps(house, sort_keys=True, indent=2) + "\n", encoding="utf-8")
 
     looked = [
@@ -264,6 +288,7 @@ def main() -> int:
         f"- Runtime path: `{RUN}`",
         f"- Started: {records[0]['started'] if records else now()}",
         f"- State: `{state}`",
+        f"- Output: `{output}`",
         f"- CWD: `{REPO}`",
         f"- Python: `{sys.executable}` ({platform.python_version()})",
         f"- Platform: `{platform.platform()}`",
@@ -335,7 +360,7 @@ def main() -> int:
             "- Not claimed: native science, actor authority, human acceptance, PR779 merge, protected/shared-progress edits.",
             "",
         ])
-    (HERE / "TRANSCRIPT.md").write_text("\n".join(lines), encoding="utf-8")
+    (output / "TRANSCRIPT.md").write_text("\n".join(lines), encoding="utf-8")
     return 0 if records and all(row["exit"] == 0 for row in records) else 1
 
 

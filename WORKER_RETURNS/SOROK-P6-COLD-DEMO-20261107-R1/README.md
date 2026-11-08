@@ -4,24 +4,37 @@ Frozen draft779 runtime: `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`.
 
 This directory contains one connected, ordinary-CLI P6 encounter. Every P6 command is a
 separate OS process against the same persisted state, so every invocation cold-reopens and
-validates the checkpoint. The checked-in `TRANSCRIPT.md` is generated from actual command
-stdout and actual `p4_receipts.json` turns; narration and receipt lines are not authored.
+validates the checkpoint. The checked-in `TRANSCRIPT.md`, `actual_run.jsonl`, and
+`house_history.json` are the exact original demo recording from head
+`5adcb372cfacea1281fe1a69f972a55bf0752992`; the portable replay driver does not modify them.
 
 ## Copy/paste run
 
 From the repository root:
 
 ```sh
-PY=/private/tmp/rawlsing-oct28-p1r1/venv/bin/python
-STATE=$(mktemp -d /var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.XXXXXX)
+PY="${PY:-python3}"
 PYTHONDONTWRITEBYTECODE=1 "$PY" \
-  WORKER_RETURNS/SOROK-P6-COLD-DEMO-20261107-R1/run_demo.py --state "$STATE"
+  WORKER_RETURNS/SOROK-P6-COLD-DEMO-20261107-R1/run_demo.py
 ```
 
-`run_demo.py` writes `TRANSCRIPT.md`, `actual_run.jsonl`, and `house_history.json` in this
-directory (replacing the checked-in transcript with the new actual run). The state stays in
-the bounded scratch directory printed by the script. No runtime, source, progress, PR779,
-protected, or shared file is edited.
+Use the checkout's existing interpreter, or set `PY` to a checkout-specific venv interpreter
+if that is where the dependencies are installed. No worker-specific scratch path is required.
+The driver prints the fresh `state:` and `output:` directories before running.
+
+To choose the locations explicitly:
+
+```sh
+PY="${PY:-python3}"
+PYTHONDONTWRITEBYTECODE=1 "$PY" \
+  WORKER_RETURNS/SOROK-P6-COLD-DEMO-20261107-R1/run_demo.py \
+  --out /path/to/new-empty-output --state /path/to/new-empty-state
+```
+
+Each run writes `TRANSCRIPT.md`, `actual_run.jsonl`, and `house_history.json` into the printed
+output directory. By default that is a new OS temp directory outside the tracked evidence.
+The driver refuses a non-empty output or state directory, and refuses the checked-in evidence
+directory itself. No runtime, source, progress, PR779, protected, or shared file is edited.
 
 ## Encounter covered
 
@@ -43,13 +56,16 @@ photo were looked at; bench and mug were not.
 
 ## Files
 
-- `run_demo.py`: runnable driver; invokes `run_p6.py` once per command via `subprocess`.
+- `run_demo.py`: portable replay driver; invokes `run_p6.py` once per command via
+  `subprocess` and writes new evidence to a fresh output directory by default.
 - `inspect_state.py`: read-only P6 house-history evidence helper.
-- `TRANSCRIPT.md`: actual run with commands, exits, process times, environment, concise
-  human-facing output, and material/time receipts.
-- `actual_run.jsonl`: raw command records with full stdout/stderr, parsed output, receipt
-  summaries, start times, and elapsed seconds.
-- `house_history.json`: actual house history and object material read from the run state.
+- `TRANSCRIPT.md`: exact original run with commands, exits, process times, environment,
+  concise human-facing output, and material/time receipts. Recorded timings remain visible,
+  including the later 20.43s, 30.61s, and 30.75s processes.
+- `actual_run.jsonl`: exact original raw command records with full stdout/stderr, parsed
+  output, receipt summaries, start times, and elapsed seconds.
+- `house_history.json`: exact original house history and object material read from the run
+  state.
 
 ## Actual producer -> consumer ownership map
 
@@ -65,10 +81,34 @@ photo were looked at; bench and mug were not.
 - `attention.register` / `save` (`p6_gaze.json` producer) -> `attention.select` (private
   detail-selection consumer). This private profile does not produce actor input.
 
+## Portable routing validation
+
+A focused validation on the updated driver used one `new` command (not a replay of the
+encounter):
+
+- Default output resolved to a fresh OS temp directory outside this demo directory.
+- Output equal to this checked-in evidence directory was refused.
+- Pre-populated state and output directories were refused.
+- The one-command routing run exited 0: `new` in 9.23s, house helper in 2.90s, and
+  `TRANSCRIPT.md`, `actual_run.jsonl`, `house_history.json` were written only to the temp
+  output.
+- The three checked-in evidence files were byte-identical before and after:
+  `11da7a804aa3603997716794802ac4a65a90f490b3a6eea6a3151f0499496493` (`TRANSCRIPT.md`),
+  `7421fc2bd9dba4e08e3c00f39ec4943441d1eeb5e32101673e98b4f080924ae4` (`actual_run.jsonl`),
+  `87ca6dd35cdf29a5d97598f5bce855b27313ab12b0d45d95332795c7f4336e53`
+  (`house_history.json`).
+
+The original 13-record encounter recording was reused unchanged; only output routing was
+validated.
+
 ## Evidence scope and missing handoff
 
-- Scope: sourcefree, test-only, actual received P6/P5/P4/P3 code and actual persisted state
-  receipts. This is a demo, not native validation.
+- Scope: sourcefree, test-only. P6/P5 are unreceived candidates; P4/P3 are protected. This
+  uses their received code and actual persisted state receipts only. It is a demo, not
+  native validation.
+- The checked-in `TRANSCRIPT.md`, `actual_run.jsonl`, and `house_history.json` are the exact
+  original demo head `5adcb372cfacea1281fe1a69f972a55bf0752992` recording, unchanged by this
+  portable output-routing update.
 - Not claimed: native science, actor authority, human acceptance, PR779 merge, protected
   merge, shared-progress edit, or source/authority edit.
 - Recognition is a separate in-flight patch and query-order is a separate proof. Neither is
