@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "detail": "SRC99: UNKNOWN_SOURCE",
+      "name": "unknown_source_refused",
+      "passed": true
+    },
+    {
+      "detail": "SourceConfigurationFactoryError",
+      "name": "cross_source_fixture_refused",
+      "passed": true
+    },
+    {
+      "detail": "SourceConfigurationSchemaError",
+      "name": "fixture_original_sha_reuse_refused",
+      "passed": true
+    },
+    {
+      "detail": "source-read transport applies only to an ORIGINAL_SOURCE config; fixtures are not original reads",
+      "name": "fixture_reader_refused",
+      "passed": true
+    },
+    {
+      "detail": "active source SHA differs from the frozen config binding",
+      "name": "wrong_active_source_sha_refused",
+      "passed": true
+    },
+    {
+      "detail": "all original configs preserve NOT_RUN",
+      "name": "original_execution_not_run_for_all_35",
+      "passed": true
+    },
+    {
+      "detail": "no SAV/DTA/POR/DB carriers",
+      "name": "no_original_source_byte_carriers_bundled",
+      "passed": true
+    },
+    {
+      "detail": "source_read_performed=false, original_workload_issued=false",
+      "name": "original_plan_metadata_only",
+      "passed": true
+    }
+  ],
+  "original_source_bytes_read": false,
+  "original_source_execution_performed": false,
+  "passed": true,
+  "protected_or_production_merge_performed": false,
+  "schema": "PYAT_777_UNIVERSAL_SOURCE_TO_C11_NEGATIVE_EVIDENCE@1.0.0",
+  "source_read_permission_created": false
+}

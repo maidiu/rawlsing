@@ -1,0 +1,31 @@
+{
+  "artifact_sha256": {
+    "35_SOURCE_LEDGER.json": "ae3535c23e95bdb9ba236f1c7d96caff0a39607f0e8636a055398b350bafacd9",
+    "35_SOURCE_LEDGER.md": "c954ebf77e7a7e5831eb798d99d71308d1a9c452cb3317afda96d133dbe83112",
+    "COLD_RESTORE.json": "6744c5c01beea8e734162331ec7c7a61f5b54fe283a99e65913415fd395830ff",
+    "NEGATIVE_EVIDENCE.json": "5e0759af424d577229f5c5c5929c4840e2bf2490d54087f0de7f375333723b32",
+    "OWNER_ABI.json": "73ba98ce424e91c98ebeab4bf700b27d319e6ba9d04eda453177c89db8c9013c",
+    "PROVENANCE.json": "0ea789a712c44965f8744b97d6c50ce668eb6be1b7fd823a5391fba6cdb62c9d",
+    "PROVE_ALL_RECEIPTS.json": "d49bba84ec883ec6a29113005c6e703d03464f36570e8429a11d763fd8b9169d",
+    "TEST_RECEIPT_r157_focused.txt": "a94478e94ed3d44f4b7ecf7b6a7309bc97c4ce91301a19435acb8e06a321b676",
+    "TEST_RECEIPT_universal.txt": "00a0e8738a5156b0386ba08daef8f3e26d1e28ad17017981469de2727665fee8"
+  },
+  "commands": [
+    {
+      "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_universal_source_to_c11.py -q -o addopts=''",
+      "log": "TEST_RECEIPT_universal.txt",
+      "result": "41 passed in 374.37s",
+      "sha256": "00a0e8738a5156b0386ba08daef8f3e26d1e28ad17017981469de2727665fee8"
+    },
+    {
+      "command": "PYTHONPATH=. python3 -m pytest rawlsing_next/tests/test_source_configuration_foundation.py rawlsing_next/tests/test_source_configuration_library.py rawlsing_next/tests/test_source_configuration_p3.py rawlsing_next/tests/test_pre553_source_read_admission.py -q -o addopts=''",
+      "log": "TEST_RECEIPT_r157_focused.txt",
+      "result": "37 passed, 2 skipped in 154.68s",
+      "sha256": "a94478e94ed3d44f4b7ecf7b6a7309bc97c4ce91301a19435acb8e06a321b676",
+      "skips": "two R154 loader tests skip because the R154 runtime/store is not imported into this branch"
+    }
+  ],
+  "goal_complete": false,
+  "independent_review_required": true,
+  "schema": "PYAT_777_UNIVERSAL_SOURCE_TO_C11_TEST_RECEIPTS@1.0.0"
+}

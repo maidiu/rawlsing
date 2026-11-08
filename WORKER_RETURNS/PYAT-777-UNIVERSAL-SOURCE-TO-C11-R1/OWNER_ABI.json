@@ -1,0 +1,100 @@
+{
+  "current_consumer": {
+    "facade": {
+      "candidate_builder": "(*, source_sha256: 'str', row_count: 'int', cells: 'Iterable[PhysicalCell]', projection: 'GovernedC11Projection | None')",
+      "class": "GovernedC11Projection",
+      "incidence_validator": "(incidence: 'PhysicalSourceIncidence', projection: 'GovernedC11Projection | None', *, batch_size: 'int' = 10000)",
+      "module": "rawlsing_next.pre553_source_backed_c11_facade",
+      "repository_builder": "(source, projection, *, cache=None, batch_size=10000, current_authorities=())",
+      "stream_validator": "(stream: 'ExactPhysicalCellStream', projection: 'GovernedC11Projection | None')"
+    },
+    "ingest": {
+      "atomic_ingest": "(candidate: 'C11SourceReleaseCandidate', repository: 'C11Repository') -> 'C11IngestResult'",
+      "candidate_type": "C11SourceReleaseCandidate",
+      "module": "rawlsing_next.pre553_c11_ingest",
+      "result_type": "C11IngestResult",
+      "validator": "(candidate: 'C11SourceReleaseCandidate') -> 'C11LogicalRelease'"
+    },
+    "repository": {
+      "class": "C11Repository",
+      "module": "rawlsing_next.pre553_c11_repository",
+      "resolve_release_exact": "(self, ref: 'ExactRef') -> 'C11LogicalRelease'"
+    }
+  },
+  "native_source_package_required": false,
+  "no_new_engine": true,
+  "no_replacement_c11_i03_batch": true,
+  "owner_files": [
+    {
+      "bytes": 36526,
+      "git_blob": "7c967b8227a2843971c7cd9f61f3deaa423af866",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "sha256": "7788feb514ad5eceb71e7d76191b1b80a66688dc64a56b0dc05f4a1b19bbdfcf"
+    },
+    {
+      "bytes": 40034,
+      "git_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+    },
+    {
+      "bytes": 6920,
+      "git_blob": "c0cd4e835ceb8fe6c6025ebeb89e32223427f955",
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "sha256": "77ec0997b8aab0bb00c7d0ca93997fb3f3a041ace1c6661c1efb1185c9affad2"
+    },
+    {
+      "bytes": 25344,
+      "git_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "path": "rawlsing_next/pre553_c11_integrity.py",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+    },
+    {
+      "bytes": 42711,
+      "git_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "sha256": "9cd1d71440a7e8c1861dda73274529e07211edc14335583e93ad91c0833e9ab4"
+    },
+    {
+      "bytes": 14311,
+      "git_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a"
+    },
+    {
+      "bytes": 23605,
+      "git_blob": "b968fa16c6620cd06b191ebdb5da7da86f524393",
+      "path": "rawlsing_next/pre553_source_local_universe_admission.py",
+      "sha256": "377b4d767da0c7cac5caa97bfff60febc6c525220c41a1638f2ace13f7d58cdd"
+    },
+    {
+      "bytes": 36082,
+      "git_blob": "b72b469e6646b88e4e2ed4dbbf0f3c209557fd69",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "sha256": "7cd7fd4f8ccf79cb07b037ef9cdda5e60ed3c3ba0631c9f4030d09f4d666be94"
+    },
+    {
+      "bytes": 41619,
+      "git_blob": "dd0d6960368bbac84f1711c0e496017056c343b7",
+      "path": "rawlsing_next/pre553_source_native_preimage_adapter.py",
+      "sha256": "e99dd21140dab44ef377f143bd932413045cd97936f830467a7a06cd44b30b7c"
+    },
+    {
+      "bytes": 34339,
+      "git_blob": "4b89c4598f324834de064c1200c63698a20e3c5c",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "sha256": "f9794976aef51c418e8152850a7b0143df6790d0596549ea7f0991fc1f4501e9"
+    }
+  ],
+  "r157_candidate": "1384612bfed8d801140e00ace353779338599da3",
+  "r157_facade_sha256_at_cut": "03b88d258d21c403542756db7316923aa392871442d99294de904b1744da1d01",
+  "r157_review_cut": "d81bc2c67baf933461ae6cfca468f24779cc7e44",
+  "receive_seam": [
+    "rawlsing_next.source_configuration.factory.build_governed_c11_projection",
+    "rawlsing_next.pre553_source_backed_c11_facade.project_c11_candidate_from_physical_cells",
+    "rawlsing_next.pre553_c11_ingest.validate_c11_source_release",
+    "rawlsing_next.pre553_c11_ingest.ingest_c11_source_release",
+    "rawlsing_next.pre553_c11_repository.C11Repository"
+  ],
+  "schema": "PYAT_777_UNIVERSAL_SOURCE_TO_C11_OWNER_ABI@1.0.0"
+}
