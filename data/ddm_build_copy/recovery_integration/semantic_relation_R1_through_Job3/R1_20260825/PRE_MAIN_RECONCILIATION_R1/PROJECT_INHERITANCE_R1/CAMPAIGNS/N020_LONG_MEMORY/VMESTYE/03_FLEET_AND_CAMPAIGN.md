@@ -1,6 +1,8 @@
 # VMESTYE — CAMPAIGN ARCHITECTURE, PRONGS AND FLEET
 **STATUS:** CHARTED, NO USER DISPATCH. Source: accepted Long Memory 44/30 and D01–D07; original code/inventory; Dva/Trii/Chetiri; PROGRAMMA G4; #777; current PRE-MAIN. See exact workpackage entries in [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv).
 
+**Actual GitHub issue packet index:** [14_COMMISSION_ISSUE_DISPATCH.md](14_COMMISSION_ISSUE_DISPATCH.md) and [COMMISSION_ISSUES.tsv](CONTROL/COMMISSION_ISSUES.tsv). Eighteen workers + three independent receiving gates, published but NOT DISPATCHED.
+
 ## Four passes, not eighteen simultaneous essays
 **P0 BOOTSTRAP:** First consume [30 known November recovery/candidate records](CONTROL/RECENT_CAMPAIGN_INTAKE.tsv) and [the recent-work source reconciliation](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md), anti-join them to LMX/LMQ/legacy/PROGRAMMA and prove branch fate. This step is an intake of previously completed research, NOT a new historical census. ZL-00 governs the schema and exclusive documentary integration. ZL-01 imports/validates existing registers including **both returned SR-01 overlays (2,416 Pyat/1,314 Sorok rows)**, Sorok 304/144/100/38/83 estates, 48 unresolved source bodies and recent-work branch review results and reports baseline anti-joins. Freeze source cuts and field definitions before other workers author incompatible ledgers. Cold independent schema preflight.
 **P1 PARALLEL EXTRACTION:** Separate source-tracing and genealogy workers ZL-02–ZL-14 operate against assigned frozen evidence; each writes only to its prong output path, reports no-drop and source-cut limitations, and gives a human ‘we have X, do Y, produce Z so Q can do W’ account.

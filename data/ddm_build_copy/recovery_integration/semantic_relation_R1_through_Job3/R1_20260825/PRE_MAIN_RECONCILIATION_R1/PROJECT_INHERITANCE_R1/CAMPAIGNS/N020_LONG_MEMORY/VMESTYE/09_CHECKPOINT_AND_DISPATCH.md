@@ -2,6 +2,7 @@
 **The preliminary VMESTYE documentary scaffold was protected-merged by PR #795 at `41533b89c4f7cfd1d8067a2c0a2b8afd0463163b`.** It is **not** independent P0 source completeness or functional conservation acceptance.
 **2026-11-08 USER STOP:** #777/#784/PR786 overlapping code/review/discovery and paused #787–#790 remain HELD pending explicit resumption; [repository stop record](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md) is not a verified Mac process stop.
 **Historical protected receiving cut:** `41533b89c4f7cfd1d8067a2c0a2b8afd0463163b`. Recheck live HEAD before work. **Correction branch** is evidence-only until specifically reviewed/merged.
+**Published GitHub dispatch index:** [14_COMMISSION_ISSUE_DISPATCH.md](14_COMMISSION_ISSUE_DISPATCH.md) / [21 exact issue URLs](CONTROL/COMMISSION_ISSUES.tsv) — issues alone do not launch agents. 18 worker issue links and 3 receiving gates are prepared; current statuses remain NOT_DISPATCHED / NOT_RUN.
 **Fleet control:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv). Every initial ZL-00–ZL-17 row is `NOT_DISPATCHED`; no invented host/runner/slot. The old #787/#788/#789/#790 remain paused.
 
 ## Current stage
