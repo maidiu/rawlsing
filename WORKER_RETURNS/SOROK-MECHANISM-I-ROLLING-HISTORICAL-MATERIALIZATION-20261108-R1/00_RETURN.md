@@ -63,7 +63,14 @@ The test uses the existing worker with a mock provider to establish
 absent-depth hold and post-admission actual S46 consumption without
 an inspection or change to observer perception. The adapter invokes
 `run_p4.advance`. The normal runtime caller into the adapter remains
-`NONE_VERIFIED`; independent review of the repair is pending.
+`NONE_VERIFIED`. Independent reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP`
+returned `HOLD_SCOPED` on the exact receiving cut. Static review
+passed admitted-depth provenance and the observer boundary. Independent
+execution was `NOT_RUN`. Explicit severance and restoration after
+admission remain unproved. Existing `run_p4.advance` produces the
+interval and does not supply the target, predicate, or expected value.
+The next runtime dependency is the G/S46 dispatch producer for those
+inputs.
 
 The rolling-depth worker returned
 `3fbf1b65f47aa5a75274fb12fc14bd03a17576c3` from
