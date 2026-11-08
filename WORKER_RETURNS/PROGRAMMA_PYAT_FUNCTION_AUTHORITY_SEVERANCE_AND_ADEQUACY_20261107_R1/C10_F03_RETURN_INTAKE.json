@@ -1,0 +1,53 @@
+{
+  "saved_utc": "2026-11-08T05:49:57.704940+00:00",
+  "task": "pyat777-q3-f03-first-consumer-effect-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f03-first-consumer-effect-r1/completion.json",
+  "exit_code": 0,
+  "author_commit": "fdda847507936f5e2cd32cf8c57326f0f65200d6",
+  "remote_verified": true,
+  "trace_sha256": "53c2b4ed0ae775682f4ae7b7cd477868d6dc9dadd4d70bf802ce45670cb97184",
+  "trace_rows": 19,
+  "trace_hash_independently_verified": true,
+  "disposition": "RETURN_RECEIVED__INDEPENDENT_REPLAY_AND_SUCCESSOR_REVIEW_OUT",
+  "reported_scope": {
+    "authority_rows": 18518,
+    "active_waves": 35,
+    "positive_family_witnesses": 9,
+    "ar0006_residual_rows": 20
+  },
+  "limits": [
+    "Test-time historical replay; originalhistoricalrun notobserved",
+    "Fullaudit not35positive first-consumer traces",
+    "V550bridge andV551atom downstream notrun",
+    "Governingbytespresent doesnotprove currentconsumer receives/enforces them",
+    "Currentfunctional equivalence/severance unproved"
+  ],
+  "goal_complete": false,
+  "next_action": {
+    "task": "pyat777-q3-f03-independent-consumer-review-r1",
+    "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-c6-historical-independent-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C10_Q3_F03_INDEPENDENT_REVIEW",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "review_target": "fdda847507936f5e2cd32cf8c57326f0f65200d6",
+    "launch": {
+      "child_pid": 47523,
+      "supervisor_pid": 47522,
+      "observer_pid": 47524,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f03-independent-consumer-review-r1",
+      "launch_is_not_completion": true
+    },
+    "actual_model": {
+      "id": "msg_1b9b409d9001LueGHLr9drZ4zY",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794116946511
+      }
+    }
+  }
+}

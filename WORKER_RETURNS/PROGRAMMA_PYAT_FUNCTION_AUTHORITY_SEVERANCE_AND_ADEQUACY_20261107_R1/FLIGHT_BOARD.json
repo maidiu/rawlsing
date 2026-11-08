@@ -685,7 +685,7 @@
     "session": "ses_1b9742b6c02745d8a69d062011",
     "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-joint-consumer",
     "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C10_Q3_F03_FIRST_CONSUMER_EFFECT",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED__INDEPENDENT_REVIEW_RUNNING",
     "launch": {
       "child_pid": 41066,
       "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f03-first-consumer-effect-r1",
@@ -705,7 +705,8 @@
         "streamed": 1794116102180,
         "completed": 1794116102294
       }
-    }
+    },
+    "returned_commit": "fdda847507936f5e2cd32cf8c57326f0f65200d6"
   },
   {
     "task": "pyat777-q3-f08-first-consumer-effect-r1",
@@ -759,6 +760,33 @@
       },
       "time": {
         "created": 1794116728963
+      }
+    }
+  },
+  {
+    "task": "pyat777-q3-f03-independent-consumer-review-r1",
+    "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-c6-historical-independent-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C10_Q3_F03_INDEPENDENT_REVIEW",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "review_target": "fdda847507936f5e2cd32cf8c57326f0f65200d6",
+    "launch": {
+      "child_pid": 47523,
+      "supervisor_pid": 47522,
+      "observer_pid": 47524,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f03-independent-consumer-review-r1",
+      "launch_is_not_completion": true
+    },
+    "actual_model": {
+      "id": "msg_1b9b409d9001LueGHLr9drZ4zY",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794116946511
       }
     }
   }
