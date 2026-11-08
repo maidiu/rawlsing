@@ -14,10 +14,10 @@ sys.path.append(str(ROOT.parents[1]))
 # Reuse the received sourcefree scenario constructors. They provide antecedent
 # data only. All user operations come from this CLI's caller.
 from p3_fixture_support import build_case
-from developmental_recursion.contracts import RecursionRefusal, canonical
+from developmental_recursion.contracts import RecursionRefusal, canonical, digest
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
-from rawlsing_next.sorok_history.owner import HistoricalWorld
+from rawlsing_next.sorok_history.owner import HistoricalWorld, HistoryRefusal, RESOURCE
 from response import check_source, express, read_response
 from speech import admit_speech
 
@@ -87,6 +87,20 @@ def surface(owner, ledger):
     return result
 
 
+def foreground_witness(owner, identity):
+    """Bind all foreground and actor state while the history owner advances."""
+    session = owner.base_owner.fanin.session
+    world = session.world().snapshot()
+    world.pop("hash")
+    world["resources"].pop(RESOURCE, None)
+    return digest({
+        "scope": {key: value for key, value in identity.items() if key != "state_hash"},
+        "world": world, "events": session.read_events(),
+        "intervals": session.read_interval_states(), "encounters": session.read_encounters(),
+        "psychology_head": owner.store.head(), "config_hash": owner.config_hash,
+    })
+
+
 def new(state, ledger_file, history):
     if ledger_file.exists() or (state / "actual-p2").exists():
         raise RecursionRefusal("P4_STATE_ALREADY_EXISTS")
@@ -98,10 +112,12 @@ def new(state, ledger_file, history):
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
         HistoricalWorld(case.base_owner.fanin.session).capture_visible_tool_resource()
         plan = case.plans[0]
+        identity = owner.snapshot().document()
         ledger = {"scope": {key: plan[key] for key in
                             ("project", "counterpart", "interlocutor_role")},
                   "antecedent": {"formation": formation.receipt_ref,
-                                 "identity": owner.snapshot().document(),
+                                 "identity": identity,
+                                 "foreground_witness": foreground_witness(owner, identity),
                                  "interval": interval,
                                  "psychology_head": owner.store.head()},
                   "turns": [], "pending": None}
@@ -119,6 +135,8 @@ def act(owner, ledger_file, ledger, args):
     before = owner.snapshot().document()
     if args.command == "say":
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
+    elif args.command == "inspect-particular":
+        action = {"operation": "INSPECT_PARTICULAR", "target": args.target}
     else:
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
         if args.then_wait:
@@ -144,6 +162,19 @@ def act(owner, ledger_file, ledger, args):
                    "interval": interval}
         public = {"admission": speech["admission"], "performed": speech["performed"] is not None,
                   "observation": observation}
+    elif args.command == "inspect-particular":
+        history = HistoricalWorld(session)
+        try:
+            event = history.inspect(args.target)
+        except HistoryRefusal as exc:
+            if str(exc) != "HISTORICAL_TARGET_UNAVAILABLE":
+                raise
+            receipt = {"performed": None, "reason": str(exc)}
+            public = {"admission": "UNAVAILABLE", "performed": False, "observation": None}
+        else:
+            receipt = {"performed": event}
+            public = {"admission": "ADMITTED", "performed": True,
+                      "observation": history.read_inspection(event["event_id"])}
     else:
         from s45_projection.projection import project_event
 
@@ -161,9 +192,11 @@ def act(owner, ledger_file, ledger, args):
         public = {"admission": "ADMITTED" if valid else "INVITATION_UNAVAILABLE",
                   "performed": valid, "observation": project_event(event) if valid else None}
 
+    after = owner.snapshot().document()
     ledger["turns"].append({"action": action, "request_id": args.request_id,
                             "receipt": receipt, "before": before,
-                            "after": owner.snapshot().document(), "public": public})
+                            "after": after, "foreground_witness": foreground_witness(owner, after),
+                            "public": public})
     ledger["pending"] = None
     public["next"] = surface(owner, ledger)
     save(ledger_file, ledger)
@@ -188,6 +221,9 @@ def main():
     inspect.add_argument("--request-id")
     inspect.add_argument("--then-wait", action="store_true",
                          help="After inspection, let two workshop clock units pass.")
+    particular = commands.add_parser("inspect-particular")
+    particular.add_argument("target")
+    particular.add_argument("--request-id")
     args = parser.parse_args()
 
     state = args.state.resolve()
@@ -206,10 +242,13 @@ def main():
                 owner = open_owner(state / "actual-p2")
                 try:
                     check_source(owner)
-                    expected = (ledger["turns"][-1]["after"] if ledger["turns"]
-                                else ledger["antecedent"]["identity"])
-                    if owner.snapshot().document() != expected:
-                        raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
+                    boundary = ledger["turns"][-1] if ledger["turns"] else ledger["antecedent"]
+                    expected = boundary.get("after", boundary.get("identity"))
+                    current = owner.snapshot().document()
+                    if current != expected:
+                        witness = boundary.get("foreground_witness")
+                        if witness is None or foreground_witness(owner, current) != witness:
+                            raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
                     result = (surface(owner, ledger) if args.command == "view" else
                               act(owner, ledger_file, ledger, args))
                 finally:

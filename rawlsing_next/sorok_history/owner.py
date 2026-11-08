@@ -12,6 +12,18 @@ from uuid import uuid4
 RESOURCE = "sorok.historical_materialization.v1"
 DOMAINS = frozenset({"item", "artifact", "collection", "place", "resource", "social_form"})
 DIMENSIONS = frozenset({"physical", "provenance", "participation", "dependencies"})
+PHYSICAL_TYPES = {
+    "color": str, "material": str, "condition": str, "marking": str, "texture": str,
+    "length_mm": int, "width_mm": int, "height_mm": int, "mass_grams": int,
+}
+
+
+def _valid_physical_value(predicate, value):
+    if type(value) is not PHYSICAL_TYPES[predicate]:
+        return False
+    if isinstance(value, int):
+        return 0 < value <= 100_000_000
+    return bool(value.strip()) and len(value) <= 160
 
 
 class HistoryRefusal(ValueError):
@@ -196,6 +208,57 @@ class HistoricalWorld:
                      if job["status"] == "ENQUEUED")
 
 
+    def _constraint_packet(self, world, target, job):
+        """Assemble a bounded packet exclusively from owner-bound material."""
+        surface = target["surface"]
+        event = self.session.event(surface["occurrence_id"])
+        if event is None or event.get("hash") != target["parent_hash"]:
+            raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
+
+        def ref(kind, object_id, content_hash):
+            return {"kind": kind, "object_id": object_id, "content_hash": content_hash}
+
+        root, branch = target["root"], target["branch"]
+        target_id = target["id"]
+        authority = {
+            "policy": "SOROK_HISTORY_SOURCEFREE_PHYSICAL_V1",
+            "root": root, "branch": branch, "target": target_id,
+            "grade": "SOURCEFREE_TEST_ONLY", "allowed_H_classes": ["H0"],
+        }
+        facts = []
+        for predicate, value in sorted(surface["physical"].items()):
+            body = {"target_id": target_id, "predicate": predicate, "value": value,
+                    "state": "KNOWN"}
+            checksum = digest(body)
+            facts.append({**body, "ref": ref("KNOWN_FACT", "surface:" + checksum, checksum)})
+        known_refs = [fact["ref"] for fact in facts]
+        occurrence = ref("WORLD_EVENT", event["event_id"], event["hash"])
+        target_ref = ref("WORLD_TARGET", target_id, digest(target))
+        return {
+            "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
+            "request_id": job["id"], "root": root, "branch": branch, "time": world.clock,
+            "target_ids": [target_id],
+            "surface": {target_id: {
+                "domain": surface["domain"], "location": surface["location"],
+                "physical": deepcopy(surface["physical"]),
+                "known_fact_refs": known_refs, "unresolved": list(job["dimensions"]),
+            }},
+            "known_facts": facts,
+            "world_refs": [target_ref],
+            "actor_refs": [],
+            "event_refs": [occurrence],
+            "authority": {
+                **authority,
+                "ref": ref("AUTHORITY", authority["policy"], digest(authority)),
+                "valid_from": target["admitted_at"], "valid_to": world.clock,
+            },
+            "chronology": {"time": world.clock,
+                           "window": [target["admitted_at"], world.clock]},
+            "causal_closure": {"allowed_slack_refs": []},
+            "world_readset": job["world_readset"],
+            "source_limits": ["ACTOR_HISTORY_NOT_ISSUED", "PAST_EVENT_ADMISSION_NOT_ISSUED"],
+        }
+
     def lease(self, *, seconds=60, now=None):
         """Acquire one durable attempt, recovering expired attempts on reopen."""
         if type(seconds) is not int or not 1 <= seconds <= 600:
@@ -215,7 +278,10 @@ class HistoricalWorld:
                 job.update(status="RUNNING", attempt=job.get("attempt", 0) + 1,
                            lease_token=uuid4().hex, expires_at=now + seconds,
                            world_readset=self._world_readset(world))
-                return deepcopy({"job": job, "target": target, "world_clock": world.clock})
+                packet = self._constraint_packet(world, target, job)
+                job["packet_hash"] = digest(packet)
+                return deepcopy({"job": job, "target": target, "world_clock": world.clock,
+                                 "packet": packet})
         return None
 
     @staticmethod
@@ -260,3 +326,165 @@ class HistoricalWorld:
 
     def job(self, job_id):
         return deepcopy(self._state(self.session.world())["outbox"].get(job_id))
+
+    def commit_candidate(self, job_id):
+        """Evaluate a current candidate and bind accepted physical facts atomically."""
+        from rawlsing_next.sorok_history.admission import evaluate
+
+        with self._write() as (world, state):
+            job = state["outbox"].get(job_id)
+            if job is None:
+                raise HistoryRefusal("HISTORICAL_JOB_NOT_FOUND")
+            if "admission" in job:
+                return deepcopy(job["admission"])
+            if job["status"] != "CANDIDATE_READY":
+                raise HistoryRefusal("HISTORICAL_CANDIDATE_NOT_READY")
+            target = state["targets"][job["target_id"]]
+            if (job["world_readset"] != self._world_readset(world)
+                    or target["version"] != job["target_version"]):
+                job["status"] = "STALE"
+                job["admission"] = {"status": "STALE", "job_id": job_id}
+                return deepcopy(job["admission"])
+            packet = self._constraint_packet(world, target, job)
+            if digest(packet) != job["packet_hash"]:
+                raise HistoryRefusal("HISTORICAL_PACKET_READSET_MISMATCH")
+
+            result = evaluate(packet, job["candidate"])
+            accepted = []
+            held = list(result["held"])
+            rejected = list(result["rejected"])
+            physical = target.get("physical_depth", {}).copy()
+            candidate = job["candidate"] if result["accepted_groups"] else {}
+            dependencies = {row["group_id"]: row for row in (candidate.get("dependencies") or [])}
+            owner_refs = {
+                digest(ref)
+                for ref in (packet["event_refs"] + packet["world_refs"]
+                            + [packet["authority"]["ref"]]
+                            + [fact["ref"] for fact in packet["known_facts"]])
+            }
+            nonphysical_groups = {
+                row["dependency_group"] for family in ("occurrences", "links")
+                for row in (candidate.get(family) or [])
+            }
+            admitted_groups = set()
+            for group in result["accepted_groups"]:
+                group_id = group["group_id"]
+                claims = group["claims"]
+                dependency = dependencies.get(group_id, {})
+                if (group_id in nonphysical_groups
+                        or any(parent not in admitted_groups
+                               for parent in (dependency.get("parent_groups") or []))
+                        or any(digest(ref) not in owner_refs
+                               for ref in (dependency.get("parent_refs") or []))):
+                    held.append({"group_id": group_id, "reason": "HISTORICAL_PARENT_GROUP_NOT_ADMITTED"})
+                    continue
+                if not claims or any(
+                    claim["kind"] != "facts" or claim.get("predicate") not in PHYSICAL_TYPES
+                    or "physical" not in job["dimensions"]
+                    for claim in claims
+                ):
+                    held.append({"group_id": group_id, "reason": "HISTORICAL_OWNER_SCOPE_HELD"})
+                    continue
+                if group.get("asserted_H_class") != "H0":
+                    held.append({"group_id": group_id, "reason": "HISTORICAL_OWNER_SCOPE_HELD"})
+                    continue
+                proposed = physical.copy()
+                group_facts = []
+                for claim in claims:
+                    predicate, value = claim["predicate"], claim["value"]
+                    if not _valid_physical_value(predicate, value):
+                        break
+                    existing = proposed.get(predicate)
+                    if existing is not None:
+                        if type(existing["value"]) is not type(value) or existing["value"] != value:
+                            break
+                        group_facts.append(existing["id"])
+                        continue
+                    effective_time = claim.get("effective_time")
+                    body = {
+                        "target_id": target["id"], "predicate": predicate,
+                        "value": value, "effective_time": (
+                            world.clock if effective_time is None else effective_time
+                        ),
+                        "asserted_at": world.clock, "parent_hash": target["parent_hash"],
+                        "job_id": job_id, "group_id": group_id,
+                        "evidence_class": "SOURCEFREE_SYNTHETIC_PHYSICAL",
+                    }
+                    fact_id = "history-fact:" + digest(body)
+                    proposed[predicate] = {"id": fact_id, **body}
+                    group_facts.append(fact_id)
+                else:
+                    physical = proposed
+                    accepted.append({"group_id": group_id, "fact_ids": group_facts})
+                    admitted_groups.add(group_id)
+                    continue
+                rejected.append({"group_id": group_id, "reason": "PHYSICAL_FACT_CONFLICT_OR_TYPE"})
+
+            if physical != target.get("physical_depth", {}):
+                target["physical_depth"] = physical
+                target["version"] += 1
+            status = ("PARTIAL_HELD" if held or rejected else "INDEX_READY") if accepted else (
+                "SOURCE_HELD" if held else "REJECTED" if rejected else "NO_WORK"
+            )
+            job.update(status=status, admission={
+                "job_id": job_id, "status": status, "accepted": accepted,
+                "held": held, "rejected": rejected,
+                "world_readset": job["world_readset"], "target_version": target["version"],
+            })
+            return deepcopy(job["admission"])
+
+    def inspect(self, target_id):
+        """Perform a local inspection through the existing world event owner."""
+        from bp4.world import make_event
+
+        session = self.session
+        with self._write() as (world, state):
+            target = state["targets"].get(target_id)
+            actor = session.meta["user_actor"]
+            location = world.positions.get(actor)
+            if (target is None or not session.scene_open()
+                    or target["surface"]["location"] != location
+                    or target["surface"]["occurrence_id"] not in session.user_perceived_ids()):
+                raise HistoryRefusal("HISTORICAL_TARGET_UNAVAILABLE")
+            visible = {
+                predicate: row["id"]
+                for predicate, row in target.get("physical_depth", {}).items()
+                if predicate in {"color", "condition", "marking", "texture"}
+            }
+            event = make_event(
+                clock=world.clock, kind="INSPECT", actor_id=actor, location=location,
+                summary="You inspect the particular.", sequence=len(world.events),
+                body={"target": target_id, "physical_fact_ids": visible, "changed": False},
+            )
+            world.add_event(event)
+            session._append_event(event, perceive=(actor,))
+            session._perceive_if_present(event, "A", "B")
+            session.product._append_episode(
+                session.branch_id, actor, "DO", world.clock,
+                {"action": "inspect", "admitted": True, "event_id": event["event_id"],
+                 "changed": False, "action_seq": session._action_seq()},
+            )
+            state.setdefault("inspections", {})[event["event_id"]] = event["hash"]
+            return deepcopy(event)
+
+    def read_inspection(self, event_id):
+        """Read only the physical evidence bound to an actual perceived inspection."""
+        session = self.session
+        world = session.world()
+        state = self._state(world)
+        event = session.event(event_id)
+        if (event is None or state.get("inspections", {}).get(event_id) != event["hash"]
+                or event["kind"] != "INSPECT"
+                or event["actor_id"] != session.meta["user_actor"]
+                or event_id not in session.user_perceived_ids()):
+            raise HistoryRefusal("HISTORICAL_INSPECTION_NOT_PERCEIVED")
+        body = event["body"]
+        target = state["targets"][body["target"]]
+        facts = target.get("physical_depth", {})
+        observed = []
+        for predicate, fact_id in body["physical_fact_ids"].items():
+            fact = facts.get(predicate)
+            if fact is None or fact["id"] != fact_id:
+                raise HistoryRefusal("HISTORICAL_INSPECTION_READSET_MISMATCH")
+            observed.append({"predicate": predicate, "value": fact["value"], "fact_id": fact_id})
+        return {"target_id": target["id"], "observation_id": event_id, "physical": observed}

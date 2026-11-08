@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from rawlsing_next.sorok_history.owner import HistoricalWorld, HistoryRefusal, SurfaceParticular
+from rawlsing_next.sorok_history.owner import HistoricalWorld, HistoryRefusal, SurfaceParticular, digest
 
 
 ENGINE = (Path(__file__).resolve().parents[2] / "WORKER_RETURNS"
@@ -61,7 +61,17 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
         assert owner.target(target["id"]) == target
         job_id = target["job_id"]
         assert [row["id"] for row in owner.pending()] == [job_id]
-        first = owner.lease(now=100, seconds=5)["job"]
+        leased = owner.lease(now=100, seconds=5)
+        first = leased["job"]
+        packet = leased["packet"]
+        assert packet["request_id"] == job_id
+        assert packet["target_ids"] == [target["id"]]
+        assert packet["surface"][target["id"]]["physical"] == {"condition": "scuffed"}
+        assert packet["event_refs"] == [{
+            "kind": "WORLD_EVENT", "object_id": event["event_id"], "content_hash": event["hash"]
+        }]
+        assert packet["actor_refs"] == []
+        assert packet["authority"]["allowed_H_classes"] == ["H0"]
         assert first["status"] == "RUNNING"
         assert owner.lease(now=104) is None
 
@@ -89,17 +99,53 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
                 replace(surface, referent_key="fixture:another-tool",
                         location=there, occurrence_id=new_event["event_id"])
             )
-            attempt = recovered.lease(now=108)["job"]
+            leased = recovered.lease(now=108)
+            attempt, packet = leased["job"], leased["packet"]
             assert attempt["id"] == next_target["job_id"]
-            candidate = {"request_id": attempt["id"], "facts": []}
+            def proposal(predicate, value, group):
+                body = {"predicate": predicate, "value": value,
+                        "target_id": next_target["id"], "dependency_group": group,
+                        "effective_time": packet["time"], "asserted_H_class": "H0"}
+                checksum = digest(body)
+                return {"ref": {"kind": "FACT", "object_id": "proposal:" + checksum,
+                                "content_hash": checksum}, **body}
+
+            candidate = {
+                "schema": "SOROK_HISTORY_ADMISSION_CANDIDATE@1",
+                "request_id": attempt["id"],
+                "facts": [proposal("texture", "matte", "valid"),
+                          proposal("condition", "pristine", "contradiction")],
+                "occurrences": [], "links": [],
+                "dependencies": [
+                    {"group_id": group, "parent_refs": packet["event_refs"],
+                     "parent_groups": [], "asserted_H_class": "H0"}
+                    for group in ("valid", "contradiction")
+                ],
+            }
             assert recovered.record_candidate(
                 attempt["id"], attempt["lease_token"], candidate,
                 {"grade": "MOCK"}, now=109
             ) == "CANDIDATE_READY"
             assert recovered.job(attempt["id"])["candidate"] == candidate
             assert recovered.target(next_target["id"]) == next_target
+            admission = recovered.commit_candidate(attempt["id"])
+            assert admission["status"] == "PARTIAL_HELD"
+            assert recovered.commit_candidate(attempt["id"]) == admission
+            assert {row["group_id"] for row in admission["accepted"]} == {"valid"}
+            assert {row["group_id"] for row in admission["rejected"]} == {"contradiction"}
+            depth = recovered.target(next_target["id"])["physical_depth"]
+            assert depth["texture"]["value"] == "matte"
+            assert depth["texture"]["parent_hash"] == new_event["hash"]
+            with pytest.raises(HistoryRefusal, match="HISTORICAL_INSPECTION_NOT_PERCEIVED"):
+                recovered.read_inspection(new_event["event_id"])
+            seen = recovered.inspect(next_target["id"])
+            assert recovered.read_inspection(seen["event_id"])["physical"] == [
+                {"predicate": "texture", "value": "matte", "fact_id": depth["texture"]["id"]}
+            ]
+            assert "condition" not in depth
         finally:
             concurrent.close()
+        assert owner.target(next_target["id"])["physical_depth"] == depth
     finally:
         reopened.close()
 
@@ -109,7 +155,8 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
 
     p4_dir = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
     monkeypatch.syspath_prepend(str(p4_dir))
-    from run_p4 import new, open_owner, surface as foreground_surface
+    from argparse import Namespace
+    from run_p4 import act, new, open_owner, surface as foreground_surface
 
     ledger_file = tmp_path / "p4_receipts.json"
     opening = new(tmp_path, ledger_file, "recognized_plan")
@@ -138,5 +185,69 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
         ]
         session.travel(here)
         assert foreground_surface(owner, ledger)["historical_particulars"] == [tool]
+        result = act(owner, ledger_file, ledger, Namespace(
+            command="inspect-particular", target=tool["id"], request_id="look-1"))
+        assert result["performed"]
+        assert result["observation"]["target_id"] == tool["id"]
+        assert result["observation"]["physical"] == []  # Candidate demand is still pending.
     finally:
         owner.close()
+
+
+def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch):
+    import json
+    import subprocess
+    import sys
+
+    p4_dir = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
+    monkeypatch.syspath_prepend(str(p4_dir))
+    from run_p4 import new, open_owner
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    target_id = opening["historical_particulars"][0]["id"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        history = HistoricalWorld(owner.base_owner.fanin.session)
+        leased = history.lease(now=100)
+        job, packet = leased["job"], leased["packet"]
+        body = {"target_id": target_id, "predicate": "texture", "value": "matte",
+                "effective_time": packet["time"], "dependency_group": "physical",
+                "asserted_H_class": "H0"}
+        checksum = digest(body)
+        candidate = {
+            "request_id": job["id"],
+            "facts": [{**body, "ref": {"kind": "FACT", "object_id": "proposal:" + checksum,
+                                      "content_hash": checksum}}],
+            "occurrences": [], "links": [],
+            "dependencies": [{"group_id": "physical", "parent_refs": packet["event_refs"],
+                              "parent_groups": [], "asserted_H_class": "H0"}],
+        }
+        assert history.record_candidate(
+            job["id"], job["lease_token"], candidate, {"grade": "MOCK"}, now=101
+        ) == "CANDIDATE_READY"
+        receipt = history.commit_candidate(job["id"])
+        assert receipt["status"] == "INDEX_READY"
+    finally:
+        owner.close()
+
+    cli = [sys.executable, str(p4_dir / "run_p4.py"), "--state", str(tmp_path)]
+    view = subprocess.run(cli + ["view"], check=True, text=True, capture_output=True)
+    assert "matte" not in view.stdout
+    args = cli + ["inspect-particular", target_id, "--request-id", "cold-inspect"]
+    inspection = subprocess.run(args, check=True, text=True, capture_output=True)
+    [fact] = json.loads(inspection.stdout)["observation"]["physical"]
+    assert fact["value"] == "matte"
+    assert fact["fact_id"] == receipt["accepted"][0]["fact_ids"][0]
+    replay = subprocess.run(args, check=True, text=True, capture_output=True)
+    assert json.loads(replay.stdout) == json.loads(inspection.stdout)
+
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        current = session.world().positions[session.meta["user_actor"]]
+        session.travel("market" if current == "workshop" else "workshop")
+    finally:
+        owner.close()
+    changed = subprocess.run(cli + ["view"], text=True, capture_output=True)
+    assert changed.returncode == 2
+    assert json.loads(changed.stdout)["reason"] == "P4_COLD_STATE_MISMATCH"

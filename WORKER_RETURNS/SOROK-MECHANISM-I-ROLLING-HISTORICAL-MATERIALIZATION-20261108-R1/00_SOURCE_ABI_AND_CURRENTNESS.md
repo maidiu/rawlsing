@@ -44,3 +44,20 @@ the same transaction. The target denotes the coarse resource affordance
 already reported by P4. The owner does not currently identify an individual
 tool. The integration test asserts the opening output, durable deduplication
 after reopen, and location-sensitive surface reads.
+
+The bounded dependency evaluator is received from worker commit
+`50e50d6b8dcfb86939c9a54f4e355c8ffe2c206c`. Its updated group logic accepts
+occurrence parents only from the same group or an admitted parent group.
+The world adapter independently restricts actual writes to H0 typed
+physical facts and exact owner refs. Historical, external and actor effects
+still require their respective admission paths.
+
+A leased job now carries a sealed packet derived from its target, committed
+event and current world readset. In the sourcefree test, a mock candidate
+passes the evaluator, writes one compatible fact and refuses a contradictory
+surface claim. A real cold `run_p4.py inspect-particular` call reads the fact
+via a committed and perceived inspection event. P4 verifies the ordinary
+foreground and actor witness on cold reopen, allowing the history checkpoint
+to advance while preserving the mismatch refusal for changes outside that
+resource. Actual model use and the independent actor activity reader remain
+pending.
