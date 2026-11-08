@@ -54,6 +54,17 @@ does not exercise a history job, admission receipt, or committed
 The activity owner is commissioned to bind an admitted depth fact to
 the existing S46 runtime path and prove hold and restoration there.
 
+The activity owner returned repair `3ac930d909ab42815159b12666f1396e86cad1e3`,
+received at `35bef3fb46f00d181eeafe02d3785197ccbd42ff`.
+The adapter now reads `physical_depth` from the existing owner and
+checks its target, job, accepted fact, claim and parent event bindings.
+Three focused tests passed on the receiving cut in 16.20 seconds.
+The test uses the existing worker with a mock provider to establish
+absent-depth hold and post-admission actual S46 consumption without
+an inspection or change to observer perception. The adapter invokes
+`run_p4.advance`. The normal runtime caller into the adapter remains
+`NONE_VERIFIED`; independent review of the repair is pending.
+
 The rolling-depth worker returned
 `3fbf1b65f47aa5a75274fb12fc14bd03a17576c3` from
 `ses_e52a51c43ffeuVe7ZZhNcga5YP`, with five author tests passing.
