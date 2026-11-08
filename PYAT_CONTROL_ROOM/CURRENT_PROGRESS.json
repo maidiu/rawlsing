@@ -635,6 +635,69 @@
       "no_original_execution_authorized": true,
       "goal_complete": false,
       "canonical51case_grades_unchanged": true
+    },
+    "c9_reconciliation": {
+      "saved_utc": "2026-11-08T05:35:06.668876+00:00",
+      "task": "pyat777-c9-successor-selection-reconciliation-r1",
+      "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-c9-successor-selection-reconciliation-r1/completion.json",
+      "exit_code": 0,
+      "author_commit": "02a13a5e01880835434b30d9a3587147f9dab0de",
+      "remote_verified": true,
+      "review_basis": "05a750ad6bcab8124c1f5d86b8867181fa4ee92c",
+      "disposition": "ACCEPT_REPORTING_RECONCILIATION_AT_DEMONSTRATED_SCOPE",
+      "checks": [
+        "Inspected six-file diff: return-only corrections, historical negatives retained",
+        "Prior PDEV receipt SHA256 independently recomputed from exact d3d6 Git blob: bba0de8231ea50b46c1f5d5f73c434d64af2d9bcd9c5ef610876e7955b1256ab",
+        "Six-row boundary ledger and explicit35 metadata rows; 24NOT_RUN/11FIXTURE_ONLY retained",
+        "No new replay, runtime repair or product adoption claimed"
+      ],
+      "selected_input_status": "NOT_RUN__UNPROVED_SELECTION",
+      "no_engine_missing_finding": true,
+      "no_original_execution": true,
+      "goal_complete": false,
+      "next_actions": [
+        {
+          "task": "pyat777-q3-f03-first-consumer-effect-r1",
+          "session": "ses_1b9742b6c02745d8a69d062011",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-joint-consumer",
+          "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C10_Q3_F03_FIRST_CONSUMER_EFFECT",
+          "status": "LAUNCHED__ACTUAL_TURN_METADATA_NOT_YET_OBSERVED",
+          "launch": {
+            "child_pid": 41066,
+            "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f03-first-consumer-effect-r1",
+            "launch_is_not_completion": true
+          },
+          "authority": "Issue777 PRIMARY Q3; readonly historical authority and unchanged consumer, S0/S1/S2 only; no original respondents or engine changes",
+          "actual_model": null
+        },
+        {
+          "task": "pyat777-q3-f08-first-consumer-effect-r1",
+          "session": "ses_b998af9086264002a86ee57b6e",
+          "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-consumer",
+          "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C11_Q3_F08_FIRST_CONSUMER_EFFECT",
+          "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+          "launch": {
+            "child_pid": 41072,
+            "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f08-first-consumer-effect-r1",
+            "launch_is_not_completion": true
+          },
+          "authority": "Issue777 PRIMARY Q3; readonly historical authority and unchanged consumer, S0/S1/S2 only; no original respondents or engine changes",
+          "actual_model": {
+            "id": "msg_1b9a60ac1001MUiP6Dh6byy8cB",
+            "type": "assistant",
+            "model": {
+              "id": "deepseek-v4.1-flash",
+              "providerID": "opencode-go",
+              "variant": "max"
+            },
+            "time": {
+              "created": 1794116029367,
+              "streamed": 1794116040863,
+              "completed": 1794116041054
+            }
+          }
+        }
+      ]
     }
   }
 }
