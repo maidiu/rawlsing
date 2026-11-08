@@ -2,12 +2,14 @@
   "mechanism_i_candidate_20261108": {
     "as_of": "2026-11-08",
     "issue": 785,
-    "status": "SOURCEFREE_CANDIDATE_FOREGROUND_OUTBOX_CONNECTED",
+    "status": "SOURCEFREE_CANDIDATE_MOCK_TRANSPORT_AND_COLD_INSPECTION_CONNECTED",
     "protected_base": "7a5429ffbc48efd25e28c912da80c822e66bc182",
     "producer": "P4 run_p4.new -> HistoricalWorld.capture_visible_tool_resource",
     "first_surface_reader": "P4 run_p4.surface -> HistoricalWorld.visible_surfaces",
     "scope": "Coarse source-owned tool affordance at its actual place and perceived arrival. Target and outbox share a world checkpoint.",
-    "remaining": "Live provider, historical admission, indexed DepthRead, independent activity consumer, rolling depth, complete causal and performance court.",
+    "first_depth_reader": "P4 inspect-particular -> HistoricalWorld.inspect",
+    "provider": "HistoricalModelProvider from the exact owner constraint packet via runtime.run_once; mock transport verified; LIVE_PROVIDER_NOT_RUN",
+    "remaining": "Live provider qualification, independent activity consumer, rolling depth, complete causal and performance court.",
     "evidence": "WORKER_RETURNS/SOROK-MECHANISM-I-ROLLING-HISTORICAL-MATERIALIZATION-20261108-R1/00_SOURCE_ABI_AND_CURRENTNESS.md"
   },
   "post_p3_protected_receiving_20261107": {

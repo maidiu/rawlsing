@@ -6,6 +6,8 @@ async def run_once(history, provider, *, lease_seconds=120):
     ready_id = history.ready_candidate_id()
     if ready_id is not None:
         return history.commit_candidate(ready_id)
+    if provider is None:
+        return {"status": "LIVE_PROVIDER_NOT_RUN"}
 
     leased = history.lease(seconds=lease_seconds)
     if leased is None:

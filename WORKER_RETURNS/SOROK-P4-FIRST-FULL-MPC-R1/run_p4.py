@@ -203,6 +203,24 @@ def act(owner, ledger_file, ledger, args):
     return public
 
 
+def run_history_worker(state):
+    """Service one durable job without taking the foreground interaction lock."""
+    import asyncio
+
+    from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+    from rawlsing_next.sorok_history.runtime import run_once
+
+    provider = HistoricalModelProvider.from_environment()
+    owner = open_owner(state / "actual-p2")
+    try:
+        check_source(owner)
+        history = HistoricalWorld(owner.base_owner.fanin.session)
+        result = asyncio.run(run_once(history, provider if provider.live else None))
+        return result if result is not None else {"status": "NO_WORK"}
+    finally:
+        owner.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", required=True, type=Path)
@@ -211,6 +229,7 @@ def main():
     initialize.add_argument("--history", choices=("recognized_plan", "imposed_plan", ""),
                             default="recognized_plan")
     commands.add_parser("view")
+    commands.add_parser("history-worker")
     say = commands.add_parser("say")
     say.add_argument("text")
     say.add_argument("--request-edge", action="store_true",
@@ -231,6 +250,9 @@ def main():
         state.mkdir(parents=True, exist_ok=True)
     ledger_file = state / "p4_receipts.json"
     try:
+        if args.command == "history-worker":
+            print(json.dumps(run_history_worker(state), ensure_ascii=False))
+            return 0
         with (state / "p4.lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX)
             if args.command == "new":
@@ -253,9 +275,9 @@ def main():
                               act(owner, ledger_file, ledger, args))
                 finally:
                     owner.close()
-    except (RecursionRefusal, FileNotFoundError) as exc:
+    except (RecursionRefusal, HistoryRefusal, FileNotFoundError) as exc:
         print(json.dumps({"grade": GRADE, "status": "REFUSED",
-                          "reason": str(exc) if isinstance(exc, RecursionRefusal) else
+                          "reason": str(exc) if isinstance(exc, (RecursionRefusal, HistoryRefusal)) else
                           "P4_STATE_OR_SOURCE_MISSING"}))
         return 2
     print(json.dumps(result, ensure_ascii=False))

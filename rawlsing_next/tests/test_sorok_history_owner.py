@@ -207,8 +207,7 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resum
 
     opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
     target_id = opening["historical_particulars"][0]["id"]
-    from types import SimpleNamespace
-
+    from rawlsing_next.sorok_history.provider import HistoricalModelProvider
     from rawlsing_next.sorok_history.runtime import run_once
 
     def proposal(packet):
@@ -225,16 +224,23 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resum
                               "parent_groups": [], "asserted_H_class": "H0"}],
         }
 
-    class MockProvider:
-        async def propose(self, packet):
-            assert not resume
-            assert not owner.base_owner.fanin.session.product.store.db.in_transaction
-            return SimpleNamespace(
-                candidate=proposal(packet),
-                receipt=SimpleNamespace(as_dict=lambda: {"grade": "MOCK"}),
-            )
+    async def transport(request):
+        assert not resume
+        assert not owner.base_owner.fanin.session.product.store.db.in_transaction
+        packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+        result = proposal(packet)
+        del result["facts"][0]["ref"]
+        return {"text": json.dumps(result), "model": "mock-history"}
 
     if resume:
+        cli = [sys.executable, str(p4_dir / "run_p4.py"), "--state", str(tmp_path)]
+        for key in ("SOROK_HISTORY_MODEL_ENDPOINT", "SOROK_HISTORY_ENDPOINT",
+                    "SOROK_HISTORY_MODEL", "SOROK_HISTORY_MODEL_ID"):
+            monkeypatch.delenv(key, raising=False)
+        unconfigured = subprocess.run(
+            cli + ["history-worker"], check=True, text=True, capture_output=True
+        )
+        assert json.loads(unconfigured.stdout) == {"status": "LIVE_PROVIDER_NOT_RUN"}
         owner = open_owner(tmp_path / "actual-p2")
         try:
             history = HistoricalWorld(owner.base_owner.fanin.session)
@@ -249,7 +255,14 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resum
     owner = open_owner(tmp_path / "actual-p2")
     try:
         history = HistoricalWorld(owner.base_owner.fanin.session)
-        receipt = asyncio.run(run_once(history, MockProvider()))
+        if resume:
+            resumed = subprocess.run(
+                cli + ["history-worker"], check=True, text=True, capture_output=True
+            )
+            receipt = json.loads(resumed.stdout)
+        else:
+            receipt = asyncio.run(run_once(history, HistoricalModelProvider(transport=transport)))
+            assert history.job(receipt["job_id"])["provider_receipt"]["mode"] == "MOCK"
         assert receipt["status"] == "INDEX_READY"
     finally:
         owner.close()
