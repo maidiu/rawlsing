@@ -1,0 +1,285 @@
+{
+  "module_root_matches_replay_root": true,
+  "module_sha256": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c",
+  "full_authority_sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+  "registry_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+  "full_authority_bytes": 47874248,
+  "registry_bytes": 1119028,
+  "index_rows": 18518,
+  "index_keys": 37022,
+  "index_file_sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+  "closed35_count": 35,
+  "closed35_excludes_w6": true,
+  "closed35_first_last": [
+    [
+      "Afrobarometer",
+      "R1",
+      ""
+    ],
+    [
+      "WVS",
+      "W7",
+      ""
+    ]
+  ],
+  "full_frame_rows": 18518,
+  "audit_rows": 18518,
+  "resolver_status_counts": {
+    "RESOLVED_CONTEXT_ONLY_AUTHORITY": 12611,
+    "RESOLVED_DIRECTIONAL_AUTHORITY": 4622,
+    "RESOLVED_ADMINISTRATIVE_AUTHORITY": 952,
+    "BLOCKED_EXCLUDED_ASIAN_W6": 259,
+    "RESOLVED_EXPLICIT_BLOCK": 60,
+    "BLOCKED_AMBIGUOUS_AUTHORITY": 14
+  },
+  "relation_use_status_counts": {
+    "GOVERNED_CONTEXT_ONLY": 12611,
+    "GOVERNED_DIRECTIONAL": 4622,
+    "ADMINISTRATIVE_ONLY": 952,
+    "": 273,
+    "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 41,
+    "BLOCKED_SOURCE_AUTHORITY": 10,
+    "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 9
+  },
+  "status_sum": 18518,
+  "relation_sum": 18518,
+  "directional_coordinates_complete": 18245,
+  "current_directional_atom_eligible": 4673,
+  "source_wave_pair_count_including_w6": 36,
+  "active_source_wave_count": 35,
+  "w6_rows": 259,
+  "active_rows": 18259,
+  "full_audit_digest": "e18b9a8eba70dc5debc6d6f9387d844f456299b8bb880559151e7ad29f82daf6",
+  "positive_family_count": 9,
+  "positive_families": [
+    "Afrobarometer",
+    "Arab Barometer",
+    "Asian Barometer",
+    "EVS",
+    "GSS",
+    "Latinobar\u00f3metro",
+    "LiTS",
+    "South Asia",
+    "WVS"
+  ],
+  "explicit_block": {
+    "selected_row": {
+      "source_family": "Afrobarometer",
+      "canonical_wave": "R1",
+      "country_code": "LS",
+      "question_id": "Afrobarometer:R1:pid",
+      "var_code": "pid",
+      "authority_rule_id": "QRA35V1::AFROBAROMETER::R1::pid",
+      "authority_row_payload_hash": "65b6eb280ee443d907155c772089aaafb11f811ec5b325354a36dcffa9fcb4fe",
+      "resolver_status": "RESOLVED_EXPLICIT_BLOCK",
+      "relation_use_status": "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN"
+    },
+    "resolver_status": "RESOLVED_EXPLICIT_BLOCK",
+    "semantic_role": "UNKNOWN",
+    "structural_coordinates_cleared": true,
+    "current_directional_atom_eligible": false,
+    "question_relation_coverage_eligible": false,
+    "output_hash": "cee3ab67530d13d76a9eef3a4de396514df03bbe4b8c6a98048ab75931775b29"
+  },
+  "ambiguous": {
+    "selected_row": {
+      "source_family": "LiTS",
+      "canonical_wave": "III",
+      "country_code": "AL",
+      "question_id": "LiTS_III_DURATION1",
+      "var_code": "DURATION1",
+      "authority_rule_id": "",
+      "authority_row_payload_hash": "",
+      "resolver_status": "BLOCKED_AMBIGUOUS_AUTHORITY",
+      "relation_use_status": ""
+    },
+    "resolver_status": "BLOCKED_AMBIGUOUS_AUTHORITY",
+    "semantic_role": "UNKNOWN",
+    "current_directional_atom_eligible": false,
+    "output_hash": "80736f70a5e7040c08b55cf6fc0846bce5b8c737af3ef3dd43c6f9444cd6a7f2"
+  },
+  "missing_row": {
+    "bridge_input": {
+      "source_family": "Afrobarometer",
+      "canonical_wave": "R1",
+      "country_code": "LS",
+      "question_id": "__C10_MISSING__Afrobarometer:R1:demele",
+      "var_code": "__C10_MISSING__demele"
+    },
+    "resolver_status": "BLOCKED_MISSING_AUTHORITY",
+    "semantic_role": "UNKNOWN",
+    "structural_coordinates_cleared": true,
+    "current_directional_atom_eligible": false,
+    "question_relation_coverage_eligible": false,
+    "output_hash": "13c9dbe3618058fbd7ae2adb8de73f9dba37dc22d40a877d0d34477465610f52"
+  },
+  "limited_registry": {
+    "wrong_authority_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+    "resolver_status": "BLOCKED_MISSING_AUTHORITY",
+    "semantic_role": "UNKNOWN",
+    "current_directional_atom_eligible": false,
+    "authority_artifact_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+    "output_hash": "40d0b122770874d40fd6aabde05fe1cee88b3737f81e5e61f14c9258d61f183b"
+  },
+  "missing_file": {
+    "status": "EXCEPTION",
+    "type": "FileNotFoundError",
+    "message": "[Errno 2] No such file or directory: '/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-c6-historical-independent-review/WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C10_Q3_F03_INDEPENDENT_REVIEW/tmp/missing_authority.csv'"
+  },
+  "cold_restore": {
+    "restore_root_matches": true,
+    "authority_copy_sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+    "module_copy_sha256": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c",
+    "output_hash": "c511a6e88af9134178a5db690f61de627f20581f825e45a97e7abe0b7ffb7eb0",
+    "matches_first_positive": true
+  },
+  "residual_ar0006": {
+    "rows": 20,
+    "source_families": [
+      "Latinobar\u00f3metro"
+    ],
+    "canonical_waves": [
+      "1995"
+    ],
+    "csv_sha256": "634d4a3edbe384c8c9c8122daf1381d8dbd0935d76fff4c1c0a8d77d6baa2774",
+    "registry_index_rows": 700,
+    "registry_index_sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b"
+  },
+  "positive_compare": [
+    {
+      "source_family": "Afrobarometer",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "Arab Barometer",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "Asian Barometer",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "EVS",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "GSS",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "Latinobar\u00f3metro",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "LiTS",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "South Asia",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    },
+    {
+      "source_family": "WVS",
+      "selected_row_match": true,
+      "output_hash_match": true,
+      "resolver_match": true,
+      "semantic_role_match": true,
+      "structural_coordinate_count": 6
+    }
+  ],
+  "full_audit_matches_author": {
+    "resolver_counts": true,
+    "relation_counts": true,
+    "active_closed_35": true,
+    "active_source_wave_count": true,
+    "full_audit_digest": true,
+    "directional_coordinates_complete": true,
+    "current_directional_atom_eligible": true
+  },
+  "negative_matches_author": {
+    "explicit_block": true,
+    "ambiguous": true,
+    "missing": true,
+    "limited": true,
+    "missing_file": true
+  },
+  "residual_matches_author": {
+    "rows": true,
+    "csv_sha256": true,
+    "registry_rows": true
+  },
+  "replay_script_scan": {
+    "contains_mock_or_monkeypatch_token": true,
+    "contains_setattr": false,
+    "imports_ddm_v550_bridge": false,
+    "imports_compile_v551_relation_evidence_atoms": false,
+    "mentions_downstream_only_in_boundary": true,
+    "module_loaded_by_exact_path": true,
+    "authority_path_is_public_keyword": true
+  },
+  "q4_current_pins": {
+    "generic_projection": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "sha256": "7788feb514ad5eceb71e7d76191b1b80a66688dc64a56b0dc05f4a1b19bbdfcf",
+      "bytes": 36526
+    },
+    "generic_query": {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "sha256": "7cd7fd4f8ccf79cb07b037ef9cdda5e60ed3c3ba0631c9f4030d09f4d666be94",
+      "bytes": 36082
+    },
+    "generic_authority_validation": {
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "sha256": "c32b96cd67274d2bcb44ca509afd87e085748bd2e32565716c10313b0609a29a",
+      "bytes": 14311
+    },
+    "bounded_fqra_materializer": {
+      "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "sha256": "a88d623f0496d7f7d4291e91b33662b816fa20f17ca1c45a0c4ca6dc5198e402",
+      "bytes": 54074
+    },
+    "c6_candidate_absent": true,
+    "bounded_fqra": {
+      "fqra_sha256_constant": true,
+      "coordinate_rule": true,
+      "routing_only_scope": true,
+      "substantive_evidence_false": true,
+      "r6s_authorities": true
+    }
+  },
+  "author_trace_sha256": "53c2b4ed0ae775682f4ae7b7cd477868d6dc9dadd4d70bf802ce45670cb97184",
+  "author_results_trace_sha256_match": true,
+  "author_results_schema": "C10_Q3_F03_REPLAY_RESULTS_V1"
+}
