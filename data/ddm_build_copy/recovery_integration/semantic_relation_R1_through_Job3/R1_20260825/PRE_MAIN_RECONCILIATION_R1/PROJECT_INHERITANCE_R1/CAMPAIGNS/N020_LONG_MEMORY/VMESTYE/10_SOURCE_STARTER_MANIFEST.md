@@ -12,3 +12,6 @@
 
 ## Locating rules
 Always use immutable `<commit>::<repo path>#<line/row/id>` in DATA evidence. Supply https://github.com/maidiu/rawlsing/blob/<commit>/<path> for human navigation. A source mentioned in a prior return is **not** necessarily present on protected; include its own commit. No unsupported 'all accessible branches searched' claim: source registry and RRIF/Long Memory graph must be explicitly enumerated during P0.
+
+## November 8 explicit prior-work intake
+The original VMESTYE 44/30/29/58 bootstraps are **not** complete recovery of recent work. [30 recent source/candidate records](CONTROL/RECENT_CAMPAIGN_INTAKE.tsv) and [the human intake](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md) preserve #716/FIABC-A02, #748/#753, #777, #784/PR786, SR-01, Oct28 hybrid/G4, FF/postFF, R157 and unmerged branch statuses. Each needs a full semantic crosswalk before global mapping closure.
