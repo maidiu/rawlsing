@@ -4,8 +4,8 @@
 **Branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
 **Base verified at intake:** `46104b8ddf44db4d5a32e603ca9332cebbbb1f94` (full `git rev-parse`; local prepared branch).
 **C8-accepted historical content:** `55fca441d1c674c256473c264cabda48f2df0e52`.
-**C14 content snapshot:** `__C14_CONTENT_SNAPSHOT__` (immutable fan-in content; no self-hash inside the snapshot).
-**C14 provenance commit:** `__C14_PROVENANCE_COMMIT__` (metadata-only; records content snapshot SHA/file hashes).
+**C14 content snapshot:** `f42b73abf2532f9a4ea589e7f80841e15585d8e1` (immutable fan-in content; no self-hash inside the snapshot).
+**C14 provenance commit:** `SEE_BRANCH_HEAD__VERIFY_GIT_REV_PARSE_HEAD` (metadata-only; records content snapshot SHA/file hashes).
 **Protected source observation:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
 **Goal complete:** **false**. Whole #777 remains incomplete. C14 review not yet performed; this is not acceptance.
 

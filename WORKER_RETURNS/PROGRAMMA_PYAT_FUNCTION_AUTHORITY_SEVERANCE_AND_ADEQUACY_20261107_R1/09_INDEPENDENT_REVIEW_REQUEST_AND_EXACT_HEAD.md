@@ -15,8 +15,8 @@
 
 - **Base commit verified at intake:** `46104b8ddf44db4d5a32e603ca9332cebbbb1f94` (full `git rev-parse`; local prepared branch).
 - **C8-accepted historical content:** `55fca441d1c674c256473c264cabda48f2df0e52`.
-- **C14 content snapshot:** `__C14_CONTENT_SNAPSHOT__` — immutable fan-in content (00–10, canonical/alias 03, C14/00_RETURN.md, GOAL_AUDIT.json, EVIDENCE_INDEX.json). The content snapshot is hashed as a defined immutable set; it does not contain its own commit hash.
-- **C14 provenance commit:** `__C14_PROVENANCE_COMMIT__` — metadata-only commit recording the content snapshot SHA and file hashes; provenance separate from content.
+- **C14 content snapshot:** `f42b73abf2532f9a4ea589e7f80841e15585d8e1` — immutable fan-in content (00–10, canonical/alias 03, C14/00_RETURN.md, GOAL_AUDIT.json, EVIDENCE_INDEX.json). The content snapshot is hashed as a defined immutable set; it does not contain its own commit hash.
+- **C14 provenance commit:** `SEE_BRANCH_HEAD__VERIFY_GIT_REV_PARSE_HEAD` — metadata-only commit recording the content snapshot SHA and file hashes; provenance separate from content.
 - **Prepared branch:** `agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1`.
 - **Protected source observation:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
 
