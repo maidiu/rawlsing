@@ -44,6 +44,18 @@ perceived IDs unchanged. A normal runtime caller and independent
 review remain unverified. This establishes the interval seam for
 receiving review and does not close native, actor, or product authority.
 
+The rolling-depth worker returned
+`3fbf1b65f47aa5a75274fb12fc14bd03a17576c3` from
+`ses_e52a51c43ffeuVe7ZZhNcga5YP`, with five author tests passing.
+Its `HistoricalWorld.inspect` path would automatically enqueue an
+`INSPECTION_EXPOSED_DIMENSION` job after an inspection exposes existing
+physical depth. The HQ draft already routes explicit physical predicate
+requests into the same owner outbox and prioritizes existing jobs by
+the committed inspection event. Applying both would introduce two demand
+triggers at that seam. The worker cut is held; the draft keeps the
+explicit predicate path. The worker's automatic dimension selection
+has no verified downstream consumer on the draft.
+
 Live Sorok inference is `LIVE_PROVIDER_NOT_RUN`. Qualified H1 insertion,
 actor-state links, independent action consuming newly admitted depth,
 automatic T2 link-triggered work, shared pre-contact writes and the broader
