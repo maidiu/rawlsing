@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""Build C15 findings JSONL from verified C14 review evidence."""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+REVIEW = HERE.parent
+VERIFY = json.loads((REVIEW / "logs/verify_c14.json").read_text())
+
+COUNTS = {
+    "content_snapshot": "f42b73abf2532f9a4ea589e7f80841e15585d8e1",
+    "provenance_commit": "ea7e878a82e2343591724433fcd6b13910602c84",
+    "c8_accepted_content": "55fca441d1c674c256473c264cabda48f2df0e52",
+    "cases": 55,
+    "families": {"C1": 1, "C2": 2, "C3": 10, "C4": 2, "C5": 7, "C6": 29, "C9": 4},
+    "taxonomy": {"FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED": 25, "NOT_RUN": 30},
+    "c8_cases": 51,
+    "02_rows": 153,
+    "02_case_rows": 55,
+    "05_rows": 55,
+    "01_rows": 94,
+    "08_rows": 60,
+    "agenda_gates": 17,
+    "c9_api": {"operations": 4, "supported_facts": 4, "receipts": 4, "wrong_sha": "0/4", "restore": "exact"},
+    "c9_p1": {"candidates": 840, "pdev01_dist": 210, "completed": 210, "supported": 210, "typed_refusals": 630, "i05": "16 receipts/30 facts/16 candidates"},
+    "c10": {"rows": 18518, "waves": 35, "family_witnesses": 9, "original_run": "NOT_OBSERVED"},
+    "c11": {"row": "GSS/1973/uswar", "original_run": "NOT_RUN", "current_quc": "UNPROVED"},
+}
+HASHES = {
+    "c8_03_sha256": "cc4275628286f31ba3695d92910f52d639a3f2d54ca7d43852bbd9d12b614251",
+    "c14_03_sha256": "f21823f83e6aed6a64695150bf4ed43df2e7fd88b3310ab26752476acc61a778",
+    "c9_cases_sha256": "e05ed0876aaba76c9085784b654c4c10b2d3d72771ed2449d5d9247438e41400",
+    "c9_ledger_sha256": "09964387b58fa94be6783fc6a789a9f5445253eeb28f198d9d865dc57c8b5e49",
+    "c9_review_sha256": "d56b499e672c7d8094fc955e8035deb90167fc979a8e8c484cef10f1f4ff3b35",
+    "c10_trace_sha256": "53c2b4ed0ae775682f4ae7b7cd477868d6dc9dadd4d70bf802ce45670cb97184",
+    "c11_trace_sha256": "6a23bf6a1e99c5fbbe9e0ddeca6ae8c5c52d823e793701ee46e4e85aeed0d22b",
+    "c12_map_sha256": "5067649bbd16a2c95426ae88e112c56da2667029071b53cfc0a48bb8991675a1",
+    "c13_map_sha256": "66e7ee95f2d6d02a27d08b238319d0a9ba460129cf8b65bae7cfb34ef4db9ed2",
+}
+B = "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1"
+
+FINDINGS = [
+    {
+        "FINDING_ID": "C14-G1-T1",
+        "SEVERITY": "INFO",
+        "GATE": "T1_CASE_IDENTITY_AND_BOUNDED_COURT",
+        "STATUS": "PASS_SCOPED",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L53; {B}/02_CURRENT_IMPLEMENTATIONS_PRE_FORGE_VS_WHOLE_PREV3.tsv; {B}/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl; {B}/05_SEVERED_OR_INCOMPLETE_MINIMAL_OWNER_REPAIRS.tsv",
+        "EVIDENCE": "55 unique cases; C1 1/C2 2/C3 10/C4 2/C5 7/C6 29/C9 4; 02 153 rows with 55 CASE + 26 FF + 16 deps + 15 post-FF + 11 seams + 30 #748; 05 55; 01 94; 08 60; all 55 A-J/forward/reverse/exact_hold/frozen_taxonomy_verdict present; C8 51 IDs/taxonomy/A-J preserved. No global machine completeness claimed.",
+        "REQUIRED_CORRECTION": "None for bounded scope; retain the 'not global machine completeness' limit.",
+    },
+    {
+        "FINDING_ID": "C14-G2-T2",
+        "SEVERITY": "P2",
+        "GATE": "T2_DEMANDED_NONCANARY_SOURCEFREE_FIRST_CONSUMER",
+        "STATUS": "NOT_SATISFIED__TYPED_HOLD__CORRECT",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L54; {B}/C14_POST_C9_C13_FANIN/GOAL_AUDIT.json#terminal_criteria[1]; {B}/C9_WORKLOAD_AUTHORITY_FIRST_CONSUMER/00_RETURN.md; {B}/C9_WORKLOAD_AUTHORITY_FIRST_CONSUMER/P1_CANDIDATE_BOUNDARY/00_RETURN.md",
+        "EVIDENCE": "C9 is a real sourcefree API path but test-only (TEST_ONLY_SOURCEFREE, B49-TEST-ONLY-QUERY-AUTH, target_use_permission_ids=[]); PDEV01 210-DIST is test-only/sourcefree candidate capital; C2 O11 is a synthetic nonrespondent fixture; C10/C11 are test-time replays. No selected shared35 source/wave + current C11 release + I03 query/predicate, current F03 operation, current QUC operation, or original/current issuer is proved. The exact blockers are stated; this is not a new science gate and not a retirement.",
+        "REQUIRED_CORRECTION": "Preserve T2 as NOT_SATISFIED__TYPED_HOLD. Do not convert 'no selected operation observed' into a new authority/science gate, retirement, or a halt to eligible existing-owner tests. Keep the sourcefree evidence as sourcefree only.",
+    },
+    {
+        "FINDING_ID": "C14-G3-T3",
+        "SEVERITY": "P2",
+        "GATE": "T3_EQUIVALENCE",
+        "STATUS": "LIMIT_ONLY__ZERO_EQUIVALENCE_CLAIMS__NOT_PRODUCT_POSITIVE_PROOF",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L55; {B}/C14_POST_C9_C13_FANIN/GOAL_AUDIT.json#terminal_criteria[2]",
+        "EVIDENCE": "0 QUALIFIED_EQUIVALENT_PROVED; 0 full historical equivalence; all positives are sourcefree/bounded/test-time. The C14 correctly disclaims equivalence, but the status word 'SATISFIED_AT_ZERO...' is a limit/vacuous status, not product positive proof.",
+        "REQUIRED_CORRECTION": "Relabel as SATISFIED_AS_LIMIT__ZERO_EQUIVALENCE_CLAIMS__NO_PRODUCT_POSITIVE_PROOF (or equivalent) and state explicitly that this is not product positive proof.",
+    },
+    {
+        "FINDING_ID": "C14-G4-T4",
+        "SEVERITY": "P2",
+        "GATE": "T4_SEVERANCE",
+        "STATUS": "LIMIT_ONLY__ZERO_PROVED_SEVERANCES__NOT_PRODUCT_POSITIVE_PROOF",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L56; {B}/C14_POST_C9_C13_FANIN/GOAL_AUDIT.json#terminal_criteria[3]",
+        "EVIDENCE": "0 SEVERED_PROVED; no repair authorized; no Pre-Forge FF duplication. The C14 correctly disclaims severance, but 'SATISFIED_AT_ZERO...' is a limit/vacuous status, not product positive proof.",
+        "REQUIRED_CORRECTION": "Relabel as SATISFIED_AS_LIMIT__ZERO_PROVED_SEVERANCES__NO_PRODUCT_POSITIVE_PROOF (or equivalent) and state explicitly that this is not product positive proof.",
+    },
+    {
+        "FINDING_ID": "C14-G5-T5",
+        "SEVERITY": "INFO",
+        "GATE": "T5_HISTORICAL_RESIDUAL_PRESERVATION",
+        "STATUS": "PASS_AT_PRESERVATION",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L57; {B}/07_SECONDARY_AGENDA_NON_DROP_AND_WORKER_COLLISION.md; {B}/08_COVERAGE_DENOMINATORS_COLD_HANDOFF.tsv",
+        "EVIDENCE": "17 A01-A17 gates present/open; 42 selected-state/16 unresolved; 50 C6 gaps; 154/1608 overlap distinct; issuer/provenance holds preserved; no closure pretense.",
+        "REQUIRED_CORRECTION": "None; retain open residuals.",
+    },
+    {
+        "FINDING_ID": "C14-G6-T6",
+        "SEVERITY": "P1",
+        "GATE": "T6_PARENT_ISSUE_BY_ISSUE_DISPOSITION",
+        "STATUS": "NOT_SATISFIED__BLANKET_HOLD",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L58; {B}/C14_POST_C9_C13_FANIN/GOAL_AUDIT.json#terminal_criteria[5]; {B}/09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md#L75",
+        "EVIDENCE": "The criterion is a blanket 'PARENT ISSUE-BY-ISSUE DISPOSITION NOT RE-ADJUDICATED HERE' typed hold. The fan-in does not provide an issue-by-issue table for #716/#748/#753 and all post-#765 issues; 07 contains the 17 A01-A17 agenda items, not parent-issue dispositions. This is not an actual qualified record or a precise unfinished action.",
+        "REQUIRED_CORRECTION": "Replace the blanket hold with an issue-by-issue disposition table (or exact per-issue missing record/action) for #716/#748/#753 and every post-#765 issue, sourced from existing qualified records. If a disposition is unavailable, name the exact missing record, owner and next action. No blanket 'not re-adjudicated' hold.",
+    },
+    {
+        "FINDING_ID": "C14-F01-C8-LINEAGE",
+        "SEVERITY": "P2",
+        "GATE": "C8_PROVENANCE_AND_LINEAGE",
+        "STATUS": "CONTRADICTORY_STALE_STATEMENT",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L115; {B}/09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md#L46",
+        "EVIDENCE": "00 says the C8 independent rereview of the C7 correction 'has not been performed'. C8 review 356124ee/55fca441, focused check 77a879822, and C8 reference residual closure 0e0997213 exist; 09 says C8 review/focused check accepted 55fca441. The stale line contradicts the C8 evidence and the C14 09/C14 00_RETURN.",
+        "REQUIRED_CORRECTION": "Remove/update the stale line. Record C8 review 356124ee, focused check 77a879822, residual closure 0e0997213, C8-accepted content 55fca441, C8 51-case 03 hash cc427562..., and C14 55-case 03 hash f21823... separately. No self-hash cycle.",
+    },
+    {
+        "FINDING_ID": "C14-F02-BASE-LINEAGE",
+        "SEVERITY": "P3",
+        "GATE": "EXACT_BASE_LINEAGE",
+        "STATUS": "INCONSISTENT_BASE_LABEL",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L5; {B}/09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md#L16; {B}/C14_POST_C9_C13_FANIN/00_RETURN.md#L4",
+        "EVIDENCE": "00 says 'Preparation base observed: e2fdd975...'; 09 and C14 00_RETURN say 'Base verified at intake: 46104b8d...'. e2fdd975 is an ancestor; the labels refer to different cuts but are not distinguished.",
+        "REQUIRED_CORRECTION": "Label e2fdd975 as the original prepared-branch base and 46104b8d as the C14 intake base, or replace the 00 line with the C14 intake base. Do not imply they are the same cut.",
+    },
+    {
+        "FINDING_ID": "C14-F03-REVIEWER-INDEPENDENCE",
+        "SEVERITY": "P2",
+        "GATE": "REVIEWER_INDEPENDENCE",
+        "STATUS": "OVERBROAD_NEW_GATE_NOT_APPLIED",
+        "FILE_OR_RECORD": f"{B}/09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md#L10; {B}/09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md#L78",
+        "EVIDENCE": "The 09 request says the reviewer must be 'a different session from every C1-C13 author/reviewer, the HQ fan-in author, and the C7/C8 reviewers.' The user's P7 requirement is nonauthor independence, not absence of all prior review experience. This reviewer is the existing C5 independent reviewer (ea9ff9e54) and is not an author of C14/fanin/implementations; the C5 prior-review relationship is disclosed. The overbroad clause is not a new gate.",
+        "REQUIRED_CORRECTION": "Replace the clause with: distinct nonauthor of C14/fanin/implementations; prior review relationships disclosed; no write authority in the fan-in lease; model/effort verified. Do not impose absence of all prior review experience as a gate.",
+    },
+    {
+        "FINDING_ID": "C14-F04-C9-LINEAGE",
+        "SEVERITY": "P2",
+        "GATE": "C9_REVIEW_AND_ACCEPTANCE_LINEAGE",
+        "STATUS": "REVIEW_CUT_DOES_NOT_REVIEW_SOURCE_CUT__ACCEPTANCE_LABEL_OVERSTATED",
+        "FILE_OR_RECORD": f"{B}/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl#L52-L55; {B}/C9_P1_EXISTING_SUCCESSOR_INDEPENDENT_REVIEW/REVIEW.json",
+        "EVIDENCE": "All four C9 records carry source_cut=02a13a5e and review_cut=05a750ad. The C9 review 05a750ad reviewed author return d540cfcc and returned REVISE_SCOPED; 02a13a5e is the later C9R correction. No independent re-review of 02a13a5e is recorded. hq_disposition says C9...ACCEPTED without the 'after correction/no independent re-review' qualifier. The substantive C9 effects (4/4, 0/4, typed refusal, restore) are supported.",
+        "REQUIRED_CORRECTION": "Cite the reviewed cut d540cfcc plus C9R correction 02a13a5e separately; label the HQ disposition as scoped acceptance after C9R correction with no independent re-review (or perform a focused independent re-review). Do not present 05a750ad as the review of 02a13a5e. Preserve the 840/210/630/16/30/16 effects.",
+    },
+    {
+        "FINDING_ID": "C14-F05-C6F08-QUC",
+        "SEVERITY": "P2",
+        "GATE": "C6_F08_QUC_ABSENCE_WORDING",
+        "STATUS": "UNQUALIFIED_ABSENCE_CLAIM_RETAINED",
+        "FILE_OR_RECORD": f"{B}/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl#L30; {B}/04_PROVED_EQUIVALENCES_AND_NO_BUILD_DECISIONS.md#L40",
+        "EVIDENCE": "03 C6-F08 exact_hold retains '__NO_QUC_READER__'; 04 line 40 says 'F08 no QUC reader'. The C11 independent review (b939c51a) required removing/qualifying 'no QUC reader' as a name/path hypothesis, and C12/C13 are limited responsibility maps, not absence proof. The q3_supplemental current_owner is UNKNOWN_NOT_PROVED, which qualifies the current owner, but the canonical hold and 04 wording remain unqualified.",
+        "REQUIRED_CORRECTION": "Replace/qualify with 'current QUC owner/first consumer UNKNOWN_NOT_PROVED; no selected current operation; no absence proof' in 03 and 04. Preserve the q3_supplemental and C12/C13 limited-map limits.",
+    },
+    {
+        "FINDING_ID": "C14-F06-C9-WORDING",
+        "SEVERITY": "P3",
+        "GATE": "C9_NON_TEST_DEMAND_WORDING",
+        "STATUS": "AMBIGUOUS_NON_TEST_WORDING",
+        "FILE_OR_RECORD": f"{B}/00_EXECUTIVE_REAL_OPERATIONS_AND_VERDICT.md#L31; {B}/04_PROVED_EQUIVALENCES_AND_NO_BUILD_DECISIONS.md#C9",
+        "EVIDENCE": "00 line 31 calls the C9 path a 'real sourcefree non-test API path' while the same record says authority TEST_ONLY_SOURCEFREE and the C9 return says test-only, not a production orchestrator. The C14 criterion 2 correctly calls it sourcefree test-only. The 'non-test' wording can be read as a genuine non-canary current demand.",
+        "REQUIRED_CORRECTION": "Say 'real API path exercised in the sourcefree test-only harness; not a production/non-test selected operation' and preserve the TEST_ONLY_SOURCEFREE ceiling. Do not use the witness to satisfy T2 or to imply original35 demand.",
+    },
+    {
+        "FINDING_ID": "C14-F07-PROVENANCE-PLACEHOLDER",
+        "SEVERITY": "P3",
+        "GATE": "PROVENANCE_METADATA",
+        "STATUS": "PLACEHOLDER_LINEAGE_AMBIGUITY__NO_SELF_HASH_CYCLE",
+        "FILE_OR_RECORD": f"{B}/09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md#L18-L19; C14_COMBINED_RETURN_INTAKE.json; provenance ea7e878a",
+        "EVIDENCE": "At f42b73ab, 09/00_RETURN/GOAL_AUDIT/EVIDENCE_INDEX contain __C14_CONTENT_SNAPSHOT__/__C14_PROVENANCE_COMMIT__ placeholders; provenance ea7e878a replaces the content snapshot with f42b73ab but still uses SEE_BRANCH_HEAD__VERIFY_GIT_REV_PARSE_HEAD for its own hash. The provenance commit is recorded externally in C14_COMBINED_RETURN_INTAKE.json. No self-hash cycle is present, but the branch-head placeholder is ambiguous because branch HEAD later moves.",
+        "REQUIRED_CORRECTION": "Point the provenance field to the external C14 intake record (or a non-self-referential provenance locator), and record C8 55fca441/03 cc427562 separately from C14 f42b73ab/03 f21823. Do not add a self-hash.",
+    },
+]
+
+
+def main() -> int:
+    records = []
+    for finding in FINDINGS:
+        records.append({
+            "RECORD_TYPE": "FINDING",
+            **finding,
+            "COUNTS": COUNTS,
+            "HASHES": HASHES,
+            "VERIFICATION_LOG": "C15_HQ_FANIN_C14_REREVIEW/logs/verify_c14.json",
+        })
+    records.append({
+        "RECORD_TYPE": "VERIFICATION",
+        "C15_VERDICT": "REVISE",
+        "CONTENT_SNAPSHOT": "f42b73abf2532f9a4ea589e7f80841e15585d8e1",
+        "PROVENANCE_COMMIT": "ea7e878a82e2343591724433fcd6b13910602c84",
+        "C8_ACCEPTED_CONTENT": "55fca441d1c674c256473c264cabda48f2df0e52",
+        "COUNTS": COUNTS,
+        "HASHES": HASHES,
+        "CHECKS": VERIFY["checks"],
+        "FAILED_CHECKS": VERIFY["failed_checks"],
+        "FAILED_CHECK_COUNT": VERIFY["failed_check_count"],
+        "TERMINAL_CRITERIA": VERIFY["terminal_criteria"],
+        "INDEPENDENCE_RELATIONSHIP": {
+            "reviewer_role": "existing C5 independent reviewer reused for C14 P7 nonauthor whole-record review",
+            "c5_review_commit": "ea9ff9e54e2bc7c9a56a1398d172e87a8f109f03",
+            "not_author_of": ["C14 fan-in", "C7/C8 fan-in", "C1-C13 authors", "implementations"],
+            "prior_review_relationship_disclosed": True,
+            "09_all_prior_reviewer_exclusion_applied_as_gate": False,
+            "reason": "User requires nonauthor independence, not absence of all prior review experience; the 09 clause is an unsupported procedural expansion and not a new gate.",
+        },
+        "LIMITS": {
+            "no_source_respondent_sav_dta_db_read": True,
+            "no_source_bytes_or_native_execution": True,
+            "no_new_tests_or_full_matrix": True,
+            "no_environment_install": True,
+            "no_ci_merge_or_protected_write": True,
+            "no_goal_status_or_fanin_write": True,
+            "quota": "UNKNOWN",
+        },
+    })
+    text = "\n".join(json.dumps(r, sort_keys=True) for r in records) + "\n"
+    (REVIEW / "01_FINDINGS.jsonl").write_text(text)
+    print(f"wrote {len(records)} records to {REVIEW / '01_FINDINGS.jsonl'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
