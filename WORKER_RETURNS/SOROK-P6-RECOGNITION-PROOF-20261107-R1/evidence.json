@@ -1,0 +1,226 @@
+{
+  "assertions": {
+    "failures": [
+      {
+        "actual": [
+          "bench",
+          "mug"
+        ],
+        "assertion": "no specialized object names before recognition"
+      },
+      {
+        "actual": "The bench stands beside the doorway.",
+        "assertion": "no specialized detail before recognition"
+      },
+      {
+        "actual": [
+          "coaster",
+          "photo",
+          "sandals"
+        ],
+        "assertion": "moving to a room does not itself recognize specialized objects"
+      },
+      {
+        "actual": [
+          "coaster",
+          "photo",
+          "sandals"
+        ],
+        "assertion": "living view does not expose specialized names before recognition"
+      }
+    ],
+    "total": 13
+  },
+  "commands": [
+    "run_p6.py --state <temp> new",
+    "run_p6.py --state <temp> view",
+    "run_p6.py --state <temp> look sandals",
+    "run_p6.py --state <temp> look mug",
+    "run_p6.py --state <temp> go 'living room'",
+    "run_p6.py --state <temp> view",
+    "run_p6.py --state <temp> look missing-object",
+    "run_p6.py --state <temp> look sandals"
+  ],
+  "fix_location": [
+    "run_p6.experience: objects = frame.pop('objects'); result['available'] = sorted(objects); result['detail'] = objects.get(selected)",
+    "house.scene: returns every object key/glance in the current room",
+    "attention.select: empty history selects the first object, so view exposes detail before recognition",
+    "attention.register is only called after an admitted look; view/output never gates on that exposure"
+  ],
+  "frozen_sha": "41b21babf72c4c8b0b4b012d3c8b7d7f6247791f",
+  "outputs": {
+    "changed_input_control": {
+      "changed_available": [
+        "bench",
+        "cup"
+      ],
+      "changed_clock": 248,
+      "gross_facts_stable": true,
+      "identity_changed": true,
+      "normal_available": [
+        "bench",
+        "mug"
+      ],
+      "normal_clock": 248
+    },
+    "living_after_move": {
+      "admission": "ADMITTED",
+      "available": [
+        "coaster",
+        "photo",
+        "sandals"
+      ],
+      "clock": 252,
+      "detail": "A round cork coaster lies on the shelf.",
+      "exit": "workshop",
+      "invitation": null,
+      "narration": [
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b0d13d2727af757551f78cc9f7a495f179bfa02de3a21616f3b156e210d1b4c",
+          "text": "You go into the living room."
+        }
+      ],
+      "orientation": "The workbench is through the doorway. A low shelf runs along the wall.",
+      "room": "living room"
+    },
+    "living_view": {
+      "available": [
+        "coaster",
+        "photo",
+        "sandals"
+      ],
+      "clock": 252,
+      "detail": "A round cork coaster lies on the shelf.",
+      "exit": "workshop",
+      "invitation": null,
+      "narration": [
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_3b0d13d2727af757551f78cc9f7a495f179bfa02de3a21616f3b156e210d1b4c",
+          "text": "You go into the living room."
+        }
+      ],
+      "orientation": "The workbench is through the doorway. A low shelf runs along the wall.",
+      "room": "living room"
+    },
+    "look_mug": {
+      "admission": "ADMITTED",
+      "available": [
+        "bench",
+        "mug"
+      ],
+      "clock": 251,
+      "detail": "A mug stands beside the bench.",
+      "exit": "living room",
+      "invitation": null,
+      "narration": [
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_e83a096497644241e44cb8eb58199924c5ceaf8696eeaf4e95c994becceb739e",
+          "text": "There is a chip in the rim."
+        },
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_c472b0e2d10720d0689c53ee6fa2c5886709aec673691a2a7e60b7d828e7c7a7",
+          "text": "Nadia makes a repair."
+        }
+      ],
+      "orientation": "A doorway leads from the workbench into the living room.",
+      "room": "workshop"
+    },
+    "look_sandals_living": {
+      "admission": "ADMITTED",
+      "available": [
+        "coaster",
+        "photo",
+        "sandals"
+      ],
+      "clock": 255,
+      "detail": "A pair of brown sandals lies beneath the shelf.",
+      "exit": "workshop",
+      "invitation": null,
+      "narration": [
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_d441d16cebe766d6b9ec9c2896e88f92f593c513e2d7488b908119011832c94c",
+          "text": "Blue thread crosses the left strap. The cork at the heel is dark."
+        }
+      ],
+      "orientation": "The workbench is through the doorway. A low shelf runs along the wall.",
+      "room": "living room"
+    },
+    "opening": {
+      "available": [
+        "bench",
+        "mug"
+      ],
+      "clock": 248,
+      "detail": "The bench stands beside the doorway.",
+      "exit": "living room",
+      "invitation": null,
+      "narration": [
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+          "text": "The finishing worker is already at the workshop bench."
+        },
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+          "text": "You come up the stairs and stop at the open workshop door."
+        }
+      ],
+      "orientation": "A doorway leads from the workbench into the living room.",
+      "room": "workshop"
+    },
+    "unavailable_missing": {
+      "admission": "UNAVAILABLE",
+      "available": [
+        "coaster",
+        "photo",
+        "sandals"
+      ],
+      "clock": 252,
+      "detail": "A round cork coaster lies on the shelf.",
+      "exit": "workshop",
+      "invitation": null,
+      "narration": [],
+      "orientation": "The workbench is through the doorway. A low shelf runs along the wall.",
+      "room": "living room"
+    },
+    "unavailable_workshop": {
+      "admission": "UNAVAILABLE",
+      "available": [
+        "bench",
+        "mug"
+      ],
+      "clock": 248,
+      "detail": "The bench stands beside the doorway.",
+      "exit": "living room",
+      "invitation": null,
+      "narration": [],
+      "orientation": "A doorway leads from the workbench into the living room.",
+      "room": "workshop"
+    },
+    "view_before": {
+      "available": [
+        "bench",
+        "mug"
+      ],
+      "clock": 248,
+      "detail": "The bench stands beside the doorway.",
+      "exit": "living room",
+      "invitation": null,
+      "narration": [
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_e8ef27fc37b15575b8b2da8e65b49f456d020d220175b29445994c4aee64d787",
+          "text": "The finishing worker is already at the workshop bench."
+        },
+        {
+          "event_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+          "text": "You come up the stairs and stop at the open workshop door."
+        }
+      ],
+      "orientation": "A doorway leads from the workbench into the living room.",
+      "room": "workshop"
+    }
+  },
+  "result": "FAILING_COUNTEREXAMPLE",
+  "runtime": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
+  "schema": "SOROK_P6_RECOGNITION_PROOF@1",
+  "sourcefree": true
+}

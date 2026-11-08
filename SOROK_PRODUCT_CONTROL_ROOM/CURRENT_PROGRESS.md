@@ -1,3 +1,13 @@
+# Sorok current progress — P6 joined verification candidate (2026-11-07)
+
+**Status: `CANDIDATE_ONLY__RECOGNITION_PASS_SCOPED__JOINED_PROOFS_PASS__JOINED_DEMO_PASS__NOT_MERGED`.** Frozen P6 runtime `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`; assembled evidence `1c461ebc6d3ede1cdbeda244ab06c346ddbcc92e`; recognition runtime/proof input `4f3f465923a61e9e3d76b9c0aa7f6ffd8ecad318`; independent recognition review `a3ce6b4282c0c427ef11da71030d622aa908ee86` = `PASS_SCOPED` (5 recognition tests + 1 house test). Isolated candidate branch `codex/sorok-p6-joined-verification-20261107-r1`.
+
+**Evidence:** four joined proofs (gaze, history order, chronology, actor boundary) `4 passed in 393.96s`; 13-command portable cold CLI demo `13/13 exit 0`, real recognition `the repaired blue-thread sandals` turn 4, Nadia material/time `2 -> 1` at `248 -> 249`, history root `d747d2c2...`, leave-alone with no mug look; receipt at `WORKER_RETURNS/SOROK-P6-JOINED-VERIFICATION-20261107-R1`.
+
+**Caveats:** candidate only; no PR or protected merge; P5 #775/P6 #779 remain unreceived; recognition review scoped; sourcefree/test-only; no native/science/human claim. Preserve all prior scope holds and inherited FIABC/LiTS **144 PASS / 3 FAIL**.
+
+---
+
 # Sorok current progress revision39 — P4 sourcefree first consumer protected received (2026-11-07)
 
 **Live P6 candidate (2026-11-07).** Dispatched on Codex GPT-6.1 Sol Medium from protected R39 `7a5429ffb`. The isolated branch carries the independently source-reconciled, unreceived P5 runtime from PR #775. P6 runtime `8c900d48e` cold-reopened after entering the adjacent room, inspecting sandals and a photograph, and returning to the workshop. The connected CLI test passed actor-triggered bench history outside user perception, inspection-triggered photo chronology, exposure-conditioned selection and source severance. Gaze invariance, recognition and the remaining hostile controls are outstanding. #776 remains a design candidate. Native and human authority holds and the inherited FIABC/LiTS 144 PASS / 3 FAIL remain in force.

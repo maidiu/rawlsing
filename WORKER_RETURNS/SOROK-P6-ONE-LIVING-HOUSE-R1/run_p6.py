@@ -15,7 +15,7 @@ from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitat
 from developmental_recursion.contracts import RecursionRefusal
 from attention import register, select
 from gaze import render
-from house import close_on_repair, establish, perform, read_house, scene
+from house import close_on_repair, derive_recognition, establish, perform, read_house, scene
 
 PACE = partial(advance_for_action, on_repair=close_on_repair)
 
@@ -37,7 +37,8 @@ def experience(state, args):
         try:
             check_source(owner)
             session = owner.base_owner.fanin.session
-            read_house(session)
+            _world, committed_house = read_house(session)
+            committed_objects = {ref: dict(row) for ref, row in committed_house["objects"].items()}
             expected = (ledger["turns"][-1]["after"] if ledger["turns"]
                         else ledger["antecedent"]["identity"])
             if owner.snapshot().document() != expected:
@@ -61,6 +62,11 @@ def experience(state, args):
             elif command in {"say", "attend", "inspect", "inspect-edge"}:
                 outcome = act(owner, ledger_file, ledger, args, pacing=PACE)
             view = surface(owner, ledger)
+            authoritative_events = {
+                row["event_id"]: row for row in session.events()
+                if row.get("event_id")
+            }
+            user_visible_ids = set(session.user_perceived_ids())
             frame = scene(session)
         finally:
             owner.close()
@@ -77,12 +83,17 @@ def experience(state, args):
                    else {"history": [], "exposure": {}})
         if command == "look" and outcome["performed"] and latest["action"].get("target") == args.target:
             register(profile, prior, args.target, len(ledger["turns"]))
+        profile["recognized"] = derive_recognition(
+            committed_objects, ledger["turns"], authoritative_events, user_visible_ids)
         objects = frame.pop("objects")
         selected = select(objects, profile["history"])
         profile["exposure"] = {"room": frame["room"], "detail": selected}
         save(gaze_file, profile)
+        recognized = profile["recognized"].get(selected) if selected else None
         result = {"clock": view["clock"], **frame, "available": sorted(objects),
                   "detail": objects.get(selected),
+                  "recognized_identity": (recognized["identity"] if recognized else None),
+                  "recognition": dict(profile["recognized"]),
                   "narration": render(view, [], candidates=candidates, boundary=boundary),
                   "invitation": view["invitation"]}
         if outcome is not None:

@@ -1,0 +1,230 @@
+{
+  "all_exit_zero": true,
+  "assembly_evidence": "1c461ebc6d3ede1cdbeda244ab06c346ddbcc92e",
+  "command_count": 13,
+  "commands": [
+    {
+      "exit": 0,
+      "label": "new",
+      "seconds": 8.156,
+      "seq": 1
+    },
+    {
+      "exit": 0,
+      "label": "orientation",
+      "seconds": 3.521,
+      "seq": 2
+    },
+    {
+      "exit": 0,
+      "label": "Nadia works while the user waits",
+      "seconds": 7.577,
+      "seq": 3
+    },
+    {
+      "exit": 0,
+      "label": "room entry",
+      "seconds": 9.055,
+      "seq": 4
+    },
+    {
+      "exit": 0,
+      "label": "banal observation",
+      "seconds": 11.701,
+      "seq": 5
+    },
+    {
+      "exit": 0,
+      "label": "sandals linked history",
+      "seconds": 15.023,
+      "seq": 6
+    },
+    {
+      "exit": 0,
+      "label": "photo linked history",
+      "seconds": 17.257,
+      "seq": 7
+    },
+    {
+      "exit": 0,
+      "label": "return to workshop",
+      "seconds": 20.357,
+      "seq": 8
+    },
+    {
+      "exit": 0,
+      "label": "revisit workshop",
+      "seconds": 13.584,
+      "seq": 9
+    },
+    {
+      "exit": 0,
+      "label": "leave the mug alone",
+      "seconds": 27.897,
+      "seq": 10
+    },
+    {
+      "exit": 0,
+      "label": "revisit living room",
+      "seconds": 25.902,
+      "seq": 11
+    },
+    {
+      "exit": 0,
+      "label": "final view",
+      "seconds": 16.746,
+      "seq": 12
+    },
+    {
+      "exit": 0,
+      "label": "read-only house history evidence",
+      "seconds": 11.05,
+      "seq": 13
+    }
+  ],
+  "demo_files": {
+    "TRANSCRIPT.md": 11945,
+    "actual_run.jsonl": 30439,
+    "house_history.json": 1692
+  },
+  "history": {
+    "epoch": 248,
+    "history": {
+      "bench-installation": {
+        "clock": 234,
+        "depends_on": [],
+        "id": "bench-installation",
+        "object": "bench",
+        "offset": -14
+      },
+      "photo-exposure": {
+        "clock": 244,
+        "depends_on": [
+          "strap-repair"
+        ],
+        "depicts": "sandals",
+        "id": "photo-exposure",
+        "object": "photo",
+        "offset": -4
+      },
+      "strap-repair": {
+        "clock": 239,
+        "depends_on": [],
+        "id": "strap-repair",
+        "object": "sandals",
+        "offset": -9
+      }
+    },
+    "objects": {
+      "bench": {
+        "close": "Shallow cuts cross the bench top.",
+        "glance": "The bench stands beside the doorway.",
+        "room": "workshop"
+      },
+      "coaster": {
+        "close": "A shallow ring marks the cork.",
+        "glance": "A round cork coaster lies on the shelf.",
+        "room": "living room"
+      },
+      "mug": {
+        "close": "There is a chip in the rim.",
+        "glance": "A mug stands beside the bench.",
+        "room": "workshop"
+      },
+      "photo": {
+        "close": "In the photograph, brown sandals lie on a step. Blue thread crosses the left strap.",
+        "glance": "A photograph leans against the wall on the shelf.",
+        "room": "living room"
+      },
+      "sandals": {
+        "close": "Blue thread crosses the left strap. The cork at the heel is dark.",
+        "evidence": "Blue thread crosses the left strap.",
+        "glance": "A pair of brown sandals lies beneath the shelf.",
+        "marking": "blue-thread-left-strap",
+        "room": "living room",
+        "specialist_identity": "the repaired blue-thread sandals"
+      }
+    },
+    "root": "d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6"
+  },
+  "leave_alone": {
+    "label": "leave the mug alone",
+    "observed_looks": [
+      "banal observation",
+      "sandals linked history",
+      "photo linked history"
+    ],
+    "receipt": {
+      "action": {
+        "operation": "SAY",
+        "pacing": "P5",
+        "request_edge": false,
+        "text": "I'll leave the mug alone for now."
+      },
+      "after_clock": 261,
+      "before_clock": 260,
+      "interval": {
+        "actual_action_event_id": "",
+        "end": 261,
+        "free_hours": [
+          9,
+          9
+        ],
+        "material_remaining": [
+          0,
+          0
+        ],
+        "reason": "MATERIAL_EXHAUSTED",
+        "start": 260,
+        "status": "NOT_PERFORMED"
+      },
+      "speech": {
+        "admission": "ADMITTED",
+        "performed_event_id": "TEST_ONLY_BP4_WORLD_EVT_17d3441d4a27983497a13124c2e726700695aaebf648cc5bf299763d33a021be",
+        "request_edge": false,
+        "text": "I'll leave the mug alone for now."
+      },
+      "uptake": {
+        "mode": null,
+        "status": "PERCEIVED_NO_INSPECTION_REQUEST"
+      }
+    },
+    "seq": 10
+  },
+  "nadia_material_time": [
+    {
+      "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_c472b0e2d10720d0689c53ee6fa2c5886709aec673691a2a7e60b7d828e7c7a7",
+      "end": 249,
+      "free_hours": [
+        11,
+        10
+      ],
+      "material_remaining": [
+        2,
+        1
+      ],
+      "reason": "",
+      "start": 248,
+      "status": "REALIZED"
+    }
+  ],
+  "recognition": [
+    {
+      "entry": {
+        "event_id": "TEST_ONLY_BP4_WORLD_EVT_dd7bc39df6549a9ec6aef43a7c8090410846c450a7d9b06262eaff44c5998179",
+        "evidence": "Blue thread crosses the left strap.",
+        "identity": "the repaired blue-thread sandals",
+        "marking": "blue-thread-left-strap",
+        "object_id": "sandals",
+        "turn": 4
+      },
+      "identity": "the repaired blue-thread sandals",
+      "label": "sandals linked history",
+      "seq": 6
+    }
+  ],
+  "recognition_candidate": "4f3f465923a61e9e3d76b9c0aa7f6ffd8ecad318",
+  "recognition_review": "a3ce6b4282c0c427ef11da71030d622aa908ee86",
+  "runtime_frozen": "41b21babf72c4c8b0b4b012d3c8b7d7f6247791f",
+  "schema": "SOROK_P6_JOINED_DEMO_RECEIPT@1"
+}

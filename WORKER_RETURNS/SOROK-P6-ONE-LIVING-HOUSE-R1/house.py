@@ -13,7 +13,10 @@ OBJECTS = {
     "mug": {"room": "workshop", "glance": "A mug stands beside the bench.",
             "close": "There is a chip in the rim."},
     "sandals": {"room": "living room", "glance": "A pair of brown sandals lies beneath the shelf.",
-                "close": "Blue thread crosses the left strap. The cork at the heel is dark."},
+                "close": "Blue thread crosses the left strap. The cork at the heel is dark.",
+                "specialist_identity": "the repaired blue-thread sandals",
+                "marking": "blue-thread-left-strap",
+                "evidence": "Blue thread crosses the left strap."},
     "photo": {"room": "living room", "glance": "A photograph leans against the wall on the shelf.",
               "close": "In the photograph, brown sandals lie on a step. Blue thread crosses the left strap."},
     "coaster": {"room": "living room", "glance": "A round cork coaster lies on the shelf.",
@@ -40,6 +43,47 @@ def facts(epoch):
             raise RecursionRefusal("P6_INVALID_OBJECT_CHRONOLOGY")
         result[row["id"]] = {**row, "clock": clock}
     return result
+
+
+def recognize(target, evidence_text, objects=None):
+    """Return a stable identity only from the exact committed object marking."""
+    item = (objects if objects is not None else OBJECTS).get(target)
+    if (not item or not item.get("specialist_identity")
+            or not item.get("marking") or item.get("evidence") not in str(evidence_text)):
+        return None
+    return {
+        "object_id": target,
+        "identity": item["specialist_identity"],
+        "marking": item["marking"],
+        "evidence": item["evidence"],
+    }
+
+
+def derive_recognition(objects, turns, events, user_visible):
+    """Reconstruct earned identities from owner events, not ledger copies."""
+    recognized = {}
+    for ordinal, turn in enumerate(turns or (), start=1):
+        action = turn.get("action") or {}
+        if action.get("operation") != "INSPECT_OBJECT":
+            continue
+        target = action.get("target")
+        performed = (turn.get("receipt") or {}).get("performed") or {}
+        event_id = performed.get("event_id")
+        event = (events or {}).get(event_id) if event_id else None
+        if (not target or not isinstance(event, dict)
+                or event_id not in (user_visible or ())
+                or event.get("kind") != "INSPECT"
+                or event.get("actor_id") != "U"
+                or (event.get("body") or {}).get("target") != target):
+            continue
+        earned = recognize(target, event.get("summary", ""), objects)
+        if earned is not None:
+            recognized[target] = {
+                **earned,
+                "event_id": event_id,
+                "turn": ordinal,
+            }
+    return recognized
 
 
 def establish(session):
