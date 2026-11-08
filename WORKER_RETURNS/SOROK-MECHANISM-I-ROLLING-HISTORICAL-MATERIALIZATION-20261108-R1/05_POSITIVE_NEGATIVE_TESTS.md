@@ -68,3 +68,20 @@ Observed local exit code 0, using the existing Sorok test environment.
 .............................................                            [100%]
 45 passed in 77.86s (0:01:17)
 ```
+
+## Current draft verification
+
+The same full command completed at implementation
+`1f0fc95f1fa11317dbd2bb3a2f04184d93213034`, exact tree
+`a6431cf3bb3084743bf09eaace462e1087ceabd8`. The owner checkpoint test
+now also covers a saved proposal whose packet cannot be reconstructed
+and a saved proposal whose source event is unavailable. Both leave
+the ready queue without committing a fact. The former can retry under
+a fresh lease. The latter is source-held.
+
+```text
+.............................................                            [100%]
+45 passed in 75.32s (0:01:15)
+```
+
+Exit 0. The open cases above remain open.
