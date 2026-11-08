@@ -525,30 +525,22 @@ class HistoricalWorld:
             held = list(result["held"])
             rejected = list(result["rejected"])
             physical = target.get("physical_depth", {}).copy()
-            candidate = job["candidate"] if result["accepted_groups"] else {}
-            dependencies = {row["group_id"]: row for row in (candidate.get("dependencies") or [])}
             owner_refs = {
                 digest(ref)
                 for ref in (packet["event_refs"] + packet["world_refs"]
                             + [packet["authority"]["ref"]]
                             + [fact["ref"] for fact in packet["known_facts"]])
             }
-            nonphysical_groups = {
-                row["dependency_group"] for family in ("occurrences", "links")
-                for row in (candidate.get(family) or [])
-            }
             admitted_groups = {}
             for group in result["accepted_groups"]:
                 group_id = group["group_id"]
                 claims = group["claims"]
-                dependency = dependencies.get(group_id, {})
-                if (group_id in nonphysical_groups
-                        or any(digest(ref) not in owner_refs
-                               for claim in claims for ref in (claim.get("source_refs") or ()))
-                        or any(parent not in admitted_groups
-                               for parent in (dependency.get("parent_groups") or []))
-                        or any(digest(ref) not in owner_refs
-                               for ref in (dependency.get("parent_refs") or []))):
+                parent_groups = group["parent_groups"]
+                parent_refs = group["parent_refs"]
+                if (any(digest(ref) not in owner_refs
+                        for claim in claims for ref in (claim.get("source_refs") or ()))
+                        or any(parent not in admitted_groups for parent in parent_groups)
+                        or any(digest(ref) not in owner_refs for ref in parent_refs)):
                     held.append({"group_id": group_id, "reason": "HISTORICAL_PARENT_GROUP_NOT_ADMITTED"})
                     continue
                 if not claims or any(
@@ -584,10 +576,10 @@ class HistoricalWorld:
                         "asserted_at": world.clock, "parent_hash": target["parent_hash"],
                         "parent_event_ref": packet["event_refs"][0],
                         "claim_ref": claim.get("ref"),
-                        "owner_dependency_refs": dependency.get("parent_refs") or [],
+                        "owner_dependency_refs": parent_refs,
                         "owner_source_refs": claim.get("source_refs") or [],
                         "dependency_fact_ids": sorted({
-                            fact_id for parent in (dependency.get("parent_groups") or ())
+                            fact_id for parent in parent_groups
                             for fact_id in admitted_groups[parent]
                         }),
                         "job_id": job_id, "group_id": group_id,

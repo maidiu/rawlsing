@@ -121,7 +121,7 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
                           proposal("condition", "pristine", "contradiction")],
                 "occurrences": [], "links": [],
                 "dependencies": [
-                    {"group_id": group, "parent_refs": packet["event_refs"],
+                    {"group": group, "parent_refs": packet["event_refs"],
                      "parent_groups": [], "asserted_H_class": "H0"}
                     for group in ("valid", "contradiction")
                 ],

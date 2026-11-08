@@ -922,8 +922,10 @@ def evaluate(packet: dict, candidate: dict) -> dict:
             }
             if status == "ACCEPTED":
                 record["claims"] = deepcopy([
-                    {"kind": claim["kind"], **claim["body"]}
+                    {**claim["body"], "kind": claim["kind"], "ref": claim["ref"]}
                     for claim in group["claims"]])
+                record["parent_refs"] = deepcopy(group["parent_refs"])
+                record["parent_groups"] = list(group["parent_groups"])
                 accepted.append(record)
                 accepted_parents.add(group_id)
                 accepted_occurrences[group_id] = _visible_occurrence_refs(
