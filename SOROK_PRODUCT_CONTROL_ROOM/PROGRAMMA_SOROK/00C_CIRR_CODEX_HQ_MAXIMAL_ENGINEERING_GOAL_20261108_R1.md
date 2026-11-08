@@ -1,3 +1,5 @@
+> **SUPERSEDED AS AN IMMEDIATE CODING COMMISSION (2026-11-08):** This is a long-range architectural engineering vision, NOT the active goal. The user specifically authorizes [Mechanism I only](00D_MECHANISM_I_ROLLING_HISTORICAL_MATERIALIZATION_ENGINEERING_GOAL_20261108_R1.md) ([Issue #785](https://github.com/maidiu/rawlsing/issues/785)). Do not direct Codex to build new PRE-V3→V3, V3 psyche, CAN-008 recruitment or generalized social-valuation machinery from this document. Preserve the design for later PROGRAMMA work.
+
 # PROGRAMMA SOROK — CIRR generalized engineering /goal for Codex HQ
 
 **Identity:** SOROK-CIRR-20261108-R1. **CIRR:** CONSTITUTE → INTERLINK → RECRUIT → RETURN.
