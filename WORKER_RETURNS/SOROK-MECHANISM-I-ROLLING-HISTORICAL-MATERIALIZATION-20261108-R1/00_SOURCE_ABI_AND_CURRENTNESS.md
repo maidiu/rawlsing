@@ -85,3 +85,14 @@ late-parent, contradictory custody and closed-effect negatives. These cases
 qualify the validator and do not grant H1 world writes. Live provider and
 independent review were not run for this cut. Independent activity consumption
 and recurrent demand creation are the next executable seams.
+
+The P4 CLI now wakes one background history invocation after a successful
+opening or particular inspection, when a history endpoint and model are
+explicitly configured. The child consumes the existing outbox via
+`run_history_worker` and `runtime.run_once`. The same P4 foreground lock
+serializes owner reads and writes. It is released during model inference.
+The manual worker command can recover durable jobs after interrupted wakeup.
+Tests verify the invocation follows the foreground save and lock release,
+absent configuration skips the wake, and the guard is open during inference.
+The launch proof uses an injected process starter. Live model execution and
+independent review remain unverified.

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Persistent sourcefree P4 encounter. Stdout is the user-visible surface."""
 import argparse
+from contextlib import contextmanager
 import fcntl
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent
@@ -203,19 +205,48 @@ def act(owner, ledger_file, ledger, args):
     return public
 
 
+@contextmanager
+def foreground_lock(state):
+    with (state / "p4.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        yield
+
+
+def wake_history_worker(state):
+    """Start a bounded job after the foreground checkpoint and ledger are durable."""
+    from rawlsing_next.sorok_history.provider import ProviderConfig
+
+    config = ProviderConfig.from_environment()
+    if not (config.endpoint and config.model):
+        return
+    try:
+        subprocess.Popen(
+            [sys.executable, str(Path(__file__).resolve()), "--state", str(state), "history-worker"],
+            stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+    except OSError:
+        # The durable demand remains available to the explicit recovery command.
+        print("Historical worker wake failed; durable demand retained.", file=sys.stderr)
+
+
 def run_history_worker(state):
-    """Service one durable job without taking the foreground interaction lock."""
+    """Use the foreground lock only for local owner operations."""
     import asyncio
 
     from rawlsing_next.sorok_history.provider import HistoricalModelProvider
     from rawlsing_next.sorok_history.runtime import run_once
 
     provider = HistoricalModelProvider.from_environment()
-    owner = open_owner(state / "actual-p2")
+    with foreground_lock(state):
+        owner = open_owner(state / "actual-p2")
     try:
-        check_source(owner)
+        with foreground_lock(state):
+            check_source(owner)
         history = HistoricalWorld(owner.base_owner.fanin.session)
-        result = asyncio.run(run_once(history, provider if provider.live else None))
+        result = asyncio.run(run_once(
+            history, provider if provider.live else None, guard=lambda: foreground_lock(state)
+        ))
         return result if result is not None else {"status": "NO_WORK"}
     finally:
         owner.close()
@@ -253,8 +284,7 @@ def main():
         if args.command == "history-worker":
             print(json.dumps(run_history_worker(state), ensure_ascii=False))
             return 0
-        with (state / "p4.lock").open("a") as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX)
+        with foreground_lock(state):
             if args.command == "new":
                 result = new(state, ledger_file, args.history)
             else:
@@ -280,6 +310,8 @@ def main():
                           "reason": str(exc) if isinstance(exc, (RecursionRefusal, HistoryRefusal)) else
                           "P4_STATE_OR_SOURCE_MISSING"}))
         return 2
+    if args.command in {"new", "inspect-particular"}:
+        wake_history_worker(state)
     print(json.dumps(result, ensure_ascii=False))
     return 0
 
