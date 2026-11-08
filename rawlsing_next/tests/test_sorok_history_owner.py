@@ -172,6 +172,30 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
                 )
             assert recovered.lease(now=116) is None
             assert recovered.job(job_id)["status"] == "FAILED_TERMINAL"
+
+            pending = recovered.admit_surface(
+                replace(surface, referent_key="fixture:packet-upgrade",
+                        location=there, occurrence_id=new_event["event_id"])
+            )
+            pending_id = pending["job_id"]
+            leased = recovered.lease(now=117)
+            assert recovered.record_candidate(
+                pending_id, leased["job"]["lease_token"], {"request_id": pending_id},
+                {"grade": "MOCK"}, now=118,
+            ) == "CANDIDATE_READY"
+            original_packet = recovered._constraint_packet
+            with monkeypatch.context() as patch:
+                patch.setattr(recovered, "_constraint_packet", lambda *args: {
+                    **original_packet(*args), "source_limits": ["CHANGED_PACKET_POLICY"],
+                })
+                receipt = recovered.commit_candidate(pending_id)
+            assert receipt["status"] == "STALE"
+            assert receipt["reason"] == "HISTORICAL_PACKET_READSET_MISMATCH"
+            assert recovered.ready_candidate_id() is None
+            retry = recovered.lease(now=119)
+            assert retry["job"]["id"] == pending_id
+            assert retry["job"]["attempt"] == 2
+            assert "candidate" not in retry["job"]
         finally:
             concurrent.close()
         assert owner.target(next_target["id"])["physical_depth"] == depth

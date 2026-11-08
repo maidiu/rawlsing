@@ -518,7 +518,11 @@ class HistoricalWorld:
                 return deepcopy(job["admission"])
             packet = self._constraint_packet(world, target, job)
             if digest(packet) != job["packet_hash"]:
-                raise HistoryRefusal("HISTORICAL_PACKET_READSET_MISMATCH")
+                job.update(status="STALE", admission={
+                    "status": "STALE", "job_id": job_id,
+                    "reason": "HISTORICAL_PACKET_READSET_MISMATCH",
+                })
+                return deepcopy(job["admission"])
 
             result = evaluate(packet, job["candidate"])
             accepted = []
