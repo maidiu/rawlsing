@@ -1,7 +1,7 @@
 {
   "schema": "PYAT777_CHECKPOINT_V1",
   "goal_complete": false,
-  "stage": "C9_API_WITNESS_RECEIVED__P1_EXACT_OBJECT_FETCHED__P1_BATCH_BOUNDARY_CONTINUATION_OUT__GOAL_FALSE",
+  "stage": "C9_P1_BOUNDARY_RECEIVED__EXISTING_SUCCESSOR_INDEPENDENT_REVIEW_OUT__GOAL_FALSE",
   "exact_output_head": "55fca441d1c674c256473c264cabda48f2df0e52",
   "branch_head_note": "55fca441d1c674c256473c264cabda48f2df0e52 is the frozen C8 content correction. Later commits contain explicitly identified custody/reference metadata, not another change to02/03/06/09 or source semantics. 11 hashes explicitly name55fca snapshot, including its CHECKPOINT blob.",
   "prepared_branch": "agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1",
@@ -297,7 +297,7 @@
     "No retirement/no-justified-consumer claim without five-test proof",
     "No operational currentness from a domain/O-operation link alone"
   ],
-  "saved_utc": "2026-11-08T04:52:00.575683+00:00",
+  "saved_utc": "2026-11-08T05:06:07.914533+00:00",
   "c8_review": {
     "job": "pyat777-hq-fanin-c8-independent-rereview-r1",
     "sha": "356124ee452d8cababaae7f2f57d05e8f0d17deb",
@@ -461,5 +461,51 @@
   },
   "c8_focused_intake": "C8_FOCUSED_RETURN_INTAKE.json",
   "current_substantive_job": "pyat777-p1-batch-selector-boundary-r1",
-  "c9_intake": "C9_RETURN_INTAKE.json"
+  "c9_intake": "C9_RETURN_INTAKE.json",
+  "c9_p1_boundary": {
+    "saved_utc": "2026-11-08T05:06:07.914533+00:00",
+    "terminal_job": "pyat777-p1-batch-selector-boundary-r1",
+    "exit_code": 0,
+    "author_commit": "d540cfcc44359f8f78aceccf8afb247c4a7ad80d",
+    "remote_verified": true,
+    "import_commit": "7800a91cb",
+    "disposition": "EVIDENCE_RECEIVED__NO_MISSING_ENGINE_ACCEPTANCE__PRIOR_SUCCESSOR_REVIEW_OUT",
+    "observations": {
+      "synthetic_candidate_operations": 840,
+      "batch_admitted": 840,
+      "actual_original35": false,
+      "empty_repository_refusal": "Expected exact-release refusal; not evidence of absent capability",
+      "existing_prior_implementation": "PDEV GAP007 repair already reports210DIST I03/Batch executions and630typedrefusals; review must reconcile"
+    },
+    "next_action": {
+      "task": "pyat777-c9-p1-existing-successor-review-r1",
+      "session": "ses_6857b9b4c50542e7a7268dfb7d",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-hq-fanin-c8-review",
+      "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C9_P1_EXISTING_SUCCESSOR_INDEPENDENT_REVIEW",
+      "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+      "review_target": "d540cfcc44359f8f78aceccf8afb247c4a7ad80d",
+      "prior_successor": "d3d6e48791623478fd1d838c7e95a72b77b5cd74",
+      "actual_model": {
+        "id": "msg_1b98be0d6001yNVlYcB6K02zVB",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794114314475
+        }
+      },
+      "launch": {
+        "child_pid": 33399,
+        "supervisor_pid": 33398,
+        "observer_pid": 33400,
+        "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-c9-p1-existing-successor-review-r1",
+        "launch_is_not_completion": true
+      }
+    },
+    "goal_complete": false,
+    "authority_holds_preserved": true
+  }
 }
