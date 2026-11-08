@@ -62,6 +62,11 @@ def experience(state, args):
             elif command in {"say", "attend", "inspect", "inspect-edge"}:
                 outcome = act(owner, ledger_file, ledger, args, pacing=PACE)
             view = surface(owner, ledger)
+            authoritative_events = {
+                row["event_id"]: row for row in session.events()
+                if row.get("event_id")
+            }
+            user_visible_ids = set(session.user_perceived_ids())
             frame = scene(session)
         finally:
             owner.close()
@@ -78,7 +83,8 @@ def experience(state, args):
                    else {"history": [], "exposure": {}})
         if command == "look" and outcome["performed"] and latest["action"].get("target") == args.target:
             register(profile, prior, args.target, len(ledger["turns"]))
-        profile["recognized"] = derive_recognition(committed_objects, ledger["turns"])
+        profile["recognized"] = derive_recognition(
+            committed_objects, ledger["turns"], authoritative_events, user_visible_ids)
         objects = frame.pop("objects")
         selected = select(objects, profile["history"])
         profile["exposure"] = {"room": frame["room"], "detail": selected}

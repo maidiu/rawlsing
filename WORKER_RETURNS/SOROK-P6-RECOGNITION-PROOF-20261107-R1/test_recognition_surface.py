@@ -1,6 +1,7 @@
 """Sourcefree recognition surface proof over the actual P6 house/run path."""
 from __future__ import annotations
 
+import copy
 import json
 import subprocess
 import sys
@@ -131,6 +132,44 @@ def test_cold_view_rederives_genuine_and_ignores_fabricated_cache(tmp_path):
     photo_view = cold_view(photo_state)
     assert photo_view["recognized_identity"] is None
     assert "sandals" not in photo_view["recognition"]
+
+
+def test_ledger_summary_and_event_are_resolved_from_owner_events(tmp_path):
+    state = tmp_path / "ledger"
+    run(state, "new")
+    run(state, "go", target="living room")
+    run(state, "look", target="sandals")
+    ledger = json.loads((state / "p4_receipts.json").read_text())
+    actual_event = ledger["turns"][-1]["receipt"]["performed"]["event_id"]
+
+    rewritten = copy.deepcopy(ledger)
+    rewritten["turns"][-1]["receipt"]["performed"]["summary"] = "FABRICATED SUMMARY"
+    rewritten["turns"][-1]["public"]["observation"]["summary"] = "FABRICATED SUMMARY"
+    (state / "p4_receipts.json").write_text(json.dumps(rewritten), encoding="utf8")
+    view = cold_view(state)
+    assert view["recognized_identity"] == "the repaired blue-thread sandals"
+    assert view["recognition"]["sandals"]["event_id"] == actual_event
+    assert view["recognition"]["sandals"]["turn"] == 2
+    assert "FABRICATED" not in json.dumps(view["recognition"])
+
+    forged = copy.deepcopy(rewritten)
+    forged["turns"][-1]["receipt"]["performed"]["event_id"] = "FAKE-LEDGER-EVENT"
+    forged["turns"][-1]["public"]["observation"]["event_id"] = "FAKE-LEDGER-EVENT"
+    (state / "p4_receipts.json").write_text(json.dumps(forged), encoding="utf8")
+    fake_view = cold_view(state)
+    assert fake_view["recognized_identity"] is None
+    assert fake_view["recognition"] == {}
+
+    photo = run(state, "look", target="photo")
+    assert photo["admission"] == "ADMITTED"
+    photo_ledger = json.loads((state / "p4_receipts.json").read_text())
+    photo_event = photo_ledger["turns"][-1]["receipt"]["performed"]["event_id"]
+    mixed = copy.deepcopy(photo_ledger)
+    mixed["turns"][-2]["receipt"]["performed"]["event_id"] = photo_event
+    mixed["turns"][-2]["public"]["observation"]["event_id"] = photo_event
+    (state / "p4_receipts.json").write_text(json.dumps(mixed), encoding="utf8")
+    mismatched = cold_view(state)
+    assert "sandals" not in mismatched["recognition"]
 
 def test_changed_specialist_input_changes_identity_and_preserves_gross_facts(tmp_path):
     normal_state = tmp_path / "normal"

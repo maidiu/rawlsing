@@ -59,28 +59,29 @@ def recognize(target, evidence_text, objects=None):
     }
 
 
-def derive_recognition(objects, turns):
-    """Reconstruct earned identities from durable admitted P4 look receipts."""
+def derive_recognition(objects, turns, events, user_visible):
+    """Reconstruct earned identities from owner events, not ledger copies."""
     recognized = {}
-    for turn in turns or ():
+    for ordinal, turn in enumerate(turns or (), start=1):
         action = turn.get("action") or {}
         if action.get("operation") != "INSPECT_OBJECT":
             continue
         target = action.get("target")
         performed = (turn.get("receipt") or {}).get("performed") or {}
-        observed = (turn.get("public") or {}).get("observation") or {}
-        if (not target or performed.get("kind") != "INSPECT"
-                or performed.get("actor_id") != "U"
-                or (performed.get("body") or {}).get("target") != target
-                or observed.get("event_id") != performed.get("event_id")
-                or observed.get("perceived_by_user") is not True):
+        event_id = performed.get("event_id")
+        event = (events or {}).get(event_id) if event_id else None
+        if (not target or not isinstance(event, dict)
+                or event_id not in (user_visible or ())
+                or event.get("kind") != "INSPECT"
+                or event.get("actor_id") != "U"
+                or (event.get("body") or {}).get("target") != target):
             continue
-        earned = recognize(target, performed.get("summary", ""), objects)
+        earned = recognize(target, event.get("summary", ""), objects)
         if earned is not None:
             recognized[target] = {
                 **earned,
-                "event_id": performed.get("event_id"),
-                "turn": len(recognized) + 1,
+                "event_id": event_id,
+                "turn": ordinal,
             }
     return recognized
 
