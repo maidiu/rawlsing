@@ -176,6 +176,21 @@ def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
             sleep(0.1)
         assert job["status"] == "INDEX_READY", job
         assert job["provider_receipt"]["model"] == "test-endpoint"
+
+        from s44.errors import S44Refusal
+        from s44.session import ROOT_FILE
+
+        root_path = history.session.state_root / ROOT_FILE
+        original = root_path.read_bytes()
+        history.session.read_root()
+        changed = json.loads(original)
+        changed["receipt"]["root_hash"] = "different-root"
+        root_path.write_text(json.dumps(changed))
+        try:
+            with pytest.raises(S44Refusal, match="S44_ROOT_REPLAY_MISMATCH"):
+                history.session.read_root()
+        finally:
+            root_path.write_bytes(original)
     finally:
         owner.close()
 

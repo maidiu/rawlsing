@@ -39,3 +39,19 @@ Live provider latency, usage and cost are `LIVE_PROVIDER_NOT_RUN`. Queue
 lead, index rebuild, cache behavior, stale cost and realistic mixed-load
 tails remain unmeasured. The complete fixture duration combines different
 phases and is unsuitable as a warm read or model SLO.
+
+## Warm root replay optimization
+
+Profiling eight reads attributed 2.179 of 2.247 instrumented seconds to
+`generate_root`. A latest-checkpoint SQL experiment left the same fixture
+near baseline at 69.57 ms p50 and was discarded. The received S44 root reader
+now reuses a verified root digest only while the exact root document bytes
+match. It still checks the branch binding and each language event reference
+on every read. The P4 transport regression also checks refusal after the
+cached root document is altered.
+
+The same saved state and 300-read procedure produced 5.78 ms p50, 7.37 ms
+p95, and 10.45 ms maximum. First read was 5.73 ms after owner reopen.
+Owner reopen was 1,308.81 ms in that run. All 300 reads returned the identical
+fact ID above. These are single-fixture measurements. They establish the
+cost of avoiding repeat root generation in this path.
