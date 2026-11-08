@@ -508,5 +508,22 @@ def test_real_interval_binds_completed_output_without_inspection(
             {"role": "PERFORMED_REPAIR", "actor_ref": actor_ref},
         ]
         assert packet["authority"]["allowed_H_classes"] == ["H0"]
+        if not interrupt_before_enqueue:
+            # Supply a second unit of stock through the test world's existing checkpoint.
+            session = reopened.base_owner.fanin.session
+            world = session.world()
+            world.actor_state["A"]["material_remaining"] = 1
+            world.actor_state["A"]["free_hours"] = 1
+            session.product._checkpoint(session.branch_id, world.clock, world)
+            second = advance(reopened.base_owner.fanin)
+            [second_receipt] = [row["world"] for row in second["segments"]
+                                if row["world"]["status"] == "CONFIRMED"]
+            next_packet = history.lease()["packet"]
+            [next_target] = next_packet["target_ids"]
+            assert next_packet["surface"][next_target]["prior_actor_repairs"] == [link]
+            assert [ref["object_id"] for ref in next_packet["event_refs"]] == [
+                second_receipt["actual_action_event_id"],
+            ]
+
     finally:
         reopened.close()

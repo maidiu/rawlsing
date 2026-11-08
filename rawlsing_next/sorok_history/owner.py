@@ -245,6 +245,9 @@ class HistoricalWorld:
         """Return branch-owned objective participation to a trusted world consumer."""
         world = self.session.world()
         state = self._state(world)
+        return self._repair_links_for_actor(world, state, actor_id)
+
+    def _repair_links_for_actor(self, world, state, actor_id):
         indexed = state.get("repair_links_by_actor", {}).get(actor_id, {})
         links = []
         for target_id, link in sorted(indexed.items()):
@@ -318,6 +321,16 @@ class HistoricalWorld:
         return next((job_id for job_id, job in state["outbox"].items()
                      if job["status"] == "CANDIDATE_READY"), None)
 
+    def _prior_repair_context(self, world, state, target):
+        event = self.session.event(target["surface"]["occurrence_id"])
+        link = self._repair_link(world, target, event) if event is not None else None
+        if link is None:
+            return []
+        actor_id = link["actor_ref"]["object_id"]
+        prior = [row for row in self._repair_links_for_actor(world, state, actor_id)
+                 if row["clock"] < link["clock"]]
+        return sorted(prior, key=lambda row: (row["clock"], row["event_id"]))[-2:]
+
     def _constraint_packet(self, world, target, job):
         """Assemble a bounded packet exclusively from owner-bound material."""
         surface = target["surface"]
@@ -375,6 +388,8 @@ class HistoricalWorld:
                 "physical": deepcopy(surface["physical"]),
                 "known_fact_refs": known_refs, "unresolved": list(job["dimensions"]),
                 **({"requested_predicate": requested} if requested is not None else {}),
+                **({"prior_actor_repairs": job["prior_actor_repairs"]}
+                   if job.get("prior_actor_repairs") else {}),
             }},
             "known_facts": facts,
             "world_refs": [target_ref],
@@ -431,6 +446,7 @@ class HistoricalWorld:
                            lease_token=uuid4().hex, expires_at=now + seconds,
                            world_readset=self._world_readset(world), chronology_bound=True,
                            repair_actor_bound=True)
+                job["prior_actor_repairs"] = self._prior_repair_context(world, state, target)
                 packet = self._constraint_packet(world, target, job)
                 job["packet_hash"] = digest(packet)
                 return deepcopy({"job": job, "target": target, "world_clock": world.clock,

@@ -96,3 +96,11 @@ branch's target and original event before returning the link. The repair
 constraint packet uses the same link derivation. The recovery test removes
 the derived index and rebuilds the exact link from the committed journal.
 No user-facing reader receives this reverse index.
+
+Repair leases can now consume the reverse index. A later repair packet
+includes at most two earlier verified repair links for the same actor
+and branch. The selected links are sealed with that lease. They appear as
+context only, outside the packet's admissible parent references. The
+two-repair sourcefree test uses real S46 actions with controlled stock
+replenishment. It checks that the first repair is context and the second
+repair remains the only event parent of its output.
