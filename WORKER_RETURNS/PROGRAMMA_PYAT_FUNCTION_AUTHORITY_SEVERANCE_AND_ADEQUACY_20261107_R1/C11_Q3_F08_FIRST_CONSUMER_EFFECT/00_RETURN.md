@@ -66,22 +66,22 @@ The selected authority was consumed and changed the override/use contract. The r
 
 ## Q4 — current successor location
 
-The current installed successor is **not a QUC/question-use reader**. The C6 mapping is still exact:
+HQ correction under independent review b939c51a21359efc556c3f58860789e247b011aa (C11R-01): current functional succession is **UNPROVED**. The locations examined below do not establish the whole PRE-V3 responsibility mapping:
 
 - `rawlsing_next/pre553_empirical_objects.py:677` — `EmpiricalQuerySpec` carries query targets, condition, scope and `requested_output_grain`.
 - `rawlsing_next/pre553_empirical_query.py:403-438` — current I03 consumes optional `target_use_ref` / `TARGET_USE_PERMISSION` only inside exact query/authority closure.
 - `rawlsing_next/pre553_empirical_authority.py:41` — `TARGET_USE_PERMISSION` authority kind.
 - `rawlsing_next/pre553_universal_workload.py:473,633` — current governed-frontier compile/execute owners.
 
-No installed non-test `question_use`/itinerary/taxonomy reader was found in current `rawlsing_next`; target-use permission is a **different current authority**, not a QUC equivalent. C6 records AR-0047/AR-0048/AR-0050 bytes as historical and protected-same-bytes but current adoption **not proved**; AR-0049's current protected path is absent. There is no selected current operation in the examined C6/current evidence that demands the historical QUC input, so **severance is not called**. The current classification is:
+The author did not find a named reader in the examined paths. That is a search observation, not proof of absent functional responsibility elsewhere. Target-use permission alone does not prove QUC equivalence or a missing capability. C6 records AR-0047/AR-0048/AR-0050 bytes as historical and protected-same-bytes but current adoption **not proved**; AR-0049's current protected path is absent. There is no selected current operation in the examined C6/current evidence that demands the historical QUC input, so **severance is not called**. The current classification is:
 
 ```text
 FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED
   __NO_SELECTED_CURRENT_QUC_OPERATION
-  __NO_QUC_READER_IN_CURRENT_OWNER
+  __FUNCTIONAL_SUCCESSOR_NOT_PROVED
 ```
 
-Exact remaining boundary: `question_use_contract / itinerary / taxonomy` semantics are not represented in current `EmpiricalQuerySpec`/I03 target-use permission; a current selected operation requiring them would need a QUC reader/typed current representation at the existing query/authority owner. No new resolver, engine or Q_USE implementation was added. Sourcefree replay is **not** original equivalence.
+Exact remaining boundary: the author has not established the current functional successor for the historical use-contract, itinerary and taxonomy responsibilities. A need for a QUC reader is an unproved hypothesis; it requires a selected current operation and demonstrated successor contract before any repair can be justified. No new resolver, engine or Q_USE implementation was added. Sourcefree replay is **not** original equivalence.
 
 ## EVIDENCE DISTINCTIONS
 
@@ -90,7 +90,7 @@ Exact remaining boundary: `question_use_contract / itinerary / taxonomy` semanti
 | Historical selection | Exact AR-0047/48/49/50 bytes and rows selected by C6 |
 | Historical original runtime | `NOT_RUN` / `ACTUAL_HISTORICAL_INVOCATION_NOT_OBSERVED` |
 | Test-time replay now | Positive/negative/restore observed with exact historical consumer on authority metadata |
-| Current adoption | AR-0047/48/50 bytes not proved adopted; AR-0049 current protected path absent; no QUC reader |
+| Current adoption | AR-0047/48/50 bytes not proved adopted; AR-0049 examined path absent; functional succession UNPROVED |
 | Current selected QUC operation | None observed; no severance verdict |
 
 ## COVERAGE / EXECUTION LIMITS

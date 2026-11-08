@@ -797,6 +797,61 @@
           }
         }
       }
+    },
+    "c11_f08_review": {
+      "saved_utc": "2026-11-08T05:59:19.960159+00:00",
+      "task": "pyat777-q3-f08-independent-consumer-review-r1",
+      "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f08-independent-consumer-review-r1/completion.json",
+      "exit_code": 0,
+      "review_commit": "b939c51a21359efc556c3f58860789e247b011aa",
+      "remote_verified": true,
+      "verdict": "REVISE_SCOPED",
+      "hq_disposition": "ACCEPT_Q3_REPLAY_AT_ONE_ROW_NONRESPONDENT_SCOPE__Q4_UNPROVED__C11R01_WORDING_CORRECTED_DIRECTLY",
+      "accepted_findings": [
+        "C11A-01",
+        "C11A-02",
+        "C11A-03"
+      ],
+      "correction": "HQ qualified named-reader search and would-need-reader as unproved hypotheses; historical original authorcut76392135 and independentREVISE preserved unchanged inGit",
+      "review_loop_added": false,
+      "no_replay_repeated": true,
+      "next_action": {
+        "task": "pyat777-f08-functional-responsibility-comparison-r1",
+        "session": "ses_b998af9086264002a86ee57b6e",
+        "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-consumer",
+        "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C12_F08_FUNCTIONAL_RESPONSIBILITY",
+        "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+        "basis": "C11R-01 at b939c51a21359efc556c3f58860789e247b011aa",
+        "launch": {
+          "child_pid": 50686,
+          "supervisor_pid": 50685,
+          "observer_pid": 50687,
+          "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-f08-functional-responsibility-comparison-r1",
+          "launch_is_not_completion": true
+        },
+        "actual_model": {
+          "id": "msg_1b9bcb57300117GlAPhJ2buPBp",
+          "type": "assistant",
+          "model": {
+            "id": "deepseek-v4.1-flash",
+            "providerID": "opencode-go",
+            "variant": "max"
+          },
+          "time": {
+            "created": 1794117514679,
+            "streamed": 1794117524136,
+            "completed": 1794117524257
+          }
+        }
+      },
+      "limits": [
+        "Taxonomy runtime notproved",
+        "No originalhistoricalrun or all35currentconsumption",
+        "Contract review_required=true and relationevidenceadmission=false",
+        "No currentrepair/issuer/newreader authorized"
+      ],
+      "canonical51grades_unchanged": true,
+      "goal_complete": false
     }
   }
 }

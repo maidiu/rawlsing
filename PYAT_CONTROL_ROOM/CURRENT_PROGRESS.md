@@ -1,3 +1,7 @@
+# #777 F08 replay independently accepted at bounded scope; Q4 comparison out
+
+Reviewb939c51a accepts exacthistoricalconsumer/authoritybytes and onerow positive/negative/restore; contract remainsreviewrequired, no all35/originalhistoricalrun/currentintegration acceptance. C11R01 rejected missingreader/needsreader inference. HQ corrected those reportclaims directly; no additional reportingreview or replay. Existingauthor PID50686 now compares actualfunctional obligations to existingwholePREV3 producer/selector/consumer contracts, readonly; FlashMAXverified. F03independentreview remains separate. Goalfalse; no newreader/engine/native/science/protectedeffects.
+
 # #777 F03 relation-authority replay received; two distinct reviews out
 
 Returnfdda8475 reports unchanged historical consumer audit of18518authorityrows/35activewaves,9positivefamilywitnesses and failclosed/missing/coldrestore cases. HQ verified19-rowTRACE hash. Distinct existing C6reviewer PID47523 now checks actualconsumer/byteidentity/counts/effects and currentfunctional succession; actualFlashMAX verified. F08review remains independent. Historicalauthoritypresence doesnotprove currentgoverningconsumption or absence ofseverance. No currentnative/scientificacceptance; canonical51grades/17agenda/holds unchanged. Goalfalse.
