@@ -1,31 +1,22 @@
-"""T4 proof: independent S46 activity consumes the HistoricalWorld material index."""
+"""T4 proof: independent S46 activity consumes owner-admitted depth."""
 
-from pathlib import Path
+import asyncio
 import json
+from pathlib import Path
 
 from rawlsing_next.sorok_history.activity import (
     ADVANCED,
+    DEPTH_MISSING,
     HELD,
-    PROPERTY_MISSING,
-    PROPERTY_UNAVAILABLE,
     advance_independent_activity,
 )
-from rawlsing_next.sorok_history.owner import HistoricalWorld
+from rawlsing_next.sorok_history.owner import HistoricalWorld, digest
 
 
 P4 = (Path(__file__).resolve().parents[2] / "WORKER_RETURNS"
       / "SOROK-P4-FIRST-FULL-MPC-R1")
 P3 = (Path(__file__).resolve().parents[2] / "WORKER_RETURNS"
       / "SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1")
-
-
-def _set_surface_property(history, target_id, predicate, value, *, present):
-    with history._write() as (_world, state):
-        target = state["targets"][target_id]
-        if present:
-            target["surface"]["physical"][predicate] = value
-        else:
-            target["surface"]["physical"].pop(predicate, None)
 
 
 def _actual_intervals(session):
@@ -35,7 +26,28 @@ def _actual_intervals(session):
     ]
 
 
-def test_independent_s46_activity_holds_on_missing_or_unavailable_material_and_advances_on_restore(
+def _proposal(packet, target_id):
+    fact = {
+        "target_id": target_id, "predicate": "condition", "value": "serviceable",
+        "effective_time": packet["time"], "dependency_group": "physical",
+        "asserted_H_class": "H0",
+    }
+    checksum = digest(fact)
+    fact["ref"] = {
+        "kind": "FACT", "object_id": "proposal:" + checksum,
+        "content_hash": checksum,
+    }
+    return {
+        "request_id": packet["request_id"], "facts": [fact],
+        "occurrences": [], "links": [],
+        "dependencies": [{
+            "group_id": "physical", "parent_refs": packet["event_refs"],
+            "parent_groups": [], "asserted_H_class": "H0",
+        }],
+    }
+
+
+def test_owner_admitted_depth_holds_absent_then_advances_real_s46_without_observation(
     tmp_path, monkeypatch
 ):
     monkeypatch.syspath_prepend(str(P4))
@@ -47,7 +59,6 @@ def test_independent_s46_activity_holds_on_missing_or_unavailable_material_and_a
     [tool] = opening["historical_particulars"]
     target_id = tool["id"]
     assert tool["domain"] == "resource"
-    assert tool["physical"] == {"tool_available": True}
 
     owner = open_owner(tmp_path / "actual-p2")
     try:
@@ -57,38 +68,64 @@ def test_independent_s46_activity_holds_on_missing_or_unavailable_material_and_a
         clock_before = session.clock()
         perceived_before = set(session.user_perceived_ids())
         material_before = session.world().actor_state["A"]["material_remaining"]
-        assert clock_before == opening["clock"]
-        assert material_before == 1
-        assert not _actual_intervals(session)
+        [job] = history.pending()
+        assert job["target_id"] == target_id
+        assert job["status"] == "ENQUEUED"
 
-        _set_surface_property(history, target_id, "tool_available", None, present=False)
-        held_missing = advance_independent_activity(
-            fanin, history, target_id=target_id, predicate="tool_available", expected=True
+        # The same-world depth is absent until the existing history worker
+        # admits the provider proposal. No private surface write is used.
+        absent = advance_independent_activity(
+            fanin, history, target_id=target_id,
+            predicate="condition", expected="serviceable",
         )
-        assert held_missing.status == HELD
-        assert held_missing.refusal_code == PROPERTY_MISSING
-        assert held_missing.interval is None
-        assert held_missing.clock_before == held_missing.clock_after == clock_before
-        assert held_missing.material_before == held_missing.material_after == material_before
+        assert absent.status == HELD
+        assert absent.refusal_code == DEPTH_MISSING
+        assert absent.interval is None
+        assert absent.clock_after == absent.clock_before == clock_before
+        assert absent.material_after == absent.material_before == material_before
         assert not _actual_intervals(session)
 
-        _set_surface_property(history, target_id, "tool_available", False, present=True)
-        held_unavailable = advance_independent_activity(
-            fanin, history, target_id=target_id, predicate="tool_available", expected=True
+        from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+        from rawlsing_next.sorok_history.runtime import run_once
+
+        async def transport(request):
+            packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+            return {"text": json.dumps(_proposal(packet, target_id)),
+                    "model": "mock-history"}
+
+        admission = asyncio.run(
+            run_once(history, HistoricalModelProvider(transport=transport))
         )
-        assert held_unavailable.status == HELD
-        assert held_unavailable.refusal_code == PROPERTY_UNAVAILABLE
-        assert held_unavailable.interval is None
-        assert session.clock() == clock_before
-        assert not _actual_intervals(session)
+        assert admission["status"] == "INDEX_READY"
 
-        _set_surface_property(history, target_id, "tool_available", True, present=True)
+        target = history.target(target_id)
+        fact = target["physical_depth"]["condition"]
+        job_after = history.job(job["id"])
+        accepted_ids = {
+            fact_id for group in job_after["admission"]["accepted"]
+            for fact_id in group["fact_ids"]
+        }
+        assert fact["value"] == "serviceable"
+        assert fact["job_id"] == job["id"]
+        assert fact["id"] in accepted_ids
+        assert job_after["status"] == "INDEX_READY"
+        assert job_after["admission"]["status"] == "INDEX_READY"
+        assert fact["parent_event_ref"]["object_id"] == target["surface"]["occurrence_id"]
+        assert fact["parent_event_ref"]["content_hash"] == target["parent_hash"]
+
         advanced = advance_independent_activity(
-            fanin, history, target_id=target_id, predicate="tool_available", expected=True
+            fanin, history, target_id=target_id,
+            predicate="condition", expected="serviceable",
         )
         assert advanced.status == ADVANCED
         assert advanced.refusal_code is None
-        assert advanced.clock_before == clock_before
+        assert advanced.fact_id == fact["id"]
+        assert advanced.job_id == job["id"]
+        assert advanced.job_status == "INDEX_READY"
+        assert advanced.admission_status == "INDEX_READY"
+        assert advanced.fact_parent_event_ref == fact["parent_event_ref"]
+        assert advanced.fact_claim_ref == fact["claim_ref"]
+        assert advanced.target_version == target["version"]
         assert advanced.clock_after > advanced.clock_before
         assert advanced.material_before == 1
         assert advanced.material_after == 0
@@ -101,18 +138,13 @@ def test_independent_s46_activity_holds_on_missing_or_unavailable_material_and_a
             segment["world"]["actual_action_event_id"]
             for segment in actual[0]["segments"]
         )
+
         assert advanced.user_visible is False
         assert advanced.writes_authority is False
         assert advanced.psychology_claim is False
-
-        events = session.events()
-        assert not any(event["kind"] == "INSPECT" for event in events)
+        assert not any(event["kind"] == "INSPECT" for event in session.events())
         assert set(session.user_perceived_ids()) == perceived_before
-        assert advanced.property_hash and advanced.target_hash
-        assert advanced.property_source == "surface.physical"
-        assert advanced.as_dict()["status"] == ADVANCED
-        assert json.loads(json.dumps(advanced.as_dict()))["interval"]["status"] in {
-            "PARTIAL", "REALIZED",
-        }
+        assert advanced.as_dict()["property_source"] == "physical_depth"
+        assert json.loads(json.dumps(advanced.as_dict()))["fact_id"] == fact["id"]
     finally:
         owner.close()
