@@ -1,3 +1,7 @@
+# #777 PR770 independently accepted at sourcefree defect scope
+
+Review65f2b870 independentlyreproducesT01wrongauthoritypositive2/2,97focusedtests andexactauthortrace; HQverifiedrunner/trace/ledgerhashes. T02standalonebypassnotproved; T03latent/no productioncaller. GoalT2stillunproved. T01repairheldon realcontractchoice: whereindependentintendedoperationisdeclared (bindingcurrentlyonlyauthorityrefs; snapshotsownoperationscannotselfjustify). FiniteHigh/competentownerdecisionpacket C17_T01_EXACT_CONTRACT_DECISION.json banked; R63desktoptoolnotavailable, no autonomoussettingschange/codegrant. Other2lanescontinue. Goalfalse; native/science/mergeholds remain.
+
 # #777 exact review corrections verified; three existing sourcefree courts dispatched
 
 C16af7deeb0 correctsC15lineage/wording and replacesblanketT6with12per-issuedispositions. HQreran61checks:61pass. Three necessaryindependentlanes fromactualunfinishedactions: PR770authorityfitnessfalsifierreview PID67366; PR774Q86guardreview PID67371; R9F14Browser-prescribed mechanicalS2probes PID67378. BrowserHighsourcecourt remainscontrolling; OpenCodeR9 isrunneronly, no modelreplacement. pyat777-pr770-independent-sourcefree-review-r1:modelverified, pyat777-pr774-independent-guard-review-r1:modelverified, pyat777-r9-f14-sourcefree-falsifier-runner-r1:modelverified. No newengine/productionpatch/merge/originaldata/science. T2notyetaccepted; goalfalse.
