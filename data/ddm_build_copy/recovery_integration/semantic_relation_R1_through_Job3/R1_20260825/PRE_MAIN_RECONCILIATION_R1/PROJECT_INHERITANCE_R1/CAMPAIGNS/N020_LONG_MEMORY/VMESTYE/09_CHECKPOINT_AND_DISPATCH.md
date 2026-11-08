@@ -1,5 +1,6 @@
 # VMESTYE — CHECKPOINT, WORKER STATUS AND FUTURE DISPATCH LOCK
-**This preliminary candidate writes no protected PRE-MAIN, opens no source/science execution and launches no workers.**
+**User-requested protected documentary receiving may carry this structure into PRE-MAIN; that action does not turn its content into verified functional conservation, issue science, or launch workers.**
+**2026-11-08 USER STOP:** #777/#784/PR786 overlapping code/review/discovery and paused #787–#790 remain HELD pending explicit resumption; [repository stop record](12_NOVEMBER_RECOVERY_AND_BRANCH_INTAKE.md) is not a verified Mac process stop.
 **Protected PRE-MAIN observed 2026-11-08:** `7a5429ffbc48efd25e28c912da80c822e66bc182`.
 **Candidate branch:** `docs/long-memory-vmestye-programma-20261108-r1`.
 **Fleet control:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv). Every initial ZL-00–ZL-17 row is `NOT_DISPATCHED`; no invented host/runner/slot. The old #787/#788/#789/#790 remain paused.
