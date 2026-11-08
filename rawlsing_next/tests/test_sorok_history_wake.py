@@ -97,7 +97,8 @@ def test_worker_releases_foreground_guard_during_inference():
     assert not locked
 
 
-def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
+@pytest.mark.parametrize("opening_command", ["new", "view"])
+def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch, opening_command):
     from http.server import BaseHTTPRequestHandler, HTTPServer
     import os
     from queue import Queue
@@ -106,7 +107,7 @@ def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
     from time import monotonic, sleep
 
     monkeypatch.syspath_prepend(str(P4))
-    from run_p4 import foreground_lock, open_owner
+    from run_p4 import foreground_lock, new, open_owner
     from rawlsing_next.sorok_history.owner import HistoricalWorld
 
     packets = Queue()
@@ -149,13 +150,15 @@ def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
     env = {key: value for key, value in os.environ.items()
            if not key.startswith("SOROK_HISTORY_")}
     cli = [sys.executable, str(P4 / "run_p4.py"), "--state", str(tmp_path)]
+    if opening_command == "view":
+        new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
     with HTTPServer(("127.0.0.1", 0), MockEndpoint) as server:
         request_thread = Thread(target=server.handle_request)
         server.timeout = 60
         request_thread.start()
         try:
             opened = run(
-                cli + ["new"], capture_output=True, text=True, check=True, timeout=90,
+                cli + [opening_command], capture_output=True, text=True, check=True, timeout=90,
                 env={**env, "SOROK_HISTORY_MODEL": "test-endpoint",
                      "SOROK_HISTORY_MODEL_ENDPOINT": f"http://127.0.0.1:{server.server_port}"},
             )

@@ -24,7 +24,7 @@ therefore include those lookups. No derived-index speedup is established.
 Reproduce the state from the repository root with the configured test Python.
 
 ```sh
-python -m pytest -q rawlsing_next/tests/test_sorok_history_wake.py::test_p4_wake_completes_through_a_mock_http_endpoint --basetemp "$SOROK_BENCH_STATE" --durations=1
+python -m pytest -q 'rawlsing_next/tests/test_sorok_history_wake.py::test_p4_wake_completes_through_a_mock_http_endpoint[new]' --basetemp "$SOROK_BENCH_STATE" --durations=1
 ```
 
 Use a fresh task-owned path for `SOROK_BENCH_STATE`. In a separate process,

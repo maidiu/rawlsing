@@ -212,12 +212,12 @@ def foreground_lock(state):
         yield
 
 
-def wake_history_worker(state):
+def wake_history_worker(state, *, candidate_ready=False):
     """Start a bounded job after the foreground checkpoint and ledger are durable."""
     from rawlsing_next.sorok_history.provider import ProviderConfig
 
     config = ProviderConfig.from_environment()
-    if not (config.endpoint and config.model):
+    if not candidate_ready and not (config.endpoint and config.model):
         return
     try:
         subprocess.Popen(
@@ -280,6 +280,7 @@ def main():
     if args.command == "new":
         state.mkdir(parents=True, exist_ok=True)
     ledger_file = state / "p4_receipts.json"
+    recover_history = candidate_ready = False
     try:
         if args.command == "history-worker":
             print(json.dumps(run_history_worker(state), ensure_ascii=False))
@@ -301,8 +302,13 @@ def main():
                         witness = boundary.get("foreground_witness")
                         if witness is None or foreground_witness(owner, current) != witness:
                             raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
-                    result = (surface(owner, ledger) if args.command == "view" else
-                              act(owner, ledger_file, ledger, args))
+                    if args.command == "view":
+                        result = surface(owner, ledger)
+                        history = HistoricalWorld(owner.base_owner.fanin.session)
+                        candidate_ready = history.ready_candidate_id() is not None
+                        recover_history = candidate_ready or bool(history.pending())
+                    else:
+                        result = act(owner, ledger_file, ledger, args)
                 finally:
                     owner.close()
     except (RecursionRefusal, HistoryRefusal, FileNotFoundError) as exc:
@@ -310,8 +316,8 @@ def main():
                           "reason": str(exc) if isinstance(exc, (RecursionRefusal, HistoryRefusal)) else
                           "P4_STATE_OR_SOURCE_MISSING"}))
         return 2
-    if args.command in {"new", "inspect-particular"}:
-        wake_history_worker(state)
+    if recover_history or args.command in {"new", "inspect-particular"}:
+        wake_history_worker(state, candidate_ready=candidate_ready)
     print(json.dumps(result, ensure_ascii=False))
     return 0
 
