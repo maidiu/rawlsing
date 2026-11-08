@@ -15,7 +15,7 @@ from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitat
 from developmental_recursion.contracts import RecursionRefusal
 from attention import register, select
 from gaze import render
-from house import close_on_repair, establish, perform, read_house, recognize, scene
+from house import close_on_repair, derive_recognition, establish, perform, read_house, scene
 
 PACE = partial(advance_for_action, on_repair=close_on_repair)
 
@@ -37,7 +37,8 @@ def experience(state, args):
         try:
             check_source(owner)
             session = owner.base_owner.fanin.session
-            read_house(session)
+            _world, committed_house = read_house(session)
+            committed_objects = {ref: dict(row) for ref, row in committed_house["objects"].items()}
             expected = (ledger["turns"][-1]["after"] if ledger["turns"]
                         else ledger["antecedent"]["identity"])
             if owner.snapshot().document() != expected:
@@ -75,16 +76,9 @@ def experience(state, args):
                 boundary = evidence["event_id"]
         profile = (json.loads(gaze_file.read_text()) if gaze_file.exists()
                    else {"history": [], "exposure": {}})
-        profile.setdefault("recognized", {})
         if command == "look" and outcome["performed"] and latest["action"].get("target") == args.target:
             register(profile, prior, args.target, len(ledger["turns"]))
-            event = (latest or {}).get("receipt", {}).get("performed") or {}
-            earned = recognize(args.target, event.get("summary", ""))
-            if earned is not None:
-                profile["recognized"][args.target] = {
-                    **earned, "turn": len(ledger["turns"]),
-                    "event_id": event.get("event_id"),
-                }
+        profile["recognized"] = derive_recognition(committed_objects, ledger["turns"])
         objects = frame.pop("objects")
         selected = select(objects, profile["history"])
         profile["exposure"] = {"room": frame["room"], "detail": selected}

@@ -80,6 +80,58 @@ def test_unavailable_and_history_only_cannot_earn_recognition(tmp_path):
     assert history_view["recognition"] == {}
 
 
+
+def test_cold_view_rederives_genuine_and_ignores_fabricated_cache(tmp_path):
+    state = tmp_path / "state"
+    run(state, "new")
+    run(state, "go", target="living room")
+    run(state, "look", target="sandals")
+    ledger = json.loads((state / "p4_receipts.json").read_text())
+    actual_event = ledger["turns"][-1]["receipt"]["performed"]["event_id"]
+    gaze = json.loads((state / "p6_gaze.json").read_text())
+    gaze["recognized"] = {
+        "sandals": {
+            "object_id": "sandals", "identity": "FABRICATED IDENTITY",
+            "marking": "fake-marking", "evidence": "fake evidence",
+            "event_id": "fake-event", "turn": 99,
+        },
+        "photo": {
+            "object_id": "photo", "identity": "FABRICATED PHOTO IDENTITY",
+            "marking": "fake-photo-marking", "evidence": "fake photo evidence",
+            "event_id": "fake-photo-event", "turn": 99,
+        },
+    }
+    (state / "p6_gaze.json").write_text(json.dumps(gaze), encoding="utf8")
+    reopened = cold_view(state)
+    assert reopened["recognized_identity"] == "the repaired blue-thread sandals"
+    assert reopened["recognition"]["sandals"]["event_id"] == actual_event
+    assert reopened["recognition"]["sandals"]["marking"] == "blue-thread-left-strap"
+    assert "FABRICATED" not in json.dumps(reopened["recognition"])
+    assert "photo" not in reopened["recognition"]
+
+    fake_state = tmp_path / "fake"
+    run(fake_state, "new")
+    (fake_state / "p6_gaze.json").write_text(json.dumps({
+        "history": [], "exposure": {},
+        "recognized": {"sandals": {
+            "object_id": "sandals", "identity": "FABRICATED IDENTITY",
+            "marking": "fake-marking", "evidence": "fake evidence",
+            "event_id": "fake-event", "turn": 99,
+        }},
+    }), encoding="utf8")
+    fake_view = cold_view(fake_state)
+    assert fake_view["recognized_identity"] is None
+    assert fake_view["recognition"] == {}
+
+    photo_state = tmp_path / "photo"
+    run(photo_state, "new")
+    run(photo_state, "go", target="living room")
+    photo = run(photo_state, "look", target="photo")
+    assert photo["admission"] == "ADMITTED"
+    photo_view = cold_view(photo_state)
+    assert photo_view["recognized_identity"] is None
+    assert "sandals" not in photo_view["recognition"]
+
 def test_changed_specialist_input_changes_identity_and_preserves_gross_facts(tmp_path):
     normal_state = tmp_path / "normal"
     changed_state = tmp_path / "changed"

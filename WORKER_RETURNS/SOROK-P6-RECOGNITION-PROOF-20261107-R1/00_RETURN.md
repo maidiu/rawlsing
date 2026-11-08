@@ -4,6 +4,7 @@
 
 **FROZEN:** `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`
 **ISOLATED CANDIDATE BASE:** `ec2892c5ac41156c1de36c6ec247c3ca2105d237`
+**INDEPENDENT REVIEW REPAIRED:** `1e9da0cdc673bca2150fdfbd72e3e24c9d4f85ed`
 
 ## Corrected interpretation
 
@@ -23,10 +24,14 @@ criterion.
 - `house.recognize(target, evidence_text)` returns the specialist identity only
   when the exact visible evidence is present; no actor, Nadia state, gaze
   history or unrelated item can establish it.
-- `run_p6.experience` records recognition in the existing `p6_gaze.json` profile
-  only after an admitted `look` at that object, and exposes
-  `recognized_identity`/`recognition` only for earned exposure.
-- Plain `available` categories and ordinary glance remain before recognition.
+- `run_p6.experience` now derives recognition from the validated committed
+  `house` objects plus actual admitted P4 `INSPECT_OBJECT` turns: action target,
+  performed `INSPECT` event target/event id, and user-perceived observation must
+  agree. The committed marking/evidence rederive identity at view time; mutable
+  `p6_gaze.json` `recognized` payloads are ignored and replaced.
+- Fabricated cache identity/event/marking, unrelated photo identity and old
+  unverified entries cannot surface; a photo look cannot stand in for a sandals
+  look. Plain `available` categories and ordinary glance remain before recognition.
   Cross-room/unknown objects still return `UNAVAILABLE` without recognition.
 - The existing profile/store supplies cold reopen persistence; no new actor or
   memory engine was added.
@@ -35,15 +40,16 @@ criterion.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B   -m pytest -q -p no:cacheprovider --tb=short   WORKER_RETURNS/SOROK-P6-RECOGNITION-PROOF-20261107-R1/test_recognition_surface.py
-# 3 passed in 112.20s
+# 4 passed in 197.18s
 ```
 
 Also retained: `WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py` — 1 passed
-in 88.94s after the candidate patch.
+in 88.91s after the candidate patch.
 
 The test covers plain-category pre-recognition, earned `look sandals` identity,
-cold `run_p6.py view` reopen, unavailable/foreign refusal, gaze-history-only
-negative, changed specialist-input control, and stable gross clock/room/available
+cold `run_p6.py view` reopen, unavailable/foreign refusal, gaze-history-only and
+private-text negatives, fabricated cache identity/event/marking, unrelated photo
+target, changed specialist-input control, and stable gross clock/room/available
 cardinality. Original red `evidence.json` remains preserved; candidate proof is
 in `evidence_r1.json`.
 

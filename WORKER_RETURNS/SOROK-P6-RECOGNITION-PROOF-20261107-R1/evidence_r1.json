@@ -8,13 +8,27 @@
     "identity_changed": true,
     "room_stable": "workshop"
   },
+  "derivation": {
+    "gaze_cache_authoritative": false,
+    "old_unverified_entries": "ignored/replaced",
+    "requirements": [
+      "INSPECT_OBJECT action target",
+      "performed INSPECT event target/event id",
+      "user-perceived public observation",
+      "committed marking/evidence"
+    ],
+    "source": "validated committed house objects + durable P4 turns"
+  },
   "frozen_sha": "41b21babf72c4c8b0b4b012d3c8b7d7f6247791f",
   "marking": "blue-thread-left-strap",
   "negatives": {
     "cross_room_unavailable": true,
+    "fabricated_cache_identity_event_marking_ignored": true,
     "history_only_no_recognition": true,
+    "photo_look_not_sandals_recognition": true,
     "private_nadia_text_no_recognition": true,
-    "unknown_object_unavailable": true
+    "unknown_object_unavailable": true,
+    "unrelated_photo_target_no_recognition": true
   },
   "original_red_receipt": "evidence.json preserved with corrected interpretation in 00_RETURN.md",
   "positive": {
@@ -22,6 +36,8 @@
     "plain_category_before_recognition": true,
     "specialist_identity_after_look": "the repaired blue-thread sandals"
   },
+  "review_head": "1e9da0cdc673bca2150fdfbd72e3e24c9d4f85ed",
+  "review_verdict": "REVISE repaired by durable-ledger rederivation",
   "runtime_edits": [
     "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py",
     "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py"
@@ -34,12 +50,12 @@
     {
       "command": "pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-RECOGNITION-PROOF-20261107-R1/test_recognition_surface.py",
       "exit": 0,
-      "result": "3 passed in 112.20s"
+      "result": "4 passed in 197.18s"
     },
     {
       "command": "pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py",
       "exit": 0,
-      "result": "1 passed in 88.94s"
+      "result": "1 passed in 88.91s"
     }
   ]
 }

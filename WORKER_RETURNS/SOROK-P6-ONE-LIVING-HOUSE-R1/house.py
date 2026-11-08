@@ -45,9 +45,9 @@ def facts(epoch):
     return result
 
 
-def recognize(target, evidence_text):
-    """Return a stable object identity only from its exact visible marking."""
-    item = OBJECTS.get(target)
+def recognize(target, evidence_text, objects=None):
+    """Return a stable identity only from the exact committed object marking."""
+    item = (objects if objects is not None else OBJECTS).get(target)
     if (not item or not item.get("specialist_identity")
             or not item.get("marking") or item.get("evidence") not in str(evidence_text)):
         return None
@@ -57,6 +57,32 @@ def recognize(target, evidence_text):
         "marking": item["marking"],
         "evidence": item["evidence"],
     }
+
+
+def derive_recognition(objects, turns):
+    """Reconstruct earned identities from durable admitted P4 look receipts."""
+    recognized = {}
+    for turn in turns or ():
+        action = turn.get("action") or {}
+        if action.get("operation") != "INSPECT_OBJECT":
+            continue
+        target = action.get("target")
+        performed = (turn.get("receipt") or {}).get("performed") or {}
+        observed = (turn.get("public") or {}).get("observation") or {}
+        if (not target or performed.get("kind") != "INSPECT"
+                or performed.get("actor_id") != "U"
+                or (performed.get("body") or {}).get("target") != target
+                or observed.get("event_id") != performed.get("event_id")
+                or observed.get("perceived_by_user") is not True):
+            continue
+        earned = recognize(target, performed.get("summary", ""), objects)
+        if earned is not None:
+            recognized[target] = {
+                **earned,
+                "event_id": performed.get("event_id"),
+                "turn": len(recognized) + 1,
+            }
+    return recognized
 
 
 def establish(session):
