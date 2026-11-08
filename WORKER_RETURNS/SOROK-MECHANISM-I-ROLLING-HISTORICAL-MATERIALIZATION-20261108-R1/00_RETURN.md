@@ -28,6 +28,22 @@ reader is the P4 inspector. Sourcefree proof advances the engineering
 axis only. The case-by-case matrix and [authority holds](07_EXPLICIT_AUTHORITY_HOLDS.md)
 separate current coverage from remaining work.
 
+The T4 independent-activity candidate is received on the draft at
+`e58d2b46375ee83480529e7815aeb5b4b6a4b9be`, from OpenCode worker
+`ses_e5080f5a4ffefNtOS2IfinqpYi` on
+`codex/sorok-mechanism-i-independent-activity-20261108-r1`, source
+`ac92e2b584dbaad2eb6ed897b7dca64f04a5e396`.
+`rawlsing_next/sorok_history/activity.py::advance_independent_activity`
+reads a committed target property and the current world in the same
+root and branch, returns an `ActivityReceipt`, and calls the existing
+P4/S46 interval advance when the property and physical resource agree.
+The focused sourcefree test passed for the worker and on the HQ draft.
+Missing or false property holds clock and material fixed. Restoration
+commits an actual interval, consumes one material unit, and leaves
+perceived IDs unchanged. A normal runtime caller and independent
+review remain unverified. This establishes the interval seam for
+receiving review and does not close native, actor, or product authority.
+
 Live Sorok inference is `LIVE_PROVIDER_NOT_RUN`. Qualified H1 insertion,
 actor-state links, independent action consuming newly admitted depth,
 automatic T2 link-triggered work, shared pre-contact writes and the broader
