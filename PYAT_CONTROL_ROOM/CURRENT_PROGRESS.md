@@ -1,3 +1,7 @@
+# #777 C9 return — exact P1 dependency resolved; actual Batch boundary out
+
+C9 `396bfee9cca0275d040597828848ede4a7da80a7` reports4sourcefree API operations, wrongSHA0/4 and restoration; this is not shared35selection or originalauthority. HQ fetched exactP1 `d1278613e9e1a5d986ccce15782a697f19cbd722`, verified constructor blob `c8352c5ab0fbc1a817c38d8ef99d64beef628230`; localobjectlookupfailure isresolved, not missingengine. Existing author now traces P1prospectiveoperations→existingBatchManifest→actualcurrentconsumer/resolver with verifiedFlashMAX metadata. No source/native/science/protected change, no new engine/issuer, goalfalse. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C9_RETURN_INTAKE.json`.
+
 # #777 C8 reference residue closed; substantive workload-consumer proof dispatched
 
 Same-reviewer `77a8798223998cf56535424794bc3bcb6ce80c9f` closes verdict corrections and exact lane cuts, leaving four stale hash/provenance references. HQ recomputed those from immutable55fca Git blobs, explicitly scoped the snapshot and preserved the historical REVISE. No third review loop. Existing author is dispatched on shared workload-plan/target-use authority→I03 receiving, distinct fromC5sourceconfig and closedC2arithmetic; actual next-turn FlashMAX metadata verified. Whole777 false, allnative/science/protected/17agenda holds remain. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C8_FOCUSED_RETURN_INTAKE.json`.
