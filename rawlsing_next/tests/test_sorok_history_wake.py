@@ -183,3 +183,36 @@ def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
     [fact] = json.loads(inspected.stdout)["observation"]["physical"]
     assert fact["value"] == "matte"
     assert fact["fact_id"] == job["admission"]["accepted"][0]["fact_ids"][0]
+
+
+@pytest.mark.parametrize("superseded", [False, True])
+def test_worker_records_packet_refusal_only_for_current_attempt(superseded):
+    import asyncio
+
+    from rawlsing_next.sorok_history.owner import HistoryRefusal
+    from rawlsing_next.sorok_history.provider import ProviderPacketError
+    from rawlsing_next.sorok_history.runtime import run_once
+
+    class History:
+        def ready_candidate_id(self):
+            return None
+
+        def lease(self, *, seconds):
+            return {"job": {"id": "job", "lease_token": "lease"}, "packet": {}}
+
+        def record_failure(self, job, token, code, *, receipt, retryable):
+            assert (job, token, code) == ("job", "lease", "INVALID_PACKET")
+            assert receipt == {"failure_code": code, "failure_grade": "TERMINAL"}
+            assert not retryable
+            if superseded:
+                raise HistoryRefusal("HISTORICAL_ATTEMPT_NOT_CURRENT")
+            return "FAILED_TERMINAL"
+
+    class Provider:
+        async def propose(self, packet):
+            raise ProviderPacketError("private packet diagnostics", code="INVALID_PACKET")
+
+    assert asyncio.run(run_once(History(), Provider())) == {
+        "job_id": "job",
+        "status": "ATTEMPT_SUPERSEDED" if superseded else "FAILED_TERMINAL",
+    }
