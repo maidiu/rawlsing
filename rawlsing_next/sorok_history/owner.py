@@ -447,7 +447,13 @@ class HistoricalWorld:
                            world_readset=self._world_readset(world), chronology_bound=True,
                            repair_actor_bound=True)
                 job["prior_actor_repairs"] = self._prior_repair_context(world, state, target)
-                packet = self._constraint_packet(world, target, job)
+                try:
+                    packet = self._constraint_packet(world, target, job)
+                except HistoryRefusal as exc:
+                    if str(exc) != "HISTORICAL_PARENT_MISSING":
+                        raise
+                    self._hold_missing_parent(job)
+                    continue
                 job["packet_hash"] = digest(packet)
                 return deepcopy({"job": job, "target": target, "world_clock": world.clock,
                                  "packet": packet})
@@ -498,6 +504,14 @@ class HistoricalWorld:
     def job(self, job_id):
         return deepcopy(self._state(self.session.world())["outbox"].get(job_id))
 
+    @staticmethod
+    def _hold_missing_parent(job):
+        job.update(status="SOURCE_HELD", admission={
+            "status": "SOURCE_HELD", "job_id": job["id"],
+            "reason": "HISTORICAL_PARENT_MISSING",
+        })
+        return deepcopy(job["admission"])
+
     def commit_candidate(self, job_id):
         """Evaluate a current candidate and bind accepted physical facts atomically."""
         from rawlsing_next.sorok_history.admission import evaluate
@@ -516,7 +530,12 @@ class HistoricalWorld:
                 job["status"] = "STALE"
                 job["admission"] = {"status": "STALE", "job_id": job_id}
                 return deepcopy(job["admission"])
-            packet = self._constraint_packet(world, target, job)
+            try:
+                packet = self._constraint_packet(world, target, job)
+            except HistoryRefusal as exc:
+                if str(exc) != "HISTORICAL_PARENT_MISSING":
+                    raise
+                return self._hold_missing_parent(job)
             if digest(packet) != job["packet_hash"]:
                 job.update(status="STALE", admission={
                     "status": "STALE", "job_id": job_id,

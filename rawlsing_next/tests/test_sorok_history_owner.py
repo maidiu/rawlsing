@@ -196,6 +196,19 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
             assert retry["job"]["id"] == pending_id
             assert retry["job"]["attempt"] == 2
             assert "candidate" not in retry["job"]
+
+            assert recovered.record_candidate(
+                pending_id, retry["job"]["lease_token"], {"request_id": pending_id},
+                {"grade": "MOCK"}, now=120,
+            ) == "CANDIDATE_READY"
+            with monkeypatch.context() as patch:
+                patch.setattr(concurrent.session, "event", lambda event_id: (
+                    None if event_id == new_event["event_id"] else read_event(event_id)
+                ))
+                held = recovered.commit_candidate(pending_id)
+            assert held == {"status": "SOURCE_HELD", "job_id": pending_id,
+                            "reason": "HISTORICAL_PARENT_MISSING"}
+            assert recovered.ready_candidate_id() is None
         finally:
             concurrent.close()
         assert owner.target(next_target["id"])["physical_depth"] == depth
