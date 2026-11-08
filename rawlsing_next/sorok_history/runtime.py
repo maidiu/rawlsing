@@ -48,3 +48,18 @@ async def run_once(history, provider, *, lease_seconds=120, guard=nullcontext):
         if status == "CANDIDATE_READY":
             return history.commit_candidate(job_id)
     return {"job_id": job_id, "status": status}
+
+
+async def drain(history, provider, *, guard=nullcontext):
+    """Service a bounded backlog without immediately repeating failed work."""
+    results = []
+    for _ in range(3):
+        result = await run_once(history, provider, guard=guard)
+        if result is None:
+            break
+        results.append(result)
+        if result["status"] in {
+            "LIVE_PROVIDER_NOT_RUN", "FAILED_RETRYABLE", "ATTEMPT_SUPERSEDED", "STALE",
+        }:
+            break
+    return results

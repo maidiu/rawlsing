@@ -35,7 +35,7 @@ def test_p4_new_wakes_history_after_foreground_publication(
         with (tmp_path / "p4.lock").open("a") as lock:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         assert args == [sys.executable, str(P4 / "run_p4.py"),
-                        "--state", str(tmp_path), "history-worker"]
+                        "--state", str(tmp_path), "history-worker", "--drain"]
         assert kwargs["start_new_session"]
         calls.append(args)
 
@@ -237,3 +237,25 @@ def test_worker_records_packet_refusal_only_for_current_attempt(superseded):
         "job_id": "job",
         "status": "ATTEMPT_SUPERSEDED" if superseded else "FAILED_TERMINAL",
     }
+
+
+@pytest.mark.parametrize(
+    ("outcomes", "count"),
+    [(["INDEX_READY"] * 4, 3), (["INDEX_READY", "FAILED_RETRYABLE", "INDEX_READY"], 2)],
+)
+def test_background_drain_is_bounded_and_stops_on_retry(monkeypatch, outcomes, count):
+    import asyncio
+    from rawlsing_next.sorok_history import runtime
+
+    calls = []
+
+    async def once(*args, **kwargs):
+        result = {"status": outcomes[len(calls)]}
+        calls.append(result)
+        return result
+
+    monkeypatch.setattr(runtime, "run_once", once)
+    result = asyncio.run(runtime.drain(None, None))
+
+    assert result == calls
+    assert len(result) == count

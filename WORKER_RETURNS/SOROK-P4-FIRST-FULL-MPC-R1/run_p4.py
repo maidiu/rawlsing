@@ -234,7 +234,8 @@ def wake_history_worker(state, *, candidate_ready=False):
         return
     try:
         subprocess.Popen(
-            [sys.executable, str(Path(__file__).resolve()), "--state", str(state), "history-worker"],
+            [sys.executable, str(Path(__file__).resolve()), "--state", str(state),
+             "history-worker", "--drain"],
             stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
             start_new_session=True,
         )
@@ -243,12 +244,12 @@ def wake_history_worker(state, *, candidate_ready=False):
         print("Historical worker wake failed; durable demand retained.", file=sys.stderr)
 
 
-def run_history_worker(state):
+def run_history_worker(state, *, drain_backlog=False):
     """Use the foreground lock only for local owner operations."""
     import asyncio
 
     from rawlsing_next.sorok_history.provider import HistoricalModelProvider
-    from rawlsing_next.sorok_history.runtime import run_once
+    from rawlsing_next.sorok_history.runtime import drain, run_once
 
     provider = HistoricalModelProvider.from_environment()
     with foreground_lock(state):
@@ -257,9 +258,12 @@ def run_history_worker(state):
         with foreground_lock(state):
             check_source(owner)
         history = HistoricalWorld(owner.base_owner.fanin.session)
-        result = asyncio.run(run_once(
+        service = drain if drain_backlog else run_once
+        result = asyncio.run(service(
             history, provider if provider.live else None, guard=lambda: foreground_lock(state)
         ))
+        if drain_backlog:
+            return {"results": result}
         return result if result is not None else {"status": "NO_WORK"}
     finally:
         owner.close()
@@ -273,7 +277,8 @@ def main():
     initialize.add_argument("--history", choices=("recognized_plan", "imposed_plan", ""),
                             default="recognized_plan")
     commands.add_parser("view")
-    commands.add_parser("history-worker")
+    worker = commands.add_parser("history-worker")
+    worker.add_argument("--drain", action="store_true")
     say = commands.add_parser("say")
     say.add_argument("text")
     say.add_argument("--request-edge", action="store_true",
@@ -297,7 +302,7 @@ def main():
     recover_history = candidate_ready = False
     try:
         if args.command == "history-worker":
-            print(json.dumps(run_history_worker(state), ensure_ascii=False))
+            print(json.dumps(run_history_worker(state, drain_backlog=args.drain), ensure_ascii=False))
             return 0
         with foreground_lock(state):
             if args.command == "new":
