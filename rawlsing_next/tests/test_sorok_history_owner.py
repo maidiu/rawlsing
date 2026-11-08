@@ -82,7 +82,8 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
         concurrent = fanin_api.open(root)
         try:
             recovered = HistoricalWorld(concurrent.session)
-            second = recovered.lease(now=106)["job"]
+            previous = recovered.lease(now=106)
+            second = previous["job"]
             assert second["attempt"] == 2
             assert second["lease_token"] != first["lease_token"]
             candidate = {"request_id": job_id, "facts": []}
@@ -94,7 +95,7 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
             there = "market" if here == "workshop" else "workshop"
             concurrent.session.travel(there)
             assert recovered.record_candidate(
-                job_id, second["lease_token"], candidate, {}, now=107
+                job_id, second["lease_token"], candidate, {"grade": "MOCK"}, now=107
             ) == "STALE"
             assert "candidate" not in recovered.job(job_id)
             new_event = concurrent.session.events()[-1]
@@ -146,6 +147,21 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
                 {"predicate": "texture", "value": "matte", "fact_id": depth["texture"]["id"]}
             ]
             assert "condition" not in depth
+
+            retry = recovered.lease(now=110, seconds=5)
+            assert retry["job"]["id"] == job_id
+            assert retry["job"]["attempt"] == 3
+            assert retry["packet"]["world_readset"] != previous["packet"]["world_readset"]
+            assert retry["job"]["stale_attempts"] == [{
+                "attempt": 2, "packet_hash": previous["job"]["packet_hash"],
+                "provider_receipt": {"grade": "MOCK"},
+            }]
+            with pytest.raises(HistoryRefusal, match="HISTORICAL_ATTEMPT_NOT_CURRENT"):
+                recovered.record_candidate(
+                    job_id, second["lease_token"], {"request_id": job_id}, {}, now=111
+                )
+            assert recovered.lease(now=116) is None
+            assert recovered.job(job_id)["status"] == "FAILED_TERMINAL"
         finally:
             concurrent.close()
         assert owner.target(next_target["id"])["physical_depth"] == depth

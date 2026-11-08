@@ -291,16 +291,26 @@ class HistoricalWorld:
             raise HistoryRefusal("INVALID_LEASE_DURATION")
         now = time.time() if now is None else now
         with self._write() as (world, state):
-            for job in state["outbox"].values():
+            jobs = sorted(state["outbox"].values(), key=lambda job: job["status"] == "STALE")
+            for job in jobs:
                 if job["status"] == "RUNNING" and job["expires_at"] <= now:
                     job["status"] = ("FAILED_RETRYABLE" if job["attempt"] < 3
                                      else "FAILED_TERMINAL")
-                if job["status"] not in {"ENQUEUED", "FAILED_RETRYABLE"}:
+                if job["status"] not in {"ENQUEUED", "FAILED_RETRYABLE", "STALE"}:
+                    continue
+                if job.get("attempt", 0) >= 3:
                     continue
                 target = state["targets"][job["target_id"]]
                 if target["version"] != job["target_version"]:
                     job["status"] = "STALE"
                     continue
+                if job["status"] == "STALE":
+                    job.setdefault("stale_attempts", []).append({
+                        "attempt": job["attempt"], "packet_hash": job["packet_hash"],
+                        "provider_receipt": job.pop("provider_receipt", None),
+                    })
+                    job.pop("candidate", None)
+                    job.pop("admission", None)
                 job.update(status="RUNNING", attempt=job.get("attempt", 0) + 1,
                            lease_token=uuid4().hex, expires_at=now + seconds,
                            world_readset=self._world_readset(world), chronology_bound=True)
@@ -333,7 +343,7 @@ class HistoricalWorld:
             target = state["targets"][job["target_id"]]
             if (job["world_readset"] != self._world_readset(world)
                     or target["version"] != job["target_version"]):
-                job["status"] = "STALE"
+                job.update(status="STALE", provider_receipt=deepcopy(receipt))
             else:
                 job.update(status="CANDIDATE_READY", candidate=deepcopy(candidate),
                            provider_receipt=deepcopy(receipt))
