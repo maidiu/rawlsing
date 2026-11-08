@@ -8,6 +8,12 @@ Every returned investigation is a **candidate assertion set**, not automatically
 - positive and typed negative, missing first edge, proposed status at exact scope, falsifier and responsible independent reviewer;
 - full no-drop counts against assigned membership and exact residuals; output files/paths, hashes and changed files.
 
+## Mandatory canonical return filenames
+Every subject prong returns `00_RETURN.md`, `HUMAN_STORY.md`, `FINDINGS.tsv`, `OPERATION_TRACES.tsv`, `AUTHORITY_USE.tsv`, `EVIDENCE.tsv`, `COVERAGE.tsv`, `UNJOINS.tsv`, `CHANGED_FILES.txt`. `FINDINGS.tsv` is **not** a separate alias of `FUNCTION_FINDINGS.tsv`; `OPERATION_TRACES.tsv` is **not** a separate alias of `OPERATIONS.tsv`. These are the single required filenames for all ZL-02–ZL-14, and ZL-15 must normalize their rows without duplicate independent source IDs. A reviewer records actual missing files as `REVISE`, not silently manufacturing them.
+
+## SR-01 classification/functional receiving boundary
+Read [13_SR01_CLASSIFICATION_AND_FUNCTIONAL_CONSERVATION.md](13_SR01_CLASSIFICATION_AND_FUNCTIONAL_CONSERVATION.md). Returned SR-01 candidate classifications are admitted as **branch-pinned documentary evidence**, not current machine facts. Sorok scientific/product receiver remains Sorok; Pyat current-source implementation receiver remains Pyat. VMESTYE adjudicates conservation evidence, not either classification owner's acceptance or required source/actor/science grants. A historical function transferred at Pyat→Sorok must include an exact accepting Sorok recipient or typed gap.
+
 ## Prong write-through
 Each worker writes only to its assigned `PRONGS/<owner>/` (or isolated branch corresponding to that location). The RETURN and stable row references stay there. Integrator ZL-15 is the **only candidate writer** of normalized `DATA/FUNCTION_ATLAS.tsv`, `DATA/RELATIONS.tsv`, `DATA/OPERATION_TRACES.tsv`, `DATA/AUTHORITY_APPLICATIONS.tsv` and final human story; this prevents rival status sheets.
 
