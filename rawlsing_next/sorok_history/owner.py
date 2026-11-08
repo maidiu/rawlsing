@@ -67,8 +67,7 @@ class HistoricalWorld:
             return state
         store = self.session.product.store
         if (state["root"] == root
-                and store.branch(branch)["parent_branch_id"] == state["branch"]
-                and store.shared_root_equal(branch, state["branch"])["equal"]):
+                and store.inherits_verified_prefix(branch, state["branch"])):
             # This resource contains only branch-local admissions. The BP4 fork
             # copies checkpoint bytes, but their targets and leases stay parent-owned.
             return empty

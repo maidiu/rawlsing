@@ -47,3 +47,9 @@ open. The existing S39 reader accepts the sealed inherited generation
 receipt only after the store verifies a direct fork and its shared prefix.
 This proves branch-local isolation on the received direct-fork path.
 Shared pre-contact historical writes and deeper fork chains remain open.
+
+The same proof now covers a second fork and cold reopen. S39 and the
+historical owner reuse one C12 prefix check that verifies each recorded
+parent-child edge. The nested branch receives its own target ID and cannot
+read either ancestor's historical jobs. This does not authorize shared
+pre-contact historical writes.

@@ -87,12 +87,9 @@ def read_generation(session) -> dict:
     if attempt.get("actor_id") != generation.get("actor_id"):
         raise S39ReadRefusal("S39_ATTEMPT_ACTOR_MISMATCH")
     origin = generation.get("branch_id")
-    if origin != session.branch_id:
-        store = session.product.store
-        if (not isinstance(origin, str)
-                or store.branch(session.branch_id)["parent_branch_id"] != origin
-                or not store.shared_root_equal(session.branch_id, origin)["equal"]):
-            raise S39ReadRefusal("S39_GENERATION_BRANCH_MISMATCH")
+    if (origin != session.branch_id
+            and not session.product.store.inherits_verified_prefix(session.branch_id, origin)):
+        raise S39ReadRefusal("S39_GENERATION_BRANCH_MISMATCH")
     if generation.get("event_ref") != c8.get("e1_event_hash"):
         raise S39ReadRefusal("S39_GENERATION_EVENT_MISMATCH")
     if generation.get("c8_state_digest") != c8.get("c8_state_digest"):

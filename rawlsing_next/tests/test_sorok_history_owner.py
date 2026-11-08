@@ -375,5 +375,18 @@ def test_actual_fork_holds_parent_history_and_inflight_job(tmp_path, monkeypatch
         history = HistoricalWorld(reopened.session)
         assert history.target(child["id"]) == child
         assert history.job(target["job_id"]) is None
+        reopened.session.fork_alt("mechanism-i-nested-isolation")
+        assert history.target(child["id"]) is None
+        assert history.job(child["job_id"]) is None
+        nested = history.admit_surface(surface)
+        assert nested["id"] not in {target["id"], child["id"]}
     finally:
         reopened.close()
+
+    nested_owner = api.open(root)
+    try:
+        history = HistoricalWorld(nested_owner.session)
+        assert history.target(nested["id"]) == nested
+        assert history.target(child["id"]) is None
+    finally:
+        nested_owner.close()
