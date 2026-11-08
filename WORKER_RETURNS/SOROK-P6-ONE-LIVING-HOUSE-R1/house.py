@@ -13,7 +13,10 @@ OBJECTS = {
     "mug": {"room": "workshop", "glance": "A mug stands beside the bench.",
             "close": "There is a chip in the rim."},
     "sandals": {"room": "living room", "glance": "A pair of brown sandals lies beneath the shelf.",
-                "close": "Blue thread crosses the left strap. The cork at the heel is dark."},
+                "close": "Blue thread crosses the left strap. The cork at the heel is dark.",
+                "specialist_identity": "the repaired blue-thread sandals",
+                "marking": "blue-thread-left-strap",
+                "evidence": "Blue thread crosses the left strap."},
     "photo": {"room": "living room", "glance": "A photograph leans against the wall on the shelf.",
               "close": "In the photograph, brown sandals lie on a step. Blue thread crosses the left strap."},
     "coaster": {"room": "living room", "glance": "A round cork coaster lies on the shelf.",
@@ -40,6 +43,20 @@ def facts(epoch):
             raise RecursionRefusal("P6_INVALID_OBJECT_CHRONOLOGY")
         result[row["id"]] = {**row, "clock": clock}
     return result
+
+
+def recognize(target, evidence_text):
+    """Return a stable object identity only from its exact visible marking."""
+    item = OBJECTS.get(target)
+    if (not item or not item.get("specialist_identity")
+            or not item.get("marking") or item.get("evidence") not in str(evidence_text)):
+        return None
+    return {
+        "object_id": target,
+        "identity": item["specialist_identity"],
+        "marking": item["marking"],
+        "evidence": item["evidence"],
+    }
 
 
 def establish(session):

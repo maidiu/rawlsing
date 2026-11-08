@@ -1,3 +1,55 @@
+# P6 recognition surface — R1 candidate
+
+**STATUS:** `RECOGNITION_SURFACE_IMPLEMENTED_SOURCEFREE__PASS__ORIGINAL_RED_RECEIPT_PRESERVED`
+
+**FROZEN:** `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`
+**ISOLATED CANDIDATE BASE:** `ec2892c5ac41156c1de36c6ec247c3ca2105d237`
+
+## Corrected interpretation
+
+The earlier red probe incorrectly treated `bench`, `mug`, `coaster`, `photo` and
+`sandals` as specialized names. They are plain categories/ordinary glance
+material and are allowed before recognition. The actual missing behavior was a
+recognition-conditioned distinction between that plain category and a stable
+specific objective identity. The original red receipt below is retained; its
+four assertions are corrected historical evidence, not the current acceptance
+criterion.
+
+## Candidate recognition surface
+
+- `house.OBJECTS["sandals"]` now carries a stable marking
+  `blue-thread-left-strap`, evidence text, and specialist identity
+  `the repaired blue-thread sandals`.
+- `house.recognize(target, evidence_text)` returns the specialist identity only
+  when the exact visible evidence is present; no actor, Nadia state, gaze
+  history or unrelated item can establish it.
+- `run_p6.experience` records recognition in the existing `p6_gaze.json` profile
+  only after an admitted `look` at that object, and exposes
+  `recognized_identity`/`recognition` only for earned exposure.
+- Plain `available` categories and ordinary glance remain before recognition.
+  Cross-room/unknown objects still return `UNAVAILABLE` without recognition.
+- The existing profile/store supplies cold reopen persistence; no new actor or
+  memory engine was added.
+
+## Runnable proof
+
+```text
+PYTHONDONTWRITEBYTECODE=1 /private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B   -m pytest -q -p no:cacheprovider --tb=short   WORKER_RETURNS/SOROK-P6-RECOGNITION-PROOF-20261107-R1/test_recognition_surface.py
+# 3 passed in 112.20s
+```
+
+Also retained: `WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py` — 1 passed
+in 88.94s after the candidate patch.
+
+The test covers plain-category pre-recognition, earned `look sandals` identity,
+cold `run_p6.py view` reopen, unavailable/foreign refusal, gaze-history-only
+negative, changed specialist-input control, and stable gross clock/room/available
+cardinality. Original red `evidence.json` remains preserved; candidate proof is
+in `evidence_r1.json`.
+
+---
+# Original red receipt (preserved; corrected interpretation above)
+
 # P6 recognition/availability proof — FAILING COUNTEREXAMPLE
 
 **FROZEN:** `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`
