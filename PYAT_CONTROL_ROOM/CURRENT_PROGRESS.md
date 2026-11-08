@@ -1,3 +1,7 @@
+# #777 F03 historical replay independently reproduced; current-responsibility maps in parallel
+
+Reviewac8f1022 reproduces full18518row/35activewaveaudit,9positivefamilywitnesses andnegative/restore/residualcases. HQ accepts this historicaltestreplayscope. Corrected NO_SEVERANCE to no positivefinding/currentselectionUNPROVED and corrected readonlycurrentfilehashing claim. No additionalreportingreview or repeatedreplay. Existingauthor PID52689 now maps actualF03obligations acrosswholePREV3/existingowners, alongsideF08comparison; actualFlashMAXverified. No currentadoption/science/native/protectedeffects; canonical51grades/17agenda unchanged; goalfalse.
+
 # #777 F08 replay independently accepted at bounded scope; Q4 comparison out
 
 Reviewb939c51a accepts exacthistoricalconsumer/authoritybytes and onerow positive/negative/restore; contract remainsreviewrequired, no all35/originalhistoricalrun/currentintegration acceptance. C11R01 rejected missingreader/needsreader inference. HQ corrected those reportclaims directly; no additional reportingreview or replay. Existingauthor PID50686 now compares actualfunctional obligations to existingwholePREV3 producer/selector/consumer contracts, readonly; FlashMAXverified. F03independentreview remains separate. Goalfalse; no newreader/engine/native/science/protectedeffects.

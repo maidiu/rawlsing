@@ -1,6 +1,6 @@
 # C10 Q3 F03 first-consumer effect
 
-**Verdict:** `Q3_F03_TEST_TIME_REPLAY_OBSERVED__ORIGINAL_HISTORICAL_RUN_NOT_OBSERVED__Q4_CURRENT_GENERIC_OWNER_AND_BOUNDED_FQRA_PIN_PRESENT__FULL_F03_ADAPTER_AND_CURRENT_SELECTION_NOT_PROVED__NO_SEVERANCE`
+**Verdict:** `Q3_F03_TEST_TIME_REPLAY_OBSERVED__ORIGINAL_HISTORICAL_RUN_NOT_OBSERVED__Q4_CURRENT_GENERIC_OWNER_AND_BOUNDED_FQRA_PIN_PRESENT__FULL_F03_ADAPTER_AND_CURRENT_SELECTION_NOT_PROVED__NO_POSITIVE_SEVERANCE_FINDING__CURRENT_SELECTION_UNPROVED`
 
 **Author cut:** `0d548b033a0a20c9738fa4a3412ba5acd01217c5`
 **Write lease:** `C10_Q3_F03_FIRST_CONSUMER_EFFECT/` only.
@@ -90,8 +90,9 @@ restored authority copy hash is
 - This is an **unchanged historical consumer replay on nonrespondent authority
   metadata**. It is not an original historical invocation, original run
   manifest, respondent execution or current native/S3 operation.
-- No respondent, SAV/DTA/DB, source microdata, production module, current QREL/
-  Q_USE implementation or new engine was read, executed or built.
+- No respondent, SAV/DTA/DB or source microdata was read. No production module
+  was executed and no current QREL/Q_USE implementation or engine was built.
+  The current Q4 files were read-only hashed for pin identification.
 - Downstream `ddm_v550_bridge.py:1008` and
   `compile_v551_relation_evidence_atoms.py:160-185` were **not** run. The exact
   remaining boundary is the V550 bridge/relation-atom downstream, not the
@@ -101,6 +102,11 @@ restored authority copy hash is
   traces.
 
 ## Q4 current successor location and boundary
+
+HQ correction under independent review ac8f10220dfbc489cd2d261d1d66e228f2bc2424
+(C10R-01/02/03): the following are examined pins, not a completed whole-PRE-V3
+functional responsibility map. An absent candidate filename does not establish a
+missing function. F03 remains UNPROVED_CURRENT_SELECTION.
 
 Exact current pins at author cut `0d548b0`:
 
@@ -120,10 +126,12 @@ substantive evidence use is false, and it consumes one coordinate rather than
 the full F03 relation authority. Its current execution is
 `NOT_RUN__REQUIRES_WVS7_SOURCE/PHYSICAL_RESPONDENT_DATA`.
 
-**Current adoption:** `CURRENT_GENERIC_AUTHORITY_OWNER_AND_BOUNDED_FQRA_PIN_PRESENT__FULL_F03_FQRA_ADAPTER_AND_CURRENT_SELECTION_NOT_PROVED__NO_SEVERANCE`.
+**Current adoption:** `CURRENT_GENERIC_AUTHORITY_OWNER_AND_BOUNDED_FQRA_PIN_PRESENT__FULL_F03_FQRA_ADAPTER_AND_CURRENT_SELECTION_NOT_PROVED__NO_POSITIVE_SEVERANCE_FINDING__CURRENT_SELECTION_UNPROVED`.
 
 The historical selected input is present and the unchanged historical consumer
-works on it. No severance is claimed: the governing input is not shown lost.
+works on it. No positive severance finding is established; current selection
+remains UNPROVED. Absence of a severance finding is not evidence of non-severance
+or proof that the current consumer selects and enforces these inputs.
 Current full-F03 selection/equivalence remains **unproved**, and the C7
 checkpoint's `F03=UNPROVED_CURRENT_SELECTION` status is preserved.
 
