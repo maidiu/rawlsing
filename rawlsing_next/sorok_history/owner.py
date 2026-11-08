@@ -318,6 +318,18 @@ class HistoricalWorld:
             chronology["records"] = [{
                 "ref": occurrence, "time": event["clock"], "targets": [target_id],
             }]
+        actor_refs = []
+        if (job.get("repair_actor_bound")
+                and target["surface"]["referent_key"] == f'completed-unit:{event["event_id"]}'
+                and self._completed_unit_event(event)):
+            actor = world.actor_state.get(event["actor_id"], {})
+            actor_id = actor.get("actor_id")
+            if actor_id in self.session.read_root()["actor_ids"]:
+                identity = ref("ACTOR", actor_id, digest({"root": root, "actor_id": actor_id}))
+                actor_refs.append(identity)
+                chronology["records"][0]["participants"] = [
+                    {"role": "PERFORMED_REPAIR", "actor_ref": identity},
+                ]
         return {
             "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
             "request_id": job["id"], "root": root, "branch": branch, "time": world.clock,
@@ -330,7 +342,7 @@ class HistoricalWorld:
             }},
             "known_facts": facts,
             "world_refs": [target_ref],
-            "actor_refs": [],
+            "actor_refs": actor_refs,
             "event_refs": [occurrence],
             "authority": {
                 **authority,
@@ -381,7 +393,8 @@ class HistoricalWorld:
                     job.pop("admission", None)
                 job.update(status="RUNNING", attempt=job.get("attempt", 0) + 1,
                            lease_token=uuid4().hex, expires_at=now + seconds,
-                           world_readset=self._world_readset(world), chronology_bound=True)
+                           world_readset=self._world_readset(world), chronology_bound=True,
+                           repair_actor_bound=True)
                 packet = self._constraint_packet(world, target, job)
                 job["packet_hash"] = digest(packet)
                 return deepcopy({"job": job, "target": target, "world_clock": world.clock,

@@ -80,3 +80,12 @@ agree on the event hash. The copied prefix of a fork is excluded. The test
 commits an actual interval without calling the history adapter, closes the
 owner, and reopens through the worker with no model configured. The target
 and job are recovered and a repeated scan leaves the same job intact.
+
+New repair-output leases carry one objective participation link in their
+constraint packet. The actor is resolved from the performed event and
+checked against the sealed root actor identities. The chronology record
+binds the typed actor reference to that exact event as `PERFORMED_REPAIR`.
+The packet carries identity and the observed role, with no actor-state
+payload. H0 remains the write ceiling. Existing leased packets retain
+their original digest inputs. The focused repair and provider tests verify
+the exact actor and event references and unchanged authority ceiling.
