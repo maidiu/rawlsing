@@ -398,7 +398,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "TERMINAL_EVIDENCE_IN_CURRENT_FANIN__SEE_C7_AND_C8_SCOPE",
     "actual_model": {
       "id": "msg_1b83aeff7001SkY0XUopN9lU1L",
       "type": "assistant",
@@ -412,6 +412,10 @@
         "streamed": 1794092239641,
         "completed": 1794092239736
       }
+    },
+    "terminal_observed": {
+      "exit_code": 0,
+      "finished_utc": "2026-11-07T23:05:29.270781+00:00"
     }
   },
   {
@@ -430,7 +434,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "TERMINAL_EVIDENCE_IN_CURRENT_FANIN__SEE_C7_AND_C8_SCOPE",
     "actual_model": {
       "id": "msg_1b83cec1d001TwewZIML3rbMFH",
       "type": "assistant",
@@ -444,6 +448,10 @@
         "streamed": 1794092372386,
         "completed": 1794092372570
       }
+    },
+    "terminal_observed": {
+      "exit_code": 0,
+      "finished_utc": "2026-11-07T23:13:24.412186+00:00"
     }
   },
   {
@@ -462,7 +470,7 @@
       "launch_is_not_completion": true
     },
     "selected_model": "opencode-go/deepseek-v4.1-flash#max",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "TERMINAL_EVIDENCE_IN_CURRENT_FANIN__SEE_C7_AND_C8_SCOPE",
     "actual_model": {
       "id": "msg_1b83e939d001xnMT7d7JmA3diw",
       "type": "assistant",
@@ -475,6 +483,42 @@
         "created": 1794092471209,
         "streamed": 1794092479165,
         "completed": 1794092479268
+      }
+    },
+    "terminal_observed": {
+      "exit_code": 0,
+      "finished_utc": "2026-11-07T23:10:04.162824+00:00"
+    }
+  },
+  {
+    "task": "pyat777-hq-fanin-c8-independent-rereview-r1",
+    "session": "ses_6857b9b4c50542e7a7268dfb7d",
+    "branch": "review/pyat777-hq-fanin-c8-20261108-r1",
+    "startup": "4ded573400ddc8cfa05d38374a1c7206e440f7f7",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-hq-fanin-c8-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C8_HQ_FANIN_REREVIEW",
+    "launch": {
+      "job_id": "pyat777-hq-fanin-c8-independent-rereview-r1",
+      "child_pid": 28565,
+      "supervisor_pid": 28563,
+      "observer_pid": 28566,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-hq-fanin-c8-independent-rereview-r1",
+      "launch_is_not_completion": true
+    },
+    "selected_model": "opencode-go/deepseek-v4.1-flash#max",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "actual_model": {
+      "id": "msg_1b94a3b08001urYYme5zU1eTAY",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794110012197,
+        "streamed": 1794110037469,
+        "completed": 1794110038246
       }
     }
   }

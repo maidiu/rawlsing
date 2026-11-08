@@ -1,3 +1,7 @@
+# #777 current intake — C7 correction received, C8 exact-head review running
+
+Correction content `5efb9fa33aa26e0cfb6bc7a03270e4c896411843` and metadata `4ded573400ddc8cfa05d38374a1c7206e440f7f7` verified against terminal receipt/remote. Canonical/alias03 remain byte-identical with51unique cases. Existing distinct reviewer session has launched C8 at the immutable metadata cut with actual FlashMAX metadata verified; scope is only five C7 schema/lineage corrections plus widened claims. This does not establish substantive authority succession or finish777. Fanin00-11/canonical03 unchanged by this custody update; native/science/protected holds remain. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C7_CORRECTION_RETURN_INTAKE.json`.
+
 # #777 latest review — FF behavior qualified, inadequacy claim rejected
 
 Independent `aa122437b1fe224f4c6ea2ee31ed2f7de6af7323` qualifies sourcefree positives/negatives and eleven exact source identities. Absence of selected generic non-test FF path does not prove implementation inadequacy; native/structural/actor rows are NOT_RUN with selection unproved, not exact issuer-blocked claims. Existing author is correcting all ten verdicts. C5 shared35 producer and C6 historical selected-use work continue, three lanes out. See `WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C3_REVIEW_INTAKE.json`. No new engine or authority gate justified; full777 incomplete.

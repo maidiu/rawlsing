@@ -1,9 +1,9 @@
 {
   "schema": "PYAT777_CHECKPOINT_V1",
   "goal_complete": false,
-  "stage": "C7_REVISE_RECEIVED__FANIN_AUTHOR_CORRECTION_READY_FOR_INDEPENDENT_REREVIEW__GOAL_FALSE",
+  "stage": "C7_CORRECTION_INTAKE_VERIFIED__C8_EXACT_HEAD_SCHEMA_LINEAGE_REREVIEW_RUNNING__GOAL_FALSE",
   "exact_output_head": "5efb9fa33aa26e0cfb6bc7a03270e4c896411843",
-  "branch_head_note": "branch head is the metadata-only commit on top of the corrected content head; verify with ls-remote; the fan-in content under review is exact_output_head",
+  "branch_head_note": "C8 target is immutable metadata4ded573400ddc8cfa05d38374a1c7206e440f7f7; later HQ custody bookkeeping does not alter reviewed fanin00-11/canonical03. Compare target, not moving HEAD.",
   "prepared_branch": "agent/pyat-hq-pre-forge-to-prev3-authority-severance-functional-adequacy-20261107-r1",
   "preparation_base_observed": "e2fdd975f618228ecc4e146840cb0eed2091a20f",
   "protected_source_observation": "7a5429ffbc48efd25e28c912da80c822e66bc182",
@@ -36,7 +36,7 @@
   "agenda": "SECONDARY_AGENDA_FROZEN.jsonl",
   "flight_board": "FLIGHT_BOARD.json",
   "existing748workers": "NO_LIVE_SUPERVISED_JOB;existingreturnsarecapitalnotnewauthority",
-  "next_action": "C8 independent exact-head rereview of C7-001..C7-005 plus widened current-field/taxonomy claims; then HQ adjudication. No new worker dispatch, no polling, no production/protected write.",
+  "next_action": "Receive bounded C8 result against frozen 4ded5734 / content5efb9fa3, adjudicate scope, then continue substantive demanded legal first-consumer/issuer proof or identify exact indispensable blocker. No full777 completion from schema review.",
   "holds": [
     "OriginalS3/native/science/actor/protectedmerge separate",
     "T01/Q86/R9existingownersnotpreempted",
@@ -256,9 +256,33 @@
     "performed": false,
     "review_lease": "C8_HQ_FANIN_REREVIEW/",
     "request": "09_INDEPENDENT_REVIEW_REQUEST_AND_EXACT_HEAD.md",
-    "status": "HELD",
+    "status": "RUNNING_VERIFIED_ACTUAL_MODEL",
     "c7_review_sha": "605e1cb67156a09f9ce4c0990e572fa3fda1fdd1",
-    "corrected_content_head": "5efb9fa33aa26e0cfb6bc7a03270e4c896411843"
+    "corrected_content_head": "5efb9fa33aa26e0cfb6bc7a03270e4c896411843",
+    "session": "ses_6857b9b4c50542e7a7268dfb7d",
+    "launch": {
+      "job_id": "pyat777-hq-fanin-c8-independent-rereview-r1",
+      "child_pid": 28565,
+      "supervisor_pid": 28563,
+      "observer_pid": 28566,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-hq-fanin-c8-independent-rereview-r1",
+      "launch_is_not_completion": true
+    },
+    "review_metadata_head": "4ded573400ddc8cfa05d38374a1c7206e440f7f7",
+    "actual_model": {
+      "id": "msg_1b94a3b08001urYYme5zU1eTAY",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794110012197,
+        "streamed": 1794110037469,
+        "completed": 1794110038246
+      }
+    }
   },
   "no_completion_claims": [
     "No whole-777 completion",
@@ -273,5 +297,5 @@
     "No retirement/no-justified-consumer claim without five-test proof",
     "No operational currentness from a domain/O-operation link alone"
   ],
-  "saved_utc": "2026-11-08T00:00:00+00:00"
+  "saved_utc": "2026-11-08T03:54:45.878921+00:00"
 }

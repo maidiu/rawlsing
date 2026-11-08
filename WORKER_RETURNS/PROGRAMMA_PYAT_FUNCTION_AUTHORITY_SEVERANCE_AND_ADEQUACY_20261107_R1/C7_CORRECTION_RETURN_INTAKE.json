@@ -1,0 +1,50 @@
+{
+  "task": "pyat777-hq-fanin-c7-correction-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-hq-fanin-c7-correction-r1/completion.json",
+  "verified_terminal": {
+    "session": "ses_e477cc19cffeEh4qryqm9u5xbj",
+    "pid": 27480,
+    "exit_code": 0,
+    "finished_utc": "2026-11-08T03:51:38.239378+00:00"
+  },
+  "content_head": "5efb9fa33aa26e0cfb6bc7a03270e4c896411843",
+  "metadata_head_remote_verified": "4ded573400ddc8cfa05d38374a1c7206e440f7f7",
+  "author_claim": "C7 five corrections applied; no acceptance inferred",
+  "custody_checks": {
+    "case_ids_unique": 51,
+    "canonical_alias_equal": true,
+    "sha256_both": "9b36b050eb3688d1b5db1efa79ba24a0241520e0b2e51881050d4d20ccb6f049"
+  },
+  "next_action": {
+    "job": "pyat777-hq-fanin-c8-independent-rereview-r1",
+    "reviewer_session": "ses_6857b9b4c50542e7a7268dfb7d",
+    "independence": "No prior session occurrence in any #777 launch receipt; existing #748 R4W6 reviewer terminal exit0",
+    "launch": {
+      "job_id": "pyat777-hq-fanin-c8-independent-rereview-r1",
+      "child_pid": 28565,
+      "supervisor_pid": 28563,
+      "observer_pid": 28566,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-hq-fanin-c8-independent-rereview-r1",
+      "launch_is_not_completion": true
+    },
+    "actual_model": {
+      "id": "msg_1b94a3b08001urYYme5zU1eTAY",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794110012197,
+        "streamed": 1794110037469,
+        "completed": 1794110038246
+      }
+    },
+    "frozen_review_metadata_head": "4ded573400ddc8cfa05d38374a1c7206e440f7f7",
+    "scope": "C7-001..005 plus widened schema/current-field/taxonomy only; no whole-machine or scientific acceptance"
+  },
+  "goal_complete": false,
+  "source_native_protected_holds_unchanged": true,
+  "saved_utc": "2026-11-08T03:54:45.878921+00:00"
+}
