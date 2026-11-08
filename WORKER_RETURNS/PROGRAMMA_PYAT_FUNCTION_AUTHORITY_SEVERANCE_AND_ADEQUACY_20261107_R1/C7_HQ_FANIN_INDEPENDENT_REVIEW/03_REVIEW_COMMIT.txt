@@ -1,0 +1,23 @@
+C7 REVIEW COMMIT AND REMOTE READBACK
+Repository: maidiu/rawlsing
+Review branch: agent/pyat777-hq-fanin-independent-hostile-whole-record-review-20261108-r1
+Prepared branch base: 483f2a156d2156eeed22f31efc23a05b9335219d
+Reviewed fan-in content: ad4fe3c9cd67eed5bc79644bb399a7090846a8fe
+
+Review content commits, created on the return branch (only C7 lease paths):
+00_REVIEW.md: dda9416ee1e7f75dd6d2a83074b7db5eaed7b84c
+01_FINDINGS.jsonl: 4e039d21a615bbb95f168c7430d09959b5d09630
+02_COMMANDS_AND_EVIDENCE.md: 26765c1a4d6a43b9a3d1994ab2196d4d6baec65c
+Content-complete SHA before this metadata file: 26765c1a4d6a43b9a3d1994ab2196d4d6baec65c
+
+Authenticated GitHub connector remote-ref readback (branch file fetch):
+00_REVIEW.md: BLOB 28e5540ec8b425e6e8e0c5d63bfd816a16eaad8d; EXACT_CONTENT_MATCH=true; UTF8_CHARS=10415
+01_FINDINGS.jsonl: BLOB c9000170d7f79be10e2a61a37e24a02b6ba128b3; EXACT_CONTENT_MATCH=true; UTF8_CHARS=3594
+02_COMMANDS_AND_EVIDENCE.md: BLOB f5740c2f612aaa403101fa3ba5ecbe07e99eeb02; EXACT_CONTENT_MATCH=true; UTF8_CHARS=6670
+Compare 483f2a156d2156eeed22f31efc23a05b9335219d...agent/pyat777-hq-fanin-independent-hostile-whole-record-review-20261108-r1: ahead_by=3, behind_by=0, 3 files ADDED and no other changes at the content-complete step.
+03_REVIEW_COMMIT.txt is a follow-on metadata-only commit on the same branch; its own final commit SHA cannot be embedded into itself without changing that SHA. The final exact return HEAD is reported by the GitHub API write result, post-write remote readback, and the issue #781 comment. Do not interpret the content-complete SHA above as the eventual final HEAD.
+
+Local direct git ls-remote FAILED due missing GitHub CLI HTTPS username ("could not read Username for 'https://github.com': No such device or address"). This is not a successful direct ls-remote witness. GitHub connector compare + remote branch fetch provide authenticated alternative evidence; the requested direct CLI method remains a documented verification exception.
+
+Verdict: REVISE (five reporting/schema findings); no fan-in acceptance; goal_complete=false.
+No production, source, existing-test, fan-in, HQ, C1-C6, peer, or protected writes. No new tests/probes, respondent/sourcebyte/native S3 execution.
