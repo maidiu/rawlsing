@@ -1,0 +1,44 @@
+{
+  "task": "pyat777-c8-mechanical-correction-check-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-c8-mechanical-correction-check-r1/completion.json",
+  "review_commit": "77a8798223998cf56535424794bc3bcb6ce80c9f",
+  "review_remote_readback": "77a8798223998cf56535424794bc3bcb6ce80c9f",
+  "review_verdict": "REVISE_REFERENCE_METADATA_ONLY",
+  "independently_closed": [
+    "C8-001",
+    "C8-002",
+    "C8-003 exact lane-cut portion"
+  ],
+  "reference_residual_hq_disposition": "CLOSED_MECHANICAL_GIT_BLOB_HASH_AND_FROZEN_CUT_REFERENCE_CORRECTION",
+  "reference_fix_commit": "0e0997213",
+  "hash_table_scope": "All snapshot hash rows explicitly pinned to55fca441d1c674c256473c264cabda48f2df0e52, including itsCHECKPOINT blob; latercustodymetadata separatelyidentified",
+  "preserved_review_verdict": true,
+  "accepted_scope": "Independently confirmed schema/case/cut portions plus HQ verified reference-only correction; no semantic/native/full777 acceptance",
+  "next_requirement": "Actual workload-plan/query-target-use authority\u2192I03 receiving path, distinct from C5sourceconfigurationO01-O07 and closedC2O11 arithmetic",
+  "next_action": {
+    "job": "pyat777-workload-authority-first-consumer-r1",
+    "launch": {
+      "job_id": "pyat777-workload-authority-first-consumer-r1",
+      "child_pid": 30693,
+      "supervisor_pid": 30692,
+      "observer_pid": 30694,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-workload-authority-first-consumer-r1",
+      "launch_is_not_completion": true
+    },
+    "model_proof": {
+      "id": "msg_1b972dc34001UnTceC5PrRTS6X",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794112674961,
+        "streamed": 1794112728114,
+        "completed": 1794112728298
+      }
+    }
+  },
+  "goal_complete": false
+}
