@@ -194,7 +194,9 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
         owner.close()
 
 
-def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch):
+@pytest.mark.parametrize("resume", [False, True])
+def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resume):
+    import asyncio
     import json
     import subprocess
     import sys
@@ -205,27 +207,49 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch):
 
     opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
     target_id = opening["historical_particulars"][0]["id"]
-    owner = open_owner(tmp_path / "actual-p2")
-    try:
-        history = HistoricalWorld(owner.base_owner.fanin.session)
-        leased = history.lease(now=100)
-        job, packet = leased["job"], leased["packet"]
+    from types import SimpleNamespace
+
+    from rawlsing_next.sorok_history.runtime import run_once
+
+    def proposal(packet):
         body = {"target_id": target_id, "predicate": "texture", "value": "matte",
                 "effective_time": packet["time"], "dependency_group": "physical",
                 "asserted_H_class": "H0"}
         checksum = digest(body)
-        candidate = {
-            "request_id": job["id"],
+        return {
+            "request_id": packet["request_id"],
             "facts": [{**body, "ref": {"kind": "FACT", "object_id": "proposal:" + checksum,
                                       "content_hash": checksum}}],
             "occurrences": [], "links": [],
             "dependencies": [{"group_id": "physical", "parent_refs": packet["event_refs"],
                               "parent_groups": [], "asserted_H_class": "H0"}],
         }
-        assert history.record_candidate(
-            job["id"], job["lease_token"], candidate, {"grade": "MOCK"}, now=101
-        ) == "CANDIDATE_READY"
-        receipt = history.commit_candidate(job["id"])
+
+    class MockProvider:
+        async def propose(self, packet):
+            assert not resume
+            assert not owner.base_owner.fanin.session.product.store.db.in_transaction
+            return SimpleNamespace(
+                candidate=proposal(packet),
+                receipt=SimpleNamespace(as_dict=lambda: {"grade": "MOCK"}),
+            )
+
+    if resume:
+        owner = open_owner(tmp_path / "actual-p2")
+        try:
+            history = HistoricalWorld(owner.base_owner.fanin.session)
+            leased = history.lease()
+            job = leased["job"]
+            assert history.record_candidate(
+                job["id"], job["lease_token"], proposal(leased["packet"]), {"grade": "MOCK"}
+            ) == "CANDIDATE_READY"
+        finally:
+            owner.close()
+
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        history = HistoricalWorld(owner.base_owner.fanin.session)
+        receipt = asyncio.run(run_once(history, MockProvider()))
         assert receipt["status"] == "INDEX_READY"
     finally:
         owner.close()

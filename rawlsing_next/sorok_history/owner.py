@@ -208,6 +208,11 @@ class HistoricalWorld:
                      if job["status"] == "ENQUEUED")
 
 
+    def ready_candidate_id(self):
+        state = self._state(self.session.world())
+        return next((job_id for job_id, job in state["outbox"].items()
+                     if job["status"] == "CANDIDATE_READY"), None)
+
     def _constraint_packet(self, world, target, job):
         """Assemble a bounded packet exclusively from owner-bound material."""
         surface = target["surface"]
@@ -313,12 +318,14 @@ class HistoricalWorld:
                            provider_receipt=deepcopy(receipt))
             return job["status"]
 
-    def record_failure(self, job_id, token, code, *, retryable=False, now=None):
+    def record_failure(self, job_id, token, code, *, retryable=False, receipt=None, now=None):
         if not isinstance(code, str) or not code or len(code) > 100:
             raise HistoryRefusal("INVALID_HISTORICAL_FAILURE_CODE")
         now = time.time() if now is None else now
         with self._write() as (_, state):
             job = self._active_attempt(state, job_id, token, now)
+            if receipt is not None:
+                job["provider_receipt"] = deepcopy(receipt)
             job.update(failure_code=code, status=(
                 "FAILED_RETRYABLE" if retryable and job["attempt"] < 3 else "FAILED_TERMINAL"
             ))
