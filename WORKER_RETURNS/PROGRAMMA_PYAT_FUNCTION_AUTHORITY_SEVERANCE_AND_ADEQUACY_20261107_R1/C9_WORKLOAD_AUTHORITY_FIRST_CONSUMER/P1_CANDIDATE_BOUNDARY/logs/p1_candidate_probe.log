@@ -1,0 +1,212 @@
+{
+  "candidate": {
+    "blob_sha1": "c8352c5ab0fbc1a817c38d8ef99d64beef628230",
+    "commit": "d1278613e9e1a5d986ccce15782a697f19cbd722",
+    "constructor_id": "PROGRAMMA_PYAT_P1_ORIGINAL35_EPRE_CONSTRUCTOR@1.0.0",
+    "constructor_status": "NONISSUING_SOURCEFREE_PROSPECTIVE_CONSTRUCTION_ONLY",
+    "scope": "TEST_ONLY_SOURCEFREE",
+    "staged_sha256": "1b0c7d4f0220cbcb9385e89b9774ba4fa1d6f094ddcb14aabe51ea2bd4407f1b",
+    "staged_test_sha256": "5d87d3dc6d3371700ff0af23cbadf477febefd6dc0faf83b75c19ed287eeb1bd",
+    "test_blob_sha1": "1f96aca99543acf9ec496f31f2c43969220f74bf"
+  },
+  "current_batch_first_consumer_attempt": {
+    "call": "BatchExecutionRunner(manifest=plan.batch_manifest, repository=C11Repository())",
+    "interpretation": "The current BatchExecutionRunner starts with exact C11 release resolution before any executor call; candidate C11LogicalRelease refs are synthetic test refs and are absent from the repository.",
+    "result": {
+      "exception": "BatchIntegrityError",
+      "first_job_ref": {
+        "content_hash": "70bc8124cd93e0c6f68e13b7ee977ebd36fcae9aafe8d986bbff646cadf4fe5f",
+        "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+        "object_id": "urn:programma:pyat:programma_pyat_epre_operation:70bc8124cd93e0c6f68e13b7ee977ebd36fcae9aafe8d986bbff646cadf4fe5f"
+      },
+      "first_release_ref": {
+        "content_hash": "3b0a04a5fb536f38cac2a27d4f55c97a5426fb8d065bb2bc11ee4b4564f96fc7",
+        "kind": "C11LogicalRelease",
+        "object_id": "urn:test:programma:c11logicalrelease:release25"
+      },
+      "first_unit_ref": {
+        "content_hash": "0020b4f098ead397eadfd940fcda9ed1e3df5f15b6b0de295df29ad083bc0d1a",
+        "kind": "PRE553BatchUnit@1.0.0",
+        "object_id": "urn:rawlsing:pre553:batch-unit:sha256:0020b4f098ead397eadfd940fcda9ed1e3df5f15b6b0de295df29ad083bc0d1a"
+      },
+      "message": "exact C11 release unavailable; no latest/default/fuzzy/nearest fallback"
+    }
+  },
+  "current_batch_manifest_admission": {
+    "accepted_units_equal_plan": true,
+    "manifest_ref": {
+      "content_hash": "d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5",
+      "kind": "PRE553BatchManifest@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-manifest:sha256:d9164f33d81ea2ec30681af98364e06983967a3a1f784f40d30ab2639553dca5"
+    },
+    "manifest_semantic_projection_hash": "68c25fab1182228cc3c6887bcae341ebb589c057cf981e0ad360dfbe35d7957b",
+    "units": 840
+  },
+  "current_i03_receiving_entry": {
+    "candidate_job_ref_has_query_request": false,
+    "candidate_job_ref_kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+    "function": "pre553_issued_workload.execute_issued_workload",
+    "internal_request_lookup": true,
+    "lookup_key_type": "unit.job_ref.key -> requests_by_query (NativeWorkload.requests)",
+    "signature": "(workload: 'NativeWorkload', resolver: 'CurrentDecisionResolver', *, source_factory: 'Callable[[ExactRef], Any]', host: 'str', purpose: 'str', allow_test_only: 'bool' = False, prior_receipts=(), prior_outputs=None, max_units=None, expected_wave: 'OriginalWaveIdentity | None' = None, group_scope: 'I03GroupedExecutionScope | None' = None)",
+    "takes_batch_manifest": false
+  },
+  "declared_scope": {
+    "abstentions": 0,
+    "all35_populated_claim": false,
+    "batch_units": 840,
+    "expected_items": 70,
+    "family": [
+      "ORIGINAL35"
+    ],
+    "fixture_waves": 35,
+    "holds": 0,
+    "no_drop_ok": true,
+    "operations": 840,
+    "plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "processed_items": 70,
+    "roster_ref": "6f611d3a96c90cb4c109a98012f183928e91a57ce6703b74116c27c577aabc88",
+    "source_qualification": "TEST_ONLY_SOURCEFREE",
+    "sourced_results_claim": false,
+    "wave_ids": [
+      "ATLAS-00",
+      "ATLAS-01",
+      "ATLAS-02",
+      "ATLAS-03",
+      "ATLAS-04",
+      "ATLAS-05",
+      "ATLAS-06",
+      "ATLAS-07",
+      "ATLAS-08",
+      "ATLAS-09",
+      "ATLAS-10",
+      "ATLAS-11",
+      "ATLAS-12",
+      "ATLAS-13",
+      "ATLAS-14",
+      "ATLAS-15",
+      "ATLAS-16",
+      "ATLAS-17",
+      "ATLAS-18",
+      "ATLAS-19",
+      "ATLAS-20",
+      "ATLAS-21",
+      "ATLAS-22",
+      "ATLAS-23",
+      "ATLAS-24",
+      "ATLAS-25",
+      "ATLAS-26",
+      "ATLAS-27",
+      "ATLAS-28",
+      "ATLAS-29",
+      "ATLAS-30",
+      "ATLAS-31",
+      "ATLAS-32",
+      "ATLAS-33",
+      "ATLAS-34"
+    ]
+  },
+  "first_operation": {
+    "batch_job_ref": {
+      "content_hash": "49af80b9b9b69de42d753cb4bebe69a827488f06bd0811f9c499cd03d344bae5",
+      "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+      "object_id": "urn:programma:pyat:programma_pyat_epre_operation:49af80b9b9b69de42d753cb4bebe69a827488f06bd0811f9c499cd03d344bae5"
+    },
+    "operation_kind": "DISTRIBUTION",
+    "operation_ref": {
+      "content_hash": "49af80b9b9b69de42d753cb4bebe69a827488f06bd0811f9c499cd03d344bae5",
+      "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+      "object_id": "urn:programma:pyat:programma_pyat_epre_operation:49af80b9b9b69de42d753cb4bebe69a827488f06bd0811f9c499cd03d344bae5"
+    },
+    "status": "COMPILED",
+    "target_value": "1"
+  },
+  "first_unit": {
+    "job_kind": "QUERY",
+    "job_ref": {
+      "content_hash": "70bc8124cd93e0c6f68e13b7ee977ebd36fcae9aafe8d986bbff646cadf4fe5f",
+      "kind": "PROGRAMMA_PYAT_EPRE_OPERATION",
+      "object_id": "urn:programma:pyat:programma_pyat_epre_operation:70bc8124cd93e0c6f68e13b7ee977ebd36fcae9aafe8d986bbff646cadf4fe5f"
+    },
+    "release_refs": [
+      {
+        "content_hash": "3b0a04a5fb536f38cac2a27d4f55c97a5426fb8d065bb2bc11ee4b4564f96fc7",
+        "kind": "C11LogicalRelease",
+        "object_id": "urn:test:programma:c11logicalrelease:release25"
+      }
+    ],
+    "semantic_input_refs": [
+      {
+        "content_hash": "88c80581bf7f2d7765098c0b01ab47be8dc0a9b0af7c22f4b6949c87cd6a10e2",
+        "kind": "EligiblePopulation",
+        "object_id": "urn:test:programma:eligiblepopulation:g25"
+      },
+      {
+        "content_hash": "9d0d7db9627d7b0c75f887090e3fffb1a9e4ac31272d1333e53e93802ff229e8",
+        "kind": "MeasureAuthority",
+        "object_id": "urn:test:programma:measureauthority:i25b"
+      },
+      {
+        "content_hash": "203c78da55d911b146efca31c9739ea56a20c8525fd366a79aae27e8d4ea909c",
+        "kind": "RecursiveAuthority",
+        "object_id": "urn:test:programma:recursiveauthority:ra25"
+      },
+      {
+        "content_hash": "f154060f1b8ead2f0e30965acc94d960759dc4d3aad709523e7c68f6daed7ebd",
+        "kind": "Role",
+        "object_id": "urn:test:programma:role:ro25"
+      },
+      {
+        "content_hash": "6424831632f754c81b72681a3993f5ff69af3c4055bb2fe020dcd0580fb1af25",
+        "kind": "Route",
+        "object_id": "urn:test:programma:route:r25"
+      },
+      {
+        "content_hash": "0af4c212f1cf4c8d8ac578b33e0f2fcdedc4f50447fb29a0e2123b3f5ef33d76",
+        "kind": "Semantic",
+        "object_id": "urn:test:programma:semantic:s25"
+      },
+      {
+        "content_hash": "a2000209c2be67abdad38a926f8363e07da804a964f007af836cc5a4ce26ee1c",
+        "kind": "SourceItem",
+        "object_id": "urn:test:programma:sourceitem:i25b"
+      },
+      {
+        "content_hash": "aac839ec80ac92f1d45a84534a40c3cfda89a9306dfbf5cf907d2e3807f6142a",
+        "kind": "TargetUsePermission",
+        "object_id": "urn:test:programma:targetusepermission:g25"
+      },
+      {
+        "content_hash": "b7b0cc9d217fc229813ee888881b9a440236aa3d7b911242b906bb267426746a",
+        "kind": "WeightDesign",
+        "object_id": "urn:test:programma:weightdesign:w25"
+      }
+    ],
+    "unit_ref": {
+      "content_hash": "0020b4f098ead397eadfd940fcda9ed1e3df5f15b6b0de295df29ad083bc0d1a",
+      "kind": "PRE553BatchUnit@1.0.0",
+      "object_id": "urn:rawlsing:pre553:batch-unit:sha256:0020b4f098ead397eadfd940fcda9ed1e3df5f15b6b0de295df29ad083bc0d1a"
+    }
+  },
+  "limits": [
+    "Candidate fixture is synthetic TEST_ONLY_SOURCEFREE, not the actual original35 source roster.",
+    "35 waves/70 items/840 operations are candidate-plan identity, not actual all35 execution or occupancy.",
+    "No source bytes, respondent rows, native I03/I05 execution or scientific result.",
+    "No source/current issuer, original target use, C11 release, or I03 request mapping was minted.",
+    "The current BatchExecutionRunner first call fails on exact synthetic C11 release resolution; no new resolver was added."
+  ],
+  "negative_restoration": {
+    "restored_batch_units": 840,
+    "restored_matches_baseline": true,
+    "restored_plan_ref": "e0d4180cbfc43a1ddc5965ff20afb9cb284676c6c4981d9681d3e35121ac59ea",
+    "wrong_abstentions": 24,
+    "wrong_batch_units": 816,
+    "wrong_differs_baseline": true,
+    "wrong_plan_ref": "81c821dc8c75c77f9896b95fec87e0ad08d35a87364dddb968c295057e065cfb",
+    "wrong_reasons": [
+      "SOURCE_SHA_MISMATCH"
+    ],
+    "wrong_source_sha": "5c9a3fed8b7d2fe56b58eb973e87d6f025a21ea41b3be2d3df50353ded945f76"
+  },
+  "schema": "C9_P1_CANDIDATE_BOUNDARY_PROBE_V1"
+}
