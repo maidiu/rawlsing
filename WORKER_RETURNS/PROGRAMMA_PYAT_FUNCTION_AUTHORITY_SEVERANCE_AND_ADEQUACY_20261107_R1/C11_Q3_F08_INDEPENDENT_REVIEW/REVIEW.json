@@ -1,0 +1,233 @@
+{
+  "schema": "C11_Q3_F08_INDEPENDENT_REVIEW_V1",
+  "verdict": "REVISE_SCOPED",
+  "q3_accepted": true,
+  "q4_status": "UNPROVED",
+  "reviewer": {
+    "role": "independent nonauthor issue777 C11 Q3/F08 review",
+    "session": "ses_6857b9b4c50542e7a7268dfb7d",
+    "model": "opencode-go/deepseek-v4.1-flash#max",
+    "independence": "not author of 76392135, C11/C9/C6/C4/C3 or protected code; read-only source/HQ evidence; no new worker",
+    "model_changed": false
+  },
+  "target": {
+    "author_return": "76392135cea16afc0ff07da97843837bd33fc9b7",
+    "author_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-consumer",
+    "author_base": "02a13a5e01880835434b30d9a3587147f9dab0de",
+    "lease": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C11_Q3_F08_FIRST_CONSUMER_EFFECT/",
+    "return": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C11_Q3_F08_FIRST_CONSUMER_EFFECT/00_RETURN.md",
+    "c6_correction": "0d548b033a0a20c9738fa4a3412ba5acd01217c5",
+    "archive_source": "9ba4764bef551b1ce498e5772d60b73d69337d4b",
+    "hq_checkpoint_head": "9f578483839091b7215d73ad96041deb3ded79bd",
+    "hq_exact_output_head": "55fca441d1c674c256473c264cabda48f2df0e52",
+    "hq_stage": "C9_SCOPED_RECONCILIATION_ACCEPTED__Q3_F03_F08_CONSUMER_CHECKS_DISPATCHED__GOAL_FALSE"
+  },
+  "authority_pins": {
+    "AR-0047": {
+      "path": "data/ddm_build_copy/manifests/question_wave_itinerary.csv",
+      "bytes": 11059,
+      "sha256": "866eb3ab25fbd9479781c15a0aecbb00a9d547fdc947cc443e8b904262b86eb3",
+      "verified_at_9ba4764": true,
+      "rows": 35
+    },
+    "AR-0048": {
+      "path": "data/ddm_build_copy/manifests/question_use_overrides.csv",
+      "bytes": 1702,
+      "sha256": "29e7706b7467f9435e57e78a7c8cf1314d9760f03d4d14d2bcf0d54f51809479",
+      "verified_at_9ba4764": true,
+      "rows": 7
+    },
+    "AR-0049": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Authority_Document_Archive_2026-08-24/documents/ledgers-registries-and-matrices/data/ddm_build_copy/manifests/question_structure_register.csv",
+      "bytes": 26582348,
+      "sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b",
+      "verified_local_archive": true,
+      "rows": 18792
+    },
+    "AR-0050": {
+      "path": "data/ddm_build_copy/manifests/question_type_taxonomy.yaml",
+      "bytes": 3487,
+      "sha256": "3612c6b400008467471b71cc38d811b8c5349bac0617e974a72e76e584e86b27",
+      "verified_at_9ba4764": true,
+      "question_types": 8
+    }
+  },
+  "historical_code_pins": {
+    "commit": "9ba4764bef551b1ce498e5772d60b73d69337d4b",
+    "quc_module": "data/ddm_build_copy/ddm_v550_question_use.py",
+    "quc_module_sha256": "254542f96dcb8f07c9ff8fa136d6d13f5923b43ec04c7d2bb1d8a14f46955f31",
+    "quc_module_bytes": 115511,
+    "source_structure_module": "data/ddm_build_copy/ddm_v550_source_structure.py",
+    "source_structure_sha256": "609a02e1615ba3c028d284b5f11e198df1eda26e53bae2a0b50d6609d749a0e0",
+    "source_structure_bytes": 25491,
+    "entrypoint": "build_question_use_contract -> build_question_use_contract_row",
+    "consumer_loading": "exact historical module staged under replay_src and imported unchanged; module SHA-256 asserted at runtime; no substantive monkeypatch, setattr, __dict__ patch or function replacement; only sys.path and explicit authority-path arguments/dataframe inputs",
+    "taxonomy_entrypoint": "AR-0050 is loaded by build_question_structure_register.load_taxonomy (separate register-builder consumer); ddm_v550_question_use.py does not load taxonomy directly and the QUC entrypoint is not taxonomy runtime proof"
+  },
+  "selected_row": {
+    "source": "GSS",
+    "wave": "1973",
+    "var_code": "uswar",
+    "question_id": "GSS:1973:uswar",
+    "ar0047_itinerary": {
+      "review_priority": "high",
+      "manual_designation_required": false,
+      "review_notes": "GSS 1973 uses the general registries and explicit overrides."
+    },
+    "ar0048_override": {
+      "semantic_role": "RELATION_EVIDENCE",
+      "override_reason": "promote_memory_of_catastrophe_direct_evidence",
+      "allowed_as_v551_relation_evidence": true,
+      "manual_override_used": true,
+      "manual_override_basis": "source_wave_var_code"
+    },
+    "ar0049_structure": {
+      "classification": "substantive_single_choice",
+      "structural_role": "answer",
+      "join_key": "source+wave+question_id",
+      "join_confidence": "exact",
+      "fields_joined": true
+    },
+    "ar0050_taxonomy": {
+      "question_kind": "single_choice",
+      "structural_role": "answer",
+      "runtime_classification": "REGISTER_BUILDER_ONLY__NO_QUC_RUNTIME_EFFECT"
+    }
+  },
+  "q3_effects": {
+    "positive": {
+      "manual_override_used": true,
+      "manual_override_basis": "source_wave_var_code",
+      "manual_override_reason": "promote_memory_of_catastrophe_direct_evidence",
+      "semantic_role": "RELATION_EVIDENCE",
+      "itinerary_review_priority": "high",
+      "source_structure_classification": "substantive_single_choice",
+      "source_structure_fields_joined": true,
+      "review_required": true,
+      "allowed_as_v551_relation_evidence": false,
+      "question_use_contract_hash": "6c94c7a8bbbf4dbae511dece64a312a1ee7fd5fa3a8e4008f004783057288cb1",
+      "output_hash": "1c78a386f0b433dd4ffb97768314f92b09e7476d1c31f4a92f8343cb26f253b1"
+    },
+    "negative": {
+      "missing_override": {
+        "manual_override_used": false,
+        "basis": "",
+        "reason": "",
+        "question_use_contract_hash": "6dd4fa85be5c2640e8f810a64b8cf0b79fbf5637930f3730bf05cbfbaab4acf7"
+      },
+      "duplicate_override": "RuntimeError: ambiguous manual override match for source=GSS wave=1973 question_id=GSS:1973:uswar var_code=uswar via source_wave_var_code: 2 rows",
+      "missing_structure_register": {
+        "fallback": "missing_register",
+        "source_structure_fields_joined": false,
+        "question_use_contract_hash": "919df24c41cd47d5a0e1edf1565887538e75262753ae44931d56f577e1911227",
+        "output_hash": "a8010c5bb11f21936ca3796ab358abe069b27b7d41f11ced254f3259e1f5ac3b"
+      },
+      "missing_itinerary": {
+        "itinerary_review_priority": "normal",
+        "question_use_contract_hash": "57cf755dde1d2a117eefc3565ed494b5f83cc578fb4c9a8c7c244d71ab7b994c"
+      }
+    },
+    "restore": {
+      "output_hash": "1c78a386f0b433dd4ffb97768314f92b09e7476d1c31f4a92f8343cb26f253b1",
+      "matches_positive": true
+    },
+    "contract_preserved": {
+      "review_required": true,
+      "allowed_as_v551_relation_evidence": false,
+      "reason": "semantic_role_authority_review_required|response_semantics_authority_missing|directional_applicability_applicability_unresolved|structural_mapping_pending"
+    },
+    "coverage": {
+      "witness_row": "GSS/1973/uswar",
+      "AR-0047_rows": 35,
+      "AR-0048_rows": 7,
+      "AR-0049_rows": 18792,
+      "AR-0050_question_types": 8,
+      "one_row_only": true,
+      "all35_proved": false,
+      "original_historical_run": "NOT_RUN"
+    }
+  },
+  "q3_checks": {
+    "authority_byteidentity": "all four SHA-256/byte pins independently recomputed and matched",
+    "historical_module_identity": "QUC module 254542... and source-structure module 609a... matched 9ba4764",
+    "no_substantive_monkeypatch": "exact staged module imported unchanged; path arguments/dataframe only; runtime module SHA assertion present",
+    "selected_row": "exact GSS/1973/uswar row found once in AR-0047, AR-0048 and AR-0049; AR-0050 single_choice/answer in separate taxonomy",
+    "positive_hash": "recomputed stable summary hash equals 1c78a386...; contract hash 6c94c7a8...",
+    "negative_hashes": "missing override 6dd4fa85..., missing structure contract 919df24c.../output a8010c5..., missing itinerary 57cf755d...; duplicate RuntimeError observed",
+    "restore": "output hash equals positive",
+    "no_replay_rerun": true,
+    "no_full_matrix": true,
+    "author_probe_json_sha256": "ecf97894d50ae0e11caf5f4d8717b42669fd6b9d22f6ea80ad6ea99fe4333a4c",
+    "author_probe_log_sha256": "ecf97894d50ae0e11caf5f4d8717b42669fd6b9d22f6ea80ad6ea99fe4333a4c"
+  },
+  "accepted_findings": [
+    {
+      "id": "C11A-01",
+      "disposition": "ACCEPT",
+      "subject": "exact historical authority bytes, exact consumer loading, no substantive monkeypatch",
+      "text": "AR-0047/48/50 at 9ba4764 and AR-0049 archive match the declared SHA-256/bytes; QUC and source-structure module hashes match; the replay imports the exact staged historical module unchanged and uses only path/dataframe inputs. No substantive monkeypatch."
+    },
+    {
+      "id": "C11A-02",
+      "disposition": "ACCEPT",
+      "subject": "selected GSS/1973/uswar row and observed positive/negative/restore effects",
+      "text": "The exact GSS/1973/uswar row is present once in AR-0047/48/49; positive effect sets manual override/role/itinerary/classification and review_required=true/allowed_as_v551_relation_evidence=false; removal, duplicate, missing-register, missing-itinerary and restore effects match the recorded hashes. Contract is not promoted."
+    },
+    {
+      "id": "C11A-03",
+      "disposition": "ACCEPT",
+      "subject": "historical/test-time and coverage limits",
+      "text": "This is S2 test-time replay on one selected nonrespondent authority row, not an original historical run; one row does not prove all35 or actual original estate. AR-0050 taxonomy is register-builder metadata only, not QUC runtime effect. Contract remains review_required/allowed_as_v551_relation_evidence=false."
+    }
+  ],
+  "q4_current_succession": {
+    "author_claim": "current installed successor is not a QUC/question-use reader; no installed non-test question_use/itinerary/taxonomy reader found; a selected operation would need a QUC reader/typed representation",
+    "review_result": "UNPROVED",
+    "current_successor_proved": false,
+    "absence_or_equivalence_proved": false,
+    "current_owner_evidence": {
+      "C6-F08_Q_USE": "historical QUC function; current owner/first consumer UNKNOWN_NOT_PROVED and current selected operation NOT_RUN/UNPROVED_CURRENT_SELECTION; no selected current QUC operation",
+      "C6-F06_RESP_CONTRACT": "exact current generic refs pre553_c11_ingest.py:644-659 and pre553_source_backed_c11_facade.py:502-553; response-contract responsibility, not QUC override/itinerary",
+      "C6-F09_ROUTING": "exact current generic refs pre553_c11_ingest.py:601-620 and pre553_empirical_query.py:725-731; routing/risk responsibility, not QUC",
+      "C4-O14_J_ROLE": "pre553_j_role_certification.py:356-388,1018-1027; J role/component certification, distinct from QUC semantic role",
+      "C3_FF": "Q86/GT12 bounded canaries and GF1 test-only; no QUC responsibility",
+      "current_query_target_use": "pre553_empirical_objects.py:677 EmpiricalQuerySpec; pre553_empirical_query.py:403-438 optional TARGET_USE_PERMISSION; pre553_universal_workload.py:473,633 governed frontier; valid current owners but not QUC equivalents"
+    },
+    "classification": "FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED",
+    "suffix_issue": "The author's __NO_QUC_READER_IN_CURRENT_OWNER suffix and 'would need QUC reader' statement are a name/path hypothesis, not a proved absence or current functional-responsibility result. TARGET_USE_PERMISSION alone neither proves an equivalent nor a missing function.",
+    "required_action": "Remove/qualify the no-QUC-reader absence and would-need-QUC-reader assertions; retain Q4 current succession as UNPROVED. Have the current C6 F08/Q_USE owner plus current C11/I03/frontier owners perform a focused responsibility check against C6/C4/C3/current owner implementations for exact semantic-role/routing/review/override responsibilities. No repair, new QUC reader, engine or issuer gate unless an actual selected current operation and successor contract are established."
+  },
+  "revise_findings": [
+    {
+      "id": "C11R-01",
+      "severity": "P2",
+      "disposition": "REVISE",
+      "subject": "Q4 current succession/absence assertion",
+      "evidence": "The author's Q4 checks EmpiricalQuerySpec/I03/target-use/governed-frontier and searches current filenames, but does not establish actual functional responsibility across C6/C4/C3/current owners. C6-F08 Q_USE current owner remains UNKNOWN_NOT_PROVED; C6-F06/F09 and C4-O14/C3-FF are different responsibilities; TARGET_USE_PERMISSION is distinct. No selected current QUC operation was established, so absence/equivalence is not proved. The author already retains FUNCTION_CURRENT...UNPROVED.",
+      "required_correction": "Retain Q4 current succession UNPROVED; remove/qualify the no-QUC-reader and would-need-QUC-reader claims as hypotheses; perform only the focused existing-owner responsibility check; do not manufacture repair, QUC reader, engine or issuer gate. Preserve the accepted Q3 replay, contract review_required/allowed_as_v551_relation_evidence=false, one-row/all35 and original-runtime limits."
+    }
+  ],
+  "smallest_existing_owner_action": "Current C6 F08/Q_USE owner plus current C11/I03/frontier owners: perform a read-only responsibility comparison against C6 F06/F09, C4 O14 J role and C3 FF/current owners for semantic-role/routing/review/override responsibility; record whether any actual selected current operation demands the exact historical QUC semantics. If none, preserve FUNCTION_CURRENT_BUT_AUTHORITY_PROVENANCE_UNPROVED/NOT_RUN; if a selected operation exists, route at the existing query/authority owner with exact selected input. No new QUC reader, engine, repair or issuer gate.",
+  "limits": {
+    "q3_accepted_as": "S2_TEST_TIME_HISTORICAL_REPLAY__ONE_SELECTED_NONRESPONDENT_AUTHORITY_ROW",
+    "original_historical_run": "NOT_RUN",
+    "all35_proved": false,
+    "current_quc_succession": "UNPROVED",
+    "current_adoption": "NOT_PROVED",
+    "contract_preserved": "review_required=true; allowed_as_v551_relation_evidence=false",
+    "taxonomy_ar0050": "REGISTER_BUILDER_ONLY__NOT_ACCEPTED_AS_QUC_RUNTIME_EFFECT",
+    "source_respondent_sav_dta_db_read": false,
+    "scientific_native_effect": false,
+    "production_existingtest_hq_peer_protected_write": false,
+    "installation": false,
+    "ci": false,
+    "merge": false,
+    "delegation": false,
+    "full_matrix": false,
+    "model_changed": false,
+    "quota": "UNKNOWN",
+    "review_commit": "reported in terminal return after push"
+  },
+  "goal_complete": false,
+  "whole_777_false": true
+}
