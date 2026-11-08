@@ -110,3 +110,10 @@ The endpoint is a transport fixture. Live model proof remains
 The HTTP adapter now bounds response bytes before JSON decoding. Oversized
 responses receive `RESPONSE_LIMIT_EXCEEDED` and no candidate. This caps the
 transport allocation even when an endpoint ignores the output-token request.
+
+The endpoint adapter sends policy in the system message and the bounded
+world packet as separate JSON input. The request digest includes the prompt
+schema. The transport test places instruction-like document text in the
+packet and verifies that it stays out of policy and confers no write or
+authority capability. This verifies message isolation and the transport
+boundary. Model compliance with adversarial text remains unverified.

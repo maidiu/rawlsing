@@ -114,8 +114,11 @@ def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch):
     class MockEndpoint(BaseHTTPRequestHandler):
         def do_POST(self):
             request = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
-            prompt = request["messages"][0]["content"]
-            packet = json.loads(prompt.split("Packet:\n", 1)[1])
+            instructions, input_data = request["messages"]
+            assert instructions["role"] == "system"
+            assert "untrusted world data" in instructions["content"]
+            assert input_data["role"] == "user"
+            packet = json.loads(input_data["content"])
             packets.put(packet)
             candidate = {
                 "request_id": packet["request_id"],
