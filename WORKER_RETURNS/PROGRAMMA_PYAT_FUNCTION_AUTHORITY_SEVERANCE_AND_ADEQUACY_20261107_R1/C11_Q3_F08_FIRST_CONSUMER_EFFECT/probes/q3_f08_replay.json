@@ -1,0 +1,247 @@
+{
+  "authority_effect": {
+    "positive_itinerary_priority": "high",
+    "positive_manual_override_used": true,
+    "positive_semantic_role": "RELATION_EVIDENCE",
+    "positive_structure_classification": "substantive_single_choice",
+    "taxonomy_runtime_effect": "NO_QUC_READER_IN_CURRENT_PATH__REGISTER_BUILDER_ONLY"
+  },
+  "authority_pins": {
+    "AR-0047": {
+      "bytes": 11059,
+      "path": "data/ddm_build_copy/manifests/question_wave_itinerary.csv",
+      "sha256": "866eb3ab25fbd9479781c15a0aecbb00a9d547fdc947cc443e8b904262b86eb3"
+    },
+    "AR-0048": {
+      "bytes": 1702,
+      "path": "data/ddm_build_copy/manifests/question_use_overrides.csv",
+      "sha256": "29e7706b7467f9435e57e78a7c8cf1314d9760f03d4d14d2bcf0d54f51809479"
+    },
+    "AR-0049": {
+      "bytes": 26582348,
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Authority_Document_Archive_2026-08-24/documents/ledgers-registries-and-matrices/data/ddm_build_copy/manifests/question_structure_register.csv",
+      "sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b"
+    },
+    "AR-0050": {
+      "bytes": 3487,
+      "path": "data/ddm_build_copy/manifests/question_type_taxonomy.yaml",
+      "sha256": "3612c6b400008467471b71cc38d811b8c5349bac0617e974a72e76e584e86b27"
+    }
+  },
+  "execution_kind": "S2_TEST_TIME_HISTORICAL_REPLAY__NOT_ORIGINAL_HISTORICAL_RUN",
+  "execution_limits": [
+    "Test-time replay now, not evidence that the original historical run occurred.",
+    "Uses exact selected nonrespondent authority rows and exact historical code only.",
+    "No source/respondent/SAV/DTA/DB read, no native scientific execution.",
+    "AR-0050 taxonomy is loaded by the historical register-builder consumer; the QUC contract entrypoint does not load it directly.",
+    "No substitution of source-authored authority semantics with a hardcoded fixture."
+  ],
+  "historical_code_pin": {
+    "commit": "9ba4764bef551b1ce498e5772d60b73d69337d4b",
+    "entrypoint": "build_question_use_contract -> build_question_use_contract_row",
+    "module": "data/ddm_build_copy/ddm_v550_question_use.py",
+    "module_sha256": "254542f96dcb8f07c9ff8fa136d6d13f5923b43ec04c7d2bb1d8a14f46955f31",
+    "selector_functions": [
+      "load_question_use_overrides",
+      "load_question_wave_itinerary",
+      "_select_override",
+      "_select_itinerary"
+    ],
+    "source_structure_module": "data/ddm_build_copy/ddm_v550_source_structure.py",
+    "source_structure_module_sha256": "609a02e1615ba3c028d284b5f11e198df1eda26e53bae2a0b50d6609d749a0e0"
+  },
+  "negative": {
+    "duplicate_override": "RuntimeError: ambiguous manual override match for source=GSS wave=1973 question_id=GSS:1973:uswar var_code=uswar via source_wave_var_code: 2 rows",
+    "missing_itinerary": {
+      "allowed_as_response_distribution": false,
+      "allowed_as_v551_relation_evidence": false,
+      "canonical_wave": "1973",
+      "disallowed_reason": "semantic_role_authority_review_required|response_semantics_authority_missing|directional_applicability_applicability_unresolved|structural_mapping_pending",
+      "itinerary_manual_designation_required": false,
+      "itinerary_review_priority": "normal",
+      "manual_override_basis": "source_wave_var_code",
+      "manual_override_reason": "promote_memory_of_catastrophe_direct_evidence",
+      "manual_override_used": true,
+      "question_id": "GSS:1973:uswar",
+      "question_use_contract_hash": "57cf755dde1d2a117eefc3565ed494b5f83cc578fb4c9a8c7c244d71ab7b994c",
+      "review_required": true,
+      "semantic_role": "RELATION_EVIDENCE",
+      "source": "GSS",
+      "source_structure_classification": "substantive_single_choice",
+      "source_structure_fields_joined": true,
+      "source_structure_source": "source_structure_validation_manifest+question_type_taxonomy",
+      "var_code": "uswar"
+    },
+    "missing_override": {
+      "allowed_as_response_distribution": false,
+      "allowed_as_v551_relation_evidence": false,
+      "canonical_wave": "1973",
+      "disallowed_reason": "semantic_role_authority_review_required|response_semantics_authority_missing|directional_applicability_applicability_unresolved|structural_mapping_pending",
+      "itinerary_manual_designation_required": false,
+      "itinerary_review_priority": "high",
+      "manual_override_basis": "",
+      "manual_override_reason": "",
+      "manual_override_used": false,
+      "question_id": "GSS:1973:uswar",
+      "question_use_contract_hash": "6dd4fa85be5c2640e8f810a64b8cf0b79fbf5637930f3730bf05cbfbaab4acf7",
+      "review_required": true,
+      "semantic_role": "RELATION_EVIDENCE",
+      "source": "GSS",
+      "source_structure_classification": "substantive_single_choice",
+      "source_structure_fields_joined": true,
+      "source_structure_source": "source_structure_validation_manifest+question_type_taxonomy",
+      "var_code": "uswar"
+    },
+    "missing_structure_register": {
+      "confidence": "missing_register",
+      "contract_summary": {
+        "allowed_as_response_distribution": false,
+        "allowed_as_v551_relation_evidence": false,
+        "canonical_wave": "1973",
+        "disallowed_reason": "semantic_role_authority_review_required|response_semantics_authority_missing|directional_applicability_applicability_unresolved|structural_mapping_pending|review_required",
+        "itinerary_manual_designation_required": false,
+        "itinerary_review_priority": "high",
+        "manual_override_basis": "source_wave_var_code",
+        "manual_override_reason": "promote_memory_of_catastrophe_direct_evidence",
+        "manual_override_used": true,
+        "question_id": "GSS:1973:uswar",
+        "question_use_contract_hash": "919df24c41cd47d5a0e1edf1565887538e75262753ae44931d56f577e1911227",
+        "review_required": true,
+        "semantic_role": "RELATION_EVIDENCE",
+        "source": "GSS",
+        "source_structure_classification": "substantive_single_choice",
+        "source_structure_fields_joined": false,
+        "source_structure_source": "source_structure_validation_manifest+question_type_taxonomy",
+        "var_code": "uswar"
+      },
+      "fallback": {
+        "handling_rule": "Compute one distribution over labeled response options; keep don't know and refusal as meaningful categories when present.",
+        "question_type": "single_choice",
+        "question_type_structural_role": "answer",
+        "recommended_computation": "Distribution, conditional splits, branch comparisons, and driver-mapped cloud summaries.",
+        "source_structure_basis": "missing_register",
+        "source_structure_classification": "substantive_single_choice",
+        "source_structure_confidence": "low",
+        "source_structure_fields_joined": false,
+        "source_structure_review_required": true,
+        "source_structure_source": "source_structure_validation_manifest+question_type_taxonomy"
+      },
+      "join_key": "none",
+      "output_hash": "a8010c5bb11f21936ca3796ab358abe069b27b7d41f11ced254f3259e1f5ac3b"
+    }
+  },
+  "positive": {
+    "output_hash": "1c78a386f0b433dd4ffb97768314f92b09e7476d1c31f4a92f8343cb26f253b1",
+    "summary": {
+      "allowed_as_response_distribution": false,
+      "allowed_as_v551_relation_evidence": false,
+      "canonical_wave": "1973",
+      "disallowed_reason": "semantic_role_authority_review_required|response_semantics_authority_missing|directional_applicability_applicability_unresolved|structural_mapping_pending",
+      "itinerary_manual_designation_required": false,
+      "itinerary_review_priority": "high",
+      "manual_override_basis": "source_wave_var_code",
+      "manual_override_reason": "promote_memory_of_catastrophe_direct_evidence",
+      "manual_override_used": true,
+      "question_id": "GSS:1973:uswar",
+      "question_use_contract_hash": "6c94c7a8bbbf4dbae511dece64a312a1ee7fd5fa3a8e4008f004783057288cb1",
+      "review_required": true,
+      "semantic_role": "RELATION_EVIDENCE",
+      "source": "GSS",
+      "source_structure_classification": "substantive_single_choice",
+      "source_structure_fields_joined": true,
+      "source_structure_source": "source_structure_validation_manifest+question_type_taxonomy",
+      "var_code": "uswar"
+    }
+  },
+  "restore": {
+    "matches_positive": true,
+    "output_hash": "1c78a386f0b433dd4ffb97768314f92b09e7476d1c31f4a92f8343cb26f253b1",
+    "summary": {
+      "allowed_as_response_distribution": false,
+      "allowed_as_v551_relation_evidence": false,
+      "canonical_wave": "1973",
+      "disallowed_reason": "semantic_role_authority_review_required|response_semantics_authority_missing|directional_applicability_applicability_unresolved|structural_mapping_pending",
+      "itinerary_manual_designation_required": false,
+      "itinerary_review_priority": "high",
+      "manual_override_basis": "source_wave_var_code",
+      "manual_override_reason": "promote_memory_of_catastrophe_direct_evidence",
+      "manual_override_used": true,
+      "question_id": "GSS:1973:uswar",
+      "question_use_contract_hash": "6c94c7a8bbbf4dbae511dece64a312a1ee7fd5fa3a8e4008f004783057288cb1",
+      "review_required": true,
+      "semantic_role": "RELATION_EVIDENCE",
+      "source": "GSS",
+      "source_structure_classification": "substantive_single_choice",
+      "source_structure_fields_joined": true,
+      "source_structure_source": "source_structure_validation_manifest+question_type_taxonomy",
+      "var_code": "uswar"
+    }
+  },
+  "schema": "C11_Q3_F08_HISTORICAL_CONSUMER_REPLAY_V1",
+  "selected_row": {
+    "ar0047_itinerary": {
+      "canonical_wave": "1973",
+      "manual_designation_required": false,
+      "primary_docs": "data/ddm_build/reports/respondent_wave_source_registry.md|data/ddm_build/reports/respondent_wave_semantics_registry.md|data/ddm_build/manifests/question_structure_register.csv",
+      "review_notes": "GSS 1973 uses the general registries and explicit overrides.",
+      "review_priority": "high",
+      "secondary_docs": "data/ddm_build/manifests/question_use_overrides.csv",
+      "source": "GSS",
+      "wave": "1973"
+    },
+    "ar0048_override": {
+      "allowed_as_attitude_cloud_anchor": true,
+      "allowed_as_attitude_cloud_feature": true,
+      "allowed_as_branch_position_signature": false,
+      "allowed_as_branch_relation_cosignature": true,
+      "allowed_as_branch_splitter": true,
+      "allowed_as_context_distribution": "",
+      "allowed_as_demographic_predictor": false,
+      "allowed_as_parent_prior_coordinate": false,
+      "allowed_as_position_distribution": false,
+      "allowed_as_response_distribution": true,
+      "allowed_as_temporal_pressure_indicator": true,
+      "allowed_as_v551_relation_evidence": true,
+      "canonical_wave": 1973,
+      "date": "2026-06-22",
+      "override_reason": "promote_memory_of_catastrophe_direct_evidence",
+      "question_id": "GSS_1973_uswar",
+      "reviewer": "codex",
+      "semantic_role": "RELATION_EVIDENCE",
+      "source": "GSS",
+      "var_code": "uswar",
+      "wave": 1973
+    },
+    "ar0049_structure_join": {
+      "classification": "substantive_single_choice",
+      "fields_joined": true,
+      "join_confidence": "exact",
+      "join_key": "source+wave+question_id"
+    },
+    "question_id": "GSS:1973:uswar",
+    "source": "GSS",
+    "var_code": "uswar",
+    "wave": "1973"
+  },
+  "selected_rows": {
+    "ar0047_itinerary_count": 35,
+    "ar0048_override_count": 7,
+    "ar0049_register_rows": 18792,
+    "ar0050_question_types": [
+      "derived_or_reference",
+      "matrix",
+      "multi_select",
+      "open_text",
+      "single_choice",
+      "source_extra",
+      "split_block",
+      "stem"
+    ],
+    "ar0050_single_choice": {
+      "default_handling": "Compute one distribution over labeled response options; keep don't know and refusal as meaningful categories when present.",
+      "do_not_do": "Do not flatten into a binary unless the codebook and source structure are explicitly binary.",
+      "recommended_computation": "Distribution, conditional splits, branch comparisons, and driver-mapped cloud summaries.",
+      "structural_role": "answer"
+    }
+  }
+}
