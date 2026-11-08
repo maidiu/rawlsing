@@ -596,3 +596,34 @@ def test_real_interval_binds_completed_output_without_inspection(
 
     finally:
         reopened.close()
+
+
+def test_admitted_speech_and_actor_testimony_do_not_create_particulars(tmp_path, monkeypatch):
+    p4_dir = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
+    monkeypatch.syspath_prepend(str(p4_dir))
+    from run_p4 import new, open_owner
+    from speech import admit_speech
+
+    new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        history = HistoricalWorld(session)
+        before = history.pending()
+        statement = admit_speech(
+            session, text="Suppose there is a silver bowl here.",
+            actor_ref=owner.snapshot().document()["actor"],
+        )["performed"]
+        testimony = session._actor_say("A", "I remember a silver bowl here.")
+        for event in (statement, testimony):
+            assert event["kind"] == "SPEECH"
+            assert event["event_id"] in session.user_perceived_ids()
+            candidate = SurfaceParticular(
+                event["event_id"], "fixture:unverified-bowl", "item", event["location"],
+                {"material": "silver"}, ("physical", "provenance"),
+            )
+            with pytest.raises(HistoryRefusal, match="CURRENT_OBJECTIVE_OCCURRENCE_REQUIRED"):
+                history.admit_surface(candidate)
+        assert history.pending() == before
+    finally:
+        owner.close()

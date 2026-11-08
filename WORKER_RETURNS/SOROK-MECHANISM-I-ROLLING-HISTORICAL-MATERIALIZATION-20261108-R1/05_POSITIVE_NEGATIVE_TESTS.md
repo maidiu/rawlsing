@@ -85,3 +85,14 @@ a fresh lease. The latter is source-held.
 ```
 
 Exit 0. The open cases above remain open.
+
+N05 now also passes the explicit P4 speech differential. The test records
+a performed user supposition and a separate performed actor testimony.
+The observer perceives both speech events. The world owner refuses both
+as objective target anchors and its outbox remains identical.
+
+```sh
+python -m pytest -q rawlsing_next/tests/test_sorok_history_owner.py::test_admitted_speech_and_actor_testimony_do_not_create_particulars
+```
+
+Observed `1 passed in 6.15s`, exit 0.
