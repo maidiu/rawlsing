@@ -10,7 +10,7 @@ for remote ref reads. The GitHub connection verified the live protected ref.
 
 | Authority or producer | Actual ABI at protected cut | Mechanism I connection |
 |---|---|---|
-| P4 encounter `WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py` | `open_owner(root)`, `act(owner, ledger_file, ledger, args)`, `surface(owner, ledger)` | Existing cold encounter and perception consumer. Product introduction and DepthRead still need wiring. |
+| P4 encounter `WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py` | `open_owner(root)`, `act(owner, ledger_file, ledger, args)`, `surface(owner, ledger)` | Existing cold encounter and perception consumer. Opening binds the owner tool affordance before publication. General foreground targets and historical DepthRead remain pending. |
 | P2 `developmental_recursion/p2_owner.py` and S45–S47 product fan-in | `load_p2().start(root)`, `.open(root)`, `fanin.session` | Existing branch, clock and actual event source. |
 | Received S45–S47 vendor `r30a/first_session.py` | `world()`, `event(event_id)`, `read_root()`, `user_perceived_ids()`, `travel(location)` | Committed parent lookup. Inspection visibility and independent actor access remain separate. |
 | Received vendor `bp4/product.py` and `bp4/store.py` | `_checkpoint(branch_id, clock, world, actors=None)`, `store.checkpoint(branch_id, clock, state)` | Same SQLite world checkpoint contains target and outbox. `BEGIN IMMEDIATE` serializes the read/modify/write against that store. |
@@ -36,3 +36,11 @@ It omits outbox contents and the producer's referent key. The integration
 test calls the real P4 surface after movement and verifies that leaving the
 location removes the target from the view. Historical DepthRead and the
 foreground producer still require integration.
+
+P4 opening now calls `HistoricalWorld.capture_visible_tool_resource()`
+before taking the ledger antecedent snapshot. It reads the exact current
+owner resource and a perceived arrival or movement at that location within
+the same transaction. The target denotes the coarse resource affordance
+already reported by P4. The owner does not currently identify an individual
+tool. The integration test asserts the opening output, durable deduplication
+after reopen, and location-sensitive surface reads.

@@ -17,6 +17,7 @@ from p3_fixture_support import build_case
 from developmental_recursion.contracts import RecursionRefusal, canonical
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
+from rawlsing_next.sorok_history.owner import HistoricalWorld
 from response import check_source, express, read_response
 from speech import admit_speech
 
@@ -80,8 +81,6 @@ def surface(owner, ledger):
             "tool_available": view.get("tool_available"),
             "observations": observations,
             "choices": choices, "invitation": invited}
-    from rawlsing_next.sorok_history.owner import HistoricalWorld
-
     particulars = HistoricalWorld(fanin.session).visible_surfaces()
     if particulars:
         result["historical_particulars"] = list(particulars)
@@ -97,6 +96,7 @@ def new(state, ledger_file, history):
         owner = case.owner
         formation = owner.realize("p4-formation", case.proposals[0], owner.snapshot())
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
+        HistoricalWorld(case.base_owner.fanin.session).capture_visible_tool_resource()
         plan = case.plans[0]
         ledger = {"scope": {key: plan[key] for key in
                             ("project", "counterpart", "interlocutor_role")},

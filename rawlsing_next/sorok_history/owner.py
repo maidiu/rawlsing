@@ -95,44 +95,79 @@ class HistoricalWorld:
         ):
             raise HistoryRefusal("INVALID_SURFACE_PARTICULAR")
 
-        session = self.session
         with self._write() as (world, state):
-            root, branch = state["root"], state["branch"]
-            target_id = "history-target:" + digest([root, branch, particular.referent_key])
-            material = asdict(particular)
-            dimensions = sorted(set(particular.unresolved))
-            material["unresolved"] = dimensions
-            previous = state["targets"].get(target_id)
-            if previous is not None:
-                if previous["surface"] != material:
-                    raise HistoryRefusal("BOUND_SURFACE_CONFLICT")
-                return deepcopy(previous)
-
-            event = session.event(particular.occurrence_id)
+            event = self.session.event(particular.occurrence_id)
+            already_bound = self._target_id(state, particular.referent_key) in state["targets"]
             if (
-                event is None or event.get("kind") not in {"ARRIVAL", "MOVE", "REPAIR", "OFFSCREEN_REPAIR"}
+                event is None
+                or event.get("kind") not in {"ARRIVAL", "MOVE", "REPAIR", "OFFSCREEN_REPAIR"}
                 or event.get("location") != particular.location
-                or event.get("clock") != world.clock
+                or (not already_bound and event.get("clock") != world.clock)
                 or not event.get("hash")
             ):
                 raise HistoryRefusal("CURRENT_OBJECTIVE_OCCURRENCE_REQUIRED")
+            return deepcopy(self._register(state, particular, event, world.clock))
 
-            target = {
-                "id": target_id, "root": root, "branch": branch,
-                "surface": material, "parent_hash": event["hash"],
-                "admitted_at": world.clock, "version": 1,
+    @staticmethod
+    def _target_id(state, key):
+        return "history-target:" + digest([state["root"], state["branch"], key])
+
+    def _register(self, state, particular, event, clock):
+        target_id = self._target_id(state, particular.referent_key)
+        material = asdict(particular)
+        dimensions = sorted(set(particular.unresolved))
+        material["unresolved"] = dimensions
+        previous = state["targets"].get(target_id)
+        if previous is not None:
+            if previous["surface"] != material:
+                raise HistoryRefusal("BOUND_SURFACE_CONFLICT")
+            return previous
+        target = {
+            "id": target_id, "root": state["root"], "branch": state["branch"],
+            "surface": material, "parent_hash": event["hash"],
+            "admitted_at": clock, "version": 1,
+        }
+        if dimensions:
+            job_id = "history-job:" + digest([target_id, dimensions, target["version"]])
+            state["outbox"][job_id] = {
+                "id": job_id, "target_id": target_id, "status": "ENQUEUED",
+                "trigger": "NEW_WORLD_PARTICULAR", "dimensions": dimensions,
+                "target_version": target["version"], "parent_hash": event["hash"],
+                "root": state["root"], "branch": state["branch"],
             }
-            if dimensions:
-                job_id = "history-job:" + digest([target_id, dimensions, target["version"]])
-                state["outbox"][job_id] = {
-                    "id": job_id, "target_id": target_id, "status": "ENQUEUED",
-                    "trigger": "NEW_WORLD_PARTICULAR", "dimensions": dimensions,
-                    "target_version": target["version"], "parent_hash": event["hash"],
-                    "root": root, "branch": branch,
-                }
-                target["job_id"] = job_id
-            state["targets"][target_id] = target
-            return deepcopy(target)
+            target["job_id"] = job_id
+        state["targets"][target_id] = target
+        return target
+
+    def capture_visible_tool_resource(self):
+        """Bind the P4 owner's public tool affordance to its place and arrival.
+
+        The owner exposes availability of a local tool resource without an
+        individual tool identifier. Preserve that resolution here.
+        """
+        session = self.session
+        with self._write() as (world, state):
+            location = world.positions.get(session.meta["user_actor"])
+            if not location or world.resources.get(location, {}).get("tool_available") is not True:
+                return None
+            key = f"world-resource:{location}:tool"
+            target_id = self._target_id(state, key)
+            if target_id in state["targets"]:
+                return target_id
+            perceived = session.user_perceived_ids()
+            occurrence = next((
+                event for event in reversed(session.events())
+                if event.get("kind") in {"ARRIVAL", "MOVE"}
+                and event.get("location") == location
+                and event["event_id"] in perceived
+            ), None)
+            if occurrence is None:
+                return None
+            particular = SurfaceParticular(
+                occurrence["event_id"], key, "resource", location,
+                {"tool_available": True}, ("physical", "provenance"),
+            )
+            return self._register(state, particular, occurrence, world.clock)["id"]
 
     def target(self, target_id):
         state = self._state(self.session.world())

@@ -112,11 +112,17 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
     from run_p4 import new, open_owner, surface as foreground_surface
 
     ledger_file = tmp_path / "p4_receipts.json"
-    new(tmp_path, ledger_file, "recognized_plan")
+    opening = new(tmp_path, ledger_file, "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    assert tool["domain"] == "resource"
+    assert tool["physical"] == {"tool_available": True}
     ledger = json.loads(ledger_file.read_text())
     owner = open_owner(tmp_path / "actual-p2")
     try:
         session = owner.base_owner.fanin.session
+        history = HistoricalWorld(session)
+        assert history.capture_visible_tool_resource() == tool["id"]
+        assert [job["target_id"] for job in history.pending()] == [tool["id"]]
         actor = session.meta["user_actor"]
         here = session.world().positions[actor]
         there = "market" if here == "workshop" else "workshop"
@@ -131,6 +137,6 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
             {"id": target["id"], "domain": "artifact", "physical": {"cover": "paper"}}
         ]
         session.travel(here)
-        assert "historical_particulars" not in foreground_surface(owner, ledger)
+        assert foreground_surface(owner, ledger)["historical_particulars"] == [tool]
     finally:
         owner.close()
