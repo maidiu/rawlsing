@@ -1,3 +1,7 @@
+# #777 whole-record review REVISE; exact author correction dispatched
+
+Independentreviewc4f68989 verifies55cases, preserved51historicalcases/schema/canonicalalias and C9-C13evidence. Requiredcorrections: actualper-parentissue dispositions instead ofblanketT6hold; staleC8/base/provenance; C9reviewtarget vs correction lineage; residualQUCabsenceclaim; test-onlywording; overbroadreviewerban. T2stillunsatisfiedtypedhold; T3/T4zero-positiveclaims arelimits. Existingauthor PID63678 repairs onlythese documentarydefects; Actual FlashMAX turn verified. No runtime/science/native/protectedchange orgoalcompletion.
+
 # #777 C14 combined return received; required whole-record review dispatched
 
 Immutablecontentf42b73ab/provenanceea7e878a retains51historicalcases andadds4C9cases:55unique,25FUNCTION_CURRENT_UNPROVED/30NOT_RUN. HQ verifiedIDs/verdictpreservation/canonicalalias/hash. Allacceptedreplays andcurrenttypedunknowns integrated. Actualgoalcriteria remainincomplete; review will test preciseholds versusgenericselectedoperationdeferral andparentdispositionresiduals. Existingnonauthorreviewer PID60068 launched; actual next-turn DeepSeek Flash MAX metadata verified. No newreader/engine/native/science/protectedmerge; goalfalse.
