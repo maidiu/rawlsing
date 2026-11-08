@@ -324,6 +324,40 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resum
     replay = subprocess.run(args, check=True, text=True, capture_output=True)
     assert json.loads(replay.stdout) == json.loads(inspection.stdout)
 
+    more = subprocess.run(
+        cli + ["inspect-particular", target_id, "--property", "color"],
+        check=True, text=True, capture_output=True,
+    )
+    assert json.loads(more.stdout)["observation"]["physical_depth_status"] == "PENDING"
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        history = HistoricalWorld(owner.base_owner.fanin.session)
+        history.inspect(target_id, predicate="color")
+        [followup] = history.pending()
+        assert followup["requested_predicate"] == "color"
+        lease = history.lease()
+        assert lease["job"]["id"] == followup["id"]
+        assert lease["packet"]["surface"][target_id]["requested_predicate"] == "color"
+        assert any(row["ref"]["object_id"] == fact["fact_id"]
+                   for row in lease["packet"]["known_facts"])
+        candidate = proposal(lease["packet"])
+        if resume:
+            claim = candidate["facts"][0]
+            del claim["ref"]
+            claim.update(predicate="color", value="blue")
+            checksum = digest(claim)
+            claim["ref"] = {"kind": "FACT", "object_id": "proposal:" + checksum,
+                            "content_hash": checksum}
+        assert history.record_candidate(
+            followup["id"], lease["job"]["lease_token"], candidate, {"grade": "MOCK"}
+        ) == "CANDIDATE_READY"
+        status = history.commit_candidate(followup["id"])["status"]
+        assert status == ("INDEX_READY" if resume else "SOURCE_HELD")
+        if resume:
+            assert history.target(target_id)["physical_depth"]["color"]["value"] == "blue"
+    finally:
+        owner.close()
+
     owner = open_owner(tmp_path / "actual-p2")
     try:
         session = owner.base_owner.fanin.session

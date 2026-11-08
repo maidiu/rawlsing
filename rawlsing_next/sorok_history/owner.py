@@ -12,6 +12,7 @@ from uuid import uuid4
 RESOURCE = "sorok.historical_materialization.v1"
 DOMAINS = frozenset({"item", "artifact", "collection", "place", "resource", "social_form"})
 DIMENSIONS = frozenset({"physical", "provenance", "participation", "dependencies"})
+VISIBLE_PHYSICAL = frozenset({"color", "condition", "marking", "texture"})
 PHYSICAL_TYPES = {
     "color": str, "material": str, "condition": str, "marking": str, "texture": str,
     "length_mm": int, "width_mm": int, "height_mm": int, "mass_grams": int,
@@ -258,6 +259,13 @@ class HistoricalWorld:
                     "state": "KNOWN"}
             checksum = digest(body)
             facts.append({**body, "ref": ref("KNOWN_FACT", "surface:" + checksum, checksum)})
+        requested = job.get("requested_predicate")
+        if requested is not None:
+            for predicate, row in sorted(target.get("physical_depth", {}).items()):
+                facts.append({
+                    "target_id": target_id, "predicate": predicate, "value": row["value"],
+                    "state": "KNOWN", "ref": ref("FACT", row["id"], digest(row)),
+                })
         known_refs = [fact["ref"] for fact in facts]
         occurrence = ref("WORLD_EVENT", event["event_id"], event["hash"])
         target_ref = ref("WORLD_TARGET", target_id, digest(target))
@@ -276,6 +284,7 @@ class HistoricalWorld:
                 "domain": surface["domain"], "location": surface["location"],
                 "physical": deepcopy(surface["physical"]),
                 "known_fact_refs": known_refs, "unresolved": list(job["dimensions"]),
+                **({"requested_predicate": requested} if requested is not None else {}),
             }},
             "known_facts": facts,
             "world_refs": [target_ref],
@@ -312,8 +321,15 @@ class HistoricalWorld:
                     continue
                 target = state["targets"][job["target_id"]]
                 if target["version"] != job["target_version"]:
-                    job["status"] = "STALE"
-                    continue
+                    predicate = job.get("requested_predicate")
+                    if predicate is None:
+                        job["status"] = "STALE"
+                        continue
+                    if (predicate in target["surface"]["physical"]
+                            or predicate in target.get("physical_depth", {})):
+                        job["status"] = "NO_WORK"
+                        continue
+                    job["target_version"] = target["version"]
                 if job["status"] == "STALE":
                     job.setdefault("stale_attempts", []).append({
                         "attempt": job["attempt"], "packet_hash": job["packet_hash"],
@@ -429,6 +445,8 @@ class HistoricalWorld:
                 if not claims or any(
                     claim["kind"] != "facts" or claim.get("predicate") not in PHYSICAL_TYPES
                     or "physical" not in job["dimensions"]
+                    or (job.get("requested_predicate") is not None
+                        and claim.get("predicate") != job["requested_predicate"])
                     for claim in claims
                 ):
                     held.append({"group_id": group_id, "reason": "HISTORICAL_OWNER_SCOPE_HELD"})
@@ -481,10 +499,12 @@ class HistoricalWorld:
             })
             return deepcopy(job["admission"])
 
-    def inspect(self, target_id):
+    def inspect(self, target_id, *, predicate=None):
         """Perform a local inspection through the existing world event owner."""
         from bp4.world import make_event
 
+        if predicate is not None and predicate not in VISIBLE_PHYSICAL:
+            raise HistoryRefusal("HISTORICAL_INSPECTION_PREDICATE_UNAVAILABLE")
         session = self.session
         with self._write() as (world, state):
             target = state["targets"].get(target_id)
@@ -497,14 +517,31 @@ class HistoricalWorld:
             visible = {
                 predicate: row["id"]
                 for predicate, row in target.get("physical_depth", {}).items()
-                if predicate in {"color", "condition", "marking", "texture"}
+                if predicate in VISIBLE_PHYSICAL
             }
             job = state["outbox"].get(target.get("job_id"), {})
             job_status = job.get("status")
-            if visible:
+            active = {"ENQUEUED", "RUNNING", "CANDIDATE_READY", "FAILED_RETRYABLE"}
+            next_job = None
+            known = set(visible) | set(target["surface"]["physical"])
+            if (predicate is not None and predicate not in known
+                    and "physical" in target["surface"]["unresolved"]
+                    and job_status not in active):
+                next_job = "history-job:" + digest([target_id, "INSPECT_PHYSICAL", predicate])
+                job = state["outbox"].get(next_job)
+                if job is None:
+                    job = {
+                        "id": next_job, "target_id": target_id, "status": "ENQUEUED",
+                        "trigger": "INSPECT_PHYSICAL", "dimensions": ["physical"],
+                        "requested_predicate": predicate, "target_version": target["version"],
+                        "root": target["root"], "branch": target["branch"],
+                        "parent_hash": target["parent_hash"],
+                    }
+                job_status = job["status"]
+            if (predicate in known if predicate is not None else bool(visible)):
                 depth_status = "OBSERVED"
             elif ("physical" in job.get("dimensions", ())
-                  and job_status in {"ENQUEUED", "RUNNING", "CANDIDATE_READY", "FAILED_RETRYABLE"}):
+                  and job_status in active):
                 depth_status = "PENDING"
             elif "physical" in job.get("dimensions", ()) and job_status == "SOURCE_HELD":
                 depth_status = "HELD"
@@ -514,7 +551,8 @@ class HistoricalWorld:
                 clock=world.clock, kind="INSPECT", actor_id=actor, location=location,
                 summary="You inspect the particular.", sequence=len(world.events),
                 body={"target": target_id, "physical_fact_ids": visible,
-                      "physical_depth_status": depth_status, "changed": False},
+                      "physical_depth_status": depth_status, "changed": False,
+                      **({"requested_predicate": predicate} if predicate is not None else {})},
             )
             world.add_event(event)
             session._append_event(event, perceive=(actor,))
@@ -527,6 +565,8 @@ class HistoricalWorld:
             state.setdefault("inspections", {})[event["event_id"]] = event["hash"]
             if depth_status == "PENDING":
                 job.setdefault("inspection_priority_event", event["event_id"])
+                if next_job is not None:
+                    state["outbox"].setdefault(next_job, job)
             return deepcopy(event)
 
     def read_inspection(self, event_id):

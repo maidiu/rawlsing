@@ -19,7 +19,9 @@ from p3_fixture_support import build_case
 from developmental_recursion.contracts import RecursionRefusal, canonical, digest
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
-from rawlsing_next.sorok_history.owner import HistoricalWorld, HistoryRefusal, RESOURCE
+from rawlsing_next.sorok_history.owner import (
+    HistoricalWorld, HistoryRefusal, RESOURCE, VISIBLE_PHYSICAL,
+)
 from response import check_source, express, read_response
 from speech import admit_speech
 
@@ -139,6 +141,9 @@ def act(owner, ledger_file, ledger, args):
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
     elif args.command == "inspect-particular":
         action = {"operation": "INSPECT_PARTICULAR", "target": args.target}
+        predicate = getattr(args, "property", None)
+        if predicate is not None:
+            action["property"] = predicate
     else:
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
         if args.then_wait:
@@ -167,7 +172,7 @@ def act(owner, ledger_file, ledger, args):
     elif args.command == "inspect-particular":
         history = HistoricalWorld(session)
         try:
-            event = history.inspect(args.target)
+            event = history.inspect(args.target, predicate=predicate)
         except HistoryRefusal as exc:
             if str(exc) != "HISTORICAL_TARGET_UNAVAILABLE":
                 raise
@@ -273,6 +278,7 @@ def main():
                          help="After inspection, let two workshop clock units pass.")
     particular = commands.add_parser("inspect-particular")
     particular.add_argument("target")
+    particular.add_argument("--property", choices=sorted(VISIBLE_PHYSICAL))
     particular.add_argument("--request-id")
     args = parser.parse_args()
 

@@ -53,3 +53,12 @@ historical owner reuse one C12 prefix check that verifies each recorded
 parent-child edge. The nested branch receives its own target ID and cannot
 read either ancestor's historical jobs. This does not authorize shared
 pre-contact historical writes.
+
+A P4 inspection can now select a visible physical predicate with
+`inspect-particular TARGET --property color`. After the initial job settles,
+the owner records a durable follow-up for a selected missing property in
+the inspection transaction. A repeated request reuses its job identity.
+The model receives the prior physical facts by exact admitted reference and
+the selected predicate. The owner holds a group that proposes a different
+property. This is an explicit T3 physical-depth request. A newly discovered
+historical link that independently triggers T2 remains unverified.
