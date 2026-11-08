@@ -435,10 +435,14 @@ def test_actual_fork_holds_parent_history_and_inflight_job(tmp_path, monkeypatch
         target = history.admit_surface(surface)
         lease = history.lease()
         assert lease["job"]["id"] == target["job_id"]
+        baseline = history.root_tool_baseline("workshop")
+        assert baseline["tool_available"] is True
+        assert baseline["clock"] < session.clock()
         parent = session.branch_id
 
         session.fork_alt("mechanism-i-isolation")
         assert session.branch_id != parent
+        assert history.root_tool_baseline("workshop") == baseline
         assert history.target(target["id"]) is None
         assert history.job(target["job_id"]) is None
         assert history.lease() is None
@@ -467,6 +471,7 @@ def test_actual_fork_holds_parent_history_and_inflight_job(tmp_path, monkeypatch
     nested_owner = api.open(root)
     try:
         history = HistoricalWorld(nested_owner.session)
+        assert history.root_tool_baseline("workshop") == baseline
         assert history.target(nested["id"]) == nested
         assert history.target(child["id"]) is None
     finally:

@@ -58,6 +58,24 @@ class HistoricalWorld:
     def scope(self):
         return self.session.read_root()["root_hash"], self.session.branch_id
 
+    def root_tool_baseline(self, location):
+        """Read a tool affordance from the existing sealed pre-contact world."""
+        store = self.session.product.store
+        if not self.session.product.c12_verify("root").get("ok"):
+            raise HistoryRefusal("HISTORICAL_ROOT_BASELINE_UNVERIFIED")
+        checkpoint = store.checkpoints("root")[0]
+        world = checkpoint["state"]["world"]
+        resource = world["resources"].get(location, {})
+        available = resource.get("tool_available")
+        if type(available) is not bool:
+            return None
+        root, _ = self.scope()
+        return {
+            "root": root, "root_checkpoint_hash": checkpoint["hash"],
+            "clock": world["clock"], "location": location,
+            "tool_available": available,
+        }
+
     def _state(self, world):
         root, branch = self.scope()
         state = world.resources.get(RESOURCE)
@@ -390,6 +408,8 @@ class HistoricalWorld:
                 **({"requested_predicate": requested} if requested is not None else {}),
                 **({"prior_actor_repairs": job["prior_actor_repairs"]}
                    if job.get("prior_actor_repairs") else {}),
+                **({"root_tool_baseline": job["root_tool_baseline"]}
+                   if job.get("root_tool_baseline") else {}),
             }},
             "known_facts": facts,
             "world_refs": [target_ref],
@@ -447,6 +467,10 @@ class HistoricalWorld:
                            world_readset=self._world_readset(world), chronology_bound=True,
                            repair_actor_bound=True)
                 job["prior_actor_repairs"] = self._prior_repair_context(world, state, target)
+                surface = target["surface"]
+                location = surface["location"]
+                if surface["referent_key"] == f"world-resource:{location}:tool":
+                    job["root_tool_baseline"] = self.root_tool_baseline(location)
                 try:
                     packet = self._constraint_packet(world, target, job)
                 except HistoryRefusal as exc:

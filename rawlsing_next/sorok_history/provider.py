@@ -23,7 +23,7 @@ from rawlsing_next.sorok_history.admission import SCHEMA as ADMISSION_PACKET_SCH
 
 PROVIDER_CONTRACT_ID = "SOROK_HISTORICAL_MODEL_PROVIDER@1"
 RECEIPT_SCHEMA = "SOROK_HISTORICAL_MODEL_RECEIPT@1"
-PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@4"
+PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@5"
 
 LIVE_PROVIDER_NOT_RUN = "LIVE_PROVIDER_NOT_RUN"
 GRADE_NONE = "NONE"
@@ -379,6 +379,7 @@ def _prompt(packet: Mapping[str, Any]) -> str:
         "    Copy owner-supplied references exactly. Respect the surface and chronology.\n"
         "  - When the target supplies requested_predicate, propose only that physical predicate.\n"
         "  - Prior actor repairs are contextual precedents only, not parents of this target.\n"
+        "  - The root tool baseline is historical context. Preserve the current surface state.\n"
         "  - Arrays may be empty. Do not return a bare list or scalar.\n"
         "  - Semantic graph validation belongs to a separate owner; return candidate\n"
         "    material only.\n\n"

@@ -171,6 +171,10 @@ def test_p4_wake_completes_through_a_mock_http_endpoint(tmp_path, monkeypatch, o
         owner = open_owner(tmp_path / "actual-p2")
     try:
         history = HistoricalWorld(owner.base_owner.fanin.session)
+        [target_id] = packet["target_ids"]
+        target = packet["surface"][target_id]
+        assert target["root_tool_baseline"] == history.root_tool_baseline(target["location"])
+        assert target["root_tool_baseline"]["clock"] < packet["time"]
         deadline = monotonic() + 15
         while True:
             job = history.job(packet["request_id"])

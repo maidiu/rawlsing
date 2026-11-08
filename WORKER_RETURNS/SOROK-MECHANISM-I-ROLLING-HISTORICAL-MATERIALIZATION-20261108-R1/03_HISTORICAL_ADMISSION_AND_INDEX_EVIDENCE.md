@@ -104,3 +104,10 @@ context only, outside the packet's admissible parent references. The
 two-repair sourcefree test uses real S46 actions with controlled stock
 replenishment. It checks that the first repair is context and the second
 repair remains the only event parent of its output.
+
+The existing C12 root checkpoint supplies a read-only tool baseline.
+The owner verifies the root and binds its exact checkpoint hash, clock
+and coarse availability into new tool leases. The current branch surface
+still determines present availability. The mock HTTP test checks the
+actual packet, and the nested-fork test checks identical baseline reads
+before and after cold reopen. Shared generated history remains unissued.
