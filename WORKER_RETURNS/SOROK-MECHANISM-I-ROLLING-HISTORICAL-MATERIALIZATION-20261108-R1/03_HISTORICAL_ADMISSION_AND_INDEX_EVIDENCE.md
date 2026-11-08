@@ -27,3 +27,13 @@ Only the compatible group is admitted and the result is `PARTIAL_HELD`.
 The admission evaluator separately exercises H3 actor effects and H2
 without eligible slack. These are controlled tests. Actor/history reverse
 queries and branch-shared index replay still require evidence.
+
+The owner now records an event-to-target reverse index in the same
+checkpoint as target admission. P4's actual foreground surface consumes
+it through `HistoricalWorld.visible_surfaces`, using only the current
+observer's perceived event IDs and filtering by location. Checkpoints
+written before this index derive it from canonical target parents on read.
+The foreground test binds an artifact and a collection to one actual
+movement event, verifies both are returned, removes the derived index in
+the fixture to verify rebuild parity, and leaves the location to verify
+neither remains visible. It does not establish actor-history linkage.

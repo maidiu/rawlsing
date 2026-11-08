@@ -183,9 +183,26 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
             SurfaceParticular(event["event_id"], "fixture:document-2", "artifact",
                               there, {"cover": "paper"}, ("provenance",))
         )
-        assert foreground_surface(owner, ledger)["historical_particulars"] == [
-            {"id": target["id"], "domain": "artifact", "physical": {"cover": "paper"}}
-        ]
+        sibling = history.admit_surface(
+            SurfaceParticular(event["event_id"], "fixture:collection-3", "collection",
+                              there, {"count": 3}, ())
+        )
+        expected = {
+            target["id"]: ("artifact", {"cover": "paper"}),
+            sibling["id"]: ("collection", {"count": 3}),
+        }
+        assert {
+            row["id"]: (row["domain"], row["physical"])
+            for row in foreground_surface(owner, ledger)["historical_particulars"]
+        } == expected
+
+        # Checkpoints from before the index was added rebuild the same projection.
+        with history._write() as (_, state):
+            assert set(state.pop("targets_by_parent")[event["event_id"]]) == set(expected)
+        assert {
+            row["id"]: (row["domain"], row["physical"])
+            for row in foreground_surface(owner, ledger)["historical_particulars"]
+        } == expected
         session.travel(here)
         assert foreground_surface(owner, ledger)["historical_particulars"] == [tool]
         result = act(owner, ledger_file, ledger, Namespace(

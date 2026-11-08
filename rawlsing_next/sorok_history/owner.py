@@ -124,6 +124,15 @@ class HistoricalWorld:
     def _target_id(state, key):
         return "history-target:" + digest([state["root"], state["branch"], key])
 
+    @staticmethod
+    def _parent_index(state):
+        if "targets_by_parent" in state:
+            return state["targets_by_parent"]
+        index = {}
+        for target in state["targets"].values():
+            index.setdefault(target["surface"]["occurrence_id"], []).append(target["id"])
+        return index
+
     def _register(self, state, particular, event, clock):
         target_id = self._target_id(state, particular.referent_key)
         material = asdict(particular)
@@ -148,6 +157,9 @@ class HistoricalWorld:
                 "root": state["root"], "branch": state["branch"],
             }
             target["job_id"] = job_id
+        index = self._parent_index(state)
+        index.setdefault(event["event_id"], []).append(target_id)
+        state["targets_by_parent"] = index
         state["targets"][target_id] = target
         return target
 
@@ -193,14 +205,17 @@ class HistoricalWorld:
         state = self._state(world)
         actor = self.session.meta["user_actor"]
         location = world.positions.get(actor)
-        perceived = self.session.user_perceived_ids()
-        return tuple(
-            {"id": target["id"], "domain": target["surface"]["domain"],
-             "physical": deepcopy(target["surface"]["physical"])}
-            for target in state["targets"].values()
-            if target["surface"]["location"] == location
-            and target["surface"]["occurrence_id"] in perceived
-        )
+        index = self._parent_index(state)
+        ids = {target_id for event_id in self.session.user_perceived_ids()
+               for target_id in index.get(event_id, ())}
+        result = []
+        for target_id in sorted(ids):
+            target = state["targets"][target_id]
+            surface = target["surface"]
+            if surface["location"] == location:
+                result.append({"id": target_id, "domain": surface["domain"],
+                               "physical": deepcopy(surface["physical"])})
+        return tuple(result)
 
     def pending(self):
         state = self._state(self.session.world())
