@@ -1,0 +1,5 @@
+# VMESTYE structural checks — no confusion with actual Pyat execution
+Run `python3 validation/validate_vmestye.py` from the VMESTYE root (or invoke script by its path). Stdlib-only, read-only.
+**Bootstrap checks:** exact inherited 44 LMX and 30 LMQ IDs, 29 F and 58 AR + 7 separately classified C6 auxiliary IDs, 73 baseline atlas IDs, 18 worker slots, 9 gates, necessary prong directories, explicit sourcecut/NOT_ASSESSED statuses, and conservative no-pass rule.
+**Not checks:** original scientific execution, full source corpus discovery, semantic equivalence, real rule application, actual first reader, CI/host/FIABC resolution, independent review, current PRE-MAIN CAS. Do not promote `BOOTSTRAP_SCHEMA_OK` into `FUNCTIONAL_MAP_COMPLETE` or `ZERO_LOSS_PROVED`.
+Future gates must additionally reconcile all remaining estates in `CONTROL/ESTATE_COVERAGE.tsv` (55 #777 case IDs, 62/82/49, 345 owner-navigation, 11 sections, 35 R157). Those are explicitly still `NOT_IMPORTED` in preliminaries. The independent reviewer must inspect semantic claims and false-greens, not just run a script.
