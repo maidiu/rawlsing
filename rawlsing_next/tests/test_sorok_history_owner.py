@@ -70,6 +70,9 @@ def test_surface_and_outbox_share_one_world_checkpoint(tmp_path, monkeypatch):
         assert packet["event_refs"] == [{
             "kind": "WORLD_EVENT", "object_id": event["event_id"], "content_hash": event["hash"]
         }]
+        assert packet["chronology"]["records"] == [{
+            "ref": packet["event_refs"][0], "time": event["clock"], "targets": [target["id"]],
+        }]
         assert packet["actor_refs"] == []
         assert packet["authority"]["allowed_H_classes"] == ["H0"]
         assert first["status"] == "RUNNING"

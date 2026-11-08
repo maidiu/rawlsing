@@ -239,6 +239,13 @@ class HistoricalWorld:
         known_refs = [fact["ref"] for fact in facts]
         occurrence = ref("WORLD_EVENT", event["event_id"], event["hash"])
         target_ref = ref("WORLD_TARGET", target_id, digest(target))
+        chronology = {"time": world.clock, "window": [target["admitted_at"], world.clock]}
+        # Reconstruct previously persisted packets with their original schema.
+        if job.get("chronology_bound"):
+            chronology["window"][0] = min(target["admitted_at"], event["clock"])
+            chronology["records"] = [{
+                "ref": occurrence, "time": event["clock"], "targets": [target_id],
+            }]
         return {
             "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
             "request_id": job["id"], "root": root, "branch": branch, "time": world.clock,
@@ -257,8 +264,7 @@ class HistoricalWorld:
                 "ref": ref("AUTHORITY", authority["policy"], digest(authority)),
                 "valid_from": target["admitted_at"], "valid_to": world.clock,
             },
-            "chronology": {"time": world.clock,
-                           "window": [target["admitted_at"], world.clock]},
+            "chronology": chronology,
             "causal_closure": {"allowed_slack_refs": []},
             "world_readset": job["world_readset"],
             "source_limits": ["ACTOR_HISTORY_NOT_ISSUED", "PAST_EVENT_ADMISSION_NOT_ISSUED"],
@@ -282,7 +288,7 @@ class HistoricalWorld:
                     continue
                 job.update(status="RUNNING", attempt=job.get("attempt", 0) + 1,
                            lease_token=uuid4().hex, expires_at=now + seconds,
-                           world_readset=self._world_readset(world))
+                           world_readset=self._world_readset(world), chronology_bound=True)
                 packet = self._constraint_packet(world, target, job)
                 job["packet_hash"] = digest(packet)
                 return deepcopy({"job": job, "target": target, "world_clock": world.clock,

@@ -59,8 +59,19 @@ def packet(**overrides):
             "valid_from": 0, "valid_to": 100,
             "allowed_H_classes": ["H0", "H1", "H2"],
         },
-        "chronology": {"time": 100, "window": [0, 100],
-                       "closed_event_refs": [CLOSED]},
+        "chronology": {
+            "time": 100, "window": [0, 100],
+            "closed_event_refs": [CLOSED],
+            "records": [
+                {"ref": EVENT, "time": 50, "targets": [TARGET],
+                 "condition": [{"target_id": TARGET, "predicate": "material",
+                                "value": "wood", "valid_from": 0, "valid_to": 100}],
+                 "custody": [{"target_id": TARGET, "custodian_ref": ACTOR,
+                              "valid_from": 0, "valid_to": 100}]},
+                {"ref": SLACK, "time": 40, "targets": [TARGET]},
+                {"ref": CLOSED, "time": 60, "targets": [TARGET], "closed": True},
+            ],
+        },
         "causal_closure": {
             "closed_event_refs": [CLOSED],
             "closed_owner_effect_refs": [CLOSED],
@@ -273,3 +284,59 @@ def test_accepted_fact_conflict_applies_to_later_group():
     assert [row["group_id"] for row in result["accepted_groups"]] == ["g1"]
     assert result["rejected"][0]["group_id"] == "g2"
     assert result["rejected"][0]["reason"] == "KNOWN_FACT_CONFLICT"
+
+
+def test_owner_chronology_late_parent_is_rejected():
+    late = packet()
+    late["chronology"]["records"][0]["time"] = 95
+    result = evaluate(late, candidate(
+        facts=[], occurrences=[occurrence(action="VISIT")],
+        dependencies=[group(h="H1")]))
+    assert result["status"] == "REJECTED"
+    assert result["rejected"][0]["reason"] == "PARENT_AFTER_CHILD"
+
+
+def test_contradictory_custody_and_impossible_condition_are_rejected():
+    other = ref("ACTOR", "other-custodian")
+    custody = occurrence("o1", action="VISIT", effects=[{
+        "kind": "CUSTODY", "target_id": TARGET, "custodian_ref": other,
+    }])
+    custody_result = evaluate(packet(), candidate(
+        facts=[], occurrences=[custody], dependencies=[group(h="H1")]))
+    assert custody_result["status"] == "REJECTED"
+    assert custody_result["rejected"][0]["reason"] == "CONTRADICTORY_CUSTODY"
+    condition = occurrence("o2", action="VISIT", effects=[{
+        "kind": "PHYSICAL_CONDITION", "target_id": TARGET,
+        "predicate": "material", "value": "metal",
+    }])
+    condition_result = evaluate(packet(), candidate(
+        facts=[], occurrences=[condition], dependencies=[group(h="H1")]))
+    assert condition_result["status"] == "REJECTED"
+    assert condition_result["rejected"][0]["reason"] == "IMPOSSIBLE_STATE_TRANSITION"
+
+
+def test_missing_owner_material_is_held_not_model_certified():
+    no_records = packet()
+    no_records["chronology"]["records"] = []
+    result = evaluate(no_records, candidate(
+        facts=[], occurrences=[occurrence(action="VISIT")],
+        dependencies=[group(h="H1")]))
+    assert result["status"] == "HELD"
+    assert result["held"][0]["reason"] == "OWNER_MATERIAL_REQUIRED"
+
+
+def test_arbitrary_effect_is_held():
+    arbitrary = occurrence("o1", action="VISIT", effects=[{"kind": "MAGIC"}])
+    result = evaluate(packet(), candidate(
+        facts=[], occurrences=[arbitrary], dependencies=[group(h="H1")]))
+    assert result["status"] == "HELD"
+    assert result["held"][0]["reason"] == "UNSUPPORTED_EFFECT"
+
+
+def test_lawful_bounded_h1_episode_is_accepted():
+    result = evaluate(packet(), candidate(
+        facts=[], occurrences=[occurrence(action="VISIT")],
+        dependencies=[group(h="H1")]))
+    assert result["status"] == "ACCEPTED"
+    assert result["accepted_groups"][0]["asserted_H_class"] == "H1"
+    assert result["accepted_groups"][0]["claims"][0]["action"] == "VISIT"

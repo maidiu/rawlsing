@@ -31,8 +31,16 @@ Packet schema (``SOROK_HISTORY_ADMISSION_PACKET@1``)
     match the packet and the authority must be current.  A missing or stale
     authority rejects the candidate.
 ``chronology``
-    ``{"time": int, "window": [start, end], "closed_event_refs": [exact_ref]}``.
-    Candidate times must not exceed the bound time and must fall in the window.
+    ``{"time": int, "window": [start, end], "closed_event_refs": [exact_ref],
+    "records": [owner_record]}``.  Candidate times must not exceed the bound
+    time and must fall in the window.  ``records`` is optional and owner-supplied;
+    each record is keyed by its exact event ``ref`` and carries ``time`` plus
+    optional ``closed``, ``targets``, scoped ``condition`` and scoped
+    ``custody``.  A condition entry is ``{"target_id", "predicate", "value",
+    "valid_from", "valid_to"}``; a custody entry is ``{"target_id",
+    "custodian_ref", "valid_from", "valid_to"}``.  Existing parents without an
+    owner record, a parent after its child, and a closed owner effect are
+    held/rejected rather than certified by model prose.
 ``causal_closure``
     ``{"closed_event_refs": [exact_ref],
     "closed_owner_effect_refs": [exact_ref],
@@ -140,6 +148,7 @@ _OWNERSHIP_ACTIONS = frozenset({
 })
 _OWNERSHIP_PREDICATES = frozenset({"OWNER", "OWNERSHIP", "POSSESSED_BY", "CUSTODY"})
 _CLOSED = "closed"
+_SUPPORTED_EFFECTS = frozenset({"NO_CHANGE", "PHYSICAL_CONDITION", "CUSTODY"})
 
 
 class _InputError(ValueError):
@@ -318,6 +327,78 @@ def _prepare_packet(packet: Mapping[str, Any]) -> dict[str, Any]:
             or any(type(item) is not int for item in window)
             or window[0] > window[1] or time < window[0] or time > window[1]):
         raise _InputError("INVALID_CHRONOLOGY")
+    records = chronology.get("records", chronology.get("events", []))
+    if not isinstance(records, (list, tuple)):
+        raise _InputError("INVALID_CHRONOLOGY")
+    chronology_records = {}
+    record_conditions = []
+    record_custody = []
+    record_times = {}
+    record_refs = set()
+    record_closed = set()
+    for item in records:
+        if not isinstance(item, Mapping):
+            raise _InputError("INVALID_CHRONOLOGY")
+        ref = _exact_ref(item.get("ref"), "CHRONOLOGY_REF")
+        key = _ref_key(ref, "CHRONOLOGY_REF")
+        if key in chronology_records:
+            raise _InputError("DUPLICATE_CHRONOLOGY_REF")
+        record_time = item.get("time")
+        if (type(record_time) is not int or record_time < window[0]
+                or record_time > time):
+            raise _InputError("INVALID_CHRONOLOGY")
+        closed = item.get("closed", False)
+        if type(closed) is not bool:
+            raise _InputError("INVALID_CHRONOLOGY")
+        targets = item.get("targets", [])
+        if (not isinstance(targets, (list, tuple))
+                or any(target not in target_ids for target in targets)):
+            raise _InputError("INVALID_CHRONOLOGY")
+        conditions = item.get("condition", item.get("conditions", []))
+        if not isinstance(conditions, (list, tuple)):
+            raise _InputError("INVALID_CHRONOLOGY")
+        for condition in conditions:
+            if not isinstance(condition, Mapping):
+                raise _InputError("INVALID_CHRONOLOGY")
+            target = condition.get("target_id")
+            predicate = condition.get("predicate")
+            start = condition.get("valid_from")
+            end = condition.get("valid_to")
+            if (target not in target_ids or not isinstance(predicate, str)
+                    or not predicate or type(start) is not int or type(end) is not int
+                    or not (start <= end and window[0] <= start and end <= time)):
+                raise _InputError("INVALID_CHRONOLOGY")
+            record_conditions.append({
+                "target_id": target, "predicate": predicate,
+                "value": condition.get("value"), "valid_from": start,
+                "valid_to": end, "event_ref": ref,
+            })
+        custody = item.get("custody", [])
+        if not isinstance(custody, (list, tuple)):
+            raise _InputError("INVALID_CHRONOLOGY")
+        for entry in custody:
+            if not isinstance(entry, Mapping):
+                raise _InputError("INVALID_CHRONOLOGY")
+            target = entry.get("target_id")
+            custodian = _exact_ref(entry.get("custodian_ref"), "CUSTODIAN_REF")
+            start = entry.get("valid_from")
+            end = entry.get("valid_to")
+            if (target not in target_ids or type(start) is not int or type(end) is not int
+                    or not (start <= end and window[0] <= start and end <= time)):
+                raise _InputError("INVALID_CHRONOLOGY")
+            record_custody.append({
+                "target_id": target, "custodian_ref": custodian,
+                "custodian_key": _ref_key(custodian, "CUSTODIAN_REF"),
+                "valid_from": start, "valid_to": end, "event_ref": ref,
+            })
+        chronology_records[key] = {
+            "ref": ref, "time": record_time, "closed": closed,
+            "targets": list(targets),
+        }
+        record_times[key] = record_time
+        record_refs.add(key)
+        if closed:
+            record_closed.add(key)
     closed_events = _ref_set(chronology.get("closed_event_refs", []), "CLOSED_EVENT_REF")
     closure = packet.get("causal_closure") or {}
     if not isinstance(closure, Mapping):
@@ -325,7 +406,8 @@ def _prepare_packet(packet: Mapping[str, Any]) -> dict[str, Any]:
     closed_effects = _ref_set(closure.get("closed_owner_effect_refs", []), "CLOSED_EFFECT_REF")
     slack_refs = _ref_set(closure.get("allowed_slack_refs", []), "SLACK_REF")
     closure_events = _ref_set(closure.get("closed_event_refs", []), "CLOSED_EVENT_REF")
-    closed_all = closed_events | closed_effects | closure_events
+    closed_all = closed_events | closed_effects | closure_events | record_closed
+    all_event_refs = event_refs | record_refs
     authority = packet.get("authority")
     if not isinstance(authority, Mapping):
         raise _InputError("AUTHORITY_REQUIRED")
@@ -342,7 +424,10 @@ def _prepare_packet(packet: Mapping[str, Any]) -> dict[str, Any]:
     if type(valid_from) is not int or type(valid_to) is not int or not (valid_from <= time <= valid_to):
         raise _InputError("AUTHORITY_NOT_CURRENT")
     budgets = _budgets(packet)
-    packet_refs = known_refs | world_refs | actor_refs | event_refs | closed_all | slack_refs
+    packet_refs = known_refs | world_refs | actor_refs | all_event_refs | closed_all | slack_refs
+    packet_refs |= record_refs
+    for entry in record_custody:
+        packet_refs.add(entry["custodian_key"])
     packet_refs.add(_ref_key(authority_ref, "AUTHORITY_REF"))
     for row in surfaces.values():
         packet_refs |= row["known_refs"]
@@ -351,8 +436,10 @@ def _prepare_packet(packet: Mapping[str, Any]) -> dict[str, Any]:
         "window": (window[0], window[1]), "target_ids": set(target_ids),
         "surfaces": surfaces, "known_facts": known_facts,
         "known_refs": known_refs, "world_refs": world_refs,
-        "actor_refs": actor_refs, "event_refs": event_refs,
+        "actor_refs": actor_refs, "event_refs": all_event_refs,
         "closed_refs": closed_all, "slack_refs": slack_refs,
+        "chronology_records": chronology_records, "record_times": record_times,
+        "record_conditions": record_conditions, "record_custody": record_custody,
         "authority_ref": authority_ref, "allowed_H": set(allowed_h),
         "packet_refs": packet_refs, "budgets": budgets,
     }
@@ -546,8 +633,68 @@ def _validate_fact(ctx: Mapping[str, Any], claim: Mapping[str, Any],
     return None
 
 
+def _active_condition(ctx: Mapping[str, Any], target_id: str, predicate: str,
+                      when: int) -> Mapping[str, Any] | None:
+    for row in ctx["record_conditions"]:
+        if (row["target_id"] == target_id and row["predicate"] == predicate
+                and row["valid_from"] <= when <= row["valid_to"]):
+            return row
+    return None
+
+
+def _active_custody(ctx: Mapping[str, Any], target_id: str,
+                    when: int) -> Mapping[str, Any] | None:
+    for row in ctx["record_custody"]:
+        if (row["target_id"] == target_id
+                and row["valid_from"] <= when <= row["valid_to"]):
+            return row
+    return None
+
+
+def _validate_effects(ctx: Mapping[str, Any], body: Mapping[str, Any],
+                      targets: list[str], when: int) -> str | None:
+    effects = body.get("effects", [])
+    if not isinstance(effects, (list, tuple)):
+        return "INVALID_EFFECT"
+    for effect in effects:
+        if not isinstance(effect, Mapping):
+            return "INVALID_EFFECT"
+        kind = str(effect.get("kind", "")).upper()
+        if kind == "NO_CHANGE":
+            continue
+        if kind == "PHYSICAL_CONDITION":
+            target = effect.get("target_id")
+            predicate = effect.get("predicate")
+            if (target not in targets or not isinstance(predicate, str)
+                    or not predicate or "value" not in effect):
+                return "INVALID_EFFECT"
+            active = _active_condition(ctx, target, predicate, when)
+            if active is None:
+                return "OWNER_MATERIAL_REQUIRED"
+            if active["value"] != effect["value"]:
+                return "IMPOSSIBLE_STATE_TRANSITION"
+            continue
+        if kind == "CUSTODY":
+            target = effect.get("target_id")
+            if target not in targets:
+                return "INVALID_EFFECT"
+            try:
+                custodian_key = _ref_key(effect.get("custodian_ref"), "CUSTODIAN_REF")
+            except _InputError:
+                return "INVALID_EFFECT"
+            active = _active_custody(ctx, target, when)
+            if active is None:
+                return "OWNER_MATERIAL_REQUIRED"
+            if active["custodian_key"] != custodian_key:
+                return "CONTRADICTORY_CUSTODY"
+            continue
+        return "UNSUPPORTED_EFFECT"
+    return None
+
+
 def _validate_occurrence(ctx: Mapping[str, Any], claim: Mapping[str, Any],
-                         occurrence_refs: set[str]) -> str | None:
+                         occurrence_refs: set[str],
+                         occurrence_times: Mapping[str, int]) -> str | None:
     body = claim["body"]
     effective_time = body.get("effective_time", body.get("time"))
     if type(effective_time) is not int or effective_time > ctx["time"] or not (
@@ -570,6 +717,16 @@ def _validate_occurrence(ctx: Mapping[str, Any], claim: Mapping[str, Any],
             return "MISSING_PARENT"
         if key in ctx["closed_refs"]:
             return "CLOSED_OWNER_EFFECT"
+        if key in occurrence_refs:
+            parent_time = occurrence_times.get(key)
+            if parent_time is None:
+                return "OWNER_MATERIAL_REQUIRED"
+        else:
+            parent_time = ctx["record_times"].get(key)
+            if parent_time is None:
+                return "OWNER_MATERIAL_REQUIRED"
+        if parent_time > effective_time:
+            return "PARENT_AFTER_CHILD"
     if not _source_refs_ok(ctx, body.get("source_refs", [])):
         return "EXTERNAL_REF_NOT_ADMITTED"
     action = str(body.get("action", "")).upper()
@@ -578,7 +735,7 @@ def _validate_occurrence(ctx: Mapping[str, Any], claim: Mapping[str, Any],
         return "OWNERSHIP_CONFLICT"
     if claim["h_class"] != "H3" and _actor_impact(body.get("effects", body)):
         return "H_CLASS_UNDERCALLED"
-    return None
+    return _validate_effects(ctx, body, targets, effective_time)
 
 
 def _validate_link(ctx: Mapping[str, Any], claim: Mapping[str, Any],
@@ -608,7 +765,8 @@ def _validate_link(ctx: Mapping[str, Any], claim: Mapping[str, Any],
 
 def _group_error(code: str, group: Mapping[str, Any]) -> str:
     if code in {"H3_HELD", "H_CLASS_NOT_ALLOWED", "H2_SOURCE_REF_REQUIRED",
-                "UNKNOWN_NOT_FACT", "H_CLASS_UNDERCALLED"}:
+                "UNKNOWN_NOT_FACT", "H_CLASS_UNDERCALLED",
+                "OWNER_MATERIAL_REQUIRED", "UNSUPPORTED_EFFECT"}:
         return "HELD"
     return "REJECTED"
 
@@ -665,6 +823,7 @@ def _occurrence_cycle(group: Mapping[str, Any]) -> bool:
 
 def _evaluate_group(ctx: Mapping[str, Any], candidate: Mapping[str, Any],
                     group: Mapping[str, Any], occurrence_refs: set[str],
+                    occurrence_times: Mapping[str, int],
                     accepted_parents: set[str]) -> tuple[str, str | None, list[dict[str, str]]]:
     refs = [claim["ref"] for claim in group["claims"]]
     refs.extend(group["parent_refs"])
@@ -703,7 +862,7 @@ def _evaluate_group(ctx: Mapping[str, Any], candidate: Mapping[str, Any],
                 if issue is None:
                     local_facts[key] = body.get("value")
         elif claim["kind"] == "occurrences":
-            issue = _validate_occurrence(ctx, claim, occurrence_refs)
+            issue = _validate_occurrence(ctx, claim, occurrence_refs, occurrence_times)
         else:
             issue = _validate_link(ctx, claim, occurrence_refs)
         if issue:
@@ -734,6 +893,10 @@ def evaluate(packet: dict, candidate: dict) -> dict:
     rejected: list[dict[str, Any]] = []
     accepted_parents: set[str] = set()
     accepted_occurrences: dict[str, set[str]] = {}
+    occurrence_times = {
+        claim["ref_key"]: claim["body"].get("effective_time", claim["body"].get("time"))
+        for claim in prepared["claims"] if claim["kind"] == "occurrences"
+    }
     pending = set(groups)
     while pending:
         progressed = False
@@ -747,7 +910,8 @@ def evaluate(packet: dict, candidate: dict) -> dict:
             visible_occurrences = _visible_occurrence_refs(group, accepted_occurrences)
             try:
                 status, reason, refs = _evaluate_group(
-                    ctx, prepared, group, visible_occurrences, accepted_parents)
+                    ctx, prepared, group, visible_occurrences, occurrence_times,
+                    accepted_parents)
             except _InputError as exc:
                 status, reason, refs = "REJECTED", exc.code, [claim["ref"] for claim in group["claims"]]
             record = {

@@ -61,3 +61,27 @@ foreground and actor witness on cold reopen, allowing the history checkpoint
 to advance while preserving the mismatch refusal for changes outside that
 resource. Actual model use and the independent actor activity reader remain
 pending.
+
+## PROGRAMMA_DELTA · Historical chronology
+
+Issue #785 and the Mechanism I historical admission seam receive OpenCode
+worker `ses_e52a51c43ffeuVe7ZZhNcga5YP`'s
+`codex/sorok-mechanism-i-historical-chronology-20261108-r1` at
+`586a34d2d6d619d444a8fecb2ad4682e571c0a77`. The existing Sorok world owner
+remains the source of event identity and clock. This is HQ-verified sourcefree
+engineering. Independent review and protected receiving are pending.
+
+A new lease now binds the committed occurrence's exact event ref and clock
+into `SOROK_HISTORY_ADMISSION_PACKET@1`. The first consumer is
+`admission.evaluate` through `HistoricalWorld.commit_candidate`. Older
+persisted packets keep their original digest inputs. The evaluator can reject
+late parents, contradictory condition or custody and changes to closed
+effects. Missing owner material is held. The live packet binds the occurrence
+time and target. Condition and custody evidence in the evaluator tests is
+controlled. The world commit remains scoped to H0 physical facts.
+
+The worker's 18 admission tests include a valid H1 evaluator case and its
+late-parent, contradictory custody and closed-effect negatives. These cases
+qualify the validator and do not grant H1 world writes. Live provider and
+independent review were not run for this cut. Independent activity consumption
+and recurrent demand creation are the next executable seams.
