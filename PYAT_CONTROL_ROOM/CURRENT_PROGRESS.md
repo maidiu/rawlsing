@@ -1,3 +1,7 @@
+# #777 exact review corrections verified; three existing sourcefree courts dispatched
+
+C16af7deeb0 correctsC15lineage/wording and replacesblanketT6with12per-issuedispositions. HQreran61checks:61pass. Three necessaryindependentlanes fromactualunfinishedactions: PR770authorityfitnessfalsifierreview PID67366; PR774Q86guardreview PID67371; R9F14Browser-prescribed mechanicalS2probes PID67378. BrowserHighsourcecourt remainscontrolling; OpenCodeR9 isrunneronly, no modelreplacement. pyat777-pr770-independent-sourcefree-review-r1:modelverified, pyat777-pr774-independent-guard-review-r1:modelverified, pyat777-r9-f14-sourcefree-falsifier-runner-r1:modelverified. No newengine/productionpatch/merge/originaldata/science. T2notyetaccepted; goalfalse.
+
 # #777 whole-record review REVISE; exact author correction dispatched
 
 Independentreviewc4f68989 verifies55cases, preserved51historicalcases/schema/canonicalalias and C9-C13evidence. Requiredcorrections: actualper-parentissue dispositions instead ofblanketT6hold; staleC8/base/provenance; C9reviewtarget vs correction lineage; residualQUCabsenceclaim; test-onlywording; overbroadreviewerban. T2stillunsatisfiedtypedhold; T3/T4zero-positiveclaims arelimits. Existingauthor PID63678 repairs onlythese documentarydefects; Actual FlashMAX turn verified. No runtime/science/native/protectedchange orgoalcompletion.
