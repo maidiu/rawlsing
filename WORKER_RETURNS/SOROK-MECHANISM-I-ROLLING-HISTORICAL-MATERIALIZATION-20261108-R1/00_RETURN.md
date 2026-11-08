@@ -44,6 +44,16 @@ perceived IDs unchanged. A normal runtime caller and independent
 review remain unverified. This establishes the interval seam for
 receiving review and does not close native, actor, or product authority.
 
+Independent reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP` returned
+`HOLD_SCOPED` on frozen draft `3e0fe6fd9dc244becc588a5c865e9db1bc67a60d`.
+Static review confirmed the isolated implementation scope and observer
+boundary. Independent execution was `NOT_RUN`. The focused test
+writes a surface property through the private owner write path and
+does not exercise a history job, admission receipt, or committed
+`physical_depth` fact. Normal runtime caller: `NONE_VERIFIED`.
+The activity owner is commissioned to bind an admitted depth fact to
+the existing S46 runtime path and prove hold and restoration there.
+
 The rolling-depth worker returned
 `3fbf1b65f47aa5a75274fb12fc14bd03a17576c3` from
 `ses_e52a51c43ffeuVe7ZZhNcga5YP`, with five author tests passing.
