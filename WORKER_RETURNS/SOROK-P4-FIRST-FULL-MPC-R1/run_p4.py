@@ -38,7 +38,15 @@ def advance(fanin, *, mode="ACTUAL"):
     session = fanin.session
     start = session.clock()
     domain = fanin.deps["make_domain"](mode=mode, start=start, end=start + 2)
-    return session.produce_interval(domain)
+    interval = session.produce_interval(domain)
+    history = HistoricalWorld(session)
+    for segment in interval["segments"]:
+        receipt = segment["world"]
+        if receipt["status"] == "CONFIRMED":
+            history.capture_completed_unit(
+                receipt["actual_action_event_id"], receipt["actual_action_event_hash"],
+            )
+    return interval
 
 
 def open_owner(root):
@@ -315,6 +323,8 @@ def main():
                         recover_history = candidate_ready or bool(history.pending())
                     else:
                         result = act(owner, ledger_file, ledger, args)
+                        history = HistoricalWorld(owner.base_owner.fanin.session)
+                        recover_history = bool(history.pending())
                 finally:
                     owner.close()
     except (RecursionRefusal, HistoryRefusal, FileNotFoundError) as exc:

@@ -201,6 +201,25 @@ class HistoricalWorld:
             )
             return self._register(state, particular, occurrence, world.clock)["id"]
 
+    def capture_completed_unit(self, event_id, event_hash):
+        """Bind one completed output at the resolution of an actual repair event."""
+        with self._write() as (world, state):
+            event = self.session.event(event_id)
+            if (event is None or event.get("hash") != event_hash
+                    or event.get("kind") != "REPAIR" or event["clock"] > world.clock
+                    or not event.get("location")):
+                raise HistoryRefusal("HISTORICAL_REPAIR_PARENT_REQUIRED")
+            body = event["body"]
+            if (body.get("source_owned") is not True
+                    or type(body.get("completed_delta")) is not int
+                    or body["completed_delta"] != 1):
+                raise HistoryRefusal("HISTORICAL_COMPLETED_UNIT_REQUIRED")
+            particular = SurfaceParticular(
+                event_id, f"completed-unit:{event_id}", "artifact", event["location"],
+                {"completed_units": 1}, ("physical", "provenance"),
+            )
+            return self._register(state, particular, event, world.clock)["id"]
+
     def target(self, target_id):
         state = self._state(self.session.world())
         return deepcopy(state["targets"].get(target_id))

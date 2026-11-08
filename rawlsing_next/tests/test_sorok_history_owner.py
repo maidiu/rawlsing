@@ -424,3 +424,41 @@ def test_actual_fork_holds_parent_history_and_inflight_job(tmp_path, monkeypatch
         assert history.target(child["id"]) is None
     finally:
         nested_owner.close()
+
+
+def test_real_interval_binds_completed_output_without_inspection(tmp_path, monkeypatch):
+    p4_dir = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
+    monkeypatch.syspath_prepend(str(p4_dir))
+    from run_p4 import advance, new, open_owner
+
+    new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        history = HistoricalWorld(fanin.session)
+        before = {job["id"] for job in history.pending()}
+        interval = advance(fanin)
+        [receipt] = [row["world"] for row in interval["segments"]
+                     if row["world"]["status"] == "CONFIRMED"]
+        [job] = [row for row in history.pending() if row["id"] not in before]
+        target = history.target(job["target_id"])
+        assert target["surface"]["domain"] == "artifact"
+        assert target["surface"]["physical"] == {"completed_units": 1}
+        assert target["surface"]["occurrence_id"] == receipt["actual_action_event_id"]
+        assert job["parent_hash"] == receipt["actual_action_event_hash"]
+        assert not any(event["kind"] == "INSPECT" for event in fanin.session.events())
+        assert history.capture_completed_unit(
+            receipt["actual_action_event_id"], receipt["actual_action_event_hash"]
+        ) == target["id"]
+        with pytest.raises(HistoryRefusal, match="HISTORICAL_REPAIR_PARENT_REQUIRED"):
+            history.capture_completed_unit(receipt["actual_action_event_id"], "wrong-hash")
+    finally:
+        owner.close()
+
+    reopened = open_owner(tmp_path / "actual-p2")
+    try:
+        history = HistoricalWorld(reopened.base_owner.fanin.session)
+        assert history.target(target["id"]) == target
+        assert history.job(job["id"]) == job
+    finally:
+        reopened.close()

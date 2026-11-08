@@ -62,3 +62,14 @@ The model receives the prior physical facts by exact admitted reference and
 the selected predicate. The owner holds a group that proposes a different
 property. This is an explicit T3 physical-depth request. A newly discovered
 historical link that independently triggers T2 remains unverified.
+
+A second ingress now uses the existing S46 interval producer. A confirmed
+world receipt with one completed unit binds an occurrence-scoped artifact
+and its job before P4 publishes the turn. The owner checks the exact
+source-owned REPAIR event and retains the event's coarse resolution. It
+does not infer a durable workpiece identity, provenance, or observer access.
+The focused test runs the actual repair without inspection, verifies
+deduplication and wrong-hash refusal, and reopens the target and job.
+This proves independent world activity can introduce a target. Whether
+an independent activity can consume newly materialized depth is separate
+and remains unverified.
