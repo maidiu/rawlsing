@@ -62,13 +62,74 @@ disposition_id	source_worker_or_pr	source_branch_sha	issue_or_pr	candidate_statu
 
 Rows that cannot meet an extraction path must remain explicit `SOURCE_UNAVAILABLE` / `ROW_SCHEMA_UNRESOLVED` with count and exact owner, not disappear. ZL-01 may extend a header **only by versioned schema amendment**, with explicit readback and notice to ZL-00/P0R; do not change existing field meaning.
 
-**Prong return contract** ZL-02–14 (one record shape each, source-graded): `00_RETURN.md`, `HUMAN_STORY.md`, `FINDINGS.tsv`, `OPERATION_TRACES.tsv`, `AUTHORITY_USE.tsv`, `EVIDENCE.tsv`, `COVERAGE.tsv`, `UNJOINS.tsv`, `CHANGED_FILES.txt`. Canonical `DATA/FUNCTION_ATLAS.tsv`, `DATA/RELATIONS.tsv`, `DATA/OPERATION_TRACES.tsv`, `DATA/AUTHORITY_APPLICATIONS.tsv`, implementation/consumer/evidence/event tables are ZL-15's **candidate master write** only. Existing literal `DATA/RELATIONS.tsv` header and permitted relation types in `07_ATLAS_AND_RELATION_SCHEMA.md` remain normative; any additional edge type needs schema revision and migration. Conditional `IF` edges require exact predicate and reverse-reachability conservation.
+**Prong return contract** ZL-02–14 (now governed by exact versioned five-table contract in §3B) (one record shape each, source-graded): `00_RETURN.md`, `HUMAN_STORY.md`, `FINDINGS.tsv`, `OPERATION_TRACES.tsv`, `AUTHORITY_USE.tsv`, `EVIDENCE.tsv`, `COVERAGE.tsv`, `UNJOINS.tsv`, `CHANGED_FILES.txt`. Canonical `DATA/FUNCTION_ATLAS.tsv`, `DATA/RELATIONS.tsv`, `DATA/OPERATION_TRACES.tsv`, `DATA/AUTHORITY_APPLICATIONS.tsv`, implementation/consumer/evidence/event tables are ZL-15's **candidate master write** only. Existing literal `DATA/RELATIONS.tsv` header and permitted relation types in `07_ATLAS_AND_RELATION_SCHEMA.md` remain normative; any additional edge type needs schema revision and migration. Conditional `IF` edges require exact predicate and reverse-reachability conservation.
+
+## 3A. P0R correction contract: stable RM IDs and exact seam predicates (version VMESTYE_P0_CONTRACT_V1_1)
+
+This is an additive versioned correction to the original ZL-00 freeze, in response to independent [P0R #799](https://github.com/maidiu/rawlsing/issues/799), defects D01/D04. It **does not mutate or deprecate** any of the 56 original requirements. The ZL-01 return at PR #820 is a separate draft and is **not** silently made conformant by this amendment.
+
+1. **RM check-ID migration (D01).** Canonical frozen IDs stay `AJ-RM01`…`AJ-RM30`. `CONTROL/P0_RM_CHECK_ID_BIJECTION_V1.tsv` gives one explicit `frozen_check_id → zl01_reported_check_id` per RM (30 unique old, 30 unique new, 30 exact source IDs, no collisions). The reported `AJ-RECENT_RM01`…`AJ-RECENT_RM30` are aliases of frozen identities, **never new obligations**; ZL-01 must either rekey its own checks to the frozen IDs or publish/consume this exact versioned bijection and verify both directions with zero missing/extra IDs. The authoritative ZL-01 census selector is `estate_id=RECENT_CAMPAIGN30 AND source_exact_id=RMxx`; the invented `estate_id=RECENT_RMxx` is not a valid census selector. Independent P0R must re-read an updated ZL-01 head before closing D01 or D03. No acceptance is asserted here.
+2. **Predicate-sensitive G4 seam source (D04).** `CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv` is a complete 82-row byte-exact transcription of `CURRENT_SEAM_STATES.jsonl@7a5429ffbc48efd25e28c912da80c822e66bc182` (source blob `5a951626c0dde91b682eb23216c88dbfc054808d`): key `(edge_id, source_commit_sha, source_path, source_blob_sha, source_row_1based)` and mandatory fields `original_requiredness`, `original_predicate`, `original_G2_kind`, `original_G2_edge_condition`. Its observed requiredness partition is **7 MUST, 26 IF, 12 FUNCTIONAL_OR_CONSUMES__NOT_NODE_DAG, 2 FUNCTIONAL_IF__NOT_ASTRA_NODE_DAG, 35 OBSERVED_OR_REPORTED_PRODUCER_RECEIVER__DOES_NOT_ADD_ASTRA_REQUIRED_EDGE = 82**. All 82 predicates and original_G2 edge conditions are nonempty and equal at this cut. The 26 IF and 2 FUNCTIONAL_IF records are conditional at their exact respective grades; neither is an unconditional DAG prerequisite, and these categories do not claim equivalence to the separately reported 13 conditional roadmap dependency links.
+3. **ZL-01 receiving gate.** An edge-ID-only census is **insufficient** even if 82/82 keys match. ZL-01 must add a **versioned exact-field source receipt** keyed by the source five-tuple above, or extend its own per-edge receipt/header through an approved migration, so that every record compares literal source `original_requiredness` and `original_predicate` to observed return fields. A changed predicate with unchanged edge_id/count **must fail**, as must `IF → MUST`, an empty original condition or a silently dropped functional conditional. A receipt must report per-field source-minus-return/return-minus-source and mismatch IDs, prove 82/82, report the conditional 26/2 counts, and cite method/cut. This sidecar **does not itself prove ZL-01 consumed the fields**. P0R independent replay and authorized validation remain mandatory.
+
+## 3B. Frozen 13-prong P1 output contract (version VMESTYE_P1_PRONG_TABLES_V1)
+
+**Applies uniformly to the 13 distinct owners ZL-02…ZL-14** at their existing `PRONGS/<owned-subtree>/` leases. It binds five mandatory per-prong TSVs left unnamed at the field level in the first ZL-00 return. These are **new exact headers**, not proof that the currently empty scaffold has populated rows. Any recipient with a conflicting preexisting header must HOLD and request versioned amendment; no in-place silent migration. File encoding: UTF-8, tab delimiter, single exact header, no embedded tabs or newlines, no duplicate complete primary keys, no blank mandatory identity fields, stable case and Unicode. A path, source SHA and row locator must refer to actual bytes; sourcefree/branch-only/unknown is an explicit proof ceiling.
+
+**Common row identity.** `prong_id` is the exact worker identifier from `ZL02`…`ZL14` (not a free-text branch label). Each table's primary key is `(prong_id, <local primary ID>)`; the same local ID in two prongs is not a duplicate. `finding_id` is a foreign key to that prong's existing 17-column `FINDINGS.tsv`. Its existing exact header is preserved; **do not** merge `function_ids` with an original source identity absent a proven same-grain join. Every source identity used below is the exact five-field pair `(estate_id, source_commit_sha, source_path, source_composite_id, source_grain)`, with `source_grain` corresponding to `record_grain` in the ZL-01 census. Resolve to `P0_RETURN_AND_BRANCH_CENSUS.tsv` only via that full tuple and record `census_id`; any absent/unread census tuple must remain explicit in `UNJOINS.tsv` and `COVERAGE.tsv`, not be forged as a match.
+
+Literal mandatory headers (tabs displayed as field separators; keep the actual TSV tab-separated):
+
+`OPERATION_TRACES.tsv` — one row per source-graded claimed meaning-producing operation:
+```tsv
+prong_id	trace_id	finding_id	census_id	estate_id	source_commit_sha	source_path	source_composite_id	source_grain	input_source_ref	input_semantics	selected_rule_ref	transformation_human_language	output_object	producer_edge_id	first_consumer_id	first_consumer_evidence_id	negative_or_refusal	execution_status	proof_grade	missing_next_edge
+```
+
+`AUTHORITY_USE.tsv` — separate rule availability, scope selection, application, refusal and first reader; a hash is never rule application:
+```tsv
+prong_id	authority_use_id	finding_id	trace_id	authority_id	authority_rule_source_ref	applicability_predicate	rule_available	rule_selected_for_scope	rule_applied_to_output	refusal_enforced	resulting_output_ref	first_consumer_evidence_id	authority_status	proof_grade	falsifier
+```
+
+`EVIDENCE.tsv` — one concrete source/receipt per row, no unsupported citation counts:
+```tsv
+prong_id	evidence_id	finding_id	census_id	estate_id	source_commit_sha	source_blob_sha	source_path	source_row_locator	source_composite_id	source_grain	claim_kind	claim_supported	evidence_kind	observed_cut	proof_grade	original_native_status	negative_or_refusal	independent_review_ref
+```
+
+`COVERAGE.tsv` — distinguish source identity, finding linkage and behavioral proof dimensions:
+```tsv
+prong_id	coverage_id	census_id	estate_id	source_commit_sha	source_path	source_composite_id	source_grain	finding_id	trace_presence	authority_presence	evidence_presence	first_consumer_presence	coverage_status	missing_joins	next_owner
+```
+
+`UNJOINS.tsv` — one unresolved source-to-target attempt per row; no silent drops:
+```tsv
+prong_id	unjoin_id	census_id	estate_id	source_commit_sha	source_path	source_composite_id	source_grain	finding_id	join_target_type	attempted_target_id	failure_code	candidate_aliases	evidence_id	negative_preserved	unresolved_question	next_owner	falsifier	status
+```
+
+**Enums and literal semantics:**
+
+- `prong_id`: exactly `ZL02|ZL03|ZL04|ZL05|ZL06|ZL07|ZL08|ZL09|ZL10|ZL11|ZL12|ZL13|ZL14`; rows may only use their owning prong ID. `trace_presence|authority_presence|evidence_presence|first_consumer_presence`: `PRESENT|ABSENT|NOT_ASSESSED|INAPPLICABLE`; `PRESENT` means an actual linked local row/evidence at exact key, not a claimed PASS.
+- `rule_available|rule_selected_for_scope|rule_applied_to_output|refusal_enforced`: `YES|NO|UNKNOWN|INAPPLICABLE` (four distinct values). Later YES dimensions do not follow automatically from earlier YES; `INAPPLICABLE` requires an explicit parent claim/authority explanation.
+- `execution_status`: `NOT_RUN|SOURCEFREE_TEST_ONLY|ORIGINAL_NATIVE_RUN_VERIFIED|HISTORICAL_REPORTED|STATIC_INSPECTION_ONLY|UNKNOWN`. `ORIGINAL_NATIVE_RUN_VERIFIED` requires a genuinely authorized original-native witness, not a fixture, and remains unclaimed here.
+- `proof_grade`: `S0_INDEX|S1_SOURCE_READ|S2_SOURCEFREE_RECEIPT|S2_INDEPENDENT_RECEIVED|S3_ORIGINAL_NATIVE_VERIFIED|UNRESOLVED`; the grade is a claimed evidence type and must cite actual competent source/runner/reviewer before elevation. `original_native_status`: `NOT_RUN|UNVERIFIED|VERIFIED_AT_EXACT_CUT|INAPPLICABLE`.
+- `authority_status`: `UNASSESSED|ISSUER_UNVERIFIED|RULE_AVAILABLE_ONLY|SELECTED_AT_SCOPE_ONLY|APPLIED_WITH_OUTPUT_RECEIPT|REFUSAL_VERIFIED|INAPPLICABLE|BLOCKED`; `APPLIED_WITH_OUTPUT_RECEIPT` requires a linked operation/evidence and source-scoped rule, `REFUSAL_VERIFIED` a negative case.
+- `coverage_status`: `LINKED_IDENTITY_ONLY|CANDIDATE_BEHAVIOR|QUALIFIED_SAME_GRAIN_SUCCESSOR|UNJOINED|SOURCE_UNREAD|NOT_ASSESSED|INAPPLICABLE`. `QUALIFIED_SAME_GRAIN_SUCCESSOR` must meet §2 original/source/current/readback/actual-first-reader and authority test; P0 ID matching alone cannot produce it.
+- `join_target_type`: `CENSUS|FINDING|OPERATION|AUTHORITY|EVIDENCE|CONSUMER|SOURCE_RIGHTS|OTHER_TYPED`; `failure_code`: `SOURCE_UNAVAILABLE|ROW_SCHEMA_UNRESOLVED|TARGET_ABSENT|KEY_AMBIGUOUS|GRAIN_MISMATCH|PREDICATE_MISMATCH|AUTHORITY_UNPROVED|FIRST_READER_UNPROVED|RIGHTS_UNVERIFIED|OTHER_TYPED`; `status`: `OPEN|OWNER_HELD|RESOLVED_WITH_RECEIPT`. `negative_preserved`: `YES|NO|NOT_ASSESSED`.
+- `claim_kind`: `SOURCE_IDENTITY|OPERATION|AUTHORITY_SELECTION|AUTHORITY_APPLICATION|REFUSAL|PRODUCER|FIRST_CONSUMER|HISTORICAL_DISPOSITION|SOURCE_PERMISSION|OTHER_TYPED`; `evidence_kind`: `EXACT_SOURCE_BODY|HISTORICAL_REPORT|STATIC_CODE|SOURCEFREE_TEST_RECEIPT|INDEPENDENT_REVIEW|ORIGINAL_NATIVE_RECEIPT|UNAVAILABLE_SOURCE`.
+- All other identifier, source-ref, narrative, output and falsifier columns are literal strings, not synthetic enum coercions. Use `UNKNOWN`, `UNRESOLVED`, `NOT_ASSESSED`, `NOT_RUN` as appropriate instead of blank assertion fields, and keep conflicts, alternatives and negative examples.
+
+**Cross-table foreign-key and completeness checks (required before any P1 individual receiving):**
+
+1. Every non-sentinel `finding_id` resolves in the *same prong* `FINDINGS.tsv`, except `UNJOINS.tsv` may record `UNRESOLVED` when the finding itself is missing; its `failure_code` must say `TARGET_ABSENT`. Every non-sentinel `trace_id` in `AUTHORITY_USE.tsv` resolves to the same-prong `OPERATION_TRACES.tsv`.
+2. Every non-sentinel `evidence_id` in `UNJOINS.tsv` and `first_consumer_evidence_id` in `OPERATION_TRACES.tsv` or `AUTHORITY_USE.tsv` resolves to exactly one same-prong `EVIDENCE.tsv`; `source_commit_sha` and `observed_cut` must not silently mix current and historic sourcecuts. `census_id` resolves exactly to ZL-01's `P0_RETURN_AND_BRANCH_CENSUS.tsv` or is `UNRESOLVED` with a matching `UNJOINS` entry.
+3. Every source tuple named by `OPERATION_TRACES/EVIDENCE/COVERAGE/UNJOINS` matches the exact five components of the selected census row when linked; no name-only lookup or delimiter-serialized surrogate can substitute. D02–D07 selectors use the actual grouped estate ID plus exact `source_path`; RM use `RECENT_CAMPAIGN30` and RM `source_exact_id`, not invented `estate_id` values. Preserve zero/many source→finding and finding→operation multiplicities with explicit bridge records, rather than hiding many-to-many links in an ID string.
+4. Each relevant ZL-01 estate identity in a prong's scope has either an exact `COVERAGE` record **or** an explicit `UNJOINS` with next owner; exact zero source-minus-coverage/extra-coverage at the declared scope is necessary but not a functional PASS. For G4 seam edges require the original predicate sidecar's literal fields, not just an edge_id.
+5. Any schema revision must have `VMESTYE_P1_PRONG_TABLES_V2` (or later), precise old/new header and enum mapping, owner and sourcecut notice, amended readback and independent P0R acceptance **before** ZL-02–14 release. The mandatory five-table schemas here are frozen *proposals pending that independent acceptance*, not a claim of a launched writer or executably validated stage.
 
 ## 4. Collision-free writer leases (candidate; live session confirmation required)
 
 | Worker | Exclusive file/path lease | Observed dispatch state |
 |---|---|---|
-| ZL-00 | `CONTROL/P0_ESTATE_AND_CUTS.tsv; CONTROL/P0_SCHEMA_AND_LEASES.md; CONTROL/P0_ANTI_JOIN_REQUIREMENTS.tsv; CONTROL/P0_SOROK_INDEX_ONLY48.tsv; CONTROL/P0_VALIDATOR_READBACK.md; CONTROL/P0_ZL00_RETURN.md; CONTROL/P0_ZL00_CHANGED_FILES.txt` | ACTIVE_THIS_SESSION_ONLY |
+| ZL-00 | Original seven `CONTROL/P0_*` files plus exclusive additive `CONTROL/P0_RM_CHECK_ID_BIJECTION_V1.tsv` and `CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv` | ACTIVE_THIS_SESSION_ONLY__P0R_REVISE_CORRECTION |
 | ZL-01 | `CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv; CONTROL/P0_NO_DROP_ANTI_JOINS.tsv; CONTROL/P0_COVERAGE_RECEIPTS.tsv; CONTROL/P0_REVIEW_DISPOSITIONS.tsv; own candidate CONTROL/ESTATE_COVERAGE.tsv with disclosed conflict protocol` | USER_DISPATCH_REPORTED__HELD_DEPENDENCY |
 | ZL-P0R | `CONTROL/P0_INDEPENDENT_RECEIVING.md; CONTROL/P0_DEFECTS.tsv; own review receipts on separate review branch` | NO_ACTIVE_SESSION_VERIFIED |
 | ZL-02 | `PRONGS/L_LEGACY/SOURCE_V550` | NO_ACTIVE_SESSION_VERIFIED |
