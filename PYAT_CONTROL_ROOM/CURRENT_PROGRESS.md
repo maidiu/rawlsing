@@ -1,3 +1,7 @@
+# #777 F08 historical consumer replay received; distinct review running
+
+Return76392135 reports exact QUC authority-row replay with mutation/restoration. Outer respondent entrypoint and original historicalrun were notexecuted; one metadata witness is not all35. Independent reviewer PID45130 is verifying unchangedconsumer/byteidentity/effects and currentwholePREV3 successors by functionality, not readername. F03 author PID41066 remains independent; both actualFlashMAX turns verified. No accepted QUC absence, severance, productionpatch or native/science effect. Goalfalse; canonical51cases unchanged.
+
 # #777 C9 correction accepted; two bounded Q3 consumer checks dispatched
 
 C9 return02a13a5e reconciles existing210DIST implementation and expected empty-repository negative; accepted as reporting/evidence correction, not new engineering/product acceptance. Exact priorreceipt hash recomputed; all35 metadata rows and24NOT_RUN/11FIXTURE_ONLY remain. Actualshared35 selection unproved. Next independent Q3 checks: F03questionrelation PID41066 launched with actual-turn metadata pending; F08questionuse PID41072 actualFlashMAX verified. Each reuses pinned nonrespondent authority/current historical consumer, without originaldata, replacementengine or protectedeffects. Goalfalse, canonical51cases/17agenda/holds unchanged.

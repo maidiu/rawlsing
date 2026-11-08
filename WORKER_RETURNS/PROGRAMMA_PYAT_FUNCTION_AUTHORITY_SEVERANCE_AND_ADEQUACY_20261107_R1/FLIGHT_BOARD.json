@@ -685,21 +685,34 @@
     "session": "ses_1b9742b6c02745d8a69d062011",
     "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-joint-consumer",
     "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C10_Q3_F03_FIRST_CONSUMER_EFFECT",
-    "status": "LAUNCHED__ACTUAL_TURN_METADATA_NOT_YET_OBSERVED",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
     "launch": {
       "child_pid": 41066,
       "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f03-first-consumer-effect-r1",
       "launch_is_not_completion": true
     },
     "authority": "Issue777 PRIMARY Q3; readonly historical authority and unchanged consumer, S0/S1/S2 only; no original respondents or engine changes",
-    "actual_model": null
+    "actual_model": {
+      "id": "msg_1b9a60c3b00178ytVm7dibJkKA",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794116029590,
+        "streamed": 1794116102180,
+        "completed": 1794116102294
+      }
+    }
   },
   {
     "task": "pyat777-q3-f08-first-consumer-effect-r1",
     "session": "ses_b998af9086264002a86ee57b6e",
     "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-source-consumer",
     "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C11_Q3_F08_FIRST_CONSUMER_EFFECT",
-    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "status": "RETURNED__INDEPENDENT_REVIEW_RUNNING",
     "launch": {
       "child_pid": 41072,
       "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f08-first-consumer-effect-r1",
@@ -718,6 +731,34 @@
         "created": 1794116029367,
         "streamed": 1794116040863,
         "completed": 1794116041054
+      }
+    },
+    "returned_commit": "76392135cea16afc0ff07da97843837bd33fc9b7"
+  },
+  {
+    "task": "pyat777-q3-f08-independent-consumer-review-r1",
+    "session": "ses_6857b9b4c50542e7a7268dfb7d",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat777-hq-fanin-c8-review",
+    "output_root": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/C11_Q3_F08_INDEPENDENT_REVIEW",
+    "status": "ACTIVE_VERIFIED_ACTUAL_MODEL",
+    "review_target": "76392135cea16afc0ff07da97843837bd33fc9b7",
+    "launch": {
+      "child_pid": 45130,
+      "supervisor_pid": 45129,
+      "observer_pid": 45131,
+      "run_dir": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-q3-f08-independent-consumer-review-r1",
+      "launch_is_not_completion": true
+    },
+    "actual_model": {
+      "id": "msg_1b9b0b870001NsgFnuP3Te7y2K",
+      "type": "assistant",
+      "model": {
+        "id": "deepseek-v4.1-flash",
+        "providerID": "opencode-go",
+        "variant": "max"
+      },
+      "time": {
+        "created": 1794116728963
       }
     }
   }
