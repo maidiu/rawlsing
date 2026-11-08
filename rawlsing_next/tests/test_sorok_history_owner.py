@@ -225,7 +225,8 @@ def test_existing_p4_surface_reads_only_locally_perceived_particulars(tmp_path, 
             command="inspect-particular", target=tool["id"], request_id="look-1"))
         assert result["performed"]
         assert result["observation"]["target_id"] == tool["id"]
-        assert result["observation"]["physical"] == []  # Candidate demand is still pending.
+        assert result["observation"]["physical"] == []
+        assert result["observation"]["physical_depth_status"] == "PENDING"
     finally:
         owner.close()
 
@@ -308,7 +309,9 @@ def test_cold_p4_inspects_admitted_background_depth(tmp_path, monkeypatch, resum
     assert "matte" not in view.stdout
     args = cli + ["inspect-particular", target_id, "--request-id", "cold-inspect"]
     inspection = subprocess.run(args, check=True, text=True, capture_output=True)
-    [fact] = json.loads(inspection.stdout)["observation"]["physical"]
+    observation = json.loads(inspection.stdout)["observation"]
+    assert observation["physical_depth_status"] == "OBSERVED"
+    [fact] = observation["physical"]
     assert fact["value"] == "matte"
     assert fact["fact_id"] == receipt["accepted"][0]["fact_ids"][0]
     replay = subprocess.run(args, check=True, text=True, capture_output=True)

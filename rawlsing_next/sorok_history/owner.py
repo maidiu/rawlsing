@@ -489,10 +489,22 @@ class HistoricalWorld:
                 for predicate, row in target.get("physical_depth", {}).items()
                 if predicate in {"color", "condition", "marking", "texture"}
             }
+            job = state["outbox"].get(target.get("job_id"), {})
+            job_status = job.get("status")
+            if visible:
+                depth_status = "OBSERVED"
+            elif ("physical" in job.get("dimensions", ())
+                  and job_status in {"ENQUEUED", "RUNNING", "CANDIDATE_READY", "FAILED_RETRYABLE"}):
+                depth_status = "PENDING"
+            elif "physical" in job.get("dimensions", ()) and job_status == "SOURCE_HELD":
+                depth_status = "HELD"
+            else:
+                depth_status = "UNKNOWN"
             event = make_event(
                 clock=world.clock, kind="INSPECT", actor_id=actor, location=location,
                 summary="You inspect the particular.", sequence=len(world.events),
-                body={"target": target_id, "physical_fact_ids": visible, "changed": False},
+                body={"target": target_id, "physical_fact_ids": visible,
+                      "physical_depth_status": depth_status, "changed": False},
             )
             world.add_event(event)
             session._append_event(event, perceive=(actor,))
@@ -525,4 +537,7 @@ class HistoricalWorld:
             if fact is None or fact["id"] != fact_id:
                 raise HistoryRefusal("HISTORICAL_INSPECTION_READSET_MISMATCH")
             observed.append({"predicate": predicate, "value": fact["value"], "fact_id": fact_id})
-        return {"target_id": target["id"], "observation_id": event_id, "physical": observed}
+        result = {"target_id": target["id"], "observation_id": event_id, "physical": observed}
+        if "physical_depth_status" in body:
+            result["physical_depth_status"] = body["physical_depth_status"]
+        return result
