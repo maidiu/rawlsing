@@ -56,6 +56,18 @@ triggers at that seam. The worker cut is held; the draft keeps the
 explicit predicate path. The worker's automatic dimension selection
 has no verified downstream consumer on the draft.
 
+The fork-continuity worker `ses_e65307bd2ffe2eFVrpUzrvgjUd` returned
+`fd65b4aef0243218b0700af461df9b0a6ba88c8b` on
+`codex/sorok-mechanism-i-fork-continuity-20261108-r1`.
+Four author tests exercised the P2/BP4 fork ABI, sealed-root checks,
+branch-local history isolation and store replay. The proposed
+`fork_continuity` wrapper has no verified first caller. Its owner cold
+replay is held at `S39_GENERATION_BRANCH_MISMATCH` on the worker base.
+The draft already exercises direct and nested fork isolation through
+the normal path, including owner cold reopen (P13/N09 in [05](05_POSITIVE_NEGATIVE_TESTS.md)).
+Retain the existing path and hold the separate wrapper. Shared-root
+backfill still requires a qualified pre-contact or public/private marker.
+
 Live Sorok inference is `LIVE_PROVIDER_NOT_RUN`. Qualified H1 insertion,
 actor-state links, independent action consuming newly admitted depth,
 automatic T2 link-triggered work, shared pre-contact writes and the broader
