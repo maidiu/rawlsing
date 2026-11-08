@@ -20,9 +20,9 @@ def require(cond: bool, message: str) -> None:
     if not cond:
         FAILURES.append(message)
 
-def exact_ids(rows: list[dict[str, str]], field: str, prefix: str, count: int, label: str) -> None:
+def exact_ids(rows: list[dict[str, str]], field: str, prefix: str, count: int, label: str, digits: int = 3) -> None:
     have = [x.get(field, "") for x in rows]
-    wanted = {f"{prefix}{i:03d}" for i in range(1, count + 1)}
+    wanted = {prefix + f"{i:0{digits}d}" for i in range(1, count + 1)}
     require(len(have) == count, f"{label}: expected {count} rows got {len(have)}")
     require(len(set(have)) == len(have), f"{label}: duplicate IDs")
     require(set(have) == wanted, f"{label}: missing={sorted(wanted-set(have))}, extra={sorted(set(have)-wanted)}")
@@ -40,8 +40,8 @@ disputes = read("CONTROL/OPEN_DISPUTES.tsv")
 exact_ids(lmx, "obligation_id", "LMX-", 44, "LMX")
 exact_ids(lmq, "queue_id", "LMQ-", 30, "LMQ")
 have_f = [x.get("function_id", "") for x in ff]
-require(len(have_f) == 29 and len(set(have_f)) == 29 and {s[:3] for s in have_f} == {"F01","F02"} if False else len(have_f)==29 and len(set(have_f))==29 and set(int(x[1:3]) for x in have_f if x.startswith("F")) == set(range(1,30)), "F29: ids not exact 01..29")
-exact_ids(ar, "release_id", "AR-", 58, "AR")
+require(len(have_f) == 29 and len(set(have_f)) == 29 and {int(x[1:3]) for x in have_f if x.startswith("F")} == set(range(1, 30)), "F29: ids not exact 01..29")
+exact_ids(ar, "release_id", "AR-", 58, "AR", digits=4)
 require(len(aux) == 7, "C6 aux count !=7 (6 DENOMINATOR, 1 CROSSREF expected)")
 require(sum(x["row_type"] == "DENOMINATOR" for x in aux) == 6, "C6 denominator rows !=6")
 require(sum(x["row_type"] == "CROSSREF" for x in aux) == 1, "C6 crossref rows !=1")
