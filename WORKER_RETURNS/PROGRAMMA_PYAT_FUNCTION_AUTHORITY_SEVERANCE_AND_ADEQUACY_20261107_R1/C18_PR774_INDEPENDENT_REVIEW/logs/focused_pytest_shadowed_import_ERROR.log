@@ -1,0 +1,27 @@
+...FF.....................................                               [100%]
+=================================== FAILURES ===================================
+_____________ test_unlike_pair_is_rejected_before_profile_minting ______________
+
+    def test_unlike_pair_is_rejected_before_profile_minting():
+        conditioner = ExactRef("QUESTION_IMPLEMENTATION", "question_impl.phase0.99999999999999999999", _h("q99b"))
+        target = ExactRef("QUESTION_IMPLEMENTATION", "question_impl.phase0.88888888888888888888", _h("q99a"))
+        query, fact, conditioner_ref, target_ref = _fixture(conditioner_ref=conditioner, target_ref=target)
+>       with pytest.raises(FieldForgeConditionalSupportError, match="exact Q86B/Q86A"):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.field_forge_conditional_support.FieldForgeConditionalSupportError'>
+
+../../Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-pr774-independent-guard-review-r1/pinned-source/rawlsing_next/tests/test_field_forge_conditional_support.py:289: Failed
+____________ test_q86_object_id_substrings_do_not_satisfy_identity _____________
+
+    def test_q86_object_id_substrings_do_not_satisfy_identity():
+        q86b = question_ref("Q86B")
+        q86a = question_ref("Q86A")
+        wrong_kind = ExactRef("QUESTION", q86b.object_id, q86b.content_hash)
+        query, fact, conditioner_ref, target_ref = _fixture(conditioner_ref=wrong_kind, target_ref=q86a)
+>       with pytest.raises(FieldForgeConditionalSupportError, match="exact Q86B/Q86A"):
+E       Failed: DID NOT RAISE <class 'rawlsing_next.field_forge_conditional_support.FieldForgeConditionalSupportError'>
+
+../../Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-pr774-independent-guard-review-r1/pinned-source/rawlsing_next/tests/test_field_forge_conditional_support.py:304: Failed
+=========================== short test summary info ============================
+FAILED ../../Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-pr774-independent-guard-review-r1/pinned-source/rawlsing_next/tests/test_field_forge_conditional_support.py::test_unlike_pair_is_rejected_before_profile_minting
+FAILED ../../Rawlsing_Controller/local-automation-state/pyat777-01a15c1e/pyat777-pr774-independent-guard-review-r1/pinned-source/rawlsing_next/tests/test_field_forge_conditional_support.py::test_q86_object_id_substrings_do_not_satisfy_identity
+2 failed, 40 passed in 0.66s
