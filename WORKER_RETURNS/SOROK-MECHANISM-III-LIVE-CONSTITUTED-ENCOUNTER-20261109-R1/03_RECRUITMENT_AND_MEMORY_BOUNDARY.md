@@ -23,3 +23,9 @@ actor-owned model of this interlocutor beyond the received P3 scope.
 The specialized inaccessible-causal-memory and accessible-belief
 cases remain unproved. The fixture expression modes do not provide
 native M6 positive semantic-plan authority.
+
+The semantic reader now resolves the formation plan from the completed
+P3 operation that opened the P4 encounter. It compares the ledger's
+project, counterpart, role and relation against that plan. A second
+formation plan in the same actor and branch cannot redirect the
+encounter merely because that other plan is also valid for its own scope.

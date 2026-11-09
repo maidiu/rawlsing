@@ -264,7 +264,7 @@ def test_live_utterance_keeps_competing_p3_mediators_and_refuses_escalation(tmp_
                       include_compression=False, standpoints=False)
     try:
         owner = case.owner
-        owner.realize("formation", case.proposals[0], owner.snapshot())
+        owner.realize("p4-formation", case.proposals[0], owner.snapshot())
         fanin = case.base_owner.fanin
         session = fanin.session
         from run_p4 import advance
@@ -367,3 +367,70 @@ def test_testimony_and_timeout_preserve_world_truth_and_stale_speech_cannot_recr
         assert json.loads(ledger_path.read_text())["pending"] is None
     finally:
         owner.close()
+
+
+def test_live_recruitment_ignores_unrelated_committed_formation(tmp_path, monkeypatch):
+    import p3_fixture_support as fixtures
+    from run_p4 import advance
+
+    make_history = fixtures.history_rows
+    make_plan = fixtures.plan_for
+    other_project = "vertical:unrelated-project"
+
+    def history(identity, source_hash, outcomes):
+        current, unrelated = make_history(identity, source_hash, outcomes)
+        unrelated = {k: v for k, v in unrelated.items() if k != "hash"}
+        return [current, fixtures.seal({**unrelated, "project": other_project, "parent_refs": []})]
+
+    def plan(identity, proposal, source_hash, phase):
+        if phase == "RECRUIT" and proposal["event_id"] == "vertical:event:2":
+            return make_plan(identity, proposal, source_hash, "FORMATION", project=other_project)
+        return make_plan(identity, proposal, source_hash, phase)
+
+    monkeypatch.setattr(fixtures, "history_rows", history)
+    monkeypatch.setattr(fixtures, "plan_for", plan)
+    case = build_case(tmp_path, history_outcomes=("recognized_plan", "imposed_plan"),
+                      include_compression=False, standpoints=False)
+    try:
+        owner = case.owner
+        owner.realize("p4-formation", case.proposals[0], owner.snapshot())
+        owner.realize("unrelated-formation", case.proposals[1], owner.snapshot())
+        fanin = case.base_owner.fanin
+        advance(fanin)
+        session = fanin.session
+        opening, other = case.plans[:2]
+        scope = dict(opening, relation_ref=opening["relation_refs"][0])
+        speech = admit_speech(session, text="Can we check the edge together?",
+                              actor_ref=case.initial.actor)
+
+        def transduce(*, event_id, event_hash, text):
+            return {"event_id": event_id, "event_hash": event_hash, "hypotheses": [
+                {"move": "REQUEST", "referent": "CURRENT_EDGE",
+                 "span": [0, len(text)], "uncertain": False}
+            ]}
+
+        [record] = owner.store.query(project=other_project, counterpart=other["counterpart"],
+                                     as_of=session.clock() - 1)
+        assert record["payload"]["mode"] == "private_check"
+        original = read_response(owner, speech, scope, transduce=transduce)
+        assert original["mode"] == "joint_check"
+        assert record["hash"] not in original["readset"]
+        forged_scope = dict(other, relation_ref=other["relation_refs"][0])
+        assert read_response(owner, speech, forged_scope, transduce=transduce)["status"] == (
+            "SEMANTIC_SCOPE_REFUSED"
+        )
+
+        database = owner.store._connection
+        database.execute("SAVEPOINT unrelated_cut")
+        try:
+            removed = database.execute("DELETE FROM p3_records WHERE record_id=?",
+                                       (record["record_id"],))
+            assert removed.rowcount == 1
+            assert read_response(owner, speech, scope, transduce=transduce) == original
+        finally:
+            database.execute("ROLLBACK TO unrelated_cut")
+            database.execute("RELEASE unrelated_cut")
+        assert read_response(owner, speech, scope, transduce=transduce) == original
+    finally:
+        case.cycle.engine.close()
+        case.owner.close()

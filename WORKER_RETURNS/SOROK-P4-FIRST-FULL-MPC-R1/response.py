@@ -5,6 +5,7 @@ from p3 import projections, test_rules
 
 from speech import developing_actor
 
+OPENING_FORMATION_ID = "p4-formation"
 SEMANTIC_GRADE = "SOURCEFREE_TEST_ONLY"
 NATIVE_PLAN_HOLD = "BLOCKED_NAMED_AUTHORITY_REQUIRED"
 SPEECH_MOVES = frozenset({
@@ -109,11 +110,11 @@ def read_response(owner, admission, scope, *, transduce=None):
 
     if semantic:
         fields = ("project", "counterpart", "interlocutor_role")
-        scope_plan = next((plan for plan in owner.plans
-                           if plan["phase"] == "FORMATION"
-                           and all(scope.get(key) == plan[key] for key in fields)
-                           and scope.get("relation_ref") in plan["relation_refs"]), None)
-        if scope_plan is None:
+        formation = owner.store.get_operation(OPENING_FORMATION_ID)
+        scope_plan = formation["plan"] if formation and formation["phase"] == "COMPLETE" else None
+        if (scope_plan is None or scope_plan["phase"] != "FORMATION"
+                or any(scope.get(key) != scope_plan[key] for key in fields)
+                or scope.get("relation_ref") not in scope_plan["relation_refs"]):
             return dict(result, status="SEMANTIC_SCOPE_REFUSED")
         result["readset"].append(scope_plan["hash"])
 

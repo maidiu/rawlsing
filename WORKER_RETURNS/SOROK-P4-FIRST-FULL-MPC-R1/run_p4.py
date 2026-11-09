@@ -16,7 +16,7 @@ from p3_fixture_support import build_case
 from developmental_recursion.contracts import RecursionRefusal, canonical
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
-from response import check_source, express, read_response
+from response import OPENING_FORMATION_ID, check_source, express, read_response
 from speech import admit_speech
 
 GRADE = "SOURCEFREE_TEST_ONLY"
@@ -88,7 +88,7 @@ def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
                       include_compression=False, standpoints=False, seed=seed)
     try:
         owner = case.owner
-        formation = owner.realize("p4-formation", case.proposals[0], owner.snapshot())
+        formation = owner.realize(OPENING_FORMATION_ID, case.proposals[0], owner.snapshot())
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
         if establish is not None:
             establish(case.base_owner.fanin.session)
