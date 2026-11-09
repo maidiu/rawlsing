@@ -137,3 +137,56 @@ def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path):
             assert "semantic_encounter" not in public
         finally:
             owner.close()
+
+
+def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path):
+    from run_p4 import new, open_owner
+
+    ledger_file = tmp_path / "p4_receipts.json"
+    new(tmp_path, ledger_file, "recognized_plan")
+    scope = json.loads(ledger_file.read_text())["scope"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        actor = owner.snapshot().document()["actor"]
+        speech = admit_speech(session, text="Can we check the edge together?",
+                              actor_ref=actor, request_edge=False)
+
+        def transduce(*, event_id, event_hash, text):
+            return {"event_id": event_id, "event_hash": event_hash, "hypotheses": [
+                {"move": "REQUEST", "referent": "CURRENT_EDGE",
+                 "span": [0, len(text)], "uncertain": False}
+            ]}
+
+        def read():
+            return read_response(owner, speech, scope, transduce=transduce)
+
+        before = read()
+        assert before["mode"] == "joint_check"
+        relevant = [entry for entry in before["recruitment"]["entries"]
+                    if entry["activation"] == "ELIGIBLE" and entry["mode"] == "joint_check"]
+        assert len(relevant) == 1
+        event = speech["performed"]
+        head = owner.store.head()
+        # Test-only fault injection into the real query source. Rollback
+        # restores the exact row, including provenance and chain metadata.
+        database = owner.store._connection
+        database.execute("SAVEPOINT mediator_cut")
+        try:
+            removed = database.execute("DELETE FROM p3_records WHERE record_id=? AND hash=?",
+                                       (relevant[0]["record_id"], relevant[0]["record_hash"]))
+            assert removed.rowcount == 1
+            severed = read()
+            assert severed["mode"] is None
+            assert relevant[0]["record_hash"] not in severed["readset"]
+            assert severed["semantic_encounter"] == before["semantic_encounter"]
+        finally:
+            database.execute("ROLLBACK TO mediator_cut")
+            database.execute("RELEASE mediator_cut")
+        assert read() == before
+        assert session.event(event["event_id"]) == event
+        assert owner.store.head() == head
+        expression, public = express(session, read())
+        assert public["event_id"] == expression["event_id"]
+    finally:
+        owner.close()

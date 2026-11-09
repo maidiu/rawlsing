@@ -66,3 +66,20 @@ python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HO
 The transducer in that run was a local fixture. The normal CLI has no
 configured live transducer, semantic generality is unproved, and native
 M6 semantic-plan authority remains held. The full court is outstanding.
+
+## Exact mediator severance and restoration
+
+A focused test held the committed, actor-perceived non-edge SAY and its
+semantic proposal fixed. The real P3 query initially returned one
+eligible joint-check mediator. A test-only SQLite savepoint removed
+that exact row by record ID and hash. The same first reader then
+returned no mode and no longer cited the mediator hash. Rolling back
+restored the original complete uptake receipt, after which the
+existing P2 writer committed the expression and S45 returned its
+public observation. The speech event and P3 head were unchanged.
+This is an in-process source fault, separate from cold recovery.
+
+```text
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py -k loses_and_recovers
+1 passed, 2 deselected in 13.80s
+```
