@@ -34,3 +34,9 @@
 The direct code/source classes `F01_QIDENTITY` through `F29`, `LMX-001..044`, `LMQ-001..030`, `AR-0001..0058`, current C11 source-card identities and S/GAP/Sorok identities are *different record kinds*. Exact literal labels enable navigation but not semantic fusion, especially when source commit, edition, response grain, authority scope, branch selection, IF condition, or actual consumer differs.
 
 The **future proof order** is: source and authority rights → selected scope and denial/negative → source-meaning/producer object → non-test first consumer with actual-use receipt → recipient effects/conditional Sorok phase → independently reviewed native or sourcefree result. Any missing dependency remains a typed hold, not a hidden pass.
+# R3 navigation update
+
+The R2 graph below is historically source-frozen but its hold FKs, stage/reverse candidate links and evidence FKs were revised after independent #815/#816 hostile reviews. For the current corrected candidate use `R3_CORRECTIONS_AND_REVIEW_HANDOFF.md`, `P0_LEFT_DISPOSITIONS.tsv`, `GENERATION_STAGE_COURT.tsv`, `CROSS_PRONG_BRIDGES.tsv`, `SEAM_DEPENDENCIES.tsv`, `SEAM_DEPENDENCY_NODES.tsv`, and `CANDIDATE_TRANSFERS.tsv` alongside canonical DATA. The corrected canonical graph has 8,502 relations, not the R2 3,662; 4,420 are typed open stage questions (not successes). Original R2 summary follows for historical comparison.
+
+---
+

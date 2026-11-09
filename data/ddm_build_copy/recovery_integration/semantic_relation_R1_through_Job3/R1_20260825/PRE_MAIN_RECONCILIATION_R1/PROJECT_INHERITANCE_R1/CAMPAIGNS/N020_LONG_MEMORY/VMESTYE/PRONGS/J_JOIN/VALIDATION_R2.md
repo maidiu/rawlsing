@@ -33,3 +33,9 @@
 These validations establish internal **documentary** consistency and exact ID conservation, not acceptance of every source interpretation. Particularly unresolved: actual first readers and source-native/issuer rights; D05-F06/F11; FIABC 144 reported PASS / 3 FAIL; 49 ZL12 GAP different-commit aliases; original J losses; sourcefree-vs-protected status of stranded branches; S01–S11 IF edges; actual Sorok and N10 downstream read. The original 6,125 P0 row corpus is preserved without expansion by the 627 outside-P0 identities.
 
 **Status:** `VALIDATED_S0_S1_IN_MEMORY__INDEPENDENT_#815_#816_REQUIRED`. No project CI tests, S2, S3, source owner, reviewer, or protected merge claimed. Exact candidate SHA is resolved from the PR and issue return receipt rather than self-embedded.
+# R3 validation notice
+
+This is the original **R2** author receipt, now a historical baseline. For corrected R3 inspect `R3_CORRECTIONS_AND_REVIEW_HANDOFF.md` and run `VALIDATE_ZL15_R3.js` read-only. Local S0–S1 R3 checks passed 11/11 deliberately invalid mutations; 1,536 held FK and 241 source nodes were repaired; 82 predicates and 4,420 stage questions are now separately traceable. Neither R2 nor R3 author checks substitute for independent #815/#816 review, S2/S3, actual native/actor work or merge.
+
+---
+

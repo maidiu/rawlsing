@@ -25,3 +25,9 @@ Start with **ZL13** 58 AR historical release identities and five protected stati
 Join `DATA/FUNCTION_ATLAS.record_id` to `DATA/OPERATION_TRACES.function_ids`, `DATA/AUTHORITY_APPLICATIONS.function_ids`, `DATA/IMPLEMENTATIONS.function_ids`, and `DATA/DECISION_EVENTS.record_id` as **namespaced candidates**. Read `DATA/RELATIONS.relation_type` literally: `ASSIGNED_TO`, `ALIAS_OF`, `REQUIRES_AUTHORITY`, `HELD_BY` are source-qualified navigation, not current operations. `DATA/CONSUMER_EDGES.current_actual_status=OPEN_PROOF_GAP` for all 332 edges. Do **not** join `coverage_id`, `census_id`, `finding_id` or historical `AR-####` by partial strings: use five-tuples and exact source heads.
 
 For every reverse walk return `claimed_target → consumer/authority/output receipt → source-identity key → evidence grade → surviving gap → accountable owner → falsifier`. Missing a single actual-operation step means **open proof**, even when all adjacent labels are present.
+# R3 reverse-navigation update
+
+For exact documentary reverse navigation, start with `CANDIDATE_TRANSFERS.tsv` at Sorok E001 or N10E, follow its normalized seam node IDs into the 82 `SEAM_DEPENDENCIES.tsv` relation IDs, then open `RELATIONS.tsv` and the exact `EVIDENCE.tsv` J-EV row. For old semantic fates, use a finding's five `GENERATION_STAGE_COURT.tsv` rows and their `CROSS_GENERATION_TYPED_UNJOIN` relations, **not** a literal identifier hub as evidence of equivalence. For a held old source row, follow `J-P0-<census-id>` in `P0_LEFT_DISPOSITIONS.tsv` to a `HELD_BY` conflict `C-...`. For candidate operation→reader questions, use each resolvable `OPERATION_TRACES.producer_edge_id`, the normalized `CONSUMER_EDGES.edge_id`, then its source-specific negative evidence; actual consumer ID is `UNRESOLVED` until a qualified first-read receipt exists. See `R3_CORRECTIONS_AND_REVIEW_HANDOFF.md` for exact grades and falsifiers.
+
+---
+

@@ -25,3 +25,9 @@
 **Critical R2 correction:** R1 mistakenly used per-prong-local IDs globally; R2 rebuilt from frozen seeds with composite `(prong_id, local_id)` and conserved every unique finding, trace, application, evidence, coverage and unjoin. Any R1 apparent reductions are invalid as a current atlas. All 13 inputs passed schema and count validation; no self-issued current-machine-success verdict.
 
 **Terminal request:** independent #815 forward and #816 reverse adversarial review against **one exact frozen candidate commit**, with distinct reviewers. They may ACCEPT scoped documentary navigation, REVISE, or HOLD. Only separate authorized runner/owner/science evidence could elevate S2/S3, native semantics, authority effects, or current zero-loss. Do not merge by PR publication.
+# R3 author correction notice (2026-11-09)
+
+The independent ZL-16/#815 and ZL-17/#816 R1 reviews returned `REVISE` against the frozen **R2** head. Their eight findings are addressed as bounded **R3 documentary candidate** corrections in [`R3_CORRECTIONS_AND_REVIEW_HANDOFF.md`](R3_CORRECTIONS_AND_REVIEW_HANDOFF.md), the corrected canonical DATA tables, six R3 sidecars, and separately reproducible build/validation scripts. **ZL-16 and ZL-17 independent same-head re-review remains pending; this author's repair is not self-acceptance or a merge.** The following R2 report is retained as its immutable historical return description.
+
+---
+
