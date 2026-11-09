@@ -6,7 +6,11 @@
 
 A source can possess a legitimate questionnaire/response/routing manual, and software can preserve that manual's identifier or content hash, yet the *computed result* can remain uninformed by the actual manual rule. An exact snapshot is an important provenance guard, not automatically an executable source-semantic interpretation.
 
-The frozen 29-function/58-release C6 register reports **42 historically selected release identities, 16 unresolved pointers, 228 F1 static callsites, 581 R1 static reads and 687 joined calls**. It explicitly did not observe historical runtime execution of those R1 records. This return preserves all 94 C6 rows and 55 C777 cases, with no false promotion of historical metadata to current source authority. Its per-row census ID joins remain unresolved because the nonempty P0 census Git blob was returned with empty content by the connector. See UNJOINS.tsv.
+The frozen 29-function/58-release C6 register reports **42 historically selected release identities, 16 unresolved pointers, 228 F1 static callsites, 581 R1 static reads and 687 joined calls**. It explicitly did not observe historical runtime execution of those R1 records. This return preserves all 94 C6 rows and 55 C777 cases, with no false promotion of historical metadata to current source authority. All **149 historical records** now join uniquely against the actual 6,125-record P0 Git blob: 29 F, 58 AR, seven auxiliaries, 55 C777 cases, each with canonical estate, original commit/path/blob, JSON-array composite ID and exact row locator/grain. Five further current protected-code S1 observations fall **outside** that historical P0 index, not within its missing data. `UNJOINS.tsv` now concerns **154 unproved functional authority/first-consumer seams**, not missing census joins. The mapping from PR #854 is **internal adversarial evidence**, not independent review.
+
+## Why repaired identifiers do not prove authority application
+
+42 C6 releases report historical selections and 16 report unresolved pointers. Neither proves original release bytes were independently rehashed, currently selected by a competent issuer, applied to original source-native output, enforced a typed refusal or reached a first non-test consumer. The revised authority table separates those dimensions; the 149 P0 joins prove **source identity**, not functional conservation.
 
 ## First current semantic operators, not imagined ones
 
