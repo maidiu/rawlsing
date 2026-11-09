@@ -1,0 +1,47 @@
+check_id	status	detail
+A_CENSUS_HEADER	PASS	CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv: 6120 rows, 25 columns
+A_CENSUS_COUNT	PASS	observed 6120 census rows; expected 6120
+A_CENSUS_ID	PASS	census_id must be unique
+A_CENSUS_COMPOSITE_UNIQUE	PASS	full source composite identity must be unique
+A_CENSUS_NEGATIVE	PASS	every census row must retain a typed negative/status
+A_SOURCE_KEYS:D05_SOURCE_PACKAGE	FAIL	source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24
+A_ANTI_JOIN_TABLE	PASS	CONTROL/P0_NO_DROP_ANTI_JOINS.tsv: 110 rows, 21 columns
+A_ANTI_JOIN_COUNT	PASS	observed 110 anti-join checks; expected 110
+A_ANTI_JOIN_IDS	PASS	check_id must be unique
+A_ANTI_JOIN_ROWS	PASS	all 110 anti-join rows are internally exact and source-count checked
+A_COVERAGE_TABLE	PASS	CONTROL/P0_COVERAGE_RECEIPTS.tsv: 111 rows, 17 columns
+A_COVERAGE_COUNT	PASS	observed 111 receipts; expected 111
+A_COVERAGE_IDS	PASS	receipt_id must be unique
+A_COVERAGE_ROWS	PASS	all 111 receipts preserve exact counts and available digests
+A_SR01_COUNT:PYAT_SR01_2416	PASS	observed 2416; expected 2416
+A_SR01_KEYS:PYAT_SR01_2416	PASS	unique composite keys 2416
+A_SR01_COUNT:SOROK_SR01_1314	PASS	observed 1314; expected 1314
+A_SR01_KEYS:SOROK_SR01_1314	PASS	unique composite keys 1314
+B_RM_TABLE	PASS	CONTROL/P0_RM_CHECK_ID_BIJECTION_V1.tsv: 30 rows, 7 columns
+B_RM_REQUIREMENTS	PASS	CONTROL/P0_ANTI_JOIN_REQUIREMENTS.tsv: 56 rows, 16 columns
+B_RM_BIJECTION_COUNT	PASS	observed 30 RM mappings; expected 30
+B_RM_REQUIREMENTS_COUNT	PASS	observed 56 requirements; expected 56
+B_RM_BIJECTION_IDS	PASS	frozen and reported RM IDs must be unique
+B_RM_FROZEN_IDS	PASS	frozen AJ-RM01..AJ-RM30 identity set exact
+B_RM_REQUIREMENTS_IDS	PASS	all frozen RM checks must exist in the 56 requirements
+B_RM_MAPPINGS	PASS	30/30 RM mappings, selectors and retained negatives are exact
+C_D02_D07_SELECTOR_COUNT	PASS	observed 23 per-file selectors; expected 23
+C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	FAIL	source file has 11 keyed records; claim is 6
+C_D02_D07_ROWS	FAIL	source rows=369, census rows=364; expected exact 364/364
+D_G4_CONTRACT	PASS	CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns
+D_G4_RECEIPTS	PASS	CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns
+D_G4_ROW_COUNTS	PASS	contract=82 receipt=82 source=82
+D_G4_EDGE_IDS	PASS	82 edge IDs must equal source edge IDs
+D_G4_IF_COUNT	PASS	observed 26 IF predicates; expected 26
+D_G4_FIELDS	PASS	82/82 G4 source predicates, requiredness and evidence fields exact; 26 IF preserved
+F_P1_VERSION	PASS	version marker present
+F_P1_LEASES	PASS	observed 13 ZL-02..ZL-14 prong leases
+F_P1_FKS	PASS	foreign-key and explicit-unjoin law present
+F_P1_SCHEMA	PASS	five frozen headers, enums, FK law and 13 distinct leases present
+E_STAGE_TABLE	PASS	CONTROL/P0_S2_STAGE_MANIFEST.tsv: 2 rows, 17 columns
+E_STAGE_COUNT	PASS	observed stage subjects ['ZL00', 'ZL01']
+E_STAGE_PROGRESSION	PASS	stage machine and exact-head review/acceptance guards hold
+E_ASSEMBLY_TABLE	PASS	CONTROL/P0_S2_ASSEMBLY_MANIFEST.tsv: 17 rows, 7 columns
+E_ASSEMBLY_COUNT	PASS	observed 17 candidate files; expected 17
+E_ASSEMBLY_PATHS	PASS	candidate path overlap
+E_ASSEMBLY	PASS	17 candidate files are hash-exact and origin-pinned without overlap

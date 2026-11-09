@@ -1,0 +1,248 @@
+{
+  "checks": [
+    {
+      "check_id": "A_CENSUS_HEADER",
+      "status": "PASS",
+      "detail": "CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv: 6120 rows, 25 columns"
+    },
+    {
+      "check_id": "A_CENSUS_COUNT",
+      "status": "PASS",
+      "detail": "observed 6120 census rows; expected 6120"
+    },
+    {
+      "check_id": "A_CENSUS_ID",
+      "status": "PASS",
+      "detail": "census_id must be unique"
+    },
+    {
+      "check_id": "A_CENSUS_COMPOSITE_UNIQUE",
+      "status": "PASS",
+      "detail": "full source composite identity must be unique"
+    },
+    {
+      "check_id": "A_CENSUS_NEGATIVE",
+      "status": "PASS",
+      "detail": "every census row must retain a typed negative/status"
+    },
+    {
+      "check_id": "A_SOURCE_KEYS:D05_SOURCE_PACKAGE",
+      "status": "FAIL",
+      "detail": "source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24"
+    },
+    {
+      "check_id": "A_ANTI_JOIN_TABLE",
+      "status": "PASS",
+      "detail": "CONTROL/P0_NO_DROP_ANTI_JOINS.tsv: 110 rows, 21 columns"
+    },
+    {
+      "check_id": "A_ANTI_JOIN_COUNT",
+      "status": "PASS",
+      "detail": "observed 110 anti-join checks; expected 110"
+    },
+    {
+      "check_id": "A_ANTI_JOIN_IDS",
+      "status": "PASS",
+      "detail": "check_id must be unique"
+    },
+    {
+      "check_id": "A_ANTI_JOIN_ROWS",
+      "status": "PASS",
+      "detail": "all 110 anti-join rows are internally exact and source-count checked"
+    },
+    {
+      "check_id": "A_COVERAGE_TABLE",
+      "status": "PASS",
+      "detail": "CONTROL/P0_COVERAGE_RECEIPTS.tsv: 111 rows, 17 columns"
+    },
+    {
+      "check_id": "A_COVERAGE_COUNT",
+      "status": "PASS",
+      "detail": "observed 111 receipts; expected 111"
+    },
+    {
+      "check_id": "A_COVERAGE_IDS",
+      "status": "PASS",
+      "detail": "receipt_id must be unique"
+    },
+    {
+      "check_id": "A_COVERAGE_ROWS",
+      "status": "PASS",
+      "detail": "all 111 receipts preserve exact counts and available digests"
+    },
+    {
+      "check_id": "A_SR01_COUNT:PYAT_SR01_2416",
+      "status": "PASS",
+      "detail": "observed 2416; expected 2416"
+    },
+    {
+      "check_id": "A_SR01_KEYS:PYAT_SR01_2416",
+      "status": "PASS",
+      "detail": "unique composite keys 2416"
+    },
+    {
+      "check_id": "A_SR01_COUNT:SOROK_SR01_1314",
+      "status": "PASS",
+      "detail": "observed 1314; expected 1314"
+    },
+    {
+      "check_id": "A_SR01_KEYS:SOROK_SR01_1314",
+      "status": "PASS",
+      "detail": "unique composite keys 1314"
+    },
+    {
+      "check_id": "B_RM_TABLE",
+      "status": "PASS",
+      "detail": "CONTROL/P0_RM_CHECK_ID_BIJECTION_V1.tsv: 30 rows, 7 columns"
+    },
+    {
+      "check_id": "B_RM_REQUIREMENTS",
+      "status": "PASS",
+      "detail": "CONTROL/P0_ANTI_JOIN_REQUIREMENTS.tsv: 56 rows, 16 columns"
+    },
+    {
+      "check_id": "B_RM_BIJECTION_COUNT",
+      "status": "PASS",
+      "detail": "observed 30 RM mappings; expected 30"
+    },
+    {
+      "check_id": "B_RM_REQUIREMENTS_COUNT",
+      "status": "PASS",
+      "detail": "observed 56 requirements; expected 56"
+    },
+    {
+      "check_id": "B_RM_BIJECTION_IDS",
+      "status": "PASS",
+      "detail": "frozen and reported RM IDs must be unique"
+    },
+    {
+      "check_id": "B_RM_FROZEN_IDS",
+      "status": "PASS",
+      "detail": "frozen AJ-RM01..AJ-RM30 identity set exact"
+    },
+    {
+      "check_id": "B_RM_REQUIREMENTS_IDS",
+      "status": "PASS",
+      "detail": "all frozen RM checks must exist in the 56 requirements"
+    },
+    {
+      "check_id": "B_RM_MAPPINGS",
+      "status": "PASS",
+      "detail": "30/30 RM mappings, selectors and retained negatives are exact"
+    },
+    {
+      "check_id": "C_D02_D07_SELECTOR_COUNT",
+      "status": "PASS",
+      "detail": "observed 23 per-file selectors; expected 23"
+    },
+    {
+      "check_id": "C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv",
+      "status": "FAIL",
+      "detail": "source file has 11 keyed records; claim is 6"
+    },
+    {
+      "check_id": "C_D02_D07_ROWS",
+      "status": "FAIL",
+      "detail": "source rows=369, census rows=364; expected exact 364/364"
+    },
+    {
+      "check_id": "D_G4_CONTRACT",
+      "status": "PASS",
+      "detail": "CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns"
+    },
+    {
+      "check_id": "D_G4_RECEIPTS",
+      "status": "PASS",
+      "detail": "CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns"
+    },
+    {
+      "check_id": "D_G4_ROW_COUNTS",
+      "status": "PASS",
+      "detail": "contract=82 receipt=82 source=82"
+    },
+    {
+      "check_id": "D_G4_EDGE_IDS",
+      "status": "PASS",
+      "detail": "82 edge IDs must equal source edge IDs"
+    },
+    {
+      "check_id": "D_G4_IF_COUNT",
+      "status": "PASS",
+      "detail": "observed 26 IF predicates; expected 26"
+    },
+    {
+      "check_id": "D_G4_FIELDS",
+      "status": "PASS",
+      "detail": "82/82 G4 source predicates, requiredness and evidence fields exact; 26 IF preserved"
+    },
+    {
+      "check_id": "F_P1_VERSION",
+      "status": "PASS",
+      "detail": "version marker present"
+    },
+    {
+      "check_id": "F_P1_LEASES",
+      "status": "PASS",
+      "detail": "observed 13 ZL-02..ZL-14 prong leases"
+    },
+    {
+      "check_id": "F_P1_FKS",
+      "status": "PASS",
+      "detail": "foreign-key and explicit-unjoin law present"
+    },
+    {
+      "check_id": "F_P1_SCHEMA",
+      "status": "PASS",
+      "detail": "five frozen headers, enums, FK law and 13 distinct leases present"
+    },
+    {
+      "check_id": "E_STAGE_TABLE",
+      "status": "PASS",
+      "detail": "CONTROL/P0_S2_STAGE_MANIFEST.tsv: 2 rows, 17 columns"
+    },
+    {
+      "check_id": "E_STAGE_COUNT",
+      "status": "PASS",
+      "detail": "observed stage subjects ['ZL00', 'ZL01']"
+    },
+    {
+      "check_id": "E_STAGE_PROGRESSION",
+      "status": "PASS",
+      "detail": "stage machine and exact-head review/acceptance guards hold"
+    },
+    {
+      "check_id": "E_ASSEMBLY_TABLE",
+      "status": "PASS",
+      "detail": "CONTROL/P0_S2_ASSEMBLY_MANIFEST.tsv: 17 rows, 7 columns"
+    },
+    {
+      "check_id": "E_ASSEMBLY_COUNT",
+      "status": "PASS",
+      "detail": "observed 17 candidate files; expected 17"
+    },
+    {
+      "check_id": "E_ASSEMBLY_PATHS",
+      "status": "PASS",
+      "detail": "candidate path overlap"
+    },
+    {
+      "check_id": "E_ASSEMBLY",
+      "status": "PASS",
+      "detail": "17 candidate files are hash-exact and origin-pinned without overlap"
+    }
+  ],
+  "failures": [
+    [
+      "A_SOURCE_KEYS:D05_SOURCE_PACKAGE",
+      "source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24"
+    ],
+    [
+      "C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv",
+      "source file has 11 keyed records; claim is 6"
+    ],
+    [
+      "C_D02_D07_ROWS",
+      "source rows=369, census rows=364; expected exact 364/364"
+    ]
+  ]
+}
