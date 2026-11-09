@@ -1,5 +1,15 @@
 # Sorok current progress revision39 — P4 sourcefree first consumer protected received (2026-11-07)
 
+**Protected P5 receiving (2026-11-08; user-directed sourcefree engineering).** [PR #775](https://github.com/maidiu/rawlsing/pull/775) merged at `5e266a80ccfc52da10741e15f6b9076138907758` from exact source `0d566510afd17ea395112fdb1a9f5713f88af835`; source CI canonical PASS. The historical P5 candidate text below predates this merge. No separately authenticated independent S2 approval, native scientific/human/production authority, or global FIABC green; inherited FIABC/LiTS 144 PASS / 3 FAIL remains.
+
+**Additive P6 joined verification candidate (2026-11-07)**
+
+**Status: `CANDIDATE_ONLY__RECOGNITION_PASS_SCOPED__JOINED_PROOFS_PASS__JOINED_DEMO_PASS__NOT_MERGED`.** Frozen P6 runtime `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`; assembled evidence `1c461ebc6d3ede1cdbeda244ab06c346ddbcc92e`; recognition runtime/proof input `4f3f465923a61e9e3d76b9c0aa7f6ffd8ecad318`; independent recognition review `a3ce6b4282c0c427ef11da71030d622aa908ee86` = `PASS_SCOPED` (5 recognition tests + 1 house test). Isolated candidate branch `codex/sorok-p6-joined-verification-20261107-r1`.
+
+**Evidence:** four joined proofs (gaze, history order, chronology, actor boundary) `4 passed in 393.96s`; 13-command portable cold CLI demo `13/13 exit 0`, real recognition `the repaired blue-thread sandals` turn 4, Nadia material/time `2 -> 1` at `248 -> 249`, history root `d747d2c2...`, leave-alone with no mug look; receipt at `WORKER_RETURNS/SOROK-P6-JOINED-VERIFICATION-20261107-R1`.
+
+**Caveats:** candidate only; no PR or protected merge; P5 #775/P6 #779 remain unreceived; recognition review scoped; sourcefree/test-only; no native/science/human claim. Preserve all prior scope holds and inherited FIABC/LiTS **144 PASS / 3 FAIL**.
+
 **P5 candidate update (2026-11-07).** [P5 situated experience](PROGRAMMA_SOROK/26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.
 
 **Protected P4:** PR [#751](https://github.com/maidiu/rawlsing/pull/751) **MERGED** at `ae3dd0922c5bf00a50071ed34f75798838ad4e95`; exact source head `80bce19efeaeb98b1452e8b5995ebf80f83e166f`, source parent `2cb4113f0d1204bb83ec452625ca8d5c984c3f9a`. Original independent Codex re-review received repaired P4 runtime `9eacf50380176d617637489d04cab3a969dd0a29`; later changes were evidence/README only. Current [R39 receiving and next-work receipt](PROGRAMMA_SOROK/25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md).

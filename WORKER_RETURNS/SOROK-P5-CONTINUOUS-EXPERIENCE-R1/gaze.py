@@ -59,7 +59,8 @@ def line(event):
             return f'The finisher says, “{text}”' if speaker == "B" else event["summary"]
     if event["kind"] == "REPAIR" and event["actor_visible_id"] == "A":
         return "Nadia makes a repair."
-    if event["kind"] == "INSPECT" and event["actor_visible_id"] == "U":
+    if (event["kind"] == "INSPECT" and event["actor_visible_id"] == "U"
+            and event["summary"] == "The actor inspects the present material but changes nothing."):
         return "You examine the work."
     return event["summary"]
 
