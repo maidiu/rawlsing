@@ -1,0 +1,27 @@
+check_id	check	disposition	evidence_or_falsifier	grade
+R01	PR frozen HEAD	PASS	PR #850 head 9983d7485273ebb04fcd33490cddb30bc8df5dad; base 9253064bc9423a0f0ccda4fbdea43c2f54f800c6	S1
+R02	Changed scope	PASS	9 changed files, all under VMESTYE/PRONGS/G_PROGRAMMA/	S1
+R03	Required outputs	PASS	All 9 prescribed filenames present	S1
+R04	TSV row counts	PASS	FINDINGS 26, OPERATION_TRACES 10, AUTHORITY_USE 9, COVERAGE 1255, EVIDENCE 1265, UNJOINS 1265	S1
+R05	All TSV widths	PASS	All six TSVs have uniform declared column widths	S1
+R06	Distinct native row IDs	PASS	No duplicates in finding_id, trace_id, authority_use_id, coverage_id, evidence_id, unjoin_id	S1
+R07	Cross references	PASS	0 unknown finding IDs from coverage/evidence/unjoin/traces/authority; 0 unknown evidence IDs from unjoins or trace IDs from authority	S1
+R08	Ten source estate blobs	PASS	10/10 source files re-fetched at exact pinned SHAs; Git blob SHAs match ZL12 records	S1
+R09	Full 1255 source membership	PASS	Ten independent source lists total 1255, exact one-to-one keyed agreement, no extra or missing source IDs	S1
+R10	Conditional seam law	PASS	82 current seam rows: 7 MUST, 26 IF, 12 functional OR, 2 functional IF, 35 observed; none automatically mandatory	S1
+R11	P0 corpus access	PASS	P0 exact blob 65c1bbe4a602341c5caacca2d58dced31a23f382 readable with fetch_blob; 6125 rows, 25 columns	S1
+R12	P0 exact source tuple joins	PASS	1206/1255 match estate+commit+path+blob+source key uniquely	S1
+R13	P0 content-identical alternate cut	PASS_WITH_PINNED_DIFFERENCE	49/1255 GAP-001..049 source commit 9253064 differs from P0 7a5429f while path/blob/key exactly match; never rewrite source SHA silently	S1
+R14	P0 missing/ambiguous join count	PASS	0 unmatched, 0 ambiguous after matching by estate+path+blob+key and recording 49 cut differences	S1
+R15	Original 1255 census UNJOIN rationale	REVISE	CENSUS_BODY_NOT_RETURNED_BY_CONNECTOR is no longer a live blocker for any of 1255; update COV/EVID/UNJOINS without promoting semantic parity	S1
+R16	Pyat SR01 actual body	PASS_S1_SOURCE_ONLY	Blob 18673303f0c1ec137cd11d1ebd4d028f703be172 decoded 2416/2416 JSONL, 0 invalid, 2416/2416 P0 exact composite keys	S1
+R17	Sorok SR01 actual body	PASS_S1_SOURCE_ONLY	Blob 051bfb6d2577f511fe0503172ae2f89c5aeeeeb8 decoded 1314/1314 JSONL, 0 invalid, 1314/1314 P0 exact composite keys	S1
+R18	SR01 source-body unread claim	REVISE	The 2 body-unread overlays are now source-readable; acceptance/functional-equivalence still not established	S1
+R19	Protected code symbols	PASS_S1_ONLY	7 named def sites and one import site independently re-fetched at protected source SHA with blob matches	S1
+R20	N9 publication import target	PASS_STATIC_NEGATIVE	prev3_objective_position_v557_v558_publication.py line 22 imports prev3_objective_position_materializer; missing path at same protected SHA (404), no S2 run	S1
+R21	E001 Sorok recipient	PASS_S1_ONLY	W7 versioned seam E001 records no native Sorok importer; Pyat C11 source facade is distinct; no qualified N11/N12 release inferred	S1
+R22	E014 negative boundary	PASS_S1_ONLY	W7 E014 typed GT0 negative conserved; no positive actor evidence inferred	S1
+R23	N11 current scope	PASS_AS_DOCUMENTARY	Pinned roadmap S11 refers to A42 0/1890 measured original occupancy and N11_NOT_READY; not independently rerun original35 or issued N11	S1
+R24	Sorok protected currentness	PASS_S1_ONLY	Protected CURRENT_PROGRESS.md rev39 records received sourcefree P4/P5/P6; no native actor/science/human acceptance	S1
+R25	S2/S3 execution	NOT_RUN	No authorized runner, original respondent data, live native or psychological issuer used in this review	NOT_RUN
+R26	Phase 1 global gate	HELD	#813 requires all 13 independently receivable immutable prong returns and corrections; this one-prong review cannot accept P1 nor release ZL15	CONTROL
