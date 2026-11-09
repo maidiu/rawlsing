@@ -72,3 +72,15 @@ D1–D3, D7 and D9 passed executed review. D4 is partial because severance
 and restoration were in-process only. D5, D6 and D8 remain partial.
 D10 was not run. P11 remains scoped positive and N15 remains open.
 The activity owner is continuing the missing adverse cases.
+
+## Independent adverse-case review
+
+Reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP` returned `HOLD_SCOPED / REVISE`
+at `484a147a9dd9f8e2ed4799d1d328ac93d48d895c`. Independent reruns
+passed 15 focused tests, 62 history tests, and 63 including P4 CLI.
+D4 passed scoped cold fact detach/restore. D5, D8 and D10 remain partial.
+D6 is held: an unrelated ACTUAL interval at the same start clock was
+credited to the pending requirement, which became CONSUMED with no
+fact ID. The author is repairing exact recovery attribution and adding
+the reproduced negative. P6 gaze and full sibling-parent readback
+remain unrun.
