@@ -97,3 +97,31 @@ process leaves events, issuance list, clock and P3 head unchanged.
 The Mechanism I historical resource was absent before and after.
 A live Mechanism I outbox is unavailable on this cut, so the joined
 non-dispatch case remains held.
+
+## Joined runtime witness
+
+At exact code revision `0455726999350fd66d68ee637ee9299df825dbb8`,
+a local Python process called P6 `experience(new)` and then
+`experience(say)` with request ID `witness`, `request_edge=False`
+and the sourcefree proposal for “Could we check the edge together?”
+It read the ordinary persisted P4 turn and asserted that P6 narration
+cited the exact committed outward event.
+
+| Boundary | Observed identity |
+| --- | --- |
+| P2 root | `d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6` |
+| Actor, branch, clock | `TEST_ONLY_BP1_R26V_ACTOR_A`, `first_session`, 248 |
+| SAY event | `TEST_ONLY_BP4_WORLD_EVT_ef3c0a4b4396e208689c3e55f6159460c2d6e46d6580a3cacceec4bdd1ad88f6` |
+| SAY hash | `40d614d28896516f5ef75d7af620b99b5857d4a3a32daab3a1b2498425dbce53` |
+| P2 perception | Actor `A`, channel `co_present`, clock 248, exact SAY ID |
+| Semantic proposal | `01b8c178e7b7db8e6a29696b3a73d73fac1e032ecb00fd1ec88ddeeb108b82c0` |
+| P3 recruitment context | `adcd7bafe0d9d669d5850299b701e256e3ec8952482168520d4d79ad0a87d776` |
+| Eligible mediator | `5d5be13eec113fe97bedb56ae17fa5dd248af6b5f5903d83276a06619c06769e` |
+| Mediator hash | `c59f76952cbe49354c2e8dbb0a0a9a3f7f87fec32cedb9cf252efc844396ce7d` |
+| P2 outward event and S45/P6 public source | `TEST_ONLY_BP4_WORLD_EVT_af530b5bc40f026a76d95795c8016ac6a78208613d49599cf2384c1e0a9b0d64` |
+| Outward hash | `a8a713c63a6188051e6a08f46acdc8e553c747281dcc30398dbf3db576443571` |
+
+The imported call chain was P6 `experience` → P4 `act` →
+`speech.admit_speech` → `response.read_response` → P3
+`PsycheStore.query` and `projections.activate` → P2
+`_actor_say` → S45 `project_event` → P6 narration.
