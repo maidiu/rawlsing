@@ -11,7 +11,7 @@ composition. The input transducer was a local fixture. General live
 language, native psychology and human-product quality are unproved.
 
 **ACTION** — Independently review the scoped candidate against the
-50-row matrix. The current matrix has 29 scoped passes and 21 holds.
+50-row matrix. The current matrix has 30 scoped passes and 20 holds.
 Held rows identify the outstanding evidence and preserve the wider
 commission. Existing evidence includes exact mediator removal and
 restore, same-world gaze isolation, and a separate-process post-SAY

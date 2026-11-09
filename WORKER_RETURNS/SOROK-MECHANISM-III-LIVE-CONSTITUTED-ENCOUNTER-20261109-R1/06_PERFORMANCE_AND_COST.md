@@ -100,3 +100,23 @@ receipt grows with relevant sources, and the indexed query count
 stays one per read. This small controlled sample does not establish
 a production latency curve. Concurrent-load and failure-latency
 measurements remain unrun.
+
+## Concurrent fixture and failure latency
+
+At `bd9207daec4e95545cbf82ade079b14247351485`, three fresh Python
+processes called ordinary P6 SAY concurrently on the same fixture.
+Two used the same request ID with identical text. The third used a
+different request ID and raised `TimeoutError` in its transducer.
+The normal turn lock serialized all three.
+
+| Result | Wall seconds including lock wait | Fixture transducer calls |
+| --- | --- | --- |
+| First same-ID completion with an actor reply | 6.609 | 1 |
+| Distinct request with semantic timeout | 13.550 | 1 |
+| Same-ID replay after both completed | 18.405 | 0 |
+
+The ledger held two committed turns and no pending operation. The
+timeout preserved the actual SAY and produced no actor reply. The
+duplicate added no turn. The world advanced one tick total. These
+are one contention sample and one immediate fixture timeout; the
+figures do not represent provider timeout duration or throughput.
