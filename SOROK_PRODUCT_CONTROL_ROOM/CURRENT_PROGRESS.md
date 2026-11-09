@@ -1,5 +1,7 @@
 # Sorok current progress revision39 — P4 sourcefree first consumer protected received (2026-11-07)
 
+**CURRENT protected P6 receiving (2026-11-08; user-directed sourcefree engineering).** [P6 PR #779](https://github.com/maidiu/rawlsing/pull/779) **MERGED** at `0232a28f519f56b45404c439f1cd2a007005d2f4` from reconciled head `ea72ce582e7e3d3b27f6e04bd560dae14b228f75`, after exact-two privacy/canonical repair [#822](https://github.com/maidiu/rawlsing/pull/822). Canonical integrity PASS at run `42556668262`; independently reviewed original P6 SOURCEFREE `PASS_SCOPED`, 13/13 cold commands, four joined proofs, recognition and actor boundary. Historical candidate `NOT_MERGED` below is true only at its original pre-protected cut. Inherited FIABC/LiTS 144 PASS / 3 FAIL, no separate final-head S2 rerun or native/science/human/product grant. See [factual receiving receipt](PROGRAMMA_SOROK/28_P5_P6_PROTECTED_SOURCEFREE_RECEIVING_20261108_R1.md).
+
 **Protected P5 receiving (2026-11-08; user-directed sourcefree engineering).** [PR #775](https://github.com/maidiu/rawlsing/pull/775) merged at `5e266a80ccfc52da10741e15f6b9076138907758` from exact source `0d566510afd17ea395112fdb1a9f5713f88af835`; source CI canonical PASS. The historical P5 candidate text below predates this merge. No separately authenticated independent S2 approval, native scientific/human/production authority, or global FIABC green; inherited FIABC/LiTS 144 PASS / 3 FAIL remains.
 
 **Additive P6 joined verification candidate (2026-11-07)**
