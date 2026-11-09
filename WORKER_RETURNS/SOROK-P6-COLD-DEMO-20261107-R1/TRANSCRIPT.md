@@ -1,11 +1,11 @@
 # Actual P6 cold-reopen CLI run
 
 - Frozen runtime: `41b21babf72c4c8b0b4b012d3c8b7d7f6247791f`
-- Runtime path: `/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py`
+- Runtime path: `<REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py`
 - Started: 2026-11-08T00:15:27+00:00
-- State: `/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c`
-- CWD: `/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1`
-- Python: `/private/tmp/rawlsing-oct28-p1r1/venv/bin/python` (3.11.3)
+- State: `<EPHEMERAL_STATE>`
+- CWD: `<REDACTED_WORKTREE>`
+- Python: `<PYTHON_BINARY>` (3.11.3)
 - Platform: `macOS-13.7.8-x86_64-i386-64bit`
 - Environment: `PYTHONDONTWRITEBYTECODE=1`; no source or runtime edits.
 - Every P6 command below is a separate OS process; each invocation validates the cold checkpoint.
@@ -15,7 +15,7 @@
 ### 1. new
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c new
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> new
 ```
 
 `exit 0 | 9.97s`
@@ -30,7 +30,7 @@ detail: The bench stands beside the doorway.
 ### 2. orientation
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c view
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> view
 ```
 
 `exit 0 | 3.84s`
@@ -45,7 +45,7 @@ detail: The bench stands beside the doorway.
 ### 3. Nadia works while the user waits
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c say 'I can wait while you finish that.'
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> say 'I can wait while you finish that.'
 ```
 
 `exit 0 | 8.24s`
@@ -67,7 +67,7 @@ receipt: SAY 'I can wait while you finish that.'; clock 248 -> 249
 ### 4. room entry
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c go 'living room'
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> go 'living room'
 ```
 
 `exit 0 | 9.98s`
@@ -87,7 +87,7 @@ receipt: GO living room; clock 249 -> 250
 ### 5. banal observation
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c look coaster
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> look coaster
 ```
 
 `exit 0 | 14.10s`
@@ -107,7 +107,7 @@ receipt: INSPECT_OBJECT coaster; clock 250 -> 253
 ### 6. sandals linked history
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c look sandals
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> look sandals
 ```
 
 `exit 0 | 16.55s`
@@ -127,7 +127,7 @@ receipt: INSPECT_OBJECT sandals; clock 253 -> 256
 ### 7. photo linked history
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c look photo
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> look photo
 ```
 
 `exit 0 | 24.45s`
@@ -147,7 +147,7 @@ receipt: INSPECT_OBJECT photo; clock 256 -> 259
 ### 8. return to workshop
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c go workshop
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> go workshop
 ```
 
 `exit 0 | 24.84s`
@@ -167,7 +167,7 @@ receipt: GO workshop; clock 259 -> 260
 ### 9. revisit workshop
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c view
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> view
 ```
 
 `exit 0 | 15.06s`
@@ -181,7 +181,7 @@ detail: The bench stands beside the doorway.
 ### 10. leave the mug alone
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c say 'I'"'"'ll leave the mug alone for now.'
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> say 'I'"'"'ll leave the mug alone for now.'
 ```
 
 `exit 0 | 30.61s`
@@ -202,7 +202,7 @@ receipt: SAY "I'll leave the mug alone for now."; clock 260 -> 261
 ### 11. revisit living room
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c go 'living room'
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> go 'living room'
 ```
 
 `exit 0 | 30.75s`
@@ -222,7 +222,7 @@ receipt: GO living room; clock 261 -> 262
 ### 12. final view
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c view
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py --state <EPHEMERAL_STATE> view
 ```
 
 `exit 0 | 20.43s`
@@ -236,7 +236,7 @@ detail: A photograph leans against the wall on the shelf.
 ### 13. read-only house history evidence
 
 ```text
-$ /private/tmp/rawlsing-oct28-p1r1/venv/bin/python /Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1/WORKER_RETURNS/SOROK-P6-COLD-DEMO-20261107-R1/inspect_state.py --state /private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/p6-cold-demo.O7Is4c
+$ <PYTHON_BINARY> <REDACTED_WORKTREE>/WORKER_RETURNS/SOROK-P6-COLD-DEMO-20261107-R1/inspect_state.py --state <EPHEMERAL_STATE>
 ```
 
 `exit 0 | 12.98s`
