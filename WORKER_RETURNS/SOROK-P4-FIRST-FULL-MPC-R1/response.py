@@ -167,14 +167,13 @@ def read_response(owner, admission, scope, *, transduce=None):
                 actor_alias=actor)
 
 
-def express(session, uptake):
+def express(session, *, mode, actor_alias=None):
     """Realize the bounded outward expression through the P2 world writer."""
     from s45_projection.projection import project_event
 
-    mode = uptake["mode"]
     if mode is None:
         return None, None
-    event = session._actor_say(uptake["actor_alias"], EXPRESSIONS[mode])
+    event = session._actor_say(actor_alias, EXPRESSIONS[mode])
     observed = (project_event(event)
                 if event["event_id"] in session.user_perceived_ids() else None)
     return event, observed

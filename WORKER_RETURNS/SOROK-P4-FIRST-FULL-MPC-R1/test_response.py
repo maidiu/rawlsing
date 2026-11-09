@@ -72,7 +72,7 @@ def test_performed_speech_reads_real_prior_p3_formation(tmp_path, monkeypatch):
                         read_response(case.owner, speech, scope)
                 assert read_response(case.owner, speech, scope) == uptake
 
-            event, observed = express(session, uptake)
+            event, observed = express(session, mode=uptake["mode"], actor_alias=uptake.get("actor_alias"))
             assert observed["event_id"] == event["event_id"]
             assert observed["actor_visible_id"] != speech["performed"]["actor_id"]
             receipts.append((world_before, uptake["mode"], observed["body_public"]["text"]))
@@ -85,10 +85,20 @@ def test_performed_speech_reads_real_prior_p3_formation(tmp_path, monkeypatch):
     assert len({row[2] for row in receipts}) == 3
 
 
-def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path):
+def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path, monkeypatch):
     from types import SimpleNamespace
 
+    import run_p4
     from run_p4 import act, new, open_owner
+
+    original_express = run_p4.express
+    expression_inputs = []
+
+    def capture_expression(session, *, mode, actor_alias):
+        expression_inputs.append((mode, actor_alias))
+        return original_express(session, mode=mode, actor_alias=actor_alias)
+
+    monkeypatch.setattr(run_p4, "express", capture_expression)
 
     request = "Could we go over that edge together?"
     departure = "I'll let you get on with your work."
@@ -134,7 +144,15 @@ def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path):
                 event = turn["receipt"]["expression"]
                 assert owner.base_owner.fanin.session.event(event["event_id"]) == event
                 assert public["observation"]["event_id"] == event["event_id"]
-            assert "semantic_encounter" not in public
+            assert expression_inputs[-1] == (expected, uptake.get("actor_alias"))
+            public_json = json.dumps(public)
+            for key in ("semantic_encounter", "person_snapshot", "recruitment", "readset"):
+                assert key not in public
+                assert f'"{key}"' not in public_json
+            if expected:
+                assert uptake["person_snapshot"]["state_hash"] not in public_json
+                assert all(row["record_hash"] not in public_json
+                           for row in uptake["recruitment"]["entries"])
         finally:
             owner.close()
 
@@ -251,7 +269,7 @@ def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path, monkeyp
         assert read() == before
         assert session.event(event["event_id"]) == event
         assert owner.store.head() == head
-        expression, public = express(session, read())
+        expression, public = express(session, mode=before["mode"], actor_alias=before["actor_alias"])
         assert public["event_id"] == expression["event_id"]
         current_head = owner.store.head
         queries = owner.store.stats()["targeted_queries"]
@@ -294,7 +312,7 @@ def test_live_utterance_keeps_competing_p3_mediators_and_refuses_escalation(tmp_
             speech = admit_speech(session, text=text, actor_ref=case.initial.actor)
             assert speech["actor_access"]
             result = read_response(owner, speech, scope, transduce=transduce)
-            assert express(session, result) == (None, None)
+            assert express(session, mode=result["mode"]) == (None, None)
             assert session.event(speech["performed"]["event_id"]) == speech["performed"]
             return result
 

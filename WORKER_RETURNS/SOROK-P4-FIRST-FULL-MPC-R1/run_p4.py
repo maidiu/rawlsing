@@ -144,7 +144,7 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None, transduc
         speech = admit_speech(session, text=args.text, actor_ref=before["actor"],
                               request_edge=args.request_edge)
         uptake = read_response(owner, speech, ledger["scope"], transduce=transduce)
-        expression, observation = express(session, uptake)
+        expression, observation = express(session, mode=uptake["mode"], actor_alias=uptake.get("actor_alias"))
         offers_inspection = uptake["mode"] == "joint_check" and observation is not None
         interval = None
         if speech["performed"] and not offers_inspection:

@@ -37,3 +37,10 @@ A stale snapshot raises a refusal before P3 recruitment, even at the
 same world clock. The accepted snapshot identity stays in the internal
 uptake receipt. This check sits inside the existing serialized P4/P6
 turn. An interrupted turn still uses the existing pending hold.
+
+The outward expression interface accepts only the selected mode and
+actor alias alongside the existing P2 session. The P4 caller no longer
+passes the complete uptake receipt across that interface. The local
+fixture test checks the actual call arguments and scans the public
+result for internal field names, person identity and mediator hashes.
+This is an expression-boundary proof, not an ADP memory-access proof.
