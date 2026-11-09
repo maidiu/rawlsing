@@ -141,3 +141,16 @@ each stage. D8 remains PARTIAL because no compatible P6 gaze runtime is tracked
 in this checkout; the separate P6 gaze proof branch was not imported or
 touched. D4 retains the cold parent-event restoration limit; its cold proof is
 the sanctioned physical-depth detach/restore path.
+
+## Independent D5 and D10 readback
+
+At `092e7e283da80a533241cd2c101801281ed93b41`, the independent reviewer
+`ses_e52a51c43ffeuVe7ZZhNcga5YP` returned `HOLD_SCOPED`. The activity
+court passed 18 tests, history 65, and history plus P4 CLI 66. D10 passed
+both selected tests and confirmed child dispatch and parent isolation.
+Sibling readback remains unrun. D5 selected alone yielded one pass and
+two failures due to an order-dependent run_p4 import. The foreign-scope
+case also leaves target absence as an alternate cause of refusal.
+The existing activity worker is repairing those tests and adding the
+required sibling readback. D4 cold parent restoration and D8 P6 gaze
+remain unproven.
