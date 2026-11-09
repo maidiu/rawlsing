@@ -10,8 +10,9 @@ The received P2/S45 path performs and projects the selected response.
 composition. The input transducer was a local fixture. General live
 language, native psychology and human-product quality are unproved.
 
-**ACTION** — Independently review the scoped candidate against the
-50-row matrix. The current matrix has 30 scoped passes and 20 holds.
+**ACTION** — HQ may receive the independently tested sourcefree slice.
+The [three-court record](08_THREE_COURT_JUDGMENT.md) pins the review to
+the exact frozen candidate. The matrix retains 30 scoped passes and 20 holds.
 Held rows identify the outstanding evidence and preserve the wider
 commission. Existing evidence includes exact mediator removal and
 restore, same-world gaze isolation, and a separate-process post-SAY
