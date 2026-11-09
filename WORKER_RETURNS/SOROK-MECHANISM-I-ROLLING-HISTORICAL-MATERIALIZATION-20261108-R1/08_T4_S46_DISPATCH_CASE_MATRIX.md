@@ -36,7 +36,7 @@
 | D1 missing-depth hold | PASS scoped | Normal `run_p4 ... work` emits a durable HELD requirement; zero ACTUAL intervals, clock 230 and material 1 unchanged; requirement survives owner reopen and repeated work. |
 | D2 positive resume | PASS scoped | Existing worker core with injected mock transport admits `condition=serviceable`; auto-resume produces exactly one ACTUAL PARTIAL interval, material 1→0, clock 230→232; target/job/event/fact refs retained; observer perception unchanged. |
 | D3 negative content | PASS scoped | Admitted `condition=broken` holds with `HISTORICAL_DEPTH_VALUE_MISMATCH`; no ACTUAL interval or material use. |
-| D4 exact sever/restore | PASS scoped | Cold owner `physical_depth` detach/restore: HELD with no actual interval, then one actual interval after exact restore. Parent-event severance/restoration is in-process only; cold exact parent-event restore remains unproven. |
+| D4 exact sever/restore | PASS scoped | Cold owner `physical_depth` detach/restore: HELD with no actual interval, then one actual interval after exact restore. Parent-event severance/restoration is in-process only. No sanctioned cold parent-event detach/restore exists: P2/S46 store exposes append/read events, and P3/P4 source-severance fixtures target B1 source, not the HistoricalWorld parent event; adding a production mutator is out of scope. Cold parent-event replay remains NOT_RUN. |
 | D5 missing/wrong scope | PASS scoped | Wrong actor place holds `HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE`; world/resource contradiction holds `HISTORICAL_MATERIAL_WORLD_MISMATCH`; an actual distinct-root requirement and a genuinely recorded foreign-scope requirement both fail closed before interval. |
 | D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. Recovery requires the interval's exact `activity_requirement_ref` and re-verifies the admitted target/job/fact provenance; a same-start unrelated ACTUAL interval is not credited and leaves the requirement HELD with no false `fact_id`. Ambiguous recovery is persisted as non-retryable `AMBIGUOUS`; repeated resume and cold reopen do not add an interval. Pre-repair persisted ambiguous HELD records are rechecked before any retry. |
 | D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and full P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
@@ -51,7 +51,7 @@ N15 remains open: the existing P6 fixed-house regression was not run.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 18 passed in 112.52s
+# 18 passed, 1 skipped in 119.28s (author cut 44351688)
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
 # 66 passed in 256.42s (prior full run)
@@ -165,3 +165,7 @@ child dispatch consumed once while parent and sibling readbacks stayed
 unchanged. The review found no runtime delta and did not rerun the
 broader suite. Cold exact parent-event restoration and P6 gaze remain
 unrun and are assigned as separate bounded proofs.
+
+HQ reran standalone D4 on the receiving draft: 2 passed, 16 deselected
+in 11.35s. The standalone imports are included; the unconditional
+placeholder skip is omitted.

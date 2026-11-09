@@ -127,6 +127,8 @@ readback plus separate-root isolation. D8 remains PARTIAL because no compatible 
 runtime is tracked in this checkout; the separate P6 gaze proof branch was
 not imported or touched. D4 retains the cold exact parent-event restoration
 limit; its cold proof is the sanctioned physical-depth detach/restore path.
+No sanctioned cold parent-event fixture exists. The receiving draft records
+that limit and omits the author cut’s unconditional skip.
 P11 moves to sourcefree positive only; N15 remains open.
 
 Issue #824 first caller is
@@ -140,7 +142,7 @@ Exact author-local S2 tests:
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 18 passed in 112.52s
+# 18 passed, 1 skipped in 119.28s (author cut 44351688)
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
 # 66 passed in 256.42s

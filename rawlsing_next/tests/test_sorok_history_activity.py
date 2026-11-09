@@ -298,6 +298,9 @@ def test_d3_incompatible_admitted_value_holds_and_consumes_nothing(tmp_path, mon
 
 
 def test_d4_exact_parent_severance_holds_then_restores_requalification(tmp_path, monkeypatch):
+    """In-process parent-event read severance; this is not a cold fixture."""
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
     from run_p4 import advance_dispatched, new, open_owner
     from rawlsing_next.sorok_history.activity import produce_activity_requirement
     from rawlsing_next.sorok_history.runtime import run_once
@@ -402,6 +405,8 @@ def test_d9_model_failure_cannot_authorize_activity(tmp_path, monkeypatch):
 
 
 def test_d4_cold_detached_depth_holds_and_restore_requalifies(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
     from run_p4 import advance_dispatched, new, open_owner
 
     opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
