@@ -39,3 +39,7 @@ The validator confirms exact source key/ordinal equality, updated anti-joins and
 Return directory: `WORKER_RETURNS/PROGRAMMA-VMESTYE-P0-S2-QUALIFIED-VALIDATOR-20261109-R1/`.
 
 Includes the validator and test sources on the worker branch, assembly/stage manifests, the 11-row D05 raw-source qualification, baseline and historical bootstrap logs, all eight clean-baseline negative-control logs, execution receipt, environment manifest, and changed-file inventory. Exact PR head is the latest commit on PR #826; the execution-return issue comment records it.
+
+- PR: https://github.com/maidiu/rawlsing/pull/826
+- Initial clean-baseline evidence commit: `c3b79113233333f412d09f2517afab7cd3cd0972`
+- Exact final head is the latest commit on PR #826; the execution-return issue comment records it.
