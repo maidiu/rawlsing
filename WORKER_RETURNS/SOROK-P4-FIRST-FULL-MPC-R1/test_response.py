@@ -139,7 +139,7 @@ def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path):
             owner.close()
 
 
-def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path):
+def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path, monkeypatch):
     from run_p4 import new, open_owner
 
     ledger_file = tmp_path / "p4_receipts.json"
@@ -189,11 +189,50 @@ def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path):
         assert refused["mode"] is None
         assert owner.store.stats()["targeted_queries"] == queries
 
+        from copy import deepcopy
+        from developmental_recursion.contracts import digest
+
+        def unexpected(**_):
+            pytest.fail("invalid admission reached the transducer")
+
+        events = list(session.events())
+        identity = owner.snapshot().document()
+        head_before = owner.store.head()
+        for field in ("root", "branch"):
+            altered = deepcopy(speech)
+            attempt = altered["attempt"]
+            attempt[field] = "foreign-" + field
+            attempt["hash"] = digest({k: v for k, v in attempt.items() if k != "hash"})
+            with pytest.raises(RecursionRefusal, match="P4_SPEECH_IDENTITY_MISMATCH"):
+                read_response(owner, altered, scope, transduce=unexpected)
+        altered = deepcopy(speech)
+        altered["actor_access"]["actor_id"] = speech["performed"]["actor_id"]
+        with pytest.raises(RecursionRefusal, match="P4_SPEECH_PERCEPTION_MISMATCH"):
+            read_response(owner, altered, scope, transduce=unexpected)
+        altered = deepcopy(speech)
+        altered["performed"]["hash"] = "0" * 64
+        with pytest.raises(RecursionRefusal, match="P4_SPEECH_EVENT_BINDING_MISMATCH"):
+            read_response(owner, altered, scope, transduce=unexpected)
+        assert owner.store.stats()["targeted_queries"] == queries
+        assert session.events() == events
+        assert owner.snapshot().document() == identity
+        assert owner.store.head() == head_before
+
         before = read()
         assert before["mode"] == "joint_check"
         relevant = [entry for entry in before["recruitment"]["entries"]
                     if entry["activation"] == "ELIGIBLE" and entry["mode"] == "joint_check"]
         assert len(relevant) == 1
+        source_path = tmp_path / "bounded-rule-source"
+        exact_source = test_rules.B1_PATH.read_bytes()
+        with monkeypatch.context() as fault:
+            fault.setattr(test_rules, "B1_PATH", source_path)
+            source_path.write_bytes(exact_source + b"\n")
+            with pytest.raises(RecursionRefusal, match="P3_B1_SOURCE"):
+                read()
+            source_path.write_bytes(exact_source)
+            assert read() == before
+
         event = speech["performed"]
         head = owner.store.head()
         # Test-only fault injection into the real query source. Rollback
