@@ -91,13 +91,22 @@ def read_response(owner, admission, scope, *, transduce=None):
     if semantic:
         if transduce is None:
             return dict(result, status="PERCEIVED_NO_INSPECTION_REQUEST")
+        person = owner.snapshot()
         try:
             encounter = semantic_encounter(event, transduce)
         except TimeoutError:
+            encounter = None
+            unavailable = True
+        else:
+            unavailable = False
+        if owner.snapshot() != person:
+            raise RecursionRefusal("P4_SEMANTIC_PERSON_SNAPSHOT_STALE")
+        if unavailable:
             return dict(result, status="SEMANTIC_PROPOSAL_UNAVAILABLE")
         if encounter is None:
             return dict(result, status="SEMANTIC_PROPOSAL_REFUSED")
         result["semantic_encounter"] = encounter
+        result["person_snapshot"] = person.document()
         result["readset"].append(encounter["hash"])
         # The received P3 fixture authorizes only the current edge practice.
         # Mixed or uncertain proposals have no issued selection rule.

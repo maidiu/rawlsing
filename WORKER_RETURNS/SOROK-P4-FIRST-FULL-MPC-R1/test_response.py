@@ -243,10 +243,8 @@ def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path, monkeyp
             removed = database.execute("DELETE FROM p3_records WHERE record_id=? AND hash=?",
                                        (relevant[0]["record_id"], relevant[0]["record_hash"]))
             assert removed.rowcount == 1
-            severed = read()
-            assert severed["mode"] is None
-            assert relevant[0]["record_hash"] not in severed["readset"]
-            assert severed["semantic_encounter"] == before["semantic_encounter"]
+            with pytest.raises(RecursionRefusal, match="JOURNAL_INTEGRITY:HEAD_RECORD_MISSING"):
+                read()
         finally:
             database.execute("ROLLBACK TO mediator_cut")
             database.execute("RELEASE mediator_cut")
@@ -255,6 +253,19 @@ def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path, monkeyp
         assert owner.store.head() == head
         expression, public = express(session, read())
         assert public["event_id"] == expression["event_id"]
+        current_head = owner.store.head
+        queries = owner.store.stats()["targeted_queries"]
+        with monkeypatch.context() as fault:
+            def stale_person(**kwargs):
+                # Model a concurrent P3 head change at the same world clock.
+                fault.setattr(owner.store, "head",
+                              lambda: {**current_head(), "hash": "a" * 64})
+                return transduce(**kwargs)
+
+            with pytest.raises(RecursionRefusal, match="P4_SEMANTIC_PERSON_SNAPSHOT_STALE"):
+                read_response(owner, speech, scope, transduce=stale_person)
+        assert owner.store.stats()["targeted_queries"] == queries
+        assert read()["mode"] == before["mode"]
     finally:
         owner.close()
 
@@ -394,6 +405,9 @@ def test_live_recruitment_ignores_unrelated_committed_formation(tmp_path, monkey
     try:
         owner = case.owner
         owner.realize("p4-formation", case.proposals[0], owner.snapshot())
+        original_head = owner.store._connection.execute(
+            "SELECT record_count, head_hash, head_record_id, head_record_hash FROM p3_meta WHERE id=1"
+        ).fetchone()
         owner.realize("unrelated-formation", case.proposals[1], owner.snapshot())
         fanin = case.base_owner.fanin
         advance(fanin)
@@ -426,7 +440,15 @@ def test_live_recruitment_ignores_unrelated_committed_formation(tmp_path, monkey
             removed = database.execute("DELETE FROM p3_records WHERE record_id=?",
                                        (record["record_id"],))
             assert removed.rowcount == 1
-            assert read_response(owner, speech, scope, transduce=transduce) == original
+            database.execute(
+                "UPDATE p3_meta SET record_count=?, head_hash=?, head_record_id=?, "
+                "head_record_hash=? WHERE id=1", tuple(original_head),
+            )
+            pruned = read_response(owner, speech, scope, transduce=transduce)
+            assert pruned["person_snapshot"] != original["person_snapshot"]
+            assert {k: v for k, v in pruned.items() if k != "person_snapshot"} == {
+                k: v for k, v in original.items() if k != "person_snapshot"
+            }
         finally:
             database.execute("ROLLBACK TO unrelated_cut")
             database.execute("RELEASE unrelated_cut")

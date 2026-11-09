@@ -29,3 +29,11 @@ P3 operation that opened the P4 encounter. It compares the ledger's
 project, counterpart, role and relation against that plan. A second
 formation plan in the same actor and branch cannot redirect the
 encounter merely because that other plan is also valid for its own scope.
+
+The semantic reader captures the existing P3 owner snapshot immediately
+before transduction and checks it again when the call returns. That
+snapshot binds the world state, psyche head and owner configuration.
+A stale snapshot raises a refusal before P3 recruitment, even at the
+same world clock. The accepted snapshot identity stays in the internal
+uptake receipt. This check sits inside the existing serialized P4/P6
+turn. An interrupted turn still uses the existing pending hold.
