@@ -21,5 +21,6 @@ authority and access paths.
 Sourcefree S46 repair now consumes an owner-admitted `physical_depth`
 condition through the ordinary `run_p4 ... work` dispatch producer.
 This does not issue native CAN/ADP science, actor state, rights, independent
-review, live inference, or protected receiving. D5/D6/D8 remain partial and
-D10 unrun; see [08_T4_S46_DISPATCH_CASE_MATRIX.md](08_T4_S46_DISPATCH_CASE_MATRIX.md).
+review, live inference, or protected receiving. D1–D7/D9 are scoped passes,
+D8 lacks the P6 fixed-house gaze run, and D10 lacks full sibling-parent
+readback; see [08_T4_S46_DISPATCH_CASE_MATRIX.md](08_T4_S46_DISPATCH_CASE_MATRIX.md).

@@ -40,4 +40,5 @@ resumes it after the existing history worker admits a compatible
 `physical_depth` fact. The existing worker auto-resume then produces one
 actual S46 interval without user inspection. Missing or incompatible depth
 holds before the interval. See [08](08_T4_S46_DISPATCH_CASE_MATRIX.md) for
-D1–D10 and the unrun cases. This update is sourcefree author-local S2 only.
+D1–D10 and the remaining D8 gaze/ D10 sibling-parent limits. This update is
+sourcefree author-local S2 only.

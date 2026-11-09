@@ -99,7 +99,9 @@ Observed `1 passed in 6.15s`, exit 0.
 
 ## Issue #824 update
 
-P11 is sourcefree positive at the ordinary dispatch seam: D1–D4 and D7/D9
-passed in the activity court, while D5/D6/D8 remain partial and D10 not run.
-N15 remains open. The prior P11 HELD wording above is retained as history.
+P11 is sourcefree positive at the ordinary dispatch seam. D1–D7 and D9
+pass in the activity court; D8 is scoped to user hypothesis/ATTEND because
+P6 gaze is unavailable; D10 covers child-branch and separate-root isolation
+but not full sibling-parent readback. N15 remains open. The prior P11 HELD
+wording above is retained as history.
 See [08_T4_S46_DISPATCH_CASE_MATRIX.md](08_T4_S46_DISPATCH_CASE_MATRIX.md).

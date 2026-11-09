@@ -330,7 +330,7 @@ class HistoricalWorld:
             requirements = state.setdefault("activity_requirements", {})
             previous = requirements.get(requirement["id"])
             if previous is not None:
-                stable = {"world_readset", "dispatch_receipt", "status"}
+                stable = {"world_readset", "dispatch_receipt", "status", "target_version"}
                 if any(
                     previous.get(key) != requirement.get(key)
                     for key in (set(previous) | set(requirement)) - stable
@@ -353,7 +353,7 @@ class HistoricalWorld:
         )
 
     def mark_activity_requirement(self, requirement_id, status, *, receipt=None):
-        if status not in {"HELD", "CONSUMED", "INVALIDATED"}:
+        if status not in {"DISPATCHING", "HELD", "CONSUMED", "INVALIDATED"}:
             raise HistoryRefusal("INVALID_ACTIVITY_REQUIREMENT_STATUS")
         with self._write() as (_, state):
             requirement = state.get("activity_requirements", {}).get(requirement_id)
@@ -365,6 +365,43 @@ class HistoricalWorld:
             if receipt is not None:
                 requirement["dispatch_receipt"] = deepcopy(receipt)
             return deepcopy(requirement)
+
+    # Explicit negative-test interfaces. These are not ordinary dispatch writes.
+    def test_detach_physical_depth(self, target_id, predicate):
+        """Detach one committed depth fact for a durable severance test."""
+        with self._write() as (_, state):
+            target = state["targets"].get(target_id)
+            if target is None or predicate not in target.get("physical_depth", {}):
+                raise HistoryRefusal("HISTORICAL_DEPTH_NOT_FOUND")
+            fact = target["physical_depth"].pop(predicate)
+            target["version"] += 1
+            return deepcopy(fact)
+
+    def test_restore_physical_depth(self, target_id, fact):
+        """Restore the exact detached fact for the matching negative test."""
+        if not isinstance(fact, dict) or not fact.get("predicate"):
+            raise HistoryRefusal("INVALID_HISTORICAL_DEPTH_FACT")
+        with self._write() as (_, state):
+            target = state["targets"].get(target_id)
+            if target is None:
+                raise HistoryRefusal("HISTORICAL_TARGET_UNKNOWN")
+            target.setdefault("physical_depth", {})[fact["predicate"]] = deepcopy(fact)
+            target["version"] += 1
+            return deepcopy(target["physical_depth"][fact["predicate"]])
+
+    def test_set_actor_position(self, actor_id, location):
+        """Set an actor position for wrong-place dispatch tests only."""
+        with self._write() as (world, state):
+            if actor_id not in world.positions or not isinstance(location, str):
+                raise HistoryRefusal("INVALID_ACTIVITY_PLACE_TEST")
+            world.positions[actor_id] = location
+            state["test_mutation"] = state.get("test_mutation", 0) + 1
+
+    def test_set_resource_property(self, location, predicate, value):
+        """Set a world resource property for contradiction tests only."""
+        with self._write() as (world, state):
+            world.resources.setdefault(location, {})[predicate] = value
+            state["test_mutation"] = state.get("test_mutation", 0) + 1
 
     def visible_surfaces(self):
         """Project admitted surface facts available to the current observer."""

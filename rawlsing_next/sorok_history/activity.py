@@ -41,6 +41,8 @@ INVALID_REQUEST = "INVALID_ACTIVITY_REQUEST"
 REQUIREMENT_STALE = "HISTORICAL_ACTIVITY_REQUIREMENT_STALE"
 REQUIREMENT_CONSUMED = "HISTORICAL_ACTIVITY_REQUIREMENT_CONSUMED"
 REQUIREMENT_TARGET_MISSING = "HISTORICAL_ACTIVITY_TARGET_MISSING"
+DISPATCHING = "DISPATCHING"
+RECOVERED = "HISTORICAL_ACTIVITY_DISPATCH_RECOVERED"
 
 REPAIR_TASK_ID = "S46_ACTUAL_REPAIR"
 REPAIR_ACTION_KIND = "REPAIR"
@@ -428,7 +430,7 @@ def produce_activity_requirement(
     requirement_id = "history-activity:" + _digest({
         "root": root, "branch": branch, "task_id": task_id,
         "action_kind": action_kind, "target_id": target["id"],
-        "target_version": target.get("version"), "predicate": predicate,
+        "predicate": predicate,
         "expected": expected, "parent_event_ref": parent_ref,
         "required_at": session.clock(),
     })
@@ -474,6 +476,50 @@ def _requirement_stale_receipt(
     )
 
 
+def _recoverable_interval(session: Any, requirement: Mapping[str, Any]):
+    required_at = requirement.get("required_at")
+    if type(required_at) is not int:
+        return None
+    actor_id = session.world().actor_state.get("A", {}).get("actor_id")
+    for row in session.read_interval_states():
+        domain = row.get("domain") or {}
+        if (domain.get("mode") != "ACTUAL"
+                or domain.get("start") != required_at
+                or row.get("root_hash") != requirement.get("root")
+                or row.get("branch_id") != requirement.get("branch")
+                or row.get("actor_id") != actor_id
+                or row.get("status") not in {"PARTIAL", "REALIZED"}):
+            continue
+        return row
+    return None
+
+
+def _recovered_receipt(fanin: Any, history: Any, requirement: Mapping[str, Any],
+                       interval: Mapping[str, Any]) -> ActivityReceipt:
+    session = fanin.session
+    target = history.target(requirement.get("target_id"))
+    fact = (target or {}).get("physical_depth", {}).get(requirement.get("predicate"))
+    job = history.job(requirement.get("job_id")) if requirement.get("job_id") else None
+    material_before = None
+    try:
+        segments = interval.get("segments") or []
+        material_before = int(
+            segments[0]["world"]["state_before"]["material_remaining"]
+        ) if segments else None
+    except (KeyError, TypeError, ValueError, IndexError):
+        pass
+    root, branch = _scope(session)
+    return _receipt(
+        status=ADVANCED, target_id=str(requirement.get("target_id")),
+        target=target, predicate=str(requirement.get("predicate")),
+        expected=requirement.get("expected"),
+        observed=(fact or {}).get("value"), fact=fact, job=job,
+        root=root, branch=branch, clock_before=int(requirement["required_at"]),
+        clock_after=session.clock(), material_before=material_before,
+        material_after=_material(session), interval=interval,
+    )
+
+
 def dispatch_activity_requirement(
     fanin: Any,
     history: Any,
@@ -502,6 +548,17 @@ def dispatch_activity_requirement(
             status=HELD, requirement=stored, activity=None,
             reason=REQUIREMENT_CONSUMED,
         )
+    if stored.get("status") == DISPATCHING:
+        interval = _recoverable_interval(fanin.session, stored)
+        if interval is not None:
+            receipt = _recovered_receipt(fanin, history, stored, interval)
+            saved = history.mark_activity_requirement(
+                requirement_id, "CONSUMED", receipt=receipt.as_dict()
+            )
+            return ActivityDispatch(
+                ADVANCED, saved, receipt, RECOVERED
+            )
+        stored = history.mark_activity_requirement(requirement_id, "HELD")
     target = history.target(stored.get("target_id"))
     session = fanin.session
     root, branch = _scope(session)
@@ -515,6 +572,10 @@ def dispatch_activity_requirement(
         )
         return ActivityDispatch(HELD, history.activity_requirement(requirement_id),
                                 receipt, REQUIREMENT_STALE)
+    history.mark_activity_requirement(
+        requirement_id, DISPATCHING,
+        receipt={"stage": "BEFORE_INTERVAL", "required_at": stored.get("required_at")},
+    )
     receipt = advance_independent_activity(
         fanin, history,
         target_id=stored["target_id"], predicate=stored["predicate"],
@@ -536,7 +597,8 @@ def resume_activity_requirements(
     """Resume every held dispatch requirement through the same normal adapter."""
     return tuple(
         dispatch_activity_requirement(fanin, history, requirement, advance=advance)
-        for requirement in history.activity_requirements("HELD")
+        for requirement in history.activity_requirements()
+        if requirement.get("status") in {"HELD", DISPATCHING}
     )
 
 
@@ -554,6 +616,7 @@ __all__ = [
     "CALL_SITE_INVALID",
     "CALL_SITE_UNAVAILABLE",
     "DEPTH_MISSING",
+    "DISPATCHING",
     "EVENT_MISMATCH",
     "FACT_MISMATCH",
     "HELD",
@@ -569,6 +632,7 @@ __all__ = [
     "REPAIR_TASK_ID",
     "REQUIREMENT_CONSUMED",
     "REQUIREMENT_STALE",
+    "RECOVERED",
     "REQUIREMENT_TARGET_MISSING",
     "SCOPE_MISMATCH",
     "TARGET_MISMATCH",

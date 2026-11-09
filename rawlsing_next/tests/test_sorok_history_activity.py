@@ -9,14 +9,19 @@ from rawlsing_next.sorok_history.activity import (
     DEPTH_MISSING,
     HELD,
     advance_independent_activity,
+    dispatch_activity_requirement,
+    produce_activity_requirement,
 )
 from rawlsing_next.sorok_history.owner import HistoricalWorld, digest
+from rawlsing_next.sorok_history.runtime import run_once
 
 
 P4 = (Path(__file__).resolve().parents[2] / "WORKER_RETURNS"
       / "SOROK-P4-FIRST-FULL-MPC-R1")
 P3 = (Path(__file__).resolve().parents[2] / "WORKER_RETURNS"
       / "SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1")
+ENGINE = (Path(__file__).resolve().parents[2] / "WORKER_RETURNS"
+          / "SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1")
 
 
 def _actual_intervals(session):
@@ -392,3 +397,383 @@ def test_d9_model_failure_cannot_authorize_activity(tmp_path, monkeypatch):
         assert not _actual_intervals(session)
     finally:
         owner.close()
+
+
+def test_d4_cold_detached_depth_holds_and_restore_requalifies(tmp_path, monkeypatch):
+    from run_p4 import advance_dispatched, new, open_owner
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    target_id = tool["id"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        requirement = produce_activity_requirement(fanin, history)
+        admission = asyncio.run(run_once(history, _mock_provider(target_id)))
+        assert admission["status"] == "INDEX_READY"
+        fact = history.target(target_id)["physical_depth"]["condition"]
+        detached = history.test_detach_physical_depth(target_id, "condition")
+        assert detached == fact
+    finally:
+        owner.close()
+
+    cold = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = cold.base_owner.fanin
+        history = HistoricalWorld(fanin.session)
+        held = advance_dispatched(fanin)
+        assert held["status"] == HELD
+        assert held["activity"]["refusal_code"] == DEPTH_MISSING
+        assert held["activity"]["interval"] is None
+        assert fanin.session.world().actor_state["A"]["material_remaining"] == 1
+        assert not _actual_intervals(fanin.session)
+        history.test_restore_physical_depth(target_id, detached)
+    finally:
+        cold.close()
+
+    restored = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = restored.base_owner.fanin
+        advanced = advance_dispatched(fanin)
+        assert advanced["status"] == ADVANCED
+        assert fanin.session.world().actor_state["A"]["material_remaining"] == 0
+        [actual] = _actual_intervals(fanin.session)
+        assert actual["status"] == "PARTIAL"
+    finally:
+        restored.close()
+
+
+def test_d5_wrong_place_and_resource_hold_before_interval(tmp_path, monkeypatch):
+    from run_p4 import new, open_owner
+    from rawlsing_next.sorok_history.activity import dispatch_activity_requirement
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    target_id = tool["id"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        requirement = produce_activity_requirement(fanin, history)
+        assert asyncio.run(run_once(history, _mock_provider(target_id)))["status"] == "INDEX_READY"
+
+        history.test_set_actor_position("A", "market")
+        wrong_place = dispatch_activity_requirement(fanin, history, requirement["id"])
+        assert wrong_place.status == HELD
+        assert wrong_place.activity.refusal_code == "HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE"
+        assert wrong_place.activity.interval is None
+        assert not _actual_intervals(session)
+
+        history.test_set_actor_position("A", "workshop")
+        history.test_set_resource_property("workshop", "condition", "broken")
+        wrong_resource = dispatch_activity_requirement(fanin, history, requirement["id"])
+        assert wrong_resource.status == HELD
+        assert wrong_resource.activity.refusal_code == "HISTORICAL_MATERIAL_WORLD_MISMATCH"
+        assert wrong_resource.activity.interval is None
+        assert session.world().actor_state["A"]["material_remaining"] == 1
+
+        history.test_set_resource_property("workshop", "condition", "serviceable")
+        advanced = dispatch_activity_requirement(fanin, history, requirement["id"])
+        assert advanced.status == ADVANCED
+        assert session.world().actor_state["A"]["material_remaining"] == 0
+    finally:
+        owner.close()
+
+
+def test_d5_cross_root_requirement_is_not_admitted(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
+    from run_p4 import new, open_owner
+    from rawlsing_next.sorok_history.activity import dispatch_activity_requirement
+
+    monkeypatch.syspath_prepend(str(ENGINE))
+    from developmental_recursion.p2_owner import load_p2
+
+    foreign = tmp_path / "foreign-root"
+    foreign_fanin = load_p2().start(foreign, seed="02" * 32)
+    try:
+        foreign_history = HistoricalWorld(foreign_fanin.session)
+        foreign_history.capture_visible_tool_resource()
+        foreign_requirement = produce_activity_requirement(foreign_fanin, foreign_history)
+        foreign_root = foreign_history.scope()[0]
+    finally:
+        foreign_fanin.close()
+
+    new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        assert history.scope()[0] != foreign_root
+        try:
+            dispatch_activity_requirement(fanin, history, foreign_requirement["id"])
+        except Exception as exc:
+            assert str(exc) == "ACTIVITY_REQUIREMENT_NOT_RECORDED"
+        else:
+            raise AssertionError("foreign root requirement was admitted")
+        assert not _actual_intervals(session)
+        assert session.world().actor_state["A"]["material_remaining"] == 1
+        assert history.activity_requirement(foreign_requirement["id"]) is None
+    finally:
+        owner.close()
+
+
+def test_d8_user_hypothesis_does_not_change_activity_requirement(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
+    from run_p4 import advance_dispatched, new, open_owner
+    from speech import admit_speech
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    held = _work_cli(tmp_path, monkeypatch)
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        [before] = history.activity_requirements("HELD")
+        admit_speech(
+            session, text="Suppose the tool is broken.",
+            actor_ref=owner.snapshot().document()["actor"], request_edge=False,
+        )
+        session.attend()
+        [after] = history.activity_requirements("HELD")
+        assert after["id"] == before["id"]
+        assert after["expected"] == "serviceable"
+        result = advance_dispatched(fanin)
+        assert result["status"] == HELD
+        assert result["activity"]["refusal_code"] == DEPTH_MISSING
+        assert not _actual_intervals(session)
+        assert session.world().actor_state["A"]["material_remaining"] == 1
+        assert history.target(tool["id"]).get("physical_depth", {}) == {}
+    finally:
+        owner.close()
+
+
+def test_d10_child_branch_does_not_authorize_parent_activity(tmp_path, monkeypatch):
+    from run_p4 import advance_dispatched, new, open_owner
+
+    new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        requirement = produce_activity_requirement(fanin, history)
+        assert advance_dispatched(fanin)["status"] == HELD
+
+        session.fork_alt("t4-sibling")
+        child = HistoricalWorld(session)
+        assert child.activity_requirement(requirement["id"]) is None
+        assert child.activity_requirements() == ()
+        assert child.pending() == ()
+        result = advance_dispatched(fanin)
+        assert result["status"] == HELD
+        assert session.clock() == 230
+        assert session.world().actor_state["A"]["material_remaining"] == 1
+    finally:
+        owner.close()
+
+
+def _run_process_script(script, state):
+    import os
+    import subprocess
+    import sys
+
+    process = subprocess.run(
+        [sys.executable, "-c", script, str(P4.parents[1]), str(state)],
+        capture_output=True, text=True, timeout=180,
+        env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+    )
+    assert process.returncode == 0, process.stderr
+    return json.loads(process.stdout)
+
+
+_ADMIT_AND_CRASH = r'''
+import asyncio, json, sys
+from pathlib import Path
+repo = Path(sys.argv[1]); state = Path(sys.argv[2])
+sys.path[:0] = [str(repo), str(repo / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1"),
+                str(repo / "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests")]
+from run_p4 import open_owner
+from rawlsing_next.sorok_history.owner import HistoricalWorld, digest
+from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+from rawlsing_next.sorok_history.runtime import run_once
+from rawlsing_next.sorok_history.activity import dispatch_activity_requirement
+owner = open_owner(state / "actual-p2")
+fanin = owner.base_owner.fanin; history = HistoricalWorld(fanin.session)
+requirement = history.activity_requirements("HELD")[0]
+target_id = requirement["target_id"]
+async def transport(request):
+    packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+    body = {"target_id": target_id, "predicate": "condition", "value": "serviceable",
+            "effective_time": packet["time"], "dependency_group": "physical",
+            "asserted_H_class": "H0"}
+    checksum = digest(body)
+    body["ref"] = {"kind": "FACT", "object_id": "proposal:" + checksum,
+                   "content_hash": checksum}
+    return {"text": json.dumps({"request_id": packet["request_id"], "facts": [body],
+            "occurrences": [], "links": [], "dependencies": [{"group_id": "physical",
+            "parent_refs": packet["event_refs"], "parent_groups": [],
+            "asserted_H_class": "H0"}]}), "model": "mock-history"}
+assert asyncio.run(run_once(history, HistoricalModelProvider(transport=transport)))["status"] == "INDEX_READY"
+original = HistoricalWorld.mark_activity_requirement
+def fail(self, requirement_id, status, *, receipt=None):
+    if status == "CONSUMED":
+        raise RuntimeError("injected crash after interval")
+    return original(self, requirement_id, status, receipt=receipt)
+HistoricalWorld.mark_activity_requirement = fail
+try:
+    dispatch_activity_requirement(fanin, history, requirement["id"])
+except RuntimeError:
+    pass
+actual = [row for row in fanin.session.read_interval_states()
+          if (row.get("domain") or {}).get("mode") == "ACTUAL"]
+print(json.dumps({"requirement": history.activity_requirement(requirement["id"])["status"],
+                  "material": fanin.session.world().actor_state["A"]["material_remaining"],
+                  "clock": fanin.session.clock(), "actual": len(actual)}))
+owner.close()
+'''
+
+_RESUME = r'''
+import json, sys
+from pathlib import Path
+repo = Path(sys.argv[1]); state = Path(sys.argv[2])
+sys.path[:0] = [str(repo), str(repo / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1"),
+                str(repo / "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests")]
+from run_p4 import open_owner
+from rawlsing_next.sorok_history.owner import HistoricalWorld
+from rawlsing_next.sorok_history.activity import resume_activity_requirements
+owner = open_owner(state / "actual-p2")
+fanin = owner.base_owner.fanin; history = HistoricalWorld(fanin.session)
+results = resume_activity_requirements(fanin, history)
+actual = [row for row in fanin.session.read_interval_states()
+          if (row.get("domain") or {}).get("mode") == "ACTUAL"]
+print(json.dumps({"statuses": [row.status for row in results],
+                  "reasons": [row.reason for row in results],
+                  "material": fanin.session.world().actor_state["A"]["material_remaining"],
+                  "clock": fanin.session.clock(), "actual": len(actual),
+                  "requirements": [row["status"] for row in history.activity_requirements()]}))
+owner.close()
+'''
+
+
+def test_d6_separate_process_crash_after_interval_recovers_without_double_use(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
+    from run_p4 import new
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    assert _work_cli(tmp_path, monkeypatch)["status"] == HELD
+    crashed = _run_process_script(_ADMIT_AND_CRASH, tmp_path)
+    assert crashed["requirement"] == "DISPATCHING"
+    assert crashed["material"] == 0
+    assert crashed["actual"] == 1
+
+    recovered = _run_process_script(_RESUME, tmp_path)
+    assert recovered["statuses"] == ["ADVANCED"]
+    assert recovered["reasons"] == ["HISTORICAL_ACTIVITY_DISPATCH_RECOVERED"]
+    assert recovered["material"] == 0
+    assert recovered["clock"] == 232
+    assert recovered["actual"] == 1
+    assert recovered["requirements"] == ["CONSUMED"]
+
+    replay = _run_process_script(_RESUME, tmp_path)
+    assert replay["statuses"] == []
+    assert replay["material"] == 0
+    assert replay["actual"] == 1
+
+_ADMIT_AND_CRASH_BEFORE = r'''
+import asyncio, json, sys
+from pathlib import Path
+repo = Path(sys.argv[1]); state = Path(sys.argv[2])
+sys.path[:0] = [str(repo), str(repo / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1"),
+                str(repo / "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests")]
+from run_p4 import open_owner
+from rawlsing_next.sorok_history.owner import HistoricalWorld, digest
+from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+from rawlsing_next.sorok_history.runtime import run_once
+import rawlsing_next.sorok_history.activity as activity
+owner = open_owner(state / "actual-p2")
+fanin = owner.base_owner.fanin; history = HistoricalWorld(fanin.session)
+requirement = history.activity_requirements("HELD")[0]
+target_id = requirement["target_id"]
+async def transport(request):
+    packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+    body = {"target_id": target_id, "predicate": "condition", "value": "serviceable",
+            "effective_time": packet["time"], "dependency_group": "physical",
+            "asserted_H_class": "H0"}
+    checksum = digest(body)
+    body["ref"] = {"kind": "FACT", "object_id": "proposal:" + checksum,
+                   "content_hash": checksum}
+    return {"text": json.dumps({"request_id": packet["request_id"], "facts": [body],
+            "occurrences": [], "links": [], "dependencies": [{"group_id": "physical",
+            "parent_refs": packet["event_refs"], "parent_groups": [],
+            "asserted_H_class": "H0"}]}), "model": "mock-history"}
+assert asyncio.run(run_once(history, HistoricalModelProvider(transport=transport)))["status"] == "INDEX_READY"
+def crash(*args, **kwargs):
+    raise RuntimeError("injected crash before interval")
+activity._default_advance = crash
+try:
+    activity.dispatch_activity_requirement(fanin, history, requirement["id"])
+except RuntimeError:
+    pass
+actual = [row for row in fanin.session.read_interval_states()
+          if (row.get("domain") or {}).get("mode") == "ACTUAL"]
+print(json.dumps({"requirement": history.activity_requirement(requirement["id"])["status"],
+                  "material": fanin.session.world().actor_state["A"]["material_remaining"],
+                  "actual": len(actual)}))
+owner.close()
+'''
+
+
+def test_d6_crash_before_interval_redispaches_once(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
+    from run_p4 import new
+
+    state = tmp_path / "before"
+    new(state, state / "p4_receipts.json", "recognized_plan")
+    assert _work_cli(state, monkeypatch)["status"] == HELD
+    crashed = _run_process_script(_ADMIT_AND_CRASH_BEFORE, state)
+    assert crashed == {"requirement": "DISPATCHING", "material": 1, "actual": 0}
+    recovered = _run_process_script(_RESUME, state)
+    assert recovered["statuses"] == ["ADVANCED"]
+    assert recovered["actual"] == 1
+    assert recovered["material"] == 0
+    assert recovered["requirements"] == ["CONSUMED"]
+
+
+def test_d10_separate_root_state_consumption_isolated(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
+    from run_p4 import new, open_owner, run_history_worker
+
+    one = tmp_path / "one"
+    two = tmp_path / "two"
+    opening = new(one, one / "p4_receipts.json", "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    new(two, two / "p4_receipts.json", "recognized_plan")
+    assert _work_cli(one, monkeypatch)["status"] == HELD
+    result = run_history_worker(
+        one, provider=_mock_provider(tool["id"], "serviceable")
+    )
+    assert result["status"] == "INDEX_READY"
+    [activity] = result["activity"]
+    assert activity["status"] == ADVANCED
+
+    other = open_owner(two / "actual-p2")
+    try:
+        session = other.base_owner.fanin.session
+        history = HistoricalWorld(session)
+        assert session.world().actor_state["A"]["material_remaining"] == 1
+        assert history.activity_requirements() == ()
+        assert not _actual_intervals(session)
+        assert history.target(tool["id"]).get("physical_depth", {}) == {}
+    finally:
+        other.close()

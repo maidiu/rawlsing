@@ -116,7 +116,10 @@ claim, parent event/hash, branch and place before calling the existing
 private depth injection, live provider, protected write, P5 or P6 work is
 used. D1–D10 status and the unrun cases are in
 [08_T4_S46_DISPATCH_CASE_MATRIX.md](08_T4_S46_DISPATCH_CASE_MATRIX.md).
-P11 moves to sourcefree positive only; N15 remains open.
+D4 is now a cold detach/restore proof, D5 covers wrong place/resource/root,
+D6 covers before/after crash points in separate processes, D8 covers user
+hypothesis plus ATTEND (P6 gaze not run), and D10 covers child-branch and
+separate-root isolation. P11 moves to sourcefree positive only; N15 remains open.
 
 Issue #824 first caller is
 `WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py:56`
@@ -129,13 +132,13 @@ Exact author-local S2 tests:
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 7 passed
+# 15 passed in 106.60s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
-# 54 passed in 143.86s
+# 63 passed in 227.77s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
-# 55 passed in 186.15s
+# 63 passed in 227.77s
 ```
 
 Before/after: absent `physical_depth` produced a durable HELD requirement

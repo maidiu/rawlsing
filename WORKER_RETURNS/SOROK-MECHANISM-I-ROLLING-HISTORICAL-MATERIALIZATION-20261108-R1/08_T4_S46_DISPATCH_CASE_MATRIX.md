@@ -36,13 +36,13 @@
 | D1 missing-depth hold | PASS scoped | Normal `run_p4 ... work` emits a durable HELD requirement; zero ACTUAL intervals, clock 230 and material 1 unchanged; requirement survives owner reopen and repeated work. |
 | D2 positive resume | PASS scoped | Existing worker core with injected mock transport admits `condition=serviceable`; auto-resume produces exactly one ACTUAL PARTIAL interval, material 1→0, clock 230→232; target/job/event/fact refs retained; observer perception unchanged. |
 | D3 negative content | PASS scoped | Admitted `condition=broken` holds with `HISTORICAL_DEPTH_VALUE_MISMATCH`; no ACTUAL interval or material use. |
-| D4 exact sever/restore | PASS scoped | Severing the exact target parent event through the session read interface holds with `HISTORICAL_PARENT_MISSING`; restoring the exact event requalifies and advances one actual interval. |
-| D5 forged/wrong scope | PARTIAL | Forged target/job/root requirement is held before interval; wrong actor place, world/resource contradiction, and cross-root branch import are not all separately executed. |
-| D6 cold replay/idempotence | PARTIAL | Durable requirement survives a separate `work` process/reopen; a consumed requirement replay is HELD with no double material use. Full separate-OS hold/admit/resume and crash-point matrix not run. |
-| D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
-| D8 actor isolation | PARTIAL | D2 confirms no INSPECT event and unchanged user-perceived IDs; differing actor gaze/user-hypothesis histories were not executed. |
+| D4 exact sever/restore | PASS scoped | Detached owner `physical_depth` fact and reopened cold: HELD with no actual interval; restored exact fact and reopened: one actual interval. Parent-event severance also holds and restores. |
+| D5 missing/wrong scope | PASS scoped | Wrong actor place holds `HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE`; world/resource contradiction holds `HISTORICAL_MATERIAL_WORLD_MISMATCH`; actual distinct-root requirement is not recorded and cannot authorize. |
+| D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. |
+| D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and full P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
+| D8 actor isolation | PARTIAL/PASS scoped | D2/D8 show no INSPECT, unchanged perceived IDs, and changed user hypothesis plus user ATTEND do not alter the requirement. P6 fixed-house gaze was not run. |
 | D9 model failure | PASS scoped | Timeout from the injected provider leaves the requirement HELD and no ACTUAL interval/material change. |
-| D10 branch concurrency | NOT_RUN | Child/sibling branch activity requirement and material isolation were not executed here. |
+| D10 branch/root isolation | PASS scoped | Child-branch has no parent requirement/target/job and cannot advance; separate root store retains material 1 and no depth while the other root consumes. Full sibling-parent readback remains outside this cut. |
 
 P11 is now sourcefree positive at the scoped level above (previously HELD).
 N15 remains open: the existing P6 fixed-house regression was not run.
@@ -51,13 +51,13 @@ N15 remains open: the existing P6 fixed-house regression was not run.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 7 passed
+# 15 passed in 106.60s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
-# 54 passed in 143.86s
+# 63 passed in 227.77s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
-# 55 passed in 186.15s
+# 63 passed in 227.77s
 ```
 
 Author local S2 result only. Independent S2 rerun and native S3 are NOT_RUN.
