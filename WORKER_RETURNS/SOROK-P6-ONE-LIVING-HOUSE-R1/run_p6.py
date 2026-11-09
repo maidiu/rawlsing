@@ -41,7 +41,7 @@ def experience(state, args, *, transduce=None):
             committed_objects = {ref: dict(row) for ref, row in committed_house["objects"].items()}
             expected = (ledger["turns"][-1]["after"] if ledger["turns"]
                         else ledger["antecedent"]["identity"])
-            if owner.snapshot().document() != expected:
+            if command != "say" and owner.snapshot().document() != expected:
                 raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
             prior = scene(session)
             outcome = None

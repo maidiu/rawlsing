@@ -112,6 +112,10 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None, transduc
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()
+    expected = (ledger["turns"][-1]["after"] if ledger["turns"]
+                else ledger["antecedent"]["identity"])
+    if before != expected:
+        raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
     if conduct is not None:
         action, perform = conduct
     elif args.command == "say":

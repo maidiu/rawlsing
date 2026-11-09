@@ -68,3 +68,13 @@ The targeted causal and unrelated-history tests passed (2 tests,
 61.20s with concurrent local runs). Pruning an unrelated record changes
 the full person identity carried for audit and leaves the scoped
 recruitment and move unchanged. A stale person still refuses.
+
+For P6 SAY, the P4 action owner now uses its existing opening snapshot
+to verify the persisted ledger identity. P6 omits the redundant opening
+snapshot for SAY only. The profiled path then reported five P2
+snapshots and 59 root reads, down from six and 68 respectively.
+The profiled turn took 21.980 seconds, a diagnostic result with
+instrumentation overhead. This change neither skips P2 verification
+nor reuses a snapshot across a write. The focused P6 regression passed
+in 48.06s, including refusal of a tampered opening identity before
+SAY or transduction, successful exact restoration, and cold retry.

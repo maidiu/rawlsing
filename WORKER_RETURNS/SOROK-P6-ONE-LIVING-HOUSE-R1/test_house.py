@@ -95,11 +95,20 @@ def test_house_say_uses_live_recruitment_and_replays_without_retransduction(tmp_
     baseline = snapshot()
     first = Namespace(command="say", request_id="first", request_edge=False, text=request)
     second = Namespace(command="say", request_id="second", request_edge=False, text=departure)
+    ledger_path = tmp_path / "p4_receipts.json"
+    opening_bytes = ledger_path.read_bytes()
+    stale = json.loads(opening_bytes)
+    stale["antecedent"]["identity"]["state_hash"] = "0" * 64
+    ledger_path.write_text(json.dumps(stale))
+    with pytest.raises(RecursionRefusal, match="P4_COLD_STATE_MISMATCH"):
+        experience(tmp_path, first, transduce=transduce)
+    assert not calls
+    assert snapshot() == baseline
+    ledger_path.write_bytes(opening_bytes)
     answer = experience(tmp_path, first, transduce=transduce)
     assert any("Come look at this edge with me." in row["text"] for row in answer["narration"])
     assert answer["clock"] == opening["clock"]
     silence = experience(tmp_path, second, transduce=transduce)
-    ledger_path = tmp_path / "p4_receipts.json"
     before_retry = ledger_path.read_bytes()
     before = snapshot()
     [issuance] = before["issuances"][len(baseline["issuances"]):]
