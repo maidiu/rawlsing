@@ -1,5 +1,7 @@
 # SOROK HQ — compatibility first-read and historical startup
 
+**P5 candidate update (2026-11-07).** [P5 situated experience](PROGRAMMA_SOROK/26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.
+
 **LATEST R39 PROTECTED P4 RECEIVING:** PR [#751](https://github.com/maidiu/rawlsing/pull/751) merged `ae3dd0922c5bf00a50071ed34f75798838ad4e95`. Read [PROGRAMMA 00](PROGRAMMA_SOROK/00_PROGRAMMA_SOROK.md), [25 exact P4 receiving/currentness and next goal](PROGRAMMA_SOROK/25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md) and [paired revision39 progress](CURRENT_PROGRESS.json). P4 D002 first-consumer accepted **sourcefree TEST_ONLY**, P5 ordinary continuous situated encounter reader **not yet launched**. Separate native scientific/source/B/operated rights/human gates HELD; FIABC 3 historical FAIL. Earlier R38 and pre-P4 candidate statements below reflect their dated cuts.
 
 

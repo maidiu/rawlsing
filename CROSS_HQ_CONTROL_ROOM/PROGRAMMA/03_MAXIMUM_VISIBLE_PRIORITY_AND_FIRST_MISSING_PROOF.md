@@ -1,5 +1,7 @@
 # PROGRAMMA Rawlsing — maximum visible priority / first missing proof
 
+**P5 candidate update (2026-11-07).** [P5 situated experience](../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.
+
 **LATEST PROTECTED OVERRIDE (2026-11-07, Sorok R39):** Earlier P4 missing-proof selection below was correct for its **2026-11-05** source cut but is no longer current. PR #751 received the bounded sourcefree D002 MPC1–7 first consumer at protected `ae3dd0922c5bf00a50071ed34f75798838ad4e95`. See [Sorok R39 exact acceptance/next-work receipt](../../SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/25_P4_PROTECTED_RECEIVING_AND_NEXT_EXPERIENCE_DECISION_20261107_R1.md). Next **candidate non-gating sourcefree** product proof: situated continued experience of an independently busy Other, source-bound ambient salience, user in-flight SAY/ATTEND/DO/INSPECT, continuous causal time, boundary return when human judgment required—not forced per utterance, not the explicit WAIT scaffold. The original native actor/science/ADP, independently sourced B, human S11/A5, S14 operated rights and Pyat/FIABC held authority remain separate. Recompute first missing gate/owner on actual current branch before dispatch. **No P5 launch** claimed. Preserve all older canonical priority/gate phrases below as historical and source-specific.
 
 
