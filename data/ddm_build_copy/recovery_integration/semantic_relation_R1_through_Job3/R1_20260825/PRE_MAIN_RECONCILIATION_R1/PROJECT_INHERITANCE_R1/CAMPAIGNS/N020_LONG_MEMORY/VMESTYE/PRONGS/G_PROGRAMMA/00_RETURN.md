@@ -13,7 +13,7 @@ This return independently extracted **1,255 overlapping, typed source identities
 
 | Estate | Exact source keys | Source-grade function |
 |---|---:|---|
-| `PROG_COMPONENT62` | 62 | 11 section parents and 51? children/other named capsules at G4 source cut; an index, not 62 operating functions |
+| `PROG_COMPONENT62` | 62 | 11 section parents and 51 child/other named capsules at G4 source cut; an index, not 62 operating functions |
 | `PROG_SEAM82` | 82 | 82 original edge IDs **with requiredness and literal IF predicates preserved** |
 | `PROG_GAP49` | 49 | 49 existing GAP identities; not 49 construction tickets |
 | `PROG_OWNER345` | 345 | Original requirement-to-owner crosslinks; navigation does not issue a result |
@@ -24,9 +24,26 @@ This return independently extracted **1,255 overlapping, typed source identities
 | `SOROK_ASSETS304` | 304 | Historical assets of different source depths |
 | `SOROK_SOURCE_INDEX_ONLY48` | 48 | Unread-depth subset of the 304 assets; **not** extra missing functions |
 
-**Important conservation limit:** GitHub's connected file reader returns the source-file identity but **empty body** for the P0 `CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv`, blob `65c1bbe4a602341c5caacca2d58dced31a23f382`. Hence `COVERAGE.tsv` contains all 1,255 known source keys and `UNJOINS.tsv` one explicit source-to-census unresolved tuple for each. The independent P0R accepted 6,125 source-identity baseline is preserved as a prior acceptance, **not independently recounted here**. Those 1,255 records are *not* 1,255 different functional holes. The underlying Sorok and Pyat SR-01 giant classification JSONLs also have only their prior accepted 1,314/2,416 source counts and pinned blobs available here, not the individual row bodies: two further explicit source-content unjoins are included. No invented aliases, census IDs or current acceptance.
+**Corrected source-access and P0 receiving fact (PR #855 independent review, author correction):** The P0 census Git blob `65c1bbe4a602341c5caacca2d58dced31a23f382` is accessible through direct Git-blob reading: **6,125 rows / 25 columns**. The independent map `01_1255_P0_CENSUS_JOIN_MAP.tsv` at `20b3b4746b583fd509d9563e7fb9014c8e023a6e` gives **1,255 unique `ZL01-...` census IDs** for our 1,255 scoped source keys: **1,206 full exact five-tuples** and **49 GAP-001–049 matching source key/path/Git blob under *different* commits** (worker `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`; P0 `7a5429ffbc48efd25e28c912da80c822e66bc182`; common blob `aa98a782ac2fdf9d3480d57e65b2de777b3d5726`). Neither commit was silently substituted for the other. The two formerly inaccessible historical classifier JSONLs are directly parsed: **2,416/2,416 Pyat** and **1,314/1,314 Sorok** exact P0 source-composite identity matches, 0 parse or join errors. All 1,255 row-level `COVERAGE.tsv` and `EVIDENCE.tsv` entries now have actual census IDs and cited review-map records; the **1,255 false census-access UNJOINS were removed**. `UNJOINS.tsv` retains **10 specific downstream unadjudicated joins** (8 protected-code source/authority/native first-reader qualifications; 2 historically unmerged classifier-to-operating-consumer claims), **zero active census/body-access obstructions**. Exact source identities, reviewer readback, and historical classifier bodies are S1 evidence only, not proof of one original-native functional successor or actor authorization.
 
 The 82 Pyat seam records yield **7 MUST; 26 IF; 12 FUNCTIONAL_OR_CONSUMES (non-node DAG); 2 FUNCTIONAL_IF (non-node DAG); 35 observed/reported producer–receiver**. This is not the same object as the separate 13 conditional node-DAG paths, and no IF is promoted to unconditional requiredness.
+
+### Correction readback and false-green gates (ZL-12 author scope)
+
+| Court | Observed after correction | Defensible grade |
+|---|---:|---|
+| Original source keys with explicit P0 census ID | **1,255/1,255** | `SOURCE_IDENTITY_VERIFIED_S1` |
+| Literally identical estate/commit/path/blob/key joins | **1,206** | `EXACT_FIVE_TUPLE_S1` |
+| GAP same blob/path/key under different commits | **49** | `SAME_BLOB_DIFFERENT_COMMIT__NO_CUT_EQUIVALENCE` |
+| Directly read Pyat/Sorok SR-01 source classifiers | **2,416 + 1,314 = 3,730** | `BODY_DIRECT_READ_S1__NOT_ADOPTED` |
+| Active P0 source-body/census-access UNJOINS | **0** | Access problem **closed** |
+| Remaining `UNJOINS.tsv` records | **10** | 8 downstream protected-code/native-science first-reader qualification cases + 2 historical classifier-to-current-operator cases; not ten missing features |
+| Original35 measured N11 position acceptance | **0/1,890 at A42 documented cut** | `N11_NOT_READY`, unchanged |
+| S2/S3, original respondents, native Sorok E001 actor-wake | **NOT_RUN** | No new evidence |
+
+**Checks required to defeat a false green:** (1) never collapse the 49 distinct commits into 1,255 literal five-tuple matches; (2) preserve original 82 requiredness predicates without converting IF into MUST; (3) never equate an exact `ZL01-...` source census key with a functioning original35 source/science output; (4) never equate a readable SR-01 classifier with an adopted component; (5) no sourcefree N10E/R05/P41/R112 or Sorok P4–P6 result issues N11, N12, E001/native person or A5 human authority; (6) maintain the bounded missing N9 publisher import and FIABC/host/D05/F14 negative controls. A downstream *functional* hold must be proved against an exact producer, owner, selected and applied rule with refusal, and actual consumer; an unassessed row is not a proven defect.
+
+The crosswalk is cited, not copied into canonical `VMESTYE/DATA`. The author has not independently rereviewed the corrected commit; only the distinct #855 independent original-head review and direct-source verification support this documentary correction. **All thirteen Phase 1 returns and #813 remain separate receiving gates.**
 
 ## 2. The full PROGRAMMA sequence (same-ID parent grades at source read)
 
@@ -70,7 +87,7 @@ Sorok SR-01 source families remain **304 assets, 144 functions, 100 W1 inputs, 3
 
 ## 5. No-drop obligations and next qualified work
 
-- **Independent census reader / ZL15:** resolve `P0_RETURN_AND_BRANCH_CENSUS.tsv` per source tuple, verify exact 1,255 source-key coverage and the two original SR-01 row bodies; *then* establish true same-grain functional equivalence, no-drop and first actual consumers. Existing `EVIDENCE.tsv` rows prove source identity, not source/native success.
+- **Independent semantic/authority/native-consumer receiver / ZL15:** source access is no longer a prerequisite: independently re-review the corrected 1,255 census links (including the exact 49 two-commit aliases) and the 3,730 classifier composite keys; *then separately* establish same-grain functional equivalence, selected source/science rule and refusal, actual first native consumers and negative/cold readback. The existing reviewed `ZL01` source IDs prove identity, not functional zero-loss or actor/science authorization.
 - **Current Pyat physical and original source owner:** reconcile R157 original35 actual rule selection and non-F1 planned operation into existing sourcefree C11/I03/F1–F4, without a second compiler or prohibited all-pairs primitive. Missing optional weights do not create a blanket RAW embargo; denominator-dependent inferences must still be exact.
 - **N9 owner:** qualify missing import repair under same-ABI first consumer and negative court; source/science owner separately issues original current/as-of objective fields. Preserve D05 and version/invalidation refusals.
 - **N10E/N10W owner:** one real changed-value empirical and versioned-world co-consumer where N9 and N10E both qualify. Preserve minority alternatives, false-condition refusal, source identity, as-of and non-inferred actor state.
