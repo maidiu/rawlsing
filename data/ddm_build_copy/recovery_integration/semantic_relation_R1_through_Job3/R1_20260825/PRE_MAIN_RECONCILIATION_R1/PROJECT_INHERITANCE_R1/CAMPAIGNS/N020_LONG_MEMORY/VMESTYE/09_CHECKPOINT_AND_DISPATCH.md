@@ -7,7 +7,7 @@
 **Fleet control:** [CONTROL/FLIGHT_BOARD.tsv](CONTROL/FLIGHT_BOARD.tsv). ZL-00/ZL-01 now source-schema ACCEPTED; ZL-02–ZL-17 remain `NOT_DISPATCHED`; no invented host/runner/slot. The old #787/#788/#789/#790 remain paused.
 
 ## Current stage
-`PROTECTED_SCAFFOLD_INSTALLED__P0_RECEIVING_PENDING__FLEET_NOT_DISPATCHED`. Both returned SR-01 source overlays are pinned in [CONTROL/SR01_RETURN_REGISTER.tsv](CONTROL/SR01_RETURN_REGISTER.tsv), **not yet imported or independent-reviewed**. The 30 recent capital locators include branch-only returns and reviewed REPAIR states; they are not semantic-function results. After qualified independent P0 receiving the state may become `PROGRAMMA_BOOTSTRAPPED__FLEET_PENDING_USER_DISPATCH`. Do not substitute candidate source for protected receiving.
+`P0_ACCEPTED_SOURCE_IDENTITY_AND_SCHEMA__P1_READY_FOR_EXPLICIT_USER_DISPATCH__NO_P1_WORKER_LAUNCHED`. Both returned SR-01 source overlays are pinned in [CONTROL/SR01_RETURN_REGISTER.tsv](CONTROL/SR01_RETURN_REGISTER.tsv), **not yet imported or independent-reviewed**. The 30 recent capital locators include branch-only returns and reviewed REPAIR states; they are not semantic-function results. Qualified independent P0R #799 R5 plus protected HQ receipt now authorize the P1 research launch. Do not substitute accepted source-key coverage for functional-current proof; later gates remain NOT_RUN.
 
 ## Dispatch prerequisites
 - User explicitly dispatches one or more complete commission prompts. Every prompt is self-contained and gives agent type/I level, user-selected Browser/editor/model/effort, exact branch/startup 40hex, repo/private rights, S0/S1/S2/S3 boundaries, independent reviewer, deliverables, data source cuts, first consumer and no-collision lease.
