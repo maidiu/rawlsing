@@ -83,8 +83,8 @@
     }
   ],
   "demo_files": {
-    "TRANSCRIPT.md": 11945,
-    "actual_run.jsonl": 30439,
+    "TRANSCRIPT.md": 9161,
+    "actual_run.jsonl": 28021,
     "house_history.json": 1692
   },
   "history": {
@@ -226,5 +226,28 @@
   "recognition_candidate": "4f3f465923a61e9e3d76b9c0aa7f6ffd8ecad318",
   "recognition_review": "a3ce6b4282c0c427ef11da71030d622aa908ee86",
   "runtime_frozen": "41b21babf72c4c8b0b4b012d3c8b7d7f6247791f",
-  "schema": "SOROK_P6_JOINED_DEMO_RECEIPT@1"
+  "schema": "SOROK_P6_JOINED_DEMO_RECEIPT@1",
+  "demo_files_raw_preimage": {
+    "TRANSCRIPT.md": 11945,
+    "actual_run.jsonl": 30439,
+    "house_history.json": 1692
+  },
+  "published_evidence_redaction": {
+    "grade": "DOCUMENTARY_REDACTION_ONLY__NO_NEW_RUNTIME_OR_INDEPENDENT_TEST",
+    "original_runtime_and_review_unchanged": true,
+    "original_cold_run_proof_preserved": true,
+    "direct_personal_and_ephemeral_paths_replaced_in_published_transcript_and_jsonl": true,
+    "original_raw_sha256": {
+      "TRANSCRIPT.md": "88f703c76edc5b5d0da0560390b6f755f5017651c6b9fc92747c58a79fa25885",
+      "actual_run.jsonl": "a8ce2e3e4cc2ccda393f062635bc6be077e0fd1d58145659c13bfdc094689756",
+      "house_history.json": "03cf9da0bcf2396ba362b67aa2f10dff2d0f673a0619a0c861b515d9b54fee3f"
+    },
+    "published_sha256": {
+      "TRANSCRIPT.md": "e15343c25ee20bfaa7617acd75a5a0437e091c00e93b1bf391bf7236f14861f4",
+      "actual_run.jsonl": "f1588dcb943e63d86a8316c9965fb1b914934b1204b2cbc4d2759e42b6d1d65e",
+      "house_history.json": "03cf9da0bcf2396ba362b67aa2f10dff2d0f673a0619a0c861b515d9b54fee3f"
+    },
+    "protected_receiving_grade": "CANDIDATE_ONLY__REQUIRES_EXACT_HEAD_INDEPENDENT_READBACK",
+    "note": "The original independent review and original raw digest attest the historical pre-redaction cold run; published paths were sanitized after review. Raw and sanitized transcript bytes are intentionally NOT identical. Run results, command order and receipts are preserved."
+  }
 }
