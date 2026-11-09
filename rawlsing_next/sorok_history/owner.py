@@ -308,6 +308,64 @@ class HistoricalWorld:
         state = self._state(self.session.world())
         return deepcopy(state["targets"].get(target_id))
 
+    def target_for_referent(self, referent_key, *, location=None):
+        """Resolve exactly one committed target from the owner index."""
+        state = self._state(self.session.world())
+        matches = [
+            target for target in state["targets"].values()
+            if target["surface"].get("referent_key") == referent_key
+            and (location is None or target["surface"].get("location") == location)
+        ]
+        if len(matches) != 1:
+            return None
+        return deepcopy(matches[0])
+
+    def hold_activity_requirement(self, requirement):
+        """Persist an exact dispatch requirement before any physical interval."""
+        if not isinstance(requirement, dict) or not isinstance(requirement.get("id"), str):
+            raise HistoryRefusal("INVALID_ACTIVITY_REQUIREMENT")
+        if not requirement["id"] or not requirement.get("target_id"):
+            raise HistoryRefusal("INVALID_ACTIVITY_REQUIREMENT")
+        with self._write() as (_, state):
+            requirements = state.setdefault("activity_requirements", {})
+            previous = requirements.get(requirement["id"])
+            if previous is not None:
+                stable = {"world_readset", "dispatch_receipt", "status"}
+                if any(
+                    previous.get(key) != requirement.get(key)
+                    for key in (set(previous) | set(requirement)) - stable
+                ):
+                    raise HistoryRefusal("ACTIVITY_REQUIREMENT_CONFLICT")
+                return deepcopy(previous)
+            requirements[requirement["id"]] = deepcopy(requirement)
+            return deepcopy(requirement)
+
+    def activity_requirement(self, requirement_id):
+        state = self._state(self.session.world())
+        return deepcopy(state.get("activity_requirements", {}).get(requirement_id))
+
+    def activity_requirements(self, status=None):
+        state = self._state(self.session.world())
+        rows = state.get("activity_requirements", {}).values()
+        return tuple(
+            deepcopy(row) for row in sorted(rows, key=lambda row: row["id"])
+            if status is None or row.get("status") == status
+        )
+
+    def mark_activity_requirement(self, requirement_id, status, *, receipt=None):
+        if status not in {"HELD", "CONSUMED", "INVALIDATED"}:
+            raise HistoryRefusal("INVALID_ACTIVITY_REQUIREMENT_STATUS")
+        with self._write() as (_, state):
+            requirement = state.get("activity_requirements", {}).get(requirement_id)
+            if requirement is None:
+                raise HistoryRefusal("ACTIVITY_REQUIREMENT_NOT_FOUND")
+            if requirement.get("status") == "CONSUMED":
+                return deepcopy(requirement)
+            requirement["status"] = status
+            if receipt is not None:
+                requirement["dispatch_receipt"] = deepcopy(receipt)
+            return deepcopy(requirement)
+
     def visible_surfaces(self):
         """Project admitted surface facts available to the current observer."""
         world = self.session.world()

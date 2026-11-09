@@ -22,6 +22,10 @@ from p3.p3_owner import CONFIG_FILE, P3Owner
 from rawlsing_next.sorok_history.owner import (
     HistoricalWorld, HistoryRefusal, RESOURCE, VISIBLE_PHYSICAL,
 )
+from rawlsing_next.sorok_history.activity import (
+    ActivityRefusal, REPAIR_TASK_ID, dispatch_activity_requirement,
+    produce_activity_requirement, resume_activity_requirements,
+)
 from response import check_source, express, read_response
 from speech import admit_speech
 
@@ -47,6 +51,18 @@ def advance(fanin, *, mode="ACTUAL"):
                 receipt["actual_action_event_id"], receipt["actual_action_event_hash"],
             )
     return interval
+
+
+def advance_dispatched(fanin, *, task_id=REPAIR_TASK_ID):
+    """Ordinary S46 dispatch: resolve the tool requirement, then advance."""
+    history = HistoricalWorld(fanin.session)
+    try:
+        requirement = produce_activity_requirement(fanin, history, task_id=task_id)
+    except ActivityRefusal as exc:
+        return {"status": "HELD", "requirement": None, "activity": None,
+                "reason": str(exc)}
+    dispatched = dispatch_activity_requirement(fanin, history, requirement)
+    return dispatched.as_dict()
 
 
 def open_owner(root):
@@ -111,6 +127,23 @@ def foreground_witness(owner, identity):
         "intervals": session.read_interval_states(), "encounters": session.read_encounters(),
         "psychology_head": owner.store.head(), "config_hash": owner.config_hash,
     })
+
+
+def last_boundary(ledger):
+    if ledger.get("activity_turns"):
+        return ledger["activity_turns"][-1]
+    return ledger["turns"][-1] if ledger["turns"] else ledger["antecedent"]
+
+
+def record_activity(owner, ledger_file, ledger, before, result):
+    """Persist an internal independent activity without making it a user turn."""
+    after = owner.snapshot().document()
+    ledger.setdefault("activity_turns", []).append({
+        "before": before, "after": after,
+        "foreground_witness": foreground_witness(owner, after),
+        "receipt": result,
+    })
+    save(ledger_file, ledger)
 
 
 def new(state, ledger_file, history):
@@ -244,14 +277,18 @@ def wake_history_worker(state, *, candidate_ready=False):
         print("Historical worker wake failed; durable demand retained.", file=sys.stderr)
 
 
-def run_history_worker(state, *, drain_backlog=False):
+def run_history_worker(state, *, drain_backlog=False, provider=None):
     """Use the foreground lock only for local owner operations."""
     import asyncio
 
     from rawlsing_next.sorok_history.provider import HistoricalModelProvider
     from rawlsing_next.sorok_history.runtime import drain, run_once
 
-    provider = HistoricalModelProvider.from_environment()
+    if provider is None:
+        provider = HistoricalModelProvider.from_environment()
+        service_provider = provider if provider.live else None
+    else:
+        service_provider = provider
     with foreground_lock(state):
         owner = open_owner(state / "actual-p2")
     try:
@@ -259,13 +296,28 @@ def run_history_worker(state, *, drain_backlog=False):
             check_source(owner)
             history = HistoricalWorld(owner.base_owner.fanin.session)
             history.recover_completed_units()
+            before = owner.snapshot().document()
         service = drain if drain_backlog else run_once
         result = asyncio.run(service(
-            history, provider if provider.live else None, guard=lambda: foreground_lock(state)
+            history, service_provider, guard=lambda: foreground_lock(state)
         ))
+        with foreground_lock(state):
+            resumed = resume_activity_requirements(
+                owner.base_owner.fanin, history
+            )
+            if resumed:
+                record_activity(
+                    owner, state / "p4_receipts.json",
+                    json.loads((state / "p4_receipts.json").read_text()),
+                    before, [row.as_dict() for row in resumed],
+                )
         if drain_backlog:
             return {"results": result}
-        return result if result is not None else {"status": "NO_WORK"}
+        if result is None:
+            result = {"status": "NO_WORK"}
+        if resumed:
+            result = {**result, "activity": [row.as_dict() for row in resumed]}
+        return result
     finally:
         owner.close()
 
@@ -278,6 +330,7 @@ def main():
     initialize.add_argument("--history", choices=("recognized_plan", "imposed_plan", ""),
                             default="recognized_plan")
     commands.add_parser("view")
+    commands.add_parser("work")
     worker = commands.add_parser("history-worker")
     worker.add_argument("--drain", action="store_true")
     say = commands.add_parser("say")
@@ -315,7 +368,7 @@ def main():
                 owner = open_owner(state / "actual-p2")
                 try:
                     check_source(owner)
-                    boundary = ledger["turns"][-1] if ledger["turns"] else ledger["antecedent"]
+                    boundary = last_boundary(ledger)
                     expected = boundary.get("after", boundary.get("identity"))
                     current = owner.snapshot().document()
                     if current != expected:
@@ -328,6 +381,12 @@ def main():
                         result = surface(owner, ledger)
                         candidate_ready = history.ready_candidate_id() is not None
                         recover_history = candidate_ready or bool(history.pending())
+                    elif args.command == "work":
+                        before = owner.snapshot().document()
+                        result = advance_dispatched(owner.base_owner.fanin)
+                        record_activity(owner, ledger_file, ledger, before, result)
+                        history = HistoricalWorld(owner.base_owner.fanin.session)
+                        recover_history = bool(history.pending())
                     else:
                         result = act(owner, ledger_file, ledger, args)
                         history = HistoricalWorld(owner.base_owner.fanin.session)

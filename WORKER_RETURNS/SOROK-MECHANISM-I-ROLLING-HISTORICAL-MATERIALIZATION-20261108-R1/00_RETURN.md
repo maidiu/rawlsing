@@ -101,3 +101,49 @@ actor-state links, independent action consuming newly admitted depth,
 automatic T2 link-triggered work, shared pre-contact writes and the broader
 terminal court remain open. Independent receiving is pending. No protected
 receiving or production adoption is represented by this draft.
+
+
+## Issue #824 — T4/S46 ordinary dispatch closure
+
+Implementation base is exact PR #791 head `95941a7708dc8b34b02b3de5a38322b2b0693750`.
+The producer resolves the committed tool from the owner index, emits and
+persists a typed serviceability requirement before the physical interval,
+and exposes the ordinary `run_p4 ... work` call site. The existing worker
+auto-resumes held requirements after an owner-admitted `physical_depth`
+fact. The adapter still verifies the exact target, job, accepted fact,
+claim, parent event/hash, branch and place before calling the existing
+`run_p4.advance` interval owner. No user inspection, literal target tuple,
+private depth injection, live provider, protected write, P5 or P6 work is
+used. D1–D10 status and the unrun cases are in
+[08_T4_S46_DISPATCH_CASE_MATRIX.md](08_T4_S46_DISPATCH_CASE_MATRIX.md).
+P11 moves to sourcefree positive only; N15 remains open.
+
+Issue #824 first caller is
+`WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py:56`
+(`advance_dispatched`) and the ordinary `work` CLI at line 333. The
+requirement is resolved from `HistoricalWorld.target_for_referent`
+(`owner.py:311`) and persisted at `owner.py:323`; dispatch verification is
+`activity.py:477`. The worker resume is `run_p4.py:305`.
+
+Exact author-local S2 tests:
+
+```text
+PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
+# 7 passed
+
+PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
+# 54 passed in 143.86s
+
+PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
+# 55 passed in 186.15s
+```
+
+Before/after: absent `physical_depth` produced a durable HELD requirement
+with no ACTUAL interval, clock 230 and material 1 unchanged. The history
+worker admitted an H0 `condition=serviceable` fact; auto-resume produced
+one ACTUAL PARTIAL interval, clock 230→232, material 1→0, and marked the
+requirement CONSUMED. The test retains target, job, accepted fact, claim,
+parent-event IDs and exact hashes. An incompatible `broken` value held with
+`HISTORICAL_DEPTH_VALUE_MISMATCH`; parent-event severance held with
+`HISTORICAL_PARENT_MISSING` and restored requalification advanced. Author
+local S2 only; independent S2 rerun, native S3 and live inference are NOT_RUN.

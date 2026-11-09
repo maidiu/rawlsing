@@ -15,3 +15,11 @@ The user-facing P4 reader returns physical observations under existing
 perception. The reverse actor index is internal to the world owner.
 Actor knowledge, memory and private meaning require their existing
 authority and access paths.
+
+## Issue #824 update
+
+Sourcefree S46 repair now consumes an owner-admitted `physical_depth`
+condition through the ordinary `run_p4 ... work` dispatch producer.
+This does not issue native CAN/ADP science, actor state, rights, independent
+review, live inference, or protected receiving. D5/D6/D8 remain partial and
+D10 unrun; see [08_T4_S46_DISPATCH_CASE_MATRIX.md](08_T4_S46_DISPATCH_CASE_MATRIX.md).

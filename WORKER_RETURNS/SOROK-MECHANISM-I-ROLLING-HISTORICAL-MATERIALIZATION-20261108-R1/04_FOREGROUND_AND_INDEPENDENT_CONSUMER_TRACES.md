@@ -30,3 +30,14 @@ and independent receiving also remain open.
 ```sh
 python -m pytest -q rawlsing_next/tests/test_sorok_history_owner.py::test_real_interval_binds_completed_output_without_inspection
 ```
+
+## Issue #824 update (T4/S46 ordinary dispatch)
+
+The ordinary `run_p4 ... work` path now resolves the committed tool target
+through `HistoricalWorld.target_for_referent`, persists an exact
+`S46_ACTUAL_REPAIR` serviceability requirement before any interval, and
+resumes it after the existing history worker admits a compatible
+`physical_depth` fact. The existing worker auto-resume then produces one
+actual S46 interval without user inspection. Missing or incompatible depth
+holds before the interval. See [08](08_T4_S46_DISPATCH_CASE_MATRIX.md) for
+D1–D10 and the unrun cases. This update is sourcefree author-local S2 only.

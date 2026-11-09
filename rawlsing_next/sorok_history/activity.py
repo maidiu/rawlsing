@@ -38,6 +38,14 @@ WORLD_MISMATCH = "HISTORICAL_MATERIAL_WORLD_MISMATCH"
 CALL_SITE_UNAVAILABLE = "P4_ACTIVITY_CALL_SITE_UNAVAILABLE"
 CALL_SITE_INVALID = "P4_ACTIVITY_CALL_SITE_INVALID_RESULT"
 INVALID_REQUEST = "INVALID_ACTIVITY_REQUEST"
+REQUIREMENT_STALE = "HISTORICAL_ACTIVITY_REQUIREMENT_STALE"
+REQUIREMENT_CONSUMED = "HISTORICAL_ACTIVITY_REQUIREMENT_CONSUMED"
+REQUIREMENT_TARGET_MISSING = "HISTORICAL_ACTIVITY_TARGET_MISSING"
+
+REPAIR_TASK_ID = "S46_ACTUAL_REPAIR"
+REPAIR_ACTION_KIND = "REPAIR"
+REPAIR_PREDICATE = "condition"
+REPAIR_EXPECTED = "serviceable"
 
 _ADMITTED_JOB_STATUSES = frozenset({"INDEX_READY", "PARTIAL_HELD"})
 
@@ -127,6 +135,30 @@ class ActivityReceipt:
             "writes_authority": self.writes_authority,
             "psychology_claim": self.psychology_claim,
         }
+
+
+@dataclass(frozen=True)
+class ActivityDispatch:
+    """Runtime dispatch result: durable requirement plus adapter receipt."""
+
+    status: str
+    requirement: Mapping[str, Any]
+    activity: ActivityReceipt | None
+    reason: str | None = None
+
+    def __getitem__(self, key: str) -> Any:
+        if key in {"status", "requirement", "activity", "reason"}:
+            return getattr(self, key)
+        raise KeyError(key)
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "status": self.status,
+            "requirement": deepcopy(self.requirement),
+            "activity": self.activity.as_dict() if self.activity is not None else None,
+            "reason": self.reason,
+        }
+
 
 
 def _default_advance(fanin: Any) -> Mapping[str, Any]:
@@ -357,6 +389,157 @@ def advance_independent_activity(
     )
 
 
+
+def produce_activity_requirement(
+    fanin: Any,
+    history: Any,
+    *,
+    task_id: str = REPAIR_TASK_ID,
+    action_kind: str = REPAIR_ACTION_KIND,
+    predicate: str = REPAIR_PREDICATE,
+    expected: Any = REPAIR_EXPECTED,
+) -> Mapping[str, Any]:
+    """Resolve the live S46 repair tool and persist its material requirement.
+
+    The target is selected from the committed HistoricalWorld index by the
+    world's existing ``world-resource:<location>:tool`` referent, never from a
+    caller-supplied target literal. The expected serviceability is the
+    sourcefree S46 repair rule for this fixture; a different admitted value
+    must fail the adapter's exact-value check.
+    """
+    session = fanin.session
+    world = session.world()
+    location = world.positions.get("A")
+    if not isinstance(location, str) or not location:
+        raise ActivityRefusal("HISTORICAL_ACTIVITY_ACTOR_LOCATION_MISSING")
+    referent = f"world-resource:{location}:tool"
+    target = history.target_for_referent(referent, location=location)
+    if target is None:
+        raise ActivityRefusal(REQUIREMENT_TARGET_MISSING)
+    surface = target.get("surface") or {}
+    parent_ref = _exact_ref({
+        "kind": "WORLD_EVENT",
+        "object_id": surface.get("occurrence_id"),
+        "content_hash": target.get("parent_hash"),
+    })
+    if parent_ref is None:
+        raise ActivityRefusal(PARENT_MISSING)
+    root, branch = _scope(session)
+    requirement_id = "history-activity:" + _digest({
+        "root": root, "branch": branch, "task_id": task_id,
+        "action_kind": action_kind, "target_id": target["id"],
+        "target_version": target.get("version"), "predicate": predicate,
+        "expected": expected, "parent_event_ref": parent_ref,
+        "required_at": session.clock(),
+    })
+    requirement = {
+        "schema": "SOROK_HISTORY_ACTIVITY_REQUIREMENT@1",
+        "id": requirement_id,
+        "task_id": task_id,
+        "action_kind": action_kind,
+        "target_id": target["id"],
+        "target_version": target.get("version"),
+        "predicate": predicate,
+        "expected": deepcopy(expected),
+        "root": root,
+        "branch": branch,
+        "parent_event_ref": deepcopy(parent_ref),
+        "job_id": target.get("job_id"),
+        "world_readset": _digest(world.snapshot()),
+        "required_at": session.clock(),
+        "status": "HELD",
+    }
+    return history.hold_activity_requirement(requirement)
+
+
+def _requirement_stale_receipt(
+    fanin: Any,
+    history: Any,
+    requirement: Mapping[str, Any],
+    reason: str,
+) -> ActivityReceipt:
+    session = fanin.session
+    root, branch = _scope(session)
+    target = history.target(requirement.get("target_id"))
+    fact = (target or {}).get("physical_depth", {}).get(requirement.get("predicate"))
+    job = history.job(requirement.get("job_id")) if requirement.get("job_id") else None
+    return _receipt(
+        status=HELD, target_id=str(requirement.get("target_id")),
+        target=target, predicate=str(requirement.get("predicate")),
+        expected=requirement.get("expected"), observed=None,
+        fact=fact, job=job, root=root, branch=branch,
+        clock_before=session.clock(), clock_after=session.clock(),
+        material_before=_material(session), material_after=_material(session),
+        interval=None, refusal_code=reason,
+    )
+
+
+def dispatch_activity_requirement(
+    fanin: Any,
+    history: Any,
+    requirement: Mapping[str, Any] | str,
+    *,
+    advance: Callable[[Any], Mapping[str, Any]] | None = None,
+) -> ActivityDispatch:
+    """Dispatch one durable requirement through the T4 adapter.
+
+    The requirement must already be owner-persisted. A consumed requirement is
+    never re-dispatched. A stale requirement (target version, job or parent
+    event changed) is held before the adapter can authorize work.
+    """
+    requirement_id = (
+        requirement if isinstance(requirement, str)
+        else requirement.get("id") if isinstance(requirement, Mapping)
+        else None
+    )
+    if not isinstance(requirement_id, str) or not requirement_id:
+        raise ActivityRefusal(INVALID_REQUEST)
+    stored = history.activity_requirement(requirement_id)
+    if stored is None:
+        raise ActivityRefusal("ACTIVITY_REQUIREMENT_NOT_RECORDED")
+    if stored.get("status") == "CONSUMED":
+        return ActivityDispatch(
+            status=HELD, requirement=stored, activity=None,
+            reason=REQUIREMENT_CONSUMED,
+        )
+    target = history.target(stored.get("target_id"))
+    session = fanin.session
+    root, branch = _scope(session)
+    parent = _exact_ref(stored.get("parent_event_ref"))
+    if (target is None
+            or (stored.get("root"), stored.get("branch")) != (root, branch)
+            or target.get("parent_hash") != (parent or {}).get("content_hash")):
+        receipt = _requirement_stale_receipt(fanin, history, stored, REQUIREMENT_STALE)
+        history.mark_activity_requirement(
+            requirement_id, "HELD", receipt=receipt.as_dict()
+        )
+        return ActivityDispatch(HELD, history.activity_requirement(requirement_id),
+                                receipt, REQUIREMENT_STALE)
+    receipt = advance_independent_activity(
+        fanin, history,
+        target_id=stored["target_id"], predicate=stored["predicate"],
+        expected=stored["expected"], advance=advance,
+    )
+    status = "CONSUMED" if receipt.advanced else "HELD"
+    saved = history.mark_activity_requirement(
+        requirement_id, status, receipt=receipt.as_dict()
+    )
+    return ActivityDispatch(receipt.status, saved, receipt, receipt.refusal_code)
+
+
+def resume_activity_requirements(
+    fanin: Any,
+    history: Any,
+    *,
+    advance: Callable[[Any], Mapping[str, Any]] | None = None,
+) -> tuple[ActivityDispatch, ...]:
+    """Resume every held dispatch requirement through the same normal adapter."""
+    return tuple(
+        dispatch_activity_requirement(fanin, history, requirement, advance=advance)
+        for requirement in history.activity_requirements("HELD")
+    )
+
+
 consume_independent_activity = advance_independent_activity
 run_independent_activity = advance_independent_activity
 
@@ -365,6 +548,7 @@ __all__ = [
     "ACTIVITY_GRADE",
     "ACTIVITY_SCHEMA",
     "ADVANCED",
+    "ActivityDispatch",
     "ActivityReceipt",
     "ActivityRefusal",
     "CALL_SITE_INVALID",
@@ -379,6 +563,13 @@ __all__ = [
     "PARENT_MISSING",
     "PLACE_MISMATCH",
     "PROPERTY_SOURCE",
+    "REPAIR_ACTION_KIND",
+    "REPAIR_EXPECTED",
+    "REPAIR_PREDICATE",
+    "REPAIR_TASK_ID",
+    "REQUIREMENT_CONSUMED",
+    "REQUIREMENT_STALE",
+    "REQUIREMENT_TARGET_MISSING",
     "SCOPE_MISMATCH",
     "TARGET_MISMATCH",
     "TARGET_UNKNOWN",
@@ -386,5 +577,8 @@ __all__ = [
     "WORLD_MISMATCH",
     "advance_independent_activity",
     "consume_independent_activity",
+    "dispatch_activity_requirement",
+    "produce_activity_requirement",
+    "resume_activity_requirements",
     "run_independent_activity",
 ]
