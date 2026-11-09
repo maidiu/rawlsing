@@ -1,12 +1,12 @@
 # VMESTYE — actual GitHub commission numbers and strict dispatch sequence
 
-**Published on 2026-11-08, protected documentation cut `0f4a446af12896aa742c42d5ff06e9222cc378cc`.** This is the single read-only GitHub issue-number index: [CONTROL/COMMISSION_ISSUES.tsv](CONTROL/COMMISSION_ISSUES.tsv). **Posting an issue is not dispatch.** No worker/runner is launched, and #777/#784/PR786 and paused #787–#790 remain on hold. Actual live branch and worker status must be read from CONTROL/FLIGHT_BOARD.tsv, phase receiving decisions from CONTROL/PHASE_GATES.tsv, and exact worker return SHAs from CONTROL/RECEIVING_LEDGER.tsv.
+**P0 HQ RECEIVED after independent #799 R5; P1 release authorized for explicit user launch.** See [P0 protected HQ receiving](CONTROL/P0_HQ_PROTECTED_RECEIVING_AND_P1_RELEASE.md). The original six-wave dependency scheme below remains intact. **Published on 2026-11-08, protected documentation cut `0f4a446af12896aa742c42d5ff06e9222cc378cc`.** This is the single read-only GitHub issue-number index: [CONTROL/COMMISSION_ISSUES.tsv](CONTROL/COMMISSION_ISSUES.tsv). **Posting an issue is not dispatch.** No worker/runner is launched, and #777/#784/PR786 and paused #787–#790 remain on hold. Actual live branch and worker status must be read from CONTROL/FLIGHT_BOARD.tsv, phase receiving decisions from CONTROL/PHASE_GATES.tsv, and exact worker return SHAs from CONTROL/RECEIVING_LEDGER.tsv.
 
 ## Launch waves
 
 **Wave 1 (sequential):**
 `ZL-00` [#797](https://github.com/maidiu/rawlsing/issues/797) → `ZL-01` [#798](https://github.com/maidiu/rawlsing/issues/798) → independent **P0 receiving** [#799](https://github.com/maidiu/rawlsing/issues/799).
-No P1 dispatch until #799 records accepted source/schema and lease gate at exact returned cut.
+P0 #799 independently ACCEPTED at exact R5 and qualified VMESTYE HQ protected-received it. P1 worker launch is now **permitted on explicit user dispatch**; no one has been auto-launched.
 
 **Wave 2 (parallel, all after #799 accepted):** `ZL-02` [#800](https://github.com/maidiu/rawlsing/issues/800), `ZL-03` [#801](https://github.com/maidiu/rawlsing/issues/801), `ZL-04` [#802](https://github.com/maidiu/rawlsing/issues/802), `ZL-05` [#803](https://github.com/maidiu/rawlsing/issues/803), `ZL-06` [#804](https://github.com/maidiu/rawlsing/issues/804), `ZL-07` [#805](https://github.com/maidiu/rawlsing/issues/805), `ZL-08` [#806](https://github.com/maidiu/rawlsing/issues/806), `ZL-09` [#807](https://github.com/maidiu/rawlsing/issues/807), `ZL-10` [#808](https://github.com/maidiu/rawlsing/issues/808), `ZL-11` [#809](https://github.com/maidiu/rawlsing/issues/809), `ZL-12` [#810](https://github.com/maidiu/rawlsing/issues/810), `ZL-13` [#811](https://github.com/maidiu/rawlsing/issues/811), `ZL-14` [#812](https://github.com/maidiu/rawlsing/issues/812). One isolated writer lane per prong. All thirteen require their own complete, source-graded returned head and cannot self-accept.
 
