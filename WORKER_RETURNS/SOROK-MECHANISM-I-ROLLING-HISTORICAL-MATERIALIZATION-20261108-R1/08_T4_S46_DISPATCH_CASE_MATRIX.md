@@ -169,3 +169,17 @@ unrun and are assigned as separate bounded proofs.
 HQ reran standalone D4 on the receiving draft: 2 passed, 16 deselected
 in 11.35s. The standalone imports are included; the unconditional
 placeholder skip is omitted.
+
+## D8 gaze feasibility return
+
+Worker `ses_e65307bd2ffe2eFVrpUzrvgjUd` returned
+`94c197d5cc4c5f832548cb1e59e478401775f7ac` from
+`e983229df1a8e5228569de5f4140a7ee7550ad2a`. The single passing check
+verified the missing interface only. The draft has neither the P6
+`attention.register/select` and gaze runtime nor a sanctioned bridge
+from persisted `p6_gaze.json` history to a same-world S46 comparison.
+S45 attention is a different input. The missing-interface test was
+not imported. D8 remains PARTIAL with user-hypothesis and ATTEND evidence,
+and N15 remains open. The next qualified evidence is a same-world gaze
+comparison when the P6 interface is available on the receiving cut.
+No runtime or authority grade advances from this return.
