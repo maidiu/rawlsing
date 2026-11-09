@@ -1,0 +1,20 @@
+check_id	artifact	scope	observed	expected	result	evidence_ref	falsifier
+Q01	PR_DIFF	author head	9 exact changed paths	9 within PRONGS/L_LEGACY/JOINT_V552J	PASS	PR837 changed filename list	Any out-of-lease file
+Q02	FINDINGS	literal schema	15 rows x 17 fields	P0 base FINDINGS 17-column literal header blob 3b801c4e	PASS	candidate blob a8a68f68263810117311162b29cc1d2d8dfdb2aa	Header or field width differs
+Q03	OPERATION_TRACES	literal schema	10 rows x 21 fields	VMESTYE_P1_PRONG_TABLES_V1	PASS	candidate blob c97244f0ebc94eba9a78383f8730364ecbdc4820	Header or field width differs
+Q04	AUTHORITY_USE	literal schema	14 rows x 16 fields	VMESTYE_P1_PRONG_TABLES_V1	PASS	candidate blob a7460ea2922aa5ebe887aa56a0f019655011d3ed	Header or field width differs
+Q05	EVIDENCE	literal schema	60 rows x 19 fields	VMESTYE_P1_PRONG_TABLES_V1	PASS	candidate blob 9c264dfd04e6ab46b5cdfe9da0e365eb586a0ed9	Header or field width differs
+Q06	COVERAGE	literal schema	60 rows x 16 fields	VMESTYE_P1_PRONG_TABLES_V1	PASS	candidate blob 212fc7284588389acdd86945db5718c5e6fdfabc	Header or field width differs
+Q07	UNJOINS	literal schema	48 rows x 19 fields	VMESTYE_P1_PRONG_TABLES_V1	PASS	candidate blob 8cf33a145d845b5a7356d119b4c9cf32c1faa40c	Header or field width differs
+Q08	ALL_TSV	identity enums and local links	0 duplicate PK / 0 orphan FKs / 0 enum invalid	P1 v1 permitted literals	PASS	independent JS replay of six candidate TSVs	Any duplicate or orphan
+Q09	P0_30	five-field exact source identity	30 of 30 joined; 0 tuple mismatch	P0 census 6125 rows/25 fields	PASS	P0 blob 65c1bbe4a602341c5caacca2d58dced31a23f382	A field differs at one of the five dimensions
+Q10	P0_30	source fidelity	30 of 30 source_blob_sha and source_row_locator equal	P0 source blob and locator exact	PASS	candidate EVIDENCE vs accepted P0 census	Any locator/hash disagreement
+Q11	EXTERNAL_30	typed census nonmatch	13 DVA + 12 OLD_CODE + 5 CURRENT_CODE; 30 matching CENSUS/TARGET_ABSENT unjoins	No forged P0 identity	PASS	EVIDENCE/COVERAGE/UNJOINS exact external tuples	Missing exact unjoin or invented census ID
+Q12	COVERAGE_60	successor grade	23 LINKED_IDENTITY_ONLY + 7 CANDIDATE_BEHAVIOR + 30 UNJOINED; 0 QUALIFIED	No false green	PASS	COVERAGE.tsv enumerations	Any unearned qualified successor
+Q13	AUTHORITY_14	selection/application	0 actual YES selected; 0 actual YES applied; 0 refusal YES	No false positive issuer claim	PASS	AUTHORITY_USE.tsv dimensional replay	Any false source-qualified grant
+Q14	NATIVE_RUN	S2/S3 boundary	0 S3/verified original-native in candidate; reviewer S2/S3 NOT_RUN	No fixture promotion	PASS	tables + source law	A native or independent test claim lacking runner
+Q15	LMX_J_ADJACENT	D01 scalarization	ZL01-000013 absent in all nine files	Explicit scope receipt / exclusion	REVISE	D01 blob f1252e901677203f7b54ded855a18a7738f28df7 csv:14	Exact grain crosswalk or recipient held
+Q16	LMX_PHYSICAL	D01 architecture/authority/cache	ZL01-000023/000024/000026 absent	Explicit scope receipt / exclusion	REVISE	D01 csv:24/25/27	Exact source-grain crosswalk or recipient held
+Q17	V552_PRODUCER	negative structural semantic trace	0 producer-specific code evidence; conditional audit empty at original cut	Exact source negative / first consumer trace	REVISE	ddm_v552_structural.py blob 0df56d70cb3880dee723df00aea2207acd525260#200-259	Producer and refusal joined
+Q18	OTHER_SEAMS	authority and cross-prong receiving	No Authority31/39/40 G4 SR-01 exact typed handoffs	Bounded recipient/in-scope decisions	REVISE	#801/#838; 05_RETURN_AND_RECEIVING.md	Source-specific owner and terminal receipt
+Q19	FALSIFIERS	open residuals	U-031..U-048 use generic repeated recipe	Distinct smallest proof per failure	REVISE	UNJOINS.tsv U-034/035/043/045/046/047/048	One discriminating falsifier per key
