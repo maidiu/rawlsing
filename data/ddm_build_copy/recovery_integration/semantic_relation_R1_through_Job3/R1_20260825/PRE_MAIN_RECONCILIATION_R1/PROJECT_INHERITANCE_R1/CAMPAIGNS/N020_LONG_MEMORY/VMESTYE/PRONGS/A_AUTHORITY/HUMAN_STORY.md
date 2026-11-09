@@ -10,7 +10,7 @@ The frozen 29-function/58-release C6 register reports **42 historically selected
 
 ## Why repaired identifiers do not prove authority application
 
-42 C6 releases report historical selections and 16 report unresolved pointers. Neither proves original release bytes were independently rehashed, currently selected by a competent issuer, applied to original source-native output, enforced a typed refusal or reached a first non-test consumer. The revised authority table separates those dimensions; the 149 P0 joins prove **source identity**, not functional conservation.
+42 C6 releases report historical selections and 16 report unresolved pointers. Neither proves original release bytes were independently rehashed, currently selected by a competent issuer, applied to original source-native output, enforced a typed refusal or reached a first non-test consumer. The revised authority table distinguishes those dimensions in tagged historical-report annotations while keeping its frozen V1 header and present-rule fields unchanged; the 149 P0 joins prove **source identity**, not functional conservation.
 
 ## First current semantic operators, not imagined ones
 
