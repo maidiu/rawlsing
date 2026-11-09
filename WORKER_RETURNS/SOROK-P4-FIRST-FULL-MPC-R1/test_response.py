@@ -464,8 +464,13 @@ def test_live_recruitment_ignores_unrelated_committed_formation(tmp_path, monkey
             )
             pruned = read_response(owner, speech, scope, transduce=transduce)
             assert pruned["person_snapshot"] != original["person_snapshot"]
-            assert {k: v for k, v in pruned.items() if k != "person_snapshot"} == {
-                k: v for k, v in original.items() if k != "person_snapshot"
+            assert pruned["recruitment"]["identity"] == pruned["person_snapshot"]
+            assert original["recruitment"]["identity"] == original["person_snapshot"]
+            assert {k: v for k, v in pruned["recruitment"].items() if k != "identity"} == {
+                k: v for k, v in original["recruitment"].items() if k != "identity"
+            }
+            assert {k: v for k, v in pruned.items() if k not in ("person_snapshot", "recruitment")} == {
+                k: v for k, v in original.items() if k not in ("person_snapshot", "recruitment")
             }
         finally:
             database.execute("ROLLBACK TO unrelated_cut")

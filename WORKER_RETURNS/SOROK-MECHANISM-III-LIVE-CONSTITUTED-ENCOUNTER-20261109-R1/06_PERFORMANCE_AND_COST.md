@@ -51,3 +51,20 @@ The five samples do not warrant a p95. No controlled historical-tail
 or concurrent-load series was run. These P6 figures include owner
 reopen and should be kept separate from the earlier open-owner P4
 measurement above.
+
+## Profile-guided snapshot reuse
+
+A `cProfile` trace of one joined P6 fixture SAY on the previous runtime
+cut recorded seven P2 snapshots and 77 root reads. Root reads consumed
+22.149s cumulative within the 26.924s profiled turn. The reader now
+uses the pre-transduction P3 owner snapshot for both encounter identity
+and the stale-person guard. The fresh post-transduction check stays in
+place. The same profile then recorded six P2 snapshots, 68 root reads,
+and a 25.065s profiled turn. Both runs committed a P2 reply through P6.
+Profiler overhead and host load make these times unsuitable as normal
+turn latency estimates.
+
+The targeted causal and unrelated-history tests passed (2 tests,
+61.20s with concurrent local runs). Pruning an unrelated record changes
+the full person identity carried for audit and leaves the scoped
+recruitment and move unchanged. A stale person still refuses.

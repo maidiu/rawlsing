@@ -56,9 +56,10 @@ def semantic_encounter(event, transduce):
 def read_response(owner, admission, scope, *, transduce=None):
     """Read uptake using the actor's actual speech perception and P3 readset."""
     check_source(owner)
-    identity = owner.base_owner.snapshot().document()
-    session = owner.base_owner.fanin.session
     attempt = admission["attempt"]
+    person = owner.snapshot() if transduce is not None and not attempt["request_edge"] else None
+    identity = (person if person is not None else owner.base_owner.snapshot()).document()
+    session = owner.base_owner.fanin.session
     if any(attempt[key] != identity[key] for key in ("root", "branch", "clock")):
         raise RecursionRefusal("P4_SPEECH_IDENTITY_MISMATCH")
     if attempt["hash"] != digest({k: v for k, v in attempt.items() if k != "hash"}):
@@ -91,7 +92,6 @@ def read_response(owner, admission, scope, *, transduce=None):
     if semantic:
         if transduce is None:
             return dict(result, status="PERCEIVED_NO_INSPECTION_REQUEST")
-        person = owner.snapshot()
         try:
             encounter = semantic_encounter(event, transduce)
         except TimeoutError:
