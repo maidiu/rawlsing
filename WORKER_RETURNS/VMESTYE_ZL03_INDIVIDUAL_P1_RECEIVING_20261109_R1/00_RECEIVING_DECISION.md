@@ -1,3 +1,40 @@
+# ZL-03 R2 INDEPENDENT RE-REVIEW — REVISE (new schema defect)
+
+**Exact author HEAD reviewed:** `2b871fa95e483002da547bb860b353d2c4432066` (PR #837; predecessor `bbb308530ed077f3ec46bd6121b6bd925a416021`). **Prior reviewer receipt:** PR #841 at `2b40025a034155742d4def97fde3d66d807f84e5`. **Protected PRE-MAIN:** `9253064bc9423a0f0ccda4fbdea43c2f54f800c6` (read-only; verified live at R2). **Scope:** issue #838/commission #801, S0–S1 authenticated GitHub source/documentary review; S2/S3 and original respondent/native runs **NOT_RUN**. The same GitHub account principal owns the author PR; this is a separately performed documentary receiving decision, not a permissioned GitHub APPROVE/REQUEST_CHANGES event or externally certified same-agent identity.
+
+**Verdict: REVISE.** The original four D01–D04 correction obligations are **addressed at bounded documentary/source scope**, but six newly added P0-first-consumer unjoin records fail two literal enum constraints in frozen `CONTROL/P0_SCHEMA_AND_LEASES.md` §3B, `VMESTYE_P1_PRONG_TABLES_V1`. This prevents `ACCEPT_SCOPED_P1_EVIDENCE` at the exact reviewed HEAD.
+
+## Independent R2 verification
+
+- **Branch/file custody:** corrected author commit is exactly nine commits ahead of reviewed predecessor, zero behind, touching exactly nine authorized in-prong files; original 15 FINDINGS, 10 TRACES, 14 AUTHORITY_USE, 60 EVIDENCE and 60 COVERAGE rows byte-identically retained. Original 48 UNJOINS retained with 18 U-031…048 falsifiers deliberately rewritten, zero deleted IDs. Reviewer PR #841 and protected PRE-MAIN were not touched by the author correction.
+- **Widths/keys/FKs:** tables at author HEAD: 19 FINDINGS ×17; 14 TRACES ×21; 16 AUTHORITY_USE ×16; 74 EVIDENCE ×19; 74 COVERAGE ×16; 62 UNJOINS ×19. Zero width, duplicate local key, or cross-table finding/trace/evidence FK violations in independent readback.
+- **P0 identity:** fetched accepted 6,125-row ZL-01 census as Git blob `65c1bbe4a602341c5caacca2d58dced31a23f382` at accepted `353adc216a832a6c41ccc99f77cb3b53651af64e`. All **36/36** linked EVIDENCE P0 records match census estate, commit, path, source blob, row locator, composite ID, and grain exactly. Linked TRACES/COVERAGE/UNJOINS source five-tuples also matched. All **38/38** outside-P0 EVIDENCE source-grain records have matched typed census UNJOINS.
+- **D01 (addressed):** `LMX-013/023/024/026` and adjacent `LMX-015/016` correctly joined to D01 source `bb0814fa...`, blob `f1252e9...`, rows 14/24/25/27/16/17 respectively. Preserved separate Trii/Chetiri ownership; six first-reader holds do not claim modern executable success.
+- **D02 (addressed at S1):** verified original `ddm_v552_structural.py` blob `0df56d70...` and `compile_v552_structural_ddm.py` blob `0f9a2874...`, with new F18/T11–T13/E-CODE-18/19. `conditional_determinicity` is passed but unused; contradiction tensor and conditional audit constructed empty; fact/temporal candidate is not direct V553 temporal permission. Verified `ddm_v552j_handoff.build_v552j_join` (original `476e6173...`) and `ddm_v553_canonical_harmonization.inspect_v552j_canonical_surface` (original `1951ada5...`) as static code readers, not observed non-test native consumers.
+- **D03 (addressed at S1):** new evidence and typed unjoins for Authority31/39/40, SR-01 register/boundary and G4 82 conditional seams cite immutable blobs and locators. Authority39 six legal classes and Archive08 all-wave issuer/rights restrictions remain held. Pyat/Sorok SR-01 are source-grade branch-only, not adopted current J functions.
+- **D04 (addressed):** all 18 `ZL03-U-031…048` falsifiers now differ by original issuer, cache invalidation, same-person, component/denominator, V552 temporal-negative, O11/O14 real-reader, exact Archive08 rights, or nine-scope original-native hold. Original Dva 7 historical information-loss gaps and six narrower conservations preserved.
+
+## New blocking defect R2-D05 — 12 frozen-enum violations
+
+In `UNJOINS.tsv` lines **50–55**, IDs `ZL03-U-P0-000013`, `000015`, `000016`, `000023`, `000024`, `000026` each use:
+
+1. `join_target_type=FIRST_CONSUMER`, which is **not** in frozen allowed `CENSUS|FINDING|OPERATION|AUTHORITY|EVIDENCE|CONSUMER|SOURCE_RIGHTS|OTHER_TYPED`. Correct literal `CONSUMER`.
+2. `failure_code=FIRST_CONSUMER_UNPROVED`, which is **not** in frozen allowed failure literals. Correct literal `FIRST_READER_UNPROVED`.
+
+This is **12 invalid cells across six otherwise source-matched rows**. Independent full-field enum replay on the other five mandatory TSVs found no additional invalid literals; width/PK/FK/identity checks alone would miss these. The author's reported zero structural errors is therefore not a complete P1 schema validation.
+
+**Required narrowly scoped author repair:** Change only those two fields in each of six IDs (`FIRST_CONSUMER→CONSUMER`; `FIRST_CONSUMER_UNPROVED→FIRST_READER_UNPROVED`), preserving P0 source tuples, six distinct semantic obligations, owner/negative/falsifier/OPEN holds. Re-run **all P1 §3B enum validations**, not just widths/PK/FK, and provide a fresh immutable author HEAD. Then recheck exact HEAD and changed paths independently; do not self-accept.
+
+## Unchanged proof and governance ceilings
+
+**Seven historical information-loss gaps / six narrower conservations stay open as reported historical code-path findings**, not new current regressions. Nine bounded configurations / 26 items have **0/9 positive native loads proved**, not zero respondents. Original selected J issuer, Archive08 all-wave rights, component/role/recursive/branch/travel conservation, actual non-test O11/O14 consumers and source-native full zero-loss are **unproved**. ZL-15 qualified incorporation, cross-prong #813, HQ/science/actor grants, protected write and merge remain **NOT AUTHORIZED**.
+
+**Terminal:** `ZL03_R2_INDEPENDENT_REVIEW_REVISE__D01_D04_SCOPED_ADDRESSED__SIX_NEW_ENUM_UNJOINS_INVALID__FRESH_AUTHOR_HEAD_REQUIRED__NO_MERGE`.
+
+---
+
+## Historical R1 review record (preserved, predecessor head only)
+
 # VMESTYE ZL-03 individual independent receiving — REVISE
 
 **Decision:** REVISE at immutable author PR #837 HEAD **bbb308530ed077f3ec46bd6121b6bd925a416021**. This is a source-scope correction, **not** an accusation that the thirty recorded source tuples are corrupt. A corrected immutable author HEAD and re-review are required before qualified ZL-15 input. No merge or authority promotion.
