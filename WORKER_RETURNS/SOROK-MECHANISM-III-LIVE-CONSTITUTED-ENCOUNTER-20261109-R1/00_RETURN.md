@@ -20,6 +20,6 @@ for engineering receiving. Original CAN/ADP and M6 issuers for native
 rules. Protected integrator for any separately authorized merge.
 
 Protected start `256d46bf425cc37e114465cddbe3c60e535766ab`.
-Runtime cut `29c1a7260dc02422f2082a2a3f4b547ca0a10d28`.
+Runtime cut `0567c840ffedf7c03d51b3283d240356f92b5462`.
 Draft [#862](https://github.com/maidiu/rawlsing/pull/862), issue
 [#861](https://github.com/maidiu/rawlsing/issues/861).

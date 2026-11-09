@@ -311,3 +311,59 @@ def test_live_utterance_keeps_competing_p3_mediators_and_refuses_escalation(tmp_
     finally:
         case.cycle.engine.close()
         case.owner.close()
+
+
+def test_testimony_and_timeout_preserve_world_truth_and_stale_speech_cannot_recruit(tmp_path):
+    from types import SimpleNamespace
+
+    from run_p4 import act, new, open_owner
+
+    ledger_path = tmp_path / "p4_receipts.json"
+    new(tmp_path, ledger_path, "recognized_plan")
+    ledger = json.loads(ledger_path.read_text())
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        psyche_head = owner.store.head()
+        queries = owner.store.stats()["targeted_queries"]
+
+        def assertion(*, event_id, event_hash, text):
+            return {"event_id": event_id, "event_hash": event_hash, "hypotheses": [
+                {"move": "ASSERTION", "referent": None, "span": [0, len(text)],
+                 "uncertain": False}
+            ]}
+
+        def timeout(**_):
+            raise TimeoutError("fixture transport timed out")
+
+        for index, (text, provider, status) in enumerate((
+            ("You promised to give me the bench.", assertion, "SEMANTIC_VALID_EMPTY"),
+            ("Could we go over the edge together?", timeout, "SEMANTIC_PROPOSAL_UNAVAILABLE"),
+        )):
+            prior_events = {event["event_id"] for event in session.events()}
+            args = SimpleNamespace(command="say", text=text, request_edge=False,
+                                   request_id=f"boundary-{index}")
+            public = act(owner, ledger_path, ledger, args, transduce=provider)
+            receipt = ledger["turns"][-1]["receipt"]
+            event = receipt["speech"]["performed"]
+            assert event["body"]["text"] == text
+            assert session.event(event["event_id"]) == event
+            new_speech = [row for row in session.events() if row["kind"] == "SPEECH"
+                          and row["event_id"] not in prior_events]
+            assert new_speech == [event]
+            assert receipt["speech"]["actor_access"]
+            assert receipt["uptake"]["status"] == status
+            assert receipt["expression"] is None
+            assert public["observation"] is None
+            assert owner.store.head() == psyche_head
+
+            def unexpected(**_):
+                pytest.fail("stale speech reached the transducer")
+
+            with pytest.raises(RecursionRefusal, match="P4_SPEECH_IDENTITY_MISMATCH"):
+                read_response(owner, receipt["speech"], ledger["scope"], transduce=unexpected)
+
+        assert owner.store.stats()["targeted_queries"] == queries
+        assert json.loads(ledger_path.read_text())["pending"] is None
+    finally:
+        owner.close()

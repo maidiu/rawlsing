@@ -11,3 +11,20 @@
 Current engineering grade is candidate with scoped author evidence.
 Scientific and production/human acceptance remain held. Protected
 receiving is NOT_MERGED. The author has issued no independent verdict.
+
+## Proposed independent engineering review
+
+A distinct nonauthor reviewer should freeze the candidate head of draft
+#862 and rerun the commands and named cases in the matrix from that
+exact checkout. Compare the proposed sourcefree semantics against the
+received P3 scope and registry and check that the renderer sees only
+the selected outward move. Independently execute the relevant-mediator
+severance and restoration, two-history contrast, private-gaze and
+room-access cases, and fresh-process interruption and completed replay.
+Check the authoritative P2 events, clock, P3 head and public observation
+rather than relying on generated prose or author summaries.
+
+Return exact revision, commands, outcomes and separate engineering,
+scientific and authority verdicts. Preserve every unrun case and
+distinguish fixture execution from native authority. This is the
+proposed review scope. An independent reviewer has not yet returned.
