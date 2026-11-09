@@ -22,3 +22,19 @@ observations rather than complete hostile utterance coverage.
 
 Commands and outcomes for qualified cases are in
 [the case matrix](04_CASE_MATRIX.jsonl).
+
+A separate P6 test committed two non-edge SAY turns and retried each
+in a new OS process, including the first turn after the second was
+committed. The retry transducer would raise on invocation. Both
+retries returned admission with the current clock, and the P4
+ledger bytes, exact P2 events, clock, and P3 head stayed identical.
+The test checks durable idempotence and does not assert replay of
+the original P6 narration.
+
+The combined P4 response and P6 house suite passed 8 tests in 236.21s
+on runtime cut `29c1a7260dc02422f2082a2a3f4b547ca0a10d28`.
+A later focused run passed the exact mediator severance/restoration
+and foreign-counterpart control together. The altered counterpart
+is refused before a P3 query, and the accepted scope is bound to the
+existing owner formation plan hash. This control covers one part of
+the broader cross-root/branch/actor case.

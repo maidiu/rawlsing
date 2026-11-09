@@ -182,6 +182,13 @@ def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path):
             assert uptake["mode"] is None
             assert "recruitment" not in uptake
 
+        queries = owner.store.stats()["targeted_queries"]
+        refused = read_response(owner, speech, {**scope, "counterpart": "foreign"},
+                                transduce=transduce)
+        assert refused["status"] == "SEMANTIC_SCOPE_REFUSED"
+        assert refused["mode"] is None
+        assert owner.store.stats()["targeted_queries"] == queries
+
         before = read()
         assert before["mode"] == "joint_check"
         relevant = [entry for entry in before["recruitment"]["entries"]

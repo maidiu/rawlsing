@@ -107,6 +107,16 @@ def read_response(owner, admission, scope, *, transduce=None):
         if (move["move"], move["referent"]) != ("REQUEST", "CURRENT_EDGE"):
             return dict(result, status="SEMANTIC_VALID_EMPTY")
 
+    if semantic:
+        fields = ("project", "counterpart", "interlocutor_role")
+        scope_plan = next((plan for plan in owner.plans
+                           if plan["phase"] == "FORMATION"
+                           and all(scope.get(key) == plan[key] for key in fields)
+                           and scope.get("relation_ref") in plan["relation_refs"]), None)
+        if scope_plan is None:
+            return dict(result, status="SEMANTIC_SCOPE_REFUSED")
+        result["readset"].append(scope_plan["hash"])
+
     result["readset"].extend([owner.registry["hash"],
                               test_rules.B1_SHA256, owner.source_hash])
     context = {
@@ -122,7 +132,8 @@ def read_response(owner, admission, scope, *, transduce=None):
         "grade": test_rules.GRADE,
     }
     if semantic:
-        context["source_refs"].extend((event["hash"], digest(access), encounter["hash"]))
+        context["source_refs"].extend((event["hash"], digest(access), encounter["hash"],
+                                       scope_plan["hash"]))
     context["hash"] = digest(context)
     records = owner.store.query(project=context["project"], counterpart=context["counterpart"],
                                 as_of=identity["clock"] - 1)
