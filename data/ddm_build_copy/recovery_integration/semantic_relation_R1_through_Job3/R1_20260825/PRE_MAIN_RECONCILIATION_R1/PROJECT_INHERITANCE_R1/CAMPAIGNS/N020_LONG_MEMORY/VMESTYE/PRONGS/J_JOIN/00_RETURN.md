@@ -1,3 +1,5 @@
+> **LATEST AUTHOR CANDIDATE — R5 / P4-D01-D02 (2026-11-09):** Relation types normalized to protected 23-kind schema, 4,841 reversible changes; 73 source-qualified inherited seed dispositions recorded as current same-grain proof gaps. See `R5_ZLP4_D01_D02_AUTHOR_RETURN.md`, `RELATION_TYPE_NORMALIZATION_R5.md`, `SEED_CURRENT_DISPOSITIONS_R5.tsv` and `VALIDATE_ZL15_R5.js`. Earlier paragraphs below are retained as historical R2–R4 author states; do not mistake their counts/status for current acceptance. Independent #817 P4 re-review **pending**. No protected merge, science, source-native, actor or zero-loss proof.
+
 # VMESTYE ZL-15 — R2 cross-generation documentary graph return
 
 **Commission:** #814; **source gate:** independent #813 R5 / PR #859 `449a97480dfa5c9f7f2042d688fe1ed1869ffe91`, `ACCEPT_P1_PRONG_EVIDENCE` **S0–S1 only**. **Status:** `DOCUMENTARY_13_PRONG_GRAPH_RETURNED_WITH_TYPED_GAPS__INDEPENDENT_FORWARD_AND_REVERSE_REVIEW_REQUIRED__NOT_NATIVE_PROOF__NO_MERGE`. **Not self-accepted.**
