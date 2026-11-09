@@ -31,3 +31,9 @@ For exact documentary reverse navigation, start with `CANDIDATE_TRANSFERS.tsv` a
 
 ---
 
+# R4 exact E001 cold path and code provenance
+
+Begin at `J-F-ZL12-F-E001` and follow new `JR-R4-E001-FINDING-TO-RECIPIENT` to `J-SEAM-NODE-5fb36fd14859ce80d2` (`SOROK:E001`), source witness `J-EV-R3-SOROK-E001`. The two `JR-R3-E001-{N11,N12}` candidate-required edges point into this node from separately identified Pyat N11/N12, while `ASTRA:REQ:N10W:N11` remains a distinct source MUST. All paths are owner/source-contract S1 candidates; reverse traversal is not native receipt. All five E001 stage records use the exact witness only for historical E001 identity/recipient, not proof of an intermediate generation's actual transformation. The 90 other missing stage evidence IDs remain typed holes. For implementations, `code_symbol` is now a verified path#symbol for one N10E static-code record or `NOT_PROVED_CODE_SYMBOL` for 883; raw document pointers remain only in `reported_code_locator`. See `R4_ZL16_D05_D06_AUTHOR_RETURN.md` and `VALIDATE_ZL15_R4.js`.
+
+---
+

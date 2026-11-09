@@ -31,3 +31,9 @@ The independent ZL-16/#815 and ZL-17/#816 R1 reviews returned `REVISE` against t
 
 ---
 
+# R4 residual author correction notice (2026-11-09)
+
+ZL-16 independent R2 re-review of R3 at `ffd994045319db496e642cd797b01b615cc85a24` found two residual source-navigation defects. See `R4_ZL16_D05_D06_AUTHOR_RETURN.md`, the corrected canonical `DATA/{IMPLEMENTATIONS,RELATIONS}.tsv`, five source-qualified E001 stage evidence links, and the R4 materializer/read-only validator. R4 is a **narrow author repair pending independent ZL-16 re-review**, not self-acceptance, native/source/actor proof or merge. Previous R3 and R2 reports remain below as historical provenance.
+
+---
+
