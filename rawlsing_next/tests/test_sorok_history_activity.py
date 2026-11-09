@@ -813,3 +813,89 @@ def test_d6_same_start_unrelated_interval_is_not_credited(tmp_path, monkeypatch)
         assert len(_actual_intervals(session)) == 1
     finally:
         owner.close()
+
+
+def test_d6_ambiguous_recovery_is_durable_and_not_retried(tmp_path, monkeypatch):
+    from run_p4 import advance, new, open_owner
+    from rawlsing_next.sorok_history.activity import (
+        AMBIGUOUS, dispatch_activity_requirement, resume_activity_requirements,
+    )
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        requirement = produce_activity_requirement(fanin, history)
+        assert asyncio.run(run_once(history, _mock_provider(tool["id"])))["status"] == "INDEX_READY"
+        history.mark_activity_requirement(requirement["id"], "DISPATCHING")
+        advance(fanin, dispatch_ref=requirement["id"])
+        [matching] = [
+            row for row in session.read_interval_states()
+            if (row.get("domain") or {}).get("activity_requirement_ref") == requirement["id"]
+        ]
+        real_read = session.read_interval_states
+        session.read_interval_states = lambda: [matching, matching]
+        ambiguous = dispatch_activity_requirement(fanin, history, requirement["id"])
+        assert ambiguous.status == HELD
+        assert ambiguous.reason == "HISTORICAL_ACTIVITY_RECOVERY_AMBIGUOUS"
+        assert history.activity_requirement(requirement["id"])["status"] == AMBIGUOUS
+        session.read_interval_states = real_read
+        assert len(_actual_intervals(session)) == 1
+        assert resume_activity_requirements(fanin, history) == ()
+        assert history.activity_requirement(requirement["id"])["status"] == AMBIGUOUS
+        assert len(_actual_intervals(session)) == 1
+    finally:
+        owner.close()
+
+    cold = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = cold.base_owner.fanin
+        history = HistoricalWorld(fanin.session)
+        assert history.activity_requirement(requirement["id"])["status"] == AMBIGUOUS
+        assert resume_activity_requirements(fanin, history) == ()
+        assert len(_actual_intervals(fanin.session)) == 1
+        assert history.activity_requirement(requirement["id"])["status"] == AMBIGUOUS
+    finally:
+        cold.close()
+
+
+def test_d6_old_ambiguous_held_is_rechecked_not_retried(tmp_path, monkeypatch):
+    from run_p4 import advance, new, open_owner
+    from rawlsing_next.sorok_history.activity import (
+        AMBIGUOUS, dispatch_activity_requirement, resume_activity_requirements,
+    )
+
+    opening = new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    [tool] = opening["historical_particulars"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        requirement = produce_activity_requirement(fanin, history)
+        assert asyncio.run(run_once(history, _mock_provider(tool["id"])))["status"] == "INDEX_READY"
+        history.mark_activity_requirement(requirement["id"], "DISPATCHING")
+        advance(fanin, dispatch_ref=requirement["id"])
+        [matching] = [
+            row for row in session.read_interval_states()
+            if (row.get("domain") or {}).get("activity_requirement_ref") == requirement["id"]
+        ]
+        history.mark_activity_requirement(
+            requirement["id"], "HELD",
+            receipt={"refusal_code": "HISTORICAL_ACTIVITY_RECOVERY_AMBIGUOUS"},
+        )
+        real_read = session.read_interval_states
+        session.read_interval_states = lambda: [matching, matching]
+        results = resume_activity_requirements(fanin, history)
+        assert len(results) == 1
+        assert results[0].status == HELD
+        assert results[0].reason == "HISTORICAL_ACTIVITY_RECOVERY_AMBIGUOUS"
+        assert history.activity_requirement(requirement["id"])["status"] == AMBIGUOUS
+        session.read_interval_states = real_read
+        assert len(_actual_intervals(session)) == 1
+        assert resume_activity_requirements(fanin, history) == ()
+    finally:
+        owner.close()

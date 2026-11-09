@@ -119,9 +119,11 @@ used. D1–D10 status and the unrun cases are in
 D4 is now a cold detach/restore proof, D5 covers wrong place/resource/root,
 D6 covers before/after crash points in separate processes and exact
 requirement/action/target/fact/job recovery; a same-start unrelated ACTUAL
-interval is not credited. D8 covers user hypothesis plus ATTEND (P6 gaze not
-run), and D10 covers child-branch and separate-root isolation. P11 moves to
-sourcefree positive only; N15 remains open.
+interval is not credited. Ambiguous recovery is non-retryable and survives
+repeated resume/cold reopen; old ambiguous HELD records are rechecked before
+retry. D8 covers user hypothesis plus ATTEND (P6 gaze not run), and D10
+covers child-branch and separate-root isolation. P11 moves to sourcefree
+positive only; N15 remains open.
 
 Issue #824 first caller is
 `WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py:56`
@@ -134,13 +136,13 @@ Exact author-local S2 tests:
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 16 passed in 108.67s
+# 18 passed in 130.48s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
-# 64 passed in 255.38s
+# 66 passed in 256.42s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
-# 64 passed in 255.38s
+# 66 passed in 256.42s
 ```
 
 Before/after: absent `physical_depth` produced a durable HELD requirement

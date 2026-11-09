@@ -353,7 +353,7 @@ class HistoricalWorld:
         )
 
     def mark_activity_requirement(self, requirement_id, status, *, receipt=None):
-        if status not in {"DISPATCHING", "HELD", "CONSUMED", "INVALIDATED"}:
+        if status not in {"DISPATCHING", "AMBIGUOUS", "HELD", "CONSUMED", "INVALIDATED"}:
             raise HistoryRefusal("INVALID_ACTIVITY_REQUIREMENT_STATUS")
         with self._write() as (_, state):
             requirement = state.get("activity_requirements", {}).get(requirement_id)

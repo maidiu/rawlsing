@@ -38,7 +38,7 @@
 | D3 negative content | PASS scoped | Admitted `condition=broken` holds with `HISTORICAL_DEPTH_VALUE_MISMATCH`; no ACTUAL interval or material use. |
 | D4 exact sever/restore | PASS scoped | Detached owner `physical_depth` fact and reopened cold: HELD with no actual interval; restored exact fact and reopened: one actual interval. Parent-event severance also holds and restores. |
 | D5 missing/wrong scope | PASS scoped | Wrong actor place holds `HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE`; world/resource contradiction holds `HISTORICAL_MATERIAL_WORLD_MISMATCH`; actual distinct-root requirement is not recorded and cannot authorize. |
-| D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. Recovery requires the interval's exact `activity_requirement_ref` and re-verifies the admitted target/job/fact provenance; a same-start unrelated ACTUAL interval is not credited and leaves the requirement HELD with no false `fact_id`. |
+| D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. Recovery requires the interval's exact `activity_requirement_ref` and re-verifies the admitted target/job/fact provenance; a same-start unrelated ACTUAL interval is not credited and leaves the requirement HELD with no false `fact_id`. Ambiguous recovery is persisted as non-retryable `AMBIGUOUS`; repeated resume and cold reopen do not add an interval. Pre-repair persisted ambiguous HELD records are rechecked before any retry. |
 | D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and full P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
 | D8 actor isolation | PARTIAL/PASS scoped | D2/D8 show no INSPECT, unchanged perceived IDs, and changed user hypothesis plus user ATTEND do not alter the requirement. P6 fixed-house gaze was not run. |
 | D9 model failure | PASS scoped | Timeout from the injected provider leaves the requirement HELD and no ACTUAL interval/material change. |
@@ -51,13 +51,13 @@ N15 remains open: the existing P6 fixed-house regression was not run.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 16 passed in 108.67s
+# 18 passed in 130.48s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
-# 64 passed in 255.38s
+# 66 passed in 256.42s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
-# 64 passed in 255.38s
+# 66 passed in 256.42s
 ```
 
 Author local S2 result only. Independent S2 rerun and native S3 are NOT_RUN.
@@ -108,3 +108,14 @@ passed. A separate ambiguity reproduction yielded one interval before
 the hold and two after resume. The ordinary HELD state permits retry
 of an ambiguous recovery. The author is repairing that transition.
 D5, D8 and D10 remain partial.
+
+## Residual ambiguity repair
+
+The independent review of `dcc6f3f97857f59781640aa39f799d6ec5fd1546`
+held a residual D6 defect: an ambiguous recovery was persisted as ordinary
+`HELD`, so `resume_activity_requirements` retried it and produced a second
+ACTUAL interval (`1 -> 2`). The repair persists ambiguity as non-retryable
+`AMBIGUOUS`, rechecks pre-repair ambiguous HELD records before any retry,
+and fails closed with no new interval. The reviewer reproduction is covered
+with repeated resume and cold reopen; the exact-bound crash-before/after and
+same-start unrelated interval negatives remain green.

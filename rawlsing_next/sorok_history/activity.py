@@ -44,6 +44,7 @@ REQUIREMENT_TARGET_MISSING = "HISTORICAL_ACTIVITY_TARGET_MISSING"
 DISPATCHING = "DISPATCHING"
 RECOVERED = "HISTORICAL_ACTIVITY_DISPATCH_RECOVERED"
 RECOVERY_AMBIGUOUS = "HISTORICAL_ACTIVITY_RECOVERY_AMBIGUOUS"
+AMBIGUOUS = "AMBIGUOUS"
 RECOVERY_UNVERIFIED = "HISTORICAL_ACTIVITY_RECOVERY_UNVERIFIED"
 
 REPAIR_TASK_ID = "S46_ACTUAL_REPAIR"
@@ -509,6 +510,11 @@ def _recoverable_interval(session: Any, requirement: Mapping[str, Any]):
     return matches[0], None
 
 
+def _prior_ambiguity(requirement: Mapping[str, Any]) -> bool:
+    receipt = requirement.get("dispatch_receipt") or {}
+    return receipt.get("refusal_code") == RECOVERY_AMBIGUOUS
+
+
 def _recovered_receipt(fanin: Any, history: Any, requirement: Mapping[str, Any],
                        interval: Mapping[str, Any]) -> ActivityReceipt | None:
     target, fact, refusal = _admitted_depth(
@@ -566,14 +572,20 @@ def dispatch_activity_requirement(
             status=HELD, requirement=stored, activity=None,
             reason=REQUIREMENT_CONSUMED,
         )
-    if stored.get("status") == DISPATCHING:
+    if stored.get("status") == AMBIGUOUS:
+        receipt = _requirement_stale_receipt(
+            fanin, history, stored, RECOVERY_AMBIGUOUS
+        )
+        return ActivityDispatch(HELD, stored, receipt, RECOVERY_AMBIGUOUS)
+    if stored.get("status") == DISPATCHING or (
+            stored.get("status") == HELD and _prior_ambiguity(stored)):
         interval, ambiguity = _recoverable_interval(fanin.session, stored)
         if ambiguity is not None:
             receipt = _requirement_stale_receipt(
                 fanin, history, stored, ambiguity
             )
             saved = history.mark_activity_requirement(
-                requirement_id, "HELD", receipt=receipt.as_dict()
+                requirement_id, AMBIGUOUS, receipt=receipt.as_dict()
             )
             return ActivityDispatch(HELD, saved, receipt, ambiguity)
         if interval is not None:
@@ -583,7 +595,7 @@ def dispatch_activity_requirement(
                     fanin, history, stored, RECOVERY_UNVERIFIED
                 )
                 saved = history.mark_activity_requirement(
-                    requirement_id, "HELD", receipt=held.as_dict()
+                    requirement_id, AMBIGUOUS, receipt=held.as_dict()
                 )
                 return ActivityDispatch(HELD, saved, held, RECOVERY_UNVERIFIED)
             saved = history.mark_activity_requirement(
@@ -592,7 +604,10 @@ def dispatch_activity_requirement(
             return ActivityDispatch(
                 ADVANCED, saved, receipt, RECOVERED
             )
-        stored = history.mark_activity_requirement(requirement_id, "HELD")
+        if stored.get("status") == DISPATCHING:
+            stored = history.mark_activity_requirement(requirement_id, "HELD")
+        # Existing pre-repair HELD/ambiguous records are rechecked above and may
+        # proceed only when the recheck now finds no exact-bound interval.
     target = history.target(stored.get("target_id"))
     session = fanin.session
     root, branch = _scope(session)
@@ -648,6 +663,7 @@ __all__ = [
     "ActivityDispatch",
     "ActivityReceipt",
     "ActivityRefusal",
+    "AMBIGUOUS",
     "CALL_SITE_INVALID",
     "CALL_SITE_UNAVAILABLE",
     "DEPTH_MISSING",
