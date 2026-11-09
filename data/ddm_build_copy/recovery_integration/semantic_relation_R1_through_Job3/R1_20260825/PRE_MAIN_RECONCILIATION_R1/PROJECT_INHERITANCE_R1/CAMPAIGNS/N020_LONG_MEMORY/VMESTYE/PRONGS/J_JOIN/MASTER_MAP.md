@@ -1,0 +1,36 @@
+# VMESTYE ZL-15 — master map of the thirteen R5-accepted documentary prongs
+
+**Read this as a graph of identifiable historical obligations, reported transformations, and bounded holds, not a continuous runtime trace.** The join key for a local prong fact is `(prong_id, local_id)`; the source identity is a different five-tuple: `(estate_id, source_commit_sha, source_path, source_composite_id, source_grain)`. Source-free and original/native are separate evidence strata.
+
+## Trace spine (forward; no implied proven end-to-end handoff)
+
+1. **ZL02 original source/V550 (29 findings / 16 traced ops / 48 authority uses / 29 coverage):** C6 F29 categories and 58 AR release inventory at historical C6 cut; source-wave/question/physical alias, denominators, refusal and inclusion. Historical release selection does not show present application.
+2. **ZL03 legacy joint V550J–V552J (19 / 14 / 16 / 74):** original join/component/structural information and seven carrier information-loss gaps; nine-scope native load and J current successor unproved. Historical downstream and proposed hybrid must retain original admissibility/negative selectors.
+3. **ZL04 legacy downstream V553–V558 (22 / 26 / 26 / 71):** historical consumer and field-survival seams. Static downstream reader edges, release history and physical branch custody are not observed current non-test consumers.
+4. **ZL05 Dva (151 / 24 / 42 / 167):** producer-owned DAG and historical acceptance/discriminator; its 167 source observations sit **outside frozen P0 exact tuples**. Heritage cannot be silently enrolled as original source census or current implementation.
+5. **ZL06 Trii (105 / 35 / 6 / 105):** producer-owned semantic authority, information atoms, scope/lifecycle/denial. All 105 coverage observations are outside P0; source descriptions are not native selected authority or original respondent effects.
+6. **ZL07 Chetiri (62 / 62 / 62 / 79):** source-backed/hybrid reconstructibility countermodel, conditional semantic witnesses, original Trii information constraints and refusal. Three observations exactly match P0; the other 76 remain outside-P0. Accepted later bounded successors cannot justify a claim that whole historical branch is either lost or integrated.
+7. **ZL08 Long Memory (143 / 12 / 12 / 488):** LMX44 historical obligations, LMQ30 resource/proof queue, P10 45 source-grain rows and D06 genealogy/stranding. **443** coverage observations match exact P0; **45** outside. No automatic promotion of inherited `PRESERVED` dispositions into current functionality.
+8. **ZL09 Pyat source/C11 (42 / 42 / 42 / 35):** all 35 SRC01–SRC35 R157 source-card identities exactly matched at P0; reported 35/35 nonrespondent fixture release is not all35 native respondent run or every source-specific selector applied.
+9. **ZL10 Pyat empirical F1–F4 (20 / 20 / 20 / 20):** static code establishes existing sourcebound empirical query, same-respondent joint incidence, recursive/conditional discoveries and possibility-slice candidate paths. All 20 coverage rows are outside P0; sourcefree test descriptions do not prove original35 native selection or N10 first-reader receipt.
+10. **ZL11 learned/Field Forge F5–F7 (87 / 19 / 19 / 87):** corrected source inventory 26 assets + 16 dependency records + 15 post-FF mechanisms + 11 starvation seams and learned/FF code observations; F6/F7 actual current consumption and source/authority rights remain held. All 87 coverage observations outside P0; `00_CORRECTIVE_RETURN_R2.md` overrides historical original R1 count claims.
+11. **ZL12 PROGRAMMA S01–S11/N9–N12/Sorok (26 / 10 / 9 / 1,255):** preserves section, 82 conditional edges, 49 GAP identities, 345 owner links, Sorok 144 family, W1, W7 gates, versioned seams and assets. **1,206** P0 exact matches; **49** GAP alternative-commit rows remain outside P0—do not join by name/semantic guess. No proven Pyat→Sorok end-to-end consumption.
+12. **ZL13 cross-generation authority (154 / 34 / 58 / 154):** 149 historical C6/C777 identities exactly match accepted P0; five current protected-code observations are not historical-P0 rows. Historical 42/58 selected metadata and 16/58 unresolved pointers; 55 C777 inherited cases are case identities rather than newly executed negative proofs. Rule applied/refusal YES is **not** carried from unverified documentary assertions.
+13. **ZL14 stranded branches and custody (24 / 18 / 10 / 43):** all 43 historical locator/SC source identities exactly match P0; D06 branch-stranding must distinguish never-adopted C4R2A/C5R2, GF1 sourcefree but unmerged, R5C producer auth defect and bounded later Z07/Z08 succession. Exact branch head/ownership, current protection, first consumer and decision law remain separate.
+
+*Counts above are `FINDINGS / OPERATION_TRACES / AUTHORITY_USE / COVERAGE`, not distinct mathematical functions; source EVIDENCE and UNJOINS are independently counted.*
+
+## Typed graph semantics
+
+- **Nodes:** `DATA/FUNCTION_ATLAS.tsv`: 884 namespaced finding nodes; 753 literal-label hubs, 44 inherited LMX, 30 inherited LMQ, 29 historical F class nodes. 55 C777 cases are encompassed in ZL13 source findings and must not be added to the count again.
+- **Operations/authority:** 332 candidate operation traces and 370 source authority-use assertions. Current actual non-test first reader = zero issued. Current rule applied YES = zero issued. Current refusal enforced YES = zero issued.
+- **Edges:** `RELATIONS.tsv`: `ASSIGNED_TO` (1,312 exact-label crosswalks, **no equivalence claim**), `REQUIRES_AUTHORITY` (452 documentary source references, 82 added to retain AR58 links), `HELD_BY` (1,868 explicit open proof seams), `ALIAS_OF` (30 exact LMQ-literal bridge links). No `APPLIES_RULE`, `PRODUCES`, or `CONSUMED_BY` accepted as a demonstrated current edge.
+- **Negative court:** 1,536 typed UNJOINS; see `CONFLICTS_AND_REPAIR_ORDER.tsv`. Counts by first failure code: target absent 485, other typed 442, first reader unproved 261, authority unproved 215, grain mismatch 78, rights unverified 39, source unavailable 13, row schema unresolved 2, predicate mismatch 1.
+- **Exact source court:** 2,607 source/prong coverage observations → 2,496 distinct source five-tuples → 1,869 distinct accepted P0 matches + 627 distinct non-P0 tuples. None of these numbers represent an aggregate count of functions.
+- **Source/host ceilings:** official P1 reviewer only accepted S0–S1 documentary prong evidence; S2 and original-native S3 **not run in ZL15**. Historical sourcefree receipts are not re-executions by ZL15.
+
+## Join boundaries and claims not made
+
+The direct code/source classes `F01_QIDENTITY` through `F29`, `LMX-001..044`, `LMQ-001..030`, `AR-0001..0058`, current C11 source-card identities and S/GAP/Sorok identities are *different record kinds*. Exact literal labels enable navigation but not semantic fusion, especially when source commit, edition, response grain, authority scope, branch selection, IF condition, or actual consumer differs.
+
+The **future proof order** is: source and authority rights → selected scope and denial/negative → source-meaning/producer object → non-test first consumer with actual-use receipt → recipient effects/conditional Sorok phase → independently reviewed native or sourcefree result. Any missing dependency remains a typed hold, not a hidden pass.
