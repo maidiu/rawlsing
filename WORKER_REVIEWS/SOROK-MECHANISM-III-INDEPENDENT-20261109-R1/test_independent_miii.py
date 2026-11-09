@@ -76,7 +76,7 @@ def test_same_committed_utterance_accepts_opposite_fixture_hypotheses(tmp_path):
         assert request_result["semantic_encounter"]["native_plan"] == (
             "BLOCKED_NAMED_AUTHORITY_REQUIRED"
         )
-        assert owner.store.head()["hash"] == owner.store.head()["hash"]
+        assert speech["performed"]["body"]["text"] == utterance
     finally:
         owner.close()
 
