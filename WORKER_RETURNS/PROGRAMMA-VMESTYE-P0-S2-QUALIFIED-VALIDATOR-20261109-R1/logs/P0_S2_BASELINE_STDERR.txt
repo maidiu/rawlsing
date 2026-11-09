@@ -1,4 +1,6 @@
 P0_S2_VALIDATOR_FAIL
 ERROR A_SOURCE_KEYS:D05_SOURCE_PACKAGE source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24
+ERROR A_CENSUS_COUNT observed 6120 census rows; source-derived expected 6125
+ERROR C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv source CSV rows [7, 12] have width != header 8; identities retained, field-level interpretation requires source-owner qualification
 ERROR C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv source file has 11 keyed records; claim is 6
-ERROR C_D02_D07_ROWS source rows=369, census rows=364; expected exact 364/364
+ERROR C_D02_D07_ROWS source rows=369, census rows=364; expected source-derived equality

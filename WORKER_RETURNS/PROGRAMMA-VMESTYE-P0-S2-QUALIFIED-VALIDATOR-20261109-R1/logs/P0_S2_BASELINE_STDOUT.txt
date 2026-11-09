@@ -1,9 +1,9 @@
 PASS	A_CENSUS_HEADER	CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv: 6120 rows, 25 columns
-PASS	A_CENSUS_COUNT	observed 6120 census rows; expected 6120
 PASS	A_CENSUS_ID	census_id must be unique
 PASS	A_CENSUS_COMPOSITE_UNIQUE	full source composite identity must be unique
 PASS	A_CENSUS_NEGATIVE	every census row must retain a typed negative/status
 FAIL	A_SOURCE_KEYS:D05_SOURCE_PACKAGE	source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24
+FAIL	A_CENSUS_COUNT	observed 6120 census rows; source-derived expected 6125
 PASS	A_ANTI_JOIN_TABLE	CONTROL/P0_NO_DROP_ANTI_JOINS.tsv: 110 rows, 21 columns
 PASS	A_ANTI_JOIN_COUNT	observed 110 anti-join checks; expected 110
 PASS	A_ANTI_JOIN_IDS	check_id must be unique
@@ -25,8 +25,9 @@ PASS	B_RM_FROZEN_IDS	frozen AJ-RM01..AJ-RM30 identity set exact
 PASS	B_RM_REQUIREMENTS_IDS	all frozen RM checks must exist in the 56 requirements
 PASS	B_RM_MAPPINGS	30/30 RM mappings, selectors and retained negatives are exact
 PASS	C_D02_D07_SELECTOR_COUNT	observed 23 per-file selectors; expected 23
+HOLD	C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source CSV rows [7, 12] have width != header 8; identities retained, field-level interpretation requires source-owner qualification
 FAIL	C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source file has 11 keyed records; claim is 6
-FAIL	C_D02_D07_ROWS	source rows=369, census rows=364; expected exact 364/364
+FAIL	C_D02_D07_ROWS	source rows=369, census rows=364; expected source-derived equality
 PASS	D_G4_CONTRACT	CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns
 PASS	D_G4_RECEIPTS	CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns
 PASS	D_G4_ROW_COUNTS	contract=82 receipt=82 source=82

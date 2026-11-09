@@ -22,7 +22,9 @@ The validator executes at local structural S2 only. It does not claim original-n
 - **F. P1:** five literal `VMESTYE_P1_PRONG_TABLES_V1` headers, foreign-key/unjoin law and 13 distinct ZL-02–ZL-14 leases.
 
 ## Result
-The historical bootstrap passed on a clean extracted copy of the protected cut. The stage-aware baseline did **not** pass: it found a real source no-drop defect in the corrected ZL-01 candidate.
+Counts are source-derived, not fixed to the pre-repair 6,120/364 assumptions. The validator now derives the expected census total from its 32 exact source key sets (6,125 after the required D05 correction) and derives the per-file total from the 23 source files (369 after correction).
+
+The historical bootstrap passed on a clean extracted copy of the protected cut. The stage-aware baseline did **not** pass: it found a real source no-drop defect in the corrected ZL-01 candidate, and it records the malformed D05 source quoting as a HOLD rather than silently interpreting fields.
 
 `D05_SOURCE_PACKAGE` contains 6 census rows from `AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv`, while the exact source file at `b7dd1bce667651c88ddd71c17c065f2b33ec38ec` contains 11 keyed function rows. Missing exact keys are:
 
@@ -34,8 +36,11 @@ The historical bootstrap passed on a clean extracted copy of the protected cut. 
 
 The candidate per-file selector claims 6 rows; the actual source file has 11. The grouped D05 source total is therefore 29, not the claimed 24; 369 per-file source rows, not 364. This is a ZL-01 source no-drop defect, not a validator failure or a missing source byte.
 
+Two historical D05 records (`D05-F06`, source row 7; `D05-F11`, source row 12) have malformed CSV quoting and parse to 5 fields instead of 8. Their exact identities are preserved, but field-level meaning is explicitly qualified in `P0_S2_SOURCE_QUALIFICATION.tsv` and the validator returns HOLD for that file-level qualification.
+
 ## Limitations
 - The validator uses local Git object reads for source bytes and exact source-key extraction. All 59 census source files and the SR/G4 sources were available.
 - External locator checks for issue/PR-only RMs use the protected `RECENT_CAMPAIGN30` census row and retained negative, not a re-fetch of GitHub issue bodies.
 - The run is local structural S2; no original respondent/native data, no scientific or actor issuance, no protected write and no merge.
 - The actual model is `opencode-go/deepseek-v4.1-flash`; reasoning effort was not exposed by the runtime and is not claimed as I3+/HIGH.
+- Negative controls were rerun after the validator correction, but still against the known D05-failing baseline. They remain targeted-detection receipts; a clean-baseline rerun requires a corrected ZL-01 head.

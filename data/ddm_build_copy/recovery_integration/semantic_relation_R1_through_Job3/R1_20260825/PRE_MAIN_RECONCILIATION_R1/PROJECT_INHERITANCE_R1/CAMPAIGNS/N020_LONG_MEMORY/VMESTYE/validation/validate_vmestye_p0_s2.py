@@ -293,7 +293,6 @@ class Validator:
 
     def validate_census(self) -> tuple[list[dict[str, str]], dict[str, list[dict[str, str]]]]:
         rows = self.read_table("CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv", CENSUS_HEADER, "A_CENSUS_HEADER")
-        self.check("A_CENSUS_COUNT", len(rows) == 6120, f"observed {len(rows)} census rows; expected 6120")
         ids = [row["census_id"] for row in rows]
         self.check("A_CENSUS_ID", len(ids) == len(set(ids)), "census_id must be unique")
         full_ids = [
@@ -329,6 +328,8 @@ class Validator:
                     f"source/output key mismatch missing={missing[:8]} extra={extra[:8]} "
                     f"expected={len(expected)} observed={len(observed)}",
                 )
+        expected_total = sum(len(self.source_keys(estate, commit, path)) for estate, estate_rows in groups.items() for commit, path in {(row["source_commit_sha"], row["source_path"]) for row in estate_rows})
+        self.check("A_CENSUS_COUNT", len(rows) == expected_total, f"observed {len(rows)} census rows; source-derived expected {expected_total}")
         if source_ok:
             self.check("A_SOURCE_KEY_SETS", True, "all 32 census estates exactly equal their source key sets")
         return rows, groups
@@ -567,6 +568,20 @@ class Validator:
                 self.check(f"C_D02_D07_SOURCE:{row['check_id']}", False, f"source unavailable: {exc}")
                 continue
             source_total += source_count
+            try:
+                source_text = self.git.show(commit, path).decode("utf-8")
+                source_rows = list(csv.reader(source_text.splitlines()))
+                source_width = len(source_rows[0]) if source_rows else 0
+                bad_widths = [number for number, item in enumerate(source_rows[1:], 2) if len(item) != source_width]
+            except Exception as exc:
+                bad_widths = []
+                self.hold(f"C_D02_D07_QUOTING:{row['check_id']}", f"cannot inspect CSV quoting: {exc}")
+            if bad_widths:
+                self.hold(
+                    f"C_D02_D07_QUOTING:{row['check_id']}",
+                    f"source CSV rows {bad_widths} have width != header {source_width}; "
+                    "identities retained, field-level interpretation requires source-owner qualification",
+                )
             if source_count != expected:
                 ok = False
                 self.check(
@@ -580,7 +595,7 @@ class Validator:
                 ok = False
                 self.check(f"C_D02_D07_FILTER:{row['check_id']}", False, "unjoined selector lacks grouped estate/path")
             total += len(matching)
-        self.check("C_D02_D07_ROWS", source_total == total == 364, f"source rows={source_total}, census rows={total}; expected exact 364/364")
+        self.check("C_D02_D07_ROWS", source_total == total, f"source rows={source_total}, census rows={total}; expected source-derived equality")
         if ok and total == 364:
             self.check("C_D02_D07_SELECTORS", True, "23 file selectors resolve exactly 364 grouped census rows")
 

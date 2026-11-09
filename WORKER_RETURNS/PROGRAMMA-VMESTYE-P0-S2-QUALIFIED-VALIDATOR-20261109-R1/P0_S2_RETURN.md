@@ -1,11 +1,11 @@
 # VMESTYE P0 S2 RETURN
 
 ## Terminal disposition
-`FAIL__VMESTYE_P0_S2_BASELINE_D05_SOURCE_KEY_LOSS__ZL01_OWNS_FIVE_OMITTED_AUTHORITY_MAINTENANCE_ROWS__NEGATIVE_CONTROLS_EIGHT_OF_EIGHT_PASS__INDEPENDENT_RECEIVING_PENDING__NO_P1_RELEASE`
+`FAIL__VMESTYE_P0_S2_BASELINE_D05_SOURCE_KEY_LOSS__ZL01_OWNS_FIVE_OMITTED_AUTHORITY_MAINTENANCE_ROWS__D05_F06_F11_QUOTING_QUALIFICATION_HOLD__NEGATIVE_CONTROLS_EIGHT_OF_EIGHT_PASS__INDEPENDENT_RECEIVING_PENDING__NO_P1_RELEASE`
 
 ## What actually ran
 - Historical bootstrap: `PASS` on a clean `git archive` extraction of protected `2162d85d`. It preserved 18 historical `NOT_DISPATCHED`, nine `NOT_RUN` gates and the five frozen seed blobs.
-- Stage-aware validator: `FAIL` on the corrected ZL-00/ZL-01 assembly. It found the D05 source-key omission below; all other implemented checks passed.
+- Stage-aware validator: `FAIL` on the corrected ZL-00/ZL-01 assembly: 42 checks PASS, 4 FAIL, 1 HOLD. The failures are the D05 source-key loss and the source-derived total mismatch; the HOLD is the explicit malformed-CSV field-level qualification.
 - Eight deliberate negative controls: **8/8 PASS**. Each produced its intended fail-closed error ID and exit code, not a crash.
 - Unit tests for the new helper/constraint layer: `5 passed`.
 
@@ -22,7 +22,7 @@ at commit `b7dd1bce667651c88ddd71c17c065f2b33ec38ec`, blob `bf77b70f1858697ce663
 - `D05-F10` (source row 11)
 - `D05-F11` (source row 12)
 
-The source file has 11 keyed rows; the candidate census and per-file anti-join claim 6. This makes the D05 source total 29 rather than 24, and the 23 per-file source total 369 rather than 364. The candidate’s claimed exact no-drop is therefore not true at the source file grain.
+The source file has 11 keyed rows; the candidate census and per-file anti-join claim 6. This makes the D05 source total 29 rather than 24, and the 23 per-file source total 369 rather than 364. The candidate’s claimed exact no-drop is therefore not true at the source file grain. In addition, two historical rows (`D05-F06`, source row 7; `D05-F11`, source row 12) have malformed CSV quoting and parse to 5 fields instead of 8; their identities are exact, but field-level interpretation is held and explicitly qualified in `P0_S2_SOURCE_QUALIFICATION.tsv`.
 
 Responsible owner: ZL-01. The correction must add the five exact source keys to its own candidate census with exact source commit/path/blob/row ordinal/negative status, update the D05 per-file and grouped counts and receipts, and return a new immutable head for the same independent ZL-P0R reviewer. No protected edit was made here.
 
@@ -39,7 +39,7 @@ All eight specified defects produced the intended typed failures:
 7. Forged acceptance without review.
 8. P1 frozen-header corruption.
 
-The baseline D05 failure is present in every copied fixture; the negative controls are still counted pass only because the named intended error ID appears. No control produced a Python crash or an unrelated setup failure.
+The negative controls were rerun after the validator correction, but still against the known D05-failing baseline, so they are targeted-detection receipts only. Their intended error IDs appear and no control produced a Python crash. A clean-baseline qualification rerun still requires the corrected ZL-01 head.
 
 ## Review and release status
 - P0 is **not accepted**.

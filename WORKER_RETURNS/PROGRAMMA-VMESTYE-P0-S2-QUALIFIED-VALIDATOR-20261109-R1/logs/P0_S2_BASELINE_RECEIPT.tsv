@@ -1,10 +1,10 @@
 check_id	status	detail
 A_CENSUS_HEADER	PASS	CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv: 6120 rows, 25 columns
-A_CENSUS_COUNT	PASS	observed 6120 census rows; expected 6120
 A_CENSUS_ID	PASS	census_id must be unique
 A_CENSUS_COMPOSITE_UNIQUE	PASS	full source composite identity must be unique
 A_CENSUS_NEGATIVE	PASS	every census row must retain a typed negative/status
 A_SOURCE_KEYS:D05_SOURCE_PACKAGE	FAIL	source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24
+A_CENSUS_COUNT	FAIL	observed 6120 census rows; source-derived expected 6125
 A_ANTI_JOIN_TABLE	PASS	CONTROL/P0_NO_DROP_ANTI_JOINS.tsv: 110 rows, 21 columns
 A_ANTI_JOIN_COUNT	PASS	observed 110 anti-join checks; expected 110
 A_ANTI_JOIN_IDS	PASS	check_id must be unique
@@ -26,8 +26,9 @@ B_RM_FROZEN_IDS	PASS	frozen AJ-RM01..AJ-RM30 identity set exact
 B_RM_REQUIREMENTS_IDS	PASS	all frozen RM checks must exist in the 56 requirements
 B_RM_MAPPINGS	PASS	30/30 RM mappings, selectors and retained negatives are exact
 C_D02_D07_SELECTOR_COUNT	PASS	observed 23 per-file selectors; expected 23
+C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	HOLD	source CSV rows [7, 12] have width != header 8; identities retained, field-level interpretation requires source-owner qualification
 C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	FAIL	source file has 11 keyed records; claim is 6
-C_D02_D07_ROWS	FAIL	source rows=369, census rows=364; expected exact 364/364
+C_D02_D07_ROWS	FAIL	source rows=369, census rows=364; expected source-derived equality
 D_G4_CONTRACT	PASS	CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns
 D_G4_RECEIPTS	PASS	CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns
 D_G4_ROW_COUNTS	PASS	contract=82 receipt=82 source=82
