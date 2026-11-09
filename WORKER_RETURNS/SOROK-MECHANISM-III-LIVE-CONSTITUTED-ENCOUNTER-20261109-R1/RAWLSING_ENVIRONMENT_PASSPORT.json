@@ -4,26 +4,26 @@
   "epoch_id": null,
   "surface": "LOCAL_SHARED_STORE",
   "status": "LIVE_VERIFIED",
-  "checkout_sha": "29c1a7260dc02422f2082a2a3f4b547ca0a10d28",
+  "checkout_sha": "279202570a9a9e028fc40152b29aa24186d79c34",
   "branch": "agent/sorok-mechanism-iii-live-constituted-person-event-20261109-r1",
   "source_closure": "BOUNDED",
   "sources": [
     {
-      "commit": "29c1a7260dc02422f2082a2a3f4b547ca0a10d28",
+      "commit": "279202570a9a9e028fc40152b29aa24186d79c34",
       "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/response.py",
-      "blob_sha1": "504a2c494f44e60961bfad02f87b7dd5a3e6b58b",
+      "blob_sha1": "13df9ff571647f21e9cd8221c517a8fdfcae6989",
       "import_verified": true
     },
     {
-      "commit": "29c1a7260dc02422f2082a2a3f4b547ca0a10d28",
+      "commit": "279202570a9a9e028fc40152b29aa24186d79c34",
       "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
-      "blob_sha1": "e4c2399d26ae83ebefe49faae80748830ac0f08d",
+      "blob_sha1": "f26e9639e01e1aab91c23d433024bc97a419ca85",
       "import_verified": true
     },
     {
-      "commit": "29c1a7260dc02422f2082a2a3f4b547ca0a10d28",
+      "commit": "279202570a9a9e028fc40152b29aa24186d79c34",
       "path": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
-      "blob_sha1": "0f3d2215b29fa1a4b16ec8800308acceb176d039",
+      "blob_sha1": "b83ccc4d642576849d2709972318d0ffbc5c5478",
       "import_verified": true
     }
   ],
@@ -56,5 +56,14 @@
     "quota_state": null,
     "usage_observed": "Fixture-only runtime; external provider NOT_RUN.",
     "retry_count": null
-  }
+  },
+  "tests": [
+    {
+      "scope": "Joined P4/P5/P6 and bounded expression author regression",
+      "status": "PASS",
+      "test_count": 44,
+      "receipt_ref": "05_COLD_REPLAY_AND_NEGATIVES.md",
+      "claim_grade": "EXACT_OWNER_SOURCEFREE"
+    }
+  ]
 }

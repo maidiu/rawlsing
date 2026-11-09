@@ -22,6 +22,7 @@ for engineering receiving. Original CAN/ADP and M6 issuers for native
 rules. Protected integrator for any separately authorized merge.
 
 Protected start `256d46bf425cc37e114465cddbe3c60e535766ab`.
-Runtime cut `8a9607dc87b26aa030ed8841851e91cb6eec1d1a`.
+Runtime and test cut `279202570a9a9e028fc40152b29aa24186d79c34`. The joined author regression passed
+44 tests. [Exact command and evidence](05_COLD_REPLAY_AND_NEGATIVES.md).
 Draft [#862](https://github.com/maidiu/rawlsing/pull/862), issue
 [#861](https://github.com/maidiu/rawlsing/issues/861).

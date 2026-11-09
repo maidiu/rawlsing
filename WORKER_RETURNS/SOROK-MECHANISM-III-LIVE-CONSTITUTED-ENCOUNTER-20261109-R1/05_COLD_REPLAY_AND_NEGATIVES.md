@@ -55,3 +55,16 @@ python -B -m pytest -q -p no:cacheprovider --tb=short \
 
 This is a previous exact-cut regression receipt. Later changes to
 snapshot checks and focused tests retain their own receipts.
+
+At `279202570a9a9e028fc40152b29aa24186d79c34`, the same suite plus
+the received P4 speech test passed **44 tests in 473.45s**. The
+following return commits only change evidence documents.
+
+```text
+python -B -m pytest -q -p no:cacheprovider --tb=short \
+  WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py \
+  WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_speech.py \
+  WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/test_experience.py \
+  WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py \
+  rawlsing_next/tests/test_render_bounded_expression.py
+```
