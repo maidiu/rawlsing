@@ -51,3 +51,34 @@ def test_house_reopens_with_two_separate_closure_triggers(tmp_path):
         from unittest.mock import patch
         with patch("house.SOURCE", "severed"):
             run("view")
+
+
+def test_house_say_uses_live_recruitment_and_replays_without_retransduction(tmp_path):
+    calls = []
+
+    def transduce(*, event_id, event_hash, text):
+        calls.append(event_id)
+        return {"event_id": event_id, "event_hash": event_hash, "hypotheses": [
+            {"move": "REQUEST" if len(calls) == 1 else "ASSERTION",
+             "referent": "CURRENT_EDGE" if len(calls) == 1 else None,
+             "span": [0, len(text)], "uncertain": False}
+        ]}
+
+    experience(tmp_path, Namespace(command="new"))
+    first = Namespace(command="say", request_id="first", request_edge=False,
+                      text="Could we go over the edge together?")
+    second = Namespace(command="say", request_id="second", request_edge=False,
+                       text="I'll let you get on with it.")
+    answer = experience(tmp_path, first, transduce=transduce)
+    assert any("Come look at this edge with me." in row["text"] for row in answer["narration"])
+    experience(tmp_path, second, transduce=transduce)
+    ledger_path = tmp_path / "p4_receipts.json"
+    before_retry = ledger_path.read_bytes()
+    experience(tmp_path, second, transduce=transduce)
+    assert len(calls) == 2
+    assert ledger_path.read_bytes() == before_retry
+    turns = json.loads(before_retry)["turns"]
+    assert len(turns) == 2
+    assert turns[0]["receipt"]["uptake"]["mode"] == "joint_check"
+    assert turns[1]["receipt"]["uptake"]["status"] == "SEMANTIC_VALID_EMPTY"
+    assert turns[1]["receipt"]["expression"] is None

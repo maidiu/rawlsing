@@ -108,7 +108,7 @@ def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
         case.owner.close()
 
 
-def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
+def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None, transduce=None):
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()
@@ -143,7 +143,7 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
     elif args.command == "say":
         speech = admit_speech(session, text=args.text, actor_ref=before["actor"],
                               request_edge=args.request_edge)
-        uptake = read_response(owner, speech, ledger["scope"])
+        uptake = read_response(owner, speech, ledger["scope"], transduce=transduce)
         expression, observation = express(session, uptake)
         offers_inspection = uptake["mode"] == "joint_check" and observation is not None
         interval = None

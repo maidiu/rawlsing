@@ -83,3 +83,57 @@ def test_performed_speech_reads_real_prior_p3_formation(tmp_path, monkeypatch):
     assert receipts[0][0] == receipts[1][0] == receipts[2][0]
     assert [row[1] for row in receipts] == ["joint_check", "private_check", "inspect_alone"]
     assert len({row[2] for row in receipts}) == 3
+
+
+def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path):
+    from types import SimpleNamespace
+
+    from run_p4 import act, new, open_owner
+
+    request = "Could we go over that edge together?"
+    departure = "I'll let you get on with your work."
+
+    def transduce(*, event_id, event_hash, text):
+        # Fixture transport supplies meaning only. P3 and P2 own the result.
+        move, referent = {
+            request: ("REQUEST", "CURRENT_EDGE"),
+            departure: ("ASSERTION", None),
+        }[text]
+        return {"event_id": event_id, "event_hash": event_hash, "hypotheses": [
+            {"move": move, "referent": referent, "span": [0, len(text)], "uncertain": False}
+        ]}
+
+    for index, (history, text, expected) in enumerate((
+        ("recognized_plan", request, "joint_check"),
+        ("recognized_plan", departure, None),
+        ("imposed_plan", request, "private_check"),
+    )):
+        state = tmp_path / str(index)
+        ledger_file = state / "p4_receipts.json"
+        new(state, ledger_file, history)
+        ledger = json.loads(ledger_file.read_text())
+        owner = open_owner(state / "actual-p2")
+        try:
+            head = owner.store.head()
+            args = SimpleNamespace(command="say", text=text, request_edge=False,
+                                   request_id="non-edge")
+            public = act(owner, ledger_file, ledger, args, transduce=transduce)
+            turn = ledger["turns"][-1]
+            uptake = turn["receipt"]["uptake"]
+            assert turn["receipt"]["speech"]["actor_access"]
+            assert uptake["mode"] == expected
+            assert uptake["semantic_encounter"]["native_plan"] == "BLOCKED_NAMED_AUTHORITY_REQUIRED"
+            assert owner.store.head() == head
+            assert (public["observation"] is not None) is (expected is not None)
+            if expected is None:
+                assert uptake["status"] == "SEMANTIC_VALID_EMPTY"
+                assert "recruitment" not in uptake
+            else:
+                assert any(row["mode"] == expected and row["activation"] == "ELIGIBLE"
+                           for row in uptake["recruitment"]["entries"])
+                event = turn["receipt"]["expression"]
+                assert owner.base_owner.fanin.session.event(event["event_id"]) == event
+                assert public["observation"]["event_id"] == event["event_id"]
+            assert "semantic_encounter" not in public
+        finally:
+            owner.close()

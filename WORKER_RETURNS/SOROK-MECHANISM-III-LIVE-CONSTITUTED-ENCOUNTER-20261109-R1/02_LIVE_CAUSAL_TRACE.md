@@ -35,3 +35,34 @@ applying private presentation state.
 
 This is the received-path negative, not a Mechanism III implementation
 or a native semantic authority result.
+
+## Sourcefree first consumer
+
+The P6 `experience` and P4 `act` entry points can accept an explicit
+sourcefree transducer. P4 calls it only after matching the committed SAY
+and Nadia's perception receipt. The transducer gets event identity and
+exact utterance, with no user gaze, private actor state, or authority
+write interface. It returns bounded speech-move hypotheses, evidence
+spans and a referent. A proposal is data and does not admit a claim.
+
+For the supported current-edge request, the P4 reader uses the existing
+P3 store and activation projection. It retains the activation result
+internally and selects only a unique eligible received mode. Uncertain
+or conflicting proposals hold. An unrelated utterance can return valid
+empty. P2 performs the authorized fixture expression and S45 supplies
+the public observation. No actor memory or belief is written.
+
+A focused P6 run executed two actual SAY turns through the normal
+experience entry point, with one publicly projected P2 response and a
+subsequent valid-empty turn. Reopening and retrying the second request
+left the persisted P4 receipt bytes unchanged and did not call the
+transducer again.
+
+```text
+python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py -k live_recruitment
+1 passed, 1 deselected in 31.94s
+```
+
+The transducer in that run was a local fixture. The normal CLI has no
+configured live transducer, semantic generality is unproved, and native
+M6 semantic-plan authority remains held. The full court is outstanding.

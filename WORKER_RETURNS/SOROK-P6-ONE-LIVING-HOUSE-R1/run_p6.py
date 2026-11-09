@@ -20,7 +20,7 @@ from house import close_on_repair, derive_recognition, establish, perform, read_
 PACE = partial(advance_for_action, on_repair=close_on_repair)
 
 
-def experience(state, args):
+def experience(state, args, *, transduce=None):
     command = args.command
     if command == "new":
         state.mkdir(parents=True, exist_ok=True)
@@ -60,7 +60,7 @@ def experience(state, args):
                 outcome = act(owner, ledger_file, ledger, args,
                               conduct=(action, perform_with_time))
             elif command in {"say", "attend", "inspect", "inspect-edge"}:
-                outcome = act(owner, ledger_file, ledger, args, pacing=PACE)
+                outcome = act(owner, ledger_file, ledger, args, pacing=PACE, transduce=transduce)
             view = surface(owner, ledger)
             authoritative_events = {
                 row["event_id"]: row for row in session.events()
