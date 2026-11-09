@@ -72,24 +72,42 @@ def test_house_say_uses_live_recruitment_and_replays_without_retransduction(tmp_
             {"move": move, "referent": referent, "span": [0, len(text)], "uncertain": False}
         ]}
 
-    experience(tmp_path, Namespace(command="new"))
-    first = Namespace(command="say", request_id="first", request_edge=False, text=request)
-    second = Namespace(command="say", request_id="second", request_edge=False, text=departure)
-    answer = experience(tmp_path, first, transduce=transduce)
-    assert any("Come look at this edge with me." in row["text"] for row in answer["narration"])
-    silence = experience(tmp_path, second, transduce=transduce)
-    ledger_path = tmp_path / "p4_receipts.json"
-    before_retry = ledger_path.read_bytes()
+    opening = experience(tmp_path, Namespace(command="new"))
 
     def snapshot():
         owner = open_owner(tmp_path / "actual-p2")
         try:
             session = owner.base_owner.fanin.session
-            return list(session.events()), session.clock(), owner.store.head()
+            world = session.world()
+            history = world.resources.get("sorok.historical_materialization.v1")
+            issuances = [row for row in session.episodes("A")
+                         if row["kind"] == "S46_DOMAIN_ISSUANCE"]
+            return {
+                "events": list(session.events()),
+                "clock": session.clock(),
+                "psyche": owner.store.head(),
+                "issuances": issuances,
+                "object_history": history,
+            }
         finally:
             owner.close()
 
+    baseline = snapshot()
+    first = Namespace(command="say", request_id="first", request_edge=False, text=request)
+    second = Namespace(command="say", request_id="second", request_edge=False, text=departure)
+    answer = experience(tmp_path, first, transduce=transduce)
+    assert any("Come look at this edge with me." in row["text"] for row in answer["narration"])
+    assert answer["clock"] == opening["clock"]
+    silence = experience(tmp_path, second, transduce=transduce)
+    ledger_path = tmp_path / "p4_receipts.json"
+    before_retry = ledger_path.read_bytes()
     before = snapshot()
+    [issuance] = before["issuances"][len(baseline["issuances"]):]
+    assert issuance["body"]["domain"]["mode"] == "ACTUAL"
+    assert issuance["body"]["start"] == opening["clock"]
+    assert issuance["body"]["end"] == before["clock"] == silence["clock"] == opening["clock"] + 1
+    assert before["psyche"] == baseline["psyche"]
+    assert before["object_history"] is baseline["object_history"] is None
     script = """
 from argparse import Namespace
 import json
@@ -122,6 +140,13 @@ print(json.dumps(experience(Path(state), args, transduce=unexpected)))
     assert turns[0]["receipt"]["uptake"]["mode"] == "joint_check"
     assert turns[1]["receipt"]["uptake"]["status"] == "SEMANTIC_VALID_EMPTY"
     assert turns[1]["receipt"]["expression"] is None
+    assert turns[0]["receipt"]["interval"] is None
+    interval = turns[1]["receipt"]["interval"]
+    assert interval["domain_issuance_id"] == issuance["episode_id"]
+    assert interval["domain_issuance_hash"] == issuance["body"]["receipt_hash"]
+    assert interval["root_hash"] == turns[1]["before"]["root"]
+    assert interval["branch_id"] == turns[1]["before"]["branch"]
+    assert interval["start"] == turns[1]["receipt"]["speech"]["performed"]["clock"]
 
 
 def test_live_say_access_and_private_gaze_counterfactual(tmp_path):

@@ -83,3 +83,17 @@ This is an in-process source fault, separate from cold recovery.
 python -B -m pytest -q -p no:cacheprovider WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py -k loses_and_recovers
 1 passed, 2 deselected in 13.80s
 ```
+
+## P6 and S46 share one timeline
+
+The focused two-turn test passed in 45.80 seconds. The joint-check
+invitation returned at the opening clock without an interval. The
+next nonmaterial SAY returned valid empty and advanced exactly one
+tick through the existing P5/S46 pacing path. Its interval receipt
+matches the one new S46 issuance by ID and hash, and matches the SAY
+clock and the P4 root and branch. Replaying either request in a new
+process leaves events, issuance list, clock and P3 head unchanged.
+
+The Mechanism I historical resource was absent before and after.
+A live Mechanism I outbox is unavailable on this cut, so the joined
+non-dispatch case remains held.
