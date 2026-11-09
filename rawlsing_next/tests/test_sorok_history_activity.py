@@ -656,6 +656,8 @@ actual = [row for row in fanin.session.read_interval_states()
           if (row.get("domain") or {}).get("mode") == "ACTUAL"]
 print(json.dumps({"statuses": [row.status for row in results],
                   "reasons": [row.reason for row in results],
+                  "fact_ids": [row.activity.fact_id if row.activity else None
+                               for row in results],
                   "material": fanin.session.world().actor_state["A"]["material_remaining"],
                   "clock": fanin.session.clock(), "actual": len(actual),
                   "requirements": [row["status"] for row in history.activity_requirements()]}))
@@ -678,6 +680,7 @@ def test_d6_separate_process_crash_after_interval_recovers_without_double_use(tm
     recovered = _run_process_script(_RESUME, tmp_path)
     assert recovered["statuses"] == ["ADVANCED"]
     assert recovered["reasons"] == ["HISTORICAL_ACTIVITY_DISPATCH_RECOVERED"]
+    assert recovered["fact_ids"] and recovered["fact_ids"][0]
     assert recovered["material"] == 0
     assert recovered["clock"] == 232
     assert recovered["actual"] == 1
@@ -777,3 +780,36 @@ def test_d10_separate_root_state_consumption_isolated(tmp_path, monkeypatch):
         assert history.target(tool["id"]).get("physical_depth", {}) == {}
     finally:
         other.close()
+
+
+def test_d6_same_start_unrelated_interval_is_not_credited(tmp_path, monkeypatch):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
+    from run_p4 import advance, new, open_owner
+    from rawlsing_next.sorok_history.activity import dispatch_activity_requirement
+
+    new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        fanin = owner.base_owner.fanin
+        session = fanin.session
+        history = HistoricalWorld(session)
+        requirement = produce_activity_requirement(fanin, history)
+        history.mark_activity_requirement(requirement["id"], "DISPATCHING")
+        unrelated = advance(fanin)
+        [actual] = _actual_intervals(session)
+        assert actual["domain"]["start"] == requirement["required_at"]
+        assert actual["domain"].get("activity_requirement_ref") is None
+        assert unrelated["status"] in {"PARTIAL", "REALIZED"}
+
+        result = dispatch_activity_requirement(fanin, history, requirement["id"])
+        assert result.status == HELD
+        assert result.activity.refusal_code == DEPTH_MISSING
+        assert result.activity.interval is None
+        assert result.activity.fact_id is None
+        stored = history.activity_requirement(requirement["id"])
+        assert stored["status"] == HELD
+        assert stored.get("dispatch_receipt", {}).get("fact_id") is None
+        assert len(_actual_intervals(session)) == 1
+    finally:
+        owner.close()

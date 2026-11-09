@@ -43,6 +43,8 @@ REQUIREMENT_CONSUMED = "HISTORICAL_ACTIVITY_REQUIREMENT_CONSUMED"
 REQUIREMENT_TARGET_MISSING = "HISTORICAL_ACTIVITY_TARGET_MISSING"
 DISPATCHING = "DISPATCHING"
 RECOVERED = "HISTORICAL_ACTIVITY_DISPATCH_RECOVERED"
+RECOVERY_AMBIGUOUS = "HISTORICAL_ACTIVITY_RECOVERY_AMBIGUOUS"
+RECOVERY_UNVERIFIED = "HISTORICAL_ACTIVITY_RECOVERY_UNVERIFIED"
 
 REPAIR_TASK_ID = "S46_ACTUAL_REPAIR"
 REPAIR_ACTION_KIND = "REPAIR"
@@ -163,12 +165,14 @@ class ActivityDispatch:
 
 
 
-def _default_advance(fanin: Any) -> Mapping[str, Any]:
+def _default_advance(fanin: Any, *, dispatch_ref: str | None = None) -> Mapping[str, Any]:
     try:
         from run_p4 import advance
     except ImportError as exc:
         raise ActivityRefusal(CALL_SITE_UNAVAILABLE) from exc
-    return advance(fanin)
+    if dispatch_ref is None:
+        return advance(fanin)
+    return advance(fanin, dispatch_ref=dispatch_ref)
 
 
 def _scope(session: Any) -> tuple[str, str]:
@@ -319,6 +323,7 @@ def advance_independent_activity(
     predicate: str = "condition",
     expected: Any,
     advance: Callable[[Any], Mapping[str, Any]] | None = None,
+    dispatch_ref: str | None = None,
 ) -> ActivityReceipt:
     """Consume one owner-admitted depth fact, then advance the real S46 activity.
 
@@ -378,7 +383,10 @@ def advance_independent_activity(
             interval=None, refusal_code=WORLD_MISMATCH,
         )
     call = advance or _default_advance
-    interval = call(fanin)
+    if dispatch_ref is None:
+        interval = call(fanin)
+    else:
+        interval = call(fanin, dispatch_ref=dispatch_ref)
     if not isinstance(interval, Mapping):
         raise ActivityRefusal(CALL_SITE_INVALID)
     return _receipt(
@@ -478,28 +486,38 @@ def _requirement_stale_receipt(
 
 def _recoverable_interval(session: Any, requirement: Mapping[str, Any]):
     required_at = requirement.get("required_at")
-    if type(required_at) is not int:
-        return None
+    requirement_id = requirement.get("id")
+    if type(required_at) is not int or not isinstance(requirement_id, str):
+        return None, RECOVERY_UNVERIFIED
     actor_id = session.world().actor_state.get("A", {}).get("actor_id")
+    matches = []
     for row in session.read_interval_states():
         domain = row.get("domain") or {}
         if (domain.get("mode") != "ACTUAL"
                 or domain.get("start") != required_at
+                or domain.get("activity_requirement_ref") != requirement_id
                 or row.get("root_hash") != requirement.get("root")
                 or row.get("branch_id") != requirement.get("branch")
                 or row.get("actor_id") != actor_id
                 or row.get("status") not in {"PARTIAL", "REALIZED"}):
             continue
-        return row
-    return None
+        matches.append(row)
+    if not matches:
+        return None, None
+    if len(matches) != 1:
+        return None, RECOVERY_AMBIGUOUS
+    return matches[0], None
 
 
 def _recovered_receipt(fanin: Any, history: Any, requirement: Mapping[str, Any],
-                       interval: Mapping[str, Any]) -> ActivityReceipt:
+                       interval: Mapping[str, Any]) -> ActivityReceipt | None:
+    target, fact, refusal = _admitted_depth(
+        history, requirement.get("target_id"), requirement.get("predicate")
+    )
+    if refusal is not None or fact is None or fact.get("value") != requirement.get("expected"):
+        return None
     session = fanin.session
-    target = history.target(requirement.get("target_id"))
-    fact = (target or {}).get("physical_depth", {}).get(requirement.get("predicate"))
-    job = history.job(requirement.get("job_id")) if requirement.get("job_id") else None
+    job = history.job(fact.get("job_id"))
     material_before = None
     try:
         segments = interval.get("segments") or []
@@ -513,7 +531,7 @@ def _recovered_receipt(fanin: Any, history: Any, requirement: Mapping[str, Any],
         status=ADVANCED, target_id=str(requirement.get("target_id")),
         target=target, predicate=str(requirement.get("predicate")),
         expected=requirement.get("expected"),
-        observed=(fact or {}).get("value"), fact=fact, job=job,
+        observed=fact.get("value"), fact=fact, job=job,
         root=root, branch=branch, clock_before=int(requirement["required_at"]),
         clock_after=session.clock(), material_before=material_before,
         material_after=_material(session), interval=interval,
@@ -549,9 +567,25 @@ def dispatch_activity_requirement(
             reason=REQUIREMENT_CONSUMED,
         )
     if stored.get("status") == DISPATCHING:
-        interval = _recoverable_interval(fanin.session, stored)
+        interval, ambiguity = _recoverable_interval(fanin.session, stored)
+        if ambiguity is not None:
+            receipt = _requirement_stale_receipt(
+                fanin, history, stored, ambiguity
+            )
+            saved = history.mark_activity_requirement(
+                requirement_id, "HELD", receipt=receipt.as_dict()
+            )
+            return ActivityDispatch(HELD, saved, receipt, ambiguity)
         if interval is not None:
             receipt = _recovered_receipt(fanin, history, stored, interval)
+            if receipt is None:
+                held = _requirement_stale_receipt(
+                    fanin, history, stored, RECOVERY_UNVERIFIED
+                )
+                saved = history.mark_activity_requirement(
+                    requirement_id, "HELD", receipt=held.as_dict()
+                )
+                return ActivityDispatch(HELD, saved, held, RECOVERY_UNVERIFIED)
             saved = history.mark_activity_requirement(
                 requirement_id, "CONSUMED", receipt=receipt.as_dict()
             )
@@ -580,6 +614,7 @@ def dispatch_activity_requirement(
         fanin, history,
         target_id=stored["target_id"], predicate=stored["predicate"],
         expected=stored["expected"], advance=advance,
+        dispatch_ref=requirement_id,
     )
     status = "CONSUMED" if receipt.advanced else "HELD"
     saved = history.mark_activity_requirement(
@@ -633,6 +668,8 @@ __all__ = [
     "REQUIREMENT_CONSUMED",
     "REQUIREMENT_STALE",
     "RECOVERED",
+    "RECOVERY_AMBIGUOUS",
+    "RECOVERY_UNVERIFIED",
     "REQUIREMENT_TARGET_MISSING",
     "SCOPE_MISMATCH",
     "TARGET_MISMATCH",

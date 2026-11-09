@@ -38,7 +38,7 @@
 | D3 negative content | PASS scoped | Admitted `condition=broken` holds with `HISTORICAL_DEPTH_VALUE_MISMATCH`; no ACTUAL interval or material use. |
 | D4 exact sever/restore | PASS scoped | Detached owner `physical_depth` fact and reopened cold: HELD with no actual interval; restored exact fact and reopened: one actual interval. Parent-event severance also holds and restores. |
 | D5 missing/wrong scope | PASS scoped | Wrong actor place holds `HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE`; world/resource contradiction holds `HISTORICAL_MATERIAL_WORLD_MISMATCH`; actual distinct-root requirement is not recorded and cannot authorize. |
-| D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. |
+| D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. Recovery requires the interval's exact `activity_requirement_ref` and re-verifies the admitted target/job/fact provenance; a same-start unrelated ACTUAL interval is not credited and leaves the requirement HELD with no false `fact_id`. |
 | D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and full P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
 | D8 actor isolation | PARTIAL/PASS scoped | D2/D8 show no INSPECT, unchanged perceived IDs, and changed user hypothesis plus user ATTEND do not alter the requirement. P6 fixed-house gaze was not run. |
 | D9 model failure | PASS scoped | Timeout from the injected provider leaves the requirement HELD and no ACTUAL interval/material change. |
@@ -51,13 +51,13 @@ N15 remains open: the existing P6 fixed-house regression was not run.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 15 passed in 106.60s
+# 16 passed in 108.67s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
-# 63 passed in 227.77s
+# 64 passed in 255.38s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
-# 63 passed in 227.77s
+# 64 passed in 255.38s
 ```
 
 Author local S2 result only. Independent S2 rerun and native S3 are NOT_RUN.
@@ -84,3 +84,16 @@ credited to the pending requirement, which became CONSUMED with no
 fact ID. The author is repairing exact recovery attribution and adding
 the reproduced negative. P6 gaze and full sibling-parent readback
 remain unrun.
+
+## Independent-review D6 repair
+
+Independent review of `484a147a9dd9f8e2ed4799d1d328ac93d48d895c`
+reproduced the D6 attribution defect: `DISPATCHING` recovery matched an
+ACTUAL interval by start/root/branch/actor/status, so an unrelated interval
+at the same start could consume the requirement with `fact_id: null`.
+This repair binds `run_p4.advance` to the durable requirement using
+`activity_requirement_ref` in the S46 interval domain. Recovery accepts only
+one exactly matching interval, revalidates the owner-admitted target/job/fact
+provenance and expected value, and fails closed on ambiguity or missing
+provenance. The newly added same-start unrelated-interval negative passes;
+the genuine crash-before and crash-after recovery tests remain green.
