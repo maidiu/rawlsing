@@ -1,0 +1,21 @@
+check_id	intentional_mutation	independent_result	failure_reason_family
+R2-N01	Illegal relation type substitution	REJECT	Protected relation enum
+R2-N02	MUST dependency changed to IF	REJECT	Migration type/inverse mismatch
+R2-N03	IF dependency changed to MUST	REJECT	Migration type/inverse mismatch
+R2-N04	Source IF condition erased or promoted	REJECT	Original non-type field changed
+R2-N05	Original relation negative strengthened falsely	REJECT	Original non-type field changed
+R2-N06	Delete migration receipt	REJECT	Migration count/inverse mismatch
+R2-N07	Forge original migration type	REJECT	Wrong source-old type
+R2-N08	Duplicate migration relation PK	REJECT	Duplicate PK
+R2-N09	Drop inherited seed disposition row	REJECT	73-seed coverage failure
+R2-N10	Forge inherited source locator	REJECT	Frozen baseline source mismatch
+R2-N11	Claim current successor proved	REJECT	Current fate/proof inconsistency
+R2-N12	Forge owner receipt	REJECT	Owner route/receipt mismatch
+R2-N13	Forge documentary candidate evidence ID	REJECT	Relation/evidence crosswalk mismatch
+R2-N14	Promote exact-label candidate to equivalence	REJECT	Non-type grade changed
+R2-N15	Tamper frozen historical LMX source	REJECT	Baseline source mismatch
+R2-N16	Tamper non-seed atlas grade	REJECT	1,667 unchanged-row invariant
+R2-N17	Invent current first reader	REJECT	Current reader proof-negative invariant
+R2-N18	Delete exact evidence PK	REJECT	Evidence FK unresolved
+R2-B01	Unmutated R5 structural/evidence checks	PASS	8,503 relations; 4,841 exact migration; 73 source-qualified seed joins
+R2-B02	Unmutated R5 against protected ten-status disposition law	FAIL	73 noncanonical comparative dispositions
