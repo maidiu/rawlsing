@@ -61,3 +61,14 @@ PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest 
 ```
 
 Author local S2 result only. Independent S2 rerun and native S3 are NOT_RUN.
+
+## Independent receiving verdict
+
+Reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP` returned `HOLD_SCOPED` on
+`79c154d5de7f1c9483d32a22252a0c3a022329a6`. The exact-head reruns passed
+7 focused tests, 54 history tests, and 55 history plus P4 CLI tests.
+Normal dispatch and requirement provenance passed within that scope.
+D1–D3, D7 and D9 passed executed review. D4 is partial because severance
+and restoration were in-process only. D5, D6 and D8 remain partial.
+D10 was not run. P11 remains scoped positive and N15 remains open.
+The activity owner is continuing the missing adverse cases.
