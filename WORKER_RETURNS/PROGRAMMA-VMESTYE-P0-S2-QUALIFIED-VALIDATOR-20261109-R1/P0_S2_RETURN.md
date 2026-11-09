@@ -51,4 +51,8 @@ The baseline D05 failure is present in every copied fixture; the negative contro
 ## Evidence
 Return directory: `WORKER_RETURNS/PROGRAMMA-VMESTYE-P0-S2-QUALIFIED-VALIDATOR-20261109-R1/`.
 
-Includes assembly/stage manifests, baseline and bootstrap stdout/stderr, complete negative-control logs, validator/unit-test sources in the worker branch, and the changed-file inventory. PR/branch head are recorded after publication.
+Includes assembly/stage manifests, baseline and bootstrap stdout/stderr, complete negative-control logs, validator/unit-test sources in the worker branch, and the changed-file inventory.
+
+- PR: https://github.com/maidiu/rawlsing/pull/826
+- Initial evidence commit: `7a2758e8bbb2fa1e4379989ccce24979c87f6e2c`
+- Exact final head is the latest commit on PR #826; the execution-return issue comment records it.
