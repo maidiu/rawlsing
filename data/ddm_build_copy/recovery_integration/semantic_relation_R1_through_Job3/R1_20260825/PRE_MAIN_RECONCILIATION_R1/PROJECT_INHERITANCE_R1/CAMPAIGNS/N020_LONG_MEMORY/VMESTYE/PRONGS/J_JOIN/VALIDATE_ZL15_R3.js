@@ -5,13 +5,18 @@ const args=process.argv.slice(2),arg=(n,d)=>args.includes(n)?args[args.indexOf(n
 const root=path.resolve(arg('--root',path.resolve(__dirname,'../..')));
 const p0Path=path.resolve(arg('--p0',path.join(root,'CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv')));
 const seamPath=path.resolve(arg('--seams',path.join((()=>{let p=root;while(!fs.existsSync(path.join(p,'PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/CURRENT_SEAM_STATES.jsonl'))){let n=path.dirname(p);if(n===p)return root;p=n}return p})(),'PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/CURRENT_SEAM_STATES.jsonl')));
+const sorokPath=path.resolve(arg('--sorok',path.join(root,'PRONGS/J_JOIN/FROZEN_INPUTS/SOROK_VERSIONED_SEAMS_37915.jsonl')));
 function parse(s,n){let l=s.trimEnd().split(/\r?\n/),h=l.shift().split('\t');const rows=l.filter(Boolean).map((x,i)=>{let a=x.split('\t');assert.strictEqual(a.length,h.length,n+' width '+i);return Object.fromEntries(h.map((v,j)=>[v,a[j]]))});let ids=new Set();for(let r of rows){assert(r[h[0]]&&(!ids.has(r[h[0]])),n+' duplicate');ids.add(r[h[0]])}return rows}
 const read=r=>parse(fs.readFileSync(path.join(root,r),'utf8'),r);
 const blob=(buf)=>crypto.createHash('sha1').update(Buffer.from('blob '+buf.length+'\0')).update(buf).digest('hex');
 const origBytes=fs.readFileSync(p0Path),seamBytes=fs.readFileSync(seamPath);
+const sorokBytes=fs.readFileSync(sorokPath);
 assert.strictEqual(blob(origBytes),'65c1bbe4a602341c5caacca2d58dced31a23f382');
 assert.strictEqual(blob(seamBytes),'5a951626c0dde91b682eb23216c88dbfc054808d');
+assert.strictEqual(blob(sorokBytes),'d31eef4f4bc3f4fc6a32ba3e6563c788713f6c47');
 const p0=parse(origBytes.toString('utf8'),'P0'),seams=seamBytes.toString('utf8').trimEnd().split('\n').map(JSON.parse);
+const sorok=sorokBytes.toString('utf8').trimEnd().split('\n').map(JSON.parse),e001=sorok.find(x=>x.record_type==='VERSIONED_SEAM'&&x.seam_id==='E001');
+assert(e001&&/NONE_PROVEN/.test(e001.actual_consumer_or_none.callable_or_none),'Sorok exact historical E001 owner/native negative missing');
 const names=['FUNCTION_ATLAS','RELATIONS','OPERATION_TRACES','AUTHORITY_APPLICATIONS','EVIDENCE','IMPLEMENTATIONS','CONSUMER_EDGES','DECISION_EVENTS'];
 const d=Object.fromEntries(names.map(x=>[x,read('DATA/'+x+'.tsv')]));
 const left=read('PRONGS/J_JOIN/P0_LEFT_DISPOSITIONS.tsv'),stage=read('PRONGS/J_JOIN/GENERATION_STAGE_COURT.tsv'),bridge=read('PRONGS/J_JOIN/CROSS_PRONG_BRIDGES.tsv'),seam=read('PRONGS/J_JOIN/SEAM_DEPENDENCIES.tsv'),nodes=read('PRONGS/J_JOIN/SEAM_DEPENDENCY_NODES.tsv'),transfer=read('PRONGS/J_JOIN/CANDIDATE_TRANSFERS.tsv'),conflict=read('PRONGS/J_JOIN/CONFLICTS_AND_REPAIR_ORDER.tsv'),anti=read('PRONGS/J_JOIN/FULL_ID_ANTI_JOINS.tsv');

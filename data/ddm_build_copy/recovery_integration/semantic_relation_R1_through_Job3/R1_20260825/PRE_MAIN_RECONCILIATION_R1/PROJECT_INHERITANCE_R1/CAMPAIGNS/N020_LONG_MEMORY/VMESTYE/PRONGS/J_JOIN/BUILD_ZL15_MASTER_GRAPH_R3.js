@@ -20,7 +20,10 @@ const needsSource=!(args.includes('--p0')&&args.includes('--seams')&&args.includ
 const repo=needsSource?findRepo(root):root;
 const p0File=path.resolve(arg('--p0',path.join(root,'CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv')));
 const seamFile=path.resolve(arg('--seams',path.join(repo,'PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/CURRENT_SEAM_STATES.jsonl')));
-const sorokFile=path.resolve(arg('--sorok',path.join(repo,'SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/15_W7_VERSIONED_SEAMS_AND_GATE_JOIN_CANDIDATES_R1.jsonl')));
+// The E001 review witness was at an earlier immutable source cut than the
+// branch's current Sorok file. Use the *byte-exact frozen witness*, never a
+// later same-path worktree file as if its blob SHA were unchanged.
+const sorokFile=path.resolve(arg('--sorok',path.join(root,'PRONGS/J_JOIN/FROZEN_INPUTS/SOROK_VERSIONED_SEAMS_37915.jsonl')));
 if(args.includes('--validate-only'))throw Error('Use VALIDATE_ZL15_R3.js on the materialized R3 branch. This builder requires exact R2 baseline.');
 const expectedBlobs={p0:'65c1bbe4a602341c5caacca2d58dced31a23f382',seams:'5a951626c0dde91b682eb23216c88dbfc054808d',sorok:'d31eef4f4bc3f4fc6a32ba3e6563c788713f6c47'};
 function gitBlob(buf){return crypto.createHash('sha1').update(Buffer.from('blob '+buf.length+'\0')).update(buf).digest('hex')}
