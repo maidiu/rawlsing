@@ -161,6 +161,27 @@ def test_live_recruitment_loses_and_recovers_exact_p3_mediator(tmp_path):
         def read():
             return read_response(owner, speech, scope, transduce=transduce)
 
+        def wrong_source(**kwargs):
+            return {**transduce(**kwargs), "event_hash": "0" * 64}
+
+        def unauthorized(**kwargs):
+            return {**transduce(**kwargs), "registry_override": "attempted escalation"}
+
+        def ambiguous(**kwargs):
+            proposal = transduce(**kwargs)
+            proposal["hypotheses"][0]["uncertain"] = True
+            return proposal
+
+        for provider, status in (
+            (wrong_source, "SEMANTIC_PROPOSAL_REFUSED"),
+            (unauthorized, "SEMANTIC_PROPOSAL_REFUSED"),
+            (ambiguous, "SEMANTIC_AMBIGUITY_HELD"),
+        ):
+            uptake = read_response(owner, speech, scope, transduce=provider)
+            assert uptake["status"] == status
+            assert uptake["mode"] is None
+            assert "recruitment" not in uptake
+
         before = read()
         assert before["mode"] == "joint_check"
         relevant = [entry for entry in before["recruitment"]["entries"]
