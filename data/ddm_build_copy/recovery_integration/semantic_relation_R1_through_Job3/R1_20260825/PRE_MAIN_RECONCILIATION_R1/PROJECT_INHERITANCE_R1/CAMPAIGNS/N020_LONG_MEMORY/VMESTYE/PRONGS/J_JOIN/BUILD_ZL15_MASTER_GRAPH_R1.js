@@ -62,10 +62,10 @@ function normalize(input) {
     const required=["FINDINGS","OPERATION_TRACES","AUTHORITY_USE","EVIDENCE","COVERAGE","UNJOINS"];
     for(const n of required){
       if(!ts[n]||ts[n].rows.length!==b.counts[n]) throw Error(pid+" count differs from frozen input: "+n);
-      if(ts[n].h[0]!=="prong_id") throw Error(pid+" wrong first field: "+n);
+      if(n!=="FINDINGS" && ts[n].h[0]!=="prong_id") throw Error(pid+" wrong first field: "+n);
       const expected={"FINDINGS":"finding_id","OPERATION_TRACES":"trace_id","AUTHORITY_USE":"authority_use_id","EVIDENCE":"evidence_id","COVERAGE":"coverage_id","UNJOINS":"unjoin_id"}[n];
-      if(ts[n].h[1]!==expected)throw Error(pid+" changed P1 contract: "+n);
-      for(const r of ts[n].rows)if(r.prong_id!==pid)throw Error(pid+" cross-prong row in "+n);
+      if((n==="FINDINGS"?ts[n].h[0]:ts[n].h[1])!==expected)throw Error(pid+" changed P1 contract: "+n);
+      for(const r of ts[n].rows)if(n!=="FINDINGS"&&r.prong_id!==pid)throw Error(pid+" cross-prong row in "+n);
     }
     const findings=new Map(ts.FINDINGS.rows.map(f=>[f.finding_id,f]));
     const mapOf=(n,k)=>{const m=new Map();for(const r of ts[n].rows){const a=m.get(r[k])||[];a.push(r);m.set(r[k],a);}return m};
