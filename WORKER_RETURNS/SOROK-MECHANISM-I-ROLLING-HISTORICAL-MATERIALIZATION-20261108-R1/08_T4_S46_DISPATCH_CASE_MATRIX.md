@@ -36,13 +36,13 @@
 | D1 missing-depth hold | PASS scoped | Normal `run_p4 ... work` emits a durable HELD requirement; zero ACTUAL intervals, clock 230 and material 1 unchanged; requirement survives owner reopen and repeated work. |
 | D2 positive resume | PASS scoped | Existing worker core with injected mock transport admits `condition=serviceable`; auto-resume produces exactly one ACTUAL PARTIAL interval, material 1→0, clock 230→232; target/job/event/fact refs retained; observer perception unchanged. |
 | D3 negative content | PASS scoped | Admitted `condition=broken` holds with `HISTORICAL_DEPTH_VALUE_MISMATCH`; no ACTUAL interval or material use. |
-| D4 exact sever/restore | PASS scoped | Detached owner `physical_depth` fact and reopened cold: HELD with no actual interval; restored exact fact and reopened: one actual interval. Parent-event severance also holds and restores. |
-| D5 missing/wrong scope | PASS scoped | Wrong actor place holds `HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE`; world/resource contradiction holds `HISTORICAL_MATERIAL_WORLD_MISMATCH`; actual distinct-root requirement is not recorded and cannot authorize. |
+| D4 exact sever/restore | PASS scoped | Cold owner `physical_depth` detach/restore: HELD with no actual interval, then one actual interval after exact restore. Parent-event severance/restoration is in-process only; cold exact parent-event restore remains unproven. |
+| D5 missing/wrong scope | PASS scoped | Wrong actor place holds `HISTORICAL_MATERIAL_NOT_IN_ACTIVITY_PLACE`; world/resource contradiction holds `HISTORICAL_MATERIAL_WORLD_MISMATCH`; an actual distinct-root requirement and a genuinely recorded foreign-scope requirement both fail closed before interval. |
 | D6 cold replay/idempotence | PASS scoped | Separate-OS `work` hold, mock worker admission, crash after interval and crash before interval both recover to exactly one ACTUAL interval and one CONSUMED requirement; duplicate resume is HELD and consumes nothing. Recovery requires the interval's exact `activity_requirement_ref` and re-verifies the admitted target/job/fact provenance; a same-start unrelated ACTUAL interval is not credited and leaves the requirement HELD with no false `fact_id`. Ambiguous recovery is persisted as non-retryable `AMBIGUOUS`; repeated resume and cold reopen do not add an interval. Pre-repair persisted ambiguous HELD records are rechecked before any retry. |
 | D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and full P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
-| D8 actor isolation | PARTIAL/PASS scoped | D2/D8 show no INSPECT, unchanged perceived IDs, and changed user hypothesis plus user ATTEND do not alter the requirement. P6 fixed-house gaze was not run. |
+| D8 actor isolation | PARTIAL | D2/D8 show no INSPECT, unchanged perceived IDs, and changed user hypothesis plus user ATTEND do not alter the requirement. No tracked P6 proof runtime exists in this checkout; the separate `codex/sorok-p6-gaze-proof-20261107-r1@a075232f56b55bcce138df755db20e77e3ec5f3c` proof is not imported/touched. P6 gaze remains NOT_RUN. |
 | D9 model failure | PASS scoped | Timeout from the injected provider leaves the requirement HELD and no ACTUAL interval/material change. |
-| D10 branch/root isolation | PASS scoped | Child-branch has no parent requirement/target/job and cannot advance; separate root store retains material 1 and no depth while the other root consumes. Full sibling-parent readback remains outside this cut. |
+| D10 branch/root isolation | PASS scoped | Child branch performs pending→admission→one actual consumption through normal dispatch; repeated parent readback shows parent material 1, no child target, parent requirement HELD and no ACTUAL interval. Separate root store also remains isolated. |
 
 P11 is now sourcefree positive at the scoped level above (previously HELD).
 N15 remains open: the existing P6 fixed-house regression was not run.
@@ -51,13 +51,13 @@ N15 remains open: the existing P6 fixed-house regression was not run.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 18 passed in 130.48s
+# 18 passed in 126.14s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
-# 66 passed in 256.42s
+# 66 passed in 256.42s (prior full run)
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py
-# 66 passed in 256.42s
+# 66 passed in 256.42s (prior full run)
 ```
 
 Author local S2 result only. Independent S2 rerun and native S3 are NOT_RUN.
@@ -130,3 +130,14 @@ repeated resume and cold reopen preserve one interval and a non-consumed
 AMBIGUOUS requirement. D5, D8 and D10 remain partial. D4 remains scoped
 to cold fact detach/restore. The activity owner is continuing the
 remaining adverse cases.
+
+## Remaining adverse-case closure
+
+D5 now includes a requirement actually recorded in the current owner index
+whose root/branch target is foreign; it fails closed before interval. D10 now
+executes child pending, child admission through the existing worker, one child
+actual consumption through normal dispatch, and repeated parent readback at
+each stage. D8 remains PARTIAL because no compatible P6 gaze runtime is tracked
+in this checkout; the separate P6 gaze proof branch was not imported or
+touched. D4 retains the cold parent-event restoration limit; its cold proof is
+the sanctioned physical-depth detach/restore path.

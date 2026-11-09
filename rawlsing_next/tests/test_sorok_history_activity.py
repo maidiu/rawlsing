@@ -518,6 +518,19 @@ def test_d5_cross_root_requirement_is_not_admitted(tmp_path, monkeypatch):
         assert not _actual_intervals(session)
         assert session.world().actor_state["A"]["material_remaining"] == 1
         assert history.activity_requirement(foreign_requirement["id"]) is None
+
+        # A genuinely recorded foreign-scope requirement in this owner index must
+        # also fail closed, not merely an unknown requirement ID.
+        history.hold_activity_requirement(foreign_requirement)
+        recorded = dispatch_activity_requirement(
+            fanin, history, foreign_requirement["id"]
+        )
+        assert recorded.status == HELD
+        assert recorded.reason == "HISTORICAL_ACTIVITY_REQUIREMENT_STALE"
+        assert recorded.activity.interval is None
+        assert not _actual_intervals(session)
+        assert session.world().actor_state["A"]["material_remaining"] == 1
+        assert history.activity_requirement(foreign_requirement["id"])["status"] == HELD
     finally:
         owner.close()
 
@@ -555,27 +568,70 @@ def test_d8_user_hypothesis_does_not_change_activity_requirement(tmp_path, monke
         owner.close()
 
 
-def test_d10_child_branch_does_not_authorize_parent_activity(tmp_path, monkeypatch):
+def test_d10_child_branch_pending_admission_consumption_and_parent_readback(
+    tmp_path, monkeypatch
+):
+    monkeypatch.syspath_prepend(str(P4))
+    monkeypatch.syspath_prepend(str(P3 / "tests"))
     from run_p4 import advance_dispatched, new, open_owner
+    from rawlsing_next.sorok_history.activity import resume_activity_requirements
 
     new(tmp_path, tmp_path / "p4_receipts.json", "recognized_plan")
     owner = open_owner(tmp_path / "actual-p2")
     try:
         fanin = owner.base_owner.fanin
         session = fanin.session
-        history = HistoricalWorld(session)
-        requirement = produce_activity_requirement(fanin, history)
+        parent = session.branch_id
+        parent_history = HistoricalWorld(session)
+        parent_requirement = produce_activity_requirement(fanin, parent_history)
         assert advance_dispatched(fanin)["status"] == HELD
 
-        session.fork_alt("t4-sibling")
-        child = HistoricalWorld(session)
-        assert child.activity_requirement(requirement["id"]) is None
-        assert child.activity_requirements() == ()
-        assert child.pending() == ()
-        result = advance_dispatched(fanin)
-        assert result["status"] == HELD
-        assert session.clock() == 230
-        assert session.world().actor_state["A"]["material_remaining"] == 1
+        def read_branch(branch):
+            session.product.use(branch)
+            session.branch_id = branch
+            return HistoricalWorld(session), session.world().actor_state["A"]["material_remaining"]
+
+        def read_parent():
+            history, material = read_branch(parent)
+            assert history.activity_requirement(parent_requirement["id"])["status"] == HELD
+            assert [row["id"] for row in history.activity_requirements()] == [
+                parent_requirement["id"]
+            ]
+            assert history.target(child_target_id) is None
+            assert material == 1
+            assert not [
+                row for row in session.read_interval_states()
+                if (row.get("domain") or {}).get("mode") == "ACTUAL"
+            ]
+
+        session.fork_alt("t4-child")
+        child = session.branch_id
+        child_history = HistoricalWorld(session)
+        child_target_id = child_history.capture_visible_tool_resource()
+        assert child_target_id
+        child_requirement = produce_activity_requirement(fanin, child_history)
+        assert child_requirement["id"] != parent_requirement["id"]
+        assert advance_dispatched(fanin)["status"] == HELD
+        read_parent()
+
+        session.product.use(child)
+        session.branch_id = child
+        child_history = HistoricalWorld(session)
+        assert asyncio.run(run_once(child_history, _mock_provider(child_target_id)))["status"] == "INDEX_READY"
+        read_parent()
+        assert session.product.use(child)["branch_id"] == child
+        session.branch_id = child
+        child_history = HistoricalWorld(session)
+        resumed = resume_activity_requirements(fanin, child_history)
+        assert [row.status for row in resumed] == [ADVANCED]
+        assert session.world().actor_state["A"]["material_remaining"] == 0
+        assert child_history.activity_requirement(child_requirement["id"])["status"] == "CONSUMED"
+
+        read_parent()
+        session.product.use(child)
+        session.branch_id = child
+        assert session.world().actor_state["A"]["material_remaining"] == 0
+        assert HistoricalWorld(session).activity_requirement(parent_requirement["id"]) is None
     finally:
         owner.close()
 

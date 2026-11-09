@@ -41,7 +41,9 @@ def save(path, value):
 def advance(fanin, *, mode="ACTUAL", dispatch_ref=None):
     session = fanin.session
     start = session.clock()
-    domain = fanin.deps["make_domain"](mode=mode, start=start, end=start + 2)
+    domain = fanin.deps["make_domain"](
+        mode=mode, start=start, end=start + 2, branch_id=session.branch_id
+    )
     if dispatch_ref is not None:
         body = {key: value for key, value in domain.items()
                 if key not in {"domain_hash", "hash"}}

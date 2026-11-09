@@ -121,9 +121,13 @@ D6 covers before/after crash points in separate processes and exact
 requirement/action/target/fact/job recovery; a same-start unrelated ACTUAL
 interval is not credited. Ambiguous recovery is non-retryable and survives
 repeated resume/cold reopen; old ambiguous HELD records are rechecked before
-retry. D8 covers user hypothesis plus ATTEND (P6 gaze not run), and D10
-covers child-branch and separate-root isolation. P11 moves to sourcefree
-positive only; N15 remains open.
+retry. D5 includes a genuinely recorded foreign-scope requirement; D10 now
+runs child pending/admission/consumption with repeated parent readback and
+separate-root isolation. D8 remains PARTIAL because no compatible P6 gaze
+runtime is tracked in this checkout; the separate P6 gaze proof branch was
+not imported or touched. D4 retains the cold exact parent-event restoration
+limit; its cold proof is the sanctioned physical-depth detach/restore path.
+P11 moves to sourcefree positive only; N15 remains open.
 
 Issue #824 first caller is
 `WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py:56`
@@ -136,7 +140,7 @@ Exact author-local S2 tests:
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 18 passed in 130.48s
+# 18 passed in 126.14s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
 # 66 passed in 256.42s
