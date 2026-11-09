@@ -1,58 +1,41 @@
 # VMESTYE P0 S2 RETURN
 
 ## Terminal disposition
-`FAIL__VMESTYE_P0_S2_BASELINE_D05_SOURCE_KEY_LOSS__ZL01_OWNS_FIVE_OMITTED_AUTHORITY_MAINTENANCE_ROWS__D05_F06_F11_QUOTING_QUALIFICATION_HOLD__NEGATIVE_CONTROLS_EIGHT_OF_EIGHT_PASS__INDEPENDENT_RECEIVING_PENDING__NO_P1_RELEASE`
+`VMESTYE_P0_S2_VALIDATOR_EXECUTED__NEGATIVE_CONTROLS_EIGHT_OF_EIGHT_PASS__INDEPENDENT_RECEIVING_PENDING__NO_P1_RELEASE`
 
-## What actually ran
-- Historical bootstrap: `PASS` on a clean `git archive` extraction of protected `2162d85d`. It preserved 18 historical `NOT_DISPATCHED`, nine `NOT_RUN` gates and the five frozen seed blobs.
-- Stage-aware validator: `FAIL` on the corrected ZL-00/ZL-01 assembly: 42 checks PASS, 4 FAIL, 1 HOLD. The failures are the D05 source-key loss and the source-derived total mismatch; the HOLD is the explicit malformed-CSV field-level qualification.
-- Eight deliberate negative controls: **8/8 PASS**. Each produced its intended fail-closed error ID and exit code, not a crash.
-- Unit tests for the new helper/constraint layer: `5 passed`.
+## Corrected cuts
+- Protected PRE-MAIN: `2162d85db5e6822707e5cdff7aac2656ebef4761`.
+- ZL-00: `11047708a6e4b4050da351f4b6cc35f03cb8269b`.
+- ZL-01 corrected: `353adc216a832a6c41ccc99f77cb3b53651af64e`.
+- Independent reviewer R3: `caefb06bb73e1bc58033794184069337c6847e71`.
+- S2 branch/PR: `test/vmestye-p0-s2-qualified-validator-r1` / https://github.com/maidiu/rawlsing/pull/826.
 
-## Exact blocking defect
-The corrected ZL-01 census omits five source keys from:
+## Actual execution
+- Historical bootstrap: **PASS** on a clean `git archive` extraction of protected `2162d85d`; 18 historical `NOT_DISPATCHED` and nine `NOT_RUN` gates preserved.
+- Stage-aware clean baseline: **PASS**, `49` checks passed, `0` failed, `0` held, exit `0`.
+- Negative controls: **8/8 PASS** on that clean baseline, each producing its intended fail-closed error ID. They no longer inherit the D05 baseline failure.
+- Validator unit tests: `5 passed`.
 
-`data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/LONG_MEMORY_CURRENT_ZERO_LOSS_DELTA_R1/D05_MAINTENANCE_LIFECYCLE/AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv`
+## Corrected D05 result
+ZL-01 now contains all 11 exact source keyed records from `AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv` at `b7dd1bce667651c88ddd71c17c065f2b33ec38ec` (blob `bf77b70f1858697ce663f2eeec2e91e25aa6ac94`):
 
-at commit `b7dd1bce667651c88ddd71c17c065f2b33ec38ec`, blob `bf77b70f1858697ce663f2eeec2e91e25aa6ac94`:
+- D05 file rows: 11, not 6.
+- Grouped D05 rows: 29, not 24.
+- D02–D07 per-file rows: 369, not 364.
+- Census rows: 6,125, not 6,120.
 
-- `D05-F07` (source row 8)
-- `D05-F08` (source row 9)
-- `D05-F09` (source row 10)
-- `D05-F10` (source row 11)
-- `D05-F11` (source row 12)
+The validator confirms exact source key/ordinal equality, updated anti-joins and updated coverage receipts.
 
-The source file has 11 keyed rows; the candidate census and per-file anti-join claim 6. This makes the D05 source total 29 rather than 24, and the 23 per-file source total 369 rather than 364. The candidate’s claimed exact no-drop is therefore not true at the source file grain. In addition, two historical rows (`D05-F06`, source row 7; `D05-F11`, source row 12) have malformed CSV quoting and parse to 5 fields instead of 8; their identities are exact, but field-level interpretation is held and explicitly qualified in `P0_S2_SOURCE_QUALIFICATION.tsv`.
+## Historical CSV qualification
+`D05-F06` (source row 7) and `D05-F11` (source row 12) have malformed CSV quoting; strict CSV parses only five fields, while their raw identities are exact. ZL-01 added `P0_D05_RAW_SOURCE_QUALIFICATION.tsv` with 11 raw-line SHA256 receipts. The validator checks that sidecar and records the field-level boundary as an explicit HOLD inside the source qualification; it does not assert or fabricate field meaning. Historical source bytes were not rewritten.
 
-Responsible owner: ZL-01. The correction must add the five exact source keys to its own candidate census with exact source commit/path/blob/row ordinal/negative status, update the D05 per-file and grouped counts and receipts, and return a new immutable head for the same independent ZL-P0R reviewer. No protected edit was made here.
-
-Falsifier: an independent source-blob reread of `AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv` that shows all 11 keyed rows and a candidate census that still claims only 6, or a candidate correction that adds the five keys with exact retained negatives and all derived counts changed consistently.
-
-## Negative controls
-All eight specified defects produced the intended typed failures:
-1. SR-01 missing key.
-2. RM alias/selector corruption.
-3. G4 predicate corruption.
-4. IF-to-MUST promotion.
-5. D02 dangling source path.
-6. RM retained-negative loss.
-7. Forged acceptance without review.
-8. P1 frozen-header corruption.
-
-The negative controls were rerun after the validator correction, but still against the known D05-failing baseline, so they are targeted-detection receipts only. Their intended error IDs appear and no control produced a Python crash. A clean-baseline qualification rerun still requires the corrected ZL-01 head.
-
-## Review and release status
-- P0 is **not accepted**.
-- P1 ZL-02–ZL-14 is **not released**.
-- No protected write, merge, native source run, scientific/actor issuance or current-machine zero-loss claim.
-- The existing independent ZL-P0R reviewer (#799 / PR #821) must receive the failing baseline and negative-control logs and decide whether to require a ZL-01 correction.
-- Historical bootstrap success is not current P0 acceptance.
+## Status ceiling
+- This is local sourcefree structural S2 evidence only.
+- No P0 acceptance, no ZL-02–ZL-14 release, no protected merge.
+- No original respondent/native/S3, scientific, actor or first-consumer promotion.
+- The same independent ZL-P0R reviewer must re-receive both corrected heads and this clean-run evidence before any P0 decision.
 
 ## Evidence
 Return directory: `WORKER_RETURNS/PROGRAMMA-VMESTYE-P0-S2-QUALIFIED-VALIDATOR-20261109-R1/`.
 
-Includes assembly/stage manifests, baseline and bootstrap stdout/stderr, complete negative-control logs, validator/unit-test sources in the worker branch, and the changed-file inventory.
-
-- PR: https://github.com/maidiu/rawlsing/pull/826
-- Initial evidence commit: `7a2758e8bbb2fa1e4379989ccce24979c87f6e2c`
-- Exact final head is the latest commit on PR #826; the execution-return issue comment records it.
+Includes the validator and test sources on the worker branch, assembly/stage manifests, the 11-row D05 raw-source qualification, baseline and historical bootstrap logs, all eight clean-baseline negative-control logs, execution receipt, environment manifest, and changed-file inventory. Exact PR head is the latest commit on PR #826; the execution-return issue comment records it.

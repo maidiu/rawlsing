@@ -1,9 +1,9 @@
-PASS	A_CENSUS_HEADER	CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv: 6120 rows, 25 columns
+PASS	A_CENSUS_HEADER	CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv: 6125 rows, 25 columns
 PASS	A_CENSUS_ID	census_id must be unique
 PASS	A_CENSUS_COMPOSITE_UNIQUE	full source composite identity must be unique
 PASS	A_CENSUS_NEGATIVE	every census row must retain a typed negative/status
-FAIL	A_SOURCE_KEYS:D05_SOURCE_PACKAGE	source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24
-FAIL	A_CENSUS_COUNT	observed 6120 census rows; source-derived expected 6125
+PASS	A_CENSUS_COUNT	observed 6125 census rows; source-derived expected 6125
+PASS	A_SOURCE_KEY_SETS	all 32 census estates exactly equal their source key sets
 PASS	A_ANTI_JOIN_TABLE	CONTROL/P0_NO_DROP_ANTI_JOINS.tsv: 110 rows, 21 columns
 PASS	A_ANTI_JOIN_COUNT	observed 110 anti-join checks; expected 110
 PASS	A_ANTI_JOIN_IDS	check_id must be unique
@@ -24,10 +24,12 @@ PASS	B_RM_BIJECTION_IDS	frozen and reported RM IDs must be unique
 PASS	B_RM_FROZEN_IDS	frozen AJ-RM01..AJ-RM30 identity set exact
 PASS	B_RM_REQUIREMENTS_IDS	all frozen RM checks must exist in the 56 requirements
 PASS	B_RM_MAPPINGS	30/30 RM mappings, selectors and retained negatives are exact
+PASS	C_D05_RAW_SOURCE_QUALIFICATION	CONTROL/P0_D05_RAW_SOURCE_QUALIFICATION.tsv: 11 rows, 12 columns
+PASS	C_D05_QUALIFICATION_ROWS	rows=11 ids=['D05-F01', 'D05-F02', 'D05-F03', 'D05-F04', 'D05-F05', 'D05-F06', 'D05-F07', 'D05-F08', 'D05-F09', 'D05-F10', 'D05-F11']
+PASS	C_D05_FIELD_QUALIFICATION	11/11 D05 IDs; F06/F11 raw-key field-semantic HOLD explicit
 PASS	C_D02_D07_SELECTOR_COUNT	observed 23 per-file selectors; expected 23
-HOLD	C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source CSV rows [7, 12] have width != header 8; identities retained, field-level interpretation requires source-owner qualification
-FAIL	C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source file has 11 keyed records; claim is 6
-FAIL	C_D02_D07_ROWS	source rows=369, census rows=364; expected source-derived equality
+PASS	C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source CSV rows [7, 12] have width != header 8; identities retained; field-level interpretation is explicitly qualified
+PASS	C_D02_D07_ROWS	source rows=369, census rows=369; expected source-derived equality
 PASS	D_G4_CONTRACT	CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns
 PASS	D_G4_RECEIPTS	CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns
 PASS	D_G4_ROW_COUNTS	contract=82 receipt=82 source=82
@@ -41,14 +43,9 @@ PASS	F_P1_SCHEMA	five frozen headers, enums, FK law and 13 distinct leases prese
 PASS	E_STAGE_TABLE	CONTROL/P0_S2_STAGE_MANIFEST.tsv: 2 rows, 17 columns
 PASS	E_STAGE_COUNT	observed stage subjects ['ZL00', 'ZL01']
 FAIL	E_STAGE_ACCEPTANCE:ZL00	acceptance has no ACCEPT verdict/protected adoption
-PASS	E_ASSEMBLY_TABLE	CONTROL/P0_S2_ASSEMBLY_MANIFEST.tsv: 17 rows, 7 columns
-PASS	E_ASSEMBLY_COUNT	observed 17 candidate files; expected 17
+PASS	E_ASSEMBLY_TABLE	CONTROL/P0_S2_ASSEMBLY_MANIFEST.tsv: 18 rows, 7 columns
+PASS	E_ASSEMBLY_COUNT	observed 18 candidate files; expected 18
 PASS	E_ASSEMBLY_PATHS	candidate path overlap
-PASS	E_ASSEMBLY	17 candidate files are hash-exact and origin-pinned without overlap
+PASS	E_ASSEMBLY	18 candidate files are hash-exact and origin-pinned without overlap
 P0_S2_VALIDATOR_FAIL
-ERROR A_SOURCE_KEYS:D05_SOURCE_PACKAGE source/output key mismatch missing=[('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F07', 8), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F08', 9), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F09', 10), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F10', 11), ('AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv', 'D05-F11', 12)] extra=[] expected=29 observed=24
-ERROR A_CENSUS_COUNT observed 6120 census rows; source-derived expected 6125
-ERROR C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv source CSV rows [7, 12] have width != header 8; identities retained, field-level interpretation requires source-owner qualification
-ERROR C_D02_D07_SOURCE:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv source file has 11 keyed records; claim is 6
-ERROR C_D02_D07_ROWS source rows=369, census rows=364; expected source-derived equality
 ERROR E_STAGE_ACCEPTANCE:ZL00 acceptance has no ACCEPT verdict/protected adoption

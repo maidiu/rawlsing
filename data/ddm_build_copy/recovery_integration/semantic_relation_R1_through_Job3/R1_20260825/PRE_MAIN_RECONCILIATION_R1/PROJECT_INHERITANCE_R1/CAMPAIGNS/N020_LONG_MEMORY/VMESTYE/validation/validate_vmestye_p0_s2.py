@@ -96,6 +96,13 @@ P1_HEADERS = {
         "unresolved_question", "next_owner", "falsifier", "status",
     ],
 }
+D05_QUAL_HEADER = [
+    "source_commit_sha", "source_blob_sha", "source_path", "source_row_locator",
+    "source_exact_id", "raw_physical_line_sha256", "strict_csv_field_status",
+    "parsed_historical_disposition_if_valid", "parsed_historical_negative_ceiling_if_valid",
+    "census_id", "field_semantic_verdict", "source_grain_and_proof_ceiling",
+]
+
 STAGES = (
     "PREPARED",
     "DISPATCHED_BY_USER",
@@ -534,7 +541,46 @@ class Validator:
         if ok:
             self.check("B_RM_MAPPINGS", True, "30/30 RM mappings, selectors and retained negatives are exact")
 
+    def validate_d05_qualification(self, census_rows: list[dict[str, str]]) -> bool:
+        rows = self.read_table(
+            "CONTROL/P0_D05_RAW_SOURCE_QUALIFICATION.tsv", D05_QUAL_HEADER,
+            "C_D05_RAW_SOURCE_QUALIFICATION",
+        )
+        expected_ids = {f"D05-F{i:02d}" for i in range(1, 12)}
+        ids = {row["source_exact_id"] for row in rows}
+        ok = len(rows) == 11 and ids == expected_ids
+        self.check("C_D05_QUALIFICATION_ROWS", ok, f"rows={len(rows)} ids={sorted(ids)}")
+        census_by_id = {
+            (row["source_exact_id"], row["source_row_locator"]): row
+            for row in census_rows
+            if row["estate_id"] == "D05_SOURCE_PACKAGE"
+        }
+        for row in rows:
+            rid = row["source_exact_id"]
+            if row["source_commit_sha"] != "b7dd1bce667651c88ddd71c17c065f2b33ec38ec" or row["source_blob_sha"] != "bf77b70f1858697ce663f2eeec2e91e25aa6ac94":
+                ok = False
+                self.check(f"C_D05_QUALIFICATION_SOURCE:{rid}", False, "source commit/blob drift")
+            if not re.fullmatch(r"sha256:[0-9a-f]{64}", row["raw_physical_line_sha256"]):
+                ok = False
+                self.check(f"C_D05_QUALIFICATION_HASH:{rid}", False, "raw-line SHA256 missing")
+            if rid in {"D05-F06", "D05-F11"}:
+                good = ("STRICT_CSV_REJECTS_QUOTING" in row["strict_csv_field_status"]
+                        and "HOLD" in row["field_semantic_verdict"])
+            else:
+                good = row["strict_csv_field_status"] == "STRICT_8_FIELD_CSV_READ_OK" and "HOLD" not in row["field_semantic_verdict"]
+            if not good:
+                ok = False
+                self.check(f"C_D05_QUALIFICATION_STATUS:{rid}", False, "strict/HOLD status is not explicit")
+            census = census_by_id.get((rid, row["source_row_locator"]))
+            if not census or census["census_id"] != row["census_id"]:
+                ok = False
+                self.check(f"C_D05_QUALIFICATION_CENSUS:{rid}", False, "census identity does not resolve")
+        if ok:
+            self.check("C_D05_FIELD_QUALIFICATION", True, "11/11 D05 IDs; F06/F11 raw-key field-semantic HOLD explicit")
+        return ok
+
     def validate_d02_d07(self, census_rows: list[dict[str, str]], anti_rows: list[dict[str, str]]) -> None:
+        qualification_ok = self.validate_d05_qualification(census_rows)
         per_file = [row for row in anti_rows if "__" in row["check_id"] and row["check_id"].startswith(("AJ-D02_", "AJ-D03_", "AJ-D04_", "AJ-D05_", "AJ-D06_", "AJ-D07_"))]
         self.check("C_D02_D07_SELECTOR_COUNT", len(per_file) == 23, f"observed {len(per_file)} per-file selectors; expected 23")
         ok = True
@@ -577,11 +623,14 @@ class Validator:
                 bad_widths = []
                 self.hold(f"C_D02_D07_QUOTING:{row['check_id']}", f"cannot inspect CSV quoting: {exc}")
             if bad_widths:
-                self.hold(
-                    f"C_D02_D07_QUOTING:{row['check_id']}",
+                detail = (
                     f"source CSV rows {bad_widths} have width != header {source_width}; "
-                    "identities retained, field-level interpretation requires source-owner qualification",
+                    "identities retained; field-level interpretation is explicitly qualified"
                 )
+                if qualification_ok:
+                    self.check(f"C_D02_D07_QUOTING:{row['check_id']}", True, detail)
+                else:
+                    self.hold(f"C_D02_D07_QUOTING:{row['check_id']}", detail)
             if source_count != expected:
                 ok = False
                 self.check(
@@ -722,7 +771,7 @@ class Validator:
 
     def validate_assembly(self) -> None:
         rows = self.read_table("CONTROL/P0_S2_ASSEMBLY_MANIFEST.tsv", ASSEMBLY_HEADER, "E_ASSEMBLY_TABLE")
-        self.check("E_ASSEMBLY_COUNT", len(rows) == 17, f"observed {len(rows)} candidate files; expected 17")
+        self.check("E_ASSEMBLY_COUNT", len(rows) == 18, f"observed {len(rows)} candidate files; expected 18")
         self.check("E_ASSEMBLY_PATHS", len({row["relative_path"] for row in rows}) == len(rows), "candidate path overlap")
         ok = True
         for row in rows:
@@ -739,7 +788,7 @@ class Validator:
                 ok = False
                 self.check(f"E_ASSEMBLY_ORIGIN:{row['relative_path']}", False, "candidate origin is not exact")
         if ok:
-            self.check("E_ASSEMBLY", True, "17 candidate files are hash-exact and origin-pinned without overlap")
+            self.check("E_ASSEMBLY", True, "18 candidate files are hash-exact and origin-pinned without overlap")
 
     def run(self) -> tuple[list[dict[str, str]], list[tuple[str, str]]]:
         census_rows, groups = self.validate_census()
