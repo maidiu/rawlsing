@@ -100,7 +100,7 @@ def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path, monke
 
     monkeypatch.setattr(run_p4, "express", capture_expression)
 
-    request = "Could we go over that edge together?"
+    request = "  Could we go over that edge together? — please.  "
     departure = "I'll let you get on with your work."
 
     def transduce(*, event_id, event_hash, text):
@@ -142,8 +142,15 @@ def test_non_edge_speech_recruits_received_p3_history_through_p4(tmp_path, monke
                 assert any(row["mode"] == expected and row["activation"] == "ELIGIBLE"
                            for row in uptake["recruitment"]["entries"])
                 event = turn["receipt"]["expression"]
-                assert owner.base_owner.fanin.session.event(event["event_id"]) == event
+                session = owner.base_owner.fanin.session
+                speech = turn["receipt"]["speech"]["performed"]
+                assert session.event(event["event_id"]) == event
+                assert session.event(speech["event_id"])["body"]["text"] == text
+                assert speech["actor_id"] == session.meta["user_actor"]
+                assert event["actor_id"] == uptake["actor_alias"] != speech["actor_id"]
+                assert event["clock"] == speech["clock"] == turn["before"]["clock"]
                 assert public["observation"]["event_id"] == event["event_id"]
+                assert public["observation"]["body_public"]["text"] == event["body"]["text"]
             assert expression_inputs[-1] == (expected, uptake.get("actor_alias"))
             public_json = json.dumps(public)
             for key in ("semantic_encounter", "person_snapshot", "recruitment", "readset"):
@@ -365,9 +372,13 @@ def test_testimony_and_timeout_preserve_world_truth_and_stale_speech_cannot_recr
         def timeout(**_):
             raise TimeoutError("fixture transport timed out")
 
+        def invented_memory(**event):
+            return {**assertion(**event), "memory_effect": {"remember": "You promised."}}
+
         for index, (text, provider, status) in enumerate((
             ("You promised to give me the bench.", assertion, "SEMANTIC_VALID_EMPTY"),
             ("Could we go over the edge together?", timeout, "SEMANTIC_PROPOSAL_UNAVAILABLE"),
+            ("You should remember what you promised.", invented_memory, "SEMANTIC_PROPOSAL_REFUSED"),
         )):
             prior_events = {event["event_id"] for event in session.events()}
             args = SimpleNamespace(command="say", text=text, request_edge=False,
