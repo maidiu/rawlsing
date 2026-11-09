@@ -6,7 +6,7 @@ from developmental_recursion.contracts import RecursionRefusal, digest
 def developing_actor(session, actor_ref):
     """Resolve the world's actor alias from a performed P2 action binding."""
     for row in reversed(session.read_events()):
-        if row["actor_id"] != actor_ref or not row.get("performed"):
+        if not row.get("performed") or row.get("actor_id") != actor_ref:
             continue
         action = session.event(row["action_event_id"])
         if (action and action["hash"] == row["action_event_hash"]
