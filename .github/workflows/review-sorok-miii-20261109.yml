@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - review/sorok-mechanism-iii-independent-20261109-r1
+  pull_request:
+    branches:
+      - agent/sorok-mechanism-iii-live-constituted-person-event-20261109-r1
 
 permissions:
   contents: read
