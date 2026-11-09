@@ -474,3 +474,71 @@ def test_live_recruitment_ignores_unrelated_committed_formation(tmp_path, monkey
     finally:
         case.cycle.engine.close()
         case.owner.close()
+
+
+def test_live_say_distinguishes_committed_content_from_drafts_and_ambiguous_reference(tmp_path):
+    from copy import deepcopy
+    from run_p4 import new, open_owner
+
+    ledger_path = tmp_path / "p4_receipts.json"
+    new(tmp_path, ledger_path, "recognized_plan")
+    scope = json.loads(ledger_path.read_text())["scope"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        actor = owner.snapshot().document()["actor"]
+        psyche_head = owner.store.head()
+        requests = []
+
+        def read(text, interpretations):
+            speech = admit_speech(session, text=text, actor_ref=actor)
+            assert speech["actor_access"]
+
+            def transduce(*, event_id, event_hash, text):
+                requests.append(text)
+                return {"event_id": event_id, "event_hash": event_hash, "hypotheses": [
+                    {"move": move, "referent": referent, "span": [0, len(text)],
+                     "uncertain": uncertain}
+                    for move, referent, uncertain in interpretations
+                ]}
+
+            uptake = read_response(owner, speech, scope, transduce=transduce)
+            return speech, uptake
+
+        question = "Could we check the edge together?"
+        ambiguous = "Was that supposed to be the funny part?"
+        mundane = "It's quiet in here today."
+        spoken, request = read(question, [("REQUEST", "CURRENT_EDGE", False)])
+        _, uncertain = read(ambiguous, [("JOKE", None, True), ("QUESTION", None, True)])
+        _, routine = read(mundane, [("ASSERTION", None, False)])
+        missing_referent = "Could you check that?"
+        _, unresolved = read(missing_referent, [("REQUEST", None, False)])
+        assert requests == [question, ambiguous, mundane, missing_referent]
+        assert unresolved["status"] == "SEMANTIC_UNRESOLVED_HELD"
+        assert unresolved["mode"] is None and "recruitment" not in unresolved
+        assert request["mode"] == "joint_check"
+        assert uncertain["status"] == "SEMANTIC_AMBIGUITY_HELD"
+        assert [(h["move"], h["referent"], h["uncertain"])
+                for h in uncertain["semantic_encounter"]["hypotheses"]] == [
+                    ("JOKE", None, True), ("QUESTION", None, True)
+                ]
+        assert "recruitment" not in uncertain
+        assert routine["status"] == "SEMANTIC_VALID_EMPTY"
+        assert express(session, mode=routine["mode"]) == (None, None)
+
+        draft = deepcopy(spoken)
+        draft["performed"]["event_id"] = "uncommitted-draft"
+        events = session.events()
+        queries = owner.store.stats()["targeted_queries"]
+
+        def unexpected(**_):
+            pytest.fail("uncommitted input reached the transducer")
+
+        with pytest.raises(RecursionRefusal, match="P4_SPEECH_EVENT_BINDING_MISMATCH"):
+            read_response(owner, draft, scope, transduce=unexpected)
+        assert session.events() == events
+        assert owner.store.stats()["targeted_queries"] == queries
+        assert owner.store.head() == psyche_head
+        assert session.event(spoken["performed"]["event_id"]) == spoken["performed"]
+    finally:
+        owner.close()

@@ -114,7 +114,10 @@ def read_response(owner, admission, scope, *, transduce=None):
         if len(hypotheses) != 1 or hypotheses[0]["uncertain"]:
             return dict(result, status="SEMANTIC_AMBIGUITY_HELD")
         move = hypotheses[0]
-        if (move["move"], move["referent"]) != ("REQUEST", "CURRENT_EDGE"):
+        if move["move"] == "UNKNOWN" or (
+                move["move"] == "REQUEST" and move["referent"] is None):
+            return dict(result, status="SEMANTIC_UNRESOLVED_HELD")
+        if move["move"] != "REQUEST":
             return dict(result, status="SEMANTIC_VALID_EMPTY")
 
     if semantic:
