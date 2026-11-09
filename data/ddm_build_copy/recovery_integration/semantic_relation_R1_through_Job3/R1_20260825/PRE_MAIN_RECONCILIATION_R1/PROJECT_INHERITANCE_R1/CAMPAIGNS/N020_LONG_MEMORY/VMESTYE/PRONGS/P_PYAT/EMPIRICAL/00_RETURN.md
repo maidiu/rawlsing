@@ -64,3 +64,45 @@ The next qualified owner must (a) identify exact C6/LMX/LMQ and native-source po
 ## Return protocol
 
 No protected branch was touched. All assertions here remain candidate and must be independently reviewed before any ZL-15 canon or Pyat owner acceptance. `FINDINGS.tsv`/five source-graded tables have exact P0 headers and no invented P0 census foreign keys. The existing VMESTYE P0 estate and D05 field semantic HOLD are preserved. Independent review should mark unresolved no-drop/census joins separately from actual observed code coverage.
+
+## ZL10 author repair in response to PR #853 — D01–D06
+
+**Status: revised author candidate only; independent acceptance pending.** Immutable current-code read cut: `9253064bc9423a0f0ccda4fbdea43c2f54f800c6`. Historical exact source read cuts: LMX44 `bb0814fa39de335558a11fec2b9d085e68216c9a` (blob `f1252e901677203f7b54ded855a18a7738f28df7`) and C6 F29 `aed1a0ae13c58f11f4dabd07c818b62f72adf989` (blob `ba39d8f9c9f06440df5d068bdd9f0b857c06ce58`). All new source-grain rows use these immutable sources. S2 tests **NOT_RUN HERE**; S3/original35 **NOT_RUN**; no original science, issuer rule or protected adoption.
+
+### D01 / exact source estate and nonclosure
+The accepted P0 `CONTROL/P0_RETURN_AND_BRANCH_CENSUS.tsv` has known blob `65c1bbe4a602341c5caacca2d58dced31a23f382` and reported **6,125** overlapping records, but the GitHub connector returned an **empty file body**, even on a bounded line-range request. Accordingly zero P0 rows were actually parsed, **not** zero records found. No `census_id` was fabricated. The repaired EVIDENCE/UNJOINS now source-pin **23/44** specifically relevant LMX obligations and **18/29** C6 FUNCTION identities, beyond the original 22 current code-symbol unjoins and four newly traced code operations. For these **41 selected historical rows** the source-minus-*proved-same-grain-join* remains **41**; the **remaining 21 LMX and 11 C6 function records are not evaluated within this scoped sample**, not declared irrelevant or conserved. The selected rosters overlap and may not be added into unique functions. The accepted census remains **SOURCE_UNAVAILABLE / FULL NO-DROP HELD**, and exact five-tuple `(estate_id,source_commit_sha,source_path,source_composite_id,source_grain)` joining and source/return antisets remain ZL-15/estate owner work. C6 `ROW_TYPE=FUNCTION;ID=...` notation reports the original row fields and **does not purport to match P0's unread serialized composite**. Neither 6,125 census IDs nor 41 source records are declared missing machine functions.
+
+### D02 / first consumer
+F02, F03 and F11 now have independently typed `FIRST_CONSUMER` records EC02/EC03/EC11 at the C1 → unchanged N10E source callsite (`pre553_analytical_composition.py`). F15's false `PRESENT` is lowered to `NOT_ASSESSED`, and its first-consumer reference is `UNRESOLVED`. An S1 callsite is not S2 executed consumption, original-native execution, or non-test Sorok first-reader acceptance. The other six properly typed EC records are preserved.
+
+### D03 / source authority
+All 16 previously unsupported `rule_available=YES` are now **UNKNOWN**, as are F17–F20. `authority_rule_source_ref` explicitly labels the file as `CODE_VALIDATOR_ONLY`, not an exact source-rule/issuer grant. `selected/applied/refusal` remain UNKNOWN. Historical selected C6 AR-0017/AR-0018 cannot substitute for source-specific original35 selected weight/design/estimand rules.
+
+### D04 / R01, R03, Batch, F018
+Four added S1 exact-source findings/traces:
+- **F17 — R03** `pre553_universal_workload.py`, blob `8e7fe00a3ed008361d9f3c501e7782b2de3a636e`: administered occurrence/value IDs, unsupported domain, frozen expected jobs; `execute_universal_workload` is explicitly **test-only**.
+- **F18 — Batch** `pre553_batch_runner.py`, blob `2d291600b9a10c56d9c6f6de7f7d619f6c52e829`: deterministic manifest, exact receipt and summary; DEFERRED/FAILED/PENDING never become FULL_MANIFEST_COVERAGE.
+- **F19 — R01/R03** same `pre553_universal_workload.py`: `bind_recursive_execution` validates retained R01 checkpoint and ancestry; `compile_governed_frontier` consumes caller-selected R01 inventory/policy/frontier; no invented simplified frontier.
+- **F20 — F018** `pre553_effective_n.py`, blob `76bbddb0fddc91d64c83f5d6164a63cb4e2a3ff5`: exact I03 denominator + authorized weight-scope → typed effective-N; RAW→NOT_APPLICABLE; missing scope→NOT_AUTHORIZED; **non-test first reader still UNRESOLVED**.
+
+F13 is workload issuer/admission transport, **not** a substitute for batch receipt or compiler trace. No S2 rerun or original35 execution is claimed.
+
+### D05 / direction-specific conditional and k-way falsifiers
+A *constructed, not executed* 10-respondent RAW table under one fixed release/risk/measure has n(A1,Y1)=2, n(A1,Y0)=4, n(A0,Y1)=1, n(A0,Y0)=3. Query `Qf=(release,risk,measure,predicate A1,target Y1)` has **six** denominator members and numerator two, so `P(Y1|A1)=2/6`; distinct `Qr=(same release,risk,measure,predicate Y1,target A1)` has **three** denominator members and numerator two, so `P(A1|Y1)=2/3`. Reusing the same denominator or reversing names without rebuilding query/risk membership fails. A sourcefree execution of these *paired* queries and an original-source issuance receipt remain **NOT_RUN**; the provider at `pre553_empirical_possibility_provider.py:531–632` is only a delegating facade. The exact current count route is `_pre553_query_eval._evaluate_index_group_core` → C1 `compose_positioned_subject_possibility`.
+
+For `P(Y=1|A=1,B=1,C=1)`, construct two **eight-respondent** sourcefree candidates, one person for each `(A,B,C)∈{0,1}³` configuration. In X let `Y=A XOR B XOR C`; in X' let `Y=NOT(A XOR B XOR C)`. The four univariate marginals are identical across X/X'; the (1,1,1) same-person conditioned denominator contains one member in both but the numerator is one in X and zero in X'. The correct conditional is 1 versus 0, not a product of marginals. This is an exact falsifier **specification**, not a run or a native source fact.
+
+### D06 / historical ownership and semantic comparison
+The directly read source key crosswalk additionally includes `669062e6c319f31214f403939dded91300639bde::.../RAWLSING_LONG_MEMORY/09_FUNCTION_TO_TRII_CHETIRI_OWNER_CROSSWALK.csv` (OWN-004/005/006/007/008/009/010/011/013/014/015). Its **historical** dispositions are distinct from modern proof:
+- **LMX-006/008/015/016; C6 F03/F05/F07/F08/F09**: Trii source semantic/routing and Chetiri preserve/derive authority; F01/F14 source code exists but exact original35 selected rule effect is unproved.
+- **LMX-009/017/030; C6 F10/F24**: no automatic portability/composite source permission; F09's source-indexed vs authorized composite remains bounded.
+- **LMX-010/011/012/013/014/022; C6 F17/F18/F19/F20/F21**: Trii J registry and Chetiri same-person execution, component-order/role/denominator conservation; F03/F04 sourcefree k-way computation exists, but historical V551J packet, non-scalar component/vector and current consumer equivalence remain held.
+- **LMX-018; C6 F11/F12**: weight/design/estimand permission distinct; F08/F20 raw/F018 computations are not original35-weighted probability grants.
+- **LMX-019/020; C6 F15**: directional V551 projection and distinct empirical identities; F02 inverse sample not proven through actual paired source facts.
+- **LMX-027/028; C6 F23**: adaptive nonnegative budget stop and exact bounded discovery; F05/F06/F19 sourcefree machinery is real but full original-native frontiers unproved.
+- **LMX-023/024/042; C6 F25**: role-sensitive dependency/invalidation; F16 has genuine narrow NoLawfulReplacementRepresentable negative, not a whole lifecycle solution.
+- **LMX-029/036**: Chetiri learned-world positioning and specificity; F11/F12 static/limited first consumers, native generated person unproved.
+
+The obsolete **lossy V550 cloud summary artifact** was retired; the requirement for full respondent-bound joint incidence was not. Dva's original execution bodies were not directly read during this repair: Long Memory's Dva/Trii/Chetiri owner crosswalk is *historical lineage evidence*, **not Dva executed first-reader proof**. No automatic claim of unchanged V550J/V551J/V552J semantics or no-loss across the whole machine.
+
+**Author disposition:** D02 false links and D03 false availability corrected; D04 code paths represented at S1; D01 original estate join, D05 paired execution and D06 direct Dva/whole packet comparison remain explicitly HELD for source-qualified next review. All facts and negative ceilings preserved. No new compiler or protected merge.

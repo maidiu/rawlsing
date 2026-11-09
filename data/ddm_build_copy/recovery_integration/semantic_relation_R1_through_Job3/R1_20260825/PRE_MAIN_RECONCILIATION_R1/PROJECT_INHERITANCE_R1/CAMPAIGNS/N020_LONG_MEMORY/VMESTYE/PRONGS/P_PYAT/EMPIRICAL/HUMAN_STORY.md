@@ -15,3 +15,7 @@ Take one real respondent who answered three distinct questions in a specific wav
 **What would change the finding?** A source-qualified original35 receipt that names the exact historical source/edition and governing response/item/risk/weight rule, shows changing that actual selected rule changes or rejects the computed F1/F2/F4 fact appropriately, preserves same-person k-way branches and true conditioning direction, and records an unchanged qualified first consumer's read. A code snapshot, fixture, old callsite or synthetically passing test alone cannot supply this chain.
 
 The scientific obligation is conditional reality, not statistical destiny. A historically situated person may occupy an improbable joint cell, and their conduct is not deducible from that cell. The system's empirical machinery must make their **possibility** intelligible without laundering survey patterns into a script.
+
+## ZL-10R author corrections
+
+The earlier version overclaimed four reader links and 16 source-rule availability flags, and failed to trace R01/R03/Batch/F018 directly. Those source-grain defects have been corrected. Forty-one independently checked LMX/C6 historical identities now have explicit unresolved overlaps rather than disappearing behind 22 code symbols. The accepted P0 6,125-row census remains unreadable in this connector, so no source-wide no-drop verdict is asserted. F2 forward/reverse and F4 XOR comparators are test designs, not executions; original35 authority/native first reader remains held.
