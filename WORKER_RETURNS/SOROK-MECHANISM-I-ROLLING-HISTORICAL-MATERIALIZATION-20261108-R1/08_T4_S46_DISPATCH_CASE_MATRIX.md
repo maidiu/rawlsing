@@ -119,3 +119,14 @@ ACTUAL interval (`1 -> 2`). The repair persists ambiguity as non-retryable
 and fails closed with no new interval. The reviewer reproduction is covered
 with repeated resume and cold reopen; the exact-bound crash-before/after and
 same-start unrelated interval negatives remain green.
+
+## Independent D6 ambiguity closure
+
+Reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP` returned `PASS_SCOPED` for D6
+at `b040211589609d1d716692c42620ade614b7a058`. Reruns passed 5 D6 cases,
+18 focused tests, 65 history tests, and 66 including P4 CLI.
+Independent duplicate-interval and legacy HELD probes confirmed that
+repeated resume and cold reopen preserve one interval and a non-consumed
+AMBIGUOUS requirement. D5, D8 and D10 remain partial. D4 remains scoped
+to cold fact detach/restore. The activity owner is continuing the
+remaining adverse cases.
