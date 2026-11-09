@@ -38,3 +38,20 @@ and foreign-counterpart control together. The altered counterpart
 is refused before a P3 query, and the accepted scope is bound to the
 existing owner formation plan hash. This control covers one part of
 the broader cross-root/branch/actor case.
+
+## Joined regression receipt
+
+At code cut `0455726999350fd66d68ee637ee9299df825dbb8`, the
+combined P4 response, P5 experience, P6 house and bounded-expression
+suite passed 43 tests in 520.20s.
+
+```text
+python -B -m pytest -q -p no:cacheprovider --tb=short \
+  WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_response.py \
+  WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/test_experience.py \
+  WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py \
+  rawlsing_next/tests/test_render_bounded_expression.py
+```
+
+This is a previous exact-cut regression receipt. Later changes to
+snapshot checks and focused tests retain their own receipts.

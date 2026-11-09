@@ -10,16 +10,18 @@ The received P2/S45 path performs and projects the selected response.
 composition. The input transducer was a local fixture. General live
 language, native psychology and human-product quality are unproved.
 
-**ACTION** — Complete the unrun cases in the 50-row matrix and freeze
-the return for a distinct reviewer. Existing evidence includes exact
-mediator removal and restore, same-world gaze isolation, and a
-separate-process post-SAY interruption that preserves the hold.
+**ACTION** — Independently review the scoped candidate against the
+50-row matrix. The current matrix has 29 scoped passes and 21 holds.
+Held rows identify the outstanding evidence and preserve the wider
+commission. Existing evidence includes exact mediator removal and
+restore, same-world gaze isolation, and a separate-process post-SAY
+interruption that preserves the hold.
 
 **OWNER** — Mechanism III author for the candidate. Distinct reviewer
 for engineering receiving. Original CAN/ADP and M6 issuers for native
 rules. Protected integrator for any separately authorized merge.
 
 Protected start `256d46bf425cc37e114465cddbe3c60e535766ab`.
-Runtime cut `0567c840ffedf7c03d51b3283d240356f92b5462`.
+Runtime cut `8a9607dc87b26aa030ed8841851e91cb6eec1d1a`.
 Draft [#862](https://github.com/maidiu/rawlsing/pull/862), issue
 [#861](https://github.com/maidiu/rawlsing/issues/861).
