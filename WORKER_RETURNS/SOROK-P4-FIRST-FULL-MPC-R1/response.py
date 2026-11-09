@@ -121,6 +121,8 @@ def read_response(owner, admission, scope, *, transduce=None):
         "source_refs": [owner.source_hash],
         "grade": test_rules.GRADE,
     }
+    if semantic:
+        context["source_refs"].extend((event["hash"], digest(access), encounter["hash"]))
     context["hash"] = digest(context)
     records = owner.store.query(project=context["project"], counterpart=context["counterpart"],
                                 as_of=identity["clock"] - 1)
