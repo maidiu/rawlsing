@@ -42,7 +42,7 @@
 | D7 unaffected control | PASS scoped | Existing `test_real_interval_binds_completed_output_without_inspection` and full P4 CLI court pass; legacy `run_p4.advance` remains unchanged. |
 | D8 actor isolation | PARTIAL | D2/D8 show no INSPECT, unchanged perceived IDs, and changed user hypothesis plus user ATTEND do not alter the requirement. No tracked P6 proof runtime exists in this checkout; the separate `codex/sorok-p6-gaze-proof-20261107-r1@a075232f56b55bcce138df755db20e77e3ec5f3c` proof is not imported/touched. P6 gaze remains NOT_RUN. |
 | D9 model failure | PASS scoped | Timeout from the injected provider leaves the requirement HELD and no ACTUAL interval/material change. |
-| D10 branch/root isolation | PASS scoped | Child branch performs pending→admission→one actual consumption through normal dispatch; repeated parent readback shows parent material 1, no child target, parent requirement HELD and no ACTUAL interval. Separate root store also remains isolated. |
+| D10 branch/root isolation | PASS scoped | Child branch performs pending→admission→one actual consumption through normal dispatch. A sibling fork from the parent remains at material 1 with no child requirement/target, while repeated parent readback also shows material 1, parent requirement HELD and no ACTUAL interval. Separate root store remains isolated. |
 
 P11 is now sourcefree positive at the scoped level above (previously HELD).
 N15 remains open: the existing P6 fixed-house regression was not run.
@@ -51,7 +51,7 @@ N15 remains open: the existing P6 fixed-house regression was not run.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_activity.py
-# 18 passed in 126.14s
+# 18 passed in 112.52s
 
 PYTHONDONTWRITEBYTECODE=1 /tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
 # 66 passed in 256.42s (prior full run)
