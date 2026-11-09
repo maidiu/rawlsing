@@ -97,3 +97,14 @@ one exactly matching interval, revalidates the owner-admitted target/job/fact
 provenance and expected value, and fails closed on ambiguity or missing
 provenance. The newly added same-start unrelated-interval negative passes;
 the genuine crash-before and crash-after recovery tests remain green.
+
+## Independent D6 binding review
+
+Reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP` returned `HOLD_SCOPED / REVISE`
+at `b271b1bd086ba2b0067ff88fd5a5a556c5a1d721`. Independent reruns
+passed 16 focused tests, 63 history tests and 64 including P4 CLI.
+Same-start unrelated interval rejection and nominal crash recovery
+passed. A separate ambiguity reproduction yielded one interval before
+the hold and two after resume. The ordinary HELD state permits retry
+of an ambiguous recovery. The author is repairing that transition.
+D5, D8 and D10 remain partial.
