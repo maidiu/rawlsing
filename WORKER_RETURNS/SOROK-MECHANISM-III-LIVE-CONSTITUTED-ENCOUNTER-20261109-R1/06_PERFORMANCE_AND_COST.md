@@ -78,3 +78,25 @@ instrumentation overhead. This change neither skips P2 verification
 nor reuses a snapshot across a write. The focused P6 regression passed
 in 48.06s, including refusal of a tampered opening identity before
 SAY or transduction, successful exact restoration, and cold retry.
+
+## Controlled relevant-history growth
+
+At author return `0df9b0044499dfc6a57b7d7ea35ab07e66846a09`,
+a local Python probe used the received sourcefree P3 fixture to
+form one or sixteen recognized-plan mediators through the real
+owner. The larger fixture uses strictly antecedent resealed clocks
+and parent references. Each run admitted a real non-edge SAY and
+invoked `response.read_response` three times against the same open
+owner and event. Formation, setup and expression were outside this
+reader-only sample. The selected move was joint check in both runs.
+
+| Relevant mediators | Wall seconds for three individual reads | Median seconds | Total CPU seconds | Final uptake bytes | Indexed queries | Records returned | Full scans |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 1.743, 1.705, 1.753 | 1.743 | 5.183 | 2,897 | 3 | 3 | 0 |
+| 16 | 1.795, 1.739, 1.944 | 1.795 | 5.364 | 18,257 | 3 | 48 | 0 |
+
+The psyche head was identical before and after each series. The
+receipt grows with relevant sources, and the indexed query count
+stays one per read. This small controlled sample does not establish
+a production latency curve. Concurrent-load and failure-latency
+measurements remain unrun.
