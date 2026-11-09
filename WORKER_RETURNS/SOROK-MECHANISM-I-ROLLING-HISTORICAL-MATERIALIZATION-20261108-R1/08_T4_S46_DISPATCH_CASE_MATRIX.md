@@ -154,3 +154,14 @@ case also leaves target absence as an alternate cause of refusal.
 The existing activity worker is repairing those tests and adding the
 required sibling readback. D4 cold parent restoration and D8 P6 gaze
 remain unproven.
+
+## Independent D5 and D10 closure
+
+Reviewer `ses_e52a51c43ffeuVe7ZZhNcga5YP` returned `PASS_SCOPED` for
+D5 and D10 at `e983229df1a8e5228569de5f4140a7ee7550ad2a`. Standalone
+D5 passed 3 tests and D10 passed 2. The recorded foreign-scope case
+preserves target resolution and refuses without consumption. Normal
+child dispatch consumed once while parent and sibling readbacks stayed
+unchanged. The review found no runtime delta and did not rerun the
+broader suite. Cold exact parent-event restoration and P6 gaze remain
+unrun and are assigned as separate bounded proofs.
