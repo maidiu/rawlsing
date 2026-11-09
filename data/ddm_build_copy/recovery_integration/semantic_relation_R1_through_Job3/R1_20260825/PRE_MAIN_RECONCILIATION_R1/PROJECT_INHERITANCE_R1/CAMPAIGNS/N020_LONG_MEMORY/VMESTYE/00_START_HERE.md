@@ -1,7 +1,7 @@
 # VMESTYE — ONE MACHINE, THREE GENEALOGIES, NO LOST FUNCTIONS
 **PROGRAMMA VMESTYE · N020_LONG_MEMORY · PROTECTED DOCUMENTARY SCAFFOLD (PR #795 RECEIVED 2026-11-08)**
 
-**STATE:** `PROTECTED_DOCUMENTARY_SCAFFOLD_INSTALLED__FLEET_NOT_DISPATCHED__P0_INDEPENDENT_RECEIVING_NOT_RUN__ATLAS_NOT_CERTIFIED__NO_ZERO_LOSS_CLAIM`.
+**STATE:** `P0_SOURCE_SCHEMA_INDEPENDENTLY_ACCEPTED_AND_HQ_PROTECTED__P1_RELEASED_FOR_USER_DISPATCH__FUNCTIONAL_ATLAS_UNPROVED`. Phase 0 admission: [CONTROL/P0_HQ_PROTECTED_RECEIVING_AND_P1_RELEASE.md](CONTROL/P0_HQ_PROTECTED_RECEIVING_AND_P1_RELEASE.md); historical earlier scaffold claims below are retained as history, not current gate status.
 **Initial protected receiving:** `integration/pre-main-reconciliation-r1@41533b89c4f7cfd1d8067a2c0a2b8afd0463163b` (PR #795). **For currentness, verify the branch's live HEAD at every cold entry; this is a historical receipt, not a live-HEAD assertion.**
 **Parent:** [N020 Long Memory read-first](../00_READ_FIRST.md). It is a historical inheritance route; VMESTYE is a proposed **living functional reconciliation surface** nested within it, not a new fourth HQ or a science/source issuer.
 
