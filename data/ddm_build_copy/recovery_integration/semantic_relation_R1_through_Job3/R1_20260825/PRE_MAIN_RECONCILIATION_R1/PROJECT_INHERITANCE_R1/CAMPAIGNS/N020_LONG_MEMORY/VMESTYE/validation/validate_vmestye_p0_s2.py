@@ -560,9 +560,26 @@ class Validator:
             if row["source_commit_sha"] != "b7dd1bce667651c88ddd71c17c065f2b33ec38ec" or row["source_blob_sha"] != "bf77b70f1858697ce663f2eeec2e91e25aa6ac94":
                 ok = False
                 self.check(f"C_D05_QUALIFICATION_SOURCE:{rid}", False, "source commit/blob drift")
-            if not re.fullmatch(r"sha256:[0-9a-f]{64}", row["raw_physical_line_sha256"]):
+            raw_hash_ok = bool(re.fullmatch(r"sha256:[0-9a-f]{64}", row["raw_physical_line_sha256"]))
+            raw_hash_detail = "raw-line SHA256 missing or malformed"
+            try:
+                locator = row["source_row_locator"]
+                match = re.fullmatch(r"csv-record:(\d+)", locator)
+                if match is None:
+                    raise ValueError(f"unsupported physical line locator {locator}")
+                source_lines = self.git.show(row["source_commit_sha"], row["source_path"]).splitlines(keepends=True)
+                line_number = int(match.group(1))
+                if line_number < 1 or line_number > len(source_lines):
+                    raise ValueError(f"physical line {line_number} outside source")
+                computed = "sha256:" + hashlib.sha256(source_lines[line_number - 1]).hexdigest()
+                raw_hash_ok = raw_hash_ok and computed == row["raw_physical_line_sha256"]
+                raw_hash_detail = f"computed {computed}"
+            except Exception as exc:
+                raw_hash_ok = False
+                raw_hash_detail = f"raw hash computation failed: {exc}"
+            if not raw_hash_ok:
                 ok = False
-                self.check(f"C_D05_QUALIFICATION_HASH:{rid}", False, "raw-line SHA256 missing")
+                self.check(f"C_D05_QUALIFICATION_HASH:{rid}", False, raw_hash_detail)
             if rid in {"D05-F06", "D05-F11"}:
                 good = ("STRICT_CSV_REJECTS_QUOTING" in row["strict_csv_field_status"]
                         and "HOLD" in row["field_semantic_verdict"])
@@ -645,8 +662,11 @@ class Validator:
                 self.check(f"C_D02_D07_FILTER:{row['check_id']}", False, "unjoined selector lacks grouped estate/path")
             total += len(matching)
         self.check("C_D02_D07_ROWS", source_total == total, f"source rows={source_total}, census rows={total}; expected source-derived equality")
-        if ok and total == 364:
-            self.check("C_D02_D07_SELECTORS", True, "23 file selectors resolve exactly 364 grouped census rows")
+        selector_ok = ok and source_total == total
+        self.check(
+            "C_D02_D07_SELECTORS", selector_ok,
+            f"23 file selectors resolved {total} grouped census rows; source rows {source_total}",
+        )
 
     def g4_source(self) -> dict[str, dict[str, Any]]:
         path = "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/CURRENT_SEAM_STATES.jsonl"

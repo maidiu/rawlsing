@@ -20,6 +20,7 @@ CONTROLS = [
     ("N06_RM_NEGATIVE_LOSS", "B_RM_ANTI_JOIN:AJ-RM01"),
     ("N07_FORGED_ACCEPTANCE", "E_STAGE_ACCEPTANCE:ZL00"),
     ("N08_P1_SCHEMA_CORRUPTION", "F_P1_HEADER:OPERATION_TRACES.tsv"),
+    ("N09_D05_RAW_HASH_TAMPER", "C_D05_QUALIFICATION_HASH:D05-F01"),
 ]
 
 
@@ -98,6 +99,17 @@ def mutate(control: str, root: Path) -> None:
         for row in rows:
             if row[subject_index] == "ZL00":
                 row[header.index("stage")] = "ACCEPTED_TO_VMESTYE"
+                break
+        write_rows(path, header, rows)
+        return
+    if control == "N09_D05_RAW_HASH_TAMPER":
+        path = root / "CONTROL/P0_D05_RAW_SOURCE_QUALIFICATION.tsv"
+        header, rows = read_rows(path)
+        target_index = header.index("source_exact_id")
+        hash_index = header.index("raw_physical_line_sha256")
+        for row in rows:
+            if row[target_index] == "D05-F01":
+                row[hash_index] = "sha256:" + "0" * 64
                 break
         write_rows(path, header, rows)
         return

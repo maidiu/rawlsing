@@ -30,6 +30,7 @@ PASS	C_D05_FIELD_QUALIFICATION	11/11 D05 IDs; F06/F11 raw-key field-semantic HOL
 PASS	C_D02_D07_SELECTOR_COUNT	observed 23 per-file selectors; expected 23
 PASS	C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source CSV rows [7, 12] have width != header 8; identities retained; field-level interpretation is explicitly qualified
 PASS	C_D02_D07_ROWS	source rows=369, census rows=369; expected source-derived equality
+PASS	C_D02_D07_SELECTORS	23 file selectors resolved 369 grouped census rows; source rows 369
 PASS	D_G4_CONTRACT	CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns
 PASS	D_G4_RECEIPTS	CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns
 PASS	D_G4_ROW_COUNTS	contract=82 receipt=82 source=82

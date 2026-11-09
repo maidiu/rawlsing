@@ -31,6 +31,7 @@ PASS	C_D02_D07_SELECTOR_COUNT	observed 23 per-file selectors; expected 23
 FAIL	C_D02_D07_SELECTOR:AJ-D02_SOURCE_PACKAGE__CURRENT_PROOF_REFS.csv	selector resolved 0 rows; expected 37
 PASS	C_D02_D07_QUOTING:AJ-D05_SOURCE_PACKAGE__AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv	source CSV rows [7, 12] have width != header 8; identities retained; field-level interpretation is explicitly qualified
 PASS	C_D02_D07_ROWS	source rows=332, census rows=332; expected source-derived equality
+FAIL	C_D02_D07_SELECTORS	23 file selectors resolved 332 grouped census rows; source rows 332
 PASS	D_G4_CONTRACT	CONTROL/P0_PROG_SEAM82_PREDICATE_CONTRACT_V1.tsv: 82 rows, 9 columns
 PASS	D_G4_RECEIPTS	CONTROL/P0_SEAM_PREDICATE_RECEIPTS.tsv: 82 rows, 14 columns
 PASS	D_G4_ROW_COUNTS	contract=82 receipt=82 source=82
@@ -50,4 +51,5 @@ PASS	E_ASSEMBLY_PATHS	candidate path overlap
 FAIL	E_ASSEMBLY_HASH:CONTROL/P0_NO_DROP_ANTI_JOINS.tsv	assembly hash drift
 P0_S2_VALIDATOR_FAIL
 ERROR C_D02_D07_SELECTOR:AJ-D02_SOURCE_PACKAGE__CURRENT_PROOF_REFS.csv selector resolved 0 rows; expected 37
+ERROR C_D02_D07_SELECTORS 23 file selectors resolved 332 grouped census rows; source rows 332
 ERROR E_ASSEMBLY_HASH:CONTROL/P0_NO_DROP_ANTI_JOINS.tsv assembly hash drift

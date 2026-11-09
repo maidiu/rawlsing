@@ -22,10 +22,10 @@ The validator executes at local structural S2 only. It does not claim original-n
 - **F. P1:** five literal `VMESTYE_P1_PRONG_TABLES_V1` headers, foreign-key/unjoin law and 13 distinct ZL-02–ZL-14 leases.
 
 ## Result
-The historical bootstrap passed on a clean extracted copy of the protected cut. The stage-aware baseline passed cleanly against the corrected ZL-01 head: 49 checks PASS, 0 FAIL, 0 HOLD, exit 0. The eight deliberate negative controls were rerun on that clean baseline and all eight detected their intended error IDs.
+The historical bootstrap passed on a clean extracted copy of the protected cut. The stage-aware baseline passed cleanly against the corrected ZL-01 head: 50 checks PASS, 0 FAIL, 0 HOLD, exit 0, with an exit receipt file that records `0`. The eight original negative controls plus the added D05 raw-hash tamper all detected their intended error IDs on that clean baseline.
 
 ## D05 qualification
-`AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv` contains 11 exact keyed rows `D05-F01..F11`. Two rows, `D05-F06` and `D05-F11`, have malformed CSV quoting and parse to five fields rather than eight. Their raw identities and line hashes are exact; ZL-01's `P0_D05_RAW_SOURCE_QUALIFICATION.tsv` records the strict-CSV failure and field-semantic HOLD for those rows. The validator verifies that qualification artifact and does not assert the missing field meanings.
+`AUTHORITY_MAINTENANCE_FUNCTION_LEDGER.csv` contains 11 exact keyed rows `D05-F01..F11`. Two rows, `D05-F06` and `D05-F11`, have malformed CSV quoting and parse to five fields rather than eight. Their raw identities and line hashes are exact; ZL-01's `P0_D05_RAW_SOURCE_QUALIFICATION.tsv` records the strict-CSV failure and field-semantic HOLD for those rows. The validator verifies that qualification artifact, recomputes each raw physical-line SHA256 from immutable source bytes including line endings, and does not assert the missing field meanings.
 
 ## Limitations
 - The validator uses local Git object reads for source bytes and exact source-key extraction. All 59 census source files and the SR/G4 sources were available.
