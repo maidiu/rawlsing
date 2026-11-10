@@ -4,6 +4,7 @@ from copy import deepcopy
 
 from developmental_recursion.contracts import digest
 from house import read_house
+from actor_initiative import ACTION as VISIT_ADJACENT, destination_if_eligible, visit_adjacent_room
 from situated_provider import ModelUnavailable
 
 
@@ -79,19 +80,25 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
         cues.append(receipt["outward_cue"])
     if actor_context is None:
         actor_context = house.get("situated_actor_context")
-    available_actions = ("continue",) if realize is None else ("continue", "speak")
+    local_context = actor_context_for(actor["actor_id"], actor_context)
+    available_actions = ["continue"]
+    if realize is not None:
+        available_actions.append("speak")
+    if destination_if_eligible(session, world, house, actor["actor_id"], local_context):
+        available_actions.append(VISIT_ADJACENT)
     packet = {
         "actor": actor["actor_id"],
         "room": world.positions["A"],
         "clock": world.clock,
         "elapsed": interval["end"] - interval["start"],
+        "scene_elapsed": world.clock - house["epoch"],
         "activity": {"role": actor.get("role"), "work_done": actor.get("completed_units"),
                      "material_remaining": actor.get("material_remaining"),
                      "interval_status": interval["status"]},
         "cues": cues,
         "recent_speech": recent_speech(session),
-        "actor_context": actor_context_for(actor["actor_id"], actor_context),
-        "available_actions": list(available_actions),
+        "actor_context": local_context,
+        "available_actions": available_actions,
     }
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
               "packet_hash": digest(packet)}
@@ -103,7 +110,9 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
         return {**result, "status": "INVALID_INTERPRETATION"}
 
     result.update(status="INTERPRETED", decision=decision)
-    if decision["action"] == "speak":
+    if decision["action"] == VISIT_ADJACENT:
+        result["movement"] = visit_adjacent_room(session, actor["actor_id"])
+    elif decision["action"] == "speak":
         try:
             expressive_decision = {key: value for key, value in decision.items() if key != "interpretation"}
             text = realize(deepcopy(packet), expressive_decision)
