@@ -1,0 +1,61 @@
+name: Sorok MII MCR-AF Exact Contract Pre-Dispatch
+on:
+  push:
+    branches:
+      - docs/sorok-mechanism-ii-mcr-af-existing-commission-r2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-protected-python-mcr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve exact protected source checker with verified blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 3e5b1611f5cb043b43ffd39b14c9d707923f1210
+          git show FETCH_HEAD:CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py > /tmp/mcr_exact_checker.py
+          test "$(git hash-object /tmp/mcr_exact_checker.py)" = "4877b32d51580a2719c8153179c17a2c9246314c"
+          echo "PROTECTED_MCR_CHECKER_SHA_OK 4877b32d51580a2719c8153179c17a2c9246314c"
+      - name: Execute actual canonical Python validator on exact whole amended commission
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 /tmp/mcr_exact_checker.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md
+      - name: Prove original E1-E10 and 44-case source appendix conserved
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 094937d3187ed3c2e215fe2c1f7c1c84f50d9006
+          git show FETCH_HEAD:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md > /tmp/original_mechanism_ii.txt
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          path=Path('WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md')
+          new=path.read_text(encoding='utf-8')
+          old=Path('/tmp/original_mechanism_ii.txt').read_text(encoding='utf-8')
+          anchor='## APPENDIX: COMPLETE SOURCE-BANKED 00E ARCHITECTURE'
+          original=old[old.index(anchor):]
+          amended=new[new.index(anchor):new.rfind('\n'+'\x60'*3)]
+          assert amended==original,'SOURCE_00E_APPENDIX_CHANGED'
+          cases=['O%02d'%i for i in range(1,7)]+['P%02d'%i for i in range(1,10)]+['G%02d'%i for i in range(1,9)]+['M%02d'%i for i in range(1,7)]+['N%02d'%i for i in range(1,11)]+['T%02d'%i for i in range(1,6)]
+          assert len(cases)==44 and all(re.search(r'\b'+re.escape(k)+r'\b',new) for k in cases), '44_CASE_LOSS'
+          assert all(('**E%d.'%i) in new for i in range(1,11)),'E1_E10_LOSS'
+          assert '3e5b1611f5cb043b43ffd39b14c9d707923f1210' in new and 'PR #891' in new,'CURRENT_MIII_BASE_MISSING'
+          assert 'look(target)' in new and 'attend' in new,'ACTION_ABI_MISSING'
+          assert 'FROZEN_FAILED_CLAIM:' in new and 'REPRODUCER_AND_ROOT_CAUSE:' in new,'MCR_REPAIR_LINEAGE_MISSING'
+          print('SOURCE_APPENDIX_BYTE_EXACT PASS')
+          print('WHOLE_MISSION_E1_E10 PASS')
+          print('FORTY_FOUR_CASES PASS')
+          print('FROZEN_SOURCE_AND_ACTION_ABI PASS')
+          PY
