@@ -192,12 +192,20 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
 
 
 def test_silent_interval_reconsiders_and_commits_only_admitted_speech(tmp_path):
+    import shutil
+
+    state = tmp_path / "world"
+    branch_point = tmp_path / "branch-point"
     packets = []
-    words = "I'll finish this piece first."
+    words = "Are you still there?"
 
     def interpret(packet):
         packets.append(packet)
-        action = "continue" if len(packets) == 1 else "speak"
+        context = packet["actor_context"]
+        if context is None:
+            return {"attention": "noticed", "interpretation": "I saw a person.",
+                    "action": "speak"}
+        action = "speak" if context["priority"] == "check whether my collaborator is ready" else "continue"
         return {"attention": "uncertain", "interpretation": "Time to reassess the work.",
                 "action": action}
 
@@ -205,36 +213,70 @@ def test_silent_interval_reconsiders_and_commits_only_admitted_speech(tmp_path):
         assert decision["action"] == "speak"
         return words
 
-    def run(command, **args):
-        return experience(tmp_path, Namespace(command=command, **args), interpret=interpret,
-                          realize=realize, actor_context={"grade": "SOURCEFREE_FIXTURE",
-                                                          "priority": "finish the piece"})
+    def run(command, context=None, **args):
+        return experience(state, Namespace(command=command, **args), interpret=interpret,
+                          realize=realize, actor_context=context)
 
     start = run("new")["clock"]
     run("go", target="living room", request_id="away")
-    first = run("wait", duration=4, request_id="wait-1")
-    second = run("wait", duration=7, request_id="wait-2")
-    assert first["clock"] == start + 5 and second["clock"] == start + 12
-    assert [packet["elapsed"] for packet in packets] == [4, 7]
+    owner = open_owner(state / "actual-p2")
+    try:
+        actor = owner.base_owner.fanin.session.world().actor_state["A"]["actor_id"]
+        psyche = owner.store.head()
+    finally:
+        owner.close()
+
+    base = {"grade": "SOURCEFREE_FIXTURE", "actor_id": actor,
+            "analyst_only": "private analyst note", "user_intention": "private player intention"}
+    finish = {**base, "priority": "finish the piece", "relationship": "visitor"}
+    collaborate = {**base, "priority": "check whether my collaborator is ready",
+                   "relationship": "working together"}
+    first = run("wait", finish, duration=4, request_id="wait-1")
+    assert first["clock"] == start + 5
+    shutil.copytree(state, branch_point)
+
+    ledger = state / "p4_receipts.json"
+    alternative = run("wait", finish, duration=7, request_id="wait-2")
+    alternative_turn = json.loads(ledger.read_text())["turns"][-1]
+    assert alternative_turn["receipt"]["situated"]["decision"]["action"] == "continue"
+    assert "speech" not in alternative_turn["receipt"]["situated"]
+
+    shutil.rmtree(state)
+    shutil.copytree(branch_point, state)
+    second = run("wait", collaborate, duration=7, request_id="wait-2")
+    assert second["clock"] == alternative["clock"] == start + 12
+    assert [packet["elapsed"] for packet in packets] == [4, 7, 7]
     assert all(packet["room"] == "workshop" and not packet["cues"] for packet in packets)
-    assert all(packet["actor_context"]["priority"] == "finish the piece" for packet in packets)
+    assert {key: value for key, value in packets[1].items() if key != "actor_context"} == {
+        key: value for key, value in packets[2].items() if key != "actor_context"
+    }
+    assert packets[1]["actor_context"]["relationship"] == "visitor"
+    assert packets[2]["actor_context"]["relationship"] == "working together"
+    assert all("private" not in json.dumps(packet) for packet in packets)
     assert "situated" not in json.dumps(second)
-    ledger = tmp_path / "p4_receipts.json"
+
     saved = ledger.read_bytes()
     turns = json.loads(saved)["turns"]
-    assert turns[-2]["receipt"]["situated"]["decision"]["action"] == "continue"
     speech = turns[-1]["receipt"]["situated"]["speech"]
     assert speech["admitted"]
-    assert run("wait", duration=7, request_id="wait-2")["clock"] == second["clock"]
-    assert len(packets) == 2 and ledger.read_bytes() == saved
+    assert run("wait", collaborate, duration=7, request_id="wait-2")["clock"] == second["clock"]
+    assert len(packets) == 3 and ledger.read_bytes() == saved
 
-    owner = open_owner(tmp_path / "actual-p2")
+    run("wait", {**collaborate, "actor_id": "foreign"}, duration=1, request_id="foreign")
+    assert packets[-1]["actor_context"] is None
+    refusal = json.loads(ledger.read_text())["turns"][-1]["receipt"]["situated"]
+    assert refusal["status"] == "INVALID_INTERPRETATION" and "speech" not in refusal
+
+    owner = open_owner(state / "actual-p2")
     try:
         session = owner.base_owner.fanin.session
         event = session.event(speech["event_id"])
         assert event["kind"] == "SPEECH" and event["actor_id"] == "A"
         assert event["body"]["text"] == words
         assert speech["event_id"] not in session.user_perceived_ids()
+        assert owner.store.head() == psyche
+        assert [row["event_id"] for row in session.events() if row["kind"] == "SPEECH"
+                and row["clock"] >= start] == [speech["event_id"]]
     finally:
         owner.close()
 

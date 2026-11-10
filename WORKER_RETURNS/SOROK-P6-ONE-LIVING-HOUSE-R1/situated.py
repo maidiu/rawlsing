@@ -6,6 +6,19 @@ from developmental_recursion.contracts import digest
 from situated_provider import ModelUnavailable
 
 
+def actor_context_for(actor_id, context):
+    """Project only bound, actor-local fixture fields into the model packet."""
+    if (type(context) is not dict or context.get("grade") != "SOURCEFREE_FIXTURE"
+            or context.get("actor_id") != actor_id):
+        return None
+    local = {"grade": "SOURCEFREE_FIXTURE"}
+    for field in ("priority", "relationship", "current_constraint"):
+        value = context.get(field)
+        if isinstance(value, str) and 0 < len(value) <= 500:
+            local[field] = value
+    return local
+
+
 def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
@@ -36,7 +49,7 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
                      "material_remaining": actor.get("material_remaining"),
                      "interval_status": interval["status"]},
         "cues": cues,
-        "actor_context": actor_context,
+        "actor_context": actor_context_for(actor["actor_id"], actor_context),
         "available_actions": list(available_actions),
     }
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
