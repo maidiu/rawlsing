@@ -431,9 +431,56 @@ def self_test():
                 "REGRESSION_AND_DELTA_REVIEW":
                     "REGRESSION=add reporter counterexample to suite; REVIEW_SCOPE=source exception and related output",
             })
+        source = {"path": "CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py",
+                  "commit": "b" * 40, "blob": "c" * 40}
+        scope = {
+            "parent": "Complete inherited commissioning contract at actual first consumer",
+            "source": source, "expected_count": 2,
+            "enumerator": "RUN: python3 tools/list_frozen_ids.py --exact-source",
+            "no_drop_check": "RUN: python3 tools/compare_all_ids.py --reject-missing-and-extra",
+        }
+        obligations = [
+            {"id": "EXACT-SOURCE-CUSTODY",
+             "result": "Resolve all assigned source tuples against the frozen registry",
+             "output": "WORKER_RETURNS/commission/source-custody.tsv",
+             "check_kind": "SOURCE",
+             "check": "SOURCE: git show pinned source commit:path and compare exact blob",
+             "positive": "PASS=the exact source blob matches the frozen provenance tuple",
+             "negative": "RED=an otherwise plausible 38-digit commit pin is rejected",
+             "evidence": "WORKER_RETURNS/commission/custody-evidence.txt",
+             "minimum_grade": "S1",
+             "consumer": "Qualified ZAK-00 actual source custody receiver",
+             "owner": "Separate qualified source engineering reviewer",
+             "failure": "INCOMPLETE", "source": source},
+            {"id": "CURRENT-CONSUMER-EFFECT",
+             "result": "Demonstrate selected rule effect in the actual first consumer",
+             "output": "WORKER_RETURNS/commission/consumer-effect.tsv",
+             "check_kind": "EXEC",
+             "check": "RUN: python3 tools/actual_first_reader_test.py --negative",
+             "positive": "PASS=selected rule changes the chosen first reader output",
+             "negative": "RED=removing selected-rule grant refuses the same output",
+             "evidence": "WORKER_RETURNS/commission/consumer-evidence.txt",
+             "minimum_grade": "S1",
+             "consumer": "Qualified actual first reader of selected result",
+             "owner": "Separate execution reviewer at exact frozen cut",
+             "failure": "INCOMPLETE", "source": source},
+        ]
+        receiving = {
+            "gate": "python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --verify-return",
+            "independent_owner": "separate exact-head engineering receiver with owner rights",
+            "all_obligations": "PASS_REQUIRED",
+            "author_ceiling": "DELIVERED_PENDING_RECEIVING",
+            "on_any_failure": "INCOMPLETE",
+        }
         body = "LAUNCH exact authorized agent\n" + "\n".join(
             k + ": " + v for k, v in fields.items()
         ) + "\nENGINEERING SCIENTIFIC AUTHORITY source review test return\n"
+        body += "MCR_COMPLETION_CONTRACT_BEGIN\n"
+        body += "MCR_SCOPE: " + json.dumps(scope, sort_keys=True) + "\n"
+        for obligation in obligations:
+            body += "MCR_OBLIGATION: " + json.dumps(obligation, sort_keys=True) + "\n"
+        body += "MCR_RECEIVING: " + json.dumps(receiving, sort_keys=True) + "\n"
+        body += "MCR_COMPLETION_CONTRACT_END\n"
         fence = chr(96) * 3
         return ("AGENT TYPE: bounded implementation engineer\nINTELLIGENCE LEVEL: I3\n"
                 + fence + "text\n" + body + fence + "\n")
@@ -457,6 +504,21 @@ def self_test():
           "PARENT=whole world mandate; TRANCHE=all signed outputs; PILOT=CALIBRATION_NONTERMINAL diagnostic; PARALLEL=SERIAL_FIRST_CASE all other agents blocked")),
         ("missing parallel route", change(build, "WORK_SCOPE_AND_FLIGHT",
           "PARENT=whole world mandate; TRANCHE=all signed outputs; PILOT=CALIBRATION_NONTERMINAL diagnostic; PARALLEL=TBD")),
+        ("MCR-C missing contract", build.replace("MCR_COMPLETION_CONTRACT_BEGIN", "MCR_WRONG_BEGIN")),
+        ("MCR-C missing no-drop", build.replace('"no_drop_check": "RUN: python3 tools/compare_all_ids.py --reject-missing-and-extra"', '"no_drop_check": "TBD"')),
+        ("MCR-C no obligations", re.sub(r"(?m)^MCR_OBLIGATION: .*\n", "", build)),
+        ("MCR-C duplicate obligations", build.replace("MCR_RECEIVING:", 'MCR_OBLIGATION: ' +
+          re.search(r"(?m)^MCR_OBLIGATION: (.*)$", build).group(1) + "\nMCR_RECEIVING:")),
+        ("MCR-C truncated commit", build.replace('"commit": "' + "b" * 40 + '"', '"commit": "' + "b" * 38 + '"')),
+        ("MCR-C bad output Unicode", build.replace("WORKER_RETURNS/commission/source-custody.tsv", "WORKER_RETURNS/commission/source\u00adcustody.tsv")),
+        ("MCR-C nondiscriminating oracle", build.replace(
+          "RED=an otherwise plausible 38-digit commit pin is rejected",
+          "PASS=the exact source blob matches the frozen provenance tuple")),
+        ("MCR-C self-certified completion", build.replace(
+          '"author_ceiling": "DELIVERED_PENDING_RECEIVING"', '"author_ceiling": "COMPLETE_AT_CONTRACTED_SCOPE"')),
+        ("MCR-C falsely downgraded failure", build.replace('"failure": "INCOMPLETE"', '"failure": "HOLD"', 1)),
+        ("MCR-C missing receipt", build.replace('"evidence": "WORKER_RETURNS/commission/custody-evidence.txt"',
+                                                  '"evidence": "TBD"')),
         ("missing MCR", change(build, "MCR", "TBD")),
         ("MCR advisory only", change(build, "MCR", "ADVISORY")),
         ("missing source", change(build, "CONTRACT_SOURCE_CUT", "TBD")),
