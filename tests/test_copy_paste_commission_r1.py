@@ -6,6 +6,7 @@ import json
 import hashlib
 import tempfile
 import subprocess
+import sys
 
 SOURCE = Path(__file__).resolve().parents[1] / "CROSS_HQ_CONTROL_ROOM" / "verify_copy_paste_commission_r1.py"
 spec = spec_from_file_location("commission_preflight", SOURCE)
@@ -169,6 +170,11 @@ class CommissionProofTest(unittest.TestCase):
             source_cut="CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py@"
             commission=commission.replace(source_cut+"a"*40,source_cut+frozen)
             self.assertTrue(gate.validate(commission)["status"].startswith("PASS"))
+            # The actual command-line validator must authenticate Git source
+            # blobs rather than accepting the mere shape of a 40-hex pin.
+            commission_path=root/"WORKER_COMMISSIONS/example_FULL_COPY_PASTE_MCR.md"
+            commission_path.parent.mkdir(parents=True)
+            commission_path.write_text(commission)
 
             evidence_rel=Path(EXAMPLE_OBLIGATION["evidence"])
             output_rel=Path(EXAMPLE_OBLIGATION["output"])
@@ -184,6 +190,18 @@ class CommissionProofTest(unittest.TestCase):
             git("add", ".")
             git("commit", "-m", "add exact delivered evidence")
             candidate=git("rev-parse","HEAD")
+            official = subprocess.run([sys.executable, str(SOURCE), str(commission_path)],
+                                      cwd=root, capture_output=True, text=True)
+            self.assertEqual(official.returncode, 0, official.stdout+official.stderr)
+            self.assertIn("STRUCTURE_AND_GIT_SOURCE_BLOBS_ONLY", official.stdout)
+            invalid_commission = commission.replace('"blob": "'+source_blob+'"',
+                                                    '"blob": "'+"e"*40+'"')
+            invalid_file = root/"bad-mcr-launch.md"
+            invalid_file.write_text(invalid_commission)
+            rejected = subprocess.run([sys.executable,str(SOURCE),str(invalid_file)],
+                                      cwd=root,capture_output=True,text=True)
+            self.assertEqual(rejected.returncode, 2, rejected.stdout+rejected.stderr)
+            self.assertIn("MCR_C_SOURCE_BLOB_MISMATCH", rejected.stdout)
             contract_sha=gate.validate(commission)["mcr_completion_contract_sha256"]
             evidence={
                 "id":EXAMPLE_OBLIGATION["id"], "candidate_sha":candidate,
