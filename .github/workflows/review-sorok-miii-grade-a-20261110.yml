@@ -23,7 +23,7 @@ jobs:
         run: |
           git merge-base --is-ancestor a292fa82957f8d6ad3b88dec611fcc1975658921 HEAD
           git diff --name-only a292fa82957f8d6ad3b88dec611fcc1975658921 HEAD
-          unexpected="$(git diff --name-only a292fa82957f8d6ad3b88dec611fcc1975658921 HEAD | grep -Ev '^WORKER_REVIEWS/SOROK-MIII-GRADE-A-INDEPENDENT-20261110-R1/|^[.]github/workflows/review-sorok-miii-grade-a-20261110[.]yml || true)"
+          unexpected="$(git diff --name-only a292fa82957f8d6ad3b88dec611fcc1975658921 HEAD | grep -Ev '^WORKER_REVIEWS/SOROK-MIII-GRADE-A-INDEPENDENT-20261110-R1/|^[.]github/workflows/review-sorok-miii-grade-a-20261110[.]yml$' || true)"
           test -z "$unexpected" || { echo "Reviewer changed implementation: $unexpected"; exit 1; }
       - name: Python 3.11
         uses: actions/setup-python@v5
