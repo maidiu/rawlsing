@@ -135,6 +135,41 @@ def test_model_cannot_visit_without_source_bound_actor_context(tmp_path):
     assert ledger["turns"][-1]["receipt"]["situated"]["status"] == "INVALID_INTERPRETATION"
 
 
+def test_matching_actor_but_invented_relationship_cannot_license_movement(tmp_path):
+    state = tmp_path / "world"
+
+    def interpret(packet):
+        assert packet["actor_context"]["priority"] == "invented outside the world"
+        assert "visit_adjacent_room" not in packet["available_actions"]
+        return {"attention": "uncertain", "interpretation": "I will go next door.",
+                "action": "visit_adjacent_room", "cue_event_id": None, "channel": None}
+
+    _run(state, "new", interpret, situated_house=True)
+    owner = open_owner(state / "actual-p2")
+    try:
+        actor_id = owner.base_owner.fanin.session.world().actor_state["A"]["actor_id"]
+    finally:
+        owner.close()
+    result = experience(
+        state, Namespace(command="wait", duration=2, request_id="invented-persona"),
+        interpret=interpret,
+        actor_context={
+            "grade": "SOURCEFREE_FIXTURE", "actor_id": actor_id,
+            "priority": "invented outside the world",
+            "relationship": "unverified lifelong friend",
+        },
+    )
+    assert result["admission"] == "ADMITTED"
+    owner = open_owner(state / "actual-p2")
+    try:
+        world, _ = read_house(owner.base_owner.fanin.session)
+        assert world.positions["A"] == "workshop"
+    finally:
+        owner.close()
+    ledger = json.loads((state / "p4_receipts.json").read_text())
+    assert ledger["turns"][-1]["receipt"]["situated"]["status"] == "INVALID_INTERPRETATION"
+
+
 def test_actor_visit_is_not_omnisciently_public_when_player_elsewhere(tmp_path):
     state = tmp_path / "world"
 
