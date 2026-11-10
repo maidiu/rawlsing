@@ -3,7 +3,6 @@
 
 import argparse
 import fcntl
-from functools import partial
 import json
 from pathlib import Path
 import sys
@@ -21,7 +20,11 @@ from outward import OPERATIONS, establish_demo_conditions, perform as perform_ou
 from situated import reconsider
 from situated_provider import ModelUnavailable, SituatedProvider
 
-PACE = partial(advance_for_action, on_repair=close_on_repair)
+def PACE(fanin, action):
+    # Off-room location is not evidence of obstruction. Use the received
+    # UNKNOWN mode so elapsed time records no fabricated workshop cause.
+    mode = "ACTUAL" if fanin.session.world().positions.get("A") == "workshop" else "UNKNOWN"
+    return advance_for_action(fanin, action, on_repair=close_on_repair, mode=mode)
 
 
 def experience(state, args, *, interpret=None, realize=None, actor_context=None, provider_mode="INJECTED"):

@@ -4,7 +4,10 @@ from copy import deepcopy
 
 from developmental_recursion.contracts import digest
 from house import read_house
-from actor_initiative import ACTION as VISIT_ADJACENT, destination_if_eligible, visit_adjacent_room
+from actor_initiative import (
+    ACTION as VISIT_ADJACENT, _select_visit, destination_affordance,
+    route_from_context, visit_adjacent_room,
+)
 from actor_scene_context import recent_self_actions
 from situated_provider import ModelUnavailable
 
@@ -19,6 +22,13 @@ def actor_context_for(actor_id, context):
         value = context.get(field)
         if isinstance(value, str) and 0 < len(value) <= 500:
             local[field] = value
+    routes = context.get("routes")
+    if isinstance(routes, dict):
+        local["routes"] = deepcopy(routes)
+    else:
+        route = route_from_context(context)
+        if route is not None:
+            local["route"] = route
     return local
 
 
@@ -59,6 +69,68 @@ def decision_is_grounded(decision, cues, available_actions):
     )
 
 
+
+# This is time since the last *interpersonal/outward* interruption, not scene
+# age, subjective memory, or a claim that the workshop is acoustically silent.
+QUIET_BREAK_KINDS = frozenset({
+    "SPEECH", "MOVE", "PLAY_INSTRUMENT", "STOP_INSTRUMENT",
+    "APPROACH", "ORIENT",
+})
+
+
+def interaction_quiet(session, world, house, cues):
+    """Actor-qualified interpersonal quiet, NOT all-seeing world silence.
+
+    The P6 sourcefree acoustic lane can establish a sound cue, while
+    registered actor perceptions and self-performed events are separately
+    authoritative. An unperceived player GO cannot reset Nadia's clock.
+    """
+    facts = house.get("situated_conditions", {})
+    audible = (
+        facts.get("grade") == "SOURCEFREE_FIXTURE"
+        and facts.get("hearing") == "available"
+        and (
+            world.positions.get("A") == "living room"
+            or (world.positions.get("A") == "workshop"
+                and facts.get("sound_path") == "audible")
+        )
+    )
+    registered = {
+        row.get("event_id")
+        for row in session.product.store.perceptions(session.branch_id, "A")
+    }
+    qualified = {
+        (cue.get("event_id"), cue.get("event_hash"))
+        for cue in cues if isinstance(cue, dict)
+    }
+    baseline = house["epoch"]
+    parent = None
+    for event in session.events():
+        if (event.get("kind") not in QUIET_BREAK_KINDS
+                or event.get("actor_id") not in ("A", session.meta["user_actor"])
+                or type(event.get("clock")) is not int
+                or not baseline <= event["clock"] <= world.clock):
+            continue
+        actor_own = event["actor_id"] == "A"
+        actor_perceived = event.get("event_id") in registered
+        supplied_cue = (event.get("event_id"), event.get("hash")) in qualified
+        audible_instrument = (
+            audible and event["kind"] in {"PLAY_INSTRUMENT", "STOP_INSTRUMENT"}
+            and event.get("location") == "living room"
+        )
+        if not (actor_own or actor_perceived or supplied_cue or audible_instrument):
+            continue
+        if event["clock"] >= baseline:
+            baseline = event["clock"]
+            parent = event["event_id"]
+    if audible and house.get("mandolin_playing"):
+        return {"elapsed": 0, "status": "ACTIVE_QUALIFIED_INSTRUMENT",
+                "last_break_event_id": parent}
+    return {"elapsed": world.clock - baseline,
+            "status": "NO_ACTOR_QUALIFIED_INTERPERSONAL_INTERRUPTION",
+            "last_break_event_id": parent}
+
+
 def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
@@ -91,15 +163,33 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
     checkpoint_context = actor_context_for(
         actor["actor_id"], house.get("situated_actor_context")
     )
-    if (checkpoint_context is not None and checkpoint_context == local_context
-            and destination_if_eligible(session, world, house, actor["actor_id"], local_context)):
-        available_actions.append(VISIT_ADJACENT)
+    affordances = []
+    if checkpoint_context is not None and checkpoint_context == local_context:
+        option = destination_affordance(
+            session, world, house, actor["actor_id"], checkpoint_context
+        )
+        if option is not None:
+            available_actions.append(VISIT_ADJACENT)
+            affordances.append(option)
     packet = {
         "actor": actor["actor_id"],
         "room": world.positions["A"],
         "clock": world.clock,
         "elapsed": interval["end"] - interval["start"],
         "scene_elapsed": world.clock - house["epoch"],
+        "interaction_quiet": interaction_quiet(session, world, house, cues),
+        "root_hash": session.read_root()["root_hash"],
+        "branch_id": session.branch_id,
+        "world_state_hash": digest(world.snapshot()),
+        "house_source": house["source"],
+        "conditions_hash": digest(house.get("situated_conditions")),
+        "actor_context_hash": digest(house.get("situated_actor_context")),
+        "actor_route": route_from_context(local_context, world.positions["A"]),
+        "actor_route_hash": (
+            digest(route_from_context(local_context, world.positions["A"]))
+            if route_from_context(local_context, world.positions["A"]) is not None else None
+        ),
+        "action_affordances": affordances,
         "activity": {"role": actor.get("role"), "work_done": actor.get("completed_units"),
                      "material_remaining": actor.get("material_remaining"),
                      "interval_status": interval["status"]},
@@ -120,6 +210,7 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
 
     result.update(status="INTERPRETED", decision=decision)
     if decision["action"] == VISIT_ADJACENT:
+        _select_visit(session, packet, decision)
         result["movement"] = visit_adjacent_room(session, actor["actor_id"])
     elif decision["action"] == "speak":
         try:

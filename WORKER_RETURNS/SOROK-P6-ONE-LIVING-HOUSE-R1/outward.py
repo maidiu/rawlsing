@@ -2,6 +2,7 @@
 
 from developmental_recursion.contracts import RecursionRefusal, digest
 from house import read_house
+from actor_initiative import ROUTE_SOURCE
 
 OPERATIONS = {"play": "PLAY_INSTRUMENT", "stop-playing": "STOP_INSTRUMENT",
               "approach": "APPROACH", "orient": "ORIENT"}
@@ -15,11 +16,20 @@ def establish_demo_conditions(session):
     house["situated_conditions"] = {
         "grade": "SOURCEFREE_FIXTURE", "hearing": "available", "sound_path": "audible",
         "bench_view": "facing_away", "footsteps": "audible",
+        "actor_move_visibility": {"origin": "VISIBLE", "destination": "VISIBLE"},
     }
     house["situated_actor_context"] = {
         "grade": "SOURCEFREE_FIXTURE", "actor_id": world.actor_state["A"]["actor_id"],
         "priority": "Finish the current bench work while the material allows it.",
         "relationship": "A visitor in the workshop.",
+        "routes": {
+            room: {
+                "origin": room,
+                "destination": facts["other"],
+                "source": ROUTE_SOURCE,
+            }
+            for room, facts in house["rooms"].items()
+        },
     }
     session.product._checkpoint(session.branch_id, world.clock, world)
 
