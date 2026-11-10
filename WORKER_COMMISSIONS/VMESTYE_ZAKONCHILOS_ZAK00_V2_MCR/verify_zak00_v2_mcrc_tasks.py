@@ -123,9 +123,71 @@ def validate_one(n, text=None):
     return {"flight": n, "tasks": 4, "hostile": 1, "outputs": len(orig_outputs),
             "obligations": len(records), "coverage_identity_count": len(ids), "status": "PASS_AUTHOR_CONTRACT_COMPLETENESS_NOT_EXECUTED_DESCENDANTS"}
 
+
+def validate_parent(text=None):
+    parent_path = Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md"
+    current = text if text is not None else parent_path.read_text(encoding="utf-8")
+    old = source_bytes(parent_path.relative_to(ROOT).as_posix(), FROZEN_AUTHOR)
+    section = old[old.index("DELIVERABLES / TERMINAL HANDOFF"):old.index("\nSTOP:")]
+    baseline = re.findall(r"^- (.+)$", section, re.M)
+    assert len(baseline) == 6, "six original parent results must remain"
+    assert not BAD.search(current)
+    contract, raw = load_contract(current)
+    rows = contract["MCR_OBLIGATION"]
+    assert len(rows) == 24 and len({ob["id"] for ob in rows}) == 24, "24 parent result requirements"
+    byid = {ob["id"]: ob for ob in rows}
+    for j, req in enumerate(baseline, 1):
+        ob = byid["ZAK00-PARENT-%02d" % j]
+        assert ob["baseline_requirement"] == req, ("parent scope shrunk", j)
+        assert ob["positive"].startswith("PASS=") and ob["negative"].startswith("RED=")
+        assert ob["failure"] == "INCOMPLETE"
+    for n in range(1, 12):
+        ob = byid["ZAK00-FLIGHT-%02d" % n]
+        assert ob["output"] == flight_path(n).relative_to(ROOT).as_posix()
+        assert ob["baseline_output"] == ob["output"]
+        assert "four" in ob["result"] or "4 exact" in ob["result"], n
+        assert ob["failure"] == "INCOMPLETE"
+    required_parent_files = [
+        "00_RETURN.md", "01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md",
+        "02_MCR_ORACLE_NEGATIVE_AND_INDEPENDENT_STRESS.md",
+        "03_FULL_FLIGHT_DEPENDENCY_AND_OWNER_MAP.md",
+        "04_AUTHOR_STRUCTURAL_PREFLIGHT_AND_NEGATIVE_RECEIPT.md",
+        "05_EXACT_HEAD_INDEPENDENT_RECEIVING_HANDOFF.md",
+        "06_FIXED_HIGH_IMPACT_NO_INVERSE_PANEL.md",
+    ]
+    for j, filename in enumerate(required_parent_files, 1):
+        ob = byid["ZAK00-OUTPUT-%02d" % j]
+        assert ob["output"] == ("WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/" + filename)
+        assert ob["baseline_output"] == ob["output"]
+    scope = contract["MCR_SCOPE"][0]
+    assert scope["identity_columns"] == ["zak_evidence_key"] and scope["expected_count"] == 182
+    assert scope["source"]["path"] == R2_INHERITANCE
+    def inherited(commit):
+        return list(csv.DictReader(source_bytes(R2_INHERITANCE, commit).splitlines(), delimiter="\t"))
+    r1 = inherited("480a3e211814705eac6cada7257e8187f46eb5f0")
+    r2 = inherited("1ebd603aa8f5b6d551363336a632a0c364b85f17")
+    assert len(r1) == len(r2) == 182
+    keys1 = list(r1[0].keys())
+    assert len(keys1) == 14
+    a = {row["zak_evidence_key"]: tuple(row[key] for key in keys1) for row in r1}
+    b = {row["zak_evidence_key"]: tuple(row[key] for key in keys1) for row in r2}
+    assert len(a) == len(b) == 182 and a == b, "182 inherited IDs or first-14 original cells changed"
+    pins_path = R2_INHERITANCE.replace("ZAK_INHERITED_OBLIGATIONS.tsv", "ZAK_SOURCE_BASELINE.tsv")
+    pins = list(csv.DictReader(source_bytes(pins_path, "1ebd603aa8f5b6d551363336a632a0c364b85f17").splitlines(), delimiter="\t"))
+    assert len(pins) == 47 and len({row["source_key"] for row in pins}) == 47
+    for p in pins:
+        actual = git("rev-parse", p["frozen_commit_sha"] + ":" + p["repository_path"]).strip()
+        assert actual == p["git_blob_sha"], ("47 source pin mismatch", p["source_key"])
+    assert all(ob["failure"] == "INCOMPLETE" and ob["owner"] and ob["consumer"]
+               and ob["negative"].startswith("RED=") for ob in rows)
+    return {"parent": "ZAK00", "obligations": 24, "identity_count": 182,
+            "first_14_equal": 182, "exact_source_pins": 47,
+            "status": "PASS_AUTHOR_PARENT_CONTRACT_NOT_INDEPENDENT_RECEIVING"}
+
 def self_test():
     s = flight_path(11).read_text(encoding="utf-8")
     assert validate_one(11)["obligations"] == 8
+    assert validate_parent()["obligations"] == 24
     for mutant in [
         s.replace("ZAK11-TASK-01", "ZAK11-OMITTED-01", 1),
         s.replace("EPISTEMIC_GRADE_MATRIX.tsv", "EPIS\u00adTEMIC_GRADE_MATRIX.tsv", 1),
@@ -137,23 +199,39 @@ def self_test():
             pass
         else:
             raise AssertionError("negative mutant passed")
-    return "PASS 3/3 claim/filename/duplicate mutants rejected"
+    for mutant in [
+        (Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md").read_text(encoding="utf-8").replace("ZAK00-PARENT-01", "ZAK00-LOST-01", 1),
+        (Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md").read_text(encoding="utf-8").replace("ZAK00-FLIGHT-08", "ZAK00-FLIGHT-03", 1),
+    ]:
+        try:
+            validate_parent(mutant)
+        except (AssertionError, KeyError, ValueError):
+            pass
+        else:
+            raise AssertionError("parent completion mutant passed")
+    return "PASS 5/5 child/parent omission, filename and duplicate mutants rejected"
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--flight", type=int, choices=range(1, 12))
     p.add_argument("--all", action="store_true")
+    p.add_argument("--parent", action="store_true")
     p.add_argument("--enumerate-expected", action="store_true")
     p.add_argument("--self-test", action="store_true")
     args = p.parse_args()
     if args.self_test:
         print(self_test())
         return
+    if args.parent:
+        print(json.dumps(validate_parent(), indent=2))
+        return
     if args.enumerate_expected:
         assert args.flight
         print("\n".join(required_ids(args.flight)))
         return
     reports = [validate_one(n) for n in (range(1, 12) if args.all else [args.flight])]
+    if args.all:
+        reports.append(validate_parent())
     print(json.dumps(reports, indent=2))
 
 if __name__ == "__main__":

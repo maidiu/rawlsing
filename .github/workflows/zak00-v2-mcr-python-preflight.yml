@@ -46,7 +46,7 @@ jobs:
           python3 -m py_compile .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
           python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
 
-      - name: Verify all eleven original task sets, exact outputs and hostile no-drop mutants
+      - name: Verify all eleven original task sets plus 24 parent obligations and hostile no-drop mutants
         run: |
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --all
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --self-test
@@ -70,6 +70,16 @@ jobs:
           done
           echo "ZAK_MCR_C_OFFICIAL_FAILURES=${failed}"
           test "${failed}" -eq 0
+
+      - name: Run official integrated MCR-C source check on 24-obligation ZAK00 parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md"
+          mkdir -p zak-mcr-format-receipts
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "$file" --source-check | tee zak-mcr-format-receipts/ZAK_00_PARENT.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --parent
+          echo "ZAK-00 PARENT: integrated MCR-C source/contract gate PASS; descendant effects NOT_RUN"
 
       - name: Upload exact formal check receipts, not descendant completion
         if: ${{ always() }}
