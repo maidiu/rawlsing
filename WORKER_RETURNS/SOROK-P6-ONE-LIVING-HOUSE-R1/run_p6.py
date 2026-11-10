@@ -9,7 +9,6 @@ from pathlib import Path
 import sys
 
 RETURNS = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(RETURNS.parent))
 sys.path.insert(0, str(RETURNS / "SOROK-P5-CONTINUOUS-EXPERIENCE-R1"))
 
 from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitation, new, open_owner, save, surface

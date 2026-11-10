@@ -2,7 +2,6 @@
 
 from developmental_recursion.contracts import RecursionRefusal, digest
 
-from adp010 import attempt_movement_admission
 from encounter import movement_evidence
 
 SLOT = "p6_house"
@@ -177,9 +176,6 @@ def perform(session, action):
         receipt["encounter_evidence"] = movement_evidence(
             session, event, committed_world, committed_house,
         )
-        receipt["adp010_admission"] = [
-            attempt_movement_admission(row) for row in receipt["encounter_evidence"]
-        ]
     return receipt, {"admission": "ADMITTED", "performed": True,
                      "observation": project_event(event)}
 
