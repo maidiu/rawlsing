@@ -19,9 +19,9 @@ const B={
 };
 const allowed=new Set("PROVED_CURRENT_SUCCESSOR PROVED_STRONGER_SUPERSESSION PARTIAL_SUCCESSION OPEN_FUNCTIONAL_GAP OPEN_PROOF_GAP HISTORICAL_HEURISTIC_ONLY ACCIDENTAL_OR_OBSOLETE_MECHANIC OUTSIDE_PREV3__EXACT_OWNER DUPLICATE_OR_ALIAS NOT_INSPECTED".split(" "));
 function ok(cond,why){if(!cond)throw Error(why);}
-function blobHash(s){return crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+Buffer.byteLength(s)+"\\0"),Buffer.from(s)])).digest("hex");}
-function parse(s,name){const lines=s.trimEnd().split(/\\r?\\n/),cols=lines.shift().split("\\t");return{cols,rows:lines.map((line,i)=>{const vs=line.split("\\t");ok(vs.length===cols.length,name+" width "+(i+2));return Object.fromEntries(cols.map((c,j)=>[c,vs[j]]))})};}
-function dump(t){return t.cols.join("\\t")+"\\n"+t.rows.map(r=>t.cols.map(c=>r[c]).join("\\t")).join("\\n")+"\\n";}
+function blobHash(s){return crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+Buffer.byteLength(s)+"\0"),Buffer.from(s)])).digest("hex");}
+function parse(s,name){const lines=s.trimEnd().split(/\r?\n/),cols=lines.shift().split("\t");return{cols,rows:lines.map((line,i)=>{const vs=line.split("\t");ok(vs.length===cols.length,name+" width "+(i+2));return Object.fromEntries(cols.map((c,j)=>[c,vs[j]]))})};}
+function dump(t){return t.cols.join("\t")+"\n"+t.rows.map(r=>t.cols.map(c=>r[c]).join("\t")).join("\n")+"\n";}
 function idx(rs,key){const m=new Map;for(const r of rs){ok(r[key]&&!m.has(r[key]),"duplicate/empty "+key+" "+r[key]);m.set(r[key],r)}return m}
 function run(x) {
  for(const [k,blob] of Object.entries(B))ok(blobHash(x[k])===blob,"pinned blob mismatch "+k);
