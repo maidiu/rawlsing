@@ -16,6 +16,11 @@ def establish_demo_conditions(session):
         "grade": "SOURCEFREE_FIXTURE", "hearing": "available", "sound_path": "audible",
         "bench_view": "facing_away", "footsteps": "audible",
     }
+    house["situated_actor_context"] = {
+        "grade": "SOURCEFREE_FIXTURE", "actor_id": world.actor_state["A"]["actor_id"],
+        "priority": "Finish the current bench work while the material allows it.",
+        "relationship": "A visitor in the workshop.",
+    }
     session.product._checkpoint(session.branch_id, world.clock, world)
 
 

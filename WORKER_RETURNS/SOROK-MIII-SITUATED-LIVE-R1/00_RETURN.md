@@ -16,6 +16,8 @@ Use the existing P6 entrypoint `WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_
 - CLI provider cut: two focused P6 tests passed in 109.56 s. An injected interpretation reached the CLI turn. A refused local transport left the world turn committed and replayable. A separate two-role local HTTP wire fixture verified request/response framing. These were fixture tests.
 - Actor-context cut: the focused silent interval and containment test passed in 102.61 s. On the same saved scene and seven-tick interval, the injected decision chose continued work in the visitor fixture and BP4-admitted speech in the collaborator fixture. A foreign actor fixture and an unsupported claim of noticing did not admit speech. The actor psyche head remained unchanged. Replay did not call either role again.
 
+- CLI actor continuity cut: the focused CLI and quiet-interval tests passed in 150.75 s. The demo binds an explicit sourcefree actor context in its opening checkpoint. Nadia's own admitted speech is available in a subsequent packet, while prior model hypotheses remain outside it. The speech read is limited to four world events with recorded A access.
+
 ## PROGRAMMA_DELTA
 
 First consumers are P6 situated reconsideration for the committed cue and S46 clock, and the installed BP4 writer for realized speech. The tested scope is sourcefree situated perception, bounded model interface and actual speech admission in the existing house. No authorized Sorok application model endpoint was found, so live-model inference is unexecuted. Native V3/V2 integration and protected receiving are separate. Independent review requested for the exact engineering cut before HQ receiving.

@@ -3,6 +3,7 @@
 from copy import deepcopy
 
 from developmental_recursion.contracts import digest
+from house import read_house
 from situated_provider import ModelUnavailable
 
 
@@ -19,12 +20,29 @@ def actor_context_for(actor_id, context):
     return local
 
 
+def recent_speech(session):
+    """Read only speech that the world already recorded as accessible to A."""
+    rows = session.product.store.perceptions(session.branch_id, "A")
+    speech = []
+    for row in reversed(rows):
+        event = session.event(row["event_id"])
+        if event is None or event["kind"] != "SPEECH" or row["clock"] != event["clock"]:
+            continue
+        text = event["body"].get("text")
+        if isinstance(text, str):
+            speech.append({"event_id": event["event_id"], "clock": event["clock"],
+                           "speaker": event["actor_id"], "text": text[:500]})
+        if len(speech) == 4:
+            break
+    return list(reversed(speech))
+
+
 def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
         return None
     interval = receipt["interval"]
-    world = session.world()
+    world, house = read_house(session)
     actor = world.actor_state["A"]
     if (interval["actor_id"] != actor["actor_id"] or interval["branch_id"] != session.branch_id
             or interval["root_hash"] != session.read_root()["root_hash"]
@@ -39,6 +57,8 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
     ]
     if receipt.get("outward_cue"):
         cues.append(receipt["outward_cue"])
+    if actor_context is None:
+        actor_context = house.get("situated_actor_context")
     available_actions = ("continue",) if realize is None else ("continue", "speak")
     packet = {
         "actor": actor["actor_id"],
@@ -49,6 +69,7 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
                      "material_remaining": actor.get("material_remaining"),
                      "interval_status": interval["status"]},
         "cues": cues,
+        "recent_speech": recent_speech(session),
         "actor_context": actor_context_for(actor["actor_id"], actor_context),
         "available_actions": list(available_actions),
     }

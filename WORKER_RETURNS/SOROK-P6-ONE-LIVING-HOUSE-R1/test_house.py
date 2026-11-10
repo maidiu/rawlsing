@@ -264,6 +264,9 @@ def test_silent_interval_reconsiders_and_commits_only_admitted_speech(tmp_path):
 
     run("wait", {**collaborate, "actor_id": "foreign"}, duration=1, request_id="foreign")
     assert packets[-1]["actor_context"] is None
+    assert packets[-1]["recent_speech"][-1]["text"] == words
+    assert packets[-1]["recent_speech"][-1]["event_id"] == speech["event_id"]
+    assert "Time to reassess" not in json.dumps(packets[-1])
     refusal = json.loads(ledger.read_text())["turns"][-1]["receipt"]["situated"]
     assert refusal["status"] == "INVALID_INTERPRETATION" and "speech" not in refusal
 
@@ -375,6 +378,11 @@ def test_cli_situated_transport_and_provider_failure_preserve_turn(tmp_path, mon
     assert closed["clock"] == audible["clock"] + 1
     assert cli("stop-playing", "--request-id", "stop")["clock"] == closed["clock"]
     assert [model for model, _ in calls] == ["test-semantic", "test-semantic"]
+    assert calls[0][1]["actor_context"] == {
+        "grade": "SOURCEFREE_FIXTURE",
+        "priority": "Finish the current bench work while the material allows it.",
+        "relationship": "A visitor in the workshop.",
+    }
     assert calls[0][1]["cues"][0]["detail"] == {"instrument": "mandolin", "sounding": True}
     ledger = json.loads((tmp_path / "p4_receipts.json").read_text())
     assert ledger["pending"] is None
