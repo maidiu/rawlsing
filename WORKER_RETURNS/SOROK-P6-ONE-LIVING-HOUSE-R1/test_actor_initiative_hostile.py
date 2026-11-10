@@ -1,11 +1,14 @@
 """Hostile #880 repair court: real event, writer and actor continuity boundaries."""
 from argparse import Namespace
+from dataclasses import replace
 import json
 
 import pytest
 
 from run_p6 import experience, open_owner, read_house, RecursionRefusal
-from actor_initiative import issue_visit_admission, visit_adjacent_room
+from actor_initiative import (
+    ROUTE_SOURCE, _select_visit, visit_adjacent_room,
+)
 
 
 def _run(state, command, interpret, **args):
@@ -48,10 +51,16 @@ def test_departure_arrival_visibility_separate_and_no_omniscience(
     def choose(packet):
         packets.append(packet)
         assert "visit_adjacent_room" in packet["available_actions"]
-        assert packet["action_affordances"] == [{
-            "action": "visit_adjacent_room", "origin": "workshop",
-            "destination": "living room", "basis": "SOURCEFREE_CHECKPOINTED_ADJACENCY",
-        }]
+        [affordance] = packet["action_affordances"]
+        assert affordance["action"] == "visit_adjacent_room"
+        assert affordance["origin"] == "workshop"
+        assert affordance["destination"] == "living room"
+        assert affordance["basis"] == ROUTE_SOURCE
+        assert affordance["route_hash"] == packet["actor_route_hash"]
+        assert packet["actor_route"] == {
+            "origin": "workshop", "destination": "living room",
+            "source": ROUTE_SOURCE,
+        }
         return _decision("visit_adjacent_room" if packet["elapsed"] == 2 else "continue")
 
     _run(state, "new", choose, situated_house=True)
@@ -82,7 +91,8 @@ def test_departure_arrival_visibility_separate_and_no_omniscience(
     assert (state / "p4_receipts.json").read_bytes() == saved
 
 
-@pytest.mark.parametrize("fault", ["missing_ticket", "stale_clock", "changed_source",
+@pytest.mark.parametrize("fault", ["missing_selection", "caller_values",
+                                   "stale_clock", "changed_source",
                                    "removed_actor_context", "invalid_decision"])
 def test_direct_world_writer_requires_selected_fresh_checkpoint_authority(tmp_path, fault):
     state = tmp_path / "world"
@@ -104,28 +114,68 @@ def test_direct_world_writer_requires_selected_fresh_checkpoint_authority(tmp_pa
         events_before = [e["event_id"] for e in session.events()]
         episodes_before = len(session.episodes("A"))
         positions_before = dict(world.positions)
-        if fault == "missing_ticket":
-            ticket = None
+        if fault == "missing_selection":
+            with pytest.raises(
+                RecursionRefusal, match="P6_INITIATIVE_SELECTION_NOT_ADMITTED"
+            ):
+                visit_adjacent_room(session, actor)
+        elif fault == "caller_values":
+            with pytest.raises(TypeError):
+                visit_adjacent_room(
+                    session, actor, packet=packet, decision=decision,
+                    admission=object(),
+                )
         else:
-            ticket = issue_visit_admission(session, packet, decision)
-        if fault == "stale_clock":
-            world.advance(world.clock + 1)
-            session.product._checkpoint(session.branch_id, world.clock, world)
-        elif fault == "changed_source":
-            house["situated_conditions"]["actor_move_visibility"]["origin"] = "OCCLUDED"
-            session.product._checkpoint(session.branch_id, world.clock, world)
-        elif fault == "removed_actor_context":
-            house.pop("situated_actor_context")
-            session.product._checkpoint(session.branch_id, world.clock, world)
-        elif fault == "invalid_decision":
-            decision = _decision("continue")
-        with pytest.raises(RecursionRefusal, match="P6_INITIATIVE_(SELECTION_NOT_ADMITTED|CHECKPOINT_AUTHORITY_MISSING|ADMISSION_STALE_OR_INVALID)"):
-            visit_adjacent_room(session, actor, packet=packet,
-                                decision=decision, admission=ticket)
+            selection = _select_visit(session, packet, decision)
+            if fault == "stale_clock":
+                world.advance(world.clock + 1)
+                session.product._checkpoint(session.branch_id, world.clock, world)
+            elif fault == "changed_source":
+                house["situated_conditions"]["actor_move_visibility"]["origin"] = "OCCLUDED"
+                session.product._checkpoint(session.branch_id, world.clock, world)
+            elif fault == "removed_actor_context":
+                house.pop("situated_actor_context")
+                session.product._checkpoint(session.branch_id, world.clock, world)
+            elif fault == "invalid_decision":
+                session._p6_miii_visit_selection = replace(
+                    selection, decision=_decision("continue")
+                )
+            with pytest.raises(
+                RecursionRefusal,
+                match="P6_INITIATIVE_(CHECKPOINT_AUTHORITY_MISSING|ADMISSION_STALE_OR_INVALID)",
+            ):
+                visit_adjacent_room(session, actor)
         assert [e["event_id"] for e in session.events()] == events_before
         assert len(session.episodes("A")) == episodes_before
         after, _ = read_house(session)
         assert after.positions == positions_before
+    finally:
+        owner.close()
+
+
+def test_selected_visit_cannot_fall_back_to_objective_adjacency(tmp_path):
+    state = tmp_path / "world"
+    packets = []
+
+    def continue_only(packet):
+        packets.append(packet)
+        return _decision("continue")
+
+    _run(state, "new", continue_only, situated_house=True)
+    _run(state, "wait", continue_only, duration=2, request_id="capture")
+    owner = open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        world, house = read_house(session)
+        actor = world.actor_state["A"]["actor_id"]
+        _select_visit(session, packets[-1], _decision("visit_adjacent_room"))
+        house["situated_actor_context"].pop("routes")
+        session.product._checkpoint(session.branch_id, world.clock, world)
+        with pytest.raises(
+            RecursionRefusal, match="P6_INITIATIVE_CHECKPOINT_AUTHORITY_MISSING"
+        ):
+            visit_adjacent_room(session, actor)
+        assert session.world().positions["A"] == "workshop"
     finally:
         owner.close()
 
@@ -239,9 +289,10 @@ def test_workshop_producer_does_not_repair_actor_from_living_room_and_return_res
     ledger = json.loads((state / "p4_receipts.json").read_text())
     off = ledger["turns"][-1]["receipt"]["interval"]
     assert off["segments"][-1]["attempt"]["inputs"]["actor_present"] is False
-    assert off["domain"]["mode"] == "BLOCKED"
-    assert off["segments"][-1]["attempt"]["attempt"] == "BLOCKED"
-    assert off["segments"][-1]["world"]["status"] == "NOT_PERFORMED"
+    assert off["domain"]["mode"] == "UNKNOWN"
+    assert off["segments"][-1]["attempt"]["attempt"] == "UNKNOWN"
+    assert off["segments"][-1]["attempt"]["reason"] == "SOURCE_OR_OWNER_UNKNOWN_NOT_A_NEGATIVE"
+    assert off["segments"][-1]["world"]["status"] == "UNKNOWN"
     assert not off["segments"][-1]["coverage"]
     owner = open_owner(state / "actual-p2")
     try:

@@ -384,6 +384,16 @@ def test_cli_situated_transport_and_provider_failure_preserve_turn(tmp_path, mon
         "grade": "SOURCEFREE_FIXTURE",
         "priority": "Finish the current bench work while the material allows it.",
         "relationship": "A visitor in the workshop.",
+        "routes": {
+            "workshop": {
+                "origin": "workshop", "destination": "living room",
+                "source": "SOURCEFREE_ACTOR_LOCAL_ADJACENCY",
+            },
+            "living room": {
+                "origin": "living room", "destination": "workshop",
+                "source": "SOURCEFREE_ACTOR_LOCAL_ADJACENCY",
+            },
+        },
     }
     assert calls[0][1]["cues"][0]["detail"] == {"instrument": "mandolin", "sounding": True}
     ledger = json.loads((tmp_path / "p4_receipts.json").read_text())

@@ -21,10 +21,9 @@ from situated import reconsider
 from situated_provider import ModelUnavailable, SituatedProvider
 
 def PACE(fanin, action):
-    # A workshop interval is not an actual repair attempt if Nadia has
-    # physically left the workshop. The existing S46 BLOCKED mode issues a
-    # nonperformed period receipt without fabricating an attempted repair.
-    mode = "ACTUAL" if fanin.session.world().positions.get("A") == "workshop" else "BLOCKED"
+    # Off-room location is not evidence of obstruction. Use the received
+    # UNKNOWN mode so elapsed time records no fabricated workshop cause.
+    mode = "ACTUAL" if fanin.session.world().positions.get("A") == "workshop" else "UNKNOWN"
     return advance_for_action(fanin, action, on_repair=close_on_repair, mode=mode)
 
 

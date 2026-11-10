@@ -4,7 +4,10 @@ from copy import deepcopy
 
 from developmental_recursion.contracts import digest
 from house import read_house
-from actor_initiative import ACTION as VISIT_ADJACENT, destination_affordance, issue_visit_admission, visit_adjacent_room
+from actor_initiative import (
+    ACTION as VISIT_ADJACENT, _select_visit, destination_affordance,
+    route_from_context, visit_adjacent_room,
+)
 from situated_provider import ModelUnavailable
 
 
@@ -18,6 +21,13 @@ def actor_context_for(actor_id, context):
         value = context.get(field)
         if isinstance(value, str) and 0 < len(value) <= 500:
             local[field] = value
+    routes = context.get("routes")
+    if isinstance(routes, dict):
+        local["routes"] = deepcopy(routes)
+    else:
+        route = route_from_context(context)
+        if route is not None:
+            local["route"] = route
     return local
 
 
@@ -173,6 +183,11 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
         "house_source": house["source"],
         "conditions_hash": digest(house.get("situated_conditions")),
         "actor_context_hash": digest(house.get("situated_actor_context")),
+        "actor_route": route_from_context(local_context, world.positions["A"]),
+        "actor_route_hash": (
+            digest(route_from_context(local_context, world.positions["A"]))
+            if route_from_context(local_context, world.positions["A"]) is not None else None
+        ),
         "action_affordances": affordances,
         "activity": {"role": actor.get("role"), "work_done": actor.get("completed_units"),
                      "material_remaining": actor.get("material_remaining"),
@@ -193,11 +208,8 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
 
     result.update(status="INTERPRETED", decision=decision)
     if decision["action"] == VISIT_ADJACENT:
-        admission = issue_visit_admission(session, packet, decision)
-        result["movement"] = visit_adjacent_room(
-            session, actor["actor_id"], packet=packet,
-            decision=decision, admission=admission,
-        )
+        _select_visit(session, packet, decision)
+        result["movement"] = visit_adjacent_room(session, actor["actor_id"])
     elif decision["action"] == "speak":
         try:
             expressive_decision = {key: value for key, value in decision.items() if key != "interpretation"}

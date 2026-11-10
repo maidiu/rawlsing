@@ -3,6 +3,7 @@ from argparse import Namespace
 import json
 
 from run_p6 import experience, open_owner, read_house
+from actor_initiative import ROUTE_SOURCE
 
 
 def _run(state, command, interpret, **kw):
@@ -47,6 +48,8 @@ def test_silent_multi_turn_cumulative_time_leads_to_world_admitted_actor_visit(t
     assert [x["scene_elapsed"] for x in packets] == [3, 6]
     assert all(x["available_actions"] == ["continue", "visit_adjacent_room"]
                for x in packets)
+    assert all(x["actor_route"]["source"] == ROUTE_SOURCE for x in packets)
+    assert all(x["actor_route_hash"] for x in packets)
     assert all(x["room"] == "workshop" for x in packets)
     assert second["clock"] == epoch + 6
     assert first["clock"] == epoch
@@ -60,6 +63,8 @@ def test_silent_multi_turn_cumulative_time_leads_to_world_admitted_actor_visit(t
     assert situated["decision"]["action"] == "visit_adjacent_room"
     assert movement["admitted"] and movement["origin"] == "workshop"
     assert movement["destination"] == "living room"
+    assert movement["actor_route"]["source"] == ROUTE_SOURCE
+    assert movement["route_hash"]
     assert movement["grade"] == "SOURCEFREE_PROVISIONAL_ACTOR_WORLD_ACTION_NOT_NATIVE"
 
     owner = open_owner(state / "actual-p2")
@@ -74,6 +79,7 @@ def test_silent_multi_turn_cumulative_time_leads_to_world_admitted_actor_visit(t
         assert event["body"]["origin"] == "workshop"
         assert event["body"]["target"] == "living room"
         assert event["body"]["actor_action"] == "visit_adjacent_room"
+        assert event["body"]["actor_route_hash"] == movement["route_hash"]
         assert world.positions["A"] == "living room"
         assert movement["event_id"] in session.user_perceived_ids()
         assert owner.store.head() == psyche_before
@@ -104,6 +110,47 @@ def test_silent_multi_turn_cumulative_time_leads_to_world_admitted_actor_visit(t
                     and e["body"].get("actor_action") == "visit_adjacent_room"]) == 1
     finally:
         owner.close()
+
+
+def test_actor_visit_requires_checkpointed_actor_local_route(tmp_path, monkeypatch):
+    import run_p6
+
+    state = tmp_path / "world"
+    packets = []
+
+    def interpret(packet):
+        packets.append(packet)
+        return {"attention": "uncertain", "interpretation": "Cross the doorway.",
+                "action": "visit_adjacent_room", "cue_event_id": None,
+                "channel": None}
+
+    original = run_p6.establish_demo_conditions
+
+    def without_route(session):
+        original(session)
+        world, house = read_house(session)
+        house["situated_actor_context"].pop("routes")
+        session.product._checkpoint(session.branch_id, world.clock, world)
+
+    monkeypatch.setattr(run_p6, "establish_demo_conditions", without_route)
+    _run(state, "new", interpret, situated_house=True)
+
+    result = _run(state, "wait", interpret, duration=2, request_id="no-route")
+    assert result["admission"] == "ADMITTED"
+    assert packets[-1]["actor_route"] is None
+    assert packets[-1]["action_affordances"] == []
+    assert "visit_adjacent_room" not in packets[-1]["available_actions"]
+    owner = open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        assert session.world().positions["A"] == "workshop"
+        assert not any(event["actor_id"] == "A"
+                       and event["body"].get("actor_action") == "visit_adjacent_room"
+                       for event in session.events())
+    finally:
+        owner.close()
+    ledger = json.loads((state / "p4_receipts.json").read_text())
+    assert ledger["turns"][-1]["receipt"]["situated"]["status"] == "INVALID_INTERPRETATION"
 
 
 def test_model_cannot_visit_without_source_bound_actor_context(tmp_path):
