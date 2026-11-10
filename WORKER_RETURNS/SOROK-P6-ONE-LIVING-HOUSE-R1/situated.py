@@ -5,6 +5,7 @@ from copy import deepcopy
 from developmental_recursion.contracts import digest
 from house import read_house
 from actor_initiative import ACTION as VISIT_ADJACENT, destination_if_eligible, visit_adjacent_room
+from actor_scene_context import recent_self_actions
 from situated_provider import ModelUnavailable
 
 
@@ -104,6 +105,7 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
                      "interval_status": interval["status"]},
         "cues": cues,
         "recent_speech": recent_speech(session),
+        "recent_self_actions": recent_self_actions(session),
         "actor_context": local_context,
         "available_actions": available_actions,
     }
