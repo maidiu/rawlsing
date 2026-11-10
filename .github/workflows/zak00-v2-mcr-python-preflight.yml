@@ -1,9 +1,10 @@
-name: ZAK-00 v2 MCR-AF official Python commission preflight
+name: ZAK-00 v2 MCR-C exact-source, 94-obligation pre-dispatch court
 
 on:
   pull_request:
     paths:
       - 'WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/**'
+      - 'WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py'
       - '.github/workflows/zak00-v2-mcr-python-preflight.yml'
   push:
     branches:
@@ -14,44 +15,66 @@ permissions:
   contents: read
 
 jobs:
-  eleven-commission-python-preflight:
+  whole-mission-pre-dispatch-contract:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     steps:
-      - name: Checkout exact author commit
+      - name: Checkout exact author candidate with all original source commits
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-      - name: Show checked-out commit and Python version
+          fetch-depth: 0
+
+      - name: Checkout immutable integrated MCR-C law and official validator
+        uses: actions/checkout@v4
+        with:
+          ref: 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          path: .mcr-policy
+          persist-credentials: false
+          sparse-checkout: |
+            CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Freeze actual candidate and immutable MCR-C validator identity
         run: |
           git rev-parse HEAD
-          python3 --version
-      - name: Official validator self-test
+          git rev-parse 9d24323494cc852ada078010f09bfcf9ceb911d9
+          git -C .mcr-policy rev-parse HEAD
+          python3 -m py_compile .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+
+      - name: Verify all eleven original task sets, exact outputs and hostile no-drop mutants
         run: |
-          mkdir -p zak-mcr-format-receipts
-          python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test | tee zak-mcr-format-receipts/validator-self-test.json
-      - name: Official Python CLI on each of the eleven exact commission files
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --all
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --self-test
+
+      - name: Execute actual integrated Python MCR-C source-check on each flight
         shell: bash
         run: |
           set -uo pipefail
+          mkdir -p zak-mcr-format-receipts
           failed=0
           for number in $(seq -w 1 11); do
             file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_${number}_FULL_COPY_PASTE_MCR.md"
-            echo "::group::ZAK-${number}: ${file}"
-            if python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "${file}" | tee "zak-mcr-format-receipts/ZAK_${number}.json"; then
-              echo "ZAK-${number}: Python CLI passed"
+            echo "::group::ZAK-${number}: exact-source MCR-C pre-dispatch"
+            if python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "${file}" --source-check | tee "zak-mcr-format-receipts/ZAK_${number}.json"; then
+              echo "ZAK-${number}: actual MCR-C checker passed"
             else
-              echo "::error file=${file}::ZAK-${number} failed the actual Python validator"
-              failed=$((failed + 1))
+              echo "::error file=${file}::ZAK-${number} official MCR-C source/contract failure"
+              failed=$((failed+1))
             fi
             echo "::endgroup::"
           done
-          echo "OFFICIAL_PYTHON_COMMISSION_PREFLIGHT_FAILURES=${failed}"
+          echo "ZAK_MCR_C_OFFICIAL_FAILURES=${failed}"
           test "${failed}" -eq 0
-      - name: Retain exact validator receipts
+
+      - name: Upload exact formal check receipts, not descendant completion
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: zak00-v2-mcr-python-commission-receipts
+          name: zak00-v2-mcr-c-contract-and-source-receipts
           path: zak-mcr-format-receipts/
           if-no-files-found: warn

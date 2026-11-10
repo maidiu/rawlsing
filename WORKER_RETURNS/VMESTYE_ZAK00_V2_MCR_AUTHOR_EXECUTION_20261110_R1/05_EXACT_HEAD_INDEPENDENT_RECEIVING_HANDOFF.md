@@ -18,3 +18,12 @@
 7. Does the return distinguish author source/parity checks from unexecuted Python/Node/current consumer/native tests? Is there real independent reviewer host identity and lease?
 
 **Allowed verdict:** `ACCEPT_SCOPED_S0_S1_PROGRAM_AND_CUSTODY` or `REVISE_EXACT_DEFECT` or `HOLD`, per ENGINEERING/SCIENTIFIC/AUTHORITY 3×5. **Not** terminal ZAK machine zero loss or original35 release. Reviewer writes separate return on separate branch; protected integration delegated to competent HQ after receiving.
+
+
+## MCR-C receiving addendum
+
+Binding law: PRE-MAIN `4f3413fc5c37b589be3412f826bf8f68ee617d4a`. Frozen failed author head: `9d24323494cc852ada078010f09bfcf9ceb911d9`. The reviewed hostile #890 head: `90dc14f76e1ad7486329db29051acd21ed8e5a4b` is source-executable analytic evidence but **same-account nonauthor independence is not authenticated**. Its seven D01–D07 defects are incorporated into this corrected author version by source-specific frozen per-task acceptance, not dismissed by an old format PASS.
+
+Receiving must inspect actual post-repair HEAD (read GitHub, never use floating refs), evaluate **parent 24** and **child 94** obligations by exact source, claimed grade, original task/output and full identity sets, test a near-positive semantic contradiction independently from the author's samples, and then issue separate 3×5 engineering/scientific/authority verdicts. The parent and 01/08/10/11 source universes use identity-column equality to reject count-padding. The official MCR-C `--verify-return` requires **postcommit** evidence records and Git-committed outputs/receipts at that exact SHA; it cannot be self-filled and committed into the same SHA it claims. Do not claim readiness for independent review from source-format alone.
+
+Source-verified formal pre-dispatch checks are not proof that real successor flights have been launched or performed. A real reviewer lease/identity and original source/actor permissions cannot be supplied by this maidiu author branch. Preserve 01/02/03/04/08 lawful parallel S0–S1 and the existing 814–817 receiving without inventing new canon or global F03 pilot gate.
