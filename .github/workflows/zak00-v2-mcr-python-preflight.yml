@@ -1,0 +1,57 @@
+name: ZAK-00 v2 MCR-AF official Python commission preflight
+
+on:
+  pull_request:
+    paths:
+      - 'WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/**'
+      - '.github/workflows/zak00-v2-mcr-python-preflight.yml'
+  push:
+    branches:
+      - agent/vmestye-zak00-v2-mcr-execution-20261110-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  eleven-commission-python-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact author commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Show checked-out commit and Python version
+        run: |
+          git rev-parse HEAD
+          python3 --version
+      - name: Official validator self-test
+        run: |
+          mkdir -p zak-mcr-format-receipts
+          python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test | tee zak-mcr-format-receipts/validator-self-test.json
+      - name: Official Python CLI on each of the eleven exact commission files
+        shell: bash
+        run: |
+          set -uo pipefail
+          failed=0
+          for number in $(seq -w 1 11); do
+            file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_${number}_FULL_COPY_PASTE_MCR.md"
+            echo "::group::ZAK-${number}: ${file}"
+            if python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "${file}" | tee "zak-mcr-format-receipts/ZAK_${number}.json"; then
+              echo "ZAK-${number}: Python CLI passed"
+            else
+              echo "::error file=${file}::ZAK-${number} failed the actual Python validator"
+              failed=$((failed + 1))
+            fi
+            echo "::endgroup::"
+          done
+          echo "OFFICIAL_PYTHON_COMMISSION_PREFLIGHT_FAILURES=${failed}"
+          test "${failed}" -eq 0
+      - name: Retain exact validator receipts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: zak00-v2-mcr-python-commission-receipts
+          path: zak-mcr-format-receipts/
+          if-no-files-found: warn
