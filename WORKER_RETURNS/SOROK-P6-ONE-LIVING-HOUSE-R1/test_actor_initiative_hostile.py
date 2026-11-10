@@ -239,7 +239,7 @@ def test_workshop_producer_does_not_repair_actor_from_living_room_and_return_res
     ledger = json.loads((state / "p4_receipts.json").read_text())
     off = ledger["turns"][-1]["receipt"]["interval"]
     assert off["segments"][-1]["attempt"]["inputs"]["actor_present"] is False
-    assert off["mode"] == "BLOCKED"
+    assert off["domain"]["mode"] == "BLOCKED"
     assert off["segments"][-1]["attempt"]["attempt"] == "BLOCKED"
     assert off["segments"][-1]["world"]["status"] == "NOT_PERFORMED"
     assert not off["segments"][-1]["coverage"]
