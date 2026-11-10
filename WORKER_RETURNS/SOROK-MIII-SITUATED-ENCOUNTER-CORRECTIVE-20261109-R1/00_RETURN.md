@@ -96,3 +96,12 @@ The current P3 activation context's `actor_observed` input cannot be
 set from `ELIGIBLE`. R30A's `attend` operates on user knowledge and
 P6 `attention.register` records user presentation history. Neither
 is an actor registration consumer.
+
+## Matched source-absence control
+
+At test cut `b3fbdb900c75f3bf42ce6207e5306c6191f79205`, the focused `-k committed_go`
+test passed in 100.57s. A separately opened P6 scene preserves the
+same committed return MOVE body and clock while omitting only the
+fixture sensory source. Both recipients return UNKNOWN with no
+modality. In the source-qualified variants, the P3 store head also
+stays identical across the GO and replay.
