@@ -172,7 +172,7 @@ def test_matching_actor_but_invented_relationship_cannot_license_movement(tmp_pa
     assert ledger["turns"][-1]["receipt"]["situated"]["status"] == "INVALID_INTERPRETATION"
 
 
-def test_actor_visit_is_not_omnisciently_public_when_player_elsewhere(tmp_path):
+def test_actor_departure_visible_to_source_qualified_origin_observer(tmp_path):
     state = tmp_path / "world"
 
     def interpret(packet):
@@ -181,7 +181,8 @@ def test_actor_visit_is_not_omnisciently_public_when_player_elsewhere(tmp_path):
                 "action": "visit_adjacent_room", "cue_event_id": None, "channel": None}
 
     _run(state, "new", interpret, situated_house=True)
-    _run(state, "wait", interpret, duration=3, request_id="actor-steps-away")
+    public = _run(state, "wait", interpret, duration=3, request_id="actor-steps-away")
+    assert any("The worker walks into the adjoining room." in row["text"] for row in public["narration"])
     ledger = json.loads((state / "p4_receipts.json").read_text())
     event_id = ledger["turns"][-1]["receipt"]["situated"]["movement"]["event_id"]
     owner = open_owner(state / "actual-p2")
@@ -190,7 +191,8 @@ def test_actor_visit_is_not_omnisciently_public_when_player_elsewhere(tmp_path):
         world, _ = read_house(session)
         assert world.positions["A"] == "living room"
         assert world.positions[session.meta["user_actor"]] == "workshop"
-        assert event_id not in session.user_perceived_ids()
+        assert event_id in session.user_perceived_ids()
         assert session.event(event_id)["kind"] == "MOVE"
+        assert ledger["turns"][-1]["receipt"]["situated"]["movement"]["user_observation"] == "origin"
     finally:
         owner.close()
