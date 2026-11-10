@@ -37,6 +37,26 @@ def recent_speech(session):
     return list(reversed(speech))
 
 
+def decision_is_grounded(decision, cues, available_actions):
+    if (type(decision) is not dict
+            or set(decision) != {"attention", "interpretation", "action", "cue_event_id", "channel"}
+            or decision["attention"] not in ("noticed", "vague", "misheard", "unnoticed", "uncertain")
+            or not isinstance(decision["interpretation"], str)
+            or len(decision["interpretation"]) > 500
+            or decision["action"] not in available_actions):
+        return False
+    event_id, channel = decision["cue_event_id"], decision["channel"]
+    if decision["attention"] in ("unnoticed", "uncertain"):
+        return event_id is None and channel is None
+    if decision["attention"] == "misheard" and channel != "AUDITORY":
+        return False
+    return any(
+        event_id == cue["event_id"] and channel in cue.get("channels", [cue.get("modality")])
+        and channel in ("AUDITORY", "VISUAL")
+        for cue in cues
+    )
+
+
 def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
@@ -79,18 +99,14 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
         decision = interpret(deepcopy(packet))
     except ModelUnavailable:
         return {**result, "status": "MODEL_UNAVAILABLE"}
-    if (type(decision) is not dict or set(decision) != {"attention", "interpretation", "action"}
-            or decision["attention"] not in ("noticed", "vague", "misheard", "unnoticed", "uncertain")
-            or (not cues and decision["attention"] in ("noticed", "vague", "misheard"))
-            or not isinstance(decision["interpretation"], str)
-            or len(decision["interpretation"]) > 500
-            or decision["action"] not in available_actions):
+    if not decision_is_grounded(decision, cues, available_actions):
         return {**result, "status": "INVALID_INTERPRETATION"}
 
     result.update(status="INTERPRETED", decision=decision)
     if decision["action"] == "speak":
         try:
-            text = realize(deepcopy(packet), dict(decision))
+            expressive_decision = {key: value for key, value in decision.items() if key != "interpretation"}
+            text = realize(deepcopy(packet), expressive_decision)
         except ModelUnavailable:
             return {**result, "status": "EXPRESSION_UNAVAILABLE"}
         if not isinstance(text, str) or not text.strip() or len(text) > 500:

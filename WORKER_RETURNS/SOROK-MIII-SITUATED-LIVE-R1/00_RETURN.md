@@ -21,3 +21,18 @@ Use the existing P6 entrypoint `WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_
 ## PROGRAMMA_DELTA
 
 First consumers are P6 situated reconsideration for the committed cue and S46 clock, and the installed BP4 writer for realized speech. The tested scope is sourcefree situated perception, bounded model interface and actual speech admission in the existing house. No authorized Sorok application model endpoint was found, so live-model inference is unexecuted. Native V3/V2 integration and protected receiving are separate. Independent review requested for the exact engineering cut before HQ receiving.
+
+## Six scenario receipts
+
+All six are sourcefree. The interpreter returns are injected or provided by a local HTTP fixture. The fixture may choose what to attend to, while BP4 and S46 own the recorded events and clock.
+
+| Requested scenario | Executable evidence and observed distinction |
+| --- | --- |
+| 1. Mandolin | `test_outward_conduct_supplies_only_qualified_cues`, audible and obstructed. BP4 committed play and stop in both branches. Only the audible path supplied auditory cues to A. |
+| 2. Approach from behind | The audible variant of the same test commits the step toward the workshop bench with A facing away. A receives the footstep channel without visual access. The workshop is the existing task setting. |
+| 3. Camera versus outward orientation | Both variants first point private camera state at A and run view without producing a cue. The facing-player variant then commits outward orientation and supplies its visual cue. The facing-away variant commits the same outward act without giving A a visual cue. |
+| 4. Quiet time and initiative | `test_silent_interval_reconsiders_and_commits_only_admitted_speech`. The same seven-tick continuation from the same saved state produces continued work or A speech as the actor-local fixture changes. The speech is unavailable to the off-room user, and a duplicate request does not resubmit it. |
+| 5. Noticed with no outward action | The audible mandolin test accepts a noticed auditory cue and continues the activity without requesting speech. |
+| 6. Epistemic and admission containment | The quiet-time test excludes private/analyst keys, drops a foreign actor fixture, rejects unsupported registration, and preserves the psyche head. The exact cue/channel test rejects a visual claim or a foreign event on an auditory cue. The CLI HTTP fixture checks the two role calls, exclusion of private hypotheses from expression, committed co-present speech visibility, and replay without another provider call. |
+
+Independent source review of dd903a135c41778e6bef98ad6fa8b7a247c5febf returned HOLD_SCOPED. Independent runtime was not run at that cut. The author reran the full frozen cut with six cases passing in 521.36 s. The repair adds an exact event/channel check for structured perception claims, keeps free-form hypotheses in the private receipt, and adds the successful co-present two-role HTTP fixture (one passed in 26.14 s). The exact grounding unit passed in 0.15 s. Model-produced dialogue remains provisional expression, and the tests do not certify arbitrary natural-language claims or live inference.

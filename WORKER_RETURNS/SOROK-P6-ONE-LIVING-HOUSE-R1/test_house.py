@@ -204,13 +204,13 @@ def test_silent_interval_reconsiders_and_commits_only_admitted_speech(tmp_path):
         context = packet["actor_context"]
         if context is None:
             return {"attention": "noticed", "interpretation": "I saw a person.",
-                    "action": "speak"}
+                    "action": "speak", "cue_event_id": "foreign", "channel": "VISUAL"}
         action = "speak" if context["priority"] == "check whether my collaborator is ready" else "continue"
         return {"attention": "uncertain", "interpretation": "Time to reassess the work.",
-                "action": action}
+                "action": action, "cue_event_id": None, "channel": None}
 
     def realize(packet, decision):
-        assert decision["action"] == "speak"
+        assert decision["action"] == "speak" and "interpretation" not in decision
         return words
 
     def run(command, context=None, **args):
@@ -306,7 +306,8 @@ def test_outward_conduct_supplies_only_qualified_cues(tmp_path, monkeypatch, sou
     def interpret(packet):
         cues.append(packet["cues"][0])
         return {"attention": "noticed", "interpretation": "A possible cue.",
-                "action": "continue"}
+                "action": "continue", "cue_event_id": cues[-1]["event_id"],
+                "channel": cues[-1]["channels"][0]}
 
     def run(command, **args):
         return experience(tmp_path, Namespace(command=command, **args), interpret=interpret)
@@ -362,7 +363,8 @@ def test_cli_situated_transport_and_provider_failure_preserve_turn(tmp_path, mon
         if len(calls) > 1:
             return real_request(provider, role, model, payload)
         return {"attention": "noticed", "interpretation": "Music may be coming through the doorway.",
-                "action": "continue"}
+                "action": "continue", "cue_event_id": payload["cues"][0]["event_id"],
+                "channel": "AUDITORY"}
 
     monkeypatch.setattr(SituatedProvider, "_request", transport)
 
@@ -389,3 +391,81 @@ def test_cli_situated_transport_and_provider_failure_preserve_turn(tmp_path, mon
     last_two = [turn["receipt"]["situated"] for turn in ledger["turns"][-2:]]
     assert [row["status"] for row in last_two] == ["INTERPRETED", "MODEL_UNAVAILABLE"]
     assert all(row["provider_mode"] == "CONFIGURED_TRANSPORT" for row in last_two)
+
+
+
+def test_perception_claim_requires_exact_cue_and_channel():
+    from situated import decision_is_grounded
+
+    cues = [{"event_id": "music", "channels": ["AUDITORY"]}]
+    decision = {"attention": "noticed", "interpretation": "Someone may be nearby.",
+                "action": "speak", "cue_event_id": "music", "channel": "AUDITORY"}
+    assert decision_is_grounded(decision, cues, ("speak",))
+    assert not decision_is_grounded({**decision, "channel": "VISUAL"}, cues, ("speak",))
+    assert not decision_is_grounded({**decision, "cue_event_id": "other"}, cues, ("speak",))
+
+
+def test_cli_two_role_http_fixture_commits_visible_speech(tmp_path, monkeypatch, capsys):
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+    import sys
+    from threading import Thread
+
+    import run_p6
+
+    requests = []
+    spoken = "Could you give me a hand with this?"
+
+    class Fixture(BaseHTTPRequestHandler):
+        def do_POST(self):
+            request = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            payload = json.loads(request["messages"][-1]["content"])
+            requests.append((request["model"], payload))
+            if request["model"] == "fixture-semantic":
+                response = {"attention": "uncertain", "interpretation": "Private hypothesis",
+                            "action": "speak", "cue_event_id": None, "channel": None}
+            else:
+                response = {"text": spoken}
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(json.dumps({"choices": [
+                {"message": {"content": json.dumps(response)}},
+            ]}).encode())
+
+        def log_message(self, *_args):
+            pass
+
+    def cli(*args):
+        monkeypatch.setattr(sys, "argv", ["run_p6.py", "--state", str(tmp_path), *args])
+        assert run_p6.main() == 0
+        return json.loads(capsys.readouterr().out)
+
+    with ThreadingHTTPServer(("127.0.0.1", 0), Fixture) as server:
+        thread = Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        monkeypatch.setenv("SOROK_SITUATED_MODEL_ENDPOINT",
+                           f"http://127.0.0.1:{server.server_port}/chat/completions")
+        monkeypatch.setenv("SOROK_SITUATED_SEMANTIC_MODEL", "fixture-semantic")
+        monkeypatch.setenv("SOROK_SITUATED_EXPRESSIVE_MODEL", "fixture-expressive")
+        try:
+            cli("new", "--situated-house")
+            response = cli("wait", "1", "--request-id", "nearby")
+            assert spoken in json.dumps(response["narration"])
+            cli("wait", "1", "--request-id", "nearby")
+        finally:
+            server.shutdown()
+            thread.join()
+
+    assert [model for model, _ in requests] == ["fixture-semantic", "fixture-expressive"]
+    assert "Private hypothesis" not in json.dumps(requests[-1][1])
+    assert "Private hypothesis" not in json.dumps(response)
+    ledger = json.loads((tmp_path / "p4_receipts.json").read_text())
+    [turn] = ledger["turns"]
+    speech = turn["receipt"]["situated"]["speech"]
+    assert speech["admitted"]
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        assert speech["event_id"] in session.user_perceived_ids()
+        assert session.event(speech["event_id"])["body"]["text"] == spoken
+    finally:
+        owner.close()
