@@ -1,0 +1,38 @@
+name: SOROK MIII actor-owned scene continuity court
+on:
+  push:
+    branches:
+      - agent/sorok-miii-current-scene-action-context-20261110-r1
+
+permissions:
+  contents: read
+
+jobs:
+  actor-scene-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout source-pinned successor
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 12
+      - name: Verify frozen actor-initiative parent and narrow implementation delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor e44d790af52838c62111c24164aefeb99269365a HEAD
+          git diff --name-only e44d790af52838c62111c24164aefeb99269365a HEAD
+          unexpected="$(git diff --name-only e44d790af52838c62111c24164aefeb99269365a HEAD | grep -Ev '^WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/(actor_scene_context[.]py|situated[.]py|situated_provider[.]py|test_actor_scene_context[.]py)$|^[.]github/workflows/sorok-miii-actor-context-20261110[.]yml$' || true)"
+          test -z "$unexpected" || { echo "Unplanned change: $unexpected"; exit 1; }
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Actual P6 scene history and actor-scope adversarial cases
+        run: |
+          python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_scene_context.py
+      - name: Sourcefree initiative and epistemic grounding regressions
+        run: |
+          python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative.py WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_perception_claim_requires_exact_cue_and_channel
