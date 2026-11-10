@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// VMC-T1 R4 S0-S1 documentary validator. No original-source Python or respondent data execution.
+// VMC-T1 R5 S0-S1 documentary validator. No original-source Python or respondent data execution.
 // Usage: node validate_vmc_t1_r3.mjs --self-test --require-source
 import fs from "node:fs";
 import path from "node:path";
@@ -93,14 +93,16 @@ const audit = function audit(d){
  const a43=O.get("LMX-043");
  check("LMX043_ATOMIC_ROLLBACK_REPLAY",!!a43&&/ATOMIC/.test(a43.required_rule_or_refusal)&&/ROLLBACK/.test(a43.required_rule_or_refusal)&&/REPLAY/.test(a43.required_rule_or_refusal)&&a43.before_state.includes("STAGED"),"LMX-043");
 
- // Source-challenge semantic sentinels: pin the seven corrected distinctions.
+ // Source-challenge semantic sentinels: pin the seven R4 distinctions and two R5 counterexamples.
  // These check the returned representation; the accepted original code body must still be read separately.
  const claim=id=>C.get(id)||{};
  check("F08_CONFLICT_IS_EXCEPTION",claim("T1R2-F08-DUPLICATE-REFUSE").semantic_delta?.includes("Raise RuntimeError")&&claim("T1R2-F08-DUPLICATE-REFUSE").output_guarantee?.includes("no emitted conflict/review artifact"),"selector raises, not durable review");
  check("V549B_LITERAL_BINARY_ONLY",claim("T1R2-V549B-PRESENCE").semantic_delta?.includes("Textual 'present'/'absent' do not")&&claim("T1R2-V549B-PRESENCE").negative_refusal?.includes("remains unanchored"),"only numeric-string 1 and 0 anchor");
+ check("V549B_FALSE_COMPLEMENT_INCLUDES_ANCHOR_MISSING",claim("T1R2-V549B-PRESENCE").guard_rule_predicate?.includes("anchor-variable nulls retained as False")&&claim("T1R2-V549B-PRESENCE").output_guarantee?.includes("missing rows with nonmissing candidate values enter mask-False")&&claim("T1R2-V549B-PRESENCE").semantic_invariants?.includes("comparison complement (all nonmatching source-wide values)")&&ds.find(x=>x.delta_id==="D23_V549B_TEXT_ABSENCE_NOT_ANCHORED")?.finding.includes("missing anchor values are in the complement"),"anchor-missing row belongs to False comparison when candidate present; D23 tracks ranking hazard");
  check("V551_NEUTRAL_SHORT_CIRCUIT",claim("T1R2-V551-SIGNED-PROJECTION").guard_rule_predicate?.includes("neutral direction short-circuits")&&claim("T1R2-V551-SIGNED-PROJECTION").negative_refusal?.includes("neutral bypasses"),"no geometry claim for neutral");
  check("V551_PREFILTER_NOT_REPAIR_DEBT",claim("T1R2-V551-ADJUDICATE").negative_refusal?.includes("omitted, not automatically logged")&&claim("T1R2-V551-ADJUDICATE").guard_rule_predicate?.includes("10 explicit row predicates"),"candidate prefilter separate");
  check("V552_PARTIAL_CAN_SCORE",claim("T1R2-V552-PRESSURE").guard_rule_predicate?.includes("still permits a score")&&claim("T1R2-V552-PRESSURE").output_guarantee?.includes("pressure_measure_class stays conditional"),"partial selected coverage not automatically DENY");
+ check("V552_OVERCOUT_BLOCKED_STATUS_CAN_ALLOW",claim("T1R2-V552-PRESSURE").guard_rule_predicate?.includes("does NOT gate scoring on that overcount status")&&claim("T1R2-V552-PRESSURE").output_guarantee?.includes("response_surface_completeness_status=BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR simultaneously with pressure_score_status=OBSERVED_NONZERO, downstream_permission_status=ALLOW")&&claim("T1R2-V552-PRESSURE").negative_refusal?.includes("NOT an additional refusal")&&ds.find(x=>x.delta_id==="D25_V552_PARTIAL_SELECTED_SURFACE_SCORES")?.finding.includes("BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR"),"coverage BLOCKED is not a pressure score guard; D25 owns successor decision");
  check("V551J_TARGET_GATE_FALLBACK",claim("T1R2-V551J-CERTIFY").guard_rule_predicate?.includes("registry_resolved_share>0")&&claim("T1R2-V551J-CERTIFY").semantic_invariants?.includes("do not infer every component"),"target resolution not necessarily per component");
  check("V552J_PARTIAL_AND_TIE",claim("T1R2-V552J-EXACT-JOIN").guard_rule_predicate?.includes("score >=5")&&claim("T1R2-V552J-EXACT-JOIN").negative_refusal?.includes("ties at accepted score are not rejected"),"exact scope not full semantic equivalence");
 
@@ -139,9 +141,11 @@ const muts=[
  ["MISSING_EXPLICIT_WITNESS",d=>d.contracts[0].frozen_witness_source_record_keys="BOGUS:KEY"],
  ["F08_CONFLICT_AS_REVIEW_ARTIFACT",d=>d.contracts.find(x=>x.transform_id==="T1R2-F08-DUPLICATE-REFUSE").output_guarantee="typed manual review row emitted"],
  ["V549B_FALSE_TEXTUAL_NORMALIZATION",d=>d.contracts.find(x=>x.transform_id==="T1R2-V549B-PRESENCE").semantic_delta="Textual present and absent both become anchors"],
+ ["V549B_FALSE_ANCHOR_MISSING_EXCLUSION",d=>d.contracts.find(x=>x.transform_id==="T1R2-V549B-PRESENCE").guard_rule_predicate="Only observed 1 and 0 rows become comparison population; anchor nulls are excluded"],
  ["V551_NEUTRAL_FALSE_GEOMETRY",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551-SIGNED-PROJECTION").guard_rule_predicate="Every neutral and nonneutral response requires valid geometry"],
  ["V551_PREFILTER_FALSE_DEBT",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551-ADJUDICATE").negative_refusal="Every excluded raw input is registered as repair debt"],
  ["V552_PARTIAL_FALSE_DENY",d=>d.contracts.find(x=>x.transform_id==="T1R2-V552-PRESSURE").guard_rule_predicate="All partially covered selected response surfaces DENY scoring"],
+ ["V552_FALSE_OVERCOUT_SCORE_REFUSAL",d=>{const x=d.contracts.find(x=>x.transform_id==="T1R2-V552-PRESSURE");x.guard_rule_predicate=x.guard_rule_predicate.replace("does NOT gate scoring on that overcount status","does gate scoring on that overcount status and thus REFUSES excessive selected category count")}],
  ["V551J_TARGET_FALSE_ALL_COMPONENT",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551J-CERTIFY").semantic_invariants="Every component independently target certified"],
  ["V552J_TIE_FALSE_REFUSAL",d=>d.contracts.find(x=>x.transform_id==="T1R2-V552J-EXACT-JOIN").negative_refusal="Any tie is always a hard refusal"],
  ["FINITE_R4_DECISION_DROP",d=>d.finite.splice(d.finite.findIndex(x=>x.delta_id.startsWith("D25_")),1)],
