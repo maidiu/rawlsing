@@ -215,7 +215,7 @@ FAIL_OR_RED_IF: Denied grant, wrong root, forged reviewer independence, source b
 HOLD_IF: User-stopped operation, unmerged/owner-held adoption, unknown license, missing issuer or review cut.
 EVIDENCE: Permission and selected-host records, immutable reviewer/branch SHA, coherent own MD/JSON state and protected owner CAS receipt or NONE_VERIFIED.
 OWNER_OF_DECISION: Competent original rights holder, incumbent domain HQ and protected PRE-MAIN integrator as applicable, not a new court.
-**DISPATCH PREFLIGHT:** Each actual copied commission must instantiate all 3×5 fields rather than merely quoting this template. A sourcefree engineering PASS plus scientific/authority HOLD is valid. A real RED remains RED regardless of favorable author tests.
+**DISPATCH PREFLIGHT:** Each actual copied commission must instantiate all 3×5 fields rather than merely quoting this template. A sourcefree engineering PASS plus scientific/authority HOLD is valid. A real RED remains RED regardless of favorable author tests. **CONSTRUCTION/REPAIR GATE:** Apply §3A of `CROSS_HQ_CONTROL_ROOM/HQ_JUDGMENT_BEARING_RETURNS_INTAKE_AND_DUAL_ECONOMY_COMMISSION_LAW_R1.md` in this same launch: frozen source→consumer contract, source-derived positive/negative oracle, prebuild challenge, verified execution/preflight and finite closure; for repairs, immutable defect, reproducer/root cause, dependency impact and reusable regression/delta review. Enforce via the existing copy-paste commission checker; no extra tribunal, tracker, blanket historical recensus or interruption of live workers.
 <!-- HQ_RULE_END id=HQ-C2R-030 -->
 
 ## PRE-MAIN-only applied rules and reviewer/rights separation
