@@ -1,55 +1,42 @@
-# VMC-T2 / Issue #870 — R2 actual transformation seam court
+# VMC-T2 / Issue #870 — R3 independent transformation seam court
 
-**Terminal:** `VMC_T2_R2_H235_C62_J82_G49_RECONCILED_AT_S1__BOUND_CODE_POSITIVES_AND_FINITE_HOLDS__NOT_NATIVE_EQUIVALENCE__NO_MERGE`.
+**Disposition:** AUTHOR-SCOPE R3 DOCUMENTARY/CODE RETURN; **NOT** independent acceptance, not original35/native zero loss, not adoption/retirement, not a protected merge. Source selection and scientific/actor decisions remain with competent owners.
 
-This is the **substantive R2 correction of the same isolated VMC-T2 return**, superseding the first author return at branch commit `f483659b2e985c4525387636a3a719639f52d8f7`. That first return established an identity index but repeated generic selection/consumer holds; it did **not** adjudicate individual semantic changes adequately. R2 adds explicit H-input→rule→meaning→output, P stage requirement, protected C code and effective rule/first-reader distinction, bounded variation, independent current-first findings and exact finite actions. It does not turn these held links into a success verdict.
+**Evidence cuts**
+- Protected PRE-MAIN: `integration/pre-main-reconciliation-r1@256d46bf425cc37e114465cddbe3c60e535766ab` (never edited).
+- Frozen R8 historical atlas: `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`; independent P4: `bc0c5c4b52d22aac8dd0adc699dc59b664ab81a9`.
+- Latest independently **unaccepted** T1 **R3** historical return: `T1_R3_exact_commit@effa0a9e2aa9b2c156c43bd8c093f45faaa291b6`, `HISTORICAL_TRANSFORM_CONTRACTS.tsv` (52), `R1_CANDIDATE_FATES.tsv` (235), `SOURCE_RECORD_TO_TRANSFORM.tsv` (10,348), `INHERITED_OBLIGATION_FATES.tsv` (74), and `C6_SELECTED_AUTHORITY_EVIDENCE.tsv` (94).
+- Previous T2 R2 `b42bd4519ac73953276cc13b9197a843bff08bc0`: preserved actual code findings, replaced superseded evidence joins; R3 is a **new commit on the same isolated T2 branch**, no Git branch rebase.
+- All target code provenance grades here are S0–S1 static reads; no actual runtime dataset, native selected call, source original execution, or scientific equivalence test.
 
-## Immutable identities and boundaries
+## Actual return and grains
 
-- Commission: [Issue #870](https://github.com/maidiu/rawlsing/issues/870). Independent present-code/architecture investigator; no T1 authorship, canonical ZL-15 acceptance, source/science/Sorok authority or self-review.
-- Existing isolated evidence branch: `research/vmestye-vmc-t2-programma-transform-seams-r1`. Repair uses the existing branch and exclusive current head lease, no new branch fleet, no edits to paused work.
-- Frozen R8 startup candidate: `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`, PR #864. P4 independent report: `bc0c5c4b52d22aac8dd0adc699dc59b664ab81a9`, PR #868. Unmerged reports are evidence, not protected code.
-- Protected PRE-MAIN: `integration/pre-main-reconciliation-r1@256d46bf425cc37e114465cddbe3c60e535766ab`, code body read at S0–S1.
-- Independent T1 #869 exact author head: `0a0172960596f53125ee93e2698d15c7aa3db8eb`; its 235 historical contract candidates, negatives, source grades and nine finite residuals were used without declaring them accepted science.
-- Roadmap scope: selected October 28 physical/source-authoritative hybrid; G4 S01–S11 51 child + 11 major components, 82 conditional typed J dependencies and 49 finite GAP decisions. Prior #777/#784/#787–790 remain PAUSED (Nov 8 freeze), not dispatched, reopened or edited.
-- Execution: authenticated GitHub S0–S1 source/body reads + isolated documentary Git tree writes. No real original35 respondent execution, S2/S3 simulation, tests, production implementation, source consent grant, scientific equivalence, N11 assent, N12 wake, Sorok actor authority or merge. Actual internal model effort indicator is not exposed to this investigator; no unverifiable GPT-6 High attestation.
+| File | Exact grain | Count |
+| --- | --- | ---: |
+| `INTENDED_ACTUAL_TRANSFORMATION_MAP.tsv` | one distinct T1 R3 historical candidate semantic contract, still labeled T1R2-* by the T1 author | 52 |
+| `DISCREPANCY_AND_OWNER_ACTIONS.tsv` | one finite contract-specific decision per T1 R3 contract plus one per bounded current-first capability | 63 (52+11) |
+| `REVERSE_CONSUMER_TRACES.tsv` | graded source/code/roadmap reverse evidence, not all callsites | 534 |
+| `R1_235_TO_T1_R3_52_CROSSWALK.tsv` | exact preserved 235 R1 identity fates, using T1 R3 specific fate judgments; seven strict static branch successors, not 235 functions | 235 |
+| `SEMANTIC_VARIATION_AND_FAULT_CASES.md` | hostile, typed transformation/negative cases | qualitative |
+| `PIPELINE_DECISION_BRIEF.md` | material H→P→C stage story and finite owner gates | qualitative |
+| `validate_vmc_t2_r3.mjs` | portable structural/source-cut and bounded lexical anti-join checks | runnable against the return and optionally a checked-out protected `rawlsing_next` |
 
-## Return files and denominators
+**Reverse category counts:** `CURRENT_FIRST_CAPABILITY` 11; `ROADMAP_SECTION_NOT_RUNTIME` 11; `ROADMAP_NAMED_CHILD` 51; `J_TYPED_SEAM_EDGE` 82; `G4_ORIGINAL_GAP` 49; `T1_R3_DISTINCT_CONTRACT` 52; `PROTECTED_PY_MODULE_CENSUS` 160; `DIRECT_PROTECTED_CALLSITE` 44; `INHERITED_LONG_MEMORY_OBLIGATION_NOT_RUNTIME` 74. Only the **44 DIRECT_PROTECTED_CALLSITE** rows are exact lexical callsite witnesses. The 82 seam edges, 49 G4 GAPs and 51 roadmap children are **not** magically converted into executed caller traces. The 160 protected Python module rows are a file-grain census of non-test modules, **not** a statement that every conceivable dynamic consumer has been discovered. Eleven bounded current-first capabilities are separately accounted for with no fabricated ancestry.
 
-| File | Auditable scope |
-| --- | --- |
-| `INTENDED_ACTUAL_TRANSFORMATION_MAP.tsv` | **248** rows: exact **235 unique T1 historical IDs** (own grain, once each) + **13** T2 adversarial/current-first pilots; **27 explicit H/P/C columns** including selected predicates, code scope/grade, actual first reader, equivalence boundary and finite action. Each supports one or more of 34 groups. |
-| `DISCREPANCY_AND_OWNER_ACTIONS.tsv` | **39** finite independent decisions: 30 non-admin group decisions, 7 exact F03/F08 branch choices, 2 newly distinguished current-only M4/M5 capabilities. Separate P requirement, C code/consumer and source/authority prerequisites. |
-| `REVERSE_CONSUMER_TRACES.tsv` | **475** rows: 62 G4 components + 82 conditional seams + 49 GAPs + 248 H/pilot + 34 semantic-group reverse probes, in five explicitly labeled grains. No fabricated direct H↔C reciprocity. |
-| `SEMANTIC_VARIATION_AND_FAULT_CASES.md` | **13** hostile pilots plus current-first M2/M3/M4/M5, shifted-stage and negative fault cases. |
-| `PIPELINE_DECISION_BRIEF.md` | Terminal-risk-ranked “we have X, change by Y, produce Z for Q”; selected owner/stage, protected actuality and earliest missing edge. |
-| `00_RETURN.md` | Exact heads, validation scope, grade and handoff. |
+**Author-scope validation:** `node validate_vmc_t2_r3.mjs` PASSED on the full local R3 return: **2,345 assertions, 0 failures**, including nine synthetic hostile mutations (ID collision, stale source, invented alias, missing branch, graph-as-code, missing atomicity, absent current-only, tampered module SHA and fake callsite). A separate S1 re-read of **all 160 exact protected non-test Python source bodies** matched all file/blob SHA inventory entries, reconfirmed **44/44** enumerated lexical callsites, and found **zero** bounded lexical non-test direct callers among the nine explicitly named M1/M2/M3/M5/learned consumer probes. This is a *bounded static lexical negative*, not Python reachability under dynamic imports, native execution or an exhaustive anti-join. The committed validator can recheck hashes and callsites using `--protected-root` when an independent reviewer has a verified checkout at the protected SHA; that optional external-checkout mode was **not run** in this author's environment.
 
-**Do not add these populations to obtain a function count.** T1 includes documentary negatives/decisions/aliases and unknown historical execution, and the 34 analysis groups include nonfunctional courts and current-only capabilities. A source identity mapping to a group is **not** evidence of successful equivalent implementation. Splits, compositions, many-to-one groupings and candidate retirement are held where provenance/owner is missing.
+**Historical crosswalk truth:** 235 identities, 235 explicit fates, 7 `SAME_CODE_BRANCH_ON_STATIC_EVIDENCE__NOT_ORIGINAL_EXECUTION` links; the other 228 are **not** granted semantic equivalence. T1 R3 reported witness/source co-occurrences are NOT aliases or implementations. Forty-four LMX and thirty LMQ obligations remain preserved in their own grain; especially LMX-043 staged→validated→atomic promotion / rollback / idempotent replay. Neither their retirement nor current implementation is presumed.
 
-## Material code-body judgments corrected in R2
+## Epistemic boundaries
 
-1. **I05 is already internally wired.** `universal_grammar/native_map.py:1471–1539` invokes `pre553_recursive_handoff.py:516–613`; campaign `execute:2463`→`activate:2517` constructs N+1 parent. Remaining issue is external original35 issuer/campaign authority and real selected first source consumer, not “build recursion”.
-2. **V555 M2 exists:** `m2_v555_atomic_route.py:170–190` constructs source→mediation→receiver identity, exact closure and refusals from accepted M1. **V556 M3 exists:** `m3_v556_higher_order_structural.py:777–959` validates 2..n higher-order rule/source/composition/result-schema authority and no-object path. No protected non-test caller of either exact evaluate function was found across 160 production Python modules; M4 has constructors to accept their typed outputs. No whole-family native guarantee follows.
-3. **V557/V558 current M4 implements governed immutable structural carriage.** `m4_v557_v558_publication_repository.py:506,573,1033,1361` performs permission governance, publication, repository build, exact-key resolution/denial. `gt12_d_to_m4_typed_bridge.py:547–649` uses it for exact **narrow Q86 V554** source relation, not all V555/V556 or N11. Historic V557 “renderer” / V558 “gate” names do not identify the same functions.
-4. **M5 actually materializes CURRENT-only structural context:** `m5_runtime_rsc_peer_prior.py:195,249,535,977,1038,1122` requires exact M4 evidence and competent CURRENT receipt; structural peer use has no actor effect. `sourcefree_world/world.py:65–85` reads selected producer payload through M4/M5 at explicit **TEST_ONLY** grade. No operative N9 selected consumer is thereby proved.
-5. **N9 narrower path defect is real:** `prev3_objective_position_v557_v558_publication.py:22` imports `prev3_objective_position_materializer`, absent at protected cut. This is not proof M4/M5 is absent, nor a mandate to implement the missing module without a selected owner demand.
-6. **F03/F08 remain substantive rule-selection holds:** protected WVS7 FQRA mention is `B_COUNTRY` route only; does not mutate six historic relation coordinates. Historic F08 can be `RELATION_EVIDENCE` and simultaneously `review_required=true`, `allowed_as_v551=false`; role label does not authorize use. Generic C11 projection/validation does not prove selected AR-0047–50 rule.
-7. **N10E, C11, I03 and learned flow have genuine protected internals:** `pre553_source_backed_c11_facade.py` projects typed response/weight/routing; `pre553_empirical_query.py:685–752` checks queries; `pre553_analytical_composition.py:1064–1130` invokes I03; `pre553_learned_world_composition.py:1121–1203` has M1→M2→B5. Their source/science/current first-reader junctions remain separately qualified.
-8. **Actor boundary is not automatically live:** M6 actor-safe gate, bounded V3 opportunity/encounter executor and WSC GT0 zero-effect thread have protected code; GT0 explicitly refuses a positive actor path. Private player attention is not an observable cue, and no native Sorok reader is asserted.
+1. **H:** historical original input, selected issuer/AR edition (if evidenced), transformation, purpose, output, negative branch, next historical consumer. The 52 stable T1R2 identifiers are **candidate** obligations; the T1 R3 report refines the source relation and selected C6 grade without changing their ID string. Source report, selected release reported by C6, and *original runtime invocation* are three different propositions.
+2. **P:** independently reconstructed plausible adopted Oct28 S01–S11 stage and competent owner. Each of 52 edges is contract-specific, but **not every one has exact contract-specific adopted authority**. The map explicitly says `NO_HISTORICAL_CONTRACT_SPECIFIC_ADOPTION_PROVED`. An owner decision is needed before a missing capability becomes a mandatory PROGRAMMA requirement.
+3. **C:** protected code emitted output from static body **if called** versus actually proven source-selected invocation and first reader. Where a method exists (M2/M3/M4/M5/M6 etc.) we do NOT misstate implementation absence. Where a protected code consumer is unknown we do NOT pretend a generic facade is an observed consumer.
+4. **Current-first:** protected capabilities may be independent of legacy and stronger than historical carriers. No retroactive need to port legacy algorithm if the owner can evidence equivalent downstream guarantees under admissible variation.
+5. A schema field, named graph seam, hash, review-approved candidate, or sourcefree `TEST_ONLY` call does not prove actual selected data mutation, source provenance, live consumer or authorized effect.
 
-## What remains unproved
+## Finite stop and handoff
 
-- Real source-issued edition/rights/conditioner/science for all original35; exact selected F03/F08 source and six-coordinate/review/use output.
-- Full 2..n historical structural/joint semantics under qualified first consumer, beyond proven bounded M2/M3/GT12 Q86 code.
-- Operative non-test N9 current-as-of world selection and its actual N10W read; M4/M5/TEST_ONLY does not supply it.
-- N11 formal all-applicable acceptance and separate N12 wake; Sorok actual actor owner/importer.
-- Source/version-specific semantic equivalence or owner-approved retirement for every demand-positive historical obligation, including T1 nine finite residuals and archival unknowns.
+The court is structurally closed at these **candidate grains** (52/235/74 and bounded 160 code-file census), NOT scientifically/functionally accepted. See per-contract missing edge in the map and owner action row. The initial decisions with greatest terminal risk are source identity/scope/permission/refusal, V548 cohort partition/recursion, V551 signed atoms→V552 pressure, J same-person joins, and Long Memory publish/replay; these must be decided by the named source/science/Pyat/Sorok owners in that order of consequence, not row count.
 
-Each discrepancy has earliest producer→consumer boundary, output risk, competent owner, an S0–S1 distinguishing question and a separately held S2/S3 test in the tabular return. The absence of global source/science grants **is not** labeled as “all code missing”.
-
-## Publication / handoff
-
-These six files supersede the weaker original six files **on the existing T2 evidence branch only**. Downstream consumers are existing ZL-15 #814 (canonical author after independent receiving), ZL-16 #815 (historical-forward) and ZL-17 #816 (reverse/uniqueness) independent reviewers, and P4 #817 for finite epistemic closure. No PR merge or self-acceptance.
-
-**Outcome:** Documentary H/P/C and reverse semantic seams reconstructed, with bounded protected positives and finite owner holds. **Native/whole-product equivalence remains HELD.**
+Issue #870 R3 should be handed to independent receiving by **#815 (historical forward), #816 (current reverse), #817 (epistemic P4)** and existing canonical #814 after those reviews. Earlier #777/#784/#787–#790 remain paused; their work was read/reused, not unpaused or rewritten. No production edits, protected writes, scientific/actor/authority grant, merge or self-acceptance.
