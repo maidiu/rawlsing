@@ -15,7 +15,7 @@ jobs:
       - name: Checkout exact successor branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 12
+          fetch-depth: 80
       - name: Verify immutable MIII R1 base and narrow changes
         shell: bash
         run: |
