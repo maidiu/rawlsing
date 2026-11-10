@@ -308,6 +308,10 @@ def verify_return(commission, returned, candidate_sha, root):
     if contract is None:
         return {"status": "RED_INCOMPLETE", "errors": errors}
     expected_ids = _expected_id_set(root, contract, errors)
+    # Each per-obligation frozen source must resolve too; scope source alone
+    # does not authenticate the potentially distinct scientific/code inputs.
+    for obligation in contract["obligations"]:
+        _verified_source_bytes(root, obligation["source"], errors, "OBLIGATION_" + obligation["id"])
     block = _extract_block(returned, EVIDENCE_BEGIN, EVIDENCE_END, errors)
     proof = {}
     coverage = []
