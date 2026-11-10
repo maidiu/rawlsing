@@ -30,9 +30,10 @@ def movement_evidence(session, event, world, house):
             or body.get("target") != destination or world.positions.get(user) != destination
             or house["rooms"].get(origin, {}).get("other") != destination):
         raise RecursionRefusal("P6_ENCOUNTER_MOVEMENT_SOURCE_MISMATCH")
-    if not any(row["kind"] == "P6_HOUSE_CONDUCT" and row["clock"] == event["clock"]
-               and row["body"] == {"event_id": event["event_id"], "operation": "GO"}
-               for row in reversed(session.episodes(user))):
+    parent = next((row for row in reversed(session.episodes(user))
+                   if row["kind"] == "P6_HOUSE_CONDUCT" and row["clock"] == event["clock"]
+                   and row["body"] == {"event_id": event["event_id"], "operation": "GO"}), None)
+    if parent is None:
         raise RecursionRefusal("P6_ENCOUNTER_MOVEMENT_PARENT_MISSING")
 
     fixture = house.get("movement_visual_fixture")
@@ -40,6 +41,11 @@ def movement_evidence(session, event, world, house):
                     and digest(VISUAL_FIXTURE) == VISUAL_SOURCE
                     and event["clock"] == house["epoch"] + 1
                     and [origin, destination] == VISUAL_FIXTURE["transition"])
+    uptake_status = {
+        "ELIGIBLE": "HOLD_ACTOR_REGISTRATION_OWNER_MISSING",
+        "UNKNOWN": "HOLD_SENSORY_SOURCE_UNQUALIFIED",
+        "UNAVAILABLE": "NOT_ELIGIBLE_FOR_REGISTRATION",
+    }
     evidence = []
     for actor in ("A", "B"):
         position = world.positions.get(actor)
@@ -55,10 +61,11 @@ def movement_evidence(session, event, world, house):
             "grade": "SOURCEFREE_TEST_ONLY",
             "root": house["root"], "branch": house["branch"], "clock": event["clock"],
             "event_id": event["event_id"], "event_hash": event["hash"],
+            "conduct_parent": parent["episode_id"],
             "world_source": house["source"], "modality_source": VISUAL_SOURCE if modality else None,
             "performer": user, "recipient": actor,
             "origin": origin, "destination": destination, "recipient_location": position,
             "modality": modality, "eligibility": eligibility, "basis": basis,
-            "uptake": "HOLD_ACTOR_REGISTRATION_OWNER_MISSING",
+            "uptake": uptake_status[eligibility],
         })
     return evidence

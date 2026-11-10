@@ -29,6 +29,10 @@ def test_house_reopens_with_two_separate_closure_triggers(tmp_path):
 
     adjacent = run("go", target="living room")
     assert adjacent["clock"] == opening["clock"] + 1
+    moved = json.loads((tmp_path / "p4_receipts.json").read_text())["turns"][-1]["receipt"]
+    assert all(row["modality"] is None and row["eligibility"] == "UNKNOWN"
+               and row["uptake"] == "HOLD_SENSORY_SOURCE_UNQUALIFIED"
+               for row in moved["encounter_evidence"])
     house, episodes, perceived = canonical_house()
     assert set(house["history"]) == {"strap-repair", "bench-installation"}
     closure = next(row for row in episodes if row["kind"] == "P6_OBJECT_CLOSURE")
@@ -116,8 +120,10 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         evidence = turn["receipt"]["encounter_evidence"]
         assert [row["eligibility"] for row in evidence] == ["ELIGIBLE", "UNAVAILABLE"]
         assert all(row["event_hash"] == event["hash"] and row["clock"] == event["clock"]
-                   and row["uptake"] == "HOLD_ACTOR_REGISTRATION_OWNER_MISSING"
                    for row in evidence)
+        assert [row["uptake"] for row in evidence] == [
+            "HOLD_ACTOR_REGISTRATION_OWNER_MISSING", "NOT_ELIGIBLE_FOR_REGISTRATION",
+        ]
         assert "encounter_evidence" not in json.dumps(result)
         assert experience(state, args)["clock"] == result["clock"]
         assert ledger_path.read_bytes() == raw
@@ -126,6 +132,10 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         try:
             session = owner.base_owner.fanin.session
             assert session.event(event["event_id"]) == event
+            parent = next(row for row in session.episodes(session.meta["user_actor"])
+                          if row["kind"] == "P6_HOUSE_CONDUCT"
+                          and row["body"]["event_id"] == event["event_id"])
+            assert {row["conduct_parent"] for row in evidence} == {parent["episode_id"]}
             for actor in ("A", "B"):
                 assert not any(row["event_id"] == event["event_id"]
                                for row in session.product.store.perceptions(session.branch_id, actor))

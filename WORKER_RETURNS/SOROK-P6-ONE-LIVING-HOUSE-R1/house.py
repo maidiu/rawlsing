@@ -172,7 +172,10 @@ def perform(session, action):
     session.product._checkpoint(session.branch_id, world.clock, world)
     receipt = {"performed": event}
     if moving:
-        receipt["encounter_evidence"] = movement_evidence(session, event, world, house)
+        committed_world, committed_house = read_house(session)
+        receipt["encounter_evidence"] = movement_evidence(
+            session, event, committed_world, committed_house,
+        )
     return receipt, {"admission": "ADMITTED", "performed": True,
                      "observation": project_event(event)}
 
