@@ -18,9 +18,9 @@ FULL_FAMILY_FLIGHTS = {1: (58, "release_id", AR_SEED),
                        8: (182, "zak_evidence_key", R2_INHERITANCE),
                        10: (182, "zak_evidence_key", R2_INHERITANCE),
                        11: (182, "zak_evidence_key", R2_INHERITANCE)}
-BAD = re.compile("[\\u00ad\\u200b\\u200c\\u200d\\u2060\\ufeff]")
-FLIGHT_RE = re.compile(r"^\\d+\\. (WORKER_RETURNS/[^\\n]+)$", re.M)
-TASK_RE = re.compile(r"^[1-4]\\. (.+)$", re.M)
+BAD = re.compile("[\u00ad\u200b\u200c\u200d\u2060\ufeff]")
+FLIGHT_RE = re.compile(r"^\d+\. (WORKER_RETURNS/[^\n]+)$", re.M)
+TASK_RE = re.compile(r"^[1-4]\. (.+)$", re.M)
 
 def git(*args):
     p = subprocess.run(["git", "-C", str(ROOT), *args],
@@ -33,7 +33,7 @@ def source_bytes(path, commit):
     return git("show", commit + ":" + path)
 
 def load_contract(text):
-    match = re.search(r"MCR_COMPLETION_CONTRACT_BEGIN\\n(.*?)\\nMCR_COMPLETION_CONTRACT_END", text, re.S)
+    match = re.search(r"MCR_COMPLETION_CONTRACT_BEGIN\n(.*?)\nMCR_COMPLETION_CONTRACT_END", text, re.S)
     if not match:
         raise AssertionError("missing completion contract")
     contract = {"MCR_SCOPE": [], "MCR_OBLIGATION": [], "MCR_RECEIVING": []}
@@ -66,7 +66,7 @@ def required_ids(n, contract=None):
         expected, col, source = FULL_FAMILY_FLIGHTS[n]
         assert scope["expected_count"] == expected and scope["identity_columns"] == [col]
         assert s["path"] == source, (n, s["path"], source)
-        rows = list(csv.DictReader(source_bytes(s["path"], s["commit"]).splitlines(), delimiter="\\t"))
+        rows = list(csv.DictReader(source_bytes(s["path"], s["commit"]).splitlines(), delimiter="\t"))
         ids = [json.dumps([row[col]], ensure_ascii=False, separators=(",", ":")) for row in rows]
     else:
         assert "identity_columns" not in scope
@@ -82,13 +82,13 @@ def validate_one(n, text=None):
     orig_tasks = TASK_RE.findall(old[old.index("REQUIRED POSITIVE/NEGATIVE/CONSUMER CHALLENGE"):
                                  old.index("DELIVERABLE FILES")])
     orig_outputs = FLIGHT_RE.findall(old[old.index("DELIVERABLE FILES"):old.index("ENGINEERING COURT")])
-    orig_outputs = [p.replace("\\u00ad", "") for p in orig_outputs]
+    orig_outputs = [p.replace("\u00ad", "") for p in orig_outputs]
     assert len(orig_tasks) == 4 and 3 <= len(orig_outputs) <= 4
     contract, raw = load_contract(current)
     assert not BAD.search(current), "hidden Unicode"
     assert "315251451a6d112fb312a6e80b096d345c5de6" not in current, "D01 invalid commit"
     assert not re.search(r"(?<![0-9a-f])[0-9a-f]{30,39}(?![0-9a-f])", current, re.I), "truncated source hash"
-    assert not re.search(r"(?<![A-Za-z0-9])[0-9a-f]{8}\\.\\.\\.", current, re.I), "abbreviated digest"
+    assert not re.search(r"(?<![A-Za-z0-9])[0-9a-f]{8}\.\.\.", current, re.I), "abbreviated digest"
     assert len(contract["MCR_OBLIGATION"]) == 5 + len(orig_outputs), (n, "task or output omitted")
     records = {item["id"]: item for item in contract["MCR_OBLIGATION"]}
     assert len(records) == len(contract["MCR_OBLIGATION"]), "duplicate obligation"
@@ -128,7 +128,7 @@ def self_test():
     assert validate_one(11)["obligations"] == 8
     for mutant in [
         s.replace("ZAK11-TASK-01", "ZAK11-OMITTED-01", 1),
-        s.replace("EPISTEMIC_GRADE_MATRIX.tsv", "EPIS\\u00adTEMIC_GRADE_MATRIX.tsv", 1),
+        s.replace("EPISTEMIC_GRADE_MATRIX.tsv", "EPIS\u00adTEMIC_GRADE_MATRIX.tsv", 1),
         s.replace("ZAK11-OUTPUT-02", "ZAK11-TASK-01", 1),
     ]:
         try:
@@ -151,7 +151,7 @@ def main():
         return
     if args.enumerate_expected:
         assert args.flight
-        print("\\n".join(required_ids(args.flight)))
+        print("\n".join(required_ids(args.flight)))
         return
     reports = [validate_one(n) for n in (range(1, 12) if args.all else [args.flight])]
     print(json.dumps(reports, indent=2))
