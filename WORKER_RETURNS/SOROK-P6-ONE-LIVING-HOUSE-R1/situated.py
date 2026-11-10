@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from developmental_recursion.contracts import digest
 from house import read_house
-from actor_initiative import ACTION as VISIT_ADJACENT, destination_affordance, visit_adjacent_room
+from actor_initiative import ACTION as VISIT_ADJACENT, destination_affordance, issue_visit_admission, visit_adjacent_room
 from situated_provider import ModelUnavailable
 
 
@@ -160,7 +160,11 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
 
     result.update(status="INTERPRETED", decision=decision)
     if decision["action"] == VISIT_ADJACENT:
-        result["movement"] = visit_adjacent_room(session, actor["actor_id"], packet=packet, decision=decision)
+        admission = issue_visit_admission(session, packet, decision)
+        result["movement"] = visit_adjacent_room(
+            session, actor["actor_id"], packet=packet,
+            decision=decision, admission=admission,
+        )
     elif decision["action"] == "speak":
         try:
             expressive_decision = {key: value for key, value in decision.items() if key != "interpretation"}
