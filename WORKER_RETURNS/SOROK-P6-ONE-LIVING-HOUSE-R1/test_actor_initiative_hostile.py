@@ -145,7 +145,15 @@ def test_quiet_streak_not_conflated_with_scene_age_or_continuing_music(tmp_path)
     assert packets[-1]["scene_elapsed"] >= 2
     go = _run(state, "go", choose, target="living room", request_id="go")
     assert go["admission"] == "ADMITTED", go
-    assert packets[-1]["interaction_quiet"]["elapsed"] <= 1
+    # Ordinary GO has no actor-qualified sensory cue in this sourcefree
+    # fixture, so it need not invoke the model immediately. The next quiet
+    # interval must nevertheless see the real committed move as a reset.
+    committed_go = json.loads((state / "p4_receipts.json").read_text())["turns"][-1]
+    go_event_id = committed_go["receipt"]["performed"]["event_id"]
+    _run(state, "wait", choose, duration=1, request_id="after-go")
+    assert packets[-1]["interaction_quiet"]["last_break_event_id"] == go_event_id
+    assert packets[-1]["interaction_quiet"]["elapsed"] == 2
+    assert packets[-1]["scene_elapsed"] > packets[-1]["interaction_quiet"]["elapsed"]
     # A fresh compact music scene tests ongoing sound without relying on the
     # finite workshop's ability to remain open after many completed work beats.
     music_state = tmp_path / "music"
