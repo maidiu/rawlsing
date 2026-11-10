@@ -3,6 +3,9 @@
 import argparse
 import json
 import re
+import hashlib
+import csv
+import subprocess
 from pathlib import Path
 
 FIELDS = [
@@ -42,6 +45,244 @@ def _require_parts(header, key, names, errors):
         value = parts.get(name, "")
         if len(value) < 12 or value.upper() in {"TBD", "TODO", "PLACEHOLDER", "TO_BE_DECIDED", "NONE"}:
             errors.append("MISSING_SPECIFIC_" + key + "_" + name)
+
+
+
+# MCR-C: this lives in the existing launch checker. Never use the candidate's
+# own format PASS as substantive or independent acceptance.
+MCR_BEGIN = "MCR_COMPLETION_CONTRACT_BEGIN"
+MCR_END = "MCR_COMPLETION_CONTRACT_END"
+EVIDENCE_BEGIN = "MCR_COMPLETION_EVIDENCE_BEGIN"
+EVIDENCE_END = "MCR_COMPLETION_EVIDENCE_END"
+HEX40 = re.compile(r"^[0-9a-f]{40}$")
+HEX64 = re.compile(r"^[0-9a-f]{64}$")
+ID = re.compile(r"^[A-Z][A-Z0-9_-]{2,79}$")
+BAD_UNICODE = re.compile(r"[\u00ad\u200b\u200c\u200d\u2060\ufeff]")
+VAGUE = {"", "TBD", "TODO", "UNKNOWN", "N/A", "NONE", "PLACEHOLDER", "LATER",
+         "TO BE DECIDED", "AS NEEDED", "SEE ABOVE"}
+GRADES = {"S0": 0, "S1": 1, "S2": 2, "S3": 3}
+
+
+def _specific(value, label, errors, minimum=16):
+    if not isinstance(value, str) or len(value.strip()) < minimum or value.strip().upper() in VAGUE:
+        errors.append("MCR_C_UNSPECIFIED_" + label)
+        return False
+    return True
+
+
+def _safe_path(value):
+    if not isinstance(value, str) or BAD_UNICODE.search(value) or "\\" in value:
+        return False
+    if not value or value.startswith("/") or re.match(r"^[A-Za-z]:", value):
+        return False
+    return not any(c in {"", ".", ".."} for c in value.split("/"))
+
+
+def _source_tuple(value, errors, label, check_git=False):
+    if not isinstance(value, dict) or set(value) != {"path", "commit", "blob"}:
+        errors.append("MCR_C_SOURCE_TUPLE_REQUIRED_" + label)
+        return
+    if not _safe_path(value["path"]):
+        errors.append("MCR_C_UNSAFE_SOURCE_PATH_" + label)
+    for k in ("commit", "blob"):
+        if not isinstance(value[k], str) or not HEX40.fullmatch(value[k]):
+            errors.append("MCR_C_INVALID_40HEX_" + k.upper() + "_" + label)
+    if check_git and _safe_path(value["path"]) and all(
+            isinstance(value[k], str) and HEX40.fullmatch(value[k])
+            for k in ("commit", "blob")):
+        try:
+            actual = subprocess.run(
+                ["git", "rev-parse", value["commit"] + ":" + value["path"]],
+                capture_output=True, text=True, timeout=12, check=False,
+            )
+            if actual.returncode or actual.stdout.strip() != value["blob"]:
+                errors.append("MCR_C_SOURCE_BLOB_MISMATCH_" + label)
+        except (OSError, subprocess.TimeoutExpired):
+            errors.append("MCR_C_SOURCE_BLOB_UNVERIFIED_" + label)
+
+
+def _extract_block(text, begin, end, errors):
+    if text.count(begin) != 1 or text.count(end) != 1:
+        errors.append("MCR_C_MISSING_OR_DUPLICATE_BLOCK_" + begin)
+        return ""
+    first = text.index(begin) + len(begin)
+    last = text.index(end)
+    if first >= last:
+        errors.append("MCR_C_REVERSED_BLOCK_" + begin)
+        return ""
+    return text[first:last].strip()
+
+
+def _json_record(raw, prefix, errors):
+    def reject_duplicates(pairs):
+        result = {}
+        for k, v in pairs:
+            if k in result:
+                raise ValueError("duplicate JSON key " + k)
+            result[k] = v
+        return result
+    try:
+        return json.loads(raw, object_pairs_hook=reject_duplicates)
+    except (ValueError, TypeError) as e:
+        errors.append("MCR_C_INVALID_JSON_" + prefix + ":" + str(e)[:75])
+        return None
+
+
+def completion_contract(prompt, errors, check_git=False):
+    block = _extract_block(prompt, MCR_BEGIN, MCR_END, errors)
+    if not block:
+        return None
+    records = {"MCR_SCOPE": [], "MCR_OBLIGATION": [], "MCR_RECEIVING": []}
+    for line in block.splitlines():
+        if not line.strip():
+            continue
+        key, sep, payload = line.strip().partition(":")
+        if sep != ":" or key not in records:
+            errors.append("MCR_C_UNKNOWN_CONTRACT_RECORD_" + key[:42])
+            continue
+        rec = _json_record(payload.strip(), key, errors)
+        if isinstance(rec, dict):
+            records[key].append(rec)
+        else:
+            errors.append("MCR_C_NONOBJECT_" + key)
+    if len(records["MCR_SCOPE"]) != 1 or len(records["MCR_RECEIVING"]) != 1:
+        errors.append("MCR_C_ONE_SCOPE_AND_RECEIVING_REQUIRED")
+    if not records["MCR_OBLIGATION"]:
+        errors.append("MCR_C_NO_OBLIGATIONS")
+    if errors and (len(records["MCR_SCOPE"]) != 1 or len(records["MCR_RECEIVING"]) != 1):
+        return None
+    scope = records["MCR_SCOPE"][0]
+    for k in ("parent", "enumerator", "no_drop_check"):
+        _specific(scope.get(k), "SCOPE_" + k.upper(), errors, 20)
+    if not isinstance(scope.get("expected_count"), int) or isinstance(scope.get("expected_count"), bool) or scope["expected_count"] < 1:
+        errors.append("MCR_C_EXPECTED_COUNT_REQUIRED")
+    _source_tuple(scope.get("source"), errors, "SCOPE", check_git)
+    if scope.get("enumerator") == scope.get("no_drop_check"):
+        errors.append("MCR_C_ENUMERATOR_NOT_NO_DROP_TEST")
+    receiving = records["MCR_RECEIVING"][0]
+    for k in ("gate", "independent_owner"):
+        _specific(receiving.get(k), "RECEIVING_" + k.upper(), errors, 16)
+    for k, expected in (
+        ("all_obligations", "PASS_REQUIRED"),
+        ("author_ceiling", "DELIVERED_PENDING_RECEIVING"),
+        ("on_any_failure", "INCOMPLETE"),
+    ):
+        if receiving.get(k) != expected:
+            errors.append("MCR_C_RECEIVING_FAIL_CLOSED_" + k.upper())
+    ids = set()
+    for i, ob in enumerate(records["MCR_OBLIGATION"]):
+        label = "OBLIGATION_" + str(i + 1)
+        oid = ob.get("id")
+        if not isinstance(oid, str) or not ID.fullmatch(oid):
+            errors.append("MCR_C_BAD_ID_" + label)
+        elif oid in ids:
+            errors.append("MCR_C_DUPLICATE_ID_" + oid)
+        else:
+            ids.add(oid)
+        for k in ("result", "check", "positive", "negative", "consumer", "owner"):
+            _specific(ob.get(k), label + "_" + k.upper(), errors, 16)
+        if ob.get("positive") == ob.get("negative"):
+            errors.append("MCR_C_NONDISCRIMINATING_ORACLE_" + label)
+        if not isinstance(ob.get("positive"), str) or not ob["positive"].startswith("PASS="):
+            errors.append("MCR_C_NO_EXPLICIT_PASS_EXPECTATION_" + label)
+        if not isinstance(ob.get("negative"), str) or not ob["negative"].startswith("RED="):
+            errors.append("MCR_C_NO_EXPLICIT_RED_EXPECTATION_" + label)
+        for k in ("output", "evidence"):
+            if not _safe_path(ob.get(k)):
+                errors.append("MCR_C_UNSAFE_EXACT_PATH_" + label + "_" + k.upper())
+        if ob.get("check_kind") not in ("EXEC", "SOURCE", "INDEPENDENT"):
+            errors.append("MCR_C_INVALID_CHECK_KIND_" + label)
+        if not isinstance(ob.get("check"), str) or not ob["check"].startswith(("RUN:", "SOURCE:", "COURT:")):
+            errors.append("MCR_C_CHECK_NOT_EXPLICIT_" + label)
+        elif ob["check_kind"] == "EXEC" and not ob["check"].startswith("RUN:"):
+            errors.append("MCR_C_EXEC_WITHOUT_RUN_" + label)
+        elif ob["check_kind"] == "SOURCE" and not ob["check"].startswith("SOURCE:"):
+            errors.append("MCR_C_SOURCE_WITHOUT_TRACE_" + label)
+        elif ob["check_kind"] == "INDEPENDENT" and not ob["check"].startswith("COURT:"):
+            errors.append("MCR_C_INDEPENDENT_WITHOUT_COURT_" + label)
+        if ob.get("minimum_grade") not in (*GRADES, "AUTHORITY"):
+            errors.append("MCR_C_INVALID_GRADE_" + label)
+        if ob.get("failure") != "INCOMPLETE":
+            errors.append("MCR_C_MUST_FAIL_INCOMPLETE_" + label)
+        _source_tuple(ob.get("source"), errors, label, check_git)
+    # Catch an abbreviated SHA that a correctly shaped scope pin otherwise hides.
+    # 30-39 hex candidates in authority text must be complete; 7-char casual labels
+    # are not falsely presented as exact source identities.
+    if re.search(r"(?<![0-9a-f])[0-9a-f]{30,39}(?![0-9a-f])", prompt, re.I):
+        errors.append("MCR_C_ABBREVIATED_MATERIAL_HASH")
+    if BAD_UNICODE.search(prompt):
+        errors.append("MCR_C_INVISIBLE_CHARACTER_IN_LAUNCH")
+    return {"scope": scope, "obligations": records["MCR_OBLIGATION"],
+            "receiving": receiving, "sha256": hashlib.sha256(block.encode("utf-8")).hexdigest()}
+
+
+def verify_return(commission, returned, candidate_sha, root):
+    errors = []
+    validated = validate(commission)
+    if validated["status"] != "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH":
+        return {"status": "RED_INCOMPLETE", "errors": validated["errors"]}
+    if not HEX40.fullmatch(candidate_sha):
+        return {"status": "RED_INCOMPLETE", "errors": ["EXACT_CANDIDATE_SHA_REQUIRED"]}
+    fences = list(FENCE.finditer(commission))
+    contract = completion_contract(
+        commission[fences[0].end():fences[1].start()].strip(), errors
+    )
+    block = _extract_block(returned, EVIDENCE_BEGIN, EVIDENCE_END, errors)
+    proof = {}
+    for line in block.splitlines():
+        if not line.strip():
+            continue
+        key, sep, payload = line.strip().partition(":")
+        if key != "MCR_EVIDENCE" or sep != ":":
+            errors.append("MCR_C_INVALID_EVIDENCE_RECORD")
+            continue
+        obj = _json_record(payload.strip(), "EVIDENCE", errors)
+        if not isinstance(obj, dict) or not isinstance(obj.get("id"), str):
+            errors.append("MCR_C_BAD_EVIDENCE_OBJECT")
+            continue
+        if obj["id"] in proof:
+            errors.append("MCR_C_DUPLICATE_EVIDENCE_" + obj["id"])
+        proof[obj["id"]] = obj
+    expected = {o["id"]: o for o in contract["obligations"]} if contract else {}
+    for oid in expected:
+        if oid not in proof:
+            errors.append("MCR_C_MISSING_PROOF_" + oid)
+    for oid, p in proof.items():
+        if oid not in expected:
+            errors.append("MCR_C_UNCONTRACTED_PROOF_" + oid)
+            continue
+        ob = expected[oid]
+        if p.get("candidate_sha") != candidate_sha:
+            errors.append("MCR_C_PROOF_WRONG_CANDIDATE_" + oid)
+        if p.get("contract_sha256") != contract["sha256"]:
+            errors.append("MCR_C_PROOF_WRONG_CONTRACT_" + oid)
+        if p.get("status") != "PASS":
+            errors.append("MCR_C_PROOF_NOT_PASS_" + oid)
+        grade = p.get("grade")
+        required = ob["minimum_grade"]
+        if (required == "AUTHORITY" and grade != required) or (
+            required in GRADES and (grade not in GRADES or GRADES[grade] < GRADES[required])
+        ):
+            errors.append("MCR_C_INSUFFICIENT_EVIDENCE_GRADE_" + oid)
+        if not _safe_path(p.get("evidence_file")) or p.get("evidence_file") != ob["evidence"]:
+            errors.append("MCR_C_EVIDENCE_PATH_MISMATCH_" + oid)
+            continue
+        local = root / p["evidence_file"]
+        try:
+            real = local.resolve(strict=True)
+            real.relative_to(root.resolve(strict=True))
+            digest = hashlib.sha256(real.read_bytes()).hexdigest()
+            if digest != p.get("evidence_sha256"):
+                errors.append("MCR_C_EVIDENCE_DIGEST_MISMATCH_" + oid)
+        except (OSError, ValueError, RuntimeError):
+            errors.append("MCR_C_EVIDENCE_MISSING_OR_ESCAPE_" + oid)
+    return {
+        "status": "RED_INCOMPLETE" if errors else "READY_FOR_INDEPENDENT_RECEIVING",
+        "errors": errors, "candidate_sha": candidate_sha,
+        "contract_sha256": contract["sha256"] if contract else None,
+        "verified_obligation_count": len(expected) - len([x for x in expected if x not in proof]),
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+    }
 
 
 def validate(markdown: str):
@@ -90,6 +331,8 @@ def validate(markdown: str):
     for term in ["source", "review", "test", "return"]:
         if not re.search(r"\b" + term + r"\w*\b", prompt, re.I):
             errors.append("MISSING_COMPLETE_TASK_" + term.upper())
+    # MCR-C obligation-to-proof contract is a pre-dispatch requirement.
+    contract = completion_contract(prompt, errors)
     # Structural checks cannot establish that the source, exception, runner or consumer is real.
     if header.get("MCR") != "REQUIRED":
         errors.append("MCR_REQUIRED_NOT_ATTESTED")
@@ -139,6 +382,8 @@ def validate(markdown: str):
             "intelligence_level": header.get("INTELLIGENCE_LEVEL"),
             "branch": header.get("BRANCH"), "mcr": header.get("MCR"), "commission_kind": kind,
             "contract_id": header.get("CONTRACT_ID"),
+            "mcr_completion_contract_sha256": contract["sha256"] if contract else None,
+            "mcr_required_obligation_count": len(contract["obligations"]) if contract else 0,
             "validation_scope": "STRUCTURE_ONLY__NO_SEMANTIC_OR_EXECUTION_CLAIM",
             "prompt_chars": len(prompt)}
 
@@ -242,6 +487,10 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("file", type=Path, nargs="?")
     p.add_argument("--self-test", action="store_true")
+    p.add_argument("--verify-return", type=Path)
+    p.add_argument("--candidate-sha")
+    p.add_argument("--evidence-root", type=Path, default=Path("."))
+    p.add_argument("--source-check", action="store_true")
     p.add_argument("--json-issue", action="store_true")
     args = p.parse_args()
     if args.self_test:
@@ -252,7 +501,21 @@ def main():
     data = args.file.read_text(encoding="utf-8")
     if args.json_issue:
         data = json.loads(data).get("body") or ""
+    if args.verify_return:
+        if not args.candidate_sha:
+            p.error("--candidate-sha is required with --verify-return")
+        result = verify_return(data, args.verify_return.read_text(encoding="utf-8"),
+                               args.candidate_sha, args.evidence_root)
+        print(json.dumps(result, indent=2))
+        return 0 if result["status"] == "READY_FOR_INDEPENDENT_RECEIVING" else 2
     result = validate(data)
+    if args.source_check and result["status"].startswith("PASS"):
+        checks = []
+        fences = list(FENCE.finditer(data))
+        completion_contract(data[fences[0].end():fences[1].start()].strip(), checks, check_git=True)
+        if checks:
+            result["status"] = "RED_INVALID_FOR_DISPATCH"
+            result["errors"].extend(checks)
     print(json.dumps(result, indent=2))
     return 0 if result["status"].startswith("PASS") else 2
 
