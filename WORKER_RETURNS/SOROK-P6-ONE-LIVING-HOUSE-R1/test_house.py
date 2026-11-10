@@ -237,3 +237,64 @@ def test_silent_interval_reconsiders_and_commits_only_admitted_speech(tmp_path):
         assert speech["event_id"] not in session.user_perceived_ids()
     finally:
         owner.close()
+
+
+@pytest.mark.parametrize("sound_path", ["audible", "obstructed"])
+def test_outward_conduct_supplies_only_qualified_cues(tmp_path, monkeypatch, sound_path):
+    import run_p6
+
+    establish = run_p6.establish
+
+    def establish_conditions(session):
+        establish(session)
+        world, house = read_house(session)
+        house["situated_conditions"] = {
+            "grade": "SOURCEFREE_FIXTURE", "hearing": "available", "sound_path": sound_path,
+            "bench_view": "facing_away" if sound_path == "audible" else "facing_player",
+            "footsteps": "audible",
+        }
+        session.product._checkpoint(session.branch_id, world.clock, world)
+
+    monkeypatch.setattr(run_p6, "establish", establish_conditions)
+    cues = []
+
+    def interpret(packet):
+        cues.append(packet["cues"][0])
+        return {"attention": "noticed", "interpretation": "A possible cue.",
+                "action": "continue"}
+
+    def run(command, **args):
+        return experience(tmp_path, Namespace(command=command, **args), interpret=interpret)
+
+    run("new")
+    (tmp_path / "p6_gaze.json").write_text(json.dumps({
+        "history": [], "exposure": {"room": "workshop", "detail": "A"},
+    }))
+    run("view")
+    assert not cues
+    run("approach", request_id="approach")
+    assert cues[0]["kind"] == "APPROACH"
+    assert "AUDITORY" in cues[0]["channels"]
+    run("orient", request_id="outward-orientation")
+    if sound_path == "audible":
+        assert len(cues) == 1 and "VISUAL" not in cues[0]["channels"]
+        assert "oriented_toward_actor" not in cues[0]["detail"]
+    else:
+        assert cues[1]["kind"] == "ORIENT" and cues[1]["channels"] == ["VISUAL"]
+        assert cues[1]["detail"] == {"near": True, "oriented_toward_actor": True}
+    run("go", target="living room", request_id="away")
+    run("play", request_id="music")
+    run("stop-playing", request_id="stop")
+    receipts = [turn["receipt"] for turn in json.loads(
+        (tmp_path / "p4_receipts.json").read_text())["turns"]]
+    assert receipts[1]["performed"]["body"]["oriented_toward"] is True
+    assert [row["performed"]["kind"] for row in receipts[-2:]] == [
+        "PLAY_INSTRUMENT", "STOP_INSTRUMENT",
+    ]
+    if sound_path == "audible":
+        assert [cue["channels"] for cue in cues[1:]] == [["AUDITORY"], ["AUDITORY"]]
+        assert [cue["detail"]["sounding"] for cue in cues[1:]] == [True, False]
+        assert all(row["situated"]["decision"]["action"] == "continue" for row in receipts[-2:])
+        assert all(row["situated"]["decision"]["attention"] == "noticed" for row in receipts[-2:])
+    else:
+        assert len(cues) == 2 and all("situated" not in row for row in receipts[-2:])

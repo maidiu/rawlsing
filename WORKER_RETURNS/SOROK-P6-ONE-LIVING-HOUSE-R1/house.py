@@ -152,6 +152,7 @@ def perform(session, action):
     if moving:
         body.update(origin=room, root=house["root"], branch=house["branch"],
                     house_source=house["source"])
+        house.pop("outward_near_actor", None)
         world.positions[user] = target
         room = target
         summary = f"You go into the {room}."

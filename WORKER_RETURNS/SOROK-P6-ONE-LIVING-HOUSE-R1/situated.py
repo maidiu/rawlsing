@@ -21,6 +21,8 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None)
         for row in receipt.get("encounter_evidence", ())
         if row["recipient"] == "A" and row["eligibility"] == "ELIGIBLE"
     ]
+    if receipt.get("outward_cue"):
+        cues.append(receipt["outward_cue"])
     packet = {
         "actor": actor["actor_id"],
         "room": world.positions["A"],
