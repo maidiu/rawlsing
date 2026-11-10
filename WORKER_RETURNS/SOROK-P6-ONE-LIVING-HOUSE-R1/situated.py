@@ -84,7 +84,14 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
     available_actions = ["continue"]
     if realize is not None:
         available_actions.append("speak")
-    if destination_if_eligible(session, world, house, actor["actor_id"], local_context):
+    # Committed actor movement requires actor-local scene context actually
+    # established in the checkpoint. A caller-supplied persona override cannot
+    # authorize a world action merely by naming the same actor.
+    checkpoint_context = actor_context_for(
+        actor["actor_id"], house.get("situated_actor_context")
+    )
+    if (checkpoint_context is not None and checkpoint_context == local_context
+            and destination_if_eligible(session, world, house, actor["actor_id"], local_context)):
         available_actions.append(VISIT_ADJACENT)
     packet = {
         "actor": actor["actor_id"],
