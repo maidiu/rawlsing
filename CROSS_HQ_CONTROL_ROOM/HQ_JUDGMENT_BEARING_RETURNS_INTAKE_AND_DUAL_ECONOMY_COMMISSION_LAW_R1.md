@@ -61,7 +61,9 @@ Never collapse verified facts into worker opinions, or worker interpretation int
 
 For each category record `ACCEPT_IF | FAIL/RED_IF | HOLD_IF | EVIDENCE | OWNER_OF_DECISION`. Criteria must be testable or explicitly authority-held; a worker must not make a third-party issuer a hidden acceptance condition for its own scoped technical pass. A scientifically weak `TRUE` path is not made legitimate by collecting more positive green checks.
 
-## 3A. Contract-first construction, repair and finite closure (prospective; same three courts)
+## 3A. MCR — Мандат комиссий и ремонтных работ (contract-first construction, repair and finite closure)
+
+**MCR is the canonical shorthand for this binding protocol.** The instruction **“MCR required”** means the complete §3A commission/repair contract applies, not an optional reminder. Every new or revised launch must show `MCR: REQUIRED` in its existing first-header fields and pass the existing `verify_copy_paste_commission_r1.py` pre-dispatch check. A checker PASS establishes only prompt structure; substantive source, execution, scientific, authority and independent receiving proof remain separately required. Repair commissions must satisfy **both** the general commission contract and the repair-specific causal/regression fields. No additional document, tribunal, tracking board or new gate is created.
 
 **TRIGGER:** Each new material BUILD, REPAIR, REVIEW, INVESTIGATION or DOCUMENTARY commission before dispatch; after a material defect is found, before issuing its repair. This is an amendment to the existing commission/return and proof-integrity process, **not** a fourth court, new ledger, universal S2/S3 gate, or interruption of active workers. Existing accepted cuts are not reopened without material counterevidence.
 
