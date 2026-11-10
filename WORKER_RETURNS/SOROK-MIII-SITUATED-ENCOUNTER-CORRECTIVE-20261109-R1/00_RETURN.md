@@ -1,7 +1,7 @@
 # Mechanism III corrective implementation
 
 Protected start `256d46bf425cc37e114465cddbe3c60e535766ab`.
-Tested implementation `23c26554c67727bcb1f35aaa224026f17e35d3c0`.
+Tested implementation `8757cd5c677f54b5b9cc4492c895a0249561ed79`.
 
 ## Owner decision and prior dispositions
 
@@ -40,7 +40,7 @@ written by that reader. Existing S46 pacing remains independent.
 
 ```text
 PYTHONDONTWRITEBYTECODE=1 python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py
-2 passed in 148.59s
+2 passed in 148.00s
 ```
 
 - 1, 2 and 5: ordinary GO commits an exact MOVE. Its fixture
@@ -70,3 +70,29 @@ identifies the objective occurrence and recipient and asserts no
 intention, belief, memory, psychological result, or outward move.
 No language grammar or model call is required for GO. Native C–E,
 protected receiving, and independent review remain separate.
+
+## Committed evidence witness
+
+The P6 reader reloads the qualified checkpoint after commitment.
+The ordinary unqualified scene holds at sensory source qualification.
+A supported cue holds at actor registration. A supported visual
+nonaccess result is ineligible for registration.
+
+| Field | Executed fixture |
+| --- | --- |
+| Root | `d747d2c208fb0fe3610c9f08d728d5f358758feee6be5164e07475e4431950c6` |
+| Branch / clock | `first_session` / 249 |
+| MOVE | `TEST_ONLY_BP4_WORLD_EVT_edddaa44f1b24ef1f5492c1f07e0c5645676447bb521042d74b8e263b0ffbfab` |
+| MOVE hash | `7356f47bfc0e33f9004881db58222fda1c533ef7a1b01bd6b1e8d667ddd83f12` |
+| GO conduct parent | `TEST_ONLY_BP4_EP_239cb072f65a19767c3a2704565a029f8eed7ee469e7f38a7a02ec0f50f56977` |
+| House source | `60e735152a012fa14d0ab9c4c663335345cb0a54e78410fb000d00c3cf7449c7` |
+| Visual fixture source | `3ace7f7626e9254d051938c6c42056596399d8d59bff74a6c32c3302471fa731` |
+| Performer and route | U, living room → workshop |
+| Recipients | A eligible, B unavailable; both in workshop |
+
+For a future Grade B handoff, the competent registration owner must
+first supply actor-bound registration independently of eligibility.
+The current P3 activation context's `actor_observed` input cannot be
+set from `ELIGIBLE`. R30A's `attend` operates on user knowledge and
+P6 `attention.register` records user presentation history. Neither
+is an actor registration consumer.
