@@ -5,6 +5,7 @@ import unittest
 import json
 import hashlib
 import tempfile
+import subprocess
 
 SOURCE = Path(__file__).resolve().parents[1] / "CROSS_HQ_CONTROL_ROOM" / "verify_copy_paste_commission_r1.py"
 spec = spec_from_file_location("commission_preflight", SOURCE)
@@ -144,41 +145,89 @@ class CommissionProofTest(unittest.TestCase):
         self.assertIn("MCR_C_INVISIBLE_CHARACTER_IN_LAUNCH", gate.validate(bad)["errors"])
 
     def test_return_evidence_does_not_self_certify_completion(self):
+        """Real Git checkout; exact committed source/output/coverage; never author adoption."""
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
-            relative=Path(EXAMPLE_OBLIGATION["evidence"])
-            actual=root/relative
-            actual.parent.mkdir(parents=True)
-            actual.write_text("source-observation independently testable\n")
-            candidate="d"*40
-            contract_sha=gate.validate(prompt())["mcr_completion_contract_sha256"]
+            def git(*args):
+                return subprocess.run(["git", *args], cwd=root, check=True,
+                                      capture_output=True, text=True).stdout.strip()
+            git("init")
+            git("config", "user.name", "MCR Test")
+            git("config", "user.email", "mcr-test@example.invalid")
+            src_rel=EXAMPLE_SOURCE["path"]
+            source_path=root/src_rel
+            source_path.parent.mkdir(parents=True)
+            source_path.write_text("frozen original source for MCR unit test\n")
+            git("add", ".")
+            git("commit", "-m", "freeze source")
+            frozen=git("rev-parse", "HEAD")
+            source_blob=git("rev-parse", frozen+":"+src_rel)
+            commission=prompt().replace('"commit": "' + "a"*40 + '"',
+                                        '"commit": "'+frozen+'"').replace(
+                                        '"blob": "'+"b"*40+'"',
+                                        '"blob": "'+source_blob+'"')
+            source_cut="CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py@"
+            commission=commission.replace(source_cut+"a"*40,source_cut+frozen)
+            self.assertTrue(gate.validate(commission)["status"].startswith("PASS"))
+
+            evidence_rel=Path(EXAMPLE_OBLIGATION["evidence"])
+            output_rel=Path(EXAMPLE_OBLIGATION["output"])
+            coverage_rel=Path("WORKER_RETURNS/commission/covered-ids.txt")
+            for path, contents in (
+                (evidence_rel,"actual source-to-consumer observation\n"),
+                (output_rel,"id\tresult\nEXACT-SOURCE-CONSUMER\tPASS\n"),
+                (coverage_rel,EXAMPLE_OBLIGATION["id"]+"\n"),
+            ):
+                dest=root/path
+                dest.parent.mkdir(parents=True,exist_ok=True)
+                dest.write_text(contents)
+            git("add", ".")
+            git("commit", "-m", "add exact delivered evidence")
+            candidate=git("rev-parse","HEAD")
+            contract_sha=gate.validate(commission)["mcr_completion_contract_sha256"]
             evidence={
-                "id":EXAMPLE_OBLIGATION["id"],
-                "candidate_sha":candidate,
-                "contract_sha256":contract_sha,
-                "status":"PASS",
-                "grade":"S1",
-                "evidence_file":relative.as_posix(),
-                "evidence_sha256":hashlib.sha256(actual.read_bytes()).hexdigest(),
+                "id":EXAMPLE_OBLIGATION["id"], "candidate_sha":candidate,
+                "contract_sha256":contract_sha,"status":"PASS","grade":"S1",
+                "evidence_file":evidence_rel.as_posix(),
+                "evidence_sha256":hashlib.sha256((root/evidence_rel).read_bytes()).hexdigest(),
+                "output_file":output_rel.as_posix(),
+                "output_sha256":hashlib.sha256((root/output_rel).read_bytes()).hexdigest(),
             }
-            def make_return(what):
-                return ("MCR_COMPLETION_EVIDENCE_BEGIN\n"
-                        +"MCR_EVIDENCE: "+json.dumps(what,sort_keys=True)
-                        +"\nMCR_COMPLETION_EVIDENCE_END\n")
-            ready=gate.verify_return(prompt(),make_return(evidence),candidate,root)
-            self.assertEqual(ready["status"],"READY_FOR_INDEPENDENT_RECEIVING")
+            coverage={
+                "candidate_sha":candidate, "contract_sha256":contract_sha,
+                "delivered_ids_file":coverage_rel.as_posix(),
+                "delivered_ids_sha256":hashlib.sha256((root/coverage_rel).read_bytes()).hexdigest(),
+            }
+            def make_return(proof=evidence,covered=coverage):
+                data=["MCR_COMPLETION_EVIDENCE_BEGIN"]
+                if covered is not None:
+                    data.append("MCR_COVERAGE: "+json.dumps(covered,sort_keys=True))
+                if proof is not None:
+                    data.append("MCR_EVIDENCE: "+json.dumps(proof,sort_keys=True))
+                return "\n".join([*data,"MCR_COMPLETION_EVIDENCE_END",""])
+            ready=gate.verify_return(commission,make_return(),candidate,root)
+            self.assertEqual(ready["status"],"READY_FOR_INDEPENDENT_RECEIVING",ready["errors"])
             self.assertNotIn("COMPLETE",ready["status"])
-            for replacement,marker in [
-                (dict(evidence,candidate_sha="e"*40),"MCR_C_PROOF_WRONG_CANDIDATE"),
-                (dict(evidence,grade="S0"),"MCR_C_INSUFFICIENT_EVIDENCE_GRADE"),
-                (dict(evidence,evidence_sha256="0"*64),"MCR_C_EVIDENCE_DIGEST_MISMATCH"),
-                (dict(evidence,status="NOT_RUN"),"MCR_C_PROOF_NOT_PASS"),
-            ]:
-                got=gate.verify_return(prompt(),make_return(replacement),candidate,root)
-                self.assertEqual(got["status"],"RED_INCOMPLETE")
-                self.assertTrue(any(marker in err for err in got["errors"]))
-            actual.unlink()
-            self.assertEqual(gate.verify_return(prompt(),make_return(evidence),candidate,root)["status"],"RED_INCOMPLETE")
+            mutations=[
+                (dict(evidence,candidate_sha="e"*40),coverage,"MCR_C_PROOF_WRONG_CANDIDATE"),
+                (dict(evidence,grade="S0"),coverage,"MCR_C_INSUFFICIENT_EVIDENCE_GRADE"),
+                (dict(evidence,evidence_sha256="0"*64),coverage,"MCR_C_EVIDENCE_DIGEST_MISMATCH"),
+                (dict(evidence,output_sha256="0"*64),coverage,"MCR_C_OUTPUT_DIGEST_MISMATCH"),
+                (dict(evidence,status="NOT_RUN"),coverage,"MCR_C_PROOF_NOT_PASS"),
+                (None,coverage,"MCR_C_MISSING_PROOF"),
+                (evidence,None,"MCR_C_EXACT_ONE_SCOPE_COVERAGE_REQUIRED"),
+                (evidence,dict(coverage,delivered_ids_sha256="0"*64),"MCR_C_COVERAGE_DIGEST_MISMATCH"),
+                (evidence,dict(coverage,candidate_sha="e"*40),"MCR_C_COVERAGE_WRONG_CANDIDATE"),
+            ]
+            for proof,covered,marker in mutations:
+                got=gate.verify_return(commission,make_return(proof,covered),candidate,root)
+                self.assertEqual(got["status"],"RED_INCOMPLETE",marker)
+                self.assertTrue(any(marker in err for err in got["errors"]),str(got))
+            self.assertEqual(gate.verify_return(commission,make_return(),"f"*40,root)["status"],
+                             "RED_INCOMPLETE")
+            (root/evidence_rel).unlink()
+            self.assertEqual(gate.verify_return(commission,make_return(),candidate,root)["status"],
+                             "RED_INCOMPLETE")
 
     def test_no_agent_type(self):
         self.assertIn("MISSING_OR_EMPTY_AGENT_TYPE", gate.validate(prompt({"AGENT_TYPE":""}))["errors"])
