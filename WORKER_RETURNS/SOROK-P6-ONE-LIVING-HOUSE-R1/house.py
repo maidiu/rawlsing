@@ -172,10 +172,14 @@ def perform(session, action):
         if len(records) > 1:
             raise RecursionRefusal("MIII_DUPLICATE_ACTOR_ACCESS_RECEIPT")
         actor_access[actor] = {
+            "actor_id": actor,
+            "root": session.read_root()["root_hash"],
+            "branch": session.branch_id,
             "source_event_id": event["event_id"],
             "source_event_hash": event["hash"],
             "source_clock": event["clock"],
             "recorded_access": bool(records),
+            "access_channel": records[0]["channel"] if records else None,
             "access_grade": "S45_SOURCEFREE_COPRESENT_ONLY",
             "actor_uptake": "NOT_EVALUATED",
             "interpretation": "NOT_EVALUATED",
