@@ -22,7 +22,7 @@ jobs:
           set -euo pipefail
           git merge-base --is-ancestor 339c872612aff9aa34f7133a2170108bcde385f6 HEAD
           git diff --name-only 339c872612aff9aa34f7133a2170108bcde385f6 HEAD
-          unexpected="$(git diff --name-only 339c872612aff9aa34f7133a2170108bcde385f6 HEAD | grep -Ev '^WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/(actor_initiative[.]py|situated[.]py|test_actor_initiative[.]py)$|^[.]github/workflows/sorok-miii-actor-initiative-20261110[.]yml$' || true)"
+          unexpected="$(git diff --name-only 339c872612aff9aa34f7133a2170108bcde385f6 HEAD | grep -Ev '^WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/(actor_initiative[.]py|situated[.]py|outward[.]py|test_actor_initiative[.]py|test_actor_initiative_hostile[.]py)$|^[.]github/workflows/sorok-miii-actor-initiative-20261110[.]yml$' || true)"
           test -z "$unexpected" || { echo "Unexpected modified path: $unexpected"; exit 1; }
       - name: Python 3.11
         uses: actions/setup-python@v5
@@ -33,6 +33,9 @@ jobs:
       - name: Exercise cumulative-time and actor initiative first consumer
         run: |
           python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative.py
+      - name: Execute hostile writer, perception, silence and crash courts
+        run: |
+          python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative_hostile.py
       - name: Regression for existing sourcefree situated input / action
         run: |
           python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_silent_interval_reconsiders_and_commits_only_admitted_speech WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_perception_claim_requires_exact_cue_and_channel
