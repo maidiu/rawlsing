@@ -2,6 +2,8 @@
 
 from developmental_recursion.contracts import RecursionRefusal, digest
 
+from encounter import movement_evidence
+
 SLOT = "p6_house"
 ROOMS = {
     "workshop": {"other": "living room", "line": "A doorway leads from the workbench into the living room."},
@@ -146,7 +148,11 @@ def perform(session, action):
             (not moving and (item is None or item["room"] != room))):
         return {}, {"admission": "UNAVAILABLE", "performed": False, "observation": None}
 
+    body = {"target": target}
     if moving:
+        body.update(origin=room, root=house["root"], branch=house["branch"],
+                    house_source=house["source"])
+        house.pop("outward_near_actor", None)
         world.positions[user] = target
         room = target
         summary = f"You go into the {room}."
@@ -156,7 +162,7 @@ def perform(session, action):
             # Canonical closure is distinct from the close physical observation.
             house["history"]["photo-exposure"] = facts(house["epoch"])["photo-exposure"]
     event = make_event(clock=world.clock, kind="MOVE" if moving else "INSPECT",
-                       actor_id=user, location=room, summary=summary, body={"target": target},
+                       actor_id=user, location=room, summary=summary, body=body,
                        sequence=len(world.events))
     world.add_event(event)
     session._append_event(event, perceive=(user,))
@@ -165,8 +171,14 @@ def perform(session, action):
     session.product._append_episode(session.branch_id, user, "P6_HOUSE_CONDUCT", world.clock,
                                     {"event_id": event["event_id"], "operation": action["operation"]})
     session.product._checkpoint(session.branch_id, world.clock, world)
-    return {"performed": event}, {"admission": "ADMITTED", "performed": True,
-                                  "observation": project_event(event)}
+    receipt = {"performed": event}
+    if moving:
+        committed_world, committed_house = read_house(session)
+        receipt["encounter_evidence"] = movement_evidence(
+            session, event, committed_world, committed_house,
+        )
+    return receipt, {"admission": "ADMITTED", "performed": True,
+                     "observation": project_event(event)}
 
 
 def scene(session):

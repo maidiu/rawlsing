@@ -34,10 +34,12 @@ class ObservedInterval:
         return getattr(self.session, name)
 
 
-def advance_for_action(fanin, action, *, on_repair=None):
+def advance_for_action(fanin, action, *, on_repair=None, mode="ACTUAL"):
     # Bounded workshop ticks. A glance or short remark occupies one beat;
     # examining the work occupies three. No gaze input reaches this seam.
-    span = {"ATTEND": 1, "SAY": 1, "GO": 1, "INSPECT": 3, "INSPECT_EDGE": 3, "INSPECT_OBJECT": 3}[action["operation"]]
+    spans = {"ATTEND": 1, "SAY": 1, "GO": 1, "INSPECT": 3, "INSPECT_EDGE": 3, "INSPECT_OBJECT": 3,
+             "PLAY_INSTRUMENT": 1, "STOP_INSTRUMENT": 1, "APPROACH": 1, "ORIENT": 1}
+    span = action["duration"] if action["operation"] == "WAIT" else spans[action["operation"]]
     session = fanin.session
     start = session.clock()
     # A deliberately sustained examination delegates two bounded work
@@ -48,7 +50,7 @@ def advance_for_action(fanin, action, *, on_repair=None):
     end = segments[-1][1]
     root = session.read_root()
     domain = fanin.deps["make_domain"](
-        mode="ACTUAL", start=start, end=end, segments=segments,
+        mode=mode, start=start, end=end, segments=segments,
         actor_id=root["actor_ids"][0], branch_id=session.branch_id,
     )
     from s46.producer import produce_interval
