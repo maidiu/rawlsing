@@ -214,7 +214,16 @@ def completion_contract(prompt, errors, check_git=False):
         errors.append("MCR_C_INVISIBLE_CHARACTER_IN_LAUNCH")
     if isinstance(scope.get("expected_count"), int) and scope["expected_count"] > len(records["MCR_OBLIGATION"]):
         cols = scope.get("identity_columns")
-        ifdef _git(root, *args):
+        if not isinstance(cols, list) or not cols or any(
+                not isinstance(c, str) or not c.strip() for c in cols):
+            errors.append("MCR_C_FROZEN_IDENTITY_COLUMNS_REQUIRED")
+        if not isinstance(scope.get("source"), dict) or not str(scope["source"].get("path", "")).endswith((".tsv", ".csv")):
+            errors.append("MCR_C_FROZEN_IDENTITY_REGISTRY_REQUIRED")
+    return {"scope": scope, "obligations": records["MCR_OBLIGATION"],
+            "receiving": receiving, "sha256": hashlib.sha256(block.encode("utf-8")).hexdigest()}
+
+
+def _git(root, *args):
     try:
         p = subprocess.run(["git", "-C", str(root), *args],
                            capture_output=True, timeout=25, check=False)
