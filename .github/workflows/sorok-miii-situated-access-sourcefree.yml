@@ -1,0 +1,30 @@
+name: Sorok MIII situated access sourcefree
+on:
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+    paths:
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py'
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_miii_situated_access.py'
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py'
+      - '.github/workflows/sorok-miii-situated-access-sourcefree.yml'
+permissions:
+  contents: read
+jobs:
+  sourcefree-situated-access:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install test runner only
+        run: python -m pip install pytest
+      - name: Verify original P6 and corrected MIII actor-access boundary
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -B -m pytest -q -p no:cacheprovider --tb=short \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_miii_situated_access.py
