@@ -217,8 +217,11 @@ def _artifact_text(path, substitutions=None):
 
 
 def _flight_rows(map_text):
+    # Read the primary-jurisdiction table only. The same flight may lawfully
+    # appear later in the readiness/hold table; that is not duplicate ownership.
+    section = map_text.split("## Eligibility and genuine dependencies", 1)[0]
     rows = {}
-    for line in map_text.splitlines():
+    for line in section.splitlines():
         m = re.match(r"^\| ZAK-(\d\d) \| (.+)$", line)
         if not m:
             continue
