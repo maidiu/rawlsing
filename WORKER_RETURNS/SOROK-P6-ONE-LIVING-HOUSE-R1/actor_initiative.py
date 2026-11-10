@@ -46,7 +46,27 @@ def destination_affordance(session, world, house, actor_id, local_context):
     }
 
 
-def visit_adjacent_room(session, expected_actor_id, *, packet=None, decision=None):
+
+def issue_visit_admission(session, packet, decision):
+    """One-shot session-local ticket, issued only after grounded model selection.
+
+    This is a synchronous internal code-boundary ticket, not a native
+    cryptographic authority or a persisted historical approval.
+    """
+    from situated import decision_is_grounded
+
+    if (type(packet) is not dict or type(decision) is not dict
+            or decision.get("action") != ACTION
+            or not decision_is_grounded(
+                decision, packet.get("cues", ()), packet.get("available_actions", ())
+            )):
+        raise RecursionRefusal("P6_INITIATIVE_SELECTION_NOT_ADMITTED")
+    ticket = object()
+    session._p6_miii_move_ticket = (ticket, digest(packet), digest(decision))
+    return ticket
+
+
+def visit_adjacent_room(session, expected_actor_id, *, packet=None, decision=None, admission=None):
     """World-authorize one model-selected MOVE; no valid packet, no world write.
 
     A correct actor ID alone is not an admission. The packet must be this
@@ -57,6 +77,13 @@ def visit_adjacent_room(session, expected_actor_id, *, packet=None, decision=Non
     """
     from bp4.world import make_event
     from situated import actor_context_for, decision_is_grounded
+
+    ticket = getattr(session, "_p6_miii_move_ticket", None)
+    if (admission is None or ticket is None
+            or admission is not ticket[0]
+            or type(packet) is not dict or type(decision) is not dict
+            or ticket[1:] != (digest(packet), digest(decision))):
+        raise RecursionRefusal("P6_INITIATIVE_SELECTION_NOT_ADMITTED")
 
     world, house = read_house(session)
     actor = world.actor_state["A"].get("actor_id")
@@ -90,6 +117,10 @@ def visit_adjacent_room(session, expected_actor_id, *, packet=None, decision=Non
             )):
         raise RecursionRefusal("P6_INITIATIVE_ADMISSION_STALE_OR_INVALID")
 
+    # Consume the transient authorization exactly once before any writer IO.
+    # A failure after this boundary remains a P4 pending operation, not an
+    # invitation to retry and produce duplicate world events.
+    del session._p6_miii_move_ticket
     current = world.positions["A"]
     user = session.meta["user_actor"]
     observer_room = world.positions.get(user)
