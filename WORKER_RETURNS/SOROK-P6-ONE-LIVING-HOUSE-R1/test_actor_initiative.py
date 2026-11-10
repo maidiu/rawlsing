@@ -87,6 +87,22 @@ def test_silent_multi_turn_cumulative_time_leads_to_world_admitted_actor_visit(t
     assert ledger.read_bytes() == prior
     assert len(packets) == 2
 
+    # This is not a terminal vignette: the actor's moved location must
+    # remain authoritative when the next independent interval begins.
+    following = _run(state, "wait", interpret, duration=1, request_id="after-visit")
+    assert following["clock"] == epoch + 7
+    assert len(packets) == 3
+    assert packets[-1]["room"] == "living room"
+    assert packets[-1]["scene_elapsed"] == 7
+    owner = open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        assert read_house(session)[0].positions["A"] == "living room"
+        assert len([e for e in session.events() if e["actor_id"] == "A"
+                    and e["body"].get("actor_action") == "visit_adjacent_room"]) == 1
+    finally:
+        owner.close()
+
 
 def test_model_cannot_visit_without_source_bound_actor_context(tmp_path):
     state = tmp_path / "world"
