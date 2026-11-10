@@ -1,9 +1,12 @@
 """Provisional actor interpretation over admitted P6 conduct and S46 time."""
 
+from copy import deepcopy
+
 from developmental_recursion.contracts import digest
+from situated_provider import ModelUnavailable
 
 
-def reconsider(session, receipt, interpret, realize=None, *, actor_context=None):
+def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
         return None
@@ -23,6 +26,7 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None)
     ]
     if receipt.get("outward_cue"):
         cues.append(receipt["outward_cue"])
+    available_actions = ("continue",) if realize is None else ("continue", "speak")
     packet = {
         "actor": actor["actor_id"],
         "room": world.positions["A"],
@@ -33,21 +37,28 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None)
                      "interval_status": interval["status"]},
         "cues": cues,
         "actor_context": actor_context,
-        "available_actions": ["continue"] if realize is None else ["continue", "speak"],
+        "available_actions": list(available_actions),
     }
-    decision = interpret(packet)
-    result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "packet_hash": digest(packet)}
+    result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
+              "packet_hash": digest(packet)}
+    try:
+        decision = interpret(deepcopy(packet))
+    except ModelUnavailable:
+        return {**result, "status": "MODEL_UNAVAILABLE"}
     if (type(decision) is not dict or set(decision) != {"attention", "interpretation", "action"}
             or decision["attention"] not in ("noticed", "vague", "misheard", "unnoticed", "uncertain")
             or (not cues and decision["attention"] in ("noticed", "vague", "misheard"))
             or not isinstance(decision["interpretation"], str)
             or len(decision["interpretation"]) > 500
-            or decision["action"] not in packet["available_actions"]):
+            or decision["action"] not in available_actions):
         return {**result, "status": "INVALID_INTERPRETATION"}
 
     result.update(status="INTERPRETED", decision=decision)
     if decision["action"] == "speak":
-        text = realize(packet, decision)
+        try:
+            text = realize(deepcopy(packet), dict(decision))
+        except ModelUnavailable:
+            return {**result, "status": "EXPRESSION_UNAVAILABLE"}
         if not isinstance(text, str) or not text.strip() or len(text) > 500:
             return {**result, "status": "INVALID_EXPRESSION"}
         admission = session.product.say(text.strip(), actor="A")

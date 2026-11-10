@@ -17,13 +17,14 @@ from attention import register, select
 from gaze import render
 from house import close_on_repair, derive_recognition, establish, perform, read_house, scene
 
-from outward import OPERATIONS, perform as perform_outward
+from outward import OPERATIONS, establish_demo_conditions, perform as perform_outward
 from situated import reconsider
+from situated_provider import ModelUnavailable, SituatedProvider
 
 PACE = partial(advance_for_action, on_repair=close_on_repair)
 
 
-def experience(state, args, *, interpret=None, realize=None, actor_context=None):
+def experience(state, args, *, interpret=None, realize=None, actor_context=None, provider_mode="INJECTED"):
     command = args.command
     if command == "new":
         state.mkdir(parents=True, exist_ok=True)
@@ -32,7 +33,12 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None)
     with (state / "p4.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         if command == "new":
-            new(state, ledger_file, "recognized_plan", seed=WORKSHOP_SEED, establish=establish)
+            def establish_scene(session):
+                establish(session)
+                if getattr(args, "situated_house", False):
+                    establish_demo_conditions(session)
+
+            new(state, ledger_file, "recognized_plan", seed=WORKSHOP_SEED, establish=establish_scene)
         ledger = json.loads(ledger_file.read_text())
         if ledger["pending"]:
             raise RecursionRefusal("P4_PENDING_OPERATION_REQUIRES_RECONCILIATION")
@@ -58,7 +64,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None)
                     if not current.scene_open():
                         return {}, {"admission": "SCENE_CLOSED", "performed": False, "observation": None}
                     receipt = {"interval": PACE(owner.base_owner.fanin, admitted)}
-                    decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context)
+                    decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode)
                     if decision is not None:
                         receipt["situated"] = decision
                     return receipt, {"admission": "ADMITTED", "performed": True, "observation": None}
@@ -80,7 +86,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None)
                         receipt["interval"] = PACE(owner.base_owner.fanin, admitted)
                         if receipt.get("outward_cue") or any(row["recipient"] == "A" and row["eligibility"] == "ELIGIBLE"
                                for row in receipt.get("encounter_evidence", ())):
-                            decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context)
+                            decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode)
                             if decision is not None:
                                 receipt["situated"] = decision
                     return receipt, public
@@ -133,7 +139,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", required=True, type=Path)
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser("new")
+    initialize = commands.add_parser("new")
+    initialize.add_argument("--situated-house", action="store_true",
+                            help="Establish the sourcefree workshop sensory conditions.")
     commands.add_parser("view")
     wait = commands.add_parser("wait")
     wait.add_argument("duration", type=int)
@@ -156,9 +164,15 @@ def main():
             command.set_defaults(then_wait=False)
     args = parser.parse_args()
     try:
-        result = experience(args.state.resolve(), args)
-    except (RecursionRefusal, FileNotFoundError) as exc:
-        print(json.dumps({"status": "REFUSED", "reason": str(exc) if isinstance(exc, RecursionRefusal)
+        provider = SituatedProvider.from_environment()
+        result = experience(
+            args.state.resolve(), args,
+            interpret=provider.interpret if provider else None,
+            realize=provider.realize if provider and provider.expressive_model else None,
+            provider_mode="CONFIGURED_TRANSPORT" if provider else "UNCONFIGURED",
+        )
+    except (RecursionRefusal, ModelUnavailable, FileNotFoundError) as exc:
+        print(json.dumps({"status": "REFUSED", "reason": str(exc) if isinstance(exc, (RecursionRefusal, ModelUnavailable))
                           else "P6_STATE_OR_SOURCE_MISSING"}))
         return 2
     print(json.dumps(result, ensure_ascii=False))

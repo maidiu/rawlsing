@@ -9,6 +9,16 @@ SOURCE = digest({"instrument": "mandolin", "room": "living room",
                  "placement": "workshop doorway to bench", "version": 1})
 
 
+def establish_demo_conditions(session):
+    """Checkpoint the declared conditions of the opt-in workshop demo."""
+    world, house = read_house(session)
+    house["situated_conditions"] = {
+        "grade": "SOURCEFREE_FIXTURE", "hearing": "available", "sound_path": "audible",
+        "bench_view": "facing_away", "footsteps": "audible",
+    }
+    session.product._checkpoint(session.branch_id, world.clock, world)
+
+
 def perform(session, action):
     from bp4.world import make_event
     from s45_projection.projection import project_event

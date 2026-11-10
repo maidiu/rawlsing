@@ -298,3 +298,44 @@ def test_outward_conduct_supplies_only_qualified_cues(tmp_path, monkeypatch, sou
         assert all(row["situated"]["decision"]["attention"] == "noticed" for row in receipts[-2:])
     else:
         assert len(cues) == 2 and all("situated" not in row for row in receipts[-2:])
+
+
+def test_cli_situated_transport_and_provider_failure_preserve_turn(tmp_path, monkeypatch, capsys):
+    import sys
+
+    import run_p6
+    from situated_provider import SituatedProvider
+
+    monkeypatch.setenv("SOROK_SITUATED_MODEL_ENDPOINT", "http://127.0.0.1:1/chat/completions")
+    monkeypatch.setenv("SOROK_SITUATED_SEMANTIC_MODEL", "test-semantic")
+    monkeypatch.setenv("SOROK_SITUATED_EXPRESSIVE_MODEL", "test-expressive")
+    calls = []
+    real_request = SituatedProvider._request
+
+    def transport(provider, role, model, payload):
+        calls.append((model, payload))
+        if len(calls) > 1:
+            return real_request(provider, role, model, payload)
+        return {"attention": "noticed", "interpretation": "Music may be coming through the doorway.",
+                "action": "continue"}
+
+    monkeypatch.setattr(SituatedProvider, "_request", transport)
+
+    def cli(*args):
+        monkeypatch.setattr(sys, "argv", ["run_p6.py", "--state", str(tmp_path), *args])
+        assert run_p6.main() == 0
+        return json.loads(capsys.readouterr().out)
+
+    cli("new", "--situated-house")
+    cli("go", "living room")
+    audible = cli("play", "--request-id", "play")
+    closed = cli("stop-playing", "--request-id", "stop")
+    assert closed["clock"] == audible["clock"] + 1
+    assert cli("stop-playing", "--request-id", "stop")["clock"] == closed["clock"]
+    assert [model for model, _ in calls] == ["test-semantic", "test-semantic"]
+    assert calls[0][1]["cues"][0]["detail"] == {"instrument": "mandolin", "sounding": True}
+    ledger = json.loads((tmp_path / "p4_receipts.json").read_text())
+    assert ledger["pending"] is None
+    last_two = [turn["receipt"]["situated"] for turn in ledger["turns"][-2:]]
+    assert [row["status"] for row in last_two] == ["INTERPRETED", "MODEL_UNAVAILABLE"]
+    assert all(row["provider_mode"] == "CONFIGURED_TRANSPORT" for row in last_two)
