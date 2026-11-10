@@ -205,7 +205,7 @@ def test_workshop_producer_does_not_repair_actor_from_living_room_and_return_res
     assert resumed["attempt"]["inputs"]["actor_present"] is True
 
 
-@pytest.mark.parametrize("failure_site", ["after_event_before_episode", "after_complete_writer_before_p4"])
+@pytest.mark.parametrize("failure_site", ["after_event_before_user_perception", "after_perception_before_episode", "after_episode_before_checkpoint", "after_complete_writer_before_p4"])
 def test_interrupted_write_stays_pending_and_cannot_replay_ambiguous_move(
         tmp_path, monkeypatch, failure_site):
     import actor_initiative
@@ -216,19 +216,38 @@ def test_interrupted_write_stays_pending_and_cannot_replay_ambiguous_move(
         return _decision("visit_adjacent_room")
 
     _run(state, "new", choose, situated_house=True)
-    if failure_site == "after_event_before_episode":
+    if failure_site != "after_complete_writer_before_p4":
         owner = open_owner(state / "actual-p2")
         try:
             product_cls = type(owner.base_owner.fanin.session.product)
         finally:
             owner.close()
-        original = product_cls._append_episode
+        if failure_site == "after_event_before_user_perception":
+            original = product_cls._perceive
 
-        def crash_episode(self, branch, actor, kind, clock, body):
-            if kind == "P6_SITUATED_ACTOR_CONDUCT":
-                raise RuntimeError("injected after world event / perceptions")
-            return original(self, branch, actor, kind, clock, body)
-        monkeypatch.setattr(product_cls, "_append_episode", crash_episode)
+            def crash_perception(self, branch, actor, event, channel="co_present"):
+                if channel.startswith("p6_sourcefree_actor_move_"):
+                    raise RuntimeError("injected after event before user perception")
+                return original(self, branch, actor, event, channel)
+            monkeypatch.setattr(product_cls, "_perceive", crash_perception)
+        elif failure_site == "after_perception_before_episode":
+            original = product_cls._append_episode
+
+            def crash_episode(self, branch, actor, kind, clock, body):
+                if kind == "P6_SITUATED_ACTOR_CONDUCT":
+                    raise RuntimeError("injected after perception before episode")
+                return original(self, branch, actor, kind, clock, body)
+            monkeypatch.setattr(product_cls, "_append_episode", crash_episode)
+        else:
+            original = product_cls._checkpoint
+
+            def crash_checkpoint(self, branch, clock, world, actors=None):
+                last = world.events[-1] if world.events else {}
+                if (last.get("kind") == "MOVE" and last.get("actor_id") == "A"
+                        and last.get("body", {}).get("actor_action") == "visit_adjacent_room"):
+                    raise RuntimeError("injected after episode before checkpoint")
+                return original(self, branch, clock, world, actors)
+            monkeypatch.setattr(product_cls, "_checkpoint", crash_checkpoint)
     else:
         original = situated.visit_adjacent_room
 
