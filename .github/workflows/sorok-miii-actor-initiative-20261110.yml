@@ -22,7 +22,7 @@ jobs:
           set -euo pipefail
           git merge-base --is-ancestor 339c872612aff9aa34f7133a2170108bcde385f6 HEAD
           git diff --name-only 339c872612aff9aa34f7133a2170108bcde385f6 HEAD
-          unexpected="$(git diff --name-only 339c872612aff9aa34f7133a2170108bcde385f6 HEAD | grep -Ev '^WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/(actor_initiative[.]py|situated[.]py|outward[.]py|run_p6[.]py|test_actor_initiative[.]py|test_actor_initiative_hostile[.]py|actor_scene_context[.]py|situated_provider[.]py|test_actor_scene_context[.]py)$|^WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/pacing[.]py$|^[.]github/workflows/sorok-miii-(actor-initiative|actor-context)-20261110[.]yml$' || true)"
+          unexpected="$(git diff --name-only 339c872612aff9aa34f7133a2170108bcde385f6 HEAD | grep -Ev '^WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/(actor_initiative[.]py|situated[.]py|outward[.]py|run_p6[.]py|test_actor_initiative[.]py|test_actor_initiative_hostile[.]py|actor_scene_context[.]py|situated_provider[.]py|test_actor_scene_context[.]py|test_house[.]py)$|^WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/pacing[.]py$|^[.]github/workflows/sorok-miii-(actor-initiative|actor-context)-20261110[.]yml$' || true)"
           test -z "$unexpected" || { echo "Unexpected modified path: $unexpected"; exit 1; }
       - name: Python 3.11
         uses: actions/setup-python@v5
