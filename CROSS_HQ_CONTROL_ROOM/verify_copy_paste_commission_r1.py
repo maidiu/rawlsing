@@ -688,13 +688,19 @@ def main():
         print(json.dumps(result, indent=2))
         return 0 if result["status"] == "READY_FOR_INDEPENDENT_RECEIVING" else 2
     result = validate(data)
-    if args.source_check and result["status"].startswith("PASS"):
+    # A structural-only PASS is never an actual dispatch credential.
+    # The official CLI ALWAYS verifies real Git source blob paths/commits
+    # when its format requirements pass. --source-check is retained as an
+    # explicit backwards-compatible spelling of the same strict behavior.
+    if result["status"].startswith("PASS"):
         checks = []
         fences = list(FENCE.finditer(data))
         completion_contract(data[fences[0].end():fences[1].start()].strip(), checks, check_git=True)
         if checks:
             result["status"] = "RED_INVALID_FOR_DISPATCH"
             result["errors"].extend(checks)
+        else:
+            result["validation_scope"] = "STRUCTURE_AND_GIT_SOURCE_BLOBS_ONLY__NOT_CONSUMER_PROOF"
     print(json.dumps(result, indent=2))
     return 0 if result["status"].startswith("PASS") else 2
 
