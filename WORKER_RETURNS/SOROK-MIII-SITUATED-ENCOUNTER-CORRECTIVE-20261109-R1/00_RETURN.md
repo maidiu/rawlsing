@@ -105,3 +105,9 @@ same committed return MOVE body and clock while omitting only the
 fixture sensory source. Both recipients return UNKNOWN with no
 modality. In the source-qualified variants, the P3 store head also
 stays identical across the GO and replay.
+
+At test cut `05f58bda6077c6e04ca53bd5727e9d91dbcf5d2f`, the focused `-k committed_go` test
+passed in 92.71s. Replay now invokes the ordinary P6 CLI in a separate
+OS process. It preserves the exact ledger bytes, clock, two original
+MOVE events and single matching GO parent. Neither actor gains a MOVE
+perception and the P3 head remains unchanged.
