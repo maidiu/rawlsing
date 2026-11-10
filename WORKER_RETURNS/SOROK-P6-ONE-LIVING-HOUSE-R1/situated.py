@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from developmental_recursion.contracts import digest
 from house import read_house
-from actor_initiative import ACTION as VISIT_ADJACENT, destination_if_eligible, visit_adjacent_room
+from actor_initiative import ACTION as VISIT_ADJACENT, destination_affordance, visit_adjacent_room
 from situated_provider import ModelUnavailable
 
 
@@ -58,6 +58,35 @@ def decision_is_grounded(decision, cues, available_actions):
     )
 
 
+
+# This is time since the last *interpersonal/outward* interruption, not scene
+# age, subjective memory, or a claim that the workshop is acoustically silent.
+QUIET_BREAK_KINDS = frozenset({
+    "SPEECH", "MOVE", "PLAY_INSTRUMENT", "STOP_INSTRUMENT",
+    "APPROACH", "ORIENT",
+})
+
+
+def interaction_quiet(session, world, house):
+    baseline = house["epoch"]
+    parent = None
+    for event in session.events():
+        if (event.get("kind") not in QUIET_BREAK_KINDS
+                or event.get("actor_id") not in ("A", session.meta["user_actor"])
+                or type(event.get("clock")) is not int
+                or not baseline <= event["clock"] <= world.clock):
+            continue
+        if event["clock"] >= baseline:
+            baseline = event["clock"]
+            parent = event["event_id"]
+    if house.get("mandolin_playing"):
+        return {"elapsed": 0, "status": "ACTIVE_INSTRUMENT",
+                "last_break_event_id": parent}
+    return {"elapsed": world.clock - baseline,
+            "status": "NO_INTERPERSONAL_OUTWARD_INTERRUPTION",
+            "last_break_event_id": parent}
+
+
 def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
@@ -90,15 +119,28 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
     checkpoint_context = actor_context_for(
         actor["actor_id"], house.get("situated_actor_context")
     )
-    if (checkpoint_context is not None and checkpoint_context == local_context
-            and destination_if_eligible(session, world, house, actor["actor_id"], local_context)):
-        available_actions.append(VISIT_ADJACENT)
+    affordances = []
+    if checkpoint_context is not None and checkpoint_context == local_context:
+        option = destination_affordance(
+            session, world, house, actor["actor_id"], checkpoint_context
+        )
+        if option is not None:
+            available_actions.append(VISIT_ADJACENT)
+            affordances.append(option)
     packet = {
         "actor": actor["actor_id"],
         "room": world.positions["A"],
         "clock": world.clock,
         "elapsed": interval["end"] - interval["start"],
         "scene_elapsed": world.clock - house["epoch"],
+        "interaction_quiet": interaction_quiet(session, world, house),
+        "root_hash": session.read_root()["root_hash"],
+        "branch_id": session.branch_id,
+        "world_state_hash": digest(world.snapshot()),
+        "house_source": house["source"],
+        "conditions_hash": digest(house.get("situated_conditions")),
+        "actor_context_hash": digest(house.get("situated_actor_context")),
+        "action_affordances": affordances,
         "activity": {"role": actor.get("role"), "work_done": actor.get("completed_units"),
                      "material_remaining": actor.get("material_remaining"),
                      "interval_status": interval["status"]},
@@ -118,7 +160,7 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
 
     result.update(status="INTERPRETED", decision=decision)
     if decision["action"] == VISIT_ADJACENT:
-        result["movement"] = visit_adjacent_room(session, actor["actor_id"])
+        result["movement"] = visit_adjacent_room(session, actor["actor_id"], packet=packet, decision=decision)
     elif decision["action"] == "speak":
         try:
             expressive_decision = {key: value for key, value in decision.items() if key != "interpretation"}
