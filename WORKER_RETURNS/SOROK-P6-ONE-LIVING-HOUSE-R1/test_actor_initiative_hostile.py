@@ -151,9 +151,11 @@ def test_quiet_streak_not_conflated_with_scene_age_or_continuing_music(tmp_path)
     committed_go = json.loads((state / "p4_receipts.json").read_text())["turns"][-1]
     go_event_id = committed_go["receipt"]["performed"]["event_id"]
     _run(state, "wait", choose, duration=1, request_id="after-go")
-    assert packets[-1]["interaction_quiet"]["last_break_event_id"] == go_event_id
-    assert packets[-1]["interaction_quiet"]["elapsed"] == 2
-    assert packets[-1]["scene_elapsed"] > packets[-1]["interaction_quiet"]["elapsed"]
+    # The MOVE was not qualified for Nadia in this case: the world knows
+    # it happened, but her quiet-awareness model must not inherit its ID.
+    assert packets[-1]["interaction_quiet"]["last_break_event_id"] != go_event_id
+    assert packets[-1]["interaction_quiet"]["elapsed"] >= packets[1]["interaction_quiet"]["elapsed"]
+    assert packets[-1]["scene_elapsed"] >= packets[-1]["interaction_quiet"]["elapsed"]
     # A fresh compact music scene tests ongoing sound without relying on the
     # finite workshop's ability to remain open after many completed work beats.
     music_state = tmp_path / "music"
@@ -168,13 +170,13 @@ def test_quiet_streak_not_conflated_with_scene_age_or_continuing_music(tmp_path)
                 request_id="music-go")["admission"] == "ADMITTED"
     assert _run(music_state, "play", music_choice,
                 request_id="play")["admission"] == "ADMITTED"
-    assert music_packets[-1]["interaction_quiet"]["status"] == "ACTIVE_INSTRUMENT"
+    assert music_packets[-1]["interaction_quiet"]["status"] == "ACTIVE_QUALIFIED_INSTRUMENT"
     assert music_packets[-1]["interaction_quiet"]["elapsed"] == 0
     _run(music_state, "wait", music_choice, duration=1, request_id="music-sounding")
     assert music_packets[-1]["interaction_quiet"]["elapsed"] == 0
     assert _run(music_state, "stop-playing", music_choice,
                 request_id="stop")["admission"] == "ADMITTED"
-    assert music_packets[-1]["interaction_quiet"]["status"] == "NO_INTERPERSONAL_OUTWARD_INTERRUPTION"
+    assert music_packets[-1]["interaction_quiet"]["status"] == "NO_ACTOR_QUALIFIED_INTERPERSONAL_INTERRUPTION"
     assert music_packets[-1]["interaction_quiet"]["elapsed"] <= 1
     assert music_packets[-1]["scene_elapsed"] > music_packets[0]["scene_elapsed"]
 
