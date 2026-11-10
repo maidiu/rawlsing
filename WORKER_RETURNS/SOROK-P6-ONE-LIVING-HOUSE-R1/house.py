@@ -160,12 +160,30 @@ def perform(session, action):
                        sequence=len(world.events))
     world.add_event(event)
     session._append_event(event, perceive=(user,))
-    if not moving:
-        session._perceive_if_present(event, "A", "B")
+    # MIII Grade A: use the existing S45 actor-access owner for BOTH
+    # actually committed movement and inspection. This is only S45's
+    # situated event-access record; it establishes neither a modality
+    # (hearing/vision), conscious attention, nor Nadia's interpretation.
+    session._perceive_if_present(event, "A", "B")
+    actor_access = {}
+    for actor in ("A", "B"):
+        records = [row for row in session.product.store.perceptions(session.branch_id, actor)
+                   if row["event_id"] == event["event_id"] and row["clock"] == event["clock"]]
+        if len(records) > 1:
+            raise RecursionRefusal("MIII_DUPLICATE_ACTOR_ACCESS_RECEIPT")
+        actor_access[actor] = {
+            "source_event_id": event["event_id"],
+            "source_event_hash": event["hash"],
+            "source_clock": event["clock"],
+            "recorded_access": bool(records),
+            "access_grade": "S45_SOURCEFREE_COPRESENT_ONLY",
+            "actor_uptake": "NOT_EVALUATED",
+            "interpretation": "NOT_EVALUATED",
+        }
     session.product._append_episode(session.branch_id, user, "P6_HOUSE_CONDUCT", world.clock,
                                     {"event_id": event["event_id"], "operation": action["operation"]})
     session.product._checkpoint(session.branch_id, world.clock, world)
-    return {"performed": event}, {"admission": "ADMITTED", "performed": True,
+    return {"performed": event, "actor_access": actor_access}, {"admission": "ADMITTED", "performed": True,
                                   "observation": project_event(event)}
 
 
