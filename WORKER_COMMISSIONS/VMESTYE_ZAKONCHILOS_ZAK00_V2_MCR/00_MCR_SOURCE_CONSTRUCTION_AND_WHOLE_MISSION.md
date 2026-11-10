@@ -1,0 +1,69 @@
+# PROGRAMMA VMESTYE ZAKONCHILOSʹ — ZAK-00 v2 MCR construction contract
+
+**Status:** author-prepared candidate, not independently received or merged.  **Canonical spelling:** ВМЕСТЕ ЗАКОНЧИЛОСЬ (transliterated ZAKONCHILOSʹ). Existing ZAKONCHILOC paths are legacy source identifiers, not current spelling.
+
+**MCR:** §3A and MCR-AF adopted at protected integration/pre-main-reconciliation-r1@cd19070fc67627d7398eb2f57d46d6cd03b44fe3. Do not introduce a fourth court or new governance mechanism.
+
+## Decision and root cause
+
+ZAK-00 needs a V2 specification reconstruction, not R3 data-row patching. The old PR #881 R2 HEAD 1ebd603aa8f5b6d551363336a632a0c364b85f17 preserves valuable documentary evidence, but its mandate simultaneously required identity custody and 182 current individualized dispositions that the available source/consumer evidence could not establish. R2 accordingly filled current status, owner and falsifier columns with substantially formulaic text; its validator could pass plausible false meanings and nonexistent source-joins. It also retained contradictory R1/R2 dispatch requirements and generated overlapping investigation territories. The causal defect is in HQ's specification, not a requirement to add still more columns. This clean V2 is a causal repair/method change under MCR, not a way of escaping repair accountability by bumping a version.
+
+**Preserve without copying/promoting:** 182 frozen distinct reference IDs = 29 F classes + 58 AR releases + 44 LMX + 30 LMQ + 13 P1 + 8 risk. These overlapping classes are not 182 executed functions. Keep R1's first fourteen source columns unchanged. R2 has 47 direct source pins and confirmed hash/source custody at its reviewed cut, but its current-disposition columns are unaccepted routing hypotheses. C6 has 42 historically selected-state AR records and 16 unresolved pointers, not 42 observed historical invocations. LMQ-001 court-existence proof was discharged by Authority40/D04 without establishing machine zero loss. LMX-043 atomic promote/rollback/restart/replay remains a different open obligation. No default C11 owner for all F/LMX.
+
+**Supersede prospectively:** the entire old R1/R2 thirteen-row dispatch specification as operative launch instructions, including inconsistent ZAK-01 requirements, 7 vs 10 validator negative mutations, unpinned V2 receiving targets and unpartitioned cases. Retain these as historical evidence, not simultaneous binding mandates. The independent #884 review is frozen to old R2, not to this new V2 author HEAD.
+
+## Parent mission preserved under MCR-AF
+
+**Primary:** historical authority resource and selected governing rule → actual legacy operation and before/after/negative effect → legitimate modern authority custody, rule selector, effectual application stage, downstream guard/consumer and competent owner. This includes semantic authority, directional QSM/FQRA/QRA, response/option semantics, manual overlays, question-use/QUC, routing/universe/design/estimand, joint-family/structural semantics, version withdrawal, negative and cross-source permission. Source/hash custody is not application; the actual authoritative document need not reside at the same physical stage where its rules execute. The adopted source-authoritative compact-regenerable-hybrid current pipeline is a branching DAG, not a universal serial courier.
+
+**Secondary:** systematic conservation, valid transformation or exact unproved gap for materially important old computational functions across V550+, J, Dva/Trii/Chetiri, Long Memory, Field Forge, Pyat and Sorok. Under the adopted five-part succession law, do not equate absent old symbols with missing current functions or mandate reproduction of old defects.
+
+**Whole ZAK-00 v2 tranche:** make complete inherited custody, source/oracle expectations, family/owner partition, full program sequencing, legitimate parallelism, receiving/integration handoffs and complete MCR-constructible commissions accessible in one reliable program. It does not have to perform descendant science, selected historic source-native runs, 182 current adjudications, or zero-loss proof to complete documentary program construction. It does have to preserve the entire descendant work requirement rather than shrink the terminal mission to a calibration pilot.
+
+## Independently grounded positive/negative oracles fixed before construction
+
+1. #777 C6 at aed1a0ae13c58f11f4dabd07c818b62f72adf989: WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/01_LEGACY_SELECTED_AUTHORITY_USE_AND_INCOMPLETE_CALLEE_COVERAGE.tsv, blob ba39d8f9c9f06440df5d068bdd9f0b857c06ce58: 29 F, 58 AR, six denominator and one crossref; 42 selected states and 16 unresolved. Negative oracle: selected state is not runtime rule application.
+2. Same C6 cut, 03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl, blob 4fc18855909e848d6bc80c3ec6ff34657326cb6a: 55 heterogeneous bounded current/historical cases, not 55 proven present selected-rule applications.
+3. Old #881 R2 author @1ebd603aa8f5b6d551363336a632a0c364b85f17 has 182 inherited records and 47 pinned refs. PR #881 hostile comments 6763146250 and 6772683432 find hash custody positive and actual ownership/falsifier/semantic claims false-ready. New receiving must check actual blob identity, not only 40-hex shape. The 47/47 readbacks are inherited review observations, not new V2 executed results.
+4. F03 AR-0005/0006 selected QSM/FQRA historical source and bounded C10 18,518-row test-time replay; historical production and current non-test selected application remain NOT_OBSERVED. Positive: distinguish directional/nondirectional/excluded/blocked six-coordinate meaning. Negative: a hash-only AuthoritySnapshot or copied role field does not satisfy needed governing rule content.
+5. F08 AR-0047–0050 C11 replay GSS/1973/uswar: semantic_role=RELATION_EVIDENCE with review_required=true but allowed_as_v551_relation_evidence=false. Negative: semantic role is not authorization for signed V551 inference.
+6. F04 semantic/driver AR-0003/0004/0025 remain unresolved without proved selected historical reader. Negative: assigning all unresolved semantic authority to current C11 is not competence/effect evidence.
+7. Authority40 D04 LMQ-001 court existence discharged, whole-machine zero loss held. LMX-043 has meaningful atomic rollback/restart/replay acceptance, not a generic source match.
+8. October 28 architecture at 315251451a6d112fb312a6e80b096d345c5de6 separates durable source and rule, logical governed C11, I03/I05, FF and post-FF, world and Sorok owner boundaries. Source/semantic/science/actor rights cannot be inferred from engineering code.
+9. VMC-T1 R5 PR #871 5827cdb74f6820c338b79db0c423e9e0dc88a992 and VMC-T2 R3 5a73ee31e7dd5af26474f35bbe280dd3bb3b0bac may provide source clues but their 52/235 design is not the canonical program and neither is independently adopted.
+
+### Hard negatives for ZAK-00 v2 itself
+
+Reject a bogus current first-reader/caller from an uninvoked code symbol, false original-native promotion, fabricated AR-0005 issuer, LMQ-001 machine-zero-loss promotion, F04 generic C11 adoption, a fake source SHA or nonexistent join, a still-binding contradictory old dispatch line, false #884 V2 review, simultaneous primary ownership of F03 by multiple workers, or one pilot treated as whole-mission completion. A generic filled falsifier that refers only to the case ID does not become substantive by length.
+
+### MCR-AF preconstruction challenge
+
+Can the entire 182-identity custody and 47-source reference baseline be valid even if no source-qualified original authority rule has been shown to reach a present selected non-test consumer? **YES:** accept scoped custody and keep rule application/consumer unproved. Can authority rules reside in source packs but be executed at several different lawful stages? **YES, where specific consumer obligations establish the need.** Can independent legacy-resource, historic-code, current-code and functional-capital work run concurrently before a single F03 pilot passes? **YES, provided genuine access, lease, contract and scientific/rights constraints are satisfied.** Can a reviewer convert custody acceptance into 182 downstream current decisions? **NO: REVIEW_ERROR/NEW_SCOPE, not a defect of custody.**
+
+## Full coherent campaign, one primary territory per lane
+
+| ID | Primary exclusive mission | Earliest eligible work | Acceptance dependency |
+|---|---|---|---|
+| ZAK-00 v2 | Full program, evidence custody, MCR-based complete commissioning, noncontradictory dependencies and receiving | Current isolated author work | Exact-head independent receiving before any adoption claim |
+| ZAK-00R | Non-author independent custody/program/whole-mission review of exact V2 | After V2 candidate freeze | Not #884 old R2 target; new exact head and real independent agent |
+| ZAK-01 | Historic authority resources, rule payloads, version/row selection, shadow/conflict and negative precedences | S0–S1 alongside 02/03/04/08 | Source selection positive only with row/version evidence |
+| ZAK-02 | Historic V550+/J code reader and actual authority-dependent input→change→negative→first old consumer | S0–S1 alongside 01/03/04/08 | Original run grade separate from static/test-time replay |
+| ZAK-03 | Present actual Pyat source/config→C11→I03/I05/Batch selected rule execution and first actual reader | S0–S1 alongside 01/02/04/08 | No assumed current source/science issuer |
+| ZAK-04 | Present FF/learned/structural/temporal/world and Sorok receiving boundaries, actual semantically relevant inputs and consumers | S0–S1 alongside 01/02/03/08 | No actor/source/semantic rights from a code symbol |
+| ZAK-05 | Full historical authority effect→present custody/selector/application/downstream placement and competent-owner synthesis | Provisional join starts with any qualifying evidence | Positive final mapping per claim waits for supporting 01–04 source slices |
+| ZAK-06 | Independent hostile placement and authority-negative review, actual forward and reverse challenge | Frozen candidate ZAK-05 | Genuine non-author independent reviewer and same-head facts |
+| ZAK-07 | Present authority-effect and first-consumer positive/negative/restore tests at authorized sourcefree/native grades | Test design parallel; runtime proof per verified source/rights | Must not fabricate S3 or original35 issuer rights |
+| ZAK-08 | Full secondary historical functional-capital and 44 LMX/30 LMQ conservation under five-test law | S0–S1 alongside 01–04, not blocked by one F03 | Exact present consumer, no automatic legacy BUILD |
+| ZAK-09 | Qualified owner decisions; conditional narrow engineering correction with independent implementation review | Decisions as evidence matures | No self-appointed science/source/actor authority |
+| ZAK-10 | Delta-only canonical integration and historical-forward/current-backward same-head review in existing #814–816 machinery | Accepted scoped deltas | Do not rebuild ZL15 atlas or invent a second canon |
+| ZAK-11 | Existing #817 terminal receiving and finite stop at separate epistemic grades | Reviewed source and program deltas | Estate/accounted, placement/held, effect, function, zero loss, native world all distinct |
+
+**No automatic all-at-once launch.** Territory and source-grade contracts, rather than arbitrary pilot completion, determine eligible concurrent flights. Independent writers receive their own lease and copy-paste prompt. No human agent must prove downstream scientific issuance to accept a correct S1 documentary return.
+
+## ZAK-00 v2 deliverable and closure
+
+The final ZAK-00 v2 return must supply (a) exact reference-backed inherited custody with no new 182 current-semantic claims; (b) completed full parent scope, all commission territories/sequence/parallel eligibility and material source/rights stops; (c) fully constructed and preflighted one-copy-paste launches where independent oracles/source access actually suffice, plus explicit non-dispatch/owner-specific missing evidence where they do not; (d) calibrated F03/F08/F04/LMQ-001 adversarial challenges, plus fresh author-side hostile challenge unrelated to its template; (e) exact formal independent review packet for THIS V2 head; and (f) explicit supersession of old R1/R2 launch directives without deleting historic evidence.
+
+**ENGINEERING (documentary):** pass if exact identity/source readbacks, consistent instructions and claim-sensitive negatives pass available runner; fail if corrupted sources or counterfeit semantic claims pass; hold if actual Git/Node/Python execution unavailable and mark NOT_RUN. **SCIENTIFIC:** pass bounded accurate classification of the evidence, do not issue new science; fail if old historical test replay is represented as original run or code ownership as equivalent meaning; hold scientific owner decisions. **AUTHORITY:** pass only with independent reviewer at V2 frozen head and legitimate host/rights/branch; fail for self-approval, protected write or stolen issuer role; hold unissued native/source/actor rights. These are distinct existing courts, not new tribunals.
+
+**Closure:** Accept scoped program construction and source custody, with explicit downstream held obligations; do NOT demand complete modern authority map or zero loss for a documentary coordinator. But any return that merely postpones the full mission to unnamed future workers, narrows the mission to F03 or gives only a schema without substantive source-grounded commissions fails MCR-AF. Retain unaffected accepted source facts. A second material repeat defect triggers method diagnosis, not another cosmetic row update.
