@@ -13,5 +13,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: MCR authoring validator self-test (existing checker)
+        run: |
+          python3 -m py_compile CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+          python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+      - name: Reject invalid new or revised copy-paste commissions
+        if: ${{ github.event_name == 'pull_request' }}
+        shell: bash
+        env:
+          MCR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          git diff --name-only "$MCR_BASE_SHA" HEAD > /tmp/mcr-changed-paths.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          paths = Path("/tmp/mcr-changed-paths.txt").read_text().splitlines()
+          checked = 0
+          for name in paths:
+              path = Path(name)
+              if not path.is_file() or path.suffix.lower() not in {".md", ".txt"}:
+                  continue
+              if not (("WORKER_COMMISSIONS/" in name or "FLIGHT_LAUNCHES/" in name)
+                      and any(term in path.name.upper()
+                              for term in ("FULL_COPY_PASTE", "LAUNCH", "COMMISSION"))):
+                  continue
+              checked += 1
+              cmd = ["python3", "CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py", name]
+              print("MCR AUTHORING CHECK", name, flush=True)
+              subprocess.run(cmd, check=True)
+          print("MCR_CHANGED_COMMISSIONS_VALIDATED=" + str(checked))
+          PY
       - name: Verify canonical PROGRAMMA guide and historical no-drop
         run: python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
