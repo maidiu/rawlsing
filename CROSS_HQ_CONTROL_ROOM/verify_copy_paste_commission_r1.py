@@ -15,7 +15,7 @@ FIELDS = [
  "SCIENCE_SOURCE_ACTOR_AUTHORITY", "POST_RETURN_INDEPENDENT_REVIEW",
 ]
 CONTRACT_FIELDS = [
- "COMMISSION_KIND", "CONTRACT_ID", "CONTRACT_SOURCE_CUT",
+ "MCR", "COMMISSION_KIND", "CONTRACT_ID", "CONTRACT_SOURCE_CUT",
  "TERMINAL_CONSUMER_AND_EFFECT", "FROZEN_ORACLE_AND_COUNTEREXAMPLE",
  "PREBUILD_CONTRACT_CHALLENGE", "EXECUTION_AND_AUTHOR_PREFLIGHT",
  "CLOSURE_AND_OUT_OF_SCOPE",
@@ -90,6 +90,8 @@ def validate(markdown: str):
         if not re.search(r"\b" + term + r"\w*\b", prompt, re.I):
             errors.append("MISSING_COMPLETE_TASK_" + term.upper())
     # Structural checks cannot establish that the source, exception, runner or consumer is real.
+    if header.get("MCR") != "REQUIRED":
+        errors.append("MCR_REQUIRED_NOT_ATTESTED")
     kind = header.get("COMMISSION_KIND", "")
     if kind not in ALLOWED_KINDS:
         errors.append("INVALID_COMMISSION_KIND")
@@ -123,7 +125,7 @@ def validate(markdown: str):
             "status": "RED_INVALID_FOR_DISPATCH" if errors else "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH",
             "errors": errors, "agent_type": header.get("AGENT_TYPE"),
             "intelligence_level": header.get("INTELLIGENCE_LEVEL"),
-            "branch": header.get("BRANCH"), "commission_kind": kind,
+            "branch": header.get("BRANCH"), "mcr": header.get("MCR"), "commission_kind": kind,
             "contract_id": header.get("CONTRACT_ID"),
             "validation_scope": "STRUCTURE_ONLY__NO_SEMANTIC_OR_EXECUTION_CLAIM",
             "prompt_chars": len(prompt)}
@@ -144,6 +146,7 @@ def self_test():
     def fixture(kind):
         fields = dict(base)
         fields.update({
+            "MCR": "REQUIRED",
             "COMMISSION_KIND": kind,
             "CONTRACT_ID": "CASE-F03-AUTHORITY-CONSUMER",
             "CONTRACT_SOURCE_CUT": "src/legacy_v549b.py@" + "b" * 40,
@@ -184,6 +187,8 @@ def self_test():
         positives[kind] = out["status"]
     build, repair = fixture("BUILD"), fixture("REPAIR")
     negatives = [
+        ("missing MCR", change(build, "MCR", "TBD")),
+        ("MCR advisory only", change(build, "MCR", "ADVISORY")),
         ("missing source", change(build, "CONTRACT_SOURCE_CUT", "TBD")),
         ("unversioned source", change(build, "CONTRACT_SOURCE_CUT", "src/no-pin.py")),
         ("no consumer", change(build, "TERMINAL_CONSUMER_AND_EFFECT", "CONSUMER=TBD; EFFECT=rule changes output")),
