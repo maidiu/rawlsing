@@ -59,7 +59,10 @@ def test_house_reopens_with_two_separate_closure_triggers(tmp_path):
 
 def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_path, monkeypatch):
     from copy import deepcopy
+    from pathlib import Path
     import shutil
+    import subprocess
+    import sys
 
     import house
     import run_p6
@@ -134,7 +137,14 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
             "HOLD_ACTOR_REGISTRATION_OWNER_MISSING", "NOT_ELIGIBLE_FOR_REGISTRATION",
         ]
         assert "encounter_evidence" not in json.dumps(result)
-        assert experience(state, args)["clock"] == result["clock"]
+        if focus == "bench":
+            replay = subprocess.run(
+                [sys.executable, "-B", str(Path(__file__).with_name("run_p6.py")),
+                 "--state", str(state), "go", "workshop", "--request-id", "in"],
+                capture_output=True, text=True, timeout=90,
+            )
+            assert replay.returncode == 0, replay.stdout + replay.stderr
+            assert json.loads(replay.stdout)["clock"] == result["clock"]
         assert ledger_path.read_bytes() == raw
 
         owner = open_owner(state / "actual-p2")
@@ -142,9 +152,11 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
             session = owner.base_owner.fanin.session
             assert session.event(event["event_id"]) == event
             assert owner.store.head() == psyche_before
-            parent = next(row for row in session.episodes(session.meta["user_actor"])
-                          if row["kind"] == "P6_HOUSE_CONDUCT"
-                          and row["body"]["event_id"] == event["event_id"])
+            assert sum(row["kind"] == "MOVE" and row["actor_id"] == event["actor_id"]
+                       for row in session.events()) == 2
+            [parent] = [row for row in session.episodes(session.meta["user_actor"])
+                        if row["kind"] == "P6_HOUSE_CONDUCT"
+                        and row["body"]["event_id"] == event["event_id"]]
             assert {row["conduct_parent"] for row in evidence} == {parent["episode_id"]}
             for actor in ("A", "B"):
                 assert not any(row["event_id"] == event["event_id"]
