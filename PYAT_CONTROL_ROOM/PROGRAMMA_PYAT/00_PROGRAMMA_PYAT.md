@@ -230,6 +230,7 @@ HOLD_IF: User-stopped operation, unmerged/owner-held adoption, unknown license, 
 EVIDENCE: Permission and selected-host records, immutable reviewer/branch SHA, coherent own MD/JSON state and protected owner CAS receipt or NONE_VERIFIED.
 OWNER_OF_DECISION: Competent original rights holder, incumbent domain HQ and protected PRE-MAIN integrator as applicable, not a new court.
 **DISPATCH PREFLIGHT:** Each actual copied commission must instantiate all 3×5 fields rather than merely quoting this template. A sourcefree engineering PASS plus scientific/authority HOLD is valid. A real RED remains RED regardless of favorable author tests.
+**MCR-AF — ANTI-FLATTENING:** Apply shared §3A MCR and `WORK_SCOPE_AND_FLIGHT` to each new/changed Pyat commission. Preserve the **largest coherent original objective and all assigned outputs**; a single source-grounded question or first successful test is a nonterminal method witness, **not** an imposed one-case commission, positive-adoption precondition for investigation, or blanket serial stop of independent eligible work. False shrinkage of ZAK-00, Pyat whole-machine conservation or parallel full-tranche commitments under the name of MCR is `MCR-SCOPE-RED`. This is a source pointer to the shared law, not copied governance or a new court.
 <!-- HQ_RULE_END id=HQ-C2R-030 -->
 
 ## Practical operating algorithm — execute these procedures, not merely their headings
