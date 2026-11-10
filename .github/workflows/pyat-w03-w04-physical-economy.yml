@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install sourcefree physical test dependencies
-        run: python -m pip install pytest pyarrow pyreadstat
+        run: python -m pip install pytest pyarrow pyreadstat pandas
       - name: Execute exact compact/cache and cold I03/I05 consumer regressions
         env:
           PYTHONPATH: .
