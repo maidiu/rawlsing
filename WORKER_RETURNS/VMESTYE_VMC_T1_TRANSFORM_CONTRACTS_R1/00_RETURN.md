@@ -1,4 +1,26 @@
-# VMC-T1 R3 — source-provenance, C6 selection and semantic-fate repair
+# VMC-T1 R4 — focused original-source semantic repair
+
+**R4 author-side terminal:** `VMC_T1_R4_SOURCE_CHALLENGE_REPAIRED__INDEPENDENT_REVIEW_REQUIRED__S0_S1_ONLY__NO_NATIVE_NO_MERGE`. This is a *targeted successor* to R3 on the same draft PR #871, not acceptance. The R3 source identity, selected C6 authority, 235 R1 fates, 74 LMX/LMQ obligations and 10,348 source rows remain conserved. All protected and paused-work boundaries remain in force.
+
+**Why this pass was necessary:** the narrow hostile review withdrew its former general objections and asked for source-body correctness, consequential dedup hazards and finite unknowns. R4 cold-read **17 high-risk contract claims across 13 original code bodies** at original source commit `9253064bc9423a0f0ccda4fbdea43c2f54f800c6` (exact blob anchors in `HOSTILE_CALIBRATION.md`). Ten selected claims matched at static source scope, and **seven contract records required substantive wording changes**:
+
+1. **F08 override conflict:** a duplicate or conflicting selector match throws a `RuntimeError`, not a durable typed review artifact. Caller recovery is unproven.
+2. **V549b observed absence:** only literal `"1"/"0"` create presence/absence anchors. Textual `present/absent` are not normalized by this body.
+3. **V551 signed projection:** neutral returns signed zero before numeric intensity/geometry checks. Nonneutral paths still demand geometry; registry existence is a distinct adjudication check.
+4. **V551 adjudication:** the prefilter excludes nonapplicable/missing/special sources entirely; the included candidate then faces ten row predicates plus missing-registry/projection reasons. Prefilter exclusion is not automatically counted as repair debt.
+5. **V552 pressure:** absence of V551 repair debt permits a conditional score even when selected response-category coverage is partial. Denominator status must remain visible; conditional pressure is not full-population measurement.
+6. **V551J target certification:** a coherent relation signature or merely positive `registry_resolved_share` can satisfy its target gate even without each component target independently resolved. Original issuer authority remains held.
+7. **V552J scored join:** exact source/run/wave/country scope can use partial semantic score >=5, and equal-ranked candidates are not expressly refused. First fact selection is not unique full semantic equivalence.
+
+**Fate and dedup conclusion:** these are seven corrected semantic assertions *within* the existing 52 candidate records, not seven new functions or a recount. F03 four mutually exclusive outcomes, V548 disjoint/conditional recursion, J same-person pattern, V551 gate/atom/coverage, V552 conditional measurement and V554–558 thin-not-native remain distinct at the source grain. No source-row identity, candidate disposition, C6 authority release or inherited obligation was added, dropped or lawfully retired. The 148 unlinked R1 candidates remain explicitly held, not lost functions.
+
+**Finite bounded questions:** six new precisely pinned D22–D27 rows in `FINITE_ESTATE_DELTA.tsv` identify each decision-changing unresolved code/issuer/reader issue, owner, first falsifier and stop rule. The validator `validate_vmc_t1_r3.mjs` (kept at its established path) now also guards the seven corrected claim distinctions. **Authored local S0–S1 check: baseline 0 issues, 25/25 synthetic mutations rejected** (16 previous structural + seven semantic textual + two finite-queue integrity tests); `--require-source` local Git replay is **NOT_RUN** because this scratch surface is not a Git clone. Source was fetched and inspected via authenticated GitHub API, but original Python/DB/respondent, modern current-code, and scientific/authority courts were NOT_RUN.
+
+**Independent nonauthor review required.** The #815/#817 receiving reviewer should now concentrate on: (a) falsify selected source-body before→rule→output→refusal→consumer claims, with special attention to D22–D27 and seven corrected rows; (b) test consequences of 235 fates/148 unlinked and material split/merge disputes rather than recensus references; (c) confirm every consequential hold has owner, first falsifier, stop. If those pass, T1 can be accepted *at historical S0–S1 investigation scope only*. T2 owns intended PROGRAMMA vs actual pipeline location, and scientific/issuer/native equivalent effects remain separate. No return of #787–790 from PAUSED, no new Long Memory excavation, no implementation mutation, no merge.
+
+---
+
+## Retained R3 author repair record (superseded wherever R4 explicitly corrects it)
 
 **Author-side terminal:** `VMC_T1_R3_AUTHOR_REPAIR_READY_FOR_INDEPENDENT_REREVIEW__S0_S1_ONLY__NO_NATIVE_NO_MERGE`.
 

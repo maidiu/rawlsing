@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// VMC-T1 R3 S0-S1 documentary validator. No original-source Python or respondent data execution.
+// VMC-T1 R4 S0-S1 documentary validator. No original-source Python or respondent data execution.
 // Usage: node validate_vmc_t1_r3.mjs --self-test --require-source
 import fs from "node:fs";
 import path from "node:path";
@@ -21,19 +21,23 @@ const base={
  ledger:fromFile("SOURCE_RECORD_TO_TRANSFORM.tsv"),
  r1fates:fromFile("R1_CANDIDATE_FATES.tsv"),
  c6:fromFile("C6_SELECTED_AUTHORITY_EVIDENCE.tsv"),
- obligations:fromFile("INHERITED_OBLIGATION_FATES.tsv")
+ obligations:fromFile("INHERITED_OBLIGATION_FATES.tsv"),
+ finite:fromFile("FINITE_ESTATE_DELTA.tsv")
 };
 
 const audit = function audit(d){
  const err=[],check=(name,pred,note)=>{if(!pred&&err.length<100)err.push(name+": "+note)};
  const unique=a=>new Set(a).size===a.length;
- const [cs,ls,fs,ars,os]=[d.contracts,d.ledger,d.r1fates,d.c6,d.obligations];
+ const [cs,ls,fs,ars,os,ds]=[d.contracts,d.ledger,d.r1fates,d.c6,d.obligations,d.finite];
  const C=new Map(cs.map(x=>[x.transform_id,x])), L=new Map(ls.map(x=>[x.source_record_key,x])), A=new Map(ars.map(x=>[x.ID,x])), O=new Map(os.map(x=>[x.identity,x]));
  check("CONTRACTS_52",cs.length===52&&unique(cs.map(x=>x.transform_id)),String(cs.length));
  check("FROZEN_10348",ls.length===10348&&unique(ls.map(x=>x.source_record_key)),String(ls.length));
  check("R1_FATES_235",fs.length===235&&unique(fs.map(x=>x.r1_id)),String(fs.length));
  check("C6_29_58_94",ars.length===94&&ars.filter(x=>x.ROW_TYPE==="FUNCTION").length===29&&ars.filter(x=>x.ROW_TYPE==="RELEASE").length===58,"denominators");
  check("LONG_MEMORY_44_30",os.length===74&&unique(os.map(x=>x.identity))&&os.filter(x=>x.identity.startsWith("LMX-")).length===44&&os.filter(x=>x.identity.startsWith("LMQ-")).length===30,"denominators");
+ check("FINITE_27_WITH_SIX_R4",ds.length===27&&unique(ds.map(x=>x.delta_id))&&ds.filter(x=>/^D2[2-7]_/.test(x.delta_id)).length===6,"R3 21 plus six decision-changing R4 questions");
+ for(const delta of ds)check("FINITE_OWNED_FALSIFIABLE_STOPPED",!!delta.source_identity&&!!delta.method&&!!delta.grade&&!!delta.owner&&!!delta.earliest_falsifier&&!!delta.consequence&&!!delta.stop_rule,delta.delta_id);
+ for(const delta of ds.filter(x=>/^D2[2-7]_/.test(x.delta_id)))check("R4_FINITE_EXACT_CODE_ANCHOR",delta.source_identity.startsWith("9253064bc9423a0f0ccda4fbdea43c2f54f800c6::data/ddm_build_copy/")&&/^[0-9a-f]{40}$/.test(delta.source_blob_sha),delta.delta_id);
  const byT=new Map(cs.map(x=>[x.transform_id,[]]));
  for(const l of ls){
   check("LEDGER_GRADE_CUT",!!l.source_cut&&!!l.exact_source_identity&&!!l.owner&&!!l.falsifier&&!!l.source_grade,l.source_record_key);
@@ -89,6 +93,17 @@ const audit = function audit(d){
  const a43=O.get("LMX-043");
  check("LMX043_ATOMIC_ROLLBACK_REPLAY",!!a43&&/ATOMIC/.test(a43.required_rule_or_refusal)&&/ROLLBACK/.test(a43.required_rule_or_refusal)&&/REPLAY/.test(a43.required_rule_or_refusal)&&a43.before_state.includes("STAGED"),"LMX-043");
 
+ // Source-challenge semantic sentinels: pin the seven corrected distinctions.
+ // These check the returned representation; the accepted original code body must still be read separately.
+ const claim=id=>C.get(id)||{};
+ check("F08_CONFLICT_IS_EXCEPTION",claim("T1R2-F08-DUPLICATE-REFUSE").semantic_delta?.includes("Raise RuntimeError")&&claim("T1R2-F08-DUPLICATE-REFUSE").output_guarantee?.includes("no emitted conflict/review artifact"),"selector raises, not durable review");
+ check("V549B_LITERAL_BINARY_ONLY",claim("T1R2-V549B-PRESENCE").semantic_delta?.includes("Textual 'present'/'absent' do not")&&claim("T1R2-V549B-PRESENCE").negative_refusal?.includes("remains unanchored"),"only numeric-string 1 and 0 anchor");
+ check("V551_NEUTRAL_SHORT_CIRCUIT",claim("T1R2-V551-SIGNED-PROJECTION").guard_rule_predicate?.includes("neutral direction short-circuits")&&claim("T1R2-V551-SIGNED-PROJECTION").negative_refusal?.includes("neutral bypasses"),"no geometry claim for neutral");
+ check("V551_PREFILTER_NOT_REPAIR_DEBT",claim("T1R2-V551-ADJUDICATE").negative_refusal?.includes("omitted, not automatically logged")&&claim("T1R2-V551-ADJUDICATE").guard_rule_predicate?.includes("10 explicit row predicates"),"candidate prefilter separate");
+ check("V552_PARTIAL_CAN_SCORE",claim("T1R2-V552-PRESSURE").guard_rule_predicate?.includes("still permits a score")&&claim("T1R2-V552-PRESSURE").output_guarantee?.includes("pressure_measure_class stays conditional"),"partial selected coverage not automatically DENY");
+ check("V551J_TARGET_GATE_FALLBACK",claim("T1R2-V551J-CERTIFY").guard_rule_predicate?.includes("registry_resolved_share>0")&&claim("T1R2-V551J-CERTIFY").semantic_invariants?.includes("do not infer every component"),"target resolution not necessarily per component");
+ check("V552J_PARTIAL_AND_TIE",claim("T1R2-V552J-EXACT-JOIN").guard_rule_predicate?.includes("score >=5")&&claim("T1R2-V552J-EXACT-JOIN").negative_refusal?.includes("ties at accepted score are not rejected"),"exact scope not full semantic equivalence");
+
  const staticMatches={
  "T1-F03-DIRECTIONAL":"T1R2-F03-DIRECTIONAL",
  "T1-F03-PRESENT-NONDIRECTIONAL":"T1R2-F03-NONDIRECTIONAL",
@@ -121,7 +136,16 @@ const muts=[
  ["LEDGER_KEY_DELETE",d=>d.ledger.splice(10,1)],
  ["CODE_PIN_TAMPER",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551-COVERAGE").source_ids_and_aliases="CODE_BODY:0000000000000000000000000000000000000000::data/ddm_build_copy/ddm_v551_atoms.py#L160-L166"],
  ["C6_SELECTED_ROW_TAMPER",d=>d.c6.find(x=>x.ID==="F03_QREL").SELECTED_SHA256_OR_SET="AR-0005:"+("0".repeat(64))+";AR-0006:"+("f".repeat(64))],
- ["MISSING_EXPLICIT_WITNESS",d=>d.contracts[0].frozen_witness_source_record_keys="BOGUS:KEY"]
+ ["MISSING_EXPLICIT_WITNESS",d=>d.contracts[0].frozen_witness_source_record_keys="BOGUS:KEY"],
+ ["F08_CONFLICT_AS_REVIEW_ARTIFACT",d=>d.contracts.find(x=>x.transform_id==="T1R2-F08-DUPLICATE-REFUSE").output_guarantee="typed manual review row emitted"],
+ ["V549B_FALSE_TEXTUAL_NORMALIZATION",d=>d.contracts.find(x=>x.transform_id==="T1R2-V549B-PRESENCE").semantic_delta="Textual present and absent both become anchors"],
+ ["V551_NEUTRAL_FALSE_GEOMETRY",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551-SIGNED-PROJECTION").guard_rule_predicate="Every neutral and nonneutral response requires valid geometry"],
+ ["V551_PREFILTER_FALSE_DEBT",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551-ADJUDICATE").negative_refusal="Every excluded raw input is registered as repair debt"],
+ ["V552_PARTIAL_FALSE_DENY",d=>d.contracts.find(x=>x.transform_id==="T1R2-V552-PRESSURE").guard_rule_predicate="All partially covered selected response surfaces DENY scoring"],
+ ["V551J_TARGET_FALSE_ALL_COMPONENT",d=>d.contracts.find(x=>x.transform_id==="T1R2-V551J-CERTIFY").semantic_invariants="Every component independently target certified"],
+ ["V552J_TIE_FALSE_REFUSAL",d=>d.contracts.find(x=>x.transform_id==="T1R2-V552J-EXACT-JOIN").negative_refusal="Any tie is always a hard refusal"],
+ ["FINITE_R4_DECISION_DROP",d=>d.finite.splice(d.finite.findIndex(x=>x.delta_id.startsWith("D25_")),1)],
+ ["FINITE_R4_STOP_ERASURE",d=>d.finite.find(x=>x.delta_id.startsWith("D27_")).stop_rule=""]
 ];
 function sourceCutCheck(requireSource){
  let repoRoot;
@@ -158,6 +182,6 @@ let sourceIssues=[];try{sourceIssues=sourceCutCheck(requireSource)}catch(e){sour
 const mutationOut=requestedSelfTest?muts.map(([name,f])=>{const d=clone(base);f(d);const errors=audit(d);return {name,rejected:errors.length>0,first_error:errors[0]||"NO_REJECTION"}}):[];
 const fullIssues=baseline.concat(sourceIssues.filter(x=>!x.startsWith("SOURCE_CUT_REPLAY_NOT_RUN")));
 if(mutationOut.some(x=>!x.rejected))fullIssues.push("NEGATIVE_CONTROL_ACCEPTED");
-const out={status:fullIssues.length?"FAIL_OR_HOLD":"PASS_S0_S1_DOCUMENTARY_ONLY",scope:"NO_PYTHON_NO_SOURCE_NATIVE_NO_S2_S3_NO_ACCEPTANCE",counts:{contracts:base.contracts.length,ledger:base.ledger.length,r1fates:base.r1fates.length,c6:base.c6.length,obligations:base.obligations.length},baseline_issues:baseline,source_cut_evidence:sourceIssues.length?sourceIssues:["EXACT_R2_R1_C6_GIT_SOURCE_CUTS_MATCHED"],negative_controls:mutationOut};
+const out={status:fullIssues.length?"FAIL_OR_HOLD":"PASS_S0_S1_DOCUMENTARY_ONLY",scope:"NO_PYTHON_NO_SOURCE_NATIVE_NO_S2_S3_NO_ACCEPTANCE",counts:{contracts:base.contracts.length,ledger:base.ledger.length,r1fates:base.r1fates.length,c6:base.c6.length,obligations:base.obligations.length,finite:base.finite.length},baseline_issues:baseline,source_cut_evidence:sourceIssues.length?sourceIssues:["EXACT_R2_R1_C6_GIT_SOURCE_CUTS_MATCHED"],negative_controls:mutationOut};
 console.log(JSON.stringify(out,null,2));
 if(fullIssues.length)process.exitCode=1;
