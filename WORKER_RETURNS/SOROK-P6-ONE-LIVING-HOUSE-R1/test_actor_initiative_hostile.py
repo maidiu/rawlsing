@@ -139,11 +139,12 @@ def test_quiet_streak_not_conflated_with_scene_age_or_continuing_music(tmp_path)
 
     state = tmp_path / "world"
     _run(state, "new", choose, situated_house=True)
-    _run(state, "wait", choose, duration=3, request_id="quiet1")
-    _run(state, "wait", choose, duration=2, request_id="quiet2")
-    assert [p["interaction_quiet"]["elapsed"] for p in packets] == [3, 5]
-    assert packets[-1]["scene_elapsed"] >= 5
-    _run(state, "go", choose, target="living room", request_id="go")
+    _run(state, "wait", choose, duration=1, request_id="quiet1")
+    _run(state, "wait", choose, duration=1, request_id="quiet2")
+    assert [p["interaction_quiet"]["elapsed"] for p in packets] == [1, 2]
+    assert packets[-1]["scene_elapsed"] >= 2
+    go = _run(state, "go", choose, target="living room", request_id="go")
+    assert go["admission"] == "ADMITTED", go
     assert packets[-1]["interaction_quiet"]["elapsed"] <= 1
     _run(state, "play", choose, request_id="play")
     assert packets[-1]["interaction_quiet"]["status"] == "ACTIVE_INSTRUMENT"
