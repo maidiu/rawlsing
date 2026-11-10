@@ -212,69 +212,182 @@ def completion_contract(prompt, errors, check_git=False):
         errors.append("MCR_C_ABBREVIATED_MATERIAL_HASH")
     if BAD_UNICODE.search(prompt):
         errors.append("MCR_C_INVISIBLE_CHARACTER_IN_LAUNCH")
-    return {"scope": scope, "obligations": records["MCR_OBLIGATION"],
-            "receiving": receiving, "sha256": hashlib.sha256(block.encode("utf-8")).hexdigest()}
+    if isinstance(scope.get("expected_count"), int) and scope["expected_count"] > len(records["MCR_OBLIGATION"]):
+        cols = scope.get("identity_columns")
+        ifdef _git(root, *args):
+    try:
+        p = subprocess.run(["git", "-C", str(root), *args],
+                           capture_output=True, timeout=25, check=False)
+        return p.stdout if p.returncode == 0 else None
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+
+
+def _committed_file(root, sha, path, errors, label):
+    """Verify exact checkout blob, not an untracked or post-commit replacement."""
+    if not _safe_path(path):
+        errors.append("MCR_C_INVALID_COMMITTED_PATH_" + label)
+        return None
+    tracked = _git(root, "rev-parse", sha + ":" + path)
+    current = _git(root, "hash-object", str(root / path))
+    if not tracked or not current or tracked.strip() != current.strip():
+        errors.append("MCR_C_OUTPUT_NOT_COMMITTED_AT_CANDIDATE_" + label)
+        return None
+    try:
+        actual = root / path
+        resolved = actual.resolve(strict=True)
+        resolved.relative_to(root.resolve(strict=True))
+        return resolved.read_bytes()
+    except (OSError, ValueError, RuntimeError):
+        errors.append("MCR_C_MISSING_OR_ESCAPED_FILE_" + label)
+        return None
+
+
+def _verified_source_bytes(root, source, errors, label):
+    if not isinstance(source, dict) or not all(k in source for k in ("path", "commit", "blob")):
+        errors.append("MCR_C_SOURCE_MISSING_" + label)
+        return None
+    path, commit, blob = source["path"], source["commit"], source["blob"]
+    if not (_safe_path(path) and isinstance(commit, str) and HEX40.fullmatch(commit)
+            and isinstance(blob, str) and HEX40.fullmatch(blob)):
+        errors.append("MCR_C_SOURCE_INVALID_" + label)
+        return None
+    actual = _git(root, "rev-parse", commit + ":" + path)
+    if not actual or actual.strip().decode("ascii", "replace") != blob:
+        errors.append("MCR_C_SOURCE_BLOB_UNVERIFIED_" + label)
+        return None
+    content = _git(root, "show", commit + ":" + path)
+    if content is None:
+        errors.append("MCR_C_SOURCE_CONTENT_UNAVAILABLE_" + label)
+    return content
+
+
+def _expected_id_set(root, contract, errors):
+    scope = contract["scope"]
+    count = scope["expected_count"]
+    obligations = contract["obligations"]
+    content = _verified_source_bytes(root, scope["source"], errors, "SCOPE")
+    if content is None:
+        return set()
+    cols = scope.get("identity_columns")
+    if not cols:
+        ids = [ob["id"] for ob in obligations]
+    else:
+        try:
+            data = content.decode("utf-8-sig")
+            rdr = csv.DictReader(data.splitlines(), delimiter="\t" if scope["source"]["path"].endswith(".tsv") else ",")
+            if not set(cols).issubset(set(rdr.fieldnames or [])):
+                errors.append("MCR_C_EXPECTED_ID_COLUMNS_NOT_IN_SOURCE")
+                return set()
+            ids = [json.dumps([row[c] for c in cols], ensure_ascii=False, separators=(",", ":"))
+                   for row in rdr]
+        except (UnicodeError, csv.Error, KeyError, TypeError):
+            errors.append("MCR_C_EXPECTED_IDS_UNREADABLE")
+            return set()
+    if len(ids) != count or len(set(ids)) != len(ids):
+        errors.append("MCR_C_FROZEN_UNIVERSE_COUNT_OR_DUPLICATE_MISMATCH")
+    return set(ids)
 
 
 def verify_return(commission, returned, candidate_sha, root):
+    """Only documentary author-evidence readiness. NEVER authoritative completion."""
+    root = Path(root).resolve()
     errors = []
-    validated = validate(commission)
-    if validated["status"] != "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH":
-        return {"status": "RED_INCOMPLETE", "errors": validated["errors"]}
-    if not HEX40.fullmatch(candidate_sha):
+    initial = validate(commission)
+    if initial["status"] != "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH":
+        return {"status": "RED_INCOMPLETE", "errors": initial["errors"]}
+    if not isinstance(candidate_sha, str) or not HEX40.fullmatch(candidate_sha):
         return {"status": "RED_INCOMPLETE", "errors": ["EXACT_CANDIDATE_SHA_REQUIRED"]}
+    actual_head = _git(root, "rev-parse", "HEAD")
+    if not actual_head or actual_head.decode("ascii", "replace").strip() != candidate_sha:
+        errors.append("MCR_C_CHECKOUT_NOT_EXACT_CANDIDATE")
     fences = list(FENCE.finditer(commission))
     contract = completion_contract(
         commission[fences[0].end():fences[1].start()].strip(), errors
     )
+    if contract is None:
+        return {"status": "RED_INCOMPLETE", "errors": errors}
+    expected_ids = _expected_id_set(root, contract, errors)
     block = _extract_block(returned, EVIDENCE_BEGIN, EVIDENCE_END, errors)
     proof = {}
+    coverage = []
     for line in block.splitlines():
         if not line.strip():
             continue
         key, sep, payload = line.strip().partition(":")
-        if key != "MCR_EVIDENCE" or sep != ":":
+        if sep != ":" or key not in {"MCR_EVIDENCE", "MCR_COVERAGE"}:
             errors.append("MCR_C_INVALID_EVIDENCE_RECORD")
             continue
-        obj = _json_record(payload.strip(), "EVIDENCE", errors)
-        if not isinstance(obj, dict) or not isinstance(obj.get("id"), str):
+        obj = _json_record(payload.strip(), key, errors)
+        if not isinstance(obj, dict):
             errors.append("MCR_C_BAD_EVIDENCE_OBJECT")
+            continue
+        if key == "MCR_COVERAGE":
+            coverage.append(obj)
+            continue
+        if not isinstance(obj.get("id"), str):
+            errors.append("MCR_C_EVIDENCE_ID_REQUIRED")
             continue
         if obj["id"] in proof:
             errors.append("MCR_C_DUPLICATE_EVIDENCE_" + obj["id"])
         proof[obj["id"]] = obj
-    expected = {o["id"]: o for o in contract["obligations"]} if contract else {}
-    for oid in expected:
-        if oid not in proof:
-            errors.append("MCR_C_MISSING_PROOF_" + oid)
-    for oid, p in proof.items():
-        if oid not in expected:
-            errors.append("MCR_C_UNCONTRACTED_PROOF_" + oid)
-            continue
-        ob = expected[oid]
-        if p.get("candidate_sha") != candidate_sha:
-            errors.append("MCR_C_PROOF_WRONG_CANDIDATE_" + oid)
-        if p.get("contract_sha256") != contract["sha256"]:
-            errors.append("MCR_C_PROOF_WRONG_CONTRACT_" + oid)
+    if len(coverage) != 1:
+        errors.append("MCR_C_EXACT_ONE_SCOPE_COVERAGE_REQUIRED")
+    else:
+        cov = coverage[0]
+        if cov.get("candidate_sha") != candidate_sha or cov.get("contract_sha256") != contract["sha256"]:
+            errors.append("MCR_C_COVERAGE_WRONG_CANDIDATE_OR_CONTRACT")
+        covered_path = cov.get("delivered_ids_file")
+        payload = _committed_file(root, candidate_sha, covered_path, errors, "COVERAGE")
+        if payload is not None:
+            if hashlib.sha256(payload).hexdigest() != cov.get("delivered_ids_sha256"):
+                errors.append("MCR_C_COVERAGE_DIGEST_MISMATCH")
+            try:
+                delivered_ids = [line for line in payload.decode("utf-8-sig").splitlines() if line]
+            except UnicodeError:
+                delivered_ids = []
+                errors.append("MCR_C_COVERAGE_NOT_UTF8")
+            if len(delivered_ids) != len(set(delivered_ids)):
+                errors.append("MCR_C_COVERAGE_DUPLICATE_IDS")
+            if len(delivered_ids) != contract["scope"]["expected_count"]:
+                errors.append("MCR_C_COVERAGE_COUNT_MISMATCH")
+            if set(delivered_ids) != expected_ids:
+                errors.append("MCR_C_NO_DROP_SET_MISMATCH")
+    required = {o["id"]: o for o in contract["obligations"]}
+    if set(proof) != set(required):
+        errors.extend("MCR_C_MISSING_PROOF_" + oid for oid in set(required) - set(proof))
+        errors.extend("MCR_C_UNCONTRACTED_PROOF_" + oid for oid in set(proof) - set(required))
+    for oid in set(required) & set(proof):
+        ob, p = required[oid], proof[oid]
+        if p.get("candidate_sha") != candidate_sha or p.get("contract_sha256") != contract["sha256"]:
+            errors.append("MCR_C_PROOF_WRONG_CANDIDATE_OR_CONTRACT_" + oid)
         if p.get("status") != "PASS":
             errors.append("MCR_C_PROOF_NOT_PASS_" + oid)
-        grade = p.get("grade")
-        required = ob["minimum_grade"]
-        if (required == "AUTHORITY" and grade != required) or (
-            required in GRADES and (grade not in GRADES or GRADES[grade] < GRADES[required])
+        grade, minimum = p.get("grade"), ob["minimum_grade"]
+        if (minimum == "AUTHORITY" and grade != "AUTHORITY") or (
+            minimum in GRADES and (grade not in GRADES or GRADES[grade] < GRADES[minimum])
         ):
             errors.append("MCR_C_INSUFFICIENT_EVIDENCE_GRADE_" + oid)
-        if not _safe_path(p.get("evidence_file")) or p.get("evidence_file") != ob["evidence"]:
-            errors.append("MCR_C_EVIDENCE_PATH_MISMATCH_" + oid)
-            continue
-        local = root / p["evidence_file"]
-        try:
-            real = local.resolve(strict=True)
-            real.relative_to(root.resolve(strict=True))
-            digest = hashlib.sha256(real.read_bytes()).hexdigest()
-            if digest != p.get("evidence_sha256"):
-                errors.append("MCR_C_EVIDENCE_DIGEST_MISMATCH_" + oid)
-        except (OSError, ValueError, RuntimeError):
+        for label, key, hashkey, required_path in (
+            ("EVIDENCE", "evidence_file", "evidence_sha256", ob["evidence"]),
+            ("OUTPUT", "output_file", "output_sha256", ob["output"]),
+        ):
+            if p.get(key) != required_path:
+                errors.append("MCR_C_" + label + "_PATH_MISMATCH_" + oid)
+                continue
+            payload = _committed_file(root, candidate_sha, required_path, errors, label + "_" + oid)
+            if payload is not None and hashlib.sha256(payload).hexdigest() != p.get(hashkey):
+                errors.append("MCR_C_" + label + "_DIGEST_MISMATCH_" + oid)
+    return {
+        "status": "RED_INCOMPLETE" if errors else "READY_FOR_INDEPENDENT_RECEIVING",
+        "errors": sorted(set(errors)), "candidate_sha": candidate_sha,
+        "contract_sha256": contract["sha256"],
+        "verified_obligation_count": len(required) - len(set(required) - set(proof)),
+        "expected_identity_count": contract["scope"]["expected_count"],
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+    }
+
+, ValueError, RuntimeError):
             errors.append("MCR_C_EVIDENCE_MISSING_OR_ESCAPE_" + oid)
     return {
         "status": "RED_INCOMPLETE" if errors else "READY_FOR_INDEPENDENT_RECEIVING",
