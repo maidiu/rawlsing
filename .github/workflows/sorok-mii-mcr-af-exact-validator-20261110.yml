@@ -23,15 +23,31 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --no-tags --depth=1 origin 3e5b1611f5cb043b43ffd39b14c9d707923f1210
+          git fetch --no-tags --depth=1 origin 4f3413fc5c37b589be3412f826bf8f68ee617d4a
           git show FETCH_HEAD:CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py > /tmp/mcr_exact_checker.py
-          test "$(git hash-object /tmp/mcr_exact_checker.py)" = "4877b32d51580a2719c8153179c17a2c9246314c"
-          echo "PROTECTED_MCR_CHECKER_SHA_OK 4877b32d51580a2719c8153179c17a2c9246314c"
+          test "$(git hash-object /tmp/mcr_exact_checker.py)" = "6e16878e60e8e89bf8ab8001144ed84ad257f5fc"
+          echo "PROTECTED_MCR_CHECKER_SHA_OK 6e16878e60e8e89bf8ab8001144ed84ad257f5fc"
+      - name: Fetch both immutable original source objects and verify real MCR-C source tuples
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 094937d3187ed3c2e215fe2c1f7c1c84f50d9006
+          git fetch --no-tags --depth=1 origin acde0e5f614c5bf03b44ccc46df1cd295f97e61d
+          test "$(git rev-parse 094937d3187ed3c2e215fe2c1f7c1c84f50d9006:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md)" = "b48c6a7f1daf958420c76ae85a11d0b585b0d4bc"
+          test "$(git rev-parse acde0e5f614c5bf03b44ccc46df1cd295f97e61d:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00E_MECHANISM_II_HISTORICALLY_MEDIATED_USER_GAZE_AND_PHENOMENAL_SURFACE_ARCHITECTURE_20261108_R1.md)" = "618986db6d8910181ca7dd5d1cc39564423b5a94"
+          echo BOTH_IMMUTABLE_SOURCE_TUPLES_GIT_VERIFIED
       - name: Execute actual canonical Python validator on exact whole amended commission
         shell: bash
         run: |
           set -euo pipefail
-          python3 /tmp/mcr_exact_checker.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md
+          python3 /tmp/mcr_exact_checker.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md --source-check
+      - name: Execute independent original source enumeration and no-drop coverage checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_completion_inventory.py enumerate > /tmp/mii_54_original_ids.txt
+          test "$(wc -l < /tmp/mii_54_original_ids.txt)" -eq 54
+          python3 WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_completion_inventory.py verify
       - name: Prove original E1-E10 and 44-case source appendix conserved
         shell: bash
         run: |
@@ -51,7 +67,7 @@ jobs:
           cases=['O%02d'%i for i in range(1,7)]+['P%02d'%i for i in range(1,10)]+['G%02d'%i for i in range(1,9)]+['M%02d'%i for i in range(1,7)]+['N%02d'%i for i in range(1,11)]+['T%02d'%i for i in range(1,6)]
           assert len(cases)==44 and all(re.search(r'\b'+re.escape(k)+r'\b',new) for k in cases), '44_CASE_LOSS'
           assert all(('**E%d.'%i) in new for i in range(1,11)),'E1_E10_LOSS'
-          assert '3e5b1611f5cb043b43ffd39b14c9d707923f1210' in new and '#891' in new,'CURRENT_MIII_BASE_MISSING'
+          assert '4f3413fc5c37b589be3412f826bf8f68ee617d4a' in new and '#891' in new,'CURRENT_MIII_BASE_MISSING'
           assert 'look(target)' in new and 'attend' in new,'ACTION_ABI_MISSING'
           assert 'FROZEN_FAILED_CLAIM:' in new and 'REPRODUCER_AND_ROOT_CAUSE:' in new,'MCR_REPAIR_LINEAGE_MISSING'
           print('SOURCE_APPENDIX_BYTE_EXACT PASS')
