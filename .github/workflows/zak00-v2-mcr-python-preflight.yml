@@ -48,6 +48,11 @@ jobs:
           done
           echo "OFFICIAL_PYTHON_COMMISSION_PREFLIGHT_FAILURES=${failed}"
           test "${failed}" -eq 0
+      - name: Hostile exact-source AST branch probes and semantic mutation court
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 WORKER_RETURNS/VMESTYE_ZAK00R_V2_MCR_ADVERSARIAL_20261110_R1/run_source_court.py | tee zak-mcr-format-receipts/zak00r-source-court.json
       - name: Retain exact validator receipts
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
