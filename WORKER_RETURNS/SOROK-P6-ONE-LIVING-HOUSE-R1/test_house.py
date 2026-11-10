@@ -69,19 +69,28 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
     saved = tmp_path / "opening"
     establish = run_p6.establish
 
+    with_visual_source = True
+
     def establish_fixture(session):
         establish(session)
         world, resource = read_house(session)
         world.positions["B"] = "workshop"
-        resource["movement_visual_fixture"] = {
-            "source": VISUAL_SOURCE, "facts": deepcopy(VISUAL_FIXTURE),
-        }
+        if with_visual_source:
+            resource["movement_visual_fixture"] = {
+                "source": VISUAL_SOURCE, "facts": deepcopy(VISUAL_FIXTURE),
+            }
         session.product._checkpoint(session.branch_id, world.clock, world)
 
     monkeypatch.setattr(run_p6, "establish", establish_fixture)
     experience(state, Namespace(command="new"))
     experience(state, Namespace(command="go", target="living room", request_id="out"))
     shutil.copytree(state, saved)
+
+    opening_owner = open_owner(state / "actual-p2")
+    try:
+        psyche_before = opening_owner.store.head()
+    finally:
+        opening_owner.close()
 
     real_reader = house.movement_evidence
 
@@ -132,6 +141,7 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         try:
             session = owner.base_owner.fanin.session
             assert session.event(event["event_id"]) == event
+            assert owner.store.head() == psyche_before
             parent = next(row for row in session.episodes(session.meta["user_actor"])
                           if row["kind"] == "P6_HOUSE_CONDUCT"
                           and row["body"]["event_id"] == event["event_id"])
@@ -146,3 +156,20 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         variants.append((result["detail"], event, evidence))
     assert variants[0][0] != variants[1][0]
     assert variants[0][1:] == variants[1][1:]
+
+    # An independently established matching scene omits the fixture source.
+    # The same ordinary return GO still commits, but nobody gains access.
+    with_visual_source = False
+    unknown = tmp_path / "without-visual-source"
+    experience(unknown, Namespace(command="new"))
+    experience(unknown, Namespace(command="go", target="living room", request_id="out"))
+    experience(unknown, Namespace(command="go", target="workshop", request_id="in"))
+    unknown_turn = json.loads((unknown / "p4_receipts.json").read_text())["turns"][-1]
+    unknown_move = unknown_turn["receipt"]["performed"]
+    assert unknown_move["kind"] == "MOVE"
+    assert unknown_move["clock"] == variants[0][1]["clock"]
+    assert unknown_move["body"] == variants[0][1]["body"]
+    for row in unknown_turn["receipt"]["encounter_evidence"]:
+        assert row["modality"] is row["modality_source"] is None
+        assert row["eligibility"] == "UNKNOWN"
+        assert row["uptake"] == "HOLD_SENSORY_SOURCE_UNQUALIFIED"
