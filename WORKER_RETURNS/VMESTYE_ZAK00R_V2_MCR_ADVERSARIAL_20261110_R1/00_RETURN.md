@@ -1,0 +1,95 @@
+# ZAK-00R v2 — Executed hostile MCR §3A/MCR-AF review return
+
+**Frozen substantive candidate:** author PR #887 at 9d24323494cc852ada078010f09bfcf9ceb911d9; parent specification PR #886 at 77bf178f5f8c6430eea893bba489d892cad9b0ff. **Evidence branch:** draft reviewer PR #890. This report's final commit must be read from the actual branch after writing it, not inferred in advance.
+
+**Law:** protected MCR §3A/MCR-AF and three courts, cd19070fc67627d7398eb2f57d46d6cd03b44fe3.
+
+**VERDICT: REVISE_EXACT_DEFECT for dispatch-quality author contract; HOLD_INDEPENDENT_RECEIVING_AUTHORITY.** Reason: proven author/contract defects remain, and connected GitHub user maidiu is the PR author's user; no separately credentialed nonauthor review is established. Engineering custody and executed hostile source probes are accepted as bounded facts, not program acceptance; no protected merge or issuance.
+
+## 1. Contract frozen and challenged
+
+PARENT: all historical source/selected authority/version → legacy rule and effect/negative/old consumer → present selected rule/application/first actual consumer and competent issuer, PLUS material functional conservation across V549b/V550/J/V551/V552/J/Dva/Trii/Chetiri/Long Memory/Pyat/FF/Sorok. TRANCHE OF THIS REVIEW: independently challenge the entire ZAK-00 documentary commissioning program and all 11 complete launches at S0–S1; NOT the work of the eleven successor flights or original35 science. PILOT: F03/F08/V549b and the six old inverse cases are nonterminal calibration, never entire program or global serial blocker. PARALLEL: 01 historic resources, 02 legacy code, 03 present Pyat, 04 FF/world/Sorok and 08 historic functional capital are S0–S1 parallel-eligible when actual host, model, lease, access and rights separately established.
+
+TERMINAL CONSUMER: qualified independent nonauthor ZAK00R, PROGRAMMA HQ dispatcher, relevant ZAK05/06/07/09/10/11 receiving, existing #814–817 atlas/terminal integration, not a generic C11 issuer.
+
+PRE-FROZEN POSITIVE EXPECTATION: R1/R2 182×14 original identity preservation; all 47 historic source pins at exact path+commit+blob identity; complete, nonoverlapping 11 worker scopes and real negative/consumer/source judges; all 44 LMX/30 LMQ obligations retained. PRE-FROZEN NEGATIVE: any source/blob/selected-state/test-time report automatically promoted to original runtime, present selected authority, current consumer, source/actor permission or machine zero loss must fail; a pilot-only plan or all-182 fabricated current fates fail.
+
+**Fresh, hostile near-positive falsifier selected independently of author's F03 allowed=false fixture:** T1-F03-NOMATCH-QUC-PRESERVE corresponds to T1R2-F03-NOMATCH-KEEP, one of seven VMC R5 strict same-historical-static-code-branch examples. Historical F03 code does preserve an existing structural coordinate on NO matching authority-registry row if inbound QUC certification/role/allowed/mapping flags all claim validity. This confirms branch behavior, NOT an independently authenticated issuer, original-run selection or current application. Source-extracted function test exercises preservation under these claimed inputs and refusal when allowed=false or mapping=PARTIAL. The false positive is to promote a real same-source/code branch into cross-generation semantic equivalence. Original six unlinked case examples remain; this adds an important seventh adversarial example.
+
+## 2. Actual execution and evidence
+
+**SUCCESS:** GitHub Actions run https://github.com/maidiu/rawlsing/actions/runs/42884817424 job 130070218413, checked out reviewer head 290464fd3d8f89818e07a46d9fcaed260874652e. The frozen author PR #887 remained unchanged. 13 JSON receipts: https://github.com/maidiu/rawlsing/actions/runs/42884817424/artifacts/13795482115. The actual protected Python commission validator executed on 11 original prompts, 11/11 format PASS and self-test PASS. New source-court Python executed 33/33 assertions PASS, including six exact git hash-object original code pins. Source court file run_source_court.py on this branch is executable and contains the actual assertions, not an asserted but unexecuted proposal.
+
+**Format/semantics separation, claim-specific negatives:** 11/11 deliberately false source oracles, falsely saying that 182 source identity records prove native/current selected consumer and semantic actor issuance merely from matching git blobs, still PASS the actual formatter. This is EXPECTED format-validator false-negative capability, **not** receipt acceptance of the false propositions. Separately 11/11 mutants claiming the pilot is TERMINAL are correctly REJECTED by the actual formatter. Both test families are executed, not hypothetical.
+
+**V549b original code:** immutable blob bf874a95ea5172817b0d1bdf21b43600aac5cbfe, progress line 607 references answer_type without any assignment. Executing the original branch AST in a synthetic 50th candidate scope raises NameError containing answer_type. A different outer 50th candidate reporter occurs before rebinding current item and can show a stale label. Grade: exact-source-extracted AST branch execution with stubs; NOT a complete original pandas or real historical production run.
+
+**F03 original code:** blob 62084cbed10a5975f79bd504bf4fb99025e4e64e, apply_question_relation_authority lines 727–855, no-match path lines 751–779. Original function AST executed against stubbed resolver; all inbound certified QUC flags valid → stale coordinate preserved, registry_match false; allowed_use=false → cleared coordinates/UNKNOWN/review; structural_mapping_status=PARTIAL → fail closed. No actual original source issuer, selected production run or modern non-test reader proved.
+
+**V552 original code:** blob 0df56d70cb3880dee723df00aea2207acd525260. Original _surface AST executed with stubbed numerical series: [1,1] and denominator 2 → COMPLETE/coverage 1.0; [2,2] and denominator 2 → BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR/coverage 2.0. Source-level AST/control inspection of build_v552_pressure_observation_index confirms the selected coverage status is diagnostic, not a condition on intact V551 canonical scored/nondebt perm=ALLOW branch. A complete live dataframe consumer run remains NOT_RUN, so do not claim respondent-level occurrence. Source behavior must not be rewritten into an invented automatic DENY.
+
+**Current I03:** source blobs ca65a7fd4d52f0c44447434559b1d09412e7aa39 and b72b469e6646b88e4e2ed4dbbf0f3c209557fd69 match frozen source. Positive authority checks exact decision state/kind/operation/family/scope. Target-use triple (ref+authority+operation) is mandatory **when declared**; absence returns from that specific check, not bypass of all other I03 guards. This does not prove current historical F03/QUC selected issuer or actual first reader.
+
+**F08:** historic source blob 8d90a5116fd05b5db17e9b4645638a3aa6fc1131 distinguishes semantic role from high-risk allowed-use and ambiguous override refusal. GSS/1973/uswar C11 test-time role RELATION_EVIDENCE with review_required=true, allowed_as_v551_relation_evidence=false is NOT a signed permission.
+
+**R1/R2 identities:** independently fetched raw frozen R1 blob a00305aaccdf422c86f7311a7e39b55eca2a6bbd and R2 blob e3e7a72e43edd7b234a290f293f057f72f73c1ca. Both 182 rows; R1 14 cols R2 28 cols; 182/182 original first 14 cells exactly match (zero differences), 182 distinct keys. Previously independently re-read all 47 historical source path+commit+Git blob pins, but the current CI probes freshly pin six especially high impact code blobs, not 47 full original source bodies. C6 29 F + 58 AR + six denominators + one crossref, 42 historical selected state rows / 16 unresolved; no native application inference.
+
+## 3. Material defects, causality and minimal repair closure
+
+**D01 — CONTRACT_DEFECT (parent #886 and flights 03/04):** architecture source commit appears as invalid 38-character 315251451a6d112fb312a6e80b096d345c5de6 rather than 40-character frozen 315251451a6d112fb312a6a2e80b096d345c5de6 (interfaces blob f4c342ea74a444f19cb492d04684e6007979e65d). Fix exactly both unlaunched prompts AND parent, source-tuple checker. This is a reproduced versioned-source error, not mere style.
+
+**D02 — AUTHOR_DEFECT (flight 11):** embedded U+00AD in EPIS­TEMIC_GRADE_MATRIX.tsv creates a byte-incorrect terminal output filename. Fix actual filename to EPISTEMIC_GRADE_MATRIX.tsv and assert filename has no format/invisible Unicode in existing receipt preflight.
+
+**D03 — CONTRACT_DEFECT (flight 01 source custody):** abbreviated selected F03 payload SHA256 values 0f7fa1c0... and a91239... claimed as exact; replace with actual C6 selected full AR-0005 0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13 and AR-0006 a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b, together with exact path/commit/source; selected state never equals historic production.
+
+**D04 — CONTRACT_DEFECT (flight 08 → 10/11 no-drop):** all 29 F/44 LMX/30 LMQ/13 P1 and additional J/FF lineages are named, but receiving does not yet impose a per-required-ID exact source→retained function/same-or-stronger successor/lawful retirement/typed OPEN proof or function gap with test and consumer, and a machine-checkable negative for dropping F/P1/LMQ IDs. Enforce within the existing ZAK08/10/11 outputs, not a new atlas or 6125-row P0 re-census. Authority39 current status law keeps zero-loss held; LMX043 atomic rollback/restart/replay separate from LMQ001 proof-court-existence.
+
+**D05 — CONTRACT_DEFECT (six fixed non-inverse panel):** all six original examples have strict_same_static_branch=NONE. Source-derived near-positive false equivalence not challenged. Add T1-F03-NOMATCH-QUC-PRESERVE / T1R2-F03-NOMATCH-KEEP (one of exact seven strict same-static branches), and a same-source-context-not-inverse case. Keep original six and all 235 unaccepted fates at their grades. New F03 branch differential test is executed here.
+
+**D06 — CONTRACT_DEFECT of author's independently novel-stress claim:** examples the author labels additional (F08 GSS allowed=false, V549b reporter, LMX043 rollback) were already frozen source/oracle fixtures; independent postconstruction high-risk claim must not merely rephrase them. Use the all-flags-valid, no-registry-row QUC survival near-positive in an honest fresh author pass; test original branch and denied branch; first issuer/reader remains held.
+
+**D07 — CONTRACT_DEFECT (V552 old-source semantics):** a BLOCKED over-denominator coverage diagnostic can coexist with score/ALLOW because former is not a gate on scoring. Include both states in ZAK02/08 old-source oracle; do not falsely claim full old scoring refused, nor require a modern successor to reproduce an unsafe historical overcount without separate authorization.
+
+**Impact graph:** D01 886→03/04→05; D02 11→#817; D03 01→02/05; D04 08→10/11; D05 02/05/06/08; D06 author stress/independent reviewer; D07 02/08→05/11. Preserve unaffected inherited 182/47 source custody and 11/11 mechanical PASS. For an unavailable source/consumer, report exact NOT_RUN and named missing capability/owner instead of an anonymous future issuer.
+
+## 4. Eleven-flight whole-mission receiving, not pilot microfocus
+
+01 resources: REVISE D03, preserve F03/F08/F04 and conflicts, first issuer HOLD.
+02 legacy code V549b/V550/J/V551/V552/J: REVISE D07, executed V549b and F03 source branch proofs, native historic production and J full consumer HOLD.
+03 present C11/I03/I05/Batch: REVISE D01, modern exact authority guards SOURCE_VERIFIED, selected non-test inherited equivalence HOLD.
+04 FF F5–F7/N9/N10W/Sorok/P1: REVISE D01, bounded sourcefree positives remain, actor/native rights HOLD.
+05 qualified authority source→old effect→current selector/consumer join: CONDITIONAL, no positive complete mapping without particular 01–04 source slices; no universal pilot gate.
+06 independent forward/reverse placement reviewer: HOLD until 05 exact returned candidate and different independent nonauthor reviewer.
+07 effectual selected-rule severance/negative/restore in true current reader: test design eligible, actual source/native execution qualified-runner-dependent NOT_RUN.
+08 full function-capital across F29/LMX44/LMQ30/P1/other old-new lineages: REVISE D04/05 with full-ID anti-drop and same-branch challenge; LMQ001 native zero-loss remains NOT_PROVED.
+09 competent source/semantic/science owner decisions and bounded causal repair: HOLD issuance, no self-grant or blanket repair.
+10 delta-only canonical #814–816 integration: HOLD actual write until independently reviewed accepted deltas, no duplicate atlas.
+11 #817 finite terminal receiving separate custody/effect/first reader/functional/zero loss/native: REVISE D02 exact output filename, currently HOLD on downstream proofs. All eleven source-bound 3×5 tables exist; format is not substantive completion.
+
+Lawful parallel work 01/02/03/04/08 S0–S1 **must not** be blocked by first F03 pilot. Positive 05/10/11 outputs depend only on actually needed upstream grade-qualified claims and independent owner. Future native35 and Sorok actor rights are separate law, never a blanket barrier to a truthful S1 return.
+
+## 5. Actual MCR ENGINEERING / SCIENTIFIC / AUTHORITY courts — 3×5
+
+| Court field | ENGINEERING | SCIENTIFIC | AUTHORITY |
+|---|---|---|---|
+| ACCEPT_IF | Frozen source identity & coherent 11 complete repaired prompts, executable source-sensitive positive and negative tests, no-drop denominator and actual named output/consumer; honest grade | Distinguish static source branch, test-time replay, original source run, selected rule and modern non-test consumer; source-faithful refusal, uncertainty and lawful stronger successor | Genuinely separate nonauthor same-head reviewer; qualified source/semantic/science/actor issuer and protected owner only within documented rights |
+| FAIL_RED_IF | 38-char source commit, hidden U+00AD filename, non-exact oracles, no-drop omissions, semantic mutations treated as proof by formatter | V549b reporter failure omitted; F03 inbound self-certification promoted to issuer; V552 coverage BLOCKED conflated with score DENY; F08 role promoted to signed permission; LMQ001 court existence inflated to zero loss | maidiu author self-approves, #884 old R2 review reused, sourcefree/code symbol promoted to native/actor/structural permission; unapproved protected merge |
+| HOLD_IF | Full selected consumer runner or source bytes missing; exact function/source gap, no fake PASS | Original35, historical production, current selected semantics, semantic/source/actor issuance not qualified or tested | Separate reviewer credential, selected editor/host/lease/quotas or native licence absent |
+| EVIDENCE | R1/R2 182 first-14, prior 47 path+blob reads, six current code pins, 11 official CLI, 33 hostile tests in run 42884817424, D01/D02 exact bytes | Original AST V549b failure, F03 preserve/deny/restore, V552 overcount/score control, current I03 exact guards, VMC strict same branch & Authority39 no-drop | PR#887 and PR#890 connected login maidiu, #888 prepared NOT DISPATCHED; no independent issuance rights |
+| OWNER_OF_DECISION | Independent technical receiver, author for bounded correction, PROGRAMMA HQ for original contract defect | Qualified historical/current semantic and scientific/source/actor owners, not reviewer's assertion | Real nonauthor ZAK00R, competent HQ/protected integrator and distinct original35/FF/Sorok owners |
+
+**Engineering:** bounded source/readback/format/probe PASS, commissioning contract REVISE. **Scientific:** S1 original code semantics and source-extracted stub execution, actual source/consumer scientific equivalence HOLD. **Authority:** same-credential reviewer HOLD, not an acceptance-grade independent review.
+
+## 6. Additional CI red and causality
+
+Separate GitHub Actions Rabochii court https://github.com/maidiu/rawlsing/actions/runs/42884817176 job 130070218528: 144 passed, 3 failed after 44.76 s. Failures are FIABC frozen-binder/source blob identity comparisons in test_fiabc_w3_i04_runtime_packaging_rebind.py and two test_fiabc_final_preflight_fanin.py tests involving _pre553_query_eval.py and Candidate C binder hashes. Draft #890 at tested head changes only run_source_court.py and six workflow lines; rawlsing_next code and test expected hashes unchanged. **There is no evidence that #890 introduced those failures**, nor is their failure cancelled by the independently green ZAK source-court. Preserve RED for separate competent FIABC owner; do not invent a ZAK cause or silently waive.
+
+## 7. FINITE HAND-BACK / permission boundaries
+
+DONE: real 33 assertion source court, executed historic V549b reporter failure, F03 exact no-match acceptance and refusal under stubs, V552 coverage overcount diagnostic, modern authority distinctions, 11/11 format with eleven semantic false-meaning mutants and eleven pilot REDs, original 182x14 conservation, versioned 11 territorial program review and precise D01–D07 affected repair graph.
+
+NOT_RUN / HOLD: full original pandas historical operations, selected original production, original35/native respondent and world/person science, complete V552 dataframe score observed state, current genuinely selected non-test reader, actual descendant 01–11 missions, qualified independent same-head nonauthor review, actual reviewer/worker model/host/lease and source/actor issuer. No source->world->person authority promotion.
+
+DECISION REQUEST: existing unlaunched author PR #887 contract and #886 parent receive D01–D07 narrowly and causally. Revalidate corrected prompts and changed dependency closures. Do NOT launch new audit fleet, recensus P0, overwrite PR #881 evidence or merge protected. After author repair, genuinely independent reviewer with different credentials/lease can accept S0–S1 construction *without requiring impossible native science*, but cannot accept this same-account analytical return as nonauthor credential proof.
+
+**Final status:** executed MCR hostile evidence is a reproducible bounded review artifact; candidate dispatch-quality contract REVISE; independent receiving HOLD.
