@@ -1,10 +1,10 @@
 name: Rabochii Governed Bounded Court
 
+# This legacy bounded-court spec is pinned to historical FIABC tests.
+# It must not run on unrelated pull requests or inherited branch pushes:
+# a red in this court is NOT a condition for MCR, PYAT, SOROK or other work.
+# Keep explicit, intentional execution possible without destroying evidence.
 on:
-  pull_request:
-  push:
-    branches:
-      - agent/vozhd-rabochii-execution-constitution-r1
   workflow_dispatch:
 
 permissions:
