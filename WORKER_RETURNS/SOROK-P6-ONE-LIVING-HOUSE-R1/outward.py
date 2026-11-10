@@ -15,6 +15,7 @@ def establish_demo_conditions(session):
     house["situated_conditions"] = {
         "grade": "SOURCEFREE_FIXTURE", "hearing": "available", "sound_path": "audible",
         "bench_view": "facing_away", "footsteps": "audible",
+        "actor_move_visibility": {"origin": "VISIBLE", "destination": "VISIBLE"},
     }
     house["situated_actor_context"] = {
         "grade": "SOURCEFREE_FIXTURE", "actor_id": world.actor_state["A"]["actor_id"],
