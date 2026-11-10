@@ -1,0 +1,69 @@
+{
+  "schema": "RAWLSING_ENVIRONMENT_PASSPORT@1",
+  "environment_id": "sorok-mechanism-iii-local-codex",
+  "epoch_id": null,
+  "surface": "LOCAL_SHARED_STORE",
+  "status": "LIVE_VERIFIED",
+  "checkout_sha": "279202570a9a9e028fc40152b29aa24186d79c34",
+  "branch": "agent/sorok-mechanism-iii-live-constituted-person-event-20261109-r1",
+  "source_closure": "BOUNDED",
+  "sources": [
+    {
+      "commit": "279202570a9a9e028fc40152b29aa24186d79c34",
+      "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/response.py",
+      "blob_sha1": "13df9ff571647f21e9cd8221c517a8fdfcae6989",
+      "import_verified": true
+    },
+    {
+      "commit": "279202570a9a9e028fc40152b29aa24186d79c34",
+      "path": "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py",
+      "blob_sha1": "f26e9639e01e1aab91c23d433024bc97a419ca85",
+      "import_verified": true
+    },
+    {
+      "commit": "279202570a9a9e028fc40152b29aa24186d79c34",
+      "path": "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
+      "blob_sha1": "b83ccc4d642576849d2709972318d0ffbc5c5478",
+      "import_verified": true
+    }
+  ],
+  "assignments_completed": 0,
+  "next_affinity_tags": [
+    "sorok-mechanism-iii",
+    "sourcefree-live-encounter"
+  ],
+  "independence_conflict": "Implementation author. Independent acceptance belongs to a different reviewer.",
+  "live_probe": {
+    "observed_at_utc": "2026-11-09T07:48:09.037939+00:00",
+    "marker_checked": "NOT_CHECKED",
+    "marker_digest": null,
+    "python": "Python 3.11.3",
+    "pytest": "pytest 9.1.1",
+    "git": "git version 2.39.1",
+    "filesystem": "VERIFIED",
+    "connector": "VERIFIED",
+    "notes": "Local Codex on Darwin x86_64. Existing venv executed sourcefree tests; connector created draft #862. Exact model effort is not exposed by the local runner."
+  },
+  "permissions": {
+    "private_repo_access": "VERIFIED",
+    "original_survey_use": "NOT_GRANTED",
+    "external_model_use": "NOT_GRANTED",
+    "actor_execution": "NOT_GRANTED"
+  },
+  "usage": {
+    "provider_model": null,
+    "incremental_cash_usd": null,
+    "quota_state": null,
+    "usage_observed": "Fixture-only runtime; external provider NOT_RUN.",
+    "retry_count": null
+  },
+  "tests": [
+    {
+      "scope": "Joined P4/P5/P6 and bounded expression author regression",
+      "status": "PASS",
+      "test_count": 44,
+      "receipt_ref": "05_COLD_REPLAY_AND_NEGATIVES.md",
+      "claim_grade": "EXACT_OWNER_SOURCEFREE"
+    }
+  ]
+}

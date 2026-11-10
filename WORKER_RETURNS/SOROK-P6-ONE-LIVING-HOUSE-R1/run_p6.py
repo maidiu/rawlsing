@@ -20,7 +20,7 @@ from house import close_on_repair, derive_recognition, establish, perform, read_
 PACE = partial(advance_for_action, on_repair=close_on_repair)
 
 
-def experience(state, args):
+def experience(state, args, *, transduce=None):
     command = args.command
     if command == "new":
         state.mkdir(parents=True, exist_ok=True)
@@ -41,7 +41,7 @@ def experience(state, args):
             committed_objects = {ref: dict(row) for ref, row in committed_house["objects"].items()}
             expected = (ledger["turns"][-1]["after"] if ledger["turns"]
                         else ledger["antecedent"]["identity"])
-            if owner.snapshot().document() != expected:
+            if command != "say" and owner.snapshot().document() != expected:
                 raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
             prior = scene(session)
             outcome = None
@@ -60,7 +60,7 @@ def experience(state, args):
                 outcome = act(owner, ledger_file, ledger, args,
                               conduct=(action, perform_with_time))
             elif command in {"say", "attend", "inspect", "inspect-edge"}:
-                outcome = act(owner, ledger_file, ledger, args, pacing=PACE)
+                outcome = act(owner, ledger_file, ledger, args, pacing=PACE, transduce=transduce)
             view = surface(owner, ledger)
             authoritative_events = {
                 row["event_id"]: row for row in session.events()

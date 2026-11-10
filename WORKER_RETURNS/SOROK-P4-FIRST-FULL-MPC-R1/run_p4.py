@@ -16,7 +16,7 @@ from p3_fixture_support import build_case
 from developmental_recursion.contracts import RecursionRefusal, canonical
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
-from response import check_source, express, read_response
+from response import OPENING_FORMATION_ID, check_source, express, read_response
 from speech import admit_speech
 
 GRADE = "SOURCEFREE_TEST_ONLY"
@@ -88,7 +88,7 @@ def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
                       include_compression=False, standpoints=False, seed=seed)
     try:
         owner = case.owner
-        formation = owner.realize("p4-formation", case.proposals[0], owner.snapshot())
+        formation = owner.realize(OPENING_FORMATION_ID, case.proposals[0], owner.snapshot())
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
         if establish is not None:
             establish(case.base_owner.fanin.session)
@@ -108,10 +108,14 @@ def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
         case.owner.close()
 
 
-def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
+def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None, transduce=None):
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()
+    expected = (ledger["turns"][-1]["after"] if ledger["turns"]
+                else ledger["antecedent"]["identity"])
+    if before != expected:
+        raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
     if conduct is not None:
         action, perform = conduct
     elif args.command == "say":
@@ -143,8 +147,8 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
     elif args.command == "say":
         speech = admit_speech(session, text=args.text, actor_ref=before["actor"],
                               request_edge=args.request_edge)
-        uptake = read_response(owner, speech, ledger["scope"])
-        expression, observation = express(session, uptake)
+        uptake = read_response(owner, speech, ledger["scope"], transduce=transduce)
+        expression, observation = express(session, mode=uptake["mode"], actor_alias=uptake.get("actor_alias"))
         offers_inspection = uptake["mode"] == "joint_check" and observation is not None
         interval = None
         if speech["performed"] and not offers_inspection:
