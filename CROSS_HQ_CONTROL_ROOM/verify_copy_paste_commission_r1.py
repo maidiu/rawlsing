@@ -16,6 +16,7 @@ FIELDS = [
 ]
 CONTRACT_FIELDS = [
  "MCR", "COMMISSION_KIND", "CONTRACT_ID", "CONTRACT_SOURCE_CUT",
+ "WORK_SCOPE_AND_FLIGHT",
  "TERMINAL_CONSUMER_AND_EFFECT", "FROZEN_ORACLE_AND_COUNTEREXAMPLE",
  "PREBUILD_CONTRACT_CHALLENGE", "EXECUTION_AND_AUTHOR_PREFLIGHT",
  "CLOSURE_AND_OUT_OF_SCOPE",
@@ -101,6 +102,7 @@ def validate(markdown: str):
                      header.get("CONTRACT_SOURCE_CUT", "")):
         errors.append("CONTRACT_SOURCE_CUT_NOT_VERSION_PINNED")
     for key, names in [
+        ("WORK_SCOPE_AND_FLIGHT", ["PARENT", "TRANCHE", "PILOT", "PARALLEL"]),
         ("TERMINAL_CONSUMER_AND_EFFECT", ["CONSUMER", "EFFECT"]),
         ("FROZEN_ORACLE_AND_COUNTEREXAMPLE", ["POS", "NEG"]),
         ("PREBUILD_CONTRACT_CHALLENGE", ["CHALLENGE", "DISPOSITION"]),
@@ -108,6 +110,16 @@ def validate(markdown: str):
         ("CLOSURE_AND_OUT_OF_SCOPE", ["ACCEPT_AT", "EXCLUDE"]),
     ]:
         _require_parts(header, key, names, errors)
+    # MCR-AF: the first case is a method check, never a terminal substitute
+    # or universal serial barrier. This only recognizes explicit bad forms;
+    # substantive mission conservation remains an HQ/reviewer obligation.
+    scope = _named_parts(header.get("WORK_SCOPE_AND_FLIGHT", ""))
+    pilot = scope.get("PILOT", "").upper()
+    parallel = scope.get("PARALLEL", "").upper()
+    if pilot and not (pilot.startswith("CALIBRATION_NONTERMINAL") or pilot.startswith("NOT_APPLICABLE")):
+        errors.append("MCR_AF_PILOT_MUST_BE_NONTERMINAL")
+    if parallel.startswith(("BLOCK_ALL", "SERIAL_FIRST_CASE", "NONE_UNTIL_PILOT_PASSES")):
+        errors.append("MCR_AF_ARTIFICIAL_SERIAL_BARRIER")
     if kind == "REPAIR":
         for key in REPAIR_FIELDS:
             if not header.get(key) or header[key].upper() in {"TBD", "N/A", "NONE", "NULL", "?"}:
@@ -150,6 +162,9 @@ def self_test():
             "COMMISSION_KIND": kind,
             "CONTRACT_ID": "CASE-F03-AUTHORITY-CONSUMER",
             "CONTRACT_SOURCE_CUT": "src/legacy_v549b.py@" + "b" * 40,
+            "WORK_SCOPE_AND_FLIGHT":
+                "PARENT=complete governed Pyat world output; TRANCHE=selected consumer and all linked obligations; "
+                "PILOT=CALIBRATION_NONTERMINAL selected F03 diagnostic; PARALLEL=READY independent source and consumer investigations",
             "TERMINAL_CONSUMER_AND_EFFECT":
                 "CONSUMER=actual Pyat query reader; EFFECT=selected rule controls output",
             "FROZEN_ORACLE_AND_COUNTEREXAMPLE":
@@ -187,6 +202,16 @@ def self_test():
         positives[kind] = out["status"]
     build, repair = fixture("BUILD"), fixture("REPAIR")
     negatives = [
+        ("no parent mission", change(build, "WORK_SCOPE_AND_FLIGHT",
+          "PARENT=TBD; TRANCHE=complete source and consumer reconstruction; PILOT=CALIBRATION_NONTERMINAL diagnostic; PARALLEL=READY independent lanes")),
+        ("no owned tranche", change(build, "WORK_SCOPE_AND_FLIGHT",
+          "PARENT=whole world mandate; TRANCHE=TBD; PILOT=CALIBRATION_NONTERMINAL diagnostic; PARALLEL=READY independent lanes")),
+        ("pilot falsely terminal", change(build, "WORK_SCOPE_AND_FLIGHT",
+          "PARENT=whole world mandate; TRANCHE=all signed outputs; PILOT=TERMINAL first F03 case; PARALLEL=READY separate investigations")),
+        ("first-case serial blockade", change(build, "WORK_SCOPE_AND_FLIGHT",
+          "PARENT=whole world mandate; TRANCHE=all signed outputs; PILOT=CALIBRATION_NONTERMINAL diagnostic; PARALLEL=SERIAL_FIRST_CASE all other agents blocked")),
+        ("missing parallel route", change(build, "WORK_SCOPE_AND_FLIGHT",
+          "PARENT=whole world mandate; TRANCHE=all signed outputs; PILOT=CALIBRATION_NONTERMINAL diagnostic; PARALLEL=TBD")),
         ("missing MCR", change(build, "MCR", "TBD")),
         ("MCR advisory only", change(build, "MCR", "ADVISORY")),
         ("missing source", change(build, "CONTRACT_SOURCE_CUT", "TBD")),
