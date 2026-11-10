@@ -73,7 +73,7 @@ def _specific(value, label, errors, minimum=16):
 def _safe_path(value):
     if not isinstance(value, str) or BAD_UNICODE.search(value) or "\\" in value:
         return False
-    if not value or value.startswith("/") or re.match(r"^[A-Za-z]:", value):
+    if not value or value.strip().upper() in VAGUE or value.startswith("/") or re.match(r"^[A-Za-z]:", value):
         return False
     return not any(c in {"", ".", ".."} for c in value.split("/"))
 
