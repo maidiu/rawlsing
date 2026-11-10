@@ -85,3 +85,14 @@ The source-bound adversarial contract repair fixes the seven frozen #890 defects
 - D07 — V552 denominator overcount `BLOCKED_RESPONSE_CATEGORY_COUNT_EXCEEDS_DENOMINATOR` is a diagnostic distinct from V551 scoring permission/ALLOW; no invented denial or unsafe normative repair.
 
 The five independent S0-S1 investigations (01,02,03,04,08) remain parallel-eligible when approved/leased; a first F03 proof is **not** a serial barrier. The source→world→person rights boundary, exact first-reader evidence and separate ENGINEERING/SCIENTIFIC/AUTHORITY 3×5 accepting owners remain unchanged. **No descendants have been dispatched by this documentary repair; no original35/native or protected merge is claimed.**
+
+
+## R3 MCR-C receiving-preflight repair — charter cannot be substituted by custody
+
+**Repair authorization:** user-directed hostile correction to PR #887 based on ZAK-00R #888 exact-defect preflight of prior frozen author `61e23d77d72dd349c48a106636336403f3caed86`. The parent six original requirements and 94 prospective child obligations are not lowered.
+
+The charter is a separate REQUIRED artifact from the 182/47 custody document. Its first consumer, qualified ZAK00R, must read this charter together with `03_FULL_FLIGHT_DEPENDENCY_AND_OWNER_MAP.md` and each original ZAK-01 through ZAK-11 launch. A genuine positive contains: the historical authority-version→selected rule→legacy effect→modern selected first-reader chain; the secondary F/AR/LMX/LMQ/P1/risk conservation problem; one distinct primary owner and downstream receiving consumer for all eleven flights; and lawful parallel source/legacy/Pyat/world/functional capital lanes. It is RED if any of those are removed while all 182/47 source hashes remain perfect.
+
+**Precise receiving caveat:** the issue pages for #814, #815, #816 and #817 currently describe PREPARED or NOT_LAUNCHED owner commissions. They are not positive acknowledgment that this exact author return was received. The PARENT-06 completion requirement is non-waivable: qualified, independently authenticated acknowledgments at all four existing receiving jurisdictions, plus separately competent Pyat/Sorok/source/science permissions where necessary. The user-authorized repair may supply a source-qualified packet; it may NOT assert an absent acknowledgment. No single pilot or author-signed issue comment discharges this obligation.
+
+**Status:** `PARENT-01` charter/11-flight consistency and `PARENT-02` source identity may earn bounded S1 documentary evidence after executable checks. `PARENT-06` is `BLOCKED_EXACT_DEPENDENCY` until external qualified receiving actually occurs. No author-generated `READY_FOR_INDEPENDENT_RECEIVING` covering all 24 obligations should be issued when that obligation is still blocked. Previously successful exact-candidate CI remains historical source proof at its original SHA only.

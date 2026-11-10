@@ -43,3 +43,12 @@ Authority39/40 keep 44 LMX and 30 LMQ debts and replacement/supersession tests. 
 
 ## Stop grades
 `ESTATE_CUSTODY` | `SOURCE_RULE_SELECTED` | `LEGACY_EFFECT_TESTED` | `CURRENT_APPLICATION_PROVED` | `CURRENT_FIRST_CONSUMER_PROVED` | `FUNCTIONAL_CONSERVATION_PROVED` | `CURRENT_MACHINE_ZERO_LOSS` | `ORIGINAL35_NATIVE_WORLD_PERSON`. The last two remain **NOT_PROVED** unless new exact qualified evidence is received. Do not collapse the chain to a single PASS.
+
+
+## R3 independent claim-sensitive dispatch and actual receiving distinction
+
+**ZAK-01/02/03/04/08** are the five lawful S0–S1 parallel investigation territories, conditional on a genuine independent #888 source review and separately qualified host/lease. “Parallel” never means the editor/model/authority or protected branch permissions have been granted. The four historical/source/Pyat/world investigations plus the independent functional-conservation line can proceed without the terminal success of the F03 calibration.
+
+**Executable no-drop/consumer check:** the R3 `verify_zak00_v2_mcrc_tasks.py --claim ZAK00-PARENT-01` and `--claim ZAK00-PARENT-03` must verify this table has exactly one ZAK-01..ZAK-11 primary jurisdiction and five nonblank columns per row, and that all eleven frozen original child task/output sets remain intact. Deleting this map while retaining the charter, 182 inherited identities, 47 source pins and 12 formatted launch files must fail BOTH PARENT-01 and PARENT-03.
+
+**Qualified receiving vs planned routing:** #814 (atlas authoring), #815 (forward hostile), #816 (reverse hostile) and #817 (terminal authority) are separately existing jurisdictional receivers. A named dependency is a required route, not an acknowledgment. A prepared issue under the original `maidiu` author account is not an independent review or downstream grant.

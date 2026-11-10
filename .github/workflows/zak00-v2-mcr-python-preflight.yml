@@ -81,7 +81,15 @@ jobs:
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --parent
           echo "ZAK-00 PARENT: integrated MCR-C source/contract gate PASS; descendant effects NOT_RUN"
 
-      - name: Verify post-commit parent 24-obligation evidence and 182-ID no-drop at exact SHA
+      - name: Hostile parent proof-domain and withheld-outcome tests (10 negatives + authority refusal)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p zak-mcr-format-receipts
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-mutations | tee zak-mcr-format-receipts/ZAK00_R3_SEMANTIC_MUTANTS.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-all | tee zak-mcr-format-receipts/ZAK00_R3_CLAIM_BOUNDARY.json
+
+      - name: Verify post-commit parent evidence, with missing qualified receipt deliberately non-PASS at exact SHA
         shell: bash
         run: |
           set -euo pipefail
@@ -110,7 +118,8 @@ jobs:
               committed(o["evidence"])
               evidence = {
                   "id": o["id"], "candidate_sha": candidate, "contract_sha256": digest,
-                  "status": "PASS", "grade": "S1",
+                  "status": ("INCOMPLETE" if o["id"] == "ZAK00-PARENT-06" else "PASS"),
+                  "grade": ("S0" if o["id"] == "ZAK00-PARENT-06" else "S1"),
                   "output_file": o["output"], "output_sha256": sha(o["output"]),
                   "evidence_file": o["evidence"], "evidence_sha256": sha(o["evidence"]),
               }
@@ -127,13 +136,30 @@ jobs:
           print("ZAK00_CANDIDATE_SHA=" + candidate)
           print("ZAK00_CONTRACT_SHA256=" + digest)
           print("PARENT_AUTHOR_EVIDENCE_ITEMS=" + str(len(obligations)))
-          print("PARENT_AUTHOR_EVIDENCE_MODE=DOCUMENTARY_NOT_INDEPENDENT_ACCEPTANCE")
+          print("PARENT_AUTHOR_EVIDENCE_MODE=DOCUMENTARY_23_OF_24_WITH_814_817_AUTHORITY_BLOCKED")
           PY
+          set +e
           python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py \
             WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md \
             --verify-return zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
             --candidate-sha "$(git rev-parse HEAD)" \
             --evidence-root . | tee zak-mcr-format-receipts/ZAK00_PARENT_VERIFY_RETURN.json
+          verdict_exit=$?
+          set -e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path("zak-mcr-format-receipts/ZAK00_PARENT_VERIFY_RETURN.json").read_text())
+          errors = set(result["errors"])
+          expected = {"MCR_C_PROOF_NOT_PASS_ZAK00-PARENT-06",
+                      "MCR_C_INSUFFICIENT_EVIDENCE_GRADE_ZAK00-PARENT-06"}
+          assert result["status"] == "RED_INCOMPLETE", result
+          assert errors == expected, ("Unexpected error or missing authority refusal", errors)
+          print("PASS_FAIL_CLOSED_MCR_C_PARENT_06_AUTHORITY_UNACKNOWLEDGED")
+          print("PARENT_AUTHOR_CLAIM_CEILING=BLOCKED_EXACT_DEPENDENCY_NOT_READY")
+          PY
+          test "$verdict_exit" -eq 2
+          echo "Verified exact SHA-bound 23 source-graded author proofs; PARENT-06 correctly refused."
 
       - name: Upload exact formal check receipts, not descendant completion
         if: ${{ always() }}

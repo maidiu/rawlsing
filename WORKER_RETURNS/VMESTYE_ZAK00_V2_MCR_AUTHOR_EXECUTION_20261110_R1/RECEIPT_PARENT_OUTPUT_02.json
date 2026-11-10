@@ -1,27 +1,24 @@
 {
-  "schema": "VMESTYE_ZAK00_V2_MCRC_AUTHOR_EVIDENCE_S1_R1",
+  "schema": "ZAK00_V2_MCRC_R3_CONTRACT_SPECIFIC_AUTHOR_EVIDENCE",
+  "frozen_old_author_head": "61e23d77d72dd349c48a106636336403f3caed86",
+  "contract_delta": "user-authorized explicit R3 repair; prior 24/24 source green not transferable to new source SHA",
   "obligation_id": "ZAK00-OUTPUT-02",
-  "contracted_result": "Emit exact committed parent output WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md with 182 first14 original cells and 47 source tuples separately proven at provenance grade without 182 operations or native inference; required output cannot be declared done from existence alone.",
-  "frozen_positive": "PASS=182 first14 original cells and 47 source tuples separately proven at provenance grade without 182 operations or native inference",
-  "frozen_disconfirming_negative": "RED=total count substitutes for original ID or source blob is promoted to execution",
-  "authentic_source_tuple": {
+  "original_parent_requirements": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md",
+  "corrected_source_tuple": {
     "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/DATA/LEGACY_F29_SEED.tsv",
     "commit": "256d46bf425cc37e114465cddbe3c60e535766ab",
     "blob": "d571847a13117d3b039057edbbec314300000d79"
   },
-  "committed_output_expected": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md",
-  "bounded_execution_basis": {
-    "source_court": "GitHub Actions 42905552668 at 4d7b6137964d6e7e0ded015d597e95dab934080a",
-    "integrated_checker": "Official PRE-MAIN MCR-C validator @4f3413fc5c37b589be3412f826bf8f68ee617d4a executed with Git blob checking, 12/12 contracts",
-    "original_task_court": "Same-run original-task/output checker 11/11 plus 24 parent obligations, 182 first-14, 47 exact blobs and 5 claim/output mutants",
-    "semantic_probes": "Frozen #890 source AST/sourcefree suite @90dc14f76e1ad7486329db29051acd21ed8e5a4b, distinct review account NOT VERIFIED",
-    "actual_output": "The contracted output is source/contract construction evidence only, not descendant code execution"
-  },
-  "evidence_grade": "S1_AUTHOR_DOCUMENTARY_NONISSUING",
-  "independence": "NOT_RECEIVED; maidiu author cannot self-review",
-  "original35_native": "NOT_RUN",
-  "current_non_test_selected_rule_effect": "NOT_RUN_BY_THIS_PARENT_COMMISSION",
-  "first_consumer": "Independent qualified nonauthor ZAK00R whole-program construction receiver, then PROGRAMMA dispatcher and existing #814–817 cross-HQ receiving",
-  "competent_receiving_owner": "Genuinely distinct nonauthor exact-HEAD ZAK00R engineering reviewer plus competent source/scientific/actor issuers when needed",
-  "postcommit_verifier": "MCR-C candidate-SHA-bound receipt will be generated only after all evidence files are committed; never embedded as a self-referential SHA in these files"
+  "corrected_required_output": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md",
+  "independently_reproducible_check": "COURT: separate ZAK00R reviewer inspects exact bytes of WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md, verifies '182 first14 original cells and 47 source tuples separately proven at provenance grade without 182 operations or native inference' against 'total count substitutes for original ID or source blob is promoted to execution', and checks matched source/first reader and no-drop of 182/47",
+  "frozen_positive": "PASS=182 first14 original cells and 47 source tuples separately proven at provenance grade without 182 operations or native inference",
+  "frozen_negative": "RED=total count substitutes for original ID or source blob is promoted to execution",
+  "exact_receiving_consumer": "Independent qualified nonauthor ZAK00R whole-program construction receiver, then PROGRAMMA dispatcher and existing #814–817 cross-HQ receiving",
+  "competent_reviewer": "Genuinely distinct nonauthor exact-HEAD ZAK00R engineering reviewer plus competent source/scientific/actor issuers when needed",
+  "minimum_grade": "S1",
+  "planned_current_candidate_proof": "CI must execute at postcommit SHA; an author's precommit JSON cannot confer PASS",
+  "previous_verified_court": "GitHub Actions 42906583428 at author frozen 61e23d77d72dd349c48a106636336403f3caed86; S1 historical custody only",
+  "signed_independent_acceptance": "NOT_ATTESTED",
+  "original35_and_current_native": "NOT_RUN",
+  "current_claim_status": "AUTHOR_S1_CANDIDATE__POSTCOMMIT_EXECUTION_REQUIRED"
 }

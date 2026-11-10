@@ -27,3 +27,19 @@ Binding law: PRE-MAIN `4f3413fc5c37b589be3412f826bf8f68ee617d4a`. Frozen failed 
 Receiving must inspect actual post-repair HEAD (read GitHub, never use floating refs), evaluate **parent 24** and **child 94** obligations by exact source, claimed grade, original task/output and full identity sets, test a near-positive semantic contradiction independently from the author's samples, and then issue separate 3×5 engineering/scientific/authority verdicts. The parent and 01/08/10/11 source universes use identity-column equality to reject count-padding. The official MCR-C `--verify-return` requires **postcommit** evidence records and Git-committed outputs/receipts at that exact SHA; it cannot be self-filled and committed into the same SHA it claims. Do not claim readiness for independent review from source-format alone.
 
 Source-verified formal pre-dispatch checks are not proof that real successor flights have been launched or performed. A real reviewer lease/identity and original source/actor permissions cannot be supplied by this maidiu author branch. Preserve 01/02/03/04/08 lawful parallel S0–S1 and the existing 814–817 receiving without inventing new canon or global F03 pilot gate.
+
+
+## R3 actual qualified handoff acknowledgment ledger (not an acceptance claim)
+
+**Frozen previous reviewer cut:** author #887 at `61e23d77d72dd349c48a106636336403f3caed86`; the current author's repair cut must be read from actual Git HEAD and pinned by postcommit CI, not guessed inside this precommit document. The old statement that this file was authored “before the commit SHA exists” refers to a historical author state, not to the existence of GitHub verification at older heads.
+
+| Existing receiving jurisdiction | Actually witnessed acknowledgment of this newly repaired author contract | Necessary proof |
+|---|---|---|
+| #814 — ZL-15 existing atlas/source delta intake | `NOT_ACKNOWLEDGED`; #814 commission PREPARED / NOT_LAUNCHED | Credential-verified separate authorized owner accepting this exact candidate's scoped handoff; source and canonical atlas held as distinct grades |
+| #815 — ZL-16 historical-forward challenge | `NOT_ACKNOWLEDGED`; #815 PREPARED / NOT_LAUNCHED | Signed independent historical forward reviewing receipt for this exact author cut and accepted scope |
+| #816 — ZL-17 current-backward challenge | `NOT_ACKNOWLEDGED`; #816 PREPARED / NOT_LAUNCHED | Signed distinct exact-head backward first-consumer receiving receipt, without current/native functionality presupposition |
+| #817 — ZL-P4R terminal separate court | `NOT_ACKNOWLEDGED`; #817 PREPARED / NOT_LAUNCHED | Independent qualified terminal custodian acknowledgment, preserving zero-loss and actor/native unissued limits |
+
+A handoff becomes qualified **only** if each respective receiving owner authenticates its independent credential and acknowledges the candidate SHA, source/proof grade, explicit bounded intake or refusal, first actual consumer, and non-promotion of source to science/actor authority in its existing receiving surface. Any missing jurisdiction is **`BLOCKED_EXACT_DEPENDENCY`** for ZAK00-PARENT-06, not a vacuous yes. No source-blob/182-ID success or author-written evidence file can substitute.
+
+**#888** remains a separately commissioned genuinely independent reviewer, distinct from the owner acknowledgments required above. Old #884 R2 and same-GitHub-account #890 hostile source probes do not meet that credential. The real reviewer shall compare the corrected parent obligation-to-output map against all twenty-four parent proof criteria and the ninety-four unexecuted successor obligations; no protected merge is authorized.

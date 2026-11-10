@@ -178,11 +178,203 @@ def validate_parent(text=None):
     for p in pins:
         actual = git("rev-parse", p["frozen_commit_sha"] + ":" + p["repository_path"]).strip()
         assert actual == p["git_blob_sha"], ("47 source pin mismatch", p["source_key"])
+    _validate_claim_contract_bindings(byid)
     assert all(ob["failure"] == "INCOMPLETE" and ob["owner"] and ob["consumer"]
                and ob["negative"].startswith("RED=") for ob in rows)
     return {"parent": "ZAK00", "obligations": 24, "identity_count": 182,
             "first_14_equal": 182, "exact_source_pins": 47,
             "status": "PASS_AUTHOR_PARENT_CONTRACT_NOT_INDEPENDENT_RECEIVING"}
+
+
+# Exact original-claim domain binding: not merely a 24-row hash census.
+# This is distinct from the independent-science/authority review.
+CLAIM_OUTPUTS = {
+    "ZAK00-PARENT-01": "WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/00_MCR_SOURCE_CONSTRUCTION_AND_WHOLE_MISSION.md",
+    "ZAK00-PARENT-02": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md",
+    "ZAK00-PARENT-03": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/03_FULL_FLIGHT_DEPENDENCY_AND_OWNER_MAP.md",
+    "ZAK00-PARENT-06": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/05_EXACT_HEAD_INDEPENDENT_RECEIVING_HANDOFF.md",
+    "ZAK00-OUTPUT-05": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/04_AUTHOR_STRUCTURAL_PREFLIGHT_AND_NEGATIVE_RECEIPT.md",
+}
+FLIGHT_MAP = "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/03_FULL_FLIGHT_DEPENDENCY_AND_OWNER_MAP.md"
+FROZEN_PYTHON_COURT = "42906583428"
+FROZEN_PYTHON_HEAD = "61e23d77d72dd349c48a106636336403f3caed86"
+RECEIVING_ISSUES = (814, 815, 816, 817)
+
+
+def _contract_obligations(prompt_text=None):
+    path = Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md"
+    current = prompt_text if prompt_text is not None else path.read_text(encoding="utf-8")
+    contract, _ = load_contract(current)
+    return {ob["id"]: ob for ob in contract["MCR_OBLIGATION"]}
+
+
+def _artifact_text(path, substitutions=None):
+    if substitutions and path in substitutions:
+        return substitutions[path]
+    p = ROOT / path
+    assert p.is_file(), "required output absent: " + path
+    return p.read_text(encoding="utf-8")
+
+
+def _flight_rows(map_text):
+    rows = {}
+    for line in map_text.splitlines():
+        m = re.match(r"^\| ZAK-(\d\d) \| (.+)$", line)
+        if not m:
+            continue
+        num = int(m.group(1))
+        assert 1 <= num <= 11 and num not in rows, "duplicate/out-of-universe flight owner"
+        fields = [x.strip() for x in line.strip("|").split("|")]
+        assert len(fields) == 5, "every flight must have 5 explicit jurisdiction/consumer columns"
+        assert all(fields[1:]), "owner/consumer/dispatch field cannot be blank"
+        rows[num] = fields
+    assert set(rows) == set(range(1, 12)), "missing or extra whole-mission jurisdiction"
+    return rows
+
+
+def _validate_claim_contract_bindings(obligations):
+    for oid, output in CLAIM_OUTPUTS.items():
+        ob = obligations[oid]
+        assert ob["output"] == output, (oid, "wrong completion evidence domain")
+        assert ob["evidence"].startswith("WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/")
+        assert ob["positive"].startswith("PASS=") and ob["negative"].startswith("RED=")
+        assert ob["failure"] == "INCOMPLETE"
+        assert "source" in ob and set(ob["source"]) == {"path", "commit", "blob"}
+    for oid in ("ZAK00-PARENT-01", "ZAK00-PARENT-02", "ZAK00-PARENT-03", "ZAK00-OUTPUT-05"):
+        ob = obligations[oid]
+        assert ob["check_kind"] == "EXEC" and ob["check"].startswith("RUN: python3 ")
+        assert ("--claim " + oid) in ob["check"]
+    ack = obligations["ZAK00-PARENT-06"]
+    assert ack["check_kind"] == "INDEPENDENT" and ack["minimum_grade"] == "AUTHORITY"
+    assert all(("#%d" % n) in ack["consumer"] for n in RECEIVING_ISSUES)
+    assert all(str(n) in ack["result"] for n in RECEIVING_ISSUES)
+    assert "acknowledg" in ack["positive"].lower()
+    return True
+
+
+def prove_parent_claim(oid, prompt_text=None, substitutions=None):
+    obs = _contract_obligations(prompt_text)
+    _validate_claim_contract_bindings(obs)
+    assert oid in CLAIM_OUTPUTS, "unsupported gate " + oid
+    output = CLAIM_OUTPUTS[oid]
+    doc = _artifact_text(output, substitutions)
+    assert doc.strip(), "required artifact empty " + oid
+    if oid == "ZAK00-PARENT-01":
+        charter = doc
+        map_text = _artifact_text(FLIGHT_MAP, substitutions)
+        rows = _flight_rows(map_text)
+        for n in range(1, 12):
+            # Whole mission including distinct territory, not just 11 counted files.
+            assert ("ZAK-%02d" % n) in charter
+            assert rows[n][1] and rows[n][3] and rows[n][4]
+            validate_one(n)
+        for token in ("**Primary:**", "**Secondary:**", "Dva/Trii/Chetiri",
+                      "ZAK-00R", "#814", "#815", "#816", "#817"):
+            assert token in charter or token in map_text, "missing charter/receiving function " + token
+        for n in (1, 2, 3, 4, 8):
+            assert "parallel" in rows[n][2].lower(), ("independent flight serially barred", n)
+        assert "not pilot completion" in map_text and "not blocked by one F03" in charter
+        return {"id": oid, "status": "PASS_SOURCE_GRADED_DOCUMENTARY_CHARter_AND_FULL_MAP",
+                "actual_flight_ids": sorted(rows), "first_consumer": "ZAK00R then PROGRAMMA dispatcher"}
+    if oid == "ZAK00-PARENT-02":
+        assert "182" in doc and "47" in doc and "first-14" in doc
+        stats = validate_parent()
+        assert stats["first_14_equal"] == 182 and stats["exact_source_pins"] == 47
+        assert "not 47 original-runtime" in doc
+        return {"id": oid, "status": "PASS_SOURCE_CUSTODY_ONLY", "first14_equal": 182, "source_pins": 47}
+    if oid == "ZAK00-PARENT-03":
+        rows = _flight_rows(doc)
+        for n in range(1, 12):
+            validate_one(n)
+        for token in ("ZAK-01/02/03/04/08", "ZAK-05", "ZAK-06", "ZAK-07", "ZAK-09",
+                      "ZAK-10", "ZAK-11", "ZAK00R", "#814", "#815", "#816", "#817"):
+            assert token in doc, "missing owner/consumer " + token
+        assert "not pilot completion" in doc
+        assert "original35" in doc
+        return {"id": oid, "status": "PASS_SOURCE_GRADED_COMPLETE_DISPATCH_MAP",
+                "flight_count": 11, "held_grades_not_promoted": True}
+    if oid == "ZAK00-OUTPUT-05":
+        # Three separate epochs; a prior NOT_RUN does not contradict later execution.
+        for token in ("Historical author construction", "Python CLI: NOT_RUN",
+                      FROZEN_PYTHON_COURT, FROZEN_PYTHON_HEAD,
+                      "MCR-C", "12/12", "182", "47", "postcommit",
+                      "same candidate SHA", "NO native"):
+            assert token in doc, "missing historical/current CI receipt distinction " + token
+        return {"id": oid, "status": "PASS_PREVIOUS_CI_PROVENANCE_S1_ONLY",
+                "historical_python": "NOT_RUN", "later_verified_run": FROZEN_PYTHON_COURT,
+                "current_candidate_must_execute_new_CI": True}
+    # A written author handoff cannot be acknowledged by its own author.
+    assert oid == "ZAK00-PARENT-06"
+    for n in RECEIVING_ISSUES:
+        assert ("#%d" % n) in doc, "no named receiving jurisdiction #%d" % n
+    assert "NOT_ACKNOWLEDGED" in doc and "NOT_LAUNCHED" in doc
+    return {"id": oid, "status": "BLOCKED_EXACT_DEPENDENCY",
+            "reason": "NO_CREDENTIAL_INDEPENDENT_SCOPE_BOUND_ACKNOWLEDGMENT",
+            "required_issues": list(RECEIVING_ISSUES),
+            "candidate_receipt": "four separately competent receiving comments/returns at exact author SHA",
+            "scientific_actor_issuer": "NOT_GRANTED"}
+
+
+def run_claim_gates(prompt_text=None, substitutions=None):
+    obs = _contract_obligations(prompt_text)
+    _validate_claim_contract_bindings(obs)
+    ids = list(CLAIM_OUTPUTS)
+    results = [prove_parent_claim(oid, prompt_text, substitutions) for oid in ids]
+    blocked = [r["id"] for r in results if r["status"] == "BLOCKED_EXACT_DEPENDENCY"]
+    assert blocked == ["ZAK00-PARENT-06"], "unexpected or hidden obligation blocker"
+    return {"stage": "AUTHOR_CONTRACT_REPAIR_TEST_NOT_INDEPENDENT_RECEIVING",
+            "results": results, "blocked_obligations": blocked,
+            "author_whole_parent_ready": False,
+            "zero_false_positive_authority_proof": True}
+
+
+def claim_mutation_test():
+    prompt_path = Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md"
+    prompt = prompt_path.read_text(encoding="utf-8")
+    assert run_claim_gates()["blocked_obligations"] == ["ZAK00-PARENT-06"]
+    checks = 0
+    for oid, bad_output in [
+        ("ZAK00-PARENT-01", CLAIM_OUTPUTS["ZAK00-PARENT-02"]),
+        ("ZAK00-PARENT-02", CLAIM_OUTPUTS["ZAK00-PARENT-03"]),
+        ("ZAK00-PARENT-03", CLAIM_OUTPUTS["ZAK00-OUTPUT-05"]),
+        ("ZAK00-PARENT-06", "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/06_FIXED_HIGH_IMPACT_NO_INVERSE_PANEL.md"),
+        ("ZAK00-OUTPUT-05", CLAIM_OUTPUTS["ZAK00-PARENT-02"]),
+    ]:
+        old = _contract_obligations()[oid]
+        lines = prompt.splitlines()
+        current_lines = []
+        for line in lines:
+            if line.startswith("MCR_OBLIGATION: "):
+                item = json.loads(line.split(": ", 1)[1])
+                if item["id"] == oid:
+                    item["output"] = bad_output
+                    line = "MCR_OBLIGATION: " + json.dumps(item, separators=(",", ":"))
+            current_lines.append(line)
+        current = "\n".join(current_lines) + "\n"
+        assert current != prompt, "mutation not applied " + oid
+        try:
+            prove_parent_claim(oid, current)
+        except (AssertionError, KeyError, ValueError):
+            checks += 1
+        else:
+            raise AssertionError("false-positive wrong-evidence mutant " + oid)
+    for oid, artifact in [
+        ("ZAK00-PARENT-01", CLAIM_OUTPUTS["ZAK00-PARENT-01"]),
+        ("ZAK00-PARENT-01", FLIGHT_MAP),
+        ("ZAK00-PARENT-02", CLAIM_OUTPUTS["ZAK00-PARENT-02"]),
+        ("ZAK00-PARENT-03", FLIGHT_MAP),
+        ("ZAK00-OUTPUT-05", CLAIM_OUTPUTS["ZAK00-OUTPUT-05"]),
+    ]:
+        try:
+            prove_parent_claim(oid, substitutions={artifact: "THIS FILE HAS ONLY VALID SOURCE HASHES AND 182 IDENTITIES"})
+        except (AssertionError, KeyError, ValueError):
+            checks += 1
+        else:
+            raise AssertionError("false-positive required-effect-withheld mutant " + oid)
+    assert checks == 10
+    return {"status": "PASS_10_OF_10_WRONG_OUTPUT_AND_REQUIRED_OUTCOME_MUTANTS_REJECTED",
+            "authority_acknowledgment_negative": "BLOCKED_EXACT_DEPENDENCY",
+            "not_scientific_acceptance": True}
 
 def self_test():
     s = flight_path(11).read_text(encoding="utf-8")
@@ -209,18 +401,34 @@ def self_test():
             pass
         else:
             raise AssertionError("parent completion mutant passed")
-    return "PASS 5/5 child/parent omission, filename and duplicate mutants rejected"
+    assert claim_mutation_test()["status"].startswith("PASS_10_OF_10")
+    return "PASS 5/5 original + 10/10 semantic misbinding/outcome-withheld mutants rejected; #814-817 acknowledgment BLOCKED"
 
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--flight", type=int, choices=range(1, 12))
     p.add_argument("--all", action="store_true")
     p.add_argument("--parent", action="store_true")
+    p.add_argument("--claim", choices=list(CLAIM_OUTPUTS))
+    p.add_argument("--claim-all", action="store_true")
+    p.add_argument("--claim-mutations", action="store_true")
     p.add_argument("--enumerate-expected", action="store_true")
     p.add_argument("--self-test", action="store_true")
     args = p.parse_args()
     if args.self_test:
         print(self_test())
+        return
+    if args.claim_mutations:
+        print(json.dumps(claim_mutation_test(), indent=2))
+        return
+    if args.claim_all:
+        print(json.dumps(run_claim_gates(), indent=2))
+        return
+    if args.claim:
+        result = prove_parent_claim(args.claim)
+        print(json.dumps(result, indent=2))
+        if result["status"] == "BLOCKED_EXACT_DEPENDENCY":
+            raise SystemExit(2)
         return
     if args.parent:
         print(json.dumps(validate_parent(), indent=2))
