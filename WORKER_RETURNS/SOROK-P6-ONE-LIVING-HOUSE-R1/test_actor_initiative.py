@@ -39,6 +39,8 @@ def test_silent_multi_turn_cumulative_time_leads_to_world_admitted_actor_visit(t
 
     _run(state, "wait", interpret, duration=2, request_id="quiet-first")
     second = _run(state, "wait", interpret, duration=3, request_id="quiet-next")
+    assert any("The worker walks into the adjoining room." in row["text"]
+               for row in second["narration"])
 
     assert len(packets) == 2
     assert [x["elapsed"] for x in packets] == [2, 3]
