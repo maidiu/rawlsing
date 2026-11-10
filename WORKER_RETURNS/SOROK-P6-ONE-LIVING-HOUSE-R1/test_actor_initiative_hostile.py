@@ -181,6 +181,38 @@ def test_quiet_streak_not_conflated_with_scene_age_or_continuing_music(tmp_path)
     assert music_packets[-1]["scene_elapsed"] > music_packets[0]["scene_elapsed"]
 
 
+
+def test_unheard_instrument_does_not_become_subjective_active_sound(tmp_path, monkeypatch):
+    import run_p6
+    state = tmp_path / "world"
+    real_install = run_p6.establish_demo_conditions
+
+    def obstructed(session):
+        real_install(session)
+        world, house = read_house(session)
+        house["situated_conditions"]["sound_path"] = "obstructed"
+        session.product._checkpoint(session.branch_id, world.clock, world)
+    monkeypatch.setattr(run_p6, "establish_demo_conditions", obstructed)
+    packets = []
+
+    def choose(packet):
+        packets.append(packet)
+        return _decision()
+
+    _run(state, "new", choose, situated_house=True)
+    assert _run(state, "go", choose, target="living room",
+                request_id="go")["admission"] == "ADMITTED"
+    assert _run(state, "play", choose, request_id="play")["admission"] == "ADMITTED"
+    played = json.loads((state / "p4_receipts.json").read_text())["turns"][-1]
+    music_id = played["receipt"]["performed"]["event_id"]
+    assert "situated" not in played["receipt"]
+    _run(state, "wait", choose, duration=1, request_id="quiet")
+    assert packets[-1]["interaction_quiet"]["status"] == "NO_ACTOR_QUALIFIED_INTERPERSONAL_INTERRUPTION"
+    assert packets[-1]["interaction_quiet"]["last_break_event_id"] != music_id
+    assert packets[-1]["interaction_quiet"]["elapsed"] > 0
+
+
+
 def test_workshop_producer_does_not_repair_actor_from_living_room_and_return_restores_eligibility(tmp_path):
     state = tmp_path / "world"
     moves = 0
