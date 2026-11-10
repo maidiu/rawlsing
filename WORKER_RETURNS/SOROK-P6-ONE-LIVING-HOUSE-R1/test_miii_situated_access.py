@@ -50,20 +50,21 @@ def test_real_go_uses_actor_access_owner_and_internal_first_reader(tmp_path):
                 if row["event_id"] == performed["event_id"]
                 and row["clock"] == performed["clock"]
             ]
+            assert receipt["actor_id"] == actor
             assert receipt["source_event_id"] == performed["event_id"]
             assert receipt["source_event_hash"] == performed["hash"]
             assert receipt["source_clock"] == performed["clock"]
             assert receipt["recorded_access"] is bool(matches)
+            assert receipt["access_channel"] == ("co_present" if matches else None)
             assert receipt["access_grade"] == "S45_SOURCEFREE_COPRESENT_ONLY"
             assert receipt["actor_uptake"] == "NOT_EVALUATED"
             assert receipt["interpretation"] == "NOT_EVALUATED"
 
-    # The historical actor's world-eligible encounter is proved without a
-    # fabricated sensory modality or psychological response.
-    assert any(
-        turn["receipt"]["actor_access"]["A"]["recorded_access"]
-        for turn in turns
-    )
+    # A continues work in the workshop. Entering the other room is not
+    # perception-by-co-presence for A; returning is. Neither licenses an
+    # inference that A consciously noticed or interpreted the movement.
+    assert turns[0]["receipt"]["actor_access"]["A"]["recorded_access"] is False
+    assert turns[1]["receipt"]["actor_access"]["A"]["recorded_access"] is True
 
 
 def test_private_user_gaze_neither_commits_actor_event_nor_changes_actor_receipts(tmp_path):
