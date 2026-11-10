@@ -1,4 +1,27 @@
-# VMC-T1 R2 — hostile calibration, semantic corrections and source cut
+# VMC-T1 R3 — hostile calibration and alias/authority repair
+
+**R3 supersedes the R2 claims of validated source aliases and independently reproducible negative tests.** Full R2 source-based calibration is preserved below and in Git parent `627660cfca3e638b793c9e6369ab3ea314c9018b`. R3 contract-to-source semantic identity is narrower.
+
+## Confirmed R2 errors and disambiguation
+
+| Former source association | R3 authoritative source anchor | Interpretation |
+| --- | --- | --- |
+| V551 source claims `ZL06-T029` | `ddm_v551_atoms.py@d07e9a0c8f552b9a53bb1e775281fdf9a68e29e0`, lines 89–166 | T029 is C11 `build_source_backed_c11_repository`, **not** an alias. F14 is a broad historical report family; not an observed original call. |
+| V552 source claims `ZL06-T030` | `ddm_v552_structural.py@0df56d70cb3880dee723df00aea2207acd525260`, lines 110–245 | T030 is C11→I03 `execute_source_backed_empirical_query`, not V552 pressure or rollup. |
+| V548/V549 or V550 clouds vs ZL06-T003/T004 | original `build_recursive_breakage_tree_nodes_v548.py`, `build_branch_co_signature_summary_v549.py`, `ddm_v550_clouds.py` blobs per contract | Trii context can point to excavation but not identify the operation at the same grain. |
+| V551 adjudicate claimed F15 | `ddm_v551_atoms.py` lines 128–151, F14 family | F15 historical conditional evidence/eligible intersections is held separately. Adjudication and complete-category coverage are not F15. |
+| V551 coverage omitted from inverse | `ddm_v551_atoms.py` lines 160–166, F14 family frozen witnesses | One code family can house distinct operations; 17 documentary witnesses link while coverage remains separate. |
+
+**C6 calibration:** `F01=AR-0009:709ff006...`; `F03=AR-0005:0f7fa1... + AR-0006:a91239...`; `F08=AR-0047:866eb3...; AR-0048:29e770...; AR-0049:15f7b...; AR-0050`. These exact identifiers, full hashes, versions, rule scopes, negative paths and historic grades are in C6 source and R3 machine tables. None is a receipt of original invocation.
+
+**Fate calibration:** A documentary constraint that defines a negative/invariant but has no historical native code must remain a required obligation, even when `transform_ids` is empty. LMX043 explicitly refers to atomic promotion/rollback/replay; LMQ entries remain resources/debts, not functions. R1 IDs with no R3 source-row connection remain typed unresolved rather than silently retired. The exact 235 fates are machine-readable; seven F03/F08 static guard cases have direct same-branch correspondences while 228 others explicitly refuse automatic semantic equivalence.
+
+**R3 synthetic controls (all in-memory and replicable using `--self-test`):** T029 false alias; T030 false alias; F15 false equivalence; V551 missing inverse; C6 SHA mutation; C6 grade mutation; invented native call; R1 dropped entry; unjustified retirement; LMX043 rollback removal; LMQ resource removal; duplicate source key; missing source key; wrong pinned code blob; C6 selection-row SHA mutation; wrong inverse witness. **Baseline 0 findings, 16/16 mutations rejected.** No S2 native tests run.
+
+---
+
+## Retained R2 substantive calibration (original author source-body observations; R3 provenance supersedes undifferentiated R2 alias fields)
+
 
 **Cut and epistemic grade.** Frozen ZL-15 R8 `31d2642ce7667d72efc08c3f6d42a2674b10d5ea`, accepted P1 prong snapshots embedded at `PRONGS/J_JOIN/FROZEN_INPUTS/ZL02..ZL14.json`, independent P4 `bc0c5c4b52d22aac8dd0adc699dc59b664ab81a9`, protected PRE-MAIN `256d46bf425cc37e114465cddbe3c60e535766ab`. Direct original code reads below were **S1 static reads**, not original production, respondent, or native replay. Example before/after values are illustrative unless an independently reported replay is identified.
 
@@ -62,3 +85,4 @@ The pilot changed the extraction model in four ways: (1) a source ID can span mu
 - F15 historical conditional evidence is **not silently equated** to the V551 mass-conservation/coverage summary. F22–F25 historical R3 labels and F28 execution-grant labels remain unpromoted where a selected semantic match is not proved.
 - ZL05 Dva design, ZL06 Trii courts, ZL07 Chetiri source-backed design, ZL08 Long Memory specification/negative, ZL14 branch candidates, the 753 atlas navigation hubs and the 58 authority release IDs cannot be counted as historical emitted data transformations. They remain in the no-drop many-to-many ledger with explicit grades.
 - The 3,449 historical branch name/head census is a locator universe, **not** 3,449 inspected branch bodies. The local L5 archives and #787–790 paused missions were not read/resumed. No source rights or scientific selection is inferred.
+
