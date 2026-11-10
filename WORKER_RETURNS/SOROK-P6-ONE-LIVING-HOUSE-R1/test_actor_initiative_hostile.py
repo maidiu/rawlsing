@@ -4,9 +4,8 @@ import json
 
 import pytest
 
-from developmental_recursion.contracts import RecursionRefusal
+from run_p6 import experience, open_owner, read_house, RecursionRefusal
 from actor_initiative import issue_visit_admission, visit_adjacent_room
-from run_p6 import experience, open_owner, read_house
 
 
 def _run(state, command, interpret, **args):
