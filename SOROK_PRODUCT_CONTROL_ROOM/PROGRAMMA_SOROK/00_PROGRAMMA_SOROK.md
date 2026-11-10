@@ -235,6 +235,8 @@ HOLD_IF: User-stopped operation, unmerged/owner-held adoption, unknown license, 
 EVIDENCE: Permission and selected-host records, immutable reviewer/branch SHA, coherent own MD/JSON state and protected owner CAS receipt or NONE_VERIFIED.
 OWNER_OF_DECISION: Competent original rights holder, incumbent domain HQ and protected PRE-MAIN integrator as applicable, not a new court.
 **DISPATCH PREFLIGHT:** Each actual copied commission must instantiate all 3×5 fields rather than merely quoting this template. A sourcefree engineering PASS plus scientific/authority HOLD is valid. A real RED remains RED regardless of favorable author tests.
+**MCR-C — COMMISSION AUTHORING / COMPLETION (MANDATORY):** Before Sorok HQ writes, presents or dispatches any new/revised commission, the existing launch must contain shared §3A `MCR_COMPLETION_CONTRACT_BEGIN` with whole assigned world-to-person objective, exact source universe/no-drop coverage, concrete per-result artifacts/consumer, source-derived positive/negative executable or competent-court checks, evidence and grade, and failure `INCOMPLETE`; no author self-certifies COMPLETE or substitutes S0–S1 narration for the contracted person/c9–c12 output. MCR-AF preserves full deliverable and lawful parallelism. Run existing validator before dispatch; no new document or review court.
+
 <!-- HQ_RULE_END id=HQ-C2R-030 -->
 
 ## Practical operating algorithm — execute these procedures, not merely their headings
