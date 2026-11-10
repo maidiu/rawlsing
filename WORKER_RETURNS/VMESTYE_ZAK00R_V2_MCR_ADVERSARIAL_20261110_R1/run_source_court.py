@@ -19,6 +19,7 @@ SOURCE_PINS = {
     "F03": ("data/ddm_build_copy/ddm_v550_question_relation_authority.py", "62084cbed10a5975f79bd504bf4fb99025e4e64e"),
     "F08": ("data/ddm_build_copy/ddm_v550_question_use.py", "8d90a5116fd05b5db17e9b4645638a3aa6fc1131"),
     "V552": ("data/ddm_build_copy/ddm_v552_structural.py", "0df56d70cb3880dee723df00aea2207acd525260"),
+    "V552J": ("data/ddm_build_copy/ddm_v552j_handoff.py", "476e617370e8947ee1f38b0718243ecfc5ba9e5c"),
     "CURRENT_AUTH": ("rawlsing_next/pre553_empirical_authority.py", "ca65a7fd4d52f0c44447434559b1d09412e7aa39"),
     "CURRENT_QUERY": ("rawlsing_next/pre553_empirical_query.py", "b72b469e6646b88e4e2ed4dbbf0f3c209557fd69"),
 }
@@ -219,6 +220,50 @@ def test_current_authority_and_optional_target():
                       'authority_kind="TARGET_USE_PERMISSION"')),
                 "Target-use triple required if declared; no triple => this check returns; no implication every query lacks other guards")
 
+
+def test_v552j_equal_score_tie_as_fresh_source_challenge():
+    # Adversarial high-risk case not present in frozen F03/F08/V549b oracle panel.
+    # Execute the actual scoring and classification functions, then inspect actual
+    # selecting resolver branch. No dataframe machinery, native production or
+    # empirically selected current structural object is simulated as proved.
+    src = SOURCES["V552J"]
+    def clean(value):
+        return str(value or "").strip()
+    def semantic_values(row, plural, singular):
+        # This source-extracted test feeds singleton singular values only.
+        return {clean(row.get(singular))} if clean(row.get(singular)) else set()
+    scope = ("run_id","source","wave","country_code")
+    def same_scope(a,b):
+        return all(clean(a.get(k)) == clean(b.get(k)) and clean(a.get(k)) for k in scope)
+    globals_for_match={
+        "_same_scope":same_scope,
+        "_clean":clean,
+        "_semantic_values":semantic_values
+    }
+    match = extracted_exec(exact_func(src,"_structural_fact_match_score"),globals_for_match)
+    classify = extracted_exec(exact_func(src,"_structural_fact_match_policy"),{})
+    packet={"run_id":"synthetic-run","source":"GSS","wave":"1973","country_code":"us",
+            "relation_axis_id":"axis-1","target_entity_id":"group-1",
+            "driver_facet_id":"facet-1","question_id":"qid-1"}
+    fact_a={**packet,"v552_structural_fact_id":"fact-a"}
+    fact_b={**packet,"v552_structural_fact_id":"fact-b"}
+    score_a=match(packet,fact_a)
+    score_b=match(packet,fact_b)
+    assert_case("V552J_DISTINCT_FACTS_EQUAL_SCORE_EXACT", score_a==score_b==12 and
+                classify(score_a)=="exact_structural_match",
+                {"fact_a":"fact-a","fact_b":"fact-b","score":score_a,
+                 "source_grade":"EXACT_SOURCE_AST_SCORE_WITH_STUBBED_SINGLETON_VALUES"})
+    resolver=ast.get_source_segment(src,exact_func(src,"_packet_structural_dimension_resolution"))
+    assert_case("V552J_TIE_SELECTS_PRIMARY_NO_EXPLICIT_REFUSAL",
+                all(x in resolver for x in (
+                    'sort_values(["_match_score"]',
+                    'primary=matched.iloc[0]',
+                    'allowed_downstream_use":resolved',
+                    'matched_fact_count":len(matched)')),
+                {"source_grade":"S1_EXACT_RESOLVER_AST_CONTROL_FLOW",
+                 "risk":"Within exact scope, top-score ties choose an ordered first fact and can be resolved/allowed; no explicit top-tie veto seen",
+                 "limit":"Full resolver/first consumer NOT_RUN; historical design may intentionally tie-break"})
+
 def main():
     files=read_and_pin()
     test_official_validator_mutants(files)
@@ -226,6 +271,7 @@ def main():
     test_v549b_source_extracted_progress()
     test_f03_source_extracted_quc_no_match()
     test_v552_overcount_and_allow_independence()
+    test_v552j_equal_score_tie_as_fresh_source_challenge()
     test_current_authority_and_optional_target()
     out={"schema":"ZAK00R_V2_SOURCE_PINNED_MCR_HOSTILE_PROBE_R1",
          "candidate_head":"9d24323494cc852ada078010f09bfcf9ceb911d9",
