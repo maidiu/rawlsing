@@ -59,6 +59,10 @@ def test_house_reopens_with_two_separate_closure_triggers(tmp_path):
 
 def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_path, monkeypatch):
     from copy import deepcopy
+    from dataclasses import asdict
+    from unittest.mock import Mock
+
+    from adp010 import movement_context, oee
     from pathlib import Path
     import shutil
     import subprocess
@@ -95,6 +99,8 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
     finally:
         opening_owner.close()
 
+    owner_entry = Mock(wraps=oee.admit_available)
+    monkeypatch.setattr(oee, "admit_available", owner_entry)
     real_reader = house.movement_evidence
 
     def check_source_faults(session, event, world, resource):
@@ -102,6 +108,9 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
             forged = {**event, "event_id": "uncommitted-move"}
             with pytest.raises(RecursionRefusal, match="P6_ENCOUNTER_MOVEMENT_SOURCE_MISMATCH"):
                 real_reader(session, forged, world, resource)
+            for change in ({"hash": "0" * 64}, {"actor_id": "A"}, {"clock": event["clock"] - 1}):
+                with pytest.raises(RecursionRefusal, match="P6_ENCOUNTER_MOVEMENT_SOURCE_MISMATCH"):
+                    real_reader(session, {**event, **change}, world, resource)
             for key in ("root", "branch"):
                 with pytest.raises(RecursionRefusal, match="P6_ENCOUNTER_MOVEMENT_SOURCE_MISMATCH"):
                     real_reader(session, event, world, {**resource, key: "foreign"})
@@ -136,7 +145,17 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         assert [row["uptake"] for row in evidence] == [
             "HOLD_ACTOR_REGISTRATION_OWNER_MISSING", "NOT_ELIGIBLE_FOR_REGISTRATION",
         ]
+        admitted = turn["receipt"]["adp010_admission"]
+        assert admitted[0]["recipient"] == "A"
+        assert admitted[0]["status"] == "OWNER_REFUSED"
+        assert admitted[0]["reason"] == "subject must be SubjectIngressEvidence"
+        assert admitted[0]["registry_state"] == "CANDIDATE_NOT_ADOPTED"
+        context = movement_context(evidence[0])
+        assert admitted[0]["context"] == asdict(context)
+        assert owner_entry.call_args.kwargs["context_or_world_receipt_refs"] == (context,)
+        assert admitted[1] == {"recipient": "B", "status": "NOT_SUBMITTED", "reason": "UNAVAILABLE"}
         assert "encounter_evidence" not in json.dumps(result)
+        assert "adp010_admission" not in json.dumps(result)
         if focus == "bench":
             replay = subprocess.run(
                 [sys.executable, "-B", str(Path(__file__).with_name("run_p6.py")),
@@ -165,7 +184,7 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
                            and row["actor_id"] == "A" for row in session.events())
         finally:
             owner.close()
-        variants.append((result["detail"], event, evidence))
+        variants.append((result["detail"], event, evidence, admitted))
     assert variants[0][0] != variants[1][0]
     assert variants[0][1:] == variants[1][1:]
 
@@ -185,3 +204,6 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         assert row["modality"] is row["modality_source"] is None
         assert row["eligibility"] == "UNKNOWN"
         assert row["uptake"] == "HOLD_SENSORY_SOURCE_UNQUALIFIED"
+    assert owner_entry.call_count == 2
+    assert all(row["status"] == "NOT_SUBMITTED" and row["reason"] == "UNKNOWN"
+               for row in unknown_turn["receipt"]["adp010_admission"])
