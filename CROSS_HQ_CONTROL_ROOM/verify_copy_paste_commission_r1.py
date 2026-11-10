@@ -32,7 +32,7 @@ SHA = re.compile(r"^[0-9a-f]{40}$")
 
 def _named_parts(value: str):
     """Validate structural specificity, not the semantic truth of a source claim."""
-    return {k: v.strip() for k, v in re.findall(r"(?:^|;)\\s*([A-Z_]+)\\s*=\\s*([^;]+)", value)}
+    return {k: v.strip() for k, v in re.findall(r"(?:^|;)\s*([A-Z_]+)\s*=\s*([^;]+)", value)}
 
 
 def _require_parts(header, key, names, errors):
