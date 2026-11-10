@@ -9,7 +9,7 @@
 - C6 @aed1a0ae13c58f11f4dabd07c818b62f72adf989 29/58/6/1 and 55 heterogeneous cases, C10 F03/C11 F08 test-time receipts and reviewed boundaries, D04/Authority40 LMQ001 and LMX043, Oct28 hybrid selected architecture.
 
 ## Independent adjudication questions
-1. Does exact unchanged 182×14 and high-impact 17/17 source blob custody justify documentary grade without counterfeit 47/47 fresh readback?
+1. Does exact unchanged 182×14 and 47/47 exact source-blob custody justify documentary grade without counterfeit 47/47 fresh readback?
 2. Does each ZAK01–11 full launch pass actual Python structural checker; does a different source-meaning falsifier also reject false current selected-rule and fake issuer even when structure passes?
 3. Are primary territories exclusive while independent 01/02/03/04/08 S0–S1 flight is genuinely parallel eligible? Any artificial F03 gate is RED.
 4. Are F03's QUC conditional no-match exception and F08 GSS allowed-use=false negatives honored without converting test-time replay into original run?

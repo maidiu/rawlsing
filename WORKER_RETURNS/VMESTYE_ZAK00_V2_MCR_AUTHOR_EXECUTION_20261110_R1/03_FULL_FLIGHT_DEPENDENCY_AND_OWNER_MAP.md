@@ -25,6 +25,19 @@
 4. ZAK06 freezes one ZAK05 head and challenges both forward/reverse; 07 executes only at real runner/source right; 09 repairs an exact independently confirmed defect or seeks competent owner decision; 10 delta receives reviewed claims; 11 receives separately graded terminal statuses.
 5. Actual original35 native execution, structural science or Sorok actor issuance is a legitimate separate gate, not a hidden acceptance prerequisite for accurate S1 archaeology.
 
+## Real readiness and specific held dependencies
+| Flight | Dispatch grade now | Exact condition, distinct from nonterminal F03 calibration |
+|---|---|---|
+| ZAK-01/02/03/04/08 | `S0_S1_PREPARED__NOT_DISPATCHED` | independent ZAK00R reviewed contract, real user-selected host/model/quota, separate exclusive branch/lease; no native data rights inferred |
+| ZAK-05 | `NOT_DISPATCH_READY_FOR_POSITIVE_JOIN` | exact reviewed ZAK01–04 source and effect slices; preliminary S0 synthesis possible without positive issuance |
+| ZAK-06 | `NOT_DISPATCH_READY` | immutable ZAK05 author return and separate independent hostile reviewer/lease |
+| ZAK-07 | `DESIGN_PREPARED__EXECUTION_NOT_DISPATCH_READY` | qualified runner plus actual selected rule and real reader, separate source rights for native |
+| ZAK-09 | `OWNER_ROUTE_PREPARED__REPAIR_NOT_AUTHORIZED` | qualified owner decision and an independently reproduced concrete defect |
+| ZAK-10 | `CANONICAL_WRITE_NOT_DISPATCH_READY` | reviewed delta and #814–816 existing canonical receiving custody |
+| ZAK-11 | `TERMINAL_VERDICT_NOT_DISPATCH_READY` | #817 qualified terminal cut; can still receive scoped estate before higher native claims |
+
+No gate demands one pilot pass to permit independent S0–S1 ZAK01/02/03/04/08 investigations. These prompts are **complete conditional launches**, not workers already spawned.
+
 ## Authority boundaries
 Authority39/40 keep 44 LMX and 30 LMQ debts and replacement/supersession tests. October 28 selected architecture is a DAG: immutable survey source → exact source projection/C11 → I03/I05 + learned → FF F5–F7 → N9/N10W world → Sorok/V3 independent actor → V2 expression. Direct authorized consumer reuse need not serialize all intermediate artifacts. Each owner holds only its own scientific/semantic/engineering authority; a third-party issuer cannot be volunteered by a ZAK worker.
 
