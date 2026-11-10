@@ -44,6 +44,15 @@ CLOSURE_AND_OUT_OF_SCOPE: ACCEPT_AT=all assigned 02 tranche operations and claim
 FULL OWNED MISSION
 V549b comparator and progress reporter, V550 F03/F08 and V550J registry/pattern, V551/J, V552/J exact operations, denominator and false-overcount paths, before-after/negative/output and original first consumer by source version. Preserve MCR-AF full parent and materially linked exceptions; do not substitute the pilot for the whole output.
 
+FIXED NONINVERSE ADVERARIAL PANEL — actual source-grain IDs, not a derived fate verdict
+- T1-ZL03-ZL03-T11: V551 signed pressure→V552 structural/temporal candidate with contradiction tensor and conditional audit EMPTY; NEG=EMPTY tensor != proof zero contradictions; conditional_determinicity unused; V553 temporal rights not issued; READER=Current J non-test consumer UNKNOWN
+- T1-ZL07-TR-041: D13 risk-set and denominator NOT requirement, current C11 bridge only proposed; NEG=NOT over all physical rows violates the lawful denominator/risk-set universe; READER=Current first non-test reader UNKNOWN
+- T1-ZL03-UNTRACED-ZL03-F16: B07 scalarize only complete, compatible, unanimous, nonempty component vector with role/lineage; NEG=Incompatible/incomplete vector cannot become single score even when totals look correct; READER=Current V552J→V553 consumer UNKNOWN
+- T1-ZL05-ZL05-OP-003: Dva V553 governed comparison delta/temporal change direction proposed architecturally; NEG=Proposed temporal semantics not observed execution; denial/noncomparability stay typed; READER=V554 architecture cited; actual reader UNPROVED
+- T1-ZL08-ZL08-T-CODE-LMX-016: validate_c11_source_release validates source, authority, universe, routing, replay; NEG=Sourcefree validation without real first reader and cold source lineage is not whole-machine conservation; READER=Non-test C11 consumer unobserved
+- T1-ZL02-ZL02-T-F09_ROUTING: Historical F09 routing/AR0043 roster documentary, no executable F1 callsite demonstrated; NEG=No old callsite does not prove old invocation OR modern function absence; preserve risk-set hold; READER=Historical six-stage and present selected reader unknown
+These six rows are versioned documentary candidates at 5827cdb74f6820c338b79db0c423e9e0dc88a992, not adopted source-scientific rules or executed successors. The absence of a same-grain inverse is a question, not a proof of missing current function.
+
 DIRECT VERSIONED INPUTS (verify exact Git blob/commit, do not infer from filename alone)
 1. ddm_v550_question_relation_authority.py blob 62084cbed10a5975f79bd504bf4fb99025e4e64e @9253064bc9423a0f0ccda4fbdea43c2f54f800c6
 2. build_question_response_attitude_cloud_summary_v549b.py blob bf874a95ea5172817b0d1bdf21b43600aac5cbfe @9253064bc9423a0f0ccda4fbdea43c2f54f800c6

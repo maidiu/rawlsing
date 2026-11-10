@@ -1,0 +1,14 @@
+# ZAK-00 v2 — Fixed non-inverse historical-contract challenge panel
+
+**Immutable source:** 235-row unaccepted VMC-T1 fate candidate `WORKER_RETURNS/VMESTYE_VMC_T1_TRANSFORM_CONTRACTS_R1/R1_CANDIDATE_FATES.tsv` @ `5827cdb74f6820c338b79db0c423e9e0dc88a992`, Git blob `5e3ed9d2ac3677b88ce77da60869f0578263ea77`. All six chosen rows have `r3_strict_same_static_branch=NONE__SAME_GRAIN_NOT_PROVED`. Candidate T1R2 references are **not** proved inverse/successor links.
+
+| Exact source tuple row ID | Observed/reported input and operation | Distinguishing negative / counterexample | First consumer and decision |
+|---|---|---|---|
+| `T1-ZL03-ZL03-T11` | V551 signed pressure→V552 structural/temporal candidate with contradiction tensor and conditional audit EMPTY | EMPTY tensor != proof zero contradictions; conditional_determinicity unused; V553 temporal rights not issued | Current J non-test consumer UNKNOWN |
+| `T1-ZL07-TR-041` | D13 risk-set and denominator NOT requirement, current C11 bridge only proposed | NOT over all physical rows violates the lawful denominator/risk-set universe | Current first non-test reader UNKNOWN |
+| `T1-ZL03-UNTRACED-ZL03-F16` | B07 scalarize only complete, compatible, unanimous, nonempty component vector with role/lineage | Incompatible/incomplete vector cannot become single score even when totals look correct | Current V552J→V553 consumer UNKNOWN |
+| `T1-ZL05-ZL05-OP-003` | Dva V553 governed comparison delta/temporal change direction proposed architecturally | Proposed temporal semantics not observed execution; denial/noncomparability stay typed | V554 architecture cited; actual reader UNPROVED |
+| `T1-ZL08-ZL08-T-CODE-LMX-016` | validate_c11_source_release validates source, authority, universe, routing, replay | Sourcefree validation without real first reader and cold source lineage is not whole-machine conservation | Non-test C11 consumer unobserved |
+| `T1-ZL02-ZL02-T-F09_ROUTING` | Historical F09 routing/AR0043 roster documentary, no executable F1 callsite demonstrated | No old callsite does not prove old invocation OR modern function absence; preserve risk-set hold | Historical six-stage and present selected reader unknown |
+
+**Reason for this fixed selection:** six qualitatively distinct material hazards—empty contradiction evidence masquerading as absence, physical-row NOT versus lawful risk set, forbidden scalarization, proposed Dva temporal operation without output, C11 technical validation without a non-test reader, and routing history with absent first callsite. None can be settled by 182 owner templates or arbitrary selection of one alleged no-inverse case. The panel is *calibration, not whole 235-candidate receiving*; work across the full parent remains required only for material operations. ZAK-02 owns historic operations; ZAK-08 owns secondary conservation; ZAK-05 joins proven claims. Original S3 and present applied-rule status remain held.

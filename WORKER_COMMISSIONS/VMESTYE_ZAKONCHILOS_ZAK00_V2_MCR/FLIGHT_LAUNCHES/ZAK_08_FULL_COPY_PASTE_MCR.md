@@ -44,6 +44,15 @@ CLOSURE_AND_OUT_OF_SCOPE: ACCEPT_AT=all assigned 08 tranche operations and claim
 FULL OWNED MISSION
 all 29 F, 44 LMX, 30 LMQ, 13 reviewed P1, V549b/J/Dva/Trii/Chetiri, learned, structural, temporal and 235 optional candidate fates without automatic restoration or false retirement. Preserve MCR-AF full parent and materially linked exceptions; do not substitute the pilot for the whole output.
 
+FIXED NONINVERSE ADVERARIAL PANEL — actual source-grain IDs, not a derived fate verdict
+- T1-ZL03-ZL03-T11: V551 signed pressure→V552 structural/temporal candidate with contradiction tensor and conditional audit EMPTY; NEG=EMPTY tensor != proof zero contradictions; conditional_determinicity unused; V553 temporal rights not issued; READER=Current J non-test consumer UNKNOWN
+- T1-ZL07-TR-041: D13 risk-set and denominator NOT requirement, current C11 bridge only proposed; NEG=NOT over all physical rows violates the lawful denominator/risk-set universe; READER=Current first non-test reader UNKNOWN
+- T1-ZL03-UNTRACED-ZL03-F16: B07 scalarize only complete, compatible, unanimous, nonempty component vector with role/lineage; NEG=Incompatible/incomplete vector cannot become single score even when totals look correct; READER=Current V552J→V553 consumer UNKNOWN
+- T1-ZL05-ZL05-OP-003: Dva V553 governed comparison delta/temporal change direction proposed architecturally; NEG=Proposed temporal semantics not observed execution; denial/noncomparability stay typed; READER=V554 architecture cited; actual reader UNPROVED
+- T1-ZL08-ZL08-T-CODE-LMX-016: validate_c11_source_release validates source, authority, universe, routing, replay; NEG=Sourcefree validation without real first reader and cold source lineage is not whole-machine conservation; READER=Non-test C11 consumer unobserved
+- T1-ZL02-ZL02-T-F09_ROUTING: Historical F09 routing/AR0043 roster documentary, no executable F1 callsite demonstrated; NEG=No old callsite does not prove old invocation OR modern function absence; preserve risk-set hold; READER=Historical six-stage and present selected reader unknown
+These six rows are versioned documentary candidates at 5827cdb74f6820c338b79db0c423e9e0dc88a992, not adopted source-scientific rules or executed successors. The absence of a same-grain inverse is a question, not a proof of missing current function.
+
 DIRECT VERSIONED INPUTS (verify exact Git blob/commit, do not infer from filename alone)
 1. LMX44 seed blob f09548a0c67293983c775b5dc2b506cec3b74af4
 2. LMQ30 seed blob e9aece8890d2e5495413b22c4e90b7c60f4dcb38
