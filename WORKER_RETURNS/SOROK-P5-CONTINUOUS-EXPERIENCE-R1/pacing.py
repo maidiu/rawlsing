@@ -37,7 +37,8 @@ class ObservedInterval:
 def advance_for_action(fanin, action, *, on_repair=None):
     # Bounded workshop ticks. A glance or short remark occupies one beat;
     # examining the work occupies three. No gaze input reaches this seam.
-    span = {"ATTEND": 1, "SAY": 1, "GO": 1, "INSPECT": 3, "INSPECT_EDGE": 3, "INSPECT_OBJECT": 3}[action["operation"]]
+    spans = {"ATTEND": 1, "SAY": 1, "GO": 1, "INSPECT": 3, "INSPECT_EDGE": 3, "INSPECT_OBJECT": 3}
+    span = action["duration"] if action["operation"] == "WAIT" else spans[action["operation"]]
     session = fanin.session
     start = session.clock()
     # A deliberately sustained examination delegates two bounded work

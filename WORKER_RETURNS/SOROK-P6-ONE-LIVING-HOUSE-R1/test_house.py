@@ -189,3 +189,51 @@ def test_committed_go_qualifies_actor_specific_fixture_without_registering(tmp_p
         assert row["modality"] is row["modality_source"] is None
         assert row["eligibility"] == "UNKNOWN"
         assert row["uptake"] == "HOLD_SENSORY_SOURCE_UNQUALIFIED"
+
+
+def test_silent_interval_reconsiders_and_commits_only_admitted_speech(tmp_path):
+    packets = []
+    words = "I'll finish this piece first."
+
+    def interpret(packet):
+        packets.append(packet)
+        action = "continue" if len(packets) == 1 else "speak"
+        return {"attention": "uncertain", "interpretation": "Time to reassess the work.",
+                "action": action}
+
+    def realize(packet, decision):
+        assert decision["action"] == "speak"
+        return words
+
+    def run(command, **args):
+        return experience(tmp_path, Namespace(command=command, **args), interpret=interpret,
+                          realize=realize, actor_context={"grade": "SOURCEFREE_FIXTURE",
+                                                          "priority": "finish the piece"})
+
+    start = run("new")["clock"]
+    run("go", target="living room", request_id="away")
+    first = run("wait", duration=4, request_id="wait-1")
+    second = run("wait", duration=7, request_id="wait-2")
+    assert first["clock"] == start + 5 and second["clock"] == start + 12
+    assert [packet["elapsed"] for packet in packets] == [4, 7]
+    assert all(packet["room"] == "workshop" and not packet["cues"] for packet in packets)
+    assert all(packet["actor_context"]["priority"] == "finish the piece" for packet in packets)
+    assert "situated" not in json.dumps(second)
+    ledger = tmp_path / "p4_receipts.json"
+    saved = ledger.read_bytes()
+    turns = json.loads(saved)["turns"]
+    assert turns[-2]["receipt"]["situated"]["decision"]["action"] == "continue"
+    speech = turns[-1]["receipt"]["situated"]["speech"]
+    assert speech["admitted"]
+    assert run("wait", duration=7, request_id="wait-2")["clock"] == second["clock"]
+    assert len(packets) == 2 and ledger.read_bytes() == saved
+
+    owner = open_owner(tmp_path / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        event = session.event(speech["event_id"])
+        assert event["kind"] == "SPEECH" and event["actor_id"] == "A"
+        assert event["body"]["text"] == words
+        assert speech["event_id"] not in session.user_perceived_ids()
+    finally:
+        owner.close()

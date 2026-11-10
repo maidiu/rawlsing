@@ -17,10 +17,12 @@ from attention import register, select
 from gaze import render
 from house import close_on_repair, derive_recognition, establish, perform, read_house, scene
 
+from situated import reconsider
+
 PACE = partial(advance_for_action, on_repair=close_on_repair)
 
 
-def experience(state, args):
+def experience(state, args, *, interpret=None, realize=None, actor_context=None):
     command = args.command
     if command == "new":
         state.mkdir(parents=True, exist_ok=True)
@@ -45,9 +47,24 @@ def experience(state, args):
                 raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
             prior = scene(session)
             outcome = None
-            if command in {"go", "look", "attend", "inspect"} and invitation(session, ledger):
+            if command in {"go", "look", "wait", "attend", "inspect"} and invitation(session, ledger):
                 raise RecursionRefusal("P6_INVITATION_REQUIRES_EXPLICIT_RESPONSE")
-            if command in {"go", "look"}:
+            if command == "wait":
+                if type(args.duration) is not int or not 1 <= args.duration <= 60:
+                    raise RecursionRefusal("P6_WAIT_DURATION_OUT_OF_RANGE")
+
+                def wait(current, admitted):
+                    if not current.scene_open():
+                        return {}, {"admission": "SCENE_CLOSED", "performed": False, "observation": None}
+                    receipt = {"interval": PACE(owner.base_owner.fanin, admitted)}
+                    decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context)
+                    if decision is not None:
+                        receipt["situated"] = decision
+                    return receipt, {"admission": "ADMITTED", "performed": True, "observation": None}
+
+                outcome = act(owner, ledger_file, ledger, args,
+                              conduct=({"operation": "WAIT", "duration": args.duration}, wait))
+            elif command in {"go", "look"}:
                 action = {"operation": "GO" if command == "go" else "INSPECT_OBJECT",
                           "target": args.target}
 
@@ -55,6 +72,11 @@ def experience(state, args):
                     receipt, public = perform(current, admitted)
                     if public["performed"]:
                         receipt["interval"] = PACE(owner.base_owner.fanin, admitted)
+                        if any(row["recipient"] == "A" and row["eligibility"] == "ELIGIBLE"
+                               for row in receipt.get("encounter_evidence", ())):
+                            decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context)
+                            if decision is not None:
+                                receipt["situated"] = decision
                     return receipt, public
 
                 outcome = act(owner, ledger_file, ledger, args,
@@ -107,6 +129,9 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("new")
     commands.add_parser("view")
+    wait = commands.add_parser("wait")
+    wait.add_argument("duration", type=int)
+    wait.add_argument("--request-id")
     say = commands.add_parser("say")
     say.add_argument("text")
     say.add_argument("--request-edge", action="store_true")
