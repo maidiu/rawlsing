@@ -1,0 +1,40 @@
+name: SOROK MIII Grade B exact-head independent court
+on:
+  push:
+    branches:
+      - review/sorok-miii-grade-b-independent-20261110-r1
+  pull_request:
+    branches:
+      - agent/sorok-miii-grade-b-adp010-first-consumer-r1
+
+permissions:
+  contents: read
+
+jobs:
+  grade-b-independent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout independent reviewer descendant
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+      - name: Verify author source and reviewer-only delta
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 15fcb5ecb0a3b719bad387080351770b4a2849a5 HEAD
+          git diff --name-only 15fcb5ecb0a3b719bad387080351770b4a2849a5 HEAD
+          unexpected="$(git diff --name-only 15fcb5ecb0a3b719bad387080351770b4a2849a5 HEAD | grep -Ev '^WORKER_REVIEWS/SOROK-MIII-GRADE-B-INDEPENDENT-20261110-R1/|^[.]github/workflows/review-sorok-miii-grade-b-20261110[.]yml$' || true)"
+          test -z "$unexpected" || { echo "Reviewer changed implementation: $unexpected"; exit 1; }
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Reproduce actual P6 GO, source severance, and cold replay
+        run: |
+          python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py::test_committed_go_qualifies_actor_specific_fixture_without_registering
+      - name: Test exact ADP-010 owner refusal and absent semantic consumption
+        run: |
+          python -B -m pytest -q -p no:cacheprovider --tb=short WORKER_REVIEWS/SOROK-MIII-GRADE-B-INDEPENDENT-20261110-R1/test_grade_b_boundary.py
