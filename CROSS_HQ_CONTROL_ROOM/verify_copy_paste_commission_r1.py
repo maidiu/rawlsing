@@ -391,16 +391,6 @@ def verify_return(commission, returned, candidate_sha, root):
         "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
     }
 
-, ValueError, RuntimeError):
-            errors.append("MCR_C_EVIDENCE_MISSING_OR_ESCAPE_" + oid)
-    return {
-        "status": "RED_INCOMPLETE" if errors else "READY_FOR_INDEPENDENT_RECEIVING",
-        "errors": errors, "candidate_sha": candidate_sha,
-        "contract_sha256": contract["sha256"] if contract else None,
-        "verified_obligation_count": len(expected) - len([x for x in expected if x not in proof]),
-        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
-    }
-
 
 def validate(markdown: str):
     errors = []
