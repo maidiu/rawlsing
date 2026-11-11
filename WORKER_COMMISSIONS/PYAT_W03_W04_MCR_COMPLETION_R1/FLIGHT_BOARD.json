@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T02:07:13.746543+00:00",
+  "saved_utc": "2026-11-11T02:12:57.716918+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -147,7 +147,7 @@
       "job": "pyat-w03-w04-mcr-engineering-receiving-r1",
       "pid": 37418,
       "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "TERMINAL_PROVIDER_OVERLOAD_429__SINGLE_SAME_SESSION_RESUME_DISPATCHED",
       "actual_model": {
         "id": "msg_1c85b54b30011gKmOSf8oYJ4El",
         "type": "assistant",
@@ -161,7 +161,13 @@
         }
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-engineering-review-r1",
-      "role": "Independentwholecontractreceiver; currentchallenge/draftanalysis only; finalreceivingononefrozenall12candidate"
+      "role": "Independentwholecontractreceiver; currentchallenge/draftanalysis only; finalreceivingononefrozenall12candidate",
+      "terminal": {
+        "exit_code": 1,
+        "provider_error": "inferenceserviceoverloaded",
+        "http_status": 429,
+        "finished_utc": "2026-11-11T02:11:35.434656+00:00"
+      }
     },
     {
       "lane": "economics-review",
@@ -183,6 +189,16 @@
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1",
       "role": "Independentwholecontractreceiver; currentchallenge/draftanalysis only; finalreceivingononefrozenall12candidate"
+    },
+    {
+      "lane": "engineering-review",
+      "job": "pyat-w03-w04-mcr-engineering-overload-resume-r2",
+      "pid": 38400,
+      "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
+      "status": "LAUNCHED_MODEL_TURN_PENDING",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-engineering-review-r1",
+      "retry_budget": "Oneboundedretry; furtheroverloadrequirescapacityhold, noautoloop",
+      "predecessor": "pyat-w03-w04-mcr-engineering-receiving-r1"
     }
   ],
   "parallel_policy": "Threeisolatednonoverlappingcodeleases; oneheavybenchmarkchildatonce; finalpairedmeasurements/reviews onintegratedimmutablecandidate",
