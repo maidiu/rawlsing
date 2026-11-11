@@ -1,6 +1,6 @@
 {
   "schema": "SOROK_MII_MCR_C_R5_RECEIVING_GATE_RECEIPT@1",
-  "gate_command": "python3 /tmp/protected_mcr_checker_r5.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-MCR-AF-INDEPENDENT-REVIEW-20261110-R1/00_COPY_PASTE_LAUNCH.md --verify-return WORKER_REVIEWS/SOROK-MII-MCR-AF-889-R1/MCR_COMPLETION_EVIDENCE.txt --candidate-sha 8c9478430b9ada90caf9f7bec8ae56d22160f789 --evidence-root .",
+  "gate_command": "python3 /tmp/protected_mcr_checker_r5.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-MCR-AF-INDEPENDENT-REVIEW-20261110-R1/00_COPY_PASTE_LAUNCH.md --verify-return WORKER_REVIEWS/SOROK-MII-MCR-AF-889-R1/MCR_COMPLETION_EVIDENCE.txt --candidate-sha 1126818f6ac3a0c080a4fc3f01ec077f439a2500 --evidence-root .",
   "checker": {
     "path_used": "/tmp/protected_mcr_checker_r5.py",
     "blob": "6e16878e60e8e89bf8ab8001144ed84ad257f5fc",
@@ -8,7 +8,7 @@
     "hash_object_verified": true,
     "note": "The review-tree copy of CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py is the obsolete pre-MCR blob and was NOT substituted, per the commission's MCR CHECKER SOURCE CUT section."
   },
-  "candidate_sha": "8c9478430b9ada90caf9f7bec8ae56d22160f789",
+  "candidate_sha": "1126818f6ac3a0c080a4fc3f01ec077f439a2500",
   "contract_sha256": "c95f0a6504ad5203c89b1a5358f6994744a85276baea2d793ef81bf4b595989b",
   "exit_code": 0,
   "result": {
@@ -18,5 +18,11 @@
     "expected_identity_count": 7,
     "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE"
   },
-  "interpretation": "All seven review obligations accepted at S2 documentary grade with committed evidence/output digests and the frozen seven-ID coverage set. The gate itself only certifies evidence coverage; the independent judgment is this return (verdict ACCEPT_SCOPED_DOCUMENTARY). Actual MII implementation and all 63 E outcomes remain NOT_RUN; no protected merge or native grant. A first gate attempt exposed MCR_C_NO_DROP_SET_MISMATCH because delivered identity tuples must be JSON-encoded column values per the MCR-C identity_columns contract; the encoding was corrected (candidate 8c947843) and the gate re-run clean."
+  "interpretation": "All seven review obligations accepted at S2 documentary grade with committed evidence/output digests and the frozen seven-ID coverage set. The gate itself only certifies evidence coverage; the independent judgment is this return (verdict ACCEPT_SCOPED_DOCUMENTARY). Actual MII implementation and all 63 E outcomes remain NOT_RUN; no protected merge or native grant. A first gate attempt exposed MCR_C_NO_DROP_SET_MISMATCH because delivered identity tuples must be JSON-encoded column values per the MCR-C identity_columns contract; the encoding was corrected (candidate 8c947843) and the gate re-run clean.",
+  "n2_correction": {
+    "issue": "HOLD \u2014 N2_GATE_REJECTION_UNPROVEN (PR #893 issuecomment-6788422039)",
+    "resolution": "N2 now feeds the mixed forged receipt (genuine observed P6 digest bf5a1b5f\u2026 plus fabricated E3/E8/E9 measurement outcomes) directly to the real predicate mcr_full_e1_e10_gate.assess_receipts.",
+    "observed": "all-genuine control accepted (True); mixed receipt rejected with MCR_MISSION_TEST_RETURNS_DIFFER_FROM_RECEIVER_OBSERVED_P6_MII-E03-APPEND_VERSION; rejection names the fabricated outcome.",
+    "status": "RESOLVED_VERIFIER_ENFORCEMENT_PROVEN"
+  }
 }
