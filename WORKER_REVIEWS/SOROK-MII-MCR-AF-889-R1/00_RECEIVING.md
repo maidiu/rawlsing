@@ -20,9 +20,12 @@ R3 DEFECT-01 stale MIII clause. Executed at the frozen review branch `ed839963�
 - **53/54 + forged-63 refusal.** `mcr_contract_reduction_attack.py --self-test` → `PASS_REJECTED_53_FORGED_PROOFS`
   (MII-T05 missing detected); forged 63 refusal PASS; terminal receiving refuses candidate-edited proof
   executables and requires the full external suite.
-- **Novel N2 challenge (reviewer-owned).** Genuine P6 call digest attached to invented unconnected metrics
-  (E9/E3/E8) and an unrelated P03 claim, plus a decoy `look(bench)` used to claim sandal identity — all rejected
-  (6/6). Observer call proof is not causal proof for unrelated metrics.
+- **Novel N2 challenge (reviewer-owned, corrected).** The mixed forged receipt — genuine observed P6 digest
+  (`bf5a1b5f…`) carried by valid outcomes plus fabricated E3/E8/E9 measurements — was fed to the real receiving
+  predicate `assess_receipts`, which returns RED with
+  `MCR_MISSION_TEST_RETURNS_DIFFER_FROM_RECEIVER_OBSERVED_P6_MII-E03-APPEND_VERSION`; the all-genuine control is
+  accepted. Verifier enforcement, not reviewer-side detection, is demonstrated (4/4). This resolves the
+  `HOLD — N2_GATE_REJECTION_UNPROVEN` issue recorded on PR #893.
 - **54 probes honest state.** Each per-ID runner command executes and returns
   `RED_INCOMPLETE / MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN`; the MII implementation does not exist and
   no scenario is self-certified.

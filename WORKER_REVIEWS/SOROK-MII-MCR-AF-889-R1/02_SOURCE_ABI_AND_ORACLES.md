@@ -56,20 +56,22 @@ proof executables refused; 54 exact issued commands; 63 conservation per E packa
 paths; runner + witness + full gate + frozen verify-return before readiness; `--preflight`
 `PASS_ISSUED_54_SOURCE_PROOF_COMMANDS_ONLY` (`actual_MII_not_run: true`).
 
-## Independent novel challenge N2 — decoy call + unconnected invented metrics (executed, PASS 6/6)
+## Independent novel challenge N2 — verifier-enforced mixed forgery (executed, PASS 4/4)
 
-**Case selected.** A genuine observed `run_p6.experience` return (56 profiler frames) has its authentic digest
-attached to invented unrelated metrics — E9 latency/cold-start, E3 exposure-ledger writes, E8 replay failures —
-and an unrelated "MII-P03 unusual target recognition" claim. Separately, a decoy real `look(bench)` call is used
-to claim the sandal identity. Nonredundant: the author's attacks cover a fully counterfeit adapter (no call) and
-all-forged receipt sets; neither covers the mixed laundering case where a real call authenticates unconnected
-invented data — the exact "decoy P6 call plus invented unrelated metrics" the launch requires.
+**Case selected.** A mixed forged receipt: a genuine independently observed `run_p6.experience` digest
+(`bf5a1b5f…`, real call) is carried by the valid outcomes, while fabricated E3/E8/E9 outcome records attach
+never-produced measurements — exposure-ledger writes, replay failures, p95/cold-start latency — with digests
+derived from the fabrication. The receipt is fed directly to the real acceptance predicate
+`assess_receipts` from `mcr_full_e1_e10_gate.py`, not judged by reviewer inspection. Nonredundant: the author's
+attacks cover a fully counterfeit adapter (no call) and all-forged receipt sets; neither covers the mixed case
+where a genuine digest authenticates unconnected fabricated measurements.
 
-**Result.** `genuine_p6_return_observed` PASS; `invented_metrics_have_no_observed_producer` PASS (no profiled
-frame produces latency/exposure/replay data); `unrelated_scenario_claim_not_in_real_return` PASS
-(`recognized_identity=None`); `laundered_receipt_must_be_rejected` PASS; decoy `look(bench)` yields `{}`
-recognition and cannot certify the sandal identity (both PASS). Conclusion: a real call is necessary but never
-sufficient; unconnected metrics must be rejected even when the carrier digest is genuine.
+**Result.** `genuine_p6_return_observed` PASS (`bf5a1b5f…`); `all_genuine_control_accepted_by_predicate` PASS
+(the predicate returns True for the all-genuine control, so the RED is attributable to the forgery);
+`mixed_genuine_digest_plus_fabricated_e3_e8_e9_rejected` PASS — the predicate raises
+`MCR_MISSION_TEST_RETURNS_DIFFER_FROM_RECEIVER_OBSERVED_P6_MII-E03-APPEND_VERSION`; `rejection_names_fabricated_outcome`
+PASS. Conclusion: the verifier itself enforces per-outcome observer binding; a real call is necessary but never
+sufficient, and fabricated E3/E8/E9 measurements cannot ride on a genuine digest.
 
 ## Conservation
 

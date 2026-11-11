@@ -25,9 +25,24 @@
     }
   },
   "frozen_registries": {
-    "seven_identity": {"commit": "e37322219c54df2cd0084162bb0b68d016794a6b", "blob": "23c55f74b227a5d843e8489f65dcb45302813762", "pin": "PASS", "count": 7},
-    "original_54": {"commit": "8382651eabc5a7fa6ca0fed3447fa6308b3324fc", "blob": "a4aa2fafbb19263e3a89de703c8525a765417e95", "pin": "PASS", "count": 54},
-    "frozen_63": {"commit": "62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff", "blob": "2ff94ac73fbd22344acfe2890a9163b8b492348d", "pin": "PASS", "count": 63}
+    "seven_identity": {
+      "commit": "e37322219c54df2cd0084162bb0b68d016794a6b",
+      "blob": "23c55f74b227a5d843e8489f65dcb45302813762",
+      "pin": "PASS",
+      "count": 7
+    },
+    "original_54": {
+      "commit": "8382651eabc5a7fa6ca0fed3447fa6308b3324fc",
+      "blob": "a4aa2fafbb19263e3a89de703c8525a765417e95",
+      "pin": "PASS",
+      "count": 54
+    },
+    "frozen_63": {
+      "commit": "62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff",
+      "blob": "2ff94ac73fbd22344acfe2890a9163b8b492348d",
+      "pin": "PASS",
+      "count": 63
+    }
   },
   "defect_01_fix": {
     "status": "PASS",
@@ -43,13 +58,28 @@
     "note": "Executed by this return; independent_judgment now delivered in 00_RECEIVING.md."
   },
   "full_e_gate": {
-    "preflight": {"status": "PASS_FULL_MISSION_63_DISCRIMINATORS_PRESERVED", "e_packages": 10, "claims": 63, "actual_MII_implementation": "NOT_RUN", "independent_acceptance": "PENDING", "exit": 0},
-    "forged_attack": {"status": "PASS_FORGED_63_OF_63_AUTHOR_RECEIPTS_REJECTED", "error": "MCR_MISSION_NO_SEPARATELY_RUN_P6_OBSERVER_MII-E01-WORLD_EVENT_CUSTODY", "actual_MII_test": "NOT_RUN", "exit": 0}
+    "preflight": {
+      "status": "PASS_FULL_MISSION_63_DISCRIMINATORS_PRESERVED",
+      "e_packages": 10,
+      "claims": 63,
+      "actual_MII_implementation": "NOT_RUN",
+      "independent_acceptance": "PENDING",
+      "exit": 0
+    },
+    "forged_attack": {
+      "status": "PASS_FORGED_63_OF_63_AUTHOR_RECEIPTS_REJECTED",
+      "error": "MCR_MISSION_NO_SEPARATELY_RUN_P6_OBSERVER_MII-E01-WORLD_EVENT_CUSTODY",
+      "actual_MII_test": "NOT_RUN",
+      "exit": 0
+    }
   },
   "consumer_trace": {
     "runtime_root_sha": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
     "runtime_sha_authenticated": true,
-    "counterfeit_attack": {"status": "PASS_COUNTERFEIT_ADAPTER_REJECTED", "exit": 0},
+    "counterfeit_attack": {
+      "status": "PASS_COUNTERFEIT_ADAPTER_REJECTED",
+      "exit": 0
+    },
     "baseline": {
       "status": "PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED",
       "observed_calls": 24,
@@ -65,10 +95,16 @@
     "status": "PASS_REJECTED_53_FORGED_PROOFS",
     "actual_verifier_status": "RED_INCOMPLETE",
     "missing": "MII-T05",
-    "errors": ["MCR_C_FROZEN_UNIVERSE_COUNT_OR_DUPLICATE_MISMATCH", "MCR_C_NO_DROP_SET_MISMATCH"],
+    "errors": [
+      "MCR_C_FROZEN_UNIVERSE_COUNT_OR_DUPLICATE_MISMATCH",
+      "MCR_C_NO_DROP_SET_MISMATCH"
+    ],
     "exit": 0
   },
-  "terminal_receiving_preflight": {"status": "PASS_ISSUED_54_SOURCE_PROOF_COMMANDS_ONLY", "actual_MII_not_run": true},
+  "terminal_receiving_preflight": {
+    "status": "PASS_ISSUED_54_SOURCE_PROOF_COMMANDS_ONLY",
+    "actual_MII_not_run": true
+  },
   "per_id_runner_spot_checks": {
     "MII-E01": "RED_INCOMPLETE / MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN",
     "MII-P03": "RED_INCOMPLETE / MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN",
@@ -76,18 +112,36 @@
     "meaning": "fail-closed; MII engine absent, no scenario self-certified"
   },
   "novel_counterexample_n2": {
-    "name": "N2-DECOY-P6-CALL-UNCONNECTED-METRICS",
+    "name": "N2-VERIFIER-ENFORCED-MIXED-FORGERY",
     "script": "WORKER_REVIEWS/SOROK-MII-MCR-AF-889-R1/novel_challenge_n2_decoy_metrics.py",
     "checks": [
-      {"name": "genuine_p6_return_observed", "result": "PASS", "detail": "56 profiler frames"},
-      {"name": "invented_metrics_have_no_observed_producer", "result": "PASS"},
-      {"name": "unrelated_scenario_claim_not_in_real_return", "result": "PASS", "detail": "recognized_identity=None"},
-      {"name": "laundered_receipt_must_be_rejected", "result": "PASS"},
-      {"name": "decoy_real_call_on_bench_yields_no_sandal_recognition", "result": "PASS", "detail": "{}"},
-      {"name": "decoy_call_cannot_certify_sandal_identity", "result": "PASS"}
+      {
+        "name": "genuine_p6_return_observed",
+        "result": "PASS",
+        "detail": "digest=bf5a1b5f0e24c88d\u2026"
+      },
+      {
+        "name": "all_genuine_control_accepted_by_predicate",
+        "result": "PASS"
+      },
+      {
+        "name": "mixed_genuine_digest_plus_fabricated_e3_e8_e9_rejected",
+        "result": "PASS",
+        "detail": "MCR_MISSION_TEST_RETURNS_DIFFER_FROM_RECEIVER_OBSERVED_P6_MII-E03-APPEND_VERSION"
+      },
+      {
+        "name": "rejection_names_fabricated_outcome",
+        "result": "PASS"
+      }
     ],
     "status": "PASS",
-    "nonredundancy": "Unique mixed laundering case: authentic call digest carriers with invented unconnected metrics; existing author attacks cover only fully-counterfeit adapters and all-forged receipt sets."
+    "verifier": "mcr_full_e1_e10_gate.assess_receipts",
+    "forged_packages": [
+      "MII-E03",
+      "MII-E08",
+      "MII-E09"
+    ],
+    "nonredundancy": "Mixed genuine-digest/fabricated-measurement receipt; proves verifier enforcement (RED), not merely reviewer-side detection."
   },
   "conservation": {
     "original_identities": 54,
@@ -99,6 +153,14 @@
   },
   "verdict": "ACCEPT_SCOPED_DOCUMENTARY",
   "defect_count": 0,
-  "not_run": ["actual MII implementation", "all 63 functional outcomes", "S3 native science", "human study", "production simulator", "adaptive consent", "protected merge"],
+  "not_run": [
+    "actual MII implementation",
+    "all 63 functional outcomes",
+    "S3 native science",
+    "human study",
+    "production simulator",
+    "adaptive consent",
+    "protected merge"
+  ],
   "receiving_gate_receipt": "05_MCR_C_RECEIVING_GATE_RECEIPT.json"
 }
