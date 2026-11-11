@@ -174,3 +174,8 @@ parent-event IDs and exact hashes. An incompatible `broken` value held with
 `HISTORICAL_DEPTH_VALUE_MISMATCH`; parent-event severance held with
 `HISTORICAL_PARENT_MISSING` and restored requalification advanced. Author
 local S2 only; independent S2 rerun, native S3 and live inference are NOT_RUN.
+
+
+### Current live/reader result — 2026-11-11
+
+At implementation f459744a2, actual DeepSeek V4.1 Flash model→H0 owner admission→P4 inspection→cold target equality completed (attempt05).1728input/2904output tokens,47.937s, two admitted facts; returned condition=serviceable. Raw receipts are in02_MODEL_PROVIDER_AND_JOB_RECEIPTS_R3. All earlier failures/holds retained. Current owner/provider/joined suite22passed79.20s; broad reconciliation65MI+1CLI/53protected composite preserved at their cut. This advances LIVE_PROVIDER_S2 H0/L2 and actual MI↔MII first-reader engineering only; H1/graph/root/rolling/full39 and independent review remain unfinished.

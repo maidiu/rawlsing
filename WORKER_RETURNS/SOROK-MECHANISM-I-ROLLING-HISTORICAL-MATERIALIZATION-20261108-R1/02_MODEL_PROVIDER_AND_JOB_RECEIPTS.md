@@ -38,3 +38,8 @@ Keep the test state and reopen it through `run_p4.open_owner`. Use the target's
 `job_id` to read `HistoricalWorld.job`, including its receipt and admission.
 Request hashes may differ between loopback runs because the endpoint port is
 assigned per fixture.
+
+
+## 2026-11-11 actual live H0/L2 execution
+
+See [raw R3 endpoint, candidate, owner and cold-inspector receipts](02_MODEL_PROVIDER_AND_JOB_RECEIPTS_R3/README.md). Attempt05 completes actual model→owner H0 admission→inspection→cold equality; L3/H1/fullMI and independent receiving remain open. Earlier mocks keep their original grades.
