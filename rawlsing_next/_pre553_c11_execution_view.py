@@ -388,9 +388,64 @@ def _write_bodies(path: Path, key: str, bodies, *, envelope: Mapping[str, Any] |
 
 def _release_authority_root(release: C11LogicalRelease) -> str:
     refs = set()
-    for obj in release.public_objects:
-        refs.update(getattr(obj, "authority_snapshot_refs", ()))
+    public = release.public_objects
+    if isinstance(public, _CompactPublicObjects):
+        # The compact lane already carries exact event authority identities.
+        # Do not materialize full native events merely to derive a cache key.
+        for obj in public.non_events:
+            refs.update(getattr(obj, "authority_snapshot_refs", ()))
+        for selector in public.lane.selectors:
+            refs.update(
+                AuthorityRef(*identity)
+                for identity in selector._authority_identities
+            )
+    else:
+        for obj in public:
+            refs.update(getattr(obj, "authority_snapshot_refs", ()))
     return semantic_hash([ref.as_dict() for ref in sorted(refs, key=lambda ref: ref.key)])
+
+
+def _cache_identity(
+    release: C11LogicalRelease,
+    selectors: tuple[_EventRead, ...],
+    *,
+    binding: Mapping[str, Any],
+    projection_binding: str,
+    policy: AcceleratorPolicy,
+) -> tuple[str, dict[str, Any], Path]:
+    """Build the exact governed cache key/envelope/path for one release lane.
+
+    Shared by the eager compact path and the streaming cold path so both use
+    the same policy, authority, source, projection, release, replay and member
+    identity.
+    """
+    authority_root = _release_authority_root(release)
+    member_root = semantic_hash([selector.ref.as_dict() for selector in selectors])
+    key = semantic_hash({
+        "schema": _CACHE_SCHEMA,
+        "source": release.source_artifact_ref.as_dict(),
+        "decoder": binding,
+        "projection": projection_binding,
+        "authority_root": authority_root,
+        "policy_root": policy.trusted_root_id,
+        "release": release.release_ref.as_dict(),
+        "release_manifest": release.source_release_manifest_hash,
+        "replay": release.replay_manifest.ref.as_dict(),
+        "member_root": member_root,
+    })
+    envelope = {
+        "schema": _CACHE_SCHEMA,
+        "key": key,
+        "policy_root": policy.trusted_root_id,
+        "authority_root": authority_root,
+        "source": release.source_artifact_ref.as_dict(),
+        "projection": projection_binding,
+        "release": release.release_ref.as_dict(),
+        "release_manifest": release.source_release_manifest_hash,
+        "replay": release.replay_manifest.ref.as_dict(),
+        "member_root": member_root,
+    }
+    return key, envelope, cache_file(policy, key)
 
 
 def _compact_public_objects(
@@ -450,33 +505,13 @@ def _compact_public_objects(
     envelope = None
     binding = physical_binding() if policy is not None else None
     if binding is not None:
-        authority_root = _release_authority_root(release)
-        member_root = semantic_hash([selector.ref.as_dict() for selector in selectors])
-        key = semantic_hash({
-            "schema": _CACHE_SCHEMA,
-            "source": release.source_artifact_ref.as_dict(),
-            "decoder": binding,
-            "projection": projection_binding,
-            "authority_root": authority_root,
-            "policy_root": policy.trusted_root_id,
-            "release": release.release_ref.as_dict(),
-            "release_manifest": release.source_release_manifest_hash,
-            "replay": release.replay_manifest.ref.as_dict(),
-            "member_root": member_root,
-        })
-        envelope = {
-            "schema": _CACHE_SCHEMA,
-            "key": key,
-            "policy_root": policy.trusted_root_id,
-            "authority_root": authority_root,
-            "source": release.source_artifact_ref.as_dict(),
-            "projection": projection_binding,
-            "release": release.release_ref.as_dict(),
-            "release_manifest": release.source_release_manifest_hash,
-            "replay": release.replay_manifest.ref.as_dict(),
-            "member_root": member_root,
-        }
-        path = cache_file(policy, key)
+        key, envelope, path = _cache_identity(
+            release,
+            selectors,
+            binding=binding,
+            projection_binding=projection_binding,
+            policy=policy,
+        )
         bodies = _read_bodies(path, key, selectors, policy=policy, envelope=envelope)
     if bodies is None:
         chunks = []

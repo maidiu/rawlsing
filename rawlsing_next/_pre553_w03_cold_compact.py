@@ -6,18 +6,25 @@ and never creates a second C11 store, selector language or query engine.
 """
 from __future__ import annotations
 
+from dataclasses import replace
 from types import MappingProxyType
 from typing import Any, Mapping
 
 from rawlsing_next._pre553_c11_execution_view import (
+    _BodyCacheWriter,
     _CompressedBodies,
     _CompactPublicObjects,
     _EVENT_BODY_CHUNK_EVENTS,
+    _EVENT_BODY_CODEC,
     _EventLane,
     _EventRead,
     _RespondentEvents,
+    _cache_identity,
+    _cache_policy,
     _compress_body_chunk,
+    _read_bodies,
     _ref_identity,
+    enforce_after_write,
 )
 from rawlsing_next.pre553_empirical_objects import (
     CanonicalSemanticObject,
@@ -137,4 +144,112 @@ class ColdCompactBuilder:
         )
 
 
-__all__ = ["ColdCompactBuilder"]
+def _rebind_compact(compact: _CompactPublicObjects, bodies) -> _CompactPublicObjects:
+    lane = _EventLane(bodies, compact.lane.selectors)
+    by_respondent = MappingProxyType({
+        key: _RespondentEvents(lane, tuple(events.rows))
+        for key, events in compact.by_respondent.items()
+    })
+    return _CompactPublicObjects(
+        compact.release_ref,
+        compact.replay_ref,
+        lane,
+        compact.entries,
+        compact.non_events,
+        by_respondent,
+        compact.event_states,
+    )
+
+
+def _iter_compressed_bodies(bodies):
+    import pyarrow as pa
+
+    if not isinstance(bodies, _CompressedBodies):
+        return
+    for compressed, raw_size, _start, count in bodies.chunks:
+        raw = pa.decompress(
+            compressed,
+            decompressed_size=raw_size,
+            codec=_EVENT_BODY_CODEC,
+            asbytes=True,
+        )
+        position = 0
+        for _ in range(count):
+            length = int.from_bytes(raw[position:position + 4], "big")
+            position += 4
+            yield raw[position:position + length]
+            position += length
+
+
+def _write_compact_bodies(path, key: str, envelope: Mapping[str, Any], bodies) -> bool:
+    import pyarrow as pa
+
+    if not isinstance(bodies, _CompressedBodies):
+        return False
+    writer = None
+    committed = False
+    try:
+        writer = _BodyCacheWriter(path, key, envelope=envelope)
+        batch = []
+        for body in _iter_compressed_bodies(bodies):
+            batch.append(body)
+            if len(batch) >= _EVENT_BODY_CHUNK_EVENTS:
+                writer.write_batch(batch)
+                batch.clear()
+        if batch:
+            writer.write_batch(batch)
+        writer.commit(path)
+        committed = True
+    except (OSError, ValueError, pa.ArrowException):
+        if writer is not None:
+            writer.abort()
+    finally:
+        if writer is not None and not committed:
+            writer.abort()
+    return committed
+
+
+def attach_governed_cache(
+    release,
+    *,
+    physical_binding,
+    projection_binding: str,
+):
+    """Attach the existing governed cache to a cold compact release.
+
+    A valid cache hit replaces the in-memory compressed bodies with the exact
+    authenticated cached lane.  A miss writes the same bodies through the
+    existing atomic ``_BodyCacheWriter`` under the explicit host policy.  Any
+    policy/write failure is a safe miss; the validated in-memory release is
+    returned unchanged.
+    """
+    from rawlsing_next.pre553_c11_repository import C11LogicalRelease
+
+    if not isinstance(release, C11LogicalRelease):
+        return release
+    compact = release.public_objects
+    if not isinstance(compact, _CompactPublicObjects):
+        return release
+    policy = _cache_policy()
+    if policy is None:
+        return release
+    binding = physical_binding()
+    if binding is None:
+        return release
+    key, envelope, path = _cache_identity(
+        release,
+        compact.lane.selectors,
+        binding=binding,
+        projection_binding=projection_binding,
+        policy=policy,
+    )
+    cached = _read_bodies(
+        path, key, compact.lane.selectors, policy=policy, envelope=envelope)
+    if cached is not None:
+        return replace(release, public_objects=_rebind_compact(compact, cached))
+    if _write_compact_bodies(path, key, envelope, compact.lane.bodies):
+        enforce_after_write(policy, path)
+    return release
+
+
+__all__ = ["ColdCompactBuilder", "attach_governed_cache"]

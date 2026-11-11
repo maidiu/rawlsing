@@ -11,10 +11,10 @@ from fractions import Fraction
 import hashlib
 import json
 import math
-import os
 from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next._pre553_c11_execution_view import _compact_public_objects
+from rawlsing_next._pre553_w03_cold_compact import attach_governed_cache
 from rawlsing_next.pre553_c11_ingest import (
     INGEST_CONTRACT_VERSION, C11SourceReleaseCandidate, SourceReleaseManifest,
     build_candidate_replay_manifest, validate_c11_source_release,
@@ -1269,32 +1269,37 @@ def build_source_backed_c11_repository(
     key = source_backed_facade_key(source, projection)
     release = cache.get(key) if cache else None
     if release is None:
+        def physical_binding():
+            decoder_digest = _accelerator_decoder_digest(source)
+            if isinstance(source, PhysicalSourceIncidence) and decoder_digest is None:
+                return None
+            return {
+                "decoder_metadata": decoder_digest,
+                "transport": getattr(source, "transport_identity", None),
+                "facade_contract": CONTRACT_ID,
+                "value_codec": R5_CODEC_VERSION,
+                "current_authorities": sorted(snapshot.ref.key for snapshot in current_authorities),
+            }
+
         use_cold = (
             cold if cold is not None
-            else (isinstance(source, ExactPhysicalCellStream)
-                  and not os.environ.get("RAWLSING_C11_ACCELERATOR_DIR"))
+            else isinstance(source, ExactPhysicalCellStream)
         )
         if use_cold and isinstance(source, ExactPhysicalCellStream):
-            # Cold no-disk-cache path: validate and compact in one event pass.
+            # Streaming cold construction remains the normal path; the
+            # governed policy cache is attached to the same exact release.
             release = build_cold_source_backed_c11_release(source, projection)
+            release = attach_governed_cache(
+                release,
+                physical_binding=physical_binding,
+                projection_binding=key.projection_identity,
+            )
         else:
             release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
                        if isinstance(source, PhysicalSourceIncidence)
                        else build_validated_source_backed_c11_release_from_stream(source, projection)
                        if isinstance(source, ExactPhysicalCellStream)
                        else (_ for _ in ()).throw(SourceBackedC11FacadeError("unsupported physical transport")))
-            def physical_binding():
-                decoder_digest = _accelerator_decoder_digest(source)
-                if isinstance(source, PhysicalSourceIncidence) and decoder_digest is None:
-                    return None
-                return {
-                    "decoder_metadata": decoder_digest,
-                    "transport": getattr(source, "transport_identity", None),
-                    "facade_contract": CONTRACT_ID,
-                    "value_codec": R5_CODEC_VERSION,
-                    "current_authorities": sorted(snapshot.ref.key for snapshot in current_authorities),
-                }
-
             public = _compact_public_objects(
                 release, physical_binding=physical_binding, projection_binding=key.projection_identity,
             )
