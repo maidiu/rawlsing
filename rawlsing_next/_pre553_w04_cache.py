@@ -13,7 +13,6 @@ import json
 import os
 from pathlib import Path
 import stat
-import tempfile
 from typing import Any, Mapping
 
 POLICY_ENV = "RAWLSING_C11_ACCELERATOR_POLICY"
@@ -23,6 +22,8 @@ CACHE_SCHEMA = "PRE553_I02_EVENT_ACCELERATOR@2"
 CACHE_METADATA_KEY = b"rawlsing.c11.event_accelerator"
 CACHE_ENVELOPE_KEY = b"rawlsing.c11.event_accelerator.envelope"
 CACHE_GLOB = "c11-events-*.parquet"
+STAGING_GLOB = ".c11-events-*"
+STAGING_GRACE_SECONDS = 300
 AUTHORIZED_SOURCE_PERMISSIONS = frozenset({
     "NONRESPONDENT_SOURCEFREE",
     "NONRESPONDENT_SOURCEFREE_ONLY",
@@ -139,63 +140,21 @@ def _load_policy_file(path: Path) -> AcceleratorPolicy:
     return _policy_from_mapping(data, source="policy_file")
 
 
-def _legacy_test_policy() -> AcceleratorPolicy | None:
-    """Explicit sourcefree pytest temp-root fallback; never a deployment grant.
-
-    Existing focused tests configure ``RAWLSING_C11_ACCELERATOR_DIR``.  That
-    path remains supported only while pytest is executing and only below the
-    platform temporary root, so production/default callers cannot obtain a
-    writable cache merely by setting an environment variable.
-    """
-    if not os.environ.get("PYTEST_CURRENT_TEST"):
-        return None
-    configured = os.environ.get(LEGACY_ENV, "").strip()
-    if not configured:
-        return None
-    root = Path(configured)
-    if not root.is_absolute():
-        return None
-    temp_root = Path(tempfile.gettempdir()).resolve()
-    try:
-        root.resolve().relative_to(temp_root)
-    except ValueError:
-        return None
-    if not root.exists():
-        try:
-            root.mkdir(mode=0o700, parents=True, exist_ok=False)
-        except OSError:
-            return None
-    if not _private_dir(root):
-        return None
-    data = {
-        "schema": POLICY_SCHEMA,
-        "enabled": True,
-        "root": str(root.resolve()),
-        "source_permission": "NONRESPONDENT_SOURCEFREE",
-        "authorization_id": "PYTEST_TEMP_ROOT_EXPLICIT",
-        "retention_budget": {
-            "max_bytes": 268_435_456,
-            "max_files": 16,
-            "max_age_seconds": 86_400,
-        },
-    }
-    return _policy_from_mapping(data, source="pytest_temp_root")
-
-
 def load_policy() -> AcceleratorPolicy | None:
-    """Resolve an operative policy or safely return ``None``.
+    """Resolve an explicit operative policy, or safely return ``None``.
 
-    A configured policy is authoritative: invalid/unauthorized policy never
-    falls back to the legacy directory variable.  No root is created here except
-    the explicit pytest-only temp fallback.
+    A configured policy is authoritative.  There is no legacy directory or
+    pytest-marker authorization path: ordinary processes cannot obtain a cache
+    root merely by setting environment variables, and invalid policy never falls
+    back to another environment variable.
     """
     configured = os.environ.get(POLICY_ENV, "").strip()
-    if configured:
-        try:
-            return _load_policy_file(Path(configured))
-        except (OSError, AcceleratorPolicyError):
-            return None
-    return _legacy_test_policy()
+    if not configured:
+        return None
+    try:
+        return _load_policy_file(Path(configured))
+    except (OSError, AcceleratorPolicyError):
+        return None
 
 
 def cache_file(policy: AcceleratorPolicy, key: str) -> Path:
@@ -226,20 +185,30 @@ def prune(policy: AcceleratorPolicy, *, keep: Path | None = None, now: float | N
 
     def entries() -> list[tuple[float, int, Path]]:
         result = []
-        for candidate in policy.root.glob(CACHE_GLOB):
-            try:
-                if not _owned_cache_file(candidate):
+        for pattern in (CACHE_GLOB, STAGING_GLOB):
+            for candidate in policy.root.glob(pattern):
+                try:
+                    if not _owned_cache_file(candidate):
+                        continue
+                    info = candidate.stat()
+                    result.append((info.st_mtime, info.st_size, candidate))
+                except OSError:
                     continue
-                info = candidate.stat()
-                result.append((info.st_mtime, info.st_size, candidate))
-            except OSError:
-                continue
         return sorted(result)
 
+    staging_grace = min(STAGING_GRACE_SECONDS, policy.max_age_seconds)
     for mtime, _, path in entries():
         if path.resolve() == keep_resolved:
             continue
-        if current - mtime > policy.max_age_seconds:
+        age = current - mtime
+        is_staging = path.name.startswith(".")
+        if is_staging:
+            if age > staging_grace:
+                try:
+                    path.unlink()
+                except OSError:
+                    pass
+        elif age > policy.max_age_seconds:
             try:
                 path.unlink()
             except OSError:
@@ -248,11 +217,19 @@ def prune(policy: AcceleratorPolicy, *, keep: Path | None = None, now: float | N
         current_entries = entries()
         if not current_entries:
             return
-        total_bytes = sum(size for _, size, _ in current_entries)
-        if len(current_entries) <= policy.max_files and total_bytes <= policy.max_bytes:
+        # A live staging file inside the grace period is not orphaned retention
+        # material and must not be deleted as a concurrent writer's input.
+        budget_entries = [
+            item for item in current_entries
+            if not (item[2].name.startswith(".") and current - item[0] <= staging_grace)
+        ]
+        if not budget_entries:
+            return
+        total_bytes = sum(size for _, size, _ in budget_entries)
+        if len(budget_entries) <= policy.max_files and total_bytes <= policy.max_bytes:
             return
         oldest = None
-        for item in current_entries:
+        for item in budget_entries:
             if item[2].resolve() != keep_resolved:
                 oldest = item
                 break
@@ -278,12 +255,13 @@ def enforce_after_write(policy: AcceleratorPolicy, path: Path) -> bool:
         return False
     prune(policy, keep=path)
     entries = []
-    for candidate in policy.root.glob(CACHE_GLOB):
-        try:
-            info = candidate.stat()
-        except OSError:
-            continue
-        entries.append((info.st_size, candidate))
+    for pattern in (CACHE_GLOB, STAGING_GLOB):
+        for candidate in policy.root.glob(pattern):
+            try:
+                info = candidate.stat()
+            except OSError:
+                continue
+            entries.append((info.st_size, candidate))
     if sum(size for size, _ in entries) > policy.max_bytes or len(entries) > policy.max_files:
         try:
             path.unlink()
@@ -294,14 +272,10 @@ def enforce_after_write(policy: AcceleratorPolicy, path: Path) -> bool:
 
 
 def fsync_dir(path: Path) -> None:
-    try:
-        fd = os.open(path, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
-    except OSError:
-        return
+    """Fail closed on directory open/fsync errors; callers decide cleanup."""
+    fd = os.open(path, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
     try:
         os.fsync(fd)
-    except OSError:
-        pass
     finally:
         os.close(fd)
 

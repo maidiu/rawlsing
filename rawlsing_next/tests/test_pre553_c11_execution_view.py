@@ -27,7 +27,24 @@ def _material(result):
 
 def _cache(monkeypatch, tmp_path):
     root = tmp_path / "cache"
-    monkeypatch.setenv(compact._CACHE_ENV, str(root))
+    root.mkdir(mode=0o700, exist_ok=True)
+    root.chmod(0o700)
+    policy = tmp_path / "cache-policy.json"
+    policy.write_text(json.dumps({
+        "schema": "PYAT_C11_ACCELERATOR_POLICY@1",
+        "enabled": True,
+        "root": str(root),
+        "source_permission": "NONRESPONDENT_SOURCEFREE",
+        "authorization_id": "pytest-explicit-private-policy",
+        "retention_budget": {
+            "max_bytes": 268_435_456,
+            "max_files": 16,
+            "max_age_seconds": 86_400,
+        },
+    }), encoding="utf-8")
+    policy.chmod(0o600)
+    monkeypatch.setenv(compact._CACHE_POLICY_ENV, str(policy))
+    monkeypatch.delenv(compact._CACHE_ENV, raising=False)
     return root
 
 

@@ -10,6 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 import json
 from pathlib import Path
+import time
 
 import pytest
 
@@ -18,7 +19,9 @@ from rawlsing_next._pre553_w04_cache import (
     CACHE_ENVELOPE_KEY,
     CACHE_METADATA_KEY,
     POLICY_ENV,
+    STAGING_GRACE_SECONDS,
     load_policy,
+    prune,
 )
 from rawlsing_next import pre553_parquet_carrier as carrier_module
 from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier
@@ -125,6 +128,19 @@ def test_w04_cache_policy_absent_invalid_unowned_or_oversize_refuses_without_wri
     assert not _cache_files(root)
 
 
+def test_w04_cache_policy_spoofed_test_marker_and_legacy_dir_no_write(tmp_path, monkeypatch):
+    legacy_root = tmp_path / "legacy-root"
+    legacy_root.mkdir(mode=0o700)
+    legacy_root.chmod(0o700)
+    monkeypatch.setenv(compact._CACHE_ENV, str(legacy_root))
+    monkeypatch.setenv("PYTEST_CURRENT_TEST", "ordinary-process-spoof")
+    monkeypatch.delenv(POLICY_ENV, raising=False)
+    assert load_policy() is None
+    fx = _fixture()
+    _execute(fx)
+    assert not _cache_files(legacy_root)
+
+
 def test_w04_cache_invalidation_source_projection_authority_release_replay_schema_bind(tmp_path, monkeypatch):
     root, _ = _write_policy(tmp_path, monkeypatch)
     fx = _fixture()
@@ -187,6 +203,101 @@ def test_w04_recovery_concurrent_cache_builders_share_exact_release(tmp_path, mo
     envelope = json.loads(schema.metadata[CACHE_ENVELOPE_KEY].decode("utf-8"))
     assert compact._read_bodies(files[0], key, public.lane.selectors, policy=policy, envelope=envelope) is not None
     assert _execute(fx).c11_release.release_ref.key == next(iter(refs))
+
+
+def test_w04_recovery_cache_directory_fsync_failure_is_safe_miss(tmp_path, monkeypatch):
+    root, _ = _write_policy(tmp_path, monkeypatch)
+    fx = _fixture()
+    baseline = _execute(fx)
+    path, = _cache_files(root)
+    path.unlink()
+
+    def fail(_path):
+        raise OSError("test-only cache directory fsync failure")
+
+    with monkeypatch.context() as patch:
+        patch.setattr("rawlsing_next._pre553_w04_cache.fsync_dir", fail)
+        observed = _execute(fx)
+    assert observed.c11_release.release_ref == baseline.c11_release.release_ref
+    assert not _cache_files(root)
+    # A later healthy execution restores a validated cache.
+    assert _execute(fx).c11_release.release_ref == baseline.c11_release.release_ref
+    assert len(_cache_files(root)) == 1
+
+
+def test_w04_recovery_cache_file_fsync_failure_is_safe_miss(tmp_path, monkeypatch):
+    root, _ = _write_policy(tmp_path, monkeypatch)
+    fx = _fixture()
+    baseline = _execute(fx)
+    path, = _cache_files(root)
+    path.unlink()
+
+    def fail(_fd):
+        raise OSError("test-only cache file fsync failure")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(compact.os, "fsync", fail)
+        observed = _execute(fx)
+    assert observed.c11_release.release_ref == baseline.c11_release.release_ref
+    assert not _cache_files(root)
+    assert _execute(fx).c11_release.release_ref == baseline.c11_release.release_ref
+    assert len(_cache_files(root)) == 1
+
+
+def test_w04_recovery_carrier_parent_fsync_failure_cleans_only_new_publication(tmp_path, monkeypatch):
+    fx = _fixture()
+    prior = _execute(fx)
+    other = _execute(_fixture(valid_empty=True))
+    root = tmp_path / "canonical-fsync"
+    carrier = ParquetC11Carrier(root)
+    prior_dir = carrier.persist(prior.c11_release)
+    calls = []
+
+    def fail_after_replace(path):
+        calls.append(Path(path))
+        if len(calls) == 2:
+            raise OSError("test-only canonical parent fsync failure")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(carrier_module, "fsync_dir", fail_after_replace)
+        with pytest.raises(OSError):
+            carrier.persist(other.c11_release)
+    assert not carrier.release_dir(other.c11_release).exists()
+    assert carrier.reopen(
+        prior.c11_release.source_artifact_ref.content_hash,
+        prior.c11_release.release_id,
+        prior.c11_release.semantic_release_hash,
+    ).release_ref == prior.c11_release.release_ref
+    assert carrier.persist(other.c11_release) == carrier.release_dir(other.c11_release)
+    assert prior_dir.is_dir()
+
+
+def test_w04_recovery_retention_prunes_hidden_orphans_without_active_or_canonical_loss(tmp_path, monkeypatch):
+    root, _ = _write_policy(tmp_path, monkeypatch, max_files=1, max_age_seconds=1)
+    policy = load_policy()
+    assert policy is not None
+    now = time.time()
+    orphan = root / ".c11-events-orphan"
+    orphan.write_bytes(b"orphan")
+    orphan.chmod(0o600)
+    old = now - (STAGING_GRACE_SECONDS + 60)
+    __import__("os").utime(orphan, (old, old))
+    active = root / ".c11-events-active"
+    active.write_bytes(b"active")
+    active.chmod(0o600)
+    canonical_root = tmp_path / "canonical-retention"
+    source = _execute(_fixture())
+    carrier = ParquetC11Carrier(canonical_root)
+    canonical_dir = carrier.persist(source.c11_release)
+    prune(policy, now=now)
+    assert not orphan.exists()
+    assert active.exists()
+    assert canonical_dir.is_dir()
+    assert carrier.reopen(
+        source.c11_release.source_artifact_ref.content_hash,
+        source.c11_release.release_id,
+        source.c11_release.semantic_release_hash,
+    ).release_ref == source.c11_release.release_ref
 
 
 def test_w04_recovery_carrier_aborted_publish_leaves_no_partial_canonical_release(tmp_path, monkeypatch):

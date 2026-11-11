@@ -331,7 +331,19 @@ class _BodyCacheWriter:
         self._handle.flush()
         os.fsync(self._handle.fileno())
         self._handle.close()
-        atomic_replace(self._staged, path)
+        try:
+            atomic_replace(self._staged, path)
+        except OSError:
+            # If replace happened but directory fsync failed, the destination is
+            # not durably admitted as a cache hit.  Remove it (safe miss) while
+            # leaving any pre-existing destination untouched when replace itself
+            # did not happen.
+            if not self._staged.exists():
+                try:
+                    path.unlink(missing_ok=True)
+                except OSError:
+                    pass
+            raise
         self._committed = True
 
     def abort(self) -> None:

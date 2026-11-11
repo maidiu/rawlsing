@@ -270,6 +270,7 @@ class ParquetC11Carrier:
             return target
         self.root.mkdir(parents=True, exist_ok=True)
         staging = Path(tempfile.mkdtemp(prefix=".staging-", dir=self.root))
+        published = False
         try:
             payload = staging / "release_payload"; payload.mkdir()
             members, relations = self._write_tables(payload, release)
@@ -283,8 +284,13 @@ class ParquetC11Carrier:
             fsync_dir(payload)
             target.parent.mkdir(parents=True, exist_ok=True)
             os.replace(payload, target)
+            published = True
             fsync_dir(target.parent)
             return target
+        except Exception:
+            if published:
+                shutil.rmtree(target, ignore_errors=True)
+            raise
         finally:
             shutil.rmtree(staging, ignore_errors=True)
 
