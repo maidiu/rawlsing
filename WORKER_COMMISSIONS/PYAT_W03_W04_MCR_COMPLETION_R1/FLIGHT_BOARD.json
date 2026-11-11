@@ -703,10 +703,32 @@
         "limit": "monthly",
         "message": "OpenCode Go usage limit reached"
       }
+    },
+    {
+      "job": "pyat-w03-w04-mcr-economic-protocol-auth-resume-r3",
+      "session": "ses_6857b9b4c50542e7a7268dfb7d",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1",
+      "status": "LAUNCHED__ACTUAL_MODEL_AND_QUOTA_OUTCOME_PENDING",
+      "predecessor": "pyat-w03-w04-mcr-economic-protocol-recheck-r2",
+      "source_candidate": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+      "scope": "Same grant; user reports updated auth; Go route unchanged",
+      "expected_model": "opencode-go/deepseek-v4.1-flash#max",
+      "pid": 59784
+    },
+    {
+      "job": "pyat-w03-w04-mcr-required-evidence-auth-resume-r2",
+      "session": "ses_1b9742b6c02745d8a69d062011",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
+      "status": "LAUNCHED__ACTUAL_MODEL_AND_QUOTA_OUTCOME_PENDING",
+      "predecessor": "pyat-w03-w04-mcr-required-evidence-preparation-r1",
+      "source_candidate": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+      "scope": "Same grant; user reports updated auth; Go route unchanged",
+      "expected_model": "opencode-go/deepseek-v4.1-flash#max",
+      "pid": 59790
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Await restoration of existing OpenCode Go monthly quota; resume same independent method reviewer and same required-evidence author from exact retained grants. No live jobs or polling.",
+  "next_action": "Dispatch two exact credential-restored resumes; no additional jobs or model/provider change. Verify actual turns at intake; if quota persists stop without retry loop.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -740,6 +762,7 @@
     "limit": "monthly",
     "evidence_job": "pyat-w03-w04-mcr-economic-protocol-recheck-r2",
     "action": "Both outstanding jobs terminated on same monthly quota. No retry or new dispatch until existing quota restored. Preserve exact sessions and clean1c428d59d worktrees.",
-    "remaining_live_jobs": 0
+    "remaining_live_jobs": 0,
+    "status": "USER_UPDATED_GO_CREDENTIAL__BOUNDED_RESUMES_RESERVED_NOT_YET_PROVEN"
   }
 }
