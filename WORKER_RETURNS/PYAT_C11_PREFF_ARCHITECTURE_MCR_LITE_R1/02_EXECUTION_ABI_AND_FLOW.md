@@ -188,27 +188,74 @@ This is a design surface, not an instruction to define a new public `EmpiricalFa
 
 **Qualification must examine respondents whose *invalid* routing/authority/missing evidence would force refusal, including rows that an efficient SQL filter would otherwise drop.** Only after complete qualification may selection pushdown run. Qualification witnesses may be shared only when exact scope, authority, risk/topology/measure and currentness dependencies are demonstrably identical. The existing grouped cache explicitly disables reuse under `current_runtime_binding` and runtime index authorities (`pre553_empirical_query.py` L543–579); preserve this.
 
-### D4. Native result custody, complete restores, and real FF first consumer
+### D4. One independent current issuer across **COMPLETED / PARTIAL / ABSENT** resume and protected output
 
-```python
+**R2 D1 root cause (verified):** \`pre553_issued_workload.py::resume_joined_workloads\` L767–836 has **three** branches. The COMPLETED branch calls \`_completed_entry_view\` L741 without \`admit\`. PARTIAL and absent/new branches call \`execute_issued_workload(item.workload, _resolver_for(item), ...)\`, where \`_resolver_for\` L832 returns the supplied \`item.record\`, not an independently current issuer decision. Therefore **adding \`admit()\` to COMPLETED alone is not a fix**; partial/new would keep self-authenticating stale \`CURRENT_GRANTED\` historical records. \`restore_joined_checkpoint\` L686's external pin authenticates past bytes only, not present permissions.
+
+**Proposed existing-owner signature and processing contract (not implemented):**
+
+\`\`\`python
+def resume_joined_workloads(
+    *, workloads, source_factory, host: str, purpose: str,
+    checkpoint, expected_checkpoint_ref: str,
+    current_resolver: CurrentDecisionResolver,  # REQUIRED; competent independent issuer
+    allow_test_only: bool = False,
+    expected_waves_by_decision=None,  # when original35 scope binds exact expected wave
+) -> JoinedWorkloadResumeResult: ...
+
 def restore_completed_unit_currently(
-    *, frozen_unit, retained_fact_and_receipt, exact_expected_pin,
-    current_resolver, host, purpose, claimed_source, trusted_storage_root
-): ...  # must call existing admission/permission owners before returning payload
+    *, workload, checkpoint_entry, exact_expected_pin,
+    current_resolver: CurrentDecisionResolver, host, purpose,
+    trusted_storage_root, expected_wave=None
+): ...  # verify current grant BEFORE restoring/serving protected native payload
+\`\`\`
 
-def transport_issued_joint_to_ff01(
-    *, completed_query_result: QueryExecutionResult,
-    joint_query: EmpiricalQuerySpec,
-    selected_fact_ref: ExactRef,
-    conditioner_ref: ExactRef,
-    target_ref: ExactRef,
-    producer_permission_ceiling, relation_permission_ceiling
-) -> ExactConditionalSupportProfile: ...
-```
+1. **Independent issuer provenance:** \`current_resolver\` must be acquired from the competent **live issuer/authority service** independently of \`item.record\`, checkpoint materials, restored fact, caller-updated metadata or cache. The existing \`CurrentDecisionResolver\` is a structural Protocol, so passing another adapter that merely returns \`item.record\` is **not sufficient**. The owner must define/enforce a trusted resolver provisioning boundary (including host/purpose/issuer provenance and genuinely current decision lookup or signed authority-root verification). Absent unavailable/invalid trusted resolver → **HOLD/REFUSE before source-open or protected payload materialization**. No new parallel science authority.
+2. **Universal admission BEFORE branching:** for **each** \`item\`, call existing \`admit(item.workload, trusted_current_resolver, host=host, purpose=purpose, allow_test_only=..., expected_wave=...)\` before any \`_completed_entry_view\`, \`_restore_output_material\`, \`source_factory\`, optional spill access, derived cache or first-consumer exposure. Verify exact decision ref, source SHA, original-wave identity, native universes, scientific/source permissions, full envelope SHA, prospective U/E_pre roots and expected job multiset against the **fresh** \`IssuedWorkloadRecord\`; independently match checkpoint entry's source/envelope/unit manifest/receipts to that admitted envelope. Never use \`item.record.scope\` to set returned authority; use freshly admitted scope only.
+3. **All three branches** share the same trusted resolver, not one resolver per checkpoint state. **COMPLETED:** verify current grant, then integrity/semantic replay of full cached fact+receipt, then serve only permitted material. **PARTIAL:** current grant *before* restoring prior outputs and opening source; prior receipts may be adopted only under exact valid native/issuer/operation match, then run with the **same trusted resolver** and check again per actual unit and before output publication. **ABSENT:** current grant before source factory; execute with the same trusted resolver. Never fall back to \`_resolver_for(item)\`.
+4. **Currentness TOCTOU:** the native \`execute_issued_workload\` already performs \`check_current()\` around source/read and units, but this protection is worthless when its resolver just returns frozen \`item.record\`. Keep independently fresh checks before source-open, per unit, after computation and **immediately before any serve/commit**. If issuer revokes during a long computation, refuse publication of a protected positive; preserve honest partial/held custody without legitimizing stale use. If changed decision changes the immutable admitted envelope, do not silently reuse results under the old operation grant.
+5. **Exact result integrity separate from rights:** retained \`COMPLETED\` native fact, negative, replay, Batch receipt and original checkpoint can be historically valid even when current entitlement is DENIED. Do not rewrite their history or delete scientific lineage merely to refuse their present use; apply authorized payload retention/deletion rules separately. The source factory must not be called on an entitlement failure, and protected result bytes must not be returned.
+6. **Negative oracle (one test, three branches):** freeze \`item.record.currentness='CURRENT_GRANTED'\`, authenticated historical checkpoint/result, and current external issuer \`REVOKED\`; run with (a) completed entry, (b) partial entry, (c) no entry. Each must fail in **the same named current-admission/first-reader assertion**, with **zero** protected output, zero source_factory invocations, zero native calculation/positive receipt. Repeat wrong host/purpose and issuer identity; a fake resolver wrapping the historical item must be rejected at trusted provisioning boundary. Current positive independent grant must still restore completed native results and resume truly incomplete units.
 
-`restore_joined_checkpoint` L686 validates external checkpoint identity; however `resume_joined_workloads` L767–825 calls `_completed_entry_view` L741 for completed work without fresh `admit` L219. Currentness must be rechecked even if historic hash and fact are authentic; wrong purpose or revoked permission must not return positive payload. Verify all native fact/receipt/replay contents, not a partial summary. The exact existing `BatchManifest`/`UnitExecutionReceipt` identities and a one-way verified publication lifecycle continue to govern.
+**The trust boundary is the *whole* joined resume.** Patch the existing \`pre553_issued_workload.py\` owner once. No new checkpoint authority store, new scheduler or alternate permission issuer.
 
-FF01: supply actual `EmpiricalFact` (from `QueryExecutionResult.facts` selected by exact ref) plus its *own* `EmpiricalQuerySpec` to `produce_exact_conditional_support_profile` L467; output is Q86-oriented **count profile**, **not** conditional ratio, modelled redistribution, hegemony or structural cause. `bridge_gt12_c_relation_to_d_evidence` L93 is the bounded mechanical first reader. To claim real integration, changed eligible joint source value → changed I03 fact cells → changed FF profile's `conditional_count_profile`/`producer_fact_ref`/replay or lawful negative; directly severing the exact fact feed must make the same consumer assertion RED. Current test harness does **not** establish original35-native FF ingress.
+### D5. Frozen Q86 producer-source binding **before** GT12 source-bearing relation evidence
+
+**R2 D2 verified source seam:** \`field_forge_conditional_support.py::_validate_common_closure\` L194–270 authenticates internal exact fact/query/risk/replay/provenance references, but **not** their originating source release. \`gt12_c_to_d_relation_bridge.py::_source\` L41 always constructs a fixed source ref, and \`bridge_gt12_c_relation_to_d_evidence\` L93 accepts only \`ExactConditionalSupportProfile\` with no authenticated origin. Frozen expected canary:
+- source family/edition \`Afrobarometer / R5\`, path \`Data/Afro Barometer Round 5.sav\`, exact source SHA **\`c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651\`**;
+- risk \`FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1\`, member-set SHA **\`0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b\`**;
+- conditioner **Q86B**, target **Q86A**, RAW one-source scope.
+
+**An independently verified source release is required, not a constant put on the output.** Existing \`ExactConditionalSupportProfile\` lacks a trusted source-release witness; therefore the privileged GT12 bridge's single-parameter API cannot itself prove producer origin. The competent producer/bridge owner must add one **enforced** origin-binding seam, either a qualified privately verified origin parameter/receiver or a versioned native producer→bridge contract (with exact legacy consumer migration). Conceptually:
+
+\`\`\`python
+@dataclass(frozen=True)
+class VerifiedJointProducerOrigin:  # proposed private, never caller-self-issued
+    source_artifact_ref: ExactRef
+    c11_release_ref: ExactRef
+    universe_ref: ExactRef
+    joint_query_ref: ExactRef
+    selected_fact_ref: ExactRef
+    replay_ref: ExactRef
+    risk_set_ref: ExactRef
+    issuer_binding_ref: ExactRef
+
+def bridge_gt12_c_relation_verified(
+    *, relation: ExactConditionalSupportProfile,
+    joint_fact: EmpiricalFact, joint_query: EmpiricalQuerySpec,
+    origin: VerifiedJointProducerOrigin, current_permission
+): ...  # actual source→I02/C11→I03 provenance must be independently resolved
+\`\`\`
+
+**Enforced invariants:** derive the origin witness from trusted exact sealed C11 original source/release and native issued result (not \`relation.ref\`, user-provided metadata, a nonempty provenance list or \`_source()\`); prove the fact/query/replay/source-release/universe provenance chain and selected fact equality; match \`origin.source_artifact_ref.content_hash\` to the *fixed* GT2 SHA, risk-set ID/member-set exact identity to the fixed GT2 risk, and Q86 role/conditioner/target to the frozen source-qualified operation. Check present source/use/FF permission before publishing. A wrong original source producing internally valid Q86-like facts and matching copied risk label MUST refuse. Missing origin or a direct legacy \`bridge_gt12_c_relation_to_d_evidence(relation)\` call cannot publish authority-bearing positive evidence; retain it only as an explicitly non-serving compatibility/test path until migrated. Preserve typed negative transport without falsely attributing the wrong source.
+
+**First consumer and falsifier:** real selected native I03 F4 joint \`EmpiricalFact\` → exact Q86 \`produce_exact_conditional_support_profile\` → source-verified GT12 C→D evidence/receipt. A changed Q86 original value must change/refuse the *same* reader; swap the entire internally consistent fact/query/release for a second source while retaining Q86 roles and risk ref must fail at source-origin admission **before** the frozen source is stamped. The Q86 path is a **bounded canary**, *not* general source-neutral FF1 importer, S06 scientific coverage or authorized structural/causal relation. Keep generic S04→S06 ingress OPEN.
+
+### D6. Canonical path-containment contract, shared by persist and reopen
+
+**R2 D3 verified code path:** \`SourceReleaseManifest.__post_init__\` L99–113 only requires nonempty \`release_id\` and rejects fuzzy selection tokens; it does not apply path containment. \`ParquetC11Carrier.release_dir\` L209 constructs \`root / "releases" / source_sha / release_id / semantic_hash\` and \`persist\` L249 calls it *before any selector validation*. Absolute release IDs override the prefix in \`pathlib\`; \`..\/\` and separators can escape the carrier root. In contrast \`reopen\` L279–285 rejects separators. This is a **static vulnerable write-path possibility**, not an executed exploit.
+
+The existing W03 owner must define **one shared release-selector validator and contained-path builder**, used in writer \`release_dir\` **before any filesystem inspection, mkdir, staging, symlink traversal, or source-derived write**, and in \`reopen\`. Deny absolute/relative escapes, dot/dotdot path components, slash/backslash and Windows drive/UNC encodings (plus invalid/control names). If any historical legitimate ID cannot be used as one safe filesystem component, use an explicitly accepted reversible physical encoding while retaining immutable *logical* release ID and backwards-compatible read migration; do not silently rewrite C11 identity. Resolve/anchor to a trusted canonical root, reject symlinks in source-derived parent/member paths, use handle-based no-follow or equivalent safe directory primitives as the supported OS allows, and reverify at atomic publication to close path TOCTOU. A \`Path.resolve()\` check alone is not a race-proof promise. Fail closed on path escape with **zero writes outside the carrier root**. Apply the same boundary to staging, manifest member names and orphan adoption; no fallback to user-supplied arbitrary paths. Do not modify W03 code from this architecture branch.
 
 ## E. Lossless semantic invariants that cannot be optimized away
 
@@ -228,7 +275,7 @@ FF01: supply actual `EmpiricalFact` (from `QueryExecutionResult.facts` selected 
 | Single prepared source | Normal `execute_issued_workload` with a discovery emits byte/exact-equivalent Route B, Batch I03/I05 receipts and calls one underlying C11 build | Spy on actual builder; deleting prepared-context edge reintroduces two builds **and** fails named integration assertion |
 | Saved read is legitimate | Fresh-process exact pinned release selected with an independently accepted I02 provenance, native I03/I05 values and negative parity | Corrupt one nonrequested member or change exact root; admission must refuse under selected whole-release integrity law, not issue unauthenticated handle |
 | Physical plan semantics | Selected RAW scalar, conditioned and event-topology hostiles match full native `EmpiricalFact`/replay | Missing routing for a respondent excluded by predicate must refuse rather than SQL-filter it away |
-| Complete restore entitlement | Complete historical result served under current identical issuer; cold restore avoids source build | Revoke/alter host/purpose: completed branch refuses before returning any protected payload |
-| FF first reader | Changing legitimate source joint cell alters exact FF01 profile, while absent structural rule still leaves sound empirical profile available | Substitute unrelated injected joint fact, change wrong condition direction or sever I03 output→FF input: same consumer assertion RED |
+| All-branch joined-resume currentness | Completed historic result and partial/absent resume pass a genuinely independent live issuer; only completed skips source | External issuer REVOKED but historical item says CURRENT_GRANTED: COMPLETED, PARTIAL and ABSENT must all refuse before protected output/source-open; a resolver returning item.record is rejected |
+| GT12 bounded FF first reader | Source-verified Afrobarometer R5/Q86 selected fact changes the actual GT12 canary count/bridge and current permission succeeds | Internally valid **different-source** fact/query with copied risk+Q86 roles MUST be refused before frozen `_source()` attribution; missing source witness or severed I03 fact binding makes same reader RED |
 
 **Unresolved ABI/implementation decisions (not permission requests):** accepted I02 reopen certificate and selective segment-root law; stable streaming canonical hash over exact sorted rows; whether the saved-session repository protocol can be accepted without violating current exact sealed-index attestation; how the existing native replay identity embeds full domain material at very high arity. Owner decisions belong to C11/I02/I03, not a new architecture executive. The original implementation and native scientific proofs remain for later independent courts.
