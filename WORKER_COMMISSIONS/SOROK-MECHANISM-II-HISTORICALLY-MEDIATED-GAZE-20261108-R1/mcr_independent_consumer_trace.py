@@ -133,26 +133,52 @@ def fake_attack():
         return
     raise AssertionError("MCR_COUNTERFEIT_ADAPTER_FALSE_POSITIVE")
 def actual_baseline():
-    # Test the observer on actual pre-existing P6 code without requiring a
-    # future Mechanism II implementation or a fake adapter.
+    # First demonstrate a REAL owned return, then source denial at the
+    # original P6/house read boundary and exact restoration of the public view.
     import argparse,tempfile
+    from developmental_recursion.contracts import RecursionRefusal
     modules=import_owners()
     run_p6=importlib.import_module("run_p6")
-    class RealAdapter:
-        def __init__(self):self.result=None
-        def execute_case(self,vector,phase):
-            with tempfile.TemporaryDirectory(prefix="mcr-real-p6-") as td:
-                state=Path(td)/"sourcefree"
-                args=argparse.Namespace(command="new",situated_house=False)
-                self.result=run_p6.experience(state,args,provider_mode="INJECTED")
-                return {"p6_observed_return_sha256":digest(self.result)}
-    vec={"id":"MII-P6-BASELINE","first_consumer":{"module":"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
-                                                   "functions":["experience"]}}
-    report=witness(RealAdapter(),vec,"control",modules)
-    print(json.dumps({"status":"PASS_ACTUAL_P6_CODE_OBJECT_WITNESSED",
-                      "calls":len(report["actual_call_pairs"]),
-                      "public_digest":report["independent_public_digest"],
-                      "grade":"SOURCEFREE_BASELINE_NOT_MII_IMPLEMENTATION"},sort_keys=True))
+    house=importlib.import_module("house")
+    with tempfile.TemporaryDirectory(prefix="mcr-real-p6-") as td:
+        state=Path(td)/"sourcefree"
+        class RealAdapter:
+            def execute_case(self,vector,phase):
+                result=run_p6.experience(state,argparse.Namespace(command="new",situated_house=False),
+                                         provider_mode="INJECTED")
+                return {"p6_observed_return_sha256":digest(result)}
+        vector={"id":"MII-P6-BASELINE","first_consumer":{
+            "module":"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py",
+            "functions":["experience"]}}
+        proof=witness(RealAdapter(),vector,"control",modules)
+        view=argparse.Namespace(command="view")
+        before=run_p6.experience(state,view,provider_mode="INJECTED")
+        original_ledger=(state/"p4_receipts.json").read_bytes()
+        original_glance=house.OBJECTS["bench"]["glance"]
+        denied=False
+        try:
+            house.OBJECTS["bench"]["glance"]=original_glance+" injected independent source fault"
+            try:
+                run_p6.experience(state,view,provider_mode="INJECTED")
+            except RecursionRefusal as exc:
+                if str(exc) not in ("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH","P6_OBJECT_PROVENANCE_MISMATCH"):
+                    raise AssertionError("MCR_UNEXPECTED_SOURCE_DENIAL_REASON_"+str(exc))
+                denied=True
+        finally:
+            house.OBJECTS["bench"]["glance"]=original_glance
+        if not denied:raise AssertionError("MCR_MUTATED_UPSTREAM_HOUSE_SOURCE_NOT_REFUSED")
+        after=run_p6.experience(state,view,provider_mode="INJECTED")
+        if digest(before)!=digest(after):
+            raise AssertionError("MCR_UPSTREAM_SOURCE_RESTORE_CHANGED_REAL_PUBLIC_VIEW")
+        if original_ledger!=(state/"p4_receipts.json").read_bytes():
+            raise AssertionError("MCR_SOURCE_REFUSAL_MUTATED_WORLD_LEDGER")
+        print(json.dumps({"status":"PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED",
+                          "observed_calls":len(proof["actual_call_pairs"]),
+                          "public_digest":digest(before),"source_fault_denied":True,
+                          "restored_public_equal":True,
+                          "world_ledger_byte_invariant":True,
+                          "grade":"SOURCEFREE_BASELINE_NOT_MII_IMPLEMENTATION"},sort_keys=True))
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--id")
