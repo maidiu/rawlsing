@@ -277,7 +277,11 @@ def _candidate_projection(candidate: C11SourceReleaseCandidate) -> dict[str, Any
     }
 
 
-def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) -> str:
+def _candidate_projection_semantic_hash(
+    candidate: C11SourceReleaseCandidate,
+    *,
+    event_refs: Iterable[ExactRef] | None = None,
+) -> str:
     """Hash the canonical candidate projection without materializing ref dictionaries.
 
     This is byte-identical to semantic_hash(_candidate_projection(candidate)).
@@ -290,18 +294,23 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) ->
     def write(text: str) -> None:
         h.update(text.encode("utf-8"))
 
-    def write_section(section: Any) -> None:
-        if isinstance(section, TypedAbsence):
+    def write_section(section: Any, refs_override: Iterable[ExactRef] | None = None) -> None:
+        if refs_override is None and isinstance(section, TypedAbsence):
             write(canonical_json(section.as_dict()))
             return
-        refs: list[ExactRef] = []
-        for item in section:
-            if isinstance(item, CanonicalSemanticObject):
-                refs.append(item.ref)
-            elif isinstance(item, C11InternalRecord):
-                refs.append(item.ref)
-            else:
+        if refs_override is not None:
+            refs = list(refs_override)
+            if any(not isinstance(ref, ExactRef) for ref in refs):
                 raise C11IntegrityError("unsupported C11 section member")
+        else:
+            refs = []
+            for item in section:
+                if isinstance(item, CanonicalSemanticObject):
+                    refs.append(item.ref)
+                elif isinstance(item, C11InternalRecord):
+                    refs.append(item.ref)
+                else:
+                    raise C11IntegrityError("unsupported C11 section member")
         refs.sort(key=lambda ref: ref.key)
         write("[")
         for index, ref in enumerate(refs):
@@ -344,14 +353,21 @@ def _candidate_projection_semantic_hash(candidate: C11SourceReleaseCandidate) ->
         write(canonical_json(key))
         write(":")
         if key in sections:
-            write_section(sections[key])
+            if key == "respondent_events" and event_refs is not None:
+                write_section(None, event_refs)
+            else:
+                write_section(sections[key])
         else:
             write(canonical_json(values[key]))
     write("}")
     return h.hexdigest()
 
 
-def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate) -> tuple[ExactRef, ...]:
+def _all_nonmanifest_refs(
+    candidate: C11SourceReleaseCandidate,
+    *,
+    event_refs: Iterable[ExactRef] | None = None,
+) -> tuple[ExactRef, ...]:
     refs: list[ExactRef] = [
         candidate.source_release_manifest.source_artifact_ref,
         candidate.source_release_manifest.source_snapshot_retention_ref,
@@ -360,7 +376,6 @@ def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate) -> tuple[ExactRe
         candidate.empirical_universes,
         candidate.respondent_identities,
         candidate.question_variable_bindings,
-        candidate.respondent_events,
         candidate.routing_eligibility_facts_or_exact_rules,
         candidate.empirical_coordinate_facts,
         candidate.weight_measure_facts_or_typed_absence,
@@ -374,6 +389,10 @@ def _all_nonmanifest_refs(candidate: C11SourceReleaseCandidate) -> tuple[ExactRe
         if isinstance(section, TypedAbsence):
             continue
         refs.extend(canonical_section_refs(section))
+    if event_refs is None:
+        refs.extend(canonical_section_refs(candidate.respondent_events))
+    else:
+        refs.extend(event_refs)
     return tuple(sorted(refs, key=lambda r: r.key))
 
 
@@ -384,6 +403,7 @@ def build_candidate_replay_manifest(
     deterministic_tie_order_rules_ref: ExactRef,
     replay_protocol_version: str,
     frontier_version: str = FRONTIER_VERSION,
+    event_refs: Iterable[ExactRef] | None = None,
 ) -> ReplayManifest:
     """Build the unique deterministic manifest for candidate content excluding itself."""
     return ReplayManifest(
@@ -391,11 +411,12 @@ def build_candidate_replay_manifest(
         authority_snapshot_set_hash=authority_snapshot_set_hash(candidate.authority_snapshots),
         source_substrate_content_refs=(candidate.source_release_manifest.source_artifact_ref,),
         semantic_projection_id=SEMANTIC_PROJECTION_ID,
-        semantic_projection_hash=_candidate_projection_semantic_hash(candidate),
+        semantic_projection_hash=_candidate_projection_semantic_hash(
+            candidate, event_refs=event_refs),
         deterministic_tie_order_rules_ref=deterministic_tie_order_rules_ref,
         replay_protocol_version=replay_protocol_version,
         replay_protocol_authority_ref=replay_protocol_authority_ref,
-        closure_refs=_all_nonmanifest_refs(candidate),
+        closure_refs=_all_nonmanifest_refs(candidate, event_refs=event_refs),
     )
 
 
@@ -680,10 +701,16 @@ def _validate_source_relations(candidate: C11SourceReleaseCandidate) -> None:
             )
 
 
-def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRegistry) -> ReplayManifest:
+def _validate_replay(
+    candidate: C11SourceReleaseCandidate,
+    registry: AuthorityRegistry,
+    *,
+    event_refs: Iterable[ExactRef] | None = None,
+) -> ReplayManifest:
     manifest = candidate.candidate_replay_manifest
     assert manifest is not None
-    expected_projection_hash = _candidate_projection_semantic_hash(candidate)
+    expected_projection_hash = _candidate_projection_semantic_hash(
+        candidate, event_refs=event_refs)
     if manifest.frontier_version != FRONTIER_VERSION:
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM, "frontier version mismatch")
@@ -705,7 +732,8 @@ def _validate_replay(candidate: C11SourceReleaseCandidate, registry: AuthorityRe
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM,
             "source artifact identity/hash differs from replay manifest",
         )
-    if tuple(manifest.closure_refs) != _all_nonmanifest_refs(candidate):
+    if tuple(manifest.closure_refs) != _all_nonmanifest_refs(
+            candidate, event_refs=event_refs):
         raise C11IngestValidationError(
             IngestDisposition.REJECTED_REPLAY_NONDETERMINISM,
             "replay manifest closure refs do not exactly cover candidate package",

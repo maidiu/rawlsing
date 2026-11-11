@@ -9,7 +9,9 @@ from __future__ import annotations
 from dataclasses import dataclass, replace
 from fractions import Fraction
 import hashlib
+import json
 import math
+import os
 from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next._pre553_c11_execution_view import _compact_public_objects
@@ -413,7 +415,152 @@ def _event(source_sha, row, respondent, slot, cell, value, occ, p, owner_authori
         multiplicity_order_rank_fields=canonicalize(occ.multiplicity_order_rank_fields), response_state=value.response_state)
 
 
-def _coordinate(source_sha, row, respondent, slot, cell, rule, p, owner_authority_refs=()):
+def _canonical_hash(canonical: Mapping[str, Any], role: str | None = None) -> str:
+    """Hash an already-canonical mapping without a second recursive canonicalize.
+
+    ``canonicalize`` has already sorted keys and converted refs to exact
+    dictionaries.  ``json.dumps(sort_keys=True)`` on that material is
+    byte-identical to ``semantic_hash`` for the same input; adding one scalar
+    role key is likewise byte-identical to canonicalizing the merged mapping.
+    """
+    payload = canonical if role is None else {**canonical, "role": role}
+    return hashlib.sha256(
+        json.dumps(payload, sort_keys=True, separators=(",", ":"),
+                   ensure_ascii=False, allow_nan=False).encode("utf-8")
+    ).hexdigest()
+
+
+@dataclass(frozen=True)
+class _ColdEventTemplate:
+    """Per-(slot, value, occurrence) immutable event material.
+
+    The template carries only exact, already-governed values.  It is not a
+    semantic object and cannot be materialized without an exact respondent row
+    and physical cell witness.
+    """
+
+    question_ref: ExactRef
+    value: ResponseValueRule
+    occurrence: OccurrenceRule
+    authorities: tuple[AuthorityRef, ...]
+    canonical_value: Any
+    occurrence_rank_fields: Any
+    component: Any
+    canonical_question_ref: ExactRef | None
+    native_question_ref: Any
+    base_material: Mapping[str, Any]
+
+
+def _build_event_templates(
+    projection: GovernedC11Projection,
+    source_sha256: str,
+    response_slots: Mapping[tuple[int, str], ResponseSlotRule],
+    owner_sets: Mapping[tuple[int, str], PhysicalSlotOwnerSet],
+) -> dict[tuple[tuple[int, str], str], tuple[_ColdEventTemplate, ...]]:
+    """Precompute row-invariant event material once per slot/value/occurrence."""
+    projection_ref = projection.projection_identity_ref.as_dict()
+    templates: dict[tuple[tuple[int, str], str], list[_ColdEventTemplate]] = {}
+    for slot_key, slot in response_slots.items():
+        question = slot.question_binding
+        question_ref = question.ref
+        question_ref_dict = question_ref.as_dict()
+        canonical_question_ref = _opt_ref(
+            question.canonical_question_ref_or_typed_absence, "canonical question")
+        owner_set = owner_sets.get(slot_key)
+        owner_refs = _owner_material(
+            owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner_set else ())
+        owner_material = [x.as_dict() for x in owner_refs]
+        for value in slot.values:
+            auths = [
+                projection.projection_authority_ref,
+                authority_ref(question.semantic_authority_ref, "question semantic authority"),
+                authority_ref(question.topology_authority_ref, "question topology authority"),
+                *value.extra_authority_refs,
+                *owner_refs,
+            ]
+            if value.transform_authority_ref is not None:
+                auths.append(value.transform_authority_ref)
+            authorities = _auths(auths)
+            canonical_value = canonicalize(value.canonical_value)
+            base_material: dict[str, Any] = {
+                "contract": CONTRACT_ID,
+                "projection": projection_ref,
+                "source_sha": source_sha256,
+                "question": question_ref_dict,
+                "slot": slot_key,
+                "physical_value_key": value.physical_key,
+            }
+            if owner_material:
+                base_material["slot_owner_authority_refs"] = owner_material
+            for occurrence in value.occurrences:
+                component = occurrence.component_ref or _opt_ref(
+                    question.component_subitem_ref_or_typed_absence, "component")
+                template = _ColdEventTemplate(
+                    question_ref=question_ref,
+                    value=value,
+                    occurrence=occurrence,
+                    authorities=authorities,
+                    canonical_value=canonical_value,
+                    occurrence_rank_fields=canonicalize(
+                        occurrence.multiplicity_order_rank_fields),
+                    component=component,
+                    canonical_question_ref=canonical_question_ref,
+                    native_question_ref=question.native_question_ref,
+                    base_material={**base_material, "occurrence": occurrence.key},
+                )
+                templates.setdefault((slot_key, value.physical_key), []).append(template)
+    return {key: tuple(value) for key, value in templates.items()}
+
+
+def _event_from_template(
+    template: _ColdEventTemplate,
+    *,
+    row: int,
+    respondent: RespondentIdentity,
+    respondent_ref: ExactRef,
+    respondent_ref_dict: Mapping[str, str],
+    dependency_refs: tuple[ExactRef, ...],
+    raw_witness: Mapping[str, Any],
+) -> RespondentEvent:
+    """Build one exact RespondentEvent from precomputed governed material."""
+    material = dict(template.base_material)
+    material["row"] = row
+    material["respondent"] = respondent_ref_dict
+    canonical = canonicalize(material)
+    base_hash = _canonical_hash(canonical)
+    group_hash = _canonical_hash(canonical, "GROUP")
+    event_hash = _canonical_hash(canonical, "EVENT")
+    occurrence = template.occurrence
+    value = template.value
+    return RespondentEvent(
+        typed_state=value.response_state,
+        authority_snapshot_refs=template.authorities,
+        dependency_refs=dependency_refs,
+        producer_replay_locator_or_reference_root=ExactRef(
+            "PRE553_C05R2A_EVENT_REPLAY_ROOT",
+            f"urn:rawlsing:pre553:c05r2a:event:sha256:{base_hash}",
+            base_hash,
+        ),
+        empirical_universe_ref=respondent.empirical_universe_ref,
+        scoped_respondent_ref=respondent_ref,
+        native_question_ref=template.native_question_ref,
+        canonical_question_ref_if_authorized=template.canonical_question_ref,
+        component_or_subitem_ref=template.component,
+        event_group_id=f"urn:rawlsing:pre553:c05r2a:event-group:sha256:{group_hash}",
+        response_event_id_or_deterministic_index=(
+            f"urn:rawlsing:pre553:c05r2a:event:sha256:{event_hash}"),
+        raw_response_value=raw_witness,
+        canonical_response_value_if_authorized=template.canonical_value,
+        value_transform_authority_ref=value.transform_authority_ref,
+        response_topology_ref=occurrence.topology_ref,
+        multiplicity_order_rank_fields=template.occurrence_rank_fields,
+        response_state=value.response_state,
+    )
+
+
+def _coordinate(source_sha, row, respondent, slot, cell, rule, p, owner_authority_refs=(),
+                *, physical_value_key: str | None = None,
+                raw_witness: Mapping[str, Any] | None = None):
     owner_authority_refs = _owner_material(owner_authority_refs)
     if rule is None:
         if not slot.copy_observed_raw or cell.missing_state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE:
@@ -426,7 +573,8 @@ def _coordinate(source_sha, row, respondent, slot, cell, rule, p, owner_authorit
         canonical = rule.canonical_value
         extras = rule.extra_authority_refs
     material = {"contract": CONTRACT_ID, "projection": p.projection_identity_ref.as_dict(), "source_sha": source_sha, "row": row,
-                "respondent": respondent.ref.as_dict(), "slot": slot.slot.key, "physical_value_key": _cell_key(cell)}
+                "respondent": respondent.ref.as_dict(), "slot": slot.slot.key,
+                "physical_value_key": physical_value_key if physical_value_key is not None else _cell_key(cell)}
     if owner_authority_refs:
         material["slot_owner_authority_refs"] = [x.as_dict() for x in owner_authority_refs]
     auths = [p.projection_authority_ref, slot.source_semantic_authority_ref, *extras, *owner_authority_refs]
@@ -437,7 +585,8 @@ def _coordinate(source_sha, row, respondent, slot, cell, rule, p, owner_authorit
         producer_replay_locator_or_reference_root=_dref("PRE553_C05R2A_COORDINATE_REPLAY_ROOT", "coordinate", material),
         empirical_universe_ref=respondent.empirical_universe_ref, scoped_respondent_ref=respondent.ref,
         native_coordinate_ref=slot.native_coordinate_ref, canonical_coordinate_ref_if_authorized=slot.canonical_coordinate_ref,
-        raw_coordinate_value=raw_physical_value_witness(cell.raw_value), canonical_coordinate_value_if_authorized=canonicalize(canonical),
+        raw_coordinate_value=raw_witness if raw_witness is not None else raw_physical_value_witness(cell.raw_value),
+        canonical_coordinate_value_if_authorized=canonicalize(canonical),
         unit_category_taxonomy_ref=slot.unit_taxonomy_ref, effective_or_reference_time=canonicalize(slot.effective_time),
         coordinate_state=state, normalization_crosswalk_authority_ref=slot.normalization_ref,
         source_semantic_authority_ref=slot.source_semantic_authority_ref)
@@ -461,7 +610,9 @@ def _numeric(value):
     raise SourceBackedC11FacadeError("weight raw copy requires exact numeric representation")
 
 
-def _weight(source_sha, row, respondent, slot, cell, rule, p, owner_authority_refs=()):
+def _weight(source_sha, row, respondent, slot, cell, rule, p, owner_authority_refs=(),
+            *, physical_value_key: str | None = None,
+            raw_witness: Mapping[str, Any] | None = None):
     owner_authority_refs = _owner_material(owner_authority_refs)
     if rule is None:
         if not slot.copy_observed_numeric or cell.missing_state is not PhysicalMissingState.OBSERVED_STORAGE_VALUE:
@@ -472,7 +623,9 @@ def _weight(source_sha, row, respondent, slot, cell, rule, p, owner_authority_re
         state = rule.state
         value = rule.exact_value
     material = {"contract": CONTRACT_ID, "projection": p.projection_identity_ref.as_dict(), "source_sha": source_sha, "row": row,
-                "respondent": respondent.ref.as_dict(), "slot": slot.slot.key, "physical_value_key": _cell_key(cell), "basis": slot.weight_basis_id}
+                "respondent": respondent.ref.as_dict(), "slot": slot.slot.key,
+                "physical_value_key": physical_value_key if physical_value_key is not None else _cell_key(cell),
+                "basis": slot.weight_basis_id}
     if owner_authority_refs:
         material["slot_owner_authority_refs"] = [x.as_dict() for x in owner_authority_refs]
     return WeightMeasureFact(
@@ -507,54 +660,123 @@ def project_c11_candidate_from_physical_cells(*, source_sha256: str, row_count: 
     if source_sha256 != projection.expected_source_sha256:
         raise SourceBackedC11FacadeError("source SHA mismatch")
     respondent_by_ref = {r.ref: r for r in projection.respondents}
-    rows = {x.row_ordinal: respondent_by_ref[x.respondent_ref] for x in projection.row_bindings}
-    if len(rows) != row_count:
-        raise SourceBackedC11FacadeError("row/respondent replay map cardinality differs from exact physical stream")
+    # A row-indexed list is materially smaller than a 100k-entry dict and keeps
+    # the exact row/respondent replay map.  The temporary ref index is dropped
+    # before cell traversal.
+    rows: list[RespondentIdentity | None] = [None] * (row_count + 1)
+    for binding in projection.row_bindings:
+        ordinal = binding.row_ordinal
+        if ordinal < 1 or ordinal > row_count or rows[ordinal] is not None:
+            raise SourceBackedC11FacadeError(
+                "row/respondent replay map cardinality differs from exact physical stream")
+        respondent = respondent_by_ref.get(binding.respondent_ref)
+        if respondent is None:
+            raise SourceBackedC11FacadeError(
+                "row binding references absent respondent")
+        rows[ordinal] = respondent
+    if any(respondent is None for respondent in rows[1:]):
+        raise SourceBackedC11FacadeError(
+            "row/respondent replay map cardinality differs from exact physical stream")
+    del respondent_by_ref
     rs = {x.slot.key: x for x in projection.response_slots}
     cs = {x.slot.key: x for x in projection.coordinate_slots}
     ws = {x.slot.key: x for x in projection.weight_slots}
     owner_sets = {x.slot.key: x for x in projection.slot_owner_sets}
     projected = set(rs) | set(cs) | set(ws)
-    seen = {s: set() for s in projected}
+    # One byte per (slot, row) detects duplicates and proves completeness
+    # without a Python set of 100k boxed integers for every selected slot.
+    slot_keys = tuple(sorted(projected))
+    slot_index = {key: index for index, key in enumerate(slot_keys)}
+    seen = tuple(bytearray(row_count) for _ in slot_keys)
+    # Row-invariant rule maps are built once.  The previous loop rebuilt these
+    # dictionaries for every physical cell, which dominated cold construction.
+    response_values = {
+        key: {value.physical_key: value for value in slot.values}
+        for key, slot in rs.items()
+    }
+    coordinate_values = {
+        key: {value.physical_key: value for value in slot.values}
+        for key, slot in cs.items()
+    }
+    weight_values = {
+        key: {value.physical_key: value for value in slot.values}
+        for key, slot in ws.items()
+    }
+    event_templates = _build_event_templates(
+        projection, source_sha256, rs, owner_sets)
     events = []
     coords = []
     weights = []
+    witness_cache: dict[str, Mapping[str, Any]] = {}
+    last_row: int | None = None
+    respondent = None
+    respondent_ref = None
+    respondent_ref_dict: Mapping[str, str] | None = None
+    row_dependency_refs: dict[ExactRef, tuple[ExactRef, ...]] = {}
     for cell in cells:
         if not isinstance(cell, PhysicalCell):
             raise SourceBackedC11FacadeError("non-PhysicalCell transport member")
         key = (cell.variable_ordinal, cell.variable_name)
         if key not in projected:
             continue
-        if cell.row_ordinal not in rows:
+        if cell.row_ordinal < 1 or cell.row_ordinal > row_count:
             raise SourceBackedC11FacadeError("cell row outside replay map")
-        if cell.row_ordinal in seen[key]:
+        slot_offset = cell.row_ordinal - 1
+        slot_seen = seen[slot_index[key]]
+        if slot_seen[slot_offset]:
             raise SourceBackedC11FacadeError("duplicate physical row/slot")
-        seen[key].add(cell.row_ordinal)
-        respondent = rows[cell.row_ordinal]
+        slot_seen[slot_offset] = 1
+        if cell.row_ordinal != last_row:
+            last_row = cell.row_ordinal
+            respondent = rows[last_row]
+            if respondent is None:
+                raise SourceBackedC11FacadeError("cell row outside replay map")
+            respondent_ref = respondent.ref
+            respondent_ref_dict = respondent_ref.as_dict()
+            row_dependency_refs = {}
         pv = _cell_key(cell)
+        raw_witness = witness_cache.get(pv)
+        if raw_witness is None:
+            raw_witness = raw_physical_value_witness(cell.raw_value)
+            witness_cache[pv] = raw_witness
         owner_set = owner_sets.get(key)
         if key in rs:
-            slot = rs[key]
-            by = {x.physical_key: x for x in slot.values}
-            value = by.get(pv)
+            value = response_values[key].get(pv)
             if value is None:
                 raise SourceBackedC11FacadeError("unbound response value/state; no label/frequency/missingness inference")
-            auths = owner_set.authority_refs_for(RESPONSE_OWNER_FAMILY) if owner_set else ()
-            events.extend(_event(source_sha256, cell.row_ordinal, respondent, slot, cell, value, o, projection, auths)
-                          for o in value.occurrences)
+            # A lawful value may emit zero occurrences (for example an empty
+            # multiselect cell); that is distinct from an unbound value.
+            for template in event_templates.get((key, pv), ()):
+                dependency_refs = row_dependency_refs.get(template.question_ref)
+                if dependency_refs is None:
+                    dependency_refs = _refs((respondent_ref, template.question_ref))
+                    row_dependency_refs[template.question_ref] = dependency_refs
+                events.append(_event_from_template(
+                    template,
+                    row=cell.row_ordinal,
+                    respondent=respondent,
+                    respondent_ref=respondent_ref,
+                    respondent_ref_dict=respondent_ref_dict,
+                    dependency_refs=dependency_refs,
+                    raw_witness=raw_witness,
+                ))
         if key in cs:
             slot = cs[key]
-            rule = {x.physical_key: x for x in slot.values}.get(pv)
+            rule = coordinate_values[key].get(pv)
             auths = owner_set.authority_refs_for(COORDINATE_OWNER_FAMILY) if owner_set else ()
-            coords.append(_coordinate(source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths))
+            coords.append(_coordinate(
+                source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths,
+                physical_value_key=pv, raw_witness=raw_witness))
         if key in ws:
             slot = ws[key]
-            rule = {x.physical_key: x for x in slot.values}.get(pv)
+            rule = weight_values[key].get(pv)
             auths = owner_set.authority_refs_for(WEIGHT_OWNER_FAMILY) if owner_set else ()
-            weights.append(_weight(source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths))
-    expected = set(rows)
-    if any(v != expected for v in seen.values()):
-        raise SourceBackedC11FacadeError("projected slot incomplete; absent physical cell is not semantic absence")
+            weights.append(_weight(
+                source_sha256, cell.row_ordinal, respondent, slot, cell, rule, projection, auths,
+                physical_value_key=pv, raw_witness=raw_witness))
+    if any(slot_seen.count(0) for slot_seen in seen):
+        raise SourceBackedC11FacadeError(
+            "projected slot incomplete; absent physical cell is not semantic absence")
     events = tuple(sorted(events, key=lambda x: x.ref.key))
     coords = tuple(sorted(coords, key=lambda x: x.ref.key))
     weight_section = tuple(sorted(weights, key=lambda x: x.ref.key)) if projection.weight_slots else TypedAbsence("NOT_APPLICABLE")
@@ -607,6 +829,393 @@ def build_validated_source_backed_c11_release_from_stream(stream: ExactPhysicalC
     return validate_c11_source_release(candidate)
 
 
+def _validate_cold_event(event, registry) -> None:
+    """Validate one event using its already-computed exact projection.
+
+    This is the event branch of ``validate_public_carrier_object`` without a
+    second full projection hash.  All identity, authority and topology checks
+    remain the existing exact checks.
+    """
+    from rawlsing_next.pre553_c11_integrity import (
+        C11IntegrityError,
+        MULTIPLICITY_TOPOLOGIES,
+        ORDER_SENSITIVE_TOPOLOGIES,
+        _field_authority_ref,
+        _field_ref,
+    )
+    from rawlsing_next.pre553_empirical_authority import (
+        Pre553AuthorityError,
+        require_positive_authority,
+        validate_object_authority_closure,
+    )
+
+    if event.ref.object_id != event.object_id or event.ref.content_hash != event.content_hash:
+        raise C11IntegrityError("public object ExactRef does not match object identity")
+    try:
+        validate_object_authority_closure(event, registry)
+    except Pre553AuthorityError as exc:
+        raise C11IntegrityError(str(exc)) from exc
+    _field_ref(event, "empirical_universe_ref")
+    _field_ref(event, "scoped_respondent_ref")
+    _field_ref(event, "native_question_ref")
+    _field_ref(event, "response_topology_ref")
+    mapping_ref = _field_authority_ref(
+        event, "value_transform_authority_ref", allow_none=True)
+    has_canonical = (
+        event.canonical_question_ref_if_authorized is not None
+        or event.canonical_response_value_if_authorized is not None
+    )
+    if has_canonical and mapping_ref is None:
+        raise C11IntegrityError(
+            "canonical response/question material lacks exact mapping authority")
+    if has_canonical and mapping_ref is not None:
+        try:
+            snapshot = registry.resolve_exact(mapping_ref).snapshot
+            require_positive_authority(
+                snapshot, authority_kind="NATIVE_CANONICAL_MAPPING_HARMONIZATION")
+        except Pre553AuthorityError as exc:
+            raise C11IntegrityError(
+                "canonical response/question material lacks exact positive mapping authority"
+            ) from exc
+    topology = event.multiplicity_order_rank_fields
+    if not isinstance(topology, Mapping):
+        raise C11IntegrityError(
+            "multiplicity/order/rank fields must be an exact mapping")
+    kind = topology.get("kind") or topology.get("topology_kind")
+    if not isinstance(kind, str) or not kind:
+        raise C11IntegrityError("response topology kind must be explicit")
+    if kind in ORDER_SENSITIVE_TOPOLOGIES:
+        if not any(k in topology for k in ("semantic_ordinal", "rank", "order", "index")):
+            raise C11IntegrityError(
+                "ordered/ranked response lacks explicit semantic order/rank")
+    if kind in MULTIPLICITY_TOPOLOGIES and not event.response_event_id_or_deterministic_index:
+        raise C11IntegrityError(
+            "multiplicity-bearing response lacks occurrence identity")
+
+
+def build_cold_source_backed_c11_release(
+    stream: ExactPhysicalCellStream,
+    projection: GovernedC11Projection | None,
+):
+    """Build a sealed C11 release without retaining the eager event tuple.
+
+    The event pass validates each exact event, extracts its compact selector and
+    canonical body, and drops the event before the next cell.  The resulting
+    release uses the existing private ``_CompactPublicObjects`` lane and the
+    same C11/I02 validator, not a second engine.
+    """
+    from rawlsing_next._pre553_w03_cold_compact import ColdCompactBuilder
+    from rawlsing_next.pre553_c11_ingest import (
+        C11IngestValidationError,
+        IngestDisposition,
+        _iter_internal_records,
+        _validate_authorities,
+        _validate_declared_manifest,
+        _validate_question_authorities,
+        _validate_questions_and_events,
+        _validate_replay,
+        _validate_sections,
+        _validate_source_relations,
+        _validate_universe_and_respondent_scope,
+        _walk_authority_refs,
+    )
+    from rawlsing_next.pre553_c11_integrity import (
+        C11IntegrityError,
+        make_m01_m18_coverage,
+        validate_public_carrier_object,
+    )
+    from rawlsing_next.pre553_c11_repository import _make_validated_release
+    from rawlsing_next.pre553_empirical_authority import (
+        AuthorityRegistry,
+        Pre553AuthorityError,
+        validate_authority_snapshot,
+    )
+    from rawlsing_next.pre553_empirical_objects import canonical_json
+
+    if not isinstance(projection, GovernedC11Projection):
+        raise SourceBackedC11FacadeError("explicit governed projection required")
+    _sha(stream.source_sha256, "source_sha256")
+    if stream.source_sha256 != projection.expected_source_sha256:
+        raise SourceBackedC11FacadeError("source SHA mismatch")
+    row_count = stream.row_count
+    respondent_by_ref = {r.ref: r for r in projection.respondents}
+    rows: list[RespondentIdentity | None] = [None] * (row_count + 1)
+    for binding in projection.row_bindings:
+        ordinal = binding.row_ordinal
+        if ordinal < 1 or ordinal > row_count or rows[ordinal] is not None:
+            raise SourceBackedC11FacadeError(
+                "row/respondent replay map cardinality differs from exact physical stream")
+        respondent = respondent_by_ref.get(binding.respondent_ref)
+        if respondent is None:
+            raise SourceBackedC11FacadeError("row binding references absent respondent")
+        rows[ordinal] = respondent
+    if any(respondent is None for respondent in rows[1:]):
+        raise SourceBackedC11FacadeError(
+            "row/respondent replay map cardinality differs from exact physical stream")
+    del respondent_by_ref
+    rs = {x.slot.key: x for x in projection.response_slots}
+    cs = {x.slot.key: x for x in projection.coordinate_slots}
+    ws = {x.slot.key: x for x in projection.weight_slots}
+    owner_sets = {x.slot.key: x for x in projection.slot_owner_sets}
+    projected = set(rs) | set(cs) | set(ws)
+    slot_keys = tuple(sorted(projected))
+    slot_index = {key: index for index, key in enumerate(slot_keys)}
+    seen = tuple(bytearray(row_count) for _ in slot_keys)
+    response_values = {
+        key: {value.physical_key: value for value in slot.values}
+        for key, slot in rs.items()
+    }
+    coordinate_values = {
+        key: {value.physical_key: value for value in slot.values}
+        for key, slot in cs.items()
+    }
+    weight_values = {
+        key: {value.physical_key: value for value in slot.values}
+        for key, slot in ws.items()
+    }
+    event_templates = _build_event_templates(
+        projection, stream.source_sha256, rs, owner_sets)
+
+    for snapshot in projection.authority_snapshots:
+        validate_authority_snapshot(snapshot)
+    registry = AuthorityRegistry(projection.authority_snapshots)
+    universe_keys = {universe.ref.key for universe in projection.universes}
+    respondent_keys = {respondent.ref.key for respondent in projection.respondents}
+    question_keys = {
+        (exact_ref(question.empirical_universe_ref, "question universe").key,
+         exact_ref(question.native_question_ref, "question ref").key)
+        for question in projection.questions
+    }
+    builder = ColdCompactBuilder()
+    for snapshot in projection.authority_snapshots:
+        builder.add_non_event(snapshot)
+    for universe in projection.universes:
+        builder.add_non_event(universe)
+    for fact in projection.routing:
+        builder.add_non_event(fact)
+    if not isinstance(projection.source_relations, TypedAbsence):
+        for relation in projection.source_relations:
+            builder.add_non_event(relation)
+
+    event_refs: list[ExactRef] = []
+    occurrence_keys: set[bytes] = set()
+    coords = []
+    weights = []
+    witness_cache: dict[str, Mapping[str, Any]] = {}
+    last_row: int | None = None
+    respondent = None
+    respondent_ref = None
+    respondent_ref_dict: Mapping[str, str] | None = None
+    row_dependency_refs: dict[ExactRef, tuple[ExactRef, ...]] = {}
+    for cell in stream.iter_cells():
+        if not isinstance(cell, PhysicalCell):
+            raise SourceBackedC11FacadeError("non-PhysicalCell transport member")
+        key = (cell.variable_ordinal, cell.variable_name)
+        if key not in projected:
+            continue
+        if cell.row_ordinal < 1 or cell.row_ordinal > row_count:
+            raise SourceBackedC11FacadeError("cell row outside replay map")
+        slot_offset = cell.row_ordinal - 1
+        slot_seen = seen[slot_index[key]]
+        if slot_seen[slot_offset]:
+            raise SourceBackedC11FacadeError("duplicate physical row/slot")
+        slot_seen[slot_offset] = 1
+        if cell.row_ordinal != last_row:
+            last_row = cell.row_ordinal
+            respondent = rows[last_row]
+            if respondent is None:
+                raise SourceBackedC11FacadeError("cell row outside replay map")
+            respondent_ref = respondent.ref
+            respondent_ref_dict = respondent_ref.as_dict()
+            row_dependency_refs = {}
+        pv = _cell_key(cell)
+        raw_witness = witness_cache.get(pv)
+        if raw_witness is None:
+            raw_witness = raw_physical_value_witness(cell.raw_value)
+            witness_cache[pv] = raw_witness
+        owner_set = owner_sets.get(key)
+        if key in rs:
+            value = response_values[key].get(pv)
+            if value is None:
+                raise SourceBackedC11FacadeError(
+                    "unbound response value/state; no label/frequency/missingness inference")
+            for template in event_templates.get((key, pv), ()):
+                dependency_refs = row_dependency_refs.get(template.question_ref)
+                if dependency_refs is None:
+                    dependency_refs = _refs((respondent_ref, template.question_ref))
+                    row_dependency_refs[template.question_ref] = dependency_refs
+                event = _event_from_template(
+                    template,
+                    row=cell.row_ordinal,
+                    respondent=respondent,
+                    respondent_ref=respondent_ref,
+                    respondent_ref_dict=respondent_ref_dict,
+                    dependency_refs=dependency_refs,
+                    raw_witness=raw_witness,
+                )
+                event_projection = event.semantic_projection()
+                event_body = canonical_json(event_projection).encode("utf-8")
+                if hashlib.sha256(event_body).hexdigest() != event.content_hash:
+                    raise C11IntegrityError(
+                        "public object semantic projection/hash mismatch")
+                _validate_cold_event(event, registry)
+                try:
+                    for ref in _walk_authority_refs(event.semantic_fields):
+                        registry.resolve_exact(ref)
+                except Pre553AuthorityError as exc:
+                    raise C11IntegrityError(str(exc)) from exc
+                universe_key = exact_ref(
+                    event.empirical_universe_ref, "event universe").key
+                respondent_key = exact_ref(
+                    event.scoped_respondent_ref, "event respondent").key
+                native_key = exact_ref(
+                    event.native_question_ref, "event question").key
+                if (universe_key not in universe_keys
+                        or respondent_key not in respondent_keys):
+                    raise C11IngestValidationError(
+                        IngestDisposition.REJECTED_SOURCE_UNIVERSE_COLLAPSE,
+                        "carrier fact lacks exact in-package universe/respondent namespace binding")
+                if (universe_key, native_key) not in question_keys:
+                    raise C11IngestValidationError(
+                        IngestDisposition.REJECTED_TOPOLOGY_LOSS,
+                        "response event lacks exact native question/topology binding")
+                occurrence_material = {
+                    "universe": event.empirical_universe_ref,
+                    "respondent": event.scoped_respondent_ref,
+                    "native_question": event.native_question_ref,
+                    "component": event.component_or_subitem_ref,
+                    "event_group_id": event.event_group_id,
+                    "event_id": event.response_event_id_or_deterministic_index,
+                }
+                occurrence_digest = hashlib.sha256(
+                    canonical_json(occurrence_material).encode("utf-8")).digest()
+                if occurrence_digest in occurrence_keys:
+                    raise C11IntegrityError(
+                        "duplicate response occurrence identity detected; storage duplication is not a new event")
+                occurrence_keys.add(occurrence_digest)
+                builder.add_event(event, body=event_body)
+                event_refs.append(event.ref)
+        if key in cs:
+            slot = cs[key]
+            rule = coordinate_values[key].get(pv)
+            auths = owner_set.authority_refs_for(COORDINATE_OWNER_FAMILY) if owner_set else ()
+            coords.append(_coordinate(
+                stream.source_sha256, cell.row_ordinal, respondent, slot, cell, rule,
+                projection, auths, physical_value_key=pv, raw_witness=raw_witness))
+        if key in ws:
+            slot = ws[key]
+            rule = weight_values[key].get(pv)
+            auths = owner_set.authority_refs_for(WEIGHT_OWNER_FAMILY) if owner_set else ()
+            weights.append(_weight(
+                stream.source_sha256, cell.row_ordinal, respondent, slot, cell, rule,
+                projection, auths, physical_value_key=pv, raw_witness=raw_witness))
+    if any(slot_seen.count(0) for slot_seen in seen):
+        raise SourceBackedC11FacadeError(
+            "projected slot incomplete; absent physical cell is not semantic absence")
+    if builder.event_count == 0:
+        raise C11IntegrityError("C11 package requires respondent-event incidence")
+
+    weight_section = (
+        tuple(sorted(weights, key=lambda x: x.ref.key))
+        if projection.weight_slots else TypedAbsence("NOT_APPLICABLE")
+    )
+    for coordinate in coords:
+        builder.add_non_event(coordinate)
+    if not isinstance(weight_section, TypedAbsence):
+        for weight in weight_section:
+            builder.add_non_event(weight)
+    manifest = SourceReleaseManifest(
+        source_artifact_id=projection.source_artifact_id,
+        source_artifact_content_hash=stream.source_sha256,
+        source_family_id=projection.source_family_id,
+        study_product_id=projection.study_product_id,
+        release_id=projection.release_id,
+        instrument_release_id=projection.instrument_release_id,
+        ingest_contract_version=INGEST_CONTRACT_VERSION,
+        declared_universe_refs=tuple(
+            sorted((x.ref for x in projection.universes), key=lambda r: r.key)),
+        declared_authority_snapshot_refs=tuple(
+            sorted((x.authority_ref for x in projection.authority_snapshots),
+                   key=lambda r: r.key)),
+        declared_record_counts_by_logical_family=_counts(
+            projection, range(builder.event_count), coords, weight_section),
+        source_snapshot_retention_ref=projection.source_snapshot_retention_ref,
+    )
+    candidate = C11SourceReleaseCandidate(
+        source_release_manifest=manifest,
+        empirical_universes=tuple(sorted(projection.universes, key=lambda x: x.ref.key)),
+        respondent_identities=tuple(sorted(projection.respondents, key=lambda x: x.ref.key)),
+        question_variable_bindings=tuple(sorted(projection.questions, key=lambda x: x.ref.key)),
+        respondent_events=range(builder.event_count),
+        routing_eligibility_facts_or_exact_rules=tuple(
+            sorted(projection.routing, key=lambda x: x.ref.key)),
+        empirical_coordinate_facts=tuple(sorted(coords, key=lambda x: x.ref.key)),
+        weight_measure_facts_or_typed_absence=weight_section,
+        authority_snapshots=tuple(
+            sorted(projection.authority_snapshots, key=lambda x: x.authority_ref.key)),
+        source_universe_relations_or_explicit_distinct_default=projection.source_relations,
+        predicate_replay_bindings_when_retained_objects_require_them=projection.predicate_replay,
+        comparator_replay_bindings_or_typed_deferred_state=projection.comparator_replay,
+        discovery_branch_replay_bindings_or_typed_deferred_state=projection.discovery_replay,
+        structural_admission_replay_bindings_or_typed_not_applicable_state=projection.structural_replay,
+        candidate_replay_manifest=None,
+    )
+    replay = build_candidate_replay_manifest(
+        candidate,
+        replay_protocol_authority_ref=projection.replay_authority_ref,
+        deterministic_tie_order_rules_ref=projection.tie_order_ref,
+        replay_protocol_version=projection.replay_protocol_version,
+        event_refs=event_refs,
+    )
+    candidate = replace(candidate, candidate_replay_manifest=replay)
+    _validate_sections(candidate)
+    _validate_declared_manifest(candidate)
+    non_event_candidate = replace(candidate, respondent_events=())
+    registry = _validate_authorities(non_event_candidate)
+    _validate_universe_and_respondent_scope(non_event_candidate)
+    _validate_questions_and_events(non_event_candidate)
+    _validate_question_authorities(candidate, registry)
+    _validate_source_relations(candidate)
+    replay = _validate_replay(candidate, registry, event_refs=event_refs)
+    coverage = make_m01_m18_coverage(
+        universes=candidate.empirical_universes,
+        respondents=candidate.respondent_identities,
+        questions=candidate.question_variable_bindings,
+        events=range(builder.event_count),
+        routing=candidate.routing_eligibility_facts_or_exact_rules,
+        coordinates=candidate.empirical_coordinate_facts,
+        weight_section_explicit=True,
+        authority_snapshots=candidate.authority_snapshots,
+        source_relation_section_explicit=True,
+        predicate_replay_section_explicit=True,
+        comparator_section_explicit=True,
+        discovery_section_explicit=True,
+        structural_admission_section_explicit=True,
+        replay_manifest=replay,
+    )
+    projection_hash = semantic_hash({
+        "candidate_projection_hash": replay.semantic_projection_hash,
+        "replay_manifest_ref": replay.ref.as_dict(),
+        "m01_m18": {key: list(value) for key, value in coverage.items()},
+    })
+    release_ref = ExactRef(
+        "C11LogicalRelease", candidate.source_release_manifest.release_id,
+        projection_hash)
+    public_objects = builder.finish(release_ref, replay.ref)
+    internal_records = tuple(sorted(
+        _iter_internal_records(non_event_candidate), key=lambda obj: obj.ref.key))
+    return _make_validated_release(
+        release_id=candidate.source_release_manifest.release_id,
+        source_artifact_ref=candidate.source_release_manifest.source_artifact_ref,
+        source_release_manifest_hash=candidate.source_release_manifest.content_hash,
+        semantic_release_hash=projection_hash,
+        replay_manifest=replay,
+        public_objects=public_objects,
+        internal_records=internal_records,
+        m01_m18_coverage=coverage,
+    )
+
+
 @dataclass(frozen=True)
 class SourceBackedFacadeKey:
     source_sha256: str
@@ -655,32 +1264,42 @@ def _accelerator_decoder_digest(source: PhysicalSourceIncidence | ExactPhysicalC
 
 def build_source_backed_c11_repository(
     source, projection, *, cache=None, batch_size=10_000, current_authorities=(),
+    cold: bool | None = None,
 ):
     key = source_backed_facade_key(source, projection)
     release = cache.get(key) if cache else None
     if release is None:
-        release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
-                   if isinstance(source, PhysicalSourceIncidence)
-                   else build_validated_source_backed_c11_release_from_stream(source, projection)
-                   if isinstance(source, ExactPhysicalCellStream)
-                   else (_ for _ in ()).throw(SourceBackedC11FacadeError("unsupported physical transport")))
-        def physical_binding():
-            decoder_digest = _accelerator_decoder_digest(source)
-            if isinstance(source, PhysicalSourceIncidence) and decoder_digest is None:
-                return None
-            return {
-                "decoder_metadata": decoder_digest,
-                "transport": getattr(source, "transport_identity", None),
-                "facade_contract": CONTRACT_ID,
-                "value_codec": R5_CODEC_VERSION,
-                "current_authorities": sorted(snapshot.ref.key for snapshot in current_authorities),
-            }
-
-        public = _compact_public_objects(
-            release, physical_binding=physical_binding, projection_binding=key.projection_identity,
+        use_cold = (
+            cold if cold is not None
+            else (isinstance(source, ExactPhysicalCellStream)
+                  and not os.environ.get("RAWLSING_C11_ACCELERATOR_DIR"))
         )
-        if public is not None:
-            release = replace(release, public_objects=public)
+        if use_cold and isinstance(source, ExactPhysicalCellStream):
+            # Cold no-disk-cache path: validate and compact in one event pass.
+            release = build_cold_source_backed_c11_release(source, projection)
+        else:
+            release = (build_validated_source_backed_c11_release(source, projection, batch_size=batch_size)
+                       if isinstance(source, PhysicalSourceIncidence)
+                       else build_validated_source_backed_c11_release_from_stream(source, projection)
+                       if isinstance(source, ExactPhysicalCellStream)
+                       else (_ for _ in ()).throw(SourceBackedC11FacadeError("unsupported physical transport")))
+            def physical_binding():
+                decoder_digest = _accelerator_decoder_digest(source)
+                if isinstance(source, PhysicalSourceIncidence) and decoder_digest is None:
+                    return None
+                return {
+                    "decoder_metadata": decoder_digest,
+                    "transport": getattr(source, "transport_identity", None),
+                    "facade_contract": CONTRACT_ID,
+                    "value_codec": R5_CODEC_VERSION,
+                    "current_authorities": sorted(snapshot.ref.key for snapshot in current_authorities),
+                }
+
+            public = _compact_public_objects(
+                release, physical_binding=physical_binding, projection_binding=key.projection_identity,
+            )
+            if public is not None:
+                release = replace(release, public_objects=public)
         if cache:
             cache.put(key, release)
     return C11Repository((release,)), release
@@ -701,6 +1320,7 @@ __all__ = [
     "CoordinateSlotRule", "WeightValueRule", "WeightSlotRule", "ExactPhysicalCellStream", "GovernedC11Projection",
     "SourceBackedFacadeKey", "SourceBackedC11SessionCache", "physical_value_binding_key",
     "project_c11_candidate_from_physical_cells", "build_validated_source_backed_c11_release",
-    "build_validated_source_backed_c11_release_from_stream", "source_backed_facade_key",
+    "build_validated_source_backed_c11_release_from_stream",
+    "build_cold_source_backed_c11_release", "source_backed_facade_key",
     "build_source_backed_c11_repository", "execute_source_backed_empirical_query",
 ]
