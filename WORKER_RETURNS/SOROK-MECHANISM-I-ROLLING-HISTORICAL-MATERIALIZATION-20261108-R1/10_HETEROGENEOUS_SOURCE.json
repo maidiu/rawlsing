@@ -1,0 +1,43 @@
+{
+  "schema": "SOROK_MI_ENGINEERING_SOURCE@1",
+  "evidence_class": "SOURCEFREE_SYNTHETIC",
+  "surfaces": [
+    {
+      "source_ref": "source:archive-ledger-91",
+      "domain": "artifact",
+      "physical": {
+        "condition": "worn",
+        "material": "paper"
+      },
+      "unresolved": [
+        "physical",
+        "provenance",
+        "dependencies"
+      ]
+    },
+    {
+      "source_ref": "source:exchange-calibration-weight-32",
+      "domain": "resource",
+      "physical": {
+        "condition": "used",
+        "material": "metal"
+      },
+      "unresolved": [
+        "physical",
+        "provenance"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "kind": "INSTITUTION",
+      "object_id": "source:measurement-cooperative-91",
+      "name": "Measurement cooperative"
+    },
+    {
+      "kind": "MATERIAL_ACTIVITY",
+      "object_id": "source:exchange-measurement-91",
+      "operation": "calibration and exchange recordkeeping"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1"))
 
 from run_p4 import new, open_owner, run_history_worker
-from rawlsing_next.sorok_history.owner import HistoricalWorld
+from rawlsing_next.sorok_history.owner import HistoricalWorld, SurfaceParticular, digest
 from rawlsing_next.sorok_history.provider import (
     EndpointModelTransport, HistoricalModelProvider, ProviderConfig,
 )
@@ -53,6 +53,50 @@ class RecordingEndpoint(EndpointModelTransport):
             path.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
 
 
+def source_initializer(manifest):
+    """Trusted sourcefree initialization through the existing foreground owner.
+
+    This supplies experimental source rights, never a model-asserted grant.
+    The same adapter accepts every domain; it contains no domain story branches.
+    """
+    if manifest.get("evidence_class") != "SOURCEFREE_SYNTHETIC":
+        raise ValueError("only explicitly synthetic engineering sources are authorized")
+    surfaces = manifest["surfaces"]
+    if not 1 <= len(surfaces) <= 7:
+        raise ValueError("source cohort must contain 1..7 new surfaces")
+
+    def establish(session):
+        here = session.world().positions[session.meta["user_actor"]]
+        parent = session.events()[0]
+        session.travel("market" if here == "workshop" else "workshop")
+        session.travel(here)
+        event = session.events()[-1]
+        history = HistoricalWorld(session)
+        targets = [history.capture_visible_tool_resource()]
+        for surface in surfaces:
+            row = history.admit_surface(SurfaceParticular(
+                event["event_id"], surface["source_ref"], surface["domain"], here,
+                surface["physical"], tuple(surface["unresolved"])))
+            targets.append(row["id"])
+        parent_ref = {"kind": "WORLD_EVENT", "object_id": parent["event_id"],
+                      "content_hash": parent["hash"]}
+        entities = []
+        for item in manifest["entities"]:
+            record = {**item, "evidence_class": "SOURCEFREE_SYNTHETIC",
+                      "source_event_ref": parent_ref}
+            entities.append({"ref": {"kind": record["kind"],
+                "object_id": record["object_id"], "content_hash": digest(record)},
+                "record": record})
+        record = {"kind": "PLACE", "object_id": "source:initial-place",
+                  "location": parent["location"], "evidence_class": "SOURCEFREE_SYNTHETIC",
+                  "source_event_ref": parent_ref}
+        entities.append({"ref": {"kind": "PLACE", "object_id": record["object_id"],
+                                  "content_hash": digest(record)}, "record": record})
+        history.configure_experimental_history(source_event_ref=parent_ref,
+            target_ids=targets, entities=entities, earliest=parent["clock"])
+    return establish
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", required=True, type=Path)
@@ -62,6 +106,11 @@ def main():
     parser.add_argument("--key-env", default="SOROK_HISTORY_MODEL_API_KEY")
     parser.add_argument("--max-output-tokens", type=int, default=8192,
                         help="Total response bound, including provider reasoning tokens.")
+    parser.add_argument("--jobs", type=int, choices=range(1, 4), default=1)
+    parser.add_argument("--source-manifest", type=Path,
+                        help="Trusted SOURCEFREE_SYNTHETIC cohort; no native authority.")
+    parser.add_argument("--independent", action="store_true",
+                        help="Run normal work before inference; omit all inspection.")
     parser.add_argument("--resume", action="store_true",
                         help="Resume this command's existing durable failed/pending job.")
     args = parser.parse_args()
@@ -76,8 +125,22 @@ def main():
     args.state.mkdir(parents=True, exist_ok=args.resume)
     args.receipts.mkdir(parents=True, exist_ok=True)
     if not args.resume:
-        opening = new(args.state, args.state / "p4_receipts.json", "recognized_plan")
+        manifest = (json.loads(args.source_manifest.read_text())
+                    if args.source_manifest else None)
+        opening = new(args.state, args.state / "p4_receipts.json", "recognized_plan",
+                      establish=source_initializer(manifest) if manifest else None)
+        if manifest:
+            (args.receipts / "source-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
         (args.receipts / "opening.json").write_text(json.dumps(opening, indent=2) + "\n")
+    if args.independent:
+        import subprocess
+        performed = subprocess.run([sys.executable, str(ROOT / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py"),
+            "--state", str(args.state), "work"], capture_output=True, text=True)
+        (args.receipts / "ordinary-work-before.json").write_text(json.dumps({
+            "exit_code": performed.returncode, "stdout": performed.stdout,
+            "stderr": performed.stderr}, indent=2) + "\n")
+        if performed.returncode:
+            return performed.returncode
     config = ProviderConfig(
         endpoint=args.endpoint, model=args.model, api_key=key,
         timeout_s=120, max_attempts=1, max_output_tokens=args.max_output_tokens,
@@ -86,7 +149,8 @@ def main():
         args.endpoint, args.model, api_key=key, timeout_s=120, receipts=args.receipts,
     )
     provider = HistoricalModelProvider(config=config, transport=transport)
-    outcome = run_history_worker(args.state, provider=provider)
+    outcomes = [run_history_worker(args.state, provider=provider) for _ in range(args.jobs)]
+    outcome = outcomes[-1]
     owner = open_owner(args.state / "actual-p2")
     try:
         history = HistoricalWorld(owner.base_owner.fanin.session)
@@ -95,9 +159,14 @@ def main():
         for target in surfaces:
             stored = history.target(target["id"])
             job = history.job(stored["job_id"])
-            event = history.inspect(target["id"])
-            rows.append({"target": stored, "job": job,
-                         "inspection": history.read_inspection(event["event_id"])})
+            row = {"target": stored, "job": job,
+                   "world_depth": history.query_depth(target["id"])}
+            if not args.independent:
+                event = history.inspect(target["id"])
+                row["inspection"] = history.read_inspection(event["event_id"])
+            rows.append(row)
+        graph = history.history_graph()
+        inspections = sum(event["kind"] == "INSPECT" for event in owner.base_owner.fanin.session.events())
     finally:
         owner.close()
     # Reopen the existing owner, without any provider invocation, for cold readback.
@@ -109,7 +178,9 @@ def main():
         owner.close()
     result = {"schema": "SOROK_MI_LIVE_EXECUTION@1", "source_grade": "SOURCEFREE_S2",
               "provider_calls": transport.calls, "provider_live": provider.live,
-              "outcome": outcome, "targets": rows, "cold_target_equal": cold_equal,
+              "outcome": outcome, "outcomes": outcomes, "targets": rows, "cold_target_equal": cold_equal,
+              "history_graph": graph, "inspection_count": inspections,
+              "independent": args.independent,
               "native_science": "HOLD", "protected_merge": "NOT_AUTHORIZED"}
     execution = args.receipts / f"execution-{transport.offset + transport.calls:02d}.json"
     execution.write_text(json.dumps(result, indent=2) + "\n")

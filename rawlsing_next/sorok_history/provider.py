@@ -24,7 +24,7 @@ from rawlsing_next.sorok_history.admission import SCHEMA as ADMISSION_PACKET_SCH
 
 PROVIDER_CONTRACT_ID = "SOROK_HISTORICAL_MODEL_PROVIDER@1"
 RECEIPT_SCHEMA = "SOROK_HISTORICAL_MODEL_RECEIPT@1"
-PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@6"
+PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@7"
 
 LIVE_PROVIDER_NOT_RUN = "LIVE_PROVIDER_NOT_RUN"
 GRADE_NONE = "NONE"
@@ -387,6 +387,18 @@ def _prompt(packet: Mapping[str, Any]) -> str:
         "  - When the target supplies requested_predicate, propose only that physical predicate.\n"
         "  - Prior actor repairs are contextual precedents only, not parents of this target.\n"
         "  - The root tool baseline is historical context. Preserve the current surface state.\n"
+        "  - Only when H1 is allowed, optionally propose one bounded shared material occurrence.\n"
+        "    It needs dependency_group, asserted_H_class=H1, effective_time (integer),\n"
+        "    target_ids (packet subset), action (PRODUCTION/ACQUISITION/REPAIR/USE/TRANSFER/\n"
+        "    MATERIAL_LABOR), effects=[], causal_parents and source_refs (exact event refs),\n"
+        "    place_ref (a source PLACE ref), actor_refs and participants. Each participant\n"
+        "    is {role,ref}; roles are PRODUCER/RECIPIENT/REPAIRER/LABOR_PARTICIPANT/\n"
+        "    INSTITUTION/MATERIAL_ACTIVITY. Copy source refs; never invent principals.\n"
+        "    A past actor must have a supplied position at that time/place; do not overlap\n"
+        "    any supplied closed actor event. Omit actors if no position is established.\n"
+        "    Do not repeat admitted historical episodes or propose current/actor effects.\n"
+        "    Omit occurrence ref: the adapter hashes the proposal, not its authority.\n"
+        "    Link dependency groups using parent_groups; never invent parent ref hashes.\n"
         "  - Arrays may be empty. Do not return a bare list or scalar.\n"
         "  - Semantic graph validation belongs to a separate owner; return candidate\n"
         "    material only.\n\n"
@@ -893,13 +905,16 @@ class HistoricalModelProvider:
                         code="REQUEST_ID_MISMATCH",
                     )
                 output_hash = sha256(text.encode("utf-8")).hexdigest()
-                if isinstance(candidate.get("facts"), list):
-                    for fact in candidate["facts"]:
-                        if (isinstance(fact, dict) and "ref" not in fact
-                                and fact.get("asserted_H_class") == "H0"):
-                            checksum = digest(fact)
-                            fact["ref"] = {
-                                "kind": "FACT", "object_id": "proposal:" + checksum,
+                for collection, hclass, kind in (("facts", "H0", "FACT"),
+                                                  ("occurrences", "H1", "OCCURRENCE")):
+                    if not isinstance(candidate.get(collection), list):
+                        continue
+                    for claim in candidate[collection]:
+                        if (isinstance(claim, dict) and "ref" not in claim
+                                and claim.get("asserted_H_class") == hclass):
+                            checksum = digest(claim)
+                            claim["ref"] = {
+                                "kind": kind, "object_id": "proposal:" + checksum,
                                 "content_hash": checksum,
                             }
                 try:

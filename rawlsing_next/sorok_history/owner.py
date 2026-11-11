@@ -746,6 +746,18 @@ class HistoricalWorld:
                                  if actor_id in actor_ids]
         packet["world_refs"].extend(deepcopy([e["ref"] for e in policy["entities"]]))
         packet["surface"][target_id]["source_entity_records"] = deepcopy(policy["entities"])
+        # Public performed positions constrain past participation; no actor memories,
+        # private user attention or inferred psychology are sent to the model.
+        aliases = {alias: row.get("actor_id") for alias, row in world.actor_state.items()}
+        packet["surface"][target_id]["performed_actor_events"] = [
+            {"actor_id": aliases[event["actor_id"]], "kind": event["kind"],
+             "time": event["clock"], "location": event["location"],
+             "ref": ref("WORLD_EVENT", event["event_id"], event["hash"])}
+            for event in world.events
+            if event.get("actor_id") in aliases
+            and policy["window"][0] <= event["clock"] <= world.clock
+            and event["kind"] in {"ARRIVAL", "MOVE", "APPROACH"}
+        ][-16:]
         packet["authority"].update(
             policy="BP4_EXPERIMENTAL_MATERIAL_HISTORY_POLICY@1",
             allowed_H_classes=(["H0", "H1"] if {"provenance", "dependencies"} & set(job["dimensions"])

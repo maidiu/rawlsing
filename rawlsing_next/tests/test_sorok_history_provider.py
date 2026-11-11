@@ -391,3 +391,19 @@ def test_endpoint_redirect_does_not_forward_bearer_credential(monkeypatch):
     )
 
     assert run(provider.propose(packet())).ok
+
+
+def test_h1_proposal_identity_is_locally_hashed_without_granting_authority():
+    from rawlsing_next.sorok_history.provider import digest
+    occurrence = {"asserted_H_class": "H1", "dependency_group": "episode",
+                  "action": "USE", "effects": [], "target_ids": ["target"]}
+    proposed = candidate(facts=[], occurrences=[occurrence])
+    provider = HistoricalModelProvider(transport=FakeTransport([success(json.dumps(proposed))]))
+    result = run(provider.propose(packet()))
+    assert result.ok
+    ref = result.candidate["occurrences"][0]["ref"]
+    assert ref == {"kind": "OCCURRENCE", "object_id": "proposal:" + digest(occurrence),
+                   "content_hash": digest(occurrence)}
+    assert result.receipt.live is False
+    # H1 permission is absent: transport identity supplies no source-owner grant.
+    assert "authority" not in result.candidate
