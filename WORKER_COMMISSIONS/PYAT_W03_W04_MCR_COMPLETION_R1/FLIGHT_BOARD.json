@@ -784,14 +784,42 @@
       "job": "pyat-w03-w04-mcr-linux-stage-rss-repair-r1",
       "session": "ses_b998af9086264002a86ee57b6e",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_TESTONLY_REPAIR_INTEGRATED__QUALIFIED_METHOD_UNCHANGED",
       "source_candidate": "3337b7946c5ab345d86dc48321c9b06ac4b6810a",
       "scope": "ExactLinuxCIstageRSSfailedcounterinvariant, meaningfulregressionproof, no thresholdweakening",
-      "pid": 71228
+      "pid": 71228,
+      "candidate": "68dd24e86a96dd7f6249849b5497f645a2dc97f0",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c9a72fa5001fRXcqdQ3uSdj6S",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794384539851,
+          "streamed": 1794384566127,
+          "completed": 1794384566293
+        }
+      }
+    },
+    {
+      "job": "pyat-w03-w04-mcr-fullscale-execution-r1",
+      "session": "ses_1b9742b6c02745d8a69d062011",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
+      "status": "EXECUTOR_LAUNCHED__ACTUAL_100K_CHILD_NOT_YET_CLAIMED",
+      "source_candidate": "e06b5037846c2662e0f8500f391da4dc56364a5f",
+      "scope": "Required100k3repeat pairedmeasurements;durablenativesupervision;source/testreadonly",
+      "disk_observation": "4.4GiBfree;exactdependencyifcannotfit,nohistoricaldeletion",
+      "pid": 77681
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Intake running Linux CI sampler/test repair71228. If benchmark production blob unchanged, reuse qualified method, freeze repaired source and launch required fullscale paired run with existing executor immediately. If actualsamplerchanged, qualify exactchangedboundary first, no fullmethodreopening.",
+  "next_action": "Launch fullscale executor now onunchangedqualifiedmethod; pushfrozenimplementation andrerunexistingLinuxCI independently. Nofurther routineapproval or methodreopening.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
