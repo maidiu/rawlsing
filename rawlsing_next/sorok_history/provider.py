@@ -166,8 +166,11 @@ class ProviderConfig:
     max_attempts: int = 2
     retry_delay_s: float = 0.0
     transport_name: str = "injected"
+    reasoning_effort: str | None = None
 
     def __post_init__(self) -> None:
+        if self.reasoning_effort not in {None, "low", "high", "max"}:
+            raise ProviderConfigurationError("unsupported reasoning effort")
         if self.endpoint is not None and (not isinstance(self.endpoint, str) or not self.endpoint):
             raise ProviderConfigurationError("endpoint must be a non-empty string or None")
         if self.model is not None and (not isinstance(self.model, str) or not self.model):
@@ -581,6 +584,8 @@ class EndpointModelTransport:
             "temperature": 0,
             "stream": False,
         }
+        if request.get("reasoning_effort") is not None:
+            body["reasoning_effort"] = request["reasoning_effort"]
         req = urllib.request.Request(
             self.endpoint,
             data=canonical(body).encode("utf-8"),
@@ -758,6 +763,8 @@ class HistoricalModelProvider:
             "prompt": prompt,
             "max_output_tokens": self.config.max_output_tokens,
             "max_output_chars": self.config.max_output_chars,
+            **({"reasoning_effort": self.config.reasoning_effort}
+               if self.config.reasoning_effort is not None else {}),
             "timeout_s": self.config.timeout_s,
             "stream": False,
         }

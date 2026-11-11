@@ -407,3 +407,25 @@ def test_h1_proposal_identity_is_locally_hashed_without_granting_authority():
     assert result.receipt.live is False
     # H1 permission is absent: transport identity supplies no source-owner grant.
     assert "authority" not in result.candidate
+
+
+def test_explicit_effort_reaches_endpoint_and_is_bound_into_request_receipt(monkeypatch):
+    from contextlib import nullcontext
+    captured = {}
+
+    class Response:
+        def read(self, length):
+            return json.dumps({'model': 'selected-model', 'choices': [
+                {'message': {'content': json.dumps(candidate())}}]}).encode()
+
+    def respond(request, **kwargs):
+        captured.update(json.loads(request.data))
+        return nullcontext(Response())
+
+    monkeypatch.setattr('rawlsing_next.sorok_history.provider.urllib.request.urlopen', respond)
+    configured = ProviderConfig(endpoint='https://model.example.invalid/v1/chat/completions',
+                                model='selected-model', reasoning_effort='low')
+    result = run(HistoricalModelProvider(config=configured).propose(packet()))
+    assert result.ok
+    assert captured['reasoning_effort'] == 'low'
+    assert captured['model'] == 'selected-model'

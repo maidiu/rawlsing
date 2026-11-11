@@ -106,6 +106,7 @@ def main():
     parser.add_argument("--key-env", default="SOROK_HISTORY_MODEL_API_KEY")
     parser.add_argument("--max-output-tokens", type=int, default=8192,
                         help="Total response bound, including provider reasoning tokens.")
+    parser.add_argument("--reasoning-effort", choices=["low", "high", "max"])
     parser.add_argument("--jobs", type=int, choices=range(1, 4), default=1)
     parser.add_argument("--source-manifest", type=Path,
                         help="Trusted SOURCEFREE_SYNTHETIC cohort; no native authority.")
@@ -144,6 +145,7 @@ def main():
     config = ProviderConfig(
         endpoint=args.endpoint, model=args.model, api_key=key,
         timeout_s=120, max_attempts=1, max_output_tokens=args.max_output_tokens,
+        reasoning_effort=args.reasoning_effort,
     )
     transport = RecordingEndpoint(
         args.endpoint, args.model, api_key=key, timeout_s=120, receipts=args.receipts,
