@@ -521,10 +521,28 @@
       "job": "pyat-w03-w04-mcr-snapshot-proof-residual-r2",
       "session": "ses_b998af9086264002a86ee57b6e",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_INTEGRATED_PENDING_CC_F03_F04_RECHECK",
       "source_candidate": "8c5ae1c5f345212a6b498a89f89b223f7da0fef1",
       "scope": "Only preservedsnapshot associatedsidecar and actualfullproofgate residual; nohistoricalbytes/checkerchanges",
-      "pid": 1262
+      "pid": 1262,
+      "candidate": "0d8988ee19f276c0062442954ef1c5e21c19c4b2",
+      "actual_model": {
+        "id": "msg_1c8bb90c2001JJVwJe2jUC4vvr",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794369098084,
+          "streamed": 1794369105662,
+          "completed": 1794369105771
+        }
+      },
+      "terminal": {
+        "exit_code": 0
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-verifier-api-binding-repair-r2",
@@ -534,10 +552,19 @@
       "source_candidate": "8498bd42164c37e8a0d5b258906aad5f451488aa",
       "scope": "CCF5-R01 text/path binding only",
       "pid": 6193
+    },
+    {
+      "job": "pyat-w03-w04-mcr-ci-proof-focused-recheck-r1",
+      "session": "ses_e47b17f8fffedazgQeSGbql4HH",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "4ac862ef58d06266c7de8a7cc186c5c41dd0ad48",
+      "scope": "IndependentCC-F03/F04 workflowandfullcommittedproofgate only",
+      "pid": 9340
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Launch sameowner exact APIbindingrepair; economicsmethodreview/snapshotproof continue independently. Retry stalledpush bounded after remotecheck; do not claimremotesynced.",
+  "next_action": "Launch independentCI/proofrecheck oncommittedcandidate while verifierAPIrepair/economicsmethodreviewcontinue. No full100k before methodqualified.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
