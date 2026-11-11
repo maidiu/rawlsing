@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T02:21:48.964866+00:00",
+  "saved_utc": "2026-11-11T02:25:02.980091+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -90,7 +90,7 @@
       "job": "pyat-w03-w04-mcr-cold-source-repair-r2",
       "pid": 31897,
       "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "DELIVERED_PENDING_RECEIVING__INTEGRATED_COMBINED_POLICY_RED",
       "actual_model": {
         "id": "msg_1c843fea3001KVaV1QDH5Ds6RX",
         "type": "assistant",
@@ -106,7 +106,11 @@
         }
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-cold-r2",
-      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
+      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc",
+      "candidate": "f213e15b2969b2dcf1df0955572a6c76560dd24a",
+      "terminal": {
+        "exit_code": 0
+      }
     },
     {
       "lane": "persistence",
@@ -241,7 +245,7 @@
       "repair_round": 1
     }
   ],
-  "parallel_policy": "Threeisolatednonoverlappingcodeleases; oneheavybenchmarkchildatonce; finalpairedmeasurements/reviews onintegratedimmutablecandidate",
+  "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
   "next_action": "Terminalnotificationintake; repair demonstratedfailure throughsameowner; integrateorthogonalreturns,runall12frozengates andindependentcode/economicreview. No recurringpolling.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
@@ -268,5 +272,7 @@
     "next_action": "No automaticretry. Resumequalifiedindependentwholeengineeringreview whenprovidercapacity restored or atnewfinalcandidate withexplicitboundeddispatch; no model/provider/accountswitch, no replacementbyselfacceptance.",
     "scope": "Reviewlaneonly; continueindependentauthors/economicwork",
     "goal_complete": false
-  }
+  },
+  "concurrency_cap": 3,
+  "next_ready_work": "Combinedcold/governedpersistentpathrepair documented inNEXT_COMBINED_REPAIR; queuedpendingfreeworker slot andcacheownercoordination."
 }
