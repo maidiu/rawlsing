@@ -38,8 +38,8 @@
   `mii-correct-attention` are available. Reset/export/control operations do not
   rewrite the P4 ledger or actor state.
 - **E9:** `measure_mii.py` produced `measurements.json`: cold CLI n=13,
-  p50 5.506 s, p95 8.821 s, max 11.590 s; warm import n=5, p50 3.143 s,
-  p95 3.348 s, max 7.710 s; provider calls/tokens 0; peak child RSS 50.645 MiB;
+  p50 5.617 s, p95 9.310 s, max 12.199 s; warm import n=5, p50 2.929 s,
+  p95 2.941 s, max 7.673 s; provider calls/tokens 0; peak child RSS 49.652 MiB;
   state 1,600,669 bytes; gallery fixture look returned
   `the stamped brass hinge`. Cold replay failures: 0.
 - **E10:** runnable P6 path, this README, versioned schemas, controls, tests and
