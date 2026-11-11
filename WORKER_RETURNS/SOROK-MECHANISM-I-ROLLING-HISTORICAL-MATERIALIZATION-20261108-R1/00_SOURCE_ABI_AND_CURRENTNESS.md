@@ -1,6 +1,6 @@
 # R3 actual compatible source ABI — 0b0eb94c714049dadd3f82cc0af97c44ff4f74b4
 
-Branch `codex/sorok-mi-completion-20261111-r1`; original MI83de56d preserved, protected811dd32b reconciled (MII/MIII included), actor-scientific/native/root/production authority unchanged. Final exact-head review is pending. This entry supersedes only current candidate facts; older source cuts below remain historical evidence.
+Branch `codex/sorok-mi-completion-20261111-r1`; original MI83de56d preserved, protected811dd32b reconciled (MII/MIII included), actor-scientific/native/root/production authority unchanged. Final exact-head independent code review accepted at `ef32358d31103ea56cc20819ea6d2105625f3299`; native/protected/human holds remain separate. This entry supersedes only current candidate facts; older source cuts below remain historical evidence.
 
 | Existing path | Exact blob at frozen implementation |
 |---|---|
