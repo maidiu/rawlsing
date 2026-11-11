@@ -33,6 +33,10 @@ on:
       - 'PYAT_W03_W04_MCR_C_Commission.md'
       - 'WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/REQUIRED_OBLIGATIONS.tsv'
       - 'CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py'
+      - 'WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/MCR_EXECUTABLE_LAUNCH.md'
+      - 'CROSS_HQ_CONTROL_ROOM/test_verify_copy_paste_commission_r1.py'
+      - 'WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_LIVE_C44_SNAPSHOT/test_bench_w03_w04_physical.py'
+      - 'WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_LIVE_C44_SNAPSHOT/test_bench_w03_w04_physical.py.proof.json'
       - 'CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py'
       - 'CROSS_HQ_CONTROL_ROOM/test_proof_integrity_gate_r1.py'
       - '.github/workflows/pyat-w03-w04-physical-economy.yml'
@@ -68,6 +72,7 @@ jobs:
             rawlsing_next/tests/test_bench_w03_w04_physical.py \
             rawlsing_next/tests/test_pre553_w03_w04_cold.py \
             rawlsing_next/tests/test_pre553_w03_w04_completion.py \
+            CROSS_HQ_CONTROL_ROOM/test_verify_copy_paste_commission_r1.py \
             --junitxml=pyat-w03-w04-sourcefree-junit.xml
       - name: Existing proof-integrity changed-range gate
         if: github.event_name == 'pull_request'
