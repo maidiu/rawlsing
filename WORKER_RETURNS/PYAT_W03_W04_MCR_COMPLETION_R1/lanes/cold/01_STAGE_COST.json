@@ -1,0 +1,66 @@
+{
+  "base_commit": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc",
+  "exactness": "cold and eager release_ref, replay ref, public-object refs/as_dict, internal records and M01-M18 coverage identical on all profiled fixtures",
+  "frozen_pr895": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+  "host": {
+    "concurrency": "sequential; no concurrent heavy 100k runs",
+    "pandas": "2.3.1",
+    "pyarrow": "22.0.0",
+    "python": "/usr/local/bin/python3 3.11.3",
+    "ram": "16GiB"
+  },
+  "implementation_commit": "6d3e7439d9001e0b87cd3dbd2450ce811fa41469",
+  "lane": "cold",
+  "limitations": [
+    "These are development profiles, not the frozen 100000-event bench matrix.",
+    "Final 100000-event paired median/RSS and <=90% repeat wall remain bench-lane/HQ integration obligations.",
+    "No original35/SAV/DTA/DB/source bytes were read."
+  ],
+  "paired": [
+    {
+      "cells": 12000,
+      "cold_rss_mb": 157.5,
+      "cold_wall_s": 14.95,
+      "eager_rss_mb": 177.6,
+      "eager_wall_s": 16.63,
+      "events": 12000,
+      "release_hash": "1db9ba7190245322",
+      "rows": 2000,
+      "rss_reduction_pct": 11.3,
+      "wall_reduction_pct": 10.1
+    },
+    {
+      "cells": 30000,
+      "cold_rss_mb": 302.1,
+      "cold_wall_s": 35.52,
+      "eager_rss_mb": 360.2,
+      "eager_wall_s": 40.3,
+      "events": 30000,
+      "release_hash": "d7acbb6636242a40",
+      "rows": 5000,
+      "rss_reduction_pct": 16.1,
+      "wall_reduction_pct": 11.9
+    },
+    {
+      "cells": 60000,
+      "cold_rss_mb": 521.5,
+      "cold_wall_s": 72.17,
+      "eager_rss_mb": 622.8,
+      "eager_wall_s": 80.63,
+      "events": 60000,
+      "release_hash": "6d5ad794d0253b69",
+      "rows": 10000,
+      "rss_reduction_pct": 16.3,
+      "wall_reduction_pct": 10.5
+    }
+  ],
+  "profile": {
+    "cells_per_row": 6,
+    "events_per_row": 6,
+    "measurement": "subprocess process peak RSS via resource.getrusage(RUSAGE_SELF).ru_maxrss; wall perf_counter",
+    "routing_facts_per_row": 4,
+    "sourcefree": "extended test_pre553_route_b_production._fixture"
+  },
+  "schema": "PYAT_W03_W04_MCR_COLD_STAGE_COST@1.0.0",
+  "status": "DEVELOPMENT_PROFILE_ONLY__FINAL_100K_PENDING_BENCH_LANE"
+}

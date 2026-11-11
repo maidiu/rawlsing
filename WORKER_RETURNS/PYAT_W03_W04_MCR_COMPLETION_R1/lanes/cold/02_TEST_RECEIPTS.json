@@ -1,0 +1,32 @@
+{
+  "commands": [
+    {
+      "artifact": "proof_43_sourcefree_junit.xml",
+      "command": "PYTHONPATH=. /usr/local/bin/python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_execution_view.py rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_i03_grouping.py --junitxml=proof_43_sourcefree_junit.xml",
+      "result": "43 passed"
+    },
+    {
+      "artifact": "proof_focused_tests.txt",
+      "command": "PYTHONPATH=. /usr/local/bin/python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_execution_view.py rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_i03_grouping.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_route_b_production.py rawlsing_next/tests/test_pre553_w03_w04_cold.py",
+      "result": "62 passed"
+    },
+    {
+      "artifact": null,
+      "command": "PYTHONPATH=. /usr/local/bin/python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_w03_w04_cold.py",
+      "result": "8 passed"
+    }
+  ],
+  "coverage": [
+    "exact cold/eager release identity",
+    "compact-lane materialization equality",
+    "repeated/ordered/zero/missing topology",
+    "weight-missing and valid-empty fixtures",
+    "duplicate/incomplete/wrong-SHA refusals",
+    "real I03/I05 cold reopen",
+    "carrier execution",
+    "I03 grouping"
+  ],
+  "implementation_commit": "6d3e7439d9001e0b87cd3dbd2450ce811fa41469",
+  "schema": "PYAT_W03_W04_MCR_COLD_TEST_RECEIPTS@1.0.0",
+  "skipped": 0
+}
