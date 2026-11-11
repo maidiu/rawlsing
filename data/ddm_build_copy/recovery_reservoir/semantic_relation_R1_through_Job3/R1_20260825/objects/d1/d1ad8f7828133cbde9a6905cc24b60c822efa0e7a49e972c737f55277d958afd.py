@@ -1,8 +1,0 @@
-import pandas as pd,json,sys,hashlib,csv
-from pathlib import Path
-R=Path(__file__).resolve().parents[1]; errs=[]
-u=pd.read_csv(R/'DENOMINATORS/T03_T11_UNRESOLVED_REVIEW_DENOMINATOR_R8.csv'); w=pd.read_csv(R/'DENOMINATORS/T03_T11_WORKER_ELIGIBLE_SINGLE_RULE_DENOMINATOR_R8.csv'); c=pd.read_csv(R/'DENOMINATORS/T03_T11_VOZHD_CENTRAL_CROSS_RULE_DENOMINATOR_R8.csv'); b=pd.read_csv(R/'DENOMINATORS/T03_T11_BLOCKER_DEPENDENCIES_R8.csv'); a=pd.read_csv(R/'WORKER_SHARDING/WORKER_ASSIGNMENT_MAP.csv'); idx=pd.read_csv(R/'WORKER_SHARDING/WORKER_PACK_INDEX.csv'); s=json.load(open(R/'CURRENT_STATUS_FREEZE.json'))
-checks=[]
-def ck(n,x,d=None): checks.append((n,bool(x),d)); errs.append(n) if not x else None
-ck('unresolved_66',len(u)==66,len(u)); ck('worker_53',len(w)==53,len(w)); ck('central_13',len(c)==13,len(c)); ck('blockers_4',len(b)==4,len(b)); ck('assignment_53',len(a)==53,len(a)); ck('assignment_unique',a.canonical_packet_id.nunique()==53,a.canonical_packet_id.nunique()); ck('assignment_equals_worker_denominator',set(a.canonical_packet_id)==set(w.canonical_packet_id)); ck('central_disjoint_worker',set(c.canonical_packet_id).isdisjoint(set(w.canonical_packet_id))); ck('worker_pack_counts',a.worker.value_counts().sort_index().to_dict()=={'W01':14,'W02':13,'W03':13,'W04':13},a.worker.value_counts().to_dict()); ck('pack_index_4',len(idx)==4,len(idx)); ck('parent_sha',s['parent_zip_sha256']=='394eda4f06b68503317c73a1d22c306b3c5d4b3a5de3cb784de54f36a5a1fa95'); ck('not_s14_frozen',s['s14_authority_frozen'] is False); ck('job3_false',s['job3_authorized'] is False)
-print(json.dumps({'status':'PASS' if not errs else 'FAIL','checks':len(checks),'errors':errs,'details':checks},indent=2)); sys.exit(1 if errs else 0)
