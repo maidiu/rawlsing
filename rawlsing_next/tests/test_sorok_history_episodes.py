@@ -19,7 +19,7 @@ def exact(kind, object_id, body):
     return {"kind": kind, "object_id": object_id, "content_hash": digest(body)}
 
 
-def source_world(tmp_path, monkeypatch, *, grant=True, book_physical=None, institution_details=None):
+def source_world(tmp_path, monkeypatch, *, grant=True, book_physical=None, institution_details=None, book_domain="artifact"):
     monkeypatch.syspath_prepend(str(ENGINE))
     from developmental_recursion.p2_owner import load_p2
     fanin = load_p2().start(tmp_path / "world")
@@ -30,7 +30,7 @@ def source_world(tmp_path, monkeypatch, *, grant=True, book_physical=None, insti
     event = session.events()[-1]
     history = HistoricalWorld(session)
     book = history.admit_surface(SurfaceParticular(
-        event["event_id"], "source:field-ledger-copy-71", "artifact", event["location"],
+        event["event_id"], "source:field-ledger-copy-71", book_domain, event["location"],
         book_physical or {"condition": "worn"}, ("physical", "provenance", "dependencies")))
     tool = history.admit_surface(SurfaceParticular(
         event["event_id"], "source:measuring-instrument-29", "resource", event["location"],
@@ -596,7 +596,8 @@ def test_same_appearance_permits_distinct_pasts_without_private_meaning(tmp_path
     institution = ({} if presentation == 'worn-book' else
                    {'exchange_price': 1000, 'currency': 'synthetic_source_units'})
     fanin, history, book, tool, entities, parent = source_world(
-        tmp_path, monkeypatch, book_physical=physical, institution_details=institution)
+        tmp_path, monkeypatch, book_physical=physical, institution_details=institution,
+        book_domain='collection' if presentation == 'worn-book' else 'item')
     root, frozen = tmp_path / 'world', tmp_path / 'original-bytes'
     before_actor = deepcopy(fanin.session.world().actor_state)
     fanin.close()

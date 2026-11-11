@@ -133,7 +133,9 @@ def main():
         if manifest:
             (args.receipts / "source-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
         (args.receipts / "opening.json").write_text(json.dumps(opening, indent=2) + "\n")
-    if args.independent:
+    if args.independent and not args.resume:
+        # Resume services the existing outbox/requirement; never issue another
+        # foreground work action merely to obtain a new history-provider result.
         import subprocess
         performed = subprocess.run([sys.executable, str(ROOT / "WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py"),
             "--state", str(args.state), "work"], capture_output=True, text=True)
@@ -151,6 +153,12 @@ def main():
         args.endpoint, args.model, api_key=key, timeout_s=120, receipts=args.receipts,
     )
     provider = HistoricalModelProvider(config=config, transport=transport)
+    owner = open_owner(args.state / "actual-p2")
+    try:
+        intervals_before = sum((r.get("domain") or {}).get("mode") == "ACTUAL"
+                               for r in owner.base_owner.fanin.session.read_interval_states())
+    finally:
+        owner.close()
     outcomes = [run_history_worker(args.state, provider=provider) for _ in range(args.jobs)]
     outcome = outcomes[-1]
     owner = open_owner(args.state / "actual-p2")
@@ -167,6 +175,10 @@ def main():
                 event = history.inspect(target["id"])
                 row["inspection"] = history.read_inspection(event["event_id"])
             rows.append(row)
+        processed = history.job(outcome["job_id"]) if outcome.get("job_id") else None
+        processed_read = history.query_depth(processed["target_id"]) if processed else None
+        intervals_after = sum((r.get("domain") or {}).get("mode") == "ACTUAL"
+                              for r in owner.base_owner.fanin.session.read_interval_states())
         graph = history.history_graph()
         inspections = sum(event["kind"] == "INSPECT" for event in owner.base_owner.fanin.session.events())
     finally:
@@ -176,6 +188,8 @@ def main():
     try:
         history = HistoricalWorld(owner.base_owner.fanin.session)
         cold_equal = all(history.target(row["target"]["id"]) == row["target"] for row in rows)
+        cold_world_equal = (history.query_depth(processed["target_id"]) == processed_read
+                            if processed else True)
     finally:
         owner.close()
     result = {"schema": "SOROK_MI_LIVE_EXECUTION@1", "source_grade": "SOURCEFREE_S2",
@@ -183,13 +197,16 @@ def main():
               "outcome": outcome, "outcomes": outcomes, "targets": rows, "cold_target_equal": cold_equal,
               "history_graph": graph, "inspection_count": inspections,
               "independent": args.independent,
+              "processed_target_world_depth": processed_read,
+              "cold_world_read_equal": cold_world_equal,
+              "actual_intervals_before": intervals_before, "actual_intervals_after": intervals_after,
               "native_science": "HOLD", "protected_merge": "NOT_AUTHORIZED"}
     execution = args.receipts / f"execution-{transport.offset + transport.calls:02d}.json"
     execution.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({"status": outcome.get("status"), "provider_calls": transport.calls,
                       "provider_live": provider.live, "cold_target_equal": cold_equal,
                       "receipts": str(args.receipts)}))
-    return 0 if outcome.get("accepted") and cold_equal else 1
+    return 0 if outcome.get("accepted") and cold_equal and cold_world_equal else 1
 
 
 if __name__ == "__main__":
