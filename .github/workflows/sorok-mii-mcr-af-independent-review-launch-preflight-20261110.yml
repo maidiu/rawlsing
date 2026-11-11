@@ -1,0 +1,39 @@
+name: Sorok MII MCR-C Independent Review Prompt Preflight
+on:
+  push:
+    branches:
+      - review/sorok-mii-mcr-af-889-independent-r1
+permissions:
+  contents: read
+jobs:
+  reviewer-contract-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch exact protected, original author, frozen original 54 and seven-review identity source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          git fetch --no-tags --depth=1 origin 0178df262ac04d6fef074a56f6b8448c4d7fdcf9
+          git fetch --no-tags --depth=1 origin e37322219c54df2cd0084162bb0b68d016794a6b
+          git fetch --no-tags --depth=1 origin 8382651eabc5a7fa6ca0fed3447fa6308b3324fc
+          git fetch --no-tags --depth=1 origin 62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff
+          git fetch --no-tags --depth=1 origin 094937d3187ed3c2e215fe2c1f7c1c84f50d9006
+          git fetch --no-tags --depth=1 origin acde0e5f614c5bf03b44ccc46df1cd295f97e61d
+      - name: Execute canonical MCR-C launch verifier and all seven reviewer-source preflight checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-MCR-AF-INDEPENDENT-REVIEW-20261110-R1/mcr_reviewer_inventory.py verify
+      - name: Independently exercise current genuine P6 and challenge counterfeit adapter and actual source denial
+        shell: bash
+        run: |
+          set -euo pipefail
+          git worktree add --detach /tmp/mii-review-runtime 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          export MCR_QUALIFIED_RUNTIME_ROOT=/tmp/mii-review-runtime
+          export MCR_QUALIFIED_RUNTIME_SHA=4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --counterfeit-attack
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --baseline
+          git worktree remove --force /tmp/mii-review-runtime
