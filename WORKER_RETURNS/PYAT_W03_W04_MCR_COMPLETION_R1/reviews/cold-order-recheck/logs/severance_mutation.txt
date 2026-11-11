@@ -1,0 +1,15 @@
+Exact temporary mutation (never committed; review checkout only):
+File: rawlsing_next/_pre553_w03_cold_compact.py
+Before (candidate; blob 06eefd8fe8c1839854a783c78045b170627806f2):
+  tuple(sorted(rows, key=lambda row: self.event_keys[row]))
+After (pre-repair defect; temporary):
+  tuple(rows)
+Observed after mutation:
+  test_cold_selector_sequence_and_yield_match_eager: 3 failed by assertion
+  cold_parity_probe: event_sequence_parity=false, selector_yield_parity=false,
+    selector_yield_differences=3, consumer_material_parity=true
+Restored:
+  git checkout -- rawlsing_next/_pre553_w03_cold_compact.py
+  blob = 06eefd8fe8c1839854a783c78045b170627806f2
+  source status clean; post-restore new test 3 passed; cold file 18 passed;
+  post-restore probe event_sequence=true/selector_yield=true/differences=0.

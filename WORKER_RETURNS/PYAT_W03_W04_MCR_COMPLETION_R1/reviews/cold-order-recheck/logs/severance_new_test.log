@@ -1,0 +1,100 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+__ test_cold_selector_sequence_and_yield_match_eager[routed-ordered-repeated] __
+
+kwargs = {}
+
+    @pytest.mark.parametrize(
+        "kwargs",
+        ({}, {"missing_weight": True}, {"valid_empty": True}),
+        ids=("routed-ordered-repeated", "missing-optional-weight", "valid-empty"),
+    )
+    def test_cold_selector_sequence_and_yield_match_eager(kwargs):
+        fx = _route_fixture(**kwargs)
+        eager = build_validated_source_backed_c11_release_from_stream(
+            fx["stream"], fx["projection"])
+        cold = build_cold_source_backed_c11_release(
+            fx["stream"], fx["projection"])
+        for universe in fx["projection"].universes:
+            eager_index = _build_release_index(eager, universe.ref)
+            cold_index = _build_release_index(cold, universe.ref)
+            assert set(eager_index.events_by_respondent) == set(
+                cold_index.events_by_respondent)
+            for respondent_key, eager_events in eager_index.events_by_respondent.items():
+                cold_events = cold_index.events_by_respondent[respondent_key]
+                eager_refs = [event.ref.key for event in eager_events]
+                cold_refs = [event.ref.key for event in cold_events]
+>               assert cold_refs == eager_refs
+E               AssertionError: assert ['RespondentE...d8753c475377'] == ['RespondentE...7661a64cef6a']
+E
+E                 At index 0 diff: 'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:75c983c270ea0b59418e3f54c4068cb68e43998bc86cd489240d20fff4a6b216|75c983c270ea0b59418e3f54c4068cb68e43998bc86cd489240d20fff4a6b216' != 'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:30c2f5bbaad62e1d414ef8ce8a49c24ac4a8dfea1a05b40b937bd8753c475377|30c2f5bbaad62e1d414ef8ce8a49c24ac4a8dfea1a05b40b937bd8753c475377'
+E                 Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_w03_w04_cold.py:178: AssertionError
+__ test_cold_selector_sequence_and_yield_match_eager[missing-optional-weight] __
+
+kwargs = {'missing_weight': True}
+
+    @pytest.mark.parametrize(
+        "kwargs",
+        ({}, {"missing_weight": True}, {"valid_empty": True}),
+        ids=("routed-ordered-repeated", "missing-optional-weight", "valid-empty"),
+    )
+    def test_cold_selector_sequence_and_yield_match_eager(kwargs):
+        fx = _route_fixture(**kwargs)
+        eager = build_validated_source_backed_c11_release_from_stream(
+            fx["stream"], fx["projection"])
+        cold = build_cold_source_backed_c11_release(
+            fx["stream"], fx["projection"])
+        for universe in fx["projection"].universes:
+            eager_index = _build_release_index(eager, universe.ref)
+            cold_index = _build_release_index(cold, universe.ref)
+            assert set(eager_index.events_by_respondent) == set(
+                cold_index.events_by_respondent)
+            for respondent_key, eager_events in eager_index.events_by_respondent.items():
+                cold_events = cold_index.events_by_respondent[respondent_key]
+                eager_refs = [event.ref.key for event in eager_events]
+                cold_refs = [event.ref.key for event in cold_events]
+>               assert cold_refs == eager_refs
+E               AssertionError: assert ['RespondentE...994d587d120c'] == ['RespondentE...392c6795e4b6']
+E
+E                 At index 0 diff: 'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:b6200e06c455e35dd878c2164172cfe301fb2d06005e879a0b0001c167bfb6bb|b6200e06c455e35dd878c2164172cfe301fb2d06005e879a0b0001c167bfb6bb' != 'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:1e0968800e3e33a16e0c81af3a870a1ca77ca22a265af392faa30ea2e0e1f523|1e0968800e3e33a16e0c81af3a870a1ca77ca22a265af392faa30ea2e0e1f523'
+E                 Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_w03_w04_cold.py:178: AssertionError
+________ test_cold_selector_sequence_and_yield_match_eager[valid-empty] ________
+
+kwargs = {'valid_empty': True}
+
+    @pytest.mark.parametrize(
+        "kwargs",
+        ({}, {"missing_weight": True}, {"valid_empty": True}),
+        ids=("routed-ordered-repeated", "missing-optional-weight", "valid-empty"),
+    )
+    def test_cold_selector_sequence_and_yield_match_eager(kwargs):
+        fx = _route_fixture(**kwargs)
+        eager = build_validated_source_backed_c11_release_from_stream(
+            fx["stream"], fx["projection"])
+        cold = build_cold_source_backed_c11_release(
+            fx["stream"], fx["projection"])
+        for universe in fx["projection"].universes:
+            eager_index = _build_release_index(eager, universe.ref)
+            cold_index = _build_release_index(cold, universe.ref)
+            assert set(eager_index.events_by_respondent) == set(
+                cold_index.events_by_respondent)
+            for respondent_key, eager_events in eager_index.events_by_respondent.items():
+                cold_events = cold_index.events_by_respondent[respondent_key]
+                eager_refs = [event.ref.key for event in eager_events]
+                cold_refs = [event.ref.key for event in cold_events]
+>               assert cold_refs == eager_refs
+E               AssertionError: assert ['RespondentE...5d07227350f8'] == ['RespondentE...1bba0abe32da']
+E
+E                 At index 0 diff: 'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:7c34a20c216c14c451a4b4f7bf8266021689cb81a8ff4310c266d5cabf5a2536|7c34a20c216c14c451a4b4f7bf8266021689cb81a8ff4310c266d5cabf5a2536' != 'RespondentEvent@1.0.0|urn:rawlsing:pre553:RespondentEvent:sha256:0e570951b88000827724acb1a84fb65e6b12c180a4ea61c551d8e74749d9280c|0e570951b88000827724acb1a84fb65e6b12c180a4ea61c551d8e74749d9280c'
+E                 Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_w03_w04_cold.py:178: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_w03_w04_cold.py::test_cold_selector_sequence_and_yield_match_eager[routed-ordered-repeated]
+FAILED rawlsing_next/tests/test_pre553_w03_w04_cold.py::test_cold_selector_sequence_and_yield_match_eager[missing-optional-weight]
+FAILED rawlsing_next/tests/test_pre553_w03_w04_cold.py::test_cold_selector_sequence_and_yield_match_eager[valid-empty]
+3 failed in 1.16s
