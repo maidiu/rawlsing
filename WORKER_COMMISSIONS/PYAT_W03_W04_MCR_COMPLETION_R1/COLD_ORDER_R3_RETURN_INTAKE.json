@@ -1,0 +1,18 @@
+{
+  "job": "pyat-w03-w04-mcr-cold-order-repair-r3",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-cold-order-repair-r3/completion.json",
+  "exit_code": 0,
+  "implementation": "f9aedf8e2b570174881cef627dc6a24b78031ed7",
+  "return": "8f36fceb8fc518a8be03dfef6c32b4124f1d8867",
+  "direct_remote_verified": true,
+  "actual_model_verified": {
+    "id": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "variant": "max"
+  },
+  "integration": "bcc176d7719e57d1e88b7f395f0280f72b0a74c5",
+  "author_evidence": "Exact independent probe orderRED -> GREEN;18cold/43sourcefree/73focused tests; reviewed source diff matches CC-F01 exact sort",
+  "disposition": "Retained in integration as candidate; independent focused recheck reserved, no full acceptance",
+  "next_job": "pyat-w03-w04-mcr-cold-order-focused-recheck-r1",
+  "goal_complete": false
+}

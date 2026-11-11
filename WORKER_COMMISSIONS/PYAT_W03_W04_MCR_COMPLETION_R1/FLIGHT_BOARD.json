@@ -370,11 +370,29 @@
       "job": "pyat-w03-w04-mcr-cold-order-repair-r3",
       "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-cold-order-repair-r3",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_INTEGRATED_PENDING_FOCUSED_INDEPENDENT_RECHECK",
       "candidate_base": "26f70635e8493c7759fa087b17da269104bd8922",
       "scope": "CC-F01 exact cold selector order",
       "pid": 68493,
-      "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work."
+      "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work.",
+      "candidate": "8f36fceb8fc518a8be03dfef6c32b4124f1d8867",
+      "actual_model": {
+        "id": "msg_1c89fbed4001UQotjRvuvNpUFn",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794367275087,
+          "streamed": 1794367294296,
+          "completed": 1794367294737
+        }
+      },
+      "terminal": {
+        "exit_code": 0
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-verifier-repair-r1",
@@ -385,10 +403,19 @@
       "scope": "CC-F05 faithful executable MCR artifact/external evidence validator repair",
       "pid": 68503,
       "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work."
+    },
+    {
+      "job": "pyat-w03-w04-mcr-cold-order-focused-recheck-r1",
+      "session": "ses_e47b17f8fffedazgQeSGbql4HH",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "bcc176d7719e57d1e88b7f395f0280f72b0a74c5",
+      "scope": "Independent exact CC-F01 recheck, not whole MCR receiving",
+      "pid": 79991
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Dispatch independent cold-order and MCR verifier repair reservations alongside benchmark economic repair. CC-F03/F04 wait for exclusive bench/test/CI author return; no overlapping writes.",
+  "next_action": "Launch focused original-reviewer CC-F01 recheck while exact benchmark and MCR verification repairs continue; no fourth job/full matrix.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
