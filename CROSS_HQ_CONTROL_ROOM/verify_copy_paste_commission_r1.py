@@ -338,6 +338,14 @@ def verify_return(commission, returned, candidate_sha, root, *, returned_path: P
     if not isinstance(candidate_sha, str) or not HEX40.fullmatch(candidate_sha):
         return {"status": "RED_INCOMPLETE", "errors": ["EXACT_CANDIDATE_SHA_REQUIRED"]}
     evidence_externality = _evidence_externality(root, candidate_sha, returned_path, errors)
+    if returned_path is not None:
+        try:
+            path_text = Path(returned_path).read_text(encoding="utf-8")
+        except (OSError, UnicodeError):
+            errors.append("MCR_C_EVIDENCE_PATH_UNREADABLE")
+        else:
+            if path_text != returned:
+                errors.append("MCR_C_EVIDENCE_TEXT_PATH_MISMATCH")
     actual_head = _git(root, "rev-parse", "HEAD")
     if not actual_head or actual_head.decode("ascii", "replace").strip() != candidate_sha:
         errors.append("MCR_C_CHECKOUT_NOT_EXACT_CANDIDATE")
