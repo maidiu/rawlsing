@@ -52,3 +52,17 @@ Authority39/40 keep 44 LMX and 30 LMQ debts and replacement/supersession tests. 
 **Executable no-drop/consumer check:** the R3 `verify_zak00_v2_mcrc_tasks.py --claim ZAK00-PARENT-01` and `--claim ZAK00-PARENT-03` must verify this table has exactly one ZAK-01..ZAK-11 primary jurisdiction and five nonblank columns per row, and that all eleven frozen original child task/output sets remain intact. Deleting this map while retaining the charter, 182 inherited identities, 47 source pins and 12 formatted launch files must fail BOTH PARENT-01 and PARENT-03.
 
 **Qualified receiving vs planned routing:** #814 (atlas authoring), #815 (forward hostile), #816 (reverse hostile) and #817 (terminal authority) are separately existing jurisdictional receivers. A named dependency is a required route, not an acknowledgment. A prepared issue under the original `maidiu` author account is not an independent review or downstream grant.
+
+
+## HQ-A prospective PARENT-06 — separate upstream receiving and downstream debts
+
+The controlling [HQ interpretation A](https://github.com/maidiu/rawlsing/issues/886#issuecomment-6785272327) limits upstream ZAK00 PARENT-06 completion to a qualified source-graded **S0–S1 documentary packet** accepted independently at #888 ZAK00R. The complete machine-readable four-destination packet is retained in the **existing** `05_EXACT_HEAD_INDEPENDENT_RECEIVING_HANDOFF.md`; it is not an extra atlas or a fourth receiving court. This paragraph prospectively supersedes only the R3/R4 claim that four later acknowledgments are required before the upstream documentary construction tranche can be received.
+
+| Downstream existing jurisdiction (debt) | Distinct later owner and claim | Present grade/status |
+|---|---|---|
+| `ZAK00→814-RECEIVE` | #814 ZL-15 source-graded canonical atlas/custody-delta integrator; must independently adopt a reversible accepted delta at exact applicable source and candidate head | NOT_RECEIVED / NOT_RUN, separate from S1 upstream acceptance |
+| `ZAK00→815-FORWARD` | #815 ZL-16 historical-forward reviewer; must independently test selected legacy rule to actual effect/reader from separately qualified #814/ZAK evidence | NOT_RECEIVED / NOT_RUN, no borrowed #814/#816 verdict |
+| `ZAK00→816-REVERSE` | #816 ZL-17 current-first-consumer backward reviewer; must independently trace read result to precise historical rule, negative and same-grain candidate | NOT_RECEIVED / NOT_RUN, no borrowed #815 verdict |
+| `ZAK00→817-FINAL` | #817 separate P4R finite-closure receiver, following accepted joined #814/#815/#816 deltas and independent Pyat/Sorok permissions where implicated | NOT_RECEIVED / NOT_RUN, distinct estate/function/zero-loss/native judgments |
+
+The explicit first **upstream reviewing** consumer is independent #888 ZAK00R; the first **dispatch** consumer is qualified PROGRAMMA. The four downstream names are *jurisdictions*, **not authenticated human reviewer credentials**. None is authorized, executed or accepted by the author, and all source/scientific/actor rights remain with their competent owners. The **11 original flight jurisdictions and the 94 authored contractual obligations are unchanged**, including the S0–S1 parallel eligibility of ZAK01/02/03/04/08; no F03 pilot or four-later-courts global dependency.

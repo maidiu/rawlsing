@@ -1,24 +1,69 @@
 {
-  "schema": "ZAK00_V2_MCRC_R3_CONTRACT_SPECIFIC_AUTHOR_EVIDENCE",
-  "frozen_old_author_head": "61e23d77d72dd349c48a106636336403f3caed86",
-  "contract_delta": "user-authorized explicit R3 repair; prior 24/24 source green not transferable to new source SHA",
+  "schema": "ZAK00_HQ_PARENT06_A_SOURCE_PACKET_AUTHOR_EVIDENCE_R1",
   "obligation_id": "ZAK00-PARENT-06",
-  "original_parent_requirements": "Explicit qualified handoff to #814–817 and competent Pyat/Sorok/source/science owners, finite archaeological stop grades distinct from current native-zero-loss claims.",
-  "corrected_source_tuple": {
-    "path": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/05_EXACT_HEAD_INDEPENDENT_RECEIVING_HANDOFF.md",
-    "commit": "61e23d77d72dd349c48a106636336403f3caed86",
-    "blob": "917d65589d9ac803d48ee78e153d1bfc73ba305b"
+  "original_requirement": "Explicit qualified handoff to #814–817 and competent Pyat/Sorok/source/science owners, finite archaeological stop grades distinct from current native-zero-loss claims.",
+  "authority_cut": "ZAK00-HQ-PARENT06-A-20261110-R1",
+  "authority_url": "https://github.com/maidiu/rawlsing/issues/886#issuecomment-6785272327",
+  "authority_grade": "COMMISSIONER_INTERPRETATION_OF_UPSTREAM_S0_S1_CONSTRUCTION_NOT_INDEPENDENT_ACCEPTANCE",
+  "frozen_predecessor": {
+    "commit": "88810a8c5976604778c4a9630d7100f1ba56663b",
+    "source_blob": "1c359ee6a71edb3d9c8b19fb946b9ca04656de73"
   },
-  "corrected_required_output": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/05_EXACT_HEAD_INDEPENDENT_RECEIVING_HANDOFF.md",
-  "independently_reproducible_check": "COURT: qualified #814/#815/#816/#817 receiving owners must independently acknowledge this exact candidate and the source-qualified handoff; run python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim ZAK00-PARENT-06 for fail-closed blocker and verify independent credential/actual issue receipts before any PASS",
-  "frozen_positive": "PASS=four separately verified competent receiving acknowledgments tied to current immutable #887 candidate, explicit #814/#815/#816/#817 jurisdiction and accept/hold grade, recorded reviewer credential and independent owner acceptance; scientific/native/actor rights independently held unless granted",
-  "frozen_negative": "RED=all 182 identity and 47 source checks pass and a plausible handoff file exists, but #814–817 only have PREPARED/NOT_LAUNCHED issues, an author-written comment with no independent acknowledgment, an old/floating candidate SHA or no competent Pyat/Sorok issuer",
-  "exact_receiving_consumer": "Distinct real receiving decisions at #814, #815, #816 and #817; competent Pyat/Sorok/source/science rights owners separately",
-  "competent_reviewer": "Credential-distinct qualified #814–817 receiving owner(s) and source/science/actor authorities, NOT maidiu ZAK00 author",
-  "minimum_grade": "AUTHORITY",
-  "planned_current_candidate_proof": "CI must execute at postcommit SHA; an author's precommit JSON cannot confer PASS",
-  "previous_verified_court": "GitHub Actions 42906583428 at author frozen 61e23d77d72dd349c48a106636336403f3caed86; S1 historical custody only",
-  "signed_independent_acceptance": "NOT_ATTESTED",
-  "original35_and_current_native": "NOT_RUN",
-  "current_claim_status": "BLOCKED_EXACT_DEPENDENCY__INDEPENDENT_814_815_816_817_ACK_MISSING"
+  "successor_identity": "GIT_HEAD_AND_CONTRACT_SHA256_CONFIRMED_POSTCOMMIT_BY_ACTUAL_GITHUB_ACTIONS_RUN_NO_SELF_REFERENTIAL_SHA",
+  "output_file": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/05_EXACT_HEAD_INDEPENDENT_RECEIVING_HANDOFF.md",
+  "upstream_scope": "ZAK00_HQ_PARENT06_A_20261110_R1_UPSTREAM_S1_PACKET",
+  "source_inventory": {
+    "inherited_identities": 182,
+    "original_first_fourteen_fields": "BYTE_IDENTICAL_R1_R2",
+    "frozen_source_git_blobs": 47,
+    "descendant_contracts": 94,
+    "all_eleven_territories": "RETAINED"
+  },
+  "source_graded_preflight": {
+    "test": "python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --upstream-packet",
+    "negative": "python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --upstream-mutations",
+    "precommit_result": "NOT_RUN_AT_NEW_SUCCESSOR_SHA__EVALUATE_FROM_POSTCOMMIT_CI_NOT_THIS_AUTHOR_JSON",
+    "grade": "S1_AUTHOR_CONSTRUCTION_ONLY_NOT_S1_INDEPENDENT_RECEIVING"
+  },
+  "reviewer_first_consumer": "#888 ZAK00R GENUINELY_INDEPENDENT_OWNER_NOT_YET_ATTESTED",
+  "dispatch_consumer": "PROGRAMMA qualified dispatcher after independent receiving",
+  "downstream_debts": [
+    {
+      "id": "ZAK00→814-RECEIVE",
+      "role": "ZL-15 atlas/custody integrator",
+      "status": "NOT_RECEIVED"
+    },
+    {
+      "id": "ZAK00→815-FORWARD",
+      "role": "ZL-16 historical forward independent reviewer",
+      "status": "NOT_RECEIVED"
+    },
+    {
+      "id": "ZAK00→816-REVERSE",
+      "role": "ZL-17 current-backward first reader reviewer",
+      "status": "NOT_RECEIVED"
+    },
+    {
+      "id": "ZAK00→817-FINAL",
+      "role": "ZL-P4R separate terminal closure reviewer",
+      "status": "NOT_RECEIVED"
+    }
+  ],
+  "separate_competent_issuers": {
+    "Pyat": "NOT_GRANTED",
+    "Sorok": "NOT_GRANTED",
+    "original_source": "NOT_GRANTED",
+    "scientific": "NOT_GRANTED"
+  },
+  "forbidden_promotions": [
+    "AUTHOR_S1_PACKET_TO_INDEPENDENT_888_ACCEPT",
+    "SOURCE_ID_TO_ORIGINAL_OPERATION",
+    "SOURCEFREE_TO_NATIVE35",
+    "FUNCTION_MAP_TO_ZERO_LOSS",
+    "GENERIC_OWNER_TO_ACTOR_SCIENCE",
+    "FOUR_PREPARED_ISSUES_TO_ACTUAL_ACKNOWLEDGMENT"
+  ],
+  "author_grade": "INCOMPLETE_S0_UNTIL_888_NONAUTHOR_REVIEW",
+  "historical_r4_blob": "e5c9bcbfc1690134c0d51fe2e6b2e626fb41d13a",
+  "source_path_identity": "R2 1ebd603aa8f5b6d551363336a632a0c364b85f17 / 182 IDs / 47 verified source blob tuples"
 }

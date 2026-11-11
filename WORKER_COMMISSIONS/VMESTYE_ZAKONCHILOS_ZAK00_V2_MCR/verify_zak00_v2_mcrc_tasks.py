@@ -203,6 +203,8 @@ FROZEN_PYTHON_HEAD = "61e23d77d72dd349c48a106636336403f3caed86"
 RECEIVING_ISSUES = (814, 815, 816, 817)
 RECEIVING_SCOPE_R4 = "ZAK00_R4_SCOPED_SOURCE_HANDOFF"
 RECEIVING_SCOPE_STALE_R3 = "ZAK00_R3_SCOPED_SOURCE_HANDOFF"
+UPSTREAM_SCOPE_HQ_A = "ZAK00_HQ_PARENT06_A_20261110_R1_UPSTREAM_S1_PACKET"
+UPSTREAM_HQ_RULING = "https://github.com/maidiu/rawlsing/issues/886#issuecomment-6785272327"
 FROZEN_R3_SOURCE_HEAD = "b07a24da517016d91da7ddcd92a0b6c54d07911d"
 ORIGINAL_AUTHOR_ACCOUNT = "maidiu"
 
@@ -262,12 +264,13 @@ def _validate_claim_contract_bindings(obligations):
         assert ob["check_kind"] == "EXEC" and ob["check"].startswith("RUN: python3 ")
         assert ("--claim " + oid) in ob["check"]
     ack = obligations["ZAK00-PARENT-06"]
-    assert ack["check_kind"] == "INDEPENDENT" and ack["minimum_grade"] == "AUTHORITY"
-    assert all(("#%d" % n) in ack["consumer"] for n in RECEIVING_ISSUES)
-    assert all(str(n) in ack["result"] for n in RECEIVING_ISSUES)
-    assert "acknowledg" in ack["positive"].lower()
-    assert RECEIVING_SCOPE_R4 in ack["positive"] and RECEIVING_SCOPE_R4 in ack["check"], "R4 positive scope not frozen in MCR-C obligation"
-    assert RECEIVING_SCOPE_STALE_R3 in ack["negative"], "stale R3 negative scope missing"
+    assert ack["check_kind"] == "INDEPENDENT" and ack["minimum_grade"] == "S1"
+    assert ack.get("authority_cut") == "ZAK00-HQ-PARENT06-A-20261110-R1"
+    assert ack.get("upstream_scope") == UPSTREAM_SCOPE_HQ_A
+    assert "#888" in ack["consumer"] and "packet" in ack["result"].lower()
+    assert all(("#%d" % n) in ack["result"] for n in RECEIVING_ISSUES)
+    assert "source-qualified" in ack["positive"].lower()
+    assert "downstream" in ack["negative"].lower()
     return True
 
 
@@ -355,6 +358,115 @@ def evaluate_acknowledgments(acks=None, candidate_sha=None, qualification_verifi
             "not_author_CERTIFIED_PASS": True,
             "scientific_actor_issuer": "NOT_GRANTED"}
 
+
+UPSTREAM_EXPECTED_DESTINATIONS = [{"issue":814,"owner_role":"ZL-15 canonical atlas and custody-delta integrator","claim":"Receive only independently accepted source-graded 182/47 custody and reversible canonical atlas delta; no 73 heuristic-status or 235 historical fate promotion","product_or_dependency":"ZAK-10 reviewed atlas/custody delta; existing canonical 1740-row atlas","downstream_first_reader":"ZL-15 #814 versioned delta intake NOT_RUN","receipt_needed":"Competent distinct integrator verifies exact candidate and source-grade delta; report ACCEPT/HOLD and preimage identity"},{"issue":815,"owner_role":"ZL-16 independent historical-forward source-to-consumer reviewer","claim":"Test historically selected source/version/rule forward through applicable current reader with same-input denial; no static source label as executed","product_or_dependency":"Accepted #814 source-graded candidate plus ZAK05/10 forward edges","downstream_first_reader":"ZL-16 #815 historical-forward reviewer NOT_RUN","receipt_needed":"Distinct #815 reviewer exact relevant heads with executed or typed non-run forward negative; cannot borrow #814/#816"},{"issue":816,"owner_role":"ZL-17 independent current-backward first-consumer reviewer","claim":"Reverse current output and actual first reader to original selected authority; unequal head/grain and unissued issuer explicitly refuse","product_or_dependency":"Accepted #814 candidate and current selected first-reader evidence of ZAK06/07/10","downstream_first_reader":"ZL-17 #816 current-backward reviewer NOT_RUN","receipt_needed":"Distinct #816 reviewer same candidate heads/operation/grain, before/deny/restore or typed proof gap; cannot borrow #815"},{"issue":817,"owner_role":"ZL-P4R separate terminal finite-closure reviewer","claim":"Separate ESTATE_DISCOVERY_CLOSED_AT_PINNED_SCOPE, FUNCTIONAL_MAP_COMPLETE_WITH_TYPED_GAPS, CURRENT_MACHINE_ZERO_LOSS_PROVED and ALL35_NATIVE_WORLD_PRODUCT_ACCEPTED; do not grant latter two","product_or_dependency":"Joined #814 delta plus independently received #815/#816, reciprocal Pyat/Sorok scope grants when actually issued","downstream_first_reader":"ZL-P4R #817 terminal three-court reviewer NOT_RUN","receipt_needed":"Competent separate #817 final verdict with explicit downstream gaps; original35/actor are unissued until their own owners approve"}]
+UPSTREAM_S1_STOPS = {
+    "status": "PREPARED_DOWNSTREAM_NOT_ACCEPTED",
+    "upstream_grade": "S1_SOURCE_QUALIFIED_HANDOFF_ONLY",
+    "current_applied_rule": "NOT_PROVED",
+    "current_first_consumer_effect": "NOT_RUN",
+    "machine_zero_loss": "NOT_PROVED",
+    "original35_native": "NOT_RUN",
+    "sorok_actor_science": "NOT_ISSUED",
+    "downstream_acknowledgment": "NOT_RECEIVED",
+    "independent_source_approval": "NOT_RECEIVED",
+}
+UPSTREAM_IDENTITY_BLOB = "e3e7a72e43edd7b234a290f293f057f72f73c1ca"
+UPSTREAM_PINS_BLOB = "5c4c7212f8bb6b8521f6ad20d14bec70b1f2abf9"
+
+
+def validate_upstream_packet(source=None):
+    """Author S1 source packet check; no reviewer authority issued."""
+    path = CLAIM_OUTPUTS["ZAK00-PARENT-06"]
+    doc = _artifact_text(path) if source is None else source
+    assert doc.count("ZAK00_UPSTREAM_HANDOFF_MATRIX_BEGIN") == 1
+    assert doc.count("ZAK00_UPSTREAM_HANDOFF_MATRIX_END") == 1
+    section = doc.split("## AUTHORITATIVE PROSPECTIVE PARENT-06 CORRECTION", 1)[1]
+    assert UPSTREAM_HQ_RULING in section
+    body = section.split("ZAK00_UPSTREAM_HANDOFF_MATRIX_BEGIN", 1)[1].split(
+        "ZAK00_UPSTREAM_HANDOFF_MATRIX_END", 1)[0]
+    rows = [json.loads(line[len("ZAK00_HANDOFF: "):],
+                       object_pairs_hook=_reject_duplicate_keys)
+            for line in body.strip().splitlines() if line.strip()]
+    assert len(rows) == 4 and {r["issue"] for r in rows} == set(RECEIVING_ISSUES)
+    expected = {r["issue"]: r for r in UPSTREAM_EXPECTED_DESTINATIONS}
+    for r in rows:
+        e = expected[r["issue"]]
+        for k, value in e.items():
+            assert r[k] == value, (r["issue"], "source-qualified destination role", k)
+        assert r["upstream_scope"] == UPSTREAM_SCOPE_HQ_A
+        assert r["first_consumer"] == "#888 independent ZAK00R S0-S1 construction reviewer"
+        assert r["dispatch_consumer"] == "PROGRAMMA qualified dispatcher after independent ZAK00R S1 receiving"
+        assert r["original_families"] == "29F/58AR/44LMX/30LMQ/13P1/8risk"
+        assert r["obligations_total"] == 94
+        assert r["source_ids"] == {"path": R2_INHERITANCE,
+            "commit": "1ebd603aa8f5b6d551363336a632a0c364b85f17",
+            "blob": UPSTREAM_IDENTITY_BLOB,
+            "identity_column": "zak_evidence_key", "distinct_count": 182}
+        assert r["source_pins"] == {"path": R2_INHERITANCE.replace(
+            "ZAK_INHERITED_OBLIGATIONS.tsv", "ZAK_SOURCE_BASELINE.tsv"),
+            "commit": "1ebd603aa8f5b6d551363336a632a0c364b85f17",
+            "blob": UPSTREAM_PINS_BLOB, "distinct_count": 47}
+        for k, value in UPSTREAM_S1_STOPS.items():
+            assert r[k] == value, (r["issue"], "grade/issuer laundering", k)
+        assert r["negative"].startswith("RED if omission, duplicate/role swap, generic issuer")
+    assert "original35" in section and "F03" in section
+    stats = validate_parent()
+    assert stats["first_14_equal"] == 182 and stats["exact_source_pins"] == 47
+    for n in range(1, 12):
+        validate_one(n)
+    return {"id": "ZAK00-PARENT-06",
+            "source_gate": "PASS_SOURCE_QUALIFIED_UPSTREAM_PACKET_NOT_INDEPENDENT_RECEIVING",
+            "four_destination_ids": sorted(r["issue"] for r in rows),
+            "original_identities": 182, "source_blobs": 47, "descendant_contracts": 94,
+            "next_reader": "#888 independently qualified ZAK00R",
+            "downstream_receipts": "UNISSUED_NOT_UPSTREAM_PREREQUISITE",
+            "independent_S1_acceptance": "NOT_ISSUED"}
+
+
+def upstream_packet_mutations():
+    text = _artifact_text(CLAIM_OUTPUTS["ZAK00-PARENT-06"])
+    assert validate_upstream_packet(text)["original_identities"] == 182
+    src = [line for line in text.splitlines() if line.startswith("ZAK00_HANDOFF: ")]
+    rows = [json.loads(x[len("ZAK00_HANDOFF: "):]) for x in src]
+    def mutate(i, key, value):
+        x = [dict(r) for r in rows]
+        x[i][key] = value
+        out = text
+        for old, new in zip(src, x):
+            out = out.replace(old, "ZAK00_HANDOFF: " + json.dumps(new), 1)
+        return out
+    tests = [text.replace(src[-1] + "\n", "", 1),
+             mutate(0, "owner_role", rows[1]["owner_role"]),
+             mutate(0, "owner_role", "generic owner"),
+             mutate(0, "claim", rows[1]["claim"]),
+             mutate(0, "downstream_acknowledgment", "ACCEPTED"),
+             mutate(0, "current_first_consumer_effect", "PROVED"),
+             mutate(0, "machine_zero_loss", "PROVED"),
+             mutate(0, "original35_native", "PASS"),
+             mutate(0, "sorok_actor_science", "ISSUED"),
+             mutate(0, "upstream_scope", RECEIVING_SCOPE_R4),
+             mutate(0, "first_consumer", "#814"),
+             mutate(0, "receipt_needed", "PASS"),
+             mutate(0, "negative", "no negative"),
+             mutate(0, "status", "ACCEPTED"),
+             mutate(0, "source_ids", {**rows[0]["source_ids"], "distinct_count": 183}),
+             mutate(0, "source_pins", {**rows[0]["source_pins"], "blob": "0"*40})]
+    count = 0
+    for idx, mutation in enumerate(tests):
+        assert mutation != text, ("mutation changed no bytes", idx)
+        try:
+            validate_upstream_packet(mutation)
+        except (AssertionError, ValueError, KeyError, IndexError):
+            count += 1
+        else:
+            raise AssertionError("false-positive upstream packet test %d" % idx)
+    assert count == 16
+    return {"status": "PASS_16_OF_16_HQ_A_UPSTREAM_PACKET_NEGATIVES",
+            "independent_receiver": "#888 NOT_RUN",
+            "downstream_issues": "814/815/816/817 SEPARATE_UNRECEIVED"}
+
+
 def prove_parent_claim(oid, prompt_text=None, substitutions=None, *, acknowledgments=None, candidate_sha=None, qualification_verifier=None, ci_context=None):
     obs = _contract_obligations(prompt_text)
     _validate_claim_contract_bindings(obs)
@@ -410,11 +522,14 @@ def prove_parent_claim(oid, prompt_text=None, substitutions=None, *, acknowledgm
         return {"id": oid, "status": "PASS_AUTHOR_EXEC_CURRENT_CI_SOURCE_PROVENANCE",
                 "historical_python": "NOT_RUN", "later_verified_run": FROZEN_PYTHON_COURT,
                 "candidate_ci": ci}
-    # The live authority state is NOT a constant or a keyword in an author document.
+    # HQ #886 A: validate upstream handoff independently of downstream
+    # #814-817 acknowledgments. Reviewer #888 still holds the S1 decision.
     assert oid == "ZAK00-PARENT-06"
-    for n in RECEIVING_ISSUES:
-        assert ("#%d" % n) in doc, "no named receiving jurisdiction #%d" % n
-    return evaluate_acknowledgments(acknowledgments, candidate_sha, qualification_verifier)
+    result = validate_upstream_packet(doc)
+    return {"id": oid, "status": "BLOCKED_EXACT_DEPENDENCY",
+            "reason": "QUALIFIED_NONAUTHOR_888_S1_PACKET_REVIEW_NOT_PERFORMED",
+            "packet_source_check": result["source_gate"],
+            "downstream_receiving": "FOUR_SEPARATE_UNRECEIVED_INTEGRATION_DEBTS"}
 
 
 def run_claim_gates(prompt_text=None, substitutions=None, *, acknowledgments=None, candidate_sha=None, qualification_verifier=None, ci_context=None):
@@ -704,6 +819,50 @@ def claim_mutation_test():
             "authority_acknowledgment_negative": "BLOCKED_EXACT_DEPENDENCY",
             "not_scientific_acceptance": True}
 
+
+def verify_hq_a_narrow_conservation():
+    """Prevent the authorized PARENT-06 correction from dropping any other mission."""
+    base = "88810a8c5976604778c4a9630d7100f1ba56663b"
+    contract_path = Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md"
+    before, _ = load_contract(source_bytes(contract_path.relative_to(ROOT).as_posix(), base))
+    after, _ = load_contract(contract_path.read_text(encoding="utf-8"))
+    old = {x["id"]: x for x in before["MCR_OBLIGATION"]}
+    new = {x["id"]: x for x in after["MCR_OBLIGATION"]}
+    assert set(old) == set(new) and len(new) == 24
+    assert all(old[k] == new[k] for k in old if k != "ZAK00-PARENT-06"), (
+        "protected 23 non-PARENT06 obligations were modified")
+    a, b = old["ZAK00-PARENT-06"], new["ZAK00-PARENT-06"]
+    for field in ("id", "baseline_requirement", "output", "evidence",
+                  "check_kind", "failure", "supporting_artifacts"):
+        assert a[field] == b[field], ("original PARENT06 field changed", field)
+    assert a["minimum_grade"] == "AUTHORITY" and b["minimum_grade"] == "S1"
+    assert b["authority_cut"] == "ZAK00-HQ-PARENT06-A-20261110-R1"
+    assert b["upstream_scope"] == UPSTREAM_SCOPE_HQ_A
+    oldscope, newscope = before["MCR_SCOPE"][0], after["MCR_SCOPE"][0]
+    assert {k:v for k,v in oldscope.items() if k != "parent"} == {
+        k:v for k,v in newscope.items() if k != "parent"}, "182/47 parent scope changed"
+    oldrecv, newrecv = before["MCR_RECEIVING"][0], after["MCR_RECEIVING"][0]
+    assert {k:v for k,v in oldrecv.items() if k not in ("gate","independent_owner")} == {
+        k:v for k,v in newrecv.items() if k not in ("gate","independent_owner")}
+    counts = [9,9,9,8,9,8,9,9,8,8,8]
+    for n, expected in enumerate(counts, 1):
+        path = flight_path(n).relative_to(ROOT).as_posix()
+        oldblob = git("rev-parse", base + ":" + path).strip()
+        nowblob = git("hash-object", path).strip()
+        assert oldblob == nowblob, ("descendant contract modified", n)
+        assert validate_one(n)["obligations"] == expected
+    assert sum(counts) == 94
+    assert len([x for x in new.values() if x["check_kind"] == "EXEC"]) == 4
+    assert len([x for x in new.values() if x["check_kind"] == "INDEPENDENT"]) == 20
+    return {"status": "PASS_EXACT_HQ_A_NARROW_MIGRATION",
+            "untouched_parent_obligations": 23,
+            "original_PARENT06_id_and_baseline": "UNCHANGED",
+            "unchanged_flight_contracts": 11,
+            "unchanged_descendant_obligations": 94,
+            "source_identity_universe": "182_X_FIRST14_PLUS_47_SOURCE_BLOBS",
+            "independent_received": 0}
+
+
 def self_test():
     s = flight_path(11).read_text(encoding="utf-8")
     assert validate_one(11)["obligations"] == 8
@@ -731,6 +890,8 @@ def self_test():
             raise AssertionError("parent completion mutant passed")
     assert claim_mutation_test()["status"].startswith("PASS_10_OF_10")
     assert near_positive_regressions()["status"].startswith("PASS_17_OF_17")
+    assert upstream_packet_mutations()["status"].startswith("PASS_16_OF_16")
+    assert verify_hq_a_narrow_conservation()["status"] == "PASS_EXACT_HQ_A_NARROW_MIGRATION"
     return "PASS 5/5 original + 10/10 semantic + 17/17 near-positive/forged authority mutants; no independent issuance"
 
 def main():
@@ -742,6 +903,9 @@ def main():
     p.add_argument("--claim-all", action="store_true")
     p.add_argument("--claim-mutations", action="store_true")
     p.add_argument("--near-positive", action="store_true")
+    p.add_argument("--upstream-packet", action="store_true")
+    p.add_argument("--upstream-mutations", action="store_true")
+    p.add_argument("--hq-a-conservation", action="store_true")
     p.add_argument("--generate-author-evidence")
     p.add_argument("--audit-evidence")
     p.add_argument("--enumerate-expected", action="store_true")
@@ -755,6 +919,15 @@ def main():
         return
     if args.audit_evidence:
         print(json.dumps(audit_postcommit_evidence_file(args.audit_evidence), indent=2))
+        return
+    if args.hq_a_conservation:
+        print(json.dumps(verify_hq_a_narrow_conservation(), indent=2))
+        return
+    if args.upstream_packet:
+        print(json.dumps(validate_upstream_packet(), indent=2))
+        return
+    if args.upstream_mutations:
+        print(json.dumps(upstream_packet_mutations(), indent=2))
         return
     if args.near_positive:
         print(json.dumps(near_positive_regressions(), indent=2))

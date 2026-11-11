@@ -81,14 +81,17 @@ jobs:
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --parent
           echo "ZAK-00 PARENT: integrated MCR-C source/contract gate PASS; descendant effects NOT_RUN"
 
-      - name: Hostile proof-domain, eleven-jurisdiction, forged-grade and current-CI regressions
+      - name: Hostile MCR-C, HQ A upstream packet/16 negatives, exact 23+94 conservation and CI regressions
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p zak-mcr-format-receipts
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-mutations | tee zak-mcr-format-receipts/ZAK00_R3_SEMANTIC_MUTANTS.json
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --near-positive | tee zak-mcr-format-receipts/ZAK00_R4_NEAR_POSITIVE_AND_AUTHORITY_MUTANTS.json
-          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-all | tee zak-mcr-format-receipts/ZAK00_R4_CLAIM_BOUNDARY.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --upstream-packet | tee zak-mcr-format-receipts/ZAK00_HQ_A_UPSTREAM_PACKET.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --upstream-mutations | tee zak-mcr-format-receipts/ZAK00_HQ_A_UPSTREAM_NEGATIVES.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --hq-a-conservation | tee zak-mcr-format-receipts/ZAK00_HQ_A_CONSERVATION.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-all | tee zak-mcr-format-receipts/ZAK00_HQ_A_CLAIM_BOUNDARY.json
 
       - name: Exact-head author evidence computed from four executed checks, not nineteen invented reviewer PASSes
         shell: bash
