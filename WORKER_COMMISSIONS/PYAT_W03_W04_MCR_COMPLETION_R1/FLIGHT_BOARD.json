@@ -430,10 +430,29 @@
       "job": "pyat-w03-w04-mcr-cold-order-focused-recheck-r1",
       "session": "ses_e47b17f8fffedazgQeSGbql4HH",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_ACCEPT_AT_CC_F01_SCOPE",
       "source_candidate": "bcc176d7719e57d1e88b7f395f0280f72b0a74c5",
       "scope": "Independent exact CC-F01 recheck, not whole MCR receiving",
-      "pid": 79991
+      "pid": 79991,
+      "candidate": "19f5eb14dffd7f9e39becd071cf25c160bdf6242",
+      "reviewed_source": "bcc176d7719e57d1e88b7f395f0280f72b0a74c5",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c8a5c274001OfbpHws7NrvTVo",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794367668939,
+          "streamed": 1794367680045,
+          "completed": 1794367680331
+        }
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-economic-method-focused-recheck-r1",
@@ -452,10 +471,19 @@
       "source_candidate": "09f97a3a4c77ed7666ee95af586cfdfd91493f73",
       "scope": "CC-F03 existingCI selection and CC-F04 actual-consumer executable severanceproof only",
       "pid": 88861
+    },
+    {
+      "job": "pyat-w03-w04-mcr-verifier-focused-recheck-r1",
+      "session": "ses_e47b17f8fffedazgQeSGbql4HH",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "6658b630f114186099177cbdaf00cab854b18b09",
+      "scope": "IndependentCC-F05 exactverifier/wrapperrepair only",
+      "pid": 91895
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Dispatch queued CC-F03/F04 now slotfree; coldordering and method independent reviews continue. CC-F05 candidate needs focused independent review at next available receiver boundary; no author selfacceptance.",
+  "next_action": "Launch pending original-reviewer CC-F05 recheck; maintain3 with methodreview andCIproofrepair. CC-F01 accepted narrowly; finalsameSHA12MCRpending.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
