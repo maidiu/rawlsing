@@ -271,6 +271,33 @@ def _verified_source_bytes(root, source, errors, label):
     return content
 
 
+def _evidence_externality(root: Path, candidate_sha: str, returned_path: Path | None, errors):
+    """Reject evidence that is itself committed in the candidate tree.
+
+    This is a repository-tracking check only.  It does not prove wall-clock
+    ordering or stronger provenance; a PR/CI comment surface is accepted as
+    external only by the caller selecting a noncandidate path/text artifact.
+    """
+    if returned_path is None:
+        errors.append("MCR_C_EVIDENCE_EXTERNALITY_UNVERIFIED")
+        return "UNVERIFIED_NO_EVIDENCE_PATH"
+    try:
+        resolved = Path(returned_path).resolve(strict=True)
+        root_resolved = Path(root).resolve(strict=True)
+    except (OSError, RuntimeError):
+        errors.append("MCR_C_EVIDENCE_PATH_UNAVAILABLE")
+        return "UNAVAILABLE"
+    try:
+        relative = resolved.relative_to(root_resolved)
+    except ValueError:
+        return "OUTSIDE_CANDIDATE_ROOT__UNTRACKED"
+    tracked = _git(root, "cat-file", "-e", f"{candidate_sha}:{relative.as_posix()}")
+    if tracked is not None:
+        errors.append("MCR_C_EVIDENCE_TRACKED_AT_CANDIDATE")
+        return "TRACKED_AT_CANDIDATE__REJECTED"
+    return "UNTRACKED_AT_CANDIDATE__REPOSITORY_TRACKING_ONLY"
+
+
 def _expected_id_set(root, contract, errors):
     scope = contract["scope"]
     count = scope["expected_count"]
@@ -288,8 +315,11 @@ def _expected_id_set(root, contract, errors):
             if not set(cols).issubset(set(rdr.fieldnames or [])):
                 errors.append("MCR_C_EXPECTED_ID_COLUMNS_NOT_IN_SOURCE")
                 return set()
-            ids = [json.dumps([row[c] for c in cols], ensure_ascii=False, separators=(",", ":"))
-                   for row in rdr]
+            if len(cols) == 1:
+                ids = [str(row[cols[0]]) for row in rdr]
+            else:
+                ids = [json.dumps([row[c] for c in cols], ensure_ascii=False, separators=(",", ":"))
+                       for row in rdr]
         except (UnicodeError, csv.Error, KeyError, TypeError):
             errors.append("MCR_C_EXPECTED_IDS_UNREADABLE")
             return set()
@@ -298,7 +328,7 @@ def _expected_id_set(root, contract, errors):
     return set(ids)
 
 
-def verify_return(commission, returned, candidate_sha, root):
+def verify_return(commission, returned, candidate_sha, root, *, returned_path: Path | None = None):
     """Only documentary author-evidence readiness. NEVER authoritative completion."""
     root = Path(root).resolve()
     errors = []
@@ -307,6 +337,7 @@ def verify_return(commission, returned, candidate_sha, root):
         return {"status": "RED_INCOMPLETE", "errors": initial["errors"]}
     if not isinstance(candidate_sha, str) or not HEX40.fullmatch(candidate_sha):
         return {"status": "RED_INCOMPLETE", "errors": ["EXACT_CANDIDATE_SHA_REQUIRED"]}
+    evidence_externality = _evidence_externality(root, candidate_sha, returned_path, errors)
     actual_head = _git(root, "rev-parse", "HEAD")
     if not actual_head or actual_head.decode("ascii", "replace").strip() != candidate_sha:
         errors.append("MCR_C_CHECKOUT_NOT_EXACT_CANDIDATE")
@@ -397,6 +428,8 @@ def verify_return(commission, returned, candidate_sha, root):
         "contract_sha256": contract["sha256"],
         "verified_obligation_count": len(required) - len(set(required) - set(proof)),
         "expected_identity_count": contract["scope"]["expected_count"],
+        "evidence_externality": evidence_externality,
+        "evidence_externality_scope": "REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE",
         "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
     }
 
@@ -683,7 +716,8 @@ def main():
         if not args.candidate_sha:
             p.error("--candidate-sha is required with --verify-return")
         result = verify_return(data, args.verify_return.read_text(encoding="utf-8"),
-                               args.candidate_sha, args.evidence_root)
+                               args.candidate_sha, args.evidence_root,
+                               returned_path=args.verify_return)
         print(json.dumps(result, indent=2))
         return 0 if result["status"] == "READY_FOR_INDEPENDENT_RECEIVING" else 2
     result = validate(data)
