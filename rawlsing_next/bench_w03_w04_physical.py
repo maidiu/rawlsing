@@ -48,10 +48,16 @@ SCENARIOS = ("cold", "cells-and-hash", "full-matrix")
 PREREGISTERED_COLD_PROFILE = "wide"
 PREREGISTERED_REPEAT_PROFILE = "repeat"
 EXPECTED_BASELINE_HEAD = "4f3413fc5c37b589be3412f826bf8f68ee617d4a"
+CAP_METHOD = "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE"
+REGRESSION_RESOLUTION_STATUSES = frozenset({"JUSTIFIED_CORRECTION", "DEFERRED_WITH_JUSTIFICATION"})
 
 
 def _sha(value: Any) -> str:
     return semantic_hash(value)
+
+
+def _method_sha256() -> str:
+    return hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
 def _rss_peak_bytes() -> int:
@@ -442,18 +448,79 @@ def _build_release(
         "status": "ACTUAL_GOVERNED_POLICY_FILE_AND_DERIVED_ROOT_SETUP" if policy_path else "NO_DERIVED_ROOT",
     }
 
-    # The actual normal caller path: current exact physical stream + governed
-    # projection -> streaming cold C11 -> I02 validation/seal -> governed
-    # compact cache attachment.  It is kept as one honest combined boundary;
-    # the current public facade exposes no separable I02 sub-stage.
-    (repository, release), normal_stage = _stage(
-        "normal_current_cold_build",
-        lambda: build_source_backed_c11_repository(
-            stream,
-            projection,
-            current_authorities=catalog.authorities,
-        ),
-    )
+    # Observe the existing governed cache read/write owners without changing
+    # their semantics.  The old metadata-only snapshot is retained for evidence,
+    # but hit/write/amortization decisions use these actual boundary results.
+    read_observations: list[dict[str, Any]] = []
+    write_observations: list[dict[str, Any]] = []
+    try:
+        from rawlsing_next import _pre553_w03_cold_compact as cold_compact
+    except ImportError:
+        cold_compact = None
+    orig_read = getattr(cold_compact, "_read_bodies", None) if cold_compact is not None else None
+    orig_write = getattr(cold_compact, "_write_compact_bodies", None) if cold_compact is not None else None
+
+    def observed_read(*call_args, **call_kwargs):
+        before_user, before_sys = _cpu_seconds()
+        started_read = time.perf_counter()
+        value = orig_read(*call_args, **call_kwargs)
+        user, system = _cpu_seconds()
+        path = call_args[0] if call_args else call_kwargs.get("path")
+        read_observations.append({
+            "kind": "read",
+            "wall_seconds": time.perf_counter() - started_read,
+            "cpu_user_seconds": user - before_user,
+            "cpu_system_seconds": system - before_sys,
+            "valid": value is not None,
+            "path": str(path) if path is not None else None,
+            "validation_owner": "EXISTING__read_bodies",
+        })
+        return value
+
+    def observed_write(*call_args, **call_kwargs):
+        before_user, before_sys = _cpu_seconds()
+        started_write = time.perf_counter()
+        value = orig_write(*call_args, **call_kwargs)
+        user, system = _cpu_seconds()
+        path = call_args[0] if call_args else call_kwargs.get("path")
+        file_bytes = None
+        if path is not None:
+            try:
+                file_bytes = Path(path).stat().st_size
+            except OSError:
+                file_bytes = None
+        write_observations.append({
+            "kind": "write",
+            "wall_seconds": time.perf_counter() - started_write,
+            "cpu_user_seconds": user - before_user,
+            "cpu_system_seconds": system - before_sys,
+            "success": bool(value),
+            "bytes": file_bytes,
+            "path": str(path) if path is not None else None,
+            "write_owner": "EXISTING__write_compact_bodies",
+        })
+        return value
+
+    if cold_compact is not None:
+        cold_compact._read_bodies = observed_read
+        cold_compact._write_compact_bodies = observed_write
+    try:
+        # The actual normal caller path: current exact physical stream + governed
+        # projection -> streaming cold C11 -> I02 validation/seal -> governed
+        # compact cache attachment.  It is kept as one honest combined boundary;
+        # the current public facade exposes no separable I02 sub-stage.
+        (repository, release), normal_stage = _stage(
+            "normal_current_cold_build",
+            lambda: build_source_backed_c11_repository(
+                stream,
+                projection,
+                current_authorities=catalog.authorities,
+            ),
+        )
+    finally:
+        if cold_compact is not None:
+            cold_compact._read_bodies = orig_read
+            cold_compact._write_compact_bodies = orig_write
     stages[normal_stage["stage"]] = normal_stage
     stages["cells"] = {
         "stage": "cells",
@@ -482,21 +549,50 @@ def _build_release(
     after = _derived_state(derived) if derived is not None else {"root": "", "files": [], "envelope": None}
     before_keys = {(x["name"], x["size"], x["mtime_ns"]) for x in before["files"]}
     after_keys = {(x["name"], x["size"], x["mtime_ns"]) for x in after["files"]}
-    derived_hit = bool(before["files"]) and before_keys == after_keys
-    derived_write = bool(after["files"]) and before_keys != after_keys
+    read_valid = any(item["valid"] for item in read_observations)
+    write_success = any(item["success"] for item in write_observations)
+    derived_hit = bool(read_valid)
+    derived_write = bool(write_success)
     derived_status = (
-        "HIT_EXACT_ENVELOPE_AND_MTIME" if derived_hit
-        else "MISS_WRITE_NEW_OR_REPLACED" if derived_write
+        "HIT_VALIDATED_BY_EXISTING_READ_BOUNDARY" if derived_hit
+        else "MISS_WRITE_VALIDATED_BY_EXISTING_WRITE_BOUNDARY" if derived_write
+        else "MISS_NO_VALID_CACHE_AND_NO_WRITE" if read_observations
         else "NO_GOVERNED_DERIVED_CACHE_WRITE"
     )
+    derived_write_wall = sum(float(item["wall_seconds"]) for item in write_observations)
+    derived_write_cpu_user = sum(float(item["cpu_user_seconds"]) for item in write_observations)
+    derived_write_cpu_system = sum(float(item["cpu_system_seconds"]) for item in write_observations)
+    derived_write_bytes = sum(int(item["bytes"] or 0) for item in write_observations)
+    derived_read_wall = sum(float(item["wall_seconds"]) for item in read_observations)
+    derived_read_bytes = 0
+    for item in read_observations:
+        path = item.get("path")
+        if path:
+            try:
+                derived_read_bytes += Path(path).stat().st_size
+            except OSError:
+                pass
     stages["derived_cache"] = {
         "stage": "derived_cache",
         "status": derived_status,
         "before": before,
         "after": after,
+        "before_keys": sorted(before_keys),
+        "after_keys": sorted(after_keys),
+        "read_observations": read_observations,
+        "write_observations": write_observations,
         "derived_cache_hit": derived_hit,
         "derived_cache_write": derived_write,
-        "derived_cache_miss": bool(after["files"]) and not before["files"],
+        "derived_cache_miss": bool(read_observations) and not derived_hit,
+        "derived_write_wall_seconds": derived_write_wall,
+        "derived_write_cpu_user_seconds": derived_write_cpu_user,
+        "derived_write_cpu_system_seconds": derived_write_cpu_system,
+        "derived_write_bytes": derived_write_bytes,
+        "derived_read_validation_wall_seconds": derived_read_wall,
+        "derived_read_validation_bytes": derived_read_bytes,
+        "derived_read_count": len(read_observations),
+        "derived_write_count": len(write_observations),
+        "hit_truth": "ACTUAL_READ_BODY_HASH_VALIDATION_BOUNDARY",
         "policy_path": str(policy_path) if policy_path else None,
     }
     return release, {
@@ -508,6 +604,14 @@ def _build_release(
         "method_overhead_seconds": method_overhead,
         "cold_combined_wall_seconds": normal_stage["wall_seconds"],
         "cold_combined_rss_peak_bytes": normal_stage["rss_peak_bytes"],
+        "derived_write_wall_seconds": derived_write_wall,
+        "derived_write_cpu_user_seconds": derived_write_cpu_user,
+        "derived_write_cpu_system_seconds": derived_write_cpu_system,
+        "derived_write_bytes": derived_write_bytes,
+        "derived_read_validation_wall_seconds": derived_read_wall,
+        "derived_read_validation_bytes": derived_read_bytes,
+        "derived_read_count": len(read_observations),
+        "derived_write_count": len(write_observations),
     }
 
 
@@ -538,6 +642,7 @@ def _consumer(profile: Mapping[str, Any], release: Any, *, stages: dict[str, Any
         }
     value, stage = _stage("firstconsumer", run)
     stages["firstconsumer"] = stage
+    stages["firstconsumer_completed_monotonic_ns"] = time.monotonic_ns()
     value["consumer_fingerprint"] = hashlib.sha256(
         canonical_json(value).encode("utf-8")
     ).hexdigest()
@@ -557,6 +662,11 @@ def _cache_stats(root: Path) -> tuple[int, int]:
 
 def _worker(args: argparse.Namespace) -> dict[str, Any]:
     root = Path(args.worker_root) if args.worker_root else None
+    policy_env_cleared = False
+    legacy_env_cleared = False
+    if args.worker_scenario in {"cold", "cells-and-hash"}:
+        policy_env_cleared = os.environ.pop(POLICY_ENV, None) is not None
+        legacy_env_cleared = os.environ.pop(LEGACY_ENV, None) is not None
     worker_started = time.perf_counter()
     profile, profile_stage = _stage(
         "profile_setup", lambda: _profile(args.worker_profile, args.worker_rows)
@@ -578,6 +688,14 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
     }
     output["cap_enforced"] = False
     output["cap_monitor"] = "PARENT_PROCESS_RSS_MONITOR__CHILD_STARTS_AFTER_PARENT_POPEN"
+    output["cap_method"] = CAP_METHOD
+    output["env_isolation"] = {
+        "mode": "NO_POLICY_COLD_OR_CELLS" if args.worker_scenario in {"cold", "cells-and-hash"} else "EXPLICIT_OWN_POLICY_FULL_MATRIX",
+        "policy_env_cleared": policy_env_cleared,
+        "legacy_env_cleared": legacy_env_cleared,
+        "policy_env_present_after_isolation": POLICY_ENV in os.environ,
+        "legacy_env_present_after_isolation": LEGACY_ENV in os.environ,
+    }
 
     base_root = Path(args.worker_root) if args.worker_root else None
     canonical_root = base_root / "canonical-carrier" if base_root is not None else None
@@ -616,6 +734,13 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
     output["consumer_fingerprint"] = consumer["consumer_fingerprint"]
     output["i05_receipt_count"] = len(consumer["i05_receipt_refs"])
     output["i05_fact_count"] = len(consumer["i05_fact_refs"])
+    output["firstconsumer_completed_monotonic_ns"] = stages.get("firstconsumer_completed_monotonic_ns")
+    output["derived_write_wall_seconds"] = release_meta.get("derived_write_wall_seconds")
+    output["derived_write_cpu_user_seconds"] = release_meta.get("derived_write_cpu_user_seconds")
+    output["derived_write_cpu_system_seconds"] = release_meta.get("derived_write_cpu_system_seconds")
+    output["derived_write_bytes"] = release_meta.get("derived_write_bytes")
+    output["derived_read_validation_wall_seconds"] = release_meta.get("derived_read_validation_wall_seconds")
+    output["derived_read_validation_bytes"] = release_meta.get("derived_read_validation_bytes")
 
     if args.worker_scenario in {"full-matrix", "cold"} and base_root is not None:
         derived_root = base_root / "derived-accelerator"
@@ -686,6 +811,12 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
             float(stages["canonical_persist"]["wall_seconds"])
             if isinstance(stages.get("canonical_persist"), Mapping) else None
         ),
+        "derived_write_wall_seconds": release_meta.get("derived_write_wall_seconds"),
+        "derived_write_cpu_user_seconds": release_meta.get("derived_write_cpu_user_seconds"),
+        "derived_write_cpu_system_seconds": release_meta.get("derived_write_cpu_system_seconds"),
+        "derived_write_bytes": release_meta.get("derived_write_bytes"),
+        "derived_read_validation_wall_seconds": release_meta.get("derived_read_validation_wall_seconds"),
+        "derived_read_validation_bytes": release_meta.get("derived_read_validation_bytes"),
     }
     return output
 
@@ -706,6 +837,11 @@ def _process_rss_bytes(pid: int) -> int | None:
 def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]:
     payload_path = Path(args.worker_json)
     env = os.environ.copy()
+    parent_policy_env_present = POLICY_ENV in env
+    parent_legacy_env_present = LEGACY_ENV in env
+    if args.worker_scenario in {"cold", "cells-and-hash"}:
+        env.pop(POLICY_ENV, None)
+        env.pop(LEGACY_ENV, None)
     env["PYTHONPATH"] = str(source_root) + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
     cmd = [
         sys.executable,
@@ -719,6 +855,7 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
     ]
     cap_bytes = int(getattr(args, "cap_bytes", MAX_CHILD_BYTES))
     started = time.perf_counter()
+    parent_launch_monotonic_ns = time.monotonic_ns()
     proc = subprocess.Popen(cmd, cwd=str(source_root), env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     sampled = False
     peak = 0
@@ -739,6 +876,8 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
                     "cap_bytes": cap_bytes,
                     "cap_enforced": True,
                     "cap_peak_sampled_bytes": peak,
+                    "cap_monitor_active": True,
+                    "cap_method": CAP_METHOD,
                     "blocked_reason": "CHILD_RSS_EXCEEDED_AUTHORIZED_CAP_BEFORE_COMPLETION",
                     "returncode": proc.returncode,
                     "wall_seconds": time.perf_counter() - started,
@@ -758,6 +897,8 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
             "cap_bytes": cap_bytes,
             "cap_enforced": sampled,
             "cap_peak_sampled_bytes": peak,
+            "cap_monitor_active": True,
+            "cap_method": CAP_METHOD,
             "returncode": proc.returncode,
             "wall_seconds": wall,
             "stdout": stdout[-4000:],
@@ -777,10 +918,32 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
             "stderr": stderr[-4000:],
         }
     payload["parent_wall_seconds"] = wall
+    payload["parent_launch_monotonic_ns"] = parent_launch_monotonic_ns
     payload["cap_bytes"] = cap_bytes
     payload["cap_enforced"] = sampled
     payload["cap_peak_sampled_bytes"] = max(peak, payload.get("metrics", {}).get("rss_peak_bytes", 0))
     payload["cap_monitor"] = "PARENT_PROCESS_RSS_MONITOR"
+    payload["cap_monitor_active"] = True
+    env_isolation = payload.setdefault("env_isolation", {})
+    env_isolation["parent_policy_env_present_before_strip"] = parent_policy_env_present
+    env_isolation["parent_legacy_env_present_before_strip"] = parent_legacy_env_present
+    env_isolation["parent_policy_env_stripped"] = (
+        args.worker_scenario in {"cold", "cells-and-hash"} and parent_policy_env_present
+    )
+    env_isolation["parent_legacy_env_stripped"] = (
+        args.worker_scenario in {"cold", "cells-and-hash"} and parent_legacy_env_present
+    )
+    payload["cap_method"] = CAP_METHOD
+    completed_ns = payload.get("firstconsumer_completed_monotonic_ns")
+    payload["launch_to_firstconsumer_seconds"] = (
+        (int(completed_ns) - parent_launch_monotonic_ns) / 1_000_000_000.0
+        if isinstance(completed_ns, int) and completed_ns >= parent_launch_monotonic_ns else None
+    )
+    payload["launch_to_firstconsumer_status"] = (
+        "MEASURED_PARENT_LAUNCH_TO_REAL_FIRSTCONSUMER_COMPLETION"
+        if payload["launch_to_firstconsumer_seconds"] is not None
+        else "MISSING_OR_INVALID_FIRSTCONSUMER_MARKER"
+    )
     return payload
 
 
@@ -813,6 +976,13 @@ def _aggregate(runs: list[dict[str, Any]]) -> dict[str, Any]:
         "max_rss_peak_bytes": max((int(r.get("metrics", {}).get("rss_peak_bytes", 0)) for r in complete), default=None),
         "median_parent_wall_seconds": _median(
             float(r.get("parent_wall_seconds", 0.0)) for r in complete
+        ),
+        "median_launch_to_firstconsumer_seconds": _median(
+            float(r.get("launch_to_firstconsumer_seconds", 0.0)) for r in complete
+            if r.get("launch_to_firstconsumer_seconds") is not None
+        ),
+        "median_derived_write_wall_seconds": _median(
+            float(r.get("derived_write_wall_seconds") or 0.0) for r in complete
         ),
         "median_firstconsumer_stage_peak_rss_bytes": _median(
             float(r.get("stages", {}).get("firstconsumer", {}).get("stage_peak_current_rss_bytes", 0.0))
@@ -858,6 +1028,46 @@ def _baseline_section(baseline: Any, scenario: str, profile: str, section: str) 
     if not isinstance(section_data, Mapping):
         return None
     return section_data.get("aggregate")
+
+
+def _derived_amortization_receipt(
+    cold_runs: list[dict[str, Any]],
+    warm_runs: list[dict[str, Any]],
+    baseline_cold: Any,
+) -> dict[str, Any]:
+    write_total = sum(float(r.get("metrics", {}).get("derived_write_wall_seconds") or 0.0) for r in cold_runs)
+    current_warm = _median(
+        float(r.get("launch_to_firstconsumer_seconds", 0.0))
+        for r in warm_runs
+        if r.get("launch_to_firstconsumer_seconds") is not None
+    )
+    baseline_wall = (
+        float(baseline_cold.get("median_launch_to_firstconsumer_seconds"))
+        if isinstance(baseline_cold, Mapping)
+        and isinstance(baseline_cold.get("median_launch_to_firstconsumer_seconds"), (int, float))
+        else None
+    )
+    savings = (
+        baseline_wall - current_warm
+        if baseline_wall is not None and current_warm is not None else None
+    )
+    break_even = (
+        write_total / savings
+        if savings is not None and savings > 0 and write_total > 0 else None
+    )
+    return {
+        "status": (
+            "MEASURED_DERIVED_WRITE_VS_ACTUAL_RESTART_SAVINGS" if break_even is not None
+            else "NO_MEASURED_POSITIVE_RESTART_SAVINGS_OR_WRITE_COST"
+        ),
+        "derived_write_wall_seconds_total": write_total,
+        "current_warm_launch_to_firstconsumer_seconds": current_warm,
+        "baseline_cold_launch_to_firstconsumer_seconds": baseline_wall,
+        "warm_restart_savings_seconds": savings,
+        "break_even_warm_restarts": break_even,
+        "canonical_persist_is_separate": True,
+        "repeat_count_is_not_divisor": True,
+    }
 
 
 def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baseline: Any) -> dict[str, Any]:
@@ -923,6 +1133,11 @@ def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baselin
         },
         "warm_fresh_process_pids": [r.get("pid") for r in warm_runs],
         "warm_fresh_process_count": len(warm_runs),
+        "consumer_fingerprints": {
+            "cold": [r.get("consumer_fingerprint") for r in cold_runs],
+            "warm": [r.get("consumer_fingerprint") for r in warm_runs],
+            "delete_rebuild": [r.get("consumer_fingerprint") for r in rebuild_runs],
+        },
         "cold": {"aggregate": cold_aggregate, "runs": cold_runs},
         "warm": {"aggregate": warm_aggregate, "runs": warm_runs} if warm_runs else None,
         "delete_rebuild": {"aggregate": rebuild_aggregate, "runs": rebuild_runs} if rebuild_runs else None,
@@ -935,21 +1150,52 @@ def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baselin
             float(r.get("metrics", {}).get("canonical_persist_wall_seconds") or 0.0)
             for r in cold_runs
         ),
+        "derived_write_wall_seconds_total": sum(
+            float(r.get("metrics", {}).get("derived_write_wall_seconds") or 0.0)
+            for r in cold_runs
+        ),
+        "derived_write_cpu_user_seconds_total": sum(
+            float(r.get("metrics", {}).get("derived_write_cpu_user_seconds") or 0.0)
+            for r in cold_runs
+        ),
+        "derived_write_cpu_system_seconds_total": sum(
+            float(r.get("metrics", {}).get("derived_write_cpu_system_seconds") or 0.0)
+            for r in cold_runs
+        ),
+        "derived_write_bytes_total": sum(
+            int(r.get("metrics", {}).get("derived_write_bytes") or 0)
+            for r in cold_runs
+        ),
+        "derived_read_validation_wall_seconds_total": sum(
+            float(r.get("metrics", {}).get("derived_read_validation_wall_seconds") or 0.0)
+            for r in [*cold_runs, *warm_runs, *rebuild_runs]
+        ),
+        "derived_write_wall_seconds_total_delete_rebuild": sum(
+            float(r.get("metrics", {}).get("derived_write_wall_seconds") or 0.0)
+            for r in rebuild_runs
+        ),
+        "derived_write_bytes_total_delete_rebuild": sum(
+            int(r.get("metrics", {}).get("derived_write_bytes") or 0)
+            for r in rebuild_runs
+        ),
         "cache_write_amortization": (
-            sum(float(r.get("metrics", {}).get("canonical_persist_wall_seconds") or 0.0) for r in cold_runs)
+            sum(float(r.get("metrics", {}).get("derived_write_wall_seconds") or 0.0) for r in cold_runs)
             / max(1, len(warm_runs))
         ) if warm_runs else None,
+        "derived_write_amortization_receipt": _derived_amortization_receipt(
+            cold_runs, warm_runs, baseline_cold
+        ),
         "regressions": [],
     }
     for label, current, old in (("cold", cold_aggregate, baseline_cold), ("warm", warm_aggregate, baseline_warm)):
-        if isinstance(old, Mapping) and old.get("median_wall_seconds") and current.get("median_wall_seconds"):
-            ratio = current["median_wall_seconds"] / old["median_wall_seconds"]
+        if isinstance(old, Mapping) and old.get("median_launch_to_firstconsumer_seconds") and current.get("median_launch_to_firstconsumer_seconds"):
+            ratio = current["median_launch_to_firstconsumer_seconds"] / old["median_launch_to_firstconsumer_seconds"]
             if ratio > 1.10:
-                result["regressions"].append({"scope": label, "metric": "median_wall_seconds", "ratio": ratio, "status": "REGRESSION_GT_10_PERCENT"})
-        if isinstance(old, Mapping) and old.get("median_firstconsumer_stage_peak_rss_bytes") and current.get("median_firstconsumer_stage_peak_rss_bytes"):
-            ratio = current["median_firstconsumer_stage_peak_rss_bytes"] / old["median_firstconsumer_stage_peak_rss_bytes"]
+                result["regressions"].append({"scope": label, "metric": "median_launch_to_firstconsumer_seconds", "ratio": ratio, "status": "REGRESSION_WALL_GT_10_PERCENT"})
+        if isinstance(old, Mapping) and old.get("median_cold_to_firstconsumer_stage_peak_rss_bytes") and current.get("median_cold_to_firstconsumer_stage_peak_rss_bytes"):
+            ratio = current["median_cold_to_firstconsumer_stage_peak_rss_bytes"] / old["median_cold_to_firstconsumer_stage_peak_rss_bytes"]
             if ratio > 1.10:
-                result["regressions"].append({"scope": label, "metric": "median_firstconsumer_stage_peak_rss_bytes", "ratio": ratio, "status": "REGRESSION_RSS_GT_10_PERCENT"})
+                result["regressions"].append({"scope": label, "metric": "median_cold_to_firstconsumer_stage_peak_rss_bytes", "ratio": ratio, "status": "REGRESSION_RSS_GT_10_PERCENT"})
     return result
 
 
@@ -970,19 +1216,156 @@ def _aggregate_for(results: Mapping[str, Any], scenario: str, profile: str, sect
         return None
 
 
-def _acceptance_gate(results: Mapping[str, Any], baseline: Any, args: argparse.Namespace, source_head: str | None) -> dict[str, Any]:
+def _all_cap_evidence(results: Mapping[str, Any]) -> list[dict[str, Any]]:
+    evidence = []
+    for scenario, profiles in results.items():
+        if not isinstance(profiles, Mapping):
+            continue
+        for profile, sections in profiles.items():
+            if not isinstance(sections, Mapping):
+                continue
+            for section, payload in sections.items():
+                if not isinstance(payload, Mapping):
+                    continue
+                for run in payload.get("runs", ()):
+                    if not isinstance(run, Mapping):
+                        continue
+                    evidence.append({
+                        "scenario": scenario,
+                        "profile": profile,
+                        "section": section,
+                        "pid": run.get("pid"),
+                        "status": run.get("status"),
+                        "cap_bytes": run.get("cap_bytes"),
+                        "cap_enforced": run.get("cap_enforced"),
+                        "cap_monitor_active": run.get("cap_monitor_active"),
+                        "cap_method": run.get("cap_method"),
+                        "cap_peak_sampled_bytes": run.get("cap_peak_sampled_bytes"),
+                    })
+    return evidence
+
+
+def _cap_gate(evidence: list[dict[str, Any]], cap_bytes: int) -> tuple[bool, list[dict[str, Any]]]:
+    checked = []
+    for item in evidence:
+        peak = item.get("cap_peak_sampled_bytes")
+        ok = (
+            item.get("status") != "BLOCKED_EXACT_DEPENDENCY"
+            and item.get("cap_enforced") is True
+            and item.get("cap_monitor_active") is True
+            and item.get("cap_bytes") == cap_bytes
+            and isinstance(peak, (int, float))
+            and peak <= cap_bytes
+        )
+        checked.append({**item, "pass": ok})
+    return bool(checked) and all(item["pass"] for item in checked), checked
+
+
+def _event_fingerprint_parity(
+    current: Mapping[str, Any], baseline: Mapping[str, Any], profiles: list[str]
+) -> dict[str, Any]:
+    problems = []
+    comparisons = 0
+    for scenario in ("cold", "full-matrix"):
+        current_scenario = current.get(scenario)
+        baseline_scenario = baseline.get(scenario)
+        if not isinstance(current_scenario, Mapping):
+            continue
+        if not isinstance(baseline_scenario, Mapping):
+            problems.append({"scenario": scenario, "problem": "missing_baseline_scenario"})
+            continue
+        for profile in profiles:
+            current_profile = current_scenario.get(profile)
+            baseline_profile = baseline_scenario.get(profile)
+            if not isinstance(current_profile, Mapping) or not isinstance(baseline_profile, Mapping):
+                problems.append({"scenario": scenario, "profile": profile, "problem": "missing_profile"})
+                continue
+            a = current_profile.get("actual_event_counts")
+            b = baseline_profile.get("actual_event_counts")
+            comparisons += 1
+            if a != b:
+                problems.append({"scenario": scenario, "profile": profile, "field": "actual_event_counts", "current": a, "baseline": b})
+            fa = current_profile.get("consumer_fingerprints")
+            fb = baseline_profile.get("consumer_fingerprints")
+            if fa != fb:
+                problems.append({"scenario": scenario, "profile": profile, "field": "consumer_fingerprints", "current": fa, "baseline": fb})
+    return {"pass": bool(comparisons) and not problems, "comparisons": comparisons, "problems": problems}
+
+
+def _regression_key(record: Mapping[str, Any]) -> str:
+    return f"{record.get('scenario')}/{record.get('profile')}/{record.get('section')}/{record.get('metric')}"
+
+
+def _resolve_regressions(
+    regressions: list[dict[str, Any]], resolutions: Any
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    if not isinstance(resolutions, Mapping):
+        resolutions = {}
+    resolved = []
+    unresolved = []
+    for record in regressions:
+        key = _regression_key(record)
+        resolution = resolutions.get(key)
+        if resolution is None:
+            resolution = resolutions.get(record.get("status"))
+        if not isinstance(resolution, Mapping):
+            unresolved.append({**record, "resolution": None})
+            continue
+        status = resolution.get("status")
+        justification = resolution.get("justification")
+        correction = resolution.get("correction")
+        if status not in REGRESSION_RESOLUTION_STATUSES or not isinstance(justification, str) or not justification.strip() or not isinstance(correction, str) or not correction.strip():
+            unresolved.append({**record, "resolution": resolution, "problem": "missing_valid_status_justification_or_correction"})
+        else:
+            resolved.append({**record, "resolution": resolution, "receiving_required": True})
+    return resolved, unresolved
+
+
+def _acceptance_gate(
+    results: Mapping[str, Any],
+    baseline: Any,
+    args: argparse.Namespace,
+    source_head: str | None,
+    *,
+    invocation: Mapping[str, Any] | None = None,
+    baseline_sha256: str | None = None,
+) -> dict[str, Any]:
     required_profiles = list(PROFILES)
+    scenario_names = [s.strip() for s in args.scenario.split(",") if s.strip()]
     final_shape = (
         args.rows >= 100000
         and args.repetitions >= 3
         and set(required_profiles) <= set([p.strip() for p in args.profiles.split(",") if p.strip()])
-        and {"cold", "full-matrix"} <= {s.strip() for s in args.scenario.split(",") if s.strip()}
+        and {"cold", "full-matrix"} <= set(scenario_names)
     )
+    cap_evidence = _all_cap_evidence(results)
+    cap_pass, cap_checked = _cap_gate(cap_evidence, int(getattr(args, "cap_bytes", MAX_CHILD_BYTES)))
     if not isinstance(baseline, Mapping):
-        return {"status": "NO_BASELINE", "pass": False, "final_shape": final_shape,
-                "reason": "baseline JSON absent; diagnostic only", "retention_decision": "DO_NOT_RETAIN__NO_BASELINE"}
+        return {
+            "status": "NO_BASELINE", "pass": False, "final_shape": final_shape,
+            "reason": "baseline JSON absent; diagnostic only",
+            "retention_decision": "DO_NOT_RETAIN__NO_BASELINE",
+            "cap_pass": cap_pass, "cap": {"method": CAP_METHOD, "checked": cap_checked},
+        }
     baseline_host = (baseline.get("host") or {}).get("node") if isinstance(baseline.get("host"), Mapping) else None
     current_host = platform.node()
+    candidate_invocation = invocation if isinstance(invocation, Mapping) else {}
+    baseline_invocation = baseline.get("invocation") if isinstance(baseline.get("invocation"), Mapping) else {}
+    baseline_command = baseline.get("command") if isinstance(baseline.get("command"), str) else None
+    candidate_command = candidate_invocation.get("command")
+    command_fields = ("scenario", "profiles", "rows", "repetitions")
+    command_parameters_match = all(
+        baseline_invocation.get(field) == candidate_invocation.get(field)
+        for field in command_fields
+    )
+    actual_baseline_sha = None
+    if getattr(args, "baseline_json", None):
+        try:
+            actual_baseline_sha = hashlib.sha256(Path(args.baseline_json).read_bytes()).hexdigest()
+        except OSError:
+            actual_baseline_sha = None
+    baseline_results = baseline.get("results") if isinstance(baseline.get("results"), Mapping) else {}
+    parity = _event_fingerprint_parity(results, baseline_results, [p.strip() for p in args.profiles.split(",") if p.strip()])
     identity = {
         "schema": baseline.get("schema") == SCHEMA,
         "source_head_is_protected": baseline.get("source_head") == EXPECTED_BASELINE_HEAD,
@@ -990,13 +1373,19 @@ def _acceptance_gate(results: Mapping[str, Any], baseline: Any, args: argparse.N
         "profiles_match": baseline.get("profiles") == [p.strip() for p in args.profiles.split(",") if p.strip()],
         "repetitions_match": baseline.get("repetitions") == args.repetitions,
         "host_match": baseline_host == current_host,
+        "baseline_command_present": bool(baseline_command),
+        "candidate_command_present": bool(candidate_command),
+        "command_parameters_match": command_parameters_match,
+        "method_sha256_present": bool(baseline.get("method_sha256")),
+        "method_sha256_match": baseline.get("method_sha256") == getattr(args, "method_sha256", None),
+        "baseline_file_sha256_present": bool(baseline_sha256),
+        "baseline_file_sha256_matches": bool(actual_baseline_sha and baseline_sha256 == actual_baseline_sha),
+        "actual_event_counts_match": parity["pass"],
+        "consumer_fingerprint_parity": parity["pass"],
     }
-    baseline_results = baseline.get("results") if isinstance(baseline.get("results"), Mapping) else {}
     cold_current = _aggregate_for(results, "cold", PREREGISTERED_COLD_PROFILE, "cold")
     cold_baseline = _baseline_section(baseline, "cold", PREREGISTERED_COLD_PROFILE, "cold")
     warm_current = _aggregate_for(results, "full-matrix", PREREGISTERED_REPEAT_PROFILE, "warm")
-    # The frozen W34 comparison is against the real matched normal no-acceleration
-    # restart, not against a canonical-reopen "warm" arm.
     warm_baseline = _baseline_section(baseline, "cold", PREREGISTERED_REPEAT_PROFILE, "cold")
     if warm_baseline is None:
         warm_baseline = _baseline_section(baseline, "full-matrix", PREREGISTERED_REPEAT_PROFILE, "cold")
@@ -1007,38 +1396,57 @@ def _acceptance_gate(results: Mapping[str, Any], baseline: Any, args: argparse.N
         if isinstance(cold_current_peak, (int, float)) and isinstance(cold_baseline_peak, (int, float)) and cold_baseline_peak > 0
         else None
     )
-    warm_current_wall = warm_current.get("median_parent_wall_seconds") if isinstance(warm_current, Mapping) else None
-    warm_baseline_wall = warm_baseline.get("median_parent_wall_seconds") if isinstance(warm_baseline, Mapping) else None
+    warm_current_wall = warm_current.get("median_launch_to_firstconsumer_seconds") if isinstance(warm_current, Mapping) else None
+    warm_baseline_wall = warm_baseline.get("median_launch_to_firstconsumer_seconds") if isinstance(warm_baseline, Mapping) else None
     warm_ratio = (
         warm_current_wall / warm_baseline_wall
         if isinstance(warm_current_wall, (int, float)) and isinstance(warm_baseline_wall, (int, float)) and warm_baseline_wall > 0
         else None
     )
     regressions = []
-    for scenario, profile, section in (("cold", "narrow", "cold"), ("cold", "wide", "cold"), ("cold", "repeat", "cold"),
-                                        ("full-matrix", "narrow", "warm"), ("full-matrix", "wide", "warm"), ("full-matrix", "repeat", "warm")):
-        current = _aggregate_for(results, scenario, profile, section)
-        old = _baseline_section(baseline, scenario, profile, section)
+    for scenario, profile in (( "cold", "narrow"), ("cold", "wide"), ("cold", "repeat"),
+                              ("full-matrix", "narrow"), ("full-matrix", "wide"), ("full-matrix", "repeat")):
+        current = _aggregate_for(results, scenario, profile, "cold" if scenario == "cold" else "warm")
+        old = _baseline_section(baseline, "cold", profile, "cold")
         if not isinstance(current, Mapping) or not isinstance(old, Mapping):
             continue
-        for metric, status in (("median_cold_to_firstconsumer_stage_peak_rss_bytes", "REGRESSION_RSS_GT_10_PERCENT"), ("median_parent_wall_seconds", "REGRESSION_WALL_GT_10_PERCENT")):
+        for metric, status in (
+            ("median_cold_to_firstconsumer_stage_peak_rss_bytes", "REGRESSION_RSS_GT_10_PERCENT"),
+            ("median_launch_to_firstconsumer_seconds", "REGRESSION_WALL_GT_10_PERCENT"),
+        ):
             a, b = old.get(metric), current.get(metric)
             if isinstance(a, (int, float)) and a > 0 and isinstance(b, (int, float)) and b / a > 1.10:
-                regressions.append({"scenario": scenario, "profile": profile, "section": section, "metric": metric, "ratio": b / a, "status": status})
+                regressions.append({"scenario": scenario, "profile": profile, "section": "cold" if scenario == "cold" else "warm", "metric": metric, "ratio": b / a, "status": status})
+    resolutions = getattr(args, "regression_resolutions", {})
+    resolved_regressions, unresolved_regressions = _resolve_regressions(regressions, resolutions)
     cold_pass = cold_improvement is not None and cold_improvement >= 0.15
     warm_pass = warm_ratio is not None and warm_ratio <= 0.90
     identity_pass = all(identity.values())
-    pass_all = bool(final_shape and identity_pass and cold_pass and warm_pass and not regressions)
+    regression_pass = not unresolved_regressions
+    pass_all = bool(final_shape and identity_pass and cold_pass and warm_pass and cap_pass and regression_pass)
     retention = (
-        "RETAIN_FOR_REPEAT" if warm_pass and identity_pass and not regressions
-        else "DO_NOT_RETAIN__NONBENEFICIAL_OR_REGRESSION_OR_MISMATCH"
+        "RETAIN_FOR_REPEAT" if warm_pass and identity_pass and cap_pass and regression_pass
+        else "DO_NOT_RETAIN__NONBENEFICIAL_REGRESSION_MISMATCH_OR_CAP"
     )
     return {
         "status": "PASS" if pass_all else "FAIL_OR_INCOMPLETE",
         "pass": pass_all,
         "final_shape": final_shape,
         "identity": identity,
+        "command": {
+            "baseline": baseline_command,
+            "candidate": candidate_command,
+            "parameters_match": command_parameters_match,
+        },
+        "baseline_identity": {
+            "source_head": baseline.get("source_head"),
+            "sha256": baseline_sha256,
+            "actual_sha256": actual_baseline_sha,
+        },
         "baseline_source_head": baseline.get("source_head"),
+        "event_fingerprint_parity": parity,
+        "cap_pass": cap_pass,
+        "cap": {"method": CAP_METHOD, "declared_bytes": int(getattr(args, "cap_bytes", MAX_CHILD_BYTES)), "checked": cap_checked},
         "cold_profile": PREREGISTERED_COLD_PROFILE,
         "cold_stage_peak_current_bytes": cold_current_peak,
         "cold_stage_peak_baseline_bytes": cold_baseline_peak,
@@ -1052,8 +1460,11 @@ def _acceptance_gate(results: Mapping[str, Any], baseline: Any, args: argparse.N
         "repeat_wall_target": 0.90,
         "warm_pass": warm_pass,
         "regressions": regressions,
+        "resolved_regressions": resolved_regressions,
+        "unresolved_regressions": unresolved_regressions,
+        "regression_pass": regression_pass,
         "retention_decision": retention,
-        "reason": "all frozen gates met" if pass_all else "missing/mismatched baseline, cold RSS target, repeat wall target, or regression gate not met",
+        "reason": "all frozen gates met" if pass_all else "missing/mismatched identity, cap evidence, event/fingerprint parity, cold RSS target, repeat wall target, or unresolved regression",
     }
 
 
@@ -1066,6 +1477,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--jsonpath", "--json", dest="jsonpath", default=None)
     parser.add_argument("--root", default=None)
     parser.add_argument("--baseline-json", default=None)
+    parser.add_argument("--regression-resolution-json", default=None)
     parser.add_argument("--source-root", default=str(Path(__file__).resolve().parents[1]))
     parser.add_argument("--cap-bytes", type=int, default=MAX_CHILD_BYTES)
     parser.add_argument("--acceptance-gate", action="store_true")
@@ -1090,12 +1502,32 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("rows and repetitions must be positive")
     args.source_root = Path(args.source_root).resolve()
     source_head = _source_head(args.source_root)
+    args.method_sha256 = _method_sha256()
     baseline = None
     if args.baseline_json:
         try:
             baseline = json.loads(Path(args.baseline_json).read_text(encoding="utf-8"))
         except Exception:
             baseline = None
+    args.regression_resolutions = {}
+    if args.regression_resolution_json:
+        try:
+            loaded_resolutions = json.loads(Path(args.regression_resolution_json).read_text(encoding="utf-8"))
+            if isinstance(loaded_resolutions, Mapping):
+                args.regression_resolutions = dict(loaded_resolutions)
+        except Exception:
+            args.regression_resolutions = {}
+    args.invocation = {
+        "command": " ".join(sys.argv),
+        "argv": list(sys.argv),
+        "scenario": args.scenario,
+        "profiles": profiles,
+        "rows": args.rows,
+        "repetitions": args.repetitions,
+        "source_root": str(args.source_root),
+        "baseline_json": args.baseline_json,
+        "regression_resolution_json": args.regression_resolution_json,
+    }
     results = {}
     for scenario in scenarios:
         results[scenario] = {}
@@ -1121,6 +1553,9 @@ def main(argv: list[str] | None = None) -> int:
         "acceptance_status": "ELIGIBLE_FOR_FINAL_MATRIX_NOT_YET_RECEIVED" if final_eligible else "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
         "source_root": str(args.source_root),
         "source_head": source_head,
+        "method_sha256": args.method_sha256,
+        "command": args.invocation["command"],
+        "invocation": args.invocation,
         "host": {
             "node": platform.node(),
             "platform": platform.platform(),
@@ -1142,7 +1577,14 @@ def main(argv: list[str] | None = None) -> int:
                 if args.baseline_json and Path(args.baseline_json).is_file() else None
             ),
         },
-        "acceptance": _acceptance_gate(results, baseline, args, source_head),
+        "acceptance": _acceptance_gate(
+            results, baseline, args, source_head,
+            invocation=args.invocation,
+            baseline_sha256=(
+                hashlib.sha256(Path(args.baseline_json).read_bytes()).hexdigest()
+                if args.baseline_json and Path(args.baseline_json).is_file() else None
+            ),
+        ),
         "limits": [
             "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
             "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",

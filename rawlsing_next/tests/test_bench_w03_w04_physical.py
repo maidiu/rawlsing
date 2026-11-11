@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -167,6 +168,7 @@ def test_small_cap_refuses_over_limit_without_host_stress(tmp_path):
     assert run["status"] == "BLOCKED_EXACT_DEPENDENCY"
     assert run["cap_enforced"] is True
     assert run["blocked_reason"] == "CHILD_RSS_EXCEEDED_AUTHORIZED_CAP_BEFORE_COMPLETION"
+    assert payload["acceptance"]["cap_pass"] is False
 
 
 def test_acceptance_gate_requires_baseline_and_is_nonzero(tmp_path):
@@ -181,53 +183,211 @@ def test_acceptance_gate_requires_baseline_and_is_nonzero(tmp_path):
     assert payload["acceptance"]["pass"] is False
 
 
-def _synthetic_baseline(rows=100000, reps=3, host=None, source_head=bench.EXPECTED_BASELINE_HEAD):
+def _cap_run(cap_bytes=bench.MAX_CHILD_BYTES):
     return {
-        "schema": bench.SCHEMA,
-        "source_head": source_head,
-        "rows": rows,
+        "pid": 1,
+        "status": "COMPLETE",
+        "cap_bytes": cap_bytes,
+        "cap_enforced": True,
+        "cap_monitor_active": True,
+        "cap_method": bench.CAP_METHOD,
+        "cap_peak_sampled_bytes": 1024,
+    }
+
+
+def _receipt_section(aggregate, *, with_cap=True):
+    return {
+        "aggregate": aggregate,
+        "runs": [_cap_run() if with_cap else {"pid": 1, "status": "COMPLETE"}],
+    }
+
+
+def _receipt_profile(aggregate, *, with_cap=True):
+    return {
+        "cold": _receipt_section(aggregate, with_cap=with_cap),
+        "warm": _receipt_section(aggregate, with_cap=with_cap),
+        "delete_rebuild": _receipt_section(aggregate, with_cap=with_cap),
+        "actual_event_counts": {"cold": [10], "warm": [10], "delete_rebuild": [10]},
+        "consumer_fingerprints": {"cold": ["fp"], "warm": ["fp"], "delete_rebuild": ["fp"]},
+    }
+
+
+def _gate_fixture(tmp_path, *, with_cap=True):
+    import argparse
+    invocation = {
+        "command": "python -m rawlsing_next.bench_w03_w04_physical --scenario cold,full-matrix",
+        "scenario": "cold,full-matrix",
         "profiles": ["narrow", "wide", "repeat"],
-        "repetitions": reps,
-        "host": {"node": host or bench.platform.node()},
+        "rows": 100000,
+        "repetitions": 3,
+    }
+    baseline = {
+        "schema": bench.SCHEMA,
+        "source_head": bench.EXPECTED_BASELINE_HEAD,
+        "method_sha256": bench._method_sha256(),
+        "command": invocation["command"],
+        "invocation": invocation,
+        "rows": 100000,
+        "profiles": ["narrow", "wide", "repeat"],
+        "repetitions": 3,
+        "host": {"node": bench.platform.node()},
         "results": {
             "cold": {
-                "wide": {"cold": {"aggregate": {
-                    "median_cold_to_firstconsumer_stage_peak_rss_bytes": 1000,
-                    "median_parent_wall_seconds": 100,
-                }}},
-                "repeat": {"cold": {"aggregate": {
-                    "median_cold_to_firstconsumer_stage_peak_rss_bytes": 100,
-                    "median_parent_wall_seconds": 200,
-                }}},
+                "narrow": _receipt_profile({"median_cold_to_firstconsumer_stage_peak_rss_bytes": 100, "median_launch_to_firstconsumer_seconds": 100, "median_parent_wall_seconds": 100}, with_cap=with_cap),
+                "wide": _receipt_profile({"median_cold_to_firstconsumer_stage_peak_rss_bytes": 1000, "median_launch_to_firstconsumer_seconds": 100, "median_parent_wall_seconds": 100}, with_cap=with_cap),
+                "repeat": _receipt_profile({"median_cold_to_firstconsumer_stage_peak_rss_bytes": 100, "median_launch_to_firstconsumer_seconds": 200, "median_parent_wall_seconds": 200}, with_cap=with_cap),
+            },
+            "full-matrix": {
+                "narrow": _receipt_profile({"median_cold_to_firstconsumer_stage_peak_rss_bytes": 100, "median_launch_to_firstconsumer_seconds": 100, "median_parent_wall_seconds": 100}, with_cap=with_cap),
+                "wide": _receipt_profile({"median_cold_to_firstconsumer_stage_peak_rss_bytes": 100, "median_launch_to_firstconsumer_seconds": 100, "median_parent_wall_seconds": 100}, with_cap=with_cap),
+                "repeat": _receipt_profile({"median_cold_to_firstconsumer_stage_peak_rss_bytes": 100, "median_launch_to_firstconsumer_seconds": 100, "median_parent_wall_seconds": 100}, with_cap=with_cap),
             },
         },
     }
+    results = json.loads(json.dumps(baseline["results"]))
+    results["cold"]["wide"]["cold"]["aggregate"]["median_cold_to_firstconsumer_stage_peak_rss_bytes"] = 100
+    baseline_path = tmp_path / "baseline.json"
+    baseline_path.write_text(json.dumps(baseline, sort_keys=True) + "\n", encoding="utf-8")
+    args = argparse.Namespace(
+        rows=100000, repetitions=3, profiles="narrow,wide,repeat",
+        scenario="cold,full-matrix", cap_bytes=bench.MAX_CHILD_BYTES,
+        baseline_json=str(baseline_path), regression_resolutions={},
+        invocation=invocation, method_sha256=bench._method_sha256(),
+    )
+    return baseline, results, args
 
 
-def test_acceptance_gate_threshold_and_identity_falsifiers(monkeypatch):
-    import argparse
-    args = argparse.Namespace(rows=100000, repetitions=3, profiles="narrow,wide,repeat", scenario="cold,full-matrix")
-    results = {
-        "cold": {"wide": {"cold": {"aggregate": {
-            "median_cold_to_firstconsumer_stage_peak_rss_bytes": 99,
-            "median_parent_wall_seconds": 99,
-        }}}},
-        "full-matrix": {"repeat": {"warm": {"aggregate": {
-            "median_parent_wall_seconds": 99,
-            "median_cold_to_firstconsumer_stage_peak_rss_bytes": 99,
-        }}}},
-    }
-    base = _synthetic_baseline()
-    passing = bench._acceptance_gate(results, base, args, "candidate")
+def test_acceptance_gate_threshold_and_identity_falsifiers(tmp_path):
+    base, results, args = _gate_fixture(tmp_path)
+    baseline_sha = __import__("hashlib").sha256((tmp_path / "baseline.json").read_bytes()).hexdigest()
+    passing = bench._acceptance_gate(results, base, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)
     assert passing["cold_pass"] is True and passing["warm_pass"] is True
     assert passing["pass"] is True
     bad_rows = dict(base, rows=999)
-    assert bench._acceptance_gate(results, bad_rows, args, "candidate")["pass"] is False
+    assert bench._acceptance_gate(results, bad_rows, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)["pass"] is False
     bad_host = dict(base, host={"node": "not-this-host"})
-    assert bench._acceptance_gate(results, bad_host, args, "candidate")["pass"] is False
+    assert bench._acceptance_gate(results, bad_host, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)["pass"] is False
     cold_only = dict(base, results={"cold": {"wide": base["results"]["cold"]["wide"]}})
-    gate = bench._acceptance_gate(results, cold_only, args, "candidate")
+    gate = bench._acceptance_gate(results, cold_only, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)
     assert gate["pass"] is False and gate["warm_pass"] is False
+
+
+def test_acceptance_gate_requires_active_cap_evidence(tmp_path):
+    base, results, args = _gate_fixture(tmp_path, with_cap=False)
+    baseline_sha = __import__("hashlib").sha256((tmp_path / "baseline.json").read_bytes()).hexdigest()
+    gate = bench._acceptance_gate(results, base, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)
+    assert gate["cap_pass"] is False
+    assert gate["pass"] is False
+    assert gate["cap"]["method"] == bench.CAP_METHOD
+
+
+def test_acceptance_gate_uses_launch_to_firstconsumer_clock(tmp_path):
+    base, results, args = _gate_fixture(tmp_path)
+    base["results"]["cold"]["repeat"]["cold"]["aggregate"]["median_launch_to_firstconsumer_seconds"] = 100
+    results["full-matrix"]["repeat"]["warm"]["aggregate"]["median_launch_to_firstconsumer_seconds"] = 200
+    baseline_sha = __import__("hashlib").sha256((tmp_path / "baseline.json").read_bytes()).hexdigest()
+    gate = bench._acceptance_gate(results, base, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)
+    assert gate["warm_pass"] is False
+    assert gate["repeat_wall_ratio"] == 2.0
+
+
+def test_acceptance_gate_requires_event_command_and_hash_identity(tmp_path):
+    base, results, args = _gate_fixture(tmp_path)
+    del base["invocation"]
+    del base["command"]
+    del base["method_sha256"]
+    base["results"]["cold"]["wide"].pop("actual_event_counts")
+    base["results"]["cold"]["wide"].pop("consumer_fingerprints")
+    baseline_sha = __import__("hashlib").sha256((tmp_path / "baseline.json").read_bytes()).hexdigest()
+    gate = bench._acceptance_gate(results, base, args, "candidate", invocation=args.invocation, baseline_sha256=None)
+    assert gate["pass"] is False
+    assert gate["identity"]["actual_event_counts_match"] is False
+    assert gate["identity"]["baseline_file_sha256_matches"] is False
+
+
+def test_acceptance_gate_other_profile_regression_needs_explicit_resolution(tmp_path):
+    base, results, args = _gate_fixture(tmp_path)
+    results["cold"]["narrow"]["cold"]["aggregate"]["median_cold_to_firstconsumer_stage_peak_rss_bytes"] = 120
+    baseline_sha = __import__("hashlib").sha256((tmp_path / "baseline.json").read_bytes()).hexdigest()
+    unresolved = bench._acceptance_gate(results, base, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)
+    assert unresolved["pass"] is False
+    assert unresolved["regression_pass"] is False
+    assert unresolved["unresolved_regressions"]
+    args.regression_resolutions = {
+        "cold/narrow/cold/median_cold_to_firstconsumer_stage_peak_rss_bytes": {
+            "status": "JUSTIFIED_CORRECTION",
+            "justification": "explicit tiny falsifier: other-profile 20% RSS regression is reported for independent correction",
+            "correction": "retain result as diagnostic RED and correct before final scale",
+        }
+    }
+    resolved = bench._acceptance_gate(results, base, args, "candidate", invocation=args.invocation, baseline_sha256=baseline_sha)
+    assert resolved["pass"] is True
+    assert resolved["regression_pass"] is True
+    assert resolved["resolved_regressions"]
+
+
+def test_derived_amortization_uses_measured_write_and_restart_savings():
+    receipt = bench._derived_amortization_receipt(
+        [{"metrics": {"derived_write_wall_seconds": 10.0, "canonical_persist_wall_seconds": 100.0}}],
+        [{"launch_to_firstconsumer_seconds": 4.0}],
+        {"median_launch_to_firstconsumer_seconds": 10.0},
+    )
+    assert receipt["derived_write_wall_seconds_total"] == 10.0
+    assert receipt["warm_restart_savings_seconds"] == 6.0
+    assert receipt["break_even_warm_restarts"] == 10.0 / 6.0
+    assert receipt["canonical_persist_is_separate"] is True
+    assert receipt["repeat_count_is_not_divisor"] is True
+
+
+def test_same_size_same_mtime_derived_corruption_is_not_a_hit(tmp_path):
+    import os
+    root = tmp_path / "roots"
+    profile = bench._profile("narrow", 24)
+    release1, meta1 = bench._build_release(profile, root=root, stages={})
+    assert meta1["derived_cache"]["derived_cache_hit"] is False
+    path = sorted((root / "derived-accelerator").glob("c11-events-*.parquet"))[0]
+    before = path.stat()
+    data = bytearray(path.read_bytes())
+    import pyarrow.parquet as pq
+    data_page_offset = pq.ParquetFile(path).metadata.row_group(0).column(0).data_page_offset
+    data[data_page_offset + 8] ^= 0xFF
+    path.write_bytes(data)
+    os.utime(path, ns=(before.st_atime_ns, before.st_mtime_ns))
+    release2, meta2 = bench._build_release(profile, root=root, stages={})
+    assert release2.release_ref == release1.release_ref
+    assert meta2["derived_cache"]["derived_cache_hit"] is False
+    assert meta2["derived_cache"]["derived_cache_write"] is True
+    assert meta2["derived_cache"]["write_observations"]
+
+
+def test_cold_clears_inherited_policy_before_actual_call(tmp_path):
+    import os
+    foreign = tmp_path / "foreign"
+    old_policy = os.environ.get(bench.POLICY_ENV)
+    old_legacy = os.environ.get(bench.LEGACY_ENV)
+    try:
+        bench._ensure_policy(foreign)
+        output = tmp_path / "cold.json"
+        assert bench.main([
+            "--scenario", "cold", "--profiles", "narrow", "--rows", "8",
+            "--repetitions", "1", "--jsonpath", str(output),
+        ]) == 0
+        payload = json.loads(output.read_text(encoding="utf-8"))
+        run = payload["results"]["cold"]["narrow"]["cold"]["runs"][0]
+        assert not list((foreign / "derived-accelerator").glob("c11-events-*.parquet"))
+        assert run["derived_cache"]["status"] == "NO_GOVERNED_DERIVED_CACHE_WRITE"
+        assert run["derived_cache"]["derived_cache_hit"] is False
+        assert run["env_isolation"]["parent_policy_env_stripped"] is True
+        assert run["env_isolation"]["policy_env_present_after_isolation"] is False
+    finally:
+        if old_policy is None:
+            os.environ.pop(bench.POLICY_ENV, None)
+        else:
+            os.environ[bench.POLICY_ENV] = old_policy
+        if old_legacy is None:
+            os.environ.pop(bench.LEGACY_ENV, None)
+        else:
+            os.environ[bench.LEGACY_ENV] = old_legacy
 
 
 def test_full_matrix_three_fresh_warm_restarts_share_persisted_root(tmp_path):
@@ -246,3 +406,36 @@ def test_full_matrix_three_fresh_warm_restarts_share_persisted_root(tmp_path):
     assert all(x["canonical_reopen_hit"] for x in result["warm"]["runs"])
     assert result["cache_write_amortization"] is not None
     assert payload["final_matrix_eligible"] is False
+
+
+def test_full_matrix_uses_own_qualified_policy_when_inherited_policy_exists(tmp_path):
+    import os
+    foreign = tmp_path / "foreign"
+    own_root = tmp_path / "own"
+    old_policy = os.environ.get(bench.POLICY_ENV)
+    old_legacy = os.environ.get(bench.LEGACY_ENV)
+    try:
+        bench._ensure_policy(foreign)
+        output = tmp_path / "matrix.json"
+        assert bench.main([
+            "--scenario", "full-matrix", "--profiles", "narrow", "--rows", "8",
+            "--repetitions", "1", "--root", str(own_root), "--jsonpath", str(output),
+        ]) == 0
+        payload = json.loads(output.read_text(encoding="utf-8"))
+        result = payload["results"]["full-matrix"]["narrow"]
+        cold = result["cold"]["runs"][0]
+        warm = result["warm"]["runs"][0]
+        assert cold["env_isolation"]["mode"] == "EXPLICIT_OWN_POLICY_FULL_MATRIX"
+        assert str(own_root) in (cold["derived_cache"].get("policy_path") or "")
+        assert cold["derived_cache_write"] is True
+        assert warm["derived_cache_hit"] is True
+        assert not list((foreign / "derived-accelerator").glob("c11-events-*.parquet"))
+    finally:
+        if old_policy is None:
+            os.environ.pop(bench.POLICY_ENV, None)
+        else:
+            os.environ[bench.POLICY_ENV] = old_policy
+        if old_legacy is None:
+            os.environ.pop(bench.LEGACY_ENV, None)
+        else:
+            os.environ[bench.LEGACY_ENV] = old_legacy
