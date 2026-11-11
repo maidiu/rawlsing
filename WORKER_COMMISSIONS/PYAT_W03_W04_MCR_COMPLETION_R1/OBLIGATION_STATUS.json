@@ -1,0 +1,164 @@
+{
+  "schema": "W03_W04_MCR_C_12ID_STATUS_V1",
+  "candidate_sha": null,
+  "goal_complete": false,
+  "obligations": [
+    {
+      "id": "W03-PREVIOUS-CAPITAL",
+      "minimum_grade": "S1",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/01_prior_capital_and_abi.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_01_prior_blobs.txt",
+      "required_check": "SOURCE: git rev-parse the exact L03 accepted source/test blobs and compare with PR895 committed files plus previous P1R2 selector protections",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/_pre553_c11_execution_view.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "986f327aa18053edc61bd837cdded02bbf8388d9"
+      }
+    },
+    {
+      "id": "W03-COLD-HIGHWATER",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/02_cold_materialization_contract.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_02_cold_rss.json",
+      "required_check": "RUN: python3 -m rawlsing_next.bench_w03_w04_physical --scenario cold --profiles narrow,wide,repeat --rows 100000 --repetitions 3 --json WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_02_cold_rss.json",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "7c967b8227a2843971c7cd9f61f3deaa423af866"
+      }
+    },
+    {
+      "id": "W03-SELECTED-CELLS-CANON",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/03_source_cell_and_hash_cost.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_03_cost_comparison.json",
+      "required_check": "RUN: python3 -m rawlsing_next.bench_w03_w04_physical --scenario cells-and-hash --profiles narrow,wide --rows 100000 --repetitions 3 --json WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_03_cost_comparison.json",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "7c967b8227a2843971c7cd9f61f3deaa423af866"
+      }
+    },
+    {
+      "id": "W03-SEMANTIC-TOPOLOGY",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/04_identity_topology.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_04_topology_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_execution_view.py rawlsing_next/tests/test_pre553_w03_w04_completion.py --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_04_topology_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/tests/test_pre553_c11_execution_view.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "8e8effa58579af0c3326ecd4af7e159947abe4ec"
+      }
+    },
+    {
+      "id": "W03-FIRST-CONSUMERS",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/05_first_consumer_equivalence.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_05_consumer_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_i03_grouping.py rawlsing_next/tests/test_pre553_w03_w04_completion.py --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_05_consumer_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/pre553_carrier_execution.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "ee9b3af02bfca9238eb72ea45d94073d47769a07"
+      }
+    },
+    {
+      "id": "W04-COLD-PERSIST-REOPEN",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/06_cross_process_reopen.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_06_reopen_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py rawlsing_next/tests/test_pre553_w03_w04_completion.py --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_06_reopen_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "90d498ef2b1c6e3543e984aa479512cd10afca10"
+      }
+    },
+    {
+      "id": "W04-GOVERNED-DEFAULT",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/07_governed_activation_policy.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_07_policy_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_w03_w04_completion.py -k cache_policy --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_07_policy_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/_pre553_c11_execution_view.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "986f327aa18053edc61bd837cdded02bbf8388d9"
+      }
+    },
+    {
+      "id": "W04-AUTHORITY-INVALIDATION",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/08_invalidation_and_security.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_08_invalidation_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_execution_view.py rawlsing_next/tests/test_pre553_w03_w04_completion.py -k invalidation --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_08_invalidation_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/_pre553_c11_execution_view.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "986f327aa18053edc61bd837cdded02bbf8388d9"
+      }
+    },
+    {
+      "id": "W04-ATOMIC-LIFECYCLE",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/09_atomic_recovery.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_09_recovery_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_w03_w04_completion.py -k recovery --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_09_recovery_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "rawlsing_next/pre553_parquet_carrier.py",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "9dad6713a3aae66717d4ab046e802a72c9b2aa90"
+      }
+    },
+    {
+      "id": "W34-RESOURCE-ECONOMY",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/10_economic_destination.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_10_resource_matrix.json",
+      "required_check": "RUN: python3 -m rawlsing_next.bench_w03_w04_physical --scenario full-matrix --profiles narrow,wide,repeat --rows 100000 --repetitions 3 --json WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_10_resource_matrix.json",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md",
+        "commit": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+        "blob": "ac7a1e57b65cbe5386ed1c5455a34bf1e082e9f9"
+      }
+    },
+    {
+      "id": "W34-PRODUCT-BOUNDARIES",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/11_owner_boundary_and_rollback.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_11_boundary_junit.xml",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_w03_w04_completion.py -k boundary --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_11_boundary_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": "PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_ROADMAP/SECTIONS/03_ROUTE_B_C11.md",
+        "commit": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+        "blob": "ac7a1e57b65cbe5386ed1c5455a34bf1e082e9f9"
+      }
+    },
+    {
+      "id": "W34-REPRODUCIBLE-RETURN",
+      "minimum_grade": "S2",
+      "output": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/12_receiving_and_delta.md",
+      "required_evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_12_ci_and_contract.json",
+      "required_check": "RUN: python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_w03_w04_completion.py rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py rawlsing_next/tests/test_pre553_c11_execution_view.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_i03_grouping.py --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/proof_12_full_junit.xml",
+      "status": "INCOMPLETE_PENDING_SAME_HEAD_PROOF_AND_INDEPENDENT_RECEIVING",
+      "source": {
+        "path": ".github/workflows/pyat-w03-w04-physical-economy.yml",
+        "commit": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+        "blob": "e77b8e5480dd370c1fe8cfcf0cd1e3cdcc427907"
+      }
+    }
+  ],
+  "receiving_rule": "Bothwholecodeandeconomicreviewatoneexactfinalcandidate; externalpostcommitSHA-boundMCRblock + delivered_ids + verifier --verify-return; partiallaneproofnotwholePASS"
+}
