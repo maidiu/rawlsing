@@ -1,0 +1,24 @@
+{
+  "job": "pyat-w03-w04-mcr-w04-independent-review-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-w04-independent-review-r1/completion.json",
+  "exit_code": 0,
+  "review_commit": "b5f919e65cd2dcc3df46818026a5dc9581566955",
+  "reviewed_candidate": "605ce4c409857155eaf8dad7ca4e9c2ae0b15638",
+  "remote_verified": true,
+  "verdict": "REVISE",
+  "required_repairs": {
+    "W04-F01": "Productionfallback trusts spoofablePYTEST_CURRENT_TEST/envroot; removefallback andmigrateexistingtesthelpertoexplicitpolicywithoutweakeningassertions",
+    "W04-F02": "Directoryfsyncfailure swallowed; failclosed/safemiss orcanonicalerrorwithoutdestroyingpriorgooddata",
+    "W04-F03": "Hiddencrashorphanstagefiles evadebudget/retention; reclaimwithouttouchingactive/canonicalfiles"
+  },
+  "same_owner_repair_job": "pyat-w03-w04-mcr-persistence-three-defect-repair-r3",
+  "repair_round_at_this_boundary": 1,
+  "source_test_lease_extension": "Onlyexplicitpolicysetuphelper/necessarytestenvcleanup in test_pre553_c11_execution_view.py; priorassertionspreserved",
+  "not_accepted": [
+    "WholeW04",
+    "Whole12MCR",
+    "resourceeconomics",
+    "native/source/science/protectedmerge"
+  ],
+  "goal_complete": false
+}
