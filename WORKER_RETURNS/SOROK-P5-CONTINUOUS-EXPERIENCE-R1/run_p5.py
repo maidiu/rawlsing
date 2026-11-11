@@ -10,7 +10,7 @@ import sys
 P4 = Path(__file__).resolve().parent.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
 sys.path.insert(0, str(P4))
 
-from run_p4 import act, invitation, new, open_owner, save, surface
+from run_p4 import act, check_boundary, invitation, new, open_owner, save, surface
 from response import check_source
 from developmental_recursion.contracts import RecursionRefusal
 
@@ -37,10 +37,7 @@ def experience(state, args):
         owner = open_owner(state / "actual-p2")
         try:
             check_source(owner)
-            expected = (ledger["turns"][-1]["after"] if ledger["turns"]
-                        else ledger["antecedent"]["identity"])
-            if owner.snapshot().document() != expected:
-                raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
+            check_boundary(owner, ledger)
             outcome = None
             if command in {"say", "inspect", "inspect-edge", "attend"}:
                 if (command in {"inspect", "attend"}

@@ -11,7 +11,7 @@ import time
 RETURNS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RETURNS / "SOROK-P5-CONTINUOUS-EXPERIENCE-R1"))
 
-from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitation, new, open_owner, save, surface
+from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_boundary, check_source, invitation, new, open_owner, save, surface
 from developmental_recursion.contracts import RecursionRefusal
 from attention import register
 from gaze import render
@@ -78,10 +78,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                     raise RecursionRefusal(str(exc)) from exc
                 mii.save_profile(gaze_file, profile)
                 return result
-            expected = (ledger["turns"][-1]["after"] if ledger["turns"]
-                        else ledger["antecedent"]["identity"])
-            if owner.snapshot().document() != expected:
-                raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
+            check_boundary(owner, ledger)
             prior = scene(session)
             outcome = None
             if command in ({"go", "look", "wait", "attend", "inspect"} | OPERATIONS.keys()) and invitation(session, ledger):

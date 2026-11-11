@@ -499,6 +499,9 @@ class HistoricalWorld:
             "surface": {target_id: {
                 "domain": surface["domain"], "location": surface["location"],
                 "physical": deepcopy(surface["physical"]),
+                "allowed_physical_predicates": {
+                    name: value_type.__name__ for name, value_type in PHYSICAL_TYPES.items()
+                },
                 "known_fact_refs": known_refs, "unresolved": list(job["dimensions"]),
                 **({"requested_predicate": requested} if requested is not None else {}),
                 **({"prior_actor_repairs": job["prior_actor_repairs"]}

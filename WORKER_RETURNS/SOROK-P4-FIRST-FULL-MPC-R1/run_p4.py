@@ -139,9 +139,23 @@ def foreground_witness(owner, identity):
 
 
 def last_boundary(ledger):
+    pointer = ledger.get("last_boundary")
+    if pointer is not None:
+        return ledger[pointer["collection"]][pointer["index"]]
     if ledger.get("activity_turns"):
         return ledger["activity_turns"][-1]
     return ledger["turns"][-1] if ledger["turns"] else ledger["antecedent"]
+
+
+def check_boundary(owner, ledger):
+    """Permit history-only commits, retaining the exact foreground/actor check."""
+    boundary = last_boundary(ledger)
+    expected = boundary.get("after", boundary.get("identity"))
+    current = owner.snapshot().document()
+    if current != expected:
+        witness = boundary.get("foreground_witness")
+        if witness is None or foreground_witness(owner, current) != witness:
+            raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
 
 
 def record_activity(owner, ledger_file, ledger, before, result):
@@ -152,6 +166,8 @@ def record_activity(owner, ledger_file, ledger, before, result):
         "foreground_witness": foreground_witness(owner, after),
         "receipt": result,
     })
+    ledger["last_boundary"] = {"collection": "activity_turns",
+                               "index": len(ledger["activity_turns"]) - 1}
     save(ledger_file, ledger)
 
 
@@ -294,6 +310,7 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
                             "after": after, "foreground_witness": foreground_witness(owner, after),
                             "public": public})
     ledger["pending"] = None
+    ledger["last_boundary"] = {"collection": "turns", "index": len(ledger["turns"]) - 1}
     public["next"] = surface(owner, ledger)
     save(ledger_file, ledger)
     return public
@@ -416,13 +433,7 @@ def main():
                 owner = open_owner(state / "actual-p2")
                 try:
                     check_source(owner)
-                    boundary = last_boundary(ledger)
-                    expected = boundary.get("after", boundary.get("identity"))
-                    current = owner.snapshot().document()
-                    if current != expected:
-                        witness = boundary.get("foreground_witness")
-                        if witness is None or foreground_witness(owner, current) != witness:
-                            raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
+                    check_boundary(owner, ledger)
                     if args.command == "view":
                         history = HistoricalWorld(owner.base_owner.fanin.session)
                         history.recover_completed_units()
