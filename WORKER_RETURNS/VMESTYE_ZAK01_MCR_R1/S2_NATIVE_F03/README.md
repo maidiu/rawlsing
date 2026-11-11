@@ -122,7 +122,7 @@ values from the frozen `LEGACY_AR58_SEED.tsv` at
 `49513d3040ca4f8c3ccc17f0abd5092260fa2463`). It exists only as the official MCR-C
 verifier's no-drop coverage input. It is not a new atlas, census, selection rule, or
 authority source; the WITNESS source/registry pins and output hashes do not depend on it.
-File SHA-256: `551bb0b3b3422300c22840c917626ae12e1c5f96bad60c95f6d38a89889fd205`.
+Each line is the verifier's JSON identity tuple `["AR-XXXX"]`. File SHA-256: `bc9f681408f3a6403105e47097cd9af44f9dc9f95d6aba8e693bd384b2c79f2b`.
 
 ## Reproduction
 
