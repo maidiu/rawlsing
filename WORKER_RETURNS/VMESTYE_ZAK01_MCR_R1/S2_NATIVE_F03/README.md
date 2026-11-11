@@ -114,6 +114,16 @@ source/scientific permissions exist. The supplemental control removes only inbou
 certification and shows the same no-match path fails closed, confirming F03 consumes
 rather than creates semantic authority.
 
+## MCR-C coverage input
+
+`MCR_C_COVERAGE_RELEASE_IDS.txt` is a mechanically extracted 58-line list of `release_id`
+values from the frozen `LEGACY_AR58_SEED.tsv` at
+`256d46bf425cc37e114465cddbe3c60e535766ab` (Git blob
+`49513d3040ca4f8c3ccc17f0abd5092260fa2463`). It exists only as the official MCR-C
+verifier's no-drop coverage input. It is not a new atlas, census, selection rule, or
+authority source; the WITNESS source/registry pins and output hashes do not depend on it.
+File SHA-256: `551bb0b3b3422300c22840c917626ae12e1c5f96bad60c95f6d38a89889fd205`.
+
 ## Reproduction
 
 1. Check out the evidence commit or the evidence branch.
