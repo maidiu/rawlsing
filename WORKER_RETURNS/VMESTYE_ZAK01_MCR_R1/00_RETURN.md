@@ -1,4 +1,4 @@
-# ZAK-01 — Historical authority resource/version/rule selection: S0–S1 author return
+# ZAK-01 R2 — Historical authority resource/version/rule selection: S0–S1 author return
 
 **Status:** `DELIVERED_S1_DOCUMENTARY__INCOMPLETE_UNTIL_INDEPENDENT_RECEIVING`. **No S2/S3 and no protected merge.**
 
@@ -15,11 +15,16 @@
 - Source controls: protected `CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py` at 9366… Git blob `6e16878e60e8e89bf8ab8001144ed84ad257f5fc`. This script's `READY_FOR_INDEPENDENT_RECEIVING` is a **format and committed-hash gate only**, not independent legal/scientific acceptance. Its `--verify-return` on this author head is **NOT_RUN** because no exact local Git checkout of this private repo is present; no PASS is asserted.
 
 ## Findings — exact tranche result
-1. **Conservation:** direct join of 58 AR58 seed rows to the 58 C6 `ROW_TYPE=RELEASE` rows is one-to-one; IDs are consecutive `AR-0001..0058`, **58 unique / 42 historically selected-state / 16 unresolved**. Per-ID selected version or exact `NO_SELECTED_SHA`, C6 selected byte count, selector, precedence hold, F1 call IDs and *unobserved original first-reader* state are in `SOURCE_RESOURCE_SELECTION_AND_RULE_PAYLOAD.tsv`. **42 ≠ 42 executable active operations.** AR-0051 is a draft; AR-0052 a local association-only candidate; AR-0054..0057 member sets; AR-0014..0018 ledger selections.
+1. **Conservation:** direct join of 58 AR58 seed rows to the 58 C6 `ROW_TYPE=RELEASE` rows is one-to-one; IDs are consecutive `AR-0001..0058`, **58 unique / 42 historically selected-state / 16 unresolved**. Per-ID selected version or exact `NO_SELECTED_SHA`, C6 selected byte count, selector, precedence hold, F1 call IDs and *unobserved original first-reader* state are in `SOURCE_RESOURCE_SELECTION_AND_RULE_PAYLOAD.tsv`. **R2 separately carries all 42 frozen C6 03 selected-original resource locators: 15 repository paths, 23 historical local paths, 4 bundle descriptions; these are inherited locator evidence, not automatically verified current access.** **42 ≠ 42 executable active operations.** AR-0051 is a draft; AR-0052 a local association-only candidate; AR-0054..0057 member sets; AR-0014..0018 ledger selections.
 2. **F03 AR-0005/0006:** selected QSM 47,874,248 B / `0f7fa1c0…` and QRA 1,119,028 B, 700 rows / `a91239a5…` remain distinct C6-selected resource claims. Direct original code proves the six-coordinates rule and directional/context/admin/blocked branches. **High-risk hostile case:** with no registry match, *all five certified inbound flags* preserve the incoming six coordinates while declaring `registry_match=False`; false `allowed_as_v551` or `PARTIAL` mapping clears them. This does **not** issue original source authority. Native same-input mutate/restore not run; 47MB/1.1MB selected original bytes not independently rehashed here.
 3. **F08 AR-0047..0050:** source code exact override specificity and conflict exceptions. At `GSS/1973/uswar` the **raw selected override requests True** for V551 relation evidence; the *effective C11 Q3 test-time consumer* retains `semantic_role=RELATION_EVIDENCE` but yields `review_required=true`, `allowed_as_v551_relation_evidence=false`. C11 prior replay shows removal/duplicate counterexamples and restored output hash equal to positive `1c78a386f0b433dd4ffb97768314f92b09e7476d1c31f4a92f8343cb26f253b1`; ZAK-01 independently checked exact historical source branches and raw CSV SHA, **not that S2 replay**.
 4. **F04 AR-0003/0004/0025:** all three are `NO_SELECTED_SHA` and unresolved. AR-0025 has an F01 identity callsite but no proved selected F04 six-stage semantic caller. No fabricated source/driver/semantic owner, historical output or generic C11 first reader.
-5. **Withdrawal/shadows:** AR-0009, 0039, 0040, 0048, 0049 retain specific archive-predecessor, legacy-header, and unproved-succession negatives; AR-0008 document identity, AR-0051 draft, 0052 local-only, and 0054..57 member/aliases remain explicitly non-equivalent to active runtime. AR-0049 LMQ-010 accepted baseline `15f7b561…` is not superseded by nearby same-name LMQ-011 `9139…` without source-issued succession. There is no blanket “all withdrawals verified”; uninspected variants are a typed hold.
+5. **Withdrawal/shadows (case-scoped):** AR-0009, 0039, 0040, 0048, 0049 retain specific archive-predecessor, legacy-header, and unproved-succession negatives; AR-0008 document identity, AR-0051 draft, 0052 local-only, and 0054..57 member/aliases remain explicitly non-equivalent to active runtime. AR-0049 LMQ-010 accepted baseline `15f7b561…` is not superseded by nearby same-name LMQ-011 `9139…` without source-issued succession. There is no blanket “all withdrawals verified”; **24 of 42 selected-state rows have no competing-version/working-refusal evidence in this pass**, and each such row is explicitly marked with its own ID in the TSV. Uninspected variants remain a typed hold.
+
+## R2 source-locator and byte verification repair
+**Independent hostile review defect repaired at S1:** C6 03 carries selected-original-edge locators for each of the 42 selected-state AR records. The original R1 TSV dropped 41 of those locators. R2 restores every locator with its precise source SHA/byte count, selection rule and original-versus-current grade, and distinguishes inherited location from independently read bytes. At protected PRE-MAIN `9366b42a61a383808071106d70aa1255a769390a`, I directly rehashed **13 repository sources**, all agreeing with the selected C6 SHA-256 and bytes: AR-0007, AR-0019, AR-0020, AR-0021, AR-0022, AR-0023, AR-0024, AR-0046, AR-0047, AR-0048, AR-0050, AR-0051, AR-0053. In particular, **AR-0047** is the 11,059-byte `question_wave_itinerary.csv` with 35 unique source/wave keys, and **AR-0050** is the 3,487-byte `question_type_taxonomy.yaml`. The 47MB QSM AR-0005 and 1.1MB QRA AR-0006 retain inherited repository locators but were not rehashed because the connected file read could not supply their complete body. Historical local/bundle locators were not falsely marked directly verified. A fresh S1 differential comparison detected deliberate duplicate/drop, false unresolved promotion, and AR-0048 SHA mutation, and recovered the original C6 58-row state after restoring input.
+
+**Remaining exact hold:** This does not prove that all 42 original selected payloads were independently rehashed, current pipeline reads them, or every shadow/withdrawn version is refused in native output. There is no universally verified precedence result, and the F03 mandatory S2 positive→denied→restored test remains **NOT_RUN**.
 
 ## Independently chosen additional falsifier
 **AR-0049 later same-named QSR succession:** a plausible shortcut selects the newer `9139…` file over accepted `15f7…` just because it is later or closer to the current tree, thereby changing source-structure meanings. C6 explicitly records LMQ-011 succession as **UNPROVED** and older f47c handoff as a different variant. The negative is dispositive at the *version-selection contract* level; original LMQ issuer and native consumer restoration remain **NOT_RUN/NOT_PROVED**. See `Z01-F08-04-AR0049-SUCCESSION`.
@@ -27,15 +32,15 @@
 ## MCR-C obligations (author-side dispositions, not independent acceptance)
 | Obligation | Evidence / actual grade | Disposition |
 |---|---|---|
-| `ZAK01-TASK-01` | 58-row seed/C6 crosswalk, F03 source branch, exact 58/42/16 static check; S1 | `DELIVERED_S1_PENDING_RECEIVING`; original selected payload native verification holds |
+| `ZAK01-TASK-01` | 58-row seed/C6 crosswalk + all 42 C6 03 source locators + 13 directly rehashed repository selected resources; S1 | `DELIVERED_S1_PENDING_RECEIVING`; remaining 29 selected payloads and original first readers unverified |
 | `ZAK01-TASK-02` | F08 source, direct 1702B SHA, C11 inherited negative and restore; S1 | `DELIVERED_S1_PENDING_RECEIVING`; S2 new replay NOT_RUN |
 | `ZAK01-TASK-03` | C6 triple F04 unresolved with AR-0025 F01 distinction; S1 | `DELIVERED_S1_WITH_EXACT_ISSUER_HOLD` |
-| `ZAK01-TASK-04` | per-ID alternates and shadow precedence source, AR-0049 extra falsifier; S1 | `DELIVERED_S1_WITH_VERSION_SCOPE_HOLD` |
+| `ZAK01-TASK-04` | per-ID source-selected alternates and status-specific precedence, AR-0049 falsifier; S1 | `DELIVERED_S1_WITH_24_EXPLICIT_UNPROVED_COMPETING_VERSION_CASES`; no universal refusal |
 | `ZAK01-HOSTILE` | F03 all-flags preservation/no-registry static source; S1; **minimum S2** | `INCOMPLETE_S2_NATIVE_NEGATIVE_RESTORE_NOT_RUN` |
 | `ZAK01-OUTPUT-01` | this full return; S1 candidate | `DELIVERED_PENDING_EXACT_HEAD_RECEIVING` |
 | `ZAK01-OUTPUT-02` | 58-row TSV; S1 candidate | `DELIVERED_PENDING_EXACT_HEAD_RECEIVING` |
 | `ZAK01-OUTPUT-03` | 16 unresolved + named exceptions and issuer holds; S1 candidate | `DELIVERED_PENDING_EXACT_HEAD_RECEIVING` |
-| `ZAK01-OUTPUT-04` | 13 individual positive/negative/restore or NOT_RUN JSONL cases; S1 candidate | `DELIVERED_PENDING_EXACT_HEAD_RECEIVING` |
+| `ZAK01-OUTPUT-04` | 14 individual positive/negative/restore or NOT_RUN JSONL cases including new C6 locator differential; S1 candidate | `DELIVERED_PENDING_EXACT_HEAD_RECEIVING` |
 
 ## Three courts × five required decisions
 | Court | ACCEPT_IF | FAIL_RED_IF | HOLD_IF | EVIDENCE | OWNER_OF_DECISION |
@@ -49,7 +54,7 @@
 
 **SCIENTIFIC_SIGNIFICANCE:** The selected override's requested Boolean and final consumer's effective Boolean are different stages. A role label, provenance SHA, or registry no-match preservation cannot substitute for a qualified empirical/psychological/source issuer or signed V551 permission.
 
-**ENGINEERING_SIGNIFICANCE:** The six-coordinate fail-closed code, override ambiguity exception, exact historical CSV digest, and 58/42/16 mapping supply falsifiable S1 evidence. The next independent reviewer can target conditional false-positive cases instead of redoing the whole historical census; this report never labels author-side format PASS as native success.
+**ENGINEERING_SIGNIFICANCE:** The six-coordinate fail-closed code, override ambiguity exception, 13 direct selected resource SHA-256 checks, all 42 inherited selected locators, and 58/42/16 mapping supply falsifiable S1 evidence. The next independent reviewer can target conditional false-positive cases instead of redoing the whole historical census; this report never labels author-side format PASS as native success.
 
 **AUTHORITY_SIGNIFICANCE:** This is author candidate evidence only. The still-draft #887 source contract and its #888 receiver are not silently integrated; ZAK-01 requires a genuinely separate exact-head nonauthor technical reviewer and source/science/actor owners on their claim edges. Actual #814–817 acknowledgments are **separate downstream duties**, not prerequisites to receiving the upstream S0–S1 construction (HQ ruling A).
 
@@ -57,12 +62,12 @@
 
 **TERMINAL_HAND_BACK:** deliver exactly the four named contracted outputs; per-ID source ledger is ZAK05 input, not a new canonical atlas. Named next: separate ZAK-01 independent reviewer, ZAK02 historic code owner, ZAK03 current Pyat reader, ZAK04 downstream, ZAK05 authority-placement synthesis and ZAK08 whole-mission conservation. No downstream execution, native35, original source issuer, scientific/actor rights, protected merge, or whole-machine zero-loss asserted.
 
-**CONFIDENCE_AND_LACUNAE:** High on *directly inspected static code branches*, the 1,702B selected F08 digest, and exact joined AR58/C6 identity set; medium on inherited C6 version-selection declarations pending direct hashing of large originals; low/NOT_PROVED on original historical native behavior, current selected operation and true first reader, semantic/scientific source issuance, all variant exhaustiveness, model entitlement/other writer leases, and whole-machine zero loss. No local full repo checkout or authorized native runner in this host; S2/S3 **NOT_RUN**.
+**CONFIDENCE_AND_LACUNAE:** High on *directly inspected static code branches*, 13 selected repository file SHA/byte matches and exact joined AR58/C6+C6-03 42-locator identity set; medium on inherited C6 version-selection declarations pending direct hashing of 29 other selected originals; low/NOT_PROVED on original historical native behavior, current selected operation and true first reader, semantic/scientific source issuance, all variant exhaustiveness, model entitlement/other writer leases, and whole-machine zero loss. No local full repo checkout or authorized native runner in this host; S2/S3 **NOT_RUN**.
 
 ## Durable output set
 1. `WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/00_RETURN.md` (this text)
 2. `WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/SOURCE_RESOURCE_SELECTION_AND_RULE_PAYLOAD.tsv` (58 unique AR IDs)
 3. `WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/CONFLICT_WITHDRAWAL_AND_ISSUER_HOLDS.md` (per-ID holds and precedence)
-4. `WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/NEGATIVE_SELECTION_AND_RESTORE_TESTS.jsonl` (13 S1-source/inherited-vs-NOT_RUN cases)
+4. `WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/NEGATIVE_SELECTION_AND_RESTORE_TESTS.jsonl` (14 S1-source/inherited-vs-NOT_RUN cases)
 
 **No author self-acceptance. Candidate PR records final exact commit for independent receiving.**
