@@ -1,0 +1,19 @@
+{
+  "id": "MII-RV-EXECUTABLE-54",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "protected_cut": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "counterfeit_attack": {
+    "command": "python3 -B mcr_independent_consumer_trace.py --counterfeit-attack",
+    "stdout": "{\"status\": \"PASS_COUNTERFEIT_ADAPTER_REJECTED\", \"reason\": \"MCR_COUNTERFEIT_ADAPTER_NO_REAL_P6_EXPERIENCE_control\", \"independent_source_observation\": true}",
+    "exit": 0
+  },
+  "real_baseline": {
+    "command": "python3 -B mcr_independent_consumer_trace.py --baseline",
+    "stdout": "{\"grade\": \"SOURCEFREE_BASELINE_NOT_MII_IMPLEMENTATION\", \"observed_calls\": 24, \"public_digest\": \"bf5a1b5f0e24c88db8f931478e4e9c6ae9d9629f6c1beffcf08341caae0ccde0\", \"restored_public_equal\": true, \"source_fault_denied\": true, \"status\": \"PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED\", \"world_ledger_byte_invariant\": true}",
+    "exit": 0
+  },
+  "profile_mechanism": "sys.setprofile hook matched CPython code objects from live imports; adapter-reported digests must equal independently observed run_p6.experience returns; author-disabled profiler detected.",
+  "54_probe_runner": "python3 -B mcr_frozen_oracle_runner.py --id MII-E01|MII-P03|MII-T05 -> RED_INCOMPLETE, reason MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN (MII engine absent; honest fail-closed, not PASS).",
+  "status": "PASS",
+  "grade": "S2"
+}

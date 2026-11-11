@@ -1,0 +1,22 @@
+{
+  "id": "MII-RV-VIEWER-SOURCE",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "protected_cut": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "source_ceiling": {
+    "house.scene": "room, orientation, exit, in-room object glances only; no light/sightline/distance/legibility",
+    "encounter.movement_evidence": "actor-relative, fixture-gated; UNKNOWN -> HOLD_SENSORY_SOURCE_UNQUALIFIED",
+    "outward.sensory_candidate": "None unless situated_conditions.grade == SOURCEFREE_FIXTURE"
+  },
+  "executed_denial_restore": {
+    "command": "mcr_independent_consumer_trace.py --baseline (MCR_QUALIFIED_RUNTIME_ROOT=4f3413fc checkout, SHA authenticated)",
+    "result": "PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED",
+    "source_fault": "house.OBJECTS['bench']['glance'] mutated in live upstream module",
+    "typed_denial": "P6_HOUSE_SOURCE_OR_ROOT_MISMATCH / P6_OBJECT_PROVENANCE_MISMATCH",
+    "restored_public_equal": true,
+    "world_ledger_byte_invariant": true,
+    "observed_calls": 24
+  },
+  "prior_executed_ablations": "test_house.py 8/8 including no_fixture ablation; actor_move_visibility OCCLUDED/UNKNOWN no-omniscience parameterization.",
+  "status": "PASS",
+  "grade": "S2"
+}

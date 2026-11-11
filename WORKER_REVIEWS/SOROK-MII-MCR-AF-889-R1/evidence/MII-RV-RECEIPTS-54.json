@@ -1,0 +1,34 @@
+{
+  "id": "MII-RV-RECEIPTS-54",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "full_e_63": {
+    "path": "WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_acceptance.json",
+    "commit": "62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff",
+    "blob": "2ff94ac73fbd22344acfe2890a9163b8b492348d",
+    "blob_pin": "PASS",
+    "required_count": 63,
+    "packages": 10,
+    "independent_receiving_required": true
+  },
+  "original_54_registry": {
+    "path": "WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_identities.tsv",
+    "commit": "8382651eabc5a7fa6ca0fed3447fa6308b3324fc",
+    "blob": "a4aa2fafbb19263e3a89de703c8525a765417e95",
+    "blob_pin": "PASS",
+    "count": 54,
+    "historical_00e_exact": true
+  },
+  "gate_preflight": {
+    "command": "python3 -B mcr_full_e1_e10_gate.py --preflight",
+    "stdout": "{\"status\": \"PASS_FULL_MISSION_63_DISCRIMINATORS_PRESERVED\", \"e_packages\": 10, \"claims\": 63, \"actual_MII_implementation\": \"NOT_RUN\", \"independent_acceptance\": \"PENDING\"}",
+    "exit": 0
+  },
+  "gate_forged_attack": {
+    "command": "python3 -B mcr_full_e1_e10_gate.py --forged-attack",
+    "stdout": "{\"status\": \"PASS_FORGED_63_OF_63_AUTHOR_RECEIPTS_REJECTED\", \"error\": \"MCR_MISSION_NO_SEPARATELY_RUN_P6_OBSERVER_MII-E01-WORLD_EVENT_CUSTODY\", \"actual_MII_test\": \"NOT_RUN\"}",
+    "exit": 0
+  },
+  "assess_receipts_requirements": "Per outcome: status PASS + grade SOURCEFREE_S2, independent_actual_source_witness with a real run_p6.experience return, qualified_source_denial, exact_source_restore, 64-hex actual_first_reader_output_sha256 equal to the separately regenerated observer artifact, reviewer_command_origin INDEPENDENT_NONAUTHOR_SOURCE.",
+  "status": "PASS",
+  "grade": "S2"
+}

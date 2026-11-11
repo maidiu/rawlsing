@@ -1,0 +1,23 @@
+{
+  "id": "MII-RV-TERMINAL-NODROP",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "contract_reduction_self_test": {
+    "command": "python3 -B mcr_contract_reduction_attack.py --self-test",
+    "stdout": "{\"actual_verifier_status\": \"RED_INCOMPLETE\", \"errors\": [\"MCR_C_FROZEN_UNIVERSE_COUNT_OR_DUPLICATE_MISMATCH\", \"MCR_C_NO_DROP_SET_MISMATCH\"], \"missing\": \"MII-T05\", \"scope\": \"synthetic attack; NOT_MII_EXECUTION\", \"status\": \"PASS_REJECTED_53_FORGED_PROOFS\"}",
+    "exit": 0,
+    "meaning": "53/54 forged source-consistent claims rejected (missing MII-T05 detected, frozen-universe mismatch flagged)."
+  },
+  "forged_63_refusal": {
+    "command": "python3 -B mcr_full_e1_e10_gate.py --forged-attack",
+    "result": "PASS_FORGED_63_OF_63_AUTHOR_RECEIPTS_REJECTED"
+  },
+  "terminal_receiving_enforcement_readback": {
+    "candidate_edit_lock": "refuses candidate-edited mcr_terminal_receiving.py / consumer trace / full gate vs issued SHA",
+    "issued_scope": "54 obligations, exact RUN command per ID, distinct output+evidence paths",
+    "63_conservation": "every MII-E* obligation must list the complete package outcome IDs",
+    "execution": "per-ID runner rerun + per-ID consumer witness + full E gate + frozen MCR-C verify-return before READY_FOR_INDEPENDENT_RECEIVING",
+    "preflight": "PASS_ISSUED_54_SOURCE_PROOF_COMMANDS_ONLY, actual_MII_not_run true"
+  },
+  "status": "PASS",
+  "grade": "S2"
+}

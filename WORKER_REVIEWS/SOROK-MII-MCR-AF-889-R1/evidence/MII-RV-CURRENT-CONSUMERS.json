@@ -1,0 +1,56 @@
+{
+  "id": "MII-RV-CURRENT-CONSUMERS",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "protected_cut": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "independence_mechanism": "mcr_independent_consumer_trace.py imports owner modules itself from MCR_QUALIFIED_RUNTIME_ROOT; requires MCR_QUALIFIED_RUNTIME_SHA == git HEAD; code-object identity checked per frame; adapter-reported digest must equal independently observed run_p6.experience return; author disabling the profiler is detected.",
+  "authenticated_runtime": {
+    "root": "separate git worktree at 4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+    "sha_check": "PASS"
+  },
+  "executed": {
+    "counterfeit_attack": "PASS_COUNTERFEIT_ADAPTER_REJECTED",
+    "baseline_real_p6": "PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED (24 calls)",
+    "upstream_fault": "house.OBJECTS mutation -> typed RecursionRefusal",
+    "restore": "public digest equal, world ledger byte-invariant"
+  },
+  "novel_challenge_n2": {
+    "version": "CORRECTED_VERIFIER_ENFORCED",
+    "script": "WORKER_REVIEWS/SOROK-MII-MCR-AF-889-R1/novel_challenge_n2_decoy_metrics.py",
+    "case": "Mixed forged receipt: a genuine independently observed run_p6.experience digest (bf5a1b5f\u2026, real call) is carried by the 40 valid outcomes, while fabricated E3/E8/E9 outcome records attach never-produced measurements (exposure-ledger writes, replay failures, p95/cold-start latency) with digests derived from the fabrication. The receipt is fed to the real acceptance predicate assess_receipts from mcr_full_e1_e10_gate.py.",
+    "checks": [
+      {
+        "name": "genuine_p6_return_observed",
+        "result": "PASS",
+        "detail": "digest=bf5a1b5f0e24c88d\u2026"
+      },
+      {
+        "name": "all_genuine_control_accepted_by_predicate",
+        "result": "PASS",
+        "detail": "assess_receipts returns True"
+      },
+      {
+        "name": "mixed_genuine_digest_plus_fabricated_e3_e8_e9_rejected",
+        "result": "PASS",
+        "detail": "RuntimeError MCR_MISSION_TEST_RETURNS_DIFFER_FROM_RECEIVER_OBSERVED_P6_MII-E03-APPEND_VERSION"
+      },
+      {
+        "name": "rejection_names_fabricated_outcome",
+        "result": "PASS",
+        "detail": "suffix MII-E03-APPEND_VERSION"
+      }
+    ],
+    "verifier": "mcr_full_e1_e10_gate.assess_receipts (the actual receiving predicate)",
+    "forged_packages": [
+      "MII-E03",
+      "MII-E08",
+      "MII-E09"
+    ],
+    "forged_id_count": 23,
+    "genuine_digest_sha256": "bf5a1b5f0e24c88db8f931478e4e9c6ae9d9629f6c1beffcf08341caae0ccde0",
+    "fabricated_digest_sha256": "5b2319f9317fadc4ce68b08ee5d7abe91713bf26e2bf72948ae6d96afeaf3b61",
+    "status": "PASS",
+    "nonredundancy": "Author attacks cover fully-counterfeit adapters and all-forged receipt sets; this case isolates a mixed receipt where the carrier digest is genuine and only the unconnected E3/E8/E9 measurements are fabricated, and proves the real verifier \u2014 not reviewer inspection \u2014 returns RED."
+  },
+  "status": "PASS",
+  "grade": "S2"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "MII-RV-CAUSAL-ACTION-ABI",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "protected_cut": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "causal_parents": {
+    "actor_initiative.py": "c9d2e1e93314ef2ec2dd767f998fd2775be78663",
+    "situated.py": "8b434ff2f1b96b13b02be59704518d622ebecbd6",
+    "actor_scene_context.py": "6fab74d1c09477acafe9653d25a4af0e646280b7",
+    "gaze_inputs_in_actor_path": "0 matches (situated/actor_initiative/actor_scene_context)",
+    "selection_binding": "world_state_hash, clock, conditions_hash, actor_context_hash, root_hash, branch_id rechecked before writer IO"
+  },
+  "action_abi": {
+    "look": "target positional -> INSPECT_OBJECT -> house.perform; forged/out-of-room -> UNAVAILABLE; E07/P05 now carry switch_actual_action_to_attend / replace_look_with_untargeted_attend adversarial substitutions",
+    "attend": "no object argument -> P4.act(pacing=PACE) -> session.attend() (untargeted)",
+    "orient": "P5 CLI orient(event_id) -> gaze.attend(surface, history, event_id), perceived events only"
+  },
+  "prior_executed_courts": "R3/R5 same protected cut: test_actor_initiative 5/5, test_actor_initiative_hostile 20/20 (independent CONTINUE vs MOVE without user action, stale-selection refusals), test_house 8/8.",
+  "status": "PASS",
+  "grade": "S2"
+}
