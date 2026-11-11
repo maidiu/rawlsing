@@ -5,7 +5,7 @@
 - **Worktree:** `/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2`
 - **Branch:** `agent/pyat-w03-w04-ci-proof-repair-r1`
 - **Start head:** `09f97a3a4c77ed7666ee95af586cfdfd91493f73`
-- **Implementation head:** `a77d1e052ab5d5022cd88c274dde4d2146265231`
+- **Implementation head:** `df6fa8aa2b6c3a10dbd6812133ad335f99454b61` (code/test/proof `a77d1e052`; direct-helper trigger follow-up `df6fa8aa2`)
 - **Author status:** `DELIVERED_PENDING_RECEIVING` for the scoped CC-F03/CC-F04 repair; whole MCR/economics remain `INCOMPLETE`.
 - **Full frozen proof gate:** `RED` only on the preserved review snapshot path, outside the authorized write lease; exact residual is recorded below. Scoped changed gate for this repair is `PASS`.
 - **No waiver:** the workflow runs the existing checker at real PR base/head; no new checker, engine or bypass.
