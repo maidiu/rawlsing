@@ -11,6 +11,7 @@ import shutil
 import tempfile
 from typing import Any, Mapping
 
+from rawlsing_next._pre553_w04_cache import fsync_dir
 from rawlsing_next.pre553_c11_integrity import C11InternalRecord, TypedAbsence
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, _make_validated_release
 from rawlsing_next.pre553_empirical_objects import AuthorityRef, CanonicalSemanticObject, ExactRef, canonical_json, exact_ref, semantic_hash
@@ -40,6 +41,14 @@ def _sha_file(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _fsync_file(path: Path) -> None:
+    fd = os.open(path, os.O_RDONLY)
+    try:
+        os.fsync(fd)
+    finally:
+        os.close(fd)
 
 
 def _encode(value: Any) -> Any:
@@ -234,6 +243,7 @@ class ParquetC11Carrier:
             relation_digests[relation] = _logical_digest(rows)
             path = directory / f"{relation}.parquet"
             pq.write_table(pa.Table.from_pylist(rows) if rows else pa.table({"_empty": pa.array([], type=pa.string())}), path, compression="zstd", compression_level=3)
+            _fsync_file(path)
             member_hashes[path.name] = _sha_file(path)
         identity_rows = [{"release_id": release.release_id, "release_ref_json": canonical_json(release.release_ref.as_dict()),
                           "source_artifact_ref_json": canonical_json(release.source_artifact_ref.as_dict()),
@@ -243,6 +253,7 @@ class ParquetC11Carrier:
         relation_digests["release_identity"] = _logical_digest(identity_rows)
         path = directory / "release_identity.parquet"
         pq.write_table(pa.Table.from_pylist(identity_rows), path, compression="zstd", compression_level=3)
+        _fsync_file(path)
         member_hashes[path.name] = _sha_file(path)
         return member_hashes, relation_digests
 
@@ -266,8 +277,13 @@ class ParquetC11Carrier:
                         "source_artifact_ref": release.source_artifact_ref.as_dict(), "members": dict(sorted(members.items())),
                         "relation_digests": dict(sorted(relations.items()))}
             manifest = {**unsigned, "manifest_hash": _sha_bytes(canonical_json(unsigned).encode())}
-            (payload / "manifest.json").write_text(canonical_json(manifest) + "\n", encoding="utf-8")
-            target.parent.mkdir(parents=True, exist_ok=True); os.replace(payload, target)
+            manifest_path = payload / "manifest.json"
+            manifest_path.write_text(canonical_json(manifest) + "\n", encoding="utf-8")
+            _fsync_file(manifest_path)
+            fsync_dir(payload)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(payload, target)
+            fsync_dir(target.parent)
             return target
         finally:
             shutil.rmtree(staging, ignore_errors=True)
