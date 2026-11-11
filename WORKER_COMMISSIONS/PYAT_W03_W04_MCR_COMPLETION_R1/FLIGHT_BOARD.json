@@ -315,7 +315,7 @@
       "job": "pyat-w03-w04-mcr-bench-coupled-method-repair-r2",
       "pid": 48647,
       "session": "ses_b998af9086264002a86ee57b6e",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "RETURNED_PARTIAL_METHOD_REPAIR__ECON_RESIDUALS_REPAIR_RESERVED",
       "actual_model": {
         "id": "msg_1c884aa0d001QLlX30fcSi13ft",
         "type": "assistant",
@@ -332,11 +332,40 @@
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
       "source_candidate": "81a4f4cd3",
-      "scope": "Firstbenchmethodrepair; fullfinal100kmatrixhelduntilmethodandcandidatefrozen"
+      "scope": "Firstbenchmethodrepair; fullfinal100kmatrixhelduntilmethodandcandidatefrozen",
+      "candidate": "07f37e47893fdbc956766cea7d3ef550f064d8c7",
+      "terminal": {
+        "exit_code": 0
+      }
+    },
+    {
+      "job": "pyat-w03-w04-mcr-bench-economic-findings-repair-r3",
+      "lane": "bench-economic-repair",
+      "session": "ses_b998af9086264002a86ee57b6e",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
+      "status": "ACTIVE_VERIFIED_MODEL",
+      "candidate_base": "07f37e47893fdbc956766cea7d3ef550f064d8c7",
+      "scope": "ECON-M1..M5 residual method defects; paired protocol/falsifiers; small only",
+      "repair_round": 2,
+      "pid": 56322,
+      "actual_model": {
+        "id": "msg_1c894626a001b4tPdgOmuiTU0H",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794366530264,
+          "streamed": 1794366537338,
+          "completed": 1794366537482
+        }
+      }
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Intake existing bench method repair and combined-code review terminal returns; check ECON-M1\u2013M5 without duplicating active work. Then independent method check before final scale run.",
+  "next_action": "Dispatch reserved exact economic-method residual repair same existing bench author; intake combined-code review independently; no full matrix until method qualified.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -364,5 +393,5 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "No third independent commission ready: final matrix/receiving depend on repaired benchmark method and final candidate. Cap3; notification-only waiting."
+  "next_ready_work": "Two outstanding jobs: exact economic benchmark repair56322 and independent combined-code review46810. Full matrix and final same-SHA receivers depend on method qualification. No filler third job."
 }
