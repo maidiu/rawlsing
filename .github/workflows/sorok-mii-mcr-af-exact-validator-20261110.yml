@@ -61,6 +61,16 @@ jobs:
           set -euo pipefail
           python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py --self-test
           python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_terminal_receiving.py --issued-sha $(git rev-parse HEAD) --preflight
+      - name: No future MII runtime adapter means explicit RED not a fabricated completed test
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py --id MII-E01 >/tmp/mii-not-implemented.txt 2>&1; then
+            echo MCR_FALSE_SOURCEFREE_IMPLEMENTATION_PASS
+            exit 1
+          fi
+          grep -q MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN /tmp/mii-not-implemented.txt
+          echo MCR_UNIMPLEMENTED_ADAPTER_RED_CONFIRMED
       - name: Hostile 53-of-54 valid-hash forged return must FAIL against frozen original TSV
         shell: bash
         run: |
