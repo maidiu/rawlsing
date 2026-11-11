@@ -14,6 +14,10 @@ import sys
 import pytest
 
 from rawlsing_next._pre553_c11_execution_view import _CompactPublicObjects
+from rawlsing_next._pre553_query_predicate import (
+    _build_release_index,
+    _select_respondent_events,
+)
 from rawlsing_next._pre553_w04_cache import (
     CACHE_ENVELOPE_KEY,
     CACHE_METADATA_KEY,
@@ -22,7 +26,12 @@ from rawlsing_next._pre553_w04_cache import (
     load_policy,
 )
 from rawlsing_next.pre553_c11_repository import C11Repository
-from rawlsing_next.pre553_empirical_objects import RespondentEvent, canonical_json
+from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor
+from rawlsing_next.pre553_empirical_objects import (
+    RespondentEvent,
+    canonical_json,
+    exact_ref,
+)
 from rawlsing_next.pre553_source_backed_c11_facade import (
     ExactPhysicalCellStream,
     SourceBackedC11FacadeError,
@@ -138,6 +147,51 @@ def test_cold_repository_is_used_without_disk_cache_and_matches_eager():
 def test_cold_path_matches_eager_route_b_fixture(kwargs):
     fx = _route_fixture(**kwargs)
     _compare_eager_cold(fx["stream"], fx["projection"])
+
+
+def _executor(release, fixture):
+    repository = C11Repository((release,))
+    return CarrierNeutralResearchExecutor(
+        repository, (release.release_ref,), fixture["catalog"])
+
+
+@pytest.mark.parametrize(
+    "kwargs",
+    ({}, {"missing_weight": True}, {"valid_empty": True}),
+    ids=("routed-ordered-repeated", "missing-optional-weight", "valid-empty"),
+)
+def test_cold_selector_sequence_and_yield_match_eager(kwargs):
+    fx = _route_fixture(**kwargs)
+    eager = build_validated_source_backed_c11_release_from_stream(
+        fx["stream"], fx["projection"])
+    cold = build_cold_source_backed_c11_release(
+        fx["stream"], fx["projection"])
+    for universe in fx["projection"].universes:
+        eager_index = _build_release_index(eager, universe.ref)
+        cold_index = _build_release_index(cold, universe.ref)
+        assert set(eager_index.events_by_respondent) == set(
+            cold_index.events_by_respondent)
+        for respondent_key, eager_events in eager_index.events_by_respondent.items():
+            cold_events = cold_index.events_by_respondent[respondent_key]
+            eager_refs = [event.ref.key for event in eager_events]
+            cold_refs = [event.ref.key for event in cold_events]
+            assert cold_refs == eager_refs
+            targets = {
+                exact_ref(event.native_question_ref, "native question")
+                for event in eager_events
+            }
+            for target in targets:
+                eager_yield = [
+                    event.ref.key for event in _select_respondent_events(
+                        eager_index, respondent_key, target)
+                ]
+                cold_yield = [
+                    event.ref.key for event in _select_respondent_events(
+                        cold_index, respondent_key, target)
+                ]
+                assert cold_yield == eager_yield
+    assert canonical_json(_consumer_material(_executor(cold, fx), fx)) == (
+        canonical_json(_consumer_material(_executor(eager, fx), fx)))
 
 
 def test_cold_path_refuses_duplicate_physical_row_slot():

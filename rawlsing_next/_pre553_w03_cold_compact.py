@@ -137,7 +137,10 @@ class ColdCompactBuilder:
             tuple(ordered_entries),
             tuple(sorted(self.non_events, key=lambda obj: obj.ref.key)),
             MappingProxyType({
-                key: _RespondentEvents(lane, tuple(rows))
+                key: _RespondentEvents(
+                    lane,
+                    tuple(sorted(rows, key=lambda row: self.event_keys[row])),
+                )
                 for key, rows in self.groups.items()
             }),
             frozenset(self.event_states),
