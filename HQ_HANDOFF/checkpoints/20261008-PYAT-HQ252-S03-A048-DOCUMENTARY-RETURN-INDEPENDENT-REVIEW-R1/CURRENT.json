@@ -1,0 +1,173 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261008-PYAT-HQ252-S03-A048-DOCUMENTARY-RETURN-INDEPENDENT-REVIEW-R1",
+  "decision": "HQD-2026-10-08-252",
+  "date": "2026-10-08",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261008-PYAT-HQ251-S01-S02-RETURNS-S03-PENDING-R01-ISSUED-R1",
+  "inherited_handoff_commit": "5efaac987067aa98c4aa5b7186436d6bbad4732b",
+  "decision_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ252_S03_A048_RETURN_AND_NATIONAL_INSTRUMENT_REVIEW_R1.md",
+  "returns": [
+    {
+      "id": "HQ250_S03_EVS_A048_CONSTRUCT",
+      "branch": "agent/rabochii-pyat-hq250-s03-evs-one-construct-comparability-r1",
+      "commission_tip": "59c5435e3dc36c4966f8a7147db6715c25d91af2",
+      "head": "d7c529a2aaa424e558137daeb0f81ea678955928",
+      "ancestry": "ONE_COMMIT_AHEAD_ZERO_BEHIND",
+      "terrain": "FOUR_COMMISSIONED_RETURN_FILES_ONLY",
+      "disposition": "COMPETENT_DOCUMENTARY_AUSTRIA_A048_ORIGINAL_1990_Q467C_2008_V184_CANDIDATE__NO_EMPIRICAL_PAIR_AUTHORITY"
+    }
+  ],
+  "inherited_return_intake": {
+    "s01": "b3f28aad418150f4cadd54bcf6a6c2ab34a35898",
+    "s02": "0b43f0ef30940e1ffb39886dfdc28acef20aeff9",
+    "decision": "HQD-2026-10-08-251",
+    "authority_ceiling": "DOCUMENTARY_SCOPE_ONLY"
+  },
+  "active_workers": [
+    {
+      "id": "HQ251_R01_S01_T1_USE_INGRESS",
+      "branch": "agent/reviewer-pyat-hq251-s01-t1-use-and-c1-f8-ingress-r1",
+      "commission_tip": "ccb035404ab5a553ab35d6202b03dc5aeda758e7",
+      "observed_head_at_checkpoint": "ccb035404ab5a553ab35d6202b03dc5aeda758e7",
+      "grain": "INDEPENDENT_T1_EE14_USE_AND_C1_PRODUCER_AUTHENTICATED_F8_CUSTODY",
+      "agent": "Independent Browser/GitHub documentary reviewer",
+      "model": "GPT-6 Sol High or competent equivalent",
+      "machine": "Browser/GitHub only",
+      "worktree": "NOT_ESTABLISHED",
+      "library_access": "NO",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "pass_wake": "EXACT_EE14_USE_OR_FORK_AND_LOCAL_POSITIVE_HOSTILE_COURT",
+      "blocker_effect": "T1_SERVICE_EXACT_FIRST_EDGE",
+      "hard_forbidden": [
+        "RAW_SOURCE",
+        "CODE_OR_TEST_EXECUTION",
+        "PRODUCTION",
+        "NEW_MODEL_USE_AUTHORITY",
+        "HQ",
+        "ISSUER_NATIVE_HOST",
+        "V3"
+      ]
+    },
+    {
+      "id": "HQ252_R02_S03_A048_AUSTRIA_INSTRUMENT",
+      "branch": "agent/reviewer-pyat-hq252-s03-a048-austria-instrument-r1",
+      "commission_tip": "c93f42328760547dc187cadf86175307c631c6e9",
+      "observed_head_at_checkpoint": "c93f42328760547dc187cadf86175307c631c6e9",
+      "grain": "INDEPENDENT_ORIGINAL_AUSTRIA_EVS1990_2008_A048_QUESTION_INSTRUCTION_DESIGN_VERSION",
+      "agent": "Independent Browser/GitHub source-documentary reviewer",
+      "model": "GPT-6 Sol High or competent equivalent",
+      "machine": "Browser/GitHub only",
+      "worktree": "NOT_ESTABLISHED",
+      "library_access": "NO",
+      "status": "ISSUED_NEEDS_HUMAN_LAUNCH",
+      "pass_wake": "INDEPENDENT_A048_COUNTRY_INSTRUMENT_CROSSWALK_OR_DISPROOF",
+      "blocker_effect": "EVS_C7_PAIR_SOURCE_MEASUREMENT_COMPETENCE",
+      "hard_forbidden": [
+        "RAW_SOURCE",
+        "NEW_PAIR_AUTHORITY",
+        "CODE_PRODUCTION",
+        "HQ",
+        "P07_BYPASS",
+        "V3"
+      ]
+    }
+  ],
+  "dependency_graph": [
+    {
+      "id": "T1_AUTHENTICATED_RICH_C1_F8_LOCAL",
+      "status": "R01_REVIEW_PENDING_NO_T1_ENGINEERING_ISSUED",
+      "prerequisites": [
+        "EE14_SELECTED_FIXTURE_USE_AUTHORITY",
+        "C1_AUTH_F8_PRODUCER_CUSTODY_AND_EXACT_TEST_ORACLE"
+      ],
+      "pass_wake": "NARROW_T1_RUNTIME_TEST_AND_REVIEW_AFTER_COMPETENT_OWNER_DECISION",
+      "prohibited_early": [
+        "WHOLE_WORLD_CLAIM",
+        "D2_SPECULATIVE_ADAPTER"
+      ]
+    },
+    {
+      "id": "SRC02_Q86C_TRIPLE",
+      "status": "SOURCE_DOCUMENTARY_CANDIDATE_NO_SOURCE_WARRANT",
+      "prerequisites": [
+        "EXACT_FROZEN_SRC02_Q86C_QIMPL_AND_EXPOSURE",
+        "RABC_SAME_RESPONDENT_PRODUCT",
+        "SOURCE_AND_MODEL_USE_AUTHORITY"
+      ],
+      "pass_wake": "SEPARATELY_WARRANTED_SOURCE_PRODUCT_AND_INDEPENDENT_REVIEW",
+      "prohibited_early": [
+        "RAW_SAV",
+        "GT2_19210_AS_TRIPLE",
+        "FALSE_NULL_NA"
+      ]
+    },
+    {
+      "id": "EVS_A048_AUSTRIA_PAIR",
+      "status": "R02_INDEPENDENT_INSTRUMENT_REVIEW_PENDING_NO_PAIR_WARRANT",
+      "prerequisites": [
+        "FIELD_AUSTRIA_NATIONAL_QUESTIONNAIRES",
+        "SRC12_SRC14_EXACT_VERSION_AND_RESPONDENT_WAVE_PRODUCTS",
+        "POSITIVE_EE12_C7_PAIR_AUTHORITY"
+      ],
+      "pass_wake": "ONE_VERIFIED_PAIR_CANDIDATE_THEN_DISTINCT_SOURCE_PRODUCTION_WARRANT_IF_APPROVED",
+      "prohibited_early": [
+        "INVENT_SIGN",
+        "NUMERIC_RECODES_WITHOUT_ORIGINAL_WITNESS",
+        "NATIVE_P07_BYPASS"
+      ]
+    },
+    {
+      "id": "E1_E2",
+      "status": "NOT_ISSUABLE",
+      "prerequisites": [
+        "RICH_REAL_SOURCE_PRODUCT",
+        "TWO_ADMITTED_STRUCTURAL_FAMILIES",
+        "EXACT_POSITIVE_COMPARABLE_TEMPORAL_RESULT",
+        "ACTUAL_WORLD_SERVING_AND_REPLAY"
+      ],
+      "pass_wake": "INDEPENDENT_GOVERNED_RUN_LATER",
+      "prohibited_early": [
+        "RAW_SOURCE_RUN",
+        "ACTOR_V3"
+      ]
+    },
+    {
+      "id": "F7_NATIVE_SECURITY",
+      "status": "HELD_QUARANTINED_R3_UNQUALIFIED",
+      "prerequisites": [
+        "INDEPENDENT_R3_REVIEW_ON_AUTHORIZED_NATIVE_HOST",
+        "T1_INGRESS_TRUST",
+        "MEMORY_LEAK_REPAIR_AND_FOUR_FORGERIES_FIVE_POSITIVES"
+      ],
+      "pass_wake": "SEPARATE_HQ_D4_NATIVE_WARRANT_IF_ACTUAL_PATH_OR_PARALLEL_JUSTIFIED",
+      "prohibited_early": [
+        "PRODUCTION_CUTOVER"
+      ]
+    },
+    {
+      "id": "AT07_ISSUER",
+      "status": "CONDITIONAL_HOLD",
+      "prerequisites": [
+        "EXACT_REGISTERED_HANDOFF_USE",
+        "REAL_INDEPENDENT_PRINCIPAL_ROOT_APPROVAL_INSTALL_ACK_EPOCH"
+      ],
+      "pass_wake": "SEPARATE_HQ_AUTHORIZATION",
+      "prohibited_early": [
+        "DEPLOY_ROOT_EPOCH",
+        "R4",
+        "19TH_KIND"
+      ]
+    }
+  ],
+  "holds": {
+    "f7": "F7_RR04G_OPEN_HQ248_OPEN_001_AND_NATIVE_T1_UNBUILT",
+    "n10e": "AT07_PROSPECTIVE_100_ROW_FIXTURE_ONLY_NO_REAL_VERIFIER_OR_ROOT",
+    "source": "NO_SRC02_Q86C_TRIPLE_OR_EVS_AUTHORIZED_COMPARABLE_PRODUCT",
+    "actor": "PREV3_TO_V3_DEFERRED"
+  },
+  "next_action": "LAUNCH_R01_SERVICE_USE_AND_R02_AUSTRIA_EVS_INSTRUMENT_PARALLEL__NO_SOURCE_RUN_OR_PREMATURE_D2",
+  "minimum_empirical_run_ready": false,
+  "full_estate_ready": false
+}

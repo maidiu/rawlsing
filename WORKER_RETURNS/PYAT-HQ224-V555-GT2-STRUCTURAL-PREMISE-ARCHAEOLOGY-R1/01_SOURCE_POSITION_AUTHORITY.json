@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_HQ224_GT2_SOURCE_STRUCTURAL_POSITION_AUTHORITY@1.0.0",
+  "premise": "source_structural_position_authority",
+  "status": "CURRENT_OWNER_EXISTS__INSTANCE_NOT_MATERIALIZED",
+  "exact_current_ref": null,
+  "exact_current_authority_ref": null,
+  "current_owner_contract": {
+    "id": "FIELD_FORGE_OBL005_CLAIM_BOUNDED_POSITION_ROLE_AUTHORITY_AND_EVIDENCE_CONTRACT",
+    "version": "1.0.0",
+    "adoption_blob": "5d7ad06fd2442d2ac6dcacadd4a557d3e1d89783",
+    "law": [
+      "positive role exists only through an exact competent receipt for one exact claim/docket/use grain",
+      "PRIOR_PRA != CURRENT_ROLE_AUTHORITY_FOR_NEW_DOCKET",
+      "PRA_FOR_CLAIM_A != PRA_FOR_CLAIM_B",
+      "if no competent current owner/receipt exists at the new grain, preserve MISSING_ROLE_AUTHORITY"
+    ]
+  },
+  "gt2_instance_search": {
+    "exact_variable": "Q86B",
+    "exact_question_impl_id": "question_impl.phase0.2fb3a62609dad4c1306d",
+    "exact_identity_sha256": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+    "exact_gt2_pra_receipt_found": false,
+    "exact_structural_position_ref_found": false,
+    "current_repo_search_findings": [
+      "no Q86B POSITION_ROLE_AUTHORITY/PRA row found for the GT2 SIG-004 V555 docket",
+      "no STRUCTURAL_POSITION + Q86B match found",
+      "no exact Q86B identity + channel match found"
+    ]
+  },
+  "historical_precedent": {
+    "status": "HISTORICAL_EXACT_PRA_PRECEDENT__NOT_CURRENT_FOR_GT2",
+    "first_canary_pra_commit": "04c604be2ee4e32367f2074fdad380c7c563b740",
+    "receipt_blob": "76d67a60a9e52bc448d4678f17d29b0d7ef8404e",
+    "q86b_ruling": "ACTIVE_DISPOSITION",
+    "semantic_ceiling": "ATTITUDE_OR_DISPOSITION_ONLY",
+    "forbidden_promotions": [
+      "ACTIVE_POSITION",
+      "RELATIONAL_IDENTITY_POSITION",
+      "ORIGIN_BACKGROUND_POSITION",
+      "STRATA",
+      "capital",
+      "field",
+      "pressure",
+      "hegemony",
+      "homology",
+      "causal promotion"
+    ],
+    "interpretation": "This does not globally forbid every conceivable abstract V555 source-position binding. It does forbid treating the Q86B respondent-attitude measurement itself as an already-authorized social/structural position merely because GT2 names it CONDITIONER."
+  },
+  "v555_requirement": {
+    "adp002_requirement": "SOURCE must bind the exact F1 DRIVER_SOURCE_POSITION_REF_WHEN_REQUIRED / exact governed structural-position authority.",
+    "q86b_or_conditioner_label_sufficient": false
+  },
+  "conclusion": "The authority class/owner machinery exists, but no GT2-specific exact source-position receipt/ref was recovered. A new claim-bounded GT2 position-binding court is required if V555 is to use a source position."
+}

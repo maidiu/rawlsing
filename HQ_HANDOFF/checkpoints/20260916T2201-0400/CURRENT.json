@@ -1,0 +1,22 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260916T2201-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260916T2049-0400",
+  "status":"R8_PARTIAL_FANIN__R8B_LOCAL_FINAL_BAKEOFF_ACTIVE__FF01_STILL_ACTIVE",
+  "latest_substantive_hq_authority":"6cdd1015ac1ac889c5133cd8b0db559e5709e6f9",
+  "returned_workers":{
+    "EE-R8A":{"head":"4ff8f012f4b09ab488cdb59e6f0f62db6db8c4ca","status":"BLOCKED_FINAL_BAKEOFF_EXECUTION_SURFACE","selection_ready":"18/18","physical_ready":"27/27","blocker":"QUALIFIED_W4_PEAK_RSS_BYTES_NULL_ON_DARWIN","candidate_execution":"NOT_RUN"},
+    "ASTRA-D11":{"head":"a89b7ebd608742a87557395e2359291a32b62302","status":"PASS","disposition":"CURRENT_ACCEPTED","effect":"RULE_CURRENTNESS_CLOSED_ONLY"}
+  },
+  "active_workers":[
+    {"id":"EE-R8B","human_name":"Darwin Peak-RSS Normalization + Final A/B/C Bakeoff","branch":"agent/rabochii-prev3-ee-r8b-darwin-rss-normalization-final-bakeoff-r1","commission_tip":"6cdd1015ac1ac889c5133cd8b0db559e5709e6f9","execution_surface":"LOCAL_MACHINE_CODEX_DARWIN_X86_64","criticality":"CARRIER_SELECTION_FINAL_EXECUTION"},
+    {"id":"ASTRA-FF01","human_name":"D04 Learned Product to Field Forge Ingress / Structural Use","branch":"agent/rabochii-prev3-astra-ff01-d04-field-forge-ingress-r1","commission_tip":"fa3b419637ae2738dce1647e9dc8f4a93616f8eb","status":"ACTIVE__NO_GOVERNED_RETURN_YET","criticality":"EMPIRICAL_TO_STRUCTURAL_RESEARCH_PROGRESSION"}
+  ],
+  "carrier_selection":{"selection_floor":18,"ready":18,"pending":0,"physical_candidate_operation_cells_ready":27,"physical_candidate_operation_cells_total":27,"final_bakeoff_run":false,"next":"EE-R8B_DARWIN_RSS_NORMALIZATION_QUALIFICATION_THEN_SAME_COMMISSION_FINAL_BAKEOFF"},
+  "research_progression":{"trii_d04_product":"PASS__49_SUPPORTED__1_VALID_EMPTY","field_forge_ingress":"ASTRA-FF01_ACTIVE","waits_for_carrier_bakeoff":false},
+  "frozen_laws":["NO_ALL_LANES_BARRIER","CARRIER_BENCHMARK_ORTHOGONAL_TO_RESEARCH_SEMANTICS","FF01_DOES_NOT_WAIT_FOR_R8B","R8B_DOES_NOT_WAIT_FOR_FF01","NO_BROAD_ARCHITECTURE_REVIEW","LOCAL_EXECUTION_DEFECT_REMAINS_LOCAL","HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"],
+  "terminal":"R8_PARTIAL_FANIN_SEALED__LOCAL_CODEX_R8B_ACTIVE__FF01_CONTINUES_IN_PARALLEL"
+}

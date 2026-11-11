@@ -1,0 +1,31 @@
+{
+  "authority_release_and_replay_closure_retained": false,
+  "complete_canonical_fact_documents_retained": false,
+  "complete_predicate_documents_retained": false,
+  "complete_query_spec_documents_retained": false,
+  "exact_ref_manifest_retained": false,
+  "full_candidate_identity_and_role_bindings_retained": false,
+  "partial_summary_only": {
+    "candidate_count": 50,
+    "coverage_state_counts": {
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    },
+    "empirical_fact_state_counts": {
+      "SUPPORTED": 60
+    },
+    "fact_reference_rows": 60,
+    "query_role_count": 77,
+    "typed_state_counts": {
+      "DISCOVERED_RESULT_SUPPORTED": 49,
+      "VALID_EMPTY": 1
+    },
+    "unique_predicate_refs_in_fact_summary": 27,
+    "unique_query_refs_in_fact_summary": 60
+  },
+  "precheck_path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-SOURCEBACKED-R1/court/oracle_producers/LITS_I/current_i05_precheck.json",
+  "precheck_sha256": "1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6",
+  "reason": "Checkpoint validator rejected role query/predicate preimage closure before checkpoint write; in-memory material was lost at process exit.",
+  "schema": "FIABC_LITS_CANONICAL_EMPIRICAL_OBJECT_MANIFEST_R1@1.0.0",
+  "status": "INCOMPLETE__CHECKPOINT_VALIDATION_FAILED_BEFORE_WRITE"
+}

@@ -1,0 +1,41 @@
+{
+  "court": "FIABC-QF1-R1",
+  "title": "Exact Source-Independent Qualification Repair",
+  "status": "PASS",
+  "terminal": "FIABC_QF1_R1_EXACT_REPAIR_COMPLETE__COMBINED_SOURCE_INDEPENDENT_QUALIFICATION_PASS__READY_FOR_LOCAL_SOURCE_MATERIALIZATION_GATES",
+  "repository": "maidiu/rawlsing",
+  "starting_qf1_commit": "d1a6899e159e68d9fd53abe83658e41c6a32ba59",
+  "qualification_branch": "agent/rabochii-premain-fiabc-qf1-r1-exact-repair-r1",
+  "repair_commits": [
+    "c47398ccff4594be96c778ec1b2f8f830fbc64d4",
+    "7fa7c9fd772c71909b1def32385b7d890b1d0438",
+    "4ee072b228b7bec1aeea1732d4aa019869a291b8",
+    "0bac08af6e57145c3c2dcd1a4e6b38fe1927aa62"
+  ],
+  "initial_repair_cluster_count": 4,
+  "focused_repairs_passed": true,
+  "compileall_passed": true,
+  "static_json_validation_passed": true,
+  "full_source_independent_requalification_passed": true,
+  "static_identity_status": "PASS_WITH_BACKEND_SYNTAX_BLOB_CHANGE_ALLOWED",
+  "unrelated_frozen_identities_preserved": true,
+  "python_executable": "/usr/local/bin/python3",
+  "python_version": "3.11.3",
+  "python_alias_available": false,
+  "equivalent_python3_commands_passed": true,
+  "raw_source_carriers_opened": false,
+  "real_six_cell_execution": false,
+  "wvs_oracle_materialized_from_sav": false,
+  "missing_lits_a_receipt_synthesized": false,
+  "r6x_applied": false,
+  "measured_p2x_run": false,
+  "artifacts": [
+    "00_RETURN.md",
+    "01_REPAIR_LEDGER.csv",
+    "02_BEFORE_AFTER_FAILURES.md",
+    "03_FULL_REQUALIFICATION_LEDGER.csv",
+    "04_STATIC_IDENTITY_AFTER_REPAIR.csv",
+    "05_REMAINING_LOCAL_ONLY_GATE.md",
+    "RETURN.json"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "cli_sequence": "evidence/cli_sequence.json",
+  "cli_sequence_sha256": "3877e7d1b668e7723b13f98b3bb604105f406d6071d59e2fb5d64afd3e29d36b",
+  "command": "TMPDIR=$PWD/.local-logs/sorok-p2-encounter-lifecycle-20261105-r1/pytest-tmp python3 -B -m pytest -q -p no:cacheprovider --junitxml=WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/evidence/focused_lifecycle.xml WORKER_RETURNS/SOROK-P2-ENCOUNTER-LIFECYCLE-20261105-R1/tests",
+  "cwd": "/Users/matthewsmith/.local/state/rawlsing-controller/sorok-01a161c5/workspaces/sorok-s35-c9r-access-r1",
+  "errors": 0,
+  "exit": 0,
+  "failures": 0,
+  "junit": "evidence/focused_lifecycle.xml",
+  "junit_sha256": "d6ff5ba6bfd97e1a181035e8d4b5bff706b12f2c9795c777f689017b5a403c95",
+  "log": "logs/focused_lifecycle.log",
+  "log_sha256": "2fb3c2d9b582b1353e3eec64bb9741caa916ab2b3d79b8ed737ab624bf8b4b8a",
+  "not_run": [
+    "inherited 55-test full estate",
+    "independent review of this new code",
+    "native/science/human/B grants",
+    "actual elapsed life, absence activity, delivery or human validation"
+  ],
+  "platform": "macOS-13.7.8-x86_64-i386-64bit",
+  "pytest": "pytest 9.1.1",
+  "python": "3.11.3",
+  "refusal_evidence": "evidence/lifecycle_refusals.json",
+  "refusal_evidence_sha256": "edb474c0a9946d83b671e948698d91fc40e26513cad623de80192ef268b6f01a",
+  "schema": "SOROK_P2_ENCOUNTER_LIFECYCLE_TEST_RUN@1",
+  "skipped": 0,
+  "status": "PASS",
+  "summary": "5 passed in 20.61s",
+  "tests": [
+    "test_positive_actions_then_exit_cold_reopen_and_return",
+    "test_return_inside_preserves_existing_world_hold",
+    "test_another_root_cannot_inherit_persisted_mode",
+    "test_local_mode_cut_resets_and_restore_recovers_cold",
+    "test_cli_cold_commands_persist_exit_and_local_return"
+  ],
+  "tests_passed": 5
+}

@@ -1,0 +1,35 @@
+{
+  "fixture_schema": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT_HOSTILE_FIXTURES@1.0.0",
+  "known_blocker_replays": [
+    {"case_id": "KB01", "mutation": "missing_binding_and_receipt", "expected_failure_codes": ["PF_EXECUTABLE_BINDING_MISSING", "PF_LIVE_RECEIPT_MISSING"]},
+    {"case_id": "KB02", "mutation": "stale_binding_ref", "expected_failure_codes": ["PF_BINDING_REF_STALE", "PF_REF_UNRESOLVED"]},
+    {"case_id": "KB03", "mutation": "wrong_owner_wrapper", "expected_failure_codes": ["PF_BINDING_OWNER_MISMATCH", "PF_WRAPPER_SHADOWS_CURRENT_OWNER"]},
+    {"case_id": "KB04", "mutation": "stale_live_receipt", "expected_failure_codes": ["PF_LIVE_RECEIPT_MISSING", "PF_LIVE_RECEIPT_PREDATES_REQUIRED_REPAIR"]},
+    {"case_id": "KB05", "mutation": "candidate_self_replay_oracle", "expected_failure_codes": ["PF_ORACLE_NOT_PREOUTPUT_FROZEN", "PF_ORACLE_DERIVED_FROM_CANDIDATE_OUTPUT", "PF_SELF_REPLAY_USED_AS_PARITY"]},
+    {"case_id": "KB06", "mutation": "unequal_work_accounting", "expected_failure_codes": ["PF_EQUAL_WORK_ACCOUNTING_UNRESOLVED", "PF_METRIC_NOT_CANDIDATE_LOCAL", "PF_METRIC_OVERWRITTEN", "PF_DOCUMENTARY_VALUE_MISLABELED_OBSERVED"]},
+    {"case_id": "KB07", "mutation": "lits_c_partial_capability", "expected_failure_codes": ["PF_SOURCE_CANDIDATE_CAPABILITY_MISSING", "PF_PARTIAL_PREIMAGE_SET", "PF_SYNTHETIC_FIXTURE_SUBSTITUTION"]},
+    {"case_id": "KB08", "mutation": "wvs_c_not_applicable_portability", "expected_failure_codes": ["PF_SOURCE_CANDIDATE_CAPABILITY_MISSING", "PF_SOURCE_PORTABILITY_UNPROVED", "PF_UNAUTHORIZED_NOT_APPLICABLE_ESCAPE"]},
+    {"case_id": "KB09", "mutation": "missing_semantic_authority", "expected_failure_codes": ["PF_AUTHORITY_MISSING", "PF_SEMANTIC_INFERENCE_SUBSTITUTION"]},
+    {"case_id": "KB10", "mutation": "lifecycle_scope_and_order", "expected_failure_codes": ["PF_FAILURE_SCOPE_MISCLASSIFIED", "PF_LIFECYCLE_ORDER_MISMATCH", "PF_TERMINAL_HISTORY_STALE_FOR_RETRY"]},
+    {"case_id": "KB11", "mutation": "producer_consumer_contract_mismatch", "expected_failure_codes": ["PF_PRODUCER_CONSUMER_CONTRACT_MISMATCH"]},
+    {"case_id": "KB12", "mutation": "stale_verifier_and_unclosed_provenance", "expected_failure_codes": ["PF_PRODUCER_CONSUMER_CONTRACT_MISMATCH", "PF_REPLAY_PROVENANCE_UNCLOSED"]}
+  ],
+  "false_pass_challenges": [
+    {"case_id": "FP01", "mutation": "floating_evidence_ref", "expected_failure_codes": ["PF_FLOATING_OR_FUZZY_REF"]},
+    {"case_id": "FP02", "mutation": "historical_owner", "expected_failure_codes": ["PF_OWNER_SUPERSEDED_OR_HISTORICAL"]},
+    {"case_id": "FP03", "mutation": "missing_binding_and_receipt", "expected_failure_codes": ["PF_EXECUTABLE_BINDING_MISSING", "PF_LIVE_RECEIPT_MISSING"]},
+    {"case_id": "FP04", "mutation": "stale_binding_ref", "expected_failure_codes": ["PF_BINDING_REF_STALE"]},
+    {"case_id": "FP05", "mutation": "wrong_owner_wrapper", "expected_failure_codes": ["PF_BINDING_OWNER_MISMATCH", "PF_WRAPPER_SHADOWS_CURRENT_OWNER"]},
+    {"case_id": "FP06", "mutation": "candidate_self_replay_oracle", "expected_failure_codes": ["PF_SELF_REPLAY_USED_AS_PARITY"]},
+    {"case_id": "FP07", "mutation": "negative_state_collapse", "expected_failure_codes": ["PF_NEGATIVE_STATE_COLLAPSE"]},
+    {"case_id": "FP08", "mutation": "wvs_c_not_applicable_portability", "expected_failure_codes": ["PF_UNAUTHORIZED_NOT_APPLICABLE_ESCAPE"]},
+    {"case_id": "FP09", "mutation": "lits_c_partial_capability", "expected_failure_codes": ["PF_SYNTHETIC_FIXTURE_SUBSTITUTION", "PF_PARTIAL_PREIMAGE_SET"]},
+    {"case_id": "FP10", "mutation": "semantic_inference_substitution", "expected_failure_codes": ["PF_SEMANTIC_INFERENCE_SUBSTITUTION"]},
+    {"case_id": "FP11", "mutation": "metric_method_mismatch", "expected_failure_codes": ["PF_METRIC_METHOD_MISMATCH"]},
+    {"case_id": "FP12", "mutation": "stale_live_receipt", "expected_failure_codes": ["PF_LIVE_RECEIPT_CODE_REF_MISMATCH", "PF_LIVE_RECEIPT_PREDATES_REQUIRED_REPAIR"]},
+    {"case_id": "FP13", "mutation": "illegal_deferment", "expected_failure_codes": ["PF_DEFERMENT_UNPROVED"]},
+    {"case_id": "FP14", "mutation": "genuine_missing_without_search", "expected_failure_codes": ["PF_MISSINGNESS_NOT_FALSIFIED_FIRST"]},
+    {"case_id": "FP15", "mutation": "semantic_cost_owner_conflated", "expected_failure_codes": ["PF_SEMANTIC_COST_OWNERSHIP_CONFLATED"]},
+    {"case_id": "FP16", "mutation": "lifecycle_scope_and_order", "expected_failure_codes": ["PF_FAILURE_SCOPE_MISCLASSIFIED", "PF_LIFECYCLE_ORDER_MISMATCH"]}
+  ]
+}

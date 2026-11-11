@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checks": {
+    "exact_315_cells": true,
+    "exact_35_waves": true,
+    "exact_9_rules": true,
+    "unique_wave_rule_keys": true,
+    "all_144_positive_relations_revalidated": true,
+    "positive_counts_exact": true,
+    "negative_relation_counts_exact": true,
+    "negative_candidate_antijoins_exact": true,
+    "blocked_surface_exact": true,
+    "candidate_blocks_exact": true,
+    "source_object_blocks_exact": true,
+    "no_absence_claims": true,
+    "posture_law": true,
+    "all_observable_cells_have_positive_observable_witness": true,
+    "all_partial_cells_have_bounded_search_signal": true,
+    "r16f_blocked_count_cellwise_exact": true,
+    "r16f_positive_count_cellwise_exact": true,
+    "old_witness_intersection_stable": true,
+    "empirical_cotravel_guardrail_present": true
+  },
+  "counts": {
+    "capability_status": {
+      "NOT_OBSERVED": 80,
+      "ROUTING_BLOCKED": 144,
+      "PARTIALLY_OBSERVABLE": 68,
+      "OBSERVABLE": 19,
+      "SEMANTIC_ONLY_NONCOMPOSABLE": 4
+    },
+    "positive_witness_status": {
+      "ROUTING_BLOCKED": 97,
+      "OBSERVABLE": 33,
+      "SEMANTIC_ONLY_NONCOMPOSABLE": 14
+    },
+    "o12_search_allowed_cells": 87,
+    "unresolved_observability_status": {
+      "ROUTING_BLOCKED": 90342,
+      "SEMANTIC_ONLY_NONCOMPOSABLE": 11654,
+      "OBSERVABLE": 5917
+    },
+    "t06_frozen_positive_relations": 7,
+    "t06_frozen_positive_observable": 0,
+    "t06_cells_allowing_bounded_o12_search": 11
+  },
+  "limitations": [
+    "All 7 frozen T06 positives are currently non-observable at exact relation witness grain (6 ROUTING_BLOCKED, 1 SEMANTIC_ONLY_NONCOMPOSABLE); preserve as downstream capability limitation, not semantic failure."
+  ]
+}

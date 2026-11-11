@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "R118_PREFIX_EMPIRICAL_STEP_REACHES_NATIVE_NONPARENT",
+      "actual_consumer": "consume_world_conditioned_prefixes -> _PrefixBoundService.possibilities -> rawlsing_next.sourcefree_world.nonparent.consume: nonempty source_balance_reads",
+      "claimed_dependency": "Actual per-prefix N10E step must be passed into native nonparent empirical reads; dropping the step must break the selected-view test's downstream source-balance assertion while retaining structural world calls",
+      "positive_node": "rawlsing_next/tests/test_world_conditioned_progressive_service.py::test_native_nonparent_consumer_runs_per_prefix_with_both_inputs",
+      "fault": {
+        "path": "rawlsing_next/pre553_world_conditioned_progressive_service.py",
+        "old": "            \"steps\": [step],",
+        "new": "            \"steps\": [],"
+      }
+    }
+  ]
+}

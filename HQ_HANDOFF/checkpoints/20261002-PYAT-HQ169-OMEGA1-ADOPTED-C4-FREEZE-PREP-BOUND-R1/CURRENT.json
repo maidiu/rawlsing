@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ169-OMEGA1-ADOPTED-C4-FREEZE-PREP-BOUND-R1",
+  "status": "OMEGA_1_GO_WITH_EXACT_C4_CONDITIONS__C4_FREEZE_PREPARATION_BOUND__RAW_SOURCE_EXECUTION_HELD",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "predecessor_checkpoint": "20261001-PYAT-HQ168-C1-03-ADOPTED-OMEGA1-BOUND-R1",
+  "predecessor_handoff_commit": "d4f867390f6be5a856ed20d2dac001f4714f0502",
+  "governing_decision": "HQD-2026-10-02-169",
+  "omega_1": {
+    "return_head": "01762d7379be4e423dad3e21bcdcee47c536902d",
+    "decision": "A_GO_WITH_EXACT_C4_CONDITIONS",
+    "adopted": true
+  },
+  "c4_freeze_preparation": {
+    "branch": "agent/opencode-pyat-hq169-c4-freeze-preparation-r1",
+    "commission_tip": "65de960dafae92f8a642fbb642648bfebd2d90ea",
+    "launch_surface": "OPENCODE__SPACE_BUNNY_FREE",
+    "base": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+    "merge_required": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "status": "BOUND_NOT_LAUNCHED"
+  },
+  "held": [
+    "C4_LIVE_PRODUCTION",
+    "RAW_SOURCE_EXECUTION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "USER_LAUNCH_C4_OMEGA1_FREEZE_PREPARATION_IN_FRESH_OPENCODE_SPACE_BUNNY__HQ_RECONCILES_RETURN__PASS_REQUIRES_ONE_INDEPENDENT_REVIEW_BEFORE_SOURCE_WARRANT"
+}

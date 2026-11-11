@@ -1,0 +1,52 @@
+{
+  "package_id": "RAWLSING_DDM_FULL_PROJECT_ORIENTATION_ROOT_20260810_R2",
+  "snapshot_boundary": "2026-08-10T18:31:00-04:00",
+  "project": "Rawlsing/DDM/V5",
+  "parent_orientation_root": {
+    "filename": "Rawlsing_DDM_Full_Project_Orientation_Root_20260810_R1.zip",
+    "sha256": "a29eed46d7e40bfa3bcb568436928149bc8719a874fa9bb54f7d9c33554ca1ea"
+  },
+  "canonical_active_waves": 35,
+  "survey_families": 9,
+  "exact_implementations": 18276,
+  "job2_semantic_units": {
+    "denominator": 3324,
+    "closed": 3324,
+    "unresolved": 0,
+    "authority": "R9D"
+  },
+  "s00": {
+    "rows": 18276,
+    "authority": "R10D successor"
+  },
+  "o03_o04": {
+    "authority": "R10F",
+    "o03_rows": 3667,
+    "o04_rows": 2627,
+    "o04_blocked": 60
+  },
+  "o02_s08": {
+    "authority": "R10G",
+    "semantic_units": 3324,
+    "structural_rows": 3274,
+    "semantic_only_anti_joins": 50
+  },
+  "o06_o07_o08": {
+    "authority": "R10H_P0_U1_CENTRAL_RECONCILIATION",
+    "release_sha256": "ffc824f5cf060ac71744913ac4a26a6e0a802fa0644d1d6cb04c92f5129fe8e5",
+    "rows_each": 18276,
+    "external_hostile_validation": "PASS",
+    "central_semantic_repairs": 663,
+    "unresolved": {
+      "O06": 10348,
+      "O07": 30,
+      "O08": 18
+    }
+  },
+  "job3_authority_created": false,
+  "p5_o09_created": false,
+  "o10_executable_release_frozen": false,
+  "live_install": false,
+  "next_task": "O09_P5_CENTRAL_COMPRESSION_PLUS_O10_EXECUTABLE_RELEASE",
+  "worker_policy": "CENTRAL_FIRST__SHARD_ONLY_MEASURED_LARGE_INDEPENDENT_EXCEPTION_QUEUE"
+}

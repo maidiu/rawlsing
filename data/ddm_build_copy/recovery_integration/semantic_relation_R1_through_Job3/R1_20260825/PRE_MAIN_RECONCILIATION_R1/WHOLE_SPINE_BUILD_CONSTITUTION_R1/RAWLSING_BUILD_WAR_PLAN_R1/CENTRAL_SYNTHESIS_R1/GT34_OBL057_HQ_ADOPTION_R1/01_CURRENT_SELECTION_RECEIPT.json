@@ -1,0 +1,37 @@
+{
+  "schema_id": "GT34_OBL057_HQ_CURRENT_SELECTION_RECEIPT@1.0.0",
+  "status": "CURRENT_ACCEPTED",
+  "obligation": "OBL057",
+  "authority_ref": {
+    "authority_id": "GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "acec40d03b5602aaa553f1f63cf2506bffe0491c008678ff973e39c3f7dcedd4"
+  },
+  "exact_scope": {
+    "authority_kind": "PREDICATE_GRAMMAR",
+    "governed_object_family": "EmpiricalPredicate@1.0.0",
+    "governed_operation": "RESOLVE_EXACT_EMPIRICAL_POSITION_COORDINATE_EQ_PREDICATE",
+    "predicate_leaf_type": "EMPIRICAL_POSITION_COORDINATE",
+    "comparison_operator": "EQ"
+  },
+  "hq_adoption_evidence": {
+    "adoption_commit": "ffd580daf88cce0a3be3a87c461c165916bad9cc",
+    "adoption_markdown_git_blob": "d6270869655c86729150f81fc0e11e0f82ac7a22",
+    "adoption_json_git_blob": "1f9ce9e9019cbe6451a8a49e5e4bd893b2196755"
+  },
+  "consumer_requirements": [
+    "PIN_EXACT_AUTHORITY_ID_VERSION_CONTENT_HASH",
+    "PIN_EXACT_HQ_ADOPTION_COMMIT",
+    "PIN_EXACT_HQ_ADOPTION_ARTIFACT_BLOB",
+    "PIN_THIS_CURRENT_SELECTION_RECEIPT_BLOB",
+    "NO_LATEST_DEFAULT_FUZZY_FALLBACK"
+  ],
+  "nonimplications": [
+    "NO_Q69B_COORDINATE_SEMANTICS",
+    "NO_ACTOR_SEMANTICS",
+    "NO_ADP010_EVENT_SEMANTICS",
+    "NO_COMPARATOR_MAPPING_SEMANTICS",
+    "NO_PSEPF",
+    "NO_V3_MUTATION"
+  ]
+}

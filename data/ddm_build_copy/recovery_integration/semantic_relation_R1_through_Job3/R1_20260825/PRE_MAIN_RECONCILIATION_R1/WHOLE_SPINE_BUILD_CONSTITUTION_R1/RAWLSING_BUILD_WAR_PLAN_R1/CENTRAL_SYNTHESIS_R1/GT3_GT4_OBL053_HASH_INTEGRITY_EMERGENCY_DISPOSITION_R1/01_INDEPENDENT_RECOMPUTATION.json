@@ -1,0 +1,43 @@
+{
+  "schema": "GT34_OBL053_HASH_INTEGRITY_RECOMPUTATION_EVIDENCE@1.0.0",
+  "status": "CENTRAL_INTEGRITY_EVIDENCE__NO_SEMANTIC_WIDENING",
+  "repository": "maidiu/rawlsing",
+  "canonical_input_ref": "a721677d57efc702ed0479a5dd814ce75e2fb3e5",
+  "target_candidate_blob": "59c88df41b90f3ca932f52326fe4b275e84c4551",
+  "target_t1_audit_evidence_blob": "4cff92f4f6b8625a94eee7c8aa69dc3566026490",
+  "target_hq_adoption_blob": "286ff7b851e920ff2760082d8b2fb194560ab127",
+  "declared_law": "SHA256(UTF8(CANONICAL_JSON(EXACT_SEMANTIC_PROJECTION))) with lexicographically sorted mapping keys, compact comma/colon separators, Unicode preserved, ordered sequences preserved",
+  "independent_recomputation": {
+    "generation_seed": {
+      "declared": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+      "recomputed": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+      "match": true
+    },
+    "authority": {
+      "declared": "e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed",
+      "recomputed_from_persisted_projection": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29",
+      "match": false
+    },
+    "semantic_object": {
+      "declared": "d9647033de698e38e16001984580e1e0af3ba30c362acf3258aef3b78070cb53",
+      "recomputed_from_persisted_projection_as_persisted": "d937f666dca0ba000939982a1fcc5ea1f55d1e0683b6a02cd21545c79e3c66c6",
+      "match": false
+    },
+    "objective_evidence_receipt": {
+      "declared": "1561942f1fe4fc43b248c61be866c0bc459773b7c6dbb8e393e13b064cdacce0",
+      "recomputed_from_persisted_projection_as_persisted": "06f81a64ea4e25e1aebe16cc04d1d07d8562889a1bd135077fae7c4b9ef6e80e",
+      "match": false
+    }
+  },
+  "consequence": {
+    "t1_exact_hash_recomputation_claim": "DISPROVED",
+    "hq_adoption_artifact": "PRESERVED_IMMUTABLE_HISTORY__NOT_COMPETENT_CURRENT_AUTHENTICATION_ROOT",
+    "obl053": "RETURN_REQUIRED_AT_CONTENT_ADDRESSED_IDENTITY_INTEGRITY_GRAIN",
+    "obl054": "SUSPENDED_ON_OBL053_REPAIR",
+    "obl052": "BLOCKED_ON_OBL053_AND_OBL054",
+    "semantic_disposition": "NO_REJECTION_OF_THE_CONSTITUTIVE_SEMANTIC_READING__IDENTITY_CHAIN_MUST_BE_REBUILT_AND_REAUDITED"
+  },
+  "repair_rule": "Recompute the graph recursively from the persisted semantic projections; downstream projections that embed corrected upstream identities must be rewritten before downstream hashes are computed. Do not treat the as-persisted d937.../06f81... values as final repaired identities.",
+  "main_moved": false,
+  "positive_v3_authorized": false
+}

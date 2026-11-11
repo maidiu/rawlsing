@@ -1,0 +1,50 @@
+{
+  "schema": "SOROK_SANITIZED_CONTEXT_RECHECK_PASSPORT@1",
+  "job_id": "sorok-recursion-context-preflight-recheck-r1",
+  "reviewer_role": "same distinct independent reviewer; focused R2 context recheck",
+  "intelligence_level": "bounded I3 software/native-input check / S2",
+  "session": {
+    "opencode_session": "ses_dfcb1ed78c4c1fbcd1c2bbf492",
+    "opencode_agent": "build",
+    "parent_session": null,
+    "subagents_spawned": 0,
+    "session_title": "Independent engineering review of recursion engine",
+    "session_directory": "/Users/matthewsmith/Desktop/Rawlsing"
+  },
+  "model": {
+    "provider": "opencode-go",
+    "id": "deepseek-v4.1-flash",
+    "variant": "max",
+    "harness": "OpenCode",
+    "verification": "OpenCode session_v2.model and the current assistant message data.model both record provider opencode-go, id deepseek-v4.1-flash, variant max; launch argv carries opencode-go/deepseek-v4.1-flash#max",
+    "actual_effort_label": "max",
+    "quota": "UNKNOWN_NOT_MEASURED"
+  },
+  "runtime": {
+    "opencode": "opencode v2.0.22",
+    "platform": "Darwin 22.3.0 x86_64",
+    "python": "3.11.3",
+    "pytest": "9.0.2",
+    "sqlite_cli": "3.39.5",
+    "os": "macOS"
+  },
+  "independence": {
+    "original_review_commit": "ec8724b6db51cb5fd10216660ad6fe3d7c970b58",
+    "original_review_root_unchanged": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-INDEPENDENT-REVIEW-R1/",
+    "reviewer_distinct_from_subject_author": true,
+    "basis": "Same independent OpenCode reviewer and session as the original exact-cut review; subject author is the Codex lead. No author self-review."
+  },
+  "sanitization": {
+    "respondent_data_read": false,
+    "original_sav_read": false,
+    "ui_automation": false,
+    "model_account_provider_change": false,
+    "sensitive_data": "none",
+    "secrets_or_tokens": "none"
+  },
+  "write_scope": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-CONTEXT-RECHECK-R1/ only; subject code/tests, other review roots, PROGRAMMA, native owners, protected/court/source/science files were not edited by this review.",
+  "replay_environment_note": "The exact-subject replay used a git archive scratch copy. The inherited P2 vendor bootstrap resolves REPO via a .git ancestor; an empty .git directory was added to the scratch copy only. All source bytes are from exact subject 81b01f654. Sever/restore was confined to the scratch copy; p2_owner.py was restored to fd98a757... and verified.",
+  "exact_subject": "81b01f654f8ba09550d03df17e8014f43ffcfc9f",
+  "protected_baseline": "33c40a315d3c231cb2021bd8e60f3261547efa62",
+  "branch": "review/sorok-recursion-context-preflight-20261106-r1"
+}

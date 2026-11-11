@@ -1,0 +1,52 @@
+{
+  "schema": "FIABC_FINAL_PROGRESS_DRIVER_TEST_AUDIT@1.0.0",
+  "test_file": "rawlsing_next/tests/test_fiabc_final_progress_driver.py",
+  "tests_authored": [
+    "test_progress_counts_and_ordinals_derive_from_arbitrary_manifest_shape",
+    "test_six_cell_manifest_order_is_manifest_derived_and_includes_wvs7_c",
+    "test_resume_progress_is_append_only_and_retains_total_context",
+    "test_progress_distinguishes_preserve_skip_and_executable",
+    "test_progress_emission_does_not_mutate_ledger_semantic_state",
+    "test_final_s17_progress_and_exact_court_terminal_are_emitted",
+    "test_human_progress_stays_on_stderr_so_stdout_json_remains_parseable",
+    "test_wvs7_c_failure_receipt_serializes_with_manifest_sequence_index",
+    "test_preentry_prefix_does_not_synthesize_current_ready_stage",
+    "test_sealed_current_manifest_reports_derived_102_89_6_17_shape",
+    "test_current_six_cell_candidate_failure_stops_before_success_only_s17"
+  ],
+  "runtime_execution": {
+    "executed": false,
+    "reason": "BROWSER_GITHUB_ONLY_WORKER__NO_WORKFLOW_RUN_ATTACHED_TO_BRANCH__NO_NEW_ACTIONS_RUN_CREATED",
+    "github_actions_run_id": null
+  },
+  "static_github_audit": {
+    "commission_to_implementation_head_ahead_by": 7,
+    "implementation_files_changed": [
+      "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "rawlsing_next/tests/test_fiabc_final_progress_driver.py"
+    ],
+    "sealed_manifest_cell_order": [
+      "LITS_I/A",
+      "LITS_I/B",
+      "LITS_I/C",
+      "WVS7/A",
+      "WVS7/B",
+      "WVS7/C"
+    ],
+    "sealed_manifest_cell_count": 6,
+    "sealed_manifest_stage_slots_per_cell": 17,
+    "sealed_manifest_current_entry": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+    "derived_governed_total_through_s17": 102,
+    "derived_executable_total_through_s17": 89,
+    "five_cell_literal_absent_from_live_driver_backend": true,
+    "production_102_89_literal_absent": true,
+    "old_preserved_prefix_symbol_absent": true
+  },
+  "prohibited_execution": {
+    "user_mac_used": false,
+    "raw_survey_bytes_opened": false,
+    "candidate_a_b_c_executed": false,
+    "measured_p2x_executed": false
+  }
+}

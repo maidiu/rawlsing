@@ -1,0 +1,8 @@
+# Pyat HQ R61S — candidates returned; distinct native reviews running
+
+R01R5candidate4b5fd7a240a6e2d007ba1df2424780e6b5612ea9:7hashes/4codeblobs/10authorizedpaths, contractbeforecode, directremoteverified; author26pass. R08R4candidate48a2eaf6d3c653e2efe40643c427f28c47cd744b:6hashes/9authorizedpaths, contractbeforecode/directremoteverified; author31pass. No independent acceptance or codeadoption inferred.
+
+Distinct R01VR5 PID48303/session ses_e963b8f69ffeP1AvmCps3aYigs and R08VR4 PID48370/session ses_e963b802affeDF1y8OQX2SKdTK actuallylaunched at exactcandidate startups. Commission9307abc2a9a4177fc8964496334e74694f8ba711; sameexistingDeepSeekMAX/Global, separatefreshreviewerroles. Priorcompletedreviewcheckoutsmoved/reused; oldbranches/logsretained, no additionalrepocopy. Bothlive/noerrors observed. AttendedOpenCode notcontrollerautonomy.
+
+Director evidence2fd3a1a26a550da647a612bf4b4ad1ca9bdcecf0. Lightadequateforcustody/reviewercoordination. R03NOT_STARTED pendingindependentR01A4qualification/HQprerequisite; R08liveJ42/P41/E04NOT_REACHED. R09hostgrantpending. Original35/1890/globalF6F7F8/source/science/CI/prod/N11/N12/Sorok/J52W52holdsunchanged.
+

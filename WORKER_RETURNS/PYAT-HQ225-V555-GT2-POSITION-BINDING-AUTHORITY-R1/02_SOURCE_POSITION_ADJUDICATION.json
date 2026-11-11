@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ225_GT2_SOURCE_POSITION_ADJUDICATION@1.0.0",
+  "docket": "PYAT_HQ225_V555_GT2_SIG004_POSITION_BINDING_DOCKET_R1",
+  "candidate": {
+    "native_variable": "Q86B",
+    "question_impl_id": "question_impl.phase0.2fb3a62609dad4c1306d",
+    "exact_identity_sha256": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+    "relation_role": "CONDITIONER",
+    "source_semantics": "Respondent opinion whether a person born in-country to two non-national parents has a right to citizenship."
+  },
+  "adjudication": {
+    "position_role_state": "NOT_POSITION_FOR_THIS_GT2_V555_DOCKET",
+    "preserved_measurement_role": "ACTIVE_DISPOSITION__ATTITUDE_OR_DISPOSITION_ONLY",
+    "relation_role_preserved": "CONDITIONER",
+    "structural_source_position_authorized": false,
+    "source_structural_position_ref": null
+  },
+  "evidence_and_reasoning": [
+    "The exact measurement is a respondent citizenship-right judgment; CONDITIONER is a conditional-support role, not position-role evidence.",
+    "First-canary exact PRA precedent adjudicates this qimpl as ACTIVE_DISPOSITION / ATTITUDE_OR_DISPOSITION_ONLY and bars ACTIVE_POSITION promotion.",
+    "The hypothetical person described by Q86B is proposition content, not the respondent position and not a separately governed StructuralPosition object.",
+    "Current GT2 relation/admission/F1 preserve the Q86B qimpl and target-use permission but no driver/source structural-position ref.",
+    "OBL005 forbids position minting from labels, source block, coadministration, correlation/fit or downstream need."
+  ],
+  "considered_and_rejected_substitutions": {
+    "Q86B_CONDITIONER_AS_SOURCE_POSITION": "REJECTED",
+    "Q86B_RESPONSE_STATE_AS_SOURCE_POSITION": "REJECTED",
+    "Q86B_HYPOTHETICAL_SUBJECT_AS_POSITION": "REJECTED__NO_INDEPENDENT_OBJECT_OR_AUTHORITY",
+    "Q70B_Q70C_Q73A_Q84_AS_IMPORTED_ENDPOINT": "REJECTED__OTHER_DOCKET_AND_NOT_GT2_PARTICIPANT"
+  },
+  "negative_ceiling": [
+    "no ACTIVE_POSITION",
+    "no RELATIONAL_IDENTITY_POSITION",
+    "no ORIGIN_BACKGROUND_POSITION",
+    "no causal source",
+    "no structural-route source merely from CONDITIONER",
+    "no transport beyond this docket"
+  ],
+  "result_independence": "PROVED__ROLE_DECISION_DOES_NOT_USE_GT2_RESULT_MAGNITUDE_OR_SIGN",
+  "terminal": "NO_LAWFUL_GT2_SOURCE_STRUCTURAL_POSITION_BINDING"
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T1207-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T1205-0400",
+  "status": "P2X_REPAIRS_FANNED_IN__LOCAL_RECONCILIATION_ONLY_AUTHORIZED__MEASURED_P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-19-083",
+    "HQD-2026-09-19-084"
+  ],
+  "fanin_path": "HQ_HANDOFF/EE_P2X_PARALLEL_REPAIR_FANIN_20260919.md",
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head_at_checkpoint": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "prior_held_head": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+    "status": "HELD_PENDING_LOCAL_RECONCILIATION"
+  },
+  "local_wake": {
+    "execution_surface": "LOCAL-MACHINE CODEX",
+    "maximum_intelligence": "LUNA",
+    "library_access": "NO",
+    "operation": "EXACT_R6X_STOPPED_LEDGER_RECONCILIATION_ONLY",
+    "reconciler_path": "WORKER_RETURNS/EE-P2R6X/03_RECONCILE_LOCAL_P2X_INFRASTRUCTURE_STOPS.py",
+    "reconciler_blob": "12836e591be9ed0aa4d46436deacebde038d9de0",
+    "required_stopped_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+    "measured_p2x_execution_authorized": false
+  },
+  "terminal": "LOCAL_R6X_RECONCILIATION_AUTHORIZED__P2X_MEASUREMENT_HELD"
+}

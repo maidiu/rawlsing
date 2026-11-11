@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_DOCUMENTARY_VERIFICATION@1",
+  "baseline_control": "6a8c91d99dca1ae2fd3559ba3c11ee26649e3cd9",
+  "status": "PASS_DOCUMENTARY_COUNTS_LINKS_TASK_DAG_AND_PUBLISHED_LOG_HASHES",
+  "runtime_reexecuted_by_this_assessment": false,
+  "raw_source_rows_read": false,
+  "candidate_code_adopted": false,
+  "future_tasks_issued": false,
+  "checks": {
+    "t3": {
+      "candidates": 46,
+      "coverage_limited": 46,
+      "fact_states": 58,
+      "unavailable": 58,
+      "denominators": 58,
+      "zeros": 58
+    },
+    "inventory": {
+      "waves": 35,
+      "unique_source_ids": 35,
+      "source_native_cells": 1050,
+      "ee_cells": 560,
+      "f_cells": 280,
+      "global_work_rows": 151,
+      "normalized_task_rows": 101
+    }
+  },
+  "task_count": 25,
+  "source_count": 35,
+  "all_AT01_AT35_routed": true,
+  "task_dependency_graph_acyclic": true,
+  "relative_links_valid": true,
+  "f8f_published_logs": {
+    "adjacent_123.log": {
+      "sha256": "63348d27696ee09965cc3998d841d86ec0082a4b855a4dce3ad6f844ccb18a83",
+      "bytes": 181,
+      "passed": 123
+    },
+    "c103r_and_g1.log": {
+      "sha256": "1089e06385db780ab164d674c6e63872eab5d741934fbcf5f3d174aadac037ed",
+      "bytes": 181,
+      "passed": 124
+    },
+    "f8e_23_suite.log": {
+      "sha256": "488459dde70cd79e3cc0429adba411102c82bf75527063b8b256ddb6d2c1526e",
+      "bytes": 99,
+      "passed": 23
+    },
+    "f8f_hostiles.log": {
+      "sha256": "810ca1e58c25d5e0eb8205829407dd480e99f1ceea99699f6ac1a09a9b1b1010",
+      "bytes": 99,
+      "passed": 10
+    }
+  },
+  "f8f_test_count_meaning": "280 reported passed test executions; includes tests demonstrating accepted forged claims; not 280 security safeguards",
+  "input_picture_sha256": "194d839320c13951bba1378693cc68ba9934ad1aad9fbac21ff72aacd0a1c2c1",
+  "limitations": [
+    "Primary LR-A/B/C and WGE-R ZIP payloads not reprocessed",
+    "Worker runtime host/process not independently re-attested",
+    "All-35 source/work/product/consumer reconciliation remains future work"
+  ]
+}

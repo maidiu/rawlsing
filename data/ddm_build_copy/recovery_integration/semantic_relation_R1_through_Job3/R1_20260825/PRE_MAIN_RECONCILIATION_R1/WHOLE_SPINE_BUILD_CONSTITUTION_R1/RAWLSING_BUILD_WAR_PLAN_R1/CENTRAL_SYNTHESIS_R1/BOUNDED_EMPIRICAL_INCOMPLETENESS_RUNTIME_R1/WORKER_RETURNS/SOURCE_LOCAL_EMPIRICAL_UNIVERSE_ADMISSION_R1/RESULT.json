@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "terminal": "SOURCE_LOCAL_EMPIRICAL_UNIVERSE_ADMISSION_R1_COMPLETE__SOURCE_LOCAL_RAW_SCOPE_MATERIALIZABLE__POPULATION_LIMITS_PRESERVED__INDEPENDENT_HOSTILE_PASS__READY_FOR_HQ_ADOPTION",
+  "producer_candidate": "a030d3aafbd1481d188083363227cb06fbadc467",
+  "qualification_execution_tree": "216b8b655d33b9493e20e50263196300e2fc1d75",
+  "implementation": {
+    "path": "rawlsing_next/pre553_source_local_universe_admission.py",
+    "blob_sha1": "b968fa16c6620cd06b191ebdb5da7da86f524393"
+  },
+  "tests": {
+    "producer_path": "rawlsing_next/tests/test_pre553_source_local_universe_admission.py",
+    "producer_blob_sha1": "b2561ba230e956b56c509efc1779b94efef92aa1",
+    "hostile_path": "rawlsing_next/tests/test_pre553_source_local_universe_admission_hostile_r1.py",
+    "hostile_blob_sha1": "35183a7e36ae695eae2b7d9e45da5a06641953d2"
+  },
+  "workflow": {
+    "run_id": 34407835678,
+    "attempt_1": {
+      "job_id": 102654967517,
+      "protocol_tests_passed": 20,
+      "bounded_tests_passed": 44,
+      "conclusion": "success",
+      "artifact_id": 10126028536,
+      "artifact_zip_sha256": "9fdf1dcbaedfee24a10c4c82d946d5c2d322b589ed1a62b7cce59d7460719c20"
+    },
+    "attempt_2": {
+      "job_id": 102655222771,
+      "protocol_tests_passed": 20,
+      "bounded_tests_passed": 44,
+      "conclusion": "success"
+    }
+  },
+  "allowed_source_local_uses": [
+    "RAW_SINGLE_UNIVERSE",
+    "RAW_SOURCE_INDEXED_MULTI_UNIVERSE"
+  ],
+  "denied_without_separate_authority": [
+    "POPULATION_GENERALIZATION",
+    "GOVERNED_WEIGHTED_POPULATION_ESTIMAND",
+    "AUTHORIZED_COMPOSITE_POOLING",
+    "SOURCE_BACKFILL",
+    "HARMONIZATION"
+  ],
+  "required_negative_limits": [
+    "NO_POPULATION_GENERALIZATION",
+    "NO_WEIGHTED_POPULATION_ESTIMAND_UNLESS_SEPARATELY_AUTHORIZED",
+    "NO_CROSS_UNIVERSE_POOLING_WITHOUT_RELATION_AUTHORITY",
+    "NO_NEAREST_COUNTRY_OR_WAVE_BACKFILL"
+  ],
+  "c11_compatibility_proved": true,
+  "existing_architectural_precedent": "Afrobarometer R5 source-local UNIVERSE_IDENTIFIED with NO_POPULATION_GENERALIZATION / RAW_UNWEIGHTED semantics",
+  "next_required_action": "RECOMPOSE_WVS7_D11_AS_SOURCE_LOCAL_BASE_PLUS_POPULATION_CERTIFICATION_OVERLAY"
+}

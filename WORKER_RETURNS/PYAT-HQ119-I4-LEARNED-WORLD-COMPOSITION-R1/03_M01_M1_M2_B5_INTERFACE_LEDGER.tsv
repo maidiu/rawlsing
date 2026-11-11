@@ -1,0 +1,19 @@
+edge	input_owner	exact_input	adapter_operation	exact_output	forbidden_inference	qualified
+M01->M1	M01	RouteBProductionResult.object_graph + explicit selected DiscoveryResultReceipt refs	call current build_m1_adjudication_input_bundle with explicit M1 binding family/rule	M1AdjudicationInputBundle	I05/support/discovery/replay may not choose validator or rule	PASS
+M01->M1 rule	Product contract + M1	exact M1FamilyRuleBinding.ref	require supplied binding ref == contract binding ref	M1 exact dispatch input	latest/default/nearby family rule selection	PASS
+M1->M2 subject	M1	LearnedEmpiricalDisposition.ref + adjudication_outcome	register producer subject with same ref and typed state	ProducerSubject	semantic reownership / negative-state reinterpretation	PASS
+M1->M2 authority	M1	authority_closure_refs AuthorityRef preimages	lossless transport refs + exact preimage metadata	M2 AUTHORITY closure	invented/neighboring authority	PASS
+M1->M2 dependency	M1	dependency_refs	exact closure copy	M2 DEPENDENCY closure	discovery by filename/module/chronology	PASS
+M1->M2 determinant	M1	determinant_manifest_ref	exact singleton determinant closure	M2 DETERMINANT closure	determinant substitution	PASS
+M1->M2 replay	M1	replay_ref after verify_m1_disposition_replay	exact singleton replay closure	M2 REPLAY_RECONSTRUCTION closure	replay-by-nearest artifact	PASS
+M1->M2 explanation	M1	explanation_ref + determinant_explanation_receipt_ref	exact explanation closure	M2 EXPLANATION_LINEAGE closure	semantic paraphrase as identity	PASS
+M2->B5 release	M2	ReleaseCore.ref	direct exact copy	B5 protocol release_ref	chronology/newest/current inference	PASS
+M2->B5 product	M2	ProducerSubject.ref	direct exact copy	B5 protocol product_ref	product identity from locator/publication binding	PASS
+M2->B5 authority	M2	transport refs + preimage metadata	restore preimages and verify transport membership	B5 AuthorityRef tuple	authority aliasing	PASS
+M2->B5 dependency	M2	DEPENDENCY member_refs	direct exact copy	B5 direct_dependency_refs	dependency supplementation	PASS
+M2->B5 determinant	M2	DETERMINANT member_refs	direct exact copy + exact semantic_hash recomputation	B5 determinant_refs + determinant_set_hash	stored hash trust without recomputation	PASS
+M2->B5 replay	M2	REPLAY closure singleton	direct exact copy	B5 replay_root_ref	replay root inference	PASS
+Contract->B5 family	Product contract	product_family_ref	direct exact copy	B5 product_family_ref	family from claim/source/module name	PASS
+Contract->B5 scope	Product contract	selection_scope_ref	direct exact copy	B5 selection_scope_ref	scope widening	PASS
+Contract->B5 permission ceiling	Product contract	producer_permission_ceiling_ref	direct exact copy	B5 producer_permission_ceiling_ref	consumer permission minting	PASS
+B5 lifecycle	Product contract	explicit lifecycle_actions + exact action refs	invoke only named B5 APIs	B5 events/selection receipts	auto-register/auto-publish/auto-select	PASS

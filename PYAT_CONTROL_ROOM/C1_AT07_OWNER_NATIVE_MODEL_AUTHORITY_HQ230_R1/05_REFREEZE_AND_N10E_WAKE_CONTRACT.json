@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_HQ230_D6_REFREEZE_AND_N10E_WAKE@1",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "exact_candidate_refs": {
+    "owner_native_authority_ref": {
+      "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65"
+    },
+    "stable_model_rule_ref": {
+      "kind": "PositionedSubjectModelRule@1.0.0",
+      "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2",
+      "content_hash": "59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2"
+    },
+    "fixture_crosswalk_ref": {
+      "kind": "C1FixtureModelAuthorityCrosswalk@1",
+      "object_id": "urn:rawlsing:pre553:c1-fixture-model-crosswalk:sha256:4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0",
+      "content_hash": "4eb8aaaaef078cc7c3da32c5232aa62b45692ec0ffb7867a0376e9a7c47071f0"
+    },
+    "replay_protocol_ref": {
+      "kind": "PositionedSubjectModelRuleReplayProtocol@1",
+      "object_id": "urn:rawlsing:pre553:positioned-subject-model-rule-replay:sha256:4ea14ebe4f724e05a0d2560ae7f19b3f4d48522a1bd9750b0544ed976248a08e",
+      "content_hash": "4ea14ebe4f724e05a0d2560ae7f19b3f4d48522a1bd9750b0544ed976248a08e"
+    },
+    "candidate_record_ref": {
+      "kind": "Maintenance:CANDIDATE",
+      "object_id": "urn:rawlsing:pre553:maintenance:candidate:sha256:dd8bdcb2181282d264793293c592a7b401c268a774faf7b15a08d89f3287c10e",
+      "content_hash": "dd8bdcb2181282d264793293c592a7b401c268a774faf7b15a08d89f3287c10e"
+    }
+  },
+  "required_refreeze": [
+    "active source-free PositionedSubjectPossibilityModelRule instance hash after it binds stable model-rule ref / owner-native authority",
+    "N10E provider request identity bindings",
+    "N10E provider receipt identity",
+    "C1 analytical composition result identity where model rule participates",
+    "generated possibility evidence/result identities where their current projection binds the model rule",
+    "replay receipts/claims that retain the changed model determinants",
+    "dependency registrations and any downstream exact refs transitively derived from those identities"
+  ],
+  "historical_non_refreeze": [
+    "accepted C1-01 R8 historical receipts and court outputs",
+    "fixture-only C1-AT07-MODEL ref/body",
+    "historical source-free results as evidence"
+  ],
+  "n10e_graph_contract": {
+    "model_authority_to_rule": {
+      "authority_ref": {
+        "authority_id": "C1-AT07-POSITIONED-SUBJECT-MODEL-RULE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "db0060afb25dfcf7f77b35864c2dd2499e974057aca73a252a208fb93ed2fc65"
+      },
+      "dependent_ref": {
+        "kind": "PositionedSubjectModelRule@1.0.0",
+        "object_id": "urn:rawlsing:pre553:PositionedSubjectModelRule:sha256:59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2",
+        "content_hash": "59e82a51b26cca26aff84e42878c1c8f1c0c52e4ad4e26a5b23244999454add2"
+      }
+    },
+    "rule_to_product": "Every product consuming the model law registers the stable rule ref as an exact parent dependency.",
+    "exact_instance_hash": "Existing full model_rule_hash remains an invocation identity check, but is not substituted for the owner-owned stable rule ref.",
+    "walkback": "Walkback authority and any proxy-step authority remain separate determinant authority edges.",
+    "source_universe": "Per-invocation source universe remains an exact determinant and must be inside the model authority's exact scope."
+  },
+  "successor_snapshot_recomposition_contract": [
+    "A future revision under the same owner-native authority_id must have exact parent + supersession refs to the prior owner-native current ref.",
+    "Promotion must yield an actual sealed successor snapshot and exact current-selection receipt.",
+    "The N10E/domain recompiler resolves that sealed snapshot, never merely candidate.proposed_authority_ref.",
+    "From the sealed successor snapshot it constructs and verifies the successor stable model-rule object.",
+    "Only then does it reconstruct provider/composition/consumer products using the successor rule plus separately resolved walkback/source/query/evidence determinants.",
+    "Every affected dependent receives exactly one lawful replacement or the owner's generic grounded noncurrent outcome."
+  ],
+  "source_free_c1_compatibility": {
+    "historical_tests": "remain valid at their declared historical fixture grain",
+    "future_active_owner_native_path": "must use the new authority/rule and will have different identities",
+    "silent_upgrade_forbidden": true,
+    "real_source_effect": false
+  },
+  "wake_conditions": [
+    "independent hostile review approves this candidate",
+    "HQ explicitly adopts it",
+    "new authority kind + kind ceiling implemented",
+    "new rule family/state/class implemented",
+    "provider/model-rule path validates exact owner authority and stable rule ref",
+    "N10E dependency graph binds authority -> stable rule -> products",
+    "runner consumes actual sealed successor snapshot in recomposition"
+  ]
+}

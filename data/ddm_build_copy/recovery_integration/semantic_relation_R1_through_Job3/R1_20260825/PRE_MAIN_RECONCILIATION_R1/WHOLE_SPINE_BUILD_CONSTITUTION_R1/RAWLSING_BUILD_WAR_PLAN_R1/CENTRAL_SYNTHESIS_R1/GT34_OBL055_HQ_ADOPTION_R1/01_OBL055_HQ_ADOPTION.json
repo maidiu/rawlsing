@@ -1,0 +1,61 @@
+{
+  "schema": "GT34_OBL055_EXACT_HQ_ADOPTION@1.0.0",
+  "decision": "ADOPTED_AT_EXACT_OBL056_ACCEPTANCE_GATED_W2_SUCCESSOR_EXECUTOR_GRAIN",
+  "semantic_candidate": "702eababa4012512743fd2e729fc9bea167089b1",
+  "repair_evidence_seal": "a18f35b3de4dad6efd1ff3f25d3cd93a2b56c8d4",
+  "executor": {
+    "id": "GT34_V3P5_ADP010_OBL056_CANONICAL_RECONSTRUCTED_REPLAY_EXECUTOR",
+    "version": "3.1.1",
+    "successor_content_hash": "273f7cc59acfd60942158bac4ca6b5d1cef40521f7eb343436b6723822d93251",
+    "implementation_path": "rawlsing_next/v3_adp010_oee_executor_obl055_replay_canonical.py",
+    "implementation_blob": "e8c6edab3b310b797997a3826b8acb32f7f08ce9",
+    "executable_dependency_blobs": {
+      "w2": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+      "r1": "fa169dbb525475c17b2495a5b35aa300aa809881",
+      "r2": "eb9c91b705a01868d99d3e3a564b611749e028f8",
+      "r3": "e8c6edab3b310b797997a3826b8acb32f7f08ce9"
+    }
+  },
+  "obl056": {
+    "authority": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY@1.0.0",
+    "authority_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
+    "implementation_blob": "49538b9c36e58e19a6dc293ecac5bc2dff58eebe",
+    "installed_current_positive_entries": 0
+  },
+  "repair_court": {
+    "run": 34160840696,
+    "job": 101862191754,
+    "protocol_self_test": "20 passed",
+    "bounded_court": "123 passed",
+    "artifact": 10032534409,
+    "artifact_zip_sha256": "019ff94a082bff63555668bf39271b8c6d6f8b24226dae128a3cb752a7dd17a8"
+  },
+  "hostile_review": {
+    "matrix_freeze": "6be26a0ad812b03461c515b9da005b0ba7a89010",
+    "initial_run": 34161114702,
+    "initial_job": 101862990089,
+    "initial_result": "1 failed, 73 passed",
+    "harness_only_taxonomy_correction": "62b42fc27581e92f457e72c326f6c6b225fc907b",
+    "target_implementation_unchanged": true,
+    "final_run": 34161204327,
+    "final_job": 101863248231,
+    "protocol_self_test": "20 passed",
+    "bounded_court": "74 passed",
+    "artifact": 10032650427,
+    "artifact_zip_sha256": "536104c4ee04e1a89fa7f9e1d9883304c1e6f01cde5f0086baf5dcad5fa2ac0a",
+    "final_tip": "f36adbb22c10731bae4aca2d4b23cd7dc0332489",
+    "execution_only_pr": 258,
+    "pr_state": "CLOSED_UNMERGED"
+  },
+  "campaign": {
+    "packet": "ef72fa14cdc8461f8664e396a313897688b4813c",
+    "tip": "4f13ce496ad6f3987a43b1b1988148dcdf6f4165"
+  },
+  "downstream": {
+    "OBL055": "CLOSED",
+    "OBL031": "UNBLOCKED_RETURN_REQUIRED",
+    "OBL032": "BLOCKED_ON_OBL031",
+    "project_current_first_canary_oee": "NOT_AUTHORIZED_BY_THIS_ADOPTION",
+    "positive_v3_execution": "NOT_AUTHORIZED"
+  }
+}

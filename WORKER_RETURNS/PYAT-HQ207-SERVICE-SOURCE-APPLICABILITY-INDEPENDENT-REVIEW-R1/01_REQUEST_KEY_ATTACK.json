@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_HQ207_REQUEST_KEY_ATTACK@1.0.0",
+  "attack": "A",
+  "verdict": "PASS - all ten ratified components are mandatory and exact; every smuggling route refused",
+  "method": "constructed ServiceApplicabilityRequest.build() calls directly against the candidate module in the governed interpreter; no test-suite reliance",
+  "A1_missing_component": {
+    "result": "PASS",
+    "tested": "each of the ten REQUEST_KEY_COMPONENTS omitted in turn",
+    "observed": "every omission refused with the typed outer refusal; none was defaulted, inferred or silently accepted",
+    "note": "the module documents that this was a real production defect it found and fixed during implementation (an incomplete key previously surfaced as an incidental Python TypeError rather than a typed refusal). My attack confirms the fixed behaviour."
+  },
+  "A2_forbidden_smuggling": {
+    "result": "PASS",
+    "tested_names": ["ranking","score","weight","preference","evidence","pooling","currentness","permission_grant","sample_size","selected","best","linkage","backfill"],
+    "observed": "every one refused at build() before construction",
+    "mechanism": "FORBIDDEN_REQUEST_KEY_NAMES is checked case-insensitively (name.lower()) so case variants such as 'Ranking' are also caught"
+  },
+  "A3_mutable_or_fuzzy_selector": {
+    "result": "PASS",
+    "tested": ["LATEST","latest","DEFAULT","FUZZY","NEAREST","SEMVER_FALLBACK"],
+    "observed": "all refused",
+    "mechanism": "authority_version.upper() in _MUTABLE_SELECTORS - the upper() call is load-bearing and makes the check case-insensitive in BOTH directions",
+    "honest_note": "I initially recorded 'Mixed' as an anomalous ACCEPT. That was MY test error: 'Mixed'.upper() == 'MIXED' is correctly NOT in the mutable set, so it is an ordinary exact version string. The check is correct; my label was wrong."
+  },
+  "A4_unknown_component": {"result": "PASS", "observed": "unknown request key components refused"},
+  "A5_empty_component": {
+    "result": "PASS",
+    "tested": ["target_use_permission_refs=[]","candidate_source_universe_refs=[]"],
+    "observed": "both refused as absent - an empty tuple is not a satisfied component"
+  },
+  "A6_temporal_scope_ambiguity": {
+    "result": "PASS",
+    "finding": "effective_time_or_interval_ref is a single mandatory ExactRef component of the request key and is included in candidate_set_identity(). There is no point-vs-interval grain choice exposed here, and no default. Changing it changes the request identity (verified in the replay attack).",
+    "consistent_with_HQ203": "this lane does NOT assert the HQ201 point-year/fieldwork-interval binary; the field is polymorphic by design and the grain is not decided here."
+  },
+  "A7_permission_ref_confusion": {
+    "result": "PASS",
+    "finding": "target_use_permission_refs is a bound INPUT, and the receipt explicitly declares 'target_use_permission_refs_are_bound_input_not_a_grant' and 'may_grant_target_use_permission': False on every decision row. A bound permission ref can never become a permission grant."
+  }
+}

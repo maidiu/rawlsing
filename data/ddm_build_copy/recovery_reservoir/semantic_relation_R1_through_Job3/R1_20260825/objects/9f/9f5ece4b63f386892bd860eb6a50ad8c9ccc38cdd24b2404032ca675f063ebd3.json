@@ -1,0 +1,612 @@
+{
+  "worker_id": "W02",
+  "campaign": "Rawlsing/DDM S14 R15 relation-role bridge repair",
+  "doctrine": "R16C-V",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "coverage_exact_15156",
+      "status": "PASS",
+      "detail": "rows=15156 unique=True"
+    },
+    {
+      "check": "immutable_first_13_exact",
+      "status": "PASS",
+      "detail": "all first 13 immutable fields equal template"
+    },
+    {
+      "check": "all_mutable_nonblank",
+      "status": "PASS",
+      "detail": "0 blank mutable cells"
+    },
+    {
+      "check": "t07_exact_reserved",
+      "status": "PASS",
+      "detail": "105/105 exact"
+    },
+    {
+      "check": "all_json_parse",
+      "status": "PASS",
+      "detail": "all structured fields parse"
+    },
+    {
+      "check": "retain_fully_contained_r6_only",
+      "status": "PASS",
+      "detail": "24 retain atoms; bad=[]"
+    },
+    {
+      "check": "t06_structured_two_stage_all_atoms",
+      "status": "PASS",
+      "detail": "13848/13848"
+    },
+    {
+      "check": "t06_missing_authority_never_rejected",
+      "status": "PASS",
+      "detail": "blocked=31 reasons={'T06_STAGE_A_SOURCE_INSUFFICIENT_NATIVE_STEM_OR_POLARITY': 31}"
+    },
+    {
+      "check": "t10_zero_coordinate_is_block_not_reject",
+      "status": "PASS",
+      "detail": "16 atoms"
+    },
+    {
+      "check": "t11_shared_target_not_promoted",
+      "status": "PASS",
+      "detail": "family importance/trust and God importance/belief both blocked"
+    },
+    {
+      "check": "job3_not_authorized_or_used",
+      "status": "PASS",
+      "detail": "hits=0"
+    },
+    {
+      "check": "t03_authority_gap_blocks",
+      "status": "PASS",
+      "detail": "107/107 blocked"
+    },
+    {
+      "check": "t04_authority_gap_blocks",
+      "status": "PASS",
+      "detail": "107/107 blocked"
+    },
+    {
+      "check": "t09_authority_gap_blocks",
+      "status": "PASS",
+      "detail": "107/107 blocked"
+    },
+    {
+      "check": "t06_rejects_have_affirmative_negative_or_mismatch_basis",
+      "status": "PASS",
+      "detail": "rejects=13816 bad=0"
+    },
+    {
+      "check": "hostile_accept_partial_sample",
+      "status": "PASS",
+      "detail": "sampled all available ACCEPT/PARTIAL atoms=10 (<25 available, so protocol 'where available' satisfied)"
+    },
+    {
+      "check": "hostile_bulk_reject_sample_25",
+      "status": "PASS",
+      "detail": "sampled=25 all_pass=True"
+    }
+  ],
+  "accept_partial_hostile_samples": [
+    {
+      "decision_atom_id": "R15ATOM-244023652e35c4f50b7a",
+      "rule_scope": "T11",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "The two items are not mere duplicates: they contribute explicitly differentiated importance and perceived-existence roles to one narrow proposition.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.2286d407591f2373ac79",
+          "code": "q415b",
+          "exact_question_text": "Exist in the country - law and order"
+        },
+        {
+          "implementation_id": "question_impl.phase0.7e4ee8f847725b351dc7",
+          "code": "q414b",
+          "exact_question_text": "Important for the country - law and order"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-7be2fdfc054c8971dcb6",
+      "rule_scope": "T05",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_PARTIAL_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "Only q817b/q817c satisfy the current T05 commitment/cost roles inside this broad collision container.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.608e1cd14d2a7c73bab6",
+          "code": "q817b",
+          "exact_question_text": "If I would witness an act of corruption, I would feel personally obliged to repo"
+        },
+        {
+          "implementation_id": "question_impl.phase0.fd6f6e50866c46d6a8b2",
+          "code": "q817c",
+          "exact_question_text": "I would report a case of corruption even if I would have to spend a day in court"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-921c23de53a8ba25a55b",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_PARTIAL_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "Current two-stage T06 revalidation confirms the q817b norm shore and q817c cost-bearing intended-conduct shore; q817a is not part of this actor-aligned link.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.608e1cd14d2a7c73bab6",
+          "code": "q817b",
+          "exact_question_text": "If I would witness an act of corruption, I would feel personally obliged to repo"
+        },
+        {
+          "implementation_id": "question_impl.phase0.fd6f6e50866c46d6a8b2",
+          "code": "q817c",
+          "exact_question_text": "I would report a case of corruption even if I would have to spend a day in court"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-015da387ce43afd934d1",
+      "rule_scope": "T11",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "q817a/b/c supply differentiated, bounded roles converging on the same narrow corruption-reporting proposition.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.b17b086b6e065641ff22",
+          "code": "q817a",
+          "exact_question_text": "In our society it is generally acceptable for people to report a case of corrupt"
+        },
+        {
+          "implementation_id": "question_impl.phase0.608e1cd14d2a7c73bab6",
+          "code": "q817b",
+          "exact_question_text": "If I would witness an act of corruption, I would feel personally obliged to repo"
+        },
+        {
+          "implementation_id": "question_impl.phase0.fd6f6e50866c46d6a8b2",
+          "code": "q817c",
+          "exact_question_text": "I would report a case of corruption even if I would have to spend a day in court"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-92e361f927e831e66686",
+      "rule_scope": "T11",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "The two items are not mere duplicates: they contribute explicitly differentiated importance and perceived-existence roles to one narrow proposition.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.6e7adafd741ecbc23e51",
+          "code": "q414f",
+          "exact_question_text": "Important for the country - a strong political opposition"
+        },
+        {
+          "implementation_id": "question_impl.phase0.fe810ddd5342500ce207",
+          "code": "q415f",
+          "exact_question_text": "Exist in the country - a strong political opposition"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-7c5d19803917bbee4820",
+      "rule_scope": "T11",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "The two items are not mere duplicates: they contribute explicitly differentiated importance and perceived-existence roles to one narrow proposition.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.3e1e7eec2acbcee81dd6",
+          "code": "q414c",
+          "exact_question_text": "Important for the country - freedom of speech"
+        },
+        {
+          "implementation_id": "question_impl.phase0.9ace91e40022e5ea8908",
+          "code": "q415c",
+          "exact_question_text": "Exist in the country - freedom of speech"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-18bef114c58e955d503e",
+      "rule_scope": "T11",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "The two items are not mere duplicates: they contribute explicitly differentiated importance and perceived-existence roles to one narrow proposition.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.44e6830d88a1ffc0ab4f",
+          "code": "q415a",
+          "exact_question_text": "Exist in the country - free and fair elections"
+        },
+        {
+          "implementation_id": "question_impl.phase0.849eed2bc2a15d2dd217",
+          "code": "q414a",
+          "exact_question_text": "Important for the country - free and fair elections"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-822bac20d72e7ebb0548",
+      "rule_scope": "T11",
+      "source_family": "LiTS",
+      "wave": "III",
+      "recommendation": "WORKER_RECOMMEND_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "The two items are not mere duplicates: they contribute explicitly differentiated importance and perceived-existence roles to one narrow proposition.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.2225a506151351d9bf85",
+          "code": "q415d",
+          "exact_question_text": "Exist in the country - peace and stability"
+        },
+        {
+          "implementation_id": "question_impl.phase0.b7e8cbee35097a1123e8",
+          "code": "q414d",
+          "exact_question_text": "Important for the country - peace and stability"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-774be88927e67881389a",
+      "rule_scope": "T05",
+      "source_family": "WVS",
+      "wave": "W7",
+      "recommendation": "WORKER_RECOMMEND_PARTIAL_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "Current exact-text revalidation confirms the Q40/Q41 commitment-cost subset; all other frozen members are excluded.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.2c0b4e119a92c035eb73",
+          "code": "Q40",
+          "exact_question_text": "Work is a duty towards society"
+        },
+        {
+          "implementation_id": "question_impl.phase0.f1c5561874c193247523",
+          "code": "Q41",
+          "exact_question_text": "Work should always come first, even if it means less spare time 1 2 3 4 5 (SHOW CARD 4)"
+        }
+      ]
+    },
+    {
+      "decision_atom_id": "R15ATOM-4e1be209c9275dca6275",
+      "rule_scope": "T05",
+      "source_family": "WVS",
+      "wave": "W7",
+      "recommendation": "WORKER_RECOMMEND_PARTIAL_ACCEPT",
+      "status": "PASS",
+      "hostile_question": "Does the authorized subset actually instantiate the rule roles without relying on shared topic/target alone?",
+      "finding": "Current exact-text revalidation confirms the Q40/Q41 commitment-cost subset; all other frozen members are excluded.",
+      "authorized_exact_texts": [
+        {
+          "implementation_id": "question_impl.phase0.2c0b4e119a92c035eb73",
+          "code": "Q40",
+          "exact_question_text": "Work is a duty towards society"
+        },
+        {
+          "implementation_id": "question_impl.phase0.f1c5561874c193247523",
+          "code": "Q41",
+          "exact_question_text": "Work should always come first, even if it means less spare time 1 2 3 4 5 (SHOW CARD 4)"
+        }
+      ]
+    }
+  ],
+  "bulk_reject_hostile_samples": [
+    {
+      "decision_atom_id": "R15ATOM-ed0bb7be74c928320df2",
+      "rule_scope": "T06",
+      "source_family": "Afrobarometer",
+      "wave": "R5",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-077ec29044d9661f116c",
+      "rule_scope": "T06",
+      "source_family": "Afrobarometer",
+      "wave": "R5",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-21a898ad3ed48614fe8f",
+      "rule_scope": "T06",
+      "source_family": "Afrobarometer",
+      "wave": "R5",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-c4ab04612415953d232c",
+      "rule_scope": "T06",
+      "source_family": "Afrobarometer",
+      "wave": "R5",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-2918a36aeb794876a3dc",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "1972",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-a6859e65c950b3bfe157",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "1972",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-9bfddfb92927e9b793d0",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "1972",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-b905e34b9fb9e0e506f6",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "1972",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-232c9df04fed1d7a7c2e",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "2016",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-6c0ff252d32fa9d23c34",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "2016",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-b44880468c29c3c03b7e",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "2016",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-96ccb4f02fdbda777f81",
+      "rule_scope": "T06",
+      "source_family": "GSS",
+      "wave": "2016",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-cc4c7f098fc4d604b64a",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "III",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-958daf0da1523211797a",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "III",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-9462fc8e698823697e75",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "III",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-1c94791d169615f1b68f",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "III",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-4a906baf95bc559cfc9a",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "IV",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-4ad023595d906aaf745d",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "IV",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-fca35fcdae76259caa34",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "IV",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-e298f3a6121bb6aa56af",
+      "rule_scope": "T06",
+      "source_family": "LiTS",
+      "wave": "IV",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "Neither semantic unit supplies a current RR_NORM shore; T06 cannot form.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-15067bbcd8e275c1fb20",
+      "rule_scope": "T06",
+      "source_family": "WVS",
+      "wave": "W7",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-de219c5f65f17bf20677",
+      "rule_scope": "T06",
+      "source_family": "WVS",
+      "wave": "W7",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-9ce1db7c02e873f6fb4c",
+      "rule_scope": "T06",
+      "source_family": "WVS",
+      "wave": "W7",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "Exact Stage-A review finds no RR_NORM shore; current doctrine therefore stops before endpoint matching.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-ff76105363dd7fdc11e4",
+      "rule_scope": "T06",
+      "source_family": "WVS",
+      "wave": "W7",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "RR_NORM is positive, but exact actor/target/action-or-exposure correspondence fails against this O04 endpoint.",
+      "structure_status": null,
+      "blocker_reason": "NONE"
+    },
+    {
+      "decision_atom_id": "R15ATOM-0a75d948108f6ae30c49",
+      "rule_scope": "T08",
+      "source_family": "Afrobarometer",
+      "wave": "R5",
+      "status": "PASS",
+      "hostile_question": "Would this REJECT turn missing authority into negative evidence, or rely on lexical/topic proximity?",
+      "finding": "T08 requires institution-class differentiation; exact governed mapping here contains no cross-class differentiation.",
+      "structure_status": "MISMATCH",
+      "blocker_reason": "NONE"
+    }
+  ],
+  "hostile_corrections_made_before_finalization": [
+    {
+      "atoms": [
+        "R15ATOM-230a20681567ca791a70",
+        "R15ATOM-c4089e0dc0609c35a8dc"
+      ],
+      "change": "PARTIAL_ACCEPT -> WORKER_BLOCKED_NEEDS_VOZHD",
+      "reason": "same target did not establish one narrow common T11 proposition"
+    },
+    {
+      "scope": "T10 source-native objects with zero governed target/condition coordinate dimension",
+      "change": "REJECT -> WORKER_BLOCKED_NEEDS_VOZHD",
+      "reason": "missing coordinate authority cannot be negative matrix evidence"
+    }
+  ]
+}

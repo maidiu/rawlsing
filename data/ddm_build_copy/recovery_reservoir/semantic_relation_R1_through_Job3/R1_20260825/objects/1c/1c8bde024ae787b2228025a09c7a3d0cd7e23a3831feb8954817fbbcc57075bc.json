@@ -1,0 +1,51 @@
+{
+  "scan_scope": "ALL CURRENT R11 SOURCE OBJECTS IN S14W02; singleton governed semantic target+condition cells only; every within-object and same-wave two-object combination examined",
+  "source_object_count": 177,
+  "singleton_coordinate_cell_count": 64,
+  "matrix_hits": [
+    {
+      "source_family": "LiTS",
+      "wave": "IV",
+      "object_ids": [
+        "LITS-IV-GROUP-Q710",
+        "LITS-IV-GROUP-Q718"
+      ],
+      "object_labels": [
+        "q710",
+        "q718"
+      ],
+      "matrix_count": 1,
+      "matrices": [
+        {
+          "targets": [
+            "target__a_reliable_and_functional_device",
+            "target__fast_and_stable_internet_access"
+          ],
+          "conditions": [
+            "condition__a_child_s_online_schooling",
+            "condition__working_from_home"
+          ],
+          "cells": [
+            [
+              "target__a_reliable_and_functional_device",
+              "condition__a_child_s_online_schooling"
+            ],
+            [
+              "target__a_reliable_and_functional_device",
+              "condition__working_from_home"
+            ],
+            [
+              "target__fast_and_stable_internet_access",
+              "condition__a_child_s_online_schooling"
+            ],
+            [
+              "target__fast_and_stable_internet_access",
+              "condition__working_from_home"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "hit_count": 1
+}

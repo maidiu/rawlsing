@@ -1,0 +1,90 @@
+{
+  "register_id": "POST_G5_RUNTIME_20260816",
+  "created_date": "2026-08-16",
+  "governing_scope": "Runtime acceptance defects discovered after closure of the 20260815 67-issue V550-V552J repair register.",
+  "historical_register_mutation_forbidden": true,
+  "historical_register_path": "data/ddm_build_copy/issue_register/20260815",
+  "activation_policy": {
+    "current_phase": "V550_TO_V552J_SMOKE_STABILIZATION",
+    "current_blockers_may_only_cover": [
+      "V550",
+      "V550J",
+      "V551",
+      "V551J",
+      "V552",
+      "V552J",
+      "orchestration_and_boundary_contracts_required_to_run_those_stages"
+    ],
+    "v553_v558_findings": "Record immediately but keep DEFERRED until the V553->V558 vertical/horizontal phase begins.",
+    "deferred_findings_do_not_block_current_smokes": true
+  },
+  "current_smoke_status": {
+    "known_open_static_blockers_through_v552j": 0,
+    "next_action": "Run respondent-backed V550->V552J smokes and add any newly observed runtime defects to this register.",
+    "runtime_pass_not_yet_claimed": true
+  },
+  "issues": [
+    {
+      "issue_id": "POSTG5-001",
+      "boundary": "V550->V551",
+      "title": "directional_applicability_status dropped by schema-limited bridge serialization",
+      "status": "RESOLVED_MERGED",
+      "severity": "BLOCKING",
+      "evidence": "V550 computed authoritative applicability but V551_BRIDGE_INDEX_SCHEMA omitted the field, so persisted Parquet lacked a V551-required column.",
+      "resolution": "PR #24",
+      "merge_sha": "1e458666d5e48a2ffd30baf3b0c4d51762e27063"
+    },
+    {
+      "issue_id": "POSTG5-002",
+      "boundary": "V550->V551",
+      "title": "raw response direction is elided before V551 signed projection",
+      "status": "RESOLVED_MERGED",
+      "severity": "BLOCKING",
+      "evidence": "The V550 bridge previously blanked response_direction even when matched governed response-option semantics supplied an authoritative raw category direction; V551 then rejected otherwise applicable candidates for missing_certified_response_direction.",
+      "resolution": "PR #25 preserves already-governed raw response-category direction only for matched non-special direct-response rows, while leaving V551 sole owner of signed side/magnitude/projection.",
+      "merge_sha": "b4ee13cd14450a1fe83930cab8e4e3ceee453a74",
+      "blocks_next_smoke": false,
+      "validation_note": "Worker reported 25 focused tests passed; no respondent-backed canary was executed, and no repository workflow run was attached to the reviewed head SHA."
+    },
+    {
+      "issue_id": "POSTG5-003",
+      "boundary": "V550 response semantics->V551 scale authority",
+      "title": "response_semantics_contract_hash identity grain differs on the live-built response-map path",
+      "status": "RESOLVED_MERGED",
+      "severity": "BLOCKING",
+      "evidence": "The old live V550 builder used a whole-map digest as response_semantics_contract_hash, while V551 exact-matches row/question-level governed packet identities against a frozen 145-key registry.",
+      "resolution": "PR #26 separates map content identity from semantic-contract identity and binds 236 certified active question bindings to the exact inherited 145 frozen V551 contract keys, failing closed on unresolved/conflicting live semantics.",
+      "merge_sha": "395923ee9b1922452c3e54cb80598d5f60d9b92e",
+      "blocks_next_smoke": false,
+      "validation_note": "Worker reported a focused contract harness of 13 passed / 1 skipped (Parquet engine unavailable); no respondent-backed Lesotho smoke was claimed. Afrobarometer R1 has six explicit certified contract bindings for next-smoke preflight."
+    },
+    {
+      "issue_id": "POSTG5-004",
+      "boundary": "V552J->V553",
+      "title": "V553 wave harmonization still consumes the legacy V552J handoff-packet contract",
+      "status": "DEFERRED_UNTIL_V553_V558_VERTICAL_HORIZONTAL",
+      "severity": "DOWNSTREAM_BLOCKING_WHEN_ACTIVATED",
+      "evidence": "Canonical V552J publishes v552j_structural_join_index.parquet, v552j_v553_input_index.parquet, v552j_to_v553_handoff_index.parquet and v552j_v553_handoff_manifest.json, while V553 wave harmonization still attempts packets/v552j_structural_handoff_packet.json for structural/provenance context.",
+      "required_resolution": "Repair on the V553 consumer side when V553->V558 work begins; do not change V552J solely to satisfy the obsolete packet contract.",
+      "blocks_next_smoke": false
+    },
+    {
+      "issue_id": "POSTG5-005",
+      "boundary": "orchestration/legacy shadow paths",
+      "title": "retained legacy _impl and adapter contracts duplicate superseded stage interfaces",
+      "status": "DEFERRED_CLEANUP_NONBLOCKING",
+      "severity": "REGRESSION_RISK",
+      "evidence": "Several retained implementation helpers still encode obsolete V551/V552/V552J CLI or readiness contracts, but the governed public smoke wrapper currently overrides them.",
+      "required_resolution": "During vertical/horizontal consolidation, remove, hard-disable, or contract-test shadow entry paths so supported runtime cannot regress onto superseded interfaces.",
+      "blocks_next_smoke": false
+    }
+  ],
+  "nonissues_observed": [
+    {
+      "observation_id": "POSTG5-OBS-001",
+      "topic": "V550->V550J shared respondent substrate",
+      "disposition": "NO_CANONICAL_DEFECT_PROVEN",
+      "note": "Canonical joint-capable orchestration requests shared-substrate publication when joint authority applies. A direct/non-joint V550 invocation may legitimately omit it; such an artifact cannot later feed V550J without a joint-capable rerun."
+    }
+  ]
+}

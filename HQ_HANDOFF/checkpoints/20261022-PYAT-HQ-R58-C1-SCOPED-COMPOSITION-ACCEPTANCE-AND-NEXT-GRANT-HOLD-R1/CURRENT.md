@@ -1,0 +1,9 @@
+# R58 — C1 sourcefree combined native qualification accepted at scoped local grain
+
+2026-10-22; progress revision44; previous immutable R57 `953eb07ad29cc424b2fc43cfeb13ef83355f3a50`. Full competent HQ ruling `PYAT_CONTROL_ROOM/R58_C1_COMBINED_SOURCEFREE_LOCAL_COMPOSITION_HQ_INTAKE_AND_NEXT_GRANT_BOUNDARY_20261022.md`.
+
+R56 C1 exact reviewer `a54893657ba65e44c1049f763208b0b4b6ed5eb9`, assembly `a2aeb53b0a1e6abb93d4bb3d173007002fd7cf44`, test tree `11e8c05714741fbce167120e8f9bc9ed6890761e`. Independent sourcefree reviewer reported actual SAV/DTA→read-only decoder→R02 adapter→unchanged C11/I03 and R00 local gate 169pass 1skip, faults/restores; director `f910b067e8413d27c176cc83ddf71e6e83f6e56c` separately reconciled 30/30 SHA256/length. HQ primary evidence/compare inspected, did NOT rerun native. **ENGINEERING ACCEPT_SCOPED_LOCAL_COMPOSITION_COMPATIBILITY__NATIVE_PROMOTION_HOLD**; **SCIENCE** original35 0new / historical 1890 accounting; original U/E_pre UNISSUED; **AUTHORITY** no production adoption/CI/R08/R09 authenticated binding, source access, N11 or N12. C1 code remains candidate only and unmerged. Independent role provenance incomplete exact effort/session UNKNOWN.
+
+R56 first local flight complete at bounded candidate grain. R01/R08/local-R09 and conditional R03 next-code proposal `28_HQ_HANDBACK_AND_NEXT_NARROW_GRANT.md` is NOT newly granted. R04.joined held, J52/W52 USER_STOPPED, original source/method/FF/actor/CI rights held. Next organizational tasks are to prepare independent Pyat Codex-HQ accession eligibility (not appoint) and build/test isolated controller program (no live auto dispatch) under separately verified infra capability; Sorok remains independently commanded revision34.
+
+Succession pointer/manifest shall be readback-verified before seal; no automatic code workers, no deployment.

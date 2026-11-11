@@ -1,0 +1,37 @@
+{
+  "candidate_outputs_seen": 0,
+  "candidate_owned_roots_consulted": [],
+  "candidate_owned_state_reused": false,
+  "candidate_processes_started": 0,
+  "decoder_calls": 1,
+  "decoder_source_read_calls": [
+    {
+      "before_governed_decode": true,
+      "count": 1,
+      "operation": "streaming sha256 verification"
+    },
+    {
+      "count": 1,
+      "operation": "pyreadstat.read_dta metadataonly"
+    },
+    {
+      "count": 1,
+      "operation": "pyreadstat.read_dta full decode with latin1 compatibility"
+    },
+    {
+      "count": 1,
+      "operation": "raw DTA header prefix read"
+    }
+  ],
+  "execution_commit": "11d86982bd671674f4b320599a5ff18066e0e209",
+  "measurement_scope": "Exact user-space source read API calls on the qualified decoder path; OS syscall tracing was not performed.",
+  "schema": "FIABC_LITS_SOURCE_ACCESS_TELEMETRY@1.0.0",
+  "source_hash_open_count": 1,
+  "source_hash_passes": 1,
+  "source_open_api_calls": 4,
+  "source_rereads_after_hash": 3,
+  "source_rereads_after_source_pass": 0,
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "standalone_pre_hash_passes": 0,
+  "telemetry_source": "decoder control flow plus producer result/audit; no separate LiTS source scan was performed"
+}

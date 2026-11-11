@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "worker_id": "T06W02",
+  "continuation_pack_sha256_verified": "84603395f927270029f438185a7eb80c0d6929d1cb41eb94e51dfefe272f65b5",
+  "parent_t06_return": {
+    "path": "PARENT_T06_RETURN/Rawlsing_R10K_S14_T06W02_SourceFirst_Authority_Reconstruction_Return_20260812.zip",
+    "expected_sha256": "a937ed41ba4b5932e97a5f5b4ce748e6658dae2a754c78b0feb72f219898b7c2",
+    "actual_sha256": "a937ed41ba4b5932e97a5f5b4ce748e6658dae2a754c78b0feb72f219898b7c2",
+    "status": "PASS"
+  },
+  "source_native_authority": {
+    "expected_sha256": "e88cc035ca1d846e68ee208ec991f61f636d67ebbd19312057c8e44c37ff740d",
+    "actual_sha256": "e88cc035ca1d846e68ee208ec991f61f636d67ebbd19312057c8e44c37ff740d",
+    "status": "PASS"
+  },
+  "non_return_manifest_checks": [
+    {
+      "relative_path": "00_README_FIRST.md",
+      "expected_sha256": "a3cc78acc5b8e951d071fe94267220be51514bb2c4b3b5f5b7d00d85c07eb46a",
+      "actual_sha256": "a3cc78acc5b8e951d071fe94267220be51514bb2c4b3b5f5b7d00d85c07eb46a",
+      "size_bytes": 3814,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "AUTHORITY/ASSIGNED_T06_CALIBRATION_SLICE.csv",
+      "expected_sha256": "adec569a96a3c58a380a7750c88ae321f65ea71e0da9602c9f5d35b1c7fb7b58",
+      "actual_sha256": "adec569a96a3c58a380a7750c88ae321f65ea71e0da9602c9f5d35b1c7fb7b58",
+      "size_bytes": 8067,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "AUTHORITY/NORMALIZED_PRIOR_T06_IMPLEMENTATION_ACCOUNTING.csv",
+      "expected_sha256": "113f3d3eadbd2cd9b7144ac7ac3af5278ac1739d962ce02dc94ec09a24faf4b7",
+      "actual_sha256": "113f3d3eadbd2cd9b7144ac7ac3af5278ac1739d962ce02dc94ec09a24faf4b7",
+      "size_bytes": 1416322,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "AUTHORITY/S14_T15_NORM_PRACTICAL_REALIZATION_CONTRACT_R1.md",
+      "expected_sha256": "083a285c09743d8f512d8c263d2dd6004506dc1709514984fdaca22b24b90561",
+      "actual_sha256": "083a285c09743d8f512d8c263d2dd6004506dc1709514984fdaca22b24b90561",
+      "size_bytes": 7359,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "AUTHORITY/T15_CALIBRATION_CANARIES_R1.csv",
+      "expected_sha256": "5060de2352158c270bbfb151cf3b56620197e3456987974acee7dbad75886ba1",
+      "actual_sha256": "5060de2352158c270bbfb151cf3b56620197e3456987974acee7dbad75886ba1",
+      "size_bytes": 2172,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "AUTHORITY/T15_POSITIVE_AUTHORITY_SCHEMA_R1.csv",
+      "expected_sha256": "699d0560f273e60de4e5aaeb6f3a6575d7c3c29f99e73457316dc256681690bd",
+      "actual_sha256": "699d0560f273e60de4e5aaeb6f3a6575d7c3c29f99e73457316dc256681690bd",
+      "size_bytes": 768,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "PARENT_T06_RETURN/Rawlsing_R10K_S14_T06W02_SourceFirst_Authority_Reconstruction_Return_20260812.zip",
+      "expected_sha256": "a937ed41ba4b5932e97a5f5b4ce748e6658dae2a754c78b0feb72f219898b7c2",
+      "actual_sha256": "a937ed41ba4b5932e97a5f5b4ce748e6658dae2a754c78b0feb72f219898b7c2",
+      "size_bytes": 246440,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "WORKER_SCOPE.json",
+      "expected_sha256": "bd5c953f51ed29cc348da30e80a0567a94b9c40a7cb24c2b8a8b6f4b6f20bd50",
+      "actual_sha256": "bd5c953f51ed29cc348da30e80a0567a94b9c40a7cb24c2b8a8b6f4b6f20bd50",
+      "size_bytes": 1049,
+      "status": "PASS"
+    },
+    {
+      "relative_path": "validate_return.py",
+      "expected_sha256": "24f2577d37c08c0ca692a5d2875223048ca79a9aa4a628279ef65b9622ead7d0",
+      "actual_sha256": "24f2577d37c08c0ca692a5d2875223048ca79a9aa4a628279ef65b9622ead7d0",
+      "size_bytes": 5552,
+      "status": "PASS"
+    }
+  ],
+  "note": "All continuation-pack files outside RETURN remain byte-identical to their original SHA256_MANIFEST entries. The enclosed parent T06 return was not modified."
+}

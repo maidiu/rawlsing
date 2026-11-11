@@ -1,0 +1,57 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261003-PYAT-HQ192-R7-CLOSED-HOST-PREFLIGHT-R9-A2-WAVE-R1",
+  "governing_decision": "HQD-2026-10-03-192",
+  "status": "R7_CLOSED__HOST_PREFLIGHT_BLOCKER_SUBSTITUTED__R9_REMAINS__A2_HOSTILE_REVIEW_BOUND",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "r7": {
+    "hostile_review_tip": "b0169b1ceb79e7e8b918e643d5164ec15f67dae5",
+    "status": "CLOSED",
+    "former_live_blocker_removed": true
+  },
+  "live_execution": {
+    "blocker_count": 1,
+    "blocker": "HOST-PREFLIGHT-F3-DISK-CAPACITY-VOLATILITY",
+    "host_preflight_branch": "agent/rabochii-pyat-hq192-host-preflight-remediation-r1",
+    "commission_tip": "f4db1192c5dd2962c93cf9b726c8835f922ad6e7"
+  },
+  "r9": {
+    "return_tip": "1067828d75f3eab483e9b2a95e4b3ef703661118",
+    "disposition": "R9_PARTIAL__SPECIFIC_ACCOUNTS_STILL_UNGOVERNABLE",
+    "blocker_remains": true,
+    "successor_branch": "agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1",
+    "commission_tip": "fdaf71c4c08d3f21778eeab335b5b928cc78fb7b"
+  },
+  "a2": {
+    "return_tip": "4b0b33102998abf9ce29fc0e584e278c85a44fe7",
+    "substantive_result": "50829fd0fba24eefd457abeb3cba4cd365460296",
+    "dispatcher_blob": "2db72c887b032622e09da6a5bd7723f7fb7055ee",
+    "adopted": false,
+    "review_branch": "agent/reviewer-pyat-hq192-a2-dispatcher-unattended-hostile-review-r1",
+    "commission_tip": "ce1574030e1136e29b093e2743d8b8e77f465f03"
+  },
+  "c4": {
+    "freeze_blockers": 0,
+    "warrant_blockers": 1,
+    "live_execution_blockers": 1,
+    "live_blocker_type": "HOST_PREFLIGHT_DISK",
+    "advisories": 9,
+    "counterexamples": 1,
+    "adopted": false,
+    "hq182_hold_lifted": false
+  },
+  "active_lanes": {
+    "review": "agent/reviewer-pyat-hq192-a2-dispatcher-unattended-hostile-review-r1",
+    "implementer_1": "agent/rabochii-pyat-hq192-host-preflight-remediation-r1",
+    "implementer_2": "agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1"
+  },
+  "held": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "LAUNCH_HQ192_A2_REVIEW_HOST_PREFLIGHT_R9_OS_ACCOUNTING_IN_PARALLEL__ROUTE_C4_PACKET_TO_RESERVED_ASTRA"
+}

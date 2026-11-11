@@ -1,0 +1,96 @@
+{
+  "schema": "RAWLSING_HQ_CURRENT_POST_SPLIT_R2_PROMOTION_PRE_MACHINE_READINESS@1.0.0",
+  "checkpoint_id": "20260925T2059-0400",
+  "status": "SPLIT_R2_FANIN_ADOPTED__CANONICAL_SPLIT_CONTROL_PROMOTED__FRESH_MACHINE_READINESS_NEXT__NO_MEASUREMENT_AUTHORIZED",
+  "governing_decision": "HQD-2026-09-25-105",
+  "semantic_pre_main_tip": "2c0ca4a34925278b83b12a2644a87948acfe37d9",
+  "protected_execution": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
+  },
+  "canonical_split_control": {
+    "branch": "agent/vozhd-fiabc-source-split-alternate-runner-r1",
+    "qualified_implementation_head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e"
+  },
+  "split_fanin": {
+    "branch": "agent/vozhd-fiabc-split-r2-fanin-r1",
+    "evidence_docs_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
+    "qualified_implementation_head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e"
+  },
+  "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+  "successor_binding": {
+    "path": "WORKER_RETURNS/EE-P2X/10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json",
+    "git_blob_sha1": "247725e51ed141cf31c112084590b69953765032"
+  },
+  "split_reuse_contract": {
+    "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/08_SPLIT_REUSE_CONTRACT.json",
+    "git_blob_sha1": "1a3ac01732fafb6a9a1c3e560156ed245fc3fb6b"
+  },
+  "exact_runtime": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
+    "system": "Darwin",
+    "machine": "x86_64"
+  },
+  "canonical_source_sha256": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "equivalence_verdicts": {
+    "LITS_I": "LITS_SPLIT_RUNNER_EQUIVALENT_TO_JOINED_SOURCE_SEGMENT__PASS",
+    "WVS7": "WVS7_SPLIT_RUNNER_EQUIVALENT_TO_JOINED_SOURCE_SEGMENT__PASS"
+  },
+  "qualification": {
+    "fan_in_tests_passed": 102,
+    "fan_in_subtests_passed": 65,
+    "protected_joined_successor_tests_passed": 86,
+    "zero_execution_status": "PASS__ZERO_SOURCE_AND_CANDIDATE_EXECUTION",
+    "synthetic_simple_test_only_process_probes": 10
+  },
+  "active_workers": [],
+  "dependency_graph": {
+    "SPLIT_R2_FANIN": {
+      "status": "DONE_PASS",
+      "wake": "CANONICAL_SPLIT_CONTROL_PROMOTION"
+    },
+    "CANONICAL_SPLIT_CONTROL_PROMOTION": {
+      "status": "DONE",
+      "head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e",
+      "wake": "FRESH_DUAL_MACHINE_READINESS"
+    },
+    "FRESH_DUAL_MACHINE_READINESS": {
+      "status": "READY_NEXT_GATE",
+      "prerequisites": [
+        "protected_execution",
+        "canonical_split_control",
+        "physical_epoch",
+        "exact_runtime",
+        "canonical_source_sha256",
+        "clean_checkouts",
+        "fresh_empty_work_roots"
+      ],
+      "prohibited_early_actions": [
+        "MEASURED_P2X",
+        "CANDIDATE_EXECUTION_BEFORE_EXPLICIT_HQ_LAUNCH"
+      ]
+    },
+    "PAIR_VERIFICATION": {
+      "status": "BLOCKED_PENDING_FRESH_MACHINE_READINESS"
+    },
+    "MEASURED_COURT": {
+      "status": "BLOCKED_PENDING_PAIR_PASS_AND_EXPLICIT_HQ_AUTHORIZATION"
+    },
+    "POSTRUN_EVIDENCE_MERGE": {
+      "status": "DORMANT_UNTIL_MEASURED_SOURCE_TERMINALS"
+    },
+    "P2_COMPARISON": {
+      "status": "BLOCKED_UNTIL_LAWFUL_POST_MERGE_COURT"
+    }
+  },
+  "measured_execution_authorized": false,
+  "next_action": "FRESH_DUAL_MACHINE_READINESS__THEN_PAIR_VERIFY__THEN_SEPARATE_EXPLICIT_HQ_MEASUREMENT_AUTHORIZATION"
+}

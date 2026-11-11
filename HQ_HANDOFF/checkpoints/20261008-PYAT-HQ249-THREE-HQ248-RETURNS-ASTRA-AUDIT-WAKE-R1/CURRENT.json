@@ -1,0 +1,128 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.1.0",
+  "checkpoint_id": "20261008-PYAT-HQ249-THREE-HQ248-RETURNS-ASTRA-AUDIT-WAKE-R1",
+  "decision": "HQD-2026-10-08-249",
+  "date": "2026-10-08",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261008-PYAT-HQ248-F7-R2-REFCOUNT-N10E-PLACEMENT-HOLD-R1",
+  "inherited_handoff_commit": "91595263d2888091e1f28af1ed38429b7c02966f",
+  "returns": [
+    {
+      "lane": "HQ248_F7_R3_REFCOUNT_REPAIR",
+      "commission_tip": "8902013902ffcc8a6f936fb184a11320a57011ed",
+      "head": "8df99878f7947ac7966f0182ddb2c18424c1c9ae",
+      "disposition": "F7_R3_MEMORY_REPAIR_PARTIAL__NAMED_DEFECT",
+      "hq_adjudication": "ACCEPT_CONDITIONAL_AUTHOR_RUNTIME_EVIDENCE_NO_INDEPENDENT_SECURITY_ADOPTION",
+      "new_stage_b_blob": "253fbafeb5b6596a5afec0354b76b5ca9444baee",
+      "residual": "HQ248-OPEN-001_ADMISSION_PER_OWNER_CONSTRUCTION_LEAK"
+    },
+    {
+      "lane": "HQ248_F7_T1_TRUST_INGRESS_DOCUMENTARY",
+      "commission_tip": "ad320e05bf3f7ed75bca51e62e3b044da5d8c535",
+      "head": "58934231d6e5bc895f937b069433237f7edce594",
+      "disposition": "F7_T1_PRODUCTION_TRUST_INGRESS_DOCUMENTARY_DESIGN_READY__NOT_IMPLEMENTED",
+      "hq_adjudication": "DOCUMENTARY_DESIGN_AS_PROPOSAL_ONLY__TRANSITIVE_MUTABLE_GLOBALS_TCB_RISK"
+    },
+    {
+      "lane": "HQ248_N10E_C1_LOCAL_TRUST_FEASIBILITY",
+      "commission_tip": "9716656ee47fb04bf8bd6e842982d78b6490cca8",
+      "head": "e64379e542b931df1e7df47f1b37955a1cb9a3a9",
+      "disposition": "BLOCKED",
+      "hq_adjudication": "ACCEPT_LOCAL_SEPARATE_VERIFIER_ADMINISTRATOR_NEGATIVE_ONLY__NO_ROOT_OR_DEPLOYMENT",
+      "reverted_acl_probe": "WORKER_SELF_REPORTED_NOT_INDEPENDENTLY_VERIFIED"
+    }
+  ],
+  "adopted_warrant": {
+    "status": "ADOPTED_PROSPECTIVE_DOCUMENTARY_ONLY",
+    "decision_record": "PYAT_CONTROL_ROOM/C1_AT07_FIXTURE_ISSUER_WARRANT_HQ247_ADOPTED/00_EXPLICIT_GOVERNANCE_ADOPTION.json",
+    "control_adoption_commit": "b5de9ef902abfecba2d1631212810b55bde46a2e",
+    "candidate_author_commit": "338aa789dd20d04c83175a6593172fee4b61c078",
+    "warrant_blob": "d1c835119a08bb27124c87b15485d6b83b91659f",
+    "independent_review": "d659b5462c25be347d67f5a4f9873f5f1f645fc9",
+    "operational_issuer_active": false,
+    "root_approved": false,
+    "verifier_installed": false,
+    "registrar_credential_issued": false,
+    "model_R4_adopted": false,
+    "i01_current_kinds": 18
+  },
+  "active_workers": [],
+  "dependency_graph": [
+    {
+      "id": "ASTRA_PREV3_FUNCTIONAL_ENDGAME_DELTA_AUDIT",
+      "status": "PREPARED_NEW_NEEDS_LAUNCH__HQ249_GATE_OPEN",
+      "prerequisites": [
+        "HQ249_THREE_HQ248_RETURN_INTAKE_COMPLETE",
+        "SEPTEMBER_ASTRA_ATLAS_INHERITED"
+      ],
+      "pass_wake": "P0_ECONOMICAL_MODEL__BANK_AND_HARD_STOP_FOR_P1_ASTRA",
+      "prohibited_early": [
+        "SKIP_MODEL_SWITCH",
+        "SELF_ADOPT_AUDIT",
+        "PRODUCTION_SOURCE_CODE_MUTATION",
+        "UNAUTHORIZED_RAW_SOURCE_EXECUTION"
+      ]
+    },
+    {
+      "id": "F7_R3_NATIVE_CONSTRUCTION_LEAK_AND_SECURITY",
+      "status": "DEFER_NEW_ENGINEERING_DISPATCH_UNTIL_ASTRA_GLOBAL_DEPENDENCY_AUDIT",
+      "prerequisites": [
+        "NEW_OWNER_ADMISSION_LEAK_REPAIR",
+        "NEW_EXACT_SHA_INDEPENDENT_NATIVE_REVIEW",
+        "AUTHENTIC_T1_PRODUCTION_TRUST_BOUNDARY",
+        "REAL_F7_FOUR_FORGERIES_FIVE_POSITIVES"
+      ],
+      "pass_wake": "DISTINCT_FUTURE_HQ_OWNER_NATIVE_COMMISSIONS_IF_ASTRA_OR_PRIORITY_JUSTIFIES",
+      "prohibited_early": [
+        "STAGE_C",
+        "F7_RR_04G_CLOSE",
+        "P07_F7_NATIVE_IMPORT",
+        "ACTOR_V3"
+      ]
+    },
+    {
+      "id": "N10E_LOCAL_OWNER_ROOT_ACTIVATION",
+      "status": "BLOCKED__NO_INDEPENDENT_VERIFIER_CONTROL_THIS_MAC",
+      "prerequisites": [
+        "INDEPENDENT_VERIFIER_CONTROL_OR_APPROVED_OTHER_TRUST_TOPOLOGY",
+        "HQ_EXPLICIT_REAL_OWNER_DESIGNATION",
+        "OWNER_ROOT_PROPOSAL",
+        "HQ_ROOT_APPROVE",
+        "OWNER_INSTALL",
+        "INDEPENDENT_VERIFIER_ACK"
+      ],
+      "pass_wake": "DISTINCT_HQ_EPOCH_ACTIVATION_AFTER_HUMAN_TRUST_PROOF",
+      "prohibited_early": [
+        "ISSUER_ROOT_ACTIVATION",
+        "CREDENTIAL",
+        "R4_MODEL",
+        "NEW_I01_KIND",
+        "DIRECT_C1_TO_N10E_REGISTRATION"
+      ]
+    }
+  ],
+  "holds": {
+    "f7": "F7_RR_04G_OPEN__R3_DECIDE_LEAK_REPAIRED_AUTHOR_REPORTED_ONLY__R3_ADMISSION_LEAK_OPEN__T1_UNIMPLEMENTED_UNTRUSTED_CALLBACKS_AND_MUTABLE_TRANSITIVE_GLOBALS",
+    "n10e": "DOCUMENTARY_R3_WARRANT_ADOPTED_ONLY__THIS_MAC_CANNOT_PROVE_SEPARATE_VERIFIER_ADMINISTRATOR__NO_ROOT_EPOCH_CREDENTIAL_R4",
+    "other": "NO_I01_19TH_KIND__NO_REAL_SOURCE_35_WAVE_PREV3_WORLD_COMPLETION__NO_F8_ACTOR_V3"
+  },
+  "next_action": "LAUNCH_ASTRA_P0_FROM_HQ249__NO_MORE_DEFAULT_F7_N10E_ENGINEERING_WAVE",
+  "parked_lanes": [],
+  "prepared_audit": {
+    "id": "ASTRA_HQ247_FUNCTIONAL_ENDGAME_DELTA_R1",
+    "branch": "agent/astra-pyat-hq247-functional-endgame-delta-audit-r1",
+    "status": "NEW_NEEDS_LAUNCH__HQ249_ACTIVATION_GATE_OPEN",
+    "commission": "WORKER_COMMISSIONS/ASTRA-PYAT-HQ247-FUNCTIONAL-ENDGAME-DELTA-AUDIT-R1/00_COMMISSION.md",
+    "phase_order": [
+      "P0_SOL_HIGH_DELTA",
+      "P1_ASTRA_HIGHEST_HOSTILE",
+      "P2_SOL_HIGH_VERIFICATION",
+      "P3_ASTRA_HIGHEST_ARBITRATION"
+    ],
+    "mandatory_hard_stops": true,
+    "model_switch_human_only": true,
+    "git_checkpoint_required_each_phase": true,
+    "prior_issuance_base_not_current_authority": true
+  }
+}

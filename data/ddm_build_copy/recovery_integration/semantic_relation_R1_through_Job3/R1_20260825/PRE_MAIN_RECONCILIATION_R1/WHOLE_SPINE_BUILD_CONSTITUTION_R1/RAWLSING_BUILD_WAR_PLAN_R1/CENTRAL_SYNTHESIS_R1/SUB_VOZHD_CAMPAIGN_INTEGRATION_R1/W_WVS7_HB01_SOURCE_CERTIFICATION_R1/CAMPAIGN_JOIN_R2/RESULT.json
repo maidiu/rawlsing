@@ -1,0 +1,46 @@
+{
+  "schema": "WVS7_HB01_TWO_LANE_JOIN_R2",
+  "status": "SOURCE_LOCAL_RUNTIME_GATE_PASS__POPULATION_OVERLAY_REMAINS_SEPARATE",
+  "terminal": "WVS7_HB01_SOURCE_LOCAL_RUNTIME_GATE_COMPLETE__66_OF_66__97220_RESPONDENTS__POPULATION_CERTIFICATION_AND_ROUTING_SEPARATE__READY_FOR_HQ_CONSUMPTION",
+  "canonical_source_local_contract": {
+    "commit": "0712ef462e8c442231fb2071bc9a7ec2292c4b4e",
+    "contract": "SOURCE_LOCAL_EMPIRICAL_UNIVERSE_ADMISSION_R1@1.0.0"
+  },
+  "wvs7_source_local": {
+    "producer": "587f37904c6d47c90011efc97ad44b8cd225e781",
+    "qualification_tree": "cb2d45e755f95201a8cc314a9fd1624463e3acdd",
+    "workflow_run_id": 34409312146,
+    "scopes": 66,
+    "respondents": 97220,
+    "authorities": 66,
+    "universes": 66,
+    "state": "PASS"
+  },
+  "negative_limits": [
+    "NO_POPULATION_GENERALIZATION",
+    "NO_WEIGHTED_POPULATION_ESTIMAND_UNLESS_SEPARATELY_AUTHORIZED",
+    "NO_CROSS_UNIVERSE_POOLING_WITHOUT_RELATION_AUTHORITY",
+    "NO_NEAREST_COUNTRY_OR_WAVE_BACKFILL"
+  ],
+  "population_overlay": {
+    "state": "SEPARATE_INCOMPLETE_NONBLOCKING_FOR_SOURCE_LOCAL_RAW_USE",
+    "partial_recovery_candidate": "f70d8024e89d332c0d678e704eb3e45abd3af5cb",
+    "romania_target": "RECOVERED_SOURCE_OWNER_AUTHORITY",
+    "new_zealand_target": "RECOVERED_SOURCE_OWNER_AUTHORITY",
+    "ukraine_frame": "EXACT_DOCUMENT_IDENTIFIED__BODY_TRANSPORT_BLOCKED"
+  },
+  "routing_d03": {
+    "state": "HQ_CERTIFIED_PROJECTION_SCOPE_DECISION_REQUIRED",
+    "unresolved": 222,
+    "total": 585,
+    "person_position_targets_unknown": 9
+  },
+  "not_released": [
+    "WEIGHTED_POPULATION_USE",
+    "CROSS_UNIVERSE_POOLING",
+    "HB05",
+    "HB06",
+    "HB07",
+    "C09"
+  ]
+}

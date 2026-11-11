@@ -1,0 +1,241 @@
+registry_version: bounded-r184-v1
+source_family: GSS
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-GSS-ABORTION-CONDITIONS
+  family_type: conditional_attitude_battery
+  family_structure_type: conditional_attitude_battery
+  expected_multi_target: false
+  family_label: GSS abortion-condition control
+  eligible_waves:
+  - '2010'
+  minimum_items_answered: 3
+  boundary_rules:
+  - boundary_pattern_type: broad_support
+    support_share_min: 0.75
+    oppose_share_max: 0.25
+  - boundary_pattern_type: broad_opposition
+    oppose_share_min: 0.75
+    support_share_max: 0.25
+  - boundary_pattern_type: exception_support_elective_opposition
+    require_all:
+    - role: exception_case
+      semantic_response_role: support
+    - role: elective_case
+      semantic_response_role: oppose
+    optional_modifiers:
+    - social_condition
+    - family_size_condition
+    - economic_condition
+  response_role_rules:
+  - applies_to_roles:
+    - exception_case
+    - elective_case
+    - social_condition
+    - family_size_condition
+    - economic_condition
+    response_value_normalized: '1'
+    semantic_response_role: support
+    response_direction: positive
+    polarity: positive
+    directionality_status: manually_authorized_directionality
+    directionality_authority_source: question_family_registry.response_role_rules
+    validated_waves:
+    - '1972'
+    - '1973'
+    - '1982'
+    - '1984'
+    - '1993'
+    - '2002'
+    - '2004'
+    - '2010'
+    - '2014'
+    - '2016'
+    - '2024'
+    expected_response_label_contains_any:
+    - 'yes'
+    - allow
+    - legal
+    - favor
+    - approve
+    - support
+    - not remove
+    - retain
+    expected_response_label_regex: (?i)^(yes|allow|legal|favor|approve|support|okay|ok|not
+      remove|retain)
+    codebook_contract_id: manually_verified_gss_codebook
+    allow_unlabeled_numeric_fallback: true
+    numeric_fallback_authority: manually_verified_gss_codebook
+  - applies_to_roles:
+    - exception_case
+    - elective_case
+    - social_condition
+    - family_size_condition
+    - economic_condition
+    response_value_normalized: '2'
+    semantic_response_role: oppose
+    response_direction: negative
+    polarity: negative
+    directionality_status: manually_authorized_directionality
+    directionality_authority_source: question_family_registry.response_role_rules
+    validated_waves:
+    - '1972'
+    - '1973'
+    - '1982'
+    - '1984'
+    - '1993'
+    - '2002'
+    - '2004'
+    - '2010'
+    - '2014'
+    - '2016'
+    - '2024'
+    expected_response_label_contains_any:
+    - 'no'
+    - not
+    - oppose
+    - disallow
+    - against
+    - reject
+    - ban
+    expected_response_label_regex: (?i)^(no|not|oppose|disallow|against|reject|ban|illegal|forbid)
+    codebook_contract_id: manually_verified_gss_codebook
+    allow_unlabeled_numeric_fallback: true
+    numeric_fallback_authority: manually_verified_gss_codebook
+  target_resolution_rules:
+  - applies_to_roles:
+    - exception_case
+    - elective_case
+    - social_condition
+    - family_size_condition
+    - economic_condition
+    target_entity_id: abortion_permission
+    target_domain: reproductive_moral_regulation
+    permission_domain: abortion_permission
+    target_entity_from: fixed
+    target_condition_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: family_registry_resolved_condition
+    target_resolution_authority_source: question_family_registry.target_resolution_rules
+    target_resolution_basis_source: question_family_registry.item_role_groups
+  item_role_groups:
+    exception_case:
+    - var_code: abdefect
+      condition_label: fetal_defect
+      item_role: condition_item
+      joint_configuration_adjudication_id: V550JADJ-0005
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_639a0997464b39d19a7eb44f
+      question_implementation_id: question_impl.phase0.8da159b3ddb964ba6920
+      p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    - var_code: abhlth
+      condition_label: woman_health
+      item_role: condition_item
+      joint_configuration_adjudication_id: V550JADJ-0005
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_6eb15213aa7dc0324c5767d8
+      question_implementation_id: question_impl.phase0.dc8a1f84391d374d3994
+      p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    - var_code: abrape
+      condition_label: rape
+      item_role: condition_item
+      joint_configuration_adjudication_id: V550JADJ-0005
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_7327e9857bf33d69a3737e87
+      question_implementation_id: question_impl.phase0.6bd976214617dc817176
+      p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    elective_case:
+    - var_code: abany
+      condition_label: any_reason
+      item_role: condition_item
+      joint_configuration_adjudication_id: V550JADJ-0005
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_ad9d097fefd6086c987c98fa
+      question_implementation_id: question_impl.phase0.1569f26ce284ee346a1c
+      p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    social_condition:
+    - var_code: absingle
+      condition_label: unmarried
+      item_role: condition_item
+      joint_configuration_adjudication_id: V550JADJ-0005
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_88c9ec1cabb9e2b4cf482110
+      question_implementation_id: question_impl.phase0.bbbde435f9f054f959b6
+      p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    family_size_condition:
+    - var_code: abnomore
+      condition_label: no_more_children
+      item_role: condition_item
+      joint_configuration_adjudication_id: V550JADJ-0005
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_5664ff0044b0691645d96b3b
+      question_implementation_id: question_impl.phase0.7555028a2eafddb1c875
+      p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  joint_configuration_id: JCFG-GSS-ABORTION-CONDITIONS
+  source_family: GSS
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: existing_registry_structure::gss_abortion_condition_family::2010
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    inherited_registry_family_id: gss_abortion_condition_family
+    joint_configuration_adjudication_id: V550JADJ-0005
+    joint_configuration_decision_status: ACCEPTED_EXISTING_GSS_EXECUTABLE_CONTROL
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p2_authority_effect: EXISTING_GSS_IMPLEMENTATION_REFERENCE
+    adjudication_rationale: This is the previously executable GSS abortion-condition
+      family, narrowed to the six exact variables present in the bounded 2010 fixture
+      and retained as the control implementation.
+    authorized_inference: Existing GSS conditional-attitude joint pattern semantics
+      for the listed items.
+    forbidden_inferences:
+    - extension beyond listed variables
+    - cross-source portability
+    - automatic binding to a single P3 proposition family
+registry_content_hash: 26cd8d5cad9cfa05ee70dc2f4f006e45030394aee79abc7c7f15c30332b7ca5a

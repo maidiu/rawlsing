@@ -1,0 +1,60 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_primary_actual_formation_read_later_and_no_mediator_control _______
+
+tmp_path = PosixPath('/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pytest-of-matthewsmith/pytest-146/test_primary_actual_formation_0')
+
+    def test_primary_actual_formation_read_later_and_no_mediator_control(tmp_path: Path) -> None:
+        case = build_case(tmp_path)
+        control = build_case(tmp_path / "control", history_outcomes=())
+        try:
+            first, second, final = first_two_batch_results(case)
+            assert len(batch_events(first)) == 3
+            assert len(batch_events(second)) == 3
+            assert [row["mode"] for row in case.provider.calls] == [
+                "BOOTSTRAP", "ORDINARY", "TERMINAL"]
+            assert len(case.provider.calls) == 3
+    
+            formation = batch_events(first)[0]
+            recruit = batch_events(first)[1]
+            assert formation["accessible"]["status"] == "OBSERVED"
+            formation_response = response_for(formation)
+            assert formation_response["status"] == "COMPUTED_TEST_ONLY_RESPONSE"
+            formed = workflow_records(case.owner, formation["after"]["clock"])
+            assert len(formed) == 2
+            assert {row["payload"]["mode"] for row in formed} == {
+                "joint_check", "private_check"}
+            formed_hashes = {row["hash"] for row in formed}
+            recruit_response = response_for(recruit)
+            assert recruit_response["status"] == "COMPUTED_TEST_ONLY_RESPONSE"
+            stream_records = {
+                row["record_hash"] for row in recruit_response["streams"]
+                if row.get("record_hash")
+            }
+            assert stream_records == formed_hashes
+            assert set(recruit["readset"]) & formed_hashes
+            assert recruit_response["native_action"] == "NOT_ISSUED_BY_P3_RULE"
+            assert all(row["native_action_performed"] is False
+                       for row in recruit_response["streams"])
+            material = recruit["consequences"]["immediate_response"][
+                "objective_material_eligible"]
+            assert all(row["material_eligible"] == material
+                       for row in recruit_response["streams"])
+    
+            ctl_first, ctl_second, _ = first_two_batch_results(control)
+            ctl_recruit = batch_events(ctl_first)[1]
+            ctl_response = response_for(ctl_recruit)
+            assert [row["mode"] for row in ctl_response["streams"]] == ["inspect_alone"]
+            assert response_for(recruit) != ctl_response
+            assert control.owner.store.head()["count"] == 0
+    
+            production = test_rules.production_guard()
+            assert production["status"] == "DENY_ZERO_EFFECT"
+            assert production["effects"] == []
+>           assert final["batch_id"] != second["batch_id"]
+E           AssertionError: assert 'batch-000002' != 'batch-000002'
+
+WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py:106: AssertionError
+=========================== short test summary info ============================
+FAILED WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control
+1 failed in 448.23s (0:07:28)

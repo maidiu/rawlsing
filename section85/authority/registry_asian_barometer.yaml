@@ -1,0 +1,86 @@
+registry_version: bounded-r184-v1
+source_family: Asian Barometer
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-ASIAN-W1-CHANGE-EVALUATION
+  joint_configuration_id: JCFG-ASIAN-W1-CHANGE-EVALUATION
+  source_family: Asian Barometer
+  family_type: parallel_change_evaluation_configuration
+  family_structure_type: parallel_change_evaluation_configuration
+  expected_multi_target: true
+  family_label: Asian Barometer change-evaluation pair
+  eligible_waves:
+  - W1
+  minimum_items_answered: 2
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: asian_barometer_struct_run_634ba9e4e52393e941
+    p2_authority_effect: P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY
+    joint_configuration_adjudication_id: V550JADJ-0003
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    adjudication_rationale: Both items belong to the same source-native before-versus-now
+      evaluation run and share the evaluation response topology, while asking distinct
+      change propositions.
+    authorized_inference: Unsigned respondent-level change-evaluation configuration.
+    forbidden_inferences:
+    - single latent progress score
+    - proposition identity
+    - signed scoring absent certified directionality
+    - cross-source portability
+  item_role_groups:
+    distributional_change_evaluation:
+    - var_code: q109
+      condition_label: The gap between the rich and the poor have narrowed- is better
+        than before?
+      joint_configuration_adjudication_id: V550JADJ-0003
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_19fe794a87717b8dae330eb9
+      question_implementation_id: question_impl.phase0.1aa835e96521cd77610a
+      p2_source_structure_id: asian_barometer_struct_run_634ba9e4e52393e941
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    economic_development_change_evaluation:
+    - var_code: q111
+      condition_label: Economic development- is better than before?
+      joint_configuration_adjudication_id: V550JADJ-0003
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_ec4159986a38e8cc0901a3cd
+      question_implementation_id: question_impl.phase0.01c9f7cc9b2a8a95be02
+      p2_source_structure_id: asian_barometer_struct_run_634ba9e4e52393e941
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+  - applies_to_roles:
+    - distributional_change_evaluation
+    - economic_development_change_evaluation
+    target_entity_template: jcfg-asian-w1-change-evaluation_{condition_label}
+    target_domain: parallel_change_evaluation_configuration
+    target_group_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: bounded_registry_resolved_item
+    target_resolution_authority_source: bounded_v550j_registry.item_role_groups
+    target_resolution_basis_source: P2 source structure plus exact source-wave variable
+      binding
+  boundary_rules: []
+registry_content_hash: 986246f6d5782e5375063f4308ee046272a3b4676d48b49bb7e2d941678aba37

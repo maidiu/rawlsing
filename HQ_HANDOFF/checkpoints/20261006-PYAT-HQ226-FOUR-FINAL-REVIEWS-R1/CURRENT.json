@@ -1,0 +1,38 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261006-PYAT-HQ226-FOUR-FINAL-REVIEWS-R1",
+  "decision": "HQD-2026-10-06-226",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "lanes": [
+    {
+      "id": "F7_FINAL_REREVIEW",
+      "branch": "agent/reviewer-pyat-hq226-f7-resolver-authenticity-final-rereview-r1",
+      "commission_tip": "2768e28eb12834884e7cd1b8108a5a7d2ef029e5",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "N10E_FINAL_REREVIEW",
+      "branch": "agent/reviewer-pyat-hq226-n10e-owner-authentic-lifecycle-final-rereview-r1",
+      "commission_tip": "46a66533b26f37c6ee261ddb0c35e9099df1bacf",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "V555_POSITION_TERMINALITY_REVIEW",
+      "branch": "agent/reviewer-pyat-hq226-v555-gt2-position-binding-terminality-r1",
+      "commission_tip": "cbb02958fcafb8390c0cfa058602657eab772a3f",
+      "model_intelligence": "GPT-5.6 Sol High"
+    },
+    {
+      "id": "V555_B1_CONTEXT_TERMINUS_REVIEW",
+      "branch": "agent/reviewer-pyat-hq226-v555-gt2-b1-context-terminus-r1",
+      "commission_tip": "0724ad2398eff04aa16dda2ee7d039c2521a504e",
+      "model_intelligence": "GPT-5.6 Sol High"
+    }
+  ],
+  "holds": [
+    "V555_GT2_STRUCTURAL_CHANNEL_DERIVATION",
+    "V555_GT2_ROUTE_STATIC_CLOSURE_DERIVATION",
+    "V555_SIG004_IMPLEMENTATION"
+  ],
+  "next_action": "RUN_ALL_FOUR_REVIEWS_IN_PARALLEL__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

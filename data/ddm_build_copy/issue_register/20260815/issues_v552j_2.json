@@ -1,0 +1,29 @@
+{
+  "schema": "rawlsing_issue_group_v2",
+  "freeze_date": "2026-08-15",
+  "base_register_sha256": "5004f95a7f2505b109b9ffe1aebc34693e44407c8d2bf2d54dc422aaf816c0f6",
+  "issues": [
+    {
+      "id": "V552J-004",
+      "title": "Structural matcher can call a fact from the wrong source an exact match",
+      "group": "V552J / identity",
+      "severity": "CRITICAL",
+      "affected": "ddm_v552j_handoff.py structural fact matching",
+      "defect": "Source is read but is not a hard filter or part of the structural match score; wave and country are only score bonuses. A fact from another survey/source can therefore match on relation axis/target/facet and be classified as exact.",
+      "evidence": "Constructed wrong-source/wave/country structural fact with matching semantic identifiers scored `exact_structural_match`.",
+      "consequence": "Evidence can be fused across empirical scopes, violating source/run identity and contaminating downstream packets.",
+      "required": "Apply immutable producer-run/source/wave/country-or-shard scope filters before semantic matching. Similarity/scoring may operate only inside an exact identity boundary.",
+      "tests": [
+        "Wrong source can never match regardless of semantic score.",
+        "Wrong wave/country/shard cannot cross the declared packet scope unless an explicit governed cross-scope relation says so."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/ddm_v552j_handoff.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-V552J-001",
+      "origin_fingerprint": "bbec35ba4b829e236efe71f41edf9e2643d8963dfdf38d3a8a2233bcc8209b90",
+      "fingerprint": "85139e45638a4a97a5043a1aeaa88d3e2a77feb6df0104bc752e7d595703d573"
+    }
+  ]
+}

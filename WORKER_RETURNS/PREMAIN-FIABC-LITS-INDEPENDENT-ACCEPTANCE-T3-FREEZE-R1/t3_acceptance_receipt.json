@@ -1,0 +1,95 @@
+{
+  "authority_identities": {
+    "LITS_I": {
+      "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "representation_authority": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+      "runtime_catalog_identity": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+    },
+    "WVS7": {
+      "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+      "empirical_universe": "f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da4be4259d95e",
+      "lock2_supersession_reason": "DISCOVERY_VALIDATION_ENVELOPE_SERIALIZATION_REPAIR__NO_WORKLOAD_SEMANTIC_CHANGE",
+      "measure_basis": "6ed5d61b77c8d77affeb4b49b55c2cc23a4c25dbd65d02719c6ab7a3069a3c79",
+      "r15_release": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+      "r15_replay": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+      "r1e_mapping_authority": "76e63b2af0bf0b9a53319a74d2ded099c9ac175de99935d0741ac52f68086670",
+      "r1j_representation_authority": "63543411892d8d30fb5670a39714a3dc115145e3f054a7017a325dab1c6cf053",
+      "risk_set": "0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7",
+      "successor_discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+      "successor_lock2_hash": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+      "successor_lock2_replay_hash": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+    }
+  },
+  "candidate_cells_started": 0,
+  "candidate_order": [
+    "A",
+    "B",
+    "C"
+  ],
+  "candidate_outputs": 0,
+  "candidate_processes": 0,
+  "freeze_order": {
+    "authority_workload_freeze_sequence": 20,
+    "oracle_materialize_freeze_sequence": 30,
+    "source_identity_freeze_sequence": 10
+  },
+  "generic_receipt_loader_and_t5_oracle_consumers": "PASS",
+  "oracle_identities": {
+    "LITS_I": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+    "WVS7": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00"
+  },
+  "producer_status": "PASS",
+  "required_invariants": {
+    "candidate_neutral": true,
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "candidate_owned_state_reused": false,
+    "frozen_before_candidate_execution": true,
+    "state": "FROZEN_READ_ONLY"
+  },
+  "schema": "FIABC_TWO_SOURCE_T3_ACCEPTANCE@1.0.0",
+  "six_cell_count": 6,
+  "six_cell_execution_manifest_consumption": "PASS",
+  "source_freezes": {
+    "LITS_I": {
+      "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "derivative_identity": null,
+      "derivative_to_source_provenance_ref": null,
+      "source_id": "LITS_I",
+      "source_identity_authority_ref": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json#source_root_law.canonical_source_sha256.LITS_I"
+    },
+    "WVS7": {
+      "canonical_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "derivative_identity": null,
+      "derivative_to_source_provenance_ref": null,
+      "source_id": "WVS7",
+      "source_identity_authority_ref": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json#source_root_law.canonical_source_sha256.WVS7"
+    }
+  },
+  "source_order": [
+    "LITS_I",
+    "WVS7"
+  ],
+  "status": "PASS",
+  "t3_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
+  "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+  "t3_state": "FROZEN_READ_ONLY",
+  "workload_identities": {
+    "LITS_I": {
+      "candidate_count": 50,
+      "frontier_seal": "ca47c52f925b126878cd9e0be433bd6a28bec5a8623784bfbf5eaf7523b21bea",
+      "query_role_count": 77
+    },
+    "WVS7": {
+      "candidate_count": 46,
+      "complete_frontier_no_pruning": true,
+      "family_counts": {
+        "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+        "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+        "PAIR_RESPONSE_COTRAVEL": 1,
+        "UNARY_SOCIAL_FORK": 10
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "GT34_U2_OBL054_CORRECTED_OWNER_AUTH_ONE_OBJECT_REPAIR_EVIDENCE@1.0.0",
+  "status": "REPAIRED_CANDIDATE_EVIDENCE__NO_ADOPTION__NO_REAL_SUBJECT_MATERIALIZATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-u2-obl054-s2-corrected-owner-auth-one-object-scope-repair-r1",
+  "instruction_ref": "2a797a6421b9c280b96a6742e7db83ae0890d1c0",
+  "historical_s2_candidate_sha": "38257e57bd5e2d862edfcd1efb610c4d15774b37",
+  "fresh_obl053_adoption_artifact_blob": "f561765bad4fdad2bbf4591f35fe7f81f8486428",
+  "semantic_candidate_sha": "15002c7f87656d57eb0c56d68942f4b24765d55f",
+  "evidence_execution_sha": "09cc0da92eb047686aecbb68f25d6fed91c9aa37",
+  "successor_module": {
+    "path": "rawlsing_next/gt34_u2_v3p1_authenticated_subject_materializer.py",
+    "blob": "b0cb39a9a975381f3f3b4a03e7e435b2932e89b9",
+    "materializer_id": "GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_MATERIALIZER",
+    "materializer_version": "2.0.0"
+  },
+  "test_surface": {
+    "path": "rawlsing_next/tests/test_gt34_u2_obl054_corrected_owner_auth_materializer.py",
+    "blob": "1bb2033a397c36355bdb3b2b655ba89621bcd0dd"
+  },
+  "authenticated_root": {
+    "hash": "1563a1661d3e0a76e6781633f1b590147e26ab21014674bbe732f68cef6acfa8",
+    "adoption_blob": "f561765bad4fdad2bbf4591f35fe7f81f8486428",
+    "authority_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29",
+    "semantic_object_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "objective_evidence_receipt_hash": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c"
+  },
+  "one_object_permit": {
+    "hash": "3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc",
+    "id": "urn:rawlsing:gt34:obl054:one-object-materialization-permit:sha256:3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc",
+    "scope": "EXACT_ONE_ADOPTED_OBL053_SEMANTIC_OBJECT_ONLY",
+    "object_cardinality": 1
+  },
+  "governed_court": {
+    "run": 34046703322,
+    "job": 101522919696,
+    "exact_checkout": "09cc0da92eb047686aecbb68f25d6fed91c9aa37",
+    "protocol_self_test": "20 passed in 0.07s",
+    "repaired_candidate_tests": "20 passed in 0.08s",
+    "conclusion": "success",
+    "artifact_id": 9993314929,
+    "artifact_zip_sha256": "27778dbbe751ed644d86cb3e7126db9ca05b64430a2628141d99036f7847cecc"
+  },
+  "t2_defect_closure": {
+    "owner_authentication_fail_open": "CLOSED_BY_FIXED_FRESH_ADOPTION_ROOT_PLUS_EXACT_ROOT_VALIDATED_PERMIT",
+    "stateless_multi_object_escape": "CLOSED_BY_REQUIRED_EXPLICIT_CURRENT_PERMIT",
+    "registry_reinstantiation_escape": "CLOSED_BY_PERMIT_LEVEL_EXACT_OBJECT_CARDINALITY",
+    "hostile_self_bound_owner": "REJECTED",
+    "hostile_alternate_permit": "REJECTED",
+    "historical_adoption_root": "REJECTED",
+    "historical_invalid_authority_object_receipt_identities": "REJECTED"
+  },
+  "preserved_properties": {
+    "deterministic_subject_identity": true,
+    "semantic_object_bytes_opaque": true,
+    "semantic_owner_transfer": false,
+    "semantic_fields_interpreted": false,
+    "exact_evidence_provenance_binding": true,
+    "no_uuid_wall_clock_label_environment_identity": true,
+    "no_classifier_actor_encounter_comparator_psepf_metabolism_can008_v2_positive_v3_authority": true
+  },
+  "test_materialization_disposition": {
+    "real_first_canary_subject_ref_materialized": false,
+    "positive_mechanics_fixture": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+    "production_receipt_emitted": false
+  },
+  "terminal_candidate": "PASS__GT34_U2_OBL054_CORRECTED_OWNER_AUTH_AND_ONE_OBJECT_PERMIT_REPAIRED__NO_ADOPTION"
+}

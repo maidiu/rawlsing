@@ -1,0 +1,43 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0224-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0132-0400",
+  "status": "R6T_ADOPTED__REPAIRED_BACKEND_SELECTIVE_FANIN_READY__P2X_HELD_AT_S02",
+  "decisions": [
+    "HQD-2026-09-19-079"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6T_PASS_ADOPTION_20260919.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6T",
+      "return_head": "d9785085cf7a5ac4b220627f0dfef39dbaf56345",
+      "disposition": "PASS__ADOPTED_REPAIRED_BACKEND"
+    }
+  ],
+  "repaired_backend": {
+    "blob_sha1": "fb30167ebc060939e17eb15c71b93c000033eb4f",
+    "pinned_authority_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "ledger_blob": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+    "package_blob": "174b931e8aa89111086e3d46159b47154bed7f16"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "d0187a01f21959f4834a7f774f92d06187f1efb3",
+      "temporal_classification": "HELD_AFTER_ADJUDICATED_COMMON_COURT_BLOCKER",
+      "execution_surface": "LOCAL-MACHINE CODEX",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "next_action": {
+    "id": "P2X_SELECTIVE_R6T_BACKEND_FANIN",
+    "status": "READY",
+    "exact_parent": "d0187a01f21959f4834a7f774f92d06187f1efb3",
+    "exact_backend_blob": "fb30167ebc060939e17eb15c71b93c000033eb4f"
+  },
+  "terminal": "R6T_ADOPTED__P2X_BACKEND_FANIN_READY__P2X_HELD_AT_S02"
+}

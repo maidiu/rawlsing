@@ -1,0 +1,473 @@
+{
+  "authority": {
+    "authority_id": "CAN-003",
+    "contract_id": "CAN_003_V557_RUNTIME_USE",
+    "authority_version": "CAN-003.v1",
+    "name": "V557 runtime publication/use governance",
+    "owner": "V557",
+    "classification_before": "AUTHORITY_NEEDS_CANONICALIZATION",
+    "classification_after": "CANONICALIZED_EXISTING_AUTHORITY",
+    "whole_machine_architecture": "CLOSED",
+    "canonicalization_only": true,
+    "new_structural_domain_semantics_created": false,
+    "production_code_modified": false,
+    "v557_implemented": false,
+    "v558_implemented": false
+  },
+  "scope": {
+    "binds": [
+      "item-level epistemic authority serialization",
+      "producer permission input",
+      "V557 publication admission serialization",
+      "V557 item-use permission",
+      "monotone permission narrowing",
+      "item denial",
+      "active-causal/context-only/review-only/deny/not-applicable distinction",
+      "negative/missing/noncomparability/valid-empty/integrity separation",
+      "governance IDs/versions/provenance",
+      "compatibility aliases",
+      "audit metadata"
+    ],
+    "does_not_bind": [
+      "new V553-V556 structural-domain meaning",
+      "new semantic conditions or structural facts",
+      "V557 or V558 production implementation",
+      "temporal-proxy eligibility",
+      "proxy lag ceilings",
+      "proxy query-phase eligibility",
+      "ContextResolver temporal-anchor selection",
+      "generated-position binding",
+      "actor history",
+      "V3 causality",
+      "V2 rendering semantics"
+    ],
+    "separate_authorities": [
+      {
+        "authority": "ADP-006 / RA-R00 MUST-006",
+        "name": "runtime temporal-proxy eligibility authority",
+        "relationship": "LOGICALLY_AND_VERSION_WISE_SEPARATE",
+        "may_share_physical_registry_only_if": [
+          "separate namespace",
+          "separate schema",
+          "separate version",
+          "no inferred permission across authorities"
+        ]
+      }
+    ]
+  },
+  "evidence_inspected": [
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/LAUNCH_REGISTER.md",
+      "role": "common W0 law and W0-03 assignment authority"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V557_V558_COMPLETION_IMPLEMENTATION_RULING.md",
+      "role": "accepted TD-R04 V557/V558 ruling"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R04_V557_V558/RESULT.md",
+      "role": "accepted V557/V558 terminal-demand result and exact enum vocabulary"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/seam_integrity/SI_R03_V556_V557/RESULT.md",
+      "role": "V556->V557 monotonicity and per-root transitive-closure hardening"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/seam_integrity/SI_R04_V557_V558/RESULT.md",
+      "role": "V557->V558 standalone-publication and closure-verification hardening"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md",
+      "role": "whole-machine composed-system closure and noncollapse verification"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+      "role": "whole-machine closure ruling"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+      "role": "release sequencing and authority gate context"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+      "role": "RA-R00 CAN-003 classification and consumer list"
+    },
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json",
+      "role": "machine-readable RA-R00 authority inventory"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v558_plus_governance.py",
+      "role": "compatible current status/blocker/audit mechanics only; not semantic authority"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v5_build_standard.py",
+      "role": "compatible build/audit/status mechanics only; not semantic permission authority"
+    }
+  ],
+  "consumers": {
+    "direct_ra_r00_consumers": [
+      "V557-P1",
+      "V557-P2",
+      "V557-P4",
+      "V558-P1"
+    ],
+    "direct_boundary_consumer": "V558 immutable StructuralPriorRepository linker/ingress",
+    "downstream_enforcer": "V558->V3 ContextResolver",
+    "release_effect": "CAN-003 alone does not release any consumer; all other authorities and external production gates remain binding"
+  },
+  "canonical_enums": {
+    "item_use_state": [
+      "ALLOW_ACTIVE_CAUSAL_CONTEXT",
+      "ALLOW_CONTEXT_ONLY",
+      "ALLOW_REVIEW_ONLY",
+      "DENY_CAUSAL_USE",
+      "NOT_APPLICABLE"
+    ],
+    "epistemic_class": [
+      "SOURCE_EVIDENCE",
+      "DERIVED_STRUCTURAL_PRIOR",
+      "NEGATIVE_OR_LIMIT_AUTHORITY",
+      "RESOLVER_DERIVED_CONTEXT",
+      "GENERATED_RUNTIME_FACT",
+      "RENDERED_EXPRESSION"
+    ],
+    "v557_publication_admission": [
+      "ADMIT_RUNTIME_AUTHORIZED_RECORD",
+      "DO_NOT_ADMIT_RUNTIME_AUTHORIZED_RECORD"
+    ],
+    "governance_exception_state": [
+      "NO_EXCEPTION_STATE",
+      "NEGATIVE_AUTHORITY",
+      "MISSING_AUTHORITY",
+      "NONCOMPARABLE",
+      "VALID_EMPTY",
+      "INTEGRITY_FAILURE"
+    ]
+  },
+  "permission_model": {
+    "producer_permission_input": {
+      "required_fields": [
+        "authority_ref",
+        "authority_version",
+        "use_state",
+        "provenance_refs"
+      ],
+      "use_state_enum": "canonical_enums.item_use_state",
+      "missing_or_ambiguous_behavior": "DO_NOT_GUESS_OR_WIDEN"
+    },
+    "v557_output": {
+      "publication_admission_field": "v557_publication_admission",
+      "item_use_state_field": "v557_use_state",
+      "epistemic_class_field": "epistemic_class",
+      "exception_state_field": "governance_exception_state"
+    },
+    "allowed_use_validation_sets": {
+      "ALLOW_ACTIVE_CAUSAL_CONTEXT": ["REVIEW", "CONTEXT", "ACTIVE_CAUSAL"],
+      "ALLOW_CONTEXT_ONLY": ["REVIEW", "CONTEXT"],
+      "ALLOW_REVIEW_ONLY": ["REVIEW"],
+      "DENY_CAUSAL_USE": [],
+      "NOT_APPLICABLE": []
+    },
+    "note": "Allowed-use atoms are validation serialization for the accepted monotone law, not structural-domain semantics. Governance/audit preservation is outside these ordinary runtime-use capabilities."
+  },
+  "use_state_behavior": {
+    "ALLOW_ACTIVE_CAUSAL_CONTEXT": {
+      "active_causal_structural_use": true,
+      "context_visibility": true,
+      "review_visibility": true,
+      "constraints": "still subject to all producer conditions, native scope, negative authority and later resolver narrowing"
+    },
+    "ALLOW_CONTEXT_ONLY": {
+      "active_causal_structural_use": false,
+      "context_visibility": true,
+      "review_visibility": true
+    },
+    "ALLOW_REVIEW_ONLY": {
+      "active_causal_structural_use": false,
+      "context_visibility": false,
+      "review_visibility": true
+    },
+    "DENY_CAUSAL_USE": {
+      "active_causal_structural_use": false,
+      "positive_context_promotion": false,
+      "governance_or_negative_restriction_preservation": true,
+      "review_audit_preservation": true
+    },
+    "NOT_APPLICABLE": {
+      "active_causal_structural_use": false,
+      "active_for_governed_use": false,
+      "distinct_from_denial": true,
+      "review_audit_preservation": true
+    }
+  },
+  "monotonicity": {
+    "law": "producer permission >= V557 publication/use permission >= resolver query-relative permission",
+    "machine_invariant_v557": "allowed_uses(v557_use_state) is a subset of allowed_uses(producer_use_state)",
+    "machine_invariant_resolver": "allowed_uses(resolver_query_relative_state) is a subset of allowed_uses(v557_use_state)",
+    "forbidden": [
+      "V557 permission widening",
+      "resolver permission widening",
+      "compatibility-alias permission widening",
+      "global readiness overriding item permission"
+    ],
+    "violation_disposition": "FAIL_CLOSED_AS_GOVERNANCE_INTEGRITY_FAILURE"
+  },
+  "per_item_precedence": [
+    {
+      "rank": 1,
+      "rule": "required identity/hash/schema/version/reference/closure integrity is checked first",
+      "on_failure": "INTEGRITY_FAILURE; semantic object not runtime-admitted"
+    },
+    {
+      "rank": 2,
+      "rule": "explicit producer denial is a hard permission ceiling",
+      "on_match": "V557 cannot exceed DENY_CAUSAL_USE"
+    },
+    {
+      "rank": 3,
+      "rule": "V557 rule may preserve or narrow producer permission only",
+      "on_widening_attempt": "INTEGRITY_FAILURE / fail closed"
+    },
+    {
+      "rank": 4,
+      "rule": "producer negative/missing/noncomparability/valid-empty meaning is preserved without reinterpretation"
+    },
+    {
+      "rank": 5,
+      "rule": "item permission and authority states override all global readiness/diagnostic indicators"
+    },
+    {
+      "rank": 6,
+      "rule": "ContextResolver may only narrow further; query-time selection and proxy eligibility remain downstream/separate"
+    }
+  ],
+  "state_separation": {
+    "NEGATIVE_AUTHORITY": {
+      "meaning": "producer-owned known negative/limit/absence/prohibition authority",
+      "not_equal_to": ["MISSING_AUTHORITY", "NONCOMPARABLE", "VALID_EMPTY", "INTEGRITY_FAILURE", "ZERO", "NEUTRAL"]
+    },
+    "MISSING_AUTHORITY": {
+      "meaning": "authority required for the proposed governed use is absent/unavailable",
+      "not_equal_to": ["NEGATIVE_AUTHORITY", "NONCOMPARABLE", "VALID_EMPTY", "INTEGRITY_FAILURE"]
+    },
+    "NONCOMPARABLE": {
+      "meaning": "producer says relevant bases cannot lawfully be compared under the governed operation",
+      "not_equal_to": ["CONTRADICTION", "NEGATIVE_AUTHORITY", "MISSING_AUTHORITY", "ZERO", "INTEGRITY_FAILURE"]
+    },
+    "VALID_EMPTY": {
+      "meaning": "governed family/collection is lawfully empty under producer authority",
+      "not_equal_to": ["FAILURE", "INTEGRITY_FAILURE", "MISSING_AUTHORITY"],
+      "preserve_exact_subtypes": [
+        "VALID_EMPTY_NO_GOVERNED_RULE",
+        "VALID_EMPTY_NO_ELIGIBLE_AUTHORIZED_BASIS"
+      ]
+    },
+    "INTEGRITY_FAILURE": {
+      "meaning": "schema/hash/reference/version/transport/build corruption or unverifiable indispensable closure",
+      "not_equal_to": ["STRUCTURAL_BLOCKAGE", "NEGATIVE_AUTHORITY", "MISSING_AUTHORITY", "NONCOMPARABLE", "VALID_EMPTY"]
+    }
+  },
+  "runtime_authorized_object_record": {
+    "required_fields": [
+      "governance_record_id",
+      "canonical_authority_id",
+      "canonical_authority_version",
+      "producer_family",
+      "producer_collection_kind",
+      "producer_object_id",
+      "producer_object_hash",
+      "producer_build_id",
+      "producer_schema_version",
+      "producer_compiler_version",
+      "producer_rule_refs",
+      "producer_predicate_refs",
+      "producer_reference_contract_versions",
+      "epistemic_class",
+      "producer_permission_input",
+      "v557_publication_admission",
+      "v557_use_state",
+      "governance_exception_state",
+      "producer_exception_subtype",
+      "negative_or_limit_refs",
+      "noncomparability_refs",
+      "uncertainty_refs",
+      "transitive_closure_audit_ref",
+      "provenance_refs",
+      "v557_runtime_use_rule_ref",
+      "compatibility_aliases",
+      "governance_record_hash"
+    ],
+    "semantic_identity_rule": "governance_record_id is audit/governance identity only; producer_object_id/hash remain semantic authority",
+    "closure_rule": "transitive_closure_audit_ref is mandatory handoff/integrity evidence and never a permission category"
+  },
+  "runtime_use_rule_ref": {
+    "authority_id": "CAN-003",
+    "authority_version": "CAN-003.v1",
+    "required_dynamic_fields": [
+      "rule_id",
+      "rule_version",
+      "decision_basis_refs",
+      "decision_reason_code"
+    ],
+    "semantic_limit": "rule IDs may name only already-authorized producer/V557 governance rules; CAN-003.v1 does not invent new domain eligibility predicates"
+  },
+  "collection_manifest_requirements": [
+    "producer collection identity/build/schema/hash",
+    "exact object count",
+    "governed collection state including exact valid-empty subtype where supplied",
+    "count of objects with complete CAN-003 governance records",
+    "counts by V557 item-use state",
+    "counts by epistemic class",
+    "counts by governance exception state",
+    "referential-closure audit status/ref",
+    "CAN-003 authority ID/version",
+    "governance rule/registry versions",
+    "manifest hash"
+  ],
+  "v557_v558_handoff_requirements": [
+    "immutable publication bundle identity",
+    "object/collection manifest hashes",
+    "CAN-003 authority ID/version",
+    "governance rule/registry versions",
+    "transitive-closure audit refs",
+    "publication content hash"
+  ],
+  "compatibility": {
+    "allowed_mapping_kind": "EXACT_ONE_TO_ONE",
+    "required_alias_fields": [
+      "legacy_field_or_value",
+      "canonical_field_or_value",
+      "mapping_kind",
+      "source_version",
+      "sunset_consumer",
+      "audit_ref"
+    ],
+    "forbidden_aliases": [
+      "global readiness/status -> item permission",
+      "scalar readiness score -> item-use state",
+      "ready_for_runtime_consumption=true -> permission for every item",
+      "renderer/prompt status -> structural causal authority",
+      "missing authority -> denial without preserving missing state",
+      "noncomparability -> negative authority",
+      "valid-empty -> integrity failure",
+      "CAN-003 runtime-use permission -> temporal-proxy eligibility",
+      "any permission-widening normalization"
+    ]
+  },
+  "hostile_fixtures": [
+    {
+      "id": "H01_GLOBAL_READY_ITEM_DENIED",
+      "attack": "global READY attempts to override producer/item denial",
+      "required_result": "DENY_CAUSAL_USE preserved"
+    },
+    {
+      "id": "H02_CONTEXT_TO_CAUSAL_WIDENING",
+      "attack": "producer ALLOW_CONTEXT_ONLY -> V557 ALLOW_ACTIVE_CAUSAL_CONTEXT",
+      "required_result": "FAIL_CLOSED_FORBIDDEN_WIDENING"
+    },
+    {
+      "id": "H03_REVIEW_TO_CONTEXT_WIDENING",
+      "attack": "producer ALLOW_REVIEW_ONLY -> adapter ALLOW_CONTEXT_ONLY",
+      "required_result": "FAIL_CLOSED_FORBIDDEN_WIDENING"
+    },
+    {
+      "id": "H04_DENIAL_SURVIVES_PUBLICATION",
+      "attack": "publication record exists for denied restriction",
+      "required_result": "record may survive while use remains denied"
+    },
+    {
+      "id": "H05_NEGATIVE_NOT_MISSING",
+      "attack": "negative authority recoded as missing/zero/neutral",
+      "required_result": "preserve NEGATIVE_AUTHORITY and exact producer ref"
+    },
+    {
+      "id": "H06_MISSING_NOT_NEGATIVE",
+      "attack": "missing authority recoded as domain-negative fact",
+      "required_result": "preserve MISSING_AUTHORITY and do not invent fact"
+    },
+    {
+      "id": "H07_NONCOMPARABILITY_INDEPENDENT",
+      "attack": "noncomparability recoded as contradiction/negative/zero/failure",
+      "required_result": "preserve NONCOMPARABLE"
+    },
+    {
+      "id": "H08_VALID_EMPTY_HEALTHY",
+      "attack": "valid-empty treated as failure or populated with synthetic rows",
+      "required_result": "preserve exact valid-empty subtype; no fabricated row"
+    },
+    {
+      "id": "H09_INTEGRITY_NOT_SEMANTIC_ABSENCE",
+      "attack": "corrupt hash/reference closure recoded as missing/negative",
+      "required_result": "INTEGRITY_FAILURE and no runtime semantic admission"
+    },
+    {
+      "id": "H10_CLOSURE_NOT_PERMISSION",
+      "attack": "perfect closure attempts to override denied permission",
+      "required_result": "denial preserved"
+    },
+    {
+      "id": "H11_PERMISSION_NOT_CLOSURE",
+      "attack": "active-causal permission with missing indispensable dependency",
+      "required_result": "INTEGRITY_FAILURE / no runtime admission"
+    },
+    {
+      "id": "H12_RESOLVER_NO_WIDENING",
+      "attack": "V557 context-only -> resolver active-causal",
+      "required_result": "FAIL_CLOSED_FORBIDDEN_WIDENING"
+    },
+    {
+      "id": "H13_ADP006_ISOLATION",
+      "attack": "CAN-003 active-causal permission used as proxy authority",
+      "required_result": "proxy remains unauthorized absent separate ADP-006 authority"
+    },
+    {
+      "id": "H14_LEGACY_GLOBAL_FLAG_LAUNDERING",
+      "attack": "ready_for_runtime_consumption=true with no item governance",
+      "required_result": "no item permission synthesized"
+    },
+    {
+      "id": "H15_EPISTEMIC_LAUNDERING",
+      "attack": "rendered/generated material reclassified as structural prior",
+      "required_result": "FAIL_CLOSED_NO_EPISTEMIC_REOWNERSHIP"
+    },
+    {
+      "id": "H16_DUPLICATE_SEMANTIC_REID",
+      "attack": "V557 governance ID replaces producer semantic ID",
+      "required_result": "FAIL_CLOSED_PRODUCER_ID_HASH_RETAINED"
+    }
+  ],
+  "fail_closed_states": [
+    "FORBIDDEN_PERMISSION_WIDENING",
+    "INTEGRITY_FAILURE",
+    "MISSING_CANONICAL_ITEM_PERMISSION",
+    "AMBIGUOUS_COMPATIBILITY_ALIAS",
+    "EPISTEMIC_REOWNERSHIP_ATTEMPT",
+    "MISSING_INDISPENSABLE_TRANSITIVE_CLOSURE",
+    "PROXY_PERMISSION_INFERENCE_FROM_CAN_003"
+  ],
+  "no_new_meaning_attestation": {
+    "confirmed": true,
+    "new_strings_are_only": [
+      "authority/version identifiers",
+      "schema field names",
+      "administrative publication-admission values",
+      "governance exception umbrella values",
+      "allowed-use validation atoms",
+      "hostile fixture IDs",
+      "audit/compatibility metadata"
+    ],
+    "does_not_change": [
+      "producer semantic identity",
+      "producer semantic meaning",
+      "producer epistemic meaning",
+      "V553-V556 structural facts/conditions",
+      "temporal-proxy eligibility",
+      "resolver semantics",
+      "actor/runtime semantics"
+    ]
+  },
+  "consumer_release_sufficiency": "SUFFICIENT",
+  "canonicalization_verdict": "PASS",
+  "final_token": "CAN_003_V557_RUNTIME_USE_CANONICALIZATION = PASS"
+}

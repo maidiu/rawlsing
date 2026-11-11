@@ -1,0 +1,85 @@
+{
+  "branch": "agent/sorok-p3-vertical-resource-repair-20261106-r1",
+  "candidate_commit": "31da7feb2ae44b1aff75bc2f6ea346c87a3d38e6",
+  "code_commit": "31da7feb2ae44b1aff75bc2f6ea346c87a3d38e6",
+  "commands": [
+    {
+      "command": "python3 -m py_compile tests/p3_fixture_support.py tests/test_p3_vertical_slice.py run_p3_vertical_slice.py",
+      "detail": "syntax compiled; no full suite",
+      "exit": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=... python3 -m pytest tests/test_p3_vertical_slice.py::test_primary_actual_formation_read_later_and_no_mediator_control -q -x -o addopts=\"\" -p no:cacheprovider",
+      "detail": "1 failed in 7.49s; actual store PLAN_AUTHORITY_OR_GRADE_MISSING before any P2 event",
+      "exit": 1
+    },
+    {
+      "command": "run_p3_vertical_slice.py against known-blocked integrated store",
+      "detail": "NOT_RUN_REPEATED; focused actual failure already captured; runner code preserves actual stdout/failures/metrics",
+      "exit": null
+    },
+    {
+      "command": "git diff --check -- tests/p3_fixture_support.py tests/test_p3_vertical_slice.py run_p3_vertical_slice.py",
+      "detail": "no whitespace errors",
+      "exit": 0
+    },
+    {
+      "command": "opencode --version; python3 --version; uname -srm",
+      "detail": "opencode v2.0.22; Python 3.11.3; Darwin 22.3.0 x86_64",
+      "exit": 0
+    }
+  ],
+  "files": {
+    "actual_smoke.log": {
+      "bytes": 6945,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-resource-repair/actual_smoke.log",
+      "sha256": "4ace7e7975b665d64e530d51bad8e458625df3b4432f784d13a983b15de737a2"
+    },
+    "git-diff-check.txt": {
+      "bytes": 0,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-resource-repair/git-diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "py_compile.log": {
+      "bytes": 0,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/evidence/vertical-resource-repair/py_compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "run_p3_vertical_slice.py": {
+      "bytes": 2473,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/run_p3_vertical_slice.py",
+      "sha256": "49450f2f8d40187aba956d0368b72ddc187f1261d13dc047e78ef834eb6f770f"
+    },
+    "tests/p3_fixture_support.py": {
+      "bytes": 23259,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/p3_fixture_support.py",
+      "sha256": "5d2dfa081ae9152cbc3fc955d4f3aebebd5f1205f585bab07f655bdae57e550c"
+    },
+    "tests/test_p3_vertical_slice.py": {
+      "bytes": 26545,
+      "path": "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/tests/test_p3_vertical_slice.py",
+      "sha256": "e969d30181d10879b3cd5b73260e2e52121646614c0582144d46232c178d1a1b"
+    }
+  },
+  "metrics": null,
+  "protected_start": "c852d7516e23fcb6cf2215e9be7c5fa268503516",
+  "schema": "SOROK_P3_VERTICAL_RESOURCE_RECEIPTS@1.0.0",
+  "scope": {
+    "actual_execution_attempted": true,
+    "actual_p2_events": 0,
+    "adp016_017_memory_or_claim": false,
+    "author": true,
+    "ci": false,
+    "metrics": false,
+    "original_sav_read": false,
+    "p2_batches": 0,
+    "production_edit": false,
+    "protected_merge": false,
+    "respondent_read": false,
+    "s3": false,
+    "sourcefree": true
+  },
+  "startup_commit": "8cc2914b1089cfc113ae1737941bd2a9efde622b",
+  "status": "BLOCKED_ACTUAL_STORE_ABI_PLAN_AUTHORITY_OR_GRADE_MISSING",
+  "worker": "sorok-p3-vertical-resource-repair-r1"
+}

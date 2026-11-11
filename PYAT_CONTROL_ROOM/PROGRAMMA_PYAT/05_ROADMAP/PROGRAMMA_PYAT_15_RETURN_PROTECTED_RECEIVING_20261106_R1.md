@@ -1,0 +1,50 @@
+# PROGRAMMA PYAT — 15-return protected receiving and source-capital ledger — 2026-11-06
+
+STATUS: FACTUAL CAS RECEIPT / S0-S1 RECEIVING OWNER. This is NOT fresh local S2/S3 testing, self-review of implementation, original respondent data science, R09 host grant, Sorok actor wake, or N11/N12 acceptance.
+
+Protected source before receiving: 33c40a315d3c231cb2021bd8e60f3261547efa62. Exact protected merges in order: #696 a02cd4e164eabed978bc577ed68f1c424b0ab187, #702 aaf098b877ccf825e09966ae5e74347f8829c3d3, #706 1cbf3c63ef54a6b652abe7bbca237e88ae734295, #707 d119045f4169439b4ba02d0870bc328f8beb3aaa.
+
+All original 62 component / 82 canonical seam / 49 GAP identities, initial source-cut grades, and conditional MUST/IF predicates remain unchanged. This is the canonical receiving/fate pointer for the original B00-B08, L01-L03 and R01-R03 fleet, whose historical prepared-zero-dispatch state is no longer current.
+
+| Fleet return | Immutable source / PR | What was established | Current disposition |
+|---|---|---|---|
+| B00 | PR #696 reviewed head 915b17a | A01-A16 agenda, original 62/82/49, 51 child and 82 seam graph, 88 strict + 13 IF, nine commissions | PROTECTED S0-S1 DOCUMENTARY by a02cd4e |
+| B01/C1 | https://github.com/maidiu/rawlsing/blob/a03220b310253b8d069bb77c8083c23920a9e0fe/WORKER_RETURNS/PROGRAMMA-PYAT-B01-C1-EXACT-SUCCESSION-20261105-R1/00_RETURN.md | 31 E41 operations and 21 adjacent functions, R01/R03/R08 protected, R118 historically branch-only, NO_NEW_ENGINE_BUILD | BANKED FORENSIC; R118/P41 now protected via L01 |
+| B02/C5 | https://github.com/maidiu/rawlsing/blob/7474d9e86793c9377727c8e44f9885e304cb56f6/WORKER_RETURNS/PROGRAMMA_PYAT_F2F4_GF1_RECOVERY_20261105_R1/B02_C5_GF1_S1S9_SCIENTIFIC_CONSUMER_ADJUDICATION/00_RETURN.md | NO_JUSTIFIED_CONSUMER for mandatory GF1; S1-S9 source/science owner decision distinct | BANK OPTIONS; GF1 not general production dependency |
+| B03/C6 | https://github.com/maidiu/rawlsing/blob/c38de32be503893ef640da07702bf3bfa232ff1b/WORKER_RETURNS/PROGRAMMA_PYAT_B03_C6_D1D9_SOURCE_ESTIMAND_20261105_R1/00_RETURN.md | Source/estimand issuance design, not original 35 missing-data proof; historical R157 and actual SRC04/SRC17 positives separately exist | BANK SCIENTIFIC QUALIFICATIONS; no blanket RAW computation stop |
+| B04/C7 | https://github.com/maidiu/rawlsing/blob/a792ce534f51cdc015e15e69af9e884e1eb09654/WORKER_RETURNS/PROGRAMMA_PYAT_B04_C7_SOROK_DYAD_INTERFACE_20261105_R1/00_RETURN.md | Pyat-to-Sorok evidence envelope; survey joint cannot select a particular pair or generate actor | BANK DOCUMENTARY; native dyad/actor HELD |
+| B05 | https://github.com/maidiu/rawlsing/pull/691 | GF1 bounded TEST_ONLY sourcefree pair code independently ACCEPT_SCOPED_SOURCEFREE at a6b815e; B02's separate consumer finding retained | OPEN OPTIONAL branch; not mandatory protected engine |
+| B06 | https://github.com/maidiu/rawlsing/blob/5ebb73c7abd4eb84602620d6ce028f76fc5dcf8c/WORKER_RETURNS/PROGRAMMA_PYAT_B06_COLD_AGENDA_COMPLETENESS_20261105_R1/00_COLD_COMPLETENESS_VERDICT.md | Nine predecessor-HQ precision/currentness corrections, no new major lane | INCORPORATED into B00 and final B08 |
+| B07 | https://github.com/maidiu/rawlsing/blob/eaa08f1bdebb957c95fc016b3e3c785d4463db53/WORKER_RETURNS/PROGRAMMA_PYAT_B07_R09_FIABC_NEGATIVE_COURT_20261105_R1/00_RETURN.md | R09 hostile child could forge loaded bytes/result; D7 repair candidate not accepted; FIABC 144 PASS/3 FAIL historic blob anchors | BANK NEGATIVE; host and FIABC owner decisions HELD |
+| B08/C8 | https://github.com/maidiu/rawlsing/blob/4634c37e10183a0765c543f3893cc6322a28804a/WORKER_RETURNS/PROGRAMMA_PYAT_B08_C8_INDEPENDENT_HOSTILE_696_RECEIVING_20261105_R1/08_FINAL_EXACT_HEAD_915B17_RECEIVING_ACCEPT.md | Independent exact-head ACCEPT of B00 documentary agenda, 51 strict closures +13 single-IF paths; prior two REVISE defects closed | REVIEW BASIS for #696 protected |
+| L01 | https://github.com/maidiu/rawlsing/pull/702 | R08 signed evidence -> R118 per-prefix world and nonparent/P41; no operative donor Git archive | PROTECTED SOURCEFREE S2 at aaf098b |
+| L02 | https://github.com/maidiu/rawlsing/pull/703 | 3+ same-respondent JOINT and C1 exact JOINT primary binding; current R01/R03 compiler reused | THREE EXACT REVIEWED BLOBS PROTECTED via #706 at 1cbf3c6; five stale G4 snapshots excluded |
+| L03 | https://github.com/maidiu/rawlsing/pull/707 | Execution-local compatible grouped I03, native fact/replay, scoped warm 3.05-3.09x; early capacity MISS guard; compressed-body still author-only | SIX EXACT REVIEWED BLOBS PROTECTED at d119045; full W03/W04 cold economy OPEN |
+| R01 | https://github.com/maidiu/rawlsing/blob/eb6f6799b027d7093f73cc83be3b56210588db79/WORKER_RETURNS/PROGRAMMA-PYAT-L01-R01-FINAL-RECEIVING-20261106-R1/00_RETURN.md | Independent exact-head sourcefree S2 ACCEPT, hermetic cold replay, 171 behavior tests; preserved CI FIABC RED | EVIDENCE FOR L01 |
+| R02 | https://github.com/maidiu/rawlsing/pull/703#issuecomment-6680754589 | Independent scoped sourcefree ACCEPT exact 31c59b after C1 fail-closed JOINT repair | EVIDENCE FOR L02; no native science |
+| R03 | https://github.com/maidiu/rawlsing/blob/9999c0afac5d7d7eb72ad0df602da4b232a49565/WORKER_RETURNS/PROGRAMMA-PYAT-L03-R03-20261106-R1/00_RETURN.md | Independent P2 scoped ACCEPT and separate capacity focused ACCEPT at 9a5c; no compressed-body acceptance | EVIDENCE FOR L03 P2/guard |
+
+## Independent scope and CI receiving
+
+PR #696: independently B08 accepted documentary exact 915b17; no new scientific classification. PR #702: independent R01 accepted exact 0252e028 sourcefree hermetic and first-reader code. PR #703: independent R02 accepted exact 31c59b, but its five overlapping G4 status snapshots were intentionally excluded; receiving PR #706 imported three byte-identical code/test/proof blobs. L03 P2 and capacity guard were independently accepted at their distinct exact source cuts; PR #707 imported six byte-identical blobs and excluded the unreviewed 02c1200 compressed-body candidate. PR #707 CI R61, canonical tree and changed-test fault witness succeeded. PR #706 canonical and changed-test proof succeeded.
+
+Governed broad CI remains 144 PASS / 3 FAIL over two historic FIABC/LiTS expected Git blob anchors (old _pre553_query_eval.py and pre553_candidate_c_production_binding.py). Those three failures persist as RED and were neither deleted, repinned nor claimed GREEN. Actual sourcefree receiving can be scoped with this inherited negative where its competent owner permits; no original source/science/host/actor permission arises.
+
+## Additional PRE-553 recovery and the universal 35-survey product
+
+The user-selected destination is ONE source-neutral PRE-553 source-pack/authority-manifest driven compiler/execution engine for all SRC01-SRC35, not a one-survey or two-item pilot. Each selected survey supplies its original question/option/response/occurrence/routing/respondent/household/optional weights and applicable source-use facts from versioned resources; current C11/I03/I05/Batch performs generic raw-sample operations. Valid observed RAW calculation is not blocked by absence of optional weights or an unfinished Field Forge structural interpretation. Real restrictions and missingness are honored per affected operation. The old SRC04 global all-pairs native_streaming/pickle mega-carrier was intentionally abandoned on cost grounds and must not be revived.
+
+R157 119 historical paths / 19 code subset and 35 native NONRESPONDENT fixture releases are accepted on its historic October 27 branch, not wholly received at protected current ABI. The November 1 all35 P1 U/Epre prospective BatchManifest constructor is sourcefree branch capital, not original35 native facts. Original SRC04 and SRC17 have historical independently accepted original-data C11 positives. The compact regenerable hybrid selected October 28 has indexed/compact PRs #684/#686 and newly protected L03 P2/guard; whole cold/default cache economics and compressed-body review remain open.
+
+Full source-lined master, 35-source register, HYB 25 W/P crosswalk, priority graph, reference audit and full overnight goal are in independent-review-PENDING [PR #705](https://github.com/maidiu/rawlsing/pull/705), head 62329a720d835fd21505b67505751a7b3ec2ff02 at this source cut. That document PR was authored after #696's independent review and does not inherit B08 acceptance. Some status banners predate these four protected merges; this receipt supersedes their old branch-only statements until #705 receives exact-head review and a qualified current-base documentary fan-in. It is not silently adopted here.
+
+## Correct next actions
+
+1. Independent current-head review of #705, reconcile stale status of #696/#702/#703/L03, select only accurate source-linked overlays and merge via competent PROGRAMMA owner; no rewriting original 62/82/49 graded snapshots.
+2. Exact R157 119-path current successor/ABI and importer parity; port only genuinely missing all35 SourceConfigLibrary/reader/factory/CLI capability. Join P1 U/Epre to currently protected R01/R03/Batch/I03/I05 rather than building a second compiler.
+3. 35/35 automatic source manifest and runnable operation accounting. Source-dependent nonavailable/unknown/held is typed per item and operation. Execute original data where genuinely present and permitted; do not invent bytes or promote fixtures to native.
+4. Direct source-neutral empirical fact to existing Field Forge support/structural refusal; independently model warranted structural meaning later.
+5. Independent L03 compressed-body review and actual multi-family cold RSS/memory/cache economy; preserve W03/W04 incomplete status.
+6. R09 protected parent trust and FIABC 3 historic RED remain separate explicit owner holds; N11/N12/Sorok actor separate.
+
+Receiving and historic work-selection law: PYAT_CONTROL_ROOM/PROGRAMMA_PYAT/05_HISTORICAL_FUNCTION_SUCCESSION_AND_WORK_SELECTION_LAW_R1.md. Never confuse prepared, returned, reviewed, protected-received, original-native or actor-authorized states.

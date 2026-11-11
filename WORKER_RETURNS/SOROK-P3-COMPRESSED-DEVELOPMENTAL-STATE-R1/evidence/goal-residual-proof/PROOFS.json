@@ -1,0 +1,86 @@
+{
+  "distinct_root": {
+    "cross_root_error": "P3_SOURCE_IDENTITY:root",
+    "left_record_count": 2,
+    "left_record_roots": [
+      "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+      "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+    ],
+    "left_root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "right_p3_config_exists": false,
+    "right_p3_store_exists": false,
+    "right_root": "b43c92c076ae9670986c31996d921af00bce804c6bb52bdff25890a6ce0d700c",
+    "right_snapshot_unchanged": true,
+    "roots_distinct": true
+  },
+  "same_history": {
+    "control_head": {
+      "count": 0,
+      "hash": "479dd2e98194e54721866a120ceb8f51f73e2b9570453c45471170f190f9a914"
+    },
+    "control_later_modes": [
+      "inspect_alone"
+    ],
+    "control_readset_has_records": false,
+    "control_records": [],
+    "formation_head": {
+      "count": 2,
+      "hash": "c6cda3efb4e930d1fbaaf12b5b2b6d9f6e796a215208c1f03ef3f37a71f0103c"
+    },
+    "formation_later_modes": [
+      "joint_check",
+      "private_check"
+    ],
+    "formation_readset_has_records": true,
+    "formation_records": [
+      {
+        "hash": "d00a4c3aa332253b211ade09809b819795b6d7b849a59917f57af74046eed788",
+        "mode": "joint_check",
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+      },
+      {
+        "hash": "34713acc3202b5e0e0b1cac86c8d783577bf525e3ca1ba17ce6667aec496c9f3",
+        "mode": "private_check",
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+      }
+    ],
+    "history_hashes": [
+      "afb0fdb026bafaca99c6aab9cfd127483652adb103e17d26535c13aa3af21f54",
+      "4f684495d3d82622f50b8a5912b1f9d43749b237481028ed6fe7564ebdcdb6f0"
+    ],
+    "initial_identity": {
+      "actor": "TEST_ONLY_BP1_R26V_ACTOR_A",
+      "branch": "first_session",
+      "clock": 222,
+      "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7"
+    },
+    "p2_base_identity_equal": {
+      "actor": true,
+      "branch": true,
+      "clock": true,
+      "root": true
+    },
+    "source_hash_control": "b1f0ffd11921140cb9c132ad4c3d7794c902d2a0bc5e838f70a330cfa748d650",
+    "source_hash_formation": "b1f0ffd11921140cb9c132ad4c3d7794c902d2a0bc5e838f70a330cfa748d650",
+    "world_after_equal": true
+  },
+  "schema": "SOROK_P3_GOAL_RESIDUAL_PROOFS@1",
+  "source_severance": {
+    "denial_codes": [
+      "P3_B1_SOURCE_SEVERED",
+      "P3_B1_SOURCE_SEVERED"
+    ],
+    "head_unchanged_after_mismatch": true,
+    "head_unchanged_after_missing": true,
+    "operation_mismatch_after_denial": null,
+    "operation_missing_after_denial": null,
+    "original_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/sorok-recursion-reuse-r1/WORKER_RETURNS/SOROK-P3-E1-DEVELOPMENTAL-ABI-RECONNAISSANCE-R1/probe/vendor/B1/bfirst.py",
+    "original_sha256": "478b989730f49a5def41a367b6f53e4aae9c80961f7f466fe669c7dbd92201a3",
+    "p2_unchanged_after_mismatch": true,
+    "p2_unchanged_after_missing": true,
+    "restored_accessible": "OBSERVED",
+    "restored_phase": "COMPLETE",
+    "restored_status": "REALIZED"
+  },
+  "tests": "tests/test_p3_goal_residuals.py"
+}

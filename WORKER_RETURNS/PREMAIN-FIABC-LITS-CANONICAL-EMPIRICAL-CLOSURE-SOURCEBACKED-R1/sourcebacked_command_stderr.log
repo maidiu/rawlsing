@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/matthewsmith/Desktop/Rawlsing/FIABC-QF1-qualification-checkout/rawlsing_next/fiabc_final_oracle_freeze_producers.py", line 2069, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing/FIABC-QF1-qualification-checkout/rawlsing_next/fiabc_final_oracle_freeze_producers.py", line 2046, in main
+    receipt = produce_lits_local_oracle(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing/FIABC-QF1-qualification-checkout/rawlsing_next/fiabc_final_oracle_freeze_producers.py", line 1720, in produce_lits_local_oracle
+    checkpoint_identity, checkpoint_document_sha = _write_lits_materialization_checkpoint(
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing/FIABC-QF1-qualification-checkout/rawlsing_next/fiabc_final_oracle_freeze_producers.py", line 1629, in _write_lits_materialization_checkpoint
+    _validate_lits_materialization_checkpoint_body(body)
+  File "/Users/matthewsmith/Desktop/Rawlsing/FIABC-QF1-qualification-checkout/rawlsing_next/fiabc_final_oracle_freeze_producers.py", line 1476, in _validate_lits_materialization_checkpoint_body
+    canonical_inventory = _validate_lits_canonical_empirical_closure(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing/FIABC-QF1-qualification-checkout/rawlsing_next/fiabc_final_oracle_freeze_producers.py", line 649, in _validate_lits_canonical_empirical_closure
+    raise FinalOracleProducerError("LiTS role predicate/query preimage substitution or omission")
+FinalOracleProducerError: LiTS role predicate/query preimage substitution or omission

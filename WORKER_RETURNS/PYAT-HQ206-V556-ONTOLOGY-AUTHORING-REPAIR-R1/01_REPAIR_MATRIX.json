@@ -1,0 +1,106 @@
+{
+  "schema": "PYAT_HQ206_REPAIR_MATRIX@1.0.0",
+  "lane": "PYAT-HQ206-V556-ONTOLOGY-AUTHORING-REPAIR-R1",
+  "branch": "agent/rabochii-pyat-hq206-v556-repair-r1",
+  "startup_sha": "1be02e9505df56291f61e46a79b37e49e8afdf9b",
+  "repair_base": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "hostile_review": "5f3b799736eefbde56086b82287da80e20dbe890",
+  "hq206_adjudication": "ee8e7a1aef1b1eba19b8ca0304186636cd3f874e",
+  "architecture_of_record": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R03_V556/RESULT.md",
+  "adopted_seam_modified": false,
+  "seam_files_unchanged": ["rawlsing_next/m3_v556_higher_order_structural.py", "rawlsing_next/m2_v555_atomic_route.py"],
+  "new_structural_ontology_introduced": 0,
+  "repairs": [
+    {
+      "id": "R1",
+      "name": "Authoring validation",
+      "review_findings": ["F1", "P1", "P13"],
+      "before": "author_result_contract_binding did not validate the supplied schema and did not verify schema_ref resolved to it; author_governed_rule did not validate result_contract; registry build validated only duplicate keys and duplicate families",
+      "after": "author_result_contract_binding validates the schema with the same node validator, recomputes schema_ref and requires exact equality, then re-validates the finished binding; author_governed_rule re-validates the embedded contract, verifies the binding ref commits to it, and verifies the binding names the same rule id/version; V556RuleMaterialRegistry.build re-validates every embedded contract, family agreement, contract-ref agreement and rule_content_hash before any material can become GOVERNED_RULES_PRESENT",
+      "status": "COMPLETE",
+      "hash_mirroring": "the recomputation mirrors the M3 seam exactly, including the contract_id re-insertion and the exclusion of binding_content_hash, so a stale or forged binding is refused at authoring rather than only at evaluation"
+    },
+    {
+      "id": "R2",
+      "name": "Ontology / role gating",
+      "review_findings": ["F2", "P2", "P19", "P9", "P3"],
+      "before": "participant_roles were only non-empty and duplicate-free; enum values, primitive types and role labels were unconstrained, so ACTOR_DESIRE/ACTOR_BELIEF roles and DOMINATION/HEGEMONY/CAPITAL/PRESSURE_COUPLING enums and a pressure_magnitude number leaf were all authorable and positively evaluable",
+      "after": "participant role labels are refused structurally on actor-semantic/person-state tokens; string enum values and exact-ref kinds are refused on blocked strong nouns; numeric scalar leaves (number and integer) are refused outright; OBJECTIVE_ACTOR_INDEXED is withdrawn rather than left as a dead accepted mode",
+      "status": "COMPLETE",
+      "vocabulary_source": "every refused term is quoted from adopted law: blocked strong nouns from Field Forge R2 / OBL040 / OBL041 negative ceilings; the premise kinds from TD_R03 §5; no new synonym list was invented"
+    },
+    {
+      "id": "R3",
+      "name": "Interaction semantics",
+      "review_findings": ["F3"],
+      "before": "PERMITTED_RELATION_KINDS was exactly COEXISTING_STRUCTURAL_INCIDENCE, SHARED_UPSTREAM_STRUCTURAL_CHANNEL and PARALLEL_STRUCTURAL_OCCURRENCE, which map one-to-one onto TD_R03 §5's forbidden non-inference premises, so the only authored relation vocabulary inverted the adopted non-inference law",
+      "after": "those three names are retained only as TD_R03_NON_INFERABLE_F1_PREMISE_KINDS (premises a future governed rule may examine) and are refused in any authorable enum. AUTHORIZED_INTERACTION_RELATION_KINDS is empty, because TD_R03 §6 records that no complete governed interaction-rule authority exists. interaction_relation_canary_rule() now refuses, and V556_INTERACTION_RELATION is returned lawfully VALID_EMPTY",
+      "status": "COMPLETE",
+      "fabrication_refused": "no replacement positive relation kind was minted to preserve the previous canary goal",
+      "td_r03_candidate_kinds_recorded_not_canonized": "TD_R03 §5 names flow continuation, rerouting, buffering, amplification, blockage, competition/counter-pressure, contradiction, reinforcement/destabilization, feedback and conditional coupling, then explicitly refuses to canonize them. They are recorded for traceability and are NOT authorable until a governed rule registry supplies them."
+    },
+    {
+      "id": "R4",
+      "name": "Topology canary",
+      "review_findings": ["F4", "P6b", "P6c"],
+      "before": "the canary declared maximum_cardinality_or_unbounded_marker=UNBOUNDED while the rule realized only n=2, so the maximum was false metadata; it structurally required a shared_structural_channel_ref, making it a shared-channel dyad rather than generic machinery; and it made no explicit statement about the F2 grain",
+      "after": "the declared maximum is the truthful dyadic 2 and the seam refuses a third participant; the mandatory shared-channel field is removed so the shape is not structurally a shared-channel dyad; the material declares TOPOLOGY_CANARY_SHAPE_LABEL as one illustrative authorized shape and TOPOLOGY_CANARY_F2_CLAIM as explicitly NOT an F2 attractor-prerequisite topology; endpoint refs are bound to the real governed V555 route ref kind and validated against the rule's participant bindings",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "R5",
+      "name": "Registry and tranche ceilings",
+      "review_findings": ["F5", "F6", "F7", "P4", "P5", "P14", "P3"],
+      "before": "registry build did not check the frozen family set at all; one-rule-per-family existed only inside an exception string; OBJECTIVE_ACTOR_INDEXED was accepted but unsatisfiable; the admitted-role narrowing was undocumented",
+      "after": "registry build enforces SUPPORTED_FAMILIES; one-rule-per-family is named data (TRANCHE_LOCAL_ONE_RULE_PER_FAMILY plus a note stating it is tranche-local and not a timeless ceiling, since M3 evaluates multiple distinct same-family rules); the admitted-role narrowing is recorded as TRANCHE_LOCAL_ADMITTED_ROLE_NARROWING naming what M3 also admits and why no architectural ceiling is claimed; OBJECTIVE_ACTOR_INDEXED is withdrawn with a stated reason",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "R6",
+      "name": "Court repair",
+      "review_findings": ["H", "F7", "section 4"],
+      "before": "17 tests: 6 constant assertions on material the same tranche authored, 2 substring scans of the canaries only, 1 tautological no-op assertion, 1 test asserting a misspelled V556_ATTRACTOR_PREREQUISITE family name (vacuously None), and 1 test exercising the duplicate-KEY registry branch while claiming to prove the per-family branch",
+      "after": "35 machinery-level tests. Every commission-required hostile case is driven through the generic authoring/registry path rather than against canary instances: open schema via the binding path, person-state role via binding/rule/registry, actor-semantic participant labels, forbidden-premise and strong-noun enums, numeric scalar leaf, invented family at registry build, duplicate semantic-family with DISTINCT rule keys, truthful cardinality, payload-to-participant binding, OBJECTIVE_ACTOR_INDEXED behaviour, VALID_EMPTY no-rule behaviour, and attractor left unfilled. The misspelling, the tautology and the wrong-branch test are all removed. Three end-to-end tests prove the positive core still evaluates SUPPORTED through the unmodified seam with stable replay",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "R7",
+      "name": "Robustness",
+      "review_findings": ["F9", "F10", "P11", "P16c"],
+      "before": "MappingProxyType was imported and never used; rule and contract material were live dicts inside a frozen dataclass so a post-authoring mutation registered with stale hashes caught only at evaluation; multiplicity_policy was only _text-checked so any string was authorable",
+      "after": "material is deep-frozen via _freeze with a _plain inverse used for hashing and for handing M3 plain data, so a post-authoring mutation raises TypeError instead of registering; multiplicity_policy is frozen to the named MULTIPLICITY_POLICIES vocabulary",
+      "status": "COMPLETE"
+    }
+  ],
+  "defects_found_while_implementing": [
+    {
+      "defect": "the binding validator initially required contract_id, but the M3 seam's exact binding field set excludes it",
+      "severity": "real: would have refused every lawful binding",
+      "fix": "the validator now enforces M3's exact 13-field binding set and mirrors the seam's hash construction, which re-inserts contract_id"
+    },
+    {
+      "defect": "the rule_content_hash recomputation in registry build omitted contract_id from the rule body material",
+      "severity": "real: every lawful rule was refused as stale",
+      "fix": "rule_body re-inserts contract_id and excludes only the authority triple and the hash itself"
+    },
+    {
+      "defect": "the payload-to-participant join preferred content_hash, but M3's route ref content_hash is semantic_hash(route) while the natural payload key is the route_id object_id",
+      "severity": "real: governed payload refs were wrongly refused",
+      "fix": "the governed identity set now carries both identifiers M3 commits to, and a payload ref matches either"
+    },
+    {
+      "defect": "the topology schema's allowed endpoint ref kind was the invented label V555_ROUTE_IDENTITY rather than the real governed V555 semantic family, so the seam returned INVALID_PARTICIPANT_SET",
+      "severity": "real: the repaired canary could not evaluate",
+      "fix": "the allowed kind is now the actual V555 semantic family constant"
+    },
+    {
+      "defect": "validate_payload_against_participants reported the derived unbound-field defect before the structural cardinality defect",
+      "severity": "ordering: a too-small participant set should be reported as the primary defect",
+      "fix": "the cardinality floor and maximum are now checked before field binding"
+    }
+  ],
+  "court_bugs_found_in_my_own_repaired_court": [
+    "the distinct-family-branch test initially built a second binding bound to the FIRST rule's identity, tripping the correct binding/rule identity check instead of the family branch; the second binding is now bound to the distinct rule identity",
+    "the cardinality-floor test asserted a message that the field-binding check preempted; production ordering was corrected so the assertion became truthful"
+  ]
+}

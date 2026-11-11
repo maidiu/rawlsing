@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ154-C1-03-DUAL-INDEPENDENT-REVIEW-BIND-R1",
+  "status": "C1_03A_R3_REREVIEW_BOUND__C1_03R_ASTRA_A_REVIEW_BOUND__C1_03_JOIN_BLOCKED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "predecessor_checkpoint": "20261001-PYAT-HQ153-C1-03A-FACTORY-AUTHENTICITY-R1",
+  "predecessor_handoff_commit": "2ee0bfa6eeea7ce7d37d43aa5d177ce52d9e4093",
+  "governing_decision": "HQD-2026-10-01-154",
+  "active_reviews": [
+    {
+      "id": "C1-03A-R3-INDEPENDENT-REREVIEW-R1",
+      "implementation_return": "767bb9139b80e774093af8e765e57ee57a19e005",
+      "branch": "agent/reviewer-pyat-hq154-c1-03a-r3-rereview-r1",
+      "commission_tip": "14fc5351e00f0f303f8288bdea60828a02187794",
+      "launch_surface": "BROWSER__GPT_5_6_SOL_HIGH",
+      "adopted": false
+    },
+    {
+      "id": "C1-03R-ASTRA-A-INDEPENDENT-REVIEW-R1",
+      "implementation_return": "eb02332c93c6c3927303eefde9dd9ed768bb3480",
+      "branch": "agent/reviewer-pyat-hq154-c1-03r-astra-a-r1",
+      "commission_tip": "8bac6d97ee61b552fd36dcb29b8d03f8f8306aee",
+      "launch_surface": "BROWSER__GPT_5_6_SOL_HIGH",
+      "adopted": false
+    }
+  ],
+  "dependency_graph": {
+    "c1_03_join": {
+      "status": "BLOCKED_PENDING_BOTH_INDEPENDENT_REVIEWS_AND_HQ_ADOPTION",
+      "prerequisites": [
+        "HQ_ADOPTED_C1_03A_AT14_AT16",
+        "HQ_ADOPTED_C1_03R_AT18_AT19",
+        "AT17_ALREADY_ADOPTED"
+      ]
+    },
+    "c5_n5": {
+      "status": "ADOPTED_HQD_151"
+    },
+    "c7_n8e": {
+      "status": "BLOCKED_C4_CURRENT_PRODUCTION_REQUIRED",
+      "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001"
+    }
+  },
+  "next_action": "USER_LAUNCH_C1_03A_R3_BROWSER_REREVIEW_AND_C1_03R_ASTRA_A_BROWSER_REVIEW_IN_PARALLEL__HQ_RECONCILES_RETURNS",
+  "prohibitions": [
+    "NO_C1_03_JOIN_BEFORE_BOTH_REVIEWS_APPROVE_AND_HQ_ADOPTS",
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_WITHOUT_EXACT_LATER_WARRANT",
+    "NO_C7_IMPLEMENTATION",
+    "NO_C1_R",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}

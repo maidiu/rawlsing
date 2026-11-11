@@ -1,0 +1,91 @@
+{
+  "schema": "AS3R3_NODE5A_R2_MAPPING_PAYLOAD_PROVENANCE_SEARCH_LEDGER@1.0.0",
+  "status": "COMPLETE__NO_INDEPENDENTLY_GROUNDED_PREIMAGE_OR_HISTORICAL_SERIALIZATION_LAW_FOUND",
+  "target_digest_role": "HISTORICAL_PROOF_OBLIGATION_IDENTIFIER_ONLY__NOT_SEARCH_OR_SELECTION_ORACLE",
+  "target_digest": "081e3b8594be3d9348bc0565cd9085cca1e999ae58ef7881f040d11f5da89c7e",
+  "search_order": [
+    {
+      "order": 1,
+      "surface": "Node5A-R2 immutable commit sequence",
+      "refs": [
+        "127fda6e3275d9dd563903e6827d195db50bdade",
+        "e2c8637536a158ab5bc84a918c698d75fbda8d59",
+        "367faedcb3c8d3815ce64bf9df9f2cea46f0ea80",
+        "1a8ba44e3ede231b1c95cc59a0eb56321b3f2a60",
+        "13a4e39e710cb4fc75309324ca26e2a5e9ca1840",
+        "642a835e192804f03790a7fa0097cdb889d6e097",
+        "51fb610d8f7d63b09707e6d7ac461250f74d816b",
+        "303cb0fc9c37c15589980e5285212cf13096c5cc",
+        "ccac5d208a1e7763c8c193ec1cb4917915a1c262",
+        "a208b910a2a254052b8abc75cff9ff2c532ce30d"
+      ],
+      "finding": "Nine post-command commits add only the enumerated evidence artifacts. No transient committed helper, mapping-payload carrier, or byte serialization law.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 2,
+      "surface": "Original fail-closed Node5A",
+      "ref": "34caf24a79a0b49eae4cd0937e7b13f56bb38c2e",
+      "finding": "Fresh-process receipt establishes deterministic 19 mapping rows and reproduced A000/A1RAPP collision, but no mapping-payload preimage bytes or serialization algorithm is retained.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 3,
+      "surface": "Node5A identity/cardinality court",
+      "ref": "dc597c5293ec62864617ff77a5e928d5edb36171",
+      "finding": "Adopts 19 roles -> 19 role-to-ref mappings -> 18 canonical predicates and sole alias A000/A1RAPP. No mapping-payload byte law.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 4,
+      "surface": "Frozen Node4A inputs and AS3R3 producer",
+      "refs": [
+        "4d66bc34c256f6bf3f9f707dda80d963881f3510",
+        "cfc240aa3a64c59509eab97450a7d3603af813cc"
+      ],
+      "finding": "They ground source inputs, constructor semantics, and canonical object identity, not the separate Node5A-R2 role-mapping wrapper serialization.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 5,
+      "surface": "Immutable PR metadata/discussion",
+      "ref": "PR #243",
+      "finding": "Banking PR for exact Node5A-R2 commit. No comments/reviews contain execution helper or payload preimage; diff reproduces committed evidence only.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 6,
+      "surface": "Workflow/run artifacts and logs",
+      "ref": "workflow_run:34090165952 / job:101641848851",
+      "finding": "No artifacts. Job failed at Protocol self-test because rawlsing_next/tests/test_rabochii_execution_protocol.py was absent; bounded court and artifact upload were skipped.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 7,
+      "surface": "Retained Library/conversation execution evidence",
+      "search_basis": [
+        "exact Node5A-R2 branch name",
+        "AS3R3_NODE5A_R2_REPLAY_SEAL task name",
+        "rare replay receipt keys mapping_rows_sha256_by_run/package_identity_sha256_by_run/replay_stdout_sha256_by_run",
+        "Node5A-R2 success token plus tool/transcript markers"
+      ],
+      "target_digest_used_in_search": false,
+      "finding": "Only exported result/evidence artifacts recovered. No tool transcript, scratch Python helper, or retained output bytes establishing the mapping-payload construction.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 8,
+      "surface": "Exact retained helper/output explicitly referenced by immutable Node5A-R2 evidence",
+      "finding": "No such helper/output is referenced as the mapping-payload producer.",
+      "outcome": "NEGATIVE"
+    },
+    {
+      "order": 9,
+      "surface": "Earlier immutable replay implementation explicitly reused",
+      "ref": "34caf24a79a0b49eae4cd0937e7b13f56bb38c2e",
+      "finding": "Original Node5A replay observation is semantically relevant but does not retain a byte serialization protocol demonstrably reused by Node5A-R2.",
+      "outcome": "NEGATIVE"
+    }
+  ],
+  "conclusion": "NO_LAWFUL_PASS_PROVENANCE"
+}

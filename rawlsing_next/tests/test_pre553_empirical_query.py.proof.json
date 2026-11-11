@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "OCT28_P1_P1F1_I03_C11_SEMANTIC_EVENT_TO_DISTRIBUTION_SEVERANCE_R1",
+      "actual_consumer": "CarrierNeutralResearchExecutor.execute_i03 -> execute_empirical_query -> _target_component_value -> _event_cell_value -> empirical distribution cell",
+      "claimed_dependency": "I03 respondent-event exact substantive values from source-validated C11 must materially determine supported empirical numerator distributions; the compact/native selector does not replace values with a constant",
+      "positive_node": "rawlsing_next/tests/test_pre553_empirical_query.py::test_unary_distribution_and_observed_zero_are_exact",
+      "fault": {
+        "path": "rawlsing_next/_pre553_query_eval.py",
+        "old": "return canonicalize(_semantic_value(event))",
+        "new": "return canonicalize(1)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+# PYAT HQ262 — exact G1 service-client threat boundary and two-wave Ghana dictionary-only source custody — R1
+
+**Decision:** `HQD-2026-10-09-262`.
+**Class:** `BOUNDED_DEVELOPMENT_DECISION__DATA_ONLY_EXTERNAL_CLIENT_THREAT__SOURCE_HEADER_INSPECTION_ONLY__NO_G0B_OR_TEMPORAL_GRANT`
+**Authority:** PYAT HQ under user-directed governed PRE-V3 development and the existing command charter, subject to stricter source-custodian/semantic authority and access laws. This is **not** a credential, issuer root, real source-use grant or service deployment.
+**Frozen control parent:** `1ff7c74f6bef580ba3ce0738b7a9ac6b560ca2d7`, sealed HQ261.
+**Evidence:** G01 `6ea8fd5cc963e0217d42027e8c190d41e6fa1b11`; independent T01 `9f2cc810383b4680609f72be14acf3e9f49694fd`; Ghana E01 `8c9aefe11f294169c8d1c003cf1a0b96124c65b2`.
+
+## A. G1 threat and permitted engineering grade
+
+For **initial source-free internal development of the eventual selected EE14 service**, the desired served-client threat is explicitly **an external DATA-ONLY client** unable to execute arbitrary Python inside the owner process, load plugins, supply pickles/serialized executable objects, modify trusted owner code/fixture/registry, or pass C1/F8 evidence, model-rule, witness/authority records or replay state. Only a fixed q1/q2 query choice and later specifically authorized data-only values can enter. The service execution process and its canonical owner-controlled inputs must be separated from that request client, with no alternate object-bearing receipt-promotion path.
+
+**What this does NOT prove/authorize:** No such externally isolated process has been verified deployed. A library entrypoint callable by arbitrary same-process Python is **NOT** origin authentication against that stronger attacker, regardless of private attributes, hashes, dataclass freeze or self-issued refs. If arbitrary same-process execution is the promised service threat, G1 remains held until a demonstrably independently controlled process/principal and authenticated IPC. A source-free harness can establish owner-origin code flow at `INTERNAL_DEVELOPMENT_ONLY`, but not real deployment or T1. Do not require a speculative AT07/cryptographic issuer when no consuming protected path has been demonstrated.
+
+**Required stage implementation:** an EE14 selected-service owner-controlled entrypoint built over accepted C1 `compose_positioned_subject_possibility`, real `PossibilitySliceEvidence` from owner-held validated original C1 output/preimage, accepted service applicability and G2 scope binder, and F8. No untrusted evidence object can enter the chosen serving route, no caller-built C1 result/grant/hash used as upstream source. A distinct **technical selected-origin receipt** must bind full C1 composition/evidence preimage identity, G2-authenticated scope and F8 result, and be consumed only as a local technical integrity witness; it is **not** a G0b use grant or B5 CURRENT certificate. Legacy low-level F8 numeric API may remain callable in trusted test code and may still return identical numbers despite forged provenance; it is **not** itself a selectable authorized service credential. Native negative and no-invocation paths must be accurately typed.
+
+**Review gate:** implementer must demonstrate actual q1/q2 over a single private four-case XOR source-free fixture with actual joint denominators and full lineage. Independent later review on clean committed SHA must attack caller-supplied evidence and recomputed composite hashes; ensure no magical self-signed trust root and no accidental public object-bearing endpoint. Tests demonstrating the existing direct-F8 vulnerability are diagnostics, not tests proving the defect fixed. No real T1 without subsequent actual EE14 G0b and G3 service join.
+
+## B. Ghana two-file **header/dictionary-only** custody qualification
+
+For Ghana 2012 R5 Q43 and 2022 R9 Q31 *scientific release-readiness*, HQ approves a **conditional, source-custodian-mediated physical metadata inspection only** of the two already-inventoried local SAV carriers:
+
+- `Afro Barometer Round 5.sav` **expected SHA256** `c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651`.
+- `Afro Barometer Round 9.sav` **expected SHA256** `3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8`.
+
+A qualified custodian may inspect **only the headers/metadata dictionary**, including file-label/release fields, column names/labels and native category/missing labels for Ghana country indicator, age/citizenship/asked/routing, Q43/Q31, respondent weight candidates, PSU/EA, strata and release/version. A memory-bounded streaming SHA256 of these two exact physical files is permitted solely to verify expected byte identity. Metadata-only API (e.g. `pyreadstat.read_sav(metadataonly=True)` in an already authorized environment) must not load response rows. The 2012 original Ghana question and 2022 original Ghana question have already been recovered; no re-question archaeology.
+
+**No permission here** to load/decode/iterate any respondent record, write aggregate attitude counts, compute source-backed q/weighted share, sign/model an EE12 pair-use relation, claim country release edition match without independent official edition witness, infer a temporal sign, or create Field Forge/N9 world content. If physical sources are unavailable locally (as happened to the heavyweight LiTS retained checkpoint), or owner/access rules forbid this metadata probe, return a precise custodian/physical locator HOLD; do not hunt Library or silently regenerate/download. Existing retained inventory hashes do not establish actual physical SHA on this host until checked.
+
+**Scientific readback:** actual mapped Ghana country selector and item label/codes, possible age/routing fields, exact weight candidate names/types and any design PSU/stratum/replicate weight *metadata*, header release/version, file size and checksum. Distinguish header presence from a true qualified variance plan, and the 2012 R5 withinwt vs 2022 R9 withinwt_ea/withinwt_hh difference. Ghana 2022 2400 published technical interviews vs country codebook RESPNO label upper 2369 remains unresolved without actual respondent-level scope; metadata read may not resolve it. No exact official binary↔release match claimed from a filename. Passing metadata is readiness for a **later distinct scientific design/custodian authority court**, not for raw quantitative execution.
+
+## C. LiTS custody HOLD retained
+
+L01 `2c0fc16773ca75ae78c39414c2f561f82961ef3b` proved the sole warranted LiTS canonical 3.4GB checkpoint `current_i05_materialization_checkpoint_v3.json` is absent on the inspected host at its recorded persistent path, and no `LOCAL_CUSTODY` store root or alternate found within the permitted search. **No further L01-like local execution is issued.** Resolve whether an authorized backup of exact SHA `2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47` exists with its custodian; if absent, a separately approved raw-source re-materialization would be needed. The previous one-file read-only warrant is **not** a raw re-execution license.
+
+**Terminal:** `HQ262_G1_EXTERNAL_DATA_ONLY_DEV_THREAT_FIXED__GHANA_DICTIONARY_ONLY_CONDITIONAL_PHYSICAL_CUSTODY_QUALIFICATION__LITS_LOCAL_CANONICAL_OBJECT_ABSENT__NO_NEW_SERVICE_OR_EMPIRICAL_PAIR_GRANT`.

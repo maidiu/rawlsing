@@ -1,0 +1,54 @@
+{
+  "schema": "FIABC_LM2_R1K_COMMAND_TELEMETRY@1.0.0",
+  "browser_github_only": true,
+  "executions": [
+    {
+      "run_id": 35583650883,
+      "job_id": 106281910026,
+      "head_sha": "e93aabb3496b2f5242158d21ea3aa72c6c35e464",
+      "purpose": "FIRST_REAL_R15_R16_ATTEMPT",
+      "precheck": "35 passed in 37.37s",
+      "r15": "PASS_REACHED_R16",
+      "r16": "BLOCKED_Pre553AuthorityError"
+    },
+    {
+      "run_id": 35584670303,
+      "job_id": 106285125390,
+      "head_sha": "2074f75a12732f4f0373a022cef40134b476996b",
+      "purpose": "BLOCKER_CONFIRMATION",
+      "precheck": "35 passed in 40.46s",
+      "r15": "PASS_REACHED_BLOCKER_PREFLIGHT",
+      "r16": "REPORT_SCRIPT_ASSERTION_BEFORE_ORACLE"
+    },
+    {
+      "run_id": 35623528815,
+      "job_id": 106412144448,
+      "head_sha": "905d852c4e1d7955c1596884986bf245a9a7f12a",
+      "purpose": "R15_IDENTITY_CAPTURE_AND_BLOCKER_CONFIRMATION",
+      "precheck": "35 passed in 22.32s",
+      "r15": "PASS_CAPTURED",
+      "r16": "REPORT_SCRIPT_RECONSTRUCTED_OBJECT_INVENTORY_ASSERTION_BEFORE_ORACLE"
+    }
+  ],
+  "r15_capture": {
+    "release": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "semantic_release_hash": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "replay_manifest": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "source_release_manifest_hash": "a79ec6404330d34f0ae7cc365b895d09592e2f66749b5706111f42d6fb835570",
+    "public_object_count": 486110,
+    "internal_record_count": 97222,
+    "projection_identity": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665"
+  },
+  "real_neutral_i05_invocations": 1,
+  "real_neutral_i05_query_evaluations": 0,
+  "first_i05_failure": "Pre553AuthorityError: candidate validation rule exceeds exact discovery validation authority",
+  "persisted_q291_carrier_reads": 3,
+  "raw_wvs_source_reads": 0,
+  "wvs_sav_opened": false,
+  "wvs_zip_opened": false,
+  "candidate_a_b_c_processes_started": 0,
+  "candidate_outputs_consulted": 0,
+  "measured_p2x_executed": false,
+  "lock2_modified": false,
+  "r1j_authority_modified": false
+}

@@ -1,0 +1,124 @@
+{
+  "authority_adoption": "NONE",
+  "currentness_proof": {
+    "adopted_selector_bundle_is_no_argument_current": true,
+    "b1_absence_is_by_adopted_law": true,
+    "b1_published_anywhere_committed": false,
+    "committed_evidence_agreement": {
+      "committed_f1_publication_roots": [
+        {
+          "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+          "kind": "F1",
+          "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+        }
+      ],
+      "committed_files_carrying_current_f1": 3,
+      "exact_match_to_independently_recovered_f1": true
+    },
+    "f1_bound_to_current_rule_hash": true,
+    "f1_is_published_current": true,
+    "fuzzy_or_latest_selection_used": false
+  },
+  "custody_class_separation": {
+    "COMPUTED_BUT_NOT_PUBLISHED": {
+      "B1": {
+        "basis": "computed by the accepted M1 owner and deterministically reproducible, but the adopted rule forbids B1 publication",
+        "classification": "COMPUTED_INTERNAL_M1__NOT_PUBLISHED__NOT_CURRENT_CUSTODY",
+        "content_hash": "fc292cd4b45fb818830d17e121a99dc140d9b6964904c44c312977d8a7e44e0b",
+        "object_id": "urn:rawlsing:v554:b1:sha256:08af268c49c64c1fe70e286f83ba833171876afa783a6901de19553cd98752e1"
+      }
+    },
+    "CURRENT_ARTIFACT": {
+      "F1": {
+        "basis": "published under the current adopted rule; present in the direct V557 handoff, the published V558 object, and the committed f1_publication_roots",
+        "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+        "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+      }
+    },
+    "DETERMINISTIC_RECONSTRUCTION_FROM_RETAINED_CURRENT_DETERMINANTS": {
+      "basis": "the current chain re-executed in a fresh process from the retained R1C query/predicate/fact + the adopted no-arg selector bundle reproduces the identical content-addressed identities",
+      "independent_rerun_identical": true,
+      "independently_recomputed_b1": true,
+      "independently_recomputed_f1": true,
+      "owner_identity_law_used": "_urn(v554:f1|...) over canonical f1_material; semantic_hash over the whole object"
+    },
+    "HISTORICAL_ONLY_ARTIFACT": {
+      "HQ221_fixture_rule_F1": "e458a03bc9c866814c5b4e3e8e1b571c1353c628aae23959a36dc0129b7f00b3",
+      "classification": "HISTORICAL_ONLY__NON_CURRENT_FIXTURE_RULE__NOT_REUSABLE_AS_CURRENT_CUSTODY",
+      "rule": "V554-RULE-GT2-CONDITIONAL-SUPPORT@1.0.0 (HQ221 local fixture)"
+    },
+    "SYNTHETIC_TEST_ONLY_ARTIFACT": {
+      "HQ221_F1_and_B1": "bound to the non-current local fixture rule; classified historical-only for custody purposes and never promoted"
+    }
+  },
+  "hostile_checks": [
+    {
+      "attack": "F1/B1 from old/synthetic fixture",
+      "evidence": "current F1/B1 both differ from the HQ221 fixture-rule refs",
+      "fail_capable": true,
+      "id": "H01",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "same object_id with wrong content hash",
+      "evidence": "content_hash is an independent semantic hash over the whole object; tampering f1_material yields a008553dc94a->c2ad2c3389a4, detectable independently of object_id",
+      "fail_capable": true,
+      "id": "H02",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "stale V554 rule",
+      "evidence": "rule_id/version/hash are inside f1_material; substituting HQ221's fixture rule hash 63c08d60.. yields a different F1 id",
+      "fail_capable": true,
+      "id": "H03",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "wrong relation/admission lineage",
+      "evidence": "lineage_closure_fingerprint changes when admission/relation refs change; exact refs survive into the published object",
+      "fail_capable": true,
+      "id": "H04",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "wrong target use",
+      "evidence": "target_use is inside f1_material; STRUCTURAL_MEDIATION_INPUT->CAUSAL_SOURCE changes F1 id",
+      "fail_capable": true,
+      "id": "H05",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "manually relabeled M1 contract",
+      "evidence": "contract_version is inside f1_material; relabelling changes F1 id; owner contract_id remains M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "fail_capable": true,
+      "id": "H06",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "test fixture refs presented as current custody",
+      "evidence": "the published payload carries exactly the current F1 id; no HQ221 fixture ref appears in current custody",
+      "fail_capable": true,
+      "id": "H07",
+      "result": "REJECTED"
+    },
+    {
+      "attack": "manufacturing B1 custody from the internal computation",
+      "evidence": "B1 is deterministically computed and reproducible, but absent from the handoff, the published object, and committed f1_publication_roots; the adopted rule forbids B1 publication. Presenting the internal B1 as current custody would be the exact authority smuggling the commission forbids.",
+      "fail_capable": true,
+      "id": "H08",
+      "result": "REJECTED"
+    }
+  ],
+  "implementation_mutation": "NONE",
+  "is_a_publication_materialization_step_still_missing": {
+    "B1": "NOT A MATERIALIZATION GAP. The adopted rule forbids B1 publication; the committed evidence states 'B1 must be None'. Nothing is missing to materialize.",
+    "F1": false,
+    "answer": "For F1 custody is sufficient for a future V555 authority row. For B1 no custody can exist under current adopted law; supplying it would require an authority decision (widen publication authority), which is out of scope and would smuggle structural-route authority."
+  },
+  "schema": "PYAT_HQ224_04_RECONSTRUCTION_AND_CURRENTNESS_PROOF@1",
+  "self_adoption": "NONE",
+  "self_check_corrections_made_during_this_lane": [
+    "My first hostile check for 'B1 absent from the published payload' used a naive substring test for 'b1' and false-fired on the hex fragment '...a176cbb30a174faf4...'. Corrected to a structural check: no B1 key, no B1 ref, no B1 family. The underlying conclusion (B1 absent) was correct."
+  ],
+  "source_free": true
+}

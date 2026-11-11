@@ -1,0 +1,43 @@
+{
+  "accepted_integrated_cut": {
+    "candidate": "25d40806d15516b7f7ffa04f47bc651022c6f2b0",
+    "independent_review_commit": "332e00cb3da51b859a408a31f820b1afd7fe8fc0",
+    "note": "Preserve exact 25d scope; this is not acceptance of the newer fanin head or the later repair.",
+    "verdict": "ACCEPT_SCOPED_TEST_ONLY"
+  },
+  "fanin_callsite": {
+    "changed": false,
+    "engineering_fields_private": true,
+    "reason": "P2Continuation.admit_later_event/read_later_event/produce_input_interval/cold_read are preserved; fanin uses only those primitives and its existing public_opportunity allowlist.",
+    "standalone_later_cli_imported": false
+  },
+  "historical": {
+    "reviewer_commit": "f1a2872487b3aa492632a497ad7481e8529d937e",
+    "source_commit": "76fdb624afc7674f088d10c349bfe15ffd0b865a",
+    "source_tree": "1c701c14e131be131e7f62bdeccec3fe7415d0fb",
+    "verdict": "REVISE_PUBLIC_PRIVACY_AND_IMPLICIT_USER_ATTEMPT"
+  },
+  "not_run": [
+    "independent closure of later repair b71624f",
+    "independent review of this newer fanin head",
+    "routine rerun of unchanged fanin tests/CLI after preserved primitive API",
+    "inherited full 55-test estate",
+    "native/science/human/B grants"
+  ],
+  "oracle": "evidence/later_refresh_oracle.json",
+  "oracle_ok": true,
+  "oracle_sha256": "ac42607997979668f470efd4089e5a7cbdcfbec6f42e6e82c6740dadfa54da19",
+  "repair": {
+    "author_tests": "8 passed in 150.90s",
+    "code_commit": "4bdba46c4d3a667a9cd7845eb57caa980df76373",
+    "explicit_do_help": "separate project_do_help / CLI --do-help / do-help only",
+    "file_count": 48,
+    "grade": "AUTHOR_TESTED_PENDING_INDEPENDENT_CLOSURE",
+    "observation_no_auto_help": true,
+    "public_api": "allowlisted public reports plus explicit *_engineering / --engineering-out opt-in",
+    "published_commit": "b71624f21d0bc638e8817f3929cc6c01ab8b0f61",
+    "source_tree": "67f01db82c3722f6d5dcf98da722872db909a237"
+  },
+  "schema": "SOROK_P2_FANIN_LATER_REPAIR_STATUS@1",
+  "status": "PUBLIC_BOUNDARY_REPAIR_AUTHOR_TESTED_INDEPENDENT_CLOSURE_RUNNING"
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "GT12_PERMISSION_TRANSLATION_AUTHORITY_ADOPTION_ENVELOPE@1.0.0",
+  "adoption_content_hash": "fe527dd7d6f5163edd5867adf9da2b03ea581c7d78758fe07bf6857c3fd4c46f",
+  "adoption_material": {
+    "schema": "GT12_PERMISSION_TRANSLATION_AUTHORITY_ADOPTION@1.0.0",
+    "adopter": "VOZHD_GT12_WAVE1_CENTRAL_INTEGRATOR",
+    "adoption_operation": "ADOPT_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY_FOR_FROZEN_GT12_WAVE1",
+    "decision": "ADOPTED",
+    "current_state": "CURRENT_FOR_FROZEN_GT12_WAVE1_ONLY",
+    "authority": {
+      "authority_id": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "d052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c",
+      "candidate_commit": "a7a74319cf38bd22b57e7da6d016b36711a2b654"
+    },
+    "hostile_review": {
+      "terminal": "PASS__GT12_R3A_PERMISSION_TRANSLATION_AUTHORITY_CANDIDATE_LAWFUL_FOR_ADOPTION",
+      "terminal_commit": "273d5a6f010bb813b64ea0b29ca78624fe8b4422"
+    },
+    "mapping_adopted": {
+      "upstream_permission_token": "STRUCTURAL_MEDIATION_INPUT",
+      "downstream_m4_permission_atom": "CONTEXT",
+      "producer_allowed_uses_exact": ["CONTEXT"],
+      "v557_required_decision_state": "ALLOW_CONTEXT_ONLY",
+      "v557_allowed_uses_exact": ["CONTEXT"],
+      "v558_requested_resolution_uses_exact": ["CONTEXT"]
+    },
+    "scope": {
+      "program": "GT1_GT2_WAVE1_FROZEN_CANARY",
+      "relation_family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "source_family": "Afrobarometer",
+      "source_wave": "R5",
+      "risk_set_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "risk_set_semantic_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+      "conditioner": "Q86B",
+      "target": "Q86A",
+      "semantic_component_order": ["Q86B","Q86A"],
+      "downstream_m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "producer_family": "V554"
+    },
+    "preconditions": {
+      "relation_typed_state_exact": "SUPPORTED",
+      "admission_decision_exact": "ADMITTED",
+      "admission_target_use_permissions_exact": ["STRUCTURAL_MEDIATION_INPUT"],
+      "no_applicable_negative_denial_noncomparability_refs": true
+    },
+    "effect_ceiling": "ACTOR_INDEPENDENT_STRUCTURAL_CONTEXT_AVAILABILITY_AND_EXACT_V558_RESOLUTION_ONLY",
+    "not_authorized": [
+      "REVIEW_TRANSLATION","ACTIVE_CAUSAL_TRANSLATION","GENERIC_DOWNWARD_CLOSURE",
+      "GENERIC_PREV3_TO_M4_TRANSLATION","OTHER_RELATION_FAMILIES","OTHER_SOURCES_OR_RISK_SETS",
+      "V553","V555","V556","COMPARATOR_PSEPF","POSITIVE_V3_TRANSITION",
+      "ACTOR_STATE_MUTATION","V2_EXPRESSION","FIELD_MECHANISM_HEGEMONY_PROMOTION",
+      "PRE_MAIN_MOVEMENT","MAIN_MOVEMENT"
+    ],
+    "implementation_rule": {
+      "caller_minted_relation_producer_allowed_uses": "FORBIDDEN",
+      "required_authority_binding": "EXACT_ID_VERSION_CONTENT_HASH_PLUS_ADOPTION_RECEIPT",
+      "derived_relation_producer_allowed_uses": ["CONTEXT"],
+      "can003_and_can004_downstream_law": "REMAINS_BINDING_AND_UNMODIFIED"
+    }
+  }
+}

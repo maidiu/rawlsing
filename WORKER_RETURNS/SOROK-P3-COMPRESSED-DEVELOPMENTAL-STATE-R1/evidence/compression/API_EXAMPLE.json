@@ -1,0 +1,102 @@
+{
+  "api": {
+    "bind": "bind(spec, *, identity, proposal, catalog, realized) -> dict",
+    "preflight": "preflight(spec, *, identity, proposal, catalog) -> dict"
+  },
+  "envelope": {
+    "actor_access": "OBSERVED",
+    "actual_event_hash": "91dc99629373ca8e084b7246e1d64a01d3ac0cf30c17fe618c828e0a49b438fc",
+    "actual_event_ref": "TEST_ONLY_P2_EVENT_1",
+    "actual_interval_hash": null,
+    "actual_interval_ref": null,
+    "actual_interval_status": null,
+    "adp016_017_authorized": false,
+    "envelope_hash": "2748fa3ef88a1ed36dcdc2dfc3832748715182ff227279a2e0b8b7003c70252e",
+    "envelope_id": "envelope:fixture:1",
+    "held_reason": null,
+    "identity": {
+      "actor": "actor:fixture",
+      "branch": "branch:fixture",
+      "clock": 90,
+      "root": "root:fixture",
+      "state_hash": "17a7e8544454210a9575ed68a0497b251f9355c3066716e6f689c4027fa71bce"
+    },
+    "memory_or_claim_issued": false,
+    "native_status": "REALIZED",
+    "no_psychological_effects": true,
+    "no_state_mutation": true,
+    "observed": [
+      "scope:actor-observed"
+    ],
+    "perception_refs": [
+      {
+        "channel": "co_present",
+        "clock": 100,
+        "event_id": "TEST_ONLY_P2_EVENT_1",
+        "ref": "b54bab5876558bfa63c617bf85baa7c57439206d5c34ad2b6e1735b33d6a5c0b"
+      }
+    ],
+    "proposal_hash": "5e80ddf8db46c053273ed5bdbb3c9808e896cc4db6fd900d6058f7ff9e51cb04",
+    "psychological_effects": [],
+    "representation_form": "SINGULAR_OCCURRENCE",
+    "represented_window": {
+      "coverage_basis": "actual-event",
+      "from_clock": 90,
+      "to_clock": 100
+    },
+    "schema": "SOROK_P3_COMPRESSION_EVIDENCE_ENVELOPE@TEST_ONLY/1",
+    "selection_basis": "fixture selection rationale",
+    "source_ref_hashes": {
+      "source:material": "928e31e96db0c6d75701c5923e2a742ab76eb3aa4785f3c6a758c0617b06e250",
+      "source:participation": "f05fcdf6f2862b9679bfb588ee57a1cc8dd66cd8fd2b15a402dd6e6d7557aa15"
+    },
+    "sourcefree_grade": "SOURCEFREE_TEST_ONLY",
+    "spec_hash": "3e4e8057ed7bdba070cc3e47d4be2f73599652c692448cfde8bb1008ac6f5e35",
+    "status": "BOUND",
+    "unobserved": [
+      "scope:actor-unobserved"
+    ]
+  },
+  "form_examples": [
+    "SINGULAR_OCCURRENCE",
+    "REPRESENTATIVE_EPISODE",
+    "ACCUMULATED_INTERVAL",
+    "RETROSPECTIVE_CRYSTALLIZATION"
+  ],
+  "notes": [
+    "preflight returns the detached validated spec and has no effects",
+    "bind returns BOUND for actual observed event access and HELD when actor access/interval is unavailable",
+    "all returned metadata is sourcefree TEST_ONLY; no psychological effect is issued"
+  ],
+  "source_kind_examples": {
+    "bounded": "BOUNDED_INTERVAL",
+    "historical": "HISTORICAL_SOURCE",
+    "material": "MATERIAL_RELATION",
+    "participation": "ACTOR_PARTICIPATION",
+    "recurrence": "RECURRING_RELATION"
+  },
+  "spec": {
+    "envelope_id": "envelope:fixture:1",
+    "material_relation_refs": [
+      "source:material"
+    ],
+    "observed": [
+      "scope:actor-observed"
+    ],
+    "participation_refs": [
+      "source:participation"
+    ],
+    "proposal_hash": "5e80ddf8db46c053273ed5bdbb3c9808e896cc4db6fd900d6058f7ff9e51cb04",
+    "recurrence_basis_refs": [],
+    "representation_form": "SINGULAR_OCCURRENCE",
+    "represented_window": {
+      "coverage_basis": "actual-event",
+      "from_clock": 90,
+      "to_clock": 100
+    },
+    "selection_basis": "fixture selection rationale",
+    "unobserved": [
+      "scope:actor-unobserved"
+    ]
+  }
+}

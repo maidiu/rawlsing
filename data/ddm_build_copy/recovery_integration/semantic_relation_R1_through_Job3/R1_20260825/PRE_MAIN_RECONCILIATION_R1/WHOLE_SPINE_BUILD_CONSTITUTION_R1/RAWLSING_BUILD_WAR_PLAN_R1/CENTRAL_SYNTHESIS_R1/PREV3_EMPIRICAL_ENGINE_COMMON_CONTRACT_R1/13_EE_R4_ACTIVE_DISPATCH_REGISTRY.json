@@ -1,0 +1,54 @@
+{
+  "schema":"RAWLSING_EE_R4_ACTIVE_DISPATCH_REGISTRY@1.0.0",
+  "status":"R3_FANIN_RECONCILED__THREE_R4_LANES_AUTHORIZED",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "r3_returns":{
+    "EE-R3A":"9a31f6ddd984a43076cb89043a70ab19195332f5",
+    "EE-R3B":"1dc316b4a388949c1736aa65a20c8d43cfb2c8ba",
+    "EE-R3C":"b8f7c83035ed0a47f0b1cd95546d7fb1e2cb642c",
+    "EE-R3D":"fbd151af338c6b56c5d8072015425ab6cb05bbc3",
+    "EE-R3E":"dd218b1182b29259a19837c89222cbc47024b2ec",
+    "EE-R3F":"9082b85d0963c6505e2b9dc9b417cfb881b8cb1b",
+    "EE-R3G":"a4271919340a5d16702178b2d4efc2a1b2df602d"
+  },
+  "selection_floor_common_premise_state":{
+    "total_cells":18,
+    "ready_or_execution_law_frozen":14,
+    "blocked":4,
+    "blocked_cells":[
+      "WVS7::OP003","WVS7::OP004","WVS7::OP005","WVS7::OP006"
+    ],
+    "blocker":"R3F_FROZEN_WVS_PROVING_PAIR_RETURNED_UNRESOLVED_IN_R3D"
+  },
+  "candidate_execution_blocker":"EXACT_CURRENT_A_B_C_EXECUTABLE_OWNER_COMMIT_PATH_ARGV_CONFIG_NOT_FROZEN",
+  "active_workers":[
+    {
+      "id":"EE-R4A",
+      "human_name":"WVS Authority-Complete Proving Pair",
+      "branch":"agent/rabochii-prev3-ee-r4a-wvs-authority-complete-proving-pair-r1",
+      "commission_path":"WORKER_COMMISSIONS/EE-R4A/00_COMMISSION.md",
+      "library_access":"NO",
+      "wake":"WVS_OP003_OP006_COMMON_PREMISE_READY_OR_EXACT_BLOCKER"
+    },
+    {
+      "id":"EE-R4B",
+      "human_name":"A/B/C Exact Executable Owner Registry",
+      "branch":"agent/rabochii-prev3-ee-r4b-abc-executable-owner-registry-r1",
+      "commission_path":"WORKER_COMMISSIONS/EE-R4B/00_COMMISSION.md",
+      "library_access":"NO",
+      "wake":"R3G_SUCCESSOR_PHYSICAL_ADAPTER_READINESS"
+    },
+    {
+      "id":"EE-R4C",
+      "human_name":"Response Semantic Batch Partition",
+      "branch":"agent/rabochii-prev3-ee-r4c-response-semantic-batch-partition-r1",
+      "commission_path":"WORKER_COMMISSIONS/EE-R4C/00_COMMISSION.md",
+      "library_access":"NO",
+      "wake":"PARALLEL_SOURCE_DOCUMENTARY_RESPONSE_SEMANTIC_PRODUCTION"
+    }
+  ],
+  "parallel_law":"NO_ALL_LANES_BARRIER",
+  "critical_path":"R4A + R4B -> 27_CELL_PHYSICAL_REQUALIFICATION -> FINAL_18_CELL_ORACLE_ASSEMBLY -> FINAL_ABC_BAKEOFF",
+  "parallel_production_path":"R4C -> SEMANTIC_AUTHORITY_BATCHES",
+  "terminal":"EE_R4_THREE_BOUNDED_LANES_ACTIVE"
+}

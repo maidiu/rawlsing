@@ -1,0 +1,89 @@
+{
+  "contact_separation": {
+    "distinct_acceptance_receipts_required": true,
+    "distinct_accepted_authorities_required": true,
+    "independence_role": "CONTACT_WITNESS_INDEPENDENCE",
+    "occurrence_role": "CONTACT_OCCURRENCE_WITNESS",
+    "underlying_contact_truth_created": false
+  },
+  "schema": {
+    "current_positive_requires_separate_adoption": true,
+    "positive_decision_state": "ACCEPT",
+    "required_fields": [
+      "acceptance_authority_ref",
+      "registry_ref",
+      "registry_entry_ref",
+      "role",
+      "accepted_authority_ref",
+      "accepted_authority_owner_jurisdiction_ref",
+      "source_acceptance_evidence_ref",
+      "decision_state",
+      "consumer",
+      "scope.transition_use_scope",
+      "scope.family_scope",
+      "scope.subject_scope",
+      "scope.object_scope",
+      "negative_limit_refs",
+      "currentness_state",
+      "immutable_provenance",
+      "receipt_id",
+      "receipt_hash"
+    ],
+    "schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+    "synthetic_currentness": "NONCURRENT_SYNTHETIC_TEST_ONLY"
+  },
+  "synthetic_example": {
+    "acceptance_authority_ref": {
+      "content_hash": "b51aa91f83271371c199405913f92b789fe0af4751f88eb72bb7e7d4c967a97c",
+      "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY_SYNTHETIC_TEST",
+      "version": "1.0.0"
+    },
+    "accepted_authority_owner_jurisdiction_ref": {
+      "content_hash": "8e36b0dfc433c9dde7e58cbef9b7bf48fc59e22ce0b77736ecfe325eb6105a1e",
+      "ref": "urn:rawlsing:gt34:obl056:evidence:synthetic-owner-causal_use_permission:sha256:8e36b0dfc433c9dde7e58cbef9b7bf48fc59e22ce0b77736ecfe325eb6105a1e"
+    },
+    "accepted_authority_ref": {
+      "content_hash": "a92aa13f44217406338421878285241db1fed88e34b4e7acf5ccd5a5c759ee4a",
+      "id": "SYNTHETIC_EXISTING_CAUSAL_USE_PERMISSION_AUTHORITY",
+      "version": "1.0.0"
+    },
+    "consumer": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+    "currentness_state": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+    "decision_state": "ACCEPT",
+    "immutable_provenance": [
+      {
+        "content_hash": "6dd8b8fc71ccaff1c513285bc17013f1ffc4cb6a64f322f54ffcc603a0fad0ac",
+        "ref": "urn:rawlsing:gt34:obl056:evidence:synthetic-provenance:sha256:6dd8b8fc71ccaff1c513285bc17013f1ffc4cb6a64f322f54ffcc603a0fad0ac"
+      }
+    ],
+    "negative_limit_refs": [],
+    "receipt_hash": "e45b0c79c2a4ac08ff760c405225216e93367b4962831ef83c438f55d9d1e7e4",
+    "receipt_id": "urn:rawlsing:gt34:obl056:acceptance-receipt:sha256:e45b0c79c2a4ac08ff760c405225216e93367b4962831ef83c438f55d9d1e7e4",
+    "registry_entry_ref": {
+      "content_hash": "d56a3f0111162682083206707420f6a52012e496ca7b920b479bd583316eeb9c",
+      "ref": "urn:rawlsing:gt34:obl056:acceptance-entry:sha256:d56a3f0111162682083206707420f6a52012e496ca7b920b479bd583316eeb9c"
+    },
+    "registry_ref": {
+      "content_hash": "bc225131a736f791f7413a6ba5e3ce5a4b1abf7c91ab6d8828a962c9159c621b",
+      "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY_SYNTHETIC_TEST",
+      "version": "1.0.0"
+    },
+    "role": "CAUSAL_USE_PERMISSION",
+    "schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+    "scope": {
+      "family_scope": ["SYNTHETIC_TEST_FAMILY"],
+      "object_scope": ["SYNTHETIC_TEST_OBJECT"],
+      "subject_scope": ["SYNTHETIC_TEST_SUBJECT"],
+      "transition_use_scope": "BASIS_TO_AVAILABLE:ADP010_CAUSAL_USE"
+    },
+    "source_acceptance_evidence_ref": {
+      "content_hash": "c01c1ff2161c8de2c1948d04cc617e4696f11b0758e7e946b446e4682db0516c",
+      "ref": "urn:rawlsing:gt34:obl056:evidence:synthetic-source-causal_use_permission:sha256:c01c1ff2161c8de2c1948d04cc617e4696f11b0758e7e946b446e4682db0516c"
+    }
+  },
+  "synthetic_example_policy": {
+    "currentness": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+    "may_masquerade_as_current": false,
+    "purpose": "MECHANICAL_TEST_ONLY"
+  }
+}

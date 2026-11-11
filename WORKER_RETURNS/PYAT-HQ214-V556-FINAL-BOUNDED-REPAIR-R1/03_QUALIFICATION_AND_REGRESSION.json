@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_HQ214_QUALIFICATION_AND_REGRESSION@1.0.0",
+  "lane": "PYAT-HQ214-V556-FINAL-BOUNDED-REPAIR-R1",
+
+  "environment": {
+    "classification": "TRUTHFUL AND UNCHANGED FROM HQ211. This is still an absent governed environment.",
+    "governed_environment_present": false,
+    "python_version": "3.11.3",
+    "pytest": "9.1.1, installed by HQ211 into an isolated throwaway virtualenv at the OS temp path with --break-system-packages. NOT a governed project environment and not claimed as one.",
+    "plugin_autoload": "disabled via PYTEST_DISABLE_PLUGIN_AUTOLOAD=1",
+    "determinism": "PYTHONHASHSEED=0; the three-court surface was run twice with identical results",
+    "full_suite_status": "NOT reproducible and NOT claimed. Only 4 of the repository's 157 rawlsing_next test files are materialized under the commissioned sparse scope."
+  },
+
+  "courts": {
+    "repaired_v556_focused_court": {"before": 55, "after": 61, "result": "61 passed"},
+    "m3_court": {"result": "29 passed", "changed_by_this_lane": false},
+    "m2_court": {"result": "28 passed", "changed_by_this_lane": false},
+    "total_surface": {"before": 112, "after": 118, "result": "118 passed"},
+    "before_total_note": "The repair-base surface was measured as 111 passed with the base court (54+29+28). The HQ214 court at 61 is compared against the base module in the regression slice below, which is the meaningful comparison because it isolates the repair from the court rewrite.",
+    "runs": 2,
+    "second_run_identical": true
+  },
+
+  "hq213_discriminating_hostile_probes_reproduced": {
+    "all_closed_before_and_after": true,
+    "probes": [
+      {"probe": "P1", "target": "UNBOUNDED string leaf carrying blocked strong noun DOMINATION", "result": "REFUSED"},
+      {"probe": "P2", "target": "UNBOUNDED exact-ref kind leaf carrying blocked kind HEGEMONY", "result": "REFUSED"},
+      {"probe": "P4", "target": "numeric magnitude string on a semantic leaf", "result": "REFUSED"},
+      {"probe": "HAND1", "target": "hand-authored schema mapping bypassing helper constructors", "result": "REFUSED"},
+      {"probe": "HAND2", "target": "hand-authored mapping with UNBOUNDED exact-ref kind list", "result": "REFUSED"},
+      {"probe": "P7a", "target": "generic authoring of V556_INTERACTION_RELATION", "result": "REFUSED"},
+      {"probe": "P7b", "target": "generic authoring of V556_ATTRACTOR_PREREQUISITE", "result": "REFUSED"},
+      {"probe": "P5", "target": "ten actor/person-semantic participant-role witnesses", "result": "0 accepted, 10 refused"}
+    ],
+    "positive_controls": [
+      {"control": "closed semantic string leaf", "result": "SUPPORTED"},
+      {"control": "closed semantic exact-ref kind leaf", "result": "SUPPORTED"}
+    ],
+    "unlawful_escapes_remaining": 0,
+    "positive_controls_lost": 0
+  },
+
+  "semantic_vs_structural_unbounded_separation": {
+    "held": true,
+    "structural_array_cardinality_unbounded": "still lawful where commissioned: _node_array with max_items='UNBOUNDED' authors successfully",
+    "unbounded_string_item_inside_array": "REFUSED",
+    "semantic_string_leaf_unbounded": "REFUSED",
+    "semantic_string_leaf_omitted": "REFUSED",
+    "semantic_exact_ref_kind_leaf_unbounded": "REFUSED",
+    "over_closing_occurred": false
+  },
+
+  "real_class_family_mismatch_on_both_paths": {
+    "requirement": "commission requires a real class/family mismatch demonstrated on BOTH the authoring path and the direct registry-build path",
+    "authoring_path": {"refuses": true, "pairs_tried": 4, "genuinely_mismatched": true, "hashes_consistent": true},
+    "registry_build_path": {"refuses": true, "pairs_tried": 4, "genuinely_mismatched": true, "rehashed_consistently": true},
+    "limitation_disclosed": "Both paths refuse, but in this tranche the refusal on both paths is produced by the tranche-local family ceiling rather than by the new coherence gate, because every constructible mismatch necessarily carries a non-authorable family. This was verified by deleting the registry coherence call and observing that the end-to-end test still passed. The coherence gate itself is proved by a behavioural decision test and a structural wiring test, each verified to fail when the gate is removed. No mismatch was faked to make the new gate look exercised."
+  },
+
+  "regression_slice": {
+    "method": "Exact failure-ID set comparison on the same bounded three-court slice. The HQ214 court was run against the UNREPAIRED repair-base module (verified by sha256 to be exactly ade55043aaf33128708a672d1b23d1ef6f7b01c69e5b2ba080f6626847a9b33a), then against the repaired module, and the sorted ID sets were compared with comm. The module was file-swapped in place and restoration verified by sha256 after the swap, because a PYTHONPATH overlay does not shadow the pytest rootdir.",
+    "before_failing_ids": [
+      "test_d1_coherence_decision_refuses_genuine_mismatches",
+      "test_d1_registry_build_is_wired_to_the_coherence_decision",
+      "test_d1_unmapped_class_is_refused_by_the_coherence_decision",
+      "test_payload_participant_helper_classification_is_machine_readable"
+    ],
+    "before_failing_count": 4,
+    "after_failing_count": 0,
+    "fixed_by_repair_count": 4,
+    "new_failures_introduced_count": 0,
+    "new_failures_introduced_ids": [],
+    "regression": "NONE"
+  },
+
+  "discriminating_versus_preservation_honest_note": {
+    "discriminating_ids": 4,
+    "note": "Four of the new tests fail on the unrepaired module and pass on the repaired one; those carry the evidential weight. The remaining new tests pass on both: test_d1_authoring_refuses_a_genuine_class_family_mismatch and test_d1_registry_build_refuses_a_rehashed_hand_built_mismatched_rule pass on the base because the family ceiling already refused those pairs; test_d1_registry_build_still_accepts_a_coherent_pair, test_court_imports_no_refusal_vocabulary_from_production and the payload-helper tests are positive controls, structural or preservation witnesses. This is stated so a reviewer does not over-count the witness set."
+  },
+
+  "fail_capability_audit": {
+    "purpose": "Every claim that a new test is discriminating was verified by breaking the target and observing the failure, not asserted.",
+    "results": [
+      {"broke": "added BLOCKED_STRONG_NOUNS to the court's substrate imports", "expected_to_fail": "test_court_imports_no_refusal_vocabulary_from_production", "observed": "FAILED", "verdict": "genuinely fail-capable"},
+      {"broke": "coherence decision made never-raise", "expected_to_fail": "test_d1_coherence_decision_refuses_genuine_mismatches, test_d1_unmapped_class_is_refused_by_the_coherence_decision", "observed": "BOTH FAILED", "verdict": "genuinely fail-capable"},
+      {"broke": "registry coherence call deleted", "expected_to_fail": "test_d1_registry_build_is_wired_to_the_coherence_decision", "observed": "FAILED", "verdict": "genuinely fail-capable"},
+      {"broke": "registry coherence call deleted", "expected_to_fail": "test_d1_registry_build_refuses_a_rehashed_hand_built_mismatched_rule", "observed": "still PASSED", "verdict": "NOT discriminating - shadowing limitation, disclosed in 01 and 04"}
+    ],
+    "an_earlier_neutering_attempt_was_invalid": "A first attempt to neuter the coherence decision set authorizing = semantic_class, which still raised for the mismatch pairs and so appeared to 'pass'. That attempt was discarded as faulty and replaced with a genuine never-raise stub, which did fail the tests. Recorded because it is exactly the kind of self-deception a fail-capability audit exists to catch."
+  },
+
+  "preservation_law_verification": {
+    "m3_byte_identical": {"sha256": "736c17d8d6b6792e9befd3792f3754f7b8153fb415a2070b5628a030d44b00ed", "unchanged": true},
+    "m2_byte_identical": {"sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c", "unchanged": true},
+    "semantic_unbounded_closed": true,
+    "lawful_structural_cardinality_unbounded_retained": true,
+    "topology_family_positive": true,
+    "interaction_family_valid_empty": true,
+    "attractor_family_valid_empty": true,
+    "positive_role_allowlist_intact": true,
+    "no_numeric_pressure_magnitude": true,
+    "no_actor_person_semantics": true,
+    "no_fabricated_interaction_kind": true,
+    "no_attractor_population": true,
+    "deep_freeze_behaviour": true,
+    "exact_m3_hash_mirroring": true,
+    "no_architecture_reopen": true,
+    "no_self_adoption": true
+  },
+
+  "change_set": {
+    "production_modules_changed": ["rawlsing_next/pre553_v556_positive_substrate.py"],
+    "tests_changed": ["rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py"],
+    "seam_files_changed": 0,
+    "other_files_changed": 0,
+    "writes_confined_to_return_dir": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema": "GT34_V1_OBL053_HASH_GRAPH_INTEGRITY_REPAIR_EVIDENCE@1.0.0",
+  "status": "CANDIDATE_REPAIR_EVIDENCE__NO_ADOPTION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-v1-obl053-hash-graph-integrity-repair-r1",
+  "instruction_ref": "6bc8b2372deab75655bd4fb251849770cdde5400",
+  "historical_candidate_blob": "59c88df41b90f3ca932f52326fe4b275e84c4551",
+  "repaired_semantic_candidate_sha": "d14454bf2b464617e617fec5406a11bc2a754c09",
+  "repaired_candidate_blob": "14ff405cfb77ccfe30adbce16e9c0ff14fa540f9",
+  "evidence_execution_sha": "e1afc3c1d8c746ffcc75f79c8a5f0c87689aa08e",
+  "governed_court": {
+    "run": 34044557072,
+    "job": 101517181138,
+    "workflow": "Rabochii Governed Bounded Court",
+    "checkout": "e1afc3c1d8c746ffcc75f79c8a5f0c87689aa08e",
+    "protocol_self_test": "20 passed in 0.08s",
+    "bounded_tests": "9 passed in 0.09s",
+    "conclusion": "success",
+    "artifact_id": 9992689729,
+    "artifact_zip_sha256": "2ea9d9aa6124d3a27ab396c76baa099db1a94510704cbdce945c02ad81d2bde5"
+  },
+  "repaired_identities": {
+    "seed_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+    "authority_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29",
+    "semantic_object_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "semantic_object_id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "objective_evidence_receipt_hash": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c"
+  },
+  "tests_prove": [
+    "historical hash failure is mechanically reproducible",
+    "all four repaired declared hashes equal independent canonical recomputation",
+    "seed and authority semantic projections are exactly preserved",
+    "object projection changes only by corrected authority identity bindings",
+    "receipt projection changes only by corrected authority/object identity bindings",
+    "objective facts and semantic ceilings are unchanged",
+    "no second seed/object or downstream semantic authority is created",
+    "repair remains candidate-only and T1 hash finding is explicitly superseded"
+  ],
+  "terminal_candidate": "PASS__GT34_V1_OBL053_CONTENT_ADDRESSED_HASH_GRAPH_REPAIRED__NO_ADOPTION"
+}

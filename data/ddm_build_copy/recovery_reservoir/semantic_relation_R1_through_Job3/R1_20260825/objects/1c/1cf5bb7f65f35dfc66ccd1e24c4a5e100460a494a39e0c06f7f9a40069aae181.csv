@@ -1,0 +1,17 @@
+check,status,evidence
+positive_relation_total_144,PASS,n=144
+r6_canary_authority_117,PASS,117
+new_relation_total_27,PASS,27
+t06_positive_total_7,PASS,7
+candidate_total_exact,PASS,106238
+candidate_dispositions_exhaustive,PASS,"{'BLOCKED_AUTHORITY_GAP__NO_RELATION_ABSENCE_CLAIM': 79123, 'BLOCKED_WORKER_NEGATIVE_NOT_UNIFORMLY_REPLAYED__NO_RELATION_ABSENCE_CLAIM': 26503, 'POSITIVE_SUPPORT__RELATION_AUTHORITY_IN_CENTRAL_POSITIVE_LEDGER': 606, 'PROVEN_NEGATIVE__R8C_REVALIDATED_CURRENT_GRAIN': 6}"
+uniform_negative_candidate_count_6,PASS,6
+worker_negative_not_auto_promoted,PASS,Only four worker-negative rows survive because independently revalidated R8C authority exactly covers them; two additional central negatives came from prior worker blocks.
+exact_negative_relations_2,PASS,2
+r8c_prior_negative_count_9,PASS,9
+r8c_unmapped_negatives_blocked,PASS,7
+wave_rule_cells_315,PASS,315
+source_waves_35,PASS,35
+no_absence_claim_licensed,PASS,315/315 NO
+positive_negative_conflict_zero,PASS,Exact six candidate antijoin semantic pairs do not appear as subsets of any positive relation of the same rule (checked prior to packaging).
+source_object_worker_negatives_not_promoted,PASS,685

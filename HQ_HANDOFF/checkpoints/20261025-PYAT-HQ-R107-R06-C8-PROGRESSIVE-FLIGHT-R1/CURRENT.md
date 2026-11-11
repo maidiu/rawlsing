@@ -1,0 +1,4 @@
+# Pyat R107 — existing R06/C8 world-consuming progressive integration
+
+UserrequestedcommissionlaunchafterR0state. SealedexistingAstraC8/N9+N10E→N10W andlaterR06repair, twoexistingR06code/testpaths only. ExistingOpenCodeMAXauthoractuallylaunchedfromacceptedR96; actualtoolpreflightpending. Reusablequery/prefixclass, actualworldANDcomputedempiricalconsumerdependency, minority/uncertainty/currentness/coldproof; notQ86onlyorN10Eworld_partFalsefallback. Exactoutsidepath/scientificrule residualstop, no newgeneralinvestigation. R100parkedbankedunaccepted. Distinctexistingreviewerafterterminalcandidate. No source/measurement/scientific/CI/prod/N11/N12/Sorok/J52W52grant orgoal/heartbeatresumption.
+

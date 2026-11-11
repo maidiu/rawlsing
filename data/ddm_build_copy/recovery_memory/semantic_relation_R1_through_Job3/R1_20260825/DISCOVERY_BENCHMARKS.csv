@@ -1,0 +1,7 @@
+id,name,dimension,fixture_source,expected_behavior,failure_condition
+B001,nonpair_canary_coverage,Discovery completeness,R9A non-pair canary gap ledger,System must not claim complete graph discovery from same-wave pair census alone.,FAIL if all canaries are assumed pair-enumerable.
+B002,three_state_negative_law,Open-world epistemics,R16F coverage + proven negatives,Distinguish positive / proven-negative / blocked-or-unknown.,FAIL if blocked or zero-positive becomes negative.
+B003,t06_recertification,Authority succession,R16F→source-first crosswalk,All seven old T06 semantics survive under new strict-T06 IDs without double count.,FAIL if old+new union yields duplicates or any old edge is described as lost.
+B004,semantic_empirical_separation,Layer separation,R16F app guardrail,A semantic non-edge/reject must not prohibit empirical co-travel search.,FAIL if semantic edge state gates empirical association existence.
+B005,job3_court_accounting,Terminal court integrity,Job3 R3,"Exactly 552 ACCEPT + 697 REJECT + 15 BLOCKED = 1,264; final positives = 1,190.",FAIL on count or disposition drift.
+B006,composted_lineage_guard,Governance precedence,R15/C4/R16C-X,Later-dated composted artifacts cannot override source-first authority.,FAIL if timestamp alone promotes authority.

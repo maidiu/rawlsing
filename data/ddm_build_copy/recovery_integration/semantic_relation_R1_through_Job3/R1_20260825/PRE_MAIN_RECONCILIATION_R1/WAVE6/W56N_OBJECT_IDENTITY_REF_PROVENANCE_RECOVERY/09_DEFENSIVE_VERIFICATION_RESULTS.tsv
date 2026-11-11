@@ -1,0 +1,25 @@
+test_id	test	result	detail
+DV01	repository_root_pinned	PASS	explicit canonical repository and .git roots accepted
+DV02	repository_hardening	PASS	storage controls bounded; grafts alternates http-alternates shallow replacements absent
+DV03	python_I_S_flags	PASS	isolated ignore_environment no_user_site no_site safe_path all true
+DV04	no_PATH_in_git_env	PASS	trusted Git child environment contains no PATH
+DV05	trusted_git_absolute_outside_repo	PASS	fixture trusted Git is /usr/bin/git and outside repository
+DV06	trusted_git_fingerprint_stable	PASS	pre/post executable fingerprint identical
+DV07	verified_commit_normal_loose	PASS	normal loose commit rebind succeeds
+DV08	verified_tree_path_hash_bound_blob	PASS	verified nested tree path returns exact expected blob OID and bytes
+DV09	different_bytes_rejected_under_requested_oid	PASS	independent payload rehash rejects different bytes for requested blob OID
+DV10	verified_changed_paths	PASS	exact set is added.txt;plain.txt using verified tree construction
+DV11	normal_loose_ref	PASS	exact loose refs/heads value accepted and target commit verified
+DV12	redirected_loose_ref_rejected	PASS	loose ref symlink outside pinned metadata rejected
+DV13	packed_refs_hardening	PASS	bounded packed-refs storage accepted in normal fixture
+DV14	normal_packed_ref	PASS	packed-only exact ref accepted and target commit verified
+DV15	loose_packed_same_oid_accepted	PASS	coexisting representations accepted only when exact OID agrees
+DV16	loose_packed_conflict_rejected	PASS	different loose/packed OIDs fail closed
+DV17	symbolic_ref_rejected	PASS	ref: indirection rejected for trust-bearing full ref
+DV18	redirected_ref_path_component_rejected	PASS	symlinked intermediate refs path component rejected
+DV19	redirected_packed_refs_rejected	PASS	packed-refs symlink/redirection rejected
+DV20	verified_commit_parent_traversal_identity_mismatch_rejected	PASS	raw git cat-file succeeded on substituted loose-object fixture; verified commit reader rejected hash mismatch before parent trust
+DV21	verified_tree_path_rejects_substituted_blob_bytes	PASS	verified path traversal rejects different blob bytes behind requested OID
+DV22	packed_object_repository_hardening	PASS	repacked/pruned object repository remains within hardening contract
+DV23	normal_packed_object_storage	PASS	verified commit and nested blob reads continue to work from pack storage
+DV24	sha256_oid_algorithm_selected_from_oid_width	PASS	SHA-256 repository commit verifies under 64-hex OID and bounded storage controls

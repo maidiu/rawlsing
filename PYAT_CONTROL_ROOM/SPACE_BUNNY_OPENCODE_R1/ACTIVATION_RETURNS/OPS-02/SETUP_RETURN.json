@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_OPENCODE_OPS02_SETUP_RETURN@1.0.0",
+  "task": "OPS-02",
+  "implementer": "HQ_VOZHD__OPENCODE__SPACE_BUNNY_FREE",
+  "branch": "agent/opencode-pyat-hq183-ops01-ops04-activation-r1",
+  "base": "55ba382dccb88494d219a945c17efc166e456bd2",
+  "write_terrain_used": [
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/**",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02/**"
+  ],
+  "terrain_respected": true,
+  "files_added": [
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/qualify_ops03.mjs"
+  ],
+  "production_mutation": 0,
+  "rawlsing_next_changes": 0,
+  "source_access": 0,
+  "network_access": 0,
+  "installation_terrain": "NONE_TOUCHED__NO_GLOBAL_OR_PROJECT_OPENCODE_CONFIG_MODIFIED__NO_CREDENTIAL_OR_HOST_PERMISSION_CHANGE",
+  "installation_diff": "EMPTY_BY_DECISION__setup was implemented entirely inside the committed packet terrain, so no configuration backup or rollback was required",
+  "capabilities_actually_implemented": [
+    "assignment preparation with required-field validation",
+    "explicit-directory and explicit-session launch via argument array, never a shell string",
+    "append-only fsync'd event store with deduplication on (task_id, attempt, seq)",
+    "status and event capture distinguishing QUEUED / RUNNING / WAITING_FOR_HQ / ACCEPTED / FAILED / REJECTED / UNKNOWN",
+    "result submission with slot-cap enforcement at submission time",
+    "independent review launch slot, separately capped at 1",
+    "publication gate requiring in-terrain paths, an existing review, and a review that covers the exact candidate",
+    "expected-parent gate rejecting an unexpected remote base (sole-writer discipline)"
+  ],
+  "limitations_declared": [
+    "Role isolation is PROCEDURAL. Terrain and slot gates are enforced in software at submission and publication; they do not restrict what a worker process can read from the filesystem.",
+    "No OS-level separation. Q12 raw-directory denial is left unqualified because it requires host administration permission that was not granted.",
+    "python3 is non-functional on this host, so the packet's own scripts/verify_packet.py is unrunnable here.",
+    "The launcher emits an argv array; it does not itself prove the local opencode binary accepts these flags on this host."
+  ],
+  "rollback": "git revert the two runtime commits on the activation branch, or git checkout 55ba382dc -- PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/. No state outside the repository was modified, so rollback is complete and local.",
+  "production_qualification_claim": "NONE",
+  "terminal": "OPS02_MINIMAL_SETUP_IMPLEMENTED__QUALIFICATION_PENDING__NO_PRODUCTION_QUALIFICATION_CLAIMED"
+}

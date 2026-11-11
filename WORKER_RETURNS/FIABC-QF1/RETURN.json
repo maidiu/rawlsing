@@ -1,0 +1,58 @@
+{
+  "court": "FIABC-QF1",
+  "title": "Combined Source-Independent Qualification Court",
+  "status": "FAIL",
+  "terminal": "FIABC_QF1_COMBINED_SOURCE_INDEPENDENT_QUALIFICATION_FAIL__EXACT_REPAIR_SET_RETURNED",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-live-t6-final-implementation-r1",
+  "required_hq_seal": "44255e97119c83be86cefec032d0f0a244b00258",
+  "qualification_branch": "agent/rabochii-premain-fiabc-qf1-source-independent-qualification-r1",
+  "head": "44255e97119c83be86cefec032d0f0a244b00258",
+  "initial_worktree_clean": true,
+  "production_code_modified": false,
+  "static_identity_status": "PASS",
+  "compileall_status": "FAIL",
+  "python_executable": "/usr/local/bin/python3",
+  "python_version": "3.11.3",
+  "pytest_version": "9.0.2",
+  "raw_source_carriers_opened": false,
+  "real_six_cell_execution": false,
+  "wvs_oracle_materialized_from_sav": false,
+  "r6x_applied": false,
+  "measured_p2x_run": false,
+  "failure_clusters": [
+    {
+      "id": "FC-1",
+      "classification": "implementation defect",
+      "owner": "live stage backend",
+      "summary": "Literal escaped-newline syntax at ee_p2x_darwin_stage_backend.py:1102 causes compileall and two W3-I04 failures."
+    },
+    {
+      "id": "FC-2",
+      "classification": "unknown test fixture/helper defect",
+      "owner": "R35-I02 derivative-parentage hostile court",
+      "summary": "Forged fixture omits source_receipt and helper raises KeyError before production rejection."
+    },
+    {
+      "id": "FC-3",
+      "classification": "unknown fixture/accepted-contract mismatch",
+      "owner": "R35-I03 physical-equivalence court",
+      "summary": "Thirteen tests construct expected evidence containing binary floats rejected by canonicalize."
+    },
+    {
+      "id": "FC-4",
+      "classification": "unknown test setup defect",
+      "owner": "W3-I06A process-isolation court",
+      "summary": "Second temporary root is not created before freeze receipt write."
+    }
+  ],
+  "artifacts": [
+    "00_RETURN.md",
+    "01_COMMAND_EXECUTION_LEDGER.csv",
+    "02_TEST_RESULT_LEDGER.csv",
+    "03_STATIC_IDENTITY_LEDGER.csv",
+    "04_FAILURE_CLUSTER_REPORT.md",
+    "05_LOCAL_ONLY_NEXT_GATE.md",
+    "RETURN.json"
+  ]
+}

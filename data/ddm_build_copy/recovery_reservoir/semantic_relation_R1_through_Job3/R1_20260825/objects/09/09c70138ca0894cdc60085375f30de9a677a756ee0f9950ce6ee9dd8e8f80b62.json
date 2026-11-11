@@ -1,0 +1,96 @@
+{
+  "worker_id": "W02",
+  "status": "PASS",
+  "timestamp_utc": "2026-08-12T10:00:54.709828+00:00",
+  "immutable_pack": {
+    "path": "/Rawlsing/R10K/S14_RELATION_ROLE_BRIDGE_REPAIR/WORKER_PACKS_R15_20260811/Rawlsing_R10K_S14_R15_W02_Execution_Pack_20260811.zip",
+    "sha256": "c41c4054043ff15cbde7fd05023e1e9194f34ce91929059fa2c1213ee68957d3",
+    "expected_sha256": "c41c4054043ff15cbde7fd05023e1e9194f34ce91929059fa2c1213ee68957d3",
+    "verified": true
+  },
+  "dispatch_overlay": {
+    "path": "/Rawlsing/R10K/S14_RELATION_ROLE_BRIDGE_REPAIR/R15_DISPATCH_OVERLAY_R16C_V_20260812/Rawlsing_R10K_S14_R15_Dispatch_Alignment_Overlay_R16C_V_20260812.zip",
+    "sha256": "05b4fb3c2e8de16ba911ee4805de0e90a7fac07353a9731881276914b4ad0db7",
+    "verified_against_adjacent_sidecar": true
+  },
+  "read_order_acknowledged": [
+    "README_FIRST.md",
+    "AUDIT/AUDIT_REPORT.md",
+    "PROJECT_ORIENTATION.md",
+    "EXECUTION_PROTOCOL.md",
+    "CONTRACTS/CURRENT_RELATION_ADJUDICATION_DOCTRINE_R16C_V.md",
+    "CONTRACTS/UNIFIED_RETURN_FIELD_SPEC.md",
+    "CONTRACTS/WORKER_SPECIFIC_OVERRIDES.csv",
+    "immutable W02 00_README_FIRST.md",
+    "immutable rule release",
+    "immutable relation-role ontology",
+    "immutable evidence"
+  ],
+  "preflight_validator": {
+    "worker": "W02",
+    "mode": "preflight",
+    "status": "PASS",
+    "checks": [
+      {
+        "check": "exact_pack_sha256",
+        "pass": true,
+        "detail": "c41c4054043ff15cbde7fd05023e1e9194f34ce91929059fa2c1213ee68957d3"
+      },
+      {
+        "check": "assigned_atom_count_exact",
+        "pass": true,
+        "detail": "15156/15156"
+      },
+      {
+        "check": "t07_reserved_count_exact",
+        "pass": true,
+        "detail": "105"
+      },
+      {
+        "check": "workbench_template_same_rows",
+        "pass": true,
+        "detail": "15156/15156"
+      },
+      {
+        "check": "decision_atom_ids_unique",
+        "pass": true,
+        "detail": "0"
+      },
+      {
+        "check": "identity_columns_present",
+        "pass": true,
+        "detail": "24"
+      },
+      {
+        "check": "mutable_fields_blank_in_template",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "check": "job3_not_in_worker_task",
+        "pass": true,
+        "detail": "validator has no Job3 operation"
+      }
+    ]
+  },
+  "assignment": {
+    "r13_containers": 404,
+    "decision_atoms": 15156,
+    "source_waves": [
+      "Afrobarometer::R5",
+      "GSS::1972",
+      "GSS::2016",
+      "LiTS::III",
+      "LiTS::IV",
+      "WVS::W7"
+    ],
+    "t07_reserved_atoms": 105
+  },
+  "hard_boundaries": {
+    "external_browsing_used": false,
+    "job3_authorized": false,
+    "job3_used": false,
+    "assignment_membership_mutated": false,
+    "final_s14_authority_claimed": false
+  }
+}

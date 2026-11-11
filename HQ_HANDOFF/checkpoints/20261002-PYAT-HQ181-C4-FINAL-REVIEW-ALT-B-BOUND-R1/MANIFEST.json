@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF_MANIFEST@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ181-C4-FINAL-REVIEW-ALT-B-BOUND-R1",
+  "files": [
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ181-C4-FINAL-REVIEW-ALT-B-BOUND-R1/CURRENT.md",
+      "blob_sha": "35f52707ab697ee0d821d7a258dbb6499e593ba7"
+    },
+    {
+      "path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ181-C4-FINAL-REVIEW-ALT-B-BOUND-R1/CURRENT.json",
+      "blob_sha": "0babf16290ad290c8966447bcbccc8ba82e4a032"
+    }
+  ],
+  "governing_decision": "HQD-2026-10-02-181",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "seal_law": "MANIFEST_BINDS_EXACT_CURRENT_MD_AND_CURRENT_JSON_BLOBS_AT_HANDOFF_COMMIT",
+  "external_adjudication_retrieval": {
+    "law": "ALL_COMPARISON_MATERIAL_MUST_BE_FETCHABLE_FROM_ORIGIN",
+    "adjudicator": "ASTRA__SEPARATE_MACHINE",
+    "control_branch": "integration/pre-main-reconciliation-r1",
+    "lane_a_branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+    "lane_a_commission_tip": "42f54d6345ed31669f8c37d7dc23b8e042968986",
+    "lane_a_return_head": "fe6103cd50c634b92233f49815cc6d4abe49964d",
+    "lane_a_packet_dir": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-R1",
+    "lane_b_branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+    "lane_b_commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+    "lane_b_state": "BOUND_NOT_LAUNCHED",
+    "lane_b_packet_dir": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+    "lane_b_return_head": null,
+    "review_base_common": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "upstream_inputs_not_on_review_base": {
+      "omega1_decision": {
+        "commit": "01762d7379be4e423dad3e21bcdcee47c536902d",
+        "fetch_ref": "origin/agent/astra-pyat-hq168-omega1-production-readiness-r1"
+      },
+      "c4b_workload_oracle_claim_freeze": {
+        "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa",
+        "fetch_ref": "origin/agent/browser-pyat-hq170-c4b-workload-oracle-freeze-r1"
+      },
+      "d2p_independent_acceptance": {
+        "commit": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad",
+        "fetch_ref": "origin/agent/opencode-pyat-hq178-d2p-starriymac-import-review-r1"
+      }
+    }
+  }
+}

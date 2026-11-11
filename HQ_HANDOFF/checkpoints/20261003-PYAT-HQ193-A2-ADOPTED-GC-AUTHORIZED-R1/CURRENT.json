@@ -1,0 +1,58 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261003-PYAT-HQ193-A2-ADOPTED-GC-AUTHORIZED-R1",
+  "governing_decision": "HQD-2026-10-03-193",
+  "status": "A2_ADOPTED_UNATTENDED_SOURCE_FREE_WITH_BOUNDED_RESIDUALS__HOST_DISK_POLICY_PENDING__STALE_WORKTREE_RECLAMATION_AUTHORIZED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "dispatcher": {
+    "adopted_blob": "2db72c887b032622e09da6a5bd7723f7fb7055ee",
+    "worker_tip": "4b0b33102998abf9ce29fc0e584e278c85a44fe7",
+    "substantive_result": "50829fd0fba24eefd457abeb3cba4cd365460296",
+    "review_tip": "99d6c2fb5fcee594b2f58a69934ccb92890dee13",
+    "capability": "UNATTENDED_SOURCE_FREE_ORCHESTRATION_ON_THIS_HOST_WITH_BOUNDED_RESIDUAL_LIMITATIONS",
+    "reviewer_independence": "SATISFIED",
+    "default_scoped_permission_profile_only": true
+  },
+  "host_preflight": {
+    "return_tip": "d3d2561980723fc20fedde9270aa5b5cbc9bf465",
+    "disposition": "HOST_PREFLIGHT_POLICY_THRESHOLD_REQUIRED",
+    "local_courts_ignore": "CLOSED",
+    "symlink": "CLOSED",
+    "disk_blocker": "OPEN_PENDING_RECLAMATION_AND_POLICY_THRESHOLD"
+  },
+  "worktree_gc": {
+    "authority": "SALVAGE_THEN_REMOVE_STALE_REGISTERED_WORKTREES",
+    "active_preserve_branch": "agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1",
+    "forbidden_auto_delete": [
+      "LOCAL_COURTS/**",
+      "data/**",
+      "deepseek-harness",
+      "shared git objects",
+      "raw/source estates",
+      "user documents"
+    ]
+  },
+  "c4": {
+    "freeze_blockers": 0,
+    "warrant_blockers": 1,
+    "live_execution_blockers": 1,
+    "live_blocker_type": "HOST_PREFLIGHT_DISK_POLICY_CAPACITY",
+    "r7": "CLOSED",
+    "advisories": 9,
+    "counterexamples": 1,
+    "adopted": false,
+    "hq182_hold_lifted": false
+  },
+  "active_lanes": {
+    "implementer": "agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1"
+  },
+  "held": [
+    "SOURCE_LOCATOR_DISCOVERY",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "RUN_SALVAGE_FIRST_WORKTREE_RECLAMATION__CONTINUE_R9_OS_ACCOUNTING__THEN_ADOPT_DISK_POLICY_THRESHOLD_FROM_POST_GC_HOST_STATE"
+}

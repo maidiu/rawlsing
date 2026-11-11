@@ -1,0 +1,52 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261007-PYAT-HQ239-F7-DESIGN-N10E-ISSUER-ARCHAEOLOGY-R1",
+  "decision": "HQD-2026-10-07-239",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
+  "inherited_checkpoint": "20261007-PYAT-HQ238-F7-NARROWER-04G-INDEPENDENT-PROOF-R1",
+  "n10e_r3_review": {
+    "branch": "agent/reviewer-pyat-hq237-n10e-c1-model-authority-r3-r1",
+    "head": "71d6f77cae4d77caefe22fad4d379c5c840e3f03",
+    "disposition": "C1_OWNER_NATIVE_MODEL_AUTHORITY_R3_PARTIAL__NAMED_DEFECT",
+    "identities_passed": 11,
+    "typed_mapping_passed": true,
+    "authority_adopted": false,
+    "named_defects": [
+      "HQ237-DEFECT-FIXTURE-CONTEXT-ISSUER-AUTHORITY-001",
+      "HQ237-DEFECT-C1-N10E-CONTEXT-ENTRYPOINT-CUSTODY-002"
+    ]
+  },
+  "f7": {
+    "status": "F7_RR_04G_OPEN__NARROW_LEDGER_CELL_FORGERY_PROVED",
+    "review_head": "ae5e140a378406888c94d099b7dd8e98dfeb1459",
+    "full_adoption": false,
+    "architecture_adopted": false
+  },
+  "active_lanes": [
+    {
+      "id": "F7_TRUSTED_DECISION_BOUNDARY_DESIGN",
+      "branch": "agent/rabochii-pyat-hq238-f7-end-to-end-trusted-decision-boundary-r1",
+      "commission_tip": "16ee0054622077c84f815c71c04468bc39411d61",
+      "agent": "Browser/GitHub documentary",
+      "model": "GPT-5.6 Sol High",
+      "status": "EXISTING__NOT_RETURNED",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ238-F7-END-TO-END-TRUSTED-DECISION-BOUNDARY-R1/00_COMMISSION.md"
+    },
+    {
+      "id": "N10E_C1_FIXTURE_CONTEXT_ISSUER_OWNER_ARCHAEOLOGY",
+      "branch": "agent/rabochii-pyat-hq239-n10e-c1-fixture-context-issuer-owner-archaeology-r1",
+      "commission_tip": "aae598f13dd3bc9a1eaf2a1404dd50b22dfb0ec0",
+      "agent": "Browser/GitHub documentary",
+      "model": "GPT-5.6 Sol High",
+      "status": "NEW__NEEDS_LAUNCH",
+      "commission": "WORKER_COMMISSIONS/PYAT-HQ239-N10E-C1-FIXTURE-CONTEXT-ISSUER-OWNER-ARCHAEOLOGY-R1/00_COMMISSION.md"
+    }
+  ],
+  "holds": {
+    "f7": "NO_FULL_ADOPTION_OR_ARCHITECTURE_IMPL",
+    "n10e": "NO_R3_AUTHORITY_ADOPTION_OR_R4_INVENTED_ISSUER_OR_SPACE_BUNNY_IMPLEMENTATION",
+    "n6": "LOCAL_CONTEXT_ONLY__OC05_NONCURRENT"
+  },
+  "next_action": "RUN_F7_HQ238_TCB_DESIGN_AND_N10E_HQ239_ISSUER_ARCHAEOLOGY_IN_PARALLEL__INTAKE_ANY_RETURN_IMMEDIATELY"
+}

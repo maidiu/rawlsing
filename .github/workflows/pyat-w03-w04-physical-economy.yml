@@ -1,0 +1,42 @@
+name: PYAT W03-W04 compact and cold C11 first-consumer court
+
+on:
+  pull_request:
+    paths:
+      - 'rawlsing_next/_pre553_c11_execution_view.py'
+      - 'rawlsing_next/tests/test_pre553_c11_execution_view.py'
+      - 'rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py'
+      - '.github/workflows/pyat-w03-w04-physical-economy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compact-cold-sourcefree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install sourcefree physical test dependencies
+        run: python -m pip install pytest pyarrow pyreadstat pandas
+      - name: Execute exact compact/cache and cold I03/I05 consumer regressions
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q -o addopts='' -p no:cacheprovider \
+            rawlsing_next/tests/test_pre553_c11_execution_view.py \
+            rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+            rawlsing_next/tests/test_pre553_carrier_execution.py \
+            rawlsing_next/tests/test_pre553_i03_grouping.py \
+            --junitxml=pyat-w03-w04-sourcefree-junit.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pyat-w03-w04-sourcefree-junit
+          path: pyat-w03-w04-sourcefree-junit.xml
+          if-no-files-found: error
