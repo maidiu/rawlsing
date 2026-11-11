@@ -593,32 +593,104 @@
       "job": "pyat-w03-w04-mcr-ci-proof-focused-recheck-r1",
       "session": "ses_e47b17f8fffedazgQeSGbql4HH",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_CC_F04_ACCEPTED__CCF3_R01_MECHANICAL_TRIGGER_FIX_APPLIED",
       "source_candidate": "4ac862ef58d06266c7de8a7cc186c5c41dd0ad48",
       "scope": "IndependentCC-F03/F04 workflowandfullcommittedproofgate only",
-      "pid": 9340
+      "pid": 9340,
+      "candidate": "ac8f9a28de9bf3c56d98f3fe2406a4e4c1cd0821",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c8c0dc860013NLxUUhUP9xeTw",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794369445088,
+          "streamed": 1794369458383,
+          "completed": 1794369458872
+        }
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-api-binding-independent-recheck-r1",
       "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-engineering-review-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_ACCEPT_AT_CCF5_R01_SCOPE",
       "source_candidate": "a5a635a794aa701cde0b7d7b3b6c0708c76288b2",
       "scope": "Independent exact CCF5-R01 API binding only, distinct nonauthor; no old429wholejob retry",
-      "pid": 12992
+      "pid": 12992,
+      "candidate": "475035790098d11751012308b7fd62576987502d",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c8c604bc0010vtHQ9O7myuGED",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794369783108,
+          "streamed": 1794369830329,
+          "completed": 1794369830826
+        }
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-economic-protocol-residuals-r4",
       "session": "ses_b998af9086264002a86ee57b6e",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_INTEGRATED_PENDING_INDEPENDENT_METHOD_RECHECK",
       "source_candidate": "287f5e18ffaf09acb54dea31b60f8486f845f334",
       "scope": "Six exactreviewedresidualgroups; failfirst validatedrunreceiptmethod, nofullscale/productionoptimization",
-      "pid": 16121
+      "pid": 16121,
+      "candidate": "58a8c56c98058bd4606a3195e2a0ae955343f218",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c8c8033b0019BpEml3ZctZe9P",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794369913972,
+          "streamed": 1794369925034,
+          "completed": 1794369925306
+        }
+      }
+    },
+    {
+      "job": "pyat-w03-w04-mcr-economic-protocol-recheck-r2",
+      "session": "ses_6857b9b4c50542e7a7268dfb7d",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+      "scope": "ExactR4methodindependentrecheck",
+      "pid": 52052
+    },
+    {
+      "job": "pyat-w03-w04-mcr-required-evidence-preparation-r1",
+      "session": "ses_1b9742b6c02745d8a69d062011",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+      "scope": "Mandatory12outputdocuments/actualsourcefreeproofpreparation; scale/economicNOT_RUN",
+      "pid": 52056
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Dispatch exact receipt-protocol method correction with diagnosed two-repair boundary; CI/proof and API reviews continue independently. No full100k until independent methodready.",
+  "next_action": "Dispatch method recheck and required evidence preparation in parallel; no filler third lane. Fullscale waits independent method qualification; finalcode waits complete proofpackage.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -646,5 +718,5 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "Three actual allocatedlanes; no fourth or full100k before method qualified."
+  "next_ready_work": "No third independent necessary commission ready without duplicating sameheadreceiving or premature100k. Two substantive lanes authorized; capacity3 remains cap."
 }
