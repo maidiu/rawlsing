@@ -1,0 +1,1832 @@
+{
+  "acceptance": {
+    "final_shape": false,
+    "pass": false,
+    "reason": "baseline JSON absent; diagnostic only",
+    "retention_decision": "DO_NOT_RETAIN__NO_BASELINE",
+    "status": "NO_BASELINE"
+  },
+  "acceptance_status": "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
+  "baseline_identity": {
+    "path": null,
+    "sha256": null,
+    "source_head": null
+  },
+  "final_matrix_eligible": false,
+  "final_matrix_requirements": {
+    "actual_events_reported": true,
+    "profiles": [
+      "narrow",
+      "wide",
+      "repeat"
+    ],
+    "repetitions_min": 3,
+    "rows_min": 100000,
+    "scenario": "full-matrix"
+  },
+  "generated_utc": "2026-11-11T03:27:24Z",
+  "host": {
+    "cap_bytes": 6442450944,
+    "load_average": [
+      2.70849609375,
+      2.615234375,
+      2.7734375
+    ],
+    "node": "mainMac.lan",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "limits": [
+    "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
+    "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",
+    "Cold-warm-delete-rebuild use fresh child processes.",
+    "ExactPhysicalCellStream has no source decode; decode stage is explicitly not applicable.",
+    "Object construction and canonical closure hashing share the public candidate boundary; stages are labelled combined rather than falsely split."
+  ],
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "profiles": [
+    "wide"
+  ],
+  "repetitions": 1,
+  "results": {
+    "cold": {
+      "wide": {
+        "actual_event_counts": {
+          "cold": [
+            96
+          ],
+          "delete_rebuild": [],
+          "warm": []
+        },
+        "cache_write_amortization": null,
+        "canonical_persist_wall_seconds_total": 0.0,
+        "canonical_reopen_hit_count": 0,
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 57966592,
+            "max_wall_seconds": 0.42333712591789663,
+            "median_cold_to_firstconsumer_stage_peak_rss_bytes": 57909248.0,
+            "median_cpu_system_seconds": 0.094676,
+            "median_cpu_user_seconds": 0.841583,
+            "median_firstconsumer_stage_peak_rss_bytes": 57909248.0,
+            "median_parent_wall_seconds": 0.7460685590049252,
+            "median_rss_peak_bytes": 57966592.0,
+            "median_wall_seconds": 0.42333712591789663,
+            "min_rss_peak_bytes": 57966592,
+            "min_wall_seconds": 0.42333712591789663,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cap_bytes": 6442450944,
+              "cap_enforced": true,
+              "cap_monitor": "PARENT_PROCESS_RSS_MONITOR",
+              "cap_peak_sampled_bytes": 57995264,
+              "cell_count": 96,
+              "cell_generation_seconds": 0.0697199001442641,
+              "cold_combined_rss_peak_bytes": 57344000,
+              "cold_combined_wall_seconds": 0.29545992997009307,
+              "consumer": {
+                "consumer_fingerprint": "efbc8dc1b82cd5322566250112e02c1d52e7d1ec1000e681a1a04708d534f34f",
+                "i03": [
+                  {
+                    "fact_states": [
+                      "SUPPORTED"
+                    ],
+                    "facts": [
+                      {
+                        "authority_snapshot_refs": [
+                          {
+                            "authority_content_hash": "e752e363b51959e4774121feff56ccec0ae3984f17b937e0768f40980890270c",
+                            "authority_id": "I03-AUTH-m01-mapping",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "aa29a4ae21cb527001bdabcb140b98f17d40525e4f59fe2c6347ba7a93bf540d",
+                            "authority_id": "I03-AUTH-m01-projection",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+                            "authority_id": "I03-AUTH-m01-query",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "45021b35816e4405b10df7d9e64970c3c4b2aad61d1167461735c2b4808edb2e",
+                            "authority_id": "I03-AUTH-m01-routing",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "0e656eac9cf1bb711733642e7b426ec55aefb2284ce843b67332f5d1c411b39b",
+                            "authority_id": "I03-AUTH-m01-source",
+                            "authority_version": "1.0.0"
+                          }
+                        ],
+                        "content_hash": "f4ec8cf6f501d7144dbe82a38e91afc9f5a32b95d2f129e9f47cecf3918d36d3",
+                        "dependency_refs": [
+                          {
+                            "content_hash": "bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1",
+                            "kind": "C11Internal:ReplayManifest",
+                            "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1"
+                          },
+                          {
+                            "content_hash": "c66ede9354fbc61638e7f0617a0199a91bd22dc2a01cdf65e4bc368f3569a0b2",
+                            "kind": "C11LogicalRelease",
+                            "object_id": "REL-m01"
+                          },
+                          {
+                            "content_hash": "2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1",
+                            "kind": "EmpiricalPredicate@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1"
+                          },
+                          {
+                            "content_hash": "9e7f7da95277eb3e9e919dadf938f60703047c0c306b73aa85c08a9460cfb4b7",
+                            "kind": "EmpiricalQuerySpec@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9e7f7da95277eb3e9e919dadf938f60703047c0c306b73aa85c08a9460cfb4b7"
+                          },
+                          {
+                            "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                            "kind": "EmpiricalUniverse@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                          },
+                          {
+                            "content_hash": "1960cc2d639b897e34ff376a4c8c229ce7545b96f21bd8818bebc4d1b6cde1ba",
+                            "kind": "PRE553_I03_QUERY_REPLAY",
+                            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1960cc2d639b897e34ff376a4c8c229ce7545b96f21bd8818bebc4d1b6cde1ba"
+                          },
+                          {
+                            "content_hash": "02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79"
+                          },
+                          {
+                            "content_hash": "0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc"
+                          },
+                          {
+                            "content_hash": "06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d"
+                          },
+                          {
+                            "content_hash": "11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce"
+                          },
+                          {
+                            "content_hash": "16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d"
+                          },
+                          {
+                            "content_hash": "23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277"
+                          },
+                          {
+                            "content_hash": "503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45"
+                          },
+                          {
+                            "content_hash": "63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498"
+                          },
+                          {
+                            "content_hash": "735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4"
+                          },
+                          {
+                            "content_hash": "86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730"
+                          },
+                          {
+                            "content_hash": "8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff"
+                          },
+                          {
+                            "content_hash": "9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480"
+                          },
+                          {
+                            "content_hash": "9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d"
+                          },
+                          {
+                            "content_hash": "997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c"
+                          },
+                          {
+                            "content_hash": "cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0"
+                          },
+                          {
+                            "content_hash": "dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a"
+                          },
+                          {
+                            "content_hash": "069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a"
+                          },
+                          {
+                            "content_hash": "5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08"
+                          },
+                          {
+                            "content_hash": "5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37"
+                          },
+                          {
+                            "content_hash": "628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4"
+                          },
+                          {
+                            "content_hash": "665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d"
+                          },
+                          {
+                            "content_hash": "68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22"
+                          },
+                          {
+                            "content_hash": "808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12"
+                          },
+                          {
+                            "content_hash": "9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a"
+                          },
+                          {
+                            "content_hash": "aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db"
+                          },
+                          {
+                            "content_hash": "b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec"
+                          },
+                          {
+                            "content_hash": "b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed"
+                          },
+                          {
+                            "content_hash": "d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7"
+                          },
+                          {
+                            "content_hash": "d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9"
+                          },
+                          {
+                            "content_hash": "e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927"
+                          },
+                          {
+                            "content_hash": "e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13"
+                          },
+                          {
+                            "content_hash": "e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79"
+                          }
+                        ],
+                        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:f4ec8cf6f501d7144dbe82a38e91afc9f5a32b95d2f129e9f47cecf3918d36d3",
+                        "producer_replay_locator_or_reference_root": {
+                          "content_hash": "1960cc2d639b897e34ff376a4c8c229ce7545b96f21bd8818bebc4d1b6cde1ba",
+                          "kind": "PRE553_I03_QUERY_REPLAY",
+                          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1960cc2d639b897e34ff376a4c8c229ce7545b96f21bd8818bebc4d1b6cde1ba"
+                        },
+                        "schema_id": "EmpiricalFact",
+                        "schema_version": "1.0.0",
+                        "semantic_fields": {
+                          "condition_predicate_ref": {
+                            "content_hash": "2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1",
+                            "kind": "EmpiricalPredicate@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1"
+                          },
+                          "denominator_member_refs": [
+                            {
+                              "content_hash": "094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9"
+                            },
+                            {
+                              "content_hash": "14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8"
+                            },
+                            {
+                              "content_hash": "2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c"
+                            },
+                            {
+                              "content_hash": "30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25"
+                            },
+                            {
+                              "content_hash": "37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463"
+                            },
+                            {
+                              "content_hash": "54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca"
+                            },
+                            {
+                              "content_hash": "5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68"
+                            },
+                            {
+                              "content_hash": "784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f"
+                            },
+                            {
+                              "content_hash": "91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e"
+                            },
+                            {
+                              "content_hash": "9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3"
+                            },
+                            {
+                              "content_hash": "b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa"
+                            },
+                            {
+                              "content_hash": "c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41"
+                            },
+                            {
+                              "content_hash": "ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a"
+                            },
+                            {
+                              "content_hash": "f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28"
+                            },
+                            {
+                              "content_hash": "f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9"
+                            },
+                            {
+                              "content_hash": "ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff"
+                            }
+                          ],
+                          "empirical_query_spec_ref": {
+                            "content_hash": "9e7f7da95277eb3e9e919dadf938f60703047c0c306b73aa85c08a9460cfb4b7",
+                            "kind": "EmpiricalQuerySpec@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9e7f7da95277eb3e9e919dadf938f60703047c0c306b73aa85c08a9460cfb4b7"
+                          },
+                          "empirical_universe_refs": [
+                            {
+                              "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                              "kind": "EmpiricalUniverse@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                            }
+                          ],
+                          "execution_detail": "exact governed target distribution resolved",
+                          "measure_basis_ref": {
+                            "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+                            "kind": "MEASURE_BASIS",
+                            "object_id": "urn:test:i03:measure_basis:RAW"
+                          },
+                          "measure_kind": "RAW",
+                          "query_execution_contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+                          "raw_denominator_support": 16,
+                          "raw_numerator_support": 16,
+                          "raw_resolved_target_support": 16,
+                          "replay_ref": {
+                            "content_hash": "1960cc2d639b897e34ff376a4c8c229ce7545b96f21bd8818bebc4d1b6cde1ba",
+                            "kind": "PRE553_I03_QUERY_REPLAY",
+                            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:1960cc2d639b897e34ff376a4c8c229ce7545b96f21bd8818bebc4d1b6cde1ba"
+                          },
+                          "response_state_semantics_ref": {
+                            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+                            "kind": "RESPONSE_STATE_SEMANTICS",
+                            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+                          },
+                          "risk_set_member_refs": [
+                            {
+                              "content_hash": "094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9"
+                            },
+                            {
+                              "content_hash": "14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8"
+                            },
+                            {
+                              "content_hash": "2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c"
+                            },
+                            {
+                              "content_hash": "30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25"
+                            },
+                            {
+                              "content_hash": "37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463"
+                            },
+                            {
+                              "content_hash": "54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca"
+                            },
+                            {
+                              "content_hash": "5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68"
+                            },
+                            {
+                              "content_hash": "784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f"
+                            },
+                            {
+                              "content_hash": "91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e"
+                            },
+                            {
+                              "content_hash": "9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3"
+                            },
+                            {
+                              "content_hash": "b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa"
+                            },
+                            {
+                              "content_hash": "c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41"
+                            },
+                            {
+                              "content_hash": "ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a"
+                            },
+                            {
+                              "content_hash": "f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28"
+                            },
+                            {
+                              "content_hash": "f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9"
+                            },
+                            {
+                              "content_hash": "ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff"
+                            }
+                          ],
+                          "risk_set_ref": {
+                            "content_hash": "958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+                            "kind": "RISK_SET",
+                            "object_id": "urn:test:i03:risk_set:m01-risk"
+                          },
+                          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+                          "source_empirical_provenance_refs": [
+                            {
+                              "content_hash": "02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79"
+                            },
+                            {
+                              "content_hash": "0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc"
+                            },
+                            {
+                              "content_hash": "06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d"
+                            },
+                            {
+                              "content_hash": "069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a"
+                            },
+                            {
+                              "content_hash": "11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce"
+                            },
+                            {
+                              "content_hash": "16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d"
+                            },
+                            {
+                              "content_hash": "23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277"
+                            },
+                            {
+                              "content_hash": "503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45"
+                            },
+                            {
+                              "content_hash": "5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08"
+                            },
+                            {
+                              "content_hash": "5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37"
+                            },
+                            {
+                              "content_hash": "628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4"
+                            },
+                            {
+                              "content_hash": "63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498"
+                            },
+                            {
+                              "content_hash": "665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d"
+                            },
+                            {
+                              "content_hash": "68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22"
+                            },
+                            {
+                              "content_hash": "735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4"
+                            },
+                            {
+                              "content_hash": "808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12"
+                            },
+                            {
+                              "content_hash": "86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730"
+                            },
+                            {
+                              "content_hash": "8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff"
+                            },
+                            {
+                              "content_hash": "9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480"
+                            },
+                            {
+                              "content_hash": "9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d"
+                            },
+                            {
+                              "content_hash": "997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c"
+                            },
+                            {
+                              "content_hash": "9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a"
+                            },
+                            {
+                              "content_hash": "aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db"
+                            },
+                            {
+                              "content_hash": "b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec"
+                            },
+                            {
+                              "content_hash": "b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed"
+                            },
+                            {
+                              "content_hash": "bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1",
+                              "kind": "C11Internal:ReplayManifest",
+                              "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1"
+                            },
+                            {
+                              "content_hash": "c66ede9354fbc61638e7f0617a0199a91bd22dc2a01cdf65e4bc368f3569a0b2",
+                              "kind": "C11LogicalRelease",
+                              "object_id": "REL-m01"
+                            },
+                            {
+                              "content_hash": "cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0"
+                            },
+                            {
+                              "content_hash": "d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7"
+                            },
+                            {
+                              "content_hash": "d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9"
+                            },
+                            {
+                              "content_hash": "dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a"
+                            },
+                            {
+                              "content_hash": "e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927"
+                            },
+                            {
+                              "content_hash": "e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13"
+                            },
+                            {
+                              "content_hash": "e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79"
+                            },
+                            {
+                              "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                              "kind": "EmpiricalUniverse@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                            }
+                          ],
+                          "source_scope_mode": "SINGLE_UNIVERSE",
+                          "target_domain_identity": "8b5a03f1c9bfa170f52996ab4732fabed2fa5b381466094987c0d2a52fc2700d",
+                          "target_topology": {
+                            "arity": 1,
+                            "complete_cell_semantic_projection": [
+                              {
+                                "cell": "0",
+                                "cell_state": "OBSERVED_POSITIVE",
+                                "raw_numerator_support": 8,
+                                "weighted_numerator_support_if_authorized": null
+                              },
+                              {
+                                "cell": "1",
+                                "cell_state": "OBSERVED_POSITIVE",
+                                "raw_numerator_support": 8,
+                                "weighted_numerator_support_if_authorized": null
+                              }
+                            ],
+                            "joint_order_semantics": "SEMANTIC_ORDERED",
+                            "target_domain_identity": "8b5a03f1c9bfa170f52996ab4732fabed2fa5b381466094987c0d2a52fc2700d"
+                          },
+                          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
+                          "weighted_denominator_support_if_authorized": null,
+                          "weighted_numerator_support_if_authorized": null
+                        },
+                        "typed_state": "SUPPORTED"
+                      }
+                    ]
+                  },
+                  {
+                    "fact_states": [
+                      "SUPPORTED"
+                    ],
+                    "facts": [
+                      {
+                        "authority_snapshot_refs": [
+                          {
+                            "authority_content_hash": "e752e363b51959e4774121feff56ccec0ae3984f17b937e0768f40980890270c",
+                            "authority_id": "I03-AUTH-m01-mapping",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "aa29a4ae21cb527001bdabcb140b98f17d40525e4f59fe2c6347ba7a93bf540d",
+                            "authority_id": "I03-AUTH-m01-projection",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+                            "authority_id": "I03-AUTH-m01-query",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "45021b35816e4405b10df7d9e64970c3c4b2aad61d1167461735c2b4808edb2e",
+                            "authority_id": "I03-AUTH-m01-routing",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "0e656eac9cf1bb711733642e7b426ec55aefb2284ce843b67332f5d1c411b39b",
+                            "authority_id": "I03-AUTH-m01-source",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "890cfa7a57b6c0b263f1ccdae326df854d68acbf5aad4b0b3e9270990c020f8c",
+                            "authority_id": "I03-AUTH-m01-weight",
+                            "authority_version": "1.0.0"
+                          }
+                        ],
+                        "content_hash": "10bebbebf524918550eb23a49db5b1261a44fe02c1a4c6e5218720da01cfa230",
+                        "dependency_refs": [
+                          {
+                            "content_hash": "bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1",
+                            "kind": "C11Internal:ReplayManifest",
+                            "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1"
+                          },
+                          {
+                            "content_hash": "c66ede9354fbc61638e7f0617a0199a91bd22dc2a01cdf65e4bc368f3569a0b2",
+                            "kind": "C11LogicalRelease",
+                            "object_id": "REL-m01"
+                          },
+                          {
+                            "content_hash": "2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1",
+                            "kind": "EmpiricalPredicate@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1"
+                          },
+                          {
+                            "content_hash": "a75f6b6878a6ad329bf6c67b8f27126d4bb6be7735b30f1696bee9982acfcad2",
+                            "kind": "EmpiricalQuerySpec@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a75f6b6878a6ad329bf6c67b8f27126d4bb6be7735b30f1696bee9982acfcad2"
+                          },
+                          {
+                            "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                            "kind": "EmpiricalUniverse@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                          },
+                          {
+                            "content_hash": "3b76407ae2692ed77539fd6d5b781737f6c0b9b54c2cd4bc28752b7f01a55bf2",
+                            "kind": "PRE553_I03_QUERY_REPLAY",
+                            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3b76407ae2692ed77539fd6d5b781737f6c0b9b54c2cd4bc28752b7f01a55bf2"
+                          },
+                          {
+                            "content_hash": "02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79"
+                          },
+                          {
+                            "content_hash": "0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc"
+                          },
+                          {
+                            "content_hash": "06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d"
+                          },
+                          {
+                            "content_hash": "11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce"
+                          },
+                          {
+                            "content_hash": "16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d"
+                          },
+                          {
+                            "content_hash": "23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277"
+                          },
+                          {
+                            "content_hash": "503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45"
+                          },
+                          {
+                            "content_hash": "63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498"
+                          },
+                          {
+                            "content_hash": "735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4"
+                          },
+                          {
+                            "content_hash": "86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730"
+                          },
+                          {
+                            "content_hash": "8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff"
+                          },
+                          {
+                            "content_hash": "9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480"
+                          },
+                          {
+                            "content_hash": "9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d"
+                          },
+                          {
+                            "content_hash": "997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c"
+                          },
+                          {
+                            "content_hash": "cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0"
+                          },
+                          {
+                            "content_hash": "dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a"
+                          },
+                          {
+                            "content_hash": "069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a"
+                          },
+                          {
+                            "content_hash": "5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08"
+                          },
+                          {
+                            "content_hash": "5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37"
+                          },
+                          {
+                            "content_hash": "628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4"
+                          },
+                          {
+                            "content_hash": "665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d"
+                          },
+                          {
+                            "content_hash": "68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22"
+                          },
+                          {
+                            "content_hash": "808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12"
+                          },
+                          {
+                            "content_hash": "9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a"
+                          },
+                          {
+                            "content_hash": "aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db"
+                          },
+                          {
+                            "content_hash": "b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec"
+                          },
+                          {
+                            "content_hash": "b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed"
+                          },
+                          {
+                            "content_hash": "d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7"
+                          },
+                          {
+                            "content_hash": "d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9"
+                          },
+                          {
+                            "content_hash": "e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927"
+                          },
+                          {
+                            "content_hash": "e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13"
+                          },
+                          {
+                            "content_hash": "e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79"
+                          },
+                          {
+                            "content_hash": "08efb87c3333ca3baca4851ad01eef88a7499289ad0ee1c590df6c390aba79be",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:08efb87c3333ca3baca4851ad01eef88a7499289ad0ee1c590df6c390aba79be"
+                          },
+                          {
+                            "content_hash": "2a889bc8c659fd81e51141f661ea6b27a89cdabfac6b4359c3ccce264f8681b4",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:2a889bc8c659fd81e51141f661ea6b27a89cdabfac6b4359c3ccce264f8681b4"
+                          },
+                          {
+                            "content_hash": "2c4576a67696ccba353e8c22a8d8de96c08667cfc40dbb8df9b9db827f7b2675",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:2c4576a67696ccba353e8c22a8d8de96c08667cfc40dbb8df9b9db827f7b2675"
+                          },
+                          {
+                            "content_hash": "3212c55188c094fb3ea6d22dc5f3189251948acfd1394b0045e58a9a434f3826",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:3212c55188c094fb3ea6d22dc5f3189251948acfd1394b0045e58a9a434f3826"
+                          },
+                          {
+                            "content_hash": "51eaf93fd3c4ce04822d48513c439484b009503a3c75f33d14695dac597f431a",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:51eaf93fd3c4ce04822d48513c439484b009503a3c75f33d14695dac597f431a"
+                          },
+                          {
+                            "content_hash": "53d284182a4af2b9349ef6ab884595da436f4c69b384b82d76f40c88c91d9399",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:53d284182a4af2b9349ef6ab884595da436f4c69b384b82d76f40c88c91d9399"
+                          },
+                          {
+                            "content_hash": "568d12f5b4081a9a043cb996dbe561da40d6aa43d40c77339cc098e2e79fa025",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:568d12f5b4081a9a043cb996dbe561da40d6aa43d40c77339cc098e2e79fa025"
+                          },
+                          {
+                            "content_hash": "602798d09592fa48675775e0fabe066f962f699f8b13f6f54bec9146aa03a9da",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:602798d09592fa48675775e0fabe066f962f699f8b13f6f54bec9146aa03a9da"
+                          },
+                          {
+                            "content_hash": "7bbacba617cca438b3f1e297e9c1cce6075e22af1adb22a57be3e0bc50782b8a",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:7bbacba617cca438b3f1e297e9c1cce6075e22af1adb22a57be3e0bc50782b8a"
+                          },
+                          {
+                            "content_hash": "862cc3ae4dd7bdeb473c8dca8c2963c08150f4d2298e59819f3a41fd944f5254",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:862cc3ae4dd7bdeb473c8dca8c2963c08150f4d2298e59819f3a41fd944f5254"
+                          },
+                          {
+                            "content_hash": "a2a1c773d011075f9416f4d11efce075ef57329ac816d7215d0a0dec3cd55ce8",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:a2a1c773d011075f9416f4d11efce075ef57329ac816d7215d0a0dec3cd55ce8"
+                          },
+                          {
+                            "content_hash": "a48a72fea114b8f4299d39a22c97ba688470a2a4466cc8bd00097456abdc6463",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:a48a72fea114b8f4299d39a22c97ba688470a2a4466cc8bd00097456abdc6463"
+                          },
+                          {
+                            "content_hash": "ae8051d6fa259b8054b8f68be701b073a115318ebb4cf255d9d9caf87892bb5b",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:ae8051d6fa259b8054b8f68be701b073a115318ebb4cf255d9d9caf87892bb5b"
+                          },
+                          {
+                            "content_hash": "cf3bb2222915dc024999895ecdd20050d46b8e91be8ae6cc12b8db0f6d771fd4",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:cf3bb2222915dc024999895ecdd20050d46b8e91be8ae6cc12b8db0f6d771fd4"
+                          },
+                          {
+                            "content_hash": "e61c4ce16f48b53dc8b8ddac2a79f0e0bcdcaff58491ce6b8e6a7efa6f345dba",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:e61c4ce16f48b53dc8b8ddac2a79f0e0bcdcaff58491ce6b8e6a7efa6f345dba"
+                          },
+                          {
+                            "content_hash": "f3fd1afce236340d3f30c47719236b0416e19c4b3fd513d3d444f84c853d8554",
+                            "kind": "WeightMeasureFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:f3fd1afce236340d3f30c47719236b0416e19c4b3fd513d3d444f84c853d8554"
+                          }
+                        ],
+                        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:10bebbebf524918550eb23a49db5b1261a44fe02c1a4c6e5218720da01cfa230",
+                        "producer_replay_locator_or_reference_root": {
+                          "content_hash": "3b76407ae2692ed77539fd6d5b781737f6c0b9b54c2cd4bc28752b7f01a55bf2",
+                          "kind": "PRE553_I03_QUERY_REPLAY",
+                          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3b76407ae2692ed77539fd6d5b781737f6c0b9b54c2cd4bc28752b7f01a55bf2"
+                        },
+                        "schema_id": "EmpiricalFact",
+                        "schema_version": "1.0.0",
+                        "semantic_fields": {
+                          "condition_predicate_ref": {
+                            "content_hash": "2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1",
+                            "kind": "EmpiricalPredicate@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:2959f4583ab191a13b23469661f6ddd851a22b8aec450089e019f17a454cadd1"
+                          },
+                          "denominator_member_refs": [
+                            {
+                              "content_hash": "094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9"
+                            },
+                            {
+                              "content_hash": "14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8"
+                            },
+                            {
+                              "content_hash": "2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c"
+                            },
+                            {
+                              "content_hash": "30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25"
+                            },
+                            {
+                              "content_hash": "37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463"
+                            },
+                            {
+                              "content_hash": "54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca"
+                            },
+                            {
+                              "content_hash": "5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68"
+                            },
+                            {
+                              "content_hash": "784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f"
+                            },
+                            {
+                              "content_hash": "91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e"
+                            },
+                            {
+                              "content_hash": "9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3"
+                            },
+                            {
+                              "content_hash": "b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa"
+                            },
+                            {
+                              "content_hash": "c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41"
+                            },
+                            {
+                              "content_hash": "ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a"
+                            },
+                            {
+                              "content_hash": "f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28"
+                            },
+                            {
+                              "content_hash": "f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9"
+                            },
+                            {
+                              "content_hash": "ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff"
+                            }
+                          ],
+                          "empirical_query_spec_ref": {
+                            "content_hash": "a75f6b6878a6ad329bf6c67b8f27126d4bb6be7735b30f1696bee9982acfcad2",
+                            "kind": "EmpiricalQuerySpec@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:a75f6b6878a6ad329bf6c67b8f27126d4bb6be7735b30f1696bee9982acfcad2"
+                          },
+                          "empirical_universe_refs": [
+                            {
+                              "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                              "kind": "EmpiricalUniverse@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                            }
+                          ],
+                          "execution_detail": "exact governed target distribution resolved",
+                          "measure_basis_ref": {
+                            "content_hash": "916af1dd5b79e19972eb37624dc134bb2ca22be504f9e2e93357e8b5d395cc43",
+                            "kind": "MEASURE_BASIS",
+                            "object_id": "urn:test:i03:measure_basis:GOVERNED_WEIGHTED"
+                          },
+                          "measure_kind": "GOVERNED_WEIGHTED",
+                          "query_execution_contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+                          "raw_denominator_support": 16,
+                          "raw_numerator_support": 16,
+                          "raw_resolved_target_support": 16,
+                          "replay_ref": {
+                            "content_hash": "3b76407ae2692ed77539fd6d5b781737f6c0b9b54c2cd4bc28752b7f01a55bf2",
+                            "kind": "PRE553_I03_QUERY_REPLAY",
+                            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:3b76407ae2692ed77539fd6d5b781737f6c0b9b54c2cd4bc28752b7f01a55bf2"
+                          },
+                          "response_state_semantics_ref": {
+                            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+                            "kind": "RESPONSE_STATE_SEMANTICS",
+                            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+                          },
+                          "risk_set_member_refs": [
+                            {
+                              "content_hash": "094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:094d825f29e834e99859442979fd2c12e5e1d6fe6e0dac792274780ab2b734a9"
+                            },
+                            {
+                              "content_hash": "14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:14d211f7ad120d1f262a3b92ee2ae1647ac6ec4e8faa5e105ea1aa762da6bcc8"
+                            },
+                            {
+                              "content_hash": "2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2fd8b732b58fef88843a0e1f3b70bd29ffc0a3d05f2488b07e170113bed2c64c"
+                            },
+                            {
+                              "content_hash": "30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:30cac5d557eca125ce8aebdbbda6fc9067452b0da99d262ed824e64323bdee25"
+                            },
+                            {
+                              "content_hash": "37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:37281a24ac979088949eedb795ec0c61f10f5a0c66e677b5ea4af2321ea61463"
+                            },
+                            {
+                              "content_hash": "54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:54afcf1cf8fe85916cf9209222570da4661ba48f2f2cc85468e49cedcf5819ca"
+                            },
+                            {
+                              "content_hash": "5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:5fb6459e509baed985292ac617eac83e6f9f53e4ce01e24d1b2f52bd065f1e68"
+                            },
+                            {
+                              "content_hash": "784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:784cfb6d0e4f0c5ebf8b9fdb7965948026071daafe4c615fddaa297adefb9f4f"
+                            },
+                            {
+                              "content_hash": "91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:91dda287ec7044b902938fb16f5942e3be60045b3dc92270bd7beb39266aa59e"
+                            },
+                            {
+                              "content_hash": "9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:9abc46805e8997c71766efa7cc4dad953323cfae87d8adad79c73e0b5c23f9a3"
+                            },
+                            {
+                              "content_hash": "b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:b5ad864c9856de14680b88b4156e9443add836432b12d5d50e1f2ff00761b6fa"
+                            },
+                            {
+                              "content_hash": "c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c11f02f4e9f2f4420d878ab5a213e8672fba282d54b4ee5690adf150b3ee7f41"
+                            },
+                            {
+                              "content_hash": "ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ce17f51752c7a45a55b35120364e9f444647b5e07cacbd2d83750b071ab30a9a"
+                            },
+                            {
+                              "content_hash": "f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f3c3e3f5b634863152f8d2d30c86349297ac5a0a1c4b46bd4e8b8b81b7b1ec28"
+                            },
+                            {
+                              "content_hash": "f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f40e97c35a4ded9ea1445cef60a7b2bf075b8d68394eeabaab7a5ec90808e3d9"
+                            },
+                            {
+                              "content_hash": "ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ff48fad77759d15c29137aadbb31da5452e416008613deef5f26e0593fd764ff"
+                            }
+                          ],
+                          "risk_set_ref": {
+                            "content_hash": "958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+                            "kind": "RISK_SET",
+                            "object_id": "urn:test:i03:risk_set:m01-risk"
+                          },
+                          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+                          "source_empirical_provenance_refs": [
+                            {
+                              "content_hash": "02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:02723fc8a5029ea3cdf9098db3c272629c639e111eac356df76f55174dcf3b79"
+                            },
+                            {
+                              "content_hash": "0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:0458e7b9d543f863ed745617d8a571b94d22710cf9419c8719fb4ed40e5d26dc"
+                            },
+                            {
+                              "content_hash": "06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:06897aebcc2d4fd050aa4c09e351b90a53631a5b0724693e531a2c7b1a26a51d"
+                            },
+                            {
+                              "content_hash": "069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:069244e3c7b6e264e771c01bcde96e93fbdea2659e17889c74606f45a42d989a"
+                            },
+                            {
+                              "content_hash": "08efb87c3333ca3baca4851ad01eef88a7499289ad0ee1c590df6c390aba79be",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:08efb87c3333ca3baca4851ad01eef88a7499289ad0ee1c590df6c390aba79be"
+                            },
+                            {
+                              "content_hash": "11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:11e2ba7c67b8ae97d3724d033b1898d59794f5fd628d392c2c1019f1b9c0f3ce"
+                            },
+                            {
+                              "content_hash": "16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:16b6576a251fffb40269ad74a2c8e33db83ad7e9ac27c1257b00c7ff99cad33d"
+                            },
+                            {
+                              "content_hash": "23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:23189f30f7ff42bfe94e37a019dd974814db07718632032079eb2bd285a6b277"
+                            },
+                            {
+                              "content_hash": "2a889bc8c659fd81e51141f661ea6b27a89cdabfac6b4359c3ccce264f8681b4",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:2a889bc8c659fd81e51141f661ea6b27a89cdabfac6b4359c3ccce264f8681b4"
+                            },
+                            {
+                              "content_hash": "2c4576a67696ccba353e8c22a8d8de96c08667cfc40dbb8df9b9db827f7b2675",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:2c4576a67696ccba353e8c22a8d8de96c08667cfc40dbb8df9b9db827f7b2675"
+                            },
+                            {
+                              "content_hash": "3212c55188c094fb3ea6d22dc5f3189251948acfd1394b0045e58a9a434f3826",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:3212c55188c094fb3ea6d22dc5f3189251948acfd1394b0045e58a9a434f3826"
+                            },
+                            {
+                              "content_hash": "503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:503933d14d1c052ac0f1a5570ab5647a2342846caac9f933fc1db133bee98a45"
+                            },
+                            {
+                              "content_hash": "51eaf93fd3c4ce04822d48513c439484b009503a3c75f33d14695dac597f431a",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:51eaf93fd3c4ce04822d48513c439484b009503a3c75f33d14695dac597f431a"
+                            },
+                            {
+                              "content_hash": "53d284182a4af2b9349ef6ab884595da436f4c69b384b82d76f40c88c91d9399",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:53d284182a4af2b9349ef6ab884595da436f4c69b384b82d76f40c88c91d9399"
+                            },
+                            {
+                              "content_hash": "568d12f5b4081a9a043cb996dbe561da40d6aa43d40c77339cc098e2e79fa025",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:568d12f5b4081a9a043cb996dbe561da40d6aa43d40c77339cc098e2e79fa025"
+                            },
+                            {
+                              "content_hash": "5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5cf2ed3bec83e6f90aaeb1fe7139fa1e63f236a8e1113d72d01317a0caa48a08"
+                            },
+                            {
+                              "content_hash": "5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:5edefe6f381862b8c6c5963f3dab970be733cc43e0e05fbd13e264e336379d37"
+                            },
+                            {
+                              "content_hash": "602798d09592fa48675775e0fabe066f962f699f8b13f6f54bec9146aa03a9da",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:602798d09592fa48675775e0fabe066f962f699f8b13f6f54bec9146aa03a9da"
+                            },
+                            {
+                              "content_hash": "628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:628efaf7dce089e9c50ced8b01a6f06b6648a3faf34061bd98ebf9a27a5cc5e4"
+                            },
+                            {
+                              "content_hash": "63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:63c908d56e3f33cca2e9f35737f24e5eda5ca4b4dc057f5cedee38be16a79498"
+                            },
+                            {
+                              "content_hash": "665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:665bd130f033574c5e768f9bd1d78c5c0ff73d6ebe6abf1875e6d47f7cb0527d"
+                            },
+                            {
+                              "content_hash": "68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:68a5486b7261182c2015b16172056522363e0a50c73061be47a2104cfcf8ca22"
+                            },
+                            {
+                              "content_hash": "735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:735262f8c355908ddf0469df0f5aba7b73c116b54732c3d907bb190e5a0f20c4"
+                            },
+                            {
+                              "content_hash": "7bbacba617cca438b3f1e297e9c1cce6075e22af1adb22a57be3e0bc50782b8a",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:7bbacba617cca438b3f1e297e9c1cce6075e22af1adb22a57be3e0bc50782b8a"
+                            },
+                            {
+                              "content_hash": "808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:808d971030bdff5fe6a323bdee39bb07a7aa297bf5105b6fac48d11da3492d12"
+                            },
+                            {
+                              "content_hash": "86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:86272f10469adbb3926f0f91cccfcaa1d36a7264f29ec9931f74f4b1b439c730"
+                            },
+                            {
+                              "content_hash": "862cc3ae4dd7bdeb473c8dca8c2963c08150f4d2298e59819f3a41fd944f5254",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:862cc3ae4dd7bdeb473c8dca8c2963c08150f4d2298e59819f3a41fd944f5254"
+                            },
+                            {
+                              "content_hash": "8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:8a8acd1c39209626e3f30d5fbb492b8d17ee823556b981441b8e28ea6be0e5ff"
+                            },
+                            {
+                              "content_hash": "9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9359688fe9aaa023c7b21d23eb23fdbe10eedaaa8f766a0c0dbf458facefb480"
+                            },
+                            {
+                              "content_hash": "9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9523f1df350137a9dc4b35ff4e6e42cfd1664ddbc1ad3098f0fc81e75a33400d"
+                            },
+                            {
+                              "content_hash": "997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:997418ce0405e7f7fa196c587a93563a35b7ea901b570fb7b325dcdf1a3c856c"
+                            },
+                            {
+                              "content_hash": "9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:9b284fe0e3a440a159cb8e7047af9fbc2e5ba618281d853e8ba6ec49c530540a"
+                            },
+                            {
+                              "content_hash": "a2a1c773d011075f9416f4d11efce075ef57329ac816d7215d0a0dec3cd55ce8",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:a2a1c773d011075f9416f4d11efce075ef57329ac816d7215d0a0dec3cd55ce8"
+                            },
+                            {
+                              "content_hash": "a48a72fea114b8f4299d39a22c97ba688470a2a4466cc8bd00097456abdc6463",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:a48a72fea114b8f4299d39a22c97ba688470a2a4466cc8bd00097456abdc6463"
+                            },
+                            {
+                              "content_hash": "aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:aaebdeeebba064ed99e1500a4a55793d609ab9a0f8a4afe30b7f5c3642aba2db"
+                            },
+                            {
+                              "content_hash": "ae8051d6fa259b8054b8f68be701b073a115318ebb4cf255d9d9caf87892bb5b",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:ae8051d6fa259b8054b8f68be701b073a115318ebb4cf255d9d9caf87892bb5b"
+                            },
+                            {
+                              "content_hash": "b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b861a9d02134b51c943ec4fbe329a72e2f54f628f195cb2e85f0da4ff2890dec"
+                            },
+                            {
+                              "content_hash": "b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b9d12a58705168a302f1a10a1099719171b29802a43e55a865b505cc040e82ed"
+                            },
+                            {
+                              "content_hash": "bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1",
+                              "kind": "C11Internal:ReplayManifest",
+                              "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1"
+                            },
+                            {
+                              "content_hash": "c66ede9354fbc61638e7f0617a0199a91bd22dc2a01cdf65e4bc368f3569a0b2",
+                              "kind": "C11LogicalRelease",
+                              "object_id": "REL-m01"
+                            },
+                            {
+                              "content_hash": "cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:cb3d8b2085e415b4581ac5d2d1ff0773f7c4177c7b61fe1c0662cf66303234f0"
+                            },
+                            {
+                              "content_hash": "cf3bb2222915dc024999895ecdd20050d46b8e91be8ae6cc12b8db0f6d771fd4",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:cf3bb2222915dc024999895ecdd20050d46b8e91be8ae6cc12b8db0f6d771fd4"
+                            },
+                            {
+                              "content_hash": "d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d1ae725a4c1ea19331a30158b6491892f4a006437d4090dcc07bab9d09bff0e7"
+                            },
+                            {
+                              "content_hash": "d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d9adf0eac226c495424043e180830b424b073288aebad199a6ec520f01500de9"
+                            },
+                            {
+                              "content_hash": "dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:dcf1dd017a530769b0fa783b8c6c9a4f4362071d8f033ae80b22704bbff7542a"
+                            },
+                            {
+                              "content_hash": "e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e2a861c863e4e98a0bb3cbb3640b0d691c1013046f8e46e284cec07c58ddc927"
+                            },
+                            {
+                              "content_hash": "e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e4505c946c15a4ebc636c603c8c1d7c8acc658ba0c89443895e6d91ff511bc13"
+                            },
+                            {
+                              "content_hash": "e61c4ce16f48b53dc8b8ddac2a79f0e0bcdcaff58491ce6b8e6a7efa6f345dba",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:e61c4ce16f48b53dc8b8ddac2a79f0e0bcdcaff58491ce6b8e6a7efa6f345dba"
+                            },
+                            {
+                              "content_hash": "e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e76d7fd3cd79a5430766b5eb75196f19bee276dcc67dbb1682283c97bdae8f79"
+                            },
+                            {
+                              "content_hash": "f3fd1afce236340d3f30c47719236b0416e19c4b3fd513d3d444f84c853d8554",
+                              "kind": "WeightMeasureFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:WeightMeasureFact:sha256:f3fd1afce236340d3f30c47719236b0416e19c4b3fd513d3d444f84c853d8554"
+                            },
+                            {
+                              "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                              "kind": "EmpiricalUniverse@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                            }
+                          ],
+                          "source_scope_mode": "SINGLE_UNIVERSE",
+                          "target_domain_identity": "8b5a03f1c9bfa170f52996ab4732fabed2fa5b381466094987c0d2a52fc2700d",
+                          "target_topology": {
+                            "arity": 1,
+                            "complete_cell_semantic_projection": [
+                              {
+                                "cell": "0",
+                                "cell_state": "OBSERVED_POSITIVE",
+                                "raw_numerator_support": 8,
+                                "weighted_numerator_support_if_authorized": {
+                                  "$exact_fraction": [
+                                    17,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "cell": "1",
+                                "cell_state": "OBSERVED_POSITIVE",
+                                "raw_numerator_support": 8,
+                                "weighted_numerator_support_if_authorized": {
+                                  "$exact_fraction": [
+                                    15,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "joint_order_semantics": "SEMANTIC_ORDERED",
+                            "target_domain_identity": "8b5a03f1c9bfa170f52996ab4732fabed2fa5b381466094987c0d2a52fc2700d"
+                          },
+                          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
+                          "weighted_denominator_support_if_authorized": {
+                            "$exact_fraction": [
+                              32,
+                              1
+                            ]
+                          },
+                          "weighted_numerator_support_if_authorized": {
+                            "$exact_fraction": [
+                              32,
+                              1
+                            ]
+                          }
+                        },
+                        "typed_state": "SUPPORTED"
+                      }
+                    ]
+                  }
+                ],
+                "i05_candidate_count": 1,
+                "i05_coverage": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+                "i05_fact_refs": [
+                  {
+                    "content_hash": "aa85f64b717692770e6e1515c86e65f6cba656b891eeb52d4e6bd5f73292dfd9",
+                    "kind": "EmpiricalFact@1.0.0",
+                    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:aa85f64b717692770e6e1515c86e65f6cba656b891eeb52d4e6bd5f73292dfd9"
+                  },
+                  {
+                    "content_hash": "cbbcba79356950317fb3a0b86ebbcf07b90d7694b62972bfba0bd4ced949b8f3",
+                    "kind": "EmpiricalFact@1.0.0",
+                    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:cbbcba79356950317fb3a0b86ebbcf07b90d7694b62972bfba0bd4ced949b8f3"
+                  }
+                ],
+                "i05_receipt_refs": [
+                  {
+                    "content_hash": "5034689594b5432588f4ff4390f4097647726ceaa10421c7127379fe5aaa32c6",
+                    "kind": "DiscoveryResultReceipt@1.0.0",
+                    "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:5034689594b5432588f4ff4390f4097647726ceaa10421c7127379fe5aaa32c6"
+                  }
+                ]
+              },
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "consumer_fingerprint": "efbc8dc1b82cd5322566250112e02c1d52e7d1ec1000e681a1a04708d534f34f",
+              "derived_cache": {
+                "after": {
+                  "envelope": null,
+                  "files": [],
+                  "root": ""
+                },
+                "before": {
+                  "envelope": null,
+                  "files": [],
+                  "root": ""
+                },
+                "derived_cache_hit": false,
+                "derived_cache_miss": false,
+                "derived_cache_write": false,
+                "policy_path": null,
+                "stage": "derived_cache",
+                "status": "NO_GOVERNED_DERIVED_CACHE_WRITE"
+              },
+              "derived_cache_bytes": 0,
+              "derived_cache_envelope": null,
+              "derived_cache_files": 0,
+              "derived_cache_hit": false,
+              "derived_cache_miss": false,
+              "derived_cache_write": false,
+              "event_count": 96,
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "method_overhead_seconds": 2.689193934202194e-07,
+              "metrics": {
+                "canonical_persist_wall_seconds": null,
+                "cold_to_firstconsumer_stage_peak_rss_bytes": 57909248,
+                "cpu_system_seconds": 0.094676,
+                "cpu_user_seconds": 0.841583,
+                "rss_peak_bytes": 57966592,
+                "source_opens": {
+                  "count": null,
+                  "status": "NOT_APPLICABLE__SOURCEFREE_SYNTHETIC_EXACT_PHYSICAL_CELL_STREAM"
+                },
+                "wall_seconds": 0.42333712591789663
+              },
+              "normal_current_cold_build": true,
+              "parent_wall_seconds": 0.7460685590049252,
+              "pid": 79149,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "wide",
+              "projection_identity": "a6a1f0c09237e2fb5cf031f759967f7be86f1d3684e3c184cc931570a1c7cb04",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "c539f1feb87271a09e2e6492c8ee3aa3db01d3656167bd15af894d3d622018c0",
+              "release_ref": {
+                "content_hash": "c66ede9354fbc61638e7f0617a0199a91bd22dc2a01cdf65e4bc368f3569a0b2",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "replay_manifest_ref": {
+                "content_hash": "bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1",
+                "kind": "C11Internal:ReplayManifest",
+                "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:bd99a0e1c48587ea09baafb1df3a6679a72e42a34d5a11dd5d5aaf43194b1ac1"
+              },
+              "rows": 16,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "c66ede9354fbc61638e7f0617a0199a91bd22dc2a01cdf65e4bc368f3569a0b2",
+              "source_sha256": "9bc059fdc2a8dc91c7cc2aefb1a13c10b2c24e82aa3ca9041a0a7f653669d0ea",
+              "stages": {
+                "canonicalhash": {
+                  "rss_peak_bytes": 57344000,
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+                  "wall_seconds": null
+                },
+                "cells": {
+                  "cell_count": 96,
+                  "rss_peak_bytes": 57344000,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_NORMAL_COLD_BUILD",
+                  "wall_seconds": 0.0697199001442641
+                },
+                "cold_combined": {
+                  "cpu_system_seconds": 0.038831,
+                  "cpu_user_seconds": 0.572746,
+                  "observation_method": "OS_PS_CURRENT_RSS_SAMPLED_5MS_PLUS_RESOURCE_RU_MAXRSS_SEPARATE",
+                  "process_ru_maxrss_after_bytes": 57344000,
+                  "process_ru_maxrss_before_bytes": 32272384,
+                  "rss_peak_bytes": 57344000,
+                  "rss_peak_delta_bytes": 25071616,
+                  "stage": "cold_combined",
+                  "stage_entry_current_rss_bytes": 32247808,
+                  "stage_exit_current_rss_bytes": 57335808,
+                  "stage_peak_current_rss_bytes": 57335808,
+                  "status": "STREAMING_CELLS__OBJECT_CONSTRUCTION__CANONICAL_HASH__I02_VALIDATION_SEAL__GOVERNED_CACHE_ATTACH__COMBINED_PUBLIC_PATH",
+                  "wall_seconds": 0.29545992997009307
+                },
+                "compact": {
+                  "rss_peak_bytes": 57344000,
+                  "stage": "compact",
+                  "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+                  "wall_seconds": null
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "derived_cache": {
+                  "after": {
+                    "envelope": null,
+                    "files": [],
+                    "root": ""
+                  },
+                  "before": {
+                    "envelope": null,
+                    "files": [],
+                    "root": ""
+                  },
+                  "derived_cache_hit": false,
+                  "derived_cache_miss": false,
+                  "derived_cache_write": false,
+                  "policy_path": null,
+                  "stage": "derived_cache",
+                  "status": "NO_GOVERNED_DERIVED_CACHE_WRITE"
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.001670999999999992,
+                  "cpu_user_seconds": 0.042822999999999944,
+                  "observation_method": "OS_PS_CURRENT_RSS_SAMPLED_5MS_PLUS_RESOURCE_RU_MAXRSS_SEPARATE",
+                  "process_ru_maxrss_after_bytes": 57966592,
+                  "process_ru_maxrss_before_bytes": 57397248,
+                  "rss_peak_bytes": 57966592,
+                  "rss_peak_delta_bytes": 569344,
+                  "stage": "firstconsumer",
+                  "stage_entry_current_rss_bytes": 57397248,
+                  "stage_exit_current_rss_bytes": 57909248,
+                  "stage_peak_current_rss_bytes": 57909248,
+                  "wall_seconds": 0.04484372399747372
+                },
+                "i02validation": {
+                  "rss_peak_bytes": 57344000,
+                  "stage": "i02validation",
+                  "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+                  "wall_seconds": null
+                },
+                "normal_current_cold_build": {
+                  "cpu_system_seconds": 0.038831,
+                  "cpu_user_seconds": 0.572746,
+                  "observation_method": "OS_PS_CURRENT_RSS_SAMPLED_5MS_PLUS_RESOURCE_RU_MAXRSS_SEPARATE",
+                  "process_ru_maxrss_after_bytes": 57344000,
+                  "process_ru_maxrss_before_bytes": 32272384,
+                  "rss_peak_bytes": 57344000,
+                  "rss_peak_delta_bytes": 25071616,
+                  "stage": "normal_current_cold_build",
+                  "stage_entry_current_rss_bytes": 32247808,
+                  "stage_exit_current_rss_bytes": 57335808,
+                  "stage_peak_current_rss_bytes": 57335808,
+                  "wall_seconds": 0.29545992997009307
+                },
+                "objectconstruction": {
+                  "rss_peak_bytes": 57344000,
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+                  "wall_seconds": null
+                },
+                "policy_setup": {
+                  "stage": "policy_setup",
+                  "status": "NO_DERIVED_ROOT",
+                  "wall_seconds": 2.689193934202194e-07
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.001000999999999995,
+                  "cpu_user_seconds": 0.029864,
+                  "observation_method": "OS_PS_CURRENT_RSS_SAMPLED_5MS_PLUS_RESOURCE_RU_MAXRSS_SEPARATE",
+                  "process_ru_maxrss_after_bytes": 32055296,
+                  "process_ru_maxrss_before_bytes": 31633408,
+                  "rss_peak_bytes": 32055296,
+                  "rss_peak_delta_bytes": 421888,
+                  "stage": "profile_setup",
+                  "stage_entry_current_rss_bytes": 31580160,
+                  "stage_exit_current_rss_bytes": 31973376,
+                  "stage_peak_current_rss_bytes": 31973376,
+                  "wall_seconds": 0.031113610020838678
+                },
+                "projection": {
+                  "rss_peak_bytes": 57344000,
+                  "stage": "projection",
+                  "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+                  "wall_seconds": null
+                },
+                "seal": {
+                  "rss_peak_bytes": 57344000,
+                  "stage": "seal",
+                  "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+                  "wall_seconds": null
+                }
+              },
+              "started_utc": "2026-11-11T03:27:23Z"
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "delete_rebuild": null,
+        "derived_cache_hit_count": 0,
+        "derived_cache_write_count": 0,
+        "profile": "wide",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 16,
+        "scenario": "cold",
+        "warm": null,
+        "warm_fresh_process_count": 0,
+        "warm_fresh_process_pids": [],
+        "warm_vs_no_acceleration_baseline": {
+          "status": "NO_BASELINE"
+        }
+      }
+    }
+  },
+  "rows": 16,
+  "scenarios": [
+    "cold"
+  ],
+  "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+  "source_head": "07f37e47893fdbc956766cea7d3ef550f064d8c7",
+  "source_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2"
+}

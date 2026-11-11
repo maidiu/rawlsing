@@ -20,6 +20,7 @@ import statistics
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 from pathlib import Path
 from typing import Any, Iterable, Mapping
@@ -44,6 +45,9 @@ SCHEMA = "PYAT_W03_W04_PHYSICAL_BENCH@1"
 MAX_CHILD_BYTES = 6 * 1024 * 1024 * 1024
 PROFILES = ("narrow", "wide", "repeat")
 SCENARIOS = ("cold", "cells-and-hash", "full-matrix")
+PREREGISTERED_COLD_PROFILE = "wide"
+PREREGISTERED_REPEAT_PROFILE = "repeat"
+EXPECTED_BASELINE_HEAD = "4f3413fc5c37b589be3412f826bf8f68ee617d4a"
 
 
 def _sha(value: Any) -> str:
@@ -55,6 +59,38 @@ def _rss_peak_bytes() -> int:
     # macOS reports bytes; Linux reports KiB.  The benchmark is expected on the
     # declared macOS host, but normalise the common Linux form too.
     return value if sys.platform == "darwin" else value * 1024
+
+
+def _current_rss_bytes() -> int:
+    """Current resident RSS from the OS, not the cumulative resource high-water."""
+    try:
+        output = subprocess.check_output(
+            ["ps", "-o", "rss=", "-p", str(os.getpid())],
+            text=True, stderr=subprocess.DEVNULL,
+        ).strip()
+        if output:
+            return int(output.split()[0]) * 1024
+    except (OSError, ValueError, subprocess.SubprocessError):
+        pass
+    return _rss_peak_bytes()
+
+
+class _RssSampler:
+    def __init__(self, interval_seconds: float = 0.05):
+        self.interval = interval_seconds
+        self.peak = _current_rss_bytes()
+        self._stop = threading.Event()
+        self._thread = threading.Thread(target=self._run, daemon=True)
+        self._thread.start()
+
+    def _run(self):
+        while not self._stop.wait(self.interval):
+            self.peak = max(self.peak, _current_rss_bytes())
+
+    def stop(self) -> int:
+        self._stop.set()
+        self._thread.join(timeout=1.0)
+        return self.peak
 
 
 def _cpu_seconds() -> tuple[float, float]:
@@ -77,19 +113,31 @@ def _files_and_bytes(root: Path) -> tuple[int, int]:
 
 
 def _stage(name: str, fn):
-    before_rss = _rss_peak_bytes()
+    entry_rss = _current_rss_bytes()
+    process_before = _rss_peak_bytes()
+    sampler = _RssSampler()
     before_user, before_sys = _cpu_seconds()
     started = time.perf_counter()
     value = fn()
     wall = time.perf_counter() - started
     user, system = _cpu_seconds()
+    sampled_peak = sampler.stop()
+    exit_rss = _current_rss_bytes()
+    process_after = _rss_peak_bytes()
+    stage_peak = max(entry_rss, sampled_peak, exit_rss)
     return value, {
         "stage": name,
         "wall_seconds": wall,
         "cpu_user_seconds": user - before_user,
         "cpu_system_seconds": system - before_sys,
-        "rss_peak_bytes": _rss_peak_bytes(),
-        "rss_peak_delta_bytes": max(0, _rss_peak_bytes() - before_rss),
+        "stage_entry_current_rss_bytes": entry_rss,
+        "stage_exit_current_rss_bytes": exit_rss,
+        "stage_peak_current_rss_bytes": stage_peak,
+        "process_ru_maxrss_before_bytes": process_before,
+        "process_ru_maxrss_after_bytes": process_after,
+        "rss_peak_bytes": process_after,
+        "rss_peak_delta_bytes": max(0, process_after - process_before),
+        "observation_method": "OS_PS_CURRENT_RSS_SAMPLED_5MS_PLUS_RESOURCE_RU_MAXRSS_SEPARATE",
     }
 
 
@@ -528,12 +576,8 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
         "cap_enforced": False,
         "stages": stages,
     }
-    if sys.platform != "win32":
-        try:
-            resource.setrlimit(resource.RLIMIT_AS, (MAX_CHILD_BYTES, MAX_CHILD_BYTES))
-            output["cap_enforced"] = True
-        except (ValueError, OSError):
-            output["cap_enforced"] = False
+    output["cap_enforced"] = False
+    output["cap_monitor"] = "PARENT_PROCESS_RSS_MONITOR__CHILD_STARTS_AFTER_PARENT_POPEN"
 
     base_root = Path(args.worker_root) if args.worker_root else None
     canonical_root = base_root / "canonical-carrier" if base_root is not None else None
@@ -544,7 +588,8 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
         if not selector_path.is_file():
             raise FileNotFoundError("persisted selector.json is missing")
 
-    release, release_meta = _build_release(profile, root=base_root, stages=stages)
+    build_root = base_root if args.worker_scenario in {"full-matrix", "warm", "reopen"} else None
+    release, release_meta = _build_release(profile, root=build_root, stages=stages)
     output["source_sha256"] = profile["source_sha256"]
     output["release_id"] = release.release_id
     output["release_ref"] = release.release_ref.as_dict()
@@ -623,19 +668,39 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
             output.get("consumer_fingerprint") == canonical_consumer["consumer_fingerprint"]
         )
 
+    cold_build_peak = stages.get("normal_current_cold_build", {}).get("stage_peak_current_rss_bytes", 0)
+    first_peak = stages.get("firstconsumer", {}).get("stage_peak_current_rss_bytes", 0)
+    cold_to_first_peak = max(int(cold_build_peak or 0), int(first_peak or 0))
     user, system = _cpu_seconds()
     output["metrics"] = {
         "wall_seconds": time.perf_counter() - worker_started,
+        "cold_to_firstconsumer_stage_peak_rss_bytes": cold_to_first_peak,
         "cpu_user_seconds": user,
         "cpu_system_seconds": system,
         "rss_peak_bytes": _rss_peak_bytes(),
-        "source_opens": 0,
-        "cache_write_amortization": (
-            float(stages["canonical_persist"]["wall_seconds"]) / max(1, int(profile["repeat_count"]))
+        "source_opens": {
+            "status": "NOT_APPLICABLE__SOURCEFREE_SYNTHETIC_EXACT_PHYSICAL_CELL_STREAM",
+            "count": None,
+        },
+        "canonical_persist_wall_seconds": (
+            float(stages["canonical_persist"]["wall_seconds"])
             if isinstance(stages.get("canonical_persist"), Mapping) else None
         ),
     }
     return output
+
+
+def _process_rss_bytes(pid: int) -> int | None:
+    try:
+        output = subprocess.check_output(
+            ["ps", "-o", "rss=", "-p", str(pid)],
+            text=True, stderr=subprocess.DEVNULL,
+        ).strip()
+        if output:
+            return int(output.split()[0]) * 1024
+    except (OSError, ValueError, subprocess.SubprocessError):
+        pass
+    return None
 
 
 def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]:
@@ -652,8 +717,36 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
         "--worker-root", args.worker_root or "",
         "--worker-json", str(payload_path),
     ]
+    cap_bytes = int(getattr(args, "cap_bytes", MAX_CHILD_BYTES))
     started = time.perf_counter()
-    proc = subprocess.run(cmd, cwd=str(source_root), env=env, capture_output=True, text=True)
+    proc = subprocess.Popen(cmd, cwd=str(source_root), env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    sampled = False
+    peak = 0
+    while proc.poll() is None:
+        rss = _process_rss_bytes(proc.pid)
+        if rss is not None:
+            sampled = True
+            peak = max(peak, rss)
+            if rss > cap_bytes:
+                proc.kill()
+                stdout, stderr = proc.communicate()
+                return {
+                    "schema": SCHEMA,
+                    "status": "BLOCKED_EXACT_DEPENDENCY",
+                    "scenario": args.worker_scenario,
+                    "profile": args.worker_profile,
+                    "rows": args.worker_rows,
+                    "cap_bytes": cap_bytes,
+                    "cap_enforced": True,
+                    "cap_peak_sampled_bytes": peak,
+                    "blocked_reason": "CHILD_RSS_EXCEEDED_AUTHORIZED_CAP_BEFORE_COMPLETION",
+                    "returncode": proc.returncode,
+                    "wall_seconds": time.perf_counter() - started,
+                    "stdout": stdout[-4000:],
+                    "stderr": stderr[-4000:],
+                }
+        time.sleep(0.05)
+    stdout, stderr = proc.communicate()
     wall = time.perf_counter() - started
     if proc.returncode != 0:
         return {
@@ -662,10 +755,13 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
             "scenario": args.worker_scenario,
             "profile": args.worker_profile,
             "rows": args.worker_rows,
+            "cap_bytes": cap_bytes,
+            "cap_enforced": sampled,
+            "cap_peak_sampled_bytes": peak,
             "returncode": proc.returncode,
             "wall_seconds": wall,
-            "stdout": proc.stdout[-4000:],
-            "stderr": proc.stderr[-4000:],
+            "stdout": stdout[-4000:],
+            "stderr": stderr[-4000:],
         }
     try:
         payload = json.loads(payload_path.read_text(encoding="utf-8"))
@@ -674,10 +770,17 @@ def _run_child(args: argparse.Namespace, *, source_root: Path) -> dict[str, Any]
             "schema": SCHEMA,
             "status": "BLOCKED_EXACT_DEPENDENCY",
             "detail": f"child JSON unreadable: {exc}",
-            "stdout": proc.stdout[-4000:],
-            "stderr": proc.stderr[-4000:],
+            "cap_bytes": cap_bytes,
+            "cap_enforced": sampled,
+            "cap_peak_sampled_bytes": peak,
+            "stdout": stdout[-4000:],
+            "stderr": stderr[-4000:],
         }
     payload["parent_wall_seconds"] = wall
+    payload["cap_bytes"] = cap_bytes
+    payload["cap_enforced"] = sampled
+    payload["cap_peak_sampled_bytes"] = max(peak, payload.get("metrics", {}).get("rss_peak_bytes", 0))
+    payload["cap_monitor"] = "PARENT_PROCESS_RSS_MONITOR"
     return payload
 
 
@@ -708,6 +811,18 @@ def _aggregate(runs: list[dict[str, Any]]) -> dict[str, Any]:
         "max_wall_seconds": max((float(r.get("metrics", {}).get("wall_seconds", 0.0)) for r in complete), default=None),
         "min_rss_peak_bytes": min((int(r.get("metrics", {}).get("rss_peak_bytes", 0)) for r in complete), default=None),
         "max_rss_peak_bytes": max((int(r.get("metrics", {}).get("rss_peak_bytes", 0)) for r in complete), default=None),
+        "median_parent_wall_seconds": _median(
+            float(r.get("parent_wall_seconds", 0.0)) for r in complete
+        ),
+        "median_firstconsumer_stage_peak_rss_bytes": _median(
+            float(r.get("stages", {}).get("firstconsumer", {}).get("stage_peak_current_rss_bytes", 0.0))
+            for r in complete
+            if isinstance(r.get("stages", {}).get("firstconsumer", {}), Mapping)
+        ),
+        "median_cold_to_firstconsumer_stage_peak_rss_bytes": _median(
+            float(r.get("metrics", {}).get("cold_to_firstconsumer_stage_peak_rss_bytes", 0.0))
+            for r in complete
+        ),
     }
 
 
@@ -727,6 +842,24 @@ def _compare(old: Any, new: Any) -> dict[str, Any]:
     return out
 
 
+def _baseline_section(baseline: Any, scenario: str, profile: str, section: str) -> Any:
+    if not isinstance(baseline, Mapping):
+        return None
+    result = baseline.get("results", {})
+    if not isinstance(result, Mapping):
+        return None
+    scenario_data = result.get(scenario)
+    if not isinstance(scenario_data, Mapping):
+        return None
+    profile_data = scenario_data.get(profile)
+    if not isinstance(profile_data, Mapping):
+        return None
+    section_data = profile_data.get(section)
+    if not isinstance(section_data, Mapping):
+        return None
+    return section_data.get("aggregate")
+
+
 def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baseline: Any) -> dict[str, Any]:
     root = Path(args.root) / profile if args.root else Path(tempfile.mkdtemp(prefix=f"pyat-w03-w04-{profile}-"))
     cold_runs: list[dict[str, Any]] = []
@@ -736,57 +869,192 @@ def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baselin
         cold_root = root / f"cold-{repetition}"
         if cold_root.exists():
             shutil.rmtree(cold_root)
+        cold_root.mkdir(parents=True, exist_ok=True)
         cold_runs.append(_run_child(argparse.Namespace(
             worker_scenario=scenario if scenario in {"cold", "cells-and-hash"} else "full-matrix",
             worker_profile=profile,
             worker_rows=args.rows,
             worker_root=str(cold_root),
             worker_json=str(root / f"cold-{repetition}.json"),
+            cap_bytes=args.cap_bytes,
         ), source_root=args.source_root))
-        if scenario == "full-matrix":
+    if scenario == "full-matrix":
+        # The first persisted root is the common warm-restart root.  Each warm
+        # child is a separate Python process; no in-process warm shortcut.
+        warm_root = root / "cold-0"
+        for repetition in range(args.repetitions):
             warm_runs.append(_run_child(argparse.Namespace(
                 worker_scenario="warm",
                 worker_profile=profile,
                 worker_rows=args.rows,
-                worker_root=str(cold_root),
+                worker_root=str(warm_root),
                 worker_json=str(root / f"warm-{repetition}.json"),
+                cap_bytes=args.cap_bytes,
             ), source_root=args.source_root))
-            if cold_root.exists():
-                shutil.rmtree(cold_root)
+        for repetition in range(args.repetitions):
+            rebuild_root = root / f"rebuild-{repetition}"
+            if rebuild_root.exists():
+                shutil.rmtree(rebuild_root)
+            rebuild_root.mkdir(parents=True, exist_ok=True)
             rebuild_runs.append(_run_child(argparse.Namespace(
                 worker_scenario="full-matrix",
                 worker_profile=profile,
                 worker_rows=args.rows,
-                worker_root=str(cold_root),
+                worker_root=str(rebuild_root),
                 worker_json=str(root / f"rebuild-{repetition}.json"),
+                cap_bytes=args.cap_bytes,
             ), source_root=args.source_root))
     cold_aggregate = _aggregate(cold_runs)
     warm_aggregate = _aggregate(warm_runs)
     rebuild_aggregate = _aggregate(rebuild_runs)
-    baseline_for = ((baseline or {}).get("results", {}) if isinstance(baseline, Mapping) else {}).get(scenario, {}).get(profile) if isinstance(baseline, Mapping) else None
+    baseline_cold = _baseline_section(baseline, scenario, profile, "cold")
+    baseline_warm = _baseline_section(baseline, "cold", profile, "cold")
+    if baseline_warm is None:
+        baseline_warm = _baseline_section(baseline, scenario, profile, "cold")
     result = {
         "profile": profile,
         "scenario": scenario,
         "rows": args.rows,
         "repetitions": args.repetitions,
-        "cold": {"aggregate": cold_aggregate, "runs": cold_runs},
-        "warm": {"aggregate": warm_aggregate, "runs": warm_runs} if warm_runs else None,
-        "delete_rebuild": {"aggregate": rebuild_aggregate, "runs": rebuild_runs} if rebuild_runs else None,
         "actual_event_counts": {
             "cold": [r.get("event_count") for r in cold_runs],
             "warm": [r.get("event_count") for r in warm_runs],
             "delete_rebuild": [r.get("event_count") for r in rebuild_runs],
         },
-        "cold_vs_baseline": _compare((baseline_for or {}).get("cold", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None, cold_aggregate),
-        "warm_vs_baseline": _compare((baseline_for or {}).get("warm", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None, warm_aggregate),
+        "warm_fresh_process_pids": [r.get("pid") for r in warm_runs],
+        "warm_fresh_process_count": len(warm_runs),
+        "cold": {"aggregate": cold_aggregate, "runs": cold_runs},
+        "warm": {"aggregate": warm_aggregate, "runs": warm_runs} if warm_runs else None,
+        "delete_rebuild": {"aggregate": rebuild_aggregate, "runs": rebuild_runs} if rebuild_runs else None,
+        "cold_vs_baseline": _compare(baseline_cold, cold_aggregate),
+        "warm_vs_no_acceleration_baseline": _compare(baseline_warm, warm_aggregate),
+        "derived_cache_write_count": sum(1 for r in cold_runs if r.get("derived_cache_write")),
+        "derived_cache_hit_count": sum(1 for r in warm_runs if r.get("derived_cache_hit")),
+        "canonical_reopen_hit_count": sum(1 for r in warm_runs if r.get("canonical_reopen_hit")),
+        "canonical_persist_wall_seconds_total": sum(
+            float(r.get("metrics", {}).get("canonical_persist_wall_seconds") or 0.0)
+            for r in cold_runs
+        ),
+        "cache_write_amortization": (
+            sum(float(r.get("metrics", {}).get("canonical_persist_wall_seconds") or 0.0) for r in cold_runs)
+            / max(1, len(warm_runs))
+        ) if warm_runs else None,
         "regressions": [],
     }
-    for label, current, old in (("cold", cold_aggregate, (baseline_for or {}).get("cold", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None), ("warm", warm_aggregate, (baseline_for or {}).get("warm", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None)):
+    for label, current, old in (("cold", cold_aggregate, baseline_cold), ("warm", warm_aggregate, baseline_warm)):
         if isinstance(old, Mapping) and old.get("median_wall_seconds") and current.get("median_wall_seconds"):
             ratio = current["median_wall_seconds"] / old["median_wall_seconds"]
             if ratio > 1.10:
                 result["regressions"].append({"scope": label, "metric": "median_wall_seconds", "ratio": ratio, "status": "REGRESSION_GT_10_PERCENT"})
+        if isinstance(old, Mapping) and old.get("median_firstconsumer_stage_peak_rss_bytes") and current.get("median_firstconsumer_stage_peak_rss_bytes"):
+            ratio = current["median_firstconsumer_stage_peak_rss_bytes"] / old["median_firstconsumer_stage_peak_rss_bytes"]
+            if ratio > 1.10:
+                result["regressions"].append({"scope": label, "metric": "median_firstconsumer_stage_peak_rss_bytes", "ratio": ratio, "status": "REGRESSION_RSS_GT_10_PERCENT"})
     return result
+
+
+def _source_head(root: Path) -> str | None:
+    try:
+        return subprocess.check_output(
+            ["git", "-C", str(root), "rev-parse", "HEAD"], text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def _aggregate_for(results: Mapping[str, Any], scenario: str, profile: str, section: str) -> Any:
+    try:
+        return results[scenario][profile][section]["aggregate"]
+    except (KeyError, TypeError):
+        return None
+
+
+def _acceptance_gate(results: Mapping[str, Any], baseline: Any, args: argparse.Namespace, source_head: str | None) -> dict[str, Any]:
+    required_profiles = list(PROFILES)
+    final_shape = (
+        args.rows >= 100000
+        and args.repetitions >= 3
+        and set(required_profiles) <= set([p.strip() for p in args.profiles.split(",") if p.strip()])
+        and {"cold", "full-matrix"} <= {s.strip() for s in args.scenario.split(",") if s.strip()}
+    )
+    if not isinstance(baseline, Mapping):
+        return {"status": "NO_BASELINE", "pass": False, "final_shape": final_shape,
+                "reason": "baseline JSON absent; diagnostic only", "retention_decision": "DO_NOT_RETAIN__NO_BASELINE"}
+    baseline_host = (baseline.get("host") or {}).get("node") if isinstance(baseline.get("host"), Mapping) else None
+    current_host = platform.node()
+    identity = {
+        "schema": baseline.get("schema") == SCHEMA,
+        "source_head_is_protected": baseline.get("source_head") == EXPECTED_BASELINE_HEAD,
+        "rows_match": baseline.get("rows") == args.rows,
+        "profiles_match": baseline.get("profiles") == [p.strip() for p in args.profiles.split(",") if p.strip()],
+        "repetitions_match": baseline.get("repetitions") == args.repetitions,
+        "host_match": baseline_host == current_host,
+    }
+    baseline_results = baseline.get("results") if isinstance(baseline.get("results"), Mapping) else {}
+    cold_current = _aggregate_for(results, "cold", PREREGISTERED_COLD_PROFILE, "cold")
+    cold_baseline = _baseline_section(baseline, "cold", PREREGISTERED_COLD_PROFILE, "cold")
+    warm_current = _aggregate_for(results, "full-matrix", PREREGISTERED_REPEAT_PROFILE, "warm")
+    # The frozen W34 comparison is against the real matched normal no-acceleration
+    # restart, not against a canonical-reopen "warm" arm.
+    warm_baseline = _baseline_section(baseline, "cold", PREREGISTERED_REPEAT_PROFILE, "cold")
+    if warm_baseline is None:
+        warm_baseline = _baseline_section(baseline, "full-matrix", PREREGISTERED_REPEAT_PROFILE, "cold")
+    cold_current_peak = cold_current.get("median_cold_to_firstconsumer_stage_peak_rss_bytes") if isinstance(cold_current, Mapping) else None
+    cold_baseline_peak = cold_baseline.get("median_cold_to_firstconsumer_stage_peak_rss_bytes") if isinstance(cold_baseline, Mapping) else None
+    cold_improvement = (
+        1.0 - (cold_current_peak / cold_baseline_peak)
+        if isinstance(cold_current_peak, (int, float)) and isinstance(cold_baseline_peak, (int, float)) and cold_baseline_peak > 0
+        else None
+    )
+    warm_current_wall = warm_current.get("median_parent_wall_seconds") if isinstance(warm_current, Mapping) else None
+    warm_baseline_wall = warm_baseline.get("median_parent_wall_seconds") if isinstance(warm_baseline, Mapping) else None
+    warm_ratio = (
+        warm_current_wall / warm_baseline_wall
+        if isinstance(warm_current_wall, (int, float)) and isinstance(warm_baseline_wall, (int, float)) and warm_baseline_wall > 0
+        else None
+    )
+    regressions = []
+    for scenario, profile, section in (("cold", "narrow", "cold"), ("cold", "wide", "cold"), ("cold", "repeat", "cold"),
+                                        ("full-matrix", "narrow", "warm"), ("full-matrix", "wide", "warm"), ("full-matrix", "repeat", "warm")):
+        current = _aggregate_for(results, scenario, profile, section)
+        old = _baseline_section(baseline, scenario, profile, section)
+        if not isinstance(current, Mapping) or not isinstance(old, Mapping):
+            continue
+        for metric, status in (("median_cold_to_firstconsumer_stage_peak_rss_bytes", "REGRESSION_RSS_GT_10_PERCENT"), ("median_parent_wall_seconds", "REGRESSION_WALL_GT_10_PERCENT")):
+            a, b = old.get(metric), current.get(metric)
+            if isinstance(a, (int, float)) and a > 0 and isinstance(b, (int, float)) and b / a > 1.10:
+                regressions.append({"scenario": scenario, "profile": profile, "section": section, "metric": metric, "ratio": b / a, "status": status})
+    cold_pass = cold_improvement is not None and cold_improvement >= 0.15
+    warm_pass = warm_ratio is not None and warm_ratio <= 0.90
+    identity_pass = all(identity.values())
+    pass_all = bool(final_shape and identity_pass and cold_pass and warm_pass and not regressions)
+    retention = (
+        "RETAIN_FOR_REPEAT" if warm_pass and identity_pass and not regressions
+        else "DO_NOT_RETAIN__NONBENEFICIAL_OR_REGRESSION_OR_MISMATCH"
+    )
+    return {
+        "status": "PASS" if pass_all else "FAIL_OR_INCOMPLETE",
+        "pass": pass_all,
+        "final_shape": final_shape,
+        "identity": identity,
+        "baseline_source_head": baseline.get("source_head"),
+        "cold_profile": PREREGISTERED_COLD_PROFILE,
+        "cold_stage_peak_current_bytes": cold_current_peak,
+        "cold_stage_peak_baseline_bytes": cold_baseline_peak,
+        "cold_rss_improvement": cold_improvement,
+        "cold_rss_target": 0.15,
+        "cold_pass": cold_pass,
+        "repeat_profile": PREREGISTERED_REPEAT_PROFILE,
+        "repeat_restart_wall_current_seconds": warm_current_wall,
+        "repeat_restart_wall_baseline_seconds": warm_baseline_wall,
+        "repeat_wall_ratio": warm_ratio,
+        "repeat_wall_target": 0.90,
+        "warm_pass": warm_pass,
+        "regressions": regressions,
+        "retention_decision": retention,
+        "reason": "all frozen gates met" if pass_all else "missing/mismatched baseline, cold RSS target, repeat wall target, or regression gate not met",
+    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -799,6 +1067,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--root", default=None)
     parser.add_argument("--baseline-json", default=None)
     parser.add_argument("--source-root", default=str(Path(__file__).resolve().parents[1]))
+    parser.add_argument("--cap-bytes", type=int, default=MAX_CHILD_BYTES)
+    parser.add_argument("--acceptance-gate", action="store_true")
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--worker-scenario", default=None, help=argparse.SUPPRESS)
     parser.add_argument("--worker-profile", default=None, help=argparse.SUPPRESS)
@@ -819,9 +1089,13 @@ def main(argv: list[str] | None = None) -> int:
     if args.rows < 1 or args.repetitions < 1:
         parser.error("rows and repetitions must be positive")
     args.source_root = Path(args.source_root).resolve()
+    source_head = _source_head(args.source_root)
     baseline = None
     if args.baseline_json:
-        baseline = json.loads(Path(args.baseline_json).read_text(encoding="utf-8"))
+        try:
+            baseline = json.loads(Path(args.baseline_json).read_text(encoding="utf-8"))
+        except Exception:
+            baseline = None
     results = {}
     for scenario in scenarios:
         results[scenario] = {}
@@ -845,12 +1119,14 @@ def main(argv: list[str] | None = None) -> int:
             "actual_events_reported": True,
         },
         "acceptance_status": "ELIGIBLE_FOR_FINAL_MATRIX_NOT_YET_RECEIVED" if final_eligible else "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
+        "source_root": str(args.source_root),
+        "source_head": source_head,
         "host": {
             "node": platform.node(),
             "platform": platform.platform(),
             "python": sys.version,
             "load_average": list(os.getloadavg()),
-            "cap_bytes": MAX_CHILD_BYTES,
+            "cap_bytes": args.cap_bytes,
         },
         "model": "opencode-go/deepseek-v4.1-flash#max",
         "scenarios": scenarios,
@@ -858,6 +1134,15 @@ def main(argv: list[str] | None = None) -> int:
         "rows": args.rows,
         "repetitions": args.repetitions,
         "results": results,
+        "baseline_identity": {
+            "path": args.baseline_json,
+            "source_head": baseline.get("source_head") if isinstance(baseline, Mapping) else None,
+            "sha256": (
+                hashlib.sha256(Path(args.baseline_json).read_bytes()).hexdigest()
+                if args.baseline_json and Path(args.baseline_json).is_file() else None
+            ),
+        },
+        "acceptance": _acceptance_gate(results, baseline, args, source_head),
         "limits": [
             "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
             "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",
@@ -873,6 +1158,9 @@ def main(argv: list[str] | None = None) -> int:
         path.write_text(text, encoding="utf-8")
     else:
         print(text, end="")
+    acceptance = output["acceptance"]
+    if args.acceptance_gate and not acceptance.get("pass"):
+        return 2
     return 0
 
 

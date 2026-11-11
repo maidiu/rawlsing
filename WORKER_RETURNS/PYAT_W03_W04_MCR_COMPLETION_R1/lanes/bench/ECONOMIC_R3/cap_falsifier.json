@@ -1,0 +1,126 @@
+{
+  "acceptance": {
+    "final_shape": false,
+    "pass": false,
+    "reason": "baseline JSON absent; diagnostic only",
+    "retention_decision": "DO_NOT_RETAIN__NO_BASELINE",
+    "status": "NO_BASELINE"
+  },
+  "acceptance_status": "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
+  "baseline_identity": {
+    "path": null,
+    "sha256": null,
+    "source_head": null
+  },
+  "final_matrix_eligible": false,
+  "final_matrix_requirements": {
+    "actual_events_reported": true,
+    "profiles": [
+      "narrow",
+      "wide",
+      "repeat"
+    ],
+    "repetitions_min": 3,
+    "rows_min": 100000,
+    "scenario": "full-matrix"
+  },
+  "generated_utc": "2026-11-11T03:27:04Z",
+  "host": {
+    "cap_bytes": 8388608,
+    "load_average": [
+      2.92138671875,
+      2.64208984375,
+      2.787109375
+    ],
+    "node": "mainMac.lan",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "limits": [
+    "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
+    "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",
+    "Cold-warm-delete-rebuild use fresh child processes.",
+    "ExactPhysicalCellStream has no source decode; decode stage is explicitly not applicable.",
+    "Object construction and canonical closure hashing share the public candidate boundary; stages are labelled combined rather than falsely split."
+  ],
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "profiles": [
+    "narrow"
+  ],
+  "repetitions": 1,
+  "results": {
+    "cold": {
+      "narrow": {
+        "actual_event_counts": {
+          "cold": [
+            null
+          ],
+          "delete_rebuild": [],
+          "warm": []
+        },
+        "cache_write_amortization": null,
+        "canonical_persist_wall_seconds_total": 0.0,
+        "canonical_reopen_hit_count": 0,
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 1,
+            "complete_runs": 0,
+            "max_rss_peak_bytes": null,
+            "max_wall_seconds": null,
+            "median_cold_to_firstconsumer_stage_peak_rss_bytes": null,
+            "median_cpu_system_seconds": null,
+            "median_cpu_user_seconds": null,
+            "median_firstconsumer_stage_peak_rss_bytes": null,
+            "median_parent_wall_seconds": null,
+            "median_rss_peak_bytes": null,
+            "median_wall_seconds": null,
+            "min_rss_peak_bytes": null,
+            "min_wall_seconds": null,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "blocked_reason": "CHILD_RSS_EXCEEDED_AUTHORIZED_CAP_BEFORE_COMPLETION",
+              "cap_bytes": 8388608,
+              "cap_enforced": true,
+              "cap_peak_sampled_bytes": 15986688,
+              "profile": "narrow",
+              "returncode": -9,
+              "rows": 16,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "status": "BLOCKED_EXACT_DEPENDENCY",
+              "stderr": "",
+              "stdout": "",
+              "wall_seconds": 0.06867301894817501
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "delete_rebuild": null,
+        "derived_cache_hit_count": 0,
+        "derived_cache_write_count": 0,
+        "profile": "narrow",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 16,
+        "scenario": "cold",
+        "warm": null,
+        "warm_fresh_process_count": 0,
+        "warm_fresh_process_pids": [],
+        "warm_vs_no_acceleration_baseline": {
+          "status": "NO_BASELINE"
+        }
+      }
+    }
+  },
+  "rows": 16,
+  "scenarios": [
+    "cold"
+  ],
+  "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+  "source_head": "07f37e47893fdbc956766cea7d3ef550f064d8c7",
+  "source_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2"
+}
