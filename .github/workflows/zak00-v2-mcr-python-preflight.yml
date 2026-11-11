@@ -132,7 +132,7 @@ jobs:
           PY
           test "$code" -eq 2
 
-      - name: Attack with forged all-green reviewer and authority receipts
+      - name: Attack with forged all-green independent S1 reviewer receipt under HQ A
         shell: bash
         run: |
           set -euo pipefail
@@ -150,7 +150,7 @@ jobs:
                   item = json.loads(line.partition(": ")[2])
                   if item["status"] == "INCOMPLETE":
                       item["status"] = "PASS"
-                      item["grade"] = "AUTHORITY" if item["id"] == "ZAK00-PARENT-06" else "S1"
+                      item["grade"] = "S1"  # forged independent S1, matching prospective HQ-A minimum
                   line = "MCR_EVIDENCE: " + json.dumps(item, sort_keys=True)
               rows.append(line)
           dst.write_text("\n".join(rows) + "\n")
@@ -179,8 +179,8 @@ jobs:
           from pathlib import Path
           r = json.loads(Path("zak-mcr-format-receipts/ZAK00_FORGED_OFFICIAL_STRUCTURAL_ONLY.json").read_text())
           assert r["status"] == "READY_FOR_INDEPENDENT_RECEIVING", r
-          print("PROVED_OFFICIAL_CHECKER_CANNOT_AUTHENTICATE_ISSUER")
-          print("PROVED_CLAIM_SENSITIVE_GUARD_REJECTS_SAME_FORGED_VECTOR")
+          print("PROVED_OFFICIAL_CHECKER_CANNOT_AUTHENTICATE_INDEPENDENT_S1_ISSUER")
+          print("PROVED_CLAIM_SENSITIVE_GUARD_REJECTS_FORGED_HQ_A_S1_VECTOR")
           print("THIS_IS_AN_ADVERSARIAL_FIXTURE_NOT_A_RECEIVING_VERDICT")
           PY
           test "$structural_exit" -eq 0
