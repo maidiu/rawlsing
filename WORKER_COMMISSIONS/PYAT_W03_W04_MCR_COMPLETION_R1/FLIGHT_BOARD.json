@@ -855,16 +855,18 @@
       "pid": 83681,
       "benchmark_parent_pid": 83717,
       "observed_worker_pid": 83719,
-      "status": "ACTIVE_NATIVE_100000_ROW_MEASUREMENT_VERIFIED_AT_HANDOFF_INTAKE",
+      "status": "USER_STOPPED_FOR_ONE_REPETITION_PILOT__NO_AUTOREPAIR",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
       "execution_cut": "e06b5037846c2662e0f8500f391da4dc56364a5f",
       "driver_cut": "a2c82f6eba60249644f3b868fa55a64a78380823",
       "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/NATIVE_W03_W04_FULLSCALE/completion.json",
-      "scope": "Serialbaseline/candidatecold+fullmatrixandcells/hash; actual100k/3reps/6GiBsampledmonitor; no acceptanceyet"
+      "scope": "Serialbaseline/candidatecold+fullmatrixandcells/hash; actual100k/3reps/6GiBsampledmonitor; no acceptanceyet",
+      "stop_reason": "Explicit user requested1run per case before further repetitions",
+      "custody": "Allwrittenfilesretained;exactdriveranddescendantsstopped"
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Wait for existing NATIVE_W03_W04_FULLSCALE terminal notification; intake rawbaseline/candidate outputs, externally pinbaselinehash and reviewactualquantitativeoutcomes. No polling/duplicatelaunch/sourceedits while measurementactive.",
+  "next_action": "Execute user-directed one-repetition pilot via same existing executor; preserve/reuse/compress completed matching rawreceipts, norepeat3/fullPASSclaim.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
