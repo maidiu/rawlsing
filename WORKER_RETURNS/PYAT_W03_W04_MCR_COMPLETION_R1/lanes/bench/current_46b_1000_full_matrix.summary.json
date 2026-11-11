@@ -1,0 +1,1333 @@
+{
+  "host": {
+    "cap_bytes": 6442450944,
+    "load_average": [
+      2.9716796875,
+      2.91845703125,
+      2.78076171875
+    ],
+    "node": "mainMac.lan",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "limits": [
+    "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
+    "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",
+    "Cold-warm-delete-rebuild use fresh child processes.",
+    "ExactPhysicalCellStream has no source decode; decode stage is explicitly not applicable.",
+    "Object construction and canonical closure hashing share the public candidate boundary; stages are labelled combined rather than falsely split."
+  ],
+  "note": "Derived compact receipt; full consumer fact payload omitted. Raw JSON hash is authoritative for the uncommitted raw output.",
+  "results": {
+    "full-matrix": {
+      "narrow": {
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 197726208,
+            "max_wall_seconds": 8.166606856975704,
+            "median_cpu_system_seconds": 0.29655,
+            "median_cpu_user_seconds": 8.752296,
+            "median_rss_peak_bytes": 197726208.0,
+            "median_wall_seconds": 8.166606856975704,
+            "min_rss_peak_bytes": 197726208,
+            "min_wall_seconds": 8.166606856975704,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 1606925,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 3000,
+              "cell_generation_seconds": 0.9632011592620984,
+              "compact": true,
+              "consumer_fact_count": 1,
+              "consumer_fact_states": [
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 2.9536168850027025,
+                "cpu_system_seconds": 0.29655,
+                "cpu_user_seconds": 8.752296,
+                "rss_peak_bytes": 197726208,
+                "source_opens": 0,
+                "wall_seconds": 8.166606856975704
+              },
+              "parent_wall_seconds": 8.6454708740348,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-current-1000/narrow/cold-0/releases/3d660c05fe1b7278d86629b4de7fe60268a026876e149d672ace042d873f89f5/REL-m01/eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+              "pid": 36471,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "narrow",
+              "projection_identity": "9f28971bb07c25bf1923b90d45a2eefe47624d146ac9c00bfea2f0b7805cf42f",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "1629cc9f0d29bf4bcc6f9bb3c08c1581ae2d2d2de3eebaf081e898ff363f7a6c",
+              "release_ref": {
+                "content_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "full-matrix",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+              "source_sha256": "3d660c05fe1b7278d86629b4de7fe60268a026876e149d672ace042d873f89f5",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 1.1143266869476065
+                },
+                "cells": {
+                  "cell_count": 3000,
+                  "rss_peak_bytes": 54218752,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 0.9632011592620984
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.037164,
+                  "cpu_user_seconds": 1.3787230000000004,
+                  "rss_peak_bytes": 87322624,
+                  "rss_peak_delta_bytes": 24784896,
+                  "stage": "compact",
+                  "wall_seconds": 0.6281203710241243
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.014215999999999979,
+                  "cpu_user_seconds": 1.2379809999999996,
+                  "rss_peak_bytes": 99528704,
+                  "rss_peak_delta_bytes": 10592256,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.2590167890302837
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.019678,
+                  "cpu_user_seconds": 1.4522400000000002,
+                  "rss_peak_bytes": 62537728,
+                  "rss_peak_delta_bytes": 8318976,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 1.4962970749475062
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.019678,
+                  "cpu_user_seconds": 1.4522400000000002,
+                  "rss_peak_bytes": 62537728,
+                  "rss_peak_delta_bytes": 8318976,
+                  "stage": "i02validation",
+                  "wall_seconds": 1.4962970749475062
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 1.1143266869476065
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.136038,
+                  "cpu_user_seconds": 2.6797880000000003,
+                  "rss_peak_bytes": 197726208,
+                  "rss_peak_delta_bytes": 98197504,
+                  "stage": "persist",
+                  "wall_seconds": 2.9536168850027025
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.012274999999999994,
+                  "cpu_user_seconds": 0.636273,
+                  "rss_peak_bytes": 40456192,
+                  "rss_peak_delta_bytes": 10592256,
+                  "stage": "profile_setup",
+                  "wall_seconds": 0.6578360840212554
+                },
+                "projection": {
+                  "rss_peak_bytes": 54218752,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.018392999999999993,
+                  "cpu_user_seconds": 1.0856720000000002,
+                  "rss_peak_bytes": 54218752,
+                  "rss_peak_delta_bytes": 13565952,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 1.1143266869476065
+                },
+                "seal": {
+                  "cpu_system_seconds": 0.019678,
+                  "cpu_user_seconds": 1.4522400000000002,
+                  "rss_peak_bytes": 62537728,
+                  "rss_peak_delta_bytes": 8318976,
+                  "stage": "seal",
+                  "wall_seconds": 1.4962970749475062
+                }
+              },
+              "started_utc": "2026-11-11T02:01:24Z"
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "delete_rebuild": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 196247552,
+            "max_wall_seconds": 7.549421900999732,
+            "median_cpu_system_seconds": 0.24612499999999998,
+            "median_cpu_user_seconds": 8.230394,
+            "median_rss_peak_bytes": 196247552.0,
+            "median_wall_seconds": 7.549421900999732,
+            "min_rss_peak_bytes": 196247552,
+            "min_wall_seconds": 7.549421900999732,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 1606925,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 3000,
+              "cell_generation_seconds": 0.9181964246090502,
+              "compact": true,
+              "consumer_fact_count": 1,
+              "consumer_fact_states": [
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 2.714977477909997,
+                "cpu_system_seconds": 0.24612499999999998,
+                "cpu_user_seconds": 8.230394,
+                "rss_peak_bytes": 196247552,
+                "source_opens": 0,
+                "wall_seconds": 7.549421900999732
+              },
+              "parent_wall_seconds": 7.970455625909381,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-current-1000/narrow/cold-0/releases/3d660c05fe1b7278d86629b4de7fe60268a026876e149d672ace042d873f89f5/REL-m01/eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+              "pid": 36535,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "narrow",
+              "projection_identity": "9f28971bb07c25bf1923b90d45a2eefe47624d146ac9c00bfea2f0b7805cf42f",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "1629cc9f0d29bf4bcc6f9bb3c08c1581ae2d2d2de3eebaf081e898ff363f7a6c",
+              "release_ref": {
+                "content_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+              "source_sha256": "3d660c05fe1b7278d86629b4de7fe60268a026876e149d672ace042d873f89f5",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 1.0455834550084546
+                },
+                "cells": {
+                  "cell_count": 3000,
+                  "rss_peak_bytes": 54288384,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 0.9181964246090502
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.02643899999999999,
+                  "cpu_user_seconds": 1.3015210000000002,
+                  "rss_peak_bytes": 85229568,
+                  "rss_peak_delta_bytes": 22654976,
+                  "stage": "compact",
+                  "wall_seconds": 0.5216083700070158
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.013342999999999994,
+                  "cpu_user_seconds": 1.0697619999999999,
+                  "rss_peak_bytes": 97443840,
+                  "rss_peak_delta_bytes": 10600448,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.0923980149673298
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.013395999999999991,
+                  "cpu_user_seconds": 1.397442,
+                  "rss_peak_bytes": 62574592,
+                  "rss_peak_delta_bytes": 8286208,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 1.424322976032272
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.013395999999999991,
+                  "cpu_user_seconds": 1.397442,
+                  "rss_peak_bytes": 62574592,
+                  "rss_peak_delta_bytes": 8286208,
+                  "stage": "i02validation",
+                  "wall_seconds": 1.424322976032272
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 1.0455834550084546
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.11427199999999998,
+                  "cpu_user_seconds": 2.5755289999999995,
+                  "rss_peak_bytes": 196247552,
+                  "rss_peak_delta_bytes": 98803712,
+                  "stage": "persist",
+                  "wall_seconds": 2.714977477909997
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.010571999999999998,
+                  "cpu_user_seconds": 0.628176,
+                  "rss_peak_bytes": 40620032,
+                  "rss_peak_delta_bytes": 10588160,
+                  "stage": "profile_setup",
+                  "wall_seconds": 0.7100303879706189
+                },
+                "projection": {
+                  "rss_peak_bytes": 54288384,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.017686999999999994,
+                  "cpu_user_seconds": 1.015198,
+                  "rss_peak_bytes": 54288384,
+                  "rss_peak_delta_bytes": 13475840,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 1.0455834550084546
+                },
+                "seal": {
+                  "cpu_system_seconds": 0.013395999999999991,
+                  "cpu_user_seconds": 1.397442,
+                  "rss_peak_bytes": 62574592,
+                  "rss_peak_delta_bytes": 8286208,
+                  "stage": "seal",
+                  "wall_seconds": 1.424322976032272
+                }
+              },
+              "started_utc": "2026-11-11T02:01:38Z"
+            }
+          ]
+        },
+        "profile": "narrow",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 1000,
+        "scenario": "full-matrix",
+        "warm": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 234143744,
+            "max_wall_seconds": 4.444713549921289,
+            "median_cpu_system_seconds": 0.287646,
+            "median_cpu_user_seconds": 5.160386,
+            "median_rss_peak_bytes": 234143744.0,
+            "median_wall_seconds": 4.444713549921289,
+            "min_rss_peak_bytes": 234143744,
+            "min_wall_seconds": 4.444713549921289,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 1607237,
+              "cache_files": 14,
+              "cache_hit": true,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 0,
+              "cell_generation_seconds": 0.0,
+              "compact": true,
+              "consumer_fact_count": 1,
+              "consumer_fact_states": [
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": null,
+                "cpu_system_seconds": 0.287646,
+                "cpu_user_seconds": 5.160386,
+                "rss_peak_bytes": 234143744,
+                "source_opens": 0,
+                "wall_seconds": 4.444713549921289
+              },
+              "parent_wall_seconds": 4.938755276962183,
+              "pid": 36497,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "narrow",
+              "projection_identity": "9f28971bb07c25bf1923b90d45a2eefe47624d146ac9c00bfea2f0b7805cf42f",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "1629cc9f0d29bf4bcc6f9bb3c08c1581ae2d2d2de3eebaf081e898ff363f7a6c",
+              "release_ref": {
+                "content_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "reopened_release_ref": {
+                "content_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "warm",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "eea7b41a2e10b3fe1e68d7ae6b167794cd63aaa8b8c11b8dff30e8d1ecddc680",
+              "source_sha256": "3d660c05fe1b7278d86629b4de7fe60268a026876e149d672ace042d873f89f5",
+              "stages": {
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.014431000000000027,
+                  "cpu_user_seconds": 1.184691,
+                  "rss_peak_bytes": 234143744,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.2187158219749108
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.010209000000000003,
+                  "cpu_user_seconds": 0.6021449999999999,
+                  "rss_peak_bytes": 40693760,
+                  "rss_peak_delta_bytes": 10489856,
+                  "stage": "profile_setup",
+                  "wall_seconds": 0.6195293760392815
+                },
+                "reopen": {
+                  "cpu_system_seconds": 0.20721499999999998,
+                  "cpu_user_seconds": 3.128005,
+                  "rss_peak_bytes": 234143744,
+                  "rss_peak_delta_bytes": 193257472,
+                  "stage": "reopen",
+                  "wall_seconds": 2.565825267927721
+                }
+              },
+              "started_utc": "2026-11-11T02:01:33Z"
+            }
+          ]
+        },
+        "warm_vs_baseline": {
+          "status": "NO_BASELINE"
+        }
+      },
+      "repeat": {
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 345870336,
+            "max_wall_seconds": 20.150382532039657,
+            "median_cpu_system_seconds": 0.45056599999999997,
+            "median_cpu_user_seconds": 20.46713,
+            "median_rss_peak_bytes": 345870336.0,
+            "median_wall_seconds": 20.150382532039657,
+            "min_rss_peak_bytes": 345870336,
+            "min_wall_seconds": 20.150382532039657,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 3328109,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 6000,
+              "cell_generation_seconds": 2.4365297412732616,
+              "compact": true,
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 2.2765556156712896,
+                "cpu_system_seconds": 0.45056599999999997,
+                "cpu_user_seconds": 20.46713,
+                "rss_peak_bytes": 345870336,
+                "source_opens": 0,
+                "wall_seconds": 20.150382532039657
+              },
+              "parent_wall_seconds": 20.624400523025542,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-current-1000/repeat/cold-0/releases/c08986d5fd4ac6ea644b9d119e86534e6b50093d3cfd8b42746cab0a82d3f0aa/REL-m01/9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+              "pid": 36658,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "repeat",
+              "projection_identity": "0247cb9a0a0818f49dffa651f8c19884683222fc0338c0f05a80f2c2467c637c",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "905c106ad33152aeb4c06d58a0fbf863a2e2f479fffdd47b6574ac2a393bd1d7",
+              "release_ref": {
+                "content_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "full-matrix",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+              "source_sha256": "c08986d5fd4ac6ea644b9d119e86534e6b50093d3cfd8b42746cab0a82d3f0aa",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 2.673188431072049
+                },
+                "cells": {
+                  "cell_count": 6000,
+                  "rss_peak_bytes": 83189760,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 2.4365297412732616
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.03483900000000001,
+                  "cpu_user_seconds": 2.0083209999999996,
+                  "rss_peak_bytes": 129290240,
+                  "rss_peak_delta_bytes": 27889664,
+                  "stage": "compact",
+                  "wall_seconds": 1.2463642689399421
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.01724099999999998,
+                  "cpu_user_seconds": 1.5734639999999995,
+                  "rss_peak_bytes": 133115904,
+                  "rss_peak_delta_bytes": 3825664,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.6083159990375862
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.03421299999999999,
+                  "cpu_user_seconds": 3.5383,
+                  "rss_peak_bytes": 101400576,
+                  "rss_peak_delta_bytes": 18210816,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 3.6064729989739135
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.03421299999999999,
+                  "cpu_user_seconds": 3.5383,
+                  "rss_peak_bytes": 101400576,
+                  "rss_peak_delta_bytes": 18210816,
+                  "stage": "i02validation",
+                  "wall_seconds": 3.6064729989739135
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 2.673188431072049
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.23494199999999996,
+                  "cpu_user_seconds": 6.492472000000001,
+                  "rss_peak_bytes": 345870336,
+                  "rss_peak_delta_bytes": 211542016,
+                  "stage": "persist",
+                  "wall_seconds": 6.829666847013868
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.014025000000000003,
+                  "cpu_user_seconds": 0.9945080000000001,
+                  "rss_peak_bytes": 47140864,
+                  "rss_peak_delta_bytes": 17125376,
+                  "stage": "profile_setup",
+                  "wall_seconds": 1.017809804994613
+                },
+                "projection": {
+                  "rss_peak_bytes": 83189760,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.041888999999999996,
+                  "cpu_user_seconds": 2.6014720000000002,
+                  "rss_peak_bytes": 83189760,
+                  "rss_peak_delta_bytes": 35876864,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 2.673188431072049
+                },
+                "repeat_firstconsumer": [
+                  {
+                    "cpu_system_seconds": 0.01425499999999999,
+                    "cpu_user_seconds": 1.4532520000000009,
+                    "rss_peak_bytes": 133791744,
+                    "rss_peak_delta_bytes": 675840,
+                    "stage": "repeat_firstconsumer",
+                    "wall_seconds": 1.4969380989205092
+                  },
+                  {
+                    "cpu_system_seconds": 0.015961999999999976,
+                    "cpu_user_seconds": 1.5612359999999992,
+                    "rss_peak_bytes": 134328320,
+                    "rss_peak_delta_bytes": 536576,
+                    "stage": "repeat_firstconsumer",
+                    "wall_seconds": 1.593469955958426
+                  }
+                ],
+                "seal": {
+                  "cpu_system_seconds": 0.03421299999999999,
+                  "cpu_user_seconds": 3.5383,
+                  "rss_peak_bytes": 101400576,
+                  "rss_peak_delta_bytes": 18210816,
+                  "stage": "seal",
+                  "wall_seconds": 3.6064729989739135
+                }
+              },
+              "started_utc": "2026-11-11T02:02:29Z"
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "delete_rebuild": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 344276992,
+            "max_wall_seconds": 21.65899902197998,
+            "median_cpu_system_seconds": 0.5319809999999999,
+            "median_cpu_user_seconds": 21.816502,
+            "median_rss_peak_bytes": 344276992.0,
+            "median_wall_seconds": 21.65899902197998,
+            "min_rss_peak_bytes": 344276992,
+            "min_wall_seconds": 21.65899902197998,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 3328109,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 6000,
+              "cell_generation_seconds": 2.8013327113585547,
+              "compact": true,
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 2.3327756479848176,
+                "cpu_system_seconds": 0.5319809999999999,
+                "cpu_user_seconds": 21.816502,
+                "rss_peak_bytes": 344276992,
+                "source_opens": 0,
+                "wall_seconds": 21.65899902197998
+              },
+              "parent_wall_seconds": 22.299795113969594,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-current-1000/repeat/cold-0/releases/c08986d5fd4ac6ea644b9d119e86534e6b50093d3cfd8b42746cab0a82d3f0aa/REL-m01/9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+              "pid": 36774,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "repeat",
+              "projection_identity": "0247cb9a0a0818f49dffa651f8c19884683222fc0338c0f05a80f2c2467c637c",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "905c106ad33152aeb4c06d58a0fbf863a2e2f479fffdd47b6574ac2a393bd1d7",
+              "release_ref": {
+                "content_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+              "source_sha256": "c08986d5fd4ac6ea644b9d119e86534e6b50093d3cfd8b42746cab0a82d3f0aa",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 3.0541220910381526
+                },
+                "cells": {
+                  "cell_count": 6000,
+                  "rss_peak_bytes": 83423232,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 2.8013327113585547
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.03325799999999998,
+                  "cpu_user_seconds": 1.9626410000000014,
+                  "rss_peak_bytes": 124764160,
+                  "rss_peak_delta_bytes": 23076864,
+                  "stage": "compact",
+                  "wall_seconds": 1.197690516943112
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.016223000000000015,
+                  "cpu_user_seconds": 1.6095020000000009,
+                  "rss_peak_bytes": 128643072,
+                  "rss_peak_delta_bytes": 3878912,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.640300452010706
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.05595700000000001,
+                  "cpu_user_seconds": 4.248805,
+                  "rss_peak_bytes": 101687296,
+                  "rss_peak_delta_bytes": 18264064,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 4.4567483310820535
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.05595700000000001,
+                  "cpu_user_seconds": 4.248805,
+                  "rss_peak_bytes": 101687296,
+                  "rss_peak_delta_bytes": 18264064,
+                  "stage": "i02validation",
+                  "wall_seconds": 4.4567483310820535
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 3.0541220910381526
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.263154,
+                  "cpu_user_seconds": 6.656209999999998,
+                  "rss_peak_bytes": 344276992,
+                  "rss_peak_delta_bytes": 214269952,
+                  "stage": "persist",
+                  "wall_seconds": 6.998326943954453
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.019497000000000007,
+                  "cpu_user_seconds": 1.083384,
+                  "rss_peak_bytes": 47722496,
+                  "rss_peak_delta_bytes": 17068032,
+                  "stage": "profile_setup",
+                  "wall_seconds": 1.1901968569727615
+                },
+                "projection": {
+                  "rss_peak_bytes": 83423232,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.05234900000000001,
+                  "cpu_user_seconds": 2.962054,
+                  "rss_peak_bytes": 83423232,
+                  "rss_peak_delta_bytes": 35528704,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 3.0541220910381526
+                },
+                "repeat_firstconsumer": [
+                  {
+                    "cpu_system_seconds": 0.014176999999999967,
+                    "cpu_user_seconds": 1.424284,
+                    "rss_peak_bytes": 129773568,
+                    "rss_peak_delta_bytes": 1130496,
+                    "stage": "repeat_firstconsumer",
+                    "wall_seconds": 1.4526729109929875
+                  },
+                  {
+                    "cpu_system_seconds": 0.01611399999999996,
+                    "cpu_user_seconds": 1.5542230000000004,
+                    "rss_peak_bytes": 130007040,
+                    "rss_peak_delta_bytes": 233472,
+                    "stage": "repeat_firstconsumer",
+                    "wall_seconds": 1.58567448600661
+                  }
+                ],
+                "seal": {
+                  "cpu_system_seconds": 0.05595700000000001,
+                  "cpu_user_seconds": 4.248805,
+                  "rss_peak_bytes": 101687296,
+                  "rss_peak_delta_bytes": 18264064,
+                  "stage": "seal",
+                  "wall_seconds": 4.4567483310820535
+                }
+              },
+              "started_utc": "2026-11-11T02:03:02Z"
+            }
+          ]
+        },
+        "profile": "repeat",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 1000,
+        "scenario": "full-matrix",
+        "warm": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 414257152,
+            "max_wall_seconds": 11.380956771085039,
+            "median_cpu_system_seconds": 0.47534699999999996,
+            "median_cpu_user_seconds": 11.979486,
+            "median_rss_peak_bytes": 414257152.0,
+            "median_wall_seconds": 11.380956771085039,
+            "min_rss_peak_bytes": 414257152,
+            "min_wall_seconds": 11.380956771085039,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 3328421,
+              "cache_files": 14,
+              "cache_hit": true,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 0,
+              "cell_generation_seconds": 0.0,
+              "compact": true,
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": null,
+                "cpu_system_seconds": 0.47534699999999996,
+                "cpu_user_seconds": 11.979486,
+                "rss_peak_bytes": 414257152,
+                "source_opens": 0,
+                "wall_seconds": 11.380956771085039
+              },
+              "parent_wall_seconds": 11.909572317963466,
+              "pid": 36744,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "repeat",
+              "projection_identity": "0247cb9a0a0818f49dffa651f8c19884683222fc0338c0f05a80f2c2467c637c",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "905c106ad33152aeb4c06d58a0fbf863a2e2f479fffdd47b6574ac2a393bd1d7",
+              "release_ref": {
+                "content_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "reopened_release_ref": {
+                "content_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "warm",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "9fe4140855898fb75532ac2d3cb1b501775f8aac6fa0df64bb5ccc254799e467",
+              "source_sha256": "c08986d5fd4ac6ea644b9d119e86534e6b50093d3cfd8b42746cab0a82d3f0aa",
+              "stages": {
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.01822600000000002,
+                  "cpu_user_seconds": 1.7856009999999998,
+                  "rss_peak_bytes": 414257152,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.8235380720579997
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.014596000000000005,
+                  "cpu_user_seconds": 1.000895,
+                  "rss_peak_bytes": 46989312,
+                  "rss_peak_delta_bytes": 17113088,
+                  "stage": "profile_setup",
+                  "wall_seconds": 1.02521560608875
+                },
+                "reopen": {
+                  "cpu_system_seconds": 0.37012899999999993,
+                  "cpu_user_seconds": 5.544995,
+                  "rss_peak_bytes": 414257152,
+                  "rss_peak_delta_bytes": 367071232,
+                  "stage": "reopen",
+                  "wall_seconds": 4.981966554070823
+                },
+                "repeat_firstconsumer": [
+                  {
+                    "cpu_system_seconds": 0.013180999999999998,
+                    "cpu_user_seconds": 1.642285000000001,
+                    "rss_peak_bytes": 414257152,
+                    "rss_peak_delta_bytes": 0,
+                    "stage": "repeat_firstconsumer",
+                    "wall_seconds": 1.670170409954153
+                  },
+                  {
+                    "cpu_system_seconds": 0.016241000000000005,
+                    "cpu_user_seconds": 1.7628830000000004,
+                    "rss_peak_bytes": 414257152,
+                    "rss_peak_delta_bytes": 0,
+                    "stage": "repeat_firstconsumer",
+                    "wall_seconds": 1.802759014070034
+                  }
+                ]
+              },
+              "started_utc": "2026-11-11T02:02:49Z"
+            }
+          ]
+        },
+        "warm_vs_baseline": {
+          "status": "NO_BASELINE"
+        }
+      },
+      "wide": {
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 344641536,
+            "max_wall_seconds": 16.757558037992567,
+            "median_cpu_system_seconds": 0.40624499999999997,
+            "median_cpu_user_seconds": 17.213118,
+            "median_rss_peak_bytes": 344641536.0,
+            "median_wall_seconds": 16.757558037992567,
+            "min_rss_peak_bytes": 344641536,
+            "min_wall_seconds": 16.757558037992567,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 3329978,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 6000,
+              "cell_generation_seconds": 2.4065299635985866,
+              "compact": true,
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 6.730934477061965,
+                "cpu_system_seconds": 0.40624499999999997,
+                "cpu_user_seconds": 17.213118,
+                "rss_peak_bytes": 344641536,
+                "source_opens": 0,
+                "wall_seconds": 16.757558037992567
+              },
+              "parent_wall_seconds": 17.22195051703602,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-current-1000/wide/cold-0/releases/1d86365d966d59493ad41e7604697c7cbe09e53b4e2ebaabd7c2b4b5b95344ae/REL-m01/38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+              "pid": 36554,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "wide",
+              "projection_identity": "cc6e7087015b1e45846096760b08b556fa4fc9daac7b699d7376d6493e612335",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "c5f2d8d3d4be106c9a57378f118c344b6d634befb49ae14314077f93c3e184c5",
+              "release_ref": {
+                "content_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "full-matrix",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+              "source_sha256": "1d86365d966d59493ad41e7604697c7cbe09e53b4e2ebaabd7c2b4b5b95344ae",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 2.628142533940263
+                },
+                "cells": {
+                  "cell_count": 6000,
+                  "rss_peak_bytes": 82882560,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 2.4065299635985866
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.03234400000000001,
+                  "cpu_user_seconds": 1.960770000000001,
+                  "rss_peak_bytes": 125526016,
+                  "rss_peak_delta_bytes": 23363584,
+                  "stage": "compact",
+                  "wall_seconds": 1.1944773389259353
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.015744000000000008,
+                  "cpu_user_seconds": 1.5342289999999998,
+                  "rss_peak_bytes": 130347008,
+                  "rss_peak_delta_bytes": 4820992,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.563763879938051
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.03500400000000001,
+                  "cpu_user_seconds": 3.490584,
+                  "rss_peak_bytes": 102162432,
+                  "rss_peak_delta_bytes": 19279872,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 3.560702146962285
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.03500400000000001,
+                  "cpu_user_seconds": 3.490584,
+                  "rss_peak_bytes": 102162432,
+                  "rss_peak_delta_bytes": 19279872,
+                  "stage": "i02validation",
+                  "wall_seconds": 3.560702146962285
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 2.628142533940263
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.23001899999999997,
+                  "cpu_user_seconds": 6.435032,
+                  "rss_peak_bytes": 344641536,
+                  "rss_peak_delta_bytes": 214294528,
+                  "stage": "persist",
+                  "wall_seconds": 6.730934477061965
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.013637999999999997,
+                  "cpu_user_seconds": 0.9853639999999999,
+                  "rss_peak_bytes": 46882816,
+                  "rss_peak_delta_bytes": 17002496,
+                  "stage": "profile_setup",
+                  "wall_seconds": 1.0078873719321564
+                },
+                "projection": {
+                  "rss_peak_bytes": 82882560,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.036656,
+                  "cpu_user_seconds": 2.5676509999999997,
+                  "rss_peak_bytes": 82882560,
+                  "rss_peak_delta_bytes": 35803136,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 2.628142533940263
+                },
+                "seal": {
+                  "cpu_system_seconds": 0.03500400000000001,
+                  "cpu_user_seconds": 3.490584,
+                  "rss_peak_bytes": 102162432,
+                  "rss_peak_delta_bytes": 19279872,
+                  "stage": "seal",
+                  "wall_seconds": 3.560702146962285
+                }
+              },
+              "started_utc": "2026-11-11T02:01:46Z"
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "delete_rebuild": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 343298048,
+            "max_wall_seconds": 16.81829573493451,
+            "median_cpu_system_seconds": 0.40993799999999997,
+            "median_cpu_user_seconds": 17.263846,
+            "median_rss_peak_bytes": 343298048.0,
+            "median_wall_seconds": 16.81829573493451,
+            "min_rss_peak_bytes": 343298048,
+            "min_wall_seconds": 16.81829573493451,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 3329978,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 6000,
+              "cell_generation_seconds": 2.400147775420919,
+              "compact": true,
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 6.769121552002616,
+                "cpu_system_seconds": 0.40993799999999997,
+                "cpu_user_seconds": 17.263846,
+                "rss_peak_bytes": 343298048,
+                "source_opens": 0,
+                "wall_seconds": 16.81829573493451
+              },
+              "parent_wall_seconds": 17.284704351914115,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-current-1000/wide/cold-0/releases/1d86365d966d59493ad41e7604697c7cbe09e53b4e2ebaabd7c2b4b5b95344ae/REL-m01/38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+              "pid": 36605,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "wide",
+              "projection_identity": "cc6e7087015b1e45846096760b08b556fa4fc9daac7b699d7376d6493e612335",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "c5f2d8d3d4be106c9a57378f118c344b6d634befb49ae14314077f93c3e184c5",
+              "release_ref": {
+                "content_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+              "source_sha256": "1d86365d966d59493ad41e7604697c7cbe09e53b4e2ebaabd7c2b4b5b95344ae",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 2.617107070982456
+                },
+                "cells": {
+                  "cell_count": 6000,
+                  "rss_peak_bytes": 82878464,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 2.400147775420919
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.032244999999999996,
+                  "cpu_user_seconds": 1.9585869999999996,
+                  "rss_peak_bytes": 127401984,
+                  "rss_peak_delta_bytes": 25186304,
+                  "stage": "compact",
+                  "wall_seconds": 1.1901674169348553
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.015427999999999997,
+                  "cpu_user_seconds": 1.586772999999999,
+                  "rss_peak_bytes": 132165632,
+                  "rss_peak_delta_bytes": 4763648,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.6131851689424366
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.034883,
+                  "cpu_user_seconds": 3.482519,
+                  "rss_peak_bytes": 102215680,
+                  "rss_peak_delta_bytes": 19337216,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 3.5518453060649335
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.034883,
+                  "cpu_user_seconds": 3.482519,
+                  "rss_peak_bytes": 102215680,
+                  "rss_peak_delta_bytes": 19337216,
+                  "stage": "i02validation",
+                  "wall_seconds": 3.5518453060649335
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 2.617107070982456
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.23275900000000002,
+                  "cpu_user_seconds": 6.463950999999998,
+                  "rss_peak_bytes": 343298048,
+                  "rss_peak_delta_bytes": 211132416,
+                  "stage": "persist",
+                  "wall_seconds": 6.769121552002616
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.013382999999999999,
+                  "cpu_user_seconds": 0.9817560000000001,
+                  "rss_peak_bytes": 47087616,
+                  "rss_peak_delta_bytes": 17031168,
+                  "stage": "profile_setup",
+                  "wall_seconds": 1.004018265986815
+                },
+                "projection": {
+                  "rss_peak_bytes": 82878464,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.038130000000000004,
+                  "cpu_user_seconds": 2.5525729999999998,
+                  "rss_peak_bytes": 82878464,
+                  "rss_peak_delta_bytes": 35614720,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 2.617107070982456
+                },
+                "seal": {
+                  "cpu_system_seconds": 0.034883,
+                  "cpu_user_seconds": 3.482519,
+                  "rss_peak_bytes": 102215680,
+                  "rss_peak_delta_bytes": 19337216,
+                  "stage": "seal",
+                  "wall_seconds": 3.5518453060649335
+                }
+              },
+              "started_utc": "2026-11-11T02:02:11Z"
+            }
+          ]
+        },
+        "profile": "wide",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 1000,
+        "scenario": "full-matrix",
+        "warm": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 418758656,
+            "max_wall_seconds": 7.7892453980166465,
+            "median_cpu_system_seconds": 0.443812,
+            "median_cpu_user_seconds": 8.462578,
+            "median_rss_peak_bytes": 418758656.0,
+            "median_wall_seconds": 7.7892453980166465,
+            "min_rss_peak_bytes": 418758656,
+            "min_wall_seconds": 7.7892453980166465,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 3330290,
+              "cache_files": 14,
+              "cache_hit": true,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 0,
+              "cell_generation_seconds": 0.0,
+              "compact": true,
+              "consumer_fact_count": 2,
+              "consumer_fact_states": [
+                "SUPPORTED",
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": null,
+                "cpu_system_seconds": 0.443812,
+                "cpu_user_seconds": 8.462578,
+                "rss_peak_bytes": 418758656,
+                "source_opens": 0,
+                "wall_seconds": 7.7892453980166465
+              },
+              "parent_wall_seconds": 8.277519813971594,
+              "pid": 36585,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "wide",
+              "projection_identity": "cc6e7087015b1e45846096760b08b556fa4fc9daac7b699d7376d6493e612335",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "c5f2d8d3d4be106c9a57378f118c344b6d634befb49ae14314077f93c3e184c5",
+              "release_ref": {
+                "content_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "reopened_release_ref": {
+                "content_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 1000,
+              "scenario": "warm",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "38ceb117bf98a4e41ed48c62fcb0bc3dc3b65de25ef09f794177cf31be0748c6",
+              "source_sha256": "1d86365d966d59493ad41e7604697c7cbe09e53b4e2ebaabd7c2b4b5b95344ae",
+              "stages": {
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.01753899999999997,
+                  "cpu_user_seconds": 1.762288999999999,
+                  "rss_peak_bytes": 418758656,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 1.8024632410379127
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.014127,
+                  "cpu_user_seconds": 0.97782,
+                  "rss_peak_bytes": 47001600,
+                  "rss_peak_delta_bytes": 17018880,
+                  "stage": "profile_setup",
+                  "wall_seconds": 1.0023814520100132
+                },
+                "reopen": {
+                  "cpu_system_seconds": 0.37018799999999996,
+                  "cpu_user_seconds": 5.496387,
+                  "rss_peak_bytes": 418758656,
+                  "rss_peak_delta_bytes": 371585024,
+                  "stage": "reopen",
+                  "wall_seconds": 4.926398597075604
+                }
+              },
+              "started_utc": "2026-11-11T02:02:03Z"
+            }
+          ]
+        },
+        "warm_vs_baseline": {
+          "status": "NO_BASELINE"
+        }
+      }
+    }
+  },
+  "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+  "source_file": "current_46b_1000_full_matrix.json",
+  "source_file_sha256": "668970e075013e4c0a0864abb4845a9268dea8a8413292c1efe383828a2505e1"
+}
