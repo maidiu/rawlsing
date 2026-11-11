@@ -71,6 +71,12 @@ jobs:
           fi
           grep -q MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN /tmp/mii-not-implemented.txt
           echo MCR_UNIMPLEMENTED_ADAPTER_RED_CONFIRMED
+      - name: Independent profiler must observe actual P6 and reject adapter-made trace
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --counterfeit-attack
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --baseline
       - name: Hostile 53-of-54 valid-hash forged return must FAIL against frozen original TSV
         shell: bash
         run: |
