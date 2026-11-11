@@ -1,0 +1,46 @@
+{
+  "baseline_source_head": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "cold_pass": true,
+  "cold_profile": "wide",
+  "cold_rss_improvement": 0.9,
+  "cold_rss_target": 0.15,
+  "cold_stage_peak_baseline_bytes": 1000,
+  "cold_stage_peak_current_bytes": 100,
+  "final_shape": true,
+  "identity": {
+    "host_match": true,
+    "profiles_match": true,
+    "repetitions_match": true,
+    "rows_match": true,
+    "schema": true,
+    "source_head_is_protected": true
+  },
+  "pass": false,
+  "reason": "missing/mismatched baseline, cold RSS target, repeat wall target, or regression gate not met",
+  "regressions": [
+    {
+      "metric": "median_cold_to_firstconsumer_stage_peak_rss_bytes",
+      "profile": "narrow",
+      "ratio": 1.2,
+      "scenario": "cold",
+      "section": "cold",
+      "status": "REGRESSION_RSS_GT_10_PERCENT"
+    },
+    {
+      "metric": "median_parent_wall_seconds",
+      "profile": "narrow",
+      "ratio": 1.2,
+      "scenario": "cold",
+      "section": "cold",
+      "status": "REGRESSION_WALL_GT_10_PERCENT"
+    }
+  ],
+  "repeat_profile": "repeat",
+  "repeat_restart_wall_baseline_seconds": 200,
+  "repeat_restart_wall_current_seconds": 100,
+  "repeat_wall_ratio": 0.5,
+  "repeat_wall_target": 0.9,
+  "retention_decision": "DO_NOT_RETAIN__NONBENEFICIAL_OR_REGRESSION_OR_MISMATCH",
+  "status": "FAIL_OR_INCOMPLETE",
+  "warm_pass": true
+}
