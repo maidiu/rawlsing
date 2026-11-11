@@ -1,0 +1,22 @@
+{
+  "schema": "SOROK_MII_MCR_C_R5_RECEIVING_GATE_RECEIPT@1",
+  "gate_command": "python3 /tmp/protected_mcr_checker_r5.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-MCR-AF-INDEPENDENT-REVIEW-20261110-R1/00_COPY_PASTE_LAUNCH.md --verify-return WORKER_REVIEWS/SOROK-MII-MCR-AF-889-R1/MCR_COMPLETION_EVIDENCE.txt --candidate-sha 8c9478430b9ada90caf9f7bec8ae56d22160f789 --evidence-root .",
+  "checker": {
+    "path_used": "/tmp/protected_mcr_checker_r5.py",
+    "blob": "6e16878e60e8e89bf8ab8001144ed84ad257f5fc",
+    "source": "git show 4f3413fc5c37b589be3412f826bf8f68ee617d4a:CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py",
+    "hash_object_verified": true,
+    "note": "The review-tree copy of CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py is the obsolete pre-MCR blob and was NOT substituted, per the commission's MCR CHECKER SOURCE CUT section."
+  },
+  "candidate_sha": "8c9478430b9ada90caf9f7bec8ae56d22160f789",
+  "contract_sha256": "c95f0a6504ad5203c89b1a5358f6994744a85276baea2d793ef81bf4b595989b",
+  "exit_code": 0,
+  "result": {
+    "status": "READY_FOR_INDEPENDENT_RECEIVING",
+    "errors": [],
+    "verified_obligation_count": 7,
+    "expected_identity_count": 7,
+    "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE"
+  },
+  "interpretation": "All seven review obligations accepted at S2 documentary grade with committed evidence/output digests and the frozen seven-ID coverage set. The gate itself only certifies evidence coverage; the independent judgment is this return (verdict ACCEPT_SCOPED_DOCUMENTARY). Actual MII implementation and all 63 E outcomes remain NOT_RUN; no protected merge or native grant. A first gate attempt exposed MCR_C_NO_DROP_SET_MISMATCH because delivered identity tuples must be JSON-encoded column values per the MCR-C identity_columns contract; the encoding was corrected (candidate 8c947843) and the gate re-run clean."
+}
