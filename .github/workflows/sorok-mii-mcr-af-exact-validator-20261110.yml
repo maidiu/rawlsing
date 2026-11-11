@@ -1,0 +1,124 @@
+name: Sorok MII MCR-AF Exact Contract Pre-Dispatch
+on:
+  push:
+    branches:
+      - docs/sorok-mechanism-ii-mcr-af-existing-commission-r2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-protected-python-mcr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve exact protected source checker with verified blob
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          git show FETCH_HEAD:CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py > /tmp/mcr_exact_checker.py
+          test "$(git hash-object /tmp/mcr_exact_checker.py)" = "6e16878e60e8e89bf8ab8001144ed84ad257f5fc"
+          echo "PROTECTED_MCR_CHECKER_SHA_OK 6e16878e60e8e89bf8ab8001144ed84ad257f5fc"
+      - name: Fetch both immutable original source objects and verify real MCR-C source tuples
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 094937d3187ed3c2e215fe2c1f7c1c84f50d9006
+          git fetch --no-tags --depth=1 origin acde0e5f614c5bf03b44ccc46df1cd295f97e61d
+          test "$(git rev-parse 094937d3187ed3c2e215fe2c1f7c1c84f50d9006:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md)" = "b48c6a7f1daf958420c76ae85a11d0b585b0d4bc"
+          test "$(git rev-parse acde0e5f614c5bf03b44ccc46df1cd295f97e61d:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00E_MECHANISM_II_HISTORICALLY_MEDIATED_USER_GAZE_AND_PHENOMENAL_SURFACE_ARCHITECTURE_20261108_R1.md)" = "618986db6d8910181ca7dd5d1cc39564423b5a94"
+          echo BOTH_IMMUTABLE_SOURCE_TUPLES_GIT_VERIFIED
+      - name: Fetch immutably frozen pre-author 54-ID registry and oracle runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 8382651eabc5a7fa6ca0fed3447fa6308b3324fc
+          test "$(git rev-parse 8382651eabc5a7fa6ca0fed3447fa6308b3324fc:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_identities.tsv)" = "a4aa2fafbb19263e3a89de703c8525a765417e95"
+          test "$(git rev-parse 8382651eabc5a7fa6ca0fed3447fa6308b3324fc:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py)" = "0d82d36416834b2bda3b112f9b9dcbf0a475d603"
+          git fetch --no-tags --depth=1 origin 62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff
+          test "$(git rev-parse 62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_acceptance.json)" = "2ff94ac73fbd22344acfe2890a9163b8b492348d"
+      - name: Execute actual canonical Python validator on exact whole amended commission
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 /tmp/mcr_exact_checker.py WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md --source-check
+      - name: Execute independent original source enumeration and no-drop coverage checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_completion_inventory.py enumerate > /tmp/mii_54_original_ids.txt
+          test "$(wc -l < /tmp/mii_54_original_ids.txt)" -eq 54
+          python3 WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_completion_inventory.py verify
+      - name: Re-execute 54 frozen oracle vector source and exact executable command preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py --self-test
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_terminal_receiving.py --issued-sha $(git rev-parse HEAD) --preflight
+      - name: Whole E1-E10 full 63-outcome gate and forged all-PASS author receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_gate.py --preflight
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_gate.py --forged-attack
+      - name: No future MII runtime adapter means explicit RED not a fabricated completed test
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py --id MII-E01 >/tmp/mii-not-implemented.txt 2>&1; then
+            echo MCR_FALSE_SOURCEFREE_IMPLEMENTATION_PASS
+            exit 1
+          fi
+          grep -q MCR_REAL_IMPLEMENTATION_ADAPTER_MISSING__NOT_RUN /tmp/mii-not-implemented.txt
+          echo MCR_UNIMPLEMENTED_ADAPTER_RED_CONFIRMED
+      - name: Independent profiler must observe actual P6 and reject adapter-made trace
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          git worktree add --detach /tmp/mii-protected-runtime 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          export MCR_QUALIFIED_RUNTIME_ROOT=/tmp/mii-protected-runtime
+          export MCR_QUALIFIED_RUNTIME_SHA=4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --counterfeit-attack
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --baseline
+          git worktree remove --force /tmp/mii-protected-runtime
+      - name: Hostile 53-of-54 valid-hash forged return must FAIL against frozen original TSV
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_contract_reduction_attack.py --self-test
+      - name: Prove original E1-E10 and 44-case source appendix conserved
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 094937d3187ed3c2e215fe2c1f7c1c84f50d9006
+          git show FETCH_HEAD:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md > /tmp/original_mechanism_ii.txt
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          path=Path('WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md')
+          new=path.read_text(encoding='utf-8')
+          old=Path('/tmp/original_mechanism_ii.txt').read_text(encoding='utf-8')
+          anchor='## APPENDIX: COMPLETE SOURCE-BANKED 00E ARCHITECTURE'
+          original=old[old.index(anchor):]
+          amended=new[new.index(anchor):new.rfind('\n'+'\x60'*3)]
+          assert amended==original,'SOURCE_00E_APPENDIX_CHANGED'
+          cases=['O%02d'%i for i in range(1,7)]+['P%02d'%i for i in range(1,10)]+['G%02d'%i for i in range(1,9)]+['M%02d'%i for i in range(1,7)]+['N%02d'%i for i in range(1,11)]+['T%02d'%i for i in range(1,6)]
+          assert len(cases)==44 and all(re.search(r'\b'+re.escape(k)+r'\b',new) for k in cases), '44_CASE_LOSS'
+          assert all(('**E%d.'%i) in new for i in range(1,11)),'E1_E10_LOSS'
+          assert '4f3413fc5c37b589be3412f826bf8f68ee617d4a' in new and '#891' in new,'CURRENT_MIII_BASE_MISSING'
+          assert 'look(target)' in new and 'attend' in new,'ACTION_ABI_MISSING'
+          assert 'FROZEN_FAILED_CLAIM:' in new and 'REPRODUCER_AND_ROOT_CAUSE:' in new,'MCR_REPAIR_LINEAGE_MISSING'
+          print('SOURCE_APPENDIX_BYTE_EXACT PASS')
+          print('WHOLE_MISSION_E1_E10 PASS')
+          print('FORTY_FOUR_CASES PASS')
+          print('FROZEN_SOURCE_AND_ACTION_ABI PASS')
+          PY

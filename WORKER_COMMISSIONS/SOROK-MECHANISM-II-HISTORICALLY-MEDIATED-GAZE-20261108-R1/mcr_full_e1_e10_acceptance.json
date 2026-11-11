@@ -1,0 +1,639 @@
+{
+  "schema": "MII_MCR_C_FULL_E1_E10_ACCEPTANCE_R1",
+  "source_original": "094937d3187ed3c2e215fe2c1f7c1c84f50d9006",
+  "governing": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "purpose": "Completes E1-E10 semantics omitted from the 54 identity-only scenario gates. Each is an independent full-package requirement, not permission to multiply commission scope.",
+  "required_count": 63,
+  "records": [
+    {
+      "id": "MII-E01-WORLD_EVENT_CUSTODY",
+      "package": "MII-E01",
+      "required": "Public source events from P6/P4/P2/S45 are used with stable event IDs; no synthetic second world",
+      "negative": "Change admitted event source at world producer; presentation must track source or refuse",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E01-MIII_INDEPENDENCE",
+      "package": "MII-E01",
+      "required": "Merged MIII actor changes remain authorized independently of user gaze",
+      "negative": "Hold all actor input parents, vary gaze sidecar; actor/world digest invariant",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E01-SOURCE_DENIAL_RESTORE",
+      "package": "MII-E01",
+      "required": "Unavailable or tampered public source cannot be narrated as real",
+      "negative": "Deny committed event; first consumer RED; exact qualified restore PASS",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E01-FIXTURE_SCOPE",
+      "package": "MII-E01",
+      "required": "Sourcefree-only sensory fixture never mints native human perceptual authority",
+      "negative": "Remove fixture and check UNKNOWN not novel reality",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E02-WORLD_VS_USER_VIEW",
+      "package": "MII-E02",
+      "required": "Separate objective object existence, in-room affordance, user-visible feature, recognition, actor access",
+      "negative": "Occlude viewer without deleting world object; feature disappears, existence remains",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E02-VIEWER_SOURCE_OWNER",
+      "package": "MII-E02",
+      "required": "Any light, legibility, sightline and distance comes from independently qualified viewer-side producer",
+      "negative": "Actor-relative sensory evidence cannot become viewer visibility",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E02-UNMENTIONED_AFFORDANCE",
+      "package": "MII-E02",
+      "required": "Accessible object remains inspectable without prior optional narration",
+      "negative": "Hide optional coaster description; look(coaster) still available",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E02-SCENE_SAMPLING",
+      "package": "MII-E02",
+      "required": "Non-curatorial/ambient constraints do not render total world every turn",
+      "negative": "Quiet/wait without scene change does not produce omniscient exhaustive inventory",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E02-ABSENCE_VS_UNKNOWN",
+      "package": "MII-E02",
+      "required": "Missing visibility source is UNKNOWN not true visibility",
+      "negative": "Remove viewer source; refuse fine feature; restore permits same detail",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-APPEND_VERSION",
+      "package": "MII-E03",
+      "required": "Per-user exposure ledger is append-only or versioned with immutable earlier entries",
+      "negative": "Modify later attention; previous exposure entries and hashes remain stable",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-SOURCE_RECEIPTS",
+      "package": "MII-E03",
+      "required": "Each exposure entry binds source event/world root/branch/clock, offered options, actual renderer selections",
+      "negative": "Remove source event or renderer receipt: interest updating refuses unsupported claim",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-EXPOSURE_FIRST",
+      "package": "MII-E03",
+      "required": "Availability/offered flags are written before downstream interpretation of user's attention",
+      "negative": "Order perturbation (interest before exposure) fails",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-ALTERNATIVES",
+      "package": "MII-E03",
+      "required": "Available but unmentioned object distinguished from unavailable object",
+      "negative": "Select previously unmentioned available target; independent vs offered credit differs",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-LEGACY_UNKNOWN",
+      "package": "MII-E03",
+      "required": "Existing P5 p5_gaze.json histories load with UNKNOWN earlier exposure without fictional option set",
+      "negative": "Load legacy history without exposure; history survives, evidence is UNKNOWN",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-MULTI_USER_ISOLATION",
+      "package": "MII-E03",
+      "required": "Per-user and root/branch keys prevent cross-user/model credit migration",
+      "negative": "Swap another user's ledger into read: RED",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E03-COLD_REOPEN",
+      "package": "MII-E03",
+      "required": "Cold reopen retains exposure events and independent source qualification",
+      "negative": "Reopen after write and compare event+version hashes",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E04-PHYSICAL_LEXICAL",
+      "package": "MII-E04",
+      "required": "Lexical resolution cannot exceed observed physical feature and symbol/label evidence",
+      "negative": "Inspect no marking versus marking; brand/identity remains unknown until earned",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E04-SYSTEM_TAUGHT_NOT_PRIOR",
+      "package": "MII-E04",
+      "required": "Narrator-taught label never becomes proof of prior expertise",
+      "negative": "Vary taught vs spontaneous label on same object; confidence differs",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E04-ACTOR_TAUGHT_EPISTEMIC",
+      "package": "MII-E04",
+      "required": "Nadia's label is actor testimony, not canonical object truth",
+      "negative": "Tamper testimony, keep objective marking; object identity not manufactured",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E04-RECOGNITION_REPLAY",
+      "package": "MII-E04",
+      "required": "Recognition depends on actual visible committed INSPECT event tied to target",
+      "negative": "Swap target/event pairing: RED; restore real pairing yields recognition",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E04-NONESSENTIAL_SENSITIVITY",
+      "package": "MII-E04",
+      "required": "Do not infer ideology, profession or motive from recognized object alone",
+      "negative": "Cultural/ritual object naming must not imply belief",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-EVIDENCE_ELIGIBILITY",
+      "package": "MII-E05",
+      "required": "Inference depends on recorded available alternatives, offered details and actual user acts",
+      "negative": "Click only previously offered detail; no spontaneous interest credit",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-UNCERTAINTY",
+      "package": "MII-E05",
+      "required": "Hypotheses carry uncertainty and provenance, not forced categorical type",
+      "negative": "Single contrary exposure unable to mint immutable global user class",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-CONTRADICTION",
+      "package": "MII-E05",
+      "required": "Conflicting and mixed interests preserved simultaneously",
+      "negative": "Attend target A then B in different tasks; both representable",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-ACTIVITY_CONTEXT",
+      "package": "MII-E05",
+      "required": "Current material task can override prior symbolic attention tendency",
+      "negative": "Change activity while holding history: selection may change lawfully",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-DECAY",
+      "package": "MII-E05",
+      "required": "Older attention loses influence under specified bounded decay/recency without erasing evidence",
+      "negative": "Add current contrary sequence: dominant older interest no longer rules",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-CORRECTION",
+      "package": "MII-E05",
+      "required": "User correction revises current hypothesis without rewriting prior world events",
+      "negative": "Explicit correction changes derived hypothesis, history stays intact",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-NEW_INTERESTS",
+      "package": "MII-E05",
+      "required": "Spontaneous lawful selection absent from earlier profile remains possible and learnable",
+      "negative": "Make out-of-profile look(target), no refusal due to profile",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E05-NEUTRAL_MODE",
+      "package": "MII-E05",
+      "required": "Denied/unissued adaptive permission disables profile learning while preserving public baseline",
+      "negative": "Turn off adaptation and observe no profile write and intact user-visible required scene",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E06-REQUIRED_ANCHORS",
+      "package": "MII-E06",
+      "required": "Required speech, material occurrence, source order and timing not omitted under any gaze",
+      "negative": "Vary gaze state; mandatory anchors identical",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E06-SOURCE_REFS",
+      "package": "MII-E06",
+      "required": "Every optional narrated feature cites qualified public source feature/event receipt",
+      "negative": "Replace source with unqualified candidate and reject published detail",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E06-FINITE_SELECTION",
+      "package": "MII-E06",
+      "required": "Optional detail count follows declared budget not an exhaustive object dump",
+      "negative": "Wait or no user action cannot enumerate hidden house",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E06-NO_PSYCHOLOGIZING",
+      "package": "MII-E06",
+      "required": "No emotional diagnosis, narrator commentary or motive-insertion from candidate private actor fields",
+      "negative": "Insert actor-private or editorial text into selection candidate: RED",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E06-CONTROLLED_LLM",
+      "package": "MII-E06",
+      "required": "Any added LLM only consumes public qualified features with separately authorized need and measured cost",
+      "negative": "Inject private actor motive into model input: RED",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E07-ONE_OWNER_ROUTE",
+      "package": "MII-E07",
+      "required": "Existing targeted P6 look(target)→house.perform INSPECT writer and untargeted P4 attend kept distinct",
+      "negative": "Send target-bearing attend and forged/out-of-room target: refuse",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E07-P5_ORIENT_PRIVATE",
+      "package": "MII-E07",
+      "required": "P5 orient(event_id) is interest only in previously user-perceived event",
+      "negative": "Orient to hidden event: decline and no world event",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E07-SOURCE_LAWFUL_NADIA",
+      "package": "MII-E07",
+      "required": "Only performed actor-observable user acts may be inputs to Nadia; private profile cannot",
+      "negative": "Vary private gaze alone, keep actual action and actor/model parents: actor unchanged",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E07-AUTONOMOUS_NADIA",
+      "package": "MII-E07",
+      "required": "Independent MIII action remains live without new user act",
+      "negative": "Model selects actor MOVE on same wait, not suppressed by viewer",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E07-ROUND_TRIP",
+      "package": "MII-E07",
+      "required": "Actual user act returns to real committed P4/P2 and next public scene",
+      "negative": "Look unmentioned lawful object; INSPECT event appears at real user reader",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-VERSION_REPLAY",
+      "package": "MII-E08",
+      "required": "Cold replay produces same receipts and previously published surfaces under same root/branch",
+      "negative": "Cold reopen and compare digests/event IDs",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-INTERRUPTED_IDEMPOTENCY",
+      "package": "MII-E08",
+      "required": "Interrupted exposure write and duplicate request do not double-count source events",
+      "negative": "Crash after write/before ack; retry idempotent",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-NAMESPACE_ISOLATION",
+      "package": "MII-E08",
+      "required": "Forked branch/profile or different users do not share private evidence",
+      "negative": "Read sibling branch's sidecar: no cross contamination",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-EXPORT",
+      "package": "MII-E08",
+      "required": "User can export accurately what private model data is held",
+      "negative": "Export then compare all private modeled entries with store",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-CORRECTION",
+      "package": "MII-E08",
+      "required": "User can correct derived model without retconning source history",
+      "negative": "Correct hypothesis; original committed event remains hash-identical",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-DELETION",
+      "package": "MII-E08",
+      "required": "Deleting private model removes derived information while preserving objective world and Nadia knowledge",
+      "negative": "Delete model and replay: world unchanged; no deleted profile retained",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-STOP_ADAPTING",
+      "package": "MII-E08",
+      "required": "Stop-adapting disables learning/write while neutral baseline continues",
+      "negative": "Deny adaptation mid-session; next outward act produces no learned update",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-PERMISSION",
+      "package": "MII-E08",
+      "required": "Adaptive inference purpose and telemetry rights explicitly gated separately",
+      "negative": "Absent permission or analytics purpose: no implicit learning or growth export",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E08-NEUTRAL_MISSING",
+      "package": "MII-E08",
+      "required": "Missing/corrupt user sidecar safely produces neutral presentation, not world failure",
+      "negative": "Remove sidecar; mandatory events still visible",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-REAL_INTEGRATED_RUNNER",
+      "package": "MII-E09",
+      "required": "One end-to-end run reaches actual P6/P4/P5/P2 first consumers from sourcefree world, not copied fixture",
+      "negative": "Sever a current consumer and observe real run refuse or change",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-WARM_COLD",
+      "package": "MII-E09",
+      "required": "Independently executed warm and cold benchmarks report actual wall time per operation",
+      "negative": "Repeat >=20 measured runs with stdout and exit, not supplied timing",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-LATENCY_DISTRIBUTION",
+      "package": "MII-E09",
+      "required": "Report cold and warm p50/p95/max for availability/ledger/recognition/update/render/total",
+      "negative": "Check sample counts and recompute quantiles from raw monotonic timestamps",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-MEMORY_STORAGE",
+      "package": "MII-E09",
+      "required": "Report on-disk exposure ledger growth and actual peak process memory across bounded workload",
+      "negative": "Check before/after actual file size and maxrss",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-MODEL_ECONOMY",
+      "package": "MII-E09",
+      "required": "Report exact provider calls and token counts if available, no extra model on hot path without justification",
+      "negative": "Inject model call counter wrapper; check normal view path has zero additional calls",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-REPLAY_ERRORS",
+      "package": "MII-E09",
+      "required": "Measure cold replay errors, refuse/duplicate counts and provide raw failure cases",
+      "negative": "Corrupt source and reopen to observe typed refusal",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E09-SCENARIO_DIVERSITY",
+      "package": "MII-E09",
+      "required": "Bench in more than one synthetic room/availability and actual user action source",
+      "negative": "Compare room/target change, not single fixed selected object",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-TYPED_ABI",
+      "package": "MII-E10",
+      "required": "Stable versioned source-qualified input/output and error/refusal schema",
+      "negative": "Malformed user target and missing provenance return typed denial",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-SINGLE_E2E",
+      "package": "MII-E10",
+      "required": "Single ordinary user runner invokes actual first consumers and records world/view/actor divergence",
+      "negative": "Sever import and verify run fails rather than replaying fixture",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-README",
+      "package": "MII-E10",
+      "required": "Exact reproducible README for source cut, invocation, test cases, permission and denial",
+      "negative": "Independent reviewer follows README in fresh worktree",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-RECEIPT_MATRIX",
+      "package": "MII-E10",
+      "required": "All original 54 individual obligation receipts have positive/negative/restore at their actual readers",
+      "negative": "Remove one case; frozen no-drop gates RED",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-INDEPENDENT_RECEIVING",
+      "package": "MII-E10",
+      "required": "Distinct nonauthor independently re-executes high-impact source and no-drop cases",
+      "negative": "Self-issued author PASS cannot receive engineering/scientific/rights acceptance",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-PROGRAMME_DELTA",
+      "package": "MII-E10",
+      "required": "Proposed actual PROGRAMMA downstream delta identifies who receives which product and holds",
+      "negative": "Missing downstream or unsupported science claim remains an explicit HOLD",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-NO_PROTECTED_MERGE",
+      "package": "MII-E10",
+      "required": "No worker treats draft author sourcefree results as protected merge/native issued science",
+      "negative": "Protected branch unchanged until CAS reviewer",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    },
+    {
+      "id": "MII-E10-PERFORMANCE_DELIVERY",
+      "package": "MII-E10",
+      "required": "E9 raw timing/storage/LLM measurements are attached, reproducible, and truthful",
+      "negative": "Delete E9 raw measurements; E10 delivery must be INCOMPLETE",
+      "s2_proof": "RECEIVER_EXECUTED_SOURCE_FIRST_CONSUMER_OBSERVATION_OR_TYPED_HOLD",
+      "source": "Existing current P6/P4/P5/world owner or future qualified MII module actually imported by them",
+      "status_if_missing": "INCOMPLETE",
+      "independent_receiving_required": true
+    }
+  ]
+}
