@@ -1,5 +1,13 @@
 # ROADMAP:S02 — Automatic source-qualified U_item / U_unit / U_app / E_pre operation construction
 
+## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S02 named source-to-product obligations (2026-11-10 candidate, not adopted)
+
+**Mandatory product/receiving question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? These local aliases and their positive/negative obligations are reproduced from [the existing 27-row Pyat execution agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). They do NOT change existing S/IF/AND/GAP identities, historical accepted source cuts or source/science/actor rights. A future commission must satisfy MCR-C before dispatch; sourcefree code presence alone never marks these rows complete.
+
+- **`PP26-05`** [S02](SECTIONS/02_U_EPRE_WORKLOAD.md) — Reasonable claim-graded U_item/U_unit/U_app/E_pre. **Evidence ceiling:** R61/R03 compiler sourcefree real; original all35 issuer not proven; 5,630 B RAW includes routing-unknown cases. **Work:** Allow observed-response RAW with known scope without unnecessary causal/weight demands; require design for population inference, comparability for time, and stronger basis for causal claims. **Positive/negative:** PASS valid unweighted RAW despite optional missing weight; RED unknown applicability turned into certified denominator.
+- **`PP26-06`** [S02](SECTIONS/02_U_EPRE_WORKLOAD.md) — Original35 prospective operation/payload compiler. **Evidence ceiling:** Current compiler consumes frozen frontiers, not all historical original35 source science; B/AB/ABC planned payload was REVISE. **Work:** Enumerate and issue all applicable source-specific operation IDs, feed actual F2–F4 planned payload through existing R03 into I03/I05/Batch. **Positive/negative:** PASS full ID/fate and first-consumer test; RED fake planned-payload success using an unrelated injected frontier.
+
+
 > **SOURCE-QUALIFICATION SUPPLEMENT — source cut43e5962bbad72501166da59b744d618d10877b22, not native acceptance.** Of the5,630 B operations labeled `EXECUTABLE_RAW`,676 are `ELIGIBLE_APPLICABLE`,4,705 `ROUTING_UNKNOWN`,249 `RULE_UNAVAILABLE`. The label is not evidence of complete administration or denominator coverage. D must preserve unknown/exposure scope, hold dependent denominator claims where needed, and may retain lawful explicitly scoped observed-response-only products under existing contracts. Optional missing weights do not globally block RAW.35-source/25-HYB/13-lineage evidence is in `WORKER_RETURNS/PROGRAMMA-PYAT-UNIVERSAL35-F-20261106-R1/` at that cut; no original respondent run occurred in F.
 
 
