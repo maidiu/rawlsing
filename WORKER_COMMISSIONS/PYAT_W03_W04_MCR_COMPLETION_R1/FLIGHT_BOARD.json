@@ -290,7 +290,7 @@
       "job": "pyat-w03-w04-mcr-combined-code-review-r1",
       "pid": 46810,
       "session": "ses_e47b17f8fffedazgQeSGbql4HH",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "RETURNED_REVISE__EXACT_ORTHOGONAL_REPAIRS_DISPATCH_RESERVED",
       "actual_model": {
         "id": "msg_1c8817fc0001Ip5U4JnOs2rnwS",
         "type": "assistant",
@@ -306,9 +306,12 @@
         }
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
-      "candidate": "2959dda3c",
+      "candidate": "07c172683c4a720b8d1c37599c3e09a5357e56d8",
       "independence": "ExistingW04reviewer,nonauthorofMCRimplementation; no newprovider/account; previousreviewersoverloadnotaverdit",
-      "final_receiving": "StillrequiresonefinalfrozenSHAwithall12evidence"
+      "final_receiving": "StillrequiresonefinalfrozenSHAwithall12evidence",
+      "terminal": {
+        "exit_code": 0
+      }
     },
     {
       "lane": "bench-method-repair",
@@ -362,10 +365,30 @@
           "completed": 1794366537482
         }
       }
+    },
+    {
+      "job": "pyat-w03-w04-mcr-cold-order-repair-r3",
+      "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-cold-order-repair-r3",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "candidate_base": "26f70635e8493c7759fa087b17da269104bd8922",
+      "scope": "CC-F01 exact cold selector order",
+      "pid": 68493,
+      "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work."
+    },
+    {
+      "job": "pyat-w03-w04-mcr-verifier-repair-r1",
+      "session": "ses_1b9742b6c02745d8a69d062011",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "candidate_base": "26f70635e8493c7759fa087b17da269104bd8922",
+      "scope": "CC-F05 faithful executable MCR artifact/external evidence validator repair",
+      "pid": 68503,
+      "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work."
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Dispatch reserved exact economic-method residual repair same existing bench author; intake combined-code review independently; no full matrix until method qualified.",
+  "next_action": "Dispatch independent cold-order and MCR verifier repair reservations alongside benchmark economic repair. CC-F03/F04 wait for exclusive bench/test/CI author return; no overlapping writes.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -393,5 +416,5 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "Two outstanding jobs: exact economic benchmark repair56322 and independent combined-code review46810. Full matrix and final same-SHA receivers depend on method qualification. No filler third job."
+  "next_ready_work": "Three substantive bounded repairs; no fourth. Final method review/matrix wait real dependencies."
 }
