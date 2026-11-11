@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_DRAFT_SNAPSHOT/bench_w03_w04_physical.py", line 768, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_DRAFT_SNAPSHOT/bench_w03_w04_physical.py", line 732, in main
+    results[scenario][profile] = _run_scenario(args, scenario, profile, baseline)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_DRAFT_SNAPSHOT/bench_w03_w04_physical.py", line 684, in _run_scenario
+    "warm_vs_baseline": _compare((baseline_for or {}).get("warm", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None, warm_aggregate),
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'

@@ -1,0 +1,879 @@
+{
+  "generated_utc": "2026-11-11T02:35:20Z",
+  "host": {
+    "cap_bytes": 6442450944,
+    "load_average": [
+      5.82958984375,
+      5.6103515625,
+      4.7236328125
+    ],
+    "node": "mainMac.lan",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "limits": [
+    "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
+    "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",
+    "Cold-warm-delete-rebuild use fresh child processes.",
+    "ExactPhysicalCellStream has no source decode; decode stage is explicitly not applicable.",
+    "Object construction and canonical closure hashing share the public candidate boundary; stages are labelled combined rather than falsely split."
+  ],
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "profiles": [
+    "narrow"
+  ],
+  "repetitions": 1,
+  "results": {
+    "cold": {
+      "narrow": {
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 104046592,
+            "max_wall_seconds": 0.9612863889196888,
+            "median_cpu_system_seconds": 0.19803199999999999,
+            "median_cpu_user_seconds": 1.780098,
+            "median_rss_peak_bytes": 104046592.0,
+            "median_wall_seconds": 0.9612863889196888,
+            "min_rss_peak_bytes": 104046592,
+            "min_wall_seconds": 0.9612863889196888,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 132362,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 48,
+              "cell_generation_seconds": 0.018724234541878104,
+              "compact": true,
+              "consumer": {
+                "i03": [
+                  {
+                    "fact_states": [
+                      "SUPPORTED"
+                    ],
+                    "facts": [
+                      {
+                        "authority_snapshot_refs": [
+                          {
+                            "authority_content_hash": "e752e363b51959e4774121feff56ccec0ae3984f17b937e0768f40980890270c",
+                            "authority_id": "I03-AUTH-m01-mapping",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "aa29a4ae21cb527001bdabcb140b98f17d40525e4f59fe2c6347ba7a93bf540d",
+                            "authority_id": "I03-AUTH-m01-projection",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "6b35c996e3e483476b1d9b6dc5b29987c0b490a2b3655207f885db240b45c738",
+                            "authority_id": "I03-AUTH-m01-query",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "45021b35816e4405b10df7d9e64970c3c4b2aad61d1167461735c2b4808edb2e",
+                            "authority_id": "I03-AUTH-m01-routing",
+                            "authority_version": "1.0.0"
+                          },
+                          {
+                            "authority_content_hash": "0e656eac9cf1bb711733642e7b426ec55aefb2284ce843b67332f5d1c411b39b",
+                            "authority_id": "I03-AUTH-m01-source",
+                            "authority_version": "1.0.0"
+                          }
+                        ],
+                        "content_hash": "c64edcbe8e9a6c5f1bf76055b5f0e1216466644e6a3975c5389c0134f3605a1f",
+                        "dependency_refs": [
+                          {
+                            "content_hash": "0bf12aefe234e31e0b7b5877a575233ea1f0b72fb45b148537c0e733750e1f82",
+                            "kind": "C11Internal:ReplayManifest",
+                            "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0bf12aefe234e31e0b7b5877a575233ea1f0b72fb45b148537c0e733750e1f82"
+                          },
+                          {
+                            "content_hash": "ad65803da32033ea75847676e91a31f22062d226bef17483aada16a761bc1ab4",
+                            "kind": "C11LogicalRelease",
+                            "object_id": "REL-m01"
+                          },
+                          {
+                            "content_hash": "374637ef85f5e0bb8558e6f0813e5dcc6db5c8b6d66e3f7b8aad8341a9bd85eb",
+                            "kind": "EmpiricalPredicate@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:374637ef85f5e0bb8558e6f0813e5dcc6db5c8b6d66e3f7b8aad8341a9bd85eb"
+                          },
+                          {
+                            "content_hash": "2d8d344295203eb3a509444f9e927029439eb220e394af105c1df4651d37fce4",
+                            "kind": "EmpiricalQuerySpec@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2d8d344295203eb3a509444f9e927029439eb220e394af105c1df4651d37fce4"
+                          },
+                          {
+                            "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                            "kind": "EmpiricalUniverse@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                          },
+                          {
+                            "content_hash": "5bdf56081acf98016b8150f55b721b5a284d72629b5066d681604e1dad0565d1",
+                            "kind": "PRE553_I03_QUERY_REPLAY",
+                            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:5bdf56081acf98016b8150f55b721b5a284d72629b5066d681604e1dad0565d1"
+                          },
+                          {
+                            "content_hash": "26d3c1e9f03cc0a4fd64a77c23197a3afd8161fe127573ab2a7afafdf83316b0",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:26d3c1e9f03cc0a4fd64a77c23197a3afd8161fe127573ab2a7afafdf83316b0"
+                          },
+                          {
+                            "content_hash": "2d801bb21383aeee086210f40b4fa3c661f7b91ed53d9f19f006d926a6380c32",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:2d801bb21383aeee086210f40b4fa3c661f7b91ed53d9f19f006d926a6380c32"
+                          },
+                          {
+                            "content_hash": "3f0427c6fc554694e0f3b0f86955cda9c341f158c66d6533ebb5734a55d561d6",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:3f0427c6fc554694e0f3b0f86955cda9c341f158c66d6533ebb5734a55d561d6"
+                          },
+                          {
+                            "content_hash": "3f8264ece860a96235fa6aa9f59af0fdac4185fe428b21b18aa100f6ba2fd25b",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:3f8264ece860a96235fa6aa9f59af0fdac4185fe428b21b18aa100f6ba2fd25b"
+                          },
+                          {
+                            "content_hash": "55afccf9ee3cb77f1973b0dae2524d1b99eac47e164440b1415c11f9851146b2",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:55afccf9ee3cb77f1973b0dae2524d1b99eac47e164440b1415c11f9851146b2"
+                          },
+                          {
+                            "content_hash": "602cfd9c65ff50991f9fc9a0595807b8a942cc334ebf63dfae748b231c0b3e57",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:602cfd9c65ff50991f9fc9a0595807b8a942cc334ebf63dfae748b231c0b3e57"
+                          },
+                          {
+                            "content_hash": "69eb97f1e38415eb9d2ec5ed7437479a84901b68cf2810383ef47316cf1c9ef1",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:69eb97f1e38415eb9d2ec5ed7437479a84901b68cf2810383ef47316cf1c9ef1"
+                          },
+                          {
+                            "content_hash": "70a4a6d7f4047381f8169f196b3a1f53372c3166bb574da294d78f0e354b00b8",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:70a4a6d7f4047381f8169f196b3a1f53372c3166bb574da294d78f0e354b00b8"
+                          },
+                          {
+                            "content_hash": "73c81637c3d90a55e172367734ccc1572914f1530ce5769ced3edd32fdb770a4",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:73c81637c3d90a55e172367734ccc1572914f1530ce5769ced3edd32fdb770a4"
+                          },
+                          {
+                            "content_hash": "96c25649c22a60baa4999b98a73addc154c9278361975556c941d517adb79cb5",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:96c25649c22a60baa4999b98a73addc154c9278361975556c941d517adb79cb5"
+                          },
+                          {
+                            "content_hash": "9ece856fb0c280c93168c555fd53971cbe2c21b5d51a1e94315d01ade3db9868",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9ece856fb0c280c93168c555fd53971cbe2c21b5d51a1e94315d01ade3db9868"
+                          },
+                          {
+                            "content_hash": "b1a94bb15d7cbe484c92cf6d75b573494a63bed9caa32b22fbb80b454ff90437",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:b1a94bb15d7cbe484c92cf6d75b573494a63bed9caa32b22fbb80b454ff90437"
+                          },
+                          {
+                            "content_hash": "bce5fd39b73ae27096b0a000bdf32c8ea3e26803be3c55d2fb232d8bc60337ce",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:bce5fd39b73ae27096b0a000bdf32c8ea3e26803be3c55d2fb232d8bc60337ce"
+                          },
+                          {
+                            "content_hash": "c8cfa65303189e6ccacafe7b2c84db115df6f4f79821fa5f116a8b8da8f16129",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:c8cfa65303189e6ccacafe7b2c84db115df6f4f79821fa5f116a8b8da8f16129"
+                          },
+                          {
+                            "content_hash": "d46cffc7e7d8a53d3eaf150edc40c3695742e1dcc6185cadd106d97581b8289f",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:d46cffc7e7d8a53d3eaf150edc40c3695742e1dcc6185cadd106d97581b8289f"
+                          },
+                          {
+                            "content_hash": "dba5e88b6cb9ad3490bd2aae49552e194d1081560bddba6f025297ead7daf471",
+                            "kind": "RespondentEvent@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:dba5e88b6cb9ad3490bd2aae49552e194d1081560bddba6f025297ead7daf471"
+                          },
+                          {
+                            "content_hash": "066e4b2527959f736b92a04e2d0012d3178f6273697b8aff5c6b69fbbd6756ec",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:066e4b2527959f736b92a04e2d0012d3178f6273697b8aff5c6b69fbbd6756ec"
+                          },
+                          {
+                            "content_hash": "0c6b90e29df481cb4695f4d17b1fdfc358d39ca6b22f93e2ee6fba63b2868274",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0c6b90e29df481cb4695f4d17b1fdfc358d39ca6b22f93e2ee6fba63b2868274"
+                          },
+                          {
+                            "content_hash": "0e56db86e07f29c06a454225b4a8c7042099368fcc691386f843d929dc775aee",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0e56db86e07f29c06a454225b4a8c7042099368fcc691386f843d929dc775aee"
+                          },
+                          {
+                            "content_hash": "43593d71343640e1d11487600ec201d1a28993e3cdd88bc4674de38621ccff49",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:43593d71343640e1d11487600ec201d1a28993e3cdd88bc4674de38621ccff49"
+                          },
+                          {
+                            "content_hash": "67fc7d2b5569e6dee42362b9c3ee4e5265a9fd5e2d2274de22ed638f6dfb265c",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:67fc7d2b5569e6dee42362b9c3ee4e5265a9fd5e2d2274de22ed638f6dfb265c"
+                          },
+                          {
+                            "content_hash": "754b9d2addd127687d2f62b1c5ef1acd23189f88785ea91e518bb73d4f48fc2d",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:754b9d2addd127687d2f62b1c5ef1acd23189f88785ea91e518bb73d4f48fc2d"
+                          },
+                          {
+                            "content_hash": "75d3b99355d5db84b37ee03ff57cfe6c357f9b4f897ef1f95177fe80482f29f3",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:75d3b99355d5db84b37ee03ff57cfe6c357f9b4f897ef1f95177fe80482f29f3"
+                          },
+                          {
+                            "content_hash": "76e70fbdb202c2be38188dd9b9ba293ae457ebf69dd447217b2050bfe78ad4c2",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:76e70fbdb202c2be38188dd9b9ba293ae457ebf69dd447217b2050bfe78ad4c2"
+                          },
+                          {
+                            "content_hash": "7f220be49bcebb8830b329ba7f1a5c4a5baebdd7e9970082d5a74bf3fd3477b6",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:7f220be49bcebb8830b329ba7f1a5c4a5baebdd7e9970082d5a74bf3fd3477b6"
+                          },
+                          {
+                            "content_hash": "9bac1816bc5c75f87b863ead6e6ceeed68c05dde1413ea361300f5869c8da4df",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:9bac1816bc5c75f87b863ead6e6ceeed68c05dde1413ea361300f5869c8da4df"
+                          },
+                          {
+                            "content_hash": "a5f30882eaa80d86e40cde9b5794866efe94ae03a5020f76c66ad14d858ee23c",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:a5f30882eaa80d86e40cde9b5794866efe94ae03a5020f76c66ad14d858ee23c"
+                          },
+                          {
+                            "content_hash": "b58a307f1eefa20ded15cc857c3decdf57e5cbefc3d360fe3001c7e211a82333",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b58a307f1eefa20ded15cc857c3decdf57e5cbefc3d360fe3001c7e211a82333"
+                          },
+                          {
+                            "content_hash": "d42f69e61de749db160d7c28074153e6b034239909a5c0c515e644224afbb8f8",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d42f69e61de749db160d7c28074153e6b034239909a5c0c515e644224afbb8f8"
+                          },
+                          {
+                            "content_hash": "e18324cdafa73b3b8145df7d329dc154663be3b997a7a38e6e3c853655f2c52e",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e18324cdafa73b3b8145df7d329dc154663be3b997a7a38e6e3c853655f2c52e"
+                          },
+                          {
+                            "content_hash": "e1d7970fc1820081d4257d29531068e965ab1e09cc32a1f7b6061221075dbebf",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e1d7970fc1820081d4257d29531068e965ab1e09cc32a1f7b6061221075dbebf"
+                          },
+                          {
+                            "content_hash": "ebf07cab3b38cabf92ae4586f17b84bc1fef2c26bf8a606181e11566d0c2bb0a",
+                            "kind": "RoutingEligibilityFact@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:ebf07cab3b38cabf92ae4586f17b84bc1fef2c26bf8a606181e11566d0c2bb0a"
+                          }
+                        ],
+                        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c64edcbe8e9a6c5f1bf76055b5f0e1216466644e6a3975c5389c0134f3605a1f",
+                        "producer_replay_locator_or_reference_root": {
+                          "content_hash": "5bdf56081acf98016b8150f55b721b5a284d72629b5066d681604e1dad0565d1",
+                          "kind": "PRE553_I03_QUERY_REPLAY",
+                          "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:5bdf56081acf98016b8150f55b721b5a284d72629b5066d681604e1dad0565d1"
+                        },
+                        "schema_id": "EmpiricalFact",
+                        "schema_version": "1.0.0",
+                        "semantic_fields": {
+                          "condition_predicate_ref": {
+                            "content_hash": "374637ef85f5e0bb8558e6f0813e5dcc6db5c8b6d66e3f7b8aad8341a9bd85eb",
+                            "kind": "EmpiricalPredicate@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:374637ef85f5e0bb8558e6f0813e5dcc6db5c8b6d66e3f7b8aad8341a9bd85eb"
+                          },
+                          "denominator_member_refs": [
+                            {
+                              "content_hash": "2192fc25572c903ef835738f9c1533972479505f3d9bfadac0c340ef78e3db67",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2192fc25572c903ef835738f9c1533972479505f3d9bfadac0c340ef78e3db67"
+                            },
+                            {
+                              "content_hash": "25e39487570a99d2cbcbede841a994612e7885745501a0955f708e3b17b5af8d",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:25e39487570a99d2cbcbede841a994612e7885745501a0955f708e3b17b5af8d"
+                            },
+                            {
+                              "content_hash": "2ee1ca01b5d852b2e218d577afe048b4c1408c17ba0e8ef29364667d4025db9e",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2ee1ca01b5d852b2e218d577afe048b4c1408c17ba0e8ef29364667d4025db9e"
+                            },
+                            {
+                              "content_hash": "3c56a80b65e3935f1df5b09242fdb915ff4c69ef357017637eb3a2584e5fe878",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:3c56a80b65e3935f1df5b09242fdb915ff4c69ef357017637eb3a2584e5fe878"
+                            },
+                            {
+                              "content_hash": "442bc09e3b0c324b828a4a64abaf15b98f82236c1d9c872dfcf07b802695c0c1",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:442bc09e3b0c324b828a4a64abaf15b98f82236c1d9c872dfcf07b802695c0c1"
+                            },
+                            {
+                              "content_hash": "4ad27471d94bf31e39e0ffe5c3d136099b4fb97e16b3ae6f444089d748df9a65",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:4ad27471d94bf31e39e0ffe5c3d136099b4fb97e16b3ae6f444089d748df9a65"
+                            },
+                            {
+                              "content_hash": "918b237ab6cc7155fd6bafb9b6059b08969674785b402a14205d52f9a9ac4295",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:918b237ab6cc7155fd6bafb9b6059b08969674785b402a14205d52f9a9ac4295"
+                            },
+                            {
+                              "content_hash": "b6bc291b1668a7b5cf6ae224ea1df3457719c0db749b27390ddf3e1291ea3164",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:b6bc291b1668a7b5cf6ae224ea1df3457719c0db749b27390ddf3e1291ea3164"
+                            },
+                            {
+                              "content_hash": "c0728b73159918d150f1053481e12dfaf63502d3d807d0d4c30fe0261a15d1d8",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c0728b73159918d150f1053481e12dfaf63502d3d807d0d4c30fe0261a15d1d8"
+                            },
+                            {
+                              "content_hash": "c3659470be03e4aa9b7edbc001dbd6a08253e0b809fa7f89fa5d8017c9a6345a",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c3659470be03e4aa9b7edbc001dbd6a08253e0b809fa7f89fa5d8017c9a6345a"
+                            },
+                            {
+                              "content_hash": "c661537efd5607bf0012b19ac732a54d0e4c7eb3bac1209a017425921c6d1a44",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c661537efd5607bf0012b19ac732a54d0e4c7eb3bac1209a017425921c6d1a44"
+                            },
+                            {
+                              "content_hash": "cde94b8720a2b4163c3d7c2d2e1d0754a52a9ad49046d663057ff8fd3e159022",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:cde94b8720a2b4163c3d7c2d2e1d0754a52a9ad49046d663057ff8fd3e159022"
+                            },
+                            {
+                              "content_hash": "d80e922a97bb3d5bfcfc57cf90a6320fe1d61916867c6e2a7cad8b7c408bbb45",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:d80e922a97bb3d5bfcfc57cf90a6320fe1d61916867c6e2a7cad8b7c408bbb45"
+                            },
+                            {
+                              "content_hash": "ee7c3f8594daafc0c7849cc9077cafdb46a3b71769113321839d52c8bf7da3bc",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ee7c3f8594daafc0c7849cc9077cafdb46a3b71769113321839d52c8bf7da3bc"
+                            },
+                            {
+                              "content_hash": "ee99cdc6a054a65f5ae5da9ff132029432a63194796cc604d7f768ce26bb0dc4",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ee99cdc6a054a65f5ae5da9ff132029432a63194796cc604d7f768ce26bb0dc4"
+                            },
+                            {
+                              "content_hash": "f4499e11974390dd879a52a00f640389d3fd4bcf396357bda55e56b63ebbacde",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f4499e11974390dd879a52a00f640389d3fd4bcf396357bda55e56b63ebbacde"
+                            }
+                          ],
+                          "empirical_query_spec_ref": {
+                            "content_hash": "2d8d344295203eb3a509444f9e927029439eb220e394af105c1df4651d37fce4",
+                            "kind": "EmpiricalQuerySpec@1.0.0",
+                            "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:2d8d344295203eb3a509444f9e927029439eb220e394af105c1df4651d37fce4"
+                          },
+                          "empirical_universe_refs": [
+                            {
+                              "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                              "kind": "EmpiricalUniverse@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                            }
+                          ],
+                          "execution_detail": "exact governed target distribution resolved",
+                          "measure_basis_ref": {
+                            "content_hash": "c552e0c978466b790e06f4eb30ba5286c77b1781ec0b57907f5743f04e955bda",
+                            "kind": "MEASURE_BASIS",
+                            "object_id": "urn:test:i03:measure_basis:RAW"
+                          },
+                          "measure_kind": "RAW",
+                          "query_execution_contract_id": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+                          "raw_denominator_support": 16,
+                          "raw_numerator_support": 16,
+                          "raw_resolved_target_support": 16,
+                          "replay_ref": {
+                            "content_hash": "5bdf56081acf98016b8150f55b721b5a284d72629b5066d681604e1dad0565d1",
+                            "kind": "PRE553_I03_QUERY_REPLAY",
+                            "object_id": "urn:rawlsing:pre553:i03-query-replay:sha256:5bdf56081acf98016b8150f55b721b5a284d72629b5066d681604e1dad0565d1"
+                          },
+                          "response_state_semantics_ref": {
+                            "content_hash": "8b4888139474d797578965cd0e20a083f1babd9d2cc6554a760b2cb2e803372e",
+                            "kind": "RESPONSE_STATE_SEMANTICS",
+                            "object_id": "urn:test:i03:response_state_semantics:SUBSTANTIVE"
+                          },
+                          "risk_set_member_refs": [
+                            {
+                              "content_hash": "2192fc25572c903ef835738f9c1533972479505f3d9bfadac0c340ef78e3db67",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2192fc25572c903ef835738f9c1533972479505f3d9bfadac0c340ef78e3db67"
+                            },
+                            {
+                              "content_hash": "25e39487570a99d2cbcbede841a994612e7885745501a0955f708e3b17b5af8d",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:25e39487570a99d2cbcbede841a994612e7885745501a0955f708e3b17b5af8d"
+                            },
+                            {
+                              "content_hash": "2ee1ca01b5d852b2e218d577afe048b4c1408c17ba0e8ef29364667d4025db9e",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:2ee1ca01b5d852b2e218d577afe048b4c1408c17ba0e8ef29364667d4025db9e"
+                            },
+                            {
+                              "content_hash": "3c56a80b65e3935f1df5b09242fdb915ff4c69ef357017637eb3a2584e5fe878",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:3c56a80b65e3935f1df5b09242fdb915ff4c69ef357017637eb3a2584e5fe878"
+                            },
+                            {
+                              "content_hash": "442bc09e3b0c324b828a4a64abaf15b98f82236c1d9c872dfcf07b802695c0c1",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:442bc09e3b0c324b828a4a64abaf15b98f82236c1d9c872dfcf07b802695c0c1"
+                            },
+                            {
+                              "content_hash": "4ad27471d94bf31e39e0ffe5c3d136099b4fb97e16b3ae6f444089d748df9a65",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:4ad27471d94bf31e39e0ffe5c3d136099b4fb97e16b3ae6f444089d748df9a65"
+                            },
+                            {
+                              "content_hash": "918b237ab6cc7155fd6bafb9b6059b08969674785b402a14205d52f9a9ac4295",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:918b237ab6cc7155fd6bafb9b6059b08969674785b402a14205d52f9a9ac4295"
+                            },
+                            {
+                              "content_hash": "b6bc291b1668a7b5cf6ae224ea1df3457719c0db749b27390ddf3e1291ea3164",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:b6bc291b1668a7b5cf6ae224ea1df3457719c0db749b27390ddf3e1291ea3164"
+                            },
+                            {
+                              "content_hash": "c0728b73159918d150f1053481e12dfaf63502d3d807d0d4c30fe0261a15d1d8",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c0728b73159918d150f1053481e12dfaf63502d3d807d0d4c30fe0261a15d1d8"
+                            },
+                            {
+                              "content_hash": "c3659470be03e4aa9b7edbc001dbd6a08253e0b809fa7f89fa5d8017c9a6345a",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c3659470be03e4aa9b7edbc001dbd6a08253e0b809fa7f89fa5d8017c9a6345a"
+                            },
+                            {
+                              "content_hash": "c661537efd5607bf0012b19ac732a54d0e4c7eb3bac1209a017425921c6d1a44",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:c661537efd5607bf0012b19ac732a54d0e4c7eb3bac1209a017425921c6d1a44"
+                            },
+                            {
+                              "content_hash": "cde94b8720a2b4163c3d7c2d2e1d0754a52a9ad49046d663057ff8fd3e159022",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:cde94b8720a2b4163c3d7c2d2e1d0754a52a9ad49046d663057ff8fd3e159022"
+                            },
+                            {
+                              "content_hash": "d80e922a97bb3d5bfcfc57cf90a6320fe1d61916867c6e2a7cad8b7c408bbb45",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:d80e922a97bb3d5bfcfc57cf90a6320fe1d61916867c6e2a7cad8b7c408bbb45"
+                            },
+                            {
+                              "content_hash": "ee7c3f8594daafc0c7849cc9077cafdb46a3b71769113321839d52c8bf7da3bc",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ee7c3f8594daafc0c7849cc9077cafdb46a3b71769113321839d52c8bf7da3bc"
+                            },
+                            {
+                              "content_hash": "ee99cdc6a054a65f5ae5da9ff132029432a63194796cc604d7f768ce26bb0dc4",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:ee99cdc6a054a65f5ae5da9ff132029432a63194796cc604d7f768ce26bb0dc4"
+                            },
+                            {
+                              "content_hash": "f4499e11974390dd879a52a00f640389d3fd4bcf396357bda55e56b63ebbacde",
+                              "kind": "C11Internal:RespondentIdentity",
+                              "object_id": "urn:rawlsing:pre553:c11:RespondentIdentity:sha256:f4499e11974390dd879a52a00f640389d3fd4bcf396357bda55e56b63ebbacde"
+                            }
+                          ],
+                          "risk_set_ref": {
+                            "content_hash": "958262fce1818f80876384b5db08b74e1dc04749700d70f239a05bb2b8bf2898",
+                            "kind": "RISK_SET",
+                            "object_id": "urn:test:i03:risk_set:m01-risk"
+                          },
+                          "risk_set_type": "WHOLE_QUESTION_RISK_SET",
+                          "source_empirical_provenance_refs": [
+                            {
+                              "content_hash": "066e4b2527959f736b92a04e2d0012d3178f6273697b8aff5c6b69fbbd6756ec",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:066e4b2527959f736b92a04e2d0012d3178f6273697b8aff5c6b69fbbd6756ec"
+                            },
+                            {
+                              "content_hash": "0bf12aefe234e31e0b7b5877a575233ea1f0b72fb45b148537c0e733750e1f82",
+                              "kind": "C11Internal:ReplayManifest",
+                              "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:0bf12aefe234e31e0b7b5877a575233ea1f0b72fb45b148537c0e733750e1f82"
+                            },
+                            {
+                              "content_hash": "0c6b90e29df481cb4695f4d17b1fdfc358d39ca6b22f93e2ee6fba63b2868274",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0c6b90e29df481cb4695f4d17b1fdfc358d39ca6b22f93e2ee6fba63b2868274"
+                            },
+                            {
+                              "content_hash": "0e56db86e07f29c06a454225b4a8c7042099368fcc691386f843d929dc775aee",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:0e56db86e07f29c06a454225b4a8c7042099368fcc691386f843d929dc775aee"
+                            },
+                            {
+                              "content_hash": "26d3c1e9f03cc0a4fd64a77c23197a3afd8161fe127573ab2a7afafdf83316b0",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:26d3c1e9f03cc0a4fd64a77c23197a3afd8161fe127573ab2a7afafdf83316b0"
+                            },
+                            {
+                              "content_hash": "2d801bb21383aeee086210f40b4fa3c661f7b91ed53d9f19f006d926a6380c32",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:2d801bb21383aeee086210f40b4fa3c661f7b91ed53d9f19f006d926a6380c32"
+                            },
+                            {
+                              "content_hash": "3f0427c6fc554694e0f3b0f86955cda9c341f158c66d6533ebb5734a55d561d6",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:3f0427c6fc554694e0f3b0f86955cda9c341f158c66d6533ebb5734a55d561d6"
+                            },
+                            {
+                              "content_hash": "3f8264ece860a96235fa6aa9f59af0fdac4185fe428b21b18aa100f6ba2fd25b",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:3f8264ece860a96235fa6aa9f59af0fdac4185fe428b21b18aa100f6ba2fd25b"
+                            },
+                            {
+                              "content_hash": "43593d71343640e1d11487600ec201d1a28993e3cdd88bc4674de38621ccff49",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:43593d71343640e1d11487600ec201d1a28993e3cdd88bc4674de38621ccff49"
+                            },
+                            {
+                              "content_hash": "55afccf9ee3cb77f1973b0dae2524d1b99eac47e164440b1415c11f9851146b2",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:55afccf9ee3cb77f1973b0dae2524d1b99eac47e164440b1415c11f9851146b2"
+                            },
+                            {
+                              "content_hash": "602cfd9c65ff50991f9fc9a0595807b8a942cc334ebf63dfae748b231c0b3e57",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:602cfd9c65ff50991f9fc9a0595807b8a942cc334ebf63dfae748b231c0b3e57"
+                            },
+                            {
+                              "content_hash": "67fc7d2b5569e6dee42362b9c3ee4e5265a9fd5e2d2274de22ed638f6dfb265c",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:67fc7d2b5569e6dee42362b9c3ee4e5265a9fd5e2d2274de22ed638f6dfb265c"
+                            },
+                            {
+                              "content_hash": "69eb97f1e38415eb9d2ec5ed7437479a84901b68cf2810383ef47316cf1c9ef1",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:69eb97f1e38415eb9d2ec5ed7437479a84901b68cf2810383ef47316cf1c9ef1"
+                            },
+                            {
+                              "content_hash": "70a4a6d7f4047381f8169f196b3a1f53372c3166bb574da294d78f0e354b00b8",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:70a4a6d7f4047381f8169f196b3a1f53372c3166bb574da294d78f0e354b00b8"
+                            },
+                            {
+                              "content_hash": "73c81637c3d90a55e172367734ccc1572914f1530ce5769ced3edd32fdb770a4",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:73c81637c3d90a55e172367734ccc1572914f1530ce5769ced3edd32fdb770a4"
+                            },
+                            {
+                              "content_hash": "754b9d2addd127687d2f62b1c5ef1acd23189f88785ea91e518bb73d4f48fc2d",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:754b9d2addd127687d2f62b1c5ef1acd23189f88785ea91e518bb73d4f48fc2d"
+                            },
+                            {
+                              "content_hash": "75d3b99355d5db84b37ee03ff57cfe6c357f9b4f897ef1f95177fe80482f29f3",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:75d3b99355d5db84b37ee03ff57cfe6c357f9b4f897ef1f95177fe80482f29f3"
+                            },
+                            {
+                              "content_hash": "76e70fbdb202c2be38188dd9b9ba293ae457ebf69dd447217b2050bfe78ad4c2",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:76e70fbdb202c2be38188dd9b9ba293ae457ebf69dd447217b2050bfe78ad4c2"
+                            },
+                            {
+                              "content_hash": "7f220be49bcebb8830b329ba7f1a5c4a5baebdd7e9970082d5a74bf3fd3477b6",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:7f220be49bcebb8830b329ba7f1a5c4a5baebdd7e9970082d5a74bf3fd3477b6"
+                            },
+                            {
+                              "content_hash": "96c25649c22a60baa4999b98a73addc154c9278361975556c941d517adb79cb5",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:96c25649c22a60baa4999b98a73addc154c9278361975556c941d517adb79cb5"
+                            },
+                            {
+                              "content_hash": "9bac1816bc5c75f87b863ead6e6ceeed68c05dde1413ea361300f5869c8da4df",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:9bac1816bc5c75f87b863ead6e6ceeed68c05dde1413ea361300f5869c8da4df"
+                            },
+                            {
+                              "content_hash": "9ece856fb0c280c93168c555fd53971cbe2c21b5d51a1e94315d01ade3db9868",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:9ece856fb0c280c93168c555fd53971cbe2c21b5d51a1e94315d01ade3db9868"
+                            },
+                            {
+                              "content_hash": "a5f30882eaa80d86e40cde9b5794866efe94ae03a5020f76c66ad14d858ee23c",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:a5f30882eaa80d86e40cde9b5794866efe94ae03a5020f76c66ad14d858ee23c"
+                            },
+                            {
+                              "content_hash": "ad65803da32033ea75847676e91a31f22062d226bef17483aada16a761bc1ab4",
+                              "kind": "C11LogicalRelease",
+                              "object_id": "REL-m01"
+                            },
+                            {
+                              "content_hash": "b1a94bb15d7cbe484c92cf6d75b573494a63bed9caa32b22fbb80b454ff90437",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:b1a94bb15d7cbe484c92cf6d75b573494a63bed9caa32b22fbb80b454ff90437"
+                            },
+                            {
+                              "content_hash": "b58a307f1eefa20ded15cc857c3decdf57e5cbefc3d360fe3001c7e211a82333",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:b58a307f1eefa20ded15cc857c3decdf57e5cbefc3d360fe3001c7e211a82333"
+                            },
+                            {
+                              "content_hash": "bce5fd39b73ae27096b0a000bdf32c8ea3e26803be3c55d2fb232d8bc60337ce",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:bce5fd39b73ae27096b0a000bdf32c8ea3e26803be3c55d2fb232d8bc60337ce"
+                            },
+                            {
+                              "content_hash": "c8cfa65303189e6ccacafe7b2c84db115df6f4f79821fa5f116a8b8da8f16129",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:c8cfa65303189e6ccacafe7b2c84db115df6f4f79821fa5f116a8b8da8f16129"
+                            },
+                            {
+                              "content_hash": "d42f69e61de749db160d7c28074153e6b034239909a5c0c515e644224afbb8f8",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:d42f69e61de749db160d7c28074153e6b034239909a5c0c515e644224afbb8f8"
+                            },
+                            {
+                              "content_hash": "d46cffc7e7d8a53d3eaf150edc40c3695742e1dcc6185cadd106d97581b8289f",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:d46cffc7e7d8a53d3eaf150edc40c3695742e1dcc6185cadd106d97581b8289f"
+                            },
+                            {
+                              "content_hash": "dba5e88b6cb9ad3490bd2aae49552e194d1081560bddba6f025297ead7daf471",
+                              "kind": "RespondentEvent@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RespondentEvent:sha256:dba5e88b6cb9ad3490bd2aae49552e194d1081560bddba6f025297ead7daf471"
+                            },
+                            {
+                              "content_hash": "e18324cdafa73b3b8145df7d329dc154663be3b997a7a38e6e3c853655f2c52e",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e18324cdafa73b3b8145df7d329dc154663be3b997a7a38e6e3c853655f2c52e"
+                            },
+                            {
+                              "content_hash": "e1d7970fc1820081d4257d29531068e965ab1e09cc32a1f7b6061221075dbebf",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:e1d7970fc1820081d4257d29531068e965ab1e09cc32a1f7b6061221075dbebf"
+                            },
+                            {
+                              "content_hash": "ebf07cab3b38cabf92ae4586f17b84bc1fef2c26bf8a606181e11566d0c2bb0a",
+                              "kind": "RoutingEligibilityFact@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:RoutingEligibilityFact:sha256:ebf07cab3b38cabf92ae4586f17b84bc1fef2c26bf8a606181e11566d0c2bb0a"
+                            },
+                            {
+                              "content_hash": "fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d",
+                              "kind": "EmpiricalUniverse@1.0.0",
+                              "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:fb1a445aaa2ebaf2d4142f55f9511695f4693beeac9070c85befb1bc77f61e3d"
+                            }
+                          ],
+                          "source_scope_mode": "SINGLE_UNIVERSE",
+                          "target_domain_identity": "8b5a03f1c9bfa170f52996ab4732fabed2fa5b381466094987c0d2a52fc2700d",
+                          "target_topology": {
+                            "arity": 1,
+                            "complete_cell_semantic_projection": [
+                              {
+                                "cell": "0",
+                                "cell_state": "OBSERVED_POSITIVE",
+                                "raw_numerator_support": 8,
+                                "weighted_numerator_support_if_authorized": null
+                              },
+                              {
+                                "cell": "1",
+                                "cell_state": "OBSERVED_POSITIVE",
+                                "raw_numerator_support": 8,
+                                "weighted_numerator_support_if_authorized": null
+                              }
+                            ],
+                            "joint_order_semantics": "SEMANTIC_ORDERED",
+                            "target_domain_identity": "8b5a03f1c9bfa170f52996ab4732fabed2fa5b381466094987c0d2a52fc2700d"
+                          },
+                          "uncertainty_method_or_typed_state": "UNCERTAINTY_UNQUANTIFIED",
+                          "weighted_denominator_support_if_authorized": null,
+                          "weighted_numerator_support_if_authorized": null
+                        },
+                        "typed_state": "SUPPORTED"
+                      }
+                    ]
+                  }
+                ],
+                "i05_candidate_count": 1,
+                "i05_coverage": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+                "i05_fact_refs": [
+                  {
+                    "content_hash": "d6513726585d0f0d1c5b5dab0bab15cc1a2ab716853722a147d4710e9a6681a2",
+                    "kind": "EmpiricalFact@1.0.0",
+                    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:d6513726585d0f0d1c5b5dab0bab15cc1a2ab716853722a147d4710e9a6681a2"
+                  },
+                  {
+                    "content_hash": "fa481bc5a24044902c6e2dd73d72e49d0725c4c7763aa684ff2c15004b9cb596",
+                    "kind": "EmpiricalFact@1.0.0",
+                    "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:fa481bc5a24044902c6e2dd73d72e49d0725c4c7763aa684ff2c15004b9cb596"
+                  }
+                ],
+                "i05_receipt_refs": [
+                  {
+                    "content_hash": "74488b4b645c6ed7c59c5995fa5f88c1d137767100c8c5f6dd97adf113b95489",
+                    "kind": "DiscoveryResultReceipt@1.0.0",
+                    "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:74488b4b645c6ed7c59c5995fa5f88c1d137767100c8c5f6dd97adf113b95489"
+                  }
+                ]
+              },
+              "consumer_fact_count": 1,
+              "consumer_fact_states": [
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 0.12092248897533864,
+                "cpu_system_seconds": 0.19803199999999999,
+                "cpu_user_seconds": 1.780098,
+                "rss_peak_bytes": 104046592,
+                "source_opens": 0,
+                "wall_seconds": 0.9612863889196888
+              },
+              "parent_wall_seconds": 1.6110001819906756,
+              "persist_directory": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/SMALL_PROBE/protected_cache/narrow/cold-0/releases/e64ada5009f9608e34f2182bd330e7385702a83041590271960cd3de8bb6b79e/REL-m01/ad65803da32033ea75847676e91a31f22062d226bef17483aada16a761bc1ab4",
+              "pid": 44497,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "narrow",
+              "projection_identity": "bc76c8afd9d22a67d7d2b379f5200d8fe4557de0d07c778a3da68a7f9a4c3506",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "f21d102345ef0c0aff15b5f99e74457b23f3612cd7553ae7b81ae49c4c9663f9",
+              "release_ref": {
+                "content_hash": "ad65803da32033ea75847676e91a31f22062d226bef17483aada16a761bc1ab4",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 16,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "ad65803da32033ea75847676e91a31f22062d226bef17483aada16a761bc1ab4",
+              "source_sha256": "e64ada5009f9608e34f2182bd330e7385702a83041590271960cd3de8bb6b79e",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 0.021752153988927603
+                },
+                "cells": {
+                  "cell_count": 48,
+                  "rss_peak_bytes": 40001536,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 0.018724234541878104
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.113256,
+                  "cpu_user_seconds": 1.25291,
+                  "rss_peak_bytes": 99053568,
+                  "rss_peak_delta_bytes": 59052032,
+                  "stage": "compact",
+                  "wall_seconds": 0.6972979080164805
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 0.0008340000000000014,
+                  "cpu_user_seconds": 0.03846499999999997,
+                  "rss_peak_bytes": 99500032,
+                  "rss_peak_delta_bytes": 421888,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 0.03971657692454755
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 0.00022400000000000198,
+                  "cpu_user_seconds": 0.02707599999999999,
+                  "rss_peak_bytes": 40001536,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 0.027350952965207398
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 0.00022400000000000198,
+                  "cpu_user_seconds": 0.02707599999999999,
+                  "rss_peak_bytes": 40001536,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "i02validation",
+                  "wall_seconds": 0.027350952965207398
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 0.021752153988927603
+                },
+                "persist": {
+                  "cpu_system_seconds": 0.02294500000000002,
+                  "cpu_user_seconds": 0.08873200000000003,
+                  "rss_peak_bytes": 104046592,
+                  "rss_peak_delta_bytes": 4546560,
+                  "stage": "persist",
+                  "wall_seconds": 0.12092248897533864
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.00024199999999999916,
+                  "cpu_user_seconds": 0.025708999999999982,
+                  "rss_peak_bytes": 39845888,
+                  "rss_peak_delta_bytes": 24576,
+                  "stage": "profile_setup",
+                  "wall_seconds": 0.026168650947511196
+                },
+                "projection": {
+                  "rss_peak_bytes": 40001536,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 0.0014879999999999963,
+                  "cpu_user_seconds": 0.02016000000000001,
+                  "rss_peak_bytes": 40001536,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 0.021752153988927603
+                },
+                "seal": {
+                  "cpu_system_seconds": 0.00022400000000000198,
+                  "cpu_user_seconds": 0.02707599999999999,
+                  "rss_peak_bytes": 40001536,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "seal",
+                  "wall_seconds": 0.027350952965207398
+                }
+              },
+              "started_utc": "2026-11-11T02:35:19Z"
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "delete_rebuild": null,
+        "profile": "narrow",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 16,
+        "scenario": "cold",
+        "warm": null,
+        "warm_vs_baseline": {
+          "status": "NO_BASELINE"
+        }
+      }
+    }
+  },
+  "rows": 16,
+  "scenarios": [
+    "cold"
+  ],
+  "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1"
+}
