@@ -155,15 +155,17 @@ def record_activity(owner, ledger_file, ledger, before, result):
     save(ledger_file, ledger)
 
 
-def new(state, ledger_file, history):
+def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
     if ledger_file.exists() or (state / "actual-p2").exists():
         raise RecursionRefusal("P4_STATE_ALREADY_EXISTS")
     case = build_case(state, history_outcomes=(history,) if history else (),
-                      include_compression=False, standpoints=False)
+                      include_compression=False, standpoints=False, seed=seed)
     try:
         owner = case.owner
         formation = owner.realize("p4-formation", case.proposals[0], owner.snapshot())
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
+        if establish is not None:
+            establish(case.base_owner.fanin.session)
         HistoricalWorld(case.base_owner.fanin.session).capture_visible_tool_resource()
         plan = case.plans[0]
         identity = owner.snapshot().document()
@@ -183,21 +185,31 @@ def new(state, ledger_file, history):
         case.owner.close()
 
 
-def act(owner, ledger_file, ledger, args):
+def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
     fanin = owner.base_owner.fanin
     session = fanin.session
     before = owner.snapshot().document()
-    if args.command == "say":
+    if conduct is not None:
+        action, perform = conduct
+    elif args.command == "say":
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
     elif args.command == "inspect-particular":
         action = {"operation": "INSPECT_PARTICULAR", "target": args.target}
         predicate = getattr(args, "property", None)
         if predicate is not None:
             action["property"] = predicate
-    else:
+    elif args.command == "inspect-edge":
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
         if args.then_wait:
             action["then_wait"] = True
+    elif pacing is not None and args.command in {"inspect", "attend"}:
+        action = {"operation": args.command.upper()}
+    else:
+        raise RecursionRefusal("P4_ACTION_UNSUPPORTED")
+    if pacing is not None:
+        action["pacing"] = "P5"
+        if args.command in {"inspect", "inspect-edge"} and getattr(args, "thorough", False):
+            action["thorough"] = True
     if args.request_id:
         for turn in ledger["turns"]:
             if turn["request_id"] != args.request_id:
@@ -208,13 +220,17 @@ def act(owner, ledger_file, ledger, args):
 
     ledger["pending"] = {"action": action, "before": before, "request_id": args.request_id}
     save(ledger_file, ledger)
-    if args.command == "say":
+    if conduct is not None:
+        receipt, public = perform(session, action)
+    elif args.command == "say":
         speech = admit_speech(session, text=args.text, actor_ref=before["actor"],
                               request_edge=args.request_edge)
         uptake = read_response(owner, speech, ledger["scope"])
         expression, observation = express(session, uptake)
         offers_inspection = uptake["mode"] == "joint_check" and observation is not None
-        interval = advance(fanin) if speech["performed"] and not offers_inspection else None
+        interval = None
+        if speech["performed"] and not offers_inspection:
+            interval = (advance(fanin) if pacing is None else pacing(fanin, action))
         receipt = {"speech": speech, "uptake": uptake, "expression": expression,
                    "interval": interval}
         public = {"admission": speech["admission"], "performed": speech["performed"] is not None,
@@ -232,10 +248,13 @@ def act(owner, ledger_file, ledger, args):
             receipt = {"performed": event}
             public = {"admission": "ADMITTED", "performed": True,
                       "observation": history.read_inspection(event["event_id"])}
-    else:
+    elif args.command in {"inspect", "inspect-edge"}:
         from s45_projection.projection import project_event
 
-        valid = session.scene_open() and args.invitation == invitation(session, ledger)
+        token = action.get("invitation")
+        valid = session.scene_open() and (
+            args.command == "inspect" or token == invitation(session, ledger)
+        )
         event = None
         if valid:
             session.inspect()
@@ -244,10 +263,30 @@ def act(owner, ledger_file, ledger, args):
                     or event["actor_id"] != session.meta["user_actor"]
                     or event["event_id"] not in session.user_perceived_ids()):
                 raise RecursionRefusal("P4_INSPECTION_RECEIPT_MISSING")
-        interval = advance(fanin) if valid and args.then_wait else None
-        receipt = {"performed": event, "invitation": args.invitation, "interval": interval}
+        interval = None
+        if valid:
+            if pacing is not None:
+                interval = pacing(fanin, action)
+            elif args.then_wait:
+                interval = advance(fanin)
+        receipt = {"performed": event, "invitation": token, "interval": interval}
         public = {"admission": "ADMITTED" if valid else "INVITATION_UNAVAILABLE",
                   "performed": valid, "observation": project_event(event) if valid else None}
+    else:
+        valid = session.scene_open()
+        interval = None
+        result = None
+        if valid:
+            before_ids = session.user_perceived_ids()
+            result = session.attend()
+            # The received attention action can cause an actor to initiate.
+            # Return before compressing time if a new utterance is perceived.
+            newly_perceived = session.user_perceived_ids() - before_ids
+            if not any(session.event(ref)["kind"] == "SPEECH" for ref in newly_perceived):
+                interval = pacing(fanin, action)
+        receipt = {"attention": result, "interval": interval}
+        public = {"admission": "ADMITTED" if valid else "SCENE_CLOSED",
+                  "performed": valid, "observation": None}
 
     after = owner.snapshot().document()
     ledger["turns"].append({"action": action, "request_id": args.request_id,

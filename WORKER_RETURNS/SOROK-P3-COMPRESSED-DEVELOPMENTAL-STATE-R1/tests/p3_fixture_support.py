@@ -294,9 +294,9 @@ class ScriptedProvider:
 def build_case(tmp_path: Path, *, history_outcomes: tuple[str, ...] = HISTORY_OUTCOMES,
                interval_modes: Mapping[int, str] | None = None,
                include_compression: bool = True,
-               standpoints: bool = True) -> VerticalCase:
+               standpoints: bool = True, seed: str = "01" * 32) -> VerticalCase:
     """Construct actual P2 and banked P3 owners; the store must be returned."""
-    fanin = load_p2().start(tmp_path / "actual-p2")
+    fanin = load_p2().start(tmp_path / "actual-p2", seed=seed)
     case = fanin.deps["case_for"](True)
     base = P2Owner(
         fanin, case=case, source=fanin.deps["source_for"](case),

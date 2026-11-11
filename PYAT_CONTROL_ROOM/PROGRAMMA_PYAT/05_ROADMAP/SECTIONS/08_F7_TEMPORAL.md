@@ -1,5 +1,12 @@
 # ROADMAP:S08 — F7 original comparable-wave evidence and independent structural time
 
+## PYAT-PRODUCT-PRIORITIES-20261110-R1 — S08 exact science-to-product work (candidate; not accepted)
+
+**Mandatory product question:** What is possible? What is facilitated? What is inhibited or repressed? By which forces? In contradiction with what other tendencies? Under what conditions might those relations change? Source of complete obligations: [27-row PROGRAMMA agenda](../REMAINING_REAL_PYAT_WORK.md#pyat-product-priorities-20261110-r1). This section remains governed by its native existing ROADMAP/GAP/IF/AND identities and competent source/science/actor owner; alias visibility does not mint a new obligation grade. Future commission writing must freeze evidence, source IDs, first reader and negative checks under MCR-C.
+
+- **`PP26-23`** [S08](SECTIONS/08_F7_TEMPORAL.md) — F7 cross-wave QSM and historical temporal conditions. **Evidence:** Partial historic temporal carriers; qualified source population and question comparability unproved for all waves. **Needed:** Use wave-specific QSM, sample/meaning/time authority to compute compatible persistence, transformation or rupture; noncomparable remains visible. **Proof/RED:** PASS comparability positive and altered-wording negative; RED same question name assumes identical measurement.
+
+
 > **UNIVERSAL35 CURRENTNESS OVERLAY — 2026-11-06, candidate prepared from prior G review; exact-head independent review pending; not protected adoption.** Fresh branch from protected `4df35cba8a254e50622d4cb3059625c82e0cb74b` preserves CAS3 fifteen-return write-through, 62/82/49 IDs/grades, 51/82 graph, 88/13 arcs and FIABC 144 PASS / 3 FAIL. #705 `62329a72…` is reviewed-but-stale; G `b491fa87…` requires correction. #696 merged `a02cd4e…`; #702 merged `aaf098b…`; #703 code received at `d119045f`/PR docs open; L03 P2+guard received; compressed `02c1200…` sourcefree-accepted `9999c0af…` but not protected; W04 caller-configured cache equivalence human-accepted. A `51f399888…` F-accepted sourcefree (`ebd20c…`), ABI truthful `load_original(sid).document` + compact `select`; B `dd0249a0…` non-F1 REVISE; F A/C scoped accept, B/AB/ABC REVISE RAW 5,630 / HELD 4,655 / INAPPLICABLE 8,131 / DEFERRED 51 total 18,467; D not accepted; E `7d1aadfd…` code `7920b7fc…` accepted scoped by `6334063…` with two-target RAW limit, D bind NOT_RUN and old negative `e714` preserved. All35 custody `b90708f7…`/`9c871f14a…` candidate; SRC13/14 exact configured encoding; no native/all35 promotion.
 
 
