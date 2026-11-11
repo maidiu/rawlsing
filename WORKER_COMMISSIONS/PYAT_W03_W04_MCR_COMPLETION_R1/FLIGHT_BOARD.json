@@ -811,11 +811,29 @@
       "job": "pyat-w03-w04-mcr-fullscale-execution-r1",
       "session": "ses_1b9742b6c02745d8a69d062011",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
-      "status": "EXECUTOR_LAUNCHED__ACTUAL_100K_CHILD_NOT_YET_CLAIMED",
+      "status": "RETURNED_VERIFIED_DURABLE_NATIVE_HANDOFF__NO_MEASUREMENT_ACCEPTANCE",
       "source_candidate": "e06b5037846c2662e0f8500f391da4dc56364a5f",
       "scope": "Required100k3repeat pairedmeasurements;durablenativesupervision;source/testreadonly",
       "disk_observation": "4.4GiBfree;exactdependencyifcannotfit,nohistoricaldeletion",
-      "pid": 77681
+      "pid": 77681,
+      "candidate": "d5192300ccad24656e75ecf932fdccc2031ce9a2",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c9b2ff3f001fWc1GlsDkc2lV1",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794385313696,
+          "streamed": 1794385324555,
+          "completed": 1794385324706
+        }
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-sourcefree-ci-repaired-r2",
@@ -830,10 +848,23 @@
         "run_conclusion": "success"
       },
       "evidence": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/hq/CI_RUN_42986463148/summary.json"
+    },
+    {
+      "job": "NATIVE_W03_W04_FULLSCALE",
+      "session": "NATIVE_W03_W04_FULLSCALE",
+      "pid": 83681,
+      "benchmark_parent_pid": 83717,
+      "observed_worker_pid": 83719,
+      "status": "ACTIVE_NATIVE_100000_ROW_MEASUREMENT_VERIFIED_AT_HANDOFF_INTAKE",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
+      "execution_cut": "e06b5037846c2662e0f8500f391da4dc56364a5f",
+      "driver_cut": "a2c82f6eba60249644f3b868fa55a64a78380823",
+      "completion_path": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/NATIVE_W03_W04_FULLSCALE/completion.json",
+      "scope": "Serialbaseline/candidatecold+fullmatrixandcells/hash; actual100k/3reps/6GiBsampledmonitor; no acceptanceyet"
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Intake outstanding fullscale executor77681 onterminalnotification; require actualnative100kprocessreceipt or exactresourcedependency, notplan. No duplicateheavyjob or unnecessaryreview.",
+  "next_action": "Wait for existing NATIVE_W03_W04_FULLSCALE terminal notification; intake rawbaseline/candidate outputs, externally pinbaselinehash and reviewactualquantitativeoutcomes. No polling/duplicatelaunch/sourceedits while measurementactive.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -861,7 +892,7 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "Fullscale execution contract prepared in FULL_SCALE_NEXT_EXECUTION.md; release depends only on live potentially sampler-changing repair source freeze, no user routineapproval. No independent filler task.",
+  "next_ready_work": "No independent necessary task before full-scale quantitative receipts; prior sourcefreeCI100PASS and exact scopedreviews retained. No filler commissions.",
   "provider_quota_hold": {
     "provider": "opencode-go",
     "limit": "monthly",
