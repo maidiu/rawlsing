@@ -4,6 +4,7 @@ on:
     paths:
       - 'rawlsing_next/prev3_objective_position_materializer.py'
       - 'rawlsing_next/tests/test_prev3_objective_position_materializer.py'
+      - 'rawlsing_next/tests/test_prev3_objective_position_v557_v558_publication.py'
       - '.github/workflows/pyat-prev3-position-materializer-recovery.yml'
   workflow_dispatch:
 permissions:
@@ -23,6 +24,6 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-          python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_prev3_objective_position_materializer.py
+          python -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_prev3_objective_position_materializer.py rawlsing_next/tests/test_prev3_objective_position_v557_v558_publication.py
           python -c 'import rawlsing_next.prev3_objective_position_v557_v558_publication as p; assert p.POSITION_MATERIALIZER_CONTRACT_ID == "PREV3_OBJECTIVE_POSITION_MATERIALIZER_CONTRACT@1.0.0"'
           python -m compileall -q rawlsing_next/prev3_objective_position_materializer.py rawlsing_next/prev3_objective_position_v557_v558_publication.py
