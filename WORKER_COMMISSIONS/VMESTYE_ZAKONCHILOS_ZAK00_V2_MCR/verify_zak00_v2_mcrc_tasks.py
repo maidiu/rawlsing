@@ -4,7 +4,9 @@ This is a pre-dispatch contract court; it does NOT certify descendants' work.
 """
 import argparse
 import csv
+import hashlib
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
@@ -199,6 +201,8 @@ FLIGHT_MAP = "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/0
 FROZEN_PYTHON_COURT = "42906583428"
 FROZEN_PYTHON_HEAD = "61e23d77d72dd349c48a106636336403f3caed86"
 RECEIVING_ISSUES = (814, 815, 816, 817)
+FROZEN_R3_SOURCE_HEAD = "b07a24da517016d91da7ddcd92a0b6c54d07911d"
+ORIGINAL_AUTHOR_ACCOUNT = "maidiu"
 
 
 def _contract_obligations(prompt_text=None):
@@ -216,7 +220,7 @@ def _artifact_text(path, substitutions=None):
     return p.read_text(encoding="utf-8")
 
 
-def _flight_rows(map_text):
+def _flight_rows(map_text, *, compare_frozen=True):
     # Read the primary-jurisdiction table only. The same flight may lawfully
     # appear later in the readiness/hold table; that is not duplicate ownership.
     section = map_text.split("## Eligibility and genuine dependencies", 1)[0]
@@ -232,6 +236,14 @@ def _flight_rows(map_text):
         assert all(fields[1:]), "owner/consumer/dispatch field cannot be blank"
         rows[num] = fields
     assert set(rows) == set(range(1, 12)), "missing or extra whole-mission jurisdiction"
+    # Freeze each substantively distinct primary role independently of the 11 IDs.
+    assert len({row[1] for row in rows.values()}) == 11, "duplicate substantive jurisdiction despite 11 IDs"
+    if compare_frozen:
+        canonical = _flight_rows(source_bytes(FLIGHT_MAP, FROZEN_R3_SOURCE_HEAD),
+                                 compare_frozen=False)
+        for n in range(1, 12):
+            assert rows[n][1] == canonical[n][1], (
+                "source-qualified primary jurisdiction changed or swapped", n)
     return rows
 
 
@@ -255,7 +267,91 @@ def _validate_claim_contract_bindings(obligations):
     return True
 
 
-def prove_parent_claim(oid, prompt_text=None, substitutions=None):
+
+def _current_ci_provenance(ctx=None):
+    """Bind current source/CI proof to the *running* exact HEAD, not an old run number."""
+    ctx = os.environ if ctx is None else ctx
+    if ctx.get("GITHUB_ACTIONS") != "true":
+        return None
+    run = ctx.get("GITHUB_RUN_ID", "")
+    assert run.isdecimal() and int(run) > 0, "missing actual Actions run ID"
+    assert run not in (FROZEN_PYTHON_COURT, "42922393484"), "stale run is not current"
+    assert ctx.get("GITHUB_REPOSITORY") == "maidiu/rawlsing"
+    assert "ZAK-00 v2 MCR-C" in ctx.get("GITHUB_WORKFLOW", "")
+    candidate = git("rev-parse", "HEAD").strip()
+    event_path = ctx.get("GITHUB_EVENT_PATH", "")
+    # The host GITHUB_SHA for pull_request events is a synthetic merge commit:
+    # use the *actual* event pull request head instead, not the merge SHA.
+    if event_path:
+        event = json.loads(Path(event_path).read_text(encoding="utf-8"))
+        ehead = (event.get("pull_request", {}).get("head", {}).get("sha")
+                 or event.get("after"))
+    else:
+        ehead = ctx.get("GITHUB_SHA")
+    assert ehead == candidate, ("current CI event HEAD diverges from checkout", ehead, candidate)
+    return {"candidate_sha": candidate, "github_run_id": run,
+            "event": ctx.get("GITHUB_EVENT_NAME", "unknown"),
+            "trusted_origin": "RUNNING_GITHUB_ACTIONS_SOURCE_CHECK_NOT_INDEPENDENT_REVIEW"}
+
+
+def evaluate_acknowledgments(acks=None, candidate_sha=None, qualification_verifier=None):
+    """Real negative -> externally verifiable positive eligibility, NEVER author approval.
+
+    The verifier is a competency/credential decision furnished by an INDEPENDENT
+    receiving host. Author-controlled JSON flags are not trusted. Validity of a
+    synthetic test verifier does not confer rights in the real repository.
+    """
+    blocked = {"id": "ZAK00-PARENT-06", "status": "BLOCKED_EXACT_DEPENDENCY",
+               "reason": "NO_QUALIFIED_INDEPENDENT_RECEIVING_ACKNOWLEDGMENT",
+               "required_issues": list(RECEIVING_ISSUES),
+               "scientific_actor_issuer": "NOT_GRANTED"}
+    if not acks or not candidate_sha or qualification_verifier is None:
+        return blocked
+    if not isinstance(acks, list) or len(acks) != 4:
+        return {**blocked, "reason": "EXACTLY_FOUR_INDEPENDENT_RECEIPTS_REQUIRED"}
+    if not re.fullmatch("[0-9a-f]{40}", candidate_sha):
+        return {**blocked, "reason": "INVALID_FROZEN_CANDIDATE_SHA"}
+    seen = set()
+    for a in acks:
+        if not isinstance(a, dict):
+            return {**blocked, "reason": "INVALID_RECEIVING_RECORD"}
+        issue = a.get("issue")
+        if issue not in RECEIVING_ISSUES or issue in seen:
+            return {**blocked, "reason": "DUPLICATE_OR_UNQUALIFIED_ISSUE"}
+        seen.add(issue)
+        if a.get("candidate_sha") != candidate_sha:
+            return {**blocked, "reason": "WRONG_SHA_ACKNOWLEDGMENT"}
+        login = a.get("github_actor")
+        if not isinstance(login, str) or not login.strip() or login.lower() == ORIGINAL_AUTHOR_ACCOUNT:
+            return {**blocked, "reason": "SELF_AUTHORED_OR_NO_REVIEWER_ID"}
+        if a.get("scope") != "ZAK00_R3_SCOPED_SOURCE_HANDOFF" or a.get("decision") not in (
+            "RECEIVED_FOR_REVIEW", "ACCEPT_SCOPED_S0_S1", "HOLD_WITH_NAMED_SCOPE"
+        ):
+            return {**blocked, "reason": "WRONG_SCOPE_OR_UNSIGNED_DECISION"}
+        receipt = a.get("comment_url", "")
+        if not (isinstance(receipt, str) and
+                receipt.startswith("https://github.com/maidiu/rawlsing/issues/" + str(issue) + "#issuecomment-")):
+            return {**blocked, "reason": "MISSING_EXISTING_RECEIVING_SURFACE"}
+        # An actual reviewer-owned, externally checked credential/issue-comment
+        # verifier must return a structured authentication result.
+        adjudication = qualification_verifier(a)
+        if not isinstance(adjudication, dict) or not all(
+            adjudication.get(k) is True for k in (
+                "independently_authenticated_comment", "competent_issue_owner",
+                "credential_distinct_from_author", "same_candidate_and_scope"
+            )
+        ):
+            return {**blocked, "reason": "INDEPENDENT_ISSUER_NOT_VERIFIED"}
+    if seen != set(RECEIVING_ISSUES):
+        return {**blocked, "reason": "INCOMPLETE_JURISDICTIONS"}
+    return {"id": "ZAK00-PARENT-06",
+            "status": "ELIGIBLE_FOR_SEPARATE_AUTHORITY_COURT",
+            "receiving_issues": sorted(seen),
+            "candidate_sha": candidate_sha,
+            "not_author_CERTIFIED_PASS": True,
+            "scientific_actor_issuer": "NOT_GRANTED"}
+
+def prove_parent_claim(oid, prompt_text=None, substitutions=None, *, acknowledgments=None, candidate_sha=None, qualification_verifier=None, ci_context=None):
     obs = _contract_obligations(prompt_text)
     _validate_claim_contract_bindings(obs)
     assert oid in CLAIM_OUTPUTS, "unsupported gate " + oid
@@ -303,33 +399,244 @@ def prove_parent_claim(oid, prompt_text=None, substitutions=None):
                       "MCR-C", "12/12", "182", "47", "postcommit",
                       "same candidate SHA", "NO native"):
             assert token in doc, "missing historical/current CI receipt distinction " + token
-        return {"id": oid, "status": "PASS_PREVIOUS_CI_PROVENANCE_S1_ONLY",
+        ci = _current_ci_provenance(ci_context)
+        if ci is None:
+            return {"id": oid, "status": "INCOMPLETE_CURRENT_CANDIDATE_CI_NOT_ATTESTED",
+                    "historical_python": "NOT_RUN", "later_verified_run": FROZEN_PYTHON_COURT}
+        return {"id": oid, "status": "PASS_AUTHOR_EXEC_CURRENT_CI_SOURCE_PROVENANCE",
                 "historical_python": "NOT_RUN", "later_verified_run": FROZEN_PYTHON_COURT,
-                "current_candidate_must_execute_new_CI": True}
-    # A written author handoff cannot be acknowledged by its own author.
+                "candidate_ci": ci}
+    # The live authority state is NOT a constant or a keyword in an author document.
     assert oid == "ZAK00-PARENT-06"
     for n in RECEIVING_ISSUES:
         assert ("#%d" % n) in doc, "no named receiving jurisdiction #%d" % n
-    assert "NOT_ACKNOWLEDGED" in doc and "NOT_LAUNCHED" in doc
-    return {"id": oid, "status": "BLOCKED_EXACT_DEPENDENCY",
-            "reason": "NO_CREDENTIAL_INDEPENDENT_SCOPE_BOUND_ACKNOWLEDGMENT",
-            "required_issues": list(RECEIVING_ISSUES),
-            "candidate_receipt": "four separately competent receiving comments/returns at exact author SHA",
-            "scientific_actor_issuer": "NOT_GRANTED"}
+    return evaluate_acknowledgments(acknowledgments, candidate_sha, qualification_verifier)
 
 
-def run_claim_gates(prompt_text=None, substitutions=None):
+def run_claim_gates(prompt_text=None, substitutions=None, *, acknowledgments=None, candidate_sha=None, qualification_verifier=None, ci_context=None):
     obs = _contract_obligations(prompt_text)
     _validate_claim_contract_bindings(obs)
     ids = list(CLAIM_OUTPUTS)
-    results = [prove_parent_claim(oid, prompt_text, substitutions) for oid in ids]
+    results = [prove_parent_claim(oid, prompt_text, substitutions,
+             acknowledgments=acknowledgments, candidate_sha=candidate_sha,
+             qualification_verifier=qualification_verifier, ci_context=ci_context) for oid in ids]
     blocked = [r["id"] for r in results if r["status"] == "BLOCKED_EXACT_DEPENDENCY"]
-    assert blocked == ["ZAK00-PARENT-06"], "unexpected or hidden obligation blocker"
+    assert not any(r["status"] == "PASS" for r in results), "unqualified author self-approval"
+    assert set(blocked) <= {"ZAK00-PARENT-06"}, "unexpected or hidden authority blocker"
     return {"stage": "AUTHOR_CONTRACT_REPAIR_TEST_NOT_INDEPENDENT_RECEIVING",
             "results": results, "blocked_obligations": blocked,
             "author_whole_parent_ready": False,
             "zero_false_positive_authority_proof": True}
 
+
+
+def audit_author_evidence_vector(entries, *, ci_context=None):
+    """Evidence authenticity: never let author PASS a reviewer-owned result."""
+    obs = _contract_obligations()
+    indexed = {}
+    for item in entries:
+        oid = item.get("id")
+        assert oid in obs and oid not in indexed, ("unknown/duplicate evidence", oid)
+        indexed[oid] = item
+    assert set(indexed) == set(obs), "missing/excess claim evidence"
+    author_pass = []
+    independent_held = []
+    for oid, ob in obs.items():
+        item = indexed[oid]
+        if ob["check_kind"] != "EXEC":
+            assert item.get("status") == "INCOMPLETE", (
+                "AUTHOR_FORGED_INDEPENDENT_PASS", oid, item.get("status"))
+            independent_held.append(oid)
+            continue
+        if item.get("status") == "PASS":
+            proof = prove_parent_claim(oid, ci_context=ci_context)
+            assert proof["status"].startswith("PASS_"), (
+                "UNEXECUTED_AUTHOR_PROOF_MASQUERADING_AS_PASS", oid, proof["status"])
+            assert item.get("grade") == "S1", ("wrong author-exec grade", oid)
+            author_pass.append(oid)
+        else:
+            assert item.get("status") == "INCOMPLETE", ("unknown author state", oid)
+    assert len(independent_held) == 20
+    return {"status": "PASS_AUTHOR_EVIDENCE_BOUNDARY_NOT_INDEPENDENT_ACCEPTANCE",
+            "author_executed_pass": author_pass,
+            "independent_pending": independent_held,
+            "independent_pass_issued": 0}
+
+
+def near_positive_regressions():
+    # Retain all 11 IDs and five populated cells while destroying 10 jurisdictions.
+    original = _artifact_text(FLIGHT_MAP)
+    lines = original.splitlines()
+    first = _flight_rows(original)[1][1]
+    mutant = []
+    in_table = True
+    for line in lines:
+        if line.startswith("## Eligibility and genuine dependencies"):
+            in_table = False
+        m = re.match(r"^\| ZAK-(\d\d) \| ", line) if in_table else None
+        if m and int(m.group(1)) > 1:
+            cells = [c.strip() for c in line.strip("|").split("|")]
+            cells[1] = first
+            line = "| " + " | ".join(cells) + " |"
+        mutant.append(line)
+    corrupted = "\n".join(mutant) + "\n"
+    assert corrupted != original
+    checks = 0
+    for oid in ("ZAK00-PARENT-01", "ZAK00-PARENT-03"):
+        try:
+            prove_parent_claim(oid, substitutions={FLIGHT_MAP: corrupted})
+        except AssertionError:
+            checks += 1
+        else:
+            raise AssertionError("eleven ids but one jurisdiction passed: " + oid)
+
+    # Near-positive: a swap also destroys source-qualified ownership despite uniqueness.
+    mutated = original.replace(_flight_rows(original)[2][1], "@@TEMP-JURIS@@", 1)
+    mutated = mutated.replace(_flight_rows(original)[3][1], _flight_rows(original)[2][1], 1)
+    mutated = mutated.replace("@@TEMP-JURIS@@", _flight_rows(original)[3][1], 1)
+    try:
+        prove_parent_claim("ZAK00-PARENT-03", substitutions={FLIGHT_MAP: mutated})
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("swapped semantic jurisdictions passed")
+
+    # Positive eligibility transition uses an externally supplied qualification
+    # verdict only in this CONTROLLED SYNTHETIC TEST. Never constitutes receipt.
+    candidate = git("rev-parse", "HEAD").strip()
+    def fixture_verifier(entry):
+        return dict.fromkeys(("independently_authenticated_comment", "competent_issue_owner",
+             "credential_distinct_from_author", "same_candidate_and_scope"), True)
+    receipts = [{"issue": n, "candidate_sha": candidate,
+        "github_actor": "external-reviewer-%d" % n,
+        "scope": "ZAK00_R3_SCOPED_SOURCE_HANDOFF",
+        "decision": "RECEIVED_FOR_REVIEW",
+        "comment_url": "https://github.com/maidiu/rawlsing/issues/%d#issuecomment-%d" % (n, n+1200)}
+        for n in RECEIVING_ISSUES]
+    result = evaluate_acknowledgments(receipts, candidate, fixture_verifier)
+    assert result["status"] == "ELIGIBLE_FOR_SEPARATE_AUTHORITY_COURT"
+    assert result["not_author_CERTIFIED_PASS"] is True
+    checks += 1
+    negatives = [
+        (receipts[:-1], candidate, fixture_verifier),
+        ([{**a, "candidate_sha": "0"*40} if i == 0 else a for i, a in enumerate(receipts)],
+         candidate, fixture_verifier),
+        ([{**a, "github_actor": ORIGINAL_AUTHOR_ACCOUNT} if i == 0 else a for i, a in enumerate(receipts)],
+         candidate, fixture_verifier),
+        ([{**a, "scope": "UNRESTRICTED"} if i == 0 else a for i, a in enumerate(receipts)],
+         candidate, fixture_verifier),
+        (receipts, candidate, lambda _: {"independently_authenticated_comment": True}),
+        (receipts, candidate, None),
+    ]
+    for rows, sha, verify in negatives:
+        r = evaluate_acknowledgments(rows, sha, verify)
+        assert r["status"] == "BLOCKED_EXACT_DEPENDENCY"
+        checks += 1
+    # A self-authored forged PASS/AUTHORITY record is caught by the claim/authority
+    # court even when the underlying official structural verifier would accept hashes.
+    obs = _contract_obligations()
+    records = [{"id": oid, "status": "INCOMPLETE", "grade": "S0"} for oid in obs]
+    baseline = audit_author_evidence_vector(records)
+    assert baseline["independent_pass_issued"] == 0
+    checks += 1
+    forged = [dict(r) for r in records]
+    for r in forged:
+        if r["id"] == "ZAK00-PARENT-06":
+            r.update({"status": "PASS", "grade": "AUTHORITY"})
+    try:
+        audit_author_evidence_vector(forged)
+    except AssertionError as e:
+        assert "AUTHOR_FORGED_INDEPENDENT_PASS" in str(e)
+        checks += 1
+    else:
+        raise AssertionError("forged authority record passed author proof guard")
+    # Historical 429065... old-run description survives; missing new trusted
+    # GitHub CI context MUST NOT produce current candidate source-evidence PASS.
+    without = prove_parent_claim("ZAK00-OUTPUT-05", ci_context={"GITHUB_ACTIONS": "false"})
+    assert without["status"] == "INCOMPLETE_CURRENT_CANDIDATE_CI_NOT_ATTESTED"
+    checks += 1
+    for fake in [
+        {"GITHUB_ACTIONS": "true", "GITHUB_RUN_ID": FROZEN_PYTHON_COURT,
+         "GITHUB_REPOSITORY": "maidiu/rawlsing", "GITHUB_SHA": candidate,
+         "GITHUB_WORKFLOW": "ZAK-00 v2 MCR-C"},
+        {"GITHUB_ACTIONS": "true", "GITHUB_RUN_ID": "99999999991",
+         "GITHUB_REPOSITORY": "maidiu/rawlsing", "GITHUB_SHA": "0"*40,
+         "GITHUB_WORKFLOW": "ZAK-00 v2 MCR-C"},
+    ]:
+        try:
+            prove_parent_claim("ZAK00-OUTPUT-05", ci_context=fake)
+        except AssertionError:
+            checks += 1
+        else:
+            raise AssertionError("stale or wrong candidate CI falsely qualified")
+    assert checks == 15, checks
+    return {"status": "PASS_15_OF_15_NEAR_POSITIVE_AND_FORGED_AUTHORITY_REGRESSIONS",
+            "original_jurisdictions": 11, "corrupted_jurisdictions": 1,
+            "synthetic_authority_positive": "ELIGIBLE_FOR_SEPARATE_AUTHORITY_COURT_ONLY",
+            "actual_authority_received": False}
+
+
+
+def make_postcommit_author_evidence(destination, *, ci_context=None):
+    """Build SHA-bound source-evidence ONLY for personally executed author tests.
+
+    All independent checks remain INCOMPLETE regardless of output/file/hash
+    existence. The official MCR-C return checker is not an authority issuer.
+    """
+    prompt = Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md"
+    scope, contract = load_contract(prompt.read_text(encoding="utf-8"))
+    obs = scope["MCR_OBLIGATION"]
+    candidate = git("rev-parse", "HEAD").strip()
+    ci = _current_ci_provenance(ci_context)
+    assert ci is not None and ci["candidate_sha"] == candidate, "same candidate current Actions execution required"
+    contract_digest = hashlib.sha256(contract.strip().encode("utf-8")).hexdigest()
+    def attached(path):
+        p = ROOT / path
+        assert p.is_file(), "uncommitted evidence path " + path
+        digest = git("hash-object", path).strip()
+        actual = git("rev-parse", candidate + ":" + path).strip()
+        assert digest == actual, "uncommitted or modified evidence " + path
+        return hashlib.sha256(p.read_bytes()).hexdigest()
+    records = []
+    lines = ["MCR_COMPLETION_EVIDENCE_BEGIN"]
+    for o in obs:
+        oid = o["id"]
+        # The only eligible author PASS comes from a real current-CI executed
+        # check. Independent means qualified external court, never author.
+        status, grade = "INCOMPLETE", "S0"
+        if o["check_kind"] == "EXEC":
+            r = prove_parent_claim(oid, ci_context=ci_context)
+            if r["status"].startswith("PASS_"):
+                status, grade = "PASS", "S1"
+        record = {"id": oid, "candidate_sha": candidate,
+                  "contract_sha256": contract_digest,
+                  "status": status, "grade": grade,
+                  "output_file": o["output"], "output_sha256": attached(o["output"]),
+                  "evidence_file": o["evidence"], "evidence_sha256": attached(o["evidence"])}
+        records.append(record)
+        lines.append("MCR_EVIDENCE: " + json.dumps(record, sort_keys=True))
+    audit = audit_author_evidence_vector(records, ci_context=ci_context)
+    assert len(audit["author_executed_pass"]) == 4
+    assert len(audit["independent_pending"]) == 20
+    coverage = "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/MCRC_DELIVERED_182_IDS.txt"
+    lines.append("MCR_COVERAGE: " + json.dumps({
+        "candidate_sha": candidate, "contract_sha256": contract_digest,
+        "delivered_ids_file": coverage, "delivered_ids_sha256": attached(coverage)}, sort_keys=True))
+    lines.append("MCR_COMPLETION_EVIDENCE_END")
+    Path(destination).parent.mkdir(parents=True, exist_ok=True)
+    Path(destination).write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return {"candidate_sha": candidate, "contract_sha256": contract_digest,
+            "github_actions_run_id": ci["github_run_id"],
+            "author_exec_pass": audit["author_executed_pass"],
+            "independent_unreceived": audit["independent_pending"],
+            "authority_ceiling": "INCOMPLETE_UNTIL_GENUINE_INDEPENDENT_RECEIVING"}
+
+
+def audit_postcommit_evidence_file(path):
+    source = Path(path).read_text(encoding="utf-8")
+    records = [json.loads(line.split(": ", 1)[1]) for line in source.splitlines()
+               if line.startswith("MCR_EVIDENCE: ")]
+    return audit_author_evidence_vector(records)
 
 def claim_mutation_test():
     prompt_path = Path(__file__).resolve().parent / "01_FULL_COPY_PASTE_LAUNCH.md"
@@ -405,7 +712,8 @@ def self_test():
         else:
             raise AssertionError("parent completion mutant passed")
     assert claim_mutation_test()["status"].startswith("PASS_10_OF_10")
-    return "PASS 5/5 original + 10/10 semantic misbinding/outcome-withheld mutants rejected; #814-817 acknowledgment BLOCKED"
+    assert near_positive_regressions()["status"].startswith("PASS_15_OF_15")
+    return "PASS 5/5 original + 10/10 semantic + 15/15 near-positive/forged authority mutants; no independent issuance"
 
 def main():
     p = argparse.ArgumentParser()
@@ -415,11 +723,23 @@ def main():
     p.add_argument("--claim", choices=list(CLAIM_OUTPUTS))
     p.add_argument("--claim-all", action="store_true")
     p.add_argument("--claim-mutations", action="store_true")
+    p.add_argument("--near-positive", action="store_true")
+    p.add_argument("--generate-author-evidence")
+    p.add_argument("--audit-evidence")
     p.add_argument("--enumerate-expected", action="store_true")
     p.add_argument("--self-test", action="store_true")
     args = p.parse_args()
     if args.self_test:
         print(self_test())
+        return
+    if args.generate_author_evidence:
+        print(json.dumps(make_postcommit_author_evidence(args.generate_author_evidence), indent=2))
+        return
+    if args.audit_evidence:
+        print(json.dumps(audit_postcommit_evidence_file(args.audit_evidence), indent=2))
+        return
+    if args.near_positive:
+        print(json.dumps(near_positive_regressions(), indent=2))
         return
     if args.claim_mutations:
         print(json.dumps(claim_mutation_test(), indent=2))

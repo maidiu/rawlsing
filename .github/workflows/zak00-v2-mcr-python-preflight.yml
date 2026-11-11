@@ -81,85 +81,109 @@ jobs:
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --parent
           echo "ZAK-00 PARENT: integrated MCR-C source/contract gate PASS; descendant effects NOT_RUN"
 
-      - name: Hostile parent proof-domain and withheld-outcome tests (10 negatives + authority refusal)
+      - name: Hostile proof-domain, eleven-jurisdiction, forged-grade and current-CI regressions
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p zak-mcr-format-receipts
           python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-mutations | tee zak-mcr-format-receipts/ZAK00_R3_SEMANTIC_MUTANTS.json
-          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-all | tee zak-mcr-format-receipts/ZAK00_R3_CLAIM_BOUNDARY.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --near-positive | tee zak-mcr-format-receipts/ZAK00_R4_NEAR_POSITIVE_AND_AUTHORITY_MUTANTS.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-all | tee zak-mcr-format-receipts/ZAK00_R4_CLAIM_BOUNDARY.json
 
-      - name: Verify post-commit parent evidence, with missing qualified receipt deliberately non-PASS at exact SHA
+      - name: Exact-head author evidence computed from four executed checks, not nineteen invented reviewer PASSes
         shell: bash
         run: |
           set -euo pipefail
-          python3 - <<'PY'
-          import hashlib, json, subprocess
-          from pathlib import Path
-          prompt_path = Path("WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md")
-          source = prompt_path.read_text(encoding="utf-8")
-          begin, end = "MCR_COMPLETION_CONTRACT_BEGIN", "MCR_COMPLETION_CONTRACT_END"
-          contract = source.split(begin, 1)[1].split(end, 1)[0].strip()
-          digest = hashlib.sha256(contract.encode("utf-8")).hexdigest()
-          obligations = [json.loads(line.split(": ", 1)[1]) for line in contract.splitlines()
-                         if line.startswith("MCR_OBLIGATION: ")]
-          assert len(obligations) == 24
-          candidate = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
-          def sha(path):
-              value = Path(path).read_bytes()
-              return hashlib.sha256(value).hexdigest()
-          def committed(path):
-              actual = subprocess.check_output(["git", "hash-object", path], text=True).strip()
-              expected = subprocess.check_output(["git", "rev-parse", candidate + ":" + path], text=True).strip()
-              assert actual == expected, "not committed at candidate " + path
-          lines = ["MCR_COMPLETION_EVIDENCE_BEGIN"]
-          for o in obligations:
-              committed(o["output"])
-              committed(o["evidence"])
-              evidence = {
-                  "id": o["id"], "candidate_sha": candidate, "contract_sha256": digest,
-                  "status": ("INCOMPLETE" if o["id"] == "ZAK00-PARENT-06" else "PASS"),
-                  "grade": ("S0" if o["id"] == "ZAK00-PARENT-06" else "S1"),
-                  "output_file": o["output"], "output_sha256": sha(o["output"]),
-                  "evidence_file": o["evidence"], "evidence_sha256": sha(o["evidence"]),
-              }
-              lines.append("MCR_EVIDENCE: " + json.dumps(evidence, sort_keys=True))
-          coverage = "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/MCRC_DELIVERED_182_IDS.txt"
-          committed(coverage)
-          lines.append("MCR_COVERAGE: " + json.dumps({
-              "candidate_sha": candidate, "contract_sha256": digest,
-              "delivered_ids_file": coverage, "delivered_ids_sha256": sha(coverage),
-          }, sort_keys=True))
-          lines.append("MCR_COMPLETION_EVIDENCE_END")
-          receipt = Path("zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt")
-          receipt.write_text("\n".join(lines) + "\n", encoding="utf-8")
-          print("ZAK00_CANDIDATE_SHA=" + candidate)
-          print("ZAK00_CONTRACT_SHA256=" + digest)
-          print("PARENT_AUTHOR_EVIDENCE_ITEMS=" + str(len(obligations)))
-          print("PARENT_AUTHOR_EVIDENCE_MODE=DOCUMENTARY_23_OF_24_WITH_814_817_AUTHORITY_BLOCKED")
-          PY
+          checker="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py"
+          file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md"
+          mkdir -p zak-mcr-format-receipts
+          python3 "$checker" --generate-author-evidence zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
+            | tee zak-mcr-format-receipts/ZAK00_R4_VERIFIED_AUTHOR_PROOF_INDEX.json
+          python3 "$checker" --audit-evidence zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
+            | tee zak-mcr-format-receipts/ZAK00_R4_AUTHOR_EVIDENCE_AUDIT.json
           set +e
           python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py \
-            WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md \
-            --verify-return zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
-            --candidate-sha "$(git rev-parse HEAD)" \
-            --evidence-root . | tee zak-mcr-format-receipts/ZAK00_PARENT_VERIFY_RETURN.json
-          verdict_exit=$?
+            "$file" --verify-return zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
+            --candidate-sha "$(git rev-parse HEAD)" --evidence-root . \
+            >zak-mcr-format-receipts/ZAK00_R4_OFFICIAL_RETURN.json
+          code=$?
           set -e
           python3 - <<'PY'
           import json
           from pathlib import Path
-          result = json.loads(Path("zak-mcr-format-receipts/ZAK00_PARENT_VERIFY_RETURN.json").read_text())
-          errors = set(result["errors"])
-          expected = {"MCR_C_PROOF_NOT_PASS_ZAK00-PARENT-06",
-                      "MCR_C_INSUFFICIENT_EVIDENCE_GRADE_ZAK00-PARENT-06"}
+          root = Path("zak-mcr-format-receipts")
+          audit = json.loads((root/"ZAK00_R4_AUTHOR_EVIDENCE_AUDIT.json").read_text())
+          assert len(audit["author_executed_pass"]) == 4
+          assert len(audit["independent_pending"]) == 20
+          result = json.loads((root/"ZAK00_R4_OFFICIAL_RETURN.json").read_text())
+          ids = audit["independent_pending"]
+          expected = {prefix + oid for oid in ids for prefix in
+                      ("MCR_C_PROOF_NOT_PASS_", "MCR_C_INSUFFICIENT_EVIDENCE_GRADE_")}
           assert result["status"] == "RED_INCOMPLETE", result
-          assert errors == expected, ("Unexpected error or missing authority refusal", errors)
-          print("PASS_FAIL_CLOSED_MCR_C_PARENT_06_AUTHORITY_UNACKNOWLEDGED")
-          print("PARENT_AUTHOR_CLAIM_CEILING=BLOCKED_EXACT_DEPENDENCY_NOT_READY")
+          assert set(result["errors"]) == expected, (
+              "Unexpected errors or fictitious reviewer PASS", result)
+          print("AUTHOR_EXECUTED_S1=4")
+          print("REVIEWER_CONTROLLED_UNRECEIVED=20")
+          print("PASS_FAIL_CLOSED_EXACT_20_INDEPENDENT_OBLIGATIONS")
+          print("PARENT_CEILING=INCOMPLETE_PENDING_COMPETENT_RECEIVING")
           PY
-          test "$verdict_exit" -eq 2
-          echo "Verified exact SHA-bound 23 source-graded author proofs; PARENT-06 correctly refused."
+          test "$code" -eq 2
+
+      - name: Attack with forged all-green reviewer and authority receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          checker="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py"
+          file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("zak-mcr-format-receipts")
+          src = root/"ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt"
+          dst = root/"FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt"
+          rows = []
+          for line in src.read_text().splitlines():
+              if line.startswith("MCR_EVIDENCE: "):
+                  item = json.loads(line.partition(": ")[2])
+                  if item["status"] == "INCOMPLETE":
+                      item["status"] = "PASS"
+                      item["grade"] = "AUTHORITY" if item["id"] == "ZAK00-PARENT-06" else "S1"
+                  line = "MCR_EVIDENCE: " + json.dumps(item, sort_keys=True)
+              rows.append(line)
+          dst.write_text("\n".join(rows) + "\n")
+          PY
+          # Our guard MUST reject the counterfeit, even when all underlying
+          # committed hashes remain valid and the source-only MCR-C format
+          # checker cannot authenticate a GitHub issue-comment author.
+          set +e
+          python3 "$checker" --audit-evidence \
+            zak-mcr-format-receipts/FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt \
+            > zak-mcr-format-receipts/ZAK00_FORGED_AUTHORITY_GUARD.json 2>&1
+          guard=$?
+          set -e
+          test "$guard" -ne 0
+          grep -q "AUTHOR_FORGED_INDEPENDENT_PASS" \
+            zak-mcr-format-receipts/ZAK00_FORGED_AUTHORITY_GUARD.json
+          set +e
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py \
+            "$file" --verify-return zak-mcr-format-receipts/FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt \
+            --candidate-sha "$(git rev-parse HEAD)" --evidence-root . \
+            >zak-mcr-format-receipts/ZAK00_FORGED_OFFICIAL_STRUCTURAL_ONLY.json
+          structural_exit=$?
+          set -e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("zak-mcr-format-receipts/ZAK00_FORGED_OFFICIAL_STRUCTURAL_ONLY.json").read_text())
+          assert r["status"] == "READY_FOR_INDEPENDENT_RECEIVING", r
+          print("PROVED_OFFICIAL_CHECKER_CANNOT_AUTHENTICATE_ISSUER")
+          print("PROVED_CLAIM_SENSITIVE_GUARD_REJECTS_SAME_FORGED_VECTOR")
+          print("THIS_IS_AN_ADVERSARIAL_FIXTURE_NOT_A_RECEIVING_VERDICT")
+          PY
+          test "$structural_exit" -eq 0
+          # A deliberately fraudulent receipt must NOT be provided as a usable
+          # artifact; only the two diagnostic results are retained.
+          rm -f zak-mcr-format-receipts/FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt
 
       - name: Upload exact formal check receipts, not descendant completion
         if: ${{ always() }}

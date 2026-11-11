@@ -43,3 +43,14 @@ Source-verified formal pre-dispatch checks are not proof that real successor fli
 A handoff becomes qualified **only** if each respective receiving owner authenticates its independent credential and acknowledges the candidate SHA, source/proof grade, explicit bounded intake or refusal, first actual consumer, and non-promotion of source to science/actor authority in its existing receiving surface. Any missing jurisdiction is **`BLOCKED_EXACT_DEPENDENCY`** for ZAK00-PARENT-06, not a vacuous yes. No source-blob/182-ID success or author-written evidence file can substitute.
 
 **#888** remains a separately commissioned genuinely independent reviewer, distinct from the owner acknowledgments required above. Old #884 R2 and same-GitHub-account #890 hostile source probes do not meet that credential. The real reviewer shall compare the corrected parent obligation-to-output map against all twenty-four parent proof criteria and the ninety-four unexecuted successor obligations; no protected merge is authorized.
+
+
+## R4 operative exact-head source of truth and nonauthor authority transition
+
+Do not use any precommit SHA inside this document as the current head. The **sole operative candidate binding** is the GitHub PR #887 live `head.sha` cross-checked against the `candidate_sha`, `GITHUB_RUN_ID`, `contract_sha256`, Git-committed evidence bytes and source blob digest in the most recent R4 completed GitHub Actions run. If they differ, all receiving is `INCOMPLETE_WRONG_HEAD`. This document is a set of immutable handoff *instructions*, not a self-issued SHA statement.
+
+The current author still has no competence to approve any `check_kind=INDEPENDENT` obligation (PARENT-04/05/06, ZAK01–11, and OUTPUT01–04/06/07). A synthetically qualified four-issue test establishes only that the receiving-predicate code has a possible positive eligibility branch. Genuine competence entails authenticated GitHub comments/returns tied to the precise #814–817 issue identities, qualified external account decisions and the **same** candidate SHA, with no direct or delegated `maidiu` self-issuance. Even qualified `ELIGIBLE_FOR_SEPARATE_AUTHORITY_COURT` is not automatically `COMPLETE_AT_CONTRACTED_SCOPE`.
+
+The separate #888 review must confront the present candidate's **ten duplicate-jurisdiction source-meaning mutation**, the apparently credible forged AUTHORITY receipt, and the current-head/stale-old-CI false positive, alongside #890's seven D01–D07 source hazards and 24 parent/94 descendant obligations. Retain the 01/02/03/04/08 parallel rights where separately leased; avoid a global pilot barrier or imagined respondent-native/actor proof.
+
+The commissioning owner must adjudicate whether full four-jurisdiction receiving belongs to parent terminal completion or only its later integrating program; the author cannot silently rewrite the frozen MCR-C outcome to make CI green.
