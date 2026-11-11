@@ -36,6 +36,13 @@ jobs:
           test "$(git rev-parse 094937d3187ed3c2e215fe2c1f7c1c84f50d9006:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/00_COPY_PASTE_LAUNCH.md)" = "b48c6a7f1daf958420c76ae85a11d0b585b0d4bc"
           test "$(git rev-parse acde0e5f614c5bf03b44ccc46df1cd295f97e61d:SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/00E_MECHANISM_II_HISTORICALLY_MEDIATED_USER_GAZE_AND_PHENOMENAL_SURFACE_ARCHITECTURE_20261108_R1.md)" = "618986db6d8910181ca7dd5d1cc39564423b5a94"
           echo BOTH_IMMUTABLE_SOURCE_TUPLES_GIT_VERIFIED
+      - name: Fetch immutably frozen pre-author 54-ID registry and oracle runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 8382651eabc5a7fa6ca0fed3447fa6308b3324fc
+          test "$(git rev-parse 8382651eabc5a7fa6ca0fed3447fa6308b3324fc:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_identities.tsv)" = "a4aa2fafbb19263e3a89de703c8525a765417e95"
+          test "$(git rev-parse 8382651eabc5a7fa6ca0fed3447fa6308b3324fc:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py)" = "0d82d36416834b2bda3b112f9b9dcbf0a475d603"
       - name: Execute actual canonical Python validator on exact whole amended commission
         shell: bash
         run: |
