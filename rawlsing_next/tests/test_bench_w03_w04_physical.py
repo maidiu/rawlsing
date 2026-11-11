@@ -108,6 +108,8 @@ def test_cli_cells_and_hash_uses_same_actual_consumer(tmp_path):
     assert run.get("scenario") == "cells-and-hash"
     assert run["consumer_fact_states"] == ["SUPPORTED", "SUPPORTED"]
     assert run["stages"]["cells"]["cell_count"] == 144
+    assert run["i05_receipt_count"] >= 1
+    assert run["i05_fact_count"] >= 1
 
 
 def test_derived_cache_is_not_canonical_and_corrupt_cache_is_safe_miss(tmp_path):

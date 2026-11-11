@@ -3,11 +3,34 @@ name: PYAT W03-W04 compact and cold C11 first-consumer court
 on:
   pull_request:
     paths:
+      - 'rawlsing_next/_pre553_w03_cold_compact.py'
+      - 'rawlsing_next/_pre553_w04_cache.py'
       - 'rawlsing_next/_pre553_c11_execution_view.py'
+      - 'rawlsing_next/_pre553_query_eval.py'
+      - 'rawlsing_next/_pre553_query_predicate.py'
+      - 'rawlsing_next/pre553_source_backed_c11_facade.py'
+      - 'rawlsing_next/pre553_c11_ingest.py'
+      - 'rawlsing_next/pre553_c11_repository.py'
+      - 'rawlsing_next/pre553_carrier_execution.py'
+      - 'rawlsing_next/pre553_empirical_objects.py'
+      - 'rawlsing_next/pre553_empirical_query.py'
+      - 'rawlsing_next/pre553_parquet_carrier.py'
+      - 'rawlsing_next/pre553_physical_decoder.py'
+      - 'rawlsing_next/bench_w03_w04_physical.py'
       - 'rawlsing_next/tests/test_pre553_c11_execution_view.py'
       - 'rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py'
-      - 'rawlsing_next/bench_w03_w04_physical.py'
+      - 'rawlsing_next/tests/test_pre553_source_backed_c11_facade.py'
+      - 'rawlsing_next/tests/test_pre553_carrier_execution.py'
+      - 'rawlsing_next/tests/test_pre553_i03_grouping.py'
       - 'rawlsing_next/tests/test_bench_w03_w04_physical.py'
+      - 'rawlsing_next/tests/test_bench_w03_w04_physical.py.proof.json'
+      - 'rawlsing_next/tests/test_pre553_w03_w04_cold.py'
+      - 'rawlsing_next/tests/test_pre553_w03_w04_completion.py'
+      - 'PYAT_W03_W04_MCR_C_Commission.md'
+      - 'WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/REQUIRED_OBLIGATIONS.tsv'
+      - 'CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py'
+      - 'CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py'
+      - 'CROSS_HQ_CONTROL_ROOM/test_proof_integrity_gate_r1.py'
       - '.github/workflows/pyat-w03-w04-physical-economy.yml'
   workflow_dispatch:
 
@@ -20,6 +43,9 @@ jobs:
     timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -36,8 +62,19 @@ jobs:
             rawlsing_next/tests/test_pre553_carrier_execution.py \
             rawlsing_next/tests/test_pre553_i03_grouping.py \
             rawlsing_next/tests/test_bench_w03_w04_physical.py \
+            rawlsing_next/tests/test_pre553_w03_w04_cold.py \
+            rawlsing_next/tests/test_pre553_w03_w04_completion.py \
             --junitxml=pyat-w03-w04-sourcefree-junit.xml
-      - name: Sourcefree physical benchmark smoke (not 100k acceptance)
+      - name: Existing proof-integrity changed-range gate
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags origin "$BASE_SHA" "$HEAD_SHA"
+          python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py changed \
+            --root . --base "$BASE_SHA" --head "$HEAD_SHA"
+      - name: Sourcefree physical benchmark 256-row smoke (explicitly not 100k/MCR acceptance)
         env:
           PYTHONPATH: .
         run: |
