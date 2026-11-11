@@ -136,8 +136,8 @@ def actual_baseline():
     # First demonstrate a REAL owned return, then source denial at the
     # original P6/house read boundary and exact restoration of the public view.
     import argparse,tempfile
-    from developmental_recursion.contracts import RecursionRefusal
     modules=import_owners()
+    from developmental_recursion.contracts import RecursionRefusal
     run_p6=importlib.import_module("run_p6")
     house=importlib.import_module("house")
     with tempfile.TemporaryDirectory(prefix="mcr-real-p6-") as td:
