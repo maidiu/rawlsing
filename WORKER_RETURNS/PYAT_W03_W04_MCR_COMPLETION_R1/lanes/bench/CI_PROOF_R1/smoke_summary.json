@@ -1,0 +1,54 @@
+{
+  "acceptance_pass": false,
+  "acceptance_status": "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
+  "final_matrix_eligible": false,
+  "profiles": [
+    "narrow",
+    "wide",
+    "repeat"
+  ],
+  "profiles_result": {
+    "narrow": {
+      "cold": [
+        "SUPPORTED"
+      ],
+      "delete_rebuild": [
+        "SUPPORTED"
+      ],
+      "warm": [
+        "SUPPORTED"
+      ]
+    },
+    "repeat": {
+      "cold": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "delete_rebuild": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "warm": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ]
+    },
+    "wide": {
+      "cold": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "delete_rebuild": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ],
+      "warm": [
+        "SUPPORTED",
+        "SUPPORTED"
+      ]
+    }
+  },
+  "repetitions": 1,
+  "rows": 256,
+  "schema": "PYAT_CI_PROOF_R1_SMOKE_SUMMARY@1"
+}

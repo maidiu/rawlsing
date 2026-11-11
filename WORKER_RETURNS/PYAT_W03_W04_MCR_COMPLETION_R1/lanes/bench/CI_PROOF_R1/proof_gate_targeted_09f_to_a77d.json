@@ -1,0 +1,23 @@
+{
+  "examined_tests": [
+    "rawlsing_next/tests/test_bench_w03_w04_physical.py"
+  ],
+  "witness_contracts_run": 1,
+  "receipts": [
+    {
+      "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+      "status": "MECHANICAL_WITNESS_PASS_NOT_SEMANTIC_ADOPTION",
+      "claims": [
+        {
+          "claim_id": "W03_W04_BENCH_CELLS_ACTUAL_CONSUMER_SEVERANCE_R1",
+          "positive_node": "rawlsing_next/tests/test_bench_w03_w04_physical.py::test_cli_cells_and_hash_uses_same_actual_consumer",
+          "fault_path": "rawlsing_next/_pre553_query_eval.py",
+          "baseline": "PASS",
+          "fault_probe": "TARGET_ASSERTION_FAILED",
+          "grade": "BOUNDED_MUTATION_DETECTED"
+        }
+      ]
+    }
+  ],
+  "state": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION"
+}
