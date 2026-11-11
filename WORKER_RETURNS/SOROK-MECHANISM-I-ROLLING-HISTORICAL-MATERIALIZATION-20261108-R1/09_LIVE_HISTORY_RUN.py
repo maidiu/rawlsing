@@ -60,6 +60,8 @@ def main():
     parser.add_argument("--endpoint", required=True)
     parser.add_argument("--model", required=True)
     parser.add_argument("--key-env", default="SOROK_HISTORY_MODEL_API_KEY")
+    parser.add_argument("--max-output-tokens", type=int, default=8192,
+                        help="Total response bound, including provider reasoning tokens.")
     parser.add_argument("--resume", action="store_true",
                         help="Resume this command's existing durable failed/pending job.")
     args = parser.parse_args()
@@ -78,7 +80,7 @@ def main():
         (args.receipts / "opening.json").write_text(json.dumps(opening, indent=2) + "\n")
     config = ProviderConfig(
         endpoint=args.endpoint, model=args.model, api_key=key,
-        timeout_s=120, max_attempts=1, max_output_tokens=4096,
+        timeout_s=120, max_attempts=1, max_output_tokens=args.max_output_tokens,
     )
     transport = RecordingEndpoint(
         args.endpoint, args.model, api_key=key, timeout_s=120, receipts=args.receipts,

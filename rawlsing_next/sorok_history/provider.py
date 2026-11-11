@@ -382,6 +382,8 @@ def _prompt(packet: Mapping[str, Any]) -> str:
         "    Copy owner-supplied references exactly. Respect the surface and chronology.\n"
         "  - For unresolved physical dimensions, use only allowed_physical_predicates\n"
         "    and the stated value types. Do not repeat already known facts as new depth.\n"
+        "    Keep this call small: at most two new physical facts. Further dimensions\n"
+        "    may remain unresolved for later bounded jobs.\n"
         "  - When the target supplies requested_predicate, propose only that physical predicate.\n"
         "  - Prior actor repairs are contextual precedents only, not parents of this target.\n"
         "  - The root tool baseline is historical context. Preserve the current surface state.\n"
