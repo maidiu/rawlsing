@@ -153,7 +153,7 @@ def test_missing_h1_owner_holds_without_dropping_unrelated_h0(tmp_path, monkeypa
 
 
 @pytest.mark.parametrize("fault", ["actor_effect", "chronology", "institution", "wrong_place",
-                                  "closed_actor_event", "owner_suppressed"])
+                                  "closed_actor_event", "role_kind", "owner_suppressed"])
 def test_h1_negative_group_preserves_independent_physical_fact(tmp_path, monkeypatch, fault):
     fanin, history, book, tool, entities, source_ref = source_world(tmp_path, monkeypatch)
     try:
@@ -170,6 +170,8 @@ def test_h1_negative_group_preserves_independent_physical_fact(tmp_path, monkeyp
             episode["effective_time"] = source_ref["content_hash"]  # Not an integer time.
         elif fault == "institution":
             episode["participants"][1]["ref"] = exact("INSTITUTION", "unadmitted", {})
+        elif fault == "role_kind":
+            episode["participants"][1]["ref"] = episode["actor_refs"][0]
         elif fault == "wrong_place":
             episode["place_ref"] = entities[3]["ref"]
         elif fault == "closed_actor_event":
@@ -549,5 +551,33 @@ def test_idle_is_bounded_coalesces_inspection_and_yields_to_new_causal_work(tmp_
         assert max(counts.values()) == 2
         assert len(calls) <= 2 + 2 * 3
         assert history.enqueue_idle()["status"] == "NO_WORK"
+    finally:
+        fanin.close()
+
+
+def test_provider_timeout_is_durable_instead_of_expiring_its_own_lease(tmp_path, monkeypatch):
+    import asyncio
+    from types import SimpleNamespace
+    from rawlsing_next.sorok_history.provider import ProviderTimeout
+    from rawlsing_next.sorok_history.runtime import run_once
+    from rawlsing_next.sorok_history import owner as owner_module
+    fanin, history, *_ = source_world(tmp_path, monkeypatch)
+    clock = [1000.0]
+    monkeypatch.setattr(owner_module.time, 'time', lambda: clock[0])
+
+    class Provider:
+        config = SimpleNamespace(timeout_s=120, max_attempts=1, retry_delay_s=0)
+
+        async def propose(self, packet):
+            clock[0] += 120
+            raise ProviderTimeout('bounded endpoint timeout', code='TIMEOUT')
+
+    try:
+        result = asyncio.run(run_once(history, Provider()))
+        assert result['status'] == 'FAILED_RETRYABLE'
+        job = history.job(result['job_id'])
+        assert job['failure_code'] == 'TIMEOUT'
+        assert job['provider_receipt']['failure_grade'] == 'TRANSIENT'
+        assert job['expires_at'] > clock[0]
     finally:
         fanin.close()

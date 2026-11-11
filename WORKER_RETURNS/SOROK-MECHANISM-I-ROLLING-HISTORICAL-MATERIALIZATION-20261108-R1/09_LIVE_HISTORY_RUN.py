@@ -42,7 +42,7 @@ class RecordingEndpoint(EndpointModelTransport):
             response = await super().__call__(request)
             record["response"] = response
             return response
-        except Exception as exc:
+        except BaseException as exc:
             # Transport error strings deliberately contain no authorization data.
             record["failure"] = {
                 "type": type(exc).__name__, "code": getattr(exc, "code", None),

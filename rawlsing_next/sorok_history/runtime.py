@@ -6,7 +6,7 @@ from rawlsing_next.sorok_history.owner import HistoryRefusal
 from rawlsing_next.sorok_history.provider import HistoricalModelProviderError
 
 
-async def run_once(history, provider, *, lease_seconds=120, guard=nullcontext):
+async def run_once(history, provider, *, lease_seconds=None, guard=nullcontext):
     """Resume a stored candidate first, or request and admit one new proposal."""
     with guard():
         reconcile = getattr(history, "reconcile_source_holds", None)
@@ -18,6 +18,14 @@ async def run_once(history, provider, *, lease_seconds=120, guard=nullcontext):
         if provider is None:
             return {"status": "LIVE_PROVIDER_NOT_RUN"}
 
+        if lease_seconds is None:
+            config = getattr(provider, "config", None)
+            # Include all configured inference attempts and owner-recording time.
+            # An explicit caller lease remains authoritative for race tests.
+            budget = (getattr(config, "timeout_s", 30) * getattr(config, "max_attempts", 2)
+                      + getattr(config, "retry_delay_s", 0) *
+                      max(0, getattr(config, "max_attempts", 2) - 1))
+            lease_seconds = min(600, max(120, int(budget) + 30))
         leased = history.lease(seconds=lease_seconds)
         if leased is None:
             return None

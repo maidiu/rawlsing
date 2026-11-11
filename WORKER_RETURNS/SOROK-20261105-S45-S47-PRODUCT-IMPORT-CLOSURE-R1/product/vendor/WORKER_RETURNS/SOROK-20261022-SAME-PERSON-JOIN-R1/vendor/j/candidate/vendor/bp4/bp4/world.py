@@ -242,7 +242,10 @@ class WorldState:
             if (set(role) != {"role", "ref"} or role["role"] not in {
                     "PRODUCER", "RECIPIENT", "REPAIRER", "LABOR_PARTICIPANT",
                     "INSTITUTION", "MATERIAL_ACTIVITY"}
-                    or canonical(role["ref"]) not in entities | principals):
+                    or canonical(role["ref"]) not in entities | principals
+                    or (role["ref"].get("kind") !=
+                        (role["role"] if role["role"] in {"INSTITUTION", "MATERIAL_ACTIVITY"}
+                         else "ACTOR"))):
                 raise WorldRefusal("H1_PARTICIPANT_NOT_GRANTED")
         body = {"history_schema": "BP4_EXPERIMENTAL_MATERIAL_EPISODE@1",
                 "root": root, "branch": branch, "policy_hash": policy_hash,
