@@ -221,3 +221,23 @@ PROGRAMMA effect: MI owner/index/ordinary-reader engineering advances at candida
 **Remaining finite authority boundaries:** native H1 source issuance; H2/H3/ADP memory and historically recruited actor meaning; qualified public pre-contact/root admission and all-fork closure; native/human/production acceptance; authorized protected receiving. Existing P3/P6 performed-action continuity and source-qualified state references are positive evidence, not declared absent. The sourcefree engineering is not withheld merely because those separate grants are unissued.
 
 **Completion custody/dedupe:** received `sorok-mi-completion-independent-634b75d-20261111-r1` (exit0, REVISE_EXACT_DEFECT) and `sorok-mi-completion-independent-0b0eb94-closure-r2` (exit0, ACCEPT_SCOPED_SOURCEFREE_ENGINEERING). Any delayed duplicate notification is already consumed custody; it does not launch another MI task. No new controller, timer, global permissions, server or account change was made for this commission.
+
+
+### Fresh-command final runtime proof and reproduction
+
+`attempt-13-fresh-command` runs the same frozen0b0eb94 runtime from an entirely new encounter with the generic source manifest, actual provider and three bounded job services. Exit0,250.262s total. First call timed out and remained FAILED_RETRYABLE with its receipt; the second admitted H1 plus physical condition and ordinary work advanced exactly once; the third admitted further physical work. ACTUAL intervals0→1, **0 inspections at the activity/cold boundary**, graph@2 five edges, exact cold world and target readback. No aggregate input-token estimate is used: per-response reported usage/cost is retained in provider-call-summary.jsonl; timeout usage is NOT_REPORTED.
+
+A subsequent explicit normal P4 inspection exited0 and returned the actual admitted condition fact without L3 lore. An earlier verification invocation mistakenly set optional environment values to invalid empty strings: inspection committed, then optional wake failed. The failed receipt is preserved; normal VIEW recovered without reissuing that action. The later successful inspection has a distinct explicit request ID. No product source was changed to hide the harness error, and these later inspections are never counted inside the earlier zero-inspection activity proof.
+
+From a fresh checkout of the published branch, use the recorded Python, set `SOROK_HISTORY_MODEL_API_KEY` locally, and choose fresh absolute `TASK_STATE`/`TASK_RECEIPTS` paths. The actual primary command is:
+
+```sh
+$PYTHON -B WORKER_RETURNS/SOROK-MECHANISM-I-ROLLING-HISTORICAL-MATERIALIZATION-20261108-R1/09_LIVE_HISTORY_RUN.py \
+  --state "$TASK_STATE" --receipts "$TASK_RECEIPTS" \
+  --endpoint https://opencode.ai/inference/go/openai/v1/chat/completions \
+  --model deepseek-v4.1-flash --reasoning-effort low \
+  --source-manifest WORKER_RETURNS/SOROK-MECHANISM-I-ROLLING-HISTORICAL-MATERIALIZATION-20261108-R1/10_HETEROGENEOUS_SOURCE.json \
+  --jobs 3 --independent
+```
+
+The actual run uses a trusted CA bundle via SSL_CERT_FILE (pip._vendor.certifi); TLS verification is not disabled. The manifest explicitly supplies synthetic source data/rights, never an expected actor answer or native grant. Inspect a chosen visible target afterward through normal `run_p4.py --state "$TASK_STATE" inspect-particular <target-id> --property condition --request-id <distinct-id>`. Keep optional history model variables unset when unconfigured; do not set them to invalid empty explicit settings. Model refusals/unknowns remain real outcomes, not promises that every stochastic invocation is accepted.
