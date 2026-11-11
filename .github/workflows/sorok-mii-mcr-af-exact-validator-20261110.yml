@@ -48,6 +48,17 @@ jobs:
           python3 WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_completion_inventory.py enumerate > /tmp/mii_54_original_ids.txt
           test "$(wc -l < /tmp/mii_54_original_ids.txt)" -eq 54
           python3 WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_completion_inventory.py verify
+      - name: Re-execute 54 frozen oracle vector source and exact executable command preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py --self-test
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_terminal_receiving.py --issued-sha $(git rev-parse HEAD) --preflight
+      - name: Hostile 53-of-54 valid-hash forged return must FAIL against frozen original TSV
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_contract_reduction_attack.py --self-test
       - name: Prove original E1-E10 and 44-case source appendix conserved
         shell: bash
         run: |
