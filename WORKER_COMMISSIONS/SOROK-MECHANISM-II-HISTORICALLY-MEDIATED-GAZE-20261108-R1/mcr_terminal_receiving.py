@@ -30,6 +30,12 @@ def preflight(issued):
             raise RuntimeError("FROZEN_SOURCE_IDENTITY_MISMATCH "+path)
         if path!=CHECKER and run("git","hash-object",path).stdout.strip()!=blob:
             raise RuntimeError("AUTHOR_MODIFIED_FROZEN_TEST_OR_REGISTRY "+path)
+    # Re-issue execution authority from the immutable author commission,
+    # never candidate-edited profiler or full-mission checking scripts.
+    for checked in (BASE+"mcr_terminal_receiving.py",
+                    ACTUAL_CONSUMER_WITNESS,FULL_GATE):
+        if source(checked,issued)!= (ROOT/checked).read_bytes():
+            raise RuntimeError("MCR_CANDIDATE_EDITED_ISSUER_LOCKED_PROOF_EXECUTABLE "+checked)
     original=source(LAUNCH,issued).decode()
     records=[json.loads(x.partition(": ")[2]) for x in original.splitlines() if x.startswith("MCR_OBLIGATION: ")]
     scopes=[json.loads(x.partition(": ")[2]) for x in original.splitlines() if x.startswith("MCR_SCOPE: ")]
