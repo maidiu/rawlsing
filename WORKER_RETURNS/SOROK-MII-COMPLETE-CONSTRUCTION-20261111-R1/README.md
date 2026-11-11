@@ -32,6 +32,8 @@ sourcefree fixtures. Neutral mode is the default. Adaptive mode is explicit and
 only updates from performed `look` actions; system-offered and independently
 chosen targets receive different evidence weight. Exposure records retain the
 full eligible candidate map separately from the selected/offered detail.
+Identical request-ID replay is idempotent; adaptive evidence is applied at most
+once, including after an interrupted profile save and retry.
 
 ## Interfaces
 

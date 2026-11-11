@@ -169,13 +169,16 @@ def test_duplicate_exposure_and_unknown_control_target_are_bounded(tmp_path):
     state = tmp_path / "world"
     _run(state, "new")
     _run(state, "go", target="living room")
+    _run(state, "mii-enable-learning")
     first = _run(state, "look", target="coaster", request_id="duplicate-look")
     profile = _profile(state)
     count = len(profile["exposures"])
+    first_weight = profile["hypotheses"]["coaster"]["weight"]
     ledger = (state / "p4_receipts.json").read_bytes()
     second = _run(state, "look", target="coaster", request_id="duplicate-look")
     assert second["clock"] == first["clock"]
     assert len(_profile(state)["exposures"]) == count
+    assert _profile(state)["hypotheses"]["coaster"]["weight"] == first_weight
     assert (state / "p4_receipts.json").read_bytes() == ledger
     with pytest.raises(RecursionRefusal, match="MII_TARGET_UNKNOWN"):
         _run(state, "mii-learn-label", target="not-an-object", label="invented")
@@ -215,6 +218,38 @@ def test_adaptive_hypotheses_compete_without_overriding_explicit_task(tmp_path):
     assert choice == "sandals"
     assert basis == "ADAPTIVE_HYPOTHESIS"
     assert profile["hypotheses"]["photo"]["weight"] == 3
+
+
+def test_integrated_stale_decay_and_correction_affect_p6_selection(tmp_path):
+    state = tmp_path / "world"
+    _run(state, "new")
+    _run(state, "go", target="living room")
+    _run(state, "mii-enable-learning")
+    _run(state, "look", target="coaster")
+    _run(state, "look", target="photo")
+    profile = _profile(state)
+    profile["mode"] = "ADAPTIVE"
+    profile["learning_enabled"] = True
+    profile["hypotheses"] = {
+        "photo": {"target": "photo", "weight": 2, "observations": 1,
+                  "last_turn": 0, "uncertainty": "HIGH"},
+        "sandals": {"target": "sandals", "weight": 0, "observations": 0,
+                    "last_turn": None, "uncertainty": "LOW"},
+    }
+    mii.save_profile(state / "p6_gaze.json", profile)
+    _run(state, "look", target="sandals")
+    profile = _profile(state)
+    assert profile["hypotheses"]["photo"]["weight"] == 1
+    assert profile["hypotheses"]["sandals"]["weight"] == 2
+    assert _run(state, "view")["detail"] == "A pair of brown sandals lies beneath the shelf."
+
+    profile = _profile(state)
+    profile["hypotheses"]["photo"]["weight"] = 3
+    profile["hypotheses"]["sandals"]["weight"] = 5
+    mii.save_profile(state / "p6_gaze.json", profile)
+    assert _run(state, "mii-correct-attention", target="sandals", weight=0)["weight"] == 0
+    corrected = _run(state, "view")
+    assert corrected["detail"] == "A photograph leans against the wall on the shelf."
 
 
 def test_gallery_fixture_is_not_hardcoded_to_house_objects(tmp_path):
@@ -353,6 +388,7 @@ def test_interrupted_exposure_write_replays_coherently(tmp_path, monkeypatch):
     state = tmp_path / "world"
     _run(state, "new")
     _run(state, "go", target="living room")
+    _run(state, "mii-enable-learning")
     real_save = mii.save_profile
 
     def interrupted(path, profile):
@@ -360,13 +396,17 @@ def test_interrupted_exposure_write_replays_coherently(tmp_path, monkeypatch):
 
     monkeypatch.setattr(mii, "save_profile", interrupted)
     with pytest.raises(RuntimeError, match="injected exposure write failure"):
-        _run(state, "look", target="sandals")
+        _run(state, "look", target="sandals", request_id="retry-look")
     monkeypatch.setattr(mii, "save_profile", real_save)
 
-    view = _run(state, "view")
-    assert view["recognition"]["sandals"]["event_id"]
+    retry = _run(state, "look", target="sandals", request_id="retry-look")
+    assert retry["recognition"]["sandals"]["event_id"]
+    first_weight = _profile(state)["hypotheses"]["sandals"]["weight"]
+    assert first_weight == 2
+    duplicate = _run(state, "look", target="sandals", request_id="retry-look")
+    assert duplicate["clock"] == retry["clock"]
+    assert _profile(state)["hypotheses"]["sandals"]["weight"] == first_weight
     assert (state / "p6_gaze.json").is_file()
-    assert len(json.loads((state / "p6_gaze.json").read_text())["exposures"]) >= 1
 
 
 def test_symbolic_fixture_does_not_infer_status_or_belief(tmp_path):

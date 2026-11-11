@@ -53,6 +53,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
 
             new(state, ledger_file, "recognized_plan", seed=WORKSHOP_SEED, establish=establish_scene)
         ledger = json.loads(ledger_file.read_text())
+        turns_before = len(ledger["turns"])
         if ledger["pending"]:
             raise RecursionRefusal("P4_PENDING_OPERATION_REQUIRES_RECONCILIATION")
         owner = open_owner(state / "actual-p2")
@@ -138,6 +139,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                 cursor = now
         finally:
             owner.close()
+        replayed = len(ledger["turns"]) == turns_before
         latest = ledger["turns"][-1] if ledger["turns"] else None
         event_candidates = None
         boundary = view["invitation"]
@@ -175,6 +177,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
         )
         narration = render(view, [], candidates=event_candidates, boundary=boundary)
         rendered = [{"kind": "event", "event_id": row["event_id"]} for row in narration]
+        exposure_count_before = len(profile["exposures"])
         exposure = mii.record_exposure(
             profile, turn=len(ledger["turns"]), clock=view["clock"],
             available=sorted(objects), candidates=detail_candidates,
@@ -182,8 +185,10 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
             request_id=getattr(args, "request_id", None),
             context={"room": frame["room"], "command": command},
         )
+        exposure_created = len(profile["exposures"]) > exposure_count_before
         if (command == "look" and outcome["performed"]
-                and latest["action"].get("target") == getattr(args, "target", None)):
+                and latest["action"].get("target") == getattr(args, "target", None)
+                and (not replayed or exposure_created)):
             mii.update_attention(
                 profile, target=args.target, prior_offered=prior_offered,
                 command=command, turn=len(ledger["turns"]),

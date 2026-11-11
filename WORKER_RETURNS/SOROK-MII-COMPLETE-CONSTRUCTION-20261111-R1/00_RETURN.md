@@ -21,9 +21,11 @@
   `candidates` map, the actually `offered` detail, `selected`, rendered event
   IDs, selection basis, prior exposure, scope, request ID and policy. Entries
   are append-only in normal operation; duplicate requests do not add a second
-  exposure. Legacy/corrupt/scope-mismatched/hash-tampered profiles reset to
-  neutral without touching world history. Actual P2 fork and interrupted
-  exposure-write replay are exercised.
+  exposure and do not double-count adaptive evidence. Successful replay and
+  interrupted-save retry each apply evidence at most once. Legacy/corrupt/
+  scope-mismatched/hash-tampered profiles reset to neutral without touching
+  world history. Actual P2 fork and interrupted exposure-write replay are
+  exercised.
 - **E4:** recognition is rebuilt from committed user inspections and exact
   object evidence. Persisted `recognized` data is not trusted; forged rows do
   not render as earned. User-taught and corrected labels are separate acquired
@@ -32,6 +34,8 @@
   adaptive mode updates only performed `look` targets, distinguishes previously
   offered from independently chosen targets, keeps competing hypotheses,
   applies simple stale-evidence decay, and supports correction/stop/reset.
+  Stale decay and correction are asserted through the integrated P6 consumer,
+  not only helper calls.
 - **E6:** `SOROK_MII_SURFACE@1` separates mandatory event lines from at most one
   optional detail, records omitted available details, and preserves exact
   accessible speech. No extra model call is added.
@@ -57,7 +61,7 @@
 ## Executed tests
 
 ```text
-test_mii.py                         17 passed in 514.29s
+test_mii.py                         18 passed in 578.27s
 test_house.py                        8 passed in 447.19s
 test_actor_initiative.py + scene     7 passed in 207.30s
 test_actor_initiative_hostile.py    20 passed in 556.50s
@@ -65,13 +69,15 @@ test_recognition_surface.py          5 passed in 253.49s
 test_gaze_proof.py                   1 passed in 88.65s
 ```
 
-The early-review and independent R2 regressions are corrected:
+The early-review, R2 and R3 regressions are corrected:
 - foreign `observer=B` now yields no optional detail for user `U`;
 - forged persisted recognition no longer renders as `COMMITTED_INSPECTION`;
 - an omitted available target gets independent weight `2`; the previously
   offered target gets weight `1`;
 - durable exposure records preserve full `candidates` separately from the
-  actually `offered`/`selected` detail.
+  actually `offered`/`selected` detail;
+- identical duplicate `look` requests no longer increment adaptive evidence a
+  second time; interrupted-save retry applies the missing evidence once.
 
 ## Original 44 mapping
 
@@ -96,14 +102,14 @@ PASS_SCOPED unless marked otherwise. Evidence abbreviations: `MII` =
 | P07 | MII adaptive hypothesis vs explicit `look` task |
 | P08 | MII surface budget/omitted list |
 | P09 | MII omitted available look |
-| G01 | MII offered=1 vs independent=2 |
+| G01 | MII offered=1 vs independent=2; duplicate replay does not double-count |
 | G02 | MII only performed `look` updates; unavailable/unshown no update |
-| G03 | MII correct-attention correction |
+| G03 | MII integrated `mii-correct-attention` then P6 `view` selection change |
 | G04 | GAZE/MII bounded optional selection |
 | G05 | MII surface budget; no corrective detail insertion |
 | G06 | MII omitted available look; existing ingress |
-| G07 | MII prior-offered vs independent evidence |
-| G08 | MII competing adaptive hypotheses |
+| G07 | MII prior-offered vs independent evidence; replay applies at most once |
+| G08 | MII integrated competing hypotheses, stale decay and correction |
 | M01 | MII symbolic fixture: watch identified; no status/desire/vulgar/admirable inference |
 | M02 | MII symbolic fixture: icon detail; no religious-belief assertion |
 | M03 | MII neutral bench/mug practical detail |
@@ -122,7 +128,7 @@ PASS_SCOPED unless marked otherwise. Evidence abbreviations: `MII` =
 | N10 | MII actual P2 fork: parent/child derivative scopes isolated; no cross-branch exposure reuse |
 | T01 | MII measurement provider calls 0; warm p50 2.929 s |
 | T02 | MII cold profile reopen/exposure hash; actual P2 fork scope replay |
-| T03 | MII duplicate request/exposure immutability; interrupted write replay |
+| T03 | MII duplicate request/exposure immutability; interrupted write/retry applies evidence once |
 | T04 | MII taught label vs earned inspection |
 | T05 | MII surface/exposure provenance |
 
