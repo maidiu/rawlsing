@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T01:37:25.522262+00:00",
+  "saved_utc": "2026-11-11T01:41:56.980068+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -10,7 +10,7 @@
       "job": "pyat-w03-w04-mcr-cold-r1",
       "pid": 31018,
       "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "RETURNED_BLOCKED_BAD_ANCHOR__REPAIRED_RESUME_DISPATCHED",
       "live_pid_verified": true,
       "actual_model": {
         "id": "msg_1c83fdceb001vRNv6rYZLkFGye",
@@ -26,7 +26,10 @@
           "completed": 1794361012980
         }
       },
-      "terminal": null,
+      "terminal": {
+        "exit_code": 0,
+        "scope": "Noimplementation; sourceanchoromittedsourcefiles"
+      },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-cold-r1",
       "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-cold-r1.md"
     },
@@ -51,7 +54,8 @@
       },
       "terminal": null,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-persistence-r1",
-      "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-persistence-r1.md"
+      "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-persistence-r1.md",
+      "source_anchor_dependency": "Originalanchorinvalid; do notmodifylivecheckout. Correctsourceanchorprepared; resumeonterminalreturn only."
     },
     {
       "lane": "bench",
@@ -74,11 +78,50 @@
       },
       "terminal": null,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-r1",
-      "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-bench-r1.md"
+      "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-bench-r1.md",
+      "source_anchor_dependency": "Originalanchorinvalid; do notmodifylivecheckout. Correctsourceanchorprepared; resumeonterminalreturn only."
+    },
+    {
+      "lane": "cold",
+      "job": "pyat-w03-w04-mcr-cold-source-repair-r2",
+      "pid": 31897,
+      "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
+      "status": "ACTIVE_VERIFIED_MODEL",
+      "actual_model": {
+        "id": "msg_1c843fea3001KVaV1QDH5Ds6RX",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794361261850,
+          "streamed": 1794361267552,
+          "completed": 1794361268503
+        }
+      },
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-cold-r2",
+      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
     }
   ],
   "parallel_policy": "Threeisolatednonoverlappingcodeleases; oneheavybenchmarkchildatonce; finalpairedmeasurements/reviews onintegratedimmutablecandidate",
   "next_action": "Terminalnotificationintake; repair demonstratedfailure throughsameowner; integrateorthogonalreturns,runall12frozengates andindependentcode/economicreview. No recurringpolling.",
   "goal_complete": false,
-  "original35_science_protected_merge_held": true
+  "original35_science_protected_merge_held": true,
+  "source_anchor_repair": {
+    "corrected_source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc",
+    "integration_repair": "e053f0a0b4eb5a4f340ce669fa89d5ce771884c4",
+    "base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+    "source_diff": [
+      "A\tPYAT_W03_W04_MCR_C_Commission.md",
+      "A\tWORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/REQUIRED_OBLIGATIONS.tsv",
+      "A\tWORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/RUNTIME_SELECTION.json"
+    ],
+    "corrected_file_count": 9576,
+    "cold_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-cold-r2",
+    "cold_branch": "agent/pyat-w03-w04-mcr-cold-r2",
+    "old_worker_worktrees_untouched": true
+  },
+  "goal_wakeups": "PAUSED_BY_USER__TERMINAL_NOTIFICATIONS_ONLY"
 }
