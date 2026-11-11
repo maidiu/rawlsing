@@ -58,6 +58,41 @@ class HistoricalWorld:
     def scope(self):
         return self.session.read_root()["root_hash"], self.session.branch_id
 
+    def _source_event(self, event_id):
+        """The qualified source-read seam, including explicit source unavailability.
+
+        Withholding a source never removes its canonical occurrence or turns
+        unknown into a negative material fact. The persisted negative control
+        is usable only on the TEST_ONLY owner and grants no new access.
+        """
+        world = self.session.world()
+        state = self._state(world)
+        if event_id in state.get("test_only_unavailable_event_sources", {}):
+            return None
+        return self.session.event(event_id)
+
+    def test_withhold_event_source(self, event_id):
+        with self._write() as (world, state):
+            if world.native:
+                raise HistoryRefusal("SOURCE_TEST_CONTROL_NOT_GRANTED")
+            event = self.session.event(event_id)
+            if event is None:
+                raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
+            ref = {"kind": "WORLD_EVENT", "object_id": event_id, "content_hash": event["hash"]}
+            state.setdefault("test_only_unavailable_event_sources", {})[event_id] = ref["content_hash"]
+            return ref
+
+    def test_restore_event_source(self, ref):
+        with self._write() as (world, state):
+            if world.native:
+                raise HistoryRefusal("SOURCE_TEST_CONTROL_NOT_GRANTED")
+            event = self.session.event(ref["object_id"])
+            held = state.get("test_only_unavailable_event_sources", {})
+            if (event is None or event["hash"] != ref["content_hash"]
+                    or held.get(ref["object_id"]) != ref["content_hash"]):
+                raise HistoryRefusal("HISTORICAL_SOURCE_RESTORE_MISMATCH")
+            del held[ref["object_id"]]
+
     def root_tool_baseline(self, location):
         """Read a tool affordance from the existing sealed pre-contact world."""
         store = self.session.product.store
@@ -134,7 +169,7 @@ class HistoricalWorld:
             raise HistoryRefusal("INVALID_SURFACE_PARTICULAR")
 
         with self._write() as (world, state):
-            event = self.session.event(particular.occurrence_id)
+            event = self._source_event(particular.occurrence_id)
             already_bound = self._target_id(state, particular.referent_key) in state["targets"]
             if (
                 event is None
@@ -270,7 +305,7 @@ class HistoricalWorld:
         links = []
         for target_id, link in sorted(indexed.items()):
             target = state["targets"].get(target_id)
-            event = self.session.event(link["event_id"])
+            event = self._source_event(link["event_id"])
             if target is not None and event is not None:
                 actual = self._repair_link(world, target, event)
                 if actual == link:
@@ -285,7 +320,7 @@ class HistoricalWorld:
     def capture_completed_unit(self, event_id, event_hash):
         """Bind one completed output at the resolution of an actual repair event."""
         with self._write() as (world, state):
-            event = self.session.event(event_id)
+            event = self._source_event(event_id)
             if (event is None or event.get("hash") != event_hash
                     or event.get("kind") != "REPAIR" or event["clock"] > world.clock
                     or event not in world.events
@@ -307,6 +342,50 @@ class HistoricalWorld:
     def target(self, target_id):
         state = self._state(self.session.world())
         return deepcopy(state["targets"].get(target_id))
+
+    def configure_experimental_history(self, *, source_event_ref, target_ids,
+                                       entities=(), earliest):
+        """Trusted TEST_ONLY source setup; never called by a candidate or model.
+
+        Normal sessions have no H1 permission. An experimental source author
+        must initialize this bounded policy through the existing world owner;
+        the policy and its source event are subsequently checked on every use.
+        """
+        from bp4.world import WorldRefusal
+        with self._write() as (world, state):
+            if any(ref not in state["targets"] for ref in target_ids):
+                raise HistoryRefusal("H1_SOURCE_TARGET_UNKNOWN")
+            try:
+                policy = world.configure_experimental_history(
+                    root=state["root"], branch=state["branch"],
+                    source_event_ref=source_event_ref, target_ids=list(target_ids),
+                    entities=list(entities), earliest=earliest)
+            except WorldRefusal as exc:
+                raise HistoryRefusal(str(exc)) from exc
+            state["experimental_history_policy_hash"] = policy["hash"]
+            by_target = state.setdefault("experimental_history_policy_by_target", {})
+            for target_id in target_ids:
+                by_target[target_id] = policy["hash"]
+            return policy
+
+    def _history_policy(self, world, state, *, target_id=None, policy_hash=None):
+        from bp4.world import WorldRefusal
+        try:
+            policy_hash = policy_hash or state.get("experimental_history_policy_by_target", {}).get(
+                target_id, state.get("experimental_history_policy_hash"))
+            policy = world.material_history_policy(root=state["root"], branch=state["branch"],
+                                                   policy_hash=policy_hash)
+        except WorldRefusal as exc:
+            if exc.code == "H1_OWNER_NOT_GRANTED":
+                return None
+            raise HistoryRefusal(str(exc)) from exc
+        if any(ref not in state["targets"] for ref in policy["target_ids"]):
+            raise HistoryRefusal("H1_SOURCE_POLICY_BINDING_MISMATCH")
+        parent = policy["source_event_ref"]
+        actual = self._source_event(parent["object_id"])
+        if actual is None or actual.get("hash") != parent["content_hash"]:
+            raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
+        return policy
 
     def target_for_referent(self, referent_key, *, location=None):
         """Resolve exactly one committed target from the owner index."""
@@ -338,6 +417,10 @@ class HistoricalWorld:
                     raise HistoryRefusal("ACTIVITY_REQUIREMENT_CONFLICT")
                 return deepcopy(previous)
             requirements[requirement["id"]] = deepcopy(requirement)
+            job = state["outbox"].get(requirement.get("job_id"))
+            if (job is not None and requirement.get("root") == state["root"]
+                    and requirement.get("branch") == state["branch"]):
+                job["activity_priority_requirement"] = requirement["id"]
             return deepcopy(requirement)
 
     def activity_requirement(self, requirement_id):
@@ -435,7 +518,7 @@ class HistoricalWorld:
                      if job["status"] == "CANDIDATE_READY"), None)
 
     def _prior_repair_context(self, world, state, target):
-        event = self.session.event(target["surface"]["occurrence_id"])
+        event = self._source_event(target["surface"]["occurrence_id"])
         link = self._repair_link(world, target, event) if event is not None else None
         if link is None:
             return []
@@ -447,7 +530,7 @@ class HistoricalWorld:
     def _constraint_packet(self, world, target, job):
         """Assemble a bounded packet exclusively from owner-bound material."""
         surface = target["surface"]
-        event = self.session.event(surface["occurrence_id"])
+        event = self._source_event(surface["occurrence_id"])
         if event is None or event.get("hash") != target["parent_hash"]:
             raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
 
@@ -468,12 +551,11 @@ class HistoricalWorld:
             checksum = digest(body)
             facts.append({**body, "ref": ref("KNOWN_FACT", "surface:" + checksum, checksum)})
         requested = job.get("requested_predicate")
-        if requested is not None:
-            for predicate, row in sorted(target.get("physical_depth", {}).items()):
-                facts.append({
-                    "target_id": target_id, "predicate": predicate, "value": row["value"],
-                    "state": "KNOWN", "ref": ref("FACT", row["id"], digest(row)),
-                })
+        for predicate, row in sorted(target.get("physical_depth", {}).items()):
+            facts.append({
+                "target_id": target_id, "predicate": predicate, "value": row["value"],
+                "state": "KNOWN", "ref": ref("FACT", row["id"], digest(row)),
+            })
         known_refs = [fact["ref"] for fact in facts]
         occurrence = ref("WORLD_EVENT", event["event_id"], event["hash"])
         target_ref = ref("WORLD_TARGET", target_id, digest(target))
@@ -492,7 +574,7 @@ class HistoricalWorld:
             chronology["records"][0]["participants"] = [
                 {"role": link["relation"], "actor_ref": identity},
             ]
-        return {
+        packet = {
             "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
             "request_id": job["id"], "root": root, "branch": branch, "time": world.clock,
             "target_ids": [target_id],
@@ -508,6 +590,8 @@ class HistoricalWorld:
                    if job.get("prior_actor_repairs") else {}),
                 **({"root_tool_baseline": job["root_tool_baseline"]}
                    if job.get("root_tool_baseline") else {}),
+                **({"history_dependency_refs": job["history_dependency_refs"]}
+                   if job.get("history_dependency_refs") else {}),
             }},
             "known_facts": facts,
             "world_refs": [target_ref],
@@ -523,6 +607,57 @@ class HistoricalWorld:
             "world_readset": job["world_readset"],
             "source_limits": ["ACTOR_HISTORY_NOT_ISSUED", "PAST_EVENT_ADMISSION_NOT_ISSUED"],
         }
+        policy = self._history_policy(world, self._state(world), target_id=target_id)
+        if policy is None or target_id not in policy["target_ids"]:
+            packet["source_limits"].append("H1_OWNER_NOT_GRANTED")
+            return packet
+        # This source-authored cohort is bounded; candidates cannot add a target,
+        # principal or permission by mentioning it. No actor-private state enters.
+        state = self._state(world)
+        packet["target_ids"] = list(policy["target_ids"])
+        for other_id in policy["target_ids"]:
+            other = state["targets"][other_id]
+            other_event = self._source_event(other["surface"]["occurrence_id"])
+            if other_event is None or other_event["hash"] != other["parent_hash"]:
+                raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
+            if other_id != target_id:
+                packet["surface"][other_id] = {
+                    "domain": other["surface"]["domain"],
+                    "location": other["surface"]["location"],
+                    "physical": deepcopy(other["surface"]["physical"]),
+                    "known_fact_refs": [], "unresolved": other["surface"]["unresolved"],
+                }
+                packet["world_refs"].append(ref("WORLD_TARGET", other_id, digest(other)))
+            event_ref = ref("WORLD_EVENT", other_event["event_id"], other_event["hash"])
+            if event_ref not in packet["event_refs"]:
+                packet["event_refs"].append(event_ref)
+            for episode in self._qualified_episodes(world, state, other):
+                episode_ref = ref("WORLD_EVENT", episode["event_id"], episode["hash"])
+                if episode_ref not in packet["event_refs"]:
+                    packet["event_refs"].append(episode_ref)
+        source_event_ref = policy["source_event_ref"]
+        packet["event_refs"] = list({digest(r): r for r in
+                                     packet["event_refs"] + [source_event_ref]}.values())
+        actor_ids = {row.get("actor_id") for row in world.actor_state.values()}
+        packet["actor_refs"] = [ref("ACTOR", actor_id,
+                                    digest({"root": root, "actor_id": actor_id}))
+                                 for actor_id in sorted(self.session.read_root()["actor_ids"])
+                                 if actor_id in actor_ids]
+        packet["world_refs"].extend(deepcopy([e["ref"] for e in policy["entities"]]))
+        packet["surface"][target_id]["source_entity_records"] = deepcopy(policy["entities"])
+        packet["authority"].update(
+            policy="BP4_EXPERIMENTAL_MATERIAL_HISTORY_POLICY@1",
+            allowed_H_classes=(["H0", "H1"] if {"provenance", "dependencies"} & set(job["dimensions"])
+                               else ["H0"]), valid_from=policy["window"][0],
+            ref=ref("AUTHORITY", "experimental-world-policy", policy["hash"]))
+        packet["chronology"]["window"] = [policy["window"][0], world.clock]
+        packet["chronology"]["records"] = [
+            {"ref": event_ref, "time": self._source_event(event_ref["object_id"]).get(
+                "body", {}).get("effective_time", self._source_event(event_ref["object_id"])["clock"]),
+             "targets": list(policy["target_ids"])} for event_ref in packet["event_refs"]]
+        packet["source_limits"] = ["EXPERIMENTAL_SOURCEFREE_H1_ONLY", "ACTOR_HISTORY_NOT_ISSUED",
+                                    "SHARED_ROOT_WRITE_NOT_GRANTED", "H2_H3_NOT_GRANTED"]
+        return packet
 
     def lease(self, *, seconds=60, now=None):
         """Acquire one durable attempt, recovering expired attempts on reopen."""
@@ -532,7 +667,10 @@ class HistoricalWorld:
         with self._write() as (world, state):
             jobs = sorted(
                 state["outbox"].values(),
-                key=lambda job: ("inspection_priority_event" not in job, job["status"] == "STALE"),
+                key=lambda job: ("activity_priority_requirement" not in job,
+                                 "inspection_priority_event" not in job,
+                                 job.get("trigger") != "HISTORY_DEPENDENCY",
+                                 job["status"] == "STALE"),
             )
             for job in jobs:
                 if job["status"] == "RUNNING" and job["expires_at"] <= now:
@@ -545,15 +683,16 @@ class HistoricalWorld:
                 target = state["targets"][job["target_id"]]
                 if target["version"] != job["target_version"]:
                     predicate = job.get("requested_predicate")
-                    if predicate is None:
-                        job["status"] = "STALE"
-                        continue
-                    if (predicate in target["surface"]["physical"]
+                    if predicate is not None and (predicate in target["surface"]["physical"]
                             or predicate in target.get("physical_depth", {})):
                         job["status"] = "NO_WORK"
                         continue
                     job["target_version"] = target["version"]
                 if job["status"] == "STALE":
+                    job.setdefault("superseded_payloads", []).append({
+                        "attempt": job["attempt"], "packet": job.get("packet"),
+                        "candidate": job.get("candidate"), "provider_receipt": job.get("provider_receipt"),
+                    })
                     job.setdefault("stale_attempts", []).append({
                         "attempt": job["attempt"], "packet_hash": job["packet_hash"],
                         "provider_receipt": job.pop("provider_receipt", None),
@@ -577,6 +716,7 @@ class HistoricalWorld:
                     self._hold_missing_parent(job)
                     continue
                 job["packet_hash"] = digest(packet)
+                job["packet"] = deepcopy(packet)
                 return deepcopy({"job": job, "target": target, "world_clock": world.clock,
                                  "packet": packet})
         return None
@@ -634,6 +774,266 @@ class HistoricalWorld:
         })
         return deepcopy(job["admission"])
 
+    @staticmethod
+    def _ordered_groups(groups):
+        pending = {group["group_id"]: group for group in groups}
+        ordered = []
+        while pending:
+            ready = [key for key, group in pending.items()
+                     if not set(group["parent_groups"]) & pending.keys()]
+            if not ready:
+                raise HistoryRefusal("HISTORICAL_OWNER_DEPENDENCY_CYCLE")
+            for key in sorted(ready):
+                ordered.append(pending.pop(key))
+        return ordered
+
+    def _admit_episode_group(self, world, state, group, policy_hash):
+        """Delegate objective H1 insertion to the existing BP4 world owner.
+
+        No proposed actor memory, current material effect or arbitrary link is
+        written. All group members validate on a trial world before any event
+        is appended to the existing owner journal.
+        """
+        from bp4.world import WorldRefusal
+        policy = self._history_policy(world, state, policy_hash=policy_hash)
+        if policy is None:
+            raise HistoryRefusal("H1_OWNER_NOT_GRANTED")
+        claims = group["claims"]
+        occurrences = [claim for claim in claims if claim["kind"] == "occurrences"]
+        if (not occurrences or len(occurrences) > 8
+                or any(claim["kind"] != "occurrences" for claim in claims)):
+            raise HistoryRefusal("H1_LINK_OR_EFFECT_OWNER_NOT_GRANTED")
+        trial = deepcopy(world)
+        admitted = []
+        try:
+            for claim in occurrences:
+                event = trial.admit_material_history(
+                    root=state["root"], branch=state["branch"], policy_hash=policy["hash"],
+                    occurrence=claim, dependency_refs=group["parent_refs"])
+                admitted.append(event)
+        except WorldRefusal as exc:
+            raise HistoryRefusal(str(exc)) from exc
+        for event in admitted:
+            if any(row["event_id"] == event["event_id"] for row in world.events):
+                continue
+            world.add_event(event)
+            self.session._append_event(event)  # No actor/user perception is created.
+            for target_id in event["body"]["proposal"]["target_ids"]:
+                target = state["targets"][target_id]
+                target.setdefault("episode_refs", []).append({
+                    "kind": "WORLD_EVENT", "object_id": event["event_id"],
+                    "content_hash": event["hash"]})
+                target["version"] += 1
+        return [{"kind": "WORLD_EVENT", "object_id": row["event_id"],
+                 "content_hash": row["hash"]} for row in admitted]
+
+    def _activate_history_dependencies(self, world, state, source_job, episode_refs):
+        """T2: actual admitted shared episodes activate bounded missing detail.
+
+        Coalesce an unleased T1 obligation rather than minting duplicate work.
+        The canonical target and substantive generation inputs remain independent
+        of user wording, attention and inspection order.
+        """
+        depth = source_job.get("generation_depth", 0) + 1
+        if depth > 2:
+            return []
+        activated = []
+        for event_ref in episode_refs:
+            event = next(row for row in world.events if row["event_id"] == event_ref["object_id"])
+            for target_id in sorted(event["body"]["proposal"]["target_ids"]):
+                if target_id == source_job["target_id"] or len(activated) >= 4:
+                    continue
+                target = state["targets"][target_id]
+                if "physical" not in target["surface"]["unresolved"] or target.get("physical_depth"):
+                    continue
+                existing = next((job for job in state["outbox"].values()
+                                 if job["target_id"] == target_id and job["status"] in {
+                                     "ENQUEUED", "RUNNING", "CANDIDATE_READY", "FAILED_RETRYABLE"}), None)
+                if existing is None:
+                    job_id = "history-job:" + digest([target_id, "HISTORY_DEPENDENCY", target["version"]])
+                    existing = state["outbox"].setdefault(job_id, {
+                        "id": job_id, "target_id": target_id, "status": "ENQUEUED",
+                        "root": state["root"], "branch": state["branch"],
+                        "target_version": target["version"], "parent_hash": target["parent_hash"],
+                        "dimensions": ["physical"], "trigger": "HISTORY_DEPENDENCY"})
+                if existing["status"] == "ENQUEUED" and not existing.get("attempt"):
+                    existing["original_trigger"] = existing["trigger"]
+                    existing.update(trigger="HISTORY_DEPENDENCY", dimensions=["physical"],
+                                    target_version=target["version"])
+                existing["generation_depth"] = depth
+                dependencies = existing.setdefault("history_dependency_refs", [])
+                if event_ref not in dependencies:
+                    dependencies.append(event_ref)
+                activated.append(existing["id"])
+        return sorted(set(activated))
+
+    def _qualified_episodes(self, world, state, target):
+        result = []
+        for ref in target.get("episode_refs", []):
+            event = self._source_event(ref["object_id"])
+            if (event is None or event.get("hash") != ref["content_hash"]
+                    or event not in world.events or event.get("kind") != "HISTORICAL_MATERIAL"):
+                raise HistoryRefusal("HISTORICAL_EPISODE_PARENT_MISSING")
+            body = event["body"]
+            if (body.get("root"), body.get("branch")) != (state["root"], state["branch"]):
+                raise HistoryRefusal("HISTORICAL_EPISODE_SCOPE_MISMATCH")
+            policy = self._history_policy(world, state, policy_hash=body.get("policy_hash"))
+            if policy is None or policy["hash"] != body.get("policy_hash"):
+                raise HistoryRefusal("H1_OWNER_NOT_GRANTED")
+            for parent in body["proposal"].get("causal_parents", []):
+                actual = self._source_event(parent["object_id"])
+                if actual is None or actual.get("hash") != parent["content_hash"]:
+                    raise HistoryRefusal("HISTORICAL_EPISODE_PARENT_MISSING")
+            result.append(event)
+        return result
+
+    def history_graph(self):
+        """Rebuild the bounded bidirectional projection from canonical episodes."""
+        world = self.session.world()
+        state = self._state(world)
+        return self._build_history_graph(world, state)
+
+    def _build_history_graph(self, world, state):
+        edges, episodes = {}, {}
+        for target in state["targets"].values():
+            for event in self._qualified_episodes(world, state, target):
+                episodes[event["event_id"]] = event
+        def add(subject, relation, obj, event):
+            body = {"subject_ref": subject, "relation": relation, "object_ref": obj,
+                    "parent_event_ref": {"kind": "WORLD_EVENT", "object_id": event["event_id"],
+                                         "content_hash": event["hash"]},
+                    "root": state["root"], "branch": state["branch"],
+                    "effective_time": event["body"]["effective_time"],
+                    "grade": "EXPERIMENTAL_SOURCEFREE_OBJECTIVE", "actor_access": "NOT_GRANTED"}
+            stable_key = digest([state["root"], state["branch"], subject["kind"],
+                                 subject["object_id"], relation, obj["kind"],
+                                 obj["object_id"], event["event_id"]])
+            edges[stable_key] = body
+        for event in episodes.values():
+            event_ref = {"kind": "WORLD_EVENT", "object_id": event["event_id"],
+                         "content_hash": event["hash"]}
+            proposal = event["body"]["proposal"]
+            for target_id in proposal["target_ids"]:
+                target = state["targets"][target_id]
+                add({"kind": "WORLD_TARGET", "object_id": target_id,
+                     "content_hash": digest(target)}, "MATERIAL_PARTICIPANT", event_ref, event)
+            for actor in proposal.get("actor_refs", []):
+                add(actor, "OBJECTIVE_PARTICIPANT", event_ref, event)
+            for participant in proposal.get("participants", []):
+                add(participant["ref"], participant["role"], event_ref, event)
+        rows = [dict(edge_id=key, **value) for key, value in sorted(edges.items())]
+        by_node = {}
+        for edge in rows:
+            for ref in (edge["subject_ref"], edge["object_ref"]):
+                by_node.setdefault(ref["object_id"], []).append(edge["edge_id"])
+        return {"schema": "SOROK_HISTORICAL_GRAPH@1", "root": state["root"],
+                "branch": state["branch"], "index_version": digest(rows), "edges": rows,
+                "by_node": {key: sorted(set(value)) for key, value in sorted(by_node.items())}}
+
+    def rebuild_history_index(self):
+        """Disposable projection only; authoritative episodes remain world events."""
+        with self._write() as (world, state):
+            graph = self._build_history_graph(world, state)
+            state["graph_index"] = graph
+            return deepcopy(graph)
+
+    def query_relations(self, object_id, *, consumer="WORLD", max_hops=2):
+        if consumer != "WORLD":
+            return {"status": "HELD", "reason": "HISTORICAL_ACCESS_NOT_GRANTED", "edges": []}
+        if type(max_hops) is not int or not 1 <= max_hops <= 3:
+            raise HistoryRefusal("HISTORICAL_QUERY_BUDGET_INVALID")
+        # Revalidate canonical episode sources before consuming the projection.
+        graph = self.history_graph()
+        indexed = self._state(self.session.world()).get("graph_index")
+        if indexed is not None and indexed != graph:
+            raise HistoryRefusal("HISTORICAL_INDEX_SOURCE_MISMATCH")
+        rows = {edge["edge_id"]: edge for edge in graph["edges"]}
+        frontier, visited, found = {object_id}, set(), {}
+        for _ in range(max_hops):
+            next_frontier = set()
+            edge_ids = {edge for node in frontier for edge in graph["by_node"].get(node, [])}
+            for edge_id in sorted(edge_ids):
+                edge = rows[edge_id]
+                pair = {edge["subject_ref"]["object_id"], edge["object_ref"]["object_id"]}
+                if pair & frontier:
+                    found[edge["edge_id"]] = edge
+                    next_frontier.update(pair - visited)
+            visited.update(frontier)
+            frontier = next_frontier - visited
+        return {"status": "QUALIFIED", "schema": "SOROK_HISTORICAL_RELATIONS@1",
+                "root": graph["root"], "branch": graph["branch"],
+                "index_version": graph["index_version"], "edges": list(found.values()),
+                "actor_knowledge": "NOT_GRANTED", "user_knowledge": "NOT_GRANTED"}
+
+    def qualified_physical_fact(self, target_id, predicate):
+        """Read a committed fact only while every material parent remains valid."""
+        world = self.session.world()
+        state = self._state(world)
+        target = state["targets"].get(target_id)
+        if target is None:
+            raise HistoryRefusal("HISTORICAL_TARGET_UNKNOWN")
+        fact = target.get("physical_depth", {}).get(predicate)
+        if fact is None:
+            return None
+        known = {row["id"]: (owner, row)
+                 for owner in state["targets"].values()
+                 for row in owner.get("physical_depth", {}).values()}
+        def validate(owner, row, visited):
+            if row["id"] in visited or len(visited) >= 8:
+                raise HistoryRefusal("HISTORICAL_FACT_DEPENDENCY_CYCLE")
+            if row.get("target_id") != owner["id"]:
+                raise HistoryRefusal("HISTORICAL_FACT_TARGET_MISMATCH")
+            parent = self._source_event(owner["surface"]["occurrence_id"])
+            if parent is None or parent.get("hash") != owner["parent_hash"]:
+                raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
+            job = state["outbox"].get(row.get("job_id"), {})
+            accepted = {fact_id for group in job.get("admission", {}).get("accepted", [])
+                        for fact_id in group.get("fact_ids", [])}
+            if row["id"] not in accepted:
+                raise HistoryRefusal("HISTORICAL_FACT_NOT_ADMITTED")
+            for source_ref in row.get("owner_dependency_refs", []) + row.get("owner_source_refs", []):
+                if source_ref.get("kind") == "WORLD_EVENT":
+                    source = self._source_event(source_ref["object_id"])
+                    if source is None or source.get("hash") != source_ref["content_hash"]:
+                        raise HistoryRefusal("HISTORICAL_PARENT_MISSING")
+                    if source.get("kind") == "HISTORICAL_MATERIAL":
+                        self._qualified_episodes(world, state, owner)
+            if row.get("historical_parent_refs"):
+                episodes = {e["event_id"]: e for e in self._qualified_episodes(world, state, owner)}
+                for ref in row["historical_parent_refs"]:
+                    episode = episodes.get(ref["object_id"])
+                    if episode is None or episode["hash"] != ref["content_hash"]:
+                        raise HistoryRefusal("HISTORICAL_EPISODE_PARENT_MISSING")
+            for dependency in row.get("dependency_fact_ids", []):
+                pair = known.get(dependency)
+                if pair is None:
+                    raise HistoryRefusal("HISTORICAL_FACT_DEPENDENCY_MISSING")
+                validate(pair[0], pair[1], visited | {row["id"]})
+        validate(target, fact, set())
+        return deepcopy(fact)
+
+    def query_depth(self, target_id, *, consumer="WORLD"):
+        """Typed world-side depth; perceptual and actor access are distinct APIs."""
+        if consumer != "WORLD":
+            return {"schema": "SOROK_HISTORICAL_DEPTH_READ@1", "status": "HELD",
+                    "reason": "HISTORICAL_ACCESS_NOT_GRANTED", "physical": [], "episodes": []}
+        world = self.session.world()
+        state = self._state(world)
+        target = state["targets"].get(target_id)
+        if target is None:
+            raise HistoryRefusal("HISTORICAL_TARGET_UNKNOWN")
+        physical = [self.qualified_physical_fact(target_id, predicate)
+                    for predicate in sorted(target.get("physical_depth", {}))]
+        episodes = self._qualified_episodes(world, state, target)
+        return {"schema": "SOROK_HISTORICAL_DEPTH_READ@1", "status": "QUALIFIED",
+                "root": state["root"], "branch": state["branch"], "target_id": target_id,
+                "target_version": target["version"], "physical": physical,
+                "episodes": [{"kind": "WORLD_EVENT", "object_id": e["event_id"],
+                              "content_hash": e["hash"]} for e in episodes],
+                "actor_knowledge": "NOT_GRANTED", "user_knowledge": "NOT_GRANTED",
+                "readset_hash": digest({"target": target, "episodes": episodes,
+                                        "physical": physical})}
+
     def commit_candidate(self, job_id):
         """Evaluate a current candidate and bind accepted physical facts atomically."""
         from rawlsing_next.sorok_history.admission import evaluate
@@ -667,7 +1067,10 @@ class HistoricalWorld:
 
             result = evaluate(packet, job["candidate"])
             accepted = []
-            held = list(result["held"])
+            held = [dict(row, reason="H1_OWNER_NOT_GRANTED")
+                    if row.get("reason") == "H_CLASS_NOT_ALLOWED"
+                    and row.get("asserted_H_class") == "H1" else row
+                    for row in result["held"]]
             rejected = list(result["rejected"])
             physical = target.get("physical_depth", {}).copy()
             owner_refs = {
@@ -677,7 +1080,9 @@ class HistoricalWorld:
                             + [fact["ref"] for fact in packet["known_facts"]])
             }
             admitted_groups = {}
-            for group in result["accepted_groups"]:
+            admitted_episode_refs = {}
+            followup_jobs = []
+            for group in self._ordered_groups(result["accepted_groups"]):
                 group_id = group["group_id"]
                 claims = group["claims"]
                 parent_groups = group["parent_groups"]
@@ -688,8 +1093,27 @@ class HistoricalWorld:
                         or any(digest(ref) not in owner_refs for ref in parent_refs)):
                     held.append({"group_id": group_id, "reason": "HISTORICAL_PARENT_GROUP_NOT_ADMITTED"})
                     continue
+                if group.get("asserted_H_class") == "H1":
+                    if not {"provenance", "dependencies"} & set(job["dimensions"]):
+                        held.append({"group_id": group_id, "reason": "H1_DIMENSION_NOT_REQUESTED"})
+                        continue
+                    try:
+                        episode_refs = self._admit_episode_group(
+                            world, state, group, packet["authority"]["ref"]["content_hash"])
+                    except HistoryRefusal as exc:
+                        held.append({"group_id": group_id, "reason": str(exc)})
+                        continue
+                    admitted_groups[group_id] = []
+                    admitted_episode_refs[group_id] = episode_refs
+                    owner_refs.update(digest(claim["ref"]) for claim in claims)
+                    accepted.append({"group_id": group_id, "fact_ids": [],
+                                     "event_refs": episode_refs,
+                                     "grade": "EXPERIMENTAL_SOURCEFREE_H1"})
+                    followup_jobs.extend(self._activate_history_dependencies(world, state, job, episode_refs))
+                    continue
                 if not claims or any(
                     claim["kind"] != "facts" or claim.get("predicate") not in PHYSICAL_TYPES
+                    or claim.get("target_id") != target["id"]
                     or "physical" not in job["dimensions"]
                     or (job.get("requested_predicate") is not None
                         and claim.get("predicate") != job["requested_predicate"])
@@ -727,6 +1151,8 @@ class HistoricalWorld:
                             fact_id for parent in parent_groups
                             for fact_id in admitted_groups[parent]
                         }),
+                        "historical_parent_refs": [ref for parent in parent_groups
+                                                   for ref in admitted_episode_refs.get(parent, [])],
                         "job_id": job_id, "group_id": group_id,
                         "evidence_class": "SOURCEFREE_SYNTHETIC_PHYSICAL",
                     }
@@ -737,12 +1163,16 @@ class HistoricalWorld:
                     physical = proposed
                     accepted.append({"group_id": group_id, "fact_ids": group_facts})
                     admitted_groups[group_id] = group_facts
+                    admitted_episode_refs[group_id] = [ref for parent in parent_groups
+                                                       for ref in admitted_episode_refs.get(parent, [])]
                     continue
                 rejected.append({"group_id": group_id, "reason": "PHYSICAL_FACT_CONFLICT_OR_TYPE"})
 
             if physical != target.get("physical_depth", {}):
                 target["physical_depth"] = physical
                 target["version"] += 1
+            if any(row.get("episode_refs") for row in state["targets"].values()):
+                state["graph_index"] = self._build_history_graph(world, state)
             status = ("PARTIAL_HELD" if held or rejected else "INDEX_READY") if accepted else (
                 "SOURCE_HELD" if held else "REJECTED" if rejected else "NO_WORK"
             )
@@ -750,6 +1180,7 @@ class HistoricalWorld:
                 "job_id": job_id, "status": status, "accepted": accepted,
                 "held": held, "rejected": rejected,
                 "world_readset": job["world_readset"], "target_version": target["version"],
+                **({"followup_jobs": sorted(set(followup_jobs))} if followup_jobs else {}),
             })
             return deepcopy(job["admission"])
 
@@ -828,7 +1259,7 @@ class HistoricalWorld:
         session = self.session
         world = session.world()
         state = self._state(world)
-        event = session.event(event_id)
+        event = self._source_event(event_id)
         if (event is None or state.get("inspections", {}).get(event_id) != event["hash"]
                 or event["kind"] != "INSPECT"
                 or event["actor_id"] != session.meta["user_actor"]
@@ -844,9 +1275,10 @@ class HistoricalWorld:
                 raise HistoryRefusal("HISTORICAL_INSPECTION_READSET_MISMATCH")
             parent_ref = fact.get("parent_event_ref")
             if parent_ref is not None:
-                parent = session.event(parent_ref["object_id"])
+                parent = self._source_event(parent_ref["object_id"])
                 if parent is None or parent["hash"] != parent_ref["content_hash"]:
                     raise HistoryRefusal("HISTORICAL_INSPECTION_PARENT_MISMATCH")
+            self.qualified_physical_fact(target["id"], predicate)
             observed.append({"predicate": predicate, "value": fact["value"], "fact_id": fact_id})
         result = {"target_id": target["id"], "observation_id": event_id, "physical": observed}
         if "physical_depth_status" in body:

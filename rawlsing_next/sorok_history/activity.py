@@ -313,6 +313,12 @@ def _admitted_depth(
             or (job.get("admission") or {}).get("status") not in _ADMITTED_JOB_STATUSES
             or fact_id not in _accepted_fact_ids(job)):
         return target, fact, JOB_NOT_ADMITTED
+    try:
+        qualified = history.qualified_physical_fact(target_id, predicate)
+    except ValueError as exc:
+        return target, fact, str(exc)
+    if qualified != fact:
+        return target, fact, FACT_MISMATCH
     return target, fact, None
 
 

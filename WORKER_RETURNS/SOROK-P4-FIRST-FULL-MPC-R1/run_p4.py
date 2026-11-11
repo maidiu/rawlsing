@@ -127,12 +127,21 @@ def surface(owner, ledger):
 def foreground_witness(owner, identity):
     """Bind all foreground and actor state while the history owner advances."""
     session = owner.base_owner.fanin.session
-    world = session.world().snapshot()
+    current_world = session.world()
+    history = HistoricalWorld(session)
+    state = history._state(current_world)
+    hidden_episodes = {event["event_id"]
+                       for target in state["targets"].values()
+                       for event in history._qualified_episodes(current_world, state, target)}
+    world = current_world.snapshot()
     world.pop("hash")
     world["resources"].pop(RESOURCE, None)
+    world["events"] = [event for event in world["events"]
+                       if event["event_id"] not in hidden_episodes]
     return digest({
         "scope": {key: value for key, value in identity.items() if key != "state_hash"},
-        "world": world, "events": session.read_events(),
+        "world": world, "events": [event for event in session.read_events()
+                                    if event.get("event_id") not in hidden_episodes],
         "intervals": session.read_interval_states(), "encounters": session.read_encounters(),
         "psychology_head": owner.store.head(), "config_hash": owner.config_hash,
     })
