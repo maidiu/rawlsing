@@ -1,6 +1,6 @@
 # W03/W04 full-scale native handoff
 
-**Status:** `LAUNCH_PREPARED_PENDING_DURABLE_HANDOFF` — no measurement or acceptance is claimed.
+**Status:** `DURABLE_HANDOFF_ACTIVE` — real baseline child launched; measurements incomplete; no acceptance is claimed.
 
 **Candidate/execution cut:** `e06b5037846c2662e0f8500f391da4dc56364a5f`
 **Protected baseline:** `4f3413fc5c37b589be3412f826bf8f68ee617d4a`
