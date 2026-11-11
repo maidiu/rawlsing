@@ -1,0 +1,29 @@
+{
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-required-evidence-auth-resume-r2/completion.json",
+  "exit_code": 0,
+  "author_commit": "e6678c8b83d416535d20130b980b981b5d3ecdec",
+  "remote_verified": true,
+  "actual_model": {
+    "id": "deepseek-v4.1-flash",
+    "providerID": "opencode-go",
+    "variant": "max"
+  },
+  "integration": "8d35abafeccce6f1b700fa5e2166bb60563683e2",
+  "execution_cut": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+  "source_test_workflow_equivalence": "git diff --quiet execution_cut HEAD -- rawlsing_next CROSS_HQ_CONTROL_ROOM .github/workflows exit0",
+  "verified_junit": {
+    "cases": 99,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "proof_witnesses": 2,
+  "output_documents": 12,
+  "scale_receipts_absent": [
+    "proof_02_cold_rss.json",
+    "proof_03_cost_comparison.json",
+    "proof_10_resource_matrix.json"
+  ],
+  "disposition": "Requiredpreparationretainedatdemonstratedsourcefreeexecution; independent/economic/fullscaleacceptancepending",
+  "goal_complete": false
+}
