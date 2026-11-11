@@ -1,0 +1,24 @@
+{
+  "schema": "PYAT_W03_W04_ONE_PASS_PILOT_QUEUE_R1",
+  "policy": "one baseline and one candidate per operation/profile; no automatic repetitions; one heavy child at a time",
+  "first_pair": {
+    "case": "cold/narrow",
+    "status": "ACTIVE_FIRST_PAIR",
+    "rows": 100000,
+    "repetitions": 1,
+    "baseline": "fresh protected-4f narrow cold",
+    "candidate": "current qualified source narrow cold",
+    "baseline_external_receipt_required_before_candidate": true
+  },
+  "remaining_pairs": [
+    {"case": "cold/wide", "status": "PENDING"},
+    {"case": "cold/repeat", "status": "PENDING"},
+    {"case": "full-matrix/narrow", "status": "PENDING"},
+    {"case": "full-matrix/wide", "status": "PENDING"},
+    {"case": "full-matrix/repeat", "status": "PENDING"},
+    {"case": "cells-and-hash/narrow", "status": "PENDING"},
+    {"case": "cells-and-hash/wide", "status": "PENDING"}
+  ],
+  "full_one_pass_note": "The queue is finite and each pending item is a separate baseline/candidate pair; no full queue is launched before the first comparison handoff.",
+  "acceptance_ceiling": "PILOT_ONLY; final 3-run/economic/full-12-ID receiving not claimed"
+}
