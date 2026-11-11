@@ -1,0 +1,38 @@
+name: PYAT W03-W04 MCR-C pre-dispatch source-and-contract validation
+on:
+  pull_request:
+    paths:
+      - 'WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/**'
+      - '.github/workflows/pyat-w03-w04-mcr-commission-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mcr-contract-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch exact existing candidate source
+        run: git fetch origin 46b7325637e68f78ccc7487d4b1abc7009c5ac0b --no-tags
+      - name: Execute existing MCR-C launch validator and Git blob checks
+        run: |
+          python3 CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py \
+            WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/01_COPY_PASTE_LAUNCH.md
+      - name: Verify precommitted twelve-identity acceptance universe
+        run: |
+          python3 - <<'PY'
+          import csv, io, json, pathlib, re, subprocess
+          p=pathlib.Path('WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/01_COPY_PASTE_LAUNCH.md')
+          s=p.read_text(encoding='utf-8')
+          source='5a891a311c70f4cb8c09864008b33405362f7c7c:WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/REQUIRED_OBLIGATIONS.tsv'
+          registry=subprocess.check_output(['git','show',source],text=True)
+          ids=[row['id'] for row in csv.DictReader(io.StringIO(registry),delimiter='\t')]
+          claimed=[json.loads(x)['id'] for x in re.findall(r'(?m)^MCR_OBLIGATION: (.*)$',s)]
+          assert len(ids)==12 and len(set(ids))==12,('registry',ids)
+          assert len(claimed)==12 and len(set(claimed))==12,('contract',claimed)
+          assert set(ids)==set(claimed),('missing',set(ids)-set(claimed),'extra',set(claimed)-set(ids))
+          print('MCR_C_12_IDENTITY_SET_EXACT_PASS')
+          PY
