@@ -148,7 +148,8 @@ class WorldState:
                 "root": root, "branch": branch, "source_event_ref": source_event_ref,
                 "target_ids": sorted(target_ids), "entities": allowed_entities,
                 "window": [earliest, self.clock], "allowed_H_classes": ["H0", "H1"],
-                "actor_effects": False, "shared_root_write": False}
+                "actor_effects": False, "shared_root_write": False,
+                "historical_support_rule": "NOT_AFTER_EFFECTIVE_TIME"}
         policy = seal(body)
         registry = self.resources.get(HISTORY_POLICY_SLOT, {})
         if registry.get("schema") == body["schema"]:
@@ -176,6 +177,14 @@ class WorldState:
                    for e in self.events):
             raise WorldRefusal("H1_POLICY_PARENT_MISSING")
         return deepcopy(policy)
+
+    @staticmethod
+    def material_history_effective_time(event):
+        # Canonical material episodes are appended now but describe a separately
+        # admitted past time. Their admission clock is not their causal date.
+        stamp = (event.get("body", {}).get("effective_time")
+                 if event.get("kind") == "HISTORICAL_MATERIAL" else event.get("clock"))
+        return stamp if type(stamp) is int and stamp <= event["clock"] else None
 
     def admit_material_history(self, *, root: str, branch: str, policy_hash: str,
                                 occurrence: dict, dependency_refs: list[dict]) -> dict:
@@ -214,9 +223,25 @@ class WorldState:
         parents = occurrence.get("causal_parents", [])
         if not parents or not all(any(e["event_id"] == p.get("object_id")
                                       and e["hash"] == p.get("content_hash")
-                                      and e["clock"] <= effective for e in self.events)
+                                      and self.material_history_effective_time(e) is not None
+                                      and self.material_history_effective_time(e) <= effective
+                                      for e in self.events)
                                   for p in parents):
             raise WorldRefusal("H1_CAUSAL_PARENT_NOT_GRANTED")
+        # This experimental ABI treats source_refs as historical support, not
+        # retrospective testimony. Present appearance remains binding packet
+        # context/readset, but cannot masquerade as earlier support evidence.
+        for ref in occurrence.get("source_refs", []):
+            actual = next((event for event in self.events
+                           if event["event_id"] == ref.get("object_id")
+                           and event["hash"] == ref.get("content_hash")), None)
+            if (ref.get("kind") != "WORLD_EVENT" or actual is None
+                    or actual["kind"] not in {"ARRIVAL", "MOVE", "APPROACH", "REPAIR",
+                                              "OFFSCREEN_REPAIR", "HISTORICAL_MATERIAL"}):
+                raise WorldRefusal("H1_SOURCE_NOT_GRANTED")
+            stamp = self.material_history_effective_time(actual)
+            if stamp is None or stamp > effective:
+                raise WorldRefusal("H1_SOURCE_AFTER_EFFECTIVE_TIME")
         entities = {canonical(e["ref"]) for e in policy["entities"]}
         places = {canonical(e["ref"]) for e in policy["entities"] if e["ref"]["kind"] == "PLACE"}
         if canonical(occurrence.get("place_ref")) not in places:

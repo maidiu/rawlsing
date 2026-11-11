@@ -24,7 +24,7 @@ from rawlsing_next.sorok_history.admission import SCHEMA as ADMISSION_PACKET_SCH
 
 PROVIDER_CONTRACT_ID = "SOROK_HISTORICAL_MODEL_PROVIDER@1"
 RECEIPT_SCHEMA = "SOROK_HISTORICAL_MODEL_RECEIPT@1"
-PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@10"
+PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@11"
 
 LIVE_PROVIDER_NOT_RUN = "LIVE_PROVIDER_NOT_RUN"
 GRADE_NONE = "NONE"
@@ -387,6 +387,8 @@ def _prompt(packet: Mapping[str, Any]) -> str:
         "    and their typed participants; never invent fact_index link records.\n"
         "  - Each dependency has group_id, parent_refs, parent_groups and asserted_H_class.\n"
         "    Copy owner-supplied references exactly. Respect the surface and chronology.\n"
+        "    H1 historical source_refs and causal parents must not postdate effective_time;\n"
+        "    later appearance may constrain generation but is not earlier support evidence.\n"
         "  - For unresolved physical dimensions, use only allowed_physical_predicates\n"
         "    and the stated value types. Do not repeat already known facts as new depth.\n"
         "    Keep this call small: at most two new physical facts. Further dimensions\n"

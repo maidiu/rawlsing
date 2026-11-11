@@ -810,7 +810,8 @@ class HistoricalWorld:
                 "body", {}).get("effective_time", self._source_event(event_ref["object_id"])["clock"]),
              "targets": list(policy["target_ids"])} for event_ref in packet["event_refs"]]
         packet["source_limits"] = ["EXPERIMENTAL_SOURCEFREE_H1_ONLY", "ACTOR_HISTORY_NOT_ISSUED",
-                                    "SHARED_ROOT_WRITE_NOT_GRANTED", "H2_H3_NOT_GRANTED"]
+                                    "SHARED_ROOT_WRITE_NOT_GRANTED", "H2_H3_NOT_GRANTED",
+                                    "H1_HISTORICAL_SUPPORT_NOT_AFTER_EFFECTIVE_TIME"]
         return packet
 
     def lease(self, *, seconds=60, now=None):
@@ -1023,24 +1024,48 @@ class HistoricalWorld:
         return sorted(set(activated))
 
     def _qualified_episodes(self, world, state, target):
-        result = []
-        for ref in target.get("episode_refs", []):
+        owned = {(ref["object_id"], ref["content_hash"])
+                 for row in state["targets"].values() for ref in row.get("episode_refs", [])}
+        frame = getattr(self, "_reading", None)
+        memo = frame.setdefault("qualified_episodes", {}) if frame is not None else {}
+
+        def qualify(ref, trail):
+            key = (ref["object_id"], ref["content_hash"])
+            if key in trail or len(trail) >= 8:
+                raise HistoryRefusal("HISTORICAL_EPISODE_DEPENDENCY_BUDGET")
+            if key in memo:
+                return memo[key]
             event = self._source_event(ref["object_id"])
             if (event is None or event.get("hash") != ref["content_hash"]
                     or event not in world.events or event.get("kind") != "HISTORICAL_MATERIAL"):
                 raise HistoryRefusal("HISTORICAL_EPISODE_PARENT_MISSING")
+            if key not in owned:
+                raise HistoryRefusal("HISTORICAL_EPISODE_SOURCE_NOT_OWNED")
             body = event["body"]
             if (body.get("root"), body.get("branch")) != (state["root"], state["branch"]):
                 raise HistoryRefusal("HISTORICAL_EPISODE_SCOPE_MISMATCH")
             policy = self._history_policy(world, state, policy_hash=body.get("policy_hash"))
             if policy is None or policy["hash"] != body.get("policy_hash"):
                 raise HistoryRefusal("H1_OWNER_NOT_GRANTED")
-            for parent in body["proposal"].get("causal_parents", []):
-                actual = self._source_event(parent["object_id"])
-                if actual is None or actual.get("hash") != parent["content_hash"]:
-                    raise HistoryRefusal("HISTORICAL_EPISODE_PARENT_MISSING")
-            result.append(event)
-        return result
+            for field in ("causal_parents", "source_refs"):
+                for source in body["proposal"].get(field, []):
+                    actual = self._source_event(source["object_id"])
+                    if (source.get("kind") != "WORLD_EVENT" or actual is None
+                            or actual.get("hash") != source["content_hash"]):
+                        raise HistoryRefusal("HISTORICAL_EPISODE_PARENT_MISSING")
+                    if (field == "source_refs" and actual["kind"] not in {
+                            "ARRIVAL", "MOVE", "APPROACH", "REPAIR", "OFFSCREEN_REPAIR",
+                            "HISTORICAL_MATERIAL"}):
+                        raise HistoryRefusal("HISTORICAL_EPISODE_SOURCE_MISSING")
+                    stamp = world.material_history_effective_time(actual)
+                    if stamp is None or stamp > body["effective_time"]:
+                        raise HistoryRefusal("HISTORICAL_EPISODE_SOURCE_AFTER_EVENT")
+                    if actual["kind"] == "HISTORICAL_MATERIAL":
+                        qualify(source, trail | {key})
+            memo[key] = event
+            return event
+
+        return [qualify(ref, set()) for ref in target.get("episode_refs", [])]
 
     @_scoped_read
     def history_graph(self):
@@ -1077,12 +1102,16 @@ class HistoricalWorld:
                 add(actor, "OBJECTIVE_PARTICIPANT", event_ref, event)
             for participant in proposal.get("participants", []):
                 add(participant["ref"], participant["role"], event_ref, event)
+            for parent in proposal.get("causal_parents", []):
+                add(event_ref, "CAUSAL_PARENT", parent, event)
+            for support in proposal.get("source_refs", []):
+                add(event_ref, "HISTORICAL_SUPPORT", support, event)
         rows = [dict(edge_id=key, **value) for key, value in sorted(edges.items())]
         by_node = {}
         for edge in rows:
             for ref in (edge["subject_ref"], edge["object_ref"]):
                 by_node.setdefault(ref["object_id"], []).append(edge["edge_id"])
-        return {"schema": "SOROK_HISTORICAL_GRAPH@1", "root": state["root"],
+        return {"schema": "SOROK_HISTORICAL_GRAPH@2", "root": state["root"],
                 "branch": state["branch"], "index_version": digest(rows), "edges": rows,
                 "by_node": {key: sorted(set(value)) for key, value in sorted(by_node.items())}}
 
@@ -1102,8 +1131,13 @@ class HistoricalWorld:
         # Revalidate canonical episode sources before consuming the projection.
         graph = self.history_graph()
         indexed = self._state(self._read_world()).get("graph_index")
-        if indexed is not None and indexed != graph:
+        if (indexed is not None and indexed != graph
+                and indexed.get("schema") != "SOROK_HISTORICAL_GRAPH@1"):
             raise HistoryRefusal("HISTORICAL_INDEX_SOURCE_MISMATCH")
+        # The known v1 participant-only projection is disposable. This v2 read
+        # uses the fully revalidated canonical rebuild above, never old edges.
+        # Unknown/current-schema disagreement still refuses; the existing
+        # rebuild_history_index owner operation can persist the new projection.
         rows = {edge["edge_id"]: edge for edge in graph["edges"]}
         if object_id not in graph["by_node"]:
             return {"status": "UNKNOWN", "reason": "NO_QUALIFIED_RELATION_YET",

@@ -630,3 +630,79 @@ def test_same_appearance_permits_distinct_pasts_without_private_meaning(tmp_path
             opened.close()
     assert results[0][0] == results[1][0]
     assert results[0][1] != results[1][1]
+
+
+
+def test_later_admitted_past_uses_effective_parent_time_and_causal_index(tmp_path, monkeypatch):
+    fanin, h, book, tool, entities, parent = source_world(tmp_path, monkeypatch)
+    try:
+        leased = h.lease()
+        first = commit(h, leased, candidate(leased, book, tool, entities, parent))
+        assert first['status'] == 'INDEX_READY', first
+        previous = h.target(book['id'])['episode_refs'][0]
+        prior = fanin.session.event(previous['object_id'])
+        assert prior['clock'] > prior['body']['effective_time']
+        third = h.admit_surface(SurfaceParticular(
+            book['surface']['occurrence_id'], 'source:derived-archive-item', 'collection',
+            book['surface']['location'], {'condition': 'used'}, ('provenance',)))
+        h.configure_experimental_history(source_event_ref=parent,
+            target_ids=[book['id'], tool['id'], third['id']], entities=entities,
+            earliest=fanin.session.events()[0]['clock'])
+        # Service the already activated physical-only obligation with its
+        # actual historical parent; do not duplicate it or grant it H1 rights.
+        for _ in range(2):
+            leased = h.lease()
+            if leased['job']['target_id'] == third['id']:
+                break
+            fact = {'dependency_group': 'linked-physical', 'asserted_H_class': 'H0',
+                'target_id': leased['job']['target_id'], 'predicate': 'texture',
+                'value': 'smooth', 'effective_time': leased['packet']['time']}
+            fact['ref'] = exact('FACT', 'linked-texture', fact)
+            physical = commit(h, leased, {'request_id': leased['packet']['request_id'],
+                'facts': [fact], 'occurrences': [], 'links': [],
+                'dependencies': [{'group_id': 'linked-physical', 'asserted_H_class': 'H0',
+                                  'parent_refs': [previous], 'parent_groups': []}]})
+            assert physical['status'] == 'INDEX_READY'
+        assert leased['job']['target_id'] == third['id']
+        episode = {'dependency_group': 'later-past', 'asserted_H_class': 'H1',
+            'effective_time': prior['body']['effective_time'] + 1,
+            'target_ids': [third['id']], 'action': 'PRODUCTION', 'effects': [],
+            'actor_refs': [], 'place_ref': entities[2]['ref'],
+            'causal_parents': [previous], 'source_refs': [previous],
+            'participants': [{'role': 'INSTITUTION', 'ref': entities[0]['ref']}]}
+        episode['ref'] = exact('OCCURRENCE', 'derived-past', episode)
+        result = commit(h, leased, {'request_id': leased['packet']['request_id'],
+            'facts': [], 'occurrences': [episode], 'links': [],
+            'dependencies': [{'group_id': 'later-past', 'asserted_H_class': 'H1',
+                              'parent_refs': [previous], 'parent_groups': []}]})
+        assert result['status'] == 'INDEX_READY'
+        relations = h.query_relations(previous['object_id'])
+        assert {'CAUSAL_PARENT', 'HISTORICAL_SUPPORT'} <= {
+            edge['relation'] for edge in relations['edges']}
+        assert h.query_depth(third['id'])['episodes']
+        second = h.target(third['id'])['episode_refs'][0]
+        fourth = h.admit_surface(SurfaceParticular(
+            book['surface']['occurrence_id'], 'source:second-derived-item', 'item',
+            book['surface']['location'], {'condition': 'used'}, ('provenance',)))
+        h.configure_experimental_history(source_event_ref=parent,
+            target_ids=[book['id'], tool['id'], third['id'], fourth['id']], entities=entities,
+            earliest=fanin.session.events()[0]['clock'])
+        leased = h.lease()
+        assert leased['job']['target_id'] == fourth['id']
+        last = {**episode, 'dependency_group': 'last-past',
+                'target_ids': [fourth['id']], 'effective_time': episode['effective_time'] + 1,
+                'causal_parents': [second], 'source_refs': [second]}
+        last['ref'] = exact('OCCURRENCE', 'last-past', {k: v for k, v in last.items() if k != 'ref'})
+        result = commit(h, leased, {'request_id': leased['packet']['request_id'],
+            'facts': [], 'occurrences': [last], 'links': [],
+            'dependencies': [{'group_id': 'last-past', 'asserted_H_class': 'H1',
+                              'parent_refs': [second], 'parent_groups': []}]})
+        assert result['status'] == 'INDEX_READY'
+        before = h.query_depth(fourth['id'])
+        withheld = h.test_withhold_event_source(previous['object_id'])
+        with pytest.raises(HistoryRefusal, match='HISTORICAL_EPISODE_PARENT_MISSING'):
+            h.query_depth(fourth['id'])  # Source invalidation traverses the actual parents.
+        h.test_restore_event_source(withheld)
+        assert h.query_depth(fourth['id']) == before
+    finally:
+        fanin.close()
