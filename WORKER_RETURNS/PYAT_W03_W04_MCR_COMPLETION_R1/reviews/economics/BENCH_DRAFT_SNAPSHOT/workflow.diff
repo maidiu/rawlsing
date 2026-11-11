@@ -1,0 +1,40 @@
+diff --git a/.github/workflows/pyat-w03-w04-physical-economy.yml b/.github/workflows/pyat-w03-w04-physical-economy.yml
+index e77b8e548..a12f5dcde 100644
+--- a/.github/workflows/pyat-w03-w04-physical-economy.yml
++++ b/.github/workflows/pyat-w03-w04-physical-economy.yml
+@@ -6,6 +6,8 @@ on:
+       - 'rawlsing_next/_pre553_c11_execution_view.py'
+       - 'rawlsing_next/tests/test_pre553_c11_execution_view.py'
+       - 'rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py'
++      - 'rawlsing_next/bench_w03_w04_physical.py'
++      - 'rawlsing_next/tests/test_bench_w03_w04_physical.py'
+       - '.github/workflows/pyat-w03-w04-physical-economy.yml'
+   workflow_dispatch:
+ 
+@@ -33,10 +35,26 @@ jobs:
+             rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+             rawlsing_next/tests/test_pre553_carrier_execution.py \
+             rawlsing_next/tests/test_pre553_i03_grouping.py \
++            rawlsing_next/tests/test_bench_w03_w04_physical.py \
+             --junitxml=pyat-w03-w04-sourcefree-junit.xml
++      - name: Sourcefree physical benchmark smoke (not 100k acceptance)
++        env:
++          PYTHONPATH: .
++        run: |
++          python -m rawlsing_next.bench_w03_w04_physical \
++            --scenario full-matrix --profiles narrow,wide,repeat \
++            --rows 256 --repetitions 1 \
++            --root pyat-w03-w04-benchmark-cache \
++            --jsonpath pyat-w03-w04-benchmark-smoke.json
+       - uses: actions/upload-artifact@v4
+         if: always()
+         with:
+           name: pyat-w03-w04-sourcefree-junit
+           path: pyat-w03-w04-sourcefree-junit.xml
+           if-no-files-found: error
++      - uses: actions/upload-artifact@v4
++        if: always()
++        with:
++          name: pyat-w03-w04-benchmark-smoke
++          path: pyat-w03-w04-benchmark-smoke.json
++          if-no-files-found: error

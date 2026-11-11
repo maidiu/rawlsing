@@ -1,0 +1,57 @@
+{
+  "source_review": "8992151d0150185d5ed4ffe5bb866329fb924b2b",
+  "existing_repair": "pyat-w03-w04-mcr-bench-coupled-method-repair-r2",
+  "requirements": [
+    {
+      "finding_id": "ECON-M1",
+      "title": "W03 cold scenario includes W04 Parquet persist, so the reported cold peak is contaminated by cache write memory",
+      "minimal_owner_action": "Make --scenario cold a no-persist cold build or capture and use a pre-persist peak through first I03/I05; keep persistence in full-matrix/separate stage and report both peaks; add a test that cold does not call ParquetC11Carrier.persist (or that W03 uses only the pre-persist peak), and that a compact-only change with unchanged pre-persist peak cannot pass.",
+      "scope": [
+        "W03-COLD-HIGHWATER",
+        "W34-RESOURCE-ECONOMY"
+      ],
+      "acceptance_effect": "Blocks W03/W34 receiving until fixed and rerun at exact 100k."
+    },
+    {
+      "finding_id": "ECON-M2",
+      "title": "Stage RSS is cumulative process high-water, not a stage peak; projection/object/hash are not actually measured",
+      "minimal_owner_action": "Record stage entry/exit current RSS and a true per-stage peak (sampling or isolated child); keep process_ru_maxrss separate; measure actual projection or label it combined with profile setup; add a regression test where a post-high-water allocation changes only the stage peak.",
+      "scope": [
+        "W03-COLD-HIGHWATER"
+      ],
+      "acceptance_effect": "Blocks W03 receiving until stage peaks are real."
+    },
+    {
+      "finding_id": "ECON-M3",
+      "title": "6 GiB cap is installed after profile/cell construction, and the author 100k receipt reports cap_enforced false",
+      "minimal_owner_action": "Set the limit before profile/cell construction, ideally in a small launcher before bench imports/data construction; record enforcement as a precondition of every run; if the platform cannot enforce it, emit BLOCKED_EXACT_DEPENDENCY; add a low-cap over-limit test.",
+      "scope": [
+        "W03-COLD-HIGHWATER",
+        "W34-RESOURCE-ECONOMY"
+      ],
+      "acceptance_effect": "Blocks any 100k acceptance claim until the cap is effective and recorded."
+    },
+    {
+      "finding_id": "ECON-M4",
+      "title": "Cold-only baseline pairing crashes; baseline identity and the 15%/90%/10%-RSS/retention gates are not enforced",
+      "minimal_owner_action": "Fix the cold-only lookup; bind the baseline to protected 4f3413fc, same rows/profiles/repetitions/host, exact command and output hash; compare stage and aggregate values; hard-fail nonzero on NO_BASELINE/mismatch/unmet 15% RSS, >10% RSS regression, or >90% warm restart wall; add explicit retention; test cold-only baseline, no baseline, wrong rows/host, and threshold failure.",
+      "scope": [
+        "W03-COLD-HIGHWATER",
+        "W34-RESOURCE-ECONOMY"
+      ],
+      "acceptance_effect": "Blocks W03/W34 receiving; final same-HQ-SHA 100k 3-repeat receipt required."
+    },
+    {
+      "finding_id": "ECON-M5",
+      "title": "Source-open and repeat/retention economics are asserted rather than measured",
+      "minimal_owner_action": "Instrument actual source opens or emit explicit NOT_APPLICABLE__SOURCEFREE_SYNTHETIC_STREAM; count cache reads/writes and run at least two fresh-process warm restarts from the same persisted cache; compute amortization from actual uses/bytes; add a nonbeneficial persist case and an explicit retention decision with a test.",
+      "scope": [
+        "W34-RESOURCE-ECONOMY"
+      ],
+      "acceptance_effect": "W34 repeat/retention evidence is incomplete; no whole W34 acceptance."
+    }
+  ],
+  "scope": "Existing frozen W03/W04/W34 obligations; no new scope or gate",
+  "delivery": "HQ acceptance checklist; not claimed delivered into busy OpenCode session",
+  "full_scale_run": "Hold until corrected method independently checked and final candidate pinned"
+}

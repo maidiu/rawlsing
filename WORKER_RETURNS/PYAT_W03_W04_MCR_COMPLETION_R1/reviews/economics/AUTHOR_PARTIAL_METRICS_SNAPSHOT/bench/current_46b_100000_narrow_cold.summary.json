@@ -1,0 +1,196 @@
+{
+  "host": {
+    "cap_bytes": 6442450944,
+    "load_average": [
+      3.404296875,
+      3.63916015625,
+      3.47998046875
+    ],
+    "node": "mainMac.lan",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+  },
+  "limits": [
+    "Sourcefree S2 benchmark only; not original35/native/science/actor evidence.",
+    "One child at a time; child cap is 6 GiB; no downsizing is used for a claimed PASS.",
+    "Cold-warm-delete-rebuild use fresh child processes.",
+    "ExactPhysicalCellStream has no source decode; decode stage is explicitly not applicable.",
+    "Object construction and canonical closure hashing share the public candidate boundary; stages are labelled combined rather than falsely split."
+  ],
+  "note": "Derived compact receipt; full consumer fact payload omitted. Raw JSON hash is authoritative for the uncommitted raw output.",
+  "results": {
+    "cold": {
+      "narrow": {
+        "cold": {
+          "aggregate": {
+            "blocked_runs": 0,
+            "complete_runs": 1,
+            "max_rss_peak_bytes": 5923426304,
+            "max_wall_seconds": 777.5326975090429,
+            "median_cpu_system_seconds": 32.535787,
+            "median_cpu_user_seconds": 722.503513,
+            "median_rss_peak_bytes": 5923426304.0,
+            "median_wall_seconds": 777.5326975090429,
+            "min_rss_peak_bytes": 5923426304,
+            "min_wall_seconds": 777.5326975090429,
+            "runs": 1
+          },
+          "runs": [
+            {
+              "cache_bytes": 154463257,
+              "cache_files": 13,
+              "cache_hit": false,
+              "cap_bytes": 6442450944,
+              "cap_enforced": false,
+              "cell_count": 300000,
+              "cell_generation_seconds": 96.75966552144382,
+              "compact": true,
+              "consumer_fact_count": 1,
+              "consumer_fact_states": [
+                "SUPPORTED"
+              ],
+              "host": "mainMac.lan",
+              "i05_fact_count": 2,
+              "i05_receipt_count": 1,
+              "metrics": {
+                "cache_write_amortization": 292.5427401229972,
+                "cpu_system_seconds": 32.535787,
+                "cpu_user_seconds": 722.503513,
+                "rss_peak_bytes": 5923426304,
+                "source_opens": 0,
+                "wall_seconds": 777.5326975090429
+              },
+              "parent_wall_seconds": 787.4705062370049,
+              "persist_directory": "/private/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-w03-narrow-100k/narrow/cold-0/releases/d5557b641a84116d2d9531bb5993f9db95962322086d226052a42f3666ade7ed/REL-m01/fda3b7634b505eb18c928bcb1ff97a359784e47bdb06f0be864d7d6ec9f309df",
+              "pid": 37716,
+              "platform": "macOS-13.2.1-x86_64-i386-64bit",
+              "profile": "narrow",
+              "projection_identity": "29f81615ce0b2c75ee1ed308070ff54f4d1aa134f16a5d78191d3ebbf596858d",
+              "python": "3.11.3",
+              "release_id": "REL-m01",
+              "release_manifest_hash": "5c6557632f5b39a341c063064e75e45ea96a458d5c51ad48fc262fb865801a56",
+              "release_ref": {
+                "content_hash": "fda3b7634b505eb18c928bcb1ff97a359784e47bdb06f0be864d7d6ec9f309df",
+                "kind": "C11LogicalRelease",
+                "object_id": "REL-m01"
+              },
+              "rows": 100000,
+              "scenario": "cold",
+              "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+              "semantic_release_hash": "fda3b7634b505eb18c928bcb1ff97a359784e47bdb06f0be864d7d6ec9f309df",
+              "source_sha256": "d5557b641a84116d2d9531bb5993f9db95962322086d226052a42f3666ade7ed",
+              "stages": {
+                "canonicalhash": {
+                  "stage": "canonicalhash",
+                  "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 108.40896127501037
+                },
+                "cells": {
+                  "cell_count": 300000,
+                  "rss_peak_bytes": 2307694592,
+                  "stage": "cells",
+                  "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+                  "wall_seconds": 96.75966552144382
+                },
+                "compact": {
+                  "cpu_system_seconds": 0.3790469999999999,
+                  "cpu_user_seconds": 35.66787099999999,
+                  "rss_peak_bytes": 2760306688,
+                  "rss_peak_delta_bytes": 0,
+                  "stage": "compact",
+                  "wall_seconds": 35.60894124605693
+                },
+                "decode": {
+                  "stage": "decode",
+                  "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
+                  "wall_seconds": 0.0
+                },
+                "firstconsumer": {
+                  "cpu_system_seconds": 3.638235,
+                  "cpu_user_seconds": 119.32421199999999,
+                  "rss_peak_bytes": 3098497024,
+                  "rss_peak_delta_bytes": 338190336,
+                  "stage": "firstconsumer",
+                  "wall_seconds": 124.48712437297218
+                },
+                "i02_validation_seal": {
+                  "cpu_system_seconds": 1.8437069999999998,
+                  "cpu_user_seconds": 151.61369400000004,
+                  "rss_peak_bytes": 2760306688,
+                  "rss_peak_delta_bytes": 452612096,
+                  "stage": "i02_validation_seal",
+                  "wall_seconds": 155.3174981130287
+                },
+                "i02validation": {
+                  "cpu_system_seconds": 1.8437069999999998,
+                  "cpu_user_seconds": 151.61369400000004,
+                  "rss_peak_bytes": 2760306688,
+                  "rss_peak_delta_bytes": 452612096,
+                  "stage": "i02validation",
+                  "wall_seconds": 155.3174981130287
+                },
+                "objectconstruction": {
+                  "stage": "objectconstruction",
+                  "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
+                  "wall_seconds": 108.40896127501037
+                },
+                "persist": {
+                  "cpu_system_seconds": 23.481657,
+                  "cpu_user_seconds": 251.223663,
+                  "rss_peak_bytes": 5923426304,
+                  "rss_peak_delta_bytes": 2824929280,
+                  "stage": "persist",
+                  "wall_seconds": 292.5427401229972
+                },
+                "profile_setup": {
+                  "cpu_system_seconds": 0.997851,
+                  "cpu_user_seconds": 56.634510000000006,
+                  "rss_peak_bytes": 985690112,
+                  "rss_peak_delta_bytes": 955727872,
+                  "stage": "profile_setup",
+                  "wall_seconds": 58.237902739900164
+                },
+                "projection": {
+                  "rss_peak_bytes": 2307694592,
+                  "stage": "projection",
+                  "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION"
+                },
+                "projection_objectconstruction_canonicalhash": {
+                  "cpu_system_seconds": 1.970916,
+                  "cpu_user_seconds": 105.20397600000001,
+                  "rss_peak_bytes": 2307694592,
+                  "rss_peak_delta_bytes": 1322004480,
+                  "stage": "projection_objectconstruction_canonicalhash",
+                  "wall_seconds": 108.40896127501037
+                },
+                "seal": {
+                  "cpu_system_seconds": 1.8437069999999998,
+                  "cpu_user_seconds": 151.61369400000004,
+                  "rss_peak_bytes": 2760306688,
+                  "rss_peak_delta_bytes": 452612096,
+                  "stage": "seal",
+                  "wall_seconds": 155.3174981130287
+                }
+              },
+              "started_utc": "2026-11-11T02:09:31Z"
+            }
+          ]
+        },
+        "cold_vs_baseline": {
+          "status": "NO_BASELINE"
+        },
+        "profile": "narrow",
+        "regressions": [],
+        "repetitions": 1,
+        "rows": 100000,
+        "scenario": "cold",
+        "warm_vs_baseline": {
+          "status": "NO_BASELINE"
+        }
+      }
+    }
+  },
+  "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+  "source_file": "current_46b_100000_narrow_cold.json",
+  "source_file_sha256": "429be6c7711143cd30af9978323c50e56748113a9940cdec6058d5bc43e84fdd"
+}

@@ -1,0 +1,16 @@
+c44cf09fb Add W03 W04 physical economy benchmark and paired baselines
+ .../workflows/pyat-w03-w04-physical-economy.yml    |   18 +
+ .../lanes/bench/00_RETURN.md                       |   64 +
+ .../lanes/bench/01_prior_capital_and_abi.md        |   41 +
+ .../lanes/bench/02_resource_economy.md             |   52 +
+ .../lanes/bench/03_reproducible_return.md          |   48 +
+ .../current_46b_100000_narrow_cold.summary.json    |  196 +++
+ .../current_46b_1000_full_matrix.summary.json      | 1333 ++++++++++++++++++++
+ .../current_46b_20000_narrow_cold.summary.json     |  196 +++
+ .../lanes/bench/proof_02_resource_comparison.json  |  356 ++++++
+ ...rotected_4f3413_100000_narrow_cold.summary.json |  196 +++
+ .../protected_4f3413_1000_full_matrix.summary.json | 1333 ++++++++++++++++++++
+ .../lanes/bench/selected_w03_w04_tests.out         |    2 +
+ rawlsing_next/bench_w03_w04_physical.py            |  768 +++++++++++
+ rawlsing_next/tests/test_bench_w03_w04_physical.py |   99 ++
+ 14 files changed, 4702 insertions(+)
