@@ -691,14 +691,22 @@
       "job": "pyat-w03-w04-mcr-required-evidence-preparation-r1",
       "session": "ses_1b9742b6c02745d8a69d062011",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "TERMINAL_MONTHLY_PROVIDER_QUOTA__NO_ARTIFACTS_NO_RETRY",
       "source_candidate": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
       "scope": "Mandatory12outputdocuments/actualsourcefreeproofpreparation; scale/economicNOT_RUN",
-      "pid": 52056
+      "pid": 52056,
+      "terminal": {
+        "exit_code": 1,
+        "finished_utc": "2026-11-11T07:35:13.439277+00:00",
+        "error_type": "provider.quota",
+        "http_status": 429,
+        "limit": "monthly",
+        "message": "OpenCode Go usage limit reached"
+      }
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "User/external restoration of existing OpenCode Go quota needed for independent method review. Resume exact existing reviewer/session/candidate once restored; do not duplicate. Intake separate evidence return when notified.",
+  "next_action": "Await restoration of existing OpenCode Go monthly quota; resume same independent method reviewer and same required-evidence author from exact retained grants. No live jobs or polling.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -731,6 +739,7 @@
     "provider": "opencode-go",
     "limit": "monthly",
     "evidence_job": "pyat-w03-w04-mcr-economic-protocol-recheck-r2",
-    "action": "No retry/new provider-backed dispatch until quota restored. No model/provider/account change authorized. Other launched job stays undisturbed pending terminal notification."
+    "action": "Both outstanding jobs terminated on same monthly quota. No retry or new dispatch until existing quota restored. Preserve exact sessions and clean1c428d59d worktrees.",
+    "remaining_live_jobs": 0
   }
 }

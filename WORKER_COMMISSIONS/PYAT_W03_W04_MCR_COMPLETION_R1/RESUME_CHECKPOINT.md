@@ -1,3 +1,11 @@
+# Current state: both jobs terminated on monthly quota
+
+Required evidence author also returned exit1 at2026-11-11T07:35:13.439277+00:00: provider.quota/HTTP429, OpenCode Go monthly usage limit reached. Its worktree is clean at1c428d59d; no new evidence directory or commit exists. Independent economic review likewise produced no artifacts/verdict at the same quota limit. ZERO jobs remain live. No retry, account/model/provider/region/effort switch or recurring checker.
+
+Existing quota restoration is indispensable. Once restored, resume exact method reviewer ses_6857b9b4c50542e7a7268dfb7d and required-evidence author ses_1b9742b6c02745d8a69d062011 under existing scopes at retained1c428d59d cuts; no new discovery or duplicate effects. Goal wakeups stay PAUSED. Full100k still awaits independent method readiness; all original35/science/native/actor/protected holds persist. Goal incomplete.
+
+Previous saved context follows; older statement that evidence job is outstanding is superseded by this current terminal intake:
+
 # CURRENT BLOCKER — OpenCode Go monthly quota
 
 Economic protocol recheck r2 returned exit1, receipt finished2026-11-11T07:35:13.304000+00:00. Actual error provider.quota/HTTP429: OpenCode Go usage limit reached, limitName monthly. No new review directory, clean worktree at1c428d59d, no verdict. Preserve existing reviewer ses_6857b9b4c50542e7a7268dfb7d and exact R4 candidate. No automatic retry, new provider-backed commission or model/provider/account/region/effort change. Existing Go quota must be restored externally before this dependency can advance. Once restored, resume same scoped review rather than recreate work.
