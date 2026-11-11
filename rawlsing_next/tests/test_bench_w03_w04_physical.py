@@ -144,15 +144,45 @@ def test_derived_cache_is_not_canonical_and_corrupt_cache_is_safe_miss(tmp_path)
 
 def test_stage_peak_tracks_post_highwater_allocation():
     import time as _time
+
     hold = bytearray(20 * 1024 * 1024)
     assert hold
+
     def alloc():
         _time.sleep(0.08)
         return bytearray(8 * 1024 * 1024)
+
     value, stage = bench._stage("later_allocation", alloc)
     assert len(value) == 8 * 1024 * 1024
-    assert stage["stage_peak_current_rss_bytes"] >= stage["stage_entry_current_rss_bytes"]
-    assert stage["process_ru_maxrss_after_bytes"] >= stage["stage_peak_current_rss_bytes"]
+    entry = stage["stage_entry_current_rss_bytes"]
+    peak = stage["stage_peak_current_rss_bytes"]
+    assert peak >= entry
+    # The stage's current-RSS sampler must see the later allocation, not merely
+    # replay the process-wide high-water counter.  The 8 MiB allocation is held
+    # through stage exit, so a 4 MiB lower bound is conservative and non-vacuous.
+    assert peak - entry >= 4 * 1024 * 1024, stage
+    # ru_maxrss is a separate cumulative kernel high-water counter.  It is
+    # monotone within the process but is not a valid upper bound for a
+    # concurrently sampled current-RSS peak (Linux CI demonstrated a small
+    # cross-counter difference).  Keep its truthful contract separate.
+    assert stage["process_ru_maxrss_after_bytes"] >= stage["process_ru_maxrss_before_bytes"]
+    assert stage["rss_peak_bytes"] == stage["process_ru_maxrss_after_bytes"]
+
+
+def test_stage_peak_is_not_aliased_to_process_highwater(monkeypatch):
+    # Deterministic counter-falsifier: even when the cumulative-process counter
+    # is deliberately fixed low, the stage metric must remain a separately
+    # observed current-RSS value.  This is not a tolerance or a mirror test; it
+    # would fail if _stage copied ru_maxrss into the stage peak.
+    hold = bytearray(20 * 1024 * 1024)
+    assert hold
+    monkeypatch.setattr(bench, "_rss_peak_bytes", lambda: 123456)
+    value, stage = bench._stage("separate_counter", lambda: 1)
+    assert value == 1
+    assert stage["process_ru_maxrss_before_bytes"] == 123456
+    assert stage["process_ru_maxrss_after_bytes"] == 123456
+    assert stage["rss_peak_bytes"] == 123456
+    assert stage["stage_peak_current_rss_bytes"] > 123456
 
 
 def test_small_cap_refuses_over_limit_without_host_stress(tmp_path):

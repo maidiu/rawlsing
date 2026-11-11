@@ -1,0 +1,32 @@
+{
+  "new_separated_assertions": {
+    "rss_peak_alias_eq_process_after": true,
+    "ru_maxrss_after_eq_before": true,
+    "stage_peak_gt_process_counter": true
+  },
+  "old_cross_counter_ordering": false,
+  "purpose": "deterministic demonstration that stage current-RSS peak is not the process cumulative high-water alias; old cross-counter ordering assertion is invalid, new stage-growth assertion is meaningful",
+  "schema": "PYAT_LINUX_STAGE_RSS_R1_PROBE@1",
+  "stage": {
+    "cpu_system_seconds": 6.0000000000060005e-06,
+    "cpu_user_seconds": 8.999999999981245e-06,
+    "observation_method": "OS_PS_CURRENT_RSS_SAMPLED_5MS_PLUS_RESOURCE_RU_MAXRSS_SEPARATE",
+    "process_ru_maxrss_after_bytes": 123456,
+    "process_ru_maxrss_before_bytes": 123456,
+    "rss_peak_bytes": 123456,
+    "rss_peak_delta_bytes": 0,
+    "stage": "deterministic_counter_severance",
+    "stage_entry_current_rss_bytes": 54874112,
+    "stage_exit_current_rss_bytes": 54747136,
+    "stage_peak_current_rss_bytes": 54874112,
+    "wall_seconds": 2.201995812356472e-06
+  },
+  "values": {
+    "delta_stage_peak_minus_entry": 0,
+    "process_ru_maxrss_after_bytes": 123456,
+    "process_ru_maxrss_before_bytes": 123456,
+    "rss_peak_bytes": 123456,
+    "stage_entry_current_rss_bytes": 54874112,
+    "stage_peak_current_rss_bytes": 54874112
+  }
+}
