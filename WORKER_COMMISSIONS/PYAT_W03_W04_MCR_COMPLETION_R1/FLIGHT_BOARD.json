@@ -402,11 +402,29 @@
       "job": "pyat-w03-w04-mcr-verifier-repair-r1",
       "session": "ses_1b9742b6c02745d8a69d062011",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_CANDIDATE_INTEGRATED_PENDING_INDEPENDENT_REVIEW",
       "candidate_base": "26f70635e8493c7759fa087b17da269104bd8922",
       "scope": "CC-F05 faithful executable MCR artifact/external evidence validator repair",
       "pid": 68503,
-      "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work."
+      "model_verification": "Same authorized launch setup requested; actual assistant turn not yet emitted at launch check, verify on terminal intake before accepting work.",
+      "candidate": "df32985387da3da26f587ddbcd75ad031b837773",
+      "terminal": {
+        "exit_code": 0
+      },
+      "actual_model": {
+        "id": "msg_1c89fbfe60011dq3biVV56Zte3",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794367275113,
+          "streamed": 1794367325789,
+          "completed": 1794367325898
+        }
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-cold-order-focused-recheck-r1",
@@ -425,10 +443,19 @@
       "source_candidate": "dec934dde93ffa9e087d5648678d1bb7854ff015",
       "scope": "Independent ECON-M1..M5 method readiness; no100k/fullacceptance",
       "pid": 84969
+    },
+    {
+      "job": "pyat-w03-w04-mcr-ci-proof-repair-r1",
+      "session": "ses_b998af9086264002a86ee57b6e",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "09f97a3a4c77ed7666ee95af586cfdfd91493f73",
+      "scope": "CC-F03 existingCI selection and CC-F04 actual-consumer executable severanceproof only",
+      "pid": 88861
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Dispatch exact repaired-method original economics reviewer; maintain3 cap. Next free slot: bench owner CC-F03 CI and CC-F04 proof repair on current integrated source, no overlapping writes.",
+  "next_action": "Dispatch queued CC-F03/F04 now slotfree; coldordering and method independent reviews continue. CC-F05 candidate needs focused independent review at next available receiver boundary; no author selfacceptance.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -456,5 +483,5 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "CC-F03/F04 now author-ready but slot-held until one of3 review/validator jobs returns. Reserve queued exact scope; no fourth job."
+  "next_ready_work": "Three actual allocatedlanes; no fourth or full100k before method qualified."
 }
