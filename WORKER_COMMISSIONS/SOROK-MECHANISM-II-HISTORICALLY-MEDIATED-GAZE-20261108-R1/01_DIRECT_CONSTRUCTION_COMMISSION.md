@@ -1,6 +1,6 @@
 # Sorok Mechanism II — complete construction commission
 
-Prepared for the existing Sorok HQ mission. Implementation remains paused until the user resumes it. This document is the replacement execution instruction for that resumption.
+Governing construction instruction for the existing Sorok HQ mission. The user has resumed execution; the existing implementation and independent-review workers continue under this commission.
 
 ## 1. Build the complete mechanism
 
