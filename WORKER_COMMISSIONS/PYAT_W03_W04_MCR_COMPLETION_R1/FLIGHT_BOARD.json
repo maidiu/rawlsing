@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T01:42:57.641005+00:00",
+  "saved_utc": "2026-11-11T02:01:27.996782+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -65,7 +65,7 @@
       "job": "pyat-w03-w04-mcr-bench-r1",
       "pid": 31028,
       "session": "ses_b998af9086264002a86ee57b6e",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "ACTIVE_VERIFIED_MODEL_SOURCE_PRESENT",
       "live_pid_verified": true,
       "actual_model": {
         "id": "msg_1c83fddfa0010XHDZ2OeSQInQ2",
@@ -82,7 +82,8 @@
       "terminal": null,
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-r1",
       "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-bench-r1.md",
-      "source_anchor_dependency": "Originalanchorinvalid; do notmodifylivecheckout. Correctsourceanchorprepared; resumeonterminalreturn only."
+      "source_anchor_dependency": "Resolved: actualHEADverified1b0c8dc4,9576source-bearingfiles,benchmodule/tests activelywritten; no restart.",
+      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
     },
     {
       "lane": "cold",
@@ -112,9 +113,34 @@
       "job": "pyat-w03-w04-mcr-persistence-source-repair-r2",
       "pid": 32394,
       "session": "ses_1b9742b6c02745d8a69d062011",
-      "status": "LAUNCHED_MODEL_TURN_PENDING",
+      "status": "DELIVERED_PENDING_RECEIVING__INTEGRATED_REVIEW_OUT",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-persistence-r2",
-      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
+      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc",
+      "candidate": "605ce4c409857155eaf8dad7ca4e9c2ae0b15638",
+      "terminal": {
+        "exit_code": 0
+      }
+    },
+    {
+      "lane": "persistence-review",
+      "job": "pyat-w03-w04-mcr-w04-independent-review-r1",
+      "pid": 35981,
+      "session": "ses_e47b17f8fffedazgQeSGbql4HH",
+      "status": "ACTIVE_VERIFIED_MODEL",
+      "actual_model": {
+        "id": "msg_1c855863a001Bn6b5hHP65s54r",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794362410691
+        }
+      },
+      "candidate": "605ce4c409857155eaf8dad7ca4e9c2ae0b15638",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-w04-review-r1"
     }
   ],
   "parallel_policy": "Threeisolatednonoverlappingcodeleases; oneheavybenchmarkchildatonce; finalpairedmeasurements/reviews onintegratedimmutablecandidate",
