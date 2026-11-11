@@ -1,0 +1,16 @@
+{
+  "schema": "PYAT_SNAPSHOT_PROOF_R2@1",
+  "claim_id": "SNAPSHOT_BENCH_CELLS_ACTUAL_CONSUMER_SEVERANCE_R1",
+  "positive_node": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_LIVE_C44_SNAPSHOT/test_bench_w03_w04_physical.py::test_cli_cells_and_hash_uses_same_actual_consumer",
+  "baseline": "PASS",
+  "fault_path": "rawlsing_next/_pre553_query_eval.py",
+  "fault_probe": "TARGET_ASSERTION_FAILED",
+  "grade": "BOUNDED_MUTATION_DETECTED",
+  "snapshot_test_sha256_before": "01eb49d388ce29721a6658ccb1fb305683ba3a8a369c2a814c6701b5885be7e2",
+  "snapshot_test_sha256_after": "01eb49d388ce29721a6658ccb1fb305683ba3a8a369c2a814c6701b5885be7e2",
+  "query_eval_git_blob_before": "9808a6b72c716e26ebce5cbd76ef5ef6f3b5c920",
+  "query_eval_git_blob_after": "9808a6b72c716e26ebce5cbd76ef5ef6f3b5c920",
+  "source_restored": true,
+  "snapshot_test_changed": false,
+  "prior_red_preserved": "CC-F03/CC-F04 return at 8c5ae1c documented BENCH_LIVE_C44_SNAPSHOT missing sidecar; not removed"
+}

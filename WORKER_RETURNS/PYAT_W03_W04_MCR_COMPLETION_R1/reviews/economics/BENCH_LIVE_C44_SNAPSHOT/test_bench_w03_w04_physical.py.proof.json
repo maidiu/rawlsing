@@ -1,0 +1,16 @@
+{
+  "schema": "RAWLSING_PROOF_INTEGRITY_R1",
+  "claims": [
+    {
+      "claim_id": "SNAPSHOT_BENCH_CELLS_ACTUAL_CONSUMER_SEVERANCE_R1",
+      "actual_consumer": "rawlsing_next.bench_w03_w04_physical._consumer -> CarrierNeutralResearchExecutor.execute_i03/execute_i05 -> C11Repository and the existing I03 empirical evaluator",
+      "claimed_dependency": "The preserved BENCH_LIVE_C44 snapshot's named cells-and-hash test observes typed I03 fact states from the actual carrier-neutral consumer path; severing the evaluator's typed-state material must make that exact snapshot test fail by assertion, not pass on fabricated state",
+      "positive_node": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/economics/BENCH_LIVE_C44_SNAPSHOT/test_bench_w03_w04_physical.py::test_cli_cells_and_hash_uses_same_actual_consumer",
+      "fault": {
+        "path": "rawlsing_next/_pre553_query_eval.py",
+        "old": "        typed_state=evaluation.fact_state,",
+        "new": "        typed_state=\"UNRESOLVED\","
+      }
+    }
+  ]
+}
