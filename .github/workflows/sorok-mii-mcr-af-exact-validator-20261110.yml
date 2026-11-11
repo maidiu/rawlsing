@@ -75,8 +75,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git fetch --no-tags --depth=1 origin 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          git worktree add --detach /tmp/mii-protected-runtime 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          export MCR_QUALIFIED_RUNTIME_ROOT=/tmp/mii-protected-runtime
+          export MCR_QUALIFIED_RUNTIME_SHA=4f3413fc5c37b589be3412f826bf8f68ee617d4a
           python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --counterfeit-attack
           python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_independent_consumer_trace.py --baseline
+          git worktree remove --force /tmp/mii-protected-runtime
       - name: Hostile 53-of-54 valid-hash forged return must FAIL against frozen original TSV
         shell: bash
         run: |
