@@ -1,0 +1,26 @@
+CURRENT GATE
+status FAIL_OR_INCOMPLETE
+pass False
+final_shape False
+cap_pass True
+cold_pass True
+warm_pass True
+regression_pass True
+identity {'schema': True, 'source_head_is_protected': True, 'rows_match': True, 'profiles_match': True, 'repetitions_match': True, 'host_match': True, 'baseline_command_present': True, 'candidate_command_present': True, 'command_parameters_match': True, 'method_sha256_present': True, 'method_sha256_match': True, 'baseline_file_sha256_present': True, 'baseline_file_sha256_matches': True, 'actual_event_counts_match': True, 'consumer_fingerprint_parity': True}
+event_fingerprint_parity {'pass': True, 'comparisons': 6, 'problems': []}
+repeat_wall_ratio 0.7904743171961152
+repeat_restart_wall_current_seconds 0.735403143
+repeat_restart_wall_baseline_seconds 0.930331482
+retention_decision RETAIN_FOR_REPEAT
+regressions []
+unresolved_regressions []
+baseline_identity {'source_head': '4f3413fc5c37b589be3412f826bf8f68ee617d4a', 'sha256': 'b35d5bf2842ebe2f971bcdbdb17b453bc9069a19f31af19ab33fe7ffe4b8e7f1', 'actual_sha256': 'b35d5bf2842ebe2f971bcdbdb17b453bc9069a19f31af19ab33fe7ffe4b8e7f1'}
+TINY COMPONENT RECEIPTS {'baseline_file_sha256_matches': True, 'cap_method': 'PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE', 'cap_pass': True, 'cold_pass': True, 'cold_rss_improvement': 0.3359685447776801, 'event_fingerprint_parity': True, 'final_matrix_gate_pass': False, 'identity_pass': True, 'method_sha256_matches': True, 'regression_pass': True, 'regressions': [], 'repeat_wall_ratio_launch_to_firstconsumer': 0.7904743171961152, 'retention_decision': 'RETAIN_FOR_REPEAT', 'unresolved_regressions': [], 'warm_pass': True}
+WARM_CLOCK baseline_protected_4f_8_full_matrix.json {'launch_to_firstconsumer': 0.969928935, 'parent_wall': 1.4675144059583545, 'canonical_reopen': 0.10077038803137839, 'firstconsumer': 0.03155915706884116}
+WARM_CLOCK current_r4_8_full_matrix.json {'launch_to_firstconsumer': 0.736052836, 'parent_wall': 1.5663640761049464, 'canonical_reopen': 0.43509294802788645, 'firstconsumer': 0.03229416103567928}
+MUTATED_BASELINE_SELF_HASH identity {'schema': True, 'source_head_is_protected': True, 'rows_match': True, 'profiles_match': True, 'repetitions_match': True, 'host_match': True, 'baseline_command_present': True, 'candidate_command_present': True, 'command_parameters_match': True, 'method_sha256_present': True, 'method_sha256_match': True, 'baseline_file_sha256_present': True, 'baseline_file_sha256_matches': True, 'actual_event_counts_match': True, 'consumer_fingerprint_parity': True} pass False cold_pass True cap_pass True retention RETAIN_FOR_REPEAT
+WRONG_HASH identity_hash False pass False
+RETENTION / BREAK-EVEN
+narrow {'cache_write_amortization': 0.3470828850210334, 'derived_write_wall_seconds_total': 1.0412486550631002, 'derived_write_bytes_total': 60117} {'baseline_cold_launch_to_firstconsumer_seconds': 0.905857422, 'break_even_warm_restarts': 4.993116228426025, 'canonical_persist_is_separate': True, 'current_warm_launch_to_firstconsumer_seconds': 0.697320587, 'derived_write_wall_seconds_total': 1.0412486550631002, 'repeat_count_is_not_divisor': True, 'status': 'MEASURED_DERIVED_WRITE_VS_ACTUAL_RESTART_SAVINGS', 'warm_restart_savings_seconds': 0.20853683499999998}
+wide {'cache_write_amortization': 0.4341267313187321, 'derived_write_wall_seconds_total': 1.3023801939561963, 'derived_write_bytes_total': 77484} {'baseline_cold_launch_to_firstconsumer_seconds': 0.886930855, 'break_even_warm_restarts': 10.645039574020263, 'canonical_persist_is_separate': True, 'current_warm_launch_to_firstconsumer_seconds': 0.76458465, 'derived_write_wall_seconds_total': 1.3023801939561963, 'repeat_count_is_not_divisor': True, 'status': 'MEASURED_DERIVED_WRITE_VS_ACTUAL_RESTART_SAVINGS', 'warm_restart_savings_seconds': 0.12234620500000004}
+repeat {'cache_write_amortization': 0.327575904627641, 'derived_write_wall_seconds_total': 0.9827277138829231, 'derived_write_bytes_total': 77208} {'baseline_cold_launch_to_firstconsumer_seconds': 0.994541061, 'break_even_warm_restarts': 3.7922960926271054, 'canonical_persist_is_separate': True, 'current_warm_launch_to_firstconsumer_seconds': 0.735403143, 'derived_write_wall_seconds_total': 0.9827277138829231, 'repeat_count_is_not_divisor': True, 'status': 'MEASURED_DERIVED_WRITE_VS_ACTUAL_RESTART_SAVINGS', 'warm_restart_savings_seconds': 0.25913791799999997}

@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_ECON_R4_RED_GREEN@1",
+  "review_head": "5c963bfee0c31f0d1e2794978296f101e804f395",
+  "candidate_source_head": "9a71d0a0825c142372e56ac5d6bd34847ce6f227",
+  "groups": [
+    {
+      "id": "ECON-M1",
+      "prior_review_red": "PROBE/env_policy_cache_observation.txt: inherited policy wrote a 22,412-byte derived file while benchmark reported zero derived files and NO_GOVERNED_DERIVED_CACHE_WRITE",
+      "green_test": "test_cold_clears_inherited_policy_before_actual_call",
+      "green_evidence": "env_isolation_probe.json: foreign_file_count=0, derived_status=NO_GOVERNED_DERIVED_CACHE_WRITE, parent_policy_env_stripped=true"
+    },
+    {
+      "id": "ECON-M3",
+      "prior_review_red": "PROBE/gate_identity_and_cap_probe.txt: gate had no cap fields and passed synthetic results without cap evidence; cap monitor is sampled-kill, not hard bound",
+      "green_test": "test_acceptance_gate_requires_active_cap_evidence",
+      "green_evidence": "cap_probe.json: 8MiB status BLOCKED_EXACT_DEPENDENCY, cap_enforced=true, cap_peak_sampled_bytes=15,245,312, cap_method sampled-kill; tiny pair cap_pass=true with declared 6GiB"
+    },
+    {
+      "id": "ECON-M4-regressions",
+      "prior_review_red": "PROBE/gate_other_regression_probe.json: a synthetic 20% other-profile regression made gate pass=false regardless of explicit resolution",
+      "green_test": "test_acceptance_gate_other_profile_regression_needs_explicit_resolution",
+      "green_evidence": "unresolved case pass=false; explicit JUSTIFIED_CORRECTION record makes regression_pass=true, with receiving_required=true"
+    },
+    {
+      "id": "ECON-M4-clock-identity",
+      "prior_review_red": "PROBE/method_probe_summary.txt: gate used median_parent_wall_seconds (canonical reopen included) and had no event/command/hash parity",
+      "green_test": "test_acceptance_gate_uses_launch_to_firstconsumer_clock; test_acceptance_gate_requires_event_command_and_hash_identity",
+      "green_evidence": "Tiny pair: launch-to-firstconsumer repeat ratio=0.790474; identity all true, event/fingerprint parity 6 comparisons, protected source 4f, method hash d4fb..., external baseline SHA256 b35d..."
+    },
+    {
+      "id": "ECON-M5-writecost",
+      "prior_review_red": "EVIDENCE_AUTHOR_R3 warm_restarts_3.json: cache_write_amortization=canonical_persist_total/warm_runs=0.068122, excluding derived write",
+      "green_test": "test_derived_amortization_uses_measured_write_and_restart_savings",
+      "green_evidence": "tiny_pair_summary.json: derived write wall/CPU/bytes measured from actual write boundary; break-even uses measured warm restart savings; canonical persist separately listed"
+    },
+    {
+      "id": "ECON-M5-hittruth",
+      "prior_review_red": "PROBE/derived_envelope_probe.txt: same-size/same-mtime file byte flip returned derived_hit=true, derived_write=false, HIT_EXACT_ENVELOPE_AND_MTIME",
+      "green_test": "test_same_size_same_mtime_derived_corruption_is_not_a_hit",
+      "green_evidence": "derived_corruption_probe.json: body-page byte corruption same size, preserved mtime before rebuild, derived_hit=false, derived_write=true, read owner rejected; valid fresh warm has actual read hit and typed parity"
+    }
+  ]
+}
