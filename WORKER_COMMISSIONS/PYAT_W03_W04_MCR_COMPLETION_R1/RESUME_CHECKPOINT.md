@@ -1,3 +1,11 @@
+# CURRENT BLOCKER — OpenCode Go monthly quota
+
+Economic protocol recheck r2 returned exit1, receipt finished2026-11-11T07:35:13.304000+00:00. Actual error provider.quota/HTTP429: OpenCode Go usage limit reached, limitName monthly. No new review directory, clean worktree at1c428d59d, no verdict. Preserve existing reviewer ses_6857b9b4c50542e7a7268dfb7d and exact R4 candidate. No automatic retry, new provider-backed commission or model/provider/account/region/effort change. Existing Go quota must be restored externally before this dependency can advance. Once restored, resume same scoped review rather than recreate work.
+
+Separate required-evidence job pid52056 remains undisturbed; no new status claim from this notification. Await its own terminal event and intake actual artifacts. Do not duplicate its tests or outputs. Goal wakeups remain PAUSED, notifications only. No full100k before independent method qualification. Preserve all original35/science/native/actor/protected merge holds. Goal not complete.
+
+Previous checkpoint follows for exact authorized continuation:
+
 # W03/W04 MCR-C resume checkpoint
 
 Goal wakeups remain PAUSED. Terminal notifications only. Maximum THREE commissions, no filler tasks or polling.

@@ -674,10 +674,18 @@
       "job": "pyat-w03-w04-mcr-economic-protocol-recheck-r2",
       "session": "ses_6857b9b4c50542e7a7268dfb7d",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "TERMINAL_MONTHLY_PROVIDER_QUOTA__NO_VERDICT_NO_RETRY",
       "source_candidate": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
       "scope": "ExactR4methodindependentrecheck",
-      "pid": 52052
+      "pid": 52052,
+      "terminal": {
+        "exit_code": 1,
+        "finished_utc": "2026-11-11T07:35:13.304000+00:00",
+        "error_type": "provider.quota",
+        "http_status": 429,
+        "limit": "monthly",
+        "message": "OpenCode Go usage limit reached"
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-required-evidence-preparation-r1",
@@ -690,7 +698,7 @@
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Dispatch method recheck and required evidence preparation in parallel; no filler third lane. Fullscale waits independent method qualification; finalcode waits complete proofpackage.",
+  "next_action": "User/external restoration of existing OpenCode Go quota needed for independent method review. Resume exact existing reviewer/session/candidate once restored; do not duplicate. Intake separate evidence return when notified.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -718,5 +726,11 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "No third independent necessary commission ready without duplicating sameheadreceiving or premature100k. Two substantive lanes authorized; capacity3 remains cap."
+  "next_ready_work": "No third independent necessary commission ready without duplicating sameheadreceiving or premature100k. Two substantive lanes authorized; capacity3 remains cap.",
+  "provider_quota_hold": {
+    "provider": "opencode-go",
+    "limit": "monthly",
+    "evidence_job": "pyat-w03-w04-mcr-economic-protocol-recheck-r2",
+    "action": "No retry/new provider-backed dispatch until quota restored. No model/provider/account change authorized. Other launched job stays undisturbed pending terminal notification."
+  }
 }
