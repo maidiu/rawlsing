@@ -19,7 +19,7 @@ def exact(kind, object_id, body):
     return {"kind": kind, "object_id": object_id, "content_hash": digest(body)}
 
 
-def source_world(tmp_path, monkeypatch, *, grant=True):
+def source_world(tmp_path, monkeypatch, *, grant=True, book_physical=None, institution_details=None):
     monkeypatch.syspath_prepend(str(ENGINE))
     from developmental_recursion.p2_owner import load_p2
     fanin = load_p2().start(tmp_path / "world")
@@ -31,7 +31,7 @@ def source_world(tmp_path, monkeypatch, *, grant=True):
     history = HistoricalWorld(session)
     book = history.admit_surface(SurfaceParticular(
         event["event_id"], "source:field-ledger-copy-71", "artifact", event["location"],
-        {"condition": "worn"}, ("physical", "provenance", "dependencies")))
+        book_physical or {"condition": "worn"}, ("physical", "provenance", "dependencies")))
     tool = history.admit_surface(SurfaceParticular(
         event["event_id"], "source:measuring-instrument-29", "resource", event["location"],
         {"condition": "used"}, ("physical", "provenance")))
@@ -45,7 +45,8 @@ def source_world(tmp_path, monkeypatch, *, grant=True):
         ("PLACE", "synthetic:current-place", {"location": event["location"]}),
     ]:
         record = {"kind": kind, "object_id": identity, "evidence_class": "SOURCEFREE_SYNTHETIC",
-                  "source_event_ref": source_ref, **details}
+                  "source_event_ref": source_ref, **details,
+                  **(institution_details or {} if kind == "INSTITUTION" else {})}
         entities.append({"ref": exact(kind, identity, record), "record": record})
     if grant:
         history.configure_experimental_history(
@@ -239,6 +240,10 @@ def test_h1_material_parent_is_consumed_by_normal_p4_work_not_inspection(tmp_pat
         assert _work_cli(state, monkeypatch)["status"] == "HELD"
     async def transport(request):
         packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+        if pending_first:
+            primary = packet["surface"][captured["first"]["id"]]
+            assert primary["requested_predicate"] == "condition"
+            assert "expected" not in primary
         proposal = candidate({"packet": packet}, captured["first"], captured["second"],
                              captured["entities"], captured["parent"])
         proposal["facts"][0].update(predicate="condition", value="serviceable")
@@ -581,3 +586,46 @@ def test_provider_timeout_is_durable_instead_of_expiring_its_own_lease(tmp_path,
         assert job['expires_at'] > clock[0]
     finally:
         fanin.close()
+
+
+@pytest.mark.parametrize('presentation', ['worn-book', 'prestige-commodity'])
+def test_same_appearance_permits_distinct_pasts_without_private_meaning(tmp_path, monkeypatch, presentation):
+    import shutil
+    physical = ({'condition': 'worn', 'material': 'paper'} if presentation == 'worn-book'
+                else {'condition': 'pristine', 'marking': 'premium edition'})
+    institution = ({} if presentation == 'worn-book' else
+                   {'exchange_price': 1000, 'currency': 'synthetic_source_units'})
+    fanin, history, book, tool, entities, parent = source_world(
+        tmp_path, monkeypatch, book_physical=physical, institution_details=institution)
+    root, frozen = tmp_path / 'world', tmp_path / 'original-bytes'
+    before_actor = deepcopy(fanin.session.world().actor_state)
+    fanin.close()
+    shutil.copytree(root, frozen)
+    from developmental_recursion.p2_owner import load_p2
+    results = []
+    for index, action in enumerate(['PRODUCTION', 'TRANSFER']):
+        if index:
+            shutil.rmtree(root)
+            shutil.copytree(frozen, root)  # Keep the actual root-bound path unchanged.
+        opened = load_p2().open(root)
+        try:
+            h = HistoricalWorld(opened.session)
+            leased = h.lease()
+            proposal = candidate(leased, book, tool, entities, parent)
+            episode = proposal['occurrences'][0]
+            episode['action'] = action
+            episode['ref'] = exact('OCCURRENCE', 'alternative-material-past',
+                                   {k: v for k, v in episode.items() if k != 'ref'})
+            proposal['dependencies'][1]['parent_refs'] = [episode['ref']]
+            admitted = commit(h, leased, proposal)
+            assert admitted['status'] == 'INDEX_READY'
+            assert opened.session.world().actor_state == before_actor
+            target = h.target(book['id'])
+            assert target['surface']['physical'] == physical
+            assert h.query_depth(book['id'], consumer='ACTOR')['status'] == 'HELD'
+            assert h.query_relations(entities[0]['ref']['object_id'], consumer='USER')['status'] == 'HELD'
+            results.append((target['surface']['physical'], target['episode_refs'][0]['object_id']))
+        finally:
+            opened.close()
+    assert results[0][0] == results[1][0]
+    assert results[0][1] != results[1][1]

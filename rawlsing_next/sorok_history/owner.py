@@ -4,6 +4,7 @@ from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 from hashlib import sha256
+from functools import wraps
 import json
 import time
 from uuid import uuid4
@@ -49,11 +50,37 @@ class SurfaceParticular:
     unresolved: tuple[str, ...]
 
 
+def _scoped_read(method):
+    @wraps(method)
+    def read(self, *args, **kwargs):
+        with self._read_snapshot():
+            return method(self, *args, **kwargs)
+    return read
+
+
 class HistoricalWorld:
     """Use the same branch store, clock and checkpoint as the foreground owner."""
 
     def __init__(self, session):
         self.session = session
+
+    @contextmanager
+    def _read_snapshot(self):
+        # One synchronous reader shares one owner snapshot and source lookup set.
+        # Never retain a validated read across operations: source outage/revocation,
+        # canonical corruption and foreground changes must be seen on the next read.
+        if getattr(self, "_reading", None) is not None:
+            yield
+            return
+        self._reading = {"world": self.session.world(), "events": {}}
+        try:
+            yield
+        finally:
+            self._reading = None
+
+    def _read_world(self):
+        frame = getattr(self, "_reading", None)
+        return frame["world"] if frame is not None else self.session.world()
 
     def scope(self):
         return self.session.read_root()["root_hash"], self.session.branch_id
@@ -65,11 +92,16 @@ class HistoricalWorld:
         unknown into a negative material fact. The persisted negative control
         is usable only on the TEST_ONLY owner and grants no new access.
         """
-        world = self.session.world()
+        world = self._read_world()
         state = self._state(world)
         if event_id in state.get("test_only_unavailable_event_sources", {}):
             return None
-        return self.session.event(event_id)
+        frame = getattr(self, "_reading", None)
+        if frame is None:
+            return self.session.event(event_id)
+        if event_id not in frame["events"]:
+            frame["events"][event_id] = self.session.event(event_id)
+        return frame["events"][event_id]
 
     def test_withhold_event_source(self, event_id):
         with self._write() as (world, state):
@@ -652,6 +684,13 @@ class HistoricalWorld:
             checksum = digest(body)
             facts.append({**body, "ref": ref("KNOWN_FACT", "surface:" + checksum, checksum)})
         requested = job.get("requested_predicate")
+        if requested is None:
+            requirement = self._state(world).get("activity_requirements", {}).get(
+                job.get("activity_priority_requirement"), {})
+            if ((requirement.get("root"), requirement.get("branch"), requirement.get("target_id"))
+                    == (root, branch, target_id)
+                    and requirement.get("predicate") in PHYSICAL_TYPES):
+                requested = requirement["predicate"]  # Never send its expected answer.
         for predicate, row in sorted(target.get("physical_depth", {}).items()):
             facts.append({
                 "target_id": target_id, "predicate": predicate, "value": row["value"],
@@ -1003,9 +1042,10 @@ class HistoricalWorld:
             result.append(event)
         return result
 
+    @_scoped_read
     def history_graph(self):
         """Rebuild the bounded bidirectional projection from canonical episodes."""
-        world = self.session.world()
+        world = self._read_world()
         state = self._state(world)
         return self._build_history_graph(world, state)
 
@@ -1053,6 +1093,7 @@ class HistoricalWorld:
             state["graph_index"] = graph
             return deepcopy(graph)
 
+    @_scoped_read
     def query_relations(self, object_id, *, consumer="WORLD", max_hops=2):
         if consumer != "WORLD":
             return {"status": "HELD", "reason": "HISTORICAL_ACCESS_NOT_GRANTED", "edges": []}
@@ -1060,7 +1101,7 @@ class HistoricalWorld:
             raise HistoryRefusal("HISTORICAL_QUERY_BUDGET_INVALID")
         # Revalidate canonical episode sources before consuming the projection.
         graph = self.history_graph()
-        indexed = self._state(self.session.world()).get("graph_index")
+        indexed = self._state(self._read_world()).get("graph_index")
         if indexed is not None and indexed != graph:
             raise HistoryRefusal("HISTORICAL_INDEX_SOURCE_MISMATCH")
         rows = {edge["edge_id"]: edge for edge in graph["edges"]}
@@ -1084,9 +1125,10 @@ class HistoricalWorld:
                 "index_version": graph["index_version"], "edges": list(found.values()),
                 "actor_knowledge": "NOT_GRANTED", "user_knowledge": "NOT_GRANTED"}
 
+    @_scoped_read
     def qualified_physical_fact(self, target_id, predicate):
         """Read a committed fact only while every material parent remains valid."""
-        world = self.session.world()
+        world = self._read_world()
         state = self._state(world)
         target = state["targets"].get(target_id)
         if target is None:
@@ -1131,12 +1173,13 @@ class HistoricalWorld:
         validate(target, fact, set())
         return deepcopy(fact)
 
+    @_scoped_read
     def query_depth(self, target_id, *, consumer="WORLD"):
         """Typed world-side depth; perceptual and actor access are distinct APIs."""
         if consumer != "WORLD":
             return {"schema": "SOROK_HISTORICAL_DEPTH_READ@1", "status": "HELD",
                     "reason": "HISTORICAL_ACCESS_NOT_GRANTED", "physical": [], "episodes": []}
-        world = self.session.world()
+        world = self._read_world()
         state = self._state(world)
         target = state["targets"].get(target_id)
         if target is None:
@@ -1380,6 +1423,7 @@ class HistoricalWorld:
                     state["outbox"].setdefault(next_job, job)
             return deepcopy(event)
 
+    @_scoped_read
     def read_inspection(self, event_id):
         """Read only the physical evidence bound to an actual perceived inspection."""
         session = self.session

@@ -24,7 +24,7 @@ from rawlsing_next.sorok_history.admission import SCHEMA as ADMISSION_PACKET_SCH
 
 PROVIDER_CONTRACT_ID = "SOROK_HISTORICAL_MODEL_PROVIDER@1"
 RECEIPT_SCHEMA = "SOROK_HISTORICAL_MODEL_RECEIPT@1"
-PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@8"
+PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@10"
 
 LIVE_PROVIDER_NOT_RUN = "LIVE_PROVIDER_NOT_RUN"
 GRADE_NONE = "NONE"
@@ -381,6 +381,10 @@ def _prompt(packet: Mapping[str, Any]) -> str:
         "  - Each claim has a typed ref, dependency_group and asserted_H_class. A physical\n"
         "    fact also needs target_id, predicate, value and effective_time. For H0 physical\n"
         "    facts omit ref and the adapter will compute it from the proposed claim.\n"
+        "    New H0 physical effective_time must equal packet.time; an old root baseline\n"
+        "    does not establish a present property or permit a root-history write.\n"
+        "  - Keep links empty. The owner derives graph links from admitted occurrences\n"
+        "    and their typed participants; never invent fact_index link records.\n"
         "  - Each dependency has group_id, parent_refs, parent_groups and asserted_H_class.\n"
         "    Copy owner-supplied references exactly. Respect the surface and chronology.\n"
         "  - For unresolved physical dimensions, use only allowed_physical_predicates\n"
