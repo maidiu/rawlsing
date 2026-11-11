@@ -189,7 +189,8 @@ def test_h1_negative_group_preserves_independent_physical_fact(tmp_path, monkeyp
         fanin.close()
 
 
-def test_h1_material_parent_is_consumed_by_normal_p4_work_not_inspection(tmp_path, monkeypatch):
+@pytest.mark.parametrize("pending_first", [False, True])
+def test_h1_material_parent_is_consumed_by_normal_p4_work_not_inspection(tmp_path, monkeypatch, pending_first):
     from rawlsing_next.tests.test_sorok_history_activity import _work_cli
     from rawlsing_next.sorok_history.provider import HistoricalModelProvider
     p4 = ENGINE.parent / "SOROK-P4-FIRST-FULL-MPC-R1"
@@ -227,6 +228,13 @@ def test_h1_material_parent_is_consumed_by_normal_p4_work_not_inspection(tmp_pat
     state = tmp_path / "encounter"
     state.mkdir()
     new(state, state / "p4_receipts.json", "recognized_plan", establish=establish)
+    initial = open_owner(state / "actual-p2")
+    try:
+        initial_material = initial.base_owner.fanin.session.world().actor_state["A"]["material_remaining"]
+    finally:
+        initial.close()
+    if pending_first:
+        assert _work_cli(state, monkeypatch)["status"] == "HELD"
     async def transport(request):
         packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
         proposal = candidate({"packet": packet}, captured["first"], captured["second"],
@@ -237,6 +245,16 @@ def test_h1_material_parent_is_consumed_by_normal_p4_work_not_inspection(tmp_pat
         return {"text": json.dumps(proposal), "model": "mock-experimental-history"}
     admitted = run_history_worker(state, provider=HistoricalModelProvider(transport=transport))
     assert admitted["status"] == "INDEX_READY"
+    if pending_first:
+        assert admitted["activity"][0]["activity"]["status"] == "ADVANCED"
+        cold = open_owner(state / "actual-p2")
+        try:
+            current = cold.base_owner.fanin.session
+            assert current.world().actor_state["A"]["material_remaining"] == initial_material - 1
+            assert not any(e["kind"] == "INSPECT" for e in current.events())
+        finally:
+            cold.close()
+        return
     owner = open_owner(state / "actual-p2")
     try:
         session = owner.base_owner.fanin.session
@@ -349,5 +367,187 @@ def test_committed_history_link_activates_coalesced_t2_without_inspection(tmp_pa
             event = history.inspect(target["id"])
             assert history.read_inspection(event["event_id"])["physical"]
         assert history.target(book["id"])["episode_refs"] == history.target(tool["id"])["episode_refs"]
+    finally:
+        fanin.close()
+
+
+def test_cold_source_restoration_reuses_bound_candidate_without_a_provider(tmp_path, monkeypatch):
+    import asyncio
+    from rawlsing_next.sorok_history.runtime import run_once
+    fanin, history, book, tool, entities, source_ref = source_world(tmp_path, monkeypatch)
+    root = tmp_path / "world"
+    try:
+        leased = history.lease()
+        job = leased["job"]
+        proposal = candidate(leased, book, tool, entities, source_ref)
+        assert history.record_candidate(job["id"], job["lease_token"], proposal,
+                                        {"grade": "MOCK_NOT_LIVE"}) == "CANDIDATE_READY"
+        withheld = history.test_withhold_event_source(source_ref["object_id"])
+        held = history.commit_candidate(job["id"])
+        assert held["status"] == "SOURCE_HELD"
+        assert not any(e["kind"] == "HISTORICAL_MATERIAL" for e in fanin.session.events())
+        history.test_restore_event_source(withheld)
+    finally:
+        fanin.close()
+    from developmental_recursion.p2_owner import load_p2
+    cold = load_p2().open(root)
+    try:
+        history = HistoricalWorld(cold.session)
+        recovered = asyncio.run(run_once(history, None))
+        assert recovered["status"] == "INDEX_READY"
+        assert history.job(job["id"])["attempt"] == 1
+        assert history.job(job["id"])["source_holds"] == [held]
+        assert history.commit_candidate(job["id"]) == recovered
+        assert len([e for e in cold.session.events() if e["kind"] == "HISTORICAL_MATERIAL"]) == 1
+    finally:
+        cold.close()
+
+
+def test_sealed_root_is_not_replaced_by_fork_private_history(tmp_path, monkeypatch):
+    fanin, history, book, tool, entities, source_ref = source_world(tmp_path, monkeypatch)
+    root = tmp_path / "world"
+    try:
+        leased = history.lease()
+        assert commit(history, leased, candidate(leased, book, tool, entities, source_ref))["status"] == "INDEX_READY"
+        sealed = history.root_tool_baseline("workshop")
+        root_checkpoints = deepcopy(fanin.session.product.store.checkpoints("root"))
+        held = history.request_shared_precontact("artifact:shared-acquisition", ["provenance"])
+        assert held["reason"] == "ROOT_HISTORY_WRITE_NOT_GRANTED"
+        original_jobs = deepcopy(history._state(fanin.session.world())["outbox"])
+        assert history.request_shared_precontact("artifact:different-order", ["provenance"])["status"] == "HELD"
+        assert history._state(fanin.session.world())["outbox"] == original_jobs
+        fanin.session.fork_alt("experimental-h1-child")
+        assert history.root_tool_baseline("workshop") == sealed
+        assert history.target(book["id"]) is None
+        assert history.query_relations(book["id"])["status"] == "UNKNOWN"
+        assert history.request_shared_precontact("artifact:shared-acquisition", ["provenance"]) == held
+        assert fanin.session.product.store.checkpoints("root") == root_checkpoints
+        fanin.session.fork_alt("experimental-h1-nested")
+        assert history.target(tool["id"]) is None
+        assert history.query_relations(entities[0]["ref"]["object_id"])["edges"] == []
+    finally:
+        fanin.close()
+    from developmental_recursion.p2_owner import load_p2
+    cold = load_p2().open(root)
+    try:
+        history = HistoricalWorld(cold.session)
+        assert history.root_tool_baseline("workshop") == sealed
+        assert history.request_shared_precontact("artifact:shared-acquisition", ["provenance"]) == held
+        assert history.lease() is None
+    finally:
+        cold.close()
+
+
+def test_cold_deleted_canonical_episode_is_rejected_then_exact_bytes_restore(tmp_path, monkeypatch):
+    """Privileged corruption of this disposable fixture, not a runtime write API.
+
+    The append-only trigger is removed only on the closed test database to
+    simulate a hostile owner bypass. Normal runtime triggers remain unchanged.
+    """
+    import sqlite3
+    fanin, history, book, tool, entities, source_ref = source_world(tmp_path, monkeypatch)
+    root = tmp_path / "world"
+    try:
+        leased = history.lease()
+        assert commit(history, leased, candidate(leased, book, tool, entities, source_ref))["status"] == "INDEX_READY"
+        episode_id = history.target(book["id"])["episode_refs"][0]["object_id"]
+        inspected = history.inspect(book["id"])
+        public = history.read_inspection(inspected["event_id"])
+        depth = history.query_depth(book["id"])
+        graph = history.history_graph()
+        database = Path(fanin.session.product.store.path)
+        assert tmp_path.resolve() in database.resolve().parents
+    finally:
+        fanin.close()
+    original = database.read_bytes()
+    from developmental_recursion.p2_owner import load_p2
+    try:
+        with sqlite3.connect(database) as connection:
+            connection.execute("DROP TRIGGER world_event_no_delete")
+            removed = connection.execute("DELETE FROM world_event WHERE event_id=?", (episode_id,))
+            assert removed.rowcount == 1
+        with pytest.raises(ValueError, match="S37_PROVENANCE_MISMATCH") as refused:
+            load_p2().open(root)
+        assert '"c12_branch_ok": false' in str(refused.value)
+    finally:
+        database.write_bytes(original)
+    restored = load_p2().open(root)
+    try:
+        history = HistoricalWorld(restored.session)
+        assert history.query_depth(book["id"]) == depth
+        assert history.history_graph() == graph
+        assert history.read_inspection(inspected["event_id"]) == public
+        assert restored.session.product.c12_verify(restored.session.branch_id)["ok"]
+    finally:
+        restored.close()
+
+
+def test_actor_testimony_is_not_a_world_history_policy_source(tmp_path, monkeypatch):
+    fanin, history, book, tool, entities, _ = source_world(tmp_path, monkeypatch, grant=False)
+    try:
+        speech = next(event for event in fanin.session.events() if event["kind"] == "SPEECH")
+        ref = {"kind": "WORLD_EVENT", "object_id": speech["event_id"], "content_hash": speech["hash"]}
+        with pytest.raises(HistoryRefusal, match="H1_SOURCE_POLICY_INVALID"):
+            history.configure_experimental_history(source_event_ref=ref,
+                target_ids=[book["id"], tool["id"]], entities=[], earliest=speech["clock"])
+        assert "H1_OWNER_NOT_GRANTED" in history.lease()["packet"]["source_limits"]
+    finally:
+        fanin.close()
+
+
+def test_idle_is_bounded_coalesces_inspection_and_yields_to_new_causal_work(tmp_path, monkeypatch):
+    import asyncio
+    from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+    from rawlsing_next.sorok_history.runtime import run_once
+    fanin, history, book, tool, entities, source_ref = source_world(tmp_path, monkeypatch, grant=False)
+    calls = []
+    async def transport(request):
+        packet = json.loads(request["prompt"].split("Packet:\n", 1)[1])
+        calls.append(packet)
+        [target_id] = packet["target_ids"]
+        predicate = packet["surface"][target_id].get("requested_predicate", "texture")
+        value = {"texture": "matte", "color": "grey", "marking": "unmarked", "condition": "used"}[predicate]
+        fact = {"dependency_group": "detail", "asserted_H_class": "H0",
+                "target_id": target_id, "predicate": predicate, "value": value,
+                "effective_time": packet["time"]}
+        return {"model": "mock-idle", "text": json.dumps({
+            "request_id": packet["request_id"] , "facts": [fact], "occurrences": [], "links": [],
+            "dependencies": [{"group_id": "detail", "parent_refs": packet["event_refs"],
+                              "parent_groups": [], "asserted_H_class": "H0"}]})}
+    provider = HistoricalModelProvider(transport=transport)
+    try:
+        assert history.enqueue_idle()["reason"] == "CAUSAL_BACKLOG_FIRST"
+        for _ in range(2):
+            assert asyncio.run(run_once(history, provider))["status"] == "INDEX_READY"
+        [idle_id] = history.enqueue_idle()["jobs"]
+        idle = history.job(idle_id)
+        count = len(history._state(fanin.session.world())["outbox"])
+        history.inspect(idle["target_id"], predicate=idle["requested_predicate"])
+        assert len(history._state(fanin.session.world())["outbox"]) == count
+        assert history.job(idle_id)["inspection_priority_event"]
+        # An actively requested inspection is now urgent, and keeps the same job.
+        assert asyncio.run(run_once(history, provider))["job_id"] == idle_id
+        [idle_id] = history.enqueue_idle()["jobs"]
+        existing_surface = history.target(book["id"])["surface"]
+        new_target = history.admit_surface(SurfaceParticular(
+            existing_surface["occurrence_id"], "source:spare-measuring-piece", "item",
+            existing_surface["location"], {"condition": "used"}, ("physical",)))
+        urgent = history.lease()
+        assert urgent["target"]["id"] == new_target["id"]
+        assert urgent["job"]["trigger"] == "NEW_WORLD_PARTICULAR"
+        history.record_failure(urgent["job"]["id"], urgent["job"]["lease_token"],
+                               "TEST_SOURCE_WORK_CANCELED", retryable=False)
+        assert asyncio.run(run_once(history, provider))["job_id"] == idle_id
+        for _ in range(8):
+            queued = history.enqueue_idle()
+            if queued["status"] == "NO_WORK":
+                break
+            assert asyncio.run(run_once(history, provider))["status"] == "INDEX_READY"
+        else:
+            pytest.fail("idle overhang did not reach its finite budget")
+        counts = history._state(fanin.session.world())["idle_generations"]
+        assert max(counts.values()) == 2
+        assert len(calls) <= 2 + 2 * 3
+        assert history.enqueue_idle()["status"] == "NO_WORK"
     finally:
         fanin.close()

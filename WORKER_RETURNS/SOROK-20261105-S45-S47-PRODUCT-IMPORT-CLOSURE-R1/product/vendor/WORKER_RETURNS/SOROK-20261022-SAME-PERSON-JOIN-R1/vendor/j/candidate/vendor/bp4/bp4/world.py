@@ -121,6 +121,7 @@ class WorldState:
                        if e["event_id"] == source_event_ref.get("object_id")
                        and e["hash"] == source_event_ref.get("content_hash")), None)
         if (source is None or source_event_ref.get("kind") != "WORLD_EVENT"
+                or source.get("kind") not in {"ARRIVAL", "MOVE", "REPAIR", "OFFSCREEN_REPAIR"}
                 or type(earliest) is not int or earliest < source["clock"]
                 or earliest > self.clock or not root or not branch
                 or not target_ids or len(set(target_ids)) != len(target_ids)

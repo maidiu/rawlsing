@@ -351,7 +351,7 @@ def wake_history_worker(state, *, candidate_ready=False):
         print("Historical worker wake failed; durable demand retained.", file=sys.stderr)
 
 
-def run_history_worker(state, *, drain_backlog=False, provider=None):
+def run_history_worker(state, *, drain_backlog=False, provider=None, idle=False):
     """Use the foreground lock only for local owner operations."""
     import asyncio
 
@@ -370,6 +370,8 @@ def run_history_worker(state, *, drain_backlog=False, provider=None):
             check_source(owner)
             history = HistoricalWorld(owner.base_owner.fanin.session)
             history.recover_completed_units()
+            if idle:
+                history.enqueue_idle(max_jobs=1)
             before = owner.snapshot().document()
         service = drain if drain_backlog else run_once
         result = asyncio.run(service(
@@ -407,6 +409,8 @@ def main():
     commands.add_parser("work")
     worker = commands.add_parser("history-worker")
     worker.add_argument("--drain", action="store_true")
+    worker.add_argument("--idle", action="store_true",
+                        help="Opt into one bounded, low-priority physical enrichment job.")
     say = commands.add_parser("say")
     say.add_argument("text")
     say.add_argument("--request-edge", action="store_true",
@@ -430,7 +434,7 @@ def main():
     recover_history = candidate_ready = False
     try:
         if args.command == "history-worker":
-            print(json.dumps(run_history_worker(state, drain_backlog=args.drain), ensure_ascii=False))
+            print(json.dumps(run_history_worker(state, drain_backlog=args.drain, idle=args.idle), ensure_ascii=False))
             return 0
         with foreground_lock(state):
             if args.command == "new":

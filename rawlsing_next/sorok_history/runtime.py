@@ -9,6 +9,9 @@ from rawlsing_next.sorok_history.provider import HistoricalModelProviderError
 async def run_once(history, provider, *, lease_seconds=120, guard=nullcontext):
     """Resume a stored candidate first, or request and admit one new proposal."""
     with guard():
+        reconcile = getattr(history, "reconcile_source_holds", None)
+        if reconcile is not None:
+            reconcile()
         ready_id = history.ready_candidate_id()
         if ready_id is not None:
             return history.commit_candidate(ready_id)

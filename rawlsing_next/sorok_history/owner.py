@@ -111,6 +111,30 @@ class HistoricalWorld:
             "tool_available": available,
         }
 
+    def request_shared_precontact(self, target_key, dimensions):
+        """Do not turn a branch-local candidate into a write to a sealed root.
+
+        The existing C12 owner provides immutable root checkpoints, but exposes
+        no qualified public root-history admission/compatibility capability.
+        Return that exact missing owner permission; never enqueue a user- or
+        branch-dependent replacement and call it common pre-contact canon.
+        """
+        if (not isinstance(target_key, str) or not target_key or len(target_key) > 512
+                or not isinstance(dimensions, (list, tuple)) or not dimensions
+                or not set(dimensions) <= DIMENSIONS):
+            raise HistoryRefusal("INVALID_SHARED_HISTORY_REQUEST")
+        store = self.session.product.store
+        if not self.session.product.c12_verify("root").get("ok"):
+            raise HistoryRefusal("HISTORICAL_ROOT_BASELINE_UNVERIFIED")
+        checkpoint = store.checkpoints("root")[0]
+        return {"schema": "SOROK_ROOT_HISTORY_REQUEST@1", "status": "HELD",
+                "reason": "ROOT_HISTORY_WRITE_NOT_GRANTED", "target_key": target_key,
+                "dimensions": sorted(set(dimensions)), "root": self.scope()[0],
+                "root_checkpoint_hash": checkpoint["hash"],
+                "owner": type(store).__module__ + "." + type(store).__name__,
+                "missing_capability": "PUBLIC_PRECONTACT_ADMISSION_AND_ALL_FORK_COMPATIBILITY",
+                "queued_jobs": [], "provider_called": False}
+
     def _state(self, world):
         root, branch = self.scope()
         state = world.resources.get(RESOURCE)
@@ -511,11 +535,88 @@ class HistoricalWorld:
         return tuple(deepcopy(job) for job in state["outbox"].values()
                      if job["status"] == "ENQUEUED")
 
+    def enqueue_idle(self, *, max_jobs=1):
+        """T6: opt-in bounded physical overhang, below actual causal demand.
+
+        No user history or desired answer is an input. Two optional generations
+        per canonical target bound enrichment; source/actor/root holds are never
+        converted into permission by idle time.
+        """
+        if type(max_jobs) is not int or not 1 <= max_jobs <= 2:
+            raise HistoryRefusal("HISTORICAL_IDLE_BUDGET_INVALID")
+        with self._write() as (world, state):
+            active = {"ENQUEUED", "RUNNING", "CANDIDATE_READY", "FAILED_RETRYABLE"}
+            if any(job["status"] in active for job in state["outbox"].values()):
+                return {"status": "NO_WORK", "reason": "CAUSAL_BACKLOG_FIRST", "jobs": []}
+            counts = state.setdefault("idle_generations", {})
+            jobs = []
+            for target_id, target in sorted(state["targets"].items()):
+                if len(jobs) >= max_jobs:
+                    break
+                if counts.get(target_id, 0) >= 2 or "physical" not in target["surface"]["unresolved"]:
+                    continue
+                parent = self._source_event(target["surface"]["occurrence_id"])
+                if parent is None or parent.get("hash") != target["parent_hash"]:
+                    continue
+                known = set(target["surface"]["physical"]) | set(target.get("physical_depth", {}))
+                attempted = {job.get("requested_predicate") for job in state["outbox"].values()
+                             if job["target_id"] == target_id}
+                remaining = sorted(VISIBLE_PHYSICAL - known - attempted)
+                if not remaining:
+                    continue
+                predicate = remaining[0]
+                job_id = "history-job:" + digest([target_id, "IDLE_ENRICHMENT", predicate])
+                state["outbox"][job_id] = {
+                    "id": job_id, "target_id": target_id, "root": state["root"], "branch": state["branch"],
+                    "status": "ENQUEUED", "trigger": "IDLE_ENRICHMENT", "dimensions": ["physical"],
+                    "requested_predicate": predicate, "target_version": target["version"],
+                    "parent_hash": target["parent_hash"], "generation_depth": counts.get(target_id, 0) + 1}
+                counts[target_id] = counts.get(target_id, 0) + 1
+                jobs.append(job_id)
+            return {"status": "ENQUEUED" if jobs else "NO_WORK", "jobs": jobs}
+
 
     def ready_candidate_id(self):
         state = self._state(self.session.world())
         return next((job_id for job_id, job in state["outbox"].items()
                      if job["status"] == "CANDIDATE_READY"), None)
+
+    def reconcile_source_holds(self):
+        """Recover bounded missing-source holds using current authoritative reads.
+
+        An owner-rights refusal is never lifted here. A saved candidate is
+        reused only if its original packet and world/target readset match after
+        restoration; otherwise the existing bounded stale/retry path applies.
+        """
+        restored = []
+        with self._write() as (world, state):
+            for job in state["outbox"].values():
+                if len(restored) >= 3:
+                    break
+                admission = job.get("admission", {})
+                if (job["status"] != "SOURCE_HELD"
+                        or admission.get("reason") != "HISTORICAL_PARENT_MISSING"):
+                    continue
+                target = state["targets"].get(job["target_id"])
+                if target is None:
+                    continue
+                try:
+                    packet = self._constraint_packet(world, target, job)
+                except HistoryRefusal:
+                    continue
+                job.setdefault("source_holds", []).append(deepcopy(admission))
+                job.pop("admission", None)
+                if job.get("candidate") is not None:
+                    same = (job.get("world_readset") == self._world_readset(world)
+                            and job["target_version"] == target["version"]
+                            and job.get("packet_hash") == digest(packet))
+                    job["status"] = "CANDIDATE_READY" if same else "STALE"
+                elif job.get("attempt", 0) < 3:
+                    job["status"] = "ENQUEUED"
+                else:
+                    job["status"] = "FAILED_TERMINAL"
+                restored.append(job["id"])
+        return restored
 
     def _prior_repair_context(self, world, state, target):
         event = self._source_event(target["surface"]["occurrence_id"])
@@ -670,6 +771,7 @@ class HistoricalWorld:
                 key=lambda job: ("activity_priority_requirement" not in job,
                                  "inspection_priority_event" not in job,
                                  job.get("trigger") != "HISTORY_DEPENDENCY",
+                                 job.get("trigger") == "IDLE_ENRICHMENT",
                                  job["status"] == "STALE"),
             )
             for job in jobs:
@@ -948,6 +1050,9 @@ class HistoricalWorld:
         if indexed is not None and indexed != graph:
             raise HistoryRefusal("HISTORICAL_INDEX_SOURCE_MISMATCH")
         rows = {edge["edge_id"]: edge for edge in graph["edges"]}
+        if object_id not in graph["by_node"]:
+            return {"status": "UNKNOWN", "reason": "NO_QUALIFIED_RELATION_YET",
+                    "edges": [], "index_version": graph["index_version"]}
         frontier, visited, found = {object_id}, set(), {}
         for _ in range(max_hops):
             next_frontier = set()
@@ -1207,6 +1312,13 @@ class HistoricalWorld:
             job = state["outbox"].get(target.get("job_id"), {})
             job_status = job.get("status")
             active = {"ENQUEUED", "RUNNING", "CANDIDATE_READY", "FAILED_RETRYABLE"}
+            covering = next((row for row in state["outbox"].values()
+                             if row["target_id"] == target_id and row["status"] in active
+                             and "physical" in row["dimensions"]
+                             and (row.get("requested_predicate") is None
+                                  or row.get("requested_predicate") == predicate)), None)
+            if covering is not None:
+                job, job_status = covering, covering["status"]
             next_job = None
             known = set(visible) | set(target["surface"]["physical"])
             if (predicate is not None and predicate not in known
