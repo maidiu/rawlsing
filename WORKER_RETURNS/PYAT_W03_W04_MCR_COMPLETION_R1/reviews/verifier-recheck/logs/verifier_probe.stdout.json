@@ -1,0 +1,107 @@
+{
+  "candidate": "255f63d6bf133c1a83c833698ac05c35d5db5462",
+  "results": {
+    "api_bad_grade": {
+      "errors": [
+        "MCR_C_INSUFFICIENT_EVIDENCE_GRADE_OBL-A"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_copy_outside": {
+      "errors": [],
+      "status": "READY_FOR_INDEPENDENT_RECEIVING"
+    },
+    "api_extra_id": {
+      "errors": [
+        "MCR_C_UNCONTRACTED_PROOF_OBL-EXTRA"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_missing_id": {
+      "errors": [
+        "MCR_C_MISSING_PROOF_OBL-B"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_no_path": {
+      "errors": [
+        "MCR_C_EVIDENCE_EXTERNALITY_UNVERIFIED"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_path_text_mismatch": {
+      "errors": [],
+      "status": "READY_FOR_INDEPENDENT_RECEIVING"
+    },
+    "api_positive_external": {
+      "errors": [],
+      "status": "READY_FOR_INDEPENDENT_RECEIVING"
+    },
+    "api_symlink_to_tracked": {
+      "errors": [
+        "MCR_C_EVIDENCE_TRACKED_AT_CANDIDATE"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_tracked": {
+      "errors": [
+        "MCR_C_EVIDENCE_TRACKED_AT_CANDIDATE"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "cli_path_text_mismatch": {
+      "payload": {
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+        "candidate_sha": "255f63d6bf133c1a83c833698ac05c35d5db5462",
+        "contract_sha256": "9523e6d764dfcf5b8264b5d0a767537510b74e1f18d53715c0115d4e87ded389",
+        "errors": [
+          "MCR_C_EXACT_ONE_SCOPE_COVERAGE_REQUIRED",
+          "MCR_C_MISSING_OR_DUPLICATE_BLOCK_MCR_COMPLETION_EVIDENCE_BEGIN",
+          "MCR_C_MISSING_PROOF_OBL-A",
+          "MCR_C_MISSING_PROOF_OBL-B"
+        ],
+        "evidence_externality": "OUTSIDE_CANDIDATE_ROOT__UNTRACKED",
+        "evidence_externality_scope": "REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE",
+        "expected_identity_count": 2,
+        "status": "RED_INCOMPLETE",
+        "verified_obligation_count": 0
+      },
+      "returncode": 2
+    },
+    "cli_positive_external": {
+      "payload": {
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+        "candidate_sha": "255f63d6bf133c1a83c833698ac05c35d5db5462",
+        "contract_sha256": "9523e6d764dfcf5b8264b5d0a767537510b74e1f18d53715c0115d4e87ded389",
+        "errors": [],
+        "evidence_externality": "OUTSIDE_CANDIDATE_ROOT__UNTRACKED",
+        "evidence_externality_scope": "REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE",
+        "expected_identity_count": 2,
+        "status": "READY_FOR_INDEPENDENT_RECEIVING",
+        "verified_obligation_count": 2
+      },
+      "returncode": 0
+    },
+    "cli_tracked": {
+      "payload": {
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+        "candidate_sha": "255f63d6bf133c1a83c833698ac05c35d5db5462",
+        "contract_sha256": "9523e6d764dfcf5b8264b5d0a767537510b74e1f18d53715c0115d4e87ded389",
+        "errors": [
+          "MCR_C_EVIDENCE_TRACKED_AT_CANDIDATE",
+          "MCR_C_EXACT_ONE_SCOPE_COVERAGE_REQUIRED",
+          "MCR_C_MISSING_OR_DUPLICATE_BLOCK_MCR_COMPLETION_EVIDENCE_BEGIN",
+          "MCR_C_MISSING_PROOF_OBL-A",
+          "MCR_C_MISSING_PROOF_OBL-B"
+        ],
+        "evidence_externality": "TRACKED_AT_CANDIDATE__REJECTED",
+        "evidence_externality_scope": "REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE",
+        "expected_identity_count": 2,
+        "status": "RED_INCOMPLETE",
+        "verified_obligation_count": 0
+      },
+      "returncode": 2
+    }
+  },
+  "runner": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]"
+}
