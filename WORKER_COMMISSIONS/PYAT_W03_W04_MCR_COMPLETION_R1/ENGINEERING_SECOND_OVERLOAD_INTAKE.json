@@ -1,0 +1,17 @@
+{
+  "job": "pyat-w03-w04-mcr-engineering-overload-resume-r2",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-engineering-overload-resume-r2/completion.json",
+  "exit_code": 1,
+  "provider_error": {
+    "type": "provider.rate-limit",
+    "message": "The inference service is overloaded. Please try again later.",
+    "status": 429,
+    "response": {
+      "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"The inference service is overloaded. Please try again later.\"}}"
+    }
+  },
+  "disposition": "SECOND_TERMINAL_OVERLOAD__REVIEW_NOT_DELIVERED__NO_FURTHER_AUTORETRY",
+  "goal_complete": false,
+  "automatic_goal_checks": "PAUSED",
+  "final_MCR_receiving": "Stillrequired, notwaived"
+}

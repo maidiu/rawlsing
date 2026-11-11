@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T02:20:34.346024+00:00",
+  "saved_utc": "2026-11-11T02:21:48.964866+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -199,10 +199,22 @@
       "job": "pyat-w03-w04-mcr-engineering-overload-resume-r2",
       "pid": 38400,
       "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
-      "status": "LAUNCHED_MODEL_TURN_PENDING",
+      "status": "TERMINAL_SECOND_PROVIDER_OVERLOAD__RECEIVING_CAPACITY_HOLD_NO_MORE_AUTO_RETRY",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-engineering-review-r1",
       "retry_budget": "Oneboundedretry; furtheroverloadrequirescapacityhold, noautoloop",
-      "predecessor": "pyat-w03-w04-mcr-engineering-receiving-r1"
+      "predecessor": "pyat-w03-w04-mcr-engineering-receiving-r1",
+      "terminal": {
+        "exit_code": 1,
+        "finished_utc": "2026-11-11T02:18:00.260634+00:00",
+        "error": {
+          "type": "provider.rate-limit",
+          "message": "The inference service is overloaded. Please try again later.",
+          "status": 429,
+          "response": {
+            "body": "{\"error\":{\"type\":\"server_error\",\"message\":\"The inference service is overloaded. Please try again later.\"}}"
+          }
+        }
+      }
     },
     {
       "lane": "persistence-repair",
@@ -248,5 +260,13 @@
     "old_worker_worktrees_untouched": true
   },
   "goal_wakeups": "PAUSED_BY_USER__TERMINAL_NOTIFICATIONS_ONLY",
-  "mcr_review_discipline": "Engineeringandeconomicreceiversseparatenonauthors; W04lanereviewnotreplacement. Exactly12IDs, authorcannotcertifycomplete; finalsameSHAandclaim-specificsource/executedevidence mandatory."
+  "mcr_review_discipline": "Engineeringandeconomicreceiversseparatenonauthors; W04lanereviewnotreplacement. Exactly12IDs, authorcannotcertifycomplete; finalsameSHAandclaim-specificsource/executedevidence mandatory.",
+  "engineering_receiving_hold": {
+    "attempts": 2,
+    "same_failure": "Inference serviceoverloaded HTTP429",
+    "verdict": null,
+    "next_action": "No automaticretry. Resumequalifiedindependentwholeengineeringreview whenprovidercapacity restored or atnewfinalcandidate withexplicitboundeddispatch; no model/provider/accountswitch, no replacementbyselfacceptance.",
+    "scope": "Reviewlaneonly; continueindependentauthors/economicwork",
+    "goal_complete": false
+  }
 }
