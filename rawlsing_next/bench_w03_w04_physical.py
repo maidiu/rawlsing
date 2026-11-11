@@ -26,21 +26,16 @@ from typing import Any, Iterable, Mapping
 
 # The source root is imported from PYTHONPATH by the parent/child launcher.  A
 # baseline run can invoke this same file with the baseline root on PYTHONPATH.
-from rawlsing_next._pre553_c11_execution_view import _compact_public_objects
-from rawlsing_next.pre553_c11_ingest import validate_c11_source_release
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_carrier_execution import CarrierNeutralResearchExecutor, RuntimeObjectCatalog
 from rawlsing_next.tests.test_pre553_discovery_exact import _atom, _d_auth, _discovery_authority, _grammar, _qt, _rule
 from rawlsing_next.tests.test_pre553_empirical_query import _branch_predicate, _predicate, _query, _response_leaf
-from rawlsing_next.pre553_empirical_objects import ExactRef, RoutingEligibilityFact, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, RespondentEvent, RoutingEligibilityFact, canonical_json, semantic_hash
 from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier
 from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState
 from rawlsing_next.pre553_source_backed_c11_facade import (
-    CONTRACT_ID,
     ExactPhysicalCellStream,
-    R5_CODEC_VERSION,
     build_source_backed_c11_repository,
-    project_c11_candidate_from_physical_cells,
     source_backed_facade_key,
 )
 from rawlsing_next.tests.test_pre553_route_b_production import _fixture
@@ -313,85 +308,159 @@ def _profile(name: str, rows: int) -> dict[str, Any]:
     }
 
 
-def _physical_binding(profile: Mapping[str, Any], catalog) -> Any:
-    stream = profile["stream"]
-    return {
-        "decoder_metadata": stream.decoder_metadata_digest,
-        "transport": stream.transport_identity,
-        "facade_contract": CONTRACT_ID,
-        "value_codec": R5_CODEC_VERSION,
-        "current_authorities": sorted(snapshot.ref.key for snapshot in catalog.authorities),
+POLICY_ENV = "RAWLSING_C11_ACCELERATOR_POLICY"
+LEGACY_ENV = "RAWLSING_C11_ACCELERATOR_DIR"
+DERIVED_CACHE_GLOB = "c11-events-*.parquet"
+
+
+def _derived_state(root: Path) -> dict[str, Any]:
+    files = sorted(root.glob(DERIVED_CACHE_GLOB)) if root.exists() else []
+    entries = []
+    for path in files:
+        try:
+            info = path.stat()
+            entries.append({
+                "name": path.name,
+                "size": info.st_size,
+                "mtime_ns": info.st_mtime_ns,
+            })
+        except OSError:
+            continue
+    envelope = None
+    if files:
+        try:
+            import pyarrow.parquet as pq
+            metadata = pq.read_schema(files[0]).metadata or {}
+            raw = metadata.get(b"rawlsing.c11.event_accelerator.envelope")
+            if raw:
+                envelope = json.loads(raw.decode("utf-8"))
+        except Exception:
+            envelope = None
+    return {"root": str(root), "files": entries, "envelope": envelope}
+
+
+def _ensure_policy(base_root: Path) -> tuple[Path, Path]:
+    base_root.mkdir(parents=True, exist_ok=True)
+    derived = base_root / "derived-accelerator"
+    derived.mkdir(mode=0o700, exist_ok=True)
+    derived.chmod(0o700)
+    policy_path = base_root / "accelerator-policy.json"
+    policy = {
+        "schema": "PYAT_C11_ACCELERATOR_POLICY@1",
+        "enabled": True,
+        "root": str(derived.resolve()),
+        "source_permission": "NONRESPONDENT_SOURCEFREE",
+        "authorization_id": "sourcefree-w03-w04-benchmark",
+        "retention_budget": {
+            "max_bytes": 268_435_456,
+            "max_files": 4,
+            "max_age_seconds": 86_400,
+        },
     }
+    policy_path.write_text(json.dumps(policy, sort_keys=True) + "\n", encoding="utf-8")
+    policy_path.chmod(0o600)
+    os.environ[POLICY_ENV] = str(policy_path.resolve())
+    os.environ.pop(LEGACY_ENV, None)
+    return derived, policy_path
 
 
-def _build_release(profile: Mapping[str, Any], *, stages: dict[str, Any]) -> tuple[Any, dict[str, Any]]:
+def _event_count(release: Any) -> int:
+    public = release.public_objects
+    lane = getattr(public, "lane", None)
+    selectors = getattr(lane, "selectors", None)
+    if selectors is not None:
+        return len(selectors)
+    return sum(1 for obj in public if isinstance(obj, RespondentEvent))
+
+
+def _build_release(
+    profile: Mapping[str, Any], *, root: Path | None, stages: dict[str, Any]
+) -> tuple[Any, dict[str, Any]]:
     stream = profile["stream"]
     projection = profile["projection"]
     catalog = profile["catalog"]
+    derived = None
+    before = {"root": "", "files": [], "envelope": None}
+    policy_started = time.perf_counter()
+    if root is not None:
+        derived, policy_path = _ensure_policy(root)
+        before = _derived_state(derived)
+    else:
+        policy_path = None
+    method_overhead = time.perf_counter() - policy_started
+    stages["policy_setup"] = {
+        "stage": "policy_setup",
+        "wall_seconds": method_overhead,
+        "status": "ACTUAL_GOVERNED_POLICY_FILE_AND_DERIVED_ROOT_SETUP" if policy_path else "NO_DERIVED_ROOT",
+    }
 
-    # Profile/projection construction is already complete before this call; the
-    # exact candidate boundary covers object construction and canonical closure
-    # hashing because the current public facade exposes no separator between
-    # those two steps.
-    candidate, candidate_stage = _stage(
-        "projection_objectconstruction_canonicalhash",
-        lambda: project_c11_candidate_from_physical_cells(
-            source_sha256=stream.source_sha256,
-            row_count=stream.row_count,
-            cells=stream.iter_cells(),
-            projection=projection,
+    # The actual normal caller path: current exact physical stream + governed
+    # projection -> streaming cold C11 -> I02 validation/seal -> governed
+    # compact cache attachment.  It is kept as one honest combined boundary;
+    # the current public facade exposes no separable I02 sub-stage.
+    (repository, release), normal_stage = _stage(
+        "normal_current_cold_build",
+        lambda: build_source_backed_c11_repository(
+            stream,
+            projection,
+            current_authorities=catalog.authorities,
         ),
     )
-    stages[candidate_stage["stage"]] = candidate_stage
+    stages[normal_stage["stage"]] = normal_stage
     stages["cells"] = {
         "stage": "cells",
         "wall_seconds": profile["cell_stats"]["generation_seconds"],
         "rss_peak_bytes": _rss_peak_bytes(),
         "cell_count": profile["cell_stats"]["count"],
-        "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_PROJECTION_STAGE",
+        "status": "OBSERVED_LAZY_CELL_ITERATION__PEAK_INCLUDED_IN_NORMAL_COLD_BUILD",
     }
     stages["decode"] = {
         "stage": "decode",
         "status": "NOT_APPLICABLE__EXACT_PHYSICAL_CELL_STREAM__NO_SOURCE_DECODE",
         "wall_seconds": 0.0,
     }
-    stages["projection"] = {
-        "stage": "projection",
-        "status": "PROFILE_PROJECTION_BUILT_BEFORE_STAGE__EXACT_GOVERNED_PROJECTION",
-        "rss_peak_bytes": _rss_peak_bytes(),
+    stages["cold_combined"] = {
+        **normal_stage,
+        "stage": "cold_combined",
+        "status": "STREAMING_CELLS__OBJECT_CONSTRUCTION__CANONICAL_HASH__I02_VALIDATION_SEAL__GOVERNED_CACHE_ATTACH__COMBINED_PUBLIC_PATH",
     }
-    stages["objectconstruction"] = {
-        "stage": "objectconstruction",
-        "status": "COMBINED_WITH_CANONICALHASH_AT_PUBLIC_CANDIDATE_BOUNDARY",
-        "wall_seconds": candidate_stage["wall_seconds"],
-    }
-    stages["canonicalhash"] = {
-        "stage": "canonicalhash",
-        "status": "COMBINED_WITH_OBJECTCONSTRUCTION_AT_PUBLIC_CANDIDATE_BOUNDARY",
-        "wall_seconds": candidate_stage["wall_seconds"],
-    }
-
-    release, seal_stage = _stage(
-        "i02_validation_seal",
-        lambda: validate_c11_source_release(candidate),
+    for alias in ("projection", "objectconstruction", "canonicalhash", "i02validation", "seal", "compact"):
+        stages[alias] = {
+            "stage": alias,
+            "status": "COMBINED_INSIDE_NORMAL_CURRENT_COLD_BUILD__NO_PUBLIC_SEPARABLE_BOUNDARY",
+            "wall_seconds": None,
+            "rss_peak_bytes": normal_stage["rss_peak_bytes"],
+        }
+    after = _derived_state(derived) if derived is not None else {"root": "", "files": [], "envelope": None}
+    before_keys = {(x["name"], x["size"], x["mtime_ns"]) for x in before["files"]}
+    after_keys = {(x["name"], x["size"], x["mtime_ns"]) for x in after["files"]}
+    derived_hit = bool(before["files"]) and before_keys == after_keys
+    derived_write = bool(after["files"]) and before_keys != after_keys
+    derived_status = (
+        "HIT_EXACT_ENVELOPE_AND_MTIME" if derived_hit
+        else "MISS_WRITE_NEW_OR_REPLACED" if derived_write
+        else "NO_GOVERNED_DERIVED_CACHE_WRITE"
     )
-    stages[seal_stage["stage"]] = seal_stage
-    stages["i02validation"] = {**seal_stage, "stage": "i02validation"}
-    stages["seal"] = {**seal_stage, "stage": "seal"}
-
-    key = source_backed_facade_key(stream, projection)
-    compact, compact_stage = _stage(
-        "compact",
-        lambda: _compact_public_objects(
-            release,
-            physical_binding=lambda: _physical_binding(profile, catalog),
-            projection_binding=key.projection_identity,
-        ),
-    )
-    stages["compact"] = compact_stage
-    if compact is not None:
-        release = replace(release, public_objects=compact)
-    return release, {"projection_identity": key.projection_identity, "compact": compact is not None}
+    stages["derived_cache"] = {
+        "stage": "derived_cache",
+        "status": derived_status,
+        "before": before,
+        "after": after,
+        "derived_cache_hit": derived_hit,
+        "derived_cache_write": derived_write,
+        "derived_cache_miss": bool(after["files"]) and not before["files"],
+        "policy_path": str(policy_path) if policy_path else None,
+    }
+    return release, {
+        "repository": repository,
+        "projection_identity": source_backed_facade_key(stream, projection).projection_identity,
+        "derived_cache": stages["derived_cache"],
+        "event_count": _event_count(release),
+        "replay_manifest_ref": release.replay_manifest.ref.as_dict(),
+        "method_overhead_seconds": method_overhead,
+        "cold_combined_wall_seconds": normal_stage["wall_seconds"],
+        "cold_combined_rss_peak_bytes": normal_stage["rss_peak_bytes"],
+    }
 
 
 def _consumer(profile: Mapping[str, Any], release: Any, *, stages: dict[str, Any]) -> dict[str, Any]:
@@ -421,8 +490,14 @@ def _consumer(profile: Mapping[str, Any], release: Any, *, stages: dict[str, Any
         }
     value, stage = _stage("firstconsumer", run)
     stages["firstconsumer"] = stage
+    value["consumer_fingerprint"] = hashlib.sha256(
+        canonical_json(value).encode("utf-8")
+    ).hexdigest()
     for _ in range(max(0, int(profile["repeat_count"]) - 1)):
         repeated, repeat_stage = _stage("repeat_firstconsumer", run)
+        repeated["consumer_fingerprint"] = hashlib.sha256(
+            canonical_json(repeated).encode("utf-8")
+        ).hexdigest()
         value = repeated
         stages.setdefault("repeat_firstconsumer", []).append(repeat_stage)
     return value
@@ -460,76 +535,93 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
         except (ValueError, OSError):
             output["cap_enforced"] = False
 
+    base_root = Path(args.worker_root) if args.worker_root else None
+    canonical_root = base_root / "canonical-carrier" if base_root is not None else None
+    selector_path = base_root / "selector.json" if base_root is not None else None
     if args.worker_scenario in {"warm", "reopen"}:
-        if root is None:
-            raise ValueError("warm/reopen requires a persisted carrier root")
-        selector_path = root / "selector.json"
+        if base_root is None or canonical_root is None or selector_path is None:
+            raise ValueError("warm/reopen requires persisted roots")
         if not selector_path.is_file():
             raise FileNotFoundError("persisted selector.json is missing")
+
+    release, release_meta = _build_release(profile, root=base_root, stages=stages)
+    output["source_sha256"] = profile["source_sha256"]
+    output["release_id"] = release.release_id
+    output["release_ref"] = release.release_ref.as_dict()
+    output["release_manifest_hash"] = release.source_release_manifest_hash
+    output["semantic_release_hash"] = release.semantic_release_hash
+    output["projection_identity"] = release_meta.get("projection_identity")
+    output["cell_count"] = profile["cell_stats"]["count"]
+    output["cell_generation_seconds"] = profile["cell_stats"]["generation_seconds"]
+    output["event_count"] = release_meta["event_count"]
+    output["replay_manifest_ref"] = release_meta.get("replay_manifest_ref")
+    output["method_overhead_seconds"] = release_meta.get("method_overhead_seconds")
+    output["rows"] = profile["rows"]
+    output["derived_cache"] = release_meta["derived_cache"]
+    output["normal_current_cold_build"] = True
+    output["cold_combined_wall_seconds"] = release_meta["cold_combined_wall_seconds"]
+    output["cold_combined_rss_peak_bytes"] = release_meta["cold_combined_rss_peak_bytes"]
+
+    consumer = _consumer(profile, release, stages=stages)
+    output["consumer"] = consumer
+    output["consumer_fact_count"] = sum(len(item["facts"]) for item in consumer["i03"])
+    output["consumer_fact_states"] = [
+        state for item in consumer["i03"] for state in item["fact_states"]
+    ]
+    output["consumer_fingerprint"] = consumer["consumer_fingerprint"]
+    output["i05_receipt_count"] = len(consumer["i05_receipt_refs"])
+    output["i05_fact_count"] = len(consumer["i05_fact_refs"])
+
+    if args.worker_scenario in {"full-matrix", "cold"} and base_root is not None:
+        derived_root = base_root / "derived-accelerator"
+        derived_files, derived_bytes = _cache_stats(derived_root)
+        output["derived_cache_files"], output["derived_cache_bytes"] = derived_files, derived_bytes
+        output["derived_cache_hit"] = bool(release_meta["derived_cache"]["derived_cache_hit"])
+        output["derived_cache_write"] = bool(release_meta["derived_cache"]["derived_cache_write"])
+        output["derived_cache_miss"] = bool(release_meta["derived_cache"]["derived_cache_miss"])
+        output["derived_cache_envelope"] = release_meta["derived_cache"]["after"]["envelope"]
+        if args.worker_scenario == "full-matrix":
+            carrier = ParquetC11Carrier(canonical_root)
+            directory, persist_stage = _stage("canonical_persist", lambda: carrier.persist(release))
+            stages["canonical_persist"] = persist_stage
+            output["canonical_persist_directory"] = str(directory)
+            output["canonical_files"], output["canonical_bytes"] = _cache_stats(canonical_root)
+            output["canonical_reopen_hit"] = False
+            selector_path.write_text(json.dumps({
+                "source_sha256": release.source_artifact_ref.content_hash,
+                "release_id": release.release_id,
+                "semantic_release_hash": release.semantic_release_hash,
+                "projection_identity": release_meta.get("projection_identity"),
+            }, sort_keys=True) + "\n", encoding="utf-8")
+    elif args.worker_scenario in {"warm", "reopen"}:
         selector = json.loads(selector_path.read_text(encoding="utf-8"))
-        carrier = ParquetC11Carrier(root)
+        carrier = ParquetC11Carrier(canonical_root)
         reopened, reopen_stage = _stage(
-            "reopen",
+            "canonical_reopen",
             lambda: carrier.reopen(
                 selector["source_sha256"],
                 selector["release_id"],
                 selector["semantic_release_hash"],
             ),
         )
-        stages["reopen"] = reopen_stage
-        output["source_sha256"] = profile["source_sha256"]
-        output["release_id"] = reopened.release_id
-        output["release_ref"] = reopened.release_ref.as_dict()
-        output["release_manifest_hash"] = reopened.source_release_manifest_hash
-        output["semantic_release_hash"] = reopened.semantic_release_hash
-        output["projection_identity"] = selector["projection_identity"]
-        output["compact"] = selector.get("compact")
-        output["cell_count"] = profile["cell_stats"]["count"]
-        output["cell_generation_seconds"] = profile["cell_stats"]["generation_seconds"]
-        output["reopened_release_ref"] = reopened.release_ref.as_dict()
-        consumer = _consumer(profile, reopened, stages=stages)
-        output["consumer"] = consumer
-        output["consumer_fact_count"] = sum(len(item["facts"]) for item in consumer["i03"])
-        output["consumer_fact_states"] = [
-            state for item in consumer["i03"] for state in item["fact_states"]
+        stages["canonical_reopen"] = reopen_stage
+        output["canonical_reopen_hit"] = True
+        output["canonical_reopened_release_ref"] = reopened.release_ref.as_dict()
+        canonical_consumer = _consumer(profile, reopened, stages={"canonical_firstconsumer": {}})
+        output["canonical_consumer_fingerprint"] = canonical_consumer["consumer_fingerprint"]
+        output["canonical_consumer_fact_states"] = [
+            state for item in canonical_consumer["i03"] for state in item["fact_states"]
         ]
-        output["i05_receipt_count"] = len(consumer["i05_receipt_refs"])
-        output["i05_fact_count"] = len(consumer["i05_fact_refs"])
-        output["cache_files"], output["cache_bytes"] = _cache_stats(root)
-        output["cache_hit"] = True
-    else:
-        release, release_meta = _build_release(profile, stages=stages)
-        output["source_sha256"] = profile["source_sha256"]
-        output["release_id"] = release.release_id
-        output["release_ref"] = release.release_ref.as_dict()
-        output["release_manifest_hash"] = release.source_release_manifest_hash
-        output["semantic_release_hash"] = release.semantic_release_hash
-        output["projection_identity"] = release_meta["projection_identity"]
-        output["compact"] = release_meta["compact"]
-        output["cell_count"] = profile["cell_stats"]["count"]
-        output["cell_generation_seconds"] = profile["cell_stats"]["generation_seconds"]
-        consumer = _consumer(profile, release, stages=stages)
-        output["consumer"] = consumer
-        output["consumer_fact_count"] = sum(len(item["facts"]) for item in consumer["i03"])
-        output["consumer_fact_states"] = [
-            state for item in consumer["i03"] for state in item["fact_states"]
-        ]
-        output["i05_receipt_count"] = len(consumer["i05_receipt_refs"])
-        output["i05_fact_count"] = len(consumer["i05_fact_refs"])
-        if args.worker_scenario in {"cold", "full-matrix"} and root is not None:
-            carrier = ParquetC11Carrier(root)
-            directory, persist_stage = _stage("persist", lambda: carrier.persist(release))
-            stages["persist"] = persist_stage
-            output["persist_directory"] = str(directory)
-            output["cache_files"], output["cache_bytes"] = _cache_stats(root)
-            output["cache_hit"] = False
-            (root / "selector.json").write_text(json.dumps({
-                "source_sha256": release.source_artifact_ref.content_hash,
-                "release_id": release.release_id,
-                "semantic_release_hash": release.semantic_release_hash,
-                "projection_identity": release_meta["projection_identity"],
-                "compact": release_meta["compact"],
-            }, sort_keys=True) + "\n", encoding="utf-8")
+        output["canonical_files"], output["canonical_bytes"] = _cache_stats(canonical_root)
+        derived_root = base_root / "derived-accelerator"
+        output["derived_cache_files"], output["derived_cache_bytes"] = _cache_stats(derived_root)
+        output["derived_cache_hit"] = bool(release_meta["derived_cache"]["derived_cache_hit"])
+        output["derived_cache_write"] = bool(release_meta["derived_cache"]["derived_cache_write"])
+        output["derived_cache_miss"] = bool(release_meta["derived_cache"]["derived_cache_miss"])
+        output["derived_cache_envelope"] = release_meta["derived_cache"]["after"]["envelope"]
+        output["cache_fingerprint_parity"] = (
+            output.get("consumer_fingerprint") == canonical_consumer["consumer_fingerprint"]
+        )
 
     user, system = _cpu_seconds()
     output["metrics"] = {
@@ -539,8 +631,8 @@ def _worker(args: argparse.Namespace) -> dict[str, Any]:
         "rss_peak_bytes": _rss_peak_bytes(),
         "source_opens": 0,
         "cache_write_amortization": (
-            float(stages["persist"]["wall_seconds"]) / max(1, int(profile["repeat_count"]))
-            if isinstance(stages.get("persist"), Mapping) else None
+            float(stages["canonical_persist"]["wall_seconds"]) / max(1, int(profile["repeat_count"]))
+            if isinstance(stages.get("canonical_persist"), Mapping) else None
         ),
     }
     return output
@@ -662,7 +754,7 @@ def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baselin
             if cold_root.exists():
                 shutil.rmtree(cold_root)
             rebuild_runs.append(_run_child(argparse.Namespace(
-                worker_scenario="cold",
+                worker_scenario="full-matrix",
                 worker_profile=profile,
                 worker_rows=args.rows,
                 worker_root=str(cold_root),
@@ -680,6 +772,11 @@ def _run_scenario(args: argparse.Namespace, scenario: str, profile: str, baselin
         "cold": {"aggregate": cold_aggregate, "runs": cold_runs},
         "warm": {"aggregate": warm_aggregate, "runs": warm_runs} if warm_runs else None,
         "delete_rebuild": {"aggregate": rebuild_aggregate, "runs": rebuild_runs} if rebuild_runs else None,
+        "actual_event_counts": {
+            "cold": [r.get("event_count") for r in cold_runs],
+            "warm": [r.get("event_count") for r in warm_runs],
+            "delete_rebuild": [r.get("event_count") for r in rebuild_runs],
+        },
         "cold_vs_baseline": _compare((baseline_for or {}).get("cold", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None, cold_aggregate),
         "warm_vs_baseline": _compare((baseline_for or {}).get("warm", {}).get("aggregate") if isinstance(baseline_for, Mapping) else None, warm_aggregate),
         "regressions": [],
@@ -730,9 +827,24 @@ def main(argv: list[str] | None = None) -> int:
         results[scenario] = {}
         for profile in profiles:
             results[scenario][profile] = _run_scenario(args, scenario, profile, baseline)
+    final_eligible = (
+        "full-matrix" in scenarios
+        and args.rows >= 100000
+        and args.repetitions >= 3
+        and set(profiles) == set(PROFILES)
+    )
     output = {
         "schema": SCHEMA,
         "generated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "final_matrix_eligible": final_eligible,
+        "final_matrix_requirements": {
+            "scenario": "full-matrix",
+            "profiles": list(PROFILES),
+            "rows_min": 100000,
+            "repetitions_min": 3,
+            "actual_events_reported": True,
+        },
+        "acceptance_status": "ELIGIBLE_FOR_FINAL_MATRIX_NOT_YET_RECEIVED" if final_eligible else "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
         "host": {
             "node": platform.node(),
             "platform": platform.platform(),
