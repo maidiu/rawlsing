@@ -1,0 +1,7 @@
+baseline keys: ['host', 'profiles', 'repetitions', 'results', 'rows', 'schema', 'source_head']
+gate pass: True
+gate keys: ['baseline_source_head', 'cold_pass', 'cold_profile', 'cold_rss_improvement', 'cold_rss_target', 'cold_stage_peak_baseline_bytes', 'cold_stage_peak_current_bytes', 'final_shape', 'identity', 'pass', 'reason', 'regressions', 'repeat_profile', 'repeat_restart_wall_baseline_seconds', 'repeat_restart_wall_current_seconds', 'repeat_wall_ratio', 'repeat_wall_target', 'retention_decision', 'status', 'warm_pass']
+identity: {'schema': True, 'source_head_is_protected': True, 'rows_match': True, 'profiles_match': True, 'repetitions_match': True, 'host_match': True}
+cap fields in gate: []
+actual events in gate: []
+commands/hash in gate: []
