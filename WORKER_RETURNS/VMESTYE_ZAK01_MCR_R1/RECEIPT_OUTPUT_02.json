@@ -12,8 +12,8 @@
     "blob": "49513d3040ca4f8c3ccc17f0abd5092260fa2463"
   },
   "output_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/SOURCE_RESOURCE_SELECTION_AND_RULE_PAYLOAD.tsv",
-  "output_sha256": "ade962a8b66d35e74e1be7ca2cc2257b2057a2c6454cbeaa3f9eaec48d76609a",
-  "observed_source_bounded_check": "S1_AUTHOR_OUTPUT_FILE_EXISTS_58_UNIQUE_IDS",
+  "output_sha256": "193b8cc12019fee907ee31e69e1527ddedb68d914675e1f5f9ae4b3d4791d849",
+  "observed_source_bounded_check": "S1_AUTHOR_OUTPUT_58_ROWS_42_C6_03_INHERITED_LOCATORS_13_DIRECT_SHA_REHASHES",
   "pending_exact_defect": "Independent source and no-drop verification pending",
   "candidate_branch": "agent/vmestye-zak01-mcr-20261110-r1",
   "protected_source_cut": "9366b42a61a383808071106d70aa1255a769390a",
@@ -22,5 +22,18 @@
   "original_source_issuer": "NOT_GRANTED",
   "independent_receiving": "NOT_RUN",
   "consumer": "ZAK05 authority-placement synthesis after separate ZAK02/ZAK03 evidence",
-  "acceptance_boundary": "DELIVERED_PENDING_RECEIVING__NO_AUTHORITY_PROMOTION"
+  "acceptance_boundary": "DELIVERED_PENDING_RECEIVING__NO_AUTHORITY_PROMOTION",
+  "candidate_revision": "R2_SOURCE_LOCATOR_AND_SCOPED_PRECEDENCE_REPAIR",
+  "prior_independent_review": "R1_FROZEN_957021eb4845c3a316dc0f922a9b2e2692c6ca4d__REVISE; R2 NOT_INDEPENDENTLY_RECEIVED",
+  "additional_frozen_source_pins": [
+    {
+      "path": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl",
+      "commit": "aed1a0ae13c58f11f4dabd07c818b62f72adf989",
+      "blob": "4fc18855909e848d6bc80c3ec6ff34657326cb6a"
+    }
+  ],
+  "selected_locator_receipt": "42/42 inherited C6 03 edges; 15 repository,23 historical local,4 historical bundle",
+  "repository_selected_resource_receipt": "13/15 protected repo content SHA256+bytes directly rehashed; remaining AR0005 large and AR0006 contents body unavailable",
+  "executable_first_consumer": "NOT_PROVED",
+  "native_S2_F03_positive_denied_restore": "NOT_RUN__MINIMUM_S2_HOSTILE_GATE_INCOMPLETE"
 }
