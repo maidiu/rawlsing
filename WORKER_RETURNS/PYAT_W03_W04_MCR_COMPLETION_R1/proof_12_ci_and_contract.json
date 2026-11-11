@@ -13,8 +13,20 @@
     "note": "Single canonical selected suite; per-ID JUnit files are filtered extractions of this same execution, not reruns."
   },
   "github_actions": {
-    "status": "NOT_RUN_IN_THIS_LANE",
-    "reason": "No CI dispatch/run was authorized or performed in this bounded evidence-preparation lane; local sourcefree execution is the executed court."
+    "status": "PASS_SOURCEFREE_TESTS_AND_256ROW_SMOKE_ONLY",
+    "run_id": 42986463148,
+    "head_sha": "ba39a5ab45fc1e4f27dbfa08e2caac47fc4e45ac",
+    "url": "https://github.com/maidiu/rawlsing/actions/runs/42986463148",
+    "tests": {
+      "tests": 100,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "summary_path": "WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/hq/CI_RUN_42986463148/summary.json",
+    "summary_sha256": "f39757d6ac8ab506d97c3d1947a28d4a2f3dca0430dc8575ae9e9e001797bc4b",
+    "proof_gate_step": "SKIPPED_FOR_WORKFLOW_DISPATCH; existinglocalindependentgate retainedseparately",
+    "acceptance_limit": "Sourcefree tests and256row smoke only; no100k/economic/12IDacceptance"
   },
   "proof_integrity_gate": {
     "command": "python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py changed --root . --base 46b7325637e68f78ccc7487d4b1abc7009c5ac0b --head 1c428d59dc53cb76a19c1502a74cfd3bba00a899",

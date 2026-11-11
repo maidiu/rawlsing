@@ -71,3 +71,7 @@ Result: `PASS_SELF_TEST` with 32 negative mutations rejected; wrapper `PASS_FORM
 ## Limits
 
 This is author artifact preparation only. It is not a 12-ID PASS, not an economic acceptance, and not a protected merge or source/native/science/actor authorization.
+
+## Current GitHub execution update
+
+Repaired-source run42986463148 at exactba39a5ab45fc1e4f27dbfa08e2caac47fc4e45ac passed100tests with0failure/error/skip and256-row sourcefree smoke. Actualcompressedartifacts/hashmanifest andJUnit are retained in hq/CI_RUN_42986463148/. This supersedes the earlier lane's NOT_RUN statement for GitHubActions only; local99tests remain historical at1c428d59d. Proof-gate CI step was skipped for workflow_dispatch and is not claimed executed; earlier independent/localtwo-witness proof remains separatelybounded. This obligation andwholegoal remainINCOMPLETE pending100kpairedmeasurements/fullsameSHAreceiving/externalMCRblock.

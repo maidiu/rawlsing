@@ -1,0 +1,182 @@
+{
+  "run_id": 42986463148,
+  "head_sha": "ba39a5ab45fc1e4f27dbfa08e2caac47fc4e45ac",
+  "conclusion": "success",
+  "junit": {
+    "tests": 100,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "smoke": {
+    "schema": "PYAT_W03_W04_PHYSICAL_BENCH@1",
+    "source_head": "ba39a5ab45fc1e4f27dbfa08e2caac47fc4e45ac",
+    "rows": 256,
+    "profiles": [
+      "narrow",
+      "wide",
+      "repeat"
+    ],
+    "repetitions": 1,
+    "final_matrix_eligible": false,
+    "acceptance_status": "NON_FINAL_DIAGNOSTIC__DO_NOT_REPORT_AS_FULL_MATRIX_PASS",
+    "acceptance": {
+      "cap": {
+        "checked": [
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 224456704,
+            "pass": true,
+            "pid": 3134,
+            "profile": "narrow",
+            "scenario": "full-matrix",
+            "section": "cold",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 263593984,
+            "pass": true,
+            "pid": 3205,
+            "profile": "narrow",
+            "scenario": "full-matrix",
+            "section": "warm",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 223621120,
+            "pass": true,
+            "pid": 3283,
+            "profile": "narrow",
+            "scenario": "full-matrix",
+            "section": "delete_rebuild",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 251138048,
+            "pass": true,
+            "pid": 3352,
+            "profile": "wide",
+            "scenario": "full-matrix",
+            "section": "cold",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 306311168,
+            "pass": true,
+            "pid": 3469,
+            "profile": "wide",
+            "scenario": "full-matrix",
+            "section": "warm",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 253431808,
+            "pass": true,
+            "pid": 3584,
+            "profile": "wide",
+            "scenario": "full-matrix",
+            "section": "delete_rebuild",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 252116992,
+            "pass": true,
+            "pid": 3700,
+            "profile": "repeat",
+            "scenario": "full-matrix",
+            "section": "cold",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 317317120,
+            "pass": true,
+            "pid": 3839,
+            "profile": "repeat",
+            "scenario": "full-matrix",
+            "section": "warm",
+            "status": null
+          },
+          {
+            "cap_bytes": 6442450944,
+            "cap_enforced": true,
+            "cap_method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE",
+            "cap_monitor_active": true,
+            "cap_peak_sampled_bytes": 251891712,
+            "pass": true,
+            "pid": 4005,
+            "profile": "repeat",
+            "scenario": "full-matrix",
+            "section": "delete_rebuild",
+            "status": null
+          }
+        ],
+        "method": "PARENT_SAMPLED_RSS_KILL_NOT_HARD_MEMORY_GUARANTEE"
+      },
+      "cap_pass": true,
+      "final_shape": false,
+      "pass": false,
+      "reason": "baseline JSON absent; diagnostic only",
+      "retention_decision": "DO_NOT_RETAIN__NO_BASELINE",
+      "status": "NO_BASELINE"
+    }
+  },
+  "proof_gate_ci_step": "SKIPPED_BY_WORKFLOW_DISPATCH_CONDITION__NO_CI_PROOF_GATE_CLAIM",
+  "scope": "Sourcefree tests and256row smoke only; no100k/economic/12IDacceptance",
+  "artifact_manifest": {
+    "sourcefree-junit": {
+      "artifact_id": 13839971845,
+      "archive_sha256": "b49f739878402f1f8d0b8f29242bb6e27c92eba7b25614cb3619f2cae1a1b171",
+      "archive_bytes": 3258,
+      "entries": [
+        {
+          "name": "pyat-w03-w04-sourcefree-junit.xml",
+          "sha256": "db4676801e5c1350973851774942413ecf7af3714ebbaac8a030626d021efe79",
+          "bytes": 15952
+        }
+      ]
+    },
+    "benchmark-smoke": {
+      "artifact_id": 13839902860,
+      "archive_sha256": "71d9f8bab8d4ca8141e5356b26f3fcf8c3967ea72ff8d2796a199e82876832a9",
+      "archive_bytes": 1194734,
+      "entries": [
+        {
+          "name": "pyat-w03-w04-benchmark-smoke.json",
+          "sha256": "1a1c1fdf273c9745670c5777bc8d012dee8a1d98683405f87a0a2a29f919eaaf",
+          "bytes": 10784977
+        }
+      ]
+    }
+  }
+}
