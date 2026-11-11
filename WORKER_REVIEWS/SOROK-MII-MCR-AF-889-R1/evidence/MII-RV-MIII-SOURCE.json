@@ -1,0 +1,22 @@
+{
+  "id": "MII-RV-MIII-SOURCE",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "protected_cut": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "defect_01_fix": "PASS",
+  "fix_evidence": "R5 author line 208 now reads: 'Historical #878 ... and #880 ... individual branches were drafts, but their accepted MIII mechanism was merged through PR #891 into current protected PRE-MAIN. The effective P6 runner already calls the situated actor and action writers; do not create a second access path or pretend the merged machinery is absent.' The stale clause 'remain DRAFT UNMERGED ... are not implicitly installed' is absent (R3->R5 grep diff: REMOVED).",
+  "prior_defect": "R3 DEFECT-01 line 182 (live body) asserted merged MIII remained DRAFT UNMERGED / not installed; fixed in R5.",
+  "blob_pins": {
+    "run_p6.py": "18e0b43db6ac173e4f3f73eba38ff0588b593e00",
+    "house.py": "8d7fc134de1868435ed1180150bde6779d0f48e2",
+    "situated.py": "8b434ff2f1b96b13b02be59704518d622ebecbd6",
+    "actor_initiative.py": "c9d2e1e93314ef2ec2dd767f998fd2775be78663"
+  },
+  "merge_ancestry": {
+    "3e5b1611_ancestor_of_4f3413fc": true,
+    "878_339c8726_ancestor_of_4f3413fc": true,
+    "880_07fa05e1_ancestor_of_4f3413fc": true
+  },
+  "runtime_import_witness": "Baseline profile imported live run_p6.experience from the authenticated 4f3413fc checkout and observed 24 genuine owner frames (PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED).",
+  "status": "PASS",
+  "grade": "S2"
+}

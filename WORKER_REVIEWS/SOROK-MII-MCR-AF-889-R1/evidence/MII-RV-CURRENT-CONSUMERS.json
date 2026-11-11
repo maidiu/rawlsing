@@ -1,0 +1,32 @@
+{
+  "id": "MII-RV-CURRENT-CONSUMERS",
+  "author_sha": "0178df262ac04d6fef074a56f6b8448c4d7fdcf9",
+  "protected_cut": "4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+  "independence_mechanism": "mcr_independent_consumer_trace.py imports owner modules itself from MCR_QUALIFIED_RUNTIME_ROOT; requires MCR_QUALIFIED_RUNTIME_SHA == git HEAD; code-object identity checked per frame; adapter-reported digest must equal independently observed run_p6.experience return; author disabling the profiler is detected.",
+  "authenticated_runtime": {
+    "root": "separate git worktree at 4f3413fc5c37b589be3412f826bf8f68ee617d4a",
+    "sha_check": "PASS"
+  },
+  "executed": {
+    "counterfeit_attack": "PASS_COUNTERFEIT_ADAPTER_REJECTED",
+    "baseline_real_p6": "PASS_ACTUAL_P6_CODE_OBJECT_AND_SOURCE_DENIAL_RESTORE_WITNESSED (24 calls)",
+    "upstream_fault": "house.OBJECTS mutation -> typed RecursionRefusal",
+    "restore": "public digest equal, world ledger byte-invariant"
+  },
+  "novel_challenge_n2": {
+    "script": "WORKER_REVIEWS/SOROK-MII-MCR-AF-889-R1/novel_challenge_n2_decoy_metrics.py",
+    "case": "genuine observed P6 call + unconnected invented metrics (E9 latency/cold-start, E3 exposure writes, E8 replay failures) + unrelated P03 recognition claim; plus decoy real look(bench) call used to claim sandal identity",
+    "checks": [
+      {"name": "genuine_p6_return_observed", "result": "PASS", "detail": "56 profiler frames"},
+      {"name": "invented_metrics_have_no_observed_producer", "result": "PASS"},
+      {"name": "unrelated_scenario_claim_not_in_real_return", "result": "PASS", "detail": "recognized_identity=None"},
+      {"name": "laundered_receipt_must_be_rejected", "result": "PASS"},
+      {"name": "decoy_real_call_on_bench_yields_no_sandal_recognition", "result": "PASS", "detail": "{}"},
+      {"name": "decoy_call_cannot_certify_sandal_identity", "result": "PASS"}
+    ],
+    "status": "PASS",
+    "nonredundancy": "Author attacks cover fully-counterfeit adapters and all-forged receipt sets; N2 isolates the mixed case where an authentic call digest launders invented unrelated metrics. Fail-closed: observer call proof is not causal proof for the 63 outcomes."
+  },
+  "status": "PASS",
+  "grade": "S2"
+}
