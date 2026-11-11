@@ -115,7 +115,7 @@ def execute_route_b_from_prepared(
 ) -> RouteBProductionResult: ...
 ```
 
-**Compatibility requirement:** the initial refactoring must preserve `execute_route_b_production`'s graph, learned/replay receipt, exact binding IDs and `execute_issued_workload` Batch outputs, unit hashes and negatives. It must not simply skip Route B receipts to save work. Establish exactly when source factory may be avoided: only after current `admit`, and only if an authorized saved-release identity matches the selected original source, projection and scientific envelope.
+**Compatibility requirement:** the initial refactoring must preserve `execute_route_b_production`'s graph, learned/replay receipt, exact binding IDs and `execute_issued_workload` Batch outputs, unit hashes and negatives. It must not simply skip Route B receipts to save work. **Discriminating multi-discovery case:** with two or more discovery authorities, compare **every** Route B result and full replay graph against native baseline, including the current `requests if n == 0 else ()` allocation of I03 requests only to the first discovery and independent Batch receipts. Matching one fact or a builder call counter is insufficient. Establish exactly when source factory may be avoided: only after current `admit`, and only if an authorized saved-release identity matches the selected original source, projection and scientific envelope.
 
 **Lifetime:** one issued-workload invocation or bounded compatible execution batch; existing `I03GroupedExecutionScope` remains request-local, finite and explicitly closed. Any sharing beyond a live current-decision scope requires separate acceptance.
 
