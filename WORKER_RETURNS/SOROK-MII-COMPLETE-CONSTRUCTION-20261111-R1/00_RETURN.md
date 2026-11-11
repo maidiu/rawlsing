@@ -109,7 +109,7 @@ PASS_SCOPED unless marked otherwise. Evidence abbreviations: `MII` =
 | N08 | MII has no retention-optimization selection path |
 | N09 | MII no model call; surface only owner facts |
 | N10 | MII scope mismatch reset; no cross-branch exposure reuse |
-| T01 | MII measurement provider calls 0; warm p50 3.248 s |
+| T01 | MII measurement provider calls 0; warm p50 2.929 s |
 | T02 | MII cold profile reopen/exposure hash |
 | T03 | MII duplicate request/exposure immutability |
 | T04 | MII taught label vs earned inspection |
