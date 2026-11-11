@@ -1,0 +1,24 @@
+{
+  "schema": "ZAK00_V2_MCRC_R3_CONTRACT_SPECIFIC_AUTHOR_EVIDENCE",
+  "frozen_old_author_head": "61e23d77d72dd349c48a106636336403f3caed86",
+  "contract_delta": "user-authorized explicit R3 repair; prior 24/24 source green not transferable to new source SHA",
+  "obligation_id": "ZAK00-OUTPUT-05",
+  "original_parent_requirements": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/04_AUTHOR_STRUCTURAL_PREFLIGHT_AND_NEGATIVE_RECEIPT.md",
+  "corrected_source_tuple": {
+    "path": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/04_AUTHOR_STRUCTURAL_PREFLIGHT_AND_NEGATIVE_RECEIPT.md",
+    "commit": "61e23d77d72dd349c48a106636336403f3caed86",
+    "blob": "17aab0ab3581ea7086e16dfdccfbb73e55a27bb7"
+  },
+  "corrected_required_output": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/04_AUTHOR_STRUCTURAL_PREFLIGHT_AND_NEGATIVE_RECEIPT.md",
+  "independently_reproducible_check": "RUN: python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim ZAK00-OUTPUT-05 ; compare historical NOT_RUN vs later run 42906583428 and require this candidate's actual CI HEAD/run evidence separately",
+  "frozen_positive": "PASS=historical preflight explicitly says Python NOT_RUN at the initial author cut; later GitHub Actions run 42906583428 is identified as successful at 61e23d77d72dd349c48a106636336403f3caed86, source checker 12/12 with parent 24 and exact 182/47; this repaired cut has a separately executed CI receipt binding the actual commit SHA without retroactively rewriting the old stage",
+  "frozen_negative": "RED=the only declared Python evidence is initial NOT_RUN or 11/11 legacy format PASS; later candidate CI omitted, misdated, bound to wrong SHA, or 12/12 format is claimed to prove S2 native/function instead of S1 author construction",
+  "exact_receiving_consumer": "ZAK00R source/CI provenance receiver at exact repaired author candidate HEAD",
+  "competent_reviewer": "Genuinely nonauthor ZAK00R technical reviewer independently reads actual GitHub Actions logs and this candidate head",
+  "minimum_grade": "S1",
+  "planned_current_candidate_proof": "CI must execute at postcommit SHA; an author's precommit JSON cannot confer PASS",
+  "previous_verified_court": "GitHub Actions 42906583428 at author frozen 61e23d77d72dd349c48a106636336403f3caed86; S1 historical custody only",
+  "signed_independent_acceptance": "NOT_ATTESTED",
+  "original35_and_current_native": "NOT_RUN",
+  "current_claim_status": "AUTHOR_S1_CANDIDATE__POSTCOMMIT_EXECUTION_REQUIRED"
+}

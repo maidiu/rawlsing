@@ -1,0 +1,24 @@
+{
+  "schema": "ZAK00_V2_MCRC_R3_CONTRACT_SPECIFIC_AUTHOR_EVIDENCE",
+  "frozen_old_author_head": "61e23d77d72dd349c48a106636336403f3caed86",
+  "contract_delta": "user-authorized explicit R3 repair; prior 24/24 source green not transferable to new source SHA",
+  "obligation_id": "ZAK00-FLIGHT-02",
+  "original_parent_requirements": "WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_02_FULL_COPY_PASTE_MCR.md",
+  "corrected_source_tuple": {
+    "path": "data/ddm_build_copy/ddm_v552j_handoff.py",
+    "commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+    "blob": "476e617370e8947ee1f38b0718243ecfc5ba9e5c"
+  },
+  "corrected_required_output": "WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_02_FULL_COPY_PASTE_MCR.md",
+  "independently_reproducible_check": "COURT: independent reviewer runs integrated MCR-C --source-check on WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_02_FULL_COPY_PASTE_MCR.md, cross-checks all 4 original task strings and 4 original output names against frozen 9d24323494cc852ada078010f09bfcf9ceb911d9 preimage with verify_zak00_v2_mcrc_tasks.py --flight 2, then falsifies 'V549b reporter NameError omitted or V552 diagnostic falsely treated as DENY'",
+  "frozen_positive": "PASS=ZAK-02 contains 4 exact frozen original tasks, 1 independent source-specific hostile case and 4 original required outputs with 9 distinct MCR_OBLIGATION records, complete source-blob tuples and signed-result fail-closed conditions checked by integrated MCR-C official Python source gate",
+  "frozen_negative": "RED=ZAK-02 fails if V549b reporter NameError omitted or V552 diagnostic falsely treated as DENY, if an original task/output ID is dropped, if Python source check RED, or if unexecuted grade is called PASS",
+  "exact_receiving_consumer": "Independent qualified nonauthor ZAK00R whole-program construction receiver, then PROGRAMMA dispatcher and existing #814–817 cross-HQ receiving",
+  "competent_reviewer": "Genuinely distinct nonauthor exact-HEAD ZAK00R engineering reviewer plus competent source/scientific/actor issuers when needed",
+  "minimum_grade": "S1",
+  "planned_current_candidate_proof": "CI must execute at postcommit SHA; an author's precommit JSON cannot confer PASS",
+  "previous_verified_court": "GitHub Actions 42906583428 at author frozen 61e23d77d72dd349c48a106636336403f3caed86; S1 historical custody only",
+  "signed_independent_acceptance": "NOT_ATTESTED",
+  "original35_and_current_native": "NOT_RUN",
+  "current_claim_status": "AUTHOR_S1_CANDIDATE__POSTCOMMIT_EXECUTION_REQUIRED"
+}

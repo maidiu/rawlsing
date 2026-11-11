@@ -1,0 +1,24 @@
+{
+  "schema": "ZAK00_V2_MCRC_R3_CONTRACT_SPECIFIC_AUTHOR_EVIDENCE",
+  "frozen_old_author_head": "61e23d77d72dd349c48a106636336403f3caed86",
+  "contract_delta": "user-authorized explicit R3 repair; prior 24/24 source green not transferable to new source SHA",
+  "obligation_id": "ZAK00-PARENT-02",
+  "original_parent_requirements": "Verifiable reference-to-R1/R2 source custody and versioned source cuts, with invalidated old semantic promotions explicitly distinguished; no redundant 182-row fates.",
+  "corrected_source_tuple": {
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N020_LONG_MEMORY/VMESTYE/ZAKONCHILOC/ZAK_INHERITED_OBLIGATIONS.tsv",
+    "commit": "1ebd603aa8f5b6d551363336a632a0c364b85f17",
+    "blob": "e3e7a72e43edd7b234a290f293f057f72f73c1ca"
+  },
+  "corrected_required_output": "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/01_CUSTODY_SOURCE_IDENTITY_AND_GRADE.md",
+  "independently_reproducible_check": "RUN: python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim ZAK00-PARENT-02 ; compare both frozen original files identity-by-identity and all 47 git rev-parse commit:path blob values, report source/semantic grade separately",
+  "frozen_positive": "PASS=182/182 exact inherited keys and all original 14 fields byte-for-byte conserved R1→R2; 47/47 source Git blob locators resolve; family IDs 29F/58AR/44LMX/30LMQ/13P1/8risk remain nonduplicated and no semantic/current-rule proof is inferred",
+  "frozen_negative": "RED=swap one inherited ID or change an original first-14 field while keeping the 182 count, or replace one of the 47 blob pins while preserving the number of rows; a perfect flight map cannot satisfy custody",
+  "exact_receiving_consumer": "ZAK00R original source-custody receiver and source-qualified #814 delta integrator",
+  "competent_reviewer": "Independent ZAK00R source-custody reviewer; no issuer grant from an author digest",
+  "minimum_grade": "S1",
+  "planned_current_candidate_proof": "CI must execute at postcommit SHA; an author's precommit JSON cannot confer PASS",
+  "previous_verified_court": "GitHub Actions 42906583428 at author frozen 61e23d77d72dd349c48a106636336403f3caed86; S1 historical custody only",
+  "signed_independent_acceptance": "NOT_ATTESTED",
+  "original35_and_current_native": "NOT_RUN",
+  "current_claim_status": "AUTHOR_S1_CANDIDATE__POSTCOMMIT_EXECUTION_REQUIRED"
+}

@@ -1,0 +1,197 @@
+name: ZAK-00 v2 MCR-C exact-source, 94-obligation pre-dispatch court
+
+on:
+  pull_request:
+    paths:
+      - 'WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/**'
+      - 'WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py'
+      - '.github/workflows/zak00-v2-mcr-python-preflight.yml'
+  push:
+    branches:
+      - agent/vmestye-zak00-v2-mcr-execution-20261110-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  whole-mission-pre-dispatch-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact author candidate with all original source commits
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout immutable integrated MCR-C law and official validator
+        uses: actions/checkout@v4
+        with:
+          ref: 4f3413fc5c37b589be3412f826bf8f68ee617d4a
+          path: .mcr-policy
+          persist-credentials: false
+          sparse-checkout: |
+            CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Freeze actual candidate and immutable MCR-C validator identity
+        run: |
+          git rev-parse HEAD
+          git rev-parse 9d24323494cc852ada078010f09bfcf9ceb911d9
+          git -C .mcr-policy rev-parse HEAD
+          python3 -m py_compile .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py --self-test
+
+      - name: Verify all eleven original task sets plus 24 parent obligations and hostile no-drop mutants
+        run: |
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --all
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --self-test
+
+      - name: Execute actual integrated Python MCR-C source-check on each flight
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p zak-mcr-format-receipts
+          failed=0
+          for number in $(seq -w 1 11); do
+            file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/FLIGHT_LAUNCHES/ZAK_${number}_FULL_COPY_PASTE_MCR.md"
+            echo "::group::ZAK-${number}: exact-source MCR-C pre-dispatch"
+            if python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "${file}" --source-check | tee "zak-mcr-format-receipts/ZAK_${number}.json"; then
+              echo "ZAK-${number}: actual MCR-C checker passed"
+            else
+              echo "::error file=${file}::ZAK-${number} official MCR-C source/contract failure"
+              failed=$((failed+1))
+            fi
+            echo "::endgroup::"
+          done
+          echo "ZAK_MCR_C_OFFICIAL_FAILURES=${failed}"
+          test "${failed}" -eq 0
+
+      - name: Run official integrated MCR-C source check on 24-obligation ZAK00 parent
+        shell: bash
+        run: |
+          set -euo pipefail
+          file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md"
+          mkdir -p zak-mcr-format-receipts
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py "$file" --source-check | tee zak-mcr-format-receipts/ZAK_00_PARENT.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --parent
+          echo "ZAK-00 PARENT: integrated MCR-C source/contract gate PASS; descendant effects NOT_RUN"
+
+      - name: Hostile MCR-C, HQ A upstream packet/16 negatives, exact 23+94 conservation and CI regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p zak-mcr-format-receipts
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-mutations | tee zak-mcr-format-receipts/ZAK00_R3_SEMANTIC_MUTANTS.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --near-positive | tee zak-mcr-format-receipts/ZAK00_R4_NEAR_POSITIVE_AND_AUTHORITY_MUTANTS.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --upstream-packet | tee zak-mcr-format-receipts/ZAK00_HQ_A_UPSTREAM_PACKET.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --upstream-mutations | tee zak-mcr-format-receipts/ZAK00_HQ_A_UPSTREAM_NEGATIVES.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --hq-a-conservation | tee zak-mcr-format-receipts/ZAK00_HQ_A_CONSERVATION.json
+          python3 WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py --claim-all | tee zak-mcr-format-receipts/ZAK00_HQ_A_CLAIM_BOUNDARY.json
+
+      - name: Exact-head author evidence computed from four executed checks, not nineteen invented reviewer PASSes
+        shell: bash
+        run: |
+          set -euo pipefail
+          checker="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py"
+          file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md"
+          mkdir -p zak-mcr-format-receipts
+          python3 "$checker" --generate-author-evidence zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
+            | tee zak-mcr-format-receipts/ZAK00_R4_VERIFIED_AUTHOR_PROOF_INDEX.json
+          python3 "$checker" --audit-evidence zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
+            | tee zak-mcr-format-receipts/ZAK00_R4_AUTHOR_EVIDENCE_AUDIT.json
+          set +e
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py \
+            "$file" --verify-return zak-mcr-format-receipts/ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt \
+            --candidate-sha "$(git rev-parse HEAD)" --evidence-root . \
+            >zak-mcr-format-receipts/ZAK00_R4_OFFICIAL_RETURN.json
+          code=$?
+          set -e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("zak-mcr-format-receipts")
+          audit = json.loads((root/"ZAK00_R4_AUTHOR_EVIDENCE_AUDIT.json").read_text())
+          assert len(audit["author_executed_pass"]) == 4
+          assert len(audit["independent_pending"]) == 20
+          result = json.loads((root/"ZAK00_R4_OFFICIAL_RETURN.json").read_text())
+          ids = audit["independent_pending"]
+          expected = {prefix + oid for oid in ids for prefix in
+                      ("MCR_C_PROOF_NOT_PASS_", "MCR_C_INSUFFICIENT_EVIDENCE_GRADE_")}
+          assert result["status"] == "RED_INCOMPLETE", result
+          assert set(result["errors"]) == expected, (
+              "Unexpected errors or fictitious reviewer PASS", result)
+          print("AUTHOR_EXECUTED_S1=4")
+          print("REVIEWER_CONTROLLED_UNRECEIVED=20")
+          print("PASS_FAIL_CLOSED_EXACT_20_INDEPENDENT_OBLIGATIONS")
+          print("PARENT_CEILING=INCOMPLETE_PENDING_COMPETENT_RECEIVING")
+          PY
+          test "$code" -eq 2
+
+      - name: Attack with forged all-green independent S1 reviewer receipt under HQ A
+        shell: bash
+        run: |
+          set -euo pipefail
+          checker="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/verify_zak00_v2_mcrc_tasks.py"
+          file="WORKER_COMMISSIONS/VMESTYE_ZAKONCHILOS_ZAK00_V2_MCR/01_FULL_COPY_PASTE_LAUNCH.md"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("zak-mcr-format-receipts")
+          src = root/"ZAK00_PARENT_SHA_BOUND_EVIDENCE.txt"
+          dst = root/"FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt"
+          rows = []
+          for line in src.read_text().splitlines():
+              if line.startswith("MCR_EVIDENCE: "):
+                  item = json.loads(line.partition(": ")[2])
+                  if item["status"] == "INCOMPLETE":
+                      item["status"] = "PASS"
+                      item["grade"] = "S1"  # forged independent S1, matching prospective HQ-A minimum
+                  line = "MCR_EVIDENCE: " + json.dumps(item, sort_keys=True)
+              rows.append(line)
+          dst.write_text("\n".join(rows) + "\n")
+          PY
+          # Our guard MUST reject the counterfeit, even when all underlying
+          # committed hashes remain valid and the source-only MCR-C format
+          # checker cannot authenticate a GitHub issue-comment author.
+          set +e
+          python3 "$checker" --audit-evidence \
+            zak-mcr-format-receipts/FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt \
+            > zak-mcr-format-receipts/ZAK00_FORGED_AUTHORITY_GUARD.json 2>&1
+          guard=$?
+          set -e
+          test "$guard" -ne 0
+          grep -q "AUTHOR_FORGED_INDEPENDENT_PASS" \
+            zak-mcr-format-receipts/ZAK00_FORGED_AUTHORITY_GUARD.json
+          set +e
+          python3 .mcr-policy/CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py \
+            "$file" --verify-return zak-mcr-format-receipts/FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt \
+            --candidate-sha "$(git rev-parse HEAD)" --evidence-root . \
+            >zak-mcr-format-receipts/ZAK00_FORGED_OFFICIAL_STRUCTURAL_ONLY.json
+          structural_exit=$?
+          set -e
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path("zak-mcr-format-receipts/ZAK00_FORGED_OFFICIAL_STRUCTURAL_ONLY.json").read_text())
+          assert r["status"] == "READY_FOR_INDEPENDENT_RECEIVING", r
+          print("PROVED_OFFICIAL_CHECKER_CANNOT_AUTHENTICATE_INDEPENDENT_S1_ISSUER")
+          print("PROVED_CLAIM_SENSITIVE_GUARD_REJECTS_FORGED_HQ_A_S1_VECTOR")
+          print("THIS_IS_AN_ADVERSARIAL_FIXTURE_NOT_A_RECEIVING_VERDICT")
+          PY
+          test "$structural_exit" -eq 0
+          # A deliberately fraudulent receipt must NOT be provided as a usable
+          # artifact; only the two diagnostic results are retained.
+          rm -f zak-mcr-format-receipts/FORGED_RECEIPT_ISOLATED_NOT_A_RETURN.txt
+
+      - name: Upload exact formal check receipts, not descendant completion
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: zak00-v2-mcr-c-contract-and-source-receipts
+          path: zak-mcr-format-receipts/
+          if-no-files-found: warn
