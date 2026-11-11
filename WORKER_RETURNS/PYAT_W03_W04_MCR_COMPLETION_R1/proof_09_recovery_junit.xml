@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites name="pytest tests">
+  <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="7" time="1.688" timestamp="2026-11-11T02:54:02.659688-05:00" hostname="mainMac.lan">
+    <properties>
+      <property name="derived_from" value="lanes/mcr/REQUIRED_EVIDENCE_R1/logs/selected_99_junit.xml" />
+      <property name="execution_cut" value="1c428d59dc53cb76a19c1502a74cfd3bba00a899" />
+      <property name="execution_note" value="single canonical 99-test selected suite; this JUnit is a filtered extraction, not a rerun" />
+    </properties>
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_aborted_cache_publication_keeps_previous_complete_cache" time="0.214" />
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_concurrent_cache_builders_share_exact_release" time="0.361" />
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_cache_directory_fsync_failure_is_safe_miss" time="0.211" />
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_cache_file_fsync_failure_is_safe_miss" time="0.243" />
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_carrier_parent_fsync_failure_cleans_only_new_publication" time="0.311" />
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_retention_prunes_hidden_orphans_without_active_or_canonical_loss" time="0.151" />
+    <testcase classname="rawlsing_next.tests.test_pre553_w03_w04_completion" name="test_w04_recovery_carrier_aborted_publish_leaves_no_partial_canonical_release" time="0.197" />
+  </testsuite>
+</testsuites>

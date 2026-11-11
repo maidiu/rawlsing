@@ -1,0 +1,29 @@
+execution_cut=1c428d59dc53cb76a19c1502a74cfd3bba00a899
+source_contract_cut=46b7325637e68f78ccc7487d4b1abc7009c5ac0b
+prior_review=9999c0afac5d7d7eb72ad0df602da4b232a49565
+
+[accepted compact production blob]
+frozen_46b:rawlsing_next/_pre553_c11_execution_view.py 986f327aa18053edc61bd837cdded02bbf8388d9
+current_HEAD:rawlsing_next/_pre553_c11_execution_view.py 0f86148f504c06bc694dd980ae1da8913db929b6
+
+[accepted prior test blob]
+frozen_46b:rawlsing_next/tests/test_pre553_c11_execution_view.py 8e8effa58579af0c3326ecd4af7e159947abe4ec
+current_HEAD:rawlsing_next/tests/test_pre553_c11_execution_view.py 7e8bc4e92daecffa72b1fbc740a77b8ef1a6569b
+
+[current qualification/correction blobs]
+rawlsing_next/_pre553_c11_execution_view.py 0f86148f504c06bc694dd980ae1da8913db929b6
+rawlsing_next/_pre553_w04_cache.py 4bb7e933f0a5c3f34366ee9e9013b3714a3e4341
+rawlsing_next/pre553_parquet_carrier.py 2c09deeb9b85051cb9d4c36fc12b0a193095e085
+rawlsing_next/tests/test_pre553_c11_execution_view.py 7e8bc4e92daecffa72b1fbc740a77b8ef1a6569b
+rawlsing_next/tests/test_pre553_w03_w04_completion.py 7cd62ffc36091f6e36847f1498d1dc428ebda157
+
+[diff stat from frozen 46b to current]
+ rawlsing_next/_pre553_c11_execution_view.py        | 207 ++++++++++---
+ rawlsing_next/_pre553_w04_cache.py                 | 285 +++++++++++++++++
+ rawlsing_next/pre553_parquet_carrier.py            |  26 +-
+ .../tests/test_pre553_c11_execution_view.py        |  19 +-
+ .../tests/test_pre553_w03_w04_completion.py        | 345 +++++++++++++++++++++
+ 5 files changed, 832 insertions(+), 50 deletions(-)
+
+qualification=Current production/test blobs differ from frozen compact blobs by the accepted W04 F01/F02/F03 policy/recovery repairs and private-policy test setup helper; reviewed at combined-code 2959dda3c95b05db40a399d6d746401f434f5a38 as source-level repairs passing prior counterexamples, not whole-MCR acceptance.
+negative=No second C11 engine and no forged mutable ExactRef support claimed; negative tests remain in proof_04/topology JUnit.

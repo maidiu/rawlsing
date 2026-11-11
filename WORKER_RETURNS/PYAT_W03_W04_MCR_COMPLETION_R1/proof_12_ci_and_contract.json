@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_W03_W04_REQUIRED_EVIDENCE_R1",
+  "status": "INCOMPLETE",
+  "author_ceiling": "DELIVERED_PENDING_RECEIVING",
+  "execution_cut": "1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+  "source_contract_cut": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
+  "canonical_sourcefree_suite": {
+    "command": "PYTHONPATH=. python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_c11_execution_view.py rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py rawlsing_next/tests/test_pre553_carrier_execution.py rawlsing_next/tests/test_pre553_i03_grouping.py rawlsing_next/tests/test_bench_w03_w04_physical.py rawlsing_next/tests/test_pre553_w03_w04_cold.py rawlsing_next/tests/test_pre553_w03_w04_completion.py CROSS_HQ_CONTROL_ROOM/test_verify_copy_paste_commission_r1.py --junitxml=WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/lanes/mcr/REQUIRED_EVIDENCE_R1/logs/selected_99_junit.xml",
+    "result": "99 passed in 41.63s",
+    "count": 99,
+    "junit_path": "lanes/mcr/REQUIRED_EVIDENCE_R1/logs/selected_99_junit.xml",
+    "junit_sha256": "4c339739149ab69525cde13a0d8785fa92c50f89447c65137fd1ff8aaf5661ba",
+    "note": "Single canonical selected suite; per-ID JUnit files are filtered extractions of this same execution, not reruns."
+  },
+  "github_actions": {
+    "status": "NOT_RUN_IN_THIS_LANE",
+    "reason": "No CI dispatch/run was authorized or performed in this bounded evidence-preparation lane; local sourcefree execution is the executed court."
+  },
+  "proof_integrity_gate": {
+    "command": "python3 CROSS_HQ_CONTROL_ROOM/proof_integrity_gate_r1.py changed --root . --base 46b7325637e68f78ccc7487d4b1abc7009c5ac0b --head 1c428d59dc53cb76a19c1502a74cfd3bba00a899",
+    "result": "MECHANICAL_PROOF_GATE_PASS_NOT_SCIENTIFIC_ADOPTION",
+    "witness_contracts_run": 2,
+    "witnesses": [
+      {
+        "claim_id": "SNAPSHOT_BENCH_CELLS_ACTUAL_CONSUMER_SEVERANCE_R1",
+        "baseline": "PASS",
+        "fault_probe": "TARGET_ASSERTION_FAILED"
+      },
+      {
+        "claim_id": "W03_W04_BENCH_CELLS_ACTUAL_CONSUMER_SEVERANCE_R1",
+        "baseline": "PASS",
+        "fault_probe": "TARGET_ASSERTION_FAILED"
+      }
+    ],
+    "log_path": "lanes/mcr/REQUIRED_EVIDENCE_R1/logs/proof_gate_full_frozen_to_1c428d.json",
+    "log_sha256": "121ed43b7e7df2715a395145376659a00071744771a0f01071734daa7ceded23"
+  },
+  "checker": {
+    "self_test": {
+      "result": "PASS_SELF_TEST",
+      "negative_mutations_rejected": 32,
+      "log": "lanes/mcr/REQUIRED_EVIDENCE_R1/logs/checker_self_test.log"
+    },
+    "wrapper_validation": {
+      "result": "PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH",
+      "obligations": 12,
+      "contract_sha256": "1e7d6a905bb702c289708d636627625759cee38f883851c60a502126f5b47583",
+      "log": "lanes/mcr/REQUIRED_EVIDENCE_R1/logs/wrapper_validate.log"
+    }
+  },
+  "source_test_blobs": {
+    "rawlsing_next/_pre553_c11_execution_view.py": "0f86148f504c06bc694dd980ae1da8913db929b6",
+    "rawlsing_next/_pre553_w03_cold_compact.py": "06eefd8fe8c1839854a783c78045b170627806f2",
+    "rawlsing_next/_pre553_w04_cache.py": "4bb7e933f0a5c3f34366ee9e9013b3714a3e4341",
+    "rawlsing_next/pre553_source_backed_c11_facade.py": "c5f78e1f7385b188eda18ace063557c26a19fd40",
+    "rawlsing_next/pre553_parquet_carrier.py": "2c09deeb9b85051cb9d4c36fc12b0a193095e085",
+    "rawlsing_next/pre553_carrier_execution.py": "ee9b3af02bfca9238eb72ea45d94073d47769a07",
+    "rawlsing_next/tests/test_pre553_c11_execution_view.py": "7e8bc4e92daecffa72b1fbc740a77b8ef1a6569b",
+    "rawlsing_next/tests/test_pre553_c11_cold_reopen_i03.py": "90d498ef2b1c6e3543e984aa479512cd10afca10",
+    "rawlsing_next/tests/test_pre553_w03_w04_completion.py": "7cd62ffc36091f6e36847f1498d1dc428ebda157",
+    "rawlsing_next/tests/test_pre553_carrier_execution.py": "bc0db646a803b5bf80dab44d8acb01861d8b3371",
+    "rawlsing_next/tests/test_pre553_i03_grouping.py": "78683c4098f388eb72d686651b3282b9162e2ed2",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+    "rawlsing_next/bench_w03_w04_physical.py": "6c72f7d67c16fe79b9260032f6ace4085c6f1f3d",
+    "rawlsing_next/tests/test_bench_w03_w04_physical.py": "f2573109d032cd306b4790b009d5dcaaa9094b00",
+    "CROSS_HQ_CONTROL_ROOM/verify_copy_paste_commission_r1.py": "d1db88c62bda848aee478e13120393153d5a61bf",
+    "CROSS_HQ_CONTROL_ROOM/test_verify_copy_paste_commission_r1.py": "5b0f1ce787a6d9e6a8c003fa99bef434213ffaa7",
+    "rawlsing_next/tests/test_pre553_w03_w04_cold.py": "75314ade650f87c3e5aec0e17c9e31b9fe22b07c"
+  },
+  "obligations": {
+    "W03-PREVIOUS-CAPITAL": {
+      "output": "01_prior_capital_and_abi.md",
+      "evidence": "proof_01_prior_blobs.txt",
+      "state": "SOURCE_QUALIFIED_CORRECTED_TESTED_SCOPE"
+    },
+    "W03-COLD-HIGHWATER": {
+      "output": "02_cold_materialization_contract.md",
+      "evidence": "proof_02_cold_rss.json",
+      "state": "INCOMPLETE_NOT_RUN"
+    },
+    "W03-SELECTED-CELLS-CANON": {
+      "output": "03_source_cell_and_hash_cost.md",
+      "evidence": "proof_03_cost_comparison.json",
+      "state": "INCOMPLETE_NOT_RUN"
+    },
+    "W03-SEMANTIC-TOPOLOGY": {
+      "output": "04_identity_topology.md",
+      "evidence": "proof_04_topology_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W03-FIRST-CONSUMERS": {
+      "output": "05_first_consumer_equivalence.md",
+      "evidence": "proof_05_consumer_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W04-COLD-PERSIST-REOPEN": {
+      "output": "06_cross_process_reopen.md",
+      "evidence": "proof_06_reopen_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W04-GOVERNED-DEFAULT": {
+      "output": "07_governed_activation_policy.md",
+      "evidence": "proof_07_policy_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W04-AUTHORITY-INVALIDATION": {
+      "output": "08_invalidation_and_security.md",
+      "evidence": "proof_08_invalidation_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W04-ATOMIC-LIFECYCLE": {
+      "output": "09_atomic_recovery.md",
+      "evidence": "proof_09_recovery_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W34-RESOURCE-ECONOMY": {
+      "output": "10_economic_destination.md",
+      "evidence": "proof_10_resource_matrix.json",
+      "state": "INCOMPLETE_NOT_RUN"
+    },
+    "W34-PRODUCT-BOUNDARIES": {
+      "output": "11_owner_boundary_and_rollback.md",
+      "evidence": "proof_11_boundary_junit.xml",
+      "state": "PASS_TESTED_SOURCEFREE_SCOPE"
+    },
+    "W34-REPRODUCIBLE-RETURN": {
+      "output": "12_receiving_and_delta.md",
+      "evidence": "proof_12_ci_and_contract.json",
+      "state": "INCOMPLETE_PENDING_INDEPENDENT_RECEIVING",
+      "supporting_junit": "lanes/mcr/REQUIRED_EVIDENCE_R1/logs/proof_12_full_junit.xml"
+    }
+  },
+  "missing_or_unresolved": [
+    "proof_02_cold_rss.json absent: 100000-row cold profile matrix not run/authorized.",
+    "proof_03_cost_comparison.json absent: 100000-row cells-and-hash matrix not run/authorized.",
+    "proof_10_resource_matrix.json absent: 100000-row full matrix not run/authorized; R4 tiny 8-row receipt is not final.",
+    "Independent same-SHA code/economic receiving not issued.",
+    "SHA-bound external MCR evidence block, delivered_ids.txt and final validator --verify-return are not manufactured in this author commit.",
+    "GitHub Actions CI not run in this lane; only local sourcefree execution is recorded."
+  ],
+  "limits": [
+    "No whole 12-ID PASS or protected acceptance.",
+    "No source/respondent/native/science/actor/protected merge.",
+    "No model/provider/account/effort/region/install/subworker change."
+  ]
+}
