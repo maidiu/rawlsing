@@ -1,5 +1,19 @@
 # Mechanism I implementation draft
 
+## 2026-11-11 full-completion continuation — IN PROGRESS
+
+Successor branch `codex/sorok-mi-completion-20261111-r1` preserves original MI head `83de56d24c2be2bc69bc596abd26aa808c26cf42` and merges live protected `811dd32b04b017d98fe898dd7416cbf82e5d5fd1` (including accepted MII merge521ae459 and MIII). No active prior MI supervisor job or tracked local edit was present at custody transfer. Source reconciliation commit `a9077e7b6`; current implementation checkpoint `cc959f13dd615dea18f37b60ac328be84f3abb67`. Original39 and B1–B7 remain full scope, not completed by this checkpoint.
+
+P4 retains its history worker, S46 dispatch, physical-depth receipts and66-test inherited baseline while gaining protected establish/conduct/pacing callbacks. The resolved current-progress pair remains the protected pair; historical MI notes are preserved here. The new real-consumer differential first reproduced `P4_COLD_STATE_MISMATCH` after legitimate independent MI activity. Shared P4/P5/P6 boundary validation now uses the most recent activity/user boundary and permits history-only commits only under the existing exact foreground/actor witness. One same-path restored canonical state, one committed depth fact, identical ordinary S46 work and different explicit private MII focus produce identical world/events/intervals/actor head but different lawful optional details. No inspection is performed.
+
+Executed on reconciliation cut:65 MI tests passed212.65s plus P4 CLI1passed51.22s (the inherited66 include that CLI test). Protected P6/MII/MIII composite53passed652.49s. The focused joined/provider run passed14tests23.26s after boundary repair. Current owner/provider/joined retest is running after the proposal-policy amendment; no claim that earlier broad tests execute later changed source.
+
+Real endpoint adapter is reused, not replaced. The selected configured OpenCode Go DeepSeek V4.1 Flash endpoint was read from the existing authenticated host's provider registry. Host TLS originally lacked a trusted Python CA bundle; execution uses a trusted CA file without disabling verification. Actual Go requests require the application's own User-Agent and stable x-opencode-session; the adapter now sends truthful application identity and durable history-job identity, per official Go client requirements. No shared permissions, server auth, account or model/editor configuration changed.
+
+The first successful actual inference used1596 input/2706 output tokens (including2442 reasoning),35.972s wall, provider list cost0.001863/Go allowance0.0011178. That generated a candidate but the owner correctly held unsupported tool_available rather than treating transport success as admission. Earlier TLS/HTTP failures and request/response receipts remain separate. The current run tests a bounded physical proposal with the owner's actual writable predicate/type set in the packet. LIVE_PROVIDER_S2 full producer→admission→consumer acceptance is not yet claimed. Credentials never enter receipts. Existing sourcefree/native/H1/actor/root-write and production holds remain unchanged pending the required implementations and independent review.
+
+Next authorized construction: complete H1 competent-owner insertion or exact typed owner holds, heterogeneous source-admitted episode/index routes, actual T2/T5/T6 causality and root pre-contact law; preserve current joined reader proof and original39 acceptance matrix. No preliminary commission-review fleet.
+
 [Draft PR #791](https://github.com/maidiu/rawlsing/pull/791) tracks issue
 #785 against protected base `7a5429ffbc48efd25e28c912da80c822e66bc182`.
 This evidence index accompanies implementation cut
