@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T02:48:56.429750+00:00",
+  "saved_utc": "2026-11-11T02:52:25.309156+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -256,7 +256,7 @@
       "job": "pyat-w03-w04-mcr-coupled-default-repair-r1",
       "pid": 43544,
       "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "DELIVERED_PENDING_RECEIVING__INTEGRATED_27TEST_SMALL_GREEN",
       "actual_model": {
         "id": "msg_1c870c727001P7Q71lfciB7Bjh",
         "type": "assistant",
@@ -274,7 +274,11 @@
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-coupled-r1",
       "source_candidate": "c2f4737e2",
       "acceptance_boundary": "Normalstreamingcold +governedpersist/reopen/reuse",
-      "repair_round": 1
+      "repair_round": 1,
+      "candidate": "2709733e7dfb9f0d1b1a752010566a5090bfa461",
+      "terminal": {
+        "exit_code": 0
+      }
     },
     {
       "lane": "combined-code-review",
@@ -300,6 +304,30 @@
       "candidate": "2959dda3c",
       "independence": "ExistingW04reviewer,nonauthorofMCRimplementation; no newprovider/account; previousreviewersoverloadnotaverdit",
       "final_receiving": "StillrequiresonefinalfrozenSHAwithall12evidence"
+    },
+    {
+      "lane": "bench-method-repair",
+      "job": "pyat-w03-w04-mcr-bench-coupled-method-repair-r2",
+      "pid": 48647,
+      "session": "ses_b998af9086264002a86ee57b6e",
+      "status": "ACTIVE_VERIFIED_MODEL",
+      "actual_model": {
+        "id": "msg_1c884aa0d001QLlX30fcSi13ft",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794365499962,
+          "streamed": 1794365507931,
+          "completed": 1794365508133
+        }
+      },
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
+      "source_candidate": "81a4f4cd3",
+      "scope": "Firstbenchmethodrepair; fullfinal100kmatrixhelduntilmethodandcandidatefrozen"
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",

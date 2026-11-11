@@ -1,0 +1,24 @@
+{
+  "return_job": "pyat-w03-w04-mcr-coupled-default-repair-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-coupled-default-repair-r1/completion.json",
+  "exit_code": 0,
+  "candidate": "2709733e7dfb9f0d1b1a752010566a5090bfa461",
+  "remote_verified": true,
+  "integrated_commit": "81a4f4cd3",
+  "status": "DELIVERED_PENDING_RECEIVING__COUPLED_SMALL_REGRESSION_GREEN",
+  "author_reported_tests": {
+    "frozen": 43,
+    "selected": 70,
+    "cold": 15,
+    "completion": 12
+  },
+  "hq_executed_regression": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_w03_w04_completion.py rawlsing_next/tests/test_pre553_w03_w04_cold.py",
+    "exit_code": 0,
+    "passed": 27,
+    "seconds": 9.15,
+    "prior_combined_failure": "5policy/recoveryfailures beforecoupledfix"
+  },
+  "economic_ceiling": "Author30keventdevelopment19.4%RSSonly;100k3repeatfullmatrixNOTRUN",
+  "full_MCR_complete": false
+}
