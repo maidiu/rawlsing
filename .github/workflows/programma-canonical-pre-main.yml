@@ -56,3 +56,7 @@ jobs:
           PY
       - name: Verify canonical PROGRAMMA guide and historical no-drop
         run: python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_canonical_programma_r1.py
+      - name: Prevent loss of mandatory product question and 27 local PP26 obligations
+        run: |
+          python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py
+          python3 CROSS_HQ_CONTROL_ROOM/PROGRAMMA/verify_pyat_product_priority_visibility_r1.py --self-test
