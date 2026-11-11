@@ -1,0 +1,27 @@
+{
+  "return_job": "pyat-w03-w04-mcr-persistence-three-defect-repair-r3",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-persistence-three-defect-repair-r3/completion.json",
+  "exit_code": 0,
+  "candidate": "558f4169386975630f59bbb487b3fc99aee83acb",
+  "remote_verified": true,
+  "integrated_commit": "c2f4737e2",
+  "status": "DELIVERED_PENDING_RECEIVING__INTEGRATED_NOT_ACCEPTED",
+  "author_reported_tests": {
+    "affected_suite": 45,
+    "facade": 10,
+    "cache_policy": 3,
+    "invalidation": 1,
+    "recovery": 7,
+    "boundary": 1
+  },
+  "hq_combined_regression": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python3 -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_pre553_w03_w04_completion.py -k 'cache_policy or recovery'",
+    "exit_code": 1,
+    "failed": 5,
+    "passed": 5,
+    "deselected": 2,
+    "cause_observed": "Authorizednormalcoldcallercachefiles0; policyactivation/concurrentandfsync-recoverytests lackexpectedbaselinecache. Samecombinedbypass alreadyqueued, notevidencewholecontractPASS."
+  },
+  "next_author_job": "pyat-w03-w04-mcr-coupled-default-repair-r1",
+  "whole_contract_complete": false
+}

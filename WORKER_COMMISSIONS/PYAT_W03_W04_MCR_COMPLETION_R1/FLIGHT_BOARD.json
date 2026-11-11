@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T02:25:02.980091+00:00",
+  "saved_utc": "2026-11-11T02:31:49.203203+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -225,7 +225,7 @@
       "job": "pyat-w03-w04-mcr-persistence-three-defect-repair-r3",
       "pid": 40228,
       "session": "ses_1b9742b6c02745d8a69d062011",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "DELIVERED_PENDING_RECEIVING__INTEGRATED_COMBINED_RED",
       "actual_model": {
         "id": "msg_1c867405a0014CpG7ifu18Dmas",
         "type": "assistant",
@@ -242,6 +242,35 @@
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-persistence-r2",
       "repair_boundary": "W04governedpolicy/lifecycle/retention",
+      "repair_round": 1,
+      "candidate": "558f4169386975630f59bbb487b3fc99aee83acb",
+      "terminal": {
+        "exit_code": 0
+      }
+    },
+    {
+      "lane": "coupled-integration",
+      "job": "pyat-w03-w04-mcr-coupled-default-repair-r1",
+      "pid": 43544,
+      "session": "ses_e45ed5cb1ffehNzh0SEBOEjAdv",
+      "status": "ACTIVE_VERIFIED_MODEL",
+      "actual_model": {
+        "id": "msg_1c870c727001P7Q71lfciB7Bjh",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794364196866,
+          "streamed": 1794364205567,
+          "completed": 1794364205872
+        }
+      },
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-coupled-r1",
+      "source_candidate": "c2f4737e2",
+      "acceptance_boundary": "Normalstreamingcold +governedpersist/reopen/reuse",
       "repair_round": 1
     }
   ],
