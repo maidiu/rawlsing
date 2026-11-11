@@ -1,6 +1,6 @@
 # W03/W04 one-pass pilot
 
-**Status:** `LAUNCH_PREPARED_PENDING_DURABLE_HANDOFF`
+**Status:** `ACTIVE_FIRST_PAIR_BASELINE_RUNNING`
 **Branch:** `agent/pyat-w03-w04-one-pass-pilot-r1`
 **Implementation cut:** `c59c40f9988ec869953a4865c09d8380352db4ab`
 **Runtime benchmark blob:** `6c72f7d67c16fe79b9260032f6ace4085c6f1f3d`
