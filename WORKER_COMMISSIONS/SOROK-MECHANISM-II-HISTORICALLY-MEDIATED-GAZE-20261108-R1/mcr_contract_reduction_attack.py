@@ -32,7 +32,7 @@ def main():
             mutated=target.read_text()
             if module.validate(mutated)["status"]!="PASS_FORMAT_ONLY_NOT_AUTHORITY_OR_LAUNCH":
                 raise RuntimeError("ATTACK_PRECHECK_NOT_SELF_CONSISTENT")
-            c=module.completion_contract(mutated.split("MCR_COMPLETION_CONTRACT_BEGIN",1)[1].split("MCR_COMPLETION_CONTRACT_END",1)[0],[])
+            c=module.completion_contract(mutated,[])
             records=c["obligations"];assert len(records)==53
             for r in records:
                 for key in ("output","evidence"):
