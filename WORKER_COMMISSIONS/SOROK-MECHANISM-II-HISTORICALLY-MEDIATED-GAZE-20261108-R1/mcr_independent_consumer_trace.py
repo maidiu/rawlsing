@@ -11,14 +11,15 @@ a scenario, but its claims cannot create a trusted call or source response.
 Scope: engineering/sourcefree execution witness, NOT science or complete
 E1-E10 acceptance. All phases and causality need independent reviewer judgment.
 """
-import argparse, hashlib, importlib, importlib.util, json, subprocess, sys
+import argparse, hashlib, importlib, importlib.util, json, os, subprocess, sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
+RUNTIME_ROOT=Path(os.environ.get("MCR_QUALIFIED_RUNTIME_ROOT",str(ROOT))).resolve()
 HERE=Path(__file__).resolve().parent
-P6=ROOT/"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1"
-P5=ROOT/"WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1"
-P4=ROOT/"WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1"
+P6=RUNTIME_ROOT/"WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1"
+P5=RUNTIME_ROOT/"WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1"
+P4=RUNTIME_ROOT/"WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1"
 ADAPTER=ROOT/"WORKER_RETURNS/SOROK-MII-MCR-AF-FULL-20261110-R1/mcr_runtime_adapter.py"
 VECTORS=HERE/"mcr_frozen_oracle_vectors.jsonl"
 PROOFS=ROOT/"WORKER_RETURNS/SOROK-MII-MCR-AF-FULL-20261110-R1/consumer_witness"
@@ -33,6 +34,20 @@ REFERENCE={
 def digest(value):
     return hashlib.sha256(json.dumps(value,sort_keys=True,ensure_ascii=False,default=str,separators=(",",":")).encode()).hexdigest()
 def import_owners():
+    # The documentary PR #889 predates the protected runtime tree. An actual
+    # protected/candidate worktree must be mounted explicitly; never mint a
+    # sourcefree twin beneath the author checkout.
+    for p in (P6,P5,P4):
+        if not p.is_dir():
+            raise AssertionError("MCR_PROTECTED_RUNTIME_CHECKOUT_REQUIRED_"+str(p))
+    if not (P6/"run_p6.py").is_file():
+        raise AssertionError("MCR_REAL_P6_SOURCE_MISSING")
+    approved=os.environ.get("MCR_QUALIFIED_RUNTIME_SHA")
+    if not approved or len(approved)!=40:
+        raise AssertionError("MCR_APPROVED_RUNTIME_SHA_REQUIRED")
+    ref=subprocess.run(["git","-C",str(RUNTIME_ROOT),"rev-parse","HEAD"],capture_output=True,text=True)
+    if ref.returncode or ref.stdout.strip()!=approved:
+        raise AssertionError("MCR_RUNTIME_CHECKOUT_SHA_NOT_AUTHENTICATED")
     for p in (P6,P5,P4):
         if str(p) not in sys.path:sys.path.insert(0,str(p))
     modules={k:importlib.import_module(k) for k in REFERENCE}
