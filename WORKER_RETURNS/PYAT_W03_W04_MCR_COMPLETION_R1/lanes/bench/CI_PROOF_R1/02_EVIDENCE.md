@@ -3,7 +3,7 @@
 ## Code and proof bytes
 
 ```text
-518628a7b752746b509dd6ac04e130e5e8f6f8a01eb543b8dbd711222c93837e  .github/workflows/pyat-w03-w04-physical-economy.yml
+71f5536c37b9cb090784f92ee47dda9d0dc62f50a2c23391f3e4d90277708e87  .github/workflows/pyat-w03-w04-physical-economy.yml
 2108ebc9ac7103b9a91f063b381b57a63261f94ac66c55631a3cb0b9b133d876  rawlsing_next/tests/test_bench_w03_w04_physical.py
 949918f44a6bab0850997c304f1a1c890d7bcdb65ac41a5041ac9117223d21d5  rawlsing_next/tests/test_bench_w03_w04_physical.py.proof.json
 675ad4d5e014e81ab3db19ab45b30d62adfc4e2b4c356630cdb8883ebe88aeaa  rawlsing_next/tests/test_pre553_w03_w04_cold.py
