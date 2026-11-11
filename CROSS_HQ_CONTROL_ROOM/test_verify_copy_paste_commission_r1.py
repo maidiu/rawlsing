@@ -207,6 +207,27 @@ def test_external_evidence_positive_and_tracked_negative(tmp_path):
     assert restored["status"] == "READY_FOR_INDEPENDENT_RECEIVING", restored["errors"]
 
 
+def test_api_rejects_text_path_mismatch_and_unreadable_path(tmp_path):
+    repo, commission, candidate, evidence_text, external = _fixture(tmp_path)
+    junk = tmp_path / "external-junk.md"
+    _write(junk, "not an MCR evidence block\n")
+    mismatch = validator.verify_return(
+        commission, evidence_text, candidate, repo, returned_path=junk
+    )
+    assert mismatch["status"] == "RED_INCOMPLETE"
+    assert "MCR_C_EVIDENCE_TEXT_PATH_MISMATCH" in mismatch["errors"]
+    missing = tmp_path / "missing-evidence.md"
+    unreadable = validator.verify_return(
+        commission, evidence_text, candidate, repo, returned_path=missing
+    )
+    assert unreadable["status"] == "RED_INCOMPLETE"
+    assert "MCR_C_EVIDENCE_PATH_UNAVAILABLE" in unreadable["errors"]
+    restored = validator.verify_return(
+        commission, evidence_text, candidate, repo, returned_path=external
+    )
+    assert restored["status"] == "READY_FOR_INDEPENDENT_RECEIVING", restored["errors"]
+
+
 def test_forged_candidate_and_output_hash_are_rejected(tmp_path):
     repo, commission, candidate, evidence_text, external = _fixture(tmp_path)
     wrong_candidate = validator.verify_return(

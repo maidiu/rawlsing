@@ -1,0 +1,20 @@
+{
+  "api_mismatch": {
+    "errors": [
+      "MCR_C_EVIDENCE_TEXT_PATH_MISMATCH"
+    ],
+    "status": "RED_INCOMPLETE"
+  },
+  "api_valid_restored": {
+    "errors": [],
+    "status": "READY_FOR_INDEPENDENT_RECEIVING"
+  },
+  "cli_junk": {
+    "returncode": 2,
+    "stdout": "{\n  \"status\": \"RED_INCOMPLETE\",\n  \"errors\": [\n    \"MCR_C_EXACT_ONE_SCOPE_COVERAGE_REQUIRED\",\n    \"MCR_C_MISSING_OR_DUPLICATE_BLOCK_MCR_COMPLETION_EVIDENCE_BEGIN\",\n    \"MCR_C_MISSING_PROOF_OBL-A\",\n    \"MCR_C_MISSING_PROOF_OBL-B\"\n  ],\n  \"candidate_sha\": \"e60a3a3c182e8e10c995ebc1972580b7595ccf3c\",\n  \"contract_sha256\": \"6e4802d098a8b5ca71f39449054d504fdc0d6ba517ddaacae6741567752b97f2\",\n  \"verified_obligation_count\": 0,\n  \"expected_identity_count\": 2,\n  \"evidence_externality\": \"OUTSIDE_CANDIDATE_ROOT__UNTRACKED\",\n  \"evidence_externality_scope\": \"REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE\",\n  \"authority\": \"AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE\"\n}"
+  },
+  "cli_valid": {
+    "returncode": 0,
+    "stdout": "{\n  \"status\": \"READY_FOR_INDEPENDENT_RECEIVING\",\n  \"errors\": [],\n  \"candidate_sha\": \"e60a3a3c182e8e10c995ebc1972580b7595ccf3c\",\n  \"contract_sha256\": \"6e4802d098a8b5ca71f39449054d504fdc0d6ba517ddaacae6741567752b97f2\",\n  \"verified_obligation_count\": 2,\n  \"expected_identity_count\": 2,\n  \"evidence_externality\": \"OUTSIDE_CANDIDATE_ROOT__UNTRACKED\",\n  \"evidence_externality_scope\": \"REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE\",\n  \"authority\": \"AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE\"\n}"
+  }
+}
