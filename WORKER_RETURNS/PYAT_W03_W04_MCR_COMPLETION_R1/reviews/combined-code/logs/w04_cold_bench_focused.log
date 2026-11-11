@@ -1,0 +1,120 @@
+F..FFFFF...F...............                                              [100%]
+=================================== FAILURES ===================================
+_______ test_w04_cache_policy_authorized_private_root_activates_default ________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_cache_policy_authoriz0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x12bc212d0>
+
+    def test_w04_cache_policy_authorized_private_root_activates_default(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        first = _execute(fx)
+        files = _cache_files(root)
+>       assert len(files) == 1
+E       assert 0 == 1
+E        +  where 0 = len(())
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:77: AssertionError
+_ test_w04_cache_invalidation_source_projection_authority_release_replay_schema_bind _
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_cache_invalidation_so0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10ecc3110>
+
+    def test_w04_cache_invalidation_source_projection_authority_release_replay_schema_bind(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        result = _execute(fx)
+        public = result.c11_release.public_objects
+>       path, = _cache_files(root)
+        ^^^^^
+E       ValueError: not enough values to unpack (expected 1, got 0)
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:149: ValueError
+__ test_w04_recovery_aborted_cache_publication_keeps_previous_complete_cache ___
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_recovery_aborted_cach0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x12be96c50>
+
+    def test_w04_recovery_aborted_cache_publication_keeps_previous_complete_cache(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        baseline = _execute(fx)
+>       path, = _cache_files(root)
+        ^^^^^
+E       ValueError: not enough values to unpack (expected 1, got 0)
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:172: ValueError
+_______ test_w04_recovery_concurrent_cache_builders_share_exact_release ________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_recovery_concurrent_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x12bee4310>
+
+    def test_w04_recovery_concurrent_cache_builders_share_exact_release(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            results = list(pool.map(lambda _index: _execute(fx), range(4)))
+        refs = {result.c11_release.release_ref.key for result in results}
+        assert len(refs) == 1
+        files = _cache_files(root)
+>       assert len(files) == 1
+E       assert 0 == 1
+E        +  where 0 = len(())
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:197: AssertionError
+_________ test_w04_recovery_cache_directory_fsync_failure_is_safe_miss _________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_recovery_cache_direct0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x12bd39d90>
+
+    def test_w04_recovery_cache_directory_fsync_failure_is_safe_miss(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        baseline = _execute(fx)
+>       path, = _cache_files(root)
+        ^^^^^
+E       ValueError: not enough values to unpack (expected 1, got 0)
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:212: ValueError
+___________ test_w04_recovery_cache_file_fsync_failure_is_safe_miss ____________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_recovery_cache_file_f0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x12bffbcd0>
+
+    def test_w04_recovery_cache_file_fsync_failure_is_safe_miss(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        baseline = _execute(fx)
+>       path, = _cache_files(root)
+        ^^^^^
+E       ValueError: not enough values to unpack (expected 1, got 0)
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:232: ValueError
+_______ test_w04_boundary_canonical_parquet_survives_accelerator_delete ________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_boundary_canonical_pa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x12bd8dd90>
+
+    def test_w04_boundary_canonical_parquet_survives_accelerator_delete(tmp_path, monkeypatch):
+        root, _ = _write_policy(tmp_path, monkeypatch)
+        fx = _fixture()
+        source = _execute(fx)
+        baseline = _consumer_material(source.repository_binding.executor, fx)
+        canonical_root = tmp_path / "canonical-parquet"
+        carrier = ParquetC11Carrier(canonical_root)
+        directory = carrier.persist(source.c11_release)
+        assert directory.is_dir()
+>       assert _cache_files(root)
+E       AssertionError: assert ()
+E        +  where () = _cache_files(PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1/WORKER_RETURNS/PYAT...R_COMPLETION_R1/reviews/combined-code/tmp/pytest-of-matthewsmith/pytest-0/test_w04_boundary_canonical_pa0/accelerator'))
+
+rawlsing_next/tests/test_pre553_w03_w04_completion.py:337: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_cache_policy_authorized_private_root_activates_default
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_cache_invalidation_source_projection_authority_release_replay_schema_bind
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_recovery_aborted_cache_publication_keeps_previous_complete_cache
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_recovery_concurrent_cache_builders_share_exact_release
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_recovery_cache_directory_fsync_failure_is_safe_miss
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_recovery_cache_file_fsync_failure_is_safe_miss
+FAILED rawlsing_next/tests/test_pre553_w03_w04_completion.py::test_w04_boundary_canonical_parquet_survives_accelerator_delete
+7 failed, 20 passed in 11.76s
