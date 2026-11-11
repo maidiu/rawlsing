@@ -548,10 +548,28 @@
       "job": "pyat-w03-w04-mcr-verifier-api-binding-repair-r2",
       "session": "ses_1b9742b6c02745d8a69d062011",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-verifier-repair-r1",
-      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "status": "RETURNED_INTEGRATED_PENDING_INDEPENDENT_API_RECHECK",
       "source_candidate": "8498bd42164c37e8a0d5b258906aad5f451488aa",
       "scope": "CCF5-R01 text/path binding only",
-      "pid": 6193
+      "pid": 6193,
+      "candidate": "cd98ba7ee1d96cef842663c13eac594c90542525",
+      "actual_model": {
+        "id": "msg_1c8bf3a16001atps6h2e40rbGT",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794369337983,
+          "streamed": 1794369347640,
+          "completed": 1794369347792
+        }
+      },
+      "terminal": {
+        "exit_code": 0
+      }
     },
     {
       "job": "pyat-w03-w04-mcr-ci-proof-focused-recheck-r1",
@@ -561,10 +579,19 @@
       "source_candidate": "4ac862ef58d06266c7de8a7cc186c5c41dd0ad48",
       "scope": "IndependentCC-F03/F04 workflowandfullcommittedproofgate only",
       "pid": 9340
+    },
+    {
+      "job": "pyat-w03-w04-mcr-api-binding-independent-recheck-r1",
+      "session": "ses_e47b179d5ffe6yjXQ2YMdWbKGO",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-engineering-review-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "a5a635a794aa701cde0b7d7b3b6c0708c76288b2",
+      "scope": "Independent exact CCF5-R01 API binding only, distinct nonauthor; no old429wholejob retry",
+      "pid": 12992
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Launch independentCI/proofrecheck oncommittedcandidate while verifierAPIrepair/economicsmethodreviewcontinue. No full100k before methodqualified.",
+  "next_action": "Launch narrow existing nonauthor engineer API recheck; original CI/proofreview and economicsmethodreview continue. No extra investigation/fullmatrix yet.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
