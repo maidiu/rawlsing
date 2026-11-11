@@ -1,0 +1,30 @@
+{
+  "return_job": "pyat-w03-w04-mcr-bench-r1",
+  "receipt": "/Users/matthewsmith/Desktop/Rawlsing_Controller/local-automation-state/pyat-w03-w04-mcr-01a15c1e/pyat-w03-w04-mcr-bench-r1/completion.json",
+  "exit_code": 0,
+  "candidate": "c44cf09fb9ca5cbc235763d8bd5df9b0074de289",
+  "remote_verified": true,
+  "integrated_commit": "2959dda3c",
+  "author_status": "INCOMPLETE",
+  "hq_disposition": "BENCH_HARNESS_AND_BASELINE_RECEIVED__NO_FINAL_RESOURCE_ACCEPTANCE",
+  "reported_tests": {
+    "bench": 7,
+    "selected_w03_w04": 50
+  },
+  "measured_preintegration_narrow100k": {
+    "PR895_46b_peak_bytes": 5923426304,
+    "protected_4f_peak_bytes": 5240467456,
+    "rss_regression_percent": 13.0,
+    "wall_seconds_46b": 777.53,
+    "wall_seconds_protected": 997.04
+  },
+  "not_run": [
+    "Integratedcandidate100k3reps/narrowwide/repeat",
+    "FinalcoldRSS>=15%",
+    "Qualifiedrepeatrestartwall<=90%",
+    "FinalsameSHAindependentreceiving"
+  ],
+  "not_an_acceptance": "Source46bvsprotected4f preintegration only; neithermeasuresnewcold/coupledpatch",
+  "next_step": "Coupledrepairreturn thenpinintegratedhead/smallregression/benchmarkmethodfixes, runrequiredmatchedmatrix; independentcodeandeconomicreview",
+  "goal_complete": false
+}

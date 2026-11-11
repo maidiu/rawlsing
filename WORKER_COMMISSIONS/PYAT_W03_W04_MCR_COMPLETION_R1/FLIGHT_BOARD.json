@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T02:31:49.203203+00:00",
+  "saved_utc": "2026-11-11T02:48:56.429750+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -65,7 +65,7 @@
       "job": "pyat-w03-w04-mcr-bench-r1",
       "pid": 31028,
       "session": "ses_b998af9086264002a86ee57b6e",
-      "status": "ACTIVE_VERIFIED_MODEL_SOURCE_PRESENT",
+      "status": "RETURNED_INCOMPLETE__HARNESS_BASELINES_INTEGRATED_FINAL_MATRIX_PENDING",
       "live_pid_verified": true,
       "actual_model": {
         "id": "msg_1c83fddfa0010XHDZ2OeSQInQ2",
@@ -79,11 +79,14 @@
           "created": 1794361022760
         }
       },
-      "terminal": null,
+      "terminal": {
+        "exit_code": 0
+      },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-r1",
       "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-bench-r1.md",
       "source_anchor_dependency": "Resolved: actualHEADverified1b0c8dc4,9576source-bearingfiles,benchmodule/tests activelywritten; no restart.",
-      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
+      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc",
+      "candidate": "c44cf09fb9ca5cbc235763d8bd5df9b0074de289"
     },
     {
       "lane": "cold",
@@ -272,6 +275,31 @@
       "source_candidate": "c2f4737e2",
       "acceptance_boundary": "Normalstreamingcold +governedpersist/reopen/reuse",
       "repair_round": 1
+    },
+    {
+      "lane": "combined-code-review",
+      "job": "pyat-w03-w04-mcr-combined-code-review-r1",
+      "pid": 46810,
+      "session": "ses_e47b17f8fffedazgQeSGbql4HH",
+      "status": "ACTIVE_VERIFIED_MODEL",
+      "actual_model": {
+        "id": "msg_1c8817fc0001Ip5U4JnOs2rnwS",
+        "type": "assistant",
+        "model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "time": {
+          "created": 1794365292569,
+          "streamed": 1794365305051,
+          "completed": 1794365305762
+        }
+      },
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-combined-code-review-r1",
+      "candidate": "2959dda3c",
+      "independence": "ExistingW04reviewer,nonauthorofMCRimplementation; no newprovider/account; previousreviewersoverloadnotaverdit",
+      "final_receiving": "StillrequiresonefinalfrozenSHAwithall12evidence"
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
