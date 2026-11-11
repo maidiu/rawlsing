@@ -43,6 +43,8 @@ jobs:
           git fetch --no-tags --depth=1 origin 8382651eabc5a7fa6ca0fed3447fa6308b3324fc
           test "$(git rev-parse 8382651eabc5a7fa6ca0fed3447fa6308b3324fc:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_identities.tsv)" = "a4aa2fafbb19263e3a89de703c8525a765417e95"
           test "$(git rev-parse 8382651eabc5a7fa6ca0fed3447fa6308b3324fc:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py)" = "0d82d36416834b2bda3b112f9b9dcbf0a475d603"
+          git fetch --no-tags --depth=1 origin 62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff
+          test "$(git rev-parse 62cd9aae4a12f6cef9ef4c7bc34326c3d3c306ff:WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_acceptance.json)" = "2ff94ac73fbd22344acfe2890a9163b8b492348d"
       - name: Execute actual canonical Python validator on exact whole amended commission
         shell: bash
         run: |
@@ -61,6 +63,12 @@ jobs:
           set -euo pipefail
           python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_frozen_oracle_runner.py --self-test
           python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_terminal_receiving.py --issued-sha $(git rev-parse HEAD) --preflight
+      - name: Whole E1-E10 full 63-outcome gate and forged all-PASS author receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_gate.py --preflight
+          python3 -B WORKER_COMMISSIONS/SOROK-MECHANISM-II-HISTORICALLY-MEDIATED-GAZE-20261108-R1/mcr_full_e1_e10_gate.py --forged-attack
       - name: No future MII runtime adapter means explicit RED not a fabricated completed test
         shell: bash
         run: |
