@@ -1,5 +1,58 @@
 # Mechanism I acceptance evidence
 
+## R3 full original39 reconciliation — candidate, independent receiving pending
+
+Engineering grades below are sourcefree and scoped to the stated discriminator. PASS never means native science, actor rights, protected adoption or human product validation. Current frozen author implementation is `0b0eb94c714049dadd3f82cc0af97c44ff4f74b4`. Independent634b75d receiving reproduced90 tests, then found the preserved H1 support-time RED. Repair/graph/transitive source changes are under the same reviewer's exact0b0eb94 closure. Current-code full suite passed94tests461.29s, exit0, exact command/stdout/stderr/source in05_TEST_RECEIPTS_R3/0b0eb94-*. Final independent disposition is PENDING and is never inferred from author tests. Earlier module runs and their exact cuts remain in the return; a later head is not retroactively tested by an earlier run.
+
+Test shorthand refers to `rawlsing_next/tests/test_sorok_history_<name>.py`. The common producer is the existing BP4/HistoricalWorld checkpoint/outbox; actual first consumers are `query_depth`, `query_relations`, `read_inspection`, P4/P5/P6 targeted inspection and ordinary S46 `advance_dispatched`, as identified per row. Canonical source/parent/job/ref identities are in the tests and raw live JSON receipts; reader-specific positive and severance behavior must not be conflated.
+
+| Original case | Current author grade | Actual discriminator / remaining boundary |
+|---|---|---|
+| P01 | PASS | owner::test_surface_and_outbox_share_one_world_checkpoint; source-initialized cohort→admit_surface→visible_surfaces. Fabricated/speech anchors refuse. |
+| P02 | PASS | same checkpoint/outbox test; duplicate, rollback and cold recovery preserve one obligation. |
+| P03 | PASS | attempt09 actual DeepSeek→admitted H1 production + H0→graph/P4 inspection→cold equality. Experimental synthetic grade; no native issuance. |
+| P04 | PASS | owner H0 tests and actual attempts05/06/08/09. Actor state is not written by physical detail. |
+| P05 | PASS | episodes::test_source_owned_episode_crosses_domains_and_cold_bidirectional_index; actual owner commits effective/admission-time events/roles. Live attempt09 production is additional evidence. |
+| P06 | PARTIAL | Actual actor-produced repair index and existing P6 recent_self_actions agree on exact canonical event/hash. Withheld actor perception removes its context while objective link remains; restoration is exact (04_EXISTING_ACTOR_CONTEXT_JOIN_R3.json). This is performed-action continuity, not biographical/native actor memory; historical actor-state/knowledge recruitment remains ACTOR_RIGHTS_HOLD. |
+| P07 | PASS | episodes::test_h1_negative_group_preserves_independent_physical_fact; invalid H1/time/place/role/effect/owner preserves independent H0 and actor state. |
+| P08 | PARTIAL | history_graph/query_relations retrieve actual objective event/person/institution/material-activity edges bidirectionally; repair index retained. Actor testimony/subjective practice remain unissued, not silently inferred. |
+| P09 | PASS | joined::test_existing_situated_reader_consumes_only_actual_inspection_projection (P5/P6), inherited P4 cold inspector. Unknown/unadmitted target refuses; no L3 graph enters physical projection. |
+| P10 | PASS | episodes::test_committed_history_link_activates_coalesced_t2_without_inspection; inspect missing predicate and bounded idle tests. Actual admitted episode, not a label, activates target work. |
+| P11 | PASS | episodes::test_h1_material_parent_is_consumed_by_normal_p4_work_not_inspection (both pending modes), activity suite ordinary work. Missing/severed history holds; admission releases one ACTUAL interval. |
+| P12 | PASS | episodes cross-domain test: book and measuring resource carry the identical admitted event ID; cold reverse index stable. Live attempt09 is single-target and does not replace this proof. |
+| P13 | PARTIAL | Actual direct/nested/sibling sourcefree isolation and sealed-root replay retained. ROOT_HISTORY_WRITE_NOT_GRANTED; shared-root new history not authorized. |
+| P14 | PASS | episodes cold source restoration, actual canonical deletion/restore, saved-candidate recovery; live attempts cold equality. No fresh provider on replay. |
+| P15 | PASS | Current24-sample cold/warm depth and graph, actual live model tokens/cost, sourcefree controlled owner/queue/commit/index phase timing and resource receipts exist in06_COST_RECEIPTS_R3. No production SLO or original-scale claim. |
+| P16 | PASS | Same kernel processes actual use-tool/S46 (attempt11), archive/institution/activity history (attempt09), actual actor repair output (attempt12), and controlled typed collection/priced-item alternatives. No per-domain production story branch. Native source breadth and production scale are not claimed. |
+| D01 | HOLD | C12 sealed-root integrity is proven; shared pre-contact write + all-fork closure owner is not issued. Neither private branch isolation nor one first inspector completes this case. |
+| D02 | PARTIAL | Private MII focus differential preserves exact world/events/S46/actor while viewer changes. Explicit inspection coalesces priority without recomputing admitted answer; full shared-root answer remains D01 HOLD. |
+| D03 | PASS | episodes source severance/restoration and negative group tests; real missing parent holds dependent fact, independent physical group remains admitted. |
+| D04 | PASS | Graph@2 edges derive from real owner episodes/typed principals/parents/supports. Material-history contrast changes objective history while actor state remains byte-identical; arbitrary effects/psychological links are held. No claim of native actor learning. |
+| D05 | PARTIAL | Typed collection same-start physical appearance supports distinct admitted PRODUCTION/TRANSFER pasts without changing actor state (episodes::test_same_appearance_permits_distinct_pasts_without_private_meaning). Native ownership/reading/love history is not inferred or issued; final independent receiving pending. |
+| D06 | PARTIAL | Source-qualified priced item/exchange record has distinct objective metadata; same-start alternate material histories preserve identical actor state. Price/prestige cannot create status desire. Native subjective valuation remains its own unissued actor permission; final independent receiving pending. |
+| D07 | PASS | Inherited P4 pending/known/unknown tests and targeted inspector; no last-second model call supplies an invented past at inspection. |
+| D08 | PARTIAL | H1 body says ACTOR/USER_ACCESS_NOT_GRANTED; world reader can navigate while actor/user graph query holds, physical projection omits lore. Full testimony/user-inference rights stay separate. |
+| N01 | PASS | admission::test_h1_undercalled_h3_is_held_not_accepted; unsupported formative V3 effects cannot write actor state. |
+| N02 | PASS | admission H2/H3 slack tests and H1 actor-effect refusal; no CAN/ADP write path. |
+| N03 | PASS | episodes chronology/wrong-place/closed-actor overlap negatives; existing custody/late-parent evaluator tests. |
+| N04 | PASS | Contradictory known surface group rejected by evaluator and source owner; no overwrite. |
+| N05 | PASS | owner::test_admitted_speech_and_actor_testimony_do_not_create_particulars; episodes::test_actor_testimony_is_not_a_world_history_policy_source. |
+| N06 | PASS | Existing actual movement/readset race, lease-token fencing and stale saved-attempt tests retained; bounded stale retry does not overwrite committed truth. |
+| N07 | PARTIAL | Same-branch atomic lease and idempotent owner admission proven. Cross-branch public-root singleflight requires unissued shared-root owner. |
+| N08 | PARTIAL | Checkpoint rollback, cold saved-candidate/outbox/index recovery and ambiguous ACTUAL-interval refusal retained. Exhaustive every-kill-point proof not claimed. |
+| N09 | PARTIAL | Actual sourcefree direct/nested/sibling and hidden-target isolation proven. Original cross-user/native actor rights not issued. |
+| N10 | PASS | Cold missing source holds graph/depth/readset; actual canonical deletion fails S37/C12 integrity and exact byte restore recovers. Production append-only rules unchanged. |
+| N11 | PASS | Unknown graph node is UNKNOWN, actor/user access HELD, source outage HOLD; none becomes a valid physical negative. |
+| N12 | PASS | World/actor/user query separation, actor-access unissued and P4/P5/P6 physical-only inspection. No automatic actor testimony or L3 appearance disclosure. |
+| N13 | PARTIAL | Packet text remains untrusted data; exact source permissions live in owner. Hostile text parser tests retained; no live adversarial prompt-injection acceptance claim. |
+| N14 | PASS | Unconfigured provider explicitly LIVE_PROVIDER_NOT_RUN; real attempts are separately graded, including failure/timing receipts and actual H0/H1 admissions. |
+| N15 | PASS | Protected P6/MII/MIII53-test reconciliation regression plus actual same-world joined differential retained; novel source-defined collection/item/institution and actor-produced artifact evidence is separate. A fixed house alone is never labeled generality proof. |
+
+Historical-cut evidence below is retained without promotion.
+
+---
+
+
 Implementation `529485bdfc8a2651013124da11dbaa273cf2f16d`, exact tree
 `217626de33a1113bdbe4f0a4f3f7cf305199eb4e`. The sourcefree cut uses the
 existing P2/P3/P4 and S46 owners. A mock result establishes the engineering

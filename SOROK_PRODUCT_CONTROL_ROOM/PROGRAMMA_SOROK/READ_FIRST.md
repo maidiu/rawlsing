@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — current guide navigation
 
+**Later source-currentness — 2026-11-11, isolated MI candidate only:** MII and MIII are included in protected811dd32b; the old “MIII incoming”/MI D8-open paragraphs below retain their original dated source cuts. Current MI candidate0b0eb94 adds experimental H1/index/rolling and actual ordinary/situated readers with real live and scoped joined-gaze evidence; final independent receiving is pending after a preserved source-time RED and repair. See the [existing reconciliation queue, MI continuation](10_RECONCILIATION_QUEUE_SOURCE_GAPS_AND_CLOSEOUT_CHECK_R1.md#mi-full-completion-continuation--2026-11-11) and [paired HQ current progress](../CURRENT_PROGRESS.md). Native actor/root/production/protected adoption is not promoted by this documentary patch.
+
+
 **NEW SOURCE-GROUNDED CANDIDATE — 2026-11-09, NOT EXECUTED:** [29 Nadia sensory access from outward player conduct](29_NADIA_SENSORY_ACCESS_FROM_PLAYER_CONDUCT_CANDIDATE_20261109_R1.md). Distinguish actual world conduct, Nadia's qualified auditory/visual/presence cues, and her own fallible evaluation/response. P5/P6 already protected at #775/#779/#828; Mechanism I #791 D8 joint P6 gaze proof separate; Mechanism III incoming with no supplied spec. This proposal is documentary only and confers no sensory implementation, actor-science/right, native or human grant. Earlier P5/P6 candidate status paragraphs are historical.
 
 **P5 candidate update (2026-11-07).** [P5 situated experience](26_P5_SITUATED_EXPERIENCE_CANDIDATE_20261107_R1.md) is implemented and author-tested at sourcefree TEST_ONLY grade. Receiving is pending. The R39 protected status and original authority holds still apply.

@@ -1,3 +1,24 @@
+# R3 actual compatible source ABI — 0b0eb94c714049dadd3f82cc0af97c44ff4f74b4
+
+Branch `codex/sorok-mi-completion-20261111-r1`; original MI83de56d preserved, protected811dd32b reconciled (MII/MIII included), actor-scientific/native/root/production authority unchanged. Final exact-head review is pending. This entry supersedes only current candidate facts; older source cuts below remain historical evidence.
+
+| Existing path | Exact blob at frozen implementation |
+|---|---|
+| rawlsing_next/sorok_history/owner.py | 4352415bc120e37abab4da989c00193221266af6 |
+| rawlsing_next/sorok_history/provider.py | 0c82c5d6cc2914988a9fb88c11d5ba9c7b101042 |
+| rawlsing_next/sorok_history/runtime.py | 6f444a8efdfd87778d803842e60d496160c78262 |
+| rawlsing_next/sorok_history/activity.py | 71124572ba1d7ab56992469bbe6f45cedd8296e1 |
+| WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py | c5418662159aa81be8d51bc8a0578744f59758fa |
+| WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py | 260e44580f93da53fd0d8bf1f82c3e5dee5e584c |
+| WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py | 044a3e11e9b21849df52b62d7e4e5646c56756e2 |
+| WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py | bc71f6d06614661c4c83704d771972c77c39027c |
+
+Graph schema@2 adds canonical CAUSAL_PARENT and HISTORICAL_SUPPORT edges. Known old@1 derived cache is not trusted; current readers recompute from fully requalified canonical episodes. Unknown/current-schema mismatch refuses; the existing `rebuild_history_index` can persist a fresh projection. Ordinary S46, P4/P5/P6 callback ABI and existing physical-only inspection remain actual first consumers. No new empirical compiler, actor engine or world store.
+
+Sourcefree experimental support rule: claimed historical support must not postdate the occurrence's effective time. Current material observations still constrain prospective past generation through the packet/readset; they are not labeled earlier evidence. Retrospective testimony/native history require their own competent owners. Historical admission clocks are distinct from causal/effective clocks.
+
+---
+
 # Mechanism I source and ABI cut
 
 Issue #785 governs this branch. GitHub returned protected PRE-MAIN

@@ -1,3 +1,16 @@
+# Current R3 authority disposition — 2026-11-11
+
+Frozen implementation `0b0eb94c714049dadd3f82cc0af97c44ff4f74b4` extends the existing sourcefree world owner; it does not issue native rights. Earlier cuts below remain historical evidence.
+
+- **Experimental H1:** source initialization may grant a bounded synthetic cohort through `WorldState.configure_experimental_history`. The normal runtime has no default grant. Actual canonical `HISTORICAL_MATERIAL` events preserve source policy, effective/admission clocks, parents, actors, places and typed roles. Current/actor effects are forbidden. This is sourcefree engineering permission, not original scientific issuance.
+- **Actor history:** objective performed participation is indexable; testimony, knowledge, memory, desires and psychology require their existing competent owners. H2/H3 remain held. An institution or commodity cannot imply actor status desire.
+- **Shared root:** C12 root verification is available; no public pre-contact history insertion/all-fork closure contract is issued. `request_shared_precontact` returns `ROOT_HISTORY_WRITE_NOT_GRANTED` with exact store/checkpoint identity. Branch isolation is not completion of P13/D01. Executed exact owner `r26e.c12_integrity.QualifiedC12Store`, root checkpoint `cca026606099f8686820c89c71409293ab449ed8f6e1c33c3e66529ee1541f0c`; missing capability `PUBLIC_PRECONTACT_ADMISSION_AND_ALL_FORK_COMPATIBILITY`; queued_jobs=[] and provider_called=false. Raw receipt:07_ROOT_OWNER_HOLD_R3.json.
+- **Actual inference:** DeepSeek V4.1 Flash H0 admission/inspection/cold is observed at f459744a2; actual H1 production with institution/activity links at634b75d (attempt09); ordinary no-inspection condition admission→S46 atb1431767a (attempt11); actual actor-produced repair artefact enrichment and no-action resume at9876348fe (attempt12). Timeouts and malformed output remain negative receipts. These actual inference cuts do not confer native history, actor knowledge or product acceptance.
+- **Independent consumer:** normal P4/S46 work consumes source-qualified depth and its historical parents, including no-inspection auto-resume. Private MII focus does not change material action in the joined test. Actor learning and general-language semantic truth are separate. Existing P3Owner.snapshot binds its source/config/psychology head; PsycheStore.query is its own actor-bound record API. P6 actor_scene_context.recent_self_actions accepts only canonical MOVE/REPAIR with that actor's perception. The actual repair-context join receipt preserves this positive existing capacity without labeling it native biographical memory or giving the history provider actor-state access.
+- **Receiving:** current changes are Codex author-tested candidates. Independent634b75d receiving returned a concrete source/time RED; its probe/verdict are preserved, and repaired0b0eb94 exact-head independent closure is pending. Protected integration, native psychology and production/human acceptance are not authorized or claimed.
+
+---
+
 # Mechanism I authority holds
 
 | Boundary | Current engineering evidence | Remaining dependency |
