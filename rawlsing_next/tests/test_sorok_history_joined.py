@@ -58,3 +58,31 @@ def test_private_gaze_changes_view_not_independent_history_activity(tmp_path, mo
     assert results[0][:4] == results[1][:4]
     assert results[0][4]["mii_surface"]["mandatory"] == results[1][4]["mii_surface"]["mandatory"]
     assert results[0][4]["detail"] != results[1][4]["detail"]
+
+
+@__import__('pytest').mark.parametrize('reader', ['P5', 'P6'])
+def test_existing_situated_reader_consumes_only_actual_inspection_projection(tmp_path, monkeypatch, reader):
+    import importlib
+    p5 = P6.parent / 'SOROK-P5-CONTINUOUS-EXPERIENCE-R1'
+    monkeypatch.syspath_prepend(str(P6 if reader == 'P6' else p5))
+    module = importlib.import_module('run_p6' if reader == 'P6' else 'run_p5')
+    from run_p4 import open_owner, run_history_worker
+    state = tmp_path / 'reader'
+    module.experience(state, Namespace(command='new', history='recognized_plan', request_id=None))
+    owner = open_owner(state / 'actual-p2')
+    try:
+        from rawlsing_next.sorok_history.owner import HistoricalWorld
+        target = HistoricalWorld(owner.base_owner.fanin.session).visible_surfaces()[0]['id']
+    finally:
+        owner.close()
+    admitted = run_history_worker(state, provider=_mock_provider(target, 'serviceable'))
+    assert admitted['status'] == 'INDEX_READY'
+    observed = module.experience(state, Namespace(command='inspect-particular',
+        target=target, property='condition', request_id='bounded-physical-inspection'))
+    assert observed['admission'] == 'ADMITTED'
+    assert observed['observation']['physical'][0]['value'] == 'serviceable'
+    assert not {'episodes', 'history_graph', 'actor_refs'} & set(observed['observation'])
+    refused = module.experience(state, Namespace(command='inspect-particular',
+        target='unadmitted-target', property='condition', request_id='unavailable'))
+    assert refused['admission'] == 'UNAVAILABLE'
+    assert refused['observation'] is None

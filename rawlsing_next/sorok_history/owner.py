@@ -681,6 +681,7 @@ class HistoricalWorld:
             "target_ids": [target_id],
             "surface": {target_id: {
                 "domain": surface["domain"], "location": surface["location"],
+                "source_referent": surface["referent_key"],
                 "physical": deepcopy(surface["physical"]),
                 "allowed_physical_predicates": {
                     name: value_type.__name__ for name, value_type in PHYSICAL_TYPES.items()
@@ -724,6 +725,7 @@ class HistoricalWorld:
             if other_id != target_id:
                 packet["surface"][other_id] = {
                     "domain": other["surface"]["domain"],
+                    "source_referent": other["surface"]["referent_key"],
                     "location": other["surface"]["location"],
                     "physical": deepcopy(other["surface"]["physical"]),
                     "known_fact_refs": [], "unresolved": other["surface"]["unresolved"],

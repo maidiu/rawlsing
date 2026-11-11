@@ -24,7 +24,7 @@ from rawlsing_next.sorok_history.admission import SCHEMA as ADMISSION_PACKET_SCH
 
 PROVIDER_CONTRACT_ID = "SOROK_HISTORICAL_MODEL_PROVIDER@1"
 RECEIPT_SCHEMA = "SOROK_HISTORICAL_MODEL_RECEIPT@1"
-PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@7"
+PROMPT_SCHEMA = "SOROK_HISTORICAL_MODEL_PROMPT@8"
 
 LIVE_PROVIDER_NOT_RUN = "LIVE_PROVIDER_NOT_RUN"
 GRADE_NONE = "NONE"
@@ -390,7 +390,12 @@ def _prompt(packet: Mapping[str, Any]) -> str:
         "  - When the target supplies requested_predicate, propose only that physical predicate.\n"
         "  - Prior actor repairs are contextual precedents only, not parents of this target.\n"
         "  - The root tool baseline is historical context. Preserve the current surface state.\n"
-        "  - Only when H1 is allowed, optionally propose one bounded shared material occurrence.\n"
+        "  - When H1 is allowed and provenance/dependencies are unresolved, construct one\n"
+        "    compatible new synthetic material past occurrence when the source window permits.\n"
+        "    This experimental world-building grant permits a previously unwritten past;\n"
+        "    it is not external verification. Existing committed events must remain unchanged.\n"
+        "    Objective past participation is distinct from actor memory or knowledge, which\n"
+        "    are not granted. Leave provenance unresolved if no lawful occurrence fits.\n"
         "    It needs dependency_group, asserted_H_class=H1, effective_time (integer),\n"
         "    target_ids (packet subset), action (PRODUCTION/ACQUISITION/REPAIR/USE/TRANSFER/\n"
         "    MATERIAL_LABOR), effects=[], causal_parents and source_refs (exact event refs),\n"

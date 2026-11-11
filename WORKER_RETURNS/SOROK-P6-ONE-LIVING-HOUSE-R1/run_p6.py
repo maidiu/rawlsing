@@ -81,7 +81,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
             check_boundary(owner, ledger)
             prior = scene(session)
             outcome = None
-            if command in ({"go", "look", "wait", "attend", "inspect"} | OPERATIONS.keys()) and invitation(session, ledger):
+            if command in ({"go", "look", "wait", "attend", "inspect", "inspect-particular"} | OPERATIONS.keys()) and invitation(session, ledger):
                 raise RecursionRefusal("P6_INVITATION_REQUIRES_EXPLICIT_RESPONSE")
             if command == "wait":
                 if type(args.duration) is not int or not 1 <= args.duration <= 60:
@@ -120,7 +120,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
 
                 outcome = act(owner, ledger_file, ledger, args,
                               conduct=(action, perform_with_time))
-            elif command in {"say", "attend", "inspect", "inspect-edge"}:
+            elif command in {"say", "attend", "inspect", "inspect-particular", "inspect-edge"}:
                 outcome = act(owner, ledger_file, ledger, args, pacing=PACE)
             view = surface(owner, ledger)
             authoritative_events = {
@@ -216,6 +216,10 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                   "mii": mii.status(profile),
                   "mii_exposure_id": exposure["exposure_id"],
                   "invitation": view["invitation"]}
+        if view.get("historical_particulars"):
+            result["historical_particulars"] = view["historical_particulars"]
+        if command == "inspect-particular" and outcome is not None:
+            result["observation"] = outcome["observation"]
         if outcome is not None:
             result["admission"] = outcome["admission"]
         if timings is not None:
@@ -232,6 +236,10 @@ def main():
                             help="Establish the sourcefree workshop sensory conditions.")
     initialize.add_argument("--scene", choices=("house", "gallery", "symbolic"), default="house",
                             help="Select the sourcefree presentation fixture.")
+    particular = commands.add_parser("inspect-particular")
+    particular.add_argument("target")
+    particular.add_argument("--property")
+    particular.add_argument("--request-id")
     commands.add_parser("view")
     wait = commands.add_parser("wait")
     wait.add_argument("duration", type=int)

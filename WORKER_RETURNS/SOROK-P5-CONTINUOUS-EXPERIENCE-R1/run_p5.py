@@ -39,7 +39,7 @@ def experience(state, args):
             check_source(owner)
             check_boundary(owner, ledger)
             outcome = None
-            if command in {"say", "inspect", "inspect-edge", "attend"}:
+            if command in {"say", "inspect", "inspect-particular", "inspect-edge", "attend"}:
                 if (command in {"inspect", "attend"}
                         and invitation(owner.base_owner.fanin.session, ledger)):
                     raise RecursionRefusal("P5_INVITATION_REQUIRES_EXPLICIT_RESPONSE")
@@ -75,6 +75,10 @@ def experience(state, args):
             "choices": view["choices"] if view["invitation"] else [*view["choices"], "ATTEND", "INSPECT"],
             "invitation": view["invitation"],
         }
+        if view.get("historical_particulars"):
+            result["historical_particulars"] = view["historical_particulars"]
+        if command == "inspect-particular" and outcome is not None:
+            result["observation"] = outcome["observation"]
         if outcome is not None:
             result["admission"] = outcome["admission"]
             result["performed"] = outcome["performed"]
@@ -102,6 +106,10 @@ def main():
                                  help="Continue a closer examination for two work periods.")
     inspect.add_argument("--request-id")
     commands.add_parser("attend").add_argument("--request-id")
+    particular = commands.add_parser("inspect-particular")
+    particular.add_argument("target")
+    particular.add_argument("--property")
+    particular.add_argument("--request-id")
     commands.add_parser("view")
     orient = commands.add_parser("orient", help="Register interest in a perceived occurrence.")
     orient.add_argument("event_id")
