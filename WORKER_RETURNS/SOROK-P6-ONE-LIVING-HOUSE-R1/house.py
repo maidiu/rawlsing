@@ -3,6 +3,7 @@
 from developmental_recursion.contracts import RecursionRefusal, digest
 
 from encounter import movement_evidence
+from mii import close_available
 
 SLOT = "p6_house"
 ROOMS = {
@@ -34,17 +35,44 @@ HISTORY = (
 )
 SOURCE = digest({"rooms": ROOMS, "objects": OBJECTS, "history": HISTORY})
 
+GALLERY_ROOMS = {
+    "gallery": {"other": "storeroom", "line": "A narrow gallery opens toward a storeroom."},
+    "storeroom": {"other": "gallery", "line": "The gallery is behind you. Shelves line the storeroom."},
+}
+GALLERY_OBJECTS = {
+    "hinge": {
+        "room": "gallery", "glance": "A brass hinge rests on a plinth.",
+        "close": "The hinge carries the stamped mark G-17.",
+        "specialist_identity": "the stamped brass hinge",
+        "marking": "stamped-mark-g-17",
+        "evidence": "The hinge carries the stamped mark G-17.",
+    },
+    "ledger": {
+        "room": "storeroom", "glance": "A cloth-bound ledger lies on a shelf.",
+        "close": "The ledger's spine is worn at the lower corner.",
+    },
+}
+GALLERY_HISTORY = ()
+GALLERY_SOURCE = digest({
+    "rooms": GALLERY_ROOMS, "objects": GALLERY_OBJECTS,
+    "history": GALLERY_HISTORY,
+})
 
-def facts(epoch):
+
+def facts_for(history, objects, epoch):
     result = {}
-    for row in HISTORY:
+    for row in history:
         clock = epoch + row["offset"]
-        if (row["id"] in result or row["object"] not in OBJECTS
+        if (row["id"] in result or row["object"] not in objects
                 or clock >= epoch or any(parent not in result or result[parent]["clock"] >= clock
                                         for parent in row["depends_on"])):
             raise RecursionRefusal("P6_INVALID_OBJECT_CHRONOLOGY")
         result[row["id"]] = {**row, "clock": clock}
     return result
+
+
+def facts(epoch):
+    return facts_for(HISTORY, OBJECTS, epoch)
 
 
 def recognize(target, evidence_text, objects=None):
@@ -88,6 +116,14 @@ def derive_recognition(objects, turns, events, user_visible):
     return recognized
 
 
+def _material(source):
+    if source == SOURCE:
+        return ROOMS, OBJECTS, HISTORY, True
+    if source == GALLERY_SOURCE:
+        return GALLERY_ROOMS, GALLERY_OBJECTS, GALLERY_HISTORY, False
+    return None
+
+
 def establish(session):
     world = session.world()
     root = session.read_root()["root_hash"]
@@ -95,7 +131,31 @@ def establish(session):
     world.resources[SLOT] = {
         "root": root, "branch": session.branch_id, "source": SOURCE, "epoch": epoch,
         "rooms": ROOMS, "objects": OBJECTS,
+        "presentation_conditions": {
+            "grade": "SOURCEFREE_FIXTURE", "light": "lit",
+            "sightline": "unobstructed", "legibility": "readable",
+            "observer": session.meta["user_actor"],
+        },
         "history": {"strap-repair": facts(epoch)["strap-repair"]},
+    }
+    session.product._checkpoint(session.branch_id, world.clock, world)
+
+
+def establish_gallery(session):
+    world = session.world()
+    root = session.read_root()["root_hash"]
+    epoch = world.clock
+    user = session.meta["user_actor"]
+    world.positions[user] = "gallery"
+    world.resources[SLOT] = {
+        "root": root, "branch": session.branch_id, "source": GALLERY_SOURCE,
+        "epoch": epoch, "rooms": GALLERY_ROOMS, "objects": GALLERY_OBJECTS,
+        "presentation_conditions": {
+            "grade": "SOURCEFREE_FIXTURE", "light": "lit",
+            "sightline": "unobstructed", "legibility": "readable",
+            "observer": user,
+        },
+        "history": {},
     }
     session.product._checkpoint(session.branch_id, world.clock, world)
 
@@ -103,17 +163,23 @@ def establish(session):
 def read_house(session):
     world = session.world()
     house = world.resources.get(SLOT)
-    if (not house or house.get("source") != SOURCE
-            or digest({"rooms": ROOMS, "objects": OBJECTS, "history": HISTORY}) != SOURCE
-            or house.get("root") != session.read_root()["root_hash"]
-            or house.get("branch") != session.branch_id
-            or house.get("rooms") != ROOMS or house.get("objects") != OBJECTS):
+    if not house or house.get("root") != session.read_root()["root_hash"]:
         raise RecursionRefusal("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH")
-    expected = facts(house["epoch"])
+    if house.get("branch") != session.branch_id:
+        raise RecursionRefusal("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH")
+    material = _material(house.get("source"))
+    if material is None:
+        raise RecursionRefusal("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH")
+    rooms, objects, history_spec, requires_repair = material
+    if (digest({"rooms": rooms, "objects": objects, "history": history_spec})
+            != house.get("source")
+            or house.get("rooms") != rooms or house.get("objects") != objects):
+        raise RecursionRefusal("P6_HOUSE_SOURCE_OR_ROOT_MISMATCH")
+    expected = facts_for(history_spec, objects, house["epoch"])
     history = house["history"]
-    if ("strap-repair" not in history or any(
+    if (requires_repair and "strap-repair" not in history) or any(
             row != expected.get(ref) or any(parent not in history for parent in row["depends_on"])
-            for ref, row in history.items())):
+            for ref, row in history.items()):
         raise RecursionRefusal("P6_OBJECT_PROVENANCE_MISMATCH")
     return world, house
 
@@ -123,6 +189,8 @@ def close_on_repair(session, event):
     if event["kind"] != "REPAIR" or event["actor_id"] != "A" or event["location"] != "workshop":
         return
     world, house = read_house(session)
+    if house.get("source") != SOURCE:
+        return
     if "bench-installation" not in house["history"]:
         house["history"]["bench-installation"] = facts(house["epoch"])["bench-installation"]
         session.product._append_episode(
@@ -145,7 +213,8 @@ def perform(session, action):
     item = house["objects"].get(target)
     if (not session.scene_open() or
             (moving and target != house["rooms"][room]["other"]) or
-            (not moving and (item is None or item["room"] != room))):
+            (not moving and (item is None or item["room"] != room)) or
+            (not moving and not close_available(house, session.meta["user_actor"]))):
         return {}, {"admission": "UNAVAILABLE", "performed": False, "observation": None}
 
     body = {"target": target}
