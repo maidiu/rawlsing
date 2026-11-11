@@ -201,6 +201,8 @@ FLIGHT_MAP = "WORKER_RETURNS/VMESTYE_ZAK00_V2_MCR_AUTHOR_EXECUTION_20261110_R1/0
 FROZEN_PYTHON_COURT = "42906583428"
 FROZEN_PYTHON_HEAD = "61e23d77d72dd349c48a106636336403f3caed86"
 RECEIVING_ISSUES = (814, 815, 816, 817)
+RECEIVING_SCOPE_R4 = "ZAK00_R4_SCOPED_SOURCE_HANDOFF"
+RECEIVING_SCOPE_STALE_R3 = "ZAK00_R3_SCOPED_SOURCE_HANDOFF"
 FROZEN_R3_SOURCE_HEAD = "b07a24da517016d91da7ddcd92a0b6c54d07911d"
 ORIGINAL_AUTHOR_ACCOUNT = "maidiu"
 
@@ -264,6 +266,8 @@ def _validate_claim_contract_bindings(obligations):
     assert all(("#%d" % n) in ack["consumer"] for n in RECEIVING_ISSUES)
     assert all(str(n) in ack["result"] for n in RECEIVING_ISSUES)
     assert "acknowledg" in ack["positive"].lower()
+    assert RECEIVING_SCOPE_R4 in ack["positive"] and RECEIVING_SCOPE_R4 in ack["check"], "R4 positive scope not frozen in MCR-C obligation"
+    assert RECEIVING_SCOPE_STALE_R3 in ack["negative"], "stale R3 negative scope missing"
     return True
 
 
@@ -324,7 +328,7 @@ def evaluate_acknowledgments(acks=None, candidate_sha=None, qualification_verifi
         login = a.get("github_actor")
         if not isinstance(login, str) or not login.strip() or login.lower() == ORIGINAL_AUTHOR_ACCOUNT:
             return {**blocked, "reason": "SELF_AUTHORED_OR_NO_REVIEWER_ID"}
-        if a.get("scope") != "ZAK00_R3_SCOPED_SOURCE_HANDOFF" or a.get("decision") not in (
+        if a.get("scope") != RECEIVING_SCOPE_R4 or a.get("decision") not in (
             "RECEIVED_FOR_REVIEW", "ACCEPT_SCOPED_S0_S1", "HOLD_WITH_NAMED_SCOPE"
         ):
             return {**blocked, "reason": "WRONG_SCOPE_OR_UNSIGNED_DECISION"}
@@ -509,14 +513,26 @@ def near_positive_regressions():
              "credential_distinct_from_author", "same_candidate_and_scope"), True)
     receipts = [{"issue": n, "candidate_sha": candidate,
         "github_actor": "external-reviewer-%d" % n,
-        "scope": "ZAK00_R3_SCOPED_SOURCE_HANDOFF",
+        "scope": "ZAK00_R4_SCOPED_SOURCE_HANDOFF",
         "decision": "RECEIVED_FOR_REVIEW",
         "comment_url": "https://github.com/maidiu/rawlsing/issues/%d#issuecomment-%d" % (n, n+1200)}
         for n in RECEIVING_ISSUES]
     result = evaluate_acknowledgments(receipts, candidate, fixture_verifier)
     assert result["status"] == "ELIGIBLE_FOR_SEPARATE_AUTHORITY_COURT"
     assert result["not_author_CERTIFIED_PASS"] is True
+    assert RECEIVING_SCOPE_R4 == "ZAK00_R4_SCOPED_SOURCE_HANDOFF"
+    assert RECEIVING_SCOPE_STALE_R3 == "ZAK00_R3_SCOPED_SOURCE_HANDOFF"
     checks += 1
+    # Bind the exact revision in BOTH directions. Old-R3 scopes must never
+    # qualify merely because the issue, reviewer and R4 candidate SHA are right.
+    stale_everywhere = [{**a, "scope": "ZAK00_R3_SCOPED_SOURCE_HANDOFF"} for a in receipts]
+    stale_one = [{**a, "scope": "ZAK00_R3_SCOPED_SOURCE_HANDOFF"} if i == 0 else a
+                 for i, a in enumerate(receipts)]
+    for stale in (stale_everywhere, stale_one):
+        rejected = evaluate_acknowledgments(stale, candidate, fixture_verifier)
+        assert rejected["status"] == "BLOCKED_EXACT_DEPENDENCY"
+        assert rejected["reason"] == "WRONG_SCOPE_OR_UNSIGNED_DECISION"
+        checks += 1
     negatives = [
         (receipts[:-1], candidate, fixture_verifier),
         ([{**a, "candidate_sha": "0"*40} if i == 0 else a for i, a in enumerate(receipts)],
@@ -569,10 +585,12 @@ def near_positive_regressions():
             checks += 1
         else:
             raise AssertionError("stale or wrong candidate CI falsely qualified")
-    assert checks == 15, checks
-    return {"status": "PASS_15_OF_15_NEAR_POSITIVE_AND_FORGED_AUTHORITY_REGRESSIONS",
+    assert checks == 17, checks
+    return {"status": "PASS_17_OF_17_NEAR_POSITIVE_AND_FORGED_AUTHORITY_REGRESSIONS",
             "original_jurisdictions": 11, "corrupted_jurisdictions": 1,
             "synthetic_authority_positive": "ELIGIBLE_FOR_SEPARATE_AUTHORITY_COURT_ONLY",
+            "scope_positive_only": RECEIVING_SCOPE_R4,
+            "stale_scope_must_refuse": RECEIVING_SCOPE_STALE_R3,
             "actual_authority_received": False}
 
 
@@ -712,8 +730,8 @@ def self_test():
         else:
             raise AssertionError("parent completion mutant passed")
     assert claim_mutation_test()["status"].startswith("PASS_10_OF_10")
-    assert near_positive_regressions()["status"].startswith("PASS_15_OF_15")
-    return "PASS 5/5 original + 10/10 semantic + 15/15 near-positive/forged authority mutants; no independent issuance"
+    assert near_positive_regressions()["status"].startswith("PASS_17_OF_17")
+    return "PASS 5/5 original + 10/10 semantic + 17/17 near-positive/forged authority mutants; no independent issuance"
 
 def main():
     p = argparse.ArgumentParser()
