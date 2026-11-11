@@ -2,9 +2,9 @@
   "contract_id": "ZAK01-MCR-AF-INVESTIGATION-20261110",
   "obligation_id": "ZAK01-OUTPUT-04",
   "receipt_kind": "AUTHOR_SIDE_CANDIDATE_EVIDENCE_ONLY",
-  "status": "INCOMPLETE",
+  "status": "DELIVERED_S2_NATIVE_SYNTHETIC__PENDING_INDEPENDENT_RECEIVING",
   "minimum_grade_required": "S1",
-  "actual_author_grade": "S1_DOCUMENTARY_STATIC_INSPECTION",
+  "actual_author_grade": "S2_NATIVE_SYNTHETIC_FIXTURE_EXECUTION_PLUS_S1_DOCUMENTARY_CASES",
   "not_an_independent_reviewer": true,
   "source_pin": {
     "path": "data/ddm_build_copy/ddm_v550_question_relation_authority.py",
@@ -12,9 +12,9 @@
     "blob": "62084cbed10a5975f79bd504bf4fb99025e4e64e"
   },
   "output_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/NEGATIVE_SELECTION_AND_RESTORE_TESTS.jsonl",
-  "output_sha256": "1cd509aad22e9288598a320072f89b2eb14c191723e8a6deec49d597aa905303",
-  "observed_source_bounded_check": "S1_AUTHOR_OUTPUT_14_CASES_WITH_NEW_C6_03_42_LOCATOR_DIFFERENTIAL",
-  "pending_exact_defect": "Independent same-input negative/restore S2 missing",
+  "output_sha256": "e91855c8caa4dbb88c7ced82eb26e60e051d97fc2d8256612f06f2f0ad7cb77e",
+  "observed_source_bounded_check": "S2_NATIVE_F03_POSITIVE_DENIED_PARTIAL_RESTORED_PLUS_S1_14_CASES",
+  "pending_exact_defect": "Original historical production first reader NOT_PROVED; independent receiving pending",
   "candidate_branch": "agent/vmestye-zak01-mcr-20261110-r1",
   "protected_source_cut": "9366b42a61a383808071106d70aa1255a769390a",
   "first_current_reader": "NOT_PROVED",
@@ -23,7 +23,7 @@
   "independent_receiving": "NOT_RUN",
   "consumer": "ZAK05 authority-placement synthesis after separate ZAK02/ZAK03 evidence",
   "acceptance_boundary": "DELIVERED_PENDING_RECEIVING__NO_AUTHORITY_PROMOTION",
-  "candidate_revision": "R2_SOURCE_LOCATOR_AND_SCOPED_PRECEDENCE_REPAIR",
+  "candidate_revision": "R3_S2_NATIVE_F03_POSITIVE_DENIED_PARTIAL_RESTORED",
   "prior_independent_review": "R1_FROZEN_957021eb4845c3a316dc0f922a9b2e2692c6ca4d__REVISE; R2 NOT_INDEPENDENTLY_RECEIVED",
   "additional_frozen_source_pins": [
     {
@@ -35,5 +35,7 @@
   "selected_locator_receipt": "42/42 inherited C6 03 edges; 15 repository,23 historical local,4 historical bundle",
   "repository_selected_resource_receipt": "13/15 protected repo content SHA256+bytes directly rehashed; remaining AR0005 large and AR0006 contents body unavailable",
   "executable_first_consumer": "NOT_PROVED",
-  "native_S2_F03_positive_denied_restore": "NOT_RUN__MINIMUM_S2_HOSTILE_GATE_INCOMPLETE"
+  "native_S2_F03_positive_denied_restore": "RUN__PASS__116_OF_116_ASSERTIONS__PENDING_INDEPENDENT_RECEIVING",
+  "native_s2_witness_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/WITNESS.json",
+  "native_s2_witness_sha256": "602b7f7970701db36b989838262315ed437c4ddb79e9a74a3e8827b9de680cd4"
 }

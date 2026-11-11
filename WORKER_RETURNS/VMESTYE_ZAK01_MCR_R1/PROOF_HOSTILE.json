@@ -2,9 +2,9 @@
   "contract_id": "ZAK01-MCR-AF-INVESTIGATION-20261110",
   "obligation_id": "ZAK01-HOSTILE",
   "receipt_kind": "AUTHOR_SIDE_CANDIDATE_EVIDENCE_ONLY",
-  "status": "INCOMPLETE",
+  "status": "DELIVERED_S2_NATIVE_SYNTHETIC__PENDING_INDEPENDENT_RECEIVING",
   "minimum_grade_required": "S2",
-  "actual_author_grade": "S1_DOCUMENTARY_STATIC_INSPECTION",
+  "actual_author_grade": "S2_NATIVE_SYNTHETIC_FIXTURE_EXECUTION",
   "not_an_independent_reviewer": true,
   "source_pin": {
     "path": "data/ddm_build_copy/ddm_v550_question_relation_authority.py",
@@ -12,19 +12,19 @@
     "blob": "62084cbed10a5975f79bd504bf4fb99025e4e64e"
   },
   "output_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/NEGATIVE_SELECTION_AND_RESTORE_TESTS.jsonl",
-  "output_sha256": "1cd509aad22e9288598a320072f89b2eb14c191723e8a6deec49d597aa905303",
-  "observed_source_bounded_check": "S1_CONDITIONAL_CODE_POSITIVE_NEGATIVE_AND_FALSE_ISSUER_FALSIFIER",
-  "pending_exact_defect": "MINIMUM_S2_NOT_MET__NO_NATIVE_SAME_INPUT_NEGATIVE_RESTORE",
+  "output_sha256": "e91855c8caa4dbb88c7ced82eb26e60e051d97fc2d8256612f06f2f0ad7cb77e",
+  "observed_source_bounded_check": "S2_NATIVE_ACTUAL_HISTORICAL_F03_FUNCTION_ON_SYNTHETIC_FIXTURE",
+  "pending_exact_defect": "ORIGINAL_HISTORICAL_PRODUCTION_FIRST_READER_NOT_PROVED__INDEPENDENT_RECEIVING_PENDING__S3_AND_RESPONDENT_DATA_NOT_AUTHORIZED",
   "candidate_branch": "agent/vmestye-zak01-mcr-20261110-r1",
   "protected_source_cut": "9366b42a61a383808071106d70aa1255a769390a",
   "first_current_reader": "NOT_PROVED",
-  "native_execution": "NOT_RUN",
+  "native_execution": "RUN__PASS__S2_SYNTHETIC_FIXTURE_ONLY",
   "original_source_issuer": "NOT_GRANTED",
   "independent_receiving": "NOT_RUN",
   "consumer": "ZAK05 authority-placement synthesis after separate ZAK02/ZAK03 evidence",
   "acceptance_boundary": "DELIVERED_PENDING_RECEIVING__NO_AUTHORITY_PROMOTION",
-  "candidate_revision": "R2_SOURCE_LOCATOR_AND_SCOPED_PRECEDENCE_REPAIR",
-  "prior_independent_review": "R1_FROZEN_957021eb4845c3a316dc0f922a9b2e2692c6ca4d__REVISE; R2 NOT_INDEPENDENTLY_RECEIVED",
+  "candidate_revision": "R3_S2_NATIVE_F03_POSITIVE_DENIED_PARTIAL_RESTORED",
+  "prior_independent_review": "R1_FROZEN_957021eb4845c3a316dc0f922a9b2e2692c6ca4d__REVISE; R2 NOT_INDEPENDENTLY_RECEIVED; R3 S2 EVIDENCE PENDING INDEPENDENT RECEIVING",
   "additional_frozen_source_pins": [
     {
       "path": "WORKER_RETURNS/PROGRAMMA_PYAT_FUNCTION_AUTHORITY_SEVERANCE_AND_ADEQUACY_20261107_R1/03_BIDIRECTIONAL_AUTHORITY_REQUIREMENT_AND_CONSUMPTION.jsonl",
@@ -35,5 +35,69 @@
   "selected_locator_receipt": "42/42 inherited C6 03 edges; 15 repository,23 historical local,4 historical bundle",
   "repository_selected_resource_receipt": "13/15 protected repo content SHA256+bytes directly rehashed; remaining AR0005 large and AR0006 contents body unavailable",
   "executable_first_consumer": "NOT_PROVED",
-  "native_S2_F03_positive_denied_restore": "NOT_RUN__MINIMUM_S2_HOSTILE_GATE_INCOMPLETE"
+  "native_S2_F03_positive_denied_restore": "RUN__PASS__116_OF_116_ASSERTIONS__POSITIVE_DENIED_PARTIAL_RESTORED_AND_HOSTILE_CONTROL__PENDING_INDEPENDENT_RECEIVING",
+  "native_s2_witness": {
+    "path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/WITNESS.json",
+    "sha256": "602b7f7970701db36b989838262315ed437c4ddb79e9a74a3e8827b9de680cd4",
+    "test_script_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/run_f03_s2_native.py",
+    "test_script_sha256": "73950c198bd20740f81ca0c77a7f9d9f453c6a447d142bc3648d4f8b0cf888a5",
+    "fixture_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/fixture.json",
+    "fixture_file_sha256": "eb8b734bf76d959d5de67c3a5a0593d5c1d3a94336533a6a1ef68ce35da982a7",
+    "fixture_canonical_sha256": "bc1f8cda38c83615d0a8ae077976790cb0423dd37ef553095bf8657528363f38",
+    "source_pin": {
+      "commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+      "blob": "62084cbed10a5975f79bd504bf4fb99025e4e64e",
+      "sha256": "2fb0851d8bac6f3d381fdf11749f7e04e676de914d643e5be1ad4603cc39f63c",
+      "bytes": 38858,
+      "unchanged_at_input_head": "52206dc889e094c48c610e30f72824630c697560"
+    },
+    "registry_pin": {
+      "path": "data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv",
+      "commit": "9253064bc9423a0f0ccda4fbdea43c2f54f800c6",
+      "sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+      "bytes": 1119028
+    },
+    "outputs": {
+      "A_POSITIVE": {
+        "output_canonical_sha256": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+        "output_file_sha256": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7"
+      },
+      "B_DENIED_PERMISSION": {
+        "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+        "output_file_sha256": "0309c7ac8a3cc20501ef36d5efebb96f085c164113c442fb910e5dddf1a73cae"
+      },
+      "C_PARTIAL_MAPPING": {
+        "output_canonical_sha256": "017fdbb6f2d273bfe2cb22fc64783ee85c672fcbee0fc7933a3d2bac1387db3b",
+        "output_file_sha256": "0309c7ac8a3cc20501ef36d5efebb96f085c164113c442fb910e5dddf1a73cae"
+      },
+      "D_RESTORED": {
+        "output_canonical_sha256": "9741e4a21d089e0e99cf715878cee07a9184bdbe09d05091612f4dcf5177546b",
+        "output_file_sha256": "e53c74d719451d8d326724851368ed84f56d2929a6c6d667a301484ea40fd8b7"
+      }
+    },
+    "restoration_equal": true,
+    "assertion_summary": {
+      "total": 116,
+      "passed": 116,
+      "failed": 0
+    },
+    "runner": "mainMac.lan / matthewsmith / macOS 13.2.1 x86_64 / Python 3.11.3 / pandas 2.3.1",
+    "test_time_invocation_path": "S2_NATIVE_F03/run_f03_s2_native.py::execute_case -> ddm_v550_question_relation_authority.apply_question_relation_authority",
+    "test_time_first_reader": "S2_NATIVE_F03/run_f03_s2_native.py::execute_case / AssertionLog",
+    "original_historical_production_first_reader": "NOT_PROVED",
+    "test_time_reader_is_not_original_historical_production_first_reader": true,
+    "first_reader_caveat": "Test-time reader only; not proof of the original historical production first reader, call site, inputs, consumer or authority.",
+    "hostile_interpretation": {
+      "rejected_conclusion": "Because F03 preserved six coordinates and marked the inbound row certified, F03 itself established original source authority.",
+      "positive_registry_match": false,
+      "positive_underlying_resolution_status": "BLOCKED_MISSING_AUTHORITY",
+      "positive_authority_row_payload_hash": "",
+      "positive_relation_use_status": "",
+      "positive_authority_status": "",
+      "supplemental_control": "Removing inbound CERTIFIED status causes the same no-match path to fail closed, so F03 consumes rather than creates semantic authority.",
+      "conclusion": "F03 preserves previously certified inbound information under specified conditions. It does not independently establish who certified the source, whether that issuer was competent, or whether original source/scientific permissions exist."
+    }
+  },
+  "native_s2_witness_path": "WORKER_RETURNS/VMESTYE_ZAK01_MCR_R1/S2_NATIVE_F03/WITNESS.json",
+  "native_s2_witness_sha256": "602b7f7970701db36b989838262315ed437c4ddb79e9a74a3e8827b9de680cd4"
 }
