@@ -1,0 +1,1849 @@
+{
+  "schema": "SOROK_MI_LIVE_EXECUTION@1",
+  "source_grade": "SOURCEFREE_S2",
+  "provider_calls": 1,
+  "provider_live": true,
+  "outcome": {
+    "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+    "status": "INDEX_READY",
+    "accepted": [
+      {
+        "group_id": "dg:condition:230",
+        "fact_ids": [
+          "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247"
+        ]
+      }
+    ],
+    "held": [],
+    "rejected": [],
+    "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d",
+    "target_version": 2,
+    "activity": [
+      {
+        "status": "ADVANCED",
+        "requirement": {
+          "action_kind": "REPAIR",
+          "branch": "first_session",
+          "dispatch_receipt": {
+            "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "status": "ADVANCED",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "target_version": 2,
+            "predicate": "condition",
+            "expected": "serviceable",
+            "observed": "serviceable",
+            "property_source": "physical_depth",
+            "fact_id": "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247",
+            "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+            "job_status": "INDEX_READY",
+            "admission_status": "INDEX_READY",
+            "fact_parent_event_ref": {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            },
+            "fact_claim_ref": {
+              "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+              "kind": "FACT",
+              "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+            },
+            "property_hash": "bcdaeb994ccb5387ef113e245ef58927fff6011e5243b96f622046a33e0d32e6",
+            "target_hash": "86a5be13bbe90169d5d31d0ea48795efa1eac961dde7a80ce7e2741e0faca8cf",
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "branch": "first_session",
+            "clock_before": 230,
+            "clock_after": 232,
+            "material_before": 1,
+            "material_after": 0,
+            "interval": {
+              "schema": "S46_INTERVAL_PARTICIPATION_STATE@1",
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "native": false,
+              "psychology_claim": false,
+              "state_id": "S46_STATE_931F4ADFFF5604FEAD73336A",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "branch_id": "first_session",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+              "domain_id": "S46_DOMAIN_ACTUAL",
+              "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+              "domain": {
+                "schema": "S46_INTERVAL_DOMAIN@1",
+                "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+                "native": false,
+                "psychology_claim": false,
+                "domain_id": "S46_DOMAIN_ACTUAL",
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "branch_id": "first_session",
+                "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+                "mode": "ACTUAL",
+                "start": 230,
+                "end": 232,
+                "segments": [
+                  [
+                    230,
+                    231
+                  ],
+                  [
+                    231,
+                    232
+                  ]
+                ],
+                "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+                "model_version": "1",
+                "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                "actor_owner_version": "1",
+                "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                "world_owner_version": "1",
+                "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                "policy_version": "1",
+                "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                "resolution": "BOUNDED_PERIOD_STATE",
+                "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+                "action_span_units": 1,
+                "activity_requirement_ref": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+                "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+                "hash": "c761154b2312f51ef49181930d470b461edf03411499305b00bf2c38d1cf61df"
+              },
+              "domain_issuance_id": "TEST_ONLY_BP4_EP_eedde50c28c247871b71b43cf247ebd1114c49542737dfdd2f1b6d40a2af3c5d",
+              "domain_issuance_hash": "3e823c8136d692d9c80c8e3102db515750dd83f19e09b9b5b833dd2ae455f9ca",
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "actor_owner_version": "1",
+              "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "world_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+              "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+              "start": 230,
+              "end": 232,
+              "segments": [
+                {
+                  "start": 230,
+                  "end": 231,
+                  "coverage": [
+                    [
+                      230,
+                      231
+                    ]
+                  ],
+                  "attempt": {
+                    "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 230,
+                    "end": 231,
+                    "attempt": "ATTEMPT",
+                    "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                    "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                    "policy_version": "1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "inputs": {
+                      "tool_available": true,
+                      "material_available": true,
+                      "free_hours": true,
+                      "actor_present": true
+                    },
+                    "predecessor_world_receipt_hash": "",
+                    "actual_result_claimed": false,
+                    "consent_or_willingness_claimed": false,
+                    "receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd"
+                  },
+                  "world": {
+                    "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 230,
+                    "end": 231,
+                    "status": "CONFIRMED",
+                    "reason": "",
+                    "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "actor_attempt_receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd",
+                    "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_9e559041035be2cbb9d038c3fd2ac3e47fc29d7f18d684542b303b7da3d17bbb",
+                    "actual_action_event_hash": "c44919db1ce83232ed6f269a7696b7f498d5274238e7bf557334c63324db55f4",
+                    "state_before": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 56,
+                      "completed_units": 5,
+                      "debt_units": 2,
+                      "free_hours": 11,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 1,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "state_after": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 58,
+                      "completed_units": 6,
+                      "debt_units": 2,
+                      "free_hours": 10,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 0,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "actual_daily_events_invented": 0,
+                    "welfare_or_consent_inferred": false,
+                    "receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46"
+                  },
+                  "status": "REALIZED"
+                },
+                {
+                  "start": 231,
+                  "end": 232,
+                  "coverage": [],
+                  "attempt": {
+                    "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 231,
+                    "end": 232,
+                    "attempt": "ATTEMPT",
+                    "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                    "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                    "policy_version": "1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "inputs": {
+                      "tool_available": true,
+                      "material_available": false,
+                      "free_hours": true,
+                      "actor_present": true
+                    },
+                    "predecessor_world_receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46",
+                    "actual_result_claimed": false,
+                    "consent_or_willingness_claimed": false,
+                    "receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b"
+                  },
+                  "world": {
+                    "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 231,
+                    "end": 232,
+                    "status": "NOT_PERFORMED",
+                    "reason": "MATERIAL_EXHAUSTED",
+                    "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "actor_attempt_receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b",
+                    "actual_action_event_id": "",
+                    "actual_action_event_hash": "",
+                    "state_before": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 58,
+                      "completed_units": 6,
+                      "debt_units": 2,
+                      "free_hours": 10,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 0,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "state_after": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 58,
+                      "completed_units": 6,
+                      "debt_units": 2,
+                      "free_hours": 10,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 0,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "actual_daily_events_invented": 0,
+                    "welfare_or_consent_inferred": false,
+                    "receipt_hash": "0c90453fdeb98bd1ab7dbcfdbf9f3e49bda42a9e3c5e6aa76bd1be8dc1a1975f"
+                  },
+                  "status": "NOT_PERFORMED"
+                }
+              ],
+              "coverage": [
+                [
+                  230,
+                  231
+                ]
+              ],
+              "status": "PARTIAL",
+              "currentness": "CURRENT",
+              "superseded_by": "",
+              "resolution": "BOUNDED_PERIOD_STATE_NO_DAILY_EVENTS",
+              "actual_daily_events_invented": 0,
+              "actor_knowledge_inferred": false,
+              "psychology_state_written": false,
+              "target_proposals": [],
+              "receipt_hash": "53ac72b49f817e7e4ef533740bb2c821a8cab00d4af0e530d35cf142e7336e0f",
+              "episode_id": "TEST_ONLY_BP4_EP_d4393f6c87923d1fd28d7b39d5a1068c0c090d36bf98d2bf0aca9ecce55c87f8"
+            },
+            "refusal_code": null,
+            "user_visible": false,
+            "writes_authority": false,
+            "psychology_claim": false
+          },
+          "expected": "serviceable",
+          "id": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+          "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "parent_event_ref": {
+            "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+            "kind": "WORLD_EVENT",
+            "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+          },
+          "predicate": "condition",
+          "required_at": 230,
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "schema": "SOROK_HISTORY_ACTIVITY_REQUIREMENT@1",
+          "status": "CONSUMED",
+          "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+          "target_version": 1,
+          "task_id": "S46_ACTUAL_REPAIR",
+          "world_readset": "088621e78a8e839aedd270355c56b18275f817e553b5aa430f7f8ef16cdcdb60"
+        },
+        "activity": {
+          "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+          "grade": "SOURCEFREE_TEST_ONLY",
+          "status": "ADVANCED",
+          "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+          "target_version": 2,
+          "predicate": "condition",
+          "expected": "serviceable",
+          "observed": "serviceable",
+          "property_source": "physical_depth",
+          "fact_id": "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247",
+          "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "job_status": "INDEX_READY",
+          "admission_status": "INDEX_READY",
+          "fact_parent_event_ref": {
+            "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+            "kind": "WORLD_EVENT",
+            "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+          },
+          "fact_claim_ref": {
+            "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+            "kind": "FACT",
+            "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+          },
+          "property_hash": "bcdaeb994ccb5387ef113e245ef58927fff6011e5243b96f622046a33e0d32e6",
+          "target_hash": "86a5be13bbe90169d5d31d0ea48795efa1eac961dde7a80ce7e2741e0faca8cf",
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "branch": "first_session",
+          "clock_before": 230,
+          "clock_after": 232,
+          "material_before": 1,
+          "material_after": 0,
+          "interval": {
+            "schema": "S46_INTERVAL_PARTICIPATION_STATE@1",
+            "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+            "native": false,
+            "psychology_claim": false,
+            "state_id": "S46_STATE_931F4ADFFF5604FEAD73336A",
+            "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+            "branch_id": "first_session",
+            "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+            "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+            "domain_id": "S46_DOMAIN_ACTUAL",
+            "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+            "domain": {
+              "schema": "S46_INTERVAL_DOMAIN@1",
+              "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+              "native": false,
+              "psychology_claim": false,
+              "domain_id": "S46_DOMAIN_ACTUAL",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "branch_id": "first_session",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+              "mode": "ACTUAL",
+              "start": 230,
+              "end": 232,
+              "segments": [
+                [
+                  230,
+                  231
+                ],
+                [
+                  231,
+                  232
+                ]
+              ],
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+              "model_version": "1",
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "actor_owner_version": "1",
+              "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "world_owner_version": "1",
+              "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+              "policy_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "resolution": "BOUNDED_PERIOD_STATE",
+              "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+              "action_span_units": 1,
+              "activity_requirement_ref": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+              "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+              "hash": "c761154b2312f51ef49181930d470b461edf03411499305b00bf2c38d1cf61df"
+            },
+            "domain_issuance_id": "TEST_ONLY_BP4_EP_eedde50c28c247871b71b43cf247ebd1114c49542737dfdd2f1b6d40a2af3c5d",
+            "domain_issuance_hash": "3e823c8136d692d9c80c8e3102db515750dd83f19e09b9b5b833dd2ae455f9ca",
+            "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+            "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+            "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+            "actor_owner_version": "1",
+            "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+            "world_owner_version": "1",
+            "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+            "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+            "start": 230,
+            "end": 232,
+            "segments": [
+              {
+                "start": 230,
+                "end": 231,
+                "coverage": [
+                  [
+                    230,
+                    231
+                  ]
+                ],
+                "attempt": {
+                  "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                  "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                  "native": false,
+                  "psychology_claim": false,
+                  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                  "branch_id": "first_session",
+                  "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                  "start": 230,
+                  "end": 231,
+                  "attempt": "ATTEMPT",
+                  "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                  "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                  "policy_version": "1",
+                  "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                  "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                  "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                  "source_owner_version": "1",
+                  "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                  "inputs": {
+                    "tool_available": true,
+                    "material_available": true,
+                    "free_hours": true,
+                    "actor_present": true
+                  },
+                  "predecessor_world_receipt_hash": "",
+                  "actual_result_claimed": false,
+                  "consent_or_willingness_claimed": false,
+                  "receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd"
+                },
+                "world": {
+                  "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                  "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                  "native": false,
+                  "psychology_claim": false,
+                  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                  "branch_id": "first_session",
+                  "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                  "start": 230,
+                  "end": 231,
+                  "status": "CONFIRMED",
+                  "reason": "",
+                  "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                  "source_owner_version": "1",
+                  "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                  "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                  "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                  "actor_attempt_receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd",
+                  "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_9e559041035be2cbb9d038c3fd2ac3e47fc29d7f18d684542b303b7da3d17bbb",
+                  "actual_action_event_hash": "c44919db1ce83232ed6f269a7696b7f498d5274238e7bf557334c63324db55f4",
+                  "state_before": {
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "available_for_encounter",
+                    "cash": 56,
+                    "completed_units": 5,
+                    "debt_units": 2,
+                    "free_hours": 11,
+                    "health": "recovered",
+                    "material_position": "waged_repair",
+                    "material_remaining": 1,
+                    "nonmother_relations": [
+                      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                    ],
+                    "place": "INST_WORKSHOP_A",
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6,
+                    "tools_remaining": 1
+                  },
+                  "state_after": {
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "available_for_encounter",
+                    "cash": 58,
+                    "completed_units": 6,
+                    "debt_units": 2,
+                    "free_hours": 10,
+                    "health": "recovered",
+                    "material_position": "waged_repair",
+                    "material_remaining": 0,
+                    "nonmother_relations": [
+                      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                    ],
+                    "place": "INST_WORKSHOP_A",
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6,
+                    "tools_remaining": 1
+                  },
+                  "actual_daily_events_invented": 0,
+                  "welfare_or_consent_inferred": false,
+                  "receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46"
+                },
+                "status": "REALIZED"
+              },
+              {
+                "start": 231,
+                "end": 232,
+                "coverage": [],
+                "attempt": {
+                  "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                  "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                  "native": false,
+                  "psychology_claim": false,
+                  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                  "branch_id": "first_session",
+                  "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                  "start": 231,
+                  "end": 232,
+                  "attempt": "ATTEMPT",
+                  "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                  "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                  "policy_version": "1",
+                  "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                  "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                  "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                  "source_owner_version": "1",
+                  "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                  "inputs": {
+                    "tool_available": true,
+                    "material_available": false,
+                    "free_hours": true,
+                    "actor_present": true
+                  },
+                  "predecessor_world_receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46",
+                  "actual_result_claimed": false,
+                  "consent_or_willingness_claimed": false,
+                  "receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b"
+                },
+                "world": {
+                  "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                  "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                  "native": false,
+                  "psychology_claim": false,
+                  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                  "branch_id": "first_session",
+                  "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                  "start": 231,
+                  "end": 232,
+                  "status": "NOT_PERFORMED",
+                  "reason": "MATERIAL_EXHAUSTED",
+                  "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                  "source_owner_version": "1",
+                  "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                  "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                  "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                  "actor_attempt_receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b",
+                  "actual_action_event_id": "",
+                  "actual_action_event_hash": "",
+                  "state_before": {
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "available_for_encounter",
+                    "cash": 58,
+                    "completed_units": 6,
+                    "debt_units": 2,
+                    "free_hours": 10,
+                    "health": "recovered",
+                    "material_position": "waged_repair",
+                    "material_remaining": 0,
+                    "nonmother_relations": [
+                      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                    ],
+                    "place": "INST_WORKSHOP_A",
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6,
+                    "tools_remaining": 1
+                  },
+                  "state_after": {
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "attitudes": [
+                      "reciprocity_in_work_obligations"
+                    ],
+                    "availability_status": "available_for_encounter",
+                    "cash": 58,
+                    "completed_units": 6,
+                    "debt_units": 2,
+                    "free_hours": 10,
+                    "health": "recovered",
+                    "material_position": "waged_repair",
+                    "material_remaining": 0,
+                    "nonmother_relations": [
+                      "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                    ],
+                    "place": "INST_WORKSHOP_A",
+                    "practices": [
+                      "scheduled_repair_ledger_discipline"
+                    ],
+                    "projects": [
+                      "communal_irrigation_pump_repair"
+                    ],
+                    "role": "repair",
+                    "skill": 6,
+                    "tools_remaining": 1
+                  },
+                  "actual_daily_events_invented": 0,
+                  "welfare_or_consent_inferred": false,
+                  "receipt_hash": "0c90453fdeb98bd1ab7dbcfdbf9f3e49bda42a9e3c5e6aa76bd1be8dc1a1975f"
+                },
+                "status": "NOT_PERFORMED"
+              }
+            ],
+            "coverage": [
+              [
+                230,
+                231
+              ]
+            ],
+            "status": "PARTIAL",
+            "currentness": "CURRENT",
+            "superseded_by": "",
+            "resolution": "BOUNDED_PERIOD_STATE_NO_DAILY_EVENTS",
+            "actual_daily_events_invented": 0,
+            "actor_knowledge_inferred": false,
+            "psychology_state_written": false,
+            "target_proposals": [],
+            "receipt_hash": "53ac72b49f817e7e4ef533740bb2c821a8cab00d4af0e530d35cf142e7336e0f",
+            "episode_id": "TEST_ONLY_BP4_EP_d4393f6c87923d1fd28d7b39d5a1068c0c090d36bf98d2bf0aca9ecce55c87f8"
+          },
+          "refusal_code": null,
+          "user_visible": false,
+          "writes_authority": false,
+          "psychology_claim": false
+        },
+        "reason": null
+      }
+    ]
+  },
+  "outcomes": [
+    {
+      "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+      "status": "INDEX_READY",
+      "accepted": [
+        {
+          "group_id": "dg:condition:230",
+          "fact_ids": [
+            "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247"
+          ]
+        }
+      ],
+      "held": [],
+      "rejected": [],
+      "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d",
+      "target_version": 2,
+      "activity": [
+        {
+          "status": "ADVANCED",
+          "requirement": {
+            "action_kind": "REPAIR",
+            "branch": "first_session",
+            "dispatch_receipt": {
+              "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+              "grade": "SOURCEFREE_TEST_ONLY",
+              "status": "ADVANCED",
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "target_version": 2,
+              "predicate": "condition",
+              "expected": "serviceable",
+              "observed": "serviceable",
+              "property_source": "physical_depth",
+              "fact_id": "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247",
+              "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+              "job_status": "INDEX_READY",
+              "admission_status": "INDEX_READY",
+              "fact_parent_event_ref": {
+                "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+                "kind": "WORLD_EVENT",
+                "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+              },
+              "fact_claim_ref": {
+                "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+                "kind": "FACT",
+                "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+              },
+              "property_hash": "bcdaeb994ccb5387ef113e245ef58927fff6011e5243b96f622046a33e0d32e6",
+              "target_hash": "86a5be13bbe90169d5d31d0ea48795efa1eac961dde7a80ce7e2741e0faca8cf",
+              "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+              "branch": "first_session",
+              "clock_before": 230,
+              "clock_after": 232,
+              "material_before": 1,
+              "material_after": 0,
+              "interval": {
+                "schema": "S46_INTERVAL_PARTICIPATION_STATE@1",
+                "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                "native": false,
+                "psychology_claim": false,
+                "state_id": "S46_STATE_931F4ADFFF5604FEAD73336A",
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "branch_id": "first_session",
+                "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+                "domain_id": "S46_DOMAIN_ACTUAL",
+                "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+                "domain": {
+                  "schema": "S46_INTERVAL_DOMAIN@1",
+                  "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+                  "native": false,
+                  "psychology_claim": false,
+                  "domain_id": "S46_DOMAIN_ACTUAL",
+                  "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                  "branch_id": "first_session",
+                  "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                  "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+                  "mode": "ACTUAL",
+                  "start": 230,
+                  "end": 232,
+                  "segments": [
+                    [
+                      230,
+                      231
+                    ],
+                    [
+                      231,
+                      232
+                    ]
+                  ],
+                  "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                  "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+                  "model_version": "1",
+                  "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                  "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                  "actor_owner_version": "1",
+                  "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                  "world_owner_version": "1",
+                  "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                  "policy_version": "1",
+                  "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                  "resolution": "BOUNDED_PERIOD_STATE",
+                  "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+                  "action_span_units": 1,
+                  "activity_requirement_ref": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+                  "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+                  "hash": "c761154b2312f51ef49181930d470b461edf03411499305b00bf2c38d1cf61df"
+                },
+                "domain_issuance_id": "TEST_ONLY_BP4_EP_eedde50c28c247871b71b43cf247ebd1114c49542737dfdd2f1b6d40a2af3c5d",
+                "domain_issuance_hash": "3e823c8136d692d9c80c8e3102db515750dd83f19e09b9b5b833dd2ae455f9ca",
+                "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                "actor_owner_version": "1",
+                "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                "world_owner_version": "1",
+                "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+                "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+                "start": 230,
+                "end": 232,
+                "segments": [
+                  {
+                    "start": 230,
+                    "end": 231,
+                    "coverage": [
+                      [
+                        230,
+                        231
+                      ]
+                    ],
+                    "attempt": {
+                      "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                      "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                      "native": false,
+                      "psychology_claim": false,
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "branch_id": "first_session",
+                      "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                      "start": 230,
+                      "end": 231,
+                      "attempt": "ATTEMPT",
+                      "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                      "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                      "policy_version": "1",
+                      "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                      "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                      "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                      "source_owner_version": "1",
+                      "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                      "inputs": {
+                        "tool_available": true,
+                        "material_available": true,
+                        "free_hours": true,
+                        "actor_present": true
+                      },
+                      "predecessor_world_receipt_hash": "",
+                      "actual_result_claimed": false,
+                      "consent_or_willingness_claimed": false,
+                      "receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd"
+                    },
+                    "world": {
+                      "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                      "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                      "native": false,
+                      "psychology_claim": false,
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "branch_id": "first_session",
+                      "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                      "start": 230,
+                      "end": 231,
+                      "status": "CONFIRMED",
+                      "reason": "",
+                      "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                      "source_owner_version": "1",
+                      "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                      "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                      "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                      "actor_attempt_receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd",
+                      "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_9e559041035be2cbb9d038c3fd2ac3e47fc29d7f18d684542b303b7da3d17bbb",
+                      "actual_action_event_hash": "c44919db1ce83232ed6f269a7696b7f498d5274238e7bf557334c63324db55f4",
+                      "state_before": {
+                        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                        "attitudes": [
+                          "reciprocity_in_work_obligations"
+                        ],
+                        "availability_status": "available_for_encounter",
+                        "cash": 56,
+                        "completed_units": 5,
+                        "debt_units": 2,
+                        "free_hours": 11,
+                        "health": "recovered",
+                        "material_position": "waged_repair",
+                        "material_remaining": 1,
+                        "nonmother_relations": [
+                          "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                        ],
+                        "place": "INST_WORKSHOP_A",
+                        "practices": [
+                          "scheduled_repair_ledger_discipline"
+                        ],
+                        "projects": [
+                          "communal_irrigation_pump_repair"
+                        ],
+                        "role": "repair",
+                        "skill": 6,
+                        "tools_remaining": 1
+                      },
+                      "state_after": {
+                        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                        "attitudes": [
+                          "reciprocity_in_work_obligations"
+                        ],
+                        "availability_status": "available_for_encounter",
+                        "cash": 58,
+                        "completed_units": 6,
+                        "debt_units": 2,
+                        "free_hours": 10,
+                        "health": "recovered",
+                        "material_position": "waged_repair",
+                        "material_remaining": 0,
+                        "nonmother_relations": [
+                          "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                        ],
+                        "place": "INST_WORKSHOP_A",
+                        "practices": [
+                          "scheduled_repair_ledger_discipline"
+                        ],
+                        "projects": [
+                          "communal_irrigation_pump_repair"
+                        ],
+                        "role": "repair",
+                        "skill": 6,
+                        "tools_remaining": 1
+                      },
+                      "actual_daily_events_invented": 0,
+                      "welfare_or_consent_inferred": false,
+                      "receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46"
+                    },
+                    "status": "REALIZED"
+                  },
+                  {
+                    "start": 231,
+                    "end": 232,
+                    "coverage": [],
+                    "attempt": {
+                      "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                      "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                      "native": false,
+                      "psychology_claim": false,
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "branch_id": "first_session",
+                      "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                      "start": 231,
+                      "end": 232,
+                      "attempt": "ATTEMPT",
+                      "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                      "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                      "policy_version": "1",
+                      "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                      "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                      "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                      "source_owner_version": "1",
+                      "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                      "inputs": {
+                        "tool_available": true,
+                        "material_available": false,
+                        "free_hours": true,
+                        "actor_present": true
+                      },
+                      "predecessor_world_receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46",
+                      "actual_result_claimed": false,
+                      "consent_or_willingness_claimed": false,
+                      "receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b"
+                    },
+                    "world": {
+                      "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                      "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                      "native": false,
+                      "psychology_claim": false,
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "branch_id": "first_session",
+                      "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                      "start": 231,
+                      "end": 232,
+                      "status": "NOT_PERFORMED",
+                      "reason": "MATERIAL_EXHAUSTED",
+                      "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                      "source_owner_version": "1",
+                      "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                      "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                      "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                      "actor_attempt_receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b",
+                      "actual_action_event_id": "",
+                      "actual_action_event_hash": "",
+                      "state_before": {
+                        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                        "attitudes": [
+                          "reciprocity_in_work_obligations"
+                        ],
+                        "availability_status": "available_for_encounter",
+                        "cash": 58,
+                        "completed_units": 6,
+                        "debt_units": 2,
+                        "free_hours": 10,
+                        "health": "recovered",
+                        "material_position": "waged_repair",
+                        "material_remaining": 0,
+                        "nonmother_relations": [
+                          "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                        ],
+                        "place": "INST_WORKSHOP_A",
+                        "practices": [
+                          "scheduled_repair_ledger_discipline"
+                        ],
+                        "projects": [
+                          "communal_irrigation_pump_repair"
+                        ],
+                        "role": "repair",
+                        "skill": 6,
+                        "tools_remaining": 1
+                      },
+                      "state_after": {
+                        "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                        "attitudes": [
+                          "reciprocity_in_work_obligations"
+                        ],
+                        "availability_status": "available_for_encounter",
+                        "cash": 58,
+                        "completed_units": 6,
+                        "debt_units": 2,
+                        "free_hours": 10,
+                        "health": "recovered",
+                        "material_position": "waged_repair",
+                        "material_remaining": 0,
+                        "nonmother_relations": [
+                          "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                        ],
+                        "place": "INST_WORKSHOP_A",
+                        "practices": [
+                          "scheduled_repair_ledger_discipline"
+                        ],
+                        "projects": [
+                          "communal_irrigation_pump_repair"
+                        ],
+                        "role": "repair",
+                        "skill": 6,
+                        "tools_remaining": 1
+                      },
+                      "actual_daily_events_invented": 0,
+                      "welfare_or_consent_inferred": false,
+                      "receipt_hash": "0c90453fdeb98bd1ab7dbcfdbf9f3e49bda42a9e3c5e6aa76bd1be8dc1a1975f"
+                    },
+                    "status": "NOT_PERFORMED"
+                  }
+                ],
+                "coverage": [
+                  [
+                    230,
+                    231
+                  ]
+                ],
+                "status": "PARTIAL",
+                "currentness": "CURRENT",
+                "superseded_by": "",
+                "resolution": "BOUNDED_PERIOD_STATE_NO_DAILY_EVENTS",
+                "actual_daily_events_invented": 0,
+                "actor_knowledge_inferred": false,
+                "psychology_state_written": false,
+                "target_proposals": [],
+                "receipt_hash": "53ac72b49f817e7e4ef533740bb2c821a8cab00d4af0e530d35cf142e7336e0f",
+                "episode_id": "TEST_ONLY_BP4_EP_d4393f6c87923d1fd28d7b39d5a1068c0c090d36bf98d2bf0aca9ecce55c87f8"
+              },
+              "refusal_code": null,
+              "user_visible": false,
+              "writes_authority": false,
+              "psychology_claim": false
+            },
+            "expected": "serviceable",
+            "id": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+            "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+            "parent_event_ref": {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            },
+            "predicate": "condition",
+            "required_at": 230,
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "schema": "SOROK_HISTORY_ACTIVITY_REQUIREMENT@1",
+            "status": "CONSUMED",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "target_version": 1,
+            "task_id": "S46_ACTUAL_REPAIR",
+            "world_readset": "088621e78a8e839aedd270355c56b18275f817e553b5aa430f7f8ef16cdcdb60"
+          },
+          "activity": {
+            "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "status": "ADVANCED",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "target_version": 2,
+            "predicate": "condition",
+            "expected": "serviceable",
+            "observed": "serviceable",
+            "property_source": "physical_depth",
+            "fact_id": "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247",
+            "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+            "job_status": "INDEX_READY",
+            "admission_status": "INDEX_READY",
+            "fact_parent_event_ref": {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            },
+            "fact_claim_ref": {
+              "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+              "kind": "FACT",
+              "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+            },
+            "property_hash": "bcdaeb994ccb5387ef113e245ef58927fff6011e5243b96f622046a33e0d32e6",
+            "target_hash": "86a5be13bbe90169d5d31d0ea48795efa1eac961dde7a80ce7e2741e0faca8cf",
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "branch": "first_session",
+            "clock_before": 230,
+            "clock_after": 232,
+            "material_before": 1,
+            "material_after": 0,
+            "interval": {
+              "schema": "S46_INTERVAL_PARTICIPATION_STATE@1",
+              "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+              "native": false,
+              "psychology_claim": false,
+              "state_id": "S46_STATE_931F4ADFFF5604FEAD73336A",
+              "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+              "branch_id": "first_session",
+              "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+              "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+              "domain_id": "S46_DOMAIN_ACTUAL",
+              "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+              "domain": {
+                "schema": "S46_INTERVAL_DOMAIN@1",
+                "grade": "TEST_ONLY_S46_SYNTHETIC_OBJECTIVE_INTERVAL_MODEL_NOT_NATIVE",
+                "native": false,
+                "psychology_claim": false,
+                "domain_id": "S46_DOMAIN_ACTUAL",
+                "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                "branch_id": "first_session",
+                "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                "activity_id": "TEST_ONLY_S46_MATERIAL_INSPECT",
+                "mode": "ACTUAL",
+                "start": 230,
+                "end": 232,
+                "segments": [
+                  [
+                    230,
+                    231
+                  ],
+                  [
+                    231,
+                    232
+                  ]
+                ],
+                "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                "model_id": "TEST_ONLY_S46_MATERIAL_PREP_MODEL",
+                "model_version": "1",
+                "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                "actor_owner_version": "1",
+                "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                "world_owner_version": "1",
+                "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                "policy_version": "1",
+                "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                "resolution": "BOUNDED_PERIOD_STATE",
+                "coverage_rule": "ONE_INSTANTANEOUS_ACTION_COVERS_ONE_TIME_UNIT_ACTION_SPAN",
+                "action_span_units": 1,
+                "activity_requirement_ref": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+                "domain_hash": "b504742e841c4f01844cceaa185b0d2bbce147a19b875e88362015baece49dd1",
+                "hash": "c761154b2312f51ef49181930d470b461edf03411499305b00bf2c38d1cf61df"
+              },
+              "domain_issuance_id": "TEST_ONLY_BP4_EP_eedde50c28c247871b71b43cf247ebd1114c49542737dfdd2f1b6d40a2af3c5d",
+              "domain_issuance_hash": "3e823c8136d692d9c80c8e3102db515750dd83f19e09b9b5b833dd2ae455f9ca",
+              "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+              "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+              "actor_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+              "actor_owner_version": "1",
+              "world_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+              "world_owner_version": "1",
+              "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+              "root_hash": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+              "root_id": "S44_ROOT_3BCB21FC22DF3255269382AD",
+              "start": 230,
+              "end": 232,
+              "segments": [
+                {
+                  "start": 230,
+                  "end": 231,
+                  "coverage": [
+                    [
+                      230,
+                      231
+                    ]
+                  ],
+                  "attempt": {
+                    "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 230,
+                    "end": 231,
+                    "attempt": "ATTEMPT",
+                    "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                    "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                    "policy_version": "1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "inputs": {
+                      "tool_available": true,
+                      "material_available": true,
+                      "free_hours": true,
+                      "actor_present": true
+                    },
+                    "predecessor_world_receipt_hash": "",
+                    "actual_result_claimed": false,
+                    "consent_or_willingness_claimed": false,
+                    "receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd"
+                  },
+                  "world": {
+                    "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 230,
+                    "end": 231,
+                    "status": "CONFIRMED",
+                    "reason": "",
+                    "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "actor_attempt_receipt_hash": "8f4c292f7f8fd6e0be6a25af48c4f4b137a4a3a12c22f58ab5b549fa9ad0b8dd",
+                    "actual_action_event_id": "TEST_ONLY_BP4_WORLD_EVT_9e559041035be2cbb9d038c3fd2ac3e47fc29d7f18d684542b303b7da3d17bbb",
+                    "actual_action_event_hash": "c44919db1ce83232ed6f269a7696b7f498d5274238e7bf557334c63324db55f4",
+                    "state_before": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 56,
+                      "completed_units": 5,
+                      "debt_units": 2,
+                      "free_hours": 11,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 1,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "state_after": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 58,
+                      "completed_units": 6,
+                      "debt_units": 2,
+                      "free_hours": 10,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 0,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "actual_daily_events_invented": 0,
+                    "welfare_or_consent_inferred": false,
+                    "receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46"
+                  },
+                  "status": "REALIZED"
+                },
+                {
+                  "start": 231,
+                  "end": 232,
+                  "coverage": [],
+                  "attempt": {
+                    "schema": "S46_ACTOR_ATTEMPT_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 231,
+                    "end": 232,
+                    "attempt": "ATTEMPT",
+                    "reason": "RESOURCE_CONSTRAINED_ATTEMPT",
+                    "policy_id": "TEST_ONLY_S46_MATERIAL_ATTEMPT_POLICY",
+                    "policy_version": "1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "source_owner": "TEST_ONLY_S46_ACTOR_ATTEMPT_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "inputs": {
+                      "tool_available": true,
+                      "material_available": false,
+                      "free_hours": true,
+                      "actor_present": true
+                    },
+                    "predecessor_world_receipt_hash": "88446b521745d3c79634091415c3434edd8e04650eeb0f956b2e619e2d45be46",
+                    "actual_result_claimed": false,
+                    "consent_or_willingness_claimed": false,
+                    "receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b"
+                  },
+                  "world": {
+                    "schema": "S46_WORLD_PERIOD_RECEIPT@1",
+                    "grade": "TEST_ONLY_S46_ACTUAL_INTERVAL_PARTICIPATION_NOT_NATIVE",
+                    "native": false,
+                    "psychology_claim": false,
+                    "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                    "branch_id": "first_session",
+                    "scope_id": "TEST_ONLY_S46_WORKSHOP_MATERIAL_PREP",
+                    "start": 231,
+                    "end": 232,
+                    "status": "NOT_PERFORMED",
+                    "reason": "MATERIAL_EXHAUSTED",
+                    "source_owner": "TEST_ONLY_S46_WORLD_PERFORMER_OWNER",
+                    "source_owner_version": "1",
+                    "source_rule_ref": "TEST_ONLY_S46_WORKSHOP_INTERVAL_SOURCE@1",
+                    "model_hash": "17f2d302277bae07b0787f915f7ac585ac4d439a6ef501c3f7e46a6c26e9ace3",
+                    "owner_registry_hash": "d444da57c23e22b280a314c19982c0642808eafbdcd3605923fe4a06e17157d8",
+                    "actor_attempt_receipt_hash": "021749b6b4aeb62019e8554540c96205c07be59e5d2095d4322b0e078a30a42b",
+                    "actual_action_event_id": "",
+                    "actual_action_event_hash": "",
+                    "state_before": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 58,
+                      "completed_units": 6,
+                      "debt_units": 2,
+                      "free_hours": 10,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 0,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "state_after": {
+                      "actor_id": "TEST_ONLY_BP1_R26V_ACTOR_A",
+                      "attitudes": [
+                        "reciprocity_in_work_obligations"
+                      ],
+                      "availability_status": "available_for_encounter",
+                      "cash": 58,
+                      "completed_units": 6,
+                      "debt_units": 2,
+                      "free_hours": 10,
+                      "health": "recovered",
+                      "material_position": "waged_repair",
+                      "material_remaining": 0,
+                      "nonmother_relations": [
+                        "G15_NONKIN_5067063192479bc4d54b0c0dfec1677cacb50e7c78239f62d83a0c65a4f7952e"
+                      ],
+                      "place": "INST_WORKSHOP_A",
+                      "practices": [
+                        "scheduled_repair_ledger_discipline"
+                      ],
+                      "projects": [
+                        "communal_irrigation_pump_repair"
+                      ],
+                      "role": "repair",
+                      "skill": 6,
+                      "tools_remaining": 1
+                    },
+                    "actual_daily_events_invented": 0,
+                    "welfare_or_consent_inferred": false,
+                    "receipt_hash": "0c90453fdeb98bd1ab7dbcfdbf9f3e49bda42a9e3c5e6aa76bd1be8dc1a1975f"
+                  },
+                  "status": "NOT_PERFORMED"
+                }
+              ],
+              "coverage": [
+                [
+                  230,
+                  231
+                ]
+              ],
+              "status": "PARTIAL",
+              "currentness": "CURRENT",
+              "superseded_by": "",
+              "resolution": "BOUNDED_PERIOD_STATE_NO_DAILY_EVENTS",
+              "actual_daily_events_invented": 0,
+              "actor_knowledge_inferred": false,
+              "psychology_state_written": false,
+              "target_proposals": [],
+              "receipt_hash": "53ac72b49f817e7e4ef533740bb2c821a8cab00d4af0e530d35cf142e7336e0f",
+              "episode_id": "TEST_ONLY_BP4_EP_d4393f6c87923d1fd28d7b39d5a1068c0c090d36bf98d2bf0aca9ecce55c87f8"
+            },
+            "refusal_code": null,
+            "user_visible": false,
+            "writes_authority": false,
+            "psychology_claim": false
+          },
+          "reason": null
+        }
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "target": {
+        "admitted_at": 230,
+        "branch": "first_session",
+        "id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+        "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+        "parent_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+        "physical_depth": {
+          "condition": {
+            "asserted_at": 230,
+            "claim_ref": {
+              "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+              "kind": "FACT",
+              "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+            },
+            "dependency_fact_ids": [],
+            "effective_time": 230,
+            "evidence_class": "SOURCEFREE_SYNTHETIC_PHYSICAL",
+            "group_id": "dg:condition:230",
+            "historical_parent_refs": [],
+            "id": "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247",
+            "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+            "owner_dependency_refs": [],
+            "owner_source_refs": [],
+            "parent_event_ref": {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            },
+            "parent_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+            "predicate": "condition",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "value": "serviceable"
+          }
+        },
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "surface": {
+          "domain": "resource",
+          "location": "workshop",
+          "occurrence_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+          "physical": {
+            "tool_available": true
+          },
+          "referent_key": "world-resource:workshop:tool",
+          "unresolved": [
+            "physical",
+            "provenance"
+          ]
+        },
+        "version": 2
+      },
+      "job": {
+        "activity_priority_requirement": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+        "admission": {
+          "accepted": [
+            {
+              "fact_ids": [
+                "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247"
+              ],
+              "group_id": "dg:condition:230"
+            }
+          ],
+          "held": [],
+          "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "rejected": [],
+          "status": "INDEX_READY",
+          "target_version": 2,
+          "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d"
+        },
+        "attempt": 1,
+        "branch": "first_session",
+        "candidate": {
+          "dependencies": [
+            {
+              "asserted_H_class": "H0",
+              "group_id": "dg:condition:230",
+              "parent_groups": [],
+              "parent_refs": []
+            }
+          ],
+          "facts": [
+            {
+              "asserted_H_class": "H0",
+              "dependency_group": "dg:condition:230",
+              "effective_time": 230,
+              "predicate": "condition",
+              "ref": {
+                "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+                "kind": "FACT",
+                "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+              },
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "value": "serviceable"
+            }
+          ],
+          "links": [],
+          "occurrences": [],
+          "request_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8"
+        },
+        "chronology_bound": true,
+        "dimensions": [
+          "physical",
+          "provenance"
+        ],
+        "expires_at": 1794420821.572842,
+        "id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+        "lease_token": "f254b55e0beb45cd9366a13f9a18dc1a",
+        "packet": {
+          "actor_refs": [],
+          "authority": {
+            "allowed_H_classes": [
+              "H0"
+            ],
+            "branch": "first_session",
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "policy": "SOROK_HISTORY_SOURCEFREE_PHYSICAL_V1",
+            "ref": {
+              "content_hash": "57fb383ed84eac817b3ca92b209aeeb8b4b39211ce02f642b2493a6c5d90bbfb",
+              "kind": "AUTHORITY",
+              "object_id": "SOROK_HISTORY_SOURCEFREE_PHYSICAL_V1"
+            },
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "target": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "valid_from": 230,
+            "valid_to": 230
+          },
+          "branch": "first_session",
+          "causal_closure": {
+            "allowed_slack_refs": []
+          },
+          "chronology": {
+            "records": [
+              {
+                "ref": {
+                  "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+                  "kind": "WORLD_EVENT",
+                  "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+                },
+                "targets": [
+                  "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+                ],
+                "time": 10
+              }
+            ],
+            "time": 230,
+            "window": [
+              10,
+              230
+            ]
+          },
+          "event_refs": [
+            {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            }
+          ],
+          "known_facts": [
+            {
+              "predicate": "tool_available",
+              "ref": {
+                "content_hash": "3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b",
+                "kind": "KNOWN_FACT",
+                "object_id": "surface:3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b"
+              },
+              "state": "KNOWN",
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "value": true
+            }
+          ],
+          "request_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
+          "source_limits": [
+            "ACTOR_HISTORY_NOT_ISSUED",
+            "PAST_EVENT_ADMISSION_NOT_ISSUED",
+            "H1_OWNER_NOT_GRANTED"
+          ],
+          "surface": {
+            "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25": {
+              "allowed_physical_predicates": {
+                "color": "str",
+                "condition": "str",
+                "height_mm": "int",
+                "length_mm": "int",
+                "marking": "str",
+                "mass_grams": "int",
+                "material": "str",
+                "texture": "str",
+                "width_mm": "int"
+              },
+              "domain": "resource",
+              "known_fact_refs": [
+                {
+                  "content_hash": "3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b",
+                  "kind": "KNOWN_FACT",
+                  "object_id": "surface:3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b"
+                }
+              ],
+              "location": "workshop",
+              "physical": {
+                "tool_available": true
+              },
+              "requested_predicate": "condition",
+              "root_tool_baseline": {
+                "clock": 10,
+                "location": "workshop",
+                "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+                "root_checkpoint_hash": "cca026606099f8686820c89c71409293ab449ed8f6e1c33c3e66529ee1541f0c",
+                "tool_available": true
+              },
+              "source_referent": "world-resource:workshop:tool",
+              "unresolved": [
+                "physical",
+                "provenance"
+              ]
+            }
+          },
+          "target_ids": [
+            "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+          ],
+          "time": 230,
+          "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d",
+          "world_refs": [
+            {
+              "content_hash": "67b9001140079122240b9432882c79276d02ca10bd44900551ea6559757714b9",
+              "kind": "WORLD_TARGET",
+              "object_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+            }
+          ]
+        },
+        "packet_hash": "fc16ea4b99079012f6ef4fffa21539027c3eed10ea3d252f7bddc9dfdd3a329f",
+        "parent_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+        "prior_actor_repairs": [],
+        "provider_receipt": {
+          "attempt": 1,
+          "attempts": 1,
+          "candidate_hash": "92298864a5755a3d97b118f8518848fc6d35d3c031164b09e9085d8690754a01",
+          "elapsed_ms": 24365.62052415684,
+          "failure_code": null,
+          "failure_grade": "NONE",
+          "input_tokens": 2126,
+          "issues_authority": false,
+          "live": true,
+          "mode": "LIVE",
+          "model": "deepseek-v4.1-flash",
+          "model_hash": "63000515b44b587e71e0804f8264715dee8336ea65f4e8961e2798ac200b0f4f",
+          "output_hash": "976000f272b53aa56efe8b92bf6f4ad5f3745f61e498576b41c148acc45b21b0",
+          "output_tokens": 1072,
+          "provider_contract_id": "SOROK_HISTORICAL_MODEL_PROVIDER@1",
+          "provider_identity": {
+            "adapter": "RecordingEndpoint",
+            "endpoint": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "live": true,
+            "model": "deepseek-v4.1-flash",
+            "provider": "sorok.historical_model"
+          },
+          "request_hash": "5a6f4a965b4e7957a366242ccb5c41e5635d2ecfcb403d45e428e98259499504",
+          "request_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "schema": "SOROK_HISTORICAL_MODEL_RECEIPT@1",
+          "status": "CANDIDATE",
+          "total_tokens": 3198,
+          "writes_world": false
+        },
+        "repair_actor_bound": true,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_tool_baseline": {
+          "clock": 10,
+          "location": "workshop",
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "root_checkpoint_hash": "cca026606099f8686820c89c71409293ab449ed8f6e1c33c3e66529ee1541f0c",
+          "tool_available": true
+        },
+        "status": "INDEX_READY",
+        "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+        "target_version": 1,
+        "trigger": "NEW_WORLD_PARTICULAR",
+        "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d"
+      },
+      "world_depth": {
+        "schema": "SOROK_HISTORICAL_DEPTH_READ@1",
+        "status": "QUALIFIED",
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "branch": "first_session",
+        "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+        "target_version": 2,
+        "physical": [
+          {
+            "asserted_at": 230,
+            "claim_ref": {
+              "content_hash": "a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a",
+              "kind": "FACT",
+              "object_id": "proposal:a4ceabd7d3046e939a980814c50b39b404479b7eeade358e184e724e9414653a"
+            },
+            "dependency_fact_ids": [],
+            "effective_time": 230,
+            "evidence_class": "SOURCEFREE_SYNTHETIC_PHYSICAL",
+            "group_id": "dg:condition:230",
+            "historical_parent_refs": [],
+            "id": "history-fact:a82de6bf4e640529fca7e0fd9df167c51c446307d51252315e6cde7208ac2247",
+            "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+            "owner_dependency_refs": [],
+            "owner_source_refs": [],
+            "parent_event_ref": {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            },
+            "parent_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+            "predicate": "condition",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "value": "serviceable"
+          }
+        ],
+        "episodes": [],
+        "actor_knowledge": "NOT_GRANTED",
+        "user_knowledge": "NOT_GRANTED",
+        "readset_hash": "b623939a7ca703fd9e39f142fc6be5288d972adecf3010375ab15272edb49c47"
+      }
+    }
+  ],
+  "cold_target_equal": true,
+  "history_graph": {
+    "schema": "SOROK_HISTORICAL_GRAPH@1",
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "branch": "first_session",
+    "index_version": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "edges": [],
+    "by_node": {}
+  },
+  "inspection_count": 0,
+  "independent": true,
+  "native_science": "HOLD",
+  "protected_merge": "NOT_AUTHORIZED"
+}

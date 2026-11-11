@@ -1,0 +1,540 @@
+{
+  "schema": "SOROK_MI_LIVE_EXECUTION@1",
+  "source_grade": "SOURCEFREE_S2",
+  "provider_calls": 1,
+  "provider_live": true,
+  "outcome": {
+    "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+    "status": "REJECTED",
+    "accepted": [],
+    "held": [],
+    "rejected": [
+      {
+        "group_id": null,
+        "status": "REJECTED",
+        "reason": "INVALID_LINKS",
+        "refs": [],
+        "claim_refs": []
+      }
+    ],
+    "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d",
+    "target_version": 1,
+    "activity": [
+      {
+        "status": "HELD",
+        "requirement": {
+          "action_kind": "REPAIR",
+          "branch": "first_session",
+          "dispatch_receipt": {
+            "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "status": "HELD",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "target_version": 1,
+            "predicate": "condition",
+            "expected": "serviceable",
+            "observed": null,
+            "property_source": "physical_depth",
+            "fact_id": null,
+            "job_id": null,
+            "job_status": null,
+            "admission_status": null,
+            "fact_parent_event_ref": null,
+            "fact_claim_ref": null,
+            "property_hash": null,
+            "target_hash": "67b9001140079122240b9432882c79276d02ca10bd44900551ea6559757714b9",
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "branch": "first_session",
+            "clock_before": 230,
+            "clock_after": 230,
+            "material_before": 1,
+            "material_after": 1,
+            "interval": null,
+            "refusal_code": "HISTORICAL_DEPTH_MISSING",
+            "user_visible": false,
+            "writes_authority": false,
+            "psychology_claim": false
+          },
+          "expected": "serviceable",
+          "id": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+          "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "parent_event_ref": {
+            "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+            "kind": "WORLD_EVENT",
+            "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+          },
+          "predicate": "condition",
+          "required_at": 230,
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "schema": "SOROK_HISTORY_ACTIVITY_REQUIREMENT@1",
+          "status": "HELD",
+          "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+          "target_version": 1,
+          "task_id": "S46_ACTUAL_REPAIR",
+          "world_readset": "088621e78a8e839aedd270355c56b18275f817e553b5aa430f7f8ef16cdcdb60"
+        },
+        "activity": {
+          "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+          "grade": "SOURCEFREE_TEST_ONLY",
+          "status": "HELD",
+          "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+          "target_version": 1,
+          "predicate": "condition",
+          "expected": "serviceable",
+          "observed": null,
+          "property_source": "physical_depth",
+          "fact_id": null,
+          "job_id": null,
+          "job_status": null,
+          "admission_status": null,
+          "fact_parent_event_ref": null,
+          "fact_claim_ref": null,
+          "property_hash": null,
+          "target_hash": "67b9001140079122240b9432882c79276d02ca10bd44900551ea6559757714b9",
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "branch": "first_session",
+          "clock_before": 230,
+          "clock_after": 230,
+          "material_before": 1,
+          "material_after": 1,
+          "interval": null,
+          "refusal_code": "HISTORICAL_DEPTH_MISSING",
+          "user_visible": false,
+          "writes_authority": false,
+          "psychology_claim": false
+        },
+        "reason": "HISTORICAL_DEPTH_MISSING"
+      }
+    ]
+  },
+  "outcomes": [
+    {
+      "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+      "status": "REJECTED",
+      "accepted": [],
+      "held": [],
+      "rejected": [
+        {
+          "group_id": null,
+          "status": "REJECTED",
+          "reason": "INVALID_LINKS",
+          "refs": [],
+          "claim_refs": []
+        }
+      ],
+      "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d",
+      "target_version": 1,
+      "activity": [
+        {
+          "status": "HELD",
+          "requirement": {
+            "action_kind": "REPAIR",
+            "branch": "first_session",
+            "dispatch_receipt": {
+              "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+              "grade": "SOURCEFREE_TEST_ONLY",
+              "status": "HELD",
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "target_version": 1,
+              "predicate": "condition",
+              "expected": "serviceable",
+              "observed": null,
+              "property_source": "physical_depth",
+              "fact_id": null,
+              "job_id": null,
+              "job_status": null,
+              "admission_status": null,
+              "fact_parent_event_ref": null,
+              "fact_claim_ref": null,
+              "property_hash": null,
+              "target_hash": "67b9001140079122240b9432882c79276d02ca10bd44900551ea6559757714b9",
+              "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+              "branch": "first_session",
+              "clock_before": 230,
+              "clock_after": 230,
+              "material_before": 1,
+              "material_after": 1,
+              "interval": null,
+              "refusal_code": "HISTORICAL_DEPTH_MISSING",
+              "user_visible": false,
+              "writes_authority": false,
+              "psychology_claim": false
+            },
+            "expected": "serviceable",
+            "id": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+            "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+            "parent_event_ref": {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            },
+            "predicate": "condition",
+            "required_at": 230,
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "schema": "SOROK_HISTORY_ACTIVITY_REQUIREMENT@1",
+            "status": "HELD",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "target_version": 1,
+            "task_id": "S46_ACTUAL_REPAIR",
+            "world_readset": "088621e78a8e839aedd270355c56b18275f817e553b5aa430f7f8ef16cdcdb60"
+          },
+          "activity": {
+            "schema": "SOROK_HISTORY_INDEPENDENT_ACTIVITY@1",
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "status": "HELD",
+            "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "target_version": 1,
+            "predicate": "condition",
+            "expected": "serviceable",
+            "observed": null,
+            "property_source": "physical_depth",
+            "fact_id": null,
+            "job_id": null,
+            "job_status": null,
+            "admission_status": null,
+            "fact_parent_event_ref": null,
+            "fact_claim_ref": null,
+            "property_hash": null,
+            "target_hash": "67b9001140079122240b9432882c79276d02ca10bd44900551ea6559757714b9",
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "branch": "first_session",
+            "clock_before": 230,
+            "clock_after": 230,
+            "material_before": 1,
+            "material_after": 1,
+            "interval": null,
+            "refusal_code": "HISTORICAL_DEPTH_MISSING",
+            "user_visible": false,
+            "writes_authority": false,
+            "psychology_claim": false
+          },
+          "reason": "HISTORICAL_DEPTH_MISSING"
+        }
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "target": {
+        "admitted_at": 230,
+        "branch": "first_session",
+        "id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+        "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+        "parent_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "surface": {
+          "domain": "resource",
+          "location": "workshop",
+          "occurrence_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854",
+          "physical": {
+            "tool_available": true
+          },
+          "referent_key": "world-resource:workshop:tool",
+          "unresolved": [
+            "physical",
+            "provenance"
+          ]
+        },
+        "version": 1
+      },
+      "job": {
+        "activity_priority_requirement": "history-activity:c4b771c1d7f0fc8ded87b116550d2959b6c6a52e53d3326cb7e5ad31f4763e3d",
+        "admission": {
+          "accepted": [],
+          "held": [],
+          "job_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "rejected": [
+            {
+              "claim_refs": [],
+              "group_id": null,
+              "reason": "INVALID_LINKS",
+              "refs": [],
+              "status": "REJECTED"
+            }
+          ],
+          "status": "REJECTED",
+          "target_version": 1,
+          "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d"
+        },
+        "attempt": 1,
+        "branch": "first_session",
+        "candidate": {
+          "dependencies": [
+            {
+              "asserted_H_class": "H0",
+              "group_id": "dep:tool-material-baseline",
+              "parent_groups": [],
+              "parent_refs": [
+                {
+                  "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+                  "kind": "WORLD_EVENT",
+                  "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+                }
+              ]
+            },
+            {
+              "asserted_H_class": "H0",
+              "group_id": "dep:tool-condition-baseline",
+              "parent_groups": [],
+              "parent_refs": [
+                {
+                  "content_hash": "3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b",
+                  "kind": "KNOWN_FACT",
+                  "object_id": "surface:3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b"
+                }
+              ]
+            }
+          ],
+          "facts": [
+            {
+              "asserted_H_class": "H0",
+              "dependency_group": "dep:tool-material-baseline",
+              "effective_time": 10,
+              "predicate": "material",
+              "ref": {
+                "content_hash": "5b1bec897840e6b01a486e480bc1d7dd18eac6d4d8fed13da6642d6e4fe6cdbe",
+                "kind": "FACT",
+                "object_id": "proposal:5b1bec897840e6b01a486e480bc1d7dd18eac6d4d8fed13da6642d6e4fe6cdbe"
+              },
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "value": "wood"
+            },
+            {
+              "asserted_H_class": "H0",
+              "dependency_group": "dep:tool-condition-baseline",
+              "effective_time": 10,
+              "predicate": "condition",
+              "ref": {
+                "content_hash": "f1c8c925e6e9379ae3838606663a5f808fbb1e005981f0873b59f9542af1cd2c",
+                "kind": "FACT",
+                "object_id": "proposal:f1c8c925e6e9379ae3838606663a5f808fbb1e005981f0873b59f9542af1cd2c"
+              },
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "value": "serviceable"
+            }
+          ],
+          "links": [
+            {
+              "asserted_H_class": "H0",
+              "fact_index": 0,
+              "group_id": "dep:tool-material-baseline",
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+            },
+            {
+              "asserted_H_class": "H0",
+              "fact_index": 1,
+              "group_id": "dep:tool-condition-baseline",
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+            }
+          ],
+          "occurrences": [],
+          "request_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8"
+        },
+        "chronology_bound": true,
+        "dimensions": [
+          "physical",
+          "provenance"
+        ],
+        "expires_at": 1794420236.534962,
+        "id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+        "lease_token": "9fa3b8502dda42d19a075f361034b8a0",
+        "packet": {
+          "actor_refs": [],
+          "authority": {
+            "allowed_H_classes": [
+              "H0"
+            ],
+            "branch": "first_session",
+            "grade": "SOURCEFREE_TEST_ONLY",
+            "policy": "SOROK_HISTORY_SOURCEFREE_PHYSICAL_V1",
+            "ref": {
+              "content_hash": "57fb383ed84eac817b3ca92b209aeeb8b4b39211ce02f642b2493a6c5d90bbfb",
+              "kind": "AUTHORITY",
+              "object_id": "SOROK_HISTORY_SOURCEFREE_PHYSICAL_V1"
+            },
+            "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+            "target": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+            "valid_from": 230,
+            "valid_to": 230
+          },
+          "branch": "first_session",
+          "causal_closure": {
+            "allowed_slack_refs": []
+          },
+          "chronology": {
+            "records": [
+              {
+                "ref": {
+                  "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+                  "kind": "WORLD_EVENT",
+                  "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+                },
+                "targets": [
+                  "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+                ],
+                "time": 10
+              }
+            ],
+            "time": 230,
+            "window": [
+              10,
+              230
+            ]
+          },
+          "event_refs": [
+            {
+              "content_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+              "kind": "WORLD_EVENT",
+              "object_id": "TEST_ONLY_BP4_WORLD_EVT_0c94bfa52ff8055ae9bac7eb25ee7f9a4b68d242c23fdbfef982f31b7b78e854"
+            }
+          ],
+          "known_facts": [
+            {
+              "predicate": "tool_available",
+              "ref": {
+                "content_hash": "3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b",
+                "kind": "KNOWN_FACT",
+                "object_id": "surface:3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b"
+              },
+              "state": "KNOWN",
+              "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+              "value": true
+            }
+          ],
+          "request_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "schema": "SOROK_HISTORY_ADMISSION_PACKET@1",
+          "source_limits": [
+            "ACTOR_HISTORY_NOT_ISSUED",
+            "PAST_EVENT_ADMISSION_NOT_ISSUED",
+            "H1_OWNER_NOT_GRANTED"
+          ],
+          "surface": {
+            "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25": {
+              "allowed_physical_predicates": {
+                "color": "str",
+                "condition": "str",
+                "height_mm": "int",
+                "length_mm": "int",
+                "marking": "str",
+                "mass_grams": "int",
+                "material": "str",
+                "texture": "str",
+                "width_mm": "int"
+              },
+              "domain": "resource",
+              "known_fact_refs": [
+                {
+                  "content_hash": "3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b",
+                  "kind": "KNOWN_FACT",
+                  "object_id": "surface:3b6b091e1e250f806596e5874524ba6a1ff1416d0aa801b58da1f23532c1b64b"
+                }
+              ],
+              "location": "workshop",
+              "physical": {
+                "tool_available": true
+              },
+              "root_tool_baseline": {
+                "clock": 10,
+                "location": "workshop",
+                "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+                "root_checkpoint_hash": "cca026606099f8686820c89c71409293ab449ed8f6e1c33c3e66529ee1541f0c",
+                "tool_available": true
+              },
+              "source_referent": "world-resource:workshop:tool",
+              "unresolved": [
+                "physical",
+                "provenance"
+              ]
+            }
+          },
+          "target_ids": [
+            "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+          ],
+          "time": 230,
+          "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d",
+          "world_refs": [
+            {
+              "content_hash": "67b9001140079122240b9432882c79276d02ca10bd44900551ea6559757714b9",
+              "kind": "WORLD_TARGET",
+              "object_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25"
+            }
+          ]
+        },
+        "packet_hash": "2d7c7157f9ee5d1e625cbc38165f31e7f170590cc89abb2f394ab8be1382f90f",
+        "parent_hash": "c2c4705d4f5179085e35d57edce16be148fdc85d76533d211d9391fd71622e2c",
+        "prior_actor_repairs": [],
+        "provider_receipt": {
+          "attempt": 1,
+          "attempts": 1,
+          "candidate_hash": "7acab6376ed5a41e1a22dce11eab50c39311a64a02934140672715200fd1c9c5",
+          "elapsed_ms": 19567.04781204462,
+          "failure_code": null,
+          "failure_grade": "NONE",
+          "input_tokens": 2060,
+          "issues_authority": false,
+          "live": true,
+          "mode": "LIVE",
+          "model": "deepseek-v4.1-flash",
+          "model_hash": "a298b1da929faa4a0a5e4a1bcbe7d11b3d6353a6f359e360b648ac55068168ea",
+          "output_hash": "60b419bd3cf035c88d17897772022d6dc5ae1068e15b89f5756c4b0051b755eb",
+          "output_tokens": 1062,
+          "provider_contract_id": "SOROK_HISTORICAL_MODEL_PROVIDER@1",
+          "provider_identity": {
+            "adapter": "RecordingEndpoint",
+            "endpoint": "https://opencode.ai/inference/go/openai/v1/chat/completions",
+            "live": true,
+            "model": "deepseek-v4.1-flash",
+            "provider": "sorok.historical_model"
+          },
+          "request_hash": "f82018f7744b33b5e251914ce598c936bcd4143f58658a83cfc3df1638e1e4f2",
+          "request_id": "history-job:8f4915f970a76262630952c25143f5fe57e34a527cfdf6d62e189670007331e8",
+          "schema": "SOROK_HISTORICAL_MODEL_RECEIPT@1",
+          "status": "CANDIDATE",
+          "total_tokens": 3122,
+          "writes_world": false
+        },
+        "repair_actor_bound": true,
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "root_tool_baseline": {
+          "clock": 10,
+          "location": "workshop",
+          "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+          "root_checkpoint_hash": "cca026606099f8686820c89c71409293ab449ed8f6e1c33c3e66529ee1541f0c",
+          "tool_available": true
+        },
+        "status": "REJECTED",
+        "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+        "target_version": 1,
+        "trigger": "NEW_WORLD_PARTICULAR",
+        "world_readset": "8d2f1052114f53db6cddbb6960b9d5abd2bfc62c1a901a931ef00fe2f09f7f7d"
+      },
+      "world_depth": {
+        "schema": "SOROK_HISTORICAL_DEPTH_READ@1",
+        "status": "QUALIFIED",
+        "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+        "branch": "first_session",
+        "target_id": "history-target:c8bfc88070a69bc963b1ffa253f096716297b63709a93aee684ee2db46f63e25",
+        "target_version": 1,
+        "physical": [],
+        "episodes": [],
+        "actor_knowledge": "NOT_GRANTED",
+        "user_knowledge": "NOT_GRANTED",
+        "readset_hash": "141f86219325b62dea9b0ea58f17974d1f7a173a01efc3d6b17895aa1ed9fe47"
+      }
+    }
+  ],
+  "cold_target_equal": true,
+  "history_graph": {
+    "schema": "SOROK_HISTORICAL_GRAPH@1",
+    "root": "3bcb21fc22df3255269382ad249f706dd6dd5378cb886af26542991ff516a4f7",
+    "branch": "first_session",
+    "index_version": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "edges": [],
+    "by_node": {}
+  },
+  "inspection_count": 0,
+  "independent": true,
+  "native_science": "HOLD",
+  "protected_merge": "NOT_AUTHORIZED"
+}

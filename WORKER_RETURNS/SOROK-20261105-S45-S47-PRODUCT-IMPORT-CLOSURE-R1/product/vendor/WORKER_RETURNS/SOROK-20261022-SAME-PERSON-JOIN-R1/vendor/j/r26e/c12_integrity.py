@@ -28,6 +28,24 @@ EXTERNAL_WITNESS_GRADE = "TEST_ONLY_SAME_USER_EXTERNAL_WITNESS_NOT_SECURITY_BOUN
 class QualifiedC12Store(C12Store):
     """BP4 C12 store with the actual row preimages verified, not self-hashed."""
 
+    def inherits_verified_prefix(self, branch_id: str, ancestor: str) -> bool:
+        """Verify each existing fork edge between a branch and a strict ancestor."""
+        if not isinstance(ancestor, str):
+            return False
+        visited = set()
+        current = branch_id
+        while current not in visited:
+            visited.add(current)
+            parent = self.branch(current)["parent_branch_id"]
+            if parent is None or parent in visited:
+                return False
+            if not self.shared_root_equal(current, parent)["equal"]:
+                return False
+            if parent == ancestor:
+                return True
+            current = parent
+        return False
+
     def verify(self, branch_id: str) -> dict:
         self.branch(branch_id)
         errors: list[str] = []

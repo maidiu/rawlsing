@@ -1,0 +1,106 @@
+name: SOROK Mechanism I exact-source PRE-MAIN composite receiving
+on:
+  push:
+    branches:
+      - review/sorok-mi-premain-integrate-20261111-r1-8422
+  pull_request:
+    branches:
+      - integration/pre-main-reconciliation-r1
+    paths:
+      - 'rawlsing_next/sorok_history/**'
+      - 'rawlsing_next/tests/test_sorok_history_*.py'
+      - 'WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/**'
+      - 'WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/**'
+      - 'WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/**'
+      - 'WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/**'
+      - 'WORKER_RETURNS/SOROK-MECHANISM-I-ROLLING-HISTORICAL-MATERIALIZATION-20261108-R1/**'
+      - 'WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1/**'
+      - '.github/workflows/sorok-mi-premain-joined-20261111.yml'
+permissions:
+  contents: read
+jobs:
+  exact-reviewed-blobs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify all reviewed code blobs and exact evidence trees
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py)" = "bc71f6d06614661c4c83704d771972c77c39027c"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/r26e/c12_integrity.py)" = "b14c85e15567140aed819b1bd4101338f1aba708"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S39-GENERATED-RESPONSE-R1/s39/reader.py)" = "13e174f5ad153e77e00adc20a27b6c9b6208a843"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261024-S44-SAMPLED-ROOT-CONSUMER-R1/s44/session.py)" = "6a824ce1bb62f02c98ae3e7e504f6da43eed0474"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/run_p4.py)" = "c5418662159aa81be8d51bc8a0578744f59758fa"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py)" = "260e44580f93da53fd0d8bf1f82c3e5dee5e584c"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py)" = "044a3e11e9b21849df52b62d7e4e5646c56756e2"
+          test "$(git rev-parse HEAD:rawlsing_next/sorok_history/activity.py)" = "71124572ba1d7ab56992469bbe6f45cedd8296e1"
+          test "$(git rev-parse HEAD:rawlsing_next/sorok_history/admission.py)" = "aa839aaf2a0e394aaf5d4ac40e04970a0f16c325"
+          test "$(git rev-parse HEAD:rawlsing_next/sorok_history/owner.py)" = "4352415bc120e37abab4da989c00193221266af6"
+          test "$(git rev-parse HEAD:rawlsing_next/sorok_history/provider.py)" = "0c82c5d6cc2914988a9fb88c11d5ba9c7b101042"
+          test "$(git rev-parse HEAD:rawlsing_next/sorok_history/runtime.py)" = "6f444a8efdfd87778d803842e60d496160c78262"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_activity.py)" = "288d3fe146411b85c45ff98640991a7843ad8f5a"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_admission.py)" = "11513f976c89546c77dcb1392ba22824ad80966b"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_episodes.py)" = "a97bfbf9ea2fa83183e70ab52b164936c9e8944b"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_joined.py)" = "314cde13ebf0386b41bae3b61ecdb5acf515d563"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_owner.py)" = "e94bfeb6ed93872fdf9ea2659b00ceb16bd8a138"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_provider.py)" = "839c2dcf701680203235de9f0d89f24823c952fa"
+          test "$(git rev-parse HEAD:rawlsing_next/tests/test_sorok_history_wake.py)" = "515e07fb8ffaafece3c6136cb7a286e3ae118e9d"
+          test "$(git rev-parse HEAD:WORKER_RETURNS/SOROK-MECHANISM-I-ROLLING-HISTORICAL-MATERIALIZATION-20261108-R1)" = "a601e8d2d1cbbd87b1397c366bc269201fd03281"
+          test "$(git rev-parse HEAD:WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1)" = "0b24571bb7c3feeb4d1febcdfc4ee7a797e31b4d"
+          python -m compileall -q rawlsing_next/sorok_history
+  mi-full-composite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest
+      - name: Entire Mechanism I composite sourcefree regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m pytest -x -q -p no:cacheprovider --tb=short rawlsing_next/tests/test_sorok_history_*.py
+  independent-repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest
+      - name: Independent H1 time RED repair and source invalidation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m pytest -x -q -p no:cacheprovider --tb=short \
+            WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1/test_h1_source_time.py \
+            WORKER_REVIEWS/SOROK-MI-COMPLETION-INDEPENDENT-20261111-R1/test_source_closure_r2.py
+  inherited-mii-miii-p6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pytest
+      - name: Conserve MII gaze MIII actor P5 and P6 consumer semantics
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B -m pytest -x -q -p no:cacheprovider --tb=short \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_mii.py \
+            WORKER_REVIEWS/SOROK-MII-5EABD82-CLOSURE-R4/test_prior_final_reproducer.py \
+            WORKER_REVIEWS/SOROK-MII-5EABD82-CLOSURE-R4/test_replay_interrupted.py \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_scene_context.py \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative.py \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_actor_initiative_hostile.py \
+            WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/test_house.py \
+            WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/test_experience.py \
+            WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/test_gaze.py \
+            WORKER_RETURNS/SOROK-P4-FIRST-FULL-MPC-R1/test_cli.py

@@ -1,21 +1,31 @@
 #!/usr/bin/env python3
 """Persistent sourcefree P4 encounter. Stdout is the user-visible surface."""
 import argparse
+from contextlib import contextmanager
 import fcntl
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent
 P3 = ROOT.parent / "SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1"
 sys.path.insert(0, str(P3 / "tests"))
+sys.path.append(str(ROOT.parents[1]))
 
 # Reuse the received sourcefree scenario constructors. They provide antecedent
 # data only. All user operations come from this CLI's caller.
 from p3_fixture_support import build_case
-from developmental_recursion.contracts import RecursionRefusal, canonical
+from developmental_recursion.contracts import RecursionRefusal, canonical, digest
 from developmental_recursion.p2_owner import P2Owner, load_p2
 from p3.p3_owner import CONFIG_FILE, P3Owner
+from rawlsing_next.sorok_history.owner import (
+    HistoricalWorld, HistoryRefusal, RESOURCE, VISIBLE_PHYSICAL,
+)
+from rawlsing_next.sorok_history.activity import (
+    ActivityRefusal, REPAIR_TASK_ID, dispatch_activity_requirement,
+    produce_activity_requirement, resume_activity_requirements,
+)
 from response import check_source, express, read_response
 from speech import admit_speech
 
@@ -28,11 +38,40 @@ def save(path, value):
     temporary.replace(path)
 
 
-def advance(fanin, *, mode="ACTUAL"):
+def advance(fanin, *, mode="ACTUAL", dispatch_ref=None):
     session = fanin.session
     start = session.clock()
-    domain = fanin.deps["make_domain"](mode=mode, start=start, end=start + 2)
-    return session.produce_interval(domain)
+    domain = fanin.deps["make_domain"](
+        mode=mode, start=start, end=start + 2, branch_id=session.branch_id
+    )
+    if dispatch_ref is not None:
+        body = {key: value for key, value in domain.items()
+                if key not in {"domain_hash", "hash"}}
+        body["activity_requirement_ref"] = dispatch_ref
+        domain = dict(body)
+        domain["domain_hash"] = digest(body)
+        domain["hash"] = digest({**body, "domain_hash": domain["domain_hash"]})
+    interval = session.produce_interval(domain)
+    history = HistoricalWorld(session)
+    for segment in interval["segments"]:
+        receipt = segment["world"]
+        if receipt["status"] == "CONFIRMED":
+            history.capture_completed_unit(
+                receipt["actual_action_event_id"], receipt["actual_action_event_hash"],
+            )
+    return interval
+
+
+def advance_dispatched(fanin, *, task_id=REPAIR_TASK_ID):
+    """Ordinary S46 dispatch: resolve the tool requirement, then advance."""
+    history = HistoricalWorld(fanin.session)
+    try:
+        requirement = produce_activity_requirement(fanin, history, task_id=task_id)
+    except ActivityRefusal as exc:
+        return {"status": "HELD", "requirement": None, "activity": None,
+                "reason": str(exc)}
+    dispatched = dispatch_activity_requirement(fanin, history, requirement)
+    return dispatched.as_dict()
 
 
 def open_owner(root):
@@ -74,11 +113,71 @@ def surface(owner, ledger):
         row for row in view["visible_events"]
         if row["clock"] >= opening_clock or row["kind"] == "ARRIVAL"
     ]
-    return {"grade": GRADE, "clock": fanin.session.clock(),
+    result = {"grade": GRADE, "clock": fanin.session.clock(),
             "location": view.get("location"),
             "tool_available": view.get("tool_available"),
             "observations": observations,
             "choices": choices, "invitation": invited}
+    particulars = HistoricalWorld(fanin.session).visible_surfaces()
+    if particulars:
+        result["historical_particulars"] = list(particulars)
+    return result
+
+
+def foreground_witness(owner, identity):
+    """Bind all foreground and actor state while the history owner advances."""
+    session = owner.base_owner.fanin.session
+    current_world = session.world()
+    history = HistoricalWorld(session)
+    state = history._state(current_world)
+    hidden_episodes = {event["event_id"]
+                       for target in state["targets"].values()
+                       for event in history._qualified_episodes(current_world, state, target)}
+    world = current_world.snapshot()
+    world.pop("hash")
+    world["resources"].pop(RESOURCE, None)
+    world["events"] = [event for event in world["events"]
+                       if event["event_id"] not in hidden_episodes]
+    return digest({
+        "scope": {key: value for key, value in identity.items() if key != "state_hash"},
+        "world": world, "events": [event for event in session.read_events()
+                                    if event.get("event_id") not in hidden_episodes],
+        "intervals": session.read_interval_states(), "encounters": session.read_encounters(),
+        "psychology_head": owner.store.head(), "config_hash": owner.config_hash,
+    })
+
+
+def last_boundary(ledger):
+    pointer = ledger.get("last_boundary")
+    if pointer is not None:
+        return ledger[pointer["collection"]][pointer["index"]]
+    if ledger.get("activity_turns"):
+        return ledger["activity_turns"][-1]
+    return ledger["turns"][-1] if ledger["turns"] else ledger["antecedent"]
+
+
+def check_boundary(owner, ledger):
+    """Permit history-only commits, retaining the exact foreground/actor check."""
+    boundary = last_boundary(ledger)
+    expected = boundary.get("after", boundary.get("identity"))
+    current = owner.snapshot().document()
+    if current != expected:
+        witness = boundary.get("foreground_witness")
+        if witness is None or foreground_witness(owner, current) != witness:
+            raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
+
+
+def record_activity(owner, ledger_file, ledger, before, result):
+    """Persist an internal independent activity without making it a user turn."""
+    after = owner.snapshot().document()
+    ledger.setdefault("activity_turns", []).append({
+        "before": before, "after": after,
+        "foreground_witness": foreground_witness(owner, after),
+        "receipt": result,
+    })
+    ledger["last_boundary"] = {"collection": "activity_turns",
+                               "index": len(ledger["activity_turns"]) - 1}
+    save(ledger_file, ledger)
 
 
 def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
@@ -92,11 +191,14 @@ def new(state, ledger_file, history, *, seed="01" * 32, establish=None):
         interval = advance(case.base_owner.fanin, mode="SCHEDULED_ONLY")
         if establish is not None:
             establish(case.base_owner.fanin.session)
+        HistoricalWorld(case.base_owner.fanin.session).capture_visible_tool_resource()
         plan = case.plans[0]
+        identity = owner.snapshot().document()
         ledger = {"scope": {key: plan[key] for key in
                             ("project", "counterpart", "interlocutor_role")},
                   "antecedent": {"formation": formation.receipt_ref,
-                                 "identity": owner.snapshot().document(),
+                                 "identity": identity,
+                                 "foreground_witness": foreground_witness(owner, identity),
                                  "interval": interval,
                                  "psychology_head": owner.store.head()},
                   "turns": [], "pending": None}
@@ -116,6 +218,11 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
         action, perform = conduct
     elif args.command == "say":
         action = {"operation": "SAY", "text": args.text, "request_edge": args.request_edge}
+    elif args.command == "inspect-particular":
+        action = {"operation": "INSPECT_PARTICULAR", "target": args.target}
+        predicate = getattr(args, "property", None)
+        if predicate is not None:
+            action["property"] = predicate
     elif args.command == "inspect-edge":
         action = {"operation": "INSPECT_EDGE", "invitation": args.invitation}
         if args.then_wait:
@@ -153,6 +260,19 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
                    "interval": interval}
         public = {"admission": speech["admission"], "performed": speech["performed"] is not None,
                   "observation": observation}
+    elif args.command == "inspect-particular":
+        history = HistoricalWorld(session)
+        try:
+            event = history.inspect(args.target, predicate=predicate)
+        except HistoryRefusal as exc:
+            if str(exc) != "HISTORICAL_TARGET_UNAVAILABLE":
+                raise
+            receipt = {"performed": None, "reason": str(exc)}
+            public = {"admission": "UNAVAILABLE", "performed": False, "observation": None}
+        else:
+            receipt = {"performed": event}
+            public = {"admission": "ADMITTED", "performed": True,
+                      "observation": history.read_inspection(event["event_id"])}
     elif args.command in {"inspect", "inspect-edge"}:
         from s45_projection.projection import project_event
 
@@ -193,13 +313,89 @@ def act(owner, ledger_file, ledger, args, *, pacing=None, conduct=None):
         public = {"admission": "ADMITTED" if valid else "SCENE_CLOSED",
                   "performed": valid, "observation": None}
 
+    after = owner.snapshot().document()
     ledger["turns"].append({"action": action, "request_id": args.request_id,
                             "receipt": receipt, "before": before,
-                            "after": owner.snapshot().document(), "public": public})
+                            "after": after, "foreground_witness": foreground_witness(owner, after),
+                            "public": public})
     ledger["pending"] = None
+    ledger["last_boundary"] = {"collection": "turns", "index": len(ledger["turns"]) - 1}
     public["next"] = surface(owner, ledger)
     save(ledger_file, ledger)
     return public
+
+
+@contextmanager
+def foreground_lock(state):
+    with (state / "p4.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        yield
+
+
+def wake_history_worker(state, *, candidate_ready=False):
+    """Start a bounded job after the foreground checkpoint and ledger are durable."""
+    from rawlsing_next.sorok_history.provider import ProviderConfig
+
+    config = ProviderConfig.from_environment()
+    if not candidate_ready and not (config.endpoint and config.model):
+        return
+    try:
+        subprocess.Popen(
+            [sys.executable, str(Path(__file__).resolve()), "--state", str(state),
+             "history-worker", "--drain"],
+            stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            start_new_session=True,
+        )
+    except OSError:
+        # The durable demand remains available to the explicit recovery command.
+        print("Historical worker wake failed; durable demand retained.", file=sys.stderr)
+
+
+def run_history_worker(state, *, drain_backlog=False, provider=None, idle=False):
+    """Use the foreground lock only for local owner operations."""
+    import asyncio
+
+    from rawlsing_next.sorok_history.provider import HistoricalModelProvider
+    from rawlsing_next.sorok_history.runtime import drain, run_once
+
+    if provider is None:
+        provider = HistoricalModelProvider.from_environment()
+        service_provider = provider if provider.live else None
+    else:
+        service_provider = provider
+    with foreground_lock(state):
+        owner = open_owner(state / "actual-p2")
+    try:
+        with foreground_lock(state):
+            check_source(owner)
+            history = HistoricalWorld(owner.base_owner.fanin.session)
+            history.recover_completed_units()
+            if idle:
+                history.enqueue_idle(max_jobs=1)
+            before = owner.snapshot().document()
+        service = drain if drain_backlog else run_once
+        result = asyncio.run(service(
+            history, service_provider, guard=lambda: foreground_lock(state)
+        ))
+        with foreground_lock(state):
+            resumed = resume_activity_requirements(
+                owner.base_owner.fanin, history
+            )
+            if resumed:
+                record_activity(
+                    owner, state / "p4_receipts.json",
+                    json.loads((state / "p4_receipts.json").read_text()),
+                    before, [row.as_dict() for row in resumed],
+                )
+        if drain_backlog:
+            return {"results": result}
+        if result is None:
+            result = {"status": "NO_WORK"}
+        if resumed:
+            result = {**result, "activity": [row.as_dict() for row in resumed]}
+        return result
+    finally:
+        owner.close()
 
 
 def main():
@@ -210,6 +406,11 @@ def main():
     initialize.add_argument("--history", choices=("recognized_plan", "imposed_plan", ""),
                             default="recognized_plan")
     commands.add_parser("view")
+    commands.add_parser("work")
+    worker = commands.add_parser("history-worker")
+    worker.add_argument("--drain", action="store_true")
+    worker.add_argument("--idle", action="store_true",
+                        help="Opt into one bounded, low-priority physical enrichment job.")
     say = commands.add_parser("say")
     say.add_argument("text")
     say.add_argument("--request-edge", action="store_true",
@@ -220,15 +421,22 @@ def main():
     inspect.add_argument("--request-id")
     inspect.add_argument("--then-wait", action="store_true",
                          help="After inspection, let two workshop clock units pass.")
+    particular = commands.add_parser("inspect-particular")
+    particular.add_argument("target")
+    particular.add_argument("--property", choices=sorted(VISIBLE_PHYSICAL))
+    particular.add_argument("--request-id")
     args = parser.parse_args()
 
     state = args.state.resolve()
     if args.command == "new":
         state.mkdir(parents=True, exist_ok=True)
     ledger_file = state / "p4_receipts.json"
+    recover_history = candidate_ready = False
     try:
-        with (state / "p4.lock").open("a") as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX)
+        if args.command == "history-worker":
+            print(json.dumps(run_history_worker(state, drain_backlog=args.drain, idle=args.idle), ensure_ascii=False))
+            return 0
+        with foreground_lock(state):
             if args.command == "new":
                 result = new(state, ledger_file, args.history)
             else:
@@ -238,19 +446,32 @@ def main():
                 owner = open_owner(state / "actual-p2")
                 try:
                     check_source(owner)
-                    expected = (ledger["turns"][-1]["after"] if ledger["turns"]
-                                else ledger["antecedent"]["identity"])
-                    if owner.snapshot().document() != expected:
-                        raise RecursionRefusal("P4_COLD_STATE_MISMATCH")
-                    result = (surface(owner, ledger) if args.command == "view" else
-                              act(owner, ledger_file, ledger, args))
+                    check_boundary(owner, ledger)
+                    if args.command == "view":
+                        history = HistoricalWorld(owner.base_owner.fanin.session)
+                        history.recover_completed_units()
+                        result = surface(owner, ledger)
+                        candidate_ready = history.ready_candidate_id() is not None
+                        recover_history = candidate_ready or bool(history.pending())
+                    elif args.command == "work":
+                        before = owner.snapshot().document()
+                        result = advance_dispatched(owner.base_owner.fanin)
+                        record_activity(owner, ledger_file, ledger, before, result)
+                        history = HistoricalWorld(owner.base_owner.fanin.session)
+                        recover_history = bool(history.pending())
+                    else:
+                        result = act(owner, ledger_file, ledger, args)
+                        history = HistoricalWorld(owner.base_owner.fanin.session)
+                        recover_history = bool(history.pending())
                 finally:
                     owner.close()
-    except (RecursionRefusal, FileNotFoundError) as exc:
+    except (RecursionRefusal, HistoryRefusal, FileNotFoundError) as exc:
         print(json.dumps({"grade": GRADE, "status": "REFUSED",
-                          "reason": str(exc) if isinstance(exc, RecursionRefusal) else
+                          "reason": str(exc) if isinstance(exc, (RecursionRefusal, HistoryRefusal)) else
                           "P4_STATE_OR_SOURCE_MISSING"}))
         return 2
+    if recover_history or args.command in {"new", "inspect-particular"}:
+        wake_history_worker(state, candidate_ready=candidate_ready)
     print(json.dumps(result, ensure_ascii=False))
     return 0
 

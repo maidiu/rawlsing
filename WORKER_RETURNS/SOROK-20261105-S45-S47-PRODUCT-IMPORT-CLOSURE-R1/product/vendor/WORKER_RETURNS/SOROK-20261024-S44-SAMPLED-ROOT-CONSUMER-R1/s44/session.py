@@ -227,11 +227,15 @@ class S44Session(S43Session):
         root_path = self.state_root / ROOT_FILE
         if not root_path.is_file():
             raise S44Refusal("S44_ROOT_MISSING", str(root_path))
-        document = _read_json(root_path)
+        raw = root_path.read_bytes()
+        document = json.loads(raw.decode("utf8"))
         receipt = document.get("receipt") or {}
-        calculated = generate_root(document["bundle"]).receipt
-        if calculated["root_hash"] != receipt.get("root_hash"):
+        replay = getattr(self, "_verified_root_replay", None)
+        if replay is None or replay[0] != raw:
+            replay = (raw, generate_root(document["bundle"]).receipt["root_hash"])
+        if replay[1] != receipt.get("root_hash"):
             raise S44Refusal("S44_ROOT_REPLAY_MISMATCH")
+        self._verified_root_replay = replay
         bindings = [
             row for row in self.product.store.episodes(self.branch_id)
             if row.get("kind") == ROOT_BINDING_KIND
