@@ -3,6 +3,7 @@
 from developmental_recursion.contracts import RecursionRefusal, digest
 
 from encounter import movement_evidence
+from mii import close_available
 
 SLOT = "p6_house"
 ROOMS = {
@@ -95,6 +96,11 @@ def establish(session):
     world.resources[SLOT] = {
         "root": root, "branch": session.branch_id, "source": SOURCE, "epoch": epoch,
         "rooms": ROOMS, "objects": OBJECTS,
+        "presentation_conditions": {
+            "grade": "SOURCEFREE_FIXTURE", "light": "lit",
+            "sightline": "unobstructed", "legibility": "readable",
+            "observer": session.meta["user_actor"],
+        },
         "history": {"strap-repair": facts(epoch)["strap-repair"]},
     }
     session.product._checkpoint(session.branch_id, world.clock, world)
@@ -145,7 +151,8 @@ def perform(session, action):
     item = house["objects"].get(target)
     if (not session.scene_open() or
             (moving and target != house["rooms"][room]["other"]) or
-            (not moving and (item is None or item["room"] != room))):
+            (not moving and (item is None or item["room"] != room)) or
+            (not moving and not close_available(house))):
         return {}, {"admission": "UNAVAILABLE", "performed": False, "observation": None}
 
     body = {"target": target}
