@@ -17,8 +17,8 @@
 - **E3:** versioned `exposures[]` records availability, offered/selected detail,
   rendered event IDs, selection basis, prior exposure, scope, request ID and
   policy. Entries are append-only in normal operation; duplicate requests do
-  not add a second exposure. Legacy/corrupt/scope-mismatched profiles reset to
-  neutral without touching world history.
+  not add a second exposure. Legacy/corrupt/scope-mismatched or hash-tampered
+  profiles reset to neutral without touching world history.
 - **E4:** recognition is rebuilt from committed user inspections and exact
   object evidence. Persisted `recognized` data is not trusted; forged rows do
   not render as earned. User-taught and corrected labels are separate acquired
@@ -48,7 +48,7 @@
 ## Executed tests
 
 ```text
-test_mii.py                         10 passed in 371.47s
+test_mii.py                         10 passed in 365.67s
 test_house.py                        8 passed in 427.55s
 test_actor_initiative.py + scene     7 passed in 204.81s
 test_actor_initiative_hostile.py    20 passed in 578.28s

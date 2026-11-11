@@ -180,6 +180,13 @@ def test_duplicate_exposure_and_unknown_control_target_are_bounded(tmp_path):
     assert recovered["mii"]["reset_reason"] == "CORRUPT_PROFILE"
     assert recovered["available"]
 
+    tampered = _profile(state)
+    tampered["exposures"][-1]["selected"] = "forged"
+    mii.save_profile(state / "p6_gaze.json", tampered)
+    reset = _run(state, "view")
+    assert reset["mii"]["reset_reason"] == "EXPOSURE_TAMPER"
+    assert reset["mii"]["exposure_count"] == 1
+
 
 def test_adaptive_hypotheses_compete_without_overriding_explicit_task(tmp_path):
     state = tmp_path / "world"

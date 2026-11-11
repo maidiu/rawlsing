@@ -101,6 +101,12 @@ def _normalize(profile, profile_scope):
     result.setdefault("corrections", [])
     result.setdefault("controls", [])
     result.setdefault("legacy_unknown", False)
+    for entry in result.get("exposures", []):
+        if not isinstance(entry, dict):
+            return default_profile(profile_scope, reset_reason="EXPOSURE_TAMPER")
+        body = {key: value for key, value in entry.items() if key != "entry_hash"}
+        if entry.get("entry_hash") != digest(body):
+            return default_profile(profile_scope, reset_reason="EXPOSURE_TAMPER")
     return result
 
 
