@@ -11,12 +11,27 @@
     "C3-FF-08",
     "C3-FF-10"
   ],
-  "negative_refusal": "role CONTEXT => CONTEXT_STRUCTURAL_AUTHORITY_HELD before P41",
+  "negative_refusal": "role CONTEXT => CONTEXT_STRUCTURAL_AUTHORITY_HELD before P41; R2 STRUCTURAL role without FF admission is NOT_RUN_S2; FF relation-severance A/B NOT_RUN_S2",
   "required_s2_or_native": "NOT_RUN_UNPROVED_NATIVE_SELECTION_AND_FIRST_ACTOR_READER",
   "artifact_path": "WORKER_RETURNS/VMESTYE_ZAK04_MCR_R1/DOWNSTREAM_READER_AND_OWNER_BOUNDARIES.tsv",
   "actual_s2_executed": false,
   "original_native_source_executed": false,
   "independent_receiving_completed": false,
   "conclusion": "COVERED_AT_DECLARED_GRADE_NOT_MCR_C_READY",
-  "source_body_static_assertions": "See STATIC_SOURCE_ASSERTIONS.json"
+  "source_body_static_assertions": "See STATIC_SOURCE_ASSERTIONS.json",
+  "frozen_source_code_blob": "fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d",
+  "pending_adversarial_cases": [
+    {
+      "id": "NEG-07",
+      "setup": "otherwise valid trusted P41/learned inputs, STRUCTURAL role, omit exact FF admission/transport",
+      "executed": false,
+      "expected_outcome": "UNKNOWN_PENDING_S2"
+    },
+    {
+      "id": "NEG-08",
+      "setup": "paired actual FF relation present vs severed with all R05 inputs fixed",
+      "executed": false,
+      "expected_outcome": "UNKNOWN_PENDING_S2"
+    }
+  ]
 }

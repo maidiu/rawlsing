@@ -40,5 +40,92 @@
   "total": 8,
   "native_tests_executed": 0,
   "scientific_tests_executed": 0,
-  "independent_review": false
+  "independent_review": false,
+  "r2_source_body_audit": {
+    "source_path": "rawlsing_next/pre553_universal_world_binding.py",
+    "blob": "fdda8b2f887bd1fb7703bc5fb8ce1fefc52ca09d",
+    "role_default": "STRUCTURAL",
+    "R05_field_and_request_declarations_not_consumed_in_selection": [
+      {
+        "name": "ff_structural_authority_ref",
+        "all_line_numbers": [
+          180,
+          344,
+          528
+        ],
+        "selection_references": []
+      },
+      {
+        "name": "ff_structural_admission",
+        "all_line_numbers": [
+          181,
+          345,
+          529
+        ],
+        "selection_references": []
+      },
+      {
+        "name": "relation_transport_ref",
+        "all_line_numbers": [
+          178,
+          342,
+          526
+        ],
+        "selection_references": []
+      },
+      {
+        "name": "relation_transport_authorized",
+        "all_line_numbers": [
+          179,
+          343,
+          527
+        ],
+        "selection_references": []
+      },
+      {
+        "name": "relation_ref",
+        "all_line_numbers": [
+          139,
+          162,
+          325,
+          489
+        ],
+        "selection_references": []
+      },
+      {
+        "name": "field_ref",
+        "all_line_numbers": [
+          191,
+          202,
+          214,
+          217,
+          222,
+          239,
+          242,
+          244,
+          247,
+          249,
+          254,
+          265,
+          278,
+          281,
+          301,
+          491
+        ],
+        "selection_references": []
+      }
+    ],
+    "selection_start_line": 819,
+    "interpretation": "NO_EXPLICIT_FIELD_NAME_USE_IN_R05_SELECTOR__NOT_EVIDENCE_OF_SUCCESSFUL_BYPASS",
+    "S2_forged_structural_executed": false,
+    "S2_dependency_severance_A_executed": false,
+    "S2_dependency_severance_B_executed": false,
+    "qualified_outcome": "NOT_RUN_S2",
+    "p5_blob_check": {
+      "path": "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/gaze.py",
+      "protected_blob": "554c3388193fad754412776de842e18f3ba28c6c",
+      "length": 40,
+      "frozen_R1_negative_already_full_sha": true
+    }
+  }
 }
