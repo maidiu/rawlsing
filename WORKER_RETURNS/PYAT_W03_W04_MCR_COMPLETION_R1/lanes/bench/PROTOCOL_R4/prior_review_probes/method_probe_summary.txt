@@ -1,0 +1,24 @@
+--- gate64 raw
+{'status': 'FAIL_OR_INCOMPLETE', 'pass': False, 'final_shape': False, 'cold_pass': True, 'warm_pass': False, 'cold_rss_improvement': 0.38985324285939715, 'repeat_wall_ratio': 1.4471204317004478, 'retention_decision': 'DO_NOT_RETAIN__NONBENEFICIAL_OR_REGRESSION_OR_MISMATCH', 'regressions': [], 'identity': {'host_match': True, 'profiles_match': True, 'repetitions_match': True, 'rows_match': True, 'schema': True, 'source_head_is_protected': True}}
+--- warm clock audit raw (full-matrix repeat warm)
+baseline_protected_4f_64_both.json {'parent_wall_seconds': 2.8039397379616275, 'worker_wall_seconds': 2.4279303340008482, 'firstconsumer_wall_seconds': 0.1173207729589194, 'normal_current_cold_build_wall_seconds': 1.0187454270198941, 'canonical_reopen_wall_seconds': 0.3325802650069818}
+current_81a4_64_both.json {'parent_wall_seconds': 2.723282056977041, 'worker_wall_seconds': 2.337595386081375, 'firstconsumer_wall_seconds': 0.12202858598902822, 'normal_current_cold_build_wall_seconds': 0.45536904397886246, 'canonical_reopen_wall_seconds': 0.6877955499803647}
+--- gate keys (cap absent)
+gate_keys ['baseline_source_head', 'cold_pass', 'cold_profile', 'cold_rss_improvement', 'cold_rss_target', 'cold_stage_peak_baseline_bytes', 'cold_stage_peak_current_bytes', 'final_shape', 'identity', 'pass', 'reason', 'regressions', 'repeat_profile', 'repeat_restart_wall_baseline_seconds', 'repeat_restart_wall_current_seconds', 'repeat_wall_ratio', 'repeat_wall_target', 'retention_decision', 'status', 'warm_pass']
+identity {'schema': True, 'source_head_is_protected': True, 'rows_match': True, 'profiles_match': True, 'repetitions_match': True, 'host_match': True}
+pass_without_actual_events_commands_hash see gate_identity_and_cap_probe.txt (selected pass true without events/commands/hash)
+cap_fields_in_gate []
+--- cap falsifier
+{'status': 'BLOCKED_EXACT_DEPENDENCY', 'blocked_reason': 'CHILD_RSS_EXCEEDED_AUTHORIZED_CAP_BEFORE_COMPLETION', 'cap_bytes': 8388608, 'cap_enforced': True, 'cap_peak_sampled_bytes': 15986688, 'returncode': -9}
+--- clean vs inherited-policy cold 16
+clean_cold_16.json {'derived_cache_files': 0, 'canonical_files': None, 'derived_status': 'NO_GOVERNED_DERIVED_CACHE_WRITE', 'cold_metric': 56971264, 'process_peak': 56983552}
+env_cold_16b.json {'derived_cache_files': 0, 'canonical_files': None, 'derived_status': 'NO_GOVERNED_DERIVED_CACHE_WRITE', 'cold_metric': 102768640, 'process_peak': 102780928}
+--- derived envelope same-size/mtime corrupt
+file c11-events-e.parquet
+before_size 22412 before_mtime_ns 1794369225243866887
+after_size 22412 after_mtime_ns 1794369225243866887
+derived_hit True
+derived_write False
+status HIT_EXACT_ENVELOPE_AND_MTIME
+release_refs_equal True
+event_count 32
