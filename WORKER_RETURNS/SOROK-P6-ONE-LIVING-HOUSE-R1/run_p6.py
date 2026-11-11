@@ -6,6 +6,7 @@ import fcntl
 import json
 from pathlib import Path
 import sys
+import time
 
 RETURNS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RETURNS / "SOROK-P5-CONTINUOUS-EXPERIENCE-R1"))
@@ -14,7 +15,7 @@ from run_p5 import WORKSHOP_SEED, act, advance_for_action, check_source, invitat
 from developmental_recursion.contracts import RecursionRefusal
 from attention import register
 from gaze import render
-from house import close_on_repair, derive_recognition, establish, establish_gallery, perform, read_house, scene
+from house import close_on_repair, derive_recognition, establish, establish_gallery, establish_symbolic, perform, read_house, scene
 import mii
 
 from outward import OPERATIONS, establish_demo_conditions, perform as perform_outward
@@ -28,7 +29,10 @@ def PACE(fanin, action):
     return advance_for_action(fanin, action, on_repair=close_on_repair, mode=mode)
 
 
-def experience(state, args, *, interpret=None, realize=None, actor_context=None, provider_mode="INJECTED"):
+def experience(state, args, *, interpret=None, realize=None, actor_context=None,
+               provider_mode="INJECTED", timings=None):
+    started = time.perf_counter()
+    cursor = started
     command = args.command
     if command == "new":
         state.mkdir(parents=True, exist_ok=True)
@@ -40,6 +44,8 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
             def establish_scene(session):
                 if getattr(args, "scene", "house") == "gallery":
                     establish_gallery(session)
+                elif getattr(args, "scene", "house") == "symbolic":
+                    establish_symbolic(session)
                 else:
                     establish(session)
                     if getattr(args, "situated_house", False):
@@ -126,6 +132,10 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
             user_visible_ids = set(session.user_perceived_ids())
             frame = scene(session)
             profile = mii.load_profile(gaze_file, session)
+            if timings is not None:
+                now = time.perf_counter()
+                timings["initialization_s"] = now - cursor
+                cursor = now
         finally:
             owner.close()
         latest = ledger["turns"][-1] if ledger["turns"] else None
@@ -141,10 +151,18 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
             register(profile, prior, args.target, len(ledger["turns"]))
         mii.merge_recognition(profile, derive_recognition(
             committed_objects, ledger["turns"], authoritative_events, user_visible_ids))
+        if timings is not None:
+            now = time.perf_counter()
+            timings["ledger_s"] = now - cursor
+            cursor = now
         objects = frame.pop("objects")
         detail_candidates = mii.candidate_details(
             committed_house, frame["room"], objects, session.meta["user_actor"]
         )
+        if timings is not None:
+            now = time.perf_counter()
+            timings["availability_s"] = now - cursor
+            cursor = now
         selected, basis = mii.select_detail(
             objects, profile, command=command,
             target=getattr(args, "target", None), offered=detail_candidates,
@@ -159,8 +177,8 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
         rendered = [{"kind": "event", "event_id": row["event_id"]} for row in narration]
         exposure = mii.record_exposure(
             profile, turn=len(ledger["turns"]), clock=view["clock"],
-            available=sorted(objects), offered=offered, selected=selected,
-            rendered=rendered, basis=basis,
+            available=sorted(objects), candidates=detail_candidates,
+            offered=offered, selected=selected, rendered=rendered, basis=basis,
             request_id=getattr(args, "request_id", None),
             context={"room": frame["room"], "command": command},
         )
@@ -170,6 +188,10 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                 profile, target=args.target, prior_offered=prior_offered,
                 command=command, turn=len(ledger["turns"]),
             )
+        if timings is not None:
+            now = time.perf_counter()
+            timings["recognition_update_s"] = now - cursor
+            cursor = now
         mii.save_profile(gaze_file, profile)
         recognized = mii.recognized_for(profile, selected)
         mii_surface = mii.surface(
@@ -178,6 +200,10 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
             offered=offered, selected=selected, basis=basis, narration=narration,
             recognition=profile["recognized"],
         )
+        if timings is not None:
+            now = time.perf_counter()
+            timings["composition_s"] = now - cursor
+            cursor = now
         result = {"clock": view["clock"], **frame, "available": sorted(objects),
                   "detail": objects.get(selected),
                   "recognized_identity": (recognized["identity"] if recognized else None),
@@ -190,6 +216,8 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                   "invitation": view["invitation"]}
         if outcome is not None:
             result["admission"] = outcome["admission"]
+        if timings is not None:
+            timings["total_s"] = time.perf_counter() - started
         return result
 
 
@@ -200,7 +228,7 @@ def main():
     initialize = commands.add_parser("new")
     initialize.add_argument("--situated-house", action="store_true",
                             help="Establish the sourcefree workshop sensory conditions.")
-    initialize.add_argument("--scene", choices=("house", "gallery"), default="house",
+    initialize.add_argument("--scene", choices=("house", "gallery", "symbolic"), default="house",
                             help="Select the sourcefree presentation fixture.")
     commands.add_parser("view")
     wait = commands.add_parser("wait")

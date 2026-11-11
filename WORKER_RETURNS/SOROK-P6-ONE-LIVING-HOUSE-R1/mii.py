@@ -41,6 +41,14 @@ def scope(session):
     }
 
 
+def _scope_key(profile_scope):
+    return "|".join((
+        str(profile_scope.get("root")),
+        str(profile_scope.get("branch")),
+        str(profile_scope.get("user")),
+    ))
+
+
 def default_profile(profile_scope, *, reset_reason=None):
     result = {
         "schema": SCHEMA,
@@ -101,6 +109,7 @@ def _normalize(profile, profile_scope):
     result.setdefault("corrections", [])
     result.setdefault("controls", [])
     result.setdefault("legacy_unknown", False)
+    result.pop("profiles", None)
     for entry in result.get("exposures", []):
         if not isinstance(entry, dict):
             return default_profile(profile_scope, reset_reason="EXPOSURE_TAMPER")
@@ -112,21 +121,44 @@ def _normalize(profile, profile_scope):
 
 def load_profile(path, session):
     path = Path(path)
+    current = scope(session)
     if not path.is_file():
-        return default_profile(scope(session))
+        return default_profile(current)
     try:
         raw = json.loads(path.read_text(encoding="utf8"))
     except (OSError, ValueError):
-        return default_profile(scope(session), reset_reason="CORRUPT_PROFILE")
-    return _normalize(raw, scope(session))
+        return default_profile(current, reset_reason="CORRUPT_PROFILE")
+    if isinstance(raw, dict) and raw.get("schema") == SCHEMA and raw.get("scope") == current:
+        return _normalize(raw, current)
+    if isinstance(raw, dict) and raw.get("schema") != SCHEMA:
+        return _normalize(raw, current)
+    store = raw.get("profiles") if isinstance(raw, dict) else None
+    candidate = store.get(_scope_key(current)) if isinstance(store, dict) else None
+    if isinstance(candidate, dict):
+        return _normalize(candidate, current)
+    return default_profile(current, reset_reason="SCOPE_MISMATCH")
 
 
 def save_profile(path, profile):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
+    profiles = {}
+    if path.is_file():
+        try:
+            previous = json.loads(path.read_text(encoding="utf8"))
+        except (OSError, ValueError):
+            previous = {}
+        if isinstance(previous, dict):
+            if isinstance(previous.get("profiles"), dict):
+                profiles.update(deepcopy(previous["profiles"]))
+            elif previous.get("schema") == SCHEMA and isinstance(previous.get("scope"), dict):
+                profiles[_scope_key(previous["scope"])] = deepcopy(previous)
+    profiles[_scope_key(profile["scope"])] = deepcopy(profile)
+    document = deepcopy(profile)
+    document["profiles"] = profiles
     temporary = path.with_name(path.name + ".tmp")
     temporary.write_text(
-        json.dumps(profile, sort_keys=True, indent=2, ensure_ascii=False) + "\n",
+        json.dumps(document, sort_keys=True, indent=2, ensure_ascii=False) + "\n",
         encoding="utf8",
     )
     temporary.replace(path)
@@ -140,7 +172,16 @@ def presentation_conditions(house):
     return deepcopy(conditions)
 
 
-def glance_available(house, user):
+def _object_condition(house, target, feature):
+    conditions = presentation_conditions(house)
+    objects = conditions.get("objects")
+    row = objects.get(target) if isinstance(objects, dict) else None
+    if isinstance(row, dict) and feature in row:
+        return row.get(feature)
+    return None
+
+
+def _base_glance(house, user):
     conditions = presentation_conditions(house)
     return (
         conditions.get("grade") == "SOURCEFREE_FIXTURE"
@@ -150,7 +191,7 @@ def glance_available(house, user):
     )
 
 
-def close_available(house, user):
+def _base_close(house, user):
     conditions = presentation_conditions(house)
     return (
         conditions.get("grade") == "SOURCEFREE_FIXTURE"
@@ -161,13 +202,30 @@ def close_available(house, user):
     )
 
 
+def glance_available(house, user, target=None):
+    if not _base_glance(house, user):
+        return False
+    if target is None:
+        return True
+    override = _object_condition(house, target, "glance")
+    return override not in {"UNAVAILABLE", "UNKNOWN"}
+
+
+def close_available(house, user, target=None):
+    if not _base_close(house, user):
+        return False
+    if target is None:
+        return True
+    override = _object_condition(house, target, "close")
+    return override not in {"UNAVAILABLE", "UNKNOWN"}
+
+
 def candidate_details(house, room, objects, user):
-    if not glance_available(house, user):
-        return {}
     return {
         ref: text for ref, text in sorted(objects.items())
         if ref in house.get("objects", {})
         and house["objects"][ref].get("room") == room
+        and glance_available(house, user, ref)
     }
 
 
@@ -204,8 +262,8 @@ def select_detail(objects, profile, *, command=None, target=None, offered=None):
     return (selected, "NEUTRAL_AMBIENT") if selected else (None, "NONE")
 
 
-def record_exposure(profile, *, turn, clock, available, offered, selected,
-                    rendered, basis, request_id=None, context=None):
+def record_exposure(profile, *, turn, clock, available, candidates, offered,
+                    selected, rendered, basis, request_id=None, context=None):
     request_id = request_id if isinstance(request_id, str) else None
     for entry in profile["exposures"]:
         if (request_id is not None and entry.get("request_id") == request_id
@@ -224,6 +282,7 @@ def record_exposure(profile, *, turn, clock, available, offered, selected,
         "request_id": request_id,
         "scope": deepcopy(profile["scope"]),
         "available": sorted(available),
+        "candidates": deepcopy(candidates or {}),
         "offered": deepcopy(offered),
         "selected": selected,
         "rendered": deepcopy(rendered),

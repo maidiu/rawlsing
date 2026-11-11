@@ -27,10 +27,11 @@ mii-correct-label --target TARGET --label LABEL
 mii-correct-attention --target TARGET --weight N
 ```
 
-Use `new --scene gallery` for the materially different sourcefree gallery
-fixture. Neutral mode is the default. Adaptive mode is explicit and only
-updates from performed `look` actions; system-offered and independently chosen
-targets receive different evidence weight.
+Use `new --scene gallery` or `new --scene symbolic` for materially different
+sourcefree fixtures. Neutral mode is the default. Adaptive mode is explicit and
+only updates from performed `look` actions; system-offered and independently
+chosen targets receive different evidence weight. Exposure records retain the
+full eligible candidate map separately from the selected/offered detail.
 
 ## Interfaces
 

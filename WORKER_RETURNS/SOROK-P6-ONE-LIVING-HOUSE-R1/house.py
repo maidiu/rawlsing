@@ -58,6 +58,28 @@ GALLERY_SOURCE = digest({
     "history": GALLERY_HISTORY,
 })
 
+SYMBOLIC_ROOMS = {
+    "salon": {"other": "alcove", "line": "A quiet salon opens toward a small alcove."},
+    "alcove": {"other": "salon", "line": "The salon is behind you. A shelf fills the alcove."},
+}
+SYMBOLIC_OBJECTS = {
+    "watch": {
+        "room": "salon", "glance": "A steel watch lies open on a velvet cloth.",
+        "close": "The watch carries an engraved crest.",
+        "specialist_identity": "the engraved steel watch",
+        "marking": "engraved-crest", "evidence": "The watch carries an engraved crest.",
+    },
+    "icon": {
+        "room": "alcove", "glance": "A small painted icon rests on a shelf.",
+        "close": "The icon's border is worn smooth.",
+    },
+}
+SYMBOLIC_HISTORY = ()
+SYMBOLIC_SOURCE = digest({
+    "rooms": SYMBOLIC_ROOMS, "objects": SYMBOLIC_OBJECTS,
+    "history": SYMBOLIC_HISTORY,
+})
+
 
 def facts_for(history, objects, epoch):
     result = {}
@@ -121,6 +143,8 @@ def _material(source):
         return ROOMS, OBJECTS, HISTORY, True
     if source == GALLERY_SOURCE:
         return GALLERY_ROOMS, GALLERY_OBJECTS, GALLERY_HISTORY, False
+    if source == SYMBOLIC_SOURCE:
+        return SYMBOLIC_ROOMS, SYMBOLIC_OBJECTS, SYMBOLIC_HISTORY, False
     return None
 
 
@@ -134,7 +158,7 @@ def establish(session):
         "presentation_conditions": {
             "grade": "SOURCEFREE_FIXTURE", "light": "lit",
             "sightline": "unobstructed", "legibility": "readable",
-            "observer": session.meta["user_actor"],
+            "observer": session.meta["user_actor"], "objects": {},
         },
         "history": {"strap-repair": facts(epoch)["strap-repair"]},
     }
@@ -153,7 +177,26 @@ def establish_gallery(session):
         "presentation_conditions": {
             "grade": "SOURCEFREE_FIXTURE", "light": "lit",
             "sightline": "unobstructed", "legibility": "readable",
-            "observer": user,
+            "observer": user, "objects": {},
+        },
+        "history": {},
+    }
+    session.product._checkpoint(session.branch_id, world.clock, world)
+
+
+def establish_symbolic(session):
+    world = session.world()
+    root = session.read_root()["root_hash"]
+    epoch = world.clock
+    user = session.meta["user_actor"]
+    world.positions[user] = "salon"
+    world.resources[SLOT] = {
+        "root": root, "branch": session.branch_id, "source": SYMBOLIC_SOURCE,
+        "epoch": epoch, "rooms": SYMBOLIC_ROOMS, "objects": SYMBOLIC_OBJECTS,
+        "presentation_conditions": {
+            "grade": "SOURCEFREE_FIXTURE", "light": "lit",
+            "sightline": "unobstructed", "legibility": "readable",
+            "observer": user, "objects": {},
         },
         "history": {},
     }
@@ -214,7 +257,7 @@ def perform(session, action):
     if (not session.scene_open() or
             (moving and target != house["rooms"][room]["other"]) or
             (not moving and (item is None or item["room"] != room)) or
-            (not moving and not close_available(house, session.meta["user_actor"]))):
+            (not moving and not close_available(house, session.meta["user_actor"], target))):
         return {}, {"admission": "UNAVAILABLE", "performed": False, "observation": None}
 
     body = {"target": target}

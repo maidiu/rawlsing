@@ -8,13 +8,14 @@ import pytest
 
 import mii
 import run_p6
+import house
 from run_p6 import experience, open_owner, read_house
 from developmental_recursion.contracts import RecursionRefusal
 
 
-def _run(state, command, **kwargs):
+def _run(state, command, interpret=None, **kwargs):
     kwargs.setdefault("request_id", None)
-    return experience(state, Namespace(command=command, **kwargs))
+    return experience(state, Namespace(command=command, **kwargs), interpret=interpret)
 
 
 def _profile(state):
@@ -30,6 +31,10 @@ def test_neutral_exposure_earned_recognition_and_cold_replay(tmp_path):
     assert profile["learning_enabled"] is False
     assert profile["scope"]["user"] == "U"
     assert profile["exposures"][-1]["available"] == ["bench", "mug"]
+    assert set(profile["exposures"][-1]["candidates"]) == {"bench", "mug"}
+    assert list(profile["exposures"][-1]["offered"]) == [
+        profile["exposures"][-1]["selected"]
+    ]
     assert profile["exposures"][-1]["selection_basis"] == "NEUTRAL_AMBIENT"
     assert profile["exposures"][-1]["entry_hash"]
     assert opening["mii_surface"]["schema"] == mii.SURFACE_SCHEMA
@@ -227,6 +232,191 @@ def test_gallery_fixture_is_not_hardcoded_to_house_objects(tmp_path):
     profile = _profile(state)
     assert profile["recognized"]["hinge"]["marking"] == "stamped-mark-g-17"
     assert profile["exposures"][-1]["available"] == ["hinge"]
+
+
+def test_committed_house_source_denial_and_restore(tmp_path, monkeypatch):
+    state = tmp_path / "world"
+    _run(state, "new")
+    with monkeypatch.context() as patch:
+        patch.setattr(house, "SOURCE", "severed")
+        with pytest.raises(RecursionRefusal, match="P6_HOUSE_SOURCE_OR_ROOT_MISMATCH"):
+            _run(state, "view")
+    restored = _run(state, "view")
+    assert restored["available"] == ["bench", "mug"]
+
+
+def test_per_object_source_qualification(tmp_path, monkeypatch):
+    original = run_p6.establish
+
+    def partial(session):
+        original(session)
+        world, resource = read_house(session)
+        resource["presentation_conditions"]["objects"] = {
+            "mug": {"glance": "UNKNOWN", "close": "UNKNOWN"},
+        }
+        session.product._checkpoint(session.branch_id, world.clock, world)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(run_p6, "establish", partial)
+        state = tmp_path / "partial"
+        opening = _run(state, "new")
+        assert opening["available"] == ["bench", "mug"]
+        assert opening["mii_surface"]["optional"]["target"] == "bench"
+        refused = _run(state, "look", target="mug")
+        assert refused["admission"] == "UNAVAILABLE"
+        admitted = _run(state, "look", target="bench")
+        assert admitted["admission"] == "ADMITTED"
+
+
+def test_stale_evidence_decay_and_correction_change_selection():
+    profile = mii.default_profile({"root": "r", "branch": "b", "user": "U"})
+    profile["mode"] = "ADAPTIVE"
+    profile["learning_enabled"] = True
+    profile["hypotheses"] = {
+        "a": {"target": "a", "weight": 5, "observations": 2,
+              "last_turn": 1, "uncertainty": "LOW"},
+        "b": {"target": "b", "weight": 2, "observations": 1,
+              "last_turn": 1, "uncertainty": "HIGH"},
+    }
+    mii.update_attention(
+        profile, target="b", prior_offered={}, command="look", turn=5
+    )
+    assert profile["hypotheses"]["a"]["weight"] == 4
+    assert profile["hypotheses"]["b"]["weight"] == 4
+    profile, _ = mii.control(
+        profile, "mii-correct-attention",
+        Namespace(target="a", weight=0), turn=6, clock=6,
+    )
+    selected, basis = mii.select_detail(
+        {"a": "", "b": ""}, profile, offered={"a": "", "b": ""}
+    )
+    assert selected == "b"
+    assert basis == "ADAPTIVE_HYPOTHESIS"
+
+
+def test_actual_p2_branch_fork_isolates_derivative_scope(tmp_path):
+    state = tmp_path / "world"
+    _run(state, "new")
+    _run(state, "go", target="living room")
+    _run(state, "look", target="sandals")
+    parent_file = _profile(state)
+    parent_count = len(parent_file["exposures"])
+
+    owner = open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        parent_scope = mii.scope(session)
+        parent = session.branch_id
+        session.fork_alt("mii-child")
+        child = session.branch_id
+        child_scope = mii.scope(session)
+        child_lineage = session.meta["branch_lineage"]
+        assert child != parent
+        child_profile = mii.load_profile(state / "p6_gaze.json", session)
+        assert child_profile["scope"] == child_scope
+        assert child_profile["exposures"] == []
+        mii.record_exposure(
+            child_profile, turn=99, clock=session.clock(),
+            available=["bench"], candidates={"bench": "The bench."},
+            offered={"bench": "The bench."}, selected="bench",
+            rendered=[], basis="NEUTRAL_AMBIENT",
+            context={"room": "workshop"},
+        )
+        mii.save_profile(state / "p6_gaze.json", child_profile)
+
+        session.product.use(parent)
+        session.branch_id = parent
+        session.meta["branch_id"] = parent
+        session.meta["branch_lineage"] = None
+        session._save_join_meta()
+        parent_again = mii.load_profile(state / "p6_gaze.json", session)
+        assert parent_again["scope"] == parent_scope
+        assert len(parent_again["exposures"]) == parent_count
+        assert all(entry.get("turn") != 99 for entry in parent_again["exposures"])
+
+        session.product.use(child)
+        session.branch_id = child
+        session.meta["branch_id"] = child
+        session.meta["branch_lineage"] = child_lineage
+        session._save_join_meta()
+        child_again = mii.load_profile(state / "p6_gaze.json", session)
+        assert child_again["scope"] == child_scope
+        assert child_again["exposures"][-1]["selected"] == "bench"
+    finally:
+        owner.close()
+    archived = json.loads((state / "p6_gaze.json").read_text())["profiles"]
+    assert parent in json.dumps(archived)
+    assert child in json.dumps(archived)
+
+
+def test_interrupted_exposure_write_replays_coherently(tmp_path, monkeypatch):
+    state = tmp_path / "world"
+    _run(state, "new")
+    _run(state, "go", target="living room")
+    real_save = mii.save_profile
+
+    def interrupted(path, profile):
+        raise RuntimeError("injected exposure write failure")
+
+    monkeypatch.setattr(mii, "save_profile", interrupted)
+    with pytest.raises(RuntimeError, match="injected exposure write failure"):
+        _run(state, "look", target="sandals")
+    monkeypatch.setattr(mii, "save_profile", real_save)
+
+    view = _run(state, "view")
+    assert view["recognition"]["sandals"]["event_id"]
+    assert (state / "p6_gaze.json").is_file()
+    assert len(json.loads((state / "p6_gaze.json").read_text())["exposures"]) >= 1
+
+
+def test_symbolic_fixture_does_not_infer_status_or_belief(tmp_path):
+    state = tmp_path / "symbolic"
+    opening = _run(state, "new", scene="symbolic")
+    assert opening["available"] == ["watch"]
+    watch = _run(state, "look", target="watch")
+    assert watch["recognized_identity"] == "the engraved steel watch"
+    text = json.dumps(watch).lower()
+    for token in ("status seeker", "desire", "vulgar", "admirable",
+                  "believes", "worships", "sacred truth", "religious belief"):
+        assert token not in text
+    _run(state, "go", target="alcove")
+    icon = _run(state, "look", target="icon")
+    assert any("border is worn smooth" in row["text"] for row in icon["narration"])
+    assert "religious belief" not in json.dumps(icon).lower()
+
+
+def test_user_derivative_does_not_enter_actor_packet_or_action(tmp_path):
+    packets = []
+
+    def interpret(packet):
+        packets.append(packet)
+        return {"attention": "uncertain", "interpretation": "Cross the doorway.",
+                "action": "visit_adjacent_room", "cue_event_id": None,
+                "channel": None}
+
+    import shutil
+
+    state = tmp_path / "world"
+    baseline = tmp_path / "baseline"
+    _run(state, "new", situated_house=True)
+    shutil.copytree(state, baseline)
+    _run(state, "wait", interpret, duration=2, request_id="visit")
+    first_turn = json.loads((state / "p4_receipts.json").read_text())["turns"][-1]
+    first_move = first_turn["receipt"]["situated"]["movement"]
+
+    shutil.rmtree(state)
+    shutil.copytree(baseline, state)
+    _run(state, "mii-enable-learning")
+    _run(state, "mii-learn-label", target="sandals", label="Nadia's favourite")
+    _run(state, "wait", interpret, duration=2, request_id="visit")
+    second_turn = json.loads((state / "p4_receipts.json").read_text())["turns"][-1]
+    second_move = second_turn["receipt"]["situated"]["movement"]
+
+    assert first_move["event_id"] == second_move["event_id"]
+    assert first_move["destination"] == second_move["destination"] == "living room"
+    assert len(packets) == 2
+    assert all("mii" not in json.dumps(packet).lower() for packet in packets)
+    assert all("favourite" not in json.dumps(packet).lower() for packet in packets)
 
 
 def test_adaptive_controls_are_explicit_and_do_not_touch_world_history(tmp_path):

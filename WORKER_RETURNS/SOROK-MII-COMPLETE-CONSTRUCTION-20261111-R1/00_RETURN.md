@@ -1,24 +1,29 @@
 # SOROK MII complete construction — sourcefree checkpoint
 
-**Status:** `IN_PROGRESS_NOT_TERMINAL__E1_E10_SOURCEFREE_IMPLEMENTED__INDEPENDENT_RECEIVING_PENDING`
+**Status:** `SOURCEFREE_ENGINEERING_COMPLETE__INDEPENDENT_RECEIVING_PENDING`
 **Branch:** `agent/sorok-mii-complete-construction-r1`
 **Start:** `9366b42a61a383808071106d70aa1255a769390a`
-**Implementation commit:** reported in the HQ response after this return commit.
+**Final sourcefree checkpoint commit:** reported in the HQ response after this return commit.
 
 ## What is implemented
 
 - **E1:** P6/P5/P4 committed observations and exact speech remain the source;
   no second world. Source/root/branch checks remain in `read_house` and the
-  existing P4/P6 path.
+  existing P4/P6 path; committed house source denial refuses and restores
+  through the real reader.
 - **E2:** viewer-specific `presentation_conditions.observer` gates glance and
-  close availability. Occlusion removes optional detail while preserving the
-  object's existence/affordance. `look` refuses close detail without the
-  qualified viewer source. House and gallery fixtures are both supported.
-- **E3:** versioned `exposures[]` records availability, offered/selected detail,
-  rendered event IDs, selection basis, prior exposure, scope, request ID and
-  policy. Entries are append-only in normal operation; duplicate requests do
-  not add a second exposure. Legacy/corrupt/scope-mismatched or hash-tampered
-  profiles reset to neutral without touching world history.
+  close availability. Per-object `presentation_conditions.objects` can qualify
+  one feature/object separately. Occlusion removes optional detail while
+  preserving the object's existence/affordance. `look` refuses close detail
+  without the qualified viewer source. House, gallery and symbolic fixtures are
+  supported.
+- **E3:** versioned `exposures[]` records availability, the full eligible
+  `candidates` map, the actually `offered` detail, `selected`, rendered event
+  IDs, selection basis, prior exposure, scope, request ID and policy. Entries
+  are append-only in normal operation; duplicate requests do not add a second
+  exposure. Legacy/corrupt/scope-mismatched/hash-tampered profiles reset to
+  neutral without touching world history. Actual P2 fork and interrupted
+  exposure-write replay are exercised.
 - **E4:** recognition is rebuilt from committed user inspections and exact
   object evidence. Persisted `recognized` data is not trusted; forged rows do
   not render as earned. User-taught and corrected labels are separate acquired
@@ -38,29 +43,35 @@
   `mii-correct-attention` are available. Reset/export/control operations do not
   rewrite the P4 ledger or actor state.
 - **E9:** `measure_mii.py` produced `measurements.json`: cold CLI n=13,
-  p50 5.617 s, p95 9.310 s, max 12.199 s; warm import n=5, p50 2.929 s,
-  p95 2.941 s, max 7.673 s; provider calls/tokens 0; peak child RSS 49.652 MiB;
+  p50 6.340 s, p95 9.688 s, max 12.873 s; warm import n=5, p50 3.101 s,
+  p95 3.106 s, max 7.629 s; provider calls/tokens 0; peak child RSS 50.730 MiB;
   state 1,600,669 bytes; gallery fixture look returned
-  `the stamped brass hinge`. Cold replay failures: 0.
+  `the stamped brass hinge`. Cold replay failures: 0. Component warm p50:
+  initialization 3.095 s, availability 0.000042 s, ledger 0.001862 s,
+  recognition/update 0.000168 s, composition 0.002021 s. Raw component
+  samples are in `measurements.json`; cold CLI component timing is explicitly
+  not separated because each command is a new process.
 - **E10:** runnable P6 path, this README, versioned schemas, controls, tests and
   measurement artifact are included.
 
 ## Executed tests
 
 ```text
-test_mii.py                         10 passed in 365.67s
-test_house.py                        8 passed in 427.55s
-test_actor_initiative.py + scene     7 passed in 204.81s
-test_actor_initiative_hostile.py    20 passed in 578.28s
-test_recognition_surface.py          5 passed in 223.95s
-test_gaze_proof.py                   1 passed in 78.36s
+test_mii.py                         17 passed in 514.29s
+test_house.py                        8 passed in 447.19s
+test_actor_initiative.py + scene     7 passed in 207.30s
+test_actor_initiative_hostile.py    20 passed in 556.50s
+test_recognition_surface.py          5 passed in 253.49s
+test_gaze_proof.py                   1 passed in 88.65s
 ```
 
-The early-review regressions are corrected:
+The early-review and independent R2 regressions are corrected:
 - foreign `observer=B` now yields no optional detail for user `U`;
 - forged persisted recognition no longer renders as `COMMITTED_INSPECTION`;
 - an omitted available target gets independent weight `2`; the previously
-  offered target gets weight `1`.
+  offered target gets weight `1`;
+- durable exposure records preserve full `candidates` separately from the
+  actually `offered`/`selected` detail.
 
 ## Original 44 mapping
 
@@ -93,11 +104,11 @@ PASS_SCOPED unless marked otherwise. Evidence abbreviations: `MII` =
 | G06 | MII omitted available look; existing ingress |
 | G07 | MII prior-offered vs independent evidence |
 | G08 | MII competing adaptive hypotheses |
-| M01 | PASS_SCOPED_BY_ABSENCE: surface copies owner text; no status inference path |
-| M02 | PASS_SCOPED_BY_ABSENCE: no devotional-belief inference path |
+| M01 | MII symbolic fixture: watch identified; no status/desire/vulgar/admirable inference |
+| M02 | MII symbolic fixture: icon detail; no religious-belief assertion |
 | M03 | MII neutral bench/mug practical detail |
-| M04 | MIII actor action independent of user model; no user-truth write |
-| M05 | MIII independent Nadia action/hostile controls |
+| M04 | MII user-derivative isolation: same actor movement with/without false user label |
+| M05 | MII user-derivative isolation: Nadia action unchanged by private user model |
 | M06 | GAZE/MII hidden history not used for salience |
 | N01 | MII derivative profile separate; no essence fields |
 | N02 | MII controls leave P4/actor ledger unchanged |
@@ -108,25 +119,21 @@ PASS_SCOPED unless marked otherwise. Evidence abbreviations: `MII` =
 | N07 | MII corrupt/reset profile leaves neutral encounter usable |
 | N08 | MII has no retention-optimization selection path |
 | N09 | MII no model call; surface only owner facts |
-| N10 | MII scope mismatch reset; no cross-branch exposure reuse |
+| N10 | MII actual P2 fork: parent/child derivative scopes isolated; no cross-branch exposure reuse |
 | T01 | MII measurement provider calls 0; warm p50 2.929 s |
-| T02 | MII cold profile reopen/exposure hash |
-| T03 | MII duplicate request/exposure immutability |
+| T02 | MII cold profile reopen/exposure hash; actual P2 fork scope replay |
+| T03 | MII duplicate request/exposure immutability; interrupted write replay |
 | T04 | MII taught label vs earned inspection |
 | T05 | MII surface/exposure provenance |
 
-## Limitations / finite remaining work
+## Limitations / remaining authority
 
 - **NOT_RUN:** native science, live model/provider, human validity, protected
   merge, production privacy approval, independent receiving.
-- Actual P2 branch-fork integration is represented by derivative scope mismatch
-  reset, not a separate real fork test; a dedicated fork test remains desirable.
-- M01/M02 are scoped by absence of any symbolic/status/devotional inference path;
-  dedicated prestige/devotional fixture courts were not executed.
-- M04/M05 use the existing independent MIII actor courts as evidence; no new
-  user-interpretation fixture was added.
-- E3 interrupted-write recovery is covered by corrupt-profile reset and
-  duplicate-request idempotence, not a forced crash after exposure append.
+- The sourcefree engineering scope is complete; the remaining gates are
+  independent receiving and the separately authorized native/human/production
+  authorities. No known sourcefree behavioral gap is represented as a PASS
+  by absence.
 
 ## PROGRAMMA_DELTA
 
@@ -134,5 +141,5 @@ PASS_SCOPED unless marked otherwise. Evidence abbreviations: `MII` =
   checkpoint committed after this return.
 - **Function:** viewer-qualified finite surface, exposure ledger, earned/taught
   recognition, neutral/adaptive derivative controls, house and gallery fixtures.
-- **Verdict:** `E1_E10_SOURCEFREE_IMPLEMENTED__44_MAPPED__REMAINING_FIXTURES_AND_INDEPENDENT_RECEIVING`.
+- **Verdict:** `E1_E10_SOURCEFREE_ENGINEERING_COMPLETE__44_EXECUTED_EVIDENCE__INDEPENDENT_RECEIVING_PENDING`.
 - **Limits:** sourcefree only; no native/science/human/production/protected claim.

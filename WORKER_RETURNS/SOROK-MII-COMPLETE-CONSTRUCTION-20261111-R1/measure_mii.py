@@ -93,15 +93,19 @@ def main():
     gallery_look = _cli(gallery, "look", "hinge", env=env)
 
     warm = []
+    components = []
     warm_state = base / "warm"
     for index in range(5):
         started = time.perf_counter()
+        timings = {}
         run_p6.experience(
             warm_state,
             Namespace(command="new" if index == 0 else "view", request_id=None,
                       scene="house"),
+            timings=timings,
         )
         warm.append(time.perf_counter() - started)
+        components.append(timings)
     last_surface = run_p6.experience(
         warm_state, Namespace(command="view", request_id=None, scene="house")
     )
@@ -116,6 +120,14 @@ def main():
         "provider_tokens": 0,
         "cold_cli": _summary(cold),
         "warm_import": _summary(warm),
+        "component_timings": {
+            key: _summary([
+                row[key] for row in components if key in row
+            ])
+            for key in ("initialization_s", "availability_s", "ledger_s",
+                        "recognition_update_s", "composition_s", "total_s")
+        },
+        "cold_component_timings": "NOT_MEASURED_SEPARATE_CLI_PROCESS",
         "commands": commands,
         "cold_replay_failures": sum(1 for row in commands if row["exit"] != 0),
         "features": {
