@@ -346,7 +346,7 @@
       "lane": "bench-economic-repair",
       "session": "ses_b998af9086264002a86ee57b6e",
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-bench-integrated-r2",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "RETURNED_INTEGRATED_PENDING_INDEPENDENT_METHOD_RECEIVING",
       "candidate_base": "07f37e47893fdbc956766cea7d3ef550f064d8c7",
       "scope": "ECON-M1..M5 residual method defects; paired protocol/falsifiers; small only",
       "repair_round": 2,
@@ -364,6 +364,10 @@
           "streamed": 1794366537338,
           "completed": 1794366537482
         }
+      },
+      "candidate": "1d7007a34fdf9cb7cdd30ec581e7d94523047da7",
+      "terminal": {
+        "exit_code": 0
       }
     },
     {
@@ -412,10 +416,19 @@
       "source_candidate": "bcc176d7719e57d1e88b7f395f0280f72b0a74c5",
       "scope": "Independent exact CC-F01 recheck, not whole MCR receiving",
       "pid": 79991
+    },
+    {
+      "job": "pyat-w03-w04-mcr-economic-method-focused-recheck-r1",
+      "session": "ses_6857b9b4c50542e7a7268dfb7d",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-economics-review-r1",
+      "status": "LAUNCHED__ACTUAL_TURN_METADATA_PENDING",
+      "source_candidate": "dec934dde93ffa9e087d5648678d1bb7854ff015",
+      "scope": "Independent ECON-M1..M5 method readiness; no100k/fullacceptance",
+      "pid": 84969
     }
   ],
   "parallel_policy": "Userreducedcapto3. Do notlaunchfourth. Preserveindependentcode/economicreviewrequirements; schedulelaterwhenready/slotfree.",
-  "next_action": "Launch focused original-reviewer CC-F01 recheck while exact benchmark and MCR verification repairs continue; no fourth job/full matrix.",
+  "next_action": "Dispatch exact repaired-method original economics reviewer; maintain3 cap. Next free slot: bench owner CC-F03 CI and CC-F04 proof repair on current integrated source, no overlapping writes.",
   "goal_complete": false,
   "original35_science_protected_merge_held": true,
   "source_anchor_repair": {
@@ -443,5 +456,5 @@
     "goal_complete": false
   },
   "concurrency_cap": 3,
-  "next_ready_work": "Three substantive bounded repairs; no fourth. Final method review/matrix wait real dependencies."
+  "next_ready_work": "CC-F03/F04 now author-ready but slot-held until one of3 review/validator jobs returns. Reserve queued exact scope; no fourth job."
 }
