@@ -1,6 +1,6 @@
 {
   "schema": "W03_W04_MCR_FLIGHT_BOARD_V1",
-  "saved_utc": "2026-11-11T01:41:56.980068+00:00",
+  "saved_utc": "2026-11-11T01:42:57.641005+00:00",
   "source_base": "46b7325637e68f78ccc7487d4b1abc7009c5ac0b",
   "contract_head": "a5f21266a91b9b00041a1fbdc6a31d5bc0949fe4",
   "integration_branch": "agent/pyat-w03-w04-mcr-completion-r1",
@@ -38,7 +38,7 @@
       "job": "pyat-w03-w04-mcr-persistence-r1",
       "pid": 31023,
       "session": "ses_1b9742b6c02745d8a69d062011",
-      "status": "ACTIVE_VERIFIED_MODEL",
+      "status": "RETURNED_BLOCKED_BAD_ANCHOR__REPAIRED_RESUME_DISPATCHED",
       "live_pid_verified": true,
       "actual_model": {
         "id": "msg_1c83fdc96001vvClYwTRZYQ15e",
@@ -52,7 +52,10 @@
           "created": 1794360991324
         }
       },
-      "terminal": null,
+      "terminal": {
+        "exit_code": 0,
+        "commit": "f84907a87a336acfbe7935a76d30550247adeb34"
+      },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-persistence-r1",
       "commission": "WORKER_COMMISSIONS/PYAT_W03_W04_MCR_COMPLETION_R1/DISPATCH/pyat-w03-w04-mcr-persistence-r1.md",
       "source_anchor_dependency": "Originalanchorinvalid; do notmodifylivecheckout. Correctsourceanchorprepared; resumeonterminalreturn only."
@@ -102,6 +105,15 @@
         }
       },
       "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-cold-r2",
+      "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
+    },
+    {
+      "lane": "persistence",
+      "job": "pyat-w03-w04-mcr-persistence-source-repair-r2",
+      "pid": 32394,
+      "session": "ses_1b9742b6c02745d8a69d062011",
+      "status": "LAUNCHED_MODEL_TURN_PENDING",
+      "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-persistence-r2",
       "source_anchor": "1b0c8dc4c4c6350aa77f70fea9470f5b18aa21dc"
     }
   ],
