@@ -1,0 +1,64 @@
+{
+  "candidate": "3c0622735be0e201913736e6614afb0465c4b048",
+  "results": {
+    "api_mismatch_junk_path": {
+      "errors": [
+        "MCR_C_EVIDENCE_TEXT_PATH_MISMATCH"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_missing_path": {
+      "errors": [
+        "MCR_C_EVIDENCE_PATH_UNAVAILABLE",
+        "MCR_C_EVIDENCE_PATH_UNREADABLE"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_unreadable_directory": {
+      "errors": [
+        "MCR_C_EVIDENCE_PATH_UNREADABLE"
+      ],
+      "status": "RED_INCOMPLETE"
+    },
+    "api_valid_external_pair": {
+      "errors": [],
+      "status": "READY_FOR_INDEPENDENT_RECEIVING"
+    },
+    "cli_junk_path": {
+      "payload": {
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+        "candidate_sha": "3c0622735be0e201913736e6614afb0465c4b048",
+        "contract_sha256": "c859f5cac52f87beec30f4fd5d38a93c92aa772c92273cb629b27ccf702a24c3",
+        "errors": [
+          "MCR_C_EXACT_ONE_SCOPE_COVERAGE_REQUIRED",
+          "MCR_C_MISSING_OR_DUPLICATE_BLOCK_MCR_COMPLETION_EVIDENCE_BEGIN",
+          "MCR_C_MISSING_PROOF_OBL-A",
+          "MCR_C_MISSING_PROOF_OBL-B"
+        ],
+        "evidence_externality": "OUTSIDE_CANDIDATE_ROOT__UNTRACKED",
+        "evidence_externality_scope": "REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE",
+        "expected_identity_count": 2,
+        "status": "RED_INCOMPLETE",
+        "verified_obligation_count": 0
+      },
+      "returncode": 2
+    },
+    "cli_positive_external": {
+      "payload": {
+        "authority": "AUTHOR_EVIDENCE_COVERAGE_ONLY__NEVER_SELF_CERTIFIES_COMPLETE",
+        "candidate_sha": "3c0622735be0e201913736e6614afb0465c4b048",
+        "contract_sha256": "c859f5cac52f87beec30f4fd5d38a93c92aa772c92273cb629b27ccf702a24c3",
+        "errors": [],
+        "evidence_externality": "OUTSIDE_CANDIDATE_ROOT__UNTRACKED",
+        "evidence_externality_scope": "REPOSITORY_TRACKING_ONLY__NO_TIMESTAMP_OR_STRONGER_PROVENANCE",
+        "expected_identity_count": 2,
+        "status": "READY_FOR_INDEPENDENT_RECEIVING",
+        "verified_obligation_count": 2
+      },
+      "returncode": 0
+    }
+  },
+  "runner": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "schema": "CCF5_R01_API_BINDING_INDEPENDENT_RECHECK_V1",
+  "validator_sha256": "ea1edef49b0f11bcc36e45d6cf9f59fdfc1d2fac9684b920df6aa6d9dcb7218a"
+}

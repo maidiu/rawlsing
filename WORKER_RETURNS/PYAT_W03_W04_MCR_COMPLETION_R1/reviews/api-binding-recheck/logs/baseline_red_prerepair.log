@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_api_rejects_text_path_mismatch_and_unreadable_path ____________
+
+tmp_path = PosixPath('/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-w03-w04-mcr-engineering-review-r1/WORKER_RETURNS/PYAT_W03_W04_MCR_COMPLETION_R1/reviews/api-binding-recheck/tmp/pytest-of-matthewsmith/pytest-1/test_api_rejects_text_path_mis0')
+
+    def test_api_rejects_text_path_mismatch_and_unreadable_path(tmp_path):
+        repo, commission, candidate, evidence_text, external = _fixture(tmp_path)
+        junk = tmp_path / "external-junk.md"
+        _write(junk, "not an MCR evidence block\n")
+        mismatch = validator.verify_return(
+            commission, evidence_text, candidate, repo, returned_path=junk
+        )
+>       assert mismatch["status"] == "RED_INCOMPLETE"
+E       AssertionError: assert 'READY_FOR_IN...ENT_RECEIVING' == 'RED_INCOMPLETE'
+E         
+E         - RED_INCOMPLETE
+E         + READY_FOR_INDEPENDENT_RECEIVING
+
+CROSS_HQ_CONTROL_ROOM/test_verify_copy_paste_commission_r1.py:217: AssertionError
+=========================== short test summary info ============================
+FAILED CROSS_HQ_CONTROL_ROOM/test_verify_copy_paste_commission_r1.py::test_api_rejects_text_path_mismatch_and_unreadable_path
+1 failed in 0.48s
