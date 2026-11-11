@@ -1,7 +1,9 @@
 # ZAK01-S2-F03 native hostile witness
 
-**Obligation:** `ZAK01-HOSTILE` (minimum S2).  
-**Scope:** synthetic-fixture execution of the actual historical F03 function only.  
+**Obligation:** `ZAK01-HOSTILE` (minimum S2).
+
+**Scope:** synthetic-fixture execution of the actual historical F03 function only.
+
 **Result:** `F03_S2_POSITIVE_DENIED_PARTIAL_RESTORED_PROVED__PENDING_INDEPENDENT_RECEIVING`.
 
 This directory does **not** contain respondent data, does **not** run S3, and does **not**
