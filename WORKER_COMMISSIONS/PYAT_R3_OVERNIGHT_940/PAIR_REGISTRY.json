@@ -374,7 +374,7 @@
             }
           },
           "pid": 56522,
-          "state": "STOPPED_READY_FOR_RECEIVING",
+          "state": "STOPPED_SCOPED_ACCEPTED",
           "received_head": "dfdbddadc946f9a82cb3008148cb9669f8632ba4",
           "actual_counter_first_turn_model": {
             "id": "msg_1cf62f4a6001fO1FFAsb20igYM",
@@ -417,7 +417,7 @@
             }
           },
           "opponent_session_id": "ses_e3120ba7affeNBHUoX1HIP3G4r",
-          "state": "STOPPED_AFTER_B_RETURN",
+          "state": "STOPPED_SCOPED_ACCEPTED",
           "job_id": "pyat940-s1d-b01",
           "received_head": "1f30bc549ada2f5cf555b1fe1a4f519d0bab42ba",
           "pid": 40327,
@@ -436,8 +436,8 @@
           }
         }
       },
-      "state": "G5_RUNNING",
-      "active_role": "G5_NONAUTHOR",
+      "state": "TERMINAL_CLOSED_AT_SCOPED_GRADE",
+      "active_role": null,
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -474,8 +474,8 @@
         "nativegrade"
       ],
       "integration_state": "UNMERGED",
-      "independent_g5": "PENDING_NOT_ACCEPTED",
-      "active_job": "pyat940-s1d-g5-r01",
+      "independent_g5": "ACCEPT_SCOPED",
+      "active_job": null,
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
         "job_id": "pyat940-s1d-g5-r01",
@@ -513,7 +513,7 @@
       },
       "custody_comment": {
         "issue": 918,
-        "comment_id": 6823182151
+        "comment_id": 6824119560
       },
       "b_return": {
         "job_id": "pyat940-s1d-b01",
@@ -547,7 +547,7 @@
         "session_id": "ses_e3058c7b1ffeoQGc3mz5ztbV46",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1d-g5",
         "branch": "agent/pyat940-s1d-g5-r1",
-        "state": "RUNNING",
+        "state": "TERMINAL_CLOSED_SCOPED_ACCEPTED",
         "job_id": "pyat940-s1d-g5-r01",
         "tested_candidate_head": "8834d32e012bff9bce7cfd2d3bf3fe0b42b27cdd",
         "tested_code_sha": "06c1213149e4649c62dcb6133669dec90cd4d29f",
@@ -564,7 +564,37 @@
             "created": 1794485262345
           }
         }
-      }
+      },
+      "g5_return": {
+        "job_id": "pyat940-s1d-g5-r01",
+        "exit_code": 0,
+        "review_head": "684b288f192b9d2211f3d01c73a292eaa154fe97",
+        "signed_receipt_commit": "4d3c90c1bb7ecd297a129230573199c27b2ecd83",
+        "tested_delivery_sha": "8834d32e012bff9bce7cfd2d3bf3fe0b42b27cdd",
+        "tested_code_sha": "06c1213149e4649c62dcb6133669dec90cd4d29f",
+        "decision": "ACCEPT_SCOPED",
+        "gates": "G1-G5 PASS",
+        "grade": "S2_SOURCEFREE",
+        "remote_verified": true,
+        "review_scope_verified": "own return/evidence only",
+        "actual_final_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "material_open_defects": [],
+        "tests": "59checkpoint+55native; actual normal/allresume positive-negative-restore/cold/mixed/validempty verified",
+        "known_red": "worldbinding17PASS/1TypeErrorREADONLYcallerBLOCKED_OWNERSHIP"
+      },
+      "completed_job": "pyat940-s1d-g5-r01",
+      "engineering_disposition": "ACCEPT_SCOPED",
+      "accepted_scope": "S2_SOURCEFREE",
+      "accepted_delivery_sha": "8834d32e012bff9bce7cfd2d3bf3fe0b42b27cdd",
+      "accepted_code_sha": "06c1213149e4649c62dcb6133669dec90cd4d29f",
+      "sourcefree_packet_complete": true,
+      "original_task_complete": false,
+      "original_task_state": "ENGINEERING_ACCEPTED_AT_SOURCEFREE_GRADE; knowncallerBLOCKED_OWNERSHIP/productionissuer/native/protectedholds",
+      "next_authorized_action": "NONE_IN_S1D_AT_ACCEPTED_GRADE; exact readonly caller migration and protected receiving separately governed"
     },
     {
       "pair_id": "PYAT940-P3",
@@ -903,5 +933,19 @@
     "wake_policy": "TERMINAL_NOTIFICATIONS_ONLY_NO_RECURRING_GOALWAKE",
     "original_tasks": "DELEGATED_CANDIDATE notPASS; sameoriginalG5taskclosureonly"
   },
-  "updated_utc": "2026-11-12T08:35:13.295802+00:00"
+  "updated_utc": "2026-11-12T08:35:13.295802+00:00",
+  "transfer_status": "ALL_THREE_ENGINEERING_SLICES_INDEPENDENTLY_ACCEPTED_AT_RECORDED_SCOPES",
+  "active_runs": 0,
+  "transfer_completion_comment": {
+    "issue": 940,
+    "comment_id": 6824119938
+  },
+  "remaining_holds": [
+    "S2-F full integrated original remainsOPEN pendingacceptedS2E",
+    "S1-D legacyworldbindingrequiredresolvercallermigrationBLOCKED_OWNERSHIP17PASS/1RED",
+    "allintegrationUNMERGED/protectedreceivingheld",
+    "productionissuer/original35/source/science/actor/integrated100kholds",
+    "oldW03W04USERPAUSEDunchanged"
+  ],
+  "next_action": "STOP; no ready additional packet in exact transfer grant; respond only to new competent dependency/grant/user direction; recurringwake remains off"
 }
