@@ -9,7 +9,7 @@
     {
       "packet_id": "S2-G",
       "queue": "Q1",
-      "state": "G5_RUNNING_ACTUAL_MODEL_VERIFIED",
+      "state": "MR01_ONE_BOUNDED_B_REPAIR_RESERVED",
       "contract_path": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-control/WORKER_COMMISSIONS/PYAT_SUCCESSOR_960/contracts/S2-G_v1.md",
       "contract_sha256": "635a423beea158a67653d8c03ea7aee9c158f21986d4d598018d0976db73552b",
       "agents": {
@@ -23,12 +23,12 @@
           "session_id": "ses_e3120b9efffegreD5YfH7dOO15",
           "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-b",
           "branch": "agent/pyat960-s2g-b-r1",
-          "state": "TERMINAL_WAIT_OWN_A_COUNTER"
+          "state": "MR01_REPAIR_RESERVED"
         }
       },
       "integration": "UNMERGED",
-      "independent_g5": "NOT_RUN",
-      "job_id": "pyat960-s2g-g5-r01",
+      "independent_g5": "REVISE_EXACT_DEFECT_G5-MR01",
+      "job_id": "pyat960-s2g-mr01-b-repair",
       "owner_reservation": "https://github.com/maidiu/rawlsing/issues/919#issuecomment-6832863802",
       "launch": {
         "job_id": "pyat960-s2g-g5-r01",
@@ -50,8 +50,10 @@
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-g5",
         "branch": "agent/pyat960-s2g-g5-r1",
         "independence": "NEITHER_A_NOR_B; prior S2-F reviewer only, no S2-G authorship",
-        "state": "LAUNCHED"
-      }
+        "state": "TERMINAL_REVISE_WAIT_EXACT_REPAIR"
+      },
+      "g5_delivery_sha": "8cfeb115a43c905dd3241e63b2d96aa0735bf415",
+      "bounded_post_g5_correction": "RESERVED_SINGLE_ALLOWANCE"
     },
     {
       "packet_id": "S1-E",

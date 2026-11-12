@@ -26,10 +26,10 @@ MODEL: opencode-go/deepseek-v4.1-flash#max
 REASONING: Established maximum variant without model or provider change
 PROVIDER/EDITOR_HARNESS: Existing local OpenCode 2.0.22 native runner
 
-FROZEN_FAILED_CLAIM: G5-MR01 wrong-source positive: actual learned-world reader serves release A fact as determinant release B under a multi-release receipt; frozen original S2-G G1/G3 FAIL.
-REPRODUCER_AND_ROOT_CAUSE: RUN original unmodified WORKER_RETURNS/PYAT960_S2G_G5/repro_multirelease.py under PYTHONPATH=$PWD; selected fact own source_empirical_provenance_refs lacks determinant release, but adapter checks only receipt aggregate release membership.
+FROZEN_FAILED_CLAIM: a3d1e33ecad37cd964f3caded37c2fec9360330e G5-MR01 wrong-source positive: actual learned-world reader serves release A fact as determinant release B under a multi-release receipt; frozen original S2-G G1/G3 FAIL.
+REPRODUCER_AND_ROOT_CAUSE: REPRO=RUN unchanged WORKER_RETURNS/PYAT960_S2G_G5/repro_multirelease.py with PYTHONPATH=$PWD at exact startup; ROOT_CAUSE=Selected fact source_empirical_provenance_refs not checked against determinant release after aggregate receipt check
 AFFECTED_DEPENDENCIES: Isolated S2-G custody adapter consumer_composition only; native M1/M2/B5/world/S2-F owners stay read-only, no producer/issuer/physical-store changes.
-REGRESSION_AND_DELTA_REVIEW: Preserve original 153 owner/adapter/counter plus19 S2-F PASS; original G5 harness RED then exact refusal after patch plus valid base/change/restore and lawful selected provenance positive; same independent G5 rechecks exact delta next.
+REGRESSION_AND_DELTA_REVIEW: REGRESSION=Original153 owner/adapter/counter and19 S2-F plus MR01 wrong-release refusal and exact base/change/restore; REVIEW_SCOPE=Same independent G5 verifies exact adapter delta and original reproduced wrong-source defect after one bounded repair
 
 IDENTITY LOCK: fixed B ses_e3120b9efffegreD5YfH7dOO15, ONLY rival A ses_e3120ba1cffeO1w43uU5MLh4yq; distinct G5 ses_e30c25800ffeT8XbyTuHekRCme remains independent. Same descendant now at G5 delivery8cfeb115a43c905dd3241e63b2d96aa0735bf415, underlying A-counter codea3d1e33ecad37cd964f3caded37c2fec9360330e. Your exclusive existing /Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat960-s2g-b branchagent/pyat960-s2g-b-r1 fast-forwarded; A/G5 terminalidle. No other pair mixing. Original S2-G/P2-08 successor960, old940done. Established Go DeepSeek Flash MAX unchanged, quota/cash UNKNOWN.
 
