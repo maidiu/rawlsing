@@ -236,7 +236,7 @@ def test_a_rehashed_f4_domain_hole_with_rehashed_completed_receipt_is_red():
     query_unit = next(
         unit for unit in manifest.units
         if unit.job_kind == "QUERY"
-        and len(next(q for q, p in case[2] if q.ref == unit.job_ref).target_question_refs) == 3
+        and len(next(q for q, p in case[2] if q.ref == unit.job_ref).target_refs) == 3
     )
     original_result = outputs[query_unit.unit_hash]
     fact = original_result.facts[0]
