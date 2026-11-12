@@ -8,8 +8,8 @@
 
 ## 1. Exact artifact
 
-Author implementation commit: `e3a4ec5541bf1dd0df6b28f82733ae94d29f130f`
-(this handoff and the delta records are a following documentation commit on the same branch).
+Author implementation code cut: `ed8add689631a796a4177bdb9aa98452d946e7c5`.
+The exact immutable per-file SHA-256 identities are listed below; later commits on this branch only add/update the handoff and impact records.
 
 Changed implementation paths:
 
@@ -47,7 +47,7 @@ The selected producer identity (current code pins) is exposed by `d01_reuse.prod
 | Source | SHA-256 at this branch |
 |---|---|
 | `p3/p3_owner.py` (post-repair) | `ee2d0826a3680ce54a9031f8ce8316c58da2f4590d1a9efbc2d17b4ede210583` |
-| `p3/state_store.py` (post-repair) | `0d92be8c6b215b63cd6ebfd327ff8bf4f7bfcca3ebb8760f8506d53b2136cc26` |
+| `p3/state_store.py` (post-repair) | `95ca65edf9e9c541b01224aa9fb977fee2c575b717de3d15d3a0a2412fd8ecf2` |
 | `p3/test_rules.py` | `27272cd43c26b6aa114ee65c97ca07eb56accecbd440841c29696b98e203b4b4` |
 | `p3/projections.py` | `ca405dda778191537ce38b0b63ff6b6ba8104dcd1ea676d6b458d454b362005b` |
 | engine `contracts.py` | `9aabbc9f14c55234b5c3612dcc3a7e8165d835e06ea2cc5f72af98d5e6472f2d` |
