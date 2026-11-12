@@ -44,6 +44,8 @@ The governing user intent is in the frozen programme sources, especially:
 - `02_SOROK_IMPLEMENTATION_PROGRAMME_R1.md` B01 and the programme proof-grain gate: sourcefree engineering is separate from native science/rights/merge authority.
 - The two complete ChatGPT Library architecture records are **NOT_INSPECTED locally**; their identities and that source limitation are preserved. No contents are claimed from them.
 
+CG-A cross-input comparison: I inspected the unmerged chain `8248711fb8ba4ac07c0b0e6e7dfc4decce9352b7` -> `384d4a4ac4973b83187d9a1e160f6d085d6aae19` -> `0213c844b26a8e69afeea6e499fea46e13444c69` -> `37c5842e04892421c9ce74a39956c3cdcf57f0f5` with `git show`. Its selected contract (world resources own dates/homes/material; PsycheStore is actor-scoped) is consistent with B01, but its `test_selected_common_readset.py` kitchen `MEDIATOR` plus test-local `later_decision` is exactly the negative pattern, and its `WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/sourcefree_p3_bridge.py` P3/P6 bridge was not copied, modified or presumed received. Its p2_owner.py blob pin no longer matches this branch; any future merge must reconcile that pin rather than presume the candidate.
+
 Selected writer trace (exact import path):
 
 ```text
@@ -140,6 +142,7 @@ These are the most serious weaknesses I found in my own work:
 - **Pre-existing P6 chronology proof failure.** `SOROK-P6-CHRONOLOGY-PROOF-20261107-R1/test_p6_chronology_proof.py` fails its final `restored == baseline_view` assertion on `mii_exposure_id`/`mii`. I reproduced the identical failure at protected baseline `6a5c12f` in a fresh detached worktree. It is not caused by B01 and is not repaired here because MII presentation sequencing is outside this lease. Evidence: `evidence/preexisting_p6_chronology_failure.log`.
 - **No crash/partial-failure reconciliation.** The material write is a single in-process mutation plus one checkpoint; a crash between them loses the uncommitted mutation (fail-safe) but there is no durable operation reservation or retry receipt for the household fixture. B04/E03 own that.
 - **No native, scientific, rights, actor, human, or merge authority.** This is sourcefree engineering only.
+- **No psychological evaluation.** The household/parent input is material only; no `MISSING_RULE` is evaluated as `NO_CHANGE`, and no trait, memory, motive or durable psychological transition is created.
 - **No controller/provider cost measurement.** The commission's cost field is `UNKNOWN`; I did not instrument controller tokens/latency/process RSS in this session.
 - **Full estate not run.** I ran the B01 tests, the full P6 house suite, the P2 owner suite, actor scene context, and selected P3 owner reopen/config tests. I did not run the entire 144/38/83/304 estate or the whole P3/engine suites.
 - **Two ChatGPT Library architecture records remain NOT_INSPECTED locally.** No local copy/tool was located; no contents are asserted from them.
