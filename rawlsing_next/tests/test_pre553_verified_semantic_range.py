@@ -963,10 +963,8 @@ def test_h47_untrusted_posting_changes_after_witness_check_must_refuse_real_i03(
         witness=witness, independently_held_root=root,
         candidate_postings=candidate,
     )
-    leaked = list(reader[r1].select(target, native_only=True))
-    # The unfixed code demonstrably consumes R2's event after authenticating
-    # R1's event. This is the first independent RED observation.
-    assert len(leaked) == 1 and leaked[0].ref == wrong.ref
+    with pytest.raises(SemanticRangeIntegrityError, match="posting sequence"):
+        list(reader[r1].select(target, native_only=True))
 
     candidate[key1] = FlipAfterDigest()
     _install_i03(source, witness, root, postings=candidate)
@@ -974,3 +972,38 @@ def test_h47_untrusted_posting_changes_after_witness_check_must_refuse_real_i03(
     assert denied.facts[0].typed_state == "INTEGRITY_FAILURE"
     _install_i03(source, witness, root)
     assert _run(source, qa, pred, query) == oracle
+
+
+def test_h48_exact_tuple_contract_blocks_iterator_overrides_without_rejecting_native_tuples():
+    """H47 preservation: accepting tuple *subclasses* is still check/use-unsafe."""
+    source = _build_source("s2a-h48-tuple-subclass", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+    ])
+    witness, root = _trusted(source)
+    native = _canonical_postings(source, witness)
+    target = source["qrefs"]["Y"]
+    r1, r2 = (source["respondents"][i].ref.key for i in ("R1", "R2"))
+    key1, key2 = (r1, "native", target.key), (r2, "native", target.key)
+    good, wrong = native[key1][0], native[key2][0]
+    assert type(native[key1]) is tuple
+
+    class DeceptiveTuple(tuple):
+        def __iter__(self):
+            return iter((wrong,))
+
+    untrusted = dict(native)
+    untrusted[key1] = DeceptiveTuple((good,))
+    reader = certified_i03_events(
+        _release(source), source["universe"].ref,
+        witness=witness, independently_held_root=root,
+        candidate_postings=untrusted,
+    )
+    with pytest.raises(SemanticRangeIntegrityError, match="posting sequence"):
+        list(reader[r1].select(target))
+    reader_good = certified_i03_events(
+        _release(source), source["universe"].ref,
+        witness=witness, independently_held_root=root,
+        candidate_postings=native,
+    )
+    assert [event.ref for event in reader_good[r1].select(target)] == [good.ref]
