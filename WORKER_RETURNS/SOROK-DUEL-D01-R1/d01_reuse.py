@@ -256,6 +256,7 @@ def validate_sourcefree_response(response: Any) -> dict:
 
 def _validate_record(record: Any, *, owner: Any, as_of: int) -> dict:
     value = _mapping(record, "D01_RECORD_SCHEMA")
+    _walk_claims(value, "record")
     supplied = _hash(value.get("hash"), "D01_RECORD_HASH")
     if digest({key: item for key, item in value.items() if key != "hash"}) != supplied:
         _refuse("D01_RECORD_HASH_MISMATCH")
@@ -328,6 +329,7 @@ def later_consumer(
     snapshot = owner.snapshot() if expected is None else expected
     result = owner.realize(operation_id, proposal, snapshot)
     consequences = result.consequences if isinstance(result.consequences, Mapping) else {}
+    _walk_claims(consequences, "consequences")
     if consequences.get("durable_psychological_transition") != "MISSING_RULE":
         _refuse("D01_DURABLE_TRANSITION_CLAIM")
     response = validate_sourcefree_response(consequences.get("test_only_psychological"))
@@ -347,6 +349,7 @@ def later_consumer(
         _refuse("D01_RECEIPT_AUTHORITY")
     if receipt.get("native_science") != "NOT_ISSUED" or receipt.get("production") is not False:
         _refuse("D01_RECEIPT_NATIVE_CLAIM")
+    _walk_claims(receipt, "receipt")
     if detached(receipt.get("response")) != response:
         _refuse("D01_RECEIPT_RESPONSE_MISMATCH")
     record_hashes = [
