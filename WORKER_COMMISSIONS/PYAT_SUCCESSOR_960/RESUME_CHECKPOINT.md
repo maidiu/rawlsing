@@ -1,5 +1,14 @@
 # Successor #960 — same existing PYAT HQ
 
+## G5 REVISE / single bounded MR01 repair launched — 2026-11-12
+
+G5 exit0 20:21:46–20:38:48 UTC (17m02s), delivery `8cfeb115a43c905dd3241e63b2d96aa0735bf415` remote verified. Actual handoff, receipt, implementation boundary, hostile harness/evidence inspected. Independent153+19 PASS and genuine base/change/restore/current/as-of/crash preserved. Verdict REVISE_EXACT_DEFECT G5-MR01: multi-release receipt A+B allows selected fact provenance A with consumer determinant B, actual learned-world reader falsely supported. G1/G3 FAIL, G2/G4 scoped PASS, G5 FAIL; not acceptance. Reviewer modified own return only.
+
+ONE bounded repair assigned SAME fixed B `ses_e3120b9efffegreD5YfH7dOO15`; B branch fast-forwarded to G5 exact delivery, A-counter and G5 full returns passed intact, reviewer harness readonly. `pyat960-s2g-mr01-b-repair` launched once, child23580/supervisor23579/finite observer23581. Minimal selected fact exact provenance vs determinant release check, focused regression, original unmodified G5 repro RED->refusal and valid base/change/restore, 153+19 conservation. No native owner edits/multi-release blanket ban/new engine. Actual first-turn metadata pending. Single post-G5 correction allowance DISPATCHED: return to SAME independent G5 for delta recheck; further material unresolved defect requires HQ adjudication, no endless repair loop. A/G5 idle. Full prompt in dispatch/pyat960-s2g-mr01-b-repair.md.
+
+Q2/S1-E and Q3/S2-C still BLOCKED_DEPENDENCY; no accepted prerequisite receipt received. No full original S2-G/original35/science/production issuer/protected merge claims. Event notifications only; auto-wakes remain paused.
+
+
 ## A counter terminal → distinct nonauthor G5 launched (2026-11-12)
 
 A counter exit0 20:01:25–20:18:51 UTC (17m26s). Delivery `6f3a10552e074c3f1fd54c861290c8300c99dbb2`, code `a3d1e33ecad37cd964f3caded37c2fec9360330e`, remote readback verified. Actual handoff, receipt, code delta and RED/GREEN logs inspected. A accepted B-D1–D4 repairs and found A-C01: same-closure receipt accepted after owned fact removed. Narrow empirical/validation receipt-fact conservation added; B-cut DID_NOT_RAISE RED, current 153 owner/adapter/counter +19 S2-F reported PASS. Candidate only, G5 not accepted.

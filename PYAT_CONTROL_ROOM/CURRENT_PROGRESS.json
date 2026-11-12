@@ -300,7 +300,7 @@
   "successor_960_working_overlay": {
     "issue": 960,
     "packet": "S2-G/P2-08",
-    "state": "A_COUNTER_REPAIRED_PENDING_DISTINCT_G5_NOT_ACCEPTED",
+    "state": "G5_REVISE_MR01_SINGLE_B_REPAIR_RUNNING",
     "a_delivery": "eb8f097341738dcc08ae3172fa35aeebcdc061c3",
     "a_implementation": "fc820533a2a90b948a9e8e80b4f220005e701d4b",
     "reported_tests": "153 owner/adapter/counter +19 S2-F; author-reported, not G5 acceptance",
@@ -309,7 +309,7 @@
     "b_session": "ses_e3120b9efffegreD5YfH7dOO15",
     "first_consumer": "existing evaluate_learned_world_consumer cold from S2-F closure",
     "integration": "UNMERGED",
-    "G5": "NOT_RUN",
+    "G5": "FAIL_G1_G3_WRONG_SOURCE_MULTI_RELEASE",
     "Q2_Q3": "BLOCKED_DEPENDENCY; no new accepted ABI receipt",
     "holds": [
       "production issuer",
@@ -326,6 +326,11 @@
     "a_counter_implementation": "a3d1e33ecad37cd964f3caded37c2fec9360330e",
     "g5_job": "pyat960-s2g-g5-r01",
     "g5_session": "ses_e30c25800ffeT8XbyTuHekRCme",
-    "a_counter_job_state": "TERMINAL_EXIT0"
+    "a_counter_job_state": "TERMINAL_EXIT0",
+    "g5_delivery": "8cfeb115a43c905dd3241e63b2d96aa0735bf415",
+    "independent_tests": "153+19 PASS but wrong-source first-consumer falsifier accepted",
+    "repair_job": "pyat960-s2g-mr01-b-repair",
+    "repair_scope": "G5-MR01 selected fact provenance vs determinant release only",
+    "next": "Same independent G5 delta recheck after single bounded correction"
   }
 }

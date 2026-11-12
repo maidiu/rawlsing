@@ -386,3 +386,8 @@ B code `0071aefb05d8ebbd75058a10c5e831d994a2f96f` (delivery `220ebd3311fb0607079
 ### #960 S05 A-counter delta / independent G5 — 2026-11-12
 
 A counter code `a3d1e33ecad37cd964f3caded37c2fec9360330e` (delivery `6f3a10552e074c3f1fd54c861290c8300c99dbb2`) adds receipt-owned empirical/validation fact conservation after actual same-closure omission false acceptance at B cut. Base product remains exact; author reports153+19 PASS. Distinct nonauthor G5 now launched on exact descendant, full contract/code/all returns; G5 pending, UNMERGED. Original external/upstream/Q2/Q3 holds unchanged; no protected or scientific adoption inferred.
+
+
+### #960 S05 G5 revision / selected source ownership — 2026-11-12
+
+Independent G5 delivery `8cfeb115a43c905dd3241e63b2d96aa0735bf415` independently153+19 PASS but G1/G3/G5 FAIL on G5-MR01: selected fact provenance A accepted with determinant B through multi-release receipt. No scoped acceptance. Same fixed B now runs ONE bounded exact adapter check/regression repair, then same G5 delta recheck; no optional hardening/new owner changes. Full original S2-G/production issuer/original35/science/protected holds and Q2/Q3 dependencies remain.

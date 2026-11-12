@@ -1,3 +1,7 @@
+# Successor #960 G5 REVISE / exact repair — 2026-11-12
+
+Independent G5 `8cfeb115a43c905dd3241e63b2d96aa0735bf415` reproduced G5-MR01: receipt A+B admitted selected fact from A as determinant B at actual world consumer. Independent153+19 PASS and normal change/restore conserved, but G1/G3/G5 FAIL. One bounded repair now running through same fixed B (`pyat960-s2g-mr01-b-repair`), then same G5 delta recheck. No acceptance. All integration/science/production issuer/upstream/Q2/Q3 holds persist. Historical entries follow.
+
 # Successor #960 A-counter return / G5 launched — 2026-11-12
 
 S2-G candidate `6f3a10552e074c3f1fd54c861290c8300c99dbb2` / code `a3d1e33ecad37cd964f3caded37c2fec9360330e`: A counter repairs same-closure receipt-owned fact omission with predecessor RED/current GREEN; original base product conserved. Reports 153+19 PASS. Distinct nonauthor G5 `pyat960-s2g-g5-r01` now launched in exclusive reviewer worktree, full frozen contract and all A/B/counter returns supplied; authors idle. G5 NOT_RUN/PENDING, UNMERGED; Q2/Q3 and full joined/original35/science/production issuer/protected holds unchanged. Historical entries follow.
