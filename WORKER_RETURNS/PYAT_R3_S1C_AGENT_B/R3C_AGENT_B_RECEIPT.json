@@ -1,0 +1,109 @@
+{
+  "schema": "PYAT_R3_S1C_AGENT_B_ADVERSARIAL_RECEIPT@1.0.0",
+  "kind": "AUTHOR_B_REPAIR_NOT_G5",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "source": {
+    "issue_918": "https://github.com/maidiu/rawlsing/issues/918",
+    "r3": "https://github.com/maidiu/rawlsing/issues/909",
+    "pr_A": "https://github.com/maidiu/rawlsing/pull/950",
+    "pr_B": "https://github.com/maidiu/rawlsing/pull/955",
+    "protected_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "unmerged_integration_base": "7064daa14d93109211629e72d08f3a6e705a0d57",
+    "A_frozen_head": "5a6eb73158479a3bf4cead70b0d36cca43d902b6",
+    "A_frozen_tested_code": "9a539024f3d2a23f96e4e4fa50a0e749b0d6b56f",
+    "B_frozen_tested_code": "e15ccaedaa54155fc3855f821565e2794c946a68",
+    "B_source_blob": "e97c3727d7798fedca4cd5c9b621e335ff50ebb7",
+    "B_test_blob": "2fa71e9016b8dfc4d02654bdf575bdd338a19653"
+  },
+  "finding": {
+    "severity": "SEV-1_IN_SCOPE_DECLARED_FRONTIER_NEGATIVE_FATE_CONSERVATION",
+    "A_omitted": [
+      "ScientificFrontier.unknown",
+      "ScientificFrontier.excluded",
+      "ScientificFrontier.inventory_ledger"
+    ],
+    "mechanism": "A froze source+science operation rows and deferred records, but did not freeze or compare independent unknown/excluded/per-occurrence negative axes. Altering these preserved operation IDs and disposition counts, silently changing declared source fate evidence.",
+    "original_A_source_blob": "1f68dc6ff60e68d72cee284cb8232f659100b8f6",
+    "proof_level": "STATIC_CONTROL_FLOW_PROOF_PLUS_POSTREPAIR_EXECUTABLE_HOSTILE_MUTATIONS; ORIGINAL_A_NOT_EXECUTED_WITH_NEW_TESTS"
+  },
+  "repair": {
+    "source_commit": "11a22528aceca852e7b39198c550280f7ec08e6b",
+    "test_commit": "e15ccaedaa54155fc3855f821565e2794c946a68",
+    "changed_paths": [
+      "rawlsing_next/pre553_operation_fate_census.py",
+      "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py"
+    ],
+    "new_guard_codes": [
+      "UNKNOWN_CENSUS_DRIFT",
+      "EXCLUDED_CENSUS_DRIFT",
+      "INVENTORY_LEDGER_CENSUS_DRIFT"
+    ],
+    "new_test_names": [
+      "test_s1c_b_unknown_and_excluded_axis_severance_before_source_open",
+      "test_s1c_b_inventory_ledger_fate_severance_and_restoration",
+      "test_s1c_b_rehashed_negative_axis_cannot_launder_other_frontier"
+    ],
+    "first_reader": "pre553_universal_workload.execute_governed_frontier -> pre553_native_workload_binding.execute_test_only_discovery_workload -> Batch/C11/I05 native facts"
+  },
+  "execution": {
+    "workflow": "https://github.com/maidiu/rawlsing/actions/runs/43278463747",
+    "job": "https://github.com/maidiu/rawlsing/actions/runs/43278463747/job/131393078906",
+    "conclusion": "SUCCESS",
+    "focused_sourcefree_tests": {
+      "passed": 14,
+      "failed": 0,
+      "old_A": 11,
+      "new_B": 3
+    },
+    "inherited_R03_R61_tests": {
+      "passed": 22,
+      "failed": 0
+    },
+    "declared_operations": 309,
+    "compiled_operations": 309,
+    "accounted_rows": 309,
+    "scientific_fates": {
+      "ELIGIBLE": 150,
+      "HELD": 159
+    },
+    "deferred_scope_count": 6,
+    "unsupported_runtime_rows": 3,
+    "issued_candidate_receipts": 150,
+    "native_empirical_facts": 330,
+    "source_factory_calls": 1,
+    "bounded_C11_builds": 1,
+    "representative_elapsed_seconds": 4.605595,
+    "fixture_suite_wall_seconds": 55.73,
+    "peak_sampled_process_tree_rss_bytes": 260132864,
+    "rss_samples": 2288,
+    "resource_grade": "GITHUB_HOSTED_SOURCEFREE_FIXTURE_NOT_ORIGINAL35"
+  },
+  "combined_integration": {
+    "workflow": "https://github.com/maidiu/rawlsing/actions/runs/43278466894",
+    "status_at_receipt": "IN_PROGRESS; no inferred terminal PASS",
+    "qualified_ancestry": "PR948 unmerged, sourcefree scope only"
+  },
+  "court": {
+    "G1": "B_AUTHOR_PROVED_DECLARED_SOURCEFREE_WITH_NEGATIVE_AXES; EXTERNAL_ORIGINAL35_UNISSUED",
+    "G2": "SOURCEFREE_REAL_I05_NATIVE_FIRST_CONSUMER_PASS",
+    "G3": "B_HOSTILE_NEGATIVE_AXIS_MUTATION_AND_RESTORATION_PASS",
+    "G4": "SOURCEFREE_HOSTED_RESOURCE_COUNTERS_PASS; 100K_NATIVE_NOT_RUN",
+    "G5": "NOT_RUN_INDEPENDENT_NONAUTHOR_REQUIRED",
+    "scientific": "ORIGINAL35_HOLD_EXTERNAL",
+    "authority": "PROTECTED_INTEGRATION_AND_NATIVE_SOURCE_PERMISSION_HELD"
+  },
+  "self_attack": {
+    "surviving_risks": [
+      "Independent external census completeness cannot be inferred from a local pair of hash-consistent manifests",
+      "Declared frontier negative axes may themselves be incomplete if supplied by an incompetent or unissued source",
+      "New frozen occurrence ledger is O(number of declared occurrences); production-size memory not measured",
+      "B does not test S1-D normal/resume CURRENT as part of S1-C"
+    ],
+    "refuted_alternatives": [
+      "No need for a parallel scientific compiler",
+      "Historical 18,467 preparatory rows are not automatically eligible native operations"
+    ]
+  },
+  "status": "AGENT_B_PATCH_TESTED_GREEN__AWAIT_A_COUNTERATTACK_THEN_INDEPENDENT_G5__NO_PROTECTED_MERGE"
+}
