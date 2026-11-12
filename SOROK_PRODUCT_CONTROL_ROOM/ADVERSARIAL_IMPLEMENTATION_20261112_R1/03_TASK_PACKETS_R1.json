@@ -42,12 +42,13 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "A_COUNTER_RUNNING",
+      "status": "A_B_A_CANDIDATE_ROUND_COMPLETE_PENDING_TRANCHE_RECEIVING",
       "cross_inputs": [
         "CG-A #915/#917/#924/#928 unmerged candidate selection; compare, do not presume received"
       ],
       "B_candidate_head": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
-      "not_independently_accepted": true
+      "not_independently_accepted": true,
+      "latest_head": "5bc29474e769b928d9264f1607bab605e2b1c7e9"
     },
     {
       "id": "B02",
@@ -67,8 +68,10 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "QUEUED_UNLAUNCHED",
-      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
+      "status": "AUTHORIZED_BUILD_AFTER_B03_COUNTERSTRIKE",
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "pair": 1,
+      "immutable_contract": "pair1-B-B03-counter-B02-v4.txt"
     },
     {
       "id": "B03",
@@ -88,10 +91,12 @@
         "09"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHORIZED_AFTER_B01_COUNTERSTRIKE",
+      "status": "B_COUNTER_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "running_contract": "pair1-A-B01-counter-B03-v3.txt",
-      "candidate_dependency": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c"
+      "candidate_dependency": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+      "A_candidate_head": "5bc29474e769b928d9264f1607bab605e2b1c7e9",
+      "not_independently_accepted": true
     },
     {
       "id": "B04",
@@ -114,7 +119,8 @@
       ],
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
-      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "B05",
@@ -137,7 +143,8 @@
       ],
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
-      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed."
+      "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "C01",
@@ -186,7 +193,8 @@
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
-      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "C03",
@@ -211,7 +219,8 @@
       "status": "QUEUED_UNLAUNCHED",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
-      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "C04",
@@ -234,7 +243,8 @@
       "status": "QUEUED_UNLAUNCHED",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
-      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "C05",
@@ -299,7 +309,7 @@
         "07"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHORIZED_AFTER_D01_COUNTERSTRIKE_WITH_B02_C01_PREREQUISITES_HELD",
+      "status": "PARTIAL_CONSTRUCTION_B02_C01_PREREQUISITE_HELD",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "reconciliation_note": "B01 B fork-aware readers require matched p2_owner+house.py cut; P3 pin roots incompatible across code cuts; active C01 FINISH_THEN_RECONCILE, no silent rebase.",
       "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
@@ -308,7 +318,8 @@
       "dependencies_not_accepted": [
         "B02",
         "C01"
-      ]
+      ],
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "D03",
@@ -400,7 +411,8 @@
       ],
       "grade": "SOURCEFREE_S2_ONLY",
       "status": "QUEUED_UNLAUNCHED",
-      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required."
+      "supporting_actor_candidate": "C01 A 7e347c45d991df322b987c4fdc70558b1857d9f6; B challenging; separate parent action/utterance and qualified perception remain required.",
+      "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete."
     },
     {
       "id": "E02",
@@ -637,7 +649,7 @@
   ],
   "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers.",
   "frozen_programme_head": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "runtime_snapshot_utc": "2026-11-12T11:05:09.140141+00:00",
+  "runtime_snapshot_utc": "2026-11-12T11:33:30.566250+00:00",
   "persistent_pairs": [
     {
       "pair": 1,
@@ -646,12 +658,12 @@
         "A": "ses_e3129596bffes0LaqGfkjAwEuQ",
         "B": "ses_e312958e8ffeVzjGxpyNpsMatM"
       },
-      "state": "A_COUNTER_RUNNING",
-      "active_job": "sorok-duel-pair1-b01-counter-b03-a-20261112-r1",
-      "opponent_frozen_head": "362719b40a35a66fa2fb1c3490db8eb5b8e9167c",
+      "state": "B_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair1-b03-counter-b02-b-20261112-r1",
+      "opponent_frozen_head": "5bc29474e769b928d9264f1607bab605e2b1c7e9",
       "base_commit": "edbb4b344d54731a527fd415a965bc848ed964e1",
-      "next_packet": "B03",
-      "active_contract_sha256": "bbc21896028d06ac5cb03974e0b4f7475574ab32fe24d33ee1785d67462fc894"
+      "next_packet": "B02",
+      "active_contract_sha256": "30731943799d440d71a35e9375b5adb7a82e0a8036deb989b6d0e1aa5c6236b0"
     },
     {
       "pair": 2,
@@ -720,6 +732,14 @@
       "branch": "codex/sorok-duel-c01-a-20261112-r1",
       "status": "AUTHOR_TESTED_CANDIDATE_B_RUNNING",
       "actual_change": "Distinct stable supporting parent and separate C12 perception; parent-authored decision/utterance still absent."
+    },
+    {
+      "task": "B01_COUNTER_AND_B03",
+      "role": "A",
+      "head": "5bc29474e769b928d9264f1607bab605e2b1c7e9",
+      "branch": "codex/sorok-duel-b01-a-relay-b03-20261112-r1",
+      "status": "AUTHOR_TESTED_B_COUNTER_RUNNING",
+      "actual_change": "Stronger copied-prefix provenance; world-owned dwelling/material feasibility. Mother decision/purchase/calendar still unbuilt; B02 commissioned after bounded B03 counterstrike."
     }
   ],
   "composition_candidate": {
@@ -752,5 +772,42 @@
     "source_rights": "HELD",
     "actor_human": "HELD",
     "protected_merge": "NOT_AUTHORIZED"
-  }
+  },
+  "completed_job_reported_costs": [
+    {
+      "job": "sorok-duel-pair3-c01-a-20261112-r1-directory-resume1",
+      "reported_step_usd": 0.209201748,
+      "not_invoice": true
+    },
+    {
+      "job": "sorok-duel-pair2-d01-b-20261112-r1",
+      "reported_step_usd": 0.25558146,
+      "not_invoice": true
+    },
+    {
+      "job": "sorok-duel-pair1-b01-b-20261112-r1",
+      "reported_step_usd": 0.197933142,
+      "not_invoice": true
+    },
+    {
+      "job": "sorok-duel-pair1-b01-a-20261112-r1",
+      "reported_step_usd": 0.195102078,
+      "not_invoice": true
+    },
+    {
+      "job": "sorok-duel-pair3-c01-a-20261112-r1",
+      "reported_step_usd": 0,
+      "not_invoice": true
+    },
+    {
+      "job": "sorok-duel-pair1-b01-counter-b03-a-20261112-r1",
+      "reported_step_usd": 0.258194112,
+      "not_invoice": true
+    },
+    {
+      "job": "sorok-duel-pair2-d01-a-20261112-r1",
+      "reported_step_usd": 0.191620404,
+      "not_invoice": true
+    }
+  ]
 }
