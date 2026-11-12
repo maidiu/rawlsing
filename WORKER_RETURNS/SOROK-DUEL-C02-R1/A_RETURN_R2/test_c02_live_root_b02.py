@@ -118,6 +118,14 @@ def test_normal_live_root_parent_b02_view_and_user_turn_cold(tmp_path):
     assert ledger(state)["pending"] is None
     assert len(ledger(state)["activity_turns"]) == 4
     assert len(ledger(state)["turns"]) == 0
+    activity_turns = len(ledger(state)["activity_turns"])
+    replay = background(state, "parent-activity", {
+        "parent_id": PARENT_ID, "operation_id": "live:activity:1",
+        "activity": "PAID_WORK", "hours": 2,
+    })
+    assert replay["result"]["status"] == "REPLAY"
+    assert replay["recorded_activity"] is False
+    assert len(ledger(state)["activity_turns"]) == activity_turns
     owner_after = run_p6.open_owner(state / "actual-p2")
     try:
         assert owner_after.store.head() == psychology_head
