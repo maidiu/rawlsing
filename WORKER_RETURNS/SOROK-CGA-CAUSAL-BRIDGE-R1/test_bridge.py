@@ -120,7 +120,7 @@ def test_real_p6_first_consumer_positive_no_mediator_and_sourcefree_speech(tmp_p
     assert len(speech_pos) == len(before_speech_pos) + 1
     assert speech_pos[-1]["body"]["text"] == utterance
     assert speech_neg == before_speech_neg
-    assert after_pos["records"] == [] and after_neg["records"] == []
+    assert len(after_pos["records"]) == 1 and after_neg["records"] == []
 
     actual = json.loads((positive / "p4_receipts.json").read_text())["turns"][-1]
     control = json.loads((negative / "p4_receipts.json").read_text())["turns"][-1]
