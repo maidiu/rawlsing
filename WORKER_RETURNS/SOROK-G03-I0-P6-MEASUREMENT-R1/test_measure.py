@@ -19,7 +19,8 @@ class Attacks(unittest.TestCase):
             d=self.p/"attempts"/n;d.mkdir()
             args=["/usr/bin/python","/tmp/repo/"+m.P6,"--state",str(self.p/"state"),*a]
             code=2 if i==4 else 0
-            o={"status":"REFUSED","reason":"P6_WAIT_DURATION_OUT_OF_RANGE"} if code else {"clock":i}
+            o={"status":"REFUSED","reason":"P6_WAIT_DURATION_OUT_OF_RANGE"} if code else {"clock":(248,248,249,249)[i],"mii_surface":{}}
+            if i==2:o["admission"]="ADMITTED"
             b=m.data(o);(d/"stdout.bin").write_bytes(b);(d/"stderr.bin").write_bytes(b"")
             self.save(d/"start.json",{"id":n,"source_sha":"b"*40,"argv":args,"state_bytes_before":i*10})
             self.save(d/"receipt.json",{"schema":m.SCHEMA,"id":n,"source_sha":"b"*40,"source_hashes":self.source,
@@ -82,6 +83,27 @@ class Attacks(unittest.TestCase):
     def test_env_forged(self):
         self.man["env_keys"].append("SOROK_SITUATED_MODEL_API_KEY")
         self.save(self.p/"manifest.json",self.man);self.rejects("OFFLINE_OR_PROCESS_CLAIM_FALSE")
+    def test_cold_clock_forgery_not_treated_as_success(self):
+        path=self.p/"attempts/cold_view/stdout.bin"
+        obj=json.loads(path.read_text());obj["clock"]=777;raw=m.data(obj);path.write_bytes(raw)
+        receipt=self.p/"attempts/cold_view/receipt.json";row=json.loads(receipt.read_text())
+        row["stdout_sha256"]=r.sha(raw);row["stdout_bytes"]=len(raw);row["output"]["clock"]=777
+        self.save(receipt,row);self.index()
+        self.assertFalse(r.consume(self.p)["expected_scenario_pass"])
+    def test_expected_refusal_wrong_reason_not_accepted(self):
+        path=self.p/"attempts/fail_wait/stdout.bin"
+        obj=json.loads(path.read_text());obj["reason"]="P6_FAKE_OTHER_REFUSAL";raw=m.data(obj);path.write_bytes(raw)
+        receipt=self.p/"attempts/fail_wait/receipt.json";row=json.loads(receipt.read_text())
+        row["stdout_sha256"]=r.sha(raw);row["stdout_bytes"]=len(raw)
+        self.save(receipt,row);self.index()
+        self.assertFalse(r.consume(self.p)["expected_scenario_pass"])
+    def test_altered_summary_rejected(self):
+        report=r.consume(self.p)
+        self.save(self.p/"summary.json",{**report,"attempts":4})
+        self.rejects("SUMMARY_FORGED")
+    def test_duplicate_child_id_rejected(self):
+        self.mutate("cold_view",lambda x:x.update(child_pid=100))
+        self.rejects("DUPLICATED_CHILD_EXEC_ID")
     def test_no_cumulative_rss_fabrication(self):
         self.assertEqual(m.process_usage(None)["status"],"UNOBSERVED")
 if __name__=="__main__":unittest.main()
