@@ -1,0 +1,297 @@
+{
+  "schema": "SOROK_G03_I0_RUN_RESULT@1",
+  "commission": "G03-I0-RUN successor-head retest",
+  "status": "PASS_G1_G4_AT_SUCCESSOR_HEAD__G5_NOT_RUN",
+  "implementation_head": "bfe420af96e401342b4d36b942532057a4871575",
+  "prior_runner_head": "5cc6595409d224f5331f367e36e4f8b283fe1959",
+  "predecessor_head": "aa157f23cf7d6284c982595295301036145b7cdf",
+  "runner": {
+    "provider": "local independent macOS host",
+    "host": "oldMac.lan",
+    "os": "macOS-13.7.8-x86_64-i386-64bit",
+    "os_release": "22.6.0",
+    "python": "3.11.3",
+    "python_executable": "/usr/local/bin/python3",
+    "git": "git version 2.39.1",
+    "lease": {
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/g03-i0-run-r2-20261112T152803/LEASE.json",
+      "sha256": "7bc7413ec4dff73e283449b089af48c71c718a606338c3eb4152e87e60cad329",
+      "exclusive": true,
+      "created_before_checkout": true,
+      "scope": "G03-I0-RUN successor-head retest only"
+    },
+    "model_provider_calls": "UNOBSERVED",
+    "network_calls": "UNOBSERVED"
+  },
+  "source": {
+    "head": "bfe420af96e401342b4d36b942532057a4871575",
+    "clean": true,
+    "source_hashes": {
+      "WORKER_RETURNS/SOROK-P5-CONTINUOUS-EXPERIENCE-R1/run_p5.py": "fe12542957b4490127a507195087ebf26e7466c6d072688d08e423e77143e83f",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/house.py": "7d78d48dd1b12a1bc95d3fc844df31cb41364eedbe5943a9c69c50699296c645",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/mii.py": "6058b50149ce044e78cfa72cae950c23ddc4f9cd757d7ae1cf697a8a736a946c",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/run_p6.py": "e952578a279adf7a212e3d52a110189bbbc5883a172a0d94712402eea1035f87",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated.py": "655e94418ee340a34a579592d13a8c7b3f4e747f248ff15cac844231be3df7ee",
+      "WORKER_RETURNS/SOROK-P6-ONE-LIVING-HOUSE-R1/situated_provider.py": "630993c2b5daae76993a4e0c05747ce20cbe45aed554cb70de5b4607eb4509a5"
+    },
+    "runner_sha256": "524ccc2e0c48ab5b5e0db7e81d550f015167a76be4d0b1b0c5541d798df11e36",
+    "python_executable_sha256": "da4b64225172b2a7700d30a8d43380735c4357f88264478a9d059fdc46f7831b",
+    "git_status": "empty before and after measurement",
+    "diff_from_prior_runner": "only WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/test_agent_a_relay.py changed; no P3/P4/P5/P6 owner edit"
+  },
+  "tests": {
+    "command": "python3 -B -m unittest -v test_measure test_agent_b test_agent_a_relay",
+    "exit": 0,
+    "ran": 26,
+    "passed": 26,
+    "failed": 0,
+    "seconds": 5.334,
+    "logs": [
+      "tests.stdout",
+      "tests.stderr"
+    ],
+    "failure": null
+  },
+  "measurement": {
+    "command": "python3 -B WORKER_RETURNS/SOROK-G03-I0-P6-MEASUREMENT-R1/measure.py --repo \"$PWD\" --out \"$EVIDENCE\"",
+    "exit": 0,
+    "index_sha256": "dca3959d8b0876968bc4f6f4aa2eb0394133d1e002d62ac6d20f29cb0a2cdc73",
+    "reader_exit": 0,
+    "reader_expected_scenario_pass": true,
+    "attempts": 5,
+    "success": 4,
+    "expected_refusals": 1,
+    "all_refusals": 1,
+    "unexpected_failed_or_refused": 0,
+    "timed_out": 0,
+    "cold_reopened": 1,
+    "wall_seconds": {
+      "max": 5.776974593987688,
+      "median": 1.9539717929437757,
+      "min": 1.7900977621320635,
+      "total": 14.24043591786176
+    },
+    "wall_by_attempt_seconds": {
+      "cold_view": 1.916810736991465,
+      "fail_wait": 1.9539717929437757,
+      "new": 5.776974593987688,
+      "view": 1.7900977621320635,
+      "wait": 2.802581031806767
+    },
+    "cpu_direct_child_seconds": {
+      "scope": "sum_direct_child_wait4_not_process_tree",
+      "status": "MEASURED",
+      "system_total": 0.950147,
+      "user_total": 12.7355
+    },
+    "rss_direct_child_bytes": {
+      "max": 55173120,
+      "median": 54530048,
+      "min": 52699136,
+      "status": "MEASURED"
+    },
+    "peak_direct_child_rss_bytes": {
+      "max": 55173120,
+      "status": "MEASURED"
+    },
+    "state_after_bytes": {
+      "cold_view": 1392926,
+      "fail_wait": 1392926,
+      "new": 1282145,
+      "view": 1285073,
+      "wait": 1390336
+    },
+    "state_net_bytes": 1392926,
+    "refused_state": {
+      "logical_content_changed": false,
+      "logical_witness": "G03_SQLITE_TYPED_ROWS_AND_OTHER_CONTENT_V2",
+      "physical_content_changed": true,
+      "sqlite_page_churn_not_equated_with_actor_change": true
+    },
+    "provider": {
+      "calls": "UNOBSERVED",
+      "tokens": "UNOBSERVED",
+      "retries": "UNOBSERVED",
+      "billable_cost": "UNOBSERVED"
+    },
+    "resource_scope": "single direct wait4 child; not process-tree; macOS ru_maxrss bytes",
+    "attempts_detail": {
+      "new": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 5.776974593987688,
+        "state_bytes_before": 0,
+        "state_bytes_after": 1282145,
+        "stdout_sha256": "78dceae12f870431a1edf3d372e8fd6c8becc5d325ea0d0de25e4c17085188f1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.44775,
+          "cpu_user_s": 4.957708,
+          "peak_rss_bytes": 52699136,
+          "ru_maxrss_native": 52699136,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 248,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 81950
+      },
+      "view": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 1.7900977621320635,
+        "state_bytes_before": 1282145,
+        "state_bytes_after": 1285073,
+        "stdout_sha256": "8c677b87b6799b60ac738690de71447979e25ede44fc7ccaa53d0ed45f51a864",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.11527799999999999,
+          "cpu_user_s": 1.649552,
+          "peak_rss_bytes": 53792768,
+          "ru_maxrss_native": 53792768,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 248,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 81953
+      },
+      "wait": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 2.802581031806767,
+        "state_bytes_before": 1285073,
+        "state_bytes_after": 1390336,
+        "stdout_sha256": "689257f1cc984f2df314a2e23d6d6e9e2394e10b12f631634b5449e03919f426",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.161629,
+          "cpu_user_s": 2.530596,
+          "peak_rss_bytes": 55087104,
+          "ru_maxrss_native": 55087104,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 249,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 81954
+      },
+      "cold_view": {
+        "exit_code": 0,
+        "timeout": false,
+        "wall_seconds": 1.916810736991465,
+        "state_bytes_before": 1390336,
+        "state_bytes_after": 1392926,
+        "stdout_sha256": "cc9d2d5885de6622b5534759a0dfc144c7ccc1d8169d441b3aafec334a2ff013",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.11107299999999999,
+          "cpu_user_s": 1.790627,
+          "peak_rss_bytes": 54530048,
+          "ru_maxrss_native": 54530048,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": 249,
+          "json": true,
+          "status": null
+        },
+        "child_pid": 81955
+      },
+      "fail_wait": {
+        "exit_code": 2,
+        "timeout": false,
+        "wall_seconds": 1.9539717929437757,
+        "state_bytes_before": 1392926,
+        "state_bytes_after": 1392926,
+        "stdout_sha256": "8a5b91a0dfbf56c083ed63054cc0dee87a84f78bd9db5d6233d61ef09ff2b0a7",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resources": {
+          "cpu_system_s": 0.11441699999999999,
+          "cpu_user_s": 1.807017,
+          "peak_rss_bytes": 55173120,
+          "ru_maxrss_native": 55173120,
+          "ru_maxrss_native_unit": "bytes",
+          "scope": "single_wait4_child_not_process_tree",
+          "status": "MEASURED"
+        },
+        "output": {
+          "clock": null,
+          "json": true,
+          "status": "REFUSED"
+        },
+        "child_pid": 81956
+      }
+    }
+  },
+  "cases": {
+    "I0-P01": {
+      "result": "PASS",
+      "evidence": "P6 new + view exit 0, clock 248"
+    },
+    "I0-P02": {
+      "result": "PASS",
+      "evidence": "wait 1 clock 249; cold_view exit 0 clock 249; cold_reopened=1"
+    },
+    "I0-N01": {
+      "result": "PASS",
+      "evidence": "wait 0 exit 2 REFUSED P6_WAIT_DURATION_OUT_OF_RANGE; logical state unchanged"
+    },
+    "I0-N02": {
+      "result": "PASS",
+      "evidence": "actual-P6 BLOB/TEXT relay fixture now passes; typed collision detected"
+    },
+    "I0-N03": {
+      "result": "PASS",
+      "evidence": "uncheckpointed WAL refused with sqlite_uncheckpointed_wal / SQLITE_UNCHECKPOINTED_WAL"
+    },
+    "I0-R01": {
+      "result": "PASS",
+      "evidence": "HEAD exact; clean tree; diff from prior runner SHA only test_agent_a_relay.py"
+    },
+    "I0-M01": {
+      "result": "PASS",
+      "evidence": "five direct-child wait4/CPU/RSS and state bytes recorded"
+    },
+    "mapping_note": "Exact issue #949 case text was not retrievable with the current token scope; mapping derives from the pinned receiving status and the observed commands."
+  },
+  "gates": {
+    "G1": "PASS",
+    "G2": "PASS",
+    "G3": "PASS",
+    "G4": "PASS",
+    "G5": "NOT_RUN"
+  },
+  "actions_admission": "Prior hosted-run diagnosis unchanged; not rechecked. Local macOS runner used.",
+  "evidence": {
+    "raw_tree": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/g03-i0-run-r2-20261112T152803/evidence/raw",
+    "index_sha256": "dca3959d8b0876968bc4f6f4aa2eb0394133d1e002d62ac6d20f29cb0a2cdc73",
+    "external_index_pin": "dca3959d8b0876968bc4f6f4aa2eb0394133d1e002d62ac6d20f29cb0a2cdc73",
+    "archive": null,
+    "archive_sha256": null
+  },
+  "evidence_grade": "SOURCEFREE_S2_INSTRUMENTATION_ONLY_CANDIDATE_PENDING_G5",
+  "g03_full": "NOT_EVALUATED_G02_MISSING",
+  "limits": [
+    "No process-tree RSS; direct child only.",
+    "Provider calls/tokens/retries/cost UNOBSERVED.",
+    "Cold Python process, not cold kernel cache.",
+    "Mac host sample, not Linux/GitHub runner.",
+    "G5 independent nonauthor NOT_RUN.",
+    "No scientific, actor, human or protected merge grant."
+  ]
+}
