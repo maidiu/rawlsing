@@ -18,7 +18,7 @@ PYTHONPATH=. python -B rawlsing_next/tests/pyat_r3_s1c_rss_runner.py rawlsing_ne
 PYTHONPATH=. python -B -m pytest -q -o addopts='' -p no:cacheprovider rawlsing_next/tests/test_universal_workload.py rawlsing_next/tests/test_universal_workload_custody.py
 ```
 
-- Sourcefree hosted CI [S1-C test job](https://github.com/maidiu/rawlsing/actions/runs/43274982496/job/131381455682) at implementation SHA: **11/11 newly added PASS; 22/22 inherited PASS**. If the run URL differs due to reruns, the exact commit/check-run identity and log are controlling. The independent combined #948 integration CI is a separate check; it does not certify native science or G5.
+- Sourcefree hosted CI [S1-C test job](https://github.com/maidiu/rawlsing/actions/runs/43275142293/job/131381455682) at implementation SHA: **11/11 newly added PASS; 22/22 inherited PASS**. If the run URL differs due to reruns, the exact commit/check-run identity and log are controlling. The independent combined #948 integration CI is a separate check; it does not certify native science or G5.
 
 ## 2. Frozen governing obligations / capital preserved
 
