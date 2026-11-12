@@ -11,7 +11,9 @@ from dataclasses import replace
 
 import pytest
 
-from rawlsing_next.pre553_empirical_objects import DiscoveryResultReceipt, semantic_hash
+from rawlsing_next.pre553_empirical_objects import (
+    DiscoveryResultReceipt, exact_ref, semantic_hash,
+)
 from rawlsing_next.pre553_empirical_query import I03GroupedExecutionScope
 from rawlsing_next.pre553_s2e_exact_conservation import (
     S2EOutputConservationError,
@@ -47,7 +49,10 @@ def test_b2_rehashed_false_valid_empty_from_actually_supported_minority_is_red()
         "candidate_id": candidate.candidate_identity["candidate_id"],
         "candidate_hash": candidate.candidate_identity["candidate_hash"],
         "coverage_state": "EVALUATED_VALID_EMPTY",
-        "fact_refs": [ref.as_dict() for ref in candidate.empirical_fact_refs],
+        "fact_refs": [
+            exact_ref(ref, "candidate fact").as_dict()
+            for ref in candidate.empirical_fact_refs
+        ],
         "release_refs": [ref.as_dict() for ref in unit.release_refs],
         "query_execution_contract": candidate.exact_query_contract_id,
     })
