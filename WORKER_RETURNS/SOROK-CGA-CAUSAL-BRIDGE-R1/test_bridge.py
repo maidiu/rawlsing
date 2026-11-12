@@ -269,3 +269,27 @@ def test_p3_activation_does_not_promote_inhibited_or_conflicting_history(tmp_pat
         assert owner.store.head() == head
     finally:
         owner.close()
+
+
+def test_quiet_wait_cannot_use_b1_as_unsourced_memory(tmp_path):
+    """Earlier formation is not enough to grant current actor access."""
+    state = tmp_path / "quiet"
+    _run(state, "new", situated_house=True)
+    _, before_speech, before_head = _actual_state(state)
+    observed = []
+
+    def interpret(packet):
+        observed.append(packet["sourcefree_p3"])
+        return {
+            "attention": "uncertain", "interpretation": "No observed trigger.",
+            "action": "continue", "cue_event_id": None, "channel": None,
+        }
+
+    _run(state, "wait", duration=4, request_id="no-cue",
+         bridge=True, interpret=interpret)
+    assert len(observed) == 1
+    assert observed[0]["status"] == "NO_QUALIFIED_P3_CANDIDATES"
+    assert observed[0]["records"] == observed[0]["readset"] == []
+    _, after_speech, after_head = _actual_state(state)
+    assert after_speech == before_speech
+    assert after_head == before_head
