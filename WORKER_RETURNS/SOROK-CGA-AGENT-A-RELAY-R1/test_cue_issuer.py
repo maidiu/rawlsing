@@ -198,3 +198,34 @@ def test_crash_after_world_speech_commit_holds_retry_without_duplication(tmp_pat
         assert owner.store.head() == head
     finally:
         owner.close()
+
+
+def test_real_event_identity_cannot_launder_forged_actor_context_row(tmp_path):
+    """A row's event_id and clock are not sufficient to issue perception."""
+    from actor_scene_context import recent_self_actions
+    from situated import recent_speech
+
+    state = tmp_path / "context"
+    run_p6.experience(state, Namespace(command="new", request_id=None,
+                                       situated_house=True))
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        world, house = read_house(session)
+        actions = recent_self_actions(session)
+        speeches = recent_speech(session)
+        assert actions or speeches, "Actual P3 fixture should contain accessible context"
+        packet = {"cues": [], "recent_self_actions": [], "recent_speech": []}
+        if actions:
+            original = actions[-1]
+            forged = dict(original, location="invented-current-location")
+            packet["recent_self_actions"] = [forged]
+        else:
+            original = speeches[-1]
+            forged = dict(original, text="fabricated-perceived-utterance")
+            packet["recent_speech"] = [forged]
+        interval = {"start": original["clock"] - 1, "end": world.clock}
+        assert current_p3_actor_access(
+            session, interval, world, house, packet) is False
+    finally:
+        owner.close()
