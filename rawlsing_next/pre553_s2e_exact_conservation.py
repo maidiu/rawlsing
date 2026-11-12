@@ -50,6 +50,25 @@ def _ref_key(value: Any) -> str:
     return exact_ref(value, "S2E exact reference").key
 
 
+class _BoundedEvidenceHash:
+    """Incremental SHA256 with an exact shared proof-transcript byte ceiling."""
+
+    def __init__(self, shared_count: list[int], maximum: int | None):
+        self._digest = hashlib.sha256()
+        self._shared_count = shared_count
+        self._maximum = maximum
+
+    def update(self, data: bytes) -> None:
+        candidate = self._shared_count[0] + len(data)
+        if self._maximum is not None and candidate > self._maximum:
+            raise S2EOutputConservationError("S2E_EXACT_OUTPUT_BYTES_CAP_HOLD")
+        self._shared_count[0] = candidate
+        self._digest.update(data)
+
+    def hexdigest(self) -> str:
+        return self._digest.hexdigest()
+
+
 def _feed(digest: Any, kind: str, material: Any) -> None:
     """Length-prefix each complete preimage: no concatenation collisions."""
     blob = canonical_json({"kind": kind, "material": material}).encode("utf-8")
@@ -155,6 +174,7 @@ class S2EOutputCensus:
     i05_receipt_count: int
     typed_state_counts: Mapping[str, int]
     declared_domain_verified: bool
+    canonical_proof_transcript_bytes: int
     per_unit_full_preimage_sha256: Mapping[str, str]
     full_output_sha256: str
 
@@ -171,6 +191,7 @@ class S2EOutputCensus:
             "i05_receipt_count": self.i05_receipt_count,
             "typed_state_counts": dict(sorted(self.typed_state_counts.items())),
             "declared_domain_verified": self.declared_domain_verified,
+            "canonical_proof_transcript_bytes": self.canonical_proof_transcript_bytes,
             "per_unit_full_preimage_sha256": dict(sorted(self.per_unit_full_preimage_sha256.items())),
             "full_output_sha256": self.full_output_sha256,
         }
@@ -183,6 +204,7 @@ def census_native_batch(
     *,
     require_complete: bool = False,
     runtime_catalog: Any | None = None,
+    max_canonical_output_bytes: int | None = None,
 ) -> S2EOutputCensus:
     """Audit *all* Batch first-reader outputs at native object/preimage scope.
 
@@ -192,6 +214,11 @@ def census_native_batch(
     """
     _require(isinstance(manifest, BatchManifest), "S2E_INVALID_BATCH_MANIFEST")
     _require(isinstance(outputs_by_unit, Mapping), "S2E_OUTPUT_MAP_REQUIRED")
+    _require(
+        max_canonical_output_bytes is None
+        or (type(max_canonical_output_bytes) is int and max_canonical_output_bytes > 0),
+        "S2E_OUTPUT_BYTES_CAP_INVALID",
+    )
     if runtime_catalog is not None:
         from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
         _require(isinstance(runtime_catalog, RuntimeObjectCatalog),
@@ -215,7 +242,8 @@ def census_native_batch(
     states: dict[str, int] = {}
     per_unit: dict[str, str] = {}
     completed = 0
-    summary = hashlib.sha256()
+    transcript_bytes = [0]
+    summary = _BoundedEvidenceHash(transcript_bytes, max_canonical_output_bytes)
 
     for unit in manifest.units:
         history = sorted(by_unit[unit.unit_ref.key], key=lambda r: r.attempt_index)
@@ -234,7 +262,7 @@ def census_native_batch(
         completed += 1
         _require(output is not None, "S2E_COMPLETED_WITHOUT_ACTUAL_OUTPUT")
         _require(final.execution_performed, "S2E_NONEXECUTED_COMPLETED_UNIT")
-        digest = hashlib.sha256()
+        digest = _BoundedEvidenceHash(transcript_bytes, max_canonical_output_bytes)
         _feed(digest, "UNIT", unit.semantic_projection())
         _feed(digest, "RECEIPTS", [r.projection() for r in history])
 
@@ -354,6 +382,7 @@ def census_native_batch(
         i05_receipt_count=totals["i05_receipt"],
         typed_state_counts=dict(sorted(states.items())),
         declared_domain_verified=runtime_catalog is not None,
+        canonical_proof_transcript_bytes=transcript_bytes[0],
         per_unit_full_preimage_sha256=dict(sorted(per_unit.items())),
         full_output_sha256=summary.hexdigest(),
     )
