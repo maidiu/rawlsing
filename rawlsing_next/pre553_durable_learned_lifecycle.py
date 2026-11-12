@@ -1283,6 +1283,16 @@ class DurableLearnedLifecycle:
             consumer_query=self.determinants.consumer_query,
             receipt_ref=receipt.ref,
         )
+        selected_fact_releases = {
+            _exact(dict(ref), "selected fact source release").key
+            for ref in fact.source_empirical_provenance_refs
+            if _exact(dict(ref), "selected fact source release").kind
+            == "C11LogicalRelease"
+        }
+        if self.determinants.release_ref.key not in selected_fact_releases:
+            raise DurableLearnedLifecycleRefusal(
+                "consumer determinant release is not the selected fact source release"
+            )
         if predicate.ref != self.determinants.producer_predicate_ref:
             raise DurableLearnedLifecycleError("cold producer predicate differs from declared")
         if query.ref != self.determinants.producer_query_ref:
