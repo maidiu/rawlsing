@@ -1,0 +1,355 @@
+{
+  "event_id": "SOROK-DUEL-C02-B-20261112-R1",
+  "task_id": "C02",
+  "phase": "CG-C",
+  "title": "Independent mother antecedent and continuing materially conditioned activity (current-clock kernel)",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "protected_baseline_sha": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+  "composition_start_sha": "5932a509095f92f2d2b463b0899b27ac851741f6",
+  "opponent_head": "ff9b6d85d32b1529ea32b5488f1fd8a623786d26",
+  "opponent_implementation_sha": "ace64f7794a4dd9324bc67768835083b452c49b2",
+  "opponent_c01_implementation_sha": "0e526f043027e4256b353d42240e80d85ad39265",
+  "opponent_c01_return_sha": "0fd303e2af23d71b51b068393cfaa6f62d40fe38",
+  "implementation_sha": "3f9d1079bc3b1f09a318afc80bd5aa63d7ccdecf",
+  "branch": "codex/sorok-duel-c02-b-counter-20261112-r1",
+  "grade": "SOURCEFREE_S2_ONLY",
+  "ABIclass": "BREAKING_INTERFACE_FOR_A_C02_CANDIDATE_WITH_COMPATIBLE_WORLD_VOCABULARY_ADDITION_AND_B02_HOLD",
+  "classification_detail": [
+    {
+      "class": "BREAKING_INTERFACE",
+      "detail": "A's C02 activity event kind/owner-receipt act changes from OFFSCREEN_REPAIR to MATERIAL_ACTIVITY; parent material gains a required currency_unit; read_parent_activity now strictly validates author/body/receipt/perception; read_parent_material requires current material source to equal the latest C12 parent history source. Fresh final-cut sourcefree roots only; old A-era C02 roots are not migrated."
+    },
+    {
+      "class": "COMPATIBLE_ADDITIVE",
+      "detail": "The imported bp4.world.make_event allowlist gains exactly one event kind, MATERIAL_ACTIVITY; bp4.c10._verify_world validates its owner receipt. Existing event kinds/receipts are unchanged. MATERIAL_ACTIVITY already existed as an H1 entity/role kind in world.py; the new event kind uses the same truthful name in the event-kind namespace and does not alter H1 entity/role semantics. Reads gain material_boundary, historical_ingress, currency_unit and history-consistency fields."
+    },
+    {
+      "class": "SCIENTIFIC_HOLD",
+      "detail": "B02 calendar/as-of/period qualification remains absent. All C02 reads carry HELD_B02_CALENDAR_ABSENT and historical_ingress required fields; no date/year fixture is fabricated. Full C02 is PREREQUISITE_HELD."
+    },
+    {
+      "class": "SOURCE_OR_AUTHORITY",
+      "detail": "parent_activity.py remains outside P3Owner._code_pins(); the P3 owner must deliberately add it to source closure if required. No P3 edit or pin weakening. No native C4/ADP-015, actor/human/source right or protected merge is issued."
+    },
+    {
+      "class": "LOCAL",
+      "detail": "A per-state-root parent_activity.lock serializes the parent read-modify-write unit. It is a lock, not a scheduler/owner/ledger. Parent material remains in the existing P2 world actor row; history remains in existing C12 episodes/world events."
+    }
+  ],
+  "changed_owner_symbols": [
+    {
+      "file": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "sha256": "25fc23b96c5650f251325b99e9060f5085f74c6a10da08ca4a86a37823dc5b57",
+      "changed": [
+        "PARENT_ACTIVITY_EVENT_KIND",
+        "PARENT_MATERIAL_BOUNDARY",
+        "PARENT_HISTORICAL_INGRESS",
+        "_material_boundary",
+        "_parent_write_lock",
+        "_parent_material_history",
+        "_material_content",
+        "parent_material_fixture",
+        "_validate_material",
+        "_read_material",
+        "_activity_parameters",
+        "_evaluate_activity",
+        "_options",
+        "parent_feasible_actions",
+        "_establish_parent_material and establish_parent_material wrapper",
+        "_commit_parent_circumstances and commit_parent_circumstances wrapper",
+        "_record_parent_activity and record_parent_activity wrapper",
+        "_validate_activity_event",
+        "read_parent_activity",
+        "read_parent_history"
+      ],
+      "added": [
+        "currency_unit in material content",
+        "MATERIAL_ACTIVITY event kind/owner receipt",
+        "history-bound read",
+        "actual event author/body/receipt/own_action validation",
+        "parent_activity.lock serialization",
+        "material_boundary and historical_ingress"
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py",
+      "sha256": "525f7b680c3265d631d6c84896a73d4c4b108e9321c3d040fbcd1c3705376d5c",
+      "changed": [
+        "make_event allowed kind set gains MATERIAL_ACTIVITY"
+      ],
+      "impacts": [
+        "Existing event kinds unchanged; only the new parent activity kind is admitted.",
+        "s45_projection.project_event returns the new kind unchanged; P5 gaze.CHANNELS has no channel for it, so it is not rendered as a user/perceived event.",
+        "bp4.world.configure_experimental_history source-kind set does not accept MATERIAL_ACTIVITY; MI cannot use it as a historical source without a deliberate owner extension."
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/c10.py",
+      "sha256": "ca69ac871a9a0336a65caf581e4b44ce3b68b55218bde9709dd38ffb7e2f05f8",
+      "changed": [
+        "_verify_world owner-receipt validation set gains MATERIAL_ACTIVITY"
+      ],
+      "impacts": [
+        "The actual C10 world verifier now requires a valid owner receipt for the new action kind.",
+        "No other event-kind receipt behavior changed."
+      ]
+    },
+    {
+      "file": "WORKER_RETURNS/SOROK-DUEL-C02-R1/test_c02_b_parent_activity.py",
+      "sha256": "35107651d2fa866368056a719387a9a388bb2916279019f6df7fb138d1e17000",
+      "added": [
+        "truthful event/projection/C10 consumer proof",
+        "history tamper/severance proof",
+        "author/body/receipt/perception validation",
+        "independent options/currency boundary",
+        "Nadia/household stock isolation",
+        "P6 live-view ledger boundary",
+        "cold replay/cash equality/no duplicate effects"
+      ]
+    }
+  ],
+  "actual_writer_trace": [
+    "parent_activity._parent_write_lock acquires state_root/parent_activity.lock (fcntl LOCK_EX) around the parent read/evaluate/write unit.",
+    "establish_parent_material -> C12Store.append_episode(P2_PARENT_MATERIAL_ANTECEDENT) + world.actor_state[parent_alias]['material'] + P2 checkpoint, one _StoreWrite transaction.",
+    "commit_parent_circumstances -> C12Store.append_episode(P2_PARENT_CIRCUMSTANCE) + material state + checkpoint, one _StoreWrite transaction, event_effect=NONE.",
+    "record_parent_activity -> bp4.world.make_event(kind=MATERIAL_ACTIVITY, owner_receipt act=MATERIAL_ACTIVITY) + C12Store.append_world_event + C12Store.record_perception(own_action) + C12Store.append_episode(P2_PARENT_ACTIVITY) + material state + checkpoint, one _StoreWrite transaction.",
+    "read_parent_material -> _parent_material_history compares the current material source with the latest ordered parent antecedent/activity/circumstance source."
+  ],
+  "actual_reader": [
+    {
+      "name": "parent_activity.parent_feasible_actions",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "consumes": "self-only current parent material, bound to the latest C12 parent history source",
+      "returns": "PAID_WORK/CARE_DEPENDENT/PAY_DEBT options with ADMISSIBLE/REFUSED reasons, prospective after-material, material boundary and B02 ingress hold; not a decision"
+    },
+    {
+      "name": "parent_activity.read_parent_material",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "consumes": "world actor-row material plus ordered C12 parent history",
+      "returns": "self-only material state, source/binding, currency, material boundary, historical ingress and B02 hold"
+    },
+    {
+      "name": "parent_activity.read_parent_activity",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "consumes": "C12 parent activity episode, actual world event, owner receipt and own_action perception",
+      "returns": "self-only public event projection with truthful MATERIAL_ACTIVITY kind and validated receipt"
+    },
+    {
+      "name": "parent_activity.read_parent_history",
+      "path": "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py",
+      "consumes": "ordered C12 parent antecedent/activity/circumstance episodes plus current material",
+      "returns": "history rows, current material source, latest history source, material_consistent and B02 ingress hold"
+    }
+  ],
+  "new_actual_first_reader": "parent_activity.parent_feasible_actions (self-only current-clock parent options). The packet terminal consumer, the mother's own later choice, is C03 and is NOT implemented.",
+  "effect_on_original_obligation": "PARTIAL_EXPANSION_WITH_B02_AND_C03_HELD",
+  "effect_detail": "PW-05 rolling parents gains a sourcefree parent-local material/activity kernel with truthful events and history-bound reads. PW-06 dynamic participation remains C01. Full C02's dated two-period replay and the mother's later choice remain held on B02 and C03.",
+  "affected_task_ids": [
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "D02",
+    "E01",
+    "E02",
+    "B02",
+    "B03",
+    "B04",
+    "F01",
+    "F03",
+    "P3 source-closure owner"
+  ],
+  "affected_queued_tasks": [
+    {
+      "task_id": "C02",
+      "effect": "Current-clock parent material/activity kernel strengthened. Full C02 remains PREREQUISITE_HELD on B02 calendar/as-of/period and the C03 later choice."
+    },
+    {
+      "task_id": "B02",
+      "effect": "Must supply B02_PERIOD_BOUNDARY, B02_AS_OF_CLOCK_MAPPING, SOURCE_PERIOD_REF and MATERIAL_SOURCE_BINDING. Any period record that changes parent material must participate in _parent_material_history or reads fail closed."
+    },
+    {
+      "task_id": "C03",
+      "effect": "Must consume parent_feasible_actions as input and produce an actual parent decision/utterance. Must not treat the objective MATERIAL_ACTIVITY event as a Nadia percept."
+    },
+    {
+      "task_id": "C04",
+      "effect": "Must separate hidden reason, outward utterance and Nadia-qualified uptake. Parent material/currency boundary and self-only reads must not leak into Nadia/user state."
+    },
+    {
+      "task_id": "C05",
+      "effect": "Role extension and relationship lineage remain future; parent material/activity remains parent-only."
+    },
+    {
+      "task_id": "B04",
+      "effect": "Must reconcile parent cash/debt/wage units with household/actor-A stock and spending permission explicitly. Parent currency is distinct; currency_conversion=NOT_APPLIED and C03_B04_HELD."
+    },
+    {
+      "task_id": "D02",
+      "effect": "Situated-field readers must use public/self-only parent inputs, never raw world snapshot or the private registration episode."
+    },
+    {
+      "task_id": "E01/E02",
+      "effect": "J1/J2 still need C03/C04, actual B02 periods and Nadia uptake; C02 current-clock activity is not a multi-year or decision proof."
+    },
+    {
+      "task_id": "F01/F03",
+      "effect": "Actual P6 live view after direct C01/C02 writes refuses P4_COLD_STATE_MISMATCH. F01/J3 must define lawful P4/P6 ledger integration before claiming a live user turn."
+    },
+    {
+      "task_id": "P3 source-closure owner",
+      "effect": "parent_activity.py is not in P3Owner._code_pins(); add deliberately if P3 integration requires it. No P3 edit/pin weakening here."
+    },
+    {
+      "task_id": "MI/P5 projection consumers",
+      "effect": "MATERIAL_ACTIVITY is not in MI historical-source kinds or P5/phenomenal channels; C02 parent activity is not user/child-perceived. Extend only with a lawful C04/F03/MI exposure path."
+    },
+    {
+      "task_id": "Pair1 B03/B02 concurrent work",
+      "effect": "No Pair1 input was mutated or rebased; the composition at 5932a509 was used as-is. Future Pair1 changes require fresh reconciliation."
+    },
+    {
+      "task_id": "Pair2 D01/D02 older composition",
+      "effect": "No P3/model_cycle edits or assumptions. Compose against the final p2_owner.py cut."
+    }
+  ],
+  "queued_contract_changes": [
+    "C02 remains a partial candidate pending exact B02 calendar/period integration and C03.",
+    "C03/C04/C05 receive a truthful parent activity event vocabulary and a history-bound, currency-explicit parent material ABI; no dependent is marked accepted."
+  ],
+  "active_contract_decision": "FINISH_THEN_RECONCILE",
+  "defects_repaired": [
+    {
+      "id": "C02-B-D1",
+      "severity": "high",
+      "title": "Ordinary parent activity falsely classified as a repair",
+      "evidence": "A event/owner receipt/projection kind was OFFSCREEN_REPAIR; bp4 make_event validates act==kind; c10 validates the receipt for repair-like kinds. No truthful existing carrier exists.",
+      "repair": "Added MATERIAL_ACTIVITY to bp4.world.make_event and c10 verification; parent activity uses kind/act MATERIAL_ACTIVITY."
+    },
+    {
+      "id": "C02-B-D2",
+      "severity": "high",
+      "title": "Current material not bound to latest C12 parent history",
+      "evidence": "A tampered material document with a recomputed source was accepted; a severed activity episode did not change material/options reads.",
+      "repair": "_parent_material_history + PARENT_MATERIAL_HISTORY_MISMATCH binds current material source to the latest parent antecedent/activity/circumstance episode."
+    },
+    {
+      "id": "C02-B-D3",
+      "severity": "medium-high",
+      "title": "read_parent_activity trusted a format-valid event mapping",
+      "evidence": "Reader checked only event existence/hash, not author/body/owner receipt/period/household fields or own_action perception.",
+      "repair": "_validate_activity_event validates author, kind, activity/parameters/currency, sources, owner receipt, period/visibility/household and own_action perception."
+    },
+    {
+      "id": "C02-B-D4",
+      "severity": "medium-high",
+      "title": "No parent currency unit; silent conversion risk",
+      "evidence": "Parent material had cash/wage/debt units with no currency; B03 uses sourcefree_currency_unit.",
+      "repair": "Required currency_unit default parent_sourcefree_currency_unit; cannot be changed by circumstance; material_boundary states conversion NOT_APPLIED and C03_B04_HELD."
+    },
+    {
+      "id": "C02-B-D5",
+      "severity": "medium",
+      "title": "Unserialized parent read-modify-write",
+      "evidence": "A read/evaluated before _StoreWrite; concurrent callers could lose a cash/time effect or duplicate events.",
+      "repair": "Per-state-root parent_activity.lock around the parent read-modify-write unit; no scheduler/ledger."
+    },
+    {
+      "id": "C02-B-D6",
+      "severity": "material boundary",
+      "title": "Static P6/B01/B03 reads are not a live P6 user turn",
+      "evidence": "Actual run_p6 view after C01 registration alone or C02 activity refuses P4_COLD_STATE_MISMATCH; registration alone reproduces it.",
+      "repair": "Recorded and tested as a P4/P6 ledger boundary; C02 does not claim P6 live-turn composition. P4/F01/J3 must define lawful integration."
+    }
+  ],
+  "preserved_obligations": [
+    "Nadia remains the focal root actor; parent is the distinct C01 supporting stable ID.",
+    "B's five C01 repairs and all C01 code/tests are unchanged; A's C01 and P2/P3-owner regressions remain green.",
+    "Parent private motive remains C12-registration self-only; it is not in material, activity body/receipt, history or Nadia access.",
+    "Cash cannot be conjured by antecedent changes; only admitted PAID_WORK/PAY_DEBT change parent cash.",
+    "Parent activity is actual current-clock P2 world event + C12 episode/perception, not test-local narrative.",
+    "Replay is idempotent; later-state replay refuses stale; no duplicate cash/time effect in the replay tests.",
+    "Parent activity is not a Nadia percept; focal access is NOT_PERCEIVED.",
+    "B01 household/dwelling sources and B03 feasibility remain unchanged after parent activity; Nadia actor state/resources unchanged.",
+    "No second scheduler, parent world, time ledger, database, actor owner or material fact slot.",
+    "B02 is honestly held; no date/year is fabricated.",
+    "Native/science/rights/actor/human/protected holds remain separate."
+  ],
+  "regressed_obligations": [
+    "A's C02 event kind/receipt and material schema change; A's historical first test fails only at its superseded OFFSCREEN_REPAIR assertion. Fresh final-cut roots only; old A-era C02 roots are not migrated.",
+    "Full C02 remains incomplete: B02 dated period/calendar and two-period replay are absent; C03 decision/utterance is absent.",
+    "Actual P6 live view after direct C01/C02 writes refuses P4_COLD_STATE_MISMATCH; static house reads are not a live-turn proof.",
+    "P3 source closure does not include parent_activity.py unless the P3 owner deliberately adds it.",
+    "Fork/copy of parent material/activity remains unsupported by C01 origin-branch registration refusal.",
+    "No full-estate run; only bounded affected suites."
+  ],
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-DEVELOPMENTAL-RECURSION-ENGINE-R1/developmental_recursion/parent_activity.py@3f9d1079bc3b1f09a318afc80bd5aa63d7ccdecf",
+      "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/world.py@3f9d1079bc3b1f09a318afc80bd5aa63d7ccdecf",
+      "WORKER_RETURNS/SOROK-20261105-S45-S47-PRODUCT-IMPORT-CLOSURE-R1/product/vendor/WORKER_RETURNS/SOROK-20261022-SAME-PERSON-JOIN-R1/vendor/j/candidate/vendor/bp4/bp4/c10.py@3f9d1079bc3b1f09a318afc80bd5aa63d7ccdecf",
+      "SOROK_PRODUCT_CONTROL_ROOM/PROGRAMMA_SOROK/32_ROLLING_PERSON_WORLD_OWNER_RECONCILIATION_20261111_R1.md (PR #911 b50b1282)",
+      "20261111_ROLLING_PERSON_WORLD_DURATION_MATERIAL_MEDIATION_R1.md (frozen programme source)"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/test_c02_b_parent_activity.py",
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/evidence/c02_b_parent_activity.log",
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/evidence/a_c02_remaining_tests.log",
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/evidence/a_c02_historical_kind_superseded.log",
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/evidence/c01_b_p2_p3_regression.log",
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/evidence/a_c01_p2_p3_regression.log",
+      "WORKER_RETURNS/SOROK-DUEL-C02-R1/evidence/p4_p5_projection_regression.log"
+    ],
+    "negative": [
+      "test_activity_read_validates_author_body_receipt_and_perception",
+      "test_current_material_is_bound_to_parent_history_and_severance",
+      "test_options_change_independently_before_any_child_request (cash/currency-cannot-change, zero-obligation reasons, self-only)",
+      "test_parent_activity_truthful_event_and_actual_consumers (OFFSCREEN_REPAIR absent; focal NOT_PERCEIVED)",
+      "A's test_parent_activity_refuses_infeasible_clock_source_and_severance (preserved)",
+      "A's test_parent_activity_replay_cold_and_no_duplicates (preserved)"
+    ],
+    "cold": [
+      "test_truthful_activity_cold_replay_and_no_duplicate_effects (cold reopen + fresh subprocess; cash 30 preserved, history consistent, replay counts unchanged, secret absent)",
+      "A's test_parent_activity_replay_cold_and_no_duplicates (preserved)",
+      "establish_parent_material exact antecedent recovery; stale recovery refused after later history"
+    ]
+  },
+  "cost_record": {
+    "status": "UNKNOWN",
+    "reason": "No controller/provider token, process RSS, provider latency or retry instrumentation was available or invented.",
+    "measured_test_wall_s": {
+      "c02_b_parent_activity": 18.63,
+      "a_c02_remaining_tests": 9.36,
+      "a_c02_historical_kind_superseded": 10.35,
+      "c01_b_p2_p3_regression": 66.33,
+      "a_c01_p2_p3_regression": 55.78,
+      "p4_p5_projection_regression": 13.67
+    },
+    "failed_attempts": [
+      "A's historical C02 first test fails only at its superseded OFFSCREEN_REPAIR kind assertion; B test file covers the corrected behavior and A's other three tests pass.",
+      "No full-estate or full P3 vertical-slice run."
+    ]
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor": "HELD",
+    "human": "HELD",
+    "protected_merge": "HELD"
+  },
+  "proof_boundaries": [
+    "SOURCEFREE_S2_ONLY; no native C4/ADP-015, CAN/ADP/Pyat, actor/human/source right or protected merge.",
+    "Full C02 is not complete: B02 dated calendar/period and C03 decision/utterance are absent.",
+    "Parent activity is current-clock only; no dated year/history or automatic elapsed-time effect.",
+    "Parent material is parent-local; no household reconciliation, currency conversion or spending permission is implemented.",
+    "Parent activity is not a Nadia percept; C04 owns qualified uptake.",
+    "MATERIAL_ACTIVITY is a new sourcefree world event kind; MI/P5/P6 do not yet consume/render it.",
+    "Actual P6 live view after direct C01/C02 writes fails P4_COLD_STATE_MISMATCH; only static house/dwelling/feasibility reads are proven.",
+    "Parent_activity.py is not in P3 source closure unless the P3 owner adds it; no P3 edit.",
+    "Fork/copy of parent material/activity is not lawful.",
+    "Self-read authorization is caller-asserted; raw C12 developer access is not a confidentiality proof.",
+    "No multi-process stress/SIGKILL test; parent lock serialization is logic + bounded execution, not stress-proven.",
+    "Two full ChatGPT Library architecture records remain NOT_INSPECTED locally."
+  ]
+}
