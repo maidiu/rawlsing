@@ -1,0 +1,102 @@
+{
+  "schema": "PYAT_R3_S2E_A3_CONSERVATION_RETURN@1.0.0",
+  "governed_commission": "maidiu/rawlsing #919 S2-E P2-06; #909 R3C/R3S; PYAT PROGRAMMA and MCR-lite",
+  "lineage": {
+    "original_A_tested_sha": "d7af5b8df922caa86bcd36a7baa0bbb55b43742d",
+    "original_A_test_run": "https://github.com/maidiu/rawlsing/actions/runs/43275018294",
+    "B_valid_empty_frontier_repair_sha": "56ce7299508d2d28d2eefb6a6a7f6fbe93360103",
+    "A2_candidate_frontier_repair_sha": "75d4a24bddcfdc5bd1553bd48f130d64f5d5b1e3",
+    "B2_semantic_fate_repair_sha": "b48d0a9287968012a9c97a9602ec31dc1099f183",
+    "B2_frozen_handoff_sha": "2132932b920e3572068cd8d4fcf8fae5cc2957f9"
+  },
+  "exact_A3": {
+    "repository": "maidiu/rawlsing",
+    "branch": "agent/pyat-r3-s2e-a-final-conservation-20261112-r3",
+    "base_branch": "agent/pyat-r3-s2e-b-fate-counterexample-20261112-r2",
+    "base_sha": "2132932b920e3572068cd8d4fcf8fae5cc2957f9",
+    "frozen_code_test_sha": "81a764cc7eac960f0fd607d9c3fe62428905daa4",
+    "draft_PR": "https://github.com/maidiu/rawlsing/pull/973",
+    "code_paths": [
+      "rawlsing_next/pre553_s2e_exact_conservation.py",
+      "rawlsing_next/tests/test_pyat919_s2e_a3_native_closure.py",
+      ".github/workflows/pyat-r3-s2e-a.yml"
+    ],
+    "protected_HEAD_last_verified": "6a5c12f04323d74001f9632063ec907f4fc4468e"
+  },
+  "adversarial_receive": {
+    "B2_fact_derived_fate": "VALID_SOURCE_GAP__B2_REPAIR_PRESERVED",
+    "B2_fact_index_O_F": "VALID_PERFORMANCE_DESIGN_IMPROVEMENT__PRESERVED",
+    "earlier_B1_valid_empty_and_replay": "PRESERVED",
+    "earlier_A2_candidate_hash_ancestry_frontier": "PRESERVED",
+    "false_B2_accusations": "NONE_ESTABLISHED",
+    "incomplete_B2_scope": "SELF_CONSISTENT_I05_RECEIPT_CAN_FORGE_PRODUCER_DEPENDENCIES_AUTHORITY_NONPROMOTION_AND_EXECUTED_OBJECT_INVENTORY_WITHOUT_CHANGING_FACTS",
+    "new_defects": [
+      {
+        "id": "A3-01",
+        "kind": "native I05 zero-effect producer contract",
+        "attack": "set structural_truth_effect, actor_v3_effect, or diagnostic_score_is_empirical_fact true; rehash receipt, outer replay, Batch refs",
+        "repair": "require all exactly False; require exact native I03 query contract"
+      },
+      {
+        "id": "A3-02",
+        "kind": "native authority/dependency exact closure",
+        "attack": "remove all candidate dependency refs or subset authority snapshot refs while preserving I03 facts, receipt hashes and verified candidate replay",
+        "repair": "derive complete native producer dependency and snapshot sets from issued discovery authority, grammar, frontier, winner and cited facts"
+      },
+      {
+        "id": "A3-03",
+        "kind": "native used-object closure",
+        "attack": "append an authentic but unissued extra I03 query object to executed_queries and preserve all I05 replay and Batch references",
+        "repair": "compare exact predicate/query ref sets to all generated candidate query-role objects of pinned pre-search compiler"
+      }
+    ],
+    "new_test_functions": [
+      "test_a3_rehashed_structural_or_actor_promotion_is_not_native_discovery",
+      "test_a3_rehashed_wrong_query_contract_is_not_native_i05",
+      "test_a3_rehashed_native_dependency_and_authority_loss_is_refused",
+      "test_a3_extra_self_consistent_executed_query_outside_issued_frontier_refused"
+    ]
+  },
+  "native_verification": {
+    "current_A3_workflow": "https://github.com/maidiu/rawlsing/actions/runs/43298785954",
+    "current_A3_workflow_outcome": "FAILURE_BEFORE_RUNNER_STEP_EXECUTION",
+    "focused_retry": "RETRIED_ONCE__FAILURE_BEFORE_RUNNER_STEP_EXECUTION",
+    "executed_step_count": 0,
+    "new_native_tests_executed": false,
+    "B2_red_green_executed": false,
+    "current_A3_native_pass_count": null,
+    "prior_A_native_tests": "78_PASS_AND_19_S2F_PASS_ONLY_AT_OLDER_A_SHA",
+    "static_syntax_probe": "SELECTED_NEW_PYTHON_SET_STAR_EXPRESSIONS_AST_PARSE_PASSED__NOT_FULL_FILE_COMPILE",
+    "substantive_scoped_proof": "SOURCE_DERIVED_NATIVE_PRODUCER_CONTRACT__CODE_COMMITTED__RUNTIME_NOT_PROVED"
+  },
+  "G1": "PARTIAL__S2E_SOURCEFREE_I05_PRODUCER_CLOSURE_PATCHED__ORIGINAL35_ENUMERATION_UNISSUED",
+  "G2": "OLDER_A_BOUNDED_PASS_ONLY__B2_A3_EXACT_HEAD_NOT_RUN",
+  "G3": "A3_FOUR_NATIVE_BATCH_ATTACK_FUNCTIONS_COMMITTED__RED_GREEN_NOT_RUN",
+  "G4": "PARTIAL__NO_NEW_REAL_RESOURCE_MEASUREMENTS__B2_O_F_INDEX_RETAINED",
+  "G5": "NOT_RUN__INDEPENDENT_NONAUTHOR_REQUIRED",
+  "engineering": "SOURCEFREE_PATCH_COMMITTED__NEW_RUNNER_PROOF_HOLD",
+  "scientific": "NO_ORIGINAL35_OR_NEW_CAUSAL_TRUTH",
+  "source_rights": "NO_NEW_SOURCE_USE_PERMISSION",
+  "actor_rights": "NO_ACTOR_PERSONA_OR_CONSENT_AUTHORITY",
+  "integration": "UNMERGED_DRAFT_PR__NO_PROTECTED_BRANCH_CHANGE",
+  "dependencies": [
+    "GITHUB_ACTIONS_PRE_RUNNER_EXECUTION_HOLD",
+    "HOLD_DEPENDENCY:S2-D",
+    "THIRD_PARTY_G5_IF_EXECUTABLE_PASS"
+  ],
+  "rejected_alternatives": [
+    "overwrite B2 scientific-fate correction",
+    "rewrite I03/I05 native scientific evaluator",
+    "trust a self-hashed completion receipt as issuer/role/fact truth",
+    "claim CI failure is Python test RED or GitHub API successful rerun is proof of execution",
+    "open another broad hardening or administrative permission cycle"
+  ],
+  "remaining_attacks": [
+    "Run exact native positive, B2 forged scientific-fate and A3 rehashed provenance attacks at frozen SHA; repair any actual failure",
+    "Reproduce genuine underpowered, valid-empty, noncomparable, weighted Fraction and multi-universe semantics without falsifying original I05 results",
+    "Check physical whole-workload source opens, process-tree RSS, memory/output caps and S2-D saved-store seam",
+    "Evaluate current source issuer competence and original35 science independently from sourcefree engineering"
+  ],
+  "disposition": "A3_FROZEN_CODE_AND_HANDOFF__NOT_NATIVE_TESTED__NO_G5_SELF_ACCEPTANCE",
+  "stop_state": "BOUNDED_ADVERSARIAL_REPAIR_DONE__EXECUTE_THEN_THIRD_PARTY_G5_OR_EXACT_HOLD"
+}
