@@ -654,3 +654,29 @@ def test_s2b_a_counterattack_verified_db_cannot_mutate_sql_collation(tmp_path):
         assert _run(source, qa, pred, query) == oracle
     with VerifiedExternalI02(path, roots=roots) as fresh:
         assert len(list(fresh.respondent_refs())) == 3
+
+
+def test_s2b_a_counterattack_nested_sql_handles_are_immutable(tmp_path):
+    """B's original db-reassignment defect must not recur inside A's facade."""
+    source = _build_source("s2b-a-nested-sql-swap", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-nested-sql-swap")
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as verified:
+        rogue_connection = sqlite3.connect(":memory:")
+        try:
+            with pytest.raises(ExternalI02IntegrityError, match="immutable"):
+                verified.db._VerifiedSelectOnlyDatabase__connection = rogue_connection
+            rows = verified.db.execute("SELECT 1")
+            with pytest.raises(ExternalI02IntegrityError, match="immutable"):
+                rows._VerifiedSqlRows__cursor = rogue_connection.execute("SELECT 0")
+            assert rows.fetchone() == (1,)
+        finally:
+            rogue_connection.close()
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, verified,
+        )
+        assert _run(source, qa, pred, query) == oracle
