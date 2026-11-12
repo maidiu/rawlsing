@@ -325,6 +325,88 @@ def build_sourcefree_external_i02(
             os.unlink(staged)
 
 
+class _VerifiedSelectRows:
+    """A bounded cursor iterator with no public raw SQLite connection.
+
+    Returning sqlite3.Cursor exposes a mutable .connection, which can
+    ROLLBACK the verified snapshot despite B's sealed verifier attributes.
+    """
+    __slots__ = ("__cursor", "__view")
+
+    def __init__(self, cursor: sqlite3.Cursor, view: "_VerifiedSelectView") -> None:
+        object.__setattr__(self, "_VerifiedSelectRows__cursor", cursor)
+        object.__setattr__(self, "_VerifiedSelectRows__view", view)
+
+    def __setattr__(self, name: str, value: object) -> None:
+        _fail("verified I02 query-result state is immutable")
+
+    def __delattr__(self, name: str) -> None:
+        _fail("verified I02 query-result state cannot be deleted")
+
+    def __iter__(self) -> "_VerifiedSelectRows":
+        return self
+
+    def __next__(self):
+        self.__view._ensure_open()
+        try:
+            return next(self.__cursor)
+        except sqlite3.ProgrammingError as exc:
+            raise ExternalI02IntegrityError("verified I02 cursor was invalidated") from exc
+
+    def fetchone(self):
+        self.__view._ensure_open()
+        try:
+            return self.__cursor.fetchone()
+        except sqlite3.ProgrammingError as exc:
+            raise ExternalI02IntegrityError("verified I02 cursor was invalidated") from exc
+
+    def fetchall(self):
+        self.__view._ensure_open()
+        try:
+            return self.__cursor.fetchall()
+        except sqlite3.ProgrammingError as exc:
+            raise ExternalI02IntegrityError("verified I02 cursor was invalidated") from exc
+
+
+class _VerifiedSelectView:
+    """SELECT-only interface preserving ONE independently verified read snapshot.
+
+    The raw sqlite3.Connection and cursors are not public/native I03 APIs.
+    Python private-member introspection remains outside this in-process
+    API hardening claim, and is not cryptographic process isolation.
+    """
+    __slots__ = ("__connection", "__closed")
+
+    def __init__(self, connection: sqlite3.Connection) -> None:
+        object.__setattr__(self, "_VerifiedSelectView__connection", connection)
+        object.__setattr__(self, "_VerifiedSelectView__closed", False)
+
+    def __setattr__(self, name: str, value: object) -> None:
+        _fail("verified I02 SQLite snapshot is immutable")
+
+    def __delattr__(self, name: str) -> None:
+        _fail("verified I02 SQLite snapshot cannot be deleted")
+
+    def _ensure_open(self) -> None:
+        if self.__closed:
+            _fail("closed verified I02 SQLite snapshot cannot be queried")
+        if not self.__connection.in_transaction:
+            _fail("verified I02 read transaction ended after root validation")
+
+    def execute(self, sql: str, params: tuple = ()) -> _VerifiedSelectRows:
+        self._ensure_open()
+        if (not isinstance(sql, str)
+                or not re.match(r"(?is)^SELECT\s", sql.lstrip())):
+            _fail("verified I02 connection permits SELECT only; no transaction control")
+        if not isinstance(params, tuple):
+            _fail("verified I02 SQL parameters must be a tuple")
+        return _VerifiedSelectRows(self.__connection.execute(sql, params), self)
+
+    def _close(self) -> None:
+        object.__setattr__(self, "_VerifiedSelectView__closed", True)
+        self.__connection.close()
+
+
 class VerifiedExternalI02:
     """Fresh independent cold verifier; never trusts self-declared roots.
 
@@ -340,6 +422,12 @@ class VerifiedExternalI02:
         if getattr(self, "_sealed", False):
             _fail("immutable verified external I02 certificate cannot be reassigned")
         object.__setattr__(self, name, value)
+
+    def __delattr__(self, name: str) -> None:
+        # Deleting _sealed bypassed B's assignment guard.
+        if getattr(self, "_sealed", False):
+            _fail("immutable verified external I02 certificate cannot be deleted")
+        object.__delattr__(self, name)
 
     def __init__(self, path: str | Path, *, roots: ExternalI02Roots) -> None:
         if not isinstance(roots, ExternalI02Roots):
@@ -373,6 +461,9 @@ class VerifiedExternalI02:
         except Exception:
             self.db.close()
             raise
+        # Publish only a SELECT-only facade bound to the already verified
+        # read transaction; never expose mutable sqlite3.Connection.
+        self.db = _VerifiedSelectView(self.db)
         self.roots = roots
         self._closed = False
         self._sealed = True
@@ -380,10 +471,11 @@ class VerifiedExternalI02:
     def _ensure_open(self) -> None:
         if self._closed:
             _fail("closed external I02 certificate cannot authorize native selection")
+        self.db._ensure_open()
 
     def close(self) -> None:
         object.__setattr__(self, "_closed", True)
-        self.db.close()
+        self.db._close()
 
     def __enter__(self) -> "VerifiedExternalI02":
         return self
