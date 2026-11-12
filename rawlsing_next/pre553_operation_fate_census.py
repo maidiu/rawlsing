@@ -24,6 +24,9 @@ from rawlsing_next.pre553_universal_workload import (
 from rawlsing_next.universal_grammar.types import (
     ELIGIBILITY_STATES, ScientificFrontier, SourceInventory, GrammarPolicy,
 )
+from rawlsing_next.universal_grammar.enumerate import (
+    inventory_ledger as enumerate_inventory_ledger,
+)
 
 SCOPE = "TEST_ONLY_SOURCEFREE"
 SCHEMA = "PYAT_R3_S1C_FROZEN_CENSUS@1.0.0"
@@ -146,6 +149,68 @@ def _nonempty(value: Any, label: str) -> None:
         raise CensusRefusal("MISSING_PROVENANCE_" + label)
 
 
+def _verify_derived_frontier_axes(
+    *, inventory: SourceInventory, policy: GrammarPolicy,
+    frontier: ScientificFrontier,
+) -> None:
+    """Reject self-consistent but fictitious negative/occurrence ledgers.
+
+    The R61 sourcefree enumerator defines UNKNOWN and EXCLUDED as projections
+    of operation rows, and its occurrence ledger as an inventory/policy
+    calculation. Hashing the caller's frontier into a second caller-owned
+    census does *not* establish these relations: both can be rewritten
+    together. This is a deterministic sourcefree consistency check, not an
+    original35 issuer or an independent source-entitlement claim.
+    """
+    expected_unknown = tuple(
+        op.material() for op in frontier.operations
+        if op.disposition == "UNKNOWN"
+    )
+    expected_excluded = tuple(
+        {
+            "op_id": op.op_id, "class": op.claim_class,
+            "disposition": op.disposition, "reasons": list(op.reasons),
+        }
+        for op in frontier.operations
+        if op.disposition in {"PROHIBITED", "INAPPLICABLE_PROVED"}
+    )
+    expected_inventory = tuple(
+        row.material() for row in enumerate_inventory_ledger(inventory, policy)
+    )
+    for label, actual, expected in (
+        ("UNKNOWN_PROJECTION", frontier.unknown, expected_unknown),
+        ("EXCLUDED_PROJECTION", frontier.excluded, expected_excluded),
+        (
+            "INVENTORY_LEDGER_SOURCE",
+            tuple(row.material() for row in frontier.inventory_ledger),
+            expected_inventory,
+        ),
+    ):
+        if semantic_hash(list(actual)) != semantic_hash(list(expected)):
+            raise CensusRefusal(label + "_DRIFT", {
+                "actual_count": len(actual), "expected_count": len(expected),
+            })
+    for label, actual, expected in (
+        ("CLASS_COUNTS", frontier.class_counts, Counter(
+            op.claim_class for op in frontier.operations
+            if op.disposition == "ELIGIBLE"
+        )),
+        ("DISPOSITION_COUNTS", frontier.disposition_counts, Counter(
+            op.disposition for op in frontier.operations
+        )),
+        ("EXECUTION_COUNTS", frontier.execution_counts, Counter(
+            op.execution_state for op in frontier.operations
+        )),
+        ("RESULT_COUNTS", frontier.result_counts, Counter(
+            op.result_state for op in frontier.operations
+        )),
+    ):
+        if dict(actual) != dict(expected):
+            raise CensusRefusal(label + "_DRIFT", {
+                "actual": dict(actual), "expected": dict(expected),
+            })
+
+
 def verify_frozen_inputs(
     census: FrozenInputCensus, *, inventory: SourceInventory,
     policy: GrammarPolicy, frontier: ScientificFrontier,
@@ -216,6 +281,9 @@ def verify_frozen_inputs(
     }
     if dict(frontier.source_identity) != frozen_source:
         raise CensusRefusal("SOURCE_IDENTITY_MISMATCH")
+    _verify_derived_frontier_axes(
+        inventory=inventory, policy=policy, frontier=frontier,
+    )
     inventory_keys = set(inventory.by_key())
     counts: Counter[str] = Counter()
     for op_id, op in operations.items():
