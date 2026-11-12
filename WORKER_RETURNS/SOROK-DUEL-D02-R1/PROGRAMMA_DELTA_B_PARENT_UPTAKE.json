@@ -1,0 +1,96 @@
+{
+  "schema": "SOROK_ADVERSARIAL_PROGRAMMA_DELTA@1",
+  "event_id": "D02-B-20261112-658354e2",
+  "controller_event_id": "UNKNOWN_NOT_ISSUED_IN_AGENT_CONTEXT",
+  "task_id": "D02",
+  "running_contract_sha": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
+  "implementation_sha": "658354e2621e55a0e9d673fae429aaf568f92608",
+  "handoff_provenance": "Final artifact is the branch HEAD containing AGENT_B_PARENT_UPTAKE_HANDOFF.md; implementation_sha is the immutable B code cut.",
+  "author_branch": "codex/sorok-duel-d02-b-parent-uptake-20261112-r1",
+  "composition_sha": "6c6a8afa14e8cb197c5db23257e8171a448bc944",
+  "rival_head": "cef8f53b404e8c5fc124bec2649ed44cba679556",
+  "rival_code_sha": "d82d2ac28331215ba2caa0ae2d152cce3266bef5",
+  "status": "SOURCEFREE_S2_PARTIAL_PREREQUISITE_HELD",
+  "changed_symbols": [
+    "p3.situated_context._period_ingress",
+    "p3.situated_context._period_source",
+    "p3.situated_context.B02_INGRESS",
+    "p3.situated_context.build_situated_context",
+    "tests.test_d02_b_two_event_uptake"
+  ],
+  "ABIclass": "COMPATIBLE_ADDITIVE",
+  "abi_notes": [
+    "Existing D02 selector API and acquired activation retained; period ingress now uses the actual incremental B02 period_progress reader.",
+    "Additive period_progress body/readset fields and exact period_source symbols.",
+    "Two-event proof adds no caller override; D03 gates actual speech separately.",
+    "No P2/material/period/B01-B05/supporting/house writer edits."
+  ],
+  "affected_queued_tasks": ["D03", "D04", "D05"],
+  "affected_task_notes": {
+    "D03": "May consume D02 prior organization but must use the actual C04 child receipt for a later speech response; prior acquired eligibility is not new-event hearing.",
+    "D04": "Must use D03's actual speech/prior-organization boundary and add an explicit target rule/consumer; D02 acquired state alone is not durable formation.",
+    "D05": "Must add a distinct prospective performed consumer; D02 provider/acquired input is not a performed action."
+  },
+  "actual_consumer": "p3.situated_context.build_situated_context -> existing RecursionCycle provider context; D03 actual speech consumer gates later speech response",
+  "source_identities": {
+    "situated_context_sha256": "38bc881627ad74bd95be8530de8e4ab386815adbc4501f283398d70dc9d34dee",
+    "b02_historical_period_sha256": "d1d4171af95f4d87fa9e174159cde46270d12331c728c4462251b488b0cb49c7",
+    "integration_contract_sha256": "b3a1a4991940734daff1ce695c040d2131b1414e08d32cf5d309ac64668485ad",
+    "d02_b02_addendum_sha256": "57a1140fba0d50210479e01227b02c2ee02cc71428ac9b8a6827e1df4987f82a",
+    "d02_two_event_test_sha256": "2395a9f7458d1f4f6ee1fb7c50bf98c16cb5d2a7210742ac1afda2dc25b37de2"
+  },
+  "evidence": {
+    "source": [
+      "WORKER_RETURNS/SOROK-P3-COMPRESSED-DEVELOPMENTAL-STATE-R1/p3/situated_context.py",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT_B.md",
+      "WORKER_RETURNS/SOROK-DUEL-B02-R1/historical_period.py"
+    ],
+    "test": [
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_b_parent_uptake_all.log",
+      "WORKER_RETURNS/SOROK-DUEL-D02-R1/evidence/d02_b_two_event_final.log"
+    ],
+    "negative": [
+      "test_prior_acquired_modes_do_not_enter_unobserved_parent_speech_response",
+      "test_current_period_uses_incremental_progress_fields"
+    ],
+    "cold": [
+      "D02 all 22 passed 927.85s",
+      "D02 focused two-event 2 passed 8.55s"
+    ]
+  },
+  "preserved_obligations": [
+    "A's D02 event/access/source closure and acquired-state activation",
+    "A's D01 deletion/record-list and actual-owner verify repairs",
+    "B02 current-period source/clock checks and historical/interleaving/P4-live-root holds",
+    "No parent private/cash/period/portal read in D02 or D03",
+    "No P2/material/period/B01-B05/supporting/house writer edits"
+  ],
+  "regressed_obligations": [
+    "No functional regression observed: D02 22 passed, D03 7 passed, D01 15 passed, P3 77/1 skipped.",
+    "Intentional freshness: old A/period roots may require recreation under the current period source/source closure; no broad migration."
+  ],
+  "b02_ingress": {
+    "status": "B02_SOURCE_PRESENT_INCREMENTAL_CURRENT_PERIOD_IMPLEMENTED__FULL_HISTORICAL_D02_HELD",
+    "contract_doc": "WORKER_RETURNS/SOROK-DUEL-D02-R1/D02_B02_INGRESS_CONTRACT_B.md",
+    "current_period_source": "read_period_plan + period_progress + read_material_period + p3_interval_span"
+  },
+  "cost": {
+    "tokens": null,
+    "usd": null,
+    "wall_seconds_observed": {
+      "d02_all": 927.85,
+      "d02_two_event": 8.55,
+      "d03": 75.09,
+      "d01": 89.66,
+      "p3": 53.88
+    },
+    "honest_status": "UNKNOWN_TOKENS_AND_USD"
+  },
+  "authority": {
+    "engineering": "SOURCEFREE_S2_PARTIAL_CANDIDATE",
+    "science": "HELD",
+    "rights": "HELD",
+    "actor_human": "HELD",
+    "protected_merge": "HELD"
+  }
+}
