@@ -584,3 +584,31 @@ def test_s2b_a_counterattack_midstream_close_typed_refusal(tmp_path):
             list(cert.event_refs(respondent))
     finally:
         cert.close()
+
+
+def test_s2b_a_counterattack_publication_cannot_clobber_rival(tmp_path, monkeypatch):
+    """G4: target acquired between precheck and publish must never be replaced.
+
+    Two noncolliding writer leases must not accidentally inherit an os.replace
+    overwrite primitive; the final CAS name is publish-once, not last-writer.
+    """
+    import rawlsing_next._pre553_external_i02_certificate as impl
+    source = _build_source("s2b-a-race", [{"id": "R1", "responses": {"Y": 1}}])
+    target = tmp_path / "race.sqlite"
+    rival = b"other-writer-held-destination\n"
+    orig_replace = impl.os.replace
+    orig_link = impl.os.link
+    def competing_replace(stage, destination, *args, **kwargs):
+        target.write_bytes(rival)
+        return orig_replace(stage, destination, *args, **kwargs)
+    def competing_link(stage, destination, *args, **kwargs):
+        target.write_bytes(rival)
+        return orig_link(stage, destination, *args, **kwargs)
+    monkeypatch.setattr(impl.os, "replace", competing_replace)
+    monkeypatch.setattr(impl.os, "link", competing_link)
+    with pytest.raises(ExternalI02IntegrityError, match="collision|claimed|destination"):
+        build_sourcefree_external_i02(
+            _release(source), source["universe"].ref, target, chunk_size=1,
+        )
+    assert target.read_bytes() == rival
+    assert not any(tmp_path.glob(".s2b-stage-*.tmp"))
