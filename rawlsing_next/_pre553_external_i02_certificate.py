@@ -352,10 +352,20 @@ class _VerifiedSqlRows:
         self.__cursor = cursor
 
     def fetchone(self) -> tuple | None:
-        return self.__cursor.fetchone()
+        try:
+            return self.__cursor.fetchone()
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 read cursor closed or invalidated"
+            ) from exc
 
     def fetchall(self) -> list[tuple]:
-        return self.__cursor.fetchall()
+        try:
+            return self.__cursor.fetchall()
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 read cursor closed or invalidated"
+            ) from exc
 
     def __iter__(self):
         return self
@@ -388,7 +398,12 @@ class _VerifiedSelectOnlyDatabase:
             raise ExternalI02IntegrityError(
                 "verified external I02 database only permits SELECT queries"
             )
-        return _VerifiedSqlRows(self.__connection.execute(statement, params))
+        try:
+            return _VerifiedSqlRows(self.__connection.execute(statement, params))
+        except sqlite3.Error as exc:
+            raise ExternalI02IntegrityError(
+                "verified external I02 SQL session closed or invalidated"
+            ) from exc
 
     def close(self) -> None:
         self.__connection.close()
