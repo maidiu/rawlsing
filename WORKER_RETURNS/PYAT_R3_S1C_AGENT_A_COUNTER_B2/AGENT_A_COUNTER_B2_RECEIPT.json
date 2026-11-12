@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_R3_S1C_A_COUNTER_B2_RECEIPT@1.0.0",
+  "kind": "AGENT_A_COUNTERAUTHOR_NOT_G5",
+  "packet": "S1-C",
+  "original_obligation": "P1-04",
+  "pr": "https://github.com/maidiu/rawlsing/pull/975",
+  "branch": "agent/pyat-r3-s1c-a-counter-b2-pending-20261112-r1",
+  "provenance": {
+    "baseline_B2_frozen_head": "f011a7639c89ec07829521cff3824dcaf95b6e6e",
+    "baseline_B2_test_fix": "19ab029c2c5076ec6bc12d0287af60c00a41f576",
+    "baseline_B2_census_blob": "5b2ea5add1d356617425baeda06684efda7fdcf9",
+    "baseline_B2_test_blob": "3677d6c3315deea8b556371840426568ca1bb213",
+    "protected_pre_main_read_cut": "6a5c12f04323d74001f9632063ec907f4fc4468e",
+    "a_product_commit": "0fc55cb5d6c2199bea44000447e0784d127b9ea6",
+    "a_test_code_commit": "dae66cdf9f3846d237e0b1c3069cc17eb05b7746",
+    "a_census_blob": "dd5bf3940083679612d73f98e6a7b7711c223fd5",
+    "a_test_blob": "a19b0db5ea800af80aff86816e77e666f4acc72f",
+    "a_handoff_commit": "bfb0b9a88274a662079f0e58ab89ef24c6126e4f"
+  },
+  "inherited_B2_evidence": {
+    "grade": "REPORTED_LOCAL_MACOS_SOURCEFREE_PASS_ON_ANCESTOR_ONLY",
+    "focused_pass": 17,
+    "inherited_pass": 22,
+    "combined_groups_sum_pass": 182,
+    "combined_counts_may_overlap": true,
+    "declared_operations": 309,
+    "issued_candidate_receipts": 150,
+    "native_empirical_facts": 330,
+    "source_factory_calls": 1,
+    "c11_builds": 1,
+    "source": "WORKER_RETURNS/PYAT_R3_S1C_RUNNER_R2/R3C_RUNNER_R2_EXECUTION_RECEIPT.json"
+  },
+  "adversarial_finding": {
+    "classification": "SOURCE_VERIFIED_BOUNDARY_GAP__NOT_NATIVE_EXECUTED_AT_A_HEAD",
+    "old_guard": "pending_operation_ids elements checked as eligible, not completeness against operation.execution_state=PENDING",
+    "consumer": "rawlsing_next.pre553_universal_workload.compile_governed_frontier",
+    "consumer_mechanism": "active_frontier excludes only IDs from frontier.pending_operation_ids",
+    "attack": "drop pending IDs from partial budget=5 frontier and jointly re-freeze caller-supplied manifests, leave operation PENDING states, source/science hashes, projections and histogram counts unchanged",
+    "predicted_failure": "previous adapter accepts; existing consumer may issue previously budget-pending candidate receipts without its own anti-join detecting the extra issuance"
+  },
+  "repair": {
+    "changed_paths": [
+      "rawlsing_next/pre553_operation_fate_census.py",
+      "rawlsing_next/tests/test_pyat_r3_s1c_source_operation_fates.py"
+    ],
+    "new_refusal_codes": [
+      "PENDING_FATE_CENSUS_DRIFT",
+      "BUDGET_STATE_FATE_DRIFT"
+    ],
+    "source_predicate": "{op_id: op.execution_state == 'PENDING'} == set(frontier.pending_operation_ids), and budget_state PARTIAL iff any pending",
+    "new_test": "test_s1c_a_counter_pending_severance_cannot_overissue_bounded_work",
+    "new_test_claims": [
+      "real budget=5 baseline and first reader",
+      "jointly rehashed pending-list severance with unchanged two frozen operation manifests",
+      "direct R03 compiler plus Batch/C11/I05 on poisoned frontier",
+      "counterguard pre-source-open refusal",
+      "false COMPLETE budget state refusal",
+      "exact checkpoint and operation-fates restoration"
+    ],
+    "new_test_execution": "NOT_RUN",
+    "source_readback": "VERIFIED_BOTH_GITHUB_BLOBS"
+  },
+  "verification": {
+    "new_focused_tests_expected": 18,
+    "new_focused_tests_passed": null,
+    "new_inherited_tests_passed": null,
+    "github_actions": "UNAVAILABLE_RECENT_ACCOUNT_PAYMENTS_OR_SPENDING_LIMIT_B2_CONFIRMED",
+    "local_runner": "NOT_AVAILABLE_IN_THIS_AGENT_SESSION",
+    "native_new_severance": "NOT_EXECUTED",
+    "new_patch_success": "NOT_CLAIMED"
+  },
+  "courts": {
+    "G1": "B2_REPORT_PASS_A_SOURCE_CHECK_ADDED_NOT_EXECUTED",
+    "G2": "B2_ACTUAL_FIRST_CONSUMER_SOURCEFREE_PASS_A_NEW_NEGATIVE_NOT_EXECUTED",
+    "G3": "A_ADVERSARIAL_NEGATIVE_AND_RESTORATION_COMMITTED_NOT_EXECUTED",
+    "G4": "B2_LOCAL_BOUNDED_RESOURCES_PASS_A_UNMEASURED",
+    "G5": "NOT_RUN_INDEPENDENT_NONAUTHOR_REQUIRED",
+    "scientific": "ORIGINAL35_HOLD",
+    "authority": "PROTECTED_UNMERGED_NATIVE_HOST_CURRENT_SOURCE_RIGHTS_HELD"
+  },
+  "handoff": "WORKER_RETURNS/PYAT_R3_S1C_AGENT_A_COUNTER_B2/AGENT_A_COUNTER_B2_HANDOFF.md",
+  "next": "RUN_18_FOCUSED_AND_22_INHERITED_AT_EXACT_A_CODE_CUT__CAUSALLY_REPAIR_IF_RED__THEN_ONE_NONAUTHOR_G5__NO_MORE_AUTHOR_DUEL",
+  "disposition": "A_COUNTER_B2_SOURCE_GROUNDED_PENDING_DRIFT_REPAIR_COMMITTED__NEW_TEST_NOT_RUN__G5_PENDING"
+}
