@@ -52,7 +52,7 @@
             }
           },
           "pid": 62286,
-          "state": "STOPPED_READY_FOR_FOCUSED_G5",
+          "state": "STOPPED_SCOPED_ACCEPTED",
           "received_head": "f546e74b59cf21704aa945d7da5c3ab6050ce8e6",
           "actual_counter_first_turn_model": {
             "id": "msg_1cf409548001dEeoxUnGAq4TXB",
@@ -105,7 +105,7 @@
             }
           },
           "opponent_session_id": "ses_e3122f686ffeByL78cGOKAacTS",
-          "state": "STOPPED_AFTER_B_RETURN",
+          "state": "STOPPED_SCOPED_ACCEPTED",
           "job_id": "pyat940-s1b-b01",
           "received_head": "aa98565c7f9a03b0383cb41eb6d2955d1575ac29",
           "pid": 31766,
@@ -124,8 +124,8 @@
           }
         }
       },
-      "state": "G5_FACTORY_KEY_RECHECK_RUNNING",
-      "active_role": "G5_NONAUTHOR",
+      "state": "TERMINAL_CLOSED_AT_SCOPED_GRADE",
+      "active_role": null,
       "round_sequence": [
         "A_GO_FIRST",
         "B_FOLLOW_UP",
@@ -162,8 +162,8 @@
         "nativegrade"
       ],
       "integration_state": "UNMERGED",
-      "independent_g5": "REVISE_EXACT_DEFECT",
-      "active_job": "pyat940-s1b-g5-factory-key-recheck-r01",
+      "independent_g5": "ACCEPT_SCOPED",
+      "active_job": null,
       "contract_frozen_at_sha": "60105d28ba2c79022c7e61ed1531cac76c0e83ee",
       "launch_receipt": {
         "job_id": "pyat940-s1b-g5-factory-key-recheck-r01",
@@ -200,7 +200,7 @@
       },
       "custody_comment": {
         "issue": 918,
-        "comment_id": 6822100947
+        "comment_id": 6822373373
       },
       "b_return": {
         "job_id": "pyat940-s1b-b01",
@@ -237,7 +237,7 @@
         "session_id": "ses_e30a442d8ffeYBbXi7rPUpPxoc",
         "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat940-s1b-g5",
         "branch": "agent/pyat940-s1b-g5-r1",
-        "state": "RUNNING",
+        "state": "TERMINAL_CLOSED_SCOPED_ACCEPTED",
         "job_id": "pyat940-s1b-g5-factory-key-recheck-r01",
         "tested_candidate_head": "bdd3a83fc471ce99c5d85d7f7930270128eff2d4",
         "tested_code_sha": "dedd2fb8a1f5842910a0dc842fe75b3618c23443",
@@ -296,7 +296,36 @@
         "disposition": "REPAIRED_AUTHOR_CLAIM_G5_PENDING",
         "claims": "bothfactory/repositorymismatchrefuse/matchingandabsentpositive;46packet+109regression/1skip+132relatedPASS",
         "code_changes": "adapter24linehelper+focusedtestonly"
-      }
+      },
+      "g5_factory_key_recheck_return": {
+        "job_id": "pyat940-s1b-g5-factory-key-recheck-r01",
+        "exit_code": 0,
+        "review_head": "802603db0113b92a52f024116c4583791c8122dd",
+        "signed_receipt_commit": "50b32688e9c970ada43bc6a66c4d8413d73da822",
+        "tested_delivery_sha": "bdd3a83fc471ce99c5d85d7f7930270128eff2d4",
+        "tested_code_sha": "dedd2fb8a1f5842910a0dc842fe75b3618c23443",
+        "decision": "ACCEPT_SCOPED",
+        "gates": "G1-G5 PASS",
+        "grade": "S1B_SOURCEFREE_SYNTHETIC_PLUS_HISTORICAL_NONRESPONDENT_PARITY",
+        "remote_verified": true,
+        "review_scope_verified": "own return/evidence only",
+        "actual_final_model": {
+          "id": "deepseek-v4.1-flash",
+          "providerID": "opencode-go",
+          "variant": "max"
+        },
+        "material_open_defects": [],
+        "tests": "46packet/109regressions+1skip/161related+1skip; realfactory/repository beforeprojectionrefusal+baselinepreservation"
+      },
+      "completed_job": "pyat940-s1b-g5-factory-key-recheck-r01",
+      "engineering_disposition": "ACCEPT_SCOPED",
+      "accepted_scope": "S1B_SOURCEFREE_SYNTHETIC_PLUS_HISTORICAL_NONRESPONDENT_PARITY",
+      "accepted_delivery_sha": "bdd3a83fc471ce99c5d85d7f7930270128eff2d4",
+      "accepted_code_sha": "dedd2fb8a1f5842910a0dc842fe75b3618c23443",
+      "sourcefree_packet_complete": true,
+      "original_task_complete": false,
+      "original_task_state": "ENGINEERING_ACCEPTED_AT_SOURCEFREE_GRADE; native/source/issuer/protected/integrated holds remain",
+      "next_authorized_action": "NONE_IN_S1B_AT_THIS_GRADE; continue existing S1-D counter; no original native/source grant"
     },
     {
       "pair_id": "PYAT940-P2",
