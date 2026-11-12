@@ -1,7 +1,7 @@
 # B05 ABI — Agent A semantic interleave addendum
 
 **Base:** `B05_ABI.md` remains the rent receipt/reader contract. B's `B05_B_ABI_REVISION.md` is historical; its B04 bridge dependency is not adopted.
-**Code:** `4959596dd2e130a3856cc3b9d7ce24f8d0261400`; B lock/rollback from `4a3c45c` retained.
+**Code:** `d2a0a4eadab4ba99ae830c8e47013e60295a4632`; B lock/rollback from `4a3c45c` retained.
 **Grade:** `SOURCEFREE_S2_ONLY`.
 
 ## Cross-boundary BatchEngine adapter
@@ -40,8 +40,10 @@ unchanged by B04/B05; rent 55→43; B03 feasibility REFUSED_AFFORDABILITY;
 
 ## Parent work and the typed purchase boundary
 
-Parent C02 `PAID_WORK` is performed **before** the B04 purchase in the B05
-test. After the admitted purchase, C02 parent material/feasible/activity reads
+Parent C02 material is declared in the same `sourcefree_currency_unit` as the
+B04 market/request in the B05 tests; a different parent unit would make the
+purchase refuse, not convert. Parent C02 `PAID_WORK` is performed **before**
+the B04 purchase in the B05 test. After the admitted purchase, C02 parent material/feasible/activity reads
 refuse `PARENT_MATERIAL_HISTORY_MISMATCH` because the typed
 `P2_PARENT_PURCHASE` history hook is pending. B05 rent continues (it uses B01
 household cash and B03 dwelling, not parent material). No antecedent bridge,
@@ -50,6 +52,10 @@ WORK/DEBT/CIRCUMSTANCE fake, or second purchase is used to make the test green.
 After Pair3 adds the typed hook (see `SOROK-DUEL-B04-R1/B04_A_SEMANTIC_ABI.md`),
 post-purchase parent work/feasible actions and a second purchase can be tested;
 the bridge must remain removed.
+
+## Zero and held rent
+
+`test_b05_zero_and_held.py` proves a completed period with insufficient household cash produces a durable REFUSED `B05_INSUFFICIENT_HOUSEHOLD_CASH` receipt and no debit, and a zero `monthly_rent` produces `UNCHANGED` with no debit. A later different operation for the same period is `B05_RENT_ALREADY_RECORDED`; there is no arrears model.
 
 ## Preserved rent invariants
 

@@ -1,13 +1,14 @@
 ============================= test session starts ==============================
 platform darwin -- Python 3.11.3, pytest-9.1.1, pluggy-1.6.0 -- /private/tmp/rawlsing-oct28-p1r1/venv/bin/python
 rootdir: /Users/matthewsmith/.codex/worktrees/sorok-duel-b01/Rawlsing
-collecting ... collected 6 items
+collecting ... collected 7 items
 
-WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_is_typed_and_c02_parent_history_refuses_until_hook PASSED [ 16%]
-WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_refusals_stock_funds_time_have_no_effect PASSED [ 33%]
-WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_cold_restore_and_source_severance PASSED [ 50%]
-WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_purchase_is_typed_and_c02_history_refuses_until_hook PASSED [ 66%]
-WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_c02_parent_activity_refuses_after_purchase_without_double_debit PASSED [ 83%]
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_is_typed_and_c02_parent_history_refuses_until_hook PASSED [ 14%]
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_refusals_stock_funds_time_have_no_effect PASSED [ 28%]
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_purchase_cold_restore_and_source_severance PASSED [ 42%]
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_operations.py::test_parent_currency_mismatch_refuses_without_conversion PASSED [ 57%]
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_purchase_is_typed_and_c02_history_refuses_until_hook PASSED [ 71%]
+WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_c02_parent_activity_refuses_after_purchase_without_double_debit PASSED [ 85%]
 WORKER_RETURNS/SOROK-DUEL-B04-R1/test_b04_composition.py::test_purchase_crash_rolls_back_parent_stock_ownership_and_history PASSED [100%]
 
-========================= 6 passed in 63.78s (0:01:03) =========================
+========================= 7 passed in 63.78s (0:01:03) =========================

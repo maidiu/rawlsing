@@ -5,7 +5,7 @@
 **Immutable start / B return:** `15472ca725e03be1c87faef8c30511edcdf10111`.
 **B production:** `4a3c45cda7d814df0c60ca4e245499fcfca62162`.
 **Branch:** `codex/sorok-duel-b04-b05-a-semantic-interleave-20261112-r1`.
-**Final tested code SHA:** `4959596dd2e130a3856cc3b9d7ce24f8d0261400`.
+**Final tested code SHA:** `d2a0a4eadab4ba99ae830c8e47013e60295a4632`.
 **Running contract:** `08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a`.
 **Protected inspection baseline:** `6a5c12f04323d74001f9632063ec907f4fc4468e`.
 
@@ -67,6 +67,7 @@ B's combined run is valid at its cut with the bridge; it is not independent rece
 - `read_purchase` now reads the typed `P2_PARENT_PURCHASE` episode + ownership acquisition via C01 registration, and reports the actual C02 current-material/feasible refusal rather than calling it green.
 - `purchase_drum_kit` after a first purchase refuses `PURCHASE_PARENT_UNAVAILABLE` because C02 history no longer recognizes the parent material source; no second debit/stock/ownership.
 - B01 fixed-A household cash/free-hours remain untouched; B03 household/dwelling sources unchanged; no public event/Nadia perception.
+- **Currency is explicit same-unit, not converted.** B04 requires the C02 parent material `currency_unit`, the market inventory `currency_unit` and the request `currency_unit` to be exactly equal. C02's default parent unit (`parent_sourcefree_currency_unit`) is not silently equated with the market unit; tests declare `currency_unit=sourcefree_currency_unit` for an admitted purchase. A parent/market/request mismatch refuses `PURCHASE_CURRENCY_INCOMPATIBLE` with no debit/stock/ownership; the receipt records all three units and `currency_basis=PARENT_MARKET_REQUEST_CURRENCY_UNIT_EQUAL`. No conversion or doubled wealth.
 
 ### 4.2 B05 parent work ordering, rent and cross-boundary batch
 
@@ -88,9 +89,9 @@ B's combined run is valid at its cut with the bridge; it is not independent rece
 
 | Suite | Result | Evidence |
 |---|---|---|
-| B04 operations + composition | **6 passed in 63.78s** | `SOROK-DUEL-B04-R1/evidence/b04_a_semantic.log` |
-| B05 rolling + rollback + post-split batch + cross-boundary batch | **4 passed in 134.80s** | `SOROK-DUEL-B05-R1/evidence/b05_a_semantic.log` |
-| B01+B03+B02+B04+B05 combined | **39 passed in 394.59s** | `SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log` |
+| B04 operations + composition | **7 passed in 63.78s** | `SOROK-DUEL-B04-R1/evidence/b04_a_semantic.log` |
+| B05 rolling + rollback + post-split batch + cross-boundary + zero/held | **6 passed in 141.03s** | `SOROK-DUEL-B05-R1/evidence/b05_a_semantic.log` |
+| B01+B03+B02+B04+B05 combined | **42 passed in 399.43s** | `SOROK-DUEL-B05-R1/evidence/a_b04_b05_cross_combined.log` |
 | P6 house/P2 owner/actor scene | **15 passed in 201.23s** | `SOROK-DUEL-B05-R1/evidence/a_cross_adjacent.log` |
 | P6 MII | **18 passed in 232.25s** | `SOROK-DUEL-B05-R1/evidence/a_cross_mii.log` |
 | B02 period + incremental | **9 passed** | `SOROK-DUEL-B02-R1/evidence/a_relay_b02.log` |
@@ -110,7 +111,7 @@ Negatives/restores exercised: typed purchase with no antecedent bridge; actual C
 
 ## 7. Exact artifact and receipts
 
-- Final code SHA `4959596dd2e130a3856cc3b9d7ce24f8d0261400`; B start `15472ca725e03be1c87faef8c30511edcdf10111`; B production `4a3c45cda7d814df0c60ca4e245499fcfca62162`.
+- Final code SHA `d2a0a4eadab4ba99ae830c8e47013e60295a4632`; B start `15472ca725e03be1c87faef8c30511edcdf10111`; B production `4a3c45cda7d814df0c60ca4e245499fcfca62162`.
 - Changed code: `material_operations.py` (bridge removal, typed read/status, locks/rollback retained), `rolling_reproduction.py` (`PeriodInterleaveOwner`), B04/B05 tests, no Pair3/P3/P6 edits.
 - ABI: `B04_A_SEMANTIC_ABI.md`; base `B04_ABI.md`/`B05_ABI.md`; B's bridge revision/evidence retained as historical, not adopted.
 - Commands: the evidence logs above, qualified environment `/private/tmp/rawlsing-oct28-p1r1/venv/bin/python -B -m pytest -q -p no:cacheprovider ...`.

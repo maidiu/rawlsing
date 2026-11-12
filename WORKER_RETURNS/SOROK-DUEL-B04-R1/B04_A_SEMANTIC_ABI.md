@@ -1,7 +1,7 @@
 # B04 typed purchase / C02 parent-history hook ABI — A semantic revision
 
 **Status:** `SOURCEFREE_S2_ONLY`; B04 purchase receipt/stock/ownership is real, but C02 parent current-material consumption is **REFUSED until the typed hook exists**. No antecedent bridge is adopted.
-**Final code:** `4959596dd2e130a3856cc3b9d7ce24f8d0261400`; B start `15472ca`; B production `4a3c45c`.
+**Final code:** `d2a0a4eadab4ba99ae830c8e47013e60295a4632`; B start `15472ca`; B production `4a3c45c`.
 **Base:** `B04_ABI.md`; B's `B04_B_ABI_REVISION.md` bridge is retained as historical evidence but **not adopted**.
 
 ## B04 current operation
@@ -17,6 +17,7 @@ read_purchase(session, parent_id, operation_id, *, as_actor)
 Admission (one `_StoreWrite` under B04 locks):
 - validates the registered parent material through C02 **before** the purchase;
 - validates market stock, price/currency, parent cash/free-hours, B03 material constraints;
+- requires parent material `currency_unit` == market `currency_unit` == request `currency_unit`; mismatch refuses `PURCHASE_CURRENCY_INCOMPATIBLE` with no conversion/doubled wealth; receipt records all three units and `currency_basis=PARENT_MARKET_REQUEST_CURRENCY_UNIT_EQUAL`;
 - atomically writes the typed `P2_PARENT_PURCHASE` C12 receipt, parent material document, market decrement, ownership row and one checkpoint;
 - no `P2_PARENT_MATERIAL_ANTECEDENT`, `P2_PARENT_ACTIVITY`, `P2_PARENT_CIRCUMSTANCE` bridge, no WORK/DEBT/CIRCUMSTANCE fake, no public event.
 - B01 fixed-A cash/free-hours untouched; parent C02 cash/free-hours funding only.
