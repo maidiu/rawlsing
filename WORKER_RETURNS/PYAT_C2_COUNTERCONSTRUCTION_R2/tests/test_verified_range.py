@@ -374,6 +374,16 @@ class TestVerifiedRanges(unittest.TestCase):
             self.store.select(accepted=self.a,universe="U9",respondent="R1",target="PRIVATE",
                               scope=false_scope)
 
+    def test_preissuance_omission_cannot_self_certify_against_external_root(self):
+        # A different, internally valid tree is not I02's already accepted tree.
+        candidate=DiskSemanticIndex.build(Path(self.tmp.name)/"short.db",
+                                          (e for e in self.events if e != self.events[1]),scope=self.scope)
+        self.addCleanup(candidate.db.close)
+        self.assertNotEqual(candidate.anchor.root,self.a.root)
+        with self.assertRaisesRegex(BadRange,"UNTRUSTED_ANCHOR"):
+            candidate.select(accepted=self.a,universe="U1",respondent="R1",target="NQ7",
+                             scope=self.scope)
+
     def test_proof_work_bounded_by_log_tree_height(self):
         self.assertEqual(len(self.ask()),3)
         self.assertLessEqual(self.store.proof_peak,8)
