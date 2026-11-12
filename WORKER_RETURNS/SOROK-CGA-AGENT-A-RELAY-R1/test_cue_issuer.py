@@ -126,3 +126,75 @@ def test_first_consumer_binds_current_world_readset_separately_from_p3(tmp_path)
     turns = json.loads((state / "p4_receipts.json").read_text())["turns"]
     committed = turns[-1]["receipt"]["outward_cue"]
     assert committed["event_hash"] == proof["event_hash"]
+
+
+def test_crash_after_world_speech_commit_holds_retry_without_duplication(tmp_path, monkeypatch):
+    """Boundary proof, not a claim of automatic crash reconciliation.
+
+    Existing P4 writes pending before world actions. A fault after the actual
+    actor SPEECH is committed and before outer P4 receipt persistence must
+    *refuse* replay rather than silently perform the speech twice.
+    """
+    import json
+    import pytest
+
+    state = tmp_path / "crash"
+    run_p6.experience(state, Namespace(command="new", request_id=None,
+                                       situated_house=True))
+    original = run_p6.reconsider
+
+    def interpret(packet):
+        assert packet["sourcefree_p3"]["world_readset"]
+        return {"attention": "uncertain", "interpretation": "Sourcefree only",
+                "action": "speak", "cue_event_id": None, "channel": None}
+
+    def realize(packet, decision):
+        return "A single committed sourcefree utterance."
+
+    def fault_after_committed_speech(*args, **kwargs):
+        result = original(*args, **kwargs)
+        assert result["speech"]["admitted"]
+        raise RuntimeError("INJECTED_AFTER_WORLD_SPEECH_BEFORE_P4_RECEIPT")
+
+    with monkeypatch.context() as fault:
+        fault.setattr(run_p6, "reconsider", fault_after_committed_speech)
+        with pytest.raises(RuntimeError, match="INJECTED_AFTER_WORLD_SPEECH"):
+            run_p6.experience(
+                state, Namespace(command="approach", request_id="crash-1"),
+                interpret=interpret, realize=realize,
+                sourcefree_p3_bridge=True)
+
+    ledger = json.loads((state / "p4_receipts.json").read_text())
+    assert ledger["pending"]["request_id"] == "crash-1"
+    assert not ledger["turns"]
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        committed = [event for event in session.events()
+                     if event["kind"] == "SPEECH"
+                     and event["actor_id"] == "A"
+                     and event["body"].get("text") ==
+                     "A single committed sourcefree utterance."]
+        assert len(committed) == 1
+        speech_hash = committed[0]["hash"]
+        head = owner.store.head()
+    finally:
+        owner.close()
+
+    with pytest.raises(run_p6.RecursionRefusal,
+                       match="P4_PENDING_OPERATION_REQUIRES_RECONCILIATION"):
+        run_p6.experience(
+            state, Namespace(command="approach", request_id="crash-1"),
+            interpret=interpret, realize=realize,
+            sourcefree_p3_bridge=True)
+    owner = run_p6.open_owner(state / "actual-p2")
+    try:
+        session = owner.base_owner.fanin.session
+        again = [event for event in session.events()
+                 if event["kind"] == "SPEECH" and event["actor_id"] == "A"
+                 and event["body"].get("text") ==
+                 "A single committed sourcefree utterance."]
+        assert len(again) == 1 and again[0]["hash"] == speech_hash
+        assert owner.store.head() == head
+    finally:
+        owner.close()
