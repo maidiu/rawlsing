@@ -11,7 +11,7 @@ from dataclasses import replace
 import pytest
 
 from rawlsing_next.pre553_empirical_objects import (
-    DiscoveryResultReceipt, ExactRef, semantic_hash,
+    DiscoveryResultReceipt, ExactRef, exact_ref, semantic_hash,
 )
 from rawlsing_next.pre553_discovery_exact import I05_CONTRACT_ID
 from rawlsing_next.pre553_s2e_exact_conservation import (
@@ -113,12 +113,11 @@ def test_a2_rehashed_wrong_winning_predicate_and_outer_refused():
     case, manifest, receipts, outputs, baseline, unit = _run()
     native = outputs[unit.unit_hash]
     candidate = native.receipts[0]
+    winner = exact_ref(candidate.winning_predicate_ref, "candidate winner")
     wrong = next(
-        p.ref for p in native.executed_predicates
-        if p.ref.key != candidate.winning_predicate_ref["kind"] + "|impossible"
-        and p.ref != candidate.winning_predicate_ref
+        p.ref for p in native.executed_predicates if p.ref != winner
     )
-    assert wrong != candidate.winning_predicate_ref
+    assert wrong != winner
     altered = _forge_receipt(
         candidate, overrides={"winning_predicate_ref": wrong},
     )
