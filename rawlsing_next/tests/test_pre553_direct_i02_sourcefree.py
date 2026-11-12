@@ -26,7 +26,7 @@ from rawlsing_next.pre553_c11_ingest import (
     C11SourceReleaseCandidate, ingest_c11_source_release,
 )
 from rawlsing_next.pre553_c11_repository import C11Repository
-from rawlsing_next.pre553_empirical_objects import exact_ref
+from rawlsing_next.pre553_empirical_objects import exact_ref, RespondentEvent
 
 
 def _direct(tag):
@@ -121,7 +121,7 @@ def test_s2b_a5_direct_declared_census_refuses_family_omission(tmp_path, omitted
     # leave original independently declared census/source refs unchanged.
     sections[omitted] = islice(sections[omitted], 1, None)
     spoiled = replace(source, sections=sections)
-    with pytest.raises(Exception):
+    with pytest.raises(ExternalI02IntegrityError):
         build_sourcefree_direct_i02(
             spoiled, candidate.empirical_universes[0].ref,
             tmp_path / (omitted + ".sqlite"),
@@ -140,7 +140,7 @@ def test_s2b_a5_direct_duplicate_occurrence_and_changed_state_refused(tmp_path):
     declared["RespondentEvent"] = len(events) + 1
     manifest = replace(candidate.source_release_manifest,
                        declared_record_counts_by_logical_family=declared)
-    with pytest.raises(Exception):
+    with pytest.raises(ExternalI02IntegrityError):
         build_sourcefree_direct_i02(
             replace(source, manifest=manifest, sections=sections),
             candidate.empirical_universes[0].ref,
@@ -184,3 +184,83 @@ def test_s2b_a5_direct_one_shot_iterators_cannot_silently_replay(tmp_path):
             input_once, universe, tmp_path / "second.sqlite", chunk_size=3,
         )
     assert not (tmp_path / "second.sqlite").exists()
+
+
+
+def test_s2b_a5_sourcefree_direct_changed_restore_without_legacy_release(tmp_path):
+    """New direct certificate responds to real typed sourcefree event changes.
+
+    The sourcefree fixture is not an original35 source-equivalence claim.
+    Source/content rights remain held separately; changed bytes must be
+    independently issued before any native production consumer accepts them.
+    """
+    candidate, _, original = _direct("s2b-a5-change")
+    universe = candidate.empirical_universes[0].ref
+    original_path = tmp_path / "before.sqlite"
+    original_roots = build_sourcefree_direct_i02(original, universe, original_path, chunk_size=1)
+    event = candidate.respondent_events[0]
+    changed_event = RespondentEvent(
+        typed_state=event.typed_state,
+        authority_snapshot_refs=event.authority_snapshot_refs,
+        dependency_refs=event.dependency_refs,
+        producer_replay_locator_or_reference_root=event.producer_replay_locator_or_reference_root,
+        **{**dict(event.semantic_fields), "raw_response_value": "A_DIFFERENT_TYPED_RESPONSE"},
+    )
+    assert changed_event.ref != event.ref
+    changed_candidate = replace(candidate,
+        respondent_events=(changed_event, *candidate.respondent_events[1:]),
+        candidate_replay_manifest=None,
+    )
+    replay = candidate.candidate_replay_manifest
+    changed_stream = direct_sections_from_candidate(
+        changed_candidate,
+        replay_protocol_authority_ref=replay.replay_protocol_authority_ref,
+        replay_protocol_version=replay.replay_protocol_version,
+        deterministic_tie_order_rules_ref=replay.deterministic_tie_order_rules_ref,
+    )
+    changed_path = tmp_path / "changed.sqlite"
+    changed_roots = build_sourcefree_direct_i02(
+        changed_stream, universe, changed_path, chunk_size=7,
+    )
+    assert changed_roots.logical != original_roots.logical
+    respondent = exact_ref(event.scoped_respondent_ref).key
+    question = exact_ref(event.native_question_ref)
+    with VerifiedExternalI02(original_path, roots=original_roots) as reader:
+        old_refs = {r.key for r in reader.selector_refs(respondent, question)}
+        assert event.ref.key in old_refs
+    with VerifiedExternalI02(changed_path, roots=changed_roots) as reader:
+        new_refs = {r.key for r in reader.selector_refs(respondent, question)}
+        assert changed_event.ref.key in new_refs
+        assert event.ref.key not in new_refs
+    with pytest.raises(ExternalI02IntegrityError):
+        VerifiedExternalI02(changed_path, roots=original_roots)
+    _, _, restored_input = _direct("s2b-a5-change")
+    restored_roots = build_sourcefree_direct_i02(
+        restored_input, universe, tmp_path / "restored.sqlite", chunk_size=3,
+    )
+    assert restored_roots.logical == original_roots.logical
+
+
+def test_s2b_a5_direct_original_semantic_event_order_is_invariant(tmp_path):
+    candidate, _, _ = _direct("s2b-a5-ordered")
+    left_replay = candidate.candidate_replay_manifest
+    def from_candidate(event_stream):
+        original = replace(
+            candidate, respondent_events=event_stream, candidate_replay_manifest=None,
+        )
+        return direct_sections_from_candidate(
+            original,
+            replay_protocol_authority_ref=left_replay.replay_protocol_authority_ref,
+            replay_protocol_version=left_replay.replay_protocol_version,
+            deterministic_tie_order_rules_ref=left_replay.deterministic_tie_order_rules_ref,
+        )
+    universe = candidate.empirical_universes[0].ref
+    a = build_sourcefree_direct_i02(
+        from_candidate(candidate.respondent_events), universe,
+        tmp_path / "original-order.sqlite", chunk_size=5,
+    )
+    b = build_sourcefree_direct_i02(
+        from_candidate(tuple(reversed(candidate.respondent_events))), universe,
+        tmp_path / "reversed-order.sqlite", chunk_size=1,
+    )
+    assert a.logical == b.logical
