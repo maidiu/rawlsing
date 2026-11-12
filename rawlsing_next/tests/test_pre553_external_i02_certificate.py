@@ -494,3 +494,126 @@ stage.build_sourcefree_external_i02(
     for orphan in orphans:
         with pytest.raises(ExternalI02IntegrityError):
             VerifiedExternalI02(orphan, roots=forged)
+
+
+# Agent A reciprocal attack against Agent B's frozen certificate boundary.
+# These tests first ran RED on B's fixed 88/88 implementation, before repairs.
+
+def test_s2b_a_public_connection_transaction_escape_corrupts_real_i03(tmp_path):
+    """The exposed sqlite Connection permits ROLLBACK after root verification.
+
+    A subsequent legitimate filesystem writer can then replace the exact
+    native posting; B's immutable *attribute* does not pin the DB transaction.
+    Demonstrate the native fact consequence on the unrepaired reader, not just
+    a syntactic claim about the existence of .rollback().
+    """
+    source = _build_source("s2b-a-rollback-forgery", [
+        {"id": "R1", "responses": {"Y": 1}},
+        {"id": "R2", "responses": {"Y": 0}},
+        {"id": "R3", "responses": {"Y": 1}},
+    ])
+    qa, pred, query, oracle = _facts(source, "s2b-a-rollback-forgery")
+    path, held = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=held) as real:
+        install_sourcefree_external_i02_i03(
+            source["repo"], source["release_ref"], source["universe"].ref, real,
+        )
+        assert _run(source, qa, pred, query) == oracle
+        try:
+            real.db.rollback()
+        except ExternalI02IntegrityError:
+            pass  # Correct: a public consumer cannot end the verified snapshot.
+        else:
+            with sqlite3.connect(path) as untrusted:
+                untrusted.execute("""DELETE FROM selectors
+                    WHERE kind='native' AND event_ref=(
+                        SELECT ref FROM objects
+                        WHERE family='RespondentEvent' AND respondent=?
+                        LIMIT 1)""", (source["respondents"]["R1"].ref.key,))
+            tampered = _run(source, qa, pred, query)
+            assert tampered != oracle, "hostile counterexample did not alter native fact"
+            pytest.fail("B's public verified connection can roll back its authenticated snapshot and return altered native I03 facts")
+        assert _run(source, qa, pred, query) == oracle
+
+
+@pytest.mark.parametrize("operation", ("rollback_sql", "commit_sql", "close_connection"))
+def test_s2b_a_public_db_transaction_controls_not_exposed(tmp_path, operation):
+    """A read-only database snapshot must not export its transaction controls."""
+    source = _build_source("s2b-a-txn-controls-" + operation, [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    path, roots = _prepare(tmp_path, source)
+    with VerifiedExternalI02(path, roots=roots) as real:
+        with pytest.raises(ExternalI02IntegrityError, match="transaction|read-only|verified|control"):
+            if operation == "close_connection":
+                real.db.close()
+            else:
+                real.db.execute("ROLLBACK" if operation == "rollback_sql" else "COMMIT")
+        assert len(list(real.respondent_refs())) == 1
+
+
+def test_s2b_a_close_between_selector_cursor_pages_refuses_typed(tmp_path):
+    """Closing during a live multi-event cursor must refuse as integrity failure."""
+    source = _multi_i03_source("s2b-a-mid-iteration")
+    path, roots = _prepare(tmp_path, source)
+    respondent = source["respondents"]["R1"].ref.key
+    cert = VerifiedExternalI02(path, roots=roots)
+    try:
+        event_stream = cert.selector_refs(respondent, source["qrefs"]["Y"])
+        assert next(event_stream).kind == "RespondentEvent"
+        cert.close()
+        with pytest.raises(ExternalI02IntegrityError, match="closed"):
+            list(event_stream)
+    finally:
+        cert.close()
+
+
+def test_s2b_a_atomic_publication_cannot_replace_concurrent_writer(tmp_path, monkeypatch):
+    """Prevent the check-then-os.replace TOCTOU losing another writer's artifact."""
+    import rawlsing_next._pre553_external_i02_certificate as external
+    source = _build_source("s2b-a-publication-collision", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    target = tmp_path / "conflicting.sqlite"
+    old_replace = external.os.replace
+    old_link = external.os.link
+    rival_bytes = b"second-builder-authoritative-file"
+    def simulate_replace(src, dst):
+        Path(dst).write_bytes(rival_bytes)
+        return old_replace(src, dst)
+    def simulate_link(src, dst, **kwargs):
+        Path(dst).write_bytes(rival_bytes)
+        return old_link(src, dst, **kwargs)
+    monkeypatch.setattr(external.os, "replace", simulate_replace)
+    monkeypatch.setattr(external.os, "link", simulate_link)
+    with pytest.raises(ExternalI02IntegrityError, match="collision|already|exists"):
+        build_sourcefree_external_i02(
+            _release(source), source["universe"].ref, target, chunk_size=5,
+        )
+    assert target.read_bytes() == rival_bytes
+
+
+def test_s2b_a_poisoned_mass_closure_refusal_is_bounded(tmp_path):
+    """An attacker cannot force an all-ref Python list from an invalid closure."""
+    from rawlsing_next._pre553_external_i02_certificate import (
+        _check_relations_readonly,
+    )
+    db = sqlite3.connect(":memory:")
+    try:
+        db.execute("CREATE TABLE closure(ref TEXT PRIMARY KEY)")
+        db.execute("CREATE TABLE objects(ref TEXT PRIMARY KEY)")
+        db.executemany(
+            "INSERT INTO closure(ref) VALUES (?)",
+            ((f"untrusted:{i:010d}",) for i in range(60000)),
+        )
+        db.commit()
+        tracemalloc.start()
+        try:
+            with pytest.raises(ExternalI02IntegrityError, match="closure"):
+                _check_relations_readonly(db, "source:not-present")
+            _used, peak = tracemalloc.get_traced_memory()
+        finally:
+            tracemalloc.stop()
+        assert peak < 1_500_000, f"unbounded Python closure list: {peak} bytes"
+    finally:
+        db.close()
