@@ -39,7 +39,7 @@ def test_c1_changed_semantic_value_must_not_reuse_same_key_cached_release():
     assert base.projection_identity_ref == alternative.projection_identity_ref
     assert base.required_authority_refs == alternative.required_authority_refs
     assert base.expected_source_sha256 == alternative.expected_source_sha256
-    assert base.cache_identity == alternative.cache_identity  # legacy weak key
+    assert base.cache_identity != alternative.cache_identity
 
     cache = SourceBackedC11SessionCache()
     _, original = build_source_backed_c11_repository(source, base, cache=cache)
@@ -71,7 +71,7 @@ def test_c1_changed_row_to_respondent_binding_cannot_reuse_old_c11():
             *rows[2:],
         ),
     )
-    assert altered.cache_identity == original_projection.cache_identity
+    assert altered.cache_identity != original_projection.cache_identity
 
     cache = SourceBackedC11SessionCache()
     _, old = build_source_backed_c11_repository(
@@ -99,4 +99,60 @@ def test_c1_decoder_metadata_context_changes_cache_admission_not_c11_semantics()
     # The source observations are identical, so the logical C11 release is identical.
     assert first.release_ref == second.release_ref
     # The qualified physical decoder evidence is not identical.
+    assert cache.entry_count == 2
+
+
+def test_c1_changed_routing_and_occurrence_are_distinct_cache_inputs():
+    fx = _fixture("agent-b-routing")
+    source = _stream(fx)
+    base = fx["projection"]
+    old_routing = base.routing
+    # A different independently specified routing member-set ref must not
+    # reuse a release with the previous administration receipt.
+    new_first = replace(
+        old_routing[0],
+        member_set_replay_ref=replace(
+            old_routing[0].member_set_replay_ref, content_hash="d" * 64
+        ),
+    )
+    new_routing = replace(base, routing=(new_first, *old_routing[1:]))
+    assert new_routing.cache_identity != base.cache_identity
+
+    original_slot = base.response_slots[2]
+    old_response = original_slot.values[0]
+    altered_occurrence = replace(
+        old_response.occurrences[0],
+        multiplicity_order_rank_fields={"kind": "MULTISELECT", "index": 8},
+    )
+    altered_response = replace(
+        old_response,
+        occurrences=(altered_occurrence, *old_response.occurrences[1:]),
+    )
+    altered_slot = replace(
+        original_slot, values=(altered_response, *original_slot.values[1:])
+    )
+    altered = replace(
+        base, response_slots=(*base.response_slots[:2], altered_slot, *base.response_slots[3:])
+    )
+    assert altered.cache_identity != base.cache_identity
+    cache = SourceBackedC11SessionCache()
+    _, before = build_source_backed_c11_repository(source, base, cache=cache)
+    independently = build_validated_source_backed_c11_release_from_stream(source, altered)
+    assert independently.release_ref != before.release_ref
+    _, after = build_source_backed_c11_repository(source, altered, cache=cache)
+    assert after.release_ref == independently.release_ref
+    assert cache.entry_count == 2
+
+
+def test_c1_authority_set_cache_isolation_does_not_mint_authority():
+    fx = _fixture("agent-b-current-authority")
+    source = _stream(fx)
+    cache = SourceBackedC11SessionCache()
+    _, base = build_source_backed_c11_repository(
+        source, fx["projection"], cache=cache, current_authorities=()
+    )
+    _, full = build_source_backed_c11_repository(
+        source, fx["projection"], cache=cache, current_authorities=fx["authorities"]
+    )
+    assert base.release_ref == full.release_ref
     assert cache.entry_count == 2
