@@ -136,7 +136,7 @@ def test_c3_t01_immutable_baseline_accepts_wrong_source_that_repair_refuses():
     import types
 
     baseline = subprocess.run(
-        ["git", "show", "HEAD^1:rawlsing_next/gt12_c_to_d_relation_bridge.py"],
+        ["git", "show", "6a5c12f04323d74001f9632063ec907f4fc4468e:rawlsing_next/gt12_c_to_d_relation_bridge.py"],
         check=True, capture_output=True,
     ).stdout
     identity = subprocess.run(
