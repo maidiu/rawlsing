@@ -4,6 +4,7 @@ Both falsifiers use genuine SQLite transactions. The second uses a P3 store
 created by the original unmodified P6 CLI, not an invented replacement owner.
 """
 import sqlite3
+from contextlib import closing
 import subprocess
 import sys
 import tempfile
@@ -22,6 +23,14 @@ class TypedPsycheWitness(unittest.TestCase):
         self.dbpath = self.root / writer.SQLITE_REL
         self.dbpath.parent.mkdir(parents=True)
 
+    def update_and_checkpoint(self, sql, parameters):
+        with closing(sqlite3.connect(self.dbpath)) as db:
+            db.execute(sql, parameters)
+            db.commit()
+            if db.execute("PRAGMA journal_mode").fetchone()[0] == "wal":
+                result=db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+                self.assertEqual(result[0],0,"SQLite WAL checkpoint blocked")
+
     def readings(self):
         w = writer.state_snapshot(self.root, logical=True)["sha256"]
         r = reader.state_snapshot(self.root, logical=True)["sha256"]
@@ -37,8 +46,7 @@ class TypedPsycheWitness(unittest.TestCase):
             self.assertEqual(db.execute(
                 "SELECT typeof(payload_json) FROM p3_records").fetchone()[0], "blob")
         before = self.readings()
-        with sqlite3.connect(self.dbpath) as db:
-            db.execute("UPDATE p3_records SET payload_json=? WHERE id=1", ("4142",))
+        self.update_and_checkpoint("UPDATE p3_records SET payload_json=? WHERE id=1", ("4142",))
             self.assertEqual(db.execute(
                 "SELECT typeof(payload_json) FROM p3_records").fetchone()[0], "text")
         after = self.readings()
@@ -55,18 +63,35 @@ class TypedPsycheWitness(unittest.TestCase):
         self.assertEqual(result.returncode, 0,
                          "Original P6 new failed: " + result.stderr.decode(errors="replace")[:500])
         self.assertTrue(self.dbpath.is_file(), "Actual P3 psyche store missing")
-        with sqlite3.connect(self.dbpath) as db:
+        with closing(sqlite3.connect(self.dbpath)) as db:
             existing = db.execute("SELECT seq FROM p3_records ORDER BY seq LIMIT 1").fetchone()
             self.assertIsNotNone(existing, "Real P6 P3 record absent")
-            db.execute("UPDATE p3_records SET payload_json=? WHERE seq=?",
-                       (sqlite3.Binary(bytes.fromhex("4142")), existing[0]))
+        self.update_and_checkpoint("UPDATE p3_records SET payload_json=? WHERE seq=?",
+                                   (sqlite3.Binary(bytes.fromhex("4142")), existing[0]))
         before = self.readings()
-        with sqlite3.connect(self.dbpath) as db:
-            db.execute("UPDATE p3_records SET payload_json=? WHERE seq=?",
-                       ("4142", existing[0]))
+        self.update_and_checkpoint("UPDATE p3_records SET payload_json=? WHERE seq=?",
+                                   ("4142", existing[0]))
         after = self.readings()
         self.assertNotEqual(before, after,
                             "Genuine P6-generated P3 database changed logical row undetected")
+
+    def test_uncheckpointed_wal_must_be_refused_not_misreported_logical(self):
+        with closing(sqlite3.connect(self.dbpath)) as db:
+            db.execute("PRAGMA journal_mode=WAL")
+            db.execute("CREATE TABLE p3_records(id INTEGER PRIMARY KEY, payload_json TEXT)")
+            db.execute("INSERT INTO p3_records VALUES (1, 'old')")
+            db.commit()
+            # Keep the writer open, so a committed WAL remains uncheckpointed.
+            db.execute("UPDATE p3_records SET payload_json='new' WHERE id=1")
+            db.commit()
+            wal=Path(str(self.dbpath)+"-wal")
+            self.assertTrue(wal.is_file() and wal.stat().st_size>0,
+                            "Test requires real committed, uncheckpointed WAL")
+            observed=writer.sqlite_logical_digest(self.root)
+            self.assertEqual(observed.get("status"),"UNOBSERVED")
+            self.assertEqual(observed.get("reason"),"sqlite_uncheckpointed_wal")
+            with self.assertRaisesRegex(reader.Reject,"SQLITE_UNCHECKPOINTED_WAL"):
+                reader.sqlite_logical_digest(self.root)
 
 
 if __name__ == "__main__":
