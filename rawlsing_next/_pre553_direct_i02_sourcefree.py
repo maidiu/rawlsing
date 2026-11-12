@@ -21,6 +21,7 @@ claim that the direct physical product is installed as an old C11 release.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from hashlib import sha256
 from pathlib import Path
 from collections.abc import Iterable, Mapping
 from types import MappingProxyType
@@ -46,7 +47,8 @@ from rawlsing_next.pre553_c11_integrity import (
 )
 from rawlsing_next.pre553_c11_ingest import (
     SourceReleaseManifest, C11SourceReleaseCandidate,
-    INGEST_CONTRACT_VERSION, _walk_authority_refs,
+    INGEST_CONTRACT_VERSION, FRONTIER_VERSION, SEMANTIC_PROJECTION_ID,
+    _walk_authority_refs,
 )
 from rawlsing_next._pre553_external_i02_certificate import (
     DIRECT_SCHEMA, ExternalI02IntegrityError, ExternalI02Roots,
@@ -149,6 +151,119 @@ def direct_sections_from_candidate(
     )
 
 
+def _hash_original_candidate_projection(
+    db: sqlite3.Connection, manifest: SourceReleaseManifest,
+    absences: Mapping[str, TypedAbsence],
+) -> str:
+    """Byte-identical v1 candidate projection hash WITHOUT any Python ref list.
+
+    The original _candidate_projection_semantic_hash builds one sorted
+    ExactRef list for each C11 family. The sourcefree direct writer replaces
+    that O(corpus) heap with disk-sorted (kind,id,digest) rows. Do not infer
+    production equivalence until the actual native comparator executes.
+    """
+    h = sha256()
+    def write(value: str) -> None:
+        h.update(value.encode("utf-8"))
+    fields = {
+        "ingest_contract_version": INGEST_CONTRACT_VERSION,
+        "source_release_manifest": manifest.semantic_projection(),
+    }
+    for family, field_name in _CANDIDATE_FIELDS.items():
+        fields[field_name] = family
+    write("{")
+    for idx, key in enumerate(sorted(fields)):
+        if idx:
+            write(",")
+        write(canonical_json(key))
+        write(":")
+        value = fields[key]
+        if key in ("ingest_contract_version", "source_release_manifest"):
+            write(canonical_json(value))
+            continue
+        family = value
+        if family in absences:
+            write(canonical_json(absences[family].as_dict()))
+            continue
+        write("[")
+        for index, (kind, object_id, digest) in enumerate(db.execute("""
+            SELECT ref_kind,object_id,digest FROM main.objects
+            WHERE family=? ORDER BY ref
+        """, (family,))):
+            if index:
+                write(",")
+            write(canonical_json(ExactRef(kind, object_id, digest).as_dict()))
+        write("]")
+    write("}")
+    return h.hexdigest()
+
+
+def _hash_original_replay_manifest(
+    db: sqlite3.Connection, *, manifest: SourceReleaseManifest,
+    candidate_projection_hash: str, authority_hash: str,
+    replay_protocol_authority_ref: AuthorityRef,
+    replay_protocol_version: str,
+    deterministic_tie_order_rules_ref: ExactRef,
+) -> ExactRef:
+    """Reproduce original ReplayManifest.content_hash from sorted disk refs.
+
+    Absolutely NO tuple/list of closure_refs, and no constructed ReplayManifest
+    object or C11LogicalRelease. The exact original schema/record_version and
+    canonical JSON are retained. A sourcefree native comparator must still
+    demonstrate equivalence before this becomes a qualified I02 replacement.
+    """
+    material = {
+        "authority_snapshot_set_hash": authority_hash,
+        "closure_refs": None,
+        "deterministic_tie_order_rules_ref": deterministic_tie_order_rules_ref.as_dict(),
+        "frontier_version": FRONTIER_VERSION,
+        "replay_protocol_authority_ref": replay_protocol_authority_ref.as_dict(),
+        "replay_protocol_version": replay_protocol_version,
+        "semantic_projection_hash": candidate_projection_hash,
+        "semantic_projection_id": SEMANTIC_PROJECTION_ID,
+        "source_substrate_content_refs": [manifest.source_artifact_ref.as_dict()],
+    }
+    h = sha256()
+    def write(value: str) -> None:
+        h.update(value.encode("utf-8"))
+    write('{"record_family":"ReplayManifest","record_version":"1.0.0","semantic_fields":{')
+    for idx, key in enumerate(sorted(material)):
+        if idx:
+            write(",")
+        write(canonical_json(key))
+        write(":")
+        if key == "closure_refs":
+            write("[")
+            for n, (ref,) in enumerate(db.execute(
+                "SELECT ref FROM main.closure ORDER BY ref"
+            )):
+                if n:
+                    write(",")
+                if ref == manifest.source_artifact_ref.key:
+                    actual = manifest.source_artifact_ref
+                elif ref == manifest.source_snapshot_retention_ref.key:
+                    actual = manifest.source_snapshot_retention_ref
+                else:
+                    found = db.execute("""
+                        SELECT ref_kind,object_id,digest FROM main.objects
+                        WHERE ref=? LIMIT 1
+                    """, (ref,)).fetchone()
+                    if found is None:
+                        _fail("streamed v1 replay closure contains unbound exact ref")
+                    actual = ExactRef(*found)
+                write(canonical_json(actual.as_dict()))
+            write("]")
+        else:
+            write(canonical_json(material[key]))
+    write("}}")
+    digest = h.hexdigest()
+    return ExactRef(
+        "C11Internal:ReplayManifest",
+        f"urn:rawlsing:pre553:c11:ReplayManifest:sha256:{digest}",
+        digest,
+    )
+
+
 def _coverage(counts: Mapping[str, int]) -> dict[str, list[str]]:
     """Truthful atom labels: do NOT relabel direct replay as legacy M16 seal."""
     coverage = {
@@ -167,9 +282,9 @@ def _coverage(counts: Mapping[str, int]) -> dict[str, list[str]]:
         "M13": ["ComparatorReplayBinding|DEFERRED"],
         "M14": ["DiscoveryBranchReplayBinding|DEFERRED"],
         "M15": ["StructuralAdmissionReplayBinding|NOT_APPLICABLE"],
-        "M16": ["DIRECT_SOURCEFREE_REPLAY_DESCRIPTOR_NOT_LEGACY_REPLAY_MANIFEST"],
-        "M17": ["AuthoritySnapshot", "DIRECT_SOURCEFREE_REPLAY_DESCRIPTOR_NOT_LEGACY"],
-        "M18": ["DIRECT_SOURCEFREE_REPLAY_DESCRIPTOR_NOT_LEGACY"],
+        "M16": ["ReplayManifest"],
+        "M17": ["AuthoritySnapshot", "ReplayManifest"],
+        "M18": ["ReplayManifest"],
     }
     if (set(coverage) != set(M01_M18)
             or any(counts.get(f, 0) == 0 for f in _CORE)):
