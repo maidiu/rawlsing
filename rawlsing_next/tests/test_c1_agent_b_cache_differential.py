@@ -14,6 +14,7 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     build_validated_source_backed_c11_release_from_stream,
 )
 from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+from rawlsing_next.pre553_empirical_objects import RoutingEligibilityFact
 
 
 def _stream(fx, *, digest=None):
@@ -109,11 +110,17 @@ def test_c1_changed_routing_and_occurrence_are_distinct_cache_inputs():
     old_routing = base.routing
     # A different independently specified routing member-set ref must not
     # reuse a release with the previous administration receipt.
-    new_first = replace(
-        old_routing[0],
-        member_set_replay_ref=replace(
-            old_routing[0].member_set_replay_ref, content_hash="d" * 64
-        ),
+    first = old_routing[0]
+    alternate_fields = dict(first.as_dict()["semantic_fields"])
+    alternate_fields["member_set_replay_ref"] = {
+        **alternate_fields["member_set_replay_ref"], "content_hash": "d" * 64
+    }
+    new_first = RoutingEligibilityFact(
+        typed_state=first.typed_state,
+        authority_snapshot_refs=first.authority_snapshot_refs,
+        dependency_refs=first.dependency_refs,
+        producer_replay_locator_or_reference_root=first.producer_replay_locator_or_reference_root,
+        **alternate_fields,
     )
     new_routing = replace(base, routing=(new_first, *old_routing[1:]))
     assert new_routing.cache_identity != base.cache_identity
