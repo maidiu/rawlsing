@@ -10,6 +10,7 @@ from actor_initiative import (
 )
 from actor_scene_context import recent_self_actions
 from situated_provider import ModelUnavailable
+from sourcefree_p3_bridge import qualified_p3_read
 
 
 def actor_context_for(actor_id, context):
@@ -131,7 +132,7 @@ def interaction_quiet(session, world, house, cues):
             "last_break_event_id": parent}
 
 
-def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED"):
+def reconsider(session, receipt, interpret, realize=None, *, actor_context=None, provider_mode="INJECTED", psyche_owner=None, psyche_scope=None):
     """Use bounded actor-local inputs and keep interpretations in the turn receipt."""
     if interpret is None:
         return None
@@ -199,6 +200,15 @@ def reconsider(session, receipt, interpret, realize=None, *, actor_context=None,
         "actor_context": local_context,
         "available_actions": available_actions,
     }
+    if psyche_owner is not None:
+        if not isinstance(psyche_scope, dict):
+            raise ValueError("P6_P3_SCOPE_REQUIRED")
+        packet["sourcefree_p3"] = qualified_p3_read(
+            psyche_owner, session,
+            project=psyche_scope.get("project"),
+            counterpart=psyche_scope.get("counterpart"),
+            as_of=world.clock,
+        )
     result = {"grade": "PROVISIONAL_MODEL_MEDIATED", "provider_mode": provider_mode,
               "packet_hash": digest(packet)}
     try:
