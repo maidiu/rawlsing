@@ -52,10 +52,9 @@ def _full_query_run(tmp_path, *, scope=None, shared=None):
 
 
 def _query_census(result):
-    return census_native_batch(
-        result.manifest, result.receipts, result.outputs_by_unit,
-        require_complete=True,
-    )
+    # The normal issued native result (not a stand-alone model record) exposes
+    # its first-reader full-output conservation contract.
+    return result.exact_s2e_output_census(require_complete=True)
 
 
 def _discovery_run(tmp_path):
