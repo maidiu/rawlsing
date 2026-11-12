@@ -68,11 +68,11 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHOR_TESTED_A_CANDIDATE_SAME_B_COUNTER_RUNNING",
+      "status": "AUTHOR_TESTED_B_CANDIDATE_SAME_A_SEMANTIC_INTERLEAVE_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "pair": 1,
       "immutable_contract": "pair1-B-B03-counter-B02-v4.txt",
-      "B_candidate_head": "4f78bf71d9674450f4b32811f0dbee84adf3ed14",
+      "B_candidate_head": "15472ca725e03be1c87faef8c30511edcdf10111",
       "not_independently_accepted": true,
       "A_candidate_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a"
     },
@@ -122,7 +122,7 @@
         "10"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHOR_TESTED_A_CANDIDATE_SAME_B_COUNTER_RUNNING",
+      "status": "AUTHOR_TESTED_B_CANDIDATE_SAME_A_SEMANTIC_INTERLEAVE_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
       "parent_material_join_note": "C02 A ff9b6d85d32b1529ea32b5488f1fd8a623786d26 gives real parent-local work/care/debt kernel. Reconcile actual parent stocks/time/household permissions/currency with B03/B04 before parent decision, no double-counting or Nadia cash substitution.",
@@ -130,7 +130,8 @@
       "live_root_join_note": "C02 B 4d93685df4c5abdfbd09f44510a24a41c850b6a8 truthful MATERIAL_ACTIVITY/history-bound parent currency; direct world writes fail ordinary P6 P4_COLD_STATE_MISMATCH. Same A repairs via existing record_activity path, not weaker check/new ledger. Released vocabulary is returned input; active others FINISH_THEN_RECONCILE.",
       "A_candidate_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
       "not_independently_accepted": true,
-      "parent_live_root_candidate": "4528b68 author proves normal fresh-process P6 view/say after parent background activity; incremental B02/B04 purchase join not yet proven. Immutable active contracts finish then reconcile; no automatic READY."
+      "parent_live_root_candidate": "4528b68 author proves normal fresh-process P6 view/say after parent background activity; incremental B02/B04 purchase join not yet proven. Immutable active contracts finish then reconcile; no automatic READY.",
+      "B_candidate_head": "15472ca725e03be1c87faef8c30511edcdf10111"
     },
     {
       "id": "B05",
@@ -152,12 +153,13 @@
         "12"
       ],
       "grade": "SOURCEFREE_S2_ONLY",
-      "status": "AUTHOR_TESTED_A_CANDIDATE_SAME_B_COUNTER_RUNNING",
+      "status": "AUTHOR_TESTED_B_CANDIDATE_SAME_A_SEMANTIC_INTERLEAVE_RUNNING",
       "next_contract_note": "Reconcile exact B01 schema/source vs material_hash and D01 completed-config provenance after rivals; no running contract changed.",
       "material_candidate_note": "B03 A 5bc29474e769b928d9264f1607bab605e2b1c7e9 provides committed dwelling/material feasibility but no mother action/purchase/calendar; B02 now commissioned, not complete.",
       "running_contract": "pair1-A-B02-counter-B04-B05-v5.txt",
       "A_candidate_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
-      "not_independently_accepted": true
+      "not_independently_accepted": true,
+      "B_candidate_head": "15472ca725e03be1c87faef8c30511edcdf10111"
     },
     {
       "id": "C01",
@@ -716,7 +718,7 @@
   ],
   "receiving_policy": "A/B are competing implementers and cannot self-accept. Evidence-backed 27 implementation packets can advance as unreceived candidates when local facts are proved and dependent contracts are explicit. Each coherent CG tranche or J1-J4 integration claim gets one genuinely independent scoped receiving before protected adoption; high-risk source/owner changes can require earlier independent review. Avoid mandatory review of each micro-packet or review of reviewers.",
   "frozen_programme_head": "08a323b490df4e2ddd0dca7f8b3cd394dfe17e0a",
-  "runtime_snapshot_utc": "2026-11-12T13:55:26.908090+00:00",
+  "runtime_snapshot_utc": "2026-11-12T14:21:54.488312+00:00",
   "persistent_pairs": [
     {
       "pair": 1,
@@ -725,12 +727,12 @@
         "A": "ses_e3129596bffes0LaqGfkjAwEuQ",
         "B": "ses_e312958e8ffeVzjGxpyNpsMatM"
       },
-      "state": "B_COUNTER_RUNNING",
-      "active_job": "sorok-duel-pair1-b04-b05-counter-b-20261112-r1",
-      "opponent_frozen_head": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
-      "base_commit": "2a47fb389b453c2f902b8c13ed52304fb40efd0d",
+      "state": "A_COUNTER_RUNNING",
+      "active_job": "sorok-duel-pair1-b04-b05-semantic-interleave-a-20261112-r1",
+      "opponent_frozen_head": "15472ca725e03be1c87faef8c30511edcdf10111",
+      "base_commit": "15472ca725e03be1c87faef8c30511edcdf10111",
       "next_packet": "B02_B04_B05_REAL_COMPOSITION",
-      "active_contract_sha256": "d01ca6637b1d03429295df1b37e5e2709ee4169b603440d0fe140600f058d2ab"
+      "active_contract_sha256": "8b8a0a1f19ebb8ed168b14655557bc25ec3387d3c037502762998c9d25c06736"
     },
     {
       "pair": 2,
@@ -885,6 +887,17 @@
       "status": "AUTHOR_TESTED_SAME_B_PERIOD_PURCHASE_RECONCILIATION_THEN_C03_C04",
       "actual_change": "Normal closed P4/P6 parent-background entry validates source/boundary before mutation and records actual after snapshot through existing activity ledger. Author fresh-process view/say, retry, drift/pending/private-leak negatives; B02 current-period input supplied at older cut.",
       "limitations": "No two-period incremental C02 or B04 purchase/currency integration, C03/C04, E03 recovery, fork or independent/native/human/protected acceptance yet."
+    },
+    {
+      "task": "B02_B04_B05",
+      "role": "B",
+      "head": "15472ca725e03be1c87faef8c30511edcdf10111",
+      "implementation": "4a3c45cda7d814df0c60ca4e245499fcfca62162",
+      "branch": "codex/sorok-duel-b04-b05-b-counter-20261112-r1",
+      "status": "AUTHOR_TESTED_PARTIAL_HQ_SEMANTIC_HOLD_SAME_A_REPAIR",
+      "actual_change": "Reproduced stricter C02 purchase-history failure; material/parent and rent locks, checkpoint rollback tests, actual3event P3 BatchEngine followed by material operations.",
+      "semantic_hold": "B04 appends post-purchase P2_PARENT_MATERIAL_ANTECEDENT bridge. Not accepted as typed purchase-history consumption; proper parent-owner hook remains separately commissioned.",
+      "limits": "Batch occurs after employment split; material operations after batch. Event-by-event period/material interleave not proven. No independent/native/science/actor/human/protected acceptance."
     }
   ],
   "composition_candidate": {
@@ -1055,6 +1068,12 @@
       "source": "8de517bd3c0d2a8afb29509c7917d62cac4dc59a",
       "need": "B04 P2_PARENT_PURCHASE changes parent material; C02 history reader excludes that operation kind. Reconcile exact competent producer/reader at next Pair3 return without weakening history binding, relabeling purchase or mutating active contracts.",
       "status": "SAME_PAIR3_B_PARENT_OWNER_RECONCILIATION_COMMISSIONED"
+    },
+    {
+      "task": "B04_B05_C02",
+      "source": "15472ca725e03be1c87faef8c30511edcdf10111",
+      "need": "Preserve purchase/initial antecedent distinction; remove or justify post-purchase antecedent bridge by actual owner contract. Parent owner consumes actual typed purchase. Existing BatchEngine must consume material changes between events, not merely batch then material calls.",
+      "status": "SAME_PAIR1_A_SEMANTIC_REPAIR_AND_INTERLEAVE_COMMISSIONED_PARENT_HOOK_PAIR3_EXCLUSIVE"
     }
   ],
   "provider_reported_session_cost_snapshot": {
