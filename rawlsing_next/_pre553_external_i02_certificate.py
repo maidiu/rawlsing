@@ -466,29 +466,63 @@ class VerifiedExternalI02:
                 or self.path.suffix != ".sqlite"
                 or self.path.name.startswith(".s2b-stage-")):
             _fail("orphan, symlink, missing or non-final certificate")
-        if _digest_file(self.path) != roots.physical:
-            _fail("cold physical bytes differ from held external root")
-        self.db = sqlite3.connect(self.path.as_uri() + "?mode=ro", uri=True)
-        self.db.execute("PRAGMA query_only=ON")
-        self.db.execute("BEGIN")
+        # The former hash(path) then sqlite3.connect(path) opened the name
+        # TWICE. A rival could swap in a physically different but logically
+        # identical SQLite file between them: the external physical root was
+        # then falsely reported as verified. Pin one O_NOFOLLOW descriptor,
+        # open SQLite through its /proc/self/fd link while held, and hash the
+        # same inode *after* acquiring the SQLite read transaction. This does
+        # not rehydrate or duplicate the certificate. Linux is explicitly
+        # required for this secure sourcefree physical-root opening mode;
+        # never silently fall back to the vulnerable pathname method.
+        if not os.path.isdir("/proc/self/fd") or not hasattr(os, "O_NOFOLLOW"):
+            _fail("descriptor-pinned SQLite cold verification requires Linux /proc/self/fd")
         try:
-            if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
-                _fail("cold certificate physical integrity error")
-            h = dict(self.db.execute("SELECT name,value FROM header"))
-            if h.get("schema") != SCHEMA or any(
-                h.get(name) != getattr(roots, name)
-                for name in ("release", "source", "replay", "universe")
-            ):
-                _fail("external I02 identity, replay or universe mismatched")
-            if set(__import__("json").loads(h["coverage"])) != set(M01_M18):
-                _fail("M01-M18 missing in certified header")
-            # Revalidate semantic closure and keyspace before allowing EMPTY.
-            _check_relations_readonly(self.db, roots.source)
-            if _logical_root(self.db) != roots.logical:
-                _fail("logical corpus/selector map differs from external root")
-        except Exception:
-            self.db.close()
-            raise
+            source_fd = os.open(
+                self.path, os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_CLOEXEC", 0),
+            )
+        except OSError as exc:
+            raise ExternalI02IntegrityError(
+                "cannot securely open exact cold I02 certificate inode"
+            ) from exc
+        try:
+            try:
+                self.db = sqlite3.connect(
+                    f"file:/proc/self/fd/{source_fd}?mode=ro", uri=True,
+                )
+            except sqlite3.Error as exc:
+                raise ExternalI02IntegrityError(
+                    "cannot open descriptor-bound SQLite sourcefree certificate"
+                ) from exc
+            try:
+                self.db.execute("PRAGMA query_only=ON")
+                self.db.execute("BEGIN")
+                if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
+                    _fail("cold certificate physical integrity error")
+                # An active read transaction pins the same SQLite view while
+                # this bounded streaming SHA256 authenticates the opened inode.
+                physical = sha256()
+                for block in iter(lambda: os.read(source_fd, 1024 * 1024), b""):
+                    physical.update(block)
+                if physical.hexdigest() != roots.physical:
+                    _fail("cold physical bytes differ from held external root")
+                h = dict(self.db.execute("SELECT name,value FROM main.header"))
+                if h.get("schema") != SCHEMA or any(
+                    h.get(name) != getattr(roots, name)
+                    for name in ("release", "source", "replay", "universe")
+                ):
+                    _fail("external I02 identity, replay or universe mismatched")
+                if set(__import__("json").loads(h["coverage"])) != set(M01_M18):
+                    _fail("M01-M18 missing in certified header")
+                # Revalidate semantic closure and keyspace before allowing EMPTY.
+                _check_relations_readonly(self.db, roots.source)
+                if _logical_root(self.db) != roots.logical:
+                    _fail("logical corpus/selector map differs from external root")
+            except Exception:
+                self.db.close()
+                raise
+        finally:
+            os.close(source_fd)
         # Seal not only attribute assignment but the SQL session's semantics.
         # The previous raw .db leaked PRAGMA query_only, TEMP table shadowing,
         # create_collation('BINARY', ...), and raw Cursor.connection; any could
