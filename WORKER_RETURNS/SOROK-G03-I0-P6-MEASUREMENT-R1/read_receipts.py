@@ -135,6 +135,29 @@ def consume(root,expected_index_sha256=None):
             "provider_calls":"UNOBSERVED","tokens":"UNOBSERVED","retries":"UNOBSERVED","billable_cost":"UNOBSERVED",
             "descendant_process_count":"UNOBSERVED","index_sha256":sha(rawidx),
             "G03_FULL":"NOT_EVALUATED_G02_MISSING"}
+    # Do not launder the planned negative into a 20% real-world failure rate.
+    observed_refusals=sum(r["exit_code"]!=0 and isinstance(o,dict)
+                          and o.get("status")=="REFUSED" for r,o in zip(rows,outputs))
+    expected_refusals=int(rows[4]["exit_code"]==2 and isinstance(outputs[4],dict)
+                         and outputs[4].get("reason")=="P6_WAIT_DURATION_OUT_OF_RANGE")
+    result["expected_refusals"]=expected_refusals
+    result["all_refusals"]=observed_refusals
+    result["unexpected_failed_or_refused"]=result["failed_or_refused"]-expected_refusals
+    result["observed_refusal_fraction_of_attempts"]=observed_refusals/len(rows)
+    result["unexpected_nonzero_fraction_of_attempts"]=result["unexpected_failed_or_refused"]/len(rows)
+    result["wall_by_attempt_seconds"]={n:r["wall_seconds"] for (n,_),r in zip(PLAN,rows)}
+    result["state_after_bytes"]={n:r["state_bytes_after"] for (n,_),r in zip(PLAN,rows)}
+    result["state_net_bytes"]=rows[-1]["state_bytes_after"]-rows[0]["state_bytes_before"]
+    result["rss_direct_child_bytes"]=({"status":"MEASURED","min":min(rss),
+                  "median":statistics.median(rss),"max":max(rss)}
+                  if len(rss)==len(rows) else {"status":"UNOBSERVED","reason":"incomplete_wait4_samples"})
+    if all(r["resources"]["status"]=="MEASURED" for r in rows):
+        result["cpu_direct_child_seconds"]={
+            "status":"MEASURED","user_total":sum(r["resources"]["cpu_user_s"] for r in rows),
+            "system_total":sum(r["resources"]["cpu_system_s"] for r in rows),
+            "scope":"sum_direct_child_wait4_not_process_tree"}
+    else:
+        result["cpu_direct_child_seconds"]={"status":"UNOBSERVED","reason":"incomplete_wait4_samples"}
     if (root/"summary.json").is_file():
         require(load(root/"summary.json")==result,"SUMMARY_FORGED")
     return result
