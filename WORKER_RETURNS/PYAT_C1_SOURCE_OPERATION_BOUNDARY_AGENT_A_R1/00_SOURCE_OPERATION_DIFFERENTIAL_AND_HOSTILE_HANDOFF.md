@@ -200,7 +200,8 @@ These are **prepared commands, NOT executed evidence**. Run at the stated exact 
 
 ```sh
 # Protected sourcefree C11, source identity, operation and replay tests:
-git checkout --detach 6a5c12f04323d74001f9632063ec907f4fc4468e
+git worktree add --detach ../pyat-c1-protected-sourcefree-proof 6a5c12f04323d74001f9632063ec907f4fc4468e
+cd ../pyat-c1-protected-sourcefree-proof
 PYTHONPATH=. python3 -B -m pytest -q -p no:cacheprovider \
   rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
   rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py \
@@ -209,13 +210,15 @@ PYTHONPATH=. python3 -B -m pytest -q -p no:cacheprovider \
   rawlsing_next/tests/test_universal_workload_custody.py \
   rawlsing_next/tests/test_universal_source_byte_custody.py
 
-# Historical R157 source-configuration fixture tests, isolated checkout ONLY:
-git checkout --detach 1924499ef52403a0f331b8aff9b7c7eff99bf1e2
+# Historical R157 source-configuration fixture tests, isolated worktree:
+cd -
+git worktree add --detach ../pyat-c1-r157-sourcefree-proof 1924499ef52403a0f331b8aff9b7c7eff99bf1e2
+cd ../pyat-c1-r157-sourcefree-proof
 PYTHONPATH=. python3 -B -m pytest -q -p no:cacheprovider \
   rawlsing_next/tests/test_source_configuration_foundation.py
 ```
 
-These suites show the inherited modules' existing assertions if they pass. They **do not run the six newly specified source-boundary mutation tests** until the assigned reviewer adds/adapts those fixtures at the current owner, and they do not verify native original35 entitlement. Source-reader negative F4 must explicitly include zero preauthorization source-open calls. Avoid checkout/reset in any active worker worktree: use a fresh isolated, authorized worktree instead of the commands' bare checkout if another process owns the directory.
+These suites show the inherited modules' existing assertions if they pass. They **do not run the six newly specified source-boundary mutation tests** until the assigned reviewer adds/adapts those fixtures at the current owner, and they do not verify native original35 entitlement. Source-reader negative F4 must explicitly include zero preauthorization source-open calls. Run these commands only from a repository with independently available worktree rights; create unique destination names if a worktree already exists. Never reset or checkout over another active worker.
 
 ## VIII. Technical handoff and attack plan for Agent B / integrating reviewer
 
