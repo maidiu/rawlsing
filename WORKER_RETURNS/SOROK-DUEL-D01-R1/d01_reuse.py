@@ -98,6 +98,29 @@ def _source_identity(source: Mapping[str, Any]) -> Mapping[str, Any]:
     return nested if isinstance(nested, Mapping) else source
 
 
+def _verify_completed_config(owner: Any, completed: Sequence[Mapping[str, Any]]) -> None:
+    if not completed:
+        return
+    operation = owner.store.get_operation(completed[-1]["operation_id"])
+    if not isinstance(operation, Mapping):
+        _refuse("D01_COLD_OPERATION_MISSING")
+    result = _mapping(operation.get("result"), "D01_COLD_RESULT")
+    receipt = _mapping(operation.get("effects_receipt"), "D01_COLD_RECEIPT")
+    base = _mapping(operation.get("base_result"), "D01_COLD_BASE_RESULT")
+    base_after = _mapping(base.get("after"), "D01_COLD_BASE_AFTER")
+    psyche_after = _mapping(receipt.get("psyche_after"), "D01_COLD_PSYCHE_AFTER")
+    after = _mapping(result.get("after"), "D01_COLD_RESULT_AFTER")
+    expected = digest({
+        "base_state_hash": _hash(base_after.get("state_hash"),
+                                 "D01_COLD_BASE_STATE_HASH"),
+        "psychology_head": _hash(psyche_after.get("hash"),
+                                 "D01_COLD_PSYCHE_HEAD"),
+        "config_hash": owner.config_hash,
+    })
+    if after.get("state_hash") != expected:
+        _refuse("D01_COLD_CONFIG_PROVENANCE_MISMATCH")
+
+
 def _walk_claims(value: Any, path: str = "response") -> None:
     if isinstance(value, Mapping):
         for key, item in value.items():
@@ -239,6 +262,13 @@ def open_cold_owner(base_owner: Any, state_root: str | Path | None = None) -> An
     if detached(owner.config) != config:
         owner.close()
         _refuse("D01_COLD_CONFIG_REOPEN_MISMATCH")
+    try:
+        if owner.store.pending():
+            _refuse("D01_COLD_OPERATION_PENDING")
+        _verify_completed_config(owner, owner.store.completed())
+    except BaseException:
+        owner.close()
+        raise
     return owner
 
 

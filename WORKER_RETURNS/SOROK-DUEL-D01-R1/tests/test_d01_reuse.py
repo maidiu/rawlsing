@@ -281,6 +281,19 @@ def test_config_and_source_severance_refuse_then_exact_restore(
             _cold_open(case)
         config_path.write_bytes(saved)
 
+        document = json.loads(config_path.read_text(encoding="utf-8"))
+        plan = document["config"]["plans"][1]
+        plan["counterpart"] = "attacker-counterpart"
+        plan["hash"] = digest({key: value for key, value in plan.items()
+                               if key != "hash"})
+        document["config_hash"] = digest(document["config"])
+        config_path.write_text(json.dumps(document), encoding="utf-8")
+        with pytest.raises(
+            RecursionRefusal, match="D01_COLD_CONFIG_PROVENANCE_MISMATCH",
+        ):
+            _cold_open(case)
+        config_path.write_bytes(saved)
+
         with pytest.raises(RecursionRefusal, match="STORE_REOPEN_BINDING_MISMATCH"):
             PsycheStore(
                 Path(case.state_root) / p3_owner.STORE_FILE,

@@ -843,6 +843,16 @@ class PsycheStore:
             self._counters["row_reads"] += len(rows)
             return [_detached(self._operation_document(row)) for row in rows]
 
+    def completed(self) -> list[dict]:
+        with self._lock:
+            self._ensure_open()
+            rows = self._connection.execute(
+                "SELECT * FROM p3_operations WHERE phase=? ORDER BY seq",
+                (PHASE_COMPLETE,),
+            ).fetchall()
+            self._counters["row_reads"] += len(rows)
+            return [_detached(self._operation_document(row)) for row in rows]
+
     def reserve(
         self,
         operation_id: str,
