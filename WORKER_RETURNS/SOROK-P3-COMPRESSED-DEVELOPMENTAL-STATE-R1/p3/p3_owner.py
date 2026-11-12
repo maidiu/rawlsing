@@ -246,6 +246,8 @@ class P3Owner:
         if self._config_path.exists():
             self._check_config()
             return
+        if (self._state_root / STORE_FILE).exists():
+            _refuse("P3_CONFIG_MISSING_WITH_EXISTING_STORE")
         temporary = self._state_root / (CONFIG_FILE + ".tmp")
         temporary.write_text(canonical(document) + "\n", encoding="utf-8")
         os.replace(temporary, self._config_path)
