@@ -30,7 +30,7 @@ def PACE(fanin, action):
 
 
 def experience(state, args, *, interpret=None, realize=None, actor_context=None,
-               provider_mode="INJECTED", timings=None):
+               provider_mode="INJECTED", timings=None, sourcefree_p3_bridge=False):
     started = time.perf_counter()
     cursor = started
     command = args.command
@@ -79,6 +79,8 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                 mii.save_profile(gaze_file, profile)
                 return result
             check_boundary(owner, ledger)
+            bridge_kwargs = ({"psyche_owner": owner, "psyche_scope": ledger["scope"]}
+                             if sourcefree_p3_bridge else {})
             prior = scene(session)
             outcome = None
             if command in ({"go", "look", "wait", "attend", "inspect", "inspect-particular"} | OPERATIONS.keys()) and invitation(session, ledger):
@@ -91,7 +93,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                     if not current.scene_open():
                         return {}, {"admission": "SCENE_CLOSED", "performed": False, "observation": None}
                     receipt = {"interval": PACE(owner.base_owner.fanin, admitted)}
-                    decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode)
+                    decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode, **bridge_kwargs)
                     if decision is not None:
                         receipt["situated"] = decision
                     return receipt, {"admission": "ADMITTED", "performed": True, "observation": None}
@@ -113,7 +115,7 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
                         receipt["interval"] = PACE(owner.base_owner.fanin, admitted)
                         if receipt.get("outward_cue") or any(row["recipient"] == "A" and row["eligibility"] == "ELIGIBLE"
                                for row in receipt.get("encounter_evidence", ())):
-                            decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode)
+                            decision = reconsider(current, receipt, interpret, realize, actor_context=actor_context, provider_mode=provider_mode, **bridge_kwargs)
                             if decision is not None:
                                 receipt["situated"] = decision
                     return receipt, public
@@ -230,6 +232,8 @@ def experience(state, args, *, interpret=None, realize=None, actor_context=None,
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", required=True, type=Path)
+    parser.add_argument("--sourcefree-p3-bridge", action="store_true",
+                        help="Explicit test-only P3 actor readset in P6 situated decisions")
     commands = parser.add_subparsers(dest="command", required=True)
     initialize = commands.add_parser("new")
     initialize.add_argument("--situated-house", action="store_true",
@@ -282,6 +286,7 @@ def main():
             interpret=provider.interpret if provider else None,
             realize=provider.realize if provider and provider.expressive_model else None,
             provider_mode="CONFIGURED_TRANSPORT" if provider else "UNCONFIGURED",
+            sourcefree_p3_bridge=args.sourcefree_p3_bridge,
         )
     except (RecursionRefusal, ModelUnavailable, FileNotFoundError) as exc:
         print(json.dumps({"status": "REFUSED", "reason": str(exc) if isinstance(exc, (RecursionRefusal, ModelUnavailable))
