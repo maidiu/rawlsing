@@ -1,5 +1,8 @@
 # PROGRAMMA SOROK — current guide navigation
 
+**CURRENT CG-B–G ARCHITECTURAL ISSUES REGISTER — 2026-11-12 (SOURCE-GRADED CANDIDATE, NOT ADOPTED):** [Read the 25-item issues-to-address and cross-audit manifest](CG_B_G_ARCHITECTURAL_AND_SEMANTIC_ISSUES_TO_ADDRESS_20261112_R1.md) and its [machine-readable evidence/status register](CG_B_G_ARCHITECTURAL_AND_SEMANTIC_ISSUES_TO_ADDRESS_20261112_R1.json). Covers the overnight DeepSeek A/B construction at exact candidate commits, Codex HQ's 17-item comparison, newly exposed focal-child household cash/rent, calendar event ordering, independent parent action/voice, first-consumer and cross-owner integrity. **Existing original PROGRAMMA law remains controlling; 25 issues are not 25 new commissions, and sourcefree/unfinished work is not native or independently received.** Controller #939 may have advanced beyond the frozen 15:39:55Z read; Codex must recheck live returns before applying status changes.
+
+
 **Prospective MCR-lite:** [shared eight-point operating standard](../../CROSS_HQ_CONTROL_ROOM/MCR_LITE_EXECUTION_DISCIPLINE_R1.md) applies to all new ordinary MCR commissions. This is a discipline of maximal substantive completion and minimal administrative friction, not permission to invent actor/source science; full MCR-C remains where explicitly required. Live owner progress, not stale candidate paragraphs below, controls current engineering status.
 
 
